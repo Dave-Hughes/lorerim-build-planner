@@ -37,7 +37,7 @@
     },
     {
      "by": "dialogue",
-     "speaker": "",
+     "speaker": "Windhelm Guard",
      "speakerNamed": "alias CrimeSceneInvestigator of MS11 (Blood on the Ice) (from alias)",
      "speakerPlaced": [
       "Windhelm"
@@ -1312,7 +1312,7 @@
    ]
   }
  ],
- "otherStarts": "The reader found no way into Blood on the Ice from it.",
+ "otherStarts": "To get into Blood on the Ice: ask Windhelm Guard in Windhelm \"Could you use some help?\" (the speaker is the one in alias CrimeSceneInvestigator; Blood on the Ice stage < 10; Blood on the Ice's GuardGavePlayerStory == 1), which starts Blood on the Ice.",
  "routes": [
   {
    "route": "MS11Kicker",
@@ -1328,7 +1328,7 @@
   {
    "route": "dialogue INFO Skyrim.esm:025E57",
    "kind": "dialogue",
-   "speaker": "",
+   "speaker": "Windhelm Guard",
    "speakerNamed": "alias CrimeSceneInvestigator of MS11 (Blood on the Ice) (from alias)",
    "race": null,
    "placed": [
@@ -1342,8 +1342,7 @@
    "conditions": "the speaker is the one in alias CrimeSceneInvestigator; Blood on the Ice stage < 10; Blood on the Ice's GuardGavePlayerStory == 1",
    "does": "SetStage 10 on MS11 (Blood on the Ice)",
    "source": "TIF__00025E57.Fragment_0 on INFO Skyrim.esm:025E57 (Skyrim.esm); topic MS11GuardWantHelp",
-   "sentence": "Talk to the speaker the line's conditions name in Windhelm and choose \"Could you use some help?\", when the speaker is the one in alias CrimeSceneInvestigator; Blood on the Ice stage < 10; Blood on the Ice's GuardGavePlayerStory == 1: SetStage 10 on MS11 (Blood on the Ice).",
-   "stops": "the speaker isn't named by an NPC: alias CrimeSceneInvestigator of MS11 (Blood on the Ice) (from alias)"
+   "sentence": "Talk to Windhelm Guard in Windhelm and choose \"Could you use some help?\", when the speaker is the one in alias CrimeSceneInvestigator; Blood on the Ice stage < 10; Blood on the Ice's GuardGavePlayerStory == 1: SetStage 10 on MS11 (Blood on the Ice)."
   }
  ],
  "loaders": {

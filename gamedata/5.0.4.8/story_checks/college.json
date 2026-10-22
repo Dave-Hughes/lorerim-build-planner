@@ -22,7 +22,7 @@
      "reply": [
       "Here you are. Now I'm anxious to see you cast it."
      ],
-     "conditions": "the speaker is the one in alias MG01FaraldaAlias; fn264 == 0; the player has at least 30 gold; fn629 == 1",
+     "conditions": "the speaker is the one in alias MG01FaraldaAlias; hasn't the spell Magelight; the player has at least 30 gold; First Lessons's NiryaSkillVar == 1",
      "source": "TIF__0001F814.Fragment_0 on INFO Skyrim.esm:01F814 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -39,7 +39,7 @@
      "reply": [
       "I look forward to it."
      ],
-     "conditions": "the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; fn629 > 0",
+     "conditions": "the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; First Lessons's NiryaSkillVar > 0",
      "source": "TIF__00021E5D.Fragment_0 on INFO Skyrim.esm:021E5D (Skyrim.esm)",
      "verdict": "script"
     },
@@ -111,6 +111,17 @@
     "source": "Skyrim.esm:01F251 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "30": 30,
+    "40": 40,
+    "50": 50
+   },
    "target": [
     {
      "alias": "MG01FaraldaAlias",
@@ -164,7 +175,7 @@
       "reply": [
        "Here you are. Now I'm anxious to see you cast it."
       ],
-      "conditions": "the speaker is the one in alias MG01FaraldaAlias; fn264 == 0; the player has at least 30 gold; fn629 == 1",
+      "conditions": "the speaker is the one in alias MG01FaraldaAlias; hasn't the spell Magelight; the player has at least 30 gold; First Lessons's NiryaSkillVar == 1",
       "source": "TIF__0001F814.Fragment_0 on INFO Skyrim.esm:01F814 (Skyrim.esm)",
       "verdict": "script"
      },
@@ -181,7 +192,7 @@
       "reply": [
        "I look forward to it."
       ],
-      "conditions": "the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; fn629 > 0",
+      "conditions": "the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; First Lessons's NiryaSkillVar > 0",
       "source": "TIF__00021E5D.Fragment_0 on INFO Skyrim.esm:021E5D (Skyrim.esm)",
       "verdict": "script"
      }
@@ -239,6 +250,15 @@
     "index": 10,
     "source": "Skyrim.esm:01F252 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+    "50": 50,
+    "60": 60,
+    "70": 70
    },
    "target": [
     {
@@ -321,7 +341,7 @@
       "reply": [
        "All right, please stay close to me while we're inside. It should be safe, but it's always better to be cautious."
       ],
-      "conditions": "fn359 == 1; Under Saarthal stage < 20; Under Saarthal stage >= 10; the speaker is Tolfdir",
+      "conditions": "you're in Saarthal; Under Saarthal stage < 20; Under Saarthal stage >= 10; the speaker is Tolfdir",
       "source": "TIF__000233CA.Fragment_0 on INFO Skyrim.esm:0233CA (Skyrim.esm)",
       "verdict": "script"
      }
@@ -343,7 +363,24 @@
      "atStage": 200,
      "call": "SetStage 0",
      "source": "QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Savos Aren",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Arch-Mage's Quarters, Arch Mage's Quarters"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0263D7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Savos Aren",
+       "source": "TIF__000263D7.Fragment_0 on INFO Skyrim.esm:0263D7 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -378,6 +415,13 @@
     "index": 10,
     "source": "Skyrim.esm:01F253 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "50": 50,
+    "60": 60
    },
    "target": [
     {
@@ -492,7 +536,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG03_0001F253.fragment_10 on Skyrim.esm:01F253 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Urag gro-Shub",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Arcanaeum"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:02B967",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Hitting the Books stage == 60; the speaker is Urag gro-Shub",
+       "source": "TIF__0002B967.Fragment_0 on INFO Skyrim.esm:02B967 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -521,6 +582,14 @@
     "index": 10,
     "source": "Skyrim.esm:01F254 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [
     {
@@ -1079,6 +1148,13 @@
     "source": "Skyrim.esm:01F255 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -1126,7 +1202,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG04_0001F254.fragment_14 on Skyrim.esm:01F254 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Savos Aren",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Arch-Mage's Quarters, Arch Mage's Quarters"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:027570",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Good Intentions stage == 50; the speaker is Savos Aren",
+       "source": "TIF__00027570.Fragment_0 on INFO Skyrim.esm:027570 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1598,6 +1691,20 @@
     "source": "Skyrim.esm:01F256 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+    "32": 32,
+    "35": 35,
+    "37": 37,
+    "40": 40,
+    "50": 50,
+    "55": 55,
+    "60": 60,
+    "70": 70
+   },
    "target": [
     {
      "alias": "MG06MirabelleAlias",
@@ -1675,7 +1782,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG05_0001F255.fragment_11 on Skyrim.esm:01F255 (College of Winterhold Quest Start Fixes.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Mirabelle Ervine",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Hall of Attainment, Dormitory"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:09BB8F",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Mirabelle Ervine",
+       "source": "TIF__0009BB8F.Fragment_0 on INFO Skyrim.esm:09BB8F (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -1692,6 +1816,11 @@
     "index": 10,
     "source": "Skyrim.esm:01F257 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "80": 50
    },
    "target": [
     {
@@ -1750,7 +1879,22 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG07_0001F257.fragment_17 on Skyrim.esm:01F257 (College of Winterhold Quest Start Fixes.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0C2796",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias MG07TolfdirAlias",
+       "source": "TIF__000C2796.Fragment_0 on INFO Skyrim.esm:0C2796 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1759,7 +1903,22 @@
      "atStage": 200,
      "call": "SetStage 0",
      "source": "QF_MG07_0001F257.fragment_17 on Skyrim.esm:01F257 (College of Winterhold Quest Start Fixes.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0C2796",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias MG07TolfdirAlias",
+       "source": "TIF__000C2796.Fragment_0 on INFO Skyrim.esm:0C2796 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1769,6 +1928,13 @@
     "index": 10,
     "source": "Skyrim.esm:01F258 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [],
    "needs": {
@@ -1824,7 +1990,37 @@
      "atStage": 30,
      "call": "Start",
      "source": "QF_MG01_0001F251.fragment_13 on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Nirya",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Hall of Attainment, Dormitory"
+       ],
+       "call": "SetStage 30",
+       "info": "Skyrim.esm:0B8116",
+       "prompt": null,
+       "reply": [],
+       "conditions": "First Lessons's NiryaSpellSuccess == 1; First Lessons stage >= 20; First Lessons stage < 30; the speaker is Nirya",
+       "source": "TIF__000B8116.Fragment_0 on INFO Skyrim.esm:0B8116 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 30",
+       "info": "Skyrim.esm:0B8119",
+       "prompt": null,
+       "reply": [],
+       "conditions": "First Lessons stage < 30; the speaker is the one in alias MG01FaraldaAlias",
+       "source": "TIF__000B8119.Fragment_0 on INFO Skyrim.esm:0B8119 (CollegeEntry.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -2300,6 +2496,10 @@
     "source": "Skyrim.esm:0E0E04 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "BookContainer",
@@ -2421,6 +2621,10 @@
     "source": "Skyrim.esm:0C1E72 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "Anomaly",
@@ -2475,7 +2679,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Savos Aren",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Arch-Mage's Quarters, Arch Mage's Quarters"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0263D7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Savos Aren",
+       "source": "TIF__000263D7.Fragment_0 on INFO Skyrim.esm:0263D7 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -2492,7 +2713,7 @@
       "I'm sure it will wear off soon. When it does, you'll be perfectly fine, and then we can try again.",
       "In the meantime, I'll see about figuring out what went wrong."
      ],
-     "conditions": "fn629 == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10",
+     "conditions": "Brelyna's Practice's SpellCast == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10",
      "source": "TIF__000C04F5.Fragment_0 on INFO Skyrim.esm:0C04F5 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2511,7 +2732,7 @@
       "It shouldn't be. You'll be back to normal in no time.",
       "And when you are, we can try this again and I'll be sure to get it right."
      ],
-     "conditions": "fn629 == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10",
+     "conditions": "Brelyna's Practice's SpellCast == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10",
      "source": "TIF__000C04F7.Fragment_0 on INFO Skyrim.esm:0C04F7 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2578,6 +2799,10 @@
     "source": "Skyrim.esm:0C0416 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2619,7 +2844,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Savos Aren",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Arch-Mage's Quarters, Arch Mage's Quarters"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0263D7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Savos Aren",
+       "source": "TIF__000263D7.Fragment_0 on INFO Skyrim.esm:0263D7 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -2637,7 +2879,7 @@
       "It is especially potent against the undead, and should burn them to a crisp in no time.",
       "J'zargo gives you plenty of these scrolls, so you try them and return when you can say whether they work."
      ],
-     "conditions": "fn629 == 2; the speaker is J'zargo",
+     "conditions": "J'zargo's Experiment's HelpAsked == 2; the speaker is J'zargo",
      "source": "TIF__000967E2.Fragment_0 on INFO Skyrim.esm:0967E2 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -2649,6 +2891,10 @@
     "index": 20,
     "source": "Skyrim.esm:0958B3 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30
    },
    "target": [],
    "needs": {
@@ -2668,11 +2914,10 @@
     "stage": 30,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "MGRAppJzargo01 (J'zargo's Experiment)",
-      "questId": "Skyrim.esm:0958B3",
-      "atStage": null,
+      "by": "by itself",
+      "script": "MGRJzargoSpell01QuestScript",
       "call": "SetStage 30",
+      "plain": "It starts by itself from the start of the game.",
       "source": "MGRJzargoSpell01QuestScript.VCount on Skyrim.esm:0958B3 (Skyrim.esm)",
       "verdict": "script"
      }
@@ -2693,7 +2938,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Savos Aren",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Arch-Mage's Quarters, Arch Mage's Quarters"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0263D7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Savos Aren",
+       "source": "TIF__000263D7.Fragment_0 on INFO Skyrim.esm:0263D7 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -2711,7 +2973,7 @@
       "It was a mistake, and now I want back what I gave him. It's an amulet that belonged to my family, and I never should've given it to Enthir.",
       "But he won't deal with me. Talk to him; see what it'll take to get my amulet back."
      ],
-     "conditions": "fn249 == 1; Onmund's Request stage < 10; fn629 == 1; the speaker is the one in alias Onmund",
+     "conditions": "fn249 == 1; Onmund's Request stage < 10; Onmund's Request's HelpAsked == 1; the speaker is the one in alias Onmund",
      "source": "TIF__000C084A.Fragment_0 on INFO Skyrim.esm:0C084A (Skyrim.esm)",
      "verdict": "script"
     }
@@ -2723,6 +2985,12 @@
     "index": 10,
     "source": "Skyrim.esm:06BC33 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -2824,6 +3092,9 @@
     "source": "Skyrim.esm:06A086 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10
+   },
    "target": [
     {
      "alias": "ArnielGane",
@@ -2877,7 +3148,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MGRArniel01_0006A086.fragment_0 on Skyrim.esm:06A086 (LoreRim - Economy Overhaul.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Arniel Gane",
+       "speakerNamed": "the one follower in MGRArniel01 (Arniel's Endeavor)'s aliases",
+       "speakerPlaced": [
+        "Hall of Attainment, Dormitory"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:06A056",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Arniel's Endeavor stage == 10; GetItemCount Dwemer Cog >= 10; the speaker is the one in alias ArnielGane",
+       "source": "TIF__0006A056.Fragment_0 on INFO Skyrim.esm:06A056 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -2905,6 +3193,12 @@
     "index": 10,
     "source": "Skyrim.esm:06A08D QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -2962,7 +3256,7 @@
        "The problem is that it'll be a little difficult to acquire, seeing as how it's in the hands of someone who isn't exactly friendly.",
        "So, you bring that staff back here, and I'll consider it payment for the item Arniel was after."
       ],
-      "conditions": "Arniel's Endeavor stage == 10; fn629 == 1; the speaker is the one in alias Enthir",
+      "conditions": "Arniel's Endeavor stage == 10; Arniel's Endeavor's EnthirIntro == 1; the speaker is the one in alias Enthir",
       "source": "TIF__0006A058.Fragment_0 on INFO Skyrim.esm:06A058 (Skyrim.esm)",
       "verdict": "script"
      }
@@ -2983,7 +3277,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MGRArniel02_0006A08D.fragment_10 on Skyrim.esm:06A08D (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Arniel Gane",
+       "speakerNamed": "the one follower in MGRArniel02 (Arniel's Endeavor)'s aliases",
+       "speakerPlaced": [
+        "Hall of Attainment, Dormitory"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:06A047",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Arniel's Endeavor stage == 40; the speaker is the one in alias Arniel",
+       "source": "TIF__0006A047.Fragment_0 on INFO Skyrim.esm:06A047 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -2992,7 +3303,8 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG08_0001F258.fragment_12 on Skyrim.esm:01F258 (College of Winterhold Quest Start Fixes.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -3011,7 +3323,7 @@
       "I suspect it may be due to the nature of the soul gem versus the crystals this was intended for. Destroys the equipment in the process.",
       "But, ahh... it's effective. Three times, and the crystal should be ready for the next step. Isn't this exciting?"
      ],
-     "conditions": "Arniel's Endeavor stage < 10; fn629 == 3; the speaker is the one in alias Arniel",
+     "conditions": "Arniel's Endeavor stage < 10; Arniel's Endeavor's ArnielStep == 3; the speaker is the one in alias Arniel",
      "source": "TIF__0006A04E.Fragment_0 on INFO Skyrim.esm:06A04E (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -3023,6 +3335,12 @@
     "index": 10,
     "source": "Skyrim.esm:06A097 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -3171,7 +3489,8 @@
      "atStage": 255,
      "call": "Start",
      "source": "QF_MGRArniel03_0006A097.fragment_10 on Skyrim.esm:06A097 (College of Winterhold Quest Start Fixes.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -3200,6 +3519,12 @@
     "index": 10,
     "source": "Skyrim.esm:06A119 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -3255,7 +3580,7 @@
        "If you're getting involved in this, that would be where you'd start looking.",
        "Why is this suddenly so important, anyway?"
       ],
-      "conditions": "fn629 == 1; Arniel's Endeavor stage == 10; the speaker is the one in alias Enthir",
+      "conditions": "Arniel's Endeavor's EnthirStep == 1; Arniel's Endeavor stage == 10; the speaker is the one in alias Enthir",
       "source": "TIF__0006A034.Fragment_0 on INFO Skyrim.esm:06A034 (Unofficial Skyrim Special Edition Patch.esp)",
       "verdict": "script"
      }
@@ -3286,7 +3611,7 @@
         "Skyrim.esm:013010",
         "Root"
        ],
-       "conditions": "GetIsRace Skyrim.esm:0CDD84 == 0; the speaker is Prisoner; GetInFaction College of Winterhold == 1; GetInFaction College of Winterhold == 1; GetQuestRunning College Suspension == 0",
+       "conditions": "GetIsRace Werewolf == 0; the speaker is Prisoner; GetInFaction College of Winterhold == 1; GetInFaction College of Winterhold == 1; GetQuestRunning College Suspension == 0",
        "globals": [],
        "source": "MGSuspension Skyrim.esm:0B1145 (Skyrim.esm)",
        "verdict": "files"
@@ -3317,6 +3642,12 @@
     "index": 5,
     "source": "Skyrim.esm:0C9A0E QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -3420,6 +3751,9 @@
     "source": "Skyrim.esm:0A4E82 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10
+   },
    "target": [],
    "needs": {
     "conditions": "GetInFaction College of Winterhold == 1; GetActorValue >= 90",
@@ -3468,6 +3802,9 @@
     "index": 10,
     "source": "Skyrim.esm:0B3233 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -3547,6 +3884,10 @@
     "index": 10,
     "source": "Skyrim.esm:099F27 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 70
    },
    "target": [
     {
@@ -3672,7 +4013,7 @@
       "reply": [
        "Your sigil stone. Lord Dagon... is less than pleased at its loss."
       ],
-      "conditions": "fn629 == 10; the speaker is Unbound Dremora",
+      "conditions": "Conjuration Ritual Spell's DremoraFlag == 10; the speaker is Unbound Dremora",
       "source": "TIF__000DD653.Fragment_0 on INFO Skyrim.esm:0DD653 (Unofficial Skyrim Special Edition Patch.esp)",
       "verdict": "script"
      },
@@ -3744,7 +4085,24 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG04_0001F254.fragment_14 on Skyrim.esm:01F254 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Savos Aren",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Arch-Mage's Quarters, Arch Mage's Quarters"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:027570",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Good Intentions stage == 50; the speaker is Savos Aren",
+       "source": "TIF__00027570.Fragment_0 on INFO Skyrim.esm:027570 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -3773,6 +4131,9 @@
     "index": 10,
     "source": "Skyrim.esm:0CD987 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -3863,6 +4224,10 @@
     "source": "Skyrim.esm:0D0755 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "Dagger",
@@ -3936,6 +4301,10 @@
     "source": "Skyrim.esm:05A609 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "Target",
@@ -4005,6 +4374,14 @@
     "index": 1,
     "source": "College Of Winterhold - Quest Expansion.esp:000801 QOBJ 1",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "1": 1,
+    "5": 5,
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -4081,7 +4458,8 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_MG01_0001F251.fragment_18 on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -4091,6 +4469,18 @@
     "index": 10,
     "source": "College Of Winterhold - Quest Expansion.esp:00081D QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 0,
+    "15": 5,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "25": 25,
+    "26": 26,
+    "30": 27
    },
    "target": [
     {
@@ -4145,7 +4535,7 @@
       "reply": [
        "Here, take a look at this. Just let me know when you're ready to practice the spell, alright?"
       ],
-      "conditions": "College Curriculum hasn't started; fn264 == 0; the speaker is the one in alias Tolfdir",
+      "conditions": "College Curriculum hasn't started; hasn't the spell Waterbreathing; the speaker is the one in alias Tolfdir",
       "source": "Cow_GiveBookSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000822 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      }
@@ -4166,23 +4556,6 @@
      "speakerPlaced": [
       "Hall of Countenance, Dormitory"
      ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0009B1",
-     "prompt": "Understood. I won't scare the locals.",
-     "reply": [
-      "Good. Here, take this. It's simple, but it deserves proper respect and study."
-     ],
-     "conditions": "the speaker is the one in alias Phinis",
-     "source": "Cow_ConjuBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B1 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Phinis Gestor",
-     "speakerNamed": "alias Phinis of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
      "call": "SetStage 5",
      "info": "College Of Winterhold - Quest Expansion.esp:0009B1",
      "prompt": "Understood. I won't scare the locals.",
@@ -4191,40 +4564,6 @@
      ],
      "conditions": "the speaker is the one in alias Phinis",
      "source": "Cow_ConjuBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B1 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Phinis Gestor",
-     "speakerNamed": "alias Phinis of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0009B3",
-     "prompt": "Of course. I know some conjuration spells already.",
-     "reply": [
-      "Oh, really? Good! Follow me, I think it's time to test your knowledge against mine. Exciting, isn't it?"
-     ],
-     "conditions": "the speaker is the one in alias Phinis; fn264 == 1",
-     "source": "Cow_CentralConjuFollow.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B3 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Phinis Gestor",
-     "speakerNamed": "alias Phinis of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0009B5",
-     "prompt": "Actually, I'm not interested. (Skip Quest)",
-     "reply": [
-      "Oh, I do not approve at all."
-     ],
-     "conditions": "the speaker is the one in alias Phinis",
-     "source": "Cow_ConjurationSkip.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B5 (College Of Winterhold - Quest Expansion.esp)",
      "verdict": "script"
     }
    ],
@@ -4235,6 +4574,12 @@
     "index": 5,
     "source": "College Of Winterhold - Quest Expansion.esp:00086F QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "15": 15,
+    "20": 20
    },
    "target": [
     {
@@ -4289,7 +4634,7 @@
       "reply": [
        "Oh, really? Good! Follow me, I think it's time to test your knowledge against mine. Exciting, isn't it?"
       ],
-      "conditions": "the speaker is the one in alias Phinis; fn264 == 1",
+      "conditions": "the speaker is the one in alias Phinis; has the spell Conjure Spirit Wolf",
       "source": "Cow_CentralConjuFollow.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B3 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      },
@@ -4328,24 +4673,6 @@
      "speakerPlaced": [
       "Hall of Countenance, Dormitory"
      ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000897",
-     "prompt": "I'm not familiar with that spell, I'm afraid.",
-     "reply": [
-      "Oh, I see. Well, in that case... Here, take this.",
-      "I suggest you learn more on your own. Come back once you've attained some measure of success."
-     ],
-     "conditions": "fn264 == 0; the speaker is the one in alias Faralda",
-     "source": "Cow_Destruction_SpellBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000897 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Faralda",
-     "speakerNamed": "alias Faralda of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
      "call": "SetStage 5",
      "info": "College Of Winterhold - Quest Expansion.esp:000897",
      "prompt": "I'm not familiar with that spell, I'm afraid.",
@@ -4353,43 +4680,8 @@
       "Oh, I see. Well, in that case... Here, take this.",
       "I suggest you learn more on your own. Come back once you've attained some measure of success."
      ],
-     "conditions": "fn264 == 0; the speaker is the one in alias Faralda",
+     "conditions": "hasn't the spell Firebolt; the speaker is the one in alias Faralda",
      "source": "Cow_Destruction_SpellBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000897 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Faralda",
-     "speakerNamed": "alias Faralda of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000899",
-     "prompt": "I'm familiar with the firebolt spell.",
-     "reply": [
-      "Oh, I see. Well... A small test, if you will.",
-      "Here, I'll mark the location on your map. Good luck."
-     ],
-     "conditions": "fn264 == 1; the speaker is the one in alias Faralda",
-     "source": "Destruction_SkipBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000899 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Faralda",
-     "speakerNamed": "alias Faralda of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0009EC",
-     "prompt": "Actually, I've changed my mind. I don't want to learn from you. (Skip Quest)",
-     "reply": [
-      "No? Very well. It's your choice. Hmph. Good luck."
-     ],
-     "conditions": "the speaker is the one in alias Faralda",
-     "source": "Cow_Faralda_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EC (College Of Winterhold - Quest Expansion.esp)",
      "verdict": "script"
     }
    ],
@@ -4400,6 +4692,11 @@
     "index": 5,
     "source": "College Of Winterhold - Quest Expansion.esp:000873 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "15": 15
    },
    "target": [
     {
@@ -4455,7 +4752,7 @@
        "Oh, I see. Well... A small test, if you will.",
        "Here, I'll mark the location on your map. Good luck."
       ],
-      "conditions": "fn264 == 1; the speaker is the one in alias Faralda",
+      "conditions": "has the spell Firebolt; the speaker is the one in alias Faralda",
       "source": "Destruction_SkipBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000899 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      },
@@ -4473,7 +4770,7 @@
        "Ah, good. So... A small test, if you will.",
        "Here, I'll mark the location on your map. Good luck."
       ],
-      "conditions": "fn264 == 1; A Test of Ice and Fire stage == 5; the speaker is the one in alias Faralda",
+      "conditions": "has the spell Firebolt; A Test of Ice and Fire stage == 5; the speaker is the one in alias Faralda",
       "source": "Cow_Destruction_BookLearned.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008A1 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      }
@@ -4487,41 +4784,6 @@
    "plugin": "College Of Winterhold - Quest Expansion.esp",
    "firstObjectiveStage": 10,
    "startedBy": [
-    {
-     "by": "dialogue",
-     "speaker": "Sergius Turrianus",
-     "speakerNamed": "alias Sergius of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000903",
-     "prompt": "Perhaps I can help?",
-     "reply": [
-      "No. But maybe... Hmm oh yes, good.",
-      "You've come to the right place. I'll be happy to teach you!"
-     ],
-     "conditions": "the speaker is the one in alias Sergius",
-     "source": "Cow_StartEnchantment.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000903 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Sergius Turrianus",
-     "speakerNamed": "alias Sergius of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000905",
-     "prompt": "I don't like your attitude. Good luck with that. (Skip Quest)",
-     "reply": [
-      "Hm. Finally. Good. Leave me alone. Can't an old man have some peace?"
-     ],
-     "conditions": "the speaker is the one in alias Sergius",
-     "source": "Cow_Sergius_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000905 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
     {
      "by": "dialogue",
      "speaker": "Sergius Turrianus",
@@ -4562,12 +4824,27 @@
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 11,
+   "advancedBy": 12,
    "firstObjective": {
     "text": "Find an Arcane Enchanter",
     "index": 10,
     "source": "College Of Winterhold - Quest Expansion.esp:000871 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+    "32": 32,
+    "35": 35,
+    "40": 40,
+    "43": 43,
+    "45": 45,
+    "50": 50,
+    "55": 55,
+    "60": 60
    },
    "target": [],
    "needs": {
@@ -4612,67 +4889,14 @@
      "speakerPlaced": [
       "Hall of Countenance, Dormitory"
      ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0008E7",
-     "prompt": "Yes. Sounds very useful indeed. Can you teach me an Illusion spell then?",
-     "reply": [
-      "Oh, I see. Yes, here. This is for you. Read carefully, alright?"
-     ],
-     "conditions": "fn264 == 0; the speaker is the one in alias Drevis",
-     "source": "Cow_IllusionTome.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E7 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Drevis Neloren",
-     "speakerNamed": "alias Drevis of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
      "call": "SetStage 10",
      "info": "College Of Winterhold - Quest Expansion.esp:0008E7",
      "prompt": "Yes. Sounds very useful indeed. Can you teach me an Illusion spell then?",
      "reply": [
       "Oh, I see. Yes, here. This is for you. Read carefully, alright?"
      ],
-     "conditions": "fn264 == 0; the speaker is the one in alias Drevis",
+     "conditions": "hasn't the spell Fury; the speaker is the one in alias Drevis",
      "source": "Cow_IllusionTome.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E7 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Drevis Neloren",
-     "speakerNamed": "alias Drevis of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0008E9",
-     "prompt": "Yes. I'm somewhat familiar with Illusion. I know some spells myself.",
-     "reply": [
-      "Oh, I see... Wonderful! Let's see what you can do.",
-      "Did you hear all that noise outside? Skeevers! Urgh, disgusting. Your assistance would be most useful.",
-      "Clear the filthy Skeever den. With magic at your side, you'll have nothing to fear."
-     ],
-     "conditions": "fn264 == 1; the speaker is the one in alias Drevis",
-     "source": "Cow_Skeevers.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E9 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Drevis Neloren",
-     "speakerNamed": "alias Drevis of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0009EE",
-     "prompt": "Actually, I've changed my mind. I don't want to learn from you. (Skip Quest)",
-     "reply": [
-      "Really? That's too bad. Ahh... You know what, never mind. Goodbye."
-     ],
-     "conditions": "the speaker is the one in alias Drevis",
-     "source": "Cow_Drevis_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EE (College Of Winterhold - Quest Expansion.esp)",
      "verdict": "script"
     }
    ],
@@ -4683,6 +4907,11 @@
     "index": 10,
     "source": "College Of Winterhold - Quest Expansion.esp:000872 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20
    },
    "target": [
     {
@@ -4739,7 +4968,7 @@
        "Did you hear all that noise outside? Skeevers! Urgh, disgusting. Your assistance would be most useful.",
        "Clear the filthy Skeever den. With magic at your side, you'll have nothing to fear."
       ],
-      "conditions": "fn264 == 1; the speaker is the one in alias Drevis",
+      "conditions": "has the spell Fury; the speaker is the one in alias Drevis",
       "source": "Cow_Skeevers.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E9 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      },
@@ -4779,24 +5008,6 @@
      "speakerPlaced": [
       "The Arcanaeum"
      ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0008B2",
-     "prompt": "I see. Anything interesting I should read?",
-     "reply": [
-      "Well, well. That's what I was hoping you'd say.",
-      "Here, take this. Check it out. But be careful, alright?!"
-     ],
-     "conditions": "the speaker is the one in alias Urag",
-     "source": "Cow_UragGivesBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008B2 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Urag gro-Shub",
-     "speakerNamed": "alias Urag of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "The Arcanaeum"
-     ],
      "call": "SetStage 10",
      "info": "College Of Winterhold - Quest Expansion.esp:0008B2",
      "prompt": "I see. Anything interesting I should read?",
@@ -4807,23 +5018,6 @@
      "conditions": "the speaker is the one in alias Urag",
      "source": "Cow_UragGivesBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008B2 (College Of Winterhold - Quest Expansion.esp)",
      "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Urag gro-Shub",
-     "speakerNamed": "alias Urag of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "The Arcanaeum"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0008D2",
-     "prompt": "Sounds like a waste of time. (Skip Quest)",
-     "reply": [
-      "So, you don't need anything then. Good. Get out of my sight."
-     ],
-     "conditions": "the speaker is the one in alias Urag",
-     "source": "Cow_Urag_RefuseBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008D2 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
     }
    ],
    "caughtUpBy": [],
@@ -4833,6 +5027,10 @@
     "index": 10,
     "source": "College Of Winterhold - Quest Expansion.esp:000870 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15
    },
    "target": [
     {
@@ -5027,24 +5225,6 @@
      "speakerPlaced": [
       "Hall of Countenance, Dormitory"
      ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000882",
-     "prompt": "Yes, I've fought plenty of draugr. That spell sounds useful though.",
-     "reply": [
-      "Oh, I see... Hmm... Fine! Here, this for you, then. Take it! ",
-      "Just be sure to put it to good use."
-     ],
-     "conditions": "the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0",
-     "source": "Cow_RestoGiveSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000882 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Colette Marence",
-     "speakerNamed": "alias Colette of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
      "call": "SetStage 5",
      "info": "College Of Winterhold - Quest Expansion.esp:000882",
      "prompt": "Yes, I've fought plenty of draugr. That spell sounds useful though.",
@@ -5052,45 +5232,8 @@
       "Oh, I see... Hmm... Fine! Here, this for you, then. Take it! ",
       "Just be sure to put it to good use."
      ],
-     "conditions": "the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0",
+     "conditions": "the speaker is the one in alias Colette; hasn't the spell Turn Lesser Undead; hasn't the spell Turn Greater Undead; hasn't the spell Repel Lesser Undead; hasn't the spell Turn Undead",
      "source": "Cow_RestoGiveSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000882 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Colette Marence",
-     "speakerNamed": "alias Colette of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:00087F",
-     "prompt": "I have. I know a spell that should work against them too.",
-     "reply": [
-      "Ah, good! You should give it a try, right?",
-      "Talk to Tolfdir, yes. He was here, but he left. Mentioned something about needing help.",
-      "Okay... Well, that's all I've got. Bye now!"
-     ],
-     "conditions": "the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1",
-     "source": "Cow_Resto_NoBook2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00087F (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Colette Marence",
-     "speakerNamed": "alias Colette of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000880",
-     "prompt": "I haven't. I don't know any restoration spells to fight them off either.",
-     "reply": [
-      "Oh, I see... Hmm... Fine! Here, this for you, then. Take it! ",
-      "Just be sure to put it to good use."
-     ],
-     "conditions": "the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0",
-     "source": "Restoration_LearnSpell1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000880 (College Of Winterhold - Quest Expansion.esp)",
      "verdict": "script"
     },
     {
@@ -5107,45 +5250,8 @@
       "Oh, I see... Hmm... Fine! Here, this for you, then. Take it! ",
       "Just be sure to put it to good use."
      ],
-     "conditions": "the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0",
+     "conditions": "the speaker is the one in alias Colette; hasn't the spell Turn Lesser Undead; hasn't the spell Turn Greater Undead; hasn't the spell Repel Lesser Undead; hasn't the spell Turn Undead",
      "source": "Restoration_LearnSpell1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000880 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Colette Marence",
-     "speakerNamed": "alias Colette of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:000881",
-     "prompt": "No, but I know a restoration spell that should keep them off me.",
-     "reply": [
-      "Ah, good! You should give it a try, right?",
-      "Talk to Tolfdir, yes. He was here, but he left. Mentioned something about needing help.",
-      "Okay... Well, that's all I've got. Bye now!"
-     ],
-     "conditions": "the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1",
-     "source": "Cow_Resto_NoBook1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000881 (College Of Winterhold - Quest Expansion.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Colette Marence",
-     "speakerNamed": "alias Colette of COW_CentralQuest (College Curriculum) (unique)",
-     "speakerPlaced": [
-      "Hall of Countenance, Dormitory"
-     ],
-     "call": "Start",
-     "info": "College Of Winterhold - Quest Expansion.esp:0009EA",
-     "prompt": "Actually, I've changed my mind. I'm not interested in Restoration. (Skip Quest)",
-     "reply": [
-      "Oh, really? Waste of time, then. Simply barbaric.",
-      "Now the whole thing's over and done with, so let's stop talking about it, hmm?"
-     ],
-     "conditions": "the speaker is the one in alias Colette",
-     "source": "Cow_RestorationRefuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EA (College Of Winterhold - Quest Expansion.esp)",
      "verdict": "script"
     }
    ],
@@ -5156,6 +5262,12 @@
     "index": 5,
     "source": "College Of Winterhold - Quest Expansion.esp:00086E QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "15": 15,
+    "20": 20
    },
    "target": [
     {
@@ -5212,7 +5324,7 @@
        "Talk to Tolfdir, yes. He was here, but he left. Mentioned something about needing help.",
        "Okay... Well, that's all I've got. Bye now!"
       ],
-      "conditions": "the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1",
+      "conditions": "the speaker is the one in alias Colette; has the spell Turn Lesser Undead or has the spell Turn Greater Undead or has the spell Repel Lesser Undead or has the spell Turn Undead",
       "source": "Cow_Resto_NoBook2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00087F (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      },
@@ -5231,7 +5343,7 @@
        "Talk to Tolfdir, yes. He was here, but he left. Mentioned something about needing help.",
        "Okay... Well, that's all I've got. Bye now!"
       ],
-      "conditions": "the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1",
+      "conditions": "the speaker is the one in alias Colette; has the spell Turn Lesser Undead or has the spell Turn Greater Undead or has the spell Repel Lesser Undead or has the spell Turn Undead",
       "source": "Cow_Resto_NoBook1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000881 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      },
@@ -5250,7 +5362,7 @@
        "Talk to Tolfdir, yes. He was here, but he left. Mentioned something about needing help.",
        "Okay, well... that's all I've got. Bye now!"
       ],
-      "conditions": "the speaker is the one in alias Colette; None Escape The Light stage == 5; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1",
+      "conditions": "the speaker is the one in alias Colette; None Escape The Light stage == 5; has the spell Turn Lesser Undead or has the spell Turn Greater Undead or has the spell Repel Lesser Undead or has the spell Turn Undead",
       "source": "Cow_Resto_TalkToTolfdir.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000885 (College Of Winterhold - Quest Expansion.esp)",
       "verdict": "script"
      }
@@ -5272,6 +5384,38 @@
      "call": "Start",
      "source": "MG01QuestScript.StartPointer on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE005_MainQuest, a helper quest with lars",
+     "questId": "ccbgssse005-goldbrand.esl:000838",
+     "atStage": 450,
+     "call": "Start",
+     "source": "QF_ccBGSSSE005_MainQuest_02000838.fragment_18 on ccbgssse005-goldbrand.esl:000838 (ccbgssse005-goldbrand.esl), through MG01 (First Lessons)'s startpointer",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "ccbgssse005-goldbrand.esl:000838 DNAM (ccbgssse005-goldbrand.esl)",
+       "verdict": "files"
+      }
+     ]
+    },
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE005_MainQuest, a helper quest with lars",
+     "questId": "ccbgssse005-goldbrand.esl:000838",
+     "atStage": 450,
+     "call": "Start",
+     "source": "QF_ccBGSSSE005_MainQuest_02000838.fragment_31 on ccbgssse005-goldbrand.esl:000838 (ccbgssse005-goldbrand.esl), through MG01 (First Lessons)'s startpointer",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "ccbgssse005-goldbrand.esl:000838 DNAM (ccbgssse005-goldbrand.esl)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -5743,7 +5887,7 @@
      "reply": [
       "I think I have a few old spell books laying about. If you want more, you'll have to go to the College of Winterhold."
      ],
-     "conditions": "the speaker is Lucan Valerius; fn359 == 1",
+     "conditions": "the speaker is Lucan Valerius; you're in Lucan's Dry Goods",
      "source": "TIF__000BB962.Fragment_0 on INFO Skyrim.esm:0BB962 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -5756,6 +5900,7 @@
     "source": "Skyrim.esm:054D0A QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "Nirya",
@@ -5849,6 +5994,9 @@
     "index": 10,
     "source": "Skyrim.esm:0266F1 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -5945,6 +6093,10 @@
     "source": "Skyrim.esm:0266F2 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "FocusPoint1",
@@ -6028,11 +6180,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "MGR02 (Out of Balance)",
-      "questId": "Skyrim.esm:0266F2",
-      "atStage": null,
+      "by": "by itself",
+      "script": "MGR02QuestScript",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "MGR02QuestScript.FocusPointActivate on Skyrim.esm:0266F2 (Unofficial Skyrim Special Edition Patch.esp)",
       "verdict": "script"
      },
@@ -6094,6 +6245,10 @@
     "index": 10,
     "source": "Skyrim.esm:028A13 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -6313,6 +6468,7 @@
    "caughtUpBy": [],
    "advancedBy": 6,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -6354,6 +6510,9 @@
     "index": 10,
     "source": "Skyrim.esm:028A1E QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -6432,6 +6591,10 @@
     "index": 10,
     "source": "Skyrim.esm:028A24 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -6521,6 +6684,10 @@
     "index": 10,
     "source": "Skyrim.esm:0BC096 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -6723,9 +6890,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Faralda",
+     "speakerNamed": "the one follower in aaFaralda's aliases",
+     "speakerPlaced": [
+      "Hall of Countenance, Dormitory"
+     ],
      "call": "SetStage 1",
      "info": "FDE Faralda.esp:000860",
      "prompt": "Yes, Professor.",
@@ -6745,6 +6914,7 @@
     "source": "Skyrim.esm:05D2E9 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "Nirya",
@@ -8072,7 +8242,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -8165,7 +8335,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -8258,7 +8428,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -8351,7 +8521,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -8444,7 +8614,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -8537,7 +8707,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -8630,7 +8800,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -8723,7 +8893,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -8816,7 +8986,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -8910,261 +9080,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

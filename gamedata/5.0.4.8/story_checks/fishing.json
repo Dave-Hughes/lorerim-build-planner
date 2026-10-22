@@ -11,9 +11,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Viriya",
+     "speakerNamed": "the one follower in ccBGSSSE001_Crab_MQ1 (In A Pinch)'s aliases",
+     "speakerPlaced": [
+      "Riften Fishery"
+     ],
      "call": "SetStage 10",
      "info": "ccBGSSSE001-Fish.esm:000E7B",
      "prompt": "What's wrong?",
@@ -37,6 +39,10 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009D4 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "1000": 10,
+    "1001": 15
    },
    "target": [
     {
@@ -93,9 +99,11 @@
      "throughStartedBy": [
       {
        "by": "dialogue",
-       "speaker": null,
-       "speakerNamed": "GetIsID",
-       "speakerPlaced": [],
+       "speaker": "Viriya",
+       "speakerNamed": "the one follower in ccBGSSSE001_MiscQuests (Miscellaneous Quests Handler)'s aliases",
+       "speakerPlaced": [
+        "Riften Fishery"
+       ],
        "call": "Start",
        "info": "ccBGSSSE001-Fish.esm:0009BC",
        "prompt": null,
@@ -108,9 +116,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Viriya",
+     "speakerNamed": "the one follower in ccBGSSSE001_Crab_MQ2 (Crustacean Extermination)'s aliases",
+     "speakerPlaced": [
+      "Riften Fishery"
+     ],
      "call": "SetStage 5",
      "info": "ccBGSSSE001-Fish.esm:000AD5",
      "prompt": null,
@@ -129,6 +139,14 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009DA QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 5,
+    "5": 10,
+    "10": 20,
+    "20": 30,
+    "25": 38,
+    "50": 50
    },
    "target": [],
    "needs": {
@@ -197,6 +215,11 @@
     "source": "ccBGSSSE001-Fish.esm:0009D6 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "30": 40,
+    "40": 55
+   },
    "target": [],
    "needs": {
     "conditions": "the speaker is the one in alias 1",
@@ -238,6 +261,17 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009E9 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 50,
+    "10": 100,
+    "15": 200,
+    "18": 225,
+    "20": 235,
+    "25": 210,
+    "40": 300,
+    "50": 500,
+    "100": 600
    },
    "target": [],
    "needs": {
@@ -312,6 +346,10 @@
     "source": "ccBGSSSE001-Fish.esm:0009DE QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "75": 20,
+    "100": 10
+   },
    "target": [],
    "needs": {
     "conditions": "the speaker is the one in alias 0; Angler Acquaintances stage >= 5",
@@ -346,7 +384,22 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_ccBGSSSE001_Fish_MQ1_050009DE.fragment_3 on ccBGSSSE001-Fish.esm:0009DE (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "ccBGSSSE001-Fish.esm:0009A7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Catch of the Day stage == 20 or Catch of the Day stage == 21; GetItemCount Raw Pogfish >= 1; GetItemCount Raw Carp >= 1; GetItemCount Goldfish >= 1; GetItemCount Glassfish >= 1",
+       "source": "ccBGSSSE001_TIF__050009A7.Fragment_1 on INFO ccBGSSSE001-Fish.esm:0009A7 (Simple Fishing Overhaul.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -371,6 +424,11 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009EB QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "75": 20,
+    "100": 10
    },
    "target": [],
    "needs": {
@@ -406,7 +464,35 @@
      "atStage": 300,
      "call": "Start",
      "source": "QF_ccBGSSSE001_Fish_MQ2_050009EB.fragment_8 on ccBGSSSE001-Fish.esm:0009EB (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 300",
+       "info": "ccBGSSSE001-Fish.esm:02E938",
+       "prompt": null,
+       "reply": [],
+       "conditions": "",
+       "source": "ccBGSSSE001_TIF__0502E938.Fragment_1 on INFO ccBGSSSE001-Fish.esm:02E938 (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 300",
+       "info": "ccBGSSSE001-Fish.esm:0C6E11",
+       "prompt": null,
+       "reply": [],
+       "conditions": "",
+       "source": "ccBGSSSE001_TIF__050C6E11.Fragment_1 on INFO ccBGSSSE001-Fish.esm:0C6E11 (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -416,6 +502,12 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009E8 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "4": 4,
+    "6": 6,
+    "75": 20,
+    "100": 10
    },
    "target": [],
    "needs": {
@@ -451,7 +543,22 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_ccBGSSSE001_Fish_MQ3_050009E8.fragment_4 on ccBGSSSE001-Fish.esm:0009E8 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "ccBGSSSE001-Fish.esm:000EA4",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Frozen Fish stage 20 done; GetItemCount Angler Larvae >= 1; GetItemCount Raw Arctic Grayling >= 1; GetItemCount Raw Arctic Char >= 1; GetItemCount Raw Cod >= 1; Frozen Fish stage 200 not done",
+       "source": "ccBGSSSE001_TIF__05000EA4.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000EA4 (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -476,6 +583,10 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009DD QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "75": 20,
+    "100": 10
    },
    "target": [],
    "needs": {
@@ -511,7 +622,22 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_ccBGSSSE001_Fish_MQ4_050009DD.fragment_3 on ccBGSSSE001-Fish.esm:0009DD (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "ccBGSSSE001-Fish.esm:000EAC",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Darkest Depths stage 20 done; Darkest Depths stage 200 not done; GetItemCount Raw Glass Catfish >= 1; GetItemCount Raw Direfish >= 1; GetItemCount Raw Tripod Spiderfish >= 1; GetItemCount Raw Vampire Fish >= 1",
+       "source": "ccBGSSSE001_TIF__05000EAC.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000EAC (Simple Fishing Overhaul.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -536,6 +662,10 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009DC QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "75": 20,
+    "100": 10
    },
    "target": [],
    "needs": {
@@ -571,6 +701,16 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:000AD6 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 5,
+    "15": 10,
+    "18": 20,
+    "20": 30,
+    "25": 40,
+    "30": 90,
+    "50": 100
    },
    "target": [
     {
@@ -631,6 +771,14 @@
     "source": "ccBGSSSE001-Fish.esm:0009EC QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 70,
+    "61": 45
+   },
    "target": [],
    "needs": {
     "conditions": "the speaker is the one in alias 0 or the speaker is the one in alias 7",
@@ -679,6 +827,11 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009E2 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 20,
+    "200": 50
    },
    "target": [
     {
@@ -739,6 +892,12 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009DF QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 25,
+    "40": 40
    },
    "target": [
     {
@@ -821,6 +980,15 @@
     "source": "ccBGSSSE001-Fish.esm:0009E4 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "15": 32,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
+   },
    "target": [
     {
      "alias": "OldMan",
@@ -895,6 +1063,11 @@
     "source": "ccBGSSSE001-Fish.esm:0009E3 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "29": 20,
+    "30": 35,
+    "40": 40
+   },
    "target": [],
    "needs": {
     "conditions": "the speaker is the one in alias 1",
@@ -930,6 +1103,9 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:000E5D QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "30": 20
    },
    "target": [
     {
@@ -989,7 +1165,22 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_ccBGSSSE001_Misc_Whiterun_05000E5D.fragment_5 on ccBGSSSE001-Fish.esm:000E5D (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "ccBGSSSE001-Fish.esm:000E72",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Heart of Gold stage == 40",
+       "source": "ccBGSSSE001_TIF__05000E72.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000E72 (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -999,6 +1190,12 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009D7 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "30": 20,
+    "40": 60,
+    "50": 70,
+    "1000": 5
    },
    "target": [
     {
@@ -1061,9 +1258,11 @@
      "throughStartedBy": [
       {
        "by": "dialogue",
-       "speaker": null,
-       "speakerNamed": "GetIsID",
-       "speakerPlaced": [],
+       "speaker": "Viriya",
+       "speakerNamed": "the one follower in ccBGSSSE001_MiscQuests (Miscellaneous Quests Handler)'s aliases",
+       "speakerPlaced": [
+        "Riften Fishery"
+       ],
        "call": "Start",
        "info": "ccBGSSSE001-Fish.esm:0009BC",
        "prompt": null,
@@ -1085,9 +1284,11 @@
      "throughStartedBy": [
       {
        "by": "dialogue",
-       "speaker": null,
-       "speakerNamed": "GetIsID",
-       "speakerPlaced": [],
+       "speaker": "Viriya",
+       "speakerNamed": "the one follower in ccBGSSSE001_MiscQuests (Miscellaneous Quests Handler)'s aliases",
+       "speakerPlaced": [
+        "Riften Fishery"
+       ],
        "call": "Start",
        "info": "ccBGSSSE001-Fish.esm:0009BC",
        "prompt": null,
@@ -1106,6 +1307,11 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009D5 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "40": 50,
+    "50": 60,
+    "80": 70
    },
    "target": [],
    "needs": {
@@ -1158,6 +1364,7 @@
     "source": "ccBGSSSE001-Fish.esm:000B98 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "Innkeeper",
@@ -1216,6 +1423,7 @@
     "source": "ccBGSSSE001-Fish.esm:000C2F QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "Alchemist",
@@ -1274,6 +1482,7 @@
     "source": "ccBGSSSE001-Fish.esm:000C8C QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "FishingSpot",
@@ -1315,6 +1524,12 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009D3 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 10,
+    "5": 15,
+    "10": 15,
+    "20": 30
    },
    "target": [
     {
@@ -1512,7 +1727,8 @@
      "atStage": 50,
      "call": "Start",
      "source": "QF_ccBGSSSE001_Start_MQ1_050009D3.fragment_5 on ccBGSSSE001-Fish.esm:0009D3 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -1522,6 +1738,11 @@
     "index": 0,
     "source": "ccBGSSSE001-Fish.esm:0009DB QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 5,
+    "20": 5
    },
    "target": [
     {
@@ -2699,15 +2920,17 @@
    ]
   }
  ],
- "otherStarts": "To get into Fishing: talk to a marker in Skyrim: In A Pinch is running from the start (Obtain a juvenile mudcrab for Viriya); or Catch of the Day is running from the start: Obtain a carp.",
+ "otherStarts": "To get into Fishing: talk to a marker in Skyrim: In A Pinch is running from the start (Obtain a juvenile mudcrab for Viriya); or Catch of the Day is running from the start: Obtain a carp; or ask Viriya in Riften Fishery \"What's wrong?\" (), which starts In A Pinch.",
  "routes": [
   {
    "route": "dialogue INFO ccBGSSSE001-Fish.esm:000E7B",
    "kind": "dialogue",
-   "speaker": null,
-   "speakerNamed": "GetIsID",
-   "race": null,
-   "placed": [],
+   "speaker": "Viriya",
+   "speakerNamed": "the one follower in ccBGSSSE001_Crab_MQ1 (In A Pinch)'s aliases",
+   "race": "Redguard",
+   "placed": [
+    "Riften Fishery"
+   ],
    "prompt": "What's wrong?",
    "reply": [
     "Listen, if you want to help... Here, take a look. Don't ask. Just take it. Maybe you can figure it out."
@@ -2715,8 +2938,7 @@
    "conditions": "",
    "does": "SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch)",
    "source": "ccBGSSSE001_TIF__05000E7B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E7B (Simple Fishing Overhaul.esp); topic ccBGSSSE001_Crab_MQ1_PreStartTopic",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"What's wrong?\": SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch).",
-   "stops": "the speaker isn't named by an NPC: GetIsID"
+   "sentence": "Talk to Viriya (Redguard) in Riften Fishery and choose \"What's wrong?\": SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch)."
   }
  ],
  "loaders": {
@@ -2866,7 +3088,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -2959,7 +3181,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -3052,7 +3274,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -3145,7 +3367,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -3238,7 +3460,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -3331,7 +3553,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -3424,7 +3646,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -3517,7 +3739,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -3610,7 +3832,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {

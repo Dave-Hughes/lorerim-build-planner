@@ -667,7 +667,10 @@ def classify_starts(qid, order, events, threshold, here=None):
         own = ctx["kind"] in ("quest", "alias") and caller == qid and ev.get("via") in (None, qid)
         # Its own scripts move it along, except a quest script outside its stage fragments that starts it: LoreRim's
         # ccStartAfterChargenScript sets a Creation Club quest's first stage once you're the level it asks (WO-121b).
-        if own and not (ctx["kind"] == "quest" and ctx.get("fragment") is False and (ev["call"] == "Start" or (ev.get("stage") is not None and ev["stage"] <= threshold))):
+        # Only from an event the game sends it (OnInit, OnUpdate): a plain function another script calls (Alternate
+        # Perspective's APMQ101.prepareIntro, from Matlara's talk) isn't the quest starting by itself (the night run).
+        by_itself = ctx["kind"] == "quest" and ctx.get("fragment") is False and (ev.get("function") or "").lower().startswith("on")
+        if own and not (by_itself and (ev["call"] == "Start" or (ev.get("stage") is not None and ev["stage"] <= threshold))):
             continue
         row = (ctx, ev)
         if caller in order and order[caller] > here and caller != qid:
@@ -1167,7 +1170,7 @@ def main():
     # The rumours a giver's line needs (rule 4): the talks that set the rumour quest's stage, so their speakers are placed too.
     for iid in list(route_infos):
         for c in (iv[iid][-1][1]["conditions"] if iv.get(iid) else []):
-            if c["fn"] == "GetVMQuestVariable" and c.get("var") and isinstance(c.get("param"), str):
+            if c["fn"] == "GetVMQuestVariable" and c.get("var") and isinstance(c.get("param"), str) and c["cmp"] == "==" and c.get("value") == 1:
                 for qid, st in var_setters(c["var"], c["param"]):
                     route_infos |= {x["info"] for x, e in events if e.get("quest") == qid and x["kind"] == "dialogue" and e["call"] == "SetStage" and e.get("stage") == st}
     for iid in route_infos:
@@ -1509,7 +1512,7 @@ def main():
         that quest. Each with what starts it, as starter rows."""
         out = []
         for c in talk_conditions({"info": info}):
-            if c["fn"] != "GetVMQuestVariable" or not c.get("var") or not isinstance(c.get("param"), str):
+            if c["fn"] != "GetVMQuestVariable" or not c.get("var") or not isinstance(c.get("param"), str) or c["cmp"] != "==" or c.get("value") != 1:
                 continue
             for qid, st in var_setters(c["var"], c["param"]):
                 up = [starter_row(x, e, 1) for x, e in classify_starts(qid, order, events, st or 0)["started"] if x["kind"] == "dialogue" or x.get("quest") != qid][:4]

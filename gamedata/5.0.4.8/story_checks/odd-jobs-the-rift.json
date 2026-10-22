@@ -24,6 +24,12 @@
     "source": "Skyrim.esm:053305 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
+   },
    "target": [
     {
      "alias": "FFRiften01LailaJarlAlias",
@@ -168,6 +174,11 @@
     "source": "Skyrim.esm:053306 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30,
+    "30": 30
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -244,7 +255,7 @@
      "reply": [
       "Good. Now get going."
      ],
-     "conditions": "the speaker is Romlyn Dreth; Under the Table stage == 10; fn1 >= ANDR_DialogueDistanceCheck_RomlynIndaryn (now 2048)",
+     "conditions": "the speaker is Romlyn Dreth; Under the Table stage == 10; GetDistance Skyrim.esm:019DCE >= ANDR_DialogueDistanceCheck_RomlynIndaryn (now 2048)",
      "source": "TIF__00041E0E.Fragment_0 on INFO Skyrim.esm:041E0E (NGCDT - Distance Checks.esp)",
      "verdict": "script"
     },
@@ -261,6 +272,10 @@
     "index": 10,
     "source": "Skyrim.esm:053307 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 20
    },
    "target": [
     {
@@ -343,6 +358,12 @@
     "source": "Skyrim.esm:053308 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "20": 20,
+    "30": 20,
+    "40": 60
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -412,6 +433,10 @@
     "index": 10,
     "source": "Skyrim.esm:053309 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [],
    "needs": {
@@ -590,6 +615,7 @@
     "source": "Skyrim.esm:053318 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -638,6 +664,7 @@
     "source": "Skyrim.esm:05331A QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -678,7 +705,7 @@
      "reply": [
       "Thank you."
      ],
-     "conditions": "the speaker is Brand-Shei; Distant Memories stage == 10; fn629 == 1; GetItemCount Journal - Lymdrenn Telvanni's == 0",
+     "conditions": "the speaker is Brand-Shei; Distant Memories stage == 10; Riften Dialogue's pDia05 == 1; GetItemCount Journal - Lymdrenn Telvanni's == 0",
      "source": "TIF__000E82B7.Fragment_0 on INFO Skyrim.esm:0E82B7 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -695,6 +722,10 @@
     "index": 10,
     "source": "Skyrim.esm:05331B QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -764,7 +795,7 @@
       "But I see that spark in your eye and I know better than to warn you away.",
       "Grimsever rests within the Dwemer ruin of Mzinchaleft. Tread carefully, friend... those same ruins almost took my life."
      ],
-     "conditions": "the speaker is Mjoll the Lioness; Grimsever's Return stage == 10; fn629 == 1",
+     "conditions": "the speaker is Mjoll the Lioness; Grimsever's Return stage == 10; Riften Dialogue's pDia16 == 1",
      "source": "TIF__00045311.Fragment_0 on INFO Skyrim.esm:045311 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -788,6 +819,10 @@
     "index": 10,
     "source": "Skyrim.esm:05331C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -881,6 +916,7 @@
     "source": "Skyrim.esm:05331D QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -930,7 +966,7 @@
       "You need to get the Marks of Dibella from Bolli, Hofgrir and Indaryn. Not sure how you're going to do that, but try your best.",
       "Then just confront Haelga with them and the rest works itself out."
      ],
-     "conditions": "the speaker is Svana Far-Shield; Caught Red Handed stage == 10; fn629 == 1; fn230 == 0",
+     "conditions": "the speaker is Svana Far-Shield; Caught Red Handed stage == 10; Riften Dialogue's pDia20 == 1; fn230 == 0",
      "source": "TIF__00041E0C.Fragment_0 on INFO Skyrim.esm:041E0C (NGCDT - Distance Checks.esp)",
      "verdict": "script"
     },
@@ -947,7 +983,7 @@
      "reply": [
       "Ha ha ha! Fine. Now, please, take this small token of my appreciation. I'll see you around, handsome."
      ],
-     "conditions": "fn70 == 1; the speaker is Haelga",
+     "conditions": "the speaker is male; the speaker is Haelga",
      "source": "Haelga_Stage12_Male.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:00081D (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -964,7 +1000,7 @@
      "reply": [
       "Ha ha ha! Fine. Now, please, take this small token of my appreciation. I'll see you around, pretty one."
      ],
-     "conditions": "fn70 == 1; the speaker is Haelga",
+     "conditions": "the speaker is female; the speaker is Haelga",
      "source": "Haelga_Stage12_Female.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:00081E (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -982,7 +1018,7 @@
       "Oh, yes please! You are pleasant company. More than pleasant. I think I can be of service.",
       "So, I have plenty of room in my bed. Meet me there, handsome."
      ],
-     "conditions": "Taking Care of Business stage 45 not done; fn70 == 1; the speaker is Haelga; GetActorValue >= 40 or fn182 == 1 or fn264 == 1",
+     "conditions": "Taking Care of Business stage 45 not done; the speaker is male; the speaker is Haelga; GetActorValue >= 40 or GetEquipped Amulet of Dibella == 1 or has the spell Agent of Dibella",
      "source": "CRH_MaleSleepFirst.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000820 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -1000,7 +1036,7 @@
       "Oh, yes please! You are pleasant company. More than pleasant. I think I can be of service.",
       "So, I have plenty of room in my bed. Meet me there, handsome."
      ],
-     "conditions": "Taking Care of Business stage 45 not done; fn70 == 1; the speaker is Haelga; GetActorValue >= 40 or fn182 == 1 or fn264 == 1",
+     "conditions": "Taking Care of Business stage 45 not done; the speaker is male; the speaker is Haelga; GetActorValue >= 40 or GetEquipped Amulet of Dibella == 1 or has the spell Agent of Dibella",
      "source": "CRH_MaleSleepFirst.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000820 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -1018,7 +1054,7 @@
       "Oh, yes please! You are pleasant company. More than pleasant. I think I can be of service.",
       "So, I have plenty of room in my bed. Meet me there, pretty one."
      ],
-     "conditions": "Taking Care of Business stage 45 not done; fn70 == 1; the speaker is Haelga; GetActorValue >= 40 or fn264 == 1 or fn182 == 1",
+     "conditions": "Taking Care of Business stage 45 not done; the speaker is female; the speaker is Haelga; GetActorValue >= 40 or has the spell Agent of Dibella or GetEquipped Amulet of Dibella == 1",
      "source": "CRH_Female_SleepFirstTime.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000821 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -1037,7 +1073,7 @@
       "Oh come now, don't go away mad, take this small token of my appreciation.",
       "I'll see you around, handsome."
      ],
-     "conditions": "fn70 == 1; the speaker is Haelga; GetActorValue < 40; fn264 == 0; fn264 == 0",
+     "conditions": "the speaker is male; the speaker is Haelga; GetActorValue < 40; hasn't the spell Blessing of Dibella; hasn't the spell Agent of Dibella",
      "source": "SorryButNoHandsome.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000822 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -1056,7 +1092,7 @@
       "Oh come now, don't go away mad, take this small token of my appreciation.",
       "I'll see you around, pretty one."
      ],
-     "conditions": "fn70 == 1; the speaker is Haelga; GetActorValue < 40; fn264 == 0; fn264 == 0",
+     "conditions": "the speaker is female; the speaker is Haelga; GetActorValue < 40; hasn't the spell Blessing of Dibella; hasn't the spell Agent of Dibella",
      "source": "SorryButNoPrettyOne.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000823 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -1073,7 +1109,7 @@
      "reply": [
       "Uh huh. Sure it is. Fine. Just... forget I said anything."
      ],
-     "conditions": "Caught Red Handed stage == 10; the speaker is Svana Far-Shield; fn629 == 1",
+     "conditions": "Caught Red Handed stage == 10; the speaker is Svana Far-Shield; Riften Dialogue's pDia20 == 1",
      "source": "MoveQuestToStage11.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000800 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -1090,6 +1126,15 @@
     "index": 10,
     "source": "Skyrim.esm:041F91 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "11": 11,
+    "13": 13,
+    "20": 20,
+    "30": 20,
+    "40": 60,
+    "50": 70
    },
    "target": [
     {
@@ -1172,6 +1217,9 @@
     "source": "Skyrim.esm:041FD2 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -1202,7 +1250,7 @@
       "I hadn't asked you because I was afraid you'd say no. I appreciate your help.",
       "Here, I'm entrusting you with the dagger. Bring it to Andurs and he'll take care of the rest."
      ],
-     "conditions": "the speaker is Alessandra; Pilgrimage stage == 10; fn629 == 1",
+     "conditions": "the speaker is Alessandra; Pilgrimage stage == 10; Riften Dialogue's pDia15 == 1",
      "source": "TIF__00043D27.Fragment_0 on INFO Skyrim.esm:043D27 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1219,6 +1267,10 @@
     "index": 10,
     "source": "Skyrim.esm:043E1A QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -1274,7 +1326,7 @@
        "She finally decided to return it to her father. Bless her heart.",
        "I will make sure this finds its way to his tomb as soon as possible. Thank you for bringing it, my child."
       ],
-      "conditions": "the speaker is Andurs; Pilgrimage stage == 20; fn629 == 1; GetItemCount Alessandra's Dagger == 1",
+      "conditions": "the speaker is Andurs; Pilgrimage stage == 20; Riften Dialogue's pDia15 == 1; GetItemCount Alessandra's Dagger == 1",
       "source": "TIF__0004C485.Fragment_0 on INFO Skyrim.esm:04C485 (Unofficial Skyrim Special Edition Patch.esp)",
       "verdict": "script"
      }
@@ -1319,6 +1371,12 @@
     "index": 10,
     "source": "Skyrim.esm:043E25 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 20,
+    "30": 20,
+    "40": 60
    },
    "target": [
     {
@@ -1373,7 +1431,7 @@
      "reply": [
       "Good. Kleppr will pay you as soon as you arrive with the letter. Here you are."
      ],
-     "conditions": "the speaker is Bolli; fn629 == 1; Special Delivery stage == 10",
+     "conditions": "the speaker is Bolli; Riften Dialogue's pDia13 == 1; Special Delivery stage == 10",
      "source": "TIF__00055698.Fragment_0 on INFO Skyrim.esm:055698 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1390,6 +1448,9 @@
     "index": 10,
     "source": "Skyrim.esm:0557E9 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20
    },
    "target": [
     {
@@ -1460,6 +1521,10 @@
     "index": 10,
     "source": "Skyrim.esm:0557F3 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -1561,6 +1626,10 @@
     "source": "Skyrim.esm:05B2DE QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
+   },
    "target": [
     {
      "alias": "FFRiften17FilnjarAlias",
@@ -1643,6 +1712,9 @@
     "source": "Skyrim.esm:05B3A5 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "40": 60
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -1683,6 +1755,9 @@
     "index": 10,
     "source": "Skyrim.esm:065C30 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20
    },
    "target": [
     {
@@ -1730,7 +1805,8 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "QF_FreeformRiften12_00041FD2.fragment_3 on Skyrim.esm:041FD2 (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -1740,6 +1816,12 @@
     "index": 10,
     "source": "Skyrim.esm:085D40 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [
     {
@@ -1795,7 +1877,7 @@
        "I overheard Bolli say that only the jarl carries the key to the warehouse.",
        "When I meet Sarthis there, he's usually waiting for me outside with his bodyguard."
       ],
-      "conditions": "the speaker is Wujeeta; The Raid stage == 10; fn629 == 1",
+      "conditions": "the speaker is Wujeeta; The Raid stage == 10; The Raid's pFFR20Dia == 1",
       "source": "TIF__00085D39.Fragment_0 on INFO Skyrim.esm:085D39 (Unofficial Skyrim Special Edition Patch.esp)",
       "verdict": "script"
      }
@@ -1855,6 +1937,10 @@
     "index": 10,
     "source": "Skyrim.esm:0C1E07 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -2077,6 +2163,11 @@
     "source": "Skyrim.esm:0C04BA QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30
+   },
    "target": [
     {
      "alias": "FVDMavenAlias",
@@ -2175,6 +2266,10 @@
     "index": 10,
     "source": "Skyrim.esm:0D9B63 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -2286,6 +2381,11 @@
     "source": "Skyrim.esm:0D9B64 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30,
+    "30": 40
+   },
    "target": [
     {
      "alias": "FFI02WilhelmAlias",
@@ -2388,6 +2488,7 @@
     "source": "Skyrim.esm:0D9B65 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -2453,6 +2554,9 @@
     "index": 10,
     "source": "Skyrim.esm:0D9B66 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20
    },
    "target": [
     {
@@ -2541,6 +2645,10 @@
     "index": 10,
     "source": "Skyrim.esm:0E49E7 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -2646,6 +2754,10 @@
     "index": 10,
     "source": "Skyrim.esm:0E49E8 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -2765,6 +2877,10 @@
     "source": "Skyrim.esm:0E3E9B QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
+   },
    "target": [
     {
      "alias": "FFMF01BowAlias",
@@ -2851,6 +2967,11 @@
     "index": 5,
     "source": "Skyrim.esm:0E3EA5 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 15,
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -2959,6 +3080,10 @@
     "source": "Skyrim.esm:0E3308 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -3008,11 +3133,10 @@
     "stage": 30,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "FreeformSarethiFarm (Smooth Jazbay)",
-      "questId": "Skyrim.esm:0E3308",
-      "atStage": null,
+      "by": "by itself",
+      "script": "FFSareth01QuestScript",
       "call": "SetStage 30",
+      "plain": "It starts by itself from the start of the game.",
       "source": "FFSareth01QuestScript.GrapesCounted on Skyrim.esm:0E3308 (Skyrim.esm)",
       "verdict": "script"
      },
@@ -3051,32 +3175,13 @@
      "speakerPlaced": [
       "Haelga's Bunkhouse"
      ],
-     "call": "Start",
-     "info": "Skyrim.esm:041E36",
-     "prompt": "Do you work here?",
-     "reply": [
-      "Work? I suppose you can call it that. I call it slavery. I work my fingers to the bone keeping this disgusting place clean.",
-      "Ever since my parents died and Haelga took me in, it's been a nightmare. How was I to know she was such a wretched woman?",
-      "So now I'm stuck living here while those pigs she calls customers grope me and say the most awful things."
-     ],
-     "conditions": "the speaker is Svana Far-Shield; fn230 == 0",
-     "source": "Svana_KickstartQuest.Fragment_0 on INFO Skyrim.esm:041E36 (NGCDT - Caught Red Handed - QE Patch.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Svana Far-Shield",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Haelga's Bunkhouse"
-     ],
      "call": "SetStage 20",
      "info": "Caught Red Handed - Quest Expansion.esp:000808",
      "prompt": "Perhaps I can \"talk\" to them for you...",
      "reply": [
       "You would? Well...I-It's Tythis. He... He's the worst! Make it hurt, but not too much. No killing, okay?"
      ],
-     "conditions": "fn629 == 1; the speaker is Svana Far-Shield",
+     "conditions": "Riften Dialogue's pDia20 == 1; the speaker is Svana Far-Shield",
      "source": "TalkToSillyTythis.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000808 (Caught Red Handed - Quest Expansion.esp)",
      "verdict": "script"
     }
@@ -3088,6 +3193,12 @@
     "index": 20,
     "source": "Caught Red Handed - Quest Expansion.esp:000802 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [
     {
@@ -4414,7 +4525,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -4507,7 +4618,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -4600,7 +4711,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -4693,7 +4804,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -4786,7 +4897,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -4879,7 +4990,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -4972,7 +5083,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -5065,7 +5176,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -5158,7 +5269,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -5252,261 +5363,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

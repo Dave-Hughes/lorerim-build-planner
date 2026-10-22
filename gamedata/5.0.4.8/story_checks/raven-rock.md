@@ -7,7 +7,6 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
-- It starts by itself from the start of the game. (SetStage 30). Source: DLC2RR01QuestScript.ToggleInvulnerable on Dragonborn.esm:018B13 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 30; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -435,12 +434,6 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 - What it does: stage 100: Start. Source: DLC2_QF_DLC2_MQ04_02016E02 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Started by: the start-game flag (Dragonborn.esm:016E02 DNAM, Fozars_Dragonborn_-_Requiem_Patch.esp).
 - In one sentence: DLC2Init (Init quest) stage 100: Start on DLC2RR01 (March of the Dead); it is started by the start-game flag (Dragonborn.esm:016E02 DNAM, Fozars_Dragonborn_-_Requiem_Patch.esp).
-
-### DLC2RR01 (March of the Dead), its script's toggleinvulnerable
-
-- What it does: SetValue something the reader can't resolve; SetStage DLC2RR01 (March of the Dead) 30. Source: DLC2RR01QuestScript on Dragonborn.esm:018B13 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Called from: DLC2RR01 (March of the Dead) stage 200; DLC2RR01 (March of the Dead).
-- In one sentence: DLC2RR01 (March of the Dead)'s toggleinvulnerable does SetValue something the reader can't resolve; SetStage DLC2RR01 (March of the Dead) 30; it is called from DLC2RR01 (March of the Dead) stage 200; DLC2RR01 (March of the Dead).
 
 ## The payoff
 

@@ -197,7 +197,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq00 (Vigilant of Stendarr) calls at stage 40 Start; at stage 40 SetStage 0. Sources: QF_zzAoMMq00_01005CE2.fragment_15 on Vigilant.esm:005CE2. **script**
+- zzzAoMMq00 (Vigilant of Stendarr) calls at stage 40 Start; at stage 40 SetStage 0; its stage None is set by Dialogue with Altano (named by alias Altano of zzzAoMMq00 (Vigilant of Stendarr) (unique)), placed in Temple of Stendarr, "Can you tell me more about this Temple?": SetStage 40 (when: Vigilant of Stendarr stage == 30; the speaker is the one in alias Altano). Sources: QF_zzAoMMq00_01005CE2.fragment_15 on Vigilant.esm:005CE2. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -221,13 +221,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq01 (Bloodsucker) calls at stage 50 Start; at stage 50 SetStage 0. Sources: QF_zzAoMMq01_01005CE3.fragment_8 on Vigilant.esm:005CE3. **script**
+- zzzAoMMq01 (Bloodsucker) calls at stage 50 Start; at stage 50 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 50 (when: Bloodsucker stage == 40; the speaker is the one in alias Altano). Sources: QF_zzAoMMq01_01005CE3.fragment_8 on Vigilant.esm:005CE3. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Defeat the Daedra", shown at stage 10. Source: Vigilant.esm:006271 QOBJ 10. **files**
-- Dialogue with Altano (named by alias Altano of zzzAoMMq02 (He Who Cannot Be Touched) (unique)), placed in Temple of Stendarr, "Did you notice anything unusual happening?": SetStage 10 (when: fn67 == 1; He Who Cannot Be Touched stage < 10; the speaker is the one in alias Altano). Reply: "A Daedra destroyed a house outside the city walls a few hours ago. People heard it laughing and apparently it's still in the house." Source: AoM02_TIF__01006275.Fragment_0 on INFO Vigilant.esm:006275 (Vigilant.esm). **script**
+- Dialogue with Altano (named by alias Altano of zzzAoMMq02 (He Who Cannot Be Touched) (unique)), placed in Temple of Stendarr, "Did you notice anything unusual happening?": SetStage 10 (when: GetInCell Skyrim.esm:01605E == 1; He Who Cannot Be Touched stage < 10; the speaker is the one in alias Altano). Reply: "A Daedra destroyed a house outside the city walls a few hours ago. People heard it laughing and apparently it's still in the house." Source: AoM02_TIF__01006275.Fragment_0 on INFO Vigilant.esm:006275 (Vigilant.esm). **script**
 
 **Who and where**
 
@@ -245,13 +245,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq02 (He Who Cannot Be Touched) calls at stage 30 Start; at stage 30 SetStage 0. Sources: QF_zzAoMMq02_01006271.fragment_0 on Vigilant.esm:006271. **script**
+- zzzAoMMq02 (He Who Cannot Be Touched) calls at stage 30 Start; at stage 30 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 30 (when: He Who Cannot Be Touched stage == 20; the speaker is the one in alias Altano). Sources: QF_zzAoMMq02_01006271.fragment_0 on Vigilant.esm:006271. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Follow Altano or meet him in Candlehearth Hall", shown at stage 10. Source: Vigilant.esm:00627F QOBJ 10. **files**
-- Dialogue with Altano (named by alias Altano of zzzAoMMq03 (Lazy Afternoon) (unique)), placed in Temple of Stendarr, "Have you found out where the summoner is now?": SetStage 10 (when: fn67 == 1; Lazy Afternoon stage < 10; the speaker is the one in alias Altano). Reply: "I heard they're having trouble with a Daedra in one of the WIndhelm's inns. This might be related... Let's go check it out." Source: AoM03_TIF__01008850.Fragment_0 on INFO Vigilant.esm:008850 (Vigilant.esm). **script**
+- Dialogue with Altano (named by alias Altano of zzzAoMMq03 (Lazy Afternoon) (unique)), placed in Temple of Stendarr, "Have you found out where the summoner is now?": SetStage 10 (when: GetInCell Skyrim.esm:01605E == 1; Lazy Afternoon stage < 10; the speaker is the one in alias Altano). Reply: "I heard they're having trouble with a Daedra in one of the WIndhelm's inns. This might be related... Let's go check it out." Source: AoM03_TIF__01008850.Fragment_0 on INFO Vigilant.esm:008850 (Vigilant.esm). **script**
 
 **Who and where**
 
@@ -269,13 +269,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq03 (Lazy Afternoon) calls at stage 40 Start; at stage 40 SetStage 0. Sources: QF_zzAoMMq03_0100627F.fragment_9 on Vigilant.esm:00627F. **script**
+- zzzAoMMq03 (Lazy Afternoon) calls at stage 40 Start; at stage 40 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 40 (when: Lazy Afternoon stage == 30; the speaker is the one in alias Altano). Sources: QF_zzAoMMq03_0100627F.fragment_9 on Vigilant.esm:00627F. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Investigate the rumors about the Eye of Madness", shown at stage 10. Source: Vigilant.esm:0082EA QOBJ 10. **files**
-- Dialogue with Altano (named by alias Altano of zzzAoMMq04 (The Eye of Madness) (unique)), placed in Temple of Stendarr, "You look troubled. What's wrong?": SetStage 10 (when: fn67 == 1; The Eye of Madness stage < 10; the speaker is the one in alias Altano). Reply: "I overheard a strange rumor from the guards. Apparently, there's a sinister man in Kynesgrove... They say that anyone who makes eye contact with him goes insane." Source: AoM04_TIF__0100934C.Fragment_0 on INFO Vigilant.esm:00934C (Vigilant.esm). **script**
+- Dialogue with Altano (named by alias Altano of zzzAoMMq04 (The Eye of Madness) (unique)), placed in Temple of Stendarr, "You look troubled. What's wrong?": SetStage 10 (when: GetInCell Skyrim.esm:016789 == 1; The Eye of Madness stage < 10; the speaker is the one in alias Altano). Reply: "I overheard a strange rumor from the guards. Apparently, there's a sinister man in Kynesgrove... They say that anyone who makes eye contact with him goes insane." Source: AoM04_TIF__0100934C.Fragment_0 on INFO Vigilant.esm:00934C (Vigilant.esm). **script**
 
 **Who and where**
 
@@ -293,13 +293,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq04 (The Eye of Madness) calls at stage 50 Start; at stage 50 SetStage 0. Sources: QF_zzAoMMq04_010082EA.fragment_10 on Vigilant.esm:0082EA. **script**
+- zzzAoMMq04 (The Eye of Madness) calls at stage 50 Start; at stage 50 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 50 (when: The Eye of Madness stage == 40; the speaker is the one in alias Altano). Sources: QF_zzAoMMq04_010082EA.fragment_10 on Vigilant.esm:0082EA. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Follow Altano or meet him at Stendarr's Beacon", shown at stage 10. Source: Vigilant.esm:0098C9 QOBJ 10. **files**
-- Dialogue with Altano (named by alias Altano of zzzAoMMq05 (Dine and Dash) (unique)), placed in Temple of Stendarr, "Any clues on the summoner yet?": SetStage 10 (when: fn67 == 1; Dine and Dash stage < 10; the speaker is the one in alias Altano). Reply: "Apparently, she's been seen in Riften. My old mentor summoned us to Stendarr's Beacon, so let's go talk to him." Source: AoM05_TIF__01009E31.Fragment_0 on INFO Vigilant.esm:009E31 (Vigilant.esm). **script**
+- Dialogue with Altano (named by alias Altano of zzzAoMMq05 (Dine and Dash) (unique)), placed in Temple of Stendarr, "Any clues on the summoner yet?": SetStage 10 (when: GetInCell Skyrim.esm:016789 == 1; Dine and Dash stage < 10; the speaker is the one in alias Altano). Reply: "Apparently, she's been seen in Riften. My old mentor summoned us to Stendarr's Beacon, so let's go talk to him." Source: AoM05_TIF__01009E31.Fragment_0 on INFO Vigilant.esm:009E31 (Vigilant.esm). **script**
 
 **Who and where**
 
@@ -317,7 +317,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq05 (Dine and Dash) calls at stage 60 Start; at stage 60 SetStage 0. Sources: QF_zzAoMMq05_010098C9.fragment_12 on Vigilant.esm:0098C9. **script**
+- zzzAoMMq05 (Dine and Dash) calls at stage 60 Start; at stage 60 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 60 (when: the speaker is the one in alias Jacob). Sources: QF_zzAoMMq05_010098C9.fragment_12 on Vigilant.esm:0098C9. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -341,7 +341,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq06 (Thus Spoke Khajiit) calls at stage 90 Start; at stage 90 SetStage 0; at stage 90 Start; at stage 90 SetStage 0. Sources: QF_zzAoMMq06_01009E68.fragment_18, QF_zzAoMMq06_01009E68.fragment_41 on Vigilant.esm:009E68. **script**
+- zzzAoMMq06 (Thus Spoke Khajiit) calls at stage 90 Start; at stage 90 SetStage 0; at stage 90 Start; at stage 90 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 90 (when: Thus Spoke Khajiit stage == 80; the speaker is the one in alias Altano). Sources: QF_zzAoMMq06_01009E68.fragment_18, QF_zzAoMMq06_01009E68.fragment_41 on Vigilant.esm:009E68. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -364,7 +364,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzAoMMq07 (Old Regrets) calls at stage 80 Start; at stage 80 SetStage 0. Sources: QF_zzAoMMq07_0100A3FE.fragment_10 on Vigilant.esm:00A3FE. **script**
+- zzzAoMMq07 (Old Regrets) calls at stage 80 Start; at stage 80 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 80 (when: the speaker is the one in alias Altano). Sources: QF_zzAoMMq07_0100A3FE.fragment_10 on Vigilant.esm:00A3FE. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -675,7 +675,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzBMMq01 (Empty Cells) calls at stage 60 Start; at stage 60 SetStage 0. Sources: QF_zzzBMMq01_01038524.fragment_13 on Vigilant.esm:038524. **script**
+- zzzBMMq01 (Empty Cells) calls at stage 60 Start; at stage 60 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 60 (when: Empty Cells stage == 50; the speaker is the one in alias Steward). Sources: QF_zzzBMMq01_01038524.fragment_13 on Vigilant.esm:038524. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -936,7 +936,6 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Sacred Anatomancer, placed in Old Well, "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.": Start (when: the speaker is Sacred Anatomancer). Source: AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm). **script**
 - Dialogue with Sacred Anatomancer, placed in Old Well, "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.": SetStage 0 (when: the speaker is Sacred Anatomancer). Source: AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1032,7 +1031,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzBMMq01 (Empty Cells) calls at stage 110 Start; at stage 110 SetStage 0. Sources: QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524. **script**
+- zzzBMMq01 (Empty Cells) calls at stage 110 Start; at stage 110 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 110 (when: Empty Cells stage == 100; the speaker is the one in alias Steward). Sources: QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524. **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1218,39 +1217,39 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 **Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?** Timing is Everything's setting iTIE_MinimumLevel:Dragonborn = 25 (settings.ini in Timing is Everything SE - Settings Loader).
 
-- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**

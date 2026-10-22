@@ -77,7 +77,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MQ102 (Before the Storm) calls at stage 160 SetStage 10; at stage 150 SetStage 8. Sources: QF_MQ102_0004E50D.fragment_45, QF_MQ102_0004E50D.fragment_115 on Skyrim.esm:04E50D. **script**
+- MQ102 (Before the Storm) calls at stage 160 SetStage 10; at stage 150 SetStage 8; its stage None is set by Dialogue with Balgruuf the Greater, placed in Dragonsreach: SetStage 160 (when: the speaker is Balgruuf the Greater; Before the Storm stage 150 done; Before the Storm stage 160 not done). Sources: QF_MQ102_0004E50D.fragment_45, QF_MQ102_0004E50D.fragment_115 on Skyrim.esm:04E50D. **script**
 - Dialogue with Balgruuf the Greater (named by scene MQ103IntroScene, alias Balgruuf of MQ103 (Bleak Falls Barrow) (unique)), placed in Dragonsreach: SetStage 20; its scene is started by MQ103 (Bleak Falls Barrow) at stage 10. Source: TIF__000D50F1.Fragment_0 on INFO Skyrim.esm:0D50F1 (Skyrim.esm). **script**
 - Dialogue with Farengar Secret-Fire, placed in Dragonsreach, "So what do you need me to do?": SetStage 50 (when: the speaker is Farengar Secret-Fire; GetItemCount Dragonstone >= 1). Source: TIF__000D50E1.Fragment_0 on INFO Skyrim.esm:0D50E1 (Skyrim.esm). **script**
 - Dialogue with Farengar Secret-Fire, placed in Dragonsreach, "So what do you need me to do?": SetStage 50 (when: the speaker is Farengar Secret-Fire). Source: TIF__000E0EBA.Fragment_0 on INFO Skyrim.esm:0E0EBA (Skyrim.esm). **script**
@@ -122,7 +122,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MQ103 (Bleak Falls Barrow) at stage 190 calls SetStage 10. Source: QF_MQ103_000D0800.fragment_20 on Skyrim.esm:0D0800 (LoreRim - Dialogue Patch.esp). **script**
+- MQ103 (Bleak Falls Barrow) at stage 190 calls SetStage 10; its stage 190 is set by Dialogue with someone the line does not name: SetStage 190 (when: the speaker is the one in alias Farengar; Bleak Falls Barrow stage 180 done; Bleak Falls Barrow stage 190 not done); Dialogue with someone the line does not name: SetStage 190 (when: the speaker is the one in alias Farengar). Source: QF_MQ103_000D0800.fragment_20 on Skyrim.esm:0D0800 (LoreRim - Dialogue Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -179,7 +179,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Second objective: "Demonstrate your "Unrelenting Force" Shout", shown at stage 30. Source: Skyrim.esm:0242BA QOBJ 20. **files**
 - MQ106 (A Blade in the Dark) at stage 1 calls SetStage 30. Source: QF_MQ106_00032926.fragment_2 on Skyrim.esm:032926 (Skyrim.esm). **script**
-- MQ104 (Dragon Rising) at stage 150 calls SetStage 10. Source: QF_MQ104B_0002610C.fragment_43 on Skyrim.esm:02610C (LoreRim - Weapons.esp). **script**
+- MQ104 (Dragon Rising) at stage 150 calls SetStage 10; its stage 150 is set by Dialogue with Lydia (named by the one follower in MQ104 (Dragon Rising)'s aliases), placed in Breezehome: SetStage 150 (when: the speaker is the one in alias Balgruuf); Dialogue with Lydia (named by the one follower in MQ104 (Dragon Rising)'s aliases), placed in Breezehome: SetStage 150 (when: the speaker is the one in alias Balgruuf); Dialogue with Lydia (named by the one follower in MQ104 (Dragon Rising)'s aliases), placed in Breezehome: SetStage 150 (when: the speaker is the one in alias Balgruuf); Dialogue with Lydia (named by the one follower in MQ104 (Dragon Rising)'s aliases), placed in Breezehome: SetStage 150 (when: the speaker is the one in alias Balgruuf). Source: QF_MQ104B_0002610C.fragment_43 on Skyrim.esm:02610C (LoreRim - Weapons.esp). **script**
 - MQ105 (The Way of the Voice) calls SetStage 25. Source: MQ105ShoutTargetScript.OnMagicEffectApplyEx on Skyrim.esm:0242BA (Skyrim.esm). **script**
 - Dialogue with Arngeir (named by alias Arngeir of MQ105 (The Way of the Voice) (unique)), placed in High Hrothgar, "I am answering your summons.": SetStage 30 (when: The Way of the Voice stage < 50; The Way of the Voice stage 25 done; the speaker is the one in alias Arngeir). Reply: "So... a Dragonborn appears, at this moment in the turning of the age." Source: TIF__0002F2C4.Fragment_0 on INFO Skyrim.esm:02F2C4 (Skyrim.esm). **script**
 - Dialogue with Arngeir (named by alias Arngeir of MQ105 (The Way of the Voice) (unique)), placed in High Hrothgar, "I'm answering your summons.": SetStage 30 (when: The Way of the Voice stage < 50; the speaker is the one in alias Arngeir). Reply: "We will see if you truly have the gift." Source: TIF__0002F2C5.Fragment_0 on INFO Skyrim.esm:02F2C5 (Skyrim.esm). **script**
@@ -203,7 +203,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MQ105 (The Way of the Voice) at stage 160 calls SetStage 10. Source: QF_MQ105_000242BA.fragment_42 on Skyrim.esm:0242BA (Skyrim.esm). **script**
+- MQ105 (The Way of the Voice) at stage 160 calls SetStage 10; its stage 160 is set by Dialogue with someone the line does not name: SetStage 160 (when: the speaker is the one in alias Arngeir); Dialogue with someone the line does not name: SetStage 160 (when: the speaker is the one in alias Arngeir; The Way of the Voice stage 140 done; The Way of the Voice stage 160 not done). Source: QF_MQ105_000242BA.fragment_42 on Skyrim.esm:0242BA (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -227,8 +227,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MQ105 (The Way of the Voice) at stage 200 calls SetStage 5. Source: QF_MQ105_000242BA.fragment_55 on Skyrim.esm:0242BA (Skyrim.esm). **script**
-- Dialogue with Delphine, placed in Sleeping Giant Inn, "I'd like to rent the attic room. (<Global=RoomCost> gold)": SetStage 10 (when: the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; fn67 == 1; GetActorValue == 1). Source: TIF__000453EE.Fragment_0 on INFO Skyrim.esm:0453EE (Skyrim.esm). **script**
-- Dialogue with Delphine, placed in Sleeping Giant Inn, "I'd like to rent the attic room. (<Global=RoomCost> gold)": SetStage 10 (when: the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; fn67 == 1). Source: TIF__000A56D4.Fragment_0 on INFO Skyrim.esm:0A56D4 (Skyrim.esm). **script**
+- Dialogue with Delphine, placed in Sleeping Giant Inn, "I'd like to rent the attic room. (<Global=RoomCost> gold)": SetStage 10 (when: the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; GetInCell Skyrim.esm:0133C6 == 1; GetActorValue == 1). Source: TIF__000453EE.Fragment_0 on INFO Skyrim.esm:0453EE (Skyrim.esm). **script**
+- Dialogue with Delphine, placed in Sleeping Giant Inn, "I'd like to rent the attic room. (<Global=RoomCost> gold)": SetStage 10 (when: the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; GetInCell Skyrim.esm:0133C6 == 1). Source: TIF__000A56D4.Fragment_0 on INFO Skyrim.esm:0A56D4 (Skyrim.esm). **script**
 - Dialogue with Delphine, placed in Sleeping Giant Inn, "I just came here for the horn.": SetStage 30 (when: the speaker is Delphine). Source: TIF__00083055.Fragment_0 on INFO Skyrim.esm:083055 (Skyrim.esm). **script**
 - Dialogue with Delphine, placed in Sleeping Giant Inn, "What of it?": SetStage 30 (when: the speaker is Delphine). Source: TIF__000C65A2.Fragment_0 on INFO Skyrim.esm:0C65A2 (Skyrim.esm). **script**
 - (First objective shown at stage 30; a call to a later stage advances the quest instead.)
@@ -327,7 +327,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Search the Ratway for Esbern's hideout", shown at stage 20. Source: Skyrim.esm:036191 QOBJ 20. **files**
-- MQ202 (A Cornered Rat) calls SetStage 20. Source: MQ202QuestScript.OnUpdate on Skyrim.esm:036191 (Requiem.esp). **script**
+- It starts by itself from the start of the game. (SetStage 20). Source: MQ202QuestScript.OnUpdate on Skyrim.esm:036191 (Requiem.esp). **script**
 - Dialogue with Keerava, placed in The Bee and Barb, Bee and Barb, "I'm looking for an old guy, hiding out somewhere in Riften.": SetStage 20 (when: A Cornered Rat stage 50 not done; GetInFaction JobInnkeeperFaction == 1; the speaker is Keerava or the speaker is Talen-Jei). Reply: "Never heard of anybody like that. But if you want to hide out in Riften, the Ratway's where you'd be." Source: TIF__0006C863.Fragment_0 on INFO Skyrim.esm:06C863 (Skyrim.esm). **script**
 
 **Who and where**
@@ -346,7 +346,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MQ202 (A Cornered Rat) at stage 180 calls SetStage 10. Source: QF_MQ202_00036191.fragment_19 on Skyrim.esm:036191 (Requiem.esp). **script**
+- MQ202 (A Cornered Rat) at stage 180 calls SetStage 10; its stage 180 is set by Dialogue with Esbern, placed in The Ratway Warrens, Esbern's Vault: SetStage 180 (when: the speaker is Esbern). Source: QF_MQ202_00036191.fragment_19 on Skyrim.esm:036191 (Requiem.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -385,7 +385,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MQ203 (Alduin's Wall) at stage 280 calls SetStage 10. Source: QF_MQ203_00036192.fragment_16 on Skyrim.esm:036192 (Skyrim.esm). **script**
+- MQ203 (Alduin's Wall) at stage 280 calls SetStage 10; its stage 280 is set by Dialogue with Delphine, placed in Sleeping Giant Inn: SetStage 280 (when: the speaker is Delphine); Dialogue with Delphine, placed in Sleeping Giant Inn: SetStage 280 (when: the speaker is Delphine). Source: QF_MQ203_00036192.fragment_16 on Skyrim.esm:036192 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -472,8 +472,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Learn the "Dragonrend" Shout from the Nord heroes", shown at stage 20. Source: Skyrim.esm:036193 QOBJ 20. **files**
-- MQ206 (Alduin's Bane) calls SetStage 20. Source: MQ206Script.OnUpdate on Skyrim.esm:036193 (Skyrim.esm). **script**
+- It starts by itself from the start of the game. (SetStage 20). Source: MQ206Script.OnUpdate on Skyrim.esm:036193 (Skyrim.esm). **script**
 - Dialogue with Paarthurnax, placed in Skyrim, "I have the Elder Scroll.": SetStage 15 (when: the speaker is Paarthurnax; Alduin's Bane stage < 20). Reply: "You have it. The Kel - the Elder Scroll. Tiid kreh... qalos. Time shudders at its touch." Source: TIF__000C64EC.Fragment_1 on INFO Skyrim.esm:0C64EC (Skyrim.esm). **script**
+- Read Elder Scroll (Dragon) (SetStage 20). Source: ElderScrollScript.OnEquipped on BOOK Skyrim.esm:02D513. **script**
 
 **Who and where**
 
@@ -523,7 +524,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MQ301 (The Fallen) at stage 30 calls SetStage 10. Source: QF_MQ301_00044C56.fragment_6 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- MQ301 (The Fallen) at stage 30 calls SetStage 10; its stage 30 is set by Dialogue with someone the line does not name: SetStage 30 (when: the speaker is the one in alias Jarl). Source: QF_MQ301_00044C56.fragment_6 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -560,7 +561,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Talk to Odahviing", shown at stage 40. Source: Skyrim.esm:046EF0 QOBJ 20. **files**
-- MQ301 (The Fallen) at stage 230 calls SetStage 20. Source: QF_MQ301_00044C56.fragment_43 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- MQ301 (The Fallen) at stage 230 calls SetStage 20; its stage 230 is set by Dialogue with Odahviing, placed in Dragonsreach, Great Porch: SetStage 230 (when: the speaker is Odahviing). Source: QF_MQ301_00044C56.fragment_43 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with someone the line does not name (named by alias Gatekeeper of MQ303 (The World-Eater's Eyrie) (run time)), "Yes, I'm sure.": SetStage 30 (when: the speaker is the one in alias Gatekeeper). Reply: "Your funeral. Someone else is gonna have to help you get him back in there again." Source: TIF__0004DE3B.Fragment_0 on INFO Skyrim.esm:04DE3B (Skyrim.esm). **script**
 - Dialogue with Odahviing, placed in Dragonsreach, Great Porch, "I guess I'll have to trust you.": SetStage 20 (when: the speaker is Odahviing). Reply: "Onikaan koraav gein miraad. It is wise to recognize when you only have one choice." Source: TIF__0004DE33.Fragment_0 on INFO Skyrim.esm:04DE33 (Skyrim.esm). **script**
 - Dialogue with Odahviing, placed in Dragonsreach, Great Porch, "Yes. I'll set you free if you promise to take me to Skuldafn.": SetStage 20 (when: the speaker is Odahviing). Reply: "Onikaan koraav gein miraad. It is wise to recognize when you only have one choice." Source: TIF__0004DE34.Fragment_0 on INFO Skyrim.esm:04DE34 (Skyrim.esm). **script**
@@ -597,16 +598,16 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Second objective: "Gain admittance to the Hall of Valor", shown at stage 50. Source: Skyrim.esm:046EF1 QOBJ 20. **files**
 - MQ305 (Dragonslayer) at stage 1 calls SetStage 30. Source: QF_MQ305_00046EF2.fragment_8 on Skyrim.esm:046EF2 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias LostSoul of MQ304 (Sovngarde) (forced)), placed in Sovngarde, "Invisible Walk Away": SetStage 50 (when: the speaker is the one in alias LostSoul). Reply: "The World-Eater waits within the mist! Bring word to Shor's hall of our hard fate!" Source: TIF__0004E9B5.Fragment_0 on INFO Skyrim.esm:04E9B5 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias LostSoul of MQ304 (Sovngarde) (forced)), placed in Sovngarde, "Yes, it's at the far end of the valley from here.": SetStage 50 (when: the speaker is the one in alias LostSoul). Reply: "I saw it fair when first I trod this long-sought path. The pain and fear vanished, dreamlike, and a vision beckoned..." Source: TIF__0004E9BB.Fragment_0 on INFO Skyrim.esm:04E9BB (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name (named by alias LostSoul of MQ304 (Sovngarde) (forced)), placed in Sovngarde, "Shor's hall? What's that?": SetStage 50 (when: the speaker is the one in alias LostSoul). Reply: "Don't you know? What drew you here? Surely your dreams showed you the way?" Source: TIF__0004F74E.Fragment_0 on INFO Skyrim.esm:04F74E (Skyrim.esm). **script**
+- Dialogue with Stormcloak Soldier (named by alias LostSoul of MQ304 (Sovngarde) (forced)), placed in Sovngarde, "Invisible Walk Away": SetStage 50 (when: the speaker is the one in alias LostSoul). Reply: "The World-Eater waits within the mist! Bring word to Shor's hall of our hard fate!" Source: TIF__0004E9B5.Fragment_0 on INFO Skyrim.esm:04E9B5 (Skyrim.esm). **script**
+- Dialogue with Stormcloak Soldier (named by alias LostSoul of MQ304 (Sovngarde) (forced)), placed in Sovngarde, "Yes, it's at the far end of the valley from here.": SetStage 50 (when: the speaker is the one in alias LostSoul). Reply: "I saw it fair when first I trod this long-sought path. The pain and fear vanished, dreamlike, and a vision beckoned..." Source: TIF__0004E9BB.Fragment_0 on INFO Skyrim.esm:04E9BB (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Stormcloak Soldier (named by alias LostSoul of MQ304 (Sovngarde) (forced)), placed in Sovngarde, "Shor's hall? What's that?": SetStage 50 (when: the speaker is the one in alias LostSoul). Reply: "Don't you know? What drew you here? Surely your dreams showed you the way?" Source: TIF__0004F74E.Fragment_0 on INFO Skyrim.esm:04F74E (Skyrim.esm). **script**
 - Dialogue with Tsun, placed in Sovngarde: SetStage 50 (when: the speaker is Tsun; Sovngarde stage 135 not done). Reply: "What brings you, wayfarer grim, to wander here, in Sovngarde, souls-end, Shor's gift to honored dead?" Source: TIF__0004FA20.Fragment_0 on INFO Skyrim.esm:04FA20 (Skyrim.esm). **script**
 - Dialogue with Tsun, placed in Sovngarde, "I seek entrance to the Hall of Valor.": SetStage 50 (when: the speaker is Tsun; Sovngarde stage < 140). Reply: "No shade are you, as usually here passes, but living, you dare the land of the dead." Source: TIF__000946F1.Fragment_0 on INFO Skyrim.esm:0946F1 (Skyrim.esm). **script**
 
 **Who and where**
 
 - First objective: "Find out how to defeat Alduin". Source: Skyrim.esm:046EF1 QOBJ 10. **files**
-- Target alias Alduin1 (forced): a marker (forced reference, placed in Sovngarde). **files**
+- Target alias Alduin1 (forced): Alduin (forced reference, placed in Sovngarde). **files**
 
 **Needs**
 
@@ -624,7 +625,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Defeat Alduin", shown at stage 100. Source: Skyrim.esm:046EF2 QOBJ 20. **files**
-- MQ305 (Dragonslayer) calls SetStage 30. Source: MQ305Script.OnUpdate on Skyrim.esm:046EF2 (Skyrim.esm). **script**
+- It starts by itself from the start of the game. (SetStage 30). Source: MQ305Script.OnUpdate on Skyrim.esm:046EF2 (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -686,7 +687,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Delphine, placed in Sleeping Giant Inn, "Maybe I can help you find new recruits.": SetStage 10 (when: the speaker is Delphine; GetInFaction CurrentFollowerFaction == 0; fn359 == 1). Source: TIF__000E38C5.Fragment_0 on INFO Skyrim.esm:0E38C5 (Missing Follower Dialogue Fix.esp). **script**
+- Dialogue with Delphine, placed in Sleeping Giant Inn, "Maybe I can help you find new recruits.": SetStage 10 (when: the speaker is Delphine; GetInFaction CurrentFollowerFaction == 0; you're in Sky Haven Temple). Source: TIF__000E38C5.Fragment_0 on INFO Skyrim.esm:0E38C5 (Missing Follower Dialogue Fix.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0E38C9 DNAM (PaarthurnaxQuestExpansion.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -697,7 +698,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Bring a follower to Delphine", shown at stage 20. Source: Skyrim.esm:0E38C9 QOBJ 20. **files**
-- FreeformSkyhavenTempleA (Rebuilding the Blades) calls SetStage 20. Source: FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E38C9 (PaarthurnaxQuestExpansion.esp). **script**
+- It starts by itself from the start of the game. (SetStage 20). Source: FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E38C9 (PaarthurnaxQuestExpansion.esp). **script**
 - DialogueFollower, a helper quest at stage 10 calls SetStage 20; DialogueFollower is started by the start-game flag. Source: QF_DialogueFollower_000750BA.fragment_0 on Skyrim.esm:0750BA (Simple Follower Framework Patch.esp), through FreeformSkyhavenTempleA (Rebuilding the Blades)'s recruitblade. **script**
 - DialogueFollower, a helper quest at stage 15 calls SetStage 20; DialogueFollower is started by the start-game flag. Source: QF_DialogueFollower_000750BA.fragment_3 on Skyrim.esm:0750BA (Simple Follower Framework Patch.esp), through FreeformSkyhavenTempleA (Rebuilding the Blades)'s recruitblade. **script**
 - DialogueFollower, a helper quest at stage 20 calls SetStage 20; DialogueFollower is started by the start-game flag. Source: QF_DialogueFollower_000750BA.fragment_4 on Skyrim.esm:0750BA (Simple Follower Framework Patch.esp), through FreeformSkyhavenTempleA (Rebuilding the Blades)'s recruitblade. **script**
@@ -709,7 +710,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: Alduin's Wall stage 280 done; fn359 == 1; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done. **files**
+- Its own conditions: Alduin's Wall stage 280 done; you're in Sky Haven Temple; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done. **files**
 - Ways in: Sleeping Giant Inn: 1 door, 0 locked. A door is a need only when every way in is locked. **files**
 
 **Gives**: nothing on its completing stages.
@@ -718,14 +719,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Esbern, placed in The Ratway Warrens, Esbern's Vault, "Tell them to meet me there.": SetStage 10 (when: the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; fn359 == 1). Source: TIF__000E67EC.Fragment_0 on INFO Skyrim.esm:0E67EC (Missing Follower Dialogue Fix.esp). **script**
+- Dialogue with Esbern, placed in The Ratway Warrens, Esbern's Vault, "Tell them to meet me there.": SetStage 10 (when: the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; you're in Sky Haven Temple). Source: TIF__000E67EC.Fragment_0 on INFO Skyrim.esm:0E67EC (Missing Follower Dialogue Fix.esp). **script**
 - Story manager node SkyHavenTempleNode, event: change location; conditions up its parents: none. Source: SkyHavenTempleNode Skyrim.esm:0E6802 (DragonHunting.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Return to Esbern", shown at stage 20. Source: Skyrim.esm:0E3E67 QOBJ 20. **files**
-- FreeformSkyHavenTempleB (Dragon Hunting) calls SetStage 20. Source: FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E3E67 (PaarthurnaxQuestExpansion.esp). **script**
+- It starts by itself from the start of the game. (SetStage 20). Source: FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E3E67 (PaarthurnaxQuestExpansion.esp). **script**
 - FreeformSkyHavenTempleB (Dragon Hunting) calls SetStage 15. Source: BladesOnUnloadScript.OnUnload on Skyrim.esm:0E3E67 (PaarthurnaxQuestExpansion.esp). **script**
 
 **Who and where**
@@ -735,7 +736,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: Alduin's Wall stage 280 done; fn359 == 1; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done. **files**
+- Its own conditions: Alduin's Wall stage 280 done; you're in Sky Haven Temple; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done. **files**
 
 **Gives**: nothing on its completing stages.
 
@@ -743,7 +744,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Esbern, placed in The Ratway Warrens, Esbern's Vault, "The dragon of <Alias=DragonLair> is dead.": SetStage 10 (when: fn264 == 0; Dragon Research stage 100 not done; Dragon Hunting stage 20 done; the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; fn359 == 1). Source: TIF__000E67EB.Fragment_0 on INFO Skyrim.esm:0E67EB (LoreRim - Dialogue Patch.esp). **script**
+- Dialogue with Esbern, placed in The Ratway Warrens, Esbern's Vault, "The dragon of <Alias=DragonLair> is dead.": SetStage 10 (when: hasn't the spell Dragon Infusion; Dragon Research stage 100 not done; Dragon Hunting stage 20 done; the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; you're in Sky Haven Temple). Source: TIF__000E67EB.Fragment_0 on INFO Skyrim.esm:0E67EB (LoreRim - Dialogue Patch.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0E6DF1 DNAM (DragonHuntingPaarthurnaxQE.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -754,7 +755,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: Alduin's Wall stage 280 done; fn359 == 1; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done. **files**
+- Its own conditions: Alduin's Wall stage 280 done; you're in Sky Haven Temple; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done. **files**
 - Ways in: The Ratway Warrens, Esbern's Vault: 1 door, 0 locked. A door is a need only when every way in is locked. **files**
 
 **Gives**: nothing on its completing stages.
@@ -928,45 +929,45 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 **Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?** Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage.
 
 **Who starts The Horn of Jurgen Windcaller, and where?** The Horn of Jurgen Windcaller (MQ105Ustengrav, Skyrim.esm:0713DC):
-- MQ105 (The Way of the Voice) at stage 160 calls SetStage 10. Source: QF_MQ105_000242BA.fragment_42 on Skyrim.esm:0242BA (Skyrim.esm).
+- MQ105 (The Way of the Voice) at stage 160 calls SetStage 10; its stage 160 is set by Dialogue with someone the line does not name: SetStage 160 (when: the speaker is the one in alias Arngeir); Dialogue with someone the line does not name: SetStage 160 (when: the speaker is the one in alias Arngeir; The Way of the Voice stage 140 done; The Way of the Voice stage 160 not done). Source: QF_MQ105_000242BA.fragment_42 on Skyrim.esm:0242BA (Skyrim.esm).
 - Its first objective: "Retrieve the Horn of Jurgen Windcaller".
 - Its target alias HornActivator: nothing named.
 
 **Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?** Timing is Everything's setting iTIE_MinimumLevel:Dragonborn = 25 (settings.ini in Timing is Everything SE - Settings Loader).
 
-- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
@@ -981,4 +982,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

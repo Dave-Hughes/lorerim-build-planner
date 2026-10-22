@@ -1084,14 +1084,6 @@
      ]
     },
     {
-     "by": "by itself",
-     "script": "FFRiftenThaneQuestScript",
-     "call": "SetStage 10",
-     "plain": "It starts by itself from the start of the game.",
-     "source": "FFRiftenThaneQuestScript.ThaneCheck on Skyrim.esm:065BDF (LoreRim - Weapons.esp)",
-     "verdict": "script"
-    },
-    {
      "by": "quest script",
      "quest": "FreeformRiften18 (named \"Ringmaker\" in its record), a helper quest with FFRiften18MadesiAlias",
      "questId": "Skyrim.esm:05B3A5",

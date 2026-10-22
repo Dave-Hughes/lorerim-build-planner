@@ -109,6 +109,14 @@
     "source": "Skyrim.esm:01EA50 QOBJ 5",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "25": 30,
+    "26": 198,
+    "27": 21,
+    "28": 22,
+    "30": 30
+   },
    "target": [
     {
      "alias": "AventusAretinoAlias",
@@ -192,6 +200,9 @@
     "index": 10,
     "source": "Skyrim.esm:087BA2 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -321,6 +332,14 @@
     "index": 5,
     "source": "Skyrim.esm:01EA4F QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 20,
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [
     {
@@ -560,6 +579,12 @@
     "source": "Skyrim.esm:01EA51 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "30": 30,
+    "40": 40,
+    "50": 50
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -780,6 +805,10 @@
     "source": "Skyrim.esm:022F47 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "NazirAlias",
@@ -827,7 +856,8 @@
       "atStage": 0,
       "call": "SetStage 20",
       "source": "QF_DBSideContract11_0001EA67.fragment_0 on Skyrim.esm:01EA67 (Unofficial Skyrim Special Edition Patch.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "quest script",
@@ -836,7 +866,8 @@
       "atStage": 0,
       "call": "SetStage 20",
       "source": "QF_DBSideContract08_0001EA64.fragment_0 on Skyrim.esm:01EA64 (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "quest script",
@@ -845,7 +876,8 @@
       "atStage": 0,
       "call": "SetStage 20",
       "source": "QF_DBSideContract07_0001EA63.fragment_10 on Skyrim.esm:01EA63 (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "quest script",
@@ -854,7 +886,8 @@
       "atStage": 0,
       "call": "SetStage 20",
       "source": "QF_DBSideContract05_0001EA61.fragment_0 on Skyrim.esm:01EA61 (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "dialogue",
@@ -898,7 +931,7 @@
      "reply": [
       "Haven't you talked to Astrid? She's by the pool, greeting the Night Mother and her little jester. She has a contract for you. Come see me afterward."
      ],
-     "conditions": "the speaker is Nazir; fn629 >= 1; fn629 <= 3; Mourning Never Comes stage < 10",
+     "conditions": "the speaker is Nazir; Dark Brotherhood's CiceroArrive >= 1; Dark Brotherhood's CiceroArrive <= 3; Mourning Never Comes stage < 10",
      "source": "TIF__000AAAC9.Fragment_0 on INFO Skyrim.esm:0AAAC9 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -977,6 +1010,14 @@
     "index": 5,
     "source": "Skyrim.esm:01EA52 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [
     {
@@ -1059,7 +1100,54 @@
      "atStage": 50,
      "call": "SetStage 1",
      "source": "QF_DB03_0001EA52.fragment_39 on Skyrim.esm:01EA52 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Muiri",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Hag's Cure, Hag's Cure"
+       ],
+       "call": "SetStage 50",
+       "info": "Skyrim.esm:0212D1",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Mourning Never Comes's NilsineDead == 0; Mourning Never Comes stage == 40; the speaker is Muiri",
+       "source": "TIF__000212D1.Fragment_0 on INFO Skyrim.esm:0212D1 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Muiri",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Hag's Cure, Hag's Cure"
+       ],
+       "call": "SetStage 50",
+       "info": "Skyrim.esm:0212D2",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Mourning Never Comes's NilsineDead == 1; Mourning Never Comes stage == 40; the speaker is Muiri",
+       "source": "TIF__000212D2.Fragment_0 on INFO Skyrim.esm:0212D2 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Muiri",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Hag's Cure, Hag's Cure"
+       ],
+       "call": "SetStage 50",
+       "info": "Skyrim.esm:058FD0",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Mourning Never Comes's AlainAlreadyDead == 1; the speaker is Muiri",
+       "source": "TIF__00058FD0.Fragment_0 on INFO Skyrim.esm:058FD0 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1068,7 +1156,60 @@
      "atStage": 200,
      "call": "SetStage 1",
      "source": "QF_DB03_0001EA52.fragment_14 on Skyrim.esm:01EA52 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Astrid",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Abandoned Shack"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0403F6",
+       "prompt": "(Remain silent)",
+       "reply": [
+        "No objections, then? Good. Go now. Before they meet. And report back to me with whatever you learn."
+       ],
+       "conditions": "the speaker is Astrid",
+       "source": "TIF__000403F6.Fragment_0 on INFO Skyrim.esm:0403F6 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Astrid",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Abandoned Shack"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:0403F7",
+       "prompt": "Yes, the coffin. It's perfect.",
+       "reply": [
+        "They'll never think to check it. Who in their right mind would hide inside? Now go. Before they meet. And report back to me with whatever you learn."
+       ],
+       "conditions": "the speaker is Astrid",
+       "source": "TIF__000403F7.Fragment_0 on INFO Skyrim.esm:0403F7 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Astrid",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Abandoned Shack"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:040361",
+       "prompt": "But that seems so... disrespectful.",
+       "reply": [
+        "Be that as it may, we have no other choice. You need to remain unseen! Now go! Before they meet. And report back to me with whatever you learn."
+       ],
+       "conditions": "the speaker is Astrid",
+       "source": "TIF__00040361.Fragment_0 on INFO Skyrim.esm:040361 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -1134,7 +1275,7 @@
      "reply": [
       "Have you seen Astrid? She needs to speak with you. It seemed urgent. Come talk to me afterward."
      ],
-     "conditions": "fn629 == 4; the speaker is Nazir",
+     "conditions": "Whispers in the Dark's Side == 4; the speaker is Nazir",
      "source": "TIF__000A34FD.Fragment_0 on INFO Skyrim.esm:0A34FD (Skyrim.esm)",
      "verdict": "script"
     }
@@ -1202,6 +1343,13 @@
     "source": "Skyrim.esm:01EA53 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
+   },
    "target": [
     {
      "alias": "CoffinAlias",
@@ -1259,7 +1407,28 @@
      "atStage": 40,
      "call": "Start",
      "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Cicero",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 40",
+       "info": "Skyrim.esm:02243A",
+       "prompt": "Wait! She said to tell you, \"Darkness rises when silence dies.\"",
+       "reply": [
+        "She... she said that? She said those words... to you? \"Darkness rises when silence dies\"?",
+        "But those are the words. The Binding Words. Written in the Keeping Tomes. The signal so I would know. Mother's only way of talking to sweet Cicero...",
+        "Then... it's true! She's back! Our lady is back! She has chosen a Listener! She has chosen you! Ha ha ha! All hail the Listener!"
+       ],
+       "conditions": "the speaker is Cicero",
+       "source": "TIF__0002243A.Fragment_0 on INFO Skyrim.esm:02243A (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -1318,6 +1487,13 @@
     "index": 5,
     "source": "Skyrim.esm:02AD16 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "20": 10,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -1562,6 +1738,10 @@
     "source": "Skyrim.esm:01EA54 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "VittoriaViciAlias",
@@ -1609,7 +1789,8 @@
       "atStage": 0,
       "call": "SetStage 20",
       "source": "QF_DB06_0001EA55.fragment_0 on Skyrim.esm:01EA55 (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      }
     ]
    }
@@ -1622,6 +1803,19 @@
    "firstObjectiveStage": 5,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "Bonus",
+       "of": "Skyrim.esm:01EA54",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Astrid",
      "speakerNamed": "GetIsID",
@@ -1637,7 +1831,7 @@
       "Ah, and of course, a bonus, for killing Vici while she addressed her guests, as instructed. Gold... simple and pure. Spend it as you will.",
       "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
      ],
-     "conditions": "fn629 == 1; the speaker is Astrid",
+     "conditions": "Bound Until Death's Bonus == 1; the speaker is Astrid",
      "source": "TIF__00037B52.Fragment_0 on INFO Skyrim.esm:037B52 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1657,11 +1851,24 @@
       "Unfortunately, in your zeal, you failed to eliminate Vici while she addressed her guests, as directed. I'm sorry, but your bonus is forfeit.",
       "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
      ],
-     "conditions": "fn629 == 0; the speaker is Astrid",
+     "conditions": "Bound Until Death's Bonus == 0; the speaker is Astrid",
      "source": "TIF__000618A6.Fragment_0 on INFO Skyrim.esm:0618A6 (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "Bonus",
+       "of": "Skyrim.esm:01EA54",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Astrid",
      "speakerNamed": "GetIsID",
@@ -1677,7 +1884,7 @@
       "Ah, and of course, a bonus, for killing Vici while she addressed her guests, as instructed. Gold... simple and pure. Spend it as you will.",
       "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
      ],
-     "conditions": "fn629 == 1; the speaker is Astrid",
+     "conditions": "Bound Until Death's Bonus == 1; the speaker is Astrid",
      "source": "TIF__00037B43.Fragment_0 on INFO Skyrim.esm:037B43 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1697,11 +1904,24 @@
       "Unfortunately, in your zeal, you failed to eliminate Vici while she addressed her guests, as directed. I'm sorry, but your bonus is forfeit.",
       "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
      ],
-     "conditions": "fn629 == 0; the speaker is Astrid",
+     "conditions": "Bound Until Death's Bonus == 0; the speaker is Astrid",
      "source": "TIF__000618A7.Fragment_0 on INFO Skyrim.esm:0618A7 (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "Bonus",
+       "of": "Skyrim.esm:01EA54",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Astrid",
      "speakerNamed": "GetIsID",
@@ -1717,7 +1937,7 @@
       "Ah, and of course, a bonus, for killing Vici while she addressed her guests, as instructed. Gold... simple and pure. Spend it as you will.",
       "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
      ],
-     "conditions": "fn629 == 1; the speaker is Astrid",
+     "conditions": "Bound Until Death's Bonus == 1; the speaker is Astrid",
      "source": "TIF__00037B4B.Fragment_0 on INFO Skyrim.esm:037B4B (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1737,7 +1957,7 @@
       "Unfortunately, in your zeal, you failed to eliminate Vici while she addressed her guests, as directed. I'm sorry, but your bonus is forfeit.",
       "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
      ],
-     "conditions": "fn629 == 0; the speaker is Astrid",
+     "conditions": "Bound Until Death's Bonus == 0; the speaker is Astrid",
      "source": "TIF__000618A8.Fragment_0 on INFO Skyrim.esm:0618A8 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -1780,6 +2000,12 @@
     "index": 5,
     "source": "Skyrim.esm:01EA55 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "8": 10,
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -1885,7 +2111,7 @@
       "But you should know that we have a more pressing matter to deal with.",
       "It's... Cicero. There's been an incident. You should proceed into the Sanctuary. I'll let Astrid explain."
      ],
-     "conditions": "fn629 == 1; the speaker is Gabriella",
+     "conditions": "Breaching Security's pBonus == 1; the speaker is Gabriella",
      "source": "TIF__00059636.Fragment_1 on INFO Skyrim.esm:059636 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1904,7 +2130,7 @@
       "But you should know that we have a more pressing matter to deal with.",
       "It's... Cicero. There's been an incident. You should proceed into the Sanctuary. I'll let Astrid explain."
      ],
-     "conditions": "fn629 == 0; the speaker is Gabriella",
+     "conditions": "Breaching Security's pBonus == 0; the speaker is Gabriella",
      "source": "TIF__00059643.Fragment_1 on INFO Skyrim.esm:059643 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -1941,6 +2167,18 @@
     "index": 10,
     "source": "Skyrim.esm:01EA56 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "17": 17,
+    "19": 19,
+    "25": 25,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "666": 20
    },
    "target": [
     {
@@ -2066,6 +2304,14 @@
     "index": 2,
     "source": "Skyrim.esm:01EA57 QOBJ 2",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "2": 2,
+    "4": 4,
+    "6": 6,
+    "10": 10,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -2253,7 +2499,7 @@
       "Well. Looks like you completed the contract as directed. Finally. A little sloppy, but, well... done is done.",
       "Here's your gold, with a little extra for hiding the body. Now go see Astrid. The final stage of the contract has come. The Emperor must fall."
      ],
-     "conditions": "fn629 == 1; fn629 == 1; fn629 == 1; fn629 == 1; the speaker is Festus Krex",
+     "conditions": "Recipe for Disaster's pFestusFirstTalk == 1; Recipe for Disaster's pAntonDead == 1; Recipe for Disaster's pHasPapers == 1; Recipe for Disaster's pBodyHidden == 1; the speaker is Festus Krex",
      "source": "TIF__00068B78.Fragment_1 on INFO Skyrim.esm:068B78 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -2273,7 +2519,7 @@
       "But unfortunately, that inn is abuzz with the news of somebody killing one of their guests! What, hiding the body was too much for you to handle?",
       "Bah! Useless. Here's your gold. Now go see Astrid. The time to move against the Emperor has finally come. Sithis help us all."
      ],
-     "conditions": "fn629 == 1; fn629 == 1; fn629 == 0; the speaker is Festus Krex",
+     "conditions": "Recipe for Disaster's pAntonDead == 1; Recipe for Disaster's pHasPapers == 1; Recipe for Disaster's pBodyHidden == 0; the speaker is Festus Krex",
      "source": "TIF__00068B7B.Fragment_1 on INFO Skyrim.esm:068B7B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -2298,6 +2544,17 @@
     "index": 5,
     "source": "Skyrim.esm:01EA58 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "70": 70
    },
    "target": [
     {
@@ -2398,7 +2655,8 @@
      "atStage": 75,
      "call": "SetStage 1",
      "source": "QF_DB09_0001EA58.fragment_59 on Skyrim.esm:01EA58 (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [
@@ -2415,6 +2673,18 @@
     "index": 10,
     "source": "Skyrim.esm:03CEDA QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30,
+    "35": 35,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "70": 70,
+    "80": 80
    },
    "target": [
     {
@@ -2480,6 +2750,17 @@
     "index": 5,
     "source": "Skyrim.esm:01EA59 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "70": 70,
+    "80": 80
    },
    "target": [
     {
@@ -2570,12 +2851,19 @@
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 5,
+   "advancedBy": 6,
    "firstObjective": {
     "text": "Report Astrid's death to a guard",
     "index": 10,
     "source": "Skyrim.esm:0934FB QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -2665,7 +2953,7 @@
      "reply": [
       "You disrespected the Brotherhood. And it'll cost you. You want back into the Family, you pay the price. 500 gold, and all is forgiven."
      ],
-     "conditions": "fn629 == 1; Hail Sithis! stage <= 80; the speaker is Nazir",
+     "conditions": "Honor Thy Family's DBEvicted == 1; Hail Sithis! stage <= 80; the speaker is Nazir",
      "source": "TIF__0006F99D.Fragment_0 on INFO Skyrim.esm:06F99D (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2682,7 +2970,7 @@
      "reply": [
       "You may be Listener, and head of the Sanctuary, but your recent behavior sets a bad example. I must insist you pay a fine of 300 gold."
      ],
-     "conditions": "fn629 == 1; Hail Sithis! stage > 80; the speaker is Nazir",
+     "conditions": "Honor Thy Family's DBEvicted == 1; Hail Sithis! stage > 80; the speaker is Nazir",
      "source": "TIF__0006F99E.Fragment_0 on INFO Skyrim.esm:06F99E (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2699,7 +2987,7 @@
      "reply": [
       "If the Tenets were still in place, you would be required to defeat the Wrath of Sithis. Now you just need to pay a fine to Nazir. Ah, the Old Ways..."
      ],
-     "conditions": "fn629 == 1; the speaker is Gabriella; Destroy the Dark Brotherhood! stage <= 10",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Gabriella; Destroy the Dark Brotherhood! stage <= 10",
      "source": "TIF__0006F99F.Fragment_0 on INFO Skyrim.esm:06F99F (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -2716,7 +3004,7 @@
      "reply": [
       "When you disrespect your Family, you disrespect yourself. Don't you care for anything at all? Prove that you do - speak with Nazir, make reparations."
      ],
-     "conditions": "fn629 == 1; the speaker is Babette",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Babette",
      "source": "TIF__0006F9A0.Fragment_0 on INFO Skyrim.esm:06F9A0 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2733,7 +3021,7 @@
      "reply": [
       "Bah. If it were up to me, we'd cut off your hands and never let you back in this Sanctuary. But no. All you have to do is pay Nazir a fine. Pathetic."
      ],
-     "conditions": "fn629 == 1; the speaker is Festus Krex",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Festus Krex",
      "source": "TIF__0006F9A1.Fragment_0 on INFO Skyrim.esm:06F9A1 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2750,7 +3038,7 @@
      "reply": [
       "Ah, don't worry, we all like to break the rules sometimes. Just see Nazir and pay the fine. Seems I do that at least once a month..."
      ],
-     "conditions": "fn629 == 1; the speaker is Arnbjorn",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Arnbjorn",
      "source": "TIF__0006F9A2.Fragment_0 on INFO Skyrim.esm:06F9A2 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2767,7 +3055,7 @@
      "reply": [
       "There are so few rules here. All we ask is that you don't disrespect your Family. But for some reason, you have. Best talk to Nazir and pay the fine."
      ],
-     "conditions": "fn629 == 1; the speaker is Veezara; Destroy the Dark Brotherhood! stage <= 10",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Veezara; Destroy the Dark Brotherhood! stage <= 10",
      "source": "TIF__0006F9A3.Fragment_0 on INFO Skyrim.esm:06F9A3 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
     },
@@ -2784,7 +3072,7 @@
      "reply": [
       "Idiot. I may not have a lot of rules, but that doesn't give you free rein to do as you please. You want to resume your duties? Go talk to Nazir."
      ],
-     "conditions": "fn629 == 1; the speaker is Astrid",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Astrid",
      "source": "TIF__0006F9A4.Fragment_0 on INFO Skyrim.esm:06F9A4 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -2801,7 +3089,7 @@
      "reply": [
       "Oh, but Cicero can't talk to you. You've been naughty, naughty. I think you need to clear this whole mess up with Nazir."
      ],
-     "conditions": "fn629 == 1; the speaker is Cicero",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Cicero",
      "source": "TIF__000D5C3A.Fragment_0 on INFO Skyrim.esm:0D5C3A (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2818,7 +3106,7 @@
      "reply": [
       "Looks like Cicero's not the only one to go a little crazy from time to time. Eh, Listener? You should talk to Nazir, work this whole mess out."
      ],
-     "conditions": "fn629 == 1; the speaker is Cicero",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Cicero",
      "source": "TIF__000D5C3B.Fragment_0 on INFO Skyrim.esm:0D5C3B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -2835,7 +3123,7 @@
      "reply": [
       "With all due respect, Listener, you broke what few rules we seem to have. Nazir insists you talk to him and work this issue out."
      ],
-     "conditions": "fn629 == 1; the speaker is Dark Brotherhood Initiate",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Dark Brotherhood Initiate",
      "source": "TIF__000D5C3C.Fragment_0 on INFO Skyrim.esm:0D5C3C (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2852,7 +3140,7 @@
      "reply": [
       "I do apologize, Listener, but Nazir made it clear the initiates are not to speak with you until you first deal with him, and atone for your actions."
      ],
-     "conditions": "fn629 == 1; the speaker is Adelinda",
+     "conditions": "Honor Thy Family's DBEvicted == 1; the speaker is Adelinda",
      "source": "TIF__000D5C3D.Fragment_0 on INFO Skyrim.esm:0D5C3D (Skyrim.esm)",
      "verdict": "script"
     }
@@ -2864,6 +3152,9 @@
     "index": 10,
     "source": "Skyrim.esm:06F9A5 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -2905,6 +3196,205 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract03 (Contract: Kill Beitild)",
+       "questId": "Skyrim.esm:01EA5F",
+       "edid": "DBSideContract03",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5F stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract02 (Contract: Kill Ennodius Papius)",
+       "questId": "Skyrim.esm:01EA5E",
+       "edid": "DBSideContract02",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5E stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04 (Whispers in the Dark)",
+       "questId": "Skyrim.esm:01EA53",
+       "edid": "DB04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA53 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -2919,7 +3409,7 @@
       "Your targets are the beggar Narfi, an ex-miller named Ennodius Papius, and Beitild, a mine boss.",
       "When you've completed all those, we'll see if I might have some more."
      ],
-     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
+     "conditions": "Sanctuary stage < 200; Dark Brotherhood's FirstSet == 1; the speaker is Nazir; GetInFaction ccVSVSSE004_FACT_FarmFarmhand == 0",
      "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     }
@@ -2931,6 +3421,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA5B QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -2989,6 +3483,205 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract03 (Contract: Kill Beitild)",
+       "questId": "Skyrim.esm:01EA5F",
+       "edid": "DBSideContract03",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5F stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract02 (Contract: Kill Ennodius Papius)",
+       "questId": "Skyrim.esm:01EA5E",
+       "edid": "DBSideContract02",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5E stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04 (Whispers in the Dark)",
+       "questId": "Skyrim.esm:01EA53",
+       "edid": "DB04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA53 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3003,11 +3696,210 @@
       "Your targets are the beggar Narfi, an ex-miller named Ennodius Papius, and Beitild, a mine boss.",
       "When you've completed all those, we'll see if I might have some more."
      ],
-     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
+     "conditions": "Sanctuary stage < 200; Dark Brotherhood's FirstSet == 1; the speaker is Nazir; GetInFaction ccVSVSSE004_FACT_FarmFarmhand == 0",
      "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract03 (Contract: Kill Beitild)",
+       "questId": "Skyrim.esm:01EA5F",
+       "edid": "DBSideContract03",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5F stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract02 (Contract: Kill Ennodius Papius)",
+       "questId": "Skyrim.esm:01EA5E",
+       "edid": "DBSideContract02",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5E stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04 (Whispers in the Dark)",
+       "questId": "Skyrim.esm:01EA53",
+       "edid": "DB04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA53 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3022,7 +3914,7 @@
       "Your targets are an ex-miller named Ennodius Papius and Beitild, a mine boss.",
       "When you've completed all those, we'll see if I might have some more."
      ],
-     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 1",
+     "conditions": "Sanctuary stage < 200; Dark Brotherhood's FirstSet == 1; the speaker is Nazir; GetInFaction ccVSVSSE004_FACT_FarmFarmhand == 1",
      "source": "DBNazir_ContractSet1Ready_Alternate.Fragment_0 on INFO CC Farming - Tweaks and Enhancements.esp:000800 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     }
@@ -3034,6 +3926,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA5E QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3080,6 +3976,205 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract03 (Contract: Kill Beitild)",
+       "questId": "Skyrim.esm:01EA5F",
+       "edid": "DBSideContract03",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5F stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract02 (Contract: Kill Ennodius Papius)",
+       "questId": "Skyrim.esm:01EA5E",
+       "edid": "DBSideContract02",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5E stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04 (Whispers in the Dark)",
+       "questId": "Skyrim.esm:01EA53",
+       "edid": "DB04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA53 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3094,11 +4189,210 @@
       "Your targets are the beggar Narfi, an ex-miller named Ennodius Papius, and Beitild, a mine boss.",
       "When you've completed all those, we'll see if I might have some more."
      ],
-     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
+     "conditions": "Sanctuary stage < 200; Dark Brotherhood's FirstSet == 1; the speaker is Nazir; GetInFaction ccVSVSSE004_FACT_FarmFarmhand == 0",
      "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract03 (Contract: Kill Beitild)",
+       "questId": "Skyrim.esm:01EA5F",
+       "edid": "DBSideContract03",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5F stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract02 (Contract: Kill Ennodius Papius)",
+       "questId": "Skyrim.esm:01EA5E",
+       "edid": "DBSideContract02",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5E stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04 (Whispers in the Dark)",
+       "questId": "Skyrim.esm:01EA53",
+       "edid": "DB04",
+       "atStage": 0,
+       "sets": "FirstSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA53 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3113,7 +4407,7 @@
       "Your targets are an ex-miller named Ennodius Papius and Beitild, a mine boss.",
       "When you've completed all those, we'll see if I might have some more."
      ],
-     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 1",
+     "conditions": "Sanctuary stage < 200; Dark Brotherhood's FirstSet == 1; the speaker is Nazir; GetInFaction ccVSVSSE004_FACT_FarmFarmhand == 1",
      "source": "DBNazir_ContractSet1Ready_Alternate.Fragment_0 on INFO CC Farming - Tweaks and Enhancements.esp:000800 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     }
@@ -3125,6 +4419,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA5F QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3191,7 +4489,7 @@
       "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
       "Happy hunting."
      ],
-     "conditions": "Whispers in the Dark stage > 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "conditions": "Whispers in the Dark stage > 50; Dark Brotherhood's ContractSet == 3; Dark Brotherhood's NextSet == 0; the speaker is Nazir",
      "source": "TIF__0002AD12.Fragment_0 on INFO Skyrim.esm:02AD12 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     },
@@ -3211,7 +4509,7 @@
       "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
       "Happy hunting."
      ],
-     "conditions": "Whispers in the Dark stage == 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "conditions": "Whispers in the Dark stage == 50; Dark Brotherhood's ContractSet == 3; Dark Brotherhood's NextSet == 0; the speaker is Nazir",
      "source": "TIF__000205BE.Fragment_0 on INFO Skyrim.esm:0205BE (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     }
@@ -3223,6 +4521,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA60 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3289,7 +4591,7 @@
       "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
       "Happy hunting."
      ],
-     "conditions": "Whispers in the Dark stage > 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "conditions": "Whispers in the Dark stage > 50; Dark Brotherhood's ContractSet == 3; Dark Brotherhood's NextSet == 0; the speaker is Nazir",
      "source": "TIF__0002AD12.Fragment_0 on INFO Skyrim.esm:02AD12 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     },
@@ -3309,7 +4611,7 @@
       "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
       "Happy hunting."
      ],
-     "conditions": "Whispers in the Dark stage == 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "conditions": "Whispers in the Dark stage == 50; Dark Brotherhood's ContractSet == 3; Dark Brotherhood's NextSet == 0; the speaker is Nazir",
      "source": "TIF__000205BE.Fragment_0 on INFO Skyrim.esm:0205BE (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
     }
@@ -3321,6 +4623,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA61 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3373,6 +4679,216 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract11 (Contract: Kill Helvard)",
+       "questId": "Skyrim.esm:01EA67",
+       "edid": "DBSideContract11",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA67 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract08 (Contract: Kill Anoriath)",
+       "questId": "Skyrim.esm:01EA64",
+       "edid": "DBSideContract08",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA64 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract07 (Contract: Kill Ma'randru-jo)",
+       "questId": "Skyrim.esm:01EA63",
+       "edid": "DBSideContract07",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA63 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract05 (Contract: Kill Lurbuk)",
+       "questId": "Skyrim.esm:01EA61",
+       "edid": "DBSideContract05",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA61 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3386,7 +4902,7 @@
       "There are indeed. Three, to be exact.",
       "There's Deekus, a shipwreck scavenger. Ma'randru-jo, a traveling caravaner. And Anoriath, a hunter."
      ],
-     "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
+     "conditions": "The Silence Has Been Broken stage >= 30; Dark Brotherhood's ContractSet == 5; Dark Brotherhood's NextSet == 1; the speaker is Nazir",
      "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -3398,6 +4914,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA62 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3444,6 +4964,216 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract11 (Contract: Kill Helvard)",
+       "questId": "Skyrim.esm:01EA67",
+       "edid": "DBSideContract11",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA67 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract08 (Contract: Kill Anoriath)",
+       "questId": "Skyrim.esm:01EA64",
+       "edid": "DBSideContract08",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA64 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract07 (Contract: Kill Ma'randru-jo)",
+       "questId": "Skyrim.esm:01EA63",
+       "edid": "DBSideContract07",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA63 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract05 (Contract: Kill Lurbuk)",
+       "questId": "Skyrim.esm:01EA61",
+       "edid": "DBSideContract05",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA61 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3457,7 +5187,7 @@
       "There are indeed. Three, to be exact.",
       "There's Deekus, a shipwreck scavenger. Ma'randru-jo, a traveling caravaner. And Anoriath, a hunter."
      ],
-     "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
+     "conditions": "The Silence Has Been Broken stage >= 30; Dark Brotherhood's ContractSet == 5; Dark Brotherhood's NextSet == 1; the speaker is Nazir",
      "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -3469,6 +5199,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA63 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3532,6 +5266,216 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "after": [
+      {
+       "quest": "DB10 (Death Incarnate)",
+       "questId": "Skyrim.esm:03CEDA",
+       "edid": "DB10",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:03CEDA stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB04a (The Silence Has Been Broken)",
+       "questId": "Skyrim.esm:02AD16",
+       "edid": "DB04a",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "DB04 (Whispers in the Dark)",
+         "questId": "Skyrim.esm:01EA53",
+         "atStage": 40,
+         "call": "Start",
+         "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02AD16 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract12 (Contract: Kill Safia)",
+       "questId": "Skyrim.esm:01EA68",
+       "edid": "DBSideContract12",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA68 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract11 (Contract: Kill Helvard)",
+       "questId": "Skyrim.esm:01EA67",
+       "edid": "DBSideContract11",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA67 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract10 (Contract: Kill Maluril)",
+       "questId": "Skyrim.esm:01EA66",
+       "edid": "DBSideContract10",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA66 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract09 (Contract: Kill Agnis)",
+       "questId": "Skyrim.esm:01EA65",
+       "edid": "DBSideContract09",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA65 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract08 (Contract: Kill Anoriath)",
+       "questId": "Skyrim.esm:01EA64",
+       "edid": "DBSideContract08",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA64 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract07 (Contract: Kill Ma'randru-jo)",
+       "questId": "Skyrim.esm:01EA63",
+       "edid": "DBSideContract07",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA63 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract06 (Contract: Kill Deekus)",
+       "questId": "Skyrim.esm:01EA62",
+       "edid": "DBSideContract06",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA62 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract05 (Contract: Kill Lurbuk)",
+       "questId": "Skyrim.esm:01EA61",
+       "edid": "DBSideContract05",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA61 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBSideContract04 (Contract: Kill Hern)",
+       "questId": "Skyrim.esm:01EA60",
+       "edid": "DBSideContract04",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA60 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "edid": "DBrecurring",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA5A stage 0 fragment (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB11 (Hail Sithis!)",
+       "questId": "Skyrim.esm:01EA59",
+       "edid": "DB11",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA59 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB09 (To Kill an Empire)",
+       "questId": "Skyrim.esm:01EA58",
+       "edid": "DB09",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA58 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB08 (Recipe for Disaster)",
+       "questId": "Skyrim.esm:01EA57",
+       "edid": "DB08",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA57 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB07 (The Cure for Madness)",
+       "questId": "Skyrim.esm:01EA56",
+       "edid": "DB07",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA56 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB06 (Breaching Security)",
+       "questId": "Skyrim.esm:01EA55",
+       "edid": "DB06",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA55 stage 0 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "DB05 (Bound Until Death)",
+       "questId": "Skyrim.esm:01EA54",
+       "edid": "DB05",
+       "atStage": 0,
+       "sets": "NextSet",
+       "of": "Skyrim.esm:01EA5C",
+       "startedBy": [],
+       "source": "Skyrim.esm:01EA54 stage 0 fragment (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Nazir",
      "speakerNamed": "GetIsID",
@@ -3545,7 +5489,7 @@
       "There are indeed. Three, to be exact.",
       "There's Deekus, a shipwreck scavenger. Ma'randru-jo, a traveling caravaner. And Anoriath, a hunter."
      ],
-     "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
+     "conditions": "The Silence Has Been Broken stage >= 30; Dark Brotherhood's ContractSet == 5; Dark Brotherhood's NextSet == 1; the speaker is Nazir",
      "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -3557,6 +5501,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA64 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3622,7 +5570,7 @@
       "Just one right now, actually. ",
       "I need you to eliminate an old woman named Agnis, a servant in Fort Greymoor."
      ],
-     "conditions": "fn629 == 8; fn629 == 2; the speaker is Nazir",
+     "conditions": "Dark Brotherhood's ContractSet == 8; Dark Brotherhood's NextSet == 2; the speaker is Nazir",
      "source": "TIF__000205C1.Fragment_0 on INFO Skyrim.esm:0205C1 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -3634,6 +5582,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA65 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3700,7 +5652,7 @@
       "Your targets are a Dark Elf wizard named Maluril, in the dwarven ruin of Mzinchaleft. And Helvard, the Housecarl of Falkreath.",
       "Kill these two, and I'll have one last contract to give you. I'm just finalizing some details now."
      ],
-     "conditions": "fn629 == 9; fn629 == 3; the speaker is Nazir",
+     "conditions": "Dark Brotherhood's ContractSet == 9; Dark Brotherhood's NextSet == 3; the speaker is Nazir",
      "source": "TIF__000205C0.Fragment_0 on INFO Skyrim.esm:0205C0 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -3712,6 +5664,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA66 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3778,7 +5734,7 @@
       "Your targets are a Dark Elf wizard named Maluril, in the dwarven ruin of Mzinchaleft. And Helvard, the Housecarl of Falkreath.",
       "Kill these two, and I'll have one last contract to give you. I'm just finalizing some details now."
      ],
-     "conditions": "fn629 == 9; fn629 == 3; the speaker is Nazir",
+     "conditions": "Dark Brotherhood's ContractSet == 9; Dark Brotherhood's NextSet == 3; the speaker is Nazir",
      "source": "TIF__000205C0.Fragment_0 on INFO Skyrim.esm:0205C0 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -3790,6 +5746,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA67 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3856,7 +5816,7 @@
       "You need to find and kill Safia, the captain of the pirate ship Red Wave.",
       "The ship travels the northern coast, and sometimes isn't even in Skyrim at all. So you'll have to be patient. Good luck."
      ],
-     "conditions": "fn629 == 11; fn629 == 4; the speaker is Nazir",
+     "conditions": "Dark Brotherhood's ContractSet == 11; Dark Brotherhood's NextSet == 4; the speaker is Nazir",
      "source": "TIF__000205BD.Fragment_0 on INFO Skyrim.esm:0205BD (Skyrim.esm)",
      "verdict": "script"
     }
@@ -3868,6 +5828,10 @@
     "index": 10,
     "source": "Skyrim.esm:01EA68 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -3933,6 +5897,7 @@
     "source": "Innocence Lost - Quest Expansion.esp:000836 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -3959,7 +5924,17 @@
    "name": "Contract: Kill Braith",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Braith",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000811",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Braith",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000811",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -3967,6 +5942,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000822 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4025,8 +6004,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000FE8",
@@ -4034,7 +6012,17 @@
    "name": "Contract: Kill Elenwen",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Elenwen",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000FE1",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Elenwen",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000FE1",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4042,6 +6030,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000FE8 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4100,8 +6092,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000E51",
@@ -4109,7 +6100,17 @@
    "name": "Contract: Kill Erikur",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Erikur",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000E47",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Erikur",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000E47",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4117,6 +6118,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000E51 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4175,8 +6180,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000DCA",
@@ -4184,7 +6188,17 @@
    "name": "Contract: Kill Lemkil",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Lemkil",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000DC1",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Lemkil",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000DC1",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4192,6 +6206,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000DCA QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4250,8 +6268,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:00081B",
@@ -4259,7 +6276,17 @@
    "name": "Contract: Kill Nazeem",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Nazeem",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000810",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Nazeem",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000810",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4267,6 +6294,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:00081B QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4325,8 +6356,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000858",
@@ -4334,7 +6364,17 @@
    "name": "Contract: Kill Rolff Stone-Fist",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Rolff Stone-Fist",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000813",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Rolff Stone-Fist",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000813",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4342,6 +6382,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000858 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4400,8 +6444,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000E3C",
@@ -4409,7 +6452,17 @@
    "name": "Contract: Kill Serana",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Serana",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000E32",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Serana",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000E32",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4417,6 +6470,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000E3C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4475,8 +6532,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:00082B",
@@ -4484,7 +6540,17 @@
    "name": "Contract: Kill Taarie and Endarie",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Taarie and Endarie",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000812",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Taarie and Endarie",
+     "source": "ExtraContractsDoubleReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000812",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4492,6 +6558,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:00082B QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4571,8 +6641,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000FDA",
@@ -4580,7 +6649,17 @@
    "name": "Contract: Kill Thonar Silver-Blood",
    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "Contract: Kill Thonar Silver-Blood",
+     "bookId": "Additional Contracts For the Dark Brotherhood.esp:000FD0",
+     "call": "SetStage 10",
+     "plain": "Read Contract: Kill Thonar Silver-Blood",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000FD0",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
@@ -4588,6 +6667,10 @@
     "index": 10,
     "source": "Additional Contracts For the Dark Brotherhood.esp:000FDA QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -4646,8 +6729,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Listen.esp:000808",
@@ -4665,6 +6747,7 @@
    "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -4688,7 +6771,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4697,7 +6797,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4725,6 +6842,10 @@
     "index": 10,
     "source": "Listen.esp:000828 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10
    },
    "target": [
     {
@@ -4767,7 +6888,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4776,7 +6914,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4804,6 +6959,10 @@
     "index": 10,
     "source": "Listen.esp:00081A QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10
    },
    "target": [
     {
@@ -4846,7 +7005,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4855,7 +7031,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4883,6 +7076,10 @@
     "index": 10,
     "source": "Listen.esp:000820 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10
    },
    "target": [
     {
@@ -4925,7 +7122,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4934,7 +7148,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -4962,6 +7193,10 @@
     "index": 10,
     "source": "Listen.esp:000802 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10
    },
    "target": [
     {
@@ -5004,7 +7239,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -5013,7 +7265,24 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Night Mother",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 10",
+       "info": "Listen.esp:000807",
+       "prompt": null,
+       "reply": [],
+       "conditions": "global LTNDontGiveQuests == 0 (now 0); the speaker is Night Mother; Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> hasn't started or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200 or Contract: Kill <Alias=Target> stage == 200",
+       "source": "TIF__01000807.Fragment_0 on INFO Listen.esp:000807 (Listen.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -5041,6 +7310,10 @@
     "index": 10,
     "source": "Listen.esp:000819 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10
    },
    "target": [
     {
@@ -5104,6 +7377,11 @@
     "index": 10,
     "source": "Skyrim.esm:01EA5A QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 15,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -6565,7 +8843,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -6658,7 +8936,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -6751,7 +9029,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -6844,7 +9122,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -6937,7 +9215,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -7030,7 +9308,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -7123,7 +9401,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -7216,7 +9494,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -7309,7 +9587,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -7403,261 +9681,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

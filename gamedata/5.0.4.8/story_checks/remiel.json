@@ -11,9 +11,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOADQuest (Attuned Assassination)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 20",
      "info": "HLIORemi.esp:62E266",
      "prompt": "Maybe the Bard's College?",
@@ -27,9 +29,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOADQuest (Attuned Assassination)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 10",
      "info": "HLIORemi.esp:62E265",
      "prompt": "I don't think Skyrim is known for its libraries.",
@@ -73,6 +77,13 @@
     "source": "HLIORemi.esp:62E259 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60
+   },
    "target": [
     {
      "alias": "BCBook",
@@ -115,9 +126,11 @@
     "movedBy": [
      {
       "by": "dialogue",
-      "speaker": null,
-      "speakerNamed": "GetIsID",
-      "speakerPlaced": [],
+      "speaker": "Remiel",
+      "speakerNamed": "the one follower in HLIOADQuest (Attuned Assassination)'s aliases",
+      "speakerPlaced": [
+       "Silver-Blood Inn"
+      ],
       "call": "SetStage 30",
       "info": "HLIORemi.esp:62E267",
       "prompt": "Maybe the College of Winterhold?",
@@ -176,9 +189,11 @@
      "sceneStartedBy": [
       {
        "by": "dialogue",
-       "speaker": null,
-       "speakerNamed": "GetIsID",
-       "speakerPlaced": [],
+       "speaker": "Remiel",
+       "speakerNamed": "the one follower in HLIOArkngchalManager (Exploring Arkngchal)'s aliases",
+       "speakerPlaced": [
+        "Silver-Blood Inn"
+       ],
        "call": "StartScene",
        "info": "HLIORemi.esp:6B76B0",
        "prompt": "Fine.",
@@ -244,6 +259,9 @@
     "index": 5,
     "source": "HLIORemi.esp:6A304E QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 4
    },
    "target": [
     {
@@ -396,9 +414,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOChaurusPieQuest (Real Nord Food)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 10",
      "info": "HLIORemi.esp:59B47A",
      "prompt": "A book. It's called 'Chaurus Pie.'",
@@ -412,9 +432,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOChaurusPieQuest (Real Nord Food)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 30",
      "info": "HLIORemi.esp:59B48D",
      "prompt": "That's a lot.",
@@ -438,6 +460,12 @@
     "index": 30,
     "source": "HLIORemi.esp:59B47F QOBJ 30",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "30": 30,
+    "40": 40,
+    "60": 60,
+    "70": 70
    },
    "target": [
     {
@@ -514,7 +542,7 @@
       "reply": [
        "Perfect! This must be where Nils makes his Chaurus Pie, so this is where I will be making mine! Give me just a moment..."
       ],
-      "conditions": "fn1 <= 300; Real Nord Food stage == 40; the speaker is Remiel",
+      "conditions": "GetDistance Skyrim.esm:10E3A2 <= 300; Real Nord Food stage == 40; the speaker is Remiel",
       "source": "HLIO_TIF__0559B497.Fragment_0 on INFO HLIORemi.esp:59B497 (HLIORemi.esp)",
       "verdict": "script",
       "startsScene": "HLIORemi.esp:59B498"
@@ -532,7 +560,7 @@
       "reply": [
        "Perfect! This must be where Nils makes his Chaurus Pie, so this is where I will be making mine! Give me just a moment..."
       ],
-      "conditions": "fn1 <= 300; Real Nord Food stage == 40; the speaker is Remiel",
+      "conditions": "GetDistance Skyrim.esm:10E3A2 <= 300; Real Nord Food stage == 40; the speaker is Remiel",
       "source": "HLIO_TIF__0559B4A4.Fragment_0 on INFO HLIORemi.esp:59B4A4 (HLIORemi.esp)",
       "verdict": "script",
       "startsScene": "HLIORemi.esp:59B498"
@@ -549,9 +577,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOMQ1 (Reunion of the Fallen)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 10",
      "info": "HLIORemi.esp:46FA5D",
      "prompt": "Anytime, Remi.",
@@ -564,9 +594,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOMQ1 (Reunion of the Fallen)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 10",
      "info": "HLIORemi.esp:46FA5E",
      "prompt": "This is getting too mushy.",
@@ -584,12 +616,36 @@
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 22,
+   "advancedBy": 26,
    "firstObjective": {
     "text": "Investigate the assassin's corpse.",
     "index": 20,
     "source": "HLIORemi.esp:46FA55 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "29": 29,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 50,
+    "70": 70,
+    "80": 80,
+    "87": 87,
+    "90": 90,
+    "100": 100,
+    "110": 110,
+    "120": 120,
+    "125": 125,
+    "130": 130,
+    "135": 135,
+    "140": 140,
+    "150": 150,
+    "170": 170,
+    "190": 190,
+    "200": 200,
+    "210": 210
    },
    "target": [
     {
@@ -620,8 +676,17 @@
      "verdict": "files"
     },
     "stage": 29,
-    "movedBy": [],
-    "unread": "nothing outside its own stage fragments sets stage 29 or one before it"
+    "movedBy": [
+     {
+      "by": "book",
+      "book": "Easy Job",
+      "bookId": "HLIORemi.esp:46FA63",
+      "call": "SetStage 29",
+      "plain": "Read Easy Job",
+      "source": "HLIOAssassinNoteScript.OnContainerChanged on BOOK HLIORemi.esp:46FA63",
+      "verdict": "script"
+     }
+    ]
    }
   },
   {
@@ -679,6 +744,16 @@
     "source": "HLIORemi.esp:22DCD3 QOBJ 5",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "5": 10,
+    "10": 10,
+    "15": 10,
+    "20": 10,
+    "25": 10,
+    "30": 10,
+    "35": 20,
+    "40": 30
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -708,9 +783,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIORPLantern (We Who Challenge the Sun)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 10",
      "info": "HLIORemi.esp:8486FA",
      "prompt": "This seems like a long shot, but I'll look.",
@@ -723,9 +800,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIORPLantern (We Who Challenge the Sun)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 9",
      "info": "HLIORemi.esp:8486FB",
      "prompt": "I'm not looking for Aetherium that may or may not be here.",
@@ -750,6 +829,12 @@
     "index": 10,
     "source": "HLIORemi.esp:8486EB QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "11": 11,
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -797,9 +882,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIORPLock (Picking Remi's Brain)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 20",
      "info": "HLIORemi.esp:23CFF2",
      "prompt": "How will you make it?",
@@ -825,6 +912,13 @@
     "index": 20,
     "source": "HLIORemi.esp:237EE7 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60
    },
    "target": [
     {
@@ -868,9 +962,11 @@
     "movedBy": [
      {
       "by": "dialogue",
-      "speaker": null,
-      "speakerNamed": "GetIsID",
-      "speakerPlaced": [],
+      "speaker": "Remiel",
+      "speakerNamed": "the one follower in HLIORPLock (Picking Remi's Brain)'s aliases",
+      "speakerPlaced": [
+       "Silver-Blood Inn"
+      ],
       "call": "SetStage 30",
       "info": "HLIORemi.esp:2420FD",
       "prompt": "Here you go.",
@@ -893,9 +989,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOScrapUpgrades (Upgrades)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 10",
      "info": "HLIORemi.esp:0C0FF2",
      "prompt": "Then let's head out.",
@@ -947,6 +1045,13 @@
     "source": "HLIORemi.esp:08E59F QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -977,7 +1082,7 @@
       "reply": [
        "Some of the dwemer spiders in here shoot electricity. Interesting..."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in Mzulft; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1002.Fragment_0 on INFO HLIORemi.esp:0C1002 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -994,7 +1099,7 @@
       "reply": [
        "Wow, look at how these machines are built! They're so efficient; the dwemer who lived here had a unique technique. This gives me some ideas..."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in Alftand; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1003.Fragment_0 on INFO HLIORemi.esp:0C1003 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -1011,7 +1116,7 @@
       "reply": [
        "It's incredible how long all this had lasted. Maybe... If I can mimic how these machines are built, it might make Scrap a bit tougher."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in Irkngthand; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1004.Fragment_0 on INFO HLIORemi.esp:0C1004 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -1028,7 +1133,7 @@
       "reply": [
        "Amazing! Look at this ball of energy! If I could replicate this advanced power somehow..."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in KagrenzelLocation; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1005.Fragment_0 on INFO HLIORemi.esp:0C1005 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -1045,7 +1150,7 @@
       "reply": [
        "This Lexicon you're carrying... some of the Dwemeri writing is familiar. Hm... Incredible! It's so simple, yet so effective! This will be use useful!"
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in Avanchnzel; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1006.Fragment_0 on INFO HLIORemi.esp:0C1006 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -1062,7 +1167,7 @@
       "reply": [
        "The way these automotons have been wired to protect these cultists is ingenious! I'm sure I can apply these techniques to strengthen Scrap."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in Bthardamz; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1007.Fragment_0 on INFO HLIORemi.esp:0C1007 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -1079,7 +1184,7 @@
       "reply": [
        "Amazing! It's THE Aetherium Forge! Look how they used the power of heat to achieve such greatness! Oh, the things I'm learning..."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in The Aetherium Forge; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1008.Fragment_0 on INFO HLIORemi.esp:0C1008 (HLIORemi.esp)",
       "verdict": "script"
      },
@@ -1096,7 +1201,7 @@
       "reply": [
        "Lever puzzles... Ingenious. I'm sure I can use a similar method to make sure no one else can rewire Scrap."
       ],
-      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; fn359 == 1; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
+      "conditions": "global HLIOBetaBaby == 1 (now 0); The Dwemer Specialist completed; you're in Mzinchaleft; the speaker is Remiel; GetInFaction CurrentFollowerFaction == 1",
       "source": "HLIO_TIF__070C1009.Fragment_0 on INFO HLIORemi.esp:0C1009 (HLIORemi.esp)",
       "verdict": "script"
      }
@@ -1112,9 +1217,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOStartingQuest (The Dwemer Specialist)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 7",
      "info": "HLIORemi.esp:0E4845",
      "prompt": "Well, good luck with that.",
@@ -1166,9 +1273,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Remiel",
+     "speakerNamed": "the one follower in HLIOStartingQuest (The Dwemer Specialist)'s aliases",
+     "speakerPlaced": [
+      "Silver-Blood Inn"
+     ],
      "call": "SetStage 5",
      "info": "HLIORemi.esp:1AA1E6",
      "prompt": "Absolutely not.",
@@ -1206,12 +1315,25 @@
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 13,
+   "advancedBy": 15,
    "firstObjective": {
     "text": "Speak to Calcelmo about the spider in the excavation site.",
     "index": 10,
     "source": "HLIORemi.esp:0E4852 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "70": 70,
+    "80": 80,
+    "90": 90,
+    "95": 95,
+    "100": 100
    },
    "target": [
     {
@@ -2389,15 +2511,17 @@
    ]
   }
  ],
- "otherStarts": "To get into Remiel: talk to A Thesis on the Properties of Tonal Magic and Its Practical Applications in Bards College, The Bards College: Attuned Assassination is running from the start (Take Remi to the Bard's College.); or talk to Lever in Arkngchal: Exploring Arkngchal is running from the start (Tell Remi what order to pull the levers.); or talk to Remiel in Silver-Blood Inn: Real Nord Food is running from the start (Tell Remi once you've acquired all the ingredients.); or talk to Easy Job: Reunion of the Fallen is running from the start (Investigate the assassin's corpse.); or We Who Challenge the Sun is running from the start: Find Aetherium in Arkngchal.; or talk to Blacksmith Forge in Markarth: Picking Remi's Brain is running from the start (Give Remi an iron ingot at the Markarth Forge.); or talk to Calcelmo in Understone Keep: The Dwemer Specialist is running from the start (Speak to Calcelmo about the spider in the excavation site.); or ask Remiel in Silver-Blood Inn \"We could try the Bard's College.\" (), which starts Attuned Assassination.",
+ "otherStarts": "To get into Remiel: talk to A Thesis on the Properties of Tonal Magic and Its Practical Applications in Bards College, The Bards College: Attuned Assassination is running from the start (Take Remi to the Bard's College.); or talk to Lever in Arkngchal: Exploring Arkngchal is running from the start (Tell Remi what order to pull the levers.); or talk to Remiel in Silver-Blood Inn: Real Nord Food is running from the start (Tell Remi once you've acquired all the ingredients.); or talk to Easy Job: Reunion of the Fallen is running from the start (Investigate the assassin's corpse.); or We Who Challenge the Sun is running from the start: Find Aetherium in Arkngchal.; or talk to Blacksmith Forge in Markarth: Picking Remi's Brain is running from the start (Give Remi an iron ingot at the Markarth Forge.); or talk to Calcelmo in Understone Keep: The Dwemer Specialist is running from the start (Speak to Calcelmo about the spider in the excavation site.); or ask Remiel in Silver-Blood Inn \"Maybe the Bard's College?\" (), which starts Attuned Assassination; or ask Remiel in Silver-Blood Inn \"I don't think Skyrim is known for its libraries.\" (), which starts Attuned Assassination; or ask Remiel in Silver-Blood Inn \"We could try the Bard's College.\" (), which starts Attuned Assassination.",
  "routes": [
   {
    "route": "dialogue INFO HLIORemi.esp:62E266",
    "kind": "dialogue",
-   "speaker": null,
-   "speakerNamed": "GetIsID",
-   "race": null,
-   "placed": [],
+   "speaker": "Remiel",
+   "speakerNamed": "the one follower in HLIOADQuest (Attuned Assassination)'s aliases",
+   "race": "Breton",
+   "placed": [
+    "Silver-Blood Inn"
+   ],
    "prompt": "Maybe the Bard's College?",
    "reply": [
     "Oh, you think so? They do have an awful lot of books, although I can't imagine they'd have something so complex as a manuscript on tonal magic.",
@@ -2406,16 +2530,17 @@
    "conditions": "",
    "does": "SetStage 20 on HLIOADQuest (Attuned Assassination)",
    "source": "HLIO_TIF__0562E266.Fragment_0 on INFO HLIORemi.esp:62E266 (HLIORemi.esp); topic HLIOADQuestADStartb3",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"Maybe the Bard's College?\": SetStage 20 on HLIOADQuest (Attuned Assassination).",
-   "stops": "the speaker isn't named by an NPC: GetIsID"
+   "sentence": "Talk to Remiel (Breton) in Silver-Blood Inn and choose \"Maybe the Bard's College?\": SetStage 20 on HLIOADQuest (Attuned Assassination)."
   },
   {
    "route": "dialogue INFO HLIORemi.esp:62E265",
    "kind": "dialogue",
-   "speaker": null,
-   "speakerNamed": "GetIsID",
-   "race": null,
-   "placed": [],
+   "speaker": "Remiel",
+   "speakerNamed": "the one follower in HLIOADQuest (Attuned Assassination)'s aliases",
+   "race": "Breton",
+   "placed": [
+    "Silver-Blood Inn"
+   ],
    "prompt": "I don't think Skyrim is known for its libraries.",
    "reply": [
     "Yes, well. That puts my idea at a stand-still. It's really not something that is intuitive to anyone other than the dwemer.",
@@ -2424,8 +2549,7 @@
    "conditions": "",
    "does": "SetStage 10 on HLIOADQuest (Attuned Assassination)",
    "source": "HLIO_TIF__0562E265.Fragment_0 on INFO HLIORemi.esp:62E265 (HLIORemi.esp); topic HLIOADQuestADStartc3",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"I don't think Skyrim is known for its libraries.\": SetStage 10 on HLIOADQuest (Attuned Assassination).",
-   "stops": "the speaker isn't named by an NPC: GetIsID"
+   "sentence": "Talk to Remiel (Breton) in Silver-Blood Inn and choose \"I don't think Skyrim is known for its libraries.\": SetStage 10 on HLIOADQuest (Attuned Assassination)."
   },
   {
    "route": "dialogue INFO HLIORemi.esp:62E26F",
@@ -2594,7 +2718,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -2687,7 +2811,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -2780,7 +2904,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -2873,7 +2997,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -2966,7 +3090,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -3059,7 +3183,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -3152,7 +3276,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -3245,7 +3369,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -3338,7 +3462,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -3432,261 +3556,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

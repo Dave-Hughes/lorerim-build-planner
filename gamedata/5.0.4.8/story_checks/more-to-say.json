@@ -45,6 +45,10 @@
     "source": "moretodo.esp:000818 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "ForswornBossAlias",
@@ -134,6 +138,10 @@
     "source": "moretodo.esp:000999 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "BanditBossAlias",
@@ -222,6 +230,10 @@
     "index": 10,
     "source": "moretodo.esp:000836 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -331,6 +343,12 @@
     "index": 20,
     "source": "moretodo.esp:00091B QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "22": 40,
+    "25": 50,
+    "100": 55
    },
    "target": [
     {
@@ -476,6 +494,7 @@
     "source": "moretodo.esp:000927 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -549,6 +568,10 @@
     "index": 20,
     "source": "moretodo.esp:000987 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "100": 100
    },
    "target": [
     {
@@ -638,6 +661,10 @@
     "index": 10,
     "source": "moretodo.esp:0008E1 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "100": 100
    },
    "target": [
     {
@@ -732,6 +759,10 @@
     "index": 10,
     "source": "moretodo.esp:000EEA QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -831,6 +862,12 @@
     "index": 10,
     "source": "moretosayriverwood.esp:000F02 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "110": 110,
+    "210": 220,
+    "220": 240
    },
    "target": [
     {
@@ -944,6 +981,10 @@
     "source": "secretofrorikstead.esp:000897 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20,
+    "100": 50
+   },
    "target": [
     {
      "alias": "MapMarkerAlias",
@@ -1042,7 +1083,7 @@
         "Raldbthar",
         "Brittleshin Pass",
         "Stony Creek Cave",
-        "Kagrenzel",
+        "Skyrim",
         "Drelas Cottage",
         "Crab Shack",
         "Lund's Hut",
@@ -1283,7 +1324,7 @@
         "Cragslane Cavern",
         "Cradlecrush Rock",
         "Korvanjund",
-        "Clearspring Tarn",
+        "Skyrim",
         "Clearpine Pond",
         "Chillwind Depths",
         "Ustengrav",
@@ -1389,7 +1430,7 @@
         "Damphall Mine",
         "Snowclad Ruins",
         "Bristleback Cave",
-        "Attius Farm Location",
+        "Morrowind",
         "Saering's Watch",
         "Castle Karstaag Ruins",
         "Hrothmund's Barrow",
@@ -1431,9 +1472,28 @@
         "Bloodskal Barrow",
         "Benkongerike",
         "Altar of Thrond",
+        "Morrowind",
         "Skyrim",
         "Skyrim",
         "Wintersand Manor",
+        "Skyrim",
+        "Morrowind",
+        "Skyrim",
+        "Riften",
+        "Skyrim",
+        "Skyrim",
+        "Raven Rock",
+        "Blackbone Isle",
+        "Skyrim",
+        "Skyrim",
+        "Skyrim",
+        "Arcwind Point",
+        "Deadlands",
+        "Goldenhills Plantation",
+        "Mara's Eye Pond",
+        "Hendraheim",
+        "Langley's House Ext",
+        "Giant's Tooth",
         "Skyrim",
         "Skyrim",
         "Ebony Warrior's Camp",
@@ -1721,10 +1781,8 @@
         "Skyrim",
         "Skyrim",
         "Skyrim",
-        "Goldenhills Plantation",
         "Skyrim",
         "Kynesgrove",
-        "Skyrim",
         "Skyrim",
         "Skyrim",
         "Skyrim",
@@ -1791,7 +1849,6 @@
         "Markarth Side",
         "Granite Hill",
         "Morrowind",
-        "Hendraheim",
         "Marker Storage Unit",
         "Skyrim",
         "Skyrim",
@@ -2277,11 +2334,30 @@
       "Dragonborn.esm:00EE74",
       "Dragonborn.esm:00ED67",
       "Dragonborn.esm:00EE0C",
-      "Skyrim.esm:0038F4",
+      "Dragonborn.esm:00EE94",
+      "Skyrim.esm:00B3F4",
       "Skyrim.esm:009AE5",
       "Skyrim.esm:0095B9",
-      "Skyrim.esm:00BBE5",
+      "Skyrim.esm:005BA1",
+      "Dragonborn.esm:02D457",
       "Skyrim.esm:0093BA",
+      "Skyrim.esm:00BCD1",
+      "Skyrim.esm:00BBE5",
+      "Skyrim.esm:006E3D",
+      "Dragonborn.esm:00EED6",
+      "ccbgssse031-advcyrus.esm:000F76",
+      "Skyrim.esm:00BDC9",
+      "Skyrim.esm:00BD9F",
+      "Skyrim.esm:00BBC5",
+      "Skyrim.esm:0098D8",
+      "ccbgssse067-daedinv.esm:0E15E3",
+      "Skyrim.esm:0099B4",
+      "Skyrim.esm:00916B",
+      "Skyrim.esm:009ABE",
+      "Skyrim.esm:008FC4",
+      "cckrtsse001_altar.esl:000DB8",
+      "Skyrim.esm:00BA9B",
+      "Skyrim.esm:0038F4",
       "Skyrim.esm:00BC26",
       "Bittercup - Tweaks and Enhancements.esp:000B1C",
       "Skyrim Extended Cut - Saints and Seducers.esp:55C4B5",
@@ -2568,7 +2644,6 @@
       "Skyrim.esm:00BD4A",
       "Skyrim.esm:00B48F",
       "Skyrim.esm:00993F",
-      "Skyrim.esm:0099B4",
       "Skyrim.esm:00BB8A",
       "Skyrim.esm:009166",
       "Skyrim.esm:009278",
@@ -2576,7 +2651,6 @@
       "Skyrim.esm:009C3F",
       "Skyrim.esm:00B477",
       "Skyrim.esm:00B53B",
-      "Skyrim.esm:00BD9F",
       "Skyrim.esm:009C9E",
       "Skyrim.esm:009C58",
       "Skyrim.esm:00B2E4",
@@ -2638,7 +2712,6 @@
       "Skyrim.esm:0093EA",
       "Skyrim.esm:009AB8",
       "Dragonborn.esm:00EDAE",
-      "Skyrim.esm:009ABE",
       "Ordinator - Perks of Skyrim.esp:01BB1B",
       "Skyrim.esm:009026",
       "Skyrim.esm:0097D2",
@@ -2942,7 +3015,7 @@
       "locked": 0
      },
      {
-      "cell": "Kagrenzel",
+      "cell": "Skyrim",
       "ways": 1,
       "locked": 0
      },
@@ -3003,8 +3076,8 @@
      },
      {
       "cell": "Falkreath Watchtower",
-      "ways": 1,
-      "locked": 0
+      "ways": 2,
+      "locked": 1
      },
      {
       "cell": "Snow Veil Sanctum",
@@ -3667,7 +3740,7 @@
       "locked": 0
      },
      {
-      "cell": "Clearspring Tarn",
+      "cell": "Skyrim",
       "ways": 1,
       "locked": 0
      },
@@ -3913,7 +3986,7 @@
      },
      {
       "cell": "Solitude",
-      "ways": 12,
+      "ways": 13,
       "locked": 5
      },
      {
@@ -4012,7 +4085,7 @@
       "locked": 0
      },
      {
-      "cell": "Attius Farm Location",
+      "cell": "Morrowind",
       "ways": 1,
       "locked": 0
      },
@@ -4127,13 +4200,18 @@
       "locked": 0
      },
      {
-      "cell": "Skyrim",
+      "cell": "Morrowind",
       "ways": 1,
       "locked": 0
      },
      {
       "cell": "Skyrim",
       "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Skyrim",
+      "ways": 2,
       "locked": 0
      },
      {
@@ -4143,7 +4221,47 @@
      },
      {
       "cell": "Skyrim",
-      "ways": 3,
+      "ways": 4,
+      "locked": 0
+     },
+     {
+      "cell": "Riften",
+      "ways": 9,
+      "locked": 2
+     },
+     {
+      "cell": "Blackbone Isle",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Arcwind Point",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Deadlands",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Goldenhills Plantation",
+      "ways": 2,
+      "locked": 0
+     },
+     {
+      "cell": "Hendraheim",
+      "ways": 2,
+      "locked": 0
+     },
+     {
+      "cell": "Langley's House Ext",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Skyrim",
+      "ways": 1,
       "locked": 0
      },
      {
@@ -4777,11 +4895,6 @@
       "locked": 0
      },
      {
-      "cell": "Goldenhills Plantation",
-      "ways": 2,
-      "locked": 0
-     },
-     {
       "cell": "Kynesgrove",
       "ways": 3,
       "locked": 0
@@ -4902,11 +5015,6 @@
       "locked": 5
      },
      {
-      "cell": "Hendraheim",
-      "ways": 1,
-      "locked": 0
-     },
-     {
       "cell": "Marker Storage Unit",
       "ways": 0,
       "locked": 0
@@ -4971,6 +5079,10 @@
     "index": 10,
     "source": "moretodo.esp:000803 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -5060,6 +5172,10 @@
     "source": "moretodo.esp:000B05 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "GiantBossAlias",
@@ -5148,6 +5264,10 @@
     "index": 10,
     "source": "moretodo.esp:000BEE QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -5253,6 +5373,10 @@
     "index": 10,
     "source": "sisselbookquest.esp:000889 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -6582,7 +6706,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -6675,7 +6799,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -6768,7 +6892,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -6861,7 +6985,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -6954,7 +7078,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -7047,7 +7171,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -7140,7 +7264,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -7233,7 +7357,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -7326,7 +7450,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -7420,261 +7544,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

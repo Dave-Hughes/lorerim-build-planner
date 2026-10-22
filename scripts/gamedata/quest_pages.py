@@ -797,9 +797,17 @@ def stage_step(row, objectives, sets):
     first = row.get("firstObjective") or {}
     texts = {o["index"]: o["text"] for o in objectives or [] if o.get("text")}
     shown = {int(i): st for i, st in (row.get("objectivesShown") or {}).items()}
-    if shown:
-        at = min(sets) if sets else row.get("firstObjectiveStage")
+    if shown and sets:
+        # Only for a talk that starts it: a quest a node or helper starts reads its first step from the stage's own number
+        # below (The Pale Lady and Sleepwalking keep theirs; Heart of the Reach's 10 is "Travel to Ever-Bog"), and one running
+        # from the start of the game whose first objective no fragment of its own shows keeps it (Innocence Lost's "Talk to
+        # Aventus Aretino") (the night run, WO-121b).
+        if first.get("index") not in shown and any(s["by"] == "start game" for s in row.get("startedBy", [])):
+            return None
+        at = min(sets)
         here = sorted(i for i, st in shown.items() if st == at and i in texts)
+        if not here and first.get("index") in shown:  # the talk's stage shows nothing: the stage that shows the first objective (Golldir's 5, then 10)
+            here = sorted(i for i, st in shown.items() if st == shown[first["index"]] and i in texts)
         pick = next((i for i in here if not _OPTIONAL.match(texts[i])), here[0] if here else None)
         return {"index": pick, "text": texts[pick]} if pick is not None and pick != first.get("index") else None
     at = row.get("firstObjectiveStage")
@@ -958,15 +966,19 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
                 place = clean_place((s.get("speakerPlaced") or [None])[0])
                 text = f"Hear about it from {s.get('speaker') or 'someone'}" + (f" in {place}" if place else "")
             if not any(w["how"] == text for w in shown):
-                shown.append({**talk_way(s, text, tidy(n), found, own, line_quests, say), **({"book": True} if s["by"] == "book" else {})})
+                book_at = _STAGE_SET.match(s.get("call") or "") if s["by"] == "book" else None
+                shown.append({**talk_way(s, text, tidy(n), found, own, line_quests, say),
+                              **({"book": int(book_at.group(1)) if book_at else 0} if s["by"] == "book" else {})})
     # Every way the check found has no words yet (a patch's catch-up quest, a helper with no name): say so, never its id.
     if say and not shown and any(s["by"] != "start game" and not patch_helper(s) for s in starters):
         shown = [{"how": "Another quest starts it, one the planner can't name yet"}]
     shown = rumours(shown, towns or {})
-    # A book that starts it is a way no one gives (WO-121b: reading Deathbrand, The Aetherium Wars): it leads, and there's no
-    # single giver.
-    book = [w for w in shown if w.get("book")]
-    shown = book + [w for w in shown if not w.get("book")]
+    # A book that starts it no later than any talk does is a way no one gives (WO-121b: reading Deathbrand, The Aetherium
+    # Wars): it leads, and there's no single giver. One that comes after the giver's own talks (the Letter to Lucien, at 10;
+    # Lucien's talk sets 5) is another way, and the giver stays.
+    talks = [int(m.group(1)) for s in starters if s["by"] == "dialogue" for m in [_STAGE_SET.match(s.get("call") or "")] if m]
+    book = [w for w in shown if "book" in w and (not talks or w["book"] <= min(talks))]
+    shown = book + [w for w in shown if w not in book]
     if not any(s["by"] == "start game" for s in starters):
         if len(shown) == 1:
             needs = [shown[0]["how"]] + needs + shown[0].get("needs", [])

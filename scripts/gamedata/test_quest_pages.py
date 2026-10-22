@@ -404,7 +404,7 @@ class Part2Test(unittest.TestCase):
         self.assertEqual((start["who"], start["where"]), ("Legate Rikke", "Castle Dour"))
 
     def test_reading_a_book(self):
-        book = {"by": "book", "book": "Deathbrand", "call": "SetStage 29", "plain": "Read Deathbrand"}
+        book = {"by": "book", "book": "Deathbrand", "call": "SetStage 1", "plain": "Read Deathbrand"}  # the book and Geldis both set 1
         geldis = {"by": "dialogue", "speaker": "Geldis Sadri", "speakerPlaced": ["The Retching Netch"], "call": "SetStage 1"}
         start = qp.start_of({"name": "Deathbrand", "startedBy": [geldis, book], "firstObjectiveStage": 29, "target": [], "needs": {}}, {})
         self.assertEqual(start["ways"][0]["how"], "Read Deathbrand")
@@ -599,7 +599,8 @@ class BuiltStartsTest(unittest.TestCase):
 
     def test_bleak_falls_barrow(self):
         self.assertIn(('Ask Farengar Secret-Fire "So what do you need me to do?" in Dragonsreach', ["You have Dragonstone"]), self.ways("Bleak Falls Barrow"))
-        self.assertIn(("After Before the Storm", []), self.ways("Bleak Falls Barrow"))
+        # The night run gave every row objectivesShown, so the stage is named by the objective it shows (WO-121b).
+        self.assertIn(("After \"Talk to the Jarl of Whiterun\" in Before the Storm", []), self.ways("Bleak Falls Barrow"))
 
     def test_unbound(self):
         ways = self.ways("Unbound")

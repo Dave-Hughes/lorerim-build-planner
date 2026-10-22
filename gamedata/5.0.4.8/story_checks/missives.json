@@ -17,6 +17,9 @@
     "source": "Missives.esp:00F64E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -66,6 +69,9 @@
     "index": 20,
     "source": "Missives.esp:00F655 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -117,6 +123,9 @@
     "source": "Missives.esp:00F65C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -166,6 +175,9 @@
     "index": 20,
     "source": "Missives.esp:03CEDE QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -217,6 +229,9 @@
     "source": "Missives.esp:038DBC QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -266,6 +281,9 @@
     "index": 20,
     "source": "Missives.esp:03C40F QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -317,6 +335,9 @@
     "source": "Missives.esp:00FBC4 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -366,6 +387,9 @@
     "index": 20,
     "source": "Missives.esp:00FBCB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -417,6 +441,9 @@
     "source": "Missives.esp:00FBD2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -467,6 +494,10 @@
     "source": "Missives.esp:010140 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -515,6 +546,10 @@
     "index": 20,
     "source": "Missives.esp:010145 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -565,6 +600,10 @@
     "source": "Missives.esp:010149 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -613,6 +652,10 @@
     "index": 20,
     "source": "Missives.esp:0106B1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -663,6 +706,10 @@
     "source": "Missives.esp:0106BD QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -711,6 +758,10 @@
     "index": 20,
     "source": "Missives.esp:0106C1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -761,6 +812,10 @@
     "source": "Missives.esp:0106C5 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -809,6 +864,10 @@
     "index": 20,
     "source": "Missives.esp:0106C9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -859,6 +918,10 @@
     "source": "Missives.esp:010C35 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -907,6 +970,10 @@
     "index": 20,
     "source": "Missives.esp:010C39 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -957,6 +1024,10 @@
     "source": "Missives.esp:010C3D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -1005,6 +1076,11 @@
     "index": 20,
     "source": "Missives.esp:0111A3 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -1065,6 +1141,11 @@
     "source": "Missives.esp:0111A7 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -1123,6 +1204,11 @@
     "index": 20,
     "source": "Missives.esp:0111AB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -1183,6 +1269,11 @@
     "source": "Missives.esp:0111AF QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -1242,6 +1333,10 @@
     "source": "Missives.esp:011715 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -1297,6 +1392,10 @@
     "index": 20,
     "source": "Missives.esp:011719 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -1354,6 +1453,10 @@
     "source": "Missives.esp:01171D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -1410,6 +1513,11 @@
     "source": "Missives.esp:0377E4 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -1462,6 +1570,9 @@
     "source": "Missives.esp:032C3D QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -1504,6 +1615,10 @@
     "index": 20,
     "source": "Missives.esp:0382D0 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -1557,6 +1672,9 @@
     "source": "Missives.esp:011C86 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -1606,6 +1724,9 @@
     "index": 20,
     "source": "Missives.esp:011CBE QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -1657,6 +1778,9 @@
     "source": "Missives.esp:011CF5 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -1706,6 +1830,9 @@
     "index": 20,
     "source": "Missives.esp:03CEDF QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -1757,6 +1884,9 @@
     "source": "Missives.esp:03A372 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -1806,6 +1936,9 @@
     "index": 20,
     "source": "Missives.esp:03C973 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -1857,6 +1990,9 @@
     "source": "Missives.esp:01228F QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -1906,6 +2042,9 @@
     "index": 20,
     "source": "Missives.esp:012828 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -1957,6 +2096,9 @@
     "source": "Missives.esp:012DC3 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -2007,6 +2149,10 @@
     "source": "Missives.esp:01335D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2055,6 +2201,10 @@
     "index": 20,
     "source": "Missives.esp:0133A2 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -2105,6 +2255,10 @@
     "source": "Missives.esp:0133BE QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2153,6 +2307,10 @@
     "index": 20,
     "source": "Missives.esp:013EAD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -2203,6 +2361,10 @@
     "source": "Missives.esp:014439 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2251,6 +2413,10 @@
     "index": 20,
     "source": "Missives.esp:0149B7 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -2301,6 +2467,10 @@
     "source": "Missives.esp:014F51 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2349,6 +2519,10 @@
     "index": 20,
     "source": "Missives.esp:0154DD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -2399,6 +2573,10 @@
     "source": "Missives.esp:015A63 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2447,6 +2625,10 @@
     "index": 20,
     "source": "Missives.esp:015FF7 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -2497,6 +2679,10 @@
     "source": "Missives.esp:016582 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2545,6 +2731,11 @@
     "index": 20,
     "source": "Missives.esp:016B00 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -2605,6 +2796,11 @@
     "source": "Missives.esp:01707E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -2663,6 +2859,11 @@
     "index": 20,
     "source": "Missives.esp:01709E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -2723,6 +2924,10 @@
     "source": "Missives.esp:01761C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -2778,6 +2983,10 @@
     "index": 20,
     "source": "Missives.esp:017638 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -2835,6 +3044,10 @@
     "source": "Missives.esp:017654 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -2891,6 +3104,11 @@
     "source": "Missives.esp:0377E9 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2943,6 +3161,9 @@
     "source": "Missives.esp:036CF8 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -2985,6 +3206,10 @@
     "index": 20,
     "source": "Missives.esp:0382D5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -3038,6 +3263,9 @@
     "source": "Missives.esp:011C8D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -3087,6 +3315,9 @@
     "index": 20,
     "source": "Missives.esp:011CC5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -3138,6 +3369,9 @@
     "source": "Missives.esp:011CFD QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -3187,6 +3421,9 @@
     "index": 20,
     "source": "Missives.esp:03CEE0 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -3238,6 +3475,9 @@
     "source": "Missives.esp:03A37C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -3287,6 +3527,9 @@
     "index": 20,
     "source": "Missives.esp:03C974 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -3338,6 +3581,9 @@
     "source": "Missives.esp:012297 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -3387,6 +3633,9 @@
     "index": 20,
     "source": "Missives.esp:012830 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -3438,6 +3687,9 @@
     "source": "Missives.esp:012DCA QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -3488,6 +3740,10 @@
     "source": "Missives.esp:013362 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -3536,6 +3792,10 @@
     "index": 20,
     "source": "Missives.esp:0133A6 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -3586,6 +3846,10 @@
     "source": "Missives.esp:0133C2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -3634,6 +3898,10 @@
     "index": 20,
     "source": "Missives.esp:013EB1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -3684,6 +3952,10 @@
     "source": "Missives.esp:01443D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -3732,6 +4004,10 @@
     "index": 20,
     "source": "Missives.esp:0149C9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -3782,6 +4058,10 @@
     "source": "Missives.esp:014F55 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -3830,6 +4110,10 @@
     "index": 20,
     "source": "Missives.esp:0154E1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -3880,6 +4164,10 @@
     "source": "Missives.esp:015A6E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -3928,6 +4216,10 @@
     "index": 20,
     "source": "Missives.esp:015FFB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -3978,6 +4270,10 @@
     "source": "Missives.esp:016586 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -4026,6 +4322,11 @@
     "index": 20,
     "source": "Missives.esp:016B04 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -4086,6 +4387,11 @@
     "source": "Missives.esp:017082 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -4144,6 +4450,11 @@
     "index": 20,
     "source": "Missives.esp:0170A2 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -4204,6 +4515,10 @@
     "source": "Missives.esp:017620 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -4259,6 +4574,10 @@
     "index": 20,
     "source": "Missives.esp:01763C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -4316,6 +4635,10 @@
     "source": "Missives.esp:017658 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -4372,6 +4695,11 @@
     "source": "Missives.esp:0377EE QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -4424,6 +4752,9 @@
     "source": "Missives.esp:036CFC QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -4466,6 +4797,10 @@
     "index": 20,
     "source": "Missives.esp:0382DA QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -4519,6 +4854,9 @@
     "source": "Missives.esp:011C96 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -4568,6 +4906,9 @@
     "index": 20,
     "source": "Missives.esp:011CCD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -4619,6 +4960,9 @@
     "source": "Missives.esp:011D04 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -4668,6 +5012,9 @@
     "index": 20,
     "source": "Missives.esp:03CEE1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -4719,6 +5066,9 @@
     "source": "Missives.esp:03A386 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -4768,6 +5118,9 @@
     "index": 20,
     "source": "Missives.esp:03C975 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -4819,6 +5172,9 @@
     "source": "Missives.esp:01229F QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -4868,6 +5224,9 @@
     "index": 20,
     "source": "Missives.esp:012838 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -4919,6 +5278,9 @@
     "source": "Missives.esp:012DD2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -4969,6 +5331,10 @@
     "source": "Missives.esp:013372 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5017,6 +5383,10 @@
     "index": 20,
     "source": "Missives.esp:0133AA QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -5067,6 +5437,10 @@
     "source": "Missives.esp:0133C6 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5115,6 +5489,10 @@
     "index": 20,
     "source": "Missives.esp:013EB5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -5165,6 +5543,10 @@
     "source": "Missives.esp:014441 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5213,6 +5595,10 @@
     "index": 20,
     "source": "Missives.esp:0149CD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -5263,6 +5649,10 @@
     "source": "Missives.esp:014F5D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5311,6 +5701,10 @@
     "index": 20,
     "source": "Missives.esp:0154E5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -5361,6 +5755,10 @@
     "source": "Missives.esp:015A72 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5409,6 +5807,10 @@
     "index": 20,
     "source": "Missives.esp:015FFF QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -5459,6 +5861,10 @@
     "source": "Missives.esp:01658A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5507,6 +5913,11 @@
     "index": 20,
     "source": "Missives.esp:016B08 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -5567,6 +5978,11 @@
     "source": "Missives.esp:017086 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -5625,6 +6041,11 @@
     "index": 20,
     "source": "Missives.esp:0170A6 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -5685,6 +6106,10 @@
     "source": "Missives.esp:017624 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -5740,6 +6165,10 @@
     "index": 20,
     "source": "Missives.esp:017640 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -5797,6 +6226,10 @@
     "source": "Missives.esp:01765C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -5853,6 +6286,11 @@
     "source": "Missives.esp:0377F3 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5905,6 +6343,9 @@
     "source": "Missives.esp:036D02 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -5947,6 +6388,10 @@
     "index": 20,
     "source": "Missives.esp:0382DF QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -6000,6 +6445,9 @@
     "source": "Missives.esp:011C9E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -6049,6 +6497,9 @@
     "index": 20,
     "source": "Missives.esp:011CD5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -6100,6 +6551,9 @@
     "source": "Missives.esp:011D0C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -6149,6 +6603,9 @@
     "index": 20,
     "source": "Missives.esp:03CEE2 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -6200,6 +6657,9 @@
     "source": "Missives.esp:03A8F2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -6249,6 +6709,9 @@
     "index": 20,
     "source": "Missives.esp:03C976 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -6300,6 +6763,9 @@
     "source": "Missives.esp:0122A6 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -6349,6 +6815,9 @@
     "index": 20,
     "source": "Missives.esp:012840 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -6400,6 +6869,9 @@
     "source": "Missives.esp:012DDA QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -6450,6 +6922,10 @@
     "source": "Missives.esp:013376 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -6498,6 +6974,10 @@
     "index": 20,
     "source": "Missives.esp:0133AE QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -6548,6 +7028,10 @@
     "source": "Missives.esp:0133CA QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -6596,6 +7080,10 @@
     "index": 20,
     "source": "Missives.esp:013EB9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -6646,6 +7134,10 @@
     "source": "Missives.esp:014445 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -6694,6 +7186,10 @@
     "index": 20,
     "source": "Missives.esp:0149D1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -6744,6 +7240,10 @@
     "source": "Missives.esp:014F61 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -6792,6 +7292,10 @@
     "index": 20,
     "source": "Missives.esp:0154E9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -6842,6 +7346,10 @@
     "source": "Missives.esp:015A76 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -6890,6 +7398,10 @@
     "index": 20,
     "source": "Missives.esp:016003 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -6940,6 +7452,10 @@
     "source": "Missives.esp:01658E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -6988,6 +7504,11 @@
     "index": 20,
     "source": "Missives.esp:016B0C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -7048,6 +7569,11 @@
     "source": "Missives.esp:01708A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -7106,6 +7632,11 @@
     "index": 20,
     "source": "Missives.esp:0170AA QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -7166,6 +7697,11 @@
     "source": "Missives.esp:01709A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -7225,6 +7761,10 @@
     "source": "Missives.esp:017628 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -7280,6 +7820,10 @@
     "index": 20,
     "source": "Missives.esp:017644 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -7337,6 +7881,10 @@
     "source": "Missives.esp:017660 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -7393,6 +7941,11 @@
     "source": "Missives.esp:0377F8 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -7445,6 +7998,9 @@
     "source": "Missives.esp:036D07 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -7487,6 +8043,10 @@
     "index": 20,
     "source": "Missives.esp:0382E4 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -7540,6 +8100,9 @@
     "source": "Missives.esp:011CA8 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -7589,6 +8152,9 @@
     "index": 20,
     "source": "Missives.esp:011CDD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -7640,6 +8206,9 @@
     "source": "Missives.esp:011D14 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -7689,6 +8258,9 @@
     "index": 20,
     "source": "Missives.esp:03D448 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -7740,6 +8312,9 @@
     "source": "Missives.esp:03A8F3 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -7789,6 +8364,9 @@
     "index": 20,
     "source": "Missives.esp:03C977 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -7840,6 +8418,9 @@
     "source": "Missives.esp:0122AE QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -7889,6 +8470,9 @@
     "index": 20,
     "source": "Missives.esp:012848 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -7940,6 +8524,9 @@
     "source": "Missives.esp:012DE2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -7990,6 +8577,10 @@
     "source": "Missives.esp:01337A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8038,6 +8629,10 @@
     "index": 20,
     "source": "Missives.esp:0133B2 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -8088,6 +8683,10 @@
     "source": "Missives.esp:0133CE QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8136,6 +8735,10 @@
     "index": 20,
     "source": "Missives.esp:013EBD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -8186,6 +8789,10 @@
     "source": "Missives.esp:014449 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8234,6 +8841,10 @@
     "index": 20,
     "source": "Missives.esp:0149D5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -8284,6 +8895,10 @@
     "source": "Missives.esp:014F65 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8332,6 +8947,10 @@
     "index": 20,
     "source": "Missives.esp:0154ED QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -8382,6 +9001,10 @@
     "source": "Missives.esp:015A7A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8430,6 +9053,10 @@
     "index": 20,
     "source": "Missives.esp:016007 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -8480,6 +9107,10 @@
     "source": "Missives.esp:016592 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8528,6 +9159,11 @@
     "index": 20,
     "source": "Missives.esp:016B10 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -8588,6 +9224,11 @@
     "source": "Missives.esp:0170AE QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -8646,6 +9287,11 @@
     "index": 20,
     "source": "Missives.esp:01708E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -8706,6 +9352,10 @@
     "source": "Missives.esp:01762C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -8761,6 +9411,10 @@
     "index": 20,
     "source": "Missives.esp:017648 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -8818,6 +9472,10 @@
     "source": "Missives.esp:017664 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -8874,6 +9532,11 @@
     "source": "Missives.esp:0377FD QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8926,6 +9589,9 @@
     "source": "Missives.esp:036D0C QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -8968,6 +9634,10 @@
     "index": 20,
     "source": "Missives.esp:0382E9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -9021,6 +9691,9 @@
     "source": "Missives.esp:011CAF QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -9070,6 +9743,9 @@
     "index": 20,
     "source": "Missives.esp:011CE5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -9121,6 +9797,9 @@
     "source": "Missives.esp:011D1D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -9170,6 +9849,9 @@
     "index": 20,
     "source": "Missives.esp:03D44A QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -9221,6 +9903,9 @@
     "source": "Missives.esp:03A8F4 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -9270,6 +9955,9 @@
     "index": 20,
     "source": "Missives.esp:03CEDB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -9321,6 +10009,9 @@
     "source": "Missives.esp:0122B6 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -9370,6 +10061,9 @@
     "index": 20,
     "source": "Missives.esp:012851 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -9421,6 +10115,9 @@
     "source": "Missives.esp:012DEA QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -9471,6 +10168,10 @@
     "source": "Missives.esp:01337E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -9519,6 +10220,10 @@
     "index": 20,
     "source": "Missives.esp:0133B6 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -9569,6 +10274,10 @@
     "source": "Missives.esp:013935 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -9617,6 +10326,10 @@
     "index": 20,
     "source": "Missives.esp:013EC1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -9667,6 +10380,10 @@
     "source": "Missives.esp:01444D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -9715,6 +10432,10 @@
     "index": 20,
     "source": "Missives.esp:0149D9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -9765,6 +10486,10 @@
     "source": "Missives.esp:014F69 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -9813,6 +10538,10 @@
     "index": 20,
     "source": "Missives.esp:0154F1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -9863,6 +10592,10 @@
     "source": "Missives.esp:015A7E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -9911,6 +10644,10 @@
     "index": 20,
     "source": "Missives.esp:01600B QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -9961,6 +10698,10 @@
     "source": "Missives.esp:016596 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -10009,6 +10750,11 @@
     "index": 20,
     "source": "Missives.esp:016B14 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -10069,6 +10815,11 @@
     "source": "Missives.esp:017092 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -10127,6 +10878,11 @@
     "index": 20,
     "source": "Missives.esp:0170B2 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -10187,6 +10943,10 @@
     "source": "Missives.esp:017630 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -10242,6 +11002,10 @@
     "index": 20,
     "source": "Missives.esp:01764C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -10299,6 +11063,10 @@
     "source": "Missives.esp:017668 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -10355,6 +11123,11 @@
     "source": "Missives.esp:037D64 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -10407,6 +11180,9 @@
     "source": "Missives.esp:037273 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -10449,6 +11225,10 @@
     "index": 20,
     "source": "Missives.esp:0382EB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -10502,6 +11282,9 @@
     "source": "Missives.esp:00E5EB QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -10551,6 +11334,9 @@
     "index": 20,
     "source": "Missives.esp:00BA9E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -10602,6 +11388,9 @@
     "source": "Missives.esp:00E080 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -10651,6 +11440,9 @@
     "index": 20,
     "source": "Missives.esp:03D44B QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -10702,6 +11494,9 @@
     "source": "Missives.esp:03AE58 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -10751,6 +11546,9 @@
     "index": 20,
     "source": "Missives.esp:03CEDC QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -10802,6 +11600,9 @@
     "source": "Missives.esp:00EB5C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -10851,6 +11652,9 @@
     "index": 20,
     "source": "Missives.esp:00D59D QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -10902,6 +11706,9 @@
     "source": "Missives.esp:00EB55 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -10952,6 +11759,10 @@
     "source": "Missives.esp:008EEA QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11000,6 +11811,10 @@
     "index": 20,
     "source": "Missives.esp:0063AB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -11050,6 +11865,10 @@
     "source": "Missives.esp:008408 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11098,6 +11917,10 @@
     "index": 20,
     "source": "Missives.esp:009A1C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -11148,6 +11971,10 @@
     "source": "Missives.esp:00DB12 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11196,6 +12023,10 @@
     "index": 20,
     "source": "Missives.esp:00DB0A QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -11246,6 +12077,10 @@
     "source": "Missives.esp:00DB0E QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11294,6 +12129,10 @@
     "index": 20,
     "source": "Missives.esp:00DB16 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -11344,6 +12183,10 @@
     "source": "Missives.esp:00AA6B QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11392,6 +12235,10 @@
     "index": 20,
     "source": "Missives.esp:009F99 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -11442,6 +12289,10 @@
     "source": "Missives.esp:00AA67 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11490,6 +12341,11 @@
     "index": 20,
     "source": "Missives.esp:0058E4 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -11550,6 +12406,11 @@
     "source": "Missives.esp:00F0C8 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -11608,6 +12469,11 @@
     "index": 20,
     "source": "Missives.esp:00F0D1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -11668,6 +12534,11 @@
     "source": "Missives.esp:00F0CC QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -11727,6 +12598,10 @@
     "source": "Missives.esp:00F0D7 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -11782,6 +12657,10 @@
     "index": 20,
     "source": "Missives.esp:00F0DB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -11839,6 +12718,10 @@
     "source": "Missives.esp:006E72 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -11895,6 +12778,11 @@
     "source": "Missives.esp:034737 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11947,6 +12835,9 @@
     "source": "Missives.esp:037278 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -11989,6 +12880,10 @@
     "index": 20,
     "source": "Missives.esp:035764 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -12042,6 +12937,9 @@
     "source": "Missives.esp:011CB6 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -12091,6 +12989,9 @@
     "index": 20,
     "source": "Missives.esp:011CEE QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -12142,6 +13043,9 @@
     "source": "Missives.esp:011D24 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -12191,6 +13095,9 @@
     "index": 20,
     "source": "Missives.esp:03D44C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -12242,6 +13149,9 @@
     "source": "Missives.esp:03AE59 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -12291,6 +13201,9 @@
     "index": 20,
     "source": "Missives.esp:03CEDD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -12342,6 +13255,9 @@
     "source": "Missives.esp:0122BF QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -12391,6 +13307,9 @@
     "index": 20,
     "source": "Missives.esp:012859 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -12442,6 +13361,9 @@
     "source": "Missives.esp:012DF2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -12492,6 +13414,10 @@
     "source": "Missives.esp:013382 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -12540,6 +13466,10 @@
     "index": 20,
     "source": "Missives.esp:0133BA QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -12590,6 +13520,10 @@
     "source": "Missives.esp:013939 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -12638,6 +13572,10 @@
     "index": 20,
     "source": "Missives.esp:013EC5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -12688,6 +13626,10 @@
     "source": "Missives.esp:014451 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -12736,6 +13678,10 @@
     "index": 20,
     "source": "Missives.esp:0149DD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -12786,6 +13732,10 @@
     "source": "Missives.esp:014F59 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -12834,6 +13784,10 @@
     "index": 20,
     "source": "Missives.esp:0154F5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -12884,6 +13838,10 @@
     "source": "Missives.esp:015A82 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -12932,6 +13890,10 @@
     "index": 20,
     "source": "Missives.esp:01600F QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -12982,6 +13944,10 @@
     "source": "Missives.esp:01659A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -13030,6 +13996,11 @@
     "index": 20,
     "source": "Missives.esp:016B18 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -13090,6 +14061,11 @@
     "source": "Missives.esp:017096 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -13148,6 +14124,11 @@
     "index": 20,
     "source": "Missives.esp:0170B6 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -13208,6 +14189,10 @@
     "source": "Missives.esp:017634 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -13263,6 +14248,10 @@
     "index": 20,
     "source": "Missives.esp:017650 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -13320,6 +14309,10 @@
     "source": "Missives.esp:01766C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -13376,6 +14369,11 @@
     "source": "Missives.esp:037D69 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -13428,6 +14426,9 @@
     "source": "Missives.esp:03727D QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -13470,6 +14471,10 @@
     "index": 20,
     "source": "Missives.esp:0382F0 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [],
    "needs": {
@@ -13518,6 +14523,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13538,6 +14544,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13558,6 +14565,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13578,6 +14586,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13598,6 +14607,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13618,6 +14628,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13638,6 +14649,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13658,6 +14670,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13678,6 +14691,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13698,6 +14712,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13718,6 +14733,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13738,6 +14754,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13758,6 +14775,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13778,6 +14796,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13798,6 +14817,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13818,6 +14838,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13838,6 +14859,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13858,6 +14880,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13878,6 +14901,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13898,6 +14922,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -13922,7 +14947,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000912 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -13932,6 +14958,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000028 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -13974,7 +15004,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:00090A (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -13984,6 +15015,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000020 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14026,7 +15061,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000908 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14036,6 +15072,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00001F QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14078,7 +15118,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000904 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14088,6 +15129,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00000E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14130,7 +15175,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000902 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14140,6 +15186,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000001 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14182,7 +15232,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000906 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14192,6 +15243,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00000F QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14234,7 +15289,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:00090E (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14244,6 +15300,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000026 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14286,7 +15346,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000920 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14296,6 +15357,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000189 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14338,7 +15403,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:00090C (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14348,6 +15414,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000021 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14390,7 +15460,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000910 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14400,6 +15471,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000027 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14442,7 +15517,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000922 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14452,6 +15528,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00019F QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -14522,7 +15602,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000928 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14532,6 +15613,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:0001B9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -14602,7 +15687,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000914 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14612,6 +15698,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000029 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14654,7 +15744,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000918 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14664,6 +15755,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00002E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14712,7 +15807,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:00091A (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14722,6 +15818,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00002F QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14770,7 +15870,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:00091E (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14780,6 +15881,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000188 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -14822,7 +15927,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000926 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14832,6 +15938,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:0001AB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "25": 25
    },
    "target": [
     {
@@ -14890,7 +16000,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000924 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -14900,6 +16011,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:0001A1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40
    },
    "target": [
     {
@@ -15021,7 +16136,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:00091C (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -15031,6 +16147,11 @@
     "index": 20,
     "source": "MissivesExpansion.esp:000199 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -15089,7 +16210,8 @@
      "atStage": 10,
      "call": "Start",
      "source": "_ME_QuestBoard.fragment_2 on MissivesExpansion.esp:000916 (Synthesis - Gameplay Overwrite.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -15099,6 +16221,10 @@
     "index": 20,
     "source": "MissivesExpansion.esp:00002A QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -15141,6 +16267,9 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000800 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -15192,6 +16321,9 @@
     "source": "Missives - Gray Cowl Patch.esp:000801 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -15241,6 +16373,9 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000802 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -15292,6 +16427,9 @@
     "source": "Missives - Gray Cowl Patch.esp:000803 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -15341,6 +16479,9 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000804 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -15392,6 +16533,9 @@
     "source": "Missives - Gray Cowl Patch.esp:000805 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -15441,6 +16585,9 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000806 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -15492,6 +16639,9 @@
     "source": "Missives - Gray Cowl Patch.esp:000807 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -15541,6 +16691,9 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000808 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -15592,6 +16745,10 @@
     "source": "Missives - Gray Cowl Patch.esp:000809 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -15640,6 +16797,10 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:00080A QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -15690,6 +16851,10 @@
     "source": "Missives - Gray Cowl Patch.esp:00080B QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -15738,6 +16903,10 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:00080C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -15788,6 +16957,10 @@
     "source": "Missives - Gray Cowl Patch.esp:00080D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -15836,6 +17009,10 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:00080E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -15886,6 +17063,10 @@
     "source": "Missives - Gray Cowl Patch.esp:00080F QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -15934,6 +17115,10 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000810 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -15984,6 +17169,10 @@
     "source": "Missives - Gray Cowl Patch.esp:000811 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -16032,6 +17221,10 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000812 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -16082,6 +17275,10 @@
     "source": "Missives - Gray Cowl Patch.esp:000813 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -16130,6 +17327,11 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000814 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -16190,6 +17392,11 @@
     "source": "Missives - Gray Cowl Patch.esp:000815 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -16248,6 +17455,11 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000816 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -16308,6 +17520,11 @@
     "source": "Missives - Gray Cowl Patch.esp:000817 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -16367,6 +17584,10 @@
     "source": "Missives - Gray Cowl Patch.esp:000818 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -16422,6 +17643,10 @@
     "index": 20,
     "source": "Missives - Gray Cowl Patch.esp:000819 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -16479,6 +17704,10 @@
     "source": "Missives - Gray Cowl Patch.esp:00081A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -16535,6 +17764,9 @@
     "source": "Missives - Solstheim.esp:00085D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -16584,6 +17816,9 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:00085E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -16635,6 +17870,9 @@
     "source": "Missives - Solstheim.esp:00085F QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -16684,6 +17922,9 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:0008CE QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -16735,6 +17976,9 @@
     "source": "Missives - Solstheim.esp:0008CF QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -16784,6 +18028,9 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:0008D0 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -16835,6 +18082,9 @@
     "source": "Missives - Solstheim.esp:000860 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -16884,6 +18134,9 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:000861 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -16935,6 +18188,9 @@
     "source": "Missives - Solstheim.esp:000862 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -16985,6 +18241,10 @@
     "source": "Missives - Solstheim.esp:000863 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -17033,6 +18293,10 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:000864 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -17083,6 +18347,10 @@
     "source": "Missives - Solstheim.esp:000865 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -17131,6 +18399,10 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:000866 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -17181,6 +18453,10 @@
     "source": "Missives - Solstheim.esp:000867 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -17229,6 +18505,10 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:000868 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -17279,6 +18559,10 @@
     "source": "Missives - Solstheim.esp:000869 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -17327,6 +18611,10 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:00086A QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -17377,6 +18665,10 @@
     "source": "Missives - Solstheim.esp:00086B QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -17425,6 +18717,10 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:00086C QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -17475,6 +18771,10 @@
     "source": "Missives - Solstheim.esp:00086D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -17523,6 +18823,11 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:00086E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -17583,6 +18888,11 @@
     "source": "Missives - Solstheim.esp:00086F QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -17641,6 +18951,11 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:000870 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -17701,6 +19016,11 @@
     "source": "Missives - Solstheim.esp:000871 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -17760,6 +19080,10 @@
     "source": "Missives - Solstheim.esp:000872 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -17815,6 +19139,10 @@
     "index": 20,
     "source": "Missives - Solstheim.esp:000873 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -17872,6 +19200,10 @@
     "source": "Missives - Solstheim.esp:000874 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -17928,6 +19260,9 @@
     "source": "Missives - Wyrmstooth.esp:00089A QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -17977,6 +19312,9 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:00089B QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -18028,6 +19366,9 @@
     "source": "Missives - Wyrmstooth.esp:00089C QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -18077,6 +19418,9 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008B3 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -18128,6 +19472,9 @@
     "source": "Missives - Wyrmstooth.esp:0008B1 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -18177,6 +19524,9 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008B2 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -18228,6 +19578,9 @@
     "source": "Missives - Wyrmstooth.esp:00089D QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -18277,6 +19630,9 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:00089E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20
    },
    "target": [
     {
@@ -18328,6 +19684,9 @@
     "source": "Missives - Wyrmstooth.esp:00089F QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20
+   },
    "target": [
     {
      "alias": "QuestGiver",
@@ -18378,6 +19737,10 @@
     "source": "Missives - Wyrmstooth.esp:0008A0 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -18426,6 +19789,10 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008A1 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -18476,6 +19843,10 @@
     "source": "Missives - Wyrmstooth.esp:0008A2 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -18524,6 +19895,10 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008A3 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -18574,6 +19949,10 @@
     "source": "Missives - Wyrmstooth.esp:0008A4 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -18622,6 +20001,10 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008A5 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -18672,6 +20055,10 @@
     "source": "Missives - Wyrmstooth.esp:0008A6 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -18720,6 +20107,10 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008A7 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -18770,6 +20161,10 @@
     "source": "Missives - Wyrmstooth.esp:0008A8 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -18818,6 +20213,10 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008A9 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [],
    "needs": {
@@ -18868,6 +20267,10 @@
     "source": "Missives - Wyrmstooth.esp:0008AA QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [],
    "needs": {
     "conditions": null,
@@ -18916,6 +20319,11 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008AB QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -18976,6 +20384,11 @@
     "source": "Missives - Wyrmstooth.esp:0008AC QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
+   },
    "target": [
     {
      "alias": "Target",
@@ -19034,6 +20447,11 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008AD QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 40,
+    "41": 40
    },
    "target": [
     {
@@ -19094,6 +20512,10 @@
     "source": "Missives - Wyrmstooth.esp:0008AE QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -19150,6 +20572,10 @@
     "source": "Missives - Wyrmstooth.esp:0008AF QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
+   },
    "target": [
     {
      "alias": "Item",
@@ -19205,6 +20631,10 @@
     "index": 20,
     "source": "Missives - Wyrmstooth.esp:0008B0 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "40": 20
    },
    "target": [
     {
@@ -20512,7 +21942,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -20605,7 +22035,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -20698,7 +22128,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -20791,7 +22221,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -20884,7 +22314,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -20977,7 +22407,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -21070,7 +22500,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -21163,7 +22593,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -21256,7 +22686,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {

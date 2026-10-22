@@ -24,14 +24,6 @@
        "verdict": "files"
       }
      ]
-    },
-    {
-     "by": "by itself",
-     "script": "DLC2RR01QuestScript",
-     "call": "SetStage 30",
-     "plain": "It starts by itself from the start of the game.",
-     "source": "DLC2RR01QuestScript.ToggleInvulnerable on Dragonborn.esm:018B13 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
     }
    ],
    "caughtUpBy": [],
@@ -2534,20 +2526,6 @@
    "inStartMenu": false,
    "source": "DLC2_QF_DLC2_MQ04_02016E02 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
    "sentence": "DLC2Init (Init quest) stage 100: Start on DLC2RR01 (March of the Dead); it is started by the start-game flag (Dragonborn.esm:016E02 DNAM, Fozars_Dragonborn_-_Requiem_Patch.esp)."
-  },
-  {
-   "route": "DLC2RR01 (March of the Dead), its script's toggleinvulnerable",
-   "kind": "script function",
-   "does": [
-    "SetValue something the reader can't resolve",
-    "SetStage DLC2RR01 (March of the Dead) 30"
-   ],
-   "calledFrom": [
-    "DLC2RR01 (March of the Dead) stage 200",
-    "DLC2RR01 (March of the Dead)"
-   ],
-   "source": "DLC2RR01QuestScript on Dragonborn.esm:018B13 (Unofficial Skyrim Special Edition Patch.esp)",
-   "sentence": "DLC2RR01 (March of the Dead)'s toggleinvulnerable does SetValue something the reader can't resolve; SetStage DLC2RR01 (March of the Dead) 30; it is called from DLC2RR01 (March of the Dead) stage 200; DLC2RR01 (March of the Dead)."
   }
  ],
  "loaders": {

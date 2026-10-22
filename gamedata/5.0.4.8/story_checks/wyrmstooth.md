@@ -42,7 +42,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Follow Lurius Liore.", shown at stage 50. Source: Wyrmstooth.esp:028F01 QOBJ 50. **files**
-- Dialogue with Lurius Liore, placed in Wyrmstooth Holder Cell, Wyrmstooth, "I'm ready to go.": SetStage 50 (when: Barrow of the Wyrm stage == 10; the speaker is Lurius Liore; fn1 <= 1500 or fn1 <= 4000). Reply: "Great. I'll let everyone know we're ready to set sail." Source: WT_TIF__01028F08.Fragment_0 on INFO Wyrmstooth.esp:028F08 (Wyrmstooth.esp). **script**
+- Dialogue with Lurius Liore, placed in Wyrmstooth Holder Cell, Wyrmstooth, "I'm ready to go.": SetStage 50 (when: Barrow of the Wyrm stage == 10; the speaker is Lurius Liore; GetDistance Skyrim.esm:04C488 <= 1500 or GetDistance Skyrim.esm:0A17A2 <= 4000). Reply: "Great. I'll let everyone know we're ready to set sail." Source: WT_TIF__01028F08.Fragment_0 on INFO Wyrmstooth.esp:028F08 (Wyrmstooth.esp). **script**
 - On the way, a line of its own starts a scene while it is at its first objective: Dialogue with Lurius Liore, placed in Wyrmstooth Holder Cell, Wyrmstooth: StartScene (when: Barrow of the Wyrm stage == 50; the speaker is Lurius Liore) (scene Wyrmstooth.esp:0E80BB). Source: WT_TIF__010E80B4.Fragment_0 on INFO Wyrmstooth.esp:0E80B4 (Wyrmstooth.esp). **script**
 
 **Who and where**
@@ -61,6 +61,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Hemvor's Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:6AB76F. **script**
+- Read Hemvor's Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:6AB76F. **script**
+- Read Hemvor's Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:6AB76F. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:46DA2A DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -84,6 +87,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Animal Problem (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:4B9DFF. **script**
+- Read Animal Problem (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:4B9DFF. **script**
+- Read Animal Problem (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:4B9DFF. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:4B9DEE DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -102,6 +108,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Marauder Warning (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:4B9DFB. **script**
+- Read Marauder Warning (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:4B9DFB. **script**
+- Read Marauder Warning (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:4B9DFB. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:4B9DED DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -121,6 +130,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Vampire Warning (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BEDB3D. **script**
+- Read Vampire Warning (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BEDB3D. **script**
+- Read Vampire Warning (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BEDB3D. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:4B9DF0 DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -140,6 +152,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Warlock Trouble (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:4B9E05. **script**
+- Read Warlock Trouble (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:4B9E05. **script**
+- Read Warlock Trouble (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:4B9E05. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:4B9DEF DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -258,6 +273,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Fort Valus Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BEDB42. **script**
+- Read Fort Valus Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BEDB42. **script**
+- Read Fort Valus Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BEDB42. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:28D0B5 DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -282,6 +300,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Miner's Warning (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BF1D1D. **script**
+- Read Miner's Warning (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BF1D1D. **script**
+- Read Miner's Warning (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BF1D1D. **script**
 - Dialogue with Bolmar, placed in Gronndal Grove, "Maybe I can help.": SetStage 10 (when: the speaker is Bolmar; A Priceless Commodity stage <= 1). Source: WT_TIF__0248F99D.Fragment_0 on INFO Wyrmstooth.esp:48F99D (Wyrmstooth.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:48F992 DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
@@ -339,7 +360,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Return to Signy.", shown at stage 20. Source: Wyrmstooth.esp:B5DA18 QOBJ 20. **files**
-- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
+- Read Debt Ledger (SetStage 20). Source: defaultsetstageonplayeracquireitem.OnContainerChanged on BOOK Wyrmstooth.esp:B5DA25. **script**
 
 **Who and where**
 
@@ -358,6 +379,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - WTRandomEnc42TheNakedNordStarter (named "Spawn in Gjalrunn" in its record), a helper quest at stage 10 calls Start; WTRandomEnc42TheNakedNordStarter is started by story manager node WTWildernessQuestNode (event: script event; GetEventData WTWEStart == 1; GetEventData WTWEStart == 1; global WEEnabled == 1 (now 1); GetEventData WTWEStart == 1 or GetEventData WTWERoadStart == 1 or GetEventData WEStart == 1 or GetEventData WERoadStart == 1); story manager node WTRoadQuestNode (event: script event; GetEventData WTWERoadStart == 1; GetEventData WTWERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WTWEStart == 1 or GetEventData WTWERoadStart == 1 or GetEventData WEStart == 1 or GetEventData WERoadStart == 1). Source: WT_QF__02C7399C.fragment_12 on Wyrmstooth.esp:C7399C (Wyrmstooth.esp). **script**
+- Read Ja'Shavi-Dar's Note (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:C7399B. **script**
+- Read Ja'Shavi-Dar's Note (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:C7399B. **script**
+- Read Ja'Shavi-Dar's Note (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:C7399B. **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -380,6 +404,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read History of Wyrmstooth (SetStage 5). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:30EC1D. **script**
+- Read History of Wyrmstooth (SetStage 5). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:30EC1D. **script**
+- Read History of Wyrmstooth (SetStage 5). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:30EC1D. **script**
 - Dialogue with Vulom (named by scene WTVulomGreet, alias VulomTalkActivator of WTUberEncounter (Someone with Backbone) (forced)), placed in Tomb of Vulom: SetStage 10. Source: WT_TIF__012F1B15.Fragment_0 on INFO Wyrmstooth.esp:2F1B15 (Wyrmstooth.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:2F1A74 DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
@@ -405,6 +432,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Dunyick's Request (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BF1D19. **script**
+- Read Dunyick's Request (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BF1D19. **script**
+- Read Dunyick's Request (SetStage 1). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BF1D19. **script**
 - Dialogue with Dunyick, placed in Wyrmstooth; Wyrmstooth, "Which direction did your wolf go?": SetStage 10 (when: A Howl Load of Trouble stage <= 1; the speaker is Dunyick). Source: WT_TIF__012E6C77.Fragment_1 on INFO Wyrmstooth.esp:2E6C77 (Wyrmstooth.esp). **script**
 - Dialogue with Dunyick, placed in Wyrmstooth; Wyrmstooth, "I don't have the time for this.": SetStage 5 (when: A Howl Load of Trouble stage <= 1; the speaker is Dunyick). Source: WT_TIF__012E6C79.Fragment_0 on INFO Wyrmstooth.esp:2E6C79 (Wyrmstooth.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:2E49AF DNAM (Wyrmstooth.esp). **files**
@@ -602,39 +632,39 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 **Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?** Timing is Everything's setting iTIE_MinimumLevel:Dragonborn = 25 (settings.ini in Timing is Everything SE - Settings Loader).
 
-- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
@@ -649,4 +679,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

@@ -6,6 +6,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Caio's Journal vol. 2 (SetStage 10). Source: manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:0026F8. **script**
+- Read Caio's Journal vol. 3 (SetStage 10). Source: manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:0026FB. **script**
+- Read Caio's Journal vol. 5 (SetStage 10). Source: manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:000EB4. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Gray Fox Cowl.esm:0026F4 DNAM (Gray Fox Cowl.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -354,7 +357,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- CYCOHQuest01 (Black Marsh Maps) at stage 200 calls SetStage 10. Source: CYCO_QF_CYCOHQuest01_07000893.fragment_6 on BetalillesHammerfellQuestBundle.esp:00117E (BetalillesHammerfellQuestBundle.esp). **script**
+- CYCOHQuest01 (Black Marsh Maps) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Jukka, placed in Cyrodilic Collections, Alik'r Desert: SetStage 200 (when: Black Marsh Maps stage == 30; the speaker is Jukka). Source: CYCO_QF_CYCOHQuest01_07000893.fragment_6 on BetalillesHammerfellQuestBundle.esp:00117E (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:00117F DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -379,7 +382,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- CYCOHQuest02 (Cyrodilic Collections are Recruiting) at stage 200 calls SetStage 10. Source: CYCO_QF_CYCOHQuest02_07000894.fragment_1 on BetalillesHammerfellQuestBundle.esp:00117F (BetalillesHammerfellQuestBundle.esp). **script**
+- CYCOHQuest02 (Cyrodilic Collections are Recruiting) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Jukka, placed in Cyrodilic Collections, Alik'r Desert: SetStage 200 (when: Cyrodilic Collections are Recruiting stage == 40; the speaker is Jukka). Source: CYCO_QF_CYCOHQuest02_07000894.fragment_1 on BetalillesHammerfellQuestBundle.esp:00117F (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:001180 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -404,7 +407,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- CYCOHQuest03 (Ancient Pottery) at stage 200 calls SetStage 10. Source: CYCO_QF_CYCOHQuest03_07000895.fragment_5 on BetalillesHammerfellQuestBundle.esp:001180 (BetalillesHammerfellQuestBundle.esp). **script**
+- CYCOHQuest03 (Ancient Pottery) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Jukka, placed in Cyrodilic Collections, Alik'r Desert: SetStage 200 (when: the speaker is Jukka). Source: CYCO_QF_CYCOHQuest03_07000895.fragment_5 on BetalillesHammerfellQuestBundle.esp:001180 (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:001181 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -479,7 +482,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBIntroQuest (The Dark Brotherhood in Hammerfell) at stage 200 calls SetStage 10. Source: DDB_QF_DDBIntroQuest_0300082D.fragment_3 on BetalillesHammerfellQuestBundle.esp:000ECA (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBIntroQuest (The Dark Brotherhood in Hammerfell) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: the speaker is Tenerio). Source: DDB_QF_DDBIntroQuest_0300082D.fragment_3 on BetalillesHammerfellQuestBundle.esp:000ECA (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ECD DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -503,7 +506,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBQuest01 (Merchant Problem) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest01_0300082E.fragment_3 on BetalillesHammerfellQuestBundle.esp:000ECD (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBQuest01 (Merchant Problem) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: Merchant Problem stage == 20; the speaker is Tenerio). Source: DDB_QF_DDBQuest01_0300082E.fragment_3 on BetalillesHammerfellQuestBundle.esp:000ECD (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ECE DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -527,7 +530,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBQuest02 (Argonian Hero) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest02_0300082F.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ECE (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBQuest02 (Argonian Hero) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: Argonian Hero stage == 20; the speaker is Tenerio). Source: DDB_QF_DDBQuest02_0300082F.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ECE (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ECF DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -551,7 +554,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBQuest03 (Wandering Monk) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest03_03000830.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ECF (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBQuest03 (Wandering Monk) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: Wandering Monk stage == 20; the speaker is Tenerio). Source: DDB_QF_DDBQuest03_03000830.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ECF (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ED0 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -575,7 +578,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBQuest04 (Alik'r No More) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest04_03000831.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ED0 (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBQuest04 (Alik'r No More) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: Alik'r No More stage == 20; the speaker is Tenerio). Source: DDB_QF_DDBQuest04_03000831.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ED0 (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ED1 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -625,7 +628,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBQuest06 (Disappearing in the Dark) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest06_0400090F.fragment_14 on BetalillesHammerfellQuestBundle.esp:000FCA (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBQuest06 (Disappearing in the Dark) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: the speaker is Tenerio). Source: DDB_QF_DDBQuest06_0400090F.fragment_14 on BetalillesHammerfellQuestBundle.esp:000FCA (BetalillesHammerfellQuestBundle.esp). **script**
 - Dialogue with Lucya, placed in Soul Cairn Tower, Soul Cairn, "Yes, I will.": SetStage 20 (when: the speaker is Lucya). Source: DDB_TIF__0400094D.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:001008 (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000FCE DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
@@ -651,7 +654,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DDBQuest07 (The Crimson Eviscerator) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest07_04000913.fragment_6 on BetalillesHammerfellQuestBundle.esp:000FCE (BetalillesHammerfellQuestBundle.esp). **script**
+- DDBQuest07 (The Crimson Eviscerator) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert: SetStage 200 (when: The Crimson Eviscerator stage == 60; the speaker is Tenerio). Source: DDB_QF_DDBQuest07_04000913.fragment_6 on BetalillesHammerfellQuestBundle.esp:000FCE (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000FCF DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -725,7 +728,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- HABLBladesQuest02 (In need of Scouts) at stage 200 calls SetStage 10. Source: HABL_QF_HABLBladesQuest02_06000C5C.fragment_3 on BetalillesHammerfellQuestBundle.esp:000C5C (BetalillesHammerfellQuestBundle.esp). **script**
+- HABLBladesQuest02 (In need of Scouts) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Loremaster Za'kir, placed in Common House, Alik'r Desert: SetStage 200 (when: In need of Scouts stage == 30; the speaker is Loremaster Za'kir). Source: HABL_QF_HABLBladesQuest02_06000C5C.fragment_3 on BetalillesHammerfellQuestBundle.esp:000C5C (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000C5D DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -798,6 +801,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Duarelm's Note: Dragonguard Style (SetStage 10). Source: DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000AAD. **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000AB8 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -822,6 +826,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Duarelm's Note: The Warp in the West, Part 1 (SetStage 10). Source: DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000A70. **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000AB9 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -845,6 +850,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Duarelm's Note: The Warp in the West, Part 2 (SetStage 10). Source: DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000A72. **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000AB7 DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -868,6 +874,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Duarelm's Note: Horn of Ja'darri, Part 1 (SetStage 10). Source: DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000AAE. **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ABB DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -891,6 +898,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Duarelm's Note: Horn of Ja'darri, Part 2 (SetStage 10). Source: DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000AAF. **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ABA DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -914,6 +922,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Read Duarelm's Note: Horn of Ja'darri, Part 3 (SetStage 10). Source: DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000A6E. **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000ABC DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1085,6 +1094,13 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 ## Routes into the first quest from outside the starts
 
+### None
+
+- What it does: stage None: SetStage 10. Source: manny_GF_OnReadOnce on None (?). **script**
+- Started by: nothing in the records or scripts.
+- **unread**: the trail stops here: nothing in the records or scripts starts None, and Alternate Perspective's start menu in LoreRim doesn't offer it.
+- In one sentence: The trail stops at None: nothing in the records or scripts starts None, and Alternate Perspective's start menu in LoreRim doesn't offer it.
+
 ## The payoff
 
 - **Dragonslayer** (completes at 200): nothing is given on its completing stages.
@@ -1098,39 +1114,39 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 **Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?** Timing is Everything's setting iTIE_MinimumLevel:Dragonborn = 25 (settings.ini in Timing is Everything SE - Settings Loader).
 
-- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
@@ -1145,4 +1161,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

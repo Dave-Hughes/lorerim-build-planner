@@ -170,6 +170,15 @@
     "source": "Skyrim.esm:03372B QOBJ 30",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "30": 160,
+    "60": 255,
+    "65": 255,
+    "70": 315,
+    "75": 390,
+    "80": 250,
+    "100": 250
+   },
    "target": [
     {
      "alias": "Ralof",
@@ -525,6 +534,10 @@
     "source": "Skyrim.esm:04E50D QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "30": 30
+   },
    "target": [
     {
      "alias": "RiverwoodFriend",
@@ -590,7 +603,24 @@
      "atStage": 160,
      "call": "SetStage 10",
      "source": "QF_MQ102_0004E50D.fragment_45 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Balgruuf the Greater",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dragonsreach"
+       ],
+       "call": "SetStage 160",
+       "info": "Skyrim.esm:0D553E",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Balgruuf the Greater; Before the Storm stage 150 done; Before the Storm stage 160 not done",
+       "source": "TIF__000D553E.Fragment_1 on INFO Skyrim.esm:0D553E (Delay Bleak Falls Barrow.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -599,7 +629,8 @@
      "atStage": 150,
      "call": "SetStage 8",
      "source": "QF_MQ102_0004E50D.fragment_115 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -771,6 +802,10 @@
     "source": "Skyrim.esm:0D0800 QOBJ 15",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "50": 50,
+    "80": 180
+   },
    "target": [
     {
      "alias": "Farengar",
@@ -828,7 +863,8 @@
       "atStage": 1,
       "call": "SetStage 20",
       "source": "QF_MQ104B_0002610C.fragment_6 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "quest script",
@@ -837,7 +873,8 @@
       "atStage": 1,
       "call": "SetStage 50",
       "source": "QF_MQ104B_0002610C.fragment_6 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "dialogue",
@@ -939,7 +976,35 @@
      "atStage": 190,
      "call": "SetStage 10",
      "source": "QF_MQ103_000D0800.fragment_20 on Skyrim.esm:0D0800 (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:0E0EB9",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Farengar; Bleak Falls Barrow stage 180 done; Bleak Falls Barrow stage 190 not done",
+       "source": "TIF__000E0EB9.Fragment_0 on INFO Skyrim.esm:0E0EB9 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:0D8B7C",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Farengar",
+       "source": "TIF__000D8B7C.Fragment_0 on INFO Skyrim.esm:0D8B7C (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -1017,6 +1082,14 @@
     "source": "Skyrim.esm:02610C QOBJ 5",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "5": 10,
+    "15": 40,
+    "20": 65,
+    "30": 80,
+    "40": 90,
+    "50": 90
+   },
    "target": [
     {
      "alias": "Balgruuf",
@@ -1071,7 +1144,8 @@
       "atStage": 1,
       "call": "SetStage 30",
       "source": "QF_MQ105_000242BA.fragment_1 on Skyrim.esm:0242BA (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "dialogue",
@@ -1159,7 +1233,8 @@
      "atStage": 110,
      "call": "SetStage 5",
      "source": "QF_MQ104B_0002610C.fragment_39 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -1265,6 +1340,16 @@
     "source": "Skyrim.esm:0242BA QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 8,
+    "20": 30,
+    "25": 50,
+    "30": 58,
+    "40": 80,
+    "50": 100,
+    "60": 120,
+    "70": 140
+   },
    "target": [
     {
      "alias": "Arngeir",
@@ -1354,7 +1439,8 @@
       "atStage": 1,
       "call": "SetStage 30",
       "source": "QF_MQ106_00032926.fragment_2 on Skyrim.esm:032926 (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "quest script",
@@ -1363,7 +1449,69 @@
       "atStage": 150,
       "call": "SetStage 10",
       "source": "QF_MQ104B_0002610C.fragment_43 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": [
+       {
+        "by": "dialogue",
+        "speaker": "Lydia",
+        "speakerNamed": "the one follower in MQ104 (Dragon Rising)'s aliases",
+        "speakerPlaced": [
+         "Breezehome"
+        ],
+        "call": "SetStage 150",
+        "info": "Skyrim.esm:05EE35",
+        "prompt": null,
+        "reply": [],
+        "conditions": "the speaker is the one in alias Balgruuf",
+        "source": "TIF__0005EE35.Fragment_0 on INFO Skyrim.esm:05EE35 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "dialogue",
+        "speaker": "Lydia",
+        "speakerNamed": "the one follower in MQ104 (Dragon Rising)'s aliases",
+        "speakerPlaced": [
+         "Breezehome"
+        ],
+        "call": "SetStage 150",
+        "info": "Skyrim.esm:05EE3E",
+        "prompt": null,
+        "reply": [],
+        "conditions": "the speaker is the one in alias Balgruuf",
+        "source": "TIF__0005EE3E.Fragment_0 on INFO Skyrim.esm:05EE3E (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "dialogue",
+        "speaker": "Lydia",
+        "speakerNamed": "the one follower in MQ104 (Dragon Rising)'s aliases",
+        "speakerPlaced": [
+         "Breezehome"
+        ],
+        "call": "SetStage 150",
+        "info": "Skyrim.esm:05EE38",
+        "prompt": null,
+        "reply": [],
+        "conditions": "the speaker is the one in alias Balgruuf",
+        "source": "TIF__0005EE38.Fragment_0 on INFO Skyrim.esm:05EE38 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "dialogue",
+        "speaker": "Lydia",
+        "speakerNamed": "the one follower in MQ104 (Dragon Rising)'s aliases",
+        "speakerPlaced": [
+         "Breezehome"
+        ],
+        "call": "SetStage 150",
+        "info": "Skyrim.esm:0DD042",
+        "prompt": null,
+        "reply": [],
+        "conditions": "the speaker is the one in alias Balgruuf",
+        "source": "TIF__000DD042.Fragment_0 on INFO Skyrim.esm:0DD042 (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ]
      },
      {
       "by": "quest script",
@@ -1443,7 +1591,35 @@
      "atStage": 160,
      "call": "SetStage 10",
      "source": "QF_MQ105_000242BA.fragment_42 on Skyrim.esm:0242BA (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 160",
+       "info": "Skyrim.esm:030308",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Arngeir",
+       "source": "TIF__00030308.Fragment_0 on INFO Skyrim.esm:030308 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 160",
+       "info": "Skyrim.esm:030312",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Arngeir; The Way of the Voice stage 140 done; The Way of the Voice stage 160 not done",
+       "source": "TIF__00030312.Fragment_0 on INFO Skyrim.esm:030312 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1453,6 +1629,14 @@
     "index": 10,
     "source": "Skyrim.esm:0713DC QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50
    },
    "target": [
     {
@@ -1485,7 +1669,8 @@
       "atStage": 190,
       "call": "SetStage 15",
       "source": "QF_MQ105_000242BA.fragment_119 on Skyrim.esm:0242BA (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      }
     ]
    }
@@ -1504,7 +1689,8 @@
      "atStage": 200,
      "call": "SetStage 5",
      "source": "QF_MQ105_000242BA.fragment_55 on Skyrim.esm:0242BA (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -1520,7 +1706,7 @@
       "Oh, you wanted the attic room? Why didn't you say so the first time?",
       "The thing is... we don't actually have an attic room. But I think I know what you mean. Go ahead and make yourself at home."
      ],
-     "conditions": "the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; fn67 == 1; GetActorValue == 1",
+     "conditions": "the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; GetInCell Skyrim.esm:0133C6 == 1; GetActorValue == 1",
      "source": "TIF__000453EE.Fragment_0 on INFO Skyrim.esm:0453EE (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1537,7 +1723,7 @@
      "reply": [
       "Attic room, eh? Well... we don't have an attic room, but you can have the one on the left. Make yourself at home."
      ],
-     "conditions": "the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; fn67 == 1",
+     "conditions": "the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; GetInCell Skyrim.esm:0133C6 == 1",
      "source": "TIF__000A56D4.Fragment_0 on INFO Skyrim.esm:0A56D4 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1641,6 +1827,12 @@
     "source": "Skyrim.esm:032926 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 30,
+    "20": 50,
+    "30": 102,
+    "40": 150
+   },
    "target": [
     {
      "alias": "Delphine",
@@ -1695,7 +1887,8 @@
       "atStage": 1,
       "call": "SetStage 50",
       "source": "QF_MQ201_00035D5F.fragment_12 on Skyrim.esm:035D5F (Storm the Thalmor Embassy.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "dialogue",
@@ -1840,7 +2033,8 @@
      "atStage": 160,
      "call": "SetStage 10",
      "source": "QF_MQ106_00032926.fragment_30 on Skyrim.esm:032926 (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -1958,6 +2152,18 @@
     "index": 5,
     "source": "Skyrim.esm:035D5F QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 30,
+    "10": 40,
+    "20": 50,
+    "30": 70,
+    "40": 100,
+    "50": 110,
+    "55": 140,
+    "60": 140,
+    "80": 210,
+    "90": 230
    },
    "target": [
     {
@@ -2081,7 +2287,8 @@
      "atStage": 230,
      "call": "SetStage 5",
      "source": "QF_MQ201_00035D5F.fragment_40 on Skyrim.esm:035D5F (Storm the Thalmor Embassy.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2090,7 +2297,24 @@
      "atStage": 250,
      "call": "SetStage 10",
      "source": "QF_MQ201_00035D5F.fragment_55 on Skyrim.esm:035D5F (Storm the Thalmor Embassy.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Delphine",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Sleeping Giant Inn"
+       ],
+       "call": "SetStage 250",
+       "info": "Skyrim.esm:01C0EB",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Delphine",
+       "source": "TIF__01172B8B.Fragment_0 on INFO Skyrim.esm:01C0EB (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -2188,6 +2412,12 @@
     "source": "Skyrim.esm:036191 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 50,
+    "40": 150
+   },
    "target": [
     {
      "alias": "Keerava",
@@ -2229,11 +2459,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "MQ202 (A Cornered Rat)",
-      "questId": "Skyrim.esm:036191",
-      "atStage": null,
+      "by": "by itself",
+      "script": "MQ202QuestScript",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "MQ202QuestScript.OnUpdate on Skyrim.esm:036191 (Requiem.esp)",
       "verdict": "script"
      },
@@ -2273,7 +2502,24 @@
      "atStage": 180,
      "call": "SetStage 10",
      "source": "QF_MQ202_00036191.fragment_19 on Skyrim.esm:036191 (Requiem.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Esbern",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Ratway Warrens, Esbern's Vault"
+       ],
+       "call": "SetStage 180",
+       "info": "Skyrim.esm:036360",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Esbern",
+       "source": "TIF__011959BA.Fragment_0 on INFO Skyrim.esm:036360 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -2350,6 +2596,12 @@
     "index": 10,
     "source": "Skyrim.esm:036192 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 50,
+    "30": 60,
+    "40": 200
    },
    "target": [
     {
@@ -2437,7 +2689,8 @@
       "atStage": 1,
       "call": "SetStage 20",
       "source": "QF_MQ204_0002D515.fragment_7 on Skyrim.esm:02D515 (Unofficial Skyrim Special Edition Patch.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "dialogue",
@@ -2490,7 +2743,39 @@
      "atStage": 280,
      "call": "SetStage 10",
      "source": "QF_MQ203_00036192.fragment_16 on Skyrim.esm:036192 (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Delphine",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Sleeping Giant Inn"
+       ],
+       "call": "SetStage 280",
+       "info": "Skyrim.esm:016F8C",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Delphine",
+       "source": "TIF__00016F8C.Fragment_0 on INFO Skyrim.esm:016F8C (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Delphine",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Sleeping Giant Inn"
+       ],
+       "call": "SetStage 280",
+       "info": "Skyrim.esm:0750A7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Delphine",
+       "source": "TIF__000750A7.Fragment_0 on INFO Skyrim.esm:0750A7 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -2615,6 +2900,15 @@
     "index": 10,
     "source": "Skyrim.esm:02D515 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 70,
+    "25": 83,
+    "30": 90,
+    "40": 120,
+    "50": 135,
+    "60": 140
    },
    "target": [
     {
@@ -2811,7 +3105,8 @@
      "atStage": 205,
      "call": "SetStage 10",
      "source": "QF_MQ204_0002D515.fragment_64 on Skyrim.esm:02D515 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2820,7 +3115,24 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "QF_MQ204_0002D515.fragment_17 on Skyrim.esm:02D515 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Paarthurnax",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Skyrim"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:03FA49",
+       "prompt": null,
+       "reply": [],
+       "conditions": "The Throat of the World stage 195 done; the speaker is Paarthurnax",
+       "source": "TIF__0003FA49.Fragment_0 on INFO Skyrim.esm:03FA49 (Defeat the Dragon Cult.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -2843,6 +3155,12 @@
     "index": 10,
     "source": "Skyrim.esm:02D516 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "50": 80
    },
    "target": [
     {
@@ -2973,7 +3291,8 @@
      "atStage": 100,
      "call": "SetStage 10",
      "source": "QF_MQ205_0002D516.fragment_12 on Skyrim.esm:02D516 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [
@@ -3008,12 +3327,17 @@
      "source": "QF_MQ301_00044C56.fragment_4 (Unofficial Skyrim Special Edition Patch.esp)"
     }
    ],
-   "advancedBy": 1,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Read the Elder Scroll at the Time-Wound",
     "index": 10,
     "source": "Skyrim.esm:036193 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 100
    },
    "target": [
     {
@@ -3050,11 +3374,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "MQ206 (Alduin's Bane)",
-      "questId": "Skyrim.esm:036193",
-      "atStage": null,
+      "by": "by itself",
+      "script": "MQ206Script",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "MQ206Script.OnUpdate on Skyrim.esm:036193 (Skyrim.esm)",
       "verdict": "script"
      },
@@ -3077,6 +3400,15 @@
       "conditions": "the speaker is Paarthurnax; Alduin's Bane stage < 20",
       "source": "TIF__000C64EC.Fragment_1 on INFO Skyrim.esm:0C64EC (Skyrim.esm)",
       "verdict": "script"
+     },
+     {
+      "by": "book",
+      "book": "Elder Scroll (Dragon)",
+      "bookId": "Skyrim.esm:02D513",
+      "call": "SetStage 20",
+      "plain": "Read Elder Scroll (Dragon)",
+      "source": "ElderScrollScript.OnEquipped on BOOK Skyrim.esm:02D513",
+      "verdict": "script"
      }
     ]
    }
@@ -3095,7 +3427,8 @@
      "atStage": 220,
      "call": "SetStage 10",
      "source": "QF_MQ206_00036193.fragment_34 on Skyrim.esm:036193 (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [
@@ -3185,6 +3518,18 @@
     "source": "Skyrim.esm:044C56 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "11": 10,
+    "12": 10,
+    "20": 25,
+    "25": 30,
+    "30": 50,
+    "40": 70,
+    "50": 120,
+    "60": 150,
+    "70": 200
+   },
    "target": [
     {
      "alias": "Paarthurnax",
@@ -3236,7 +3581,22 @@
      "atStage": 30,
      "call": "SetStage 10",
      "source": "QF_MQ301_00044C56.fragment_6 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 30",
+       "info": "Skyrim.esm:045D03",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Jarl",
+       "source": "TIF__00045D03.Fragment_0 on INFO Skyrim.esm:045D03 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -3246,6 +3606,14 @@
     "index": 10,
     "source": "Skyrim.esm:045923 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 15,
+    "30": 15,
+    "40": 40,
+    "50": 55,
+    "60": 60
    },
    "target": [
     {
@@ -3324,7 +3692,8 @@
      "atStage": 200,
      "call": "SetStage 5",
      "source": "QF_MQ301_00044C56.fragment_15 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3333,7 +3702,24 @@
      "atStage": 220,
      "call": "SetStage 10",
      "source": "QF_MQ301_00044C56.fragment_27 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Odahviing",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dragonsreach, Great Porch"
+       ],
+       "call": "SetStage 220",
+       "info": "Skyrim.esm:04DE3D",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Odahviing",
+       "source": "TIF__0004DE3D.Fragment_0 on INFO Skyrim.esm:04DE3D (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -3369,6 +3755,12 @@
     "source": "Skyrim.esm:046EF0 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 40,
+    "30": 50,
+    "40": 180
+   },
    "target": [
     {
      "alias": "Gatekeeper",
@@ -3400,7 +3792,24 @@
       "atStage": 230,
       "call": "SetStage 20",
       "source": "QF_MQ301_00044C56.fragment_43 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": [
+       {
+        "by": "dialogue",
+        "speaker": "Odahviing",
+        "speakerNamed": "GetIsID",
+        "speakerPlaced": [
+         "Dragonsreach, Great Porch"
+        ],
+        "call": "SetStage 230",
+        "info": "Skyrim.esm:07CC29",
+        "prompt": null,
+        "reply": [],
+        "conditions": "the speaker is Odahviing",
+        "source": "TIF__0007CC29.Fragment_0 on INFO Skyrim.esm:07CC29 (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ]
      },
      {
       "by": "dialogue",
@@ -3472,7 +3881,8 @@
      "atStage": 180,
      "call": "SetStage 5",
      "source": "QF_MQ303_00046EF0.fragment_33 on Skyrim.esm:046EF0 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3481,7 +3891,8 @@
      "atStage": 300,
      "call": "SetStage 10",
      "source": "QF_MQ303_00046EF0.fragment_24 on Skyrim.esm:046EF0 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [
@@ -3541,13 +3952,18 @@
     "source": "Skyrim.esm:046EF1 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 50,
+    "30": 150
+   },
    "target": [
     {
      "alias": "Alduin1",
      "fill": "forced",
      "holds": [
       {
-       "name": "a marker",
+       "name": "Alduin",
        "kind": "forced reference",
        "where": [
         "Sovngarde"
@@ -3582,11 +3998,12 @@
       "atStage": 1,
       "call": "SetStage 30",
       "source": "QF_MQ305_00046EF2.fragment_8 on Skyrim.esm:046EF2 (Skyrim.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      },
      {
       "by": "dialogue",
-      "speaker": "",
+      "speaker": "Stormcloak Soldier",
       "speakerNamed": "alias LostSoul of MQ304 (Sovngarde) (forced)",
       "speakerPlaced": [
        "Sovngarde"
@@ -3603,7 +4020,7 @@
      },
      {
       "by": "dialogue",
-      "speaker": "",
+      "speaker": "Stormcloak Soldier",
       "speakerNamed": "alias LostSoul of MQ304 (Sovngarde) (forced)",
       "speakerPlaced": [
        "Sovngarde"
@@ -3623,7 +4040,7 @@
      },
      {
       "by": "dialogue",
-      "speaker": "",
+      "speaker": "Stormcloak Soldier",
       "speakerNamed": "alias LostSoul of MQ304 (Sovngarde) (forced)",
       "speakerPlaced": [
        "Sovngarde"
@@ -3691,7 +4108,8 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "QF_MQ304_00046EF1.fragment_22 on Skyrim.esm:046EF1 (Update.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3701,6 +4119,10 @@
     "index": 10,
     "source": "Skyrim.esm:046EF2 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 100
    },
    "target": [
     {
@@ -3743,11 +4165,10 @@
     "stage": 100,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "MQ305 (Dragonslayer)",
-      "questId": "Skyrim.esm:046EF2",
-      "atStage": null,
+      "by": "by itself",
+      "script": "MQ305Script",
       "call": "SetStage 30",
+      "plain": "It starts by itself from the start of the game.",
       "source": "MQ305Script.OnUpdate on Skyrim.esm:046EF2 (Skyrim.esm)",
       "verdict": "script"
      }
@@ -3768,7 +4189,8 @@
      "atStage": 10,
      "call": "SetStage 10",
      "source": "QF_MQ301_00044C56.fragment_0 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3777,7 +4199,8 @@
      "atStage": 50,
      "call": "SetStage 15",
      "source": "QF_MQ301_00044C56.fragment_7 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3786,7 +4209,22 @@
      "atStage": 30,
      "call": "SetStage 15",
      "source": "QF_MQ301_00044C56.fragment_6 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 30",
+       "info": "Skyrim.esm:045D03",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Jarl",
+       "source": "TIF__00045D03.Fragment_0 on INFO Skyrim.esm:045D03 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -3795,7 +4233,24 @@
      "atStage": 18,
      "call": "SetStage 15",
      "source": "QF_MQ301_00044C56.fragment_49 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Esbern",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Ratway Warrens, Esbern's Vault"
+       ],
+       "call": "SetStage 18",
+       "info": "Skyrim.esm:0D070F",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Esbern",
+       "source": "TIF__000D070F.Fragment_0 on INFO Skyrim.esm:0D070F (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -3841,6 +4296,10 @@
     "index": 10,
     "source": "Skyrim.esm:03FA16 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 50
    },
    "target": [
     {
@@ -3942,6 +4401,9 @@
     "source": "Skyrim.esm:0E76DE QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10
+   },
    "target": [
     {
      "alias": "WordWall",
@@ -3979,7 +4441,7 @@
       "If you find anyone you think would make a good recruit, I can certainly take a look at them.",
       "Remember though, being a Blade is a lifelong commitment. Their loyalty has to be with us once they're in."
      ],
-     "conditions": "the speaker is Delphine; GetInFaction CurrentFollowerFaction == 0; fn359 == 1",
+     "conditions": "the speaker is Delphine; GetInFaction CurrentFollowerFaction == 0; you're in Sky Haven Temple",
      "source": "TIF__000E38C5.Fragment_0 on INFO Skyrim.esm:0E38C5 (Missing Follower Dialogue Fix.esp)",
      "verdict": "script"
     },
@@ -4004,6 +4466,12 @@
     "source": "Skyrim.esm:0E38C9 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
+   },
    "target": [
     {
      "alias": "Delphine",
@@ -4023,7 +4491,7 @@
     }
    ],
    "needs": {
-    "conditions": "Alduin's Wall stage 280 done; fn359 == 1; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done",
+    "conditions": "Alduin's Wall stage 280 done; you're in Sky Haven Temple; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done",
     "doors": [],
     "ways": [
      {
@@ -4045,11 +4513,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "FreeformSkyhavenTempleA (Rebuilding the Blades)",
-      "questId": "Skyrim.esm:0E38C9",
-      "atStage": null,
+      "by": "by itself",
+      "script": "FreeformSkyHavenTempleAScript",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E38C9 (PaarthurnaxQuestExpansion.esp)",
       "verdict": "script"
      },
@@ -4124,7 +4591,7 @@
      "reply": [
       "Good luck, Dragonborn."
      ],
-     "conditions": "the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; fn359 == 1",
+     "conditions": "the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; you're in Sky Haven Temple",
      "source": "TIF__000E67EC.Fragment_0 on INFO Skyrim.esm:0E67EC (Missing Follower Dialogue Fix.esp)",
      "verdict": "script"
     },
@@ -4150,6 +4617,10 @@
     "source": "Skyrim.esm:0E3E67 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
+   },
    "target": [
     {
      "alias": "Boss",
@@ -4159,7 +4630,7 @@
     }
    ],
    "needs": {
-    "conditions": "Alduin's Wall stage 280 done; fn359 == 1; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done",
+    "conditions": "Alduin's Wall stage 280 done; you're in Sky Haven Temple; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done",
     "doors": [],
     "ways": []
    },
@@ -4175,11 +4646,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "FreeformSkyHavenTempleB (Dragon Hunting)",
-      "questId": "Skyrim.esm:0E3E67",
-      "atStage": null,
+      "by": "by itself",
+      "script": "FreeformSkyHavenTempleAScript",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E3E67 (PaarthurnaxQuestExpansion.esp)",
       "verdict": "script"
      },
@@ -4216,7 +4686,7 @@
       "It's good to see the Blades fighting alongside the Dragonborn once again. To think we're treading in the footsteps of thousands of years past.",
       "While you're out hunting, keep a sharp eye open for any dragon parts you might find. I'd be interested in looking at them."
      ],
-     "conditions": "fn264 == 0; Dragon Research stage 100 not done; Dragon Hunting stage 20 done; the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; fn359 == 1",
+     "conditions": "hasn't the spell Dragon Infusion; Dragon Research stage 100 not done; Dragon Hunting stage 20 done; the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; you're in Sky Haven Temple",
      "source": "TIF__000E67EB.Fragment_0 on INFO Skyrim.esm:0E67EB (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
     },
@@ -4233,6 +4703,9 @@
     "index": 10,
     "source": "Skyrim.esm:0E6DF1 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -4253,7 +4726,7 @@
     }
    ],
    "needs": {
-    "conditions": "Alduin's Wall stage 280 done; fn359 == 1; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done",
+    "conditions": "Alduin's Wall stage 280 done; you're in Sky Haven Temple; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done",
     "doors": [],
     "ways": [
      {
@@ -5501,7 +5974,35 @@
      "atStage": 160,
      "call": "SetStage 10",
      "source": "QF_MQ105_000242BA.fragment_42 on Skyrim.esm:0242BA (Skyrim.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 160",
+       "info": "Skyrim.esm:030308",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Arngeir",
+       "source": "TIF__00030308.Fragment_0 on INFO Skyrim.esm:030308 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 160",
+       "info": "Skyrim.esm:030312",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Arngeir; The Way of the Voice stage 140 done; The Way of the Voice stage 160 not done",
+       "source": "TIF__00030312.Fragment_0 on INFO Skyrim.esm:030312 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "target": [
@@ -5614,7 +6115,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -5707,7 +6208,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -5800,7 +6301,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -5893,7 +6394,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -5986,7 +6487,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -6079,7 +6580,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -6172,7 +6673,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -6265,7 +6766,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -6358,7 +6859,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -6452,261 +6953,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

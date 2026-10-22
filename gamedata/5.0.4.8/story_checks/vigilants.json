@@ -17,6 +17,10 @@
     "source": "Vigilant.esm:4E1318 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10
+   },
    "target": [
     {
      "alias": "PornBook",
@@ -81,6 +85,10 @@
     "index": 0,
     "source": "Vigilant.esm:4E372E QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10
    },
    "target": [
     {
@@ -163,6 +171,9 @@
     "source": "Vigilant.esm:4E0116 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0
+   },
    "target": [
     {
      "alias": "Piper",
@@ -207,6 +218,10 @@
     "index": 0,
     "source": "Vigilant.esm:4E011B QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10
    },
    "target": [
     {
@@ -273,6 +288,10 @@
     "source": "Vigilant.esm:4E0121 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10
+   },
    "target": [
     {
      "alias": "Horn",
@@ -338,6 +357,9 @@
     "source": "Vigilant.esm:4E0102 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0
+   },
    "target": [
     {
      "alias": "Target",
@@ -377,6 +399,9 @@
     "source": "Vigilant.esm:4E0108 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0
+   },
    "target": [
     {
      "alias": "CenterMarker",
@@ -415,6 +440,9 @@
     "index": 0,
     "source": "Vigilant.esm:4E010E QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -490,6 +518,13 @@
     "index": 5,
     "source": "Vigilant.esm:005CE2 QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -576,7 +611,31 @@
      "atStage": 40,
      "call": "Start",
      "source": "QF_zzAoMMq00_01005CE2.fragment_15 on Vigilant.esm:005CE2 (Vigilant - Delayed Start.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Altano",
+       "speakerNamed": "alias Altano of zzzAoMMq00 (Vigilant of Stendarr) (unique)",
+       "speakerPlaced": [
+        "Temple of Stendarr"
+       ],
+       "call": "SetStage 40",
+       "info": "Vigilant.esm:027A45",
+       "prompt": "Can you tell me more about this Temple?",
+       "reply": [
+        "I will give you a short overview of its facilities.",
+        "The place we're standing in right now is the chapel of the temple. Here we speak our prayers to Stendarr.",
+        "Downstairs is the library where books collected by our predecessors are kept. You should visit it when you have the time.",
+        "To the right of the entrance is an alchemy laboratory. Upstairs is the restroom.",
+        "On the second floor on the left is a dining room. Admittedly, the food there is not splendid, but it will satisfy your hunger.",
+        "But let's finish the explanation here. You must be tired. Get some rest."
+       ],
+       "conditions": "Vigilant of Stendarr stage == 30; the speaker is the one in alias Altano",
+       "source": "AoM00_TIF__01027A45.Fragment_0 on INFO Vigilant.esm:027A45 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -585,7 +644,31 @@
      "atStage": 40,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq00_01005CE2.fragment_15 on Vigilant.esm:005CE2 (Vigilant - Delayed Start.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Altano",
+       "speakerNamed": "alias Altano of zzzAoMMq00 (Vigilant of Stendarr) (unique)",
+       "speakerPlaced": [
+        "Temple of Stendarr"
+       ],
+       "call": "SetStage 40",
+       "info": "Vigilant.esm:027A45",
+       "prompt": "Can you tell me more about this Temple?",
+       "reply": [
+        "I will give you a short overview of its facilities.",
+        "The place we're standing in right now is the chapel of the temple. Here we speak our prayers to Stendarr.",
+        "Downstairs is the library where books collected by our predecessors are kept. You should visit it when you have the time.",
+        "To the right of the entrance is an alchemy laboratory. Upstairs is the restroom.",
+        "On the second floor on the left is a dining room. Admittedly, the food there is not splendid, but it will satisfy your hunger.",
+        "But let's finish the explanation here. You must be tired. Get some rest."
+       ],
+       "conditions": "Vigilant of Stendarr stage == 30; the speaker is the one in alias Altano",
+       "source": "AoM00_TIF__01027A45.Fragment_0 on INFO Vigilant.esm:027A45 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -595,6 +678,14 @@
     "index": 0,
     "source": "Vigilant.esm:005CE3 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -671,7 +762,22 @@
      "atStage": 50,
      "call": "Start",
      "source": "QF_zzAoMMq01_01005CE3.fragment_8 on Vigilant.esm:005CE3 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 50",
+       "info": "Vigilant.esm:006270",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Bloodsucker stage == 40; the speaker is the one in alias Altano",
+       "source": "AoM01_TIF__01006270.Fragment_0 on INFO Vigilant.esm:006270 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -680,7 +786,22 @@
      "atStage": 50,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq01_01005CE3.fragment_8 on Vigilant.esm:005CE3 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 50",
+       "info": "Vigilant.esm:006270",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Bloodsucker stage == 40; the speaker is the one in alias Altano",
+       "source": "AoM01_TIF__01006270.Fragment_0 on INFO Vigilant.esm:006270 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -690,6 +811,11 @@
     "index": 0,
     "source": "Vigilant.esm:006271 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -745,7 +871,7 @@
        "A Daedra destroyed a house outside the city walls a few hours ago. People heard it laughing and apparently it's still in the house.",
        "They also saw a woman who could be its summoner. Our mission now is to banish that Daedra and seize its summoner. Let's go."
       ],
-      "conditions": "fn67 == 1; He Who Cannot Be Touched stage < 10; the speaker is the one in alias Altano",
+      "conditions": "GetInCell Skyrim.esm:01605E == 1; He Who Cannot Be Touched stage < 10; the speaker is the one in alias Altano",
       "source": "AoM02_TIF__01006275.Fragment_0 on INFO Vigilant.esm:006275 (Vigilant.esm)",
       "verdict": "script"
      }
@@ -766,7 +892,22 @@
      "atStage": 30,
      "call": "Start",
      "source": "QF_zzAoMMq02_01006271.fragment_0 on Vigilant.esm:006271 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 30",
+       "info": "Vigilant.esm:00627D",
+       "prompt": null,
+       "reply": [],
+       "conditions": "He Who Cannot Be Touched stage == 20; the speaker is the one in alias Altano",
+       "source": "AoM02_TIF__0100627D.Fragment_0 on INFO Vigilant.esm:00627D (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -775,7 +916,22 @@
      "atStage": 30,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq02_01006271.fragment_0 on Vigilant.esm:006271 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 30",
+       "info": "Vigilant.esm:00627D",
+       "prompt": null,
+       "reply": [],
+       "conditions": "He Who Cannot Be Touched stage == 20; the speaker is the one in alias Altano",
+       "source": "AoM02_TIF__0100627D.Fragment_0 on INFO Vigilant.esm:00627D (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -785,6 +941,13 @@
     "index": 0,
     "source": "Vigilant.esm:00627F QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -839,7 +1002,7 @@
       "reply": [
        "I heard they're having trouble with a Daedra in one of the WIndhelm's inns. This might be related... Let's go check it out."
       ],
-      "conditions": "fn67 == 1; Lazy Afternoon stage < 10; the speaker is the one in alias Altano",
+      "conditions": "GetInCell Skyrim.esm:01605E == 1; Lazy Afternoon stage < 10; the speaker is the one in alias Altano",
       "source": "AoM03_TIF__01008850.Fragment_0 on INFO Vigilant.esm:008850 (Vigilant.esm)",
       "verdict": "script"
      }
@@ -860,7 +1023,22 @@
      "atStage": 40,
      "call": "Start",
      "source": "QF_zzAoMMq03_0100627F.fragment_9 on Vigilant.esm:00627F (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 40",
+       "info": "Vigilant.esm:00886E",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Lazy Afternoon stage == 30; the speaker is the one in alias Altano",
+       "source": "AoM03_TIF__0100886E.Fragment_0 on INFO Vigilant.esm:00886E (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -869,7 +1047,22 @@
      "atStage": 40,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq03_0100627F.fragment_9 on Vigilant.esm:00627F (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 40",
+       "info": "Vigilant.esm:00886E",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Lazy Afternoon stage == 30; the speaker is the one in alias Altano",
+       "source": "AoM03_TIF__0100886E.Fragment_0 on INFO Vigilant.esm:00886E (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -879,6 +1072,13 @@
     "index": 0,
     "source": "Vigilant.esm:0082EA QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -941,7 +1141,7 @@
        "I overheard a strange rumor from the guards. Apparently, there's a sinister man in Kynesgrove... They say that anyone who makes eye contact with him goes insane.",
        "As Vigilants of Stendarr, we can't overlook something like that. Go to Kynesgrove and check out this rumor."
       ],
-      "conditions": "fn67 == 1; The Eye of Madness stage < 10; the speaker is the one in alias Altano",
+      "conditions": "GetInCell Skyrim.esm:016789 == 1; The Eye of Madness stage < 10; the speaker is the one in alias Altano",
       "source": "AoM04_TIF__0100934C.Fragment_0 on INFO Vigilant.esm:00934C (Vigilant.esm)",
       "verdict": "script"
      }
@@ -962,7 +1162,22 @@
      "atStage": 50,
      "call": "Start",
      "source": "QF_zzAoMMq04_010082EA.fragment_10 on Vigilant.esm:0082EA (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 50",
+       "info": "Vigilant.esm:009365",
+       "prompt": null,
+       "reply": [],
+       "conditions": "The Eye of Madness stage == 40; the speaker is the one in alias Altano",
+       "source": "AoM04_TIF__01009365.Fragment_0 on INFO Vigilant.esm:009365 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -971,7 +1186,22 @@
      "atStage": 50,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq04_010082EA.fragment_10 on Vigilant.esm:0082EA (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 50",
+       "info": "Vigilant.esm:009365",
+       "prompt": null,
+       "reply": [],
+       "conditions": "The Eye of Madness stage == 40; the speaker is the one in alias Altano",
+       "source": "AoM04_TIF__01009365.Fragment_0 on INFO Vigilant.esm:009365 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -981,6 +1211,16 @@
     "index": 0,
     "source": "Vigilant.esm:0098C9 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 20,
+    "25": 25,
+    "30": 30,
+    "40": 40,
+    "41": 40,
+    "50": 50
    },
    "target": [
     {
@@ -1035,7 +1275,7 @@
       "reply": [
        "Apparently, she's been seen in Riften. My old mentor summoned us to Stendarr's Beacon, so let's go talk to him."
       ],
-      "conditions": "fn67 == 1; Dine and Dash stage < 10; the speaker is the one in alias Altano",
+      "conditions": "GetInCell Skyrim.esm:016789 == 1; Dine and Dash stage < 10; the speaker is the one in alias Altano",
       "source": "AoM05_TIF__01009E31.Fragment_0 on INFO Vigilant.esm:009E31 (Vigilant.esm)",
       "verdict": "script"
      }
@@ -1056,7 +1296,22 @@
      "atStage": 60,
      "call": "Start",
      "source": "QF_zzAoMMq05_010098C9.fragment_12 on Vigilant.esm:0098C9 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 60",
+       "info": "Vigilant.esm:009E66",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Jacob",
+       "source": "AoM05_TIF__01009E66.Fragment_0 on INFO Vigilant.esm:009E66 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1065,7 +1320,22 @@
      "atStage": 60,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq05_010098C9.fragment_12 on Vigilant.esm:0098C9 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 60",
+       "info": "Vigilant.esm:009E66",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Jacob",
+       "source": "AoM05_TIF__01009E66.Fragment_0 on INFO Vigilant.esm:009E66 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1075,6 +1345,16 @@
     "index": 0,
     "source": "Vigilant.esm:009E68 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 20,
+    "25": 25,
+    "50": 50,
+    "60": 60,
+    "70": 70,
+    "80": 80
    },
    "target": [
     {
@@ -1151,7 +1431,22 @@
      "atStage": 90,
      "call": "Start",
      "source": "QF_zzAoMMq06_01009E68.fragment_18 on Vigilant.esm:009E68 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 90",
+       "info": "Vigilant.esm:00A3FD",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Thus Spoke Khajiit stage == 80; the speaker is the one in alias Altano",
+       "source": "AoM06_TIF__0100A3FD.Fragment_0 on INFO Vigilant.esm:00A3FD (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1160,7 +1455,22 @@
      "atStage": 90,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq06_01009E68.fragment_18 on Vigilant.esm:009E68 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 90",
+       "info": "Vigilant.esm:00A3FD",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Thus Spoke Khajiit stage == 80; the speaker is the one in alias Altano",
+       "source": "AoM06_TIF__0100A3FD.Fragment_0 on INFO Vigilant.esm:00A3FD (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1169,7 +1479,22 @@
      "atStage": 90,
      "call": "Start",
      "source": "QF_zzAoMMq06_01009E68.fragment_41 on Vigilant.esm:009E68 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 90",
+       "info": "Vigilant.esm:00A3FD",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Thus Spoke Khajiit stage == 80; the speaker is the one in alias Altano",
+       "source": "AoM06_TIF__0100A3FD.Fragment_0 on INFO Vigilant.esm:00A3FD (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1178,7 +1503,22 @@
      "atStage": 90,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq06_01009E68.fragment_41 on Vigilant.esm:009E68 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 90",
+       "info": "Vigilant.esm:00A3FD",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Thus Spoke Khajiit stage == 80; the speaker is the one in alias Altano",
+       "source": "AoM06_TIF__0100A3FD.Fragment_0 on INFO Vigilant.esm:00A3FD (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1188,6 +1528,14 @@
     "index": 0,
     "source": "Vigilant.esm:00A3FE QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "33": 33,
+    "40": 40,
+    "60": 60,
+    "70": 70
    },
    "target": [
     {
@@ -1270,7 +1618,22 @@
      "atStage": 80,
      "call": "Start",
      "source": "QF_zzAoMMq07_0100A3FE.fragment_10 on Vigilant.esm:00A3FE (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 80",
+       "info": "Vigilant.esm:027A47",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Altano",
+       "source": "AoM07_TIF__01027A47.Fragment_0 on INFO Vigilant.esm:027A47 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1279,7 +1642,22 @@
      "atStage": 80,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq07_0100A3FE.fragment_10 on Vigilant.esm:00A3FE (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 80",
+       "info": "Vigilant.esm:027A47",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias Altano",
+       "source": "AoM07_TIF__01027A47.Fragment_0 on INFO Vigilant.esm:027A47 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1289,6 +1667,12 @@
     "index": 0,
     "source": "Vigilant.esm:00EA8A QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "200": 200,
+    "210": 210,
+    "300": 300
    },
    "target": [
     {
@@ -1421,7 +1805,8 @@
      "atStage": 30,
      "call": "Start",
      "source": "QF_zzAoMMq08_0100EA8A.fragment_9 on Vigilant.esm:00EA8A (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -1430,7 +1815,8 @@
      "atStage": 30,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq08_0100EA8A.fragment_9 on Vigilant.esm:00EA8A (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -1439,7 +1825,8 @@
      "atStage": 230,
      "call": "Start",
      "source": "QF_zzAoMMq08_0100EA8A.fragment_24 on Vigilant.esm:00EA8A (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -1448,7 +1835,8 @@
      "atStage": 230,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq08_0100EA8A.fragment_24 on Vigilant.esm:00EA8A (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -1458,6 +1846,13 @@
     "index": 0,
     "source": "Vigilant.esm:00EFF7 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "40": 40
    },
    "target": [
     {
@@ -1550,7 +1945,8 @@
      "atStage": 50,
      "call": "Start",
      "source": "QF_zzAoMMq09_0100EFF7.fragment_8 on Vigilant.esm:00EFF7 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -1559,7 +1955,8 @@
      "atStage": 50,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq09_0100EFF7.fragment_8 on Vigilant.esm:00EFF7 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -1569,6 +1966,11 @@
     "index": 0,
     "source": "Vigilant.esm:011B75 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "30": 30
    },
    "target": [
     {
@@ -1660,7 +2062,8 @@
      "atStage": 310,
      "call": "Start",
      "source": "QF_zzAoMMq08_0100EA8A.fragment_34 on Vigilant.esm:00EA8A (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -1669,7 +2072,8 @@
      "atStage": 310,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq08_0100EA8A.fragment_34 on Vigilant.esm:00EA8A (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -1679,6 +2083,14 @@
     "index": 0,
     "source": "Vigilant.esm:4D0376 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 20,
+    "29": 29,
+    "30": 30,
+    "110": 110
    },
    "target": [
     {
@@ -1833,6 +2245,9 @@
     "source": "Vigilant.esm:4EA3A8 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0
+   },
    "target": [
     {
      "alias": "Boss",
@@ -1871,6 +2286,9 @@
     "index": 0,
     "source": "Vigilant.esm:4EA3D1 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -1929,6 +2347,9 @@
     "source": "Vigilant.esm:4EA3AC QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0
+   },
    "target": [
     {
      "alias": "Target",
@@ -1974,6 +2395,9 @@
     "source": "Vigilant.esm:4E91B0 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0
+   },
    "target": [
     {
      "alias": "Boss",
@@ -2012,6 +2436,9 @@
     "index": 0,
     "source": "Vigilant.esm:4EA3C8 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -2097,6 +2524,21 @@
     "source": "Vigilant.esm:4D4C3D QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0,
+    "1": 1,
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "55": 55,
+    "60": 60,
+    "70": 70,
+    "200": 20,
+    "210": 210,
+    "300": 300
+   },
    "target": [
     {
      "alias": "TA01",
@@ -2167,6 +2609,10 @@
     "index": 1,
     "source": "Vigilant.esm:51EAC1 QOBJ 1",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "1": 1,
+    "10": 10
    },
    "target": [
     {
@@ -2291,6 +2737,10 @@
     "source": "Vigilant.esm:43B81F QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10
+   },
    "target": [
     {
      "alias": "GuideThingol",
@@ -2338,7 +2788,8 @@
       "atStage": 80,
       "call": "SetStage 10",
       "source": "QF_zzzBMMq02_01038525.fragment_16 on Vigilant.esm:038525 (Vigilant.esm)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      }
     ]
    },
@@ -2358,7 +2809,8 @@
      "atStage": 50,
      "call": "Start",
      "source": "QF_zzAoMMq10_01011B75.fragment_11 on Vigilant.esm:011B75 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2367,7 +2819,8 @@
      "atStage": 50,
      "call": "SetStage 0",
      "source": "QF_zzAoMMq10_01011B75.fragment_11 on Vigilant.esm:011B75 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2376,7 +2829,8 @@
      "atStage": 130,
      "call": "Start",
      "source": "QF_zzzAoMMqGoodEnd_024D0376.fragment_26 on Vigilant.esm:4D0376 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2385,7 +2839,8 @@
      "atStage": 130,
      "call": "SetStage 0",
      "source": "QF_zzzAoMMqGoodEnd_024D0376.fragment_26 on Vigilant.esm:4D0376 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [
@@ -2408,6 +2863,16 @@
     "index": 0,
     "source": "Vigilant.esm:038524 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "100": 100
    },
    "target": [
     {
@@ -2478,7 +2943,22 @@
      "atStage": 60,
      "call": "Start",
      "source": "QF_zzzBMMq01_01038524.fragment_13 on Vigilant.esm:038524 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 60",
+       "info": "Vigilant.esm:0395A4",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Empty Cells stage == 50; the speaker is the one in alias Steward",
+       "source": "BM01_TIF__010395A4.Fragment_0 on INFO Vigilant.esm:0395A4 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -2487,7 +2967,22 @@
      "atStage": 60,
      "call": "SetStage 0",
      "source": "QF_zzzBMMq01_01038524.fragment_13 on Vigilant.esm:038524 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 60",
+       "info": "Vigilant.esm:0395A4",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Empty Cells stage == 50; the speaker is the one in alias Steward",
+       "source": "BM01_TIF__010395A4.Fragment_0 on INFO Vigilant.esm:0395A4 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -2497,6 +2992,14 @@
     "index": 10,
     "source": "Vigilant.esm:038525 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "30": 30,
+    "50": 50,
+    "60": 60,
+    "70": 70,
+    "90": 90
    },
    "target": [
     {
@@ -2581,7 +3084,8 @@
      "atStage": 100,
      "call": "Start",
      "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2590,7 +3094,8 @@
      "atStage": 100,
      "call": "SetStage 0",
      "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -2618,6 +3123,10 @@
     "index": 60,
     "source": "Vigilant.esm:038526 QOBJ 60",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "60": 60,
+    "90": 90
    },
    "target": [
     {
@@ -2741,6 +3250,11 @@
     "source": "Vigilant.esm:42E0B1 QOBJ 100",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "100": 0,
+    "110": 0,
+    "120": 0
+   },
    "target": [
     {
      "alias": "DreamPelinal",
@@ -2793,7 +3307,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -2803,6 +3318,9 @@
     "index": 0,
     "source": "Vigilant.esm:12C4F4 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -2850,7 +3368,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -2860,6 +3379,9 @@
     "index": 0,
     "source": "Vigilant.esm:13712B QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -2907,7 +3429,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -2927,6 +3450,9 @@
     "index": 0,
     "source": "Vigilant.esm:13965A QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -2964,7 +3490,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -2974,6 +3501,9 @@
     "index": 0,
     "source": "Vigilant.esm:140225 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -3021,7 +3551,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3031,6 +3562,9 @@
     "index": 0,
     "source": "Vigilant.esm:05AE03 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -3078,7 +3612,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3088,6 +3623,9 @@
     "index": 0,
     "source": "Vigilant.esm:06A23B QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -3135,7 +3673,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3145,6 +3684,9 @@
     "index": 0,
     "source": "Vigilant.esm:06F53C QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -3234,7 +3776,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [
@@ -3257,6 +3800,9 @@
     "index": 0,
     "source": "Vigilant.esm:080E91 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -3346,7 +3892,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3356,6 +3903,9 @@
     "index": 0,
     "source": "Vigilant.esm:2CAE30 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0
    },
    "target": [
     {
@@ -3397,23 +3947,6 @@
      "speakerPlaced": [
       "Old Well"
      ],
-     "call": "Start",
-     "info": "Vigilant.esm:4EC7F2",
-     "prompt": "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.",
-     "reply": [
-      "Love, I and We. True God, play the pipe for this one."
-     ],
-     "conditions": "the speaker is Sacred Anatomancer",
-     "source": "AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Sacred Anatomancer",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Old Well"
-     ],
      "call": "SetStage 0",
      "info": "Vigilant.esm:4EC7F2",
      "prompt": "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.",
@@ -3432,6 +3965,12 @@
     "index": 0,
     "source": "Vigilant.esm:4EC7F3 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 10,
+    "1": 10,
+    "2": 10,
+    "3": 10
    },
    "target": [
     {
@@ -3480,6 +4019,9 @@
     "index": 0,
     "source": "Vigilant.esm:51532C QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 1
    },
    "target": [
     {
@@ -3541,7 +4083,8 @@
      "atStage": 0,
      "call": "SetStage 0",
      "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3562,6 +4105,7 @@
     "source": "Vigilant.esm:51ADBF QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "BelharzaMan",
@@ -3711,6 +4255,17 @@
     "source": "Vigilant.esm:43CBAE QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "22": 22,
+    "24": 24,
+    "30": 30,
+    "35": 35,
+    "40": 40,
+    "50": 50,
+    "60": 60
+   },
    "target": [
     {
      "alias": "GuideCurse01",
@@ -3769,7 +4324,22 @@
      "atStage": 110,
      "call": "Start",
      "source": "QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 110",
+       "info": "Vigilant.esm:0395A7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Empty Cells stage == 100; the speaker is the one in alias Steward",
+       "source": "BM01_TIF__010395A7.Fragment_0 on INFO Vigilant.esm:0395A7 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -3778,7 +4348,22 @@
      "atStage": 110,
      "call": "SetStage 0",
      "source": "QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 110",
+       "info": "Vigilant.esm:0395A7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Empty Cells stage == 100; the speaker is the one in alias Steward",
+       "source": "BM01_TIF__010395A7.Fragment_0 on INFO Vigilant.esm:0395A7 (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -3788,6 +4373,14 @@
     "index": 0,
     "source": "Vigilant.esm:065932 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "20": 20,
+    "30": 30,
+    "60": 60,
+    "70": 70,
+    "80": 80
    },
    "target": [
     {
@@ -3882,7 +4475,8 @@
      "atStage": 200,
      "call": "Start",
      "source": "QF_zzzCOMq01_01065932.fragment_14 on Vigilant.esm:065932 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3891,7 +4485,8 @@
      "atStage": 200,
      "call": "SetStage 0",
      "source": "QF_zzzCOMq01_01065932.fragment_14 on Vigilant.esm:065932 (Vigilant.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3901,6 +4496,11 @@
     "index": 20,
     "source": "Vigilant.esm:324E7E QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -5228,7 +5828,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -5321,7 +5921,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -5414,7 +6014,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -5507,7 +6107,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -5600,7 +6200,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -5693,7 +6293,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -5786,7 +6386,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -5879,7 +6479,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -5972,7 +6572,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
