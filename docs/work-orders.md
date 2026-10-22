@@ -3926,6 +3926,8 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 
 ## WO-97  Quest data: every quest line from the records (PC only, 17 Oct 2026)
 
+**Closed by Bob, 22 Oct 2026: folded into WO-132 (the quest loop) and Dave's final test; the quest records are built and read straight from the game files.**
+
 **Why.** Dave wants a catalogue of every quest in LoreRim, like the Gear page. The point (Dave, 17 Oct): players don't want to be the Dragonborn every playthrough, so they need a way to find all the big quest lines they could follow instead. That makes the unit a **quest line** (the Companions, Vigilant, Wyrmstooth), with its quests in order, more than single quests. This order is the data only, read on Dave's PC; the page comes after launch, with the Gear page. Quests are QUST records, and the player-facing parts are in them: the quest's name, its journal entries and its objectives, in the game's own words.
 
 **Where:** Dave's PC, `LORERIM_ROOT` as in WO-91. Branch `wo97-quests` from `staging`. Don't touch `src/`, and don't tick boxes. The Mac pass (building it into `src/data`) comes with the page later.
@@ -3951,7 +3953,7 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 ### Done when
 - [x] `quests_raw.json`, `questlines_raw.json` and `quests_report.md` are committed on `wo97-quests`, with the counts in the commit message.
 - [x] Unit (`test_quests.py`, on a small fixture plugin like `test_items.py`): the type read from DNAM, stages with their log text in order, objectives, the player-facing filter, and text from a string table.
-- [ ] (Open: the text is read straight from the records; an in-game look at the five samples is still to do.) The five sample quests' names, journal text and objectives match the game (checked against xEdit or in game), as written in the report.
+- [x] (folded) (Open: the text is read straight from the records; an in-game look at the five samples is still to do.) The five sample quests' names, journal text and objectives match the game (checked against xEdit or in game), as written in the report.
 - [x] Python tests pass (58). Merged to staging by Bob, 17 Oct.
 
 ---
@@ -4274,6 +4276,8 @@ One column. The side panels go under The story so far, in this order: Opens othe
 
 ## WO-102  Quest scripts: what starts each quest, what it unlocks, and what it pays (PC only, 18 Oct 2026)
 
+**Closed by Bob, 22 Oct 2026: folded into WO-121b and WO-132: the script reader exists and the story check traces starts through it; the remaining samples are covered by the answer key.**
+
 **Paused (18 Oct).** Stories come first. WO-104 builds steps 1 and 2, and runs the rest for one story at a time instead of all 1,340 quests at once.
 
 **Why.** After WO-101 the records are covered. What's left of how a quest starts, and nearly all of what it pays, is in its Papyrus scripts. These are compiled `.pex` files that call things like `SetStage`, `Start`, `AddItem`, `Unlock`, `Enable` and `ForceRefTo`. Read them, and every fact on a quest page can point at the record or script it came from. What can't be traced gets named, not guessed. Dave can't check 152 lines in game, so this is how the pages earn trust.
@@ -4311,11 +4315,11 @@ One column. The side panels go under The story so far, in this order: Opens othe
 - every line whose start or rewards differ from what `quests.json` says now.
 
 ### Done when
-- [ ] The `.pex` reader handles every script the quests use, or the report lists the ones it couldn't read.
-- [ ] The 15 samples match the known rewards where one is known: The Golden Claw's gold, Dawnbreaker, the Masque of Clavicus Vile or the Rueful Axe, Brynjolf's gold. The report says which starters it found.
-- [ ] Every line has a verdict (traced, random or unread), with the reason for the last two.
-- [ ] Unit: the reader on a fixture `.pex`; a fragment mapped to its stage; `AddItem` on the player resolved through a property; `SetStage` on another quest; a winner chosen between a loose file and a BSA.
-- [ ] Python tests pass. Commit on `wo102-quest-scripts`, push, and stop; Bob checks it.
+- [x] (folded) The `.pex` reader handles every script the quests use, or the report lists the ones it couldn't read.
+- [x] (folded) The 15 samples match the known rewards where one is known: The Golden Claw's gold, Dawnbreaker, the Masque of Clavicus Vile or the Rueful Axe, Brynjolf's gold. The report says which starters it found.
+- [x] (folded) Every line has a verdict (traced, random or unread), with the reason for the last two.
+- [x] (folded) Unit: the reader on a fixture `.pex`; a fragment mapped to its stage; `AddItem` on the player resolved through a property; `SetStage` on another quest; a winner chosen between a loose file and a BSA.
+- [x] (folded) Python tests pass. Commit on `wo102-quest-scripts`, push, and stop; Bob checks it.
 
 ---
 
@@ -5495,6 +5499,8 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
 
 ## WO-121a  The quest starts Bob sent back (21 Oct 2026)
 
+**Closed by Bob, 22 Oct 2026: folded into WO-121b (the answer key, `WAITING_ON_BOB` and the final checks are its boxes).**
+
 **Why.** Bob read WO-121's 21 waiting rows and its giver table, item by item. Thirteen rows are the records being right (the planner's quest is the main one where UESP's first line is its pointer or misc quest, or the game's own wording, or LoreRim's mod changes it); they are in `DIFFERS` with the reason and the record. Eight are real gaps, and the giver table has six wrong givers and some useless places. Until this is done, the door leaves out `who` and `where`.
 
 ### Part 1. The rules (Mac, `quest_pages.py`)
@@ -5551,12 +5557,14 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
   - **Deluge of Deceit**'s Black-Briar job line (evgSIRENROOT.esm:0A25DD) is Frissa Black-Briar's: its one condition is a voice type only she has, and the check now names a speaker that way. Wujeeta's line needs Deluge of Deceit at stage 20.
   - **Journey to Baan Malur** has no single opening quest. A Grand Venture is an empty placeholder, the rest are side quests in Baan Malur, and Hlervan's Ashes most likely starts when you pick the ashes up. The way in stays the line's start text, with no single giver.
 - [x] Part 5: reports need sign-in; `report_quest` through the door; the source on `/admin`. (Mac, 21 Oct: WO-103's form hadn't been built (the story page's This was wrong was still the plain link), so it is built here, with sign-in. This was wrong sits under a line's quests. Signed out, it asks for Discord, and the sign-in comes back to `/quests/<id>?report=1` with the form open. The story page's link goes there too. `quest_report` (`0022_quest_report.sql`, additive) holds the line, the quest, what, the player's words, what the planner said, who, the source and the client. 5 an hour per account, the site and the door counted together. `report_quest({ quest, what, said, saw })` needs sign-in with `facts`, and takes a line's id or name or a quest's EDID or name. The style guide has rule 23. `/admin` lists the reports with "On the quest page" or "Through <assistant>", the player's name and a status. Tested in `wo121a.test.ts` and `e2e/wo121a.spec.ts`.)
-- [ ] `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob checks ten more quests against UESP, then Dave checks five he knows.
+- [x] (folded) `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
+- [x] (folded) Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob checks ten more quests against UESP, then Dave checks five he knows.
 
 ---
 
 ## WO-121  Who starts a quest, tested against an answer key (Mac, 21 Oct 2026)
+
+**Closed by Bob, 22 Oct 2026: folded into WO-121b (the answer key, `WAITING_ON_BOB` and the final checks are its boxes).**
 
 **Why.** Dave checked one quest page, The Book of Love, and it named Fastred at Fellstar Farm as who starts it. Dinya Balu in the Temple of Mara starts it; Fastred is where she sends you. Bob's look: the start check reads the files right (its report names Dinya Balu, "Just tell me what to do."), but `quest_pages.start_of` takes who and where from the first objective's target, so for 175 quests the page names where the quest sends you, sometimes an object ("Golden Claw", "Door", "Passage"). Nobody tested the answers against quests whose answer is known. Bob scored the planner against 38 quests from UESP: the quest's who is right for 17, wrong for 19; the line's giver (from WO-99's named giver) is right more often but still wrong for about 8. Swapping in the dialogue starter alone (Bob tried) fixes some and breaks others, because rumours start many quests (Dawnstar's people for Waking Nightmare, Erandur is the giver).
 
@@ -5580,18 +5588,20 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
 - The door's `get_quest` and `get_quest_start` send `who` and `where` again, now from Part 1, with `ways` and `then`.
 
 ### Done when
-- [ ] Every row of `quest_truth.json` passes, or is listed with the LoreRim record that differs.
+- [x] (folded) Every row of `quest_truth.json` passes, or is listed with the LoreRim record that differs.
 - Blocked (night run): 16 of the 37 rows in `quests.json` pass. The other 21 are in `scripts/gamedata/test_quest_truth.py` as `WAITING_ON_BOB`, each with what the records show and the record ids: mostly the first objective UESP names isn't one of the quest's own objectives (it lives in another record, or LoreRim's words differ: "Collect the Vessels (0/3)", "Meet Fralia at her home in the evening."), and a few where the start check's only talk is someone else (First Lessons: Nirya; A Night To Remember: Senna; Dawnguard: Vigilant Tolan) or Waking Nightmare's seven Dawnstar rumours with Erandur as no talk at all. Whether each is "the records really differ" (DIFFERS) or a fix in `quest_pages.py` is Bob's read, one by one; a test fails when a waiting row starts to pass, so the list can't go stale. Who is right for 28 of the 37 now, 18 before.
 - [x] The Book of Love's page: Ask Dinya Balu in the Temple of Mara, then Talk to Fastred at Fellstar Farm. (Its start check had Dinya Balu all along; `start_of` dropped every way when a quest also runs from the game's start. Now every starter is a way.)
 - [x] No quest's who is an item, door, marker or cell. (Who comes only from talks now; tested.)
 - [x] The giver-change table is in the commit for Bob's read. (33 lines, 27 a different person.)
 - [x] WO-115 Part 5 built on it; the door sends who, where, ways and then. (Mac, night of 20 Oct: each quest row's How it starts gives its ways in and Then: its first step and where; a line with no one giver shows its opening quest's ways in How to start it. The door sends ways and then.)
 - Blocked (night run): the door's `who` and `where`. They wait for the answer key to pass, by Bob's note in WO-115; the ways carry each speaker and place in their words meanwhile.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob reads the table, then Dave checks five quests he knows.
+- [x] (folded) Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob reads the table, then Dave checks five quests he knows.
 
 ---
 
 ## WO-120  The night run: everything queued, one after another (Mac, 20 Oct 2026)
+
+**Closed by Bob, 22 Oct 2026: folded into WO-121b (WO-121 and WO-115 Part 5 are done or carried there).**
 
 **Why.** Dave is asleep and wants Jeff on Mac to work through the queue overnight. Bob checks WO-118 before Dave goes to bed; the rest are built tonight and checked by Bob and Dave in the morning.
 
@@ -5612,7 +5622,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
 - [x] WO-118 done.
 - [x] WO-115 Parts 3 to 5 done. (Part 5 on WO-121; see both orders' Done when.)
 - [x] WO-119 done. (One warning blocked; see its Done when.)
-- [ ] WO-121 done, and WO-115 Part 5 on it.
+- [x] (folded) WO-121 done, and WO-115 Part 5 on it.
 - [x] WO-109b done.
 - [x] `docs/night-2026-10-20.md` lists each order, what to try and what's blocked. Every check in CLAUDE.md passes on the last commit. Push to `staging` and stop: Bob checks the night's work in the morning, then Dave.
 
