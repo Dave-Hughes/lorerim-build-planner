@@ -4933,7 +4933,9 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
   - **Deathbrand.** The level-up node is the gate (level 20 in LoreRim, 36 in vanilla per UESP), not a way. Arriving on Solstheim at level 20 checks the same global inside DLC2Init's script.
   - The ways in are reading Deathbrand (its script needs stage 20, which is set once the gate has passed) and finding the pirates at Haknir's Shoal.
   - Geldis is a way in under Dragonborn.esm's condition. TheChoiceIsYours.esp's "stage <= 1" can't hold while stage 20 is done, so in LoreRim his line only comes after the book: a catch-up.
-  - **The sweep:** 138 ways need the quest's own later stage, a level held in a global, or a book's prerequisite stage. 80 are shown without it, 29 as an unworded condition, 8 with it, and 21 aren't ways on the page. 70 quests are affected. The list is `story_checks/wo137-sweep-2026-10-22.md`.
+  - **The sweep:** 138 ways need the quest's own later stage, a level held in a global, or a book's prerequisite stage.
+    - Against the pages after Mac's e874f10: 72 are shown without it (67 own stage, 5 books), 29 as an unworded condition, 14 with it (every level held in a global), and 23 aren't ways on the page.
+    - 68 quests are affected. The list is `story_checks/wo137-sweep-2026-10-22.md`.
   - **Item 6 (a):** `boards.json` places in the open now carry `nearPlace` and `nearTown` with metres. Paragliding's triggers are by its Flight Platform marker (2 m) and Peak's Shade Tower (31 m), in Falkreath hold. (b) to (d) are Mac's.
 
 ### Done when

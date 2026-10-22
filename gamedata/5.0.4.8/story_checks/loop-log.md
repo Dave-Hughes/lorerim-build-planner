@@ -79,7 +79,10 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
   - **Dragonborn.esm:** a second way in under the same gate. It needs stage 20 done and stage 1 not done, then sets 1. UESP agrees ("also possible to initiate the quest by asking about the latest rumors").
   - **TheChoiceIsYours.esp wins this line.** It swaps "stage 1 not done" for "stage <= 1". That can't be true while stage 20 is done (the quest is at 20 until something sets 1). So in this load order Geldis's line only shows after you've already read the book: a **catch-up**, not a way in. The planner shouldn't offer it as a start. Dave could check it in game: at level 20+, with the book unread, Geldis shouldn't have the line.
 - **Walking into Haknir's Shoal is a third way in.** Taking the map from the pirate boss sets 30 ("Use the Deathbrand Treasure Map"), and opening the chest first sets 29 ("Learn more about the buried treasure"). Both need the pirates there (stage 20). The check lists taking the map only as the second step.
-- **What the page says now:** "Read Deathbrand; It starts by itself when you level up; Talk to Geldis Sadri". It should read: at level 20 (Solstheim), read Deathbrand, or find the pirates at Haknir's Shoal. "When you level up" is the gate, not a way, and Geldis is a catch-up in LoreRim. That wording is Mac's.
+- **What the page says** (after Mac's e874f10, which landed while this ran): "Read Deathbrand; It starts by itself when you level up (Level 20)", with Geldis dropped as a catch-up. That agrees with the records. Still open:
+  - "when you level up" is the gate, not a way a player takes;
+  - "Read Deathbrand" has no level, though the book's script needs the gate (stage 20);
+  - finding the pirates at Haknir's Shoal isn't listed.
 
 **The sweep: ways that need the quest's own later stage, or a level held in a global.**
 - Read every checked start (`checked` files or uesp) with its helpers followed back, and matched each talk to the page's way by its prompt.
@@ -87,16 +90,16 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
   - a condition naming the quest's own stage at a stage above 0 (`done`, `==`, `>=`, `>`), leaving out the not-started tests (`<`, `<=`, `not done`);
   - `level >= <global>`;
   - and, new, a book whose script checks a prerequisite stage before it sets one.
-- 138 ways; 70 quests show at least one without the condition. Full list: `story_checks/wo137-sweep-2026-10-22.md`.
+- 138 ways. Against the pages after Mac's e874f10, 68 quests show at least one without the condition. Full list: `story_checks/wo137-sweep-2026-10-22.md`.
 
 | | shown with it | shown as "a condition the planner can't put in words yet" | shown without it | not a way on the page |
 |---|---|---|---|---|
-| the quest's own later stage | 0 | 29 | 69 | 16 |
-| a level held in a global | 8 | 0 | 6 | 5 |
+| the quest's own later stage | 0 | 29 | 67 | 18 |
+| a level held in a global | 14 | 0 | 0 | 5 |
 | a book's prerequisite stage | 0 | 0 | 5 | 0 |
 
-- **Own later stage (98 shown):** nearly all are the giver's "I'll do it" line in a quest a script or the story manager already started at 5 or 10: the Rift's odd jobs, Raven Rock's and Tel Mithryn's favours, Meridia's Order, the Fists of Fury, Reparations, Unearthed (Ralis's lines at 10, 14, 20 and 40). The talk moves the quest to its first objective, so by Bob's rule it's the step, not the start. The page shows it as a start with no condition (69) or an unworded one (29). Battle of the Champions (stage 20 done), Kyne's Sacred Trials (15 and 20 done) and Awakening (10 done) are the ones that need a later stage the player reaches by playing, like Deathbrand's Geldis.
-- **Level in a global, shown without it (6):** Deathbrand (20), Dragonborn's four cultist ambush nodes (level 25, shown as "It starts by itself as you travel"), and I Done Got Thaned! (14, through FFR09KickerNode; Grimsever's Return shows the same node with "Level 14").
+- Before e874f10 the level row was 8 / 0 / 6 / 5, and the own-stage row was 0 / 29 / 69 / 16. Mac's commit fixed the six level ways (Deathbrand, Dragonborn's four cultist ambushes, I Done Got Thaned!) and dropped two catch-up talks: Geldis's (Deathbrand) and Vigilant Tolan's (Awakening, stage 10 done).
+- **Own later stage (96 shown):** nearly all are the giver's "I'll do it" line in a quest a script or the story manager already started at 5 or 10: the Rift's odd jobs, Raven Rock's and Tel Mithryn's favours, Meridia's Order, the Fists of Fury, Reparations, Unearthed (Ralis's lines at 10, 14, 20 and 40). The talk moves the quest to its first objective, so by Bob's rule it's the step, not the start. The page shows it as a start with no condition (67) or an unworded one (29). Mac's new rule drops a talk that needs a later stage than the one it sets, and these set a later stage than they need, so they stay. Battle of the Champions (stage 20 done) and Kyne's Sacred Trials (15 and 20 done) still show talks that need a stage the player reaches by playing first, as Geldis did.
 - **Books with a prerequisite stage (5):** Deathbrand (stage 20), Letter to Lucien (The Oblivion Engine stage 5), and Wyrmstooth's Miner's Warning, Ja'Shavi-Dar's Note and Dunyick's Request (stage 0 done, so the quest must already be running). The start check doesn't read the prerequisite at all; it's in the book's script properties.
 - **Not read:** a level or stage check inside a script fragment, like DLC2Init's level check above. The sweep reads conditions and script properties, not branches in code.
 
