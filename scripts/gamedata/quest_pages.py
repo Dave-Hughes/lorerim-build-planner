@@ -1097,13 +1097,23 @@ def reword(start, wording):
     return out
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None):
+def people_of(entry):
+    """
+    The people and creatures a quest's records fill its aliases with, and its giver, by name (WO-133: Palonimo, the horse
+    Running Wild sends you after): what a player may call the quest by. Never a role, never an editor id.
+    """
+    names = [p.get("npc") for p in (entry or {}).get("people", [])] + [((entry or {}).get("giver") or {}).get("name")]
+    return list(dict.fromkeys(n for n in names if n and not is_role(n) and not _RECORD_FORM.search(n) and not _EDID.match(n)))
+
+
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None):
     """
     The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a
     player's words (WO-126), with the check's own form kept in start.raw for the open-or-locked judge and assistants;
-    `wording` is overrides.json's questStarts, {quest edid: {words: what the page says instead}}.
+    `wording` is overrides.json's questStarts, {quest edid: {words: what the page says instead}}. `called` is
+    overrides.json's questNames, {quest edid: {names: what players call it}} (WO-133).
     """
-    checks, globals_, wording = checks or {}, globals_ or {}, wording or {}
+    checks, globals_, wording, called = checks or {}, globals_ or {}, wording or {}, called or {}
     say = Words(quests_raw, globals_)
     raws = {}
     towns = towns if towns is not None else towns_of(givers_raw)
@@ -1174,6 +1184,9 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
                     "start": start,
                     **({"rewards": rewards} if rewards else {}),
+                    # What a player may call it by (WO-133): who its records fill it with, and the names players use.
+                    **({"people": people_of(givers.get(q["id"]))} if people_of(givers.get(q["id"])) else {}),
+                    **({"calledBy": called[q["edid"]]["names"]} if isinstance(called.get(q["edid"]), dict) else {}),
                 }, q.get("fills", {}), globals_)
             )
         item["quests"] = quests

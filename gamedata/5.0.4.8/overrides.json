@@ -353,5 +353,18 @@
     "zzzCHCraftZenithar": "Anvil of Zenithar",
     "zzzCHCraftNocturnal": "Altar of Nocturnal",
     "NTMRWICraftingTrade": "Throne of Trade"
+  },
+  "questNames": {
+    "_note": "WO-133: what players call a quest that its records don't hold, by quest edid: {_source, names}. Search finds the quest by these words too.",
+    "0WRHorseQ": {
+      "_source": "WO-133, Bob, 22 Oct 2026: what players call it; the community spells the horse palomino, the records palonimo.",
+      "names": [
+        "Palomino",
+        "palamino",
+        "white horse",
+        "wild horse",
+        "Joslin's horse"
+      ]
+    }
   }
 }

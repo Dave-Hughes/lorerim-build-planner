@@ -44,7 +44,7 @@ const perkName = (d: GameData, id: string) => {
 };
 
 /** Kinds search_facts looks through. */
-export const FACT_KINDS = ["perk", "spell", "trait", "race", "birthsign", "deity", "quest line", "story"] as const;
+export const FACT_KINDS = ["perk", "spell", "trait", "race", "birthsign", "deity", "quest line", "story", "quest"] as const;
 export type FactKind = (typeof FACT_KINDS)[number];
 
 export interface Hit {
@@ -52,12 +52,48 @@ export interface Hit {
   id: string;
   name: string;
   line: string;
+  /** For a quest found by more than its name (WO-133): what matched, "an objective: Catch the white, or palonimo, horse". */
+  why?: string;
+}
+
+/** What search says when nothing matched (WO-133): never send the assistant to the web. */
+export const NO_MATCH = "No quest matched. Ask the player where they saw it or what it gives.";
+
+// Words a player puts round a quest's name that no quest is found by: "the horse quest", "how do I start Palonimo".
+const FILLER = new Set(["the", "a", "an", "quest", "quests", "in", "of", "on", "at", "to", "for", "with", "called", "named", "how", "do", "i", "start", "lorerim", "skyrim", "about", "one"]);
+/** A text's words, case and punctuation aside ("Joslin's horse" -> "joslin's horse"). */
+const wordsOf = (t: string) => norm(t).replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim();
+/** Whether a word starts a word of the text: "horse" in "horses", not "no" in "Dragonstone". */
+const holds = (text: string, w: string) => ` ${text}`.includes(` ${w}`);
+// What get_quest takes for a name (WO-133): what players call it, who's in it, what starts it; never an objective's words.
+const NAMED_BY = ["what players call it", "someone in it", "what starts it"];
+
+/**
+ * A quest found by more than its name (WO-133): what players call it, the people and creatures in it, what starts it by
+ * reading, its objectives and its endings. Every word must be somewhere in those; the first field that holds them all
+ * says why it matched, else the one that holds the most. A name match is rank 1; these come after, by the field.
+ */
+function questMatch(q: Quest, words: string[]): { rank: number; why: string } | null {
+  const fields: [string, string[]][] = [
+    ["what players call it", q.calledBy ?? []],
+    ["someone in it", q.people ?? []],
+    ["what starts it", (q.start?.ways ?? []).filter((w) => /^(Read|Get) /.test(w.how)).map((w) => w.how.replace(/^(Read|Get) /, ""))],
+    ["an objective", q.objectives],
+    ["an ending", q.endings.map((e) => e.text).filter(Boolean)],
+  ];
+  const all = wordsOf(fields.flatMap(([, v]) => v).join(" | "));
+  if (!words.every((w) => holds(all, w))) return null;
+  const scored = fields.flatMap(([label, values], i) => values.map((v) => ({ i, label, v, n: words.filter((w) => holds(wordsOf(v), w)).length })));
+  const whole = scored.find((x) => x.n === words.length);
+  const best = whole ?? [...scored].sort((a, b) => b.n - a.n || a.i - b.i)[0];
+  const v = best.v.length > 120 ? `${best.v.slice(0, 117)}...` : best.v;
+  return { rank: 2 + (whole ? whole.i : fields.length), why: `${best.label}: ${v}` };
 }
 
 const firstSentence = (t: string) => (t.replace(/<([^>]*)>/g, "$1").match(/^.*?[.!?](\s|$)/)?.[0] ?? t).trim().slice(0, 200);
 
 /** Perks, spells, traits, races, birthsigns, deities, quest lines and stories by name or word: 20 at most. */
-export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], version = DEFAULT_VERSION, limit = 20): { hits: Hit[]; more: number } {
+export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], version = DEFAULT_VERSION, limit = 20): { hits: Hit[]; more: number; note?: string } {
   const d = versionData(version);
   const words = norm(query).split(/\s+/).filter(Boolean);
   if (!words.length) throw new FactsError("Say what to look for.");
@@ -82,11 +118,26 @@ export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], 
     }
   }
   const has = (t: string) => words.every((w) => norm(t).includes(w));
-  const ranked = all
-    .map((h) => ({ h, rank: norm(h.name) === norm(query) ? 0 : has(h.name) ? 1 : has(`${h.name} ${h.line} ${h.text}`) ? 2 : -1 }))
-    .filter((x) => x.rank >= 0)
-    .sort((a, b) => a.rank - b.rank || a.h.name.length - b.h.name.length || a.h.name.localeCompare(b.h.name));
-  return { hits: ranked.slice(0, limit).map(({ h }) => ({ kind: h.kind, id: h.id, name: h.name, line: h.line })), more: Math.max(0, ranked.length - limit) };
+  const ranked: { h: Hit; rank: number }[] = all
+    .map((h) => ({ h: { kind: h.kind, id: h.id, name: h.name, line: h.line } as Hit, rank: norm(h.name) === norm(query) ? 0 : has(h.name) ? 1 : has(`${h.name} ${h.line} ${h.text}`) ? 2 : -1 }))
+    .filter((x) => x.rank >= 0);
+  // A quest by its name, or by what's in it (WO-133): "Palonimo", "white horse" and "the horse quest" find Running Wild.
+  if (want.has("quest") && version === currentVersion().id) {
+    const asked = wordsOf(query).split(" ").filter((w) => w && !FILLER.has(w));
+    const look = asked.length ? asked : wordsOf(query).split(" ").filter(Boolean);
+    for (const l of questsData().lines)
+      for (const q of l.quests) {
+        const hit = { kind: "quest" as const, id: q.edid, name: q.name, line: `A quest in ${l.name}` };
+        if (wordsOf(q.name) === wordsOf(query)) ranked.push({ h: hit, rank: 0 });
+        else if (look.every((w) => holds(wordsOf(q.name), w))) ranked.push({ h: hit, rank: 1 });
+        else {
+          const m = questMatch(q, look);
+          if (m) ranked.push({ h: { ...hit, why: m.why }, rank: m.rank });
+        }
+      }
+  }
+  ranked.sort((a, b) => a.rank - b.rank || a.h.name.length - b.h.name.length || a.h.name.localeCompare(b.h.name));
+  return { hits: ranked.slice(0, limit).map(({ h }) => h), more: Math.max(0, ranked.length - limit), ...(ranked.length ? {} : { note: NO_MATCH }) };
 }
 
 /** A perk as the editor shows it: tree, ranks, what each rank needs and says, and what it rules out. */
@@ -227,12 +278,15 @@ export function getQuest({ id, name }: { id?: string; name?: string }, version =
   let line: QuestLine | undefined;
   let story: Story | undefined;
   let quest: Quest | undefined;
-  if (id) {
-    story = storyById(id);
-    line = byId.get(story?.line ?? id);
-    const hit = line ? undefined : quests.find((x) => norm(x.quest.edid) === norm(id));
+  let found: { asked: string; is: string; because?: string } | undefined;
+  const fromId = (key: string) => {
+    story = storyById(key);
+    line = byId.get(story?.line ?? key);
+    const hit = line ? undefined : quests.find((x) => norm(x.quest.edid) === norm(key));
     if (hit) ({ line, quest } = hit);
-  } else {
+  };
+  if (id) fromId(id);
+  else {
     const want = norm(name!);
     story = stories().find((s) => norm(s.name) === want);
     line = story ? byId.get(story.line) : lines.find((l) => norm(l.name) === want);
@@ -241,15 +295,27 @@ export function getQuest({ id, name }: { id?: string; name?: string }, version =
       if (hits.length > 1) throw new FactsError(`${hits.length} quests are named ${name}: ${hits.map((x) => `${x.quest.edid} in ${x.line.name}`).join(", ")}. Ask again with the EDID as id.`);
       if (hits[0]) ({ line, quest } = hits[0]);
     }
+    if (!line) {
+      // Not a name: a quest found by what's in it (WO-133), with what matched. Nothing found: ask the player, never the web.
+      const hit = searchFacts(name!, ["story", "quest line", "quest"], version).hits.find((h) =>
+        h.why ? NAMED_BY.some((b) => h.why!.startsWith(`${b}:`)) : wordsOf(name!).split(" ").filter((w) => !FILLER.has(w)).every((w) => holds(wordsOf(h.name), w)),
+      );
+      if (!hit) throw new FactsError(`No quest, quest line or story is named ${name}. ${NO_MATCH}`);
+      found = { asked: name!, is: hit.name, ...(hit.why ? { because: hit.why } : {}) };
+      fromId(hit.id);
+    }
   }
   if (!line) throw new FactsError(`No quest, quest line or story ${id ? `with the id ${id}` : `named ${name}`}. search_facts finds them by name.`);
-  story ??= storyOfLine(line.id);
-  quest ??= line.quests.find((q) => q.edid === (story ? storyOrder(story)[0].edid : line.opening)) ?? line.quests[0];
+  const l: QuestLine = line;
+  story ??= storyOfLine(l.id);
+  const s1 = story as Story | undefined;
+  const q: Quest = quest ?? l.quests.find((x) => x.edid === (s1 ? storyOrder(s1)[0].edid : l.opening)) ?? l.quests[0];
   return {
-    ...questStart(line, story),
-    quest: questFacts(quest),
+    ...(found ? { found } : {}),
+    ...questStart(l, s1),
+    quest: questFacts(q),
     // Open for you (WO-115 Part 3): only when the player said where they are.
-    ...(player ? { openForYou: openForYou(line, quest, player, version) } : {}),
+    ...(player ? { openForYou: openForYou(l, q, player, version) } : {}),
   };
 }
 

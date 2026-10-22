@@ -475,7 +475,7 @@ def main():
         # WO-121a: each cell's town, from the givers' places and the house keys, for telling a town's rumour.
         towns = towns_of(givers_raw, load("quest_starts_raw.json") if os.path.exists(os.path.join(RAW, "quest_starts_raw.json")) else None)
         wording = overrides.get("questStarts", {})
-        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording)
+        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}))
         # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
         said = {q["edid"]: json.dumps(q["start"].get("ways", []), ensure_ascii=False) for l in pages for q in l["quests"]}
         for edid, words in wording.items():

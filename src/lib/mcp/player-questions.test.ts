@@ -59,7 +59,7 @@ const QUESTIONS: Question[] = [
       return [found, ...(first ? [await call(() => getQuest({ id: first.id }))] : [])];
     },
     must: ["Running Wild", /note/i, /Joslin/, /Bannered Mare/],
-    todo: "WO-133: search matches only names, so Palonimo finds nothing; WO-131 Part 0: where the note is.",
+    todo: "WO-131 Part 0: search finds Running Wild (WO-133), but its start says read The Palonimo Mare, not where the note is.",
   },
   {
     n: 2,

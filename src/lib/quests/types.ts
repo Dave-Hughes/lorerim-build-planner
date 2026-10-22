@@ -33,6 +33,10 @@ export interface Quest {
   rewards?: { gold?: "small" | "medium" | "large"; items?: string[] };
   /** How this quest starts (WO-115 Part 2): the start check's answer in plain words, or "not yet". */
   start?: QuestStart;
+  /** Who its records fill it with, its giver among them, by name (WO-133): Running Wild's Palonimo, Joslin. */
+  people?: string[];
+  /** What players call it that the records don't hold (WO-133, overrides.json questNames): "Palomino". */
+  calledBy?: string[];
 }
 
 /**

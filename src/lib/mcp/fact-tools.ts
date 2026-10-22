@@ -26,7 +26,8 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     "search_facts",
     {
       title: "Search the planner's facts",
-      description: "Find LoreRim perks, spells, traits, races, birthsigns, deities, quest lines and stories by name or word, 20 at most, each with its kind, id, name and one line.",
+      description:
+        "Find LoreRim perks, spells, traits, races, birthsigns, deities, quest lines, stories and quests by name or word, 20 at most, each with its kind, id, name and one line. A quest is also found by what players call it, the people and creatures in it, the book or note that starts it, its objectives and its endings, and says why it matched (\"Palonimo\" finds Running Wild: someone in it). When nothing matches, ask the player where they saw it or what it gives; don't search the web.",
       inputSchema: z.object({
         query: z.string().min(1).max(100).describe("A name or words to look for."),
         kinds: z.array(z.enum(FACT_KINDS)).optional().describe("Only these kinds."),
@@ -110,7 +111,7 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     {
       title: "A quest",
       description:
-        "Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest. Give the player's level, what they've finished, or their playthrough, and openForYou says \"open for you\", \"locked: why\" or \"unknown: why\". Never call a quest open unless it says open for you.",
+        "Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest. A name that isn't a quest's finds the quest by what's in it, as search_facts does, and found says what matched. Give the player's level, what they've finished, or their playthrough, and openForYou says \"open for you\", \"locked: why\" or \"unknown: why\". Never call a quest open unless it says open for you.",
       inputSchema: z.object(questInput),
     },
     async (a: QuestArgs, ctx) => guarded(() => quest(a, ctx)),

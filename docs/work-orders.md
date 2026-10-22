@@ -4975,10 +4975,16 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 4. **Tests:** "Palonimo", "white horse", "palomino horse whiterun" and "the horse quest" return Running Wild; "Running Wild" still returns it first; a nonsense word returns the plain no-match answer.
 
 ### Done when
-- [ ] Search finds quests by objective, ending, book, creature and giver words, with the reason shown. Tests as above.
-- [ ] The aliases are in `overrides.json` with a source; `build.py` is run and the generated files not hand-edited.
-- [ ] No match gives the ask-the-player answer.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "how do I start the Palonimo quest" and gets Running Wild with the book.
+- [x] Search finds quests by objective, ending, book, creature and giver words, with the reason shown. Tests as above.
+- [x] The aliases are in `overrides.json` with a source; `build.py` is run and the generated files not hand-edited.
+- [x] No match gives the ask-the-player answer.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "how do I start the Palonimo quest" and gets Running Wild with the book.
+- Mac, 22 Oct. Tested in `src/lib/mcp/wo133.test.ts`.
+  - **The data:** each quest in `quests.json` carries `people` and `calledBy`. `people` is who its records fill its aliases with, plus its giver, never a role or an editor id (694 quests; Running Wild: Palonimo, Joslin, Erland the Stablemaster). `calledBy` is from `overrides.json`'s new `questNames`, with its `_source`; Running Wild has Palomino, palamino, white horse, wild horse and Joslin's horse.
+  - **search_facts** has a new kind, `quest`, whose id is the EDID `get_quest` takes. A quest is found by its name first (rank 0 or 1, as before). After that come, in this order: what players call it, someone in it, what starts it (the book or note), an objective, an ending. Every word must be somewhere in those. A hit says `why`, from the first field that holds every word: "someone in it: Palonimo", "what players call it: white horse", "what starts it: The Palonimo Mare", "an ending: I went to Joslin…". Case and punctuation don't matter. A word matches from the start of a word ("horse" finds "horses"). Words players wrap round a name are dropped ("the", "quest", "how do I start", "called"). "Palonimo", "white horse", "palomino horse whiterun", "the horse quest", "the horse in Whiterun" and "horse quest whiterun" all find Running Wild; "Running Wild" is still first, with no `why`.
+  - **Nothing matched:** `note`: "No quest matched. Ask the player where they saw it or what it gives." The tool's description says not to search the web.
+  - **get_quest by a name that isn't one** answers for the quest search finds, with `found: { asked, is, because }`. It only takes a match on a name (what players call it, someone in it, what starts it), never an objective's or ending's words, so "No Such Quest" still says nothing matched. "Palonimo" answers Running Wild, "because": "someone in it: Palonimo".
+  - **Questions:** none went green on this order alone. Question 1 (Palonimo) now finds Running Wild; it waits only on where the note is (WO-131 Part 0).
 
 ---
 
