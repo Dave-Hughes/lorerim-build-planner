@@ -4905,6 +4905,24 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-133  Find a quest by what players call it (Mac, 22 Oct 2026)
+
+**Why.** Dave asked his Claude "for lorerim how do I start the quest called Palonimo". The planner's `search_facts` and `get_quest` both came back empty for "Palonimo" and for "white horse". The quest is Running Wild, and Palonimo is the horse. The words are in its first objective ("Catch the white, or palonimo, horse roaming the fields of Whiterun"), in the book that starts it ("The Palonimo Mare"), in the horse's name and in its ending text, but search only matches quest and line names. Players name quests by the thing in them: the horse, the book, the person, the place. Claude found nothing, fell back to hunting the web, and was still going three minutes later.
+
+### Do
+1. **Search matches more than names.** `search_facts` and `get_quest`'s name lookup also match, for a quest: its objectives, its endings' text, the names of the books, notes and letters that start it, the NPCs and creatures its aliases fill, and its giver. A name match always ranks first; the others come after, each hit saying why it matched ("an objective: Catch the white, or palonimo, horse").
+2. **Word-by-word, not exact.** "white horse", "palonimo", "the horse in Whiterun" and "horse quest whiterun" all find Running Wild. Case and punctuation don't matter. A word list people commonly use that the records don't hold (it's "Palomino" in the community) goes in `gamedata/5.0.4.8/overrides.json` as an alias for the quest, with its source; start with Running Wild: Palomino, palamino, white horse, wild horse, Joslin's horse.
+3. **When nothing matches, say so plainly,** and tell the assistant to ask the player which quest they mean, not to search the web: "No quest matched. Ask the player where they saw it or what it gives."
+4. **Tests:** "Palonimo", "white horse", "palomino horse whiterun" and "the horse quest" return Running Wild; "Running Wild" still returns it first; a nonsense word returns the plain no-match answer.
+
+### Done when
+- [ ] Search finds quests by objective, ending, book, creature and giver words, with the reason shown. Tests as above.
+- [ ] The aliases are in `overrides.json` with a source; `build.py` is run and the generated files not hand-edited.
+- [ ] No match gives the ask-the-player answer.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "how do I start the Palonimo quest" and gets Running Wild with the book.
+
+---
+
 ## WO-132  The quest loop: Jeff on PC works through every unchecked quest, with a check that isn't Jeff (PC, 21 Oct 2026)
 
 **Why.** About 480 of 1,240 quests still have no checked start, and each round of "Jeff builds, Bob reviews, Bob writes the next order" costs a day. The reviews caught real faults, but the faults were the same few kinds, and the answer key (`quest_truth.json`, 127 of 128 passing) now catches most of them without Bob. This order lets the PC run on its own, with three things that aren't Jeff deciding what counts as right: the frozen answer key, UESP, and a fresh reviewer that hasn't seen the work.
