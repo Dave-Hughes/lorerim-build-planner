@@ -941,7 +941,9 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     edid = edid or row.get("edid")
     every = row.get("startedBy", [])
     # A talk that needs the quest already under way is a later step, not a way in (rule 6).
-    starters = through([s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))])
+    # A line that turns the job down or ends the talk is no way in, in the words or the record form (WO-130 follow-up).
+    starters = through([s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))
+                        and not (s["by"] == "dialogue" and _DECLINES.search(s.get("prompt") or ""))])
     found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {}, brings, say)
     needs = plain_needs((row.get("needs") or {}).get("conditions"), own, say)
     # Every way in the check found, a quest that also runs from the game's start included (The Book of
