@@ -1165,6 +1165,10 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                 args = (dict(args[0], startedBy=ov["_starters"] + args[0].get("startedBy", [])),) + args[1:]
             raw = start_of(*args)
             start = reword(start_of(*args, say=say), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
+            # A way a player found in game, not the files (WO-131 Part 0: Dave's note outside Joslin's house): marked so.
+            if ov.get("_checked") == "players":
+                put = {v for k, v in ov.items() if not k.startswith("_")}
+                start["ways"] = [{**w, "checked": "players", "source": ov["_source"]} if w["how"] in put else w for w in start.get("ways", [])]
             if q["edid"] in FIRST_STEPS:
                 start = {k: v for k, v in start.items() if k not in ("thenWhere", "thenWho")}
                 start["then"] = FIRST_STEPS[q["edid"]][0]

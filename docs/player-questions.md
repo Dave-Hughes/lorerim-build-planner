@@ -17,12 +17,12 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **1. "In LoreRim, how do I start the quest called Palonimo?"**
 - Calls: `search_facts("Palonimo")`, then `get_quest` on what it finds.
 - Must: finds Running Wild; says to read the note; says where the note is (the board outside Joslin's house, behind the Bannered Mare).
-- Fixed by: WO-133 (search), WO-131 Part 0 (the note's place).
+- Passes since WO-133 (search) and WO-131 Part 0 (the note's place).
 
 **2. "How do I start Running Wild?"**
 - Calls: `get_quest({ name: "Running Wild" })`.
 - Must: the note, where it is (outside Joslin's house, the Bannered Mare), and that the place is from a player; its first step, catching the white horse.
-- Fixed by: WO-131 Part 0.
+- Passes since WO-131 Part 0.
 
 ## Dave's quests
 
@@ -43,7 +43,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **6. "Where do I find the book for Running Wild?"**
 - Calls: `get_quest({ name: "Running Wild" })`.
 - Must: a place for The Palonimo Mare, or "isn't checked yet". Never a guess.
-- Fixed by: WO-131 Part 0.
+- Passes since WO-131 Part 0.
 
 **7. "Where do I find the book for …?", for every other read-this start (61 ways today: the Dark Brotherhood's extra contracts, Boethiah's Calling, Deathbrand, Lost to the Ages, Wyrmstooth's notes and the rest).**
 - Calls: `get_quest({ id: <its EDID> })`.

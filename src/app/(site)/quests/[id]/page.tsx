@@ -144,7 +144,10 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dd>
                     <ul className={styles.waysList}>
                       {waysIn.map((w, i) => (
-                        <li key={i}>{w.how}</li>
+                        <li key={i}>
+                          {w.how}
+                          {w.checked === "players" ? <span className={styles.src}>player report</span> : null}
+                        </li>
                       ))}
                     </ul>
                     <span className={styles.src}>game files</span>

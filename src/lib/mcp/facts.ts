@@ -77,7 +77,8 @@ function questMatch(q: Quest, words: string[]): { rank: number; why: string } | 
   const fields: [string, string[]][] = [
     ["what players call it", q.calledBy ?? []],
     ["someone in it", q.people ?? []],
-    ["what starts it", (q.start?.ways ?? []).filter((w) => /^(Read|Get) /.test(w.how)).map((w) => w.how.replace(/^(Read|Get) /, ""))],
+    // The item by its records' name, though the words say where it is ("The Palonimo Mare").
+    ["what starts it", [...(q.start?.raw?.ways ?? []), ...(q.start?.ways ?? [])].filter((w) => /^(Read|Get) /.test(w.how)).map((w) => w.how.replace(/^(Read|Get) /, ""))],
     ["an objective", q.objectives],
     ["an ending", q.endings.map((e) => e.text).filter(Boolean)],
   ];
@@ -204,11 +205,18 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  * their needs, the first objective as `then`, and who and where when one person starts it (WO-121b:
  * back once the answer key passed). A start not checked yet gives none.
  */
-function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[]; who?: string; where?: string }[]; then?: string; who?: string; where?: string; raw?: QuestStart["raw"] } {
+function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[]; who?: string; where?: string; checked?: string }[]; then?: string; who?: string; where?: string; raw?: QuestStart["raw"] } {
   const st = q?.start;
   if (!st || st.checked !== "files") return {};
   const ways = st.ways?.length
-    ? st.ways.map((w) => ({ way: w.how, ...(w.needs?.length ? { needs: w.needs } : {}), ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}) }))
+    ? st.ways.map((w) => ({
+        way: w.how,
+        ...(w.needs?.length ? { needs: w.needs } : {}),
+        ...(w.who ? { who: w.who } : {}),
+        ...(w.where ? { where: w.where } : {}),
+        // A player found it in game (WO-131 Part 0): say so, and who, beside the files' facts.
+        ...(w.checked === "players" ? { checked: `a player's report, not the game files (${w.source})` } : {}),
+      }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
   // The words are what a player reads; raw is each need and way as the records have it, for an assistant to reason on.
   return {

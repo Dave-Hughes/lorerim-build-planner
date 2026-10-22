@@ -276,6 +276,12 @@
     "ccBGSSSE002_SoulStealerQuest": {
       "_note": "WO-121b, Bob's judgement of the night run (22 Oct): the note (ccbgssse002-exoticarrows.esl:00081F) has no name in the files, so the page showed its editor id. Its script sets stage 5 when you get it (defaultsetstageonplayeracquireitem); the first step names it the Letter from Calcelmo.",
       "Read ccBGSSSE002_NoteFromCalcelmo": "Get a note from Calcelmo"
+    },
+    "0WRHorseQ": {
+      "_note": "WO-131 Part 0: Dave found it in the game. The Palonimo Mare is a note pinned to a board right outside Joslin's house, which is hidden behind the Bannered Mare in Whiterun. The PC's readables file (Part 1) has it placed once in Whiterun, 22 m from Joslin's House and Hearth-Healer's Hall and 27 m from the Bannered Mare; when Part 2 gives the file's place, it replaces this and Bob checks they agree.",
+      "_checked": "players",
+      "_source": "Dave, found in game, 22 Oct 2026",
+      "Read The Palonimo Mare": "Read the note pinned to the board outside Joslin's house, behind the Bannered Mare in Whiterun"
     }
   },
   "starts": {

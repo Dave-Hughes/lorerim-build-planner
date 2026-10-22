@@ -46,7 +46,8 @@ export interface Quest {
  */
 export interface QuestStart {
   needs?: string[];
-  ways?: { how: string; needs?: string[]; who?: string; where?: string }[];
+  /** A way a player found in game, not the files (WO-131 Part 0): checked "players", with who found it and when. */
+  ways?: { how: string; needs?: string[]; who?: string; where?: string; checked?: "players"; source?: string }[];
   then?: string;
   thenWhere?: string;
   thenWho?: string;

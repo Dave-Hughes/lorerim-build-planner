@@ -59,14 +59,12 @@ const QUESTIONS: Question[] = [
       return [found, ...(first ? [await call(() => getQuest({ id: first.id }))] : [])];
     },
     must: ["Running Wild", /note/i, /Joslin/, /Bannered Mare/],
-    todo: "WO-131 Part 0: search finds Running Wild (WO-133), but its start says read The Palonimo Mare, not where the note is.",
   },
   {
     n: 2,
     asks: "How do I start Running Wild?",
     ask: () => [getQuest({ name: "Running Wild" })],
     must: [/note/i, /board/i, /Joslin/, /Bannered Mare/, /player/i, /Catch the white, or palonimo, horse/],
-    todo: "WO-131 Part 0: it says read The Palonimo Mare, and not where the note is.",
   },
   {
     n: 3,
@@ -92,7 +90,6 @@ const QUESTIONS: Question[] = [
     asks: "Where do I find the book for Running Wild?",
     ask: () => [getQuest({ name: "Running Wild" })],
     must: [/outside Joslin's house|where to find it isn't checked yet/i],
-    todo: "WO-131 Part 0: it says read The Palonimo Mare and gives no place.",
   },
   {
     n: 7,
