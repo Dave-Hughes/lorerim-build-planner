@@ -4905,6 +4905,43 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-132  The quest loop: Jeff on PC works through every unchecked quest, with a check that isn't Jeff (PC, 21 Oct 2026)
+
+**Why.** About 480 of 1,240 quests still have no checked start, and each round of "Jeff builds, Bob reviews, Bob writes the next order" costs a day. The reviews caught real faults, but the faults were the same few kinds, and the answer key (`quest_truth.json`, 127 of 128 passing) now catches most of them without Bob. This order lets the PC run on its own, with three things that aren't Jeff deciding what counts as right: the frozen answer key, UESP, and a fresh reviewer that hasn't seen the work.
+
+### The loop (one batch = up to 40 quests, the unchecked ones first, in `quests.json` order)
+1. **Trace** each quest's start from the records with the existing tools (`story_check_all.py`, `openings.py`). Include the eleven Creation Club quests, and the read-this starts: for each, WO-131 Part 1 (where the thing is).
+2. **Compare.** A base-game or DLC quest is compared with its UESP page (WebFetch). A mod quest has the records only, and the records win.
+3. **Sort.**
+   - Records and UESP agree: add a row to `quest_truth.json` with `source: uesp` or `source: records`.
+   - They disagree, or the records hold no starter, or the start is something the check can't name: add it to `gamedata/5.0.4.8/story_checks/needs-bob.md` with both readings and the record ids. **Never guess, never pick one to keep the loop moving.** The quest stays "not yet checked".
+4. **Plain words.** Rewrite with the existing rules (WO-121b Part 1, WO-126, WO-130). Don't invent a rule; if a case needs a new one, put the quest on the needs-Bob list and describe the case.
+5. **Gate.** Run `python3 scripts/gamedata/build.py`, then the game-data tests and the answer key. If any row that passed before now fails, undo the batch (`git checkout` the generated files and the key), write what happened to `loop-log.md`, and go on to the next batch with those quests on the needs-Bob list.
+6. **Fresh reviewer.** Run the `dh-core:rex` agent on 10% of the batch (at least 4) plus every quest whose wording changed. Give it only the quest's records, the UESP page and the planner's output, not the reasoning. CHANGES NEEDED: fix once; if still wrong, needs-Bob.
+7. **Commit** the batch on `staging` (plain English, what changed and how many), push staging, and start the next batch.
+
+### Stop when
+- No unchecked quests are left, or
+- three batches in a row put more than 30% of their quests on the needs-Bob list (the rules are wrong, not the data; write what you saw and stop), or
+- a check fails and a second try doesn't fix it, or
+- eight hours have gone.
+
+### Limits
+- Never push `main`. No database operations. Don't edit the generated files by hand.
+- Don't change the answer key's existing rows. Add rows only.
+- Don't change `quest_pages.py` rules except as WO-121b/126/130 already say.
+
+### Report (`gamedata/5.0.4.8/story_checks/loop-report-<date>.md`, written at the end)
+Quests checked before and after; rows added to the key; the needs-Bob list grouped by reason; every rule or file changed; batches undone and why; what the reviewer sent back and what you did about it.
+
+### Done when
+- [ ] The loop has run until one of the stop conditions, and the report says which.
+- [ ] Every quest is checked, or on the needs-Bob list with both readings, or the report says why the loop stopped.
+- [ ] The answer key still passes in full; every row Jeff added cites UESP or the record id.
+- [ ] Every check in CLAUDE.md passes on the pushed commit. Push staging and stop for Bob, who judges the needs-Bob list and Dave checks five quests he knows.
+
+---
+
 ## WO-131  Where the thing you read is (PC then Mac, 21 Oct 2026)
 
 **Why.** Dave went looking for Running Wild, the white horse in the fields outside Whiterun. The planner said it starts by reading The Palonimo Mare, which is true (the book's script sets the first stage), and stopped there. The book is a note pinned to a board outside Joslin's house, hidden behind the Bannered Mare. Nobody could have found it from "read The Palonimo Mare". The start work traced what triggers a quest, and for a person that is also where they stand. For a book, note or letter it left out where the thing is. A start that says "read X" with no place for X reads as finished and isn't.
