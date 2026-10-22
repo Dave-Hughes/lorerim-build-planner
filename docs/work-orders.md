@@ -4970,6 +4970,7 @@ The common fault: an act has a goal and a place, but no thread. Its objectives a
 ### Part 2. Every objective says why it's on the thread
 - An objective's why line opens with how it ties to the route or the reason to travel: "On the way to Whiterun", "Before she leaves Whiterun for Markarth", "Asked by Andurs in Whiterun", "The road patrol (rule 19)".
 - An objective that can't be tied to the thread doesn't go in. Leave it out, or plant it for a later act that goes there (WO-128's plant now, pay off later).
+- **Rewards that change play are named.** Dave (21 Oct): Running Wild (`0WRHorseQ`) was put in Kyria's act as "no catch, 100 XP", and one of its endings gives a free horse. The planner showed no reward for it because the horse and saddle are only in the stage text, so the assistant never saw it. Part 3 below adds a check; Part 6 fills the data. An objective whose quest can give a mount, a house, a follower or a large amount of gold says so in its why line, and says what it does to the character's run.
 - Generic jobs (bandit camps, board jobs, Companions jobs, bounties) need a hook. Take the game's own hook when there is one: a steward's bounty letter (Bounty: Bandit Boss names its place in its objective), a line of dialogue from WO-128's index, someone on the road. Otherwise write the player's own hook and say it is theirs. Never "go clear X" with nothing behind it.
 
 ### Part 3. Warnings
@@ -4982,15 +4983,21 @@ The common fault: an act has a goal and a place, but no thread. Its objectives a
 - The PC session reads one courier missive's note (its BOOK text) and one board job's, and writes down whether the note names the town it goes to. Until that is checked, the rule says only what the names show.
 - A board job is a "before you leave" objective tied to the next stop: "Before she leaves Whiterun for Markarth, check the board for a delivery bound there." Never name a destination for a particular missive.
 
+### Part 6. Rewards that change play
+- From each quest's stage text and endings, record outcomes that matter to play: a mount, a house, a follower, a unique item, a large amount of gold. Running Wild is the test case: stage 40 and 41 (a saddle, and the horse kept) against 45 (gold, the horse goes to the Jarl).
+- Store them as `rewards` with the stage they come at and the source (the stage text), and show them on the quest page and in `get_quest`. Where the choice is exclusive, say so.
+- `get_quest` and `suggest_objective` return them, so an assistant can't call a quest harmless when an ending changes the run. The rule below tells it to read them.
+
 ### Part 5. The rule (`content/mcp/style.md`)
 - A new rule after WO-128's rule 20 (21 if both are built first; renumber the Honesty rules and check no "rule N" reference points past the last rule):
-  > 21. An act is a road with a reason. Give it a route: its stops in order, each with why she goes there next. Put every objective at a stop, in the order she'll reach it, and open its why line with how it ties to the route or to her reason to travel. Don't send her back to a town the route has left unless the story gives her a reason to go back. Leave out what doesn't fit the thread, or plant it for a later act. A board job or a bandit camp needs a hook: the game's own when it has one, the player's own when it doesn't. Board jobs are "before she leaves for the next stop", and never promise a destination the game's job doesn't name.
+  > 21. An act is a road with a reason. Give it a route: its stops in order, each with why she goes there next. Put every objective at a stop, in the order she'll reach it, and open its why line with how it ties to the route or to her reason to travel. Don't send her back to a town the route has left unless the story gives her a reason to go back. Leave out what doesn't fit the thread, or plant it for a later act. A board job or a bandit camp needs a hook: the game's own when it has one, the player's own when it doesn't. Board jobs are "before she leaves for the next stop", and never promise a destination the game's job doesn't name. Before recommending a quest, read how it ends; if an ending hands over a mount, a house, a follower or a lot of gold, say what that does to the character's run and ask the player.
 - Under **How to build**: "Before writing an act's objectives, set its route (rule 21)."
 
 ### Done when
 - [ ] Part 1: `route` on acts and `stop` on objectives, in the tools, the act editor and Play (objectives grouped under stops, in order).
 - [ ] Part 2 and Part 5: the rule and the How to build line; Honesty rules renumbered; no "rule N" reference past the last rule.
 - [ ] Part 3: the three warnings, with tests on a copy of Kyria's Act II: Under the Table flagged as a backtrack, the missive flagged as a promise, objectives with no stop flagged.
+- [ ] Part 6: `rewards` from stage text and endings (Running Wild shows its horse and saddle ending), in the quest page and `get_quest`; a test that Running Wild returns them.
 - [ ] Part 4: the missive and board notes checked on the PC and written into the order's log; `destinationInName` on those quest families.
 - [ ] Every check in CLAUDE.md passes. Screenshots of Play with a routed act at 1440 and 390. Commit on `staging`, push, and stop for Dave: he asks an assistant through the connector to replan an act, and can say in one sentence why each objective is there and why it comes where it does.
 
