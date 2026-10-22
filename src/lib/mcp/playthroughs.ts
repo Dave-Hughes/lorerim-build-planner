@@ -5,12 +5,14 @@ import { db, schema } from "@/db";
 import { docText } from "@/lib/guide/doc";
 import { gearData } from "@/lib/gear/data";
 import { ipCall } from "@/lib/moderation/limits";
-import { questLinkables, type Linkable } from "@/lib/playthroughs/links";
+import { placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
+import { placeByName, placesData, placeType } from "@/lib/places/data";
+import { actTowns, placesNear, unmeasured } from "@/lib/places/suggest";
 import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { reachLabel } from "@/lib/playthroughs/status";
-import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, Reach } from "@/lib/playthroughs/types";
+import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach } from "@/lib/playthroughs/types";
 import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
@@ -120,6 +122,11 @@ export function resolveLinkName(version: string, input: { kind: LinkKind; name: 
   if (input.kind === "item") {
     const i = names.item(gearData().items, want);
     return { link: { kind: "item", id: i.id }, name: i.name };
+  }
+  if (input.kind === "place") {
+    const pl = placeByName(want);
+    if (pl) return { link: { kind: "place", id: pl.id }, name: pl.name };
+    throw new FactsError(`No place called ${want} in the planner's places index. The closest: ${names.closest(want, placeLinkables().map((x) => x.name)).join(", ")}. suggest_places lists the places near an act's towns; never invent one.`);
   }
   const pool: Linkable[] = questLinkables().filter((x) => x.kind === input.kind);
   const paren = /^(.*)\s+\(([^()]+)\)$/.exec(want);
@@ -281,18 +288,18 @@ export async function setPlaythrough(p: Player, input: { playthrough: string; na
   return { playthrough: pt.id, name: now.name, line: now.line, build: now.build ? { id: now.build.id, name: now.build.name } : null, link: link(p, pt.id) };
 }
 
-export async function addAct(p: Player, input: { playthrough: string; name: string; levels: string; place: string; goal: string; standingRule?: string }) {
+export async function addAct(p: Player, input: { playthrough: string; name: string; levels: string; place: string; goal: string; standingRule?: string; passedBy?: PassedBy[] }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
-  const id = await writes(() => w.addAct(p.userId, pt.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule ?? null }));
+  const id = await writes(() => w.addAct(p.userId, pt.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule ?? null, passedBy: input.passedBy ?? null }));
   return { playthrough: pt.id, act: String(pt.view.acts.length + 1), actId: String(id), link: link(p, pt.id) };
 }
 
-export async function setAct(p: Player, input: { playthrough: string; act: string; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null }) {
+export async function setAct(p: Player, input: { playthrough: string; act: string; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null; passedBy?: PassedBy[] }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
-  await writes(() => w.setAct(p.userId, pt.id, a.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule }));
+  await writes(() => w.setAct(p.userId, pt.id, a.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule, passedBy: input.passedBy }));
   return { playthrough: pt.id, act: pt.view.acts.indexOf(a) + 1, saved: true };
 }
 
@@ -432,6 +439,40 @@ function warningsOf(pt: PlaythroughRecord) {
   return reviewPlaythrough(pt.view.acts.flatMap((a) => a.objectives).map((o) => ({ id: o.id, text: o.text, kind: o.kind, link: o.link, reach: o.reach })));
 }
 
+/**
+ * suggest_places (WO-128 Part 2): the places near where an act goes, each with what in the game points at it and when it
+ * fits the act's levels, and what the playthrough already uses. Read-only.
+ */
+export async function suggestPlaces(p: Player, input: { playthrough: string; act: string }) {
+  const pt = await mine(p, input.playthrough);
+  const a = actOf(pt, input.act);
+  const at = pt.view.acts.indexOf(a);
+  const towns = actTowns(pt.view.acts, at);
+  const linked = pt.view.acts.flatMap((x) =>
+    x.objectives.flatMap((o) => {
+      if (o.link?.kind !== "place") return [];
+      const pl = placesData().places.find((y) => y.id === o.link!.id);
+      return pl ? [{ place: pl.name, act: `Act ${x.n} ${x.name}`, type: placeType(pl.type), town: pl.nearestTown?.town ?? null }] : [];
+    }),
+  );
+  const passedBy = pt.view.acts.flatMap((x) => (x.passedBy ?? []).map((b) => ({ place: b.place, act: `Act ${x.n} ${x.name}`, why: b.why })));
+  const places = towns.length ? placesNear(towns, a.levelFrom, a.levelTo, { linked, passedBy }) : [];
+  // A town no place in the index is nearest to yet (WO-128 Part 1's town list, 22 Oct): said, never guessed around.
+  const notMeasured = unmeasured(towns);
+  return {
+    playthrough: pt.id,
+    act: `Act ${a.n} ${a.name}`,
+    levels: levelsInput(a.levelFrom, a.levelTo),
+    towns,
+    places,
+    alreadyUsed: { linked, passedBy },
+    ...(notMeasured.length ? { notMeasuredYet: notMeasured, notMeasuredNote: `The places index doesn't measure distances from ${notMeasured.join(" or ")} yet, so it has no places near ${notMeasured.length === 1 ? "it" : "them"}. Don't guess at places there: say so, and use the game's own quests.` } : {}),
+    note: towns.length
+      ? "Pick a few that fit what she cares about and her reason to travel, and leave most of them alone (rule 20). Tie each to a person in one of these towns, in the game's own words when a place has a pointer. Plant a place above the act's levels now and pay it off later. Vary the people and the kinds of place against alreadyUsed, and name what she passes by (set_act passedBy)."
+      : "The act names no town the places index knows: set its place to the town it's in (set_act), or link its quests.",
+  };
+}
+
 /** get_quest_log (WO-134): the stored save's quests in the game's words, from where the player stands. */
 export async function getQuestLog(p: Player, input: { playthrough: string }) {
   const pt = await mine(p, input.playthrough);
@@ -471,6 +512,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       place: a.place,
       goal: a.goal,
       ...(a.standingRule ? { standingRule: a.standingRule } : {}),
+      // The places she leaves alone on purpose (WO-128).
+      ...(a.passedBy?.length ? { passedBy: a.passedBy.map((b) => ({ place: b.place, why: b.why })) } : {}),
       // The act's first chapter (WO-118): it opens the act's card on Play.
       firstChapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
       objectives: a.objectives.map((o) => ({

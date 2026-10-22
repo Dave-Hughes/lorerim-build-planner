@@ -7,6 +7,7 @@ import { actImageOf, runStops } from "@/lib/playthroughs/reader";
 import { docText, docWords, firstPlate } from "@/lib/guide/doc";
 import { ActCard } from "./act-card";
 import { RunHero } from "./tabs";
+import type { PassedBy } from "@/lib/playthroughs/types";
 import s from "./play.module.css";
 
 /**
@@ -115,6 +116,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   <ActCard key={card.chapterId} runId={p.id} isOwner={isOwner} {...card} />
                   {act.goal && <span className={s.goal}>{act.goal}</span>}
                   {act.standingRule && <Throughout text={act.standingRule} />}
+                  {act.passedBy?.length ? <PassedByLine places={act.passedBy} /> : null}
                 </section>
               ) : (
                 <section className={`frame ${s.panel}`} aria-labelledby="act-head">
@@ -126,6 +128,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   </span>
                   {act.goal && <span className={s.goal}>{act.goal}</span>}
                   {act.standingRule && <Throughout text={act.standingRule} />}
+                  {act.passedBy?.length ? <PassedByLine places={act.passedBy} /> : null}
                 </section>
               )}
 
@@ -178,6 +181,15 @@ function Throughout({ text }: { text: string }) {
   return (
     <span className={s.rule}>
       <b>Throughout the act:</b> {text}
+    </span>
+  );
+}
+
+/** The places she leaves alone on purpose (WO-128), in one muted line under the goal: nothing to tick. */
+function PassedByLine({ places }: { places: PassedBy[] }) {
+  return (
+    <span className={s.passed}>
+      Passed by: {places.map((b) => (b.why ? `${b.place} (${b.why})` : b.place)).join("; ")}
     </span>
   );
 }

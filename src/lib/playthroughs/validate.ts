@@ -60,6 +60,11 @@ export const actSchema = z.object({
   place: line(L.place),
   goal: line(L.goal),
   standingRule: line(L.standingRule).optional().nullable(),
+  passedBy: z
+    .array(z.object({ place: line(L.place, "Name the place she passes by."), why: line(L.passedByWhy) }))
+    .max(L.passedBy, `An act passes by ${L.passedBy} places at most.`)
+    .optional()
+    .nullable(),
 });
 export type ActInput = z.input<typeof actSchema>;
 

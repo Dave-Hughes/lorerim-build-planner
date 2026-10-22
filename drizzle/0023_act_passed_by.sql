@@ -1,0 +1,1 @@
+ALTER TABLE "playthrough_act" ADD COLUMN "passed_by" jsonb;

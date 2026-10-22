@@ -14,7 +14,7 @@ import {
 import type { AdapterAccountType } from "next-auth/adapters";
 import type { GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Reach, SnapshotSource } from "@/lib/playthroughs/types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, SnapshotSource } from "@/lib/playthroughs/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
 
@@ -376,6 +376,8 @@ export const playthroughActs = pgTable(
     place: text("place").notNull().default(""),
     goal: text("goal").notNull().default(""),
     standingRule: text("standing_rule"),
+    /** Places she leaves alone on purpose in this act (WO-128), each with why; null or empty, none. */
+    passedBy: jsonb("passed_by").$type<PassedBy[]>(),
     /** The act's image on its story card and in the reader (WO-116), uploaded as a guide image; null: its first chapter's image, else the cover. */
     imageUrl: text("image_url"),
     /** What stays in view of its image (WO-118), as the cover's focus; none, the middle. */

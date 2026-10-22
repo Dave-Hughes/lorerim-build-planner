@@ -328,6 +328,12 @@
   font-size: 15px;
   color: var(--soft);
 }
+/* The places passed by (WO-128): one muted line, nothing to tick. */
+.passed {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
 .rule b {
   font-weight: 600;
   color: var(--text);

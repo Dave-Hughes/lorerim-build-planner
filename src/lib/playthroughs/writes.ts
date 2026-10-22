@@ -247,7 +247,7 @@ const actValues = (input: ActInput) => {
   const a = actSchema.safeParse(input);
   if (!a.success) fail(firstIssue(a.error));
   const v = a.data!;
-  return { name: v.name, levelFrom: v.levels.from, levelTo: v.levels.to, place: v.place, goal: v.goal, standingRule: v.standingRule ? v.standingRule : null };
+  return { name: v.name, levelFrom: v.levels.from, levelTo: v.levels.to, place: v.place, goal: v.goal, standingRule: v.standingRule ? v.standingRule : null, passedBy: v.passedBy?.length ? v.passedBy : null };
 };
 
 export async function addAct(userId: string, pid: string, input: ActInput): Promise<number> {
@@ -271,6 +271,7 @@ export async function setAct(userId: string, pid: string, actId: number, input: 
     place: input.place ?? act.place,
     goal: input.goal ?? act.goal,
     standingRule: input.standingRule === undefined ? act.standingRule : input.standingRule,
+    passedBy: input.passedBy === undefined ? act.passedBy : input.passedBy,
   });
   await db().update(schema.playthroughActs).set(values).where(eq(schema.playthroughActs.id, act.id));
   await touch(p.id);

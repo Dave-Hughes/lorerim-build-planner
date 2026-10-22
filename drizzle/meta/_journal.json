@@ -162,6 +162,13 @@
       "when": 1792606694599,
       "tag": "0022_quest_report",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1792701392924,
+      "tag": "0023_act_passed_by",
+      "breakpoints": true
     }
   ]
 }

@@ -71,6 +71,8 @@ export interface QuestStart {
   /** Where a "uesp" start was confirmed: "UESP", or "Nexus" for a mod's page, with the page. */
   source?: "UESP" | "Nexus";
   url?: string;
+  /** The towns it starts in (WO-128, WO-129): each way's speaker's town, and the giver's. */
+  towns?: string[];
   /** A job from a board (WO-136 ruling 3): checked as its class, in the class's one sentence (the line's `board`). */
   board?: true;
   /**

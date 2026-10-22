@@ -20,7 +20,7 @@ const playthrough = z.string().min(1).max(80).describe("The playthrough's id, fr
 const act = z.string().min(1).max(60).describe('The act: its number as a string ("2"), "Act II", or its name.');
 const objective = z.string().min(1).max(160).describe("The objective: its id from get_playthrough, as a string, or its words.");
 const chapter = z.string().min(1).max(60).describe("The chapter: its id from get_playthrough, as a string, or its title.");
-const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item or a follower. Leave it out for the player\'s own aims; never invent a quest.');
+const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item, a follower, or a place from suggest_places ("Reach <place>" or "Clear <place>", its hook in the why line). Leave it out for the player\'s own aims; never invent a quest or a place.');
 /**
  * What the save reads, as flat fields: quest (and stage), or reachKey and reachTarget. Every objective can also be
  * ticked by the player (WO-123); fromSave says whether the save ticks it too.
@@ -86,13 +86,18 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     place: z.string().max(80).describe("Where the act happens."),
     goal: z.string().max(200).describe("The act's goal in one line, Play only."),
     standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it, if anything. Not an objective."),
+    passedBy: z
+      .array(z.object({ place: z.string().min(1).max(80).describe("A place from suggest_places."), why: z.string().max(120).describe('Why she leaves it alone, Play only: "not her fight yet".') }))
+      .max(8)
+      .optional()
+      .describe("The places she leaves alone on purpose in this act, each with one line on why (rule 20). The whole list each time; an empty list takes them away."),
   };
   tool("add_act", "Add an act", "Add an act at the end of one of the player's playthroughs: a stretch of the game with a goal and a place (rule 13).", z.object({ playthrough, ...actFields }), (p, a: Parameters<typeof t.addAct>[1]) => t.addAct(p, a));
   tool(
     "set_act",
     "Change an act",
-    "Change an act's name, levels, place, goal or what the player keeps doing throughout it (standingRule).",
-    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it; an empty string takes it away.") }),
+    "Change an act's name, levels, place, goal, what the player keeps doing throughout it (standingRule), or the places she passes by (passedBy, rule 20).",
+    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it; an empty string takes it away."), passedBy: actFields.passedBy }),
     (p, a: Parameters<typeof t.setAct>[1]) => t.setAct(p, a),
   );
   tool("remove_act", "Remove an act", "Remove an act, its objectives and chapters; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
@@ -180,6 +185,13 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     "What's in the player's quest log, from the save stored on a playthrough (set_snapshot): the quests under way with the objective each shows now, then finished and failed ones behind a count, each with its ending, in the game's words and grouped by quest line. A stage the records don't explain is said so; quests the planner doesn't list are only counted. Says how old the save is. With no save stored, it says so: ask the player to run the save connector.",
     z.object({ playthrough }),
     (p, a: { playthrough: string }) => t.getQuestLog(p, a),
+  );
+  tool(
+    "suggest_places",
+    "Places near an act",
+    "The caves, mines, forts, ruins, camps, lairs and landmarks near where an act goes (its place, its quests' towns, earlier acts' places), from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), any quest that already goes there, and when against the act's levels (fits now; plant now, pay off later; too high for this act). Also what the playthrough already uses. Never a place in a city or a home. It changes nothing (rule 20).",
+    z.object({ playthrough, act }),
+    (p, a: { playthrough: string; act: string }) => t.suggestPlaces(p, a),
   );
   tool("list_my_playthroughs", "List the player's playthroughs", "List the signed-in player's playthroughs: id, name, who can see it, acts, last change, and whether an assistant drafted it.", z.object({}), (p) => t.listMine(p));
   tool(

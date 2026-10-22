@@ -1,7 +1,7 @@
 import type { GuideDoc } from "@/lib/guide/doc";
 import { isOpen, reachLabel, workOut, type SnapshotValues, type Worked } from "./status";
 import { levelsText } from "./validate";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Reach } from "./types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach } from "./types";
 
 /**
  * A playthrough as its pages show it (WO-111), put together from its rows: each objective worked out
@@ -18,6 +18,8 @@ export interface ActRow {
   place: string;
   goal: string;
   standingRule: string | null;
+  /** Places she leaves alone on purpose (WO-128), each with why. */
+  passedBy?: PassedBy[] | null;
   /** The act's image (WO-116); none: its first chapter's, else the cover. */
   imageUrl?: string | null;
   /** What stays in view of it (WO-118). */

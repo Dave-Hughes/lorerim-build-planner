@@ -3,10 +3,10 @@
  * from the snapshot or the player's tick (see status.ts), never stored by an assistant.
  */
 
-export const LINK_KINDS = ["quest", "line", "spell", "item", "follower"] as const;
+export const LINK_KINDS = ["quest", "line", "spell", "item", "follower", "place"] as const;
 export type LinkKind = (typeof LINK_KINDS)[number];
 
-/** What an objective links to: a planner quest (by its edid), quest line, spell, item or follower line. */
+/** What an objective links to: a planner quest (by its edid), quest line, spell, item, follower line, or a place from the places index (WO-128, by its id). */
 export interface ObjectiveLink {
   kind: LinkKind;
   id: string;
@@ -24,6 +24,12 @@ export interface Reach {
   target: number;
 }
 
+/** A place an act leaves alone on purpose (WO-128 Part 4), and why, Play only. */
+export interface PassedBy {
+  place: string;
+  why: string;
+}
+
 export type ObjectiveKind = "once" | "reach";
 export type DoneBy = "save" | "hand";
 export type ObjectiveStatus = "todo" | "doing" | "done" | "later";
@@ -38,6 +44,9 @@ export const PLAYTHROUGH_LIMITS = {
   place: 80,
   goal: 200,
   standingRule: 200,
+  /** Places an act passes by (WO-128), and each one's why line. */
+  passedBy: 8,
+  passedByWhy: 120,
   objective: 160,
   why: 300,
   chapterTitle: 60,

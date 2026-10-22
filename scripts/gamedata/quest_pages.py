@@ -1103,6 +1103,10 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             out["thenWhere"] = place
         if holder and not is_role(holder["name"]):
             out["thenWho"] = holder["name"]
+    # The towns it starts in (WO-128 Part 2, WO-129 Part 3): each way's speaker's town and the giver's, for where an act goes.
+    at = list(dict.fromkeys(t for t in (town_of(p, towns or {}) for p in [*(w.get("where") for w in shown), out.get("where")]) if t))
+    if at:
+        out["towns"] = at
     # Only a patch's catch-up helpers (WO-121b): nothing a player does is traced yet.
     traced = every and not row.get("unread") and not all(patch_helper(s) or (s["by"] == "quest script" and not s.get("throughStartedBy") and
                                                              (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests) for s in every)

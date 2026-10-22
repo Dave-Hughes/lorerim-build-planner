@@ -1,6 +1,7 @@
 import "server-only";
 import { gearData } from "@/lib/gear/data";
 import { itemSlug } from "@/lib/gear/query";
+import { placesData, placeType, type Place } from "@/lib/places/data";
 import { questsData } from "@/lib/quests/data";
 import type { GameData } from "@/lib/rules/data";
 import type { LinkKind, ObjectiveLink } from "./types";
@@ -11,7 +12,7 @@ import type { LinkKind, ObjectiveLink } from "./types";
  * looked up here every time, so links stay right when the game data is rebuilt.
  */
 
-export const LINK_TAGS: Record<LinkKind, string> = { quest: "Quest", line: "Quest line", spell: "Spell", item: "Item", follower: "Follower" };
+export const LINK_TAGS: Record<LinkKind, string> = { quest: "Quest", line: "Quest line", spell: "Spell", item: "Item", follower: "Follower", place: "Place" };
 
 export interface Linkable {
   kind: LinkKind;
@@ -20,6 +21,16 @@ export interface Linkable {
   /** "Quest, Dark Brotherhood", "Follower", "Spell, Destruction": the menu's second column. */
   where: string;
   href: string | null;
+}
+
+/** "Mine, by Riverwood": a place's second column in the @ menu. */
+const placeLinkWhere = (p: Place) => [placeType(p.type), p.nearestTown ? `by ${p.nearestTown.town}` : p.hold].filter(Boolean).join(", ");
+
+let placeIndex: Linkable[] | null = null;
+/** Every place in the places index (WO-128), once per server. */
+export function placeLinkables(): Linkable[] {
+  placeIndex ??= placesData().places.map((p) => ({ kind: "place" as const, id: p.id, name: p.name, where: placeLinkWhere(p), href: null }));
+  return placeIndex;
 }
 
 let questIndex: Linkable[] | null = null;
@@ -53,6 +64,10 @@ export function resolveLink(d: GameData, link: ObjectiveLink | null | undefined)
   if (link.kind === "item") {
     const i = gearData().items.find((x) => x.id === link.id);
     return i ? { ...link, name: i.name, where: "Item", href: `/gear/${itemSlug(i.id)}`, tag } : null;
+  }
+  if (link.kind === "place") {
+    const p = placesData().places.find((x) => x.id === link.id);
+    return p ? { ...link, name: p.name, where: placeLinkWhere(p), href: null, tag } : null;
   }
   const hit = questLinkables().find((x) => x.kind === link.kind && x.id === link.id);
   return hit ? { ...hit, tag } : null;

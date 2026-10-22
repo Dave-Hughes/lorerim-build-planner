@@ -108,7 +108,7 @@ export const REACH_KINDS = [
   { v: "count", label: "A count" },
 ] as const;
 
-export const LINK_LABEL: Record<ObjectiveLink["kind"], string> = { quest: "Quest", line: "Quest line", spell: "Spell", item: "Item", follower: "Follower" };
+export const LINK_LABEL: Record<ObjectiveLink["kind"], string> = { quest: "Quest", line: "Quest line", spell: "Spell", item: "Item", follower: "Follower", place: "Place" };
 
 /** The text, with `@` opening the mention menu: a quest, a quest line, a spell, an item or a follower. */
 export function MentionInput({
