@@ -4909,6 +4909,29 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-137  Five faults in Dave's final test (Mac, with the PC for one check, 22 Oct 2026)
+
+**Why.** Dave's Claude answered the first four test questions (22 Oct, 14:19). Running Wild and the Riften question were right. Bob read the rest against the live planner and `get_quest_log` and found five faults, now questions 12 to 16 in `docs/player-questions.md`:
+
+1. **Conditions the plain words drop (Deathbrand).** "It starts by itself when you level up" has no level. Its story node needs `DLC2dunHaknirTreasureQSTMinLevel`, a global that reads 20 now, and the record's own condition is "level >= (now 20)". The Cursed Tribe's "Level 20" shows because it is a plain number; a level held in a global is lost. Geldis Sadri's talk shows as a plain way in, but its record (Dragonborn.esm:02BAC3, edited by TheChoiceIsYours.esp) is conditioned on "Deathbrand stage 20 done" and "stage <= 1". A way whose condition names the quest's own later stage is a catch-up (rule 6, WO-121b) and is dropped from `ways`, or shown with the condition. Dave's Claude told him Geldis was "the easiest one to aim for".
+2. **"And 11 more places."** The read-this item has 14 places and the answer shows three, with no way to ask for the rest. Show up to 8, grouped by area, nearest named first; the rest by a `places` option on `get_quest`.
+3. **A line's "not yet" overrides a quest's checked answer.** Ask for Running Wild, Deathbrand or Caught Red Handed and the answer opens with "This line's start hasn't passed the planner's start check, so no instructions are given" over a quest whose own start is `checked: files`. Claude keeps repeating "the line as a whole hasn't passed". When the quest asked for is checked, say that first, and say what is unchecked about the line once, in a sentence, with no "no instructions" note. A line whose quests are all checked as a class (Missives) shows `checked: files`, so "a missive from the notice board" isn't "unknown".
+4. **The quest log.** (a) Each line under its own category, not one heading ("Main quests" was Claude's own for mod side stories). (b) No helper names: "TG00 Misc Handler" and "LTN Quest Handler" are shown; map a helper to its line's story title or count it as background. (c) A quest at stage 0 isn't started; don't list it as "started but unclear" (about 100 of them for Save 70). Stage 1 and above stay. (d) No quest twice (Animal Extermination, Special Delivery).
+5. **Search for followers.** "Freeing Inigo" finds nothing by name; the line "Inigo" (Followers) and its quest Bad Vibrations exist. Add the words players use for a follower's rescue ("free", "jail", "recruit", the cell and the person's name) so a search for the plain job finds the line.
+
+### PC (one check)
+For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) against UESP and the records, and write which are ways in and which are catch-ups to `loop-log.md`. Then Mac applies the rule to every quest. One more look across all the checked starts: how many ways have a condition naming the quest's own stage, or a level held in a global, and are being shown without it. List them for Bob.
+
+### Done when
+- [ ] Deathbrand's level-up way shows level 20; Geldis is dropped or shown with his condition. The same rule holds for every checked quest, with a test, and the PC's list of other cases is in the log.
+- [ ] Places: eight at most, grouped, and a way to ask for all.
+- [ ] A quest asked for answers first with its own checked start; the line's gap is said once; Missives show `checked: files`.
+- [ ] The quest log: categories, no helper names, no stage 0, no repeats. Tested on Kyria's Save 70.
+- [ ] Inigo's rescue is found by search.
+- [ ] Player questions 12 to 16 pass and come off "fails today". Every check in CLAUDE.md passes. Push staging and stop for Bob.
+
+---
+
 ## WO-136  What the loop found: Bob's rulings, and the tools the last 453 need (PC then Mac, 22 Oct 2026)
 
 **Why.** The quest loop (WO-132) stopped after three batches because every quest it took landed on the needs-Bob list, which is the order's own signal that the rules are wrong, not the data. Its report (`loop-report-2026-10-22.md`) shows why: of the 453 unchecked quests, **364 are Missives** (courier and radiant jobs from notice boards), 18 are Vigilant bounties, and the rest are hard cases. The tools read people, books and story-manager events. They don't read boards or radiant dispatchers. The loop wasn't running into the data; it was running into what the tools can read. Bob's rulings on its four groups:
