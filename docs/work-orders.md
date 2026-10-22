@@ -4905,6 +4905,33 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-135  The player's questions: the test nothing counts as done without (Mac, 22 Oct 2026)
+
+**Why.** Three days of orders made the quest data more accurate, and Dave's own first three questions on 22 Oct still failed: "how do I start the Palonimo quest" found nothing (WO-133), "how do I start Running Wild" said read a book and not where it is (WO-131), and "what's in my quest log" had no answer (WO-134). Every check we ran tested the data (the answer key, the page tests). None of them asked what a player asks. So the planner could pass everything and still not work. This order puts the player's questions in as the test.
+
+### Do
+1. **`docs/player-questions.md`:** each question as a player types it, the tool calls an assistant would make, and the facts the answer must contain (and must not). Start with these, from Dave:
+   - "In LoreRim, how do I start the quest called Palonimo?" (finds Running Wild; says read the note; says where the note is.)
+   - "How do I start Running Wild?" (the same; its first step is catching the horse.)
+   - "What quests are in my quest log?" (active quests from the stored save, in the game's words.)
+   - "What can Kyria do at level 6 in Riften?" (only quests open for her; no Dark Brotherhood; Caught Red Handed with its unnamed condition said.)
+   - "How do I start Blood on the Ice?" / "…Caught Red Handed?" / "…The Blessings of Nature?" (Dave's quests, each with who, where and the first step.)
+   - "Where do I find the book for X?" for each read-this start. (A place, or "not checked yet"; never a guess.)
+   - "What do I need for X at level N?" (the needs, or why unknown).
+   - "What quests are near me?" with a place. (Only that place.)
+2. **`src/lib/mcp/player-questions.test.ts`:** runs each question's tool calls through the same handlers the live door uses (not the database, but real tool output), and checks the answer holds the required facts and none of the banned ones (an editor id, a raw function, an unnamed "someone", a location the records don't hold). The ones that fail today stay in as `todo`-marked failures with a one-line reason, so the list of what doesn't work is in the repo and shrinks.
+3. **A command `npm run test:questions`** that prints each question, pass or fail, and what it got. Part of `npm test`.
+4. **A rule in CLAUDE.md:** no order that changes what an assistant is told is done until the questions it touches pass; and when Dave finds a question that fails, Bob adds it to `player-questions.md` before writing the fix.
+
+### Done when
+- [ ] `player-questions.md` has the questions above, each with its expected facts.
+- [ ] The test runs them through the real handlers; the currently failing ones are marked and named (Palonimo search, where the book is, quest log).
+- [ ] `npm run test:questions` prints a clear pass or fail per question.
+- [ ] CLAUDE.md has the rule.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob. Then WO-133, WO-131 Part 0 and WO-134 each turn one failing question green.
+
+---
+
 ## WO-134  "What's in my quest log?" (Mac, 22 Oct 2026)
 
 **Why.** Dave asked his Claude "what quests are in my quest log", expecting the save connector to answer. It couldn't. Checked 22 Oct: `read_latest_save` hands back each quest's highest stage, and `set_snapshot` stores them (`snapshot.questStages`, used by `get_quest`'s `openForYou`), but nothing gives them back as a log. `get_playthrough`'s `whereYouStand` carries only the save's name, level, day, place and skills, and no tool lists the quests. So the player's own question, the one this whole connector exists for, has no answer. The pieces exist: the quest records hold each quest's objectives by stage, and its endings by stage say when it is done or failed.
