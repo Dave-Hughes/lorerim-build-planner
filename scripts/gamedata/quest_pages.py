@@ -385,7 +385,8 @@ def board_way(s):
     named = s.get("object")
     text = f"It starts from {named}" if named else "It starts from something placed"
     if where:
-        text += f" in {', '.join(where[:4])}" + (f" and {len(where) - 4} more places" if len(where) > 4 else "")
+        listed = ", ".join(where[:4]) + (f" and {len(where) - 4} more places" if len(where) > 4 else "")
+        text += f" {listed}" if listed.startswith("somewhere in ") else f" in {listed}"
     if doors and len(where) == 1:
         text += f", by the door to {doors[0]}"
     return text

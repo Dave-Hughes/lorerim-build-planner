@@ -597,6 +597,16 @@ class BuiltStartsTest(unittest.TestCase):
     def ways(self, name):
         return [(w["how"], w.get("needs", [])) for w in self.by[name]["start"].get("ways", [])]
 
+    def test_wo136_ruling_1_and_the_boards(self):
+        # A later quest's call is the start when nothing else starts it: Bloodline's stages 30 and 190 set A New Order's 20.
+        order = self.by["A New Order"]["start"]
+        self.assertEqual((order["checked"], order["then"]), ("files", "Speak with Isran"))
+        self.assertIn("Bloodline", json.dumps(order["ways"]))
+        # A Vigilant bounty starts from its activator by the Temple of Stendarr; a Missives job is its class's one sentence.
+        self.assertEqual(self.ways("Bounty: Book"), [("It starts from Erotic Book somewhere in Stuhn Ravine, by the door to Storage Room", [])])
+        job = self.by["Deliver a Letter Near"]["start"]
+        self.assertTrue(job["board"] and job["checked"] == "files" and job["ways"][0]["how"].startswith("Missives:"))
+
     def test_bleak_falls_barrow(self):
         self.assertIn(('Ask Farengar Secret-Fire "So what do you need me to do?" in Dragonsreach', ["You have Dragonstone"]), self.ways("Bleak Falls Barrow"))
         # The night run gave every row objectivesShown, so the stage is named by the objective it shows (WO-121b).

@@ -60,3 +60,34 @@ A fresh Rex reviewed four quests a batch, given only the records, UESP and the p
 - 120 quests are on the needs-Bob list with both readings, and this report says why the loop stopped before the other 333.
 - The answer key passes in full; no rows were added.
 - Every check in CLAUDE.md: see the last commit.
+
+## Second run, after WO-136 (22 Oct)
+**Why it stopped:** no quest was left to take. Every one of the 1,242 is checked, or on the needs-Bob list with both readings. That's a stop other than "the rules are wrong".
+
+**Checked before and after:** 789, then **1,202 of 1,242**: 836 from the files, 364 as jobs from a board, and 2 from the answer key.
+- **The board reader** (`boards.py`) traced all 364 Missives jobs and the 22 Vigilant bounties, plus dungeon kick-off triggers.
+- **Bob's ruling 1** settled 23, among them A New Order, Unseen Visions and Containment.
+- **The key** settled 2 (ruling 2, Mac's).
+- **Following a helper back to the object that starts it** settled 2: Sleepwalking and A New Source of Stalhrim.
+
+**Rows added to the key: 4**, each where the page and UESP agree on the person and the first step: The Bloodstone Chalice, Unseen Visions, Containment, and Where You Hang Your Enemy's Head.
+
+**The needs-Bob list, now the 40 still not checked:**
+- 29 with no starter the check reads.
+- 3 started only by helpers Bob ruled out.
+- 5 the check can't name: the Thieves Guild's city jobs.
+- 3 set only by later quests, where rule 1 doesn't settle it.
+
+Most of the 29 start from a talk that hands you a note (Viriya's fishing jobs; Whiterun's steward for In the Shadows), or from reading a Black Book where it lies. Reading those two is the next tool, if Bob wants it.
+
+**Rules and files changed:**
+- New: `boards.py` and `story_checks/boards.json`.
+- `story_check.py`: board starts, ruling 1, and a helper's board start followed back.
+- `quest_pages.py`: board ways worded from their places. An unnamed trigger is a way in only when nothing else starts the quest. Mac's board class also covers a job whose every start is a board, with the boards the records place, and a board job gets no raw form for the open-or-locked judge. Rule 1's first step also reads a later quest's starting call.
+- Tests: `test_story_check.py`, `test_quest_pages.py` and `test_quest_truth.py`. Mac's `wo136.test.ts` was changed for the new reads.
+
+**Batches undone:** none.
+
+**What the reviewer sent back:** on batch 4 (Silver Lining, No Contest, Battle of the city, Memory Guide), placement was right for all four. Two fixes went into the generator for every entry:
+- Creation Club quests are compared with UESP.
+- Every catch-up caller is listed, with why rule 1 wasn't applied.

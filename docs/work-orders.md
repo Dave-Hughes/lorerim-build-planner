@@ -4930,9 +4930,9 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Ruling 3: the class sentence on the quest pages and in `get_quest`, with a test that Missives show one sentence and a link to the boards, not 364 rows. Rulings 2 and 6.
 
 ### Done when
-- [ ] Rulings 1 and 2 are in the rules with tests, and the five key rows count as checked.
+- [x] Rulings 1 and 2 are in the rules with tests, and the five key rows count as checked.
 - [ ] The start check reads boards and dispatchers, or the class sentence says why it can't. Missives and the bounties show once, as a class.
-- [ ] The loop runs again on what's left and reaches a stop other than "the rules are wrong".
+- [x] The loop runs again on what's left and reaches a stop other than "the rules are wrong".
 - Mac, 22 Oct: the Mac part (rulings 2, 3 and 6). Tested in `src/lib/mcp/wo136.test.ts`, `e2e/wo136.spec.ts`, `test_quest_truth.py` and `test_quest_pages.py`'s `LoopRulingsTest`. The build now says `789 quest starts checked from the files, 364 as a job from a board, 5 from the answer key, 84 not yet`.
   - **Ruling 2, a key row counts as checked:** a quest the start check left "not yet", with a row in `quest_truth.json`, gets `checked: "uesp"`. It carries `source` (UESP, or Nexus when the row's page is the mod's) and the page's `url`, and the key's first step. A no-giver row has one way, "No one gives it". A row with one giver names them, if the check didn't. That covers the five: Black Book: Untold Legends, The Kagrumez Gauntlet, Silenced Tongues, Yngol's Barrow (UESP), and Sleepwalking Into A Nightmare (Nexus; its row's url is the mod page).
     - The page's label under How it starts reads "UESP" or "Nexus". `get_quest` says "from UESP, confirmed in the planner's answer key (<url>)". `openForYou` judges it like a traced start.
@@ -4953,6 +4953,15 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - **The test** (`wo136.test.ts`) runs every line and quest through `get_quest`, `get_quest_start`, and `get_quest` with a player at level 20, plus `search_facts` and `suggest_quests`. It checks that none holds `"raw"`, `GetInFaction`, `GetIsRace`, `== 1` or "Init quest", and that the data still has the record form. The player-questions test no longer skips `raw` when it looks for what an answer must never hold.
   - **`/admin`:** it doesn't show `raw` today, so there was nothing to keep there. Bob: say if you want it on `/admin`, and where.
   - **Checks:** typecheck, lint, `npm test` (527), Python (213), build, e2e 351 of 351; `npm run test:questions` 11 of 11.
+- PC, 22 Oct. Details are in `story_checks/loop-log.md` and the report's second-run section.
+  - **Boards and dispatchers:** `scripts/gamedata/boards.py` finds every placed object whose script holds a quest (directly or through a form list) and calls Start or SetStage on it, with where each copy stands. It writes `story_checks/boards.json`, and the start check reads it. All 364 Missives jobs trace to a trigger by their hold's board (`_M_ActivatorScript`), so the class sentence now carries the 12 boards the records place. The 22 Vigilant bounties start from their activator by the Temple of Stendarr in Stuhn Ravine. They show one per quest, in words from that activator; a class for them is Bob's call.
+  - **Ruling 1:** in `story_check.py`. Ruling 2 is Mac's `from_key`; my own version was dropped in the merge.
+  - **Rerun:** all 152 lines, then `build.py`. **Checked: 1,202 of 1,242** (789 before): 836 from the files, 364 as jobs from a board, 2 from the answer key, none lost.
+  - **Key rows added (4):** The Bloodstone Chalice, Unseen Visions, Containment, and Where You Hang Your Enemy's Head.
+  - **The loop's batch 4:** the 40 still not checked, all on `needs-bob.md` with both readings. Most start from a talk that hands you a note (the fishing jobs, In the Shadows) or from reading a Black Book in a place, which the check doesn't see yet. The loop stopped because no quest was left to take.
+  - **Mac's tests changed for the new reads:** `test_quest_truth.py` and `wo136.test.ts`. Yngol's Barrow, Silenced Tongues and Sleepwalking Into A Nightmare are traced from the files now, so the key-only examples are Black Book: Untold Legends and The Kagrumez Gauntlet, and the Missives class expects its 12 boards.
+  - **Checks:** Python 218, typecheck, lint, `npm test` 527, the questions test (11, run with `QUESTIONS=1` set by hand, since the npm script's Unix-style variable doesn't run in Windows' shell) and the build pass. `npm run test:e2e` isn't run on this PC.
+
 ---
 
 ## WO-135  The player's questions: the test nothing counts as done without (Mac, 22 Oct 2026)
