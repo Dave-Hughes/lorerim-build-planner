@@ -4905,6 +4905,30 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-134  "What's in my quest log?" (Mac, 22 Oct 2026)
+
+**Why.** Dave asked his Claude "what quests are in my quest log", expecting the save connector to answer. It couldn't. Checked 22 Oct: `read_latest_save` hands back each quest's highest stage, and `set_snapshot` stores them (`snapshot.questStages`, used by `get_quest`'s `openForYou`), but nothing gives them back as a log. `get_playthrough`'s `whereYouStand` carries only the save's name, level, day, place and skills, and no tool lists the quests. So the player's own question, the one this whole connector exists for, has no answer. The pieces exist: the quest records hold each quest's objectives by stage, and its endings by stage say when it is done or failed.
+
+### Do
+1. **A tool `get_quest_log`** (and a line in `get_playthrough`'s `whereYouStand`: "N quests started, M finished") that takes a playthrough and returns, from its snapshot, every quest the save has a stage for, in the game's words:
+   - **Active:** name, the line it belongs to, and the objective the stage shows now ("Retrieve Nettlebane", the objective at the highest stage at or below the save's), with the stage number kept for the assistant.
+   - **Finished:** the stage is an ending that completes it, with the ending's text ("I went to Joslin. In exchange for letting her ride the horse, she made me an imperial saddle.").
+   - **Failed:** an ending that fails it.
+   - **Started but unclear:** a stage the records don't show an objective or ending for. Say so; never guess what it shows.
+2. **Name quests the way the player knows them:** the quest's name, never its editor id. A quest with no name in the records (helpers, hidden scripts, vanilla bookkeeping: there are many hundreds in a save) is left out of the log and counted once: "and 312 background quests".
+3. **Group by line**, active first, then finished and failed behind a count. A save has hundreds of rows; the first answer is the active ones, shortest first.
+4. **Say how old it is:** "from Save 70, level 10, day 15, Ivarstead", and, if the plan is behind or ahead, that too. If no snapshot is stored, say "no save is stored yet; ask the player to run the save connector".
+5. **`set_snapshot`'s description** tells assistants that the quest log is read back with `get_quest_log`, so a save read leads to a log, not a dead end.
+6. **Tests:** a snapshot with Running Wild at stage 10, Blood on the Ice at 100 and an unnamed helper at 20 returns Running Wild as active ("Catch the white, or palonimo, horse…"), Blood on the Ice finished with its ending, and counts the helper; a stage with no objective is "started but unclear"; no snapshot gives the plain no-save answer.
+
+### Done when
+- [ ] `get_quest_log` returns active, finished, failed and unclear quests in the game's words, and the helper count. Tests as above.
+- [ ] `get_playthrough` shows the counts; `set_snapshot` points to the log.
+- [ ] Dave's Save 70 (Kyria, level 10, Ivarstead) gives a log he recognises, checked by Bob against the live planner.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "what quests are in my quest log" and gets a list that matches his journal.
+
+---
+
 ## WO-133  Find a quest by what players call it (Mac, 22 Oct 2026)
 
 **Why.** Dave asked his Claude "for lorerim how do I start the quest called Palonimo". The planner's `search_facts` and `get_quest` both came back empty for "Palonimo" and for "white horse". The quest is Running Wild, and Palonimo is the horse. The words are in its first objective ("Catch the white, or palonimo, horse roaming the fields of Whiterun"), in the book that starts it ("The Palonimo Mare"), in the horse's name and in its ending text, but search only matches quest and line names. Players name quests by the thing in them: the horse, the book, the person, the place. Claude found nothing, fell back to hunting the web, and was still going three minutes later.
