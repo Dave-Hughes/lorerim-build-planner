@@ -491,6 +491,29 @@ class ThirdLookTest(unittest.TestCase):
         self.assertNotIn("dunShipwreck04QST", [q["edid"] for l in data["lines"] for q in l["quests"]])
 
 
+class WorkShelfTest(unittest.TestCase):
+    """WO-130: what Dave's test of WO-115 showed."""
+
+    def test_a_reply_that_turns_the_job_down_or_ends_the_talk_is_no_way_in(self):
+        say = qp.Words()
+        for prompt in ("You mean...? I... Ehh... Y-You... No! That's everything! Take care now! Bye!",
+                       "Let her enjoy herself. Nothing wrong with that. It's perfectly normal, you know.",
+                       "I want no part of this.", "I can't help you right now.", "No, not really.",
+                       "(Invisible Continue)(Forced Good bye) Time Limit to Attack"):
+            self.assertEqual(qp.way_words({"by": "dialogue", "speaker": "Haelga", "prompt": prompt}, "Caught Red Handed", {}, say), [], prompt)
+        # An answer that carries on the talk stays a way in.
+        for prompt in ("No, I haven't seen Varona.", "I'll take care of the bandits for you.", "I won't say no to that."):
+            self.assertEqual(len(qp.way_words({"by": "dialogue", "speaker": "Varnius", "prompt": prompt}, "Q", {}, say)), 1, prompt)
+
+    def test_caught_red_handed_keeps_only_its_ways_in(self):
+        with open(QUESTS, encoding="utf-8") as f:
+            q = next(q for l in json.load(f)["lines"] for q in l["quests"] if q["name"] == "Caught Red Handed")
+        ways = json.dumps(q["start"].get("ways", []))
+        self.assertNotIn("Bye!", ways)
+        self.assertNotIn("Nothing wrong with that", ways)
+        self.assertTrue(q["start"].get("ways"))
+
+
 class PlayersWordsTest(unittest.TestCase):
     """WO-126: quest starts in players' words."""
 
@@ -602,6 +625,9 @@ class BuiltStartsTest(unittest.TestCase):
         self.assertEqual(len(self.quests), 1242)  # 1,243 less Trius' Trinket, off the lists (WO-121b, Bob 22 Oct)
         leaks = [(q["name"], t) for q in self.quests for t in start_texts(q["start"]) if LEAK.search(t)]
         self.assertEqual(leaks, [])
+        # A prompt is the game's words, never a topic's editor id (WO-130: "DB02AstridWalkAwayTopic").
+        ids = [(q["name"], w["how"]) for q in self.quests for w in q["start"].get("ways", []) if qp._EDID.match((re.search(r'"(.*)"', w["how"]) or [None, ""])[1])]
+        self.assertEqual(ids, [])
         declines = [(q["name"], w["how"]) for q in self.quests for w in q["start"].get("ways", []) if qp._DECLINES.search((re.search(r'"(.*)"', w["how"]) or [None, ""])[1])]
         self.assertEqual(declines, [])
 

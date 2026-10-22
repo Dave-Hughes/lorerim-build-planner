@@ -4914,10 +4914,10 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 3. **Lines that aren't a way in.** Caught Red Handed's ways still include Haelga's flustered "You mean...? No! That's everything! Take care now! Bye!" and Svana's "Let her enjoy herself. Nothing wrong with that." These end or decline the talk. WO-126's declining-line rule catches "No, thanks"; widen it to a reply that turns the job down or ends the talk, and test on these two. (The "condition the planner can't put in words yet" on its ways should go when the PC's full rerun names fn629, fn230 and fn70; check after it lands.)
 
 ### Done when
-- [ ] Work-shelf lines never gate one quest on another without the records; Caught Red Handed is open at level 6 with no quests done.
-- [ ] `suggest_quests` keeps to `where`; tested with Riften (no Dark Brotherhood) and Windhelm (it's there).
-- [ ] The two declining lines are gone from Caught Red Handed's ways, and the wider rule is tested.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob.
+- [x] Work-shelf lines never gate one quest on another without the records; Caught Red Handed is open at level 6 with no quests done. (Mac, 22 Oct: `openForYou` takes no quest before it on a line in the work category; only the records' own needs gate those. Tested in `src/lib/mcp/wo130.test.ts`.)
+- [x] `suggest_quests` keeps to `where`; tested with Riften (no Dark Brotherhood) and Windhelm (it's there). (A story is where it starts: its giver's place, its opening quest's places and its first start line. Before, any place a start's text named counted, and Join the Dark Brotherhood's second line names Riften's orphanage.)
+- [x] The two declining lines are gone from Caught Red Handed's ways, and the wider rule is tested. (A reply that turns the job down or ends the talk: also "I want no part of this." (The Taste of Death), "I'll have no part of this insanity." (With Friends Like These...), "I can't help you right now." (The Merchant's Masterpiece), "No, not really." (The Bonds of Matrimony) and the two capitals' "(Forced Good bye)" labels. Answers that carry on the talk stay: "No, I haven't seen Varona.", "No. Some wolves, but no dogs." Found on the way: a prompt that's a topic's editor id (`DB02AstridWalkAwayTopic`, With Friends Like These...) is now a plain "Talk to", and the leak test checks for it. The "can't put in words yet" check waits on the PC's full rerun.)
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob. (Mac, 22 Oct: typecheck, lint, 488 unit tests, 201 game-data tests and the answer key, build, and e2e 350 of 350.)
 
 ---
 

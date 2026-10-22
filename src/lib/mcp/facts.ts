@@ -283,7 +283,9 @@ const SAYS = { open: "open for you", locked: "locked", unknown: "unknown" } as c
 export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, version = DEFAULT_VERSION) {
   const { lines } = questsFor(version);
   const i = line.quests.indexOf(quest);
-  const prior = i > 0 && quest.edid !== line.opening ? line.quests[i - 1] : null;
+  // A work-shelf line (odd jobs, favours, bounties) is a shelf of separate jobs, not a sequence (WO-130): only the
+  // records' own needs gate one of its quests, never the one listed before it.
+  const prior = i > 0 && quest.edid !== line.opening && line.category !== "work" ? line.quests[i - 1] : null;
   const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)), prior);
   return { state: r.state, says: r.state === "open" ? SAYS.open : `${SAYS[r.state]}: ${r.because.join("; ")}`, because: r.because };
 }

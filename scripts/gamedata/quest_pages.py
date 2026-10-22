@@ -394,9 +394,11 @@ _EVENT_WORDS = {"change location": "as you travel", "kill": "when you kill someo
                 "quest start": "when another quest starts", "location loaded": "when a place loads around you",
                 "relationship change": "when someone's feelings about you change", "arrest": "when you're arrested",
                 "item added": "when you pick something up", "ASSU": "when someone is attacked"}
-# A line that turns the quest down (WO-126 Part 2): never a way in.
+# A line that turns the job down or ends the talk (WO-126 Part 2, WO-130): never a way in. "No, I haven't seen Varona." answers
+# and carries on, so it isn't one; "Let her enjoy herself. Nothing wrong with that." and "...Take care now! Bye!" are.
 _DECLINES = re.compile(r"\(Skip Quest\)|not interested|can't do that right now|don't have time|^No way\b|no such thing|not right now|^No, thanks|"
-                       r"waste of time|don't like your attitude|^No\.$|^Sorry\. We don't have time", re.IGNORECASE)
+                       r"waste of time|don't like your attitude|^No\.$|^Sorry\. We don't have time|"
+                       r"\bno part of\b|can't help you right now|^No, not really\b|Nothing wrong with that|\bBye!?\s*$|\(Forced Good ?bye\)", re.IGNORECASE)
 # An editor id: a word with a capital, digit or underscore inside (APS_MQSkipKeep, aaaHOTRDialogue, DA08, MSNStart).
 _EDID = re.compile(r"^(?=\w*[\d_]|\w+[A-Z])\w+$")
 # A quest's record name that is a helper's, not one a player sees in their journal ("Riften Maul Dialogue", "Katana Tracker"),
@@ -668,7 +670,7 @@ def way_words(s, own, line_quests, say, giver=None):
         if _DECLINES.search(prompt):
             return []
         # A line with no words, or one the game never shows ("(Invisible Continue)"), is just talking to them.
-        bare = re.fullmatch(r"[.\s…]*|\(Invisible Continue\)", prompt, re.IGNORECASE)
+        bare = re.fullmatch(r"[.\s…]*|\(Invisible Continue\)", prompt, re.IGNORECASE) or _EDID.match(prompt)  # or a topic's editor id
         who = s.get("speaker")
         if who and is_role(who):  # "Talk to a courier", "a Windhelm guard"
             who = _a(" ".join(who.split()[:-1] + [who.split()[-1].lower()]))

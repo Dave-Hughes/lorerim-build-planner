@@ -559,7 +559,9 @@ export async function suggestQuests(origin: string, input: { level: number; wher
       return { s, line: line!, first, open: openForYou(line!, first, player) };
     })
     .filter(({ open }) => open.state === "open")
-    .filter(({ s, line }) => !where || [line.where, line.giver?.place, ...s.start.map((x) => x.text)].some((t) => t?.toLowerCase().includes(where)))
+    // Where it starts (WO-130): the giver's place, its opening quest's places, and its first start; not every place a
+    // start's text names (Join the Dark Brotherhood starts with Aventus in Windhelm, though a later line names Riften).
+    .filter(({ s, line, first }) => !where || [line.where, line.giver?.place, first.start?.where, ...(first.start?.ways ?? []).map((w) => w.where), s.start[0]?.text].some((t) => t?.toLowerCase().includes(where)))
     .slice(0, 12)
     .map(({ s, line, first, open }) => ({
       story: s.id,
