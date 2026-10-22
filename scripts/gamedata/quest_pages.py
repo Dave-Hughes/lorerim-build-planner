@@ -519,6 +519,10 @@ class Words:
         m = re.fullmatch(r"fn(\d+) \S+ .+", p)
         if m:
             return None if int(m.group(1)) in _MOMENT else UNSAID
+        # The moment's tests the start check now names (WO-121b): where someone is, the kind of place, a distance, a cell.
+        if p.startswith(("you're in ", "you're not in ", "the place is ", "the place isn't ", "the place has ", "the place hasn't ")) or \
+                re.match(r"(GetDistance|GetDisabled|GetInCell) ", p):
+            return None
         m = re.fullmatch(r"the player has (at least|more than) (?:.*?\()?(\d+)\)? gold", p)
         if m:
             return f"You have {int(m.group(2)) + (m.group(1) == 'more than')} gold"
