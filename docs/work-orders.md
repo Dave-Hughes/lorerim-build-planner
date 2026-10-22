@@ -5225,6 +5225,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
   - **Trius' Trinket:** it starts on entering Pilgrim's Trench but can't be finished. Off the quest lists and out of what assistants suggest.
   - **Mjoll:** Mjoll the Lioness, with Aerin, in Riften; then Clear the dungeon with Aerin and Mjoll.
   - **Mac, next:** take the PC's rerun and these four into the pages and the key, check the line page's Ways in screen the PC changed, and run `test_quest_truth.py` until `WAITING_ON_BOB` is empty; then the door sends `who` and `where` again and the last two boxes can be ticked.
+  - **One more, from checking WO-126:** 10 quests (Blood's Honor, Containment and others) list the Unofficial Patch's "Retroactive fixes for 1.2" helpers as ways in. Those patch an old save, they aren't a way a player starts anything: leave them out of the ways.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
 
 ---
