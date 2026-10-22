@@ -285,6 +285,28 @@ function questFacts(q: Quest) {
     objectives: q.objectives,
     endings: q.endings.map((e) => ({ stage: e.stage, ends: e.fails ? ("fails" as const) : ("completes" as const), ...(e.text ? { text: e.text } : {}), ...(e.when ? { when: e.when } : {}) })),
     ...(q.endings.length ? {} : { note: "The records flag no ending for this quest. Don't say how it ends." }),
+    ...(changesRun(q) ?? {}),
+  };
+}
+
+const CHANGE_WORDS = { mount: "a mount", house: "a house", follower: "a follower", item: "a unique item", gold: "a lot of gold" } as const;
+
+/**
+ * What a quest's endings hand over that changes a run (WO-129 Part 6), from its stage text and endings: each with the
+ * stage it comes at, the ending's journal line, the stage text that says it, and whether it's one ending's of several.
+ */
+export function changesRun(q: Quest) {
+  const ends = q.rewards?.endings ?? [];
+  if (!ends.length) return null;
+  return {
+    changesTheRun: ends.map((e) => ({
+      gives: CHANGE_WORDS[e.kind],
+      atStage: e.stage,
+      ending: e.text,
+      ...(e.fromText ? { saidAt: { stage: e.from, text: e.fromText } } : {}),
+      ...(e.only ? { onlyThisEnding: true } : {}),
+    })),
+    changesTheRunNote: `An ending of ${q.name} hands over ${[...new Set(ends.map((e) => CHANGE_WORDS[e.kind]))].join(" or ")}${ends.some((e) => e.only) ? ", and the player chooses which ending" : ""}. Say what that does to the character's run and ask the player before recommending it (rule 21).`,
   };
 }
 

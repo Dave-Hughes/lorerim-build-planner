@@ -776,5 +776,24 @@ class BoardWayTest(unittest.TestCase):
         self.assertEqual(start["ways"][0]["how"], "It starts from something placed in Windhelm.")
         self.assertEqual(start["checked"], "files")
 
+class RunChangesTest(unittest.TestCase):
+    """WO-129 Part 6: what an ending hands over that changes a run, and when one ending of several gives it."""
+
+    def test_an_ending_that_gives_a_house_or_a_follower(self):
+        ends = [{"stage": 30, "text": "I've bought the deed to Graystone Lodge in Windhelm's gray quarter. I am now it's owner.", "completes": True}]
+        self.assertEqual(qp.changes_of(ends), [{"kind": "house", "stage": 30, "text": ends[0]["text"]}])
+        two = [{"stage": 200, "text": "I've made my decision, and allowed Erandur to live. Erandur has offered his services as a companion if I need one.", "completes": True},
+               {"stage": 210, "text": "I killed Erandur.", "completes": True}]
+        self.assertEqual(qp.changes_of(two), [{"kind": "follower", "stage": 200, "text": two[0]["text"], "only": True}])
+
+    def test_a_debt_or_a_failure_is_nothing(self):
+        self.assertEqual(qp.changes_of([{"stage": 50, "text": "The horse has died. That's the end of that.", "fails": True}]), [])
+
+    def test_a_hand_checked_row_replaces_the_reading(self):
+        row = [{"_source": "x", "kind": "mount", "stage": 40, "text": "Saddle.", "only": True, "from": 30, "fromText": "Keep the horse."}]
+        self.assertEqual(qp.changes_of([], row), [{"kind": "mount", "stage": 40, "text": "Saddle.", "only": True, "from": 30, "fromText": "Keep the horse."}])
+        self.assertEqual(qp.changes_of([{"stage": 300, "text": "He owed 1000 septims.", "completes": True}], []), [])
+
+
 if __name__ == "__main__":
     unittest.main()

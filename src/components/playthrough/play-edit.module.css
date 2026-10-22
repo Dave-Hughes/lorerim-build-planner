@@ -434,3 +434,38 @@
 .fromSave :global(.tip) {
   margin-left: -4px;
 }
+
+/* The act's route (WO-129): one row a stop, its number, place, why, and the tools to move or remove it. */
+.route {
+  display: flex;
+  flex-direction: column;
+}
+.stopRow {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 14rem) minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.stopN {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--brass);
+  text-align: center;
+}
+.stopTools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .stopRow {
+    grid-template-columns: 22px minmax(0, 1fr);
+  }
+  .stopRow > :nth-child(3),
+  .stopRow > .stopTools {
+    grid-column: 2;
+  }
+}

@@ -727,6 +727,23 @@ a.mod:hover {
   color: var(--text);
   font-weight: 600;
 }
+/* What an ending hands over that changes a run (WO-129 Part 6). */
+.runChanges {
+  margin: 6px 0 0;
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.runChange {
+  color: var(--brass);
+  font-weight: 600;
+}
+.runFrom {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+}
 .questsSection {
   display: flex;
   flex-direction: column;

@@ -7,8 +7,8 @@ import { checkGuideDoc, docText, imageUrls, isEmptyDoc, lineDoc, type GuideDoc }
 import { isOurImage } from "@/lib/guide/images";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { newAccountHold } from "@/lib/moderation/limits";
-import { actSchema, chapterTitleSchema, detailsSchema, firstIssue, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
-import { PLAYTHROUGH_LIMITS, type ChapterKind, type ObjectiveStatus } from "./types";
+import { actSchema, chapterTitleSchema, detailsSchema, firstIssue, stopKey, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
+import { PLAYTHROUGH_LIMITS, type ChapterKind, type ObjectiveStatus, type RouteStop } from "./types";
 import { storyOrder } from "./view";
 
 /**
@@ -247,8 +247,32 @@ const actValues = (input: ActInput) => {
   const a = actSchema.safeParse(input);
   if (!a.success) fail(firstIssue(a.error));
   const v = a.data!;
-  return { name: v.name, levelFrom: v.levels.from, levelTo: v.levels.to, place: v.place, goal: v.goal, standingRule: v.standingRule ? v.standingRule : null, passedBy: v.passedBy?.length ? v.passedBy : null };
+  return { name: v.name, levelFrom: v.levels.from, levelTo: v.levels.to, place: v.place, goal: v.goal, standingRule: v.standingRule ? v.standingRule : null, passedBy: v.passedBy?.length ? v.passedBy : null, route: v.route?.length ? v.route : null };
 };
+
+/**
+ * The route's stops (WO-129) an objective's stop matches, by its place, case and spacing aside: the stop's own place,
+ * or a refusal naming the act's stops. Null for no stop ("On the road").
+ */
+export function stopOn(route: readonly RouteStop[] | null | undefined, stop: string | null | undefined): string | null {
+  if (!stop?.trim()) return null;
+  const hit = (route ?? []).find((s) => stopKey(s.place) === stopKey(stop));
+  if (hit) return hit.place;
+  return fail(route?.length ? `${stop} isn't a stop on the act's route. Its stops are: ${route.map((s) => s.place).join(", ")}. Add it to the route first (set_act), or leave stop out.` : `The act has no route yet, so ${stop} can't be its stop. Set the act's route first (set_act).`);
+}
+
+/**
+ * Where each objective's stop goes when the route changes: a stop still on the route stays (in the route's spelling);
+ * a stop renamed in place (same position, same number of stops) follows it; one taken off the route goes "On the road".
+ */
+function restop(before: readonly RouteStop[] | null, after: readonly RouteStop[] | null, stop: string | null): string | null {
+  if (!stop) return null;
+  const now = (after ?? []).find((s) => stopKey(s.place) === stopKey(stop));
+  if (now) return now.place;
+  const at = (before ?? []).findIndex((s) => stopKey(s.place) === stopKey(stop));
+  if (at >= 0 && before!.length === (after ?? []).length) return after![at].place;
+  return null;
+}
 
 export async function addAct(userId: string, pid: string, input: ActInput): Promise<number> {
   const p = await ownedPlaythrough(userId, pid);
@@ -272,8 +296,15 @@ export async function setAct(userId: string, pid: string, actId: number, input: 
     goal: input.goal ?? act.goal,
     standingRule: input.standingRule === undefined ? act.standingRule : input.standingRule,
     passedBy: input.passedBy === undefined ? act.passedBy : input.passedBy,
+    route: input.route === undefined ? act.route : input.route,
   });
   await db().update(schema.playthroughActs).set(values).where(eq(schema.playthroughActs.id, act.id));
+  // The objectives follow their stops (WO-129).
+  if (input.route !== undefined)
+    for (const o of await objectivesOf(act.id)) {
+      const next = restop(act.route, values.route, o.stop);
+      if (next !== o.stop) await db().update(schema.playthroughObjectives).set({ stop: next }).where(eq(schema.playthroughObjectives.id, o.id));
+    }
   await touch(p.id);
 }
 
@@ -326,12 +357,13 @@ async function objectivesOf(actId: number) {
 async function ownedObjective(userId: string, pid: string, objectiveId: number) {
   const p = await ownedPlaythrough(userId, pid);
   const [row] = await db()
-    .select({ o: schema.playthroughObjectives })
+    .select({ o: schema.playthroughObjectives, route: schema.playthroughActs.route })
     .from(schema.playthroughObjectives)
     .innerJoin(schema.playthroughActs, eq(schema.playthroughActs.id, schema.playthroughObjectives.actId))
     .where(and(eq(schema.playthroughObjectives.id, Number(objectiveId)), eq(schema.playthroughActs.playthroughId, p.id)))
     .limit(1);
-  return { p, o: row?.o ?? fail("The playthrough has no such objective.") };
+  // Its act's route comes with it (WO-129), for checking a stop without another query.
+  return { p, o: row?.o ?? fail("The playthrough has no such objective."), route: row.route };
 }
 
 const objectiveValues = (input: ObjectiveInput) => {
@@ -344,6 +376,7 @@ const objectiveValues = (input: ObjectiveInput) => {
 export async function addObjective(userId: string, pid: string, actId: number, input: ObjectiveInput, opts: { after?: number | null; suggestedBy?: string | null } = {}): Promise<number> {
   const { p, act } = await ownedAct(userId, pid, actId);
   const values = objectiveValues(input);
+  values.stop = stopOn(act.route, values.stop);
   const rows = await objectivesOf(act.id);
   if (rows.length >= PLAYTHROUGH_LIMITS.objectivesPerAct) fail(`An act can have ${PLAYTHROUGH_LIMITS.objectivesPerAct} objectives.`);
   const [row] = await db()
@@ -360,7 +393,7 @@ export async function addObjective(userId: string, pid: string, actId: number, i
 }
 
 export async function setObjective(userId: string, pid: string, objectiveId: number, input: Partial<ObjectiveInput>) {
-  const { p, o } = await ownedObjective(userId, pid, objectiveId);
+  const { p, o, route } = await ownedObjective(userId, pid, objectiveId);
   const values = objectiveValues({
     text: input.text ?? o.text,
     kind: input.kind ?? o.kind,
@@ -369,7 +402,9 @@ export async function setObjective(userId: string, pid: string, objectiveId: num
     detect: input.detect === undefined ? o.detect : input.detect,
     reach: input.reach === undefined ? o.reach : input.reach,
     why: input.why === undefined ? o.why : input.why,
+    stop: input.stop === undefined ? o.stop : input.stop,
   });
+  if (input.stop !== undefined) values.stop = stopOn(route, values.stop);
   await db().update(schema.playthroughObjectives).set(values).where(eq(schema.playthroughObjectives.id, o.id));
   await touch(p.id);
 }
@@ -386,9 +421,11 @@ export async function moveObjective(userId: string, pid: string, objectiveId: nu
   if (actId && Number(actId) !== o.actId) {
     const { act } = await ownedAct(userId, p.id, actId);
     const rows = await objectivesOf(act.id);
+    // Its stop comes along when the act it goes to has the same stop (WO-129); else it's on the road.
+    const stop = o.stop ? ((act.route ?? []).find((s) => stopKey(s.place) === stopKey(o.stop!))?.place ?? null) : null;
     await db()
       .update(schema.playthroughObjectives)
-      .set({ actId: act.id, position: (rows.at(-1)?.position ?? 0) + 1 })
+      .set({ actId: act.id, position: (rows.at(-1)?.position ?? 0) + 1, stop })
       .where(eq(schema.playthroughObjectives.id, o.id));
   } else {
     const rows = await objectivesOf(o.actId);

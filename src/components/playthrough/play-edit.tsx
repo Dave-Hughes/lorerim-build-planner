@@ -11,7 +11,7 @@ import { InfoTip } from "@/components/ui/info-tip";
 import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
 import { objectiveRefusal } from "@/lib/playthroughs/status";
-import type { Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach } from "@/lib/playthroughs/types";
+import type { Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
 import { LINK_LABEL, MentionInput, QuestStage, ReachPick, useSave, type EditAct, type EditChapter, type EditData, type EditObjective } from "./edit-parts";
 import e from "./edit.module.css";
 import s from "./play-edit.module.css";
@@ -47,6 +47,7 @@ export function PlayEdit({ data, current, linkables, details }: { data: EditData
           <>
             <ActCard key={`c${current.id}`} data={data} a={current} />
             <ActFields key={`f${current.id}`} pid={data.id} a={current} last={data.acts.length === 1} />
+            <Route key={`r${current.id}:${current.route.map((r) => r.place).join("|")}`} pid={data.id} a={current} />
             <Objectives key={`o${current.id}`} data={data} a={current} linkables={linkables} />
           </>
         ) : (
@@ -294,6 +295,67 @@ function ActFields({ pid, a, last }: { pid: string; a: EditAct; last: boolean })
   );
 }
 
+/**
+ * The act's route (WO-129): its stops in order, each a place and why she goes there next. A stop is added at the end,
+ * moved up or down, or removed; the whole route saves each time, and objectives at a removed stop go On the road.
+ */
+function Route({ pid, a }: { pid: string; a: EditAct }) {
+  const { error, save } = useSave(() => {});
+  const [stops, setStops] = useState<RouteStop[]>(a.route);
+  const put = (next: RouteStop[]) => {
+    setStops(next);
+    const clean = next.filter((r) => r.place.trim());
+    if (JSON.stringify(clean) !== JSON.stringify(a.route)) save(() => act.saveAct(pid, a.id, { route: clean }), true);
+  };
+  const edit = (i: number, patch: Partial<RouteStop>) => setStops(stops.map((r, j) => (j === i ? { ...r, ...patch } : r)));
+  const move = (i: number, by: number) => {
+    const next = [...stops];
+    const [r] = next.splice(i, 1);
+    next.splice(i + by, 0, r);
+    put(next);
+  };
+  return (
+    <section aria-labelledby={`route-${a.id}`} className={s.route}>
+      <span className={s.headRow}>
+        <h2 id={`route-${a.id}`} className={s.head}>
+          Route
+        </h2>
+        <InfoTip label="About the route" text="The act's road: the towns and places she goes through, in order, and why she goes to each next. Objectives sit under their stop on Play." />
+      </span>
+      {stops.map((r, i) => (
+        <div key={i} className={s.stopRow}>
+          <span className={s.stopN} aria-hidden="true">
+            {i + 1}
+          </span>
+          <input className={`input ${e.in}`} aria-label={`Stop ${i + 1}`} value={r.place} maxLength={80} placeholder="[A town or a place]" onChange={(ev) => edit(i, { place: ev.target.value })} onBlur={() => put(stops)} />
+          <input className={`input ${e.in}`} aria-label={`Why she goes to stop ${i + 1}`} value={r.why} maxLength={200} placeholder="[Why she goes there next]" onChange={(ev) => edit(i, { why: ev.target.value })} onBlur={() => put(stops)} />
+          <span className={s.stopTools}>
+            <button type="button" className="btn btn-sm btn-icon" aria-label={`Move ${r.place || `stop ${i + 1}`} up`} disabled={i === 0} onClick={() => move(i, -1)}>
+              ↑
+            </button>
+            <button type="button" className="btn btn-sm btn-icon" aria-label={`Move ${r.place || `stop ${i + 1}`} down`} disabled={i === stops.length - 1} onClick={() => move(i, 1)}>
+              ↓
+            </button>
+            <button type="button" className={s.remove} aria-label={`Remove ${r.place || `stop ${i + 1}`}`} onClick={() => put(stops.filter((_, j) => j !== i))}>
+              Remove
+            </button>
+          </span>
+        </div>
+      ))}
+      {stops.length < 12 && (
+        <button type="button" className={s.add} onClick={() => setStops([...stops, { place: "", why: "" }])}>
+          + Add a stop
+        </button>
+      )}
+      {error && (
+        <span role="alert" className={e.error}>
+          {error}
+        </span>
+      )}
+    </section>
+  );
+}
+
 function Objectives({ data, a, linkables }: { data: EditData; a: EditAct; linkables: ExtraMention[] }) {
   const [open, setOpen] = useState<number | "new" | null>(null);
   const { error, save } = useSave(() => {});
@@ -375,12 +437,13 @@ function ObjectiveRow({
   const [detect, setDetect] = useState<Detect | null>(o?.detect ?? null);
   const [reach, setReach] = useState<Reach>(o?.reach ?? { key: "level", target: 10 });
   const [why, setWhy] = useState(o?.why ?? "");
+  const [stop, setStop] = useState(o?.stop ?? "");
   const quests = useMemo(() => linkables.filter((x) => x.kind === "quest"), [linkables]);
   const tale: EditChapter[] = o ? data.chapters.filter((c) => c.opensAfter === o.id) : [];
   // The rule shows as you type, from the same words the save refuses.
   const refused = text.trim() ? objectiveRefusal(text, kind, kind === "reach" ? reach : null) : null;
 
-  const values = (patch: Partial<{ kind: ObjectiveKind; doneBy: DoneBy; detect: Detect | null; reach: Reach; link: { link: ObjectiveLink; name: string } | null; text: string; why: string }> = {}) => {
+  const values = (patch: Partial<{ kind: ObjectiveKind; doneBy: DoneBy; detect: Detect | null; reach: Reach; link: { link: ObjectiveLink; name: string } | null; text: string; why: string; stop: string }> = {}) => {
     const k = patch.kind ?? kind;
     const db = patch.doneBy ?? doneBy;
     const l = patch.link === undefined ? link : patch.link;
@@ -396,6 +459,7 @@ function ObjectiveRow({
       detect: k === "once" ? (det ?? dflt) : null,
       reach: k === "reach" ? (patch.reach ?? reach) : null,
       why: (patch.why ?? why).trim() || null,
+      stop: (patch.stop ?? stop) || null,
     };
   };
   const commit = (patch: Parameters<typeof values>[0] = {}) => {
@@ -545,6 +609,29 @@ function ObjectiveRow({
                 }}
               />
               Ticks from your save<InfoTip label="About ticking from your save" text="The save ticks this when it shows it done. You can always tick it yourself." />
+            </label>
+          )}
+          {a.route.length > 0 && (
+            <label className={s.field}>
+              <span className="label">
+                Stop<InfoTip label="About the stop" text="Where on the act's route she does this. On Play it sits under that stop; with none, under On the road." />
+              </span>
+              <select
+                className="select"
+                aria-label="Stop"
+                value={stop}
+                onChange={(ev) => {
+                  setStop(ev.target.value);
+                  commit({ stop: ev.target.value });
+                }}
+              >
+                <option value="">On the road</option>
+                {a.route.map((r) => (
+                  <option key={r.place} value={r.place}>
+                    {r.place}
+                  </option>
+                ))}
+              </select>
             </label>
           )}
           <label className={s.field}>

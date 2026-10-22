@@ -14,7 +14,7 @@ import {
 import type { AdapterAccountType } from "next-auth/adapters";
 import type { GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, SnapshotSource } from "@/lib/playthroughs/types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
 
@@ -378,6 +378,8 @@ export const playthroughActs = pgTable(
     standingRule: text("standing_rule"),
     /** Places she leaves alone on purpose in this act (WO-128), each with why; null or empty, none. */
     passedBy: jsonb("passed_by").$type<PassedBy[]>(),
+    /** The act's route (WO-129): its stops in order, each with why she goes there next; null or empty, none. */
+    route: jsonb("route").$type<RouteStop[]>(),
     /** The act's image on its story card and in the reader (WO-116), uploaded as a guide image; null: its first chapter's image, else the cover. */
     imageUrl: text("image_url"),
     /** What stays in view of its image (WO-118), as the cover's focus; none, the middle. */
@@ -401,6 +403,8 @@ export const playthroughObjectives = pgTable(
     detect: jsonb("detect").$type<Detect | null>(),
     reach: jsonb("reach").$type<Reach | null>(),
     why: text("why"),
+    /** The stop on its act's route it sits at (WO-129), by the stop's place; null: "On the road". */
+    stop: text("stop"),
     /** The player's own status; `done` counts only for `hand` objectives (status.ts works out the rest). */
     status: text("status").$type<ObjectiveStatus>().notNull().default("todo"),
     doneAt: timestamp("done_at", { withTimezone: true }),

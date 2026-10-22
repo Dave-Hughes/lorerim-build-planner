@@ -344,6 +344,31 @@
   display: flex;
   flex-direction: column;
 }
+/* A stop on the act's route (WO-129): its place as a small heading, why she goes there beside it. */
+.stop {
+  display: flex;
+  flex-direction: column;
+}
+.stopHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 20px 0 4px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.stopName {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--brass);
+}
+.stopWhy {
+  font-size: 15px;
+  color: var(--soft);
+}
 .obj {
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr) auto;

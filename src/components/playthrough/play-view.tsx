@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
-import { standLine, whereLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
+import { byStop, standLine, whereLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
 import { Answer, TickBox, WhereIsShe } from "./play-controls";
 import { ReaderProvider, ReaderLink, StoryCard } from "@/components/reader/reader";
 import { actImageOf, runStops } from "@/lib/playthroughs/reader";
@@ -139,9 +139,22 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   </h2>
                   {shown.length > 0 && <span className={s.note}>{left.length ? `${left.length} to do` : "All done"}</span>}
                 </span>
-                {left.map((o) => (
-                  <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
-                ))}
+                {/* Under the stops of the act's route, in order, On the road last (WO-129). */}
+                {byStop(act.route, left).map((g) =>
+                  g.stop || act.route?.length ? (
+                    <section key={g.stop?.place ?? "road"} className={s.stop} aria-label={g.stop?.place ?? "On the road"}>
+                      <span className={s.stopHead}>
+                        <span className={s.stopName}>{g.stop?.place ?? "On the road"}</span>
+                        {g.stop?.why && <span className={s.stopWhy}>{g.stop.why}</span>}
+                      </span>
+                      {g.objectives.map((o) => (
+                        <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
+                      ))}
+                    </section>
+                  ) : (
+                    g.objectives.map((o) => <Objective key={o.id} o={o} p={p} isOwner={isOwner} />)
+                  ),
+                )}
                 {done.length > 0 && (
                   <details className={s.doneFold}>
                     <summary>

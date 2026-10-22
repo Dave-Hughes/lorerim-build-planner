@@ -47,6 +47,9 @@ export function levelsInput(from: number, to: number | null): string {
   return to === null ? `${from} and up` : to === from ? `${from}` : `${from} to ${to}`;
 }
 
+/** A stop's place as stops are matched (WO-129): case and spacing don't count. */
+export const stopKey = (place: string) => place.toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ").trim();
+
 export const actSchema = z.object({
   name: line(L.actName, "Give the act a name."),
   levels: z.string().max(30).transform((s, ctx) => {
@@ -63,6 +66,19 @@ export const actSchema = z.object({
   passedBy: z
     .array(z.object({ place: line(L.place, "Name the place she passes by."), why: line(L.passedByWhy) }))
     .max(L.passedBy, `An act passes by ${L.passedBy} places at most.`)
+    .optional()
+    .nullable(),
+  route: z
+    .array(z.object({ place: line(L.place, "Name the stop: a town or a place."), why: line(L.stopWhy) }))
+    .max(L.stops, `An act's route has ${L.stops} stops at most.`)
+    .superRefine((r, ctx) => {
+      const seen = new Set<string>();
+      for (const s of r) {
+        const k = stopKey(s.place);
+        if (seen.has(k)) ctx.addIssue({ code: "custom", message: `${s.place} is on the route twice. A stop is a place, once.` });
+        seen.add(k);
+      }
+    })
     .optional()
     .nullable(),
 });
@@ -85,6 +101,7 @@ export const objectiveSchema = z
     detect: detectSchema.nullable().optional(),
     reach: reachSchema.nullable().optional(),
     why: line(L.why).nullable().optional(),
+    stop: line(L.place).nullable().optional(),
   })
   .superRefine((o, ctx) => {
     const refused = objectiveRefusal(o.text, o.kind, o.reach);
@@ -101,6 +118,7 @@ export const objectiveSchema = z
     detect: o.kind === "once" ? (o.detect ?? null) : null,
     reach: o.kind === "reach" ? (o.reach ?? null) : null,
     why: o.why ? o.why : null,
+    stop: o.stop ? o.stop : null,
   }));
 export type ObjectiveInput = z.input<typeof objectiveSchema>;
 export type ObjectiveValues = z.output<typeof objectiveSchema>;

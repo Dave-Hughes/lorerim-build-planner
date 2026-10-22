@@ -64,12 +64,12 @@ describe("suggest_places (Part 2)", () => {
 });
 
 describe("rule 20 (Part 3)", () => {
-  it("get_style_guide gives rule 20 and its How to build line, Honesty from 21 to 25", () => {
+  it("get_style_guide gives rule 20 and its How to build line, Honesty after it (22 to 26 since WO-129's rule 21)", () => {
     const g = styleGuide();
     expect(g).toMatch(/^20\. Bring the character to places as well as quests\. When an act visits a town, call suggest_places/m);
     expect(g).toContain("When an act visits a town, call suggest_places before writing its objectives (rule 20).");
-    expect(g).toMatch(/^21\. A draft is a draft\./m);
-    expect(g).toMatch(/^25\. When the player says a quest's facts are wrong/m);
+    expect(g).toMatch(/^22\. A draft is a draft\./m);
+    expect(g).toMatch(/^26\. When the player says a quest's facts are wrong/m);
   });
 });
 

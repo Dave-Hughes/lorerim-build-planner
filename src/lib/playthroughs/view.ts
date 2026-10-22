@@ -1,7 +1,7 @@
 import type { GuideDoc } from "@/lib/guide/doc";
 import { isOpen, reachLabel, workOut, type SnapshotValues, type Worked } from "./status";
 import { levelsText } from "./validate";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach } from "./types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop } from "./types";
 
 /**
  * A playthrough as its pages show it (WO-111), put together from its rows: each objective worked out
@@ -20,6 +20,8 @@ export interface ActRow {
   standingRule: string | null;
   /** Places she leaves alone on purpose (WO-128), each with why. */
   passedBy?: PassedBy[] | null;
+  /** Its route (WO-129): stops in order, each with why she goes there next. */
+  route?: RouteStop[] | null;
   /** The act's image (WO-116); none: its first chapter's, else the cover. */
   imageUrl?: string | null;
   /** What stays in view of it (WO-118). */
@@ -36,6 +38,8 @@ export interface ObjectiveRow {
   detect: Detect | null;
   reach: Reach | null;
   why: string | null;
+  /** The route stop it sits at (WO-129); none, "On the road". */
+  stop?: string | null;
   status: ObjectiveStatus;
   suggestedBy: string | null;
   accepted: boolean;
@@ -228,4 +232,21 @@ export function skillsMoved(s: Pick<SnapshotRow, "skills" | "prevSkills">): { na
   return Object.entries(s.skills)
     .filter(([k, v]) => (s.prevSkills![k] ?? 0) !== v)
     .map(([name, value]) => ({ name, value }));
+}
+
+/**
+ * An act's objectives under the stops of its route (WO-129), in route order, each stop with its why line; objectives
+ * with no stop (or one no longer on the route) last, under On the road (stop null). An act with no route is one group
+ * with no heading. Empty stops are left out; their objectives keep their order within a stop.
+ */
+export function byStop<O extends { stop?: string | null }>(route: readonly RouteStop[] | null | undefined, objectives: readonly O[]): { stop: RouteStop | null; objectives: O[] }[] {
+  if (!route?.length) return objectives.length ? [{ stop: null, objectives: [...objectives] }] : [];
+  const key = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ").trim();
+  const groups = route.map((stop) => ({ stop: stop as RouteStop | null, objectives: [] as O[] }));
+  const road: O[] = [];
+  for (const o of objectives) {
+    const at = o.stop ? route.findIndex((s) => key(s.place) === key(o.stop!)) : -1;
+    (at >= 0 ? groups[at].objectives : road).push(o);
+  }
+  return [...groups.filter((g) => g.objectives.length), ...(road.length ? [{ stop: null, objectives: road }] : [])];
 }

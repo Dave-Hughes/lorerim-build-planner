@@ -381,5 +381,20 @@
       "says": "Missives: take a missive from the notice board in any hold's capital or a courier's request; each is a short delivery.",
       "boards": null
     }
+  },
+  "questRewards": {
+    "_note": "WO-129 Part 6: what a quest's endings hand over that changes a run, hand-checked where the ending's own journal line doesn't say it. By edid: set replaces the reading of the endings; each row is kind (mount, house, follower, item, gold), the ending's stage and journal line, only when one ending gives it and another doesn't, and from and fromText: the stage whose text says it.",
+    "0WRHorseQ": {
+      "_source": "WO-129 Part 6, Dave, 21 Oct 2026; stage text in quests_raw.json",
+      "set": [
+        {"kind": "mount", "stage": 40, "text": "I went to Joslin. In exchange for letting her ride the horse, she made me an imperial saddle.", "only": true, "from": 30, "fromText": "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself."},
+        {"kind": "mount", "stage": 41, "text": "I went to Joslin. In exchange for letting her ride the horse, she made me a nord saddle for it.", "only": true, "from": 30, "fromText": "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself."},
+        {"kind": "gold", "stage": 45, "text": "I went to Dragonsreach, and got paid in gold for the horse.", "only": true, "from": 30, "fromText": "If I go to Dragonsreach I will most likely be payed a handsome sum for the horse, but horse will go to the Jarl."}
+      ]
+    },
+    "DLC2TT1b": {
+      "_source": "WO-129 Part 6: the 1000 septims are Drovas's debt to Mogrul, owed, not handed over",
+      "set": []
+    }
   }
 }

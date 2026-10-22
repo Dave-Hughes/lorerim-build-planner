@@ -30,6 +30,12 @@ export interface PassedBy {
   why: string;
 }
 
+/** One stop on an act's route (WO-129): a town or a place, and why she goes there next (Play only). */
+export interface RouteStop {
+  place: string;
+  why: string;
+}
+
 export type ObjectiveKind = "once" | "reach";
 export type DoneBy = "save" | "hand";
 export type ObjectiveStatus = "todo" | "doing" | "done" | "later";
@@ -47,6 +53,9 @@ export const PLAYTHROUGH_LIMITS = {
   /** Places an act passes by (WO-128), and each one's why line. */
   passedBy: 8,
   passedByWhy: 120,
+  /** An act's route (WO-129): its stops, and each stop's why line. */
+  stops: 12,
+  stopWhy: 200,
   objective: 160,
   why: 300,
   chapterTitle: 60,

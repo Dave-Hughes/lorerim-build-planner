@@ -11,8 +11,9 @@ import { actTowns, placesNear, unmeasured } from "@/lib/places/suggest";
 import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
+import { reviewRoutes } from "@/lib/playthroughs/route-review";
 import { reachLabel } from "@/lib/playthroughs/status";
-import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach } from "@/lib/playthroughs/types";
+import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop } from "@/lib/playthroughs/types";
 import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
@@ -21,7 +22,7 @@ import { stories } from "@/lib/quests/stories-data";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { logCounts, questLog } from "./quest-log";
-import { openForYou, playerState, type Told } from "./facts";
+import { changesRun, openForYou, playerState, type Told } from "./facts";
 import * as names from "./names";
 import { prepareBuild, type Player } from "./builds";
 import { insertBuild } from "@/lib/builds/writes";
@@ -207,6 +208,7 @@ export interface ObjectiveToolInput extends DoneWhen {
   link?: { kind: LinkKind; name: string };
   kind: "once" | "reach";
   why?: string;
+  stop?: string;
   after?: string;
 }
 
@@ -214,7 +216,7 @@ async function objectiveValues(pt: PlaythroughRecord, input: Omit<ObjectiveToolI
   const linked = input.link ? resolveLinkName(pt.gameVersion, input.link) : null;
   // A link to a quest is what the save reads when no quest is given (WO-123).
   const dw = doneWhenOf(pt.gameVersion, input.kind, input, null, linked?.link.kind === "quest" ? linked.link.id : null);
-  return { text: input.text, kind: input.kind, link: linked?.link ?? null, ...dw, why: input.why ?? null };
+  return { text: input.text, kind: input.kind, link: linked?.link ?? null, ...dw, why: input.why ?? null, stop: input.stop ?? null };
 }
 
 /**
@@ -288,19 +290,22 @@ export async function setPlaythrough(p: Player, input: { playthrough: string; na
   return { playthrough: pt.id, name: now.name, line: now.line, build: now.build ? { id: now.build.id, name: now.build.name } : null, link: link(p, pt.id) };
 }
 
-export async function addAct(p: Player, input: { playthrough: string; name: string; levels: string; place: string; goal: string; standingRule?: string; passedBy?: PassedBy[] }) {
+export async function addAct(p: Player, input: { playthrough: string; name: string; levels: string; place: string; goal: string; standingRule?: string; passedBy?: PassedBy[]; route?: RouteStop[] }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
-  const id = await writes(() => w.addAct(p.userId, pt.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule ?? null, passedBy: input.passedBy ?? null }));
+  const id = await writes(() => w.addAct(p.userId, pt.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule ?? null, passedBy: input.passedBy ?? null, route: input.route ?? null }));
   return { playthrough: pt.id, act: String(pt.view.acts.length + 1), actId: String(id), link: link(p, pt.id) };
 }
 
-export async function setAct(p: Player, input: { playthrough: string; act: string; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null; passedBy?: PassedBy[] }) {
+export async function setAct(p: Player, input: { playthrough: string; act: string; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null; passedBy?: PassedBy[]; route?: RouteStop[] }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
-  await writes(() => w.setAct(p.userId, pt.id, a.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule, passedBy: input.passedBy }));
-  return { playthrough: pt.id, act: pt.view.acts.indexOf(a) + 1, saved: true };
+  await writes(() => w.setAct(p.userId, pt.id, a.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule, passedBy: input.passedBy, route: input.route }));
+  // Objectives whose stop left the route go On the road (WO-129): say which, so they can be put back.
+  const now = input.route !== undefined ? actOf((await getPlaythrough(pt.id, p.userId))!, String(pt.view.acts.indexOf(a) + 1)) : null;
+  const onRoad = now && now.route?.length ? now.objectives.filter((o) => !o.stop).map((o) => o.text) : [];
+  return { playthrough: pt.id, act: pt.view.acts.indexOf(a) + 1, saved: true, ...(onRoad.length ? { onTheRoad: onRoad, note: "These have no stop on the route: give each a stop (set_objective), or tell the player why it stays On the road." } : {}) };
 }
 
 export async function removeAct(p: Player, input: { playthrough: string; act: string }) {
@@ -327,14 +332,26 @@ export async function addObjective(p: Player, input: ObjectiveToolInput, suggest
   const values = await writes(() => objectiveValues(pt, input));
   const id = await writes(() => w.addObjective(p.userId, pt.id, a.id, values, { after, suggestedBy }));
   // Advice while drafting (WO-123 Part 2): it saves the same either way.
-  const warnings = reviewPlaythrough([{ id, text: values.text, kind: values.kind, link: values.link, reach: values.reach }]);
+  const warnings = [
+    ...reviewPlaythrough([{ id, text: values.text, kind: values.kind, link: values.link, reach: values.reach }]),
+    ...reviewRoutes([{ n: a.n, route: a.route, objectives: [{ id, text: values.text, why: values.why, stop: values.stop, link: values.link, detect: values.detect }] }]),
+  ];
   return {
     playthrough: pt.id,
     act: String(pt.view.acts.indexOf(a) + 1),
     objective: String(id),
     ...(suggestedBy ? { suggested: true, note: "It shows as suggested with Accept and Skip, and counts for nothing until the player accepts it." } : {}),
     ...(warnings.length ? { warnings: warnings.map(({ code, message }) => ({ code, message })) } : {}),
+    // An ending that hands over a mount, a house, a follower or a lot of gold (WO-129 Part 6): the assistant reads it.
+    ...(runChanges(values.detect?.quest ?? (values.link?.kind === "quest" ? values.link.id : null)) ?? {}),
   };
+}
+
+/** The run changes of a planner quest by its edid, as get_quest gives them; null for none. */
+function runChanges(edid: string | null) {
+  if (!edid) return null;
+  const q = questsData().lines.flatMap((l) => l.quests).find((x) => x.edid === edid);
+  return q ? changesRun(q) : null;
 }
 
 export const suggestObjective = (p: Player, input: ObjectiveToolInput) => addObjective(p, input, p.clientName.slice(0, 80));
@@ -362,6 +379,7 @@ export async function setObjective(p: Player, input: Partial<Omit<ObjectiveToolI
       ...(linked !== undefined ? { link: linked } : {}),
       ...(dw ? dw : {}),
       ...(input.why !== undefined ? { why: input.why } : {}),
+      ...(input.stop !== undefined ? { stop: input.stop.trim().toLowerCase() === "none" ? null : input.stop } : {}),
     }),
   );
   return { playthrough: pt.id, objective: o.id, saved: true };
@@ -436,7 +454,11 @@ export async function setSnapshot(p: Player, input: { playthrough: string; sourc
 /** The playthrough in the plain shape the inputs use, each objective with how it stands. */
 /** A playthrough's drafting warnings (WO-123 Part 2), each naming its objective by id. */
 function warningsOf(pt: PlaythroughRecord) {
-  return reviewPlaythrough(pt.view.acts.flatMap((a) => a.objectives).map((o) => ({ id: o.id, text: o.text, kind: o.kind, link: o.link, reach: o.reach })));
+  return [
+    ...reviewPlaythrough(pt.view.acts.flatMap((a) => a.objectives).map((o) => ({ id: o.id, text: o.text, kind: o.kind, link: o.link, reach: o.reach }))),
+    // The act's road (WO-129 Part 3): a trip back, an objective at no stop, a destination the game doesn't name.
+    ...reviewRoutes(pt.view.acts),
+  ];
 }
 
 /**
@@ -447,7 +469,8 @@ export async function suggestPlaces(p: Player, input: { playthrough: string; act
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
   const at = pt.view.acts.indexOf(a);
-  const towns = actTowns(pt.view.acts, at);
+  // Its route's stops too (WO-129): the towns and places she goes through.
+  const towns = actTowns(pt.view.acts, at, (a.route ?? []).map((r) => r.place));
   const linked = pt.view.acts.flatMap((x) =>
     x.objectives.flatMap((o) => {
       if (o.link?.kind !== "place") return [];
@@ -514,6 +537,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       ...(a.standingRule ? { standingRule: a.standingRule } : {}),
       // The places she leaves alone on purpose (WO-128).
       ...(a.passedBy?.length ? { passedBy: a.passedBy.map((b) => ({ place: b.place, why: b.why })) } : {}),
+      // Its road (WO-129): the stops in order, each with why she goes there next.
+      ...(a.route?.length ? { route: a.route.map((r) => ({ place: r.place, why: r.why })) } : {}),
       // The act's first chapter (WO-118): it opens the act's card on Play.
       firstChapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
       objectives: a.objectives.map((o) => ({
@@ -526,6 +551,7 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
         // Ticks from your save (WO-123): every objective can also be ticked by the player.
         fromSave: o.doneBy === "save",
         ...(o.why ? { why: o.why } : {}),
+        ...(o.stop ? { stop: o.stop } : {}),
         status: shown[o.worked.shown],
         // The chapters that hang off it: its Story markers (WO-116).
         chapters: o.tale.map((t) => ({ chapter: String(t.id), title: t.title, open: t.open })),

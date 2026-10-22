@@ -7,7 +7,7 @@ import type { useGameData } from "@/components/game-data";
 import { searchWithExtras, type ExtraMention } from "@/lib/guide/mention";
 import { useItems } from "@/lib/items/items";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach } from "@/lib/playthroughs/types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
 import s from "./edit.module.css";
 
 /**
@@ -25,6 +25,8 @@ export interface EditObjective {
   detect: Detect | null;
   reach: Reach | null;
   why: string | null;
+  /** Its stop on the act's route (WO-129). */
+  stop: string | null;
   suggestedBy: string | null;
   accepted: boolean;
 }
@@ -37,6 +39,8 @@ export interface EditAct {
   place: string;
   goal: string;
   standingRule: string | null;
+  /** Its route (WO-129): the stops in order, each with why she goes there next. */
+  route: RouteStop[];
   /** The act's image on its story card (WO-116), and what stays in view of it (WO-118). */
   imageUrl: string | null;
   imageFocus: { x: number; y: number } | null;

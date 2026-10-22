@@ -40,7 +40,8 @@ const objectiveFields = {
   link: linkSchema.optional(),
   kind: z.enum(["once", "reach"]).describe("once: done once. reach: a number to reach."),
   ...doneFields,
-  why: z.string().max(300).optional().describe("One line, Play only: why, or where it starts. Quest facts from the planner; say \"not checked yet\" when it does."),
+  why: z.string().max(300).optional().describe("One line, Play only. Open it with how it ties to the act's route or her reason to travel (\"On the way to Whiterun\", \"Before she leaves Whiterun for Markarth\", \"Asked by Andurs in Whiterun\"), then why, or where it starts (rule 21). Quest facts from the planner; say \"not checked yet\" when it does."),
+  stop: z.string().max(80).optional().describe("The stop on the act's route it sits at, by the stop's place (set_act's route). Play lists objectives under their stops, in route order; one with no stop goes last, under On the road."),
   after: objective.optional().describe("Put it right after this objective in the act; at the end when left out."),
 };
 
@@ -91,13 +92,18 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
       .max(8)
       .optional()
       .describe("The places she leaves alone on purpose in this act, each with one line on why (rule 20). The whole list each time; an empty list takes them away."),
+    route: z
+      .array(z.object({ place: z.string().min(1).max(80).describe("A town, or a place from suggest_places."), why: z.string().max(200).describe("Why she goes there next, in one line, Play only.") }))
+      .max(12)
+      .optional()
+      .describe("The act's road (rule 21): its stops in the order she reaches them, each with why she goes there next. Set it before writing the act's objectives; each objective then takes one of these places as its stop. The whole route each time: a stop left out goes, and its objectives go On the road."),
   };
   tool("add_act", "Add an act", "Add an act at the end of one of the player's playthroughs: a stretch of the game with a goal and a place (rule 13).", z.object({ playthrough, ...actFields }), (p, a: Parameters<typeof t.addAct>[1]) => t.addAct(p, a));
   tool(
     "set_act",
     "Change an act",
-    "Change an act's name, levels, place, goal, what the player keeps doing throughout it (standingRule), or the places she passes by (passedBy, rule 20).",
-    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it; an empty string takes it away."), passedBy: actFields.passedBy }),
+    "Change an act's name, levels, place, goal, what the player keeps doing throughout it (standingRule), its route: the stops in order, each with why she goes there next (rule 21), or the places she passes by (passedBy, rule 20).",
+    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it; an empty string takes it away."), passedBy: actFields.passedBy, route: actFields.route }),
     (p, a: Parameters<typeof t.setAct>[1]) => t.setAct(p, a),
   );
   tool("remove_act", "Remove an act", "Remove an act, its objectives and chapters; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
@@ -119,8 +125,8 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "set_objective",
     "Change an objective",
-    "Change an objective's words, link, kind, what the save reads (quest and stage, or reachKey and reachTarget), whether the save ticks it (fromSave) or why line; checked by rule 14 again.",
-    z.object({ playthrough, objective, text: objectiveFields.text.optional(), link: linkSchema.optional(), unlink: z.boolean().optional().describe("true to take the link away."), kind: objectiveFields.kind.optional(), ...doneFields, why: objectiveFields.why }),
+    "Change an objective's words, link, kind, what the save reads (quest and stage, or reachKey and reachTarget), whether the save ticks it (fromSave), why line, or its stop on the act's route (\"none\" for On the road); checked by rule 14 again.",
+    z.object({ playthrough, objective, text: objectiveFields.text.optional(), link: linkSchema.optional(), unlink: z.boolean().optional().describe("true to take the link away."), kind: objectiveFields.kind.optional(), ...doneFields, why: objectiveFields.why, stop: objectiveFields.stop }),
     (p, a: Parameters<typeof t.setObjective>[1]) => t.setObjective(p, a),
   );
   tool("remove_objective", "Remove an objective", "Remove an objective.", z.object({ playthrough, objective }), (p, a: Parameters<typeof t.removeObjective>[1]) => t.removeObjective(p, a));

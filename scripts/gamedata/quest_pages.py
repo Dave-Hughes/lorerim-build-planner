@@ -195,6 +195,39 @@ def reward_items(rewards):
     return out
 
 
+# Outcomes that change a run (WO-129 Part 6), read from a completing ending's journal line: a mount kept, a house owned,
+# someone who'll follow, a lot of gold. Tight on purpose: a miss is better than a false promise, and overrides.json
+# questRewards holds the hand-checked ones the ending's own line doesn't say (Running Wild keeps the horse at 40 and 41;
+# only stage 30 says so).
+_CHANGES = [
+    ("mount", re.compile(r"\b(?:keep|kept)\b[^.]*\b(?:horse|mount|steed)\b|\b(?:horse|steed)\b[^.]*\b(?:for myself|my own|is mine|to keep)\b", re.I)),
+    ("house", re.compile(r"\b(?:bought|purchased)\b[^.]*\b(?:house|home|lodge|manor|homestead|estate|deed)\b|\bI am now (?:its|it's) owner\b|\b(?:house|home|lodge|manor)\b[^.]*\b(?:is mine|is now mine)\b", re.I)),
+    ("follower", re.compile(r"\boffered (?:his|her|their) services as a (?:companion|follower)\b|\boffered to travel with me\b|\bwill (?:now )?(?:follow|travel with) me\b|\bhappy to (?:join|travel with|accompany) me\b", re.I)),
+    ("gold", re.compile(r"\b(?:paid in gold|a (?:handsome|large) (?:sum|reward)|a lot of gold|\d{3,}[\d,]* (?:gold|septims))\b", re.I)),
+]
+
+
+def changes_of(endings, checked=None):
+    """
+    What a quest's endings hand over that changes a run (WO-129 Part 6): [{kind, stage, text, only?}], text the ending's
+    journal line. only: one ending gives it and another doesn't, so the player chooses. `checked` (overrides.json
+    questRewards) replaces the reading for a quest whose endings don't say it themselves, each with the stage text (from,
+    fromText) that does.
+    """
+    if checked is not None:
+        return [{k: v for k, v in c.items() if not k.startswith("_")} for c in checked]
+    done = [e for e in endings if e.get("completes")]
+    out = []
+    for e in done:
+        for kind, pat in _CHANGES:
+            if pat.search(e["text"]):
+                out.append({"kind": kind, "stage": e["stage"], "text": e["text"]})
+    for c in out:
+        if len(done) > 1 and sum(1 for x in out if x["kind"] == c["kind"]) < len(done):
+            c["only"] = True
+    return out
+
+
 def journal(q):
     """A quest's log entries in stage order."""
     return [t for s in sorted(q.get("stages", []), key=lambda s: s.get("index", 0)) for t in s.get("log", []) if t]
@@ -1253,7 +1286,7 @@ def from_key(start, row):
     return out
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None, readables=None, truth=None, classes=None):
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None, readables=None, truth=None, classes=None, changes=None):
     """
     The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a
     player's words (WO-126), with the check's own form kept in start.raw for the open-or-locked judge and assistants;
@@ -1308,6 +1341,9 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             if items:
                 rewards["items"] = items
             stages = stages_of(q)
+            changed = changes_of(endings_of(stages), (changes or {}).get(q["edid"], {}).get("set"))
+            if changed:
+                rewards["endings"] = changed
             args = (checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows, q.get("objectives"), q["edid"],
                     {st["index"]: st["log"][0]["text"] for st in stages if st["log"] and st["log"][0].get("text")}, brought_to(givers.get(q["id"]), towns))
             ov = wording.get(q["edid"], {})

@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return l ? { title: l.name, ...siteMetadata(`/quests/${l.id}`, l.name, l.begins ?? homeName(l.category)) } : {};
 }
 
+/** What an ending hands over that changes a run (WO-129 Part 6), as the Rewards panel names it. */
+const RUN_CHANGE = { mount: "A mount", house: "A house", follower: "A follower", item: "A unique item", gold: "A lot of gold" } as const;
+
 const GOLD = { small: "a small purse of gold", medium: "a purse of gold", large: "a large purse of gold" } as const;
 
 /** "14 quests pay 100; the rest pay none" */
@@ -210,7 +213,20 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 <ul className={styles.rewards}>
                   {rewards.map((q) => (
                     <li key={q.edid}>
-                      <b>{q.name}</b>: {[q.rewards!.gold && GOLD[q.rewards!.gold], ...(q.rewards!.items ?? [])].filter(Boolean).join(", ")}
+                      <b>{q.name}</b>
+                      {[q.rewards!.gold && GOLD[q.rewards!.gold], ...(q.rewards!.items ?? [])].some(Boolean) && <>: {[q.rewards!.gold && GOLD[q.rewards!.gold], ...(q.rewards!.items ?? [])].filter(Boolean).join(", ")}</>}
+                      {/* What an ending hands over that changes a run (WO-129 Part 6), in the journal's words. */}
+                      {q.rewards!.endings?.length ? (
+                        <ul className={styles.runChanges}>
+                          {q.rewards!.endings.map((e) => (
+                            <li key={`${e.kind}${e.stage}`}>
+                              <span className={styles.runChange}>{RUN_CHANGE[e.kind]}</span>
+                              {e.only && <span className="muted"> (one ending of several)</span>}: &ldquo;{e.text}&rdquo;
+                              {e.fromText && <span className={styles.runFrom}> The journal says before it: &ldquo;{e.fromText}&rdquo;</span>}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                     </li>
                   ))}
                 </ul>

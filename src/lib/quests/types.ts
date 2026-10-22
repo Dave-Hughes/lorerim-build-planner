@@ -20,6 +20,20 @@ export interface QuestEnding extends LogEntry {
   stage: number;
 }
 
+/**
+ * What an ending hands over that changes a run (WO-129 Part 6): a mount, a house, a follower, a unique item, a lot of
+ * gold, at the ending's stage with its journal line. only: one ending of several gives it. from and fromText: the stage
+ * whose text says it, when the ending's own line doesn't (Running Wild keeps the horse at 40 and 41; stage 30 says so).
+ */
+export interface RunChange {
+  kind: "mount" | "house" | "follower" | "item" | "gold";
+  stage: number;
+  text: string;
+  only?: true;
+  from?: number;
+  fromText?: string;
+}
+
 export interface Quest {
   edid: string;
   name: string;
@@ -32,7 +46,7 @@ export interface Quest {
   objectives: string[];
   /** Each objective with the stage that shows it (WO-134), for the quest log. */
   steps?: { stage: number; text: string }[];
-  rewards?: { gold?: "small" | "medium" | "large"; items?: string[] };
+  rewards?: { gold?: "small" | "medium" | "large"; items?: string[]; endings?: RunChange[] };
   /** How this quest starts (WO-115 Part 2): the start check's answer in plain words, or "not yet". */
   start?: QuestStart;
   /** Who its records fill it with, its giver among them, by name (WO-133): Running Wild's Palonimo, Joslin. */
