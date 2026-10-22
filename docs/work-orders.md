@@ -4905,6 +4905,50 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-129  An act with a thread: objectives that follow the road and say why they're on it (21 Oct 2026)
+
+**Why.** Dave (21 Oct), playing Kyria's Act II (The Bard's Road), made four points:
+1. After the dagger in Whiterun, the act is a pile of quests she could take. Nothing runs through them, so none of them means anything.
+2. Things are out of order. The act sends her to Ivarstead, then lists Under the Table, which would send her back to Riften first.
+3. "One missive from Whiterun's board, bound for Solitude." Missive names don't say where they go. Checked 21 Oct in `quests_raw.json`: Missives' 108 courier quests are named "Deliver a Letter Near", "Medium" or "Distant" (and Potion and so on), and the objective says "Deliver <item> by <date>". Worse, a missive with no thread is just a chore. With a thread it makes sense: "I'm leaving Whiterun for Markarth. Is there a delivery bound there before I go?"
+4. "Redoran's Retreat: her first bandits", with no reason, followed by a carriage to Markarth.
+
+The common fault: an act has a goal and a place, but no thread. Its objectives are a list of things nearby. WO-127 gives the character a reason to travel and WO-128 gives places a hook. This order makes the act itself a route with a reason, and makes every objective say how it hangs on that route. The chat session fixes Kyria's own Act II by hand; this order makes the tools do it for everyone.
+
+### Part 1. A route for each act
+- An act gains `route`: its stops in order (towns, or places from WO-128's index), each with one Play line saying why she goes there next. For Kyria's Act II the shape is: leave Riften, then Ivarstead (Fastred's errand), then Riverwood, then Whiterun (Alessandra's dagger), then Markarth, then Solitude, each with its reason.
+- An objective gains `stop`, one of its act's stops. Play lists an act's objectives under their stops, in route order, with the stop as a small heading. An objective with no stop goes last, under "On the road".
+- `set_act` takes `route`; `add_objective`, `set_objective` and `suggest_objective` take `stop`. The site's act editor can add, reorder and remove stops. Migrations additive.
+
+### Part 2. Every objective says why it's on the thread
+- An objective's why line opens with how it ties to the route or the reason to travel: "On the way to Whiterun", "Before she leaves Whiterun for Markarth", "Asked by Andurs in Whiterun", "The road patrol (rule 19)".
+- An objective that can't be tied to the thread doesn't go in. Leave it out, or plant it for a later act that goes there (WO-128's plant now, pay off later).
+- Generic jobs (bandit camps, board jobs, Companions jobs, bounties) need a hook. Take the game's own hook when there is one: a steward's bounty letter (Bounty: Bandit Boss names its place in its objective), a line of dialogue from WO-128's index, someone on the road. Otherwise write the player's own hook and say it is theirs. Never "go clear X" with nothing behind it.
+
+### Part 3. Warnings
+`get_playthrough` and `finish_draft_playthrough` warn about these (in `src/lib/mcp/review.ts`), and an assistant fixes them or tells the player why it left them:
+- **Backtrack.** An objective whose quest starts (giver and place, from the quest data) at a stop the route has already left, or at a town not on the route. "Under the Table starts in Riften; the route left Riften at its first stop. Move it to an act set in Riften, or add the trip back with a reason."
+- **No thread.** In an act with a route: an objective with no stop.
+- **A promise the game doesn't make.** An objective that names a destination for a radiant job whose name and objective don't carry one (Missives, the job boards). Mark these quest families in the quest data (`destinationInName: false`) so the check is data, not a word list.
+
+### Part 4. Missives and boards
+- The PC session reads one courier missive's note (its BOOK text) and one board job's, and writes down whether the note names the town it goes to. Until that is checked, the rule says only what the names show.
+- A board job is a "before you leave" objective tied to the next stop: "Before she leaves Whiterun for Markarth, check the board for a delivery bound there." Never name a destination for a particular missive.
+
+### Part 5. The rule (`content/mcp/style.md`)
+- A new rule after WO-128's rule 20 (21 if both are built first; renumber the Honesty rules and check no "rule N" reference points past the last rule):
+  > 21. An act is a road with a reason. Give it a route: its stops in order, each with why she goes there next. Put every objective at a stop, in the order she'll reach it, and open its why line with how it ties to the route or to her reason to travel. Don't send her back to a town the route has left unless the story gives her a reason to go back. Leave out what doesn't fit the thread, or plant it for a later act. A board job or a bandit camp needs a hook: the game's own when it has one, the player's own when it doesn't. Board jobs are "before she leaves for the next stop", and never promise a destination the game's job doesn't name.
+- Under **How to build**: "Before writing an act's objectives, set its route (rule 21)."
+
+### Done when
+- [ ] Part 1: `route` on acts and `stop` on objectives, in the tools, the act editor and Play (objectives grouped under stops, in order).
+- [ ] Part 2 and Part 5: the rule and the How to build line; Honesty rules renumbered; no "rule N" reference past the last rule.
+- [ ] Part 3: the three warnings, with tests on a copy of Kyria's Act II: Under the Table flagged as a backtrack, the missive flagged as a promise, objectives with no stop flagged.
+- [ ] Part 4: the missive and board notes checked on the PC and written into the order's log; `destinationInName` on those quest families.
+- [ ] Every check in CLAUDE.md passes. Screenshots of Play with a routed act at 1440 and 390. Commit on `staging`, push, and stop for Dave: he asks an assistant through the connector to replan an act, and can say in one sentence why each objective is there and why it comes where it does.
+
+---
+
 ## WO-128  Places with a reason: hooks that bring a character to caves, mines, forts and landmarks (21 Oct 2026)
 
 **Why.** Dave (21 Oct), from playing Kyria: Skyrim is full of places players want to see (Embershard Mine is the example), and many have no quest pointing at them. A role-player won't run to a mine for no reason, so a playthrough that only follows quests sends them past most of the world. Kyria's guide sent her to Ivarstead and gave her nothing to do on the way or around it. The fix is a hook: the story already brings her to a town, someone there mentions a place nearby, and the reason fits who she is. Dave's example: the playthrough takes her to Riverwood, the blacksmith there talks about the bandits who took Embershard Mine, the village needs the mine's iron, and Kyria feels she has to step in.
