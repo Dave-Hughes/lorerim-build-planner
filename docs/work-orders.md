@@ -4905,6 +4905,37 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-131  Where the thing you read is (PC then Mac, 21 Oct 2026)
+
+**Why.** Dave went looking for Running Wild, the white horse in the fields outside Whiterun. The planner said it starts by reading The Palonimo Mare, which is true (the book's script sets the first stage), and stopped there. The book is a note pinned to a board outside Joslin's house, hidden behind the Bannered Mare. Nobody could have found it from "read The Palonimo Mare". The start work traced what triggers a quest, and for a person that is also where they stand. For a book, note or letter it left out where the thing is. A start that says "read X" with no place for X reads as finished and isn't.
+
+Nine starts in `story_checks/` are a book today: The Palonimo Mare (Running Wild), Deed to Bluesky Hall and A reward in gold! (Bluesky Hall), Jarl's Bounty: Giant (Ode To The Tundrastriders), Deathbrand, The Aetherium Wars (Lost to the Ages), Letter from Largashbur (The Cursed Tribe) and Letter from Mother Hamal (The Heart of Dibella, two records). The PC's full rerun finds more, and the eleven untraced Creation Club quests are likely to start this way.
+
+### Part 1. Where each one is (PC)
+For every start that is a book, note, letter or item (a `by: book` start, or a pickup the rerun finds), find every place the item exists in the load order and write them to `gamedata/5.0.4.8/story_checks/readables-2026-10-21.json` (and a `.md` for reading):
+1. **A placed copy in the world:** the reference, its cell, and the nearest named place. "Pinned note, Whiterun, outside Joslin's house" is the answer to find, not the editor id.
+2. **In a container:** the container, its cell, and whether the list respawns.
+3. **On a person:** whose inventory, and where they stand.
+4. **On a leveled list:** the list and what spawns it (a bounty board, a bandit's loot). Say "random" and name the list.
+5. **Delivered:** a courier or story manager that hands it over, with the node and its conditions (the Cursed Tribe letter comes to you; the file says when).
+6. **Nowhere found:** say so, with what was searched. Never guess.
+
+Each row: the item name and id, the quest it starts, the place(s) in the game's words (rule 5), and the verdict `files` or `script`.
+
+### Part 2. The planner says it (Mac)
+1. `quests.json` start gets `whereIs` on a way that is a read-this start: the places from Part 1, in plain words ("a note pinned to a board outside Joslin's house, behind the Bannered Mare, Whiterun").
+2. **A read-this way with no place is not checked.** The start's `checked` line says "starts by reading <X>; where to find it isn't checked yet" and gives no instructions beyond that. `get_quest` and the quest page show the same sentence. Assistants must not turn "read X" into a direction.
+3. `suggest_quests` and `where`: a read-this quest is offered for a town only when Part 1 puts the item in or near it. (WO-130 makes `where` work first; this builds on it.)
+4. Tests: Running Wild shows the board outside Joslin's house; a read-this way with no placement shows "isn't checked yet" and never "open for you" instructions; the other eight pass with their places or the same sentence.
+
+### Done when
+- [ ] Part 1: `readables-2026-10-21.json` has a row for every read-this start, nine at least, each with its place or "nowhere found". (PC)
+- [ ] Running Wild's row says the board outside Joslin's house, and Bob has checked it against what Dave found in game.
+- [ ] Part 2: places on the quest pages and in `get_quest`; read-this ways with no place say so and give no instruction. Tests as above. (Mac)
+- [ ] Every check in CLAUDE.md passes. Commit on `staging` and stop for Bob. The PC does Part 1 first, because Part 2 needs the file.
+
+---
+
 ## WO-130  Three things Dave's test of WO-115 showed (Mac, 21 Oct 2026)
 
 **Why.** Dave asked his Claude what Kyria can do in Riften at level 6. It behaved: it offered only quests the planner called open, said unknown with the reason, and noticed her save is ahead of the plan. But the answers it was given had three faults.
