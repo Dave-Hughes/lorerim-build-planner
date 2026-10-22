@@ -3049,7 +3049,8 @@ That is the one launch blocker: a long build is exactly what the best authors wi
   - the 21 to 30 card shows `Short Blade Focus 3 (One-Handed 75)`;
   - the 76 to 100 card says `Unspent`.
 - [x] Screenshots at 1440 and 390 of the points that change the screen.
-- [ ] All checks in CLAUDE.md pass.
+- [x] All checks in CLAUDE.md pass.
+*Mac, 22 Oct: typecheck, lint, 549 unit tests, the 11 player questions, 229 game-data tests and the build pass on this tree; e2e 357 of 357 ran on the same code with WO-129 (4b70d6f), including perf.spec.ts and the tree-label tests at 390 and 1440.*
 
 ---
 
