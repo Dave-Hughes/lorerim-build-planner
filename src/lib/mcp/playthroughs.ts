@@ -16,6 +16,7 @@ import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { openState } from "@/lib/quests/open";
 import { stories } from "@/lib/quests/stories-data";
+import type { Quest, QuestLine } from "@/lib/quests/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { logCounts, questLog } from "./quest-log";
 import { openForYou, playerState, type Told } from "./facts";
@@ -555,6 +556,17 @@ export async function toldOf(input: { level?: number; done?: string[]; playthrou
 }
 
 /**
+ * Where a story starts, for suggest_quests' where (WO-130): its giver's place, its opening quest's places and its first start
+ * line; not every place a start's text names. A quest you start by reading something starts where the thing is (WO-131
+ * Part 2), and nowhere while no one has placed it.
+ */
+export function startsAt(line: Pick<QuestLine, "where" | "giver">, first: Pick<Quest, "start">, startText?: string): (string | null | undefined)[] {
+  const ways = first.start?.ways ?? [];
+  if (ways.length && ways.every((w) => w.whereIs || w.unplaced)) return ways.flatMap((w) => w.whereIs ?? []);
+  return [line.where, line.giver?.place, first.start?.where, ...ways.map((w) => w.where), startText];
+}
+
+/**
  * suggest_quests: stories whose starts are checked in the game files and whose first quest is open for
  * the player (WO-115 Part 3: never one the planner can't judge), not done, each with its checked start,
  * why it's open, and the planner's link.
@@ -576,7 +588,7 @@ export async function suggestQuests(origin: string, input: { level: number; wher
     .filter(({ open }) => open.state === "open")
     // Where it starts (WO-130): the giver's place, its opening quest's places, and its first start; not every place a
     // start's text names (Join the Dark Brotherhood starts with Aventus in Windhelm, though a later line names Riften).
-    .filter(({ s, line, first }) => !where || [line.where, line.giver?.place, first.start?.where, ...(first.start?.ways ?? []).map((w) => w.where), s.start[0]?.text].some((t) => t?.toLowerCase().includes(where)))
+    .filter(({ s, line, first }) => !where || startsAt(line, first, s.start[0]?.text).some((t) => t?.toLowerCase().includes(where)))
     .slice(0, 12)
     .map(({ s, line, first, open }) => ({
       story: s.id,

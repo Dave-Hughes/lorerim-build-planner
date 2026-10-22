@@ -49,7 +49,18 @@ export interface Quest {
 export interface QuestStart {
   needs?: string[];
   /** A way a player found in game, not the files (WO-131 Part 0): checked "players", with who found it and when. */
-  ways?: { how: string; needs?: string[]; who?: string; where?: string; checked?: "players"; source?: string }[];
+  ways?: {
+    how: string;
+    needs?: string[];
+    who?: string;
+    where?: string;
+    checked?: "players";
+    source?: string;
+    /** A read-this way (WO-131 Part 2): where the item is, from the PC's readables file, in plain words. */
+    whereIs?: string[];
+    /** A read-this way with no place: "Where to find X isn't checked yet." Never a direction. */
+    unplaced?: string;
+  }[];
   then?: string;
   thenWhere?: string;
   thenWho?: string;

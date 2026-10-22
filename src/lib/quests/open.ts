@@ -164,7 +164,7 @@ const UNNAMED = /can't put in words yet/;
  * unknown until the planner knows the one before it is done.
  */
 export function openFor(
-  quest: { start?: { needs?: string[]; ways?: { needs?: string[] }[]; checked: string; raw?: { needs: string[] } } },
+  quest: { start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string }[]; checked: string; raw?: { needs: string[] } } },
   p: PlayerState,
   names: QuestNames,
   /** The quest before it in its line, if it isn't the line's first: a talk that opens it can hang on that one, in ways the check can't see. */
@@ -182,6 +182,8 @@ export function openFor(
   // Handed, which also runs from the start of the game, so its needs say nothing): never a bare open. A way whose only
   // unnamed part is where the speaker stands as the line plays has none (A Chance Arrangement's ring line).
   const ways = quest.start.ways ?? [];
+  // Every way in is reading something no one has placed (WO-131 Part 2): the player can't act on it, so never open.
+  if (ways.length && ways.every((w) => w.unplaced)) return { state: "unknown", because: ways.map((w) => w.unplaced!.replace(/\.$/, "").replace(/^W/, "w")) };
   if (ways.length && ways.every((w) => (w.needs ?? []).some((n) => UNNAMED.test(n)))) return { state: "unknown", because: ["one condition on every way in isn't named yet"] };
   return { state: "open", because: [] };
 }

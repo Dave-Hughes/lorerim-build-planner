@@ -1123,7 +1123,75 @@ def steps_of(q, row):
     return sorted(out, key=lambda x: x["stage"])
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None):
+_READ = re.compile(r"^(?:Read|Get) (.+)$")
+
+
+# A container a player knows by what it is, not by name: "In a chest somewhere in Whiterun".
+_CONTAINERS = {"chest", "barrel", "sack", "satchel", "strongbox", "desk", "dresser", "end table", "wardrobe", "cupboard", "urn", "coffin",
+               "knapsack", "crate", "basket", "drawer", "cabinet", "footlocker", "safe", "display case", "bookshelf", "nightstand"}
+
+
+def place_words(p, quest_name=None):
+    """
+    One place a read-this item is, from the PC's readables file (WO-131 Part 2), in plain words; None for one a player can't
+    use (a holding or test cell, a container only the editor has). A random list is "random loot", never its editor id.
+    """
+    where = [w for w in ([p["where"]] if isinstance(p.get("where"), str) else p.get("where") or []) if w and not _HOLDING.search(w)]
+    if p["kind"] in ("placed", "container", "carried") and not where:
+        return None
+    at = clean_place(where[0]) if where else None
+    if at and at.lower() in ("somewhere in skyrim", "somewhere in tamriel"):  # a whole worldspace is no place to look
+        at = None
+    # "somewhere in Whiterun" is the file's word for a cell with no name: "in a chest somewhere in Whiterun".
+    inside = lambda a: a if a.startswith("somewhere in ") else f"in {a}"  # noqa: E731
+    if p["kind"] == "carried" and p.get("holder"):
+        return f"Carried by {p['holder']}" + (f", {inside(at)}" if at else "")
+    if p["kind"] in ("placed", "container") and not at:
+        return None
+    if p["kind"] == "placed":
+        # The nearest named doors, within 5 m of the nearest; never one with no name, never one the place already says.
+        doors = sorted((d for d in p.get("nearDoors") or [] if not d["door"].startswith("somewhere") and d["door"].lower() not in at.lower()), key=lambda d: d["metres"])
+        near = [d["door"] for d in doors if d["metres"] <= doors[0]["metres"] + 5][:2] if doors else []
+        return (at[0].upper() + at[1:]) + (f", near {' and '.join(near)}" if near else "")
+    if p["kind"] == "container":
+        holder = p.get("holder") or "a container"
+        holder = _a(holder.lower()) if holder.lower() in _CONTAINERS else holder
+        return f"In {holder} {inside(at)}"
+    if p["kind"] == "levelled":
+        return "It can turn up as random loot"
+    if p["kind"] == "delivered":
+        # By another quest a player knows: say which; by the quest it starts, or a helper: just that it comes to you.
+        q = p.get("quest")
+        return f"It's handed to you during {q}" if q and q != quest_name and plain_name(q) else "It's handed to you"
+    return None
+
+
+def read_places(readables):
+    """{(quest name, item name): [places in plain words]} from the readables file's items (WO-131 Part 2)."""
+    out = {}
+    for r in readables or []:
+        for st in r.get("starts", []):
+            out[(st["quest"], r["item"])] = list(dict.fromkeys(w for w in (place_words(p, st["quest"]) for p in r.get("places", [])) if w))
+    return out
+
+
+def placed_ways(start, quest_name, places):
+    """
+    Each read-this way with where its item is (`whereIs`), or, with none, `unplaced`: "Where to find X isn't checked yet."
+    The way still says only "Read X"; nothing turns it into a direction (WO-131 Part 2).
+    """
+    ways = []
+    for w in start.get("ways", []):
+        m = _READ.match(w["how"])
+        if m and "checked" not in w:
+            found = places.get((quest_name, m.group(1)))
+            w = {**w, **({"whereIs": found[:3] + ([f"and {len(found) - 3} more place{'' if len(found) == 4 else 's'}"] if len(found) > 3 else [])} if found else
+                         {"unplaced": f"Where to find {'it' if _RECORD_FORM.search(m.group(1)) else m.group(1)} isn't checked yet."})}
+        ways.append(w)
+    return {**start, "ways": ways} if start.get("ways") else start
+
+
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None, readables=None):
     """
     The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a
     player's words (WO-126), with the check's own form kept in start.raw for the open-or-locked judge and assistants;
@@ -1131,6 +1199,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
     overrides.json's questNames, {quest edid: {names: what players call it}} (WO-133).
     """
     checks, globals_, wording, called = checks or {}, globals_ or {}, wording or {}, called or {}
+    places = read_places(readables)
     say = Words(quests_raw, globals_)
     raws = {}
     towns = towns if towns is not None else towns_of(givers_raw)
@@ -1181,7 +1250,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             if ov.get("_starters") and args[0]:  # a starter the PC traced that the check doesn't list yet (overrides.json)
                 args = (dict(args[0], startedBy=ov["_starters"] + args[0].get("startedBy", [])),) + args[1:]
             raw = start_of(*args)
-            start = reword(start_of(*args, say=say), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
+            start = reword(placed_ways(start_of(*args, say=say), q["name"], places), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
             # A way a player found in game, not the files (WO-131 Part 0: Dave's note outside Joslin's house): marked so.
             if ov.get("_checked") == "players":
                 put = {v for k, v in ov.items() if not k.startswith("_")}

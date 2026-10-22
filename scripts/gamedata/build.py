@@ -475,7 +475,10 @@ def main():
         # WO-121a: each cell's town, from the givers' places and the house keys, for telling a town's rumour.
         towns = towns_of(givers_raw, load("quest_starts_raw.json") if os.path.exists(os.path.join(RAW, "quest_starts_raw.json")) else None)
         wording = overrides.get("questStarts", {})
-        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}))
+        # WO-131 Part 2: where each read-this item is, from the PC's readables file.
+        readables_file = os.path.join(RAW, "story_checks", "readables-2026-10-21.json")
+        readables = json.load(open(readables_file, encoding="utf-8"))["items"] if os.path.exists(readables_file) else []
+        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables)
         # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
         said = {q["edid"]: json.dumps(q["start"].get("ways", []), ensure_ascii=False) for l in pages for q in l["quests"]}
         for edid, words in wording.items():

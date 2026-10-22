@@ -47,8 +47,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **7. "Where do I find the book for …?", for every other read-this start (61 ways today: the Dark Brotherhood's extra contracts, Boethiah's Calling, Deathbrand, Lost to the Ages, Wyrmstooth's notes and the rest).**
 - Calls: `get_quest({ id: <its EDID> })`.
-- Must: each read-this way has its place, or the start says where to find it isn't checked yet.
-- Fixed by: WO-131 Part 2.
+- Must: each read-this way has its place (`whereIs`), or says where to find it isn't checked yet (`whereIsIt`).
+- Passes since WO-131 Part 2.
 
 ## The player's own game
 

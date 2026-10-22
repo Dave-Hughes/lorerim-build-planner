@@ -147,6 +147,8 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                         <li key={i}>
                           {w.how}
                           {w.checked === "players" ? <span className={styles.src}>player report</span> : null}
+                          {"whereIs" in w && w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
+                          {"unplaced" in w && w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                         </li>
                       ))}
                     </ul>

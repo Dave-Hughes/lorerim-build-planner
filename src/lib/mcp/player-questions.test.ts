@@ -99,13 +99,13 @@ const QUESTIONS: Question[] = [
       readThis()
         .filter(({ q }) => q.edid !== "0WRHorseQ")
         .map(({ q, how }) => {
-          const a = getQuest({ id: q.edid });
-          const placed = /\b(in|at|on|behind|outside|near|inside) [A-Z]/.test(how) || /isn't checked yet/.test(JSON.stringify(a.quest.start));
-          return { quest: q.name, way: how, placed: placed ? "yes" : "no place, and not said it isn't checked" };
+          // The way as get_quest gives it: where the thing is, or that where to find it isn't checked.
+          const way = (getQuest({ id: q.edid }).quest.start.ways ?? []).find((w) => w.way === how);
+          const answer = way?.whereIs?.join("; ") ?? way?.whereIsIt ?? "no place, and not said it isn't checked";
+          return { quest: q.name, way: how, answer };
         }),
     must: [],
     never: [/no place, and not said it isn't checked/],
-    todo: "WO-131 Part 2: no read-this way gives a place or says it isn't checked.",
   },
   {
     n: 8,

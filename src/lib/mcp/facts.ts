@@ -205,7 +205,13 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  * their needs, the first objective as `then`, and who and where when one person starts it (WO-121b:
  * back once the answer key passed). A start not checked yet gives none.
  */
-function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[]; who?: string; where?: string; checked?: string }[]; then?: string; who?: string; where?: string; raw?: QuestStart["raw"] } {
+function startOf(q: Quest | undefined): {
+  ways?: { way: string; needs?: string[]; who?: string; where?: string; checked?: string; whereIs?: string[]; whereIsIt?: string }[];
+  then?: string;
+  who?: string;
+  where?: string;
+  raw?: QuestStart["raw"];
+} {
   const st = q?.start;
   if (!st || st.checked !== "files") return {};
   const ways = st.ways?.length
@@ -216,6 +222,9 @@ function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[]
         ...(w.where ? { where: w.where } : {}),
         // A player found it in game (WO-131 Part 0): say so, and who, beside the files' facts.
         ...(w.checked === "players" ? { checked: `a player's report, not the game files (${w.source})` } : {}),
+        // Where the thing to read is (WO-131 Part 2), from the game files; or that it isn't checked, which is no direction.
+        ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}),
+        ...(w.unplaced ? { whereIsIt: `${w.unplaced} Don't tell the player where to look.` } : {}),
       }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
   // The words are what a player reads; raw is each need and way as the records have it, for an assistant to reason on.

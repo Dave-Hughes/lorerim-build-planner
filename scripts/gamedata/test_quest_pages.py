@@ -666,7 +666,7 @@ class NightRunTest(unittest.TestCase):
     def test_no_page_shows_an_editor_id(self):
         leaks = [(line["id"], t) for line in self.lines for t in page_texts(line) if RECORD_ID.search(t)]
         self.assertEqual(leaks, [])
-        self.assertEqual(self.by["ccBGSSSE002_SoulStealerQuest"]["start"]["ways"], [{"how": "Get a note from Calcelmo"}])
+        self.assertEqual(self.by["ccBGSSSE002_SoulStealerQuest"]["start"]["ways"], [{"how": "Get a note from Calcelmo", "unplaced": "Where to find it isn't checked yet."}])
         self.assertEqual(self.by["MyrwatchTNE_Quest"]["name"], "Myrwatch")
 
     def test_an_ending_says_no_record_condition(self):
@@ -706,6 +706,28 @@ class NightRunTest(unittest.TestCase):
         larak = start["ways"][0]
         self.assertEqual(larak["needs"], ["You're in the Blood-Kin of the Orcs or an Orc"])
         self.assertNotIn("who", larak)
+
+
+class ReadablesTest(unittest.TestCase):
+    """WO-131 Part 2: where each read-this item is, in the game's words, from the PC's readables file."""
+
+    def test_place_words(self):
+        placed = {"kind": "placed", "where": "Whiterun", "nearDoors": [{"door": "Hearth-Healer's Hall", "metres": 22}, {"door": "Joslin's House", "metres": 22}, {"door": "The Bannered Mare", "metres": 27}]}
+        self.assertEqual(qp.place_words(placed), "Whiterun, near Hearth-Healer's Hall and Joslin's House")
+        self.assertEqual(qp.place_words({"kind": "placed", "where": "somewhere in Skyrim", "nearDoors": []}), None)
+        self.assertEqual(qp.place_words({"kind": "placed", "where": "Myrwatch", "nearDoors": [{"door": "somewhere in Skyrim", "metres": 3}]}), "Myrwatch")
+        self.assertEqual(qp.place_words({"kind": "container", "holder": "Chest", "where": ["somewhere in Whiterun"]}), "In a chest somewhere in Whiterun")
+        self.assertEqual(qp.place_words({"kind": "container", "holder": "All Dragonborn Books", "where": ["Editor Smoke Test Cell"]}), None)
+        self.assertEqual(qp.place_words({"kind": "carried", "holder": "Bradyn", "where": ["Kolbjorn Barrow"]}), "Carried by Bradyn, in Kolbjorn Barrow")
+        self.assertEqual(qp.place_words({"kind": "levelled", "list": "DLC2LItemBook4Combined", "where": None}), "It can turn up as random loot")
+        self.assertEqual(qp.place_words({"kind": "delivered", "quest": "THOD_QE"}, "The Heart of Dibella"), "It's handed to you")
+        self.assertEqual(qp.place_words({"kind": "delivered", "quest": "Ode To The Tundrastriders"}, "Ode To The Tundrastriders"), "It's handed to you")
+        self.assertEqual(qp.place_words({"kind": "nowhere", "searched": "..."}), None)
+
+    def test_a_way_gets_its_places_or_says_it_isnt_checked(self):
+        start = {"ways": [{"how": "Read A Note"}, {"how": "Read Lost Page"}, {"how": "Talk to Vex"}]}
+        out = qp.placed_ways(start, "Q", {("Q", "A Note"): ["Riften"], ("Q", "Lost Page"): []})
+        self.assertEqual(out["ways"], [{"how": "Read A Note", "whereIs": ["Riften"]}, {"how": "Read Lost Page", "unplaced": "Where to find Lost Page isn't checked yet."}, {"how": "Talk to Vex"}])
 
 
 if __name__ == "__main__":
