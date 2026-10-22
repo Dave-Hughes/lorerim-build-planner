@@ -4948,7 +4948,7 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
 
 ---
 
-## WO-127  A reason to travel: one more thing assistants weigh when they design a character (22 Oct 2026)
+## WO-127  A reason to travel: one more thing assistants weigh when they design a character (21 Oct 2026)
 
 **Why.** Dave (21 Oct), from playing Kyria: a player who wants to get out into the world needs a reason to go from town to town, and the reason has to come from the character. Kyria's came from the road. On her first walk to Ivarstead she buried a pilgrim the wolves had killed, and since then she goes everywhere on foot and clears what is waiting on the road. Without a reason like that, a run drifts between quest markers and the long way between towns gets skipped. This is not a field and nothing changes on screen. It is a question the assistant settles while designing the character, and it shapes the playthrough it writes.
 
