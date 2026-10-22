@@ -93,3 +93,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **16. A line whose quest is checked.** Asking for one quest in a line that hasn't passed the line's start check (Whiterun, expanded; Odd jobs in the Rift; Deathbrand) must give that quest's own checked start, and say plainly what's unchecked about the line, once. Not "no instructions are given" over a checked answer.
 - Fails today: **WO-137**.
+
+**17. "How do I start the quest to get the paraglider? I'm level 12."**
+- Calls: `search_facts({ query: "paraglider" })`, `get_quest({ name: "Paragliding in Skyrim", level: 12 })`.
+- Must: a place (near Falkreath), what happens (a man falls from the sky), the journal that moves it to step two; no trigger name ("Para Intro Gazebo Discover"); "open for you" at level 12, not "unknown".
+- Fails today: **WO-137 item 6**. Dave's Claude said "unknown" and asked for his LoreRim folder.
