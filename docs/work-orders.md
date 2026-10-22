@@ -3091,7 +3091,8 @@ That is the one launch blocker: a long build is exactly what the best authors wi
   *Chat session, 14 Oct: reader screens compared on staging. Points 4, 5, 10 and 12 match, and point 1 and point 7 at 1440. Point 1 and point 7 on a phone, and the Taken-by panel (point 3), go to WO-74. The editor and wizard screens (points 2, 3's skills header, 6, 8 and 11) are still to compare, in WO-74.*
 - [x] e2e: open One-Handed and Destiny in the editor and on the build page. Every star's label is inside the box and none overlap; check it with bounding boxes.
 - [x] Point 6 waits for Dave's OK; mark it done or dropped.
-- [ ] All checks in CLAUDE.md pass.
+- [x] All checks in CLAUDE.md pass.
+*Mac, 22 Oct: typecheck, lint, 549 unit tests, the 11 player questions, 229 game-data tests and the build pass on this tree; e2e 357 of 357 ran on the same code with WO-129 (4b70d6f), including perf.spec.ts and the tree-label tests at 390 and 1440.*
 
 ---
 
