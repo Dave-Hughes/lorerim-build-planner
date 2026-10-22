@@ -3010,7 +3010,8 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 - [x] `e2e/perf.spec.ts` runs in `npm run test:e2e` and fails above the targets in point 4.
 - [x] Before and after numbers for each step are in the commit message.
 - [ ] The Sevari build on staging edits without a visible stall: Dave checks it in the app.
-- [ ] All checks in CLAUDE.md pass.
+- [x] All checks in CLAUDE.md pass.
+*Mac, 22 Oct: typecheck, lint, 549 unit tests, the 11 player questions, 229 game-data tests and the build pass on this tree; e2e 357 of 357 ran on the same code with WO-129 (4b70d6f), including perf.spec.ts and the tree-label tests at 390 and 1440. The perf test passed in the full run each time. The Sevari box stays for Dave.*
 
 ---
 
