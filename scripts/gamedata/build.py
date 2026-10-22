@@ -21,6 +21,8 @@ Inputs, under gamedata/<version>/:
                      builds enchantments.json
   spells_raw.json    the spells tomes teach and the tier perks' picks
                      (spells.py); optional, builds spells.json when present
+  places_raw.json    the places index (places.py, WO-128); optional, builds
+                     places.json when present
   overrides.json     hand-kept facts the records don't carry in a readable
                      form (quest wording, carry weight, which traits the
                      numbers simulate, perk records that stand in for a
@@ -528,6 +530,15 @@ def main():
             json.dump(data, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(data['spells'])} spells, {len(data['spellPicks']['pools'])} pick pools -> spells.json")
+    # Places (WO-128 Part 1): the places index, from places.py's raw file.
+    if os.path.exists(os.path.join(RAW, "places_raw.json")):
+        from places import build_site
+
+        rows = build_site(load("places_raw.json")["places"])
+        with open(os.path.join(OUT, "places.json"), "w", encoding="utf-8") as f:
+            json.dump({"places": rows}, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(rows)} places, {sum(1 for r in rows if r.get('pointers'))} with a pointer -> places.json")
     for p in problems:
         print("note:", p)
 

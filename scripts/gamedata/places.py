@@ -1,0 +1,442 @@
+"""
+The places index (WO-128 Part 1): every location a player can visit that isn't a city, a town or a house, across the
+whole load order, with what points at it. Writes gamedata/<version>/places_raw.json and places_report.md; build.py turns
+the raw file into src/data/lorerim-<version>/places.json:
+  python3 scripts/gamedata/places.py [version]
+
+A place is a location (LCTN) whose LocType keywords say dungeon, cave, mine, fort, ruin, camp, lair, tower, shrine and the
+like, or whose world map marker is one of those kinds (the marker's own type: Cave, Nordic Ruin, Giant Camp...). Never
+one that is a city, town, settlement, dwelling, house, inn, store, castle or jail, or that sits inside one.
+
+For each place:
+  type         the map marker's kind when it has one, else the LocType keywords'
+  hold         the hold its parent locations lead up to (LocTypeHold)
+  nearestTown  the closest city, town or settlement by the map markers' positions in the same worldspace
+  actors       the placed actors in its cells (and its child locations'): how many, their levels, and the boss (the actor
+               with the Boss location ref type, Skyrim.esm:0130F7), each level as the record holds it: a fixed level, a
+               multiple of the player's level within a range, or a leveled list's range
+  clearXp      what LoreRim's Experience settings give for clearing that kind of place (SKSE/Plugins/Experience.ini,
+               [Clearing], by the marker's kind)
+  pointers     dialogue lines that name it (the speaker, where the speaker stands, the words, the record), and books and
+               notes that name it, matched on the place's whole name
+  quests       quests whose location aliases are it, or whose forced references stand in it: a quest already goes there
+"""
+import collections
+import configparser
+import json
+import os
+import re
+import struct
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from esp import ROOT, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
+import quest_scripts as qsc  # noqa: E402
+from story_check import all_strings, name_strings  # noqa: E402
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(HERE))
+DELETED = 0x20
+BOSS = "Skyrim.esm:0130F7"  # the Boss location ref type
+# A world map marker's kind (REFR TNAM), as the Creation Kit numbers them (UESP: Mod File Format/REFR, map marker type).
+MARKER = {1: "City", 2: "Town", 3: "Settlement", 4: "Cave", 5: "Camp", 6: "Fort", 7: "NordicRuin", 8: "DwemerRuin", 9: "Shipwreck",
+          10: "Grove", 11: "Landmark", 12: "DragonLair", 13: "Farm", 14: "WoodMill", 15: "Mine", 16: "MilitaryCamp", 17: "MilitaryCamp",
+          18: "Doomstone", 19: "WheatMill", 20: "Smelter", 21: "Stable", 22: "ImperialTower", 23: "Clearing", 24: "Pass", 25: "Altar",
+          26: "Rock", 27: "Lighthouse", 28: "OrcStronghold", 29: "GiantCamp", 30: "Shack", 31: "NordicTower", 32: "NordicDwelling",
+          33: "Docks", 34: "DaedricShrine", 35: "Castle", 36: "Castle", 37: "Castle", 38: "Castle", 39: "Castle", 40: "Castle",
+          41: "Castle", 42: "Castle", 43: "Castle", 44: "MiraakTemple", 45: "Town", 46: "StandingStone", 47: "TelvanniTower",
+          48: "Grove", 49: "CastleKarstaag"}
+NOT_PLACES = {"City", "Town", "Settlement", "Farm", "WoodMill", "WheatMill", "Smelter", "Stable", "Docks", "Castle", "OrcStronghold"}
+# The LocType keywords that make a place, and those that rule one out (where people live, trade or rule).
+PLACE_KW = {"LocTypeDungeon", "LocTypeCave", "LocTypeMine", "LocTypeMilitaryFort", "LocTypeAnimalDen", "LocTypeBanditCamp",
+            "LocTypeDraugrCrypt", "LocTypeDwarvenAutomatons", "LocTypeFalmerHive", "LocTypeForswornCamp", "LocTypeGiantCamp",
+            "LocTypeDragonLair", "LocTypeDragonPriestLair", "LocTypeHagravenNest", "LocTypeVampireLair", "LocTypeWarlockLair",
+            "LocTypeSprigganGrove", "LocTypeShipwreck", "LocTypeClearable", "LocTypeMilitaryCamp", "LocTypeNordicRuin",
+            "LocTypeDwemerRuin", "LocTypeShrine", "LocTypeTower", "LocTypeLandmark", "LocTypeMilitaryCampImperial",
+            "LocTypeMilitaryCampStormcloak", "LocTypeAyleidRuin", "LocTypeHoldLocation"}
+NOT_KW = {"LocTypeCity", "LocTypeTown", "LocTypeSettlement", "LocTypeDwelling", "LocTypePlayerHouse", "LocTypeHouse", "LocTypeInn",
+          "LocTypeStore", "LocTypeCastle", "LocTypeJail", "LocTypeHold", "LocTypeHoldCapital", "LocTypeHoldMajor", "LocTypeHoldMinor",
+          "LocTypeHabitation", "LocTypeTemple", "LocTypeGuild", "LocTypeBarracks", "LocTypeOrcStronghold", "LocTypeFarm",
+          "LocTypeLumberMill", "LocTypeShip"}
+TOWN_KW = {"LocTypeCity", "LocTypeTown", "LocTypeSettlement"}
+KIND_WORDS = {"LocTypeCave": "Cave", "LocTypeMine": "Mine", "LocTypeMilitaryFort": "Fort", "LocTypeDraugrCrypt": "NordicRuin",
+              "LocTypeDwarvenAutomatons": "DwemerRuin", "LocTypeBanditCamp": "Camp", "LocTypeForswornCamp": "Camp",
+              "LocTypeGiantCamp": "GiantCamp", "LocTypeDragonLair": "DragonLair", "LocTypeShipwreck": "Shipwreck",
+              "LocTypeFalmerHive": "Cave", "LocTypeAnimalDen": "Cave", "LocTypeHagravenNest": "Camp", "LocTypeVampireLair": "Cave",
+              "LocTypeWarlockLair": "Cave", "LocTypeSprigganGrove": "Grove", "LocTypeDragonPriestLair": "NordicRuin"}
+
+
+HELPER = re.compile(r"\b(Handler|Controller|Tracker|Dialogue|Misc|Retroactive|Scene|Reserve)\b")  # a quest no player sees as one
+
+
+def form_id(key):
+    return f"{key[0]}:{key[1]:06X}"
+
+
+def txt(v, loc, table):
+    if loc and len(v) == 4:
+        return (table or {}).get(struct.unpack_from("<I", v)[0], "")
+    return v.rstrip(b"\0").decode("utf-8", "replace")
+
+
+def clear_xp():
+    """The [Clearing] XP for each kind of place, from the Experience.ini the Ultra profile's highest mod gives (MO2 order)."""
+    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
+    for m in mods:  # modlist.txt lists the highest priority first
+        p = os.path.join(ROOT, "mods", m, "SKSE", "Plugins", "Experience.ini")
+        if os.path.exists(p):
+            cp = configparser.ConfigParser(strict=False)
+            cp.read(p, encoding="utf-8-sig")
+            return {k[len("ixpclear"):].lower(): int(v) for k, v in cp["Clearing"].items()} if cp.has_section("Clearing") else {}, m
+    return {}, None
+
+
+def npc_level(v):
+    """An NPC_ ACBS's level: (fixed level, scaling (multiple, min, max) or None, template flags)."""
+    flags, = struct.unpack_from("<I", v, 0)
+    lvl, cmin, cmax = struct.unpack_from("<hHH", v, 8)
+    tflags = struct.unpack_from("<H", v, 18)[0] if len(v) >= 20 else 0
+    return (None, (round(lvl / 1000, 2), cmin, cmax), tflags) if flags & 0x80 else (lvl, None, tflags)
+
+
+def scan():
+    pp, lo = plugin_paths(), load_order(cc=True)
+    kw, locs, npcs, lvln, books, infos, quests = {}, {}, {}, {}, {}, {}, {}
+    for n in lo:  # pass 1: keywords, locations, actors, leveled lists, books, dialogue, quests (each the winning copy)
+        p = pp.get(n.lower())
+        if not p:
+            continue
+        buf = open(p, "rb").read()
+        masters = header(buf)
+        loc = bool(struct.unpack_from("<I", buf, 8)[0] & 0x80)
+        strings = name_strings(p, n, loc, ROOT) or {}
+        tables = (all_strings(p, n, loc, ROOT) or {}) if loc else {}
+        res = lambda v: form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))  # noqa: E731
+        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK"):
+            if grp.encode() not in buf:
+                continue
+            for o in iter_group(buf, grp):
+                t, flags, fid, d = rec_data(buf, o)
+                if t != grp:
+                    continue
+                key = form_id(resolve(fid, masters, n))
+                subs = subrecs(d)
+                edid = next((v.rstrip(b"\0").decode("latin1") for s, v in subs if s == "EDID"), "")
+                full = next((txt(v, loc, strings) for s, v in subs if s == "FULL"), "").strip()
+                if grp == "KYWD":
+                    kw[key] = edid
+                elif grp == "LCTN":
+                    kwda = next((v for s, v in subs if s == "KWDA"), b"")
+                    locs[key] = {"edid": edid, "name": full, "plugin": n, "deleted": bool(flags & DELETED),
+                                 "keywords": [form_id(resolve(struct.unpack_from("<I", kwda, i)[0], masters, n)) for i in range(0, len(kwda) - 3, 4)],
+                                 "parent": next((res(v) for s, v in subs if s == "PNAM" and len(v) >= 4), None),
+                                 "marker": next((res(v) for s, v in subs if s == "MNAM" and len(v) >= 4), None)}
+                elif grp == "NPC_":
+                    acbs = next((v for s, v in subs if s == "ACBS" and len(v) >= 14), None)
+                    fixed, scaled, tflags = npc_level(acbs) if acbs else (None, None, 0)
+                    npcs[key] = {"name": full or None, "edid": edid, "level": fixed, "scaled": scaled, "useStats": bool(tflags & 2),
+                                 "template": next((res(v) for s, v in subs if s == "TPLT" and len(v) >= 4 and struct.unpack_from("<I", v)[0]), None)}
+                elif grp == "LVLN":
+                    lvln[key] = {"edid": edid, "entries": [(struct.unpack_from("<H", v, 0)[0], form_id(resolve(struct.unpack_from("<I", v, 4)[0], masters, n)))
+                                                           for s, v in subs if s == "LVLO" and len(v) >= 8]}
+                elif grp == "BOOK":
+                    desc = next((txt(v, loc, tables.get("DLSTRINGS") if loc else None) for s, v in subs if s == "DESC"), "")
+                    books[key] = {"name": full or edid, "text": desc, "plugin": n}
+        if b"DIAL" in buf:
+            topic = None
+            for o in iter_group(buf, "DIAL"):
+                t, flags, fid, d = rec_data(buf, o)
+                subs = subrecs(d)
+                if t == "DIAL":
+                    topic = next((res(v) for s, v in subs if s == "QNAM" and len(v) >= 4), None)
+                    continue
+                if t != "INFO":
+                    continue
+                lines = [txt(v, loc, tables.get("ILSTRINGS") if loc else None) for s, v in subs if s == "NAM1"]
+                if not any(lines):
+                    continue
+                spk = None
+                for s, v in subs:
+                    if s == "CTDA" and len(v) >= 24 and struct.unpack_from("<H", v, 8)[0] == 72 and v[0] >> 5 == 0:
+                        spk = form_id(resolve(struct.unpack_from("<I", v, 12)[0], masters, n))
+                        break
+                infos[form_id(resolve(fid, masters, n))] = {"lines": [l for l in lines if l], "speaker": spk, "quest": topic, "plugin": n}
+        if b"QUST" in buf:
+            got = qsc.read_plugin(buf, n, strings)
+            for k, q in got["quests"].items():
+                q["name"] = got["names"].get(k, {}).get("name") or got["names"].get(k, {}).get("edid") or k
+                q["named"] = bool(got["names"].get(k, {}).get("name"))  # a scene holder or helper has no name a player sees
+                quests[k] = q
+    # Pass 2: cells (name, location, worldspace), map markers, placed actors, and where quests' forced references stand.
+    forced = {a["ref"] for q in quests.values() for a in q.get("aliases", {}).values() if a.get("ref")}
+    cells, markers, actors, refcell, placed_npc = {}, {}, {}, {}, {}
+    for n in lo:
+        p = pp.get(n.lower())
+        if not p:
+            continue
+        buf = open(p, "rb").read()
+        masters = header(buf)
+        loc = bool(struct.unpack_from("<I", buf, 8)[0] & 0x80)
+        strings = name_strings(p, n, loc, ROOT) or {}
+        for top in ("CELL", "WRLD"):
+            if top.encode() not in buf:
+                continue
+            cell = world = None
+            for o in iter_group(buf, top):
+                t = buf[o:o + 4]
+                if t not in (b"CELL", b"WRLD", b"REFR", b"ACHR"):
+                    continue
+                if t == b"REFR":
+                    size = struct.unpack_from("<I", buf, o + 4)[0]
+                    body = buf[o + 24:o + 24 + size]
+                    fid = form_id(resolve(struct.unpack_from("<I", buf, o + 12)[0], masters, n))
+                    if b"XMRK" not in body and fid not in forced:
+                        continue
+                tt, flags, fid, d = rec_data(buf, o)
+                subs = subrecs(d)
+                key = form_id(resolve(fid, masters, n))
+                if tt == "WRLD":
+                    world = key
+                    continue
+                if tt == "CELL":
+                    cell = key
+                    c = cells.setdefault(key, {})
+                    c["world"] = world if top == "WRLD" else None
+                    for s, v in subs:
+                        if s == "FULL":
+                            c["name"] = txt(v, loc, strings).strip()
+                        elif s == "XLCN" and len(v) >= 4:
+                            c["location"] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))
+                    continue
+                pos = next((list(struct.unpack_from("<fff", v)) for s, v in subs if s == "DATA" and len(v) >= 12), None)
+                if tt == "REFR":
+                    if key in forced:
+                        refcell[key] = cell
+                    if any(s == "XMRK" for s, _ in subs):
+                        mtype = next((v[0] for s, v in subs if s == "TNAM" and v), None)
+                        markers[key] = {"cell": cell, "pos": pos, "type": MARKER.get(mtype), "deleted": bool(flags & DELETED),
+                                        "name": next((txt(v, loc, strings) for s, v in subs if s == "FULL"), "").strip()}
+                    continue
+                base = next((form_id(resolve(struct.unpack_from("<I", v)[0], masters, n)) for s, v in subs if s == "NAME" and len(v) >= 4), None)
+                lrt = next((v for s, v in subs if s == "XLRT"), b"")
+                actors[key] = {"cell": cell, "base": base, "deleted": bool(flags & DELETED),
+                               "boss": BOSS in {form_id(resolve(struct.unpack_from("<I", lrt, i)[0], masters, n)) for i in range(0, len(lrt) - 3, 4)}}
+                if base and not flags & DELETED:
+                    placed_npc.setdefault(base, cell)
+    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc
+
+
+def level_of(base, npcs, lvln, depth=0):
+    """(low, high) levels a placed actor can have, and its words: "level 12", "your level x1.0 (5-30)", "leveled 4-40"."""
+    if depth > 6 or not base:
+        return None
+    if base in npcs:
+        n = npcs[base]
+        # A template's stats (its level) when the actor uses them (ACBS template flags, "use stats").
+        if n["template"] and (n.get("useStats") or (n["level"] in (None, 0) and not n["scaled"])) and depth < 6:
+            got = level_of(n["template"], npcs, lvln, depth + 1)
+            if got:
+                return got
+        if n["scaled"]:
+            mult, lo, hi = n["scaled"]
+            return (lo or 1, hi or 81, f"your level x{mult:g}" + (f" ({lo}-{hi})" if hi else f" (from {lo})"))
+        if n["level"]:
+            return (n["level"], n["level"], f"level {n['level']}")
+        return None
+    if base in lvln:
+        levels = [lv for lv, _ in lvln[base]["entries"]]
+        if not levels:
+            return None
+        return (min(levels), max(levels), f"leveled {min(levels)}-{max(levels)}" if min(levels) != max(levels) else f"leveled from {min(levels)}")
+    return None
+
+
+def build(version):
+    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc = scan()
+    xp, xp_from = clear_xp()
+    kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
+    marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
+    marker_world = lambda m: (cells.get(m["cell"]) or {}).get("world")  # noqa: E731
+
+    def chain(k):
+        out, seen = [], set()
+        while k and k in locs and k not in seen:
+            seen.add(k)
+            out.append(k)
+            k = locs[k]["parent"]
+        return out
+
+    def hold_of(k):
+        return next((locs[x]["name"] for x in chain(k)[1:] if "LocTypeHold" in kname(locs[x]["keywords"]) and locs[x]["name"]), None)
+
+    # Towns are the City and Town map markers themselves (Riverwood's location carries no marker; a farm is a Settlement).
+    towns = [(m["name"], m) for m in markers.values() if not m["deleted"] and m.get("pos") and m["type"] in ("City", "Town") and m["name"]]
+    by_marker_name = collections.defaultdict(list)
+    for m in markers.values():
+        if not m["deleted"] and m["name"]:
+            by_marker_name[m["name"]].append(m)
+    places = {}
+    for k, l in locs.items():
+        if l["deleted"] or not l["name"]:
+            continue
+        names = kname(l["keywords"])
+        # Its map marker: the one the location names, else the one with its own name (when that's the only one).
+        m = marker_of.get(k) or (by_marker_name[l["name"]][0] if len(by_marker_name.get(l["name"], [])) == 1 else None)
+        mtype = (m or {}).get("type")
+        up = chain(k)[1:]
+        inside_town = any((TOWN_KW | {"LocTypeDwelling", "LocTypeHouse", "LocTypePlayerHouse", "LocTypeCastle"}) & kname(locs[x]["keywords"]) for x in up[:1])
+        # A dungeon near a town is often parented to it (Shroud Hearth Barrow to Ivarstead): only a location with no place
+        # keyword or marker of its own is ruled out by its parent.
+        if names & NOT_KW or mtype in NOT_PLACES or (inside_town and not (names & PLACE_KW or mtype)):
+            continue
+        if not (names & PLACE_KW or (mtype and mtype not in NOT_PLACES)):
+            continue
+        kind = mtype or next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or "Landmark"
+        near = None
+        if m and m.get("pos"):
+            best = None
+            for tname, tm in towns:
+                if marker_world(tm) != marker_world(m) or tm is m:
+                    continue
+                dist = sum((a - b) ** 2 for a, b in zip(tm["pos"][:2], m["pos"][:2])) ** 0.5
+                if best is None or dist < best[0]:
+                    best = (dist, tname)
+            if best:
+                near = {"town": best[1], "km": round(best[0] * 0.0142875 / 1000, 1)}  # 1 unit = 1.43 cm
+        # The map's name when it only extends the record's ("Embershard" -> "Embershard Mine"); never another place's (a mod's
+        # Morvunskar Crypts that points at Bleak Falls Barrow's marker keeps its own name).
+        shown = m["name"] if (m or {}).get("name") and l["name"].lower() in m["name"].lower() else l["name"]
+        places[k] = {"id": k, "name": shown, **({"recordName": l["name"]} if shown != l["name"] else {}), "edid": l["edid"], "type": kind, "keywords": sorted(x for x in names if x.startswith("LocType")),
+                     "hold": hold_of(k), "nearestTown": near, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
+    # Actors in each place's cells, and its child locations' (a dungeon's inner levels).
+    owner = {}
+    for k in locs:
+        for x in chain(k):
+            if x in places:
+                owner[k] = x
+                break
+    by_place = collections.defaultdict(list)
+    for a in actors.values():
+        if a["deleted"]:
+            continue
+        pl = owner.get((cells.get(a["cell"]) or {}).get("location"))
+        if pl:
+            by_place[pl].append(a)
+    for k, acts in by_place.items():
+        lv = [x for x in (level_of(a["base"], npcs, lvln) for a in acts) if x]
+        boss = next((a for a in acts if a["boss"]), None)
+        bl = level_of(boss["base"], npcs, lvln) if boss else None
+        places[k]["actors"] = {"count": len(acts), **({"levels": [min(x[0] for x in lv), max(x[1] for x in lv)]} if lv else {}),
+                               # The boss by its own name when it has one; a leveled boss has none, so only its level shows.
+                               **({"boss": {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),
+                                            "level": bl[2] if bl else None}} if boss else {})}
+    for k, p in places.items():
+        x = xp.get(p["type"].lower())
+        if x is not None:
+            p["clearXp"] = x
+    # What points at each place: dialogue and books that name it, on its whole name, case as written.
+    named = collections.defaultdict(list)
+    for k, p in places.items():
+        for nm in {p["name"], p.get("recordName") or p["name"]}:  # the map's name and the record's ("Embershard Mine", "Embershard")
+            if len(nm) >= 5:
+                named[nm].append(k)
+    if named:
+        pat = re.compile(r"\b(" + "|".join(re.escape(x) for x in sorted(named, key=len, reverse=True)) + r")\b")
+
+        def where_npc(npc):
+            c = cells.get(placed_npc.get(npc)) or {}
+            loc = (locs.get(c.get("location")) or {}).get("name")
+            return c.get("name") or loc or None
+
+        for iid, inf in infos.items():
+            text = " ".join(inf["lines"])
+            for nm in set(pat.findall(text)):
+                for k in named[nm]:
+                    places[k].setdefault("pointers", []).append({
+                        "kind": "dialogue", "speaker": (npcs.get(inf["speaker"]) or {}).get("name") if inf["speaker"] else None,
+                        "speakerPlace": where_npc(inf["speaker"]) if inf["speaker"] else None,
+                        "quest": (quests.get(inf["quest"]) or {}).get("name") if inf["quest"] else None,
+                        "words": next((l for l in inf["lines"] if nm in l), text)[:300], "record": f"INFO {iid} ({inf['plugin']})"})
+        for bid, b in books.items():
+            for nm in set(pat.findall(b["text"] or "")):
+                for k in named[nm]:
+                    i = b["text"].find(nm)
+                    places[k].setdefault("pointers", []).append({"kind": "book", "book": b["name"], "words": re.sub(r"<[^>]+>", "", b["text"][max(0, i - 120):i + 160]).strip(),
+                                                                 "record": f"BOOK {bid} ({b['plugin']})"})
+    # Quests that already go there: a location alias that is it (or inside it), or a forced reference standing in it.
+    for qid, q in quests.items():
+        hit = set()
+        for a in q.get("aliases", {}).values():
+            if a.get("location") and owner.get(a["location"]):
+                hit.add(owner[a["location"]])
+            if a.get("ref") and refcell.get(a["ref"]):
+                pl = owner.get((cells.get(refcell[a["ref"]]) or {}).get("location"))
+                if pl:
+                    hit.add(pl)
+        for k in hit if q.get("named") and not HELPER.search(q["name"]) else ():
+            places[k].setdefault("quests", []).append({"quest": q["name"], "id": qid})
+    return places, xp_from
+
+
+def report(places, xp_from):
+    rows = list(places.values())
+    by_type = collections.Counter(p["type"] for p in rows)
+    by_hold = collections.Counter(p.get("hold") or "(none)" for p in rows)
+    pointed = sum(1 for p in rows if p.get("pointers"))
+    quested = sum(1 for p in rows if p.get("quests"))
+    neither = sum(1 for p in rows if not p.get("pointers") and not p.get("quests"))
+    out = ["# The places index (WO-128 Part 1)", "",
+           "Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). "
+           f"Clear XP from `{xp_from}`'s Experience.ini." if xp_from else "Clear XP: no Experience.ini found.", "",
+           f"**{len(rows)} places.** {pointed} have a pointer (a line or a book that names them), {quested} have a quest that goes there, "
+           f"and {neither} have neither.", "", "## By type", "", "| Type | Places | With a pointer | With a quest |", "|---|---|---|---|"]
+    for t, n in by_type.most_common():
+        out.append(f"| {t} | {n} | {sum(1 for p in rows if p['type'] == t and p.get('pointers'))} | {sum(1 for p in rows if p['type'] == t and p.get('quests'))} |")
+    out += ["", "## By hold", "", "| Hold | Places | With a pointer | With a quest |", "|---|---|---|---|"]
+    for h, n in by_hold.most_common():
+        out.append(f"| {h} | {n} | {sum(1 for p in rows if (p.get('hold') or '(none)') == h and p.get('pointers'))} | {sum(1 for p in rows if (p.get('hold') or '(none)') == h and p.get('quests'))} |")
+    return "\n".join(out) + "\n"
+
+
+RECORD_NAME = re.compile(r"_|^[A-Za-z]+[a-z][A-Z]\w*$")  # an editor id, not a name ("EGD_DialogueGuardsGeneral", "dunGeirmundQST")
+
+
+def plugin_of(record):
+    """The plugin a pointer's record comes from: "INFO Skyrim.esm:01AACA (Unofficial Skyrim Special Edition Patch.esp)" -> the last."""
+    return record[record.rfind("(") + 1:-1] if record.endswith(")") and "(" in record else None
+
+
+def build_site(rows):
+    """The planner's places.json from the raw rows: what a page or an assistant shows, without record ids or editor ids."""
+    out = []
+    for p in rows:
+        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "clearXp") if p.get(k) is not None}
+        if p.get("actors"):
+            r["actors"] = p["actors"]
+        if p.get("pointers"):
+            r["pointers"] = [{k: v for k, v in {"kind": x["kind"], "speaker": x.get("speaker"), "speakerPlace": x.get("speakerPlace"),
+                                                "book": x.get("book"), "words": x["words"],
+                                                "quest": x.get("quest") if x.get("quest") and not RECORD_NAME.search(x["quest"]) else None,
+                                                "from": plugin_of(x["record"])}.items() if v}
+                             for x in p["pointers"]]
+        if p.get("quests"):
+            r["quests"] = sorted({q["quest"] for q in p["quests"]})
+        out.append(r)
+    return out
+
+
+def main():
+    version = sys.argv[1] if len(sys.argv) > 1 else "5.0.4.8"
+    places, xp_from = build(version)
+    base = os.path.join(REPO, "gamedata", version)
+    rows = sorted(places.values(), key=lambda p: (p.get("hold") or "~", p["name"]))
+    with open(os.path.join(base, "places_raw.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump({"about": __doc__.strip().splitlines()[0], "places": rows}, f, indent=1, ensure_ascii=False)
+        f.write("\n")
+    with open(os.path.join(base, "places_report.md"), "w", encoding="utf-8", newline="\n") as f:
+        f.write(report(places, xp_from))
+    print(f"{len(rows)} places, {sum(1 for p in rows if p.get('pointers'))} with a pointer, {sum(1 for p in rows if p.get('quests'))} with a quest -> places_raw.json")
+
+
+if __name__ == "__main__":
+    main()
