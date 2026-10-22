@@ -4947,6 +4947,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - **For Bob, from the screenshot:** the sentence shows twice, under How to start it (the opening's way in) and in the Quests block. Its label under How to start it says "game files", though the words are your class sentence. Say if How to start it should say "the planner's class sentence" or drop the line.
 - [ ] `npm run test:questions` still passes; every check in CLAUDE.md passes. Push staging and stop for Bob.
 
+- [ ] **Stop sending `raw` through the door (Bob, 22 Oct, after reading Deathbrand and The Cursed Tribe on the live planner).** `get_quest` still sends `start.raw` with condition functions ("GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Orc == 1"), editor-ish words ("Through DLC2Init (named \"Init quest\" in its record)") and the lines WO-130 removed from `ways`. Every fact in it is already in `ways` and `needs` in the game's words, so an assistant that reads `raw` can only repeat something a player shouldn't see. Remove `raw` from `get_quest`, `get_quest_start` and every tool output; keep it in the data files and on `/admin`. Test that no tool output holds `raw`, `GetInFaction`, `GetIsRace`, `== 1`, or "Init quest".
 ---
 
 ## WO-135  The player's questions: the test nothing counts as done without (Mac, 22 Oct 2026)
