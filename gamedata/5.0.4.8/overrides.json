@@ -372,5 +372,14 @@
         "Joslin's horse"
       ]
     }
+  },
+  "questClasses": {
+    "_note": "WO-136 ruling 3: a kind of job a board, a courier or a radiant dispatcher hands out, said once for the class, not per quest. By line id: {name, says, boards}. A quest of the class the start check hasn't traced is checked as a class, with this sentence; boards is the boards the records place, null until the PC's check reads them.",
+    "missives": {
+      "_source": "WO-136 ruling 3, Bob, 22 Oct 2026",
+      "name": "Jobs from a board",
+      "says": "Missives: take a missive from the notice board in any hold's capital or a courier's request; each is a short delivery.",
+      "boards": null
+    }
   }
 }

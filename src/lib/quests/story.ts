@@ -69,8 +69,8 @@ export function mainFromStory(order: string[], edid: string | null, mainOrder: s
   return null;
 }
 
-/** "game files", or "not checked yet": the label a fact carries. */
-export const checkedLabel = (c: StoryChecked | Checked | undefined) => (c === "not yet" ? "not checked yet" : "game files");
+/** "game files", or "not checked yet": the label a fact carries; a start the answer key confirmed names its wiki (WO-136). */
+export const checkedLabel = (c: StoryChecked | Checked | "uesp" | undefined, source?: string) => (c === "not yet" ? "not checked yet" : c === "uesp" ? (source ?? "UESP") : "game files");
 
 /** "None: the last quest gives no item." -> the big part and the note under it. */
 export function splitReward(text: string): { head: string; note: string | null } {

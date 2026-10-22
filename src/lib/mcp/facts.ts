@@ -9,6 +9,7 @@ import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder, type Story } from "@/lib/quests/story";
 import { openFor, questNames, type PlayerState } from "@/lib/quests/open";
 import type { Quest, QuestLine, QuestStart } from "@/lib/quests/types";
+import { startChecked } from "@/lib/quests/types";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 
 /**
@@ -213,7 +214,7 @@ function startOf(q: Quest | undefined): {
   raw?: QuestStart["raw"];
 } {
   const st = q?.start;
-  if (!st || st.checked !== "files") return {};
+  if (!st || !startChecked(st)) return {};
   const ways = st.ways?.length
     ? st.ways.map((w) => ({
         way: w.how,
@@ -276,7 +277,12 @@ function questFacts(q: Quest) {
   return {
     edid: q.edid,
     name: q.name,
-    start: { checked: q.start?.checked ?? "not yet", ...startOf(q), ...(q.start?.checked === "files" && q.start.needs?.length ? { needs: q.start.needs } : {}) },
+    start: {
+      // A start the answer key confirmed (WO-136 ruling 2) says it's from the wiki, with the page.
+      checked: q.start?.checked === "uesp" ? `from ${q.start.source ?? "UESP"}, confirmed in the planner's answer key${q.start.url ? ` (${q.start.url})` : ""}` : (q.start?.checked ?? "not yet"),
+      ...startOf(q),
+      ...(startChecked(q.start) && q.start?.needs?.length ? { needs: q.start.needs } : {}),
+    },
     objectives: q.objectives,
     endings: q.endings.map((e) => ({ stage: e.stage, ends: e.fails ? ("fails" as const) : ("completes" as const), ...(e.text ? { text: e.text } : {}), ...(e.when ? { when: e.when } : {}) })),
     ...(q.endings.length ? {} : { note: "The records flag no ending for this quest. Don't say how it ends." }),
@@ -330,6 +336,8 @@ export function getQuest({ id, name }: { id?: string; name?: string }, version =
   return {
     ...(found ? { found } : {}),
     ...questStart(l, s1),
+    // A job from a board (WO-136 ruling 3): the class's one sentence, said once, and where the boards are.
+    ...(l.board && q.start?.board ? { jobFromABoard: { says: l.board.says, boards: l.board.boards ?? "Where the boards are isn't checked yet. Don't name one." } } : {}),
     quest: questFacts(q),
     // Open for you (WO-115 Part 3): only when the player said where they are.
     ...(player ? { openForYou: openForYou(l, q, player, version) } : {}),

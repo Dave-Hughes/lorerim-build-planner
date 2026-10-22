@@ -42,7 +42,7 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   expect(honor.openForYou.state).toBe("unknown");
   expect(honor.openForYou.says).toMatch(/^unknown: /);
   // A quest whose start isn't checked is unknown through the door, never open (WO-115 Part 4).
-  const unchecked = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { id: "yngols-barrow", level: 40 } })));
+  const unchecked = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { id: "on-hogithum", level: 40 } })));
   expect(unchecked.openForYou).toMatchObject({ state: "unknown", says: "unknown: the start isn't checked yet" });
   expect(textOf(await client.callTool({ name: "get_style_guide", arguments: {} }))).toContain("Unknown means say unknown.");
   expect(JSON.parse(textOf(await client.callTool({ name: "check_progression", arguments: { build: plan } })))).toMatchObject({ levels: 6 });

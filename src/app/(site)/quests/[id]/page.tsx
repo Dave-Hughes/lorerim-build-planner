@@ -13,6 +13,7 @@ import { storyOfLine } from "@/lib/quests/stories-data";
 import { fromLabel } from "@/lib/quests/words";
 import { siteMetadata } from "@/lib/og/metadata";
 import type { Quest, QuestLine } from "@/lib/quests/types";
+import { startChecked } from "@/lib/quests/types";
 import styles from "@/components/quests/quests.module.css";
 
 export const dynamic = "force-dynamic";
@@ -62,13 +63,14 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
     .filter((l): l is QuestLine => !!l)
     .map((l) => ({ id: l.id, name: l.name, home: homeName(l.category), where: l.where, source: l.sources.map((s) => s.name).join(", "), begins: l.begins, quoted: l.beginsFrom === "opening" }));
   const opening = line.quests.find((q) => q.edid === line.opening);
-  const story = [...(opening && opening.xp > 0 ? [opening] : []), ...line.quests.filter((q) => q.xp > 0 && q !== opening)];
-  const jobs = line.quests.filter((q) => q.xp === 0);
+  // A line of jobs from a board lists them once, as the class, not one by one (WO-136 ruling 3): no story rows, no job rows.
+  const story = line.board ? [] : [...(opening && opening.xp > 0 ? [opening] : []), ...line.quests.filter((q) => q.xp > 0 && q !== opening)];
+  const jobs = line.board ? [] : line.quests.filter((q) => q.xp === 0);
   const rewards = line.quests.filter((q) => q.rewards);
   const sibs = siblings(line);
   const checkedFrom = (k: keyof QuestLine["checked"]) => fromLabel(line.checked[k]);
   const giverFrom = line.giver?.source === "uesp" ? "UESP" : "game files";
-  const waysIn = line.ways ?? (opening?.start?.checked === "files" ? opening.start.ways : undefined);
+  const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const told = storyOfLine(line.id);
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>
@@ -238,6 +240,16 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                     <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} start={q.start} />
                   ))}
                 </ul>
+              </div>
+            )}
+            {line.board && (
+              <div className={styles.group}>
+                <div className={styles.ghead}>
+                  <h3>{line.board.name}</h3>
+                  <span>{line.quests.length} jobs</span>
+                </div>
+                <p>{line.board.says}</p>
+                <p className="muted">{line.board.boards?.length ? `Where the boards are: ${line.board.boards.join("; ")}.` : "Where the boards are isn't checked yet."}</p>
               </div>
             )}
             {jobs.length > 0 && (

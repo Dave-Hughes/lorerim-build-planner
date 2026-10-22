@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { checkedLabel } from "@/lib/quests/story";
 import type { QuestEnding, QuestStart } from "@/lib/quests/types";
+import { startChecked } from "@/lib/quests/types";
 import styles from "./quests.module.css";
 
 /**
@@ -69,7 +70,7 @@ function Starts({ start }: { start: QuestStart }) {
   return (
     <details className={styles.ends}>
       <summary>How it starts</summary>
-      {start.checked !== "files" ? (
+      {!startChecked(start) ? (
         <p className="muted">Its start isn&apos;t checked yet.</p>
       ) : (
         <>
@@ -94,7 +95,7 @@ function Starts({ start }: { start: QuestStart }) {
               {start.thenWhere ? ` at ${start.thenWhere}` : ""}
             </p>
           )}
-          <span className={styles.src}>{checkedLabel(start.checked)}</span>
+          <span className={styles.src}>{checkedLabel(start.checked, start.source)}</span>
         </>
       )}
     </details>

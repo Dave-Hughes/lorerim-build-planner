@@ -66,7 +66,13 @@ export interface QuestStart {
   thenWho?: string;
   who?: string;
   where?: string;
-  checked: "files" | "not yet";
+  /** "uesp": not settled by the start check, but a row in Bob's answer key confirms it (WO-136 ruling 2); `source` names the wiki. */
+  checked: "files" | "uesp" | "not yet";
+  /** Where a "uesp" start was confirmed: "UESP", or "Nexus" for a mod's page, with the page. */
+  source?: "UESP" | "Nexus";
+  url?: string;
+  /** A job from a board (WO-136 ruling 3): checked as its class, in the class's one sentence (the line's `board`). */
+  board?: true;
   /**
    * The same needs and ways as the start check writes them, record form and all (WO-126): what the
    * open-or-locked judge reads, and what get_quest hands an assistant. Pages show only the words.
@@ -99,6 +105,8 @@ export interface QuestLine {
   /** A line with more than one opening quest (the Civil War's two sides): each opening's way in (WO-121b). */
   ways?: QuestStart["ways"];
   firstObjective?: string;
+  /** A line of jobs from a board (WO-136 ruling 3): the class's one sentence, the boards the records place (null until read), and how many of its quests it covers. */
+  board?: { name: string; says: string; boards: string[] | null; jobs: number };
   quests: Quest[];
   xpTotal: number;
 }
@@ -122,3 +130,6 @@ export interface LineGate {
   after: string[];
   mainQuestAt?: string;
 }
+
+/** Whether a quest's start is checked (WO-136 ruling 2): traced in the game files, or confirmed by the answer key from the wiki. */
+export const startChecked = (start: Pick<QuestStart, "checked"> | undefined) => start?.checked === "files" || start?.checked === "uesp";

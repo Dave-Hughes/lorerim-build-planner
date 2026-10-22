@@ -170,7 +170,8 @@ export function openFor(
   /** The quest before it in its line, if it isn't the line's first: a talk that opens it can hang on that one, in ways the check can't see. */
   prior: { edid: string; name: string } | null = null,
 ): { state: OpenState; because: string[] } {
-  if (!quest.start || quest.start.checked !== "files") return { state: "unknown", because: ["the start isn't checked yet"] };
+  // Traced in the files, or confirmed by the answer key (WO-136 ruling 2).
+  if (!quest.start || (quest.start.checked !== "files" && quest.start.checked !== "uesp")) return { state: "unknown", because: ["the start isn't checked yet"] };
   // The record form (WO-126): the words are for players, the stages and counts for judging.
   const verdicts = (quest.start.raw?.needs ?? quest.start.needs ?? []).map((n) => judge(n, names, p));
   if (prior && !p.done.has(prior.edid)) verdicts.push(unknown(`comes after ${prior.name || prior.edid}, and the planner hasn't been told that's done`));

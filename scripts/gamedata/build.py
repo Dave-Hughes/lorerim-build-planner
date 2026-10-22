@@ -478,7 +478,9 @@ def main():
         # WO-131 Part 2: where each read-this item is, from the PC's readables file.
         readables_file = os.path.join(RAW, "story_checks", "readables-2026-10-21.json")
         readables = json.load(open(readables_file, encoding="utf-8"))["items"] if os.path.exists(readables_file) else []
-        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables)
+        # WO-136 ruling 2: a quest with a row in Bob's answer key counts as checked, from the wiki.
+        truth = load("quest_truth.json")["quests"] if os.path.exists(os.path.join(RAW, "quest_truth.json")) else []
+        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables, truth, overrides.get("questClasses", {}))
         # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
         said = {q["edid"]: json.dumps(q["start"].get("ways", []), ensure_ascii=False) for l in pages for q in l["quests"]}
         for edid, words in wording.items():
@@ -492,8 +494,8 @@ def main():
             json.dump({"categories": cur["categories"], "shelves": cur.get("shelves", {}), "lines": pages}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(pages)} quest lines, {sum(len(l['quests']) for l in pages)} quests, {sum(1 for l in pages if 'giver' in l)} with a giver -> quests.json")
-        starts = [q["start"]["checked"] for l in pages for q in l["quests"]]
-        print(f"{len(checks)} lines checked: {starts.count('files')} quest starts checked from the files, {starts.count('not yet')} not yet")
+        starts = [q["start"]["checked"] if not q["start"].get("board") else "board" for l in pages for q in l["quests"]]
+        print(f"{len(checks)} lines checked: {starts.count('files')} quest starts checked from the files, {starts.count('board')} as a job from a board, {starts.count('uesp')} from the answer key, {starts.count('not yet')} not yet")
         # Who starts a quest, against Bob's answer key (WO-121): a row that fails stops the build.
         if os.path.exists(os.path.join(RAW, "quest_truth.json")):
             import unittest

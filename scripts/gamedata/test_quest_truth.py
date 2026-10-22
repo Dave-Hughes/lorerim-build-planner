@@ -103,6 +103,18 @@ class QuestTruth(unittest.TestCase):
                 passing.append(name)
         self.assertEqual(passing, [], "These pass now: take them out of WAITING_ON_BOB.")
 
+    def test_a_key_row_counts_as_checked(self):
+        """WO-136 ruling 2: a quest with a row in the key is never "not yet"; one the check didn't settle names the wiki."""
+        with open(TRUTH, encoding="utf-8") as f:
+            truth = json.load(f)["quests"]
+        quests = by_edid()
+        unchecked = [r["quest"] for r in truth if r["editorId"].lower() in quests and (quests[r["editorId"].lower()].get("start") or {}).get("checked", "not yet") == "not yet"]
+        self.assertEqual(unchecked, [])
+        yngol = quests["dunyngolbarrowqst"]["start"]
+        self.assertEqual((yngol["checked"], yngol["source"], yngol["ways"], yngol["then"]), ("uesp", "UESP", [{"how": "No one gives it"}], "Explore Yngol's Barrow"))
+        ralforn = quests["aaambquest"]["start"]
+        self.assertEqual((ralforn["checked"], ralforn["source"], ralforn["who"]), ("uesp", "Nexus", "Ralforn"))
+
     def test_no_who_is_a_thing(self):
         things = re.compile(r"\b(claw|door|passage|marker|chest|book|note|letter|cell|xmarker|trigger)\b", re.IGNORECASE)
         bad = [f"{q['name']}: {q['start']['who']}" for q in by_edid().values() if (q.get("start") or {}).get("who") and things.search(q["start"]["who"])]

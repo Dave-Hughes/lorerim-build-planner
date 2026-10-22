@@ -640,7 +640,7 @@ RECORD_ID = re.compile(r"[A-Za-z]+_[A-Za-z]|^cc|esp:|esm:|esl:")
 def page_texts(o, key=None):
     """Every text a quest page or the door shows a player: everything but the ids, raw and a journal entry's record condition (its ending says when)."""
     if isinstance(o, dict):
-        return [t for k, v in o.items() if k not in ("id", "edid", "opening", "alsoOpening", "after", "raw") and not (k == "when" and "stage" not in o)
+        return [t for k, v in o.items() if k not in ("id", "edid", "opening", "alsoOpening", "after", "raw", "url") and not (k == "when" and "stage" not in o)
                 for t in page_texts(v, k)]
     if isinstance(o, list):
         return [t for v in o for t in page_texts(v, key)]
@@ -728,6 +728,24 @@ class ReadablesTest(unittest.TestCase):
         start = {"ways": [{"how": "Read A Note"}, {"how": "Read Lost Page"}, {"how": "Talk to Vex"}]}
         out = qp.placed_ways(start, "Q", {("Q", "A Note"): ["Riften"], ("Q", "Lost Page"): []})
         self.assertEqual(out["ways"], [{"how": "Read A Note", "whereIs": ["Riften"]}, {"how": "Read Lost Page", "unplaced": "Where to find Lost Page isn't checked yet."}, {"how": "Talk to Vex"}])
+
+
+class LoopRulingsTest(unittest.TestCase):
+    """WO-136: a key row counts as checked (ruling 2), and a counter the game sets at run time isn't shown (ruling 6)."""
+
+    def test_a_key_row_makes_an_unchecked_start_checked_from_the_wiki(self):
+        row = {"editorId": "X", "noGiver": True, "startsWith": [], "firstObjective": "Explore it", "url": "https://en.uesp.net/wiki/Skyrim:X"}
+        self.assertEqual(qp.from_key({"needs": [], "checked": "not yet"}, row),
+                         {"needs": [], "checked": "uesp", "source": "UESP", "url": row["url"], "then": "Explore it", "ways": [{"how": "No one gives it"}]})
+        mod = {"editorId": "Y", "startsWith": ["Ralforn"], "firstObjective": "Escape", "url": "https://www.nexusmods.com/skyrimspecialedition/mods/1"}
+        self.assertEqual(qp.from_key({"checked": "not yet"}, mod)["source"], "Nexus")
+        self.assertEqual(qp.from_key({"checked": "not yet"}, mod)["who"], "Ralforn")
+        traced = {"checked": "files", "then": "Mine"}
+        self.assertIs(qp.from_key(traced, row), traced)
+
+    def test_a_run_time_counter_is_left_out(self):
+        self.assertEqual(qp.fill_text("Gather <Alias=Item> (<Global=CountX>/<Global=TotalX>)", {}, {"countx": 0, "totalx": 0}), "Gather the item")
+        self.assertEqual(qp.fill_text("Distribute it (<Global=Done>/<Global=Need>)", {}, {"done": 0, "need": 20}), "Distribute it (0/20)")
 
 
 if __name__ == "__main__":

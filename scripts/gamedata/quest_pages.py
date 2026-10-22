@@ -274,6 +274,9 @@ def plain_alias(name):
     return "the " + " ".join(words)
 
 
+_COUNTER = re.compile(r"\s*\(<Global=[^<>]+>\s*/\s*<Global=([^<>]+)>\)", re.IGNORECASE)
+
+
 def fill_text(text, fills, globals_):
     """
     A text with its tags filled: the quest's own fills (quests.py, from the records), a global's value by its EDID, a
@@ -283,6 +286,9 @@ def fill_text(text, fills, globals_):
         return text
     text = _OPEN.sub(r"<\1>", text)  # a tag the record never closes: "Deliver <Alias=Item by ..."
     text = _DATE.sub("the set date", text)
+    # A counter whose total the game sets when the job is given reads "(0/0)" from the records (WO-136 ruling 6: the Gather
+    # jobs, Retaking Thirsk's rieklings): no counter. One the records set keeps it ("(0/20)").
+    text = _COUNTER.sub(lambda m: "" if not globals_.get(m.group(1).strip().lower()) else m.group(0), text)
 
     def sub(m):
         tag, kind, part, name = m.group(0), m.group(1).lower(), (m.group(2) or "").lower(), m.group(3).strip()
@@ -1191,7 +1197,26 @@ def placed_ways(start, quest_name, places):
     return {**start, "ways": ways} if start.get("ways") else start
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None, readables=None):
+def from_key(start, row):
+    """
+    A quest the start check hasn't settled, with a row in Bob's answer key (WO-136 ruling 2): the key's starter, confirmed
+    from the wiki, makes it checked, with the source named (UESP, or the mod's Nexus page). Its giver and first step are the
+    key's; a no-giver row has no one to talk to and says so. A start the check settled is left as it is.
+    """
+    if not row or start.get("checked") != "not yet":
+        return start
+    url = row.get("url") or ""
+    out = {**start, "checked": "uesp", "source": "Nexus" if "nexusmods" in url else "UESP", **({"url": url} if url else {})}
+    out["then"] = row["firstObjective"]
+    if row.get("noGiver"):
+        out = {k: v for k, v in out.items() if k not in ("who", "where", "thenWho", "thenWhere")}
+        out["ways"] = out.get("ways") or [{"how": "No one gives it"}]
+    elif len(row.get("startsWith", [])) == 1 and not start.get("who"):
+        out["who"] = row["startsWith"][0]
+    return out
+
+
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None, readables=None, truth=None, classes=None):
     """
     The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a
     player's words (WO-126), with the check's own form kept in start.raw for the open-or-locked judge and assistants;
@@ -1200,6 +1225,8 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
     """
     checks, globals_, wording, called = checks or {}, globals_ or {}, wording or {}, called or {}
     places = read_places(readables)
+    keyed = {r["editorId"].lower(): r for r in truth or []}
+    classes = {k: v for k, v in (classes or {}).items() if not k.startswith("_")}
     say = Words(quests_raw, globals_)
     raws = {}
     towns = towns if towns is not None else towns_of(givers_raw)
@@ -1255,6 +1282,11 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             if ov.get("_checked") == "players":
                 put = {v for k, v in ov.items() if not k.startswith("_")}
                 start["ways"] = [{**w, "checked": "players", "source": ov["_source"]} if w["how"] in put else w for w in start.get("ways", [])]
+            start = from_key(start, keyed.get(q["edid"].lower()))
+            # A job from a board (WO-136 ruling 3): one the check hasn't traced is checked as its class, in the class's words.
+            kind = classes.get(line["id"])
+            if kind and start.get("checked") == "not yet":
+                start = {"needs": [], "ways": [{"how": kind["says"]}], "checked": "files", "board": True, **({"then": start["then"]} if start.get("then") else {})}
             if q["edid"] in FIRST_STEPS:
                 start = {k: v for k, v in start.items() if k not in ("thenWhere", "thenWho")}
                 start["then"] = FIRST_STEPS[q["edid"]][0]
@@ -1281,6 +1313,10 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                 }, q.get("fills", {}), globals_)
             )
         item["quests"] = quests
+        # The class's sentence once for the line, with how many of its quests it covers (WO-136 ruling 3).
+        if classes.get(line["id"]):
+            kind = classes[line["id"]]
+            item["board"] = {"name": kind["name"], "says": kind["says"], "boards": kind.get("boards"), "jobs": sum(1 for q in quests if q["start"].get("board"))}
         # The line's giver (WO-121): its opening quest's who; else the records' named giver, only when the
         # check found no one to talk to; else none, and the line page shows the opening quest's ways.
         first_start = next((q["start"] for q in quests if q["edid"] == line["opening"]), {})
