@@ -37,6 +37,8 @@ FIXED = {
     "the-heart-of-dibella": {"noGiver": True, "startsWith": [], "firstObjective": "Enter the Temple of Dibella"},
     "heart-of-the-reach": {"startsWith": ["Gwilym"], "where": "Silver-Blood Inn, Markarth", "firstObjective": "Travel to Ever-Bog"},
     "capital-whiterun": {"noGiver": True, "startsWith": [], "firstObjective": "Read the Message"},
+    # Bob's third look, 22 Oct, on the PC's traces.
+    "mjoll": {"startsWith": ["Mjoll the Lioness"], "where": "with Aerin, Riften", "firstObjective": "Clear the dungeon with Aerin and Mjoll"},
 }
 # A row the key held for a quest the line no longer opens with, pointed at the line's opening (as Dawnguard's was).
 REPOINT = {"DA14": "DA14Start"}

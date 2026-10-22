@@ -1163,14 +1163,6 @@
       ]
     },
     {
-      "id": "trius-trinket",
-      "name": "Trius' Trinket",
-      "category": "side",
-      "quests": [
-        "dunShipwreck04QST"
-      ]
-    },
-    {
       "id": "infiltration",
       "name": "Infiltration",
       "category": "side",
@@ -2209,6 +2201,7 @@
     "New Beginnings - Alternate Perspective Extension": "A start: it's on the build's start step."
   },
   "droppedQuests": {
+    "dunShipwreck04QST": "Trius' Trinket. Bob, 22 Oct (WO-121b): it starts on entering Pilgrim's Trench, but nothing shows its second objective and Trius never appears, so it can't be finished. Off the lists and out of what assistants suggest; the record stays.",
     "MQReserved": "A placeholder.",
     "DialogueTutorial": "A tutorial holder.",
     "TG00ArrestMonitor": "Machinery.",

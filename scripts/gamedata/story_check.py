@@ -1225,7 +1225,9 @@ def main():
         if al is not None:
             a, who, ref = alias_holder(tq, al)
             if a:
-                if not who and alias_words(tq, a):
+                # Filled at run time from a place and a role, or a placed reference with no name of its own (WO-121b:
+                # Blood on the Ice's investigating guard): "a Windhelm guard".
+                if not names.get(who, {}).get("name") and alias_words(tq, a):
                     words_of[iid] = alias_words(tq, a)
                 return who, f"alias {a['name']} of {quest_label(tq, names)} ({a['fill']})", None, ref
         for sc in scenes.get(topic.get("id"), []):
@@ -1526,7 +1528,7 @@ def main():
             d = dialogue.get(ctx["info"], {})
             started = [starter_row(c, e, 1) for c, e in events if scene and depth == 0 and e["call"] == "StartScene" and e.get("scene") == scene][:4]
             after = rumours(ctx["info"]) if depth == 0 else []
-            return {**({"after": after} if after else {}), "by": "dialogue", "speaker": names.get(spk, {}).get("name") if spk else words_of.get(ctx["info"]), "speakerNamed": how,
+            return {**({"after": after} if after else {}), "by": "dialogue", "speaker": (names.get(spk, {}).get("name") if spk else None) or words_of.get(ctx["info"]), "speakerNamed": how,
                     "speakerPlaced": npc_where(spk) if spk else [], "call": ev["call"] + stage, "info": ctx["info"],
                     "prompt": d.get("prompt") or (d.get("topic") or {}).get("prompt") or None,
                     "reply": d.get("lines") or dialogue.get(d.get("shared") or "", {}).get("lines") or [],

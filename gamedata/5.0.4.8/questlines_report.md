@@ -1,6 +1,6 @@
 # Quest lines, curated
 
-152 lines from 1243 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
+151 lines from 1242 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
 
 Six categories, each line in one (its home) and maybe others (also). Repeatable work is a shelf of its own, not a category.
 
@@ -10,7 +10,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 | Guilds and factions | Join a guild or a side and work your way up | 9 | 3 |
 | Daedric Princes | Quests for the Daedric Princes, most ending in an artifact | 17 | 3 |
 | New lands | Quests that take you to places outside Skyrim | 18 | 4 |
-| Side stories | Shorter quests in towns, ruins and on the road | 80 | 0 |
+| Side stories | Shorter quests in towns, ruins and on the road | 79 | 0 |
 | Followers | Quests that come from your followers | 12 | 2 |
 | Jobs and errands | Notice boards, bounties and favours for townsfolk | 13 | 0 |
 
@@ -44,7 +44,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 - **Erik the Slayer**: the opening quest has no plain journal entry; shows its first objective.
 - **The Bonds of Matrimony**: the opening quest has no plain journal entry; shows its first objective.
 
-**No facts checked yet** (87): The Bards College, Penitus Oculatus, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Trius' Trinket, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, Windhelm, expanded, Whiterun, expanded, Markarth Side, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
+**No facts checked yet** (86): The Bards College, Penitus Oculatus, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, Windhelm, expanded, Whiterun, expanded, Markarth Side, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
 
 ## Main stories
 
@@ -745,14 +745,6 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 - Quests: The Lost Expedition
 
-### Trius' Trinket
-
-1 quest | Skyrim
-
-> Trius has asked me to search the wreck below for a jewelry box.  Any other loot I find is mine.
-
-- Quests: Trius' Trinket
-
 ### Infiltration
 
 1 quest | Skyrim | Treva's Watch
@@ -1444,4 +1436,4 @@ Installed, but the crawl kept no quest for them (no journal text it could read, 
 - Snazzy Misc Locations: A home to buy, not a quest.
 - Adventurer's Start - An Alternate Perspective Addon: A start: it's on the build's start step.
 - New Beginnings - Alternate Perspective Extension: A start: it's on the build's start step.
-- 24 base-game quests: roadside encounters, children's games, monitors and placeholders (listed in `questlines.json`).
+- 25 base-game quests: roadside encounters, children's games, monitors and placeholders (listed in `questlines.json`).

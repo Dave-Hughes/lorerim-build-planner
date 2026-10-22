@@ -439,6 +439,58 @@ def start_texts(start):
     return [start] if isinstance(start, str) else []
 
 
+class ThirdLookTest(unittest.TestCase):
+    """WO-121b: Bob's calls on the PC's traces, 22 Oct."""
+
+    def test_a_talk_only_for_some_players_doesnt_set_everyones_first_step(self):
+        objectives = [{"index": 5, "text": "Read the letter from Largashbur"}, {"index": 20, "text": "Speak with Yamarz"}]
+        larak = {"by": "dialogue", "speaker": "Chief Larak", "call": "SetStage 5", "conditions": "GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Orc == 1"}
+        atub = {"by": "dialogue", "speaker": "Atub", "speakerPlaced": ["Largashbur Longhouse, Largashbur's Longhouse"], "call": "SetStage 20"}
+        row = {"name": "The Cursed Tribe", "startedBy": [larak, atub], "firstObjectiveStage": 5, "firstObjective": {"index": 5, "text": objectives[0]["text"]},
+               "objectivesShown": {"5": 5, "20": 20}, "target": [], "needs": {}}
+        start = qp.start_of(row, {}, objectives=objectives, say=qp.Words())
+        self.assertEqual((start["who"], start["where"], start["then"]), ("Atub", "Largashbur Longhouse", "Speak with Yamarz"))
+        self.assertEqual(start["ways"][0]["needs"], ["You're in the Blood-Kin of the Orcs or an Orc"])
+
+    def test_a_traced_book_leads_and_names_no_giver(self):
+        book = {"by": "book", "call": "SetStage 1", "plain": "Read Ruminations on the Elder Scrolls"}
+        urag = {"by": "dialogue", "speaker": "Urag gro-Shub", "speakerPlaced": ["The Arcanaeum"], "call": "SetStage 10", "prompt": "Where did he go?"}
+        objectives = [{"index": 5, "text": "Ask Urag about the insane book"}, {"index": 10, "text": "Find Septimus Signus"}]
+        row = {"name": "Discerning the Transmundane", "startedBy": [book, urag, {"by": "start game"}], "firstObjectiveStage": 5,
+               "firstObjective": {"index": 5, "text": objectives[0]["text"]}, "objectivesShown": {"5": 5, "10": 10}, "target": [], "needs": {}}
+        start = qp.start_of(row, {}, objectives=objectives, say=qp.Words())
+        self.assertEqual([w["how"] for w in start["ways"]], ["Read Ruminations on the Elder Scrolls", 'Ask Urag gro-Shub "Where did he go?" in The Arcanaeum'])
+        self.assertNotIn("who", start)
+        self.assertEqual(start["then"], "Ask Urag about the insane book")
+
+    def test_a_start_game_helper_that_holds_the_giver_and_opens_from_its_stage(self):
+        mjoll = {"by": "quest script", "quest": "aaMjollAerinQIntro, a helper quest with Mjoll, Aerin", "atStage": 20, "call": "SetStage 10", "throughStartedBy": [{"by": "start game"}]}
+        giver = {"name": "Mjoll the Lioness", "place": "Aerin's House, Riften"}
+        start = qp.start_of({"name": "Aerin the Man", "startedBy": [mjoll], "target": [], "needs": {}}, {}, giver, say=qp.Words())
+        self.assertEqual((start["who"], start["where"]), ("Mjoll the Lioness", "Aerin's House, Riften"))
+        self.assertEqual(start["ways"], [{"how": "Talk to Mjoll the Lioness in Aerin's House, Riften"}])
+        # A helper a player knows by name stays that quest, even holding the giver.
+        love = {"by": "quest script", "quest": 'T02 (named "The Book of Love" in its record), a helper quest with Dinya', "atStage": 20, "throughStartedBy": [{"by": "start game"}]}
+        self.assertEqual(qp.way_words(love, "Spread the Love", {}, qp.Words(), {"name": "Dinya Balu"}), [("Through The Book of Love", [])])
+
+    def test_a_patchs_catch_up_quest_is_no_way_in(self):
+        usk = {"by": "quest script", "quest": 'USKPRetroactive12 (named "Retroactive fixes for 1.2" in its record), a helper quest', "throughStartedBy": [{"by": "start game"}]}
+        self.assertEqual(qp.way_words(usk, "Blood's Honor", {}, qp.Words()), [])
+        # A quest only the patch's helpers reach isn't traced: its page says so.
+        version = {"by": "quest script", "quest": "USKPVersionTracking, a helper quest", "throughStartedBy": [{"by": "start game"}]}
+        start = qp.start_of({"name": "Containment", "startedBy": [usk, version], "target": [], "needs": {}}, {}, say=qp.Words())
+        self.assertEqual(start["checked"], "not yet")
+
+    def test_a_place_named_twice_is_named_once(self):
+        self.assertEqual(qp.clean_place("Largashbur Longhouse, Largashbur's Longhouse"), "Largashbur Longhouse")
+
+    def test_trius_trinket_is_off_the_lists(self):
+        with open(QUESTS, encoding="utf-8") as f:
+            data = json.load(f)
+        self.assertNotIn("trius-trinket", [l["id"] for l in data["lines"]])
+        self.assertNotIn("dunShipwreck04QST", [q["edid"] for l in data["lines"] for q in l["quests"]])
+
+
 class PlayersWordsTest(unittest.TestCase):
     """WO-126: quest starts in players' words."""
 
@@ -547,7 +599,7 @@ class BuiltStartsTest(unittest.TestCase):
         self.assertIn({"how": 'Ask Farengar Secret-Fire "So what do you need me to do?" in Dragonsreach', "needs": ["GetItemCount Dragonstone >= 1"]}, start["raw"]["ways"])
 
     def test_no_start_shows_a_raw_condition_an_editor_id_or_a_declining_line(self):
-        self.assertEqual(len(self.quests), 1243)
+        self.assertEqual(len(self.quests), 1242)  # 1,243 less Trius' Trinket, off the lists (WO-121b, Bob 22 Oct)
         leaks = [(q["name"], t) for q in self.quests for t in start_texts(q["start"]) if LEAK.search(t)]
         self.assertEqual(leaks, [])
         declines = [(q["name"], w["how"]) for q in self.quests for w in q["start"].get("ways", []) if qp._DECLINES.search((re.search(r'"(.*)"', w["how"]) or [None, ""])[1])]

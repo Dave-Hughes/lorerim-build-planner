@@ -1439,6 +1439,18 @@
    "noGiver": true,
    "startsWith": [],
    "firstObjective": "Read the Message"
+  },
+  {
+   "quest": "Aerin the Man",
+   "editorId": "aaMjollAerinQ",
+   "line": "mjoll",
+   "source": "records",
+   "notes": "Bob, 21 Oct, WRONG: Third look, 22 Oct, after the PC's trace. The helper reaches stage 20 on the player's 'Let's go.' with Mjoll and Aerin in its aliases, and that opens Aerin the Man. The page should name Mjoll the Lioness (with Aerin) as the giver, Riften, then Clear the dungeon with Aerin and Mjoll.",
+   "startsWith": [
+    "Mjoll the Lioness"
+   ],
+   "where": "with Aerin, Riften",
+   "firstObjective": "Clear the dungeon with Aerin and Mjoll"
   }
  ]
 }

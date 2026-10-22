@@ -150,19 +150,22 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  */
 /**
  * One quest's ways in, as the start check words each starter (who to ask and what, and where), with
- * their needs and the first objective as `then`; who and where are left out until WO-121. A start not
- * checked yet gives none.
+ * their needs, the first objective as `then`, and who and where when one person starts it (WO-121b:
+ * back once the answer key passed). A start not checked yet gives none.
  */
-function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[] }[]; then?: string; raw?: QuestStart["raw"] } {
+function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[]; who?: string; where?: string }[]; then?: string; who?: string; where?: string; raw?: QuestStart["raw"] } {
   const st = q?.start;
   if (!st || st.checked !== "files") return {};
-  // The ways as the check words them, which carry their own speaker and place in the words; the
-  // speaker as `who` waits for WO-121's answer key to pass.
   const ways = st.ways?.length
-    ? st.ways.map((w) => ({ way: w.how, ...(w.needs?.length ? { needs: w.needs } : {}) }))
+    ? st.ways.map((w) => ({ way: w.how, ...(w.needs?.length ? { needs: w.needs } : {}), ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}) }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
   // The words are what a player reads; raw is each need and way as the records have it, for an assistant to reason on.
-  return { ways, ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}), ...(st.raw ? { raw: st.raw } : {}) };
+  return {
+    ...(st.who ? { who: st.who, ...(st.where ? { where: st.where } : {}) } : {}),
+    ways,
+    ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}),
+    ...(st.raw ? { raw: st.raw } : {}),
+  };
 }
 
 /** How a line or story starts, with where each fact was checked; an unchecked line gives no instructions. */
@@ -187,8 +190,7 @@ function questStart(line: QuestLine, story: Story | undefined) {
     category,
     checked: "files",
     start: story.start.map((s) => ({ text: s.text, checked: s.checked })),
-    // No who or where (WO-115, 20 Oct): for 175 quests the check's who and where are the first
-    // objective's target, not who starts it. The ways in, as the check words them, and then the task.
+    // Who and where only when one person starts it (WO-121b), the ways in, and then the task.
     firstQuest: { name: first.name, ...startOf(line.quests.find((q) => q.edid === first.edid)), ...(first.task ? { then: first.task } : {}), checked: first.checked },
     ...(line.gate ? { gate: { text: line.gate, checked: from(line.checked.gate) } } : {}),
     ...(line.minLevel ? { minLevel: line.minLevel } : {}),

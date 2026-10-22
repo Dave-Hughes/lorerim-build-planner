@@ -59,9 +59,8 @@ describe("the facts tools (WO-108)", () => {
       expect(s.start[0]).toMatchObject({ checked: "files" });
       expect(s.start.some((x) => x.checked === "not yet")).toBe(true);
       expect(s.firstQuest).toMatchObject({ name: "Unbound", then: "Make your way to the Keep" });
-      // No who or where until WO-121 (the check's names the first objective's target for 175 quests).
+      // Unbound has two ways in and no single giver, so no who (WO-121b).
       expect(s.firstQuest).not.toHaveProperty("who");
-      expect(s.firstQuest).not.toHaveProperty("where");
     }
   });
 
@@ -141,13 +140,12 @@ describe("get_quest (WO-115)", () => {
 });
 
 describe("get_quest, open for you (WO-115 Part 3)", () => {
-  it("gives a quest's ways in and its first objective as then, never who or where", () => {
+  it("gives a quest's ways in, its first objective as then, and who and where when one person starts it", () => {
     const love = getQuest({ name: "The Book of Love" });
     expect(love.quest.start).toMatchObject({ checked: "files", then: "Talk to Fastred at Fellstar Farm" });
     expect(love.quest.start.ways?.[0].way).toMatch(/^Ask Dinya Balu "Just tell me what to do." in Temple of Mara/);
-    expect(love.quest.start).not.toHaveProperty("who");
-    expect(love.quest.start).not.toHaveProperty("where");
-    expect(JSON.stringify(love)).not.toMatch(/"who"|"where"/);
+    expect(love.quest.start).toMatchObject({ who: "Dinya Balu", where: "Temple of Mara" });
+    expect(love.quest.start.ways?.[0]).toMatchObject({ who: "Dinya Balu", where: "Temple of Mara" });
     const unbound = getQuest({ id: "MQ101" });
     expect(unbound.quest.start.ways?.length).toBeGreaterThan(0);
     for (const w of unbound.quest.start.ways ?? []) expect(w.way).toEqual(expect.any(String));

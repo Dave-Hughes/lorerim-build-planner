@@ -75,7 +75,7 @@ def clean_place(text):
     out, seen = [], set()
     for p in (text or "").split(", "):
         p = p.strip()
-        key = re.sub(r"^the ", "", p.lower())
+        key = re.sub(r"'s\b", "", re.sub(r"^the ", "", p.lower()))  # "Largashbur's Longhouse" is "Largashbur Longhouse"
         if not p or _HOLDING.search(p) or key in _WORLDS or key in seen:
             continue
         seen.add(key)
@@ -399,8 +399,9 @@ _DECLINES = re.compile(r"\(Skip Quest\)|not interested|can't do that right now|d
                        r"waste of time|don't like your attitude|^No\.$|^Sorry\. We don't have time", re.IGNORECASE)
 # An editor id: a word with a capital, digit or underscore inside (APS_MQSkipKeep, aaaHOTRDialogue, DA08, MSNStart).
 _EDID = re.compile(r"^(?=\w*[\d_]|\w+[A-Z])\w+$")
-# A quest's record name that is a helper's, not one a player sees in their journal ("Riften Maul Dialogue", "Katana Tracker").
-_HELPER = re.compile(r"\b(Handler|Controller|Tracker|Quests?|Dialogue|Misc)\b")
+# A quest's record name that is a helper's, not one a player sees in their journal ("Riften Maul Dialogue", "Katana Tracker"),
+# or a patch's catch-up for an old save ("Retroactive fixes for 1.2", the Unofficial Patch's): never a way in.
+_HELPER = re.compile(r"\b(Handler|Controller|Tracker|Quests?|Dialogue|Misc|Retroactive)\b")
 _OPS = {"==": lambda a, b: a == b, "!=": lambda a, b: a != b, ">=": lambda a, b: a >= b, ">": lambda a, b: a > b, "<=": lambda a, b: a <= b, "<": lambda a, b: a < b}
 
 
@@ -413,6 +414,12 @@ def _value(v):
     """A compared value as a number: '25', or a global's 'CWSons (now 2)' -> 2; None for none."""
     m = re.search(r"\(now ([-\d.]+)\)\s*$", v) or re.fullmatch(r"\s*(-?[\d.]+)\s*", v)
     return float(m.group(1)) if m else None
+
+
+def _race(what):
+    """A race the check names by its form ("Skyrim.esm:013747") or, since WO-121b's rerun, by name ("Orc"); None for another."""
+    what = (what or "").strip()
+    return what if what in _RACES.values() else _RACES.get(what.split(":")[-1])
 
 
 def _a(word):
@@ -568,7 +575,7 @@ class Words:
                 return f"{what} is alive" if not yes else f"{what} is dead"
             return None if not yes else UNSAID  # on the speaker: a dead person doesn't talk
         if fn == "GetIsRace":
-            race = _RACES.get((what or "").split(":")[-1])
+            race = _race(what)
             return (f"You're {_a(race)}" if yes else f"You're not {_a(race)}") if race else UNSAID
         if fn == "GetQuestRunning":
             if not plain_name(what):
@@ -586,9 +593,9 @@ class Words:
         if all(p.startswith("fn18 ") for p in parts):  # GetCurrentTime
             later = [_value(p.split(" ", 2)[2]) for p in parts if " > " in p]
             return "At night" if later and later[0] >= 18 else UNSAID
-        races = [re.fullmatch(r"GetIsRace \S+:(\w+) (==|!=) (\d)", p) for p in parts]
+        races = [re.fullmatch(r"GetIsRace (.+?) (==|!=) (\d)", p) for p in parts]
         if len(parts) > 1 and all(races):
-            names = [_RACES.get(m.group(1)) for m in races]
+            names = [_race(m.group(1)) for m in races]
             yes = {(m.group(2) == "==") == (m.group(3) == "1") for m in races}
             if None in names or len(yes) > 1:
                 return UNSAID
@@ -626,15 +633,27 @@ class Words:
         return name if plain_name(name) else None
 
 
+# The Unofficial Patch's quests that bring an old save up to date (USKPRetroactive130, USKPVersionTracking,
+# Patch1_9_UpdateQuest): they set a quest's stage for a save made before a fix, never a way a player starts it.
+_PATCH = re.compile(r"^(USKP\w*|Patch\d+_\d+_UpdateQuest)$")
+
+
+def patch_helper(s):
+    return s["by"] == "quest script" and bool(_PATCH.match((s.get("quest") or "").split(" ")[0].rstrip(",")))
+
+
 def talks_through(s, line_quests, giver):
     """
-    A helper that is someone's dialogue ("aaaHOTRDialogue"), or one the check can't open that holds the giver's own alias
-    ("with RalfornAlias") (WO-121b Part 4).
+    A helper that is someone's dialogue ("aaaHOTRDialogue"), or one that holds the giver's own alias ("with RalfornAlias")
+    and that the check can't open, or that runs from the start of the game and starts the quest from a stage of its own
+    (WO-121b Part 4; Bob, 22 Oct: Mjoll's aaMjollAerinQIntro reaches stage 20 on your "Let's go." with Mjoll and Aerin).
     """
     edid = (s.get("quest") or "").split(" ")[0].rstrip(",")
     first_name = (giver or {}).get("name", "").split(" ")[0]
+    ups = s.get("throughStartedBy") or []
+    opens = not ups or (s.get("atStage") is not None and all(u["by"] == "start game" for u in ups))
     return s["by"] == "quest script" and edid not in line_quests and (
-        edid.endswith("Dialogue") or bool(first_name and not s.get("throughStartedBy") and re.search(rf"\bwith \w*{re.escape(first_name)}\w*", s.get("quest") or "")))
+        edid.endswith("Dialogue") or bool(first_name and opens and re.search(rf"\bwith \w*{re.escape(first_name)}\w*", s.get("quest") or "")))
 
 
 def way_words(s, own, line_quests, say, giver=None):
@@ -661,20 +680,21 @@ def way_words(s, own, line_quests, say, giver=None):
         return [(s["plain"], [])]
     if s["by"] == "story manager":
         return [say.node(s, own)]
-    if s["by"] != "quest script":
+    if s["by"] != "quest script" or patch_helper(s):
         return []
     edid = (s.get("quest") or "").split(" ")[0].rstrip(",")
     if edid in line_quests:
         return [] if line_quests[edid] == own else [(say.after(line_quests[edid], s.get("atStage")), [])]
     if s.get("plain"):
         return [(say.event(s["plain"]), [])]
-    if giver and talks_through(s, line_quests, giver):
+    name = say.helper(s)
+    # A helper that's a quest a player knows is that quest ("Through The Book of Love"), even when it holds the giver.
+    if giver and not name and talks_through(s, line_quests, giver):
         return [(f"Talk to {giver['name']}" + (f" in {giver['place']}" if giver.get("place") else ""), [])]
     ups = [w for u in s.get("throughStartedBy", []) if u["by"] != "start game" and (u["by"] != "quest script" or u.get("quest"))
            for w in way_words(u, own, line_quests, say, giver)]
     if ups:
         return ups
-    name = say.helper(s)
     return [(f"Through {name}", [])] if name else []
 
 
@@ -936,7 +956,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             if not any(w["how"] == text for w in shown):
                 shown.append({**talk_way(s, text, tidy(n), found, own, line_quests, say), **({"book": True} if s["by"] == "book" else {})})
     # Every way the check found has no words yet (a patch's catch-up quest, a helper with no name): say so, never its id.
-    if say and not shown and any(s["by"] != "start game" for s in starters):
+    if say and not shown and any(s["by"] != "start game" and not patch_helper(s) for s in starters):
         shown = [{"how": "Another quest starts it, one the planner can't name yet"}]
     shown = rumours(shown, towns or {})
     # A book that starts it is a way no one gives (WO-121b: reading Deathbrand, The Aetherium Wars): it leads, and there's no
@@ -981,7 +1001,11 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             out["where"] = place
     step = first_step(row, siblings)
     # The first step is what the starting line's stage shows (rules 1 and 2).
-    sets = {int(m.group(1)) for s in starters if s["by"] == "dialogue" for m in [_STAGE_SET.match(s.get("call") or "")] if m}
+    # A talk only for some players (rule 5) sets it for them, not for everyone, when anything else starts it (The Cursed
+    # Tribe: Larak's letter line is an Orc's; Atub's sets 20). A book that starts it counts like a talk (Discerning).
+    opener = lambda s: s["by"] == "book" or (s["by"] == "dialogue" and not asks_who_you_are(s))  # noqa: E731
+    pick = [s for s in starters if opener(s)] if any(opener(s) for s in starters) else [s for s in starters if s["by"] == "dialogue"]
+    sets = {int(m.group(1)) for s in pick for m in [_STAGE_SET.match(s.get("call") or "")] if m}
     shown_first = stage_step(row, objectives, sets) if step is row else None
     first = (step.get("firstObjective") or {})
     # A placeholder is never the first step: the real objective the stage shows, else the next one, else its journal.
@@ -1001,8 +1025,9 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             out["thenWhere"] = place
         if holder and not is_role(holder["name"]):
             out["thenWho"] = holder["name"]
-    traced = every and not row.get("unread") and not all(s["by"] == "quest script" and not s.get("throughStartedBy") and
-                                                             (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests for s in every)
+    # Only a patch's catch-up helpers (WO-121b): nothing a player does is traced yet.
+    traced = every and not row.get("unread") and not all(patch_helper(s) or (s["by"] == "quest script" and not s.get("throughStartedBy") and
+                                                             (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests) for s in every)
     out["checked"] = "files" if traced else "not yet"
     return out
 
@@ -1077,6 +1102,9 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             stages = stages_of(q)
             args = (checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows, q.get("objectives"), q["edid"],
                     {st["index"]: st["log"][0]["text"] for st in stages if st["log"] and st["log"][0].get("text")}, brought_to(givers.get(q["id"]), towns))
+            ov = wording.get(q["edid"], {})
+            if ov.get("_starters") and args[0]:  # a starter the PC traced that the check doesn't list yet (overrides.json)
+                args = (dict(args[0], startedBy=ov["_starters"] + args[0].get("startedBy", [])),) + args[1:]
             raw = start_of(*args)
             start = reword(start_of(*args, say=say), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
             if raw.get("needs") or raw.get("ways"):

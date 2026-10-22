@@ -258,9 +258,15 @@
     ]
   },
   "questStarts": {
-    "_note": "WO-126: a start the records word wrong, by quest edid: {the planner's words: what the page says instead}. VIGILANT's patch has Altano and Orlando appear in Dawnstar's Windpeak Inn for you to find; the records only show Altano's node.",
+    "_note": "WO-126: a start the records word wrong, by quest edid: {the planner's words: what the page says instead}, and _starters, a starter the PC traced that the check doesn't list yet. VIGILANT's patch has Altano and Orlando appear in Dawnstar's Windpeak Inn for you to find; the records only show Altano's node.",
     "zzzAoMMq00": {
       "Altano comes to find you in Dawnstar": "Altano and Orlando, in Dawnstar"
+    },
+    "DA04": {
+      "_note": "WO-121b, the PC's trace (21 Oct): reading Septimus's book sets Discerning the Transmundane's stage 1 (DA04RuminationsScript.OnRead on the forced alias RuminationsBook, Skyrim.esm:032787), and stage 1's fragment sets 5. The check reads BOOK records' scripts, not an alias's, so it doesn't list it yet. Bob, 22 Oct: two ways, no single giver.",
+      "_starters": [
+        {"by": "book", "book": "Ruminations on the Elder Scrolls", "call": "SetStage 1", "plain": "Read Ruminations on the Elder Scrolls"}
+      ]
     }
   },
   "starts": {
