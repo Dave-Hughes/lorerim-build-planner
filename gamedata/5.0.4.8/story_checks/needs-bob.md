@@ -2,7 +2,7 @@
 
 Quests the loop can't settle from the records and UESP, each with both readings and its record ids. They stay "not yet checked"; nothing here was guessed or picked to keep the loop going. Written from each batch by the PC; grouped by reason.
 
-80 quests from batches 1, 2.
+120 quests from batches 1, 2, 3.
 
 ## Only a quest the line puts after it sets its stage (the line's order, or a real catch-up?) (25)
 
@@ -169,7 +169,7 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): AK69TheRavensLamentQuest (The Ravens' Lament) at stage 310 calls Start (AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 (Katana.esp)).
   - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
 
-## The records hold no starter (45)
+## The records hold no starter (85)
 
 - **Durnehviir Misc Objective Handler** (`DLC1VQDragonMisc`, Dawnguard.esm:01119F, Dawnguard.esm; line `dawnguard`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
@@ -394,6 +394,190 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - Records, how it starts: no starter in its records or scripts.
   - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
   - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Letter Near** (`_M_QuestEastmarchCourierLetterLow`, Missives.esp:00F655, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Letter Medium** (`_M_QuestEastmarchCourierLetterMed`, Missives.esp:00F65C, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Potion Far** (`_M_QuestEastmarchCourierPotionHigh`, Missives.esp:03CEDE, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Potion Near** (`_M_QuestEastmarchCourierPotionLow`, Missives.esp:038DBC, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Potion Medium** (`_M_QuestEastmarchCourierPotionMed`, Missives.esp:03C40F, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Weapon Distant** (`_M_QuestEastmarchCourierWeaponHigh`, Missives.esp:00FBC4, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item> from <Alias=QuestGiver>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Weapon Near** (`_M_QuestEastmarchCourierWeaponLow`, Missives.esp:00FBCB, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item> from <Alias=QuestGiver>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Weapon Medium** (`_M_QuestEastmarchCourierWeaponMed`, Missives.esp:00FBD2, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item> from <Alias=QuestGiver>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Some Rare Ingredients** (`_M_QuestEastmarchGatherIngrHigh`, Missives.esp:010140, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchIngrHigh>/<Global=_M_GlobalTotalEastmarchIngrHigh>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Some Common Ingredients** (`_M_QuestEastmarchGatherIngrLow`, Missives.esp:010145, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchIngrLow>/<Global=_M_GlobalTotalEastmarchIngrLow>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Some Uncommon Ingredients** (`_M_QuestEastmarchGatherIngrMed`, Missives.esp:010149, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchIngrMed>/<Global=_M_GlobalTotalEastmarchIngrMed>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Collect Some Food** (`_M_QuestEastmarchGatherInn`, Missives.esp:0106B1, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchInn>/<Global=_M_GlobalTotalEastmarchInn>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=Inn>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Rare Ore** (`_M_QuestEastmarchGatherOreHigh`, Missives.esp:0106BD, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchOreHigh>/<Global=_M_GlobalTotalEastmarchOreHigh>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Common Ore** (`_M_QuestEastmarchGatherOreLow`, Missives.esp:0106C1, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchOreLow>/<Global=_M_GlobalTotalEastmarchOreLow>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Uncommon Ore** (`_M_QuestEastmarchGatherOreMed`, Missives.esp:0106C5, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountEastmarchOreMed>/<Global=_M_GlobalTotalEastmarchOreMed>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Very Rare Ore** (`_M_QuestEastmarchGatherOreVeryHigh`, Missives.esp:0106C9, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Collect <Alias=Item>s (<Global=_M_GlobalCountEastmarchOreVeryHigh>/<Global=_M_GlobalTotalEastmarchOreVeryHigh>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item>s to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Find a Powerful Soul Gem** (`_M_QuestEastmarchGatherSoulGemHigh`, Missives.esp:010C35, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Collect <Alias=Item>s (<Global=_M_GlobalCountEastmarchSoulGemHigh>/<Global=_M_GlobalTotalEastmarchSoulGemHigh>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item>s to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Collect Some Weak Soul Gems** (`_M_QuestEastmarchGatherSoulGemLow`, Missives.esp:010C39, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Collect <Alias=Item>s (<Global=_M_GlobalCountEastmarchSoulGemLow>/<Global=_M_GlobalTotalEastmarchSoulGemLow>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item>s to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Collect Some Standard Soul Gems** (`_M_QuestEastmarchGatherSoulGemMed`, Missives.esp:010C3D, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Collect <Alias=Item>s (<Global=_M_GlobalCountEastmarchSoulGemMed>/<Global=_M_GlobalTotalEastmarchSoulGemMed>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item>s to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Kill Some Things** (`_M_QuestEastmarchKillAnimal`, Missives.esp:0111A3, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (from alias): nothing the records name.
+  - Objectives in the records: 'Clear out <Alias=Dungeon>' (QOBJ 20, shown at stage 20); 'Collect bounty from <Alias=Steward>' (QOBJ 40, shown at stage 40).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Kill Some Bandits** (`_M_QuestEastmarchKillBandit`, Missives.esp:0111A7, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (from alias): nothing the records name.
+  - Objectives in the records: 'Kill the leader of <Alias=Dungeon>' (QOBJ 20, shown at stage 20); 'Collect bounty from <Alias=Steward>' (QOBJ 40, shown at stage 40).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Kill a Dragon** (`_M_QuestEastmarchKillDragon`, Missives.esp:0111AB, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (from alias): nothing the records name.
+  - Objectives in the records: 'Slay the dragon at <Alias=Dungeon>' (QOBJ 20, shown at stage 20); 'Collect bounty from <Alias=Steward>' (QOBJ 40, shown at stage 40).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Kill a Giant** (`_M_QuestEastmarchKillGiant`, Missives.esp:0111AF, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (from alias): nothing the records name.
+  - Objectives in the records: 'Slay the giant at <Alias=Dungeon>' (QOBJ 20, shown at stage 20); 'Collect bounty from <Alias=Steward>' (QOBJ 40, shown at stage 40).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Recover From a Hideout** (`_M_QuestEastmarchRetrieveHideout`, Missives.esp:011715, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Item (created): Missives.esp:01A6EC.
+  - Objectives in the records: 'Retrieve <Alias=Item>' (QOBJ 20, shown at stage 20); 'Return <Alias=Item>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Retrieve From a Ruin** (`_M_QuestEastmarchRetrieveRuins`, Missives.esp:011719, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Item (created): Missives.esp:00B535.
+  - Objectives in the records: 'Retrieve the <Alias=Item>' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Retrieve From the Wilderness** (`_M_QuestEastmarchRetrieveWilderness`, Missives.esp:01171D, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Item (created): Missives.esp:006E73.
+  - Objectives in the records: 'Retrieve <Alias=Item>' (QOBJ 20, shown at stage 20); 'Return <Alias=Item>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Track Fugitive** (`_M_QuestEastmarchTrackFugitive`, Missives.esp:0377E4, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Track down and kill the fugitive in <Alias=OtherHold>' (QOBJ 20, shown at stage 20); 'Collect bounty from <Alias=Steward>' (QOBJ 40, shown at stage 40).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Track Thief** (`_M_QuestEastmarchTrackThief`, Missives.esp:032C3D, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Find the Thief in <Alias=OtherHold> and Retrieve <Alias=Item>' (QOBJ 10, shown at stage 20); 'Retrieve <Alias=Item>' (QOBJ 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Track Vampire** (`_M_QuestEastmarchTrackVampire`, Missives.esp:0382D0, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Track down and kill the Vampire in <Alias=Hold>' (QOBJ 20, shown at stage 20); "Report the Vampire's death to a Vigilant of Stendarr" (QOBJ 40, shown at stage 40).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Letter Distant** (`_M_QuestFalkreathCourierLetterHigh`, Missives.esp:011C86, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Letter Near** (`_M_QuestFalkreathCourierLetterLow`, Missives.esp:011CBE, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Letter Medium** (`_M_QuestFalkreathCourierLetterMed`, Missives.esp:011CF5, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Potion Far** (`_M_QuestFalkreathCourierPotionHigh`, Missives.esp:03CEDF, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Potion Far** (`_M_QuestFalkreathCourierPotionLow`, Missives.esp:03A372, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Potion Medium** (`_M_QuestFalkreathCourierPotionMed`, Missives.esp:03C973, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Weapon Distant** (`_M_QuestFalkreathCourierWeaponHigh`, Missives.esp:01228F, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item> from <Alias=QuestGiver>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Weapon Near** (`_M_QuestFalkreathCourierWeaponLow`, Missives.esp:012828, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item> from <Alias=QuestGiver>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Weapon Medium** (`_M_QuestFalkreathCourierWeaponMed`, Missives.esp:012DC3, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item> from <Alias=QuestGiver>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Some Rare Ingredients** (`_M_QuestFalkreathGatherIngrHigh`, Missives.esp:01335D, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountFalkreathIngrHigh>/<Global=_M_GlobalTotalFalkreathIngrHigh>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Gather Some Common Ingredients** (`_M_QuestFalkreathGatherIngrLow`, Missives.esp:0133A2, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 3)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Gather <Alias=Item> (<Global=_M_GlobalCountFalkreathIngrLow>/<Global=_M_GlobalTotalFalkreathIngrLow>)' (QOBJ 20, shown at stage 20); 'Bring the <Alias=Item> to <Alias=QuestGiver>' (QOBJ 40, shown at stage 20).
   - A mod's quest: the records are the only source, and they hold no way in.
 
 ## Only helpers Bob ruled aren't ways in start it (the Unofficial Patch's update helpers; Dragonborn's DLC2Init) (Bob 22 Oct) (3)

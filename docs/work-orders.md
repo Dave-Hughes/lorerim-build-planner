@@ -5004,10 +5004,11 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 Quests checked before and after; rows added to the key; the needs-Bob list grouped by reason; every rule or file changed; batches undone and why; what the reviewer sent back and what you did about it.
 
 ### Done when
-- [ ] The loop has run until one of the stop conditions, and the report says which.
-- [ ] Every quest is checked, or on the needs-Bob list with both readings, or the report says why the loop stopped.
-- [ ] The answer key still passes in full; every row Jeff added cites UESP or the record id.
+- [x] The loop has run until one of the stop conditions, and the report says which.
+- [x] Every quest is checked, or on the needs-Bob list with both readings, or the report says why the loop stopped.
+- [x] The answer key still passes in full; every row Jeff added cites UESP or the record id.
 - [ ] Every check in CLAUDE.md passes on the pushed commit. Push staging and stop for Bob, who judges the needs-Bob list and Dave checks five quests he knows.
+- PC, 22 Oct: the loop stopped after three batches (120 quests), each putting 100% on the needs-Bob list. Of the 453 unchecked quests, 443 have no starter the start check reads and 10 are started only by helpers Bob ruled out, so no key row could be added. The report (`story_checks/loop-report-2026-10-22.md`) says why and what would change it: a rule for a start the line's order labels a catch-up (25 of the 120), and reading notice-board and radiant starts (Missives is 364 of the 453). It also says what Rex sent back and what was done. `needs-bob.md` has the 120 with both readings; `loop-log.md` has each batch. For Bob: five key rows belong to quests the planner marks not yet checked (Black Book: Untold Legends, The Kagrumez Gauntlet, Silenced Tongues, Yngol's Barrow, Sleepwalking Into A Nightmare).
 
 ---
 

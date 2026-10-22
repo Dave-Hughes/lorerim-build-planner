@@ -27,3 +27,9 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
 - Rex's cross-cutting find: **five answer-key rows belong to quests the planner marks "not yet checked"**. They are Black Book: Untold Legends, The Kagrumez Gauntlet, Silenced Tongues, Yngol's Barrow and Sleepwalking Into A Nightmare. The key test passes because it only compares the giver and first step, not `checked`. Bob: should a key row count as checked, or should the test ask for `checked: files`?
 - Rex's re-check: Black Book: Untold Legends and Windhelm By The Sea pass. Sleepwalking still lacked the records' own "aaaMBRalfornDialogue is started by nothing in the records or scripts". It was already on the needs-Bob list, so the one-fix rule is met. The clause is generated from the records, so every helper starter now says what starts the helper, or that nothing does.
 - Committed and pushed as batch 2.
+
+## Batch 3 (unchecked 81 to 120)
+- 40 quests, all Missives (Missives.esp), records only. Key rows added: 0; all 40 on the needs-Bob list (100%): the records hold no starter (a notice-board job's start isn't one the check reads).
+- Gate: `build.py`, 208 game-data tests and the answer key pass; no generated file changed.
+- Rex (fresh, on four Eastmarch Missives quests): PASS for all four. Its follow-ups, not about starts: the Gather quest's counter shows "(0/0)" on its page, and the list prints the plugin twice in the id.
+- **Stop:** three batches in a row put more than 30% on the needs-Bob list (100% each). Report written: `loop-report-2026-10-22.md`.
