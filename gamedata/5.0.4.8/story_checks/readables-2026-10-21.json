@@ -16,7 +16,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -38,7 +38,218 @@
      "kind": "placed",
      "ref": "SurWR.esp:0E1E86",
      "where": "somewhere in Whiterun",
+     "nearDoors": [
+      {
+       "door": "Dragonsreach Dungeon",
+       "metres": 16
+      },
+      {
+       "door": "Dragonsreach",
+       "metres": 19
+      },
+      {
+       "door": "Witch's Wisdoms",
+       "metres": 27
+      }
+     ],
      "plugin": "SurWR.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Adonato's Report",
+   "itemId": "Requiem.esp:AD3845",
+   "edid": "REQ_HogithumReport",
+   "starts": [
+    {
+     "quest": "On Hogithum",
+     "line": "on-hogithum",
+     "call": "SetStage 50",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Requiem.esp:AD3845"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:AD3844",
+     "where": "Bards College, The Bards College",
+     "nearDoors": [
+      {
+       "door": "somewhere in Solitude",
+       "metres": 3
+      },
+      {
+       "door": "Solitude Sewers",
+       "metres": 10
+      }
+     ],
+     "plugin": "JKs Bards College - Requiem Patch.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Ahzidal's Descent",
+   "itemId": "Dragonborn.esm:033BD8",
+   "edid": "DLC2Book4RareAhzidalsDescent",
+   "starts": [
+    {
+     "quest": "Kolbjorn Barrow Misc Objectives",
+     "line": "unearthed",
+     "call": "SetStage 20",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Dragonborn.esm:033BD8"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E3",
+     "where": "Ashfallow Citadel",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:035855",
+     "where": "Tel Mithryn, Tel Mithryn Tower",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 8
+      }
+     ],
+     "plugin": "JK's Tel Mithryn.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:02542A",
+     "where": "Damphall Mine",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3EC",
+     "where": "Edla's House, Skaal Village Edla's House",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 4
+      }
+     ],
+     "plugin": "Eli_Skaal Village Overhaul.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E7",
+     "where": "Highpoint Tower",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E8",
+     "where": "Glover Mallory's House",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 11
+      }
+     ],
+     "plugin": "Snazzy Interiors - Raven Rock AIO.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3ED",
+     "where": "Greathall, Skaal Village Greathall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 9
+      }
+     ],
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E5",
+     "where": "Bristleback Cave",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3F1",
+     "where": "Kolbjorn Barrow",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:028AC4",
+     "where": "Kolbjorn Barrow",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "JK's Blue Palace.esp:0009E9",
+     "where": "Blue Palace, The Blue Palace",
+     "nearDoors": [
+      {
+       "door": "somewhere in Solitude",
+       "metres": 7
+      },
+      {
+       "door": "Pelagius Wing",
+       "metres": 27
+      }
+     ],
+     "plugin": "JK's Blue Palace.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Miasma.esp:000C5A",
+     "where": "Ashbound Prison",
+     "plugin": "Miasma.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "All Dragonborn Books",
+     "holderId": "Dragonborn.esm:026B67",
+     "where": [
+      "Editor Smoke Test Cell"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "carried",
+     "holder": "Bradyn",
+     "holderId": "Dragonborn.esm:0277EE",
+     "where": [
+      "Kolbjorn Barrow"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "DLC2LItemBook4Combined",
+     "listId": "Dragonborn.esm:02AA0E",
+     "where": null,
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "DLC2LItemBook4All",
+     "listId": "Dragonborn.esm:02AA0A",
+     "where": null,
      "verdict": "files"
     }
    ]
@@ -78,6 +289,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:47782C",
      "where": "Stendarr's Outpost",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 16
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -118,6 +335,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BEDB33",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 15
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 21
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -140,6 +371,12 @@
      "kind": "placed",
      "ref": "Skyrim.esm:0B0E81",
      "where": "Septimus Signus' Outpost",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 24
+      }
+     ],
      "plugin": "JK's Septimus Signus's Outpost.esp",
      "verdict": "files"
     },
@@ -154,6 +391,12 @@
      "kind": "placed",
      "ref": "Skyrim.esm:0B0E86",
      "where": "Abandoned House",
+     "nearDoors": [
+      {
+       "door": "somewhere in Markarth",
+       "metres": 22
+      }
+     ],
      "plugin": "Skyrim.esm",
      "verdict": "files"
     },
@@ -161,6 +404,12 @@
      "kind": "placed",
      "ref": "Skyrim.esm:0B0E83",
      "where": "Fellglow Keep",
+     "nearDoors": [
+      {
+       "door": "Fellglow Keep Ritual Chamber",
+       "metres": 16
+      }
+     ],
      "plugin": "Skyrim.esm",
      "verdict": "files"
     },
@@ -168,6 +417,12 @@
      "kind": "placed",
      "ref": "Journey to Baan Malur.esp:3BBEFA",
      "where": "Temple of Reclamations, Baan Malur",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 13
+      }
+     ],
      "plugin": "Journey to Baan Malur.esp",
      "verdict": "files"
     },
@@ -179,8 +434,8 @@
       "The Arcanaeum"
      ],
      "random": [
-      "LItemBook2All",
-      "LItemBook4All"
+      "LItemBook4All",
+      "LItemBook2All"
      ],
      "verdict": "files"
     },
@@ -412,8 +667,8 @@
       "Warehouse Bookshelves"
      ],
      "random": [
-      "LItemBook2All",
-      "LItemBook4All"
+      "LItemBook4All",
+      "LItemBook2All"
      ],
      "verdict": "files"
     },
@@ -430,6 +685,20 @@
      "listId": "Dragonborn.esm:02AA0C",
      "where": null,
      "verdict": "files"
+    },
+    {
+     "kind": "delivered",
+     "quest": "Boethiah's Calling",
+     "questId": "Skyrim.esm:04D8D6",
+     "script": "DA02Script",
+     "verdict": "script"
+    },
+    {
+     "kind": "delivered",
+     "quest": "Boethiah's Proving",
+     "questId": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "script": "QF_AFLOLALBoethiahQuest_0608E4D1",
+     "verdict": "script"
     }
    ]
   },
@@ -448,7 +717,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -468,7 +737,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -488,7 +757,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -508,7 +777,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -528,7 +797,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -552,6 +821,28 @@
      "where": "somewhere in Alik'r Desert",
      "plugin": "Gray Fox Cowl.esm",
      "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Cassia's Plea",
+   "itemId": "ForgottenCity.esp:036D8C",
+   "edid": "000FCNote01",
+   "starts": [
+    {
+     "quest": "The Forgotten City",
+     "line": "forgotten-city",
+     "call": "SetStage 20",
+     "source": "FCReadNote01.OnContainerChanged on BOOK ForgottenCity.esp:036D8C"
+    }
+   ],
+   "places": [
+    {
+     "kind": "delivered",
+     "quest": "Forget-me-not",
+     "questId": "ForgottenCity.esp:05965B",
+     "script": "QF__0105965B",
+     "verdict": "script"
     }
    ]
   },
@@ -594,7 +885,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -614,7 +905,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -706,7 +997,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -750,7 +1041,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -772,6 +1063,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:03B3E6",
      "where": "Fort Frostmoth",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 8
+      }
+     ],
      "plugin": "Dragonborn.esm",
      "verdict": "files"
     },
@@ -779,6 +1076,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:03B3EE",
      "where": "Tel Mithryn Steward's House, Tel Mithryn Steward",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 8
+      }
+     ],
      "plugin": "JK's Tel Mithryn.esp",
      "verdict": "files"
     },
@@ -800,6 +1103,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:037E1E",
      "where": "Deor Woodcutter's House, Skaal Village Deor's House",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 6
+      }
+     ],
      "plugin": "Eli_Skaal Village Overhaul.esp",
      "verdict": "files"
     },
@@ -814,6 +1123,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:035857",
      "where": "Tel Mithryn, Tel Mithryn Tower",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 7
+      }
+     ],
      "plugin": "JK's Tel Mithryn.esp",
      "verdict": "files"
     },
@@ -821,6 +1136,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:033E78",
      "where": "Tel Mithryn, Tel Mithryn Tower",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 10
+      }
+     ],
      "plugin": "Dragonborn.esm",
      "verdict": "files"
     },
@@ -828,6 +1149,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:03B3E9",
      "where": "Morvayn Manor Chambers, Morvayn Manor",
+     "nearDoors": [
+      {
+       "door": "Morvayn Manor",
+       "metres": 11
+      }
+     ],
      "plugin": "SOFA-DunmerAll.esp",
      "verdict": "files"
     },
@@ -835,6 +1162,16 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:03B3EA",
      "where": "Temple, Temple Location",
+     "nearDoors": [
+      {
+       "door": "Temple Ancestral Tomb",
+       "metres": 17
+      },
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 25
+      }
+     ],
      "plugin": "Dragonborn.esm",
      "verdict": "files"
     },
@@ -842,6 +1179,12 @@
      "kind": "placed",
      "ref": "Dragonborn.esm:031FBA",
      "where": "Greathall, Skaal Village Greathall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 8
+      }
+     ],
      "plugin": "Dragonborn.esm",
      "verdict": "files"
     },
@@ -856,6 +1199,16 @@
      "kind": "placed",
      "ref": "JK's Blue Palace.esp:0009EA",
      "where": "Blue Palace, The Blue Palace",
+     "nearDoors": [
+      {
+       "door": "somewhere in Solitude",
+       "metres": 7
+      },
+      {
+       "door": "Pelagius Wing",
+       "metres": 27
+      }
+     ],
      "plugin": "JK's Blue Palace.esp",
      "verdict": "files"
     },
@@ -896,6 +1249,41 @@
      "list": "_ME_UncommonBooks",
      "listId": "MissivesExpansion.esp:000010",
      "where": null,
+     "verdict": "files"
+    },
+    {
+     "kind": "delivered",
+     "quest": "Deathbrand",
+     "questId": "Dragonborn.esm:024002",
+     "script": "DLC2_QF_DLC2dunHaknirTreasure_02024002",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "item": "Debt Ledger",
+   "itemId": "Wyrmstooth.esp:B5DA25",
+   "edid": "WTErikurLedger",
+   "starts": [
+    {
+     "quest": "A Debt Unpaid",
+     "line": "wyrmstooth",
+     "call": "SetStage 20",
+     "source": "defaultsetstageonplayeracquireitem.OnContainerChanged on BOOK Wyrmstooth.esp:B5DA25"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:B5DA26",
+     "where": "Wyrmstooth Holder Cell, Wyrmstooth",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 7
+      }
+     ],
+     "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
    ]
@@ -939,7 +1327,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -959,7 +1347,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -979,7 +1367,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -999,7 +1387,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1019,7 +1407,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1039,7 +1427,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1079,7 +1467,78 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BF1D1A",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 14
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 21
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Easy Job",
+   "itemId": "HLIORemi.esp:46FA63",
+   "edid": "HLIOAssassinsNote",
+   "starts": [
+    {
+     "quest": "Reunion of the Fallen",
+     "line": "remiel",
+     "call": "SetStage 29",
+     "source": "HLIOAssassinNoteScript.OnContainerChanged on BOOK HLIORemi.esp:46FA63"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Elder Scroll (Dragon)",
+   "itemId": "Skyrim.esm:02D513",
+   "edid": "DA04ElderScroll",
+   "starts": [
+    {
+     "quest": "Alduin's Bane",
+     "line": "main-quest",
+     "call": "SetStage 20",
+     "source": "ElderScrollScript.OnEquipped on BOOK Skyrim.esm:02D513"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Skyrim.esm:02D4F1",
+     "where": "Tower of Mzark",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 19
+      }
+     ],
+     "plugin": "Skyrim.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "All Books",
+     "holderId": "Skyrim.esm:0C2D3B",
+     "where": [
+      "Editor Smoke Test Cell"
+     ],
      "verdict": "files"
     }
    ]
@@ -1099,7 +1558,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1161,6 +1620,20 @@
      "kind": "placed",
      "ref": "WindhelmSSE.esp:1B62F2",
      "where": "somewhere in Windhelm",
+     "nearDoors": [
+      {
+       "door": "Graystone Lodge",
+       "metres": 1
+      },
+      {
+       "door": "Audmund's Axes",
+       "metres": 7
+      },
+      {
+       "door": "Varasa's Loft",
+       "metres": 10
+      }
+     ],
      "plugin": "WindhelmSSE.esp",
      "verdict": "files"
     }
@@ -1201,7 +1674,41 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BEDB43",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 14
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 21
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Fredrick's Journal",
+   "itemId": "Paragliding.esp:00650E",
+   "edid": "FallingFredJournal",
+   "starts": [
+    {
+     "quest": "Paragliding in Skyrim",
+     "line": "paragliding-in-skyrim",
+     "call": "SetStage 20",
+     "source": "ParaNote.OnRead on BOOK Paragliding.esp:00650E"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1221,7 +1728,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1301,6 +1808,12 @@
      "kind": "placed",
      "ref": "LegendsOfAetherium.esp:0D349F",
      "where": "Candlehearth Hall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Windhelm",
+       "metres": 4
+      }
+     ],
      "plugin": "LegendsOfAetherium.esp",
      "verdict": "files"
     },
@@ -1308,6 +1821,16 @@
      "kind": "placed",
      "ref": "LegendsOfAetherium.esp:0D349D",
      "where": "The Bee and Barb, Bee and Barb",
+     "nearDoors": [
+      {
+       "door": "The Ratway",
+       "metres": 7
+      },
+      {
+       "door": "somewhere in Riften",
+       "metres": 10
+      }
+     ],
      "plugin": "LegendsOfAetherium.esp",
      "verdict": "files"
     },
@@ -1315,6 +1838,16 @@
      "kind": "placed",
      "ref": "LegendsOfAetherium.esp:0D349E",
      "where": "The Frozen Hearth",
+     "nearDoors": [
+      {
+       "door": "The Frozen Hearth Cellar",
+       "metres": 10
+      },
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 22
+      }
+     ],
      "plugin": "TGC Winterhold - Legends of Aetherium Patch.esp",
      "verdict": "files"
     },
@@ -1322,6 +1855,12 @@
      "kind": "placed",
      "ref": "LegendsOfAetherium.esp:0D34A0",
      "where": "The Bannered Mare",
+     "nearDoors": [
+      {
+       "door": "somewhere in Whiterun",
+       "metres": 5
+      }
+     ],
      "plugin": "LegendsOfAetherium.esp",
      "verdict": "files"
     }
@@ -1362,6 +1901,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC33",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 21
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1369,6 +1914,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC22",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 10
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1376,6 +1927,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:5ECCA1",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 20
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1383,6 +1940,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC21",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 23
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1390,6 +1953,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC35",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 12
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1397,6 +1966,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC34",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 21
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1404,6 +1979,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC23",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 16
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1411,6 +1992,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC20",
      "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 16
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1418,6 +2005,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC27",
      "where": "Hall of the Dead, Hall Of The Dead",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 16
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1425,6 +2018,16 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC2A",
      "where": "Wyrmstooth Jail, Wyrmstooth Barracks",
+     "nearDoors": [
+      {
+       "door": "Guard Barracks",
+       "metres": 8
+      },
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 9
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1432,6 +2035,16 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC29",
      "where": "Guard Barracks, Wyrmstooth Barracks",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 8
+      },
+      {
+       "door": "Wyrmstooth Jail",
+       "metres": 9
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1474,6 +2087,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC2B",
      "where": "Fort Moonwatch Muster, Fort Moonwatch",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 18
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1481,6 +2100,16 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC25",
      "where": "The Handsome Hermit, The Hermit",
+     "nearDoors": [
+      {
+       "door": "The Handsome Hermit Cellar",
+       "metres": 17
+      },
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 22
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1488,6 +2117,16 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC24",
      "where": "The Handsome Hermit, The Hermit",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 11
+      },
+      {
+       "door": "The Handsome Hermit Cellar",
+       "metres": 13
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1495,6 +2134,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC32",
      "where": "Chillwater Mill",
+     "nearDoors": [
+      {
+       "door": "somewhere in Wyrmstooth",
+       "metres": 10
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1502,6 +2147,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BEDB36",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 8
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 13
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 22
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1509,6 +2168,12 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:30EC2F",
      "where": "somewhere in Wyrmstooth",
+     "nearDoors": [
+      {
+       "door": "Fort Moonwatch Muster",
+       "metres": 25
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     },
@@ -1537,9 +2202,11 @@
    ],
    "places": [
     {
-     "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
-     "verdict": "files"
+     "kind": "delivered",
+     "quest": "The Talos Mistake",
+     "questId": "WindhelmSSE.esp:1EE2E4",
+     "script": "QF_0WHQuestTalosIntro_051EE2E4",
+     "verdict": "script"
     }
    ]
   },
@@ -1578,6 +2245,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:C7399A",
      "where": "somewhere in Wyrmstooth",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 13
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 22
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -1597,9 +2278,33 @@
    ],
    "places": [
     {
-     "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
-     "verdict": "files"
+     "kind": "delivered",
+     "quest": "Ode To The Tundrastriders",
+     "questId": "SurWR.esp:2ECDA4",
+     "script": "QF_0WRGiantQuest_052ECDA4",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "item": "Letter from Largashbur",
+   "itemId": "The Cursed Tribe - Quest Expansion.esp:000079",
+   "edid": "TCTRC_BOOK_LetterRumor",
+   "starts": [
+    {
+     "quest": "The Cursed Tribe",
+     "line": "the-cursed-tribe",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK The Cursed Tribe - Quest Expansion.esp:000079"
+    }
+   ],
+   "places": [
+    {
+     "kind": "delivered",
+     "quest": "The Cursed Tribe",
+     "questId": "Skyrim.esm:03B681",
+     "script": "QF_DA06_0003B681",
+     "verdict": "script"
     }
    ]
   },
@@ -1617,9 +2322,11 @@
    ],
    "places": [
     {
-     "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
-     "verdict": "files"
+     "kind": "delivered",
+     "quest": "THOD_QE",
+     "questId": "The Heart Of Dibella - Quest Expansion.esp:000816",
+     "script": "THOD_QE_TrackSleep",
+     "verdict": "script"
     }
    ]
   },
@@ -1637,9 +2344,11 @@
    ],
    "places": [
     {
-     "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
-     "verdict": "files"
+     "kind": "delivered",
+     "quest": "THOD_QE",
+     "questId": "The Heart Of Dibella - Quest Expansion.esp:000816",
+     "script": "THOD_QE_TrackSleep",
+     "verdict": "script"
     }
    ]
   },
@@ -1658,7 +2367,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1698,6 +2407,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BEDB31",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 15
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 20
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -1738,6 +2461,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BF1D1E",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 15
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 21
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -1758,7 +2495,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -1780,8 +2517,40 @@
      "kind": "placed",
      "ref": "Myrwatch - Tweaks and Enhancements.esp:000855",
      "where": "Myrwatch",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 7
+      },
+      {
+       "door": "Myrwatch Workshop",
+       "metres": 13
+      }
+     ],
      "plugin": "Myrwatch - Tweaks and Enhancements.esp",
      "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Orders",
+   "itemId": "Undeath.esp:2BDBC0",
+   "edid": "NecroQuest05Letter",
+   "starts": [
+    {
+     "quest": "Scourg Barrow",
+     "line": "undeath",
+     "call": "SetStage 15",
+     "source": "defaultsetstageonplayeracquireitem.OnContainerChanged on BOOK Undeath.esp:2BDBC0"
+    }
+   ],
+   "places": [
+    {
+     "kind": "delivered",
+     "quest": "Scourg Barrow",
+     "questId": "Undeath.esp:2BDBBF",
+     "script": "QF__042BDBBF",
+     "verdict": "script"
     }
    ]
   },
@@ -1848,6 +2617,12 @@
      "kind": "placed",
      "ref": "Knight of the North.esp:000819",
      "where": "Understone Keep",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 15
+      }
+     ],
      "plugin": "Knight of the North.esp",
      "verdict": "files"
     }
@@ -1870,6 +2645,16 @@
      "kind": "placed",
      "ref": "CC Tundra Homestead - Tweaks and Enhancements.esp:00000F",
      "where": "Thalmor Embassy, Elenwen's Solar, Thalmor Embassy",
+     "nearDoors": [
+      {
+       "door": "Thalmor Embassy",
+       "metres": 8
+      },
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 15
+      }
+     ],
      "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
      "verdict": "files"
     },
@@ -1908,6 +2693,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:00B5E5",
      "where": "Fort Dawnguard",
+     "nearDoors": [
+      {
+       "door": "somewhere in Dayspring Canyon",
+       "metres": 22
+      }
+     ],
      "plugin": "Dawnguard.esm",
      "verdict": "files"
     },
@@ -1922,6 +2713,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:01938F",
      "where": "Dead Drop Mine, Dead Drop Falls",
+     "nearDoors": [
+      {
+       "door": "Dead Drop Falls",
+       "metres": 22
+      }
+     ],
      "plugin": "Dawnguard.esm",
      "verdict": "files"
     },
@@ -1936,6 +2733,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:003ABD",
      "where": "Volkihar Keep",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 23
+      }
+     ],
      "plugin": "Unofficial Skyrim Special Edition Patch.esp",
      "verdict": "files"
     },
@@ -1943,6 +2746,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:013A78",
      "where": "Volkihar Keep",
+     "nearDoors": [
+      {
+       "door": "Volkihar Cathedral",
+       "metres": 26
+      }
+     ],
      "plugin": "Dawnguard.esm",
      "verdict": "files"
     },
@@ -1964,6 +2773,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:00B61B",
      "where": "Fellglow Keep",
+     "nearDoors": [
+      {
+       "door": "Fellglow Keep Ritual Chamber",
+       "metres": 23
+      }
+     ],
      "plugin": "Dawnguard.esm",
      "verdict": "files"
     },
@@ -1978,6 +2793,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:00B61D",
      "where": "Bards College, The Bards College",
+     "nearDoors": [
+      {
+       "door": "somewhere in Solitude",
+       "metres": 9
+      }
+     ],
      "plugin": "JK's The Bards College.esp",
      "verdict": "files"
     },
@@ -2020,6 +2841,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:00B621",
      "where": "Fort Snowhawk",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 11
+      }
+     ],
      "plugin": "Dawnguard.esm",
      "verdict": "files"
     },
@@ -2034,6 +2861,12 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:00B628",
      "where": "Fort Neugrad",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 4
+      }
+     ],
      "plugin": "Dawnguard.esm",
      "verdict": "files"
     },
@@ -2048,6 +2881,20 @@
      "kind": "placed",
      "ref": "Dawnguard.esm:00B62B",
      "where": "The Arcanaeum",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 13
+      },
+      {
+       "door": "Hall of the Elements",
+       "metres": 17
+      },
+      {
+       "door": "Arch-Mage's Quarters",
+       "metres": 20
+      }
+     ],
      "plugin": "JK's College of Winterhold.esp",
      "verdict": "files"
     },
@@ -2076,6 +2923,16 @@
      "kind": "placed",
      "ref": "cceejsse001-hstead.esm:000D07",
      "where": "Wintersand Manor",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 4
+      },
+      {
+       "door": "Wintersand Manor",
+       "metres": 6
+      }
+     ],
      "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
      "verdict": "files"
     },
@@ -2083,6 +2940,16 @@
      "kind": "placed",
      "ref": "cceejsse002-tower.esl:000B9E",
      "where": "Myrwatch",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 10
+      },
+      {
+       "door": "Myrwatch Gallery",
+       "metres": 16
+      }
+     ],
      "plugin": "cceejsse002-tower.esl",
      "verdict": "files"
     },
@@ -2090,6 +2957,16 @@
      "kind": "placed",
      "ref": "myrwatchhomefixer.esp:005C6D",
      "where": "Myrwatch",
+     "nearDoors": [
+      {
+       "door": "Myrwatch Workshop",
+       "metres": 17
+      },
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 20
+      }
+     ],
      "plugin": "Myrwatch - Tweaks and Enhancements.esp",
      "verdict": "files"
     },
@@ -2097,6 +2974,16 @@
      "kind": "placed",
      "ref": "Siege at Icemoth.esp:40CB95",
      "where": "Fort Icemoth",
+     "nearDoors": [
+      {
+       "door": "Fort Icemoth Dungeons",
+       "metres": 11
+      },
+      {
+       "door": "somewhere in Hjorkvild Isles",
+       "metres": 12
+      }
+     ],
      "plugin": "Siege at Icemoth.esp",
      "verdict": "files"
     },
@@ -2104,6 +2991,16 @@
      "kind": "placed",
      "ref": "Journey to Baan Malur.esp:0009B0",
      "where": "The Sepia Pages, Baan Malur",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 4
+      },
+      {
+       "door": "Baan Malur Brews",
+       "metres": 6
+      }
+     ],
      "plugin": "Journey to Baan Malur.esp",
      "verdict": "files"
     },
@@ -2144,6 +3041,69 @@
      "list": "FZR_DLC1BooksAll",
      "listId": "Fozars_Dragonborn_-_Requiem_Patch.esp:19588A",
      "where": null,
+     "verdict": "files"
+    },
+    {
+     "kind": "delivered",
+     "quest": "Lost to the Ages",
+     "questId": "Dawnguard.esm:005817",
+     "script": "DLC1_QF_DLC1LD_01005817",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "item": "The Caches of Skorjan Iron-Beard",
+   "itemId": "Siege at Icemoth.esp:9307C3",
+   "edid": "HYORBookRareCachesOfSkorjanIronBeard",
+   "starts": [
+    {
+     "quest": "Caches of Skorjan Iron-Beard",
+     "line": "siege-at-icemoth",
+     "call": "SetStage 5",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Siege at Icemoth.esp:9307C3"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Siege at Icemoth.esp:942749",
+     "where": "Dragonsreach",
+     "plugin": "Siege at Icemoth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Siege at Icemoth.esp:0246F0",
+     "where": "The Arcanaeum",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 15
+      },
+      {
+       "door": "Hall of the Elements",
+       "metres": 19
+      },
+      {
+       "door": "Arch-Mage's Quarters",
+       "metres": 22
+      }
+     ],
+     "plugin": "Siege at Icemoth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Siege at Icemoth.esp:94E6EC",
+     "where": "Old Wooden Jetty",
+     "nearDoors": [
+      {
+       "door": "somewhere in Hjorkvild Isles",
+       "metres": 18
+      }
+     ],
+     "plugin": "Siege at Icemoth.esp",
      "verdict": "files"
     }
    ]
@@ -2205,6 +3165,20 @@
      "kind": "placed",
      "ref": "SurWR.esp:0D2ACA",
      "where": "Whiterun",
+     "nearDoors": [
+      {
+       "door": "Hearth-Healer's Hall",
+       "metres": 22
+      },
+      {
+       "door": "Joslin's House",
+       "metres": 22
+      },
+      {
+       "door": "The Bannered Mare",
+       "metres": 27
+      }
+     ],
      "plugin": "SurWR.esp",
      "verdict": "files"
     }
@@ -2227,6 +3201,12 @@
      "kind": "placed",
      "ref": "Journey to Baan Malur.esp:48C8BB",
      "where": "Shrine to Boet-hi-Ah, Morrowind",
+     "nearDoors": [
+      {
+       "door": "somewhere in Morrowind",
+       "metres": 27
+      }
+     ],
      "plugin": "Journey to Baan Malur.esp",
      "verdict": "files"
     }
@@ -2249,6 +3229,12 @@
      "kind": "placed",
      "ref": "UndeathFixes.esp:168479",
      "where": "Silver-Blood Inn",
+     "nearDoors": [
+      {
+       "door": "somewhere in Markarth",
+       "metres": 14
+      }
+     ],
      "plugin": "UndeathFixes.esp",
      "verdict": "files"
     }
@@ -2271,6 +3257,12 @@
      "kind": "placed",
      "ref": "WindhelmSSE.esp:135249",
      "where": "Tedril's Home, Home",
+     "nearDoors": [
+      {
+       "door": "somewhere in Windhelm",
+       "metres": 4
+      }
+     ],
      "plugin": "WindhelmSSE.esp",
      "verdict": "files"
     }
@@ -2311,6 +3303,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BEDB3E",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 6
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 15
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 20
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -2351,6 +3357,20 @@
      "kind": "placed",
      "ref": "Wyrmstooth.esp:BEDB40",
      "where": "Stonehollow",
+     "nearDoors": [
+      {
+       "door": "Hulgard And Svenja's House",
+       "metres": 7
+      },
+      {
+       "door": "Nalion And Gildan's House",
+       "metres": 13
+      },
+      {
+       "door": "East Empire Company Tradehouse",
+       "metres": 22
+      }
+     ],
      "plugin": "Wyrmstooth.esp",
      "verdict": "files"
     }
@@ -2373,6 +3393,12 @@
      "kind": "placed",
      "ref": "Siege at Icemoth.esp:3A680B",
      "where": "Old Wooden Jetty",
+     "nearDoors": [
+      {
+       "door": "somewhere in Hjorkvild Isles",
+       "metres": 5
+      }
+     ],
      "plugin": "Siege at Icemoth.esp",
      "verdict": "files"
     }
@@ -2393,7 +3419,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -2413,7 +3439,7 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
      "verdict": "files"
     }
    ]
@@ -2433,7 +3459,167 @@
    "places": [
     {
      "kind": "nowhere",
-     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccKRTSSE001_QuestNote01",
+   "itemId": "cckrtsse001_altar.esl:000D62",
+   "edid": "ccKRTSSE001_QuestNote01",
+   "starts": [
+    {
+     "quest": "A Dying Wish",
+     "line": "a-dying-wish",
+     "call": "SetStage 2",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK cckrtsse001_altar.esl:000D62"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "cckrtsse001_altar.esl:000823",
+     "where": "Dead Man's Drink",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 10
+      }
+     ],
+     "plugin": "COTN Falkreath - CC - Bittercup Patch.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccRMSSSE001_EscapeNote02",
+   "itemId": "ccrmssse001-necrohouse.esl:000CE8",
+   "edid": "ccRMSSSE001_EscapeNote02",
+   "starts": [
+    {
+     "quest": "Dreams of the Dead",
+     "line": "dreams-of-the-dead",
+     "call": "SetStage 15",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK ccrmssse001-necrohouse.esl:000CE8"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories, leveled lists and quest scripts that add it, in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccRMSSSE001_EscapeNote04a",
+   "itemId": "ccrmssse001-necrohouse.esl:000CF7",
+   "edid": "ccRMSSSE001_EscapeNote04a",
+   "starts": [
+    {
+     "quest": "Dreams of the Dead",
+     "line": "dreams-of-the-dead",
+     "call": "SetStage 20",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK ccrmssse001-necrohouse.esl:000CF7"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "ccrmssse001-necrohouse.esl:000CFD",
+     "where": "Gallows Hall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 24
+      }
+     ],
+     "plugin": "ccrmssse001-necrohouse.esl",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccRMSSSE001_EscapeNote04b",
+   "itemId": "ccrmssse001-necrohouse.esl:000D1D",
+   "edid": "ccRMSSSE001_EscapeNote04b",
+   "starts": [
+    {
+     "quest": "Dreams of the Dead",
+     "line": "dreams-of-the-dead",
+     "call": "SetStage 20",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK ccrmssse001-necrohouse.esl:000D1D"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "ccrmssse001-necrohouse.esl:000CFC",
+     "where": "Gallows Hall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 24
+      }
+     ],
+     "plugin": "ccrmssse001-necrohouse.esl",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccRMSSSE001_EscapeNote04c",
+   "itemId": "ccrmssse001-necrohouse.esl:000D1E",
+   "edid": "ccRMSSSE001_EscapeNote04c",
+   "starts": [
+    {
+     "quest": "Dreams of the Dead",
+     "line": "dreams-of-the-dead",
+     "call": "SetStage 20",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK ccrmssse001-necrohouse.esl:000D1E"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "ccrmssse001-necrohouse.esl:000CFA",
+     "where": "Gallows Hall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 24
+      }
+     ],
+     "plugin": "ccrmssse001-necrohouse.esl",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccRMSSSE001_PuzzleHintJournal",
+   "itemId": "ccrmssse001-necrohouse.esl:000CC2",
+   "edid": "ccRMSSSE001_PuzzleHintJournal",
+   "starts": [
+    {
+     "quest": "Dreams of the Dead",
+     "line": "dreams-of-the-dead",
+     "call": "SetStage 20",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK ccrmssse001-necrohouse.esl:000CC2"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "ccrmssse001-necrohouse.esl:000D2E",
+     "where": "Gallows Hall",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 24
+      }
+     ],
+     "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp",
      "verdict": "files"
     }
    ]
