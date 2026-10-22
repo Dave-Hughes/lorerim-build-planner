@@ -447,7 +447,7 @@ def way_of(s, own_name, line_quests):
         ups = [way_of(u, own_name, line_quests) for u in s.get("throughStartedBy", []) if u["by"] != "quest script" or u.get("quest")]
         named = (s.get("quest") or edid).split(",")[0]
         if s.get("plain"):  # the start check's words for a helper with a story manager trigger (WO-121a)
-            return s["plain"], []
+            return s["plain"], node_needs(s, own_name)
         # One way up: its needs are this way's (Dawnguard's helper starts on a node that needs level 30). More than
         # one (Dragonborn's two cultist nodes): each keeps its own needs in the text.
         if len(ups) == 1:
@@ -775,7 +775,8 @@ def way_words(s, own, line_quests, say, giver=None):
     if edid in line_quests:
         return [] if line_quests[edid] == own else [(say.after(line_quests[edid], s.get("atStage")), [])]
     if s.get("plain"):
-        return [(say.event(s["plain"]), [])]
+        # The trigger's own needs come with it (WO-137 item 1): Deathbrand's level-up node needs a level held in a global.
+        return [(say.event(s["plain"]), node_needs(s, own, say))]
     name = say.helper(s)
     # A helper that's a quest a player knows is that quest ("Through The Book of Love"), even when it holds the giver.
     if giver and not name and talks_through(s, line_quests, giver):
@@ -849,6 +850,11 @@ _PLACEHOLDER = re.compile(r"\s*(test|todo|tbd|placeholder|x{3,}|\.+|-+)\s*", re.
 _PLAYER_IS = re.compile(r"\bGetIsRace\b[^;]*== 1")
 
 
+def node_needs(s, own, say=None):
+    """The needs of the story manager nodes a helper starts from (WO-137 item 1): "Level 20" for a level held in a global."""
+    return list(dict.fromkeys(n for u in s.get("throughStartedBy", []) if u["by"] == "story manager" for n in plain_needs(u.get("conditions"), own, say)))
+
+
 def continues(s, own, edid, shows_at):
     """
     A talk that needs its own quest already past the stage where its first objective shows (WO-121b rule 6): a later
@@ -857,11 +863,17 @@ def continues(s, own, edid, shows_at):
     shows (its first objective is at 50), so he still starts it.
     """
     names = "|".join(re.escape(n) for n in {own, edid} if n)
-    if s["by"] != "dialogue" or not names or shows_at is None:
+    if s["by"] != "dialogue" or not names:
         return False
+    # The stage the line itself sets: a line that needs a later stage of its own quest is a catch-up (WO-137 item 1:
+    # Geldis Sadri sets Deathbrand's 1 but needs its 20 done, a mod's edit for a quest already under way).
+    sets = _STAGE_SET.match(s.get("call") or "")
     for g in (s.get("conditions") or "").split("; "):
         m = re.fullmatch(rf"(?:{names}) stage (?:(==|>=|>) (\d+)|(\d+) done)", g.strip())
-        if m and int(m.group(2) or m.group(3)) >= shows_at:
+        if not m:
+            continue
+        n = int(m.group(2) or m.group(3))
+        if (shows_at is not None and n >= shows_at) or (sets and n > int(sets.group(1)) and n > 0):
             return True
     return False
 
@@ -1251,18 +1263,38 @@ def read_places(readables):
     return out
 
 
-def placed_ways(start, quest_name, places):
+def by_area(found, towns=None):
     """
-    Each read-this way with where its item is (`whereIs`), or, with none, `unplaced`: "Where to find X isn't checked yet."
-    The way still says only "Read X"; nothing turns it into a direction (WO-131 Part 2).
+    Every place, grouped by area (WO-137 item 2): the town a place's cell is in; else what it's in ("in Gyldenhul Barrow"), the
+    place a cell belongs to ("Tel Mithryn, Tel Mithryn Tower" is Tel Mithryn), or the place itself; "Anywhere" for loot and
+    the like. Areas in the order they first come, the readables file's order kept inside each. -> (places, their areas).
+    """
+    areas = {}
+    for w in found:
+        cell, _, rest = w.partition(", ")
+        t = towns or {}
+        area = (t.get(cell) or t.get(w) or (rest[3:] if rest.startswith("in ") else cell if rest.startswith("near ") or rest.startswith(cell) else t.get(rest) or rest)
+                or ("Anywhere" if re.match(r"It\b", w) else cell))
+        areas.setdefault(area, []).append(w)
+    return [w for ws in areas.values() for w in ws], [a for a, ws in areas.items() for _ in ws]
+
+
+def placed_ways(start, quest_name, places, towns=None):
+    """
+    Each read-this way with where its item is (`whereIs`, every place, grouped by area, with `whereIsArea` beside it), or,
+    with none, `unplaced`: "Where to find X isn't checked yet." The way still says only "Read X"; nothing turns it into a
+    direction (WO-131 Part 2). How many to show is the reader's: the door gives eight and the rest on asking (WO-137 item 2).
     """
     ways = []
     for w in start.get("ways", []):
         m = _READ.match(w["how"])
         if m and "checked" not in w:
             found = places.get((quest_name, m.group(1)))
-            w = {**w, **({"whereIs": found[:3] + ([f"and {len(found) - 3} more place{'' if len(found) == 4 else 's'}"] if len(found) > 3 else [])} if found else
-                         {"unplaced": f"Where to find {'it' if _RECORD_FORM.search(m.group(1)) else m.group(1)} isn't checked yet."})}
+            if found:
+                where, area = by_area(found, towns)
+                w = {**w, "whereIs": where, "whereIsArea": area}
+            else:
+                w = {**w, "unplaced": f"Where to find {'it' if _RECORD_FORM.search(m.group(1)) else m.group(1)} isn't checked yet."}
         ways.append(w)
     return {**start, "ways": ways} if start.get("ways") else start
 
@@ -1350,7 +1382,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             if ov.get("_starters") and args[0]:  # a starter the PC traced that the check doesn't list yet (overrides.json)
                 args = (dict(args[0], startedBy=ov["_starters"] + args[0].get("startedBy", [])),) + args[1:]
             raw = start_of(*args)
-            start = reword(placed_ways(start_of(*args, say=say), q["name"], places), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
+            start = reword(placed_ways(start_of(*args, say=say), q["name"], places, towns), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
             # A way a player found in game, not the files (WO-131 Part 0: Dave's note outside Joslin's house): marked so.
             if ov.get("_checked") == "players":
                 put = {v for k, v in ov.items() if not k.startswith("_")}

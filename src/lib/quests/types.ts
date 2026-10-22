@@ -72,6 +72,8 @@ export interface QuestStart {
     source?: string;
     /** A read-this way (WO-131 Part 2): where the item is, from the PC's readables file, in plain words. */
     whereIs?: string[];
+    /** Each place's area, beside whereIs (WO-137 item 2): the places come grouped by it. */
+    whereIsArea?: string[];
     /** A read-this way with no place: "Where to find X isn't checked yet." Never a direction. */
     unplaced?: string;
   }[];

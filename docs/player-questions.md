@@ -74,27 +74,27 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **12. "How do I start Deathbrand?"**
 - Calls: `get_quest({ name: "Deathbrand", level: 10 })`.
 - Must: the level gate on "It starts by itself when you level up" (the story node needs level 20, a global that reads 20 now; the page dropped it). Geldis Sadri's talk is shown with its condition, or not at all as a way in: the record has it only when "Deathbrand stage 20 done" and stage <= 1 (a mod's edit), so it is not "the easiest one to aim for". The book's places: the first few named, and a way to see all 14, never "and 11 more places" with no way to ask.
-- Fails today: **WO-137**.
+- Passes since WO-137 (item 1: the level-up node's level, Geldis's talk dropped as a catch-up; item 2: eight places by area, `places: true` for all).
 
 **13. "How do I start a missive from the notice board?"**
 - Calls: `get_quest({ name: "Missives" })` and one Missives quest by EDID.
 - Must: the board class answered, with the twelve boards; not "unknown" and not "this line hasn't passed the start check". A line whose quests are all checked as a class says so.
-- Fails today: **WO-137** (the line-level "not yet" note overrides the class answer).
+- Passes since WO-137 item 3.
 
 **14. "What quests are in my quest log?" (Kyria's Save 70)**
 - Calls: `get_quest_log({ playthrough })`.
 - Must: each line under its own category ("Side stories", "Jobs and errands"), never one heading for everything; no helper names (TG00 Misc Handler, LTN Quest Handler) in the log; no quest at stage 0 listed as "started but unclear" (a stage 0 isn't started); no quest listed twice (Animal Extermination, Special Delivery).
-- Fails today: **WO-137**.
+- Passes since WO-137 item 4. The test uses the stages Bob named from Save 70, not the whole save (no copy of it is in the repo).
 
 **15. "How do I free Inigo from the jail?"**
 - Calls: `search_facts({ query: "free Inigo" })`, `get_quest({ id: "inigo" })`.
 - Must: finds Inigo's line (Followers) and says where he is and how he joins, or says the start isn't checked yet. Not "no quest matched".
-- Fails today: WO-137 (search by the words players use, WO-133's job, on followers).
+- Passes since WO-137 item 5.
 
 **16. A line whose quest is checked.** Asking for one quest in a line that hasn't passed the line's start check (Whiterun, expanded; Odd jobs in the Rift; Deathbrand) must give that quest's own checked start, and say plainly what's unchecked about the line, once. Not "no instructions are given" over a checked answer.
-- Fails today: **WO-137**.
+- Passes since WO-137 item 3.
 
 **17. "How do I start the quest to get the paraglider? I'm level 12."**
 - Calls: `search_facts({ query: "paraglider" })`, `get_quest({ name: "Paragliding in Skyrim", level: 12 })`.
 - Must: a place (near Falkreath), what happens (a man falls from the sky), the journal that moves it to step two; no trigger name ("Para Intro Gazebo Discover"); "open for you" at level 12, not "unknown".
-- Fails today: **WO-137 item 6**. Dave's Claude said "unknown" and asked for his LoreRim folder.
+- Passes since WO-137 item 6: Dave's finding by hand in `overrides.json` (a player's report), and a trigger start counts as a way in, not a need. Dave's Claude had said "unknown" and asked for his LoreRim folder.

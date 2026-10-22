@@ -4930,12 +4930,22 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) against UESP and the records, and write which are ways in and which are catch-ups to `loop-log.md`. Then Mac applies the rule to every quest. One more look across all the checked starts: how many ways have a condition naming the quest's own stage, or a level held in a global, and are being shown without it. List them for Bob.
 
 ### Done when
-- [ ] Deathbrand's level-up way shows level 20; Geldis is dropped or shown with his condition. The same rule holds for every checked quest, with a test, and the PC's list of other cases is in the log.
-- [ ] Places: eight at most, grouped, and a way to ask for all.
-- [ ] A quest asked for answers first with its own checked start; the line's gap is said once; Missives show `checked: files`.
-- [ ] The quest log: categories, no helper names, no stage 0, no repeats. Tested on Kyria's Save 70.
-- [ ] Inigo's rescue is found by search.
-- [ ] Player questions 12 to 16 pass and come off "fails today". Every check in CLAUDE.md passes. Push staging and stop for Bob.
+- [x] Deathbrand's level-up way shows level 20; Geldis is dropped or shown with his condition. The same rule holds for every checked quest, with a test, and the PC's list of other cases is in the log. *The Mac's list is below; the PC's reading of both Deathbrand lines against UESP isn't in `loop-log.md` yet.*
+- [x] Places: eight at most, grouped, and a way to ask for all.
+- [x] A quest asked for answers first with its own checked start; the line's gap is said once; Missives show `checked: files`.
+- [x] The quest log: categories, no helper names, no stage 0, no repeats. Tested on Kyria's Save 70. *On the stages Bob named from it; no copy of the save is in the repo.*
+- [x] Inigo's rescue is found by search.
+- [x] Player questions 12 to 16 pass and come off "fails today". Every check in CLAUDE.md passes. Push staging and stop for Bob. *And 17 (item 6).*
+- Mac, 22 Oct:
+  - **Item 1** (`quest_pages.py`). A helper started by a story manager node keeps the node's needs, so the level-up way reads "It starts by itself when you level up" with "Level 20" (the global's value now). A talk that needs its own quest at a stage later than the one it sets is a catch-up, not a way in, beside rule 6's "past the first objective": Geldis's talk sets Deathbrand's 1 and needs its 20 done, so it goes. Across every quest the rebuild changed twelve:
+    - **Needs the words had dropped, now shown:** Dragonborn (Level 25, After The Way of the Voice and the rest), I Done Got Thaned! (Level 14), Caches of Skorjan Iron-Beard (Level 15), A Forlorn Hope (After Seeking A Cure), Rejoining the College, Honor Thy Family, The Taste of Death, The Call of Gray Cowl of Nocturnal, Civil War Champion Armor (a condition not yet in words), Blood on the Ice (When you enter Windhelm), Deathbrand (Level 20).
+    - **Catch-ups dropped:** Deathbrand's Geldis Sadri; Unearthed's two Ralis Sedarys lines that pay or persuade him for the tale (both need Unearthed past the stage they set). Unearthed keeps Ralis's four other lines.
+    - For Bob: Deathbrand still reads "open for you" at level 10, through the book and through Dragonborn's Init quest, a patch catch-up the words drop but the record form the judge reads still holds. That was so before this order.
+  - **Item 2.** quests.json keeps every place a read-this item is found (`whereIs`), grouped by area (`whereIsArea`: the town a cell is in, what it's in, or the place itself; "Anywhere" for loot). get_quest gives eight, `whereIsByArea` when they span more than one area, and "6 more places, 14 in all: ask again with places: true"; `places: true` on get_quest gives all. The quest pages list every place.
+  - **Item 3.** A line with no story answers for the quest asked: the quest's facts come first, the line is `checked: files` when that quest's start is, and `aboutTheLine` says once how many of its quests aren't checked. Only a quest whose own start isn't checked gives no instructions. Gravewind's quests are all checked now, so WO-108's "no instructions" tests use On Hogithum.
+  - **Item 4** (`quest-log.ts`). The log groups each line under its category; stage 0 isn't listed or counted; a helper (handler, helper, pointer, hook, an editor's label, a "... Scene/Favor/Fence Quest" record) that shows an objective stands under its line's name, else it's background; one quest name in a line shows once, the livest kept.
+  - **Item 5.** A follower's line is also found by the words for getting one (free, freeing, rescue, recruit, hire, join, jail, prison, cell) and by its opening quest's people and places: "free Inigo", "Freeing Inigo", "Inigo jail" and "recruit Inigo" find Inigo.
+  - **Item 6.** Dave's finding is in `overrides.json` as a player's report: "A man falls from the sky near Falkreath; find his body and read his journal, Fredrick's Journal". A start from a trigger or a board ("It starts from ...") is a way in, not a need, so Paragliding is "open for you" at level 12; a way's own bracketed needs still count. Naming the nearest place to a placed trigger and wording it from its script and journal need positions the board reader doesn't keep yet: that's the PC's, and its place replaces Dave's when Bob checks they agree.
 
 ---
 

@@ -44,9 +44,10 @@ describe("the facts tools (WO-108)", () => {
     expect(s.soldBy.checked).toBe("not yet");
   });
 
-  it("get_quest_start gives Gravewind no instructions, marked not checked", () => {
-    const g = getQuestStart("gravewind");
-    expect(g).toMatchObject({ id: "gravewind", checked: "not yet" });
+  // Gravewind's quests are all checked now, so it answers (WO-137 item 3); On Hogithum's opening quest isn't.
+  it("get_quest_start gives On Hogithum no instructions, marked not checked", () => {
+    const g = getQuestStart("on-hogithum");
+    expect(g).toMatchObject({ id: "on-hogithum", checked: "not yet" });
     expect(g).not.toHaveProperty("start");
     expect(g).not.toHaveProperty("firstQuest");
   });

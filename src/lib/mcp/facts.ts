@@ -94,6 +94,15 @@ function questMatch(q: Quest, words: string[]): { rank: number; why: string } | 
 
 const firstSentence = (t: string) => (t.replace(/<([^>]*)>/g, "$1").match(/^.*?[.!?](\s|$)/)?.[0] ?? t).trim().slice(0, 200);
 
+/** The words players use for getting a follower (WO-137 item 5), searched beside a follower line's name. */
+const FOLLOWER_WORDS = "follower companion free frees freeing freed rescue rescuing recruit recruiting hire hiring join joins jail jailed prison cell";
+
+/** Where a follower line's opening quest starts and who gives it: "Riften Jail Inigo". */
+function followerPlaces(l: QuestLine): string {
+  const q = l.quests.find((x) => x.edid === l.opening) ?? l.quests[0];
+  return [...new Set([q?.start?.who, q?.start?.where, ...(q?.start?.ways ?? []).flatMap((w) => [w.who, w.where])].filter(Boolean))].join(" ");
+}
+
 /** Perks, spells, traits, races, birthsigns, deities, quest lines and stories by name or word: 20 at most. */
 export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], version = DEFAULT_VERSION, limit = 20): { hits: Hit[]; more: number; note?: string } {
   const d = versionData(version);
@@ -113,7 +122,12 @@ export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], 
     }
   if (version === currentVersion().id) {
     const { lines } = questsData();
-    if (want.has("quest line")) for (const l of lines) all.push({ kind: "quest line", id: l.id, name: l.name, line: [homeName(l.category), l.where, l.prince].filter(Boolean).join(" | "), text: l.quests.map((q) => q.name).join(" ") });
+    if (want.has("quest line"))
+      for (const l of lines) {
+        // A follower's line is also found by how players talk about getting them (WO-137 item 5): "free Inigo", "Inigo jail".
+        const follower = l.category === "followers" ? ` ${FOLLOWER_WORDS} ${followerPlaces(l)}` : "";
+        all.push({ kind: "quest line", id: l.id, name: l.name, line: [homeName(l.category), l.where, l.prince].filter(Boolean).join(" | "), text: l.quests.map((q) => q.name).join(" ") + follower });
+      }
     if (want.has("story")) for (const l of lines) {
       const s = storyOfLine(l.id);
       if (s) all.push({ kind: "story", id: s.id, name: s.name, line: firstSentence(s.pitch), text: s.pitch });
@@ -206,7 +220,35 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  * their needs, the first objective as `then`, and who and where when one person starts it (WO-121b:
  * back once the answer key passed). A start not checked yet gives none.
  */
-function startOf(q: Quest | undefined): {
+/** How many places a read-this way gives unless every one is asked for (WO-137 item 2). */
+const PLACES_SHOWN = 8;
+
+/**
+ * Where the thing to read is (WO-137 item 2): eight places at most, grouped by area in the data's order, and how to ask
+ * for the rest; every place with `all`.
+ */
+function wherePlaces(where: string[], areas: string[] | undefined, all: boolean) {
+  const shown = all ? where : where.slice(0, PLACES_SHOWN);
+  const groups: { area: string; places: string[] }[] = [];
+  shown.forEach((w, i) => {
+    const area = areas?.[i] ?? "";
+    const g = groups.at(-1);
+    if (g && g.area === area) g.places.push(w);
+    else groups.push({ area, places: [w] });
+  });
+  const more = where.length - shown.length;
+  return {
+    whereIs: shown,
+    // Grouped only when the places span more than one area.
+    ...(areas?.length && groups.length > 1 ? { whereIsByArea: groups.map((g) => (g.area ? g : { places: g.places })) } : {}),
+    ...(more > 0 ? { morePlaces: `${more} more place${more === 1 ? "" : "s"}, ${where.length} in all: ask again with places: true to list them.` } : {}),
+  };
+}
+
+function startOf(
+  q: Quest | undefined,
+  allPlaces = false,
+): {
   ways?: { way: string; needs?: string[]; who?: string; where?: string; checked?: string; whereIs?: string[]; whereIsIt?: string }[];
   then?: string;
   who?: string;
@@ -223,7 +265,7 @@ function startOf(q: Quest | undefined): {
         // A player found it in game (WO-131 Part 0): say so, and who, beside the files' facts.
         ...(w.checked === "players" ? { checked: `a player's report, not the game files (${w.source})` } : {}),
         // Where the thing to read is (WO-131 Part 2), from the game files; or that it isn't checked, which is no direction.
-        ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}),
+        ...(w.whereIs?.length ? wherePlaces(w.whereIs, w.whereIsArea, allPlaces) : {}),
         ...(w.unplaced ? { whereIsIt: `${w.unplaced} Don't tell the player where to look.` } : {}),
       }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
@@ -236,18 +278,27 @@ function startOf(q: Quest | undefined): {
   };
 }
 
-/** How a line or story starts, with where each fact was checked; an unchecked line gives no instructions. */
-function questStart(line: QuestLine, story: Story | undefined) {
+/**
+ * How a line or story starts, with where each fact was checked. A line with no story answers for the quest asked (WO-137
+ * item 3): its own checked start is the answer, and what the line still lacks is said once, in a sentence. Only when the
+ * quest itself isn't checked does it give no instructions.
+ */
+function questStart(line: QuestLine, story: Story | undefined, quest?: Quest) {
   const category = homeName(line.category);
-  if (!story)
+  if (!story) {
+    const head = { kind: "quest line" as const, id: line.id, name: line.name, category };
+    if (!quest || !startChecked(quest.start))
+      return { ...head, checked: "not yet", note: "This quest's start hasn't passed the planner's start check, so no instructions are given. Say it isn't checked yet rather than filling the gap." };
+    // A line whose quests are all checked (one by one, or as a class like Missives) is checked; else say which aren't, once.
+    const open = line.quests.filter((x) => !startChecked(x.start));
     return {
-      kind: "quest line" as const,
-      id: line.id,
-      name: line.name,
-      category,
-      checked: "not yet",
-      note: "This line's start hasn't passed the planner's start check, so no instructions are given. Say it isn't checked yet rather than filling the gap.",
+      ...head,
+      checked: "files",
+      ...(open.length
+        ? { aboutTheLine: `${quest.name}'s start is checked (below). ${open.length} of the ${line.quests.length} quests in ${line.name} aren't yet: say so only if the player asks about those.` }
+        : {}),
     };
+  }
   const first = storyOrder(story)[0];
   const from = (c: string | undefined) => (c === "not yet" ? "not yet" : "files");
   return {
@@ -272,14 +323,14 @@ function questStart(line: QuestLine, story: Story | undefined) {
 }
 
 /** One quest's objectives and the endings its records flag, each with its journal line and when it shows. */
-function questFacts(q: Quest) {
+function questFacts(q: Quest, allPlaces = false) {
   return {
     edid: q.edid,
     name: q.name,
     start: {
       // A start the answer key confirmed (WO-136 ruling 2) says it's from the wiki, with the page.
       checked: q.start?.checked === "uesp" ? `from ${q.start.source ?? "UESP"}, confirmed in the planner's answer key${q.start.url ? ` (${q.start.url})` : ""}` : (q.start?.checked ?? "not yet"),
-      ...startOf(q),
+      ...startOf(q, allPlaces),
       ...(startChecked(q.start) && q.start?.needs?.length ? { needs: q.start.needs } : {}),
     },
     objectives: q.objectives,
@@ -315,7 +366,7 @@ export function changesRun(q: Quest) {
  * a quest's EDID) or by name. Answers how it starts, as get_quest_start did, and the quest's objectives
  * and endings: the named quest, or the line's opening quest.
  */
-export function getQuest({ id, name }: { id?: string; name?: string }, version = DEFAULT_VERSION, player: PlayerState | null = null) {
+export function getQuest({ id, name, places }: { id?: string; name?: string; places?: boolean }, version = DEFAULT_VERSION, player: PlayerState | null = null) {
   const { byId, lines } = questsFor(version);
   if (!id && !name) throw new FactsError("Give the quest's id or name. search_facts finds quest lines and stories by name.");
   const quests = lines.flatMap((line) => line.quests.map((quest) => ({ line, quest })));
@@ -356,10 +407,12 @@ export function getQuest({ id, name }: { id?: string; name?: string }, version =
   const q: Quest = quest ?? l.quests.find((x) => x.edid === (s1 ? storyOrder(s1)[0].edid : l.opening)) ?? l.quests[0];
   return {
     ...(found ? { found } : {}),
-    ...questStart(l, s1),
+    // With no story, the quest asked for answers first (WO-137 item 3); its line follows.
+    ...(s1 ? {} : { quest: questFacts(q, places) }),
+    ...questStart(l, s1, s1 ? undefined : q),
     // A job from a board (WO-136 ruling 3): the class's one sentence, said once, and where the boards are.
     ...(l.board && q.start?.board ? { jobFromABoard: { says: l.board.says, boards: l.board.boards ?? "Where the boards are isn't checked yet. Don't name one." } } : {}),
-    quest: questFacts(q),
+    quest: questFacts(q, places),
     // Open for you (WO-115 Part 3): only when the player said where they are.
     ...(player ? { openForYou: openForYou(l, q, player, version) } : {}),
   };

@@ -277,6 +277,12 @@
       "_note": "WO-121b, Bob's judgement of the night run (22 Oct): the note (ccbgssse002-exoticarrows.esl:00081F) has no name in the files, so the page showed its editor id. Its script sets stage 5 when you get it (defaultsetstageonplayeracquireitem); the first step names it the Letter from Calcelmo.",
       "Read ccBGSSSE002_NoteFromCalcelmo": "Get a note from Calcelmo"
     },
+    "ParaIntro": {
+      "_note": "WO-137 item 6: Paragliding in Skyrim starts from three placed triggers (Paragliding.esp:00802D, :008021, :009060) in the open world with no name of their own, so the board reader says only somewhere in Skyrim. Dave knows the spot: near Falkreath a man falls out of the sky, and his journal, Fredrick's Journal, moves it on. When the PC names the nearest place to each trigger, that replaces this and Bob checks they agree.",
+      "_checked": "players",
+      "_source": "Dave, found in game, 22 Oct 2026",
+      "It starts from Para Intro Gazebo Discover somewhere in Skyrim": "A man falls from the sky near Falkreath; find his body and read his journal, Fredrick's Journal"
+    },
     "0WRHorseQ": {
       "_note": "WO-131 Part 0: Dave found it in the game. The Palonimo Mare is a note pinned to a board right outside Joslin's house, which is hidden behind the Bannered Mare in Whiterun. The PC's readables file (Part 1) has it placed once in Whiterun, 22 m from Joslin's House and Hearth-Healer's Hall and 27 m from the Bannered Mare; when Part 2 gives the file's place, it replaces this and Bob checks they agree.",
       "_checked": "players",

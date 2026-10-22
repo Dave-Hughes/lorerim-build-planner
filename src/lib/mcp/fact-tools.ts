@@ -98,13 +98,14 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     level: z.number().int().min(1).max(100).optional().describe("The player's level, for openForYou."),
     done: z.array(z.string().max(120)).max(200).optional().describe("Quest lines (ids or names) and quests (EDIDs or names) the player has finished, from what they said."),
     playthrough: z.string().max(80).optional().describe("One of the player's playthroughs: its save's level and quest stages and what it has ticked (needs sign-in)."),
+    places: z.boolean().optional().describe("true for every place a thing to read can be found; eight are given by default, grouped by area."),
   };
-  type QuestArgs = { id?: string; name?: string; version?: string; level?: number; done?: string[]; playthrough?: string };
+  type QuestArgs = { id?: string; name?: string; version?: string; level?: number; done?: string[]; playthrough?: string; places?: boolean };
   const quest = async (a: QuestArgs, ctx: { http?: { authInfo?: unknown } }) => {
     const told = a.level !== undefined || a.done?.length || a.playthrough;
     const userId = (ctx.http?.authInfo as PlannerAuth | undefined)?.extra?.userId;
     const player = told ? playerState(await toldOf(a, typeof userId === "string" ? userId : null), a.version) : null;
-    return getQuest({ id: a.id, name: a.name }, a.version, player);
+    return getQuest({ id: a.id, name: a.name, places: a.places }, a.version, player);
   };
   server.registerTool(
     "get_quest",

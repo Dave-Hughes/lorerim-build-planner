@@ -107,7 +107,13 @@ function judge(need: string, names: QuestNames, p: PlayerState): Verdict {
   if (n.startsWith("One of: ")) return judgeAny(n.slice(8).split(/; or /), names, p);
   // Chained starts: "Through X, which starts from: ..." is open when what it starts from is.
   if ((m = /^Through .+?, which starts from: (.+)$/.exec(n))) return judgeAny(m[1].split(/; or /), names, p);
-  if (n === "It runs from the start of the game" || n.startsWith("It starts by itself")) return MET;
+  if (n === "It runs from the start of the game") return MET;
+  // By itself, or from something placed (a trigger, a board: WO-137 item 6): a way in, not a need. Its own needs, in
+  // brackets, still count (Deathbrand's level-up start needs level 20).
+  if (n.startsWith("It starts by itself") || n.startsWith("It starts from")) {
+    const inner = /\(([^()]+)\)$/.exec(n);
+    return inner ? judgeAll(inner[1].split(/[;,] /), names, p) : MET;
+  }
   // A way in by talking: open, unless it carries needs of its own in brackets.
   if (/^(Ask|Talk to) /.test(n) && !/the records don't name/.test(n)) {
     const inner = /\(([^()]+)\)$/.exec(n);

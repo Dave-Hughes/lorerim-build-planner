@@ -138,6 +138,65 @@ const QUESTIONS: Question[] = [
     must: [/"suggestions":\[\{"/],
     never: [/Thieves Guild/, /Dark Brotherhood/],
   },
+  {
+    n: 12,
+    asks: "How do I start Deathbrand?",
+    ask: () => [getQuest({ name: "Deathbrand" }, undefined, playerState({ level: 10, done: [] }))],
+    // The level-up way with its level; Geldis only with his condition; the book's places with a way to see all of them.
+    must: [/when you level up[^"]*"[^}]*level 20|level 20[^"]*level up/i, /"[^"]*Geldis Sadri[^}]*Deathbrand stage 20|^(?![\s\S]*Geldis Sadri)[\s\S]*"/, /places: true/],
+    never: [/and \d+ more places/],
+  },
+  {
+    n: 13,
+    asks: "How do I start a missive from the notice board?",
+    ask: () => [getQuest({ name: "Missives" }), getQuest({ id: questsData().byId.get("missives")!.quests[0].edid })],
+    must: ["Ben Erai", "Winterhold", /notice board/, /"checked":"files"/],
+    never: [/hasn't passed the planner's start check/, /no instructions are given/, /"checked":"not yet"/],
+  },
+  {
+    n: 14,
+    asks: "What quests are in my quest log? (Kyria's Save 70)",
+    // Save 70's faults as Bob read them (22 Oct): helpers in the log, quests at stage 0, two quests of one name. The stages
+    // here are the ones he named, not the whole save (no copy of it is in the repo).
+    ask: () => [
+      questLog({
+        label: "Save 70",
+        level: 12,
+        day: 31,
+        place: "Ivarstead",
+        questStages: { "0WRHorseQ": 10, TG00MiscHandler: 10, LTNQuestHandler: 10, CR01: 10, CR02: 10, FreeformRiften15: 10, FreeformShorsStone02: 10, MS11: 0, MS13: 0, FreeformRiften11: 12 },
+      }),
+    ],
+    must: [/"category":"Side stories"/, /"category":"Jobs and errands"/, /Running Wild/],
+    never: [/Misc Handler/, /Quest Handler/, /Handler/, /"stage":0\b/, /Animal Extermination[\s\S]*Animal Extermination/, /Special Delivery[\s\S]*Special Delivery/],
+  },
+  {
+    n: 15,
+    asks: "How do I free Inigo from the jail?",
+    ask: async () => {
+      const found = searchFacts("free Inigo");
+      return [found, await call(() => getQuest({ id: "inigo" }))];
+    },
+    must: [/"name":"Inigo"/, /Riften Jail/],
+    never: [/no quest matched|No quest, quest line or story/i],
+  },
+  {
+    n: 16,
+    asks: "A quest in a line that hasn't passed the line's start check gives its own checked start",
+    ask: () => [getQuest({ name: "Running Wild" }), getQuest({ name: "Caught Red Handed" }), getQuest({ name: "Deathbrand" })],
+    must: [/"checked":"files"/, /Read the note pinned to the board/, "Svana Far-Shield"],
+    never: [/no instructions are given/],
+  },
+  {
+    n: 17,
+    asks: "How do I start the quest to get the paraglider? I'm level 12.",
+    ask: async () => {
+      const found = searchFacts("paraglider");
+      return [found, await call(() => getQuest({ name: "Paragliding in Skyrim" }, undefined, playerState({ level: 12, done: [] })))];
+    },
+    must: [/near Falkreath/, /falls from the sky|fell from the sky|falls out of the sky/i, /journal/i, /"state":"open"/],
+    never: [/Para Intro Gazebo/, /Gazebo Discover/],
+  },
 ];
 
 interface Result {

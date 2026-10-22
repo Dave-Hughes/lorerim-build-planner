@@ -1,4 +1,4 @@
-import { questsData } from "@/lib/quests/data";
+import { homeName, questsData } from "@/lib/quests/data";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 
 /**
@@ -21,8 +21,19 @@ export interface LogSnapshot {
 interface Placed {
   quest: string;
   line: string;
+  category: string;
   stage: number;
 }
+
+/**
+ * A quest record a player never sees by name (WO-137 item 4): a handler, helper, pointer or hook, an editor's label
+ * ("TG00 Misc Handler", "LTN Quest Handler", "DB01_Opt"), or a record named "... Quest" ("Thieves Guild Caravan Fence Quest").
+ */
+export const isHelper = (name: string) => HELPER.test(name);
+const HELPER = /\b(handlers?|helpers?|pointer|hook)\b|_|\b[A-Z]{2,}\d+\w*\b|^"Parent"|\b(Scene|Favor|Fence|Books|Horse|Objective) Quest$/i;
+
+/** The order states win in when one quest name shows twice in a line (two Animal Extermination jobs): what's live first. */
+const RANK = { active: 0, finished: 1, failed: 2, unclear: 3 } as const;
 
 type State =
   | { state: "active"; now: string; alsoNow?: string[] }
@@ -66,15 +77,29 @@ export function questLog(snap: LogSnapshot | null | undefined, planLevels?: numb
   for (const line of questsData().lines) for (const quest of line.quests) if (!byEdid.has(quest.edid.toLowerCase())) byEdid.set(quest.edid.toLowerCase(), { line, quest });
   const groups = { active: [] as (Placed & State)[], finished: [] as (Placed & State)[], failed: [] as (Placed & State)[], unclear: [] as (Placed & State)[] };
   let background = 0;
+  // One entry per quest name in a line (WO-137 item 4): two jobs of one name are one line in the log, the livest kept.
+  const seen = new Map<string, Placed & State>();
   for (const [edid, stage] of Object.entries(snap.questStages ?? {})) {
+    // Stage 0 isn't started (WO-137 item 4): nothing to list, nor to count.
+    if (stage <= 0) continue;
     const hit = byEdid.get(edid.toLowerCase());
     if (!hit) {
       background++;
       continue;
     }
     const st = standing(hit.quest, stage);
-    groups[st.state].push({ quest: hit.quest.name, line: hit.line.name, stage, ...st });
+    // A helper is never named: one that shows an objective stands for its line's story, by the line's name; else it's background.
+    const helper = isHelper(hit.quest.name);
+    if (helper && st.state !== "active") {
+      background++;
+      continue;
+    }
+    const placed = { quest: helper ? hit.line.name : hit.quest.name, line: hit.line.name, category: homeName(hit.line.category), stage, ...st };
+    const key = `${placed.line}\u0000${placed.quest}`;
+    const was = seen.get(key);
+    if (!was || RANK[st.state] < RANK[was.state]) seen.set(key, placed);
   }
+  for (const p of seen.values()) groups[p.state].push(p);
   // A line with fewer of its quests still to come is nearer its end, so it comes first.
   const left = (p: Placed) => {
     const line = questsData().lines.find((l) => l.name === p.line);
@@ -82,20 +107,25 @@ export function questLog(snap: LogSnapshot | null | undefined, planLevels?: numb
     return line ? line.quests.length - i : 0;
   };
   groups.active.sort((a, b) => left(a) - left(b) || a.line.localeCompare(b.line));
+  // Each line under its own category (WO-137 item 4: "Side stories", "Jobs and errands"), categories in the order they come.
   const byLine = (xs: (Placed & State)[]) => {
-    const out = new Map<string, Omit<Placed & State, "line">[]>();
-    for (const { line, ...rest } of xs) out.set(line, [...(out.get(line) ?? []), rest]);
-    return [...out].map(([line, quests]) => ({ line, quests }));
+    const out = new Map<string, Map<string, Omit<Placed & State, "line" | "category">[]>>();
+    for (const { line, category, ...rest } of xs) {
+      const cat = out.get(category) ?? new Map();
+      cat.set(line, [...(cat.get(line) ?? []), rest]);
+      out.set(category, cat);
+    }
+    return [...out].map(([category, lines]) => ({ category, lines: [...lines].map(([line, quests]) => ({ line, quests })) }));
   };
   return {
     from: where,
     ...(planNote(snap.level, planLevels) ? { plan: planNote(snap.level, planLevels) } : {}),
     active: byLine(groups.active),
-    finished: { count: groups.finished.length, lines: byLine(groups.finished) },
-    failed: { count: groups.failed.length, lines: byLine(groups.failed) },
+    finished: { count: groups.finished.length, categories: byLine(groups.finished) },
+    failed: { count: groups.failed.length, categories: byLine(groups.failed) },
     ...(groups.unclear.length ? { startedButUnclear: byLine(groups.unclear) } : {}),
     background: `and ${background} background quest${background === 1 ? "" : "s"} the planner doesn't list (helpers and the game's own bookkeeping)`,
-    note: "Quest names and objectives are the game's words. Give the active ones first; finished and failed only if the player asks. The stage numbers are for you, not the player.",
+    note: "Quest names and objectives are the game's words. Give the active ones first, each line under its own category; finished and failed only if the player asks. The stage numbers are for you, not the player.",
   };
 }
 
@@ -104,6 +134,7 @@ export function logCounts(snap: LogSnapshot | null | undefined) {
   if (!snap?.questStages) return null;
   const log = questLog(snap);
   if (!("active" in log)) return null;
-  const started = log.active.reduce((n, g) => n + g.quests.length, 0) + log.finished.count + log.failed.count + (log.startedButUnclear?.reduce((n, g) => n + g.quests.length, 0) ?? 0);
+  const count = (cats: { lines: { quests: unknown[] }[] }[]) => cats.reduce((n, c) => n + c.lines.reduce((m, l) => m + l.quests.length, 0), 0);
+  const started = count(log.active) + log.finished.count + log.failed.count + count(log.startedButUnclear ?? []);
   return `${started} quests started, ${log.finished.count} finished`;
 }

@@ -746,7 +746,7 @@ class ReadablesTest(unittest.TestCase):
     def test_a_way_gets_its_places_or_says_it_isnt_checked(self):
         start = {"ways": [{"how": "Read A Note"}, {"how": "Read Lost Page"}, {"how": "Talk to Vex"}]}
         out = qp.placed_ways(start, "Q", {("Q", "A Note"): ["Riften"], ("Q", "Lost Page"): []})
-        self.assertEqual(out["ways"], [{"how": "Read A Note", "whereIs": ["Riften"]}, {"how": "Read Lost Page", "unplaced": "Where to find Lost Page isn't checked yet."}, {"how": "Talk to Vex"}])
+        self.assertEqual(out["ways"], [{"how": "Read A Note", "whereIs": ["Riften"], "whereIsArea": ["Riften"]}, {"how": "Read Lost Page", "unplaced": "Where to find Lost Page isn't checked yet."}, {"how": "Talk to Vex"}])
 
 
 class LoopRulingsTest(unittest.TestCase):
@@ -775,6 +775,31 @@ class BoardWayTest(unittest.TestCase):
         start = qp.start_of({"name": "Deliver a Letter Near", "startedBy": [board], "firstObjectiveStage": 20, "target": [], "needs": {}}, {})
         self.assertEqual(start["ways"][0]["how"], "It starts from something placed in Windhelm.")
         self.assertEqual(start["checked"], "files")
+
+class PlacesByAreaTest(unittest.TestCase):
+    """WO-137 item 2: every place kept, grouped by area, in the order the areas first come."""
+
+    def test_grouped(self):
+        found = ["Tel Mithryn Steward's House, Tel Mithryn Steward", "Bloodskal Barrow", "Tel Mithryn, Tel Mithryn Tower", "Carried by Adventurer, in Gyldenhul Barrow", "It can turn up as random loot"]
+        where, area = qp.by_area(found, {"Tel Mithryn Steward's House": "Tel Mithryn"})
+        self.assertEqual(where, ["Tel Mithryn Steward's House, Tel Mithryn Steward", "Tel Mithryn, Tel Mithryn Tower", "Bloodskal Barrow", "Carried by Adventurer, in Gyldenhul Barrow", "It can turn up as random loot"])
+        self.assertEqual(area, ["Tel Mithryn", "Tel Mithryn", "Bloodskal Barrow", "Gyldenhul Barrow", "Anywhere"])
+
+
+class CatchUpTest(unittest.TestCase):
+    """WO-137 item 1: a talk that needs a later stage of its own quest than the one it sets is a catch-up, not a way in."""
+
+    def test_geldis_is_a_catch_up(self):
+        geldis = {"by": "dialogue", "call": "SetStage 1", "conditions": "the speaker is Geldis Sadri; Deathbrand stage 20 done; Deathbrand stage <= 1"}
+        self.assertTrue(qp.continues(geldis, "Deathbrand", "DLC2dunHaknirTreasureQST", 29))
+        self.assertTrue(qp.continues(geldis, "Deathbrand", "DLC2dunHaknirTreasureQST", None))
+        falk = {"by": "dialogue", "call": "SetStage 50", "conditions": "The Wolf Queen Awakened stage 10 done"}
+        self.assertFalse(qp.continues(falk, "The Wolf Queen Awakened", "x", 50))
+
+    def test_a_helpers_trigger_keeps_its_level(self):
+        helper = {"by": "quest script", "throughStartedBy": [{"by": "story manager", "event": "level up", "conditions": "level >= DLC2dunHaknirTreasureQSTMinLevel (now 20)"}]}
+        self.assertEqual(qp.node_needs(helper, "Deathbrand"), ["Level 20"])
+
 
 class RunChangesTest(unittest.TestCase):
     """WO-129 Part 6: what an ending hands over that changes a run, and when one ending of several gives it."""
