@@ -4724,8 +4724,9 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Update the WO-114 e2e: New character lands in Set up; Start a run from the hero and from the card; a build without a run shows no run tabs. The `NewCharacter.dc.html` board is superseded by this order (note on the canvas).
 
 ### Done when
-- [ ] New character is Set up; a run is started from the build page or its card; a build without a run looks as it did before WO-114.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+- [x] New character is Set up; a run is started from the build page or its card; a build without a run looks as it did before WO-114.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+- Closed (Mac, 22 Oct): nothing to build. WO-116 sections 1 and 2 carried all of it, and `e2e/wo116.spec.ts` tests each point: "New character lands in Set up, with no question first", "Start a run, from the hero and from the card", and a build alone with Levels and Guide only. Checks on staging at `2d64a6c`: typecheck, lint, 527 unit tests, the 11 player questions, 218 game-data tests, build, and e2e 351 of 351 once `e2e/wo136.spec.ts` was brought up to date: the PC's board reader (`23c2d9d`) now places the 12 Missives boards, so the page names them instead of "Where the boards are isn't checked yet."
 
 ---
 

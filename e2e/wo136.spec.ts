@@ -8,6 +8,7 @@ test("the Missives page says the class once, and lists no job one by one", async
   await expect(page.getByRole("heading", { name: "Jobs from a board" })).toBeVisible();
   // Once in the quests, and once as the way in under How to start it.
   await expect(page.locator("#quests-title").locator("..").locator("..").getByText(SAYS, { exact: true })).toHaveCount(1);
-  await expect(page.getByText("Where the boards are isn't checked yet.")).toBeVisible();
+  // The 12 boards the records place (23c2d9d's board reader).
+  await expect(page.getByText(/^Where the boards are: Ben Erai; .*Winterhold\.$/)).toBeVisible();
   await expect(page.getByRole("button", { name: "Journal ›" })).toHaveCount(0);
 });
