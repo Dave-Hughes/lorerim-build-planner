@@ -4928,11 +4928,15 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 4. **A rule in CLAUDE.md:** no order that changes what an assistant is told is done until the questions it touches pass; and when Dave finds a question that fails, Bob adds it to `player-questions.md` before writing the fix.
 
 ### Done when
-- [ ] `player-questions.md` has the questions above, each with its expected facts.
-- [ ] The test runs them through the real handlers; the currently failing ones are marked and named (Palonimo search, where the book is, quest log).
-- [ ] `npm run test:questions` prints a clear pass or fail per question.
-- [ ] CLAUDE.md has the rule.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob. Then WO-133, WO-131 Part 0 and WO-134 each turn one failing question green.
+- [x] `player-questions.md` has the questions above, each with its expected facts.
+- [x] The test runs them through the real handlers; the currently failing ones are marked and named (Palonimo search, where the book is, quest log).
+- [x] `npm run test:questions` prints a clear pass or fail per question.
+- [x] CLAUDE.md has the rule.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob. Then WO-133, WO-131 Part 0 and WO-134 each turn one failing question green.
+- Mac, 22 Oct: eleven questions, numbered in `player-questions.md`. Each runs through the handlers the door calls (`searchFacts`, `getQuest`, `suggestQuests`, `playerState`) on the real data, with no database. Its answer is checked for what it must hold, and for what no answer may: an editor id, a form id, a raw function (`GetItemCount`, `fn230`), "someone the records don't name". `raw` and the ids an assistant passes back aren't read for those. A marked question runs as an expected failure (`it.fails`), so it goes red the day it passes and the mark has to come off. `npm run test:questions` prints each question as PASS or FAIL, with what's missing, what it shouldn't have, and what it got.
+  - **Pass (6):** 3 Blood on the Ice, 4 Caught Red Handed, 5 The Blessings of Nature, 9 Kyria at level 6 in Riften, 10 Bleak Falls Barrow at level 5, 11 near me in Whiterun.
+  - **Marked (5):** 1 Palonimo (WO-133, WO-131 Part 0), 2 and 6 Running Wild's note (WO-131 Part 0), 7 the other 61 read-this ways (WO-131 Part 2), 8 the quest log (WO-134).
+  - Blood on the Ice by name gets "2 quests are named Blood on the Ice … ask again with the EDID", so the question asks again with MS11, as an assistant would. Its who is the Windhelm guard's way; the page still names no single giver until the PC's rerun.
 
 ---
 

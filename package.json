@@ -11,6 +11,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:questions": "QUESTIONS=1 vitest run src/lib/mcp/player-questions.test.ts --silent=false",
     "test:gamedata": "python3 -m unittest discover -s scripts/gamedata -p 'test_*.py'",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.ts",

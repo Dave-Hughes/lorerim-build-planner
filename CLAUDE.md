@@ -13,5 +13,6 @@ Read `README.md` first (environments, scripts, code map, game-data pipeline). Th
 - Secrets live in Vercel (`vercel env pull .env.local` for local work) and `.env.local`; never commit them, print them, or paste them into chat.
 - Game data (`src/data/lorerim-5.0.4.8/perks.json`, `traits.json`) is generated: edit `gamedata/5.0.4.8/overrides.json` or the scripts in `scripts/gamedata/`, then `python3 scripts/gamedata/build.py`. Never hand-edit the generated files.
 - Before calling a change done: `npm run typecheck`, `npm run lint`, `npm test`, and for screen changes `npm run build` then `npm run test:e2e` (seeds and cleans the dev database). Screenshot screens with `scripts/shot.mjs` and compare against the design canvas.
+- The player's questions (`docs/player-questions.md`, `npm run test:questions`, part of `npm test`): no order that changes what an assistant is told is done until the questions it touches pass, and their "fails today" marks come off. When Dave finds a question that fails, Bob adds it to `player-questions.md` before the fix is written.
 - Use the game's words. Perk and trait text comes from the records; don't paraphrase it.
 - Commit messages: plain English, say what changed and why. Dave is the author of the project; co-author lines for an AI assistant go at the end of the message.
