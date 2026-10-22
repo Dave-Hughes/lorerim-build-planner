@@ -157,6 +157,12 @@ function judgeAny(ways: string[], names: QuestNames, p: PlayerState): Verdict {
 /** What a way in says for a condition the planner can't word yet (WO-126's UNSAID, in quest_pages.py). */
 const UNNAMED = /can't put in words yet/;
 
+// A reason the judge read from the record form (a condition function, a comparison, a global, an editor id, a helper's
+// record name): never said to a player or an assistant (WO-136, Bob 22 Oct). It reads as the condition it can't word.
+const RECORD = /\b(Get[A-Z]\w*|Is[A-Z][a-z]\w*|Has[A-Z]\w*|fn\d+)\b|==|!=|\bglobal \w|[A-Za-z]+_[A-Za-z]|\(named "|\bthe speaker\b|\.es[mpl]:/;
+const SAID = "a condition the planner can't put in words yet";
+const plainWhy = (why: string) => (RECORD.test(why) ? SAID : why);
+
 /**
  * Whether one quest is open for the player (WO-115 Part 3), from its checked needs against what the
  * planner knows of them. Any need not met makes it locked; any need the planner can't judge makes it
@@ -175,9 +181,9 @@ export function openFor(
   // The record form (WO-126): the words are for players, the stages and counts for judging.
   const verdicts = (quest.start.raw?.needs ?? quest.start.needs ?? []).map((n) => judge(n, names, p));
   if (prior && !p.done.has(prior.edid)) verdicts.push(unknown(`comes after ${prior.name || prior.edid}, and the planner hasn't been told that's done`));
-  const no = verdicts.filter((v): v is { ok: false; why: string } => v.ok === false).map((v) => v.why);
+  const no = [...new Set(verdicts.filter((v): v is { ok: false; why: string } => v.ok === false).map((v) => plainWhy(v.why)))];
   if (no.length) return { state: "locked", because: no };
-  const cant = verdicts.filter((v): v is { ok: null; why: string } => v.ok === null).map((v) => v.why);
+  const cant = [...new Set(verdicts.filter((v): v is { ok: null; why: string } => v.ok === null).map((v) => plainWhy(v.why)))];
   if (cant.length) return { state: "unknown", because: cant };
   // Every way in, as a player reads it, still waits on a condition the planner can't word (WO-130 follow-up: Caught Red
   // Handed, which also runs from the start of the game, so its needs say nothing): never a bare open. A way whose only

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getQuest, playerState } from "./facts";
+import { getQuest, getQuestStart, playerState, searchFacts } from "./facts";
+import { suggestQuests } from "./playthroughs";
 import { questsData } from "@/lib/quests/data";
 
 /** WO-136: Missives as one class (ruling 3), a key row counts as checked (ruling 2), no "(0/0)" counter (ruling 6). */
@@ -38,5 +39,25 @@ describe("a counter the game sets at run time (WO-136 ruling 6)", () => {
     expect(JSON.stringify(questsData().lines)).not.toContain("(0/0)");
     expect(all().find((q) => q.edid === "CR03")?.objectives[0]).toBe("Collect the sample pelts");
     expect(JSON.stringify(all().find((q) => q.name === "Spread the Love")?.objectives)).toContain("(0/20)");
+  });
+});
+
+/** WO-136, Bob 22 Oct: the record form never goes through the door; every fact in it is in the ways and needs, in the game's words. */
+describe("no raw start text through the door (WO-136)", () => {
+  const RECORD = /"raw"|GetInFaction|GetIsRace|== 1|Init quest/;
+  it("get_quest and get_quest_start, for every quest, line and story, with and without a player", () => {
+    const ids = [...questsData().lines.map((l) => l.id), ...all().map((q) => q.edid)];
+    const leaks = ids.flatMap((id) => {
+      const out = [JSON.stringify(getQuest({ id })), JSON.stringify(getQuestStart(id)), JSON.stringify(getQuest({ id }, undefined, playerState({ level: 20, done: [] })))].join("\n");
+      return RECORD.test(out) ? [`${id}: ${out.match(RECORD)![0]}`] : [];
+    });
+    expect(leaks).toEqual([]);
+  });
+  it("search_facts and suggest_quests", async () => {
+    for (const q of ["Orc", "Init", "Deathbrand", "The Cursed Tribe", "Palonimo"]) expect(JSON.stringify(searchFacts(q))).not.toMatch(RECORD);
+    for (const where of [undefined, "Riften", "Whiterun", "Windhelm"]) expect(JSON.stringify(await suggestQuests("https://planner.test", { level: 30, where }, null))).not.toMatch(RECORD);
+  });
+  it("the data keeps it, for the open-or-locked judge", () => {
+    expect(all().find((q) => q.edid === "DA06")?.start?.raw?.needs.join(" ")).toMatch(/GetIsRace Orc == 1/);
   });
 });

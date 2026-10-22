@@ -8,7 +8,7 @@ import { categories, homeName, questsData } from "@/lib/quests/data";
 import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder, type Story } from "@/lib/quests/story";
 import { openFor, questNames, type PlayerState } from "@/lib/quests/open";
-import type { Quest, QuestLine, QuestStart } from "@/lib/quests/types";
+import type { Quest, QuestLine } from "@/lib/quests/types";
 import { startChecked } from "@/lib/quests/types";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 
@@ -211,7 +211,6 @@ function startOf(q: Quest | undefined): {
   then?: string;
   who?: string;
   where?: string;
-  raw?: QuestStart["raw"];
 } {
   const st = q?.start;
   if (!st || !startChecked(st)) return {};
@@ -228,12 +227,12 @@ function startOf(q: Quest | undefined): {
         ...(w.unplaced ? { whereIsIt: `${w.unplaced} Don't tell the player where to look.` } : {}),
       }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
-  // The words are what a player reads; raw is each need and way as the records have it, for an assistant to reason on.
+  // Only the words (WO-136, Bob 22 Oct): the record form (start.raw) stays in the data and for the open-or-locked judge,
+  // never through the door. Every fact in it is in the ways and needs, and an assistant can only repeat it to a player.
   return {
     ...(st.who ? { who: st.who, ...(st.where ? { where: st.where } : {}) } : {}),
     ways,
     ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}),
-    ...(st.raw ? { raw: st.raw } : {}),
   };
 }
 

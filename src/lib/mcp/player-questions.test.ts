@@ -23,14 +23,14 @@ interface Question {
   todo?: string;
 }
 
-// Never in an answer (outside raw and the ids an assistant passes back): an editor id, a form id, a raw condition function,
-// or a person the records don't name.
+// Never in an answer (outside the ids an assistant passes back): an editor id, a form id, a raw condition function, or a
+// person the records don't name. The record form (raw) no longer goes through the door (WO-136), so nothing is skipped for it.
 const NEVER: Want[] = [/\b[A-Za-z]+_[A-Za-z]\w*/, /\bcc[A-Z]\w*/, /\.es[mpl]:/i, /\b(Get[A-Z]\w+|fn\d+)\b/, /someone the records don't name/];
 
-/** What an assistant tells the player from: every value, without raw (the record form) and the ids it passes back. */
+/** What an assistant tells the player from: every value but the ids it passes back. */
 function said(o: unknown): string {
   if (Array.isArray(o)) return o.map(said).join("\n");
-  if (o && typeof o === "object") return Object.entries(o).filter(([k]) => !["raw", "edid", "id", "link", "story", "playthrough"].includes(k)).map(([, v]) => said(v)).join("\n");
+  if (o && typeof o === "object") return Object.entries(o).filter(([k]) => !["edid", "id", "link", "story", "playthrough"].includes(k)).map(([, v]) => said(v)).join("\n");
   return o === null || o === undefined ? "" : String(o);
 }
 
