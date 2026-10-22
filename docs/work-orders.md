@@ -4909,6 +4909,34 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-136  What the loop found: Bob's rulings, and the tools the last 453 need (PC then Mac, 22 Oct 2026)
+
+**Why.** The quest loop (WO-132) stopped after three batches because every quest it took landed on the needs-Bob list, which is the order's own signal that the rules are wrong, not the data. Its report (`loop-report-2026-10-22.md`) shows why: of the 453 unchecked quests, **364 are Missives** (courier and radiant jobs from notice boards), 18 are Vigilant bounties, and the rest are hard cases. The tools read people, books and story-manager events. They don't read boards or radiant dispatchers. The loop wasn't running into the data; it was running into what the tools can read. Bob's rulings on its four groups:
+
+### Bob's rulings
+1. **The line's order hides the start (25 quests: A New Order, Unseen Visions, Under Saarthal, Containment, Gift of Saturalia's side quests…).** Rule: a later quest's call counts as a start when it comes from a stage that ends that quest, or when the quest it sets has no other starter. Test against the answer key; add key rows where UESP agrees (A New Order: Bloodline stage 30).
+2. **A key row counts as checked.** The loop found five key rows on quests the planner marks "not yet checked" (Black Book: Untold Legends, The Kagrumez Gauntlet, Silenced Tongues, Yngol's Barrow, Sleepwalking Into A Nightmare). A starter confirmed by UESP and held in the key makes the quest checked, with the source shown as the wiki. `test_quest_truth.py` also asks that a quest with a key row is not "not yet".
+3. **Boards, radiant jobs and the like (85 quests: Missives 364 across the whole set, the Vigilant bounties, Animal Pelt Collection, Bounty: Book).** One class, not 364 quests. The planner says so in one sentence per kind: "Missives: take a missive from the notice board in any hold's capital or a courier's request; each is a short delivery. Where the boards are:" with the boards the records place. Not one row per job. Quests in this class are `checked: files` as a class, with the same text, and the planner lists them once under "jobs from a board", not one by one.
+4. **Helpers ruled out (3):** Purity of Revenge, Glory of the Dead, March of the Dead. Stay "not yet", with the reason.
+5. **Starters the check can't name (7):** the Thieves Guild's five city jobs, A New Source of Stalhrim, Sleepwalking Into A Nightmare. PC traces by hand, Bob judges.
+6. **Fixes from the reviewer:** the Gather quest's counter shows "(0/0)"; the plugin prints twice in each id in `needs-bob.md`.
+
+### PC
+- Teach the start check to read notice boards and radiant dispatchers (placed references with a script, and the dispatcher quest that sets the job's stage), so Missives and the bounties have a starter. If it can't, say so for the class and stop; don't guess.
+- Apply rulings 1 and 2, add the key rows, rerun, and write what changed to the loop log.
+- Restart the loop (WO-132) on what's left.
+
+### Mac
+- Ruling 3: the class sentence on the quest pages and in `get_quest`, with a test that Missives show one sentence and a link to the boards, not 364 rows. Rulings 2 and 6.
+
+### Done when
+- [ ] Rulings 1 and 2 are in the rules with tests, and the five key rows count as checked.
+- [ ] The start check reads boards and dispatchers, or the class sentence says why it can't. Missives and the bounties show once, as a class.
+- [ ] The loop runs again on what's left and reaches a stop other than "the rules are wrong".
+- [ ] `npm run test:questions` still passes; every check in CLAUDE.md passes. Push staging and stop for Bob.
+
+---
+
 ## WO-135  The player's questions: the test nothing counts as done without (Mac, 22 Oct 2026)
 
 **Why.** Three days of orders made the quest data more accurate, and Dave's own first three questions on 22 Oct still failed: "how do I start the Palonimo quest" found nothing (WO-133), "how do I start Running Wild" said read a book and not where it is (WO-131), and "what's in my quest log" had no answer (WO-134). Every check we ran tested the data (the answer key, the page tests). None of them asked what a player asks. So the planner could pass everything and still not work. This order puts the player's questions in as the test.
