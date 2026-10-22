@@ -1,0 +1,2442 @@
+{
+ "about": "starter in story_checks/<line>.json), every place the item is in the load order. Writes",
+ "items": [
+  {
+   "item": "A Letter From Falion",
+   "itemId": "Forlorn Hope.esp:000805",
+   "edid": "OK_FH_Letter01",
+   "starts": [
+    {
+     "quest": "A Forlorn Hope",
+     "line": "seeking-a-cure",
+     "call": "SetStage 20",
+     "source": "OK_FH_Letter01Script.OnRead on BOOK Forlorn Hope.esp:000805"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "A reward in gold!",
+   "itemId": "SurWR.esp:0E1E87",
+   "edid": "0WRJarlHorseQStart",
+   "starts": [
+    {
+     "quest": "Bluesky Hall",
+     "line": "capital-whiterun",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:0E1E87"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "SurWR.esp:0E1E86",
+     "where": "somewhere in Whiterun",
+     "plugin": "SurWR.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Amon's Note",
+   "itemId": "Wyrmstooth.esp:47782A",
+   "edid": "WTBountyNoteVampire",
+   "starts": [
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:47782A"
+    },
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:47782A"
+    },
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:47782A"
+    },
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:47782A"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:47782C",
+     "where": "Stendarr's Outpost",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Animal Problem",
+   "itemId": "Wyrmstooth.esp:4B9DFF",
+   "edid": "WTBountyNoteAnimalDen",
+   "starts": [
+    {
+     "quest": "Animal Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:4B9DFF"
+    },
+    {
+     "quest": "Animal Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:4B9DFF"
+    },
+    {
+     "quest": "Animal Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:4B9DFF"
+    },
+    {
+     "quest": "Animal Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:4B9DFF"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEDB33",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Boethiah's Proving",
+   "itemId": "Skyrim.esm:032E72",
+   "edid": "DA02BookBoethiahsProving",
+   "starts": [
+    {
+     "quest": "Boethiah's Calling",
+     "line": "boethiahs-calling",
+     "call": "SetStage 1",
+     "source": "DA02BookScript.OnRead on BOOK Skyrim.esm:032E72"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Skyrim.esm:0B0E81",
+     "where": "Septimus Signus' Outpost",
+     "plugin": "JK's Septimus Signus's Outpost.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Skyrim.esm:0B0E85",
+     "where": "Hob's Fall Cave",
+     "plugin": "Skyrim.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Skyrim.esm:0B0E86",
+     "where": "Abandoned House",
+     "plugin": "Skyrim.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Skyrim.esm:0B0E83",
+     "where": "Fellglow Keep",
+     "plugin": "Skyrim.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Journey to Baan Malur.esp:3BBEFA",
+     "where": "Temple of Reclamations, Baan Malur",
+     "plugin": "Journey to Baan Malur.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "holderId": "Skyrim.esm:10C430",
+     "where": [
+      "The Arcanaeum"
+     ],
+     "random": [
+      "LItemBook2All",
+      "LItemBook4All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "Skyrim.esm:109D86",
+     "where": [
+      "...",
+      "Ancient Library, Forgotten City",
+      "Angeline's Aromatics",
+      "Arch-Mage's Quarters, Arch Mage's Quarters",
+      "Archives, Forgotten City",
+      "Bards College, The Bards College",
+      "Black-Briar Lodge",
+      "Black-Briar Manor",
+      "Bloodchill Cavern",
+      "Bloodfrost Burrow",
+      "Breezehome",
+      "Bruiant Mansion South Wing",
+      "Bryling's House",
+      "Castle Dour",
+      "Clan Hammer-Shield, Home of Clan Hammer-Shield",
+      "Cliffside Manor",
+      "Dark Dawn Sanctuary",
+      "Dorian's House, Ben Erai",
+      "Dragonsreach",
+      "Dragonsreach Jarl's Quarters, Dragonsreach",
+      "Ebony Keep",
+      "Elgrim's Elixirs",
+      "Erikur's House",
+      "Fallowstone Hall, Fallowstone Vault",
+      "Fort Dawnguard",
+      "Frostview Hall",
+      "Hall of Attainment, Dormitory",
+      "Hall of Countenance, Dormitory",
+      "Hall of the Vigilant",
+      "Highmoon Hall",
+      "Hjerim",
+      "Honeyside",
+      "House Gray-Mane",
+      "House of Clan Battle-Born",
+      "House of Clan Cruel-Sea",
+      "House of Clan Shatter-Shield",
+      "Hroldar's Castle, Realm of Dream",
+      "Krakevisa Midden, Krakevisa",
+      "Kraldar's House, Korri's House",
+      "Llynelis Manor, Baan Malur",
+      "Mistveil Keep, Riften Mistveil Keep",
+      "Myrwatch Workshop, Myrwatch",
+      "Nepos' House",
+      "Nightgate Inn",
+      "Nightingale Hall",
+      "Palace of the Kings",
+      "Palace of the Kings Upstairs, Palace of the Kings",
+      "Palace of the Kings, Upstairs, Palace of the Kings",
+      "Proudspire Manor",
+      "Ravenscorn Spire",
+      "Riftweald Manor, Riften Mercer's House",
+      "Riftweald Manor, Riftweald Manor Player Home",
+      "Sharza's House, Salas Kazas",
+      "Snow-Shod Manor, House of Clan Snow-Shod",
+      "Stonecold Fortress, Upstairs, Jarl's Longhouse",
+      "Tel Mithryn, Tel Mithryn Tower",
+      "Temple of Mara",
+      "Temple of Stendarr",
+      "Temple of the Divines",
+      "Terinen's House, Alik'r Desert",
+      "The Arcanaeum",
+      "The Rootspire",
+      "The Sepia Pages, Baan Malur",
+      "The Silverspoon Trading Company",
+      "The Treasury House, Treasury House",
+      "The Winking Skeever",
+      "Tormund's Tales",
+      "Tower of Barenziah, Baan Malur",
+      "Upper Halls, Hall of Relics",
+      "Viola Giordano's House",
+      "Vittoria Vici's House",
+      "Vlindrel Hall",
+      "Volkihar Keep",
+      "Volkihar Ruins, Castle Volkihar",
+      "Wind Scour Temple, Alik'r Desert",
+      "Winterhold Library, Hall of Runes",
+      "somewhere in Skyrim"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "All Books",
+     "holderId": "Skyrim.esm:0C2D3B",
+     "where": [
+      "Editor Smoke Test Cell"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "cceejsse004-hall.esl:00080A",
+     "where": [
+      "Hendraheim"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Crafting and Treasures Closet",
+     "holderId": "Ryn's Snazzy Last Vigil.esp:08A88D",
+     "where": [
+      "Ebony Keep"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "JK's College of Winterhold.esp:06B842",
+     "where": null,
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "JK's College of Winterhold.esp:06B843",
+     "where": [
+      "The Arcanaeum"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "holderId": "ForgottenCity.esp:0278F1",
+     "where": [
+      "The Honest Trader"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "FalkreathShades.esp:2F0836",
+     "where": null,
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "carried",
+     "holder": "Kelrog Mashul",
+     "holderId": "Meridia.esp:01A19A",
+     "where": [
+      "The Malevolent Palace"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "Snazzy Bookcases.esp:000800",
+     "where": null,
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "Snazzy Bookcases.esp:000D62",
+     "where": null,
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "Snazzy Bookcases.esp:000D63",
+     "where": null,
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "holderId": "WindhelmSSE.esp:15CFD1",
+     "where": [
+      "The Hall of Relics, Hall of Relics",
+      "Tormund's Tales"
+     ],
+     "random": [
+      "LItemBook2All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "holderId": "Extended Encounters.esp:00057A",
+     "where": [
+      "Warehouse Bookshelves"
+     ],
+     "random": [
+      "LItemBook2All",
+      "LItemBook4All"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "DLC2LItemBook4Combined",
+     "listId": "Dragonborn.esm:02AA0E",
+     "where": null,
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "DLC2LItemBook2Combined",
+     "listId": "Dragonborn.esm:02AA0C",
+     "where": null,
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Caio's Journal vol. 1",
+   "itemId": "Gray Fox Cowl.esm:0026F3",
+   "edid": "manny_GF_Journal_UmbranoxJournal01",
+   "starts": [
+    {
+     "quest": "Memories of the Umbranox",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:0026F3"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Caio's Journal vol. 2",
+   "itemId": "Gray Fox Cowl.esm:0026F8",
+   "edid": "manny_GF_Journal_UmbranoxJournal02",
+   "starts": [
+    {
+     "quest": "Memories of the Umbranox",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:0026F8"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Caio's Journal vol. 3",
+   "itemId": "Gray Fox Cowl.esm:0026FB",
+   "edid": "manny_GF_Journal_UmbranoxJournal03",
+   "starts": [
+    {
+     "quest": "Memories of the Umbranox",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:0026FB"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Caio's Journal vol. 4",
+   "itemId": "Gray Fox Cowl.esm:0026FC",
+   "edid": "manny_GF_Journal_UmbranoxJournal04",
+   "starts": [
+    {
+     "quest": "Memories of the Umbranox",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:0026FC"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Caio's Journal vol. 5",
+   "itemId": "Gray Fox Cowl.esm:000EB4",
+   "edid": "manny_GF_Journal_UmbranoxJournal05",
+   "starts": [
+    {
+     "quest": "Memories of the Umbranox",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:000EB4"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Caio's Journal vol. 6",
+   "itemId": "Gray Fox Cowl.esm:015986",
+   "edid": "manny_GF_Journal_UmbranoxJournal06",
+   "starts": [
+    {
+     "quest": "Memories of the Umbranox",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "manny_GF_OnReadOnce.OnContainerChanged on BOOK Gray Fox Cowl.esm:015986"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Gray Fox Cowl.esm:02B310",
+     "where": "somewhere in Alik'r Desert",
+     "plugin": "Gray Fox Cowl.esm",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Braith",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000811",
+   "edid": "ExtraContracts_KillBraith_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Braith",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000811"
+    }
+   ],
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Additional Contracts",
+     "holderId": "Additional Contracts For the Dark Brotherhood.esp:000801",
+     "where": [
+      "Dawnstar Sanctuary"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Elenwen",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000FE1",
+   "edid": "ExtraContracts_KillElenwen_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Elenwen",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000FE1"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Erikur",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000E47",
+   "edid": "ExtraContracts_KillErikur_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Erikur",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000E47"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Lemkil",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000DC1",
+   "edid": "ExtraContracts_KillLemkil_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Lemkil",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000DC1"
+    }
+   ],
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Additional Contracts",
+     "holderId": "Additional Contracts For the Dark Brotherhood.esp:000801",
+     "where": [
+      "Dawnstar Sanctuary"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Nazeem",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000810",
+   "edid": "ExtraContracts_KillNazeem_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Nazeem",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000810"
+    }
+   ],
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Additional Contracts",
+     "holderId": "Additional Contracts For the Dark Brotherhood.esp:000801",
+     "where": [
+      "Dawnstar Sanctuary"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Rolff Stone-Fist",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000813",
+   "edid": "ExtraContracts_KillRolff_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Rolff Stone-Fist",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000813"
+    }
+   ],
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Additional Contracts",
+     "holderId": "Additional Contracts For the Dark Brotherhood.esp:000801",
+     "where": [
+      "Dawnstar Sanctuary"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Serana",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000E32",
+   "edid": "ExtraContracts_KillSerana_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Serana",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000E32"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Taarie and Endarie",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000812",
+   "edid": "ExtraContracts_KillTaarieEndarie_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Taarie and Endarie",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsDoubleReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000812"
+    }
+   ],
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Additional Contracts",
+     "holderId": "Additional Contracts For the Dark Brotherhood.esp:000801",
+     "where": [
+      "Dawnstar Sanctuary"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Contract: Kill Thonar Silver-Blood",
+   "itemId": "Additional Contracts For the Dark Brotherhood.esp:000FD0",
+   "edid": "ExtraContracts_KillThonarSilverblood_Note",
+   "starts": [
+    {
+     "quest": "Contract: Kill Thonar Silver-Blood",
+     "line": "dark-brotherhood",
+     "call": "SetStage 10",
+     "source": "ExtraContractsReadNoteScript.OnRead on BOOK Additional Contracts For the Dark Brotherhood.esp:000FD0"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Deathbrand",
+   "itemId": "Dragonborn.esm:03661A",
+   "edid": "DLC2Book4RareDeathbrand",
+   "starts": [
+    {
+     "quest": "Deathbrand",
+     "line": "deathbrand",
+     "call": "SetStage 1",
+     "source": "DLC2dunHaknirBookScript.OnRead on BOOK Dragonborn.esm:03661A"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E6",
+     "where": "Fort Frostmoth",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3EE",
+     "where": "Tel Mithryn Steward's House, Tel Mithryn Steward",
+     "plugin": "JK's Tel Mithryn.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03C5F2",
+     "where": "Bloodskal Barrow",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E4",
+     "where": "Bloodskal Barrow",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:037E1E",
+     "where": "Deor Woodcutter's House, Skaal Village Deor's House",
+     "plugin": "Eli_Skaal Village Overhaul.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3EB",
+     "where": "The Retching Netch",
+     "plugin": "Snazzy Interiors - Raven Rock AIO.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:035857",
+     "where": "Tel Mithryn, Tel Mithryn Tower",
+     "plugin": "JK's Tel Mithryn.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:033E78",
+     "where": "Tel Mithryn, Tel Mithryn Tower",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3E9",
+     "where": "Morvayn Manor Chambers, Morvayn Manor",
+     "plugin": "SOFA-DunmerAll.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:03B3EA",
+     "where": "Temple, Temple Location",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dragonborn.esm:031FBA",
+     "where": "Greathall, Skaal Village Greathall",
+     "plugin": "Dragonborn.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "ccasvsse001-almsivi.esm:0010A3",
+     "where": "Ashfall's Tear",
+     "plugin": "ccasvsse001-almsivi.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "JK's Blue Palace.esp:0009EA",
+     "where": "Blue Palace, The Blue Palace",
+     "plugin": "JK's Blue Palace.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "All Dragonborn Books",
+     "holderId": "Dragonborn.esm:026B67",
+     "where": [
+      "Editor Smoke Test Cell"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "carried",
+     "holder": "Adventurer",
+     "holderId": "Dragonborn.esm:018D93",
+     "where": [
+      "Gyldenhul Barrow"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "DLC2LItemBook4Combined",
+     "listId": "Dragonborn.esm:02AA0E",
+     "where": null,
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "DLC2LItemBook4All",
+     "listId": "Dragonborn.esm:02AA0A",
+     "where": null,
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "_ME_UncommonBooks",
+     "listId": "MissivesExpansion.esp:000010",
+     "where": null,
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Deed to Bluesky Hall",
+   "itemId": "SurWR.esp:08B418",
+   "edid": "0WRDeed",
+   "starts": [
+    {
+     "quest": "Bluesky Hall",
+     "line": "capital-whiterun",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:08B418"
+    }
+   ],
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "holderId": "SurWR.esp:2ECDA0",
+     "where": [
+      "somewhere in Whiterun"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Duarelm's Note: Dragonguard Style",
+   "itemId": "BetalillesHammerfellQuestBundle.esp:000AAD",
+   "edid": "HABLNoteQuest01",
+   "starts": [
+    {
+     "quest": "Dragonguard Archives: Book 1",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000AAD"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Duarelm's Note: Horn of Ja'darri, Part 1",
+   "itemId": "BetalillesHammerfellQuestBundle.esp:000AAE",
+   "edid": "HABLNoteQuest04",
+   "starts": [
+    {
+     "quest": "Dragonguard Archives: Book 4",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000AAE"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Duarelm's Note: Horn of Ja'darri, Part 2",
+   "itemId": "BetalillesHammerfellQuestBundle.esp:000AAF",
+   "edid": "HABLNoteQuest05",
+   "starts": [
+    {
+     "quest": "Dragonguard Archives: Book 5",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000AAF"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Duarelm's Note: Horn of Ja'darri, Part 3",
+   "itemId": "BetalillesHammerfellQuestBundle.esp:000A6E",
+   "edid": "HABLNoteQuest06",
+   "starts": [
+    {
+     "quest": "Dragonguard Archives: Book 6",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000A6E"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Duarelm's Note: The Warp in the West, Part 1",
+   "itemId": "BetalillesHammerfellQuestBundle.esp:000A70",
+   "edid": "HABLNoteQuest02",
+   "starts": [
+    {
+     "quest": "Dragonguard Archives: Book 2",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000A70"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Duarelm's Note: The Warp in the West, Part 2",
+   "itemId": "BetalillesHammerfellQuestBundle.esp:000A72",
+   "edid": "HABLNoteQuest03",
+   "starts": [
+    {
+     "quest": "Dragonguard Archives: Book 3",
+     "line": "gray-cowl",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK BetalillesHammerfellQuestBundle.esp:000A72"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Dunyick's Request",
+   "itemId": "Wyrmstooth.esp:BF1D19",
+   "edid": "WTDunyickRequest",
+   "starts": [
+    {
+     "quest": "A Howl Load of Trouble",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BF1D19"
+    },
+    {
+     "quest": "A Howl Load of Trouble",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BF1D19"
+    },
+    {
+     "quest": "A Howl Load of Trouble",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BF1D19"
+    },
+    {
+     "quest": "A Howl Load of Trouble",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:BF1D19"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BF1D1A",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Eola's Journal",
+   "itemId": "TasteOfDeath_Addon_Dialogue.esp:000001",
+   "edid": "madEolaJournal",
+   "starts": [
+    {
+     "quest": "A Bitter Aftertaste",
+     "line": "the-taste-of-death",
+     "call": "SetStage 5",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK TasteOfDeath_Addon_Dialogue.esp:000001"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Fjeimir's Note",
+   "itemId": "Wyrmstooth.esp:46DA24",
+   "edid": "WTFjeimirsNote",
+   "starts": [
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:46DA24"
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:46DA24"
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:46DA24"
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:46DA24"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:46DA25",
+     "where": "somewhere in Wyrmstooth",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "For Sale",
+   "itemId": "WindhelmSSE.esp:1B62F1",
+   "edid": "0WPlayerhomeSale",
+   "starts": [
+    {
+     "quest": "Graystone",
+     "line": "capital-windhelm",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK WindhelmSSE.esp:1B62F1"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "WindhelmSSE.esp:1B62F2",
+     "where": "somewhere in Windhelm",
+     "plugin": "WindhelmSSE.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Fort Valus Note",
+   "itemId": "Wyrmstooth.esp:BEDB42",
+   "edid": "WTFortValusAvailability",
+   "starts": [
+    {
+     "quest": "Reclaiming the Past",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BEDB42"
+    },
+    {
+     "quest": "Reclaiming the Past",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BEDB42"
+    },
+    {
+     "quest": "Reclaiming the Past",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BEDB42"
+    },
+    {
+     "quest": "Reclaiming the Past",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:BEDB42"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEDB43",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Get Married Today!",
+   "itemId": "NPCs_Wear_Amulets_Of_Mara.esp:00080A",
+   "edid": "WeddingsInSkyrim",
+   "starts": [
+    {
+     "quest": "The Bonds of Matrimony",
+     "line": "marriage",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK NPCs_Wear_Amulets_Of_Mara.esp:00080A"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Hemvor's Note",
+   "itemId": "Wyrmstooth.esp:6AB76F",
+   "edid": "WTBlindRobbersNote",
+   "starts": [
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:6AB76F"
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:6AB76F"
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:6AB76F"
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:6AB76F"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:6AB771",
+     "where": "Blind Robber's Bluff",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Hiring Notice",
+   "itemId": "LegendsOfAetherium.esp:0AA54B",
+   "edid": "aaaLOAHiringNotice",
+   "starts": [
+    {
+     "quest": "Legends Of Aetherium",
+     "line": "legends-of-aetherium",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK LegendsOfAetherium.esp:0AA54B"
+    },
+    {
+     "quest": "Legends Of Aetherium",
+     "line": "legends-of-aetherium",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK LegendsOfAetherium.esp:0AA54B"
+    },
+    {
+     "quest": "Legends Of Aetherium",
+     "line": "legends-of-aetherium",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK LegendsOfAetherium.esp:0AA54B"
+    },
+    {
+     "quest": "Legends Of Aetherium",
+     "line": "legends-of-aetherium",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK LegendsOfAetherium.esp:0AA54B"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "LegendsOfAetherium.esp:0D349F",
+     "where": "Candlehearth Hall",
+     "plugin": "LegendsOfAetherium.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "LegendsOfAetherium.esp:0D349D",
+     "where": "The Bee and Barb, Bee and Barb",
+     "plugin": "LegendsOfAetherium.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "LegendsOfAetherium.esp:0D349E",
+     "where": "The Frozen Hearth",
+     "plugin": "TGC Winterhold - Legends of Aetherium Patch.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "LegendsOfAetherium.esp:0D34A0",
+     "where": "The Bannered Mare",
+     "plugin": "LegendsOfAetherium.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "History of Wyrmstooth",
+   "itemId": "Wyrmstooth.esp:30EC1D",
+   "edid": "WTBookHistoryWyrmstooth",
+   "starts": [
+    {
+     "quest": "Someone with Backbone",
+     "line": "wyrmstooth",
+     "call": "SetStage 5",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:30EC1D"
+    },
+    {
+     "quest": "Someone with Backbone",
+     "line": "wyrmstooth",
+     "call": "SetStage 5",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:30EC1D"
+    },
+    {
+     "quest": "Someone with Backbone",
+     "line": "wyrmstooth",
+     "call": "SetStage 5",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:30EC1D"
+    },
+    {
+     "quest": "Someone with Backbone",
+     "line": "wyrmstooth",
+     "call": "SetStage 5",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:30EC1D"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC33",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC22",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:5ECCA1",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC21",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC35",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC34",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC23",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC20",
+     "where": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC27",
+     "where": "Hall of the Dead, Hall Of The Dead",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC2A",
+     "where": "Wyrmstooth Jail, Wyrmstooth Barracks",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC29",
+     "where": "Guard Barracks, Wyrmstooth Barracks",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEB9F8",
+     "where": "Cragwater Cavern",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:33221F",
+     "where": "Wyrmstooth Barrow Temple, Wyrmstooth Barrow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:332220",
+     "where": "Wyrmstooth Barrow Temple, Wyrmstooth Barrow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:332221",
+     "where": "Wyrmstooth Barrow Temple, Wyrmstooth Barrow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC2D",
+     "where": "Fort Moonwatch Muster, Fort Moonwatch",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC2B",
+     "where": "Fort Moonwatch Muster, Fort Moonwatch",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC25",
+     "where": "The Handsome Hermit, The Hermit",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC24",
+     "where": "The Handsome Hermit, The Hermit",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC32",
+     "where": "Chillwater Mill",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEDB36",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:30EC2F",
+     "where": "somewhere in Wyrmstooth",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "carried",
+     "holder": "Lurius Liore",
+     "holderId": "Wyrmstooth.esp:00BF55",
+     "where": [
+      "Wyrmstooth Holder Cell, Wyrmstooth"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Hverung's Manifesto",
+   "itemId": "WindhelmSSE.esp:202974",
+   "edid": "0WHQuestTalos01NoteIntro",
+   "starts": [
+    {
+     "quest": "The Talos Mistake",
+     "line": "capital-windhelm",
+     "call": "SetStage 20",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK WindhelmSSE.esp:202974"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Ja'Shavi-Dar's Note",
+   "itemId": "Wyrmstooth.esp:C7399B",
+   "edid": "WTJashavidarsNoteNakedNordStart",
+   "starts": [
+    {
+     "quest": "The Naked Nord",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:C7399B"
+    },
+    {
+     "quest": "The Naked Nord",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:C7399B"
+    },
+    {
+     "quest": "The Naked Nord",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:C7399B"
+    },
+    {
+     "quest": "The Naked Nord",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:C7399B"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:C7399A",
+     "where": "somewhere in Wyrmstooth",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Jarl's Bounty: Giant",
+   "itemId": "SurWR.esp:2F1F15",
+   "edid": "BQ03BountyLetterWR",
+   "starts": [
+    {
+     "quest": "Ode To The Tundrastriders",
+     "line": "capital-whiterun",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:2F1F15"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Letter from Mother Hamal",
+   "itemId": "The Heart Of Dibella - Quest Expansion.esp:000817",
+   "edid": "T01_Letter",
+   "starts": [
+    {
+     "quest": "The Heart of Dibella",
+     "line": "the-heart-of-dibella",
+     "call": "SetStage 55",
+     "source": "THOD_ReadLetter.onRead on BOOK The Heart Of Dibella - Quest Expansion.esp:000817"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Letter from Mother Hamal",
+   "itemId": "The Heart Of Dibella - Quest Expansion.esp:000839",
+   "edid": "T01_LetterAlt",
+   "starts": [
+    {
+     "quest": "The Heart of Dibella",
+     "line": "the-heart-of-dibella",
+     "call": "SetStage 55",
+     "source": "THOD_ReadLetter.onRead on BOOK The Heart Of Dibella - Quest Expansion.esp:000839"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Letter to Lucien",
+   "itemId": "Lucien.esp:2B13EE",
+   "edid": "JRLucienLetter1",
+   "starts": [
+    {
+     "quest": "The Oblivion Engine",
+     "line": "lucien",
+     "call": "SetStage 10",
+     "source": "defaultsetstageonplayeracquireitem.OnContainerChanged on BOOK Lucien.esp:2B13EE"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Marauder Warning",
+   "itemId": "Wyrmstooth.esp:4B9DFB",
+   "edid": "WTBountyNoteBandit",
+   "starts": [
+    {
+     "quest": "Bandit Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:4B9DFB"
+    },
+    {
+     "quest": "Bandit Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:4B9DFB"
+    },
+    {
+     "quest": "Bandit Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:4B9DFB"
+    },
+    {
+     "quest": "Bandit Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:4B9DFB"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEDB31",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Miner's Warning",
+   "itemId": "Wyrmstooth.esp:BF1D1D",
+   "edid": "WTGronndalGroveWarning",
+   "starts": [
+    {
+     "quest": "A Priceless Commodity",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BF1D1D"
+    },
+    {
+     "quest": "A Priceless Commodity",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BF1D1D"
+    },
+    {
+     "quest": "A Priceless Commodity",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BF1D1D"
+    },
+    {
+     "quest": "A Priceless Commodity",
+     "line": "wyrmstooth",
+     "call": "SetStage 1",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:BF1D1D"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BF1D1E",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Note from Esbern",
+   "itemId": "Defeat the Dragon Cult.esp:000801",
+   "edid": "DCNotefromEsbern",
+   "starts": [
+    {
+     "quest": "Destroy the Dragon Cult",
+     "line": "destroy-the-dragon-cult",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Defeat the Dragon Cult.esp:000801"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Note on Myrwatch",
+   "itemId": "Myrwatch - Tweaks and Enhancements.esp:000854",
+   "edid": "MyrwatchTnE_VestibuleLetter",
+   "starts": [
+    {
+     "quest": "MyrwatchTNE_Quest",
+     "line": "myrwatch",
+     "call": "SetStage 5",
+     "source": "ANDR_Myrwatch_BookScript.OnRead on BOOK Myrwatch - Tweaks and Enhancements.esp:000854"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Myrwatch - Tweaks and Enhancements.esp:000855",
+     "where": "Myrwatch",
+     "plugin": "Myrwatch - Tweaks and Enhancements.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Profane Ritual",
+   "itemId": "Trad_AE_CC_Collection_Requiem_Patch.esp:66275B",
+   "edid": "Trad_001_ProfaneDivinity_Book",
+   "starts": [
+    {
+     "quest": "Profane Divinity",
+     "line": "profane-divinity",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Trad_AE_CC_Collection_Requiem_Patch.esp:66275B"
+    }
+   ],
+   "places": [
+    {
+     "kind": "carried",
+     "holder": "Erden Relvel",
+     "holderId": "ccasvsse001-almsivi.esm:0C1928",
+     "where": [
+      "somewhere in Morrowind"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Sir Areldur's Journal",
+   "itemId": "Knight of the North.esp:000D65",
+   "edid": "ccMTY_DES_KnightJournal",
+   "starts": [
+    {
+     "quest": "Relics of the Crusader",
+     "line": "relics-of-the-crusader",
+     "call": "SetStage 5",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Knight of the North.esp:000D65"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Knight of the North.esp:000D67",
+     "where": "somewhere in Skyrim",
+     "plugin": "Knight of the North.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Thalmor Dossier: Crusader Relics",
+   "itemId": "Knight of the North.esp:000817",
+   "edid": "ccMTY_DES_RelicDossier",
+   "starts": [
+    {
+     "quest": "Relics of the Crusader",
+     "line": "relics-of-the-crusader",
+     "call": "SetStage 5",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Knight of the North.esp:000817"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Knight of the North.esp:000819",
+     "where": "Understone Keep",
+     "plugin": "Knight of the North.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Thalmor Dossier: Nazeem & Ahlam",
+   "itemId": "CC Tundra Homestead - Tweaks and Enhancements.esp:00000B",
+   "edid": "THTE_Book_Dossier_NazeemAhlam",
+   "starts": [
+    {
+     "quest": "The Wintersand Deception",
+     "line": "the-wintersand-deception",
+     "call": "SetStage 5",
+     "source": "THTE_Book_DossierScript.onRead on BOOK CC Tundra Homestead - Tweaks and Enhancements.esp:00000B"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "CC Tundra Homestead - Tweaks and Enhancements.esp:00000F",
+     "where": "Thalmor Embassy, Elenwen's Solar, Thalmor Embassy",
+     "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "carried",
+     "holder": "Agent Lorcalin",
+     "holderId": "Skyrim.esm:0DD99E",
+     "where": [
+      "somewhere in Skyrim"
+     ],
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "The Aetherium Wars",
+   "itemId": "Dawnguard.esm:004D5B",
+   "edid": "DLC1LD_AetheriumWars",
+   "starts": [
+    {
+     "quest": "Lost to the Ages",
+     "line": "lost-to-the-ages",
+     "call": "SetStage 10",
+     "source": "TCIY_QuestBookMessageScript.onRead on BOOK Dawnguard.esm:004D5B"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:003ABF",
+     "where": "Fort Dawnguard",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B5E5",
+     "where": "Fort Dawnguard",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:011E22",
+     "where": "Swindler's Den",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:01938F",
+     "where": "Dead Drop Mine, Dead Drop Falls",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00CAE3",
+     "where": "Volkihar Undercroft, Castle Volkihar",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:003ABD",
+     "where": "Volkihar Keep",
+     "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:013A78",
+     "where": "Volkihar Keep",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B5F2",
+     "where": "Palace of the Kings, Upstairs, Palace of the Kings",
+     "plugin": "Snazzy Interiors - JKs Palace of the Kings.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B61A",
+     "where": "Hob's Fall Cave",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B61B",
+     "where": "Fellglow Keep",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:003ABC",
+     "where": "Ruunvald Temple, Ruunvald Excavation",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B61D",
+     "where": "Bards College, The Bards College",
+     "plugin": "JK's The Bards College.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B61E",
+     "where": "Raldbthar",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:003ABB",
+     "where": "Redwater Den",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:006755",
+     "where": "Dragonsreach",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B61F",
+     "where": "Dwemer Museum",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B620",
+     "where": "Ilinalta's Deep",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B621",
+     "where": "Fort Snowhawk",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B627",
+     "where": "Calcelmo's Tower, Dwemer Museum",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B628",
+     "where": "Fort Neugrad",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B629",
+     "where": "Darklight Tower",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B62B",
+     "where": "The Arcanaeum",
+     "plugin": "JK's College of Winterhold.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:00B62C",
+     "where": "Rannveig's Fast",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:019FDE",
+     "where": "Hall of the Vigilant",
+     "plugin": "Stendarr Rising.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Dawnguard.esm:003ABA",
+     "where": "somewhere in Dayspring Canyon",
+     "plugin": "Dawnguard.esm",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "cceejsse001-hstead.esm:000D07",
+     "where": "Wintersand Manor",
+     "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "cceejsse002-tower.esl:000B9E",
+     "where": "Myrwatch",
+     "plugin": "cceejsse002-tower.esl",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "myrwatchhomefixer.esp:005C6D",
+     "where": "Myrwatch",
+     "plugin": "Myrwatch - Tweaks and Enhancements.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Siege at Icemoth.esp:40CB95",
+     "where": "Fort Icemoth",
+     "plugin": "Siege at Icemoth.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Journey to Baan Malur.esp:0009B0",
+     "where": "The Sepia Pages, Baan Malur",
+     "plugin": "Journey to Baan Malur.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Brittleshin.esp:00081C",
+     "where": "Brittleshin Pass",
+     "plugin": "Brittleshin.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "placed",
+     "ref": "Stendarr Rising.esp:07FEA0",
+     "where": "Hall of the Vigilant",
+     "plugin": "Stendarr Rising.esp",
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "All Dawnguard Misc or Other Items",
+     "holderId": "Dawnguard.esm:00CAB7",
+     "where": [
+      "Editor Smoke Test Cell"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "holderId": "TomeTrials.esp:000865",
+     "where": [
+      "Bards College, The Bards College"
+     ],
+     "verdict": "files"
+    },
+    {
+     "kind": "levelled",
+     "list": "FZR_DLC1BooksAll",
+     "listId": "Fozars_Dragonborn_-_Requiem_Patch.esp:19588A",
+     "where": null,
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "The First Follower's Journal",
+   "itemId": "Tools of Kagrenac.esp:5B4675",
+   "edid": "TOK_BOOK_1stFollowerJournal",
+   "starts": [
+    {
+     "quest": "Vivec's Trial of Wisdom",
+     "line": "the-tools-of-kagrenac",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Tools of Kagrenac.esp:5B4675"
+    },
+    {
+     "quest": "Vivec's Trial of Wisdom",
+     "line": "the-tools-of-kagrenac",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Tools of Kagrenac.esp:5B4675"
+    },
+    {
+     "quest": "Vivec's Trial of Wisdom",
+     "line": "the-tools-of-kagrenac",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Tools of Kagrenac.esp:5B4675"
+    },
+    {
+     "quest": "Vivec's Trial of Wisdom",
+     "line": "the-tools-of-kagrenac",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Tools of Kagrenac.esp:5B4675"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Tools of Kagrenac.esp:5B4676",
+     "where": "Rkulftzul, Sealed Vault",
+     "plugin": "Tools of Kagrenac.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "The Palonimo Mare",
+   "itemId": "SurWR.esp:0D2ACB",
+   "edid": "0WRHorseMiniQ",
+   "starts": [
+    {
+     "quest": "Running Wild",
+     "line": "capital-whiterun",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:0D2ACB"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "SurWR.esp:0D2ACA",
+     "where": "Whiterun",
+     "plugin": "SurWR.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "The Truth of Boethiah",
+   "itemId": "Journey to Baan Malur.esp:48C8BA",
+   "edid": "SOMRTruthofBoethiah",
+   "starts": [
+    {
+     "quest": "Boethiah's Calling",
+     "line": "boethiahs-calling",
+     "call": "SetStage 1",
+     "source": "DA02BookScript.OnRead on BOOK Journey to Baan Malur.esp:48C8BA"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Journey to Baan Malur.esp:48C8BB",
+     "where": "Shrine to Boet-hi-Ah, Morrowind",
+     "plugin": "Journey to Baan Malur.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Torn Page from Traveler's Diary",
+   "itemId": "UndeathFixes.esp:168478",
+   "edid": "NecroUCL_QuestStartNote",
+   "starts": [
+    {
+     "quest": "In their Footsteps",
+     "line": "undeath",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK UndeathFixes.esp:168478"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "UndeathFixes.esp:168479",
+     "where": "Silver-Blood Inn",
+     "plugin": "UndeathFixes.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Torn page",
+   "itemId": "WindhelmSSE.esp:085D86",
+   "edid": "0WQ03SadElfNote2",
+   "starts": [
+    {
+     "quest": "Death Do Us Part",
+     "line": "capital-windhelm",
+     "call": "SetStage 5",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK WindhelmSSE.esp:085D86"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "WindhelmSSE.esp:135249",
+     "where": "Tedril's Home, Home",
+     "plugin": "WindhelmSSE.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Vampire Warning",
+   "itemId": "Wyrmstooth.esp:BEDB3D",
+   "edid": "WTVigilantsRequestingAssistance",
+   "starts": [
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:BEDB3D"
+    },
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BEDB3D"
+    },
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BEDB3D"
+    },
+    {
+     "quest": "Vampire Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:BEDB3D"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEDB3E",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Warlock Trouble",
+   "itemId": "Wyrmstooth.esp:4B9E05",
+   "edid": "WTBountyNoteWarlock",
+   "starts": [
+    {
+     "quest": "Warlock Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.stageHandling on BOOK Wyrmstooth.esp:4B9E05"
+    },
+    {
+     "quest": "Warlock Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:4B9E05"
+    },
+    {
+     "quest": "Warlock Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:4B9E05"
+    },
+    {
+     "quest": "Warlock Bounty",
+     "line": "wyrmstooth",
+     "call": "SetStage 10",
+     "source": "defaultSetStageOnCloseBookNotAlias.OnRead on BOOK Wyrmstooth.esp:4B9E05"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Wyrmstooth.esp:BEDB40",
+     "where": "Stonehollow",
+     "plugin": "Wyrmstooth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Waterlogged Journal",
+   "itemId": "Siege at Icemoth.esp:3A680A",
+   "edid": "HYORdunIcemothJournal01",
+   "starts": [
+    {
+     "quest": "Siege at Icemoth",
+     "line": "siege-at-icemoth",
+     "call": "SetStage 10",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK Siege at Icemoth.esp:3A680A"
+    }
+   ],
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Siege at Icemoth.esp:3A680B",
+     "where": "Old Wooden Jetty",
+     "plugin": "Siege at Icemoth.esp",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Wedding Invitation",
+   "itemId": "Vittoria's Alternate Wedding - Innocence Lost Expansion Patch.esp:000803",
+   "edid": "VAW_InvitationNoteJaySerpa",
+   "starts": [
+    {
+     "quest": "A Healing Wedding",
+     "line": "a-healing-wedding",
+     "call": "SetStage 10",
+     "source": "VAW_InvitationNoteScriptJaySerpa.OnRead on BOOK Vittoria's Alternate Wedding - Innocence Lost Expansion Patch.esp:000803"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "Wedding Invitation",
+   "itemId": "Vittorias Alternate Wedding.esp:000842",
+   "edid": "VAW_InvitationNote",
+   "starts": [
+    {
+     "quest": "A Healing Wedding",
+     "line": "a-healing-wedding",
+     "call": "SetStage 10",
+     "source": "VAW_InvitationNoteScript.OnRead on BOOK Vittorias Alternate Wedding.esp:000842"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  },
+  {
+   "item": "ccBGSSSE002_NoteFromCalcelmo",
+   "itemId": "ccbgssse002-exoticarrows.esl:00081F",
+   "edid": "ccBGSSSE002_NoteFromCalcelmo",
+   "starts": [
+    {
+     "quest": "Stealer of Souls",
+     "line": "stealer-of-souls",
+     "call": "SetStage 5",
+     "source": "defaultsetstageonplayeracquireitem.OnContainerChanged on BOOK ccbgssse002-exoticarrows.esl:00081F"
+    }
+   ],
+   "places": [
+    {
+     "kind": "nowhere",
+     "searched": "placed references, containers, people's inventories and leveled lists in every plugin of the load order",
+     "verdict": "files"
+    }
+   ]
+  }
+ ]
+}
