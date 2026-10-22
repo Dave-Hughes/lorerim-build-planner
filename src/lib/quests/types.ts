@@ -30,6 +30,8 @@ export interface Quest {
   /** The log entries that complete or fail it, in stage order; empty when the records flag none. */
   endings: QuestEnding[];
   objectives: string[];
+  /** Each objective with the stage that shows it (WO-134), for the quest log. */
+  steps?: { stage: number; text: string }[];
   rewards?: { gold?: "small" | "medium" | "large"; items?: string[] };
   /** How this quest starts (WO-115 Part 2): the start check's answer in plain words, or "not yet". */
   start?: QuestStart;

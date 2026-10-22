@@ -17,6 +17,7 @@ import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { openState } from "@/lib/quests/open";
 import { stories } from "@/lib/quests/stories-data";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
+import { logCounts, questLog } from "./quest-log";
 import { openForYou, playerState, type Told } from "./facts";
 import * as names from "./names";
 import { prepareBuild, type Player } from "./builds";
@@ -430,6 +431,12 @@ function warningsOf(pt: PlaythroughRecord) {
   return reviewPlaythrough(pt.view.acts.flatMap((a) => a.objectives).map((o) => ({ id: o.id, text: o.text, kind: o.kind, link: o.link, reach: o.reach })));
 }
 
+/** get_quest_log (WO-134): the stored save's quests in the game's words, from where the player stands. */
+export async function getQuestLog(p: Player, input: { playthrough: string }) {
+  const pt = await mine(p, input.playthrough);
+  return { playthrough: pt.id, ...questLog(pt.snapshot, pt.build?.levels) };
+}
+
 export async function getPlaythroughTool(p: Player, input: { playthrough: string }) {
   const pt = await mine(p, input.playthrough);
   const v = pt.view;
@@ -446,7 +453,15 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     draftedByAnAssistant: !!pt.draftedBy,
     done: `${v.done} of ${v.total}`,
     whereYouStand: pt.snapshot
-      ? { from: pt.snapshot.source === "save" ? pt.snapshot.label : "the player, by hand", level: pt.snapshot.level, day: pt.snapshot.day, place: pt.snapshot.place, skills: pt.snapshot.skills }
+      ? {
+          from: pt.snapshot.source === "save" ? pt.snapshot.label : "the player, by hand",
+          level: pt.snapshot.level,
+          day: pt.snapshot.day,
+          place: pt.snapshot.place,
+          skills: pt.snapshot.skills,
+          // The quest log in a line (WO-134); get_quest_log gives it in full.
+          ...(logCounts(pt.snapshot) ? { quests: `${logCounts(pt.snapshot)} (get_quest_log lists them)` } : {}),
+        }
       : null,
     acts: v.acts.map((a, i) => ({
       act: String(i + 1),

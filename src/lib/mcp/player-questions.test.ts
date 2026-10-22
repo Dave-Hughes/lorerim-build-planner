@@ -1,6 +1,7 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { FactsError, getQuest, playerState, searchFacts } from "./facts";
 import { suggestQuests } from "./playthroughs";
+import { questLog } from "./quest-log";
 import { questsData } from "@/lib/quests/data";
 
 /**
@@ -109,9 +110,10 @@ const QUESTIONS: Question[] = [
   {
     n: 8,
     asks: "What quests are in my quest log?",
-    ask: () => [{ error: "No tool gives the save's quests back as a log." }],
+    // get_quest_log's own answer from a stored snapshot (the handler needs a signed-in playthrough; this is what it returns).
+    ask: () => [questLog({ label: "Save 70", level: 10, day: 15, place: "Ivarstead", questStages: { "0WRHorseQ": 10, MS11: 100, MQ101RescueHelper: 20 } })],
     must: [/Running Wild/, /Catch the white, or palonimo, horse/, /Blood on the Ice/, /Wuunferth|Calixto/, /background quest/],
-    todo: "WO-134: no get_quest_log.",
+    never: [/MQ101RescueHelper/],
   },
   {
     n: 9,

@@ -55,7 +55,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **8. "What quests are in my quest log?"**
 - Calls: `get_quest_log({ playthrough })` on a stored save (in the test: Running Wild at 10, Blood on the Ice at 100, an unnamed helper at 20).
 - Must: Running Wild under way, at "Catch the white, or palonimo, horse"; Blood on the Ice finished, with its ending; the helper counted, never named.
-- Fixed by: WO-134.
+- Passes since WO-134. The test reads `questLog` on the snapshot, what `get_quest_log` returns for a playthrough that stores it (the tool itself needs a signed-in playthrough).
 
 **9. "What can Kyria do at level 6 in Riften?"**
 - Calls: `suggest_quests({ level: 6, where: "Riften" })`, and `get_quest({ name: "Caught Red Handed", level: 6 })`.

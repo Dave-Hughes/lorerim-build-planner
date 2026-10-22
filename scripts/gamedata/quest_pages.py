@@ -1106,6 +1106,23 @@ def people_of(entry):
     return list(dict.fromkeys(n for n in names if n and not is_role(n) and not _RECORD_FORM.search(n) and not _EDID.match(n)))
 
 
+def steps_of(q, row):
+    """
+    Each objective with the stage that shows it (WO-134, for the quest log): from the start check's objectivesShown when the
+    row has it, which leaves out an objective no fragment of its own shows; else the objective's own number, which is the
+    stage for most. A placeholder ("TEST") is never one.
+    """
+    shown = (row or {}).get("objectivesShown") or {}
+    out = []
+    for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)):
+        if not o.get("text") or _PLACEHOLDER.fullmatch(o["text"]):
+            continue
+        stage = shown.get(str(o["index"]), None if shown else o["index"])
+        if stage is not None:
+            out.append({"stage": int(stage), "text": o["text"]})
+    return sorted(out, key=lambda x: x["stage"])
+
+
 def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None, called=None):
     """
     The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a
@@ -1186,6 +1203,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                     "stages": stages,
                     "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
+                    "steps": steps_of(q, checked_rows.get(q["edid"])),
                     "start": start,
                     **({"rewards": rewards} if rewards else {}),
                     # What a player may call it by (WO-133): who its records fill it with, and the names players use.

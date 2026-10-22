@@ -158,7 +158,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "set_snapshot",
     "Where the player stands, from the save",
-    'Set where the player stands from their save, read from the save on their PC: source "save" only. Never a value you estimated or the player guessed (rule 18): the player enters it by hand on the site.',
+    'Set where the player stands from their save, read from the save on their PC: source "save" only. Never a value you estimated or the player guessed (rule 18): the player enters it by hand on the site. The quest stages you send are read back as the player\'s quest log with get_quest_log.',
     z.object({
       playthrough,
       source: z.literal("save"),
@@ -174,6 +174,13 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     (p, a: Parameters<typeof t.setSnapshot>[1]) => t.setSnapshot(p, a),
   );
   tool("get_playthrough", "Read a playthrough", "Get one of the player's playthroughs in the plain shape the inputs use: its acts, objectives with how each stands (done is the save's or the player's) and the chapters that unlock from each, the story's chapters in reading order (each with its act and unlocksWhen), and where the player stands.", z.object({ playthrough }), (p, a: { playthrough: string }) => t.getPlaythroughTool(p, a));
+  tool(
+    "get_quest_log",
+    "The player's quest log, from their save",
+    "What's in the player's quest log, from the save stored on a playthrough (set_snapshot): the quests under way with the objective each shows now, then finished and failed ones behind a count, each with its ending, in the game's words and grouped by quest line. A stage the records don't explain is said so; quests the planner doesn't list are only counted. Says how old the save is. With no save stored, it says so: ask the player to run the save connector.",
+    z.object({ playthrough }),
+    (p, a: { playthrough: string }) => t.getQuestLog(p, a),
+  );
   tool("list_my_playthroughs", "List the player's playthroughs", "List the signed-in player's playthroughs: id, name, who can see it, acts, last change, and whether an assistant drafted it.", z.object({}), (p) => t.listMine(p));
   tool(
     "finish_draft_playthrough",

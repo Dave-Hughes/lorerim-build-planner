@@ -4957,8 +4957,16 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 6. **Tests:** a snapshot with Running Wild at stage 10, Blood on the Ice at 100 and an unnamed helper at 20 returns Running Wild as active ("Catch the white, or palonimo, horse…"), Blood on the Ice finished with its ending, and counts the helper; a stage with no objective is "started but unclear"; no snapshot gives the plain no-save answer.
 
 ### Done when
-- [ ] `get_quest_log` returns active, finished, failed and unclear quests in the game's words, and the helper count. Tests as above.
-- [ ] `get_playthrough` shows the counts; `set_snapshot` points to the log.
+- [x] `get_quest_log` returns active, finished, failed and unclear quests in the game's words, and the helper count. Tests as above.
+- [x] `get_playthrough` shows the counts; `set_snapshot` points to the log.
+- Mac, 22 Oct. `src/lib/mcp/quest-log.ts`, tested in `wo134.test.ts`.
+  - **The data:** each quest in `quests.json` gets `steps`, each objective with the stage that shows it. The stage comes from the start check's `objectivesShown` where the row has it, else the objective's own number, and a placeholder is never one. Blood on the Ice's "Get assistance from the authority figure" has no stage of its own, so it isn't a step.
+  - **Where a quest stands:** the last thing its journal shows at or before the save's stage. An objective means **active**, with the objective (a required one before an optional one). An ending means **finished**, or **failed** when it fails; an ending wins a tie, and a stage's other endings come as `or` (Joslin's two saddles). Nothing at or before the stage means **started but unclear**, which the log says and doesn't guess. So Running Wild at 10 is "Catch the white, or palonimo, horse…", at 41 finished, at 50 failed ("The horse has died."). Blood on the Ice at 100 is finished with Wuunferth's ending.
+  - **The log:** `from` ("Save 70, level 10, day 15, Ivarstead"), and `plan` against the playthrough's build ("The plan runs to level 30; the save is at level 10", or "past the plan's last level"). Then the active quests grouped by line, lines with the fewest quests left first, and finished and failed each as a count with their lines. Last comes "and N background quests the planner doesn't list": quests the planner doesn't list are counted, never named. No snapshot gives "No save is stored yet; ask the player to run the save connector."
+  - **The tools:** `get_quest_log({ playthrough })` (playthroughs sign-in, like `get_playthrough`). `get_playthrough`'s `whereYouStand` has `quests`: "2 quests started, 1 finished (get_quest_log lists them)". `set_snapshot`'s description says the stages are read back with `get_quest_log`. The tool count test is 43 now.
+  - **Questions:** 8 (my quest log) went green. 10 of 11 pass; 7 (the other read-this starts) waits on WO-131 Part 2.
+  - **Not done:** the third box. Dave's Save 70 is in the staging database, which this Mac doesn't read from the tests, so Bob checks it on the live planner.
+  - **Checks:** typecheck, lint, `npm test` (515, and 1 marked question), Python (208), build, and e2e 349 of 350. The miss was WO-108's tool list, which didn't have `get_quest_log`; with it added, that spec passes. On WO-131 Part 0's run, the one miss was WO-123's Play-tab tick under the full run's load (12.2 s); it passes alone (2.3 s).
 - [ ] Dave's Save 70 (Kyria, level 10, Ivarstead) gives a log he recognises, checked by Bob against the live planner.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "what quests are in my quest log" and gets a list that matches his journal.
 
