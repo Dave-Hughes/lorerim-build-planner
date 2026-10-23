@@ -98,3 +98,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `search_facts({ query: "paraglider" })`, `get_quest({ name: "Paragliding in Skyrim", level: 12 })`.
 - Must: a place (near Falkreath), what happens (a man falls from the sky), the journal that moves it to step two; no trigger name ("Para Intro Gazebo Discover"); "open for you" at level 12, not "unknown".
 - Passes since WO-137 item 6: Dave's finding by hand in `overrides.json` (a player's report), and a trigger start counts as a way in, not a need. Dave's Claude had said "unknown" and asked for his LoreRim folder.
+
+**18. "How do I become Thane of Whiterun?"**
+- Calls: `get_quest({ name: "Thane of Whiterun" })`.
+- Must: the jarl by name (Balgruuf the Greater) in Dragonsreach, with "Vignar Gray-Mane if the Stormcloaks hold Whiterun"; the need "once you've helped people of the hold"; never "It starts by itself when you enter Whiterun" as a way in; never a way with no place.
+- Fails today: **WO-138 Part 4b**.
