@@ -180,13 +180,28 @@ class BuiltIndex(unittest.TestCase):
 
     def test_at_level_is_cumulative_not_a_single_tier(self):
         # Bob, 23 Oct, 17:10: "at 12 you'll meet about 3 to 12" -- everything gated at or below 12, not just
-        # whatever one tier happens to need exactly 12.
+        # whatever one tier happens to need exactly 12. Bob, 16:50: a player's terms (from/meets/words), no "gate",
+        # and no row that repeats the one before it (a band holds until "meets" actually changes).
         at_level = self.by["Bleak Falls Barrow"]["actors"]["atLevel"]
-        gates = [e["gate"] for e in at_level]
-        self.assertEqual(gates, sorted(gates))  # ascending, one row per distinct gate
+        froms = [e["from"] for e in at_level]
+        self.assertEqual(froms, sorted(froms))  # ascending, one row per distinct band
+        self.assertNotIn("gate", at_level[0])
+        for e in at_level:
+            self.assertIn("words", e)
+            self.assertIn(str(e["from"]), e["words"])
         for i in range(1, len(at_level)):
-            self.assertLessEqual(at_level[i - 1]["level"][0], at_level[i]["level"][0])  # the floor never falls as the gate rises
-            self.assertLessEqual(at_level[i - 1]["level"][1], at_level[i]["level"][1])  # nor does the ceiling
+            self.assertNotEqual(at_level[i - 1]["meets"], at_level[i]["meets"])  # a real change, not a repeat
+            self.assertLessEqual(at_level[i - 1]["meets"][0], at_level[i]["meets"][0])  # the floor never falls as the band rises
+            self.assertLessEqual(at_level[i - 1]["meets"][1], at_level[i]["meets"][1])  # nor does the ceiling
+
+    def test_halted_stream_camp_s_chief_and_fort_hraggstad_s_commander(self):
+        # Bob, 23 Oct, 16:50: the chief's own records say 19 to 24, but the zone (read and logged under the order)
+        # caps the camp at 10; say "level 10", never "leveled from 10" (that reads as an open floor). A fort's
+        # commander isn't always marked Boss in the records; fall back to its highest-level named, unique actor.
+        self.assertEqual(self.by["Halted Stream Camp"]["actors"]["boss"]["level"], "level 10")
+        hraggstad_boss = self.by["Fort Hraggstad"]["actors"]["boss"]
+        self.assertEqual(hraggstad_boss["name"], "Imperial Soldier")
+        self.assertTrue(hraggstad_boss["level"].startswith("leveled"))
 
     def test_the_fourteen_at_level_one_are_read_by_hand_not_guessed(self):
         # Bob, 23 Oct, 17:10: "The 14 still at 1 to 1 get read by hand and logged." Spot-checked directly against
@@ -203,6 +218,16 @@ class BuiltIndex(unittest.TestCase):
         self.assertEqual(barrow["respawns"], "after 300 days once cleared, 30 ordinarily")
         never = [p["name"] for p in self.rows if p.get("respawns") == "never"]
         self.assertGreater(len(never), 0)  # at least one place carries the zone's own "never resets" flag
+
+    def test_what_lives_there_is_the_actor_s_own_faction_not_a_substring_guess(self):
+        # WO-144 Part 1e: a faction EDID must *end with* "<Kind>Faction" -- a Wolf at Embershard Mine carries
+        # "SprigganPredatorFaction" (what it hunts, not what it is) alongside its own "WolfFaction"; a plain
+        # substring check called it a Spriggan before this test existed.
+        self.assertEqual(self.by["Bleak Falls Barrow"]["actors"]["livesHere"], "Draugr")
+        embershard = self.by["Embershard Mine"]["actors"]
+        self.assertEqual(embershard["livesHere"], "Bandit")
+        self.assertNotIn("Spriggan", [embershard["livesHere"]] + embershard.get("alsoHere", []))
+        self.assertIn("Wolf", embershard.get("alsoHere", []))
 
     def test_bobs_cleaning_pass_names_are_gone_or_fixed(self):
         # WO-144 Part 1, Bob 23 Oct 15:35: a keyword alone isn't a building (a city tagged as having an inn, a

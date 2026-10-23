@@ -91,6 +91,13 @@ NOT_BUILDING_KW = {"LocTypeCity", "CWCapital", "LocTypeHoldCapital", "LocTypeHol
 NOT_BUILDINGS = {"Temple Location", "Snow-Shod Farm Cellar", "Mausoleum", "Mustering Hall", "The Hermit",
                   "The Hermit Cellar", "Markarth East Empire Dormitory",
                   "Solitude"}  # The Great City of Solitude.esp:01F045: LocTypeInn, no cell at all, never placed
+# WO-144 Part 1e: "what lives there", by the actor's own faction (an NPC_'s SNAM list, template-resolved), matched
+# on a word in the faction's EDID -- the game's own naming (BanditFaction, DraugrFaction...), not a guess at it.
+# Checked against the generic top-level factions (BanditFaction, DraugrFaction) and location-specific variants
+# (dunValtheimKeepBanditFaction) alike, since both carry the same word.
+KINDS = ["Bandit", "Draugr", "Forsworn", "Vampire", "Necromancer", "Falmer", "Hagraven", "Spriggan", "Warlock",
+         "Skeleton", "Dragon", "Giant", "Troll", "Chaurus", "Spider", "Riekling", "Thalmor", "Imperial", "Stormcloak",
+         "Wolf", "Bear", "SaberCat", "Mudcrab", "Dwarven", "DragonPriest", "Reaver", "CultEnthir"]
 # Bob's ruling (23 Oct, 15:20): the km is real, but this is a small map, so a player's own measure goes beside it.
 # Set from two pairs Bob gave: Riverwood to Whiterun (0.5 km) is "a short walk"; Whiterun to Riften (2.5 km) is "a
 # long day's road". Embershard Mine to Riverwood (0.3 km, practically touching) sets the top of "next to it".
@@ -180,7 +187,7 @@ def npc_level(v):
 
 def scan():
     pp, lo = plugin_paths(), load_order(cc=True)
-    kw, locs, npcs, lvln, books, infos, quests, eczn = {}, {}, {}, {}, {}, {}, {}, {}
+    kw, locs, npcs, lvln, books, infos, quests, eczn, fact = {}, {}, {}, {}, {}, {}, {}, {}, {}
     for n in lo:  # pass 1: keywords, locations, actors, leveled lists, books, dialogue, quests (each the winning copy)
         p = pp.get(n.lower())
         if not p:
@@ -191,7 +198,7 @@ def scan():
         strings = name_strings(p, n, loc, ROOT) or {}
         tables = (all_strings(p, n, loc, ROOT) or {}) if loc else {}
         res = lambda v: form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))  # noqa: E731
-        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK", "ECZN"):
+        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK", "ECZN", "FACT"):
             if grp.encode() not in buf:
                 continue
             for o in iter_group(buf, grp):
@@ -204,6 +211,8 @@ def scan():
                 full = next((txt(v, loc, strings) for s, v in subs if s == "FULL"), "").strip()
                 if grp == "KYWD":
                     kw[key] = edid
+                elif grp == "FACT":
+                    fact[key] = edid
                 elif grp == "LCTN":
                     kwda = next((v for s, v in subs if s == "KWDA"), b"")
                     locs[key] = {"edid": edid, "name": full, "plugin": n, "deleted": bool(flags & DELETED),
@@ -219,7 +228,9 @@ def scan():
                                  "template": next((res(v) for s, v in subs if s == "TPLT" and len(v) >= 4 and struct.unpack_from("<I", v)[0]), None),
                                  "keywords": [form_id(resolve(struct.unpack_from("<I", kwda, i)[0], masters, n)) for i in range(0, len(kwda) - 3, 4)],
                                  "race": next((res(v) for s, v in subs if s == "RNAM" and len(v) >= 4), None),
-                                 "sex": "female" if acbs_flags & 1 else "male"}
+                                 "sex": "female" if acbs_flags & 1 else "male",
+                                 "factions": [form_id(resolve(struct.unpack_from("<I", v, i)[0], masters, n)) for s, v in subs if s == "SNAM"
+                                              for i in range(0, len(v) - 7, 8)]}
                 elif grp == "LVLN":
                     lvln[key] = {"edid": edid, "entries": [(struct.unpack_from("<H", v, 0)[0], form_id(resolve(struct.unpack_from("<I", v, 4)[0], masters, n)))
                                                            for s, v in subs if s == "LVLO" and len(v) >= 8]}
@@ -315,7 +326,7 @@ def scan():
                                "boss": BOSS in {form_id(resolve(struct.unpack_from("<I", lrt, i)[0], masters, n)) for i in range(0, len(lrt) - 3, 4)}}
                 if base and not flags & DELETED:
                     placed_npc.setdefault(base, cell)
-    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn
+    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact
 
 
 def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
@@ -360,6 +371,40 @@ def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
     return []
 
 
+def resolve_npc(base, npcs, lvln, depth=0, seen=None):
+    """The one representative NPC_ a leveled-list token stands for (its first entry, recursively) -- a kind's
+    tiers are almost always the same creature at a different level, so one path is enough to tell what lives there."""
+    seen = seen if seen is not None else set()
+    if depth > 12 or not base or base in seen:
+        return None
+    if base in npcs:
+        return base
+    if base in lvln and lvln[base]["entries"]:
+        return resolve_npc(lvln[base]["entries"][0][1], npcs, lvln, depth + 1, seen | {base})
+    return None
+
+
+def kind_of(base, npcs, lvln, fact, depth=0):
+    """What an actor is, from its own faction list (template-resolved, same depth limit as level_of): a faction
+    whose EDID *ends with* "<Kind>Faction", generic or location-specific ("dunValtheimKeepBanditFaction") alike.
+    The *end* matters: a Wolf carries "SprigganPredatorFaction" (what it's prey to, not what it is) alongside its
+    own "WolfFaction" -- a plain substring check would have called it a Spriggan. A template can itself be a
+    leveled list (resolved the same way level_entries resolves one), not only another NPC_ directly."""
+    if depth > 6 or not base or base not in npcs:
+        return None
+    n = npcs[base]
+    for f in n.get("factions") or []:
+        edid = fact.get(f, "")
+        for word in KINDS:
+            if edid.endswith(word + "Faction"):
+                return word
+    if n.get("template"):
+        tpl = resolve_npc(n["template"], npcs, lvln)
+        if tpl and tpl != base:
+            return kind_of(tpl, npcs, lvln, fact, depth + 1)
+    return None
+
+
 def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
     """(low, high) levels a placed actor can have, ever (no level gate), and its words: "level 12",
     "matches your level, 5 to 30", "leveled 4-40". A convenience wrapper on level_entries for a single actor
@@ -376,7 +421,7 @@ def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
 
 
 def build(version):
-    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn = scan()
+    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact = scan()
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
@@ -520,21 +565,42 @@ def build(version):
         # named Ritual Master and a generic templated bandit both marked boss; the generic one isn't the boss).
         bosses = [(a, level_of(a["base"], npcs, lvln, cache=level_cache)) for a in acts if a["boss"]]
         bosses = [(a, bl) for a, bl in bosses if bl]
+        if not bosses:
+            # Bob, 23 Oct, 16:50: a fort has a commander, not always a record marked Boss. No XLRT boss ref here --
+            # fall back to the highest-level named, unique actor on site (a commander is always a named person).
+            bosses = [(a, level_of(a["base"], npcs, lvln, cache=level_cache)) for a in acts
+                      if (npcs.get(a["base"]) or {}).get("name")]
+            bosses = [(a, bl) for a, bl in bosses if bl]
         boss, bl = (max(bosses, key=lambda ab: (bool((npcs.get(ab[0]["base"]) or {}).get("name")), ab[1][1]))
                     if bosses else (None, None))
+        kinds = collections.Counter(k2 for k2 in (kind_of(resolve_npc(a["base"], npcs, lvln), npcs, lvln, fact) for a in acts) if k2)
         actors_out = {"count": len(acts)}
+        if kinds:
+            actors_out["livesHere"] = kinds.most_common(1)[0][0]
+            others = [w for w, _ in kinds.most_common()[1:]]
+            if others:
+                actors_out["alsoHere"] = others
         if entries:
             lo, hi = clamp(min(e[1] for e in entries), max(e[2] for e in entries), zone)
             actors_out["floor"], actors_out["ceiling"] = lo, hi
-            # atLevel(n): everything gated at or below n, cumulative -- a player meets more of the list the higher
-            # they are, never less (Bob, 23 Oct, 17:10: "at 12 you'll meet about 3 to 12", not just level 12's own tier).
-            gates = sorted({g for g, _, _, _ in entries})
-            at_level = []
+            # atLevel: everything gated at or below a player's level, cumulative -- they meet more of the list the
+            # higher they are, never less (Bob, 23 Oct, 17:10). Bob, 16:50: say it the player's way -- "from", the
+            # level a band starts at, and "meets", never the raw gate number; bands with the same "meets" collapse
+            # into one, in words, so a player (or Mac) never has to read a list of tiers to get the picture.
+            gates = sorted({max(g, 1) for g, _, _, _ in entries})  # level 0 isn't a player level; merge it into 1
+            bands = []
             for g in gates:
                 seen_so_far = [e for e in entries if e[0] <= g]
-                a_lo, a_hi = clamp(min(e[1] for e in seen_so_far), max(e[2] for e in seen_so_far), zone)
-                at_level.append({"gate": g, "level": [a_lo, a_hi]})
-            actors_out["atLevel"] = at_level
+                meets = list(clamp(min(e[1] for e in seen_so_far), max(e[2] for e in seen_so_far), zone))
+                if bands and bands[-1]["meets"] == meets:
+                    continue  # no change from the band before it -- one row, not one per tier
+                bands.append({"from": g, "meets": meets})
+            for i, b in enumerate(bands):
+                if i + 1 < len(bands):
+                    b["words"] = f"at {b['from']} to {bands[i + 1]['from'] - 1} you meet {b['meets'][0]} to {b['meets'][1]}"
+                else:
+                    b["words"] = f"from {b['from']}, {b['meets'][0]} to {b['meets'][1]}"
+            actors_out["atLevel"] = bands
         if zone and zone["minLevel"]:
             actors_out["zoneMin"] = zone["minLevel"]
         if boss:
@@ -544,10 +610,14 @@ def build(version):
             # naming a unique boss at all.
             boss_level = bl
             if bl and bl[0] != bl[1] and zone:
+                # Bob, 23 Oct, 16:50: Halted Stream Camp's chief (19 to 24 in the records, unnamed -- not a
+                # Zulakaroth-style unique) clamps to the zone's own ceiling (6 to 10) and collapses to one number;
+                # say "level 10", the zone's own cap, never "leveled from 10" (that reads as an open floor, which it
+                # isn't -- the zone record (its own location's ECZN) is what's shown, logged under the order).
                 blo, bhi = clamp(bl[0], bl[1], zone)
                 scaled = bl[2].startswith(("matches your level", "your level x"))
                 words = (f"matches your level, {blo} to {bhi}" if scaled else
-                          f"leveled {blo}-{bhi}" if blo != bhi else f"leveled from {blo}")
+                          f"leveled {blo}-{bhi}" if blo != bhi else f"level {blo}")
                 boss_level = (blo, bhi, words)
             actors_out["boss"] = {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),
                                   "level": boss_level[2] if boss_level else None}
