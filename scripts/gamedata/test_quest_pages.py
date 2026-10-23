@@ -92,6 +92,31 @@ class QuestPagesTest(unittest.TestCase):
 RAW = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "gamedata", "5.0.4.8", "quests_raw.json")
 
 
+class HandWhereTest(unittest.TestCase):
+    """WO-152 Part 0: where a player watched a person stand replaces the placement cell, for that person only."""
+
+    START = {
+        "who": "Jaree-Ra", "where": "Red Wave, Solitude", "thenWho": "Jaree-Ra", "thenWhere": "Red Wave, Solitude",
+        "ways": [{"how": "Ask Jaree-Ra in Red Wave, Solitude", "who": "Jaree-Ra", "where": "Red Wave, Solitude"}, {"how": "Read a note"}],
+    }
+    SPOT = {"who": "Jaree-Ra", "where": "Solitude, by the Winking Skeever", "then": "the Winking Skeever"}
+
+    def test_the_person_stands_where_the_player_saw_them(self):
+        out = qp.hand_where(self.START, self.SPOT)
+        self.assertEqual(out["where"], "Solitude, by the Winking Skeever")
+        self.assertEqual(out["thenWhere"], "the Winking Skeever")
+        self.assertEqual(out["ways"][0]["where"], "Solitude, by the Winking Skeever")
+        self.assertEqual(out["ways"][1], {"how": "Read a note"})
+
+    def test_another_person_keeps_their_place(self):
+        out = qp.hand_where({**self.START, "who": "Someone Else", "thenWho": "Someone Else"}, self.SPOT)
+        self.assertEqual(out["where"], "Red Wave, Solitude")
+        self.assertEqual(out["thenWhere"], "Red Wave, Solitude")
+
+    def test_no_spot_changes_nothing(self):
+        self.assertIs(qp.hand_where(self.START, None), self.START)
+
+
 class EndingsTest(unittest.TestCase):
     """WO-115: each quest's stages and how it can end, on three quests from the records and the shape quests.py now writes."""
 

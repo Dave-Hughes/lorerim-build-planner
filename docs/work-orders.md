@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-152  Where people actually are: by day, by night, not where the editor placed them (PC, then Mac, 23 Oct 2026; before the rest of WO-144 Part 2)
-Status: building (Mac), Part 0
+Status: queued
 
 **Why.** Dave (23 Oct, 17:33) looked for Jaree-Ra, who starts Lights Out!. The planner says "Ask Jaree-Ra … in Red Wave, Solitude". He searched the Red Wave three times; Jaree-Ra stands in Solitude by the inn, as in the vanilla game, and Dave found him only by console. The quest's facts (who, the line, the stage) are right; the **where** is the cell the editor placed him in (where he sleeps), not where he spends his day. The same goes for every person-started way: 573 ways name a person and a place, all from the placement cell. Most shopkeepers stand where they're placed; anyone who walks the town, works elsewhere or sleeps aboard a ship is wrong. Bob also sent Dave to the docks from memory before checking; that rule is in `pipeline.md` now.
 
@@ -5038,7 +5038,7 @@ Not hand-picked: 60 quests drawn at random from the 1,224 checked (seeded, the s
 
 ### Part 0. Jaree-Ra, from Dave's game (Mac, now)
 Dave watched him for a full in-game day (23 Oct, 17:39): he stands in two spots a few feet apart in Solitude by the Winking Skeever, day and night, and never goes to the docks or the Red Wave. Put that on Lights Out!'s way by hand (`overrides.json`, `_checked: "players"`, `_source: "Dave, watched in game for a day, 23 Oct 2026"`): "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)". Part 1's package read must agree with it; if it doesn't, the packages are being read wrong.
-- [ ] Part 0 (Mac).
+- [x] Part 0 (Mac).
 
 ### Part 1. Where, from the AI packages (PC)
 - For every person in `people.json` (and every quest giver), read their AI packages in order (`PACK` with its schedule and location: sandbox, travel, eat, sleep, work, the location or ref it names), resolved to places: "by day: the streets of Solitude by the Winking Skeever; sleeps: aboard the Red Wave at the Solitude docks".
@@ -5054,6 +5054,12 @@ Dave watched him for a full in-game day (23 Oct, 17:39): he stands in two spots 
 - [ ] Part 1: `where`, `sleeps`, `hours` for every person, with the spot checks in the log. (PC)
 - [ ] Part 2: every person-started way and `get_quest` use them. Player question 37: "Where do I find Jaree-Ra?" says the streets of Solitude by the Winking Skeever, not the Red Wave. (Mac)
 - [ ] Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+### Jeff's notes, Part 0 (Mac, 23 Oct)
+- **Done on Lights Out! (MS07).** `overrides.json` `questStarts.MS07` replaces the way with "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)", `_checked: "players"`, `_source: "Dave, watched in game for a day, 23 Oct 2026"`, so the way shows as a player's report. The records' Red Wave also sat in three other fields the page and `get_quest` say: the start's `where`, the way's `where`, and the first step's `thenWhere` ("Accept Jaree-Ra's offer in Solitude at Red Wave, Solitude"). A new `_where` override ({who, where, then?}) in `quest_pages.py` (`hand_where`) puts the spot in those for that person only; they now read "Solitude, by the Winking Skeever" and "Accept Jaree-Ra's offer in Solitude at the Winking Skeever". The raw record form (the judge's, never said to a player) still has the Red Wave. Rebuilt with `build.py`; only `quests.json` changed.
+- **Part 1 must agree.** When the PC's package read gives Jaree-Ra a `where`, it should say the streets of Solitude by the Winking Skeever; if it says the Red Wave or the docks the packages are being read wrong (the order says so). `_where` is the same hand-kept override Part 2 can drop once every person has a `where`.
+- **Tests.** `src/lib/mcp/wo152.test.ts` (get_quest on Lights Out!: the way, the place, the first step, never the Red Wave or the docks) and a Python `HandWhereTest`. Player question 37 stays "fails today": it asks for `get_person`, which is WO-144 Part 2's tool, and it comes off with Part 2. Typecheck, lint, 683 unit tests, 296 gamedata tests, the build and the quest-page e2e (`wo121a`, `wo136`, `wo146`, `wo147`, 16 tests) pass.
+- **Status.** Left `queued` for the PC's Part 1 and the measure and audit before it; Part 2 is Mac and waits on Part 1.
 
 ---
 

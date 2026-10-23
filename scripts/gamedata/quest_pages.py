@@ -1744,6 +1744,24 @@ def hand_who(start, who):
     return {**{k: v for k, v in start.items() if k != "sentBy"}, "who": name, **({"where": who["where"]} if who.get("where") else {}), "ways": ways}
 
 
+def hand_where(start, spot):
+    """
+    Where a person stands, from a player who watched (overrides.json questStarts' _where: {who, where, then?}, WO-152 Part 0): the
+    placement cell is where the editor put them, not where they spend the day. Every where that belongs to that person (the start's,
+    a way's, the first step's) is the spot; `then` is the first step's, when it is a different place's words than the spot.
+    """
+    if not spot:
+        return start
+    who, where = spot["who"], spot["where"]
+    out = dict(start)
+    if out.get("who") == who and "where" in out:
+        out["where"] = where
+    if out.get("thenWho") == who and "thenWhere" in out:
+        out["thenWhere"] = spot.get("then", where)
+    out["ways"] = [{**w, "where": where} if w.get("who") == who and "where" in w else w for w in out.get("ways", [])]
+    return out
+
+
 def thane(start, jarl):
     """
     WO-138 Part 4b, fix 2 (overrides.json questStarts' _jarl): a Thane quest is the hold's sitting jarl's, in their keep,
@@ -1877,6 +1895,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                 start["ways"] = [{**w, "checked": "players", "source": ov["_source"]} if w["how"] in put else w for w in start.get("ways", [])]
             start = dispatched(start, givers.get(q["id"]), checked_rows.get(q["edid"]))
             start = hand_who(start, ov.get("_who"))
+            start = hand_where(start, ov.get("_where"))
             if ov.get("_sentBy"):  # G1: UESP's giver who sends you; or both sides' senders for a shared quest (Part 4b, fix 3)
                 start = {**start, "sentBy": ov["_sentBy"]}
             start = thane(start, ov.get("_jarl"))

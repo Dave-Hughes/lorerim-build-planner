@@ -387,6 +387,17 @@
       "_source": "Dave, found in game, 22 Oct 2026",
       "It starts from Para Intro Gazebo Discover somewhere in Skyrim": "A man falls from the sky near Falkreath; find his body and read his journal, Fredrick's Journal"
     },
+    "MS07": {
+      "_note": "WO-152 Part 0: the records place Jaree-Ra in the Red Wave, the cell the editor put him in, where he sleeps. Dave watched him for a full in-game day (23 Oct, 17:39): he stands in two spots a few feet apart in Solitude by the Winking Skeever, day and night, and never goes to the docks or the Red Wave. Part 1 (the AI packages) must agree with this; if it doesn't, the packages are being read wrong. When Part 1 supplies where, it replaces this and Bob checks they agree.",
+      "_checked": "players",
+      "_source": "Dave, watched in game for a day, 23 Oct 2026",
+      "Ask Jaree-Ra \"Okay, so what's your offer?\" in Red Wave, Solitude": "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)",
+      "_where": {
+        "who": "Jaree-Ra",
+        "where": "Solitude, by the Winking Skeever",
+        "then": "the Winking Skeever"
+      }
+    },
     "0WRHorseQ": {
       "_note": "WO-131 Part 0: Dave found it in the game. The Palonimo Mare is a note pinned to a board right outside Joslin's house, which is hidden behind the Bannered Mare in Whiterun. The PC's readables file (Part 1) has it placed once in Whiterun, 22 m from Joslin's House and Hearth-Healer's Hall and 27 m from the Bannered Mare; when Part 2 gives the file's place, it replaces this and Bob checks they agree.",
       "_checked": "players",
