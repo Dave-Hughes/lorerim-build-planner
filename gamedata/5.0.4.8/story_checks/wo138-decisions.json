@@ -5,9 +5,26 @@
    "G1 several": [
     "Before the Storm"
    ],
+   "D12 several givers": [
+    "Bleak Falls Barrow"
+   ],
+   "G1/G2 started by another quest": [
+    "Dragon Rising",
+    "The Horn of Jurgen Windcaller",
+    "Season Unending",
+    "Dragonslayer",
+    "A New Order"
+   ],
+   "G4/D4": [
+    "Dragon Rising",
+    "The Horn of Jurgen Windcaller",
+    "Season Unending",
+    "Paarthurnax"
+   ],
    "agree": [
-    "Bleak Falls Barrow",
+    "The Way of the Voice",
     "A Blade in the Dark",
+    "Diplomatic Immunity",
     "Alduin's Bane",
     "The Fallen",
     "Sovngarde",
@@ -32,24 +49,6 @@
     "New Allegiances",
     "Rings of Blood Magic"
    ],
-   "G1/G2 started by another quest": [
-    "Dragon Rising",
-    "The Way of the Voice",
-    "The Horn of Jurgen Windcaller",
-    "Season Unending",
-    "Dragonslayer",
-    "A New Order"
-   ],
-   "G4/D4": [
-    "Dragon Rising",
-    "The Horn of Jurgen Windcaller",
-    "Season Unending",
-    "Paarthurnax"
-   ],
-   "D2 person talk": [
-    "Diplomatic Immunity",
-    "Dragon Research"
-   ],
    "G3/D6 records win": [
     "Diplomatic Immunity",
     "A Cornered Rat",
@@ -62,6 +61,12 @@
     "The Throat of the World",
     "Elder Knowledge",
     "The World-Eater's Eyrie"
+   ],
+   "G1 setter the page misses": [
+    "Paarthurnax"
+   ],
+   "D2 person talk": [
+    "Dragon Research"
    ]
   },
   "2": {
@@ -97,10 +102,6 @@
     "Cultists vs Player",
     "Brotherhood"
    ],
-   "D3": [
-    "Beyond Death",
-    "Durnehviir"
-   ],
    "D2 person talk": [
     "Impatience of a Saint",
     "The Temple of Miraak"
@@ -110,7 +111,9 @@
     "Beyond Death Soul Gem Handler"
    ],
    "G1 first step, no giver": [
-    "Forgotten Vale Books Quest"
+    "Forgotten Vale Books Quest",
+    "Proving Honor",
+    "The Silver Hand"
    ],
    "G3/D6 records win": [
     "Forgotten Vale Books Quest",
@@ -123,8 +126,6 @@
     "The Path of Knowledge"
    ],
    "D1b first step": [
-    "Proving Honor",
-    "The Silver Hand",
     "Blood's Honor"
    ],
    "G1 one dispatcher": [
@@ -158,6 +159,7 @@
     "Conjuration Ritual Spell",
     "Restoration Ritual Spell",
     "Alteration Ritual Spell",
+    "College Objective Quest",
     "Tolfdir the Absent-Minded",
     "Out of Balance",
     "Enchanting Pick-Up",
@@ -202,9 +204,6 @@
    ],
    "G3/D6 records win": [
     "Alteration Ritual Spell"
-   ],
-   "D12 several givers": [
-    "College Objective Quest"
    ],
    "D3": [
     "Tolfdir the Absent-Minded",
@@ -298,9 +297,6 @@
     "Investigate the Hall of the Dead",
     "Served Cold"
    ],
-   "D12 several givers": [
-    "Imperial Introductions"
-   ],
    "G4/D4": [
     "Imperial Introductions",
     "A False Front",
@@ -375,9 +371,6 @@
     "Skaal Village Dialogue",
     "No One Escapes Cidhna Mine"
    ],
-   "D3": [
-    "The Final Descent"
-   ],
    "D7": [
     "Thirsk Rumors"
    ],
@@ -409,6 +402,76 @@
    ],
    "G5": [
     "DialogueCidhnaMine"
+   ]
+  },
+  "7": {
+   "agree": [
+    "Drowned Sorrows",
+    "Lost to the Ages",
+    "The Lost Library",
+    "Through a Glass, Darkly",
+    "The Cause",
+    "A Dying Wish",
+    "Stealer of Souls",
+    "Kill the Vampire",
+    "Kill the Forsworn Leader (Jarl)",
+    "Kill the Giant (Jarl)",
+    "Kill the Bandit Leader (Jarl)",
+    "Dungeon Delving (Jarl - Hagravens)",
+    "Dungeon Delving (Jarl - Caves)",
+    "That Was Always There",
+    "I Done Got Thaned!",
+    "In A Pinch"
+   ],
+   "D3": [
+    "Drowned Sorrows"
+   ],
+   "D7": [
+    "Relics of the Crusader",
+    "The Wintersand Deception"
+   ],
+   "G3/D6 records win": [
+    "Through a Glass, Darkly",
+    "The Cause",
+    "Kill the Vampire",
+    "Dungeon Delving (Jarl - Hagravens)",
+    "That Was Always There",
+    "Making Friends and Influencing People"
+   ],
+   "G4/D4": [
+    "Serana's cure vampirism",
+    "Bounty: Bandit Boss",
+    "Bounty: Forsworn",
+    "Bounty: Giant",
+    "Bounty: Dragon",
+    "Making Friends and Influencing People",
+    "Thane of the Reach",
+    "Thane of Haafingar",
+    "Thane of Whiterun",
+    "Thane of Eastmarch",
+    "Thane of Hjaalmarch",
+    "Thane of the Pale",
+    "Thane of Winterhold",
+    "Thane of Falkreath"
+   ],
+   "D12 several givers": [
+    "Kill the Bandit Leader",
+    "Delivery",
+    "A Few Words with You",
+    "Some Light Theft",
+    "Rare Gifts",
+    "Dungeon Delving (Bandits)",
+    "Dungeon Delving (Caves)"
+   ],
+   "G1 unsettled": [
+    "Thane of Haafingar",
+    "Thane of Whiterun"
+   ],
+   "G1 setter the page misses": [
+    "Crustacean Extermination"
+   ],
+   "no row: Mac (G4)": [
+    "Serana's cure vampirism"
    ]
   }
  }

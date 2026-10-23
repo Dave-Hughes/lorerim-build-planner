@@ -359,3 +359,26 @@ Rex's sample came back with 3 of 6 CHANGES NEEDED, two of them rules, so the bat
 - 218 key rows from the loop: 151 passing now and 67 waiting on Mac (G1 18, G2 29, G3 3, G4 17).
 - 8 background (G5), 6 files-only (D7), 7 in the Civil War's radiant class.
 - 1 not checked (A New Source of Stalhrim).
+
+
+### Batch 7 (the Creation Club, the Jarls' bounties, the townsfolk favours, Thane), and decisions version 6
+
+Rex's sample: 4 pass and 2 need changes, one of them a rule. The batch stopped until it was fixed, and batches 1 to 7 were re-sorted.
+- **The stage-table reader, read row by row** (the rule):
+  - a row's stage is its leading `|N|`, which an objective with no index takes (`{{Quest Objective||text}}`, Stealer of Souls), as does the older form "`{{Quest Comment|Objective is assigned}}`: text" (Lost to the Ages);
+  - a table with no ID belongs to the page's main quest, even when a later `|!|` row starts a helper's segment (Lost to the Ages, Beyond Death).
+  - The "UESP has no stage table" rows fell from 10 to 4 (Tolfdir the Absent-Minded, Restocking Soul Gems, Research Thief, Drowned Sorrows). UESP really has none for those.
+- **D0, made to match the code:** the page's giver is its `who`, else its *first* way's person. It's no longer the first way that names anyone. Lost to the Ages' first way is the book, so it names no giver and now agrees with UESP's (none), with UESP's step "Reach the summit of Arkngthamz".
+- **"Starts by itself" on UESP** now also covers a book, place or item start ("Read…", "Reading…", "Enter…", "Find…", "Upon…"), not only the word "automatic" (D2 and D5).
+- **A job title isn't a person:** "Any innkeeper, Jarl or steward" names no one (Bounty: Bandit Boss).
+- **`<br>` reads as a space** ("Arkngthamz, or Find…"), and **the notes have no doubled full stops.**
+- **Rex's notes for Mac, outside G6's scope:**
+  - The Cause's only way is something placed in the Deadlands, which a player can't reach before it starts (UESP: a courier with Stranger's Plea at level 46).
+  - Crustacean Extermination doesn't show "after No Contest".
+  - The Jarls' bounties' "Ask a jarl or their steward" leaves out innkeepers.
+
+**Batches 1 to 7 under version 6:**
+- 255 key rows from the loop: 169 passing now and 86 waiting on Mac (G1 24, G2 29, G3 3, G4 30).
+- 8 background (G5), 8 files-only (D7), 7 in the Civil War's radiant class.
+- 1 waiting on G4 with no page to hold a row.
+- 1 not checked (A New Source of Stalhrim).

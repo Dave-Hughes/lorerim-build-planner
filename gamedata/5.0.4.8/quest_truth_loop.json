@@ -44,8 +44,8 @@
   },
   "MQPaarthurnax": {
    "quest": "Paarthurnax",
-   "waitingOn": "G4",
-   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "waitingOn": "G1",
+   "why": "G1: Esbern, Delphine's own talk sets it off, as UESP says; the page names no giver. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "DLC1VQ02": {
    "quest": "Bloodline",
@@ -274,8 +274,8 @@
   },
   "CW00A": {
    "quest": "Imperial Introductions",
-   "waitingOn": "G1",
-   "why": "D12: 4 people's own lines start it (Alvor, General Tullius, Hadvar, Legate Rikke); the page names only Legate Rikke. Mac's G1 names them all, no single giver. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "CW02A": {
    "quest": "The Jagged Crown",
@@ -336,6 +336,101 @@
    "quest": "Repairing the Phial",
    "waitingOn": "G1",
    "why": "G1: the page names no giver; the job's one dispatcher on UESP is Quintus Navale. Mac's Part 4 names them."
+  },
+  "BQ01": {
+   "quest": "Bounty: Bandit Boss",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "BQ02": {
+   "quest": "Bounty: Forsworn",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "BQ03": {
+   "quest": "Bounty: Giant",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "BQ04": {
+   "quest": "Bounty: Dragon",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor104": {
+   "quest": "Kill the Bandit Leader",
+   "waitingOn": "G1",
+   "why": "D12: 4 people's own lines start it (Ahtar, Annekke Crag-Jumper, Brunwulf Free-Winter, Fanari Strong-Voice); the page names only Ahtar. Mac's G1 names them all, no single giver."
+  },
+  "Favor013": {
+   "quest": "A Few Words with You",
+   "waitingOn": "G1",
+   "why": "D12: 6 people's own lines start it (Carlotta Valentia, Haran, Iddra, Octieve San, Omluag, Scouts-Many-Marshes); the page names only Scouts-Many-Marshes. Mac's G1 names them all, no single giver."
+  },
+  "Favor110": {
+   "quest": "Rare Gifts",
+   "waitingOn": "G1",
+   "why": "D12: 6 people's own lines start it (Captain Aldis, Lami, Rustleif, Siddgeir, Torbjorn Shatter-Shield, Ysolda); the page names only Ysolda. Mac's G1 names them all, no single giver."
+  },
+  "Favor204": {
+   "quest": "Dungeon Delving (Bandits)",
+   "waitingOn": "G1",
+   "why": "D12: 2 people's own lines start it (Amren, Shahvee); the page names only Amren. Mac's G1 names them all, no single giver."
+  },
+  "Favor205": {
+   "quest": "Dungeon Delving (Caves)",
+   "waitingOn": "G1",
+   "why": "D12: 5 people's own lines start it (Frida, Noster Eagle-Eye, Oengul War-Anvil, Roggi Knot-Beard, Runil); the page names only Frida. Mac's G1 names them all, no single giver."
+  },
+  "FavorJarlsMakeFriends": {
+   "quest": "Making Friends and Influencing People",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor250": {
+   "quest": "Thane of the Reach",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor252": {
+   "quest": "Thane of Haafingar",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Elisif the Fair). Mac names the speaker or drops the way."
+  },
+  "Favor253": {
+   "quest": "Thane of Whiterun",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Vignar Gray-Mane). Mac names the speaker or drops the way."
+  },
+  "Favor254": {
+   "quest": "Thane of Eastmarch",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor255": {
+   "quest": "Thane of Hjaalmarch",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor256": {
+   "quest": "Thane of the Pale",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor257": {
+   "quest": "Thane of Winterhold",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "Favor258": {
+   "quest": "Thane of Falkreath",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Crab_MQ2": {
+   "quest": "Crustacean Extermination",
+   "waitingOn": "G1",
+   "why": "G1: Viriya's own talk sets it off, as UESP says; the page names no giver. Mac's Part 4 names them."
   }
  }
 }
