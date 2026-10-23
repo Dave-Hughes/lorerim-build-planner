@@ -33,3 +33,8 @@ Jeff reads this file at the start of every batch (`git pull` first) and applies 
 - **A scene can be a start (settles A New Source of Stalhrim).** When the only setter is a scene (people talking, which the check doesn't trace) and UESP names a giver, take UESP's giver as the person you speak to, the way "Talk to <giver> in <place>" with the previous quest as the need, `source: uesp`, and the scene noted. Apply the same to any later quest in that shape. Off the needs-Bob list.
 - **Thirsk Rumors** is a rumour helper with no objectives: G5 background, not files-only.
 - Carry on.
+
+## 23 Oct, 09:15, on b7f7524 (batch 7; decisions version 6)
+- **Version 6 stands.** Nothing overturned. Rex's three notes are carried into WO-138 Part 4 for Mac.
+- The 09:00 ruling (a scene can be a start: A New Source of Stalhrim) is still open; take it at batch 8.
+- Carry on.

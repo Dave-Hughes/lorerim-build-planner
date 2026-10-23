@@ -4955,6 +4955,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Rex's smaller notes (a `towns` entry that isn't a town, a `thenWho` that is a recruit, "Shaman's Hut, Skaal Village Shaman's Hut", a previous quest missing from needs, flags that could be worded): Mac, in the same pass.
 
 ### Part 4. Mac's pass (after the PC restarts)
+Also, from the loop (Rex's notes in `loop-log.md`, carried here so Mac sees them): The Cause's only way is a placed thing in the Deadlands a player can't reach before it starts (UESP: a courier with Stranger's Plea at level 46; say that); Crustacean Extermination shows "after No Contest"; the Jarls' bounties say "Ask a jarl, their steward or an innkeeper"; the eight Thane quests' "a jarl" way names the jarl of that hold; the Civil War's radiant templates are one class under the line, as the boards are.
 R2, R3, R4, G1's `sentBy`, G2, G4, G5, G6 and Rex's notes, each with a test from the quests named above. `npm run test:questions` and every check in CLAUDE.md.
 
 ### Part 5. Jeff decides (Dave and Bob, 23 Oct)
