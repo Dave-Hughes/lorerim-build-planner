@@ -4964,6 +4964,32 @@ Decisions made under WO-138 Part 5, each with why:
 
 ---
 
+## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave (23 Oct): a Discord-signed-in player should be able to tell the planner what they know about a quest (how it starts, who, where, where a note or book is), not only "this was wrong". Dave's own finds (Running Wild's board, Paragliding near Falkreath) went in by hand through `overrides.json` as player reports, and that is the model: reviewed, approved by a person, then on the pages marked as a player's report with its source. 18 quests are "not checked" and about 370 mod quests have no second source; players are the only way to fill them. Most of the plumbing exists: `report_quest` on the door, the `quest_report` table (`what`, `text`, `said`, `source`, `status`), the site's "This was wrong" form, and `/admin`'s Quest reports.
+
+### Part 1. What a player can send
+- The site's form under a quest (and `report_quest` on the door) gains a kind: **"Something's wrong"** (as now) or **"I know how this starts"** / **"I know where this is"**, with fields for the way in (who, where, what they did), the place (town, building, nearest landmark), and free text. Sign-in required, as now.
+- `quest_report` gains `kind`, `fields` (jsonb: who, where, how, place), and `proposal` and `decision` (below). Schema through `npm run db:generate`, additive only.
+
+### Part 2. The agent proposes
+- A **Propose** action on each new report in `/admin` (and a `propose_quest_fact` step the admin can run on a batch): it reads the report against the quest's records in the generated data (its ways, its needs, `readables` and `boards` places) and writes a **proposal**: what would change on the page, in the page's words ("Way in: read the note pinned to the board outside Joslin's house, behind the Bannered Mare in Whiterun"), how it fits the records (agrees, adds a place the records leave unnamed, or contradicts them), and its confidence. It never writes to the pages.
+- The proposal runs server-side with the Anthropic API (key in Vercel's env, never in code), one call per report, logged.
+
+### Part 3. A person approves
+- `/admin` shows each report with the player, the quest's current page text, the proposal, and three buttons: **Approve** (writes the hand-kept entry the build reads: a `quest_player_fact` table, read by `quests.json`'s build the way `overrides.json`'s `_checked: "players"` entries are, with the source "a player's report (Discord handle, date)"), **Edit and approve**, **Not a problem**. Admins only.
+- An approved fact shows on the page and through `get_quest` as "a player's report, not the game files (<handle>, <date>)", exactly as Dave's do. A later file check that agrees replaces it; one that disagrees flags it for review.
+- The player gets a line on their `/me` page: "Your report on Running Wild is on the planner now. Thank you."
+
+### Done when
+- [ ] Part 1: the two new kinds on the site and the door; the migration.
+- [ ] Part 2: Propose on a report, its proposal stored, nothing written to the pages; a test with a stub API.
+- [ ] Part 3: Approve writes the player fact; the page and `get_quest` show it as a player's report; `/me` says so. e2e: a report on Running Wild is proposed, approved and shown.
+- [ ] Every check in CLAUDE.md passes; screenshots of the admin view at 1440. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-145  An XP budget for every act: level ranges computed, not wished (PC, then Mac, 23 Oct 2026)
 Status: queued, after WO-144 Part 1 (PC) and WO-142 (Mac)
 
