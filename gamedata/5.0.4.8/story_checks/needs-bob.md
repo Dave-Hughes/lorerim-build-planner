@@ -70,6 +70,3 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - First objective's target in the records: alias CampMarker (forced): a marker, placed in Skyrim.
   - Objectives in the records: 'Visit the fishing camp south of Riverwood' (QOBJ 0, shown at stage 10); 'Equip a fishing rod' (QOBJ 5, shown at stage 15).
   - UESP: no page found: no UESP page for First Catch or this editor ID; Angler Acquaintances is ccBGSSSE001_Start_MQ2, a different quest.
-
-
-

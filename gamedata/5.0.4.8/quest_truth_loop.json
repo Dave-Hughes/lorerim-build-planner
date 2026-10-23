@@ -77,11 +77,6 @@
    "waitingOn": "G4",
    "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
-  "DLC2MQ02": {
-   "quest": "The Temple of Miraak",
-   "waitingOn": "G2",
-   "why": "G2: the page names Frea; UESP: Automatic after completing Dragonborn. Mac's G2 makes it 'After <that quest>', no giver"
-  },
   "DLC2MQ03": {
    "quest": "The Fate of the Skaal",
    "waitingOn": "G2",
@@ -222,16 +217,6 @@
    "waitingOn": "G2",
    "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy"
   },
-  "TGBan": {
-   "quest": "Reparations",
-   "waitingOn": "G2",
-   "why": "G2: the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild. Mac's G2 makes it 'After <that quest>', no giver"
-  },
-  "TGCrown": {
-   "quest": "No Stone Unturned",
-   "waitingOn": "G2",
-   "why": "G2: the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".. Mac's G2 makes it 'After <that quest>', no giver"
-  },
   "TGRBE": {
    "quest": "The Burglary Job",
    "waitingOn": "G1",
@@ -291,16 +276,6 @@
    "quest": "Imperial Introductions",
    "waitingOn": "G4",
    "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
-  },
-  "CW01A": {
-   "quest": "Joining the Legion",
-   "waitingOn": "G2",
-   "why": "G2: the page names Legate Rikke; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy"
-  },
-  "CW01B": {
-   "quest": "Joining the Stormcloaks",
-   "waitingOn": "G2",
-   "why": "G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Ulfric Stormcloak is sentBy"
   },
   "CW02A": {
    "quest": "The Jagged Crown",

@@ -315,3 +315,15 @@ Under it all, the comparison counted the first step's person as the page's giver
 - **Part 1's handlers and holders** (Durnehviir's handler, the Civil War's three objective holders, Animal Pelt Collection): background (G5), off the needs-Bob list. The other 13 stay not checked.
 
 **Batches 1 to 5 now:** 181 key rows from the loop, 114 passing now and 67 waiting on Mac (G1 18, G2 33, G3 3, G4 13). Checked starts: 1,224 of 1,242.
+
+
+**Bob's rulings, 23 Oct 08:30 (on batch 5), applied before batch 6:**
+- **G2 is for a quest a player plays.**
+  - **D11:** a setter quest with no objectives in the records is a handler. Its talk's speaker counts as a starter (R1's shape), and the quest isn't G2.
+  - Joining the Legion and Joining the Stormcloaks are ruled by name (`BOB_RULED`): key rows with Legate Rikke and Galmar Stone-Fist, passing now.
+  - For Bob: the records give CW00A and CW00B one objective each ("Join the Imperial Legion", "Join the Stormcloak rebellion"), so D11's test by objectives doesn't catch them. They're umbrella quests whose one objective is the Joining quest's own goal. Ruled by name, not by D11.
+  - Reparations is R1 now: Mercer's, Brynjolf's and Delvin's own lines are its starters (D2), so it's a key row with Mercer Frey. The page wording ("Ask Mercer, Brynjolf or Delvin", "after the Guild bans you") is Mac's.
+  - The Jagged Crown (both), Message to Whiterun, Bloodline, Chasing Echoes, Alduin's Wall and the rest stay G2: their setters are played quests.
+- **The Civil War's radiant templates named by alias text are a class:** The Battle for the fort (both), The name location, Attack the capital, Defend the capital, Battle for the city, Rescue from the attack point. They're counted as the class and off D7's files-only count; Mac shows them once under the line.
+
+**Batches 1 to 5 now:** 181 key rows from the loop, 119 passing now and 62 waiting on Mac (G1 18, G2 28, G3 3, G4 13).

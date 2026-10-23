@@ -1737,6 +1737,36 @@
    ]
   },
   {
+   "quest": "Stendarr Guide",
+   "editorId": "zzzBMGuide",
+   "line": "vigilants",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Trace the blood",
+   "source": "records",
+   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when Remnants, stage 80 sets its stages. First step the records' own. checked: files."
+  },
+  {
+   "quest": "Stendarr Guide",
+   "editorId": "zzzCOGuide",
+   "line": "vigilants",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Break the Blood Curse of Shivers",
+   "source": "records",
+   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when Child of Oblivion, stage 60 sets its stages. First step the records' own. checked: files."
+  },
+  {
+   "quest": "Memory Guide",
+   "editorId": "zzzCHMemoryGuide",
+   "line": "vigilants",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Like when the dream no longer needs its dreamer",
+   "source": "records",
+   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when the Memory quests, from Johan the Fool sets its stages. First step the records' own. checked: files."
+  },
+  {
    "quest": "Before the Storm",
    "editorId": "MQ102",
    "line": "main-quest",
@@ -2405,13 +2435,13 @@
    "quest": "The Temple of Miraak",
    "editorId": "DLC2MQ02",
    "line": "dragonborn",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Frea"
+   ],
    "firstObjective": "Find Frea",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Temple_of_Miraak",
-   "notes": "PC, WO-138 Part 2 batch 2: G2: the page names Frea; UESP: Automatic after completing Dragonborn. Mac's G2 makes it 'After <that quest>', no giver.",
-   "waitingOn": "G2"
+   "notes": "PC, WO-138 Part 2 batch 2: giver Frea; UESP's infobox names no person (Automatic after completing Dragonborn)."
   },
   {
    "quest": "The Fate of the Skaal",
@@ -3178,25 +3208,25 @@
    "quest": "Reparations",
    "editorId": "TGBan",
    "line": "thieves-guild",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Mercer Frey"
+   ],
    "firstObjective": "Speak to Vex",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Reparations",
-   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild. Mac's G2 makes it 'After <that quest>', no giver.",
-   "waitingOn": "G2"
+   "notes": "PC, WO-138 Part 2 batch 4: giver Mercer Frey; UESP's infobox names no person (Automatic after assaulting against to member Thiev)."
   },
   {
    "quest": "No Stone Unturned",
    "editorId": "TGCrown",
    "line": "thieves-guild",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Maul"
+   ],
    "firstObjective": "Become a full member of the Thieves Guild",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:No_Stone_Unturned",
-   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".. Mac's G2 makes it 'After <that quest>', no giver.",
-   "waitingOn": "G2"
+   "notes": "PC, WO-138 Part 2 batch 4: giver Maul; UESP's infobox names no person (Quest received upon finding the first \"Unusual Gem)."
   },
   {
    "quest": "The Burglary Job",
@@ -3714,25 +3744,25 @@
    "quest": "Joining the Legion",
    "editorId": "CW01A",
    "line": "civil-war",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Legate Rikke"
+   ],
    "firstObjective": "Clear out Fort Hraggstad",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Joining_the_Legion",
-   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names Legate Rikke; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy.",
-   "waitingOn": "G2"
+   "notes": "PC, WO-138 Part 2 batch 5: Bob, 23 Oct 08:30: R1's shape, not G2: CW00A is the war's umbrella quest (its one objective, 'Join the Imperial Legion', is this quest's own goal); Legate Rikke's talk is the way in. UESP agrees."
   },
   {
    "quest": "Joining the Stormcloaks",
    "editorId": "CW01B",
    "line": "civil-war",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Galmar Stone-Fist"
+   ],
    "firstObjective": "Kill the Ice Wraith",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Joining_the_Stormcloaks",
-   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Ulfric Stormcloak is sentBy.",
-   "waitingOn": "G2"
+   "notes": "PC, WO-138 Part 2 batch 5: Bob, 23 Oct 08:30: R1's shape, not G2: CW00B is the war's umbrella quest (its one objective, 'Join the Stormcloak rebellion', is this quest's own goal); Galmar Stone-Fist's talk is the way in. UESP agrees."
   },
   {
    "quest": "The Jagged Crown",
@@ -3916,36 +3946,6 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Served_Cold",
    "notes": "PC, WO-138 Part 2 batch 5: giver Captain Veleth on both."
-  },
-  {
-   "quest": "Stendarr Guide",
-   "editorId": "zzzBMGuide",
-   "line": "vigilants",
-   "noGiver": true,
-   "startsWith": [],
-   "firstObjective": "Trace the blood",
-   "source": "records",
-   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when Remnants, stage 80 sets its stages. First step the records' own. checked: files."
-  },
-  {
-   "quest": "Stendarr Guide",
-   "editorId": "zzzCOGuide",
-   "line": "vigilants",
-   "noGiver": true,
-   "startsWith": [],
-   "firstObjective": "Break the Blood Curse of Shivers",
-   "source": "records",
-   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when Child of Oblivion, stage 60 sets its stages. First step the records' own. checked: files."
-  },
-  {
-   "quest": "Memory Guide",
-   "editorId": "zzzCHMemoryGuide",
-   "line": "vigilants",
-   "noGiver": true,
-   "startsWith": [],
-   "firstObjective": "Like when the dream no longer needs its dreamer",
-   "source": "records",
-   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when the Memory quests, from Johan the Fool sets its stages. First step the records' own. checked: files."
   }
  ]
 }

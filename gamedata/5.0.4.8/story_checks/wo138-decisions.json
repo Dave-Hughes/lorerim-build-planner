@@ -80,7 +80,6 @@
     "Bloodline",
     "Chasing Echoes",
     "Seeking Disclosure",
-    "The Temple of Miraak",
     "The Fate of the Skaal"
    ],
    "G1/G2 started by another quest": [
@@ -101,7 +100,8 @@
     "Durnehviir"
    ],
    "D2 person talk": [
-    "Impatience of a Saint"
+    "Impatience of a Saint",
+    "The Temple of Miraak"
    ],
    "G5": [
     "\"Parent\" quest for Radiant Content",
@@ -214,10 +214,12 @@
     "Trinity Restored",
     "Blindsighted",
     "Darkness Returns",
-    "Reparations",
-    "No Stone Unturned",
     "Meet the Family",
     "The Silence Has Been Broken"
+   ],
+   "D2 person talk": [
+    "Reparations",
+    "No Stone Unturned"
    ],
    "G1 one dispatcher": [
     "The Burglary Job",
@@ -293,29 +295,33 @@
    ],
    "G4/D4": [
     "Imperial Introductions",
-    "The Battle for the fort",
     "A False Front",
-    "Rescue from the attack point",
     "Compelling Tribute",
     "A Night To Remember"
    ],
    "D7": [
     "Stormcloak Introductions",
     "Recruitment Drive",
-    "The Battle for the fort",
-    "The name location",
-    "Attack the capital",
-    "Defend the capital",
-    "Battle for the city",
     "My Pet Elytra (Dementia)",
     "My Pet Elytra (Mania)"
    ],
-   "G2/D5": [
+   "Bob 23 Oct 08:30": [
     "Joining the Legion",
-    "Joining the Stormcloaks",
+    "Joining the Stormcloaks"
+   ],
+   "G2/D5": [
     "The Jagged Crown",
     "The Jagged Crown",
     "Message to Whiterun"
+   ],
+   "class (Civil War radiant)": [
+    "The Battle for the fort",
+    "The Battle for the fort",
+    "Rescue from the attack point",
+    "The name location",
+    "Attack the capital",
+    "Defend the capital",
+    "Battle for the city"
    ],
    "G1 one dispatcher": [
     "A False Front",
@@ -329,10 +335,6 @@
    ],
    "G3/D6 earlier stage reachable": [
     "Investigate the Hall of the Dead"
-   ],
-   "no row: Mac (G4)": [
-    "The Battle for the fort",
-    "Rescue from the attack point"
    ]
   }
  }
