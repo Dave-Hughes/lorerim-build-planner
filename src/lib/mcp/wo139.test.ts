@@ -6,7 +6,8 @@ import { modsInOrder, modsSchema, storedMods } from "@/lib/mods";
 import { answersSchema, neverSchema } from "@/lib/playthroughs/validate";
 import { registerBuildTools } from "./build-tools";
 import { registerFactTools } from "./fact-tools";
-import { FactsError, getQuest, neversOf, playerState, styleGuide } from "./facts";
+import { needsKill } from "@/lib/quests/never";
+import { FactsError, getQuest, getRules, neversOf, playerState, styleGuide } from "./facts";
 import { registerPlaythroughTools } from "./playthrough-tools";
 import { modsOf, neverWarnings, suggestFrom } from "./playthroughs";
 
@@ -166,5 +167,51 @@ describe("Part 4: the mods a character needs", () => {
     expect(callings!.nexus).toBeUndefined();
     expect(callings!.places[0].html).toContain("a bard playing the inn or a scholar reading every book in town");
     expect(callings!.places[0].html).toContain("instead of opening on crabs, wolves and bandits");
+  });
+});
+
+describe("Part 5: never kills, read from the objectives", () => {
+  const KILLS = [{ what: "kill", words: "she never kills" }];
+  const player = playerState({ level: 20, never: KILLS });
+  it("reads kill as a thing the planner keeps to, and 'never kills for money' stays the player's own words", () => {
+    expect(neversOf(KILLS).items.map((n) => n.kind)).toEqual(["kill"]);
+    expect(neversOf([{ what: "never kills for money" }]).items.map((n) => n.kind)).toEqual(["own"]);
+  });
+  it("needsKill sees Kill, Defeat, Destroy, Assassinate, Slay and Eliminate, and not an optional one", () => {
+    for (const w of ["Kill Hern", "Defeat the dragon", "Destroy the lair", "Assassinate the jarl", "Slay the beast", "Eliminate the bandits"]) expect(needsKill([w]), w).toBe(w);
+    expect(needsKill(["Talk to Brynjolf", "Burn three bee hives (0/3)"])).toBeNull();
+    expect(needsKill(["(Optional) Kill the guard"])).toBeNull();
+  });
+  it("get_quest: Contract: Kill Hern needs a kill, Loud and Clear is kill-free as far as the objectives go", () => {
+    const hern = getQuest({ id: "DBSideContract04" }, undefined, player).openForYou;
+    expect(hern?.says).toBe("locked for this character: needs a kill: Kill Hern; she never kills");
+    const loud = getQuest({ id: "TG02" }, undefined, player).openForYou;
+    expect(loud?.says).toMatch(/kill-free as far as the objectives go$/);
+    expect(loud?.says).not.toMatch(/locked for this character/);
+    // Without kill on the list nothing is said about kills.
+    expect(getQuest({ id: "DBSideContract04" }, undefined, playerState({ level: 20 })).openForYou?.says).not.toMatch(/kill-free|needs a kill/);
+  });
+  it("suggest_quests leaves out a story whose opening quest needs a kill, and says so", () => {
+    const withKill = suggestFrom("https://planner.test", { level: 30 }, { level: 30, never: KILLS });
+    const without = suggestFrom("https://planner.test", { level: 30 }, { level: 30 });
+    expect(withKill.suggestions.length).toBeLessThanOrEqual(without.suggestions.length);
+    expect(withKill.suggestions.map((s) => s.openForYou).every((says) => /kill-free as far as the objectives go$/.test(says))).toBe(true);
+  });
+  it("warns when an objective is linked to a quest that needs a kill", () => {
+    const pt = {
+      never: KILLS,
+      gameVersion: "5.0.4.8",
+      view: { acts: [{ n: "I", name: "Contracts", route: [], objectives: [{ id: 1, text: "Kill Hern", link: { kind: "quest", id: "DBSideContract04" }, detect: null }] }], chapters: [] },
+    } as unknown as PlaythroughRecord;
+    expect(neverWarnings(pt).map((w) => w.message)).toEqual(['Act I Contracts sends this character to Contract: Kill Hern ("Kill Hern"); needs a kill: Kill Hern; she never kills.']);
+  });
+});
+
+describe("Part 4: what LoreRim already lets a character do", () => {
+  it("get_rules gives activities, performing first and Callings the one that is not in", () => {
+    const a = getRules().activities;
+    expect(a[0]).toMatchObject({ activity: "Playing an instrument and performing at inns", inLoreRim: true, by: "Skyrim's Got Talent" });
+    expect(a.filter((x) => !x.inLoreRim).map((x) => x.by)).toEqual(["Callings"]);
+    expect(a.map((x) => x.by)).toEqual(expect.arrayContaining(["Simplest Horses", "CC's Camping Expansion"]));
   });
 });

@@ -5,6 +5,7 @@
  * and, for the main quest, yours is at or past its `mainQuestAt`. A line that needs part of the main
  * quest with no `mainQuestAt` doesn't block. With no level entered, nothing is open or locked.
  */
+import { needsKill } from "./never";
 import type { LineGate } from "./types";
 
 export const MAIN = "main-quest";
@@ -77,6 +78,8 @@ export interface PlayerState {
   stages: Readonly<Record<string, number>>;
   /** What the character will never do (WO-139): quests by EDID, each with what to say. */
   never?: ReadonlyMap<string, string>;
+  /** `kill` is on the never list (WO-139 Part 5): what to say; a quest whose objectives need a kill is locked for the character. */
+  neverKills?: string;
 }
 
 export type OpenState = "open" | "locked" | "unknown";
@@ -191,7 +194,7 @@ const plainWhy = (why: string) => (RECORD.test(why) ? SAID : why);
  * unknown until the planner knows the one before it is done.
  */
 export function openFor(
-  quest: { edid?: string; start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string }[]; checked: string; raw?: { needs: string[] } } },
+  quest: { edid?: string; objectives?: string[]; start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string }[]; checked: string; raw?: { needs: string[] } } },
   p: PlayerState,
   names: QuestNames,
   /** The quest before it in its line, if it isn't the line's first: a talk that opens it can hang on that one, in ways the check can't see. */
@@ -200,6 +203,9 @@ export function openFor(
   // A quest the character will never do, or one that needs one (WO-139): locked for this character, before any other gate.
   const own = quest.edid ? p.never?.get(quest.edid) : undefined;
   if (own) return { state: "locked", because: [own], forCharacter: true };
+  // "She never kills" (WO-139 Part 5): read from the quest's objectives.
+  const kill = p.neverKills ? needsKill(quest.objectives) : null;
+  if (kill) return { state: "locked", because: [`needs a kill: ${kill}`, p.neverKills!], forCharacter: true };
   // Traced in the files, or confirmed by the answer key (WO-136 ruling 2).
   if (!quest.start || (quest.start.checked !== "files" && quest.start.checked !== "uesp")) return { state: "unknown", because: ["the start isn't checked yet"] };
   // The record form (WO-126): the words are for players, the stages and counts for judging.

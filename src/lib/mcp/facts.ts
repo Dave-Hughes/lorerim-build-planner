@@ -458,7 +458,8 @@ export function playerState(told: Told, version = DEFAULT_VERSION): PlayerState 
     for (const e of names.get(k) ?? []) done.add(e);
   }
   const never = neversOf(told.never, version).quests;
-  return { level: told.level ?? null, done, stages: told.stages ?? {}, ...(never.size ? { never } : {}) };
+  const kill = neversOf(told.never, version).kill;
+  return { level: told.level ?? null, done, stages: told.stages ?? {}, ...(never.size ? { never } : {}), ...(kill ? { neverKills: kill } : {}) };
 }
 
 const SAYS = { open: "open for you", locked: "locked", unknown: "unknown" } as const;
@@ -473,7 +474,9 @@ export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, versio
   const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)), prior);
   // Locked for this character (WO-139): a quest behind something the player said she will never do, in their words.
   if (r.forCharacter) return { state: r.state, says: `locked for this character: ${r.because.join("; ")}`, because: r.because, forCharacter: true as const };
-  return { state: r.state, says: r.state === "open" ? SAYS.open : `${SAYS[r.state]}: ${r.because.join("; ")}`, because: r.because };
+  // With kill on the never list (Part 5): an open quest says it is kill-free as far as its objectives go.
+  const kills = p.neverKills ? "kill-free as far as the objectives go" : null;
+  return { state: r.state, says: `${r.state === "open" ? SAYS.open : `${SAYS[r.state]}: ${r.because.join("; ")}`}${kills ? `; ${kills}` : ""}`, because: r.because, ...(kills ? { kills } : {}) };
 }
 
 /** get_quest_start, kept as an alias of get_quest for a release (WO-115). */
@@ -502,9 +505,23 @@ export function styleGuide(): string {
   return style;
 }
 
+/**
+ * What LoreRim already lets a character do (WO-139 Part 4), so an assistant doesn't send a player to a mod for something the
+ * list ships: Bob's bard test found no way to tell the player that performing is already in the game. Names as the guide
+ * gives them; Callings is the one thing here that is not in LoreRim.
+ */
+export const ACTIVITIES = [
+  { activity: "Playing an instrument and performing at inns", inLoreRim: true, by: "Skyrim's Got Talent", note: "The Acoustic Arcanist trait reads from it." },
+  { activity: "Fishing", inLoreRim: true, by: "Fishing, a creation" },
+  { activity: "Paragliding", inLoreRim: true, by: "the paraglider" },
+  { activity: "Taming a wild horse", inLoreRim: true, by: "Simplest Horses" },
+  { activity: "Camping", inLoreRim: true, by: "CC's Camping Expansion" },
+  { activity: "Reading for experience as a scholar, and experience for role-play in general", inLoreRim: false, by: "Callings", note: "Not part of LoreRim; name it with set_details mods when the design needs it." },
+] as const;
+
 /** get_rules (WO-119): the numbers How points work says, for an assistant that hasn't read the style guide. */
 export function getRules(version = DEFAULT_VERSION) {
-  return { version, ...pointRules(versionData(version).rules), source: "the planner's rules, as its checks count" };
+  return { version, ...pointRules(versionData(version).rules), activities: ACTIVITIES, source: "the planner's rules, as its checks count" };
 }
 
 /**

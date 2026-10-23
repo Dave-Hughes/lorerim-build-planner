@@ -314,8 +314,8 @@ export async function setAbout(p: Player, input: { playthrough?: string; build?:
   return { playthrough: pt.id, about: aboutOf(now), ...(now.mods?.length ? { mods: now.mods } : {}), ...(nevers?.items.some((n) => n.kind === "state" || n.kind === "own") ? { neverNote: NEVER_NOTE } : {}) };
 }
 
-const NEVER_NOTE = "The planner keeps to quest lines, stories and sides: suggest_quests and suggest_objective leave them out, get_quest says locked for this character, and get_playthrough warns. A state or the player's own line is kept and said back; keep to it yourself.";
-const NEVER_KIND = { line: "a quest line", side: "a side in the war", state: "a state", own: "the player's own words" } as const;
+const NEVER_NOTE = "The planner keeps to quest lines, stories, sides and kill (a quest whose objectives need a kill): suggest_quests and suggest_objective leave them out, get_quest says locked for this character, and get_playthrough warns. A state or the player's own line is kept and said back; keep to it yourself.";
+const NEVER_KIND = { line: "a quest line", side: "a side in the war", state: "a state", kill: "never killing, read from each quest's objectives", own: "the player's own words" } as const;
 
 /** The mods a character needs as get_playthrough lists them (WO-139 Part 4): required first, then recommended. */
 export function modsOf(mods: readonly Mod[] | null | undefined): Mod[] {
@@ -334,7 +334,7 @@ function aboutOf(pt: Pick<PlaythroughRecord, "answers" | "never" | "gameVersion"
   }
   return {
     answers: (pt.answers ?? []).map((a) => ({ question: a.question, answer: a.answer })),
-    never: kept.map((n) => ({ what: n.what, is: n.line ? `${NEVER_KIND.line}: ${n.line.name}` : NEVER_KIND[n.kind], says: n.says, keptBy: n.kind === "line" || n.kind === "side" ? "the planner" : "you" })),
+    never: kept.map((n) => ({ what: n.what, is: n.line ? `${NEVER_KIND.line}: ${n.line.name}` : NEVER_KIND[n.kind], says: n.says, keptBy: n.kind === "line" || n.kind === "side" || n.kind === "kill" ? "the planner" : "you" })),
   };
 }
 

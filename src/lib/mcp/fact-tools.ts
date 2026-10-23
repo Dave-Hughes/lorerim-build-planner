@@ -85,7 +85,7 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     "get_rules",
     {
       title: "How points work",
-      description: "The planner's progression rules as its checks count them: skill points a level, the most a skill can rise in one, what a point costs at each band, max skill at a level, perk points, Destiny points, attributes and trainers. The same numbers as the style guide's How points work.",
+      description: "The planner's progression rules as its checks count them: skill points a level, the most a skill can rise in one, what a point costs at each band, max skill at a level, perk points, Destiny points, attributes and trainers; and activities, what LoreRim already lets a character do (performing at inns, fishing, paragliding, taming a horse, camping) and what it doesn't (Callings), so a player isn't sent to a mod for something the list ships. The same numbers as the style guide's How points work.",
       inputSchema: z.object({ version }),
     },
     async ({ version: v }) => guarded(() => getRules(v)),

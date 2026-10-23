@@ -5063,7 +5063,7 @@ Status: queued, after WO-144 (Dave, 23 Oct: the indexes come first)
 ---
 
 ## WO-139  Before you design: the questions, their answers kept, what a character will never do, and the mods they need (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a home, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough: the answers have to be kept, the ones that close doors have to close them in the planner, and a design that needs a mod LoreRim doesn't ship (Callings, first of all) has to say so.
 
@@ -5123,11 +5123,11 @@ A thief who never kills got `never: kill` nowhere to go, and the assistant could
 - [x] Part 1: the section and the How to build lines in the guide (the reason-to-travel line softened), the two descriptions, the renumbering test.
 - [x] Part 2: `answers` through the door and on both pages; screenshots (`test-results/wo139-about-1440.png`, `-390.png`, `wo139-edit-1440.png`, `-390.png`).
 - [x] Part 3: `never` through the door; `suggest_quests`, `suggest_objective`, `get_quest` and the warnings keep to it, with tests on a playthrough whose never holds `main-quest` and `the-dark-brotherhood`.
-- [ ] Part 5: `kill` on the never list reads the objectives; tests on Loud and Clear and Contract: Kill Hern. (Jeff, still to build.)
+- [x] Part 5: `kill` on the never list reads the objectives; tests on Loud and Clear and Contract: Kill Hern.
 - [x] Part 4: `mods` through the door, on the edit pages and both public pages; Callings on the mods guide page (no link: unpublished); the style-guide rule 36. Screenshots (`test-results/wo139-mods-1440.png`, `-390.png`).
-- [ ] Part 4, `activities`: the list of what LoreRim already lets a character do, through `get_rules`. (Jeff, still to build.)
+- [x] Part 4, `activities`: the list of what LoreRim already lets a character do, through `get_rules`.
 - [ ] Part 4, Kyria: Callings on Kyria's own playthrough as required, with Dave's why. Jeff can't reach that row; it is one `set_details` call once staging has deployed (below).
-- [ ] Player questions 19 to 22 pass (they do, for Parts 1 to 4 as built); every check in CLAUDE.md passes again after Part 5 and `activities`. Push staging with `Status: for Bob`.
+- [x] Player questions 19 to 22 pass; every check in CLAUDE.md passes (typecheck, lint, 581 unit tests with the questions, build, the full e2e). Push staging with `Status: for Bob`.
 
 ### Jeff's notes (Mac, 23 Oct)
 Decisions made under WO-138 Part 5, each with why:
@@ -5138,7 +5138,9 @@ Decisions made under WO-138 Part 5, each with why:
 - **What the planner keeps to.** Quest lines, stories and sides are enforced: `suggest_quests` leaves them out with "left out: 2 stories this character won't do (her words)"; `suggest_objective` refuses; `add_objective`, `get_playthrough` and `finish_draft_playthrough` warn (code `never`) for an objective, a chapter's unlock or a route stop; `get_quest` says `locked for this character: <her words>`. A side locks the war's quests behind its joining quests through their checked needs. States (vampire, werewolf) and the player's own lines are kept and said back with a note that the assistant must keep to them: no checked need names a vampire or a werewolf yet. `check_progression` takes a build with no playthrough, so it has no never to read; the warnings are on the playthrough tools.
 - **An unknown id is refused.** An id-shaped entry that names nothing ("the-thieves-gild") is refused with the ids it knows; anything with a space is the player's own line.
 - **Callings** is on the mods guide page through the Character chapter's Related Mods, tagged "Not yet published", no link; a mod's `link` is optional. Question 22 tests the shape (`get_playthrough`'s mods and the guide's page), with no link while it is unpublished.
-- **Checks.** Typecheck, lint and 575 unit tests (the player questions 1 to 22 pass; 23 is WO-141's, still marked) pass; `npm run build`; the full e2e passed 365 of 366 on the merged build. The one failure was `wo123.spec.ts` (Kyria's Play tab), which passes alone and in the first full run; its log showed `NeonDbError: fetch failed` from the dev database, so I put it down to connectivity, not this order. One real flaw the e2e found in my own work is fixed: the answers list tried to save a half-filled row.
+- **Part 5, kill.** `kill` (also `kills`, `killing`) on the never list is read from objectives: Kill, Defeat, Destroy, Assassinate, Slay or Eliminate in a quest's objective words. An optional objective (one starting "(Optional)") doesn't count, since it forces nothing. `get_quest` says `locked for this character: needs a kill: <the objective>; <her words>`, and a quest with no such objective ends its `says` with "kill-free as far as the objectives go" (with a `kills` field). `suggest_quests` leaves out a story whose opening quest needs a kill, `suggest_objective` refuses it, `add_objective` and the playthrough tools warn. A kill the objectives don't say (a bandit in the way) isn't seen, which is why it says "as far as the objectives go". "Never kills for money" stays the player's own words. If a quest is behind a line or side already on the list, that reason is the one given.
+- **`activities`.** `get_rules` carries it: performing at inns (Skyrim's Got Talent, in), fishing (the Fishing creation, in), paragliding (in), taming a wild horse (Simplest Horses, in), camping (CC's Camping Expansion, in the guide's name for it), and reading for experience and role-play experience (Callings, not in). The names are the guide's; Bob's list gave "Camping Expansion".
+- **Checks.** Typecheck, lint and 581 unit tests (the player questions 1 to 22 pass; later ones are other orders', still marked); `npm run build`; the full e2e (366 of 366 passed on the final build). One real flaw the e2e found in my own work is fixed: the answers list tried to save a half-filled row. An earlier full run had one failure in `wo123.spec.ts` (Kyria's Play tab) that passes alone, with `NeonDbError: fetch failed` from the dev database in its log; I took it for connectivity.
 - **For Bob: Kyria's row.** Once staging has deployed, call `set_details` with `playthrough: "Kyria Severa"` and `mods: [{ name: "Callings", why: "<Dave's why>", need: "required" }]`, then read `get_playthrough` for question 22 live.
 
 ---

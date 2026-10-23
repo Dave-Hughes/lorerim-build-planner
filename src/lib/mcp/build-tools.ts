@@ -124,13 +124,13 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
         never: z
           .array(
             z.object({
-              what: z.string().min(1).max(120).describe('A quest line or story id ("main-quest", "the-dark-brotherhood"), a side ("imperial", "stormcloak"), a state ("vampire", "werewolf"), or a line in the player\'s words ("never kills for money").'),
+              what: z.string().min(1).max(120).describe('A quest line or story id ("main-quest", "the-dark-brotherhood"), a side ("imperial", "stormcloak"), a state ("vampire", "werewolf"), "kill" (never kills: a quest whose objectives need a kill), or a line in the player\'s words ("never kills for money").'),
               words: z.string().max(300).optional().describe('How the player said it, said back when something is left out: "she won\'t be the Dragonborn".'),
             }),
           )
           .max(20)
           .optional()
-          .describe("What the character will never do, from the answers. The planner keeps to quest lines, stories and sides."),
+          .describe("What the character will never do, from the answers. The planner keeps to quest lines, stories, sides and kill."),
         mods: z
           .array(
             z.object({

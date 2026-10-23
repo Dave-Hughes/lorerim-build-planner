@@ -60,6 +60,19 @@ test("an assistant keeps the answers and the never list, and the quest tools kee
   const added = await go("add_objective", { playthrough: pid, act: "1", kind: "once", text: "Talk to Aventus Aretino", link: { kind: "quest", name: "Innocence Lost" } });
   expect(added.json().warnings).toEqual(expect.arrayContaining([expect.objectContaining({ code: "never", message: 'Act I East sends this character to Innocence Lost ("Talk to Aventus Aretino"); she won\'t take a contract.' })]));
   expect((await go("get_playthrough", { playthrough: pid })).json().warnings.map((w: { code: string }) => w.code)).toContain("never");
+
+  // Part 5: never kills, read from each quest's objectives.
+  expect((await go("set_details", { playthrough: pid, never: [{ what: "kill", words: "she never kills" }] })).isError).toBe(false);
+  expect((await go("get_quest", { id: "DBSideContract04", playthrough: pid, level: 30 })).json().openForYou.says).toBe("locked for this character: needs a kill: Kill Hern; she never kills");
+  expect((await go("get_quest", { id: "TG02", playthrough: pid, level: 30 })).json().openForYou.says).toMatch(/kill-free as far as the objectives go$/);
+  const noContract = await go("suggest_objective", { playthrough: pid, act: "1", kind: "once", text: "Kill Hern", link: { kind: "quest", name: "Contract: Kill Hern" } });
+  expect(noContract.isError).toBe(true);
+  expect(noContract.text).toContain("needs a kill: Kill Hern");
+
+  // Part 4: what LoreRim already lets a character do.
+  const rules = (await go("get_rules", {})).json();
+  expect(rules.activities[0]).toMatchObject({ by: "Skyrim's Got Talent", inLoreRim: true });
+  expect(rules.activities.filter((a: { inLoreRim: boolean }) => !a.inLoreRim).map((a: { by: string }) => a.by)).toEqual(["Callings"]);
 });
 
 for (const width of [1440, 390]) {
