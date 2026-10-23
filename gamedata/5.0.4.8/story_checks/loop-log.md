@@ -185,3 +185,17 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
   - No giver on UESP where the page names one (3): Beyond Death, The Temple of Miraak and Impatience of a Saint, which UESP says start by themselves.
 - Two more parser faults found while checking: places and items still passing as people, and "Aela" not matched to "Aela the Huntress", which made one false agreement (Striking the Heart). Fixed; every batch-1 row still agrees.
 - Rex (fresh, on Kindred Judgment, The Gardener of Men, Destroying the Dawnguard, Cleansing the Stones): PASS on all four. Its other notes: Destroying the Dawnguard's thenWho is Agmaer, a recruit, not a leader; Cleansing the Stones' place repeats itself ("Shaman's Hut, Skaal Village Shaman's Hut").
+
+### Batch 3 (the Companions, the College)
+- 40 quests: 26 agree (key rows), 13 differ, 1 with no page (Research Thief). **35% to Bob, over 30%.**
+- The College's radiant and objective quests name Tolfdir or Sergius where UESP has no giver, or the reverse. Good Intentions and Revealing the Unseen name Urag and Savos where UESP names Tolfdir and Mirabelle.
+- Parser faults fixed first: UESP's counts ("(/3)"), names in a template ("{{sic|…}}", `<Alias.ShortName=…>`), and a giver written as plain text.
+- Rex (fresh, on The Eye of Magnus, Arniel's Endeavor, Dampened Spirits, Purity): three PASS. The Eye of Magnus got CHANGES NEEDED: its way says "Talk to someone the records don't name" where UESP says it starts by itself.
+- Fixed once, for every batch: a no-giver page whose way names an unnamed person now counts as a difference. Its row came out and it went to Bob. No other written row changed.
+
+### Batch 4 (the Thieves Guild, the Dark Brotherhood)
+- 40 quests: 20 agree (key rows), 15 differ, 5 with no page (the TG00, Dampened Spirits scene, East Empire and No Stone Unturned handlers, Scoundrel's Folly Post). **50% to Bob, over 30%.**
+- The Thieves Guild's radiant jobs name no giver where UESP names Vex or Delvin. The Dark Brotherhood's UESP giver is Astrid, where the page names the person you speak to (Muiri, Festus Krex, Cicero). Before it went into the list, an "Automatic after killing [[Astrid]]" giver was being counted as Astrid; fixed.
+- Rex (fresh, on Bound Until Death, Blindsighted, Destroy the Dark Brotherhood!, Meet the Family): PASS on all four. Its other notes: "Through Dark Brotherhood" as a way; Bound Until Death's place may be the Abandoned Shack where it should be the Dawnstar Sanctuary (to check in the files).
+
+**Stop:** batches 2, 3 and 4 each put more than 30% on the needs-Bob list (75%, 35%, 50%). That's WO-132's second stop condition. Report: `loop-report-2026-10-23.md`. Batches 5 to 9 are compared read-only in the report, not written.

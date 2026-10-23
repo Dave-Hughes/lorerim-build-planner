@@ -290,3 +290,148 @@ Quests the loop can't settle from the records and UESP, each with both readings 
 - **Cultists vs Player** (`DLC2WE09`, Dragonborn.esm:0331C0; winning record: Dragonborn.esm; line `dragonborn`, WO-138 batch 2)
   - The planner: giver none; first step 'Search the one'.
   - UESP (https://en.uesp.net/wiki/Skyrim:Dragonborn_(quest)): giver 2 cultists (DLC2CultistAmbush) OR 3 cultists (DLC2WE09); objectives 5: 'Find out who sent the Cultists'; 7: "Read Cultists' Orders"; 10: 'Travel to Solstheim'.
+
+## WO-138 Part 2, batch 3: the page and UESP differ (14 of 40)
+
+### A different first step (1)
+
+- **Alteration Ritual Spell** (`MGRitual05`, Skyrim.esm:0D0755; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Tolfdir; first step "Use Kahvozein's Fang to collect Dragon Heartscales".
+  - UESP (https://en.uesp.net/wiki/Skyrim:Alteration_Ritual_Spell): giver Tolfdir; objectives 10: "Use Kahvozein's Fang to collect Heartscales"; 20: 'Bring Dragon Heartscales to Tolfdir'.
+
+### A different giver (2)
+
+- **Good Intentions** (`MG04`, Skyrim.esm:01F254; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Urag gro-Shub; first step 'Speak with Tolfdir'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Good_Intentions): giver Tolfdir; objectives 10: 'Speak with Tolfdir'; 15: 'Listen to Tolfdir'; 20: 'Follow Ancano'.
+- **Revealing the Unseen** (`mg06`, Skyrim.esm:01F256; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Savos Aren; first step 'Speak with Mirabelle Ervine'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Revealing_the_Unseen): giver Mirabelle Ervine; objectives 10: 'Speak with Mirabelle Ervine'; 20: 'Find the ruins of Mzulft'; 25: 'Search for Synod researchers'.
+
+### No UESP page lists it (1)
+
+- **Research Thief** (`FreeformWinterholdCollegeA`, Skyrim.esm:05D2E9; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Nirya; first step "Talk to Nirya to see what she's plotting".
+  - UESP: no page lists FreeformWinterholdCollegeA (tried Skyrim:Research_Thief, Skyrim:Research_Thief_(quest)).
+
+### No giver on UESP, the page names one (4)
+
+- **Rejoining the College** (`MGRejoinQuest`, Skyrim.esm:0C9A0E; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Tolfdir; first step 'Speak with Tolfdir'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Rejoining_the_College): giver Automatic after committing a serious crime against a College member OR Automatic after committing a serious crime to any citizen; objectives 5: 'Speak with Tolfdir'; 10: 'Give Tolfdir 250 gold to lift your suspension'; 20: 'Pay Tolfdir 500 gold to lift your suspension'.
+- **Rogue Wizard** (`MGRRogue`, Skyrim.esm:05A609; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Tolfdir; first step 'Deal with the rogue wizard'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Unfinished_Quests): giver none; objectives 10: 'Deal with the rogue wizard'; 20: 'Return to Tolfdir'.
+- **College Objective Quest** (`MG01Pointer`, Skyrim.esm:054D0A; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Faida; first step 'Visit the College of Winterhold'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:College_Objective_Quest): giver Innkeepers and Spell Merchants; objectives 10: 'Visit the College of Winterhold'.
+- **Filling Soul Gems** (`MGR12`, Skyrim.esm:028A1E; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Sergius Turrianus; first step 'Bring a Filled Grand Soul Gem to Sergius Turrianus'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Unfinished_Quests): giver none; objectives 10: 'Bring a Filled Grand Soul Gem to Sergius Turrianus'.
+
+### No objectives on UESP (2)
+
+- **Tolfdir the Absent-Minded** (`MGR01`, Skyrim.esm:0266F1; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Tolfdir's Alembic; first step "Find Tolfdir's missing Alembic".
+  - UESP (https://en.uesp.net/wiki/Skyrim:Tolfdir_the_Absent-Minded): giver Tolfdir; objectives none in its stage table.
+- **Restocking Soul Gems** (`MGR11`, Skyrim.esm:028A19; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver Sergius Turrianus; first step None.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Restocking_Soul_Gems): giver Sergius Turrianus; objectives none in its stage table.
+
+### The page names no giver, UESP does (2)
+
+- **Totems of Hircine** (`CR12`, Skyrim.esm:0E3145; winning record: Skyrim.esm; line `companions`, WO-138 batch 3)
+  - The planner: giver none; first step 'Retrieve the Totem of Hircine'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Totems_of_Hircine): giver Aela the Huntress; objectives 10: 'Retrieve the Totem of Hircine'; 20: 'Take the Totem to the Underforge'.
+- **Dragon Seekers** (`CR14`, Skyrim.esm:0E3156; winning record: Skyrim.esm; line `companions`, WO-138 batch 3)
+  - The planner: giver none; first step 'Kill the dragon at the den'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Dragon_Seekers): giver Farkas or Vilkas; objectives 10: 'Kill the dragon at <alias>'; 20: 'Talk to <alias>'.
+
+### The page names no giver, UESP does; the page's first step is a later UESP objective; the page's way says an unnamed person starts it (1)
+
+- **Under Saarthal** (`MG02`, Skyrim.esm:01F252; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver none; first step 'Tell Tolfdir about the vision'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Under_Saarthal): giver Tolfdir; objectives 10: 'Meet Tolfdir outside Saarthal'; 20: 'Follow Tolfdir'; 25: 'Find Arniel Gane'.
+
+### The page's way says an unnamed person starts it (1)
+
+- **The Eye of Magnus** (`MG08`, Skyrim.esm:01F258; winning record: Skyrim.esm; line `college`, WO-138 batch 3)
+  - The planner: giver none; first step 'Use the Staff of Magnus to enter the College of Winterhold'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Eye_of_Magnus): giver Automatic after completing The Staff of Magnus; objectives 10: 'Use the Staff of Magnus to enter the College of Winterhold'; 20: 'Reach the Hall of the Elements'; 30: 'Defeat Ancano'.
+
+## WO-138 Part 2, batch 4: the page and UESP differ (20 of 40)
+
+### A different giver (2)
+
+- **Whispers in the Dark** (`DB04`, Skyrim.esm:01EA53; winning record: Skyrim.esm; line `dark-brotherhood`, WO-138 batch 4)
+  - The planner: giver Muiri; first step "Hide in the Night Mother's coffin".
+  - UESP (https://en.uesp.net/wiki/Skyrim:Whispers_in_the_Dark): giver Astrid; objectives 10: "Hide in the Night Mother's coffin"; 20: 'Eavesdrop on Cicero'; 30: 'Talk to Cicero'.
+- **To Kill an Empire** (`DB09`, Skyrim.esm:01EA58; winning record: Skyrim.esm; line `dark-brotherhood`, WO-138 batch 4)
+  - The planner: giver Festus Krex; first step 'Report to Astrid'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:To_Kill_an_Empire): giver Astrid; objectives 5: 'Report to Astrid'; 10: 'Report to Commander Maro'; 20: 'Report to Gianna'.
+
+### A different giver; the page's first step is a later UESP objective (3)
+
+- **TG00 Maul Handler** (`TG00MaulHandler`, Skyrim.esm:064A14; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Maul; first step 'Talk to Brynjolf about joining the Thieves Guild'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:A_Chance_Arrangement): giver Brynjolf; objectives 8: 'Meet Brynjolf during daytime'; 10: 'Talk to Brynjolf about joining the Thieves Guild'; 10: "Steal Madesi's Ring".
+- **Delayed Burial** (`DB01Misc`, Skyrim.esm:01EA4F; winning record: Skyrim.esm; line `dark-brotherhood`, WO-138 batch 4)
+  - The planner: giver Vantus Loreius; first step 'Convince Loreius to fix the wheel'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Delayed_Burial): giver Cicero; objectives 5: 'Talk to the strange jester'; 10: 'Convince Loreius to fix the wheel'; 20: 'Report Cicero to the guard'.
+- **The Silence Has Been Broken** (`DB04a`, Skyrim.esm:02AD16; winning record: Skyrim.esm; line `dark-brotherhood`, WO-138 batch 4)
+  - The planner: giver Cicero; first step 'Report back to Astrid'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Silence_Has_Been_Broken): giver Astrid; objectives 5: 'Speak with Astrid'; 10: 'Speak with Amaund Motierre'; 15: 'Talk to Rexus'.
+
+### No UESP page lists it (5)
+
+- **TG00 Misc Handler** (`TG00MiscHandler`, Skyrim.esm:0C99EF; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Brynjolf; first step "Listen to Brynjolf's scheme".
+  - UESP: no page lists TG00MiscHandler (tried Skyrim:TG00_Misc_Handler, Skyrim:TG00_Misc_Handler_(quest)).
+- **Dampened Spirits Scene Quest** (`TG03SP`, Skyrim.esm:0549F3; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Sabjorn; first step 'Speak to Maven Black-Briar.'.
+  - UESP: no page lists TG03SP (tried Skyrim:Dampened_Spirits_Scene_Quest, Skyrim:Dampened_Spirits_Scene_Quest_(quest)).
+- **East Empire Warehouse Dialogue and Handler** (`TG04EECHandler`, Skyrim.esm:1007FC; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Orthus Endario; first step "Speak to Orthas Endario about the East Empire Company's problems".
+  - UESP: no page lists TG04EECHandler (tried Skyrim:East_Empire_Warehouse_Dialogue_and_Handler, Skyrim:East_Empire_Warehouse_Dialogue_and_Handler_(quest)).
+- **Scoundrel's Folly Post** (`TG04Post`, Skyrim.esm:0D3AC6; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Mercer Frey; first step 'Speak to Tonilia about exchanging a piece of armor'.
+  - UESP: no page lists TG04Post (tried Skyrim:Scoundrel's_Folly_Post, Skyrim:Scoundrel's_Folly_Post_(quest)).
+- **No Stone Unturned Misc Handler** (`TGCrownMisc`, Skyrim.esm:06D585; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Ri'saad; first step 'Bring the Unusual Gem to an appraiser'.
+  - UESP: no page lists TGCrownMisc (tried Skyrim:No_Stone_Unturned_Misc_Handler, Skyrim:No_Stone_Unturned_Misc_Handler_(quest)).
+
+### No giver on UESP, the page names one (3)
+
+- **Reparations** (`TGBan`, Skyrim.esm:0B03A2; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Mercer Frey; first step 'Speak to Vex'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Reparations): giver Automatic after assaulting against to member Thieves Guild; objectives 10: 'Speak to Vex'; 20: 'Bring gold to Vex  (1000)'.
+- **No Stone Unturned** (`TGCrown`, Skyrim.esm:09DD77; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Maul; first step 'Become a full member of the Thieves Guild'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:No_Stone_Unturned): giver Quest received upon finding the first "Unusual Gem".; objectives 5: 'Become a full member of the Thieves Guild'; 10: 'Bring the Unusual Gem to an appraiser'; 10: 'Bring the Unusual Gem to Vex in the Thieves Guild'.
+- **The Litany of Larceny** (`TGLarceny`, Skyrim.esm:04C6C2; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver Delvin Mallory; first step 'Return the Queen Bee Statue to Delvin'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Litany_of_Larceny): giver none; objectives 20: 'Return the Queen Bee Statue to Delvin'; 30: 'Return the Honningbrew Decanter to Delvin'; 40: 'Return the East Empire Shipping Map to Delvin'.
+
+### The page names no giver, UESP does (7)
+
+- **The Burglary Job** (`TGRBE`, Skyrim.esm:02893B; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Retrieve the item to get from the wealthy home in the city'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Burglary_Job): giver Vex; objectives 10: 'Retrieve the <alias> from <alias> in <alias>'; 20: 'Return the <alias> to Vex'.
+- **The Shill Job** (`TGRDU`, Skyrim.esm:015D24; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Plant the evidence in the wealthy home in the city'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Shill_Job): giver Vex; objectives 10: 'Plant the <alias> in <alias> in <alias>'; 20: 'Return to Vex'.
+- **The Numbers Job** (`TGRFO`, Skyrim.esm:06098E; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Make changes in the ledger at the business in the city'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Numbers_Job): giver Delvin Mallory in The Ragged Flagon; objectives 10: 'Make changes in the ledger at <alias> in <alias>'; 20: 'Return to Delvin'.
+- **The Fishing Job** (`TGRGF`, Skyrim.esm:028922; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Retrieve the item to get from the mark in the city'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Fishing_Job): giver Delvin Mallory in the Ragged Flagon; objectives 10: 'Retrieve <alias> from <alias> in <alias>'; 20: 'Return the <alias> to Delvin'.
+- **The Sweep Job** (`TGRHC`, Skyrim.esm:028936; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Clear the wealthy home in the city of valuables (0/3)'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Sweep_Job): giver Vex; objectives 10: 'Clear <alias> in <alias> of valuables (/3)'; 20: 'Return the valuables to Vex'.
+- **The Bedlam Job** (`TGRNT`, Skyrim.esm:060990; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Steal 500 gold in goods from the city'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Bedlam_Job): giver Delvin Mallory; objectives 10: 'Steal 500 gold in goods from <alias>'; 20: 'Return to Delvin'.
+- **The Heist Job** (`TGRSL`, Skyrim.esm:02893E; winning record: Skyrim.esm; line `thieves-guild`, WO-138 batch 4)
+  - The planner: giver none; first step 'Retrieve the item to get from the business in the city'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Heist_Job): giver Vex; objectives 10: 'Retrieve the <alias> from <alias> in <alias>'; 20: 'Return the <alias> to Vex'.

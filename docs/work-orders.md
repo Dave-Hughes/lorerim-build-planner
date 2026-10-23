@@ -4939,8 +4939,17 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Part 3. Bob's rulings from the PC's sweep (`wo137-sweep-2026-10-22.md`)
 68 quests show a giver's talk as a way in where the talk needs the quest's own earlier stage (set by a script that runs from the game's start). Bob rules each from the sweep file: where the stage is set by the game itself with nothing a player does, the talk is the way in and the condition is rightly dropped; where the stage is set by something a player does, that is the way in and the talk is the step. Four books check a prerequisite stage (Letter to Lucien, Wyrmstooth's three notes): worded with it, by hand, as Deathbrand was.
 
+- PC, 23 Oct. Report: `story_checks/loop-report-2026-10-23.md`; each step in `loop-log.md`.
+  - **Part 1:** 19 of the 40 settled by hand traces that agree with UESP, now key rows: the fishing jobs, four Black Books, the Thieves Guild's city jobs and Under New Management, plus Purity of Revenge, Glory of the Dead and March of the Dead from the wiki. The other 21 are on the needs-Bob list. Checked starts: 1,221 of 1,242.
+  - **Part 2:** stopped after batch 4 on WO-132's second condition (batches 2, 3 and 4 put 75%, 35% and 50% on the list).
+    - 160 compared: 84 agree (key rows), 62 differ, 14 have no UESP page that lists them.
+    - 53 of the differences are about the giver: UESP's giver is who sends you, the page's `who` is the person whose talk starts it. Only 12 are about the first step.
+    - Bob, one ruling on the giver would settle most of them. The report gives two ways to rule.
+    - Batches 5 to 9 (185) are compared read-only in the report, not written.
+  - Part 3 waits on Bob's rulings.
+
 ### Done when
-- [ ] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
+- [x] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
 - [ ] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
 - [ ] Part 3: Bob's 68 rulings and the four books are in, with the key rows they produce.
 - [ ] Player questions still pass; every check in CLAUDE.md passes. Push staging and stop for Bob.
