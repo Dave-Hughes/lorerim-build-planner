@@ -5045,6 +5045,7 @@ Read on the live door after e26f979. The checks all pass; these are faults the t
     - Striking the Heart: "Aela" is the records' "Aela the Huntress", as the other Companions rows say.
     - Stealing Plans: the batch read "Whiterun", a place on UESP's page, as a second dispatcher. UESP names Aela, and the records' only node is her scouting.
     - Rescue Mission: into `DIFFERS`. UESP names Skjor or Vilkas; both of LoreRim's nodes need Vilkas.
+- Bob, 23 Oct, 10:35, on the live door after f2c67c0: Thane of Whiterun names Balgruuf in Dragonsreach with Vignar as the other side's jarl; Reluctant Steward shows Varona only, sent by Neloth; Unearthed is down to one Ralis line; Joining the Legion is open with no unnamed condition; 18 of 18 player questions and the key's 475 rows pass here too. One nit for a later tidy, not a reopen: Unearthed's `needs` line lists "Talk to Ralis Sedarys in Kolbjorn Barrow", which isn't in its ways, and Geldis's rumour carries an unnamed condition. **The quest-start work is closed:** 1,224 of 1,242 starts checked, 475 confirmed in the key, 18 honestly "not checked".
 
 ---
 
