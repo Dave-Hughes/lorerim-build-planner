@@ -260,6 +260,40 @@ class BuiltIndex(unittest.TestCase):
         self.assertGreater(len(riften_roads), 10)
         self.assertTrue(all(r["km"] > 0 for r in riften_roads))
 
+    def test_bleak_falls_barrow_s_word_wall_is_unrelenting_force(self):
+        # WO-144 Part 1e, one of the ten spot checks (against UESP: Bleak Falls Barrow teaches the first word of
+        # Unrelenting Force, "Fus"). Resolved by the activator's own word matched to its WOOP, then the SHOU whose
+        # SNAM names that WOOP -- a real record relationship each step, never a guess at which shout a wall teaches.
+        self.assertEqual(self.by["Bleak Falls Barrow"]["worthGoingFor"]["wordWall"], ["Unrelenting Force"])
+        self.assertTrue(self.by["Bleak Falls Barrow"]["worthGoingFor"]["bossChest"])
+        self.assertIn("an alchemy lab", self.by["Bleak Falls Barrow"]["worthGoingFor"]["crafting"])
+        self.assertTrue(self.by["Bleak Falls Barrow"]["danger"]["traps"])
+
+    def test_labyrinthian_and_ustengrav_word_walls(self):
+        # Against UESP: Labyrinthian teaches Dismay, Ustengrav teaches Become Ethereal.
+        self.assertEqual(self.by["Labyrinthian"]["worthGoingFor"]["wordWall"], ["Dismay"])
+        self.assertEqual(self.by["Ustengrav"]["worthGoingFor"]["wordWall"], ["Become Ethereal"])
+
+    def test_skill_books_name_their_skill_and_title_not_a_leveled_guess(self):
+        # Skyrim's own convention ("SkillPickpocket2" teaches Pickpocket) is the source, never a guess at a leveled
+        # list's loot. "Thief" (Pickpocket) really is placed at Bleak Falls Barrow -- confirmed against the record,
+        # not assumed from its title alone.
+        books = self.by["Bleak Falls Barrow"]["worthGoingFor"]["skillBooks"]
+        self.assertIn("Pickpocket (Thief)", books)
+
+    def test_a_place_with_nothing_worth_going_for_carries_neither_key(self):
+        # The Bee and Barb (an inn, no dungeon loot) carries no worthGoingFor or danger at all -- "not checked" by
+        # omission, never an empty dict or a false "no" where the place simply has none of these.
+        bee = self.by["Bee and Barb"]
+        self.assertNotIn("worthGoingFor", bee)
+        self.assertNotIn("danger", bee)
+
+    def test_danger_names_a_dragon_lair_from_the_place_s_own_type_not_a_new_read(self):
+        # "Danger to a build": a dragon lair is already the place's own `type` (its map marker); no new record read.
+        lairs = [p for p in self.rows if p["type"] == "DragonLair"]
+        self.assertGreater(len(lairs), 0)
+        self.assertTrue(all(p["danger"]["dragonLair"] for p in lairs))
+
 
 if __name__ == "__main__":
     unittest.main()

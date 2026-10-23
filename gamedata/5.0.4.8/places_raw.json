@@ -87,6 +87,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -285,7 +291,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Gray Fox Cowl.esm:05EA13",
@@ -381,7 +390,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Gray Fox Cowl.esm:00E3F4",
@@ -420,6 +435,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -608,6 +629,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Ancient Pottery",
@@ -684,7 +711,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (Song of Hrormir)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01BDFD",
@@ -740,6 +772,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (2920, Vol. 02: Sun's Dawn)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -808,7 +853,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Dragons Awaken.esp:000807",
@@ -836,7 +887,10 @@
    "marker": null,
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:020A02",
@@ -955,6 +1009,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -1278,6 +1335,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (The Wolf Queen, Vol. 1)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -1365,6 +1428,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (The Lunar Lorkhan)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -1434,6 +1507,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (The Locked Room)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Pets of Skyrim",
@@ -1535,7 +1621,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Orsinium and the Orcs)"
+    ],
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:018A4D",
@@ -1586,6 +1678,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Chimarvamidium)"
+    ],
+    "crafting": [
+     "a sharpening wheel"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -1837,7 +1937,24 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Armor Enchantments)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Julianos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "WindhelmSSE.esp:39FE09",
@@ -1937,6 +2054,20 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (The Importance of Where)",
+     "Smithing (Last Scabbard of Akrash)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -2001,6 +2132,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Marksmanship Lesson)"
+    ],
+    "shrines": [
+     "Shrine of Kynareth"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -2049,6 +2188,19 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (The Mirror)",
+     "HeavyArmor (The Knights of the Nine)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -2192,6 +2344,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -2271,6 +2429,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -2325,6 +2491,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Armor Enchantments)",
+     "Marksman (The Marksmanship Lesson)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -2902,6 +3078,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -3477,6 +3659,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Orsinium and the Orcs)",
+     "TwoHanded (Words and Philosophy)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -3547,7 +3742,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Pickpocket (Guide to Better Thieving)"
+    ],
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:01927B",
@@ -3602,6 +3803,18 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Hallgerd's Tale)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ],
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -3693,6 +3906,24 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (Mystery of Talara, Vol. 3)",
+     "Smithing (Cherim's Heart)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Dibella"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -3841,6 +4072,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -3918,6 +4158,19 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (The Lunar Lorkhan)",
+     "Smithing (Heavy Armor Forging)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -4054,7 +4307,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:019282",
@@ -4106,6 +4362,23 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (The Knights of the Nine)",
+     "TwoHanded (Song of Hrormir)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -4256,6 +4529,17 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)",
+     "Enchanting (A Tragedy in Black)",
+     "Sneak (The Red Kitchen Reader)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -4384,7 +4668,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (Rislav the Righteous)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0F5BA7",
@@ -4430,6 +4719,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "quests": [
     {
      "quest": "The Man in Black",
@@ -4481,6 +4776,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Storm Call"
+    ],
+    "skillBooks": [
+     "Smithing (Heavy Armor Forging)",
+     "Smithing (Last Scabbard of Akrash)"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -4731,6 +5038,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Mystery of Talara, Vol. 4)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -4791,6 +5110,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -4854,7 +5178,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "WindhelmSSE.esp:1B623A",
@@ -4927,7 +5254,16 @@
      "level": "matches your level, 3 to 100"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily"
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an anvil"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0C2EE7",
@@ -4976,6 +5312,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (A Dance in Fire, Vol. 2)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5041,6 +5383,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (Mace Etiquette)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "quests": [
     {
      "quest": "Thieves Guild Radiant Guild Trophy Enabler",
@@ -5140,6 +5491,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Surfeit of Thieves)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5208,7 +5565,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel"
+    ]
+   },
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:0192C7",
@@ -5258,6 +5623,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5373,6 +5744,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5550,6 +5927,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5617,6 +6000,18 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Song of the Alchemists)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
    "quests": [
     {
      "quest": "Falkreath Gossip Quest",
@@ -5677,6 +6072,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5755,7 +6156,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (Legend of Krately House)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:047825",
@@ -5803,6 +6209,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Advances in Lockpicking)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5871,6 +6282,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (The Armorer's Challenge)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -5944,7 +6369,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:018EEF",
@@ -5996,7 +6424,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:016F85",
@@ -6051,6 +6488,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Incident at Necrom)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -6110,7 +6560,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (2920, Vol. 06: MidYear)"
+    ]
+   }
   },
   {
    "id": "AlternatePerspective.esp:00AA20",
@@ -6129,6 +6584,14 @@
    "plugin": "AlternatePerspective.esp",
    "marker": null,
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (The Exodus)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -6189,6 +6652,20 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (Rislav the Righteous)",
+     "Smithing (Light Armor Forging)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -6241,6 +6718,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Speechcraft (A Dance in Fire, Vol. 6)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -6418,6 +6903,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Proper Lock Design)"
+    ],
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -6477,7 +6974,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Unrelenting Force"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:0B712C",
@@ -6530,6 +7035,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (Light Armor Forging)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -6623,6 +7142,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Mannimarco, King of Worms)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -6680,7 +7204,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:0479B3",
@@ -6729,7 +7256,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (Liminal Bridges)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:019183",
@@ -6780,6 +7312,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (Jornibret's Last Dance)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -6868,6 +7413,16 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (Horror of Castle Xyr)",
+     "Enchanting (A Tragedy in Black)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -6987,7 +7542,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "FalkreathShades.esp:3289B8",
@@ -7024,7 +7585,12 @@
    },
    "respawns": "never",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01918C",
@@ -7129,6 +7695,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (Response to Bero's Speech)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -7233,6 +7812,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -7300,6 +7885,19 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Black Arrow, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -8196,6 +8794,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Black Arrow, Vol. 2)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9060,6 +9670,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (The Doors of Oblivion)"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "quests": [
     {
      "quest": "Falkreath Gossip Quest",
@@ -9106,6 +9724,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (Father of the Niben)"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -9169,6 +9792,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Breathing Water)",
+     "Conjuration (The Doors of Oblivion)",
+     "Enchanting (A Tragedy in Black)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9224,6 +9862,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -9267,6 +9913,19 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Death Blow of Ebernanit)",
+     "Pickpocket (Guide to Better Thieving)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9328,6 +9987,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (Vernaccus and Bourlor)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9418,7 +10091,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:01927E",
@@ -9544,6 +10220,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (The Warrior's Charge)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9633,6 +10322,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Elemental Fury"
+    ],
+    "skillBooks": [
+     "Speechcraft (2920, Vol. 05: Second Seed)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9713,7 +10414,20 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Mannimarco, King of Worms)",
+     "Block (Battle of Red Mountain)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Tools of Kagrenac.esp:21A11D",
@@ -9761,6 +10475,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -9831,6 +10551,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -9953,6 +10681,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (The Red Kitchen Reader)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -10035,7 +10776,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Weapon Enchantments)"
+    ]
+   }
   },
   {
    "id": "aaaGraniteHill.esp:1939BB",
@@ -10115,6 +10861,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -10222,6 +10979,23 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Fire Breath"
+    ],
+    "skillBooks": [
+     "Conjuration (2920, Vol. 10: Frostfall)",
+     "Lockpicking (The Wolf Queen, Vol. 1)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -10339,6 +11113,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Proper Lock Design)",
+     "Sneak (Sacred Witness)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -10529,7 +11315,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Slow Time"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:020082",
@@ -10567,6 +11362,16 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Song of the Alchemists)",
+     "Speechcraft (The Buying Game)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -11165,13 +11970,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -11327,6 +12132,20 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (Cherim's Heart)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -11381,6 +12200,19 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (The Mirror)",
+     "Enchanting (A Tragedy in Black)",
+     "LightArmor (The Rear Guard)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -11723,6 +12555,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (King)",
+     "TwoHanded (Song of Hrormir)"
+    ],
+    "crafting": [
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -12263,6 +13104,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Gold Ribbon of Merit)"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -12395,6 +13244,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Pickpocket (Beggar)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -12463,6 +13317,18 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Battle of Red Mountain)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "The Break of Dawn",
@@ -12521,6 +13387,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (2920, Vol. 01: Morning Star)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -12581,6 +13456,16 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (2920, Vol. 01: Morning Star)",
+     "TwoHanded (The Legendary Sancre Tor)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -12886,6 +13771,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Incident at Necrom)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -12956,6 +13847,19 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Surfeit of Thieves)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "The Man Who Cried Wolf",
@@ -13018,6 +13922,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (The Art of War Magic)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -13107,6 +14020,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (2920, Vol. 09: Hearth Fire)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -13216,7 +14138,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Reality & Other Falsehoods)"
+    ],
+    "crafting": [
+     "an enchanting table"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:07046A",
@@ -13293,6 +14223,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -13351,7 +14289,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (Mystery of Talara, Vol. 3)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:0200A3",
@@ -13388,6 +14335,26 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Song of the Alchemists)",
+     "Speechcraft (A Dance in Fire, Vol. 7)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ],
+    "shrines": [
+     "Shrine of Akatosh",
+     "Shrine of Arkay",
+     "Shrine of Dibella",
+     "Shrine of Julianos",
+     "Shrine of Kynareth",
+     "Shrine of Mara",
+     "Shrine of Stendarr",
+     "Shrine of Talos",
+     "Shrine of Zenithar"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -13560,6 +14527,16 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Twin Secrets)",
+     "Speechcraft (A Dance in Fire, Vol. 7)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -13682,6 +14659,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Surfeit of Thieves)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -13760,7 +14746,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (2920, Vol. 04: Rain's Hand)"
+    ],
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:0192C8",
@@ -13816,6 +14808,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (The Refugees)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -14054,6 +15055,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Advances in Lockpicking)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -14224,6 +15234,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Whirlwind Sprint"
+    ],
+    "skillBooks": [
+     "Speechcraft (The Buying Game)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -14319,7 +15344,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:019179",
@@ -14374,6 +15405,19 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Frost Breath"
+    ],
+    "skillBooks": [
+     "OneHanded (Fire and Darkness)",
+     "Pickpocket (Purloined Shadows)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -14489,6 +15533,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (A Dance in Fire, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -14580,6 +15639,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (The Locked Room)"
+    ],
+    "shrines": [
+     "Shrine of Kynareth"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -14632,6 +15699,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -14688,7 +15763,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:0C2EF1",
@@ -14768,6 +15846,17 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Dismay"
+    ],
+    "skillBooks": [
+     "Conjuration (Liminal Bridges)"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15009,7 +16098,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:0F6F13",
@@ -15053,7 +16151,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Speechcraft (A Dance in Fire, Vol. 6)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EB96",
@@ -15091,6 +16194,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (Racial Phylogeny)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15176,6 +16284,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (2920, Vol. 02: Sun's Dawn)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15280,6 +16397,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (Mace Etiquette)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an anvil"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15345,6 +16475,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Black Arrow, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15394,7 +16536,10 @@
    "marker": "Dragons Awaken.esp:000819",
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:019165",
@@ -15448,6 +16593,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Akatosh"
+    ]
+   },
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -15498,6 +16652,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -15552,6 +16714,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15609,6 +16774,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Orsinium and the Orcs)",
+     "Speechcraft (2920, Vol. 05: Second Seed)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15719,6 +16894,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -15865,6 +17046,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Become Ethereal"
+    ],
+    "skillBooks": [
+     "Restoration (Mystery of Talara, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -16071,6 +17267,23 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (The Doors of Oblivion)",
+     "LightArmor (The Rear Guard)",
+     "OneHanded (2920, Vol. 01: Morning Star)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -16171,7 +17384,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Siege at Icemoth.esp:4CD0C3",
@@ -16245,7 +17464,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Siege at Icemoth.esp:5BE7D4",
@@ -16327,7 +17549,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Siege at Icemoth.esp:4CD0C4",
@@ -16374,6 +17605,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "The Topaz Claw",
@@ -16493,6 +17733,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an anvil"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "The Struggle for Justice",
@@ -16608,7 +17858,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Journey to Baan Malur.esp:2205C2",
@@ -16799,6 +18058,11 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel"
+    ]
+   },
    "quests": [
     {
      "quest": "A New Source of Stalhrim",
@@ -16852,6 +18116,13 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "quests": [
     {
      "quest": "Miasma",
@@ -16906,7 +18177,17 @@
    },
    "respawns": "never",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Miasma.esp:000EAD",
@@ -16958,6 +18239,19 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Marked for Death"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an anvil"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "PriestFight",
@@ -17016,6 +18310,16 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -17123,6 +18427,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -17181,6 +18491,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -17235,7 +18554,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Dragonborn.esm:01429C",
@@ -17279,6 +18601,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -17333,7 +18661,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Dragonborn.esm:0142CA",
@@ -17428,6 +18759,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -17472,7 +18809,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Dragonborn.esm:0296DA",
@@ -17521,7 +18864,17 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an anvil"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Dragons Awaken.esp:00085D",
@@ -17567,7 +18920,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Lucien.esp:2B1404",
@@ -17612,6 +18968,16 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -17956,6 +19322,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -18009,6 +19381,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -18173,6 +19548,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -18362,6 +19743,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -18470,6 +19857,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "quests": [
     {
      "quest": "Healing a House",
@@ -18526,6 +19916,16 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -18617,6 +20017,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -18666,7 +20069,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Dragonborn.esm:017BAD",
@@ -18773,6 +20179,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -18829,6 +20238,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -18920,6 +20335,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -19018,6 +20439,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -19072,6 +20496,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -19270,6 +20700,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Hallgerd's Tale)"
+    ],
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -20596,6 +22041,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -20713,6 +22169,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -20771,6 +22233,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Akatosh"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -20934,7 +22408,10 @@
    },
    "respawns": "never",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Dragonborn.esm:0142C9",
@@ -21095,6 +22572,15 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -21150,6 +22636,12 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -21461,6 +22953,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Init quest",
@@ -21576,6 +23074,9 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -21716,6 +23217,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -21836,6 +23340,15 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22013,7 +23526,17 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (The Wolf Queen, Vol. 1)",
+     "Pickpocket (Purloined Shadows)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:01917B",
@@ -22067,6 +23590,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Marked for Death"
+    ],
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)",
+     "Block (The Mirror)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22151,6 +23690,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (2920, Vol. 06: MidYear)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22256,6 +23810,18 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (The Red Kitchen Reader)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22351,6 +23917,24 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)",
+     "Block (A Dance in Fire, Vol. 2)",
+     "Enchanting (Catalogue of Armor Enchantments)",
+     "HeavyArmor (The Knights of the Nine)"
+    ],
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Stendarr"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22475,6 +24059,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Storm Call"
+    ],
+    "skillBooks": [
+     "Destruction (A Hypothetical Treachery)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "A Scroll For Anska",
@@ -22523,6 +24122,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -22584,6 +24191,15 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22683,6 +24299,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (Response to Bero's Speech)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22771,6 +24392,18 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Slow Time"
+    ],
+    "skillBooks": [
+     "LightArmor (Jornibret's Last Dance)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -22937,6 +24570,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Speechcraft (A Dance in Fire, Vol. 7)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -23142,6 +24784,22 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Mannimarco, King of Worms)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Mara"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -23265,6 +24923,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (Cherim's Heart)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -23351,6 +25014,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (2920, Vol. 08: Last Seed)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -23525,7 +25200,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:01916C",
@@ -23574,6 +25252,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -23643,7 +25327,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:0240E6",
@@ -23687,7 +25374,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Armor Enchantments)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0192A6",
@@ -23738,7 +25434,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (Ice and Chitin)"
+    ],
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:0192AA",
@@ -23791,7 +25493,20 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Disarm"
+    ],
+    "skillBooks": [
+     "Pickpocket (Thief)",
+     "TwoHanded (Words and Philosophy)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:019278",
@@ -23834,6 +25549,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -23898,7 +25621,12 @@
      "level": "level 12"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily"
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:020062",
@@ -23935,6 +25663,17 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (The Art of War Magic)",
+     "Enchanting (Catalogue of Weapon Enchantments)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
    "quests": [
     {
      "quest": "BCSLL Vendor Quest",
@@ -24050,6 +25789,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Aura Whisper"
+    ],
+    "skillBooks": [
+     "OneHanded (Mace Etiquette)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -24182,7 +25933,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Talos"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:020065",
@@ -24391,6 +26147,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Armor Enchantments)",
+     "Marksman (Father of the Niben)"
+    ],
+    "shrines": [
+     "Shrine of Kynareth"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -24437,6 +26202,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -24534,7 +26302,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:018EE7",
@@ -24630,7 +26401,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (King)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:018EED",
@@ -24682,6 +26462,18 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Mystery of Talara, Vol. 4)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -24762,6 +26554,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (The Mirror)",
+     "Conjuration (Liminal Bridges)"
+    ],
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Dibella"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -24840,6 +26645,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (A Tragedy in Black)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -24915,6 +26726,15 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Speechcraft (Biography of the Wolf Queen)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25007,7 +26827,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Marksmanship Lesson)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0B239F",
@@ -25054,7 +26879,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Sithis)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:019160",
@@ -25106,6 +26936,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -25236,6 +27078,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (Sacred Witness)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25353,7 +27209,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:01916F",
@@ -25405,6 +27270,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (The Rear Guard)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an anvil"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25476,6 +27357,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Orsinium and the Orcs)"
+    ],
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25573,6 +27465,25 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Pickpocket (Guide to Better Thieving)",
+     "Smithing (Last Scabbard of Akrash)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ],
+    "shrines": [
+     "Shrine of Akatosh",
+     "Shrine of Kynareth",
+     "Shrine of Talos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25722,7 +27633,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (Withershins)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:019190",
@@ -25774,6 +27694,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (2920, Vol. 08: Last Seed)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25836,6 +27770,26 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Slow Time"
+    ],
+    "skillBooks": [
+     "Illusion (Mystery of Talara, Vol. 4)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -25898,6 +27852,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (2920, Vol. 04: Rain's Hand)"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -26155,6 +28117,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ],
+    "shrines": [
+     "Shrine of Julianos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -26216,6 +28193,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -26259,6 +28244,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (2920, Vol. 02: Sun's Dawn)"
+    ],
+    "shrines": [
+     "Shrine of Dibella"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -26551,6 +28544,21 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Song of the Alchemists)",
+     "Block (A Dance in Fire, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -26693,7 +28701,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:018A54",
@@ -26744,6 +28755,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)",
+     "HeavyArmor (The Knights of the Nine)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27002,7 +29025,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Speechcraft (Biography of the Wolf Queen)"
+    ],
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:019268",
@@ -27055,6 +29084,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27160,7 +29199,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:01927C",
@@ -27213,6 +29255,23 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (The Knights of the Nine)",
+     "Smithing (The Armorer's Challenge)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27304,6 +29363,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Sithis)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27567,7 +29635,12 @@
      "level": "matches your level, 10 to 81"
     }
    },
-   "respawns": "after 300 days once cleared, 30 ordinarily"
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01F7CB",
@@ -27605,6 +29678,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (Battle of Sancre Tor)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27754,6 +29832,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Kyne's Peace"
+    ],
+    "skillBooks": [
+     "Restoration (Mystery of Talara, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27833,7 +29926,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:019292",
@@ -27885,6 +29981,15 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (The Doors of Oblivion)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -27988,7 +30093,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:019293",
@@ -28042,6 +30150,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -28117,6 +30231,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Chimarvamidium)"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -28183,6 +30302,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -28240,6 +30365,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Reality & Other Falsehoods)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -28318,6 +30453,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Twin Secrets)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -28351,7 +30499,15 @@
    "marker": "Skyrim.esm:0AD066",
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Speechcraft (The Buying Game)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01F30E",
@@ -28591,6 +30747,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)",
+     "Enchanting (A Tragedy in Black)",
+     "Enchanting (Catalogue of Weapon Enchantments)",
+     "OneHanded (Mace Etiquette)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -28879,6 +31048,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -28970,6 +31147,20 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Daughter of the Niben)",
+     "Conjuration (The Warrior's Charge)",
+     "Smithing (Last Scabbard of Akrash)"
+    ],
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -29125,6 +31316,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Aura Whisper"
+    ],
+    "skillBooks": [
+     "Restoration (Withershins)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -29197,6 +31403,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Kagrenac's Tools",
@@ -29226,7 +31435,12 @@
    "marker": "Skyrim.esm:0D3931",
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:018EE3",
@@ -29276,6 +31490,19 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Animal Allegiance"
+    ],
+    "skillBooks": [
+     "Illusion (Before the Ages of Man)",
+     "Speechcraft (A Dance in Fire, Vol. 7)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -29352,6 +31579,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -29486,7 +31716,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (Jornibret's Last Dance)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:018EE5",
@@ -29538,6 +31777,18 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (Racial Phylogeny)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30090,6 +32341,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -30146,6 +32408,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (Battle of Sancre Tor)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30245,6 +32516,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Kynareth"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30315,6 +32591,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Destruction (Horror of Castle Xyr)",
+     "Destruction (Mystery of Talara, Vol. 3)",
+     "Illusion (2920, Vol. 02: Sun's Dawn)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30705,6 +32996,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (The Lunar Lorkhan)",
+     "Lockpicking (Proper Lock Design)",
+     "Marksman (The Marksmanship Lesson)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30767,6 +33073,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -30863,6 +33172,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -30937,6 +33251,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (The Exodus)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -31030,6 +33360,23 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (Mace Etiquette)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ],
+    "shrines": [
+     "Shrine of Stendarr",
+     "Shrine of Talos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -31103,7 +33450,12 @@
    },
    "respawns": "never",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (Vernaccus and Bourlor)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:019188",
@@ -31157,6 +33509,18 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (Words and Philosophy)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -31203,6 +33567,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (Racial Phylogeny)"
+    ],
+    "shrines": [
+     "Shrine of Kynareth"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -31252,6 +33624,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -31544,6 +33921,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -31598,6 +33983,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -32192,6 +34582,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Battle of Red Mountain)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -32382,6 +34787,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -32444,6 +34852,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -32501,6 +34915,20 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Song of the Alchemists)",
+     "Enchanting (Catalogue of Weapon Enchantments)",
+     "Enchanting (Enchanter's Primer)",
+     "Illusion (Before the Ages of Man)",
+     "Lockpicking (Surfeit of Thieves)",
+     "TwoHanded (Words and Philosophy)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -32689,7 +35117,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Death Blow of Ebernanit)"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:019169",
@@ -32741,6 +35177,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -32802,7 +35244,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (Heavy Armor Forging)"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0226B3",
@@ -32907,6 +35354,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Battle of Red Mountain)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33000,6 +35463,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Hallgerd's Tale)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33104,6 +35581,9 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -33211,6 +35691,15 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "A New Order",
@@ -33295,6 +35784,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an armor workbench"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33535,6 +36035,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Kyne's Peace"
+    ],
+    "skillBooks": [
+     "Illusion (Before the Ages of Man)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33624,6 +36139,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Breathing Water)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33689,6 +36217,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -33744,6 +36280,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (The Knights of the Nine)",
+     "Restoration (The Exodus)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ],
+    "shrines": [
+     "Shrine of Stendarr"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -33894,6 +36444,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Mara"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -34164,6 +36722,12 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -34302,6 +36866,22 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (Advances in Lockpicking)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab"
+    ],
+    "shrines": [
+     "Shrine of Nocturnal"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Thieves Guild Radiant Guild Trophy Enabler",
@@ -34367,6 +36947,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Battle of Red Mountain)",
+     "Destruction (Mystery of Talara, Vol. 3)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -34432,6 +37025,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Twin Secrets)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -34606,6 +37214,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Unrelenting Force"
+    ],
+    "skillBooks": [
+     "Pickpocket (Thief)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -34937,6 +37561,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -35000,6 +37627,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Mystery of Talara, Vol. 4)",
+     "Lockpicking (The Wolf Queen, Vol. 1)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -35053,6 +37691,15 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Before the Ages of Man)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -35969,6 +38616,22 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Fire Breath"
+    ],
+    "skillBooks": [
+     "TwoHanded (Battle of Sancre Tor)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36068,6 +38731,26 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (The Doors of Oblivion)",
+     "Destruction (A Hypothetical Treachery)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Julianos",
+     "Shrine of Talos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36155,7 +38838,19 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Mannimarco, King of Worms)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:01917D",
@@ -36208,6 +38903,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "LightArmor (Rislav the Righteous)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36430,6 +39137,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (Vernaccus and Bourlor)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36467,7 +39180,10 @@
    "marker": "Dragons Awaken.esp:000820",
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:01919B",
@@ -36571,6 +39287,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (The Knights of the Nine)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36622,6 +39347,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Death Blow of Ebernanit)"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36878,6 +39611,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -36936,7 +39680,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:018E34",
@@ -36982,6 +39729,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (De Rerum Dirennis)",
+     "Enchanting (Twin Secrets)",
+     "Speechcraft (2920, Vol. 05: Second Seed)",
+     "Speechcraft (Biography of the Wolf Queen)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -37690,6 +40451,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -37732,6 +40501,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (A Dance in Fire, Vol. 2)",
+     "HeavyArmor (Orsinium and the Orcs)",
+     "Marksman (The Marksmanship Lesson)",
+     "TwoHanded (Song of Hrormir)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -39159,6 +41936,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Hallgerd's Tale)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -40619,7 +43401,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:0E66A5",
@@ -40718,6 +43503,18 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Kyne's Peace"
+    ],
+    "skillBooks": [
+     "Destruction (Horror of Castle Xyr)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -40824,6 +43621,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Sneak (2920, Vol. 08: Last Seed)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -40888,6 +43697,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Dibella",
+     "Shrine of Talos",
+     "Shrine of Zenithar"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -42170,6 +44991,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -43059,7 +45886,10 @@
    "marker": "Dragons Awaken.esp:00083E",
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   }
   },
   {
    "id": "Skyrim.esm:01929A",
@@ -43196,6 +46026,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -43323,6 +46159,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (Light Armor Forging)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -43393,6 +46240,12 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -43503,6 +46356,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -43555,6 +46414,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -43612,6 +46479,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "OneHanded (Night Falls on Sentinel)",
+     "Pickpocket (Thief)"
+    ],
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -43676,6 +46553,17 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (Withershins)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ],
+    "shrines": [
+     "Shrine of Kynareth"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -44016,7 +46904,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an enchanting table"
+    ]
+   }
   },
   {
    "id": "SurWR.esp:14C813",
@@ -44421,6 +47314,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Marksman (The Black Arrow, Vol. 2)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -44477,6 +47382,13 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a forge",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -44569,6 +47481,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -44796,6 +47720,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -44867,6 +47794,21 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (The Locked Room)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -44973,6 +47915,23 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (De Rerum Dirennis)",
+     "Alchemy (Mannimarco, King of Worms)",
+     "Block (Warrior)",
+     "Speechcraft (A Dance in Fire, Vol. 6)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -45358,6 +48317,17 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)",
+     "Enchanting (Catalogue of Weapon Enchantments)",
+     "Illusion (2920, Vol. 02: Sun's Dawn)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "quests": [
     {
      "quest": "Illusion Ritual Spell",
@@ -45412,6 +48382,15 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Weapon Enchantments)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "quests": [
     {
      "quest": "Illusion Ritual Spell",
@@ -45483,6 +48462,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Warrior)",
+     "LightArmor (The Rear Guard)",
+     "OneHanded (2920, Vol. 01: Morning Star)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Purity of Revenge",
@@ -45541,6 +48536,18 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (Orsinium and the Orcs)"
+    ],
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Julianos"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -45627,6 +48634,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (Warrior)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -45697,7 +48717,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (Mystery of Talara, Vol. 2)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:01EB7A",
@@ -45735,6 +48764,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Sithis)",
+     "Conjuration (Liminal Bridges)",
+     "Destruction (The Art of War Magic)",
+     "Illusion (2920, Vol. 02: Sun's Dawn)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -45916,6 +48953,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Enchanter's Primer)",
+     "Restoration (The Exodus)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -45995,6 +49046,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -46054,6 +49113,15 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Become Ethereal"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -46105,6 +49173,14 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Twin Secrets)"
+    ],
+    "shrines": [
+     "Shrine of Julianos"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -46170,7 +49246,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01927F",
@@ -46223,6 +49307,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "danger": {
+    "dragonLair": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -46372,6 +49459,9 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Kagrenac's Tools",
@@ -46434,6 +49524,21 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Ice Form"
+    ],
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47228,6 +50333,13 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "quests": [
     {
      "quest": "Discerning the Transmundane",
@@ -47357,6 +50469,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Pickpocket (Aevar Stone-Singer)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47428,7 +50549,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Illusion (Before the Ages of Man)"
+    ],
+    "bossChest": true
+   }
   },
   {
    "id": "Skyrim.esm:0192AF",
@@ -47481,6 +50608,19 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "wordWall": [
+     "Disarm"
+    ],
+    "skillBooks": [
+     "LightArmor (Ice and Chitin)",
+     "Sneak (Three Thieves)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47588,6 +50728,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (The Mirror)",
+     "HeavyArmor (2920, Vol. 06: MidYear)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47684,6 +50838,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ],
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -47742,6 +50907,15 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (The Warrior's Charge)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47797,6 +50971,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Breathing Water)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47889,6 +51068,11 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Restoration (The Exodus)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -47971,6 +51155,17 @@
     }
    },
    "respawns": "never",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (De Rerum Dirennis)"
+    ],
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48155,6 +51350,11 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Smithing (The Armorer's Challenge)"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48240,7 +51440,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim.esm:0C2EFC",
@@ -48265,6 +51471,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Arkay"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -48309,6 +51523,15 @@
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Enchanter's Primer)"
+    ],
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48402,6 +51625,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48465,6 +51691,15 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alteration (Reality & Other Falsehoods)"
+    ],
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48566,6 +51801,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "TwoHanded (The Legendary Sancre Tor)"
+    ],
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48691,6 +51932,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (A Tragedy in Black)",
+     "Enchanting (Catalogue of Weapon Enchantments)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Dibella"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -48752,6 +52007,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -48814,6 +52072,20 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "HeavyArmor (The Knights of the Nine)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -48861,7 +52133,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "WTUniqueStonehollow.esp:0008D9",
@@ -48878,6 +52153,12 @@
    "plugin": "WTUniqueStonehollow.esp",
    "marker": null,
    "respawns": "after 300 days once cleared, 30 ordinarily",
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Mara",
+     "Shrine of Zenithar"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -48930,6 +52211,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -48991,6 +52275,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -49085,6 +52375,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -49195,7 +52488,17 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Herbalist's Guide to Skyrim)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   }
   },
   {
    "id": "Wyrmstooth.esp:4EE84E",
@@ -49241,6 +52544,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -49301,7 +52613,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "Wyrmstooth.esp:4D8B1A",
@@ -49346,7 +52661,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Nocturnal"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Wyrmstooth.esp:486524",
@@ -49398,6 +52722,19 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Akatosh"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -49528,7 +52865,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Block (A Dance in Fire, Vol. 2)"
+    ],
+    "crafting": [
+     "a sharpening wheel",
+     "an anvil"
+    ]
+   }
   },
   {
    "id": "Wyrmstooth.esp:4EE850",
@@ -49575,6 +52921,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "quests": [
     {
      "quest": "Someone with Backbone",
@@ -49712,6 +53064,23 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (De Rerum Dirennis)",
+     "Destruction (A Hypothetical Treachery)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -50295,6 +53664,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -50394,7 +53768,19 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Akatosh",
+     "Shrine of Arkay",
+     "Shrine of Dibella",
+     "Shrine of Julianos",
+     "Shrine of Kynareth",
+     "Shrine of Mara",
+     "Shrine of Stendarr",
+     "Shrine of Zenithar"
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:00357E",
@@ -50445,6 +53831,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (De Rerum Dirennis)",
+     "Conjuration (The Warrior's Charge)",
+     "Destruction (A Hypothetical Treachery)",
+     "Sneak (The Red Kitchen Reader)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -50605,6 +54007,22 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Weapon Enchantments)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an anvil",
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -50750,7 +54168,10 @@
    "marker": null,
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   }
   },
   {
    "id": "ccbgssse016-umbra.esm:006C48",
@@ -50800,6 +54221,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -50901,6 +54328,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Auriel"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -50986,7 +54421,14 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   }
   },
   {
    "id": "Vigilant.esm:26C072",
@@ -51066,7 +54508,16 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "shrines": [
+     "Shrine of Auriel"
+    ]
+   },
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Vigilant.esm:26C062",
@@ -51102,7 +54553,13 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   }
   },
   {
    "id": "Vigilant.esm:26C064",
@@ -51259,7 +54716,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "NightmarePlane.esp:2284B8",
@@ -51339,6 +54799,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -51484,6 +54947,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -51533,6 +54999,14 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Akatosh"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Broken Horns",
@@ -51679,7 +55153,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Vigilant.esm:26C069",
@@ -51938,6 +55415,25 @@
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Enchanting (Catalogue of Armor Enchantments)",
+     "Lockpicking (Surfeit of Thieves)",
+     "Pickpocket (Purloined Shadows)",
+     "Sneak (2920, Vol. 08: Last Seed)",
+     "Sneak (The Red Kitchen Reader)"
+    ],
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an alchemy lab",
+     "an armor workbench",
+     "an enchanting table"
+    ],
+    "shrines": [
+     "Shrine of Nocturnal"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -52037,6 +55533,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
    "quests": [
     {
      "quest": "Sleepwalking Into A Nightmare",
@@ -52098,6 +55597,11 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a forge"
+    ]
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -55654,6 +59158,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Lockpicking (The Locked Room)",
+     "Marksman (Vernaccus and Bourlor)"
+    ]
+   },
    "quests": [
     {
      "quest": "Memories of the Umbranox",
@@ -55697,6 +59207,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -55763,7 +59276,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A516B",
@@ -55908,6 +59424,16 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (Mannimarco, King of Worms)",
+     "Alchemy (Song of the Alchemists)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -55989,6 +59515,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -56070,6 +59602,13 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "a forge",
+     "a sharpening wheel",
+     "an armor workbench"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -56151,6 +59690,17 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Alchemy (A Game at Dinner)",
+     "LightArmor (The Rear Guard)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an armor workbench",
+     "an enchanting table"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -56213,6 +59763,12 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "book",
@@ -56294,7 +59850,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Undeath.esp:125096",
@@ -56338,6 +59897,16 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "skillBooks": [
+     "Conjuration (Liminal Bridges)",
+     "Conjuration (The Doors of Oblivion)"
+    ],
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab"
+    ]
+   },
    "pointers": [
     {
      "kind": "book",
@@ -56399,7 +59968,12 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "shrines": [
+     "Shrine of Mara"
+    ]
+   }
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:4E7B1C",
@@ -56430,7 +60004,10 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   }
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5165",
@@ -56467,6 +60044,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -56798,6 +60384,12 @@
    "respawns": "never",
    "clearXp": 200,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "Kagrenac's Tools",
@@ -57003,7 +60595,15 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab"
+    ],
+    "shrines": [
+     "Shrine of Julianos"
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:04378B",
@@ -57407,6 +61007,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "danger": {
+    "traps": true
+   },
    "pointers": [
     {
      "kind": "dialogue",
@@ -57574,7 +61177,14 @@
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
-   "discoveryXp": 10
+   "discoveryXp": 10,
+   "worthGoingFor": {
+    "bossChest": true,
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   }
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A516A",
@@ -57613,6 +61223,15 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
    "discoveryXp": 10,
+   "worthGoingFor": {
+    "crafting": [
+     "an alchemy lab",
+     "an enchanting table"
+    ]
+   },
+   "danger": {
+    "traps": true
+   },
    "quests": [
     {
      "quest": "The Lunatic's Treasure",

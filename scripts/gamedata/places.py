@@ -20,6 +20,13 @@ For each place:
   pointers     dialogue lines that name it (the speaker, where the speaker stands, the words, the record), and books and
                notes that name it, matched on the place's whole name
   quests       quests whose location aliases are it, or whose forced references stand in it: a quest already goes there
+  worthGoingFor (WO-144 Part 1e) a word wall and the shout it teaches, a skill book, a boss chest, a crafting station,
+               a shrine -- each a placed REFR whose base the game's own naming marks, never a guess at loot a
+               leveled list might hold. Not built: a unique, non-leveled item (no record-level marker separates one
+               from an ordinary item of the same type)
+  danger       (WO-144 Part 1e) a dragon lair (the place's own `type`) and traps (a placed `Trap*` activator). Not
+               built: the boss's own spell kit (a spell's school isn't in its EDID reliably enough to name without
+               guessing)
 """
 import collections
 import configparser
@@ -102,6 +109,19 @@ KINDS = ["Bandit", "Draugr", "Forsworn", "Vampire", "Necromancer", "Falmer", "Ha
 # Set from two pairs Bob gave: Riverwood to Whiterun (0.5 km) is "a short walk"; Whiterun to Riften (2.5 km) is "a
 # long day's road". Embershard Mine to Riverwood (0.3 km, practically touching) sets the top of "next to it".
 WALK_BANDS = [(0.4, "next to it"), (1.0, "a short walk"), (2.0, "half a day")]
+# WO-144 Part 1e: "what's worth going for" and "danger to a build", each found by the game's own naming convention
+# on the placed activator/container/furniture record -- never a guess at what a leveled list happens to hold.
+WORD_WALL_ACTI = re.compile(r"^NorWordWallWord([A-Za-z]+)$")  # the word taught; a trailing "xxx" is an unused duplicate of the same word
+SKILL_BOOK_EDID = re.compile(r"^Skill([A-Za-z]+)(\d+)$")  # Skyrim's own convention: "SkillAlchemy5" teaches Alchemy, tier 5
+BOSS_CHEST_EDID = re.compile(r"ChestBoss")  # "TreasBanditChestBoss", "TreasDraugrChestBoss"...
+CRAFTING_FURN = {"CraftingBlackSmithForge": "a forge", "CraftingBlackSmithForgeWR": "a forge",
+                 "CraftingBlackSmithForgeSkyforge": "the Skyforge", "CraftingBlacksmithAnvil": "an anvil",
+                 "CraftingBlacksmithSharpeningWheel": "a sharpening wheel", "CraftingBlacksmithArmorWorkbench": "an armor workbench",
+                 "CraftingEnchantingWorkbench": "an enchanting table", "CraftingEnchantingWorkbenchTabletop": "an enchanting table",
+                 "CraftingAlchemyWorkbench": "an alchemy lab", "CraftingAlchemyWorkbenchTabletop": "an alchemy lab"}
+SHRINE_ACTI = re.compile(r"(?i)shrineof")
+SHRINE_NOISE = re.compile(r"(?i)trigger|approach|exit")  # a scene helper beside the real shrine, not the shrine itself
+TRAP_EDID = re.compile(r"(?i)^trap")
 
 
 def walk(km):
@@ -188,6 +208,10 @@ def npc_level(v):
 def scan():
     pp, lo = plugin_paths(), load_order(cc=True)
     kw, locs, npcs, lvln, books, infos, quests, eczn, fact = {}, {}, {}, {}, {}, {}, {}, {}, {}
+    # WO-144 Part 1e: word walls (by the word they teach, resolved to its shout below), skill books, boss chests,
+    # crafting stations, shrines and traps -- each a placed REFR's base, matched by the records' own naming.
+    woop_by_word, shou_by_woop = {}, collections.defaultdict(list)
+    wordwall_acti, crafting, shrines, boss_chests, traps = {}, {}, {}, set(), set()
     for n in lo:  # pass 1: keywords, locations, actors, leveled lists, books, dialogue, quests (each the winning copy)
         p = pp.get(n.lower())
         if not p:
@@ -198,7 +222,7 @@ def scan():
         strings = name_strings(p, n, loc, ROOT) or {}
         tables = (all_strings(p, n, loc, ROOT) or {}) if loc else {}
         res = lambda v: form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))  # noqa: E731
-        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK", "ECZN", "FACT"):
+        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK", "ECZN", "FACT", "ACTI", "FURN", "CONT", "WOOP", "SHOU"):
             if grp.encode() not in buf:
                 continue
             for o in iter_group(buf, grp):
@@ -213,6 +237,29 @@ def scan():
                     kw[key] = edid
                 elif grp == "FACT":
                     fact[key] = edid
+                elif grp == "WOOP":
+                    if edid.startswith("Word") and len(edid) > 4:
+                        woop_by_word[edid[4:]] = key
+                elif grp == "SHOU":
+                    if full:
+                        for s, v in subs:
+                            if s == "SNAM" and len(v) >= 4:
+                                shou_by_woop[res(v)].append(full)
+                elif grp == "ACTI":
+                    m = WORD_WALL_ACTI.match(edid)
+                    if m:
+                        word = m.group(1)
+                        wordwall_acti[key] = word[:-3] if word.endswith("xxx") and len(word) > 3 else word
+                    elif SHRINE_ACTI.search(edid) and full and not SHRINE_NOISE.search(edid):
+                        shrines[key] = full
+                    elif TRAP_EDID.match(edid):
+                        traps.add(key)
+                elif grp == "FURN":
+                    if edid in CRAFTING_FURN:
+                        crafting[key] = CRAFTING_FURN[edid]
+                elif grp == "CONT":
+                    if BOSS_CHEST_EDID.search(edid):
+                        boss_chests.add(key)
                 elif grp == "LCTN":
                     kwda = next((v for s, v in subs if s == "KWDA"), b"")
                     locs[key] = {"edid": edid, "name": full, "plugin": n, "deleted": bool(flags & DELETED),
@@ -236,7 +283,7 @@ def scan():
                                                            for s, v in subs if s == "LVLO" and len(v) >= 8]}
                 elif grp == "BOOK":
                     desc = next((txt(v, loc, tables.get("DLSTRINGS") if loc else None) for s, v in subs if s == "DESC"), "")
-                    books[key] = {"name": full or edid, "text": desc, "plugin": n}
+                    books[key] = {"name": full or edid, "text": desc, "plugin": n, "edid": edid}
                 elif grp == "ECZN":
                     # DATA (12 bytes), decoded by hand on Fort Hraggstad (Bob, 23 Oct): Owner (FormID, 4), Location
                     # (FormID, 4), Rank (int8), MinLevel (int8), Flags (uint8), MaxLevel (int8); max 0 means no cap.
@@ -270,9 +317,22 @@ def scan():
                 q["name"] = got["names"].get(k, {}).get("name") or got["names"].get(k, {}).get("edid") or k
                 q["named"] = bool(got["names"].get(k, {}).get("name"))  # a scene holder or helper has no name a player sees
                 quests[k] = q
-    # Pass 2: cells (name, location, worldspace), map markers, placed actors, and where quests' forced references stand.
+    # Word wall -> the shout it teaches: the activator's own word (its EDID suffix) matched to the WOOP of the same
+    # word, then the SHOU whose own word list (SNAM) names that WOOP -- a real record relationship each step, never
+    # a guess at which shout a wall teaches. Resolved once pass 1 (every plugin) is in, so a word wall and its word's
+    # WOOP/SHOU can sit in different plugins without an ordering problem.
+    wordwall_shout = {}
+    for k, word in wordwall_acti.items():
+        wk = woop_by_word.get(word)
+        shouts = shou_by_woop.get(wk) if wk else None
+        if shouts:
+            wordwall_shout[k] = shouts[0]
+    # Pass 2: cells (name, location, worldspace), map markers, placed actors, where quests' forced references stand,
+    # and where a word wall, a skill book, a boss chest, a crafting station, a shrine or a trap is placed.
     forced = {a["ref"] for q in quests.values() for a in q.get("aliases", {}).values() if a.get("ref")}
     cells, markers, actors, refcell, placed_npc = {}, {}, {}, {}, {}
+    cell_features = collections.defaultdict(lambda: {"wordWall": None, "skillBooks": set(), "bossChest": False,
+                                                       "crafting": set(), "shrines": set(), "traps": False})
     for n in lo:
         p = pp.get(n.lower())
         if not p:
@@ -289,12 +349,9 @@ def scan():
                 t = buf[o:o + 4]
                 if t not in (b"CELL", b"WRLD", b"REFR", b"ACHR"):
                     continue
-                if t == b"REFR":
-                    size = struct.unpack_from("<I", buf, o + 4)[0]
-                    body = buf[o + 24:o + 24 + size]
-                    fid = form_id(resolve(struct.unpack_from("<I", buf, o + 12)[0], masters, n))
-                    if b"XMRK" not in body and fid not in forced:
-                        continue
+                # Every REFR is parsed now (2 million of them, ~3.5s total -- timed, not assumed): a word wall,
+                # skill book, boss chest, crafting station, shrine or trap needs its own base read the same as a
+                # marker or a forced quest reference does, and there's no cheap way to tell which before parsing.
                 tt, flags, fid, d = rec_data(buf, o)
                 subs = subrecs(d)
                 key = form_id(resolve(fid, masters, n))
@@ -319,6 +376,23 @@ def scan():
                         mtype = next((v[0] for s, v in subs if s == "TNAM" and v), None)
                         markers[key] = {"cell": cell, "pos": pos, "type": MARKER.get(mtype), "deleted": bool(flags & DELETED),
                                         "name": next((txt(v, loc, strings) for s, v in subs if s == "FULL"), "").strip()}
+                    rbase = next((form_id(resolve(struct.unpack_from("<I", v)[0], masters, n)) for s, v in subs if s == "NAME" and len(v) >= 4), None)
+                    if rbase and cell and not (flags & DELETED):
+                        f = cell_features[cell]
+                        if rbase in wordwall_shout:
+                            f["wordWall"] = wordwall_shout[rbase]
+                        elif rbase in boss_chests:
+                            f["bossChest"] = True
+                        elif rbase in crafting:
+                            f["crafting"].add(crafting[rbase])
+                        elif rbase in shrines:
+                            f["shrines"].add(shrines[rbase])
+                        elif rbase in traps:
+                            f["traps"] = True
+                        elif rbase in books:
+                            m = SKILL_BOOK_EDID.match(books[rbase].get("edid", ""))
+                            if m:
+                                f["skillBooks"].add((m.group(1), books[rbase]["name"]))
                     continue
                 base = next((form_id(resolve(struct.unpack_from("<I", v)[0], masters, n)) for s, v in subs if s == "NAME" and len(v) >= 4), None)
                 lrt = next((v for s, v in subs if s == "XLRT"), b"")
@@ -326,7 +400,7 @@ def scan():
                                "boss": BOSS in {form_id(resolve(struct.unpack_from("<I", lrt, i)[0], masters, n)) for i in range(0, len(lrt) - 3, 4)}}
                 if base and not flags & DELETED:
                     placed_npc.setdefault(base, cell)
-    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact
+    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features
 
 
 def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
@@ -421,7 +495,7 @@ def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
 
 
 def build(version):
-    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact = scan()
+    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features = scan()
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
@@ -635,6 +709,50 @@ def build(version):
         d = disc_xp.get(p["type"].lower())
         if d is not None:
             p["discoveryXp"] = d
+    # "What's worth going for" and "danger to a build" (WO-144 Part 1e), rolled up from cell_features by the same
+    # owner chain the actors use (a word wall or a trap in a dungeon's inner cell still belongs to the dungeon).
+    # Not built: a unique, non-leveled item, and the boss's own spell kit -- neither has a record-level marker to
+    # read off (no keyword separates a unique sword from an ordinary one; a spell's own school isn't in its EDID
+    # reliably enough to name without guessing), so flagging the gap rather than guessing at either. A dragon lair
+    # is already the place's own `type` (its map marker), not a separate read.
+    goodies_by_place = collections.defaultdict(lambda: {"wordWalls": set(), "skillBooks": set(), "bossChest": False, "crafting": set(), "shrines": set()})
+    traps_by_place = set()
+    for cell_key, feat in cell_features.items():
+        pl_key = owner.get((cells.get(cell_key) or {}).get("location"))
+        if not pl_key:
+            continue
+        g = goodies_by_place[pl_key]
+        if feat["wordWall"]:
+            g["wordWalls"].add(feat["wordWall"])
+        g["skillBooks"] |= feat["skillBooks"]
+        g["bossChest"] = g["bossChest"] or feat["bossChest"]
+        g["crafting"] |= feat["crafting"]
+        g["shrines"] |= feat["shrines"]
+        if feat["traps"]:
+            traps_by_place.add(pl_key)
+    for k, p in places.items():
+        g = goodies_by_place.get(k)
+        goodies = {}
+        if g:
+            if g["wordWalls"]:
+                goodies["wordWall"] = sorted(g["wordWalls"])
+            if g["skillBooks"]:
+                goodies["skillBooks"] = sorted(f"{skill} ({title})" for skill, title in g["skillBooks"])
+            if g["bossChest"]:
+                goodies["bossChest"] = True
+            if g["crafting"]:
+                goodies["crafting"] = sorted(g["crafting"])
+            if g["shrines"]:
+                goodies["shrines"] = sorted(g["shrines"])
+        if goodies:
+            p["worthGoingFor"] = goodies
+        danger = {}
+        if p["type"] == "DragonLair":
+            danger["dragonLair"] = True
+        if k in traps_by_place:
+            danger["traps"] = True
+        if danger:
+            p["danger"] = danger
     # What points at each place: dialogue and books that name it, on its whole name, case as written.
     named = collections.defaultdict(list)
     for k, p in places.items():
@@ -731,6 +849,10 @@ def build_site(rows):
         r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "clearXp", "discoveryXp", "respawns") if p.get(k) is not None}
         if p.get("actors"):
             r["actors"] = p["actors"]
+        if p.get("worthGoingFor"):
+            r["worthGoingFor"] = p["worthGoingFor"]
+        if p.get("danger"):
+            r["danger"] = p["danger"]
         if p.get("pointers"):
             r["pointers"] = [{k: v for k, v in {"kind": x["kind"], "speaker": x.get("speaker"), "speakerPlace": x.get("speakerPlace"),
                                                 "book": x.get("book"), "words": x["words"],
