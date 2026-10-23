@@ -65,7 +65,9 @@ class BuiltIndex(unittest.TestCase):
         self.assertIn(("Wilhelm", "Vilemyr Inn"), {(p.get("speaker"), p.get("speakerPlace")) for p in hall["pointers"]})
 
     def test_no_town_and_every_pointer_has_its_record(self):
-        self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES])
+        # WO-144 Part 1 item 2: NAMED_PLACES (the thirteen settlements, the four strongholds) are the one named
+        # exception -- everything else stays out, so a stray "City"/"Town"/"Settlement" marker still can't sneak in.
+        self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES and p["name"] not in pl.NAMED_PLACES])
         self.assertTrue(all(x["record"] for p in self.rows for x in p.get("pointers", [])))
         self.assertGreater(len({p["plugin"] for p in self.rows}), 20)  # across the load order, not only the base game
 
@@ -88,6 +90,21 @@ class BuiltIndex(unittest.TestCase):
         mine = self.by["Embershard Mine"]
         self.assertEqual(mine["nearestTown"]["town"], "Riverwood")
         self.assertNotIn("Riverwood", pl.CAPITALS)  # a settlement, never counted as one of the nine
+
+    def test_named_settlements_and_strongholds_are_places_now(self):
+        # WO-144 Part 1 item 2: these bypass the usual place rules by name (NAMED_PLACES), so they show up themselves,
+        # not only as another place's nearestTown.
+        for nm in pl.SETTLEMENTS | pl.STRONGHOLDS:
+            if nm == "Thirsk":
+                continue  # no marker this reader can find for it; "not checked" is correct, not a failure
+            self.assertIn(nm, self.by, nm)
+
+    def test_a_strongholds_gate_names_the_game_s_own_condition(self):
+        for nm in pl.STRONGHOLDS:
+            gate = self.by[nm]["enters"]
+            self.assertIn("Orc", gate["words"])
+            self.assertIn("Blood-Kin", gate["words"])
+            self.assertTrue(gate["record"].startswith("INFO "))
 
 
 if __name__ == "__main__":

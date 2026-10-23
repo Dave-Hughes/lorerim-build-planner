@@ -63,6 +63,14 @@ CAPITAL_ANCHOR = {"Whiterun": "Whiterun Stables", "Windhelm": "Windhelm Stables"
 # alone (that let "Wintersand Manor", "Flight Platform" and other mislabelled markers stand in as a "town").
 SETTLEMENTS = {"Riverwood", "Ivarstead", "Rorikstead", "Shor's Stone", "Darkwater Crossing", "Kynesgrove", "Karthwasten",
                "Dragon Bridge", "Stonehills", "Helgen", "Skaal Village", "Raven Rock", "Thirsk"}
+# The four Orc strongholds (WO-141 Part 1, folded here): a type of their own ("OrcStronghold" is in NOT_PLACES because
+# most things with that marker type are the stronghold's own town-like interior, not a place), named so only these four
+# bypass that. A stronghold's gate guard's dialogue conditions become its `enters` text (item 2's "what gets you in").
+STRONGHOLDS = {"Narzulbur", "Largashbur", "Dushnikh Yal", "Mor Khazgur"}
+NAMED_PLACES = SETTLEMENTS | STRONGHOLDS  # item 2: these bypass the usual exclusion rules by name alone
+# The stronghold gate guard's line (found by searching dialogue for "Blood-Kin"): shared across all four, under
+# "Generic dialogue for orc villagers" (Skyrim.esm:03907C), not any one stronghold's own quest.
+STRONGHOLD_GATE = "Skyrim.esm:0BBB2D"
 # The LocType keywords that make a place, and those that rule one out (where people live, trade or rule).
 PLACE_KW = {"LocTypeDungeon", "LocTypeCave", "LocTypeMine", "LocTypeMilitaryFort", "LocTypeAnimalDen", "LocTypeBanditCamp",
             "LocTypeDraugrCrypt", "LocTypeDwarvenAutomatons", "LocTypeFalmerHive", "LocTypeForswornCamp", "LocTypeGiantCamp",
@@ -316,9 +324,10 @@ def build(version):
         inside_town = any((TOWN_KW | {"LocTypeDwelling", "LocTypeHouse", "LocTypePlayerHouse", "LocTypeCastle"}) & kname(locs[x]["keywords"]) for x in up[:1])
         # A dungeon near a town is often parented to it (Shroud Hearth Barrow to Ivarstead): only a location with no place
         # keyword or marker of its own is ruled out by its parent.
-        if names & NOT_KW or mtype in NOT_PLACES or (inside_town and not (names & PLACE_KW or mtype)):
+        named = l["name"] in NAMED_PLACES
+        if not named and (names & NOT_KW or mtype in NOT_PLACES or (inside_town and not (names & PLACE_KW or mtype))):
             continue
-        if not (names & PLACE_KW or (mtype and mtype not in NOT_PLACES)):
+        if not named and not (names & PLACE_KW or (mtype and mtype not in NOT_PLACES)):
             continue
         kind = mtype or next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or "Landmark"
 
@@ -340,6 +349,9 @@ def build(version):
         shown = m["name"] if (m or {}).get("name") and l["name"].lower() in m["name"].lower() else l["name"]
         places[k] = {"id": k, "name": shown, **({"recordName": l["name"]} if shown != l["name"] else {}), "edid": l["edid"], "type": kind, "keywords": sorted(x for x in names if x.startswith("LocType")),
                      "hold": hold_of(k), "nearestTown": near, "nearestCity": near_city, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
+        if l["name"] in STRONGHOLDS and infos.get(STRONGHOLD_GATE):
+            gate = infos[STRONGHOLD_GATE]
+            places[k]["enters"] = {"words": " ".join(gate["lines"]), "record": f"INFO {STRONGHOLD_GATE} ({gate['plugin']})"}
     # Actors in each place's cells, and its child locations' (a dungeon's inner levels).
     owner = {}
     for k in locs:
@@ -460,6 +472,8 @@ def build_site(rows):
                              for x in p["pointers"]]
         if p.get("quests"):
             r["quests"] = sorted({q["quest"] for q in p["quests"]})
+        if p.get("enters"):
+            r["enters"] = {"words": p["enters"]["words"], "from": plugin_of(p["enters"]["record"])}
         out.append(r)
     return out
 
