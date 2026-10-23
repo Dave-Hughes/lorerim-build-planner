@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-147  A page for every quest, and grab-bags as shelves, not lines (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave (23 Oct), opening `/quests/capital-whiterun`: "what is this quest line exactly?" It isn't one. "Whiterun, expanded" is eight unrelated jobs from Capital Whiterun Expansion (a house, a giant, a rat cellar, the white horse, a festival, a farm, a temple job, a skirmish), bundled by the mod they came from and shown as if a story: the page opens on "I've received a note by a messenger from Whiterun", which starts only the house quest, and the bundling is what produced Running Wild's false "comes after" gate. "Windhelm, expanded" is the same. And a quest has no page of its own: it's a section of its line's page, so a search, a link from a playthrough or a link from an assistant lands on the whole line.
 
@@ -4997,9 +4997,10 @@ Decisions made under WO-138 Part 5, each with why:
 
 ### Part 3. Bob's ruling on the red test (23 Oct, 16:40)
 `suggest_places` is for places a character goes on purpose out in the world (rule 20). Towns, settlements, cities, inns, temples, keeps, stables and homes are now in `places.json` because routes, search and objectives need them, but they are **stops, not suggestions**: `placesNear` leaves them out by kind. Orc strongholds stay in (a destination with a gate and a reason). The test stays as written, with strongholds allowed. Yours, since `placesNear` is Mac's.
-- [ ] Part 3: `placesNear` filters stops by kind; `wo128.test.ts` green.
+- [x] Part 3: `placesNear` filters stops by kind; `wo128.test.ts` green.
 
 - Bob, 23 Oct, 16:40: Parts 1 and 2 read and accepted (the shelf list, the shelf's plain line, 462 EDID slugs are fine). The live door still shows the old line for A Rat Problem; I'll recheck it after the deploy.
+- **Part 3 (Mac, 23 Oct).** `placesNear` leaves out City, Town, Settlement, Inn, Temple, Keep, Stables, House and PlayerHouse (Bob's list, by the index's own type names); Orc strongholds stay, and the `wo128` test stands as written. One call to flag: **Guild halls (14 in the index) stay in**, since Bob's list didn't name them; if a guild hall is a stop too, add `Guild` to the set in `src/lib/places/suggest.ts`. A test goes through every town and checks no stop comes back and every stronghold does. Unit tests 626 pass; typecheck, lint and the build pass; the places and quest specs (`wo128`, `wo129`, `wo146`, `wo147`, 20 tests) pass. I did not rerun the whole e2e for this one change, which is confined to `placesNear`.
 
 ---
 

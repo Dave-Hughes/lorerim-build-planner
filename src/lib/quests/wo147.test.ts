@@ -4,6 +4,8 @@ import { questLog } from "@/lib/mcp/quest-log";
 import { questsData } from "./data";
 import { isPlaceholder } from "./placeholder";
 import { questBySlug, questHref } from "./slugs";
+import { placesData } from "@/lib/places/data";
+import { placesNear } from "@/lib/places/suggest";
 
 /** WO-147: a page for every quest, grab-bags as shelves, placeholder objectives hidden. */
 
@@ -86,5 +88,23 @@ describe("placeholder objectives", () => {
   it("no quest anywhere has one", () => {
     const left = questsData().lines.flatMap((l) => l.quests.flatMap((q) => q.objectives.filter(isPlaceholder).map(() => q.edid)));
     expect(left).toEqual([]);
+  });
+});
+
+describe("Part 3: stops are not suggestions", () => {
+  const all = placesData().places;
+  const towns = [...new Set(all.flatMap((p) => (p.nearestTown ? [p.nearestTown.town] : [])))];
+  const out = placesNear(towns, 1, null, { linked: [], passedBy: [] }, 10_000);
+
+  it("suggest_places leaves out towns, settlements, cities, inns, temples, keeps, stables and homes, in every town", () => {
+    const stops = /^(city|town|settlement|inn|temple|keep|stables|house|player house)$/;
+    expect(out.filter((p) => stops.test(p.type.toLowerCase())).map((p) => `${p.place} (${p.type})`)).toEqual([]);
+    // They are in the index all the same: routes, search and objectives need them.
+    expect(all.filter((p) => ["Inn", "Temple", "Keep", "Stables", "Town"].includes(p.type)).length).toBeGreaterThan(20);
+  });
+  it("an Orc stronghold stays: a destination with a gate and a reason", () => {
+    const strongholds = all.filter((p) => p.type === "OrcStronghold" && p.nearestTown);
+    expect(strongholds.length).toBeGreaterThan(0);
+    for (const s of strongholds) expect(out.some((p) => p.place === s.name), s.name).toBe(true);
   });
 });

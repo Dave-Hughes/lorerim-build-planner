@@ -102,12 +102,20 @@ export interface Used {
   passedBy: { place: string; act: string; why: string }[];
 }
 
+/**
+ * Stops, not suggestions (WO-147 Part 3, Bob's ruling): towns, settlements, cities, inns, temples, keeps, stables and homes are in
+ * the index because routes, search and objectives need them, but suggest_places is for places a character goes to on purpose out in
+ * the world (rule 20). An Orc stronghold stays in: a destination with a gate and a reason. Guild halls stay in too: Bob's list
+ * didn't name them (WO-147 notes).
+ */
+const STOPS = new Set(["City", "Town", "Settlement", "Inn", "Temple", "Keep", "Stables", "House", "PlayerHouse"]);
+
 /** The places near the act's towns, those the game itself points at first, then the nearest. */
 export function placesNear(townList: readonly string[], levelFrom: number, levelTo: number | null, used: Used, limit = 16) {
   const want = new Set(townList.map(key));
   const taken = new Set([...used.linked.map((u) => key(u.place)), ...used.passedBy.map((u) => key(u.place))]);
   const near = placesData()
-    .places.filter((p) => p.nearestTown && want.has(key(p.nearestTown.town)))
+    .places.filter((p) => p.nearestTown && want.has(key(p.nearestTown.town)) && !STOPS.has(p.type))
     .sort((a, b) => Number(!a.pointers?.length) - Number(!b.pointers?.length) || a.nearestTown!.km - b.nearestTown!.km);
   return near.slice(0, limit).map((p) => {
     const pointers = (p.pointers ?? [])
