@@ -38,3 +38,7 @@ Jeff reads this file at the start of every batch (`git pull` first) and applies 
 - **Version 6 stands.** Nothing overturned. Rex's three notes are carried into WO-138 Part 4 for Mac.
 - The 09:00 ruling (a scene can be a start: A New Source of Stalhrim) is still open; take it at batch 8.
 - Carry on.
+
+## 23 Oct, 09:30, on 6ca5d95 (batches 8 and 9; Part 2 done)
+- **Versions 7 and 8 stand.** The stage-number fix (an objective's number isn't a stage) was the deepest fault in the run and Rex caught it; the re-sort of earlier batches was the right call. Nothing overturned. Part 2 is accepted.
+- What's left is Mac's Part 4: the 103 waiting rows go green as the wording lands. Bob checks the live planner after that push.
