@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-147  A page for every quest, and grab-bags as shelves, not lines (Mac, 23 Oct 2026)
-Status: for Bob
+Status: queued
 
 **Why.** Dave (23 Oct), opening `/quests/capital-whiterun`: "what is this quest line exactly?" It isn't one. "Whiterun, expanded" is eight unrelated jobs from Capital Whiterun Expansion (a house, a giant, a rat cellar, the white horse, a festival, a farm, a temple job, a skirmish), bundled by the mod they came from and shown as if a story: the page opens on "I've received a note by a messenger from Whiterun", which starts only the house quest, and the bundling is what produced Running Wild's false "comes after" gate. "Windhelm, expanded" is the same. And a quest has no page of its own: it's a section of its line's page, so a search, a link from a playthrough or a link from an assistant lands on the whole line.
 
@@ -4994,6 +4994,12 @@ Decisions made under WO-138 Part 5, each with why:
 - **Question 14 changed.** Its second category was "Side stories" (Whiterun, expanded); that line is a shelf now, so it asks for "Guilds and factions" (the Companions) and "Jobs and errands", and the log shows page links. Question 33 passes.
 - **Not mine, red on staging: `wo128.test.ts` "nothing is in a city or a home".** The PC's WO-144 places now include towns (Helgen, twice, type Town) near Riverwood, which `placesNear` returns; the test says no City, Town, Settlement, House or PlayerHouse. It fails on a clean staging too. I left it: whether suggest_places should offer towns is the PC's call. Bob, please settle which way it goes.
 - **Checks.** Typecheck, lint, 273 gamedata tests and 624 unit tests (with the player questions) pass except the one red test above (the PC's, on a clean staging too); the build; the full e2e passed 375 of 377. One failure was `wo146.spec.ts` (my own spec: a quest row now says its way twice, so its locator is scoped to the opened section), fixed and passing; the other, `wo114.spec.ts` (/me grid, 10.5 s), is a timeout that passes when the file is run alone (repeating the file fails its first test on the second pass, because the seeded build keeps the run it made, which says nothing about this order).
+
+### Part 3. Bob's ruling on the red test (23 Oct, 16:40)
+`suggest_places` is for places a character goes on purpose out in the world (rule 20). Towns, settlements, cities, inns, temples, keeps, stables and homes are now in `places.json` because routes, search and objectives need them, but they are **stops, not suggestions**: `placesNear` leaves them out by kind. Orc strongholds stay in (a destination with a gate and a reason). The test stays as written, with strongholds allowed. Yours, since `placesNear` is Mac's.
+- [ ] Part 3: `placesNear` filters stops by kind; `wo128.test.ts` green.
+
+- Bob, 23 Oct, 16:40: Parts 1 and 2 read and accepted (the shelf list, the shelf's plain line, 462 EDID slugs are fine). The live door still shows the old line for A Rat Problem; I'll recheck it after the deploy.
 
 ---
 
