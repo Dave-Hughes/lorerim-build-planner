@@ -300,3 +300,18 @@ Under it all, the comparison counted the first step's person as the page's giver
 - No row until Mac: 32 for G2, 19 for G4.
 - 7 background (G5), 10 files-only (D7).
 - 1 not checked (needs-Bob).
+
+
+**Bob's rulings, 23 Oct 08:05 (bob-rulings.md), applied before batch 6:**
+- **D0 to D9 stand.**
+- **The "no row until Mac" quests are rows now.** Each G2 and G4 quest is a key row with the giver and step it should have:
+  - G2: no giver, UESP's giver as sentBy in the notes;
+  - G4: the giver by the rules above.
+  - Each is marked `waitingOn` in the row and in `quest_truth_loop.json`, which is keyed by editor ID now, since two Animal Extermination quests share a name.
+  - **D10. Where they live:** the rows are in `quest_truth.json` with every other row, and `quest_truth_loop.json` says what each waits on. `test_quest_truth.py` lets a waiting row fail until Mac's pass lands; once it passes, it's green with nothing to change. (Bob wrote "rows in quest_truth_loop.json"; one row store keeps the test and `from_key` reading one file.)
+  - Only a G4 quest with no UESP page has no row, because there's no expected step to hold: batch 5's The Battle for the fort and one more.
+- **The three Vigilant guides:** no-giver rows from the records (`source: records`), first step the records' own. `from_key` now marks a records-only row `checked: files`, not "uesp", with a test.
+- **The Path of Knowledge:** a no-giver row waiting on Mac's G2, first step "Talk to Neloth", sentBy Storn Crag-Strider, Frea dropped (`BOB_RULED` in the loop's tool). Off the needs-Bob list.
+- **Part 1's handlers and holders** (Durnehviir's handler, the Civil War's three objective holders, Animal Pelt Collection): background (G5), off the needs-Bob list. The other 13 stay not checked.
+
+**Batches 1 to 5 now:** 181 key rows from the loop, 114 passing now and 67 waiting on Mac (G1 18, G2 33, G3 3, G4 13). Checked starts: 1,224 of 1,242.

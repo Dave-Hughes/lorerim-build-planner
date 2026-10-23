@@ -47,6 +47,7 @@
    ],
    "G3/D6 records win": [
     "Diplomatic Immunity",
+    "A Cornered Rat",
     "Paarthurnax",
     "Dragon Research"
    ],
@@ -59,19 +60,6 @@
    ],
    "D2 person talk": [
     "Dragon Research"
-   ],
-   "no row: Mac (G4)": [
-    "Dragon Rising",
-    "The Horn of Jurgen Windcaller",
-    "Season Unending",
-    "Paarthurnax"
-   ],
-   "no row: Mac (G2)": [
-    "A Cornered Rat (the page names Delphine; every starter is another quest's stage)",
-    "Alduin's Wall (the page names Esbern; every starter is another quest's stage)",
-    "The Throat of the World (the page names Delphine; every starter is another quest's stage)",
-    "Elder Knowledge (the page names Paarthurnax; every starter is another quest's stage)",
-    "The World-Eater's Eyrie (the page names Odahviing; every starter is another quest's stage)"
    ]
   },
   "2": {
@@ -129,7 +117,7 @@
    "D7": [
     "Power of the Blood"
    ],
-   "D1d unsettled": [
+   "Bob 23 Oct 08:05": [
     "The Path of Knowledge"
    ],
    "D1b first step": [
@@ -151,20 +139,6 @@
     "Escaped Criminal",
     "Rescue Mission",
     "Stealing Plans"
-   ],
-   "no row: Mac (G2)": [
-    "Bloodline (the page names Serana; every starter is another quest's stage)",
-    "Chasing Echoes (the page names Lord Harkon; every starter is another quest's stage)",
-    "Seeking Disclosure (the page names Lord Harkon; every starter is another quest's stage)",
-    "The Temple of Miraak (the page names Frea; UESP: Automatic after completing Dragonborn)",
-    "The Fate of the Skaal (the page names Frea; every starter is another quest's stage)"
-   ],
-   "no row: Mac (G4)": [
-    "Prophet",
-    "Touching the Sky",
-    "Scroll Scouting",
-    "Cultists vs Player",
-    "Brotherhood"
    ]
   },
   "3": {
@@ -233,24 +207,6 @@
     "Tolfdir the Absent-Minded",
     "Restocking Soul Gems",
     "Research Thief"
-   ],
-   "no row: Mac (G4)": [
-    "Under Saarthal",
-    "The Eye of Magnus",
-    "Shalidor's Insights",
-    "Rejoining the College"
-   ],
-   "no row: Mac (G2)": [
-    "Hitting the Books (the page names Savos Aren; every starter is another quest's stage)",
-    "Good Intentions (the page names Urag gro-Shub; every starter is another quest's stage)",
-    "Revealing the Unseen (the page names Savos Aren; every starter is another quest's stage)",
-    "The Staff of Magnus (the page names Mirabelle Ervine; every starter is another quest's stage)",
-    "Loud and Clear (the page names Brynjolf; every starter is another quest's stage)",
-    "Dampened Spirits (the page names Brynjolf; every starter is another quest's stage)",
-    "Scoundrel's Folly (the page names Brynjolf; every starter is another quest's stage)",
-    "Speaking With Silence (the page names Mercer Frey; every starter is another quest's stage)",
-    "Hard Answers (the page names Karliah; every starter is another quest's stage)",
-    "The Pursuit (the page names Karliah; every starter is another quest's stage)"
    ]
   },
   "4": {
@@ -306,19 +262,11 @@
     "Delayed Burial"
    ],
    "G3/D6 earlier stage reachable": [
-    "Delayed Burial"
+    "Delayed Burial",
+    "The Silence Has Been Broken"
    ],
    "D1a setter, the page is wrong": [
     "Whispers in the Dark"
-   ],
-   "no row: Mac (G2)": [
-    "Trinity Restored (the page names Brynjolf; every starter is another quest's stage)",
-    "Blindsighted (the page names Brynjolf; every starter is another quest's stage)",
-    "Darkness Returns (the page names Karliah; every starter is another quest's stage)",
-    "Reparations (the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild)",
-    "No Stone Unturned (the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".)",
-    "Meet the Family (the page names Brynjolf; every starter is another quest's stage)",
-    "The Silence Has Been Broken (the page names Cicero; every starter is another quest's stage)"
    ]
   },
   "5": {
@@ -383,19 +331,8 @@
     "Investigate the Hall of the Dead"
    ],
    "no row: Mac (G4)": [
-    "Imperial Introductions",
     "The Battle for the fort",
-    "A False Front",
-    "Rescue from the attack point",
-    "Compelling Tribute",
-    "A Night To Remember"
-   ],
-   "no row: Mac (G2)": [
-    "Joining the Legion (the page names Legate Rikke; every starter is another quest's stage)",
-    "Joining the Stormcloaks (the page names Galmar Stone-Fist; every starter is another quest's stage)",
-    "The Jagged Crown (the page names General Tullius; every starter is another quest's stage)",
-    "The Jagged Crown (the page names Galmar Stone-Fist; every starter is another quest's stage)",
-    "Message to Whiterun (the page names General Tullius; every starter is another quest's stage)"
+    "Rescue from the attack point"
    ]
   }
  }

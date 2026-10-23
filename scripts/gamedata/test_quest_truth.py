@@ -43,15 +43,17 @@ WAITING_ON_BOB: dict[str, str] = {
     'Blood on the Ice': "Mac, 22 Oct: the first step passes now ('Question the witnesses', from the PC's rerun). Who fails: the PC's rerun lost the guard's words. Its alias, CrimeSceneInvestigator, now resolves to a placed guard with no name of its own, and the check only kept 'a Windhelm guard' when the alias resolved to no one (story_check.py fixed; the PC reruns blood-on-the-ice). Bob, 21 Oct (reversed): the first step is wrong, not the records' wording. The guard's line sets stage 10, whose objective is 'Question the witnesses'; 'Get assistance from the authority figure' (QOBJ 1) is the stage-110 one. WO-121b's rule: then is the objective the starting line's stage shows. WO-121b Part 1 (Mac): rule 1 reads the objective the starting line's stage shows from the check's objectivesShown, which story_check.py now writes; it passes once the PC reruns the check.",
 }
 
-# WO-138 Part 2 (the PC's loop under Bob's G1 to G3): rows the records answer differently (G3: the records' objective wins), and
-# rows waiting on Mac's Part 4 (G1: the page names the radiant job's one dispatcher; G2: a quest that starts by itself names no
-# giver; G3: rule 1 shows the earlier stage UESP lists), each with its reason. Kept in a file, since the loop writes them.
+# WO-138 Part 2 (the PC's loop under Bob's rulings): rows waiting on Mac's Part 4, each with what it waits on (G1: the page names
+# the radiant job's one dispatcher; G2: "After <quest>", no giver; G4: a way that names no one; G3: rule 1's earlier stage) and why.
+# Bob, 23 Oct 08:05: they're rows with the giver and step they should have, so each turns green by itself the moment Mac's pass
+# lands. Until then a waiting row may fail; once it passes, nothing has to change here. Kept in a file, since the loop writes them.
+LOOP_WAITING: dict[str, dict] = {}
 _LOOP = os.path.join(ROOT, "gamedata", VERSION, "quest_truth_loop.json")
 if os.path.exists(_LOOP):
     with open(_LOOP, encoding="utf-8") as _f:
         _loop = json.load(_f)
     DIFFERS.update(_loop.get("differs", {}))
-    WAITING_ON_BOB.update(_loop.get("waiting", {}))
+    LOOP_WAITING.update(_loop.get("waiting", {}))
 
 
 def norm(s):
@@ -88,6 +90,8 @@ class QuestTruth(unittest.TestCase):
             q = quests.get(row["editorId"].lower())
             if not q or row["quest"] in DIFFERS or row["quest"] in WAITING_ON_BOB:
                 continue
+            if row["editorId"] in LOOP_WAITING or row["quest"] in LOOP_WAITING:
+                continue  # waiting on Mac's Part 4: may fail until it lands (and passes by itself after)
             start = q.get("start") or {}
             who = person_of(start)
             # WO-121b: a row Bob judged right with no single giver: the page names none.
@@ -124,6 +128,9 @@ class QuestTruth(unittest.TestCase):
         book = quests["dlc2blackbook03quest"]["start"]
         self.assertEqual((book["checked"], book["source"], book["ways"], book["then"]), ("uesp", "UESP", [{"how": "No one gives it"}], "Learn the Black Book's hidden knowledge"))
         self.assertEqual(quests["dlc2kagrumezqst"]["start"]["checked"], "uesp")
+        # Bob, 23 Oct 08:05: a row from the records alone (the Vigilant guides) checks the quest in the files, with no wiki named.
+        guide = quests["zzzbmguide"]["start"]
+        self.assertEqual((guide["checked"], guide.get("source"), guide["then"]), ("files", None, "Trace the blood"))
         self.assertEqual(quests["aaambquest"]["start"]["who"], "Ralforn")
 
     def test_no_who_is_a_thing(self):

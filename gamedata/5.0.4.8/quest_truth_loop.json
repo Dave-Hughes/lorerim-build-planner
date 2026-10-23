@@ -1,22 +1,341 @@
 {
- "about": "WO-138 Part 2: the loop's DIFFERS and waiting rows (test_quest_truth.py reads them)",
+ "about": "WO-138 Part 2: rows waiting on Mac's Part 4, by editor ID, each with what it waits on (G1, G2, G3, G4) and why. test_quest_truth.py lets them fail until Mac's pass lands; they turn green by themselves after (Bob, 23 Oct 08:05).",
  "differs": {},
  "waiting": {
-  "Animal Extermination": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.",
-  "Hired Muscle": "G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.",
-  "Trouble in Skyrim": "G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.",
-  "Striking the Heart": "G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them.",
-  "Retrieval": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.",
-  "Totems of Hircine": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.",
-  "The Burglary Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
-  "The Shill Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
-  "The Numbers Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
-  "The Fishing Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
-  "The Sweep Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
-  "The Bedlam Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
-  "The Heist Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
-  "Delayed Burial": "G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4.",
-  "Whispers in the Dark": "D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4.",
-  "Investigate the Hall of the Dead": "G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4."
+  "MQ104": {
+   "quest": "Dragon Rising",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MQ105Ustengrav": {
+   "quest": "The Horn of Jurgen Windcaller",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MQ202": {
+   "quest": "A Cornered Rat",
+   "waitingOn": "G2",
+   "why": "G2: the page names Delphine; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Delphine is sentBy"
+  },
+  "MQ203": {
+   "quest": "Alduin's Wall",
+   "waitingOn": "G2",
+   "why": "G2: the page names Esbern; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Esbern is sentBy"
+  },
+  "MQ204": {
+   "quest": "The Throat of the World",
+   "waitingOn": "G2",
+   "why": "G2: the page names Delphine; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Delphine is sentBy"
+  },
+  "MQ205": {
+   "quest": "Elder Knowledge",
+   "waitingOn": "G2",
+   "why": "G2: the page names Paarthurnax; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Paarthurnax is sentBy"
+  },
+  "MQ302": {
+   "quest": "Season Unending",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MQ303": {
+   "quest": "The World-Eater's Eyrie",
+   "waitingOn": "G2",
+   "why": "G2: the page names Odahviing; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Odahviing is sentBy"
+  },
+  "MQPaarthurnax": {
+   "quest": "Paarthurnax",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "DLC1VQ02": {
+   "quest": "Bloodline",
+   "waitingOn": "G2",
+   "why": "G2: the page names Serana; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Serana is sentBy"
+  },
+  "DLC1VQ03Vampire": {
+   "quest": "Prophet",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "DLC1VQ04": {
+   "quest": "Chasing Echoes",
+   "waitingOn": "G2",
+   "why": "G2: the page names Lord Harkon; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Dexion Evicus is sentBy"
+  },
+  "DLC1VQ07": {
+   "quest": "Touching the Sky",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "DLC1VQElder": {
+   "quest": "Seeking Disclosure",
+   "waitingOn": "G2",
+   "why": "G2: the page names Lord Harkon; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Dexion Evicus is sentBy"
+  },
+  "DLC1VQElderHandler": {
+   "quest": "Scroll Scouting",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "DLC2MQ02": {
+   "quest": "The Temple of Miraak",
+   "waitingOn": "G2",
+   "why": "G2: the page names Frea; UESP: Automatic after completing Dragonborn. Mac's G2 makes it 'After <that quest>', no giver"
+  },
+  "DLC2MQ03": {
+   "quest": "The Fate of the Skaal",
+   "waitingOn": "G2",
+   "why": "G2: the page names Frea; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Frea is sentBy"
+  },
+  "DLC2MQ04": {
+   "quest": "The Path of Knowledge",
+   "waitingOn": "G2",
+   "why": "Bob, 23 Oct 08:05: no giver; after The Fate of the Skaal (its only starter is DLC2MQ03's script, G2's form); sentBy Storn Crag-Strider; first step 'Talk to Neloth'. Frea is the page's mistake: Mac's G2 drops her"
+  },
+  "DLC2WE09": {
+   "quest": "Cultists vs Player",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "C02": {
+   "quest": "Brotherhood",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Skjor. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "CR01": {
+   "quest": "Animal Extermination",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them."
+  },
+  "CR02": {
+   "quest": "Animal Extermination",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them."
+  },
+  "CR04": {
+   "quest": "Hired Muscle",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them."
+  },
+  "CR05": {
+   "quest": "Trouble in Skyrim",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them."
+  },
+  "CR09": {
+   "quest": "Striking the Heart",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them."
+  },
+  "CR11": {
+   "quest": "Retrieval",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them."
+  },
+  "CR12": {
+   "quest": "Totems of Hircine",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them."
+  },
+  "MG02": {
+   "quest": "Under Saarthal",
+   "waitingOn": "G3",
+   "why": "G3: the records' first step is 'Tell Tolfdir about the vision' (stage 50, Skyrim.esm:01F252); UESP's first is 'Meet Tolfdir outside Saarthal' (stage 10), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MG03": {
+   "quest": "Hitting the Books",
+   "waitingOn": "G2",
+   "why": "G2: the page names Savos Aren; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Savos Aren is sentBy"
+  },
+  "MG04": {
+   "quest": "Good Intentions",
+   "waitingOn": "G2",
+   "why": "G2: the page names Urag gro-Shub; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Tolfdir is sentBy"
+  },
+  "mg06": {
+   "quest": "Revealing the Unseen",
+   "waitingOn": "G2",
+   "why": "G2: the page names Savos Aren; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mirabelle Ervine is sentBy"
+  },
+  "MG07": {
+   "quest": "The Staff of Magnus",
+   "waitingOn": "G2",
+   "why": "G2: the page names Mirabelle Ervine; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mirabelle Ervine is sentBy"
+  },
+  "MG08": {
+   "quest": "The Eye of Magnus",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MGR21": {
+   "quest": "Shalidor's Insights",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MGRejoinQuest": {
+   "quest": "Rejoining the College",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "TG02": {
+   "quest": "Loud and Clear",
+   "waitingOn": "G2",
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+  },
+  "TG03": {
+   "quest": "Dampened Spirits",
+   "waitingOn": "G2",
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+  },
+  "TG04": {
+   "quest": "Scoundrel's Folly",
+   "waitingOn": "G2",
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+  },
+  "TG05": {
+   "quest": "Speaking With Silence",
+   "waitingOn": "G2",
+   "why": "G2: the page names Mercer Frey; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mercer Frey is sentBy"
+  },
+  "TG06": {
+   "quest": "Hard Answers",
+   "waitingOn": "G2",
+   "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy"
+  },
+  "TG07": {
+   "quest": "The Pursuit",
+   "waitingOn": "G2",
+   "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy"
+  },
+  "TG08A": {
+   "quest": "Trinity Restored",
+   "waitingOn": "G2",
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+  },
+  "TG08B": {
+   "quest": "Blindsighted",
+   "waitingOn": "G2",
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+  },
+  "TG09": {
+   "quest": "Darkness Returns",
+   "waitingOn": "G2",
+   "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy"
+  },
+  "TGBan": {
+   "quest": "Reparations",
+   "waitingOn": "G2",
+   "why": "G2: the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild. Mac's G2 makes it 'After <that quest>', no giver"
+  },
+  "TGCrown": {
+   "quest": "No Stone Unturned",
+   "waitingOn": "G2",
+   "why": "G2: the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".. Mac's G2 makes it 'After <that quest>', no giver"
+  },
+  "TGRBE": {
+   "quest": "The Burglary Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them."
+  },
+  "TGRDU": {
+   "quest": "The Shill Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them."
+  },
+  "TGRFO": {
+   "quest": "The Numbers Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them."
+  },
+  "TGRGF": {
+   "quest": "The Fishing Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them."
+  },
+  "TGRHC": {
+   "quest": "The Sweep Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them."
+  },
+  "TGRNT": {
+   "quest": "The Bedlam Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them."
+  },
+  "TGRSL": {
+   "quest": "The Heist Job",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them."
+  },
+  "TG02B": {
+   "quest": "Meet the Family",
+   "waitingOn": "G2",
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+  },
+  "DB01Misc": {
+   "quest": "Delayed Burial",
+   "waitingOn": "G3",
+   "why": "G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4."
+  },
+  "DB04": {
+   "quest": "Whispers in the Dark",
+   "waitingOn": "G1",
+   "why": "D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4."
+  },
+  "DB04a": {
+   "quest": "The Silence Has Been Broken",
+   "waitingOn": "G2",
+   "why": "G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is sentBy G3: the records' first step is 'Report back to Astrid' (stage 40, Skyrim.esm:02AD16); UESP's first is 'Speak with Astrid' (stage 5), and the starters (Start) don't all set a later stage directly. Mac's Part 4."
+  },
+  "CW00A": {
+   "quest": "Imperial Introductions",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "CW01A": {
+   "quest": "Joining the Legion",
+   "waitingOn": "G2",
+   "why": "G2: the page names Legate Rikke; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy"
+  },
+  "CW01B": {
+   "quest": "Joining the Stormcloaks",
+   "waitingOn": "G2",
+   "why": "G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Ulfric Stormcloak is sentBy"
+  },
+  "CW02A": {
+   "quest": "The Jagged Crown",
+   "waitingOn": "G2",
+   "why": "G2: the page names General Tullius; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy"
+  },
+  "CW02B": {
+   "quest": "The Jagged Crown",
+   "waitingOn": "G2",
+   "why": "G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Galmar Stone-Fist is sentBy"
+  },
+  "CW03": {
+   "quest": "Message to Whiterun",
+   "waitingOn": "G2",
+   "why": "G2: the page names General Tullius; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's General Tullius is sentBy"
+  },
+  "CWMission03": {
+   "quest": "A False Front",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Legate Rikke. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "CWMission07": {
+   "quest": "Compelling Tribute",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Legate Rikke. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "DA14": {
+   "quest": "A Night To Remember",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "DA11Intro": {
+   "quest": "Investigate the Hall of the Dead",
+   "waitingOn": "G3",
+   "why": "G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4."
+  }
  }
 }

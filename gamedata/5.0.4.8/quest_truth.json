@@ -1760,6 +1760,18 @@
    "notes": "PC, WO-138 Part 2 batch 1: giver Balgruuf the Greater on both."
   },
   {
+   "quest": "Dragon Rising",
+   "editorId": "MQ104",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Jarl Balgruuf",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dragon_Rising",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Farengar Secret-Fire is who you go to (G1 is for radiant jobs, G2); G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
    "quest": "The Way of the Voice",
    "editorId": "MQ105",
    "line": "main-quest",
@@ -1769,6 +1781,18 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Way_of_the_Voice",
    "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Jarl Balgruuf the Greater is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "The Horn of Jurgen Windcaller",
+   "editorId": "MQ105Ustengrav",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Retrieve the Horn of Jurgen Windcaller",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Horn_of_Jurgen_Windcaller",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Arngeir is who you go to (G1 is for radiant jobs, G2); G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
   },
   {
    "quest": "A Blade in the Dark",
@@ -1795,6 +1819,54 @@
    "notes": "PC, WO-138 Part 2 batch 1: giver Delphine on both; the records' first step is 'Meet Delphine in Riverwood or storm the Thalmor Embassy' (stage 30, Skyrim.esm:035D5F); UESP's is 'Meet Delphine in Riverwood'; the records win (G3): their own words."
   },
   {
+   "quest": "A Cornered Rat",
+   "editorId": "MQ202",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Ask in Riften about Esbern",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Cornered_Rat",
+   "notes": "PC, WO-138 Part 2 batch 1: the records' first step is 'Ask in Riften about Esbern' (stage 10, Skyrim.esm:036191); UESP's is 'Talk to Brynjolf'; the records win (G3): their own words; G2: the page names Delphine; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Delphine is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Alduin's Wall",
+   "editorId": "MQ203",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Escort Esbern to Riverwood",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Alduin's_Wall",
+   "notes": "PC, WO-138 Part 2 batch 1: G2: the page names Esbern; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Esbern is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Throat of the World",
+   "editorId": "MQ204",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Arngeir",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Throat_of_the_World",
+   "notes": "PC, WO-138 Part 2 batch 1: G2: the page names Delphine; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Delphine is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Elder Knowledge",
+   "editorId": "MQ205",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn the location of the Elder Scroll",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Elder_Knowledge",
+   "notes": "PC, WO-138 Part 2 batch 1: G2: the page names Paarthurnax; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Paarthurnax is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
    "quest": "Alduin's Bane",
    "editorId": "MQ206",
    "line": "main-quest",
@@ -1817,6 +1889,30 @@
    "notes": "PC, WO-138 Part 2 batch 1: no giver on either."
   },
   {
+   "quest": "Season Unending",
+   "editorId": "MQ302",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Arngeir",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Season_Unending",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Jarl Balgruuf the Greater, Vignar Gray-Mane is who you go to (G1 is for radiant jobs, G2); G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
+   "quest": "The World-Eater's Eyrie",
+   "editorId": "MQ303",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Set Odahviing free",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_World-Eater's_Eyrie",
+   "notes": "PC, WO-138 Part 2 batch 1: G2: the page names Odahviing; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Odahviing is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
    "quest": "Sovngarde",
    "editorId": "MQ304",
    "line": "main-quest",
@@ -1837,6 +1933,19 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Dragonslayer",
    "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Hakon, Gormlaith, Felldir is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "Paarthurnax",
+   "editorId": "MQPaarthurnax",
+   "line": "main-quest",
+   "startsWith": [
+    "Esbern"
+   ],
+   "firstObjective": "Decide Paarthurnax's Fate",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Paarthurnax_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 1: giver Esbern on both; the records' first step is \"Decide Paarthurnax's Fate\" (stage 20, Skyrim.esm:03FA16); UESP's is 'Kill Paarthurnax'; the records win (G3): their own words; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
   },
   {
    "quest": "The Words of Power",
@@ -2139,6 +2248,18 @@
    "notes": "PC, WO-138 Part 2 batch 2: giver Vigilant Tolan (a starter's speaker); UESP's Isran sends you (sentBy, G1)."
   },
   {
+   "quest": "Bloodline",
+   "editorId": "DLC1VQ02",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Lead Serana to her home",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bloodline",
+   "notes": "PC, WO-138 Part 2 batch 2: G2: the page names Serana; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Serana is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
    "quest": "Prophet",
    "editorId": "DLC1VQ03Hunter",
    "line": "dawnguard",
@@ -2148,6 +2269,30 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Prophet_(Dawnguard)",
    "notes": "PC, WO-138 Part 2 batch 2: no giver: another quest's stage starts it; UESP's Isran is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "Prophet",
+   "editorId": "DLC1VQ03Vampire",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Harkon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Prophet_(Vampire)",
+   "notes": "PC, WO-138 Part 2 batch 2: no giver: another quest's stage starts it; UESP's Lord Harkon is who you go to (G1 is for radiant jobs, G2); G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
+   "quest": "Chasing Echoes",
+   "editorId": "DLC1VQ04",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Serana",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Chasing_Echoes",
+   "notes": "PC, WO-138 Part 2 batch 2: G2: the page names Lord Harkon; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Dexion Evicus is sentBy.",
+   "waitingOn": "G2"
   },
   {
    "quest": "Beyond Death",
@@ -2161,6 +2306,18 @@
    "notes": "PC, WO-138 Part 2 batch 2: no giver on either; UESP has no stage table: the first step is the records' own, not confirmed by UESP."
   },
   {
+   "quest": "Touching the Sky",
+   "editorId": "DLC1VQ07",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Locate Auriel's Bow",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Touching_the_Sky",
+   "notes": "PC, WO-138 Part 2 batch 2: no giver: another quest's stage starts it; UESP's Serana is who you go to (G1 is for radiant jobs, G2); G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
    "quest": "Kindred Judgment",
    "editorId": "DLC1VQ08",
    "line": "dawnguard",
@@ -2170,6 +2327,31 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Kindred_Judgment",
    "notes": "PC, WO-138 Part 2 batch 2: no giver on either."
+  },
+  {
+   "quest": "Seeking Disclosure",
+   "editorId": "DLC1VQElder",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find The Elder Scroll (Dragon)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Seeking_Disclosure",
+   "notes": "PC, WO-138 Part 2 batch 2: G2: the page names Lord Harkon; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Dexion Evicus is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Scroll Scouting",
+   "editorId": "DLC1VQElderHandler",
+   "line": "dawnguard",
+   "startsWith": [
+    "Dexion Evicus"
+   ],
+   "firstObjective": "Discover the location of the Elder Scroll (Dragon)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Scroll_Scouting",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Dexion Evicus on both; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
   },
   {
    "quest": "Impatience of a Saint",
@@ -2220,6 +2402,30 @@
    "notes": "PC, WO-138 Part 2 batch 2: giver Urag gro-Shub (the page's first step names them); the records' first step is 'Bring Ancient Falmer Tome to Urag gro-Shub' (stage 20, Dawnguard.esm:01A3E4); UESP's is 'Bring Ancient Falmer Tome to'; the records win (G3): their own words."
   },
   {
+   "quest": "The Temple of Miraak",
+   "editorId": "DLC2MQ02",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find Frea",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Temple_of_Miraak",
+   "notes": "PC, WO-138 Part 2 batch 2: G2: the page names Frea; UESP: Automatic after completing Dragonborn. Mac's G2 makes it 'After <that quest>', no giver.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Fate of the Skaal",
+   "editorId": "DLC2MQ03",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Accompany Frea to Skaal Village",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Fate_of_the_Skaal",
+   "notes": "PC, WO-138 Part 2 batch 2: G2: the page names Frea; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Frea is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
    "quest": "Cleansing the Stones",
    "editorId": "DLC2MQ03B",
    "line": "dragonborn",
@@ -2230,6 +2436,18 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Cleansing_the_Stones",
    "notes": "PC, WO-138 Part 2 batch 2: giver Storn Crag-Strider on both."
+  },
+  {
+   "quest": "The Path of Knowledge",
+   "editorId": "DLC2MQ04",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Neloth",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Path_of_Knowledge",
+   "notes": "PC, WO-138 Part 2 batch 2: Bob, 23 Oct 08:05: no giver; after The Fate of the Skaal (its only starter is DLC2MQ03's script, G2's form); sentBy Storn Crag-Strider; first step 'Talk to Neloth'. Frea is the page's mistake: Mac's G2 drops her; Bob, 23 Oct 08:05: no giver; after The Fate of the Skaal (its only starter is DLC2MQ03's script, G2's form); sentBy Storn Crag-Strider; first step 'Talk to Neloth'. Frea is the page's mistake: Mac's G2 drops her.",
+   "waitingOn": "G2"
   },
   {
    "quest": "The Gardener of Men",
@@ -2254,6 +2472,18 @@
    "notes": "PC, WO-138 Part 2 batch 2: no giver: another quest's stage starts it; UESP's Frea is who you go to (G1 is for radiant jobs, G2)."
   },
   {
+   "quest": "Cultists vs Player",
+   "editorId": "DLC2WE09",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Search the one",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dragonborn_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 2: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
    "quest": "Proving Honor",
    "editorId": "C01",
    "line": "companions",
@@ -2265,6 +2495,19 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Proving_Honor",
    "notes": "PC, WO-138 Part 2 batch 2: giver Farkas; UESP's Skjor is the first person you speak to (the first step)."
+  },
+  {
+   "quest": "Brotherhood",
+   "editorId": "C02",
+   "line": "companions",
+   "startsWith": [
+    "Skjor"
+   ],
+   "firstObjective": "Follow the questgiver",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Proving_Honor",
+   "notes": "PC, WO-138 Part 2 batch 2: the records' first step is 'Follow the questgiver' (stage 10, Skyrim.esm:06E804); UESP's is 'Speak to Skjor'; the records win (G3): their own words; G1: the page names no giver; the job's one dispatcher on UESP is Skjor. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Silver Hand",
@@ -2302,7 +2545,8 @@
    "firstObjective": "Kill the beast",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Animal_Extermination_(A)",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Animal Extermination",
@@ -2314,7 +2558,8 @@
    "firstObjective": "Clear out the animal den",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Animal_Extermination_(B)",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Hired Muscle",
@@ -2326,7 +2571,8 @@
    "firstObjective": "Intimidate the brute in the brute town",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Hired_Muscle",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Trouble in Skyrim",
@@ -2338,7 +2584,8 @@
    "firstObjective": "Kill the leader of the location",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Trouble_in_Skyrim",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Family Heirloom",
@@ -2383,7 +2630,8 @@
    "firstObjective": "Assassinate the Silver Hand leader",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Striking_the_Heart",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Stealing Plans",
@@ -2406,7 +2654,8 @@
    "firstObjective": "Retrieve the fragment of Wuuthrad",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Retrieval",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Totems of Hircine",
@@ -2418,7 +2667,8 @@
    "firstObjective": "Retrieve the Totem of Hircine",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Totems_of_Hircine",
-   "notes": "PC, WO-138 Part 2 batch 3: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 3: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Purity",
@@ -2442,6 +2692,91 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Dragon_Seekers",
    "notes": "PC, WO-138 Part 2 batch 3: no single giver: UESP's dispatchers are Farkas, Vilkas (G1)."
+  },
+  {
+   "quest": "Under Saarthal",
+   "editorId": "MG02",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Meet Tolfdir outside Saarthal",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Under_Saarthal",
+   "notes": "PC, WO-138 Part 2 batch 3: no giver: another quest's stage starts it; UESP's Tolfdir is who you go to (G1 is for radiant jobs, G2); G3: the records' first step is 'Tell Tolfdir about the vision' (stage 50, Skyrim.esm:01F252); UESP's first is 'Meet Tolfdir outside Saarthal' (stage 10), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G3"
+  },
+  {
+   "quest": "Hitting the Books",
+   "editorId": "MG03",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Mirabelle Ervine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Hitting_the_Books",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Savos Aren; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Savos Aren is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Good Intentions",
+   "editorId": "MG04",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Tolfdir",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Good_Intentions",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Urag gro-Shub; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Tolfdir is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Revealing the Unseen",
+   "editorId": "mg06",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Mirabelle Ervine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Revealing_the_Unseen",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Savos Aren; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mirabelle Ervine is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Staff of Magnus",
+   "editorId": "MG07",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Enter Labyrinthian",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Staff_of_Magnus",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Mirabelle Ervine; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mirabelle Ervine is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Eye of Magnus",
+   "editorId": "MG08",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Use the Staff of Magnus to enter the College of Winterhold",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Eye_of_Magnus",
+   "notes": "PC, WO-138 Part 2 batch 3: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
+   "quest": "Shalidor's Insights",
+   "editorId": "MGR21",
+   "line": "college",
+   "startsWith": [
+    "Urag gro-Shub"
+   ],
+   "firstObjective": "Find Shalidor's writings",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Shalidor's_Insights",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Urag gro-Shub on both; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
   },
   {
    "quest": "Aftershock",
@@ -2538,6 +2873,18 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Arniel's_Endeavor",
    "notes": "PC, WO-138 Part 2 batch 3: giver Arniel Gane on both."
+  },
+  {
+   "quest": "Rejoining the College",
+   "editorId": "MGRejoinQuest",
+   "line": "college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Tolfdir",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rejoining_the_College",
+   "notes": "PC, WO-138 Part 2 batch 3: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
   },
   {
    "quest": "Destruction Ritual Spell",
@@ -2720,6 +3067,138 @@
    "notes": "PC, WO-138 Part 2 batch 3: giver Nirya on both; UESP has no stage table: the first step is the records' own, not confirmed by UESP."
   },
   {
+   "quest": "Loud and Clear",
+   "editorId": "TG02",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Follow Brynjolf",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Loud_and_Clear",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Dampened Spirits",
+   "editorId": "TG03",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Maven Black-Briar",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dampened_Spirits",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Scoundrel's Folly",
+   "editorId": "TG04",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Mercer Frey",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Scoundrel's_Folly",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Speaking With Silence",
+   "editorId": "TG05",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Meet Mercer Frey outside Snow Veil Sanctum",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Speaking_With_Silence",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Mercer Frey; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mercer Frey is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Hard Answers",
+   "editorId": "TG06",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Enthir",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Hard_Answers",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Pursuit",
+   "editorId": "TG07",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Meet Karliah at the Ragged Flagon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Pursuit",
+   "notes": "PC, WO-138 Part 2 batch 3: G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Trinity Restored",
+   "editorId": "TG08A",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Listen to Karliah",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Trinity_Restored",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Blindsighted",
+   "editorId": "TG08B",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Travel to Irkngthand",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Blindsighted",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Darkness Returns",
+   "editorId": "TG09",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Enter the Twilight Sepulcher",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Darkness_Returns",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Reparations",
+   "editorId": "TGBan",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Vex",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Reparations",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild. Mac's G2 makes it 'After <that quest>', no giver.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "No Stone Unturned",
+   "editorId": "TGCrown",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Become a full member of the Thieves Guild",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:No_Stone_Unturned",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".. Mac's G2 makes it 'After <that quest>', no giver.",
+   "waitingOn": "G2"
+  },
+  {
    "quest": "The Burglary Job",
    "editorId": "TGRBE",
    "line": "thieves-guild",
@@ -2729,7 +3208,8 @@
    "firstObjective": "Retrieve the item to get from the wealthy home in the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Burglary_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Shill Job",
@@ -2741,7 +3221,8 @@
    "firstObjective": "Plant the evidence in the wealthy home in the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Shill_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Numbers Job",
@@ -2753,7 +3234,8 @@
    "firstObjective": "Make changes in the ledger at the business in the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Numbers_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Fishing Job",
@@ -2765,7 +3247,8 @@
    "firstObjective": "Retrieve the item to get from the mark in the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Fishing_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Sweep Job",
@@ -2777,7 +3260,8 @@
    "firstObjective": "Clear the wealthy home in the city of valuables (0/3)",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Sweep_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Bedlam Job",
@@ -2789,7 +3273,8 @@
    "firstObjective": "Steal 500 gold in goods from the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Bedlam_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Heist Job",
@@ -2801,7 +3286,8 @@
    "firstObjective": "Retrieve the item to get from the business in the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Heist_Job",
-   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them..",
+   "waitingOn": "G1"
   },
   {
    "quest": "TG00 Maul Handler",
@@ -2815,6 +3301,18 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:A_Chance_Arrangement",
    "notes": "PC, WO-138 Part 2 batch 4: giver Maul; UESP's Brynjolf is the first person you speak to (the first step)."
+  },
+  {
+   "quest": "Meet the Family",
+   "editorId": "TG02B",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn more about the Thieves Guild from Vex",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Meet_the_Family",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy.",
+   "waitingOn": "G2"
   },
   {
    "quest": "Thieves Guild Caravan Fence Quest",
@@ -2862,7 +3360,8 @@
    "firstObjective": "Talk to the strange jester",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Delayed_Burial",
-   "notes": "PC, WO-138 Part 2 batch 4: giver Vantus Loreius; UESP's Cicero also sets it off (both are starters' speakers); G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4.."
+   "notes": "PC, WO-138 Part 2 batch 4: giver Vantus Loreius; UESP's Cicero also sets it off (both are starters' speakers); G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4..",
+   "waitingOn": "G3"
   },
   {
    "quest": "With Friends Like These...",
@@ -2910,7 +3409,20 @@
    "firstObjective": "Hide in the Night Mother's coffin",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Whispers_in_the_Dark",
-   "notes": "PC, WO-138 Part 2 batch 4: D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4.."
+   "notes": "PC, WO-138 Part 2 batch 4: D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4..",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "The Silence Has Been Broken",
+   "editorId": "DB04a",
+   "line": "dark-brotherhood",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Astrid",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Silence_Has_Been_Broken",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is sentBy G3: the records' first step is 'Report back to Astrid' (stage 40, Skyrim.esm:02AD16); UESP's first is 'Speak with Astrid' (stage 5), and the starters (Start) don't all set a later stage directly. Mac's Part 4..",
+   "waitingOn": "G2"
   },
   {
    "quest": "Bound Until Death",
@@ -3174,6 +3686,19 @@
    "notes": "PC, WO-138 Part 2 batch 5: no giver on either."
   },
   {
+   "quest": "Imperial Introductions",
+   "editorId": "CW00A",
+   "line": "civil-war",
+   "startsWith": [
+    "Legate Rikke"
+   ],
+   "firstObjective": "Join the Imperial Legion",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Joining_the_Legion",
+   "notes": "PC, WO-138 Part 2 batch 5: giver Legate Rikke on both; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
    "quest": "Get Outfitted",
    "editorId": "CW01AOutfitImperial",
    "line": "civil-war",
@@ -3184,6 +3709,92 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Get_Outfitted",
    "notes": "PC, WO-138 Part 2 batch 5: giver General Tullius on both."
+  },
+  {
+   "quest": "Joining the Legion",
+   "editorId": "CW01A",
+   "line": "civil-war",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Clear out Fort Hraggstad",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Joining_the_Legion",
+   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names Legate Rikke; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Joining the Stormcloaks",
+   "editorId": "CW01B",
+   "line": "civil-war",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Kill the Ice Wraith",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Joining_the_Stormcloaks",
+   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Ulfric Stormcloak is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Jagged Crown",
+   "editorId": "CW02A",
+   "line": "civil-war",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Legate Rikke",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Jagged_Crown_(Imperial)",
+   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names General Tullius; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "The Jagged Crown",
+   "editorId": "CW02B",
+   "line": "civil-war",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Galmar",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Jagged_Crown_(Stormcloaks)",
+   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Galmar Stone-Fist is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Message to Whiterun",
+   "editorId": "CW03",
+   "line": "civil-war",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Deliver message to the Jarl of Whiterun",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Message_to_Whiterun_(Imperial)",
+   "notes": "PC, WO-138 Part 2 batch 5: G2: the page names General Tullius; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's General Tullius is sentBy.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "A False Front",
+   "editorId": "CWMission03",
+   "line": "civil-war",
+   "startsWith": [
+    "Legate Rikke"
+   ],
+   "firstObjective": "Find the courier",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_False_Front_(Imperial)",
+   "notes": "PC, WO-138 Part 2 batch 5: the records' first step is 'Find the courier' (stage 10, Skyrim.esm:03BCC4); UESP's is 'Find the Stormcloak Courier'; the records win (G3): their own words; G1: the page names no giver; the job's one dispatcher on UESP is Legate Rikke. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Compelling Tribute",
+   "editorId": "CWMission07",
+   "line": "civil-war",
+   "startsWith": [
+    "Legate Rikke"
+   ],
+   "firstObjective": "Find evidence",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Compelling_Tribute_(Imperial)",
+   "notes": "PC, WO-138 Part 2 batch 5: G1: the page names no giver; the job's one dispatcher on UESP is Legate Rikke. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G1"
   },
   {
    "quest": "Tending the Flames",
@@ -3258,6 +3869,19 @@
    "notes": "PC, WO-138 Part 2 batch 5: giver Barbas on both."
   },
   {
+   "quest": "A Night To Remember",
+   "editorId": "DA14",
+   "line": "a-night-to-remember",
+   "startsWith": [
+    "Sam Guevenne"
+   ],
+   "firstObjective": "Find Sam Guevenne",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Night_To_Remember",
+   "notes": "PC, WO-138 Part 2 batch 5: giver Sam Guevenne on both; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way..",
+   "waitingOn": "G4"
+  },
+  {
    "quest": "DA02 Hook",
    "editorId": "WEDA02",
    "line": "boethiahs-calling",
@@ -3278,7 +3902,8 @@
    "firstObjective": "Speak to Verulus about the Hall of the Dead",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Taste_of_Death",
-   "notes": "PC, WO-138 Part 2 batch 5: giver Brother Verulus on both; G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4.."
+   "notes": "PC, WO-138 Part 2 batch 5: giver Brother Verulus on both; G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4..",
+   "waitingOn": "G3"
   },
   {
    "quest": "Served Cold",
@@ -3291,6 +3916,36 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Served_Cold",
    "notes": "PC, WO-138 Part 2 batch 5: giver Captain Veleth on both."
+  },
+  {
+   "quest": "Stendarr Guide",
+   "editorId": "zzzBMGuide",
+   "line": "vigilants",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Trace the blood",
+   "source": "records",
+   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when Remnants, stage 80 sets its stages. First step the records' own. checked: files."
+  },
+  {
+   "quest": "Stendarr Guide",
+   "editorId": "zzzCOGuide",
+   "line": "vigilants",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Break the Blood Curse of Shivers",
+   "source": "records",
+   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when Child of Oblivion, stage 60 sets its stages. First step the records' own. checked: files."
+  },
+  {
+   "quest": "Memory Guide",
+   "editorId": "zzzCHMemoryGuide",
+   "line": "vigilants",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Like when the dream no longer needs its dreamer",
+   "source": "records",
+   "notes": "Bob, 23 Oct 08:05 (bob-rulings.md): a tracker the line's quests fill in, not a quest a player starts. No giver; it starts by itself when the Memory quests, from Johan the Fool sets its stages. First step the records' own. checked: files."
   }
  ]
 }

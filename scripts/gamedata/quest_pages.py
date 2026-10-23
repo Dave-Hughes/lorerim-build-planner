@@ -1321,7 +1321,10 @@ def from_key(start, row):
     if not row or start.get("checked") != "not yet":
         return start
     url = row.get("url") or ""
-    out = {**start, "checked": "uesp", "source": "Nexus" if "nexusmods" in url else "UESP", **({"url": url} if url else {})}
+    if row.get("source") == "records":  # Bob, 23 Oct 08:05: a row from the records alone (the Vigilant guides) is checked in the files
+        out = {**start, "checked": "files"}
+    else:
+        out = {**start, "checked": "uesp", "source": "Nexus" if "nexusmods" in url else "UESP", **({"url": url} if url else {})}
     out["then"] = row["firstObjective"]
     if row.get("noGiver"):
         out = {k: v for k, v in out.items() if k not in ("who", "where", "thenWho", "thenWhere")}
