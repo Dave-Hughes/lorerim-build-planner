@@ -118,3 +118,42 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
   - On the pages, Paragliding is the only start worded with nothing but "somewhere in Skyrim". The others already have a door ("by the door to Storage Room") or a named cell. The Stuhn Ravine bounties are 5 m from the Temple of Stendarr marker, and Victory Celebrations' Whiterun triggers are 41 to 60 m from Jorrvaskr.
 - Readables (a book "in a chest somewhere in Whiterun") aren't triggers and don't get the field yet. The same helper fits them if Bob wants it.
 - Tests: `BoardsTest` covers the helper on made-up markers (nearest named place, nearest town, nothing for a named cell or an interior) and Paragliding's three triggers in the built file.
+
+## WO-138 Part 1: the last 40 (23 Oct)
+
+**19 settled.** Each one is a hand trace of the records that agrees with UESP, now a key row (`source: uesp`) with the trace in its notes. The start check reads none of these four patterns, so each is listed for a later rule.
+
+- **The seven fishing jobs** (Beneath Bronze Waters, Clear-Headed, Spirits Away, Private Lessons, No Contest, The Ultimate Feast, Heart of Gold).
+  - `ccBGSSSE001_MiscQuests` holds them in an array property, `miscquests`, with Viriya as its alias.
+  - Viriya's talk gives you a bounty letter (`GivePlayerBountyLetterForQuest`). Reading it calls `SetBountyLetterWasRead`, which starts the job at that index of the array.
+  - The check doesn't follow a quest taken from an array.
+- **The four Dragonborn Black Books** (The Winds of Change, The Sallow Regent, Filament and Filigree, The Hidden Twilight).
+  - Each book (Dragonborn.esm:01E99C to 01E99F) carries `DLC2BlackBookScript`, with `myQuest` set to its quest and `myQuestStage` 10.
+  - When you read it, `DLC2BookDungeonController.ReadBook` sets that stage.
+  - The call sits in the controller, not in the book's own script, so the book reader misses it.
+- **The Thieves Guild's four city jobs.**
+  - Delvin Mallory's lines (INFO Skyrim.esm:09DD57 to 09DD5A) need TGRShell stage 160, 170, 180 or 190 done (five jobs in Whiterun, Solitude, Windhelm or Markarth).
+  - Each line sets 162, 172, 182 or 192. That stage's fragment sets Imitation Amnesty, The Dainty Sload, Summerset Shadows or Silver Lining to stage 10.
+  - The fragments reach the job through a property on TGRShell's own script (`kmyQuest.pTGTQ0xQuest`), which the check doesn't follow.
+- **Under New Management.**
+  - `TGRShellScript.TGLeaderCheck` sets TGRShell stage 197 once four city jobs are done and Darkness Returns is complete. Stage 197 starts it by itself.
+  - Rex caught my first row naming Brynjolf as giver. UESP has no giver, and Brynjolf is only the first step, so the row is now a no-giver row.
+- **From the wiki, as the order says:** Purity of Revenge, Glory of the Dead and March of the Dead. The records start these only from helpers Bob ruled out (USSEP's update helpers; DLC2Init on arriving at Solstheim).
+
+**21 stay on the needs-Bob list, with both readings:**
+- In the Shadows: its first objective, "Speak to the Jarl's Steward", shows at stage 0, and nothing in the records starts it, so they can't confirm UESP's start.
+- No UESP page: the Durnehviir handler, Animal Pelt Collection, the Civil War's three objective holders, The Lost Verse, First Catch.
+- Boethiah's Bidding: unfinished content, on UESP's Unfinished Quests page only.
+- Mod quests with no second source: A Grand Venture, The Font of Memory, Bury Valen Dreth, Whispers of the Veil, Grace of Kynareth, Farmland Saga, On Hogithum, Fear and Loathing, With Love, Eilonwy Part 2.
+- The Vigilant's three guides: a mod, so there's no UESP page to decide them with.
+
+**Checked starts: 1,221 of 1,242**, up from 1,202: 1,200 from the files and 21 from the key.
+
+**Rex (fresh, on No Contest, The Winds of Change, Imitation Amnesty, Under New Management):** CHANGES NEEDED on all four.
+- **Fixed once:** Under New Management's giver (above).
+- **Not mine to fix in the loop** (quest_pages' wording, which WO-132's limits keep me out of). A start the key confirms keeps the check's leftover ways:
+  - "Through Thieves Guild Radiant Shell" shows as a way and a need on the five Thieves Guild quests. It's an internal quest's name.
+  - "No one gives it" is the only way shown for a book read in a place. It should say which book and where (Raven Rock Mine).
+  - No Contest has no "after Heart of Gold". Viriya hands the letters in her array's order, which matches UESP's chain.
+  - Rex's point: `checked: uesp` says the giver and first step are confirmed. It doesn't mean the page's ways and needs are complete.
+  - These are for Mac (wording) and Bob (whether a key-only start needs its own ways). Listed in the report.

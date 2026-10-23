@@ -2,9 +2,11 @@
 
 Quests the loop can't settle from the records and UESP, each with both readings and its record ids. They stay "not yet checked"; nothing here was guessed or picked to keep the loop going. Written from each batch by the PC; grouped by reason.
 
-40 quests: the loop's batch 4, after WO-136's rerun. These are every quest still not checked; the 120 from batches 1 to 3 that the board reader and Bob's rulings settled are off the list.
+21 quests: what is left of the loop's batch 4, after WO-136's rerun. These are every quest still not checked; the 120 from batches 1 to 3 that the board reader and Bob's rulings settled are off the list.
 
-## The records hold no starter (29)
+**WO-138 Part 1 (PC, 23 Oct):** 19 of the 40 are settled by a hand trace of the records that agrees with UESP, each now a key row (`source: uesp`, the trace in its notes): the seven fishing jobs (Viriya's bounty letter starts a quest taken from ccBGSSSE001_MiscQuests' `miscquests` array), the four Dragonborn Black Books (the book's script holds the quest and stage 10; DLC2BookDungeonController's ReadBook sets it), the Thieves Guild's four city jobs (Delvin's lines set TGRShell 162/172/182/192, whose fragments set each job's stage 10) and Under New Management (TGRShellScript.TGLeaderCheck sets 197), and from the wiki as the order says, Purity of Revenge, Glory of the Dead and March of the Dead (only ruled-out helpers in the records). The 21 below stay, each with both readings: no UESP page, or a mod with no second source, or records that don't hold the starter UESP describes (In the Shadows: its first objective shows at stage 0 and nothing in the records starts it).
+
+## The records hold no starter (18)
 
 - **Durnehviir Misc Objective Handler** (`DLC1VQDragonMisc`, Dawnguard.esm:01119F; line `dawnguard`, batch 4)
   - Records, how it starts: no starter in its records or scripts.
@@ -55,26 +57,6 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - First objective's target in the records: alias myDestination (forced): a marker, placed in Falkreath.
   - Objectives in the records: 'Bury the rests of Valen Dreth at Falkreath' (QOBJ 10, shown at stage 10).
   - A mod's quest: the records are the only source, and they hold no way in.
-- **Black Book: The Winds of Change** (`DLC2BlackBook04Quest`, Dragonborn.esm:03216E; line `black-books`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - First objective's target in the records: alias BookTarget (forced): Black Book: The Winds of Change, placed in Apocrypha.
-  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Black_Book:_The_Winds_of_Change_(quest)&oldid=3125187): Starts when you read the Black Book The Winds of Change in Raven Rock Mine. First objective: "Learn the Black Book's hidden knowledge".
-- **Black Book: The Sallow Regent** (`DLC2BlackBook05Quest`, Dragonborn.esm:03216D; line `black-books`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - First objective's target in the records: alias BookTarget (forced): Black Book: The Sallow Regent, placed in Apocrypha.
-  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Sallow_Regent_(quest)): Starts when you read the Black Book The Sallow Regent in White Ridge Barrow. First objective: "Learn the Black Book's hidden knowledge".
-- **Black Book: Filament and Filigree** (`DLC2BlackBook06Quest`, Dragonborn.esm:03216F; line `black-books`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - First objective's target in the records: alias BookTarget (forced): Black Book: Filament and Filigree, placed in Apocrypha.
-  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Black_Book:_Filament_and_Filigree_(quest)): Reading the Black Book Filament and Filigree, found in Kolbjorn Barrow, starts it. First objective: "Learn the Black Book's hidden knowledge".
-- **Black Book: The Hidden Twilight** (`DLC2BlackBook07Quest`, Dragonborn.esm:032170; line `black-books`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - First objective's target in the records: alias BookTarget (forced): Black Book: The Hidden Twilight, placed in Apocrypha.
-  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Hidden_Twilight_(quest)): Starts when you read the Black Book The Hidden Twilight in Tel Mithryn. First objective: "Learn the Black Book's hidden knowledge".
 - **Black Book: Whispers of the Veil** (`NecroBlackBookQuest01`, Undeath.esp:125089; line `undeath`, batch 4)
   - Records, how it starts: no starter in its records or scripts.
   - First objective's target in the records: alias BookTarget (forced): Black Book: Whispers of the Veil, placed in Apocrypha.
@@ -108,124 +90,13 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - First objective's target in the records: alias Faralda (unique): Faralda, placed in Hall of Countenance, Dormitory.
   - Objectives in the records: 'Talk to Faralda' (QOBJ 1, shown at stage 1); "Meet Faralda's aunt at Lost Prospect Mine" (QOBJ 10, shown at stage 10).
   - A mod's quest: the records are the only source, and they hold no way in.
-- **Beneath Bronze Waters** (`ccBGSSSE001_Misc_Dwarven`, ccBGSSSE001-Fish.esm:000AD6; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 13.
-  - First objective's target in the records: alias CaveInvestigateMarker (forced): a marker, placed in Bronze Water Cave.
-  - Objectives in the records: 'Investigate the entrance of Bronze Water Cave' (QOBJ 0, shown at stage 0); "Read the fisherman's journal" (QOBJ 10, shown at stage 5).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Beneath_Bronze_Waters): Talk to Viriya after completing The Ultimate Feast; she gives the bounty 'Bounty: Dwarven Investigation'. Givers: Viriya. First objective: 'Investigate the entrance of Bronze Water Cave'.
-- **Clear-Headed** (`ccBGSSSE001_Misc_Falkreath`, ccBGSSSE001-Fish.esm:0009EC; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 0 or the speaker is the one in alias 7.
-  - Objectives in the records: 'Obtain a glassfish for Zaria in Falkreath' (QOBJ 0); 'Speak to Zaria' (QOBJ 10).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Clear-Headed): Talk to Viriya after completing In A Pinch; she gives a bounty for a glassfish for Zaria at Grave Concoctions, Falkreath. Givers: Viriya. First objective: 'Obtain a glassfish for Zaria in Falkreath'.
-- **Spirits Away** (`ccBGSSSE001_Misc_Khajiit`, ccBGSSSE001-Fish.esm:0009E2; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 2.
-  - First objective's target in the records: alias Trigger (forced): a marker, placed in Skyrim.
-  - Objectives in the records: "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn" (QOBJ 0, shown at stage 0); "Fish up Ri'saad's lost bottles of aged flin (<Global=ccBGSSSE001_MiscKhajiitFlinCount>/<Global=ccBGSSSE001_MiscKhajiitFlinTotal>)" (QOBJ 10, shown at stage 20).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Spirits_Away): Talk to Viriya after completing Private Lessons; she gives a note about Ri'saad's lost bottles of Aged Flin. Givers: Viriya. First objective: "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn".
-- **Private Lessons** (`ccBGSSSE001_Misc_Markarth`, ccBGSSSE001-Fish.esm:0009DF; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 0.
-  - First objective's target in the records: alias Student (forced): Lynea, placed in Silver-Blood Inn.
-  - Objectives in the records: 'Speak to Lynea about private fishing lessons' (QOBJ 0, shown at stage 0); 'Meet Lynea on the docks near the Warrens' (QOBJ 10, shown at stage 10).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Private_Lessons): Talk to Viriya after completing Tusked Terror; she gives the note 'Wanted: Fishing Tutor' from Lynea at the Silver-Blood Inn, Markarth. Givers: Viriya. First objective: 'Speak to Lynea about private fishing lessons'.
-- **No Contest** (`ccBGSSSE001_Misc_Morthal`, ccBGSSSE001-Fish.esm:0009E4; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 1.
-  - First objective's target in the records: alias OldMan (forced): Brutius, placed in Morthal.
-  - Objectives in the records: 'Talk to Brutius in Morthal about a fishing contest' (QOBJ 0, shown at stage 0); 'Meet Brutius at the fishing spot' (QOBJ 10, shown at stage 10).
-  - UESP (https://en.uesp.net/wiki/Skyrim:No_Contest): Talk to Viriya after completing Heart of Gold; she gives a fishing contest notice sending you to Morthal. Givers: Viriya. First objective: 'Talk to Brutius in Morthal about a fishing contest'.
-- **The Ultimate Feast** (`ccBGSSSE001_Misc_Solitude`, ccBGSSSE001-Fish.esm:0009E3; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 1.
-  - Objectives in the records: 'Obtain a pair of steamed crab legs' (QOBJ 0); 'Obtain a cooked arctic char' (QOBJ 1).
-  - UESP (https://en.uesp.net/wiki/Skyrim:The_Ultimate_Feast): Talk to Viriya after completing Spirits Away; she gives the note 'Wanted: A Seafood Feast' for Gisli. Givers: Viriya. First objective: 'Obtain a pair of steamed crab legs'.
-- **Heart of Gold** (`ccBGSSSE001_Misc_WhiterunPartOne`, ccBGSSSE001-Fish.esm:000E5D; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
-  - Records, how it starts: no starter in its records or scripts.
-  - Its own conditions: the speaker is the one in alias 0.
-  - First objective's target in the records: alias Child (unique): Mila Valentia, placed in Carlotta Valentia's House.
-  - Objectives in the records: 'Obtain a goldfish for Mila Valentia in Whiterun' (QOBJ 0); 'Speak to Mila Valentia' (QOBJ 20).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Heart_of_Gold): Talk to Viriya after completing Clear-Headed; she gives a note and bounty from Mila Valentia requesting a goldfish. Givers: Viriya. First objective: 'Obtain a goldfish for Mila Valentia in Whiterun'.
 - **First Catch** (`ccBGSSSE001_Start_MQ1`, ccBGSSSE001-Fish.esm:0009D3; winning record: Synthesis - Gameplay Overwrite.esp; line `fishing`, batch 4)
   - Records, how it starts: no starter in its records or scripts.
   - First objective's target in the records: alias CampMarker (forced): a marker, placed in Skyrim.
   - Objectives in the records: 'Visit the fishing camp south of Riverwood' (QOBJ 0, shown at stage 10); 'Equip a fishing rod' (QOBJ 5, shown at stage 15).
   - UESP: no page found: no UESP page for First Catch or this editor ID; Angler Acquaintances is ccBGSSSE001_Start_MQ2, a different quest.
 
-## Only helpers Bob ruled aren't ways in start it (the Unofficial Patch's update helpers; Dragonborn's DLC2Init) (Bob 22 Oct) (3)
 
-- **Purity of Revenge** (`C05`, Skyrim.esm:06E805; winning record: Update.esm; line `companions`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: Patch1_9_UpdateQuest, a helper quest at stage 10 calls SetStage 1 (QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm), through C00 (Take Up Arms)'s startstoryquest); Patch1_9_UpdateQuest is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive125 (named "Retroactive fixes for 1.2.5" in its record), a helper quest with Garakh, Atub, Addvar calls SetStage 1 (USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive125 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive125 (named "Retroactive fixes for 1.2.5" in its record), a helper quest with Garakh, Atub, Addvar calls Start (USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive125 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive126 (named "Retroactive fixes for 1.2.6" in its record), a helper quest with Niranye, Arivanya, Ysolda calls SetStage 1 (USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive126 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive126 (named "Retroactive fixes for 1.2.6" in its record), a helper quest with Niranye, Arivanya, Ysolda calls Start (USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive126 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive127 (named "Retroactive fixes for 1.2.7" in its record), a helper quest with Odfel calls SetStage 1 (USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive127 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive127 (named "Retroactive fixes for 1.2.7" in its record), a helper quest with Odfel calls Start (USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive127 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive130 (named "Retroactive fixes for 1.3.0" in its record), a helper quest calls SetStage 1 (USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp)); USKPRetroactive130 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - and 7 more like these
-  - First objective's target in the records: alias Fragments (forced): Fragments of Wuuthrad, placed in Driftshade Refuge, Driftshade Sanctuary.
-  - First objective's target in the records: alias Fragments (forced): Fragments of Wuuthrad, placed in Driftshade Refuge, Driftshade Sanctuary.
-  - First objective's target in the records: alias DriftShadeInteriorDoor (forced): Wooden Door, placed in Driftshade Refuge, Driftshade Sanctuary.
-  - Objectives in the records: 'Retrieve the fragments of Wuuthrad' (QOBJ 10, shown at stage 10); '(Optional) Wipe out the Silver Hand' (QOBJ 11, shown at stage 10).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Purity_of_Revenge&oldid=3572434): After Kodlak dies, Vilkas seeks revenge on the Silver Hand and follows you to Driftshade Refuge; previous quest Blood's Honor. Givers: Vilkas. First objective: 'Retrieve the fragments of Wuuthrad'.
-- **Glory of the Dead** (`C06`, Skyrim.esm:01CEF6; winning record: Unofficial Skyrim Special Edition Patch.esp; line `companions`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: Patch1_9_UpdateQuest, a helper quest at stage 10 calls SetStage 1 (QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm), through C00 (Take Up Arms)'s startstoryquest); Patch1_9_UpdateQuest is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls Start (uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPRetroactive203 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls Start (USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPRetroactive204 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava calls Start (USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPRetroactive205 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive206 (named "Retroactive fixes for 2.0.6" in its record), a helper quest with Vekel, Oengul calls Start (USKPRetroactive206Script.Process on Unofficial Skyrim Special Edition Patch.esp:04C7DF (Unofficial Skyrim Special Edition Patch.esp)); USKPRetroactive206 is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
-  - First objective's target in the records: alias FuneralLocationMarker (forced): a marker, placed in Whiterun.
-  - Objectives in the records: "Attend Kodlak's funeral" (QOBJ 10, shown at stage 10); 'Give the fragments of Wuuthrad to Eorlund' (QOBJ 15, shown at stage 15).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Glory_of_the_Dead&oldid=3555956): Follows Purity of Revenge; Vilkas runs to the Skyforge for Kodlak's funeral. Givers: Vilkas. First objective: "Attend Kodlak's funeral".
-- **March of the Dead** (`DLC2RR01`, Dragonborn.esm:018B13; winning record: Unofficial Skyrim Special Edition Patch.esp; line `raven-rock`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start (DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)); DLC2Init is started by the start-game flag (not a way in, Bob 22 Oct)
-  - First objective's target in the records: alias DLC2RR01Ghoul01Alias (from alias): nothing the records name.
-  - First objective's target in the records: alias DLC2RR01Ghoul02Alias (from alias): nothing the records name.
-  - First objective's target in the records: alias DLC2RR01Ghoul03Alias (from alias): nothing the records name.
-  - Objectives in the records: 'Kill the ash spawn attacking Captain Veleth' (QOBJ 10); 'Speak to Captain Veleth' (QOBJ 20).
-  - UESP (https://pt.uesp.net/wiki/Dragonborn:March_of_the_Dead): Giver Captain Veleth. You find him fighting ash spawn at Old Attius Farm, south of Raven Rock, and helping him starts it. Stage 30, obj 10: "Kill the ash spawn attacking Captain Veleth". Givers: Captain Veleth. First objective: 'Kill the ash spawn attacking Captain Veleth'. Note: UESP reading as Bob recorded it in openings-judged-2026-10-21.json
-
-## The check found starters it can't name (5)
-
-- **Under New Management** (`TGLeadership`, Skyrim.esm:0D7D69; winning record: Unofficial Skyrim Special Edition Patch.esp; line `thieves-guild`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 197 calls SetStage 10 (QF_TGRShell_00028923.fragment_65 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
-  - First objective's target in the records: alias TGLeadershipBrynjolf (unique): Brynjolf, placed in Riften.
-  - Objectives in the records: 'Speak to Brynjolf about becoming the Guild Master' (QOBJ 10, shown at stage 10); 'Proceed to center of Cistern' (QOBJ 20, shown at stage 20).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Under_New_Management&oldid=3652078): After the four reputation quests and Darkness Returns you are told to talk to Brynjolf; if Darkness Returns finished earlier it starts automatically after the last reputation quest. Givers: Brynjolf. First objective: 'Speak to Brynjolf about becoming the Guild Master'.
-- **Silver Lining** (`TGTQ01`, Skyrim.esm:0799DF; line `thieves-guild`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 192 calls SetStage 10 (QF_TGRShell_00028923.fragment_64 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
-  - First objective's target in the records: alias TGTQ01EndonAlias (unique): Endon, placed in Endon's House.
-  - Objectives in the records: 'Speak to Endon the Silversmith' (QOBJ 10, shown at stage 10); 'Enter Pinewatch' (QOBJ 20, shown at stage 20).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Silver_Lining&oldid=3514599): After five Thieves Guild special jobs in Markarth, speak to Delvin Mallory. Givers: Delvin Mallory. First objective: 'Speak to Endon the Silversmith'.
-- **The Dainty Sload** (`TGTQ02`, Skyrim.esm:0799E0; winning record: Vittorias Alternate Wedding.esp; line `thieves-guild`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 172 calls SetStage 10 (QF_TGRShell_00028923.fragment_60 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
-  - First objective's target in the records: alias TGTQ02ErikurAlias (unique): Erikur, placed in Erikur's House.
-  - Objectives in the records: 'Speak to Erikur' (QOBJ 10, shown at stage 10); 'Acquire Balmora Blue' (QOBJ 20, shown at stage 20).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:The_Dainty_Sload&oldid=3578415): After five Thieves Guild special jobs in Solitude, speak to Delvin Mallory at the Ragged Flagon. Givers: Delvin Mallory. First objective: 'Speak to Erikur'.
-- **Imitation Amnesty** (`TGTQ03`, Skyrim.esm:0799E1; winning record: Unofficial Skyrim Special Edition Patch.esp; line `thieves-guild`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 162 calls SetStage 10 (QF_TGRShell_00028923.fragment_59 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
-  - First objective's target in the records: alias TGTQ03OlfridAlias (unique): Olfrid Battle-Born, placed in House of Clan Battle-Born.
-  - Objectives in the records: 'Speak to Olfrid Battle-Born' (QOBJ 10, shown at stage 10); 'Steal the letter incriminating Arn' (QOBJ 20, shown at stage 20).
-  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Imitation_Amnesty&oldid=3496199): After five Thieves Guild jobs in Whiterun, Delvin Mallory offers the special job at the Ragged Flagon. Givers: Delvin Mallory. First objective: 'Speak to Olfrid Battle-Born'.
-- **Summerset Shadows** (`TGTQ04`, Skyrim.esm:0799E2; winning record: Unofficial Skyrim Special Edition Patch.esp; line `thieves-guild`, batch 4)
-  - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 182 calls SetStage 10 (QF_TGRShell_00028923.fragment_62 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
-  - First objective's target in the records: alias TGTQ04TorstenAlias (unique): Torsten Cruel-Sea, placed in House of Clan Cruel-Sea.
-  - Objectives in the records: 'Speak to Torsten Cruel-Sea' (QOBJ 10, shown at stage 10); 'Speak to Niranye' (QOBJ 20, shown at stage 20).
-  - UESP (https://en.uesp.net/wiki/Skyrim:Summerset_Shadows): Delvin gives it at the Ragged Flagon after five jobs in Windhelm. Givers: Delvin Mallory. First objective: 'Speak to Torsten Cruel-Sea'.
 
 ## Only a quest the line puts after it sets its stage (the line's order, or a real catch-up?) (3)
 

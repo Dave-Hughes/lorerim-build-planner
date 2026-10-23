@@ -1512,6 +1512,229 @@
     "Nazir"
    ],
    "firstObjective": "Employ Delvin Mallory's services"
+  },
+  {
+   "quest": "Beneath Bronze Waters",
+   "editorId": "ccBGSSSE001_Misc_Dwarven",
+   "line": "fishing",
+   "firstObjective": "Investigate the entrance of Bronze Water Cave",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Beneath_Bronze_Waters",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives the bounty 'Bounty: Dwarven Investigation'.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "Clear-Headed",
+   "editorId": "ccBGSSSE001_Misc_Falkreath",
+   "line": "fishing",
+   "firstObjective": "Obtain a glassfish for Zaria in Falkreath",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Clear-Headed",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives a bounty for a glassfish for Zaria.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "Spirits Away",
+   "editorId": "ccBGSSSE001_Misc_Khajiit",
+   "line": "fishing",
+   "firstObjective": "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Spirits_Away",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives a note about Ri'saad's lost bottles.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "Private Lessons",
+   "editorId": "ccBGSSSE001_Misc_Markarth",
+   "line": "fishing",
+   "firstObjective": "Speak to Lynea about private fishing lessons",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Private_Lessons",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives the note 'Wanted: Fishing Tutor'.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "No Contest",
+   "editorId": "ccBGSSSE001_Misc_Morthal",
+   "line": "fishing",
+   "firstObjective": "Talk to Brutius in Morthal about a fishing contest",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:No_Contest",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives a fishing contest notice.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "The Ultimate Feast",
+   "editorId": "ccBGSSSE001_Misc_Solitude",
+   "line": "fishing",
+   "firstObjective": "Obtain a pair of steamed crab legs",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Ultimate_Feast",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives the note 'Wanted: A Seafood Feast'.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "Heart of Gold",
+   "editorId": "ccBGSSSE001_Misc_WhiterunPartOne",
+   "line": "fishing",
+   "firstObjective": "Obtain a goldfish for Mila Valentia in Whiterun",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Heart_of_Gold",
+   "notes": "PC, WO-138 Part 1: ccBGSSSE001_MiscQuests (ccBGSSSE001-Fish.esm:0009E6) holds this quest in its `miscquests` array; Viriya (its alias) hands you the bounty letter (GivePlayerBountyLetterForQuest), and reading it calls SetBountyLetterWasRead, which starts the array's quest. The start check doesn't follow a quest taken from an array. UESP: Viriya gives a note and bounty from Mila Valentia.",
+   "startsWith": [
+    "Viriya"
+   ]
+  },
+  {
+   "quest": "Black Book: The Winds of Change",
+   "editorId": "DLC2BlackBook04Quest",
+   "line": "black-books",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn the Black Book's hidden knowledge",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Winds_of_Change_(quest)",
+   "notes": "PC, WO-138 Part 1: the Black Book (BOOK Dragonborn.esm:01E99C) carries DLC2BlackBookScript with myQuest = this quest and myQuestStage 10; reading it calls DLC2BookDungeonController's ReadBook, which sets that stage (the call is in the controller, so the check's book reader misses it). UESP agrees: it starts when you read the book; no giver."
+  },
+  {
+   "quest": "Black Book: The Sallow Regent",
+   "editorId": "DLC2BlackBook05Quest",
+   "line": "black-books",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn the Black Book's hidden knowledge",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Sallow_Regent_(quest)",
+   "notes": "PC, WO-138 Part 1: the Black Book (BOOK Dragonborn.esm:01E99D) carries DLC2BlackBookScript with myQuest = this quest and myQuestStage 10; reading it calls DLC2BookDungeonController's ReadBook, which sets that stage (the call is in the controller, so the check's book reader misses it). UESP agrees: it starts when you read the book; no giver."
+  },
+  {
+   "quest": "Black Book: Filament and Filigree",
+   "editorId": "DLC2BlackBook06Quest",
+   "line": "black-books",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn the Black Book's hidden knowledge",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Black_Book:_Filament_and_Filigree_(quest)",
+   "notes": "PC, WO-138 Part 1: the Black Book (BOOK Dragonborn.esm:01E99E) carries DLC2BlackBookScript with myQuest = this quest and myQuestStage 10; reading it calls DLC2BookDungeonController's ReadBook, which sets that stage (the call is in the controller, so the check's book reader misses it). UESP agrees: it starts when you read the book; no giver."
+  },
+  {
+   "quest": "Black Book: The Hidden Twilight",
+   "editorId": "DLC2BlackBook07Quest",
+   "line": "black-books",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn the Black Book's hidden knowledge",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Hidden_Twilight_(quest)",
+   "notes": "PC, WO-138 Part 1: the Black Book (BOOK Dragonborn.esm:01E99F) carries DLC2BlackBookScript with myQuest = this quest and myQuestStage 10; reading it calls DLC2BookDungeonController's ReadBook, which sets that stage (the call is in the controller, so the check's book reader misses it). UESP agrees: it starts when you read the book; no giver."
+  },
+  {
+   "quest": "Silver Lining",
+   "editorId": "TGTQ01",
+   "line": "thieves-guild",
+   "firstObjective": "Speak to Endon the Silversmith",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Silver_Lining",
+   "notes": "PC, WO-138 Part 1: Delvin Mallory's line (INFO Skyrim.esm:09DD59, conditions TGRShell stage 190 done, 192 not done) sets TGRShell (Skyrim.esm:028923) stage 192, whose fragment sets this quest's stage 10. TGRShell reaches 190 after five jobs in the city (TGRadiantCount). UESP agrees: speak to Delvin after five jobs in Markarth.",
+   "startsWith": [
+    "Delvin Mallory"
+   ]
+  },
+  {
+   "quest": "The Dainty Sload",
+   "editorId": "TGTQ02",
+   "line": "thieves-guild",
+   "firstObjective": "Speak to Erikur",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Dainty_Sload",
+   "notes": "PC, WO-138 Part 1: Delvin Mallory's line (INFO Skyrim.esm:09DD5A, conditions TGRShell stage 170 done, 172 not done) sets TGRShell (Skyrim.esm:028923) stage 172, whose fragment sets this quest's stage 10. TGRShell reaches 170 after five jobs in the city (TGRadiantCount). UESP agrees: speak to Delvin after five jobs in Solitude.",
+   "startsWith": [
+    "Delvin Mallory"
+   ]
+  },
+  {
+   "quest": "Imitation Amnesty",
+   "editorId": "TGTQ03",
+   "line": "thieves-guild",
+   "firstObjective": "Speak to Olfrid Battle-Born",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Imitation_Amnesty",
+   "notes": "PC, WO-138 Part 1: Delvin Mallory's line (INFO Skyrim.esm:09DD58, conditions TGRShell stage 160 done, 162 not done) sets TGRShell (Skyrim.esm:028923) stage 162, whose fragment sets this quest's stage 10. TGRShell reaches 160 after five jobs in the city (TGRadiantCount). UESP agrees: speak to Delvin after five jobs in Whiterun.",
+   "startsWith": [
+    "Delvin Mallory"
+   ]
+  },
+  {
+   "quest": "Summerset Shadows",
+   "editorId": "TGTQ04",
+   "line": "thieves-guild",
+   "firstObjective": "Speak to Torsten Cruel-Sea",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Summerset_Shadows",
+   "notes": "PC, WO-138 Part 1: Delvin Mallory's line (INFO Skyrim.esm:09DD57, conditions TGRShell stage 180 done, 182 not done) sets TGRShell (Skyrim.esm:028923) stage 182, whose fragment sets this quest's stage 10. TGRShell reaches 180 after five jobs in the city (TGRadiantCount). UESP agrees: speak to Delvin after five jobs in Windhelm.",
+   "startsWith": [
+    "Delvin Mallory"
+   ]
+  },
+  {
+   "quest": "Under New Management",
+   "editorId": "TGLeadership",
+   "line": "thieves-guild",
+   "firstObjective": "Speak to Brynjolf about becoming the Guild Master",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Under_New_Management",
+   "notes": "PC, WO-138 Part 1: TGRShellScript.TGLeaderCheck (called after each city's special job) sets TGRShell stage 197 once four are done and Darkness Returns (TG09) is complete; stage 197's fragment sets this quest's stage 10, whose objective sends you to Brynjolf. UESP agrees: after the four reputation quests and Darkness Returns, talk to Brynjolf; it starts by itself. Rex, 23 Oct: UESP's infobox gives no quest giver; it starts by itself and Brynjolf is the first step, so this is a no-giver row.",
+   "noGiver": true,
+   "startsWith": []
+  },
+  {
+   "quest": "Purity of Revenge",
+   "editorId": "C05",
+   "line": "companions",
+   "firstObjective": "Retrieve the fragments of Wuuthrad",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Purity_of_Revenge",
+   "notes": "PC, WO-138 Part 1: the records start it only from a helper Bob ruled out (WO-136), so the wiki is the source, as the order says. UESP: after Kodlak dies, Vilkas seeks revenge and follows you to Driftshade Refuge; previous quest Blood's Honor. The first objective is the records' (Skyrim.esm:06E805 QOBJ 10).",
+   "startsWith": [
+    "Vilkas"
+   ]
+  },
+  {
+   "quest": "Glory of the Dead",
+   "editorId": "C06",
+   "line": "companions",
+   "firstObjective": "Attend Kodlak's funeral",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Glory_of_the_Dead",
+   "notes": "PC, WO-138 Part 1: the records start it only from a helper Bob ruled out (WO-136), so the wiki is the source. UESP: it follows Purity of Revenge; Vilkas runs to the Skyforge for Kodlak's funeral. The first objective is the records' (Skyrim.esm:01CEF6 QOBJ 10).",
+   "startsWith": [
+    "Vilkas"
+   ]
+  },
+  {
+   "quest": "March of the Dead",
+   "editorId": "DLC2RR01",
+   "line": "raven-rock",
+   "firstObjective": "Kill the ash spawn attacking Captain Veleth",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:March_of_the_Dead",
+   "notes": "PC, WO-138 Part 1: DLC2Init's stage 100 (you arrive on Solstheim) starts it, a helper Bob ruled out, so the wiki is the source. UESP: you find Captain Veleth fighting ash spawn at Old Attius Farm, south of Raven Rock, and helping him starts it. The first objective is the records' (Dragonborn.esm:018B13 QOBJ 10, at stage 30).",
+   "startsWith": [
+    "Captain Veleth"
+   ]
   }
  ]
 }
