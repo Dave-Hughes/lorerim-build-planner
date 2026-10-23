@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-152  Where people actually are: by day, by night, not where the editor placed them (PC, then Mac, 23 Oct 2026; before the rest of WO-144 Part 2)
-Status: queued
+Status: building (Mac), Part 0
 
 **Why.** Dave (23 Oct, 17:33) looked for Jaree-Ra, who starts Lights Out!. The planner says "Ask Jaree-Ra … in Red Wave, Solitude". He searched the Red Wave three times; Jaree-Ra stands in Solitude by the inn, as in the vanilla game, and Dave found him only by console. The quest's facts (who, the line, the stage) are right; the **where** is the cell the editor placed him in (where he sleeps), not where he spends his day. The same goes for every person-started way: 573 ways name a person and a place, all from the placement cell. Most shopkeepers stand where they're placed; anyone who walks the town, works elsewhere or sleeps aboard a ship is wrong. Bob also sent Dave to the docks from memory before checking; that rule is in `pipeline.md` now.
 
