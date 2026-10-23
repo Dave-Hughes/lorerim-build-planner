@@ -106,7 +106,8 @@ class QuestTruth(unittest.TestCase):
             if row.get("noGiver"):
                 if start.get("who"):
                     wrong.append(f"{row['quest']}: the page names {start['who']}; the key: no single giver")
-            elif norm(who) not in {norm(s) for s in row["startsWith"]}:
+            # G1: UESP's giver agrees as the page's who, or as sentBy, the person who sends you to the page's who (Reluctant Steward).
+            elif norm(who) not in {norm(s) for s in row["startsWith"]} and norm(start.get("sentBy")) not in {norm(s) for s in row["startsWith"]}:
                 wrong.append(f"{row['quest']}: the page names {who or 'no one'}; UESP: {', '.join(row['startsWith'])}")
             if norm(start.get("then")) != norm(row["firstObjective"]):
                 wrong.append(f"{row['quest']}: then is {start.get('then')!r}; UESP: {row['firstObjective']!r}")
@@ -122,7 +123,7 @@ class QuestTruth(unittest.TestCase):
         for edid in LOOP_WAITING:
             row, q = truth[edid], quests.get(edid.lower())
             start = (q or {}).get("start") or {}
-            person_ok = not start.get("who") if row.get("noGiver") else t_norm(person_of(start)) in {t_norm(x) for x in row["startsWith"]}
+            person_ok = not start.get("who") if row.get("noGiver") else {t_norm(person_of(start)), t_norm(start.get("sentBy"))} & {t_norm(x) for x in row["startsWith"]}
             if not q or not person_ok or t_norm(start.get("then")) != t_norm(row["firstObjective"]) or any("records don't name" in w["how"] for w in start.get("ways", [])):
                 wrong.append(f"{row['quest']} ({edid})")
         self.assertEqual(wrong, [])

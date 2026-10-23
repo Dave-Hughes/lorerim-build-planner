@@ -948,6 +948,33 @@ def own_need(s, own, edid):
     return min(found) if found else None
 
 
+_COMPLEMENT = re.compile(r"^(?P<f>[\w ]+?) (?P<op>==|>=|!=) (?P<n>\d+)$")
+
+
+def no_gate(starters):
+    """
+    WO-138 Part 4b, fix 4: one speaker's lines that differ only by a condition and its complement (Legate Rikke's two,
+    fn592 == 0 and fn592 >= 1) cover every case between them, so that condition picks which line plays and gates nothing:
+    it comes off both. Helpers' stage lines are looked at too.
+    """
+    def split(s):
+        return [g.strip() for g in (s.get("conditions") or "").split("; ") if g.strip()]
+
+    out = [{**s, **({"throughStage": [dict(t) for t in s["throughStage"]]} if s.get("throughStage") else {})} for s in starters]
+    talks = [x for s in out for x in [s, *(s.get("throughStage") or [])] if x["by"] == "dialogue" and x.get("speaker")]
+    for i, a in enumerate(talks):
+        for b in talks[i + 1:]:
+            if a["speaker"] != b["speaker"]:
+                continue
+            da, db = set(split(a)) - set(split(b)), set(split(b)) - set(split(a))
+            if len(da) == 1 and len(db) == 1:
+                ma, mb = _COMPLEMENT.match(next(iter(da))), _COMPLEMENT.match(next(iter(db)))
+                if ma and mb and ma["f"] == mb["f"] and {(ma["op"], ma["n"]), (mb["op"], mb["n"])} in ({("==", "0"), (">=", "1")}, {("==", "0"), ("!=", "0")}):
+                    for x, d in ((a, da), (b, db)):
+                        x["conditions"] = "; ".join(g for g in split(x) if g not in d)
+    return out
+
+
 def steps_not_ways(every, own, edid):
     """
     WO-138 R2 and R3 (Bob's rulings, 23 Oct): a talk that needs its own quest at a stage another listed way sets (a node, a
@@ -958,11 +985,14 @@ def steps_not_ways(every, own, edid):
     """
     # Only a way the page lists sets it: never a helper or a handler quest's script (G6; R1: the quest is simply running).
     handler = lambda x: x["by"] == "quest script" and ("helper quest" in (x.get("quest") or "") or 'named "' in (x.get("quest") or ""))  # noqa: E731
-    sets = [(x, set_stage(x)) for x in every if set_stage(x) is not None and not handler(x)]
+    # Nor a trigger nobody can find on purpose (placed only "somewhere in"): Skirmish at Whitewatch keeps its courier (Part 4b).
+    hidden = lambda x: x["by"] == "board" and not x.get("object") and all((p.get("where") or "").startswith("somewhere") for p in x.get("places", [{}]))  # noqa: E731
+    sets = [(x, set_stage(x)) for x in every if set_stage(x) is not None and not handler(x) and not hidden(x)]
     keep = []
     for s in every:
         n = own_need(s, own, edid) if s["by"] == "dialogue" else None
-        if n is not None and (any(x is not s and st == n and not (x["by"] == "dialogue" and x.get("speaker") == s.get("speaker")) for x, st in sets)):
+        # Part 4b: at or above the stage another listed way sets (Neloth's line needs 100; Varona's sets 90).
+        if n is not None and (any(x is not s and 0 < st <= n and not (x["by"] == "dialogue" and x.get("speaker") == s.get("speaker")) for x, st in sets)):
             continue  # R2
         keep.append(s)
     lowest = {}
@@ -1283,7 +1313,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     own = row.get("name")
     edid = edid or row.get("edid")
     # G4 (WO-138): a line's unnamed speaker named from the records, or the line dropped when another way remains.
-    every = steps_not_ways(name_stage_talks(name_speakers(row.get("startedBy", []), edid, own), edid, own), own, edid)
+    every = steps_not_ways(no_gate(name_stage_talks(name_speakers(row.get("startedBy", []), edid, own), edid, own)), own, edid)
     # A talk that needs the quest already under way is a later step, not a way in (rule 6).
     # A line that turns the job down or ends the talk is no way in, in the words or the record form (WO-130 follow-up).
     starters = through([s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))
@@ -1637,6 +1667,23 @@ def hand_who(start, who):
     return {**{k: v for k, v in start.items() if k != "sentBy"}, "who": name, **({"where": who["where"]} if who.get("where") else {}), "ways": ways}
 
 
+def thane(start, jarl):
+    """
+    WO-138 Part 4b, fix 2 (overrides.json questStarts' _jarl): a Thane quest is the hold's sitting jarl's, in their keep,
+    once you've helped people of the hold, in the record's own words; whoElse names the jarl if the war changes hands. The
+    hidden start as you enter the hold is the gate, so it's no way (as Deathbrand's level-up).
+    """
+    if not jarl:
+        return start
+    said = next((m.group(1) for w in start.get("ways", []) for m in [re.search(r'"([^"]+)"', w["how"])] if m), None)
+    need = "Once you've helped people of the hold"
+    way = {"how": f"Ask {jarl['name']}" + (f' "{said}"' if said else "") + f" in {jarl['keep']}", "needs": [need], "who": jarl["name"], "where": jarl["keep"]}
+    out = {**{k: v for k, v in start.items() if k not in ("sentBy",)}, "who": jarl["name"], "where": jarl["keep"], "ways": [way], "needs": [way["how"], need]}
+    if jarl.get("other"):
+        out["whoElse"] = jarl["other"]
+    return out
+
+
 def line_edids(line, quests_raw):
     """A curated line's quests by edid."""
     by_id = {q["id"]: q["edid"] for q in quests_raw}
@@ -1753,6 +1800,9 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                 start["ways"] = [{**w, "checked": "players", "source": ov["_source"]} if w["how"] in put else w for w in start.get("ways", [])]
             start = dispatched(start, givers.get(q["id"]), checked_rows.get(q["edid"]))
             start = hand_who(start, ov.get("_who"))
+            if ov.get("_sentBy"):  # G1: UESP's giver who sends you; or both sides' senders for a shared quest (Part 4b, fix 3)
+                start = {**start, "sentBy": ov["_sentBy"]}
+            start = thane(start, ov.get("_jarl"))
             start = from_key(start, keyed.get(q["edid"].lower()))
             # A job from a board (WO-136 ruling 3): one the check hasn't traced is checked as its class, in the class's words.
             kind = classes.get(line["id"])

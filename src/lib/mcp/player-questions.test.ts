@@ -199,6 +199,18 @@ const QUESTIONS: Question[] = [
     must: [/near Falkreath/, /falls from the sky|fell from the sky|falls out of the sky/i, /journal/i, /"state":"open"/],
     never: [/Para Intro Gazebo/, /Gazebo Discover/],
   },
+  {
+    n: 18,
+    asks: "How do I become Thane of Whiterun?",
+    ask: () => {
+      const a = getQuest({ name: "Thane of Whiterun" });
+      // Every way in names its place: a way with none is said as such, so it shows up in "never".
+      const placeless = (a.quest.start.ways ?? []).filter((w) => !w.where && !/ in [A-Z]/.test(w.way)).map((w) => `A WAY WITH NO PLACE: ${w.way}`);
+      return [a, ...placeless];
+    },
+    must: ["Balgruuf the Greater", "Dragonsreach", "Vignar Gray-Mane if the Stormcloaks hold Whiterun", /once you've helped people of the hold/i],
+    never: [/"way":"It starts by itself when you enter Whiterun"/, /A WAY WITH NO PLACE/],
+  },
 ];
 
 interface Result {

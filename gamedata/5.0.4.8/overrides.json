@@ -280,42 +280,49 @@
     "DLC2SV02": {
       "_note": "WO-138 G1, the PC's batch 6 reading: a scene sets it going (DLC2SV02Misc, a helper with Deor, Fanari and Baldor), with no line of its own; UESP's Deor Woodcutter is who you speak to.",
       "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Deor Woodcutter", "way": "Talk to Deor Woodcutter in Skaal Village"}
+      "_who": {
+        "name": "Deor Woodcutter",
+        "way": "Talk to Deor Woodcutter in Skaal Village"
+      }
     },
     "DLC2TTR4a": {
       "_note": "WO-138 G1: Neloth hands out the Tel Mithryn experiments (UESP); the records start it from a node as you enter Tel Mithryn, with Neloth as its named giver.",
       "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Neloth"}
+      "_who": {
+        "name": "Neloth"
+      }
     },
     "MS12b": {
       "_note": "WO-138 G1: UESP: Quintus Navale asks you to repair the Phial; the records start it by itself as you travel, after The White Phial and The Throat of the World, and its first step is to speak to him.",
       "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Quintus Navale", "way": "Talk to Quintus Navale in the White Phial, Windhelm"}
+      "_who": {
+        "name": "Quintus Navale",
+        "way": "Talk to Quintus Navale in the White Phial, Windhelm"
+      }
     },
     "ccBGSSSE001_Radiant_1": {
       "_note": "WO-138 G1: UESP's dispatcher; the line's speaker is a Creation Club NPC the start check couldn't resolve (GetIsID with no name).",
       "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Swims-In-Deep-Water", "way": "Ask Swims-In-Deep-Water for fishing work"}
+      "_who": {
+        "name": "Swims-In-Deep-Water",
+        "way": "Ask Swims-In-Deep-Water for fishing work"
+      }
     },
     "ccBGSSSE001_Radiant_2": {
       "_note": "WO-138 G1: as Stocking Up.",
       "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Swims-In-Deep-Water", "way": "Ask Swims-In-Deep-Water for fishing work"}
+      "_who": {
+        "name": "Swims-In-Deep-Water",
+        "way": "Ask Swims-In-Deep-Water for fishing work"
+      }
     },
     "ccBGSSSE001_Radiant_3": {
       "_note": "WO-138 G4: as Stocking Up.",
       "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Swims-In-Deep-Water", "way": "Ask Swims-In-Deep-Water for fishing work"}
-    },
-    "Favor252": {
-      "_note": "WO-138 G4 and Rex's note: the Thane quest's giver is that hold's jarl; Haafingar's is Elisif the Fair whichever side holds Skyrim (UESP).",
-      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Elisif the Fair"}
-    },
-    "Favor253": {
-      "_note": "WO-138 G4: the PC's reading of UESP's Thane of Whiterun page gives Vignar Gray-Mane. For Bob: Whiterun's jarl is Balgruuf unless the Stormcloaks take the city, so check whether UESP gives both.",
-      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
-      "_who": {"name": "Vignar Gray-Mane"}
+      "_who": {
+        "name": "Swims-In-Deep-Water",
+        "way": "Ask Swims-In-Deep-Water for fishing work"
+      }
     },
     "JRLucienPersonal1": {
       "_note": "WO-138 R4 (Bob, 23 Oct): the letter's script needs The Oblivion Engine at stage 5 before reading it sets 10 (the PC's sweep: a book's prerequisite stage).",
@@ -341,7 +348,16 @@
       "_note": "WO-138, Rex's note: The Cause's only way in the records is a placed trigger in the Deadlands, by the door to the Mythic Dawn Temple, which a player can't reach before it starts. UESP: at level 46 a courier brings you Stranger's Plea.",
       "_source": "UESP's The Cause page, as Rex read it in the WO-138 loop",
       "It starts from something placed somewhere in Deadlands, by the door to Mythic Dawn Temple": "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)",
-      "_wayNeeds": { "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)": ["Level 46"] }
+      "_wayNeeds": {
+        "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)": [
+          "Level 46"
+        ]
+      }
+    },
+    "DLC2TT1": {
+      "_note": "WO-138 Part 4b, fix 1: by R2, Neloth's line (it needs stage 100, past the 90 Varona's line sets) is a step, so Varona is the way in. UESP's giver is Neloth, who sends you to find her: G1's sentBy.",
+      "_source": "UESP's Reluctant Steward page, as the PC's key row reads it",
+      "_sentBy": "Neloth"
     },
     "TG02B": {
       "_note": "WO-138 G2, Mac's decision (23 Oct): Brynjolf's line that sets Loud and Clear's 35 is said as that quest moves on, not an offer; UESP and the PC read Meet the Family as starting after Loud and Clear. The records can't tell this from Legate Rikke's offer (both are lines in another quest that don't end it), so it's by hand.",
@@ -359,7 +375,11 @@
       "_note": "WO-137, the PC's check (loop-log.md, 22 Oct): the level-up node is Deathbrand's gate, not a way a player takes. Once you're level 20 (DLC2dunHaknirTreasureQSTMinLevel; UESP's 36 is vanilla) the quest sets 20 silently and pirates land at Haknir's Shoal. The ways in are reading the book (its script needs that stage 20) and finding the pirates and their leader's map. Geldis's talk is a catch-up (the WO-137 rule drops it).",
       "_source": "the PC's reading of the records and UESP's Deathbrand page, 22 Oct 2026",
       "It starts by itself when you level up": "Go to Haknir's Shoal, where pirates have landed, and take the map from their leader",
-      "_wayNeeds": { "Read Deathbrand": ["Level 20"] }
+      "_wayNeeds": {
+        "Read Deathbrand": [
+          "Level 20"
+        ]
+      }
     },
     "ParaIntro": {
       "_note": "WO-137 item 6: Paragliding in Skyrim starts from three placed triggers (Paragliding.esp:00802D, :008021, :009060) in the open world with no name of their own, so the board reader says only somewhere in Skyrim. Dave knows the spot: near Falkreath a man falls out of the sky, and his journal, Fredrick's Journal, moves it on. When the PC names the nearest place to each trigger, that replaces this and Bob checks they agree.",
@@ -372,6 +392,87 @@
       "_checked": "players",
       "_source": "Dave, found in game, 22 Oct 2026",
       "Read The Palonimo Mare": "Read the note pinned to the board outside Joslin's house, behind the Bannered Mare in Whiterun"
+    },
+    "Favor250": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Igmund",
+        "keep": "Understone Keep",
+        "other": "Thongvor Silver-Blood if the Stormcloaks hold Markarth"
+      }
+    },
+    "Favor252": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Elisif the Fair",
+        "keep": "Blue Palace"
+      }
+    },
+    "Favor253": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Balgruuf the Greater",
+        "keep": "Dragonsreach",
+        "other": "Vignar Gray-Mane if the Stormcloaks hold Whiterun"
+      }
+    },
+    "Favor254": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Ulfric Stormcloak",
+        "keep": "Palace of the Kings",
+        "other": "Brunwulf Free-Winter if the Legion holds Windhelm"
+      }
+    },
+    "Favor255": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Idgrod Ravencrone",
+        "keep": "Highmoon Hall",
+        "other": "Sorli the Builder if the Stormcloaks hold Morthal"
+      }
+    },
+    "Favor256": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Skald the Elder",
+        "keep": "The White Hall",
+        "other": "Brina Merilis if the Legion holds Dawnstar"
+      }
+    },
+    "Favor257": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Korir",
+        "keep": "The Jarl's Longhouse",
+        "other": "Kraldar if the Legion holds Winterhold"
+      }
+    },
+    "Favor258": {
+      "_note": "WO-138 Part 4b, fix 2 (Bob, 23 Oct): the Thane quest is the hold's sitting jarl's, in their keep, once you've helped people of the hold; the hidden start as you enter the hold is the gate, not a way (as Deathbrand's level-up).",
+      "_source": "UESP's Thane pages and the jarls of each hold before the war changes it",
+      "_jarl": {
+        "name": "Siddgeir",
+        "keep": "Jarl's Longhouse",
+        "other": "Dengeir of Stuhn if the Stormcloaks hold Falkreath"
+      }
+    },
+    "DLC1VQ04": {
+      "_note": "WO-138 Part 4b, fix 3 (Bob, 23 Oct): Prophet ends on either side, so this quest is sent by either side's leader. The records trace only Lord Harkon's line; on the Dawnguard side it's Isran (UESP). The planner's own side, the Dawnguard, comes first.",
+      "_source": "UESP's Chasing Echoes and Seeking Disclosure pages",
+      "_sentBy": "Isran, or Lord Harkon if you sided with the vampires"
+    },
+    "DLC1VQElder": {
+      "_note": "WO-138 Part 4b, fix 3 (Bob, 23 Oct): Prophet ends on either side, so this quest is sent by either side's leader. The records trace only Lord Harkon's line; on the Dawnguard side it's Isran (UESP). The planner's own side, the Dawnguard, comes first.",
+      "_source": "UESP's Chasing Echoes and Seeking Disclosure pages",
+      "_sentBy": "Isran, or Lord Harkon if you sided with the vampires"
     }
   },
   "starts": {
@@ -477,9 +578,30 @@
     "0WRHorseQ": {
       "_source": "WO-129 Part 6, Dave, 21 Oct 2026; stage text in quests_raw.json",
       "set": [
-        {"kind": "mount", "stage": 40, "text": "I went to Joslin. In exchange for letting her ride the horse, she made me an imperial saddle.", "only": true, "from": 30, "fromText": "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself."},
-        {"kind": "mount", "stage": 41, "text": "I went to Joslin. In exchange for letting her ride the horse, she made me a nord saddle for it.", "only": true, "from": 30, "fromText": "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself."},
-        {"kind": "gold", "stage": 45, "text": "I went to Dragonsreach, and got paid in gold for the horse.", "only": true, "from": 30, "fromText": "If I go to Dragonsreach I will most likely be payed a handsome sum for the horse, but horse will go to the Jarl."}
+        {
+          "kind": "mount",
+          "stage": 40,
+          "text": "I went to Joslin. In exchange for letting her ride the horse, she made me an imperial saddle.",
+          "only": true,
+          "from": 30,
+          "fromText": "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself."
+        },
+        {
+          "kind": "mount",
+          "stage": 41,
+          "text": "I went to Joslin. In exchange for letting her ride the horse, she made me a nord saddle for it.",
+          "only": true,
+          "from": 30,
+          "fromText": "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself."
+        },
+        {
+          "kind": "gold",
+          "stage": 45,
+          "text": "I went to Dragonsreach, and got paid in gold for the horse.",
+          "only": true,
+          "from": 30,
+          "fromText": "If I go to Dragonsreach I will most likely be payed a handsome sum for the horse, but horse will go to the Jarl."
+        }
       ]
     },
     "DLC2TT1b": {
@@ -504,7 +626,15 @@
     "civil-war": {
       "name": "The war's radiant jobs",
       "says": "The war's radiant jobs: fort sieges, city battles, rescues; each is handed out by your side's commander.",
-      "edids": ["CWFortSiegeCapital", "CWFortSiegeFort", "CWMission04", "CWObj", "CWResolution01", "CWResolution02", "CWSiegeObj"]
+      "edids": [
+        "CWFortSiegeCapital",
+        "CWFortSiegeFort",
+        "CWMission04",
+        "CWObj",
+        "CWResolution01",
+        "CWResolution02",
+        "CWSiegeObj"
+      ]
     }
   }
 }

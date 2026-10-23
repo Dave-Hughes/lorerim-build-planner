@@ -102,4 +102,4 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **18. "How do I become Thane of Whiterun?"**
 - Calls: `get_quest({ name: "Thane of Whiterun" })`.
 - Must: the jarl by name (Balgruuf the Greater) in Dragonsreach, with "Vignar Gray-Mane if the Stormcloaks hold Whiterun"; the need "once you've helped people of the hold"; never "It starts by itself when you enter Whiterun" as a way in; never a way with no place.
-- Fails today: **WO-138 Part 4b**.
+- Passes since WO-138 Part 4b (fix 2: the sitting jarl in their keep, the other side's jarl named, the hidden start a gate).

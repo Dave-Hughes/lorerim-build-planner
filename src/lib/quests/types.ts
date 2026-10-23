@@ -82,6 +82,10 @@ export interface QuestStart {
   thenWho?: string;
   who?: string;
   where?: string;
+  /** Who gives it instead if the war changes hands (WO-138 Part 4b: "Vignar Gray-Mane if the Stormcloaks hold Whiterun"). */
+  whoElse?: string;
+  /** Who sends you to it (WO-138 G1, G2): the previous quest's last speaker, or UESP's giver who sends you to `who`. */
+  sentBy?: string;
   /** "uesp": not settled by the start check, but a row in Bob's answer key confirms it (WO-136 ruling 2); `source` names the wiki. */
   checked: "files" | "uesp" | "not yet";
   /** Where a "uesp" start was confirmed: "UESP", or "Nexus" for a mod's page, with the page. */

@@ -111,7 +111,8 @@ class G4(Pages):
 
     def test_roles_from_the_alias(self):
         self.assertIn("Ask a jarl's steward or an innkeeper \"I'm looking for work. Got any leads?\"", self.ways("BQ01"))
-        self.assertTrue(any(w.startswith("Ask the jarl of the Reach") for w in self.ways("Favor250")))
+        # Part 4b names the sitting jarl in the Thane quests; the alias role still names Making Friends' jarls.
+        self.assertTrue(any(w.startswith("Ask the jarl of") for w in self.ways("FavorJarlsMakeFriends")))
         # A Civil War mission: the side's commander, either side (Legate Rikke or Galmar Stone-Fist).
         self.assertEqual([w.get("who") for w in self.start("CWMission03")["ways"][:2]], ["Legate Rikke", "Galmar Stone-Fist"])
         self.assertEqual(self.start("MGR21")["who"], "Urag gro-Shub")
@@ -133,6 +134,48 @@ class CivilWarClass(Pages):
         self.assertEqual(cw["radiant"], {"name": "The war's radiant jobs", "says": "The war's radiant jobs: fort sieges, city battles, rescues; each is handed out by your side's commander.", "checked": "files", "jobs": 7})
         names = {q["name"] for q in cw["quests"]}
         self.assertFalse(names & {"The Battle for the fort", "The name location", "Attack the capital", "Defend the capital", "Battle for the city", "Rescue from the attack point"})
+
+
+class Part4b(Pages):
+    """WO-138 Part 4b (Bob, 23 Oct 10:00): four faults on the live door after Part 4."""
+
+    def test_r2_at_or_above_the_stage_another_way_sets(self):
+        # Reluctant Steward: Neloth's line needs 100, past Varona's 90, so Varona only; Neloth sends you (G1).
+        self.assertEqual(self.ways("DLC2TT1"), ["Talk to Varona Nelas in Tel Mithryn Steward's House, Tel Mithryn Steward"])
+        self.assertEqual(self.start("DLC2TT1")["sentBy"], "Neloth")
+        # Unearthed: Geldis sets 10, so Ralis's lines needing 10, 20 and 40 are steps; the node and Geldis stay. Ralis's
+        # "What's the matter with you?" needs only that Unearthed hasn't started, so the records keep it (logged).
+        ways = self.ways("DLC2dunKolbjornQST")
+        self.assertIn("Talk to Geldis Sadri in The Retching Netch", ways)
+        self.assertIn("It starts by itself as you travel", ways)
+        self.assertFalse(any("Why not hire some of the miners" in w for w in ways))
+        # Durnehviir: one way, his talk in the Boneyard.
+        self.assertEqual(len(self.ways("DLC1VQDragon")), 1)
+        self.assertTrue(self.ways("DLC1VQDragon")[0].endswith("in Boneyard"))
+        # A trigger placed only "somewhere" sets no stage a player can aim for: Skirmish at Whitewatch keeps its courier.
+        self.assertEqual(self.ways("0WRThaneQ01"), ["Talk to a courier in Whiterun Messenger Tower, Guard Tower"])
+
+    def test_thane_quests_name_the_sitting_jarl_in_their_keep(self):
+        for edid, jarl, keep in (("Favor253", "Balgruuf the Greater", "Dragonsreach"), ("Favor252", "Elisif the Fair", "Blue Palace"), ("Favor250", "Igmund", "Understone Keep"), ("Favor254", "Ulfric Stormcloak", "Palace of the Kings")):
+            st = self.start(edid)
+            self.assertEqual((st["who"], st["where"]), (jarl, keep), edid)
+            self.assertEqual(len(st["ways"]), 1)
+            self.assertEqual(st["ways"][0]["needs"], ["Once you've helped people of the hold"])
+            self.assertFalse(any(w.startswith("It starts by itself") for w in self.ways(edid)))
+        self.assertEqual(self.start("Favor253")["whoElse"], "Vignar Gray-Mane if the Stormcloaks hold Whiterun")
+        self.assertNotIn("whoElse", self.start("Favor252"))
+
+    def test_a_quest_both_sides_reach_names_both_senders(self):
+        for edid in ("DLC1VQ04", "DLC1VQElder"):
+            self.assertEqual(self.start(edid)["sentBy"], "Isran, or Lord Harkon if you sided with the vampires")
+
+    def test_a_condition_and_its_complement_gate_nothing(self):
+        self.assertEqual(self.start("CW01A")["ways"], [{"how": "Talk to Legate Rikke in Castle Dour", "who": "Legate Rikke", "where": "Castle Dour"}])
+        a = {"by": "dialogue", "speaker": "Legate Rikke", "conditions": "fn592 == 0; the speaker is Legate Rikke"}
+        b = {"by": "dialogue", "speaker": "Legate Rikke", "conditions": "fn592 >= 1; the speaker is Legate Rikke"}
+        self.assertEqual([x["conditions"] for x in qp.no_gate([a, b])], ["the speaker is Legate Rikke", "the speaker is Legate Rikke"])
+        c = {"by": "dialogue", "speaker": "Legate Rikke", "conditions": "fn592 == 0"}
+        self.assertEqual(qp.no_gate([c])[0]["conditions"], "fn592 == 0")
 
 
 class RexNotes(Pages):

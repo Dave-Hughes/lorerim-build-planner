@@ -710,7 +710,9 @@ class NightRunTest(unittest.TestCase):
         for edid in ("DLC2MH01", "DLC2TT1", "DLC2dunHaknirTreasureQST"):
             self.assertNotIn("Init quest", json.dumps(start_texts(self.by[edid]["start"])), edid)
         self.assertEqual(self.by["DLC2MH01"]["start"]["who"], "Bujold the Intrepid")
-        self.assertEqual([w.get("who") for w in self.by["DLC2TT1"]["start"]["ways"]], ["Neloth", "Varona Nelas"])
+        # WO-138 Part 4b: Neloth's line needs 100, past the 90 Varona's sets, so it's a step (R2); Neloth is sentBy (G1).
+        self.assertEqual([w.get("who") for w in self.by["DLC2TT1"]["start"]["ways"]], ["Varona Nelas"])
+        self.assertEqual(self.by["DLC2TT1"]["start"]["sentBy"], "Neloth")
 
     def test_no_page_doubles_a_place(self):
         self.assertEqual(qp.clean_place("Temple, Temple Location"), "Temple")

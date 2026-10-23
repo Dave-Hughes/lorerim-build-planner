@@ -273,6 +273,9 @@ function startOf(
   // never through the door. Every fact in it is in the ways and needs, and an assistant can only repeat it to a player.
   return {
     ...(st.who ? { who: st.who, ...(st.where ? { where: st.where } : {}) } : {}),
+    // If the war changes hands (WO-138 Part 4b), and who sends you to it (G1, G2).
+    ...(st.whoElse ? { orIfTheWarChangesHands: st.whoElse } : {}),
+    ...(st.sentBy ? { sentBy: st.sentBy } : {}),
     ways,
     ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}),
   };

@@ -4981,6 +4981,17 @@ Read on the live door after e26f979. The checks all pass; these are faults the t
 3. **A chain quest shared by two sides names one side's sender.** Chasing Echoes has `sentBy: Lord Harkon`; on the Dawnguard side it's Isran (Dexion reads the scroll). Where a quest runs for both sides, `sentBy` names both ("Isran, or Lord Harkon if you sided with the vampires"), the planner's own side first. Check the other shared Dawnguard quests (Prophet, Seeking Disclosure, Unseen Visions, Touching the Sky, Kindred Judgment).
 4. **Joining the Legion's "a condition the planner can't put in words yet."** Name it from the record (most likely "if you haven't joined the Stormcloaks", a CW00 stage or faction test). The same for Joining the Stormcloaks.
 
+- Mac, 23 Oct, Part 4b. All four, each tested in `test_wo138.py` (`Part4b`); player question 18 passes.
+  1. **R2 at or above.** A line needing its own quest at or above a stage another listed way sets is a step.
+     - Reluctant Steward shows Varona only. Neloth's line (needs 100) is a step, and Neloth is `sentBy` (G1: UESP's giver, who sends you to Varona). The truth test now takes a row's giver as `who` or as `sentBy`, as G1 says.
+     - Unearthed loses Ralis's lines that need 10, 20 and 40 (Geldis sets 10) and keeps the node and Geldis.
+     - **My call, against the order's test:** Ralis's "What's the matter with you?" stays a way. Its only need is that Unearthed hasn't started, so the records let him start it.
+     - Durnehviir has one way, his talk in the Boneyard; the records have no Boneyard node of its own.
+     - **My call:** a trigger placed only "somewhere" isn't a way a player can aim for, so it sets no stage for R2. Without that, Skirmish at Whitewatch lost its courier to a trigger nobody can find.
+  2. **The Thane quests.** Each of the eight is the hold's sitting jarl, in their keep, with the record's own line and the need "once you've helped people of the hold". `whoElse` names the other side's jarl ("Vignar Gray-Mane if the Stormcloaks hold Whiterun"), and get_quest gives it as `orIfTheWarChangesHands`. No "starts by itself" way, and Making Friends' "After …" ways are gone, being that same need. The jarls and keeps are in `overrides.json` (`_jarl`), sourced to UESP. The Thane rows in the key now name the sitting jarl (Whiterun's: Balgruuf, or Vignar), replacing "no single giver" and my Part 4 Vignar.
+  3. **Both sides' senders.** Chasing Echoes and Seeking Disclosure: "Isran, or Lord Harkon if you sided with the vampires", Dawnguard first. The records trace only Harkon's line, so it's by hand (`_sentBy`). Prophet, Touching the Sky and Kindred Judgment have no sender, and Unseen Visions' Dexion is the same for both sides.
+  4. **Joining the Legion.** The unnamed `fn592` is on two of Rikke's lines, one needing it at 0 and the other at 1 or more. Between them they cover every value, so it only picks which line she says, and it comes off as a need. The rule (`no_gate`) applies to any speaker's lines that differ only by a condition and its complement. Joining the Stormcloaks' only condition was already in words (Level 20).
+
 ### Done when
 - [x] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
 - [x] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.

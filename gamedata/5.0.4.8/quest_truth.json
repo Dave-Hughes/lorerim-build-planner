@@ -4691,12 +4691,13 @@
    "quest": "Thane of the Reach",
    "editorId": "Favor250",
    "line": "thane",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Igmund"
+   ],
    "firstObjective": "Purchase a house in Markarth",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_the_Reach",
-   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep.",
    "waitingOn": "G4"
   },
   {
@@ -4710,79 +4711,85 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_Haafingar",
    "waitingOn": "G4",
-   "notes": "PC, WO-138 Part 2 batch 7: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Elisif the Fair). Mac names the speaker or drops the way."
+   "notes": "PC, WO-138 Part 2 batch 7: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Elisif the Fair). Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep."
   },
   {
    "quest": "Thane of Whiterun",
    "editorId": "Favor253",
    "line": "thane",
    "startsWith": [
+    "Balgruuf the Greater",
     "Vignar Gray-Mane"
    ],
    "firstObjective": "Purchase a house in Whiterun",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_Whiterun",
    "waitingOn": "G4",
-   "notes": "PC, WO-138 Part 2 batch 7: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Vignar Gray-Mane). Mac names the speaker or drops the way."
+   "notes": "PC, WO-138 Part 2 batch 7: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Vignar Gray-Mane). Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep, or Vignar Gray-Mane if the Stormcloaks hold Whiterun."
   },
   {
    "quest": "Thane of Eastmarch",
    "editorId": "Favor254",
    "line": "thane",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Ulfric Stormcloak"
+   ],
    "firstObjective": "Purchase a house in Windhelm",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_Eastmarch",
-   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep.",
    "waitingOn": "G4"
   },
   {
    "quest": "Thane of Hjaalmarch",
    "editorId": "Favor255",
    "line": "thane",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Idgrod Ravencrone"
+   ],
    "firstObjective": "Return to the giver",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_Hjaalmarch",
-   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep.",
    "waitingOn": "G4"
   },
   {
    "quest": "Thane of the Pale",
    "editorId": "Favor256",
    "line": "thane",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Skald the Elder"
+   ],
    "firstObjective": "Return to the giver",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_the_Pale",
-   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep.",
    "waitingOn": "G4"
   },
   {
    "quest": "Thane of Winterhold",
    "editorId": "Favor257",
    "line": "thane",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Korir"
+   ],
    "firstObjective": "Return to the giver",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_Winterhold",
-   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep.",
    "waitingOn": "G4"
   },
   {
    "quest": "Thane of Falkreath",
    "editorId": "Favor258",
    "line": "thane",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Siddgeir"
+   ],
    "firstObjective": "Return to the giver",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thane_of_Falkreath",
-   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 7: no giver on either; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way. Mac, WO-138 Part 4b fix 2 (Bob, 23 Oct): the giver is the hold's sitting jarl, in their keep.",
    "waitingOn": "G4"
   },
   {
