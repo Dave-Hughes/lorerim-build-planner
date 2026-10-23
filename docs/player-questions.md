@@ -190,3 +190,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_rules()` (or the doings index).
 - Must: not until Tending the Flames is done; 36 books, 50 / 100 / 200 XP by tier, Speech 50 and 75 for tiers 2 and 3.
 - Passes since WO-148 item 8 (`get_rules`' `tomeTrials`).
+
+**37. "Where do I find Jaree-Ra?"**
+- Calls: `get_quest({ name: "Lights Out!" })`, `get_person({ name: "Jaree-Ra" })`.
+- Must: by day on the streets of Solitude near the Winking Skeever (Dave, in game, 23 Oct); never "in Red Wave" as where to find him.
+- Fails today: **WO-152**.

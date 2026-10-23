@@ -5022,6 +5022,28 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-152  Where people actually are: by day, by night, not where the editor placed them (PC, then Mac, 23 Oct 2026; before the rest of WO-144 Part 2)
+Status: queued
+
+**Why.** Dave (23 Oct, 17:33) looked for Jaree-Ra, who starts Lights Out!. The planner says "Ask Jaree-Ra … in Red Wave, Solitude". He searched the Red Wave three times; Jaree-Ra stands in Solitude by the inn, as in the vanilla game, and Dave found him only by console. The quest's facts (who, the line, the stage) are right; the **where** is the cell the editor placed him in (where he sleeps), not where he spends his day. The same goes for every person-started way: 573 ways name a person and a place, all from the placement cell. Most shopkeepers stand where they're placed; anyone who walks the town, works elsewhere or sleeps aboard a ship is wrong. Bob also sent Dave to the docks from memory before checking; that rule is in `pipeline.md` now.
+
+### Part 1. Where, from the AI packages (PC)
+- For every person in `people.json` (and every quest giver), read their AI packages in order (`PACK` with its schedule and location: sandbox, travel, eat, sleep, work, the location or ref it names), resolved to places: "by day: the streets of Solitude by the Winking Skeever; sleeps: aboard the Red Wave at the Solitude docks".
+- Write `where` (by day, the place a player meets them), `sleeps`, and `hours` to `people.json`; keep `placed` (the editor cell) for reference only.
+- A mod's override wins (RedBag's Solitude edits Jaree-Ra's record; read its packages).
+- Spot checks in the log against UESP and Dave's game: Jaree-Ra (by the Winking Skeever, Solitude), Brynjolf (Riften's market by day), Maven Black-Briar, Nazeem (Whiterun market and the Cloud District), Lydia (Dragonsreach until bought), Viarmo, and three who never move (Belethor, Arcadia, Keerava).
+
+### Part 2. The quest pages say it (Mac)
+- A way that names a person gives `where` from Part 1 ("Talk to Jaree-Ra, by day on the streets of Solitude near the Winking Skeever"), and `get_quest` sends the same; the placement cell never reaches a player.
+- `get_person` (WO-144 Part 2's tool) returns where, sleeps and hours.
+
+### Done when
+- [ ] Part 1: `where`, `sleeps`, `hours` for every person, with the spot checks in the log. (PC)
+- [ ] Part 2: every person-started way and `get_quest` use them. Player question 37: "Where do I find Jaree-Ra?" says the streets of Solitude by the Winking Skeever, not the Red Wave. (Mac)
+- [ ] Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-151  What suggest_places says, read as a player (Mac, 23 Oct 2026)
 Status: building (Mac)
 

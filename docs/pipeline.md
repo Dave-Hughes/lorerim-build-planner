@@ -30,6 +30,7 @@ Every order has, under its heading:
 **Generated files are a contract.** A Jeff who changes the shape of a generated file (a field renamed, removed or re-typed) runs `npm test` (which includes the contract tests on the real data) before pushing, and says the change in the commit message. The PC breaking Mac's door through a renamed field happened once (WO-150); the contract test is there so it doesn't again.
 
 ## Bob's loop
+- **Bob never tells Dave where something is in the game from memory.** If the planner doesn't know, Bob says so and gives the way to find out (the console's `sqv`, `player.moveto`), never a guess dressed as a direction. (23 Oct: Bob sent Dave to the Solitude docks for Jaree-Ra from memory; he's by the inn.)
 - For data work, Bob reads values, not counts: he pulls a few rows and asks whether a player would believe them.
 - A watcher on `staging` (re-armed every 30 minutes while the chat with Dave is open) wakes Bob on every push by a Jeff.
 - Bob pulls, reads the order's boxes against the push and against the live door or the preview (never only the tests), and writes one of: `Status: done`; or a feedback part with boxes and `Status: queued`.
