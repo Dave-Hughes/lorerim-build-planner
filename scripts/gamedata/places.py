@@ -47,6 +47,19 @@ MARKER = {1: "City", 2: "Town", 3: "Settlement", 4: "Cave", 5: "Camp", 6: "Fort"
           41: "Castle", 42: "Castle", 43: "Castle", 44: "MiraakTemple", 45: "Town", 46: "StandingStone", 47: "TelvanniTower",
           48: "Grove", 49: "CastleKarstaag"}
 NOT_PLACES = {"City", "Town", "Settlement", "Farm", "WoodMill", "WheatMill", "Smelter", "Stable", "Docks", "Castle", "OrcStronghold"}
+# The nine hold capitals (WO-144 Part 1): never found by a marker's TNAM type, which this load order's city overhauls
+# reassign to other icons (Castle, MiraakTemple, Grove, StandingStone, or none) on every one of the nine. Found instead by
+# the one LCTN in the whole load order with this exact name and the CWCapital keyword (Skyrim's Civil War data, which
+# names a hold's capital for the siege system and isn't touched by the icon mods). Four sit in Tamriel with their own
+# named exterior marker (Falkreath, Dawnstar, Morthal, Winterhold); the other five (Whiterun, Windhelm, Riften, Solitude,
+# Markarth) are their own worldspace with no exterior marker and no door this reader can find into it from Tamriel
+# (checked 23 Oct: zero REFR with XTEL lands in any of the five; the Tamriel cells their LCTN owns span several
+# kilometers, too broad to stand in for a gate) -- their distance is "not checked", logged under WO-144.
+CAPITALS = {"Whiterun", "Windhelm", "Riften", "Solitude", "Markarth", "Morthal", "Winterhold", "Dawnstar", "Falkreath"}
+# Named settlements a design treats like a town (WO-141 Part 1, folded here): never a marker trusted by its TNAM type
+# alone (that let "Wintersand Manor", "Flight Platform" and other mislabelled markers stand in as a "town").
+SETTLEMENTS = {"Riverwood", "Ivarstead", "Rorikstead", "Shor's Stone", "Darkwater Crossing", "Kynesgrove", "Karthwasten",
+               "Dragon Bridge", "Stonehills", "Helgen", "Skaal Village", "Raven Rock", "Thirsk"}
 # The LocType keywords that make a place, and those that rule one out (where people live, trade or rule).
 PLACE_KW = {"LocTypeDungeon", "LocTypeCave", "LocTypeMine", "LocTypeMilitaryFort", "LocTypeAnimalDen", "LocTypeBanditCamp",
             "LocTypeDraugrCrypt", "LocTypeDwarvenAutomatons", "LocTypeFalmerHive", "LocTypeForswornCamp", "LocTypeGiantCamp",
@@ -269,8 +282,10 @@ def build(version):
     def hold_of(k):
         return next((locs[x]["name"] for x in chain(k)[1:] if "LocTypeHold" in kname(locs[x]["keywords"]) and locs[x]["name"]), None)
 
-    # Towns are the City and Town map markers themselves (Riverwood's location carries no marker; a farm is a Settlement).
-    towns = [(m["name"], m) for m in markers.values() if not m["deleted"] and m.get("pos") and m["type"] in ("City", "Town") and m["name"]]
+    # Towns are the named markers in CAPITALS and SETTLEMENTS themselves, never any marker trusted by its TNAM type (WO-144
+    # Part 1): a marker's "City"/"Town" icon is unreliable in this load order (see CAPITALS), and some non-towns carry it.
+    towns = [(m["name"], m) for m in markers.values() if not m["deleted"] and m.get("pos") and m["name"] in (CAPITALS | SETTLEMENTS)]
+    cities = [(nm, m) for nm, m in towns if nm in CAPITALS]
     by_marker_name = collections.defaultdict(list)
     for m in markers.values():
         if not m["deleted"] and m["name"]:
@@ -292,22 +307,25 @@ def build(version):
         if not (names & PLACE_KW or (mtype and mtype not in NOT_PLACES)):
             continue
         kind = mtype or next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or "Landmark"
-        near = None
-        if m and m.get("pos"):
+
+        def nearest(candidates):
+            if not (m and m.get("pos")):
+                return None
             best = None
-            for tname, tm in towns:
+            for tname, tm in candidates:
                 if marker_world(tm) != marker_world(m) or tm is m:
                     continue
                 dist = sum((a - b) ** 2 for a, b in zip(tm["pos"][:2], m["pos"][:2])) ** 0.5
                 if best is None or dist < best[0]:
                     best = (dist, tname)
-            if best:
-                near = {"town": best[1], "km": round(best[0] * 0.0142875 / 1000, 1)}  # 1 unit = 1.43 cm
+            return {"town": best[1], "km": round(best[0] * 0.0142875 / 1000, 1)} if best else None  # 1 unit = 1.43 cm
+
+        near, near_city = nearest(towns), nearest(cities)
         # The map's name when it only extends the record's ("Embershard" -> "Embershard Mine"); never another place's (a mod's
         # Morvunskar Crypts that points at Bleak Falls Barrow's marker keeps its own name).
         shown = m["name"] if (m or {}).get("name") and l["name"].lower() in m["name"].lower() else l["name"]
         places[k] = {"id": k, "name": shown, **({"recordName": l["name"]} if shown != l["name"] else {}), "edid": l["edid"], "type": kind, "keywords": sorted(x for x in names if x.startswith("LocType")),
-                     "hold": hold_of(k), "nearestTown": near, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
+                     "hold": hold_of(k), "nearestTown": near, "nearestCity": near_city, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
     # Actors in each place's cells, and its child locations' (a dungeon's inner levels).
     owner = {}
     for k in locs:
@@ -375,21 +393,28 @@ def build(version):
                     hit.add(pl)
         for k in hit if q.get("named") and not HELPER.search(q["name"]) else ():
             places[k].setdefault("quests", []).append({"quest": q["name"], "id": qid})
-    return places, xp_from
+    return places, xp_from, cities
 
 
-def report(places, xp_from):
+def report(places, xp_from, cities=()):
     rows = list(places.values())
     by_type = collections.Counter(p["type"] for p in rows)
     by_hold = collections.Counter(p.get("hold") or "(none)" for p in rows)
     pointed = sum(1 for p in rows if p.get("pointers"))
     quested = sum(1 for p in rows if p.get("quests"))
     neither = sum(1 for p in rows if not p.get("pointers") and not p.get("quests"))
-    out = ["# The places index (WO-128 Part 1)", "",
+    found_cities = {nm for nm, _ in cities}
+    missing = sorted(CAPITALS - found_cities)
+    out = ["# The places index (WO-128 Part 1, WO-144 Part 1)", "",
            "Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). "
            f"Clear XP from `{xp_from}`'s Experience.ini." if xp_from else "Clear XP: no Experience.ini found.", "",
            f"**{len(rows)} places.** {pointed} have a pointer (a line or a book that names them), {quested} have a quest that goes there, "
-           f"and {neither} have neither.", "", "## By type", "", "| Type | Places | With a pointer | With a quest |", "|---|---|---|---|"]
+           f"and {neither} have neither.", "",
+           "## The nine capitals", "",
+           f"Found by name and the CWCapital keyword: {', '.join(sorted(found_cities)) or '(none)'}.",
+           (f"**Not checked (no exterior marker in Tamriel, no door into their worldspace this reader found): {', '.join(missing)}.** "
+            "`nearestCity`/`nearestTown` never names them; see WO-144's decision log." if missing else "All nine found with an exterior position."),
+           "", "## By type", "", "| Type | Places | With a pointer | With a quest |", "|---|---|---|---|"]
     for t, n in by_type.most_common():
         out.append(f"| {t} | {n} | {sum(1 for p in rows if p['type'] == t and p.get('pointers'))} | {sum(1 for p in rows if p['type'] == t and p.get('quests'))} |")
     out += ["", "## By hold", "", "| Hold | Places | With a pointer | With a quest |", "|---|---|---|---|"]
@@ -410,7 +435,7 @@ def build_site(rows):
     """The planner's places.json from the raw rows: what a page or an assistant shows, without record ids or editor ids."""
     out = []
     for p in rows:
-        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "clearXp") if p.get(k) is not None}
+        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "clearXp") if p.get(k) is not None}
         if p.get("actors"):
             r["actors"] = p["actors"]
         if p.get("pointers"):
@@ -427,14 +452,14 @@ def build_site(rows):
 
 def main():
     version = sys.argv[1] if len(sys.argv) > 1 else "5.0.4.8"
-    places, xp_from = build(version)
+    places, xp_from, cities = build(version)
     base = os.path.join(REPO, "gamedata", version)
     rows = sorted(places.values(), key=lambda p: (p.get("hold") or "~", p["name"]))
     with open(os.path.join(base, "places_raw.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump({"about": __doc__.strip().splitlines()[0], "places": rows}, f, indent=1, ensure_ascii=False)
         f.write("\n")
     with open(os.path.join(base, "places_report.md"), "w", encoding="utf-8", newline="\n") as f:
-        f.write(report(places, xp_from))
+        f.write(report(places, xp_from, cities))
     print(f"{len(rows)} places, {sum(1 for p in rows if p.get('pointers'))} with a pointer, {sum(1 for p in rows if p.get('quests'))} with a quest -> places_raw.json")
 
 

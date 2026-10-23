@@ -2,6 +2,7 @@
 places.py (WO-128 Part 1): the readers on made-up records, and the built index against the places the order names.
   python3 -m unittest discover -s scripts/gamedata -p 'test_*.py'
 """
+import collections
 import json
 import os
 import struct
@@ -67,6 +68,27 @@ class BuiltIndex(unittest.TestCase):
         self.assertFalse([p["name"] for p in self.rows if p["type"] in pl.NOT_PLACES])
         self.assertTrue(all(x["record"] for p in self.rows for x in p.get("pointers", [])))
         self.assertGreater(len({p["plugin"] for p in self.rows}), 20)  # across the load order, not only the base game
+
+    def test_nearest_town_and_city_are_never_a_mislabelled_marker(self):
+        # WO-144 Part 1: a marker's TNAM type is unreliable here (the nine capitals all carry the wrong one); only a
+        # name in CAPITALS or SETTLEMENTS is ever trusted as a town, so "Wintersand Manor" and friends can't stand in.
+        towns = {p["nearestTown"]["town"] for p in self.rows if p.get("nearestTown")}
+        cities = {p["nearestCity"]["town"] for p in self.rows if p.get("nearestCity")}
+        self.assertLessEqual(towns, pl.CAPITALS | pl.SETTLEMENTS)
+        self.assertLessEqual(cities, pl.CAPITALS)
+        self.assertFalse(towns & {"Wintersand Manor", "Flight Platform", "Dunpar Wall Ruins", "Unknown Gate"})
+
+    def test_each_found_capital_has_places_nearby(self):
+        # The four capitals with an exterior marker in Tamriel (see CAPITALS' comment); the other five have none this
+        # reader can find and are logged under WO-144, not guessed at.
+        by_city = collections.Counter(p["nearestCity"]["town"] for p in self.rows if p.get("nearestCity"))
+        for city in ("Morthal", "Falkreath", "Winterhold", "Dawnstar"):
+            self.assertGreaterEqual(by_city[city], 10, city)
+
+    def test_riverwood_is_still_a_settlement_and_never_a_capital_itself(self):
+        mine = self.by["Embershard Mine"]
+        self.assertEqual(mine["nearestTown"]["town"], "Riverwood")
+        self.assertNotIn("Riverwood", pl.CAPITALS)  # a settlement, never counted as one of the nine
 
 
 if __name__ == "__main__":

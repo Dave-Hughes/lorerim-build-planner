@@ -1,8 +1,13 @@
-# The places index (WO-128 Part 1)
+# The places index (WO-128 Part 1, WO-144 Part 1)
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
 **477 places.** 253 have a pointer (a line or a book that names them), 190 have a quest that goes there, and 164 have neither.
+
+## The nine capitals
+
+Found by name and the CWCapital keyword: Dawnstar, Falkreath, Markarth, Morthal, Riften, Solitude, Whiterun, Windhelm, Winterhold.
+All nine found with an exterior position.
 
 ## By type
 

@@ -10,10 +10,8 @@
     "LocTypeDungeon"
    ],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.8
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -44,10 +42,8 @@
     "LocTypeDungeon"
    ],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.8
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -89,6 +85,7 @@
    ],
    "hold": "Alik'r Desert",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100
@@ -103,6 +100,7 @@
    ],
    "hold": "Alik'r Desert",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -124,6 +122,7 @@
    ],
    "hold": "Alik'r Desert",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -144,10 +143,8 @@
     "LocTypeMilitaryFort"
    ],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.3
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -188,10 +185,8 @@
     "LocTypeDungeon"
    ],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 1.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
    "marker": null,
    "actors": {
@@ -216,10 +211,8 @@
     "LocTypeDungeon"
    ],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.6
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -262,10 +255,8 @@
     "LocTypeAnimalDen"
    ],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 1.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -284,10 +275,8 @@
    "type": "Grove",
    "keywords": [],
    "hold": "Alik'r Desert",
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 1.0
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -309,6 +298,7 @@
    ],
    "hold": "Alik'r Desert",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -356,6 +346,7 @@
    ],
    "hold": "Alik'r Desert",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
    "marker": null,
    "actors": {
@@ -387,6 +378,7 @@
    ],
    "hold": "Alik'r Desert",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100
@@ -403,8 +395,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.6
+    "town": "Darkwater Crossing",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:0ECF49",
@@ -435,6 +431,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:015D56",
@@ -479,8 +479,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.2
+    "town": "Kynesgrove",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162B6",
@@ -509,8 +513,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.2
+    "town": "Kynesgrove",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Dragons Awaken.esp",
    "marker": null,
@@ -528,8 +536,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.4
+    "town": "Darkwater Crossing",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0ECF86",
@@ -567,8 +579,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.7
+    "town": "Darkwater Crossing",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016225",
@@ -608,6 +624,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.1
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016226",
@@ -672,8 +692,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
+    "town": "Kynesgrove",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016227",
@@ -717,8 +741,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.4
+    "town": "Kynesgrove",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.6
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:016228",
@@ -752,8 +780,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.6
+    "town": "Darkwater Crossing",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.6
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0B6046",
@@ -778,8 +810,12 @@
    "keywords": [],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.3
+    "town": "Darkwater Crossing",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.8
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162B7",
@@ -833,8 +869,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.5
+    "town": "Darkwater Crossing",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.8
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016249",
@@ -858,7 +898,11 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "College of Winterhold",
+    "town": "Winterhold",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
     "km": 0.5
    },
    "plugin": "WindhelmSSE.esp",
@@ -884,8 +928,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.7
+    "town": "Kynesgrove",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.4
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:016254",
@@ -942,8 +990,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Wintersand Manor",
+    "town": "Darkwater Crossing",
     "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.8
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162CB",
@@ -1011,6 +1063,7 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
@@ -1040,8 +1093,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Ivarstead",
-    "km": 0.6
+    "town": "Darkwater Crossing",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.9
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016273",
@@ -1088,8 +1145,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.7
+    "town": "Kynesgrove",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0ECF51",
@@ -1118,8 +1179,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.1
+    "town": "Darkwater Crossing",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.0
    },
    "plugin": "Lux - Ryn's Mistwatch Folly patch.esp",
    "marker": "Skyrim.esm:016286",
@@ -1183,8 +1248,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.7
+    "town": "Kynesgrove",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.2
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016288",
@@ -1311,6 +1380,10 @@
     "town": "Riverwood",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.8
+   },
    "plugin": "Arena - Markarth Side.esp",
    "marker": "Skyrim.esm:016232",
    "actors": {
@@ -1358,8 +1431,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.5
+    "town": "Kynesgrove",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.8
    },
    "plugin": "Lux Orbis.esp",
    "marker": "Skyrim.esm:01628C",
@@ -1473,8 +1550,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.3
+    "town": "Darkwater Crossing",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.9
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000808",
@@ -1502,8 +1583,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 1.0
+    "town": "Kynesgrove",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.3
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0EF570",
@@ -1535,8 +1620,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.6
+    "town": "Darkwater Crossing",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0ECF49",
@@ -1560,8 +1649,12 @@
    "keywords": [],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.8
+    "town": "Kynesgrove",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:04D8DA",
@@ -1592,6 +1685,7 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Requiem.esp",
    "marker": null,
    "actors": {
@@ -1753,8 +1847,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
+    "town": "Kynesgrove",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01623A",
@@ -1792,8 +1890,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
+    "town": "Shor's Stone",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.0
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:080F13",
@@ -1841,8 +1943,12 @@
    "keywords": [],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.1
+    "town": "Darkwater Crossing",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.9
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0E0F4C",
@@ -1866,8 +1972,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 1.0
+    "town": "Kynesgrove",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.2
    },
    "plugin": "Requiem - More Unique Enemies.esp",
    "marker": "Skyrim.esm:0C2EE9",
@@ -1908,8 +2018,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Laintar Dale",
+    "town": "Kynesgrove",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162C8",
@@ -1953,6 +2067,7 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Requiem.esp",
    "marker": null,
    "actors": {
@@ -1997,8 +2112,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.4
+    "town": "Kynesgrove",
+    "km": 0.1
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.4
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00080F",
@@ -2027,8 +2146,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "Reich Corigate Ruins",
-    "km": 0.3
+    "town": "Kynesgrove",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0E1B80",
@@ -2119,8 +2242,12 @@
    ],
    "hold": "Eastmarch",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 1.1
+    "town": "Kynesgrove",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.0
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016271",
@@ -2185,8 +2312,12 @@
    "keywords": [],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
-    "km": 0.2
+    "town": "Falkreath",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.3
    },
    "plugin": "Requiem-betterForgottenVale.esp",
    "marker": "Dawnguard.esm:004BA5",
@@ -2253,8 +2384,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
-    "km": 0.2
+    "town": "Helgen",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.4
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016231",
@@ -2305,8 +2440,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
+    "town": "Riverwood",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0D9531",
@@ -2337,8 +2476,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.2
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016220",
@@ -2398,8 +2541,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
-    "km": 0.5
+    "town": "Falkreath",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.2
    },
    "plugin": "Tools of Kagrenac.esp",
    "marker": "Tools of Kagrenac.esp:298C09",
@@ -2426,8 +2573,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.4
+    "town": "Falkreath",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.5
    },
    "plugin": "Bannermist.esp",
    "marker": "Skyrim.esm:04781E",
@@ -2472,8 +2623,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.4
+    "town": "Rorikstead",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.9
    },
    "plugin": "Ryn's Lost Valley Redoubt.esp",
    "marker": "Skyrim.esm:016275",
@@ -2523,8 +2678,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.0
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00083A",
@@ -2553,8 +2712,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.2
+    "town": "Falkreath",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.7
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:016215",
@@ -2583,8 +2746,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
-    "km": 0.2
+    "town": "Helgen",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.6
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016EB2",
@@ -2623,6 +2790,10 @@
     "town": "Helgen",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.5
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0FDA48",
    "actors": {
@@ -2649,8 +2820,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
-    "km": 0.7
+    "town": "Falkreath",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01625B",
@@ -2695,8 +2870,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.6
+    "town": "Falkreath",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.5
    },
    "plugin": "Cannibal_Dung.esp",
    "marker": "Cannibal_Dung.esp:2F999F",
@@ -2738,6 +2917,7 @@
    ],
    "hold": "Falkreath",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -2764,6 +2944,10 @@
    "nearestTown": {
     "town": "Riverwood",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.7
    },
    "plugin": "Embershard.esp",
    "marker": "Skyrim.esm:0B6CDF",
@@ -2833,8 +3017,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Falkreath",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016241",
@@ -2872,8 +3060,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Falkreath",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.4
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000832",
@@ -2902,8 +3094,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
-    "km": 0.4
+    "town": "Falkreath",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.2
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:04788C",
@@ -2928,6 +3124,10 @@
    "nearestTown": {
     "town": "Helgen",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.9
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016250",
@@ -2988,8 +3188,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Falkreath",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.8
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016257",
@@ -3094,6 +3298,7 @@
    ],
    "hold": "Falkreath",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "aaaGraniteHill.esp",
    "marker": null,
    "actors": {
@@ -3117,6 +3322,7 @@
    "keywords": [],
    "hold": "Falkreath",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "FalkreathShades.esp",
    "marker": null,
    "actors": {
@@ -3142,6 +3348,10 @@
    "nearestTown": {
     "town": "Helgen",
     "km": 0.1
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.6
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01625A",
@@ -3171,6 +3381,10 @@
    "nearestTown": {
     "town": "Ivarstead",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.2
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01625D",
@@ -3250,8 +3464,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
-    "km": 0.5
+    "town": "Falkreath",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.2
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016260",
@@ -3292,8 +3510,12 @@
    "keywords": [],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Falkreath",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0F52B2",
@@ -3326,8 +3548,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
-    "km": 0.4
+    "town": "Falkreath",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.5
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:01626A",
@@ -3370,6 +3596,7 @@
    ],
    "hold": "Falkreath",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -3399,8 +3626,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lainalten Ruins",
-    "km": 0.1
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162A7",
@@ -3471,8 +3702,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
-    "km": 0.3
+    "town": "Falkreath",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.2
    },
    "plugin": "Big Tweaks.esp",
    "marker": null,
@@ -3501,8 +3736,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Falkreath",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016289",
@@ -3527,8 +3766,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.2
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:016220",
@@ -3547,8 +3790,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.4
+    "town": "Riverwood",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.7
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:016265",
@@ -3611,7 +3858,11 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
+    "town": "Falkreath",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
     "km": 0.2
    },
    "plugin": "Requiem.esp",
@@ -3673,6 +3924,10 @@
     "town": "Helgen",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.8
+   },
    "plugin": "Skybound.esp",
    "marker": "Skyrim.esm:0479BB",
    "actors": {
@@ -3699,8 +3954,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Flight Platform",
+    "town": "Helgen",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.8
    },
    "plugin": "Tools of Kagrenac.esp",
    "marker": "Tools of Kagrenac.esp:2A2E3A",
@@ -3748,6 +4007,10 @@
    "nearestTown": {
     "town": "Helgen",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.0
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016292",
@@ -3798,8 +4061,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.4
+    "town": "Falkreath",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.5
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:04781E",
@@ -3826,8 +4093,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
-    "km": 0.1
+    "town": "Falkreath",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016295",
@@ -3890,8 +4161,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
-    "km": 0.5
+    "town": "Falkreath",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:047875",
@@ -3915,6 +4190,7 @@
    ],
    "hold": "Falkreath",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -3947,6 +4223,10 @@
     "town": "Helgen",
     "km": 0.4
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.9
+   },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016217",
    "actors": {
@@ -3970,8 +4250,12 @@
    ],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.1
+    "town": "Rorikstead",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.8
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:0F5EA8",
@@ -4023,7 +4307,11 @@
    "keywords": [],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Lakeview Manor",
+    "town": "Falkreath",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
     "km": 0.4
    },
    "plugin": "Skyrim.esm",
@@ -4038,8 +4326,12 @@
    "keywords": [],
    "hold": "Falkreath",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.7
+    "town": "Falkreath",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.6
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016216",
@@ -4201,6 +4493,10 @@
     "town": "Ivarstead",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.5
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0D3931",
    "actors": {
@@ -4224,8 +4520,12 @@
    "keywords": [],
    "hold": "Haafingar",
    "nearestTown": {
-    "town": "Solitude East Gate",
-    "km": 0.4
+    "town": "Morthal",
+    "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:02008D",
@@ -4260,8 +4560,12 @@
    ],
    "hold": "Haafingar",
    "nearestTown": {
-    "town": "Solitude East Gate",
-    "km": 0.5
+    "town": "Dragon Bridge",
+    "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0B77C3",
@@ -4307,6 +4611,10 @@
     "town": "Dragon Bridge",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016222",
    "actors": {
@@ -4330,6 +4638,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:03F510",
@@ -4399,6 +4711,10 @@
     "town": "Dragon Bridge",
     "km": 0.4
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
+   },
    "plugin": "SaveTheIcerunner.esp",
    "marker": "Skyrim.esm:0EF543",
    "actors": {
@@ -4443,6 +4759,10 @@
     "town": "Dragon Bridge",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
+   },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:01626D",
    "actors": {
@@ -4474,6 +4794,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0AF89B",
@@ -4511,6 +4835,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.7
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016290",
@@ -4682,6 +5010,10 @@
     "town": "Dragon Bridge",
     "km": 0.7
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.5
+   },
    "plugin": "SaveTheIcerunner.esp",
    "marker": "Skyrim.esm:0162B0",
    "actors": {
@@ -4716,6 +5048,10 @@
     "town": "Dragon Bridge",
     "km": 0.6
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0EF0BA",
    "actors": {
@@ -4744,6 +5080,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.2
    },
    "plugin": "Requiem - More Unique Enemies.esp",
    "marker": "Skyrim.esm:016293",
@@ -4796,6 +5136,7 @@
    ],
    "hold": "Haafingar",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Requiem.esp",
    "marker": null,
    "actors": {
@@ -4829,8 +5170,12 @@
    ],
    "hold": "Haafingar",
    "nearestTown": {
-    "town": "Solitude East Gate",
+    "town": "Dragon Bridge",
     "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01629C",
@@ -4895,6 +5240,10 @@
     "town": "Dragon Bridge",
     "km": 0.7
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162A1",
    "actors": {
@@ -4954,8 +5303,12 @@
    ],
    "hold": "Haafingar",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.4
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0162A9",
@@ -4980,6 +5333,7 @@
    ],
    "hold": "Haafingar",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Saints and Seducers Extended Cut patch.esp",
    "marker": null,
    "actors": {
@@ -5002,6 +5356,7 @@
    ],
    "hold": "Haafingar",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
@@ -5034,6 +5389,10 @@
     "town": "Dragon Bridge",
     "km": 0.6
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.5
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162BF",
    "actors": {
@@ -5059,6 +5418,10 @@
     "town": "Dragon Bridge",
     "km": 0.5
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01BAC0",
    "clearXp": 100
@@ -5077,6 +5440,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0162CA",
@@ -5139,6 +5506,10 @@
     "town": "Dragon Bridge",
     "km": 0.6
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.2
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0EF0A7",
    "actors": {
@@ -5167,6 +5538,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
    },
    "plugin": "Requiem Magic Redone - Enemy Magic Expansion.esp",
    "marker": "Skyrim.esm:0162D1",
@@ -5331,7 +5706,11 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Lainalten Ruins",
+    "town": "Morthal",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
     "km": 0.4
    },
    "plugin": "Skyrim.esm",
@@ -5360,8 +5739,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.2
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:016220",
@@ -5398,6 +5781,7 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
@@ -5439,8 +5823,12 @@
    "keywords": [],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Lainalten Ruins",
-    "km": 0.2
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.6
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:0E66A7",
@@ -5465,8 +5853,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.3
+    "town": "Morthal",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.5
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01622E",
@@ -5539,8 +5931,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Lainalten Ruins",
-    "km": 0.6
+    "town": "Morthal",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.4
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Skyrim.esm:016238",
@@ -5569,8 +5965,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Solitude East Gate",
-    "km": 0.2
+    "town": "Morthal",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.4
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016246",
@@ -5615,8 +6015,12 @@
    "keywords": [],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.1
+    "town": "Dragon Bridge",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.7
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Dawnguard.esm:003CFE",
@@ -5650,8 +6054,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.4
+    "town": "Morthal",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.3
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016251",
@@ -5729,6 +6137,7 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -5758,8 +6167,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.2
+    "town": "Morthal",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.5
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000814",
@@ -5784,8 +6197,12 @@
    "keywords": [],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Windstad Manor",
-    "km": 0.4
+    "town": "Stonehills",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0C2EEF",
@@ -5803,8 +6220,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.7
+    "town": "Stonehills",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.5
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01626E",
@@ -6019,8 +6440,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.6
+    "town": "Stonehills",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.5
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0EAA63",
@@ -6044,8 +6469,12 @@
    "keywords": [],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.3
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.5
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0F6F11",
@@ -6070,8 +6499,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Windstad Manor",
-    "km": 0.3
+    "town": "Morthal",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.2
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016256",
@@ -6156,8 +6589,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Lainalten Ruins",
-    "km": 0.2
+    "town": "Rorikstead",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016291",
@@ -6201,8 +6638,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Lainalten Ruins",
-    "km": 0.1
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.7
    },
    "plugin": "Ryn's Robber's Gorge.esp",
    "marker": "Skyrim.esm:0162A7",
@@ -6249,8 +6690,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Markarth Side",
+    "town": "Dragon Bridge",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.6
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000819",
@@ -6268,7 +6713,11 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Heljarchen Hall",
+    "town": "Stonehills",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
     "km": 0.5
    },
    "plugin": "Dragons Awaken.esp",
@@ -6305,6 +6754,7 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -6334,8 +6784,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.2
+    "town": "Stonehills",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162C1",
@@ -6376,6 +6830,10 @@
     "town": "Rorikstead",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.8
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162C3",
    "actors": {
@@ -6408,8 +6866,12 @@
    "keywords": [],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Solitude East Gate",
-    "km": 0.4
+    "town": "Morthal",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.3
    },
    "plugin": "Ryn's Standing Stones.esp",
    "marker": "Skyrim.esm:01BAB9",
@@ -6437,8 +6899,12 @@
    ],
    "hold": "Hjaalmarch",
    "nearestTown": {
-    "town": "Windstad Manor",
-    "km": 0.2
+    "town": "Morthal",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.4
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01621F",
@@ -6549,6 +7015,7 @@
    "keywords": [],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6571,6 +7038,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6595,6 +7063,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6643,6 +7112,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6669,6 +7139,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6691,6 +7162,7 @@
    "keywords": [],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6714,6 +7186,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6739,6 +7212,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6765,6 +7239,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6792,6 +7267,7 @@
    ],
    "hold": "Hjorkvild Isles",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Siege at Icemoth.esp",
    "marker": null,
    "actors": {
@@ -6829,9 +7305,10 @@
    ],
    "hold": "Morrowind",
    "nearestTown": {
-    "town": "Cormaris",
-    "km": 2.0
+    "town": "Raven Rock",
+    "km": 1.9
    },
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -6873,9 +7350,10 @@
    ],
    "hold": "Morrowind",
    "nearestTown": {
-    "town": "Cormaris",
-    "km": 1.9
+    "town": "Raven Rock",
+    "km": 1.8
    },
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -6905,9 +7383,10 @@
    ],
    "hold": "Morrowind",
    "nearestTown": {
-    "town": "Cormaris",
-    "km": 0.3
+    "town": "Raven Rock",
+    "km": 1.9
    },
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -6949,9 +7428,10 @@
    ],
    "hold": "Morrowind",
    "nearestTown": {
-    "town": "Cormaris",
-    "km": 1.4
+    "town": "Raven Rock",
+    "km": 2.2
    },
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -6977,9 +7457,10 @@
    ],
    "hold": "Morrowind",
    "nearestTown": {
-    "town": "Cormaris",
-    "km": 1.2
+    "town": "Raven Rock",
+    "km": 1.8
    },
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -7004,6 +7485,7 @@
    ],
    "hold": "Morrowind",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -7026,6 +7508,7 @@
    ],
    "hold": "Morrowind",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -7045,9 +7528,10 @@
    "keywords": [],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.6
+    "town": "Raven Rock",
+    "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7077,9 +7561,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.6
+    "town": "Raven Rock",
+    "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Miasma.esp",
    "marker": null,
    "actors": {
@@ -7115,6 +7600,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7142,9 +7628,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.7
+    "town": "Raven Rock",
+    "km": 0.1
    },
+   "nearestCity": null,
    "plugin": "Miasma.esp",
    "marker": null,
    "actors": {
@@ -7184,6 +7671,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7234,6 +7722,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7259,6 +7748,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7299,9 +7789,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.8
+    "town": "Raven Rock",
+    "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Requiem - More Unique Enemies.esp",
    "marker": null,
    "actors": {
@@ -7335,9 +7826,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.8
+    "town": "Raven Rock",
+    "km": 0.7
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7363,9 +7855,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.6
+    "town": "Raven Rock",
+    "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7398,9 +7891,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
+    "town": "Raven Rock",
     "km": 0.7
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7426,6 +7920,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7457,6 +7952,7 @@
     "town": "Skaal Village",
     "km": 0.6
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7488,6 +7984,7 @@
    ],
    "hold": "Solstheim",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7514,9 +8011,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.7
+    "town": "Raven Rock",
+    "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Requiem - More Unique Enemies.esp",
    "marker": null,
    "actors": {
@@ -7546,6 +8044,7 @@
     "town": "Skaal Village",
     "km": 0.5
    },
+   "nearestCity": null,
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00085F",
    "actors": {
@@ -7573,9 +8072,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.7
+    "town": "Raven Rock",
+    "km": 0.5
    },
+   "nearestCity": null,
    "plugin": "Lucien.esp",
    "marker": null,
    "actors": {
@@ -7745,9 +8245,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.9
+    "town": "Raven Rock",
+    "km": 0.1
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -7875,9 +8376,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.6
+    "town": "Raven Rock",
+    "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Natural Waterfalls - Dragonborn.esp",
    "marker": null,
    "actors": {
@@ -7909,9 +8411,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.7
+    "town": "Raven Rock",
+    "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Lux.esp",
    "marker": null,
    "actors": {
@@ -8059,6 +8562,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8105,9 +8609,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.5
+    "town": "Raven Rock",
+    "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8169,6 +8674,7 @@
     "town": "Skaal Village",
     "km": 0.5
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8197,6 +8703,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8236,6 +8743,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8275,6 +8783,7 @@
     "town": "Skaal Village",
     "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8305,9 +8814,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.6
+    "town": "Raven Rock",
+    "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8381,6 +8891,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8414,9 +8925,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.8
+    "town": "Raven Rock",
+    "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8442,6 +8954,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8494,6 +9007,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00085E",
    "actors": {
@@ -8532,6 +9046,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8597,9 +9112,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.8
+    "town": "Raven Rock",
+    "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8679,6 +9195,7 @@
     "town": "Skaal Village",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8714,6 +9231,7 @@
     "town": "Skaal Village",
     "km": 0.5
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8871,9 +9389,10 @@
    "keywords": [],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
+    "town": "Raven Rock",
     "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "clearXp": 100
@@ -8890,6 +9409,7 @@
    ],
    "hold": "Solstheim",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -8989,6 +9509,7 @@
     "town": "Skaal Village",
     "km": 0.5
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -9031,6 +9552,7 @@
    ],
    "hold": "Solstheim",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Wintersun - Faiths of Skyrim.esp",
    "marker": null,
    "actors": {
@@ -9058,6 +9580,7 @@
    ],
    "hold": "Solstheim",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -9101,6 +9624,7 @@
     "town": "Skaal Village",
     "km": 0.5
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -9135,6 +9659,7 @@
     "town": "Skaal Village",
     "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -9182,6 +9707,7 @@
     "town": "Skaal Village",
     "km": 0.3
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
@@ -9213,9 +9739,10 @@
    ],
    "hold": "Solstheim",
    "nearestTown": {
-    "town": "Skaal Village",
-    "km": 0.7
+    "town": "Raven Rock",
+    "km": 0.4
    },
+   "nearestCity": null,
    "plugin": "Natural Waterfalls - Dragonborn.esp",
    "marker": null,
    "actors": {
@@ -9250,6 +9777,7 @@
     "town": "Skaal Village",
     "km": 0.6
    },
+   "nearestCity": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
@@ -9292,6 +9820,7 @@
     "town": "Skaal Village",
     "km": 0.2
    },
+   "nearestCity": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
    "clearXp": 100,
@@ -9364,8 +9893,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.1
+    "town": "Stonehills",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.0
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:016214",
@@ -9403,8 +9936,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.1
+    "town": "Kynesgrove",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.9
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:046BAB",
@@ -9438,8 +9975,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.5
+    "town": "Stonehills",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.6
    },
    "plugin": "GORE.esp",
    "marker": "Dawnguard.esm:002F6F",
@@ -9593,8 +10134,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.2
+    "town": "Dawnstar",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.7
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:01623F",
@@ -9622,8 +10167,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.1
+    "town": "Winterhold",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.8
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016248",
@@ -9682,8 +10231,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.3
+    "town": "Stonehills",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.6
    },
    "plugin": "Fort Dunstad.esp",
    "marker": "Skyrim.esm:01624B",
@@ -9760,7 +10313,11 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
+    "town": "Stonehills",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
     "km": 0.6
    },
    "plugin": "Lux Via.esp",
@@ -9832,8 +10389,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
+    "town": "Stonehills",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.6
    },
    "plugin": "Lux - Stendarr Rising patch.esp",
    "marker": "Skyrim.esm:0C342A",
@@ -9931,8 +10492,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Windstad Manor",
-    "km": 0.1
+    "town": "Stonehills",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016263",
@@ -9966,6 +10531,7 @@
    ],
    "hold": "The Pale",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -9995,8 +10561,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Kynesgrove",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.2
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01626B",
@@ -10081,6 +10651,7 @@
    ],
    "hold": "The Pale",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -10142,8 +10713,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.3
+    "town": "Stonehills",
+    "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.1
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016224",
@@ -10282,7 +10857,11 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Windstad Manor",
+    "town": "Stonehills",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
     "km": 0.5
    },
    "plugin": "Lux.esp",
@@ -10463,8 +11042,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.6
+    "town": "Dawnstar",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.2
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:017082",
@@ -10569,6 +11152,7 @@
    ],
    "hold": "The Pale",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -10630,8 +11214,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Kynesgrove",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.2
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01626B",
@@ -10709,8 +11297,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.5
+    "town": "Dawnstar",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162A0",
@@ -10764,7 +11356,11 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Windstad Manor",
+    "town": "Dawnstar",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
     "km": 0.4
    },
    "plugin": "Dragons Awaken.esp",
@@ -10794,8 +11390,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.4
+    "town": "Kynesgrove",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016237",
@@ -10842,8 +11442,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.3
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000863",
@@ -10868,8 +11472,12 @@
    "keywords": [],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.5
+    "town": "Stonehills",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.6
    },
    "plugin": "Requiem.esp",
    "marker": null,
@@ -10894,8 +11502,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Dawnstar",
+    "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.0
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162B1",
@@ -10923,8 +11535,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.2
+    "town": "Dawnstar",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.9
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162B5",
@@ -10952,6 +11568,7 @@
    ],
    "hold": "The Pale",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -10977,8 +11594,12 @@
    "keywords": [],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.4
+    "town": "Stonehills",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.7
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0E0F47",
@@ -10996,8 +11617,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Kynesgrove",
+    "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162C7",
@@ -11035,8 +11660,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.3
+    "town": "Stonehills",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016264",
@@ -11150,8 +11779,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.2
+    "town": "Stonehills",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.9
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0BC0AA",
@@ -11177,8 +11810,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Windstad Manor",
-    "km": 0.6
+    "town": "Dawnstar",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.3
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0C2EEC",
@@ -11216,8 +11853,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Windstad Manor",
-    "km": 0.4
+    "town": "Dawnstar",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.5
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162AB",
@@ -11263,8 +11904,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Kynesgrove",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.9
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000856",
@@ -11332,8 +11977,12 @@
    ],
    "hold": "The Pale",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.2
+    "town": "Winterhold",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.8
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0C33FF",
@@ -11361,8 +12010,12 @@
    ],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.1
    },
    "plugin": "Ryn's Lost Valley Redoubt.esp",
    "marker": "Skyrim.esm:01620E",
@@ -11389,6 +12042,10 @@
    "nearestTown": {
     "town": "Rorikstead",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
@@ -11418,6 +12075,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016213",
@@ -11480,6 +12141,10 @@
     "town": "Karthwasten",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
+   },
    "plugin": "Ryn's Broken Tower Redoubt.esp",
    "marker": "Skyrim.esm:01621A",
    "actors": {
@@ -11539,6 +12204,10 @@
     "town": "Karthwasten",
     "km": 0.4
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.2
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01621C",
    "actors": {
@@ -11593,6 +12262,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.8
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01621D",
@@ -11665,8 +12338,12 @@
    "keywords": [],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.3
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0B238B",
@@ -11690,8 +12367,12 @@
    ],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.3
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0B238B",
@@ -11721,6 +12402,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 1.1
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.3
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:01622D",
@@ -11763,6 +12448,10 @@
     "town": "Karthwasten",
     "km": 0.6
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.9
+   },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0B238F",
    "actors": {
@@ -11804,6 +12493,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01622F",
@@ -11851,6 +12544,10 @@
     "town": "Dragon Bridge",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0B2393",
    "actors": {
@@ -11879,6 +12576,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.5
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016230",
@@ -11909,6 +12610,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:01623C",
@@ -11954,8 +12659,12 @@
    ],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Rorikstead",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.1
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016252",
@@ -12018,6 +12727,10 @@
     "town": "Karthwasten",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.5
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0B23A7",
    "actors": {
@@ -12057,6 +12770,10 @@
     "town": "Rorikstead",
     "km": 0.5
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.3
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016258",
    "actors": {
@@ -12085,6 +12802,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 2.3
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01625E",
@@ -12128,6 +12849,7 @@
    ],
    "hold": "The Reach",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -12184,6 +12906,10 @@
     "town": "Karthwasten",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
+   },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016262",
    "actors": {
@@ -12228,6 +12954,7 @@
    ],
    "hold": "The Reach",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -12258,6 +12985,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:01626C",
@@ -12377,6 +13108,10 @@
     "town": "Karthwasten",
     "km": 0.6
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
+   },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000825",
    "actors": {
@@ -12407,6 +13142,10 @@
     "town": "Karthwasten",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016270",
    "actors": {
@@ -12433,8 +13172,12 @@
    ],
    "hold": "The Reach",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.1
    },
    "plugin": "Ryn's Lost Valley Redoubt.esp",
    "marker": "Skyrim.esm:016274",
@@ -12475,6 +13218,10 @@
     "town": "Rorikstead",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.3
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Dawnguard.esm:00D0AE",
    "actors": {
@@ -12501,6 +13248,7 @@
    ],
    "hold": "The Reach",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Requiem.esp",
    "marker": null,
    "actors": {
@@ -12754,6 +13502,10 @@
     "town": "Karthwasten",
     "km": 0.9
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.1
+   },
    "plugin": "Requiem - More Unique Enemies.esp",
    "marker": "Skyrim.esm:032875",
    "actors": {
@@ -12779,6 +13531,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 2.0
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01629A",
@@ -12842,6 +13598,10 @@
     "town": "Karthwasten",
     "km": 0.4
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
+   },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000852",
    "actors": {
@@ -12871,6 +13631,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.8
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01629D",
@@ -12957,6 +13721,10 @@
     "town": "Karthwasten",
     "km": 0.4
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.8
+   },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00084B",
    "actors": {
@@ -12986,6 +13754,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.8
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:01629E",
@@ -13043,6 +13815,10 @@
     "town": "Karthwasten",
     "km": 0.7
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.8
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0B23A3",
    "actors": {
@@ -13082,6 +13858,10 @@
     "town": "Karthwasten",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
+   },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:01623D",
    "actors": {
@@ -13119,6 +13899,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.4
    },
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:01623D",
@@ -13173,6 +13957,10 @@
     "town": "Rorikstead",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.3
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
@@ -13208,6 +13996,10 @@
     "town": "Karthwasten",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.6
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0AD066",
    "clearXp": 100
@@ -13220,6 +14012,7 @@
    "keywords": [],
    "hold": "The Reach",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:01637C",
    "actors": {
@@ -13456,6 +14249,7 @@
    ],
    "hold": "The Reach",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Natural Waterfalls.esp",
    "marker": null,
    "actors": {
@@ -13483,6 +14277,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.7
    },
    "plugin": "Ryn's Standing Stones.esp",
    "marker": "Skyrim.esm:01BABB",
@@ -13512,6 +14310,10 @@
    "nearestTown": {
     "town": "Rorikstead",
     "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
@@ -13564,6 +14366,10 @@
     "town": "Shor's Stone",
     "km": 1.0
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 3.2
+   },
    "plugin": "Tools of Kagrenac.esp",
    "marker": "Tools of Kagrenac.esp:2AD05F",
    "actors": {
@@ -13595,6 +14401,10 @@
     "town": "Ivarstead",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.5
+   },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0D3931",
    "clearXp": 100
@@ -13611,8 +14421,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.3
+    "town": "Ivarstead",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.1
    },
    "plugin": "Requiem - More Unique Enemies.esp",
    "marker": "Skyrim.esm:015D51",
@@ -13665,6 +14479,10 @@
     "town": "Ivarstead",
     "km": 0.5
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.4
+   },
    "plugin": "LoreRim - World Fixes.esp",
    "marker": "Skyrim.esm:0F5FEF",
    "actors": {
@@ -13702,6 +14520,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01620C",
@@ -13753,8 +14575,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.4
+    "town": "Ivarstead",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016233",
@@ -13783,8 +14609,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.5
+    "town": "Shor's Stone",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.2
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:01620D",
@@ -13941,6 +14771,10 @@
     "town": "Shor's Stone",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.5
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0F52D8",
    "actors": {
@@ -13977,6 +14811,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 3.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016219",
@@ -14055,6 +14893,10 @@
     "town": "Shor's Stone",
     "km": 0.8
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.8
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016229",
    "actors": {
@@ -14097,8 +14939,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Vernim Wood Ruins",
-    "km": 0.7
+    "town": "Shor's Stone",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.6
    },
    "plugin": "Requiem Magic Redone - Enemy Magic Expansion.esp",
    "marker": "Skyrim.esm:01622A",
@@ -14407,8 +15253,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Vernim Wood Ruins",
-    "km": 0.4
+    "town": "Darkwater Crossing",
+    "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.1
    },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:01622C",
@@ -14439,8 +15289,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Vernim Wood Ruins",
-    "km": 0.4
+    "town": "Shor's Stone",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.5
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016242",
@@ -14501,6 +15355,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.9
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016243",
@@ -14579,6 +15437,10 @@
     "town": "Shor's Stone",
     "km": 0.8
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 3.1
+   },
    "plugin": "Lux Orbis.esp",
    "marker": "Skyrim.esm:016247",
    "actors": {
@@ -14646,6 +15508,10 @@
     "town": "Shor's Stone",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.6
+   },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01624D",
    "actors": {
@@ -14695,8 +15561,12 @@
    "keywords": [],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.3
+    "town": "Ivarstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.8
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0D392D",
@@ -14723,6 +15593,10 @@
    "nearestTown": {
     "town": "Ivarstead",
     "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016255",
@@ -14764,6 +15638,10 @@
     "town": "Ivarstead",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.6
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016267",
    "actors": {
@@ -14789,6 +15667,7 @@
    ],
    "hold": "The Rift",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Dawnguard.esm",
    "marker": null,
    "actors": {
@@ -14818,6 +15697,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 3.0
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0D3938",
@@ -14854,6 +15737,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 3.0
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016235",
@@ -14900,8 +15787,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.3
+    "town": "Ivarstead",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.9
    },
    "plugin": "Wintersun - Faiths of Skyrim.esp",
    "marker": "Skyrim.esm:01628F",
@@ -14953,6 +15844,10 @@
     "town": "Shor's Stone",
     "km": 0.3
    },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.2
+   },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0FDBDE",
    "actors": {
@@ -14982,6 +15877,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016234",
@@ -15027,6 +15926,10 @@
     "town": "Ivarstead",
     "km": 0.1
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.6
+   },
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:016294",
    "actors": {
@@ -15051,6 +15954,7 @@
    ],
    "hold": "The Rift",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -15090,8 +15994,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.2
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Redwater Den - Gore Patch.esp",
    "marker": "Skyrim.esm:016220",
@@ -15163,8 +16071,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Vernim Wood Ruins",
-    "km": 0.1
+    "town": "Darkwater Crossing",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.2
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0D3930",
@@ -15204,8 +16116,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.2
+    "town": "Ivarstead",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.7
    },
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:0D393C",
@@ -15246,8 +16162,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Vernim Wood Ruins",
+    "town": "Shor's Stone",
     "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0D3939",
@@ -15272,8 +16192,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Markarth Side",
-    "km": 0.2
+    "town": "Dragon Bridge",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:016220",
@@ -15307,6 +16231,10 @@
     "town": "Shor's Stone",
     "km": 0.5
    },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.9
+   },
    "plugin": "The Cursed Tribe - Quest Expansion.esp",
    "marker": "Skyrim.esm:016243",
    "clearXp": 100
@@ -15321,6 +16249,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.2
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.4
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0D3934",
@@ -15355,6 +16287,10 @@
    "nearestTown": {
     "town": "Ivarstead",
     "km": 0.1
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.6
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:06CCC8",
@@ -15419,8 +16355,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Vernim Wood Ruins",
-    "km": 0.2
+    "town": "Darkwater Crossing",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.1
    },
    "plugin": "Requiem.esp",
    "marker": null,
@@ -15473,6 +16413,7 @@
    ],
    "hold": "The Rift",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -15500,6 +16441,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 3.3
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:108A58",
@@ -15641,8 +16586,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.2
+    "town": "Ivarstead",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.7
    },
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:0D393C",
@@ -15688,6 +16637,10 @@
     "town": "Shor's Stone",
     "km": 0.7
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.9
+   },
    "plugin": "Ryn's Standing Stones.esp",
    "marker": "Skyrim.esm:0D3935",
    "actors": {
@@ -15713,6 +16666,10 @@
     "town": "Shor's Stone",
     "km": 0.7
    },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.9
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0D3935",
    "clearXp": 100
@@ -15731,6 +16688,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.4
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0162C5",
@@ -15774,8 +16735,12 @@
    ],
    "hold": "The Rift",
    "nearestTown": {
-    "town": "Nimalten Ruins",
-    "km": 0.2
+    "town": "Ivarstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.0
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:0162C6",
@@ -15824,6 +16789,10 @@
    "nearestTown": {
     "town": "Riverwood",
     "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.8
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:016232",
@@ -16132,8 +17101,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.5
+    "town": "Riverwood",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016211",
@@ -16172,8 +17145,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.1
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:016218",
@@ -16217,7 +17194,11 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Heljarchen Hall",
+    "town": "Stonehills",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
     "km": 0.8
    },
    "plugin": "GORE.esp",
@@ -16291,8 +17272,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.4
+    "town": "Riverwood",
+    "km": 1.0
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.5
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:016244",
@@ -16356,8 +17341,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Rorikstead",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Lux - Forsaken Crypt patch.esp",
    "marker": "ForsakenCrypt.esp:03C34A",
@@ -16383,8 +17372,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
+    "town": "Riverwood",
     "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Fort Greymoor.esp",
    "marker": "Skyrim.esm:01624A",
@@ -16467,8 +17460,12 @@
    "keywords": [],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Rorikstead",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0DED8E",
@@ -16486,8 +17483,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.6
    },
    "plugin": "GraywinterWatch.esp",
    "marker": "Skyrim.esm:016259",
@@ -16526,8 +17527,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.1
+    "town": "Rorikstead",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.9
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000820",
@@ -16545,7 +17550,11 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
+    "town": "Morthal",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Morthal",
     "km": 0.8
    },
    "plugin": "Skyrim.esm",
@@ -16574,8 +17583,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.5
+    "town": "Darkwater Crossing",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.7
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01625C",
@@ -16613,8 +17626,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.4
+    "town": "Stonehills",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
    },
    "plugin": "HaltedStream.esp",
    "marker": "Skyrim.esm:016261",
@@ -16650,8 +17667,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.8
+    "town": "Stonehills",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.7
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0EE79C",
@@ -16677,6 +17698,10 @@
    "nearestTown": {
     "town": "Riverwood",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.4
    },
    "plugin": "Lux - JK's High Hrothgar patch.esp",
    "marker": "Skyrim.esm:016352",
@@ -17326,6 +18351,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "SurWR.esp",
    "marker": null,
    "actors": {
@@ -17348,6 +18374,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -17377,8 +18404,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.6
+    "town": "Rorikstead",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00082C",
@@ -17406,6 +18437,10 @@
     "town": "Rorikstead",
     "km": 0.2
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.0
+   },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0E66A3",
    "actors": {
@@ -17429,7 +18464,11 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Lainalten Ruins",
+    "town": "Morthal",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
     "km": 0.6
    },
    "plugin": "Skyrim.esm",
@@ -17517,8 +18556,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
+    "town": "Stonehills",
     "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Redoran.esp",
    "marker": "Skyrim.esm:01629F",
@@ -17565,6 +18608,10 @@
     "town": "Rorikstead",
     "km": 0.1
    },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.2
+   },
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00083E",
    "clearXp": 200
@@ -17583,6 +18630,10 @@
    "nearestTown": {
     "town": "Riverwood",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 0.9
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162A6",
@@ -17644,8 +18695,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.4
    },
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:0162A9",
@@ -17697,8 +18752,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.5
+    "town": "Stonehills",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0162B4",
@@ -17760,8 +18819,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.3
+    "town": "Rorikstead",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.0
    },
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:0162B8",
@@ -17798,6 +18861,7 @@
    ],
    "hold": "Whiterun",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -17827,8 +18891,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
-    "km": 0.5
+    "town": "Rorikstead",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 0.9
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:015D4D",
@@ -17880,8 +18948,12 @@
    "keywords": [],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.6
    },
    "plugin": "Ryn's Standing Stones.esp",
    "marker": "Skyrim.esm:0DD9D5",
@@ -17907,6 +18979,10 @@
    "nearestTown": {
     "town": "Ivarstead",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.4
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:0162C4",
@@ -18209,8 +19285,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.5
+    "town": "Darkwater Crossing",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 1.6
    },
    "plugin": "Taliesin Patches.esp",
    "marker": "Skyrim.esm:0162C9",
@@ -18247,8 +19327,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Granite Hill",
+    "town": "Riverwood",
     "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.1
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01624A",
@@ -18313,8 +19397,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.5
    },
    "plugin": "WhiteRiverWatch.esp",
    "marker": "Skyrim.esm:0162CD",
@@ -18428,8 +19516,12 @@
    ],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.1
+    "town": "Riverwood",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 1.5
    },
    "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
    "marker": null,
@@ -18453,8 +19545,12 @@
    "keywords": [],
    "hold": "Whiterun",
    "nearestTown": {
-    "town": "Wintersand Manor",
-    "km": 0.2
+    "town": "Riverwood",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0DD99A",
@@ -18495,8 +19591,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.4
+    "town": "Winterhold",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:015D4A",
@@ -18582,6 +19682,7 @@
    ],
    "hold": "Winterhold",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - JK's Sinderion's Lab patch.esp",
    "marker": null,
    "actors": {
@@ -18901,7 +20002,11 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
+    "town": "Winterhold",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
     "km": 0.5
    },
    "plugin": "Skyrim.esm",
@@ -18931,8 +20036,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.2
+    "town": "Dawnstar",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.5
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:01623B",
@@ -18971,8 +20080,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.2
+    "town": "Dawnstar",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.5
    },
    "plugin": "Fort Fellhammer.esp",
    "marker": "Skyrim.esm:01624C",
@@ -19032,8 +20145,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.5
+    "town": "Kynesgrove",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.7
    },
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01624F",
@@ -19076,8 +20193,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.4
+    "town": "Dawnstar",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.5
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016253",
@@ -19105,8 +20226,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.8
+    "town": "Dawnstar",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.4
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162AC",
@@ -19131,8 +20256,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.5
+    "town": "Dawnstar",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016266",
@@ -19195,6 +20324,7 @@
    ],
    "hold": "Winterhold",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -19224,8 +20354,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.2
+    "town": "Winterhold",
+    "km": 0.9
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.9
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
@@ -19266,8 +20400,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.5
+    "town": "Winterhold",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.4
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0EF549",
@@ -19295,8 +20433,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Winterhold",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.6
    },
    "plugin": "Dragons Awaken.esp",
    "marker": "Skyrim.esm:01628A",
@@ -19398,8 +20540,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.5
+    "town": "Winterhold",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.4
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162AD",
@@ -19423,8 +20569,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.3
+    "town": "Winterhold",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.6
    },
    "plugin": "Tools of Kagrenac.esp",
    "marker": "Tools of Kagrenac.esp:354445",
@@ -19452,8 +20602,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.4
+    "town": "Winterhold",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.3
    },
    "plugin": "Ryn's Saarthal.esp",
    "marker": "Skyrim.esm:0162A5",
@@ -20228,8 +21382,12 @@
    "keywords": [],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.4
+    "town": "Winterhold",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.5
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:02D511",
@@ -20256,8 +21414,12 @@
    "keywords": [],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.5
+    "town": "Winterhold",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.4
    },
    "plugin": "GORE.esp",
    "marker": "Skyrim.esm:092496",
@@ -20314,8 +21476,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.5
+    "town": "Winterhold",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.4
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:0162B3",
@@ -20363,8 +21529,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.2
+    "town": "Winterhold",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.3
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0EF0AE",
@@ -20392,7 +21562,11 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
+    "town": "Winterhold",
+    "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Winterhold",
     "km": 0.7
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -20476,8 +21650,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.1
+    "town": "Dawnstar",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.6
    },
    "plugin": "Snowpoint Dungeon.esp",
    "marker": "Skyrim.esm:0C2EF6",
@@ -20558,6 +21736,7 @@
    ],
    "hold": "Winterhold",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
@@ -20587,8 +21766,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.7
+    "town": "Winterhold",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162C0",
@@ -20630,8 +21813,12 @@
    "keywords": [],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.5
+    "town": "Winterhold",
+    "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.6
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0E0F69",
@@ -20658,8 +21845,12 @@
    "keywords": [],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.6
+    "town": "Winterhold",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.5
    },
    "plugin": "Ryn's Standing Stones.esp",
    "marker": "Skyrim.esm:0E0ED5",
@@ -20685,8 +21876,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Heljarchen Hall",
-    "km": 0.1
+    "town": "Stonehills",
+    "km": 0.5
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.9
    },
    "plugin": "Requiem.esp",
    "marker": null,
@@ -20746,8 +21941,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.5
+    "town": "Winterhold",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.4
    },
    "plugin": "Lux - Ryn's Azura's Shrine patch.esp",
    "marker": "Skyrim.esm:092496",
@@ -20768,8 +21967,12 @@
    "keywords": [],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Laintar Dale",
-    "km": 0.2
+    "town": "Winterhold",
+    "km": 0.8
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.8
    },
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0C2EFA",
@@ -20796,8 +21999,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
-    "km": 0.3
+    "town": "Winterhold",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 0.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162AE",
@@ -20835,8 +22042,12 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "Dunpar Wall Ruins",
-    "km": 0.7
+    "town": "Dawnstar",
+    "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Dawnstar",
+    "km": 0.4
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0162D3",
@@ -20913,7 +22124,11 @@
    ],
    "hold": "Winterhold",
    "nearestTown": {
-    "town": "College of Winterhold",
+    "town": "Winterhold",
+    "km": 0.3
+   },
+   "nearestCity": {
+    "town": "Winterhold",
     "km": 0.3
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
@@ -21021,6 +22236,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21064,6 +22280,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21105,6 +22322,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21139,6 +22357,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21164,6 +22383,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21207,6 +22427,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21280,6 +22501,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21367,6 +22589,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21390,6 +22613,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21434,6 +22658,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21460,6 +22685,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21486,6 +22712,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21599,6 +22826,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21622,6 +22850,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21655,6 +22884,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21682,6 +22912,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21705,6 +22936,7 @@
    ],
    "hold": "Wyrmstooth",
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Wyrmstooth.esp",
    "marker": null,
    "actors": {
@@ -21748,6 +22980,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100,
@@ -22039,10 +23272,8 @@
    "type": "Landmark",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Ultar's Charnel",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "clearXp": 100,
@@ -22195,6 +23426,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "NightmarePlane.esp",
    "marker": null,
    "clearXp": 100,
@@ -22212,10 +23444,8 @@
    "type": "DaedricShrine",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Slums",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22238,10 +23468,8 @@
    "type": "DaedricShrine",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Narfin's Inquisition Court",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "clearXp": 100
@@ -22257,6 +23485,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Saints and Seducers Extended Cut patch.esp",
    "marker": null,
    "actors": {
@@ -22311,6 +23540,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
    "marker": null,
    "actors": {
@@ -22332,10 +23562,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Narfin's Inquisition Court",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22357,6 +23585,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 1.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 2.3
    },
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
@@ -22491,6 +23723,10 @@
    "nearestTown": {
     "town": "Dragon Bridge",
     "km": 1.4
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 2.3
    },
    "plugin": "JK's Castle Volkihar.esp",
    "marker": "Dawnguard.esm:00BA4D",
@@ -22641,6 +23877,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100
@@ -22655,6 +23892,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Winterhold",
+    "km": 2.7
    },
    "plugin": "LoreRim - World Fixes.esp",
    "marker": null,
@@ -22688,10 +23929,8 @@
    "type": "Cave",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Slums",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22723,6 +23962,10 @@
    "nearestTown": {
     "town": "Karthwasten",
     "km": 0.6
+   },
+   "nearestCity": {
+    "town": "Morthal",
+    "km": 1.7
    },
    "plugin": "Dawnguard.esm",
    "marker": "Dawnguard.esm:004C0F",
@@ -22792,10 +24035,8 @@
    "type": "Landmark",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Emperor Gorieus' Charnel",
-    "km": 0.0
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22818,10 +24059,8 @@
    "type": "Mine",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Tele Village",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22845,6 +24084,7 @@
    "keywords": [],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "LoreRim - World Fixes.esp",
    "marker": null,
    "actors": {
@@ -22863,10 +24103,8 @@
    "type": "ImperialTower",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Ultar's Charnel",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22889,10 +24127,8 @@
    "type": "ImperialTower",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Curia Morimath",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -22934,6 +24170,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "ksws07_quest.esm",
    "marker": "ksws07_quest.esm:00154D",
    "actors": {
@@ -22962,10 +24199,8 @@
    "type": "Shack",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Tele Village",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "clearXp": 100
@@ -22982,6 +24217,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
    "marker": null,
    "actors": {
@@ -23003,6 +24239,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "NightmarePlane.esp",
    "marker": null,
    "actors": {
@@ -23030,6 +24267,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100
@@ -23043,10 +24281,8 @@
     "LocTypeDungeon"
    ],
    "hold": null,
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.6
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
    "marker": null,
    "clearXp": 100,
@@ -23084,10 +24320,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Adabal Inquisition Court",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23119,6 +24353,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -23140,6 +24375,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -23172,10 +24408,8 @@
    "type": "Fort",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Tele Village",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23208,10 +24442,8 @@
    "type": "Mine",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Tele Village",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23238,6 +24470,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -23271,6 +24504,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "ksws07_quest.esm",
    "marker": null,
    "clearXp": 100
@@ -23282,10 +24516,8 @@
    "type": "Cave",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Emperor Gorieus' Charnel",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23308,10 +24540,8 @@
    "type": "ImperialTower",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Narfin's Inquisition Court",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23344,10 +24574,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Waterfront District",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23434,10 +24662,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Tele Village",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23460,10 +24686,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Tele Village",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -23485,6 +24709,10 @@
    "nearestTown": {
     "town": "Shor's Stone",
     "km": 0.7
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 2.9
    },
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:047D25",
@@ -23569,6 +24797,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "NightmarePlane.esp",
    "marker": null,
    "actors": {
@@ -23596,6 +24825,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "NightmarePlane.esp",
    "marker": null,
    "clearXp": 100
@@ -23610,6 +24840,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -27130,10 +28361,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Narfin's Inquisition Court",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -27159,6 +28388,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100,
@@ -27176,10 +28406,8 @@
    "type": "Lighthouse",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Slums",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -27230,9 +28458,10 @@
    ],
    "hold": null,
    "nearestTown": {
-    "town": "Cormaris",
-    "km": 1.2
+    "town": "Raven Rock",
+    "km": 1.6
    },
+   "nearestCity": null,
    "plugin": "Journey to Baan Malur.esp",
    "marker": null,
    "actors": {
@@ -27259,6 +28488,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
    "marker": null,
    "actors": {
@@ -27315,6 +28545,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
    "marker": null,
    "actors": {
@@ -27336,6 +28567,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -27401,6 +28633,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -27466,6 +28699,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -27531,6 +28765,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "actors": {
@@ -27596,6 +28831,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
    "clearXp": 100,
@@ -27657,10 +28893,8 @@
    "type": "Lighthouse",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Emperor Gorieus' Charnel",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -27680,6 +28914,7 @@
    "keywords": [],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "UndeathFixes.esp",
    "marker": null,
    "actors": {
@@ -27728,10 +28963,8 @@
    "type": "Cave",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Emperor Gorieus' Charnel",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -27755,6 +28988,7 @@
    "keywords": [],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
    "marker": null,
    "actors": {
@@ -27774,6 +29008,7 @@
    "keywords": [],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
    "marker": null,
    "actors": {
@@ -28092,6 +29327,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Tools of Kagrenac.esp",
    "marker": null,
    "actors": {
@@ -28120,10 +29356,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Adabal Inquisition Court",
-    "km": 0.3
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -28146,10 +29380,8 @@
    "type": "Altar",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Adabal Inquisition Court",
-    "km": 0.3
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -28171,10 +29403,8 @@
    "type": "Shack",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Slums",
-    "km": 0.0
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -28200,6 +29430,10 @@
    "nearestTown": {
     "town": "Ivarstead",
     "km": 0.4
+   },
+   "nearestCity": {
+    "town": "Falkreath",
+    "km": 1.4
    },
    "plugin": "Skyrim.esm",
    "marker": null,
@@ -28496,10 +29730,8 @@
    "type": "NordicTower",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "clearXp": 100,
@@ -28525,10 +29757,8 @@
    "type": "NordicTower",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Ben Erai",
-    "km": 0.1
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "clearXp": 100,
@@ -28554,10 +29784,8 @@
    "type": "Cave",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Ultar's Charnel",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -28590,10 +29818,8 @@
    "type": "Cave",
    "keywords": [],
    "hold": null,
-   "nearestTown": {
-    "town": "Ultar's Charnel",
-    "km": 0.2
-   },
+   "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Vigilant.esm",
    "marker": null,
    "actors": {
@@ -28627,6 +29853,7 @@
    "keywords": [],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "ksws07_quest.esm",
    "marker": "ksws07_quest.esm:001541",
    "clearXp": 100,
@@ -28651,6 +29878,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "ksws07_quest.esm",
    "marker": "ksws07_quest.esm:00154C",
    "actors": {
@@ -28682,6 +29910,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "ksws07_quest.esm",
    "marker": "ksws07_quest.esm:00154C",
    "actors": {
@@ -28704,6 +29933,7 @@
    ],
    "hold": null,
    "nearestTown": null,
+   "nearestCity": null,
    "plugin": "Lux - Saints and Seducers Extended Cut patch.esp",
    "marker": null,
    "actors": {
