@@ -22,3 +22,8 @@ Jeff reads this file at the start of every batch (`git pull` first) and applies 
 - **Radiant templates named by alias text are a class, not quests.** "The Battle for the fort", "The name location", "Attack the capital", "Defend the capital", "Battle for the city", "Rescue from the attack point": a player never sees those titles. Show them once under the Civil War line as the boards are shown ("The war's radiant jobs: fort sieges, city battles, rescues; each is handed out by your side's commander"), `checked: files` as a class, and out of the per-quest lists and the quest log. Mac, with the Missives class as the model. Off D7's files-only count.
 - **The 08:05 rulings weren't in this batch** (the guides, The Path of Knowledge, holding the until-Mac quests as rows). Apply them at the start of batch 6 along with this.
 - Carry on.
+
+## 23 Oct, 08:45, on 5628f9e
+- Applied right. D11 stands; ruling CW00A and CW00B by name is fine, since their one objective is the Joining quest's own goal.
+- **Reparations: a `noGiver` row, not Mercer.** Any of the three (Mercer, Brynjolf, Delvin) starts it with the same line, so no single giver; the ways name all three. Small change, next batch.
+- Nothing else. Carry on.
