@@ -4936,8 +4936,12 @@ Status: queued
 6. **A place condition is where the quest is, not a need.** A Lovely Letter says "needs When you enter Riverwood" and `openForYou` is "unknown: needs the place you enter is Riverwood"; and "It starts by itself when you walk into any inn" is the same Riverwood trigger worded wrong. A `GetInCell`, `GetInLocation` or change-location test on a way is where the way happens: fold it into the way's `where` ("in Riverwood"), never into needs, and `openForYou` is open ("open for you, in Riverwood"). WO-137's item 6(c) said this for triggers; it holds for talks too.
 7. **Chapter text loses its paragraphs through the door.** A chapter written with blank lines reads back from `get_playthrough` as one block. Keep the paragraphs in the stored text, return them as written, and check the site shows them (the Story page and the reader).
 
+8. **Homes are nowhere in the door either.** The conjurer test searched "Breezehome" and got "No quest matched". Add `homes` beside `mounts` in `get_rules` (or `get_fact`), from `lorerim/systems/economy-and-work.md`'s checked prices: Breezehome (Whiterun, 5,000, after Dragon Rising), Honeyside (Riften, 8,000), Vlindrel Hall (Markarth, 8,000), Hjerim (Windhelm, 12,000), Proudspire Manor (Solitude, 25,000), the three Hearthfire plots (5,000 each, after thaneship of that hold), Severin Manor (Raven Rock, 10,000, after Served Cold), and the Creation Club homes with their gates. Each with "checked: files" or "not checked" as the doc has it.
+9. **An item can't be found by name.** Three tests set no gear because "no tool exposes gear names"; `set_gear` only corrects a wrong one. `search_facts` gains the kind `item` (name, slot or type, material), names only, so an assistant can find "Thieves Guild Cuirass" or "iron greatsword" before `set_gear`. The gear pages stay held (WO-93); this is the names.
+10. **`get_rules` says level 1 has no points.** Three assistants sent skill points at level 1; add the sentence to How points work and to `get_rules`.
+
 ### Done when
-- [ ] 1 to 7, each with a test. Player question 24 ("How do I get a horse? I'm level 5 in Riften.") returns the stable price, Running Wild as open, the tamed horse and the paraglider. Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+- [ ] 1 to 10, each with a test. Player question 24 ("How do I get a horse? I'm level 5 in Riften.") returns the stable price, Running Wild as open, the tamed horse and the paraglider. Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
 ---
 
@@ -5664,6 +5668,7 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
 - Measure every place to a fixed list: the nine hold capitals by their exterior map markers, then the real settlements and villages WO-141 Part 1 adds (Riverwood, Ivarstead, Rorikstead, Shor's Stone, Dragon Bridge, Karthwasten, Kynesgrove, Darkwater Crossing, Stonehills, Helgen, the Skaal Village, Raven Rock, and the lands mods' own). Keep both: `nearestTown` (the nearest of all of them) and `nearestCity` (the nearest capital), each with km.
 - Never a ruin, a manor, a gate or a platform as a town. A test that every one of the nine capitals has at least ten places within 5 km, and that `nearestTown` is never a place in the index itself.
 - `suggest_places` for Kyria's Act I (Riften) and the thief test's Act I return places; the note "doesn't measure distances from" goes away for all nine.
+- **The roads between towns.** The conjurer test routed Helgen to Whiterun to Windhelm to Winterhold from training knowledge, because the planner gives no geography. Add a town-to-town table (every capital and settlement to every other, km by marker) to `places.json`, and `suggest_places` returns `nearTowns` for the act's towns (the five nearest, with km), so a route's next stop is the planner's, not the assistant's memory.
 - [ ] Part 5 built and tested; `suggest_places` returns places for each of the nine capitals.
 
 ---
