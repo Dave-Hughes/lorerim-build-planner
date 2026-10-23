@@ -21,9 +21,10 @@ Every order has, under its heading:
 4. Build the order as written. Under WO-138 Part 5 you decide any pattern or wording call yourself, write the decision and its reason under the order, and keep going. Run every check in CLAUDE.md (`npm test` includes the player questions). For batch work, Rex on a sample.
 5. Push with the boxes ticked and `Status: for Bob`. Never push `main`. Rebase before every push; the other Jeff is pushing too.
 6. If a check fails and a second try doesn't fix it, write what failed under the order, set `Status: blocked (Mac)`, push, and take the next queued order.
-7. If nothing is queued for you, wait for the order file to change on staging, then go to 1:
+7. If nothing is queued for you, **don't stop and don't end your turn**: run this wait in the foreground (or as a background task you wait on), then go to 1. A Jeff that ends its turn stops the loop until Dave restarts it.
    `until git fetch -q origin staging && ! git diff --quiet HEAD origin/staging -- docs/work-orders.md; do sleep 300; done`
 8. After a context compaction, read this file again before doing anything.
+9. Push a progress commit at least every 45 minutes on a long part (what's done, what's next, under the order), so Bob and Dave can see you're alive.
 
 ## Bob's loop
 - A watcher on `staging` (re-armed every 30 minutes while the chat with Dave is open) wakes Bob on every push by a Jeff.
