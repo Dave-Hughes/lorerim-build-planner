@@ -2,7 +2,7 @@
 
 Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
-**496 places.** 272 have a pointer (a line or a book that names them), 205 have a quest that goes there, and 164 have neither.
+**580 places.** 323 have a pointer (a line or a book that names them), 249 have a quest that goes there, and 187 have neither.
 
 ## The nine capitals
 
@@ -17,9 +17,12 @@ All nine found with an exterior position.
 | Landmark | 76 | 30 | 36 |
 | NordicRuin | 54 | 41 | 34 |
 | Fort | 39 | 35 | 25 |
+| Inn | 37 | 23 | 18 |
 | DragonLair | 29 | 9 | 1 |
 | Shack | 23 | 5 | 5 |
 | DwemerRuin | 22 | 16 | 18 |
+| Temple | 22 | 13 | 9 |
+| Guild | 16 | 8 | 10 |
 | ImperialTower | 14 | 6 | 5 |
 | Mine | 14 | 8 | 4 |
 | GiantCamp | 13 | 12 | 0 |
@@ -28,6 +31,7 @@ All nine found with an exterior position.
 | NordicTower | 12 | 6 | 2 |
 | Doomstone | 11 | 0 | 1 |
 | Altar | 11 | 3 | 3 |
+| Keep | 9 | 7 | 7 |
 | Town | 9 | 9 | 7 |
 | DaedricShrine | 8 | 1 | 2 |
 | Shipwreck | 7 | 3 | 0 |
@@ -42,18 +46,18 @@ All nine found with an exterior position.
 
 | Hold | Places | With a pointer | With a quest |
 |---|---|---|---|
-| (none) | 70 | 31 | 23 |
-| Solstheim | 49 | 24 | 32 |
-| Falkreath | 48 | 26 | 19 |
-| The Rift | 46 | 31 | 18 |
-| The Reach | 45 | 28 | 17 |
-| Eastmarch | 40 | 24 | 18 |
-| Whiterun | 37 | 24 | 13 |
-| The Pale | 33 | 20 | 15 |
-| Winterhold | 32 | 18 | 17 |
-| Hjaalmarch | 26 | 15 | 8 |
-| Haafingar | 23 | 14 | 10 |
-| Wyrmstooth | 17 | 9 | 6 |
-| Alik'r Desert | 13 | 5 | 4 |
+| (none) | 72 | 33 | 24 |
+| The Rift | 57 | 34 | 23 |
+| Falkreath | 54 | 29 | 21 |
+| The Reach | 54 | 33 | 22 |
+| Eastmarch | 52 | 31 | 20 |
+| Solstheim | 52 | 25 | 34 |
+| Whiterun | 48 | 34 | 22 |
+| Winterhold | 41 | 24 | 25 |
+| The Pale | 37 | 22 | 18 |
+| Hjaalmarch | 29 | 17 | 9 |
+| Haafingar | 29 | 19 | 15 |
+| Wyrmstooth | 22 | 13 | 7 |
+| Alik'r Desert | 15 | 6 | 4 |
 | Hjorkvild Isles | 10 | 1 | 2 |
-| Morrowind | 7 | 2 | 3 |
+| Morrowind | 8 | 2 | 3 |

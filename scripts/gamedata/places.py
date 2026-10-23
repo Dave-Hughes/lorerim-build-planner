@@ -71,6 +71,23 @@ NAMED_PLACES = SETTLEMENTS | STRONGHOLDS  # item 2: these bypass the usual exclu
 # The stronghold gate guard's line (found by searching dialogue for "Blood-Kin"): shared across all four, under
 # "Generic dialogue for orc villagers" (Skyrim.esm:03907C), not any one stronghold's own quest.
 STRONGHOLD_GATE = "Skyrim.esm:0BBB2D"
+# Item 3: named buildings a character goes to on purpose. Temples, inns and guild halls (the two colleges are
+# LocTypeGuild too, confirmed on Winterhold College and The Bards College) are found by keyword, system-wide, never
+# narrowed to the nine cities -- the order's own examples (every inn, a Thieves Guild hall) want them all. A keep is
+# found by CWCAPITALHQ, not LocTypeCastle (which also covers Castle Volkihar and other non-capital castles): confirmed
+# against all nine jarls' seats and nothing else. These have no exterior marker of their own (an interior-only
+# location), so their town is the first ancestor in CAPITALS or SETTLEMENTS up their own parent chain, never a
+# distance -- `inTown`, not `nearestTown`. Kept off the map by their `type` (Mac's "rule 20" on `suggest_places`).
+BUILDING_KW = {"LocTypeTemple", "LocTypeInn", "LocTypeGuild"}
+KEEP_KW = "CWCapitalHQ"
+# Bob's ruling (23 Oct, 15:20): the km is real, but this is a small map, so a player's own measure goes beside it.
+# Set from two pairs Bob gave: Riverwood to Whiterun (0.5 km) is "a short walk"; Whiterun to Riften (2.5 km) is "a
+# long day's road". Embershard Mine to Riverwood (0.3 km, practically touching) sets the top of "next to it".
+WALK_BANDS = [(0.4, "next to it"), (1.0, "a short walk"), (2.0, "half a day")]
+
+
+def walk(km):
+    return next((w for cutoff, w in WALK_BANDS if km < cutoff), "a long day's road")
 # The LocType keywords that make a place, and those that rule one out (where people live, trade or rule).
 PLACE_KW = {"LocTypeDungeon", "LocTypeCave", "LocTypeMine", "LocTypeMilitaryFort", "LocTypeAnimalDen", "LocTypeBanditCamp",
             "LocTypeDraugrCrypt", "LocTypeDwarvenAutomatons", "LocTypeFalmerHive", "LocTypeForswornCamp", "LocTypeGiantCamp",
@@ -325,11 +342,20 @@ def build(version):
         # A dungeon near a town is often parented to it (Shroud Hearth Barrow to Ivarstead): only a location with no place
         # keyword or marker of its own is ruled out by its parent.
         named = l["name"] in NAMED_PLACES
-        if not named and (names & NOT_KW or mtype in NOT_PLACES or (inside_town and not (names & PLACE_KW or mtype))):
+        is_keep = KEEP_KW in names
+        building = bool(names & BUILDING_KW) or is_keep  # item 3: temples, inns, guild halls (colleges too), keeps
+        bypass = named or building
+        if not bypass and (names & NOT_KW or mtype in NOT_PLACES or (inside_town and not (names & PLACE_KW or mtype))):
             continue
-        if not named and not (names & PLACE_KW or (mtype and mtype not in NOT_PLACES)):
+        if not bypass and not (names & PLACE_KW or (mtype and mtype not in NOT_PLACES)):
             continue
-        kind = mtype or next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or "Landmark"
+        if is_keep:
+            kind = "Keep"
+        elif building:
+            kind = next(w for kw2, w in (("LocTypeTemple", "Temple"), ("LocTypeInn", "Inn"), ("LocTypeGuild", "Guild")) if kw2 in names)
+        else:
+            kind = mtype or next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or "Landmark"
+        in_town = next((locs[x]["name"] for x in up if locs[x].get("name") in (CAPITALS | SETTLEMENTS)), None) if building else None
 
         def nearest(candidates):
             if not (m and m.get("pos")):
@@ -341,14 +367,17 @@ def build(version):
                 dist = sum((a - b) ** 2 for a, b in zip(tm["pos"][:2], m["pos"][:2])) ** 0.5
                 if best is None or dist < best[0]:
                     best = (dist, tname)
-            return {"town": best[1], "km": round(best[0] * 0.0142875 / 1000, 1)} if best else None  # 1 unit = 1.43 cm
+            if not best:
+                return None
+            km = round(best[0] * 0.0142875 / 1000, 1)  # 1 unit = 1.43 cm
+            return {"town": best[1], "km": km, "walk": walk(km)}
 
         near, near_city = nearest(towns), nearest(cities)
         # The map's name when it only extends the record's ("Embershard" -> "Embershard Mine"); never another place's (a mod's
         # Morvunskar Crypts that points at Bleak Falls Barrow's marker keeps its own name).
         shown = m["name"] if (m or {}).get("name") and l["name"].lower() in m["name"].lower() else l["name"]
         places[k] = {"id": k, "name": shown, **({"recordName": l["name"]} if shown != l["name"] else {}), "edid": l["edid"], "type": kind, "keywords": sorted(x for x in names if x.startswith("LocType")),
-                     "hold": hold_of(k), "nearestTown": near, "nearestCity": near_city, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
+                     "hold": hold_of(k), "nearestTown": near, "nearestCity": near_city, "inTown": in_town, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
         if l["name"] in STRONGHOLDS and infos.get(STRONGHOLD_GATE):
             gate = infos[STRONGHOLD_GATE]
             places[k]["enters"] = {"words": " ".join(gate["lines"]), "record": f"INFO {STRONGHOLD_GATE} ({gate['plugin']})"}
@@ -461,7 +490,7 @@ def build_site(rows):
     """The planner's places.json from the raw rows: what a page or an assistant shows, without record ids or editor ids."""
     out = []
     for p in rows:
-        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "clearXp") if p.get(k) is not None}
+        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "clearXp") if p.get(k) is not None}
         if p.get("actors"):
             r["actors"] = p["actors"]
         if p.get("pointers"):

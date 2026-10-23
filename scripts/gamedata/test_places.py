@@ -81,10 +81,18 @@ class BuiltIndex(unittest.TestCase):
         self.assertFalse(towns & {"Wintersand Manor", "Flight Platform", "Dunpar Wall Ruins", "Unknown Gate"})
 
     def test_each_of_the_nine_capitals_has_places_nearby(self):
-        # WO-144 Part 1's own test: all nine, the five anchored (CAPITAL_ANCHOR, Bob's ruling) included.
-        by_city = collections.Counter(p["nearestCity"]["town"] for p in self.rows if p.get("nearestCity"))
+        # WO-144 Part 1's own test, tightened by Bob 23 Oct 15:20: "ten places within a short walk to half a day",
+        # not a flat 5 km (which covers most of a hold on this small map and proved too little).
+        close = ("next to it", "a short walk", "half a day")
+        by_city = collections.Counter(p["nearestCity"]["town"] for p in self.rows if p.get("nearestCity") and p["nearestCity"]["walk"] in close)
         for city in pl.CAPITALS:
             self.assertGreaterEqual(by_city[city], 10, city)
+
+    def test_walk_bands_follow_bob_s_two_pairs(self):
+        # Riverwood to Whiterun (0.5 km) is "a short walk"; Whiterun to Riften (2.5 km) is "a long day's road".
+        self.assertEqual(pl.walk(0.5), "a short walk")
+        self.assertEqual(pl.walk(2.5), "a long day's road")
+        self.assertEqual(self.by["Riverwood"]["nearestCity"]["walk"], "a short walk")
 
     def test_riverwood_is_still_a_settlement_and_never_a_capital_itself(self):
         mine = self.by["Embershard Mine"]
@@ -105,6 +113,22 @@ class BuiltIndex(unittest.TestCase):
             self.assertIn("Orc", gate["words"])
             self.assertIn("Blood-Kin", gate["words"])
             self.assertTrue(gate["record"].startswith("INFO "))
+
+    def test_city_buildings_are_findable_with_their_town(self):
+        # WO-144 Part 1 item 3: named by keyword (CWCapitalHQ for a keep; LocTypeTemple/Inn/Guild otherwise), their
+        # town is a parent-chain fact (inTown), never a distance guess.
+        by_type = collections.Counter(p["type"] for p in self.rows if p["type"] in ("Temple", "Inn", "Guild", "Keep"))
+        self.assertEqual(by_type["Keep"], 9)  # exactly the nine jarls' seats, never a non-capital castle
+        self.assertGreater(by_type["Inn"], 20)
+        self.assertGreater(by_type["Temple"], 5)
+        self.assertGreater(by_type["Guild"], 5)
+        for nm, city in (("Dragonsreach", "Whiterun"), ("Temple of Kynareth", "Whiterun"), ("The Bannered Mare", "Whiterun"),
+                         ("Jorrvaskr", "Whiterun"), ("Winterhold College", "Winterhold"), ("The Bards College", "Solitude")):
+            self.assertEqual(self.by[nm]["inTown"], city, nm)
+
+    def test_buildings_never_pick_up_a_non_capital_castle(self):
+        castles = {p["name"] for p in self.rows if p["type"] == "Keep"}
+        self.assertNotIn("Castle Volkihar", castles)
 
 
 if __name__ == "__main__":
