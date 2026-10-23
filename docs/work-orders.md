@@ -4914,6 +4914,32 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-138  Finish the quest starts: the last 40, and every start checked against a second source (PC, 23 Oct 2026)
+
+**Why.** Dave asked for a straight answer on what is left for quests. 1,202 of 1,242 starts are checked, but that is the check against the game's own files. Only 133 are in the answer key, which is where a second source (UESP) has agreed. The other ~1,070 rest on the files alone, and Dave's own test found the files-alone starts wrong in two of the five quests he tried (Deathbrand's level and Geldis, Paragliding's missing place). So there are two jobs: close the 40, and check the rest against UESP the way the loop did for the unchecked ones.
+
+### Part 1. The last 40 (PC)
+- **Notes handed over in a talk (about 12: the eight fishing jobs, In the Shadows, others).** The check doesn't read a talk that hands you a note and then the note starting the quest. Read it: a dialogue line whose script adds a book or note, then that book's read script sets the stage. Same for Viriya's fishing jobs and Whiterun's steward.
+- **A Black Book read in a place (six).** The book's script isn't a plain "read" one; read the book's activate/read scripts and place the book with `readables.py`.
+- **The Thieves Guild's five city jobs.** Trace by hand: TGRShell's `TGRadiantCount`, the stage after it, and what sets it (likely Delvin's talk). Say what the records say; if a script sets it that none of ours names, say so.
+- **Three set only by later quests** (Stendarr's Guides, Memory Guide, one more): decide with UESP; Bob rules on the rest.
+- **Three helper-only** (Purity of Revenge, Glory of the Dead, March of the Dead): UESP reading, then the planner says what UESP says, marked as the wiki.
+- Whatever is still unsettled goes on the needs-Bob list with both readings, as before.
+
+### Part 2. Every checked start against UESP (PC, the loop's way)
+- Batches of 40 checked base-game and DLC quests (Creation Club included), most-played first (main, guilds, Daedric, the big side lines). For each, fetch the UESP page and compare who, where, the first step and the gate with the planner's page.
+- **Agree:** a key row, `source: uesp`, with the url.
+- **Disagree:** a needs-Bob entry with both readings and the record ids, never a guess and never silently trusting either. Where the records win (a LoreRim mod changes it), say so and keep the records' answer with the difference noted.
+- **Mod quests** have no second source here: leave them as files-only and count them, so the planner can say "checked in the game files; no wiki page".
+- Same gate as WO-132: the answer key and tests after every batch; undo a batch that breaks a passing row; Rex on a sample of each; stop on the same conditions. Report: how many agreed, how many differ, and the differences grouped by kind, so Bob can see whether the same fault keeps appearing (the way Deathbrand's level and Paragliding's place did).
+
+### Done when
+- [ ] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
+- [ ] Part 2: every base-game and DLC start is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
+- [ ] Player questions still pass; every check in CLAUDE.md passes. Push staging and stop for Bob.
+
+---
+
 ## WO-137  Five faults in Dave's final test (Mac, with the PC for one check, 22 Oct 2026)
 
 **Why.** Dave's Claude answered the first four test questions (22 Oct, 14:19). Running Wild and the Riften question were right. Bob read the rest against the live planner and `get_quest_log` and found five faults, now questions 12 to 16 in `docs/player-questions.md`:
