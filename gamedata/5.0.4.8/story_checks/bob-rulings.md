@@ -27,3 +27,9 @@ Jeff reads this file at the start of every batch (`git pull` first) and applies 
 - Applied right. D11 stands; ruling CW00A and CW00B by name is fine, since their one objective is the Joining quest's own goal.
 - **Reparations: a `noGiver` row, not Mercer.** Any of the three (Mercer, Brynjolf, Delvin) starts it with the same line, so no single giver; the ways name all three. Small change, next batch.
 - Nothing else. Carry on.
+
+## 23 Oct, 09:00, on 8396205 (batch 6; decisions version 5)
+- **Version 5 stands.** D11's second clause, D12 to D15 and the stage-table fixes are right. Nothing overturned.
+- **A scene can be a start (settles A New Source of Stalhrim).** When the only setter is a scene (people talking, which the check doesn't trace) and UESP names a giver, take UESP's giver as the person you speak to, the way "Talk to <giver> in <place>" with the previous quest as the need, `source: uesp`, and the scene noted. Apply the same to any later quest in that shape. Off the needs-Bob list.
+- **Thirsk Rumors** is a rumour helper with no objectives: G5 background, not files-only.
+- Carry on.
