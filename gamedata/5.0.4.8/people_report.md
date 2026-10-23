@@ -24,7 +24,7 @@
 
 | Town | People |
 |---|---|
-| (none) | 3146 |
+| (none) | 3079 |
 | Whiterun | 206 |
 | Solitude | 187 |
 | Falkreath | 174 |

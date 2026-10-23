@@ -95,7 +95,8 @@ def build(version):
         return out
 
     def in_town(loc_key):
-        return next((locs[x]["name"] for x in chain(loc_key) if locs[x].get("name") in (pl.CAPITALS | pl.SETTLEMENTS)), None)
+        # Bob, 23 Oct: Borgakh had no town -- she's at Mor Khazgur, a stronghold, which this left out.
+        return next((locs[x]["name"] for x in chain(loc_key) if locs[x].get("name") in (pl.CAPITALS | pl.SETTLEMENTS | pl.STRONGHOLDS)), None)
 
     people = {}
     for a in actors.values():

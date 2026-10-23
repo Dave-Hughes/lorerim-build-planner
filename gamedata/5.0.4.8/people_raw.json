@@ -832,6 +832,176 @@
    "plugin": "Lux Orbis.esp"
   },
   {
+   "id": "Skyrim.esm:013B7B",
+   "name": "Arob",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": "JobHunter",
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000C6A",
+   "name": "Balgrob",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:013B79",
+   "name": "Chief Burguk",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Skyrim.esm:0C78C0",
+   "name": "Dulug",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Dushnikh Mine",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000C68",
+   "name": "Fulgrub",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:0C78C2",
+   "name": "Ghak",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Dushnikh Mine",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:013B7C",
+   "name": "Gharol",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Skyrim.esm:013B81",
+   "name": "Ghorbash the Iron Hand",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000C6E",
+   "name": "Hurgab",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:0C78BE",
+   "name": "Mahk",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Dushnikh Mine",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:013B7A",
+   "name": "Murbul",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Skyrim.esm:013B7F",
+   "name": "Nagrub",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Skyrim.esm:013B80",
+   "name": "Oglub",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Dushnikh Mine",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:013B7D",
+   "name": "Shel",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000C6C",
+   "name": "Skuld",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000C66",
+   "name": "Sugra",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:013B7E",
+   "name": "Umurn",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Burguk's Longhouse",
+   "inTown": "Dushnikh Yal",
+   "role": null,
+   "plugin": "Lux.esp"
+  },
+  {
    "id": "Dawnguard.esm:0146DC",
    "name": "Adventurer",
    "race": "Imperial",
@@ -3632,6 +3802,146 @@
    "plugin": "The Great Village of Kynesgrove.esp"
   },
   {
+   "id": "Skyrim.esm:019E18",
+   "name": "Atub",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:03BC26",
+   "name": "Chief Yamarz",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:019E1C",
+   "name": "Garakh",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000ADF",
+   "name": "Gh�ra",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Lux Via.esp"
+  },
+  {
+   "id": "Skyrim.esm:019E20",
+   "name": "Gularzob",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "The Cursed Tribe - Quest Expansion.esp:000075",
+   "name": "Haunting Ghost",
+   "race": null,
+   "sex": "male",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000ADD",
+   "name": "Horza",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Lux Via.esp"
+  },
+  {
+   "id": "Skyrim.esm:019E1E",
+   "name": "Lob",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000AE6",
+   "name": "Lorm",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Lux Via.esp"
+  },
+  {
+   "id": "Skyrim.esm:019E16",
+   "name": "Malacath",
+   "race": "Dremora",
+   "sex": "male",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:019E22",
+   "name": "Ogol",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000AE4",
+   "name": "Ogthrak",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Lux Via.esp"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000AE2",
+   "name": "R�kd�g",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Lux Via.esp"
+  },
+  {
+   "id": "Skyrim.esm:019E1A",
+   "name": "Ugor",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Largashbur Longhouse",
+   "inTown": "Largashbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
    "id": "Skyrim.esm:013385",
    "name": "Adara",
    "race": "Redguard",
@@ -5032,6 +5342,206 @@
    "plugin": "Snazzy Interiors - Markarth AIO - Lux patch.esp"
   },
   {
+   "id": "Orc Strongholds - All In One.esp:000577",
+   "name": "Azgab",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:019955",
+   "name": "Bagrak",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Larak's Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:00057D",
+   "name": "Bargat",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:019959",
+   "name": "Borgakh the Steel Heart",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Larak's Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Wyrmstooth.esp:220693",
+   "name": "Bulak",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Kazmalgur Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
+   "id": "Skyrim.esm:019951",
+   "name": "Chief Larak",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Larak's Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:00057B",
+   "name": "Fazog",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Wyrmstooth.esp:220685",
+   "name": "Gashnag",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Kazmalgur Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
+   "id": "Skyrim.esm:0C78CC",
+   "name": "Ghamorz",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Mor Khazgur Mine",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Wyrmstooth.esp:22069B",
+   "name": "Ghorlag",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Kazmalgur Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
+   "id": "Skyrim.esm:0C78CA",
+   "name": "Gul",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Mor Khazgur Mine",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000572",
+   "name": "Gurzak",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Wyrmstooth.esp:220699",
+   "name": "Largahk",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Kazmalgur Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
+   "id": "Wyrmstooth.esp:220697",
+   "name": "Lorzub",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Kazmalgur Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
+   "id": "Skyrim.esm:01995B",
+   "name": "Olur",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Larak's Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:019953",
+   "name": "Sharamph",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Larak's Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:019957",
+   "name": "Shuftharz",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Larak's Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000579",
+   "name": "Tarzag",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000575",
+   "name": "Urgat",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Wyrmstooth.esp:22068D",
+   "name": "Ushlog",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Kazmalgur Longhouse",
+   "inTown": "Mor Khazgur",
+   "role": null,
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
    "id": "Skyrim.esm:0135E5",
    "name": "Agni",
    "race": "Nord",
@@ -5320,6 +5830,166 @@
    "inTown": "Morthal",
    "role": null,
    "plugin": "Lux - COTN Morthal patch.esp"
+  },
+  {
+   "id": "Skyrim.esm:01B076",
+   "name": "Bolar",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Mauhulakh's Longhouse",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:0C78E1",
+   "name": "Bor",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Gloombound Mine",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:00020C",
+   "name": "Borzug",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:01B075",
+   "name": "Chief Mauhulakh",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Mauhulakh's Longhouse",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:01B079",
+   "name": "Dushnamub",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Mauhulakh's Longhouse",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:01B09A",
+   "name": "Gadba gro-Largash",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Gloombound Mine",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:00021F",
+   "name": "Gorab",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000212",
+   "name": "Gurzog",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:00022A",
+   "name": "Horzug",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:00022C",
+   "name": "Krogzah",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": null,
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:0C78DF",
+   "name": "Mogdurz",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Gloombound Mine",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:01B07A",
+   "name": "Mul gro-Largash",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": "Gloombound Mine",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Orc Strongholds - All In One.esp:000218",
+   "name": "Tarhz",
+   "race": "Orsimer",
+   "sex": "male",
+   "cell": null,
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:0E316F",
+   "name": "Uglarz",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Mauhulakh's Longhouse",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:01B078",
+   "name": "Urog",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Mauhulakh's Longhouse",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:01B077",
+   "name": "Yatul",
+   "race": "Orsimer",
+   "sex": "female",
+   "cell": "Mauhulakh's Longhouse",
+   "inTown": "Narzulbur",
+   "role": null,
+   "plugin": "Skyrim.esm"
   },
   {
    "id": "Dragonborn.esm:018280",
@@ -16902,16 +17572,6 @@
    "plugin": "Dragonborn.esm"
   },
   {
-   "id": "Skyrim.esm:013B7B",
-   "name": "Arob",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": "JobHunter",
-   "plugin": "Lux.esp"
-  },
-  {
    "id": "Skyrim.esm:084552",
    "name": "Arrald Frozen-Heart",
    "race": "Nord",
@@ -17172,16 +17832,6 @@
    "plugin": "Vigilant.esm"
   },
   {
-   "id": "Skyrim.esm:019E18",
-   "name": "Atub",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Vigilant.esm:270D6D",
    "name": "Auroran",
    "race": "Auroran Race",
@@ -17300,16 +17950,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000577",
-   "name": "Azgab",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Arena - Markarth Side.esp:0A8E2C",
@@ -17432,16 +18072,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:019955",
-   "name": "Bagrak",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Larak's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Journey to Baan Malur.esp:230F69",
    "name": "Bags-Under-Her-Eyes",
    "race": "Argonian",
@@ -17510,16 +18140,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000C6A",
-   "name": "Balgrob",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Wyrmstooth.esp:272C15",
@@ -17710,16 +18330,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Journey to Baan Malur.esp"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:00057D",
-   "name": "Bargat",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:0D823D",
@@ -18802,16 +19412,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:01B076",
-   "name": "Bolar",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Mauhulakh's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Skyrim.esm:014126",
    "name": "Bolfrida Brandy-Mug",
    "race": "Nord",
@@ -18972,16 +19572,6 @@
    "plugin": "Lux - Wyrmstooth.esp"
   },
   {
-   "id": "Skyrim.esm:0C78E1",
-   "name": "Bor",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Gloombound Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Journey to Baan Malur.esp:1520AD",
    "name": "Boras",
    "race": "Dunmer",
@@ -18992,16 +19582,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:019959",
-   "name": "Borgakh the Steel Heart",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Larak's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Kidmer - Adoptable Elf Children 1_2.esp:0048CD",
    "name": "Borgrob",
    "race": null,
@@ -19010,16 +19590,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:00020C",
-   "name": "Borzug",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Journey to Baan Malur.esp:34E996",
@@ -19420,16 +19990,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Dragonborn.esm"
-  },
-  {
-   "id": "Wyrmstooth.esp:220693",
-   "name": "Bulak",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Kazmalgur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Wyrmstooth.esp"
   },
   {
    "id": "ccbgssse019-staffofsheogorath.esl:000812",
@@ -20292,36 +20852,6 @@
    "plugin": "Lux Via.esp"
   },
   {
-   "id": "Skyrim.esm:013B79",
-   "name": "Chief Burguk",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
-  },
-  {
-   "id": "Skyrim.esm:019951",
-   "name": "Chief Larak",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Larak's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Skyrim.esm:01B075",
-   "name": "Chief Mauhulakh",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Mauhulakh's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Requiem - More Unique Enemies.esp:00084C",
    "name": "Chief Murzghol",
    "race": "Orsimer",
@@ -20330,16 +20860,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Dragonborn.esm"
-  },
-  {
-   "id": "Skyrim.esm:03BC26",
-   "name": "Chief Yamarz",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Journey to Baan Malur.esp:48C721",
@@ -22852,16 +23372,6 @@
    "plugin": "Vigilant.esm"
   },
   {
-   "id": "Skyrim.esm:0C78C0",
-   "name": "Dulug",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Dushnikh Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "HLIORemi.esp:2D0150",
    "name": "Dumac",
    "race": "Horse",
@@ -22970,16 +23480,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Miasma.esp"
-  },
-  {
-   "id": "Skyrim.esm:01B079",
-   "name": "Dushnamub",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Mauhulakh's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "HearthFires.esm:010FBB",
@@ -24372,16 +24872,6 @@
    "plugin": null
   },
   {
-   "id": "Orc Strongholds - All In One.esp:00057B",
-   "name": "Fazog",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Ryn's Saarthal.esp:000C39",
    "name": "Fedure Deveri",
    "race": "Dunmer",
@@ -25512,16 +26002,6 @@
    "plugin": null
   },
   {
-   "id": "Orc Strongholds - All In One.esp:000C68",
-   "name": "Fulgrub",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Skyrim.esm:0DA68A",
    "name": "Fultheim",
    "race": "Nord",
@@ -25580,16 +26060,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:01B09A",
-   "name": "Gadba gro-Largash",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Gloombound Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:02EB58",
@@ -25692,16 +26162,6 @@
    "plugin": "Journey to Baan Malur.esp"
   },
   {
-   "id": "Skyrim.esm:019E1C",
-   "name": "Garakh",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Dawnguard.esm:003364",
    "name": "Garan Marethi",
    "race": "Dunmer",
@@ -25740,16 +26200,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Dragonborn.esm"
-  },
-  {
-   "id": "Wyrmstooth.esp:220685",
-   "name": "Gashnag",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Kazmalgur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Wyrmstooth.esp"
   },
   {
    "id": "Destroy the Dark Brotherhood - Quest Expansion.esp:000D64",
@@ -25922,26 +26372,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:0C78C2",
-   "name": "Ghak",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Dushnikh Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Skyrim.esm:0C78CC",
-   "name": "Ghamorz",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Mor Khazgur Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Journey to Baan Malur.esp:03393F",
    "name": "Gharek",
    "race": "Orsimer",
@@ -25952,16 +26382,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:013B7C",
-   "name": "Gharol",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
-  },
-  {
    "id": "Skyrim.esm:08CDA2",
    "name": "Ghoguk",
    "race": "Orsimer",
@@ -25970,26 +26390,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:013B81",
-   "name": "Ghorbash the Iron Hand",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
-  },
-  {
-   "id": "Wyrmstooth.esp:22069B",
-   "name": "Ghorlag",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Kazmalgur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Wyrmstooth.esp"
   },
   {
    "id": "Skyrim.esm:0B1F96",
@@ -26190,16 +26590,6 @@
    "inTown": null,
    "role": null,
    "plugin": "ccbgssse067-daedinv.esm"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000ADF",
-   "name": "Gh�ra",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux Via.esp"
   },
   {
    "id": "Skyrim.esm:0C97D1",
@@ -26810,16 +27200,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:00021F",
-   "name": "Gorab",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:0C0BE5",
@@ -27452,26 +27832,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:0C78CA",
-   "name": "Gul",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Mor Khazgur Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Skyrim.esm:019E20",
-   "name": "Gularzob",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "ForgottenCity.esp:01C4BB",
    "name": "Gulvar",
    "race": "Nord",
@@ -27560,26 +27920,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000572",
-   "name": "Gurzak",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000212",
-   "name": "Gurzog",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Journey to Baan Malur.esp:2C077E",
@@ -28080,16 +28420,6 @@
    "inTown": null,
    "role": null,
    "plugin": "The Great Village of Mixwater Mill.esp"
-  },
-  {
-   "id": "The Cursed Tribe - Quest Expansion.esp:000075",
-   "name": "Haunting Ghost",
-   "race": null,
-   "sex": "male",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Vigilant.esm:056BF2",
@@ -28672,26 +29002,6 @@
    "plugin": null
   },
   {
-   "id": "Orc Strongholds - All In One.esp:000ADD",
-   "name": "Horza",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux Via.esp"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:00022A",
-   "name": "Horzug",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Journey to Baan Malur.esp:20799A",
    "name": "Hothis",
    "race": "Dunmer",
@@ -28890,16 +29200,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Fort Dunstad.esp"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000C6E",
-   "name": "Hurgab",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Orc Exiles - Rift Watchtower.esp:000179",
@@ -30992,16 +31292,6 @@
    "plugin": "Dragons Awaken.esp"
   },
   {
-   "id": "Orc Strongholds - All In One.esp:00022C",
-   "name": "Krogzah",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Dragons Awaken.esp:00084E",
    "name": "Kromahved",
    "race": "Dragon Race",
@@ -31290,16 +31580,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Wyrmstooth.esp:220699",
-   "name": "Largahk",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Kazmalgur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Wyrmstooth.esp"
   },
   {
    "id": "BetalillesHammerfellQuestBundle.esp:000EC4",
@@ -31742,16 +32022,6 @@
    "plugin": "JK's Castle Volkihar.esp"
   },
   {
-   "id": "Skyrim.esm:019E1E",
-   "name": "Lob",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Skyrim.esm:0D5636",
    "name": "Lodi",
    "race": "Nord",
@@ -31872,16 +32142,6 @@
    "plugin": "BetalillesHammerfellQuestBundle.esp"
   },
   {
-   "id": "Orc Strongholds - All In One.esp:000AE6",
-   "name": "Lorm",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux Via.esp"
-  },
-  {
    "id": "Arena - Markarth Side.esp:150E51",
    "name": "Loros",
    "race": "Breton",
@@ -31910,16 +32170,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Wyrmstooth.esp:220697",
-   "name": "Lorzub",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Kazmalgur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Wyrmstooth.esp"
   },
   {
    "id": "Fists of Fury - Skyrim.esp:11C378",
@@ -32262,16 +32512,6 @@
    "plugin": "Journey to Baan Malur.esp"
   },
   {
-   "id": "Skyrim.esm:0C78BE",
-   "name": "Mahk",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Dushnikh Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Journey to Baan Malur.esp:2921CA",
    "name": "Maighan",
    "race": "Dremora",
@@ -32320,16 +32560,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:019E16",
-   "name": "Malacath",
-   "race": "Dremora",
-   "sex": "male",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:036194",
@@ -34262,16 +34492,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:0C78DF",
-   "name": "Mogdurz",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Gloombound Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Dawnguard.esm:010DED",
    "name": "Mogrul",
    "race": "Orsimer",
@@ -34672,16 +34892,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:01B07A",
-   "name": "Mul gro-Largash",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Gloombound Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Journey to Baan Malur.esp:03393B",
    "name": "Mulamosh Grzab",
    "race": "Orsimer",
@@ -34812,16 +35022,6 @@
    "plugin": "Journey to Baan Malur.esp"
   },
   {
-   "id": "Skyrim.esm:013B7A",
-   "name": "Murbul",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
-  },
-  {
    "id": "ccbgssse067-daedinv.esm:0B8A19",
    "name": "Mythic Dawn",
    "race": "Dunmer",
@@ -34920,16 +35120,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Gray Fox Cowl.esm"
-  },
-  {
-   "id": "Skyrim.esm:013B7F",
-   "name": "Nagrub",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
   },
   {
    "id": "Skyrim.esm:0FE431",
@@ -35672,26 +35862,6 @@
    "plugin": null
   },
   {
-   "id": "Skyrim.esm:013B80",
-   "name": "Oglub",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Dushnikh Mine",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Skyrim.esm:019E22",
-   "name": "Ogol",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Vigilant.esm:247246",
    "name": "Ogra the Stablemaster",
    "race": "Bone Human Race",
@@ -35700,16 +35870,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Vigilant.esm"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000AE4",
-   "name": "Ogthrak",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux Via.esp"
   },
   {
    "id": "Dragonborn.esm:01D9FE",
@@ -35780,16 +35940,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:01995B",
-   "name": "Olur",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Larak's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "NightmarePlane.esp:16796F",
@@ -38502,16 +38652,6 @@
    "plugin": null
   },
   {
-   "id": "Orc Strongholds - All In One.esp:000AE2",
-   "name": "R�kd�g",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux Via.esp"
-  },
-  {
    "id": "Skyrim.esm:023AB5",
    "name": "Sabre Cat",
    "race": "Sabre Cat",
@@ -39692,16 +39832,6 @@
    "plugin": "Vigilant.esm"
   },
   {
-   "id": "Skyrim.esm:019953",
-   "name": "Sharamph",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Larak's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "BoethiahCalling_AlternativeQuest.esp:00085B",
    "name": "Shardik",
    "race": "Cave Bear",
@@ -39760,16 +39890,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:013B7D",
-   "name": "Shel",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
   },
   {
    "id": "Skyrim.esm:02AC69",
@@ -39880,16 +40000,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:019957",
-   "name": "Shuftharz",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Larak's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:09B7AA",
@@ -40760,16 +40870,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000C6C",
-   "name": "Skuld",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:013B78",
@@ -42052,16 +42152,6 @@
    "plugin": "Requiem.esp"
   },
   {
-   "id": "Orc Strongholds - All In One.esp:000C66",
-   "name": "Sugra",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Armors of the Velothi.esp:000846",
    "name": "Sul-Matuul",
    "race": "Dunmer",
@@ -42380,26 +42470,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Vigilant.esm"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000218",
-   "name": "Tarhz",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
-   "id": "Orc Strongholds - All In One.esp:000579",
-   "name": "Tarzag",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Journey to Baan Malur.esp:3179BA",
@@ -43952,16 +44022,6 @@
    "plugin": "Lux.esp"
   },
   {
-   "id": "Skyrim.esm:0E316F",
-   "name": "Uglarz",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Mauhulakh's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "Vigilant.esm:4D0374",
    "name": "Ugly One",
    "race": "Molag Inner Race",
@@ -43970,16 +44030,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Vigilant.esm"
-  },
-  {
-   "id": "Skyrim.esm:019E1A",
-   "name": "Ugor",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Largashbur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Journey to Baan Malur.esp:35559D",
@@ -44162,16 +44212,6 @@
    "plugin": "LoreRim - World Fixes.esp"
   },
   {
-   "id": "Skyrim.esm:013B7E",
-   "name": "Umurn",
-   "race": "Orsimer",
-   "sex": "male",
-   "cell": "Burguk's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Lux.esp"
-  },
-  {
    "id": "mihailundeadwerewolf.esp:000828",
    "name": "Undead Alpha Werewolf",
    "race": "Werewolf",
@@ -44252,16 +44292,6 @@
    "plugin": "Vigilant.esm"
   },
   {
-   "id": "Orc Strongholds - All In One.esp:000575",
-   "name": "Urgat",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": null,
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
-  },
-  {
    "id": "ccbgssse062-ba_dwarvenmail.esl:00081F",
    "name": "Urgnok",
    "race": "Orsimer",
@@ -44280,16 +44310,6 @@
    "inTown": null,
    "role": null,
    "plugin": null
-  },
-  {
-   "id": "Skyrim.esm:01B078",
-   "name": "Urog",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Mauhulakh's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "Skyrim.esm:0E7EA9",
@@ -44330,16 +44350,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Dragons Awaken.esp"
-  },
-  {
-   "id": "Wyrmstooth.esp:22068D",
-   "name": "Ushlog",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Kazmalgur Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Wyrmstooth.esp"
   },
   {
    "id": "Environs - Kolskeggr.esp:000978",
@@ -46380,16 +46390,6 @@
    "inTown": null,
    "role": null,
    "plugin": "Journey to Baan Malur.esp"
-  },
-  {
-   "id": "Skyrim.esm:01B077",
-   "name": "Yatul",
-   "race": "Orsimer",
-   "sex": "female",
-   "cell": "Mauhulakh's Longhouse",
-   "inTown": null,
-   "role": null,
-   "plugin": "Skyrim.esm"
   },
   {
    "id": "evgSIRENROOT.esm:02B219",

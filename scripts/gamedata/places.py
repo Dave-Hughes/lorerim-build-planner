@@ -283,28 +283,46 @@ def scan():
     return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc
 
 
-def level_of(base, npcs, lvln, depth=0):
-    """(low, high) levels a placed actor can have, and its words: "level 12", "your level x1.0 (5-30)", "leveled 4-40"."""
-    if depth > 6 or not base:
+def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
+    """(low, high) levels a placed actor can have, and its words: "level 12", "your level x1.0 (5-30)", "leveled 4-40".
+    A leveled list's entries are resolved by their real target, never the entry's own stored level (Bob, 23 Oct: that
+    field means "picked from this level up", not the output actor's level, and reads a flat 1 for every real,
+    deeply-nested Requiem list this reader checked -- Fort Hraggstad's own chain bottoms out at fixed-level Bandits
+    of 3, 7, 10, 19, confirmed by hand against the records, not the stray "leveled from 1" the old reading gave)."""
+    cache = {} if cache is None else cache
+    if base in cache:
+        return cache[base]
+    seen = seen if seen is not None else set()
+    if depth > 12 or not base or base in seen:
         return None
+    seen = seen | {base}
     if base in npcs:
         n = npcs[base]
         # A template's stats (its level) when the actor uses them (ACBS template flags, "use stats").
-        if n["template"] and (n.get("useStats") or (n["level"] in (None, 0) and not n["scaled"])) and depth < 6:
-            got = level_of(n["template"], npcs, lvln, depth + 1)
+        if n["template"] and (n.get("useStats") or (n["level"] in (None, 0) and not n["scaled"])):
+            got = level_of(n["template"], npcs, lvln, depth + 1, cache, seen)
             if got:
+                cache[base] = got
                 return got
         if n["scaled"]:
             mult, lo, hi = n["scaled"]
-            return (lo or 1, hi or 81, f"your level x{mult:g}" + (f" ({lo}-{hi})" if hi else f" (from {lo})"))
+            r = (lo or 1, hi or 81, f"your level x{mult:g}" + (f" ({lo}-{hi})" if hi else f" (from {lo})"))
+            cache[base] = r
+            return r
         if n["level"]:
-            return (n["level"], n["level"], f"level {n['level']}")
+            r = (n["level"], n["level"], f"level {n['level']}")
+            cache[base] = r
+            return r
         return None
     if base in lvln:
-        levels = [lv for lv, _ in lvln[base]["entries"]]
-        if not levels:
+        targets = {tgt for _, tgt in lvln[base]["entries"]}
+        results = [r for r in (level_of(t, npcs, lvln, depth + 1, cache, seen) for t in targets) if r]
+        if not results:
             return None
-        return (min(levels), max(levels), f"leveled {min(levels)}-{max(levels)}" if min(levels) != max(levels) else f"leveled from {min(levels)}")
+        lo, hi = min(r[0] for r in results), max(r[1] for r in results)
+        r = (lo, hi, f"leveled {lo}-{hi}" if lo != hi else f"leveled from {lo}")
+        cache[base] = r
+        return r
     return None
 
 
@@ -425,10 +443,11 @@ def build(version):
         pl = owner.get((cells.get(a["cell"]) or {}).get("location"))
         if pl:
             by_place[pl].append(a)
+    level_cache = {}
     for k, acts in by_place.items():
-        lv = [x for x in (level_of(a["base"], npcs, lvln) for a in acts) if x]
+        lv = [x for x in (level_of(a["base"], npcs, lvln, cache=level_cache) for a in acts) if x]
         boss = next((a for a in acts if a["boss"]), None)
-        bl = level_of(boss["base"], npcs, lvln) if boss else None
+        bl = level_of(boss["base"], npcs, lvln, cache=level_cache) if boss else None
         places[k]["actors"] = {"count": len(acts), **({"levels": [min(x[0] for x in lv), max(x[1] for x in lv)]} if lv else {}),
                                # The boss by its own name when it has one; a leveled boss has none, so only its level shows.
                                **({"boss": {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),

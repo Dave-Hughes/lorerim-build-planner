@@ -22,12 +22,23 @@ class Readers(unittest.TestCase):
         scaled = struct.pack("<IhhhHHHhHhh", 0x80, 0, 0, 1000, 5, 30, 100, 0, 2, 0, 0)
         self.assertEqual(pl.npc_level(scaled), (None, (1.0, 5, 30), 2))
 
-    def test_levels_through_templates_and_lists(self):
-        npcs = {"A": {"name": "Boss", "level": 1, "scaled": None, "useStats": True, "template": "L"},
-                "B": {"name": None, "level": 20, "scaled": None, "useStats": False, "template": None}}
-        lvln = {"L": {"edid": "LCharBanditBoss", "entries": [(1, "B"), (9, "B"), (24, "B")]}}
-        self.assertEqual(pl.level_of("A", npcs, lvln), (1, 24, "leveled 1-24"))  # uses the template's stats, not its own level 1
-        self.assertEqual(pl.level_of("B", npcs, lvln), (20, 20, "level 20"))
+    def test_levels_through_templates_and_nested_lists(self):
+        # WO-144 Part 1d (Bob, 23 Oct, after Fort Hraggstad's actors all read [1, 1]): a leveled list entry's own
+        # stored number is "picked from this level up", never the output level. Fort Hraggstad's own chain bottoms
+        # out at fixed-level Bandits of 3, 7, 10, 19, confirmed by hand -- this mirrors that shape, not the old
+        # single-target fixture, which happened to pass by reading the entries' numbers instead of their targets'.
+        npcs = {"Boss": {"name": "Boss", "level": 1, "scaled": None, "useStats": True, "template": "Outer"},
+                "Low": {"name": None, "level": 3, "scaled": None, "useStats": False, "template": None},
+                "Mid": {"name": None, "level": 10, "scaled": None, "useStats": False, "template": None},
+                "High": {"name": None, "level": 19, "scaled": None, "useStats": False, "template": None}}
+        lvln = {"Outer": {"edid": "LCharBanditBoss", "entries": [(1, "Inner")]},
+                "Inner": {"edid": "REQ_Variations", "entries": [(1, "Low"), (1, "Mid"), (1, "High")]}}
+        self.assertEqual(pl.level_of("Boss", npcs, lvln), (3, 19, "leveled 3-19"))
+        self.assertEqual(pl.level_of("Low", npcs, lvln), (3, 3, "level 3"))
+
+    def test_level_of_never_loops_on_a_list_that_points_at_itself(self):
+        lvln = {"Loop": {"edid": "LSelfReferential", "entries": [(1, "Loop")]}}
+        self.assertIsNone(pl.level_of("Loop", {}, lvln))
 
     def test_the_site_file_keeps_record_and_editor_ids_out(self):
         raw = [{"id": "X:000001", "name": "Some Cave", "type": "Cave", "edid": "SomeCaveLocation", "keywords": ["LocTypeCave"],
