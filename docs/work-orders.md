@@ -5063,7 +5063,7 @@ Status: queued, after WO-144 (Dave, 23 Oct: the indexes come first)
 ---
 
 ## WO-139  Before you design: the questions, their answers kept, what a character will never do, and the mods they need (Mac, 23 Oct 2026)
-Status: for Bob
+Status: done (one box for Dave)
 
 **Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a home, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough: the answers have to be kept, the ones that close doors have to close them in the planner, and a design that needs a mod LoreRim doesn't ship (Callings, first of all) has to say so.
 
@@ -5142,6 +5142,7 @@ Decisions made under WO-138 Part 5, each with why:
 - **`activities`.** `get_rules` carries it: performing at inns (Skyrim's Got Talent, in), fishing (the Fishing creation, in), paragliding (in), taming a wild horse (Simplest Horses, in), camping (CC's Camping Expansion, in the guide's name for it), and reading for experience and role-play experience (Callings, not in). The names are the guide's; Bob's list gave "Camping Expansion".
 - **Checks.** Typecheck, lint and 581 unit tests (the player questions 1 to 22 pass; later ones are other orders', still marked); `npm run build`; the full e2e (366 of 366 passed on the final build). One real flaw the e2e found in my own work is fixed: the answers list tried to save a half-filled row. An earlier full run had one failure in `wo123.spec.ts` (Kyria's Play tab) that passes alone, with `NeonDbError: fetch failed` from the dev database in its log; I took it for connectivity.
 - **For Bob: Kyria's row.** Once staging has deployed, call `set_details` with `playthrough: "Kyria Severa"` and `mods: [{ name: "Callings", why: "<Dave's why>", need: "required" }]`, then read `get_playthrough` for question 22 live.
+- Bob, 23 Oct, 12:50: Parts 1 to 5 checked; 22 of 22 player questions. Kyria's row: my session's copy of the tools predates `mods`, so the call can't be sent from here. Dave asks his Claude: "Add Callings as a required mod on Kyria's playthrough, with this why: it gives her a start that makes sense, a bard who plays the inn and reads every book in town." That is also a live test of question 22.
 
 ---
 
