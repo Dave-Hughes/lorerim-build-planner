@@ -411,6 +411,8 @@ export function getQuest({ id, name, places }: { id?: string; name?: string; pla
     ...(s1 ? {} : { quest: questFacts(q, places) }),
     ...questStart(l, s1, s1 ? undefined : q),
     // A job from a board (WO-136 ruling 3): the class's one sentence, said once, and where the boards are.
+    // A line's radiant templates as one class (WO-138: the Civil War's sieges, battles and rescues).
+    ...(l.radiant ? { radiantJobs: { says: l.radiant.says, checked: "files, as a class" } } : {}),
     ...(l.board && q.start?.board ? { jobFromABoard: { says: l.board.says, boards: l.board.boards ?? "Where the boards are isn't checked yet. Don't name one." } } : {}),
     quest: questFacts(q, places),
     // Open for you (WO-115 Part 3): only when the player said where they are.

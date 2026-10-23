@@ -125,6 +125,8 @@ export interface QuestLine {
   firstObjective?: string;
   /** A line of jobs from a board (WO-136 ruling 3): the class's one sentence, the boards the records place (null until read), and how many of its quests it covers. */
   board?: { name: string; says: string; boards: string[] | null; jobs: number };
+  /** A line's radiant templates as one class (WO-138: the Civil War's sieges, battles, rescues), off its per-quest list. */
+  radiant?: { name: string; says: string; checked: "files"; jobs: number };
   /** false for a family of radiant jobs whose quest names and objectives never say where the job goes (WO-129: Missives). */
   destinationInName?: false;
   quests: Quest[];

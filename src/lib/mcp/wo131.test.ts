@@ -36,7 +36,8 @@ describe("where the thing you read is (WO-131 Part 2)", () => {
 
   it("every read-this way has its places or says where to find it isn't checked", () => {
     const ways = readWays();
-    expect(ways.length).toBeGreaterThan(60);
+    // WO-138 R4 words four books with their prerequisite ("On Wyrmstooth, read ...", "After The Oblivion Engine has begun, read ..."), so they no longer start "Read".
+    expect(ways.length).toBeGreaterThan(55);
     expect(ways.filter(({ w }) => !w.whereIs?.length && !w.unplaced)).toEqual([]);
   });
 

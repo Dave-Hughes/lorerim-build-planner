@@ -34,6 +34,7 @@ DIFFERS: dict[str, str] = {
     'The Heart of Dibella': "Bob, 21 Oct: the records hold the early stages UESP's table lacks: 'Enter the Temple of Dibella' (Skyrim.esm:023B6C QOBJ 10), from the innkeeper's rumour, before Hamal catches you.",
     'Unearthed': "Bob, 21 Oct: the planner's quest is DLC2dunKolbjornQST, whose first objective is 'Fund the excavation' (Dragonborn.esm:01810B QOBJ 40); 'Speak to Ralis' belongs to its misc quest.",
     'The Cursed Tribe': "Bob, 21 Oct and 22 Oct, with the PC's trace: who passes (Atub, INFO Skyrim.esm:03BDCC). LoreRim's The Cursed Tribe - Quest Expansion.esp changes the start: Chief Larak's letter line is only for an Orc or Blood-Kin, and for everyone else the level-up node starts it silently and Atub's 'What sort of help do you need?' sets stage 20, 'Speak with Yamarz' (Skyrim.esm:03B681 QOBJ 20). UESP's 'Bring Troll Fat and a Daedra Heart to Atub' is the base game's stage 50.",
+    'Rescue Mission': "Mac, 23 Oct, WO-138 Part 4 (G1): UESP names Skjor or Vilkas; LoreRim's records give it only to Vilkas, whether Skjor is alive or dead (both story manager nodes, CompanionsVilkasAlwaysNode and CompanionsVilkasSkjorDeadNode, need GetEventData CRVilkas). The page names Vilkas.",
     'Deathbrand': "Bob, 21 Oct: the planner's quest is DLC2dunHaknirTreasureQST, first objective 'Learn more about the buried treasure' (Dragonborn.esm:024002 QOBJ 29); UESP's first line is the misc quest's.",
 }
 
@@ -60,14 +61,22 @@ def norm(s):
     return re.sub(r"[^a-z0-9 ]", "", re.sub(r"^(a|an|the) ", "", (s or "").lower().strip())).strip()
 
 
+def t_norm(s):
+    return norm(s)
+
+
 def person_of(start):
-    """The person the page names for how a quest starts: its who, else its first way's, else its first step's."""
+    """
+    The person the page names for how a quest starts: its who, else its first way's, else the person who sent you (sentBy:
+    WO-138 G1, the previous quest's last speaker, or UESP's giver when the page's who is the first you speak to), else its
+    first step's.
+    """
     if start.get("who"):
         return start["who"]
     for w in start.get("ways", []):
         if w.get("who"):
             return w["who"]
-    return start.get("thenWho")
+    return start.get("sentBy") or start.get("thenWho")
 
 
 def by_edid():
@@ -90,8 +99,7 @@ class QuestTruth(unittest.TestCase):
             q = quests.get(row["editorId"].lower())
             if not q or row["quest"] in DIFFERS or row["quest"] in WAITING_ON_BOB:
                 continue
-            if row["editorId"] in LOOP_WAITING or row["quest"] in LOOP_WAITING:
-                continue  # waiting on Mac's Part 4: may fail until it lands (and passes by itself after)
+            # The rows that waited on Mac's Part 4 (LOOP_WAITING) are checked like every other since it landed (WO-138, 23 Oct).
             start = q.get("start") or {}
             who = person_of(start)
             # WO-121b: a row Bob judged right with no single giver: the page names none.
@@ -103,6 +111,22 @@ class QuestTruth(unittest.TestCase):
             if norm(start.get("then")) != norm(row["firstObjective"]):
                 wrong.append(f"{row['quest']}: then is {start.get('then')!r}; UESP: {row['firstObjective']!r}")
         self.assertEqual(wrong, [], "\n".join(wrong))
+
+    def test_the_rows_that_waited_on_part_4_pass(self):
+        """WO-138 Part 4 (Mac, 23 Oct): every row the loop set waiting on G1 to G4 passes, by the rules, with none re-listed."""
+        with open(TRUTH, encoding="utf-8") as f:
+            truth = {r["editorId"]: r for r in json.load(f)["quests"]}
+        quests = by_edid()
+        self.assertEqual(len(LOOP_WAITING), 103)
+        wrong = []
+        for edid in LOOP_WAITING:
+            row, q = truth[edid], quests.get(edid.lower())
+            start = (q or {}).get("start") or {}
+            person_ok = not start.get("who") if row.get("noGiver") else t_norm(person_of(start)) in {t_norm(x) for x in row["startsWith"]}
+            if not q or not person_ok or t_norm(start.get("then")) != t_norm(row["firstObjective"]) or any("records don't name" in w["how"] for w in start.get("ways", [])):
+                wrong.append(f"{row['quest']} ({edid})")
+        self.assertEqual(wrong, [])
+        self.assertFalse(set(LOOP_WAITING) & set(DIFFERS) | set(LOOP_WAITING) & set(WAITING_ON_BOB))
 
     def test_waiting_rows_still_differ(self):
         with open(TRUTH, encoding="utf-8") as f:

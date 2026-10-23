@@ -482,7 +482,8 @@ def main():
         readables = json.load(open(readables_file, encoding="utf-8"))["items"] if os.path.exists(readables_file) else []
         # WO-136 ruling 2: a quest with a row in Bob's answer key counts as checked, from the wiki.
         truth = load("quest_truth.json")["quests"] if os.path.exists(os.path.join(RAW, "quest_truth.json")) else []
-        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables, truth, overrides.get("questClasses", {}), overrides.get("questRewards", {}))
+        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording, overrides.get("questNames", {}), readables, truth, overrides.get("questClasses", {}), overrides.get("questRewards", {}),
+                            [e for e in overrides.get("questBackground", {}) if not e.startswith("_")], {k: v for k, v in overrides.get("questTemplates", {}).items() if not k.startswith("_")})
         # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
         said = {q["edid"]: json.dumps(q["start"].get("ways", []), ensure_ascii=False) for l in pages for q in l["quests"]}
         for edid, words in wording.items():

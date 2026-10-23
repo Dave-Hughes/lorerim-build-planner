@@ -4978,8 +4978,55 @@ Dave asked why Jeff can't make Bob's calls himself. He can. WO-132's "never pick
 - [x] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
 - [x] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
 - [x] Part 2, restarted at batch 5 with G1 to G5: every base-game, DLC and Creation Club start is a key row, in `DIFFERS` with the record's reason, or on the needs-Bob list.
-- [ ] Part 3 and Part 4: the rulings are rules, with tests from the quests named; `sentBy` on the pages.
-- [ ] Player questions still pass; every check in CLAUDE.md passes. Push staging and stop for Bob.
+- [x] Part 3 and Part 4: the rulings are rules, with tests from the quests named; `sentBy` on the pages.
+- [x] Player questions still pass; every check in CLAUDE.md passes. Push staging and stop for Bob.
+- Mac, 23 Oct, Part 4. **All 103 rows that waited on it pass** in `test_quest_truth.py`, which now checks them like every other row (`test_the_rows_that_waited_on_part_4_pass`); none went into `DIFFERS` or a waiting list. The rules are in `quest_pages.py`, the tests in `test_wo138.py`. My decisions under Part 5, each with what it touched:
+  - **G2, by the records.** A line in another quest that sets this one going is "After <that quest>", with no giver and its speaker as `sentBy`, when the line ends that quest or comes after it has ended (Caught in the Rain completes at 200; Swims's line sets 300). That's every G2 row Bob listed. A line that ends nothing (Legate Rikke's, Galmar's) is still the way in, as Bob's 08:30 ruling says. The records can't tell three more from Rikke's offer, so they're by hand in `overrides.json` (`_after`): Meet the Family, Message to Whiterun, The Silence Has Been Broken.
+  - **sentBy is G1's reading.** The truth test reads `sentBy` before the first step's person, as G1 counts the previous quest's last speaker as UESP's giver. That's how Containment (Mirabelle), Get Outfitted (Tullius), Unseen Visions (Dexion) and Where You Hang Your Enemy's Head (Nazir) keep passing under G2. The same Tullius line starts both Get Outfitted and The Jagged Crown, and their key rows read it differently; this reading satisfies both.
+  - **G1, the dispatcher.** A radiant job, or a quest running from the game's start, whose ways name no one, names who hands it out:
+    - the Companions' from each node's event (CRAela is Aela; CRRecon is Aela's scouting);
+    - else the records' named giver (Talen-Jei, Marise, Temba, Balimund, Madesi);
+    - else the one person the quest holds (Vex, Delvin).
+    - Several dispatchers, or a job offered through the run-time alias QuestGiver (Ahtar, Annekke, Brunwulf, Fanari): one way naming them, no single giver.
+    - A quest whose objective shows at once from the game's start (The Thalmor's Shadow) is left with none.
+    - D1a: a quest's own lines come before a talk that only sets another quest's stage, so Astrid leads in Whispers in the Dark, before Muiri.
+  - **G4, a name for every speaker.** In order of preference:
+    - The alias's one person (Urag for Shalidor's Insights).
+    - A Civil War field commander is the side's commander: Legate Rikke or Galmar Stone-Fist.
+    - The Thane quests' QuestGiver is "the jarl of <hold>" (Rex), read from the quest the alias belongs to, so it works for Making Friends and Influencing People too.
+    - Steward and Innkeeper are roles ("a jarl's steward", "an innkeeper").
+    - A line conditioned on a guard faction is "a guard"; on the Legion or the Sons, that side's soldier.
+    - A Creation Club line whose speaker the check couldn't resolve, in a quest holding one person, is that person (Swims-In-Deep-Water).
+    - Nothing names them: the line goes when another way remains, and an unnamed line inside another quest's stage leaves the start as "After <that quest>".
+    - 102 unnamed ways became 11, none in a key row.
+  - **R2 and R3.**
+    - R2: a talk needing its own quest at a stage another listed way sets is a step. Listed means another person's line, a node, a trigger, a book or a quest a player plays, never a handler's script (R1 and G6). A Night To Remember loses Senna's lines; Thieves Guild Caravan Fence keeps Tonilia (TGStatus is a handler).
+    - R3: one speaker's lines needing higher own stages leave only the lowest (Bad Vibrations).
+    - R3's wording: one speaker's lines with the same needs are one way (Maul's four), and one line said by several people, with no single giver, is one way naming them all ("Ask Mercer Frey, Brynjolf or Delvin Mallory…", the bounties' "Ask a jarl's steward or an innkeeper…").
+    - **Not by rule:** Unearthed, Durnehviir and The Wolf Queen Awakened, where a node starts the quest and its own fragment reaches the stage the talks need. The records give the node's call as "Start", not the stage, and a rule that treated every node as setting it took away R1's real ways in (Ancestral Worship, Grimsever's Return). For the PC: the stage each node's quest reaches before its first talk.
+  - **Rule 1, notes in hand (G3).** A talk that hands over a note shows its "Read …" objective as the first step even on a quest that also runs from the game's start (In A Pinch, Catch of the Day). A quest started by another quest's script with a note in hand reads it first (Frozen Fish, Two of a Kind, End of the Line). Both are limited to "Read …" objectives: wider, they changed Innocence Lost, The Raid and Tusked Terror.
+  - **By hand, with sources** (`overrides.json` questStarts `_who`), where the records the check reads don't hold the person:
+    - A New Source of Stalhrim: Deor, Bob's scene ruling.
+    - Experimental Subject: Neloth.
+    - Repairing the Phial: Quintus Navale.
+    - The three fishing radiant jobs: Swims-In-Deep-Water.
+    - Thane of Haafingar: Elisif.
+    - Thane of Whiterun: Vignar Gray-Mane, as the PC read UESP. **For Bob:** Whiterun's jarl is Balgruuf unless the Stormcloaks take the city; check whether UESP gives both.
+  - **R4** in `overrides.json`: "After The Oblivion Engine has begun, read Letter to Lucien"; "On Wyrmstooth, read …" for Dunyick's Request, Miner's Warning and Ja'Shavi-Dar's Note. Deathbrand's was already in.
+  - **G5:** the nine handlers the loop named are off the pages (`overrides.json` questBackground), so the quest log counts them as background.
+  - **G6:** "Through <helper>" is a way only when the helper is a quest on the planner's pages. Thieves Guild Radiant Shell, Riften Scripted Scene Bridge and Shalidor's Insights Rewards are gone from every page.
+  - **The Civil War's radiant class** (Bob, 08:30): the seven templates are one class under the line (`overrides.json` questTemplates), on the quest page and in get_quest as `radiantJobs`, and off the per-quest list. 1,226 quests on the pages now (1,242 less the 9 handlers and the 7 templates).
+  - **Rex's notes:**
+    - The Cause: "A courier brings you Stranger's Plea", Level 46, said as UESP's.
+    - The bounties: by the role merge.
+    - The Thanes: "the jarl of <hold>".
+    - Crustacean Extermination: no longer shows "after No Contest".
+    - "Shaman's Hut, Skaal Village Shaman's Hut" and seven like it: the town once.
+    - Not done: a `towns` entry that isn't a town, a `thenWho` that's a recruit, a previous quest missing from needs, and flags that could be worded. Each needs the quests Rex meant; send them and they're one pass.
+  - **The key, three edits:**
+    - Striking the Heart: "Aela" is the records' "Aela the Huntress", as the other Companions rows say.
+    - Stealing Plans: the batch read "Whiterun", a place on UESP's page, as a second dispatcher. UESP names Aela, and the records' only node is her scouting.
+    - Rescue Mission: into `DIFFERS`. UESP names Skjor or Vilkas; both of LoreRim's nodes need Vilkas.
 
 ---
 

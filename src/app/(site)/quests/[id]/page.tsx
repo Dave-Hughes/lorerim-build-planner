@@ -268,6 +268,15 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 <p className="muted">{line.board.boards?.length ? `Where the boards are: ${line.board.boards.join("; ")}.` : "Where the boards are isn't checked yet."}</p>
               </div>
             )}
+            {line.radiant && (
+              <div className={styles.group}>
+                <div className={styles.ghead}>
+                  <h3>{line.radiant.name}</h3>
+                  <span>{line.radiant.jobs} kinds</span>
+                </div>
+                <p>{line.radiant.says}</p>
+              </div>
+            )}
             {jobs.length > 0 && (
               <div className={styles.group}>
                 <div className={styles.ghead}>

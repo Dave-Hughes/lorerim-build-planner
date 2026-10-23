@@ -2639,24 +2639,25 @@
    "editorId": "CR09",
    "line": "companions",
    "startsWith": [
-    "Aela"
+    "Aela the Huntress"
    ],
    "firstObjective": "Assassinate the Silver Hand leader",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Striking_the_Heart",
-   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them.",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them. Mac, WO-138 Part 4: Aela is the records' Aela the Huntress, as the other Companions rows name her.",
    "waitingOn": "G1"
   },
   {
    "quest": "Stealing Plans",
    "editorId": "CR10",
    "line": "companions",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Aela the Huntress"
+   ],
    "firstObjective": "Steal the plans from the camp",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Stealing_Plans",
-   "notes": "PC, WO-138 Part 2 batch 2: no single giver: UESP's dispatchers are Aela, Whiterun (G1)."
+   "notes": "PC, WO-138 Part 2 batch 2: no single giver: UESP's dispatchers are Aela, Whiterun (G1). Mac, WO-138 Part 4: UESP names one dispatcher, Aela (the batch read 'Whiterun', a place on the page, as a second); the records' only node is CRRecon, Aela's scouting."
   },
   {
    "quest": "Retrieval",

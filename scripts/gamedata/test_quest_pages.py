@@ -642,7 +642,8 @@ class BuiltStartsTest(unittest.TestCase):
         self.assertIn({"how": 'Ask Farengar Secret-Fire "So what do you need me to do?" in Dragonsreach', "needs": ["GetItemCount Dragonstone >= 1"]}, start["raw"]["ways"])
 
     def test_no_start_shows_a_raw_condition_an_editor_id_or_a_declining_line(self):
-        self.assertEqual(len(self.quests), 1242)  # 1,243 less Trius' Trinket, off the lists (WO-121b, Bob 22 Oct)
+        # 1,243 less Trius' Trinket (WO-121b, Bob 22 Oct), the 9 handlers (G5) and the Civil War's 7 radiant templates (a class), WO-138.
+        self.assertEqual(len(self.quests), 1226)
         leaks = [(q["name"], t) for q in self.quests for t in start_texts(q["start"]) if LEAK.search(t)]
         self.assertEqual(leaks, [])
         # A prompt is the game's words, never a topic's editor id (WO-130: "DB02AstridWalkAwayTopic").

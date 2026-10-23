@@ -277,6 +277,84 @@
       "_note": "WO-121b, Bob's judgement of the night run (22 Oct): the note (ccbgssse002-exoticarrows.esl:00081F) has no name in the files, so the page showed its editor id. Its script sets stage 5 when you get it (defaultsetstageonplayeracquireitem); the first step names it the Letter from Calcelmo.",
       "Read ccBGSSSE002_NoteFromCalcelmo": "Get a note from Calcelmo"
     },
+    "DLC2SV02": {
+      "_note": "WO-138 G1, the PC's batch 6 reading: a scene sets it going (DLC2SV02Misc, a helper with Deor, Fanari and Baldor), with no line of its own; UESP's Deor Woodcutter is who you speak to.",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Deor Woodcutter", "way": "Talk to Deor Woodcutter in Skaal Village"}
+    },
+    "DLC2TTR4a": {
+      "_note": "WO-138 G1: Neloth hands out the Tel Mithryn experiments (UESP); the records start it from a node as you enter Tel Mithryn, with Neloth as its named giver.",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Neloth"}
+    },
+    "MS12b": {
+      "_note": "WO-138 G1: UESP: Quintus Navale asks you to repair the Phial; the records start it by itself as you travel, after The White Phial and The Throat of the World, and its first step is to speak to him.",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Quintus Navale", "way": "Talk to Quintus Navale in the White Phial, Windhelm"}
+    },
+    "ccBGSSSE001_Radiant_1": {
+      "_note": "WO-138 G1: UESP's dispatcher; the line's speaker is a Creation Club NPC the start check couldn't resolve (GetIsID with no name).",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Swims-In-Deep-Water", "way": "Ask Swims-In-Deep-Water for fishing work"}
+    },
+    "ccBGSSSE001_Radiant_2": {
+      "_note": "WO-138 G1: as Stocking Up.",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Swims-In-Deep-Water", "way": "Ask Swims-In-Deep-Water for fishing work"}
+    },
+    "ccBGSSSE001_Radiant_3": {
+      "_note": "WO-138 G4: as Stocking Up.",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Swims-In-Deep-Water", "way": "Ask Swims-In-Deep-Water for fishing work"}
+    },
+    "Favor252": {
+      "_note": "WO-138 G4 and Rex's note: the Thane quest's giver is that hold's jarl; Haafingar's is Elisif the Fair whichever side holds Skyrim (UESP).",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Elisif the Fair"}
+    },
+    "Favor253": {
+      "_note": "WO-138 G4: the PC's reading of UESP's Thane of Whiterun page gives Vignar Gray-Mane. For Bob: Whiterun's jarl is Balgruuf unless the Stormcloaks take the city, so check whether UESP gives both.",
+      "_source": "UESP, as the PC's WO-138 Part 2 key row reads it",
+      "_who": {"name": "Vignar Gray-Mane"}
+    },
+    "JRLucienPersonal1": {
+      "_note": "WO-138 R4 (Bob, 23 Oct): the letter's script needs The Oblivion Engine at stage 5 before reading it sets 10 (the PC's sweep: a book's prerequisite stage).",
+      "_source": "Bob's ruling R4, 23 Oct 2026, from the PC's sweep",
+      "Read Letter to Lucien": "After The Oblivion Engine has begun, read Letter to Lucien"
+    },
+    "WTWolfFollower": {
+      "_note": "WO-138 R4: the note's script needs the quest's stage 0 done, which means it is already running on Wyrmstooth.",
+      "_source": "Bob's ruling R4, 23 Oct 2026, from the PC's sweep",
+      "Read Dunyick's Request": "On Wyrmstooth, read Dunyick's Request"
+    },
+    "WTPricelessCommodity": {
+      "_note": "WO-138 R4: as Dunyick's Request.",
+      "_source": "Bob's ruling R4, 23 Oct 2026, from the PC's sweep",
+      "Read Miner's Warning": "On Wyrmstooth, read Miner's Warning"
+    },
+    "WTTheNakedNord": {
+      "_note": "WO-138 R4: as Dunyick's Request.",
+      "_source": "Bob's ruling R4, 23 Oct 2026, from the PC's sweep",
+      "Read Ja'Shavi-Dar's Note": "On Wyrmstooth, read Ja'Shavi-Dar's Note"
+    },
+    "ccBGSSSE067_Quest": {
+      "_note": "WO-138, Rex's note: The Cause's only way in the records is a placed trigger in the Deadlands, by the door to the Mythic Dawn Temple, which a player can't reach before it starts. UESP: at level 46 a courier brings you Stranger's Plea.",
+      "_source": "UESP's The Cause page, as Rex read it in the WO-138 loop",
+      "It starts from something placed somewhere in Deadlands, by the door to Mythic Dawn Temple": "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)",
+      "_wayNeeds": { "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)": ["Level 46"] }
+    },
+    "TG02B": {
+      "_note": "WO-138 G2, Mac's decision (23 Oct): Brynjolf's line that sets Loud and Clear's 35 is said as that quest moves on, not an offer; UESP and the PC read Meet the Family as starting after Loud and Clear. The records can't tell this from Legate Rikke's offer (both are lines in another quest that don't end it), so it's by hand.",
+      "_after": true
+    },
+    "CW03": {
+      "_note": "WO-138 G2, Mac's decision (23 Oct): Tullius's and Ulfric's lines at The Jagged Crown's 190 and 220 close that quest out; UESP and the PC read Message to Whiterun as starting after it. By hand for the reason under TG02B.",
+      "_after": true
+    },
+    "DB04a": {
+      "_note": "WO-138 G2, Mac's decision (23 Oct): Cicero's line is inside Whispers in the Dark (stage 40); UESP and the PC read The Silence Has Been Broken as starting after it. By hand for the reason under TG02B.",
+      "_after": true
+    },
     "DLC2dunHaknirTreasureQST": {
       "_note": "WO-137, the PC's check (loop-log.md, 22 Oct): the level-up node is Deathbrand's gate, not a way a player takes. Once you're level 20 (DLC2dunHaknirTreasureQSTMinLevel; UESP's 36 is vanilla) the quest sets 20 silently and pirates land at Haknir's Shoal. The ways in are reading the book (its script needs that stage 20) and finding the pirates and their leader's map. Geldis's talk is a catch-up (the WO-137 rule drops it).",
       "_source": "the PC's reading of the records and UESP's Deathbrand page, 22 Oct 2026",
@@ -407,6 +485,26 @@
     "DLC2TT1b": {
       "_source": "WO-129 Part 6: the 1000 septims are Drovas's debt to Mogrul, owed, not handed over",
       "set": []
+    }
+  },
+  "questBackground": {
+    "_note": "WO-138 G5 (Bob, 23 Oct): handlers and helpers with no UESP page are not quests a player starts. Off the quest pages; the quest log counts them as background. The PC's list from the Part 2 loop (wo138-decisions.json, G5).",
+    "DLC1Radiant": "Dawnguard's radiant parent (\"Parent\" quest for Radiant Content)",
+    "DLC1VQ05SoulGemHandler": "Beyond Death Soul Gem Handler",
+    "TG00MiscHandler": "TG00 Misc Handler",
+    "TG03SP": "Dampened Spirits Scene Quest",
+    "TG04EECHandler": "East Empire Warehouse Dialogue and Handler",
+    "TG04Post": "Scoundrel's Folly Post",
+    "TGCrownMisc": "No Stone Unturned Misc Handler",
+    "DLC2MHMisc": "Thirsk Rumors (Bob, 23 Oct 09:00: a rumour helper with no objectives)",
+    "DialogueCidhnaMine": "DialogueCidhnaMine"
+  },
+  "questTemplates": {
+    "_note": "WO-138 (Bob, 23 Oct 08:30): radiant templates named by alias text are a class, not quests: shown once under their line, checked as a class, off the per-quest lists and the quest log.",
+    "civil-war": {
+      "name": "The war's radiant jobs",
+      "says": "The war's radiant jobs: fort sieges, city battles, rescues; each is handed out by your side's commander.",
+      "edids": ["CWFortSiegeCapital", "CWFortSiegeFort", "CWMission04", "CWObj", "CWResolution01", "CWResolution02", "CWSiegeObj"]
     }
   }
 }
