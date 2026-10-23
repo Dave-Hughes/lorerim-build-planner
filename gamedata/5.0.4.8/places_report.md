@@ -1,6 +1,6 @@
 # The places index (WO-128 Part 1, WO-144 Part 1)
 
-Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
+Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). Clear and discovery XP from `LoreRim - MCM and INI Settings`'s Experience.ini.
 
 **566 places.** 321 have a pointer (a line or a book that names them), 244 have a quest that goes there, and 179 have neither.
 

@@ -132,15 +132,42 @@ def txt(v, loc, table):
 
 
 def clear_xp():
-    """The [Clearing] XP for each kind of place, from the Experience.ini the Ultra profile's highest mod gives (MO2 order)."""
+    """The [Clearing] and [Exploring] (discovery) XP for each kind of place, from the Experience.ini the Ultra
+    profile's highest mod gives (MO2 order)."""
     mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
     for m in mods:  # modlist.txt lists the highest priority first
         p = os.path.join(ROOT, "mods", m, "SKSE", "Plugins", "Experience.ini")
         if os.path.exists(p):
             cp = configparser.ConfigParser(strict=False)
             cp.read(p, encoding="utf-8-sig")
-            return {k[len("ixpclear"):].lower(): int(v) for k, v in cp["Clearing"].items()} if cp.has_section("Clearing") else {}, m
-    return {}, None
+            clear = {k[len("ixpclear"):].lower(): int(v) for k, v in cp["Clearing"].items()} if cp.has_section("Clearing") else {}
+            disc = {k[len("ixpdisc"):].lower(): int(v) for k, v in cp["Exploring"].items()} if cp.has_section("Exploring") else {}
+            return clear, disc, m
+    return {}, {}, None
+
+
+def respawn_days():
+    """LoreRim/Requiem's reset days (WO-144 Part 1e): an ordinary cell and one that's been cleared. "MCM/Settings/
+    Requiem.ini" is a shipped preset SkyUI's MCM loads as the active value when present; "MCM/Config/Requiem/
+    settings.ini" is the mod's own declared default, read only for a key the preset doesn't set -- LoreRim's preset
+    sets the ordinary days but not the cleared ones, so the cleared figure is the mod's own default, not a guess."""
+    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
+
+    def find(rel, key):
+        for m in mods:
+            p = os.path.join(ROOT, "mods", m, *rel)
+            if os.path.exists(p):
+                cp = configparser.ConfigParser(strict=False)
+                cp.read(p, encoding="utf-8-sig")
+                sec = next((s for s in cp.sections() if cp.has_option(s, key)), None)
+                if sec:
+                    return int(cp[sec][key])
+        return None
+
+    cell = find(("MCM", "Settings", "Requiem.ini"), "iHoursToRespawnCell")
+    cleared = (find(("MCM", "Settings", "Requiem.ini"), "iHoursToRespawnCellCleared") or
+               find(("MCM", "Config", "Requiem", "settings.ini"), "iHoursToRespawnCellCleared"))
+    return (cell // 24 if cell else None), (cleared // 24 if cleared else None)
 
 
 def npc_level(v):
@@ -350,7 +377,8 @@ def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
 
 def build(version):
     kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn = scan()
-    xp, xp_from = clear_xp()
+    xp, disc_xp, xp_from = clear_xp()
+    cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
     marker_world = lambda m: (cells.get(m["cell"]) or {}).get("world")  # noqa: E731
@@ -525,9 +553,18 @@ def build(version):
                                   "level": boss_level[2] if boss_level else None}
         places[k]["actors"] = actors_out
     for k, p in places.items():
+        zone = eczn_by_loc.get(k)
+        if zone and zone["flags"] & 0x01:  # "never resets" (Bob's own flag note, 23 Oct, 16:15)
+            p["respawns"] = "never"
+        elif cleared_days:
+            p["respawns"] = (f"after {cleared_days} days once cleared, {cell_days} ordinarily"
+                              if cell_days else f"after {cleared_days} days once cleared")
         x = xp.get(p["type"].lower())
         if x is not None:
             p["clearXp"] = x
+        d = disc_xp.get(p["type"].lower())
+        if d is not None:
+            p["discoveryXp"] = d
     # What points at each place: dialogue and books that name it, on its whole name, case as written.
     named = collections.defaultdict(list)
     for k, p in places.items():
@@ -593,7 +630,7 @@ def report(places, xp_from, cities=()):
     missing = sorted(CAPITALS - found_cities)
     out = ["# The places index (WO-128 Part 1, WO-144 Part 1)", "",
            "Written by `scripts/gamedata/places.py` from the winning records across the load order (with the Creation Club plugins). "
-           f"Clear XP from `{xp_from}`'s Experience.ini." if xp_from else "Clear XP: no Experience.ini found.", "",
+           f"Clear and discovery XP from `{xp_from}`'s Experience.ini." if xp_from else "Clear/discovery XP: no Experience.ini found.", "",
            f"**{len(rows)} places.** {pointed} have a pointer (a line or a book that names them), {quested} have a quest that goes there, "
            f"and {neither} have neither.", "",
            "## The nine capitals", "",
@@ -621,7 +658,7 @@ def build_site(rows):
     """The planner's places.json from the raw rows: what a page or an assistant shows, without record ids or editor ids."""
     out = []
     for p in rows:
-        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "clearXp") if p.get(k) is not None}
+        r = {k: p[k] for k in ("id", "name", "type", "hold", "nearestTown", "nearestCity", "inTown", "clearXp", "discoveryXp", "respawns") if p.get(k) is not None}
         if p.get("actors"):
             r["actors"] = p["actors"]
         if p.get("pointers"):

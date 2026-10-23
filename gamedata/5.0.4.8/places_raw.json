@@ -29,7 +29,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -74,7 +76,9 @@
      "level": "level 80"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -119,7 +123,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Gray Fox Cowl.esm:03E058",
@@ -150,6 +155,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -183,7 +189,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:65B4C1",
@@ -213,7 +221,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:01D945",
@@ -243,7 +253,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:05EA13",
@@ -273,7 +285,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -327,7 +341,9 @@
      "level": "level 60"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:00E3F4",
@@ -369,7 +385,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -417,7 +435,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:01DAD1",
@@ -445,7 +465,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:0344F0",
@@ -475,7 +497,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -536,7 +560,9 @@
      "level": "level 40"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Ancient Pottery",
@@ -558,7 +584,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0ECF4C",
@@ -610,7 +638,9 @@
      "level": "leveled 6-24"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01BDFD",
@@ -662,7 +692,9 @@
      "level": "level 53"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -729,7 +761,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Dragons Awaken.esp:000807",
@@ -755,7 +789,9 @@
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
    "marker": null,
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:020A02",
@@ -790,6 +826,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -874,7 +911,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -926,6 +965,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -1142,7 +1182,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -1204,7 +1246,9 @@
      "level": "level 28"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -1284,7 +1328,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -1351,7 +1397,9 @@
      "level": "level 55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Pets of Skyrim",
@@ -1388,6 +1436,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "book",
@@ -1447,7 +1496,9 @@
      "level": "level 14"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018A4D",
@@ -1497,7 +1548,9 @@
      "level": "level 16"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -1659,7 +1712,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0162B7",
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -1743,7 +1798,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "WindhelmSSE.esp:39FE09",
@@ -1789,7 +1846,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019187",
@@ -1841,7 +1900,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -1900,6 +1961,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -1946,6 +2008,7 @@
      "level": "level 65"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -2085,7 +2148,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -2163,7 +2228,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -2216,7 +2283,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -2793,7 +2862,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -3367,7 +3438,9 @@
      "level": "level 24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -3436,7 +3509,9 @@
      "level": "leveled 35-40"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01927B",
@@ -3485,7 +3560,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -3575,7 +3652,9 @@
      "level": "leveled 35-46"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -3719,7 +3798,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -3801,7 +3882,9 @@
      "level": "leveled 25-35"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -3938,7 +4021,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019282",
@@ -3993,7 +4078,9 @@
      "level": "level 47"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -4142,6 +4229,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -4214,7 +4302,9 @@
      "level": "leveled 5-22"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Shadows of the Past",
@@ -4269,7 +4359,9 @@
      "level": "leveled 6-12"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0F5BA7",
@@ -4313,7 +4405,9 @@
     ],
     "zoneMin": 12
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Man in Black",
@@ -4359,7 +4453,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -4548,7 +4644,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -4609,7 +4707,9 @@
      "level": "leveled 6-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -4668,6 +4768,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -4727,7 +4828,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "WindhelmSSE.esp:1B623A",
@@ -4757,7 +4860,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "WindhelmSSE.esp:1BA095",
@@ -4787,7 +4891,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:0C2EE7",
@@ -4834,7 +4939,9 @@
     ],
     "zoneMin": 5
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -4902,7 +5009,9 @@
      "level": "level 30"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Thieves Guild Radiant Guild Trophy Enabler",
@@ -4958,7 +5067,8 @@
      "name": "Ulundil",
      "level": "level 4"
     }
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:0192A4",
@@ -5002,7 +5112,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5064,7 +5176,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0192C7",
@@ -5112,7 +5226,9 @@
     ],
     "zoneMin": 14
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5230,7 +5346,9 @@
      "level": "level 51"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5306,7 +5424,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5392,7 +5512,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5455,7 +5577,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Falkreath Gossip Quest",
@@ -5512,7 +5636,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5594,7 +5720,9 @@
      "level": "leveled 13-63"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:047825",
@@ -5637,7 +5765,9 @@
      "level": "leveled 6-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5705,7 +5835,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -5778,7 +5910,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018EEF",
@@ -5829,7 +5963,9 @@
      "level": "leveled 8-30"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:016F85",
@@ -5881,7 +6017,9 @@
      "level": "leveled 55-125"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -5940,7 +6078,9 @@
      "level": "leveled 5-22"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "AlternatePerspective.esp:00AA20",
@@ -5958,6 +6098,7 @@
    "inTown": "Helgen",
    "plugin": "AlternatePerspective.esp",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "book",
@@ -6017,7 +6158,9 @@
      "level": "level 40"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -6068,6 +6211,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -6243,7 +6387,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -6289,7 +6435,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0B712C",
@@ -6341,7 +6489,9 @@
      "level": "leveled 6-10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -6434,7 +6584,9 @@
      "level": "leveled 8-30"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -6488,7 +6640,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0479B3",
@@ -6536,7 +6690,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019183",
@@ -6582,7 +6738,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -6670,7 +6828,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -6790,7 +6950,9 @@
      "level": "level 50"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "FalkreathShades.esp:3289B8",
@@ -6826,7 +6988,9 @@
     ],
     "zoneMin": 8
    },
-   "clearXp": 100
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01918C",
@@ -6877,7 +7041,9 @@
      "level": "leveled 5-22"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01918F",
@@ -6928,7 +7094,9 @@
      "level": "leveled 55-125"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -7032,7 +7200,9 @@
      "level": "level 52"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -7096,7 +7266,9 @@
      "level": "level 30"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -7987,7 +8159,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -8850,6 +9024,7 @@
      "level": "level 32"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
     {
      "quest": "Falkreath Gossip Quest",
@@ -8899,7 +9074,9 @@
     ],
     "zoneMin": 8
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -8958,7 +9135,9 @@
      "level": "leveled 19-46"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -9012,7 +9191,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -9054,6 +9235,7 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -9114,7 +9296,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -9201,7 +9385,9 @@
      "level": "level 120"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01927E",
@@ -9242,7 +9428,9 @@
     ],
     "zoneMin": 8
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dawnguard.esm:004D6E",
@@ -9268,7 +9456,9 @@
    "inTown": null,
    "plugin": "Dawnguard.esm",
    "marker": "Skyrim.esm:016220",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019197",
@@ -9320,7 +9510,9 @@
      "level": "leveled 40-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -9407,7 +9599,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -9488,7 +9682,9 @@
      "level": "level 55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Tools of Kagrenac.esp:21A11D",
@@ -9538,7 +9734,9 @@
      "level": "matches your level, 28 to 100"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -9606,7 +9804,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -9673,7 +9873,9 @@
      "level": "leveled 8-30"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01928A",
@@ -9723,7 +9925,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -9806,7 +10010,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "aaaGraniteHill.esp:1939BB",
@@ -9836,7 +10042,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:01926F",
@@ -9874,7 +10081,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -9921,7 +10130,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:061AE3",
@@ -9972,7 +10183,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -10022,7 +10235,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0DED90",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:05CA27",
@@ -10038,7 +10253,8 @@
    "nearestCity": null,
    "inTown": "Helgen",
    "plugin": "Skyrim.esm",
-   "marker": null
+   "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:01914B",
@@ -10082,7 +10298,9 @@
     ],
     "zoneMin": 8
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -10268,7 +10486,9 @@
      "level": "level 1"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:020082",
@@ -10304,6 +10524,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -11001,7 +11222,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -11063,7 +11286,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -11119,6 +11344,7 @@
      "level": "level 65"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -11405,7 +11631,9 @@
     ],
     "zoneMin": 8
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018A46",
@@ -11456,7 +11684,9 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -11985,7 +12215,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12064,6 +12296,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
     {
      "quest": "A False Front",
@@ -12118,7 +12351,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12181,7 +12416,9 @@
     ],
     "zoneMin": 24
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Break of Dawn",
@@ -12238,7 +12475,9 @@
      "level": "leveled 44-55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -12298,7 +12537,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12486,7 +12727,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12538,7 +12781,9 @@
      "level": "leveled 6-22"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019288",
@@ -12589,7 +12834,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12654,7 +12901,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Man Who Cried Wolf",
@@ -12715,7 +12964,9 @@
      "level": "leveled 14-55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12801,7 +13052,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -12859,7 +13112,9 @@
    "inTown": null,
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0162A9",
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -12898,7 +13153,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:07046A",
@@ -12933,7 +13190,8 @@
      "name": "Geimund",
      "level": "level 6"
     }
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:019274",
@@ -12971,7 +13229,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -13022,7 +13282,9 @@
      "level": "level 22"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0200A3",
@@ -13057,6 +13319,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -13190,7 +13453,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:01BAC0",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0200A5",
@@ -13225,6 +13490,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -13344,7 +13610,9 @@
      "level": "level 52"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -13419,7 +13687,9 @@
      "level": "leveled 8-11"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0192C8",
@@ -13471,7 +13741,9 @@
      "level": "matches your level, 10 to 20"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -13658,7 +13930,9 @@
      "level": "leveled 2-14"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019154",
@@ -13716,7 +13990,9 @@
      "level": "leveled 25-35"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -13769,7 +14045,9 @@
      "level": "level 22"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -13831,7 +14109,9 @@
     ],
     "zoneMin": 2
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019161",
@@ -13883,7 +14163,9 @@
      "level": "level 85"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -13978,7 +14260,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019179",
@@ -14030,7 +14314,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -14072,7 +14358,9 @@
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Dawnguard.esm:003CFE",
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -14136,7 +14424,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -14226,6 +14516,7 @@
      "level": "level 65"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -14273,7 +14564,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -14330,7 +14623,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0C2EF1",
@@ -14352,7 +14647,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0C2EEF",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019262",
@@ -14400,7 +14697,9 @@
     ],
     "zoneMin": 24
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -14641,7 +14940,9 @@
      "level": "level 40"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0F6F13",
@@ -14678,7 +14979,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01EB96",
@@ -14713,6 +15016,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -14796,7 +15100,9 @@
      "level": "level 140"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -14903,7 +15209,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -14967,7 +15275,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -15015,7 +15325,9 @@
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000819",
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019165",
@@ -15067,7 +15379,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -15113,7 +15427,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -15170,7 +15486,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -15230,7 +15548,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -15343,7 +15663,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -15393,7 +15715,9 @@
      "level": "leveled 35-46"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Arena - Markarth Side.esp:122A5B",
@@ -15423,7 +15747,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:0192BF",
@@ -15471,7 +15796,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -15589,7 +15916,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:4CD0C6",
@@ -15620,7 +15949,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:0FA292",
@@ -15665,7 +15996,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -15729,7 +16062,9 @@
      "level": "leveled 6-24"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:60D637",
@@ -15765,7 +16100,9 @@
      "level": "level 34"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:4CD0C3",
@@ -15800,7 +16137,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:4CD0C7",
@@ -15842,7 +16181,9 @@
      "level": "leveled 1-3"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:5BE7D4",
@@ -15884,7 +16225,9 @@
      "level": "level 1"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:02A919",
@@ -15927,7 +16270,9 @@
      "level": "leveled 24-55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Siege at Icemoth.esp:4CD0C4",
@@ -15972,7 +16317,9 @@
      "level": "level 55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Topaz Claw",
@@ -16029,7 +16376,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -16079,7 +16428,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Struggle for Justice",
@@ -16132,7 +16483,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -16193,7 +16546,9 @@
      "level": "leveled 19-24"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Journey to Baan Malur.esp:2205C2",
@@ -16230,7 +16585,9 @@
      "level": "leveled 19-24"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Journey to Baan Malur.esp:1F1A1E",
@@ -16260,7 +16617,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Journey to Baan Malur.esp:0679F8",
@@ -16291,7 +16650,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Journey to Baan Malur.esp:35FCF1",
@@ -16321,7 +16682,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Dragonborn.esm:0142C0",
@@ -16354,7 +16716,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "A New Source of Stalhrim",
@@ -16407,7 +16771,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Miasma",
@@ -16454,7 +16820,9 @@
      "level": "level 35"
     }
    },
-   "clearXp": 100
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Miasma.esp:000EAD",
@@ -16502,7 +16870,9 @@
      "level": "matches your level, 25 to 60"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "PriestFight",
@@ -16559,7 +16929,9 @@
      "level": "level 35"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -16616,7 +16988,9 @@
     ],
     "zoneMin": 10
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:014298",
@@ -16662,7 +17036,9 @@
      "level": "leveled 21-27"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -16723,7 +17099,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -16777,7 +17155,9 @@
      "level": "leveled 21-27"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:01429C",
@@ -16816,7 +17196,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -16869,7 +17251,9 @@
      "level": "leveled 18-27"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:0142CA",
@@ -16902,7 +17286,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -16955,7 +17341,9 @@
      "level": "leveled 21-27"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -17003,7 +17391,9 @@
      "level": "leveled 55-60"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:0296DA",
@@ -17051,7 +17441,9 @@
      "level": "level 30"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragons Awaken.esp:00085D",
@@ -17097,7 +17489,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Lucien.esp:2B1404",
@@ -17140,7 +17534,9 @@
      }
     ]
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -17330,7 +17726,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -17481,7 +17879,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -17534,7 +17934,9 @@
      "level": "level 43"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -17698,7 +18100,9 @@
      "level": "leveled 21-27"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -17759,7 +18163,9 @@
      "level": "level 27"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -17837,7 +18243,9 @@
      "level": "leveled 18-27"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:0142A8",
@@ -17884,7 +18292,9 @@
      "level": "level 200"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -17941,7 +18351,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -17994,7 +18406,9 @@
     ],
     "zoneMin": 25
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Healing a House",
@@ -18049,7 +18463,9 @@
      "level": "level 43"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -18140,7 +18556,9 @@
      "level": "level 25"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -18193,7 +18611,9 @@
      "level": "leveled 10-24"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:017BAD",
@@ -18226,7 +18646,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -18299,7 +18721,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -18351,7 +18775,9 @@
     ],
     "zoneMin": 25
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -18483,7 +18909,9 @@
      "level": "level 55"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -18579,7 +19007,9 @@
      "level": "leveled 21-27"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -18633,7 +19063,9 @@
      "level": "level 80"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -18785,7 +19217,9 @@
    "inTown": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:0143B9",
@@ -18832,7 +19266,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -20198,7 +20634,9 @@
      "level": "level 120"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -20350,7 +20788,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -20412,7 +20852,9 @@
      "level": "level 32"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -20572,7 +21014,9 @@
      "level": "level 25"
     }
    },
-   "clearXp": 100
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dragonborn.esm:0142C9",
@@ -20615,7 +21059,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -20666,7 +21112,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -20763,7 +21211,9 @@
      "level": "leveled 30-45"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -20823,6 +21273,7 @@
      "level": "level 10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -20881,7 +21332,9 @@
      "level": "level 28"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -21169,7 +21622,9 @@
     ],
     "zoneMin": 30
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Init quest",
@@ -21221,7 +21676,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -21312,7 +21769,9 @@
      "level": "level 120"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -21346,7 +21805,9 @@
    "inTown": null,
    "plugin": "Dragonborn.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -21453,7 +21914,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -21507,7 +21970,9 @@
      "level": "leveled 2-14"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Blindsighted",
@@ -21564,7 +22029,9 @@
      "level": "level 34"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -21748,7 +22215,9 @@
      "level": "leveled 44-55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01917B",
@@ -21800,7 +22269,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -21878,7 +22349,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -21978,7 +22451,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22076,7 +22551,9 @@
      "level": "level 56"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22198,7 +22675,9 @@
      "level": "level 77"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "A Scroll For Anska",
@@ -22242,7 +22721,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -22303,7 +22784,9 @@
     ],
     "zoneMin": 12
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22399,7 +22882,9 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22481,7 +22966,9 @@
     ],
     "zoneMin": 12
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22653,7 +23140,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22853,7 +23342,9 @@
     ],
     "zoneMin": 18
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -22976,7 +23467,9 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -23068,7 +23561,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -23169,7 +23664,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -23239,7 +23736,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01916C",
@@ -23283,7 +23782,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -23352,7 +23853,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0240E6",
@@ -23395,7 +23898,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0192A6",
@@ -23439,7 +23944,9 @@
      "level": "leveled 8-30"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0192AA",
@@ -23491,7 +23998,9 @@
      "level": "level 60"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019278",
@@ -23529,7 +24038,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -23557,7 +24068,9 @@
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0E0F47",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Fort Dunstad.esp:000351",
@@ -23590,7 +24103,8 @@
      "name": "Hillerica",
      "level": "level 12"
     }
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:020062",
@@ -23625,6 +24139,7 @@
      "level": "level 65"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
     {
      "quest": "BCSLL Vendor Quest",
@@ -23681,7 +24196,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -23742,7 +24259,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -23872,7 +24391,9 @@
      "level": "level 9"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:020065",
@@ -23907,6 +24428,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -24015,7 +24537,9 @@
      "level": "level 1"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -24075,7 +24599,9 @@
      "level": "leveled 1-3"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24119,7 +24645,9 @@
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000856",
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24220,7 +24748,9 @@
      "level": "level 1"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018EE7",
@@ -24260,7 +24790,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018EEC",
@@ -24311,7 +24843,9 @@
      "level": "level 45"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018EED",
@@ -24362,7 +24896,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24438,7 +24974,9 @@
      "level": "leveled 42-51"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24519,7 +25057,9 @@
      "level": "leveled 46-52"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24597,7 +25137,9 @@
      "level": "level 80"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24689,7 +25231,9 @@
     ],
     "zoneMin": 8
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0B239F",
@@ -24732,7 +25276,9 @@
      "level": "level 45"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019160",
@@ -24783,7 +25329,9 @@
      "level": "leveled 42-51"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -24836,7 +25384,9 @@
     ],
     "zoneMin": 8
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24903,7 +25453,9 @@
      "level": "leveled 46-52"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -24964,7 +25516,9 @@
      "level": "leveled 25-39"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019163",
@@ -25015,7 +25569,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01916F",
@@ -25066,7 +25622,9 @@
      "level": "leveled 42-51"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25134,7 +25692,9 @@
      "level": "level 48"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25226,7 +25786,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25305,7 +25867,9 @@
      "level": "leveled 8-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25373,7 +25937,9 @@
      "level": "leveled 44-55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019190",
@@ -25424,7 +25990,9 @@
      "level": "leveled 46-52"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25484,7 +26052,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25541,6 +26111,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -25796,7 +26367,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -25852,7 +26425,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -25894,6 +26469,7 @@
      "level": "matches your level, 6 to 25"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -26184,7 +26760,9 @@
     ],
     "zoneMin": 14
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -26320,7 +26898,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018A54",
@@ -26370,7 +26950,9 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -26627,7 +27209,9 @@
      "level": "leveled 44-55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019268",
@@ -26678,7 +27262,9 @@
      "level": "level 55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -26731,7 +27317,8 @@
      "name": "Banning",
      "level": "level 6"
     }
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Dawnguard.esm:003CFD",
@@ -26781,7 +27368,9 @@
      "level": "leveled 45-50"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01927C",
@@ -26836,7 +27425,9 @@
      "level": "level 47"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -26925,7 +27516,9 @@
      "level": "leveled 44-55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -27183,7 +27776,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:01F7CB",
@@ -27225,6 +27819,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -27313,7 +27908,9 @@
     ],
     "zoneMin": 2
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01928F",
@@ -27365,7 +27962,9 @@
      "level": "level 75"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -27448,7 +28047,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019292",
@@ -27499,7 +28100,9 @@
      "level": "level 34"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -27599,7 +28202,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019293",
@@ -27651,7 +28256,9 @@
      "level": "level 46"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -27725,7 +28332,9 @@
     ],
     "zoneMin": 8
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -27790,7 +28399,9 @@
      "level": "level 80"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -27846,7 +28457,9 @@
     ],
     "zoneMin": 14
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -27917,7 +28530,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -27949,7 +28564,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0AD066",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01F30E",
@@ -27984,6 +28601,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -28179,7 +28797,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -28422,7 +29042,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:01926B",
@@ -28460,7 +29081,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -28513,7 +29136,9 @@
      "level": "level 45"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01F316",
@@ -28556,6 +29181,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -28707,7 +29333,9 @@
      "level": "level 65"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -28779,7 +29407,9 @@
      "level": "leveled 13-63"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Kagrenac's Tools",
@@ -28807,7 +29437,9 @@
    "inTown": null,
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0D3931",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018EE3",
@@ -28859,7 +29491,9 @@
      "level": "level 75"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -28960,7 +29594,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -29019,7 +29655,9 @@
      "level": "leveled 14-30"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -29094,7 +29732,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018EE5",
@@ -29145,7 +29785,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -29313,6 +29955,7 @@
      "level": "level 10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -29701,7 +30344,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -29760,7 +30405,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -29859,7 +30506,9 @@
      "level": "leveled 2-14"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -29923,7 +30572,9 @@
     ],
     "zoneMin": 24
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -30255,7 +30906,9 @@
     ],
     "zoneMin": 18
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Extracting an Argonian",
@@ -30309,7 +30962,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -30369,7 +31024,9 @@
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:016243",
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -30460,6 +31117,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "book",
@@ -30531,7 +31189,9 @@
      "level": "level 66"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -30617,7 +31277,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -30691,7 +31353,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "never",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019188",
@@ -30743,7 +31407,9 @@
      "level": "level 40"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -30784,6 +31450,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -30830,6 +31497,7 @@
      "level": "level 10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -31078,7 +31746,9 @@
      "level": "level 12"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01926E",
@@ -31116,7 +31786,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -31173,7 +31845,9 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -31770,7 +32444,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -31960,7 +32636,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -32021,7 +32699,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -32083,6 +32763,7 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -32194,7 +32875,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -32270,7 +32953,9 @@
      "level": "level 1"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019169",
@@ -32321,7 +33006,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -32386,7 +33073,9 @@
      "level": "level 12"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0226B3",
@@ -32416,7 +33105,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -32482,7 +33173,9 @@
      "level": "level 100"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -32578,7 +33271,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -32631,7 +33326,8 @@
      "name": "Hofgrir Horse-Crusher",
      "level": "level 8"
     }
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:0D566F",
@@ -32676,7 +33372,9 @@
      "level": "leveled 6-24"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -32730,7 +33428,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dawnguard.esm:007B21",
@@ -32778,7 +33478,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "A New Order",
@@ -32810,7 +33512,9 @@
    "inTown": null,
    "plugin": "The Cursed Tribe - Quest Expansion.esp",
    "marker": "Skyrim.esm:016243",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018A4C",
@@ -32860,7 +33564,9 @@
      "level": "level 8"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -33038,7 +33744,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -33098,7 +33806,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -33185,7 +33895,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -33242,7 +33954,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -33296,7 +34010,9 @@
      "level": "level 250"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -33445,6 +34161,7 @@
      "level": "level 12"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -33714,7 +34431,9 @@
     ],
     "zoneMin": 15
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -33783,7 +34502,9 @@
      "level": "leveled 19-46"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0D5671",
@@ -33805,7 +34526,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0D3935",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:022650",
@@ -33848,6 +34571,7 @@
      "level": "level 59"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
     {
      "quest": "Thieves Guild Radiant Guild Trophy Enabler",
@@ -33915,7 +34639,9 @@
      "level": "leveled 25-35"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -33983,7 +34709,9 @@
      "level": "level 24"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -34037,6 +34765,7 @@
      "level": "level 10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -34187,7 +34916,9 @@
      "level": "level 40"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -34518,7 +35249,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -34580,7 +35313,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -34628,6 +35363,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -35541,7 +36277,9 @@
      "level": "level 55"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -35636,7 +36374,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -35723,7 +36463,9 @@
      "level": "level 55"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01917D",
@@ -35769,7 +36511,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -35866,6 +36610,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -35933,7 +36678,9 @@
    "inTown": null,
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": "Skyrim.esm:0DED8E",
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01918B",
@@ -35985,7 +36732,9 @@
      "level": "level 14"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -36021,7 +36770,9 @@
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:000820",
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01919B",
@@ -36072,7 +36823,9 @@
      "level": "leveled 2-12"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01918E",
@@ -36124,7 +36877,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -36177,6 +36932,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -36435,7 +37191,9 @@
      "level": "leveled from 10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -36494,7 +37252,9 @@
      "level": "leveled 13-30"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:018E34",
@@ -36531,7 +37291,9 @@
     ],
     "zoneMin": 8
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -37188,7 +37950,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019271",
@@ -37226,7 +37990,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -37263,6 +38029,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -38683,6 +39450,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -40143,7 +40911,9 @@
      "level": "leveled 30-79"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0E66A5",
@@ -40187,7 +40957,9 @@
     ],
     "zoneMin": 12
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019290",
@@ -40239,7 +41011,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -40348,7 +41122,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -40415,7 +41191,9 @@
      "level": "matches your level, 4 to 40"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -41700,7 +42478,9 @@
      "level": "level 31"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -42588,7 +43368,9 @@
    "inTown": null,
    "plugin": "Dragons Awaken.esp",
    "marker": "Dragons Awaken.esp:00083E",
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01929A",
@@ -42639,7 +43421,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -42731,7 +43515,9 @@
      "level": "leveled 44-55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -42772,6 +43558,7 @@
    "inTown": "Whiterun",
    "plugin": "Skyrim.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -42860,7 +43647,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -42929,6 +43718,7 @@
      "level": "level 49"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -43037,7 +43827,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -43085,7 +43877,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -43142,7 +43936,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -43205,6 +44001,7 @@
      "level": "level 6"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -43381,6 +44178,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -43536,7 +44334,9 @@
      "level": "level 1"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "SurWR.esp:14C813",
@@ -43566,7 +44366,8 @@
       ]
      }
     ]
-   }
+   },
+   "respawns": "after 300 days once cleared, 30 ordinarily"
   },
   {
    "id": "Skyrim.esm:0192BB",
@@ -43603,7 +44404,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -43933,7 +44736,9 @@
      "level": "level 40"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -43988,7 +44793,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -44079,7 +44886,9 @@
      "level": "level 24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -44209,6 +45018,7 @@
      "level": "level 4"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "book",
@@ -44260,7 +45070,9 @@
      "level": "leveled 1-3"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0E66A0",
@@ -44297,7 +45109,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -44368,7 +45182,9 @@
     ],
     "zoneMin": 16
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -44476,7 +45292,9 @@
     ],
     "zoneMin": 18
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -44817,7 +45635,9 @@
      "level": "level 22"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0D16E5",
@@ -44852,6 +45672,7 @@
      "level": "level 54"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
     {
      "quest": "Illusion Ritual Spell",
@@ -44904,6 +45725,7 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
     {
      "quest": "Illusion Ritual Spell",
@@ -44977,7 +45799,9 @@
      "level": "level 45"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Purity of Revenge",
@@ -45031,7 +45855,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -45111,7 +45937,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -45181,7 +46009,9 @@
      "level": "level 50"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01EB7A",
@@ -45212,6 +46042,7 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -45331,7 +46162,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:019198",
@@ -45382,7 +46215,9 @@
      "level": "leveled 45-50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -45456,7 +46291,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -45514,7 +46351,9 @@
      "level": "level 70"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -45564,6 +46403,7 @@
      "level": "level 45"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -45632,7 +46472,9 @@
      "level": "leveled 6-24"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:01927F",
@@ -45677,7 +46519,9 @@
      "level": "leveled 30-79"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -45791,7 +46635,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Tools of Kagrenac.esp:0519F6",
@@ -45816,7 +46662,9 @@
    "inTown": null,
    "plugin": "Tools of Kagrenac.esp",
    "marker": "Tools of Kagrenac.esp:354445",
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Kagrenac's Tools",
@@ -45878,7 +46726,9 @@
      "level": "level 46"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -46665,7 +47515,9 @@
     ],
     "zoneMin": 2
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Discerning the Transmundane",
@@ -46707,7 +47559,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -46790,7 +47644,9 @@
      "level": "leveled 44-55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -46861,7 +47717,9 @@
      "level": "leveled 6-30"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0192AF",
@@ -46913,7 +47771,9 @@
      "level": "level 62"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -47018,7 +47878,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -47110,7 +47972,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "<Alias=QuestNameLocation>",
@@ -47160,7 +48024,9 @@
      "level": "leveled 44-55"
     }
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -47213,6 +48079,7 @@
      "level": "level 10"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -47310,6 +48177,7 @@
      "level": "level 22"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -47388,6 +48256,7 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "never",
    "pointers": [
     {
      "kind": "dialogue",
@@ -47471,7 +48340,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Joining the Stormcloaks",
@@ -47517,7 +48388,9 @@
      "level": "leveled 24-55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:02D51D",
@@ -47556,7 +48429,9 @@
     ],
     "zoneMin": 18
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -47638,7 +48513,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:0C2EFC",
@@ -47660,7 +48537,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0C2EFA",
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -47703,6 +48582,7 @@
      "level": "level 65"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -47798,7 +48678,9 @@
      "level": "leveled 19-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -47860,7 +48742,9 @@
      "level": "level 40"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -47960,7 +48844,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -48078,7 +48964,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -48142,7 +49030,9 @@
      "level": "leveled 6-24"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -48199,7 +49089,9 @@
      "level": "leveled 55-125"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -48250,7 +49142,9 @@
      "level": "level 70"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "WTUniqueStonehollow.esp:0008D9",
@@ -48266,6 +49160,7 @@
    "inTown": null,
    "plugin": "WTUniqueStonehollow.esp",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "book",
@@ -48316,7 +49211,9 @@
      "level": "level 28"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -48372,7 +49269,9 @@
     ],
     "zoneMin": 24
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -48462,7 +49361,9 @@
     ],
     "zoneMin": 6
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -48559,7 +49460,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Wyrmstooth.esp:4EE84E",
@@ -48602,7 +49505,9 @@
      "level": "leveled 24-55"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -48656,7 +49561,9 @@
      "level": "level 45"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Wyrmstooth.esp:4D8B1A",
@@ -48699,7 +49606,9 @@
      "level": "leveled 24-55"
     }
    },
-   "clearXp": 200
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 200,
+   "discoveryXp": 10
   },
   {
    "id": "Wyrmstooth.esp:486524",
@@ -48742,7 +49651,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -48869,7 +49780,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Wyrmstooth.esp:4EE850",
@@ -48913,7 +49826,9 @@
      "level": "level 51"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Someone with Backbone",
@@ -48956,7 +49871,9 @@
      "level": "leveled 19-24"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Wyrmstooth.esp:4EE884",
@@ -48989,7 +49906,9 @@
     ],
     "zoneMin": 6
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Wyrmstooth.esp:00E53B",
@@ -49033,7 +49952,9 @@
      "level": "level 51"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -49067,7 +49988,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -49361,7 +50284,9 @@
    "inTown": null,
    "plugin": "Vigilant.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -49515,7 +50440,9 @@
    "inTown": null,
    "plugin": "NightmarePlane.esp",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Sleepwalking Into A Nightmare",
@@ -49553,7 +50480,9 @@
      "level": "level 200"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:385D90",
@@ -49567,7 +50496,9 @@
    "inTown": null,
    "plugin": "Vigilant.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5168",
@@ -49623,7 +50554,9 @@
      "level": "matches your level, 24 to 48"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -49706,7 +50639,9 @@
      "level": "leveled 21-46"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:385D91",
@@ -49776,7 +50711,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dawnguard.esm:00357E",
@@ -49820,7 +50757,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -49975,7 +50914,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -50119,7 +51060,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "ccbgssse016-umbra.esm:006C48",
@@ -50167,7 +51110,9 @@
      "level": "level 100"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -50273,7 +51218,9 @@
      "level": "level 120"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Johan the Fool",
@@ -50323,7 +51270,9 @@
     ],
     "zoneMin": 10
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -50406,7 +51355,9 @@
      "level": "level 80"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C072",
@@ -50446,7 +51397,9 @@
      "level": "level 130"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Dawnguard.esm:00A87C",
@@ -50482,7 +51435,9 @@
     ],
     "zoneMin": 13
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C062",
@@ -50522,7 +51477,9 @@
      "level": "level 80"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C064",
@@ -50660,7 +51617,9 @@
      "level": "level 75"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -50707,7 +51666,9 @@
     ],
     "zoneMin": 15
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -50731,7 +51692,9 @@
    "inTown": null,
    "plugin": "Vigilant.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5170",
@@ -50770,7 +51733,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "NightmarePlane.esp:2284B8",
@@ -50800,7 +51765,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Sleepwalking Into A Nightmare",
@@ -50822,7 +51789,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:01DACB",
@@ -50838,7 +51807,9 @@
    "inTown": null,
    "plugin": "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -50903,7 +51874,9 @@
      "level": "level 140"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Coldharbour",
@@ -50939,7 +51912,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:003554",
@@ -50969,7 +51944,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -51106,7 +52083,9 @@
      "level": "level 150"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Broken Horns",
@@ -51156,7 +52135,9 @@
      "level": "level 150"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Journey to Baan Malur.esp:0DCC03",
@@ -51198,7 +52179,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -51222,7 +52205,9 @@
    "inTown": null,
    "plugin": "ksws07_quest.esm",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C067",
@@ -51262,7 +52247,9 @@
      "level": "level 80"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C069",
@@ -51302,7 +52289,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Mad King",
@@ -51340,7 +52329,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -51447,7 +52438,9 @@
      "level": "level 100"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C06D",
@@ -51483,7 +52476,9 @@
     ],
     "zoneMin": 8
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:039AA9",
@@ -51520,7 +52515,9 @@
     ],
     "zoneMin": 8
    },
+   "respawns": "never",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -51612,7 +52609,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Sleepwalking Into A Nightmare",
@@ -51634,7 +52633,9 @@
    "inTown": null,
    "plugin": "NightmarePlane.esp",
    "marker": null,
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:017BB7",
@@ -51664,7 +52665,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -55248,7 +56251,9 @@
      "level": "level 105"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:015AAA",
@@ -55264,7 +56269,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Memories of the Umbranox",
@@ -55352,7 +56359,9 @@
      "level": "level 175"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -55415,7 +56424,9 @@
      "level": "level 40"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A516B",
@@ -55457,7 +56468,9 @@
      "level": "level 60"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -55525,7 +56538,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Gray Fox Cowl.esm:007550",
@@ -55555,7 +56570,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -55629,7 +56646,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -55703,7 +56722,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -55777,7 +56798,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -55837,7 +56860,9 @@
    "inTown": null,
    "plugin": "Gray Fox Cowl.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -55965,7 +56990,9 @@
     ],
     "zoneMin": 8
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Undeath.esp:125096",
@@ -56005,7 +57032,9 @@
      "level": "level 80"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -56071,7 +57100,9 @@
      "level": "level 150"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:4E7B1C",
@@ -56099,7 +57130,9 @@
      }
     ]
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A5165",
@@ -56138,7 +57171,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -56473,7 +57508,9 @@
      "level": "level 1250"
     }
    },
+   "respawns": "never",
    "clearXp": 200,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "Kagrenac's Tools",
@@ -56511,7 +57548,9 @@
      "level": "level 130"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:26C06E",
@@ -56592,7 +57631,9 @@
      "level": "level 45"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Vigilant.esm:37FBC0",
@@ -56609,6 +57650,7 @@
    "inTown": null,
    "plugin": "Vigilant.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
     {
      "kind": "dialogue",
@@ -56718,7 +57760,9 @@
      "level": "level 55"
     }
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim.esm:04378B",
@@ -56740,7 +57784,9 @@
    "inTown": null,
    "plugin": "Skyrim.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -57038,7 +58084,9 @@
    "inTown": null,
    "plugin": "Vigilant.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -57066,7 +58114,9 @@
    "inTown": null,
    "plugin": "Vigilant.esm",
    "marker": null,
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "book",
@@ -57161,7 +58211,9 @@
      "level": "level 120"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -57211,7 +58263,9 @@
      "level": "level 100"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -57235,7 +58289,9 @@
    "inTown": null,
    "plugin": "ksws07_quest.esm",
    "marker": "ksws07_quest.esm:001541",
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -57275,7 +58331,9 @@
      }
     ]
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "pointers": [
     {
      "kind": "dialogue",
@@ -57316,7 +58374,9 @@
     ],
     "zoneMin": 15
    },
-   "clearXp": 100
+   "respawns": "after 300 days once cleared, 30 ordinarily",
+   "clearXp": 100,
+   "discoveryXp": 10
   },
   {
    "id": "Skyrim Extended Cut - Saints and Seducers.esp:0A516A",
@@ -57358,7 +58418,9 @@
      "level": "level 50"
     }
    },
+   "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
+   "discoveryXp": 10,
    "quests": [
     {
      "quest": "The Lunatic's Treasure",

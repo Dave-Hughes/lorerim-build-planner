@@ -195,6 +195,15 @@ class BuiltIndex(unittest.TestCase):
         outpost = self.by["Septimus Signus' Outpost"]["actors"]
         self.assertEqual((outpost["floor"], outpost["ceiling"]), (1, 1))
 
+    def test_discovery_xp_and_respawns_are_grounded_in_the_mcm_settings(self):
+        # WO-144 Part 1e: discoveryXp from Experience.ini's [Exploring]; respawns from Requiem's own MCM settings
+        # (720h/7200h = 30/300 days), never hardcoded -- matches docs/data/places.md's own stated numbers exactly.
+        barrow = self.by["Bleak Falls Barrow"]
+        self.assertEqual(barrow["discoveryXp"], 10)
+        self.assertEqual(barrow["respawns"], "after 300 days once cleared, 30 ordinarily")
+        never = [p["name"] for p in self.rows if p.get("respawns") == "never"]
+        self.assertGreater(len(never), 0)  # at least one place carries the zone's own "never resets" flag
+
     def test_bobs_cleaning_pass_names_are_gone_or_fixed(self):
         # WO-144 Part 1, Bob 23 Oct 15:35: a keyword alone isn't a building (a city tagged as having an inn, a
         # player home, a dungeon with a stray LocTypeInn, a cellar, a tomb). These never show as a Temple/Inn/Guild.

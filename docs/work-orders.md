@@ -5246,6 +5246,9 @@ Dave's Claude, planning Kyria near Solitude: "Not checked Fort Hraggstad's enemy
 ### Part 1e. The rest of the places spec
 - [ ] Every row of `docs/data/places.md`, with its sanity test and the ten spot checks in the log.
 
+### Part 1e progress (PC, 23 Oct)
+**discoveryXp** built: `[Exploring]`'s `iXPDisc<Type>` from the same `Experience.ini` `clearXp` already reads (10 for every type in this load order, read, not assumed). **respawns** built: `"never"` when the place's own `ECZN` carries the 0x01 flag (82 places); otherwise `"after 300 days once cleared, 30 ordinarily"`, read from Requiem's own MCM settings, not the spec's prose taken on faith -- `MCM/Settings/Requiem.ini` is the shipped preset SkyUI's MCM loads as the active value (sets the ordinary 720h = 30 days, LoreRim's own override) and `MCM/Config/Requiem/settings.ini` is the mod's declared default, read only for `iHoursToRespawnCellCleared` (7200h = 300 days) since the preset never sets it -- confirmed to match the spec's own stated numbers exactly, not the other way round. Not yet built: what lives there (majority faction/kind of hostiles), what's worth going for (word walls, skill books, unique items, crafting stations, Standing Stones), danger to a build (traps, dragon lair, boss spell kit) -- each needs reading records this script doesn't touch yet (`SNAM` faction lists on `NPC_`, placed activators and containers by kind); logging the size rather than rushing any of them. 288 gamedata tests pass.
+
 ### Part 2. People
 
 **Bob, 23 Oct, 16:55:** every field Part 2 carries is defined in `docs/data/people.md`. Build to it, with its sanity tests and spot checks. "Where" means where a player first meets them (Lydia in Dragonsreach), not where they end up.
