@@ -118,20 +118,38 @@ class BuiltIndex(unittest.TestCase):
             self.assertTrue(gate["record"].startswith("INFO "))
 
     def test_city_buildings_are_findable_with_their_town(self):
-        # WO-144 Part 1 item 3: named by keyword (CWCapitalHQ for a keep; LocTypeTemple/Inn/Guild otherwise), their
-        # town is a parent-chain fact (inTown), never a distance guess.
-        by_type = collections.Counter(p["type"] for p in self.rows if p["type"] in ("Temple", "Inn", "Guild", "Keep"))
+        # WO-144 Part 1 item 3: named by keyword (CWCapitalHQ for a keep, LocTypeStables for a stable; LocTypeTemple/
+        # Inn/Guild otherwise), their town is a parent-chain fact (inTown), never a distance guess.
+        by_type = collections.Counter(p["type"] for p in self.rows if p["type"] in ("Temple", "Inn", "Guild", "Keep", "Stables"))
         self.assertEqual(by_type["Keep"], 9)  # exactly the nine jarls' seats, never a non-capital castle
+        self.assertEqual(by_type["Stables"], 5)  # Whiterun, Windhelm, Riften, Markarth, Solitude
         self.assertGreater(by_type["Inn"], 20)
         self.assertGreater(by_type["Temple"], 5)
         self.assertGreater(by_type["Guild"], 5)
         for nm, city in (("Dragonsreach", "Whiterun"), ("Temple of Kynareth", "Whiterun"), ("The Bannered Mare", "Whiterun"),
-                         ("Jorrvaskr", "Whiterun"), ("Winterhold College", "Winterhold"), ("The Bards College", "Solitude")):
+                         ("Jorrvaskr", "Whiterun"), ("Winterhold College", "Winterhold"), ("Bards College", "Solitude"),
+                         ("Solitude Stables", "Solitude")):
             self.assertEqual(self.by[nm]["inTown"], city, nm)
 
     def test_buildings_never_pick_up_a_non_capital_castle(self):
         castles = {p["name"] for p in self.rows if p["type"] == "Keep"}
         self.assertNotIn("Castle Volkihar", castles)
+
+    def test_bobs_cleaning_pass_names_are_gone_or_fixed(self):
+        # WO-144 Part 1, Bob 23 Oct 15:35: a keyword alone isn't a building (a city tagged as having an inn, a
+        # player home, a dungeon with a stray LocTypeInn, a cellar, a tomb). These never show as a Temple/Inn/Guild.
+        names = {p["name"] for p in self.rows if p["type"] in ("Temple", "Inn", "Guild")}
+        for bad in ("Whiterun", "Solitude", "Home of Thane Alarik", "Fort Valus", "The Hermit", "The Hermit Cellar",
+                    "Markarth East Empire Dormitory", "Temple Location", "Markarth Outskirts",
+                    "Snow-Shod Farm Cellar", "Mausoleum", "Mustering Hall"):
+            self.assertNotIn(bad, names, bad)
+        self.assertNotEqual(self.by["Cragwater Cavern"]["type"], "Inn")  # still a dungeon, just never an inn
+
+    def test_building_names_are_the_cell_s_not_the_record_s(self):
+        # Bob: "Mistveil Keep", not "Riften Mistveil Keep"; "Vilemyr Inn", not "Ivarstead Vilemyr Inn".
+        self.assertEqual(self.by["Mistveil Keep"]["name"], "Mistveil Keep")
+        self.assertEqual(self.by["Mistveil Keep"]["recordName"], "Riften Mistveil Keep")
+        self.assertEqual(self.by["Vilemyr Inn"]["name"], "Vilemyr Inn")
 
     def test_the_roads_table_covers_every_mainland_pair_once(self):
         # WO-144 Part 1 item 4: every capital and settlement to every other in the same worldspace, no duplicate pair,

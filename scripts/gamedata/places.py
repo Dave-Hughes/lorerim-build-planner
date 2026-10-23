@@ -80,6 +80,17 @@ STRONGHOLD_GATE = "Skyrim.esm:0BBB2D"
 # distance -- `inTown`, not `nearestTown`. Kept off the map by their `type` (Mac's "rule 20" on `suggest_places`).
 BUILDING_KW = {"LocTypeTemple", "LocTypeInn", "LocTypeGuild"}
 KEEP_KW = "CWCapitalHQ"
+# Bob's cleaning pass (23 Oct, 15:35): a building keyword alone isn't a building. A location that is also the city
+# itself (Whiterun and Solitude both carry "LocTypeInn" on their own city LCTN), a player-built home, a bandit camp
+# or a dungeon (Cragwater Cavern, tagged "LocTypeInn" as well as "LocTypeBanditCamp") is never one, so these never
+# bypass PLACE_KW/NOT_KW even though BUILDING_KW matches. A few more carry no disqualifying keyword at all (an
+# identical shape to a real inn, in the Dormitory's case) and are named by hand instead, logged rather than guessed
+# at by a general rule that could just as easily drop a real one.
+NOT_BUILDING_KW = {"LocTypeCity", "CWCapital", "LocTypeHoldCapital", "LocTypeHold", "LocTypeMilitaryFort",
+                    "LocTypeHouse", "LocTypePlayerHouse", "LocTypeBanditCamp"}
+NOT_BUILDINGS = {"Temple Location", "Snow-Shod Farm Cellar", "Mausoleum", "Mustering Hall", "The Hermit",
+                  "The Hermit Cellar", "Markarth East Empire Dormitory",
+                  "Solitude"}  # The Great City of Solitude.esp:01F045: LocTypeInn, no cell at all, never placed
 # Bob's ruling (23 Oct, 15:20): the km is real, but this is a small map, so a player's own measure goes beside it.
 # Set from two pairs Bob gave: Riverwood to Whiterun (0.5 km) is "a short walk"; Whiterun to Riften (2.5 km) is "a
 # long day's road". Embershard Mine to Riverwood (0.3 km, practically touching) sets the top of "next to it".
@@ -175,8 +186,10 @@ def scan():
                 elif grp == "NPC_":
                     acbs = next((v for s, v in subs if s == "ACBS" and len(v) >= 14), None)
                     fixed, scaled, tflags = npc_level(acbs) if acbs else (None, None, 0)
+                    kwda = next((v for s, v in subs if s == "KWDA"), b"")
                     npcs[key] = {"name": full or None, "edid": edid, "level": fixed, "scaled": scaled, "useStats": bool(tflags & 2),
-                                 "template": next((res(v) for s, v in subs if s == "TPLT" and len(v) >= 4 and struct.unpack_from("<I", v)[0]), None)}
+                                 "template": next((res(v) for s, v in subs if s == "TPLT" and len(v) >= 4 and struct.unpack_from("<I", v)[0]), None),
+                                 "keywords": [form_id(resolve(struct.unpack_from("<I", kwda, i)[0], masters, n)) for i in range(0, len(kwda) - 3, 4)]}
                 elif grp == "LVLN":
                     lvln[key] = {"edid": edid, "entries": [(struct.unpack_from("<H", v, 0)[0], form_id(resolve(struct.unpack_from("<I", v, 4)[0], masters, n)))
                                                            for s, v in subs if s == "LVLO" and len(v) >= 8]}
@@ -329,6 +342,12 @@ def build(version):
     for m in markers.values():
         if not m["deleted"] and m["name"]:
             by_marker_name[m["name"]].append(m)
+    # A building's own cell name, as a player reads it ("Mistveil Keep", not "Riften Mistveil Keep"): the shortest of
+    # its cells' names, since a keep or inn's main hall is always named plainer than its own sub-rooms (Bob, 23 Oct).
+    cell_names_of = collections.defaultdict(set)
+    for c in cells.values():
+        if c.get("location") and c.get("name"):
+            cell_names_of[c["location"]].add(c["name"])
     places = {}
     for k, l in locs.items():
         if l["deleted"] or not l["name"]:
@@ -343,7 +362,10 @@ def build(version):
         # keyword or marker of its own is ruled out by its parent.
         named = l["name"] in NAMED_PLACES
         is_keep = KEEP_KW in names
-        building = bool(names & BUILDING_KW) or is_keep  # item 3: temples, inns, guild halls (colleges too), keeps
+        is_stable = "LocTypeStables" in names  # a strong keyword of its own: skip the generic disqualifiers entirely
+        generic_building = (bool(names & BUILDING_KW) and not (names & NOT_BUILDING_KW) and not (names & PLACE_KW)
+                             and l["name"] not in NOT_BUILDINGS)  # item 3: temples, inns, guild halls, keeps, stables
+        building = is_keep or is_stable or generic_building
         bypass = named or building
         if not bypass and (names & NOT_KW or mtype in NOT_PLACES or (inside_town and not (names & PLACE_KW or mtype))):
             continue
@@ -351,7 +373,9 @@ def build(version):
             continue
         if is_keep:
             kind = "Keep"
-        elif building:
+        elif is_stable:
+            kind = "Stables"  # never "Stable": that's still a mislabelled marker's own type, in NOT_PLACES
+        elif generic_building:
             kind = next(w for kw2, w in (("LocTypeTemple", "Temple"), ("LocTypeInn", "Inn"), ("LocTypeGuild", "Guild")) if kw2 in names)
         else:
             kind = mtype or next((KIND_WORDS[x] for x in sorted(names) if x in KIND_WORDS), None) or "Landmark"
@@ -374,8 +398,11 @@ def build(version):
 
         near, near_city = nearest(towns), nearest(cities)
         # The map's name when it only extends the record's ("Embershard" -> "Embershard Mine"); never another place's (a mod's
-        # Morvunskar Crypts that points at Bleak Falls Barrow's marker keeps its own name).
-        shown = m["name"] if (m or {}).get("name") and l["name"].lower() in m["name"].lower() else l["name"]
+        # Morvunskar Crypts that points at Bleak Falls Barrow's marker keeps its own name). A building's own cell's
+        # name instead, when it's shorter than the record's ("Mistveil Keep", not "Riften Mistveil Keep").
+        cell_shown = min(cell_names_of.get(k, ()), key=len, default=None) if building else None
+        shown = (cell_shown if cell_shown and len(cell_shown) < len(l["name"]) else
+                 m["name"] if (m or {}).get("name") and l["name"].lower() in m["name"].lower() else l["name"])
         places[k] = {"id": k, "name": shown, **({"recordName": l["name"]} if shown != l["name"] else {}), "edid": l["edid"], "type": kind, "keywords": sorted(x for x in names if x.startswith("LocType")),
                      "hold": hold_of(k), "nearestTown": near, "nearestCity": near_city, "inTown": in_town, "plugin": l["plugin"], "marker": l.get("marker") if m else None}
         if l["name"] in STRONGHOLDS and infos.get(STRONGHOLD_GATE):
