@@ -169,3 +169,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_playthrough`.
 - Must: the level the act's XP reaches, computed; not the typed range.
 - Fails today: **WO-145**.
+
+**33. "Tell me about A Rat Problem."**
+- Calls: `get_quest({ name: "A Rat Problem" })`.
+- Must: a link to the quest's own page (`/quests/q/…`); its own start; no line-level opening from another quest (the Bluesky Hall messenger); no "comes after".
+- Fails today: **WO-147**.

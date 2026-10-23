@@ -4964,6 +4964,28 @@ Decisions made under WO-138 Part 5, each with why:
 
 ---
 
+## WO-147  A page for every quest, and grab-bags as shelves, not lines (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave (23 Oct), opening `/quests/capital-whiterun`: "what is this quest line exactly?" It isn't one. "Whiterun, expanded" is eight unrelated jobs from Capital Whiterun Expansion (a house, a giant, a rat cellar, the white horse, a festival, a farm, a temple job, a skirmish), bundled by the mod they came from and shown as if a story: the page opens on "I've received a note by a messenger from Whiterun", which starts only the house quest, and the bundling is what produced Running Wild's false "comes after" gate. "Windhelm, expanded" is the same. And a quest has no page of its own: it's a section of its line's page, so a search, a link from a playthrough or a link from an assistant lands on the whole line.
+
+### Part 1. A page for every quest
+- `/quests/q/<slug>` for each of the 1,242 quests (slug from the name, the EDID when two share a name). It shows, in this order: how it starts (who, where, what you do, its needs, "open for you" when signed in with a playthrough), the first step, its objectives, its endings and what changes the run, what it's part of (its line or shelf, with a link, and the quests before and after when the line has an order), where it was checked, and "This was wrong" / "I know how this starts" for that quest. Design rules apply (no micro labels, the game's words); match the line page's look.
+- The line page lists its quests linking to their pages, keeping the short how-it-starts under each; `search_facts`, `get_quest` and playthrough objectives link to the quest page, not the line. The quest log (`get_quest_log`) links too.
+- Screenshots at 1440 and 390 of Running Wild's page and a main-quest page (Bleak Falls Barrow).
+
+### Part 2. Grab-bags become shelves
+- A mod's bundle of unrelated quests is a **shelf** (as "Odd jobs in the Rift" is): no line-level opening, no implied order, no "comes after", each quest standing alone. Its name says what it is: "More to do in Whiterun", "More to do in Windhelm".
+- Decide which lines are grab-bags from the records: a line is a story only if its quests set each other's stages (one quest's stage or ending starts the next); otherwise it's a shelf. Log the list under this order (expected: the two capitals' expansions and similar city or town packs; the Dragonborn, guilds, Daedric and the lands mods stay lines).
+- A placeholder objective ("TEST", empty, or the editor's own note) is hidden from pages and the door (Skirmish at Whitewatch's first objective reads "TEST").
+
+### Done when
+- [ ] Part 1: quest pages, linked from lines, search, the door, playthroughs and the quest log; screenshots.
+- [ ] Part 2: grab-bags as shelves with the logged list; no line-level opening on them; placeholder objectives hidden.
+- [ ] Player question 33: "Tell me about A Rat Problem" links to its own page and names no opening from another quest. Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
 Status: done (needs Dave: the API key in Vercel)
 
