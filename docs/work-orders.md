@@ -5022,6 +5022,16 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-150  suggest_places is broken on every input (Mac, urgent, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave's Claude, re-planning Kyria (17:01): "One planner tool (suggest_places) is broken on every input, so I'm reading its places data from the repo instead." Bob, live: `suggest_places` returns `Cannot read properties of undefined (reading '0')`. Cause: WO-144 Part 1d (PC, 9eed4b1) changed `places.json`'s `actors` from `levels: [lo, hi]` to `floor`, `ceiling` and `atLevel`, and `src/lib/places/suggest.ts` still reads `p.actors.levels[0]` (lines 95, 110, 162). The unit tests use fixtures in the old shape, so nothing went red.
+- [ ] `suggest.ts` reads the new shape (`floor`, `ceiling`, `atLevel`, the boss); WO-148 item 9's fit uses `atLevel` and the boss as written there. Words: "bandits from level 6; at 12 you meet 6 to 12; the chief about 10".
+- [ ] **A contract test against the real data:** `suggest_places`, `get_quest` and `get_quest_log` run on the generated `places.json` and `quests.json` (not fixtures) for Kyria's acts and three towns, and fail on any thrown error. The same for every tool that reads a generated file.
+- [ ] Live: `suggest_places` for Kyria's Act I and `where: "Solitude"` returns places. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-149  The save connector's skills come back empty (PC, 23 Oct 2026)
 Status: queued
 

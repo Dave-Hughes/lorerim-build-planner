@@ -27,6 +27,8 @@ Every order has, under its heading:
 9. **Never ask Dave whether to keep going.** The answer is always yes, by this file. Ask only for a decision an order can't settle, and then write the question under the order, push it with `Status: blocked`, and take the next order.
 10. Push a progress commit at least every 45 minutes on a long part (what's done, what's next, under the order), so Bob and Dave can see you're alive.
 
+**Generated files are a contract.** A Jeff who changes the shape of a generated file (a field renamed, removed or re-typed) runs `npm test` (which includes the contract tests on the real data) before pushing, and says the change in the commit message. The PC breaking Mac's door through a renamed field happened once (WO-150); the contract test is there so it doesn't again.
+
 ## Bob's loop
 - For data work, Bob reads values, not counts: he pulls a few rows and asks whether a player would believe them.
 - A watcher on `staging` (re-armed every 30 minutes while the chat with Dave is open) wakes Bob on every push by a Jeff.
