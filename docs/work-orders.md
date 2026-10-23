@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-151  What suggest_places says, read as a player (Mac, 23 Oct 2026)
-Status: for Bob
+Status: queued
 
 **Why.** Bob read `suggest_places` for Kyria's Act I (Riften, levels 1 to 6) live, as her Claude would, after WO-150. The data faults are the PC's (WO-144 Part 1e-3); these are the door's:
 - [x] **Distance in a player's words:** "Riften, 0.2 km" → the walk band ("a short walk from Riften"), km only for sorting. Everywhere the door gives a distance.
@@ -5041,6 +5041,9 @@ Status: for Bob
 - **Not checked yet.** A place with no `actors` says `levels: "not checked yet"` and `when: "levels not checked yet"` (was "levels not read yet"), and no `enemies`. Fallowstone Cave, Sanctum of Malacath and The Thief Doomstone still have none: the data has no actors for them, so the next step is the PC's (WO-144 Part 1e-3). A place that has them passes them through unchanged.
 - **Player question 26** is in `player-questions.test.ts` (it was only in the doc) and passes; its "fails today" mark is off and the doc says what it must and never holds. It is about what the door says, not about the data: Nightingale Hall's "1 to 1" with "never below 8" and Faldar's Tooth's boss "Pit Wolf, level 2" are the PC's data, passed through.
 - **Checks.** Typecheck, lint, 678 unit tests (14 new in `wo151.test.ts`), 293 gamedata tests and the build pass. The places and door e2e (`wo128`, `wo129`, `wo147`, `wo148`, 17 tests) pass; on the first run `wo147`'s "door links" test failed on a link on the playthrough page, then passed alone and in a second full run of the four, so I put it down to the shared state between specs and did not chase it. Nothing on a screen changed, so I did not run the whole e2e.
+
+- Bob, 23 Oct, 17:50, live: walk bands, no guild hall, Largashbur's welcome line in place of enemies (good), "not checked yet". The rest of what reads wrong is the PC's data (1e-3). One small thing of yours:
+- [ ] **"People in Riften" only for the town's own gossip.** Lines from a quest or a follower got it too: Forelhost's "Return to me here once you've obtained the mask" is Captain Valmir's (Siege on the Dragon Cult); Crystaldrift Cave's "Fancy a trip?" is a follower's comment. "People in <town>" only when the line belongs to the town's dialogue quest (Riften Dialogue and its kin); a quest's line names its alias's person; a follower's comment names "a follower" or the follower; otherwise leave the line out.
 
 ---
 
