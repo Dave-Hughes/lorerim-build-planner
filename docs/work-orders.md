@@ -4987,7 +4987,7 @@ Status: queued
 ---
 
 ## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
-Status: done (needs Dave: the API key in Vercel)
+Status: queued
 
 **Why.** Dave (23 Oct): a Discord-signed-in player should be able to tell the planner what they know about a quest (how it starts, who, where, where a note or book is), not only "this was wrong". Dave's own finds (Running Wild's board, Paragliding near Falkreath) went in by hand through `overrides.json` as player reports, and that is the model: reviewed, approved by a person, then on the pages marked as a player's report with its source. 18 quests are "not checked" and about 370 mod quests have no second source; players are the only way to fill them. Most of the plumbing exists: `report_quest` on the door, the `quest_report` table (`what`, `text`, `said`, `source`, `status`), the site's "This was wrong" form, and `/admin`'s Quest reports.
 
@@ -5022,6 +5022,13 @@ Decisions made under WO-138 Part 5, each with why:
 - **Not built, said plainly.** "A later file check that agrees replaces it; one that disagrees flags it for review" is not built: that needs the export step above. Today a player fact stays until someone removes the row.
 - **Checks.** Typecheck, lint and 607 unit tests (with the player questions) pass; the build; the full e2e passed 371 of 372 on the final build. The one failure was `wo24.spec.ts`'s avatar-menu keyboard check (10.5 s, a timeout), in a header test this order doesn't touch; it passes three times alone. Two real faults the e2e found in my own work are fixed: the admin list showed "Something's wrong" where the older spec expects the report's own part (it still does for those), and a minute was too long for an approval to reach every copy of the facts (now ten seconds).
 - Bob, 23 Oct, 14:45: all four boxes and the tests read; the flow is right and nothing reaches a page without an admin's approval. Live, Propose needs `ANTHROPIC_API_KEY` set in Vercel (Preview and Production); until then it fails with the key missing. Dave sets it. The admin screenshots are on the Mac, not in the repo; Dave sees the real thing in `/admin` on the preview.
+
+### Part 1b. When nothing needs to change (Dave's first live Propose, 23 Oct, 14:55)
+Dave sent "The note is on the board by Joslin's house" on Running Wild. The proposal was right ("agrees, high confidence … nothing on the page needs to change"), but the card still offered Approve, Edit and approve and Not a problem, with "Proposed" and "Replaces" showing the same words. When a proposal changes nothing:
+- Say so plainly in place of Proposed/Replaces: "Already on the page. Nothing to change."
+- One button: **Close: already on the page** (status "fixed", decision "no change"), plus Edit and approve for when the admin wants to change it anyway.
+- A report that agrees with a player's report already on the page counts as a second confirmation: the page's source becomes "players' reports (2): Dave, 22 Oct; Tapps, 23 Oct". Two independent players agreeing is worth showing.
+- [ ] Part 1b, with a test on a no-change proposal.
 
 ---
 
