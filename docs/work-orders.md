@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-147  A page for every quest, and grab-bags as shelves, not lines (Mac, 23 Oct 2026)
-Status: queued
+Status: building (Mac)
 
 **Why.** Dave (23 Oct), opening `/quests/capital-whiterun`: "what is this quest line exactly?" It isn't one. "Whiterun, expanded" is eight unrelated jobs from Capital Whiterun Expansion (a house, a giant, a rat cellar, the white horse, a festival, a farm, a temple job, a skirmish), bundled by the mod they came from and shown as if a story: the page opens on "I've received a note by a messenger from Whiterun", which starts only the house quest, and the bundling is what produced Running Wild's false "comes after" gate. "Windhelm, expanded" is the same. And a quest has no page of its own: it's a section of its line's page, so a search, a link from a playthrough or a link from an assistant lands on the whole line.
 
