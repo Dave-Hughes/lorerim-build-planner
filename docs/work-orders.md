@@ -4923,6 +4923,48 @@ Status: done
 
 ---
 
+## WO-142  Four things the thief test showed (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Bob ran a design test through the door (an Argonian thief, never kills, not the Dragonborn, wants a horse; build dwa27ywaka, playthrough 5h8y9vpbtq, both "TEST:" drafts). The build came out legal and the assistant kept to the planner. Four faults in what it was told:
+1. **A false "comes after" gate on a line that isn't a work shelf.** `get_quest` Running Wild at level 5 says "unknown: comes after Ode To The Tundrastriders, and the planner hasn't been told that's done". Nothing in the records ties them; they're neighbours in "Whiterun, expanded". WO-130 stopped this for the work category only. Rule: a line's order never gates a quest; only the quest's own checked needs do (a quest or stage named in its ways' needs). Test: Running Wild is open at level 5 with nothing done; Dawnguard's chain quests still lock on their needs.
+2. **The objective matcher claims a wrong quest.** The warning "'Buy a horse at the Riften Stables' is Caught Red Handed (FreeformRiften11); link it so the save can tick it" matched on "Riften Stables" in one of Caught Red Handed's objectives. A match needs the quest's name, or most of an objective's words, not a place name inside one. When it isn't sure, say "might be" and don't say "is". Test: that objective matches nothing; "Catch the white horse roaming the fields of Whiterun" matches Running Wild.
+3. **`set_level` 1 takes skill points and does nothing.** Level 1 has no points; refuse with "Level 1 has no skill points to spend; its skills come from the race and the majors" instead of saving them silently.
+4. **How to get a mount is nowhere in the door.** The assistant could not say that a stable sells a horse or what it costs. Add a `mounts` entry to `get_rules` (or a `get_fact`): a horse costs 1,500 gold at any stable (`HorseCost`, Economy Overhaul); Running Wild's horse; a wild saddled horse can be tamed and kept (Simplest Horses); the paraglider (Paragliding in Skyrim). Stables as places come with WO-141 Part 1.
+
+### Done when
+- [ ] 1 to 4, each with a test. Player question 24 ("How do I get a horse? I'm level 5 in Riften.") returns the stable price, Running Wild as open, the tamed horse and the paraglider. Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
+## WO-143  A calling's things to do: what a bard, a scholar, a fisher can do in each town (PC, then Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave (23 Oct): designing a character with a calling (his Callings mod) means giving them things to do that use it. Kyria is a bard, so the Bards College is an obvious stop; but there are also many books to read there, and every town has an inn to play. The planner has no idea what a calling can do where, so an assistant can't plan an act around one. The style guide says an act has a standing rule ("Play the Bee and Barb most nights") but nothing tells the assistant which inns exist, which towns have bookshelves worth reading, where the fish are.
+
+### Part 1. The index (PC)
+From the records (and Callings' own data where it has it: its inns per hold, `plants.json`): for each town, settlement and place in the places index, what each calling can do there:
+- **Bard:** every inn with its name and hold (Callings counts inns per hold); the Bards College.
+- **Scholar:** where the books are: libraries and rooms with many readable books (the Arcanaeum, the Bards College's library, Dragonsreach, the Blue Palace, Jorrvaskr's, Hjerim…), with a count from the placed book references.
+- **Fisher:** fishing spots (the Fishing creation's spots), with the town they're near.
+- **Hunter:** hunting grounds by what lives there (from the places index's actors and the hold's wildlife spawns).
+- **Gatherer:** what grows in each hold (Callings' `plants.json`).
+- **Laborer and smith:** mines with ore veins and their ore, forges and smelters outside cities, wood-chopping blocks.
+- **Helper and thief:** the favours and the jobs by town already come from the quests; a count per town is enough here.
+Written to `callings.json` with each item's source.
+
+### Part 2. The door and the guide (Mac)
+- `suggest_places` and a new `suggest_doings(playthrough, act, calling)` return, for the act's towns, what the calling can do there, in the game's words, with "already used" the way places have it.
+- A playthrough carries `callings` (up to two, by name) with its answers (WO-139); the style guide gains a rule: when a character has a calling, every act gives it things to do in its towns, from suggest_doings, and the standing rule names one of them.
+- Kyria's Act I gains the Bee and Barb and Riften's books as the worked example.
+
+### Done when
+- [ ] Part 1: `callings.json` with the seven callings' things to do per town, each with its source. (PC)
+- [ ] Part 2: `suggest_doings`, `callings` on the playthrough, the rule; player question 25 ("Kyria is a bard in Riften; what can she do here as one?") returns the Bee and Barb and where the books are. (Mac)
+- [ ] Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-141  What Mogrash's design needed and couldn't get: strongholds, followers, and where the Smithing books are (PC, then Mac, 23 Oct 2026)
 Status: queued
 
@@ -5017,6 +5059,9 @@ Dave: Callings (his role-play XP add-on) is what lets a custom character make se
 - The style guide gains a rule: when a design depends on something LoreRim doesn't ship (performing as a bard, a scholar's reading, a custom start, a story NPC), name the mod with set_details mods and say why; Callings first, by name, for any character whose opening isn't fighting. Never assume a mod is installed; the player decides.
 - Kyria's playthrough gets Callings as required, with Dave's why, as the worked example.
 
+### Part 5. "Never kills", made checkable (added 23 Oct, 12:00, from Bob's design test)
+A thief who never kills got `never: kill` nowhere to go, and the assistant could only say "the planner can't confirm a quest is kill-free". It can, from the objectives: a quest whose objectives include Kill, Defeat, Destroy, Assassinate, Slay or Eliminate needs a kill. With `kill` on the never list, `suggest_quests` and `suggest_objective` leave those out and say so; `get_quest` says "needs a kill: <the objective>" under `openForYou`; a quest with no such objective says "kill-free as far as the objectives go". Tested on Loud and Clear (kill-free) and Contract: Kill Hern (needs a kill).
+
 ### Player questions
 - 19. "Design me a new character." Can't test the assistant; test what it's told: `get_style_guide` holds the eight questions, worded as above, the softened reason-to-travel line and the mods rule; `create_build`'s and `create_playthrough`'s descriptions point to them.
 - 20. "What can she do in Windhelm at level 12?" on a playthrough whose never holds `the-dark-brotherhood` and `main-quest`: `suggest_quests` names neither, and says what it left out.
@@ -5027,6 +5072,7 @@ Dave: Callings (his role-play XP add-on) is what lets a custom character make se
 - [ ] Part 1: the section and the How to build lines in the guide (the reason-to-travel line softened), the two descriptions, the renumbering test.
 - [ ] Part 2: `answers` through the door and on both pages; screenshots.
 - [ ] Part 3: `never` through the door; `suggest_quests`, `suggest_objective`, `get_quest` and the warnings keep to it, with tests on a playthrough whose never holds `main-quest` and `the-dark-brotherhood`.
+- [ ] Part 5: `kill` on the never list reads the objectives; tests as above.
 - [ ] Part 4: `mods` through the door, on the edit pages and both public pages; Callings on the mods guide page (link from Dave) and on Kyria's playthrough; the style-guide rule. Screenshots.
 - [ ] Player questions 19 to 22 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
@@ -5548,6 +5594,7 @@ The common fault: an act has a goal and a place, but no thread. Its objectives a
 ---
 
 ## WO-128  Places with a reason: hooks that bring a character to caves, mines, forts and landmarks (21 Oct 2026)
+Status: queued
 
 **Why.** Dave (21 Oct), from playing Kyria: Skyrim is full of places players want to see (Embershard Mine is the example), and many have no quest pointing at them. A role-player won't run to a mine for no reason, so a playthrough that only follows quests sends them past most of the world. Kyria's guide sent her to Ivarstead and gave her nothing to do on the way or around it. The fix is a hook: the story already brings her to a town, someone there mentions a place nearby, and the reason fits who she is. Dave's example: the playthrough takes her to Riverwood, the blacksmith there talks about the bandits who took Embershard Mine, the village needs the mine's iron, and Kyria feels she has to step in.
 
@@ -5605,6 +5652,13 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
   - **Tests:** `src/lib/mcp/wo128.test.ts` (Riverwood, Ivarstead, an act's towns, a city not measured yet, when, rule 20, place links); `e2e/wo128.spec.ts` (the door end to end, then Play at 1440 and 390, with screenshots: `wo128-place-*.png` and `wo128-passed-by-*.png`).
   - **Checks:** typecheck, lint, 536 unit tests, the 11 player questions, 226 game-data tests, build, e2e 354 of 354. Dave's test (an assistant plans a new act) is still his: for an act in Riverwood, Ivarstead or Helgen it should work now; in a city it will say the index doesn't measure from there yet, until the PC fixes the town list.
 - [x] Every check in CLAUDE.md passes. Screenshots of Play with a place objective and a passed-by line at 1440 and 390. Commit on `staging`, push, and stop for Dave: he asks an assistant to plan a new act through the connector and gets two to four places tied to people in the act's towns, at least one in the game's own words, one planted for later, and a passed-by line.
+
+### Part 5. The nearest town is wrong, so suggest_places is empty for every real city (PC, feedback from Bob's design test, 23 Oct)
+`places.json`'s `nearestTown` never names one of the nine hold capitals: the 477 places sit nearest to "Skaal Village" (42), "Granite Hill" (27), "Karthwasten", "Reich Corigate Ruins", "Heljarchen Hall", "Markarth Side", "Solitude East Gate", "Flight Platform" and 104 have none. So `suggest_places` says "The places index doesn't measure distances from Riften yet" for Riften, and the same for Whiterun, Solitude, Windhelm, Markarth, Falkreath, Morthal, Dawnstar and Winterhold: every act set in a city gets no places. The cause is reading "town" from a map marker's icon type, which the cities don't use and some ruins and manors do.
+- Measure every place to a fixed list: the nine hold capitals by their exterior map markers, then the real settlements and villages WO-141 Part 1 adds (Riverwood, Ivarstead, Rorikstead, Shor's Stone, Dragon Bridge, Karthwasten, Kynesgrove, Darkwater Crossing, Stonehills, Helgen, the Skaal Village, Raven Rock, and the lands mods' own). Keep both: `nearestTown` (the nearest of all of them) and `nearestCity` (the nearest capital), each with km.
+- Never a ruin, a manor, a gate or a platform as a town. A test that every one of the nine capitals has at least ten places within 5 km, and that `nearestTown` is never a place in the index itself.
+- `suggest_places` for Kyria's Act I (Riften) and the thief test's Act I return places; the note "doesn't measure distances from" goes away for all nine.
+- [ ] Part 5 built and tested; `suggest_places` returns places for each of the nine capitals.
 
 ---
 
