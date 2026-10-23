@@ -123,7 +123,7 @@ function judge(need: string, names: QuestNames, p: PlayerState): Verdict {
   }
   // By itself, or from something placed (a trigger, a board: WO-137 item 6): a way in, not a need. Its own needs, in
   // brackets, still count (Deathbrand's level-up start needs level 20).
-  if (n.startsWith("It starts by itself") || n.startsWith("It starts from")) {
+  if (n.startsWith("It starts by itself") || n.startsWith("It starts from") || n.startsWith("It starts when you")) {
     const inner = /\(([^()]+)\)$/.exec(n);
     return inner ? judgeAll(inner[1].split(/[;,] /), names, p) : MET;
   }

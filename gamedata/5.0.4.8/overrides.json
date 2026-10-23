@@ -347,7 +347,7 @@
     "ccBGSSSE067_Quest": {
       "_note": "WO-138, Rex's note: The Cause's only way in the records is a placed trigger in the Deadlands, by the door to the Mythic Dawn Temple, which a player can't reach before it starts. UESP: at level 46 a courier brings you Stranger's Plea.",
       "_source": "UESP's The Cause page, as Rex read it in the WO-138 loop",
-      "It starts from something placed somewhere in Deadlands, by the door to Mythic Dawn Temple": "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)",
+      "It starts when you arrive somewhere in Deadlands": "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)",
       "_wayNeeds": {
         "A courier brings you Stranger's Plea (UESP; the records show only a trigger in the Deadlands, out of reach until it starts)": [
           "Level 46"

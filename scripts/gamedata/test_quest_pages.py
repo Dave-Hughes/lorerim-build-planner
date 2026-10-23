@@ -866,5 +866,32 @@ class FoldPlacesTest(unittest.TestCase):
         self.assertIs(qp.fold_places(start, {}), start)
 
 
+class TriggerWordsAndDoorsTest(unittest.TestCase):
+    """WO-148 Part 2: an unnamed trigger is you arriving there; a door is on the way only into a step's target."""
+
+    def test_an_unnamed_trigger_is_arriving_in_the_place(self):
+        # Laid to Rest: "something placed in Morthal, by the door to Eisa's House" reads as nothing to a player.
+        board = {"by": "board", "places": [{"where": "Morthal", "nearDoors": [{"door": "Eisa's House"}]}]}
+        self.assertEqual(qp.board_way(board), "It starts when you arrive in Morthal")
+        two = {"by": "board", "places": [{"where": "Windhelm"}, {"where": "Riften"}]}
+        self.assertEqual(qp.board_way(two), "It starts when you arrive in Windhelm, Riften")
+        loose = {"by": "board", "places": [{"where": "somewhere in Emperor's Quarters"}]}
+        self.assertEqual(qp.board_way(loose), "It starts when you arrive somewhere in Emperor's Quarters")
+
+    def test_a_named_trigger_keeps_its_name_and_a_check_with_no_places_keeps_its_own_words(self):
+        named = {"by": "board", "object": "Erotic Book", "places": [{"where": "Stuhn Ravine", "nearDoors": [{"door": "Storage Room"}]}]}
+        self.assertEqual(qp.board_way(named), "It starts from Erotic Book in Stuhn Ravine, by the door to Storage Room")
+        self.assertEqual(qp.board_way({"by": "board", "plain": "It starts from something placed in Windhelm."}), "It starts from something placed in Windhelm.")
+
+    def test_a_door_is_on_the_way_only_into_a_places_a_step_goes_to(self):
+        igna = "The door from Whiterun into Igna's Basement needs the Key to Igna's Basement."
+        sorli = "The door from Stonehills into Sorli's House needs the Key to Sorli's House, carried by Sirgar."
+        self.assertTrue(qp.door_on_the_way(igna, ["Igna's Basement"]))
+        self.assertFalse(qp.door_on_the_way(sorli, ["Morthal"]))
+        self.assertFalse(qp.door_on_the_way(sorli, []))
+        self.assertTrue(qp.door_on_the_way("The door from outside into Dimhollow Crypt is locked (Expert).", ["Dimhollow Crypt, Dimhollow"]))
+        self.assertFalse(qp.door_on_the_way("A door into the quest's place stays hidden.", ["Igna's Basement"]))
+
+
 if __name__ == "__main__":
     unittest.main()

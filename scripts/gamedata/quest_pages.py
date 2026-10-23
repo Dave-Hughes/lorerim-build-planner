@@ -408,6 +408,15 @@ def plain_needs(conditions, own_name, say=None):
     return list(dict.fromkeys(out))
 
 
+def door_on_the_way(text, target_places):
+    """A door's words ("The door from Whiterun into Igna's Basement needs the Key ...") when it leads into one of the places a step's target is in."""
+    m = re.match(r"^The door from .+? into (.+?) (?:needs|is locked)", text or "")
+    if not m:
+        return False
+    into = m.group(1).lower()
+    return any(p and (p.lower() in into or into in p.lower()) for p in target_places)
+
+
 def board_way(s):
     """
     A board's start in words, from its places (WO-136): what it is when it has a name, where its copies stand, and the door
@@ -420,6 +429,11 @@ def board_way(s):
     where = list(dict.fromkeys(clean_place(p["where"]) or p["where"] for p in places if p.get("where")))
     doors = [d["door"] for d in (places[0].get("nearDoors") or []) if not d["door"].startswith("somewhere")]
     named = s.get("object")
+    if not named and where:
+        # An unnamed trigger placed somewhere is you arriving there (WO-148 Part 2): "something placed in Morthal, by the door to
+        # Eisa's House" reads as nothing to a player. The door is where the trigger sits, not something to look for.
+        listed = ", ".join(where[:4]) + (f" and {len(where) - 4} more places" if len(where) > 4 else "")
+        return f"It starts when you arrive {listed}" if listed.startswith("somewhere in ") else f"It starts when you arrive in {listed}"
     text = f"It starts from {named}" if named else "It starts from something placed"
     if where:
         listed = ", ".join(where[:4]) + (f" and {len(where) - 4} more places" if len(where) > 4 else "")
@@ -1365,8 +1379,6 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     # Laid to Rest and A Rat Problem read "The door from ... needs the Key to ...", so they were "unknown").
     doors = list(dict.fromkeys(d["text"] for d in (row.get("needs") or {}).get("doors", [])))
     out = {"needs": tidy(needs)}
-    if doors:
-        out["doors"] = doors
     # D1a (WO-138): the quest's own lines name its giver before a talk that only sets another quest's stage (Astrid's lines
     # set Whispers in the Dark's stages; Muiri's sets Mourning Never Comes').
     direct = [w["who"] for w in shown if w.get("who") and not w.get("via")]
@@ -1436,6 +1448,13 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             out["thenWhere"] = place
         if holder and not is_role(holder["name"]):
             out["thenWho"] = holder["name"]
+    # A locked door is on the way only when it leads into the cell or location of a step's target (WO-148 Part 2): Laid to
+    # Rest's Sorli's House door is in another hold and no step goes there; A Rat Problem's key to Igna's basement is on the way.
+    # Only the first target counts: a second alias is the other side of a war (Laid to Rest's rebel jarl, Sorli, if the Stormcloaks hold Morthal).
+    targets = [clean_place(w) or w for t in step.get("target", [])[:1] for h in t.get("holds", []) for w in (h.get("where") or [])] + ([out["thenWhere"]] if out.get("thenWhere") else [])
+    doors = [d for d in doors if door_on_the_way(d, targets)]
+    if doors:
+        out["doors"] = doors
     # The towns it starts in (WO-128 Part 2, WO-129 Part 3): each way's speaker's town and the giver's, for where an act goes.
     at = list(dict.fromkeys(t for t in (town_of(p, towns or {}) for p in [*(w.get("where") for w in shown), out.get("where")]) if t))
     if at:

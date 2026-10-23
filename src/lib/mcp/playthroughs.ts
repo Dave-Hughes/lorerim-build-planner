@@ -803,6 +803,15 @@ export function startsAt(line: Pick<QuestLine, "where" | "giver">, first: Pick<Q
 }
 
 /**
+ * A shelf's places (WO-148 Part 2): where each of its own quests starts, never the curated place or the giver of its first quest standing
+ * for the lot (Markarth Side's "South-east of Dragon Bridge" put a shelf in the Reach under Haafingar).
+ */
+export function shelfPlaces(line: Pick<QuestLine, "quests">): string[] {
+  const texts = line.quests.flatMap((q) => [q.start?.where, ...(q.start?.ways ?? []).flatMap((w) => [w.where, ...(w.whereIs ?? [])]), ...(q.start?.towns ?? [])]).filter((t): t is string => !!t);
+  return [...texts, ...citiesOf(texts)];
+}
+
+/**
  * suggest_quests: stories whose starts are checked in the game files and whose first quest is open for
  * the player (WO-115 Part 3: never one the planner can't judge), not done, each with its checked start,
  * why it's open, and the planner's link.
@@ -858,7 +867,7 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
     .filter(({ open }) => open.state === "open")
     // Where it starts (WO-130): the giver's place, its opening quest's places, and its first start; not every place a
     // start's text names (Join the Dark Brotherhood starts with Aventus in Windhelm, though a later line names Riften).
-    .filter(({ s, line, first }) => !where || startsAt(line, first, s?.start[0]?.text).some((t) => terms.some((w) => t?.toLowerCase().includes(w))))
+    .filter(({ s, line, first }) => !where || (line.category === "work" ? shelfPlaces(line) : startsAt(line, first, s?.start[0]?.text)).some((t) => terms.some((w) => t?.toLowerCase().includes(w))))
     .slice(0, 12)
     .map(({ s, line, first, open }) => ({
       ...(s ? { story: s.id } : {}),

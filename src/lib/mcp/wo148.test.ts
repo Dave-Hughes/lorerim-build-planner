@@ -3,7 +3,7 @@ import { reviewGates, type GateAct } from "@/lib/playthroughs/gate-review";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { holdNamed } from "@/lib/places/holds";
 import { getQuest, getRules, playerState, styleGuide } from "./facts";
-import { gateWorld, missivesAt, placesAt, suggestFrom } from "./playthroughs";
+import { gateWorld, missivesAt, placesAt, shelfPlaces, suggestFrom } from "./playthroughs";
 import { questsData } from "@/lib/quests/data";
 
 /** WO-148: what re-planning Kyria's Acts III and IV couldn't get from the door. */
@@ -114,13 +114,16 @@ describe("4. get_quest says what a quest pays", () => {
 });
 
 describe("5. a key or a door isn't a start", () => {
-  it("A Rat Problem and Laid to Rest: the door is the first step's detail, never a need", () => {
+  it("A Rat Problem and Laid to Rest: a door is never a need, and is the first step's detail only when it is on the way", () => {
     for (const name of ["A Rat Problem", "Laid to Rest"]) {
       const a = getQuest({ name }, undefined, playerState({ level: 15 }));
       expect(JSON.stringify(a.quest.start.needs ?? []), name).not.toMatch(/door|Key/i);
-      expect(a.quest.start.onTheWay?.[0], name).toMatch(/^The door from .* needs the Key to /);
       expect(a.openForYou?.says, name).not.toMatch(/door|Key/i);
     }
+    // Igna's basement key is on the way: the first step goes into that cell.
+    expect(getQuest({ name: "A Rat Problem" }).quest.start.onTheWay).toEqual(["The door from Whiterun into Igna's Basement needs the Key to Igna's Basement."]);
+    // Sorli's House is in Stonehills and no step goes there (WO-148 Part 2): dropped.
+    expect(getQuest({ name: "Laid to Rest" }).quest.start.onTheWay).toBeUndefined();
     expect(getQuest({ name: "Laid to Rest" }, undefined, playerState({ level: 15 })).openForYou?.state).toBe("open");
   });
   it("no quest anywhere has one in its needs or ways, in words or in the record form", () => {
@@ -166,5 +169,39 @@ describe("8. Tome Trials, modeled and gated", () => {
     expect(questsData().lines.some((l) => l.quests.some((q) => q.name === t.after))).toBe(true);
     expect(t.says).toMatch(/^None of the 36 exams is open until Tending the Flames is complete/);
     expect(t.says).toContain("With Callings, its Historian pays half again");
+  });
+});
+
+describe("Part 2: three things on the live door", () => {
+  const stories = (where: string) => suggestFrom("https://planner.test", { level: 20, where }, { level: 20 }).suggestions;
+  const places = (id: string) => shelfPlaces(questsData().byId.get(id)!);
+
+  it("a shelf's place is where its own quests start: Markarth Side is not in Haafingar, and no Reach, Whiterun or Rift line is", () => {
+    const names = stories("Haafingar").map((s) => s.name);
+    for (const out of ["Markarth Side", "More to do in Whiterun", "Odd jobs in the Reach", "Odd jobs in the Rift", "Odd jobs in Whiterun Hold", "Fists of Fury"]) expect(names, out).not.toContain(out);
+    expect(names).toContain("Odd jobs in Haafingar");
+    // It is a shelf in Markarth: its second quest starts at the Boiling Cauldron in Markarth Side.
+    expect(places("markarth-side")).toEqual(expect.arrayContaining(["Markarth Side"]));
+    expect(places("markarth-side").join("|")).not.toMatch(/Dragon Bridge/);
+    expect(stories("Markarth").map((s) => s.name)).toContain("Markarth Side");
+  });
+  it("every shelf the Haafingar hold returns has a quest that starts in a Haafingar town", () => {
+    const towns = (holdNamed("Haafingar")?.towns ?? []).map((t) => t.toLowerCase());
+    for (const s of stories("Haafingar")) {
+      const line = questsData().lines.find((l) => l.name === s.name);
+      if (line?.category !== "work") continue;
+      expect(shelfPlaces(line).some((p) => towns.some((t) => p.toLowerCase().includes(t))), s.name).toBe(true);
+    }
+  });
+  it("an unnamed trigger is you arriving there: Laid to Rest reads 'when you arrive in Morthal', and no way says 'something placed'", () => {
+    const ltr = getQuest({ name: "Laid to Rest" }).quest.start.ways?.[0] as { way: string };
+    expect(ltr.way).toBe("It starts when you arrive in Morthal");
+    const left = questsData().lines.flatMap((l) => l.quests.flatMap((q) => (q.start?.ways ?? []).filter((w) => /something placed/.test(w.how)).map(() => q.edid)));
+    expect(left).toEqual([]);
+    // A named one keeps its name; the UESP wording for The Cause stands.
+    expect(getQuest({ name: "The Cause" }).quest.start.ways?.[0]).toMatchObject({ way: expect.stringContaining("A courier brings you Stranger's Plea") });
+  });
+  it("and a trigger way is a way in, not a need: the quest is open for you", () => {
+    expect(getQuest({ name: "Laid to Rest" }, undefined, playerState({ level: 15 })).openForYou?.says).toBe("open for you");
   });
 });
