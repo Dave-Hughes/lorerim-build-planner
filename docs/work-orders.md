@@ -4924,7 +4924,7 @@ Status: done
 ---
 
 ## WO-142  Four things the thief test showed (Mac, 23 Oct 2026)
-Status: queued
+Status: building (Mac)
 
 **Why.** Bob ran a design test through the door (an Argonian thief, never kills, not the Dragonborn, wants a horse; build dwa27ywaka, playthrough 5h8y9vpbtq, both "TEST:" drafts). The build came out legal and the assistant kept to the planner. Four faults in what it was told:
 1. **A false "comes after" gate on a line that isn't a work shelf.** `get_quest` Running Wild at level 5 says "unknown: comes after Ode To The Tundrastriders, and the planner hasn't been told that's done". Nothing in the records ties them; they're neighbours in "Whiterun, expanded". WO-130 stopped this for the work category only. Rule: a line's order never gates a quest; only the quest's own checked needs do (a quest or stage named in its ways' needs). Test: Running Wild is open at level 5 with nothing done; Dawnguard's chain quests still lock on their needs.
