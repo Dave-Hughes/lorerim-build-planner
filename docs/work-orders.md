@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
-Status: queued
+Status: building (Mac)
 
 **Why.** Dave (23 Oct): a Discord-signed-in player should be able to tell the planner what they know about a quest (how it starts, who, where, where a note or book is), not only "this was wrong". Dave's own finds (Running Wild's board, Paragliding near Falkreath) went in by hand through `overrides.json` as player reports, and that is the model: reviewed, approved by a person, then on the pages marked as a player's report with its source. 18 quests are "not checked" and about 370 mod quests have no second source; players are the only way to fill them. Most of the plumbing exists: `report_quest` on the door, the `quest_report` table (`what`, `text`, `said`, `source`, `status`), the site's "This was wrong" form, and `/admin`'s Quest reports.
 
