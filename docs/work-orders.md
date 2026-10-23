@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-148  What re-planning Kyria's Acts III and IV couldn't get from the door (Mac, 23 Oct 2026)
-Status: for Bob
+Status: queued
 
 **Why.** Dave's Claude re-planned Kyria's Acts III and IV (the Book, v40 to 41) and had to do by hand what the door should have answered. Each item below is from its list; the data items are in WO-144 and WO-145, the door items are here.
 
@@ -5004,6 +5004,13 @@ Decisions made under WO-138 Part 5, each with why:
 - **9, "when", leniently.** Thresholds I chose, for an act whose top level is T, the floor F (the weakest enemy, from the PC's `actors.levels`) and the boss's lowest level B: **fits now** when F is at or below T and B is within 20 of T, saying "the boss is a hard fight at this level" when B is 10 to 20 above; **plant now, pay off later** when F is 10 or more above T or B is more than 20 above, from level max(F - 10, B - 20); **too high for this act** only when F is 20 or more above T. A boss that matches her level never counts against her. The place also says what she meets: `enemies` ("enemies about 6 to 20, never below 6; the boss Zulakaroth, Keeper of the Dragonstone, level 40"), so a wide range is never hidden. Embershard Mine fits a Riverwood act again. Geirmund's Hall (boss level 40, act 6 to 12) is now "plant now, pay off later (levels 20 and up)", where it said 40; `wo128.test.ts` says so. The PC's `atLevel(n)` isn't built, so this reads the floor and ceiling; when it lands, F should be what she meets at T.
 - **Question 34 to 36** pass.
 - **Checks.** Typecheck, lint, 273 gamedata tests and 646 unit tests (with the player questions) pass; the build; the full e2e passed 380 of 381. The one failure was `wo128.spec.ts` expecting Geirmund's Hall "(levels 40 and up)", which item 9's leniency makes "(levels 20 and up)" (its boss is level 40); I updated the spec, and it, `wo129` and `wo148` pass.
+
+
+### Part 2. Three things on the live door (Bob, 23 Oct, 16:40)
+Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and a page link; Haafingar at 15 returns seven lines, every one with a start; 27 of 27 player questions. Good. Three to fix:
+- [ ] **Markarth Side shows for Haafingar.** It's a shelf of jobs in Markarth (the Reach). A shelf's place is its quests' towns, not its first quest's alias; check the hold mapping on every shelf and test that `where: "Haafingar"` never returns a Reach, Whiterun or Rift line.
+- [ ] **Laid to Rest's way reads like a trigger:** "It starts from something placed in Morthal, by the door to Eisa's House". A player reads that as nothing. A trigger at a town's entrance or a house is "It starts when you arrive in Morthal" (and the first step, "Talk to the Jarl of Morthal", does the rest). Same rule for every "something placed … by the door to …" way: word it as arriving in, or walking past, that place.
+- [ ] **`onTheWay` names things that aren't on the way:** Laid to Rest's lists Sorli's House in Stonehills (a different hold) and its key. A locked door counts as on the way only when it's in the cell or location of a step's target. Drop the rest; test on Laid to Rest and A Rat Problem (Igna's basement key stays, it is on the way).
 
 ---
 
