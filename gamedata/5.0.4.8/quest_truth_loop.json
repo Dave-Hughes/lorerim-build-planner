@@ -15,7 +15,8 @@
   "The Sweep Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
   "The Bedlam Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
   "The Heist Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
-  "TG00 Maul Handler": "G3: the records' first step is 'Talk to Brynjolf about joining the Thieves Guild' (stage 10, Skyrim.esm:064A14); UESP's first is 'Meet Brynjolf during daytime' (stage 8), and the starters (Start) don't set a later stage directly. Mac's Part 4.",
-  "Whispers in the Dark": "D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4."
+  "Delayed Burial": "G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4.",
+  "Whispers in the Dark": "D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4.",
+  "Investigate the Hall of the Dead": "G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4."
  }
 }

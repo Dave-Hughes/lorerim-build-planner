@@ -15,15 +15,9 @@
     "Bleak Falls Barrow",
     "A Blade in the Dark",
     "Diplomatic Immunity",
-    "A Cornered Rat",
-    "Alduin's Wall",
-    "The Throat of the World",
-    "Elder Knowledge",
     "Alduin's Bane",
     "The Fallen",
-    "The World-Eater's Eyrie",
     "Sovngarde",
-    "Paarthurnax",
     "The Words of Power",
     "Rebuilding the Blades",
     "Dragon Hunting",
@@ -53,9 +47,15 @@
    ],
    "G3/D6 records win": [
     "Diplomatic Immunity",
-    "A Cornered Rat",
     "Paarthurnax",
     "Dragon Research"
+   ],
+   "G2/D5": [
+    "A Cornered Rat",
+    "Alduin's Wall",
+    "The Throat of the World",
+    "Elder Knowledge",
+    "The World-Eater's Eyrie"
    ],
    "D2 person talk": [
     "Dragon Research"
@@ -65,25 +65,35 @@
     "The Horn of Jurgen Windcaller",
     "Season Unending",
     "Paarthurnax"
+   ],
+   "no row: Mac (G2)": [
+    "A Cornered Rat (the page names Delphine; every starter is another quest's stage)",
+    "Alduin's Wall (the page names Esbern; every starter is another quest's stage)",
+    "The Throat of the World (the page names Delphine; every starter is another quest's stage)",
+    "Elder Knowledge (the page names Paarthurnax; every starter is another quest's stage)",
+    "The World-Eater's Eyrie (the page names Odahviing; every starter is another quest's stage)"
    ]
   },
   "2": {
    "agree": [
     "Amulets of Night Power",
     "Destroying the Dawnguard",
-    "Bloodline",
     "Beyond Death",
     "Kindred Judgment",
-    "Scroll Scouting",
     "Soul Cairn Horse Quest",
     "Durnehviir",
-    "The Fate of the Skaal",
     "Cleansing the Stones",
-    "The Gardener of Men",
-    "Cultists vs Player"
+    "The Gardener of Men"
    ],
    "D1c sentBy": [
     "Awakening"
+   ],
+   "G2/D5": [
+    "Bloodline",
+    "Chasing Echoes",
+    "Seeking Disclosure",
+    "The Temple of Miraak",
+    "The Fate of the Skaal"
    ],
    "G1/G2 started by another quest": [
     "Prophet",
@@ -98,10 +108,9 @@
     "Cultists vs Player",
     "Brotherhood"
    ],
-   "G2/D5": [
-    "Chasing Echoes",
-    "Seeking Disclosure",
-    "The Temple of Miraak"
+   "D3": [
+    "Beyond Death",
+    "Durnehviir"
    ],
    "D2 person talk": [
     "Impatience of a Saint"
@@ -115,7 +124,6 @@
    ],
    "G3/D6 records win": [
     "Forgotten Vale Books Quest",
-    "Cultists vs Player",
     "Brotherhood"
    ],
    "D7": [
@@ -144,17 +152,19 @@
     "Rescue Mission",
     "Stealing Plans"
    ],
+   "no row: Mac (G2)": [
+    "Bloodline (the page names Serana; every starter is another quest's stage)",
+    "Chasing Echoes (the page names Lord Harkon; every starter is another quest's stage)",
+    "Seeking Disclosure (the page names Lord Harkon; every starter is another quest's stage)",
+    "The Temple of Miraak (the page names Frea; UESP: Automatic after completing Dragonborn)",
+    "The Fate of the Skaal (the page names Frea; every starter is another quest's stage)"
+   ],
    "no row: Mac (G4)": [
     "Prophet",
     "Touching the Sky",
     "Scroll Scouting",
     "Cultists vs Player",
     "Brotherhood"
-   ],
-   "no row: Mac (G2)": [
-    "Chasing Echoes (the page names Lord Harkon; the start check's starters are other quests' stages)",
-    "Seeking Disclosure (the page names Lord Harkon; the start check's starters are other quests' stages)",
-    "The Temple of Miraak (the page names Frea; UESP: Automatic after completing Dragonborn)"
    ]
   },
   "3": {
@@ -163,10 +173,6 @@
    ],
    "agree": [
     "Purity",
-    "Hitting the Books",
-    "The Staff of Magnus",
-    "The Eye of Magnus",
-    "Shalidor's Insights",
     "Aftershock",
     "Brelyna's Practice",
     "J'zargo's Experiment",
@@ -175,7 +181,6 @@
     "Arniel's Endeavor",
     "Arniel's Endeavor",
     "Arniel's Endeavor",
-    "Rejoining the College",
     "Destruction Ritual Spell",
     "Illusion Ritual Spell",
     "Conjuration Ritual Spell",
@@ -187,13 +192,7 @@
     "Restocking Soul Gems",
     "Fetch me that Book!",
     "Fetch me that Book!",
-    "Research Thief",
-    "Loud and Clear",
-    "Dampened Spirits",
-    "Scoundrel's Folly",
-    "Speaking With Silence",
-    "Hard Answers",
-    "The Pursuit"
+    "Research Thief"
    ],
    "G1 several": [
     "Dragon Seekers"
@@ -211,8 +210,16 @@
     "Rejoining the College"
    ],
    "G2/D5": [
+    "Hitting the Books",
     "Good Intentions",
-    "Revealing the Unseen"
+    "Revealing the Unseen",
+    "The Staff of Magnus",
+    "Loud and Clear",
+    "Dampened Spirits",
+    "Scoundrel's Folly",
+    "Speaking With Silence",
+    "Hard Answers",
+    "The Pursuit"
    ],
    "G3/D6 records win": [
     "Alteration Ritual Spell"
@@ -234,16 +241,49 @@
     "Rejoining the College"
    ],
    "no row: Mac (G2)": [
-    "Good Intentions (the page names Urag gro-Shub; the start check's starters are other quests' stages)",
-    "Revealing the Unseen (the page names Savos Aren; the start check's starters are other quests' stages)"
+    "Hitting the Books (the page names Savos Aren; every starter is another quest's stage)",
+    "Good Intentions (the page names Urag gro-Shub; every starter is another quest's stage)",
+    "Revealing the Unseen (the page names Savos Aren; every starter is another quest's stage)",
+    "The Staff of Magnus (the page names Mirabelle Ervine; every starter is another quest's stage)",
+    "Loud and Clear (the page names Brynjolf; every starter is another quest's stage)",
+    "Dampened Spirits (the page names Brynjolf; every starter is another quest's stage)",
+    "Scoundrel's Folly (the page names Brynjolf; every starter is another quest's stage)",
+    "Speaking With Silence (the page names Mercer Frey; every starter is another quest's stage)",
+    "Hard Answers (the page names Karliah; every starter is another quest's stage)",
+    "The Pursuit (the page names Karliah; every starter is another quest's stage)"
    ]
   },
   "4": {
-   "agree": [
+   "G2/D5": [
     "Trinity Restored",
     "Blindsighted",
     "Darkness Returns",
+    "Reparations",
+    "No Stone Unturned",
     "Meet the Family",
+    "The Silence Has Been Broken"
+   ],
+   "G1 one dispatcher": [
+    "The Burglary Job",
+    "The Shill Job",
+    "The Numbers Job",
+    "The Fishing Job",
+    "The Sweep Job",
+    "The Bedlam Job",
+    "The Heist Job"
+   ],
+   "D1b first step": [
+    "TG00 Maul Handler",
+    "To Kill an Empire"
+   ],
+   "G5": [
+    "TG00 Misc Handler",
+    "Dampened Spirits Scene Quest",
+    "East Empire Warehouse Dialogue and Handler",
+    "Scoundrel's Folly Post",
+    "No Stone Unturned Misc Handler"
+   ],
+   "agree": [
     "Thieves Guild Caravan Fence Quest",
     "The Litany of Larceny",
     "Paid in Full",
@@ -262,47 +302,100 @@
     "Contract: Kill Ennodius Papius",
     "Contract: Kill Beitild"
    ],
-   "G2/D5": [
-    "Reparations",
-    "No Stone Unturned",
-    "The Silence Has Been Broken"
-   ],
-   "G1 one dispatcher": [
-    "The Burglary Job",
-    "The Shill Job",
-    "The Numbers Job",
-    "The Fishing Job",
-    "The Sweep Job",
-    "The Bedlam Job",
-    "The Heist Job"
-   ],
-   "D1b first step": [
-    "TG00 Maul Handler",
-    "To Kill an Empire"
-   ],
-   "G3/D6 earlier stage reachable": [
-    "TG00 Maul Handler"
-   ],
-   "G5": [
-    "TG00 Misc Handler",
-    "Dampened Spirits Scene Quest",
-    "East Empire Warehouse Dialogue and Handler",
-    "Scoundrel's Folly Post",
-    "No Stone Unturned Misc Handler"
-   ],
    "D1a both set it off": [
     "Delayed Burial"
    ],
-   "G3/D6 records win": [
+   "G3/D6 earlier stage reachable": [
     "Delayed Burial"
    ],
    "D1a setter, the page is wrong": [
     "Whispers in the Dark"
    ],
    "no row: Mac (G2)": [
+    "Trinity Restored (the page names Brynjolf; every starter is another quest's stage)",
+    "Blindsighted (the page names Brynjolf; every starter is another quest's stage)",
+    "Darkness Returns (the page names Karliah; every starter is another quest's stage)",
     "Reparations (the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild)",
     "No Stone Unturned (the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".)",
-    "The Silence Has Been Broken (the page names Cicero; the start check's starters are other quests' stages)"
+    "Meet the Family (the page names Brynjolf; every starter is another quest's stage)",
+    "The Silence Has Been Broken (the page names Cicero; every starter is another quest's stage)"
+   ]
+  },
+  "5": {
+   "agree": [
+    "Contract: Kill Hern",
+    "Contract: Kill Lurbuk",
+    "Contract: Kill Deekus",
+    "Contract: Kill Ma'randru-jo",
+    "Contract: Kill Anoriath",
+    "Contract: Kill Agnis",
+    "Contract: Kill Maluril",
+    "Contract: Kill Helvard",
+    "Contract: Kill Safia",
+    "The Dark Brotherhood Forever",
+    "Get Outfitted",
+    "Tending the Flames",
+    "Rjorn's Drum",
+    "Pantea's Flute",
+    "Finn's Lute",
+    "A Daedra's Best Friend",
+    "DA02 Hook",
+    "Investigate the Hall of the Dead",
+    "Served Cold"
+   ],
+   "G4/D4": [
+    "Imperial Introductions",
+    "The Battle for the fort",
+    "A False Front",
+    "Rescue from the attack point",
+    "Compelling Tribute",
+    "A Night To Remember"
+   ],
+   "D7": [
+    "Stormcloak Introductions",
+    "Recruitment Drive",
+    "The Battle for the fort",
+    "The name location",
+    "Attack the capital",
+    "Defend the capital",
+    "Battle for the city",
+    "My Pet Elytra (Dementia)",
+    "My Pet Elytra (Mania)"
+   ],
+   "G2/D5": [
+    "Joining the Legion",
+    "Joining the Stormcloaks",
+    "The Jagged Crown",
+    "The Jagged Crown",
+    "Message to Whiterun"
+   ],
+   "G1 one dispatcher": [
+    "A False Front",
+    "Compelling Tribute"
+   ],
+   "G3/D6 records win": [
+    "A False Front"
+   ],
+   "D2 person talk": [
+    "Collecting the Edda"
+   ],
+   "G3/D6 earlier stage reachable": [
+    "Investigate the Hall of the Dead"
+   ],
+   "no row: Mac (G4)": [
+    "Imperial Introductions",
+    "The Battle for the fort",
+    "A False Front",
+    "Rescue from the attack point",
+    "Compelling Tribute",
+    "A Night To Remember"
+   ],
+   "no row: Mac (G2)": [
+    "Joining the Legion (the page names Legate Rikke; every starter is another quest's stage)",
+    "Joining the Stormcloaks (the page names Galmar Stone-Fist; every starter is another quest's stage)",
+    "The Jagged Crown (the page names General Tullius; every starter is another quest's stage)",
+    "The Jagged Crown (the page names Galmar Stone-Fist; every starter is another quest's stage)",
+    "Message to Whiterun (the page names General Tullius; every starter is another quest's stage)"
    ]
   }
  }

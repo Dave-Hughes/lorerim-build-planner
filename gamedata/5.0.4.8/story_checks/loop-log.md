@@ -280,3 +280,23 @@ Under it all, the comparison counted the first step's person as the page's giver
 - 7 background (G5), 1 files-only.
 - 1 not checked: The Path of Knowledge, on the needs-Bob list.
 - No row from before this loop changed.
+
+**Version 4, after Rex's batch 5 sample** (three rules wrong; all fixed, and batches 1 to 5 re-sorted from the last commit):
+- **D6, the stage table:** a UESP page can hold several quests' stage tables, and one table can hold several quests, split by a `|!|<name>|<ID>` row.
+  - The first step is now read only from the quest's own segment. A Daedra's Best Friend had been read from DA03Start's table ("Speak to Lod") instead of DA03's ("Talk with Barbas"), and DA02 Hook from DA02's.
+  - A page whose tables all name other IDs gives no step (D3).
+  - "Unknown" stages count only when they're all the quest's segment has (DA02 Hook, Collecting the Edda).
+- **D6, the starters:** "every starter sets the page's stage or later directly" now counts every starter. A story manager node, a Start or the start-game flag sets no later stage. Investigate the Hall of the Dead (entering Markarth starts it) now waits with UESP's stage 5 step.
+- **D5, version 4:** follows Mac's G2 rule as written, whatever UESP names.
+  - When every starter is another quest's stage, or UESP says it starts by itself, the start is "After <that quest>" with no giver. A page that still names a person in its `who` or ways gets no row until Mac.
+  - Why: Rex showed that identical records gave opposite outcomes. Joining the Legion agreed because UESP named Rikke; Joining the Stormcloaks didn't because UESP named Ulfric. One rule for one shape. The exception for "an offer the player can decline" isn't read; Mac's rule decides that per line.
+  - Touched (batches 1 to 5): A Cornered Rat; Alduin's Wall; The Throat of the World; Elder Knowledge; The World-Eater's Eyrie; Bloodline; Chasing Echoes; Seeking Disclosure; The Temple of Miraak; The Fate of the Skaal; Hitting the Books; Good Intentions; Revealing the Unseen; The Staff of Magnus; Loud and Clear; Dampened Spirits; Scoundrel's Folly; Speaking With Silence; Hard Answers; The Pursuit; Trinity Restored; Blindsighted; Darkness Returns; Reparations; No Stone Unturned; Meet the Family; The Silence Has Been Broken; Joining the Legion; Joining the Stormcloaks; The Jagged Crown; The Jagged Crown; Message to Whiterun.
+- **D4 before D7:** a way that names no one never ships, whether or not a page was found. The Battle for the fort (CWFortSiegeFort) has UESP pages per fort, which the name lookup can't reach, and an unnamed field-commander way.
+- **D7's limit:** UESP's search returns nothing by editor ID (and refused Rex), so a quest whose name is an alias text ("The Battle for the fort") can't be found by name. Those are files-only unless D4 or G5 takes them; listed in the report.
+- **The decisions file no longer** lists a quest under "agree" when it got no row (G4).
+
+**Batches 1 to 5 under version 4:**
+- 131 key rows: 114 passing now, 17 waiting on Mac.
+- No row until Mac: 32 for G2, 19 for G4.
+- 7 background (G5), 10 files-only (D7).
+- 1 not checked (needs-Bob).
