@@ -2,6 +2,7 @@ import "server-only";
 import { and, count, desc, eq, gt, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { questsData } from "./data";
+import { REPORT_FIELD_MAX, REPORT_KINDS, type ReportFields, type ReportKind } from "./player-types";
 import { REPORT_TEXT_MAX, REPORT_WHAT, type ReportWhat } from "./report-words";
 
 /**
@@ -35,18 +36,46 @@ export interface QuestReportInput {
   quest?: string | null;
   what: string;
   text: string;
+  /** What the report is (WO-146): "wrong" when left out. */
+  kind?: ReportKind;
+  /** For a how or where report: who, where, how, place. */
+  fields?: ReportFields;
   said?: string;
   source: "site" | "assistant";
   client?: string | null;
 }
 
-/** Files a report: the line must exist, `what` be one of REPORT_WHAT and the text say something; refused past the limit. */
+/** The fields of a how or where report as they are kept: each trimmed to a line, empty ones dropped. */
+export function cleanFields(fields: ReportFields | undefined): ReportFields {
+  const out: ReportFields = {};
+  for (const k of ["who", "where", "how", "place"] as const) {
+    const v = (fields?.[k] ?? "").replace(/\s+/g, " ").trim().slice(0, REPORT_FIELD_MAX);
+    if (v) out[k] = v;
+  }
+  return out;
+}
+
+/**
+ * Files a report: the line must exist; a "wrong" report says which part (`what`, one of REPORT_WHAT) and what happened, as
+ * before; a "how" or "where" report (WO-146) names one quest of the line and what the player knows (who, where, what they
+ * did for how; the place for where), with free text optional. Refused past the limit.
+ */
 export async function fileQuestReport(input: QuestReportInput): Promise<{ id: number }> {
   if (!questsData().byId.has(input.lineId)) throw new QuestReportError("No quest line has that id.");
-  const what = REPORT_WHAT.find((w) => w.toLowerCase() === input.what.trim().toLowerCase()) as ReportWhat | undefined;
+  const kind: ReportKind = input.kind ?? "wrong";
+  if (!REPORT_KINDS.includes(kind)) throw new QuestReportError(`Say what you're sending: ${REPORT_KINDS.join(", ")}.`);
+  const fields = kind === "wrong" ? undefined : cleanFields(input.fields);
+  if (kind !== "wrong") {
+    const line = questsData().byId.get(input.lineId)!;
+    if (!input.quest || !line.quests.some((q) => q.edid === input.quest)) throw new QuestReportError("Say which quest of the line you mean.");
+    if (kind === "how" && !fields!.who && !fields!.where && !fields!.how) throw new QuestReportError("Say who starts it, where, or what you did.");
+    if (kind === "where" && !fields!.place) throw new QuestReportError("Say where it is: the town, the building, the nearest landmark.");
+  }
+  // A how or where report says what it is in its kind; the part it is about is the page's own.
+  const what = (kind === "how" ? "How to start it" : kind === "where" ? "Who and where" : REPORT_WHAT.find((w) => w.toLowerCase() === input.what.trim().toLowerCase())) as ReportWhat | undefined;
   if (!what) throw new QuestReportError(`Say what was wrong: ${REPORT_WHAT.join(", ")}.`);
   const text = input.text.trim().slice(0, REPORT_TEXT_MAX);
-  if (!text) throw new QuestReportError("Say what happened in your game.");
+  if (!text && kind === "wrong") throw new QuestReportError("Say what happened in your game.");
   const [r] = await db()
     .select({ n: count() })
     .from(schema.questReports)
@@ -59,6 +88,8 @@ export async function fileQuestReport(input: QuestReportInput): Promise<{ id: nu
       quest: input.quest ?? null,
       what,
       text,
+      kind,
+      ...(fields ? { fields } : {}),
       said: (input.said ?? "").trim().slice(0, REPORT_TEXT_MAX),
       userId: input.userId,
       source: input.source,

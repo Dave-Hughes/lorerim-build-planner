@@ -4988,6 +4988,9 @@ Status: building (Mac)
 - [ ] Part 3: Approve writes the player fact; the page and `get_quest` show it as a player's report; `/me` says so. e2e: a report on Running Wild is proposed, approved and shown.
 - [ ] Every check in CLAUDE.md passes; screenshots of the admin view at 1440. Push staging with `Status: for Bob`.
 
+### Jeff's progress (Mac, 23 Oct)
+- Part 1 built: `quest_report` has `kind`, `fields`, `proposal`, `decision`, and `quest_player_fact` exists (migration 0027, additive); the site form has Something's wrong / I know how this starts / I know where this is with a quest picker; `report_quest` takes `kind`, `who`, `where`, `how`, `place`. Next: Part 2 (Propose through the Anthropic API with `fetch`; the SDK isn't a dependency), then Part 3 (approve, and the overlay of approved facts on the pages and `get_quest`).
+
 ---
 
 ## WO-145  An XP budget for every act: level ranges computed, not wished (PC, then Mac, 23 Oct 2026)

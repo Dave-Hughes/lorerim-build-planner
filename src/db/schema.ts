@@ -14,6 +14,7 @@ import {
 import type { AdapterAccountType } from "next-auth/adapters";
 import type { GuideDoc } from "@/lib/guide/doc";
 import type { Mod } from "@/lib/mods";
+import type { Decision, PlayerWay, Proposal, ReportFields, ReportKind } from "@/lib/quests/player-types";
 import type { BuildPlan } from "@/lib/rules/types";
 import type { Answer, ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Never, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
 
@@ -539,7 +540,38 @@ export const questReports = pgTable(
     source: text("source").$type<"site" | "assistant">().notNull().default("site"),
     client: text("client"),
     status: text("status").$type<"new" | "fixed" | "not a problem">().notNull().default("new"),
+    /** What the report is (WO-146): something wrong, or "I know how this starts", or "I know where this is". */
+    kind: text("kind").$type<ReportKind>().notNull().default("wrong"),
+    /** For a how or where report: who, where, how, place, each a plain line. */
+    fields: jsonb("fields").$type<ReportFields>(),
+    /** What the agent proposes would change on the page (WO-146 Part 2); never written to the pages. */
+    proposal: jsonb("proposal").$type<Proposal>(),
+    /** What an admin decided (WO-146 Part 3). */
+    decision: jsonb("decision").$type<Decision>(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index("quest_report_user_idx").on(t.userId, t.createdAt), index("quest_report_at_idx").on(t.createdAt)],
+);
+
+/**
+ * A fact an admin approved from a player's report (WO-146 Part 3): a way in or a place, shown on the quest page and through
+ * get_quest as a player's report, not the game files, with its source. Laid over the generated quest data when it is read.
+ */
+export const questPlayerFacts = pgTable(
+  "quest_player_fact",
+  {
+    id: serial("id").primaryKey(),
+    lineId: text("line_id").notNull(),
+    /** The quest's EDID. */
+    quest: text("quest").notNull(),
+    /** The words of the way it replaces; null for a way the page doesn't have. */
+    replaces: text("replaces"),
+    way: jsonb("way").$type<PlayerWay>().notNull(),
+    /** "a player's report (@handle, 23 Oct 2026)". */
+    source: text("source").notNull(),
+    reportId: integer("report_id").references(() => questReports.id, { onDelete: "set null" }),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("quest_player_fact_quest_idx").on(t.quest)],
 );

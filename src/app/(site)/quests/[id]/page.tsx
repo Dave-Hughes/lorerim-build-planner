@@ -293,7 +293,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               </div>
             )}
           </section>
-          <QuestReport lineId={line.id} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />
+          <QuestReport lineId={line.id} quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />
         </div>
 
         <aside className={styles.side}>

@@ -5,6 +5,7 @@ import { getBuild as readableBuild } from "@/lib/builds/queries";
 import { signedIn, whoami, writer, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { questsOn } from "@/lib/features";
 import { QuestReportError, fileQuestReport, lineFor } from "@/lib/quests/reports";
+import { REPORT_FIELD_MAX, REPORT_KINDS } from "@/lib/quests/player-types";
 import { REPORT_TEXT_MAX, REPORT_THANKS, REPORT_WHAT } from "@/lib/quests/report-words";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
@@ -183,15 +184,20 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     {
       title: "Report a quest page wrong",
       description:
-        "File the player's report that the planner's facts for a quest are wrong: what the planner said and what the player saw in their game, in their words. It goes to the planner's admins, as the quest page's This was wrong does; needs the connector added with sign-in. 5 an hour per player.",
+        "File what the player tells the planner about a quest, in their words. kind wrong (the default): the planner's facts are wrong, with what the planner said and what the player saw. kind how: the player knows how it starts, with who, where and what they did. kind where: the player knows where something is, with the place. It goes to the planner's admins, who check it against the game files before anything changes on the page; needs the connector added with sign-in. 5 an hour per player.",
       inputSchema: z.object({
         quest: z.string().min(1).max(120).describe("The quest line's id or name, or the quest's EDID or name."),
         what: z.string().max(40).optional().describe(`What was wrong: ${REPORT_WHAT.join(", ")}. Something else if left out.`),
-        said: z.string().max(REPORT_TEXT_MAX).describe("What the planner said."),
-        saw: z.string().min(1).max(REPORT_TEXT_MAX).describe("What the player saw in their game, in their words."),
+        said: z.string().max(REPORT_TEXT_MAX).optional().describe("What the planner said (kind wrong)."),
+        saw: z.string().max(REPORT_TEXT_MAX).optional().describe("What the player saw in their game, in their words. Needed for kind wrong; anything else they add for the others."),
+        kind: z.enum(REPORT_KINDS).optional().describe('"wrong" (default), "how" (I know how this starts) or "where" (I know where this is). For how and where, quest names one quest, not a line.'),
+        who: z.string().max(REPORT_FIELD_MAX).optional().describe("kind how: who starts it, or gives it."),
+        where: z.string().max(REPORT_FIELD_MAX).optional().describe("kind how: where that is, the building or the town."),
+        how: z.string().max(REPORT_FIELD_MAX).optional().describe("kind how: what the player did to start it."),
+        place: z.string().max(REPORT_FIELD_MAX).optional().describe("kind where: the town, the building, the nearest landmark."),
       }),
     },
-    async ({ quest, what, said, saw }, ctx) =>
+    async ({ quest, what, said, saw, kind, who: whoField, where, how, place }, ctx) =>
       guarded(async () => {
         if (!questsOn()) throw new FactsError("The quest pages aren't open yet.");
         const who = await writer(ctx.http?.authInfo as PlannerAuth | undefined, "facts");
@@ -199,7 +205,18 @@ export function registerFactTools(server: Server, guarded: Guarded) {
         const found = lineFor(quest);
         if (!found) throw new FactsError(`No quest or quest line called ${quest}. search_facts finds its id.`);
         try {
-          await fileQuestReport({ userId: who.userId, lineId: found.lineId, quest: found.edid, what: what || "Something else", said, text: saw, source: "assistant", client: who.clientName });
+          await fileQuestReport({
+            userId: who.userId,
+            lineId: found.lineId,
+            quest: found.edid,
+            what: what || "Something else",
+            said: said ?? "",
+            text: saw ?? "",
+            kind: kind ?? "wrong",
+            fields: { who: whoField, where, how, place },
+            source: "assistant",
+            client: who.clientName,
+          });
         } catch (e) {
           if (e instanceof QuestReportError) throw new FactsError(e.message);
           throw e;
