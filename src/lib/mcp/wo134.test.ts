@@ -13,7 +13,7 @@ describe("get_quest_log (WO-134)", () => {
     expect(log.from).toBe("Save 70, level 10, day 15, Ivarstead");
     expect(log.plan).toBe("The plan runs to level 30; the save is at level 10.");
     // Each line under its own category (WO-137 item 4).
-    expect(log.active).toEqual([{ category: "Side stories", lines: [{ line: "Whiterun, expanded", quests: [{ quest: "Running Wild", stage: 10, state: "active", now: "Catch the white, or palonimo, horse roaming the fields of Whiterun" }] }] }]);
+    expect(log.active).toEqual([{ category: "Jobs and errands", lines: [{ line: "More to do in Whiterun", quests: [{ quest: "Running Wild", stage: 10, state: "active", page: "/quests/q/running-wild", now: "Catch the white, or palonimo, horse roaming the fields of Whiterun" }] }] }]);
     expect(log.finished.count).toBe(1);
     expect(log.finished.categories[0].lines[0].quests[0]).toMatchObject({ quest: "Blood on the Ice", stage: 100, state: "finished" });
     expect(JSON.stringify(log.finished.categories[0].lines[0].quests[0])).toMatch(/"ending":"I discovered that Wuunferth the Unliving was the Butcher of Windhelm/);

@@ -10,9 +10,9 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 | Guilds and factions | Join a guild or a side and work your way up | 9 | 3 |
 | Daedric Princes | Quests for the Daedric Princes, most ending in an artifact | 17 | 3 |
 | New lands | Quests that take you to places outside Skyrim | 18 | 4 |
-| Side stories | Shorter quests in towns, ruins and on the road | 79 | 0 |
+| Side stories | Shorter quests in towns, ruins and on the road | 73 | 0 |
 | Followers | Quests that come from your followers | 12 | 2 |
-| Jobs and errands | Notice boards, bounties and favours for townsfolk | 13 | 0 |
+| Jobs and errands | Notice boards, bounties and favours for townsfolk | 19 | 0 |
 
 - **Main stories**: Each runs for many hours. In LoreRim, Dawnguard waits for level 30, and Miraak's cultists come at 25 once you've finished The Way of the Voice.
 - **Guilds and factions**: The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr.
@@ -44,7 +44,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 - **Erik the Slayer**: the opening quest has no plain journal entry; shows its first objective.
 - **The Bonds of Matrimony**: the opening quest has no plain journal entry; shows its first objective.
 
-**No facts checked yet** (86): The Bards College, Penitus Oculatus, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, Windhelm, expanded, Whiterun, expanded, Markarth Side, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
+**No facts checked yet** (83): The Bards College, Penitus Oculatus, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
 
 ## Main stories
 
@@ -985,42 +985,6 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 - After: The Thieves Guild
 - Quests: Rune's Scope
 
-### More to do in the Soul Cairn
-
-3 quests | More to do in the Soul Cairn (Nexus 115962) | The Soul Cairn
-
-> A soul in the Soul Cairn wants me to get their soul gem back. I'm not so sure about who he is, but maybe I should help him.
-
-- Start: Inside the Soul Cairn, during Dawnguard's Chasing Echoes. *(mod page)*
-- Gate: Dawnguard, which waits for level 30. *(files)*
-- Length: 1–2 hours *(mod page)*
-- After: Dawnguard
-- Quests: Grief; Chapel of Love; Black Soul Cairn Gem
-
-### The Gift of Saturalia
-
-6 quests | The Gift Of Saturalia (Nexus 105697)
-
-> I've agreed to help Niklas the Trader with his Saturalia celebrations. He has five tasks for me to help people around Skyrim.
-
-- Start: Niklas the Trader. *(files)*
-- Gate: None. *(files)*
-- Level: Any
-- Length: 1 hour *(mod page)*
-- Quests: Windhelm By The Sea; Lending a Paw; The Joy of Dawnstar; A Song in the Dark; Three Wise Men; The Gift of Saturalia
-
-### Fists of Fury
-
-3 quests | Fists of Fury - Skyrim (Nexus 73835) | Riften, Windhelm and Morthal
-
-> I got a letter about a brawling tournament. One of the locations is in Riften. If I want to learn more about it I need to talk to Maul.
-
-- Start: A letter about a brawling tournament. *(files)*
-- Gate: None. *(files)*
-- Level: Any: brawls, not fights to the death
-- Length: 1–2 hours *(mod page)*
-- Quests: Fists of Fury - Hjaalmarch; Fists of Fury - The Rift; Fists of Fury - Eastmarch
-
 ### The Frozen Heart
 
 4 quests | The Frozen Heart - Quest Mod (Nexus 159911)
@@ -1044,30 +1008,6 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 > I have been invited to attend the wedding reception of Vittoria Vici and Asgeir Snow-Shod, at the Temple of the Divines in Solitude.
 
 - Quests: A Healing Wedding
-
-### Windhelm, expanded
-
-13 quests | Capital Windhelm Expansion (Nexus 42990) | Windhelm
-
-> Wilhelm has asked me to deliver a purchase agreement to Higil who lives in the Upper Valunstrad, west of the Palace. I can place the document on his desk if he is not at home.
-
-- Quests: Pit Fighter; Graystone; A Simple Delivery; Kyne's Trial; Hunting Trip; The Mead Must Flow; The Mead Must Flow; Collecting the Edda - Windhelm; Unusual Imports; The Talos Mistake; Severed Cold; Death Do Us Part; A Night You Can't Remember
-
-### Whiterun, expanded
-
-8 quests | Rob's Bug Fixes - Capital Whiterun Expansion (Nexus 63355) | Whiterun
-
-> I've recieved a note by a messenger from Whiterun. I should probably read it.
-
-- Quests: Bluesky Hall; Victory Celebrations; Grace of Kynareth; Farmland Saga; Ode To The Tundrastriders; Running Wild; A Rat Problem; Skirmish at Whitewatch
-
-### Markarth Side
-
-2 quests | Arena - Markarth Side Town (Nexus 114252) | South-east of Dragon Bridge
-
-> I've met a strange Khajiit named Grit-dar in Markarth Side who has asked me to retrieve something for him from Morvunskar Crypts that resides near Windhelm.
-
-- Quests: The Royal Relic; The Lost Family Relic
 
 ### On Hogithum
 
@@ -1327,6 +1267,54 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 ## Jobs and errands
 
 *Notice boards, bounties and favours for townsfolk*
+
+### More to do in the Soul Cairn
+
+3 quests | More to do in the Soul Cairn (Nexus 115962) | The Soul Cairn
+
+- Start: Inside the Soul Cairn, during Dawnguard's Chasing Echoes. *(mod page)*
+- Gate: Dawnguard, which waits for level 30. *(files)*
+- Length: 1–2 hours *(mod page)*
+- After: Dawnguard
+- Quests: Grief; Chapel of Love; Black Soul Cairn Gem
+
+### The Gift of Saturalia
+
+6 quests | The Gift Of Saturalia (Nexus 105697)
+
+- Start: Niklas the Trader. *(files)*
+- Gate: None. *(files)*
+- Level: Any
+- Length: 1 hour *(mod page)*
+- Quests: Windhelm By The Sea; Lending a Paw; The Joy of Dawnstar; A Song in the Dark; Three Wise Men; The Gift of Saturalia
+
+### Fists of Fury
+
+3 quests | Fists of Fury - Skyrim (Nexus 73835) | Riften, Windhelm and Morthal
+
+- Start: A letter about a brawling tournament. *(files)*
+- Gate: None. *(files)*
+- Level: Any: brawls, not fights to the death
+- Length: 1–2 hours *(mod page)*
+- Quests: Fists of Fury - Hjaalmarch; Fists of Fury - The Rift; Fists of Fury - Eastmarch
+
+### More to do in Windhelm
+
+13 quests | Capital Windhelm Expansion (Nexus 42990) | Windhelm
+
+- Quests: Pit Fighter; Graystone; A Simple Delivery; Kyne's Trial; Hunting Trip; The Mead Must Flow; The Mead Must Flow; Collecting the Edda - Windhelm; Unusual Imports; The Talos Mistake; Severed Cold; Death Do Us Part; A Night You Can't Remember
+
+### More to do in Whiterun
+
+8 quests | Rob's Bug Fixes - Capital Whiterun Expansion (Nexus 63355) | Whiterun
+
+- Quests: Bluesky Hall; Victory Celebrations; Grace of Kynareth; Farmland Saga; Ode To The Tundrastriders; Running Wild; A Rat Problem; Skirmish at Whitewatch
+
+### Markarth Side
+
+2 quests | Arena - Markarth Side Town (Nexus 114252) | South-east of Dragon Bridge
+
+- Quests: The Royal Relic; The Lost Family Relic
 
 ### Missives
 

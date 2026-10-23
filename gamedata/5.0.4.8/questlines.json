@@ -1512,7 +1512,7 @@
     {
       "id": "more-to-do-in-the-soul-cairn",
       "name": "More to do in the Soul Cairn",
-      "category": "side",
+      "category": "work",
       "also": [
         "lands"
       ],
@@ -1531,12 +1531,13 @@
         "start": "mod page",
         "gate": "files",
         "size": "mod page"
-      }
+      },
+      "begins": false
     },
     {
       "id": "the-gift-of-saturalia",
       "name": "The Gift of Saturalia",
-      "category": "side",
+      "category": "work",
       "lines": [
         "The Gift Of Saturalia"
       ],
@@ -1549,12 +1550,13 @@
         "start": "files",
         "gate": "files",
         "size": "mod page"
-      }
+      },
+      "begins": false
     },
     {
       "id": "fists-of-fury",
       "name": "Fists of Fury",
-      "category": "side",
+      "category": "work",
       "where": "Riften, Windhelm and Morthal",
       "lines": [
         "Fists of Fury - Skyrim"
@@ -1568,7 +1570,8 @@
         "start": "files",
         "gate": "files",
         "size": "mod page"
-      }
+      },
+      "begins": false
     },
     {
       "id": "the-frozen-heart",
@@ -1602,32 +1605,35 @@
     },
     {
       "id": "capital-windhelm",
-      "name": "Windhelm, expanded",
-      "category": "side",
+      "name": "More to do in Windhelm",
+      "category": "work",
       "where": "Windhelm",
       "lines": [
         "Capital Windhelm Expansion"
       ],
-      "opening": "0WHQuestDeliveryToBro"
+      "opening": "0WHQuestDeliveryToBro",
+      "begins": false
     },
     {
       "id": "capital-whiterun",
-      "name": "Whiterun, expanded",
-      "category": "side",
+      "name": "More to do in Whiterun",
+      "category": "work",
       "where": "Whiterun",
       "lines": [
         "Rob's Bug Fixes - Capital Whiterun Expansion"
       ],
-      "opening": "0WRThaneQ01"
+      "opening": "0WRThaneQ01",
+      "begins": false
     },
     {
       "id": "markarth-side",
       "name": "Markarth Side",
-      "category": "side",
+      "category": "work",
       "where": "South-east of Dragon Bridge",
       "lines": [
         "Arena - Markarth Side Town"
-      ]
+      ],
+      "begins": false
     },
     {
       "id": "on-hogithum",

@@ -1331,3 +1331,20 @@ a.mod:hover {
   font-size: 15px;
   color: var(--soft);
 }
+
+/* A quest's row on its line's page (WO-147): the name links to the quest's own page, a line of how it starts under it. */
+.qn a {
+  color: inherit;
+  text-decoration: none;
+}
+.qn a:hover {
+  color: var(--ember);
+  text-decoration: underline;
+}
+.qhow {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--soft);
+}

@@ -83,7 +83,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **14. "What quests are in my quest log?" (Kyria's Save 70)**
 - Calls: `get_quest_log({ playthrough })`.
-- Must: each line under its own category ("Side stories", "Jobs and errands"), never one heading for everything; no helper names (TG00 Misc Handler, LTN Quest Handler) in the log; no quest at stage 0 listed as "started but unclear" (a stage 0 isn't started); no quest listed twice (Animal Extermination, Special Delivery).
+- Must: each line under its own category ("Guilds and factions", "Jobs and errands"), never one heading for everything; no helper names (TG00 Misc Handler, LTN Quest Handler) in the log; no quest at stage 0 listed as "started but unclear" (a stage 0 isn't started); no quest listed twice (Animal Extermination, Special Delivery).
 - Passes since WO-137 item 4. The test uses the stages Bob named from Save 70, not the whole save (no copy of it is in the repo).
 
 **15. "How do I free Inigo from the jail?"**
@@ -173,4 +173,4 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **33. "Tell me about A Rat Problem."**
 - Calls: `get_quest({ name: "A Rat Problem" })`.
 - Must: a link to the quest's own page (`/quests/q/…`); its own start; no line-level opening from another quest (the Bluesky Hall messenger); no "comes after".
-- Fails today: **WO-147**.
+- Passes since WO-147.

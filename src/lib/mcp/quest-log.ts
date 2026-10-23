@@ -1,4 +1,5 @@
 import { homeName, questsData } from "@/lib/quests/data";
+import { questHref } from "@/lib/quests/slugs";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 
 /**
@@ -23,6 +24,8 @@ interface Placed {
   line: string;
   category: string;
   stage: number;
+  /** The quest's own page (WO-147), or its line's for a helper that stands for the line. */
+  page?: string;
 }
 
 /**
@@ -70,7 +73,7 @@ function planNote(level: number, planLevels: number | null | undefined) {
 }
 
 /** The log from a stored snapshot, grouped by line: active first (lines nearest their end first), then finished and failed behind a count. */
-export function questLog(snap: LogSnapshot | null | undefined, planLevels?: number | null) {
+export function questLog(snap: LogSnapshot | null | undefined, planLevels?: number | null, origin = "") {
   if (!snap) return { log: null, says: NO_SAVE };
   const where = [snap.label, `level ${snap.level}`, snap.day ? `day ${snap.day}` : null, snap.place].filter(Boolean).join(", ");
   const byEdid = new Map<string, { line: QuestLine; quest: Quest }>();
@@ -94,7 +97,8 @@ export function questLog(snap: LogSnapshot | null | undefined, planLevels?: numb
       background++;
       continue;
     }
-    const placed = { quest: helper ? hit.line.name : hit.quest.name, line: hit.line.name, category: homeName(hit.line.category), stage, ...st };
+    const href = helper ? `/quests/${hit.line.id}` : questHref(hit.quest.edid);
+    const placed = { quest: helper ? hit.line.name : hit.quest.name, line: hit.line.name, category: homeName(hit.line.category), stage, ...(href ? { page: `${origin}${href}` } : {}), ...st };
     const key = `${placed.line}\u0000${placed.quest}`;
     const was = seen.get(key);
     if (!was || RANK[st.state] < RANK[was.state]) seen.set(key, placed);

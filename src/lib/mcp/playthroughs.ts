@@ -20,6 +20,7 @@ import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { leftOutLine, type Nevers } from "@/lib/quests/never";
 import { openState, type PlayerState } from "@/lib/quests/open";
+import { questHref } from "@/lib/quests/slugs";
 import { stories, storyOfLine } from "@/lib/quests/stories-data";
 import type { Story } from "@/lib/quests/story";
 import type { Quest, QuestLine } from "@/lib/quests/types";
@@ -602,7 +603,7 @@ export async function suggestPlaces(p: Player, input: { playthrough: string; act
 /** get_quest_log (WO-134): the stored save's quests in the game's words, from where the player stands. */
 export async function getQuestLog(p: Player, input: { playthrough: string }) {
   const pt = await mine(p, input.playthrough);
-  return { playthrough: pt.id, ...questLog(pt.snapshot, pt.build?.levels) };
+  return { playthrough: pt.id, ...questLog(pt.snapshot, pt.build?.levels, p.origin) };
 }
 
 export async function getPlaythroughTool(p: Player, input: { playthrough: string }) {
@@ -653,6 +654,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
         text: o.text,
         kind: o.kind,
         ...(o.linkShown ? { link: { kind: o.link!.kind, name: o.linkShown.name } } : {}),
+        // A quest it links to has a page of its own (WO-147).
+        ...(o.link?.kind === "quest" && questHref(o.link.id) ? { page: `${p.origin}${questHref(o.link.id)}` } : {}),
         // The same flat fields add_objective takes, so an objective can go back unchanged (WO-111b).
         ...(o.kind === "reach" && o.reach ? { reachKey: reachLabel(o.reach.key), reachTarget: o.reach.target } : o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : {}),
         // Ticks from your save (WO-123): every objective can also be ticked by the player.

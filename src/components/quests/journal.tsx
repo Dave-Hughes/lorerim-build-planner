@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { pageSources } from "@/lib/quests/player-source";
 import { useEffect, useState } from "react";
 import { checkedLabel } from "@/lib/quests/story";
@@ -13,7 +14,7 @@ import styles from "./quests.module.css";
  * checked or not. A link to #q-<edid> (a story's next step, WO-106) or #end-<edid> opens the row; How
  * it can end stays closed either way.
  */
-export function QuestRow({ edid, name, xp, first, journal, endings, start }: { edid: string; name: string; xp: number; first: boolean; journal: string[]; endings: QuestEnding[]; start?: QuestStart }) {
+export function QuestRow({ edid, name, xp, first, journal, endings, start, href, how }: { edid: string; name: string; xp: number; first: boolean; journal: string[]; endings: QuestEnding[]; start?: QuestStart; href?: string | null; how?: string | null }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const check = () => {
@@ -28,8 +29,10 @@ export function QuestRow({ edid, name, xp, first, journal, endings, start }: { e
   return (
     <li className={styles.q} id={`q-${edid}`}>
       <span className={styles.qn}>
-        {name}
+        {/* The quest's own page (WO-147), the line's row keeping a line of how it starts under the name. */}
+        {href ? <Link href={href}>{name}</Link> : name}
         {first && <span className={styles.first}>Starts here</span>}
+        {how && <span className={styles.qhow}>{how}</span>}
       </span>
       <span className={`${styles.xp} ${xp ? "" : styles.zero}`}>{xp ? `${xp} XP` : "No XP"}</span>
       <span className={styles.j}>

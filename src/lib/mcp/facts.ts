@@ -23,6 +23,7 @@ export { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { gearData } from "@/lib/gear/data";
 import { doorSources } from "@/lib/quests/player-source";
+import { questHref } from "@/lib/quests/slugs";
 import { HOMES, HOMES_NOTE, MOUNTS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
@@ -60,6 +61,8 @@ export interface Hit {
   line: string;
   /** For a quest found by more than its name (WO-133): what matched, "an objective: Catch the white, or palonimo, horse". */
   why?: string;
+  /** A quest's own page address (WO-147), which the door turns into a link. */
+  href?: string;
 }
 
 /** What search says when nothing matched (WO-133): never send the assistant to the web. */
@@ -148,7 +151,7 @@ export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], 
     const look = asked.length ? asked : wordsOf(query).split(" ").filter(Boolean);
     for (const l of questsData().lines)
       for (const q of l.quests) {
-        const hit = { kind: "quest" as const, id: q.edid, name: q.name, line: `A quest in ${l.name}` };
+        const hit = { kind: "quest" as const, id: q.edid, name: q.name, line: `A quest in ${l.name}`, ...(questHref(q.edid) ? { href: questHref(q.edid)! } : {}) };
         if (wordsOf(q.name) === wordsOf(query)) ranked.push({ h: hit, rank: 0 });
         else if (look.every((w) => holds(wordsOf(q.name), w))) ranked.push({ h: hit, rank: 1 });
         else {
@@ -450,6 +453,12 @@ export function getQuest({ id, name, places }: { id?: string; name?: string; pla
     // Open for you (WO-115 Part 3): only when the player said where they are.
     ...(player ? { openForYou: openForYou(l, q, player, version) } : {}),
   };
+}
+
+/** get_quest's answer with the quest's own page (WO-147 Part 1): `link` is origin and /quests/q/<slug>. */
+export function withQuestLink<T extends { quest: { edid: string } }>(answer: T, origin = ""): T & { link?: string } {
+  const page = questHref(answer.quest.edid);
+  return page ? { ...answer, link: `${origin}${page}` } : answer;
 }
 
 /** What the player has told the planner (WO-115 Part 3), as tools take it: their level, what they've finished, a save's quest stages. */

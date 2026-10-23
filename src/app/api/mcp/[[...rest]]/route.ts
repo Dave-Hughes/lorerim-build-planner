@@ -51,7 +51,7 @@ function handlerFor(ip: string, origin: string) {
           await recordDoorEvent(name, args, res);
           return res;
         }) as never)) as typeof server.registerTool;
-      registerFactTools(server, (run) => guarded(ip, run));
+      registerFactTools(server, (run) => guarded(ip, run), origin);
       registerBuildTools(server, (run) => guarded(ip, run), origin);
       // Playthroughs (WO-111), while their switch is on.
       if (playthroughsOn()) registerPlaythroughTools(server, (run) => guarded(ip, run), origin);

@@ -1,0 +1,90 @@
+import { describe, expect, it } from "vitest";
+import { getQuest, searchFacts, withQuestLink } from "@/lib/mcp/facts";
+import { questLog } from "@/lib/mcp/quest-log";
+import { questsData } from "./data";
+import { isPlaceholder } from "./placeholder";
+import { questBySlug, questHref } from "./slugs";
+
+/** WO-147: a page for every quest, grab-bags as shelves, placeholder objectives hidden. */
+
+describe("Part 1: a page for every quest", () => {
+  const all = questsData().lines.flatMap((l) => l.quests.map((q) => ({ line: l, quest: q })));
+
+  it("every quest has an address, each different, and the address finds its quest and its line", () => {
+    const hrefs = all.map(({ quest }) => questHref(quest.edid));
+    expect(hrefs.every((h) => h && /^\/quests\/q\/[a-z0-9-]+$/.test(h))).toBe(true);
+    expect(new Set(hrefs).size).toBe(all.length);
+    for (const { line, quest } of all) {
+      const found = questBySlug(questHref(quest.edid)!.slice("/quests/q/".length));
+      expect(found?.quest.edid).toBe(quest.edid);
+      expect(found?.line.id).toBe(line.id);
+    }
+  });
+  it("the name makes the address, the EDID two quests of one name", () => {
+    expect(questHref("0WRHorseQ")).toBe("/quests/q/running-wild");
+    expect(questHref("0WRRatQuest")).toBe("/quests/q/a-rat-problem");
+    // Two quests are called Animal Extermination: each has its EDID's address.
+    const twins = all.filter(({ quest }) => quest.name === "Animal Extermination");
+    expect(twins.length).toBeGreaterThan(1);
+    expect(new Set(twins.map(({ quest }) => questHref(quest.edid))).size).toBe(twins.length);
+    expect(twins.every(({ quest }) => questHref(quest.edid)!.endsWith(quest.edid.toLowerCase().replace(/[^a-z0-9]+/g, "-")))).toBe(true);
+    expect(questBySlug("no-such-quest")).toBeNull();
+  });
+  it("get_quest, search_facts and the quest log give the quest's page", () => {
+    expect(withQuestLink(getQuest({ name: "Running Wild" }), "https://planner.test").link).toBe("https://planner.test/quests/q/running-wild");
+    expect(searchFacts("Running Wild").hits.find((h) => h.kind === "quest")?.href).toBe("/quests/q/running-wild");
+    const log = questLog({ label: "Save", level: 5, questStages: { "0WRHorseQ": 10 } }, null, "https://planner.test");
+    expect(JSON.stringify(log)).toContain("https://planner.test/quests/q/running-wild");
+  });
+});
+
+describe("Part 2: grab-bags as shelves", () => {
+  const lines = questsData().lines;
+  const line = (id: string) => lines.find((l) => l.id === id)!;
+
+  it("the six packs of unrelated quests are shelves with no opening text, the two capitals named for what they are", () => {
+    for (const id of ["capital-whiterun", "capital-windhelm", "fists-of-fury", "markarth-side", "more-to-do-in-the-soul-cairn", "the-gift-of-saturalia"]) {
+      expect(line(id).category, id).toBe("work");
+      expect(line(id).begins, id).toBeNull();
+    }
+    expect(line("capital-whiterun").name).toBe("More to do in Whiterun");
+    expect(line("capital-windhelm").name).toBe("More to do in Windhelm");
+  });
+
+  it("the rule the list follows: a side-story line with more than one quest is a story only if one of its quests' starts names another", () => {
+    // Dark Ancestor is one quest twice and The Book of Love is a quest and its sequel: kept as lines by judgement (logged in WO-147).
+    const kept = new Set(["dark-ancestor", "the-book-of-love"]);
+    const named = (l: (typeof lines)[number]) => {
+      const names = l.quests.map((q) => [q.edid, q.name] as const).filter(([, n]) => n);
+      const need = (re: string) => new RegExp(`(?:After|Through)\\s+"?${re}"?|${re}\\s+(?:stage|completed|not completed)`);
+      return l.quests.some((q) => {
+        const raw = q.start?.raw;
+        const blob = [...(raw?.needs ?? []), ...(raw?.ways ?? []).flatMap((w) => [w.how, ...(w.needs ?? [])])].join(" | ");
+        return names.some(([e, n]) => e !== q.edid && need(n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).test(blob));
+      });
+    };
+    const bags = lines.filter((l) => l.category === "side" && l.quests.length > 1 && !named(l) && !kept.has(l.id));
+    expect(bags.map((l) => l.id)).toEqual([]);
+  });
+
+  it("a shelf has no giver, ways in or first step on its page: the quests' own pages and rows have them", () => {
+    // The data still holds the giver of its first quest; the page leaves it off a shelf (the line page's shelf test).
+    expect(line("capital-windhelm").category).toBe("work");
+  });
+});
+
+describe("placeholder objectives", () => {
+  it("knows TEST, empty and the editor's own note, and nothing else", () => {
+    for (const t of ["TEST", "test", " Test. ", "", "   ", "; the player doesn't see this", "TODO", "Placeholder"]) expect(isPlaceholder(t), JSON.stringify(t)).toBe(true);
+    for (const t of ["Test J'zargo's Flame Cloak spell on the undead (0/3)", "Pass Faralda's test using Firebolt", "Talk to Brutius in Morthal about a fishing contest", "Read the Message"]) expect(isPlaceholder(t), t).toBe(false);
+  });
+  it("Skirmish at Whitewatch no longer says TEST, to the page or the door", () => {
+    const q = questsData().byId.get("capital-whiterun")!.quests.find((x) => x.edid === "0WRThaneQ01")!;
+    expect(q.objectives).not.toContain("TEST");
+    expect(JSON.stringify(getQuest({ name: "Skirmish at Whitewatch" }))).not.toContain('"TEST"');
+  });
+  it("no quest anywhere has one", () => {
+    const left = questsData().lines.flatMap((l) => l.quests.flatMap((q) => q.objectives.filter(isPlaceholder).map(() => q.edid)));
+    expect(left).toEqual([]);
+  });
+});

@@ -1,3 +1,4 @@
+import { questHref } from "@/lib/quests/slugs";
 import "server-only";
 import { gearData } from "@/lib/gear/data";
 import { itemSlug } from "@/lib/gear/query";
@@ -43,7 +44,7 @@ export function questLinkables(): Linkable[] {
   for (const l of lines) {
     const follower = l.category === "followers";
     out.push({ kind: follower ? "follower" : "line", id: l.id, name: l.name, where: follower ? "Follower" : `Quest line, ${categories[l.category]?.name ?? l.category}`, href: `/quests/${l.id}` });
-    for (const q of l.quests) if (q.name) out.push({ kind: "quest", id: q.edid, name: q.name, where: `Quest, ${l.name}`, href: `/quests/${l.id}` });
+    for (const q of l.quests) if (q.name) out.push({ kind: "quest", id: q.edid, name: q.name, where: `Quest, ${l.name}`, href: questHref(q.edid) ?? `/quests/${l.id}` });
   }
   questIndex = out;
   return out;

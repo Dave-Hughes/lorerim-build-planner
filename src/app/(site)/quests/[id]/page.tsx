@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { GOLD, RUN_CHANGE } from "@/lib/quests/run-change";
 import { pageSources } from "@/lib/quests/player-source";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
@@ -14,7 +15,8 @@ import { MAIN } from "@/lib/quests/open";
 import { storyOfLine } from "@/lib/quests/stories-data";
 import { fromLabel } from "@/lib/quests/words";
 import { siteMetadata } from "@/lib/og/metadata";
-import type { Quest, QuestLine } from "@/lib/quests/types";
+import { questHref } from "@/lib/quests/slugs";
+import type { Quest, QuestLine, QuestStart } from "@/lib/quests/types";
 import { startChecked } from "@/lib/quests/types";
 import styles from "@/components/quests/quests.module.css";
 
@@ -29,10 +31,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return l ? { title: l.name, ...siteMetadata(`/quests/${l.id}`, l.name, l.begins ?? homeName(l.category)) } : {};
 }
 
-/** What an ending hands over that changes a run (WO-129 Part 6), as the Rewards panel names it. */
-const RUN_CHANGE = { mount: "A mount", house: "A house", follower: "A follower", item: "A unique item", gold: "A lot of gold" } as const;
 
-const GOLD = { small: "a small purse of gold", medium: "a purse of gold", large: "a large purse of gold" } as const;
+/** A line of how a quest starts for its row on the line page (WO-147): its first way, short, and how many others there are. */
+function shortStart(start: QuestStart | undefined): string | null {
+  if (!start || !startChecked(start)) return null;
+  const first = start.ways?.[0]?.how ?? start.needs?.[0];
+  if (!first) return null;
+  const more = (start.ways?.length ?? 0) - 1;
+  const text = first.length > 150 ? `${first.slice(0, 147).trimEnd()}...` : first;
+  return more > 0 ? `${text} (${more} other way${more === 1 ? "" : "s"})` : text;
+}
 
 /** "14 quests pay 100; the rest pay none" */
 function xpNote(quests: Quest[]): string {
@@ -80,6 +88,8 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const giverFrom = line.giver?.source === "uesp" ? "UESP" : "game files";
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const told = storyOfLine(line.id);
+  // A shelf is separate jobs, not a story (WO-147 Part 2): no giver, ways in or first step taken from one of them for the whole.
+  const shelf = line.category === "work";
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>
       <Link href={home ? `/quests/c/${home.slug}` : "/quests"} className={styles.back}>
@@ -126,10 +136,11 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
 
           <section className={`frame ${styles.panel}`} aria-labelledby="start-title">
             <h2 id="start-title" className={styles.h2}>
-              How to start it
+              {shelf ? "How to start them" : "How to start it"}
             </h2>
+            {shelf && <p className={styles.soft}>Separate jobs, each with its own start. Open one for how it starts.</p>}
             <dl className={styles.who}>
-              {line.giver && (
+              {!shelf && line.giver && (
                 <>
                   <dt>Who</dt>
                   <dd>
@@ -138,7 +149,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   </dd>
                 </>
               )}
-              {line.giver?.place && (
+              {!shelf && line.giver?.place && (
                 <>
                   <dt>Where</dt>
                   <dd>
@@ -148,7 +159,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 </>
               )}
               {/* No one giver (WO-121): the opening quest's ways in, as the start check words them; every opening's, when the line has more than one (WO-121b). */}
-              {!line.giver && !!waysIn?.length && (
+              {!shelf && !line.giver && !!waysIn?.length && (
                 <>
                   <dt>Ways in</dt>
                   <dd>
@@ -166,7 +177,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   </dd>
                 </>
               )}
-              {!line.giver && line.firstObjective && (
+              {!shelf && !line.giver && line.firstObjective && (
                 <>
                   <dt>First step</dt>
                   <dd>
@@ -258,7 +269,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 </div>
                 <ul className={styles.qlist}>
                   {story.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} start={q.start} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} journal={q.journal} endings={q.endings} start={q.start} href={questHref(q.edid)} how={shortStart(q.start)} />
                   ))}
                 </ul>
               </div>
@@ -292,7 +303,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 </div>
                 <ul className={styles.qlist}>
                   {jobs.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} start={q.start} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} journal={q.journal} endings={q.endings} start={q.start} href={questHref(q.edid)} how={shortStart(q.start)} />
                   ))}
                 </ul>
               </div>

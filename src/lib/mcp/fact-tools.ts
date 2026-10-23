@@ -9,7 +9,7 @@ import { REPORT_FIELD_MAX, REPORT_KINDS } from "@/lib/quests/player-types";
 import { REPORT_TEXT_MAX, REPORT_THANKS, REPORT_WHAT } from "@/lib/quests/report-words";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
-import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide } from "./facts";
+import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide, withQuestLink } from "./facts";
 import { toldOf } from "./playthroughs";
 
 /**
@@ -22,7 +22,7 @@ type Guarded = (run: () => unknown | Promise<unknown>) => Promise<{ content: { t
 
 const version = z.string().max(20).optional().describe(`The LoreRim version, ${DEFAULT_VERSION} if left out.`);
 
-export function registerFactTools(server: Server, guarded: Guarded) {
+export function registerFactTools(server: Server, guarded: Guarded, origin = "") {
   server.registerTool(
     "search_facts",
     {
@@ -35,7 +35,12 @@ export function registerFactTools(server: Server, guarded: Guarded) {
         version,
       }),
     },
-    async ({ query, kinds, version: v }) => guarded(() => searchFacts(query, kinds, v)),
+    async ({ query, kinds, version: v }) =>
+      guarded(() => {
+        const found = searchFacts(query, kinds, v);
+        // A quest hit has a page of its own (WO-147 Part 1): its address, not its line's.
+        return { ...found, hits: found.hits.map(({ href, ...h }) => (href ? { ...h, link: `${origin}${href}` } : h)) };
+      }),
   );
   server.registerTool(
     "get_perk",
@@ -106,7 +111,8 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     const told = a.level !== undefined || a.done?.length || a.playthrough;
     const userId = (ctx.http?.authInfo as PlannerAuth | undefined)?.extra?.userId;
     const player = told ? playerState(await toldOf(a, typeof userId === "string" ? userId : null), a.version) : null;
-    return getQuest({ id: a.id, name: a.name, places: a.places }, a.version, player);
+    // The quest's own page (WO-147 Part 1).
+    return withQuestLink(getQuest({ id: a.id, name: a.name, places: a.places }, a.version, player), origin);
   };
   server.registerTool(
     "get_quest",

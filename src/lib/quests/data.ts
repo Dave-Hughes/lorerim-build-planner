@@ -4,6 +4,7 @@ import path from "node:path";
 import { currentVersion } from "@/lib/rules/server";
 import { MAIN } from "./open";
 import { currentPlayerFacts } from "./player-facts-store";
+import { isPlaceholder } from "./placeholder";
 import { overlayLines } from "./player-overlay";
 import type { LineGate, QuestLine, QuestsFile } from "./types";
 
@@ -37,7 +38,9 @@ function baseQuestsData() {
   } catch {
     // Not built yet.
   }
-  cached = { ...data, byId: new Map(data.lines.map((l) => [l.id, l])) };
+  // Placeholder objectives are hidden here (WO-147 Part 2), so no page and no tool ever reads one.
+  const lines = data.lines.map((l) => (l.quests.some((q) => q.objectives?.some(isPlaceholder)) ? { ...l, quests: l.quests.map((q) => (q.objectives?.some(isPlaceholder) ? { ...q, objectives: q.objectives.filter((o) => !isPlaceholder(o)) } : q)) } : l));
+  cached = { ...data, lines, byId: new Map(lines.map((l) => [l.id, l])) };
   return cached;
 }
 

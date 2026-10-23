@@ -89,9 +89,11 @@ test("an admin has the agent propose, approves it, and the page shows a player's
   const row = page.locator('[id="q-0WRHorseQ"]');
   await row.getByRole("button", { name: "Journal ›" }).click();
   await row.getByText("How it starts", { exact: true }).click();
-  await expect(row.getByText(`${NOTE}, on the board by Joslin's house`)).toBeVisible();
-  await expect(row.getByText(/player report, @e2e-reporter-1, \d{1,2} \w{3} \d{4}/)).toBeVisible();
-  await expect(row.getByText("(Whiterun, the board right outside Joslin's house)")).toBeVisible();
+  // The row says it under the name in a line too (WO-147), so look in the opened section.
+  const opened = row.locator("details").filter({ hasText: "How it starts" });
+  await expect(opened.getByText(`${NOTE}, on the board by Joslin's house`)).toBeVisible();
+  await expect(opened.getByText(/player report, @e2e-reporter-1, \d{1,2} \w{3} \d{4}/)).toBeVisible();
+  await expect(opened.getByText("(Whiterun, the board right outside Joslin's house)")).toBeVisible();
   await row.scrollIntoViewIfNeeded();
   await page.screenshot({ path: "test-results/wo146-quest-page-1440.png" });
 });
@@ -148,7 +150,7 @@ test("a second player agreeing is closed as no change, and the page then has two
   const row = page.locator('[id="q-0WRHorseQ"]');
   await row.getByRole("button", { name: "Journal ›" }).click();
   await row.getByText("How it starts", { exact: true }).click();
-  await expect(row.getByText(/players' reports \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}/)).toBeVisible();
+  await expect(row.locator("details").filter({ hasText: "How it starts" }).getByText(/players' reports \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}/)).toBeVisible();
   await row.scrollIntoViewIfNeeded();
   await page.screenshot({ path: "test-results/wo146-quest-two-sources-1440.png" });
   // The way itself is as it was: still one way.

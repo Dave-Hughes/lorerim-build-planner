@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { FactsError, getQuest, getRules, playerState, searchFacts } from "./facts";
+import { FactsError, getQuest, getRules, playerState, searchFacts, withQuestLink } from "./facts";
 import { modsOf, suggestFrom, suggestQuests } from "./playthroughs";
 import { modIndex, readGuide } from "@/lib/game-guide/guide";
 import { styleGuide } from "./facts";
@@ -191,7 +191,8 @@ const QUESTIONS: Question[] = [
         questStages: { "0WRHorseQ": 10, TG00MiscHandler: 10, LTNQuestHandler: 10, CR01: 10, CR02: 10, FreeformRiften15: 10, FreeformShorsStone02: 10, MS11: 0, MS13: 0, FreeformRiften11: 12 },
       }),
     ],
-    must: [/"category":"Side stories"/, /"category":"Jobs and errands"/, /Running Wild/],
+    // Whiterun, expanded is a shelf under Jobs and errands since WO-147, so the second category here is the Companions' guild.
+    must: [/"category":"Guilds and factions"/, /"category":"Jobs and errands"/, /Running Wild/, /\/quests\/q\/running-wild/],
     never: [/Misc Handler/, /Quest Handler/, /Handler/, /"stage":0\b/, /Animal Extermination[\s\S]*Animal Extermination/, /Special Delivery[\s\S]*Special Delivery/],
   },
   {
@@ -302,6 +303,14 @@ const QUESTIONS: Question[] = [
     },
     must: ["Callings", "required", "a bard playing the inn or a scholar reading every book in town", "instead of opening on crabs, wolves and bandits"],
     never: [/https?:\/\//],
+  },
+  {
+    n: 33,
+    asks: "Tell me about A Rat Problem.",
+    // Through the door's wrapper, which adds the quest's own page.
+    ask: () => [withQuestLink(getQuest({ name: "A Rat Problem" }))],
+    must: [/"link":"\/quests\/q\/a-rat-problem"/, "Ask Igna", "Igna's House"],
+    never: [/messenger/i, /Bluesky/, /Read the Message/, /comes after/],
   },
   {
     n: 24,
