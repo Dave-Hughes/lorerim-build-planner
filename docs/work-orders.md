@@ -4924,7 +4924,7 @@ Status: done
 ---
 
 ## WO-139  Before you design: the questions, their answers kept, and what a character will never do (Mac, 23 Oct 2026)
-Status: queued
+Status: building (Mac)
 
 **Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a house or a mount, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough on its own: the answers have to be kept, and the ones that close doors have to close them in the planner, or the next assistant guesses again.
 
