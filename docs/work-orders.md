@@ -5027,11 +5027,15 @@ Status: queued
 
 **Why.** Dave (23 Oct, 17:33) looked for Jaree-Ra, who starts Lights Out!. The planner says "Ask Jaree-Ra … in Red Wave, Solitude". He searched the Red Wave three times; Jaree-Ra stands in Solitude by the inn, as in the vanilla game, and Dave found him only by console. The quest's facts (who, the line, the stage) are right; the **where** is the cell the editor placed him in (where he sleeps), not where he spends his day. The same goes for every person-started way: 573 ways name a person and a place, all from the placement cell. Most shopkeepers stand where they're placed; anyone who walks the town, works elsewhere or sleeps aboard a ship is wrong. Bob also sent Dave to the docks from memory before checking; that rule is in `pipeline.md` now.
 
+### Part 0. Jaree-Ra, from Dave's game (Mac, now)
+Dave watched him for a full in-game day (23 Oct, 17:39): he stands in two spots a few feet apart in Solitude by the Winking Skeever, day and night, and never goes to the docks or the Red Wave. Put that on Lights Out!'s way by hand (`overrides.json`, `_checked: "players"`, `_source: "Dave, watched in game for a day, 23 Oct 2026"`): "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)". Part 1's package read must agree with it; if it doesn't, the packages are being read wrong.
+- [ ] Part 0 (Mac).
+
 ### Part 1. Where, from the AI packages (PC)
 - For every person in `people.json` (and every quest giver), read their AI packages in order (`PACK` with its schedule and location: sandbox, travel, eat, sleep, work, the location or ref it names), resolved to places: "by day: the streets of Solitude by the Winking Skeever; sleeps: aboard the Red Wave at the Solitude docks".
 - Write `where` (by day, the place a player meets them), `sleeps`, and `hours` to `people.json`; keep `placed` (the editor cell) for reference only.
 - A mod's override wins (RedBag's Solitude edits Jaree-Ra's record; read its packages).
-- Spot checks in the log against UESP and Dave's game: Jaree-Ra (by the Winking Skeever, Solitude), Brynjolf (Riften's market by day), Maven Black-Briar, Nazeem (Whiterun market and the Cloud District), Lydia (Dragonsreach until bought), Viarmo, and three who never move (Belethor, Arcadia, Keerava).
+- Spot checks in the log against UESP and Dave's game: Jaree-Ra (two spots by the Winking Skeever in Solitude, day and night, never the docks: Dave watched a full day), Brynjolf (Riften's market by day), Maven Black-Briar, Nazeem (Whiterun market and the Cloud District), Lydia (Dragonsreach until bought), Viarmo, and three who never move (Belethor, Arcadia, Keerava).
 
 ### Part 2. The quest pages say it (Mac)
 - A way that names a person gives `where` from Part 1 ("Talk to Jaree-Ra, by day on the streets of Solitude near the Winking Skeever"), and `get_quest` sends the same; the placement cell never reaches a player.
@@ -5045,7 +5049,7 @@ Status: queued
 ---
 
 ## WO-151  What suggest_places says, read as a player (Mac, 23 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Bob read `suggest_places` for Kyria's Act I (Riften, levels 1 to 6) live, as her Claude would, after WO-150. The data faults are the PC's (WO-144 Part 1e-3); these are the door's:
 - [x] **Distance in a player's words:** "Riften, 0.2 km" → the walk band ("a short walk from Riften"), km only for sorting. Everywhere the door gives a distance.
@@ -5073,6 +5077,8 @@ Status: for Bob
 - **A line you might want back.** The 25 "Carriage system dialogue" lines (Skyrim.esm and the Unofficial patch) are left out too. Embershard Mine's "Old Embershard Mine's up there. Used to produce a lot of iron..." is one, so Riverwood's Embershard Mine now shows Nirenoore's line from The Welkynar Knight and the Guard's Dossier. If you say a carriage driver speaks them, it's one line to add ("a carriage driver").
 - **A side effect.** A place whose only lines were unattributed now says `noPointer` ("Nothing in the game names it. A hook here is the player's own"): Lost Prospect Mine does. Said plainly: the game does name it, in a line the records can't attribute.
 - **Tests and checks.** `wo151.test.ts` now has five tests for this (the town's line, Forelhost and Crystaldrift left out, no unattributed line anywhere, Whiterun and Solitude name their own towns, a named speaker stays); `wo128.test.ts` and its e2e expect Nirenoore's line for Embershard Mine. Typecheck, lint, 681 unit tests, the build and the places and door e2e (17 tests) pass.
+
+- Bob, 23 Oct, 17:42: the attribution fix read; 227 door tests pass. Done.
 
 ---
 
