@@ -4946,7 +4946,7 @@ Status: queued
 ---
 
 ## WO-144  The indexes a design needs (PC, 23 Oct 2026; takes the PC's queue before WO-140)
-Status: queued
+Status: building (PC)
 
 **Why.** Dave (23 Oct), after Bob's three design tests and his own: every gap the assistants hit was data, not logic. The door did what it was told; what it was told was missing. So the PC's next stretch is one indexing program, in the order the tests hit the gaps, each part with a player question so it is tested as it lands, not taken on faith. Mac keeps building the door (WO-139, WO-142) in parallel; the Mac halves of WO-141 and WO-143 wait on the parts here. Bob re-runs the design battery (`docs/design-tests.md`) after each part. Under WO-138 Part 5 the PC decides what it finds and logs it under this order. The rules: the game's words, every row with its source, never a guess, and "not checked" where the files don't say.
 
