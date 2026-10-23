@@ -162,7 +162,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **31. "How does Kyria get from 15 to 20 in Act III?"**
 - Calls: `get_playthrough({ playthrough: "Kyria Severa" })`, `suggest_objective` for Act III.
-- Must: XP needed (about 3,300 from 15 to 20 on the curve), what Act III's plan pays, the gap, and named fillers with their XP, core game first (a camp or dungeon on the route, an at-level side quest, Tome Trials, Missives), a calling day last.
+- Must: XP needed (about 3,300 from 15 to 20 on the curve), what Act III's plan pays, the gap, and named fillers with their XP, core game first (a camp or dungeon on the route, an at-level side quest, a missive along the route), a calling day last; never Tome Trials before Tending the Flames.
 - Fails today: **WO-145**.
 
 **32. "What level will she be at the end of Act II?"**
@@ -174,3 +174,18 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_quest({ name: "A Rat Problem" })`.
 - Must: a link to the quest's own page (`/quests/q/…`); its own start; no line-level opening from another quest (the Bluesky Hall messenger); no "comes after".
 - Passes since WO-147.
+
+**34. "What quests are open in Haafingar at level 15?"**
+- Calls: `suggest_quests({ level: 15, where: "Haafingar" })`.
+- Must: stories in the hold's towns and places, each with its start; never `start: null` without a reason.
+- Fails today: **WO-148**.
+
+**35. "How do I start Laid to Rest?"**
+- Calls: `get_quest({ name: "Laid to Rest" })`.
+- Must: the way in (Morthal, the burned house, Lami or the jarl), not a key to Sorli's House; `openForYou` open or a real need.
+- Fails today: **WO-148 item 5**.
+
+**36. "Can Kyria take Tome Trials exams now?"**
+- Calls: `get_rules()` (or the doings index).
+- Must: not until Tending the Flames is done; 36 books, 50 / 100 / 200 XP by tier, Speech 50 and 75 for tiers 2 and 3.
+- Fails today: **WO-148 item 8**.

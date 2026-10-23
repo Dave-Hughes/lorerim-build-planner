@@ -4964,6 +4964,43 @@ Decisions made under WO-138 Part 5, each with why:
 
 ---
 
+## WO-148  What re-planning Kyria's Acts III and IV couldn't get from the door (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave's Claude re-planned Kyria's Acts III and IV (the Book, v40 to 41) and had to do by hand what the door should have answered. Each item below is from its list; the data items are in WO-144 and WO-145, the door items are here.
+
+1. **`suggest_quests` takes holds.** `where: "Haafingar"` returns nothing; `where: "Solitude"` returns six. A hold name (Haafingar, Hjaalmarch, the Pale, the Reach, Eastmarch, Falkreath, Whiterun hold, Winterhold, the Rift) means every town and place in it, from `places.json`'s holds.
+2. **`suggest_quests` never returns `start: null`** without saying why. The Bards College, The Wolf Queen Awakened, Lights Out!, Battle of the Champions and Odd jobs in Haafingar came back empty though `get_quest` on the same line has a checked start. Fill it from the same source `get_quest` uses (a shelf gives "separate jobs; open one for how it starts").
+3. **`suggest_places` takes a place, not only a stored act.** Add `where` (a town, a hold or a place) and `levels` so an assistant can ask about places near Solitude at 15 to 20 without a stored act. The stored-act form stays.
+4. **`get_quest` returns the quest's XP and type** (type to XP from `QUEST_XP`, Experience.ini), and says plainly when a quest pays nothing ("Misc: pays no quest XP"): The Heart of Dibella and The Blessings of Nature were planned as XP payoffs and pay 0.
+5. **A key or door condition isn't a start.** Laid to Rest's start reads "The door from Stonehills into Sorli's House needs the Key to Sorli's House…", so `openForYou` is "unknown" for a quest already in Kyria's journal; A Rat Problem shows the same shape ("The door from Whiterun into Igna's Basement needs the Key to Igna's Basement"). A locked door on the way to the first objective is the first step's detail, never a need of the start. Rule and test on both; check every page for the shape.
+6. **Gate chains across acts.** `check_progression` and `get_playthrough` check that every later act's gates are reachable from what the earlier acts contain: Dawnguard needs level 30 and Laid to Rest; Vigilant needs level 25, The House of Horrors and Kindred Judgment. Kyria's Act IV had no Laid to Rest. The warning names the missing quest and offers the act it fits ("Laid to Rest fits Act III, in Morthal").
+7. **Missives: route-aware, never a lump** (Dave and the Missives.esp read, 23 Oct). A missive's destination is drawn when the board refreshes, so no tool can promise one; Near / Medium / Distant is the distance band from the board's hold. The planner supports two uses and one rule:
+   - *Nearby:* at the board she's standing at, Near deliveries and Heal the Sick that finish in town or close by.
+   - *On the way out:* when an act's route moves her from A to B, the stop at A says "read A's board for notes addressed to B" (leaving Markarth for Solitude).
+   - *Rule:* never budget missives as a lump. Count one or two per leg the route already travels, never recommend one off the route, and skip gathering jobs (LoreRim's author warns they can break). In WO-145's fillers too.
+8. **Tome Trials, modeled and gated.** The exams aren't quests, so nothing lists them. Giraud's exam line checks `GetQuestCompleted` on Tending the Flames (Skyrim.esm:053511) == 1, so all 36 exams wait on Tending the Flames; the project's own notes and Kyria's Act III treated them as open. A `tome-trials` entry the door returns (through `get_rules` or the doings index when it lands): 36 books, 50 / 100 / 200 XP by tier, tier 2 needs Speech 50 and tier 3 Speech 75 (the mod page), Callings' Historian half again, **after Tending the Flames**. WO-145's filler list uses it only after that quest.
+
+### Player questions
+- 34. "What quests are open in Haafingar at level 15?" returns stories with their starts, none `start: null`.
+- 35. "How do I start Laid to Rest?" says the way in, not a key; `openForYou` is open or names a real need.
+- 36. "Can Kyria take Tome Trials exams now?" says not until Tending the Flames, with what the exams pay.
+
+### Done when
+- [ ] 1 to 8, each with a test; player questions 34 to 36 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
+## WO-149  The save connector's skills come back empty (PC, 23 Oct 2026)
+Status: queued
+
+**Why.** Kyria's snapshot has `skills: {}` (Save 70 and Save 114), though the connector's description says it reads skills and WO-123 built skills from the save. Speech gates Tome Trials tiers and follower slots; Two-Handed and Heavy Armor decide what an act can fight.
+- [ ] On Dave's PC, run the installed save connector against Save 114 and say what it returns for skills, and which version of the connector is installed (the `.mcpb` Dave added vs the one `tools/save-connector` builds now).
+- [ ] If the reader can't find the skills in this save: find them (the save's actor values for the player, base and current), fix the reader, add Save 114's numbers as a test (Speech, Two-Handed, Heavy Armor at least), rebuild the `.mcpb`, and tell Dave in the order how to reinstall it.
+- [ ] `set_snapshot` from it fills Kyria's `whereYouStand.skills`. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-147  A page for every quest, and grab-bags as shelves, not lines (Mac, 23 Oct 2026)
 Status: for Bob
 
@@ -5069,7 +5106,8 @@ From LoreRim's install, each with its file and value in `xp.json`:
 - **The Experience curve:** XP to reach each level 1 to 100 (Experience.ini; Save 114's 650 at 15 is a check: 575 at 12, rising 25 a level).
 - **What pays XP in LoreRim:** quest XP by type (as `QUEST_XP`, rechecked), location discovery and clearing (Experience.ini's values by location type), and the small sources LoreRim turns on (brewing 5, enchanting 5, disenchanting 5, mining 10, per `lorerim/systems/crafting.md`; reading, if any; kills, if Experience grants any in this list).
 - **Callings:** each calling's XP per action and daily cap, from the mod's own data on Dave's PC (after the 19 Oct retune: Bard 25 a song, 5 a day; Scholar 17 a book, 10 a day; plus first-inn and series bonuses), and whether the cap scales with level (today it doesn't).
-- **Repeatable fillers:** Missives (100 XP each, `_M_` quests are Side Quest type?), the jarls' bounties, the Bards College's Tome Trials exams (XP per exam), radiant faction jobs, with their XP.
+- **The curve:** Kyria's save suggests 25 × (level + 11) (575 at 12, 650 at 15); confirm it from Experience.ini, don't assume it.
+- **Repeatable fillers:** Missives (100 XP each, per leg of the route, never as a lump: WO-148 item 7), the jarls' bounties, the Bards College's Tome Trials exams (50 / 100 / 200 by tier, **only after Tending the Flames**: WO-148 item 8), radiant faction jobs, with their XP.
 
 ### Part 2. The budget on every act (Mac)
 - `get_playthrough` and the act's card on Play show, per act: **XP needed** to go from its start level to its end level (the curve); **XP its plan pays**: each linked quest's XP by type, each linked place's clear and discovery XP, each passed-by place's discovery XP, and the character's callings at their cap times the days the act says it spends (`set_act` takes `days`; none set means none counted); and **the gap**.
@@ -5088,7 +5126,7 @@ Dave's decision after the XP discussion: Callings stays a starter, not the engin
 - The only hard line stays the one that's about facts, not taste: an act shouldn't end at a level gate the plan can't reach without saying so.
 
 ### Part 3. Kyria as the worked example
-Kyria's Act III shows the gap from Save 114 and fillers that follow the shape (a camp or dungeon on the route, an at-level side quest in Haafingar, Tome Trials, Missives from Solitude's board; a calling day last), and its range becomes what they reach.
+Kyria's Act III shows the gap from Save 114 and fillers that follow the shape (a camp or dungeon on the route, an at-level side quest in Haafingar, a missive along the route; a calling day last; not Tome Trials, which wait on Tending the Flames), and its range becomes what they reach.
 
 ### Player questions
 - 31. "How does Kyria get from 15 to 20 in Act III?" returns the XP needed (about 3,300), what the act pays, the gap, and named fillers with their XP.
