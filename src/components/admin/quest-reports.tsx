@@ -230,7 +230,7 @@ export function QuestReports({ reports }: { reports: QuestReportRow[] }) {
             <div className={styles.reportHead}>
               <Link href={`/quests/${r.lineId}`}>{r.lineName}</Link>
               {r.questName && <span className="muted">{r.questName}</span>}
-              <span className="label">{KIND[r.kind]}</span>
+              <span className="label">{r.kind === "wrong" ? r.what : KIND[r.kind]}</span>
             </div>
             <p className={styles.reportBy}>
               {r.name ?? "A player"}

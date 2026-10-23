@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave (23 Oct): a Discord-signed-in player should be able to tell the planner what they know about a quest (how it starts, who, where, where a note or book is), not only "this was wrong". Dave's own finds (Running Wild's board, Paragliding near Falkreath) went in by hand through `overrides.json` as player reports, and that is the model: reviewed, approved by a person, then on the pages marked as a player's report with its source. 18 quests are "not checked" and about 370 mod quests have no second source; players are the only way to fill them. Most of the plumbing exists: `report_quest` on the door, the `quest_report` table (`what`, `text`, `said`, `source`, `status`), the site's "This was wrong" form, and `/admin`'s Quest reports.
 
@@ -4983,13 +4983,22 @@ Status: building (Mac)
 - The player gets a line on their `/me` page: "Your report on Running Wild is on the planner now. Thank you."
 
 ### Done when
-- [ ] Part 1: the two new kinds on the site and the door; the migration.
-- [ ] Part 2: Propose on a report, its proposal stored, nothing written to the pages; a test with a stub API.
-- [ ] Part 3: Approve writes the player fact; the page and `get_quest` show it as a player's report; `/me` says so. e2e: a report on Running Wild is proposed, approved and shown.
-- [ ] Every check in CLAUDE.md passes; screenshots of the admin view at 1440. Push staging with `Status: for Bob`.
+- [x] Part 1: the two new kinds on the site and the door; the migration (0027, additive).
+- [x] Part 2: Propose on a report, its proposal stored, nothing written to the pages; a test with a stub API (`src/lib/quests/wo146.test.ts`, and the e2e's stub server).
+- [x] Part 3: Approve writes the player fact; the page and `get_quest` show it as a player's report; `/me` says so. e2e: a report on Running Wild is proposed, approved and shown (`e2e/wo146.spec.ts`).
+- [x] Every check in CLAUDE.md passes (typecheck, lint, 607 unit tests with the questions, build, the full e2e); screenshots of the admin view at 1440 (`test-results/wo146-admin-proposal-1440.png`, also `wo146-quest-page-1440.png` and `wo146-me-1440.png`). Push staging with `Status: for Bob`.
 
-### Jeff's progress (Mac, 23 Oct)
-- Part 1 built: `quest_report` has `kind`, `fields`, `proposal`, `decision`, and `quest_player_fact` exists (migration 0027, additive); the site form has Something's wrong / I know how this starts / I know where this is with a quest picker; `report_quest` takes `kind`, `who`, `where`, `how`, `place`. Parts 2 and 3 are built and their e2e passes (a stub model on port 3399); the full e2e and the notes are next.
+### Jeff's notes (Mac, 23 Oct)
+Decisions made under WO-138 Part 5, each with why:
+- **The overlay is read at run time, not by the build.** The order says the fact is "read by `quests.json`'s build the way `overrides.json`'s entries are", but that build is a Python step that has no database, and an approved fact has to show without a deploy. So `questsData()` lays the approved facts over the generated data when it is read (`player-overlay.ts`), exactly as `overrides.json` marks Dave's finds: the way carries `checked: "players"` and a `source`. The pages and the door call `loadPlayerFacts()` first; each copy of the store (a server instance, and within one the pages' and the door's own bundles hold separate copies) looks again at most every ten seconds, and the copy that took an approval shows it at once, so an approval is everywhere within ten seconds. The e2e found the first version's minute too long. A database that can't be reached leaves what was loaded. `quests.json` itself is never changed. If Bob wants the facts in the committed data too (so a file check can "replace" one, as the order says), that is an export step to write, and it is not built.
+- **Replace or add.** An approved fact says which way's words it replaces (or none): a replaced way takes its place in the "One of" need and keeps its needs, and a place the player gave takes the place of the "unplaced" note. A new way is added to the "One of" need. The record form (`raw`) is the files' and is not touched, so a player's way never makes a locked quest open.
+- **Where it shows.** The quest page's How it starts and Ways in say "player report, @handle, 23 Oct 2026". `get_quest` says "a player's report, not the game files (@handle, 23 Oct 2026)", the same line as Dave's two. For a quest whose start isn't checked (18 of them) `get_quest` still gives no instructions, but it now shows a player's way and says it is that, which the order's purpose needs. The source is the player's handle (their name when they have none) and the date the report was sent.
+- **Propose.** Admin-only. One call per report with `fetch` to the Anthropic Messages API (the SDK isn't a dependency), the key from `ANTHROPIC_API_KEY`, the model `PLAYER_FACT_MODEL` or `claude-sonnet-5-5`; each call is logged (`quest-proposal`: report, model, tokens) and the proposal (words, the way, what it replaces, fits, confidence, why, model, time) is stored on the report. It is told to use only the report and the records, never to add a place or person from memory, and to say "contradicts" when it does. A batch step ("Propose on new reports", 10 at a time, one call each) is in /admin. **For Dave: `ANTHROPIC_API_KEY` must be set in Vercel (Preview and Production) before Propose works there; without it the button says so.** The e2e points the app at a stub server and never calls the real API.
+- **Approve, Edit and approve, Not a problem.** Admin-only; Approve needs a proposal with a way, Edit and approve needs none. A report is decided once. Not a problem writes no fact. `/me` says "Your report on Running Wild is on the planner now. Thank you." for each report approved in the last thirty days.
+- **What a player can send.** The site form (and `report_quest`) has three kinds: Something's wrong (as before), I know how this starts (who, where, what they did), I know where this is (the place), the last two naming one quest of the line. Same sign-in and 5 an hour. A "wrong" report is still not proposed on by the batch (it has no way to propose); the Propose button is on how and where reports.
+- **e2e hygiene.** `quest_player_fact` rows keep no user when a test user is deleted, so the e2e seed and cleanup delete them first; otherwise Running Wild would stay altered in the dev database.
+- **Not built, said plainly.** "A later file check that agrees replaces it; one that disagrees flags it for review" is not built: that needs the export step above. Today a player fact stays until someone removes the row.
+- **Checks.** Typecheck, lint and 607 unit tests (with the player questions) pass; the build; the full e2e passed 371 of 372 on the final build. The one failure was `wo24.spec.ts`'s avatar-menu keyboard check (10.5 s, a timeout), in a header test this order doesn't touch; it passes three times alone. Two real faults the e2e found in my own work are fixed: the admin list showed "Something's wrong" where the older spec expects the report's own part (it still does for those), and a minute was too long for an approval to reach every copy of the facts (now ten seconds).
 
 ---
 

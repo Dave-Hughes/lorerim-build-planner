@@ -89,9 +89,11 @@ test("get_quest says it is a player's report, with the player and the date; /me 
   await signIn(context);
   const from = ip();
   const token = (await tokenFor(page, context, baseURL!, from)).access_token;
-  const got = (await call(baseURL!, from, token, "get_quest", { name: "Running Wild", level: 5 })).json();
+  // The door looks again at the facts every ten seconds, so it has the approval within that.
+  const ask = async () => (await call(baseURL!, from, token, "get_quest", { name: "Running Wild", level: 5 })).json();
+  await expect.poll(async () => (await ask()).quest.start.ways[0].way, { timeout: 25_000, intervals: [1000] }).toBe(`${NOTE}, on the board by Joslin's house`);
+  const got = await ask();
   const way = got.quest.start.ways[0];
-  expect(way.way).toBe(`${NOTE}, on the board by Joslin's house`);
   expect(way.checked).toMatch(/^a player's report, not the game files \(@e2e-reporter-1, \d{1,2} \w{3} \d{4}\)$/);
   expect(way.whereIs).toEqual(["Whiterun, the board right outside Joslin's house"]);
   expect(got.openForYou.state).toBe("open");
@@ -125,7 +127,8 @@ test("a how report names who and where, and Not a problem closes one without a f
   await expect(mine.getByLabel("What they said")).toContainText("Bannered Mare");
   await mine.getByRole("button", { name: "Not a problem" }).click();
   await expect(mine).toContainText("Not a problem,");
-  // No fact was written: the way on the page is still the approved one from before.
+  // No fact was written: Running Wild still has the one way, the approved one from before.
   const got = (await call(baseURL!, from, (await tokenFor(page, context, baseURL!, from)).access_token, "get_quest", { name: "Running Wild", level: 5 })).json();
   expect(got.quest.start.ways).toHaveLength(1);
+  expect(got.quest.start.ways[0].checked).toMatch(/^a player's report/);
 });

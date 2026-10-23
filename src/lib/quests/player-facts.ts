@@ -4,11 +4,12 @@ import { db, schema } from "@/db";
 import { setPlayerFacts, type PlayerFact } from "./player-facts-store";
 
 /**
- * Loading the approved player facts (WO-146 Part 3) into the store questsData reads. Each server instance looks again at most
- * once a minute, so an approval shows on the pages within a minute everywhere, and at once on the instance that took it
- * (`force`). A database that can't be reached leaves what was loaded: the pages never break for a player's fact.
+ * Loading the approved player facts (WO-146 Part 3) into the store questsData reads. Each copy of the store (a server
+ * instance, and within one the pages' and the door's own bundles) looks again at most every ten seconds, so an approval shows
+ * everywhere within ten seconds, and at once where it was taken (`force`). A database that can't be reached leaves what
+ * was loaded: the pages never break for a player's fact.
  */
-const EVERY = 60_000;
+const EVERY = 10_000;
 let loadedAt = 0;
 let inflight: Promise<void> | null = null;
 
@@ -22,8 +23,8 @@ export function loadPlayerFacts(force = false): Promise<void> {
       loadedAt = Date.now();
     } catch (e) {
       console.error("player facts not loaded", e instanceof Error ? e.message : e);
-      // Try again in ten seconds, keeping what's there.
-      loadedAt = Date.now() - (EVERY - 10_000);
+      // Try again in five seconds, keeping what's there.
+      loadedAt = Date.now() - (EVERY - 5_000);
     } finally {
       inflight = null;
     }
