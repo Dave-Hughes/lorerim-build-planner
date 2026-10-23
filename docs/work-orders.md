@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-148  What re-planning Kyria's Acts III and IV couldn't get from the door (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave's Claude re-planned Kyria's Acts III and IV (the Book, v40 to 41) and had to do by hand what the door should have answered. Each item below is from its list; the data items are in WO-144 and WO-145, the door items are here.
 
@@ -4989,7 +4989,21 @@ Status: building (Mac)
 - 36. "Can Kyria take Tome Trials exams now?" says not until Tending the Flames, with what the exams pay.
 
 ### Done when
-- [ ] 1 to 9, each with a test (`wo128.test.ts` green); player questions 34 to 36 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+- [x] 1 to 9, each with a test (`wo128.test.ts` green); player questions 34 to 36 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+### Jeff's notes (Mac, 23 Oct)
+Decisions made under WO-138 Part 5, each with why:
+- **1, holds.** `where` takes a hold ("Haafingar", "the Pale", "Whiterun hold", "the Rift"): `src/lib/places/holds.ts` reads each place's hold and the town and city nearest it from `places.json`, and puts a town in the hold most of its places are in (a place by a border carries a neighbour's town, so counting every place would put Whiterun in Haafingar). A hold's towns are every town it has, its capital included. Limit, said: Riverwood comes out in Falkreath (more of its nearest places are labelled Falkreath than Whiterun), which is the PC's data; the real hold is Whiterun. Falkreath, Whiterun and Winterhold are a hold and a town, and take both.
+- **2, `start` never null.** The story's own checked start; else the opening quest's first way as `get_quest` words it ("... (1 other way)"); else the line's text; and for a shelf, "Separate jobs; open one for how it starts." A test goes through the five the thief test named, and seven places.
+- **3, `suggest_places` by place.** `where` (a town, a hold, or a place, which stands for the town nearest it) and `levels` ("15 to 20") with no playthrough or act; the stored-act form is unchanged. Same places, pointers and fit; nothing "already used". It needs the levels and says so; an unknown place names the towns and holds it knows.
+- **4, XP and type.** `get_quest` gives `type`, `xp` and `pays`: "Side Quest: pays 100 quest XP", "Pays no quest XP" (The Heart of Dibella and The Blessings of Nature have no type in the data, so it reads "Pays no quest XP", not "Misc: ..."). The XP is the data's own (from Experience.ini).
+- **5, a door isn't a start.** Fixed in the generator: a door that needs a key goes to `start.doors`, never into the needs, in the words or the record form (20 quests; `build.py` regenerated `quests.json`). `get_quest` gives it as `onTheWay` beside the first step, the quest page and the line page's journal show it after the first step in muted words. Laid to Rest and A Rat Problem are open now. No quest has one in its needs.
+- **6, gate chains (`gate-review.ts`).** Walking the acts in order with what the earlier ones contain, each linked quest or line is checked against (a) its level (the line's, a story's `opens` need, and its first way in's) against the act's top level (an act with no end counts as 100), (b) the lines it needs first (a story's `opens` needs and the line's `after`), (c) the quests its **first way in** names ("After Laid to Rest"). A gap says what is missing and the earlier act it fits (by town when an act is there, else the last earlier act that reaches the level), and, when another way in needs nothing, says so. **Dawnguard's judge says open by Agmaer at Fort Dawnguard (no need), so the warning is on its first way in (Durak), which is the one the order describes, and the message names Agmaer's.** A line counts as done when an objective links the line or its last quest: approximate on purpose. It runs in `get_playthrough` and `finish_draft_playthrough` as `gate-chain`; `check_progression` takes a build, with no acts, so it has no part in this.
+- **7, Missives (rule 37).** The rule is in the style guide (two uses, one rule). Warnings `missives-lump` (the whole Missives line linked, a count of three or more or "every/all/each/any", a reach of 3 or more) and `missives-gathering` (a Gather, Collect or Catch Fish missive). `get_playthrough`'s route stops at a board town that send her on say "Read Markarth's board for notes addressed to Solitude." (the boards are the Missives line's). WO-145's fillers aren't built yet; they should call the same rule.
+- **8, Tome Trials.** `get_rules` has `tomeTrials`: 36 exams, 50 / 100 / 200 XP by tier, Speech 50 and 75 for tiers 2 and 3, Callings' Historian half again, after Tending the Flames (quest `MS05`, in the Bards College line). From the order's reading of the records and the mod page; I have not checked the exam dialogue myself.
+- **9, "when", leniently.** Thresholds I chose, for an act whose top level is T, the floor F (the weakest enemy, from the PC's `actors.levels`) and the boss's lowest level B: **fits now** when F is at or below T and B is within 20 of T, saying "the boss is a hard fight at this level" when B is 10 to 20 above; **plant now, pay off later** when F is 10 or more above T or B is more than 20 above, from level max(F - 10, B - 20); **too high for this act** only when F is 20 or more above T. A boss that matches her level never counts against her. The place also says what she meets: `enemies` ("enemies about 6 to 20, never below 6; the boss Zulakaroth, Keeper of the Dragonstone, level 40"), so a wide range is never hidden. Embershard Mine fits a Riverwood act again. Geirmund's Hall (boss level 40, act 6 to 12) is now "plant now, pay off later (levels 20 and up)", where it said 40; `wo128.test.ts` says so. The PC's `atLevel(n)` isn't built, so this reads the floor and ceiling; when it lands, F should be what she meets at T.
+- **Question 34 to 36** pass.
+- **Checks.** Typecheck, lint, 273 gamedata tests and 646 unit tests (with the player questions) pass; the build; the full e2e passed 380 of 381. The one failure was `wo128.spec.ts` expecting Geirmund's Hall "(levels 40 and up)", which item 9's leniency makes "(levels 20 and up)" (its boss is level 40); I updated the spec, and it, `wo129` and `wo148` pass.
 
 ---
 

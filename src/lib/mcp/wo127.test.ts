@@ -22,8 +22,8 @@ describe("a reason to travel (WO-127)", () => {
         if (n > last) past.push(`${f}: ${m[0]}`);
       }
     }
-    // 36 since WO-139: the Before you design rules are 27 to 36; Honesty keeps 22 to 26.
-    expect(last).toBe(36);
+    // 37 since WO-148 (Missives, rule 37); the Before you design rules are 27 to 36 (WO-139); Honesty keeps 22 to 26.
+    expect(last).toBe(37);
     expect(past).toEqual([]);
   });
 });

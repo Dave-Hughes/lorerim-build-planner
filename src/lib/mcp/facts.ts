@@ -24,7 +24,7 @@ import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { gearData } from "@/lib/gear/data";
 import { doorSources } from "@/lib/quests/player-source";
 import { questHref } from "@/lib/quests/slugs";
-import { HOMES, HOMES_NOTE, MOUNTS } from "./living";
+import { HOMES, HOMES_NOTE, MOUNTS, TOME_TRIALS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
 
@@ -271,6 +271,7 @@ function startOf(
 ): {
   ways?: { way: string; needs?: string[]; who?: string; where?: string; checked?: string; whereIs?: string[]; whereIsIt?: string }[];
   then?: string;
+  onTheWay?: string[];
   who?: string;
   where?: string;
 } {
@@ -306,6 +307,8 @@ function startOf(
     ...(st.sentBy ? { sentBy: st.sentBy } : {}),
     ways,
     ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}),
+    // A locked door on the way is the first step's detail (WO-148 item 5), never a need of the start.
+    ...(st.doors?.length ? { onTheWay: st.doors } : {}),
   };
 }
 
@@ -368,6 +371,10 @@ function questFacts(q: Quest, allPlaces = false) {
       ...startOf(q, allPlaces),
       ...(startChecked(q.start) && q.start?.needs?.length ? { needs: q.start.needs } : {}),
     },
+    // What it pays (WO-148 item 4): its type and quest XP from Experience.ini, said plainly when it is none.
+    ...(q.type ? { type: q.type } : {}),
+    xp: q.xp,
+    pays: `${q.type ? `${q.type}: ` : ""}${q.type ? "pays" : "Pays"} ${q.xp ? `${q.xp} quest XP` : "no quest XP"}`,
     objectives: q.objectives,
     endings: q.endings.map((e) => ({ stage: e.stage, ends: e.fails ? ("fails" as const) : ("completes" as const), ...(e.text ? { text: e.text } : {}), ...(e.when ? { when: e.when } : {}) })),
     ...(q.endings.length ? {} : { note: "The records flag no ending for this quest. Don't say how it ends." }),
@@ -554,7 +561,7 @@ export const ACTIVITIES = [
 
 /** get_rules (WO-119): the numbers How points work says, for an assistant that hasn't read the style guide. */
 export function getRules(version = DEFAULT_VERSION) {
-  return { version, ...pointRules(versionData(version).rules), mounts: MOUNTS, homes: HOMES, homesNote: HOMES_NOTE, activities: ACTIVITIES, source: "the planner's rules, as its checks count" };
+  return { version, ...pointRules(versionData(version).rules), mounts: MOUNTS, homes: HOMES, homesNote: HOMES_NOTE, tomeTrials: TOME_TRIALS, activities: ACTIVITIES, source: "the planner's rules, as its checks count" };
 }
 
 /**

@@ -97,6 +97,12 @@ function Starts({ start }: { start: QuestStart }) {
             <p className={styles.soft}>
               Then: {start.then}
               {start.thenWhere ? ` at ${start.thenWhere}` : ""}
+              {start.doors?.map((d) => (
+                <span key={d} className="muted">
+                  {" "}
+                  ({d.replace(/\.$/, "")})
+                </span>
+              ))}
             </p>
           )}
           <span className={styles.src}>{checkedLabel(start.checked, start.source)}</span>

@@ -31,8 +31,9 @@ export interface Place {
   type: string;
   hold?: string;
   nearestTown?: { town: string; km: number };
+  nearestCity?: { town: string; km: number };
   clearXp: number;
-  actors?: { count: number; levels: [number, number]; boss?: { name?: string; level?: string } };
+  actors?: { count: number; levels: [number, number]; zoneMin?: number; boss?: { name?: string; level?: string } };
   pointers?: PlacePointer[];
   /** Named quests that go there. */
   quests?: string[];

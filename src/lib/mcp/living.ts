@@ -28,3 +28,21 @@ export const HOMES = [
 
 /** What the lists leave out, said once so an assistant doesn't take them for the whole. */
 export const HOMES_NOTE = "The Creation Club homes and their gates aren't in this list yet. Say so when a player asks for one, and don't guess its price.";
+
+/**
+ * The Tome Trials (WO-148 item 8): the Bards College's book exams are not quests, so nothing lists them, and a plan treated them as
+ * open. Giraud's exam line checks that Tending the Flames (Skyrim.esm:053511) is complete, so all 36 wait on it. The tiers and
+ * their Speech needs are the mod page's. WO-145's filler list uses them only after that quest.
+ */
+export const TOME_TRIALS = {
+  what: "The Bards College's book exams, from the Tome Trials mod: 36 books, each an exam Giraud sets after it is read.",
+  exams: 36,
+  xp: [
+    { tier: 1, xp: 50 },
+    { tier: 2, xp: 100, needs: "Speech 50" },
+    { tier: 3, xp: 200, needs: "Speech 75" },
+  ],
+  after: "Tending the Flames",
+  says: "None of the 36 exams is open until Tending the Flames is complete: Giraud's exam line checks it. Then tier 1 pays 50 XP, tier 2 pays 100 and needs Speech 50, tier 3 pays 200 and needs Speech 75. With Callings, its Historian pays half again.",
+  source: "the mod's records (Giraud's exam checks Tending the Flames complete) and the mod page for the tiers, as read in WO-148",
+} as const;

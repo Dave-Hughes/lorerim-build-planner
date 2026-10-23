@@ -1361,8 +1361,12 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             needs = [shown[0]["how"]] + needs + shown[0].get("needs", [])
         elif shown:
             needs.append("One of: " + "; or ".join(w["how"] + (f" ({', '.join(w['needs'])})" if w.get("needs") else "") for w in shown))
-    needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
+    # A locked door on the way to the first objective is the first step's detail, never a need of the start (WO-148 item 5:
+    # Laid to Rest and A Rat Problem read "The door from ... needs the Key to ...", so they were "unknown").
+    doors = list(dict.fromkeys(d["text"] for d in (row.get("needs") or {}).get("doors", [])))
     out = {"needs": tidy(needs)}
+    if doors:
+        out["doors"] = doors
     # D1a (WO-138): the quest's own lines name its giver before a talk that only sets another quest's stage (Astrid's lines
     # set Whispers in the Dark's stages; Muiri's sets Mourning Never Comes').
     direct = [w["who"] for w in shown if w.get("who") and not w.get("via")]

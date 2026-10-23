@@ -195,9 +195,14 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "suggest_places",
     "Places near an act",
-    "The caves, mines, forts, ruins, camps, lairs and landmarks near where an act goes (its place, its quests' towns, earlier acts' places), from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), any quest that already goes there, and when against the act's levels (fits now; plant now, pay off later; too high for this act). Also what the playthrough already uses. Never a place in a city or a home. It changes nothing (rule 20).",
-    z.object({ playthrough, act }),
-    (p, a: { playthrough: string; act: string }) => t.suggestPlaces(p, a),
+    "The caves, mines, forts, ruins, camps, lairs and landmarks near where an act goes (its place, its quests' towns, earlier acts' places), from the planner's places index: each with its type, hold, nearest town, levels and boss, clear XP, what in the game points at it (who says what and where they stand, or the book), any quest that already goes there, and when against the act's levels (fits now; plant now, pay off later; too high for this act). Also what the playthrough already uses. With where and levels in place of a playthrough and act, the same for a town, a hold or a place at those levels, with nothing used yet. Never a stop (a town, inn, temple, keep, stable or home). It changes nothing (rule 20).",
+    z.object({
+      playthrough: playthrough.optional().describe("With act: the stored act to read."),
+      act: act.optional().describe("With playthrough: the stored act to read."),
+      where: z.string().min(1).max(80).optional().describe('Instead of a stored act: a town, a hold (every town in it) or a place, "Solitude", "Haafingar", "Embershard Mine".'),
+      levels: z.string().min(1).max(20).optional().describe('With where: the levels, "15 to 20".'),
+    }),
+    (p, a: { playthrough?: string; act?: string; where?: string; levels?: string }) => t.suggestPlaces(p, a),
   );
   tool("list_my_playthroughs", "List the player's playthroughs", "List the signed-in player's playthroughs: id, name, who can see it, acts, last change, and whether an assistant drafted it.", z.object({}), (p) => t.listMine(p));
   tool(

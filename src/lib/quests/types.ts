@@ -80,6 +80,8 @@ export interface QuestStart {
     unplaced?: string;
   }[];
   then?: string;
+  /** A door on the way to the first step that needs a key (WO-148 item 5): the first step's detail, never a need of the start. */
+  doors?: string[];
   thenWhere?: string;
   thenWho?: string;
   who?: string;

@@ -32,7 +32,7 @@ test("an assistant plans an act's places through the door", async ({ page, conte
   expect(r.places.find((p: { place: string }) => p.place === "Bleak Falls Barrow").questGoesThere).toContain("The Golden Claw");
 
   const ivar = (await go("suggest_places", { playthrough: pid, act: "2" })).json();
-  expect(ivar.places.find((p: { place: string }) => p.place === "Geirmund's Hall").when).toBe("plant now, pay off later (levels 40 and up)");
+  expect(ivar.places.find((p: { place: string }) => p.place === "Geirmund's Hall").when).toBe("plant now, pay off later (levels 20 and up)"); // its boss is level 40, judged leniently since WO-148 item 9
 
   const clear = await go("add_objective", {
     playthrough: pid,

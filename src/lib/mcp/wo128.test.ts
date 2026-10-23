@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { styleGuide } from "./facts";
 import { resolveLinkName } from "./playthroughs";
-import { actTowns, placesNear, unmeasured, whenFor } from "@/lib/places/suggest";
-import { placeByName } from "@/lib/places/data";
+import { actTowns, fitOf, placesNear, unmeasured, whenFor } from "@/lib/places/suggest";
+import { placeByName, type Place } from "@/lib/places/data";
 import { resolveLink } from "@/lib/playthroughs/links";
 import { versionData } from "./errors";
 import { DEFAULT_VERSION } from "./errors";
@@ -33,7 +33,8 @@ describe("suggest_places (Part 2)", () => {
   it("an act set in Ivarstead: Geirmund's Hall, Wilhelm's line, planted now and paid off later", () => {
     const out = placesNear(actTowns([act("Ivarstead")], 0), 6, 12, none);
     const hall = out.find((p) => p.place === "Geirmund's Hall")!;
-    expect(hall.when).toBe("plant now, pay off later (levels 40 and up)");
+    // Judged leniently since WO-148 item 9: the boss is level 40, so it is 28 above the act's 12: planted, from level 20.
+    expect(hall.when).toBe("plant now, pay off later (levels 20 and up)");
     expect(hall.pointers[0]).toMatchObject({ who: "Wilhelm", where: "Vilemyr Inn" });
     expect(hall.boss).toBe("Sigdis Gauldurson, level 40");
   });
@@ -58,11 +59,30 @@ describe("suggest_places (Part 2)", () => {
     expect(out.every((p) => !/^(City|Town|Settlement|House|PlayerHouse)$/.test(p.type))).toBe(true);
   });
 
-  it("when: a fixed boss above the act is later, a scaling one fits, a place whose weakest is above is too high", () => {
-    const at = (boss: string, levels: [number, number]) => whenFor({ id: "x", name: "X", type: "Cave", clearXp: 100, actors: { count: 5, levels, boss: { level: boss } } }, 1, 5);
-    expect(at("level 30", [1, 30])).toBe("plant now, pay off later (levels 30 and up)");
+  it("when: judged by what she'll meet, leniently (WO-148 item 9)", () => {
+    const place = (boss: string | undefined, levels: [number, number]): Place => ({ id: "x", name: "X", type: "Cave", clearXp: 100, actors: { count: 5, levels, ...(boss ? { boss: { level: boss } } : {}) } });
+    const at = (boss: string | undefined, levels: [number, number], from = 1, to = 5) => whenFor(place(boss, levels), from, to);
+    // A boss more than 20 above is planted, from the level she can face it; a scaling one fits.
+    expect(at("level 30", [1, 30])).toBe("plant now, pay off later (levels 10 and up)");
     expect(at("leveled from 1", [1, 24])).toBe("fits now");
+    // The floor itself well above her (10) is planted; 20 above is too high.
+    expect(at(undefined, [15, 30])).toBe("plant now, pay off later (levels 5 and up)");
     expect(at("level 50", [30, 50])).toBe("too high for this act");
+    // Embershard Mine's records: enemies 6 to 10, the boss leveled 3 to 24, for an act at 1 to 5: fits.
+    expect(at("leveled 3-24", [6, 10])).toBe("fits now");
+    // A boss 10 to 20 above fits, and says it is a hard fight; one within 10 says nothing.
+    expect(fitOf(place("level 18", [3, 20]), 1, 5)).toEqual({ when: "fits now", note: "the boss is a hard fight at this level" });
+    expect(fitOf(place("level 24", [3, 20]), 5, 10)).toEqual({ when: "fits now", note: "the boss is a hard fight at this level" });
+    expect(fitOf(place("level 12", [3, 20]), 1, 5)).toEqual({ when: "fits now" });
+    // No levels read yet.
+    expect(whenFor({ id: "x", name: "X", type: "Cave", clearXp: 1 }, 1, 5)).toBe("levels not read yet");
+  });
+  it("a wide range is said, never hidden: enemies, the floor and the boss", () => {
+    const out = placesNear(["Riverwood"], 1, 5, none);
+    const barrow = out.find((p) => p.place === "Bleak Falls Barrow")!;
+    expect(barrow.enemies).toMatch(/^enemies about 6 to 20, never below 6; the boss Zulakaroth/);
+    // Its boss is 35 above an act at 1 to 5: planted for later, from the level she can face it.
+    expect(barrow.when).toBe("plant now, pay off later (levels 20 and up)");
   });
 });
 

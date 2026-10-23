@@ -178,14 +178,14 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **34. "What quests are open in Haafingar at level 15?"**
 - Calls: `suggest_quests({ level: 15, where: "Haafingar" })`.
 - Must: stories in the hold's towns and places, each with its start; never `start: null` without a reason.
-- Fails today: **WO-148**.
+- Passes since WO-148 (items 1 and 2).
 
 **35. "How do I start Laid to Rest?"**
 - Calls: `get_quest({ name: "Laid to Rest" })`.
 - Must: the way in (Morthal, the burned house, Lami or the jarl), not a key to Sorli's House; `openForYou` open or a real need.
-- Fails today: **WO-148 item 5**.
+- Passes since WO-148 item 5 (the key is the first step's `onTheWay` detail, not a need). The way in the data says is "something placed in Morthal, by the door to Eisa's House", then "Talk to the Jarl of Morthal"; Lami isn't named.
 
 **36. "Can Kyria take Tome Trials exams now?"**
 - Calls: `get_rules()` (or the doings index).
 - Must: not until Tending the Flames is done; 36 books, 50 / 100 / 200 XP by tier, Speech 50 and 75 for tiers 2 and 3.
-- Fails today: **WO-148 item 8**.
+- Passes since WO-148 item 8 (`get_rules`' `tomeTrials`).

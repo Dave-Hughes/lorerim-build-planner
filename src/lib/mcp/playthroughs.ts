@@ -7,15 +7,17 @@ import { gearData } from "@/lib/gear/data";
 import { ipCall } from "@/lib/moderation/limits";
 import { lineOfQuest, placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
 import { placeByName, placesData, placeType } from "@/lib/places/data";
+import { holdNamed, whereTerms } from "@/lib/places/holds";
 import { citiesOf } from "@/lib/places/inside";
-import { actTowns, placesNear, unmeasured } from "@/lib/places/suggest";
+import { actTowns, placesNear, townsIn, unmeasured } from "@/lib/places/suggest";
 import { docToMarkdown, markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
+import { reviewGates, type GateWorld } from "@/lib/playthroughs/gate-review";
 import { reviewRoutes } from "@/lib/playthroughs/route-review";
 import { reachLabel } from "@/lib/playthroughs/status";
 import type { Answer, Detect, DoneBy, LinkKind, Never, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop } from "@/lib/playthroughs/types";
-import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
+import { FIRST_ACT, levelsInput, parseLevels, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { leftOutLine, type Nevers } from "@/lib/quests/never";
@@ -514,7 +516,16 @@ function warningsOf(pt: PlaythroughRecord) {
     ...reviewRoutes(pt.view.acts),
     // Something the player said she will never do (WO-139 Part 3).
     ...neverWarnings(pt),
+    // A later act's gates the earlier acts don't reach (WO-148 item 6).
+    ...reviewGates(pt.view.acts, gateWorld()),
   ];
+}
+
+/** The quest lines and what the stories say each needs to open, for the gate chain across acts (WO-148 item 6). */
+export function gateWorld(): GateWorld {
+  const opens = new Map<string, GateWorld["opens"] extends ReadonlyMap<string, infer V> ? V : never>();
+  for (const s of stories()) for (const o of s.opens) opens.set(o.line, [...(opens.get(o.line) ?? []), ...o.needs.map((n) => ({ kind: n.kind, level: "level" in n ? n.level : undefined, line: "line" in n ? n.line : undefined, text: n.text }))]);
+  return { lines: questsData().lines, opens };
 }
 
 /** What a quest or line an objective names runs into on the never list (WO-139 Part 3): its name and what to say, or null. */
@@ -569,7 +580,10 @@ export function neverWarnings(pt: Pick<PlaythroughRecord, "never" | "gameVersion
  * suggest_places (WO-128 Part 2): the places near where an act goes, each with what in the game points at it and when it
  * fits the act's levels, and what the playthrough already uses. Read-only.
  */
-export async function suggestPlaces(p: Player, input: { playthrough: string; act: string }) {
+export async function suggestPlaces(p: Player, input: { playthrough?: string; act?: string; where?: string; levels?: string }) {
+  // Without a stored act (WO-148 item 3): a town, a hold or a place, and the levels, for places near Solitude at 15 to 20.
+  if (!input.playthrough && !input.act) return placesAt(input.where, input.levels);
+  if (!input.playthrough || !input.act) throw new FactsError("Name the playthrough and the act together, or give where and levels instead.");
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
   const at = pt.view.acts.indexOf(a);
@@ -601,6 +615,30 @@ export async function suggestPlaces(p: Player, input: { playthrough: string; act
 }
 
 /** get_quest_log (WO-134): the stored save's quests in the game's words, from where the player stands. */
+/**
+ * suggest_places for a place and levels, with no stored act (WO-148 item 3): where is a town, a hold (every town in it) or a
+ * place (the town nearest it); levels is "15 to 20". The same places, pointers and fit as for an act; nothing is used yet.
+ */
+export function placesAt(where: string | undefined, levels: string | undefined) {
+  if (!where?.trim()) throw new FactsError('Give where (a town, a hold or a place: "Solitude", "Haafingar") and levels ("15 to 20"), or a playthrough and an act.');
+  const lv = parseLevels(levels ?? "");
+  if (typeof lv === "string") throw new FactsError(levels ? lv : 'Give the levels too: "15 to 20".');
+  const hold = holdNamed(where);
+  const named = townsIn(where);
+  const place = placeByName(where);
+  const towns = hold ? hold.towns : named.length ? named : place?.nearestTown ? [place.nearestTown.town] : [];
+  if (!towns.length) throw new FactsError(`No town, hold or place called ${where} in the places index. Towns and holds: Solitude, Whiterun, Riften, Windhelm, Markarth, Falkreath, Winterhold, Dawnstar, Morthal; the holds Haafingar, Hjaalmarch, the Pale, the Reach, Eastmarch, the Rift.`);
+  const notMeasured = unmeasured(towns);
+  return {
+    where: hold ? `${hold.name}, a hold` : where,
+    levels: levelsInput(lv.from, lv.to),
+    towns,
+    places: placesNear(towns, lv.from, lv.to, { linked: [], passedBy: [] }),
+    ...(notMeasured.length ? { notMeasuredYet: notMeasured, notMeasuredNote: `The places index doesn't measure distances from ${notMeasured.join(" or ")} yet.` } : {}),
+    note: "Pick a few that fit what she cares about, and leave most of them alone (rule 20). Nothing here is on a playthrough yet.",
+  };
+}
+
 export async function getQuestLog(p: Player, input: { playthrough: string }) {
   const pt = await mine(p, input.playthrough);
   return { playthrough: pt.id, ...questLog(pt.snapshot, pt.build?.levels, p.origin) };
@@ -646,7 +684,7 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       // The places she leaves alone on purpose (WO-128).
       ...(a.passedBy?.length ? { passedBy: a.passedBy.map((b) => ({ place: b.place, why: b.why })) } : {}),
       // Its road (WO-129): the stops in order, each with why she goes there next.
-      ...(a.route?.length ? { route: a.route.map((r) => ({ place: r.place, why: r.why })) } : {}),
+      ...(a.route?.length ? { route: a.route.map((r, i) => ({ place: r.place, why: r.why, ...(missivesAt(r.place, a.route![i + 1]?.place) ? { missives: missivesAt(r.place, a.route![i + 1]?.place) } : {}) })) } : {}),
       // The act's first chapter (WO-118): it opens the act's card on Play.
       firstChapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
       objectives: a.objectives.map((o) => ({
@@ -680,6 +718,19 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     })),
     ...(warnings.length ? { warnings } : {}),
   };
+}
+
+/**
+ * A route stop with a Missives board that sends her on to another town (WO-148 item 7, rule 37): the stop says to read its board for
+ * notes addressed to the next. Null when the stop has no board, or nothing follows it.
+ */
+export function missivesAt(place: string, next: string | undefined): string | null {
+  if (!next) return null;
+  const boards = questsData().byId.get("missives")?.board?.boards ?? [];
+  const here = townsIn(place).find((t) => boards.includes(t));
+  // Not the same town again under a longer name ("Riften", then "Riften Mistveil Keep").
+  const there = townsIn(next).find((t) => !here || (!t.toLowerCase().includes(here.toLowerCase()) && !here.toLowerCase().includes(t.toLowerCase())));
+  return here && there ? `Read ${here}'s board for notes addressed to ${there}.` : null;
 }
 
 /** A chapter as get_playthrough names it: its id and title. */
@@ -760,6 +811,18 @@ export async function suggestQuests(origin: string, input: { level: number; wher
   return suggestFrom(origin, input, await toldOf(input, userId));
 }
 
+/** How a suggested quest starts, in words, never nothing (WO-148 item 2). */
+function startFor(s: Story | undefined, line: QuestLine, first: Quest): string {
+  const told = s?.start.filter((x) => x.checked === "files").map((x) => x.text)[0];
+  if (told) return told;
+  // A shelf is separate jobs: no one start is the shelf's.
+  if (line.category === "work") return "Separate jobs; open one for how it starts.";
+  const ways = first.start?.ways ?? [];
+  const way = ways[0]?.how ?? first.start?.needs?.[0];
+  if (way) return ways.length > 1 ? `${way} (${ways.length - 1} other way${ways.length === 2 ? "" : "s"})` : way;
+  return line.start ?? `${first.name}'s start is checked: ask about the quest for how it starts.`;
+}
+
 /** suggest_quests on what the player told the planner, playthrough read: the tests ask it with a never list of their own. */
 export function suggestFrom(origin: string, input: { level: number; where?: string }, told: Told) {
   const { byId } = questsData();
@@ -776,6 +839,8 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
   });
   const order = mainOrder().map((q) => q.edid);
   const where = input.where?.trim().toLowerCase();
+  // A hold is every town in it (WO-148 item 1).
+  const terms = input.where ? whereTerms(input.where) : [];
   // The stories first; with a place asked for, the quest lines that have no story after them (WO-142 item 5): six stories
   // leave most towns with nothing (none starts in Solitude), and a line's opening quest is judged the same way.
   const candidates: { s: Story | undefined; line: QuestLine | undefined }[] = [
@@ -793,14 +858,16 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
     .filter(({ open }) => open.state === "open")
     // Where it starts (WO-130): the giver's place, its opening quest's places, and its first start; not every place a
     // start's text names (Join the Dark Brotherhood starts with Aventus in Windhelm, though a later line names Riften).
-    .filter(({ s, line, first }) => !where || startsAt(line, first, s?.start[0]?.text).some((t) => t?.toLowerCase().includes(where)))
+    .filter(({ s, line, first }) => !where || startsAt(line, first, s?.start[0]?.text).some((t) => terms.some((w) => t?.toLowerCase().includes(w))))
     .slice(0, 12)
     .map(({ s, line, first, open }) => ({
       ...(s ? { story: s.id } : {}),
       kind: s ? "story" : "quest line",
       name: s ? s.name : line.name,
       line: line.name,
-      start: s?.start.filter((x) => x.checked === "files").map((x) => x.text)[0] ?? line.start ?? null,
+      // Never null (WO-148 item 2): the story's own checked start, else the opening quest's first way as get_quest gives it, else
+      // the line's, else what a shelf is.
+      start: startFor(s, line, first),
       checked: "files",
       firstQuest: first.name,
       openForYou: open.says,

@@ -313,6 +313,30 @@ const QUESTIONS: Question[] = [
     never: [/messenger/i, /Bluesky/, /Read the Message/, /comes after/],
   },
   {
+    n: 34,
+    asks: "What quests are open in Haafingar at level 15?",
+    ask: () => [suggestFrom("https://planner.test", { level: 15, where: "Haafingar" }, { level: 15 })],
+    must: ["The Bards College", "The Wolf Queen Awakened", /"start":"[^"]+"/],
+    never: [/"start":null/],
+  },
+  {
+    n: 35,
+    asks: "How do I start Laid to Rest?",
+    // The way in and the first step; the door's key is the first step's detail (onTheWay), never a need of the start.
+    ask: () => {
+      const a = getQuest({ name: "Laid to Rest" }, undefined, playerState({ level: 15 }));
+      return [{ ways: a.quest.start.ways, then: a.quest.start.then, needs: a.quest.start.needs }, a.openForYou];
+    },
+    must: ["Morthal", "Talk to the Jarl of Morthal", /"state":"open"/],
+    never: [/Key to/i, /Sorli/],
+  },
+  {
+    n: 36,
+    asks: "Can Kyria take Tome Trials exams now?",
+    ask: () => [getRules().tomeTrials],
+    must: ["None of the 36 exams is open until Tending the Flames is complete", "50 XP", "100", "Speech 50", "200", "Speech 75"],
+  },
+  {
     n: 24,
     asks: "How do I get a horse? I'm level 5 in Riften.",
     ask: () => [{ mounts: getRules().mounts }, getQuest({ name: "Running Wild" }, undefined, playerState({ level: 5 }))],

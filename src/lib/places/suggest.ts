@@ -69,23 +69,48 @@ export function actTowns(acts: readonly Pick<ActView, "place" | "objectives">[],
 
 export type When = "fits now" | `plant now, pay off later (levels ${string})` | "too high for this act" | "levels not read yet";
 
+/** A boss's level as [lowest, highest]: "level 40", "leveled 19-24", "leveled from 7"; null for one that matches her level. */
+function bossRange(level: string | undefined): [number, number] | null {
+  const l = level ?? "";
+  let m = /^level (\d+)/.exec(l);
+  if (m) return [Number(m[1]), Number(m[1])];
+  m = /^leveled (\d+)-(\d+)/.exec(l);
+  if (m) return [Number(m[1]), Number(m[2])];
+  m = /^leveled from (\d+)/.exec(l);
+  if (m) return [Number(m[1]), Number(m[1])];
+  return null;
+}
+
 /**
- * When a place fits the act's levels. Its top is the boss's level when the record fixes it, else the highest placed actor;
- * a boss leveled from N (or to your level) scales with her, so N is its floor. Fits when the top is within the act's
- * levels; too high when even its weakest actor is above them; otherwise planted now and paid off once she reaches the top.
+ * When a place fits the act's levels, judged by what she'll meet and leniently (WO-148 item 9, Dave: a character can usually
+ * take enemies several levels above her unless badly under-geared, and a boss 15 or more above isn't out of the question). With the
+ * act's top level T, the weakest enemy F (the zone's floor) and the boss's lowest level B: fits now when F is at or below T and B is
+ * within 20 of T ("the boss is a hard fight at this level" from 10 above); plant now, pay off later when F is 10 or more above T or B
+ * is more than 20 above, from the level she can face it ("levels N and up"); too high for this act only when F is 20 or more above T.
+ * A boss that matches her level never counts against her. The thresholds are guidance.
  */
-export function whenFor(p: Place, levelFrom: number, levelTo: number | null): When {
+export function fitOf(p: Place, levelFrom: number, levelTo: number | null): { when: When; note?: string } {
   const top = levelTo ?? levelFrom + 10;
-  const boss = p.actors?.boss?.level ?? "";
-  const fixed = /^level (\d+)/.exec(boss);
-  const leveled = /^leveled from (\d+)/.exec(boss);
-  const scales = leveled || /^your level/.test(boss);
-  if (!p.actors && !fixed) return "levels not read yet";
-  const [low, high] = p.actors?.levels ?? [0, 0];
-  const peak = fixed ? Number(fixed[1]) : scales ? Number(leveled?.[1] ?? 1) : high;
-  if (peak <= top) return "fits now";
-  if (low > top) return "too high for this act";
-  return `plant now, pay off later (levels ${peak} and up)`;
+  if (!p.actors) return { when: "levels not read yet" };
+  const floor = p.actors.levels[0];
+  const boss = bossRange(p.actors.boss?.level);
+  const floorGap = floor - top;
+  const bossGap = boss ? boss[0] - top : -Infinity;
+  if (floorGap >= 20) return { when: "too high for this act" };
+  if (floorGap >= 10 || bossGap > 20) return { when: `plant now, pay off later (levels ${Math.max(floor - 10, boss ? boss[0] - 20 : 0)} and up)` };
+  return { when: "fits now", ...(bossGap >= 10 ? { note: "the boss is a hard fight at this level" } : {}) };
+}
+
+export const whenFor = (p: Place, levelFrom: number, levelTo: number | null): When => fitOf(p, levelFrom, levelTo).when;
+
+/** What she'll meet there, said with its range and never hidden: "enemies about 6 to 20, from level 6 up; the boss Zulakaroth, level 40". */
+function meet(p: Place): string | null {
+  const a = p.actors;
+  if (!a) return null;
+  const [lo, hi] = a.levels;
+  const boss = p.actors?.boss;
+  const bossWords = boss ? `; the boss ${[boss.name, boss.level].filter(Boolean).join(", ")}` : "";
+  return `enemies about ${lo === hi ? lo : `${lo} to ${hi}`}${a.zoneMin ? `, never below ${a.zoneMin}` : ""}${bossWords}`;
 }
 
 /** A boss in words: "Sigdis Gauldurson, level 40", "leveled from 1". */
@@ -137,7 +162,9 @@ export function placesNear(townList: readonly string[], levelFrom: number, level
       ...(p.actors ? { levels: `${p.actors.levels[0]} to ${p.actors.levels[1]}` } : {}),
       ...(bossLine(p) ? { boss: bossLine(p) } : {}),
       clearXp: p.clearXp,
-      when: whenFor(p, levelFrom, levelTo),
+      ...(meet(p) ? { enemies: meet(p) } : {}),
+      when: fitOf(p, levelFrom, levelTo).when,
+      ...(fitOf(p, levelFrom, levelTo).note ? { fitNote: fitOf(p, levelFrom, levelTo).note } : {}),
       pointers,
       ...(pointers.length ? {} : { noPointer: "Nothing in the game names it. A hook here is the player's own: write it and say it's theirs." }),
       ...(quests.length ? { questGoesThere: quests, note: `${quests.join(" and ")} already ${quests.length === 1 ? "goes" : "go"} there: use the quest, never a hook of your own.` } : {}),

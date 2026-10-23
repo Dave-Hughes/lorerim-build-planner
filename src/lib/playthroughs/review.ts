@@ -11,7 +11,7 @@ import type { ObjectiveKind, ObjectiveLink, Reach } from "./types";
  */
 
 export interface PlaythroughWarning {
-  code: "objective-not-linked" | "reach-not-readable";
+  code: "objective-not-linked" | "reach-not-readable" | "missives-lump" | "missives-gathering";
   objective: string;
   message: string;
 }
@@ -84,9 +84,27 @@ function linkWarning(o: ReviewedObjective, { named, sure }: Named): string {
   return `'${o.text}' names ${named.name}, a follower; link it.`;
 }
 
+/** Missives (WO-148 item 7): a line of board jobs whose destinations are drawn when the board refreshes. */
+const MISSIVES = "missives";
+const GATHERING = /^(Gather|Collect|Catch Fish)\b/i;
+
+/** What an objective does with Missives that rule 37 forbids: budget them as a lump, or take a gathering job. */
+function missivesWarning(o: ReviewedObjective): { code: "missives-lump" | "missives-gathering"; message: string } | null {
+  const quest = o.link?.kind === "quest" ? questsData().lines.flatMap((l) => (l.id === MISSIVES ? l.quests : [])).find((q) => q.edid === o.link!.id) : undefined;
+  if (quest && GATHERING.test(quest.name)) return { code: "missives-gathering", message: `'${o.text}' is a gathering missive (${quest.name}). LoreRim's author warns those can break: leave it out (rule 37).` };
+  const number = /\b(\d+)\b/.exec(o.text);
+  const lump =
+    (o.link?.kind === "line" && o.link.id === MISSIVES) ||
+    (o.reach && /missive/i.test(o.reach.key) && o.reach.target >= 3) ||
+    (/\bmissives?\b/i.test(o.text) && (/\b(every|all|each|any|several|many)\b/i.test(o.text) || (number !== null && Number(number[1]) >= 3) || /\b(three|four|five|six|seven|eight|nine|ten|a dozen|dozen)\b/i.test(o.text)));
+  return lump ? { code: "missives-lump", message: `'${o.text}' budgets missives as a lump. A missive's destination is drawn when the board refreshes, so count one or two for each leg the route already travels, never one off the route (rule 37).` } : null;
+}
+
 export function reviewPlaythrough(objectives: readonly ReviewedObjective[]): PlaythroughWarning[] {
   const out: PlaythroughWarning[] = [];
   for (const o of objectives) {
+    const m = missivesWarning(o);
+    if (m) out.push({ ...m, objective: String(o.id) });
     if (o.kind === "reach" && o.reach && !saveGives(o.reach.key)) {
       out.push({ code: "reach-not-readable", objective: String(o.id), message: `${reachLabel(o.reach.key)} ${o.reach.target} can't be read from a save; the player ticks it.` });
     }
