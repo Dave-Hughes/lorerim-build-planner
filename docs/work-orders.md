@@ -4923,6 +4923,34 @@ Status: done
 
 ---
 
+## WO-141  What Mogrash's design needed and couldn't get: strongholds, followers, and where the Smithing books are (PC, then Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave's character test (23 Oct): an Orc greatsword outcast who starts in the Windhelm jail and wants his place back at Narzulbur, solo until a follower at level 30. The build came out right in every detail Bob checked. Three things the assistant couldn't do, each a gap in the planner's data, not in the assistant:
+1. **Narzulbur isn't a place the planner knows.** `places.json` (WO-128) holds 477 caves, ruins, forts and landmarks and no Orc stronghold or small settlement, so a reason to travel that ends at a stronghold has nothing to route to.
+2. **The planner has no Orc followers.** Its followers are the 12 mod lines and a few named ones. The game's own followers who fit this story (Borgakh the Steel Heart at Mor Khazgur, Ghorbash the Iron Hand at Dushnikh Yal, Ugor and Lob at Largashbur) aren't indexed, so "a follower at level 30" can't be answered.
+3. **Where the Smithing books are.** LoreRim gives Smithing perks by book; the planner knows the books but not their places.
+
+### Part 1. Strongholds and settlements in the places index (PC)
+- Extend `scripts/gamedata/places.py` to the location types it leaves out that a character goes to on purpose: Orc strongholds (`LocTypeOrcStronghold`: Narzulbur, Largashbur, Dushnikh Yal, Mor Khazgur), small settlements and villages not already towns (Riverwood, Ivarstead, Rorikstead, Shor's Stone, Darkwater Crossing, Kynesgrove, Karthwasten, Dragon Bridge, Stonehills, the Skaal Village, Thirsk, and the lands mods' own), and camps of people (the Stormcloak and Imperial camps, giant camps are already in). Each with its hold, its nearest town, its pointers and the quests that go there, as the index has for the rest.
+- A stronghold's row says what it takes to get in: an Orc, Blood-Kin, or The Cursed Tribe's way, from the gate guard's dialogue conditions (the records), in the game's words.
+- `suggest_places` returns them; a test on an act in Eastmarch that names Narzulbur with its pointer, and one for a non-Orc that says the gate.
+
+### Part 2. A followers index (PC, then Mac)
+- PC: `followers.py` builds `followers.json` from the records: every follower a player can recruit, vanilla and mod (`PotentialFollowerFaction`, the lands mods' and the follower mods' own), with race, sex, where they stand, how they join (the dialogue that recruits them, with its conditions: a brawl, a quest, gold, a level), what they fight with (class, the skills the records weight), and whether they can marry. Mod followers already on the pages keep their lines and gain these fields.
+- Mac: `search_facts` finds followers by race and place ("orc follower", "a follower in Markarth"); a `suggest_followers` on the door takes a race, a place or a kind (fighter, archer, mage, animal) and returns who fits with how to recruit them; the follower lines' pages show the new fields; the Orc four are a test.
+
+### Part 3. Where the Smithing books are (PC)
+- The books that unlock Smithing perks in LoreRim (The Armorer's Encyclopedia, Art of the Advanced Nordic Blacksmiths, and the rest of the set crafting.md lists): run `readables.py` over them the way WO-131 placed the quest-start items: placed copies with the nearest doors, containers, merchants who sell them, leveled lists. Write them to `smithing-books.json`; `get_perk` for a Smithing perk says where its book is, or "not checked yet".
+
+### Done when
+- [ ] Part 1: strongholds, settlements and camps in `places.json` with pointers; Narzulbur's row says the gate; `suggest_places` test passes. (PC)
+- [ ] Part 2: `followers.json` from the records with the Orc four; `suggest_followers` and search on the door; the pages show the fields. (PC, then Mac)
+- [ ] Part 3: `smithing-books.json`; `get_perk` says where a Smithing book is. (PC)
+- [ ] Player question 23: "Who could an Orc take as a follower, and where?" returns the four with how they join. Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-140  Name the conditions: the 338 ways that say "a condition the planner can't put in words yet" (PC, 23 Oct 2026)
 Status: queued
 

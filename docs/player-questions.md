@@ -123,3 +123,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_playthrough({ playthrough: "Kyria Severa" })`.
 - Must: `mods` lists Callings as required, with its link and Dave's why.
 - Fails today: **WO-139 Part 4**.
+
+**23. "Who could an Orc take as a follower, and where?"**
+- Calls: `suggest_followers({ race: "Orc" })` or `search_facts({ query: "orc follower" })`.
+- Must: Borgakh the Steel Heart (Mor Khazgur), Ghorbash the Iron Hand (Dushnikh Yal), Ugor and Lob (Largashbur), each with where they stand and how they join, in the game's words. Never "the planner has no data on orc followers".
+- Fails today: **WO-141 Part 2**.
