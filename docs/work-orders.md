@@ -4957,6 +4957,14 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Part 4. Mac's pass (after the PC restarts)
 R2, R3, R4, G1's `sentBy`, G2, G4, G5, G6 and Rex's notes, each with a test from the quests named above. `npm run test:questions` and every check in CLAUDE.md.
 
+### Part 5. Jeff decides (Dave and Bob, 23 Oct)
+Dave asked why Jeff can't make Bob's calls himself. He can. WO-132's "never pick one to keep the loop moving" was written after Jeff graded his own work badly, and it has become the bottleneck: every definition question waits a night for Bob. From here:
+- **Jeff decides pattern questions himself** (what counts as a giver, whether a line is a way in or a step, how to word a class of starts), writes the decision and the reason in `loop-log.md` under a "Decisions" heading, applies it, and keeps going. Bob reads the decisions after the run and overturns any he disagrees with; the log says which quests each decision touched, so an overturn is one rerun.
+- **Rex still reviews a sample of every batch**, so Jeff isn't grading his own work. A CHANGES NEEDED on a decision, not just an entry, stops the batch until it's fixed.
+- **Jeff stops only for** a single quest where neither the files nor the wiki settles it, and then he marks it "not checked" with both readings and moves on, not waits. The "30% three batches running" stop is gone; the other stops stay.
+- Bob's rulings in Part 3 stand as the first decisions in the log. Where Jeff finds one doesn't fit the records, he writes why and decides.
+- The same holds for Mac on Part 4: a wording rule that needs a call gets decided, logged in the order, and built.
+
 ### Done when
 - [x] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
 - [ ] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
