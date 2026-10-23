@@ -2069,6 +2069,124 @@
    "startsWith": [
     "Feran Sadri"
    ]
+  },
+  {
+   "quest": "Amulets of Night Power",
+   "editorId": "DLC1RV09",
+   "line": "dawnguard",
+   "firstObjective": "Retrieve the Amulet of Bats from the location",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Amulets_of_Night_Power",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Retrieve the Amulet of Bats from the location', UESP's objective at stage 110.",
+   "startsWith": [
+    "Feran Sadri"
+   ]
+  },
+  {
+   "quest": "Destroying the Dawnguard",
+   "editorId": "DLC1RV10",
+   "line": "dawnguard",
+   "firstObjective": "Kill the Dawnguard Leaders",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Destroying_the_Dawnguard",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Garan Marethi (UESP: Garan Marethi, Fura Bloodmouth); first step: 'Kill the Dawnguard Leaders', UESP's objective at stage 10.",
+   "startsWith": [
+    "Garan Marethi"
+   ]
+  },
+  {
+   "quest": "Bloodline",
+   "editorId": "DLC1VQ02",
+   "line": "dawnguard",
+   "firstObjective": "Lead Serana to her home",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bloodline",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Serana (UESP: Serana); first step: 'Lead Serana to her home', UESP's objective at stage 10.",
+   "startsWith": [
+    "Serana"
+   ]
+  },
+  {
+   "quest": "Kindred Judgment",
+   "editorId": "DLC1VQ08",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Serana",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Kindred_Judgment",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: none on either; first step: 'Speak to Serana', UESP's objective at stage 10."
+  },
+  {
+   "quest": "Scroll Scouting",
+   "editorId": "DLC1VQElderHandler",
+   "line": "dawnguard",
+   "firstObjective": "Discover the location of the Elder Scroll (Dragon)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Scroll_Scouting",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Dexion Evicus (UESP: Dexion Evicus); first step: 'Discover the location of the Elder Scroll (Dragon)', UESP's objective at stage 10.",
+   "startsWith": [
+    "Dexion Evicus"
+   ]
+  },
+  {
+   "quest": "Soul Cairn Horse Quest",
+   "editorId": "DLC01SoulCairnHorseQuest2",
+   "line": "dawnguard",
+   "firstObjective": "Find Arvak's skull in the Soul Cairn",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Soul_Cairn_Horse_Quest",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Soul (UESP: Soul); first step: \"Find Arvak's skull in the Soul Cairn\", UESP's objective at stage 20.",
+   "startsWith": [
+    "Soul"
+   ]
+  },
+  {
+   "quest": "Durnehviir",
+   "editorId": "DLC1VQDragon",
+   "line": "dawnguard",
+   "firstObjective": "Summon Durnehviir in Tamriel",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Durnehviir_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Durnehviir (UESP: Durnehviir); first step: 'Summon Durnehviir in Tamriel', UESP's objective at stage 10.",
+   "startsWith": [
+    "Durnehviir"
+   ]
+  },
+  {
+   "quest": "The Fate of the Skaal",
+   "editorId": "DLC2MQ03",
+   "line": "dragonborn",
+   "firstObjective": "Accompany Frea to Skaal Village",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Fate_of_the_Skaal",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Frea (UESP: Frea); first step: 'Accompany Frea to Skaal Village', UESP's objective at stage 10.",
+   "startsWith": [
+    "Frea"
+   ]
+  },
+  {
+   "quest": "Cleansing the Stones",
+   "editorId": "DLC2MQ03B",
+   "line": "dragonborn",
+   "firstObjective": "Cleanse the Water Stone",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Cleansing_the_Stones",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Storn Crag-Strider (UESP: Storn Crag-Strider); first step: 'Cleanse the Water Stone', UESP's objective at stage 10.",
+   "startsWith": [
+    "Storn Crag-Strider"
+   ]
+  },
+  {
+   "quest": "The Gardener of Men",
+   "editorId": "DLC2MQ05",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the Black Book",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Gardener_of_Men",
+   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: none on either; first step: 'Read the Black Book', UESP's objective at stage 10."
   }
  ]
 }

@@ -176,3 +176,12 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
 - Gate: `build.py`, the game-data tests and the answer key pass; no page changed (a key row on a checked quest only confirms it).
 - Rex (fresh, on A Jarl's Justice, Deceiving the Herd, Ancient Power, Alduin's Wall): PASS on all four for giver and first step.
 - Rex's other notes, not this batch's test: the `towns` tag names a place that isn't a town (Dayspring Canyon, Esbern's Vault); Alduin's Wall's need could name A Cornered Rat, not just "Talk to Esbern".
+
+### Batch 2 (Dawnguard, Dragonborn, the Companions)
+- 40 quests: 10 agree (key rows), 23 differ, 7 with no page that lists them (Prophet's two halves, Dawnguard's radiant parent, Beyond Death's soul gem handler, Power of the Blood, Animal Extermination's two). **75% to Bob, over 30%.**
+- By kind:
+  - The page names no giver where UESP does (10): mostly the Companions' radiant jobs, whose pages name no one where UESP names Farkas, Vilkas, Skjor or Aela.
+  - A different giver (8). UESP's Giver is often who sends you on; the page names the person you speak to first: Chasing Echoes and Seeking Disclosure (Dexion Evicus against Lord Harkon), Proving Honor (Skjor against Farkas), The Silver Hand and Blood's Honor (UESP's Skjor and Kodlak against Aela).
+  - No giver on UESP where the page names one (3): Beyond Death, The Temple of Miraak and Impatience of a Saint, which UESP says start by themselves.
+- Two more parser faults found while checking: places and items still passing as people, and "Aela" not matched to "Aela the Huntress", which made one false agreement (Striking the Heart). Fixed; every batch-1 row still agrees.
+- Rex (fresh, on Kindred Judgment, The Gardener of Men, Destroying the Dawnguard, Cleansing the Stones): PASS on all four. Its other notes: Destroying the Dawnguard's thenWho is Agmaer, a recruit, not a leader; Cleansing the Stones' place repeats itself ("Shaman's Hut, Skaal Village Shaman's Hut").
