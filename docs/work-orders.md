@@ -4945,8 +4945,49 @@ Status: queued
 
 ---
 
-## WO-143  A calling's things to do: what a bard, a scholar, a fisher can do in each town (PC, then Mac, 23 Oct 2026)
+## WO-144  The indexes a design needs (PC, 23 Oct 2026; takes the PC's queue before WO-140)
 Status: queued
+
+**Why.** Dave (23 Oct), after Bob's three design tests and his own: every gap the assistants hit was data, not logic. The door did what it was told; what it was told was missing. So the PC's next stretch is one indexing program, in the order the tests hit the gaps, each part with a player question so it is tested as it lands, not taken on faith. Mac keeps building the door (WO-139, WO-142) in parallel; the Mac halves of WO-141 and WO-143 wait on the parts here. Bob re-runs the design battery (`docs/design-tests.md`) after each part. Under WO-138 Part 5 the PC decides what it finds and logs it under this order. The rules: the game's words, every row with its source, never a guess, and "not checked" where the files don't say.
+
+### Part 1. Places, fixed (from WO-128 Part 5 and WO-141 Part 1)
+1. **The nearest town is wrong, so `suggest_places` is empty for every real city.** `places.json`'s `nearestTown` never names a hold capital; 104 places have none. Measure every place to a fixed list: the nine capitals by their exterior map markers, then the settlements below. Keep `nearestTown` and `nearestCity`, each with km. Never a ruin, a manor, a gate or a platform as a town. Test: each capital has ten or more places within 5 km; `nearestTown` is never a place in the index.
+2. **Strongholds, settlements and camps** as places with pointers and quests: the four Orc strongholds (a stronghold's row says what gets you in, from the gate guard's conditions), Riverwood, Ivarstead, Rorikstead, Shor's Stone, Darkwater Crossing, Kynesgrove, Karthwasten, Dragon Bridge, Stonehills, Helgen, the Skaal Village, Raven Rock, Thirsk, the war camps, and the lands mods' own.
+3. **The named buildings inside cities** a character goes to on purpose, findable by `search_facts` and linkable by an objective: temples, inns (with their town), the two colleges, the jarls' keeps, guild halls, stables. `suggest_places` keeps them off the map list (rule 20).
+4. **The roads:** a town-to-town table (every capital and settlement to every other, km by marker) in `places.json`; `suggest_places` returns `nearTowns` for an act's towns.
+- Player question 26: "What's near Riften for Kyria's first act?" returns places with pointers, no "doesn't measure distances" note.
+
+### Part 2. People
+Every person a design touches, from the records, in `people.json`: name, race, sex, where they stand (cell and town), and what they are to a player:
+- **Merchants and what they sell:** innkeepers, general goods, apothecaries, blacksmiths, fences, and the court wizards and College vendors with the spell tomes in their lists (the records' vendor containers and leveled lists). This answers "where is Calm sold", which every test hit.
+- **Trainers** (skill and the level cap), **priests** (which god, which temple), **innkeepers** (which inn, which town), **marriage candidates** (The Bonds of Matrimony's list and what each needs), **followers** (vanilla and mod: how they join, with its conditions; what they fight with; from WO-141 Part 2), **jarls, stewards and housecarls** by hold, and **quest givers** (already in `quests.json`; link them).
+- `search_facts` kind `person`; `get_person` on the door: who they are, where, what they sell or teach, how they join or marry, which quests they give.
+- Player question 27: "Where is Calm sold?" names the vendors and their towns. Player question 23 (Orc followers) passes.
+
+### Part 3. Books (from WO-141 Part 3 and WO-143's scholar)
+- **The books that teach:** the Smithing perk books and each skill's five skill books, placed the way WO-131 placed the quest-start items (placed copies with the nearest doors, containers, merchants, leveled lists). `get_perk` says where a Smithing book is; `search_facts` finds a skill book by skill with its places.
+- **Where the books are in bulk,** for a scholar: rooms and buildings with many readable books (the Arcanaeum, the Bards College's library, Dragonsreach, the Blue Palace, Jorrvaskr, the player homes), each with a count from the placed references, in `books.json`.
+- Player question 28: "Where are the Sneak skill books?" and 29: "Where can a scholar read in Solitude?".
+
+### Part 4. What a character can do here (from WO-143 Part 1, broadened)
+For each town, settlement and place, what the game and LoreRim's mods let a character do there, in `doings.json`, each with its mod and source:
+- **Work:** the jobs mod's shifts per town (`lorerim/systems/economy-and-work.md` calls them AJO shifts; read the mod's records for which employers and where), the Missives boards, the jarls' bounties, the townsfolk favours (counts from `quests.json`).
+- **Perform:** every inn (Skyrim's Got Talent is in LoreRim; the Bards College).
+- **Fish:** the Fishing creation's spots, with the nearest town. **Hunt:** hunting grounds by what lives there. **Gather:** what grows in each hold (Callings' `plants.json` where it has it). **Mine and chop:** mines with their ore, wood blocks, forges and smelters outside cities. **Camp:** where camping is allowed (Camping Expansion).
+- **The calling view on top:** which of these each Callings calling counts (Bard, Scholar, Fisher, Hunter, Gatherer, Laborer, Smith, Helper, Thief), from the mod's own data.
+- Player question 30: "What can Kyria do for work in Riften?" and 25 (a bard in Riften) pass once Mac's WO-143 Part 2 lands.
+
+### Done when
+- [ ] Part 1: places fixed, strongholds and settlements and city buildings in, the roads table; `suggest_places` returns places for all nine capitals; player question 26.
+- [ ] Part 2: `people.json`, `search_facts` person, `get_person`; player questions 27 and 23.
+- [ ] Part 3: the teaching books placed and the book rooms counted; player questions 28 and 29.
+- [ ] Part 4: `doings.json` with the calling view; player question 30 (with Mac's WO-143 Part 2).
+- [ ] Each part pushed on its own with `Status: for Bob` and its question green; every check in CLAUDE.md passes each time. Then WO-140.
+
+---
+
+## WO-143  A calling's things to do: what a bard, a scholar, a fisher can do in each town (Mac, after WO-144 Part 4; Part 1 is folded into WO-144 Part 4, 23 Oct 2026)
+Status: queued, after WO-144 Part 4
 
 **Why.** Dave (23 Oct): designing a character with a calling (his Callings mod) means giving them things to do that use it. Kyria is a bard, so the Bards College is an obvious stop; but there are also many books to read there, and every town has an inn to play. The planner has no idea what a calling can do where, so an assistant can't plan an act around one. The style guide says an act has a standing rule ("Play the Bee and Barb most nights") but nothing tells the assistant which inns exist, which towns have bookshelves worth reading, where the fish are.
 
@@ -4962,19 +5003,19 @@ From the records (and Callings' own data where it has it: its inns per hold, `pl
 Written to `callings.json` with each item's source.
 
 ### Part 2. The door and the guide (Mac)
-- `suggest_places` and a new `suggest_doings(playthrough, act, calling)` return, for the act's towns, what the calling can do there, in the game's words, with "already used" the way places have it.
+- `suggest_places` and a new `suggest_doings(playthrough, act, calling)` read WO-144 Part 4's `doings.json` and return, for the act's towns, what the calling can do there, in the game's words, with "already used" the way places have it.
 - A playthrough carries `callings` (up to two, by name) with its answers (WO-139); the style guide gains a rule: when a character has a calling, every act gives it things to do in its towns, from suggest_doings, and the standing rule names one of them.
 - Kyria's Act I gains the Bee and Barb and Riften's books as the worked example.
 
 ### Done when
-- [ ] Part 1: `callings.json` with the seven callings' things to do per town, each with its source. (PC)
+- [x] (folded into WO-144 Part 4) Part 1.
 - [ ] Part 2: `suggest_doings`, `callings` on the playthrough, the rule; player question 25 ("Kyria is a bard in Riften; what can she do here as one?") returns the Bee and Barb and where the books are. (Mac)
 - [ ] Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
 ---
 
-## WO-141  What Mogrash's design needed and couldn't get: strongholds, followers, and where the Smithing books are (PC, then Mac, 23 Oct 2026)
-Status: queued
+## WO-141  What Mogrash's design needed and couldn't get: strongholds, followers, and where the Smithing books are (Mac, after WO-144 Part 2; the PC parts are folded into WO-144, 23 Oct 2026)
+Status: queued, after WO-144 Part 2
 
 **Why.** Dave's character test (23 Oct): an Orc greatsword outcast who starts in the Windhelm jail and wants his place back at Narzulbur, solo until a follower at level 30. The build came out right in every detail Bob checked. Three things the assistant couldn't do, each a gap in the planner's data, not in the assistant:
 1. **Narzulbur isn't a place the planner knows.** `places.json` (WO-128) holds 477 caves, ruins, forts and landmarks and no Orc stronghold or small settlement, so a reason to travel that ends at a stronghold has nothing to route to.
@@ -4995,15 +5036,15 @@ Status: queued
 - The books that unlock Smithing perks in LoreRim (The Armorer's Encyclopedia, Art of the Advanced Nordic Blacksmiths, and the rest of the set crafting.md lists), and the skill books (each skill's five), since the bard test wanted "read a skill book" objectives and the planner could name no book or place: run `readables.py` over them the way WO-131 placed the quest-start items: placed copies with the nearest doors, containers, merchants who sell them, leveled lists. Write them to `teaching-books.json`; `get_perk` for a Smithing perk says where its book is, and `search_facts` finds a skill book by skill, each with its places or "not checked yet".
 
 ### Done when
-- [ ] Part 1: strongholds, settlements and camps in `places.json` with pointers; Narzulbur's row says the gate; `suggest_places` test passes. (PC)
-- [ ] Part 2: `followers.json` from the records with the Orc four; `suggest_followers` and search on the door; the pages show the fields. (PC, then Mac)
-- [ ] Part 3: `teaching-books.json`; `get_perk` says where a Smithing book is; a skill book is found by skill with its places. (PC)
+- [x] (folded into WO-144 Part 1) Part 1.
+- [ ] Part 2, Mac half only: `suggest_followers` and search on the door from WO-144 Part 2's `people.json`; the follower pages show the fields. (The PC half is WO-144 Part 2.)
+- [x] (folded into WO-144 Part 3) Part 3.
 - [ ] Player question 23: "Who could an Orc take as a follower, and where?" returns the four with how they join. Every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
 ---
 
 ## WO-140  Name the conditions: the 338 ways that say "a condition the planner can't put in words yet" (PC, 23 Oct 2026)
-Status: queued
+Status: queued, after WO-144 (Dave, 23 Oct: the indexes come first)
 
 **Why.** The quest-start work is closed, and one gap is left that a player sees: 338 ways on the pages carry "a condition the planner can't put in words yet". The facts are right; the words are missing. The start check names about 30 kinds of condition function; the rest print that sentence. Counted 23 Oct in `story_checks/`: fn606 appears 182 times, then fn565 (26), fn249 (24), fn289 (24), fn286 (23), fn655 (21), fn682 (20), fn654 (17), fn722 (16), fn403 (15), fn327, fn300, fn130, fn248, fn159 (12 to 13 each). Naming the top fifteen clears most of the 338.
 
@@ -5604,7 +5645,7 @@ The common fault: an act has a goal and a place, but no thread. Its objectives a
 ---
 
 ## WO-128  Places with a reason: hooks that bring a character to caves, mines, forts and landmarks (21 Oct 2026)
-Status: queued
+Status: done
 
 **Why.** Dave (21 Oct), from playing Kyria: Skyrim is full of places players want to see (Embershard Mine is the example), and many have no quest pointing at them. A role-player won't run to a mine for no reason, so a playthrough that only follows quests sends them past most of the world. Kyria's guide sent her to Ivarstead and gave her nothing to do on the way or around it. The fix is a hook: the story already brings her to a town, someone there mentions a place nearby, and the reason fits who she is. Dave's example: the playthrough takes her to Riverwood, the blacksmith there talks about the bandits who took Embershard Mine, the village needs the mine's iron, and Kyria feels she has to step in.
 
@@ -5663,13 +5704,13 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
   - **Checks:** typecheck, lint, 536 unit tests, the 11 player questions, 226 game-data tests, build, e2e 354 of 354. Dave's test (an assistant plans a new act) is still his: for an act in Riverwood, Ivarstead or Helgen it should work now; in a city it will say the index doesn't measure from there yet, until the PC fixes the town list.
 - [x] Every check in CLAUDE.md passes. Screenshots of Play with a place objective and a passed-by line at 1440 and 390. Commit on `staging`, push, and stop for Dave: he asks an assistant to plan a new act through the connector and gets two to four places tied to people in the act's towns, at least one in the game's own words, one planted for later, and a passed-by line.
 
-### Part 5. The nearest town is wrong, so suggest_places is empty for every real city (PC, feedback from Bob's design test, 23 Oct)
+### Part 5. The nearest town is wrong, so suggest_places is empty for every real city (folded into WO-144 Part 1, 23 Oct 12:15)
 `places.json`'s `nearestTown` never names one of the nine hold capitals: the 477 places sit nearest to "Skaal Village" (42), "Granite Hill" (27), "Karthwasten", "Reich Corigate Ruins", "Heljarchen Hall", "Markarth Side", "Solitude East Gate", "Flight Platform" and 104 have none. So `suggest_places` says "The places index doesn't measure distances from Riften yet" for Riften, and the same for Whiterun, Solitude, Windhelm, Markarth, Falkreath, Morthal, Dawnstar and Winterhold: every act set in a city gets no places. The cause is reading "town" from a map marker's icon type, which the cities don't use and some ruins and manors do.
 - Measure every place to a fixed list: the nine hold capitals by their exterior map markers, then the real settlements and villages WO-141 Part 1 adds (Riverwood, Ivarstead, Rorikstead, Shor's Stone, Dragon Bridge, Karthwasten, Kynesgrove, Darkwater Crossing, Stonehills, Helgen, the Skaal Village, Raven Rock, and the lands mods' own). Keep both: `nearestTown` (the nearest of all of them) and `nearestCity` (the nearest capital), each with km.
 - Never a ruin, a manor, a gate or a platform as a town. A test that every one of the nine capitals has at least ten places within 5 km, and that `nearestTown` is never a place in the index itself.
 - `suggest_places` for Kyria's Act I (Riften) and the thief test's Act I return places; the note "doesn't measure distances from" goes away for all nine.
 - **The roads between towns.** The conjurer test routed Helgen to Whiterun to Windhelm to Winterhold from training knowledge, because the planner gives no geography. Add a town-to-town table (every capital and settlement to every other, km by marker) to `places.json`, and `suggest_places` returns `nearTowns` for the act's towns (the five nearest, with km), so a route's next stop is the planner's, not the assistant's memory.
-- [ ] Part 5 built and tested; `suggest_places` returns places for each of the nine capitals.
+- [x] (folded into WO-144 Part 1) Part 5 built and tested; `suggest_places` returns places for each of the nine capitals.
 
 ---
 

@@ -138,3 +138,23 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `suggest_doings({ playthrough, act: "1", calling: "Bard" })`.
 - Must: the Bee and Barb (an inn to play), and where Riften's books are; nothing invented.
 - Fails today: **WO-143**.
+
+**26. "What's near Riften for Kyria's first act?"**
+- Calls: `suggest_places({ playthrough: "Kyria Severa", act: "1" })`.
+- Must: places with pointers near Riften; no "doesn't measure distances from Riften" note.
+- Fails today: **WO-144 Part 1**.
+
+**27. "Where is Calm sold?"**
+- Calls: `get_spell({ name: "Calm" })` or `search_facts({ query: "Calm", kinds: ["spell"] })`.
+- Must: the vendors who carry its tome and their towns; never "no merchant is given".
+- Fails today: **WO-144 Part 2**.
+
+**28. "Where are the Sneak skill books?"** and **29. "Where can a scholar read in Solitude?"**
+- Calls: `search_facts({ query: "Sneak skill book" })`; `search_facts({ query: "books in Solitude" })`.
+- Must: each Sneak skill book with its places or "not checked yet"; the Bards College's library and the Blue Palace with counts.
+- Fail today: **WO-144 Part 3**.
+
+**30. "What can Kyria do for work in Riften?"**
+- Calls: `suggest_doings({ playthrough: "Kyria Severa", act: "1" })`.
+- Must: the jobs mod's shifts in Riften with their employers, the Missives board, the Bee and Barb to play; each with its mod named.
+- Fails today: **WO-144 Part 4** (with WO-143 Part 2 for the tool).
