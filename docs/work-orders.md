@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-151  What suggest_places says, read as a player (Mac, 23 Oct 2026)
-Status: queued
+Status: building (Mac)
 
 **Why.** Bob read `suggest_places` for Kyria's Act I (Riften, levels 1 to 6) live, as her Claude would, after WO-150. The data faults are the PC's (WO-144 Part 1e-3); these are the door's:
 - [ ] **Distance in a player's words:** "Riften, 0.2 km" → the walk band ("a short walk from Riften"), km only for sorting. Everywhere the door gives a distance.
