@@ -60118,5 +60118,1383 @@
     }
    ]
   }
+ ],
+ "roads": [
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Dawnstar"
+   ],
+   "km": 2.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Dragon Bridge"
+   ],
+   "km": 3.6,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Falkreath"
+   ],
+   "km": 2.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Helgen"
+   ],
+   "km": 1.6,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Ivarstead"
+   ],
+   "km": 0.8,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Karthwasten"
+   ],
+   "km": 3.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Kynesgrove"
+   ],
+   "km": 0.7,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Markarth"
+   ],
+   "km": 4.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Morthal"
+   ],
+   "km": 2.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Riften"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Riverwood"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Rorikstead"
+   ],
+   "km": 3.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Shor's Stone"
+   ],
+   "km": 0.7,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Solitude"
+   ],
+   "km": 3.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Stonehills"
+   ],
+   "km": 2.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Whiterun"
+   ],
+   "km": 1.5,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Windhelm"
+   ],
+   "km": 0.9,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Darkwater Crossing",
+    "Winterhold"
+   ],
+   "km": 2.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Dragon Bridge"
+   ],
+   "km": 1.9,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Falkreath"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Helgen"
+   ],
+   "km": 2.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Ivarstead"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Karthwasten"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Kynesgrove"
+   ],
+   "km": 2.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Markarth"
+   ],
+   "km": 3.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Morthal"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Riften"
+   ],
+   "km": 3.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Riverwood"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Rorikstead"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Shor's Stone"
+   ],
+   "km": 3.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Solitude"
+   ],
+   "km": 1.3,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Stonehills"
+   ],
+   "km": 0.8,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Whiterun"
+   ],
+   "km": 1.7,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Windhelm"
+   ],
+   "km": 1.9,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dawnstar",
+    "Winterhold"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Falkreath"
+   ],
+   "km": 2.6,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Helgen"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Ivarstead"
+   ],
+   "km": 3.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Karthwasten"
+   ],
+   "km": 0.8,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Kynesgrove"
+   ],
+   "km": 3.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Markarth"
+   ],
+   "km": 1.5,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Morthal"
+   ],
+   "km": 0.9,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Riften"
+   ],
+   "km": 4.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Riverwood"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Rorikstead"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Shor's Stone"
+   ],
+   "km": 4.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Solitude"
+   ],
+   "km": 0.7,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Stonehills"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Whiterun"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Windhelm"
+   ],
+   "km": 3.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Dragon Bridge",
+    "Winterhold"
+   ],
+   "km": 3.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Helgen"
+   ],
+   "km": 0.7,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Ivarstead"
+   ],
+   "km": 1.6,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Karthwasten"
+   ],
+   "km": 2.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Kynesgrove"
+   ],
+   "km": 2.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Markarth"
+   ],
+   "km": 2.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Morthal"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Riften"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Riverwood"
+   ],
+   "km": 1.0,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Rorikstead"
+   ],
+   "km": 1.5,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Shor's Stone"
+   ],
+   "km": 2.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Solitude"
+   ],
+   "km": 2.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Stonehills"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Whiterun"
+   ],
+   "km": 1.3,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Windhelm"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Falkreath",
+    "Winterhold"
+   ],
+   "km": 3.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Ivarstead"
+   ],
+   "km": 0.9,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Karthwasten"
+   ],
+   "km": 2.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Kynesgrove"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Markarth"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Morthal"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Riften"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Riverwood"
+   ],
+   "km": 0.5,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Rorikstead"
+   ],
+   "km": 1.9,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Shor's Stone"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Solitude"
+   ],
+   "km": 2.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Stonehills"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Whiterun"
+   ],
+   "km": 1.0,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Windhelm"
+   ],
+   "km": 2.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Helgen",
+    "Winterhold"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Karthwasten"
+   ],
+   "km": 3.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Kynesgrove"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Markarth"
+   ],
+   "km": 3.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Morthal"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Riften"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Riverwood"
+   ],
+   "km": 0.8,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Rorikstead"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Shor's Stone"
+   ],
+   "km": 1.2,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Solitude"
+   ],
+   "km": 3.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Stonehills"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Whiterun"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Windhelm"
+   ],
+   "km": 1.5,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Ivarstead",
+    "Winterhold"
+   ],
+   "km": 2.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Kynesgrove"
+   ],
+   "km": 3.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Markarth"
+   ],
+   "km": 0.7,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Morthal"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Riften"
+   ],
+   "km": 4.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Riverwood"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Rorikstead"
+   ],
+   "km": 0.8,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Shor's Stone"
+   ],
+   "km": 4.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Solitude"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Stonehills"
+   ],
+   "km": 1.8,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Whiterun"
+   ],
+   "km": 2.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Windhelm"
+   ],
+   "km": 3.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Karthwasten",
+    "Winterhold"
+   ],
+   "km": 3.6,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Markarth"
+   ],
+   "km": 4.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Morthal"
+   ],
+   "km": 2.6,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Riften"
+   ],
+   "km": 1.6,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Riverwood"
+   ],
+   "km": 1.8,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Rorikstead"
+   ],
+   "km": 3.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Shor's Stone"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Solitude"
+   ],
+   "km": 3.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Stonehills"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Whiterun"
+   ],
+   "km": 1.7,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Windhelm"
+   ],
+   "km": 0.2,
+   "walk": "next to it"
+  },
+  {
+   "towns": [
+    "Kynesgrove",
+    "Winterhold"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Morthal"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Riften"
+   ],
+   "km": 5.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Riverwood"
+   ],
+   "km": 2.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Rorikstead"
+   ],
+   "km": 1.2,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Shor's Stone"
+   ],
+   "km": 4.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Solitude"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Stonehills"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Whiterun"
+   ],
+   "km": 2.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Windhelm"
+   ],
+   "km": 4.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Markarth",
+    "Winterhold"
+   ],
+   "km": 4.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Riften"
+   ],
+   "km": 3.8,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Riverwood"
+   ],
+   "km": 1.8,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Rorikstead"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Shor's Stone"
+   ],
+   "km": 3.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Solitude"
+   ],
+   "km": 0.6,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Stonehills"
+   ],
+   "km": 0.4,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Whiterun"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Windhelm"
+   ],
+   "km": 2.6,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Morthal",
+    "Winterhold"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Raven Rock",
+    "Skaal Village"
+   ],
+   "km": 0.8,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Riverwood"
+   ],
+   "km": 2.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Rorikstead"
+   ],
+   "km": 3.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Shor's Stone"
+   ],
+   "km": 0.5,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Solitude"
+   ],
+   "km": 4.3,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Stonehills"
+   ],
+   "km": 3.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Whiterun"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Windhelm"
+   ],
+   "km": 1.8,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Riften",
+    "Winterhold"
+   ],
+   "km": 2.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Rorikstead"
+   ],
+   "km": 1.7,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Shor's Stone"
+   ],
+   "km": 2.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Solitude"
+   ],
+   "km": 2.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Stonehills"
+   ],
+   "km": 1.6,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Whiterun"
+   ],
+   "km": 0.5,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Windhelm"
+   ],
+   "km": 1.9,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Riverwood",
+    "Winterhold"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Rorikstead",
+    "Shor's Stone"
+   ],
+   "km": 3.7,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Rorikstead",
+    "Solitude"
+   ],
+   "km": 1.5,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Rorikstead",
+    "Stonehills"
+   ],
+   "km": 1.4,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Rorikstead",
+    "Whiterun"
+   ],
+   "km": 1.5,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Rorikstead",
+    "Windhelm"
+   ],
+   "km": 3.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Rorikstead",
+    "Winterhold"
+   ],
+   "km": 3.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Shor's Stone",
+    "Solitude"
+   ],
+   "km": 3.9,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Shor's Stone",
+    "Stonehills"
+   ],
+   "km": 3.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Shor's Stone",
+    "Whiterun"
+   ],
+   "km": 2.2,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Shor's Stone",
+    "Windhelm"
+   ],
+   "km": 1.3,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Shor's Stone",
+    "Winterhold"
+   ],
+   "km": 2.5,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Solitude",
+    "Stonehills"
+   ],
+   "km": 0.9,
+   "walk": "a short walk"
+  },
+  {
+   "towns": [
+    "Solitude",
+    "Whiterun"
+   ],
+   "km": 2.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Solitude",
+    "Windhelm"
+   ],
+   "km": 3.0,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Solitude",
+    "Winterhold"
+   ],
+   "km": 2.4,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Stonehills",
+    "Whiterun"
+   ],
+   "km": 1.1,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Stonehills",
+    "Windhelm"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Stonehills",
+    "Winterhold"
+   ],
+   "km": 1.8,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Whiterun",
+    "Windhelm"
+   ],
+   "km": 1.8,
+   "walk": "half a day"
+  },
+  {
+   "towns": [
+    "Whiterun",
+    "Winterhold"
+   ],
+   "km": 2.1,
+   "walk": "a long day's road"
+  },
+  {
+   "towns": [
+    "Windhelm",
+    "Winterhold"
+   ],
+   "km": 1.2,
+   "walk": "half a day"
+  }
  ]
 }

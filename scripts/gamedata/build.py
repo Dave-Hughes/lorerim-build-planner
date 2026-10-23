@@ -535,9 +535,10 @@ def main():
     if os.path.exists(os.path.join(RAW, "places_raw.json")):
         from places import build_site
 
-        rows = build_site(load("places_raw.json")["places"])
+        raw = load("places_raw.json")
+        rows = build_site(raw["places"])
         with open(os.path.join(OUT, "places.json"), "w", encoding="utf-8") as f:
-            json.dump({"places": rows}, f, separators=(",", ":"), ensure_ascii=False)
+            json.dump({"places": rows, "roads": raw.get("roads", [])}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} places, {sum(1 for r in rows if r.get('pointers'))} with a pointer -> places.json")
     for p in problems:

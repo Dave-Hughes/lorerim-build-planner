@@ -44,10 +44,13 @@ class Readers(unittest.TestCase):
 class BuiltIndex(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.rows = json.load(open(RAW, encoding="utf-8"))["places"]
+        data = json.load(open(RAW, encoding="utf-8"))
+        cls.rows = data["places"]
+        cls.roads = data["roads"]
         cls.by = {}
         for p in cls.rows:
             cls.by.setdefault(p["name"], p)
+        cls.road_by = {frozenset(r["towns"]): r for r in cls.roads}
 
     def test_embershard_mine_by_riverwood_with_its_pointer(self):
         mine = self.by["Embershard Mine"]
@@ -129,6 +132,21 @@ class BuiltIndex(unittest.TestCase):
     def test_buildings_never_pick_up_a_non_capital_castle(self):
         castles = {p["name"] for p in self.rows if p["type"] == "Keep"}
         self.assertNotIn("Castle Volkihar", castles)
+
+    def test_the_roads_table_covers_every_mainland_pair_once(self):
+        # WO-144 Part 1 item 4: every capital and settlement to every other in the same worldspace, no duplicate pair,
+        # never across worldspaces (Solstheim's towns never road to a mainland one), and matches Bob's two pairs.
+        self.assertEqual(self.road_by[frozenset(("Riverwood", "Whiterun"))], {"towns": ["Riverwood", "Whiterun"], "km": 0.5, "walk": "a short walk"})
+        self.assertEqual(self.road_by[frozenset(("Riften", "Whiterun"))]["walk"], "a long day's road")
+        self.assertNotIn(frozenset(("Riverwood", "Raven Rock")), self.road_by)  # Tamriel to Solstheim: no road
+        self.assertEqual(len(self.roads), len({frozenset(r["towns"]) for r in self.roads}))  # no pair twice
+
+    def test_suggest_places_can_read_a_place_s_road_towns(self):
+        # Player question 26 ("What's near Riften for Kyria's first act?"): Mac's door reads nearTowns for an act's
+        # towns from this table; the PC's job is only that every road the door could ask for is here, with a town.
+        riften_roads = [r for r in self.roads if "Riften" in r["towns"]]
+        self.assertGreater(len(riften_roads), 10)
+        self.assertTrue(all(r["km"] > 0 for r in riften_roads))
 
 
 if __name__ == "__main__":

@@ -448,7 +448,17 @@ def build(version):
                     hit.add(pl)
         for k in hit if q.get("named") and not HELPER.search(q["name"]) else ():
             places[k].setdefault("quests", []).append({"quest": q["name"], "id": qid})
-    return places, xp_from, cities
+    # Item 4: the roads, every capital and settlement to every other in the same worldspace, by their own markers
+    # (never a place's: a settlement's road is to the next settlement, not shortened by a dungeon passed on the way).
+    roads = []
+    for i, (a, am) in enumerate(towns):
+        for b, bm in towns[i + 1:]:
+            if marker_world(am) != marker_world(bm):
+                continue
+            dist = sum((x - y) ** 2 for x, y in zip(am["pos"][:2], bm["pos"][:2])) ** 0.5
+            km = round(dist * 0.0142875 / 1000, 1)
+            roads.append({"towns": sorted((a, b)), "km": km, "walk": walk(km)})
+    return places, xp_from, cities, roads
 
 
 def report(places, xp_from, cities=()):
@@ -509,15 +519,17 @@ def build_site(rows):
 
 def main():
     version = sys.argv[1] if len(sys.argv) > 1 else "5.0.4.8"
-    places, xp_from, cities = build(version)
+    places, xp_from, cities, roads = build(version)
     base = os.path.join(REPO, "gamedata", version)
     rows = sorted(places.values(), key=lambda p: (p.get("hold") or "~", p["name"]))
+    roads = sorted(roads, key=lambda r: r["towns"])
     with open(os.path.join(base, "places_raw.json"), "w", encoding="utf-8", newline="\n") as f:
-        json.dump({"about": __doc__.strip().splitlines()[0], "places": rows}, f, indent=1, ensure_ascii=False)
+        json.dump({"about": __doc__.strip().splitlines()[0], "places": rows, "roads": roads}, f, indent=1, ensure_ascii=False)
         f.write("\n")
     with open(os.path.join(base, "places_report.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write(report(places, xp_from, cities))
     print(f"{len(rows)} places, {sum(1 for p in rows if p.get('pointers'))} with a pointer, {sum(1 for p in rows if p.get('quests'))} with a quest -> places_raw.json")
+    print(f"{len(roads)} roads -> places_raw.json")
 
 
 if __name__ == "__main__":
