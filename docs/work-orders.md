@@ -4923,6 +4923,25 @@ Status: done
 
 ---
 
+## WO-140  Name the conditions: the 338 ways that say "a condition the planner can't put in words yet" (PC, 23 Oct 2026)
+Status: queued
+
+**Why.** The quest-start work is closed, and one gap is left that a player sees: 338 ways on the pages carry "a condition the planner can't put in words yet". The facts are right; the words are missing. The start check names about 30 kinds of condition function; the rest print that sentence. Counted 23 Oct in `story_checks/`: fn606 appears 182 times, then fn565 (26), fn249 (24), fn289 (24), fn286 (23), fn655 (21), fn682 (20), fn654 (17), fn722 (16), fn403 (15), fn327, fn300, fn130, fn248, fn159 (12 to 13 each). Naming the top fifteen clears most of the 338.
+
+### Do
+1. **Name them, most common first.** For each function code, from the Creation Kit's condition function list and the records it's used in: what it tests, and the plain words for the forms it takes on our pages (`== 1`, `== 0`, `>= N`, with its parameters resolved: a faction's name, a race, a global's value, a keyword, a location). Put the wording in the start check's table (`story_check.py`'s condition names) and the page's words in `quest_pages.py` (WO-126's rules: the game's words, no ids). A function whose meaning depends on a parameter the records don't resolve gets the parameter named or stays unworded, with the reason in the log.
+2. **Drop what no player meets.** A condition that only ever tests the engine's own state (a scene running, a package, a voice type, "the speaker is the one in the alias" when the alias is the speaker) is not a need: drop it from the way, as the moment's tests are (WO-121b's follow-up).
+3. **fn606 first and on its own:** 182 uses. Find what it is; if it's one of the engine-state kind, 2 covers it and the count halves at once.
+4. **Rerun** `story_check_all.py` and `build.py`; the answer key and every game-data test pass; `npm run test:questions` passes (Mac's door reads the generated file).
+5. **Count before and after** in `loop-log.md` ("WO-140"): the 338, how many each function cleared, what's left and why. Under WO-138 Part 5 you decide the wording yourself and log it; Rex reads a sample of ten changed ways.
+
+### Done when
+- [ ] The top fifteen functions are named or dropped with the reason logged; the count of "can't put in words yet" on the pages is under 60.
+- [ ] No page shows a function code, an editor id or `== 1`; the words are the game's.
+- [ ] The key, the game-data tests and the player questions pass; push staging with `Status: for Bob`.
+
+---
+
 ## WO-139  Before you design: the questions, their answers kept, what a character will never do, and the mods they need (Mac, 23 Oct 2026)
 Status: queued
 
