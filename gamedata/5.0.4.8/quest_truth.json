@@ -1735,6 +1735,340 @@
    "startsWith": [
     "Captain Veleth"
    ]
+  },
+  {
+   "quest": "Bleak Falls Barrow",
+   "editorId": "MQ103",
+   "line": "main-quest",
+   "firstObjective": "Talk to Farengar",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bleak_Falls_Barrow_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Balgruuf the Greater (UESP: Jarl Balgruuf the Greater); first step: 'Talk to Farengar', UESP's objective at stage 10.",
+   "startsWith": [
+    "Balgruuf the Greater"
+   ]
+  },
+  {
+   "quest": "A Blade in the Dark",
+   "editorId": "MQ106",
+   "line": "main-quest",
+   "firstObjective": "Talk to Delphine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Blade_in_the_Dark",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Delphine (UESP: Delphine); first step: 'Talk to Delphine', UESP's objective at stage 10.",
+   "startsWith": [
+    "Delphine"
+   ]
+  },
+  {
+   "quest": "Alduin's Wall",
+   "editorId": "MQ203",
+   "line": "main-quest",
+   "firstObjective": "Escort Esbern to Riverwood",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Alduin's_Wall",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Esbern (UESP: Esbern); first step: 'Escort Esbern to Riverwood', UESP's objective at stage 10.",
+   "startsWith": [
+    "Esbern"
+   ]
+  },
+  {
+   "quest": "The Throat of the World",
+   "editorId": "MQ204",
+   "line": "main-quest",
+   "firstObjective": "Talk to Arngeir",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Throat_of_the_World",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Delphine (UESP: Delphine); first step: 'Talk to Arngeir', UESP's objective at stage 10.",
+   "startsWith": [
+    "Delphine"
+   ]
+  },
+  {
+   "quest": "Elder Knowledge",
+   "editorId": "MQ205",
+   "line": "main-quest",
+   "firstObjective": "Learn the location of the Elder Scroll",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Elder_Knowledge",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Paarthurnax (UESP: Paarthurnax); first step: 'Learn the location of the Elder Scroll', UESP's objective at stage 10.",
+   "startsWith": [
+    "Paarthurnax"
+   ]
+  },
+  {
+   "quest": "Alduin's Bane",
+   "editorId": "MQ206",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the Elder Scroll at the Time-Wound",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Alduin's_Bane",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: none on either; first step: 'Read the Elder Scroll at the Time-Wound', UESP's objective at stage 10."
+  },
+  {
+   "quest": "The World-Eater's Eyrie",
+   "editorId": "MQ303",
+   "line": "main-quest",
+   "firstObjective": "Set Odahviing free",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_World-Eater's_Eyrie",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Odahviing (UESP: Odahviing); first step: 'Set Odahviing free', UESP's objective at stage 10.",
+   "startsWith": [
+    "Odahviing"
+   ]
+  },
+  {
+   "quest": "Sovngarde",
+   "editorId": "MQ304",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find out how to defeat Alduin",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Sovngarde_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: none on either; first step: 'Find out how to defeat Alduin', UESP's objective at stage 10."
+  },
+  {
+   "quest": "The Words of Power",
+   "editorId": "FreeformHighHrothgarA",
+   "line": "main-quest",
+   "firstObjective": "Find the Word of Power in the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Words_of_Power",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Arngeir (UESP: Arngeir); first step: 'Find the Word of Power in the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Arngeir"
+   ]
+  },
+  {
+   "quest": "Rebuilding the Blades",
+   "editorId": "FreeformSkyhavenTempleA",
+   "line": "main-quest",
+   "firstObjective": "Bring a follower to Delphine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rebuilding_the_Blades",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Delphine (UESP: Delphine); first step: 'Bring a follower to Delphine', UESP's objective at stage 10.",
+   "startsWith": [
+    "Delphine"
+   ]
+  },
+  {
+   "quest": "Dragon Hunting",
+   "editorId": "FreeformSkyHavenTempleB",
+   "line": "main-quest",
+   "firstObjective": "Kill the Dragon in the dragon lair",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dragon_Hunting",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Esbern (UESP: Esbern); first step: 'Kill the Dragon in the dragon lair', UESP's objective at stage 10.",
+   "startsWith": [
+    "Esbern"
+   ]
+  },
+  {
+   "quest": "Bolstering the Ranks",
+   "editorId": "DLC1HunterBaseStage2",
+   "line": "dawnguard",
+   "firstObjective": "Speak with Isran",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bolstering_the_Ranks",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Sorine Jurard (UESP: Sorine Jurard); first step: 'Speak with Isran', UESP's objective at stage 10.",
+   "startsWith": [
+    "Sorine Jurard"
+   ]
+  },
+  {
+   "quest": "Hide and Seek",
+   "editorId": "DLC1RH01",
+   "line": "dawnguard",
+   "firstObjective": "Discreetly kill the target",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Hide_and_Seek_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: 'Discreetly kill the target', UESP's objective at stage 10.",
+   "startsWith": [
+    "Gunmar"
+   ]
+  },
+  {
+   "quest": "Cleansing Light",
+   "editorId": "DLC1RH02",
+   "line": "dawnguard",
+   "firstObjective": "Kill the boss at the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Cleansing_Light",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: 'Kill the boss at the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Gunmar"
+   ]
+  },
+  {
+   "quest": "Preemptive Strike",
+   "editorId": "DLC1RH03",
+   "line": "dawnguard",
+   "firstObjective": "Kill the vampire at the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Preemptive_Strike",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: 'Kill the vampire at the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Gunmar"
+   ]
+  },
+  {
+   "quest": "Hunting the Monster",
+   "editorId": "DLC1RH04",
+   "line": "dawnguard",
+   "firstObjective": "Find evidence of the vampire's whereabouts",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Hunting_the_Monster",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: \"Find evidence of the vampire's whereabouts\", UESP's objective at stage 10.",
+   "startsWith": [
+    "Gunmar"
+   ]
+  },
+  {
+   "quest": "Ancient Technology",
+   "editorId": "DLC1RH05",
+   "line": "dawnguard",
+   "firstObjective": "Retrieve the item from the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Ancient_Technology",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Sorine Jurard (UESP: Sorine Jurard); first step: 'Retrieve the item from the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Sorine Jurard"
+   ]
+  },
+  {
+   "quest": "Rescue",
+   "editorId": "DLC1RH06",
+   "line": "dawnguard",
+   "firstObjective": "Rescue the prisoner from the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rescue",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Florentius Baenius (UESP: Florentius Baenius); first step: 'Rescue the prisoner from the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Florentius Baenius"
+   ]
+  },
+  {
+   "quest": "A Jarl's Justice",
+   "editorId": "DLC1RH07",
+   "line": "dawnguard",
+   "firstObjective": "Warn the jarl about the vampire threat",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Jarl's_Justice",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Isran (UESP: Isran); first step: 'Warn the jarl about the vampire threat', UESP's objective at stage 10.",
+   "startsWith": [
+    "Isran"
+   ]
+  },
+  {
+   "quest": "Lost Relic",
+   "editorId": "DLC1RH08",
+   "line": "dawnguard",
+   "firstObjective": "Retrieve the item from the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Lost_Relic",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Florentius Baenius (UESP: Florentius Baenius); first step: 'Retrieve the item from the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Florentius Baenius"
+   ]
+  },
+  {
+   "quest": "The Hunt",
+   "editorId": "DLC1RV01",
+   "line": "dawnguard",
+   "firstObjective": "Kill the target",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Hunt",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Fura Bloodmouth (UESP: Fura Bloodmouth, Garan Marethi); first step: 'Kill the target', UESP's objective at stage 10.",
+   "startsWith": [
+    "Fura Bloodmouth"
+   ]
+  },
+  {
+   "quest": "Culling the Beast",
+   "editorId": "DLC1RV02",
+   "line": "dawnguard",
+   "firstObjective": "Kill the boss at the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Culling_the_Beast",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Fura Bloodmouth (UESP: Fura Bloodmouth, Garan Marethi); first step: 'Kill the boss at the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Fura Bloodmouth"
+   ]
+  },
+  {
+   "quest": "Deceiving the Herd",
+   "editorId": "DLC1RV03",
+   "line": "dawnguard",
+   "firstObjective": "Kill someone out in the streets of the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Deceiving_the_Herd",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Kill someone out in the streets of the city', UESP's objective at stage 100.",
+   "startsWith": [
+    "Feran Sadri"
+   ]
+  },
+  {
+   "quest": "Protecting the Bloodline",
+   "editorId": "DLC1RV04",
+   "line": "dawnguard",
+   "firstObjective": "Kill the vampire at the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Protecting_the_Bloodline",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Fura Bloodmouth (UESP: Fura Bloodmouth, Garan Marethi); first step: 'Kill the vampire at the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Fura Bloodmouth"
+   ]
+  },
+  {
+   "quest": "Ancient Power",
+   "editorId": "DLC1RV05",
+   "line": "dawnguard",
+   "firstObjective": "Retrieve the remains from the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Ancient_Power",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Retrieve the remains from the dungeon', UESP's objective at stage 10.",
+   "startsWith": [
+    "Feran Sadri"
+   ]
+  },
+  {
+   "quest": "The Gift",
+   "editorId": "DLC1RV06",
+   "line": "dawnguard",
+   "firstObjective": "Mesmerize and turn the spouse into a vampire.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Gift",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Vingalmo (UESP: Vingalmo); first step: 'Mesmerize and turn the spouse into a vampire.', UESP's objective at stage 10.",
+   "startsWith": [
+    "Vingalmo"
+   ]
+  },
+  {
+   "quest": "New Allegiances",
+   "editorId": "DLC1RV07",
+   "line": "dawnguard",
+   "firstObjective": "Turn the candidate into a vampire",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:New_Allegiances",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Vingalmo (UESP: Vingalmo); first step: 'Turn the candidate into a vampire', UESP's objective at stage 10.",
+   "startsWith": [
+    "Vingalmo"
+   ]
+  },
+  {
+   "quest": "Rings of Blood Magic",
+   "editorId": "DLC1RV08",
+   "line": "dawnguard",
+   "firstObjective": "Retrieve the Ring of the Beast from the location",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rings_of_Blood_Magic",
+   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Retrieve the Ring of the Beast from the location', UESP's objective at stage 110.",
+   "startsWith": [
+    "Feran Sadri"
+   ]
   }
  ]
 }

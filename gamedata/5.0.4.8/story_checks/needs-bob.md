@@ -121,3 +121,56 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - WO-136 ruling 1 considered and not applied: none of these calls comes from a stage that ends its quest and sets the stage where the first objective shows, or earlier, so the records name no single way in.
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): zzzCOMq01 (Child of Oblivion) at stage 60 calls SetStage 70 (QF_zzzCOMq01_01065932.fragment_13 (Vigilant.esm)).
   - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+
+## WO-138 Part 2, batch 1: the page and UESP differ (12 of 40)
+
+### A different first step (3)
+
+- **Diplomatic Immunity** (`MQ201`, Skyrim.esm:035D5F; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Delphine; first step 'Meet Delphine in Riverwood or storm the Thalmor Embassy'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Diplomatic_Immunity): giver Delphine; objectives 1: 'Recover your equipment'; 5: 'Meet Delphine in Riverwood'; 10: 'Meet Malborn in Solitude'.
+- **A Cornered Rat** (`MQ202`, Skyrim.esm:036191; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Delphine; first step 'Ask in Riften about Esbern'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:A_Cornered_Rat): giver Delphine; objectives 10: 'Talk to Brynjolf'; 20: "Search the Ratway for Esbern's hideout"; 30: 'Find Esbern in the Ratway Warrens'.
+- **Paarthurnax** (`MQPaarthurnax`, Skyrim.esm:03FA16; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Esbern; first step "Decide Paarthurnax's Fate".
+  - UESP (https://en.uesp.net/wiki/Skyrim:Paarthurnax_(quest)): giver Esbern or Delphine; objectives 10: 'Kill Paarthurnax'; 20: 'Talk to Delphine'.
+
+### A different giver (4)
+
+- **Dragon Rising** (`MQ104`, Skyrim.esm:02610C; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Balgruuf the Greater; first step 'Talk to Jarl Balgruuf'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Dragon_Rising): giver Farengar Secret-Fire; objectives 5: 'Talk to Jarl Balgruuf'; 15: 'Meet Irileth near the Western Watchtower'; 20: 'Kill the dragon'.
+- **The Way of the Voice** (`MQ105`, Skyrim.esm:0242BA; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Arngeir; first step 'Speak to the Greybeards'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Way_of_the_Voice): giver Jarl Balgruuf the Greater; objectives 10: 'Speak to the Greybeards'; 10: 'Speak to the Greybeards'; 20: 'Demonstrate your "Unrelenting Force" Shout'.
+- **The Fallen** (`MQ301`, Skyrim.esm:044C56; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Paarthurnax; first step 'Talk to Paarthurnax'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Fallen): giver Alduin; objectives 10: 'Talk to Paarthurnax'; 11: 'Talk to Arngeir'; 12: 'Talk to Esbern'.
+- **Season Unending** (`MQ302`, Skyrim.esm:045923; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Arngeir; first step 'Talk to Arngeir'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Season_Unending): giver Jarl Balgruuf the Greater or Vignar Gray-Mane; objectives 10: 'Talk to Arngeir'; 20: 'Talk to General Tullius'; 30: 'Talk to Ulfric Stormcloak'.
+
+### No UESP page lists it (1)
+
+- **Dragon Research** (`FreeformSkyHavenTempleD`, Skyrim.esm:0E6DF1; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver Esbern; first step 'Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern'.
+  - UESP: no page lists FreeformSkyHavenTempleD (tried Skyrim:Dragon_Research, Skyrim:Dragon_Research_(quest)).
+
+### The page names no giver, UESP does (3)
+
+- **Before the Storm** (`MQ102`, Skyrim.esm:04E50D; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver none; first step 'Talk to the riverwood friend in Riverwood'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:Before_the_Storm): giver Hadvar or Ralof; objectives 10: 'Talk to <alias> in Riverwood'; 10: 'Talk to <alias> in Riverwood'; 30: 'Talk to the Jarl of Whiterun'.
+- **The Horn of Jurgen Windcaller** (`MQ105Ustengrav`, Skyrim.esm:0713DC; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver none; first step 'Retrieve the Horn of Jurgen Windcaller'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:The_Horn_of_Jurgen_Windcaller): giver Arngeir; objectives 10: 'Retrieve the Horn of Jurgen Windcaller'; 15: 'Read the note'; 20: 'Meet with whoever took the horn'.
+- **Dragonslayer** (`MQ305`, Skyrim.esm:046EF2; winning record: Skyrim.esm; line `main-quest`, WO-138 batch 1)
+  - The planner: giver none; first step "Help the heroes of Sovngarde dispel Alduin's mist".
+  - UESP (https://en.uesp.net/wiki/Skyrim:Dragonslayer): giver Hakon, Gormlaith, and Felldir; objectives 10: "Help the heroes of Sovngarde dispel Alduin's mist"; 10: "Help the heroes of Sovngarde dispel Alduin's mist"; 20: 'Defeat Alduin'.
+
+### The page names no giver, UESP does; the page's first step is a later UESP objective (1)
+
+- **A New Order** (`DLC1HunterBaseIntro`, Dawnguard.esm:004E24; winning record: Dawnguard.esm; line `dawnguard`, WO-138 batch 1)
+  - The planner: giver none; first step 'Speak with Isran'.
+  - UESP (https://en.uesp.net/wiki/Skyrim:A_New_Order): giver Isran; objectives 10: "Meet Tolan at Stendarr's Beacon"; 20: 'Speak with Isran'; 30: 'Recruit Sorine Jurard'.

@@ -157,3 +157,22 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
   - No Contest has no "after Heart of Gold". Viriya hands the letters in her array's order, which matches UESP's chain.
   - Rex's point: `checked: uesp` says the giver and first step are confirmed. It doesn't mean the page's ways and needs are complete.
   - These are for Mac (wording) and Bob (whether a key-only start needs its own ways). Listed in the report.
+
+## WO-138 Part 2: every checked start against UESP
+
+- **The universe:** checked (`files`) base-game, DLC and Creation Club quests not already in the key, in the order main, guilds, Daedric, lands, side, followers. That's 345 quests in 9 batches; the order's ~400 counted the 21 not-yet quests and some already-keyed ones.
+- **How each is compared:** `pyread/uesp138.py` fetches the UESP page's wiki text (raw, cached; found by the quest's name, following redirects, and it must list the editor ID). From it, it reads:
+  - the infobox's Giver, keeping only people the planner knows;
+  - the stage table's objectives, in stage order, with optional objectives skipped. An alias slot (`<Alias=Boss>`) stands for any words, so "Kill the boss at the dungeon" matches "Kill the <Alias=Boss> at <Alias=Dungeon>".
+- **Agree** means the page's giver is UESP's (or neither names one) and its first step is UESP's first objective. That gets a key row (`source: uesp`, with the url). Anything else goes to `needs-bob.md` with both readings and the record ids, grouped by kind of difference.
+- My first parse cut UESP's alias slots and nested templates, and counted places and items as givers: 31 of batch 1 "differed". Fixed before anything was written: 12 differ.
+
+### Batch 1 (main quest, Dawnguard)
+- 40 quests: 28 agree (key rows), 11 differ, 1 with no page (Dragon Research). That's 30% to Bob, not over the stop line.
+- By kind of difference:
+  - giver: the page names none where UESP does (Before the Storm, The Horn of Jurgen Windcaller, Dragonslayer, A New Order);
+  - a different giver (Dragon Rising: Farengar on UESP; The Way of the Voice and Season Unending: UESP names who sends you; The Fallen: UESP says Alduin);
+  - a different first step (Diplomatic Immunity's LoreRim wording; A Cornered Rat; Paarthurnax: "Decide Paarthurnax's Fate" against UESP's "Kill Paarthurnax").
+- Gate: `build.py`, the game-data tests and the answer key pass; no page changed (a key row on a checked quest only confirms it).
+- Rex (fresh, on A Jarl's Justice, Deceiving the Herd, Ancient Power, Alduin's Wall): PASS on all four for giver and first step.
+- Rex's other notes, not this batch's test: the `towns` tag names a place that isn't a town (Dayspring Canyon, Esbern's Vault); Alduin's Wall's need could name A Cornered Rat, not just "Talk to Esbern".
