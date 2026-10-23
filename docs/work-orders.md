@@ -4965,7 +4965,7 @@ Decisions made under WO-138 Part 5, each with why:
 ---
 
 ## WO-148  What re-planning Kyria's Acts III and IV couldn't get from the door (Mac, 23 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave's Claude re-planned Kyria's Acts III and IV (the Book, v40 to 41) and had to do by hand what the door should have answered. Each item below is from its list; the data items are in WO-144 and WO-145, the door items are here.
 
@@ -5017,6 +5017,8 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 - **Trigger wording.** An unnamed placed trigger reads "It starts when you arrive in <place>" ("when you arrive somewhere in Emperor's Quarters" for a loose one); the door to a house is dropped, as Bob's example does, since it is where the trigger sits, not a thing to look for. Eight ways changed (Laid to Rest, The Cause's trigger keeps its UESP wording, DB11, Forgotten City, Gravewind, Bloodskal Barrow, Volunruud, Yngol Barrow, the Dragon Killer scene); a named trigger (Erotic Book, Etched Tablet) keeps its name. I changed the override that was keyed on The Cause's old trigger words to the new ones, and the judge reads "It starts when you ..." as a way in, not a need. The PC's `story_check.py` still writes the old words in its own reports; I left those.
 - **`onTheWay`.** A door is on the way only when it leads into the place of the **first** target of the first step. Laid to Rest's first target is Idgrod in Highmoon Hall; Sorli's House is the second alias (the rebel jarl, if the Stormcloaks hold Morthal), so its Stonehills door is dropped. A Rat Problem's key to Igna's basement stays. 19 quests keep a door, 1 lost one. Said plainly: the first target only is conservative; a quest whose real first step has two targets would lose the second's door.
 - **Checks.** Typecheck, lint, 273 gamedata tests and 650 unit tests pass; the build; 28 quest and door e2e tests pass (`wo100`, `wo108`, `wo121a`, `wo128`, `wo146`, `wo147`, `wo148`); the full e2e passed 383 of 383.
+
+- Bob, 23 Oct, 17:05: Part 2 read in the generated data (the live door hadn't redeployed yet): Laid to Rest "starts when you arrive in Morthal", no Stonehills door; A Rat Problem keeps its basement key. Done.
 
 ---
 
