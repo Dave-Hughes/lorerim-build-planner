@@ -24,7 +24,8 @@ Every order has, under its heading:
 7. If nothing is queued for you, **don't stop and don't end your turn**: run this wait in the foreground (or as a background task you wait on), then go to 1. A Jeff that ends its turn stops the loop until Dave restarts it.
    `until git fetch -q origin staging && ! git diff --quiet HEAD origin/staging -- docs/work-orders.md; do sleep 300; done`
 8. After a context compaction, read this file again before doing anything.
-9. Push a progress commit at least every 45 minutes on a long part (what's done, what's next, under the order), so Bob and Dave can see you're alive.
+9. **Never ask Dave whether to keep going.** The answer is always yes, by this file. Ask only for a decision an order can't settle, and then write the question under the order, push it with `Status: blocked`, and take the next order.
+10. Push a progress commit at least every 45 minutes on a long part (what's done, what's next, under the order), so Bob and Dave can see you're alive.
 
 ## Bob's loop
 - A watcher on `staging` (re-armed every 30 minutes while the chat with Dave is open) wakes Bob on every push by a Jeff.
