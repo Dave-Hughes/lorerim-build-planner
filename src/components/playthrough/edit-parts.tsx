@@ -1,5 +1,6 @@
 "use client";
 
+import type { Mod } from "@/lib/mods";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useId, useMemo, useRef, useState, useTransition } from "react";
 import type { SaveState } from "@/components/editor/edit-bar";
@@ -7,7 +8,7 @@ import type { useGameData } from "@/components/game-data";
 import { searchWithExtras, type ExtraMention } from "@/lib/guide/mention";
 import { useItems } from "@/lib/items/items";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
+import type { Answer, ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach, RouteStop } from "@/lib/playthroughs/types";
 import s from "./edit.module.css";
 
 /**
@@ -69,6 +70,10 @@ export interface EditData {
   /** The Tale page's title and epigraph (WO-114). */
   taleTitle: string;
   taleLine: string;
+  /** The Before you design answers (WO-139), in the player's words. */
+  answers: Answer[];
+  /** The mods the character needs (WO-139 Part 4). */
+  mods: Mod[];
   acts: EditAct[];
   chapters: EditChapter[];
   builds: { id: string; name: string }[];

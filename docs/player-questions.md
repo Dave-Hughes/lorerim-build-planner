@@ -107,22 +107,23 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **19. "Design me a new character."**
 - Calls: `get_style_guide()`; the descriptions of `create_build` and `create_playthrough`.
 - Must: the guide holds the Before you design section with its eight always-ask questions worded as WO-139 says, the softened reason-to-travel line, the mods rule, and the How to build line; both descriptions point to it.
-- Fails today: **WO-139**.
+- Passes since WO-139 Part 1.
 
 **20. "What can she do in Windhelm at level 12?"** on a playthrough whose `never` holds `the-dark-brotherhood` and `main-quest`.
 - Calls: `suggest_quests({ level: 12, where: "Windhelm", playthrough })`.
 - Must: neither Join the Dark Brotherhood nor a main-quest story; a line saying what was left out and why.
-- Fails today: **WO-139**.
+- Passes since WO-139 Part 3.
 
 **21. "How do I start Dawnguard?"** on that playthrough.
-- Calls: `get_quest({ name: "Dawnguard", playthrough })`.
-- Must: `openForYou` says locked for this character, because she won't be the Dragonborn; never "open for you".
-- Fails today: **WO-139**.
+- Calls: `get_quest({ name: "Dawnguard", playthrough })`, and `get_quest({ name: "Dragonborn", playthrough })` for the line the main quest does close.
+- Must: Dawnguard open, by Agmaer in Fort Dawnguard; Dragonborn (Solstheim) `locked for this character: she won't be the Dragonborn`. Never Dawnguard "locked for this character".
+- Changed by Jeff under WO-139 (Bob to rule): the question as written had Dawnguard locked, but the records don't gate it on the main quest. Talking to Agmaer at Fort Dawnguard has no need, and Durak's need "Dragonborn stage 5 or The Way of the Voice before stage 160" is met by a main quest never begun. The planner must not say locked when the records say open (style guide rule 24). Dragonborn waits on The Way of the Voice (stage 160), so it is the one the never closes.
+- Passes since WO-139 Part 3.
 
 **22. "What mods does Kyria need?"**
 - Calls: `get_playthrough({ playthrough: "Kyria Severa" })`.
-- Must: `mods` lists Callings as required, with its link and Dave's why.
-- Fails today: **WO-139 Part 4**.
+- Must: `mods` lists Callings as required, with Dave's why; the guide's mods page says the same, and neither shows a link while Callings is unpublished.
+- Passes since WO-139 Part 4, on the shape. The live check on Kyria's own row is Bob's, once `set_details` has put Callings there (Jeff has no access to that row).
 
 **23. "Who could an Orc take as a follower, and where?"**
 - Calls: `suggest_followers({ race: "Orc" })` or `search_facts({ query: "orc follower" })`.

@@ -1,3 +1,4 @@
+import type { Mod } from "@/lib/mods";
 import "server-only";
 import { and, count, desc, eq, isNotNull } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -38,7 +39,7 @@ async function writeGuard(p: Player) {
 
 async function owned(p: Player, id: string) {
   const [row] = await db()
-    .select({ id: schema.builds.id, name: schema.builds.name, description: schema.builds.description, plan: schema.builds.plan, visibility: schema.builds.visibility, draftedBy: schema.builds.draftedBy, coverImageUrl: schema.builds.coverImageUrl, writeupUrl: schema.builds.writeupUrl, updatedAt: schema.builds.updatedAt })
+    .select({ id: schema.builds.id, name: schema.builds.name, description: schema.builds.description, plan: schema.builds.plan, visibility: schema.builds.visibility, draftedBy: schema.builds.draftedBy, coverImageUrl: schema.builds.coverImageUrl, writeupUrl: schema.builds.writeupUrl, mods: schema.builds.mods, updatedAt: schema.builds.updatedAt })
     .from(schema.builds)
     .where(and(eq(schema.builds.id, String(id ?? "").slice(0, 40)), eq(schema.builds.ownerId, p.userId)))
     .limit(1);
@@ -147,7 +148,7 @@ export async function setGear(p: Player, input: { build: string; gear: GearInput
 }
 
 /** set_details: name, description, notes, tags (by slug) and the main spells (by name). */
-export async function setDetails(p: Player, input: { build: string; name?: string; description?: string; notes?: string; tags?: string[]; mainSpells?: string[] }) {
+export async function setDetails(p: Player, input: { build: string; name?: string; description?: string; notes?: string; tags?: string[]; mainSpells?: string[]; mods?: Mod[] }) {
   await writeGuard(p);
   const b = await owned(p, input.build);
   const d = versionData(b.plan.gameVersion);
@@ -156,7 +157,7 @@ export async function setDetails(p: Player, input: { build: string; name?: strin
     if (wrong.length) throw new FactsError(`No tag ${wrong.join(", ")}. Tags are: ${TAGS.map((t) => t.slug).join(", ")}.`);
     if (input.tags.length > MAX_TAGS) throw new FactsError(`Up to ${MAX_TAGS} tags.`);
   }
-  const details: BuildDetails = { name: input.name ?? b.name, description: input.description ?? b.description, coverImageUrl: b.coverImageUrl ?? "", writeupUrl: b.writeupUrl ?? "", visibility: b.visibility, tags: input.tags ?? null };
+  const details: BuildDetails = { name: input.name ?? b.name, description: input.description ?? b.description, coverImageUrl: b.coverImageUrl ?? "", writeupUrl: b.writeupUrl ?? "", visibility: b.visibility, tags: input.tags ?? null, ...(input.mods === undefined ? {} : { mods: input.mods }) };
   const ok = buildDetailsSchema.safeParse(details);
   if (!ok.success) throw new FactsError(ok.error.issues[0]?.message ?? "Check the build's details.");
   let plan = b.plan;
@@ -169,7 +170,7 @@ export async function setDetails(p: Player, input: { build: string; name?: strin
   await writeDetails(p.userId, b.id, ok.data);
   revalidatePath(`/b/${b.id}`);
   revalidatePath("/me");
-  return { build: b.id, link: link(p, b.id), name: ok.data.name, description: ok.data.description, tags: input.tags ?? undefined };
+  return { build: b.id, link: link(p, b.id), name: ok.data.name, description: ok.data.description, tags: input.tags ?? undefined, ...(input.mods === undefined ? {} : { mods: input.mods }) };
 }
 
 /** get_build: the plan in the plain shape, each level with its computed state. */
@@ -178,7 +179,7 @@ export async function getBuild(p: Player, input: { build: string }) {
   const d = versionData(b.plan.gameVersion);
   const { plan, states, issues } = issuesOf(d, b.plan);
   const warnings = issues.length ? [] : reviewBuild(d, plan, states);
-  return { build: b.id, name: b.name, description: b.description, visibility: b.visibility, link: link(p, b.id), draftedByAnAssistant: !!b.draftedBy, ...plainOf(d, b.plan), ...(warnings.length ? { warnings } : {}) };
+  return { build: b.id, name: b.name, description: b.description, visibility: b.visibility, link: link(p, b.id), draftedByAnAssistant: !!b.draftedBy, ...(b.mods?.length ? { mods: b.mods } : {}), ...plainOf(d, b.plan), ...(warnings.length ? { warnings } : {}) };
 }
 
 /** list_my_builds: the player's builds, newest first, each with its run when it has one (WO-114). */

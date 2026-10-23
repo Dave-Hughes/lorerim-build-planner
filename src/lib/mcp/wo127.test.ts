@@ -7,7 +7,8 @@ describe("a reason to travel (WO-127)", () => {
   it("get_style_guide gives rule 19 and the How to build line, with Honesty after it (from 22 since WO-128's rule 20 and WO-129's 21)", () => {
     const guide = styleGuide();
     expect(guide).toMatch(/^19\. Give the character a reason to travel: why they leave one town for the next/m);
-    expect(guide).toContain("Before writing a playthrough, settle the character's reason to travel (rule 19) with the player.");
+    // Softened under WO-139 (Dave, 23 Oct): it comes from the story as the acts are written; it isn't asked up front.
+    expect(guide).toContain("A character needs a reason to leave town now and then; it usually comes from the story as you write the acts (rule 19). Don't ask for it up front.");
     expect(guide).toMatch(/^22\. A draft is a draft\./m);
   });
 
@@ -21,7 +22,8 @@ describe("a reason to travel (WO-127)", () => {
         if (n > last) past.push(`${f}: ${m[0]}`);
       }
     }
-    expect(last).toBe(26);
+    // 36 since WO-139: the Before you design rules are 27 to 36; Honesty keeps 22 to 26.
+    expect(last).toBe(36);
     expect(past).toEqual([]);
   });
 });

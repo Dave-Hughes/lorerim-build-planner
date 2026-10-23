@@ -1,3 +1,4 @@
+import { modsSchema } from "@/lib/mods";
 import { THEME_IDS } from "@/lib/themes";
 import { z } from "zod";
 import { MAX_TAGS, TAG_BY_SLUG } from "./tags";
@@ -151,6 +152,8 @@ export const buildDetailsSchema = z.object({
     .max(MAX_TAGS, `Up to ${MAX_TAGS} tags.`)
     .nullable()
     .optional(),
+  /** Mods the character needs that LoreRim doesn't ship (WO-139 Part 4). Absent: leave what is stored. */
+  mods: modsSchema.nullable().optional(),
 });
 export type BuildDetails = z.infer<typeof buildDetailsSchema>;
 

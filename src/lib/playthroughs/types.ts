@@ -36,6 +36,21 @@ export interface RouteStop {
   why: string;
 }
 
+/** One of the Before you design questions (WO-139) and the player's answer, in their words. */
+export interface Answer {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Something the character will never do (WO-139 Part 3): a quest line or story id, a side, a state, or a line in the
+ * player's own words; `words` is how the player said it ("she won't be the Dragonborn").
+ */
+export interface Never {
+  what: string;
+  words?: string;
+}
+
 export type ObjectiveKind = "once" | "reach";
 export type DoneBy = "save" | "hand";
 export type ObjectiveStatus = "todo" | "doing" | "done" | "later";
@@ -58,6 +73,12 @@ export const PLAYTHROUGH_LIMITS = {
   stopWhy: 200,
   objective: 160,
   why: 300,
+  /** The Before you design answers (WO-139): how many, and each question's and answer's length. */
+  answers: 12,
+  answer: 300,
+  /** What the character will never do (WO-139). */
+  nevers: 20,
+  never: 120,
   chapterTitle: 60,
   label: 60,
   acts: 20,

@@ -1,6 +1,10 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { FactsError, getQuest, playerState, searchFacts } from "./facts";
-import { suggestQuests } from "./playthroughs";
+import { modsOf, suggestFrom, suggestQuests } from "./playthroughs";
+import { modIndex, readGuide } from "@/lib/game-guide/guide";
+import { styleGuide } from "./facts";
+import { registerBuildTools } from "./build-tools";
+import { registerPlaythroughTools } from "./playthrough-tools";
 import { questLog } from "./quest-log";
 import { questsData } from "@/lib/quests/data";
 
@@ -49,6 +53,24 @@ const has = (text: string, w: Want) => (typeof w === "string" ? text.toLowerCase
 /** The read-this ways (WO-131): every quest whose way in is reading something, with that way. */
 const readThis = () =>
   questsData().lines.flatMap((l) => l.quests.flatMap((q) => (q.start?.ways ?? []).filter((w) => /^(Read|Get a note) /.test(w.how)).map((w) => ({ q, how: w.how }))));
+
+/** A tool's description as the door registers it (question 19). */
+function described(tool: string): string {
+  let out = "";
+  const server = { registerTool: (name: string, cfg: { description: string }) => void (name === tool && (out = cfg.description)) };
+  const guarded = async () => ({ content: [] });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  registerBuildTools(server as any, guarded, "https://planner.test");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  registerPlaythroughTools(server as any, guarded, "https://planner.test");
+  return out;
+}
+
+/** The playthrough of questions 20 and 21: what its never list holds, as set_details keeps it. */
+const NEVER_DB_MQ = [
+  { what: "main-quest", words: "she won't be the Dragonborn" },
+  { what: "the-dark-brotherhood", words: "she won't take a contract" },
+];
 
 const QUESTIONS: Question[] = [
   {
@@ -210,6 +232,76 @@ const QUESTIONS: Question[] = [
     },
     must: ["Balgruuf the Greater", "Dragonsreach", "Vignar Gray-Mane if the Stormcloaks hold Whiterun", /once you've helped people of the hold/i],
     never: [/"way":"It starts by itself when you enter Whiterun"/, /A WAY WITH NO PLACE/],
+  },
+  {
+    n: 19,
+    asks: "Design me a new character.",
+    // The assistant can't be tested; what it's told can.
+    ask: () => {
+      const guide = styleGuide();
+      const section = guide.slice(guide.indexOf("## Before you design"), guide.indexOf("## Playthroughs"));
+      const travel = guide.split("\n").find((l) => l.startsWith("- A character needs a reason to leave town")) ?? "";
+      // Tool names read as editor ids to the guard, so the pointers are said in words.
+      const points = (tool: string, says: string) => (says.includes("Before you design questions (rules 27 to 36)") ? `${tool.replace("_", " ")} points to Before you design` : "");
+      return [
+        section.split("\n").filter((l) => /^\d+\. /.test(l)).map((l) => l.replace(/set_details/g, "set details")),
+        travel,
+        guide.includes("- Before create_build, settle the Before you design questions with the player") ? "How to build: settle the Before you design questions first" : "",
+        points("create_build", described("create_build")),
+        points("create_playthrough", described("create_playthrough")),
+      ];
+    },
+    must: [
+      "27. Will this character be the Dragonborn?",
+      "28. How do they fight, once they do?",
+      "29. How do they start out?",
+      "30. Where is the line they won't cross?",
+      "31. Any faction you want in, or out?",
+      "32. Alone, or with someone?",
+      "33. Do they want a home? A mount?",
+      "34. Where does the story end?",
+      "36. When a design depends on something LoreRim doesn't ship",
+      "start with Callings, by name",
+      "A character needs a reason to leave town now and then",
+      "Don't ask for it up front",
+      "How to build: settle the Before you design questions first",
+      "create build points to Before you design",
+      "create playthrough points to Before you design",
+    ],
+  },
+  {
+    n: 20,
+    asks: "What can she do in Windhelm at level 12?",
+    ask: () => [suggestFrom("https://planner.test", { level: 12, where: "Windhelm" }, { level: 12, never: NEVER_DB_MQ })],
+    must: [/left out: 2 stories this character won't do/, "she won't be the Dragonborn", "she won't take a contract"],
+    never: ["Join the Dark Brotherhood", "Become the Dragonborn"],
+  },
+  {
+    n: 21,
+    asks: "How do I start Dawnguard?",
+    // Bob's question had Dawnguard locked for her. The records don't: Agmaer at Fort Dawnguard has no need on the main quest,
+    // and Durak's needs are met by a main quest never begun. The line the main quest closes is Dragonborn (Solstheim), asked too.
+    ask: () => {
+      const p = playerState({ level: 12, never: NEVER_DB_MQ });
+      const dawnguard = getQuest({ name: "Dawnguard" }, undefined, p);
+      const dragonborn = getQuest({ name: "Dragonborn" }, undefined, p);
+      return [{ dawnguard: dawnguard.openForYou }, { ways: dawnguard.quest.start?.ways }, { dragonborn: dragonborn.openForYou }];
+    },
+    must: [/"dawnguard":\{"state":"open"/, "Agmaer", /"dragonborn":\{"state":"locked","says":"locked for this character: she won't be the Dragonborn"/],
+    never: [/"dawnguard":\{[^}]*for this character/],
+  },
+  {
+    n: 22,
+    asks: "What mods does Kyria need?",
+    // The live check is Bob's, on Kyria's own playthrough; this is what get_playthrough says for a run that carries Callings,
+    // and what the guide's mods page says about it. (Callings has no link until Dave publishes it.)
+    ask: () => {
+      const callings = modIndex(readGuide()).find((m) => m.name === "Callings");
+      const why = "A custom start that makes sense, a bard playing the inn or a scholar reading every book in town, instead of opening on crabs, wolves and bandits.";
+      return [{ mods: modsOf([{ name: "Callings", why, need: "required" }]) }, { guide: callings ? callings.places.map((p) => p.html) : [] }];
+    },
+    must: ["Callings", "required", "a bard playing the inn or a scholar reading every book in town", "instead of opening on crabs, wolves and bandits"],
+    never: [/https?:\/\//],
   },
 ];
 

@@ -112,7 +112,7 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     {
       title: "A quest",
       description:
-        "Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest. A name that isn't a quest's finds the quest by what's in it, as search_facts does, and found says what matched. Give the player's level, what they've finished, or their playthrough, and openForYou says \"open for you\", \"locked: why\" or \"unknown: why\". Never call a quest open unless it says open for you.",
+        "Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest. A name that isn't a quest's finds the quest by what's in it, as search_facts does, and found says what matched. Give the player's level, what they've finished, or their playthrough, and openForYou says \"open for you\", \"locked: why\" or \"unknown: why\"; with a playthrough, \"locked for this character: why\" when the quest or what it needs is on the character's never list (set_details never). Never call a quest open unless it says open for you.",
       inputSchema: z.object(questInput),
     },
     async (a: QuestArgs, ctx) => guarded(() => quest(a, ctx)),

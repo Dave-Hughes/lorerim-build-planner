@@ -29,6 +29,8 @@ You also get 3 {{perk points}} before the first choice. Use mouse and keyboard u
   - nexus: 136384
 - **Alternate Perspective**: The start menu at the dragon statue, with starts from New Beginnings and Adventurer's Start.
   - nexus: 50307
+- **Callings**: Role-play experience for a custom character. It gives a start that makes sense, a bard playing the inn or a scholar reading every book in town, instead of opening on crabs, wolves and bandits. Not part of LoreRim.
+  - tag: Not yet published
 :::
 
 :::ask{q="Can I change these later?"}

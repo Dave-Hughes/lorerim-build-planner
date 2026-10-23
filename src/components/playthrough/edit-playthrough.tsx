@@ -1,9 +1,11 @@
 "use client";
 
+import { ModsEditor } from "@/components/ui/mods-editor";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { EditBar, type SaveState } from "@/components/editor/edit-bar";
 import type { ExtraMention } from "@/lib/guide/mention";
+import type { Answer } from "@/lib/playthroughs/types";
 import * as act from "@/lib/playthroughs/actions";
 import { Report, useSave, type EditData } from "./edit-parts";
 import { PlayEdit } from "./play-edit";
@@ -48,6 +50,11 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
         <span className={s.lbl}>One line</span>
         <textarea className={`textarea ${s.in}`} rows={3} value={line} maxLength={140} onChange={(e) => setLine(e.target.value)} onBlur={() => line !== data.line && save(() => act.saveDetails(data.id, { line }), true)} />
       </label>
+      <Answers data={data} save={save} />
+      <span className={s.field}>
+        <span className={s.lbl}>Mods this character needs</span>
+        <ModsEditor mods={data.mods} idPrefix="run-mod" onChange={(mods) => save(() => act.saveDetails(data.id, { mods }), true)} />
+      </span>
       <label className={s.field}>
         <span className={s.lbl}>Build</span>
         <select className="select" value={data.buildId ?? ""} onChange={(e) => save(() => act.saveDetails(data.id, { buildId: e.target.value || null }), true)}>
@@ -121,5 +128,49 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
         </span>
       )}
     </section>
+  );
+}
+
+/**
+ * About her (WO-139 Part 2): the Before you design answers as a plain list the player can edit, each saved as the whole
+ * list when a field is left; a row is saved once it has both a question and an answer.
+ */
+function Answers({ data, save }: { data: EditData; save: ReturnType<typeof useSave>["save"] }) {
+  const [rows, setRows] = useState<Answer[]>(data.answers);
+  const [saved, setSaved] = useState(JSON.stringify(data.answers));
+  const keep = (next: Answer[]) => {
+    const kept = next.filter((r) => r.question.trim() && r.answer.trim());
+    if (JSON.stringify(kept) === saved) return;
+    setSaved(JSON.stringify(kept));
+    save(() => act.saveDetails(data.id, { answers: kept }), true);
+  };
+  const set = (i: number, patch: Partial<Answer>) => setRows((r) => r.map((x, j) => (j === i ? { ...x, ...patch } : x)));
+  return (
+    <span className={s.field}>
+      <span className={s.lbl}>About her</span>
+      {rows.map((r, i) => (
+        <span key={i} className={s.answerRow}>
+          <input className={`input ${s.in}`} aria-label={`Question ${i + 1}`} placeholder="[The question]" value={r.question} maxLength={300} onChange={(e) => set(i, { question: e.target.value })} onBlur={() => keep(rows)} />
+          <textarea className={`textarea ${s.in}`} aria-label={`Answer ${i + 1}`} placeholder="[Her answer]" rows={2} value={r.answer} maxLength={300} onChange={(e) => set(i, { answer: e.target.value })} onBlur={() => keep(rows)} />
+          <button
+            type="button"
+            className="btn btn-sm"
+            style={{ alignSelf: "flex-start" }}
+            onClick={() => {
+              const next = rows.filter((_, j) => j !== i);
+              setRows(next);
+              keep(next);
+            }}
+          >
+            Remove
+          </button>
+        </span>
+      ))}
+      {rows.length < 12 && (
+        <button type="button" className="btn btn-sm" style={{ alignSelf: "flex-start" }} onClick={() => setRows((r) => [...r, { question: "", answer: "" }])}>
+          Add an answer
+        </button>
+      )}
+    </span>
   );
 }

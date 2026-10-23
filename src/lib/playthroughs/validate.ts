@@ -20,6 +20,16 @@ export const detailsSchema = z.object({
 /** The Tale page's title and epigraph (WO-114): plain lines, empty for none. */
 export const taleSchema = z.object({ taleTitle: line(L.chapterTitle).optional(), taleLine: line(L.line).optional() });
 
+/** The Before you design answers (WO-139 Part 2), in the player's words; empty rows are dropped. */
+export const answersSchema = z
+  .array(z.object({ question: line(L.answer, "Give the question."), answer: line(L.answer, "Give the answer.") }))
+  .max(L.answers, `Up to ${L.answers} answers.`);
+
+/** What the character will never do (WO-139 Part 3); which of these the planner keeps to is decided in lib/quests/never. */
+export const neverSchema = z
+  .array(z.object({ what: line(L.never, "Say what the character won't do."), words: line(L.answer).optional() }))
+  .max(L.nevers, `Up to ${L.nevers} things the character won't do.`);
+
 /** "1 to 6", "1-6", "40 and up", "40+", "6": the act's levels, or a message. */
 export function parseLevels(input: string): { from: number; to: number | null } | string {
   const s = input.trim().toLowerCase();

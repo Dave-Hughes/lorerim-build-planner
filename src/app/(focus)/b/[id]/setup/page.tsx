@@ -38,6 +38,7 @@ export default async function SetupPage({ params }: { params: Params }) {
             visibility: build.visibility,
             // No tags yet: the Name step suggests some from the majors.
             tags: build.tags.length ? build.tags : null,
+            mods: build.mods ?? null,
           }}
           signedIn
           drafted={build.draftedBy ? { by: build.draftedBy, show: build.showDrafted !== false } : null}

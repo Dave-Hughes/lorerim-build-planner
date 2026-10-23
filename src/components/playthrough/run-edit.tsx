@@ -37,6 +37,8 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
     coverImageUrl: p.build?.coverImageUrl ?? null,
     taleTitle: p.taleTitle ?? "",
     taleLine: p.taleLine ?? "",
+    answers: p.answers ?? [],
+    mods: p.mods ?? [],
     builds,
     characters: [...new Set([p.name, p.build?.name].filter((n): n is string => !!n))],
     stand: (() => {

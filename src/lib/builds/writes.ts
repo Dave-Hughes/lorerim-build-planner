@@ -1,3 +1,4 @@
+import { storedMods } from "@/lib/mods";
 import "server-only";
 import { and, desc, eq, like, lt, sql } from "drizzle-orm";
 import type { BatchItem } from "drizzle-orm/batch";
@@ -71,6 +72,7 @@ export async function insertBuild(
       gameVersion: plan.gameVersion,
       plan,
       draftedBy,
+      mods: storedMods(details.mods),
     });
   const tags = [...new Set(details.tags ?? [])];
   const rest = [...(tags.length ? [db().insert(schema.buildTags).values(tags.map((tagSlug) => ({ buildId: id, tagSlug })))] : []), ...(also?.(id) ?? []), revision(id, plan, saved)];
@@ -110,6 +112,7 @@ export async function writeDetails(userId: string, id: string, details: BuildDet
       // Only Listed builds can be featured (WO-39).
       ...(details.visibility === "public" ? {} : { featuredAt: null }),
       ...(extra.showDrafted === undefined ? {} : { showDrafted: extra.showDrafted }),
+      ...(details.mods === undefined ? {} : { mods: storedMods(details.mods) }),
     })
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ id: schema.builds.id });

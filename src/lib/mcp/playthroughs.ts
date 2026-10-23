@@ -1,3 +1,4 @@
+import { modsInOrder, type Mod } from "@/lib/mods";
 import "server-only";
 import { desc, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -5,7 +6,7 @@ import { db, schema } from "@/db";
 import { docText } from "@/lib/guide/doc";
 import { gearData } from "@/lib/gear/data";
 import { ipCall } from "@/lib/moderation/limits";
-import { placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
+import { lineOfQuest, placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
 import { placeByName, placesData, placeType } from "@/lib/places/data";
 import { actTowns, placesNear, unmeasured } from "@/lib/places/suggest";
 import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
@@ -13,16 +14,17 @@ import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/li
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { reviewRoutes } from "@/lib/playthroughs/route-review";
 import { reachLabel } from "@/lib/playthroughs/status";
-import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop } from "@/lib/playthroughs/types";
+import type { Answer, Detect, DoneBy, LinkKind, Never, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop } from "@/lib/playthroughs/types";
 import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
-import { openState } from "@/lib/quests/open";
+import { leftOutLine, type Nevers } from "@/lib/quests/never";
+import { openState, type PlayerState } from "@/lib/quests/open";
 import { stories } from "@/lib/quests/stories-data";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { logCounts, questLog } from "./quest-log";
-import { changesRun, openForYou, playerState, type Told } from "./facts";
+import { changesRun, neversOf, openForYou, playerState, type Told } from "./facts";
 import * as names from "./names";
 import { prepareBuild, type Player } from "./builds";
 import { insertBuild } from "@/lib/builds/writes";
@@ -290,6 +292,52 @@ export async function setPlaythrough(p: Player, input: { playthrough: string; na
   return { playthrough: pt.id, name: now.name, line: now.line, build: now.build ? { id: now.build.id, name: now.build.name } : null, link: link(p, pt.id) };
 }
 
+/**
+ * set_details' answers and never (WO-139 Parts 2 and 3), kept on the character's run: the playthrough named, or the run on
+ * the build named. The whole list each time; an empty list clears it.
+ */
+export async function setAbout(p: Player, input: { playthrough?: string; build?: string; answers?: Answer[]; never?: Never[]; mods?: Mod[] }) {
+  await writeGuard(p);
+  let ref = input.playthrough;
+  if (!ref) {
+    const buildId = pickBuild(await myBuilds(p), input.build ?? "");
+    const run = (await listMyPlaythroughs(p.userId)).find((r) => r.buildId === buildId);
+    if (!run) throw new FactsError("The answers and never are kept on the character's run, and this build has none yet. Make it with create_playthrough (build), then set them, or name the playthrough.");
+    ref = run.id;
+  }
+  const pt = await mine(p, ref);
+  // An id that names nothing is refused before anything is saved.
+  const nevers = input.never ? neversOf(input.never, pt.gameVersion) : null;
+  await writes(() => w.setDetails(p.userId, pt.id, { answers: input.answers, never: input.never, mods: input.mods }));
+  revalidatePath(`/p/${pt.id}`);
+  const now = (await getPlaythrough(pt.id, p.userId))!;
+  return { playthrough: pt.id, about: aboutOf(now), ...(now.mods?.length ? { mods: now.mods } : {}), ...(nevers?.items.some((n) => n.kind === "state" || n.kind === "own") ? { neverNote: NEVER_NOTE } : {}) };
+}
+
+const NEVER_NOTE = "The planner keeps to quest lines, stories and sides: suggest_quests and suggest_objective leave them out, get_quest says locked for this character, and get_playthrough warns. A state or the player's own line is kept and said back; keep to it yourself.";
+const NEVER_KIND = { line: "a quest line", side: "a side in the war", state: "a state", own: "the player's own words" } as const;
+
+/** The mods a character needs as get_playthrough lists them (WO-139 Part 4): required first, then recommended. */
+export function modsOf(mods: readonly Mod[] | null | undefined): Mod[] {
+  const { required, recommended } = modsInOrder(mods);
+  return [...required, ...recommended];
+}
+
+/** The Before you design answers and the never list (WO-139), as get_playthrough and set_details give them. */
+function aboutOf(pt: Pick<PlaythroughRecord, "answers" | "never" | "gameVersion">) {
+  let kept: ReturnType<typeof neversOf>["items"] = [];
+  try {
+    kept = neversOf(pt.never, pt.gameVersion).items;
+  } catch {
+    // A line the data no longer knows: shown as the player's own words.
+    kept = (pt.never ?? []).map((n) => ({ what: n.what, kind: "own" as const, says: n.words ?? n.what }));
+  }
+  return {
+    answers: (pt.answers ?? []).map((a) => ({ question: a.question, answer: a.answer })),
+    never: kept.map((n) => ({ what: n.what, is: n.line ? `${NEVER_KIND.line}: ${n.line.name}` : NEVER_KIND[n.kind], says: n.says, keptBy: n.kind === "line" || n.kind === "side" ? "the planner" : "you" })),
+  };
+}
+
 export async function addAct(p: Player, input: { playthrough: string; name: string; levels: string; place: string; goal: string; standingRule?: string; passedBy?: PassedBy[]; route?: RouteStop[] }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
@@ -330,11 +378,15 @@ export async function addObjective(p: Player, input: ObjectiveToolInput, suggest
   const a = actOf(pt, input.act);
   const after = input.after !== undefined ? objectiveOf(pt, input.after, a).id : null;
   const values = await writes(() => objectiveValues(pt, input));
+  // A suggestion never sends her where the player said never (WO-139 Part 3); the player's own objective saves, with a warning.
+  const never = neverTouch(neversOf(pt.never, pt.gameVersion), playerState({ never: pt.never }, pt.gameVersion), values.link, values.detect?.quest);
+  if (never && suggestedBy) throw new FactsError(`Not suggested: ${never.what} is behind something this character won't do (${never.says}).`);
   const id = await writes(() => w.addObjective(p.userId, pt.id, a.id, values, { after, suggestedBy }));
   // Advice while drafting (WO-123 Part 2): it saves the same either way.
   const warnings = [
     ...reviewPlaythrough([{ id, text: values.text, kind: values.kind, link: values.link, reach: values.reach }]),
     ...reviewRoutes([{ n: a.n, route: a.route, objectives: [{ id, text: values.text, why: values.why, stop: values.stop, link: values.link, detect: values.detect }] }]),
+    ...(never ? [{ code: "never", message: `Act ${a.n} ${a.name} sends this character to ${never.what} ("${values.text}"); ${never.says}.` }] : []),
   ];
   return {
     playthrough: pt.id,
@@ -458,7 +510,57 @@ function warningsOf(pt: PlaythroughRecord) {
     ...reviewPlaythrough(pt.view.acts.flatMap((a) => a.objectives).map((o) => ({ id: o.id, text: o.text, kind: o.kind, link: o.link, reach: o.reach }))),
     // The act's road (WO-129 Part 3): a trip back, an objective at no stop, a destination the game doesn't name.
     ...reviewRoutes(pt.view.acts),
+    // Something the player said she will never do (WO-139 Part 3).
+    ...neverWarnings(pt),
   ];
+}
+
+/** What a quest or line an objective names runs into on the never list (WO-139 Part 3): its name and what to say, or null. */
+function neverTouch(nv: Nevers, player: PlayerState, link: ObjectiveLink | null | undefined, quest: string | null | undefined): { what: string; says: string } | null {
+  if (!nv.items.length) return null;
+  const { byId } = questsData();
+  if (link?.kind === "line" && nv.lines.has(link.id)) return { what: byId.get(link.id)?.name ?? link.id, says: nv.lines.get(link.id)! };
+  const edid = quest ?? (link?.kind === "quest" ? link.id : null);
+  const line = edid ? lineOfQuest(edid) : null;
+  const q = line?.quests.find((x) => x.edid === edid);
+  if (!line || !q) return null;
+  if (nv.quests.has(q.edid)) return { what: q.name || line.name, says: nv.quests.get(q.edid)! };
+  const open = openForYou(line, q, player);
+  return "forCharacter" in open ? { what: q.name || line.name, says: open.because.join("; ") } : null;
+}
+
+/** Objectives, chapter unlocks and route stops that send the character where the player said never (WO-139 Part 3). */
+export function neverWarnings(pt: Pick<PlaythroughRecord, "never" | "gameVersion" | "view">): { code: "never"; message: string }[] {
+  if (!pt.never?.length) return [];
+  let nv: Nevers;
+  try {
+    nv = neversOf(pt.never, pt.gameVersion);
+  } catch {
+    return [];
+  }
+  const player = playerState({ never: pt.never }, pt.gameVersion);
+  const out: string[] = [];
+  const touched = new Map<number, { what: string; says: string }>();
+  for (const a of pt.view.acts) {
+    for (const o of a.objectives) {
+      const t = neverTouch(nv, player, o.link, o.detect?.quest);
+      if (!t) continue;
+      touched.set(o.id, t);
+      out.push(`Act ${a.n} ${a.name} sends this character to ${t.what} ("${o.text}"); ${t.says}.`);
+    }
+    // A stop the route makes for a line she won't do: the stop's place or why names it.
+    for (const r of a.route ?? []) {
+      for (const [id, says] of nv.lines) {
+        const name = (questsData().byId.get(id)?.name ?? "").replace(/^The /, "").toLowerCase();
+        if (name && `${r.place} ${r.why}`.toLowerCase().includes(name)) out.push(`Act ${a.n} ${a.name}'s route stops at ${r.place} for ${questsData().byId.get(id)!.name}; ${says}.`);
+      }
+    }
+  }
+  for (const c of pt.view.chapters) {
+    const t = c.kind === "beat" && c.inGame ? touched.get(c.inGame.id) : undefined;
+    if (t) out.push(`The chapter ${c.title} unlocks when "${c.inGame!.text}" is done, at ${t.what}; ${t.says}.`);
+  }
+  return [...new Set(out)].map((message) => ({ code: "never" as const, message }));
 }
 
 /**
@@ -516,6 +618,10 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     // The character's build (WO-114): its id, name, cover and levels.
     build: pt.build ? { id: pt.build.id, name: pt.build.name, cover: pt.build.coverImageUrl, levels: pt.build.levels, link: `${p.origin}/b/${pt.build.id}` } : null,
     draftedByAnAssistant: !!pt.draftedBy,
+    // Before you design (WO-139): the player's answers and what she will never do.
+    ...(pt.answers?.length || pt.never?.length ? { about: aboutOf(pt) } : {}),
+    // The mods this character needs (WO-139 Part 4), required first.
+    ...(pt.mods?.length ? { mods: modsOf(pt.mods) } : {}),
     done: `${v.done} of ${v.total}`,
     whereYouStand: pt.snapshot
       ? {
@@ -610,10 +716,13 @@ export async function toldOf(input: { level?: number; done?: string[]; playthrou
   const done = [...(input.done ?? [])];
   let level = input.level ?? null;
   let stages: Record<string, number> = {};
+  let never: Never[] | null = null;
   if (input.playthrough && userId) {
     const pt = await getPlaythrough(input.playthrough, userId);
     if (pt) {
       level ??= pt.snapshot?.level ?? null;
+      // What she will never do (WO-139 Part 3): the quest tools keep to it.
+      never = pt.never ?? null;
       stages = { ...(pt.snapshot?.questStages ?? {}) };
       for (const o of pt.view.acts.flatMap((a) => a.objectives)) {
         if (!o.worked.done) continue;
@@ -621,7 +730,7 @@ export async function toldOf(input: { level?: number; done?: string[]; playthrou
       }
     }
   }
-  return { level, done, stages };
+  return { level, done, stages, never };
 }
 
 /**
@@ -641,14 +750,28 @@ export function startsAt(line: Pick<QuestLine, "where" | "giver">, first: Pick<Q
  * why it's open, and the planner's link.
  */
 export async function suggestQuests(origin: string, input: { level: number; where?: string; done?: string[]; playthrough?: string }, userId: string | null) {
+  return suggestFrom(origin, input, await toldOf(input, userId));
+}
+
+/** suggest_quests on what the player told the planner, playthrough read: the tests ask it with a never list of their own. */
+export function suggestFrom(origin: string, input: { level: number; where?: string }, told: Told) {
   const { byId } = questsData();
-  const told = await toldOf(input, userId);
   const player = playerState(told);
+  // Stories behind something the character will never do (WO-139 Part 3): left out, and said once.
+  const nevers = neversOf(told.never);
+  const leftOut = stories().flatMap((s) => {
+    const line = byId.get(s.line);
+    if (!line) return [];
+    if (nevers.lines.has(line.id)) return [nevers.lines.get(line.id)!];
+    const first = line.quests.find((q) => q.edid === line.opening) ?? line.quests[0];
+    const open = openForYou(line, first, player);
+    return "forCharacter" in open ? open.because : [];
+  });
   const order = mainOrder().map((q) => q.edid);
   const where = input.where?.trim().toLowerCase();
   const out = stories()
     .map((s) => ({ s, line: byId.get(s.line) }))
-    .filter(({ line }) => line && line.checked.start === "files" && !line.quests.every((q) => player.done.has(q.edid)))
+    .filter(({ line }) => line && line.checked.start === "files" && !nevers.lines.has(line.id) && !line.quests.every((q) => player.done.has(q.edid)))
     .filter(({ line }) => openState(gateOf(line!), { level: input.level, mainAt: null, finished: told.done ?? [] }, order) === "open")
     .map(({ s, line }) => {
       const first = line!.quests.find((q) => q.edid === line!.opening) ?? line!.quests[0];
@@ -669,9 +792,11 @@ export async function suggestQuests(origin: string, input: { level: number; wher
       openForYou: open.says,
       link: `${origin}/quests/s/${s.id}`,
     }));
+  const left = leftOutLine(leftOut.length, leftOut);
   return {
     level: input.level,
     suggestions: out,
+    ...(left ? { leftOut: left } : {}),
     note: out.length
       ? "Each is open for the player by the planner's checked starts. Offer them as suggestions; nothing is added unless they accept. Don't offer a quest the planner hasn't answered open for."
       : "No checked story is open for the player at that level and place.",

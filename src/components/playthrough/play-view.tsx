@@ -1,3 +1,4 @@
+import { ModsNeeded } from "@/components/ui/mods-needed";
 import Link from "next/link";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { byStop, standLine, whereLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
@@ -25,6 +26,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
           </Link>
         )}
         <RunHero p={p} isOwner={isOwner} />
+        <ModsNeeded mods={p.mods} />
         <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
       </main>
     </ReaderProvider>
@@ -57,6 +59,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
 
   return (
     <div className={s.body}>
+      <AboutHer answers={p.answers} />
       <div className={s.grid}>
         <aside className={s.col}>
           {/* Her story, always on show (WO-124, the PlayRail board). */}
@@ -273,3 +276,22 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
   );
 }
 
+/** About her (WO-139 Part 2): the Before you design answers, in the player's words, only when there are any. */
+function AboutHer({ answers }: { answers: PlaythroughRecord["answers"] }) {
+  if (!answers?.length) return null;
+  return (
+    <section aria-labelledby="about" className={s.about}>
+      <h2 id="about" className={`${s.h2} ${s.h2s}`}>
+        About her
+      </h2>
+      <dl className={s.aboutList}>
+        {answers.map((a, i) => (
+          <div key={i} className={s.aboutRow}>
+            <dt>{a.question}</dt>
+            <dd>{a.answer}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}

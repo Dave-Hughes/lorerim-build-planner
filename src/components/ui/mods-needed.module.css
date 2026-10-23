@@ -1,0 +1,47 @@
+/* Mods this character needs (WO-139): a plain list under the hero, in the page's own rules. */
+.mods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--soft);
+}
+.h3 {
+  margin: 6px 0 0;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--soft);
+}
+.list {
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+  gap: 4px 24px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.row dt {
+  font-size: 16px;
+  color: var(--text);
+}
+.row dd {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text);
+}
+@media (max-width: 599px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

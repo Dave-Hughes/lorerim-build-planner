@@ -1,3 +1,4 @@
+import type { Mod } from "@/lib/mods";
 import type { BuildPlan } from "@/lib/rules/types";
 import type { BuildVisibility } from "./validate";
 
@@ -36,6 +37,8 @@ export interface BuildRecord {
   /** The assistant that drafted it (WO-110), and whether the page says so. */
   draftedBy?: string | null;
   showDrafted?: boolean;
+  /** Mods the character needs that LoreRim doesn't ship (WO-139 Part 4). */
+  mods?: Mod[] | null;
 }
 
 /** What a list card needs; no plan, so lists stay light. */

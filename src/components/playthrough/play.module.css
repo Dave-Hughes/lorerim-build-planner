@@ -232,6 +232,42 @@
   font-size: 14px;
 }
 
+/* About her (WO-139): the player's answers, a plain list over the acts. */
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1196px;
+}
+.aboutList {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 32px;
+  border-top: 1px solid var(--rule);
+}
+.aboutRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.aboutRow dt {
+  font-size: 15px;
+  color: var(--soft);
+}
+.aboutRow dd {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text);
+}
+@media (max-width: 899px) {
+  .aboutList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .grid {
   display: grid;
   /* The PlayCalm board (WO-118): the acts at 240, the act up to 900, nothing on the right. */

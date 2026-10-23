@@ -7,7 +7,9 @@ import { currentVersion } from "@/lib/rules/versions";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder, type Story } from "@/lib/quests/story";
+import { resolveNevers, type Nevers } from "@/lib/quests/never";
 import { openFor, questNames, type PlayerState } from "@/lib/quests/open";
+import type { Never } from "@/lib/playthroughs/types";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 import { startChecked } from "@/lib/quests/types";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
@@ -430,6 +432,17 @@ export interface Told {
   done?: string[];
   /** A save's quest stages by EDID (WO-112). */
   stages?: Record<string, number> | null;
+  /** What the character will never do (WO-139), from the playthrough. */
+  never?: Never[] | null;
+}
+
+/** A playthrough's never list as the quest tools keep to it (WO-139 Part 3). */
+export function neversOf(list: readonly Never[] | null | undefined, version = DEFAULT_VERSION): Nevers {
+  try {
+    return resolveNevers(list, questsFor(version).lines, stories());
+  } catch (e) {
+    throw new FactsError((e as Error).message);
+  }
 }
 
 /** What the planner knows of the player, from what they told it: finished lines count every quest in them. */
@@ -444,7 +457,8 @@ export function playerState(told: Told, version = DEFAULT_VERSION): PlayerState 
     for (const l of lines) for (const q of l.quests) if (norm(q.edid) === k) done.add(q.edid);
     for (const e of names.get(k) ?? []) done.add(e);
   }
-  return { level: told.level ?? null, done, stages: told.stages ?? {} };
+  const never = neversOf(told.never, version).quests;
+  return { level: told.level ?? null, done, stages: told.stages ?? {}, ...(never.size ? { never } : {}) };
 }
 
 const SAYS = { open: "open for you", locked: "locked", unknown: "unknown" } as const;
@@ -457,6 +471,8 @@ export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, versio
   // records' own needs gate one of its quests, never the one listed before it.
   const prior = i > 0 && quest.edid !== line.opening && line.category !== "work" ? line.quests[i - 1] : null;
   const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)), prior);
+  // Locked for this character (WO-139): a quest behind something the player said she will never do, in their words.
+  if (r.forCharacter) return { state: r.state, says: `locked for this character: ${r.because.join("; ")}`, because: r.because, forCharacter: true as const };
   return { state: r.state, says: r.state === "open" ? SAYS.open : `${SAYS[r.state]}: ${r.because.join("; ")}`, because: r.because };
 }
 

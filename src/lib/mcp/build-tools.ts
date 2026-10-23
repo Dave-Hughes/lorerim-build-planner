@@ -3,6 +3,7 @@ import type { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
 import { writer, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { DEFAULT_VERSION, FactsError } from "./errors";
+import { setAbout } from "./playthroughs";
 import { addLevel, createBuild, finishDraft, getBuild, listMyBuilds, removeLastLevel, setCreation, setDetails, setGear, setLevel, type Player } from "./builds";
 
 /** The build tools' registration on the MCP server (WO-110), each needing a sign-in with builds:write. */
@@ -67,7 +68,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
   tool(
     "create_build",
     "Start a build",
-    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names, checked as the site's Set up checks them: 3 majors, 6 minors, a birthsign, a start and its option, each trait's choice. Refused with every choice still to make, and the options. Call get_creation first for the choices, get_rules for how points work, and get_tree to plan a skill's perks.",
+    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names, checked as the site's Set up checks them: 3 majors, 6 minors, a birthsign, a start and its option, each trait's choice. Refused with every choice still to make, and the options. Call get_creation first for the choices, get_rules for how points work, and get_tree to plan a skill's perks. Before it, settle the style guide's Before you design questions (rules 27 to 36) with the player, and keep their answers with set_details.",
     z.object({ name: name("The build's name."), description: z.string().max(300).optional(), version: z.string().max(20).optional().describe(`The LoreRim version, ${DEFAULT_VERSION} if left out.`), ...creationFields }),
     (p, a: Parameters<typeof createBuild>[1]) => createBuild(p, a),
   );
@@ -100,12 +101,72 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
     z.object({ build, gear: z.array(gearRow).max(60) }),
     (p, a: Parameters<typeof setGear>[1]) => setGear(p, a),
   );
-  tool(
+  // set_details (WO-139): the build's details need builds:write; the answers and never, kept on the run, playthroughs:write too.
+  server.registerTool(
     "set_details",
-    "Set the details",
-    "Set the name, description, notes, tags (by slug) or main spells (by name) of one of the player's builds.",
-    z.object({ build, name: z.string().max(80).optional(), description: z.string().max(300).optional(), notes: z.string().max(6000).optional(), tags: z.array(z.string().max(40)).max(10).optional(), mainSpells: z.array(z.string().max(120)).max(8).optional() }),
-    (p, a: Parameters<typeof setDetails>[1]) => setDetails(p, a),
+    {
+      title: "Set the details",
+      description:
+        "Set the name, description, notes, tags (by slug) or main spells (by name) of one of the player's builds; and the character's Before you design answers, what they will never do, and the mods they need (style guide rules 27 to 36). answers and never are kept on the character's run: the playthrough named, or the run on the build named. mods go on the playthrough when one is named, else on the build. Each is the whole list each time; an empty list clears it.",
+      inputSchema: z.object({
+        build: build.optional().describe("The build's id, from create_build or list_my_builds. Needed for the build's own details."),
+        playthrough: z.string().min(1).max(80).optional().describe("The character's run, by id or name, for answers and never; the run on build when left out."),
+        name: z.string().max(80).optional(),
+        description: z.string().max(300).optional(),
+        notes: z.string().max(6000).optional(),
+        tags: z.array(z.string().max(40)).max(10).optional(),
+        mainSpells: z.array(z.string().max(120)).max(8).optional(),
+        answers: z
+          .array(z.object({ question: z.string().min(1).max(300).describe("The question, as you asked it."), answer: z.string().min(1).max(300).describe("The player's answer, in their words.") }))
+          .max(12)
+          .optional()
+          .describe("The Before you design questions you settled with the player, and their answers: up to 12."),
+        never: z
+          .array(
+            z.object({
+              what: z.string().min(1).max(120).describe('A quest line or story id ("main-quest", "the-dark-brotherhood"), a side ("imperial", "stormcloak"), a state ("vampire", "werewolf"), or a line in the player\'s words ("never kills for money").'),
+              words: z.string().max(300).optional().describe('How the player said it, said back when something is left out: "she won\'t be the Dragonborn".'),
+            }),
+          )
+          .max(20)
+          .optional()
+          .describe("What the character will never do, from the answers. The planner keeps to quest lines, stories and sides."),
+        mods: z
+          .array(
+            z.object({
+              name: z.string().min(1).max(80).describe('The mod\'s name ("Callings").'),
+              link: z.string().max(500).optional().describe("The Nexus or other page for the mod. Leave it out when it isn't published yet."),
+              why: z.string().min(1).max(300).describe("One line: what this character needs it for."),
+              need: z.enum(["required", "recommended"]),
+            }),
+          )
+          .max(12)
+          .optional()
+          .describe("Mods this character needs that LoreRim doesn't ship (rule 36), kept on the playthrough when one is named, else on the build. The whole list each time; an empty list clears it."),
+      }),
+    },
+    async (args: unknown, ctx: Ctx) =>
+      guarded(async () => {
+        const a = args as Parameters<typeof setDetails>[1] & Parameters<typeof setAbout>[1] & { build?: string };
+        const auth = ctx.http?.authInfo as PlannerAuth | undefined;
+        const modsOnRun = a.mods !== undefined && !!a.playthrough;
+        const own = a.name !== undefined || a.description !== undefined || a.notes !== undefined || a.tags !== undefined || a.mainSpells !== undefined || (a.mods !== undefined && !modsOnRun);
+        const about = a.answers !== undefined || a.never !== undefined || modsOnRun;
+        if (!a.build && !a.playthrough) throw new FactsError("Name the build, or the playthrough for answers and never.");
+        if (own && !a.build) throw new FactsError("Name the build for its name, description, notes, tags or main spells, or for mods when no playthrough is named.");
+        let out: Record<string, unknown> = {};
+        if (about) {
+          const w = await writer(auth, "playthroughs:write");
+          if ("refusal" in w) throw new FactsError(w.refusal);
+          out = { ...(await setAbout({ ...w, origin }, { ...a, mods: modsOnRun ? a.mods : undefined })) };
+        }
+        if (own || !about) {
+          const w = await writer(auth, "builds:write");
+          if ("refusal" in w) throw new FactsError(w.refusal);
+          out = { ...(await setDetails({ ...w, origin }, { ...a, build: a.build! })), ...out };
+        }
+        return out;
+      }),
   );
   tool("get_build", "Read a build", "Get one of the player's builds in the same plain shape the inputs use, each level with its state, plus its review link and who can see it. Unspent skill points carry to the next level, as on the site.", z.object({ build }), (p, a: { build: string }) => getBuild(p, a));
   tool("list_my_builds", "List the player's builds", "List the signed-in player's builds: id, name, who can see it, levels, last change, whether an assistant drafted it, and its run when it has one.", z.object({}), (p) => listMyBuilds(p));

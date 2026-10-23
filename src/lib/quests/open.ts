@@ -75,6 +75,8 @@ export interface PlayerState {
   done: ReadonlySet<string>;
   /** The highest stage the save shows for a quest, by EDID (WO-112); empty until a save carries them. */
   stages: Readonly<Record<string, number>>;
+  /** What the character will never do (WO-139): quests by EDID, each with what to say. */
+  never?: ReadonlyMap<string, string>;
 }
 
 export type OpenState = "open" | "locked" | "unknown";
@@ -82,17 +84,19 @@ export type OpenState = "open" | "locked" | "unknown";
 /** Each quest's EDIDs by name, lower case (two quests can share a name: Season Unending). */
 export type QuestNames = ReadonlyMap<string, string[]>;
 
-type Verdict = { ok: true } | { ok: false; why: string } | { ok: null; why: string };
+type Verdict = { ok: true } | { ok: false; why: string; never?: true } | { ok: null; why: string };
 const MET: Verdict = { ok: true };
 const unknown = (why: string): Verdict => ({ ok: null, why });
 
 /** A quest named in a need, as far as the planner knows it: done, its highest stage, or nothing. */
-function progress(name: string, names: QuestNames, p: PlayerState): { known: boolean; done: boolean; stage: number | null; found: boolean } {
+function progress(name: string, names: QuestNames, p: PlayerState): { known: boolean; done: boolean; stage: number | null; found: boolean; never: string | null } {
   const edids = names.get(name.trim().toLowerCase()) ?? [];
+  // Every quest of that name is one the character will never do (WO-139).
+  const never = edids.length && p.never && edids.every((e) => p.never!.has(e)) ? p.never.get(edids[0])! : null;
   const done = edids.some((e) => p.done.has(e));
   const stages = edids.map((e) => p.stages[e]).filter((n): n is number => typeof n === "number");
   const stage = stages.length ? Math.max(...stages) : null;
-  return { found: edids.length > 0, done, stage, known: done || stage !== null };
+  return { found: edids.length > 0, done, stage, known: done || stage !== null, never };
 }
 
 /** One need in the start check's words, against the player: met, not met (and why), or can't tell. */
@@ -135,6 +139,7 @@ function judge(need: string, names: QuestNames, p: PlayerState): Verdict {
     const q = progress(quest, names, p);
     if (!q.found) return unknown(`needs ${n}, a quest the planner can't find`);
     if (q.done) return MET;
+    if (q.never) return { ok: false, why: q.never, never: true };
     if (at !== null && q.stage !== null) return q.stage >= at ? MET : { ok: false, why: `needs ${quest} past stage ${at}` };
     if (at === null && q.stage !== null) return { ok: false, why: `needs ${quest} finished` };
     return unknown(`needs ${completed ? `${quest} finished` : `${quest} (stage ${at})`}, and the planner hasn't been told how far that is`);
@@ -152,6 +157,10 @@ function judge(need: string, names: QuestNames, p: PlayerState): Verdict {
     if (q.done && op !== "!=") return { ok: false, why: `only before ${quest} is far along, and it's done` };
     return unknown(`only while ${quest} is before stage ${at}, and the planner hasn't been told how far that is`);
   }
+  // "After Joining the Legion", no stage given: the planner doesn't judge it, except that a quest she will never do never comes (WO-139).
+  const after = /^After (.+)$/.exec(n);
+  const never = after ? progress(after[1], names, p).never : null;
+  if (never) return { ok: false, why: never, never: true };
   return unknown(n.startsWith("a condition") ? "a condition the start check can't name yet" : `needs ${n}`);
 }
 
@@ -182,16 +191,21 @@ const plainWhy = (why: string) => (RECORD.test(why) ? SAID : why);
  * unknown until the planner knows the one before it is done.
  */
 export function openFor(
-  quest: { start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string }[]; checked: string; raw?: { needs: string[] } } },
+  quest: { edid?: string; start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string }[]; checked: string; raw?: { needs: string[] } } },
   p: PlayerState,
   names: QuestNames,
   /** The quest before it in its line, if it isn't the line's first: a talk that opens it can hang on that one, in ways the check can't see. */
   prior: { edid: string; name: string } | null = null,
-): { state: OpenState; because: string[] } {
+): { state: OpenState; because: string[]; forCharacter?: true } {
+  // A quest the character will never do, or one that needs one (WO-139): locked for this character, before any other gate.
+  const own = quest.edid ? p.never?.get(quest.edid) : undefined;
+  if (own) return { state: "locked", because: [own], forCharacter: true };
   // Traced in the files, or confirmed by the answer key (WO-136 ruling 2).
   if (!quest.start || (quest.start.checked !== "files" && quest.start.checked !== "uesp")) return { state: "unknown", because: ["the start isn't checked yet"] };
   // The record form (WO-126): the words are for players, the stages and counts for judging.
   const verdicts = (quest.start.raw?.needs ?? quest.start.needs ?? []).map((n) => judge(n, names, p));
+  const never = [...new Set(verdicts.filter((v): v is { ok: false; why: string; never: true } => v.ok === false && !!v.never).map((v) => v.why))];
+  if (never.length) return { state: "locked", because: never, forCharacter: true };
   if (prior && !p.done.has(prior.edid)) verdicts.push(unknown(`comes after ${prior.name || prior.edid}, and the planner hasn't been told that's done`));
   const no = [...new Set(verdicts.filter((v): v is { ok: false; why: string } => v.ok === false).map((v) => plainWhy(v.why)))];
   if (no.length) return { state: "locked", because: no };

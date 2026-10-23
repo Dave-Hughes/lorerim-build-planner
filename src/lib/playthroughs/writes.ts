@@ -1,3 +1,4 @@
+import { modsSchema, storedMods, type Mod } from "@/lib/mods";
 import "server-only";
 import { and, asc, count, eq, inArray, isNotNull, max, sql } from "drizzle-orm";
 import type { BatchItem } from "drizzle-orm/batch";
@@ -7,8 +8,8 @@ import { checkGuideDoc, docText, imageUrls, isEmptyDoc, lineDoc, type GuideDoc }
 import { isOurImage } from "@/lib/guide/images";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { newAccountHold } from "@/lib/moderation/limits";
-import { actSchema, chapterTitleSchema, detailsSchema, firstIssue, stopKey, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
-import { PLAYTHROUGH_LIMITS, type ChapterKind, type ObjectiveStatus, type RouteStop } from "./types";
+import { actSchema, answersSchema, chapterTitleSchema, detailsSchema, neverSchema, firstIssue, stopKey, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
+import { PLAYTHROUGH_LIMITS, type Answer, type ChapterKind, type Never, type ObjectiveStatus, type RouteStop } from "./types";
 import { storyOrder } from "./view";
 
 /**
@@ -78,13 +79,20 @@ export async function createPlaythrough(userId: string, input: { name: string; l
 export async function setDetails(
   userId: string,
   id: string,
-  input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; taleTitle?: string; taleLine?: string },
+  input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; taleTitle?: string; taleLine?: string; answers?: Answer[]; never?: Never[]; mods?: Mod[] },
 ) {
   const p = await ownedPlaythrough(userId, id);
   const d = detailsSchema.safeParse({ name: input.name ?? p.name, line: input.line ?? p.line });
   if (!d.success) fail(firstIssue(d.error));
   const tale = taleSchema.safeParse({ taleTitle: input.taleTitle, taleLine: input.taleLine });
   if (!tale.success) fail(firstIssue(tale.error));
+  // The Before you design answers and what she will never do (WO-139): the whole list each time, empty rows dropped.
+  const answers = input.answers === undefined ? undefined : answersSchema.safeParse(input.answers.filter((a) => a.question.trim() || a.answer.trim()));
+  if (answers && !answers.success) fail(firstIssue(answers.error));
+  const never = input.never === undefined ? undefined : neverSchema.safeParse(input.never.filter((n) => n.what.trim()));
+  if (never && !never.success) fail(firstIssue(never.error));
+  const mods = input.mods === undefined ? undefined : modsSchema.safeParse(input.mods);
+  if (mods && !mods.success) fail(firstIssue(mods.error));
   const build = input.buildId === undefined ? undefined : await ownBuild(userId, input.buildId);
   if (input.visibility === "public" && p.visibility !== "public") {
     const hold = await newAccountHold(userId);
@@ -110,6 +118,9 @@ export async function setDetails(
       ...(input.showDrafted === undefined ? {} : { showDrafted: input.showDrafted }),
       ...(tale.data!.taleTitle === undefined ? {} : { taleTitle: tale.data!.taleTitle || null }),
       ...(tale.data!.taleLine === undefined ? {} : { taleLine: tale.data!.taleLine || null }),
+      ...(answers ? { answers: answers.data!.length ? answers.data! : null } : {}),
+      ...(mods ? { mods: storedMods(mods.data) } : {}),
+      ...(never ? { never: never.data!.length ? never.data!.map((n) => ({ what: n.what, ...(n.words ? { words: n.words } : {}) })) : null } : {}),
     })
     .where(eq(schema.playthroughs.id, p.id));
   // Attaching moves the build's Story into the run, in the same transaction; detaching leaves the chapters.

@@ -5120,12 +5120,26 @@ A thief who never kills got `never: kill` nowhere to go, and the assistant could
 - 22. "What mods does Kyria need?": `get_playthrough` lists Callings, required, with its link and why.
 
 ### Done when
-- [ ] Part 1: the section and the How to build lines in the guide (the reason-to-travel line softened), the two descriptions, the renumbering test.
-- [ ] Part 2: `answers` through the door and on both pages; screenshots.
-- [ ] Part 3: `never` through the door; `suggest_quests`, `suggest_objective`, `get_quest` and the warnings keep to it, with tests on a playthrough whose never holds `main-quest` and `the-dark-brotherhood`.
-- [ ] Part 5: `kill` on the never list reads the objectives; tests as above.
-- [ ] Part 4: `mods` through the door, on the edit pages and both public pages; Callings on the mods guide page (link from Dave) and on Kyria's playthrough; the style-guide rule. Screenshots.
-- [ ] Player questions 19 to 22 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+- [x] Part 1: the section and the How to build lines in the guide (the reason-to-travel line softened), the two descriptions, the renumbering test.
+- [x] Part 2: `answers` through the door and on both pages; screenshots (`test-results/wo139-about-1440.png`, `-390.png`, `wo139-edit-1440.png`, `-390.png`).
+- [x] Part 3: `never` through the door; `suggest_quests`, `suggest_objective`, `get_quest` and the warnings keep to it, with tests on a playthrough whose never holds `main-quest` and `the-dark-brotherhood`.
+- [ ] Part 5: `kill` on the never list reads the objectives; tests on Loud and Clear and Contract: Kill Hern. (Jeff, still to build.)
+- [x] Part 4: `mods` through the door, on the edit pages and both public pages; Callings on the mods guide page (no link: unpublished); the style-guide rule 36. Screenshots (`test-results/wo139-mods-1440.png`, `-390.png`).
+- [ ] Part 4, `activities`: the list of what LoreRim already lets a character do, through `get_rules`. (Jeff, still to build.)
+- [ ] Part 4, Kyria: Callings on Kyria's own playthrough as required, with Dave's why. Jeff can't reach that row; it is one `set_details` call once staging has deployed (below).
+- [ ] Player questions 19 to 22 pass (they do, for Parts 1 to 4 as built); every check in CLAUDE.md passes again after Part 5 and `activities`. Push staging with `Status: for Bob`.
+
+### Jeff's notes (Mac, 23 Oct)
+Decisions made under WO-138 Part 5, each with why:
+- **Where things live.** `answers`, `never` and `mods` are columns on the playthrough (migrations 0025, 0026, additive, nullable); a build also has `mods`. `set_details` with `playthrough` keeps all three on the run; with only `build` it keeps `mods` on the build, and `answers`/`never` on the run that build has (refused, with the way out, when it has none). Why: the run is the character's story and every quest tool already takes a playthrough. The character page merges the build's mods and the run's, a mod named on both once.
+- **Honesty keeps 22 to 26.** The order says the Honesty rules are renumbered after the new ones. I numbered the new section 27 to 36 instead, so no existing "rule 24" reference moves (the player questions and descriptions cite them). The test that no "rule N" in `src/lib/mcp` points past the last rule now says 36.
+- **Rule 19 softened too.** Its "Ask the player for it, or offer two or three" line contradicted "don't ask for it up front", so it now says it usually comes from the story and not to press for it. `create_playthrough`'s WO-127 sentence and the How to build line say the same.
+- **Question 21 changed (Bob to rule).** As written, `get_quest` for Dawnguard should say locked for a character who won't be the Dragonborn. The records don't gate Dawnguard on the main quest: Talk to Agmaer at Fort Dawnguard has no need, and Durak's need is met by a main quest never begun. Saying locked would break rule 24. The line the main quest does close is Dragonborn (Solstheim, waits on The Way of the Voice stage 160), so 21 now asks for Dawnguard open and Dragonborn locked for this character.
+- **What the planner keeps to.** Quest lines, stories and sides are enforced: `suggest_quests` leaves them out with "left out: 2 stories this character won't do (her words)"; `suggest_objective` refuses; `add_objective`, `get_playthrough` and `finish_draft_playthrough` warn (code `never`) for an objective, a chapter's unlock or a route stop; `get_quest` says `locked for this character: <her words>`. A side locks the war's quests behind its joining quests through their checked needs. States (vampire, werewolf) and the player's own lines are kept and said back with a note that the assistant must keep to them: no checked need names a vampire or a werewolf yet. `check_progression` takes a build with no playthrough, so it has no never to read; the warnings are on the playthrough tools.
+- **An unknown id is refused.** An id-shaped entry that names nothing ("the-thieves-gild") is refused with the ids it knows; anything with a space is the player's own line.
+- **Callings** is on the mods guide page through the Character chapter's Related Mods, tagged "Not yet published", no link; a mod's `link` is optional. Question 22 tests the shape (`get_playthrough`'s mods and the guide's page), with no link while it is unpublished.
+- **Checks.** Typecheck, lint and 575 unit tests (the player questions 1 to 22 pass; 23 is WO-141's, still marked) pass; `npm run build`; the full e2e passed 365 of 366 on the merged build. The one failure was `wo123.spec.ts` (Kyria's Play tab), which passes alone and in the first full run; its log showed `NeonDbError: fetch failed` from the dev database, so I put it down to connectivity, not this order. One real flaw the e2e found in my own work is fixed: the answers list tried to save a half-filled row.
+- **For Bob: Kyria's row.** Once staging has deployed, call `set_details` with `playthrough: "Kyria Severa"` and `mods: [{ name: "Callings", why: "<Dave's why>", need: "required" }]`, then read `get_playthrough` for question 22 live.
 
 ---
 

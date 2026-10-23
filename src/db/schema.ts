@@ -13,8 +13,9 @@ import {
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 import type { GuideDoc } from "@/lib/guide/doc";
+import type { Mod } from "@/lib/mods";
 import type { BuildPlan } from "@/lib/rules/types";
-import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
+import type { Answer, ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Never, PassedBy, Reach, RouteStop, SnapshotSource } from "@/lib/playthroughs/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
 
@@ -101,6 +102,8 @@ export const builds = pgTable(
     draftedBy: text("drafted_by"),
     /** Whether the page says who drafted it ("Drafted with Claude"); the author can turn it off in Set up. */
     showDrafted: boolean("show_drafted").notNull().default(true),
+    /** Mods the character needs that LoreRim doesn't ship (WO-139 Part 4). */
+    mods: jsonb("mods").$type<Mod[]>(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
@@ -352,6 +355,12 @@ export const playthroughs = pgTable(
     /** The Tale page's title and epigraph over its opening plate (WO-114): 60 and 140 at most. */
     taleTitle: text("tale_title"),
     taleLine: text("tale_line"),
+    /** The Before you design answers (WO-139 Part 2), in the player's words. */
+    answers: jsonb("answers").$type<Answer[]>(),
+    /** What the character will never do (WO-139 Part 3); the quest tools keep to it. */
+    never: jsonb("never").$type<Never[]>(),
+    /** Mods the character needs that LoreRim doesn't ship (WO-139 Part 4). */
+    mods: jsonb("mods").$type<Mod[]>(),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()

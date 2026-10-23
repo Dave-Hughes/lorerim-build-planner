@@ -1,3 +1,4 @@
+import { modsInOrder, type Mod } from "@/lib/mods";
 import { Heart } from "@/components/build/heart";
 import likeStyles from "@/components/build/like-button.module.css";
 import { BuildView, type BuildTab } from "@/components/build/build-view";
@@ -73,7 +74,7 @@ export async function CharacterPage({
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
         // A character's hero carries the run's name and line (WO-116); the build's own page, its own.
-        build={{ ...rest, ...(run ? { name: run.name, description: run.line || rest.description, ...(run.draftedBy ? { draftedBy: run.draftedBy, showDrafted: run.showDrafted } : {}) } : {}), coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
+        build={{ ...rest, mods: allMods(rest.mods, run?.mods), ...(run ? { name: run.name, description: run.line || rest.description, ...(run.draftedBy ? { draftedBy: run.draftedBy, showDrafted: run.showDrafted } : {}) } : {}), coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={level || run?.snapshot?.level || 1}
@@ -108,4 +109,10 @@ export function tabParam(tab: string | undefined, hasRun: boolean, home: BuildTa
   if (tab === "gear" || (!tab && level)) return "levels";
   if (tab === "play" && hasRun) return "play";
   return hasRun ? home : "levels";
+}
+
+/** The build's mods and the run's together, required first (WO-139 Part 4). */
+function allMods(...lists: (readonly Mod[] | null | undefined)[]): Mod[] {
+  const { required, recommended } = modsInOrder(...lists);
+  return [...required, ...recommended];
 }

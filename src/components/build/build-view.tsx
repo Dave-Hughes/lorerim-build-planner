@@ -1,5 +1,6 @@
 "use client";
 
+import { ModsNeeded } from "@/components/ui/mods-needed";
 import Link from "next/link";
 import { Tooltip } from "@/components/ui/tooltip";
 import { LikeButton } from "./like-button";
@@ -329,6 +330,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
         />
 
         <div className={`page ${styles.body}`}>
+          <ModsNeeded mods={build.mods} />
           {nudge && (
             <section className={styles.nudge} aria-labelledby="nudge-title">
               <span className={styles.nudgeText}>

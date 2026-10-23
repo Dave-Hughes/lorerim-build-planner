@@ -1,5 +1,6 @@
 "use client";
 
+import { ModsEditor } from "@/components/ui/mods-editor";
 import Link from "next/link";
 import { ImageSlot } from "@/components/ui/image-slot";
 import { AiAssisted } from "@/components/ui/ai-assisted";
@@ -1036,6 +1037,10 @@ function NameStep({
             </span>
             <input id="writeup-link" className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="[Discord or guide link]" />
           </div>
+        </div>
+        <div className="field">
+          <span className="label">Mods this character needs</span>
+          <ModsEditor mods={details.mods ?? []} idPrefix="build-mod" onChange={(mods) => updateDetails({ mods })} />
         </div>
         {creating && (
           <fieldset className={styles.radios}>
