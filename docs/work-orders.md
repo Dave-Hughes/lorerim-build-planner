@@ -5116,6 +5116,12 @@ Item 1 built: `places.py` gains `CAPITALS` (the nine hold capitals) and `SETTLEM
   - **Missing:** stables (each city's, with the stablemaster), the Bards College is in, the two colleges' halls are fine; check that each of the nine capitals has its inn, its temple and its keep.
 - **Item 4 built (PC, 23 Oct) -- Part 1's data side is done.** A `roads` table beside `places` in `places_raw.json` and `places.json`: every capital and settlement to every other in the same worldspace, by their own marker, with `km` and `walk`; never across worldspaces (Solstheim's Raven Rock and Skaal Village never road to a mainland town), never a pair twice, never through Thirsk (no marker). 172 roads: 171 mainland pairs (19 towns with a usable marker) plus the one Solstheim pair. `suggest_places`'s `nearTowns` and player question 26 are Mac's door reading this table, not the PC's to build -- not ticking Part 1's box for that reason; everything the PC owns in items 1 to 4 is built and tested (275 gamedata tests pass). `npm install` still flaky here; `typecheck`/`lint`/`npm test`/`build`/e2e remain unverified this session for that reason, unchanged from earlier in this order.
 
+### Part 1c. Clean the city buildings (Bob, 23 Oct, 15:45; feedback, before Part 2)
+Bob's 15:35 note above landed after item 3; nothing in it is applied yet. Do it now, then Part 2:
+- [ ] An inn has an innkeeper who rents a room; a temple a priest or its god's shrine; a keep its jarl. Drop the rest and log them ("Solitude" and "Whiterun" as inns, Cragwater Cavern, Fort Valus, The Hermit and its cellar, Home of Thane Alarik, the East Empire dormitory; "Temple Location", Markarth Outskirts, Snow-Shod Farm Cellar, Mausoleum).
+- [ ] Players' names, from the cell ("Vilemyr Inn", "Mistveil Keep", "Shor's Hall").
+- [ ] Stables, each with its stablemaster; every capital has an inn, a temple and a keep (test).
+
 ### Part 2. People
 Every person a design touches, from the records, in `people.json`: name, race, sex, where they stand (cell and town), and what they are to a player:
 - **Merchants and what they sell:** innkeepers, general goods, apothecaries, blacksmiths, fences, and the court wizards and College vendors with the spell tomes in their lists (the records' vendor containers and leveled lists). This answers "where is Calm sold", which every test hit.
