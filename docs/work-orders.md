@@ -2971,7 +2971,7 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 ---
 
 ## WO-71  Launch: the editor stays fast on a long build (14 Oct 2026)
-Status: for Dave
+Status: done
 
 **Why.** The chat session built a real 100-level build on staging: Sevari Uvayn, Morag Tong Nightblade, `/b/vhzj9w38n3`. It writes levels 1 to 5, then skips ahead in eight stretches to 100, with about 120 perks, gear, spells and a note on every key level. Vercel's toolbar flagged the editor's interactions:
 
@@ -3013,7 +3013,7 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 - [x] The fixture exists and is seeded for e2e.
 - [x] `e2e/perf.spec.ts` runs in `npm run test:e2e` and fails above the targets in point 4.
 - [x] Before and after numbers for each step are in the commit message.
-- [ ] The Sevari build on staging edits without a visible stall: Dave checks it in the app.
+- [x] The Sevari build on staging edits without a visible stall: Dave checks it in the app. (Dave, 23 Oct: tested, done.)
 - [x] All checks in CLAUDE.md pass.
 *Mac, 22 Oct: typecheck, lint, 549 unit tests, the 11 player questions, 229 game-data tests and the build pass on this tree; e2e 357 of 357 ran on the same code with WO-129 (4b70d6f), including perf.spec.ts and the tree-label tests at 390 and 1440. The perf test passed in the full run each time. The Sevari box stays for Dave.*
 
@@ -4638,7 +4638,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ---
 
 ## WO-111b  No unions in tool inputs (Mac, 19 Oct 2026)
-Status: for Dave
+Status: done
 
 **Why.** Dave's Claude drafted Kyria's playthrough through the door (33 objectives, five acts, the chapters) and reported that every `doneWhen: { reach: ... }` call failed input validation. Bob called the same tool on the local door with a token and all three reach shapes saved, so the planner is fine: Claude's connector checks arguments against the tool's JSON schema before sending, and `doneWhen` is a union of three shapes (`anyOf`), which it doesn't always get right. Keep every tool input to plain fields, one level deep, no unions.
 
@@ -4651,13 +4651,13 @@ Status: for Dave
 
 ### Done when
 - [x] `tools/list` on staging shows no `anyOf` or `oneOf` in any input schema.
-- [ ] Dave's Claude adds a reach objective ("Lute to 66") through the door and it saves with its meter.
+- [x] Dave's Claude adds a reach objective ("Lute to 66") through the door and it saves with its meter. (Dave, 23 Oct: tested, done.)
 - [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
 ---
 
 ## WO-111c  A playthrough's details through the door (Mac, 19 Oct 2026)
-Status: for Dave
+Status: done
 
 **Why.** Dave's Claude drafted Kyria's build after her playthrough and had no way to attach it: only `create_playthrough` takes a build. The edit page can, the door can't.
 
@@ -4666,7 +4666,7 @@ Status: for Dave
 - Unit test for the link, the unlink and the refusal; the WO-111 e2e links the drafted playthrough to the test author's build and sees the Build tab change.
 
 ### Done when
-- [ ] Dave's Claude links Kyria's playthrough to her build through the door and the Build tab shows "level 23 of 23".
+- [x] Dave's Claude links Kyria's playthrough to her build through the door and the Build tab shows "level 23 of 23". (Dave, 23 Oct: tested, done.)
 - [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
 ---
@@ -6053,7 +6053,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
 ---
 
 ## WO-112  The save reader (PC tonight, 20 Oct 2026)
-Status: for Dave
+Status: done
 
 **Why.** Dave's step 6 for playthroughs: the planner should know where the player really is, from their save, not from an estimate. Today "Where you stand" is typed by hand and quest objectives can't tick themselves, and WO-115's "open for you" can't know which quests are finished. Dave chose (20 Oct): **one reader, two ways in**, the site and a local connector; and **the newest save, but ask when it's a different character**.
 
@@ -6085,7 +6085,7 @@ Status: for Dave
 - Blocked (night run): `npm run test:e2e` and the screenshot need the dev database, and this PC has no `.env.local` or Vercel CLI to pull one. `e2e/wo112.spec.ts` is written (Read a save on a save built in the test: what it found, 1 of Kyria's 2 quest objectives ticked, Cancel, the wrong-character check and its question, a file that isn't a save) but not run. Typecheck, lint, `npm test` and `npm run build` pass. For Jeff on Mac or Bob: run `npx playwright test e2e/wo112.spec.ts`, and screenshot Play's edit tab with the panel open.
 - [x] Part 3: the save connector with `read_latest_save` and `list_saves`, its README, and the style guide line. (PC, night of 20 Oct: `tools/save-connector/` holds a local MCP server in Node with no packages, using the same `readSave`, and a Claude Desktop extension manifest with one setting, Save folders. `node tools/save-connector/build.mjs` bundles it and packs `dist/save-connector.mcpb`. Talking MCP to it here: `list_saves` lists Kyria's and Azrem's saves newest first. `read_latest_save({ character: "Azrem Shieldbreaker" })` says "The newest save is Kyria Severa's (Save 62); this is Azrem Shieldbreaker's newest, Save 383." and gives the snapshot for `set_snapshot`. For a character with no save, it lists the five newest. Rule 18 in the style guide carries the line. A snapshot from a save that brings no skills keeps the last ones. Azrem's newest save turned out to be Save 383, in "Extreme DLSS5"; it's added to `checked-2026-10-20.md`.)
 - Blocked (night run): installing `save-connector.mcpb` in Claude Desktop wasn't tried here (it needs the desktop app's Settings, which this run can't drive). The manifest follows the extension format as I know it (`manifest_version` 0.2, a node server, a multiple-directory setting); if Claude Desktop refuses it, the README's last section runs the same server by hand, and it can go in `claude_desktop_config.json` as `node <path>\dist\server\index.js "C:\LoreRim"`.
-- [ ] Every check in CLAUDE.md passes; behind the flag. Commit on `staging` per part, push, and stop: Dave adds the save connector, asks his Claude to update Kyria from her latest save, and sees Where you stand and her quest objectives fill in.
+- [x] Every check in CLAUDE.md passes; behind the flag. Commit on `staging` per part, push, and stop: Dave adds the save connector, asks his Claude to update Kyria from her latest save, and sees Where you stand and her quest objectives fill in. (Dave, 23 Oct: tested, done.)
 
 ---
 

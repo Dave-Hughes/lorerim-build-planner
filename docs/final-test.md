@@ -12,14 +12,14 @@ One pass, in your Claude, with the planner and the save connector on. Say right,
 Ask "How do I start X? I'm level N." Reply right, wrong (what the game did) or missing. Mix: a person gives it, it starts by itself, a book or note, a level or quest gate, a mod quest. Use the real quest name.
 
 ## C. The door
-5. Add a reach objective "Lute to 66" to Kyria's act. It saves with its meter. (WO-111b)
-6. Link Kyria's playthrough to her build. The Build tab shows "level 23 of 23". (WO-111c)
-7. "Update Kyria from her latest save." Where you stand and her quest objectives fill in. (WO-112)
+5. ~~Add a reach objective "Lute to 66" to Kyria's act. It saves with its meter. (WO-111b)~~ done 23 Oct
+6. ~~Link Kyria's playthrough to her build. The Build tab shows "level 23 of 23". (WO-111c)~~ done 23 Oct
+7. ~~"Update Kyria from her latest save." Where you stand and her quest objectives fill in. (WO-112)~~ done 23 Oct
 8. "Design me a new character." It asks why she travels. (WO-127)
 
 ## D. In the app
 9. Edit a build: the compact edit, the renamed tabs, the story card on the Playthrough rail, locked chapters, the reader inside the page. (WO-124)
-10. Edit the 100-level Sevari build without a stall. (WO-71)
+10. ~~Edit the 100-level Sevari build without a stall. (WO-71)~~ done 23 Oct
 
 ## E. When WO-128 and 129 are in
 11. "Plan a new act." It gives two to four places tied to people in the act's towns, and every objective says why it is there. (WO-128, 129)
