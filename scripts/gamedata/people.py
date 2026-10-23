@@ -82,7 +82,7 @@ def job_of(base, npcs, kname, depth=0):
 
 
 def build(version):
-    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, _features = pl.scan()
+    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, _features, _enable, _forced = pl.scan()
     races = scan_races()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
 

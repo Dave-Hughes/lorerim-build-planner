@@ -199,9 +199,16 @@ class BuiltIndex(unittest.TestCase):
         # caps the camp at 10; say "level 10", never "leveled from 10" (that reads as an open floor). A fort's
         # commander isn't always marked Boss in the records; fall back to its highest-level named, unique actor.
         self.assertEqual(self.by["Halted Stream Camp"]["actors"]["boss"]["level"], "level 10")
-        hraggstad_boss = self.by["Fort Hraggstad"]["actors"]["boss"]
-        self.assertEqual(hraggstad_boss["name"], "Imperial Soldier")
-        self.assertTrue(hraggstad_boss["level"].startswith("leveled"))
+        # WO-144 Part 1e-2 (Bob, 23 Oct, 17:20): the named commander found here is the Civil War's own
+        # reinforcement -- enable-parented to "CWGarrisonEnableMarkerImperialFortHraggstad", not present at the
+        # start -- so it's `afterTheWar`'s boss now, never the start's. The start's own baseline has no named
+        # standout, so its boss is the anonymous bandits' own ceiling, unnamed (Bob, 17:35: level first, a name is
+        # only the tie-break -- never required at all, or Faldar's Tooth's own minor named pet wins by default).
+        start = self.by["Fort Hraggstad"]["actors"]
+        self.assertNotIn("name", start["boss"])
+        after = start["afterTheWar"]
+        self.assertEqual(after["boss"]["name"], "Imperial Soldier")
+        self.assertTrue(after["boss"]["level"].startswith("leveled"))
 
     def test_the_fourteen_at_level_one_are_read_by_hand_not_guessed(self):
         # Bob, 23 Oct, 17:10: "The 14 still at 1 to 1 get read by hand and logged." Spot-checked directly against
@@ -287,6 +294,54 @@ class BuiltIndex(unittest.TestCase):
         bee = self.by["Bee and Barb"]
         self.assertNotIn("worthGoingFor", bee)
         self.assertNotIn("danger", bee)
+
+    def test_the_wars_garrison_is_separate_at_every_war_fort(self):
+        # WO-144 Part 1e-2 (Bob, 23 Oct, 17:20): "who's there when she arrives" at every fort the war contests --
+        # the start's own occupants (bandits, skeletons, whatever already holds it) never merge with the Civil
+        # War's own reinforcement (enable-parented to "CWGarrisonEnableMarkerImperial<Fort>"/"...Sons<Fort>",
+        # Bethesda's own naming across every fort and camp, both sides -- not a guess).
+        for name in ("Fort Hraggstad", "Fort Greymoor", "Fort Snowhawk", "Fort Amol"):
+            after = self.by[name]["actors"]["afterTheWar"]
+            self.assertIn(after["boss"]["name"], ("Imperial Soldier", "Fort Commander"))
+            self.assertTrue(after["boss"]["level"].startswith("leveled"))
+
+    def test_embershard_mines_wolves_are_not_the_wars_garrison(self):
+        # A disabled enable-parent isn't always the war's: Embershard Mine's wolves are parented to a leftover,
+        # disabled "E3demoMarker" with nothing to do with the Civil War, and stay counted at the start.
+        embershard = self.by["Embershard Mine"]["actors"]
+        self.assertIn("Wolf", embershard.get("alsoHere", []))
+        self.assertNotIn("afterTheWar", embershard)
+
+    def test_friendly_places_have_no_enemies_or_boss(self):
+        # WO-144 Part 1e-3 (Bob, 23 Oct, 17:35): "a stronghold's, a town's or a guild hall's residents aren't
+        # hostile" -- an Orc stronghold, an inn, a keep never carries `boss`/`floor`/`ceiling`, whatever level its
+        # people happen to be (Largashbur's own Chief Yamarz, Bee and Barb's Keerava, Jarl Siddgeir).
+        for name in ("Largashbur", "Narzulbur", "Bee and Barb", "Jarl's Longhouse"):
+            actors = self.by[name]["actors"]
+            self.assertEqual(actors["hostile"], False)
+            self.assertNotIn("boss", actors)
+            self.assertNotIn("floor", actors)
+
+    def test_the_boss_is_the_highest_level_hostile_not_the_strongest_named_pet(self):
+        # Bob, 23 Oct, 17:35: Faldar's Tooth read "Pit Wolf, level 2" as its boss -- a named but minor pet,
+        # picked only because the old fallback required a name at all. Its real strongest tier is an anonymous
+        # leveled bandit (6 to 24, clamped); the boss is now that ceiling, unnamed, never "Pit Wolf".
+        boss = self.by["Faldar's Tooth"]["actors"]["boss"]
+        self.assertNotEqual(boss.get("name"), "Pit Wolf")
+        self.assertEqual(boss["level"], "leveled 6-24")
+
+    def test_a_named_creature_with_no_hostile_faction_is_never_the_boss(self):
+        # Bob, 23 Oct, 17:35: Fort Snowhawk's own boss read as "Exmoor Pony, level 4" -- a named horse, not an
+        # enemy. The fallback boss now also requires `kind_of` to resolve a hostile kind, the same check "what
+        # lives there" uses, never just whichever named actor happens to have the highest level.
+        snowhawk = self.by["Fort Snowhawk"]["actors"]
+        self.assertNotEqual(snowhawk.get("boss", {}).get("name"), "Exmoor Pony")
+
+    def test_a_mannequin_is_never_counted_as_an_enemy(self):
+        # Bob, 23 Oct, 17:35: Nightingale Hall read "1 to 1" against its own zone minimum of 8 -- a contradiction.
+        # Its only actors are display mannequins (race ManakinRace); excluded, the place carries no `actors` at
+        # all now, "not checked" rather than a false floor of 1.
+        self.assertNotIn("actors", self.by["Nightingale Hall"])
 
     def test_danger_names_a_dragon_lair_from_the_place_s_own_type_not_a_new_read(self):
         # "Danger to a build": a dragon lair is already the place's own `type` (its map marker); no new record read.

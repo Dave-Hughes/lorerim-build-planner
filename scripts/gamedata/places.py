@@ -45,6 +45,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 DELETED = 0x20
 BOSS = "Skyrim.esm:0130F7"  # the Boss location ref type
+MANAKIN_RACE = "Skyrim.esm:10760A"  # "ManakinRace" (Bethesda's own spelling): a display mannequin, never an enemy --
+# found at Nightingale Hall reading "1 to 1" against a zone minimum of 8 (Bob, 23 Oct, 17:35): the mannequins'
+# own fixed level 1, not a real encounter at all.
 # A world map marker's kind (REFR TNAM), as the Creation Kit numbers them (UESP: Mod File Format/REFR, map marker type).
 MARKER = {1: "City", 2: "Town", 3: "Settlement", 4: "Cave", 5: "Camp", 6: "Fort", 7: "NordicRuin", 8: "DwemerRuin", 9: "Shipwreck",
           10: "Grove", 11: "Landmark", 12: "DragonLair", 13: "Farm", 14: "WoodMill", 15: "Mine", 16: "MilitaryCamp", 17: "MilitaryCamp",
@@ -330,7 +333,7 @@ def scan():
     # Pass 2: cells (name, location, worldspace), map markers, placed actors, where quests' forced references stand,
     # and where a word wall, a skill book, a boss chest, a crafting station, a shrine or a trap is placed.
     forced = {a["ref"] for q in quests.values() for a in q.get("aliases", {}).values() if a.get("ref")}
-    cells, markers, actors, refcell, placed_npc = {}, {}, {}, {}, {}
+    cells, markers, actors, refcell, placed_npc, enable_info = {}, {}, {}, {}, {}, {}
     cell_features = collections.defaultdict(lambda: {"wordWall": None, "skillBooks": set(), "bossChest": False,
                                                        "crafting": set(), "shrines": set(), "traps": False})
     for n in lo:
@@ -369,6 +372,18 @@ def scan():
                             c["location"] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))
                     continue
                 pos = next((list(struct.unpack_from("<fff", v)) for s, v in subs if s == "DATA" and len(v) >= 12), None)
+                # WO-144 Part 1e-2 (Bob, 23 Oct, 17:20): a ref's own "initially disabled" flag (0x800), edid and
+                # enable parent (XESP) when it has one -- every REFR and ACHR carries this, not only actors, since
+                # a Civil War garrison's actors aren't disabled themselves; they're enable-parented to a marker ref
+                # that is (confirmed on Fort Hraggstad's Imperial Soldiers, enable-parented to
+                # "CWGarrisonEnableMarkerImperialFortHraggstad"). An unrelated disabled enable-parent exists too
+                # (Embershard Mine's wolves are parented to a leftover "E3demoMarker", also disabled, not a war
+                # garrison): CWGarrisonEnableMarker's own naming -- the same convention across 100+ garrisons, both
+                # sides, every fort and camp -- is the signal used below, never "disabled" alone.
+                enable_info[key] = {"disabled": bool(flags & 0x800),
+                                     "edid": next((v.rstrip(b"\0").decode("latin1") for s, v in subs if s == "EDID"), ""),
+                                     "parent": next((form_id(resolve(struct.unpack_from("<I", v)[0], masters, n)) for s, v in subs
+                                                      if s == "XESP" and len(v) >= 4), None)}
                 if tt == "REFR":
                     if key in forced:
                         refcell[key] = cell
@@ -400,7 +415,7 @@ def scan():
                                "boss": BOSS in {form_id(resolve(struct.unpack_from("<I", lrt, i)[0], masters, n)) for i in range(0, len(lrt) - 3, 4)}}
                 if base and not flags & DELETED:
                     placed_npc.setdefault(base, cell)
-    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features
+    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features, enable_info, forced
 
 
 def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
@@ -495,7 +510,13 @@ def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
 
 
 def build(version):
-    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features = scan()
+    # `forced_refs` (quest alias references) is scan()'s own, not used here: it can't tell an always-present named
+    # actor who merely has a quest built around them (Septimus Signus, Halted Stream Camp's chief) from one truly
+    # absent at the start (Molag Bal at Stendarr's Beacon, a Thalmor commander at Lost Prospect Mine) -- tried and
+    # reverted (it dropped the first kind along with the second); logging the gap rather than guessing which is
+    # which. Nothing static distinguishes them: no enable parent, no disabled flag, no quest-alias signal that
+    # means only "absent at the start". A later, deeper read of the quest's own stages could.
+    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn, fact, cell_features, enable_info, _forced_refs = scan()
     xp, disc_xp, xp_from = clear_xp()
     cell_days, cleared_days = respawn_days()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
@@ -605,13 +626,30 @@ def build(version):
             if x in places:
                 owner[k] = x
                 break
-    by_place = collections.defaultdict(list)
-    for a in actors.values():
-        if a["deleted"]:
-            continue
+    def cw_garrison(key, seen=None):
+        # WO-144 Part 1e-2: a ref enable-parented to a disabled "CWGarrisonEnableMarker..." (the same convention
+        # across 100+ garrisons, both sides, every fort and camp -- Bethesda's own, not a guess) is the war's later
+        # garrison, not present at the start, even though its own flag says otherwise (Fort Hraggstad's Imperial
+        # Soldiers: not disabled themselves, but enable-parented to one that is). "Disabled" alone isn't enough --
+        # Embershard Mine's wolves are parented to a disabled "E3demoMarker", a leftover with nothing to do with
+        # the war, and stay counted at the start. Walks the chain, not just the one link, with a cycle guard.
+        seen = seen if seen is not None else set()
+        if not key or key in seen:
+            return False
+        info = enable_info.get(key)
+        if not info:
+            return False
+        if info["disabled"] and info["edid"].startswith("CWGarrisonEnableMarker"):
+            return True
+        return cw_garrison(info["parent"], seen | {key}) if info["parent"] else False
+
+    by_place, after_war_by_place = collections.defaultdict(list), collections.defaultdict(list)
+    for akey, a in actors.items():
+        if a["deleted"] or (npcs.get(a["base"]) or {}).get("race") == MANAKIN_RACE:
+            continue  # a display mannequin (ManakinRace) is never an enemy
         pl = owner.get((cells.get(a["cell"]) or {}).get("location"))
         if pl:
-            by_place[pl].append(a)
+            (after_war_by_place if cw_garrison(akey) else by_place)[pl].append(a)
     # The encounter zone owning a place, by its location (ECZN's own Location field, not a guess -- Bob decoded the
     # DATA layout by hand on Fort Hraggstad, 23 Oct). Clamps the resolved actor range: a floor it can't fall below,
     # a ceiling when the zone sets one (max 0 means none).
@@ -627,8 +665,8 @@ def build(version):
         return lo, hi
 
     level_cache = {}
-    for k, acts in by_place.items():
-        zone = eczn_by_loc.get(k)
+
+    def summarize_actors(acts, zone):
         entries = []
         for a in acts:
             entries += level_entries(a["base"], npcs, lvln, cache=level_cache)
@@ -639,14 +677,20 @@ def build(version):
         # named Ritual Master and a generic templated bandit both marked boss; the generic one isn't the boss).
         bosses = [(a, level_of(a["base"], npcs, lvln, cache=level_cache)) for a in acts if a["boss"]]
         bosses = [(a, bl) for a, bl in bosses if bl]
-        if not bosses:
-            # Bob, 23 Oct, 16:50: a fort has a commander, not always a record marked Boss. No XLRT boss ref here --
-            # fall back to the highest-level named, unique actor on site (a commander is always a named person).
-            bosses = [(a, level_of(a["base"], npcs, lvln, cache=level_cache)) for a in acts
-                      if (npcs.get(a["base"]) or {}).get("name")]
-            bosses = [(a, bl) for a, bl in bosses if bl]
-        boss, bl = (max(bosses, key=lambda ab: (bool((npcs.get(ab[0]["base"]) or {}).get("name")), ab[1][1]))
-                    if bosses else (None, None))
+        if bosses:
+            boss, bl = max(bosses, key=lambda ab: (bool((npcs.get(ab[0]["base"]) or {}).get("name")), ab[1][1]))
+        else:
+            # Bob, 23 Oct, 17:35: no XLRT boss ref here -- "the highest-level hostile placed at the start", named
+            # or not (Faldar's Tooth's real strongest tier is an anonymous leveled bandit, never singled out by
+            # name at all; requiring a name picked "Pit Wolf", level 2, a named but minor pet, over them). Hostile
+            # still means `kind_of` resolves one (Fort Snowhawk's own "Exmoor Pony, level 4" -- a named horse, no
+            # hostile faction at all -- is never a candidate either way).
+            candidates = [(a, level_of(a["base"], npcs, lvln, cache=level_cache)) for a in acts
+                          if kind_of(resolve_npc(a["base"], npcs, lvln), npcs, lvln, fact)]
+            candidates = [(a, bl) for a, bl in candidates if bl]
+            # Level first, named only as the tie-break (many of a fort's Imperial Soldiers share the same ceiling
+            # as its named one; a name never beats a genuinely higher level, the reverse of the boss-flagged path).
+            boss, bl = max(candidates, key=lambda ab: (ab[1][1], bool((npcs.get(ab[0]["base"]) or {}).get("name")))) if candidates else (None, None)
         kinds = collections.Counter(k2 for k2 in (kind_of(resolve_npc(a["base"], npcs, lvln), npcs, lvln, fact) for a in acts) if k2)
         actors_out = {"count": len(acts)}
         if kinds:
@@ -695,7 +739,25 @@ def build(version):
                 boss_level = (blo, bhi, words)
             actors_out["boss"] = {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),
                                   "level": boss_level[2] if boss_level else None}
-        places[k]["actors"] = actors_out
+        return actors_out
+
+    # WO-144 Part 1e-3 (Bob, 23 Oct, 17:35): "a stronghold's, a town's or a guild hall's residents aren't hostile" --
+    # generalized to every building a place can be (an inn's innkeeper, a temple's priest, a keep's jarl were all
+    # coming back as the "boss", the highest-level named person on site, for want of any friendly/hostile
+    # distinction at all). None of these is a combat encounter, whatever levels its people happen to be.
+    FRIENDLY_TYPES = {"Keep", "Stables", "Temple", "Inn", "Guild"}
+
+    def friendly(k):
+        return places[k]["type"] in FRIENDLY_TYPES or places[k]["name"] in STRONGHOLDS
+
+    for k, acts in by_place.items():
+        places[k]["actors"] = {"count": len(acts), "hostile": False} if friendly(k) else summarize_actors(acts, eczn_by_loc.get(k))
+    for k, acts in after_war_by_place.items():
+        if friendly(k):
+            continue  # a Civil War garrison never enable-parents to a building or a stronghold
+        # WO-144 Part 1e-2: "show the later garrison separately" -- the actors enable-parented to a disabled Civil
+        # War marker, summarized the same way, never merged into the start-of-game count or its boss.
+        places[k].setdefault("actors", {"count": 0})["afterTheWar"] = summarize_actors(acts, eczn_by_loc.get(k))
     for k, p in places.items():
         zone = eczn_by_loc.get(k)
         if zone and zone["flags"] & 0x01:  # "never resets" (Bob's own flag note, 23 Oct, 16:15)

@@ -31,8 +31,8 @@
      }
     ],
     "boss": {
-     "name": "Spectral Lamia",
-     "level": "level 30"
+     "name": "Desert Wolf",
+     "level": "level 10"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -126,22 +126,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 20,
-    "ceiling": 20,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       20,
-       20
-      ],
-      "words": "from 1, 20 to 20"
-     }
-    ],
-    "boss": {
-     "name": "Duneripper",
-     "level": "level 20"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -162,22 +147,7 @@
    "marker": null,
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "boss": {
-     "name": "Gordon",
-     "level": "level 1"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -247,8 +217,8 @@
      }
     ],
     "boss": {
-     "name": "Draukiir",
-     "level": "level 15"
+     "name": "Skeleton",
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -285,8 +255,8 @@
      }
     ],
     "boss": {
-     "name": "Duneripper",
-     "level": "level 20"
+     "name": "Desert Wolf",
+     "level": "level 10"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -326,8 +296,8 @@
      }
     ],
     "boss": {
-     "name": "Horrid Wormmouth",
-     "level": "level 23"
+     "name": "Skeleton",
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -487,11 +457,7 @@
       ],
       "words": "from 1, 16 to 30"
      }
-    ],
-    "boss": {
-     "name": "Ancestral Cheetah",
-     "level": "level 30"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -522,11 +488,7 @@
       ],
       "words": "from 1, 30 to 30"
      }
-    ],
-    "boss": {
-     "name": "Ancestral Cheetah",
-     "level": "level 30"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -909,22 +871,7 @@
    "marker": null,
    "actors": {
     "count": 5,
-    "floor": 3,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       3,
-       4
-      ],
-      "words": "from 1, 3 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Dravynea the Stoneweaver",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -1040,23 +987,7 @@
    "marker": null,
    "actors": {
     "count": 16,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 36,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       36
-      ],
-      "words": "from 1, 1 to 36"
-     }
-    ],
-    "boss": {
-     "name": "Angrenor Once-Honored",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -1544,22 +1475,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 5,
-    "ceiling": 100,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       5,
-       100
-      ],
-      "words": "from 1, 5 to 100"
-     }
-    ],
-    "boss": {
-     "name": "Brond",
-     "level": "matches your level, 14 to 100"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -1653,7 +1569,7 @@
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:02A974",
    "actors": {
-    "count": 22,
+    "count": 20,
     "livesHere": "Imperial",
     "alsoHere": [
      "Giant"
@@ -1673,6 +1589,26 @@
     "boss": {
      "name": "Annekke Crag-Jumper",
      "level": "level 16"
+    },
+    "afterTheWar": {
+     "count": 2,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -1912,7 +1848,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016249",
    "actors": {
-    "count": 94,
+    "count": 62,
     "livesHere": "Imperial",
     "alsoHere": [
      "Warlock"
@@ -1931,8 +1867,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
-     "level": "leveled 22-47"
+     "level": "level 50"
+    },
+    "afterTheWar": {
+     "count": 32,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -2114,22 +2070,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 40,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       40
-      ],
-      "words": "from 1, 1 to 40"
-     }
-    ],
-    "boss": {
-     "name": "Eskil",
-     "level": "level 40"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -2170,22 +2111,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "floor": 1,
-    "ceiling": 65,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       65
-      ],
-      "words": "from 1, 1 to 65"
-     }
-    ],
-    "boss": {
-     "name": "Ulfric Stormcloak",
-     "level": "level 65"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -3069,11 +2995,7 @@
       ],
       "words": "from 1, 1 to 3"
      }
-    ],
-    "boss": {
-     "name": "Cow",
-     "level": "level 3"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -4065,8 +3987,7 @@
     ],
     "zoneMin": 10,
     "boss": {
-     "name": "Skeever",
-     "level": "level 1"
+     "level": "leveled 24-40"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -4341,23 +4262,7 @@
    },
    "actors": {
     "count": 20,
-    "floor": 6,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       47
-      ],
-      "words": "from 1, 6 to 47"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Chief Mauhulakh",
-     "level": "level 47"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -4511,22 +4416,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "floor": 1,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       4
-      ],
-      "words": "from 1, 1 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Malthyr Elenil",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -4769,8 +4659,7 @@
     ],
     "zoneMin": 10,
     "boss": {
-     "name": "Frostbite Spider",
-     "level": "level 1"
+     "level": "leveled 10-40"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -5092,22 +4981,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 4,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       4
-      ],
-      "words": "from 1, 4 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Lortheim",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -5172,8 +5046,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Thunder",
-     "level": "level 60"
+     "level": "leveled 55-125"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -5200,22 +5073,7 @@
    "marker": null,
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "boss": {
-     "name": "Brurid",
-     "level": "level 1"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -5236,23 +5094,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "livesHere": "Thalmor",
-    "floor": 1,
-    "ceiling": 100,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       100
-      ],
-      "words": "from 1, 1 to 100"
-     }
-    ],
-    "boss": {
-     "name": "Sorcalin",
-     "level": "matches your level, 3 to 100"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -5432,22 +5274,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 4,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       4
-      ],
-      "words": "from 1, 4 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Ulundil",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -5616,8 +5443,7 @@
     ],
     "zoneMin": 14,
     "boss": {
-     "name": "Willisi",
-     "level": "level 4"
+     "level": "leveled 8-11"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -5995,7 +5821,10 @@
       "words": "from 1, 8 to 11"
      }
     ],
-    "zoneMin": 6
+    "zoneMin": 6,
+    "boss": {
+     "level": "leveled 8-11"
+    }
    },
    "respawns": "never",
    "clearXp": 100,
@@ -6700,22 +6529,7 @@
    "marker": null,
    "actors": {
     "count": 5,
-    "floor": 4,
-    "ceiling": 10,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       10
-      ],
-      "words": "from 1, 4 to 10"
-     }
-    ],
-    "boss": {
-     "name": "Valga Vinicia",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -6968,8 +6782,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Frost Troll",
-     "level": "level 22"
+     "level": "level 55"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -7250,8 +7063,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Khajiit",
-     "level": "level 1"
+     "level": "leveled 6-12"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -7286,7 +7098,7 @@
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016250",
    "actors": {
-    "count": 100,
+    "count": 65,
     "livesHere": "Imperial",
     "alsoHere": [
      "Bandit"
@@ -7305,8 +7117,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 35,
+     "livesHere": "Imperial",
+     "floor": 6,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        6,
+        47
+       ],
+       "words": "from 1, 6 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -8787,8 +8619,7 @@
      }
     ],
     "boss": {
-     "name": "Stormcloak Soldier",
-     "level": "matches your level, 3 to 20"
+     "level": "leveled 2-14"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -9652,22 +9483,7 @@
    "marker": null,
    "actors": {
     "count": 1,
-    "floor": 32,
-    "ceiling": 32,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       32,
-       32
-      ],
-      "words": "from 1, 32 to 32"
-     }
-    ],
-    "boss": {
-     "name": "Runil",
-     "level": "level 32"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -9840,23 +9656,42 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 9,
+    "count": 3,
     "livesHere": "Imperial",
     "floor": 1,
-    "ceiling": 47,
+    "ceiling": 1,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       47
+       1
       ],
-      "words": "from 1, 1 to 47"
+      "words": "from 1, 1 to 1"
      }
     ],
     "boss": {
-     "name": "Imperial Soldier",
-     "level": "leveled 22-47"
+     "level": "level 1"
+    },
+    "afterTheWar": {
+     "count": 6,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -9895,22 +9730,7 @@
    "marker": null,
    "actors": {
     "count": 5,
-    "floor": 4,
-    "ceiling": 60,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       60
-      ],
-      "words": "from 1, 4 to 60"
-     }
-    ],
-    "boss": {
-     "name": "Siddgeir",
-     "level": "level 60"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -10772,7 +10592,10 @@
       "words": "from 1, 6 to 12"
      }
     ],
-    "zoneMin": 6
+    "zoneMin": 6,
+    "boss": {
+     "level": "leveled 6-12"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -10800,22 +10623,7 @@
    "marker": null,
    "actors": {
     "count": 4,
-    "floor": 4,
-    "ceiling": 30,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       30
-      ],
-      "words": "from 1, 4 to 30"
-     }
-    ],
-    "boss": {
-     "name": "Bjorn The Stoic",
-     "level": "matches your level, 6 to 30"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -10835,27 +10643,46 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 19,
+    "count": 6,
     "livesHere": "Imperial",
     "alsoHere": [
      "Bear",
      "Bandit"
     ],
-    "floor": 1,
+    "floor": 3,
     "ceiling": 27,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       1,
+       3,
        27
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 3 to 27"
      }
     ],
     "boss": {
-     "name": "Stormcloak Quartermaster",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 13,
+     "livesHere": "Imperial",
+     "floor": 1,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        27
+       ],
+       "words": "from 1, 1 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Quartermaster",
+      "level": "leveled 22-27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -11106,8 +10933,7 @@
     ],
     "zoneMin": 8,
     "boss": {
-     "name": "Nightingale Sentinel",
-     "level": "level 15"
+     "level": "level 3"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -11344,22 +11170,7 @@
    "marker": null,
    "actors": {
     "count": 11,
-    "floor": 1,
-    "ceiling": 6,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       6
-      ],
-      "words": "from 1, 1 to 6"
-     }
-    ],
-    "boss": {
-     "name": "Inge Six Fingers",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -11970,13 +11781,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -12061,11 +11872,7 @@
       "words": "from 1, 1 to 5"
      }
     ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Horker",
-     "level": "level 5"
-    }
+    "zoneMin": 6
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -12177,27 +11984,8 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 15,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit"
-    ],
-    "floor": 1,
-    "ceiling": 81,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       81
-      ],
-      "words": "from 1, 1 to 81"
-     }
-    ],
-    "boss": {
-     "name": "General Tullius",
-     "level": "level 65"
-    }
+    "count": 13,
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -12502,7 +12290,10 @@
       "words": "from 1, 8 to 30"
      }
     ],
-    "zoneMin": 8
+    "zoneMin": 8,
+    "boss": {
+     "level": "leveled 8-30"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -13078,7 +12869,7 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:03F510",
    "actors": {
-    "count": 93,
+    "count": 57,
     "livesHere": "Imperial",
     "alsoHere": [
      "Bandit"
@@ -13097,8 +12888,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 36,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -13174,22 +12985,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       4
-      ],
-      "words": "from 1, 1 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Faida",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "quests": [
@@ -13651,8 +13447,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Skeleton",
-     "level": "level 1"
+     "level": "leveled 6-24"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -13840,8 +13635,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Potema's Remains",
-     "level": "level 90"
+     "level": "leveled 100-125"
     }
    },
    "respawns": "never",
@@ -14166,22 +13960,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 4,
-    "ceiling": 6,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       6
-      ],
-      "words": "from 1, 4 to 6"
-     }
-    ],
-    "boss": {
-     "name": "Geimund",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -14317,22 +14096,7 @@
    "marker": null,
    "actors": {
     "count": 4,
-    "floor": 4,
-    "ceiling": 6,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       6
-      ],
-      "words": "from 1, 4 to 6"
-     }
-    ],
-    "boss": {
-     "name": "Freir",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -14509,22 +14273,7 @@
    "marker": null,
    "actors": {
     "count": 11,
-    "floor": 1,
-    "ceiling": 81,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       81
-      ],
-      "words": "from 1, 1 to 81"
-     }
-    ],
-    "boss": {
-     "name": "Corpulus Vinius",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -15172,11 +14921,7 @@
       "words": "from 1, 2 to 15"
      }
     ],
-    "zoneMin": 2,
-    "boss": {
-     "name": "Fisherman",
-     "level": "level 15"
-    }
+    "zoneMin": 2
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -15504,7 +15249,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016251",
    "actors": {
-    "count": 105,
+    "count": 71,
     "livesHere": "Imperial",
     "alsoHere": [
      "Skeleton",
@@ -15526,8 +15271,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Fort Commander",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 34,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Fort Commander",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -15621,22 +15386,7 @@
    "marker": null,
    "actors": {
     "count": 8,
-    "floor": 1,
-    "ceiling": 65,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       65
-      ],
-      "words": "from 1, 1 to 65"
-     }
-    ],
-    "boss": {
-     "name": "Idgrod Ravencrone",
-     "level": "level 65"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -15674,10 +15424,10 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 15,
-    "livesHere": "Imperial",
+    "count": 7,
+    "livesHere": "Skeleton",
     "alsoHere": [
-     "Skeleton"
+     "Imperial"
     ],
     "floor": 1,
     "ceiling": 50,
@@ -15694,6 +15444,29 @@
     "boss": {
      "name": "Undead Alpha Werewolf",
      "level": "level 50"
+    },
+    "afterTheWar": {
+     "count": 8,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
+     "floor": 1,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        47
+       ],
+       "words": "from 1, 1 to 47"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -16143,11 +15916,7 @@
       "words": "from 1, 1 to 1"
      }
     ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Nord",
-     "level": "level 1"
-    }
+    "zoneMin": 6
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -16175,23 +15944,7 @@
    "marker": null,
    "actors": {
     "count": 7,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 81,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       81
-      ],
-      "words": "from 1, 1 to 81"
-     }
-    ],
-    "boss": {
-     "name": "Jonna",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -16627,11 +16380,8 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 17,
+    "count": 16,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton"
-    ],
     "floor": 1,
     "ceiling": 27,
     "atLevel": [
@@ -16647,6 +16397,25 @@
     "boss": {
      "name": "Stormcloak Quartermaster",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 1,
+     "livesHere": "Skeleton",
+     "floor": 1,
+     "ceiling": 1,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        1
+       ],
+       "words": "from 1, 1 to 1"
+      }
+     ],
+     "boss": {
+      "level": "level 1"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -16752,7 +16521,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01C1BC",
    "actors": {
-    "count": 11,
+    "count": 10,
     "livesHere": "Imperial",
     "floor": 1,
     "ceiling": 60,
@@ -16769,6 +16538,26 @@
     "boss": {
      "name": "Sorli the Builder",
      "level": "level 60"
+    },
+    "afterTheWar": {
+     "count": 1,
+     "livesHere": "Imperial",
+     "floor": 27,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        27,
+        27
+       ],
+       "words": "from 1, 27 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "level 27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -16972,22 +16761,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 1,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       4
-      ],
-      "words": "from 1, 1 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Vixi",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -17178,7 +16952,10 @@
       ],
       "words": "from 1, 1 to 2"
      }
-    ]
+    ],
+    "boss": {
+     "level": "level 1"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -17212,11 +16989,7 @@
       ],
       "words": "from 1, 1 to 1"
      }
-    ],
-    "boss": {
-     "name": "Slaughterfish",
-     "level": "level 1"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -17417,11 +17190,7 @@
       ],
       "words": "from 1, 1 to 3"
      }
-    ],
-    "boss": {
-     "name": "Goat",
-     "level": "level 1"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -17974,8 +17743,7 @@
      }
     ],
     "boss": {
-     "name": "Berserker",
-     "level": "level 18"
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -17999,22 +17767,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "boss": {
-     "name": "Brelyna",
-     "level": "level 1"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -18376,7 +18129,10 @@
       "words": "from 1, 14 to 60"
      }
     ],
-    "zoneMin": 10
+    "zoneMin": 10,
+    "boss": {
+     "level": "leveled 14-60"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -18696,11 +18452,7 @@
       "words": "from 1, 15 to 27"
      }
     ],
-    "zoneMin": 10,
-    "boss": {
-     "name": "Kuvar",
-     "level": "level 27"
-    }
+    "zoneMin": 10
    },
    "respawns": "never",
    "clearXp": 100,
@@ -18961,8 +18713,7 @@
      }
     ],
     "boss": {
-     "name": "Dwarven Centurion",
-     "level": "level 60"
+     "level": "level 1"
     }
    },
    "respawns": "never",
@@ -19162,8 +18913,7 @@
     ],
     "zoneMin": 10,
     "boss": {
-     "name": "Shalk",
-     "level": "level 10"
+     "level": "leveled 25-30"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -20231,8 +19981,7 @@
     ],
     "zoneMin": 25,
     "boss": {
-     "name": "Dwarven Centurion",
-     "level": "level 60"
+     "level": "leveled 3-24"
     }
    },
    "respawns": "never",
@@ -20678,7 +20427,7 @@
    "plugin": "Dragonborn.esm",
    "marker": null,
    "actors": {
-    "count": 70,
+    "count": 66,
     "livesHere": "Bandit",
     "floor": 1,
     "ceiling": 100,
@@ -22508,8 +22257,7 @@
     ],
     "zoneMin": 10,
     "boss": {
-     "name": "Alit",
-     "level": "level 20"
+     "level": "level 7"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -22617,23 +22365,7 @@
    "marker": null,
    "actors": {
     "count": 14,
-    "livesHere": "Bandit",
-    "floor": 1,
-    "ceiling": 50,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       50
-      ],
-      "words": "from 1, 1 to 50"
-     }
-    ],
-    "boss": {
-     "name": "Drovas Relvi",
-     "level": "level 10"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -23008,8 +22740,7 @@
     ],
     "zoneMin": 10,
     "boss": {
-     "name": "Hjalfar",
-     "level": "level 8"
+     "level": "leveled 14-60"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -23662,7 +23393,7 @@
    "plugin": "Fort Dunstad.esp",
    "marker": "Skyrim.esm:01624B",
    "actors": {
-    "count": 114,
+    "count": 86,
     "livesHere": "Imperial",
     "alsoHere": [
      "Bandit",
@@ -23683,8 +23414,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 28,
+     "livesHere": "Imperial",
+     "floor": 6,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        6,
+        47
+       ],
+       "words": "from 1, 6 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -23803,8 +23554,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Skeleton",
-     "level": "level 1"
+     "level": "leveled 6-24"
     }
    },
    "respawns": "never",
@@ -23894,7 +23644,7 @@
    "plugin": "Lux - Stendarr Rising patch.esp",
    "marker": "Skyrim.esm:0C342A",
    "actors": {
-    "count": 46,
+    "count": 42,
     "livesHere": "Vampire",
     "floor": 5,
     "ceiling": 100,
@@ -24097,7 +23847,7 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 18,
+    "count": 16,
     "livesHere": "Imperial",
     "alsoHere": [
      "Draugr"
@@ -24117,6 +23867,21 @@
     "boss": {
      "name": "Imperial Quartermaster",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 2,
+     "floor": 4,
+     "ceiling": 4,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        4,
+        4
+       ],
+       "words": "from 1, 4 to 4"
+      }
+     ]
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -24184,8 +23949,7 @@
     ],
     "zoneMin": 12,
     "boss": {
-     "name": "Dwarven Spider",
-     "level": "level 16"
+     "level": "leveled 44-55"
     }
    },
    "respawns": "never",
@@ -25368,8 +25132,8 @@
      }
     ],
     "boss": {
-     "name": "Slighted",
-     "level": "level 75"
+     "name": "Ancient Mythic Dawn Skeleton",
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -25524,11 +25288,8 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 17,
+    "count": 4,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton"
-    ],
     "floor": 1,
     "ceiling": 27,
     "atLevel": [
@@ -25542,8 +25303,30 @@
      }
     ],
     "boss": {
-     "name": "Stormcloak Soldier",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 13,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
+     "floor": 1,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        27
+       ],
+       "words": "from 1, 1 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "leveled 22-27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -25604,22 +25387,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 1,
-    "ceiling": 14,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       14
-      ],
-      "words": "from 1, 1 to 14"
-     }
-    ],
-    "boss": {
-     "name": "Hillerica",
-     "level": "level 12"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -25645,22 +25413,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "floor": 6,
-    "ceiling": 65,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       65
-      ],
-      "words": "from 1, 6 to 65"
-     }
-    ],
-    "boss": {
-     "name": "Skald the Elder",
-     "level": "level 65"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -25957,22 +25710,7 @@
    "marker": null,
    "actors": {
     "count": 13,
-    "floor": 1,
-    "ceiling": 41,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       41
-      ],
-      "words": "from 1, 1 to 41"
-     }
-    ],
-    "boss": {
-     "name": "Thoring",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -26345,7 +26083,10 @@
       ],
       "words": "from 1, 25 to 39"
      }
-    ]
+    ],
+    "boss": {
+     "level": "leveled 25-39"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -26821,8 +26562,7 @@
     ],
     "zoneMin": 8,
     "boss": {
-     "name": "Blandus",
-     "level": "level 15"
+     "level": "level 12"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -27002,8 +26742,7 @@
     ],
     "zoneMin": 8,
     "boss": {
-     "name": "Dwarven Sphere",
-     "level": "level 30"
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -27336,23 +27075,7 @@
    },
    "actors": {
     "count": 19,
-    "floor": 6,
-    "ceiling": 48,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       48
-      ],
-      "words": "from 1, 6 to 48"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Chief Burguk",
-     "level": "level 48"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -27438,7 +27161,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016252",
    "actors": {
-    "count": 83,
+    "count": 59,
     "livesHere": "Imperial",
     "alsoHere": [
      "Forsworn",
@@ -27458,8 +27181,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 24,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -27834,22 +27577,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 6,
-    "ceiling": 30,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       30
-      ],
-      "words": "from 1, 6 to 30"
-     }
-    ],
-    "boss": {
-     "name": "Eola",
-     "level": "level 30"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -28167,27 +27895,46 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 15,
+    "count": 3,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton",
-     "Bear"
-    ],
     "floor": 1,
-    "ceiling": 47,
+    "ceiling": 1,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       47
+       1
       ],
-      "words": "from 1, 1 to 47"
+      "words": "from 1, 1 to 1"
      }
     ],
     "boss": {
-     "name": "Imperial Soldier",
-     "level": "leveled 22-47"
+     "level": "level 1"
+    },
+    "afterTheWar": {
+     "count": 12,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton",
+      "Bear"
+     ],
+     "floor": 1,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        47
+       ],
+       "words": "from 1, 1 to 47"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -28226,22 +27973,7 @@
    "marker": null,
    "actors": {
     "count": 5,
-    "floor": 4,
-    "ceiling": 25,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       25
-      ],
-      "words": "from 1, 4 to 25"
-     }
-    ],
-    "boss": {
-     "name": "Hamal",
-     "level": "matches your level, 6 to 25"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -28537,8 +28269,7 @@
     ],
     "zoneMin": 14,
     "boss": {
-     "name": "Corrupter of Hearts",
-     "level": "level 50"
+     "level": "leveled 46-52"
     }
    },
    "respawns": "never",
@@ -28730,26 +28461,43 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:05CA54",
    "actors": {
-    "count": 24,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit"
-    ],
+    "count": 20,
+    "livesHere": "Bandit",
     "floor": 1,
-    "ceiling": 30,
+    "ceiling": 25,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       30
+       25
       ],
-      "words": "from 1, 1 to 30"
+      "words": "from 1, 1 to 25"
      }
     ],
     "boss": {
      "name": "Ainethach",
      "level": "level 6"
+    },
+    "afterTheWar": {
+     "count": 4,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "name": "Reach Hold Guard",
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -29131,22 +28879,7 @@
    "marker": "Skyrim.esm:07185E",
    "actors": {
     "count": 3,
-    "floor": 6,
-    "ceiling": 15,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       15
-      ],
-      "words": "from 1, 6 to 15"
-     }
-    ],
-    "boss": {
-     "name": "Banning",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -29233,24 +28966,7 @@
    },
    "actors": {
     "count": 25,
-    "livesHere": "Bandit",
-    "floor": 6,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       47
-      ],
-      "words": "from 1, 6 to 47"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Chief Larak",
-     "level": "level 47"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -29618,22 +29334,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 10,
-    "ceiling": 81,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       10,
-       81
-      ],
-      "words": "from 1, 10 to 81"
-     }
-    ],
-    "boss": {
-     "name": "Nemirina",
-     "level": "matches your level, 10 to 81"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -29659,23 +29360,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "livesHere": "Necromancer",
-    "floor": 4,
-    "ceiling": 50,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       50
-      ],
-      "words": "from 1, 4 to 50"
-     }
-    ],
-    "boss": {
-     "name": "Leontius Salvius",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -29770,11 +29455,7 @@
       "words": "from 1, 2 to 55"
      }
     ],
-    "zoneMin": 2,
-    "boss": {
-     "name": "Fijeh",
-     "level": "level 55"
-    }
+    "zoneMin": 2
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -30224,8 +29905,7 @@
     ],
     "zoneMin": 8,
     "boss": {
-     "name": "Casival",
-     "level": "level 1"
+     "level": "leveled 19-24"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -30358,8 +30038,7 @@
     ],
     "zoneMin": 14,
     "boss": {
-     "name": "Reach Guard",
-     "level": "level 4"
+     "level": "matches your level, 48 to 50"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -30526,22 +30205,7 @@
    "marker": null,
    "actors": {
     "count": 15,
-    "floor": 1,
-    "ceiling": 75,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       75
-      ],
-      "words": "from 1, 1 to 75"
-     }
-    ],
-    "boss": {
-     "name": "Frabbi",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -30726,23 +30390,19 @@
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:01637C",
    "actors": {
-    "count": 6,
-    "floor": 1,
+    "count": 3,
+    "floor": 4,
     "ceiling": 30,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       1,
+       4,
        30
       ],
-      "words": "from 1, 1 to 30"
+      "words": "from 1, 4 to 30"
      }
-    ],
-    "boss": {
-     "name": "Jawalar",
-     "level": "level 30"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -30991,22 +30651,7 @@
    "marker": null,
    "actors": {
     "count": 1,
-    "floor": 10,
-    "ceiling": 10,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       10,
-       10
-      ],
-      "words": "from 1, 10 to 10"
-     }
-    ],
-    "boss": {
-     "name": "Bryan",
-     "level": "level 10"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -31026,7 +30671,7 @@
    "plugin": "Natural Waterfalls.esp",
    "marker": null,
    "actors": {
-    "count": 18,
+    "count": 17,
     "livesHere": "Imperial",
     "floor": 1,
     "ceiling": 27,
@@ -31043,6 +30688,21 @@
     "boss": {
      "name": "Stormcloak Quartermaster",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 1,
+     "floor": 4,
+     "ceiling": 4,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        4,
+        4
+       ],
+       "words": "from 1, 4 to 4"
+      }
+     ]
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -31124,27 +30784,8 @@
    "plugin": "GORE.esp",
    "marker": null,
    "actors": {
-    "count": 19,
-    "livesHere": "Thalmor",
-    "alsoHere": [
-     "Imperial"
-    ],
-    "floor": 1,
-    "ceiling": 45,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       45
-      ],
-      "words": "from 1, 1 to 45"
-     }
-    ],
-    "boss": {
-     "name": "Tacitus Sallustius",
-     "level": "level 6"
-    }
+    "count": 18,
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -31933,23 +31574,7 @@
    "marker": null,
    "actors": {
     "count": 8,
-    "livesHere": "Thalmor",
-    "floor": 1,
-    "ceiling": 50,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       50
-      ],
-      "words": "from 1, 1 to 50"
-     }
-    ],
-    "boss": {
-     "name": "Keerava",
-     "level": "level 10"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -32584,8 +32209,7 @@
     ],
     "zoneMin": 24,
     "boss": {
-     "name": "Gloom Wraith",
-     "level": "matches your level, 30 to 30"
+     "level": "matches your level, 24 to 81"
     }
    },
    "respawns": "never",
@@ -32929,11 +32553,7 @@
       "words": "from 1, 1 to 2"
      }
     ],
-    "zoneMin": 18,
-    "boss": {
-     "name": "Goat",
-     "level": "level 1"
-    }
+    "zoneMin": 18
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -32989,8 +32609,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Pit Wolf",
-     "level": "level 2"
+     "level": "leveled 6-24"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -33154,22 +32773,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 10,
-    "ceiling": 20,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       10,
-       20
-      ],
-      "words": "from 1, 10 to 20"
-     }
-    ],
-    "boss": {
-     "name": "Gertrud",
-     "level": "level 20"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -33331,7 +32935,7 @@
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01624D",
    "actors": {
-    "count": 100,
+    "count": 68,
     "livesHere": "Imperial",
     "alsoHere": [
      "Bandit",
@@ -33353,8 +32957,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Fort Commander",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 32,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Fort Commander",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -33442,11 +33066,7 @@
       "words": "from 1, 6 to 21"
      }
     ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Froki Whetted-Blade",
-     "level": "level 21"
-    }
+    "zoneMin": 6
    },
    "respawns": "never",
    "clearXp": 100,
@@ -33549,22 +33169,7 @@
    "marker": null,
    "actors": {
     "count": 2,
-    "floor": 20,
-    "ceiling": 20,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       20,
-       20
-      ],
-      "words": "from 1, 20 to 20"
-     }
-    ],
-    "boss": {
-     "name": "Hilda",
-     "level": "level 20"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -33605,23 +33210,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "livesHere": "Skeleton",
-    "floor": 1,
-    "ceiling": 10,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       10
-      ],
-      "words": "from 1, 1 to 10"
-     }
-    ],
-    "boss": {
-     "name": "Alessandra",
-     "level": "level 10"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -33896,11 +33485,8 @@
    "plugin": "Dawnguard.esm",
    "marker": null,
    "actors": {
-    "count": 17,
+    "count": 13,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton"
-    ],
     "floor": 1,
     "ceiling": 47,
     "atLevel": [
@@ -33916,6 +33502,25 @@
     "boss": {
      "name": "Imperial Quartermaster",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 4,
+     "livesHere": "Skeleton",
+     "floor": 1,
+     "ceiling": 1,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        1
+       ],
+       "words": "from 1, 1 to 1"
+      }
+     ],
+     "boss": {
+      "level": "level 1"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -33961,7 +33566,7 @@
    "plugin": "The Great Town of Ivarstead.esp",
    "marker": "Skyrim.esm:02A49D",
    "actors": {
-    "count": 33,
+    "count": 29,
     "livesHere": "Imperial",
     "floor": 1,
     "ceiling": 30,
@@ -33978,6 +33583,25 @@
     "boss": {
      "name": "Boti",
      "level": "level 6"
+    },
+    "afterTheWar": {
+     "count": 4,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -34560,24 +34184,7 @@
    },
    "actors": {
     "count": 22,
-    "livesHere": "Bandit",
-    "floor": 6,
-    "ceiling": 100,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       100
-      ],
-      "words": "from 1, 6 to 100"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Chief Yamarz",
-     "level": "level 45"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -34778,11 +34385,7 @@
       "words": "from 1, 6 to 50"
      }
     ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Thalmor Commander",
-     "level": "matches your level, 15 to 50"
-    }
+    "zoneMin": 6
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -34895,24 +34498,8 @@
    "plugin": "Lux - JK's Mistveil Keep patch.esp",
    "marker": null,
    "actors": {
-    "count": 10,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 50,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       50
-      ],
-      "words": "from 1, 1 to 50"
-     }
-    ],
-    "boss": {
-     "name": "Unmid Snow-Shod",
-     "level": "level 50"
-    }
+    "count": 9,
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -35038,8 +34625,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Breton",
-     "level": "level 1"
+     "level": "level 3"
     }
    },
    "respawns": "never",
@@ -35279,7 +34865,10 @@
       ],
       "words": "from 1, 1 to 6"
      }
-    ]
+    ],
+    "boss": {
+     "level": "leveled 1-6"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -35514,22 +35103,7 @@
    "marker": null,
    "actors": {
     "count": 1,
-    "floor": 8,
-    "ceiling": 8,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       8,
-       8
-      ],
-      "words": "from 1, 8 to 8"
-     }
-    ],
-    "boss": {
-     "name": "Hofgrir Horse-Crusher",
-     "level": "level 8"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -35637,7 +35211,10 @@
       "words": "from 1, 8 to 11"
      }
     ],
-    "zoneMin": 6
+    "zoneMin": 6,
+    "boss": {
+     "level": "leveled 8-11"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -35759,7 +35336,7 @@
    "plugin": "The Great Town of Shor's Stone.esp",
    "marker": null,
    "actors": {
-    "count": 23,
+    "count": 21,
     "livesHere": "Imperial",
     "alsoHere": [
      "Troll"
@@ -35779,6 +35356,25 @@
     "boss": {
      "name": "Grogmar gro-Burzag",
      "level": "level 8"
+    },
+    "afterTheWar": {
+     "count": 2,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -35951,7 +35547,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0D3934",
    "actors": {
-    "count": 10,
+    "count": 6,
     "livesHere": "Imperial",
     "floor": 6,
     "ceiling": 27,
@@ -35969,6 +35565,22 @@
     "boss": {
      "name": "Rift Guard",
      "level": "level 27"
+    },
+    "afterTheWar": {
+     "count": 4,
+     "floor": 1,
+     "ceiling": 1,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        1
+       ],
+       "words": "from 1, 1 to 1"
+      }
+     ],
+     "zoneMin": 6
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -36195,7 +35807,7 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 13,
+    "count": 4,
     "livesHere": "Imperial",
     "floor": 1,
     "ceiling": 27,
@@ -36210,8 +35822,27 @@
      }
     ],
     "boss": {
-     "name": "Stormcloak Soldier",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 9,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        27
+       ],
+       "words": "from 1, 22 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "leveled 22-27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -36426,22 +36057,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "floor": 4,
-    "ceiling": 12,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       12
-      ],
-      "words": "from 1, 4 to 12"
-     }
-    ],
-    "boss": {
-     "name": "Maramal",
-     "level": "level 12"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -36713,11 +36329,7 @@
       "words": "from 1, 16 to 120"
      }
     ],
-    "zoneMin": 15,
-    "boss": {
-     "name": "The Forgemaster",
-     "level": "level 120"
-    }
+    "zoneMin": 15
    },
    "respawns": "never",
    "clearXp": 100,
@@ -36848,22 +36460,7 @@
    "marker": null,
    "actors": {
     "count": 12,
-    "floor": 1,
-    "ceiling": 81,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       81
-      ],
-      "words": "from 1, 1 to 81"
-     }
-    ],
-    "boss": {
-     "name": "Mercer Frey",
-     "level": "level 59"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -37077,22 +36674,7 @@
    "marker": null,
    "actors": {
     "count": 4,
-    "floor": 1,
-    "ceiling": 10,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       10
-      ],
-      "words": "from 1, 1 to 10"
-     }
-    ],
-    "boss": {
-     "name": "Wilhelm",
-     "level": "level 10"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -37673,22 +37255,7 @@
    "marker": "Skyrim.esm:01F890",
    "actors": {
     "count": 13,
-    "floor": 1,
-    "ceiling": 100,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       100
-      ],
-      "words": "from 1, 1 to 100"
-     }
-    ],
-    "boss": {
-     "name": "Zeus",
-     "level": "matches your level, 10 to 100"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -38875,7 +38442,7 @@
    "plugin": "Fort Greymoor.esp",
    "marker": "Skyrim.esm:01624A",
    "actors": {
-    "count": 145,
+    "count": 96,
     "livesHere": "Imperial",
     "alsoHere": [
      "Bandit",
@@ -38896,8 +38463,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 49,
+     "livesHere": "Imperial",
+     "floor": 6,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        6,
+        47
+       ],
+       "words": "from 1, 6 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -38995,22 +38582,7 @@
    "marker": null,
    "actors": {
     "count": 4,
-    "floor": 1,
-    "ceiling": 35,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       35
-      ],
-      "words": "from 1, 1 to 35"
-     }
-    ],
-    "boss": {
-     "name": "Mralki",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -39325,26 +38897,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "livesHere": "Skeleton",
-    "alsoHere": [
-     "Draugr"
-    ],
-    "floor": 1,
-    "ceiling": 30,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       30
-      ],
-      "words": "from 1, 1 to 30"
-     }
-    ],
-    "boss": {
-     "name": "Andurs",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -39722,8 +39275,8 @@
     ],
     "zoneMin": 8,
     "boss": {
-     "name": "Arngeir",
-     "level": "level 150"
+     "name": "The Beast",
+     "level": "level 14"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -40401,8 +39954,7 @@
      }
     ],
     "boss": {
-     "name": "Ratmulaag",
-     "level": "matches your level, 50 to 50"
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -40425,27 +39977,49 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 13,
+    "count": 5,
     "livesHere": "Imperial",
     "alsoHere": [
-     "Skeleton",
      "Wolf"
     ],
     "floor": 1,
-    "ceiling": 47,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       47
+       2
       ],
-      "words": "from 1, 1 to 47"
+      "words": "from 1, 1 to 2"
      }
     ],
     "boss": {
-     "name": "Imperial Soldier",
-     "level": "leveled 22-47"
+     "name": "Wolf",
+     "level": "level 2"
+    },
+    "afterTheWar": {
+     "count": 8,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
+     "floor": 1,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        47
+       ],
+       "words": "from 1, 1 to 47"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -40483,22 +40057,7 @@
    "marker": "Skyrim.esm:01F896",
    "actors": {
     "count": 10,
-    "floor": 4,
-    "ceiling": 70,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       70
-      ],
-      "words": "from 1, 4 to 70"
-     }
-    ],
-    "boss": {
-     "name": "Kodlak Whitemane",
-     "level": "level 70"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -41917,23 +41476,7 @@
    "marker": "Skyrim.esm:01F896",
    "actors": {
     "count": 6,
-    "livesHere": "Bandit",
-    "floor": 3,
-    "ceiling": 70,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       3,
-       70
-      ],
-      "words": "from 1, 3 to 70"
-     }
-    ],
-    "boss": {
-     "name": "Vignar Gray-Mane",
-     "level": "level 61"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -43443,8 +42986,7 @@
     ],
     "zoneMin": 12,
     "boss": {
-     "name": "Lund",
-     "level": "level 1"
+     "level": "leveled 12-24"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -43675,7 +43217,7 @@
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:01BDF3",
    "actors": {
-    "count": 44,
+    "count": 41,
     "livesHere": "Imperial",
     "floor": 1,
     "ceiling": 40,
@@ -43692,6 +43234,26 @@
     "boss": {
      "name": "Camilla Valerius",
      "level": "matches your level, 4 to 40"
+    },
+    "afterTheWar": {
+     "count": 3,
+     "livesHere": "Imperial",
+     "floor": 27,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        27,
+        27
+       ],
+       "words": "from 1, 27 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "level 27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -44969,7 +44531,7 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:029AAE",
    "actors": {
-    "count": 39,
+    "count": 35,
     "livesHere": "Imperial",
     "floor": 1,
     "ceiling": 31,
@@ -44986,6 +44548,26 @@
     "boss": {
      "name": "Jouane Manette",
      "level": "level 31"
+    },
+    "afterTheWar": {
+     "count": 4,
+     "livesHere": "Imperial",
+     "floor": 27,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        27,
+        27
+       ],
+       "words": "from 1, 27 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "level 27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -46222,22 +45804,7 @@
    "marker": null,
    "actors": {
     "count": 4,
-    "floor": 3,
-    "ceiling": 49,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       3,
-       49
-      ],
-      "words": "from 1, 3 to 49"
-     }
-    ],
-    "boss": {
-     "name": "Delphine",
-     "level": "level 49"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -46389,26 +45956,42 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 15,
+    "count": 14,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton"
-    ],
-    "floor": 1,
+    "floor": 15,
     "ceiling": 27,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       1,
+       15,
        27
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 15 to 27"
      }
     ],
     "boss": {
      "name": "Stormcloak Soldier",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 1,
+     "livesHere": "Skeleton",
+     "floor": 1,
+     "ceiling": 1,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        1
+       ],
+       "words": "from 1, 1 to 1"
+      }
+     ],
+     "boss": {
+      "level": "level 1"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -46535,22 +46118,7 @@
    "marker": null,
    "actors": {
     "count": 6,
-    "floor": 1,
-    "ceiling": 15,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       15
-      ],
-      "words": "from 1, 1 to 15"
-     }
-    ],
-    "boss": {
-     "name": "Danica Pure-Spring",
-     "level": "level 6"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -46724,22 +46292,7 @@
    "marker": null,
    "actors": {
     "count": 8,
-    "floor": 1,
-    "ceiling": 35,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       35
-      ],
-      "words": "from 1, 1 to 35"
-     }
-    ],
-    "boss": {
-     "name": "Saadia",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -46928,22 +46481,7 @@
    "marker": null,
    "actors": {
     "count": 1,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "boss": {
-     "name": "Keld",
-     "level": "level 1"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily"
   },
@@ -46982,7 +46520,10 @@
       "words": "from 1, 75 to 77"
      }
     ],
-    "zoneMin": 10
+    "zoneMin": 10,
+    "boss": {
+     "level": "level 77"
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -47375,8 +46916,7 @@
      }
     ],
     "boss": {
-     "name": "Stormcloak Soldier",
-     "level": "level 27"
+     "level": "leveled 25-30"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -47606,22 +47146,7 @@
    "marker": "Skyrim.esm:01F89B",
    "actors": {
     "count": 3,
-    "floor": 4,
-    "ceiling": 4,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       4
-      ],
-      "words": "from 1, 4 to 4"
-     }
-    ],
-    "boss": {
-     "name": "Skulvar Sable-Hilt",
-     "level": "level 4"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "pointers": [
@@ -47701,7 +47226,7 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0DD99A",
    "actors": {
-    "count": 6,
+    "count": 3,
     "livesHere": "Imperial",
     "floor": 25,
     "ceiling": 30,
@@ -47715,7 +47240,30 @@
       "words": "from 1, 25 to 30"
      }
     ],
-    "zoneMin": 6
+    "zoneMin": 6,
+    "boss": {
+     "level": "leveled 25-30"
+    },
+    "afterTheWar": {
+     "count": 3,
+     "livesHere": "Imperial",
+     "floor": 27,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        27,
+        27
+       ],
+       "words": "from 1, 27 to 27"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "level": "level 27"
+     }
+    }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -47787,8 +47335,7 @@
     ],
     "zoneMin": 16,
     "boss": {
-     "name": "J'darr",
-     "level": "leveled 16-24"
+     "level": "leveled 25-35"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -47908,8 +47455,8 @@
     ],
     "zoneMin": 18,
     "boss": {
-     "name": "Enchanted Sphere",
-     "level": "level 60"
+     "name": "Vipjorg The Shackled",
+     "level": "level 45"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -48299,22 +47846,7 @@
    "marker": null,
    "actors": {
     "count": 10,
-    "floor": 4,
-    "ceiling": 70,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       70
-      ],
-      "words": "from 1, 4 to 70"
-     }
-    ],
-    "boss": {
-     "name": "Tolfdir",
-     "level": "level 54"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -48364,22 +47896,7 @@
    "marker": null,
    "actors": {
     "count": 5,
-    "floor": 4,
-    "ceiling": 50,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       50
-      ],
-      "words": "from 1, 4 to 50"
-     }
-    ],
-    "boss": {
-     "name": "Drevis Neloren",
-     "level": "level 50"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -48606,7 +48123,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01624F",
    "actors": {
-    "count": 94,
+    "count": 62,
     "livesHere": "Imperial",
     "alsoHere": [
      "Skeleton",
@@ -48627,8 +48144,28 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Imperial Soldier",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 32,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -48745,23 +48282,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "livesHere": "Thalmor",
-    "floor": 4,
-    "ceiling": 80,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       80
-      ],
-      "words": "from 1, 4 to 80"
-     }
-    ],
-    "boss": {
-     "name": "Ancano",
-     "level": "level 80"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -48890,11 +48411,7 @@
       "words": "from 1, 15 to 15"
      }
     ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Dar-Shei",
-     "level": "level 15"
-    }
+    "zoneMin": 6
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -49020,12 +48537,8 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 16,
+    "count": 12,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Wolf",
-     "Skeleton"
-    ],
     "floor": 1,
     "ceiling": 47,
     "atLevel": [
@@ -49041,6 +48554,29 @@
     "boss": {
      "name": "Imperial Quartermaster",
      "level": "leveled 22-47"
+    },
+    "afterTheWar": {
+     "count": 4,
+     "livesHere": "Wolf",
+     "alsoHere": [
+      "Skeleton"
+     ],
+     "floor": 1,
+     "ceiling": 6,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        6
+       ],
+       "words": "from 1, 1 to 6"
+      }
+     ],
+     "boss": {
+      "name": "Ice Wolf",
+      "level": "level 6"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -49155,22 +48691,7 @@
    "marker": null,
    "actors": {
     "count": 7,
-    "floor": 1,
-    "ceiling": 45,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       45
-      ],
-      "words": "from 1, 1 to 45"
-     }
-    ],
-    "boss": {
-     "name": "Korir",
-     "level": "level 45"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -50324,11 +49845,7 @@
       "words": "from 1, 1 to 1"
      }
     ],
-    "zoneMin": 2,
-    "boss": {
-     "name": "Septimus Signus",
-     "level": "level 1"
-    }
+    "zoneMin": 2
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -50813,11 +50330,8 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 14,
+    "count": 4,
     "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton"
-    ],
     "floor": 1,
     "ceiling": 27,
     "atLevel": [
@@ -50831,8 +50345,30 @@
      }
     ],
     "boss": {
-     "name": "Stormcloak Soldier",
      "level": "leveled 22-27"
+    },
+    "afterTheWar": {
+     "count": 10,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
+     "floor": 1,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        27
+       ],
+       "words": "from 1, 1 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "leveled 22-27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -50952,23 +50488,7 @@
    "marker": null,
    "actors": {
     "count": 3,
-    "livesHere": "Bandit",
-    "floor": 10,
-    "ceiling": 24,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       10,
-       24
-      ],
-      "words": "from 1, 10 to 24"
-     }
-    ],
-    "boss": {
-     "name": "Urag gro-Shub",
-     "level": "level 10"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -51050,22 +50570,7 @@
    "marker": null,
    "actors": {
     "count": 9,
-    "floor": 1,
-    "ceiling": 50,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       50
-      ],
-      "words": "from 1, 1 to 50"
-     }
-    ],
-    "boss": {
-     "name": "Haran",
-     "level": "level 22"
-    }
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -51131,28 +50636,7 @@
    "marker": null,
    "actors": {
     "count": 14,
-    "livesHere": "Draugr",
-    "alsoHere": [
-     "Skeleton",
-     "Spider"
-    ],
-    "floor": 6,
-    "ceiling": 30,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       30
-      ],
-      "words": "from 1, 6 to 30"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Velehk Sain",
-     "level": "level 90"
-    }
+    "hostile": false
    },
    "respawns": "never",
    "worthGoingFor": {
@@ -51241,11 +50725,7 @@
       "words": "from 1, 6 to 9"
      }
     ],
-    "zoneMin": 6,
-    "boss": {
-     "name": "Ice Wraith",
-     "level": "level 9"
-    }
+    "zoneMin": 6
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -51343,8 +50823,8 @@
     ],
     "zoneMin": 18,
     "boss": {
-     "name": "Dwarven Spider",
-     "level": "level 16"
+     "name": "Drokt",
+     "level": "level 1"
     }
    },
    "respawns": "never",
@@ -51434,8 +50914,7 @@
      }
     ],
     "boss": {
-     "name": "Dog",
-     "level": "level 2"
+     "level": "leveled 24-55"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -51504,23 +50983,8 @@
    "plugin": "The Great City of Winterhold v4.esp",
    "marker": null,
    "actors": {
-    "count": 5,
-    "floor": 1,
-    "ceiling": 65,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       65
-      ],
-      "words": "from 1, 1 to 65"
-     }
-    ],
-    "boss": {
-     "name": "Savos Aren",
-     "level": "level 65"
-    }
+    "count": 2,
+    "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
@@ -51925,8 +51389,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Skeleton",
-     "level": "level 1"
+     "level": "leveled 44-55"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -52268,8 +51731,7 @@
     ],
     "zoneMin": 24,
     "boss": {
-     "name": "Dwarven Centurion",
-     "level": "level 60"
+     "level": "leveled 44-55"
     }
    },
    "respawns": "never",
@@ -52635,7 +52097,7 @@
    "plugin": "Missives - Wyrmstooth.esp",
    "marker": null,
    "actors": {
-    "count": 65,
+    "count": 64,
     "livesHere": "Draugr",
     "alsoHere": [
      "Skeleton",
@@ -52859,8 +52321,7 @@
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Marauder",
-     "level": "leveled 6-24"
+     "level": "level 35"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -53760,11 +53221,7 @@
       ],
       "words": "from 1, 8 to 60"
      }
-    ],
-    "boss": {
-     "name": "Sir Berich",
-     "level": "level 60"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -53824,8 +53281,7 @@
     ],
     "zoneMin": 10,
     "boss": {
-     "name": "Feral Vampire",
-     "level": "leveled 20-50"
+     "level": "level 55"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -53981,7 +53437,7 @@
    "plugin": "JK's Castle Volkihar.esp",
    "marker": "Dawnguard.esm:00BA4D",
    "actors": {
-    "count": 68,
+    "count": 60,
     "livesHere": "Vampire",
     "alsoHere": [
      "Skeleton",
@@ -54502,8 +53958,7 @@
     ],
     "zoneMin": 13,
     "boss": {
-     "name": "Giant Chaurus",
-     "level": "level 50"
+     "level": "level 80"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -54642,11 +54097,7 @@
       "words": "from 1, 1 to 1"
      }
     ],
-    "zoneMin": 15,
-    "boss": {
-     "name": "Vale Deer",
-     "level": "level 1"
-    }
+    "zoneMin": 15
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -54710,8 +54161,8 @@
      }
     ],
     "boss": {
-     "name": "Grummite",
-     "level": "level 18000"
+     "name": "Knight of Order",
+     "level": "matches your level, 25 to 50"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -54748,11 +54199,7 @@
       ],
       "words": "from 1, 1 to 80"
      }
-    ],
-    "boss": {
-     "name": "Dremora",
-     "level": "level 10"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -54897,11 +54344,7 @@
       ],
       "words": "from 1, 60 to 60"
      }
-    ],
-    "boss": {
-     "name": "Tempted Centurion",
-     "level": "level 60"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -55230,11 +54673,7 @@
       ],
       "words": "from 1, 75 to 100"
      }
-    ],
-    "boss": {
-     "name": "Inquisitor Pepe",
-     "level": "matches your level, 75 to 100"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -55396,22 +54835,6 @@
    "inTown": null,
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:047D25",
-   "actors": {
-    "count": 4,
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "zoneMin": 8
-   },
    "respawns": "never",
    "clearXp": 100,
    "discoveryXp": 10,
@@ -55524,11 +54947,7 @@
       ],
       "words": "from 1, 1 to 50"
      }
-    ],
-    "boss": {
-     "name": "Guard Of Anguish",
-     "level": "matches your level, 8 to 50"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -55588,11 +55007,7 @@
       ],
       "words": "from 1, 15 to 35"
      }
-    ],
-    "boss": {
-     "name": "Ghost of Lenwin",
-     "level": "level 35"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -59380,8 +58795,7 @@
      }
     ],
     "boss": {
-     "name": "Staada",
-     "level": "matches your level, 20 to 81"
+     "level": "level 1"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -59415,11 +58829,7 @@
       ],
       "words": "from 1, 20 to 20"
      }
-    ],
-    "boss": {
-     "name": "Blades' Guardian",
-     "level": "level 20"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -59506,11 +58916,7 @@
       ],
       "words": "from 1, 25 to 25"
      }
-    ],
-    "boss": {
-     "name": "Blades' Guardian",
-     "level": "level 25"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -59593,11 +58999,7 @@
       ],
       "words": "from 1, 30 to 30"
      }
-    ],
-    "boss": {
-     "name": "Blades' Guardian",
-     "level": "level 30"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -59681,11 +59083,7 @@
       ],
       "words": "from 1, 35 to 35"
      }
-    ],
-    "boss": {
-     "name": "Blades' Guardian",
-     "level": "level 35"
-    }
+    ]
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
@@ -61123,7 +60521,6 @@
      }
     ],
     "boss": {
-     "name": "Jytia",
      "level": "level 1"
     }
    },
@@ -61169,11 +60566,7 @@
       "words": "from 1, 1 to 1"
      }
     ],
-    "zoneMin": 15,
-    "boss": {
-     "name": "Bjalfi",
-     "level": "level 1"
-    }
+    "zoneMin": 15
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "clearXp": 100,
