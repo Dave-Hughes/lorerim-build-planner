@@ -28,6 +28,7 @@ Every order has, under its heading:
 10. Push a progress commit at least every 45 minutes on a long part (what's done, what's next, under the order), so Bob and Dave can see you're alive.
 
 ## Bob's loop
+- For data work, Bob reads values, not counts: he pulls a few rows and asks whether a player would believe them.
 - A watcher on `staging` (re-armed every 30 minutes while the chat with Dave is open) wakes Bob on every push by a Jeff.
 - Bob pulls, reads the order's boxes against the push and against the live door or the preview (never only the tests), and writes one of: `Status: done`; or a feedback part with boxes and `Status: queued`.
 - For data loops, Bob's rulings go to `gamedata/5.0.4.8/story_checks/bob-rulings.md`, which the PC reads at the start of every batch.

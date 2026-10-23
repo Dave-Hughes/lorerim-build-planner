@@ -5156,6 +5156,13 @@ For each town, settlement and place, what the game and LoreRim's mods let a char
 - **The calling view on top:** which of these each Callings calling counts (Bard, Scholar, Fisher, Hunter, Gatherer, Laborer, Smith, Helper, Thief), from the mod's own data.
 - Player question 30: "What can Kyria do for work in Riften?" and 25 (a bard in Riften) pass once Mac's WO-143 Part 2 lands.
 
+### Every part: a sanity pass before it's done (Bob, 23 Oct, 15:55)
+Twice today a part looked right by its counts and wrong by its values (distances in real km reading as "next door"; 108 places with enemies at level 1 to 1). Before any part of this order goes to `for Bob`:
+- [ ] **Impossible values fail a test:** no level range of 1 to 1 or wider than the zone allows, no place that is its own nearest town, no city as an inn, no empty name, no editor-style name where a cell name exists, no price of 0 or over 100,000, no merchant with nothing to sell.
+- [ ] **Ten spot checks against things we know,** written in the log with what each was checked against (UESP or the records): for places, Bleak Falls Barrow, Fort Hraggstad, Embershard Mine, the Bee and Barb, Narzulbur; for people, Farengar, Belethor, Arcadia, Lydia, Borgakh; for books, the five Sneak books; for doings, Riften's inn and board.
+- [ ] **Look at the output as a player would:** pull one place, one person, one book through the door and read what a player's Claude would say. Paste it in the log.
+Bob checks values on every part, not counts.
+
 ### Done when
 - [ ] Part 1: places fixed, strongholds and settlements and city buildings in, the roads table; `suggest_places` returns places for all nine capitals; player question 26.
 - [ ] Part 2: `people.json`, `search_facts` person, `get_person`; player questions 27 and 23.
