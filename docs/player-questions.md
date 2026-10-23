@@ -159,3 +159,13 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `suggest_doings({ playthrough: "Kyria Severa", act: "1" })`.
 - Must: the jobs mod's shifts in Riften with their employers, the Missives board, the Bee and Barb to play; each with its mod named.
 - Fails today: **WO-144 Part 4** (with WO-143 Part 2 for the tool).
+
+**31. "How does Kyria get from 15 to 20 in Act III?"**
+- Calls: `get_playthrough({ playthrough: "Kyria Severa" })`, `suggest_objective` for Act III.
+- Must: XP needed (about 3,300 from 15 to 20 on the curve), what Act III's plan pays, the gap, and named fillers with their XP (Missives, Tome Trials, calling days).
+- Fails today: **WO-145**.
+
+**32. "What level will she be at the end of Act II?"**
+- Calls: `get_playthrough`.
+- Must: the level the act's XP reaches, computed; not the typed range.
+- Fails today: **WO-145**.

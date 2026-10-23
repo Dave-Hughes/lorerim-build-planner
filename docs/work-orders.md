@@ -4963,6 +4963,40 @@ Decisions made under WO-138 Part 5, each with why:
 
 ---
 
+## WO-145  An XP budget for every act: level ranges computed, not wished (PC, then Mac, 23 Oct 2026)
+Status: queued, after WO-144 Part 1 (PC) and WO-142 (Mac)
+
+**Why.** Dave, from Kyria's run (23 Oct): Act III says "levels 8 to 20" and ends at a level-20 gate (The Mind of Madness). She reached Solitude at 15 (Save 114: level 15, 186 / 650 XP). Almost nothing in Act III pays XP: the Skeever room, shifts, nightly songs and Beirand are tasks; Holy Fire is a spell; the Edda waits on Tending the Flames (Act VII); The Mind of Madness is the gate. 15 to 20 is about 3,300 XP; her two callings cap near 170 a day each, so that's about ten in-game days of nothing but songs and books. The range was typed in as a wish. Dave: "my confidence that we're able to design characters and accurately recommend levels that could be achieved based on the steps the user takes through the acts is very low." The planner already holds quest XP by type (`QUEST_XP` from Experience.ini in `quest_pages.py`: Main and Daedric 200, Side 100, Misc 0) and each place's clear XP (`places.json`), and the save connector reads current XP. What's missing is the curve, discovery XP, the callings' caps, and the sum.
+
+### Part 1. The numbers (PC)
+From LoreRim's install, each with its file and value in `xp.json`:
+- **The Experience curve:** XP to reach each level 1 to 100 (Experience.ini; Save 114's 650 at 15 is a check: 575 at 12, rising 25 a level).
+- **What pays XP in LoreRim:** quest XP by type (as `QUEST_XP`, rechecked), location discovery and clearing (Experience.ini's values by location type), and the small sources LoreRim turns on (brewing 5, enchanting 5, disenchanting 5, mining 10, per `lorerim/systems/crafting.md`; reading, if any; kills, if Experience grants any in this list).
+- **Callings:** each calling's XP per action and daily cap, from the mod's own data on Dave's PC (after the 19 Oct retune: Bard 25 a song, 5 a day; Scholar 17 a book, 10 a day; plus first-inn and series bonuses), and whether the cap scales with level (today it doesn't).
+- **Repeatable fillers:** Missives (100 XP each, `_M_` quests are Side Quest type?), the jarls' bounties, the Bards College's Tome Trials exams (XP per exam), radiant faction jobs, with their XP.
+
+### Part 2. The budget on every act (Mac)
+- `get_playthrough` and the act's card on Play show, per act: **XP needed** to go from its start level to its end level (the curve); **XP its plan pays**: each linked quest's XP by type, each linked place's clear and discovery XP, each passed-by place's discovery XP, and the character's callings at their cap times the days the act says it spends (`set_act` takes `days`; none set means none counted); and **the gap**.
+- **Level ranges are outputs.** An act's start level is the previous act's end; its end level is the level its XP reaches on the curve. `set_act`'s `levels` becomes a target the assistant states; the card shows the target and what the plan reaches, and warns when they differ by a level or more.
+- **A level gate needs a road to it.** When the next act opens on a quest with a level gate (The Mind of Madness, level 20), and the plan's XP doesn't reach it, `check_progression` and the card say so: "Act III reaches level 16; The Mind of Madness needs 20: 2,600 XP short."
+- **Filler that fits.** On a deficit, `suggest_objective` offers fillers from Part 1 that suit the character and the act's towns: Missives from the act's town board, Tome Trials at the Bards College when the act is in Solitude, at-level side quests in the hold, dungeons on the route (`suggest_places`), calling days. Each with its XP. Never "grind"; always a named thing to do.
+- **The save keeps it honest.** With a snapshot, the card shows where she actually is against the budget ("Save 114: level 15, 186 of 650; the act planned 18 here").
+- The style guide: an act's levels come from its budget; never end an act at a level gate it can't reach; say the gap and offer fillers.
+
+### Part 3. Kyria as the worked example
+Kyria's Act III shows the gap from Save 114 and three fillers (Missives from Solitude's board, Tome Trials, a calling week), and its range becomes what they reach.
+
+### Player questions
+- 31. "How does Kyria get from 15 to 20 in Act III?" returns the XP needed (about 3,300), what the act pays, the gap, and named fillers with their XP.
+- 32. "What level will she be at the end of Act II?" returns the level the plan's XP reaches, not the typed range.
+
+### Done when
+- [ ] Part 1: `xp.json` with its sources. (PC)
+- [ ] Part 2: the budget on the act, ranges as outputs, the gate warning, fillers, the save against the plan, the rule. (Mac)
+- [ ] Part 3: Kyria's Act III. Player questions 31 and 32 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-144  The indexes a design needs (PC, 23 Oct 2026; takes the PC's queue before WO-140)
 Status: building (PC)
 
