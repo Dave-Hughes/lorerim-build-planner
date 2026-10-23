@@ -5124,6 +5124,13 @@ Bob's 15:35 note above landed after item 3; nothing in it is applied yet. Do it 
 - [x] (PC, 23 Oct) Players' names, from the shortest of a building's own cells: "Vilemyr Inn", "Mistveil Keep", "Bards College" (drops "The" too, since the cell does).
 - [x] (PC, 23 Oct) Stables: `LocTypeStables`, confirmed against Bjorlam's placement; five found (Whiterun, Windhelm, Riften, Markarth by name, Solitude by its own `LocTypeStables` location with no "Solitude Stables" marker). Every capital has an inn and a keep; Morthal, Winterhold and Dawnstar have no standalone temple building in this load order's records at all -- not forced in. 277 gamedata tests pass.
 
+### Part 1d. Enemy levels a player can plan by (Bob, 23 Oct, 15:50; feedback, before Part 2)
+Dave's Claude, planning Kyria near Solitude: "Not checked Fort Hraggstad's enemy levels; expect the bandit range (3 to 24, bosses 19 to 24)." Fort Hraggstad is in the index now, but its `actors.levels` reads `[1, 1]` for 93 actors, and 108 places read `[1, 1]` (Fort Amol, Skuldafn, Morvunskar…); others read too wide to use ("1 to 50" at Bleak Falls Barrow). The levels come from the leveled lists' lowest entries, not from what a player meets.
+- [ ] Read each location's **encounter zone** (`ECZN`: min level, max level, and whether it's fixed), which is what Requiem and LoreRim set to decide how strong a place is; that is the range to show. Where a place has none, take its actors' leveled lists resolved at their real level spread (the lowest and highest entry a player at the zone's levels can meet), never `[1, 1]` from an unresolved list.
+- [ ] Bosses: the boss's own level or level range (the actor marked boss, or the zone's max), named when the records name it.
+- [ ] `suggest_places` and `get_place` (when it exists) give "enemies about 3 to 24, the boss about 19 to 24" in the words players use, and a fit against the act's levels (fits now, plant now, too high).
+- [ ] Test: Fort Hraggstad, Embershard Mine and Bleak Falls Barrow read a range a player can plan by; no place reads `[1, 1]`.
+
 ### Part 2. People
 Every person a design touches, from the records, in `people.json`: name, race, sex, where they stand (cell and town), and what they are to a player:
 - **Merchants and what they sell:** innkeepers, general goods, apothecaries, blacksmiths, fences, and the court wizards and College vendors with the spell tomes in their lists (the records' vendor containers and leveled lists). This answers "where is Calm sold", which every test hit.
