@@ -4984,14 +4984,13 @@ From LoreRim's install, each with its file and value in `xp.json`:
 - **The save keeps it honest.** With a snapshot, the card shows where she actually is against the budget ("Save 114: level 15, 186 of 650; the act planned 18 here").
 - The style guide: an act's levels come from its budget; never end an act at a level gate it can't reach; say the gap and offer fillers.
 
-### Part 2b. The shape of a run: callings start it, the core game carries it (Dave, 23 Oct, 13:30)
-Dave's decision after the XP discussion: Callings stays a starter, not the engine. Scaling its XP so a role-player can level on songs alone is the wrong fix; if anything it pays too much early (Kyria is 16 on lute, books, exploring and a few side quests, no missives, little combat). The design problem is the run's shape, and the planner should plan it:
-- **Levels 1 to about 10: the calling carries it.** Acts lean on what the character is: playing inns, reading, gathering, odd jobs in town, with the calling's daily XP counted in the budget.
-- **About 10 to 15: the story starts sending her out.** Each act gains at least one thing from the core game that fits the story and the hold: a side quest at her level, a camp or a dungeon on the route (clearing pays big XP), the first steps of a guild or the main quest if she's that character. The calling is still there, as the standing rule.
-- **15 to 20 and on: the core game, with the calling as a supplement.** Regional quests at level, camps and dungeons, the faction lines, the Dragonborn line if she's the Dragonborn. Calling days stop being the answer to a deficit.
-- **Fillers follow the shape.** Below about 10, a calling week is a fair filler; above it, fillers come from the core game first (camps and dungeons on the route with their clear XP, at-level side quests in the hold, Missives), and a calling day is the last offer, never the only one.
-- **The card says when the shape is off.** An act past level 12 whose plan pays most of its XP from the calling gets a warning: "Most of Act III's XP is songs and books; give her something out in the world."
-- The style guide states the shape as a rule, so an assistant writes a story that turns outward by the mid-teens, rather than one that needs a grind to reach its gate.
+### Part 2b. The shape of a run: a guideline, not a rule (Dave, 23 Oct, 13:30 and 13:34)
+Dave's decision after the XP discussion: Callings stays a starter, not the engine; scaling its XP so a role-player can level on songs alone is the wrong fix. The design problem is the run's shape. **But the shape is a guideline the planner weighs, not a rule it enforces**: some players want a slow, quiet run and that's a fine character. So:
+- **The usual shape, as guidance.** Most runs go: levels 1 to about 10, the calling and the town carry it; about 10 to 15, the story starts sending her out (a side quest at her level, a camp or dungeon on the route, the first steps of a guild or the main quest); 15 to 20 on, the core game, with the calling as a supplement. The style guide says this as "usually", with the reasons (the world's content is built for levels; a long stretch of only songs and books gets slow), not as "must".
+- **Ask, as a design question.** WO-139's Before you design gains one: **"How soon do they head out into the wider world, and how much fighting do they want?"** Quiet for a long time, the usual, or straight into it. The answer is kept with the others and sets how the planner weighs fillers and when it nudges. "No answer" means the usual shape.
+- **Fillers follow the answer.** For the usual or faster shape, past about level 10 the planner offers core-game fillers first (camps and dungeons on the route with their clear XP, at-level side quests in the hold, Missives), a calling day last. For a quiet run, calling days and town work stay first, and the budget is honest about how slow that is.
+- **Nudges, not blocks.** When an act past level 12 gets most of its XP from the calling and the player didn't ask for a quiet run, the card says so once, softly ("Most of Act III's XP is songs and books; she might be ready for something out in the world"), with two or three suggestions. Never a failing check, never a refusal; the player can dismiss it.
+- The only hard line stays the one that's about facts, not taste: an act shouldn't end at a level gate the plan can't reach without saying so.
 
 ### Part 3. Kyria as the worked example
 Kyria's Act III shows the gap from Save 114 and fillers that follow the shape (a camp or dungeon on the route, an at-level side quest in Haafingar, Tome Trials, Missives from Solitude's board; a calling day last), and its range becomes what they reach.
@@ -5002,7 +5001,7 @@ Kyria's Act III shows the gap from Save 114 and fillers that follow the shape (a
 
 ### Done when
 - [ ] Part 1: `xp.json` with its sources. (PC)
-- [ ] Part 2 and 2b: the budget on the act, ranges as outputs, the gate warning, fillers in the shape's order, the shape warning, the save against the plan, the two rules. (Mac)
+- [ ] Part 2 and 2b: the budget on the act, ranges as outputs, the gate warning, fillers following the player's answer, the soft nudge (dismissable), the save against the plan, the guideline in the guide and the new Before-you-design question. (Mac)
 - [ ] Part 3: Kyria's Act III. Player questions 31 and 32 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
 ---
