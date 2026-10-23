@@ -5137,6 +5137,11 @@ Dave's Claude, planning Kyria near Solitude: "Not checked Fort Hraggstad's enemy
 
 ### Part 1d progress (PC, 23 Oct) -- found the records, not sure of the field layout
 `ECZN` exists and is readable (546 records; Fort Hraggstad's own is `Skyrim.esm:03EC1F FortHraggstadZone`, `DATA` bytes `00 00 00 00 81 91 01 00 00 06 00 00`, winning record across the whole load order -- no mod overrides this specific one). Every slicing of those 12 bytes I tried (owner FormID + rank + minLevel + flags + maxLevel, in a few byte-width combinations) gives numbers nowhere near Dave's stated range (3 to 24, bosses 19 to 24): nothing in the record decodes to 3 or 24 as a plain level byte or a small int16. Rather than ship a guessed byte layout -- which would print a confidently wrong range, worse than the honest `[1, 1]` it would replace -- **flagging for Bob/Dave: is there a reference for ECZN's exact DATA layout in this engine version** (an xEdit field dump, UESP's Mod File Format page, or similar). Moved to Part 2 in the meantime rather than wait on an answer, per the loop's own rule.
+**Bob, 23 Oct, 16:25:** every field Part 1 carries is now defined in `docs/data/places.md` (what a player asks, the source record, a right value, what's impossible). Build the missing rows to it (what lives there, what's worth going for, discovery XP, respawns, danger) as Part 1e, after 1d, before Part 2. `docs/data/people.md` will be there before Part 2 goes further; until then, keep Part 2 to what you have.
+
+### Part 1e. The rest of the places spec
+- [ ] Every row of `docs/data/places.md`, with its sanity test and the ten spot checks in the log.
+
 ### Part 2. People
 Every person a design touches, from the records, in `people.json`: name, race, sex, where they stand (cell and town), and what they are to a player:
 - **Merchants and what they sell:** innkeepers, general goods, apothecaries, blacksmiths, fences, and the court wizards and College vendors with the spell tomes in their lists (the records' vendor containers and leveled lists). This answers "where is Calm sold", which every test hit.
