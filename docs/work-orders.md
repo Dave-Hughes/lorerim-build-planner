@@ -4943,7 +4943,7 @@ Status: queued
 ---
 
 ## WO-139  Before you design: the questions, their answers kept, what a character will never do, and the mods they need (Mac, 23 Oct 2026)
-Status: queued
+Status: building (Mac)
 
 **Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a home, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough: the answers have to be kept, the ones that close doors have to close them in the planner, and a design that needs a mod LoreRim doesn't ship (Callings, first of all) has to say so.
 
