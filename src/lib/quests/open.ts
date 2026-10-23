@@ -162,8 +162,10 @@ function judge(need: string, names: QuestNames, p: PlayerState): Verdict {
   }
   // "After Joining the Legion", no stage given: the planner doesn't judge it, except that a quest she will never do never comes (WO-139).
   const after = /^After (.+)$/.exec(n);
-  const never = after ? progress(after[1], names, p).never : null;
-  if (never) return { ok: false, why: never, never: true };
+  const was = after ? progress(after[1], names, p) : null;
+  if (was?.never) return { ok: false, why: was.never, never: true };
+  // A quest the player has finished (WO-142 item 1): what a plain "After X" waits on.
+  if (was?.found && was.done) return MET;
   return unknown(n.startsWith("a condition") ? "a condition the start check can't name yet" : `needs ${n}`);
 }
 
@@ -194,12 +196,10 @@ const plainWhy = (why: string) => (RECORD.test(why) ? SAID : why);
  * unknown until the planner knows the one before it is done.
  */
 export function openFor(
-  quest: { edid?: string; objectives?: string[]; start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string }[]; checked: string; raw?: { needs: string[] } } },
+  quest: { edid?: string; objectives?: string[]; start?: { needs?: string[]; ways?: { needs?: string[]; unplaced?: string; who?: string; where?: string }[]; checked: string; raw?: { needs: string[]; ways?: { needs?: string[] }[] } } },
   p: PlayerState,
   names: QuestNames,
-  /** The quest before it in its line, if it isn't the line's first: a talk that opens it can hang on that one, in ways the check can't see. */
-  prior: { edid: string; name: string } | null = null,
-): { state: OpenState; because: string[]; forCharacter?: true } {
+): { state: OpenState; because: string[]; forCharacter?: true; places?: string[] } {
   // A quest the character will never do, or one that needs one (WO-139): locked for this character, before any other gate.
   const own = quest.edid ? p.never?.get(quest.edid) : undefined;
   if (own) return { state: "locked", because: [own], forCharacter: true };
@@ -212,7 +212,7 @@ export function openFor(
   const verdicts = (quest.start.raw?.needs ?? quest.start.needs ?? []).map((n) => judge(n, names, p));
   const never = [...new Set(verdicts.filter((v): v is { ok: false; why: string; never: true } => v.ok === false && !!v.never).map((v) => v.why))];
   if (never.length) return { state: "locked", because: never, forCharacter: true };
-  if (prior && !p.done.has(prior.edid)) verdicts.push(unknown(`comes after ${prior.name || prior.edid}, and the planner hasn't been told that's done`));
+  // A line's order gates nothing (WO-142 item 1): only the quest's own checked needs do, a quest or stage its ways name.
   const no = [...new Set(verdicts.filter((v): v is { ok: false; why: string } => v.ok === false).map((v) => plainWhy(v.why)))];
   if (no.length) return { state: "locked", because: no };
   const cant = [...new Set(verdicts.filter((v): v is { ok: null; why: string } => v.ok === null).map((v) => plainWhy(v.why)))];
@@ -221,10 +221,23 @@ export function openFor(
   // Handed, which also runs from the start of the game, so its needs say nothing): never a bare open. A way whose only
   // unnamed part is where the speaker stands as the line plays has none (A Chance Arrangement's ring line).
   const ways = quest.start.ways ?? [];
+  // Some ways in read something no one has placed (WO-142 item 1): that way can't be acted on, so the quest is open only
+  // through a way that is placed and whose own needs are met (judged in the record form when it lines up with the ways).
+  if (ways.some((w) => w.unplaced) && !ways.every((w) => w.unplaced)) {
+    const raw = quest.start.raw?.ways?.length === ways.length ? quest.start.raw.ways : null;
+    const judged = ways.flatMap((w, i) => (w.unplaced ? [] : [judgeAll((raw?.[i].needs ?? w.needs ?? []), names, p)]));
+    if (!judged.some((v) => v.ok === true)) {
+      const why = [...new Set(judged.flatMap((v) => (v.ok === true ? [] : [plainWhy(v.why)])))];
+      const unplaced = "the other way in is reading something no one has placed";
+      return judged.some((v) => v.ok === null) ? { state: "unknown", because: [...why, unplaced] } : { state: "locked", because: why };
+    }
+  }
   // Every way in is reading something no one has placed (WO-131 Part 2): the player can't act on it, so never open.
   if (ways.length && ways.every((w) => w.unplaced)) return { state: "unknown", because: ways.map((w) => w.unplaced!.replace(/\.$/, "").replace(/^W/, "w")) };
   if (ways.length && ways.every((w) => (w.needs ?? []).some((n) => UNNAMED.test(n)))) return { state: "unknown", because: ["one condition on every way in isn't named yet"] };
-  return { state: "open", because: [] };
+  // A way that starts by itself in a place (WO-142 item 6): where it happens, said with "open for you".
+  const places = [...new Set(ways.filter((w) => !w.who && w.where).map((w) => w.where!))];
+  return { state: "open", because: [], ...(places.length ? { places } : {}) };
 }
 
 

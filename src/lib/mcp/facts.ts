@@ -21,6 +21,8 @@ import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 
 export { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
+import { gearData } from "@/lib/gear/data";
+import { HOMES, HOMES_NOTE, MOUNTS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
 
@@ -47,7 +49,7 @@ const perkName = (d: GameData, id: string) => {
 };
 
 /** Kinds search_facts looks through. */
-export const FACT_KINDS = ["perk", "spell", "trait", "race", "birthsign", "deity", "quest line", "story", "quest"] as const;
+export const FACT_KINDS = ["perk", "spell", "trait", "race", "birthsign", "deity", "quest line", "story", "quest", "item"] as const;
 export type FactKind = (typeof FACT_KINDS)[number];
 
 export interface Hit {
@@ -153,6 +155,18 @@ export function searchFacts(query: string, kinds: FactKind[] = [...FACT_KINDS], 
           if (m) ranked.push({ h: { ...hit, why: m.why }, rank: m.rank });
         }
       }
+  }
+  // An item by name (WO-142 item 9): names only, so set_gear can be given one that exists. Ranked after everything else so a
+  // piece of gear never pushes a quest or a perk out of 20; one of a name and type once, whichever plugin has more.
+  if (want.has("item") && version === currentVersion().id) {
+    const seen = new Set<string>();
+    for (const it of gearData().items) {
+      const type = it.slot ?? it.type ?? it.weaponType ?? (it.kind === "ammo" ? "Ammo" : it.kind);
+      const key = `${norm(it.name)}|${type}`;
+      if (seen.has(key) || !words.every((w) => norm(it.name).includes(w))) continue;
+      seen.add(key);
+      ranked.push({ h: { kind: "item", id: it.id, name: it.name, line: [type, it.armorType].filter(Boolean).join(", ") }, rank: 10 + (norm(it.name) === norm(query) ? 0 : 1) });
+    }
   }
   ranked.sort((a, b) => a.rank - b.rank || a.h.name.length - b.h.name.length || a.h.name.localeCompare(b.h.name));
   return { hits: ranked.slice(0, limit).map(({ h }) => h), more: Math.max(0, ranked.length - limit), ...(ranked.length ? {} : { note: NO_MATCH }) };
@@ -467,16 +481,13 @@ const SAYS = { open: "open for you", locked: "locked", unknown: "unknown" } as c
 /** One quest of a line, open for the player or not, and why (WO-115 Part 3): what an assistant says about it. */
 export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, version = DEFAULT_VERSION) {
   const { lines } = questsFor(version);
-  const i = line.quests.indexOf(quest);
-  // A work-shelf line (odd jobs, favours, bounties) is a shelf of separate jobs, not a sequence (WO-130): only the
-  // records' own needs gate one of its quests, never the one listed before it.
-  const prior = i > 0 && quest.edid !== line.opening && line.category !== "work" ? line.quests[i - 1] : null;
-  const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)), prior);
+  // A line's order is no gate (WO-142 item 1, after WO-130's work shelves): only the records' own needs gate a quest.
+  const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)));
   // Locked for this character (WO-139): a quest behind something the player said she will never do, in their words.
   if (r.forCharacter) return { state: r.state, says: `locked for this character: ${r.because.join("; ")}`, because: r.because, forCharacter: true as const };
   // With kill on the never list (Part 5): an open quest says it is kill-free as far as its objectives go.
   const kills = p.neverKills ? "kill-free as far as the objectives go" : null;
-  return { state: r.state, says: `${r.state === "open" ? SAYS.open : `${SAYS[r.state]}: ${r.because.join("; ")}`}${kills ? `; ${kills}` : ""}`, because: r.because, ...(kills ? { kills } : {}) };
+  return { state: r.state, says: `${r.state === "open" ? `${SAYS.open}${r.places?.length ? `, in ${r.places.join(" or ")}` : ""}` : `${SAYS[r.state]}: ${r.because.join("; ")}`}${kills ? `; ${kills}` : ""}`, because: r.because, ...(kills ? { kills } : {}) };
 }
 
 /** get_quest_start, kept as an alias of get_quest for a release (WO-115). */
@@ -521,7 +532,7 @@ export const ACTIVITIES = [
 
 /** get_rules (WO-119): the numbers How points work says, for an assistant that hasn't read the style guide. */
 export function getRules(version = DEFAULT_VERSION) {
-  return { version, ...pointRules(versionData(version).rules), activities: ACTIVITIES, source: "the planner's rules, as its checks count" };
+  return { version, ...pointRules(versionData(version).rules), mounts: MOUNTS, homes: HOMES, homesNote: HOMES_NOTE, activities: ACTIVITIES, source: "the planner's rules, as its checks count" };
 }
 
 /**

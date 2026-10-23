@@ -1442,7 +1442,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     out["checked"] = "files" if traced else "not yet"
     if out.get("ways"):
         out["ways"] = merged_ways(out["ways"], several=not out.get("who"))
-    return out
+    return fold_places(out, towns)
 
 
 def start_disagreements(pages):
@@ -1458,6 +1458,60 @@ FIRST_STEPS = {
     "T03": ("Retrieve Nettlebane", "Bob, 22 Oct: Danica's \"I'll get Nettlebane for you.\" sets stage 20, which is the step; "
                                    "the stage-10 temple inspection happens by itself (UESP)."),
 }
+
+
+_PLACE_ENTER = re.compile(r"^(?:When you enter |the place you enter is )(.+)$")
+_PLACE_OTHER = re.compile(r"^(?:When you leave .+|the place you leave (?:is|isn't) .+)$")
+
+
+def _place_need(need):
+    """A place condition: ("enter", place) for a place named, ("drop", None) for one that names none ("a habitation", where you leave); else None."""
+    m = _PLACE_ENTER.match(need)
+    if m:
+        return ("drop", None) if m.group(1) == "a habitation" else ("enter", m.group(1))
+    return ("drop", None) if _PLACE_OTHER.match(need) else None
+
+
+def fold_places(start, towns=None):
+    """
+    A place condition is where the way happens, not a need (WO-142 item 6; WO-137's 6(c) said it for triggers, and it holds
+    for talks too): "When you enter Riverwood" on a way, or on the quest for a trigger that starts by itself, becomes the way's
+    `where`, and the needs say nothing of it. "It starts by itself when you walk into any inn" with the quest's "When you enter
+    Riverwood" is that trigger in Riverwood. Where you leave, and "a habitation", are no place a player goes to: dropped.
+    The "One of: ..." need is said again from the ways, as start_of writes it. A start with no place condition is returned as it was.
+    """
+    ways = start.get("ways") or []
+    needs = start.get("needs") or []
+    top = [k for n in needs if (k := _place_need(n))]
+    if not top and not any(_place_need(n) for w in ways for n in w.get("needs", [])):
+        return start
+    top_enter = next((p for kind, p in top if kind == "enter"), None)
+    out_ways = []
+    for w in ways:
+        keep = [n for n in w.get("needs", []) if not _place_need(n)]
+        enter = next((k[1] for n in w.get("needs", []) for k in [_place_need(n)] if k and k[0] == "enter"), None)
+        # The quest's own place condition is the trigger's: a way that starts by itself and says no place of its own.
+        trigger = not w.get("who") and not w.get("where") and w["how"].startswith("It starts by itself")
+        where = w.get("where") or enter or (top_enter if trigger else None)
+        nw = {k: v for k, v in w.items() if k not in ("needs", "where")}
+        if keep:
+            nw["needs"] = keep
+        if where:
+            nw["where"] = where
+        out_ways.append(nw)
+    out = {**start, "needs": [n for n in needs if not _place_need(n)]}
+    if ways:
+        out["ways"] = out_ways
+        if len(out_ways) > 1 and any(n.startswith("One of: ") for n in out["needs"]):
+            one = "One of: " + "; or ".join(w["how"] + (f" ({', '.join(w['needs'])})" if w.get("needs") else "") for w in out_ways)
+            out["needs"] = [one if n.startswith("One of: ") else n for n in out["needs"]]
+    elif top_enter and not out.get("where"):
+        out["where"] = top_enter
+    # Its towns gain the town of a place it now names.
+    more = [t for t in (town_of(w["where"], towns or {}) for w in out_ways if w.get("where")) if t]
+    if more:
+        out["towns"] = list(dict.fromkeys([*(out.get("towns") or []), *more]))
+    return out
 
 
 def reword(start, wording, way_needs=None):

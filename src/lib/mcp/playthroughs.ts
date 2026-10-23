@@ -3,13 +3,13 @@ import "server-only";
 import { desc, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db, schema } from "@/db";
-import { docText } from "@/lib/guide/doc";
 import { gearData } from "@/lib/gear/data";
 import { ipCall } from "@/lib/moderation/limits";
 import { lineOfQuest, placeLinkables, questLinkables, type Linkable } from "@/lib/playthroughs/links";
 import { placeByName, placesData, placeType } from "@/lib/places/data";
+import { citiesOf } from "@/lib/places/inside";
 import { actTowns, placesNear, unmeasured } from "@/lib/places/suggest";
-import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
+import { docToMarkdown, markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { reviewRoutes } from "@/lib/playthroughs/route-review";
@@ -20,7 +20,8 @@ import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { leftOutLine, type Nevers } from "@/lib/quests/never";
 import { openState, type PlayerState } from "@/lib/quests/open";
-import { stories } from "@/lib/quests/stories-data";
+import { stories, storyOfLine } from "@/lib/quests/stories-data";
+import type { Story } from "@/lib/quests/story";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { logCounts, questLog } from "./quest-log";
@@ -671,7 +672,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       ...(c.kind === "beat" && c.inGame ? { unlocksWhen: { objective: String(c.inGame.id), text: c.inGame.text }, unlocked: c.open } : {}),
       ...(c.kind !== "beat" && c.inGame ? { tells: c.inGame.text } : {}),
       ...(c.fromSave ? { fromSave: c.fromSave } : {}),
-      text: docText(c.doc),
+      // As it was written, paragraphs kept (WO-142 item 7), so it can go back through set_chapter unchanged.
+      text: docToMarkdown(c.doc),
     })),
     ...(warnings.length ? { warnings } : {}),
   };
@@ -741,7 +743,9 @@ export async function toldOf(input: { level?: number; done?: string[]; playthrou
 export function startsAt(line: Pick<QuestLine, "where" | "giver">, first: Pick<Quest, "start">, startText?: string): (string | null | undefined)[] {
   const ways = first.start?.ways ?? [];
   if (ways.length && ways.every((w) => w.whereIs || w.unplaced)) return ways.flatMap((w) => w.whereIs ?? []);
-  return [line.where, line.giver?.place, first.start?.where, ...ways.map((w) => w.where), startText];
+  const named = [line.where, line.giver?.place, first.start?.where, ...ways.map((w) => w.where), startText];
+  // The towns it starts in, and the city each place named sits in (WO-142 item 5): "Blue Palace" is a thing to do in Solitude.
+  return [...named, ...(first.start?.towns ?? []), ...citiesOf(named)];
 }
 
 /**
@@ -769,9 +773,15 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
   });
   const order = mainOrder().map((q) => q.edid);
   const where = input.where?.trim().toLowerCase();
-  const out = stories()
-    .map((s) => ({ s, line: byId.get(s.line) }))
-    .filter(({ line }) => line && line.checked.start === "files" && !nevers.lines.has(line.id) && !line.quests.every((q) => player.done.has(q.edid)))
+  // The stories first; with a place asked for, the quest lines that have no story after them (WO-142 item 5): six stories
+  // leave most towns with nothing (none starts in Solitude), and a line's opening quest is judged the same way.
+  const candidates: { s: Story | undefined; line: QuestLine | undefined }[] = [
+    ...stories().map((s) => ({ s: s as Story | undefined, line: byId.get(s.line) })),
+    ...(where ? questsData().lines.filter((l) => !storyOfLine(l.id)).map((line) => ({ s: undefined, line })) : []),
+  ];
+  const out = candidates
+    // A story's line is checked by its story's check; a plain line by its opening quest's start, which openForYou asks for.
+    .filter(({ s, line }) => line && (!s || line.checked.start === "files") && !nevers.lines.has(line.id) && !line.quests.every((q) => player.done.has(q.edid)))
     .filter(({ line }) => openState(gateOf(line!), { level: input.level, mainAt: null, finished: told.done ?? [] }, order) === "open")
     .map(({ s, line }) => {
       const first = line!.quests.find((q) => q.edid === line!.opening) ?? line!.quests[0];
@@ -780,17 +790,18 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
     .filter(({ open }) => open.state === "open")
     // Where it starts (WO-130): the giver's place, its opening quest's places, and its first start; not every place a
     // start's text names (Join the Dark Brotherhood starts with Aventus in Windhelm, though a later line names Riften).
-    .filter(({ s, line, first }) => !where || startsAt(line, first, s.start[0]?.text).some((t) => t?.toLowerCase().includes(where)))
+    .filter(({ s, line, first }) => !where || startsAt(line, first, s?.start[0]?.text).some((t) => t?.toLowerCase().includes(where)))
     .slice(0, 12)
     .map(({ s, line, first, open }) => ({
-      story: s.id,
-      name: s.name,
+      ...(s ? { story: s.id } : {}),
+      kind: s ? "story" : "quest line",
+      name: s ? s.name : line.name,
       line: line.name,
-      start: s.start.filter((x) => x.checked === "files").map((x) => x.text)[0] ?? line.start ?? null,
+      start: s?.start.filter((x) => x.checked === "files").map((x) => x.text)[0] ?? line.start ?? null,
       checked: "files",
       firstQuest: first.name,
       openForYou: open.says,
-      link: `${origin}/quests/s/${s.id}`,
+      link: s ? `${origin}/quests/s/${s.id}` : `${origin}/quests/${line.id}`,
     }));
   const left = leftOutLine(leftOut.length, leftOut);
   return {

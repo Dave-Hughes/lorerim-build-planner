@@ -834,5 +834,37 @@ class RunChangesTest(unittest.TestCase):
         self.assertEqual(qp.changes_of([{"stage": 300, "text": "He owed 1000 septims.", "completes": True}], []), [])
 
 
+class FoldPlacesTest(unittest.TestCase):
+    """WO-142 item 6: a place condition is where the way happens, never a need."""
+
+    def test_a_trigger_and_the_quests_place_become_the_triggers_where(self):
+        # A Lovely Letter: "When you enter Riverwood" on the quest, and the way that starts by itself in any inn.
+        start = {"needs": ["When you enter Riverwood", 'One of: Ask Faendal "Okay" in Faendal\'s House; or It starts by itself when you walk into any inn'],
+                 "ways": [{"how": 'Ask Faendal "Okay" in Faendal\'s House', "who": "Faendal", "where": "Faendal's House"}, {"how": "It starts by itself when you walk into any inn"}],
+                 "checked": "files"}
+        out = qp.fold_places(start, {})
+        self.assertEqual(out["ways"][1], {"how": "It starts by itself when you walk into any inn", "where": "Riverwood"})
+        self.assertEqual(out["ways"][0]["where"], "Faendal's House")
+        self.assertEqual(out["needs"], ['One of: Ask Faendal "Okay" in Faendal\'s House; or It starts by itself when you walk into any inn'])
+
+    def test_a_ways_own_place_need_folds_into_it_and_the_one_of_line_is_said_again(self):
+        start = {"needs": ["One of: It starts by itself in Hall of the Dead (While X is at Y, When you enter Hall of the Dead); or Ask Eola \"Where?\" in Hall of the Dead"],
+                 "ways": [{"how": "It starts by itself in Hall of the Dead", "needs": ["While X is at Y", "When you enter Hall of the Dead"]},
+                          {"how": 'Ask Eola "Where?" in Hall of the Dead', "who": "Eola", "where": "Hall of the Dead"}], "checked": "files"}
+        out = qp.fold_places(start, {})
+        self.assertEqual(out["ways"][0], {"how": "It starts by itself in Hall of the Dead", "needs": ["While X is at Y"], "where": "Hall of the Dead"})
+        self.assertEqual(out["needs"], ['One of: It starts by itself in Hall of the Dead (While X is at Y); or Ask Eola "Where?" in Hall of the Dead'])
+
+    def test_the_record_form_and_where_you_leave_fold_the_same_way(self):
+        start = {"needs": [], "ways": [{"how": "It starts by itself on change location", "needs": ["the place you enter is Riverwood", "the place you leave isn't Riverwood", "the place you leave isn't a dwelling"]}], "checked": "files"}
+        out = qp.fold_places(start, {})
+        self.assertEqual(out["ways"], [{"how": "It starts by itself on change location", "where": "Riverwood"}])
+        self.assertEqual(qp.fold_places({"needs": ["x"], "ways": [{"how": "It starts by itself", "needs": ["the place you enter is a habitation"]}]}, {})["ways"], [{"how": "It starts by itself"}])
+
+    def test_a_start_with_no_place_condition_is_as_it_was(self):
+        start = {"needs": ["Level 20"], "ways": [{"how": "Talk to X in Y", "who": "X", "where": "Y"}], "checked": "files"}
+        self.assertIs(qp.fold_places(start, {}), start)
+
+
 if __name__ == "__main__":
     unittest.main()

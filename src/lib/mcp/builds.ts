@@ -1,3 +1,4 @@
+import { LEVEL_ONE } from "./rules-text";
 import type { Mod } from "@/lib/mods";
 import "server-only";
 import { and, count, desc, eq, isNotNull } from "drizzle-orm";
@@ -106,6 +107,8 @@ export async function setLevel(p: Player, input: LevelInput & { build: string; l
   const b = await owned(p, input.build);
   const d = versionData(b.plan.gameVersion);
   if (!Number.isInteger(input.level) || input.level < 1 || input.level > b.plan.levels.length) throw new FactsError(`The build has levels 1 to ${b.plan.levels.length}.`);
+  // Level 1 has no points (WO-142 item 3): refused, not saved and silently dropped.
+  if (input.level === 1 && Object.values(input.skillPoints ?? {}).some((n) => n > 0)) throw new FactsError(LEVEL_ONE);
   const levels = b.plan.levels.map((lv, i) => (i === input.level - 1 ? levelFromInput(d, input, input.level) : lv));
   return save(p, b.id, { ...b.plan, levels }, input.level, true);
 }

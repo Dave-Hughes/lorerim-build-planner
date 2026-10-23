@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { FactsError, getQuest, playerState, searchFacts } from "./facts";
+import { FactsError, getQuest, getRules, playerState, searchFacts } from "./facts";
 import { modsOf, suggestFrom, suggestQuests } from "./playthroughs";
 import { modIndex, readGuide } from "@/lib/game-guide/guide";
 import { styleGuide } from "./facts";
@@ -302,6 +302,13 @@ const QUESTIONS: Question[] = [
     },
     must: ["Callings", "required", "a bard playing the inn or a scholar reading every book in town", "instead of opening on crabs, wolves and bandits"],
     never: [/https?:\/\//],
+  },
+  {
+    n: 24,
+    asks: "How do I get a horse? I'm level 5 in Riften.",
+    ask: () => [{ mounts: getRules().mounts }, getQuest({ name: "Running Wild" }, undefined, playerState({ level: 5 }))],
+    must: ["1,500 gold", "any stable", "open for you", "Simplest Horses", "paraglider"],
+    never: [/comes after/, /Tundrastriders/],
   },
 ];
 

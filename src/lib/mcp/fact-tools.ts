@@ -27,7 +27,7 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     {
       title: "Search the planner's facts",
       description:
-        "Find LoreRim perks, spells, traits, races, birthsigns, deities, quest lines, stories and quests by name or word, 20 at most, each with its kind, id, name and one line. A quest is also found by what players call it, the people and creatures in it, the book or note that starts it, its objectives and its endings, and says why it matched (\"Palonimo\" finds Running Wild: someone in it). When nothing matches, ask the player where they saw it or what it gives; don't search the web.",
+        "Find LoreRim perks, spells, traits, races, birthsigns, deities, quest lines, stories, quests and items (gear, by name, slot or type and material, ranked after the rest; use kinds [\"item\"] to look for gear before set_gear) by name or word, 20 at most, each with its kind, id, name and one line. A quest is also found by what players call it, the people and creatures in it, the book or note that starts it, its objectives and its endings, and says why it matched (\"Palonimo\" finds Running Wild: someone in it). When nothing matches, ask the player where they saw it or what it gives; don't search the web.",
       inputSchema: z.object({
         query: z.string().min(1).max(100).describe("A name or words to look for."),
         kinds: z.array(z.enum(FACT_KINDS)).optional().describe("Only these kinds."),
@@ -85,7 +85,7 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     "get_rules",
     {
       title: "How points work",
-      description: "The planner's progression rules as its checks count them: skill points a level, the most a skill can rise in one, what a point costs at each band, max skill at a level, perk points, Destiny points, attributes and trainers; and activities, what LoreRim already lets a character do (performing at inns, fishing, paragliding, taming a horse, camping) and what it doesn't (Callings), so a player isn't sent to a mod for something the list ships. The same numbers as the style guide's How points work.",
+      description: "The planner's progression rules as its checks count them: skill points a level, the most a skill can rise in one, what a point costs at each band, max skill at a level, perk points, Destiny points, attributes and trainers; level 1's rule (no skill points to spend); mounts and homes, where a character gets a horse and a house and what each costs; and activities, what LoreRim already lets a character do (performing at inns, fishing, paragliding, taming a horse, camping) and what it doesn't (Callings), so a player isn't sent to a mod for something the list ships. The same numbers as the style guide's How points work.",
       inputSchema: z.object({ version }),
     },
     async ({ version: v }) => guarded(() => getRules(v)),

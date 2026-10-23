@@ -133,7 +133,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **24. "How do I get a horse? I'm level 5 in Riften."**
 - Calls: `get_rules()` (mounts), `get_quest({ name: "Running Wild", level: 5 })`.
 - Must: a stable sells one for 1,500 gold; Running Wild open at level 5 (no false "comes after"); the tamed wild horse; the paraglider.
-- Fails today: **WO-142**.
+- Passes since WO-142 (the 1,500 is the economy notes' figure, not yet rechecked in the game files).
 
 **25. "Kyria is a bard in Riften; what can she do here as one?"**
 - Calls: `suggest_doings({ playthrough, act: "1", calling: "Bard" })`.

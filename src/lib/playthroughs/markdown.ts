@@ -57,3 +57,45 @@ export function markdownToDoc(md: string): GuideDoc {
 function lines(p: string): GuideNode[] {
   return p.split("\n").flatMap((l, i) => [...(i ? [{ type: "hardBreak" } as GuideNode] : []), ...inline(l.trim())]);
 }
+
+/** A text node as Markdown, with its one mark: **bold**, *italic*, [link](url). */
+function inlineMarkdown(n: GuideNode): string {
+  if (n.type === "hardBreak") return "\n";
+  if (n.type !== "text") return (n.content ?? []).map(inlineMarkdown).join("");
+  const t = n.text ?? "";
+  const mark = n.marks?.[0];
+  if (!mark || !t) return t;
+  if (mark.type === "bold") return `**${t}**`;
+  if (mark.type === "italic") return `*${t}*`;
+  if (mark.type === "link" && typeof mark.attrs?.href === "string") return `[${t}](${mark.attrs.href})`;
+  return t;
+}
+
+/**
+ * A chapter's text as it was written (WO-142 item 7): the reverse of markdownToDoc, so what get_playthrough gives back keeps
+ * its paragraphs, a heading, a quote or a rule, and can go back through set_chapter unchanged. A list from the editor is
+ * dashes, an image (the author's own) nothing.
+ */
+export function docToMarkdown(doc: GuideDoc | GuideNode): string {
+  const block = (n: GuideNode): string => {
+    switch (n.type) {
+      case "paragraph":
+        return (n.content ?? []).map(inlineMarkdown).join("");
+      case "heading":
+        return `${n.attrs?.level === 3 ? "###" : "##"} ${(n.content ?? []).map(inlineMarkdown).join("")}`;
+      case "blockquote":
+        return (n.content ?? []).map((p) => block(p).split("\n").map((l) => (l ? `> ${l}` : ">")).join("\n")).join("\n>\n");
+      case "horizontalRule":
+        return "---";
+      case "bulletList":
+      case "orderedList":
+        return (n.content ?? []).map((li, i) => `${n.type === "orderedList" ? `${i + 1}.` : "-"} ${(li.content ?? []).map(block).join(" ")}`).join("\n");
+      case "image":
+      case "hiddenImage":
+        return "";
+      default:
+        return (n.content ?? []).map(inlineMarkdown).join("");
+    }
+  };
+  return (doc.content ?? []).map(block).filter((b) => b !== "").join("\n\n");
+}

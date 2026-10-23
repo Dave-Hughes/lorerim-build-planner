@@ -155,11 +155,14 @@ describe("get_quest, open for you (WO-115 Part 3)", () => {
     expect(getQuest({ id: "MS11" })).not.toHaveProperty("openForYou");
     const companions = getQuest({ name: "Take Up Arms" }, undefined, playerState({ level: 6 }));
     expect(companions.openForYou).toMatchObject({ state: "open", says: "open for you" });
-    // Mid-line, with nothing told: unknown, never open.
-    const later = getQuest({ name: "Proving Honor" }, undefined, playerState({ level: 6 }));
+    // A line's order is no gate (WO-142 item 1): mid-line, a quest is judged on its own checked needs. Bloodline needs
+    // Awakening, so it waits on that and says so; with Awakening done it is open.
+    const later = getQuest({ name: "Bloodline" }, undefined, playerState({ level: 30 }));
     expect(later.openForYou?.state).toBe("unknown");
-    expect(later.openForYou?.says).toMatch(/^unknown: comes after Take Up Arms/);
-    expect(getQuest({ name: "Proving Honor" }, undefined, playerState({ level: 6, done: ["Take Up Arms"] })).openForYou?.state).not.toBe("unknown");
+    expect(later.openForYou?.says).toMatch(/^unknown: needs After Awakening/);
+    expect(getQuest({ name: "Bloodline" }, undefined, playerState({ level: 30, done: ["Awakening"] })).openForYou?.state).toBe("open");
+    // Proving Honor can also be asked of Farkas, Aela or Vilkas, which needs nothing before it.
+    expect(getQuest({ name: "Proving Honor" }, undefined, playerState({ level: 6 })).openForYou?.state).toBe("open");
   });
   it("finished lines count every quest in them", () => {
     const p = playerState({ level: 10, done: ["companions"] });

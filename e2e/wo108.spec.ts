@@ -38,9 +38,13 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   expect(ice).not.toHaveProperty("openForYou");
   const arms = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Take Up Arms", level: 6 } })));
   expect(arms.openForYou).toMatchObject({ state: "open", says: "open for you" });
+  // A line's order is no gate (WO-142 item 1): Proving Honor can be asked of Farkas, Aela or Vilkas, so it is open; Bloodline waits
+  // on its own need, Awakening.
   const honor = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Proving Honor", level: 6 } })));
-  expect(honor.openForYou.state).toBe("unknown");
-  expect(honor.openForYou.says).toMatch(/^unknown: /);
+  expect(honor.openForYou.state).toBe("open");
+  const bloodline = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Bloodline", level: 30 } })));
+  expect(bloodline.openForYou.state).toBe("unknown");
+  expect(bloodline.openForYou.says).toMatch(/^unknown: needs After Awakening/);
   // A quest whose start isn't checked is unknown through the door, never open (WO-115 Part 4).
   const unchecked = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { id: "on-hogithum", level: 40 } })));
   expect(unchecked.openForYou).toMatchObject({ state: "unknown", says: "unknown: the start isn't checked yet" });

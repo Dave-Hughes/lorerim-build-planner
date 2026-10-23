@@ -40,11 +40,12 @@ describe("open for you (WO-115 Part 3)", () => {
     expect(openFor(checked(["One of: Level 40; or Level 30"]), at(6), names).state).toBe("locked");
     expect(openFor(checked(["One of: Level 40; or Through SomeHelper"]), at(6), names).state).toBe("unknown");
   });
-  it("past its line's first quest, waits on the one before it", () => {
-    const prior = { edid: "C00", name: "Take Up Arms" };
-    expect(openFor(checked([]), at(6), names, prior)).toEqual({ state: "unknown", because: ["comes after Take Up Arms, and the planner hasn't been told that's done"] });
-    expect(openFor(checked([]), at(6, ["C00"]), names, prior).state).toBe("open");
-    // A level the player is short of still says locked.
-    expect(openFor(checked(["Level 20"]), at(6), names, prior).state).toBe("locked");
+  it("a line's order gates nothing (WO-142 item 1): a quest with no needs of its own is open, and a level still locks it", () => {
+    expect(openFor(checked([]), at(6), names)).toEqual({ state: "open", because: [] });
+    expect(openFor(checked(["Level 20"]), at(6), names).state).toBe("locked");
+  });
+  it("a plain After <quest> need waits on that quest, and is met once the player has finished it", () => {
+    expect(openFor(checked(["After Take Up Arms"]), at(6), names).state).toBe("unknown");
+    expect(openFor(checked(["After Take Up Arms"]), at(6, ["C00"]), names).state).toBe("open");
   });
 });
