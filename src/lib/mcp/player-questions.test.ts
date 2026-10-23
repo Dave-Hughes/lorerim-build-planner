@@ -1,6 +1,6 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { FactsError, getQuest, getRules, playerState, searchFacts, withQuestLink } from "./facts";
-import { modsOf, suggestFrom, suggestQuests } from "./playthroughs";
+import { modsOf, placesAt, suggestFrom, suggestQuests } from "./playthroughs";
 import { modIndex, readGuide } from "@/lib/game-guide/guide";
 import { styleGuide } from "./facts";
 import { registerBuildTools } from "./build-tools";
@@ -29,7 +29,7 @@ interface Question {
 
 // Never in an answer (outside the ids an assistant passes back): an editor id, a form id, a raw condition function, or a
 // person the records don't name. The record form (raw) no longer goes through the door (WO-136), so nothing is skipped for it.
-const NEVER: Want[] = [/\b[A-Za-z]+_[A-Za-z]\w*/, /\bcc[A-Z]\w*/, /\.es[mpl]:/i, /\b(Get[A-Z]\w+|fn\d+)\b/, /someone the records don't name/];
+const NEVER: Want[] = [/\b[A-Za-z]+_[A-Za-z]\w*/, /\bcc[A-Z]\w*/, /\.es[mpl]:/i, /\b(Get[A-Z]\w+|fn\d+)\b/, /someone the records don't name/, /someone the line doesn't name/];
 
 /** What an assistant tells the player from: every value but the ids it passes back. */
 function said(o: unknown): string {
@@ -335,6 +335,14 @@ const QUESTIONS: Question[] = [
     asks: "Can Kyria take Tome Trials exams now?",
     ask: () => [getRules().tomeTrials],
     must: ["None of the 36 exams is open until Tending the Flames is complete", "50 XP", "100", "Speech 50", "200", "Speech 75"],
+  },
+  {
+    n: 26,
+    asks: "What's near Riften for Kyria's first act?",
+    // Her Act I: Riften, levels 1 to 6 (WO-151: read as a player, with no kilometres, guild halls, helper names or unnamed speakers).
+    ask: () => [placesAt("Riften", "1 to 6")],
+    must: ["a short walk from Riften", "next to Riften", "people in Riften", "The Orcs of Largashbur", "You're not an Orc, or Blood-Kin, so stay out", "not checked yet", "Nightingale Hall", "Trinity Restored"],
+    never: [/\bkm\b/i, "Thieves Guild Headquarters", "Radiant Guild Trophy Enabler", "BCSLL", "Vendor Quest", /someone the line doesn't name/, "levels not read yet", "doesn't measure distances"],
   },
   {
     n: 24,

@@ -6,7 +6,7 @@ runs each one through the door's own handlers on the real data and checks the an
 every question with pass or fail and what it got.
 
 Every answer, on top of its own list, must never hold: an editor id (`MyrwatchTNE_Quest`, `ccBGSSSE002_...`), a form id
-(`Skyrim.esm:0DC9E0`), a raw condition function (`GetIsRace`, `fn629`) or "someone the records don't name". The record
+(`Skyrim.esm:0DC9E0`), a raw condition function (`GetIsRace`, `fn629`) or "someone the records don't name" or "someone the line doesn't name". The record
 form an assistant reasons on (`raw`) and the ids it passes back (`edid`, `id`) aren't read for these.
 
 A question that fails today stays in, marked with the order that fixes it, so the list of what doesn't work is in the
@@ -142,8 +142,9 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **26. "What's near Riften for Kyria's first act?"**
 - Calls: `suggest_places({ playthrough: "Kyria Severa", act: "1" })`.
-- Must: places with pointers near Riften; no "doesn't measure distances from Riften" note.
-- Fails today: **WO-144 Part 1**.
+- Must: places with pointers near Riften; the distance in a walk band ("a short walk from Riften", "next to Riften"); a town's unattributed line as "people in Riften"; Largashbur as the Orcs' own home, in their words at the door; a place with no levels says "not checked yet"; no "doesn't measure distances from Riften" note.
+- Never: kilometres; the Thieves Guild Headquarters; a helper or vendor script among the quests that go there ("Radiant Guild Trophy Enabler", "BCSLL Vendor Quest"); "someone the line doesn't name".
+- Passes since WO-151 (the distances, the guild hall, the helper names, the speakers, "not checked yet"). The levels of the places that say "not checked yet" are WO-144 Part 1e-3 (the data).
 
 **27. "Where is Calm sold?"**
 - Calls: `get_spell({ name: "Calm" })` or `search_facts({ query: "Calm", kinds: ["spell"] })`.

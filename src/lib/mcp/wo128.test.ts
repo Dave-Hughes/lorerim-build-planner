@@ -74,8 +74,8 @@ describe("suggest_places (Part 2)", () => {
     expect(fitOf(place("level 18", [3, 20]), 1, 5)).toEqual({ when: "fits now", note: "the boss is a hard fight at this level" });
     expect(fitOf(place("level 24", [3, 20]), 5, 10)).toEqual({ when: "fits now", note: "the boss is a hard fight at this level" });
     expect(fitOf(place("level 12", [3, 20]), 1, 5)).toEqual({ when: "fits now" });
-    // No levels read yet.
-    expect(whenFor({ id: "x", name: "X", type: "Cave", clearXp: 1 }, 1, 5)).toBe("levels not read yet");
+    // No levels checked yet.
+    expect(whenFor({ id: "x", name: "X", type: "Cave", clearXp: 1 }, 1, 5)).toBe("levels not checked yet");
   });
   it("reads the data's own shape (floor, ceiling, atLevel), and the rename the PC has coming (from, meets), and the shape before (levels) (WO-150)", () => {
     const place = (actors: NonNullable<Place["actors"]>): Place => ({ id: "x", name: "X", type: "Cave", clearXp: 100, actors });

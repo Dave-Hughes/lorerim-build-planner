@@ -1,4 +1,5 @@
 import "server-only";
+import { isHelper } from "@/lib/mcp/quest-log";
 import { questsData } from "@/lib/quests/data";
 import type { ActView } from "@/lib/playthroughs/view";
 import { meetsAt, placesData, placeType, rangeOf, type Place } from "./data";
@@ -67,7 +68,7 @@ export function actTowns(acts: readonly Pick<ActView, "place" | "objectives">[],
   return [...new Set(all)];
 }
 
-export type When = "fits now" | `plant now, pay off later (levels ${string})` | "too high for this act" | "levels not read yet";
+export type When = "fits now" | `plant now, pay off later (levels ${string})` | "too high for this act" | "levels not checked yet";
 
 /** A boss's level as [lowest, highest]: "level 40", "leveled 19-24", "leveled from 7"; null for one that matches her level. */
 function bossRange(level: string | undefined): [number, number] | null {
@@ -91,7 +92,7 @@ function bossRange(level: string | undefined): [number, number] | null {
  */
 export function fitOf(p: Place, levelFrom: number, levelTo: number | null): { when: When; note?: string } {
   const top = levelTo ?? levelFrom + 10;
-  if (!p.actors) return { when: "levels not read yet" };
+  if (!p.actors) return { when: "levels not checked yet" };
   const floor = meetsAt(p.actors, top)?.[0] ?? rangeOf(p.actors)[0];
   const boss = bossRange(p.actors.boss?.level);
   const floorGap = floor - top;
@@ -134,41 +135,83 @@ export interface Used {
 /**
  * Stops, not suggestions (WO-147 Part 3, Bob's ruling): towns, settlements, cities, inns, temples, keeps, stables and homes are in
  * the index because routes, search and objectives need them, but suggest_places is for places a character goes to on purpose out in
- * the world (rule 20). An Orc stronghold stays in: a destination with a gate and a reason. Guild halls stay in too: Bob's list
- * didn't name them (WO-147 notes).
+ * the world (rule 20). An Orc stronghold stays in: a destination with a gate and a reason. Guild halls are stops too (WO-151).
  */
-const STOPS = new Set(["City", "Town", "Settlement", "Inn", "Temple", "Keep", "Stables", "House", "PlayerHouse"]);
+const STOPS = new Set(["City", "Town", "Settlement", "Inn", "Temple", "Keep", "Stables", "House", "PlayerHouse", "Guild"]);
+
+/**
+ * Not a suggestion (WO-151): a stop, or anything the index says sits inside a town (a guild hall, an inn, a temple), where nobody
+ * starts out hostile. A "boss" in the Thieves Guild Headquarters is a guildmaster, not a fight.
+ */
+const notASuggestion = (p: Place) => STOPS.has(p.type) || !!p.inTown;
+
+/** An Orc stronghold stays in as a destination, but its people aren't enemies: no levels, no boss, no fit (WO-151). */
+const isStronghold = (p: Place) => p.type === "OrcStronghold";
+
+/** How far, in a player's words: "a short walk from Riften". The kilometres only sort. */
+export function farFrom(near: { town: string; walk?: string }): string {
+  switch (near.walk) {
+    case "next to it":
+      return `next to ${near.town}`;
+    case undefined:
+      return `near ${near.town}`;
+    default:
+      return `${near.walk} from ${near.town}`;
+  }
+}
+
+let listed: Set<string> | null = null;
+/**
+ * The quests a place can name (WO-151): ones the planner lists by name and a player sees by name. A handler, a helper or a vendor
+ * script ("BCSLL Vendor Quest") is background and never named, as the quest log does.
+ */
+function namedQuests(names: readonly string[] | undefined): string[] {
+  listed ??= new Set(questsData().lines.flatMap((l) => l.quests.map((q) => q.name)));
+  return [...new Set(names ?? [])].filter((n) => listed!.has(n) && !isHelper(n));
+}
 
 /** The places near the act's towns, those the game itself points at first, then the nearest. */
 export function placesNear(townList: readonly string[], levelFrom: number, levelTo: number | null, used: Used, limit = 16) {
   const want = new Set(townList.map(key));
   const taken = new Set([...used.linked.map((u) => key(u.place)), ...used.passedBy.map((u) => key(u.place))]);
   const near = placesData()
-    .places.filter((p) => p.nearestTown && want.has(key(p.nearestTown.town)) && !STOPS.has(p.type))
+    .places.filter((p) => p.nearestTown && want.has(key(p.nearestTown.town)) && !notASuggestion(p))
     .sort((a, b) => Number(!a.pointers?.length) - Number(!b.pointers?.length) || a.nearestTown!.km - b.nearestTown!.km);
   return near.slice(0, limit).map((p) => {
+    const town = p.nearestTown?.town ?? p.hold ?? null;
     const pointers = (p.pointers ?? [])
       // A line someone in a town says first, then other lines, then books; four at most.
       .slice()
       .sort((a, b) => Number(!a.speaker) - Number(!b.speaker) || Number(a.kind === "book") - Number(b.kind === "book"))
       .slice(0, 4)
       .map((x) => ({
-        ...(x.kind === "book" ? { book: x.book } : { who: x.speaker ?? "someone the line doesn't name", ...(x.speakerPlace ? { where: x.speakerPlace } : {}) }),
+        // A line with no speaker is the town's gossip: "people in Riften say". The records give no guard or innkeeper to name.
+        ...(x.kind === "book" ? { book: x.book } : { who: x.speaker ?? (town ? `people in ${town}` : "people nearby"), ...(x.speakerPlace ? { where: x.speakerPlace } : {}) }),
         says: x.words,
         ...(x.quest ? { inQuest: x.quest } : {}),
       }));
-    const quests = p.quests ?? [];
+    const quests = namedQuests(p.quests);
+    const stronghold = isStronghold(p);
+    const fit = stronghold ? null : fitOf(p, levelFrom, levelTo);
+    const enemies = stronghold ? null : meet(p, levelTo ?? levelFrom);
     return {
       place: p.name,
       type: placeType(p.type),
       ...(p.hold ? { hold: p.hold } : {}),
-      nearestTown: p.nearestTown ? `${p.nearestTown.town}, ${p.nearestTown.km} km` : null,
-      ...(p.actors ? { levels: `${rangeOf(p.actors)[0]} to ${rangeOf(p.actors)[1]}` } : {}),
-      ...(bossLine(p) ? { boss: bossLine(p) } : {}),
-      clearXp: p.clearXp,
-      ...(meet(p, levelTo ?? levelFrom) ? { enemies: meet(p, levelTo ?? levelFrom) } : {}),
-      when: fitOf(p, levelFrom, levelTo).when,
-      ...(fitOf(p, levelFrom, levelTo).note ? { fitNote: fitOf(p, levelFrom, levelTo).note } : {}),
+      nearestTown: p.nearestTown ? farFrom(p.nearestTown) : null,
+      ...(stronghold
+        ? {
+            // The people live there and aren't a fight: the game's own words to a stranger at the door.
+            welcome: `The Orcs of ${p.name} live here. ${p.enters ? `At the door they say: "${p.enters.words}"` : "Outsiders aren't welcome."}`,
+          }
+        : p.actors
+          ? { levels: `${rangeOf(p.actors)[0]} to ${rangeOf(p.actors)[1]}` }
+          : { levels: "not checked yet" }),
+      ...(!stronghold && bossLine(p) ? { boss: bossLine(p) } : {}),
+      ...(!stronghold ? { clearXp: p.clearXp } : {}),
+      ...(enemies ? { enemies } : {}),
+      ...(fit ? { when: fit.when } : {}),
+      ...(fit?.note ? { fitNote: fit.note } : {}),
       pointers,
       ...(pointers.length ? {} : { noPointer: "Nothing in the game names it. A hook here is the player's own: write it and say it's theirs." }),
       ...(quests.length ? { questGoesThere: quests, note: `${quests.join(" and ")} already ${quests.length === 1 ? "goes" : "go"} there: use the quest, never a hook of your own.` } : {}),

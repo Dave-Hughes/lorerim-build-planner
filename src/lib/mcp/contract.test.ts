@@ -33,8 +33,9 @@ describe("suggest_places on the real places.json", () => {
       for (const [from, to] of [[1, 5], [15, 20], [40, null]] as const) {
         const out = placesNear([town], from, to, { linked: [], passedBy: [] }, 1000);
         for (const p of out) {
-          expect(p.when, `${p.place} near ${town}`).toMatch(/^(fits now|plant now, pay off later \(levels \d+ and up\)|too high for this act|levels not read yet)$/);
-          if ("levels" in p) expect(p.levels, p.place).toMatch(/^\d+ to \d+$/);
+          // An Orc stronghold's people aren't a fight: it has no fit (WO-151).
+          if (p.type !== "Orc stronghold") expect(p.when, `${p.place} near ${town}`).toMatch(/^(fits now|plant now, pay off later \(levels \d+ and up\)|too high for this act|levels not checked yet)$/);
+          if ("levels" in p) expect(p.levels, p.place).toMatch(/^(\d+ to \d+|not checked yet)$/);
           clean(`${p.place} near ${town}`, p);
         }
       }

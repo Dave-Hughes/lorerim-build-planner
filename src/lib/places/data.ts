@@ -64,10 +64,14 @@ export interface Place {
   /** The map marker's kind, else the location's: Cave, Mine, Fort, NordicRuin... */
   type: string;
   hold?: string;
-  nearestTown?: { town: string; km: number };
-  nearestCity?: { town: string; km: number };
+  nearestTown?: { town: string; km: number; walk?: string };
+  nearestCity?: { town: string; km: number; walk?: string };
+  /** The town it sits inside (a guild hall, an inn, a temple): not a place to go out to. */
+  inTown?: string;
   clearXp: number;
   actors?: Actors;
+  /** What the people who live there say to a stranger at the door (an Orc stronghold), in the game's words. */
+  enters?: { words: string; from?: string };
   pointers?: PlacePointer[];
   /** Named quests that go there. */
   quests?: string[];
