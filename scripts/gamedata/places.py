@@ -153,7 +153,7 @@ def npc_level(v):
 
 def scan():
     pp, lo = plugin_paths(), load_order(cc=True)
-    kw, locs, npcs, lvln, books, infos, quests = {}, {}, {}, {}, {}, {}, {}
+    kw, locs, npcs, lvln, books, infos, quests, eczn = {}, {}, {}, {}, {}, {}, {}, {}
     for n in lo:  # pass 1: keywords, locations, actors, leveled lists, books, dialogue, quests (each the winning copy)
         p = pp.get(n.lower())
         if not p:
@@ -164,7 +164,7 @@ def scan():
         strings = name_strings(p, n, loc, ROOT) or {}
         tables = (all_strings(p, n, loc, ROOT) or {}) if loc else {}
         res = lambda v: form_id(resolve(struct.unpack_from("<I", v)[0], masters, n))  # noqa: E731
-        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK"):
+        for grp in ("KYWD", "LCTN", "NPC_", "LVLN", "BOOK", "ECZN"):
             if grp.encode() not in buf:
                 continue
             for o in iter_group(buf, grp):
@@ -199,6 +199,14 @@ def scan():
                 elif grp == "BOOK":
                     desc = next((txt(v, loc, tables.get("DLSTRINGS") if loc else None) for s, v in subs if s == "DESC"), "")
                     books[key] = {"name": full or edid, "text": desc, "plugin": n}
+                elif grp == "ECZN":
+                    # DATA (12 bytes), decoded by hand on Fort Hraggstad (Bob, 23 Oct): Owner (FormID, 4), Location
+                    # (FormID, 4), Rank (int8), MinLevel (int8), Flags (uint8), MaxLevel (int8); max 0 means no cap.
+                    data = next((v for s, v in subs if s == "DATA" and len(v) >= 12), None)
+                    if data:
+                        loc_fid = struct.unpack_from("<I", data, 4)[0]
+                        eczn[key] = {"location": form_id(resolve(loc_fid, masters, n)) if loc_fid else None,
+                                     "minLevel": data[9], "maxLevel": data[11], "flags": data[10]}
         if b"DIAL" in buf:
             topic = None
             for o in iter_group(buf, "DIAL"):
@@ -280,7 +288,7 @@ def scan():
                                "boss": BOSS in {form_id(resolve(struct.unpack_from("<I", lrt, i)[0], masters, n)) for i in range(0, len(lrt) - 3, 4)}}
                 if base and not flags & DELETED:
                     placed_npc.setdefault(base, cell)
-    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc
+    return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn
 
 
 def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
@@ -327,7 +335,7 @@ def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
 
 
 def build(version):
-    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc = scan()
+    kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn = scan()
     xp, xp_from = clear_xp()
     kname = lambda ks: {kw.get(k, k) for k in ks}  # noqa: E731
     marker_of = {k: markers.get(l["marker"]) for k, l in locs.items() if l.get("marker") in markers and not markers[l["marker"]]["deleted"]}
@@ -443,12 +451,27 @@ def build(version):
         pl = owner.get((cells.get(a["cell"]) or {}).get("location"))
         if pl:
             by_place[pl].append(a)
+    # The encounter zone owning a place, by its location (ECZN's own Location field, not a guess -- Bob decoded the
+    # DATA layout by hand on Fort Hraggstad, 23 Oct). Clamps the resolved actor range: a floor it can't fall below,
+    # a ceiling when the zone sets one (max 0 means none).
+    eczn_by_loc = {z["location"]: z for z in eczn.values() if z.get("location")}
     level_cache = {}
     for k, acts in by_place.items():
         lv = [x for x in (level_of(a["base"], npcs, lvln, cache=level_cache) for a in acts) if x]
         boss = next((a for a in acts if a["boss"]), None)
         bl = level_of(boss["base"], npcs, lvln, cache=level_cache) if boss else None
-        places[k]["actors"] = {"count": len(acts), **({"levels": [min(x[0] for x in lv), max(x[1] for x in lv)]} if lv else {}),
+        zone = eczn_by_loc.get(k)
+        levels = None
+        if lv:
+            lo, hi = min(x[0] for x in lv), max(x[1] for x in lv)
+            if zone and zone["minLevel"] and zone["minLevel"] <= hi:
+                lo = max(lo, zone["minLevel"])
+            if zone and zone["maxLevel"]:
+                hi = min(hi, zone["maxLevel"])
+                lo = min(lo, hi)
+            levels = [lo, hi]
+        places[k]["actors"] = {"count": len(acts), **({"levels": levels} if levels else {}),
+                               **({"zoneMin": zone["minLevel"]} if zone and zone["minLevel"] else {}),
                                # The boss by its own name when it has one; a leveled boss has none, so only its level shows.
                                **({"boss": {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),
                                             "level": bl[2] if bl else None}} if boss else {})}

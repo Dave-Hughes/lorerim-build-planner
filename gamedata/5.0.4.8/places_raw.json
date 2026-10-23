@@ -54,6 +54,7 @@
      15,
      80
     ],
+    "zoneMin": 15,
     "boss": {
      "name": "Ben Sala",
      "level": "level 80"
@@ -292,6 +293,7 @@
      15,
      60
     ],
+    "zoneMin": 12,
     "boss": {
      "name": "Dwarven Praetorian",
      "level": "level 60"
@@ -427,9 +429,10 @@
    "actors": {
     "count": 13,
     "levels": [
-     1,
+     15,
      40
     ],
+    "zoneMin": 15,
     "boss": {
      "name": "Sadraaka",
      "level": "level 40"
@@ -486,9 +489,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Ghost",
      "level": "leveled 3-24"
@@ -523,9 +527,10 @@
    "actors": {
     "count": 81,
     "levels": [
-     1,
+     8,
      53
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Lu'ah Al-Skaven",
      "level": "level 53"
@@ -703,6 +708,7 @@
      10,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -939,9 +945,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     1,
+     2,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -985,9 +992,10 @@
    "actors": {
     "count": 12,
     "levels": [
-     1,
+     6,
      28
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Butcher",
      "level": "level 28"
@@ -1058,9 +1066,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 45-50"
     }
@@ -1110,9 +1119,10 @@
    "actors": {
     "count": 69,
     "levels": [
-     1,
+     6,
      60
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "level 55"
     }
@@ -1183,9 +1193,10 @@
    "actors": {
     "count": 34,
     "levels": [
-     1,
+     6,
      32
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Troll",
      "level": "level 14"
@@ -1454,9 +1465,10 @@
    "actors": {
     "count": 94,
     "levels": [
-     1,
+     6,
      50
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200
   },
@@ -1519,9 +1531,10 @@
    "actors": {
     "count": 40,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Silver Hand",
      "level": "level 45"
@@ -1734,9 +1747,10 @@
    "actors": {
     "count": 41,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Vals Veran",
      "level": "leveled 45-50"
@@ -2959,9 +2973,10 @@
    "actors": {
     "count": 41,
     "levels": [
-     2,
+     6,
      40
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Halvar the Drunk",
      "level": "level 24"
@@ -3014,9 +3029,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 20-35"
     }
@@ -3051,9 +3067,10 @@
    "actors": {
     "count": 51,
     "levels": [
-     1,
+     6,
      55
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -3123,9 +3140,10 @@
    "actors": {
     "count": 27,
     "levels": [
-     1,
+     8,
      46
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 35-46"
     }
@@ -3255,9 +3273,10 @@
    "actors": {
     "count": 35,
     "levels": [
-     1,
-     55
-    ]
+     10,
+     40
+    ],
+    "zoneMin": 10
    },
    "clearXp": 200,
    "pointers": [
@@ -3312,9 +3331,10 @@
    "actors": {
     "count": 142,
     "levels": [
-     1,
+     16,
      60
     ],
+    "zoneMin": 16,
     "boss": {
      "level": "leveled 25-35"
     }
@@ -3474,9 +3494,10 @@
    "actors": {
     "count": 20,
     "levels": [
-     1,
+     6,
      47
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Bor",
      "level": "level 6"
@@ -3681,9 +3702,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     2,
      22
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 5-22"
     }
@@ -3721,9 +3743,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     1,
+     6,
      15
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 1-12"
     }
@@ -3753,9 +3776,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     3,
+     12,
      24
-    ]
+    ],
+    "zoneMin": 12
    },
    "clearXp": 100,
    "quests": [
@@ -3784,9 +3808,10 @@
    "actors": {
     "count": 44,
     "levels": [
-     1,
+     10,
      40
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 200,
    "pointers": [
@@ -3955,9 +3980,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     1,
+     2,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -4001,9 +4027,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     6,
      36
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -4100,9 +4127,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     1,
+     6,
      125
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -4178,9 +4206,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     3,
+     5,
      24
-    ]
+    ],
+    "zoneMin": 5
    },
    "clearXp": 100,
    "pointers": [
@@ -4227,9 +4256,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     6,
      30
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Linwe",
      "level": "level 30"
@@ -4306,9 +4336,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     3,
+     6,
      37
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -4399,7 +4430,8 @@
     "levels": [
      4,
      11
-    ]
+    ],
+    "zoneMin": 14
    },
    "clearXp": 100,
    "pointers": [
@@ -4496,9 +4528,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     6,
      51
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Yngol's Shade",
      "level": "level 51"
@@ -4705,7 +4738,8 @@
     "levels": [
      8,
      11
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "quests": [
@@ -4742,9 +4776,10 @@
    "actors": {
     "count": 69,
     "levels": [
-     1,
+     16,
      60
     ],
+    "zoneMin": 16,
     "boss": {
      "level": "leveled from 60"
     }
@@ -4845,9 +4880,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -4898,9 +4934,10 @@
    "actors": {
     "count": 36,
     "levels": [
-     1,
+     6,
      26
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -4993,9 +5030,10 @@
    "actors": {
     "count": 21,
     "levels": [
-     1,
+     6,
      30
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 8-30"
     }
@@ -5030,9 +5068,10 @@
    "actors": {
     "count": 28,
     "levels": [
-     1,
+     6,
      125
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 55-125"
     }
@@ -5074,9 +5113,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     1,
+     2,
      22
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 5-22"
     }
@@ -5135,9 +5175,10 @@
    "actors": {
     "count": 19,
     "levels": [
-     1,
+     6,
      40
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Ghunzul",
      "level": "level 40"
@@ -5339,9 +5380,10 @@
    "actors": {
     "count": 34,
     "levels": [
-     1,
+     5,
      36
     ],
+    "zoneMin": 5,
     "boss": {
      "name": "Frosthide Chief",
      "level": "leveled 19-24"
@@ -5381,9 +5423,10 @@
    "actors": {
     "count": 44,
     "levels": [
-     1,
+     6,
      55
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200
   },
@@ -5415,9 +5458,10 @@
    "actors": {
     "count": 36,
     "levels": [
-     1,
-     24
+     6,
+     10
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -5493,9 +5537,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     1,
+     8,
      30
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 8-30"
     }
@@ -5576,9 +5621,10 @@
    "actors": {
     "count": 3,
     "levels": [
-     1,
+     6,
      12
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -5607,9 +5653,10 @@
    "actors": {
     "count": 100,
     "levels": [
-     1,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -5676,9 +5723,10 @@
    "actors": {
     "count": 32,
     "levels": [
-     1,
+     14,
      55
     ],
+    "zoneMin": 14,
     "boss": {
      "name": "Glenmoril Witch",
      "level": "leveled from 45"
@@ -5781,9 +5829,10 @@
    "actors": {
     "count": 26,
     "levels": [
-     1,
+     10,
      50
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Lokjun",
      "level": "level 50"
@@ -5808,7 +5857,8 @@
     "levels": [
      8,
      24
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100
   },
@@ -5839,9 +5889,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     2,
      22
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 5-22"
     }
@@ -5875,9 +5926,10 @@
    "actors": {
     "count": 32,
     "levels": [
-     1,
+     6,
      125
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 55-125"
     }
@@ -5963,9 +6015,10 @@
    "actors": {
     "count": 26,
     "levels": [
-     3,
+     6,
      63
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Halldir",
      "level": "level 52"
@@ -6012,9 +6065,10 @@
    "actors": {
     "count": 106,
     "levels": [
-     1,
+     6,
      42
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Raxle Lusius",
      "level": "level 30"
@@ -7783,9 +7837,10 @@
    "actors": {
     "count": 3,
     "levels": [
-     1,
+     8,
      15
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100,
    "pointers": [
@@ -7824,9 +7879,10 @@
    "actors": {
     "count": 64,
     "levels": [
-     1,
+     8,
      50
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 19-46"
     }
@@ -7944,9 +8000,10 @@
    "actors": {
     "count": 18,
     "levels": [
-     1,
+     6,
      60
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -8062,7 +8119,8 @@
     "levels": [
      1,
      2
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100
   },
@@ -8120,9 +8178,10 @@
    "actors": {
     "count": 43,
     "levels": [
-     1,
+     2,
      50
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 40-50"
     }
@@ -8191,9 +8250,10 @@
    "actors": {
     "count": 53,
     "levels": [
-     1,
+     6,
      125
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Thjodrek",
      "level": "level 60"
@@ -8257,9 +8317,10 @@
    "actors": {
     "count": 18,
     "levels": [
-     1,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Skybounds Bane",
      "level": "level 55"
@@ -8293,9 +8354,10 @@
    "actors": {
     "count": 51,
     "levels": [
-     1,
+     13,
      100
     ],
+    "zoneMin": 13,
     "boss": {
      "level": "your level x1.15 (28-100)"
     }
@@ -8409,6 +8471,7 @@
      8,
      30
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 8-30"
     }
@@ -8441,9 +8504,10 @@
    "actors": {
     "count": 45,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -8512,9 +8576,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     2,
+     6,
      12
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -8600,7 +8665,8 @@
     "levels": [
      19,
      19
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -8631,9 +8697,10 @@
    "actors": {
     "count": 38,
     "levels": [
-     1,
+     2,
      50
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 50"
     }
@@ -8729,9 +8796,10 @@
    "actors": {
     "count": 13,
     "levels": [
-     1,
+     8,
      45
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 200,
    "pointers": [
@@ -8899,6 +8967,7 @@
      1,
      60
     ],
+    "zoneMin": 1,
     "boss": {
      "name": "Warehouse Traps Reset Test Guy",
      "level": "level 1"
@@ -9613,7 +9682,8 @@
     "levels": [
      1,
      5
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -9654,9 +9724,10 @@
    "actors": {
     "count": 37,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Captain Hargar",
      "level": "leveled 19-24"
@@ -9978,9 +10049,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     1,
+     8,
      30
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100
   },
@@ -10536,9 +10608,10 @@
    "actors": {
     "count": 93,
     "levels": [
-     3,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -10644,9 +10717,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -10695,9 +10769,10 @@
    "actors": {
     "count": 88,
     "levels": [
-     1,
+     24,
      65
-    ]
+    ],
+    "zoneMin": 24
    },
    "clearXp": 100,
    "quests": [
@@ -10734,9 +10809,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     8,
      60
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -10778,9 +10854,10 @@
    "actors": {
     "count": 36,
     "levels": [
-     1,
+     12,
      50
     ],
+    "zoneMin": 12,
     "boss": {
      "name": "Northwatch Interrogator",
      "level": "leveled 45-50"
@@ -10955,9 +11032,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     1,
+     6,
      24
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -10996,9 +11074,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     6,
      46
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 5-22"
     }
@@ -11032,9 +11111,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 45-50"
     }
@@ -11085,9 +11165,10 @@
    "actors": {
     "count": 47,
     "levels": [
-     1,
+     6,
      125
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "quests": [
@@ -11128,9 +11209,10 @@
    "actors": {
     "count": 13,
     "levels": [
-     1,
+     14,
      55
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 1-55"
     }
@@ -11198,9 +11280,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Sebastian Lort",
      "level": "leveled 45-50"
@@ -11383,9 +11466,10 @@
    "actors": {
     "count": 15,
     "levels": [
-     1,
+     2,
      22
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "level 22"
     }
@@ -11675,9 +11759,10 @@
    "actors": {
     "count": 88,
     "levels": [
-     1,
+     24,
      55
     ],
+    "zoneMin": 24,
     "boss": {
      "name": "Bekkhild",
      "level": "level 52"
@@ -11746,6 +11831,7 @@
      8,
      11
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 8-11"
     }
@@ -11779,9 +11865,10 @@
    "actors": {
     "count": 43,
     "levels": [
-     1,
+     8,
      50
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Ritual Master",
      "level": "your level x1 (10-20)"
@@ -11952,9 +12039,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     2,
      15
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 2-14"
     }
@@ -11988,9 +12076,10 @@
    "actors": {
     "count": 51,
     "levels": [
-     1,
+     18,
      35
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 25-35"
     }
@@ -12025,9 +12114,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     8,
      40
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Frost Troll",
      "level": "level 22"
@@ -12076,9 +12166,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     1,
+     2,
      15
-    ]
+    ],
+    "zoneMin": 2
    },
    "clearXp": 100
   },
@@ -12109,9 +12200,10 @@
    "actors": {
     "count": 56,
     "levels": [
-     1,
+     6,
      85
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "King Olaf One-Eye",
      "level": "level 85"
@@ -12227,9 +12319,10 @@
    "actors": {
     "count": 67,
     "levels": [
-     1,
+     6,
      45
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Mikrul Gauldurson",
      "level": "level 45"
@@ -12322,9 +12415,10 @@
    "actors": {
     "count": 105,
     "levels": [
-     1,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -12536,9 +12630,10 @@
    "actors": {
     "count": 89,
     "levels": [
-     1,
+     24,
      100
-    ]
+    ],
+    "zoneMin": 24
    },
    "clearXp": 200,
    "pointers": [
@@ -12759,9 +12854,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     6,
      40
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "level 40"
     }
@@ -12793,7 +12889,8 @@
     "levels": [
      1,
      1
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -12883,9 +12980,10 @@
    "actors": {
     "count": 27,
     "levels": [
-     1,
+     6,
      140
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Movarth Piquine",
      "level": "level 140"
@@ -12976,9 +13074,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     1,
+     2,
      30
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -13028,9 +13127,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     6,
      28
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -13109,9 +13209,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     10,
      79
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Spaankrenkendov",
      "level": "leveled 30-79"
@@ -13187,6 +13288,7 @@
      70,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -13331,6 +13433,7 @@
      10,
      80
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -13370,9 +13473,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     6,
      46
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 35-46"
     }
@@ -13429,9 +13533,10 @@
    "actors": {
     "count": 103,
     "levels": [
-     1,
+     6,
      75
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -13590,9 +13695,10 @@
    "actors": {
     "count": 40,
     "levels": [
-     1,
+     24,
      50
     ],
+    "zoneMin": 24,
     "boss": {
      "name": "Silas Marceau",
      "level": "leveled from 50"
@@ -13640,9 +13746,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     3,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -13668,9 +13775,10 @@
    "actors": {
     "count": 20,
     "levels": [
-     1,
+     12,
      40
     ],
+    "zoneMin": 12,
     "boss": {
      "level": "leveled from 34"
     }
@@ -13747,6 +13855,7 @@
      1,
      1
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 1"
     }
@@ -13772,9 +13881,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     18,
      80
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 13-30"
     }
@@ -13801,9 +13911,10 @@
    "actors": {
     "count": 32,
     "levels": [
-     1,
+     30,
      55
     ],
+    "zoneMin": 30,
     "boss": {
      "name": "Tovinaan",
      "level": "level 55"
@@ -14104,7 +14215,8 @@
     "levels": [
      17,
      38
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "quests": [
@@ -14137,9 +14249,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     10,
      30
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -14175,9 +14288,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     10,
      50
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Fallaise",
      "level": "level 35"
@@ -14208,9 +14322,10 @@
    "actors": {
     "count": 130,
     "levels": [
-     1,
+     10,
      80
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Durvith",
      "level": "your level x1 (25-60)"
@@ -14250,9 +14365,10 @@
    "actors": {
     "count": 25,
     "levels": [
-     1,
+     25,
      40
     ],
+    "zoneMin": 25,
     "boss": {
      "name": "Morag Tong Assassin",
      "level": "level 35"
@@ -14305,7 +14421,8 @@
     "levels": [
      14,
      60
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100
   },
@@ -14334,6 +14451,7 @@
      7,
      35
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 21-27"
     }
@@ -14377,9 +14495,10 @@
    "actors": {
     "count": 26,
     "levels": [
-     1,
+     10,
      24
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -14416,9 +14535,10 @@
    "actors": {
     "count": 67,
     "levels": [
-     3,
+     6,
      35
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 21-27"
     }
@@ -14447,9 +14567,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     3,
+     10,
      24
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -14485,9 +14606,10 @@
    "actors": {
     "count": 12,
     "levels": [
-     1,
+     6,
      27
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 18-27"
     }
@@ -14515,7 +14637,8 @@
     "levels": [
      15,
      27
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "quests": [
@@ -14547,9 +14670,10 @@
    "actors": {
     "count": 31,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 18-27"
     }
@@ -14580,9 +14704,10 @@
    "actors": {
     "count": 16,
     "levels": [
-     1,
+     20,
      60
     ],
+    "zoneMin": 20,
     "boss": {
      "level": "leveled 55-59"
     }
@@ -14612,9 +14737,10 @@
    "actors": {
     "count": 38,
     "levels": [
-     1,
+     10,
      30
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Madura Seran",
      "level": "level 30"
@@ -14852,9 +14978,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     10,
      30
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "pointers": [
@@ -14985,9 +15112,10 @@
    "actors": {
     "count": 56,
     "levels": [
-     1,
+     25,
      60
     ],
+    "zoneMin": 25,
     "boss": {
      "level": "leveled from 60"
     }
@@ -15022,9 +15150,10 @@
    "actors": {
     "count": 48,
     "levels": [
-     1,
+     20,
      60
     ],
+    "zoneMin": 20,
     "boss": {
      "name": "General Falx Carius",
      "level": "level 43"
@@ -15172,9 +15301,10 @@
    "actors": {
     "count": 27,
     "levels": [
-     1,
+     6,
      27
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 21-27"
     }
@@ -15227,6 +15357,7 @@
      27,
      27
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Hjordis",
      "level": "level 27"
@@ -15288,9 +15419,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     3,
+     6,
      27
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 18-27"
     }
@@ -15319,9 +15451,10 @@
    "actors": {
     "count": 24,
     "levels": [
-     1,
+     40,
      200
     ],
+    "zoneMin": 40,
     "boss": {
      "name": "Haknir Death-Brand",
      "level": "level 200"
@@ -15361,9 +15494,10 @@
    "actors": {
     "count": 7,
     "levels": [
-     3,
+     10,
      50
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Pirate",
      "level": "leveled 19-24"
@@ -15405,7 +15539,8 @@
     "levels": [
      1,
      2
-    ]
+    ],
+    "zoneMin": 25
    },
    "clearXp": 100,
    "quests": [
@@ -15439,9 +15574,10 @@
    "actors": {
     "count": 35,
     "levels": [
-     1,
+     20,
      60
     ],
+    "zoneMin": 20,
     "boss": {
      "name": "Ildari Sarothril",
      "level": "level 43"
@@ -15515,9 +15651,10 @@
    "actors": {
     "count": 15,
     "levels": [
-     1,
+     10,
      60
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Lord Tusk",
      "level": "level 25"
@@ -15554,9 +15691,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     1,
+     10,
      60
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -15584,7 +15722,8 @@
     "levels": [
      1,
      2
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "pointers": [
@@ -15678,9 +15817,10 @@
    "actors": {
     "count": 23,
     "levels": [
-     1,
+     25,
      60
-    ]
+    ],
+    "zoneMin": 25
    },
    "clearXp": 200,
    "pointers": [
@@ -15749,9 +15889,10 @@
    "actors": {
     "count": 129,
     "levels": [
-     1,
+     30,
      55
     ],
+    "zoneMin": 30,
     "boss": {
      "name": "Ahzidal",
      "level": "level 55"
@@ -15831,9 +15972,10 @@
    "actors": {
     "count": 13,
     "levels": [
-     1,
+     10,
      27
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 21-27"
     }
@@ -15869,9 +16011,10 @@
    "actors": {
     "count": 42,
     "levels": [
-     3,
+     25,
      120
     ],
+    "zoneMin": 25,
     "boss": {
      "name": "Nchardak Watchman",
      "level": "level 80"
@@ -17363,9 +17506,10 @@
    "actors": {
     "count": 36,
     "levels": [
-     1,
+     30,
      120
     ],
+    "zoneMin": 30,
     "boss": {
      "name": "Zahkriisos",
      "level": "level 120"
@@ -17465,9 +17609,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     6,
+     25,
      79
     ],
+    "zoneMin": 25,
     "boss": {
      "name": "Kahsahqonruvaak",
      "level": "leveled 30-79"
@@ -17665,9 +17810,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     1,
+     10,
      25
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Werebear",
      "level": "level 25"
@@ -17694,9 +17840,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     10,
      35
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -17740,9 +17887,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     1,
+     10,
      20
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "pointers": [
@@ -17777,9 +17925,10 @@
    "actors": {
     "count": 81,
     "levels": [
-     1,
+     30,
      120
     ],
+    "zoneMin": 30,
     "boss": {
      "level": "leveled 7-45"
     }
@@ -17868,6 +18017,7 @@
      18,
      28
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Riekling",
      "level": "level 24"
@@ -18100,9 +18250,10 @@
    "actors": {
     "count": 41,
     "levels": [
-     1,
+     30,
      120
-    ]
+    ],
+    "zoneMin": 30
    },
    "clearXp": 200,
    "quests": [
@@ -18137,9 +18288,10 @@
    "actors": {
     "count": 6,
     "levels": [
-     1,
+     10,
      60
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "pointers": [
@@ -18174,9 +18326,10 @@
    "actors": {
     "count": 61,
     "levels": [
-     1,
+     30,
      120
     ],
+    "zoneMin": 30,
     "boss": {
      "name": "Dukaan",
      "level": "level 120"
@@ -18304,6 +18457,7 @@
      60,
      80
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -18350,6 +18504,7 @@
      2,
      14
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 2-14"
     }
@@ -18389,9 +18544,10 @@
    "actors": {
     "count": 75,
     "levels": [
-     1,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 34"
     }
@@ -18551,9 +18707,10 @@
    "actors": {
     "count": 28,
     "levels": [
-     1,
+     18,
      55
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -18587,9 +18744,10 @@
    "actors": {
     "count": 48,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Curalmil",
      "level": "level 50"
@@ -18654,9 +18812,10 @@
    "actors": {
     "count": 114,
     "levels": [
-     1,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -18739,9 +18898,10 @@
    "actors": {
     "count": 25,
     "levels": [
-     1,
+     6,
      24
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -18818,9 +18978,10 @@
    "actors": {
     "count": 46,
     "levels": [
-     1,
+     5,
      100
     ],
+    "zoneMin": 5,
     "boss": {
      "level": "leveled from 26"
     }
@@ -18924,9 +19085,10 @@
    "actors": {
     "count": 39,
     "levels": [
-     1,
+     24,
      77
     ],
+    "zoneMin": 24,
     "boss": {
      "name": "Vokun",
      "level": "level 77"
@@ -18997,9 +19159,10 @@
    "actors": {
     "count": 97,
     "levels": [
-     1,
+     12,
      60
-    ]
+    ],
+    "zoneMin": 12
    },
    "clearXp": 200,
    "pointers": [
@@ -19153,9 +19316,10 @@
    "actors": {
     "count": 61,
     "levels": [
-     1,
+     12,
      80
-    ]
+    ],
+    "zoneMin": 12
    },
    "clearXp": 200,
    "pointers": [
@@ -19300,9 +19464,10 @@
    "actors": {
     "count": 88,
     "levels": [
-     1,
+     16,
      60
     ],
+    "zoneMin": 16,
     "boss": {
      "level": "leveled from 60"
     }
@@ -19488,9 +19653,10 @@
    "actors": {
     "count": 58,
     "levels": [
-     1,
+     18,
      50
-    ]
+    ],
+    "zoneMin": 18
    },
    "clearXp": 200,
    "pointers": [
@@ -19664,9 +19830,10 @@
    "actors": {
     "count": 84,
     "levels": [
-     1,
+     12,
      60
     ],
+    "zoneMin": 12,
     "boss": {
      "level": "leveled from 60"
     }
@@ -19753,6 +19920,7 @@
      60,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -19970,9 +20138,10 @@
    "actors": {
     "count": 7,
     "levels": [
-     6,
+     8,
      30
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 8-30"
     }
@@ -20006,9 +20175,10 @@
    "actors": {
     "count": 38,
     "levels": [
-     1,
+     6,
      60
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Guardian Varmell",
      "level": "level 60"
@@ -20154,9 +20324,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     2,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -20200,9 +20371,10 @@
    "actors": {
     "count": 26,
     "levels": [
-     1,
+     14,
      55
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "level 50"
     }
@@ -20322,9 +20494,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     4,
+     18,
      60
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "level 9"
     }
@@ -20452,6 +20625,7 @@
      1,
      1
     ],
+    "zoneMin": 5,
     "boss": {
      "name": "Skeever",
      "level": "level 1"
@@ -20495,9 +20669,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     6,
      30
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 1-3"
     }
@@ -20625,9 +20800,10 @@
    "actors": {
     "count": 12,
     "levels": [
-     1,
+     5,
      40
     ],
+    "zoneMin": 5,
     "boss": {
      "level": "level 1"
     }
@@ -20694,9 +20870,10 @@
    "actors": {
     "count": 7,
     "levels": [
-     1,
+     2,
      47
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 45"
     }
@@ -20733,6 +20910,7 @@
      20,
      46
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled from 45"
     }
@@ -20801,6 +20979,7 @@
      25,
      51
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 42-51"
     }
@@ -20864,9 +21043,10 @@
    "actors": {
     "count": 21,
     "levels": [
-     1,
+     14,
      52
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 46-52"
     }
@@ -20926,9 +21106,10 @@
    "actors": {
     "count": 110,
     "levels": [
-     1,
+     16,
      80
     ],
+    "zoneMin": 16,
     "boss": {
      "name": "Orchendor",
      "level": "level 80"
@@ -21009,7 +21190,8 @@
     "levels": [
      12,
      15
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100
   },
@@ -21039,9 +21221,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     1,
+     8,
      45
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled from 45"
     }
@@ -21075,9 +21258,10 @@
    "actors": {
     "count": 18,
     "levels": [
-     1,
+     14,
      60
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 42-51"
     }
@@ -21123,9 +21307,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     8,
      60
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100,
    "pointers": [
@@ -21172,9 +21357,10 @@
    "actors": {
     "count": 33,
     "levels": [
-     1,
+     14,
      52
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 46-52"
     }
@@ -21228,6 +21414,7 @@
      25,
      39
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 25-39"
     }
@@ -21298,9 +21485,10 @@
    "actors": {
     "count": 24,
     "levels": [
-     3,
+     14,
      51
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 42-51"
     }
@@ -21357,9 +21545,10 @@
    "actors": {
     "count": 19,
     "levels": [
-     3,
+     6,
      48
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Gharol",
      "level": "level 6"
@@ -21438,9 +21627,10 @@
    "actors": {
     "count": 83,
     "levels": [
-     3,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -21506,9 +21696,10 @@
    "actors": {
     "count": 12,
     "levels": [
-     3,
+     8,
      39
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -21552,9 +21743,10 @@
    "actors": {
     "count": 38,
     "levels": [
-     1,
+     18,
      55
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -21588,9 +21780,10 @@
    "actors": {
     "count": 24,
     "levels": [
-     1,
+     14,
      52
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 46-52"
     }
@@ -21632,9 +21825,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     14,
      60
     ],
+    "zoneMin": 14,
     "boss": {
      "name": "Ancient Hagraven",
      "level": "level 60"
@@ -21922,9 +22116,10 @@
    "actors": {
     "count": 40,
     "levels": [
-     1,
+     8,
      60
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Kornalus",
      "level": "leveled 45-50"
@@ -22280,7 +22475,8 @@
     "levels": [
      25,
      52
-    ]
+    ],
+    "zoneMin": 14
    },
    "clearXp": 100,
    "pointers": [
@@ -22682,9 +22878,10 @@
    "actors": {
     "count": 40,
     "levels": [
-     1,
+     18,
      55
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -22718,9 +22915,10 @@
    "actors": {
     "count": 46,
     "levels": [
-     1,
+     14,
      55
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "level 55"
     }
@@ -22839,9 +23037,10 @@
    "actors": {
     "count": 25,
     "levels": [
-     1,
+     6,
      47
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Shuftharz",
      "level": "level 6"
@@ -22914,9 +23113,10 @@
    "actors": {
     "count": 109,
     "levels": [
-     1,
+     16,
      60
     ],
+    "zoneMin": 16,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -23276,9 +23476,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     2,
      55
-    ]
+    ],
+    "zoneMin": 2
    },
    "clearXp": 100
   },
@@ -23309,9 +23510,10 @@
    "actors": {
     "count": 59,
     "levels": [
-     1,
+     24,
      75
     ],
+    "zoneMin": 24,
     "boss": {
      "name": "Otar the Mad",
      "level": "level 75"
@@ -23415,9 +23617,10 @@
    "actors": {
     "count": 19,
     "levels": [
-     1,
+     6,
      40
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 34"
     }
@@ -23544,9 +23747,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Jyrik Gauldurson",
      "level": "level 46"
@@ -23607,9 +23811,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     1,
+     8,
      24
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100,
    "pointers": [
@@ -23653,9 +23858,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     14,
      80
     ],
+    "zoneMin": 14,
     "boss": {
      "name": "Red Eagle",
      "level": "level 80"
@@ -23698,9 +23904,10 @@
    "actors": {
     "count": 19,
     "levels": [
-     1,
+     14,
      50
-    ]
+    ],
+    "zoneMin": 14
    },
    "clearXp": 100,
    "pointers": [
@@ -23761,6 +23968,7 @@
      25,
      52
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled from 45"
     }
@@ -24307,6 +24515,7 @@
      15,
      45
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 45"
     }
@@ -24468,9 +24677,10 @@
    "actors": {
     "count": 69,
     "levels": [
-     1,
+     24,
      65
     ],
+    "zoneMin": 24,
     "boss": {
      "name": "Hevnoraak",
      "level": "level 65"
@@ -24526,9 +24736,10 @@
    "actors": {
     "count": 13,
     "levels": [
-     1,
+     13,
      63
     ],
+    "zoneMin": 13,
     "boss": {
      "level": "leveled 13-63"
     }
@@ -24590,9 +24801,10 @@
    "actors": {
     "count": 60,
     "levels": [
-     1,
+     6,
      75
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Rhavjaal The Embered",
      "level": "level 75"
@@ -24648,9 +24860,10 @@
    "actors": {
     "count": 44,
     "levels": [
-     1,
+     6,
      79
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Munaxqowuld",
      "level": "leveled 30-79"
@@ -24693,9 +24906,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     2,
+     14,
      30
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled 8-30"
     }
@@ -24790,9 +25004,10 @@
    "actors": {
     "count": 98,
     "levels": [
-     1,
+     16,
      60
     ],
+    "zoneMin": 16,
     "boss": {
      "level": "leveled from 60"
     }
@@ -25317,9 +25532,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 50"
     }
@@ -25361,9 +25577,10 @@
    "actors": {
     "count": 13,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -25445,9 +25662,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     2,
      24
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 2-14"
     }
@@ -25497,9 +25715,10 @@
    "actors": {
     "count": 32,
     "levels": [
-     1,
+     24,
      81
-    ]
+    ],
+    "zoneMin": 24
    },
    "clearXp": 200,
    "pointers": [
@@ -25816,7 +26035,8 @@
     "levels": [
      1,
      2
-    ]
+    ],
+    "zoneMin": 18
    },
    "clearXp": 100,
    "quests": [
@@ -25853,9 +26073,10 @@
    "actors": {
     "count": 43,
     "levels": [
-     1,
+     6,
      24
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -26049,9 +26270,10 @@
    "actors": {
     "count": 102,
     "levels": [
-     1,
+     24,
      66
     ],
+    "zoneMin": 24,
     "boss": {
      "level": "level 55"
     }
@@ -26123,9 +26345,10 @@
    "actors": {
     "count": 100,
     "levels": [
-     1,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -26182,9 +26405,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     1,
+     6,
      21
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -26215,9 +26439,10 @@
    "actors": {
     "count": 28,
     "levels": [
-     1,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Sigdis Gauldurson",
      "level": "level 40"
@@ -26522,9 +26747,10 @@
    "actors": {
     "count": 7,
     "levels": [
-     1,
+     2,
      12
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 12"
     }
@@ -27170,9 +27396,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     6,
      100
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Ogol",
      "level": "level 26"
@@ -27349,9 +27576,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     1,
+     6,
      50
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -27542,7 +27770,8 @@
     "levels": [
      1,
      3
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -27600,6 +27829,7 @@
      1,
      2
     ],
+    "zoneMin": 12,
     "boss": {
      "name": "Skeleton",
      "level": "level 1"
@@ -27688,6 +27918,7 @@
      12,
      15
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 12"
     }
@@ -27840,9 +28071,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Orc",
      "level": "leveled 19-24"
@@ -27924,9 +28156,10 @@
    "actors": {
     "count": 3,
     "levels": [
-     3,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -27975,7 +28208,8 @@
     "levels": [
      8,
      11
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -28006,9 +28240,10 @@
    "actors": {
     "count": 19,
     "levels": [
-     2,
+     10,
      55
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "quests": [
@@ -28237,9 +28472,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     6,
      27
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -28278,9 +28514,10 @@
    "actors": {
     "count": 49,
     "levels": [
-     1,
+     6,
      60
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Witch-Lord Grundvik",
      "level": "level 60"
@@ -28351,9 +28588,10 @@
    "actors": {
     "count": 40,
     "levels": [
-     1,
+     14,
      60
     ],
+    "zoneMin": 14,
     "boss": {
      "level": "leveled from 45"
     }
@@ -28439,9 +28677,10 @@
    "actors": {
     "count": 26,
     "levels": [
-     1,
+     6,
      250
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 26-36"
     }
@@ -28840,7 +29079,8 @@
     "levels": [
      16,
      120
-    ]
+    ],
+    "zoneMin": 15
    },
    "clearXp": 100,
    "pointers": [
@@ -28889,9 +29129,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     6,
      46
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-46"
     }
@@ -28992,9 +29233,10 @@
    "actors": {
     "count": 86,
     "levels": [
-     1,
+     18,
      35
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 25-35"
     }
@@ -29044,9 +29286,10 @@
    "actors": {
     "count": 39,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Brurid",
      "level": "level 24"
@@ -29191,9 +29434,10 @@
    "actors": {
     "count": 177,
     "levels": [
-     1,
-     60
+     6,
+     20
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Zulakaroth, Keeper of the Dragonstone",
      "level": "level 40"
@@ -29508,9 +29752,10 @@
    "actors": {
     "count": 53,
     "levels": [
-     1,
+     2,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -29555,9 +29800,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 45-50"
     }
@@ -30493,9 +30739,10 @@
    "actors": {
     "count": 105,
     "levels": [
-     1,
+     6,
      60
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Herfodr Sun-Slayer",
      "level": "level 55"
@@ -30574,9 +30821,10 @@
    "actors": {
     "count": 82,
     "levels": [
-     1,
+     8,
      75
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 45-50"
     }
@@ -30646,9 +30894,10 @@
    "actors": {
     "count": 46,
     "levels": [
-     1,
-     55
+     25,
+     50
     ],
+    "zoneMin": 25,
     "boss": {
      "level": "level 55"
     }
@@ -30680,9 +30929,10 @@
    "actors": {
     "count": 145,
     "levels": [
-     1,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -30870,9 +31120,10 @@
    "actors": {
     "count": 21,
     "levels": [
-     1,
+     2,
      46
     ],
+    "zoneMin": 2,
     "boss": {
      "name": "Troll",
      "level": "level 14"
@@ -30943,9 +31194,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     1,
+     2,
      15
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled 1-12"
     }
@@ -30979,9 +31231,10 @@
    "actors": {
     "count": 10,
     "levels": [
-     1,
+     2,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -31261,9 +31514,10 @@
    "actors": {
     "count": 31,
     "levels": [
-     1,
-     24
+     6,
+     10
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -31305,9 +31559,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     6,
      30
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 13-30"
     }
@@ -31339,7 +31594,8 @@
     "levels": [
      14,
      150
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 200,
    "pointers": [
@@ -34929,9 +35185,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     1,
+     12,
      24
-    ]
+    ],
+    "zoneMin": 12
    },
    "clearXp": 100
   },
@@ -34962,9 +35219,10 @@
    "actors": {
     "count": 40,
     "levels": [
-     1,
+     8,
      50
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Sild the Warlock",
      "level": "leveled from 50"
@@ -35057,9 +35315,10 @@
    "actors": {
     "count": 12,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -37308,6 +37567,7 @@
      70,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -37375,9 +37635,10 @@
    "actors": {
     "count": 41,
     "levels": [
-     1,
+     18,
      60
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -37489,9 +37750,10 @@
    "actors": {
     "count": 28,
     "levels": [
-     3,
+     6,
      35
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -37647,6 +37909,7 @@
      2,
      70
     ],
+    "zoneMin": 2,
     "boss": {
      "level": "leveled from 70"
     }
@@ -37720,9 +37983,10 @@
    "actors": {
     "count": 49,
     "levels": [
-     1,
+     6,
      150
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -38092,9 +38356,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     1,
+     6,
      40
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 1"
     }
@@ -38149,7 +38414,8 @@
     "levels": [
      75,
      77
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "pointers": [
@@ -38458,9 +38724,10 @@
    "actors": {
     "count": 25,
     "levels": [
-     3,
+     6,
      40
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Elsi the Spiker",
      "level": "level 40"
@@ -38576,9 +38843,10 @@
    "actors": {
     "count": 21,
     "levels": [
-     2,
-     24
+     6,
+     10
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 24"
     }
@@ -38745,6 +39013,7 @@
      1,
      3
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "leveled 1-3"
     }
@@ -38776,7 +39045,8 @@
     "levels": [
      25,
      30
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -38823,9 +39093,10 @@
    "actors": {
     "count": 100,
     "levels": [
-     1,
+     16,
      35
-    ]
+    ],
+    "zoneMin": 16
    },
    "clearXp": 200,
    "pointers": [
@@ -38909,9 +39180,10 @@
    "actors": {
     "count": 71,
     "levels": [
-     1,
+     18,
      60
-    ]
+    ],
+    "zoneMin": 18
    },
    "clearXp": 100,
    "pointers": [
@@ -39238,9 +39510,10 @@
    "actors": {
     "count": 7,
     "levels": [
-     1,
+     2,
      22
     ],
+    "zoneMin": 2,
     "boss": {
      "name": "Frost Troll",
      "level": "level 22"
@@ -39369,9 +39642,10 @@
    "actors": {
     "count": 55,
     "levels": [
-     3,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Silver Hand",
      "level": "level 45"
@@ -39416,9 +39690,10 @@
    "actors": {
     "count": 15,
     "levels": [
-     3,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -39484,9 +39759,10 @@
    "actors": {
     "count": 94,
     "levels": [
-     1,
+     6,
      47
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -39535,9 +39811,10 @@
    "actors": {
     "count": 45,
     "levels": [
-     1,
+     18,
      50
     ],
+    "zoneMin": 18,
     "boss": {
      "name": "Giant Chaurus",
      "level": "level 50"
@@ -39676,7 +39953,8 @@
     "levels": [
      15,
      15
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -39707,9 +39985,10 @@
    "actors": {
     "count": 54,
     "levels": [
-     1,
+     8,
      100
     ],
+    "zoneMin": 8,
     "boss": {
      "level": "leveled 45-50"
     }
@@ -39809,9 +40088,10 @@
    "actors": {
     "count": 33,
     "levels": [
-     1,
+     6,
      70
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Warlord Gathrik",
      "level": "level 70"
@@ -39906,9 +40186,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     1,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 3-24"
     }
@@ -39942,9 +40223,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     1,
+     10,
      79
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Grahkrindrog",
      "level": "leveled 30-79"
@@ -40052,9 +40334,10 @@
    "actors": {
     "count": 1,
     "levels": [
-     3,
+     6,
      24
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -40120,9 +40403,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     6,
      46
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Jyrik Gauldurson",
      "level": "level 46"
@@ -40905,7 +41189,8 @@
     "levels": [
      1,
      1
-    ]
+    ],
+    "zoneMin": 2
    },
    "clearXp": 100,
    "quests": [
@@ -41003,9 +41288,10 @@
    "actors": {
     "count": 45,
     "levels": [
-     1,
+     18,
      80
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -41059,9 +41345,10 @@
    "actors": {
     "count": 15,
     "levels": [
-     1,
+     6,
      50
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 1-30"
     }
@@ -41095,9 +41382,10 @@
    "actors": {
     "count": 50,
     "levels": [
-     1,
+     6,
      62
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Heirmaal the Cloaked",
      "level": "level 62"
@@ -41186,9 +41474,10 @@
    "actors": {
     "count": 104,
     "levels": [
-     1,
+     5,
      60
     ],
+    "zoneMin": 5,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -41306,9 +41595,10 @@
    "actors": {
     "count": 12,
     "levels": [
-     1,
+     18,
      55
     ],
+    "zoneMin": 18,
     "boss": {
      "level": "leveled 44-55"
     }
@@ -41501,9 +41791,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
-     90
-    ]
+     6,
+     30
+    ],
+    "zoneMin": 6
    },
    "pointers": [
     {
@@ -41569,9 +41860,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     1,
+     6,
      9
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "quests": [
@@ -41604,9 +41896,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     2,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 24-55"
     }
@@ -41638,9 +41931,10 @@
    "actors": {
     "count": 8,
     "levels": [
-     1,
+     18,
      60
-    ]
+    ],
+    "zoneMin": 18
    },
    "clearXp": 200,
    "pointers": [
@@ -41841,9 +42135,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     3,
+     12,
      24
     ],
+    "zoneMin": 12,
     "boss": {
      "level": "leveled 19-24"
     }
@@ -41887,9 +42182,10 @@
    "actors": {
     "count": 21,
     "levels": [
-     1,
+     8,
      40
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Arondil",
      "level": "level 40"
@@ -41972,9 +42268,10 @@
    "actors": {
     "count": 66,
     "levels": [
-     1,
+     6,
      70
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Kodlak's Werewolf Spirit",
      "level": "level 50"
@@ -42079,9 +42376,10 @@
    "actors": {
     "count": 16,
     "levels": [
-     1,
+     6,
      55
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100,
    "pointers": [
@@ -42124,9 +42422,10 @@
    "actors": {
     "count": 20,
     "levels": [
-     1,
+     6,
      30
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Marauder",
      "level": "leveled 3-24"
@@ -42167,9 +42466,10 @@
    "actors": {
     "count": 30,
     "levels": [
-     1,
+     6,
      125
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 55-125"
     }
@@ -42206,6 +42506,7 @@
      60,
      70
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 70"
     }
@@ -42253,9 +42554,10 @@
    "actors": {
     "count": 9,
     "levels": [
-     1,
+     6,
      28
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Wispmother",
      "level": "level 28"
@@ -42298,9 +42600,10 @@
    "actors": {
     "count": 157,
     "levels": [
-     1,
+     24,
      79
-    ]
+    ],
+    "zoneMin": 24
    },
    "clearXp": 200,
    "pointers": [
@@ -42373,9 +42676,10 @@
    "actors": {
     "count": 16,
     "levels": [
-     3,
+     6,
      40
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200,
    "pointers": [
@@ -42462,9 +42766,10 @@
    "actors": {
     "count": 21,
     "levels": [
-     1,
+     6,
      100
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 200
   },
@@ -42487,9 +42792,10 @@
    "actors": {
     "count": 34,
     "levels": [
-     1,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 24-55"
     }
@@ -42533,9 +42839,10 @@
    "actors": {
     "count": 3,
     "levels": [
-     3,
+     6,
      45
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 45"
     }
@@ -42561,9 +42868,10 @@
    "actors": {
     "count": 65,
     "levels": [
-     1,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled 24-55"
     }
@@ -42589,9 +42897,10 @@
    "actors": {
     "count": 56,
     "levels": [
-     1,
+     6,
      80
     ],
+    "zoneMin": 6,
     "boss": {
      "level": "leveled from 50"
     }
@@ -42704,9 +43013,10 @@
    "actors": {
     "count": 5,
     "levels": [
-     1,
+     6,
      35
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -42729,9 +43039,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     6,
      55
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Vulom",
      "level": "level 51"
@@ -42764,9 +43075,10 @@
    "actors": {
     "count": 4,
     "levels": [
-     3,
+     6,
      24
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Marauder",
      "level": "leveled 19-24"
@@ -42793,9 +43105,10 @@
    "actors": {
     "count": 2,
     "levels": [
-     3,
+     6,
      24
-    ]
+    ],
+    "zoneMin": 6
    },
    "clearXp": 100
   },
@@ -42818,9 +43131,10 @@
    "actors": {
     "count": 119,
     "levels": [
-     1,
+     24,
      60
     ],
+    "zoneMin": 24,
     "boss": {
      "name": "Suleyk",
      "level": "level 51"
@@ -43482,9 +43796,10 @@
    "actors": {
     "count": 51,
     "levels": [
-     1,
+     10,
      55
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 200,
    "pointers": [
@@ -43796,9 +44111,10 @@
    "actors": {
     "count": 30,
     "levels": [
-     1,
+     12,
      100
     ],
+    "zoneMin": 12,
     "boss": {
      "name": "Umbra",
      "level": "level 100"
@@ -43831,9 +44147,10 @@
    "actors": {
     "count": 11,
     "levels": [
-     1,
+     10,
      120
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Dinok the Gray",
      "level": "level 120"
@@ -43870,9 +44187,10 @@
    "actors": {
     "count": 25,
     "levels": [
-     1,
+     10,
      55
-    ]
+    ],
+    "zoneMin": 10
    },
    "clearXp": 100,
    "pointers": [
@@ -43944,6 +44262,7 @@
      80,
      80
     ],
+    "zoneMin": 5,
     "boss": {
      "name": "Gloriel the Valkyrie",
      "level": "level 80"
@@ -43966,9 +44285,10 @@
    "actors": {
     "count": 19,
     "levels": [
-     1,
+     6,
      130
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "The King of Leeches",
      "level": "level 130"
@@ -43991,9 +44311,10 @@
    "actors": {
     "count": 89,
     "levels": [
-     1,
+     13,
      80
-    ]
+    ],
+    "zoneMin": 13
    },
    "clearXp": 100
   },
@@ -44015,6 +44336,7 @@
      15,
      80
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Duke Kh-Utta",
      "level": "level 80"
@@ -44037,9 +44359,10 @@
    "actors": {
     "count": 22,
     "levels": [
-     1,
+     10,
      75
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Master Chef River Jumper",
      "level": "level 75"
@@ -44082,7 +44405,8 @@
     "levels": [
      1,
      1
-    ]
+    ],
+    "zoneMin": 15
    },
    "clearXp": 100,
    "pointers": [
@@ -44363,9 +44687,10 @@
    "actors": {
     "count": 14,
     "levels": [
-     1,
+     5,
      150
     ],
+    "zoneMin": 5,
     "boss": {
      "name": "Bartholo",
      "level": "level 150"
@@ -44440,9 +44765,10 @@
    "actors": {
     "count": 28,
     "levels": [
-     1,
+     6,
      80
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "The Wasteland Guardian",
      "level": "level 80"
@@ -44465,9 +44791,10 @@
    "actors": {
     "count": 26,
     "levels": [
-     1,
+     8,
      60
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Mad King Dro'Zel",
      "level": "level 60"
@@ -44614,9 +44941,10 @@
    "actors": {
     "count": 17,
     "levels": [
-     1,
+     8,
      60
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100
   },
@@ -44645,7 +44973,8 @@
     "levels": [
      1,
      1
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100,
    "pointers": [
@@ -48299,6 +48628,7 @@
      10,
      105
     ],
+    "zoneMin": 10,
     "boss": {
      "name": "Sir Casimir",
      "level": "level 105"
@@ -48343,9 +48673,10 @@
    "actors": {
     "count": 43,
     "levels": [
-     1,
+     8,
      175
     ],
+    "zoneMin": 8,
     "boss": {
      "name": "Warden Uighool",
      "level": "level 175"
@@ -48842,7 +49173,8 @@
     "levels": [
      15,
      100
-    ]
+    ],
+    "zoneMin": 8
    },
    "clearXp": 100
   },
@@ -48861,9 +49193,10 @@
    "actors": {
     "count": 60,
     "levels": [
-     1,
+     30,
      80
     ],
+    "zoneMin": 30,
     "boss": {
      "name": "Antioch",
      "level": "level 80"
@@ -48915,6 +49248,7 @@
      10,
      150
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Maram the Slaughterer",
      "level": "level 150"
@@ -49278,9 +49612,10 @@
    "actors": {
     "count": 68,
     "levels": [
-     16,
+     25,
      1250
     ],
+    "zoneMin": 25,
     "boss": {
      "name": "Enchanted Sphere",
      "level": "level 60"
@@ -49337,6 +49672,7 @@
      15,
      65
     ],
+    "zoneMin": 10,
     "boss": {
      "level": "level 45"
     }
@@ -49874,9 +50210,10 @@
    "actors": {
     "count": 15,
     "levels": [
-     5,
+     6,
      100
     ],
+    "zoneMin": 6,
     "boss": {
      "name": "Mountain Eater",
      "level": "level 100"
@@ -49970,7 +50307,8 @@
     "levels": [
      1,
      1
-    ]
+    ],
+    "zoneMin": 15
    },
    "clearXp": 100
   },

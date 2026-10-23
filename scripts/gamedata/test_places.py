@@ -146,6 +146,18 @@ class BuiltIndex(unittest.TestCase):
         castles = {p["name"] for p in self.rows if p["type"] == "Keep"}
         self.assertNotIn("Castle Volkihar", castles)
 
+    def test_enemy_levels_are_clamped_by_the_encounter_zone(self):
+        # WO-144 Part 1d (Bob, 23 Oct, 16:15): ECZN DATA decoded by hand on Fort Hraggstad -- min level 6, no cap.
+        # The resolved actor range is raised to that floor; Bleak Falls Barrow's own zone narrows its wide range.
+        hraggstad = self.by["Fort Hraggstad"]["actors"]
+        self.assertEqual(hraggstad["zoneMin"], 6)
+        self.assertEqual(hraggstad["levels"][0], 6)
+        self.assertGreaterEqual(hraggstad["levels"][1], 6)
+        barrow = self.by["Bleak Falls Barrow"]["actors"]
+        self.assertLess(barrow["levels"][1], 60)  # was [1, 60] before the zone clamp
+        no_ones = [p["name"] for p in self.rows if p.get("actors", {}).get("levels") == [1, 1]]
+        self.assertLess(len(no_ones), 20, no_ones)  # was 108 before level_of's own fix; a handful of genuine level 1s remain
+
     def test_bobs_cleaning_pass_names_are_gone_or_fixed(self):
         # WO-144 Part 1, Bob 23 Oct 15:35: a keyword alone isn't a building (a city tagged as having an inn, a
         # player home, a dungeon with a stray LocTypeInn, a cellar, a tomb). These never show as a Temple/Inn/Guild.
