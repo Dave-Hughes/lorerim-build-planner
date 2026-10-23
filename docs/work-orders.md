@@ -4981,13 +4981,15 @@ Status: queued
    - *Rule:* never budget missives as a lump. Count one or two per leg the route already travels, never recommend one off the route, and skip gathering jobs (LoreRim's author warns they can break). In WO-145's fillers too.
 8. **Tome Trials, modeled and gated.** The exams aren't quests, so nothing lists them. Giraud's exam line checks `GetQuestCompleted` on Tending the Flames (Skyrim.esm:053511) == 1, so all 36 exams wait on Tending the Flames; the project's own notes and Kyria's Act III treated them as open. A `tome-trials` entry the door returns (through `get_rules` or the doings index when it lands): 36 books, 50 / 100 / 200 XP by tier, tier 2 needs Speech 50 and tier 3 Speech 75 (the mod page), Callings' Historian half again, **after Tending the Flames**. WO-145's filler list uses it only after that quest.
 
+9. **"When" judges by what she'll meet, not the ceiling.** With WO-144 Part 1d's levels (floor, ceiling, and what a player meets at a given level), `suggest_places`' fit reads the act's levels against `atLevel` and the boss: "fits now" when what she meets at the act's levels and the boss are within reach; "plant now" when the boss is well above. Embershard Mine fits a Riverwood act again (`wo128.test.ts`). Until the PC's `atLevel` lands, use the floor and the boss, not the ceiling.
+
 ### Player questions
 - 34. "What quests are open in Haafingar at level 15?" returns stories with their starts, none `start: null`.
 - 35. "How do I start Laid to Rest?" says the way in, not a key; `openForYou` is open or names a real need.
 - 36. "Can Kyria take Tome Trials exams now?" says not until Tending the Flames, with what the exams pay.
 
 ### Done when
-- [ ] 1 to 8, each with a test; player questions 34 to 36 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+- [ ] 1 to 9, each with a test (`wo128.test.ts` green); player questions 34 to 36 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
 ---
 
@@ -5002,7 +5004,7 @@ Status: queued
 ---
 
 ## WO-147  A page for every quest, and grab-bags as shelves, not lines (Mac, 23 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave (23 Oct), opening `/quests/capital-whiterun`: "what is this quest line exactly?" It isn't one. "Whiterun, expanded" is eight unrelated jobs from Capital Whiterun Expansion (a house, a giant, a rat cellar, the white horse, a festival, a farm, a temple job, a skirmish), bundled by the mod they came from and shown as if a story: the page opens on "I've received a note by a messenger from Whiterun", which starts only the house quest, and the bundling is what produced Running Wild's false "comes after" gate. "Windhelm, expanded" is the same. And a quest has no page of its own: it's a section of its line's page, so a search, a link from a playthrough or a link from an assistant lands on the whole line.
 
@@ -5038,6 +5040,8 @@ Decisions made under WO-138 Part 5, each with why:
 
 - Bob, 23 Oct, 16:40: Parts 1 and 2 read and accepted (the shelf list, the shelf's plain line, 462 EDID slugs are fine). The live door still shows the old line for A Rat Problem; I'll recheck it after the deploy.
 - **Part 3 (Mac, 23 Oct).** `placesNear` leaves out City, Town, Settlement, Inn, Temple, Keep, Stables, House and PlayerHouse (Bob's list, by the index's own type names); Orc strongholds stay, and the `wo128` test stands as written. One call to flag: **Guild halls (14 in the index) stay in**, since Bob's list didn't name them; if a guild hall is a stop too, add `Guild` to the set in `src/lib/places/suggest.ts`. A test goes through every town and checks no stop comes back and every stronghold does. Unit tests 626 pass; typecheck, lint and the build pass; the places and quest specs (`wo128`, `wo129`, `wo146`, `wo147`, 20 tests) pass. I did not rerun the whole e2e for this one change, which is confined to `placesNear`.
+
+- Bob, 23 Oct, 17:30: Part 3 done (stops left out). `wo128.test.ts` is red again on a different line: Embershard Mine reads "plant now, pay off later (levels 24 and up)" for an act in Riverwood, because the PC's new levels give its ceiling (24) and `when` judges by the ceiling. Carried to WO-148 item 9.
 
 ---
 
