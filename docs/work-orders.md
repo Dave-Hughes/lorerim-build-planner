@@ -4923,6 +4923,52 @@ Status: done
 
 ---
 
+## WO-139  Before you design: the questions, their answers kept, and what a character will never do (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a house or a mount, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough on its own: the answers have to be kept, and the ones that close doors have to close them in the planner, or the next assistant guesses again.
+
+### Part 1. The questions (the style guide)
+A new section in `content/mcp/style.md`, **Before you design**, between How to build and Playthroughs, and a How to build line: "Before create_build, settle the Before you design questions with the player (offer two or three answers each when they don't know), and keep their answers with set_details." `create_build`'s and `create_playthrough`'s descriptions say the same in one sentence. The questions, in the player's terms, each with why it matters in a few words:
+
+**Always ask**
+1. **Will this character be the Dragonborn?** Opens or closes the main quest, Shouts, dragons, the Greybeards and the Blades, and when Dawnguard can start.
+2. **What do they do when something attacks?** Fight, and how (blade, bow, magic, sneak), or avoid it. This is the build's spine and the act's standing rule.
+3. **Where is the line they won't cross?** Steal, kill for money, break the law, become a vampire or werewolf.
+4. **Which factions, and which never?** Companions, College, Thieves Guild, Dark Brotherhood, the Bards College, Dawnguard or Volkihar; a side in the war, or out of it.
+5. **Alone, or with someone?** A follower (a fighter, a friend, an animal), a spouse, or solo.
+6. **Do they want a home, and where?** A city house (Breezehome waits on Dragon Rising), a Hearthfire plot (waits on thaneship), or never settling.
+7. **Do they want a mount?** Buy one (1,500 gold), earn one (Running Wild), or walk; the paraglider counts.
+8. **Where does the story end?** A level or a moment. It sets the number of acts.
+
+**Ask when it matters:** which god, if devout (Wintersun); craft or buy; sleep outdoors or in inns, carriage or walk (survival is on); and the name and past that explain the reason to travel (rule 19).
+
+Numbered as the guide's next rules (27 onward), the Honesty rules renumbered after them; `get_style_guide` returns the section; a test that no "rule N" reference in `src/lib/mcp` points past the last rule (as WO-127's did).
+
+### Part 2. The answers, kept
+- `set_details` accepts `answers`: a list of `{question, answer}` in the player's words, up to 12, each under 300 characters; `get_playthrough` returns them under `about`.
+- The playthrough's edit page shows them under the character's details as a plain list the player can edit; the public page shows them under the line, as "About her", only when the player has filled any in. No micro label above the title (design rule 1); the copy follows `docs/design-rules.md`. Screenshots at 1440 and 390.
+
+### Part 3. What a character will never do
+- `set_details` accepts `never`: a list of things the character won't do, from the answers. Each is one of: a quest line or story id (`main-quest`, `the-dark-brotherhood`), a side (`imperial`, `stormcloak`), a state (`vampire`, `werewolf`), or a free line in the player's words ("never kills for money"). `get_playthrough` returns it.
+- **`suggest_quests` and `suggest_objective` leave out** any story or quest behind a never: a story whose line is on the list, or whose checked needs include a quest or state on it (Dawnguard needs Dragonborn; the Dark Brotherhood's contracts need the Brotherhood). They say so once: "left out: 3 stories this character won't do".
+- **`get_quest`'s `openForYou`** says `locked for this character: she won't be the Dragonborn` (the never, in the player's words) when the quest or its checked needs sit on the list, before any level or quest gate. It stays "open for you" otherwise.
+- **`check_progression` and `get_playthrough` warn** when an objective, a chapter's unlock or a route stop touches a never: "this act sends her to the Dark Brotherhood; she said never".
+- The style guide's Before you design section ends: "Put what the answers close on the playthrough with set_details never, so the planner keeps to it."
+
+### Player questions
+- 19. "Design me a new character." Can't test the assistant; test what it's told: `get_style_guide` holds the eight questions and the How to build line; `create_build`'s and `create_playthrough`'s descriptions point to them.
+- 20. "What can she do in Windhelm at level 12?" on a playthrough whose never holds `the-dark-brotherhood` and `main-quest`: `suggest_quests` names neither, and says what it left out.
+- 21. "How do I start Dawnguard?" on that playthrough: `get_quest` says locked for this character, she won't be the Dragonborn.
+
+### Done when
+- [ ] Part 1: the section and the How to build line in the guide, the two descriptions, the renumbering test.
+- [ ] Part 2: `answers` through the door and on both pages; screenshots.
+- [ ] Part 3: `never` through the door; `suggest_quests`, `suggest_objective`, `get_quest` and the warnings keep to it, with tests on a playthrough whose never holds `main-quest` and `the-dark-brotherhood`.
+- [ ] Player questions 19 to 21 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-138  Finish the quest starts: the last 40, and every start checked against a second source (PC, 23 Oct 2026)
 
 **Why.** Dave asked for a straight answer on what is left for quests. 1,202 of 1,242 starts are checked, but that is the check against the game's own files. Only 133 are in the answer key, which is where a second source (UESP) has agreed. The other ~1,070 rest on the files alone, and Dave's own test found the files-alone starts wrong in two of the five quests he tried (Deathbrand's level and Geldis, Paragliding's missing place). So there are two jobs: close the 40, and check the rest against UESP the way the loop did for the unchecked ones.

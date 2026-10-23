@@ -103,3 +103,18 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_quest({ name: "Thane of Whiterun" })`.
 - Must: the jarl by name (Balgruuf the Greater) in Dragonsreach, with "Vignar Gray-Mane if the Stormcloaks hold Whiterun"; the need "once you've helped people of the hold"; never "It starts by itself when you enter Whiterun" as a way in; never a way with no place.
 - Passes since WO-138 Part 4b (fix 2: the sitting jarl in their keep, the other side's jarl named, the hidden start a gate).
+
+**19. "Design me a new character."**
+- Calls: `get_style_guide()`; the descriptions of `create_build` and `create_playthrough`.
+- Must: the guide holds the Before you design section with its eight always-ask questions and the How to build line; both descriptions point to it.
+- Fails today: **WO-139**.
+
+**20. "What can she do in Windhelm at level 12?"** on a playthrough whose `never` holds `the-dark-brotherhood` and `main-quest`.
+- Calls: `suggest_quests({ level: 12, where: "Windhelm", playthrough })`.
+- Must: neither Join the Dark Brotherhood nor a main-quest story; a line saying what was left out and why.
+- Fails today: **WO-139**.
+
+**21. "How do I start Dawnguard?"** on that playthrough.
+- Calls: `get_quest({ name: "Dawnguard", playthrough })`.
+- Must: `openForYou` says locked for this character, because she won't be the Dragonborn; never "open for you".
+- Fails today: **WO-139**.
