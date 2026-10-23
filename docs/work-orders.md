@@ -5022,8 +5022,21 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-151  What suggest_places says, read as a player (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Bob read `suggest_places` for Kyria's Act I (Riften, levels 1 to 6) live, as her Claude would, after WO-150. The data faults are the PC's (WO-144 Part 1e-3); these are the door's:
+- [ ] **Distance in a player's words:** "Riften, 0.2 km" → the walk band ("a short walk from Riften"), km only for sorting. Everywhere the door gives a distance.
+- [ ] **No guild halls or friendly places as suggestions:** Thieves Guild Headquarters (type Guild) came back with Mercer Frey as its "boss". Add Guild, and any place whose people aren't hostile at the start (Orc strongholds' residents, towns), to the stops `placesNear` leaves out; strongholds stay as destinations but show **no enemies** ("the Orcs of Largashbur; outsiders aren't welcome until The Cursed Tribe or you're Blood-Kin").
+- [ ] **No helper names in `questGoesThere`:** "Thieves Guild Radiant Guild Trophy Enabler", "BCSLL Vendor Quest". Handlers, helpers and vendor scripts are background (G5); leave them out.
+- [ ] **Pointers with no speaker:** "someone the line doesn't name" appears in pointers (Riften Dialogue lines). A town's gossip line is "people in Riften say: …"; name the speaker when the alias or faction gives one (a guard, an innkeeper); never "someone the line doesn't name".
+- [ ] **"Levels not read yet"** on Fallowstone Cave, Sanctum of Malacath and The Thief Doomstone: pass through whatever the PC's data has, and say "not checked yet" in those words when it has none.
+- [ ] Player question 26 (places near Riften) reads clean against all of the above. Push staging with `Status: for Bob`.
+
+---
+
 ## WO-150  suggest_places is broken on every input (Mac, urgent, 23 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave's Claude, re-planning Kyria (17:01): "One planner tool (suggest_places) is broken on every input, so I'm reading its places data from the repo instead." Bob, live: `suggest_places` returns `Cannot read properties of undefined (reading '0')`. Cause: WO-144 Part 1d (PC, 9eed4b1) changed `places.json`'s `actors` from `levels: [lo, hi]` to `floor`, `ceiling` and `atLevel`, and `src/lib/places/suggest.ts` still reads `p.actors.levels[0]` (lines 95, 110, 162). The unit tests use fixtures in the old shape, so nothing went red.
 - [x] `suggest.ts` reads the new shape (`floor`, `ceiling`, `atLevel`, the boss); WO-148 item 9's fit uses `atLevel` and the boss as written there. Words: "bandits from level 6; at 12 you meet 6 to 12; the chief about 10".
@@ -5035,6 +5048,8 @@ Status: for Bob
 - **The fit uses `atLevel`.** F is what she meets at the act's top level (`meetsAt`), else the place's floor when no row is open to her yet; the thresholds and the boss are as written under item 9. Said in the place's `enemies`: "enemies from level 6, never below 6; at 5 you meet 6 to 20; the boss Zulakaroth, Keeper of the Dragonstone, level 40" (so a wide range is never hidden, and what she meets at the act's levels is on its own). The word for a ranged boss is the PC's own ("leveled 6-10", and "matches your level, 10 to 20" when it comes), passed through; Bob's example wording ("the chief about 10") would need a word from the PC's side for the boss.
 - **The contract test (`src/lib/mcp/contract.test.ts`).** On the generated files, not fixtures: every town at three stretches of levels (with and without an end), every place's fit at every fifth level, every hold, town and place as `where`, the stored-act form, `get_quest` for all 1,226 quests (and with a player at three levels), `get_quest_log` with every quest started, `suggest_quests` for every town and hold, `get_perk` for every perk, `get_tree` for every tree, `get_spell` for every spell, `get_creation`, `get_rules`, `search_facts` on a sample of every kind including items, and `check_progression` on a drafted build. Each must not throw and say no stray "undefined" or "NaN". Run against the old `suggest.ts` it fails four tests with the same error the player saw; with this change it passes. It is in `npm test`, so the pipeline's "generated files are a contract" rule has a check. Not covered, said plainly: tools that need a signed-in player's database rows (the playthrough writes), which have their own e2e.
 - **Checks.** Typecheck, lint, 663 unit tests (with the contract test and the player questions), 273 gamedata tests and the build pass; the places and door e2e (`wo128`, `wo129`, `wo147`, `wo148`, 17 tests) pass. I did not rerun the whole e2e for this urgent order: nothing on a screen changed.
+
+- Bob, 23 Oct, 17:35: live, `suggest_places` for Kyria's Act I works again (16 places near Riften). Done. What it says is the next problem: WO-151 (Mac) and WO-144 Part 1e-3 (PC).
 
 ---
 
@@ -5287,6 +5302,12 @@ Fort Hraggstad reads "lives here: Imperial, also Bandit; boss Imperial Soldier 2
 - [ ] Count only actors present at the start: skip refs flagged initially disabled, refs in an enable-parent chain owned by a quest or the Civil War (`CWFort…` enable markers), and refs that only spawn on a quest stage. Show the later garrison separately: "after the war: the side that holds the hold".
 - [ ] The boss is the start's boss (the bandit chief), with the war's commander as the later one.
 - [ ] Spot checks in the log: Fort Hraggstad, Fort Greymoor, Fort Snowhawk, Fort Amol (all war forts), and two that aren't.
+
+### Part 1e-3. What `suggest_places` shows for Riften, read as a player (Bob, 23 Oct, 17:35; feedback)
+- [ ] **"At your level" isn't real yet.** Lost Prospect Mine says "at 6 you meet 6 to 50"; a level 6 player doesn't meet level 50 enemies, because a leveled list only picks entries at or below the player's level. `atLevel` must be computed per player level from the lists' entry levels (bands where the set of reachable entries changes), not one band from 1 to the ceiling.
+- [ ] **The boss is the place's boss, not the strongest or the last actor:** Faldar's Tooth reads "Pit Wolf, level 2" (the bandit chief is the boss); Stendarr's Beacon reads "Molag Bal, level 250" and Lost Prospect Mine "Thalmor Commander" (quest-placed actors, absent at the start: skip them as 1e-2 says). Boss = the actor on the location's boss marker or ref type, else the highest-level hostile placed at the start.
+- [ ] **Friendly places have no enemies:** Largashbur reads "enemies from 6 to 100; the boss Chief Yamarz, level 45". A stronghold's, a town's or a guild hall's residents aren't hostile; mark `hostile: false` and leave out enemies and boss.
+- [ ] **Nightingale Hall still reads 1 to 1** ("from level 1, never below 8; at 6 you meet 1"): contradictory; read it by hand and log.
 
 ### Part 2. People
 
