@@ -106,7 +106,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **19. "Design me a new character."**
 - Calls: `get_style_guide()`; the descriptions of `create_build` and `create_playthrough`.
-- Must: the guide holds the Before you design section with its eight always-ask questions and the How to build line; both descriptions point to it.
+- Must: the guide holds the Before you design section with its eight always-ask questions worded as WO-139 says, the softened reason-to-travel line, the mods rule, and the How to build line; both descriptions point to it.
 - Fails today: **WO-139**.
 
 **20. "What can she do in Windhelm at level 12?"** on a playthrough whose `never` holds `the-dark-brotherhood` and `main-quest`.
@@ -118,3 +118,8 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_quest({ name: "Dawnguard", playthrough })`.
 - Must: `openForYou` says locked for this character, because she won't be the Dragonborn; never "open for you".
 - Fails today: **WO-139**.
+
+**22. "What mods does Kyria need?"**
+- Calls: `get_playthrough({ playthrough: "Kyria Severa" })`.
+- Must: `mods` lists Callings as required, with its link and Dave's why.
+- Fails today: **WO-139 Part 4**.

@@ -4923,27 +4923,33 @@ Status: done
 
 ---
 
-## WO-139  Before you design: the questions, their answers kept, and what a character will never do (Mac, 23 Oct 2026)
-Status: building (Mac)
+## WO-139  Before you design: the questions, their answers kept, what a character will never do, and the mods they need (Mac, 23 Oct 2026)
+Status: queued
 
-**Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a house or a mount, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough on its own: the answers have to be kept, and the ones that close doors have to close them in the planner, or the next assistant guesses again.
+**Why.** Dave (23 Oct): an assistant designing a character through the connector should ask the things that shape the design before it starts, the way a good game master would. Today the style guide settles one thing with the player (rule 19, the reason to travel); everything else it asks is mechanical, because `create_build` demands it. Nobody asks whether she will be the Dragonborn, whether she wants a home, where her line is, so the assistant guesses, and the guesses are what make a character read as generic. Asking isn't enough: the answers have to be kept, the ones that close doors have to close them in the planner, and a design that needs a mod LoreRim doesn't ship (Callings, first of all) has to say so.
+
+**How to ask (Dave, 23 Oct).** The wording matters as much as the list:
+- Ask about the whole run, not the first hour. "What do they do when something attacks?" made it sound like a character never fights; by ten hours in most characters take quests and kill bandits. Ask how they fight once they do, and separately how they start out. The early stance ("no fight she can walk away from") is an act's standing rule (rule 13), not the character's for life.
+- Ask whether, not where. "Do they want a home?" is enough; the planner picks the place that fits the story, and the player can always name one. The same for a mount.
+- Ask open, and recommend anyway. "Any faction you want in, or out?" The player may say "never the Companions" or "she should join the Companions"; no answer doesn't mean no faction in the design.
+- Don't obsess over the reason to travel. It usually emerges from the story. The point of rule 19 is only that a character who never leaves Riften has very few options; say that when a player asks for one, and otherwise let the reason come up as the acts are written.
 
 ### Part 1. The questions (the style guide)
-A new section in `content/mcp/style.md`, **Before you design**, between How to build and Playthroughs, and a How to build line: "Before create_build, settle the Before you design questions with the player (offer two or three answers each when they don't know), and keep their answers with set_details." `create_build`'s and `create_playthrough`'s descriptions say the same in one sentence. The questions, in the player's terms, each with why it matters in a few words:
+A new section in `content/mcp/style.md`, **Before you design**, between How to build and Playthroughs, and a How to build line: "Before create_build, settle the Before you design questions with the player (offer two or three answers each when they don't know), and keep their answers with set_details." `create_build`'s and `create_playthrough`'s descriptions say the same in one sentence. The How to build line "Before writing a playthrough, settle the character's reason to travel" is softened to "A character needs a reason to leave town now and then; it usually comes from the story as you write the acts. Don't ask for it up front." `create_playthrough`'s WO-127 sentence is softened the same way.
 
-**Always ask**
-1. **Will this character be the Dragonborn?** Opens or closes the main quest, Shouts, dragons, the Greybeards and the Blades, and when Dawnguard can start.
-2. **What do they do when something attacks?** Fight, and how (blade, bow, magic, sneak), or avoid it. This is the build's spine and the act's standing rule.
-3. **Where is the line they won't cross?** Steal, kill for money, break the law, become a vampire or werewolf.
-4. **Which factions, and which never?** Companions, College, Thieves Guild, Dark Brotherhood, the Bards College, Dawnguard or Volkihar; a side in the war, or out of it.
-5. **Alone, or with someone?** A follower (a fighter, a friend, an animal), a spouse, or solo.
-6. **Do they want a home, and where?** A city house (Breezehome waits on Dragon Rising), a Hearthfire plot (waits on thaneship), or never settling.
-7. **Do they want a mount?** Buy one (1,500 gold), earn one (Running Wild), or walk; the paraglider counts.
+**Always ask, in these words or close to them:**
+1. **Will this character be the Dragonborn?** It opens or closes the main quest, Shouts, dragons, the Greybeards and the Blades, and when Dawnguard can start.
+2. **How do they fight, once they do?** Blade and shield, two hands, bow, magic (which school), sneak and daggers, or a mix. This is the build's spine.
+3. **How do they start out?** A fighter from day one, or someone who avoids trouble at first and grows into it. This sets the first act's standing rule, not the character's for life.
+4. **Where is the line they won't cross?** Steal, kill for money, break the law, become a vampire or werewolf, pick a side in the war.
+5. **Any faction you want in, or out?** Companions, College, Thieves Guild, Dark Brotherhood, the Bards College, Dawnguard or Volkihar, the Legion or the Stormcloaks. No answer still gets a recommendation.
+6. **Alone, or with someone?** A follower (a fighter, a friend, an animal), a spouse, or solo.
+7. **Do they want a home? A mount?** Yes or no is enough; the planner picks what fits the story (Breezehome waits on Dragon Rising; a Hearthfire plot waits on thaneship; a mount is bought, earned in Running Wild, or the paraglider). The player can name one.
 8. **Where does the story end?** A level or a moment. It sets the number of acts.
 
-**Ask when it matters:** which god, if devout (Wintersun); craft or buy; sleep outdoors or in inns, carriage or walk (survival is on); and the name and past that explain the reason to travel (rule 19).
+**Ask when it matters:** which god, if devout (Wintersun); craft or buy; sleep outdoors or in inns, carriage or walk (survival is on); the name and past.
 
-Numbered as the guide's next rules (27 onward), the Honesty rules renumbered after them; `get_style_guide` returns the section; a test that no "rule N" reference in `src/lib/mcp` points past the last rule (as WO-127's did).
+Numbered as the guide's next rules (27 onward), the Honesty rules renumbered after them; `get_style_guide` returns the section; a test that no "rule N" reference in `src/lib/mcp` points past the last rule.
 
 ### Part 2. The answers, kept
 - `set_details` accepts `answers`: a list of `{question, answer}` in the player's words, up to 12, each under 300 characters; `get_playthrough` returns them under `about`.
@@ -4956,16 +4962,26 @@ Numbered as the guide's next rules (27 onward), the Honesty rules renumbered aft
 - **`check_progression` and `get_playthrough` warn** when an objective, a chapter's unlock or a route stop touches a never: "this act sends her to the Dark Brotherhood; she said never".
 - The style guide's Before you design section ends: "Put what the answers close on the playthrough with set_details never, so the planner keeps to it."
 
+### Part 4. The mods a character needs
+Dave: Callings (his role-play XP add-on) is what lets a custom character make sense from the start, a bard playing the inn or a scholar reading every book in town, instead of opening on crabs, wolves and bandits. It isn't part of LoreRim, and a design built with these tools may need other mods too. A character on the planner shows the mods it needs.
+- A build and a playthrough carry `mods`: each with `name`, `link` (Nexus or the mod's page), `why` (one line, what this character needs it for), and `required` or `recommended`. `set_details` sets them through the door; the edit pages have a plain list to add, edit and remove them (name, link, why, required or recommended).
+- Both public pages show **Mods this character needs** under the build or line: required first, each with its link and why; recommended behind a smaller heading. Nothing shows when the list is empty. Follow `docs/design-rules.md` (no micro labels, the game's words).
+- The guide's mods page (`/guide/mods`) lists Callings with its link once Dave gives it, so the planner can link it like any other.
+- The style guide gains a rule: when a design depends on something LoreRim doesn't ship (performing as a bard, a scholar's reading, a custom start, a story NPC), name the mod with set_details mods and say why; Callings first, by name, for any character whose opening isn't fighting. Never assume a mod is installed; the player decides.
+- Kyria's playthrough gets Callings as required, with Dave's why, as the worked example.
+
 ### Player questions
-- 19. "Design me a new character." Can't test the assistant; test what it's told: `get_style_guide` holds the eight questions and the How to build line; `create_build`'s and `create_playthrough`'s descriptions point to them.
+- 19. "Design me a new character." Can't test the assistant; test what it's told: `get_style_guide` holds the eight questions, worded as above, the softened reason-to-travel line and the mods rule; `create_build`'s and `create_playthrough`'s descriptions point to them.
 - 20. "What can she do in Windhelm at level 12?" on a playthrough whose never holds `the-dark-brotherhood` and `main-quest`: `suggest_quests` names neither, and says what it left out.
 - 21. "How do I start Dawnguard?" on that playthrough: `get_quest` says locked for this character, she won't be the Dragonborn.
+- 22. "What mods does Kyria need?": `get_playthrough` lists Callings, required, with its link and why.
 
 ### Done when
-- [ ] Part 1: the section and the How to build line in the guide, the two descriptions, the renumbering test.
+- [ ] Part 1: the section and the How to build lines in the guide (the reason-to-travel line softened), the two descriptions, the renumbering test.
 - [ ] Part 2: `answers` through the door and on both pages; screenshots.
 - [ ] Part 3: `never` through the door; `suggest_quests`, `suggest_objective`, `get_quest` and the warnings keep to it, with tests on a playthrough whose never holds `main-quest` and `the-dark-brotherhood`.
-- [ ] Player questions 19 to 21 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
+- [ ] Part 4: `mods` through the door, on the edit pages and both public pages; Callings on the mods guide page (link from Dave) and on Kyria's playthrough; the style-guide rule. Screenshots.
+- [ ] Player questions 19 to 22 pass; every check in CLAUDE.md passes. Push staging with `Status: for Bob`.
 
 ---
 
