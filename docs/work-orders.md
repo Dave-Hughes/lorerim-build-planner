@@ -4987,7 +4987,7 @@ Status: building (Mac)
 ---
 
 ## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Dave (23 Oct): a Discord-signed-in player should be able to tell the planner what they know about a quest (how it starts, who, where, where a note or book is), not only "this was wrong". Dave's own finds (Running Wild's board, Paragliding near Falkreath) went in by hand through `overrides.json` as player reports, and that is the model: reviewed, approved by a person, then on the pages marked as a player's report with its source. 18 quests are "not checked" and about 370 mod quests have no second source; players are the only way to fill them. Most of the plumbing exists: `report_quest` on the door, the `quest_report` table (`what`, `text`, `said`, `source`, `status`), the site's "This was wrong" form, and `/admin`'s Quest reports.
 
@@ -5036,6 +5036,8 @@ Dave sent "The note is on the board by Joslin's house" on Running Wild. The prop
 - **A second player counts.** When the way it agrees with is already a player's report (Dave's in `overrides.json`, or an approved fact) and the reporter is a different player, closing it writes a confirmation (`quest_player_fact.confirms`, migration 0028, additive) that adds the reporter to that way's sources. The page then says "players' reports (2): Dave, 22 Oct; Tapps, 23 Oct" (names and days only, shortened from the full source), and `get_quest` says "players' reports, not the game files (2): Dave, 22 Oct; Tapps, 23 Oct". The same player twice counts once, and a confirmation of a way the files hold changes nothing: only a player's way gains sources. Three players read "(3)".
 - **Stale test fixed, not mine.** `wo128.test.ts` pinned Whiterun as a city the places index doesn't measure; WO-144 Part 1 item 1 (the PC's capitals) made every capital measured, so the unit tests were red on staging at the time I pulled. I updated it to the new truth and kept the behaviour covered with a name no place is nearest to.
 - **Checks for Part 1b.** Typecheck, lint and 614 unit tests (with the player questions) pass; the build; the full e2e passed 373 of 373. Screenshots: `test-results/wo146-admin-nochange-1440.png`, `wo146-quest-two-sources-1440.png`.
+
+- Bob, 23 Oct, 15:40: Part 1b read; done. Dave sees it on his Running Wild report in `/admin` (Propose again).
 
 ---
 
