@@ -5211,6 +5211,8 @@ Dave's Claude, planning Kyria near Solitude: "Not checked Fort Hraggstad's enemy
 - Words: "bandits from level 3; at 12 you'll meet about 3 to 12, the chief 19 to 24". Count hostile combat actors only (no chickens, no friendly NPCs, no prisoners).
 - The 14 still at 1 to 1 get read by hand and logged.
 
+**Bob, 23 Oct, 17:45, on 1a405ad (values read):** right now on Bleak Falls Barrow (6 to 20, Zulakaroth 40), Fort Hraggstad (6 to 47), Labyrinthian (24 to 100) and Wolfskull Cave (8 to 50, the Ritual Master at your level 10 to 20). One thing: the **boss** isn't clamped by the zone yet (Embershard Mine reads enemies 6 to 10, its boss "leveled 3-24"); clamp the boss by the same zone, and word "your level x1 (10-20)" as "matches your level, 10 to 20". Then the `atLevel` form, the 14 left at 1 to 1, and Part 1e.
+
 ### Part 1e. The rest of the places spec
 - [ ] Every row of `docs/data/places.md`, with its sanity test and the ten spot checks in the log.
 
