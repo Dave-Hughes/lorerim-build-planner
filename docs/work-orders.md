@@ -5045,7 +5045,7 @@ Status: queued
 ---
 
 ## WO-151  What suggest_places says, read as a player (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Bob read `suggest_places` for Kyria's Act I (Riften, levels 1 to 6) live, as her Claude would, after WO-150. The data faults are the PC's (WO-144 Part 1e-3); these are the door's:
 - [x] **Distance in a player's words:** "Riften, 0.2 km" → the walk band ("a short walk from Riften"), km only for sorting. Everywhere the door gives a distance.
@@ -5065,7 +5065,14 @@ Status: building (Mac)
 - **Checks.** Typecheck, lint, 678 unit tests (14 new in `wo151.test.ts`), 293 gamedata tests and the build pass. The places and door e2e (`wo128`, `wo129`, `wo147`, `wo148`, 17 tests) pass; on the first run `wo147`'s "door links" test failed on a link on the playthrough page, then passed alone and in a second full run of the four, so I put it down to the shared state between specs and did not chase it. Nothing on a screen changed, so I did not run the whole e2e.
 
 - Bob, 23 Oct, 17:50, live: walk bands, no guild hall, Largashbur's welcome line in place of enemies (good), "not checked yet". The rest of what reads wrong is the PC's data (1e-3). One small thing of yours:
-- [ ] **"People in Riften" only for the town's own gossip.** Lines from a quest or a follower got it too: Forelhost's "Return to me here once you've obtained the mask" is Captain Valmir's (Siege on the Dragon Cult); Crystaldrift Cave's "Fancy a trip?" is a follower's comment. "People in <town>" only when the line belongs to the town's dialogue quest (Riften Dialogue and its kin); a quest's line names its alias's person; a follower's comment names "a follower" or the follower; otherwise leave the line out.
+- [x] **"People in Riften" only for the town's own gossip.** Lines from a quest or a follower got it too: Forelhost's "Return to me here once you've obtained the mask" is Captain Valmir's (Siege on the Dragon Cult); Crystaldrift Cave's "Fancy a trip?" is a follower's comment. "People in <town>" only when the line belongs to the town's dialogue quest (Riften Dialogue and its kin); a quest's line names its alias's person; a follower's comment names "a follower" or the follower; otherwise leave the line out.
+
+### Jeff's notes, the gossip part (Mac, 23 Oct)
+- **The rule.** A line with no speaker says "people in <town>" only when its quest is that town's own dialogue quest: the name is a town and "Dialogue" ("Riften Dialogue", "Solitude Dialogue", "Whiterun City Dialogue", "Riverwood dialogue"). The town is the one the quest names, not the place's nearest town, so a Whiterun line near Riften would say Whiterun. The dialogue quest isn't shown as `inQuest` (it isn't a quest a player does). Every other line with no speaker is left out.
+- **What goes.** Forelhost's "Return to me here once you've obtained the mask" (Siege on the Dragon Cult, which still shows in `questGoesThere`) and Crystaldrift Cave's "Fancy a trip?" are gone, as are about 1,600 other speakerless lines across the index. The records carry only the quest and the plugin for them: no alias, no faction, and `plugins.json` has no description, so I can't tell a follower's comment from a villager's by anything but guessing at plugin names (FDE Aela, Lucien, Inigo). I did not guess, so a follower's comment is left out, not named "a follower". Naming the alias's person and the follower needs a `speaker` from the PC's side (WO-144 Part 1e-3); the door already shows one when it comes.
+- **A line you might want back.** The 25 "Carriage system dialogue" lines (Skyrim.esm and the Unofficial patch) are left out too. Embershard Mine's "Old Embershard Mine's up there. Used to produce a lot of iron..." is one, so Riverwood's Embershard Mine now shows Nirenoore's line from The Welkynar Knight and the Guard's Dossier. If you say a carriage driver speaks them, it's one line to add ("a carriage driver").
+- **A side effect.** A place whose only lines were unattributed now says `noPointer` ("Nothing in the game names it. A hook here is the player's own"): Lost Prospect Mine does. Said plainly: the game does name it, in a line the records can't attribute.
+- **Tests and checks.** `wo151.test.ts` now has five tests for this (the town's line, Forelhost and Crystaldrift left out, no unattributed line anywhere, Whiterun and Solitude name their own towns, a named speaker stays); `wo128.test.ts` and its e2e expect Nirenoore's line for Embershard Mine. Typecheck, lint, 681 unit tests, the build and the places and door e2e (17 tests) pass.
 
 ---
 

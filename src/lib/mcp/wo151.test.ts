@@ -82,11 +82,28 @@ describe("no helper names in questGoesThere", () => {
 });
 
 describe("pointers with no speaker", () => {
-  it("a town's gossip line is people in that town, never someone the line doesn't name", () => {
-    const p = riften().find((x) => x.place === "Lost Prospect Mine")!;
-    expect(p.pointers[0]).toMatchObject({ who: "people in Riften" });
-    for (const t of [...new Set(placesData().places.flatMap((x) => (x.nearestTown ? [x.nearestTown.town] : [])))])
-      expect(said(placesNear([t], 1, 10, none, 1000)), t).not.toMatch(/someone the line doesn't name/);
+  const pointers = (name: string) => riften().find((x) => x.place === name)!.pointers as { who?: string; says: string; inQuest?: string }[];
+  it("a line from the town's own dialogue quest is people in that town, without the dialogue quest named", () => {
+    const g = pointers("Faldar's Tooth").find((x) => x.who === "people in Riften")!;
+    expect(g.says).toMatch(/^City got attacked once/);
+    expect(g).not.toHaveProperty("inQuest");
+  });
+  it("a quest's line with no speaker, or a follower's comment, is left out: Forelhost's Valmir line and Crystaldrift Cave's \"Fancy a trip?\"", () => {
+    expect(said(pointers("Forelhost"))).not.toContain("Return to me here once you've obtained the mask");
+    expect(said(pointers("Crystaldrift Cave"))).not.toContain("Fancy a trip");
+  });
+  it("a place left with no line says so, and no place anywhere says someone the line doesn't name", () => {
+    expect(riften().find((x) => x.place === "Lost Prospect Mine")).toHaveProperty("noPointer");
+    for (const t of [...new Set(placesData().places.flatMap((x) => (x.nearestTown ? [x.nearestTown.town] : [])))]) {
+      const out = placesNear([t], 1, 10, none, 1000);
+      expect(said(out), t).not.toMatch(/someone the line doesn't name/);
+      for (const p of out) for (const x of p.pointers as { who?: string; book?: string }[]) expect(!!x.who || !!x.book, `${p.place} near ${t}`).toBe(true);
+    }
+  });
+  it("a gossip line names the town its dialogue quest belongs to, not the place's nearest town", () => {
+    const names = new Set<string>();
+    for (const t of ["Riften", "Whiterun", "Solitude"]) for (const p of placesNear([t], 1, 10, none, 1000)) for (const x of p.pointers as { who?: string }[]) if (x.who?.startsWith("people in ")) names.add(x.who);
+    expect([...names].sort()).toEqual(expect.arrayContaining(["people in Riften", "people in Solitude", "people in Whiterun"]));
   });
   it("a named speaker stays named", () => {
     const n = riften().find((x) => x.place === "Nightingale Hall")!;

@@ -22,7 +22,9 @@ describe("suggest_places (Part 2)", () => {
     const out = placesNear(towns, 1, 5, none);
     const mine = out.find((p) => p.place === "Embershard Mine")!;
     expect(mine).toBeDefined();
-    expect(mine.pointers.map((x) => x.says)).toContain("Old Embershard Mine's up there. Used to produce a lot of iron, but collapsed and taken over by criminals, I hear.");
+    // A named speaker's line stays; the carriage system's and the guard's, with no speaker named in the records, are left out (WO-151).
+    expect(mine.pointers.map((x) => x.says)).toContain("There is a bandit camp nearby. Embershard Mine I think. Perhaps the bandits there took them. Let's investigate there.");
+    expect(mine.pointers.map((x) => x.says).join(" ")).not.toContain("Old Embershard Mine's up there");
     expect(mine.when).toBe("fits now");
     const barrow = out.find((p) => p.place === "Bleak Falls Barrow")!;
     expect(barrow.questGoesThere).toContain("The Golden Claw");

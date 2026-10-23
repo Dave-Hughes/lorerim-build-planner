@@ -28,7 +28,7 @@ test("an assistant plans an act's places through the door", async ({ page, conte
   expect(r.towns).toContain("Riverwood");
   const mine = r.places.find((p: { place: string }) => p.place === "Embershard Mine");
   expect(mine.when).toBe("fits now");
-  expect(JSON.stringify(mine.pointers)).toContain("taken over by criminals");
+  expect(JSON.stringify(mine.pointers)).toContain("There is a bandit camp nearby. Embershard Mine I think");
   expect(r.places.find((p: { place: string }) => p.place === "Bleak Falls Barrow").questGoesThere).toContain("The Golden Claw");
 
   const ivar = (await go("suggest_places", { playthrough: pid, act: "2" })).json();

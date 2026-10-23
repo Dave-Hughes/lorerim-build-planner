@@ -160,6 +160,12 @@ export function farFrom(near: { town: string; walk?: string }): string {
   }
 }
 
+/** The town whose dialogue quest a line belongs to ("Riften Dialogue", "Whiterun City Dialogue"), else null. */
+function gossipTown(quest: string | undefined): string | null {
+  const m = /^(.+?)(?: City)? Dialogue$/i.exec(quest ?? "");
+  return m ? (towns().find((t) => key(t) === key(m[1])) ?? null) : null;
+}
+
 let listed: Set<string> | null = null;
 /**
  * The quests a place can name (WO-151): ones the planner lists by name and a player sees by name. A handler, a helper or a vendor
@@ -178,15 +184,20 @@ export function placesNear(townList: readonly string[], levelFrom: number, level
     .places.filter((p) => p.nearestTown && want.has(key(p.nearestTown.town)) && !notASuggestion(p))
     .sort((a, b) => Number(!a.pointers?.length) - Number(!b.pointers?.length) || a.nearestTown!.km - b.nearestTown!.km);
   return near.slice(0, limit).map((p) => {
-    const town = p.nearestTown?.town ?? p.hold ?? null;
     const pointers = (p.pointers ?? [])
+      .flatMap((x) => {
+        if (x.kind === "book") return [x];
+        if (x.speaker) return [x];
+        // A line with no speaker is the town's gossip only when it belongs to that town's dialogue quest ("Riften Dialogue"); the records
+        // name no alias or follower for any other, so it's left out (WO-151).
+        const gossip = gossipTown(x.quest);
+        return gossip ? [{ ...x, speaker: `people in ${gossip}`, quest: undefined }] : [];
+      })
       // A line someone in a town says first, then other lines, then books; four at most.
-      .slice()
       .sort((a, b) => Number(!a.speaker) - Number(!b.speaker) || Number(a.kind === "book") - Number(b.kind === "book"))
       .slice(0, 4)
       .map((x) => ({
-        // A line with no speaker is the town's gossip: "people in Riften say". The records give no guard or innkeeper to name.
-        ...(x.kind === "book" ? { book: x.book } : { who: x.speaker ?? (town ? `people in ${town}` : "people nearby"), ...(x.speakerPlace ? { where: x.speakerPlace } : {}) }),
+        ...(x.kind === "book" ? { book: x.book } : { who: x.speaker, ...(x.speakerPlace ? { where: x.speakerPlace } : {}) }),
         says: x.words,
         ...(x.quest ? { inQuest: x.quest } : {}),
       }));
