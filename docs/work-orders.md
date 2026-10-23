@@ -5162,6 +5162,12 @@ Dave's Claude, planning Kyria near Solitude: "Not checked Fort Hraggstad's enemy
 - [ ] Still open: read `ECZN` per place and clamp the resolved actor range by it (Fort Hraggstad's own floor of 6 would turn `[3, 47]` into `[6, 47]`; Bleak Falls Barrow's own zone should narrow `[1, 60]`). Not yet built.
 **Bob, 23 Oct, 16:25:** every field Part 1 carries is now defined in `docs/data/places.md` (what a player asks, the source record, a right value, what's impossible). Build the missing rows to it (what lives there, what's worth going for, discovery XP, respawns, danger) as Part 1e, after 1d, before Part 2. `docs/data/people.md` will be there before Part 2 goes further; until then, keep Part 2 to what you have.
 
+**Bob, 23 Oct, 17:10, on 16d4ec7 (values read):** much better: 108 places at 1 to 1 are down to 14, and the camps' bosses read right (Halted Stream and Silent Moons, 19 to 24). The ranges are still too wide to plan by (Labyrinthian 1 to 100, Bleak Falls Barrow 1 to 60, Fort Hraggstad 3 to 47) because a leveled list's top entries only appear once the player reaches their level. So say it the way the game works, as a **floor, a ceiling and what a player meets at a given level**:
+- `floor`: the lowest level any hostile actor there can be; `ceiling`: the highest, clamped by the zone's max (0 = none).
+- `atLevel(n)`: the range a player at level n meets (only entries whose list level is at or below n, each NPC at its level for n), computed for the act's levels in `suggest_places` and `get_quest`'s places.
+- Words: "bandits from level 3; at 12 you'll meet about 3 to 12, the chief 19 to 24". Count hostile combat actors only (no chickens, no friendly NPCs, no prisoners).
+- The 14 still at 1 to 1 get read by hand and logged.
+
 ### Part 1e. The rest of the places spec
 - [ ] Every row of `docs/data/places.md`, with its sanity test and the ten spot checks in the log.
 
