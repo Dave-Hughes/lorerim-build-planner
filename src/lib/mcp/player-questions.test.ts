@@ -143,7 +143,9 @@ const QUESTIONS: Question[] = [
     asks: "How do I start Deathbrand?",
     ask: () => [getQuest({ name: "Deathbrand" }, undefined, playerState({ level: 10, done: [] }))],
     // The level-up way with its level; Geldis only with his condition; the book's places with a way to see all of them.
-    must: [/when you level up[^"]*"[^}]*level 20|level 20[^"]*level up/i, /"[^"]*Geldis Sadri[^}]*Deathbrand stage 20|^(?![\s\S]*Geldis Sadri)[\s\S]*"/, /places: true/],
+    // The level gate on the ways in (the PC's check, 22 Oct: the level-up node is the gate; the book and the pirates at
+    // Haknir's Shoal are the ways, each at level 20).
+    must: [/"way":"Read Deathbrand"[^}]*"needs":\["Level 20"\]/, /Haknir's Shoal/, /"[^"]*Geldis Sadri[^}]*Deathbrand stage 20|^(?![\s\S]*Geldis Sadri)[\s\S]*"/, /places: true/],
     never: [/and \d+ more places/],
   },
   {

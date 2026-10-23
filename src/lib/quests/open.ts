@@ -108,6 +108,12 @@ function judge(need: string, names: QuestNames, p: PlayerState): Verdict {
   // Chained starts: "Through X, which starts from: ..." is open when what it starts from is.
   if ((m = /^Through .+?, which starts from: (.+)$/.exec(n))) return judgeAny(m[1].split(/; or /), names, p);
   if (n === "It runs from the start of the game") return MET;
+  // Reading something is a way in (WO-137), with its own needs in brackets (Deathbrand's book needs level 20). Where the
+  // thing is, or that no one has placed it, is judged from the ways below.
+  if (/^Read /.test(n)) {
+    const inner = /\(([^()]+)\)$/.exec(n);
+    return inner ? judgeAll(inner[1].split(/[;,] /), names, p) : MET;
+  }
   // By itself, or from something placed (a trigger, a board: WO-137 item 6): a way in, not a need. Its own needs, in
   // brackets, still count (Deathbrand's level-up start needs level 20).
   if (n.startsWith("It starts by itself") || n.startsWith("It starts from")) {

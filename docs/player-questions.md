@@ -74,7 +74,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **12. "How do I start Deathbrand?"**
 - Calls: `get_quest({ name: "Deathbrand", level: 10 })`.
 - Must: the level gate on "It starts by itself when you level up" (the story node needs level 20, a global that reads 20 now; the page dropped it). Geldis Sadri's talk is shown with its condition, or not at all as a way in: the record has it only when "Deathbrand stage 20 done" and stage <= 1 (a mod's edit), so it is not "the easiest one to aim for". The book's places: the first few named, and a way to see all 14, never "and 11 more places" with no way to ask.
-- Passes since WO-137 (item 1: the level-up node's level, Geldis's talk dropped as a catch-up; item 2: eight places by area, `places: true` for all).
+- Passes since WO-137 (item 1: the level gate, Geldis's talk dropped as a catch-up; item 2: eight places by area, `places: true` for all). After the PC's check (22 Oct) the level-up node is the gate, not a way: the test now wants Level 20 on reading the book and the Haknir's Shoal way. For Bob: the Must line above still names the level-up way.
 
 **13. "How do I start a missive from the notice board?"**
 - Calls: `get_quest({ name: "Missives" })` and one Missives quest by EDID.

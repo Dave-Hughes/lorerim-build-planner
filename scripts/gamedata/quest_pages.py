@@ -1067,7 +1067,8 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
         # Once the quest finds you, every node that starts it is that one way.
         if s["by"] == "start game" or (found and _node_of(s)):
             continue
-        for text, n in (way_words(s, own, line_quests, say, giver) if say else [way_of(s, own, line_quests)]):
+        # A patch's catch-up helper is no way in, in the record form either (WO-126; WO-137: Deathbrand's DLC2Init).
+        for text, n in (way_words(s, own, line_quests, say, giver) if say else [] if patch_helper(s) else [way_of(s, own, line_quests)]):
             if s.get("rumour"):  # a rumour's talk: hear it from them (Hulda), with what the rumour waits for
                 place = clean_place((s.get("speakerPlaced") or [None])[0])
                 text = f"Hear about it from {s.get('speaker') or 'someone'}" + (f" in {place}" if place else "")
@@ -1174,14 +1175,26 @@ FIRST_STEPS = {
 }
 
 
-def reword(start, wording):
-    """A start with the hand-kept wording (overrides.json questStarts, WO-126) put in for the words it replaces."""
-    if not wording:
+def reword(start, wording, way_needs=None):
+    """
+    A start with the hand-kept wording (overrides.json questStarts, WO-126) put in for the words it replaces, and
+    `way_needs` ({way, as reworded: [needs]}, its _wayNeeds) added to a way the records leave a need off (WO-137: reading
+    Deathbrand needs its level gate, which the book's script checks and the start check doesn't read).
+    """
+    if not wording and not way_needs:
         return start
-    put = lambda t: next((t.replace(k, v) for k, v in wording.items() if k in t), t)  # noqa: E731
+    put = lambda t: next((t.replace(k, v) for k, v in (wording or {}).items() if k in t), t)  # noqa: E731
     out = {**start, "needs": [put(n) for n in start.get("needs", [])]}
     if start.get("ways"):
-        out["ways"] = [{**w, "how": put(w["how"])} for w in start["ways"]]
+        out["ways"] = []
+        for w in start["ways"]:
+            w = {**w, "how": put(w["how"])}
+            add = [n for n in (way_needs or {}).get(w["how"], []) if n not in w.get("needs", [])]
+            out["ways"].append({**w, "needs": w.get("needs", []) + add} if add else w)
+        # The one-line needs say each way with its needs, as start_of writes them.
+        if len(out["ways"]) > 1 and any(n.startswith("One of: ") for n in out["needs"]):
+            one = "One of: " + "; or ".join(w["how"] + (f" ({', '.join(w['needs'])})" if w.get("needs") else "") for w in out["ways"])
+            out["needs"] = [one if n.startswith("One of: ") else n for n in out["needs"]]
     return out
 
 
@@ -1381,8 +1394,9 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             ov = wording.get(q["edid"], {})
             if ov.get("_starters") and args[0]:  # a starter the PC traced that the check doesn't list yet (overrides.json)
                 args = (dict(args[0], startedBy=ov["_starters"] + args[0].get("startedBy", [])),) + args[1:]
-            raw = start_of(*args)
-            start = reword(placed_ways(start_of(*args, say=say), q["name"], places, towns), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
+            # The record form takes the hand-kept way needs too (WO-137), for the open-or-locked judge.
+            raw = reword(start_of(*args), None, wording.get(q["edid"], {}).get("_wayNeeds"))
+            start = reword(placed_ways(start_of(*args, say=say), q["name"], places, towns), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")}, wording.get(q["edid"], {}).get("_wayNeeds"))
             # A way a player found in game, not the files (WO-131 Part 0: Dave's note outside Joslin's house): marked so.
             if ov.get("_checked") == "players":
                 put = {v for k, v in ov.items() if not k.startswith("_")}

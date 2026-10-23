@@ -801,6 +801,17 @@ class CatchUpTest(unittest.TestCase):
         self.assertEqual(qp.node_needs(helper, "Deathbrand"), ["Level 20"])
 
 
+class WayNeedsTest(unittest.TestCase):
+    """WO-137 after the PC's check: hand-kept wording can add a need the records leave off a way, in its one-line needs too."""
+
+    def test_a_way_gets_its_need(self):
+        start = {"needs": ["One of: Read Deathbrand; or It starts by itself when you level up (Level 20)"],
+                 "ways": [{"how": "Read Deathbrand"}, {"how": "It starts by itself when you level up", "needs": ["Level 20"]}]}
+        out = qp.reword(start, {"It starts by itself when you level up": "Find the pirates"}, {"Read Deathbrand": ["Level 20"]})
+        self.assertEqual(out["ways"], [{"how": "Read Deathbrand", "needs": ["Level 20"]}, {"how": "Find the pirates", "needs": ["Level 20"]}])
+        self.assertEqual(out["needs"], ["One of: Read Deathbrand (Level 20); or Find the pirates (Level 20)"])
+
+
 class RunChangesTest(unittest.TestCase):
     """WO-129 Part 6: what an ending hands over that changes a run, and when one ending of several gives it."""
 
