@@ -5027,6 +5027,15 @@ Status: queued
 
 **Why.** Dave (23 Oct, 17:33) looked for Jaree-Ra, who starts Lights Out!. The planner says "Ask Jaree-Ra … in Red Wave, Solitude". He searched the Red Wave three times; Jaree-Ra stands in Solitude by the inn, as in the vanilla game, and Dave found him only by console. The quest's facts (who, the line, the stage) are right; the **where** is the cell the editor placed him in (where he sleeps), not where he spends his day. The same goes for every person-started way: 573 ways name a person and a place, all from the placement cell. Most shopkeepers stand where they're placed; anyone who walks the town, works elsewhere or sleeps aboard a ship is wrong. Bob also sent Dave to the docks from memory before checking; that rule is in `pipeline.md` now.
 
+### First: measure it, for every person-started way (PC, before any fix)
+Dave (23 Oct, 17:40): the point isn't Jaree-Ra, it's not having wrong data on every quest and NPC. So first count it:
+- [ ] For all 573 person-started ways (and every quest giver), compare the placement cell the pages use with where the person's AI packages put them by day. Write the count to the log: how many match, how many differ, and the list of those that differ, by hold.
+- [ ] Push that count before building anything, so Bob and Dave see how big the problem is.
+
+### Then: an independent audit of the quest data, by random sample (PC runs it, Rex judges it)
+Not hand-picked: 60 quests drawn at random from the 1,224 checked (seeded, the seed in the log), so the result is an error rate, not an anecdote. For each, every field a player acts on: who starts it, **where they are by day**, the line or action, the first step, the level gate, what it pays. Compared against UESP (vanilla, DLC, Creation Club) or the records read fresh (mods), by a fresh Rex agent that hasn't seen the planner's reasoning. Report: the share right per field, every wrong one with why, and which fields are systematically off (as "where" just was). Dave checks ten of the sixty in game; those are ground truth and override both.
+- [ ] The audit report in `story_checks/audit-2026-10-23.md`, with per-field error rates. A field with more than 2% wrong gets an order before anything else.
+
 ### Part 0. Jaree-Ra, from Dave's game (Mac, now)
 Dave watched him for a full in-game day (23 Oct, 17:39): he stands in two spots a few feet apart in Solitude by the Winking Skeever, day and night, and never goes to the docks or the Red Wave. Put that on Lights Out!'s way by hand (`overrides.json`, `_checked: "players"`, `_source: "Dave, watched in game for a day, 23 Oct 2026"`): "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)". Part 1's package read must agree with it; if it doesn't, the packages are being read wrong.
 - [ ] Part 0 (Mac).
