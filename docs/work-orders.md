@@ -4963,6 +4963,7 @@ Dave asked why Jeff can't make Bob's calls himself. He can. WO-132's "never pick
 - **Rex still reviews a sample of every batch**, so Jeff isn't grading his own work. A CHANGES NEEDED on a decision, not just an entry, stops the batch until it's fixed.
 - **Jeff stops only for** a single quest where neither the files nor the wiki settles it, and then he marks it "not checked" with both readings and moves on, not waits. The "30% three batches running" stop is gone; the other stops stay.
 - Bob's rulings in Part 3 stand as the first decisions in the log. Where Jeff finds one doesn't fit the records, he writes why and decides.
+- **The short loop.** Bob watches `staging` for Jeff's pushes. When a batch lands, Bob reads what was set aside in `needs-bob.md` and the new decisions in `loop-log.md`, writes his rulings to `story_checks/bob-rulings.md`, and pushes. Jeff pulls and reads that file at the start of every batch and applies anything new; a ruling that touches quests in an earlier batch gets those quests rerun in the next one. So a question waits one batch, not a night.
 - The same holds for Mac on Part 4: a wording rule that needs a call gets decided, logged in the order, and built.
 
 ### Done when
