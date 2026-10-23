@@ -50,12 +50,15 @@ NOT_PLACES = {"City", "Town", "Settlement", "Farm", "WoodMill", "WheatMill", "Sm
 # The nine hold capitals (WO-144 Part 1): never found by a marker's TNAM type, which this load order's city overhauls
 # reassign to other icons (Castle, MiraakTemple, Grove, StandingStone, or none) on every one of the nine. Found instead by
 # the one LCTN in the whole load order with this exact name and the CWCapital keyword (Skyrim's Civil War data, which
-# names a hold's capital for the siege system and isn't touched by the icon mods). Four sit in Tamriel with their own
-# named exterior marker (Falkreath, Dawnstar, Morthal, Winterhold); the other five (Whiterun, Windhelm, Riften, Solitude,
-# Markarth) are their own worldspace with no exterior marker and no door this reader can find into it from Tamriel
-# (checked 23 Oct: zero REFR with XTEL lands in any of the five; the Tamriel cells their LCTN owns span several
-# kilometers, too broad to stand in for a gate) -- their distance is "not checked", logged under WO-144.
+# names a hold's capital for the siege system and isn't touched by the icon mods).
 CAPITALS = {"Whiterun", "Windhelm", "Riften", "Solitude", "Markarth", "Morthal", "Winterhold", "Dawnstar", "Falkreath"}
+# Four capitals (Falkreath, Dawnstar, Morthal, Winterhold) have their own named exterior marker in Tamriel. The other
+# five are their own worldspace with no exterior marker of their own and no door this reader could find into it; Bob's
+# ruling (23 Oct) was to anchor each to a named thing standing right outside its gate instead -- confirmed within a few
+# hundred metres of the carriage driver or stablehand placed there (Bjorlam's own position lands beside Whiterun
+# Stables). A capital not in here is found by its own name, as before.
+CAPITAL_ANCHOR = {"Whiterun": "Whiterun Stables", "Windhelm": "Windhelm Stables", "Riften": "Riften Stables",
+                   "Markarth": "Markarth Stables", "Solitude": "Solitude East Gate"}
 # Named settlements a design treats like a town (WO-141 Part 1, folded here): never a marker trusted by its TNAM type
 # alone (that let "Wintersand Manor", "Flight Platform" and other mislabelled markers stand in as a "town").
 SETTLEMENTS = {"Riverwood", "Ivarstead", "Rorikstead", "Shor's Stone", "Darkwater Crossing", "Kynesgrove", "Karthwasten",
@@ -284,8 +287,19 @@ def build(version):
 
     # Towns are the named markers in CAPITALS and SETTLEMENTS themselves, never any marker trusted by its TNAM type (WO-144
     # Part 1): a marker's "City"/"Town" icon is unreliable in this load order (see CAPITALS), and some non-towns carry it.
-    towns = [(m["name"], m) for m in markers.values() if not m["deleted"] and m.get("pos") and m["name"] in (CAPITALS | SETTLEMENTS)]
-    cities = [(nm, m) for nm, m in towns if nm in CAPITALS]
+    # A capital with an anchor (CAPITAL_ANCHOR) is looked up by the anchor's name but kept under the capital's own name.
+    by_marker_exact = collections.defaultdict(list)
+    for mk in markers.values():
+        if not mk["deleted"] and mk.get("pos") and mk.get("name"):
+            by_marker_exact[mk["name"]].append(mk)
+
+    def one_marker(name):
+        ms = by_marker_exact.get(CAPITAL_ANCHOR.get(name, name)) or []
+        return ms[0] if len(ms) == 1 else None  # never a guess when the name is missing or ambiguous
+
+    towns = [(nm, one_marker(nm)) for nm in (CAPITALS | SETTLEMENTS)]
+    towns = [(nm, mk) for nm, mk in towns if mk]
+    cities = [(nm, mk) for nm, mk in towns if nm in CAPITALS]
     by_marker_name = collections.defaultdict(list)
     for m in markers.values():
         if not m["deleted"] and m["name"]:

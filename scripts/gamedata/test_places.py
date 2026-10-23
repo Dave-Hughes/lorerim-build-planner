@@ -78,11 +78,10 @@ class BuiltIndex(unittest.TestCase):
         self.assertLessEqual(cities, pl.CAPITALS)
         self.assertFalse(towns & {"Wintersand Manor", "Flight Platform", "Dunpar Wall Ruins", "Unknown Gate"})
 
-    def test_each_found_capital_has_places_nearby(self):
-        # The four capitals with an exterior marker in Tamriel (see CAPITALS' comment); the other five have none this
-        # reader can find and are logged under WO-144, not guessed at.
+    def test_each_of_the_nine_capitals_has_places_nearby(self):
+        # WO-144 Part 1's own test: all nine, the five anchored (CAPITAL_ANCHOR, Bob's ruling) included.
         by_city = collections.Counter(p["nearestCity"]["town"] for p in self.rows if p.get("nearestCity"))
-        for city in ("Morthal", "Falkreath", "Winterhold", "Dawnstar"):
+        for city in pl.CAPITALS:
             self.assertGreaterEqual(by_city[city], 10, city)
 
     def test_riverwood_is_still_a_settlement_and_never_a_capital_itself(self):
