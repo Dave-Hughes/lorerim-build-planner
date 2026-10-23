@@ -4936,22 +4936,32 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### The numbers (Bob, 23 Oct, from `quests_raw.json`)
 1,242 quests listed. 447 base game and DLC, 40 Creation Club: these 487 have UESP pages and are Part 2's whole universe. 133 are in the key already, so about 400 to compare. About 384 are Missives jobs (one class, no per-quest check). The other ~370 are mod quests with no second source: they stay files-only and the planner says so.
 
-### Part 3. Bob's rulings from the PC's sweep (`wo137-sweep-2026-10-22.md`)
-68 quests show a giver's talk as a way in where the talk needs the quest's own earlier stage (set by a script that runs from the game's start). Bob rules each from the sweep file: where the stage is set by the game itself with nothing a player does, the talk is the way in and the condition is rightly dropped; where the stage is set by something a player does, that is the way in and the talk is the step. Four books check a prerequisite stage (Letter to Lucien, Wyrmstooth's three notes): worded with it, by hand, as Deathbrand was.
+### Part 3. Bob's rulings (23 Oct, 07:40), from the PC's sweep and the loop's report
 
-- PC, 23 Oct. Report: `story_checks/loop-report-2026-10-23.md`; each step in `loop-log.md`.
-  - **Part 1:** 19 of the 40 settled by hand traces that agree with UESP, now key rows: the fishing jobs, four Black Books, the Thieves Guild's city jobs and Under New Management, plus Purity of Revenge, Glory of the Dead and March of the Dead from the wiki. The other 21 are on the needs-Bob list. Checked starts: 1,221 of 1,242.
-  - **Part 2:** stopped after batch 4 on WO-132's second condition (batches 2, 3 and 4 put 75%, 35% and 50% on the list).
-    - 160 compared: 84 agree (key rows), 62 differ, 14 have no UESP page that lists them.
-    - 53 of the differences are about the giver: UESP's giver is who sends you, the page's `who` is the person whose talk starts it. Only 12 are about the first step.
-    - Bob, one ruling on the giver would settle most of them. The report gives two ways to rule.
-    - Batches 5 to 9 (185) are compared read-only in the report, not written.
-  - Part 3 waits on Bob's rulings.
+**On the sweep (the 68 quests, `wo137-sweep-2026-10-22.md`), read line by line:**
+- **R1. The "I'll do it" line keeps its place.** When a way's own-stage need is set by the quest running from the game's start, or by the same speaker's earlier line in the same conversation, the talk is the way in and the condition is rightly dropped. This is most of the list: the Rift's and Ivarstead's odd jobs, Raven Rock's and Tel Mithryn's favours, Meridia's Order, the Fists of Fury, Solitude's favours, Caught Red Handed, Spread the Love, Kyne's Sacred Trials (Froki's own offer sets 15 and 20), The Bonds of Matrimony (Maramal's own line sets 10), Brelyna's Practice, Impatience of a Saint, Siege on the Dragon Cult, Repentance, The Only Cure, Paid in Full, Graystone. **No change.**
+- **R2. A line whose need is set by another listed way is a step, not a way in.** Where the stage a line needs is set by a node, a trigger, a book or another person's line that the page already lists, the line leaves `ways` and becomes the first step. Unearthed (the Kolbjorn node sets 10; every Ralis line is a step), Durnehviir (the Boneyard sets 10), Laid to Rest (the node; Jonna and Benor are steps), The Man Who Cried Wolf (the rumour; Elisif is the step), The Wolf Queen Awakened (Falk's letter node; Falk's line is the step), Battle of the Champions (the first line sets 20; the Captain's lines are steps), Reluctant Steward (Varona's line sets 90; Neloth's at 100 is a step), A Blade in the Dark (the Horn's note sets 5; renting Delphine's attic is the step), Thieves Guild Caravan Fence (the fence quest's start; Tonilia's is the step), The Oblivion Engine (Lucien's "this letter is for you" sets 10 after the letter; the letter is the way).
+- **R3. Of one speaker's lines that need successively higher own stages, only the lowest is a way in.** The rest are steps. Bad Vibrations (10 stays; 20, 30, 40 go), Hunting and Gathering (50 and 75 are steps; the way in is what sets 50), From the Ashes (30 is a step), Pit Fighter (19 is a step), The Welkynar Knight's artifact quest (100 is a step), A Night To Remember (Senna's three lines at 5 are the same moment, keep as one), Fists of Fury (Maul's four lines are one), Reparations (three speakers at 10 are one way: "Ask Mercer, Brynjolf or Delvin").
+- **R4. Books with a prerequisite stage** are worded by hand with it, as Deathbrand was: Letter to Lucien ("after The Oblivion Engine has begun, read…"); Wyrmstooth's Dunyick's Request, Miner's Warning and Ja'Shavi-Dar's Note need "stage 0 done", which means the quest is already running on Wyrmstooth: "On Wyrmstooth, read…".
+- Mac applies R2 and R3 as rules in `quest_pages.py` (a line's needed own stage is set by another listed way, or by a lower line of the same speaker), with the quests above as the tests. R4 by hand in `overrides.json`.
+
+**On the giver question (the loop's stop):**
+- **G1.** UESP's giver **agrees** with the page when it is the page's `who`, **or** the person whose talk or scene sets the quest off (the previous quest's last speaker), **or**, for a radiant job, the person who hands the job out. One dispatcher: a key row with that giver. Several (Farkas, Aela, Vilkas, Skjor; Delvin, Vex): a `noGiver` row, and the page's ways name them ("Ask Farkas, Aela, Vilkas or Skjor in Jorrvaskr"). Where UESP's giver sends you and the page's `who` is the first person you speak to, keep `who` and Mac adds `sentBy` with UESP's giver.
+- **G2.** UESP says it starts by itself and the page names a person: when that person's line sits in the previous quest's ending, the page is wrong. No giver; the way is "After <previous quest>"; the first step names the person. Key row `noGiver`. Mac's rule: a talk in another quest's topic that sets this quest's first stage is "After <that quest>", never "Ask <speaker>", unless the line is an offer the player can decline.
+- **G3.** First-step differences: the records' objective text wins over UESP's paraphrase ("Kill Paarthurnax"). Where UESP lists an earlier objective the page skips, the PC says which stage the start sets: if the records set the later stage directly, the records win, in `DIFFERS` with the reason; if the earlier stage is reachable, the page's rule 1 is wrong for that quest and the key row carries UESP's step. The 12 (and batches 5 to 9's 15) go in `DIFFERS` with the record's reason; Bob reads them after the run.
+- **G4.** A page way that says "Talk to someone the records don't name" never agrees and never ships: Mac names the speaker from the alias, the ref type or the faction ("a Windhelm guard"), or drops the way when the quest starts by itself.
+- **G5.** Handlers and helpers with no UESP page (Prophet's two halves, Dawnguard's radiant parent, the TG00 handlers, Scoundrel's Folly Post) are not quests a player starts: out of the pages, out of the quest log, counted as background. Mod quests: files-only, and the planner says "checked in the game files; no wiki page".
+- **G6.** A key row confirms the giver and the first step only. The page's ways and needs still follow the rules, and a shell or handler quest ("Through Thieves Guild Radiant Shell", "Through Dark Brotherhood") is never a way or a need on a page: the patch-helper rule covers them too. Mac.
+- Rex's smaller notes (a `towns` entry that isn't a town, a `thenWho` that is a recruit, "Shaman's Hut, Skaal Village Shaman's Hut", a previous quest missing from needs, flags that could be worded): Mac, in the same pass.
+
+### Part 4. Mac's pass (after the PC restarts)
+R2, R3, R4, G1's `sentBy`, G2, G4, G5, G6 and Rex's notes, each with a test from the quests named above. `npm run test:questions` and every check in CLAUDE.md.
 
 ### Done when
 - [x] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
 - [ ] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
-- [ ] Part 3: Bob's 68 rulings and the four books are in, with the key rows they produce.
+- [ ] Part 2, restarted at batch 5 with G1 to G5: every base-game, DLC and Creation Club start is a key row, in `DIFFERS` with the record's reason, or on the needs-Bob list.
+- [ ] Part 3 and Part 4: the rulings are rules, with tests from the quests named; `sentBy` on the pages.
 - [ ] Player questions still pass; every check in CLAUDE.md passes. Push staging and stop for Bob.
 
 ---
