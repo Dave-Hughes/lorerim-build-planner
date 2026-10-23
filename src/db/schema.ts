@@ -567,8 +567,10 @@ export const questPlayerFacts = pgTable(
     /** The words of the way it replaces; null for a way the page doesn't have. */
     replaces: text("replaces"),
     way: jsonb("way").$type<PlayerWay>().notNull(),
-    /** "a player's report (@handle, 23 Oct 2026)". */
+    /** "@handle, 23 Oct 2026": the player and the day they sent it. */
     source: text("source").notNull(),
+    /** A second player's word that a way already on the page is right (WO-146 Part 1b): it adds a source, never a way. */
+    confirms: boolean("confirms").notNull().default(false),
     reportId: integer("report_id").references(() => questReports.id, { onDelete: "set null" }),
     userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

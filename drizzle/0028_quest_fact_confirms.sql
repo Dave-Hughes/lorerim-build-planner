@@ -1,0 +1,1 @@
+ALTER TABLE "quest_player_fact" ADD COLUMN "confirms" boolean DEFAULT false NOT NULL;

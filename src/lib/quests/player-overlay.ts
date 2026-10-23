@@ -1,4 +1,5 @@
 import type { PlayerFact } from "./player-facts-store";
+import { alreadyAmong } from "./player-source";
 import type { Quest, QuestLine, QuestStart } from "./types";
 
 /**
@@ -9,6 +10,15 @@ import type { Quest, QuestLine, QuestStart } from "./types";
  */
 export function overlayStart(start: QuestStart, fact: PlayerFact): QuestStart {
   const ways = start.ways ?? [];
+  // A second player's word that a way on the page is right (WO-146 Part 1b): their source joins the way's, nothing else changes.
+  // Only a way a player's report already holds, and never the same player twice.
+  if (fact.confirms) {
+    const at = ways.findIndex((w) => w.how === fact.replaces && w.checked === "players");
+    if (at < 0) return start;
+    const have = [ways[at].source ?? "", ...(ways[at].also ?? [])];
+    if (alreadyAmong(have, fact.source)) return start;
+    return { ...start, ways: ways.map((w, i) => (i === at ? { ...w, also: [...(w.also ?? []), fact.source] } : w)) };
+  }
   const at = fact.replaces ? ways.findIndex((w) => w.how === fact.replaces) : -1;
   const mine = { how: fact.way.how, checked: "players" as const, source: fact.source, ...(fact.way.who ? { who: fact.way.who } : {}), ...(fact.way.where ? { where: fact.way.where } : {}), ...(fact.way.whereIs?.length ? { whereIs: fact.way.whereIs } : {}) };
   let needs = start.needs ?? [];

@@ -197,6 +197,13 @@
       "when": 1792785218936,
       "tag": "0027_quest_player_facts",
       "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1792789093432,
+      "tag": "0028_quest_fact_confirms",
+      "breakpoints": true
     }
   ]
 }

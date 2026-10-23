@@ -19,7 +19,7 @@ export function loadPlayerFacts(force = false): Promise<void> {
   inflight = (async () => {
     try {
       const rows = await db().select().from(schema.questPlayerFacts).orderBy(asc(schema.questPlayerFacts.id));
-      setPlayerFacts(rows.map((r): PlayerFact => ({ id: r.id, lineId: r.lineId, quest: r.quest, replaces: r.replaces, way: r.way, source: r.source })));
+      setPlayerFacts(rows.map((r): PlayerFact => ({ id: r.id, lineId: r.lineId, quest: r.quest, replaces: r.replaces, way: r.way, source: r.source, confirms: r.confirms })));
       loadedAt = Date.now();
     } catch (e) {
       console.error("player facts not loaded", e instanceof Error ? e.message : e);

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { pageSources } from "@/lib/quests/player-source";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -155,7 +156,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                       {waysIn.map((w, i) => (
                         <li key={i}>
                           {w.how}
-                          {w.checked === "players" ? <span className={styles.src}>player report{w.source ? `, ${w.source}` : ""}</span> : null}
+                          {w.checked === "players" ? <span className={styles.src}>{w.also?.length ? pageSources(w.source ?? "", w.also) : `player report${w.source ? `, ${w.source}` : ""}`}</span> : null}
                           {"whereIs" in w && w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                           {"unplaced" in w && w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                         </li>

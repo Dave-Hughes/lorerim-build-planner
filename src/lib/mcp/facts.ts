@@ -22,6 +22,7 @@ import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 export { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { gearData } from "@/lib/gear/data";
+import { doorSources } from "@/lib/quests/player-source";
 import { HOMES, HOMES_NOTE, MOUNTS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
@@ -277,7 +278,7 @@ function startOf(
   if (!startChecked(st)) {
     const players = (st.ways ?? []).filter((w) => w.checked === "players");
     return players.length
-      ? { ways: players.map((w) => ({ way: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), checked: `a player's report, not the game files (${w.source})`, ...(w.whereIs?.length ? wherePlaces(w.whereIs, w.whereIsArea, allPlaces) : {}) })) }
+      ? { ways: players.map((w) => ({ way: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), checked: doorSources(w.source ?? "", w.also), ...(w.whereIs?.length ? wherePlaces(w.whereIs, w.whereIsArea, allPlaces) : {}) })) }
       : {};
   }
   const ways = st.ways?.length
@@ -287,7 +288,7 @@ function startOf(
         ...(w.who ? { who: w.who } : {}),
         ...(w.where ? { where: w.where } : {}),
         // A player found it in game (WO-131 Part 0): say so, and who, beside the files' facts.
-        ...(w.checked === "players" ? { checked: `a player's report, not the game files (${w.source})` } : {}),
+        ...(w.checked === "players" ? { checked: doorSources(w.source ?? "", w.also) } : {}),
         // Where the thing to read is (WO-131 Part 2), from the game files; or that it isn't checked, which is no direction.
         ...(w.whereIs?.length ? wherePlaces(w.whereIs, w.whereIsArea, allPlaces) : {}),
         ...(w.unplaced ? { whereIsIt: `${w.unplaced} Don't tell the player where to look.` } : {}),

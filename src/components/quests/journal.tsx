@@ -1,5 +1,6 @@
 "use client";
 
+import { pageSources } from "@/lib/quests/player-source";
 import { useEffect, useState } from "react";
 import { checkedLabel } from "@/lib/quests/story";
 import type { QuestEnding, QuestStart } from "@/lib/quests/types";
@@ -80,7 +81,7 @@ function Starts({ start }: { start: QuestStart }) {
                 <li key={i}>
                   {w.how}
                   {w.needs?.length ? <span className="muted"> ({w.needs.join("; ")})</span> : null}
-                  {w.checked === "players" ? <span className={styles.src}>player report{w.source ? `, ${w.source}` : ""}</span> : null}
+                  {w.checked === "players" ? <span className={styles.src}>{w.also?.length ? pageSources(w.source ?? "", w.also) : `player report${w.source ? `, ${w.source}` : ""}`}</span> : null}
                   {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                   {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                 </li>

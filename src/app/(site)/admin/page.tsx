@@ -1,3 +1,4 @@
+import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -33,7 +34,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     listEarlyAccess(),
     mcpOn() ? doorCounts() : null,
     buildId ? buildHistory(buildId) : null,
-    questsOn() ? listQuestReports() : null,
+    questsOn() ? loadPlayerFacts().then(() => listQuestReports()) : null,
   ]);
   return (
     <main className={`page ${styles.main}`}>

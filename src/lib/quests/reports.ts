@@ -2,6 +2,7 @@ import "server-only";
 import { and, count, desc, eq, gt, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { questsData } from "./data";
+import { changesNothing } from "./player-source";
 import { REPORT_FIELD_MAX, REPORT_KINDS, type ReportFields, type ReportKind } from "./player-types";
 import { REPORT_TEXT_MAX, REPORT_WHAT, type ReportWhat } from "./report-words";
 
@@ -135,6 +136,8 @@ export async function listQuestReports(limit = 100) {
       // The quest's page text now (WO-146 Part 3): the ways in as the page says them, a player's report marked as one.
       onThePage: pageWays(quest),
       ways: (quest?.start?.ways ?? []).map((w) => w.how),
+      // The proposal says what the page already says (WO-146 Part 1b).
+      noChange: changesNothing(r.proposal, quest?.start?.ways ?? []),
     };
   });
 }

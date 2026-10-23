@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { approveQuestFact, dismissQuestFact, proposeQuestFact, proposeQuestFacts, setQuestReport } from "@/lib/quests/report-actions";
+import { approveQuestFact, closeQuestFact, dismissQuestFact, proposeQuestFact, proposeQuestFacts, setQuestReport } from "@/lib/quests/report-actions";
 import type { Decision, Proposal, ReportFields, ReportKind } from "@/lib/quests/player-types";
 import styles from "./import-build.module.css";
 
@@ -28,6 +28,8 @@ export interface QuestReportRow {
   decision: Decision | null;
   onThePage: string[];
   ways: string[];
+  /** The proposal says what the page already says (WO-146 Part 1b). */
+  noChange: boolean;
 }
 
 const KIND: Record<ReportKind, string> = { wrong: "Something's wrong", how: "How it starts", where: "Where it is" };
@@ -101,13 +103,19 @@ function Decide({ r, router }: { r: QuestReportRow; router: ReturnType<typeof us
       )}
       {p && (
         <div className={styles.proposal}>
-          <p>
-            <span className="sub-label">Proposed</span> {p.words}
-          </p>
+          {r.noChange ? (
+            <p>
+              <strong>Already on the page. Nothing to change.</strong>
+            </p>
+          ) : (
+            <p>
+              <span className="sub-label">Proposed</span> {p.words}
+            </p>
+          )}
           <p>
             <span className="sub-label">Against the records</span> {p.fits}, {p.confidence} confidence. {p.why}
           </p>
-          {p.replaces && (
+          {p.replaces && !r.noChange && (
             <p>
               <span className="sub-label">Replaces</span> {p.replaces}
             </p>
@@ -149,7 +157,12 @@ function Decide({ r, router }: { r: QuestReportRow; router: ReturnType<typeof us
         </div>
       )}
       <span className={styles.decide}>
-        {p?.way && !editing && (
+        {r.noChange && !editing && (
+          <button type="button" className="btn btn-sm btn-primary" disabled={pending} onClick={() => run(async () => closeQuestFact(r.id))}>
+            Close: already on the page
+          </button>
+        )}
+        {p?.way && !r.noChange && !editing && (
           <button type="button" className="btn btn-sm btn-primary" disabled={pending} onClick={() => run(async () => approveQuestFact(r.id))}>
             Approve
           </button>

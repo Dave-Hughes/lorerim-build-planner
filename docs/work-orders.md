@@ -4987,7 +4987,7 @@ Status: queued
 ---
 
 ## WO-146  Players fill the gaps: quest facts from signed-in players, proposed by an agent, approved by a person (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave (23 Oct): a Discord-signed-in player should be able to tell the planner what they know about a quest (how it starts, who, where, where a note or book is), not only "this was wrong". Dave's own finds (Running Wild's board, Paragliding near Falkreath) went in by hand through `overrides.json` as player reports, and that is the model: reviewed, approved by a person, then on the pages marked as a player's report with its source. 18 quests are "not checked" and about 370 mod quests have no second source; players are the only way to fill them. Most of the plumbing exists: `report_quest` on the door, the `quest_report` table (`what`, `text`, `said`, `source`, `status`), the site's "This was wrong" form, and `/admin`'s Quest reports.
 
@@ -5028,7 +5028,14 @@ Dave sent "The note is on the board by Joslin's house" on Running Wild. The prop
 - Say so plainly in place of Proposed/Replaces: "Already on the page. Nothing to change."
 - One button: **Close: already on the page** (status "fixed", decision "no change"), plus Edit and approve for when the admin wants to change it anyway.
 - A report that agrees with a player's report already on the page counts as a second confirmation: the page's source becomes "players' reports (2): Dave, 22 Oct; Tapps, 23 Oct". Two independent players agreeing is worth showing.
-- [ ] Part 1b, with a test on a no-change proposal.
+- [x] Part 1b, with a test on a no-change proposal (`src/lib/quests/wo146.test.ts`, and the e2e's second player).
+
+### Jeff's notes on Part 1b (Mac, 23 Oct)
+- **What counts as "changes nothing".** A pure check (`changesNothing`, `player-source.ts`): the proposal's way has the same words as a way already on the page (case and punctuation aside) and nothing in it the page lacks (a place, a person, a where); or it agrees and gives no way. The check runs on the page's ways as they are now, with the approved facts on them. Dave's live case ("The note is on the board by Joslin's house") is the first test.
+- **The card.** In place of Proposed and Replaces it says "Already on the page. Nothing to change." with the agent's "against the records" line; the buttons are **Close: already on the page** (status fixed, decision "no change"), Edit and approve, and Not a problem. Approve is gone when nothing changes, and the server refuses to close a proposal that does change something.
+- **A second player counts.** When the way it agrees with is already a player's report (Dave's in `overrides.json`, or an approved fact) and the reporter is a different player, closing it writes a confirmation (`quest_player_fact.confirms`, migration 0028, additive) that adds the reporter to that way's sources. The page then says "players' reports (2): Dave, 22 Oct; Tapps, 23 Oct" (names and days only, shortened from the full source), and `get_quest` says "players' reports, not the game files (2): Dave, 22 Oct; Tapps, 23 Oct". The same player twice counts once, and a confirmation of a way the files hold changes nothing: only a player's way gains sources. Three players read "(3)".
+- **Stale test fixed, not mine.** `wo128.test.ts` pinned Whiterun as a city the places index doesn't measure; WO-144 Part 1 item 1 (the PC's capitals) made every capital measured, so the unit tests were red on staging at the time I pulled. I updated it to the new truth and kept the behaviour covered with a name no place is nearest to.
+- **Checks for Part 1b.** Typecheck, lint and 614 unit tests (with the player questions) pass; the build; the full e2e passed 373 of 373. Screenshots: `test-results/wo146-admin-nochange-1440.png`, `wo146-quest-two-sources-1440.png`.
 
 ---
 

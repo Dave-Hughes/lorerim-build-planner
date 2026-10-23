@@ -6,7 +6,7 @@ import { BOT_MESSAGE, looksLikeBot } from "@/lib/moderation/bot";
 import { isAdmin } from "@/lib/users/admin";
 import type { ReportFields, ReportKind } from "./player-types";
 import { revalidatePath } from "next/cache";
-import { ApprovalError, approveReport, dismissReport, type ApprovedWay } from "./approvals";
+import { ApprovalError, approveReport, closeNoChange, dismissReport, type ApprovedWay } from "./approvals";
 import type { Proposal } from "./player-types";
 import { ProposeError } from "./propose";
 import { proposeNewReports, proposeReport } from "./proposals";
@@ -82,6 +82,19 @@ export async function dismissQuestFact(id: number): Promise<Result> {
   if (!(await isAdmin(adminId))) return { ok: false, error: "Only admins can do that." };
   try {
     await dismissReport(Number(id), adminId!);
+    return { ok: true };
+  } catch (e) {
+    if (e instanceof ApprovalError) return { ok: false, error: e.message };
+    throw e;
+  }
+}
+
+/** Close a report whose proposal changes nothing: the page already says it (WO-146 Part 1b). Admins only. */
+export async function closeQuestFact(id: number): Promise<Result> {
+  const adminId = (await auth())?.user?.id;
+  if (!(await isAdmin(adminId))) return { ok: false, error: "Only admins can do that." };
+  try {
+    await closeNoChange(Number(id), adminId!);
     return { ok: true };
   } catch (e) {
     if (e instanceof ApprovalError) return { ok: false, error: e.message };

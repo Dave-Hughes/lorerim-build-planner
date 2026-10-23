@@ -4,6 +4,7 @@ import { z } from "zod";
 import { db, schema } from "@/db";
 import { questsData } from "./data";
 import { loadPlayerFacts } from "./player-facts";
+import { alreadyAmong, changesNothing, matchingWay } from "./player-source";
 import type { Decision, PlayerWay } from "./player-types";
 
 /**
@@ -66,6 +67,44 @@ export async function approveReport(id: number, adminId: string, edit?: Approved
   await db().update(schema.questReports).set({ status: "fixed", decision }).where(eq(schema.questReports.id, id));
   await loadPlayerFacts(true);
   return { fact: fact.id };
+}
+
+/**
+ * Close a report whose proposal changes nothing (WO-146 Part 1b): the page already says it. Status fixed, the decision "no
+ * change". When it agrees with a way a player's report already holds, and the player is a different one, it is written as a
+ * confirmation, so the page's source reads "players' reports (2): ..."; the same player twice counts once.
+ */
+export async function closeNoChange(id: number, adminId: string): Promise<{ confirmed: boolean }> {
+  const [r] = await db()
+    .select({ r: schema.questReports, handle: schema.users.handle, name: schema.users.name })
+    .from(schema.questReports)
+    .innerJoin(schema.users, eq(schema.users.id, schema.questReports.userId))
+    .where(eq(schema.questReports.id, id))
+    .limit(1);
+  if (!r) throw new ApprovalError("No such report.");
+  if (r.r.decision) throw new ApprovalError("That report has been decided already.");
+  const line = questsData().byId.get(r.r.lineId);
+  const quest = line?.quests.find((q) => q.edid === r.r.quest);
+  const ways = quest?.start?.ways ?? [];
+  if (!changesNothing(r.r.proposal, ways)) throw new ApprovalError("That proposal changes something: approve it, edit it, or close it as not a problem.");
+  const same = matchingWay(r.r.proposal!.way, ways);
+  const source = sourceOf(r, r.r.createdAt);
+  let fact: number | undefined;
+  // A way a player's report already holds, and a different player agreeing with it.
+  if (same && r.r.quest && quest?.start?.ways?.find((w) => w.how === same.how)?.checked === "players") {
+    const held = quest.start.ways.find((w) => w.how === same.how)!;
+    if (!alreadyAmong([held.source ?? "", ...(held.also ?? [])], source)) {
+      const [f] = await db()
+        .insert(schema.questPlayerFacts)
+        .values({ lineId: r.r.lineId, quest: r.r.quest, replaces: same.how, way: { how: same.how }, source, confirms: true, reportId: r.r.id, userId: r.r.userId })
+        .returning({ id: schema.questPlayerFacts.id });
+      fact = f.id;
+    }
+  }
+  const decision: Decision = { outcome: "no change", by: adminId, at: new Date().toISOString(), ...(fact ? { fact } : {}) };
+  await db().update(schema.questReports).set({ status: "fixed", decision }).where(eq(schema.questReports.id, id));
+  if (fact) await loadPlayerFacts(true);
+  return { confirmed: !!fact };
 }
 
 /** "Not a problem": the report is closed, no fact written. */

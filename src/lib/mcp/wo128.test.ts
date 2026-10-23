@@ -44,9 +44,12 @@ describe("suggest_places (Part 2)", () => {
     expect(actTowns(acts, 1)).toEqual(expect.arrayContaining(["Riften", "Helgen"]));
   });
 
-  it("a city the index doesn't measure from yet is known, and said, not guessed around", () => {
+  it("a town the index doesn't measure from is known, and said, not guessed around", () => {
     expect(actTowns([act("Whiterun")], 0)).toEqual(["Whiterun"]);
-    expect(unmeasured(["Whiterun", "Riverwood"])).toEqual(["Whiterun"]);
+    // Whiterun and the other capitals are measured since WO-144 Part 1 (they were this test's example before); a name no
+    // place is nearest to is still said, never guessed around.
+    expect(unmeasured(["Whiterun", "Riverwood"])).toEqual([]);
+    expect(unmeasured(["Whiterun", "Nowhereville"])).toEqual(["Nowhereville"]);
   });
 
   it("what the playthrough already uses is marked, and nothing is in a city or a home", () => {

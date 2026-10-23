@@ -48,7 +48,7 @@ export interface Proposal {
 
 /** What an admin decided about a report. */
 export interface Decision {
-  outcome: "approved" | "edited and approved" | "not a problem";
+  outcome: "approved" | "edited and approved" | "not a problem" | "no change";
   by: string;
   at: string;
   /** The player fact it wrote, when it wrote one. */

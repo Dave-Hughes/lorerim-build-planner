@@ -22,7 +22,18 @@ test.beforeAll(async () => {
     req.on("data", (c) => (body += c));
     req.on("end", () => {
       prompts.push(body);
-      const proposal = {
+      // A second player's report that says what the page now says: the agent agrees, and proposes the same way (Part 1b).
+      const agrees = body.includes("E2E AGREES");
+      const proposal = agrees
+        ? {
+            words: `Already on the page: ${NOTE}, on the board by Joslin's house`,
+            replaces: null,
+            way: { how: `${NOTE}, on the board by Joslin's house`, whereIs: ["Whiterun, the board right outside Joslin's house"] },
+            fits: "agrees",
+            why: "The report says what a player's report already on the page says.",
+            confidence: "high",
+          }
+        : {
         words: `Way in: ${NOTE}, on the board by Joslin's house`,
         replaces: NOTE,
         way: { how: `${NOTE}, on the board by Joslin's house`, whereIs: ["Whiterun, the board right outside Joslin's house"] },
@@ -105,6 +116,45 @@ test("get_quest says it is a player's report, with the player and the date; /me 
   await page.screenshot({ path: "test-results/wo146-me-1440.png" });
 });
 
+test("a second player agreeing is closed as no change, and the page then has two sources", async ({ page, context, baseURL }) => {
+  await context.addCookies([{ name: "authjs.session-token", value: REPORTER_TOKENS[2], domain: "localhost", path: "/" }]);
+  await page.goto("/quests/capital-whiterun?report=1#report");
+  await page.getByLabel("I know where this is").check();
+  await page.getByLabel("Which quest?").selectOption({ label: "Running Wild" });
+  await page.getByLabel("Where is it?").fill("E2E AGREES: the board by Joslin's house");
+  await page.getByRole("button", { name: "Send" }).click();
+  await expect(page.locator("#report")).toHaveText("Thanks. We'll check it.");
+
+  await context.clearCookies();
+  await signIn(context);
+  await page.goto("/admin");
+  const mine = page.getByRole("list", { name: "Quest reports, newest first" }).locator(":scope > li").filter({ hasText: "E2E AGREES" });
+  await mine.getByRole("button", { name: "Propose" }).click();
+  await expect(mine).toContainText("Already on the page. Nothing to change.");
+  // Nothing to approve: one button to close it, and Edit and Not a problem for the admin who wants them.
+  await expect(mine.getByRole("button", { name: "Approve", exact: true })).toHaveCount(0);
+  await expect(mine).not.toContainText("Replaces");
+  await expect(mine.getByRole("button", { name: "Edit and approve" })).toBeVisible();
+  await expect(mine.getByRole("button", { name: "Not a problem" })).toBeVisible();
+  await page.screenshot({ path: "test-results/wo146-admin-nochange-1440.png", fullPage: true });
+  await mine.getByRole("button", { name: "Close: already on the page" }).click();
+  await expect(mine).toContainText("No change,");
+
+  const from = ip();
+  const token = (await tokenFor(page, context, baseURL!, from)).access_token;
+  const ask = async () => (await call(baseURL!, from, token, "get_quest", { name: "Running Wild", level: 5 })).json();
+  await expect.poll(async () => (await ask()).quest.start.ways[0].checked, { timeout: 25_000, intervals: [1000] }).toMatch(/^players' reports, not the game files \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}$/);
+  await page.goto("/quests/capital-whiterun");
+  const row = page.locator('[id="q-0WRHorseQ"]');
+  await row.getByRole("button", { name: "Journal ›" }).click();
+  await row.getByText("How it starts", { exact: true }).click();
+  await expect(row.getByText(/players' reports \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}/)).toBeVisible();
+  await row.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: "test-results/wo146-quest-two-sources-1440.png" });
+  // The way itself is as it was: still one way.
+  expect((await ask()).quest.start.ways).toHaveLength(1);
+});
+
 test("a how report names who and where, and Not a problem closes one without a fact", async ({ page, context, baseURL }) => {
   const from = ip();
   await context.addCookies([{ name: "authjs.session-token", value: REPORTER_TOKENS[1], domain: "localhost", path: "/" }]);
@@ -130,5 +180,5 @@ test("a how report names who and where, and Not a problem closes one without a f
   // No fact was written: Running Wild still has the one way, the approved one from before.
   const got = (await call(baseURL!, from, (await tokenFor(page, context, baseURL!, from)).access_token, "get_quest", { name: "Running Wild", level: 5 })).json();
   expect(got.quest.start.ways).toHaveLength(1);
-  expect(got.quest.start.ways[0].checked).toMatch(/^a player's report/);
+  expect(got.quest.start.ways[0].checked).toMatch(/^(a player's report|players' reports)/);
 });

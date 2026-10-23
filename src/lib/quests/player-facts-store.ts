@@ -12,6 +12,8 @@ export interface PlayerFact {
   way: PlayerWay;
   /** "@handle, 23 Oct 2026": what comes after "a player's report, not the game files". */
   source: string;
+  /** A second player saying a way already on the page is right (WO-146 Part 1b): it adds its source to that way's. */
+  confirms: boolean;
 }
 
 let facts: PlayerFact[] = [];
