@@ -541,6 +541,15 @@ def main():
             json.dump({"places": rows, "roads": raw.get("roads", [])}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} places, {sum(1 for r in rows if r.get('pointers'))} with a pointer -> places.json")
+    # People (WO-144 Part 2): the people index, from people.py's raw file.
+    if os.path.exists(os.path.join(RAW, "people_raw.json")):
+        from people import build_site as build_people_site
+
+        rows = build_people_site(load("people_raw.json")["people"])
+        with open(os.path.join(OUT, "people.json"), "w", encoding="utf-8") as f:
+            json.dump({"people": rows}, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(rows)} people -> people.json")
     for p in problems:
         print("note:", p)
 

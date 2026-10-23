@@ -187,9 +187,12 @@ def scan():
                     acbs = next((v for s, v in subs if s == "ACBS" and len(v) >= 14), None)
                     fixed, scaled, tflags = npc_level(acbs) if acbs else (None, None, 0)
                     kwda = next((v for s, v in subs if s == "KWDA"), b"")
+                    acbs_flags = struct.unpack_from("<I", acbs, 0)[0] if acbs else 0
                     npcs[key] = {"name": full or None, "edid": edid, "level": fixed, "scaled": scaled, "useStats": bool(tflags & 2),
                                  "template": next((res(v) for s, v in subs if s == "TPLT" and len(v) >= 4 and struct.unpack_from("<I", v)[0]), None),
-                                 "keywords": [form_id(resolve(struct.unpack_from("<I", kwda, i)[0], masters, n)) for i in range(0, len(kwda) - 3, 4)]}
+                                 "keywords": [form_id(resolve(struct.unpack_from("<I", kwda, i)[0], masters, n)) for i in range(0, len(kwda) - 3, 4)],
+                                 "race": next((res(v) for s, v in subs if s == "RNAM" and len(v) >= 4), None),
+                                 "sex": "female" if acbs_flags & 1 else "male"}
                 elif grp == "LVLN":
                     lvln[key] = {"edid": edid, "entries": [(struct.unpack_from("<H", v, 0)[0], form_id(resolve(struct.unpack_from("<I", v, 4)[0], masters, n)))
                                                            for s, v in subs if s == "LVLO" and len(v) >= 8]}
