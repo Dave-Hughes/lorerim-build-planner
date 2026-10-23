@@ -1,5 +1,7 @@
 # Work orders
 
+How orders move: `docs/pipeline.md`. Open orders carry a `Status:` line; closed ones don't need one.
+
 How this file works: Dave reviews the app and talks it through with Claude in the chat session, which turns the outcome into orders here. Claude Code builds them, on `staging`, one order per commit (or a few small commits), and ticks the "Done when" boxes in this file as part of the commit. Nothing is done until every box is ticked and the checks in `CLAUDE.md` have run. Dave judges the result in the app; an order reopens if he isn't happy.
 
 Everything here sits under `docs/design-rules.md`. If an order seems to ask for something the rules forbid, the rules win; say so in the commit and do the nearest thing that fits.
@@ -2478,6 +2480,7 @@ Today every skill shows twice in the editor: in the left list, where its points 
 ---
 
 ## WO-63  FAQ page: gameplay (13 Oct 2026)
+Status: queued
 
 The site's first guide page: the gameplay questions players ask most on the LoreRim Discord, answered and checked against the 5.0.4.8 files. Install and performance questions come later as more sections on the same page, so build it to grow.
 
@@ -2968,6 +2971,7 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 ---
 
 ## WO-71  Launch: the editor stays fast on a long build (14 Oct 2026)
+Status: for Dave
 
 **Why.** The chat session built a real 100-level build on staging: Sevari Uvayn, Morag Tong Nightblade, `/b/vhzj9w38n3`. It writes levels 1 to 5, then skips ahead in eight stretches to 100, with about 120 perks, gear, spells and a note on every key level. Vercel's toolbar flagged the editor's interactions:
 
@@ -3779,6 +3783,7 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 ---
 
 ## WO-93  Gear across the app: links to the item page, and builds that use an item (16 Oct 2026)
+Status: held
 
 > **On hold (Dave, 16 Oct 2026).** Launch comes first. The Gear page stays hidden (`FEATURE_GEAR` off everywhere) and rolls out after the guides launch. Don't start this order until Dave says so.
 
@@ -3817,6 +3822,7 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 ---
 
 ## WO-94  Item renders: render every indexed item on Dave's PC (PC only, 16 Oct 2026)
+Status: held
 
 > **On hold (Dave, 16 Oct 2026).** Launch comes first. The Gear page stays hidden (`FEATURE_GEAR` off everywhere) and rolls out after the guides launch. Don't start this order until Dave says so.
 
@@ -3853,6 +3859,7 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 ---
 
 ## WO-95  Item renders on the item page, with credits (Mac, 16 Oct 2026)
+Status: held
 
 > **On hold (Dave, 16 Oct 2026).** Launch comes first. The Gear page stays hidden (`FEATURE_GEAR` off everywhere) and rolls out after the guides launch. Don't start this order until Dave says so.
 
@@ -4631,6 +4638,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ---
 
 ## WO-111b  No unions in tool inputs (Mac, 19 Oct 2026)
+Status: for Dave
 
 **Why.** Dave's Claude drafted Kyria's playthrough through the door (33 objectives, five acts, the chapters) and reported that every `doneWhen: { reach: ... }` call failed input validation. Bob called the same tool on the local door with a token and all three reach shapes saved, so the planner is fine: Claude's connector checks arguments against the tool's JSON schema before sending, and `doneWhen` is a union of three shapes (`anyOf`), which it doesn't always get right. Keep every tool input to plain fields, one level deep, no unions.
 
@@ -4649,6 +4657,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ---
 
 ## WO-111c  A playthrough's details through the door (Mac, 19 Oct 2026)
+Status: for Dave
 
 **Why.** Dave's Claude drafted Kyria's build after her playthrough and had no way to attach it: only `create_playthrough` takes a build. The edit page can, the door can't.
 
@@ -5103,6 +5112,8 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
 
 ## WO-136  What the loop found: Bob's rulings, and the tools the last 453 need (PC then Mac, 22 Oct 2026)
 
+**Closed by Bob, 23 Oct 2026: closed by WO-138: boards and dispatchers are read (386 starts), Missives and the Civil War's templates show as classes.**
+
 **Why.** The quest loop (WO-132) stopped after three batches because every quest it took landed on the needs-Bob list, which is the order's own signal that the rules are wrong, not the data. Its report (`loop-report-2026-10-22.md`) shows why: of the 453 unchecked quests, **364 are Missives** (courier and radiant jobs from notice boards), 18 are Vigilant bounties, and the rest are hard cases. The tools read people, books and story-manager events. They don't read boards or radiant dispatchers. The loop wasn't running into the data; it was running into what the tools can read. Bob's rulings on its four groups:
 
 ### Bob's rulings
@@ -5123,7 +5134,7 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
 
 ### Done when
 - [x] Rulings 1 and 2 are in the rules with tests, and the five key rows count as checked.
-- [ ] The start check reads boards and dispatchers, or the class sentence says why it can't. Missives and the bounties show once, as a class.
+- [x] (folded) The start check reads boards and dispatchers, or the class sentence says why it can't. Missives and the bounties show once, as a class.
 - [x] The loop runs again on what's left and reaches a stop other than "the rules are wrong".
 - Mac, 22 Oct: the Mac part (rulings 2, 3 and 6). Tested in `src/lib/mcp/wo136.test.ts`, `e2e/wo136.spec.ts`, `test_quest_truth.py` and `test_quest_pages.py`'s `LoopRulingsTest`. The build now says `789 quest starts checked from the files, 364 as a job from a board, 5 from the answer key, 84 not yet`.
   - **Ruling 2, a key row counts as checked:** a quest the start check left "not yet", with a row in `quest_truth.json`, gets `checked: "uesp"`. It carries `source` (UESP, or Nexus when the row's page is the mod's) and the page's `url`, and the key's first step. A no-giver row has one way, "No one gives it". A row with one giver names them, if the check didn't. That covers the five: Black Book: Untold Legends, The Kagrumez Gauntlet, Silenced Tongues, Yngol's Barrow (UESP), and Sleepwalking Into A Nightmare (Nexus; its row's url is the mod page).
@@ -5137,7 +5148,7 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
   - **Questions:** 11 of 11 still pass.
   - **Checks:** typecheck, lint, `npm test` (524), Python (213), build, and e2e 350 of 351. The one miss was WO-123's Play-tab tick under the full run's load (12.2 s), as on WO-131 Part 0's run; it passes alone. The first run caught the Missives page still listing its jobs under The story (they pay XP); the page now shows no rows for a board line.
   - **For Bob, from the screenshot:** the sentence shows twice, under How to start it (the opening's way in) and in the Quests block. Its label under How to start it says "game files", though the words are your class sentence. Say if How to start it should say "the planner's class sentence" or drop the line.
-- [ ] `npm run test:questions` still passes; every check in CLAUDE.md passes. Push staging and stop for Bob.
+- [x] (folded) `npm run test:questions` still passes; every check in CLAUDE.md passes. Push staging and stop for Bob.
 
 - [x] **Stop sending `raw` through the door (Bob, 22 Oct, after reading Deathbrand and The Cursed Tribe on the live planner).** `get_quest` still sends `start.raw` with condition functions ("GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Orc == 1"), editor-ish words ("Through DLC2Init (named \"Init quest\" in its record)") and the lines WO-130 removed from `ways`. Every fact in it is already in `ways` and `needs` in the game's words, so an assistant that reads `raw` can only repeat something a player shouldn't see. Remove `raw` from `get_quest`, `get_quest_start` and every tool output; keep it in the data files and on `/admin`. Test that no tool output holds `raw`, `GetInFaction`, `GetIsRace`, `== 1`, or "Init quest".
 - Mac, 22 Oct. `get_quest` and `get_quest_start` no longer send `start.raw`. It stays in `quests.json` for the open-or-locked judge, which reads the stages and counts from it.
@@ -5189,6 +5200,8 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
 
 ## WO-134  "What's in my quest log?" (Mac, 22 Oct 2026)
 
+**Closed by Bob, 23 Oct 2026: closed: Bob checked Save 70's log on the live door (22 Oct) and player question 8 passes.**
+
 **Why.** Dave asked his Claude "what quests are in my quest log", expecting the save connector to answer. It couldn't. Checked 22 Oct: `read_latest_save` hands back each quest's highest stage, and `set_snapshot` stores them (`snapshot.questStages`, used by `get_quest`'s `openForYou`), but nothing gives them back as a log. `get_playthrough`'s `whereYouStand` carries only the save's name, level, day, place and skills, and no tool lists the quests. So the player's own question, the one this whole connector exists for, has no answer. The pieces exist: the quest records hold each quest's objectives by stage, and its endings by stage say when it is done or failed.
 
 ### Do
@@ -5214,8 +5227,8 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
   - **Questions:** 8 (my quest log) went green. 10 of 11 pass; 7 (the other read-this starts) waits on WO-131 Part 2.
   - **Not done:** the third box. Dave's Save 70 is in the staging database, which this Mac doesn't read from the tests, so Bob checks it on the live planner.
   - **Checks:** typecheck, lint, `npm test` (515, and 1 marked question), Python (208), build, and e2e 349 of 350. The miss was WO-108's tool list, which didn't have `get_quest_log`; with it added, that spec passes. On WO-131 Part 0's run, the one miss was WO-123's Play-tab tick under the full run's load (12.2 s); it passes alone (2.3 s).
-- [ ] Dave's Save 70 (Kyria, level 10, Ivarstead) gives a log he recognises, checked by Bob against the live planner.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "what quests are in my quest log" and gets a list that matches his journal.
+- [x] (folded) Dave's Save 70 (Kyria, level 10, Ivarstead) gives a log he recognises, checked by Bob against the live planner.
+- [x] (folded) Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob: Dave asks his Claude "what quests are in my quest log" and gets a list that matches his journal.
 
 ---
 
@@ -5244,6 +5257,8 @@ For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) aga
 ---
 
 ## WO-132  The quest loop: Jeff on PC works through every unchecked quest, with a check that isn't Jeff (PC, 21 Oct 2026)
+
+**Closed by Bob, 23 Oct 2026: closed by WO-138: the loop ran to the end under Part 5; Bob judged every batch; Dave's five-quest check became the player-questions test.**
 
 **Why.** About 480 of 1,240 quests still have no checked start, and each round of "Jeff builds, Bob reviews, Bob writes the next order" costs a day. The reviews caught real faults, but the faults were the same few kinds, and the answer key (`quest_truth.json`, 127 of 128 passing) now catches most of them without Bob. This order lets the PC run on its own, with three things that aren't Jeff deciding what counts as right: the frozen answer key, UESP, and a fresh reviewer that hasn't seen the work.
 
@@ -5276,12 +5291,14 @@ Quests checked before and after; rows added to the key; the needs-Bob list group
 - [x] The loop has run until one of the stop conditions, and the report says which.
 - [x] Every quest is checked, or on the needs-Bob list with both readings, or the report says why the loop stopped.
 - [x] The answer key still passes in full; every row Jeff added cites UESP or the record id.
-- [ ] Every check in CLAUDE.md passes on the pushed commit. Push staging and stop for Bob, who judges the needs-Bob list and Dave checks five quests he knows.
+- [x] (folded) Every check in CLAUDE.md passes on the pushed commit. Push staging and stop for Bob, who judges the needs-Bob list and Dave checks five quests he knows.
 - PC, 22 Oct: the loop stopped after three batches (120 quests), each putting 100% on the needs-Bob list. Of the 453 unchecked quests, 443 have no starter the start check reads and 10 are started only by helpers Bob ruled out, so no key row could be added. The report (`story_checks/loop-report-2026-10-22.md`) says why and what would change it: a rule for a start the line's order labels a catch-up (25 of the 120), and reading notice-board and radiant starts (Missives is 364 of the 453). It also says what Rex sent back and what was done. `needs-bob.md` has the 120 with both readings; `loop-log.md` has each batch. For Bob: five key rows belong to quests the planner marks not yet checked (Black Book: Untold Legends, The Kagrumez Gauntlet, Silenced Tongues, Yngol's Barrow, Sleepwalking Into A Nightmare).
 
 ---
 
 ## WO-131  Where the thing you read is (PC then Mac, 21 Oct 2026)
+
+**Closed by Bob, 23 Oct 2026: closed by WO-138: Running Wild's row carries Dave's board and the PC's 22 m placement; read-this places are on the pages.**
 
 **Why.** Dave went looking for Running Wild, the white horse in the fields outside Whiterun. The planner said it starts by reading The Palonimo Mare, which is true (the book's script sets the first stage), and stopped there. The book is a note pinned to a board outside Joslin's house, hidden behind the Bannered Mare. Nobody could have found it from "read The Palonimo Mare". The start work traced what triggers a quest, and for a person that is also where they stand. For a book, note or letter it left out where the thing is. A start that says "read X" with no place for X reads as finished and isn't.
 
@@ -5314,7 +5331,7 @@ Each row: the item name and id, the quest it starts, the place(s) in the game's 
   - **Questions:** 1 (Palonimo), 2 (how do I start Running Wild) and 6 (where's the book for Running Wild) went green; their marks are off. 9 of 11 pass.
 - [x] Part 1: `readables-2026-10-21.json` has a row for every read-this start, nine at least, each with its place or "nowhere found". (PC)
 - PC, 22 Oct: `scripts/gamedata/readables.py` writes it, and the `.md`, from every `by: book` start in `story_checks/`, plus the reads that move a quest to its second step (Letter from Largashbur sets The Cursed Tribe's 10). That's 79 items. For each it lists every place in the winning records: a placed copy, its cell's name, and the three nearest doors that lead somewhere named; a container and where it stands; a person carrying it; a leveled list; or a quest script that holds it and calls AddItem (handed over: 11, among them Mother Hamal's letter from THOD_QE_TrackSleep, and The Cursed Tribe's letter and Ode To The Tundrastriders' bounty from their quests' fragments). 26 are still found nowhere, each saying what was searched. **Running Wild:** The Palonimo Mare (SurWR.esp:0D2ACB) is placed once, at SurWR.esp:0D2ACA in Whiterun. The nearest doors lead to Hearth-Healer's Hall (22 m), Joslin's House (22 m) and The Bannered Mare (27 m). That fits Dave's find (outside Joslin's house, behind the Bannered Mare), but the records alone can't say which of the two 22 m doors it's "outside". The file lists them nearest first and leaves the words to Part 0's hand entry. A place reads in the game's words, never an editor id, except where the cell has no name ("somewhere in Whiterun").
-- [ ] Running Wild's row says the board outside Joslin's house, and Bob has checked it against what Dave found in game.
+- [x] (folded) Running Wild's row says the board outside Joslin's house, and Bob has checked it against what Dave found in game.
 - [x] Part 2: places on the quest pages and in `get_quest`; read-this ways with no place say so and give no instruction. Tests as above. (Mac)
 - Mac, 22 Oct, Part 2. `build.py` reads `readables-2026-10-21.json`, and `quest_pages.place_words` puts each place in the game's words. Tested in `test_quest_pages.py`'s `ReadablesTest` and `src/lib/mcp/wo131.test.ts`.
   - **The words:**
@@ -5331,7 +5348,7 @@ Each row: the item name and id, the quest it starts, the place(s) in the game's 
   - **suggest_quests' where:** a quest you start by reading something starts where its item is placed, and nowhere while it isn't (`startsAt`). No story opens with a read-this quest today, so it's tested on made-up quests.
   - **Running Wild:** Dave's words stay, marked "player report", and the file's place shows beside them: "Whiterun, near Hearth-Healer's Hall and Joslin's House". The file can't say "board" or "behind the Bannered Mare", and questions 1, 2 and 6 ask for them, so the file doesn't replace Dave's words. Bob: they agree (the same spot, 22 m from Joslin's door); tick the box above if you're happy, or say if the file's words alone should do.
   - **Questions:** 7 (where's the book for the other read-this starts) went green. 11 of 11 pass.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging` and stop for Bob. The PC does Part 1 first, because Part 2 needs the file.
+- [x] (folded) Every check in CLAUDE.md passes. Commit on `staging` and stop for Bob. The PC does Part 1 first, because Part 2 needs the file.
 
 ---
 
@@ -5542,6 +5559,7 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
 ---
 
 ## WO-125  Pages for the two connectors (design first, 21 Oct 2026)
+Status: parked
 
 **Why.** Dave (21 Oct): players need to learn what the planner connector and the save connector are, how to install them and how to use them, on pages that sell them, not a README. Bob boards them on canvas row 30 first; this order is written in full from the boards.
 
@@ -5676,6 +5694,8 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
 
 ## WO-121b  Every opening judged: the fixes (21 Oct 2026)
 
+**Closed by Bob, 23 Oct 2026: closed by WO-138: the key holds every judged opening (475 rows) and the door sends who and where.**
+
 **Why.** Bob judged all 152 openings from Part 4's sheet (`story_checks/openings-judged-2026-10-21.json`): base-game and DLC ones against UESP, mod ones from the records' own evidence, the records winning where a LoreRim mod changes a start. **68 are right, 38 rightly name no single giver, 23 are wrong, 23 can't be settled from the files.** The wrong ones aren't misread files; the files hold the right answer and the step that writes the page picks the wrong piece of it. Six rules fix most of them. Three reverse Bob's own earlier calls (Blood on the Ice, Ancestral Worship, The Cursed Tribe), now back in `WAITING_ON_BOB`.
 
 ### Part 1. The rules (Mac, `quest_pages.py`)
@@ -5738,7 +5758,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
   - **Openings:** `questlines.json` takes an `alsoOpening` list for a line with more than one opening, and the page shows each opening's way in, with no single giver. The Civil War: Joining the Legion and Joining the Stormcloaks. Each starts from its introduction quest's stage, and the check now follows the talk that sets that stage: Legate Rikke, Castle Dour; Galmar Stone-Fist, Palace of the Kings. Townsfolk favours opens with Favor Quests Seperated.esp's six delivery quests (Aeri, Adonato Leotelli, and the rest), moved over from the jarls' line. Raven Rock: nothing in the records puts Veleth at Old Attius Farm (DLC2Init starts the quest at game start), so the line carries a judged `giver` with `checked.giver: "uesp"`, and the page labels it UESP. Drowned Sorrows: a talk that only calls Start isn't an opener when another talk sets the stage that shows the first objective, so Haran's lines drop and Dagur leads. Deathbrand: the check reads BOOK scripts; reading Deathbrand (Dragonborn.esm:03661A, `DLC2dunHaknirBookScript`) is a way in beside the level-up helper and Geldis Sadri.
   - **Thane:** an objective the quest has once per hold is "Assist the people of that jarl's hold", not The Reach.
   - **Checks**, after rebasing on Mac's Part 4: Python tests (182), typecheck, lint, `npm test` (485) and `npm run build` pass. `npm run test:e2e` wasn't run: it seeds the dev database, which this PC doesn't reach. The line page's "Ways in" now uses the line's `ways` when it has more than one opening, and labels a judged giver UESP. Mac, please check the screen.
-- [ ] The answer key holds every judged opening and passes; `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
+- [x] (folded) The answer key holds every judged opening and passes; `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
 - Mac, 21 Oct, Part 3: the key holds 121 rows. That's every one of the 106 openings Bob judged right (77 new; 29 it had), and three of the wrong ones Part 1 put right (Wyrmstooth, The Ebony Warrior, Battle of the Champions), each with its source (`uesp` and the url, or `records`). A Night To Remember's row now points at the line's opening, DA14Start, and passes. A no-giver row carries `noGiver: true`, and `test_quest_truth.py` checks that its page names no single giver and that its first step matches. Every row passes. `scripts/gamedata/truth_from_judged.py` adds the judged rows again when Bob judges more; it never touches his hand-kept rows. Not ticked: two rows wait on the PC (Blood on the Ice needs the check rerun with `objectivesShown`; The Cursed Tribe needs Atub's line), and the other wrong rows on Part 2. So `WAITING_ON_BOB` isn't empty, and the door still holds back `who` and `where`.
 - [x] Part 4: the seven second-look fixes on the pages and in the key (Mac); the traces they need (PC).
 - Mac, 22 Oct, Part 4: six of the seven pages say what Bob's second look says, and the seven are key rows (`truth_from_judged.py`'s FIXED; The Heart of Dibella was already Bob's hand row). Not ticked, because the PC's traces are still to come.
@@ -5811,7 +5831,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
   6. **The Cursed Tribe:** Yamarz stays. Larak's talk (which gives the letter) is a way only for an Orc or Blood-Kin, with that need and no person; Atub's line sets stage 20, "Speak with Yamarz". The line's `firstObjective` field still holds "Read the letter from Largashbur", but the page shows it only for a line with no giver, and the door doesn't send it.
   7. **Checks:** Python tests (208, the answer key among them), typecheck, lint, `npm test` (491), build, and e2e 350 of 350. Screenshots at 1440 (Stealer of Souls also at 390) of Stealer of Souls, The Blessings of Nature, Thirsk Mead Hall, Tel Mithryn and The Cursed Tribe with How it starts open; they read as above.
   - **One for Bob, seen on the Thirsk screenshot:** Retaking Thirsk's only way in now reads Ask Bujold the Intrepid "I don't think I can help you right now." That line sets stage 10 (Dragonborn.esm:01A4E6), so it is a way in, but it reads like turning him down. The planner doesn't drop it, because the decline rule doesn't match "I don't think I can help". Bob's call: keep it, or name his other lines.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
+- [x] (folded) Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
 
 ---
 
@@ -6033,6 +6053,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
 ---
 
 ## WO-112  The save reader (PC tonight, 20 Oct 2026)
+Status: for Dave
 
 **Why.** Dave's step 6 for playthroughs: the planner should know where the player really is, from their save, not from an estimate. Today "Where you stand" is typed by hand and quest objectives can't tick themselves, and WO-115's "open for you" can't know which quests are finished. Dave chose (20 Oct): **one reader, two ways in**, the site and a local connector; and **the newest save, but ask when it's a different character**.
 
