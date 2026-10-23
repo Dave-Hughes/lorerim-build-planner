@@ -1,3 +1,4 @@
+import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { createMcpHandler, getPublicOrigin, withMcpAuth } from "mcp-handler";
 import { mcpOn, playthroughsOn } from "@/lib/features";
 import { FactsError } from "@/lib/mcp/facts";
@@ -30,6 +31,8 @@ async function guarded(ip: string, run: () => unknown | Promise<unknown>): Promi
   const over = await mcpCall(ip);
   if (over) return refuse(over);
   try {
+    // The approved player facts, laid over the quest data (WO-146), before any tool reads it.
+    await loadPlayerFacts();
     return answer(await run());
   } catch (e) {
     if (e instanceof FactsError) return refuse(e.message);

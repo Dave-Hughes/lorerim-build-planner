@@ -71,6 +71,9 @@ export default defineConfig({
       FEATURE_MCP: p === port ? "on" : "off",
       // FEATURE_PLAYTHROUGHS (WO-111): the same.
       FEATURE_PLAYTHROUGHS: p === port ? "on" : "off",
+      // WO-146: Propose calls this stub (e2e/wo146.spec.ts starts it on 3399), never the real API.
+      ANTHROPIC_API_KEY: "e2e-not-a-key",
+      ANTHROPIC_API_URL: "http://127.0.0.1:3399",
       // WO-109: the e2e flow serves its own CIMD client from http://localhost. Refused on Vercel whatever its value.
       OAUTH_ALLOW_LOCAL_CLIENTS: "1",
       // FEATURE_COMING_SOON: on for the third server only.

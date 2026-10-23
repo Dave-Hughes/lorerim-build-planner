@@ -165,6 +165,9 @@ export async function seed() {
   try {
     // The test players' image checks (WO-40) would outlive them with no uploader.
     await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
+    // A fact an admin approved from a test player's report (WO-146) keeps no user when they go, so it goes first, or it would
+    // stay laid over its quest.
+    await db.delete(schema.questPlayerFacts).where(like(schema.questPlayerFacts.userId, "e2e-%"));
     await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
     // The test players' invites (WO-96), made or used: they'd outlive them with no one on them.
     await db.delete(schema.invites).where(or(like(schema.invites.createdBy, "e2e-%"), like(schema.invites.usedBy, "e2e-%")));
@@ -665,6 +668,7 @@ export async function cleanup() {
   const db = drizzle(pool, { schema });
   try {
     await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
+    await db.delete(schema.questPlayerFacts).where(like(schema.questPlayerFacts.userId, "e2e-%"));
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
     await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
     // The MCP route's calls (WO-108): the tests' made-up addresses, counted by subject with no account.

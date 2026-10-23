@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { currentVersion } from "@/lib/rules/server";
 import { MAIN } from "./open";
+import { currentPlayerFacts } from "./player-facts-store";
+import { overlayLines } from "./player-overlay";
 import type { LineGate, QuestLine, QuestsFile } from "./types";
 
 /**
@@ -10,8 +12,23 @@ import type { LineGate, QuestLine, QuestsFile } from "./types";
  * lands in a client bundle: pages send the browser only what each one shows.
  */
 let cached: (QuestsFile & { byId: Map<string, QuestLine> }) | null = null;
+let overlaid: { version: number; data: QuestsFile & { byId: Map<string, QuestLine> } } | null = null;
 
+/**
+ * The quest data with the approved player facts laid over it (WO-146 Part 3), when there are any: what every page and tool
+ * reads. The facts are kept fresh by loadPlayerFacts, which the pages and the door call first.
+ */
 export function questsData() {
+  const base = baseQuestsData();
+  const { list, version } = currentPlayerFacts();
+  if (!list.length) return base;
+  if (overlaid?.version === version) return overlaid.data;
+  const lines = overlayLines(base.lines, list);
+  overlaid = { version, data: { ...base, lines, byId: new Map(lines.map((l) => [l.id, l])) } };
+  return overlaid.data;
+}
+
+function baseQuestsData() {
   if (cached) return cached;
   const file = path.join(process.cwd(), "src", "data", `lorerim-${currentVersion().id}`, "quests.json");
   let data: QuestsFile = { categories: {}, shelves: {}, lines: [] };

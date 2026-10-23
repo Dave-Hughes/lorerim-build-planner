@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
  * stories.json. Your next step, the story so far, what it opens, and how it starts.
  */
 export default async function StoryPage({ params }: { params: Params }) {
+  await loadPlayerFacts();
   const story = storyById((await params).id);
   if (!story) notFound();
   const home = categories().find((c) => c.key === story.category);

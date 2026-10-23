@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +23,7 @@ type Params = Promise<{ id: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
+  await loadPlayerFacts();
   const l = questsData().byId.get(id);
   return l ? { title: l.name, ...siteMetadata(`/quests/${l.id}`, l.name, l.begins ?? homeName(l.category)) } : {};
 }
@@ -51,6 +53,8 @@ function siblings(line: QuestLine): QuestLine[] {
 /** A quest line (WO-100, QuestLine): how to start it, what it gives, and its quests with their journals. */
 export default async function QuestLinePage({ params, searchParams }: { params: Params; searchParams: Promise<{ report?: string }> }) {
   const { id } = await params;
+  // The approved player facts, laid over the quest data (WO-146).
+  await loadPlayerFacts();
   // Back from signing in to report (WO-121a Part 5): the form opens where it was.
   const reporting = (await searchParams).report === "1";
   const signedIn = !!(await auth())?.user?.id;
@@ -151,7 +155,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                       {waysIn.map((w, i) => (
                         <li key={i}>
                           {w.how}
-                          {w.checked === "players" ? <span className={styles.src}>player report</span> : null}
+                          {w.checked === "players" ? <span className={styles.src}>player report{w.source ? `, ${w.source}` : ""}</span> : null}
                           {"whereIs" in w && w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                           {"unplaced" in w && w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                         </li>

@@ -4989,7 +4989,7 @@ Status: building (Mac)
 - [ ] Every check in CLAUDE.md passes; screenshots of the admin view at 1440. Push staging with `Status: for Bob`.
 
 ### Jeff's progress (Mac, 23 Oct)
-- Part 1 built: `quest_report` has `kind`, `fields`, `proposal`, `decision`, and `quest_player_fact` exists (migration 0027, additive); the site form has Something's wrong / I know how this starts / I know where this is with a quest picker; `report_quest` takes `kind`, `who`, `where`, `how`, `place`. Next: Part 2 (Propose through the Anthropic API with `fetch`; the SDK isn't a dependency), then Part 3 (approve, and the overlay of approved facts on the pages and `get_quest`).
+- Part 1 built: `quest_report` has `kind`, `fields`, `proposal`, `decision`, and `quest_player_fact` exists (migration 0027, additive); the site form has Something's wrong / I know how this starts / I know where this is with a quest picker; `report_quest` takes `kind`, `who`, `where`, `how`, `place`. Parts 2 and 3 are built and their e2e passes (a stub model on port 3399); the full e2e and the notes are next.
 
 ---
 

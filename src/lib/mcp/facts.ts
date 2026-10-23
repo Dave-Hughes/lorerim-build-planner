@@ -271,7 +271,15 @@ function startOf(
   where?: string;
 } {
   const st = q?.start;
-  if (!st || !startChecked(st)) return {};
+  if (!st) return {};
+  // A start the planner hasn't checked gives no instructions (WO-146): but a way a player told it, approved by an admin,
+  // is said as exactly that, with its source, and nothing else is.
+  if (!startChecked(st)) {
+    const players = (st.ways ?? []).filter((w) => w.checked === "players");
+    return players.length
+      ? { ways: players.map((w) => ({ way: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), checked: `a player's report, not the game files (${w.source})`, ...(w.whereIs?.length ? wherePlaces(w.whereIs, w.whereIsArea, allPlaces) : {}) })) }
+      : {};
+  }
   const ways = st.ways?.length
     ? st.ways.map((w) => ({
         way: w.how,
@@ -307,7 +315,11 @@ function questStart(line: QuestLine, story: Story | undefined, quest?: Quest) {
   if (!story) {
     const head = { kind: "quest line" as const, id: line.id, name: line.name, category };
     if (!quest || !startChecked(quest.start))
-      return { ...head, checked: "not yet", note: "This quest's start hasn't passed the planner's start check, so no instructions are given. Say it isn't checked yet rather than filling the gap." };
+      return {
+        ...head,
+        checked: "not yet",
+        note: `This quest's start hasn't passed the planner's start check, so no instructions are given. Say it isn't checked yet rather than filling the gap.${quest?.start?.ways?.some((w) => w.checked === "players") ? " A player's report is below: say it is that, not the game files." : ""}`,
+      };
     // A line whose quests are all checked (one by one, or as a class like Missives) is checked; else say which aren't, once.
     const open = line.quests.filter((x) => !startChecked(x.start));
     return {

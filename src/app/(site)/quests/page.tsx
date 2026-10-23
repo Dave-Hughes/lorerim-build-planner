@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { QuestSearch } from "@/components/quests/quest-search";
@@ -13,6 +14,7 @@ type Search = Promise<{ q?: string }>;
 
 /** The Quests home (WO-100, QuestHome): search, Where you are, the six categories, and Jobs and errands. */
 export default async function QuestsHome({ searchParams }: { searchParams: Search }) {
+  await loadPlayerFacts();
   const q = ((await searchParams).q ?? "").slice(0, 100).trim();
   const { shelves, lines } = questsData();
   const results = q ? searchLines(q) : [];

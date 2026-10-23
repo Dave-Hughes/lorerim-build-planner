@@ -112,6 +112,10 @@ export async function listQuestReports(limit = 100) {
       source: schema.questReports.source,
       client: schema.questReports.client,
       status: schema.questReports.status,
+      kind: schema.questReports.kind,
+      fields: schema.questReports.fields,
+      proposal: schema.questReports.proposal,
+      decision: schema.questReports.decision,
       createdAt: schema.questReports.createdAt,
       name: schema.users.name,
       handle: schema.users.handle,
@@ -123,8 +127,22 @@ export async function listQuestReports(limit = 100) {
   const { byId } = questsData();
   return rows.map((r) => {
     const line = byId.get(r.lineId);
-    return { ...r, lineName: line?.name ?? r.lineId, questName: r.quest ? (line?.quests.find((q) => q.edid === r.quest)?.name ?? r.quest) : null };
+    const quest = r.quest ? line?.quests.find((q) => q.edid === r.quest) : undefined;
+    return {
+      ...r,
+      lineName: line?.name ?? r.lineId,
+      questName: r.quest ? (quest?.name ?? r.quest) : null,
+      // The quest's page text now (WO-146 Part 3): the ways in as the page says them, a player's report marked as one.
+      onThePage: pageWays(quest),
+      ways: (quest?.start?.ways ?? []).map((w) => w.how),
+    };
   });
+}
+
+/** A quest's ways in as the page puts them, for an admin to read a proposal against. */
+export function pageWays(quest: { start?: { ways?: { how: string; who?: string; where?: string; whereIs?: string[]; unplaced?: string; checked?: string; source?: string }[]; then?: string } } | undefined): string[] {
+  const ways = quest?.start?.ways ?? [];
+  return ways.map((w) => [w.how, w.where && !w.how.includes(w.where) ? `in ${w.where}` : "", w.whereIs?.length ? `(${w.whereIs.join("; ")})` : "", w.unplaced ?? "", w.checked === "players" ? `[a player's report: ${w.source}]` : ""].filter(Boolean).join(" "));
 }
 
 export const REPORT_STATUSES = ["new", "fixed", "not a problem"] as const;

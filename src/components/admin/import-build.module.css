@@ -113,3 +113,41 @@
 .reportBy {
   font-size: 14px;
 }
+
+/* Player facts (WO-146): a report's fields, the page now, the proposal and the three buttons. */
+.fieldsList,
+.pageNow {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.proposal {
+  width: min(100%, 760px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.proposal p {
+  margin: 0;
+}
+.decide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.editForm {
+  width: min(100%, 760px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.decided {
+  color: var(--soft);
+}

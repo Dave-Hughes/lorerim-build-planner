@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 /** A category (WO-100, QuestCategory): its cover, filters and a card for each line in it. */
 export default async function QuestCategoryPage({ params, searchParams }: { params: Params; searchParams: Search }) {
+  await loadPlayerFacts();
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
   const c = categories().find((c) => c.slug === slug);
   if (!c) notFound();

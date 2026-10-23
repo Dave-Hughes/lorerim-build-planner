@@ -80,7 +80,7 @@ function Starts({ start }: { start: QuestStart }) {
                 <li key={i}>
                   {w.how}
                   {w.needs?.length ? <span className="muted"> ({w.needs.join("; ")})</span> : null}
-                  {w.checked === "players" ? <span className={styles.src}>player report</span> : null}
+                  {w.checked === "players" ? <span className={styles.src}>player report{w.source ? `, ${w.source}` : ""}</span> : null}
                   {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                   {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                 </li>

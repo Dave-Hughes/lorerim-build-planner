@@ -34,8 +34,8 @@ export interface PlayerWay {
 export interface Proposal {
   /** The change in the page's words: "Way in: read the note pinned to the board outside Joslin's house...". */
   words: string;
-  /** The way it would put on the quest, and the one it replaces by that way's words (null: a new way). */
-  way: PlayerWay;
+  /** The way it would put on the quest, and the one it replaces by that way's words (null: a new way). No way when the report isn't one the page can take. */
+  way: PlayerWay | null;
   replaces: string | null;
   /** How it fits the records: agrees, adds a place the records leave unnamed, or contradicts them. */
   fits: "agrees" | "adds a place" | "contradicts";

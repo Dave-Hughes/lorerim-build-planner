@@ -5,7 +5,8 @@ import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { SignInButton } from "@/components/site-header";
 import { handleFor, listBuildsByOwner } from "@/lib/builds/queries";
 import { Assistants } from "@/components/account/assistants";
-import { mcpOn, playthroughsOn } from "@/lib/features";
+import { mcpOn, playthroughsOn, questsOn } from "@/lib/features";
+import { approvedFor } from "@/lib/quests/approvals";
 import { PlaythroughCards } from "@/components/playthrough/cards";
 import { listMyPlaythroughs, runsByBuild } from "@/lib/playthroughs/queries";
 import { SCOPES, type Scope } from "@/lib/oauth/core";
@@ -30,12 +31,14 @@ export default async function MyBuilds() {
     );
   }
   const characters = playthroughsOn();
-  const [builds, handle, assistants, runs, playthroughs] = await Promise.all([
+  const [builds, handle, assistants, runs, playthroughs, thanks] = await Promise.all([
     listBuildsByOwner(userId),
     handleFor(userId),
     mcpOn() ? connectedAssistants(userId, characters) : Promise.resolve(null),
     characters ? runsByBuild(userId) : Promise.resolve(null),
     characters ? listMyPlaythroughs(userId) : Promise.resolve(null),
+    // A player's report an admin approved (WO-146): said once it is on the planner.
+    questsOn() ? approvedFor(userId) : Promise.resolve([]),
   ]);
   // A run made before WO-114 with no build yet has no card of its own in the grid.
   const unattached = playthroughs?.filter((p) => !p.buildId) ?? [];
@@ -61,6 +64,11 @@ export default async function MyBuilds() {
           </span>
         )}
       </div>
+      {thanks.map((t) => (
+        <p key={t.id} role="status">
+          {t.says}
+        </p>
+      ))}
       {builds.length === 0 ? (
         <p className="muted">None yet.</p>
       ) : (
