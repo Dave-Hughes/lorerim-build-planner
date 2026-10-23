@@ -291,47 +291,61 @@ def scan():
     return kw, locs, npcs, lvln, books, infos, quests, cells, markers, actors, refcell, placed_npc, eczn
 
 
-def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
-    """(low, high) levels a placed actor can have, and its words: "level 12", "your level x1.0 (5-30)", "leveled 4-40".
-    A leveled list's entries are resolved by their real target, never the entry's own stored level (Bob, 23 Oct: that
-    field means "picked from this level up", not the output actor's level, and reads a flat 1 for every real,
-    deeply-nested Requiem list this reader checked -- Fort Hraggstad's own chain bottoms out at fixed-level Bandits
-    of 3, 7, 10, 19, confirmed by hand against the records, not the stray "leveled from 1" the old reading gave)."""
+def level_entries(base, npcs, lvln, gate=0, depth=0, seen=None, cache=None):
+    """Every leaf level reachable from base, each with the player level a leveled list's own entry needs before it
+    can be picked at all (the max `LVLO` level stored on the path to it -- Bob, 23 Oct, 17:10: that field is the
+    real gate the game checks, not the output level; using it as a gate, not a guess at the output, is what makes
+    `atLevel` possible). [(gate, low, high, words), ...], not deduplicated (the caller dedupes once, at the place)."""
     cache = {} if cache is None else cache
-    if base in cache:
-        return cache[base]
+    key = (base, gate)
+    if key in cache:
+        return cache[key]
     seen = seen if seen is not None else set()
     if depth > 12 or not base or base in seen:
-        return None
+        return []
     seen = seen | {base}
     if base in npcs:
         n = npcs[base]
         # A template's stats (its level) when the actor uses them (ACBS template flags, "use stats").
         if n["template"] and (n.get("useStats") or (n["level"] in (None, 0) and not n["scaled"])):
-            got = level_of(n["template"], npcs, lvln, depth + 1, cache, seen)
+            got = level_entries(n["template"], npcs, lvln, gate, depth + 1, seen, cache)
             if got:
-                cache[base] = got
+                cache[key] = got
                 return got
         if n["scaled"]:
             mult, lo, hi = n["scaled"]
-            r = (lo or 1, hi or 81, f"your level x{mult:g}" + (f" ({lo}-{hi})" if hi else f" (from {lo})"))
-            cache[base] = r
+            words = (f"matches your level, {lo} to {hi}" if hi else f"matches your level, from {lo}") if mult == 1 else (
+                f"your level x{mult:g}" + (f" ({lo}-{hi})" if hi else f" (from {lo})"))
+            r = [(gate, lo or 1, hi or 81, words)]
+            cache[key] = r
             return r
         if n["level"]:
-            r = (n["level"], n["level"], f"level {n['level']}")
-            cache[base] = r
+            r = [(gate, n["level"], n["level"], f"level {n['level']}")]
+            cache[key] = r
             return r
-        return None
+        return []
     if base in lvln:
-        targets = {tgt for _, tgt in lvln[base]["entries"]}
-        results = [r for r in (level_of(t, npcs, lvln, depth + 1, cache, seen) for t in targets) if r]
-        if not results:
-            return None
-        lo, hi = min(r[0] for r in results), max(r[1] for r in results)
-        r = (lo, hi, f"leveled {lo}-{hi}" if lo != hi else f"leveled from {lo}")
-        cache[base] = r
-        return r
-    return None
+        out = []
+        for lvl, tgt in lvln[base]["entries"]:
+            out += level_entries(tgt, npcs, lvln, max(gate, lvl), depth + 1, seen, cache)
+        cache[key] = out
+        return out
+    return []
+
+
+def level_of(base, npcs, lvln, depth=0, cache=None, seen=None):
+    """(low, high) levels a placed actor can have, ever (no level gate), and its words: "level 12",
+    "matches your level, 5 to 30", "leveled 4-40". A convenience wrapper on level_entries for a single actor
+    (the boss's own display) and the old tests; a place's own floor/ceiling/atLevel use level_entries directly."""
+    entries = level_entries(base, npcs, lvln, 0, depth, seen, cache)
+    if not entries:
+        return None
+    lo, hi = min(e[1] for e in entries), max(e[2] for e in entries)
+    if lo == hi:
+        return (lo, hi, entries[0][3])
+    if all(e[3].startswith(("matches your level", "your level x")) for e in entries):
+        return (lo, hi, f"matches your level, {lo} to {hi}")
+    return (lo, hi, f"leveled {lo}-{hi}")
 
 
 def build(version):
@@ -455,26 +469,61 @@ def build(version):
     # DATA layout by hand on Fort Hraggstad, 23 Oct). Clamps the resolved actor range: a floor it can't fall below,
     # a ceiling when the zone sets one (max 0 means none).
     eczn_by_loc = {z["location"]: z for z in eczn.values() if z.get("location")}
+
+    def clamp(lo, hi, zone):
+        # Bob, 23 Oct, 16:15: a zone's max 0 means no cap; never let a floor the zone raises push past a ceiling it sets.
+        if zone and zone["minLevel"] and zone["minLevel"] <= hi:
+            lo = max(lo, zone["minLevel"])
+        if zone and zone["maxLevel"]:
+            hi = min(hi, zone["maxLevel"])
+            lo = min(lo, hi)
+        return lo, hi
+
     level_cache = {}
     for k, acts in by_place.items():
-        lv = [x for x in (level_of(a["base"], npcs, lvln, cache=level_cache) for a in acts) if x]
-        boss = next((a for a in acts if a["boss"]), None)
-        bl = level_of(boss["base"], npcs, lvln, cache=level_cache) if boss else None
         zone = eczn_by_loc.get(k)
-        levels = None
-        if lv:
-            lo, hi = min(x[0] for x in lv), max(x[1] for x in lv)
-            if zone and zone["minLevel"] and zone["minLevel"] <= hi:
-                lo = max(lo, zone["minLevel"])
-            if zone and zone["maxLevel"]:
-                hi = min(hi, zone["maxLevel"])
-                lo = min(lo, hi)
-            levels = [lo, hi]
-        places[k]["actors"] = {"count": len(acts), **({"levels": levels} if levels else {}),
-                               **({"zoneMin": zone["minLevel"]} if zone and zone["minLevel"] else {}),
-                               # The boss by its own name when it has one; a leveled boss has none, so only its level shows.
-                               **({"boss": {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),
-                                            "level": bl[2] if bl else None}} if boss else {})}
+        entries = []
+        for a in acts:
+            entries += level_entries(a["base"], npcs, lvln, cache=level_cache)
+        # Deduplicated (gate, low, high, words): Fort Hraggstad's 93 actors share a handful of distinct tiers, not 93.
+        entries = sorted({e for e in entries})
+        # A place can carry more than one boss-flagged actor (a side encounter as well as the main one): prefer a
+        # named, unique actor, then the highest ceiling, over "the first one found" (Wolfskull Cave has both its
+        # named Ritual Master and a generic templated bandit both marked boss; the generic one isn't the boss).
+        bosses = [(a, level_of(a["base"], npcs, lvln, cache=level_cache)) for a in acts if a["boss"]]
+        bosses = [(a, bl) for a, bl in bosses if bl]
+        boss, bl = (max(bosses, key=lambda ab: (bool((npcs.get(ab[0]["base"]) or {}).get("name")), ab[1][1]))
+                    if bosses else (None, None))
+        actors_out = {"count": len(acts)}
+        if entries:
+            lo, hi = clamp(min(e[1] for e in entries), max(e[2] for e in entries), zone)
+            actors_out["floor"], actors_out["ceiling"] = lo, hi
+            # atLevel(n): everything gated at or below n, cumulative -- a player meets more of the list the higher
+            # they are, never less (Bob, 23 Oct, 17:10: "at 12 you'll meet about 3 to 12", not just level 12's own tier).
+            gates = sorted({g for g, _, _, _ in entries})
+            at_level = []
+            for g in gates:
+                seen_so_far = [e for e in entries if e[0] <= g]
+                a_lo, a_hi = clamp(min(e[1] for e in seen_so_far), max(e[2] for e in seen_so_far), zone)
+                at_level.append({"gate": g, "level": [a_lo, a_hi]})
+            actors_out["atLevel"] = at_level
+        if zone and zone["minLevel"]:
+            actors_out["zoneMin"] = zone["minLevel"]
+        if boss:
+            # Bob, 23 Oct, 17:45 (Embershard Mine's "leveled 3-24" against its own 6-10 zone): a *ranged* boss (a
+            # leveled list, not a unique) is clamped the same as the rank and file. A fixed, named boss (Zulakaroth,
+            # level 40, in a zone capped at 20) is the zone's own exception -- never clamped, that's the point of
+            # naming a unique boss at all.
+            boss_level = bl
+            if bl and bl[0] != bl[1] and zone:
+                blo, bhi = clamp(bl[0], bl[1], zone)
+                scaled = bl[2].startswith(("matches your level", "your level x"))
+                words = (f"matches your level, {blo} to {bhi}" if scaled else
+                          f"leveled {blo}-{bhi}" if blo != bhi else f"leveled from {blo}")
+                boss_level = (blo, bhi, words)
+            actors_out["boss"] = {**({"name": npcs[boss["base"]]["name"]} if (npcs.get(boss["base"]) or {}).get("name") else {}),
+                                  "level": boss_level[2] if boss_level else None}
+        places[k]["actors"] = actors_out
     for k, p in places.items():
         x = xp.get(p["type"].lower())
         if x is not None:

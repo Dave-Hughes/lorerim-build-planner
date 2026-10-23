@@ -148,15 +148,52 @@ class BuiltIndex(unittest.TestCase):
 
     def test_enemy_levels_are_clamped_by_the_encounter_zone(self):
         # WO-144 Part 1d (Bob, 23 Oct, 16:15): ECZN DATA decoded by hand on Fort Hraggstad -- min level 6, no cap.
-        # The resolved actor range is raised to that floor; Bleak Falls Barrow's own zone narrows its wide range.
+        # floor/ceiling replace the old flat "levels"; Bleak Falls Barrow's own zone narrows its wide range.
         hraggstad = self.by["Fort Hraggstad"]["actors"]
         self.assertEqual(hraggstad["zoneMin"], 6)
-        self.assertEqual(hraggstad["levels"][0], 6)
-        self.assertGreaterEqual(hraggstad["levels"][1], 6)
+        self.assertEqual(hraggstad["floor"], 6)
+        self.assertGreaterEqual(hraggstad["ceiling"], 6)
         barrow = self.by["Bleak Falls Barrow"]["actors"]
-        self.assertLess(barrow["levels"][1], 60)  # was [1, 60] before the zone clamp
-        no_ones = [p["name"] for p in self.rows if p.get("actors", {}).get("levels") == [1, 1]]
+        self.assertLess(barrow["ceiling"], 60)  # was [1, 60] before the zone clamp
+        no_ones = [p["name"] for p in self.rows if p.get("actors", {}).get("floor") == 1 and p["actors"]["ceiling"] == 1]
         self.assertLess(len(no_ones), 20, no_ones)  # was 108 before level_of's own fix; a handful of genuine level 1s remain
+
+    def test_bob_s_five_named_places_read_exactly_right(self):
+        # WO-144 Part 1d (Bob, 23 Oct, 17:45, read against 1a405ad): the values he checked by hand, verbatim.
+        self.assertEqual(self.by["Bleak Falls Barrow"]["actors"]["floor"], 6)
+        self.assertEqual(self.by["Bleak Falls Barrow"]["actors"]["ceiling"], 20)
+        self.assertEqual(self.by["Bleak Falls Barrow"]["actors"]["boss"]["level"], "level 40")  # Zulakaroth: fixed, never clamped
+        self.assertEqual(self.by["Fort Hraggstad"]["actors"]["floor"], 6)
+        self.assertEqual(self.by["Fort Hraggstad"]["actors"]["ceiling"], 47)
+        self.assertEqual(self.by["Labyrinthian"]["actors"]["floor"], 24)
+        self.assertEqual(self.by["Labyrinthian"]["actors"]["ceiling"], 100)
+        self.assertEqual(self.by["Wolfskull Cave"]["actors"]["floor"], 8)
+        self.assertEqual(self.by["Wolfskull Cave"]["actors"]["ceiling"], 50)
+        self.assertEqual(self.by["Wolfskull Cave"]["actors"]["boss"]["name"], "Ritual Master")
+        self.assertEqual(self.by["Wolfskull Cave"]["actors"]["boss"]["level"], "matches your level, 10 to 20")
+
+    def test_a_ranged_boss_is_clamped_by_the_zone_but_a_unique_never_is(self):
+        # Embershard Mine's boss is a leveled list ("leveled 3-24" before this part); clamped like the rank and
+        # file. Zulakaroth is a fixed, unique, named boss above the zone's own ceiling -- the whole point of naming
+        # one -- and is covered by test_bob_s_five_named_places_read_exactly_right above.
+        self.assertEqual(self.by["Embershard Mine"]["actors"]["boss"]["level"], "leveled 6-10")
+
+    def test_at_level_is_cumulative_not_a_single_tier(self):
+        # Bob, 23 Oct, 17:10: "at 12 you'll meet about 3 to 12" -- everything gated at or below 12, not just
+        # whatever one tier happens to need exactly 12.
+        at_level = self.by["Bleak Falls Barrow"]["actors"]["atLevel"]
+        gates = [e["gate"] for e in at_level]
+        self.assertEqual(gates, sorted(gates))  # ascending, one row per distinct gate
+        for i in range(1, len(at_level)):
+            self.assertLessEqual(at_level[i - 1]["level"][0], at_level[i]["level"][0])  # the floor never falls as the gate rises
+            self.assertLessEqual(at_level[i - 1]["level"][1], at_level[i]["level"][1])  # nor does the ceiling
+
+    def test_the_fourteen_at_level_one_are_read_by_hand_not_guessed(self):
+        # Bob, 23 Oct, 17:10: "The 14 still at 1 to 1 get read by hand and logged." Spot-checked directly against
+        # the records (not this index): Septimus Signus is Septimus Signus himself, level 1, a real vanilla fact,
+        # not a bug. The others are tiny inns and shacks with one to five low-threat actors; see the order's log.
+        outpost = self.by["Septimus Signus' Outpost"]["actors"]
+        self.assertEqual((outpost["floor"], outpost["ceiling"]), (1, 1))
 
     def test_bobs_cleaning_pass_names_are_gone_or_fixed(self):
         # WO-144 Part 1, Bob 23 Oct 15:35: a keyword alone isn't a building (a city tagged as having an inn, a
