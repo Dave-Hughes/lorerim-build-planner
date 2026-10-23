@@ -114,8 +114,7 @@
     "Forgotten Vale Books Quest"
    ],
    "G3/D6 records win": [
-    "Forgotten Vale Books Quest",
-    "Brotherhood"
+    "Forgotten Vale Books Quest"
    ],
    "D7": [
     "Power of the Blood"
@@ -143,6 +142,9 @@
     "Escaped Criminal",
     "Rescue Mission",
     "Stealing Plans"
+   ],
+   "no row: Mac (G4)": [
+    "Brotherhood"
    ]
   },
   "3": {
@@ -218,11 +220,9 @@
     "Trinity Restored",
     "Blindsighted",
     "Darkness Returns",
+    "Reparations",
     "Meet the Family",
     "The Silence Has Been Broken"
-   ],
-   "D12 several givers": [
-    "Reparations"
    ],
    "D2 person talk": [
     "No Stone Unturned",
@@ -264,9 +264,6 @@
     "Contract: Kill Beitild"
    ],
    "D1a both set it off": [
-    "Delayed Burial"
-   ],
-   "G3/D6 earlier stage reachable": [
     "Delayed Burial"
    ],
    "D1a setter, the page is wrong": [
@@ -340,9 +337,6 @@
    ],
    "D2 unsettled": [
     "A Night To Remember"
-   ],
-   "G3/D6 earlier stage reachable": [
-    "Investigate the Hall of the Dead"
    ]
   },
   "6": {
@@ -550,17 +544,54 @@
     "Stocking Up",
     "Further Study"
    ],
-   "G3/D6 earlier stage reachable": [
-    "Stocking Up",
-    "Further Study"
-   ],
    "G3/D6 records win": [
+    "Stocking Up",
+    "Further Study",
     "Angler Acquaintances",
     "Stoking the Flames",
     "Climb the Steps"
    ],
    "D2 person talk": [
     "Vald's Debt"
+   ]
+  },
+  "9": {
+   "agree": [
+    "Flight or Fight",
+    "Smooth Jazbay",
+    "Lisbet's Missing Shipment",
+    "Bothela's Discreet Delivery",
+    "Skilled Apprenticeship",
+    "Coated in Blood",
+    "Nimhe, the Poisoned One",
+    "Sanuarach Mine",
+    "Kolskeggr Mine",
+    "Soljund's Sinkhole",
+    "Gharol's Message",
+    "Fit for a Jarl",
+    "Return to Grace",
+    "Delivery",
+    "The Spiced Wine",
+    "Elisif's Tribute",
+    "Harsh Master",
+    "Dravynea's Frost Salts",
+    "Rogatus's Letter",
+    "Salty Sea-Dogs",
+    "For the Good of Morthal",
+    "Payment Delivery",
+    "Amulet of the Moon"
+   ],
+   "G3/D6 records win": [
+    "Sanuarach Mine",
+    "Soljund's Sinkhole",
+    "Rogatus's Letter",
+    "Salty Sea-Dogs"
+   ],
+   "D1b first step": [
+    "The Ghost of Old Hroldan"
+   ],
+   "D2 person talk": [
+    "Lod's Lot"
    ]
   }
  }

@@ -4967,10 +4967,17 @@ Dave asked why Jeff can't make Bob's calls himself. He can. WO-132's "never pick
 - **The short loop.** Bob watches `staging` for Jeff's pushes. When a batch lands, Bob reads what was set aside in `needs-bob.md` and the new decisions in `loop-log.md`, writes his rulings to `story_checks/bob-rulings.md`, and pushes. Jeff pulls and reads that file at the start of every batch and applies anything new; a ruling that touches quests in an earlier batch gets those quests rerun in the next one. So a question waits one batch, not a night.
 - The same holds for Mac on Part 4: a wording rule that needs a call gets decided, logged in the order, and built.
 
+- PC, 23 Oct, the Part 5 restart. Report: `story_checks/loop-report-2026-10-23.md`; decisions, versions 1 to 8, in `loop-log.md`.
+  - Part 2 ran all 9 batches (345 starts). Rex sent back a rule in batches 5 to 9; each one stopped the batch and was fixed, and the earlier batches were re-sorted.
+  - 320 key rows: 217 pass now, and 103 wait on Mac's Part 4, each marked G1, G2, G3 or G4 so it turns green when the rule lands.
+  - Of the rest, 9 are handlers (G5), 7 are the Civil War's radiant class, 7 have no UESP page, and 2 G4 quests have no page to hold a row.
+  - None is left not checked. The loop's `DIFFERS` list stayed empty: by D6 a records-win row holds the records' step, so the giver is still tested.
+  - Checked starts: 1,224 of 1,242.
+
 ### Done when
 - [x] Part 1: the 40 are checked, or each is on the needs-Bob list with both readings.
-- [ ] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
-- [ ] Part 2, restarted at batch 5 with G1 to G5: every base-game, DLC and Creation Club start is a key row, in `DIFFERS` with the record's reason, or on the needs-Bob list.
+- [x] Part 2: every base-game, DLC and Creation Club start (about 400) is in the key or on the needs-Bob list; the report gives the counts and the kinds of difference.
+- [x] Part 2, restarted at batch 5 with G1 to G5: every base-game, DLC and Creation Club start is a key row, in `DIFFERS` with the record's reason, or on the needs-Bob list.
 - [ ] Part 3 and Part 4: the rulings are rules, with tests from the quests named; `sentBy` on the pages.
 - [ ] Player questions still pass; every check in CLAUDE.md passes. Push staging and stop for Bob.
 

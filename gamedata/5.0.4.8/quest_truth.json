@@ -2526,18 +2526,6 @@
    "notes": "PC, WO-138 Part 2 batch 2: no giver: UESP's Skjor is the first step's person, not a starter."
   },
   {
-   "quest": "Brotherhood",
-   "editorId": "C02",
-   "line": "companions",
-   "noGiver": true,
-   "startsWith": [],
-   "firstObjective": "Follow the questgiver",
-   "source": "uesp",
-   "url": "https://en.uesp.net/wiki/Skyrim:Proving_Honor",
-   "notes": "PC, WO-138 Part 2 batch 2: no giver on either; the records' first step is 'Follow the questgiver' (stage 10, Skyrim.esm:06E804); UESP's is 'Speak to Skjor'; the records win (G3): their own words; G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
-   "waitingOn": "G4"
-  },
-  {
    "quest": "The Silver Hand",
    "editorId": "C03",
    "line": "companions",
@@ -3208,7 +3196,8 @@
    "firstObjective": "Speak to Vex",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Reparations",
-   "notes": "PC, WO-138 Part 2 batch 4: no single giver: 3 people's own lines start it (Brynjolf, Delvin Mallory, Mercer Frey)."
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild. Mac's G2 makes it 'After <that quest>', no giver.",
+   "waitingOn": "G2"
   },
   {
    "quest": "No Stone Unturned",
@@ -3380,11 +3369,10 @@
     "Vantus Loreius",
     "Cicero"
    ],
-   "firstObjective": "Talk to the strange jester",
+   "firstObjective": "Convince Loreius to fix the wheel",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Delayed_Burial",
-   "notes": "PC, WO-138 Part 2 batch 4: giver Vantus Loreius; UESP's Cicero also sets it off (both are starters' speakers); G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4.",
-   "waitingOn": "G3"
+   "notes": "PC, WO-138 Part 2 batch 4: giver Vantus Loreius; UESP's Cicero also sets it off (both are starters' speakers)."
   },
   {
    "quest": "With Friends Like These...",
@@ -3921,11 +3909,10 @@
    "startsWith": [
     "Brother Verulus"
    ],
-   "firstObjective": "Speak to Verulus about the Hall of the Dead",
+   "firstObjective": "Investigate the Hall of the Dead",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Taste_of_Death",
-   "notes": "PC, WO-138 Part 2 batch 5: giver Brother Verulus on both; G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4.",
-   "waitingOn": "G3"
+   "notes": "PC, WO-138 Part 2 batch 5: giver Brother Verulus on both."
   },
   {
    "quest": "Served Cold",
@@ -4951,10 +4938,10 @@
    "startsWith": [
     "Swims-In-Deep-Water"
    ],
-   "firstObjective": "Speak to …",
+   "firstObjective": "Obtain the amount the game sets brook bass for the innkeeper in the town",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Stocking_Up",
-   "notes": "PC, WO-138 Part 2 batch 8: G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain the amount the game sets brook bass for the innkeeper in the town' (stage 0, ccBGSSSE001-Fish.esm:000B98); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 8: the records' first step is 'Obtain the amount the game sets brook bass for the innkeeper in the town' (stage 0, ccBGSSSE001-Fish.esm:000B98); UESP's is 'Speak to <alias>'; the records win (G3): the starters set stage 0 or later directly (Start); G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
    "waitingOn": "G1"
   },
   {
@@ -4964,10 +4951,10 @@
    "startsWith": [
     "Swims-In-Deep-Water"
    ],
-   "firstObjective": "Speak to …",
+   "firstObjective": "Obtain a pygmy sunfish for the alchemist in the town",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Further_Study",
-   "notes": "PC, WO-138 Part 2 batch 8: G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain a pygmy sunfish for the alchemist in the town' (stage 0, ccBGSSSE001-Fish.esm:000C2F); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 8: the records' first step is 'Obtain a pygmy sunfish for the alchemist in the town' (stage 0, ccBGSSSE001-Fish.esm:000C2F); UESP's is 'Speak to <alias>'; the records win (G3): the starters set stage 0 or later directly (Start); G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
    "waitingOn": "G1"
   },
   {
@@ -5321,6 +5308,307 @@
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Bow_to_the_Master",
    "notes": "PC, WO-138 Part 2 batch 8: giver Dravin Llanith on both."
+  },
+  {
+   "quest": "Flight or Fight",
+   "editorId": "FreeformHeartwoodMill",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Grosta"
+   ],
+   "firstObjective": "Find Leifnarr",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Flight_or_Fight",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Grosta on both."
+  },
+  {
+   "quest": "Smooth Jazbay",
+   "editorId": "FreeformSarethiFarm",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Avrusa Sarethi"
+   ],
+   "firstObjective": "Find 20 Jazbay (0/20)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Smooth_Jazbay",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Avrusa Sarethi on both."
+  },
+  {
+   "quest": "Lisbet's Missing Shipment",
+   "editorId": "FreeformMarkarthE",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Lisbet"
+   ],
+   "firstObjective": "Retrieve Lisbet's shipment from the forsworn camp",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Lisbet's_Missing_Shipment",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Lisbet on both."
+  },
+  {
+   "quest": "Bothela's Discreet Delivery",
+   "editorId": "FreeformMarkarthJ",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Bothela"
+   ],
+   "firstObjective": "Deliver the Stallion's Potion to the steward",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bothela's_Discreet_Delivery",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Bothela on both."
+  },
+  {
+   "quest": "Skilled Apprenticeship",
+   "editorId": "FreeformMarkarthL",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Ghorza gra-Bagol"
+   ],
+   "firstObjective": "Bring The Last Scabbard of Akrash to Ghorza",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Skilled_Apprenticeship",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Ghorza gra-Bagol on both."
+  },
+  {
+   "quest": "Coated in Blood",
+   "editorId": "FreeformMarkarthN",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Moth gro-Bagol"
+   ],
+   "firstObjective": "Bring a Daedra's Heart to Moth",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Coated_in_Blood",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Moth gro-Bagol on both."
+  },
+  {
+   "quest": "Nimhe, the Poisoned One",
+   "editorId": "FreeformMarkarthO",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Calcelmo"
+   ],
+   "firstObjective": "Kill Nimhe inside Nchuand-Zel",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Nimhe,_the_Poisoned_One",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Calcelmo on both."
+  },
+  {
+   "quest": "Sanuarach Mine",
+   "editorId": "FreeformKarthwastenA",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Atar"
+   ],
+   "firstObjective": "Convince Atar to leave Sanuarach Mine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Sanuarach_Mine_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Atar on both; the records' first step is 'Convince Atar to leave Sanuarach Mine' (stage 20, Skyrim.esm:0622E8); UESP's is 'Convince Atar to leave Sauranach Mine'; the records win (G3): the starters set stage 20 or later directly (SetStage 8; SetStage 7; SetStage 20; a start with no stage; a start with no stage; SetStage 10)."
+  },
+  {
+   "quest": "Kolskeggr Mine",
+   "editorId": "FreeformKolskeggrA",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Pavo Attius"
+   ],
+   "firstObjective": "Clear the Forsworn from Kolskeggr Mine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Kolskeggr_Mine_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Pavo Attius on both."
+  },
+  {
+   "quest": "Soljund's Sinkhole",
+   "editorId": "FreeformSoljundsSinkholeA",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Perth"
+   ],
+   "firstObjective": "Soljund's Sinkhole, on the eastern edge of The Reach, has a draugr problem. Clear the mine of draugr.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Soljund's_Sinkhole_(quest)",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Perth on both; the records' first step is \"Soljund's Sinkhole, on the eastern edge of The Reach, has a draugr problem. Clear the mine of draugr.\" (stage 10, Skyrim.esm:06136B); UESP's is \"Clear Soljund's Sinkhole of Draugr\"; the records win (G3): their own words."
+  },
+  {
+   "quest": "The Ghost of Old Hroldan",
+   "editorId": "FreeformOldHroldanB",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Ghost of Old Hroldan",
+    "Eydis"
+   ],
+   "firstObjective": "Bring Hjalti's Sword to the Ghost of Old Hroldan",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Ghost_of_Old_Hroldan",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Ghost of Old Hroldan; UESP's Eydis is the first person you speak to (the first step)."
+  },
+  {
+   "quest": "Gharol's Message",
+   "editorId": "FreeformDushnikhYalA",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Gharol"
+   ],
+   "firstObjective": "Deliver Gharol's sword to Lash",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Gharol's_Message",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Gharol on both."
+  },
+  {
+   "quest": "Fit for a Jarl",
+   "editorId": "SolitudeFreeform02",
+   "line": "odd-jobs-haafingar",
+   "startsWith": [
+    "Taarie"
+   ],
+   "firstObjective": "Speak to Elisif with Taarie's outfit on.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Fit_for_a_Jarl",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Taarie on both."
+  },
+  {
+   "quest": "Return to Grace",
+   "editorId": "SolitudeFreeform03",
+   "line": "odd-jobs-haafingar",
+   "startsWith": [
+    "Svari"
+   ],
+   "firstObjective": "Speak to Greta about going to the Temple of Divines.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Return_to_Grace",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Svari on both."
+  },
+  {
+   "quest": "Delivery",
+   "editorId": "SolitudeFreeform04",
+   "line": "odd-jobs-haafingar",
+   "startsWith": [
+    "Sorex Vinius"
+   ],
+   "firstObjective": "Deliver the Stros M'Kai Rum to Falk Firebeard",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Delivery_(Sorex)",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Sorex Vinius on both."
+  },
+  {
+   "quest": "The Spiced Wine",
+   "editorId": "SolitudeFreeform06",
+   "line": "odd-jobs-haafingar",
+   "startsWith": [
+    "Evette San"
+   ],
+   "firstObjective": "Convince Vittoria Vici to release the Spiced Wine shipment",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Spiced_Wine",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Evette San on both."
+  },
+  {
+   "quest": "Elisif's Tribute",
+   "editorId": "SolitudeFreeform07",
+   "line": "odd-jobs-haafingar",
+   "startsWith": [
+    "Elisif the Fair"
+   ],
+   "firstObjective": "Take Torygg's War Horn to the Shrine of Talos for Elisif the Fair.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Elisif's_Tribute",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Elisif the Fair on both."
+  },
+  {
+   "quest": "Harsh Master",
+   "editorId": "FreeformShipsWindhelm",
+   "line": "odd-jobs-eastmarch",
+   "startsWith": [
+    "Kjar"
+   ],
+   "firstObjective": "Kill the leader of the bandit camp",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Harsh_Master",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Kjar on both."
+  },
+  {
+   "quest": "Dravynea's Frost Salts",
+   "editorId": "FreeformKynesgroveA",
+   "line": "odd-jobs-eastmarch",
+   "startsWith": [
+    "Dravynea the Stoneweaver"
+   ],
+   "firstObjective": "Bring some Frost Salts to Dravynea",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dravynea's_Frost_Salts",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Dravynea the Stoneweaver on both."
+  },
+  {
+   "quest": "Rogatus's Letter",
+   "editorId": "FreeformSalviusFarmA",
+   "line": "odd-jobs-whiterun",
+   "startsWith": [
+    "Rogatus Salvius"
+   ],
+   "firstObjective": "Deliver Rogatus' letter to Leontius",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rogatus's_Letter",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Rogatus Salvius on both; the records' first step is \"Deliver Rogatus' letter to Leontius\" (stage 10, Skyrim.esm:0931BF); UESP's is \"Deliver Rogatus's letter to Leontius\"; the records win (G3): their own words."
+  },
+  {
+   "quest": "Salty Sea-Dogs",
+   "editorId": "FreeformShipsDawnstar",
+   "line": "odd-jobs-the-north",
+   "startsWith": [
+    "Captain Wayfinder"
+   ],
+   "firstObjective": "Find the Void Salts for Wayfinder",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Salty_Sea-Dogs",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Captain Wayfinder on both; the records' first step is 'Find the Void Salts for Wayfinder' (stage 10, Skyrim.esm:094152); UESP's is 'Find the Fine-Cut Void Salts for Wayfinder'; the records win (G3): their own words."
+  },
+  {
+   "quest": "For the Good of Morthal",
+   "editorId": "FreeformMorthalB",
+   "line": "odd-jobs-the-north",
+   "startsWith": [
+    "Gorm"
+   ],
+   "firstObjective": "Deliver Gorm's letter to Captain Aldis",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:For_the_Good_of_Morthal",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Gorm on both."
+  },
+  {
+   "quest": "Payment Delivery",
+   "editorId": "FreeformStonehillsA",
+   "line": "odd-jobs-the-north",
+   "startsWith": [
+    "Pactur"
+   ],
+   "firstObjective": "Speak with Bryling",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Payment_Delivery",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Pactur on both."
+  },
+  {
+   "quest": "Lod's Lot",
+   "editorId": "FreeformFalkreathQuest01",
+   "line": "odd-jobs-the-north",
+   "startsWith": [
+    "Lod"
+   ],
+   "firstObjective": "Buy the Book off Lod",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unfinished_Quests#Lod's_Lot",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Lod; UESP's infobox names no person."
+  },
+  {
+   "quest": "Amulet of the Moon",
+   "editorId": "FreeformCaravansA",
+   "line": "odd-jobs-the-north",
+   "startsWith": [
+    "Kharjo"
+   ],
+   "firstObjective": "Find the Moon Amulet inside the dungeon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Amulet_of_the_Moon",
+   "notes": "PC, WO-138 Part 2 batch 9: giver Kharjo on both."
   }
  ]
 }

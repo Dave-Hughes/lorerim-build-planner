@@ -1,4 +1,40 @@
-# WO-138 report: the last 40, and checked starts against UESP (PC, 23 Oct 2026)
+# WO-138 report: the last 40, and every checked start against UESP (PC, 23 Oct 2026)
+
+## Where it ended (Part 5 restart)
+
+**Part 2 ran to the end: all 9 batches, every one of the 345 checked base-game, DLC and Creation Club starts.** No stop condition fired. Under Part 5 the PC decided the pattern questions itself and logged each one (`loop-log.md`, "Decisions", versions 1 to 8). Rex reviewed a sample of every batch, and each CHANGES NEEDED on a rule stopped the batch until it was fixed and the earlier batches were re-sorted. Bob's rulings (07:40 to 09:15 in `bob-rulings.md`) were read at the start of each batch and applied.
+
+| | before WO-138 | after |
+|---|---|---|
+| Checked starts | 1,202 of 1,242 | 1,224 of 1,242 (1,203 from the files, 21 from the key); 18 not checked, each with both readings |
+| Answer-key rows | 133 | 475 (19 from Part 1, 3 from Bob's guide ruling, 320 from Part 2) |
+| Part 2 rows passing now | | 217 |
+| Part 2 rows waiting on Mac's Part 4 | | 103: G1 35 (a giver the page misses, or a job's dispatcher), G2 31 ("After <quest>", no giver), G3 4 (rule 1 shows the wrong step), G4 33 (a way that names no one) |
+| Not quests, counted | | 9 handlers and helpers (G5), 7 Civil War radiant templates (a class, Bob 08:30) |
+| No UESP page | | 7 files-only (D7), plus 2 G4 quests with no page to hold a row |
+| Not checked, neither source settles it | | 0 |
+
+**What a waiting row means:** each one is a row with the giver and first step the page should have, marked with the Part 4 rule it waits on. `test_quest_truth.py` lets it fail until Mac's pass lands, and it counts green with nothing to re-add (Bob 08:05).
+
+## What kept coming back (for Bob)
+
+Each of these came from Rex, was a rule (not one quest), and is now in the decisions:
+1. **What "giver" means:** whose talk sets the quest off (the start check's starters), not UESP's infobox and not the page's first step. A line that needs this quest's own stage, set by another way, is a step. One rule now covers a quest set off by another quest's ending (G2), a handler's talk (R1), a scene (Bob 09:00) and a start-game quest (R1).
+2. **Reading UESP's stage tables:** each quest's own segment, row by row. The row gives the stage, not the template's number (the deepest fault: Catch of the Day). "Unknown" rows count only when they're all there is, and the older "Objective is assigned" rows count too.
+3. **Finding the page:** only one whose ID or stage table lists the quest. Disambiguation pages and "For other quests with that name" notes are followed, and so are UESP's Unfinished Quests sections. A firewall that refuses "Research" in a URL is retried encoded.
+4. **The first step:** the lowest objective at or after the stage the giver's way in sets. The records' words win over UESP's at the same stage.
+
+The page faults Mac's Part 4 has to fix are counted in the waiting rows above. The biggest groups are a page that names no giver where a person's talk starts it (G1), and a way that names no one (G4).
+
+## Not settled by the run (both readings kept)
+
+- The 18 quests that stay "not checked" are Part 1's: In the Shadows, Boethiah's Bidding, The Lost Verse, First Catch, and the mod quests with no second source (Bob 08:05: that's their right answer).
+- UESP's "Riekling Chief" doesn't map to the records' "Riekling" (the same actor). The name matcher has no ref IDs, so The Chief of Thirsk Hall is sorted under D2. Its outcome is right.
+
+---
+
+# The first run (before Part 5): kept as it was written
+
 
 ## Where it stopped
 

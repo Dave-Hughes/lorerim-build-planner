@@ -97,11 +97,6 @@
    "waitingOn": "G4",
    "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
-  "C02": {
-   "quest": "Brotherhood",
-   "waitingOn": "G4",
-   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
-  },
   "CR01": {
    "quest": "Animal Extermination",
    "waitingOn": "G1",
@@ -222,6 +217,11 @@
    "waitingOn": "G2",
    "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy"
   },
+  "TGBan": {
+   "quest": "Reparations",
+   "waitingOn": "G2",
+   "why": "G2: the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild. Mac's G2 makes it 'After <that quest>', no giver"
+  },
   "TGRBE": {
    "quest": "The Burglary Job",
    "waitingOn": "G1",
@@ -261,11 +261,6 @@
    "quest": "Meet the Family",
    "waitingOn": "G2",
    "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
-  },
-  "DB01Misc": {
-   "quest": "Delayed Burial",
-   "waitingOn": "G3",
-   "why": "G3: the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's first is 'Talk to the strange jester' (stage 5), and the starters (SetStage 10; SetStage 20; a start with no stage) don't all set a later stage directly. Mac's Part 4."
   },
   "DB04": {
    "quest": "Whispers in the Dark",
@@ -311,11 +306,6 @@
    "quest": "A Night To Remember",
    "waitingOn": "G4",
    "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (none). Mac names the speaker or drops the way."
-  },
-  "DA11Intro": {
-   "quest": "Investigate the Hall of the Dead",
-   "waitingOn": "G3",
-   "why": "G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4."
   },
   "DLC2TT1b": {
    "quest": "A New Debt",
@@ -485,12 +475,12 @@
   "ccBGSSSE001_Radiant_1": {
    "quest": "Stocking Up",
    "waitingOn": "G1",
-   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain the amount the game sets brook bass for the innkeeper in the town' (stage 0, ccBGSSSE001-Fish.esm:000B98); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "ccBGSSSE001_Radiant_2": {
    "quest": "Further Study",
    "waitingOn": "G1",
-   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain a pygmy sunfish for the alchemist in the town' (stage 0, ccBGSSSE001-Fish.esm:000C2F); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "ccBGSSSE001_Radiant_3": {
    "quest": "Rubbish Retrieval",

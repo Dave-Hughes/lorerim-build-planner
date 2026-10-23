@@ -405,3 +405,25 @@ Rex's sample: 2 pass and 4 need changes, two of them rules. The batch stopped un
 - 9 background (G5), 7 files-only (D7), 7 in the Civil War's radiant class.
 - 1 waiting on G4 with no page to hold a row.
 - 0 not checked.
+
+
+### Batch 9 (the odd jobs of the Reach, Whiterun, Haafingar and the North), and decisions version 8
+
+Rex's sample: 1 pass and 5 need changes, three of them rules. The batch stopped until all three were fixed, and batches 1 to 9 were re-sorted.
+- **A. The first step is the lowest objective at or after the stage the giver's way in sets** (the lowest SetStage among the starters' own lines), on both the records' side and UESP's.
+  - A lower stage reached only by another path doesn't count: Flight or Fight's stage 15, finding the body first, which UESP calls the path that breaks it. It agrees now on "Find Leifnarr".
+  - The same stage in other words is the records' win, never a wait. Sanuarach Mine keeps the records' spelling over UESP's typo "Sauranach".
+- **B. A UESP page counts only when its ID, or one of its stage tables, lists the quest.**
+  - A place page that mentions it doesn't count: Soljund's Sinkhole now reads `Skyrim:Soljund's_Sinkhole_(quest)`.
+  - The lookup follows a hatnote ("For other quests with that name see…") like a disambiguation page. Delivery (SolitudeFreeform04) is `Skyrim:Delivery_(Sorex)` and agrees on Sorex Vinius.
+  - Pages that hold a quest only in a stage-table segment still count: DA02 Hook, The Final Descent Priest.
+- **C. A line that needs this quest's own stage, set by another listed way, is R2's step, not a starter.**
+  - Eydis needs The Ghost of Old Hroldan's stage 20, which the Ghost's own line sets, so it's D1b, with Eydis as the first step's person.
+  - A stage the game sets from its start isn't another way: Grosta's line needs Flight or Fight's stage 10, so hers is R1's way in.
+- **`{{Sic|x|y}}` is text** (the meant word), any case, not a slot that matches any words (Rogatus's Letter).
+
+**All nine batches under version 8 (Part 2 done):**
+- 320 key rows from the loop: 217 passing now and 103 waiting on Mac's Part 4 (G1 35, G2 31, G3 4, G4 33).
+- 9 background (G5), 7 files-only with no UESP page (D7), 7 in the Civil War's radiant class.
+- 2 waiting on G4 with no page to hold a row.
+- 0 not checked.
