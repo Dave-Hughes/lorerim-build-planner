@@ -2423,12 +2423,14 @@
    "quest": "Forgotten Vale Books Quest",
    "editorId": "DLC1VQFVBooks",
    "line": "dawnguard",
-   "noGiver": true,
-   "startsWith": [],
+   "startsWith": [
+    "Urag gro-Shub"
+   ],
    "firstObjective": "Bring Ancient Falmer Tome to Urag gro-Shub",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Forgotten_Vale_Books_Quest",
-   "notes": "PC, WO-138 Part 2 batch 2: no giver: UESP's Urag gro-Shub is the first step's person, not a starter; the records' first step is 'Bring Ancient Falmer Tome to Urag gro-Shub' (stage 20, Dawnguard.esm:01A3E4); UESP's is 'Bring Ancient Falmer Tome to'; the records win (G3): their own words."
+   "notes": "PC, WO-138 Part 2 batch 2: the records' first step is 'Bring Ancient Falmer Tome to Urag gro-Shub' (stage 20, Dawnguard.esm:01A3E4); UESP's is 'Bring Ancient Falmer Tome to'; the records win (G3): their own words; R1: it runs from the game's start, and Urag gro-Shub's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
   },
   {
    "quest": "The Temple of Miraak",
@@ -2726,7 +2728,7 @@
    "firstObjective": "Meet Tolfdir outside Saarthal",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Under_Saarthal",
-   "notes": "PC, WO-138 Part 2 batch 3: no giver: another quest's stage starts it; UESP's Tolfdir is who you go to (G1 is for radiant jobs, G2); G3: the records' first step is 'Tell Tolfdir about the vision' (stage 50, Skyrim.esm:01F252); UESP's first is 'Meet Tolfdir outside Saarthal' (stage 10), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "notes": "PC, WO-138 Part 2 batch 3: no giver: another quest's stage starts it; UESP's Tolfdir is who you go to (G1 is for radiant jobs, G2); G3: the records' own first step is 'Meet Tolfdir outside Saarthal' (stage 10), as UESP says; the page shows 'Tell Tolfdir about the vision' (stage 50). Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
    "waitingOn": "G3"
   },
   {
@@ -3442,7 +3444,7 @@
    "firstObjective": "Speak with Astrid",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Silence_Has_Been_Broken",
-   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is the first step G3: the records' first step is 'Report back to Astrid' (stage 40, Skyrim.esm:02AD16); UESP's first is 'Speak with Astrid' (stage 5), and the starters (Start) don't all set a later stage directly. Mac's Part 4.",
+   "notes": "PC, WO-138 Part 2 batch 4: G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is the first step G3: the records' own first step is 'Speak with Astrid' (stage 5), as UESP says; the page shows 'Report back to Astrid' (stage 40). Mac's rule 1.",
    "waitingOn": "G2"
   },
   {
@@ -4274,6 +4276,19 @@
    "notes": "PC, WO-138 Part 2 batch 6: giver Elynea Mothren on both."
   },
   {
+   "quest": "A New Source of Stalhrim",
+   "editorId": "DLC2SV02",
+   "line": "skaal-village",
+   "startsWith": [
+    "Deor Woodcutter"
+   ],
+   "firstObjective": "Search for Baldor Iron-Shaper",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_New_Source_of_Stalhrim",
+   "notes": "PC, WO-138 Part 2 batch 6: Bob 09:00, a scene: the only setter is DLC2SV02Misc, a helper quest with Deor, Fanari, Baldor, set going by a scene; UESP's Deor Woodcutter is who you speak to. Mac's way: 'Talk to Deor Woodcutter', with the previous quest as the need.",
+   "waitingOn": "G1"
+  },
+  {
    "quest": "Skaal Village Dialogue",
    "editorId": "DLC2SkaalVillageFreeform1",
    "line": "skaal-village",
@@ -4800,10 +4815,11 @@
    "startsWith": [
     "Viriya"
    ],
-   "firstObjective": "Obtain a juvenile mudcrab for Viriya",
+   "firstObjective": "Read Bounty: Juvenile Mudcrab",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:In_A_Pinch",
-   "notes": "PC, WO-138 Part 2 batch 7: giver Viriya on both."
+   "notes": "PC, WO-138 Part 2 batch 7: giver Viriya on both; G3: the records' own first step is 'Read Bounty: Juvenile Mudcrab' (stage 10), as UESP says; the page shows 'Obtain a juvenile mudcrab for Viriya' (stage None). Mac's rule 1.",
+   "waitingOn": "G3"
   },
   {
    "quest": "Crustacean Extermination",
@@ -4817,6 +4833,494 @@
    "url": "https://en.uesp.net/wiki/Skyrim:Crustacean_Extermination",
    "notes": "PC, WO-138 Part 2 batch 7: G1: Viriya's own talk sets it off, as UESP says; the page names no giver. Mac's Part 4 names them.",
    "waitingOn": "G1"
+  },
+  {
+   "quest": "End of the Line",
+   "editorId": "ccBGSSSE001_Crab_MQ3",
+   "line": "fishing",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the letter from Viriya",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:End_of_the_Line",
+   "notes": "PC, WO-138 Part 2 batch 8: G2: the page names Viriya; UESP: Courier delivers Letter from Viriya. Mac's G2 makes it 'After <that quest>', no giver G3: the records' own first step is 'Read the letter from Viriya' (stage 10), as UESP says; the page shows 'Obtain the amount the game sets pieces of firewood' (stage None). Mac's rule 1.",
+   "waitingOn": "G2"
+  },
+  {
+   "quest": "Wave Breaker",
+   "editorId": "ccBGSSSE001_Crab_MQ4",
+   "line": "fishing",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read Viriya's hastily written letter",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Wave_Breaker",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver on either."
+  },
+  {
+   "quest": "Catch of the Day",
+   "editorId": "ccBGSSSE001_Fish_MQ1",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Read the list of fair weather fish",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Catch_of_the_Day",
+   "notes": "PC, WO-138 Part 2 batch 8: R1: it runs from the game's start, and Swims-In-Deep-Water's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them. G3: the records' own first step is 'Read the list of fair weather fish' (stage 10), as UESP says; the page shows 'Obtain a carp' (stage None). Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Caught in the Rain",
+   "editorId": "ccBGSSSE001_Fish_MQ2",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Fish up Swims-In-Deep-Water's lucky fishing hat",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Caught_in_the_Rain",
+   "waitingOn": "G4",
+   "notes": "PC, WO-138 Part 2 batch 8: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  {
+   "quest": "Frozen Fish",
+   "editorId": "ccBGSSSE001_Fish_MQ3",
+   "line": "fishing",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the letter on fishing work",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Frozen_Fish",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver: another quest's stage starts it; UESP's Swims-In-Deep-Water is who you go to (G1 is for radiant jobs, G2); G3: UESP has no stage table; the records' own first step is 'Read the letter on fishing work' (stage 4); the page shows 'Obtain an angler larvae'. Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "waitingOn": "G3"
+  },
+  {
+   "quest": "Darkest Depths",
+   "editorId": "ccBGSSSE001_Fish_MQ4",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Read the list of underground fish",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Darkest_Depths",
+   "waitingOn": "G4",
+   "notes": "PC, WO-138 Part 2 batch 8: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  {
+   "quest": "Fishing Legend",
+   "editorId": "ccBGSSSE001_Fish_MQ5",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Read the list of rare fish",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Fishing_Legend",
+   "waitingOn": "G4",
+   "notes": "PC, WO-138 Part 2 batch 8: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  {
+   "quest": "Two of a Kind",
+   "editorId": "ccBGSSSE001_Misc_WhiterunPartTwo",
+   "line": "fishing",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the letter from Mila Valentia",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Two_of_a_Kind",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver: another quest's stage starts it; UESP's Mila Valentia is who you go to (G1 is for radiant jobs, G2); G3: UESP has no stage table; the records' own first step is 'Read the letter from Mila Valentia' (stage 5); the page shows 'Find another goldfish for Mila Valentia'. Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "waitingOn": "G3"
+  },
+  {
+   "quest": "Tusked Terror",
+   "editorId": "ccBGSSSE001_Misc_Windhelm",
+   "line": "fishing",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Obtain an arctic grayling",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Tusked_Terror",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver: another quest's stage starts it; UESP's Viriya is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "Stocking Up",
+   "editorId": "ccBGSSSE001_Radiant_1",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Speak to …",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Stocking_Up",
+   "notes": "PC, WO-138 Part 2 batch 8: G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain the amount the game sets brook bass for the innkeeper in the town' (stage 0, ccBGSSSE001-Fish.esm:000B98); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Further Study",
+   "editorId": "ccBGSSSE001_Radiant_2",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Speak to …",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Further_Study",
+   "notes": "PC, WO-138 Part 2 batch 8: G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain a pygmy sunfish for the alchemist in the town' (stage 0, ccBGSSSE001-Fish.esm:000C2F); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Rubbish Retrieval",
+   "editorId": "ccBGSSSE001_Radiant_3",
+   "line": "fishing",
+   "startsWith": [
+    "Swims-In-Deep-Water"
+   ],
+   "firstObjective": "Fish up the amount the game sets items from the water in the town",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rubbish_Retrieval",
+   "waitingOn": "G4",
+   "notes": "PC, WO-138 Part 2 batch 8: G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  {
+   "quest": "Angler Acquaintances",
+   "editorId": "ccBGSSSE001_Start_MQ2",
+   "line": "fishing",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Gather information on fishing",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Angler_Acquaintances",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver on either; the records' first step is 'Gather information on fishing' (stage 0, ccBGSSSE001-Fish.esm:0009DB); UESP's is 'Visit the Riften Fishery'; the records win (G3): their own words."
+  },
+  {
+   "quest": "Supply and Demand",
+   "editorId": "FreeformRiften01",
+   "line": "odd-jobs-the-rift",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Report skooma source to Jarl of Riften",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Supply_and_Demand",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver on either."
+  },
+  {
+   "quest": "The Lover's Requital",
+   "editorId": "FreeformRiften02",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Sibbi Black-Briar"
+   ],
+   "firstObjective": "Discover Svidi's whereabouts",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Lover's_Requital",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Sibbi Black-Briar on both."
+  },
+  {
+   "quest": "Under the Table",
+   "editorId": "FreeformRiften03",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Romlyn Dreth"
+   ],
+   "firstObjective": "Deliver Mead to Wilhelm",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Under_the_Table",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Romlyn Dreth on both."
+  },
+  {
+   "quest": "Few and Far Between",
+   "editorId": "FreeformRiften04",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Ingun Black-Briar"
+   ],
+   "firstObjective": "Find 20 nirnroot for Ingun Black-Briar (0/20)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Few_and_Far_Between",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Ingun Black-Briar on both."
+  },
+  {
+   "quest": "Sealing the Deal",
+   "editorId": "FreeformRiften06",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Talen-Jei"
+   ],
+   "firstObjective": "Get 3 flawless amethysts for Talen-Jei (0/3)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Sealing_the_Deal",
+   "notes": "PC, WO-138 Part 2 batch 8: R1: it runs from the game's start, and Talen-Jei's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Ice Cold",
+   "editorId": "FreeformRiften07",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Marise Aravel"
+   ],
+   "firstObjective": "Find 5 Ice Wraith Teeth for Marise (0/5)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Ice_Cold",
+   "notes": "PC, WO-138 Part 2 batch 8: R1: it runs from the game's start, and Marise Aravel's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Distant Memories",
+   "editorId": "FreeformRiften08",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Brand-Shei"
+   ],
+   "firstObjective": "Locate a clue about Brand-Shei's past",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Distant_Memories",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Brand-Shei on both."
+  },
+  {
+   "quest": "Grimsever's Return",
+   "editorId": "FreeformRiften09",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Mjoll the Lioness"
+   ],
+   "firstObjective": "Locate Grimsever",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Grimsever's_Return",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Mjoll the Lioness on both."
+  },
+  {
+   "quest": "Stoking the Flames",
+   "editorId": "FreeformRiften10",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Balimund"
+   ],
+   "firstObjective": "Collect 10 fire salts for Balimund (0/10)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Stoking_the_Flames",
+   "notes": "PC, WO-138 Part 2 batch 8: the records' first step is 'Collect 10 fire salts for Balimund (0/10)' (stage 10, Skyrim.esm:05331D); UESP's is 'Bring 10 fire salts to Balimund (<alias>/10)'; the records win (G3): their own words; R1: it runs from the game's start, and Balimund's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Helping Hand",
+   "editorId": "FreeformRiften12",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Wujeeta"
+   ],
+   "firstObjective": "Give Wujeeta a healing potion",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Helping_Hand",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Wujeeta on both."
+  },
+  {
+   "quest": "Pilgrimage",
+   "editorId": "FreeformRiften13",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Alessandra"
+   ],
+   "firstObjective": "Bring Alessandra's Dagger to Andurs in Whiterun",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Pilgrimage",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Alessandra on both."
+  },
+  {
+   "quest": "Hunt and Gather",
+   "editorId": "FreeformRiften14",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Wylandriah"
+   ],
+   "firstObjective": "Retrieve Wylandriah's Spoon",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Hunt_and_Gather",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Wylandriah on both."
+  },
+  {
+   "quest": "Special Delivery",
+   "editorId": "FreeformRiften15",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Bolli"
+   ],
+   "firstObjective": "Deliver the purchase agreement to Kleppr in Markarth",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Special_Delivery_(Bolli)",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Bolli on both."
+  },
+  {
+   "quest": "Bring It!",
+   "editorId": "FreeformRiften16",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Harrald"
+   ],
+   "firstObjective": "Pick up Harrald's Sword from Balimund",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bring_It!",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Harrald on both."
+  },
+  {
+   "quest": "Truth Ore Consequences",
+   "editorId": "FreeformRiften17",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Hafjorg"
+   ],
+   "firstObjective": "Obtain Ore Sample from Filnjar",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Truth_Ore_Consequences",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Hafjorg on both."
+  },
+  {
+   "quest": "Ringmaker",
+   "editorId": "FreeformRiften18",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Madesi"
+   ],
+   "firstObjective": "Find 2 flawless sapphires for Madesi (0/2)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Ringmaker",
+   "notes": "PC, WO-138 Part 2 batch 8: R1: it runs from the game's start, and Madesi's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Bloody Nose",
+   "editorId": "FreeformRiften19",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Hofgrir Horse-Crusher"
+   ],
+   "firstObjective": "Defeat Hofgrir in an unarmed brawl",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bloody_Nose",
+   "notes": "PC, WO-138 Part 2 batch 8: R1: it runs from the game's start, and Hofgrir Horse-Crusher's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "The Raid",
+   "editorId": "FreeformRiften20",
+   "line": "odd-jobs-the-rift",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Identify Riften's skooma dealer",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Raid",
+   "notes": "PC, WO-138 Part 2 batch 8: no giver: another quest's stage starts it; UESP's Wujeeta is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "Stabilized",
+   "editorId": "FreeformRiften22",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Shadr"
+   ],
+   "firstObjective": "Speak to Sapphire about Shadr's debt",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Stabilized",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Shadr on both."
+  },
+  {
+   "quest": "Vald's Debt",
+   "editorId": "FreeformValdDebt",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Vald"
+   ],
+   "firstObjective": "Talk to Maven about Vald's debt",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Vald's_Debt",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Vald; UESP's infobox names no person."
+  },
+  {
+   "quest": "Lifting the Shroud",
+   "editorId": "FreeformIvarstead01",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Wilhelm"
+   ],
+   "firstObjective": "Investigate Shroud Hearth Barrow",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Lifting_the_Shroud",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Wilhelm on both."
+  },
+  {
+   "quest": "The Straw that Broke",
+   "editorId": "FreeformIvarstead02",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Narfi"
+   ],
+   "firstObjective": "Ask Wilhelm about Reyda",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Straw_that_Broke",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Narfi on both."
+  },
+  {
+   "quest": "Grin and Bear It",
+   "editorId": "FreeformIvarstead03",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Temba Wide-Arm"
+   ],
+   "firstObjective": "Gather 10 bear pelts for Temba Wide-Arm  (0/10)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Grin_and_Bear_It",
+   "notes": "PC, WO-138 Part 2 batch 8: R1: it runs from the game's start, and Temba Wide-Arm's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them.",
+   "waitingOn": "G1"
+  },
+  {
+   "quest": "Climb the Steps",
+   "editorId": "FreeformIvarstead04",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Klimmek"
+   ],
+   "firstObjective": "Bring Klimmek's supplies to High Hrothgar",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Climb_the_Steps",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Klimmek on both; the records' first step is \"Bring Klimmek's supplies to High Hrothgar\" (stage 20, Skyrim.esm:0D9B66); UESP's is 'Bring the supplies to High Hrothgar'; the records win (G3): their own words."
+  },
+  {
+   "quest": "Mine or Yours",
+   "editorId": "FreeformShorsStone01",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Filnjar"
+   ],
+   "firstObjective": "Clear Redbelly Mine of spiders",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Mine_or_Yours",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Filnjar on both."
+  },
+  {
+   "quest": "Special Delivery",
+   "editorId": "FreeformShorsStone02",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Sylgja"
+   ],
+   "firstObjective": "Deliver the satchel to Verner in Darkwater Crossing",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Special_Delivery_(Sylgja)",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Sylgja on both."
+  },
+  {
+   "quest": "Bow to the Master",
+   "editorId": "FreeformMerryfairFarm",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Dravin Llanith"
+   ],
+   "firstObjective": "Retrieve Dravin's Bow",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Bow_to_the_Master",
+   "notes": "PC, WO-138 Part 2 batch 8: giver Dravin Llanith on both."
   }
  ]
 }

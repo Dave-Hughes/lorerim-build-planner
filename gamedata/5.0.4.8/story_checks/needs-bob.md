@@ -70,7 +70,3 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - First objective's target in the records: alias CampMarker (forced): a marker, placed in Skyrim.
   - Objectives in the records: 'Visit the fishing camp south of Riverwood' (QOBJ 0, shown at stage 10); 'Equip a fishing rod' (QOBJ 5, shown at stage 15).
   - UESP: no page found: no UESP page for First Catch or this editor ID; Angler Acquaintances is ccBGSSSE001_Start_MQ2, a different quest.
-
-## WO-138 Part 2, batch 6: not checked, neither source settles it (1)
-
-- **A New Source of Stalhrim** (`DLC2SV02`, Dragonborn.esm:01CAF1; line `skaal-village`): the page names no giver; UESP names Deor Woodcutter, who neither starts it in the records nor is its first step (starters: quest script: DLC2SV02Misc, a helper quest with Deor, Fanari, Baldor). UESP: https://en.uesp.net/wiki/Skyrim:A_New_Source_of_Stalhrim; first step: page 'Search for Baldor Iron-Shaper', UESP 'Search for Baldor Iron-Shaper'.

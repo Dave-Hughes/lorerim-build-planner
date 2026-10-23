@@ -77,6 +77,11 @@
    "waitingOn": "G4",
    "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
+  "DLC1VQFVBooks": {
+   "quest": "Forgotten Vale Books Quest",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Urag gro-Shub's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
+  },
   "DLC2MQ03": {
    "quest": "The Fate of the Skaal",
    "waitingOn": "G2",
@@ -135,7 +140,7 @@
   "MG02": {
    "quest": "Under Saarthal",
    "waitingOn": "G3",
-   "why": "G3: the records' first step is 'Tell Tolfdir about the vision' (stage 50, Skyrim.esm:01F252); UESP's first is 'Meet Tolfdir outside Saarthal' (stage 10), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "why": "G3: the records' own first step is 'Meet Tolfdir outside Saarthal' (stage 10), as UESP says; the page shows 'Tell Tolfdir about the vision' (stage 50). Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "MG03": {
    "quest": "Hitting the Books",
@@ -270,7 +275,7 @@
   "DB04a": {
    "quest": "The Silence Has Been Broken",
    "waitingOn": "G2",
-   "why": "G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is the first step G3: the records' first step is 'Report back to Astrid' (stage 40, Skyrim.esm:02AD16); UESP's first is 'Speak with Astrid' (stage 5), and the starters (Start) don't all set a later stage directly. Mac's Part 4."
+   "why": "G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is the first step G3: the records' own first step is 'Speak with Astrid' (stage 5), as UESP says; the page shows 'Report back to Astrid' (stage 40). Mac's rule 1."
   },
   "CW00A": {
    "quest": "Imperial Introductions",
@@ -321,6 +326,11 @@
    "quest": "Experimental Subject",
    "waitingOn": "G1",
    "why": "G1: the page names no giver; the job's one dispatcher on UESP is Neloth. Mac's Part 4 names them."
+  },
+  "DLC2SV02": {
+   "quest": "A New Source of Stalhrim",
+   "waitingOn": "G1",
+   "why": "Bob 09:00, a scene: the only setter is DLC2SV02Misc, a helper quest with Deor, Fanari, Baldor, set going by a scene; UESP's Deor Woodcutter is who you speak to. Mac's way: 'Talk to Deor Woodcutter', with the previous quest as the need."
   },
   "DLC2WE06": {
    "quest": "Black Book",
@@ -427,10 +437,95 @@
    "waitingOn": "G4",
    "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
+  "ccBGSSSE001_Crab_MQ1": {
+   "quest": "In A Pinch",
+   "waitingOn": "G3",
+   "why": "G3: the records' own first step is 'Read Bounty: Juvenile Mudcrab' (stage 10), as UESP says; the page shows 'Obtain a juvenile mudcrab for Viriya' (stage None). Mac's rule 1."
+  },
   "ccBGSSSE001_Crab_MQ2": {
    "quest": "Crustacean Extermination",
    "waitingOn": "G1",
    "why": "G1: Viriya's own talk sets it off, as UESP says; the page names no giver. Mac's Part 4 names them."
+  },
+  "ccBGSSSE001_Crab_MQ3": {
+   "quest": "End of the Line",
+   "waitingOn": "G2",
+   "why": "G2: the page names Viriya; UESP: Courier delivers Letter from Viriya. Mac's G2 makes it 'After <that quest>', no giver G3: the records' own first step is 'Read the letter from Viriya' (stage 10), as UESP says; the page shows 'Obtain the amount the game sets pieces of firewood' (stage None). Mac's rule 1."
+  },
+  "ccBGSSSE001_Fish_MQ1": {
+   "quest": "Catch of the Day",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Swims-In-Deep-Water's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them. G3: the records' own first step is 'Read the list of fair weather fish' (stage 10), as UESP says; the page shows 'Obtain a carp' (stage None). Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Fish_MQ2": {
+   "quest": "Caught in the Rain",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Fish_MQ3": {
+   "quest": "Frozen Fish",
+   "waitingOn": "G3",
+   "why": "G3: UESP has no stage table; the records' own first step is 'Read the letter on fishing work' (stage 4); the page shows 'Obtain an angler larvae'. Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Fish_MQ4": {
+   "quest": "Darkest Depths",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Fish_MQ5": {
+   "quest": "Fishing Legend",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Misc_WhiterunPartTwo": {
+   "quest": "Two of a Kind",
+   "waitingOn": "G3",
+   "why": "G3: UESP has no stage table; the records' own first step is 'Read the letter from Mila Valentia' (stage 5); the page shows 'Find another goldfish for Mila Valentia'. Mac's rule 1. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Radiant_1": {
+   "quest": "Stocking Up",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain the amount the game sets brook bass for the innkeeper in the town' (stage 0, ccBGSSSE001-Fish.esm:000B98); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Radiant_2": {
+   "quest": "Further Study",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Swims-In-Deep-Water. Mac's Part 4 names them. G3: the records' first step is 'Obtain a pygmy sunfish for the alchemist in the town' (stage 0, ccBGSSSE001-Fish.esm:000C2F); UESP's first is 'Speak to <alias>' (stage 0), and the starters (Start) don't all set a later stage directly. Mac's Part 4. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "ccBGSSSE001_Radiant_3": {
+   "quest": "Rubbish Retrieval",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Swims-In-Deep-Water). Mac names the speaker or drops the way."
+  },
+  "FreeformRiften06": {
+   "quest": "Sealing the Deal",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Talen-Jei's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
+  },
+  "FreeformRiften07": {
+   "quest": "Ice Cold",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Marise Aravel's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
+  },
+  "FreeformRiften10": {
+   "quest": "Stoking the Flames",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Balimund's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
+  },
+  "FreeformRiften18": {
+   "quest": "Ringmaker",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Madesi's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
+  },
+  "FreeformRiften19": {
+   "quest": "Bloody Nose",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Hofgrir Horse-Crusher's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
+  },
+  "FreeformIvarstead03": {
+   "quest": "Grin and Bear It",
+   "waitingOn": "G1",
+   "why": "R1: it runs from the game's start, and Temba Wide-Arm's talk is the way in (UESP's giver); the page names no giver. Mac's Part 4 names them."
   }
  }
 }

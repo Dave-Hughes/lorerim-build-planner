@@ -110,10 +110,8 @@
     "\"Parent\" quest for Radiant Content",
     "Beyond Death Soul Gem Handler"
    ],
-   "G1 first step, no giver": [
-    "Forgotten Vale Books Quest",
-    "Proving Honor",
-    "The Silver Hand"
+   "R1 start game, the page misses the giver": [
+    "Forgotten Vale Books Quest"
    ],
    "G3/D6 records win": [
     "Forgotten Vale Books Quest",
@@ -124,6 +122,10 @@
    ],
    "Bob 23 Oct 08:05": [
     "The Path of Knowledge"
+   ],
+   "G1 first step, no giver": [
+    "Proving Honor",
+    "The Silver Hand"
    ],
    "D1b first step": [
     "Blood's Honor"
@@ -173,7 +175,7 @@
    "G1/G2 started by another quest": [
     "Under Saarthal"
    ],
-   "G3/D6 earlier stage reachable": [
+   "G3 the page's step isn't the records' first": [
     "Under Saarthal"
    ],
    "G4/D4": [
@@ -265,11 +267,13 @@
     "Delayed Burial"
    ],
    "G3/D6 earlier stage reachable": [
-    "Delayed Burial",
-    "The Silence Has Been Broken"
+    "Delayed Burial"
    ],
    "D1a setter, the page is wrong": [
     "Whispers in the Dark"
+   ],
+   "G3 the page's step isn't the records' first": [
+    "The Silence Has Been Broken"
    ],
    "D1b first step": [
     "To Kill an Empire"
@@ -371,8 +375,9 @@
     "Skaal Village Dialogue",
     "No One Escapes Cidhna Mine"
    ],
-   "D7": [
-    "Thirsk Rumors"
+   "G5": [
+    "Thirsk Rumors",
+    "DialogueCidhnaMine"
    ],
    "D2 person talk": [
     "The Chief of Thirsk Hall",
@@ -390,7 +395,7 @@
     "Experimental Subject",
     "Repairing the Phial"
    ],
-   "G1 unsettled": [
+   "Bob 09:00 scene start": [
     "A New Source of Stalhrim"
    ],
    "G4/D4": [
@@ -399,9 +404,6 @@
    ],
    "D12 several givers": [
     "Shiv"
-   ],
-   "G5": [
-    "DialogueCidhnaMine"
    ]
   },
   "7": {
@@ -467,11 +469,98 @@
     "Thane of Haafingar",
     "Thane of Whiterun"
    ],
+   "G3 the page's step isn't the records' first": [
+    "In A Pinch"
+   ],
    "G1 setter the page misses": [
     "Crustacean Extermination"
    ],
    "no row: Mac (G4)": [
     "Serana's cure vampirism"
+   ]
+  },
+  "8": {
+   "G2/D5": [
+    "End of the Line"
+   ],
+   "G3 the page's step isn't the records' first": [
+    "End of the Line",
+    "Catch of the Day"
+   ],
+   "agree": [
+    "Wave Breaker",
+    "Angler Acquaintances",
+    "Supply and Demand",
+    "The Lover's Requital",
+    "Under the Table",
+    "Few and Far Between",
+    "Distant Memories",
+    "Grimsever's Return",
+    "Helping Hand",
+    "Pilgrimage",
+    "Hunt and Gather",
+    "Special Delivery",
+    "Bring It!",
+    "Truth Ore Consequences",
+    "Stabilized",
+    "Lifting the Shroud",
+    "The Straw that Broke",
+    "Climb the Steps",
+    "Mine or Yours",
+    "Special Delivery",
+    "Bow to the Master"
+   ],
+   "R1 start game, the page misses the giver": [
+    "Catch of the Day",
+    "Sealing the Deal",
+    "Ice Cold",
+    "Stoking the Flames",
+    "Ringmaker",
+    "Bloody Nose",
+    "Grin and Bear It"
+   ],
+   "G4/D4": [
+    "Catch of the Day",
+    "Caught in the Rain",
+    "Frozen Fish",
+    "Darkest Depths",
+    "Fishing Legend",
+    "Two of a Kind",
+    "Stocking Up",
+    "Further Study",
+    "Rubbish Retrieval"
+   ],
+   "G1 unsettled": [
+    "Caught in the Rain",
+    "Darkest Depths",
+    "Fishing Legend",
+    "Rubbish Retrieval"
+   ],
+   "G1/G2 started by another quest": [
+    "Frozen Fish",
+    "Two of a Kind",
+    "Tusked Terror",
+    "The Raid"
+   ],
+   "D3": [
+    "Frozen Fish",
+    "Two of a Kind"
+   ],
+   "G1 one dispatcher": [
+    "Stocking Up",
+    "Further Study"
+   ],
+   "G3/D6 earlier stage reachable": [
+    "Stocking Up",
+    "Further Study"
+   ],
+   "G3/D6 records win": [
+    "Angler Acquaintances",
+    "Stoking the Flames",
+    "Climb the Steps"
+   ],
+   "D2 person talk": [
+    "Vald's Debt"
    ]
   }
  }

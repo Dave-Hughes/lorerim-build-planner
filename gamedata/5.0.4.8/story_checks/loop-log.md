@@ -382,3 +382,26 @@ Rex's sample: 4 pass and 2 need changes, one of them a rule. The batch stopped u
 - 8 background (G5), 8 files-only (D7), 7 in the Civil War's radiant class.
 - 1 waiting on G4 with no page to hold a row.
 - 1 not checked (A New Source of Stalhrim).
+
+
+**Bob's rulings, 23 Oct 09:00 (on batch 6), applied before batch 8:**
+- **A scene can be a start.** When the only setter is a helper (no quest of the records) set going by a scene the check doesn't trace, UESP's giver is the person you speak to. A New Source of Stalhrim waits on Mac with Deor Woodcutter ("Talk to Deor", with the previous quest as the need). It's off the needs-Bob list, and the rule applies to any later quest of that shape.
+- **Thirsk Rumors is background (G5).**
+
+### Batch 8 (the fishing quests, the Rift's odd jobs), and decisions version 7
+
+Rex's sample: 2 pass and 4 need changes, two of them rules. The batch stopped until both were fixed, and batches 1 to 8 were re-sorted.
+- **UESP's objective number isn't a stage** (the deepest fix). `{{Quest Objective|N|…}}` takes the objective's number; the row's `|N|` is the stage. The first objective is now the one in the lowest-stage row.
+  - Catch of the Day's objective 0, "Obtain a carp", is shown at stage 20; objective 10, "Read the list of fair weather fish", at stage 10.
+  - Re-sorting batches 1 to 7 changed only a handful of outcomes, so most earlier pages had been read right by luck of numbering.
+- **D14's radiant test:** a count's slot (`<Global=…>` in "(…/3)") isn't a radiant placeholder; only a slot in the words is. Sealing the Deal was "radiant" only through its count.
+- **R1 for a start-game quest:** a quest that runs from the game's start, whose page names no giver while UESP names one, takes UESP's person as the giver. Their talk is the way in, waiting on Mac (Sealing the Deal, Ice Cold, Bloody Nose and the other Rift odd jobs). Before, Bloody Nose became a no-giver row only because UESP's person is also its first step.
+- **The first step:** when the page's step isn't the records' own lowest-stage step (stage unknown, or later), and that lowest-stage step is UESP's, the row holds it and waits on Mac's rule 1 (Catch of the Day, End of the Line). With no UESP table, the records' lowest-stage step is the row's (Frozen Fish, Two of a Kind).
+  - Before, "records win" was writing the page's error into the rows.
+- **"Starts by itself" on UESP** also covers a letter start ("Courier delivers Letter from Viriya"), and no name is taken from that text. End of the Line no longer "agrees" on Viriya: another quest's ending starts it, so it's G2.
+
+**Batches 1 to 8 under version 7:**
+- 296 key rows from the loop: 191 passing now and 105 waiting on Mac (G1 35, G2 30, G3 6, G4 34).
+- 9 background (G5), 7 files-only (D7), 7 in the Civil War's radiant class.
+- 1 waiting on G4 with no page to hold a row.
+- 0 not checked.
