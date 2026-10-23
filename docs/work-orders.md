@@ -4924,7 +4924,7 @@ Status: done
 ---
 
 ## WO-142  Four things the thief test showed (Mac, 23 Oct 2026)
-Status: for Bob
+Status: done
 
 **Why.** Bob ran a design test through the door (an Argonian thief, never kills, not the Dragonborn, wants a horse; build dwa27ywaka, playthrough 5h8y9vpbtq, both "TEST:" drafts). The build came out legal and the assistant kept to the planner. Four faults in what it was told:
 1. **A false "comes after" gate on a line that isn't a work shelf.** `get_quest` Running Wild at level 5 says "unknown: comes after Ode To The Tundrastriders, and the planner hasn't been told that's done". Nothing in the records ties them; they're neighbours in "Whiterun, expanded". WO-130 stopped this for the work category only. Rule: a line's order never gates a quest; only the quest's own checked needs do (a quest or stage named in its ways' needs). Test: Running Wild is open at level 5 with nothing done; Dawnguard's chain quests still lock on their needs.
@@ -4960,6 +4960,7 @@ Decisions made under WO-138 Part 5, each with why:
 - **Question 24** passes and its mark is off.
 - **Checks.** The full e2e passed 367 of 368; the one failure was `wo108.spec.ts`, which pinned the old gate (Proving Honor "unknown: comes after Take Up Arms"); I changed it to the new rule (Proving Honor open, Bloodline unknown on its own need) and it passes. `npm run test:gamedata` 264 pass.
 - **11, build.py.** The seven names (five in the Thieves Guild, two in the Dawnguard) were not steps: each was a `hidden` entry under `alongside`, there only so the check could see every quest of the line placed. WO-138 G5 took the handlers out of the lines, so they named nothing. I removed those seven entries from `gamedata/5.0.4.8/stories.json` (42 lines, nothing else in the file) and `build.py` now exits 0 with all six stories. `test_stories.py` has a test that every kept story passes the check against `quests.json`, and it fails without this change. The build also re-serialised `places.json` with no value changed; I left that file as committed.
+- Bob, 23 Oct, 13:45, on the live door: Running Wild is open for you at level 5 (the false gate is gone); 23 of 23 player questions; `build.py` runs clean. Done. The horse and homes figures still want the PC's recheck in the files (the last box), which rides with WO-144.
 
 ---
 
