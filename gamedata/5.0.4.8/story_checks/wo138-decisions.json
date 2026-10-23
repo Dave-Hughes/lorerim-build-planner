@@ -2,19 +2,12 @@
  "about": "WO-138 Part 5: which quests each decision touched, by batch",
  "batches": {
   "1": {
-   "G1/G2 started by another quest": [
-    "Before the Storm",
-    "Dragon Rising",
-    "The Way of the Voice",
-    "The Horn of Jurgen Windcaller",
-    "Season Unending",
-    "Dragonslayer",
-    "A New Order"
+   "G1 several": [
+    "Before the Storm"
    ],
    "agree": [
     "Bleak Falls Barrow",
     "A Blade in the Dark",
-    "Diplomatic Immunity",
     "Alduin's Bane",
     "The Fallen",
     "Sovngarde",
@@ -39,11 +32,23 @@
     "New Allegiances",
     "Rings of Blood Magic"
    ],
+   "G1/G2 started by another quest": [
+    "Dragon Rising",
+    "The Way of the Voice",
+    "The Horn of Jurgen Windcaller",
+    "Season Unending",
+    "Dragonslayer",
+    "A New Order"
+   ],
    "G4/D4": [
     "Dragon Rising",
     "The Horn of Jurgen Windcaller",
     "Season Unending",
     "Paarthurnax"
+   ],
+   "D2 person talk": [
+    "Diplomatic Immunity",
+    "Dragon Research"
    ],
    "G3/D6 records win": [
     "Diplomatic Immunity",
@@ -57,9 +62,6 @@
     "The Throat of the World",
     "Elder Knowledge",
     "The World-Eater's Eyrie"
-   ],
-   "D2 person talk": [
-    "Dragon Research"
    ]
   },
   "2": {
@@ -107,7 +109,7 @@
     "\"Parent\" quest for Radiant Content",
     "Beyond Death Soul Gem Handler"
    ],
-   "G1 first step": [
+   "G1 first step, no giver": [
     "Forgotten Vale Books Quest"
    ],
    "G3/D6 records win": [
@@ -126,7 +128,6 @@
     "Blood's Honor"
    ],
    "G1 one dispatcher": [
-    "Brotherhood",
     "Animal Extermination",
     "Animal Extermination",
     "Hired Muscle",
@@ -152,9 +153,6 @@
     "J'zargo's Experiment",
     "Onmund's Request",
     "Arniel's Endeavor",
-    "Arniel's Endeavor",
-    "Arniel's Endeavor",
-    "Arniel's Endeavor",
     "Destruction Ritual Spell",
     "Illusion Ritual Spell",
     "Conjuration Ritual Spell",
@@ -164,7 +162,6 @@
     "Out of Balance",
     "Enchanting Pick-Up",
     "Restocking Soul Gems",
-    "Fetch me that Book!",
     "Fetch me that Book!",
     "Research Thief"
    ],
@@ -195,13 +192,19 @@
     "Hard Answers",
     "The Pursuit"
    ],
+   "D2 person talk": [
+    "Arniel's Endeavor",
+    "Arniel's Endeavor",
+    "Arniel's Endeavor",
+    "Rogue Wizard",
+    "Filling Soul Gems",
+    "Fetch me that Book!"
+   ],
    "G3/D6 records win": [
     "Alteration Ritual Spell"
    ],
-   "D2 person talk": [
-    "Rogue Wizard",
-    "College Objective Quest",
-    "Filling Soul Gems"
+   "D12 several givers": [
+    "College Objective Quest"
    ],
    "D3": [
     "Tolfdir the Absent-Minded",
@@ -217,9 +220,12 @@
     "Meet the Family",
     "The Silence Has Been Broken"
    ],
+   "D12 several givers": [
+    "Reparations"
+   ],
    "D2 person talk": [
-    "Reparations",
-    "No Stone Unturned"
+    "No Stone Unturned",
+    "TG00 Maul Handler"
    ],
    "G1 one dispatcher": [
     "The Burglary Job",
@@ -229,10 +235,6 @@
     "The Sweep Job",
     "The Bedlam Job",
     "The Heist Job"
-   ],
-   "D1b first step": [
-    "TG00 Maul Handler",
-    "To Kill an Empire"
    ],
    "G5": [
     "TG00 Misc Handler",
@@ -269,6 +271,9 @@
    ],
    "D1a setter, the page is wrong": [
     "Whispers in the Dark"
+   ],
+   "D1b first step": [
+    "To Kill an Empire"
    ]
   },
   "5": {
@@ -292,6 +297,9 @@
     "DA02 Hook",
     "Investigate the Hall of the Dead",
     "Served Cold"
+   ],
+   "D12 several givers": [
+    "Imperial Introductions"
    ],
    "G4/D4": [
     "Imperial Introductions",
@@ -323,18 +331,84 @@
     "Defend the capital",
     "Battle for the city"
    ],
-   "G1 one dispatcher": [
+   "G1 unsettled": [
     "A False Front",
     "Compelling Tribute"
-   ],
-   "G3/D6 records win": [
-    "A False Front"
    ],
    "D2 person talk": [
     "Collecting the Edda"
    ],
+   "D2 unsettled": [
+    "A Night To Remember"
+   ],
    "G3/D6 earlier stage reachable": [
     "Investigate the Hall of the Dead"
+   ]
+  },
+  "6": {
+   "agree": [
+    "An Axe to Find",
+    "The Final Descent",
+    "The Final Descent Priest",
+    "Recipe for Distraction",
+    "Fetch the Netch",
+    "Clean Sweep",
+    "It's All In The Taste",
+    "Pain in the Necklace",
+    "Feeding the Addiction",
+    "First Edition",
+    "Elmus Favor Quest",
+    "Elmus Favor Quest",
+    "Halbarn Favor Quest",
+    "Hilund Favor Quest",
+    "Old Friends",
+    "From the Ashes",
+    "Healing a House",
+    "Lost Knowledge",
+    "Heart Stones",
+    "Telvanni Research",
+    "Wind and Sand",
+    "Experimental Subject",
+    "Briarheart Necropsy",
+    "Azra's Staffs",
+    "Hunting and Gathering",
+    "Skaal Village Dialogue",
+    "No One Escapes Cidhna Mine"
+   ],
+   "D3": [
+    "The Final Descent"
+   ],
+   "D7": [
+    "Thirsk Rumors"
+   ],
+   "D2 person talk": [
+    "The Chief of Thirsk Hall",
+    "Kolbjorn Barrow Misc Objectives",
+    "Siege on the Dragon Cult",
+    "Dark Ancestor"
+   ],
+   "G3/D6 records win": [
+    "Halbarn Favor Quest"
+   ],
+   "G2/D5": [
+    "A New Debt"
+   ],
+   "G1 one dispatcher": [
+    "Experimental Subject",
+    "Repairing the Phial"
+   ],
+   "G1 unsettled": [
+    "A New Source of Stalhrim"
+   ],
+   "G4/D4": [
+    "Black Book",
+    "Blood on the Ice"
+   ],
+   "D12 several givers": [
+    "Shiv"
+   ],
+   "G5": [
+    "DialogueCidhnaMine"
    ]
   }
  }

@@ -106,7 +106,8 @@ class QuestTruth(unittest.TestCase):
 
     def test_waiting_rows_still_differ(self):
         with open(TRUTH, encoding="utf-8") as f:
-            truth = {r["quest"]: r for r in json.load(f)["quests"]}
+            # by name, but never the loop's own row for another quest of the same name (Blood on the Ice: MS11's row, not MS11b's)
+            truth = {r["quest"]: r for r in json.load(f)["quests"] if "WO-138 Part 2" not in r.get("notes", "")}
         quests = by_edid()
         passing = []
         for name in WAITING_ON_BOB:

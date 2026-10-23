@@ -327,3 +327,35 @@ Under it all, the comparison counted the first step's person as the page's giver
 - **The Civil War's radiant templates named by alias text are a class:** The Battle for the fort (both), The name location, Attack the capital, Defend the capital, Battle for the city, Rescue from the attack point. They're counted as the class and off D7's files-only count; Mac shows them once under the line.
 
 **Batches 1 to 5 now:** 181 key rows from the loop, 119 passing now and 62 waiting on Mac (G1 18, G2 28, G3 3, G4 13).
+
+
+### Batch 6 (Raven Rock, Thirsk, Tel Mithryn, Solstheim, the Reach), and decisions version 5
+
+Rex's sample came back with 3 of 6 CHANGES NEEDED, two of them rules, so the batch stopped until the fixes were in. Batches 1 to 6 were then re-sorted from the last commit.
+- **D13. A page with several quests:** its infobox giver is the page's main quest's (the first ID in its ID field). For any other quest on the page, UESP is silent on the giver.
+  - The Final Descent's Crescius had become its Priest quest's "dispatcher", and Unearthed's Ralis the misc pointer's "sentBy".
+  - The first step was already read from each quest's own stage table (version 4).
+- **D11, the second clause (Bob 08:30):** a setter counts as a played quest only if it has shown an objective by the stage it fires from (an objective's index stands for its stage).
+  - Unearthed at stage 10 (first objective 40) isn't visible, so Geldis's talk is Kolbjorn Barrow's way in: a key row with Geldis Sadri.
+  - G2 also needs at least one played setter, and no handler on the way with a talk.
+- **D14. G1's dispatcher clause, only for radiant jobs:** UESP's first objective has a placeholder, UESP's giver says "Radiant", or only story-manager nodes start it (the Companions' Escaped Criminal, Striking the Heart, Retrieval, Totems of Hircine; Experimental Subject).
+  - For any other quest whose page names no giver while UESP names one, the starters decide:
+    - UESP's person's own talk starts it: the page misses them, so it waits on Mac (G1).
+    - UESP's person is the first step's: a no-giver row (Repairing the Phial).
+    - Neither: not checked, both readings (A New Source of Stalhrim: its only setter is a helper the records list as no quest, started by a scene, so who sets it isn't traced).
+- **D12. Several people's own lines start it and UESP names none ("Radiant"): no single giver** (G1's several-dispatchers form). A no-giver row, waiting on Mac when the page names one of them.
+  - Touched: College Objective Quest; Reparations; Imperial Introductions; Shiv.
+  - This corrects the 08:30 entry above: Reparations isn't "a key row with Mercer Frey" but a no-giver row (Mercer, Brynjolf and Delvin's own lines), which fits Bob's "Ask Mercer, Brynjolf or Delvin" (Rex caught the mismatch).
+- **D15. D4 comes before "not checked":** a quest whose page has a way naming no one waits on Mac's G4, with UESP's giver as the one it should have (A False Front, Compelling Tribute).
+- **`sentBy` is never the first step's person.** A G2 row says "UESP's X is the first step" when that's who UESP names.
+- **The stage-table reader:**
+  - a table row runs until the next line that starts with "|", so an "Unknown" mark covers both objectives in Fetch the Netch's row;
+  - `<Global=…>` is a filled-in slot like `<Alias=…>`;
+  - the count comes off before the text is split at a slot ("(<Global>/5)").
+  - Fetch the Netch agrees now; Rex was right that it never differed.
+- **Not fixed:** UESP's "Riekling Chief" doesn't map to the records' "Riekling" (the same actor, Dragonborn.esm:01A508), so The Chief of Thirsk Hall is sorted under D2. The outcome is right; the name matcher has no ref IDs to match by.
+
+**Batches 1 to 6 under version 5:**
+- 218 key rows from the loop: 151 passing now and 67 waiting on Mac (G1 18, G2 29, G3 3, G4 17).
+- 8 background (G5), 6 files-only (D7), 7 in the Civil War's radiant class.
+- 1 not checked (A New Source of Stalhrim).

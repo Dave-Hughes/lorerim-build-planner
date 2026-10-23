@@ -20,7 +20,7 @@
   "MQ203": {
    "quest": "Alduin's Wall",
    "waitingOn": "G2",
-   "why": "G2: the page names Esbern; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Esbern is sentBy"
+   "why": "G2: the page names Esbern; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Esbern is the first step"
   },
   "MQ204": {
    "quest": "The Throat of the World",
@@ -30,7 +30,7 @@
   "MQ205": {
    "quest": "Elder Knowledge",
    "waitingOn": "G2",
-   "why": "G2: the page names Paarthurnax; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Paarthurnax is sentBy"
+   "why": "G2: the page names Paarthurnax; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Paarthurnax is the first step"
   },
   "MQ302": {
    "quest": "Season Unending",
@@ -40,7 +40,7 @@
   "MQ303": {
    "quest": "The World-Eater's Eyrie",
    "waitingOn": "G2",
-   "why": "G2: the page names Odahviing; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Odahviing is sentBy"
+   "why": "G2: the page names Odahviing; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Odahviing is the first step"
   },
   "MQPaarthurnax": {
    "quest": "Paarthurnax",
@@ -50,7 +50,7 @@
   "DLC1VQ02": {
    "quest": "Bloodline",
    "waitingOn": "G2",
-   "why": "G2: the page names Serana; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Serana is sentBy"
+   "why": "G2: the page names Serana; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Serana is the first step"
   },
   "DLC1VQ03Vampire": {
    "quest": "Prophet",
@@ -80,7 +80,7 @@
   "DLC2MQ03": {
    "quest": "The Fate of the Skaal",
    "waitingOn": "G2",
-   "why": "G2: the page names Frea; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Frea is sentBy"
+   "why": "G2: the page names Frea; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Frea is the first step"
   },
   "DLC2MQ04": {
    "quest": "The Path of Knowledge",
@@ -94,8 +94,8 @@
   },
   "C02": {
    "quest": "Brotherhood",
-   "waitingOn": "G1",
-   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Skjor. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "CR01": {
    "quest": "Animal Extermination",
@@ -145,12 +145,12 @@
   "MG04": {
    "quest": "Good Intentions",
    "waitingOn": "G2",
-   "why": "G2: the page names Urag gro-Shub; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Tolfdir is sentBy"
+   "why": "G2: the page names Urag gro-Shub; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Tolfdir is the first step"
   },
   "mg06": {
    "quest": "Revealing the Unseen",
    "waitingOn": "G2",
-   "why": "G2: the page names Savos Aren; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mirabelle Ervine is sentBy"
+   "why": "G2: the page names Savos Aren; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mirabelle Ervine is the first step"
   },
   "MG07": {
    "quest": "The Staff of Magnus",
@@ -175,7 +175,7 @@
   "TG02": {
    "quest": "Loud and Clear",
    "waitingOn": "G2",
-   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is sentBy"
+   "why": "G2: the page names Brynjolf; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Brynjolf is the first step"
   },
   "TG03": {
    "quest": "Dampened Spirits",
@@ -190,7 +190,7 @@
   "TG05": {
    "quest": "Speaking With Silence",
    "waitingOn": "G2",
-   "why": "G2: the page names Mercer Frey; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mercer Frey is sentBy"
+   "why": "G2: the page names Mercer Frey; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mercer Frey is the first step"
   },
   "TG06": {
    "quest": "Hard Answers",
@@ -200,7 +200,7 @@
   "TG07": {
    "quest": "The Pursuit",
    "waitingOn": "G2",
-   "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is sentBy"
+   "why": "G2: the page names Karliah; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Karliah is the first step"
   },
   "TG08A": {
    "quest": "Trinity Restored",
@@ -270,22 +270,22 @@
   "DB04a": {
    "quest": "The Silence Has Been Broken",
    "waitingOn": "G2",
-   "why": "G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is sentBy G3: the records' first step is 'Report back to Astrid' (stage 40, Skyrim.esm:02AD16); UESP's first is 'Speak with Astrid' (stage 5), and the starters (Start) don't all set a later stage directly. Mac's Part 4."
+   "why": "G2: the page names Cicero; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Astrid is the first step G3: the records' first step is 'Report back to Astrid' (stage 40, Skyrim.esm:02AD16); UESP's first is 'Speak with Astrid' (stage 5), and the starters (Start) don't all set a later stage directly. Mac's Part 4."
   },
   "CW00A": {
    "quest": "Imperial Introductions",
-   "waitingOn": "G4",
-   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "waitingOn": "G1",
+   "why": "D12: 4 people's own lines start it (Alvor, General Tullius, Hadvar, Legate Rikke); the page names only Legate Rikke. Mac's G1 names them all, no single giver. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
   },
   "CW02A": {
    "quest": "The Jagged Crown",
    "waitingOn": "G2",
-   "why": "G2: the page names General Tullius; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is sentBy"
+   "why": "G2: the page names General Tullius; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Legate Rikke is the first step"
   },
   "CW02B": {
    "quest": "The Jagged Crown",
    "waitingOn": "G2",
-   "why": "G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Galmar Stone-Fist is sentBy"
+   "why": "G2: the page names Galmar Stone-Fist; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Galmar Stone-Fist is the first step"
   },
   "CW03": {
    "quest": "Message to Whiterun",
@@ -294,23 +294,48 @@
   },
   "CWMission03": {
    "quest": "A False Front",
-   "waitingOn": "G1",
-   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Legate Rikke. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Legate Rikke). Mac names the speaker or drops the way."
   },
   "CWMission07": {
    "quest": "Compelling Tribute",
-   "waitingOn": "G1",
-   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Legate Rikke. Mac's Part 4 names them. G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (Legate Rikke). Mac names the speaker or drops the way."
   },
   "DA14": {
    "quest": "A Night To Remember",
    "waitingOn": "G4",
-   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+   "why": "G4: a way says 'someone the records don't name'; the giver it should have is UESP's (none). Mac names the speaker or drops the way."
   },
   "DA11Intro": {
    "quest": "Investigate the Hall of the Dead",
    "waitingOn": "G3",
    "why": "G3: the records' first step is 'Investigate the Hall of the Dead' (stage 10, Skyrim.esm:07D949); UESP's first is 'Speak to Verulus about the Hall of the Dead' (stage 5), and the starters (SetStage 10; SetStage 10; SetStage 10; a start with no stage) don't all set a later stage directly. Mac's Part 4."
+  },
+  "DLC2TT1b": {
+   "quest": "A New Debt",
+   "waitingOn": "G2",
+   "why": "G2: the page names Talvas Fathryon; every starter is another quest's stage. Mac's G2 makes it 'After <that quest>', no giver; UESP's Mogrul is the first step"
+  },
+  "DLC2TTR4a": {
+   "quest": "Experimental Subject",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Neloth. Mac's Part 4 names them."
+  },
+  "DLC2WE06": {
+   "quest": "Black Book",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MS11b": {
+   "quest": "Blood on the Ice",
+   "waitingOn": "G4",
+   "why": "G4: a way says 'someone the records don't name'; Mac names the speaker or drops the way."
+  },
+  "MS12b": {
+   "quest": "Repairing the Phial",
+   "waitingOn": "G1",
+   "why": "G1: the page names no giver; the job's one dispatcher on UESP is Quintus Navale. Mac's Part 4 names them."
   }
  }
 }
