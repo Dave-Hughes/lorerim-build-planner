@@ -75,5 +75,17 @@ class StoriesTest(unittest.TestCase):
         self.assertFails(broken(lambda s: s["reward"].update(checked=None)), "reward is checked None")
 
 
+class KeptStoriesTest(unittest.TestCase):
+    """WO-142 item 11: the hand-kept stories pass the check against the quest lines as they are built, so build.py runs clean."""
+
+    def test_every_kept_story_is_sound_against_quests_json(self):
+        import json
+        root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        kept = json.load(open(os.path.join(root, "gamedata", "5.0.4.8", "stories.json"), encoding="utf-8"))["stories"]
+        lines = {l["id"]: l for l in json.load(open(os.path.join(root, "src", "data", "lorerim-5.0.4.8", "quests.json"), encoding="utf-8"))["lines"]}
+        problems = [p for story in kept for p in stories.check_story(story, lines)]
+        self.assertEqual(problems, [])
+
+
 if __name__ == "__main__":
     unittest.main()

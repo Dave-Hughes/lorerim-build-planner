@@ -928,39 +928,9 @@
           "hidden": true
         },
         {
-          "edid": "TG00MiscHandler",
-          "task": "TG00 Misc Handler",
-          "checked": "files",
-          "hidden": true
-        },
-        {
           "edid": "TG02B",
           "task": "Learn more about the Thieves Guild from Vex",
           "checked": "files"
-        },
-        {
-          "edid": "TG03SP",
-          "task": "Dampened Spirits Scene Quest",
-          "checked": "files",
-          "hidden": true
-        },
-        {
-          "edid": "TG04EECHandler",
-          "task": "East Empire Warehouse Dialogue and Handler",
-          "checked": "files",
-          "hidden": true
-        },
-        {
-          "edid": "TG04Post",
-          "task": "Scoundrel's Folly Post",
-          "checked": "files",
-          "hidden": true
-        },
-        {
-          "edid": "TGCrownMisc",
-          "task": "No Stone Unturned Misc Handler",
-          "checked": "files",
-          "hidden": true
         },
         {
           "edid": "TGFenceCaravan",
@@ -1558,18 +1528,6 @@
           "edid": "DLC01SoulCairnHorseQuest2",
           "task": "Find Arvak's skull in the Soul Cairn",
           "checked": "files"
-        },
-        {
-          "edid": "DLC1Radiant",
-          "task": "\"Parent\" quest for Radiant Content",
-          "checked": "files",
-          "hidden": true
-        },
-        {
-          "edid": "DLC1VQ05SoulGemHandler",
-          "task": "Beyond Death Soul Gem Handler",
-          "checked": "files",
-          "hidden": true
         },
         {
           "edid": "DLC1VQDragon",
