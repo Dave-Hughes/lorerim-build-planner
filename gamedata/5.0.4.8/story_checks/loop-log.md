@@ -199,3 +199,84 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
 - Rex (fresh, on Bound Until Death, Blindsighted, Destroy the Dark Brotherhood!, Meet the Family): PASS on all four. Its other notes: "Through Dark Brotherhood" as a way; Bound Until Death's place may be the Abandoned Shack where it should be the Dawnstar Sanctuary (to check in the files).
 
 **Stop:** batches 2, 3 and 4 each put more than 30% on the needs-Bob list (75%, 35%, 50%). That's WO-132's second stop condition. Report: `loop-report-2026-10-23.md`. Batches 5 to 9 are compared read-only in the report, not written.
+
+## Decisions (WO-138 Part 5)
+
+From here the PC decides pattern questions itself. Each decision gives its reason and the quests it touched (batches 1 to 4 here; later batches below). `story_checks/wo138-decisions.json` lists them by batch, so if Bob overturns a decision, the fix is one rerun of `pyread/uesp138.py settle <n>`.
+
+The loop's rows that wait on Mac live in `gamedata/5.0.4.8/quest_truth_loop.json`, which `test_quest_truth.py` now reads alongside its own lists. Each must still fail until Mac's Part 4 lands.
+
+**Version 2, after Rex.** The first version (D1 to D8) got CHANGES NEEDED on D1, D2, D5, D6 and D7. Rex was right on each:
+- D1 passed any second person and labelled them all `sentBy`.
+- D2 kept a giver where another quest's ending starts the quest.
+- D5 let a no-giver row pass while the page still said "Ask <speaker>".
+- D6 read UESP's "Unknown" stage as the first stage and hid a giver gap behind `DIFFERS`.
+- D7 missed pages behind redirects, disambiguation pages and UESP's Unfinished Quests.
+
+Under it all, the comparison counted the first step's person as the page's giver, which made The Fallen "agree" on Paarthurnax. All of these are fixed, and batches 1 to 4 were re-sorted from the last commit.
+
+**Version 3, after Rex's re-review** (D0, D2 to D9 passed). Four fixes:
+- "a starter's speaker" is now defined (below);
+- D1b also needs the page's giver to set the quest off;
+- G1's one-dispatcher clause is for radiant jobs only: a story quest that another quest's stage starts rightly names no giver (A New Order, The Way of the Voice);
+- D5 reads the page's `who` and ways, never its first step.
+
+**Bob's, Part 3 (the first decisions, applied as written):**
+- **R1 to R4** are wording rules for the pages (Mac's Part 4; R4 by hand). The loop doesn't change them.
+- **G1:** see D1, and for radiant jobs:
+  - one dispatcher the page doesn't name: a key row with that giver, waiting on Mac, but only for a radiant job. When every starter is another quest's stage, the quest is a story quest: a no-giver row (G2's form), and UESP's giver is who you go to. Touched (batches 1 to 4): Before the Storm, Dragon Rising, The Way of the Voice, The Horn of Jurgen Windcaller, Season Unending, Dragonslayer, A New Order, Prophet (both), Touching the Sky, At the Summit of Apocrypha, Under Saarthal;
+  - several dispatchers: a no-giver row;
+  - one dispatcher whom the page's first step already names: a key row.
+- **G2:** see D5.
+- **G3:** the records' objective text wins over UESP's paraphrase; see D6.
+- **G4:** see D4.
+- **G5:** handlers and helpers with no UESP page are background: counted, never a key row.
+  - Bob also named Prophet's two halves, but the lookup now finds their page (the Prophet disambiguation page leads to both IDs), so they're compared like any quest.
+- **G6:** a key row confirms the giver and first step only.
+
+**The PC's:**
+- **D0. The page's giver is its `who`, else its first way's person, never the first step's person.**
+  - Why: the planner's first step names whoever you go and see, not who starts the quest. Counting that person made false agreements (The Fallen).
+- **A starter's speaker** is a person whose own dialogue line sets this quest's stage (a `dialogue` row in the start check's `startedBy`). A person whose line sets a stage of another quest, which then sets this one (a `throughStage` under a `quest script` row), isn't one: that's another quest's ending, G2's case (Rex). Muiri, for instance, sets Mourning Never Comes' stage 50, which only sets Whispers in the Dark's empty stage 1.
+- **D1. UESP and the page name different people. The start check's starters decide which case of G1 it is:**
+  - **D1a.** UESP's giver is a starter's speaker (their talk sets the quest off). If the page's giver is a starter too, both stand (Delayed Burial). If not, the page is wrong: a row with UESP's giver, waiting on Mac (Whispers in the Dark: Astrid's own line sets stage 10; Muiri's only reaches the empty stage 1 through Mourning Never Comes).
+  - **D1b.** UESP's giver is the first step's person: named in the first step, or its `thenWho`. That's the person you speak to, not a sender. Both stand, with no `sentBy`, provided the page's giver is a starter's speaker; otherwise D1d (Proving Honor, The Silver Hand, Blood's Honor, TG00 Maul Handler, To Kill an Empire).
+  - **D1c.** The page's giver is a starter's speaker and UESP's is neither: UESP's sends you there, so `sentBy` (Awakening).
+  - **D1d.** None of these: not checked, both readings on the needs-Bob list (The Path of Knowledge).
+  - Why: Rex showed that "both are people" covered three different cases and labelled them all wrong. The starters are the records' answer to who sets it off.
+- **D2. UESP names no person and doesn't say it starts by itself: the records decide.** If the page's giver is a starter's speaker (their own talk sets it), it stands. Otherwise it's not checked, with both readings.
+  - Why: an empty infobox is UESP saying nothing. Rex's point stands: The Fallen's "giver" was another quest's ending, and D0 now makes it a no-giver row.
+  - Touched: Dragon Research, Impatience of a Saint, Rogue Wizard, College Objective Quest, Filling Soul Gems.
+- **D3. UESP has no stage table: the giver is compared, and the first step is the records' own.** The row's notes say UESP didn't confirm the step.
+  - Touched: Tolfdir the Absent-Minded, Restocking Soul Gems, Research Thief.
+- **D4. G4 quests (a way says "someone the records don't name") get no key row until Mac names the speaker or drops the way.**
+  - Why: G4 says such a page never agrees, and the key test reads only the giver and first step.
+  - Touched: Dragon Rising, The Horn of Jurgen Windcaller, Season Unending, Paarthurnax, Prophet, Touching the Sky, Scroll Scouting, Cultists vs Player, Brotherhood, Under Saarthal, The Eye of Magnus, Shalidor's Insights, Rejoining the College.
+- **D5. G2: when another quest's stage starts it (every starter is another quest's script), or UESP says it starts by itself, and the page still names a person in its `who` or its ways (not its first step, which G2 lets name them), there's no row until Mac's G2 makes the page "After <that quest>".**
+  - Why: a no-giver row would pass the test while the page says "Ask <speaker>" (Rex).
+  - Reparations is here too, though Bob's R3 allows its "Ask Mercer, Brynjolf or Delvin". Its condition is really "after the Guild bans you" (`TGBanToggle`), which the page should say.
+  - Touched: Chasing Echoes, Seeking Disclosure, The Temple of Miraak, Good Intentions, Revealing the Unseen, Reparations, No Stone Unturned, The Silence Has Been Broken.
+- **D6. First steps.**
+  - UESP's first objective is the lowest stage's, leaving out stages UESP marks "Unknown" and optional objectives.
+  - When the page's step is a later UESP objective:
+    - if every starter sets the page's stage or later directly, the records win;
+    - otherwise UESP's earlier stage is reachable, and the row carries UESP's step, waiting on Mac (rule 1).
+  - When the records win (by that test, or because their own wording differs from UESP's), the row holds the records' step. It doesn't go in `DIFFERS`, so the giver is still tested (Rex: `DIFFERS` skips the whole row). UESP's wording is in the notes.
+  - Records win: Diplomatic Immunity, A Cornered Rat, Paarthurnax, Dragon Research, Forgotten Vale Books Quest, Cultists vs Player, Brotherhood, Alteration Ritual Spell, Delayed Burial. Reachable: Under Saarthal, TG00 Maul Handler.
+  - A New Order agrees on the step now ("Speak with Isran") and is a no-giver row passing now: Bloodline's stages start it (G1 above).
+- **D7. No UESP page at all (a 404, after redirects, disambiguation pages and UESP's Unfinished Quests sections), and not a handler: files-only, counted.**
+  - Touched: Power of the Blood.
+- **D8. The matching rules stay:**
+  - an alias slot stands for any words;
+  - the count's first number is ignored;
+  - a giver must be a person the planner knows;
+  - "Automatic after…" is no giver.
+- **D9. The lookup follows a disambiguation page to the version that lists the editor ID, and reads a quest's own section of UESP's Unfinished Quests page.**
+  - It also retries a refused page with its letters encoded, because UESP's firewall refused three pages whose titles contain "Research" (HTTP 403). My first runs had cached those refusals as "no page".
+
+**Batches 1 to 4 under version 2:**
+- 130 key rows: 114 passing now, 16 waiting on Mac (14 radiant jobs' one dispatcher, Whispers in the Dark, TG00 Maul Handler's rule 1 step). The two Animal Extermination quests share one name in the waiting list.
+- No row until Mac: 8 for G2, 13 for G4.
+- 7 background (G5), 1 files-only.
+- 1 not checked: The Path of Knowledge, on the needs-Bob list.
+- No row from before this loop changed.

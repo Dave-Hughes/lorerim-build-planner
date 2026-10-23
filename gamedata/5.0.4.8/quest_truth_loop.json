@@ -1,0 +1,21 @@
+{
+ "about": "WO-138 Part 2: the loop's DIFFERS and waiting rows (test_quest_truth.py reads them)",
+ "differs": {},
+ "waiting": {
+  "Animal Extermination": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.",
+  "Hired Muscle": "G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.",
+  "Trouble in Skyrim": "G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.",
+  "Striking the Heart": "G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them.",
+  "Retrieval": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.",
+  "Totems of Hircine": "G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.",
+  "The Burglary Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
+  "The Shill Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
+  "The Numbers Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
+  "The Fishing Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
+  "The Sweep Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
+  "The Bedlam Job": "G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.",
+  "The Heist Job": "G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.",
+  "TG00 Maul Handler": "G3: the records' first step is 'Talk to Brynjolf about joining the Thieves Guild' (stage 10, Skyrim.esm:064A14); UESP's first is 'Meet Brynjolf during daytime' (stage 8), and the starters (Start) don't set a later stage directly. Mac's Part 4.",
+  "Whispers in the Dark": "D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4."
+ }
+}

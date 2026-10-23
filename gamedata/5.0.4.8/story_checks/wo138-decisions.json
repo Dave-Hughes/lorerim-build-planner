@@ -1,0 +1,309 @@
+{
+ "about": "WO-138 Part 5: which quests each decision touched, by batch",
+ "batches": {
+  "1": {
+   "G1/G2 started by another quest": [
+    "Before the Storm",
+    "Dragon Rising",
+    "The Way of the Voice",
+    "The Horn of Jurgen Windcaller",
+    "Season Unending",
+    "Dragonslayer",
+    "A New Order"
+   ],
+   "agree": [
+    "Bleak Falls Barrow",
+    "A Blade in the Dark",
+    "Diplomatic Immunity",
+    "A Cornered Rat",
+    "Alduin's Wall",
+    "The Throat of the World",
+    "Elder Knowledge",
+    "Alduin's Bane",
+    "The Fallen",
+    "The World-Eater's Eyrie",
+    "Sovngarde",
+    "Paarthurnax",
+    "The Words of Power",
+    "Rebuilding the Blades",
+    "Dragon Hunting",
+    "Bolstering the Ranks",
+    "Hide and Seek",
+    "Cleansing Light",
+    "Preemptive Strike",
+    "Hunting the Monster",
+    "Ancient Technology",
+    "Rescue",
+    "A Jarl's Justice",
+    "Lost Relic",
+    "The Hunt",
+    "Culling the Beast",
+    "Deceiving the Herd",
+    "Protecting the Bloodline",
+    "Ancient Power",
+    "The Gift",
+    "New Allegiances",
+    "Rings of Blood Magic"
+   ],
+   "G4/D4": [
+    "Dragon Rising",
+    "The Horn of Jurgen Windcaller",
+    "Season Unending",
+    "Paarthurnax"
+   ],
+   "G3/D6 records win": [
+    "Diplomatic Immunity",
+    "A Cornered Rat",
+    "Paarthurnax",
+    "Dragon Research"
+   ],
+   "D2 person talk": [
+    "Dragon Research"
+   ],
+   "no row: Mac (G4)": [
+    "Dragon Rising",
+    "The Horn of Jurgen Windcaller",
+    "Season Unending",
+    "Paarthurnax"
+   ]
+  },
+  "2": {
+   "agree": [
+    "Amulets of Night Power",
+    "Destroying the Dawnguard",
+    "Bloodline",
+    "Beyond Death",
+    "Kindred Judgment",
+    "Scroll Scouting",
+    "Soul Cairn Horse Quest",
+    "Durnehviir",
+    "The Fate of the Skaal",
+    "Cleansing the Stones",
+    "The Gardener of Men",
+    "Cultists vs Player"
+   ],
+   "D1c sentBy": [
+    "Awakening"
+   ],
+   "G1/G2 started by another quest": [
+    "Prophet",
+    "Prophet",
+    "Touching the Sky",
+    "At the Summit of Apocrypha"
+   ],
+   "G4/D4": [
+    "Prophet",
+    "Touching the Sky",
+    "Scroll Scouting",
+    "Cultists vs Player",
+    "Brotherhood"
+   ],
+   "G2/D5": [
+    "Chasing Echoes",
+    "Seeking Disclosure",
+    "The Temple of Miraak"
+   ],
+   "D2 person talk": [
+    "Impatience of a Saint"
+   ],
+   "G5": [
+    "\"Parent\" quest for Radiant Content",
+    "Beyond Death Soul Gem Handler"
+   ],
+   "G1 first step": [
+    "Forgotten Vale Books Quest"
+   ],
+   "G3/D6 records win": [
+    "Forgotten Vale Books Quest",
+    "Cultists vs Player",
+    "Brotherhood"
+   ],
+   "D7": [
+    "Power of the Blood"
+   ],
+   "D1d unsettled": [
+    "The Path of Knowledge"
+   ],
+   "D1b first step": [
+    "Proving Honor",
+    "The Silver Hand",
+    "Blood's Honor"
+   ],
+   "G1 one dispatcher": [
+    "Brotherhood",
+    "Animal Extermination",
+    "Animal Extermination",
+    "Hired Muscle",
+    "Trouble in Skyrim",
+    "Striking the Heart",
+    "Retrieval"
+   ],
+   "G1 several": [
+    "Family Heirloom",
+    "Escaped Criminal",
+    "Rescue Mission",
+    "Stealing Plans"
+   ],
+   "no row: Mac (G4)": [
+    "Prophet",
+    "Touching the Sky",
+    "Scroll Scouting",
+    "Cultists vs Player",
+    "Brotherhood"
+   ],
+   "no row: Mac (G2)": [
+    "Chasing Echoes (the page names Lord Harkon; the start check's starters are other quests' stages)",
+    "Seeking Disclosure (the page names Lord Harkon; the start check's starters are other quests' stages)",
+    "The Temple of Miraak (the page names Frea; UESP: Automatic after completing Dragonborn)"
+   ]
+  },
+  "3": {
+   "G1 one dispatcher": [
+    "Totems of Hircine"
+   ],
+   "agree": [
+    "Purity",
+    "Hitting the Books",
+    "The Staff of Magnus",
+    "The Eye of Magnus",
+    "Shalidor's Insights",
+    "Aftershock",
+    "Brelyna's Practice",
+    "J'zargo's Experiment",
+    "Onmund's Request",
+    "Arniel's Endeavor",
+    "Arniel's Endeavor",
+    "Arniel's Endeavor",
+    "Arniel's Endeavor",
+    "Rejoining the College",
+    "Destruction Ritual Spell",
+    "Illusion Ritual Spell",
+    "Conjuration Ritual Spell",
+    "Restoration Ritual Spell",
+    "Alteration Ritual Spell",
+    "Tolfdir the Absent-Minded",
+    "Out of Balance",
+    "Enchanting Pick-Up",
+    "Restocking Soul Gems",
+    "Fetch me that Book!",
+    "Fetch me that Book!",
+    "Research Thief",
+    "Loud and Clear",
+    "Dampened Spirits",
+    "Scoundrel's Folly",
+    "Speaking With Silence",
+    "Hard Answers",
+    "The Pursuit"
+   ],
+   "G1 several": [
+    "Dragon Seekers"
+   ],
+   "G1/G2 started by another quest": [
+    "Under Saarthal"
+   ],
+   "G3/D6 earlier stage reachable": [
+    "Under Saarthal"
+   ],
+   "G4/D4": [
+    "Under Saarthal",
+    "The Eye of Magnus",
+    "Shalidor's Insights",
+    "Rejoining the College"
+   ],
+   "G2/D5": [
+    "Good Intentions",
+    "Revealing the Unseen"
+   ],
+   "G3/D6 records win": [
+    "Alteration Ritual Spell"
+   ],
+   "D2 person talk": [
+    "Rogue Wizard",
+    "College Objective Quest",
+    "Filling Soul Gems"
+   ],
+   "D3": [
+    "Tolfdir the Absent-Minded",
+    "Restocking Soul Gems",
+    "Research Thief"
+   ],
+   "no row: Mac (G4)": [
+    "Under Saarthal",
+    "The Eye of Magnus",
+    "Shalidor's Insights",
+    "Rejoining the College"
+   ],
+   "no row: Mac (G2)": [
+    "Good Intentions (the page names Urag gro-Shub; the start check's starters are other quests' stages)",
+    "Revealing the Unseen (the page names Savos Aren; the start check's starters are other quests' stages)"
+   ]
+  },
+  "4": {
+   "agree": [
+    "Trinity Restored",
+    "Blindsighted",
+    "Darkness Returns",
+    "Meet the Family",
+    "Thieves Guild Caravan Fence Quest",
+    "The Litany of Larceny",
+    "Paid in Full",
+    "With Friends Like These...",
+    "Sanctuary",
+    "Mourning Never Comes",
+    "Bound Until Death",
+    "Breaching Security",
+    "The Cure for Madness",
+    "Recipe for Disaster",
+    "Death Incarnate",
+    "Hail Sithis!",
+    "Destroy the Dark Brotherhood!",
+    "Honor Thy Family",
+    "Contract: Kill Narfi",
+    "Contract: Kill Ennodius Papius",
+    "Contract: Kill Beitild"
+   ],
+   "G2/D5": [
+    "Reparations",
+    "No Stone Unturned",
+    "The Silence Has Been Broken"
+   ],
+   "G1 one dispatcher": [
+    "The Burglary Job",
+    "The Shill Job",
+    "The Numbers Job",
+    "The Fishing Job",
+    "The Sweep Job",
+    "The Bedlam Job",
+    "The Heist Job"
+   ],
+   "D1b first step": [
+    "TG00 Maul Handler",
+    "To Kill an Empire"
+   ],
+   "G3/D6 earlier stage reachable": [
+    "TG00 Maul Handler"
+   ],
+   "G5": [
+    "TG00 Misc Handler",
+    "Dampened Spirits Scene Quest",
+    "East Empire Warehouse Dialogue and Handler",
+    "Scoundrel's Folly Post",
+    "No Stone Unturned Misc Handler"
+   ],
+   "D1a both set it off": [
+    "Delayed Burial"
+   ],
+   "G3/D6 records win": [
+    "Delayed Burial"
+   ],
+   "D1a setter, the page is wrong": [
+    "Whispers in the Dark"
+   ],
+   "no row: Mac (G2)": [
+    "Reparations (the page names Mercer Frey; UESP: Automatic after assaulting against to member Thieves Guild)",
+    "No Stone Unturned (the page names Maul; UESP: Quest received upon finding the first \"Unusual Gem\".)",
+    "The Silence Has Been Broken (the page names Cicero; the start check's starters are other quests' stages)"
+   ]
+  }
+ }
+}

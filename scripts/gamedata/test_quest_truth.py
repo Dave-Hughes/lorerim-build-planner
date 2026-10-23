@@ -43,6 +43,16 @@ WAITING_ON_BOB: dict[str, str] = {
     'Blood on the Ice': "Mac, 22 Oct: the first step passes now ('Question the witnesses', from the PC's rerun). Who fails: the PC's rerun lost the guard's words. Its alias, CrimeSceneInvestigator, now resolves to a placed guard with no name of its own, and the check only kept 'a Windhelm guard' when the alias resolved to no one (story_check.py fixed; the PC reruns blood-on-the-ice). Bob, 21 Oct (reversed): the first step is wrong, not the records' wording. The guard's line sets stage 10, whose objective is 'Question the witnesses'; 'Get assistance from the authority figure' (QOBJ 1) is the stage-110 one. WO-121b's rule: then is the objective the starting line's stage shows. WO-121b Part 1 (Mac): rule 1 reads the objective the starting line's stage shows from the check's objectivesShown, which story_check.py now writes; it passes once the PC reruns the check.",
 }
 
+# WO-138 Part 2 (the PC's loop under Bob's G1 to G3): rows the records answer differently (G3: the records' objective wins), and
+# rows waiting on Mac's Part 4 (G1: the page names the radiant job's one dispatcher; G2: a quest that starts by itself names no
+# giver; G3: rule 1 shows the earlier stage UESP lists), each with its reason. Kept in a file, since the loop writes them.
+_LOOP = os.path.join(ROOT, "gamedata", VERSION, "quest_truth_loop.json")
+if os.path.exists(_LOOP):
+    with open(_LOOP, encoding="utf-8") as _f:
+        _loop = json.load(_f)
+    DIFFERS.update(_loop.get("differs", {}))
+    WAITING_ON_BOB.update(_loop.get("waiting", {}))
+
 
 def norm(s):
     return re.sub(r"[^a-z0-9 ]", "", re.sub(r"^(a|an|the) ", "", (s or "").lower().strip())).strip()

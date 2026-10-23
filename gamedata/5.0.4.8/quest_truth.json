@@ -1737,64 +1737,110 @@
    ]
   },
   {
+   "quest": "Before the Storm",
+   "editorId": "MQ102",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to the riverwood friend in Riverwood",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Before_the_Storm",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Hadvar, Ralof is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
    "quest": "Bleak Falls Barrow",
    "editorId": "MQ103",
    "line": "main-quest",
+   "startsWith": [
+    "Balgruuf the Greater"
+   ],
    "firstObjective": "Talk to Farengar",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Bleak_Falls_Barrow_(quest)",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Balgruuf the Greater (UESP: Jarl Balgruuf the Greater); first step: 'Talk to Farengar', UESP's objective at stage 10.",
-   "startsWith": [
-    "Balgruuf the Greater"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Balgruuf the Greater on both."
+  },
+  {
+   "quest": "The Way of the Voice",
+   "editorId": "MQ105",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to the Greybeards",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Way_of_the_Voice",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Jarl Balgruuf the Greater is who you go to (G1 is for radiant jobs, G2)."
   },
   {
    "quest": "A Blade in the Dark",
    "editorId": "MQ106",
    "line": "main-quest",
+   "startsWith": [
+    "Delphine"
+   ],
    "firstObjective": "Talk to Delphine",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:A_Blade_in_the_Dark",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Delphine (UESP: Delphine); first step: 'Talk to Delphine', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 1: giver Delphine on both."
+  },
+  {
+   "quest": "Diplomatic Immunity",
+   "editorId": "MQ201",
+   "line": "main-quest",
    "startsWith": [
     "Delphine"
-   ]
+   ],
+   "firstObjective": "Meet Delphine in Riverwood or storm the Thalmor Embassy",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Diplomatic_Immunity",
+   "notes": "PC, WO-138 Part 2 batch 1: giver Delphine on both; the records' first step is 'Meet Delphine in Riverwood or storm the Thalmor Embassy' (stage 30, Skyrim.esm:035D5F); UESP's is 'Recover your equipment'; the records win (G3): their own words."
+  },
+  {
+   "quest": "A Cornered Rat",
+   "editorId": "MQ202",
+   "line": "main-quest",
+   "startsWith": [
+    "Delphine"
+   ],
+   "firstObjective": "Ask in Riften about Esbern",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Cornered_Rat",
+   "notes": "PC, WO-138 Part 2 batch 1: giver Delphine on both; the records' first step is 'Ask in Riften about Esbern' (stage 10, Skyrim.esm:036191); UESP's is 'Talk to Brynjolf'; the records win (G3): their own words."
   },
   {
    "quest": "Alduin's Wall",
    "editorId": "MQ203",
    "line": "main-quest",
+   "startsWith": [
+    "Esbern"
+   ],
    "firstObjective": "Escort Esbern to Riverwood",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Alduin's_Wall",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Esbern (UESP: Esbern); first step: 'Escort Esbern to Riverwood', UESP's objective at stage 10.",
-   "startsWith": [
-    "Esbern"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Esbern on both."
   },
   {
    "quest": "The Throat of the World",
    "editorId": "MQ204",
    "line": "main-quest",
+   "startsWith": [
+    "Delphine"
+   ],
    "firstObjective": "Talk to Arngeir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Throat_of_the_World",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Delphine (UESP: Delphine); first step: 'Talk to Arngeir', UESP's objective at stage 10.",
-   "startsWith": [
-    "Delphine"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Delphine on both."
   },
   {
    "quest": "Elder Knowledge",
    "editorId": "MQ205",
    "line": "main-quest",
+   "startsWith": [
+    "Paarthurnax"
+   ],
    "firstObjective": "Learn the location of the Elder Scroll",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Elder_Knowledge",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Paarthurnax (UESP: Paarthurnax); first step: 'Learn the location of the Elder Scroll', UESP's objective at stage 10.",
-   "startsWith": [
-    "Paarthurnax"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Paarthurnax on both."
   },
   {
    "quest": "Alduin's Bane",
@@ -1805,19 +1851,30 @@
    "firstObjective": "Read the Elder Scroll at the Time-Wound",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Alduin's_Bane",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: none on either; first step: 'Read the Elder Scroll at the Time-Wound', UESP's objective at stage 10."
+   "notes": "PC, WO-138 Part 2 batch 1: no giver on either."
+  },
+  {
+   "quest": "The Fallen",
+   "editorId": "MQ301",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Talk to Paarthurnax",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Fallen",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver on either."
   },
   {
    "quest": "The World-Eater's Eyrie",
    "editorId": "MQ303",
    "line": "main-quest",
+   "startsWith": [
+    "Odahviing"
+   ],
    "firstObjective": "Set Odahviing free",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_World-Eater's_Eyrie",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Odahviing (UESP: Odahviing); first step: 'Set Odahviing free', UESP's objective at stage 10.",
-   "startsWith": [
-    "Odahviing"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Odahviing on both."
   },
   {
    "quest": "Sovngarde",
@@ -1828,283 +1885,352 @@
    "firstObjective": "Find out how to defeat Alduin",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Sovngarde_(quest)",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: none on either; first step: 'Find out how to defeat Alduin', UESP's objective at stage 10."
+   "notes": "PC, WO-138 Part 2 batch 1: no giver on either."
+  },
+  {
+   "quest": "Dragonslayer",
+   "editorId": "MQ305",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Help the heroes of Sovngarde dispel Alduin's mist",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dragonslayer",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Hakon, Gormlaith, Felldir is who you go to (G1 is for radiant jobs, G2)."
   },
   {
    "quest": "The Words of Power",
    "editorId": "FreeformHighHrothgarA",
    "line": "main-quest",
+   "startsWith": [
+    "Arngeir"
+   ],
    "firstObjective": "Find the Word of Power in the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Words_of_Power",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Arngeir (UESP: Arngeir); first step: 'Find the Word of Power in the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Arngeir"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Arngeir on both."
   },
   {
    "quest": "Rebuilding the Blades",
    "editorId": "FreeformSkyhavenTempleA",
    "line": "main-quest",
+   "startsWith": [
+    "Delphine"
+   ],
    "firstObjective": "Bring a follower to Delphine",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Rebuilding_the_Blades",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Delphine (UESP: Delphine); first step: 'Bring a follower to Delphine', UESP's objective at stage 10.",
-   "startsWith": [
-    "Delphine"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Delphine on both."
   },
   {
    "quest": "Dragon Hunting",
    "editorId": "FreeformSkyHavenTempleB",
    "line": "main-quest",
+   "startsWith": [
+    "Esbern"
+   ],
    "firstObjective": "Kill the Dragon in the dragon lair",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Dragon_Hunting",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Esbern (UESP: Esbern); first step: 'Kill the Dragon in the dragon lair', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 1: giver Esbern on both."
+  },
+  {
+   "quest": "Dragon Research",
+   "editorId": "FreeformSkyHavenTempleD",
+   "line": "main-quest",
    "startsWith": [
     "Esbern"
-   ]
+   ],
+   "firstObjective": "Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dragon_Research",
+   "notes": "PC, WO-138 Part 2 batch 1: giver Esbern; UESP's infobox names no person; the records' first step is 'Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern' (stage 10, Skyrim.esm:0E6DF1); UESP's is 'Bring a Dragon Scale and a Dragon Bone to Esbern'; the records win (G3): their own words."
+  },
+  {
+   "quest": "A New Order",
+   "editorId": "DLC1HunterBaseIntro",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak with Isran",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_New_Order",
+   "notes": "PC, WO-138 Part 2 batch 1: no giver: another quest's stage starts it; UESP's Isran is who you go to (G1 is for radiant jobs, G2)."
   },
   {
    "quest": "Bolstering the Ranks",
    "editorId": "DLC1HunterBaseStage2",
    "line": "dawnguard",
+   "startsWith": [
+    "Sorine Jurard"
+   ],
    "firstObjective": "Speak with Isran",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Bolstering_the_Ranks",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Sorine Jurard (UESP: Sorine Jurard); first step: 'Speak with Isran', UESP's objective at stage 10.",
-   "startsWith": [
-    "Sorine Jurard"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Sorine Jurard on both."
   },
   {
    "quest": "Hide and Seek",
    "editorId": "DLC1RH01",
    "line": "dawnguard",
+   "startsWith": [
+    "Gunmar"
+   ],
    "firstObjective": "Discreetly kill the target",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Hide_and_Seek_(quest)",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: 'Discreetly kill the target', UESP's objective at stage 10.",
-   "startsWith": [
-    "Gunmar"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Gunmar on both."
   },
   {
    "quest": "Cleansing Light",
    "editorId": "DLC1RH02",
    "line": "dawnguard",
+   "startsWith": [
+    "Gunmar"
+   ],
    "firstObjective": "Kill the boss at the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Cleansing_Light",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: 'Kill the boss at the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Gunmar"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Gunmar on both."
   },
   {
    "quest": "Preemptive Strike",
    "editorId": "DLC1RH03",
    "line": "dawnguard",
+   "startsWith": [
+    "Gunmar"
+   ],
    "firstObjective": "Kill the vampire at the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Preemptive_Strike",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: 'Kill the vampire at the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Gunmar"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Gunmar on both."
   },
   {
    "quest": "Hunting the Monster",
    "editorId": "DLC1RH04",
    "line": "dawnguard",
+   "startsWith": [
+    "Gunmar"
+   ],
    "firstObjective": "Find evidence of the vampire's whereabouts",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Hunting_the_Monster",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Gunmar (UESP: Gunmar); first step: \"Find evidence of the vampire's whereabouts\", UESP's objective at stage 10.",
-   "startsWith": [
-    "Gunmar"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Gunmar on both."
   },
   {
    "quest": "Ancient Technology",
    "editorId": "DLC1RH05",
    "line": "dawnguard",
+   "startsWith": [
+    "Sorine Jurard"
+   ],
    "firstObjective": "Retrieve the item from the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Ancient_Technology",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Sorine Jurard (UESP: Sorine Jurard); first step: 'Retrieve the item from the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Sorine Jurard"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Sorine Jurard on both."
   },
   {
    "quest": "Rescue",
    "editorId": "DLC1RH06",
    "line": "dawnguard",
+   "startsWith": [
+    "Florentius Baenius"
+   ],
    "firstObjective": "Rescue the prisoner from the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Rescue",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Florentius Baenius (UESP: Florentius Baenius); first step: 'Rescue the prisoner from the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Florentius Baenius"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Florentius Baenius on both."
   },
   {
    "quest": "A Jarl's Justice",
    "editorId": "DLC1RH07",
    "line": "dawnguard",
+   "startsWith": [
+    "Isran"
+   ],
    "firstObjective": "Warn the jarl about the vampire threat",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:A_Jarl's_Justice",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Isran (UESP: Isran); first step: 'Warn the jarl about the vampire threat', UESP's objective at stage 10.",
-   "startsWith": [
-    "Isran"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Isran on both."
   },
   {
    "quest": "Lost Relic",
    "editorId": "DLC1RH08",
    "line": "dawnguard",
+   "startsWith": [
+    "Florentius Baenius"
+   ],
    "firstObjective": "Retrieve the item from the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Lost_Relic",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Florentius Baenius (UESP: Florentius Baenius); first step: 'Retrieve the item from the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Florentius Baenius"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Florentius Baenius on both."
   },
   {
    "quest": "The Hunt",
    "editorId": "DLC1RV01",
    "line": "dawnguard",
+   "startsWith": [
+    "Fura Bloodmouth"
+   ],
    "firstObjective": "Kill the target",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Hunt",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Fura Bloodmouth (UESP: Fura Bloodmouth, Garan Marethi); first step: 'Kill the target', UESP's objective at stage 10.",
-   "startsWith": [
-    "Fura Bloodmouth"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Fura Bloodmouth on both."
   },
   {
    "quest": "Culling the Beast",
    "editorId": "DLC1RV02",
    "line": "dawnguard",
+   "startsWith": [
+    "Fura Bloodmouth"
+   ],
    "firstObjective": "Kill the boss at the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Culling_the_Beast",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Fura Bloodmouth (UESP: Fura Bloodmouth, Garan Marethi); first step: 'Kill the boss at the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Fura Bloodmouth"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Fura Bloodmouth on both."
   },
   {
    "quest": "Deceiving the Herd",
    "editorId": "DLC1RV03",
    "line": "dawnguard",
+   "startsWith": [
+    "Feran Sadri"
+   ],
    "firstObjective": "Kill someone out in the streets of the city",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Deceiving_the_Herd",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Kill someone out in the streets of the city', UESP's objective at stage 100.",
-   "startsWith": [
-    "Feran Sadri"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Feran Sadri on both."
   },
   {
    "quest": "Protecting the Bloodline",
    "editorId": "DLC1RV04",
    "line": "dawnguard",
+   "startsWith": [
+    "Fura Bloodmouth"
+   ],
    "firstObjective": "Kill the vampire at the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Protecting_the_Bloodline",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Fura Bloodmouth (UESP: Fura Bloodmouth, Garan Marethi); first step: 'Kill the vampire at the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Fura Bloodmouth"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Fura Bloodmouth on both."
   },
   {
    "quest": "Ancient Power",
    "editorId": "DLC1RV05",
    "line": "dawnguard",
+   "startsWith": [
+    "Feran Sadri"
+   ],
    "firstObjective": "Retrieve the remains from the dungeon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Ancient_Power",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Retrieve the remains from the dungeon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Feran Sadri"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Feran Sadri on both."
   },
   {
    "quest": "The Gift",
    "editorId": "DLC1RV06",
    "line": "dawnguard",
+   "startsWith": [
+    "Vingalmo"
+   ],
    "firstObjective": "Mesmerize and turn the spouse into a vampire.",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Gift",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Vingalmo (UESP: Vingalmo); first step: 'Mesmerize and turn the spouse into a vampire.', UESP's objective at stage 10.",
-   "startsWith": [
-    "Vingalmo"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Vingalmo on both."
   },
   {
    "quest": "New Allegiances",
    "editorId": "DLC1RV07",
    "line": "dawnguard",
+   "startsWith": [
+    "Vingalmo"
+   ],
    "firstObjective": "Turn the candidate into a vampire",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:New_Allegiances",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Vingalmo (UESP: Vingalmo); first step: 'Turn the candidate into a vampire', UESP's objective at stage 10.",
-   "startsWith": [
-    "Vingalmo"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Vingalmo on both."
   },
   {
    "quest": "Rings of Blood Magic",
    "editorId": "DLC1RV08",
    "line": "dawnguard",
+   "startsWith": [
+    "Feran Sadri"
+   ],
    "firstObjective": "Retrieve the Ring of the Beast from the location",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Rings_of_Blood_Magic",
-   "notes": "PC, WO-138 Part 2 batch 1: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Retrieve the Ring of the Beast from the location', UESP's objective at stage 110.",
-   "startsWith": [
-    "Feran Sadri"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 1: giver Feran Sadri on both."
   },
   {
    "quest": "Amulets of Night Power",
    "editorId": "DLC1RV09",
    "line": "dawnguard",
+   "startsWith": [
+    "Feran Sadri"
+   ],
    "firstObjective": "Retrieve the Amulet of Bats from the location",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Amulets_of_Night_Power",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Feran Sadri (UESP: Feran Sadri); first step: 'Retrieve the Amulet of Bats from the location', UESP's objective at stage 110.",
-   "startsWith": [
-    "Feran Sadri"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 2: giver Feran Sadri on both."
   },
   {
    "quest": "Destroying the Dawnguard",
    "editorId": "DLC1RV10",
    "line": "dawnguard",
+   "startsWith": [
+    "Garan Marethi"
+   ],
    "firstObjective": "Kill the Dawnguard Leaders",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Destroying_the_Dawnguard",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Garan Marethi (UESP: Garan Marethi, Fura Bloodmouth); first step: 'Kill the Dawnguard Leaders', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Garan Marethi on both."
+  },
+  {
+   "quest": "Awakening",
+   "editorId": "DLC1VQ01",
+   "line": "dawnguard",
    "startsWith": [
-    "Garan Marethi"
-   ]
+    "Vigilant Tolan",
+    "Isran"
+   ],
+   "firstObjective": "Find out what the vampires are seeking",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Awakening",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Vigilant Tolan (a starter's speaker); UESP's Isran sends you (sentBy, G1)."
   },
   {
    "quest": "Bloodline",
    "editorId": "DLC1VQ02",
    "line": "dawnguard",
+   "startsWith": [
+    "Serana"
+   ],
    "firstObjective": "Lead Serana to her home",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Bloodline",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Serana (UESP: Serana); first step: 'Lead Serana to her home', UESP's objective at stage 10.",
-   "startsWith": [
-    "Serana"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 2: giver Serana on both."
+  },
+  {
+   "quest": "Prophet",
+   "editorId": "DLC1VQ03Hunter",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Follow Isran",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Prophet_(Dawnguard)",
+   "notes": "PC, WO-138 Part 2 batch 2: no giver: another quest's stage starts it; UESP's Isran is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "Beyond Death",
+   "editorId": "DLC1VQ05",
+   "line": "dawnguard",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Locate Valerica",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Beyond_Death",
+   "notes": "PC, WO-138 Part 2 batch 2: no giver on either."
   },
   {
    "quest": "Kindred Judgment",
@@ -2115,67 +2241,79 @@
    "firstObjective": "Speak to Serana",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Kindred_Judgment",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: none on either; first step: 'Speak to Serana', UESP's objective at stage 10."
+   "notes": "PC, WO-138 Part 2 batch 2: no giver on either."
   },
   {
-   "quest": "Scroll Scouting",
-   "editorId": "DLC1VQElderHandler",
+   "quest": "Impatience of a Saint",
+   "editorId": "DLC1VQSaint",
    "line": "dawnguard",
-   "firstObjective": "Discover the location of the Elder Scroll (Dragon)",
-   "source": "uesp",
-   "url": "https://en.uesp.net/wiki/Skyrim:Scroll_Scouting",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Dexion Evicus (UESP: Dexion Evicus); first step: 'Discover the location of the Elder Scroll (Dragon)', UESP's objective at stage 10.",
    "startsWith": [
-    "Dexion Evicus"
-   ]
+    "Jiub"
+   ],
+   "firstObjective": "Find pages from Saint Jiub's Opus (0/10)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Impatience_of_a_Saint",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Jiub; UESP's infobox names no person (Soul of Jiub)."
   },
   {
    "quest": "Soul Cairn Horse Quest",
    "editorId": "DLC01SoulCairnHorseQuest2",
    "line": "dawnguard",
+   "startsWith": [
+    "Soul"
+   ],
    "firstObjective": "Find Arvak's skull in the Soul Cairn",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Soul_Cairn_Horse_Quest",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Soul (UESP: Soul); first step: \"Find Arvak's skull in the Soul Cairn\", UESP's objective at stage 20.",
-   "startsWith": [
-    "Soul"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 2: giver Soul on both."
   },
   {
    "quest": "Durnehviir",
    "editorId": "DLC1VQDragon",
    "line": "dawnguard",
+   "startsWith": [
+    "Durnehviir"
+   ],
    "firstObjective": "Summon Durnehviir in Tamriel",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Durnehviir_(quest)",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Durnehviir (UESP: Durnehviir); first step: 'Summon Durnehviir in Tamriel', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Durnehviir on both."
+  },
+  {
+   "quest": "Forgotten Vale Books Quest",
+   "editorId": "DLC1VQFVBooks",
+   "line": "dawnguard",
    "startsWith": [
-    "Durnehviir"
-   ]
+    "Urag gro-Shub"
+   ],
+   "firstObjective": "Bring Ancient Falmer Tome to Urag gro-Shub",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Forgotten_Vale_Books_Quest",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Urag gro-Shub (the page's first step names them); the records' first step is 'Bring Ancient Falmer Tome to Urag gro-Shub' (stage 20, Dawnguard.esm:01A3E4); UESP's is 'Bring Ancient Falmer Tome to'; the records win (G3): their own words."
   },
   {
    "quest": "The Fate of the Skaal",
    "editorId": "DLC2MQ03",
    "line": "dragonborn",
+   "startsWith": [
+    "Frea"
+   ],
    "firstObjective": "Accompany Frea to Skaal Village",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Fate_of_the_Skaal",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Frea (UESP: Frea); first step: 'Accompany Frea to Skaal Village', UESP's objective at stage 10.",
-   "startsWith": [
-    "Frea"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 2: giver Frea on both."
   },
   {
    "quest": "Cleansing the Stones",
    "editorId": "DLC2MQ03B",
    "line": "dragonborn",
+   "startsWith": [
+    "Storn Crag-Strider"
+   ],
    "firstObjective": "Cleanse the Water Stone",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Cleansing_the_Stones",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: Storn Crag-Strider (UESP: Storn Crag-Strider); first step: 'Cleanse the Water Stone', UESP's objective at stage 10.",
-   "startsWith": [
-    "Storn Crag-Strider"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 2: giver Storn Crag-Strider on both."
   },
   {
    "quest": "The Gardener of Men",
@@ -2186,475 +2324,882 @@
    "firstObjective": "Read the Black Book",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Gardener_of_Men",
-   "notes": "PC, WO-138 Part 2 batch 2: the page and UESP agree. Giver: none on either; first step: 'Read the Black Book', UESP's objective at stage 10."
+   "notes": "PC, WO-138 Part 2 batch 2: no giver on either."
+  },
+  {
+   "quest": "At the Summit of Apocrypha",
+   "editorId": "DLC2MQ06",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Unlock your \"Bend Will\" Shout",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:At_the_Summit_of_Apocrypha",
+   "notes": "PC, WO-138 Part 2 batch 2: no giver: another quest's stage starts it; UESP's Frea is who you go to (G1 is for radiant jobs, G2)."
+  },
+  {
+   "quest": "Proving Honor",
+   "editorId": "C01",
+   "line": "companions",
+   "startsWith": [
+    "Farkas",
+    "Skjor"
+   ],
+   "firstObjective": "Speak to Skjor",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Proving_Honor",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Farkas; UESP's Skjor is the first person you speak to (the first step)."
+  },
+  {
+   "quest": "The Silver Hand",
+   "editorId": "C03",
+   "line": "companions",
+   "startsWith": [
+    "Aela the Huntress",
+    "Skjor"
+   ],
+   "firstObjective": "Talk to Skjor",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Silver_Hand",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Aela the Huntress; UESP's Skjor is the first person you speak to (the first step)."
+  },
+  {
+   "quest": "Blood's Honor",
+   "editorId": "C04",
+   "line": "companions",
+   "startsWith": [
+    "Aela the Huntress",
+    "Kodlak Whitemane"
+   ],
+   "firstObjective": "Speak to Kodlak Whitemane",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Blood's_Honor",
+   "notes": "PC, WO-138 Part 2 batch 2: giver Aela the Huntress; UESP's Kodlak Whitemane is the first person you speak to (the first step)."
+  },
+  {
+   "quest": "Animal Extermination",
+   "editorId": "CR01",
+   "line": "companions",
+   "startsWith": [
+    "Aela the Huntress"
+   ],
+   "firstObjective": "Kill the beast",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Animal_Extermination_(A)",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "Animal Extermination",
+   "editorId": "CR02",
+   "line": "companions",
+   "startsWith": [
+    "Aela the Huntress"
+   ],
+   "firstObjective": "Clear out the animal den",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Animal_Extermination_(B)",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "Hired Muscle",
+   "editorId": "CR04",
+   "line": "companions",
+   "startsWith": [
+    "Farkas"
+   ],
+   "firstObjective": "Intimidate the brute in the brute town",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Hired_Muscle",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "Trouble in Skyrim",
+   "editorId": "CR05",
+   "line": "companions",
+   "startsWith": [
+    "Farkas"
+   ],
+   "firstObjective": "Kill the leader of the location",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Trouble_in_Skyrim",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Farkas. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "Family Heirloom",
+   "editorId": "CR06",
+   "line": "companions",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Retrieve the gewgaw from the location",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Family_Heirloom",
+   "notes": "PC, WO-138 Part 2 batch 2: no single giver: UESP's dispatchers are Skjor, Vilkas (G1)."
+  },
+  {
+   "quest": "Escaped Criminal",
+   "editorId": "CR07",
+   "line": "companions",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Kill the escaped criminal",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Escaped_Criminal",
+   "notes": "PC, WO-138 Part 2 batch 2: no single giver: UESP's dispatchers are Skjor, Vilkas (G1)."
+  },
+  {
+   "quest": "Rescue Mission",
+   "editorId": "CR08",
+   "line": "companions",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Rescue the victim from the lair",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rescue_Mission",
+   "notes": "PC, WO-138 Part 2 batch 2: no single giver: UESP's dispatchers are Skjor, Vilkas (G1)."
+  },
+  {
+   "quest": "Striking the Heart",
+   "editorId": "CR09",
+   "line": "companions",
+   "startsWith": [
+    "Aela"
+   ],
+   "firstObjective": "Assassinate the Silver Hand leader",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Striking_the_Heart",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "Stealing Plans",
+   "editorId": "CR10",
+   "line": "companions",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Steal the plans from the camp",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Stealing_Plans",
+   "notes": "PC, WO-138 Part 2 batch 2: no single giver: UESP's dispatchers are Aela, Whiterun (G1)."
+  },
+  {
+   "quest": "Retrieval",
+   "editorId": "CR11",
+   "line": "companions",
+   "startsWith": [
+    "Aela the Huntress"
+   ],
+   "firstObjective": "Retrieve the fragment of Wuuthrad",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Retrieval",
+   "notes": "PC, WO-138 Part 2 batch 2: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "Totems of Hircine",
+   "editorId": "CR12",
+   "line": "companions",
+   "startsWith": [
+    "Aela the Huntress"
+   ],
+   "firstObjective": "Retrieve the Totem of Hircine",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Totems_of_Hircine",
+   "notes": "PC, WO-138 Part 2 batch 3: G1: the page names no giver; the job's one dispatcher on UESP is Aela the Huntress. Mac's Part 4 names them.."
   },
   {
    "quest": "Purity",
    "editorId": "CR13",
    "line": "companions",
+   "startsWith": [
+    "Vilkas"
+   ],
    "firstObjective": "Collect a Glenmoril Witch's head",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Purity",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Vilkas (UESP: Farkas, Vilkas); first step: \"Collect a Glenmoril Witch's head\", UESP's objective at stage 10.",
-   "startsWith": [
-    "Vilkas"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Vilkas on both."
+  },
+  {
+   "quest": "Dragon Seekers",
+   "editorId": "CR14",
+   "line": "companions",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Kill the dragon at the den",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dragon_Seekers",
+   "notes": "PC, WO-138 Part 2 batch 3: no single giver: UESP's dispatchers are Farkas, Vilkas (G1)."
   },
   {
    "quest": "Hitting the Books",
    "editorId": "MG03",
    "line": "college",
+   "startsWith": [
+    "Savos Aren"
+   ],
    "firstObjective": "Speak with Mirabelle Ervine",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Hitting_the_Books",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Savos Aren (UESP: Savos Aren); first step: 'Speak with Mirabelle Ervine', UESP's objective at stage 10.",
-   "startsWith": [
-    "Savos Aren"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Savos Aren on both."
   },
   {
    "quest": "The Staff of Magnus",
    "editorId": "MG07",
    "line": "college",
+   "startsWith": [
+    "Mirabelle Ervine"
+   ],
    "firstObjective": "Enter Labyrinthian",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Staff_of_Magnus",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Mirabelle Ervine (UESP: Mirabelle Ervine); first step: 'Enter Labyrinthian', UESP's objective at stage 10.",
-   "startsWith": [
-    "Mirabelle Ervine"
-   ]
-  },
-  {
-   "quest": "Shalidor's Insights",
-   "editorId": "MGR21",
-   "line": "college",
-   "firstObjective": "Find Shalidor's writings",
-   "source": "uesp",
-   "url": "https://en.uesp.net/wiki/Skyrim:Shalidor's_Insights",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Urag gro-Shub (UESP: Urag gro-Shub); first step: \"Find Shalidor's writings\", UESP's objective at stage 10.",
-   "startsWith": [
-    "Urag gro-Shub"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Mirabelle Ervine on both."
   },
   {
    "quest": "Aftershock",
    "editorId": "MGR30",
    "line": "college",
+   "startsWith": [
+    "Tolfdir"
+   ],
    "firstObjective": "Close the Rupture",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Aftershock",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Tolfdir (UESP: Tolfdir); first step: 'Close the Rupture', UESP's objective at stage 10.",
-   "startsWith": [
-    "Tolfdir"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Tolfdir on both."
   },
   {
    "quest": "Brelyna's Practice",
    "editorId": "MGRAppBrelyna01",
    "line": "college",
+   "startsWith": [
+    "Brelyna Maryon"
+   ],
    "firstObjective": "Wait for Brelyna's spell to wear off",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Brelyna's_Practice",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Brelyna Maryon (UESP: Brelyna Maryon); first step: \"Wait for Brelyna's spell to wear off\", UESP's objective at stage 20.",
-   "startsWith": [
-    "Brelyna Maryon"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Brelyna Maryon on both."
   },
   {
    "quest": "J'zargo's Experiment",
    "editorId": "MGRAppJzargo01",
    "line": "college",
+   "startsWith": [
+    "J'zargo"
+   ],
    "firstObjective": "Test J'zargo's Flame Cloak spell on the undead (0/3)",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:J'zargo's_Experiment",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: J'zargo (UESP: J'zargo); first step: \"Test J'zargo's Flame Cloak spell on the undead (0/3)\", UESP's objective at stage 20.",
-   "startsWith": [
-    "J'zargo"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver J'zargo on both."
   },
   {
    "quest": "Onmund's Request",
    "editorId": "MGRAppOnmund01",
    "line": "college",
+   "startsWith": [
+    "Onmund"
+   ],
    "firstObjective": "Speak with Enthir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Onmund's_Request",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Onmund (UESP: Onmund); first step: 'Speak with Enthir', UESP's objective at stage 10.",
-   "startsWith": [
-    "Onmund"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Onmund on both."
   },
   {
    "quest": "Arniel's Endeavor",
    "editorId": "MGRArniel01",
    "line": "college",
+   "startsWith": [
+    "Arniel Gane"
+   ],
    "firstObjective": "Deliver ten cogs to Arniel Gane",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Arniel's_Endeavor",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Arniel Gane (UESP: Arniel Gane); first step: 'Deliver ten cogs to Arniel Gane', UESP's objective at stage 10.",
-   "startsWith": [
-    "Arniel Gane"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Arniel Gane on both."
   },
   {
    "quest": "Arniel's Endeavor",
    "editorId": "MGRArniel02",
    "line": "college",
+   "startsWith": [
+    "Arniel Gane"
+   ],
    "firstObjective": "Speak to Enthir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Arniel's_Endeavor",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Arniel Gane (UESP: Arniel Gane); first step: 'Speak to Enthir', UESP's objective at stage 10.",
-   "startsWith": [
-    "Arniel Gane"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Arniel Gane on both."
   },
   {
    "quest": "Arniel's Endeavor",
    "editorId": "MGRArniel03",
    "line": "college",
+   "startsWith": [
+    "Arniel Gane"
+   ],
    "firstObjective": "Place the warped soul gem into a Convector",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Arniel's_Endeavor",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Arniel Gane (UESP: Arniel Gane); first step: 'Place the warped soul gem into a Convector', UESP's objective at stage 10.",
-   "startsWith": [
-    "Arniel Gane"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Arniel Gane on both."
   },
   {
    "quest": "Arniel's Endeavor",
    "editorId": "MGRArniel04",
    "line": "college",
+   "startsWith": [
+    "Arniel Gane"
+   ],
    "firstObjective": "Talk to Enthir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Arniel's_Endeavor",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Arniel Gane (UESP: Arniel Gane); first step: 'Talk to Enthir', UESP's objective at stage 10.",
-   "startsWith": [
-    "Arniel Gane"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Arniel Gane on both."
   },
   {
    "quest": "Destruction Ritual Spell",
    "editorId": "MGRitual01",
    "line": "college",
+   "startsWith": [
+    "Faralda"
+   ],
    "firstObjective": "Complete the book Powers of the Elements",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Destruction_Ritual_Spell",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Faralda (UESP: Faralda); first step: 'Complete the book Powers of the Elements', UESP's objective at stage 10.",
-   "startsWith": [
-    "Faralda"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Faralda on both."
   },
   {
    "quest": "Illusion Ritual Spell",
    "editorId": "MGRitual02",
    "line": "college",
+   "startsWith": [
+    "Drevis Neloren"
+   ],
    "firstObjective": "Bring the four Master Illusion texts to Drevis Neloren",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Illusion_Ritual_Spell",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Drevis Neloren (UESP: Drevis Neloren); first step: 'Bring the four Master Illusion texts to Drevis Neloren', UESP's objective at stage 10.",
-   "startsWith": [
-    "Drevis Neloren"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Drevis Neloren on both."
   },
   {
    "quest": "Conjuration Ritual Spell",
    "editorId": "MGRitual03",
    "line": "college",
+   "startsWith": [
+    "Phinis Gestor"
+   ],
    "firstObjective": "Summon and subdue an Unbound Dremora",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Conjuration_Ritual_Spell",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Phinis Gestor (UESP: Phinis Gestor); first step: 'Summon and subdue an Unbound Dremora', UESP's objective at stage 10.",
-   "startsWith": [
-    "Phinis Gestor"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Phinis Gestor on both."
   },
   {
    "quest": "Restoration Ritual Spell",
    "editorId": "MGRitual04",
    "line": "college",
+   "startsWith": [
+    "Colette Marence"
+   ],
    "firstObjective": "Gain the Augur's approval",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Restoration_Ritual_Spell",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Colette Marence (UESP: Colette Marence); first step: \"Gain the Augur's approval\", UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Colette Marence on both."
+  },
+  {
+   "quest": "Alteration Ritual Spell",
+   "editorId": "MGRitual05",
+   "line": "college",
    "startsWith": [
-    "Colette Marence"
-   ]
+    "Tolfdir"
+   ],
+   "firstObjective": "Use Kahvozein's Fang to collect Dragon Heartscales",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Alteration_Ritual_Spell",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Tolfdir on both; the records' first step is \"Use Kahvozein's Fang to collect Dragon Heartscales\" (stage 10, Skyrim.esm:0D0755); UESP's is \"Use Kahvozein's Fang to collect Heartscales\"; the records win (G3): their own words."
+  },
+  {
+   "quest": "Rogue Wizard",
+   "editorId": "MGRRogue",
+   "line": "college",
+   "startsWith": [
+    "Tolfdir"
+   ],
+   "firstObjective": "Deal with the rogue wizard",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unfinished_Quests#Rogue_Wizard",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Tolfdir; UESP's infobox names no person."
+  },
+  {
+   "quest": "College Objective Quest",
+   "editorId": "MG01Pointer",
+   "line": "college",
+   "startsWith": [
+    "Faida"
+   ],
+   "firstObjective": "Visit the College of Winterhold",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:College_Objective_Quest",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Faida; UESP's infobox names no person (Innkeepers and Spell Merchants)."
+  },
+  {
+   "quest": "Tolfdir the Absent-Minded",
+   "editorId": "MGR01",
+   "line": "college",
+   "startsWith": [
+    "Tolfdir's Alembic"
+   ],
+   "firstObjective": "Find Tolfdir's missing Alembic",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Tolfdir_the_Absent-Minded",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Tolfdir's Alembic on both; UESP has no stage table: the first step is the records' own, not confirmed by UESP."
   },
   {
    "quest": "Out of Balance",
    "editorId": "MGR02",
    "line": "college",
+   "startsWith": [
+    "Drevis Neloren"
+   ],
    "firstObjective": "Cleanse the focal points for magical energies around the College",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Out_of_Balance",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Drevis Neloren (UESP: Drevis Neloren); first step: 'Cleanse the focal points for magical energies around the College', UESP's objective at stage 10.",
-   "startsWith": [
-    "Drevis Neloren"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Drevis Neloren on both."
   },
   {
    "quest": "Enchanting Pick-Up",
    "editorId": "MGR10",
    "line": "college",
+   "startsWith": [
+    "Sergius Turrianus"
+   ],
    "firstObjective": "Go to the client in the client location and pick up the item",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Enchanting_Pick-Up",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Sergius Turrianus (UESP: Sergius Turrianus); first step: 'Go to the client in the client location and pick up the item', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Sergius Turrianus on both."
+  },
+  {
+   "quest": "Restocking Soul Gems",
+   "editorId": "MGR11",
+   "line": "college",
    "startsWith": [
     "Sergius Turrianus"
-   ]
+   ],
+   "firstObjective": null,
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Restocking_Soul_Gems",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Sergius Turrianus on both; UESP has no stage table: the first step is the records' own, not confirmed by UESP."
+  },
+  {
+   "quest": "Filling Soul Gems",
+   "editorId": "MGR12",
+   "line": "college",
+   "startsWith": [
+    "Sergius Turrianus"
+   ],
+   "firstObjective": "Bring a Filled Grand Soul Gem to Sergius Turrianus",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unfinished_Quests#Filling_Soul_Gems",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Sergius Turrianus; UESP's infobox names no person."
   },
   {
    "quest": "Fetch me that Book!",
    "editorId": "MGR20",
    "line": "college",
+   "startsWith": [
+    "Urag gro-Shub"
+   ],
    "firstObjective": "Find the copy of the book",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Fetch_me_that_Book!",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Urag gro-Shub (UESP: Urag gro-Shub); first step: 'Find the copy of the book', UESP's objective at stage 10.",
-   "startsWith": [
-    "Urag gro-Shub"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Urag gro-Shub on both."
   },
   {
    "quest": "Fetch me that Book!",
    "editorId": "MGR20B",
    "line": "college",
+   "startsWith": [
+    "Urag gro-Shub"
+   ],
    "firstObjective": "Find the copy of the book",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Fetch_me_that_Book!",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Urag gro-Shub (UESP: Urag gro-Shub); first step: 'Find the copy of the book', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Urag gro-Shub on both."
+  },
+  {
+   "quest": "Research Thief",
+   "editorId": "FreeformWinterholdCollegeA",
+   "line": "college",
    "startsWith": [
-    "Urag gro-Shub"
-   ]
+    "Nirya"
+   ],
+   "firstObjective": "Talk to Nirya to see what she's plotting",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unfinished_Quests#Research_Thief",
+   "notes": "PC, WO-138 Part 2 batch 3: giver Nirya on both; UESP has no stage table: the first step is the records' own, not confirmed by UESP."
   },
   {
    "quest": "Loud and Clear",
    "editorId": "TG02",
    "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
    "firstObjective": "Follow Brynjolf",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Loud_and_Clear",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Brynjolf (UESP: Brynjolf); first step: 'Follow Brynjolf', UESP's objective at stage 10.",
-   "startsWith": [
-    "Brynjolf"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Brynjolf on both."
   },
   {
    "quest": "Dampened Spirits",
    "editorId": "TG03",
    "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
    "firstObjective": "Speak to Maven Black-Briar",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Dampened_Spirits",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Brynjolf (UESP: Brynjolf); first step: 'Speak to Maven Black-Briar', UESP's objective at stage 10.",
-   "startsWith": [
-    "Brynjolf"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Brynjolf on both."
   },
   {
    "quest": "Scoundrel's Folly",
    "editorId": "TG04",
    "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
    "firstObjective": "Speak to Mercer Frey",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Scoundrel's_Folly",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Brynjolf (UESP: Brynjolf); first step: 'Speak to Mercer Frey', UESP's objective at stage 10.",
-   "startsWith": [
-    "Brynjolf"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Brynjolf on both."
   },
   {
    "quest": "Speaking With Silence",
    "editorId": "TG05",
    "line": "thieves-guild",
+   "startsWith": [
+    "Mercer Frey"
+   ],
    "firstObjective": "Meet Mercer Frey outside Snow Veil Sanctum",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Speaking_With_Silence",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Mercer Frey (UESP: Mercer Frey); first step: 'Meet Mercer Frey outside Snow Veil Sanctum', UESP's objective at stage 10.",
-   "startsWith": [
-    "Mercer Frey"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Mercer Frey on both."
   },
   {
    "quest": "Hard Answers",
    "editorId": "TG06",
    "line": "thieves-guild",
+   "startsWith": [
+    "Karliah"
+   ],
    "firstObjective": "Speak with Enthir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Hard_Answers",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Karliah (UESP: Karliah); first step: 'Speak with Enthir', UESP's objective at stage 10.",
-   "startsWith": [
-    "Karliah"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Karliah on both."
   },
   {
    "quest": "The Pursuit",
    "editorId": "TG07",
    "line": "thieves-guild",
+   "startsWith": [
+    "Karliah"
+   ],
    "firstObjective": "Meet Karliah at the Ragged Flagon",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Pursuit",
-   "notes": "PC, WO-138 Part 2 batch 3: the page and UESP agree. Giver: Karliah (UESP: Karliah); first step: 'Meet Karliah at the Ragged Flagon', UESP's objective at stage 10.",
-   "startsWith": [
-    "Karliah"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 3: giver Karliah on both."
   },
   {
    "quest": "Trinity Restored",
    "editorId": "TG08A",
    "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
    "firstObjective": "Listen to Karliah",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Trinity_Restored",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Brynjolf (UESP: Brynjolf); first step: 'Listen to Karliah', UESP's objective at stage 10.",
-   "startsWith": [
-    "Brynjolf"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Brynjolf on both."
   },
   {
    "quest": "Blindsighted",
    "editorId": "TG08B",
    "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
    "firstObjective": "Travel to Irkngthand",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Blindsighted",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Brynjolf (UESP: Brynjolf); first step: 'Travel to Irkngthand', UESP's objective at stage 10.",
-   "startsWith": [
-    "Brynjolf"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Brynjolf on both."
   },
   {
    "quest": "Darkness Returns",
    "editorId": "TG09",
    "line": "thieves-guild",
+   "startsWith": [
+    "Karliah"
+   ],
    "firstObjective": "Enter the Twilight Sepulcher",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Darkness_Returns",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Karliah (UESP: Karliah); first step: 'Enter the Twilight Sepulcher', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Karliah on both."
+  },
+  {
+   "quest": "The Burglary Job",
+   "editorId": "TGRBE",
+   "line": "thieves-guild",
    "startsWith": [
-    "Karliah"
-   ]
+    "Vex"
+   ],
+   "firstObjective": "Retrieve the item to get from the wealthy home in the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Burglary_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "The Shill Job",
+   "editorId": "TGRDU",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Vex"
+   ],
+   "firstObjective": "Plant the evidence in the wealthy home in the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Shill_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "The Numbers Job",
+   "editorId": "TGRFO",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Delvin Mallory"
+   ],
+   "firstObjective": "Make changes in the ledger at the business in the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Numbers_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "The Fishing Job",
+   "editorId": "TGRGF",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Delvin Mallory"
+   ],
+   "firstObjective": "Retrieve the item to get from the mark in the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Fishing_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "The Sweep Job",
+   "editorId": "TGRHC",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Vex"
+   ],
+   "firstObjective": "Clear the wealthy home in the city of valuables (0/3)",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Sweep_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "The Bedlam Job",
+   "editorId": "TGRNT",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Delvin Mallory"
+   ],
+   "firstObjective": "Steal 500 gold in goods from the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Bedlam_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Delvin Mallory. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "The Heist Job",
+   "editorId": "TGRSL",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Vex"
+   ],
+   "firstObjective": "Retrieve the item to get from the business in the city",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Heist_Job",
+   "notes": "PC, WO-138 Part 2 batch 4: G1: the page names no giver; the job's one dispatcher on UESP is Vex. Mac's Part 4 names them.."
+  },
+  {
+   "quest": "TG00 Maul Handler",
+   "editorId": "TG00MaulHandler",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Maul",
+    "Brynjolf"
+   ],
+   "firstObjective": "Meet Brynjolf during daytime",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Chance_Arrangement",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Maul; UESP's Brynjolf is the first person you speak to (the first step); G3: the records' first step is 'Talk to Brynjolf about joining the Thieves Guild' (stage 10, Skyrim.esm:064A14); UESP's first is 'Meet Brynjolf during daytime' (stage 8), and the starters (Start) don't set a later stage directly. Mac's Part 4.."
   },
   {
    "quest": "Meet the Family",
    "editorId": "TG02B",
    "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
    "firstObjective": "Learn more about the Thieves Guild from Vex",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Meet_the_Family",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Brynjolf (UESP: Brynjolf); first step: 'Learn more about the Thieves Guild from Vex', UESP's objective at stage 10.",
-   "startsWith": [
-    "Brynjolf"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Brynjolf on both."
   },
   {
    "quest": "Thieves Guild Caravan Fence Quest",
    "editorId": "TGFenceCaravan",
    "line": "thieves-guild",
+   "startsWith": [
+    "Tonilia"
+   ],
    "firstObjective": "Deliver Moon Sugar to Ri'saad",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Thieves_Guild_Caravan_Fence_Quest",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Tonilia (UESP: Tonilia); first step: \"Deliver Moon Sugar to Ri'saad\", UESP's objective at stage 10.",
-   "startsWith": [
-    "Tonilia"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Tonilia on both."
+  },
+  {
+   "quest": "The Litany of Larceny",
+   "editorId": "TGLarceny",
+   "line": "thieves-guild",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Return the Queen Bee Statue to Delvin",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Litany_of_Larceny",
+   "notes": "PC, WO-138 Part 2 batch 4: no giver on either."
   },
   {
    "quest": "Paid in Full",
    "editorId": "DLC2TGQuest",
    "line": "thieves-guild",
+   "startsWith": [
+    "Glover Mallory"
+   ],
    "firstObjective": "Recover the Bonemold Formula for Glover Mallory",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Paid_in_Full",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Glover Mallory (UESP: Glover Mallory); first step: 'Recover the Bonemold Formula for Glover Mallory', UESP's objective at stage 10.",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Glover Mallory on both."
+  },
+  {
+   "quest": "Delayed Burial",
+   "editorId": "DB01Misc",
+   "line": "dark-brotherhood",
    "startsWith": [
-    "Glover Mallory"
-   ]
+    "Vantus Loreius",
+    "Cicero"
+   ],
+   "firstObjective": "Convince Loreius to fix the wheel",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Delayed_Burial",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Vantus Loreius; UESP's Cicero also sets it off (both are starters' speakers); the records' first step is 'Convince Loreius to fix the wheel' (stage 10, Skyrim.esm:01EA4F); UESP's is 'Talk to the strange jester'; the records win (G3): the starters set stage 10 or later directly (SetStage 10; SetStage 20)."
   },
   {
    "quest": "With Friends Like These...",
    "editorId": "DB02",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Astrid"
+   ],
    "firstObjective": "Kill one of the captives",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:With_Friends_Like_These...",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Astrid (UESP: Astrid); first step: 'Kill one of the captives', UESP's objective at stage 10.",
-   "startsWith": [
-    "Astrid"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Astrid on both."
   },
   {
    "quest": "Sanctuary",
    "editorId": "DB02a",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Astrid"
+   ],
    "firstObjective": "Speak with Nazir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Sanctuary",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Astrid (UESP: Astrid); first step: 'Speak with Nazir', UESP's objective at stage 10.",
-   "startsWith": [
-    "Astrid"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Astrid on both."
   },
   {
    "quest": "Mourning Never Comes",
    "editorId": "DB03",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Nazir"
+   ],
    "firstObjective": "Speak with Astrid",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Mourning_Never_Comes",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Nazir (UESP: Nazir); first step: 'Speak with Astrid', UESP's objective at stage 5.",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Nazir on both."
+  },
+  {
+   "quest": "Whispers in the Dark",
+   "editorId": "DB04",
+   "line": "dark-brotherhood",
    "startsWith": [
-    "Nazir"
-   ]
+    "Astrid"
+   ],
+   "firstObjective": "Hide in the Night Mother's coffin",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Whispers_in_the_Dark",
+   "notes": "PC, WO-138 Part 2 batch 4: D1a: Astrid's own line sets this quest's stage, as UESP says; the page names Muiri, whose line doesn't (at most it sets a stage of another quest). Mac's Part 4.."
   },
   {
    "quest": "Bound Until Death",
    "editorId": "DB05",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Astrid"
+   ],
    "firstObjective": "Kill Vittoria Vici",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Bound_Until_Death",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Astrid (UESP: Astrid); first step: 'Kill Vittoria Vici', UESP's objective at stage 10.",
-   "startsWith": [
-    "Astrid"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Astrid on both."
   },
   {
    "quest": "Breaching Security",
    "editorId": "DB06",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Astrid"
+   ],
    "firstObjective": "Speak with Gabriella",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Breaching_Security",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Astrid (UESP: Astrid); first step: 'Speak with Gabriella', UESP's objective at stage 5.",
-   "startsWith": [
-    "Astrid"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Astrid on both."
   },
   {
    "quest": "The Cure for Madness",
    "editorId": "DB07",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Gabriella"
+   ],
    "firstObjective": "Talk to Astrid",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:The_Cure_for_Madness",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Gabriella (UESP: Gabriella); first step: 'Talk to Astrid', UESP's objective at stage 10.",
-   "startsWith": [
-    "Gabriella"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Gabriella on both."
   },
   {
    "quest": "Recipe for Disaster",
    "editorId": "DB08",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Astrid"
+   ],
    "firstObjective": "Report to Festus Krex",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Recipe_for_Disaster",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Astrid (UESP: Astrid); first step: 'Report to Festus Krex', UESP's objective at stage 2.",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Astrid on both."
+  },
+  {
+   "quest": "To Kill an Empire",
+   "editorId": "DB09",
+   "line": "dark-brotherhood",
    "startsWith": [
+    "Festus Krex",
     "Astrid"
-   ]
+   ],
+   "firstObjective": "Report to Astrid",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:To_Kill_an_Empire",
+   "notes": "PC, WO-138 Part 2 batch 4: giver Festus Krex; UESP's Astrid is the first person you speak to (the first step)."
   },
   {
    "quest": "Death Incarnate",
@@ -2665,7 +3210,7 @@
    "firstObjective": "Enter the Sanctuary",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Death_Incarnate",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: none on either; first step: 'Enter the Sanctuary', UESP's objective at stage 10."
+   "notes": "PC, WO-138 Part 2 batch 4: no giver on either."
   },
   {
    "quest": "Hail Sithis!",
@@ -2676,7 +3221,7 @@
    "firstObjective": "Talk to Nazir",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Hail_Sithis!",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: none on either; first step: 'Talk to Nazir', UESP's objective at stage 5."
+   "notes": "PC, WO-138 Part 2 batch 4: no giver on either."
   },
   {
    "quest": "Destroy the Dark Brotherhood!",
@@ -2687,55 +3232,55 @@
    "firstObjective": "Report Astrid's death to a guard",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Destroy_the_Dark_Brotherhood!",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: none on either; first step: \"Report Astrid's death to a guard\", UESP's objective at stage 10."
+   "notes": "PC, WO-138 Part 2 batch 4: no giver on either."
   },
   {
    "quest": "Honor Thy Family",
    "editorId": "DBEviction",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Nazir"
+   ],
    "firstObjective": "Pay Nazir the fine",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Honor_Thy_Family",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Nazir (UESP: Nazir); first step: 'Pay Nazir the fine', UESP's objective at stage 10.",
-   "startsWith": [
-    "Nazir"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Nazir on both."
   },
   {
    "quest": "Contract: Kill Narfi",
    "editorId": "DBSideContract01",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Nazir"
+   ],
    "firstObjective": "Kill Narfi",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Kill_Narfi",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Nazir (UESP: Nazir); first step: 'Kill Narfi', UESP's objective at stage 10.",
-   "startsWith": [
-    "Nazir"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Nazir on both."
   },
   {
    "quest": "Contract: Kill Ennodius Papius",
    "editorId": "DBSideContract02",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Nazir"
+   ],
    "firstObjective": "Kill Ennodius Papius",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Kill_Ennodius_Papius",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Nazir (UESP: Nazir); first step: 'Kill Ennodius Papius', UESP's objective at stage 10.",
-   "startsWith": [
-    "Nazir"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Nazir on both."
   },
   {
    "quest": "Contract: Kill Beitild",
    "editorId": "DBSideContract03",
    "line": "dark-brotherhood",
+   "startsWith": [
+    "Nazir"
+   ],
    "firstObjective": "Kill Beitild",
    "source": "uesp",
    "url": "https://en.uesp.net/wiki/Skyrim:Kill_Beitild",
-   "notes": "PC, WO-138 Part 2 batch 4: the page and UESP agree. Giver: Nazir (UESP: Nazir); first step: 'Kill Beitild', UESP's objective at stage 10.",
-   "startsWith": [
-    "Nazir"
-   ]
+   "notes": "PC, WO-138 Part 2 batch 4: giver Nazir on both."
   }
  ]
 }
