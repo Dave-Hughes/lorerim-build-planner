@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { styleGuide } from "./facts";
 import { resolveLinkName } from "./playthroughs";
 import { actTowns, fitOf, placesNear, unmeasured, whenFor } from "@/lib/places/suggest";
-import { placeByName, type Place } from "@/lib/places/data";
+import { meetsAt, placeByName, rangeOf, type Place } from "@/lib/places/data";
 import { resolveLink } from "@/lib/playthroughs/links";
 import { versionData } from "./errors";
 import { DEFAULT_VERSION } from "./errors";
@@ -60,7 +60,7 @@ describe("suggest_places (Part 2)", () => {
   });
 
   it("when: judged by what she'll meet, leniently (WO-148 item 9)", () => {
-    const place = (boss: string | undefined, levels: [number, number]): Place => ({ id: "x", name: "X", type: "Cave", clearXp: 100, actors: { count: 5, levels, ...(boss ? { boss: { level: boss } } : {}) } });
+    const place = (boss: string | undefined, levels: [number, number]): Place => ({ id: "x", name: "X", type: "Cave", clearXp: 100, actors: { count: 5, floor: levels[0], ceiling: levels[1], atLevel: [{ gate: 1, level: levels }], ...(boss ? { boss: { level: boss } } : {}) } });
     const at = (boss: string | undefined, levels: [number, number], from = 1, to = 5) => whenFor(place(boss, levels), from, to);
     // A boss more than 20 above is planted, from the level she can face it; a scaling one fits.
     expect(at("level 30", [1, 30])).toBe("plant now, pay off later (levels 10 and up)");
@@ -77,10 +77,27 @@ describe("suggest_places (Part 2)", () => {
     // No levels read yet.
     expect(whenFor({ id: "x", name: "X", type: "Cave", clearXp: 1 }, 1, 5)).toBe("levels not read yet");
   });
+  it("reads the data's own shape (floor, ceiling, atLevel), and the rename the PC has coming (from, meets), and the shape before (levels) (WO-150)", () => {
+    const place = (actors: NonNullable<Place["actors"]>): Place => ({ id: "x", name: "X", type: "Cave", clearXp: 100, actors });
+    // What she meets at the act's top level (5) comes from the row of the highest gate at or below it.
+    expect(fitOf(place({ count: 5, floor: 6, ceiling: 47, atLevel: [{ gate: 1, level: [6, 47] }] }), 1, 5).when).toBe("fits now");
+    expect(fitOf(place({ count: 5, floor: 20, ceiling: 47, atLevel: [{ gate: 0, level: [20, 30] }, { gate: 30, level: [20, 47] }] }), 1, 5).when).toBe("plant now, pay off later (levels 10 and up)");
+    // A row open to her only at level 25: below that she meets nothing yet, so the place's floor judges it.
+    expect(fitOf(place({ count: 5, floor: 22, ceiling: 30, atLevel: [{ gate: 25, level: [22, 30] }] }), 1, 5).when).toBe("plant now, pay off later (levels 12 and up)");
+    // The same table spelled from and meets.
+    expect(fitOf(place({ count: 5, floor: 6, ceiling: 47, atLevel: [{ from: 1, meets: [6, 47] }] }), 1, 5).when).toBe("fits now");
+    expect(meetsAt({ count: 1, atLevel: [{ from: 1, meets: [3, 8] }, { from: 10, meets: [3, 14] }] }, 12)).toEqual([3, 14]);
+    expect(meetsAt({ count: 1, atLevel: [{ gate: 1, level: [3, 8] }, { gate: 10, level: [3, 14] }] }, 9)).toEqual([3, 8]);
+    expect(meetsAt({ count: 1, atLevel: [{ gate: 7, level: [3, 8] }] }, 5)).toBeNull();
+    // The shape before.
+    expect(fitOf(place({ count: 5, levels: [6, 10] }), 1, 5).when).toBe("fits now");
+    expect(rangeOf({ count: 1, levels: [3, 9] })).toEqual([3, 9]);
+  });
   it("a wide range is said, never hidden: enemies, the floor and the boss", () => {
     const out = placesNear(["Riverwood"], 1, 5, none);
     const barrow = out.find((p) => p.place === "Bleak Falls Barrow")!;
-    expect(barrow.enemies).toMatch(/^enemies about 6 to 20, never below 6; the boss Zulakaroth/);
+    // Said as the PC's data has it (WO-150): the floor, what she meets at the act's top level, and the boss.
+    expect(barrow.enemies).toBe("enemies from level 6, never below 6; at 5 you meet 6 to 20; the boss Zulakaroth, Keeper of the Dragonstone, level 40");
     // Its boss is 35 above an act at 1 to 5: planted for later, from the level she can face it.
     expect(barrow.when).toBe("plant now, pay off later (levels 20 and up)");
   });

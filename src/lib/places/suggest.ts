@@ -1,7 +1,7 @@
 import "server-only";
 import { questsData } from "@/lib/quests/data";
 import type { ActView } from "@/lib/playthroughs/view";
-import { placesData, placeType, type Place } from "./data";
+import { meetsAt, placesData, placeType, rangeOf, type Place } from "./data";
 
 /**
  * suggest_places (WO-128 Part 2): the places near where an act goes, each with what points at it in the game and when
@@ -84,15 +84,15 @@ function bossRange(level: string | undefined): [number, number] | null {
 /**
  * When a place fits the act's levels, judged by what she'll meet and leniently (WO-148 item 9, Dave: a character can usually
  * take enemies several levels above her unless badly under-geared, and a boss 15 or more above isn't out of the question). With the
- * act's top level T, the weakest enemy F (the zone's floor) and the boss's lowest level B: fits now when F is at or below T and B is
- * within 20 of T ("the boss is a hard fight at this level" from 10 above); plant now, pay off later when F is 10 or more above T or B
+ * act's top level T, the weakest enemy F she meets at T (`atLevel`, WO-150; the place's floor when no row is open to her yet) and the
+ * boss's lowest level B: fits now when F is at or below T and B is within 20 of T ("the boss is a hard fight at this level" from 10 above); plant now, pay off later when F is 10 or more above T or B
  * is more than 20 above, from the level she can face it ("levels N and up"); too high for this act only when F is 20 or more above T.
  * A boss that matches her level never counts against her. The thresholds are guidance.
  */
 export function fitOf(p: Place, levelFrom: number, levelTo: number | null): { when: When; note?: string } {
   const top = levelTo ?? levelFrom + 10;
   if (!p.actors) return { when: "levels not read yet" };
-  const floor = p.actors.levels[0];
+  const floor = meetsAt(p.actors, top)?.[0] ?? rangeOf(p.actors)[0];
   const boss = bossRange(p.actors.boss?.level);
   const floorGap = floor - top;
   const bossGap = boss ? boss[0] - top : -Infinity;
@@ -103,14 +103,18 @@ export function fitOf(p: Place, levelFrom: number, levelTo: number | null): { wh
 
 export const whenFor = (p: Place, levelFrom: number, levelTo: number | null): When => fitOf(p, levelFrom, levelTo).when;
 
-/** What she'll meet there, said with its range and never hidden: "enemies about 6 to 20, from level 6 up; the boss Zulakaroth, level 40". */
-function meet(p: Place): string | null {
+/**
+ * What she'll meet there, said with its range and never hidden (WO-148 item 9, WO-150): "enemies from level 6, never below 6; at 12 you
+ * meet 6 to 12; the boss Zulakaroth, Keeper of the Dragonstone, level 40". `at` is the act's top level.
+ */
+function meet(p: Place, at: number): string | null {
   const a = p.actors;
   if (!a) return null;
-  const [lo, hi] = a.levels;
-  const boss = p.actors?.boss;
-  const bossWords = boss ? `; the boss ${[boss.name, boss.level].filter(Boolean).join(", ")}` : "";
-  return `enemies about ${lo === hi ? lo : `${lo} to ${hi}`}${a.zoneMin ? `, never below ${a.zoneMin}` : ""}${bossWords}`;
+  const [floor] = rangeOf(a);
+  const now = meetsAt(a, at);
+  const boss = a.boss;
+  const range = (r: [number, number]) => (r[0] === r[1] ? `${r[0]}` : `${r[0]} to ${r[1]}`);
+  return `enemies from level ${floor}${a.zoneMin ? `, never below ${a.zoneMin}` : ""}${now ? `; at ${at} you meet ${range(now)}` : `; nothing here is in play yet at ${at}`}${boss ? `; the boss ${[boss.name, boss.level].filter(Boolean).join(", ")}` : ""}`;
 }
 
 /** A boss in words: "Sigdis Gauldurson, level 40", "leveled from 1". */
@@ -159,10 +163,10 @@ export function placesNear(townList: readonly string[], levelFrom: number, level
       type: placeType(p.type),
       ...(p.hold ? { hold: p.hold } : {}),
       nearestTown: p.nearestTown ? `${p.nearestTown.town}, ${p.nearestTown.km} km` : null,
-      ...(p.actors ? { levels: `${p.actors.levels[0]} to ${p.actors.levels[1]}` } : {}),
+      ...(p.actors ? { levels: `${rangeOf(p.actors)[0]} to ${rangeOf(p.actors)[1]}` } : {}),
       ...(bossLine(p) ? { boss: bossLine(p) } : {}),
       clearXp: p.clearXp,
-      ...(meet(p) ? { enemies: meet(p) } : {}),
+      ...(meet(p, levelTo ?? levelFrom) ? { enemies: meet(p, levelTo ?? levelFrom) } : {}),
       when: fitOf(p, levelFrom, levelTo).when,
       ...(fitOf(p, levelFrom, levelTo).note ? { fitNote: fitOf(p, levelFrom, levelTo).note } : {}),
       pointers,

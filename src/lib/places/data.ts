@@ -24,6 +24,40 @@ export interface PlacePointer {
   from: string;
 }
 
+/**
+ * The hostile actors at a place (WO-144 Part 1d): the lowest and highest level any can be (`floor`, `ceiling`, the zone's minimum
+ * and any maximum applied), and `atLevel`, what a player meets as she reaches each gate: one row each, the range of everything
+ * unlocked by then. The PC may spell a row's fields as `from` and `meets`; both are read (WO-150). `levels` is the shape before.
+ */
+export interface Actors {
+  count: number;
+  floor?: number;
+  ceiling?: number;
+  atLevel?: { gate?: number; level?: [number, number]; from?: number; meets?: [number, number] }[];
+  /** The shape before WO-144 Part 1d. */
+  levels?: [number, number];
+  zoneMin?: number;
+  boss?: { name?: string; level?: string };
+}
+
+/** The weakest and strongest hostile actor at a place, from whichever shape the data has. */
+export function rangeOf(a: Actors): [number, number] {
+  const lo = a.floor ?? a.levels?.[0] ?? a.atLevel?.[0]?.level?.[0] ?? a.atLevel?.[0]?.meets?.[0] ?? 1;
+  const hi = a.ceiling ?? a.levels?.[1] ?? a.atLevel?.at(-1)?.level?.[1] ?? a.atLevel?.at(-1)?.meets?.[1] ?? lo;
+  return [lo, hi];
+}
+
+/** What a player at level n meets: the row of the highest gate at or below n; null when no row is open to her yet. */
+export function meetsAt(a: Actors, n: number): [number, number] | null {
+  let best: { gate: number; range: [number, number] } | null = null;
+  for (const row of a.atLevel ?? []) {
+    const gate = row.gate ?? row.from ?? 0;
+    const range = row.level ?? row.meets;
+    if (range && gate <= n && (!best || gate >= best.gate)) best = { gate, range };
+  }
+  return best?.range ?? null;
+}
+
 export interface Place {
   id: string;
   name: string;
@@ -33,7 +67,7 @@ export interface Place {
   nearestTown?: { town: string; km: number };
   nearestCity?: { town: string; km: number };
   clearXp: number;
-  actors?: { count: number; levels: [number, number]; zoneMin?: number; boss?: { name?: string; level?: string } };
+  actors?: Actors;
   pointers?: PlacePointer[];
   /** Named quests that go there. */
   quests?: string[];
