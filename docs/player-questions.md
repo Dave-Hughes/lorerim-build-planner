@@ -162,7 +162,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 
 **31. "How does Kyria get from 15 to 20 in Act III?"**
 - Calls: `get_playthrough({ playthrough: "Kyria Severa" })`, `suggest_objective` for Act III.
-- Must: XP needed (about 3,300 from 15 to 20 on the curve), what Act III's plan pays, the gap, and named fillers with their XP (Missives, Tome Trials, calling days).
+- Must: XP needed (about 3,300 from 15 to 20 on the curve), what Act III's plan pays, the gap, and named fillers with their XP, core game first (a camp or dungeon on the route, an at-level side quest, Tome Trials, Missives), a calling day last.
 - Fails today: **WO-145**.
 
 **32. "What level will she be at the end of Act II?"**
