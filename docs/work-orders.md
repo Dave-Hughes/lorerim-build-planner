@@ -5160,6 +5160,8 @@ Dave's Claude, planning Kyria near Solitude: "Not checked Fort Hraggstad's enemy
 - [ ] Every row of `docs/data/places.md`, with its sanity test and the ten spot checks in the log.
 
 ### Part 2. People
+
+**Bob, 23 Oct, 16:55:** every field Part 2 carries is defined in `docs/data/people.md`. Build to it, with its sanity tests and spot checks. "Where" means where a player first meets them (Lydia in Dragonsreach), not where they end up.
 Every person a design touches, from the records, in `people.json`: name, race, sex, where they stand (cell and town), and what they are to a player:
 - **Merchants and what they sell:** innkeepers, general goods, apothecaries, blacksmiths, fences, and the court wizards and College vendors with the spell tomes in their lists (the records' vendor containers and leveled lists). This answers "where is Calm sold", which every test hit.
 - **Trainers** (skill and the level cap), **priests** (which god, which temple), **innkeepers** (which inn, which town), **marriage candidates** (The Bonds of Matrimony's list and what each needs), **followers** (vanilla and mod: how they join, with its conditions; what they fight with; from WO-141 Part 2), **jarls, stewards and housecarls** by hold, and **quest givers** (already in `quests.json`; link them).
