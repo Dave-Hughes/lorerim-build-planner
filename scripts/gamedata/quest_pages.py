@@ -51,6 +51,18 @@ def xp_for(quest_type):
     return QUEST_XP.get(quest_type, 0)
 
 
+# The base game's own expansions are named for what they are, not "Base game" (WO-154 Part 1b).
+_DLC = {"dawnguard.esm": "Dawnguard", "hearthfires.esm": "Hearthfires", "dragonborn.esm": "Dragonborn"}
+
+
+def quest_mod(q):
+    """The mod a quest itself is from: its folder's name with the Nexus id, Base game for Skyrim.esm, the expansion's name for a DLC's."""
+    dlc = _DLC.get((q.get("plugin") or "").lower()) if q.get("source") == "Skyrim" else None
+    if dlc:
+        return {"name": dlc}
+    return {"name": source_name(q["source"]), **({"modid": q["modid"]} if q.get("modid") else {}), **({"base": True} if q.get("source") == "Skyrim" else {})}
+
+
 def source_name(folder):
     """An MO2 folder as a mod's name: "Meridia's Order ESMIFIED" -> "Meridia's Order"; Skyrim -> Base game."""
     if folder == "Skyrim":
@@ -1919,6 +1931,8 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                     # A record whose name is its editor id ("MyrwatchTNE_Quest") opens its line under the line's name.
                     "name": line["name"] if q["edid"] == line["opening"] and _RECORD_FORM.search(q["name"] or "") else q["name"],
                     "type": q.get("type"),
+                    # The mod the quest itself is from (WO-154 Part 1b), not its line's: a base-game quest in a line mods add to.
+                    "mod": quest_mod(q),
                     "xp": xp_for(q.get("type")),
                     "journal": journal(q),
                     "stages": stages,

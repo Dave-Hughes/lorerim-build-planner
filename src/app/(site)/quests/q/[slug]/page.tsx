@@ -82,14 +82,14 @@ export default async function QuestPage({ params, searchParams }: { params: Para
           <span className={styles.coverMeta}>
             {lone ? <span>{homeName(line.category)}</span> : <Link href={`/quests/${line.id}`}>{line.name}</Link>}
             {line.where && <span>{line.where}</span>}
-            {line.sources.map((s) =>
-              s.modid ? (
-                <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={`${styles.tag} ${styles.mod}`}>
-                  {s.name} <span aria-hidden="true">↗</span>
+            {[quest.mod ?? line.sources[0]].filter(Boolean).map((s) =>
+              s!.modid ? (
+                <a key={s!.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s!.modid}`} target="_blank" rel="noreferrer" className={`${styles.tag} ${styles.mod}`}>
+                  {s!.name} <span aria-hidden="true">↗</span>
                 </a>
               ) : (
-                <span key={s.name} className={styles.tag}>
-                  {s.name}
+                <span key={s!.name} className={styles.tag}>
+                  {s!.name}
                 </span>
               ),
             )}
@@ -136,9 +136,16 @@ export default async function QuestPage({ params, searchParams }: { params: Para
               <ul className={styles.waysList}>
                 {page.starts.map((w, i) => (
                   <li key={i}>
+                    {/* Who in bold, then where, then how (WO-154 Part 1b), for a read: the older rules' ways already say both in the how. */}
+                    {page.source === "reads" && (w.who || w.where) && !(w.who && w.how.includes(w.who) && (!w.where || w.how.includes(w.where.split(",")[0]))) ? (
+                      <>
+                        {w.who ? <b>{w.who}</b> : null}
+                        {w.who && w.where ? ", " : null}
+                        {w.where ? (w.who ? `in ${w.where}` : `In ${w.where}`) : null}
+                        {". "}
+                      </>
+                    ) : null}
                     {w.how}
-                    {w.who && !w.how.includes(w.who) ? <span className="muted"> ({w.who})</span> : null}
-                    {w.where && !w.how.includes(w.where) ? <span className="muted"> | {w.where}</span> : null}
                     {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                     {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                     {w.reportedBy ? <span className={styles.src}>{w.reportedBy.also?.length ? pageSources(w.reportedBy.source, w.reportedBy.also) : `player report${w.reportedBy.source ? `, ${w.reportedBy.source}` : ""}`}</span> : null}
@@ -151,7 +158,7 @@ export default async function QuestPage({ params, searchParams }: { params: Para
             {page.firstStep && (
               <p>
                 <b>First step:</b> {page.firstStep}
-                {start?.doors?.map((d) => (
+                {page.source === "rules" && start?.doors?.map((d) => (
                   <span key={d} className="muted"> ({d.replace(/\.$/, "")})</span>
                 ))}
               </p>

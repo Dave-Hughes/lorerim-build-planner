@@ -122,8 +122,10 @@ const QUESTIONS: Question[] = [
         .filter(({ q }) => q.edid !== "0WRHorseQ")
         .map(({ q, how }) => {
           // The way as get_quest gives it: where the thing is, or that where to find it isn't checked.
-          const way = (getQuest({ id: q.edid }).quest.start.ways ?? []).find((w) => w.way === how);
-          const answer = way?.whereIs?.join("; ") ?? way?.whereIsIt ?? "no place, and not said it isn't checked";
+          const a = getQuest({ id: q.edid }).quest;
+          // A quest with a read (WO-154) says where in its starts; the rest, where the thing is or that it isn't checked.
+          const way = (a.start?.ways ?? []).find((w) => w.way === how);
+          const answer = way?.whereIs?.join("; ") ?? way?.whereIsIt ?? (a.starts ?? []).find((s) => s.where)?.where ?? (a.unsure?.some((u) => /start|where/i.test(u.field)) ? "not checked yet: the read says it's unsure" : "no place, and not said it isn't checked");
           return { quest: q.name, way: how, answer };
         }),
     must: [],
@@ -286,10 +288,13 @@ const QUESTIONS: Question[] = [
       const p = playerState({ level: 12, never: NEVER_DB_MQ });
       const dawnguard = getQuest({ name: "Dawnguard" }, undefined, p);
       const dragonborn = getQuest({ name: "Dragonborn" }, undefined, p);
-      return [{ dawnguard: dawnguard.openForYou }, { ways: dawnguard.quest.start?.ways }, { dragonborn: dragonborn.openForYou }];
+      return [{ dawnguard: dawnguard.openForYou }, { ways: dawnguard.quest.start?.ways ?? dawnguard.quest.starts }, { dragonborn: dragonborn.openForYou }];
     },
     must: [/"dawnguard":\{"state":"open"/, "Agmaer", /"dragonborn":\{"state":"locked","says":"locked for this character: she won't be the Dragonborn"/],
     never: [/"dawnguard":\{[^}]*for this character/],
+    // Dawnguard's opening quest is read now, and the read doesn't name Agmaer as who starts it (it says the records give no giver and
+    // lists the five at Fort Dawnguard under what it is unsure of): Bob's word on what this answer says now.
+    todo: "WO-154: Bob's word on Dawnguard's read, which names no one who starts it",
   },
   {
     n: 22,

@@ -23,6 +23,17 @@ for (const width of [1440, 390]) {
   });
 }
 
+test("Mourning Never Comes (a read quest): nothing from the rules, its own mod, who and where first", async ({ page }) => {
+  await page.goto("/quests/q/mourning-never-comes");
+  await expect(page.locator("main")).not.toContainText(/Abandoned Shack Key|The door from/);
+  const tags = page.locator("main").first().locator('[class*="coverMeta"] [class*="tag"]');
+  await expect(tags).toHaveText(["Base game"]);
+  await page.goto("/quests/q/speaking-with-silence");
+  const way = page.getByRole("region", { name: "How to start it" }).getByRole("listitem").first();
+  await expect(way.locator("b")).toHaveText("Mercer Frey");
+  expect((await way.innerText()).startsWith("Mercer Frey, in ")).toBe(true);
+});
+
 test("a line of one quest isn't a line: its category card opens the quest, and its line address goes there", async ({ page }) => {
   await page.goto("/quests/c/side-stories");
   const card = page.getByRole("article", { name: "Lights Out!" });
@@ -37,6 +48,7 @@ test("a shelf's jobs are grouped by where you pick them up, with no The story he
   await expect(page.getByRole("heading", { name: "The story" })).toHaveCount(0);
   await expect(page.getByRole("region", { name: "Jobs" })).toBeVisible();
   await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("Not listed")).toHaveCount(0);
   await page.screenshot({ path: "test-results/wo154-shelf-1440.png", fullPage: true });
 });
 

@@ -120,9 +120,10 @@ describe("get_quest (WO-115)", () => {
     const q = getQuest({ id: "DB01" });
     expect(q).toMatchObject({ kind: "story", line: { id: "dark-brotherhood" } });
     expect(q.quest).toMatchObject({ edid: "DB01", name: "Innocence Lost" });
-    expect(q.quest.objectives).toContain("Talk to Aventus Aretino");
-    expect(q.quest.endings.map((e) => e.stage)).toEqual([199, 200]);
-    expect(q.quest.endings[1].text).toMatch(/^I killed Grelod the Kind/);
+    // Read from its records (WO-154): its steps and what it gives, not stage numbers or journal endings.
+    expect(JSON.stringify(q.quest)).toContain("Talk to Aventus Aretino");
+    expect(q.quest.source).toBe("reads");
+    expect(q.quest).not.toHaveProperty("endings");
   });
 
   it("says so when a quest's records list no ending", () => {
@@ -148,8 +149,8 @@ describe("get_quest, open for you (WO-115 Part 3)", () => {
     expect(love.quest.start).toMatchObject({ who: "Dinya Balu", where: "Temple of Mara" });
     expect(love.quest.start.ways?.[0]).toMatchObject({ who: "Dinya Balu", where: "Temple of Mara" });
     const unbound = getQuest({ id: "MQ101" });
-    expect(unbound.quest.start.ways?.length).toBeGreaterThan(0);
-    for (const w of unbound.quest.start.ways ?? []) expect(w.way).toEqual(expect.any(String));
+    expect(unbound.quest.starts?.length).toBeGreaterThan(0);
+    for (const w of unbound.quest.starts ?? []) expect(w.how).toEqual(expect.any(String));
   });
   it("answers open, locked or unknown only when told where the player is", () => {
     expect(getQuest({ id: "MS11" })).not.toHaveProperty("openForYou");

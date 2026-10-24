@@ -196,21 +196,29 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             </div>
           </section>
 
-          <div className={styles.factRow}>
-            <span className={styles.fact}>
-              <b>Length</b>
-              <span>{line.size ?? "Not listed"}</span>
-            </span>
-            <span className={styles.fact}>
-              <b>Enemies</b>
-              <span>{line.level ?? "Not listed"}</span>
-            </span>
-            <span className={styles.fact}>
-              <b>Quest XP</b>
-              <span>{line.xpTotal.toLocaleString("en-US")}</span>
-              <small>{xpNote(line.quests)}</small>
-            </span>
-          </div>
+          {(line.size || line.level || line.xpTotal > 0) && (
+            <div className={styles.factRow}>
+              {line.size && (
+                <span className={styles.fact}>
+                  <b>Length</b>
+                  <span>{line.size}</span>
+                </span>
+              )}
+              {line.level && (
+                <span className={styles.fact}>
+                  <b>Enemies</b>
+                  <span>{line.level}</span>
+                </span>
+              )}
+              {line.xpTotal > 0 && (
+                <span className={styles.fact}>
+                  <b>Quest XP</b>
+                  <span>{line.xpTotal.toLocaleString("en-US")}</span>
+                  <small>{xpNote(line.quests)}</small>
+                </span>
+              )}
+            </div>
+          )}
 
           {gives.length > 0 && (
             <section className={styles.panel} aria-labelledby="rewards-title">

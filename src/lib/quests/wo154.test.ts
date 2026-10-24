@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { getQuest } from "@/lib/mcp/facts";
 import { dangerOf, doorPage, pageOf, shortPage } from "./reads";
 import { placeByName } from "@/lib/places/data";
 import type { Quest, QuestRead } from "./types";
@@ -97,5 +98,25 @@ describe("the door", () => {
     const s = shortPage(quest({ read, source: "reads" }));
     expect(Object.keys(s)).toEqual(["canDo", "needs", "starts", "gets", "source"]);
     expect(s.starts.length).toBeGreaterThan(0);
+  });
+});
+
+describe("a quest with a read, on the real data (Part 1b)", () => {
+  const a = getQuest({ name: "Speaking With Silence" }) as unknown as { quest: Record<string, unknown> & { starts: Record<string, string>[] } };
+  it("shows nothing from the older rules on the door: no start block, objectives, endings or note", () => {
+    for (const k of ["start", "objectives", "endings", "note", "pays", "changesTheRun"]) expect(a.quest, k).not.toHaveProperty(k);
+    expect(a.quest.source).toBe("reads");
+    expect(JSON.stringify(a)).not.toMatch(/start check|hasn't passed/);
+  });
+  it("gives starts as who, where, then how", () => {
+    expect(Object.keys(a.quest.starts[0])).toEqual(["who", "where", "how"]);
+    expect(a.quest.starts[0].who).toBe("Mercer Frey");
+  });
+  it("names the quest's own mod, not its line's", async () => {
+    const { questsData } = await import("./data");
+    const q = questsData().lines.flatMap((l) => l.quests).find((x) => x.name === "Mourning Never Comes")!;
+    expect(q.mod).toEqual({ name: "Base game", base: true });
+    expect(questsData().lines.flatMap((l) => l.quests).find((x) => x.name === "The Throat of the World")!.mod).toEqual({ name: "Base game", base: true });
+    expect(questsData().lines.flatMap((l) => l.quests).find((x) => x.edid === "DLC1RV06")!.mod).toEqual({ name: "Dawnguard" });
   });
 });

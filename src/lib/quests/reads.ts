@@ -117,14 +117,23 @@ function placeNamed(name: string): Place | null {
 /** The ways a player found in game (WO-131, WO-146), which override what the records place (Dave's in-game checks win). */
 const playerWays = (q: Quest) => (q.start?.ways ?? []).filter((w) => w.checked === "players");
 
+/**
+ * A who or where the reader filled with a statement of absence ("not named in these records", "not given in these records") has
+ * nothing in it: it is left out, and the reader's `unsure` note says why (WO-154 Part 1b: leave out any field with nothing in it).
+ */
+const blank = (t: string | undefined) => !t?.trim() || /^(not\b[^.]*\b(records|files|given|named|placed|listed|known|recorded)|none\b|no one\b|nobody\b|unknown\b|n\/a\b)/i.test(t.trim());
+
+/** The read's field names as a player says them. */
+const FIELD_WORDS: Record<string, string> = { canDo: "can I do it", needs: "what you need", starts: "how to start", firstStep: "first step", takesYou: "where it takes you", choices: "choices", rewards: "what you get", opens: "what it opens", closes: "what it closes", steps: "steps", people: "people", where: "where", who: "who", hold: "hold" };
+
 function viaReads(q: Quest, r: QuestRead): QuestPage {
   const players = playerWays(q);
   const said = new Set(players.map((w) => w.who).filter(Boolean));
   const starts = [
     ...players.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) }, ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}), ...(w.unplaced ? { unplaced: w.unplaced } : {}) })),
-    ...(r.starts ?? []).filter((s) => !(s.who && said.has(s.who))).map((s) => ({ how: s.how ?? "", ...(s.who ? { who: s.who } : {}), ...(s.where ? { where: s.where } : {}) })),
+    ...(r.starts ?? []).filter((s) => !(s.who && said.has(s.who))).map((s) => ({ how: s.how ?? "", ...(!blank(s.who) ? { who: s.who } : {}), ...(!blank(s.where) ? { where: s.where } : {}) })),
   ].filter((s) => s.how || s.who);
-  const unsure = (r.unsure ?? []).filter((u) => u.field);
+  const unsure = (r.unsure ?? []).filter((u) => u.field).map((u) => ({ ...u, field: FIELD_WORDS[u.field] ?? u.field }));
   const fields = [...new Set(unsure.map((u) => u.field))].join(", ");
   const sure = players.length
     ? `Checked in game by a player: ${pageSources(players[0].source ?? "", players[0].also)}${unsure.length ? `. Unsure: ${fields}` : ""}`
@@ -141,7 +150,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     ...(r.firstStep ? { firstStep: r.firstStep } : {}),
     takesYou: (r.takesYou ?? []).map((t) => {
       const danger = dangerOf(placeNamed(t.place));
-      return { place: t.place, ...(t.hold ? { hold: t.hold } : {}), ...(t.why ? { why: t.why } : {}), ...(danger ? { danger } : {}) };
+      return { place: t.place, ...(!blank(t.hold) ? { hold: t.hold } : {}), ...(t.why ? { why: t.why } : {}), ...(danger ? { danger } : {}) };
     }),
     choices: r.choices ?? [],
     gets: { xp: q.xp, ...(q.type ? { type: q.type } : {}), rewards: r.rewards ?? [] },
@@ -194,7 +203,8 @@ export const pageOf = (q: Quest): QuestPage => (q.read && q.source === "reads" ?
  */
 export function doorPage(q: Quest) {
   const p = pageOf(q);
-  const starts = p.starts.map((s) => ({ how: s.how, ...(s.who ? { who: s.who } : {}), ...(s.where ? { where: s.where } : {}), ...(s.reportedBy ? { checked: doorSources(s.reportedBy.source, s.reportedBy.also) } : {}) }));
+  // Who, where, then how: the order a player looks for them.
+  const starts = p.starts.map((s) => ({ ...(s.who ? { who: s.who } : {}), ...(s.where ? { where: s.where } : {}), how: s.how, ...(s.reportedBy ? { checked: doorSources(s.reportedBy.source, s.reportedBy.also) } : {}) }));
   return {
     source: p.source,
     ...(p.source === "rules" ? { sourceNote: "This quest hasn't been read yet; these fields are from the planner's older rules. Say it isn't read yet rather than filling the gap." } : {}),

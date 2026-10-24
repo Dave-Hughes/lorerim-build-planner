@@ -76,6 +76,8 @@ export interface Quest {
   people?: string[];
   /** What players call it that the records don't hold (WO-133, overrides.json questNames): "Palomino". */
   calledBy?: string[];
+  /** The mod the quest itself is from (WO-154 Part 1b): "Base game", an expansion's name, or a mod with its Nexus id. */
+  mod?: { name: string; modid?: string; base?: true };
   /** The quest's read (WO-154), and which made the page: "reads", or the older rules where it has none yet. */
   read?: QuestRead;
   source?: "reads" | "rules";

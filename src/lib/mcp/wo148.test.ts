@@ -109,7 +109,8 @@ describe("4. get_quest says what a quest pays", () => {
       expect(q.xp, name).toBe(0);
       expect(q.pays, name).toMatch(/no quest XP$/);
     }
-    expect(getQuest({ name: "Bleak Falls Barrow" }).quest.pays).toBe("Main Quest: pays 200 quest XP");
+    // A quest with a read says it in what it gets (WO-154).
+    expect(getQuest({ name: "Bleak Falls Barrow" }).quest.gets?.xp).toBe("200 XP (Main Quest)");
   });
 });
 

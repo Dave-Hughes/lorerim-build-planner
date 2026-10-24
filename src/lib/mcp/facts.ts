@@ -362,7 +362,16 @@ function questStart(line: QuestLine, story: Story | undefined, quest?: Quest) {
 }
 
 /** One quest's objectives and the endings its records flag, each with its journal line and when it shows. */
-function questFacts(q: Quest, allPlaces = false) {
+type RulesFacts = ReturnType<typeof rulesFacts>;
+function questFacts(q: Quest, allPlaces = false): RulesFacts & Partial<ReturnType<typeof doorPage>> {
+  // A quest with a read says what the read says and nothing from the older rules (WO-154 Part 1b): no start block, objectives, endings or
+  // run changes of the rules'. Its XP is in `gets`.
+  // (The cast is for the older block's type only: the tests that read `start` ask about quests with no read.)
+  if (q.source === "reads") return { edid: q.edid, name: q.name, ...doorPage(q) } as unknown as RulesFacts & ReturnType<typeof doorPage>;
+  return rulesFacts(q, allPlaces);
+}
+
+function rulesFacts(q: Quest, allPlaces = false) {
   return {
     edid: q.edid,
     name: q.name,
@@ -454,7 +463,8 @@ export function getQuest({ id, name, places }: { id?: string; name?: string; pla
     ...(found ? { found } : {}),
     // With no story, the quest asked for answers first (WO-137 item 3); its line follows.
     ...(s1 ? {} : { quest: questFacts(q, places) }),
-    ...questStart(l, s1, s1 ? undefined : q),
+    // A quest with a read has no rules' start check to report (its note would say there are no instructions): only whose line it is.
+    ...(!s1 && q.source === "reads" ? { kind: "quest line" as const, id: l.id, name: l.name, category: homeName(l.category) } : questStart(l, s1, s1 ? undefined : q)),
     // A job from a board (WO-136 ruling 3): the class's one sentence, said once, and where the boards are.
     // A line's radiant templates as one class (WO-138: the Civil War's sieges, battles and rescues).
     ...(l.radiant ? { radiantJobs: { says: l.radiant.says, checked: "files, as a class" } } : {}),

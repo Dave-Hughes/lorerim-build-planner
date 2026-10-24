@@ -119,6 +119,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Must: Dawnguard open, by Agmaer in Fort Dawnguard; Dragonborn (Solstheim) `locked for this character: she won't be the Dragonborn`. Never Dawnguard "locked for this character".
 - Changed by Jeff under WO-139 (Bob to rule): the question as written had Dawnguard locked, but the records don't gate it on the main quest. Talking to Agmaer at Fort Dawnguard has no need, and Durak's need "Dragonborn stage 5 or The Way of the Voice before stage 160" is met by a main quest never begun. The planner must not say locked when the records say open (style guide rule 24). Dragonborn waits on The Way of the Voice (stage 160), so it is the one the never closes.
 - Passes since WO-139 Part 3.
+- Fails today: **WO-154 Part 1b** (Bob's word): Dawnguard's opening quest is read now, and the read names no one who starts it (the five at Fort Dawnguard are under what it is unsure of), so "Agmaer" isn't in the answer.
 
 **22. "What mods does Kyria need?"**
 - Calls: `get_playthrough({ playthrough: "Kyria Severa" })`.
