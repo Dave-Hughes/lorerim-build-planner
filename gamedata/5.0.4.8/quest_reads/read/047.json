@@ -739,7 +739,7 @@
     "objectives": [
      "Question the witnesses",
      "Report to the guard",
-     "Talk to <Alias=AuthorityFigure>",
+     "Talk to the steward",
      "Examine the crime scene",
      "Talk to Helgird",
      "Get access to Hjerim",
@@ -747,7 +747,7 @@
      "Follow up on the clues from Hjerim",
      "Meet Viola outside of Hjerim",
      "Investigate Hjerim with Viola",
-     "Talk to <Alias=AuthorityFigure>"
+     "Talk to the steward"
     ]
    },
    {
@@ -755,14 +755,18 @@
     "objectives": [
      "Patrol the streets of the Stone Quarter at night",
      "Catch the murderer",
-     "Talk to <Alias=AuthorityFigure>"
+     "Talk to the steward"
     ]
    }
   ],
   "rewards": [
    {
-    "what": "Strange Amulet / Necromancer's Amulet",
-    "when": "the quest's script holds both. The Strange Amulet is a clue in Hjerim; the Necromancer's Amulet is the other one"
+    "what": "Strange Amulet (a clue you find while searching Hjerim)",
+    "when": "during the Hjerim search"
+   },
+   {
+    "what": "Necromancer's Amulet",
+    "when": "the quest's script holds it as well; when you get it isn't in these files"
    }
   ],
   "type": "Side Quest",
@@ -871,7 +875,7 @@
      "Speak to Wuunferth",
      "Patrol the streets of the Stone Quarter at night",
      "Catch the murderer",
-     "Speak to <Alias=AuthorityFigure> for reward"
+     "Speak to the steward for reward"
     ]
    }
   ],

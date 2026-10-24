@@ -1,0 +1,502 @@
+[
+  {
+    "edid": "MDSCAngarionQuest",
+    "name": "Grief",
+    "plugin": "MoreToDoSoulCairn.esp",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Angarion the Bold, a lost soul wandering the Soul Cairn, and follow him through his memories.",
+    "needs": [
+      {"what": "Be able to reach the Soul Cairn (Dawnguard's Chasing Echoes sends you there)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Angarion the Bold", "where": "out in the open Soul Cairn, wandering", "how": "Talk to him; he introduces himself as 'Angarion the Bold, hero of the Battle of Roseguard, grand champion of the Arena', has no memory of how he got there, and says he is being drawn to a place. Follow him."}
+    ],
+    "firstStep": "Follow Angarion and get into the first Memory Shard",
+    "takesYou": [
+      {"place": "Soul Cairn", "hold": null, "why": "where Angarion wanders"},
+      {"place": "Denial (memory shard)", "hold": null, "why": "the first of his memories"},
+      {"place": "Anger (memory shard)", "hold": null, "why": "the second memory"},
+      {"place": "Bargaining (memory shard)", "hold": null, "why": "the third memory"},
+      {"place": "Depression (memory shard)", "hold": null, "why": "the last memory"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Get into the first Memory Shard",
+        "Talk to Angarion",
+        "Get into the second Memory Shard",
+        "Talk to Angarion",
+        "Get into the third Memory Shard",
+        "Talk to Angarion",
+        "Get into the last Memory Shard",
+        "Talk to Angarion",
+        "Talk to Angarion again"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Angarion's Mace (mace)", "when": "from the quest; the records don't say at which step, most likely the end"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Angarion the Bold", "role": "the lost soul you follow; he learns he died in a farmhouse, killed by a mage he met at an inn after being badly hurt in an arena fight, and that he had asked for his soul to be put in a soul gem for his family"}
+    ],
+    "unsure": [
+      {"field": "starts.where", "why": "he is placed in an unnamed stretch of the Soul Cairn; the files give no landmark for that spot"},
+      {"field": "rewards", "why": "the mace is a property on the quest's script, so it is handed out by the quest, but which step gives it isn't readable here. The script also holds a 'Storm Atronach Attack' spell, which looks like a visual effect, not a reward"},
+      {"field": "needs", "why": "the records only show he stands in the Soul Cairn; Chasing Echoes is the Dawnguard quest whose objective is 'Enter the Soul Cairn'. Other mod quests in the list also send you there"}
+    ],
+    "evidence": [
+      "QUST MoreToDoSoulCairn.esp:0008F7 stages 10-90, 200 (completes)",
+      "giver INFO MoreToDoSoulCairn.esp:0008F9 (Angarion, stage below 10)",
+      "NPC MoreToDoSoulCairn.esp:000801 placed REFR 0008F6 in Dawnguard.esm:002D0C (Soul Cairn world)",
+      "packages MDSCAngarionQuest01-05Package: cells Denial/Anger/Bargaining/Depression, gated by stage",
+      "INFO MoreToDoSoulCairn.esp:000906 / 00090E (Arena line)",
+      "reward: script MDSC_QF_MDSCAngarionQuest_050008F7 property MDSCAngarionMace -> WEAP MoreToDoSoulCairn.esp:000001",
+      "Dawnguard.esm DLC1VQ04 objective 'Enter the Soul Cairn'",
+      "quest_starts line more-to-do-in-the-soul-cairn: startGame true"
+    ]
+  },
+  {
+    "edid": "MDSCChapelofLoveQuest",
+    "name": "Chapel of Love",
+    "plugin": "MoreToDoSoulCairn.esp",
+    "canDo": "talk",
+    "canDoWhy": "A lost soul named Glendora asks you to help her find the Chapel of Love in the Soul Cairn.",
+    "needs": [
+      {"what": "Be able to reach the Soul Cairn (Dawnguard's Chasing Echoes sends you there)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Glendora Messenia", "where": "the Soul Cairn", "how": "Talk to her; she asks you to help her find the Chapel of Love. The journal hints it is somewhere to the north-west, close to the borders of the realm."}
+    ],
+    "firstStep": "Find the Chapel of Love in the Soul Cairn (look north-west, near the edge of the realm)",
+    "takesYou": [
+      {"place": "Chapel of Love", "hold": null, "why": "the place Glendora wants to reach; its portal is meant to take her out of the Soul Cairn"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Find the Chapel of Love in the Soul Cairn",
+        "Talk to Glendora (she is already there when you arrive)",
+        "Figure out how the portal works (the levers at the sides are broken)",
+        "Tell Glendora that the portal does not work",
+        "Talk to the Ideal Master"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": ["Glendora: she tries to escape through the portal, vanishes, and is punished by an Ideal Master"],
+    "people": [
+      {"name": "Glendora Messenia", "role": "the lost soul who wants to find the Chapel and escape the Soul Cairn"},
+      {"name": "Ideal Master", "role": "appears after Glendora vanishes; talk to it to finish"}
+    ],
+    "unsure": [
+      {"field": "starts.where", "why": "the records place Glendora inside the Chapel of Love itself, yet the journal has you find the chapel and be surprised she is 'already here'. Where you first meet her isn't shown in these files; she may be moved by script"},
+      {"field": "rewards", "why": "the only items on the quest's script are teleport-effect spells; no reward item, gold or spell for the player shows in the records"}
+    ],
+    "evidence": [
+      "QUST MoreToDoSoulCairn.esp:0009E7 stages 10-60, 200 (completes)",
+      "giver INFO MoreToDoSoulCairn.esp:0009D8 (Glendora, stage below 10)",
+      "NPC MoreToDoSoulCairn.esp:00093B placed REFR 000978 in cell MoreToDoSoulCairn.esp:00093C 'Chapel of Love' (Soul Cairn)",
+      "packages MDSCGlendoraSandboxPackage01 (stage <20), 02 (20-50)",
+      "script MDSC_QF_MDSCChapelofLoveQuest_050009E7 properties MGTimeTeleportInSpell, AbTeleportation",
+      "aliases Lever1, Lever2, IdealMasterG, ChapelLoveDoor"
+    ]
+  },
+  {
+    "edid": "MDSCSoulGemQuest",
+    "name": "Black Soul Cairn Gem",
+    "plugin": "MoreToDoSoulCairn.esp",
+    "canDo": "talk",
+    "canDoWhy": "Gavo Antonius, a soul in the Soul Cairn, asks you to get his black soul gem back.",
+    "needs": [
+      {"what": "Be able to reach the Soul Cairn (Dawnguard's Chasing Echoes sends you there)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Gavo Antonius", "where": "out in the open Soul Cairn", "how": "Talk to him; he wants his soul gem back."}
+    ],
+    "firstStep": "Find Gavo's black soul gem",
+    "takesYou": [
+      {"place": "Soul Cairn", "hold": null, "why": "Gavo and the chest holding his soul gem are there"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Find Gavo's black soul gem",
+        "Bring the soul gem back to Gavo",
+        "Defeat Gavo (he attacks once you hand it over, trying to 'steal your body')",
+        "Talk to the Ideal Master"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": ["Gavo: he vanishes when beaten and an Ideal Master deals with him"],
+    "people": [
+      {"name": "Gavo Antonius", "role": "asks for his soul gem, then turns on you"},
+      {"name": "Ideal Master", "role": "arrives after you beat Gavo; talk to it to finish"}
+    ],
+    "unsure": [
+      {"field": "where", "why": "Gavo is placed in an unnamed part of the Soul Cairn and the gem sits in a chest (an alias) whose spot isn't given in these files"},
+      {"field": "rewards", "why": "the records hold a weapon called Gavo's Shiv ('belonged to an ill-intentioned man who was stuck in the Soul Cairn') but nothing ties it to this quest's reward; it may just be what he fights with. The only thing on the quest's script is an explosion-effect spell"}
+    ],
+    "evidence": [
+      "QUST MoreToDoSoulCairn.esp:000A00 stages 10-40, 200 (completes)",
+      "giver INFO MoreToDoSoulCairn.esp:000A0E (Gavo, stage below 10)",
+      "NPC MoreToDoSoulCairn.esp:00093A placed REFR 0009A2 in Dawnguard.esm:002CF7 (Soul Cairn world)",
+      "aliases GavoChest, SoulGem, IdealMasterA",
+      "WEAP MoreToDoSoulCairn.esp:000004 Gavo's Shiv",
+      "questline opening: MDSCSoulGemQuest, startGame true"
+    ]
+  },
+  {
+    "edid": "Sat_Adoption",
+    "name": "Windhelm By The Sea",
+    "plugin": "TheGiftofSaturalia.esp",
+    "canDo": "talk",
+    "canDoWhy": "One of Niklas the Trader's five Saturalia tasks: talk to Captain Lonely-Gale in Windhelm.",
+    "needs": [
+      {"what": "Agree to help Niklas the Trader with his Saturalia celebrations (The Gift of Saturalia)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Niklas the Trader", "where": "around Dawnstar, in the Pale", "how": "One of the tasks Niklas hands out once you agree to help with The Gift of Saturalia; he asks you to speak to Captain Lonely-Gale in Windhelm."}
+    ],
+    "firstStep": "Speak to Captain Lonely-Gale in Windhelm",
+    "takesYou": [
+      {"place": "Windhelm", "hold": "Eastmarch", "why": "find Captain Lonely-Gale"},
+      {"place": "back to Niklas", "hold": "The Pale", "why": "report that Lonely-Gale is thinking of adopting"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Speak to Captain Lonely-Gale",
+        "Return to Niklas"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Captain Lonely-Gale", "role": "realises he might want to adopt a child from Honorhall Orphanage in Riften"},
+      {"name": "Lucas", "role": "an orphan at Honorhall Orphanage in Riften; Lonely-Gale may adopt him, so check on them next time you're in Windhelm"},
+      {"name": "Viola Giordano", "role": "tracked by the quest whether alive or dead; her part isn't shown in the journal"},
+      {"name": "Niklas the Trader", "role": "gave the task; return to him"}
+    ],
+    "unsure": [
+      {"field": "starts.where", "why": "see The Gift of Saturalia: in LoreRim Niklas is the Saturalia Creation Club merchant Niklas Peryval, who belongs to Dawnstar's town faction, but his exact spot isn't in these files"},
+      {"field": "people.where", "why": "Lonely-Gale is placed in the Palace of the Kings; his packages are a daytime one (8 am for 10 hours) around an unnamed marker and one named for Candlehearth Hall. Look in both"},
+      {"field": "starts.how", "why": "the journal says Niklas asks you; the dialogue that starts each task isn't in these files, and whether he gives all five at once isn't shown"}
+    ],
+    "evidence": [
+      "QUST TheGiftofSaturalia.esp:000963 stages 0, 5, 10 (completes)",
+      "INFO TheGiftofSaturalia.esp:000966 (Lonely-Gale, stage below 1); Lucas line stage below 11",
+      "NPC Skyrim.esm:014134 placed in Palace of the Kings; packages AIOWHLonelyGaleRandom8x10, WindhelmLonelyGaleCandlehearth",
+      "NPC TheGiftofSaturalia.esp:00097C Lucas placed in Honorhall Orphanage",
+      "aliases Niklas_Alias, ViolaDeadOrAlive",
+      "global Sat_AdoptionGlobal"
+    ]
+  },
+  {
+    "edid": "Sat_Dog",
+    "name": "Lending a Paw",
+    "plugin": "TheGiftofSaturalia.esp",
+    "canDo": "talk",
+    "canDoWhy": "One of Niklas the Trader's five Saturalia tasks: take his dog Santus to keep Olava the Feeble company in Whiterun.",
+    "needs": [
+      {"what": "Agree to help Niklas the Trader with his Saturalia celebrations (The Gift of Saturalia)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Niklas the Trader", "where": "around Dawnstar, in the Pale", "how": "One of the tasks Niklas hands out; he asks you to bring Santus, his dog, to Olava the Feeble in Whiterun. Speak to Santus to take him along."}
+    ],
+    "firstStep": "Bring Santus to Olava the Feeble in Whiterun",
+    "takesYou": [
+      {"place": "Olava the Feeble's House, Whiterun", "hold": "Whiterun Hold", "why": "deliver Santus to Olava"},
+      {"place": "back to Niklas", "hold": "The Pale", "why": "tell him it's done"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Bring Santus to Olava the Feeble",
+        "Return to Niklas"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Santus", "role": "Niklas's dog, the one you escort"},
+      {"name": "Olava the Feeble", "role": "lives in Olava the Feeble's House in Whiterun; glad of the company"},
+      {"name": "Niklas the Trader", "role": "gave the task; return to him"}
+    ],
+    "unsure": [
+      {"field": "starts.where", "why": "Santus is placed somewhere outdoors in Skyrim with no named place in these files, presumably near Niklas; Niklas's own spot isn't given either"},
+      {"field": "steps", "why": "the line that starts the escort is spoken by Santus; whether Olava's house is only open from 8 am isn't clear, though the quest line's start data does read the hour of day (8) and lists her front door"}
+    ],
+    "evidence": [
+      "QUST TheGiftofSaturalia.esp:0009A4 stages 0, 5, 10 (completes)",
+      "INFO TheGiftofSaturalia.esp:0009A8 (Santus, stage below 1); Olava line stage below 1",
+      "NPC TheGiftofSaturalia.esp:00083C Santus placed REFR 00083D in Skyrim.esm:000D74",
+      "NPC Skyrim.esm:013BAE Olava placed in Olava the Feeble's House (Whiterun)",
+      "quest_starts the-gift-of-saturalia: global GameHour 8, door Skyrim.esm:01A6F8 into Olava the Feeble's House"
+    ]
+  },
+  {
+    "edid": "Sat_Laugh",
+    "name": "The Joy of Dawnstar",
+    "plugin": "TheGiftofSaturalia.esp",
+    "canDo": "talk",
+    "canDoWhy": "One of Niklas the Trader's five Saturalia tasks: make seven people in Dawnstar laugh.",
+    "needs": [
+      {"what": "Agree to help Niklas the Trader with his Saturalia celebrations (The Gift of Saturalia)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Niklas the Trader", "where": "around Dawnstar, in the Pale", "how": "One of the tasks Niklas hands out; he asks you to make 7 people around Dawnstar laugh."}
+    ],
+    "firstStep": "Make 7 people laugh in Dawnstar",
+    "takesYou": [
+      {"place": "Dawnstar", "hold": "The Pale", "why": "find seven people to make laugh"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Make 7 people laugh in Dawnstar (counts up 1/7 to 7/7)",
+        "Speak to Niklas"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Niklas the Trader", "role": "gave the task; speak to him when all seven have laughed"}
+    ],
+    "unsure": [
+      {"field": "steps", "why": "how you make someone laugh (a joke option in dialogue, which townsfolk count) isn't in these files; the quest has no named people besides Niklas"}
+    ],
+    "evidence": [
+      "QUST TheGiftofSaturalia.esp:0008D3 stages 0-7, 8 (completes); objectives 0-6 count 1/7..7/7, 7 'Speak to Niklas'",
+      "alias Niklas only"
+    ]
+  },
+  {
+    "edid": "Sat_Music",
+    "name": "A Song in the Dark",
+    "plugin": "TheGiftofSaturalia.esp",
+    "canDo": "talk",
+    "canDoWhy": "One of Niklas the Trader's five Saturalia tasks: convince Diane, a blind beggar in Solitude, to audition for the Bards College.",
+    "needs": [
+      {"what": "Agree to help Niklas the Trader with his Saturalia celebrations (The Gift of Saturalia)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Niklas the Trader", "where": "around Dawnstar, in the Pale", "how": "One of the tasks Niklas hands out; he asks you to find Diane, a blind beggar in Solitude, and convince her to apply to the Bards College."}
+    ],
+    "firstStep": "Speak to Diane the Blind in Solitude",
+    "takesYou": [
+      {"place": "Solitude", "hold": "Haafingar", "why": "Diane begs on the streets"},
+      {"place": "Bards College, Solitude", "hold": "Haafingar", "why": "arrange her audition with Viarmo, then bring her to him"},
+      {"place": "back to Niklas", "hold": "The Pale", "why": "share the good news"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Speak to Diane the Blind in Solitude",
+        "Speak to Viarmo (arrange the audition while Diane buys new clothes)",
+        "Speak to Diane (she meets you in front of the Bards College once she's ready)",
+        "Take Diane to Viarmo",
+        "Talk to Diane (she's accepted; say goodbye)",
+        "Return to Niklas"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Diane", "role": "blind beggar in Solitude; after the quest she stays near Viarmo at the Bards College"},
+      {"name": "Viarmo", "role": "headmaster of the Bards College; hears Diane's audition"},
+      {"name": "Niklas the Trader", "role": "gave the task; return to him"}
+    ],
+    "unsure": [
+      {"field": "people.where", "why": "Diane is placed outdoors in Solitude; her packages are begging from 8 am (7 hours) at her placed spot, 3 pm (3 hours) and 6 pm (3 hours) near two unnamed markers, and from 9 pm back at her placed spot. Which streets those are isn't in these files"},
+      {"field": "other", "why": "while this quest runs, one of Viarmo's usual Bards College lines is held back; it comes back afterwards"}
+    ],
+    "evidence": [
+      "QUST TheGiftofSaturalia.esp:0009D2 stages 0-25, 30 (completes)",
+      "INFO TheGiftofSaturalia.esp:0009DC (Diane, stage below 1); Viarmo line stage below 11; Diane (second) stage below 16",
+      "INFO 0009EA 'I will meet you in front of the Bards College once I'm ready.'; INFO 000A25 'Welcome to the Bards College...'",
+      "NPC TheGiftofSaturalia.esp:00083A placed in Solitude (Skyrim.esm:037EE6); packages Sat_DianeBegging_8/_15/_18/_21",
+      "NPC TheGiftofSaturalia.esp:0009D3 package Sat_Diane_StayNearViarmo (stage > 24)",
+      "bards-college change: INFO Skyrim.esm:053504 gets GetQuestRunning(0009D2)==0"
+    ]
+  },
+  {
+    "edid": "Sat_Orphanage",
+    "name": "Three Wise Men",
+    "plugin": "TheGiftofSaturalia.esp",
+    "canDo": "talk",
+    "canDoWhy": "One of Niklas the Trader's five Saturalia tasks: gather toys and food in Riften for the children of Honorhall Orphanage.",
+    "needs": [
+      {"what": "Agree to help Niklas the Trader with his Saturalia celebrations (The Gift of Saturalia)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Niklas the Trader", "where": "around Dawnstar, in the Pale", "how": "One of the tasks Niklas hands out; he asks you to talk to Bersi Honey-Hand, Talen-Jei and Maramal in Riften to organise a big donation for Honorhall Orphanage."}
+    ],
+    "firstStep": "Get toys from Bersi Honey-Hand at the Pawned Prawn in Riften",
+    "takesYou": [
+      {"place": "The Pawned Prawn, Riften", "hold": "The Rift", "why": "toys from Bersi Honey-Hand"},
+      {"place": "The Bee and Barb, Riften", "hold": "The Rift", "why": "food from Talen-Jei"},
+      {"place": "Temple of Mara, Riften", "hold": "The Rift", "why": "ask Maramal for a donation (optional)"},
+      {"place": "Honorhall Orphanage, Riften", "hold": "The Rift", "why": "deliver the presents"},
+      {"place": "back to Niklas", "hold": "The Pale", "why": "report your success"}
+    ],
+    "choices": [
+      {"choice": "Convince Maramal to donate, or don't get his donation", "leadsTo": "the step is optional; either way you go on to deliver the toys and food"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Get toys from Bersi Honey-Hand in Riften",
+        "Get food from Talen-Jei",
+        "Convince Maramal to Donate (Optional)",
+        "Visit the Orphanage",
+        "Speak to Constance (Grelod, the headmistress, refuses the donation)",
+        "Return to Niklas"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Bersi Honey-Hand", "role": "runs the Pawned Prawn in Riften; gives the toys"},
+      {"name": "Talen-Jei", "role": "works at the Bee and Barb in Riften; gives the food"},
+      {"name": "Maramal", "role": "priest at the Temple of Mara in Riften; may donate"},
+      {"name": "Grelod the Kind", "role": "headmistress of Honorhall Orphanage; refuses the donation (the quest checks whether she's alive)"},
+      {"name": "Constance Michel", "role": "the kinder woman at Honorhall Orphanage; takes the presents"},
+      {"name": "Niklas the Trader", "role": "gave the task; return to him"}
+    ],
+    "unsure": [
+      {"field": "choices", "why": "the records don't show how Maramal is persuaded, nor what changes if he does donate. A Bersi line reads 'What does this look like? The Temple of Mara? I'm sorry, but I can't do it!', so getting the toys may take some convincing"},
+      {"field": "steps", "why": "the quest tracks Grelod 'dead or alive'; if she's already dead the refusal step probably doesn't happen, but the records don't spell that out"},
+      {"field": "rewards", "why": "an amulet named Constance's Amulet exists in this mod, but nothing in these files ties it to this quest"}
+    ],
+    "evidence": [
+      "QUST TheGiftofSaturalia.esp:0008AA stages 0-15, 20 (completes)",
+      "INFO TheGiftofSaturalia.esp:0008AD (Bersi, stage below 1); Talen-Jei below 6; Maramal and Grelod below 11",
+      "INFO 0008B0 (Bersi, Temple of Mara line)",
+      "aliases GrelodDeadOrAlive, SackOfToys, TemporaryChest",
+      "ARMO TheGiftofSaturalia.esp:000A76 Constance's Amulet"
+    ]
+  },
+  {
+    "edid": "Sat_TheGiftofSaturalia",
+    "name": "The Gift of Saturalia",
+    "plugin": "TheGiftofSaturalia.esp (last edited by TheGiftOfSaturalia_CC_Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Niklas the Trader and agree to help with his Saturalia celebrations; he has five tasks around Skyrim.",
+    "needs": [],
+    "starts": [
+      {"who": "Niklas the Trader", "where": "around Dawnstar, in the Pale", "how": "Talk to him and agree to help with his Saturalia celebrations. In LoreRim this Niklas is Niklas Peryval, the reindeer merchant from the Saturalia Creation Club content."}
+    ],
+    "firstStep": "Help Niklas with his Saturalia gifts (do his five tasks)",
+    "takesYou": [
+      {"place": "Whiterun", "hold": "Whiterun Hold", "why": "Lending a Paw"},
+      {"place": "Dawnstar", "hold": "The Pale", "why": "The Joy of Dawnstar"},
+      {"place": "Solitude", "hold": "Haafingar", "why": "A Song in the Dark"},
+      {"place": "Riften", "hold": "The Rift", "why": "Three Wise Men"},
+      {"place": "Windhelm", "hold": "Eastmarch", "why": "Windhelm By The Sea"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Help Niklas with his Saturalia gifts",
+        "Lending a Paw: bring Santus to Olava the Feeble in Whiterun",
+        "The Joy of Dawnstar: make 7 people in Dawnstar laugh",
+        "A Song in the Dark: get Diane into the Bards College in Solitude",
+        "Three Wise Men: gather toys and food for Honorhall Orphanage in Riften",
+        "Windhelm By The Sea: talk to Captain Lonely-Gale in Windhelm",
+        "Return to Niklas for your reward"
+      ]}
+    ],
+    "rewards": [
+      {"what": "a reward 'in kind' from Niklas", "when": "at the end"}
+    ],
+    "type": "Side Quest",
+    "opens": ["Lending a Paw", "The Joy of Dawnstar", "A Song in the Dark", "Three Wise Men", "Windhelm By The Sea"],
+    "closes": [],
+    "people": [
+      {"name": "Niklas the Trader (Niklas Peryval)", "role": "the giver; a reindeer merchant tied to Dawnstar"},
+      {"name": "Santus", "role": "Niklas's dog"},
+      {"name": "Olava the Feeble", "role": "in Whiterun; gets Santus's company"}
+    ],
+    "unsure": [
+      {"field": "starts.where", "why": "the patch points Niklas at a Creation Club placement not described in these files. His records put him in Dawnstar's town faction and the Pale's crime faction, selling from 8 am for 10 hours and sleeping from 9 pm, each around an unnamed marker. Look in and around Dawnstar"},
+      {"field": "needs", "why": "the patch adds two conditions to Niklas's opening lines: you must not carry a certain Saturalia Creation Club item (not named in these files), plus a second check these files don't decode. No calendar or month condition shows up, but the dialogue conditions aren't fully read"},
+      {"field": "rewards", "why": "the journal only says 'a reward in kind'; the item isn't named in these records"},
+      {"field": "steps", "why": "the journal says five tasks and the quest line lists five quests, but whether Niklas hands them out all at once or one by one isn't shown"}
+    ],
+    "evidence": [
+      "QUST TheGiftofSaturalia.esp:000D61 stages 0, 5-11, 15 (completes); edited by TheGiftOfSaturalia_CC_Patch.esp",
+      "CC patch: alias Niklas -> ccvsvsse001-winter.esl:000826; INFO 000815/000816 + GetItemCount(ccvsvsse001-winter.esl:000808)==0, fn278(7)==0; global Sat_CCGlobal 0->1",
+      "NPC ccvsvsse001-winter.esl:00080B Niklas Peryval (ccVSVSSE001_Merchant): TownDawnstarFaction, CrimeFactionPale, ReindeerMerchant; packages MerchantSellPackage (8 am, 10 h), MerchantSleepPackage (9 pm, 9 h)",
+      "NPC TheGiftofSaturalia.esp:000838 Sat_Niklas_Fake (no placement)",
+      "questline The Gift Of Saturalia: 6 quests, opening 000D61; quest_starts startGame true",
+      "INFO 000A08 (Rudolf the Red rhyme)"
+    ]
+  },
+  {
+    "edid": "FOFMorthalBrawlerQuest",
+    "name": "Fists of Fury - Hjaalmarch",
+    "plugin": "Fists of Fury - Skyrim.esp",
+    "canDo": "talk",
+    "canDoWhy": "Ask Falion in Morthal about the brawling tournament; he sends you to the Summoning Stones, where you fist-fight ghosts he summons.",
+    "needs": [],
+    "starts": [
+      {"who": "Falion", "where": "Falion's House, Morthal (his shop)", "how": "Talk to Falion about the brawling tournament; he tells you to meet him at the Summoning Stones outside Morthal."}
+    ],
+    "firstStep": "Go to the Summoning Stones outside of Morthal and talk to Falion there",
+    "takesYou": [
+      {"place": "the Summoning Stones outside Morthal", "hold": "Hjaalmarch", "why": "the tournament ground, where Falion summons your opponents"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Go to the Summoning Stones outside of Morthal and talk to Falion there",
+        "Defeat Erel Pure-Heart",
+        "Defeat the Forgotten Captain",
+        "Defeat the Lost Blade",
+        "Talk to Falion",
+        "Defeat the Champion, Captain Grimm",
+        "Talk to Falion"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Falion", "role": "runs the tournament and summons the fighters; while it's under way his usual conversations are held back"},
+      {"name": "Erel Pure-Heart", "role": "first undead opponent"},
+      {"name": "Forgotten Commander", "role": "second opponent (the objective calls it the Forgotten Captain)"},
+      {"name": "Lost Blade", "role": "third opponent"},
+      {"name": "Captain Grimm", "role": "the Champion, summoned last"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "the quest has a silent step before Falion's line, and Falion only offers the tournament while it's at or below that step. How it gets there isn't in these files. The Rift version of this quest line starts from a letter about the tournament, so this one may too"},
+      {"field": "starts.where", "why": "Falion's packages keep him at his house: shop from 8 am for 12 hours, a nap at 1 pm for 3 hours, sleep from midnight"},
+      {"field": "rewards", "why": "no reward (gold, item or otherwise) is tied to this quest in the records. A 'Staff of the Ashen' from this mod is the staff Falion uses to summon Captain Grimm, not a prize"}
+    ],
+    "evidence": [
+      "QUST Fists of Fury - Skyrim.esp:149C95 stages 0-50, 100 (completes)",
+      "giver INFO Fists of Fury - Skyrim.esp:158FC0 (Falion, stage below 6)",
+      "NPC Skyrim.esm:0135E9 Falion in Falion's House (Morthal); packages MorthalFalionNap13x3, RunStore8x12, Sleep0x8",
+      "fighters placed in Skyrim.esm:00933B (Skyrim world)",
+      "falions-secret changes: Falion's lines gated GetStage(149C95) <10 or >50",
+      "WEAP Fists of Fury - Skyrim.esp:1C34F2 FOFStaffConjureCaptainGrimm",
+      "FOFRiftenBrawlerQuest stage 5 log: letter about a brawling tournament"
+    ]
+  }
+]
