@@ -1,0 +1,910 @@
+[
+ {
+  "edid": "BQ03Rift",
+  "name": "Bounty: Draugr",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for the Rift: kill the draugr at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of the Rift",
+    "where": "Mistveil Keep, Riften",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the draugr at the place marked on your map in the Rift",
+  "takesYou": [
+   {
+    "place": "a draugr crypt in the Rift (likely one of: Angarvunde, Geirmund's Hall, Shroud Hearth Barrow)",
+    "hold": "The Rift",
+    "why": "kill the draugr"
+   },
+   {
+    "place": "Mistveil Keep, Riften",
+    "hold": "The Rift",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the draugr at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of the Rift",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of the Rift",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for the Rift's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The draugr crypts listed in the Rift are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of the Rift at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Mistveil Keep in Riften is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000ED8 BQ03Rift, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "places_raw: LocTypeDraugrCrypt in The Rift: Angarvunde, Geirmund's Hall, Shroud Hearth Barrow",
+   "people_raw: court placed in Mistveil Keep (Riften)"
+  ]
+ },
+ {
+  "edid": "BQ03Whiterun",
+  "name": "Bounty: Giant",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for Whiterun: kill the giant at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of Whiterun",
+    "where": "Dragonsreach, Whiterun",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the giant at the place marked on your map in Whiterun",
+  "takesYou": [
+   {
+    "place": "a giant camp in Whiterun (likely one of: Bleakwind Basin, Guldun Rock, Secunda's Kiss, Sleeping Tree Camp)",
+    "hold": "Whiterun",
+    "why": "kill the giant"
+   },
+   {
+    "place": "Dragonsreach, Whiterun",
+    "hold": "Whiterun",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the giant at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of Whiterun",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of Whiterun",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for Whiterun's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The giant camps listed in Whiterun are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of Whiterun at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Dragonsreach in Whiterun is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000EBF BQ03Whiterun, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ03 (Skyrim.esm:0BD78C) edited by Requiem.esp also gives a Requiem bounty reward list (giant); not carried into this version",
+   "places_raw: LocTypeGiantCamp in Whiterun: Bleakwind Basin, Guldun Rock, Secunda's Kiss, Sleeping Tree Camp",
+   "people_raw: court placed in Dragonsreach (Whiterun)"
+  ]
+ },
+ {
+  "edid": "BQ03Winterhold",
+  "name": "Bounty: Falmer",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for Winterhold: kill the falmer at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of Winterhold",
+    "where": "Stonecold Fortress, Winterhold",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the falmer at the place marked on your map in Winterhold",
+  "takesYou": [
+   {
+    "place": "a Falmer hive in Winterhold (likely one of: Sightless Pit, Stillborn Cave, Frostflow Lighthouse, Blackreach)",
+    "hold": "Winterhold",
+    "why": "kill the falmer"
+   },
+   {
+    "place": "Stonecold Fortress, Winterhold",
+    "hold": "Winterhold",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the falmer at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of Winterhold",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of Winterhold",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for Winterhold's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The Falmer hives listed in Winterhold are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of Winterhold at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Stonecold Fortress in Winterhold is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000ECE BQ03Winterhold, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "places_raw: LocTypeFalmerHive in Winterhold: Sightless Pit, Stillborn Cave, Frostflow Lighthouse, Blackreach",
+   "people_raw: court placed in Stonecold Fortress (Winterhold)"
+  ]
+ },
+ {
+  "edid": "BQ04Eastmarch",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for Eastmarch: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of Eastmarch",
+    "where": "The Palace of the Kings, Windhelm",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in Eastmarch",
+  "takesYou": [
+   {
+    "place": "a dragon lair in Eastmarch (likely one of: Bonestrewn Crest, Mzulft Foothills Burial Mound, Witchmist Burial Mound)",
+    "hold": "Eastmarch",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "The Palace of the Kings, Windhelm",
+    "hold": "Eastmarch",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of Eastmarch",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of Eastmarch",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for Eastmarch's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The dragon lairs listed in Eastmarch are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of Eastmarch at the time pays out; the records don't fix a person, and the court can change hands during the civil war. The Palace of the Kings in Windhelm is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F20 BQ04Eastmarch, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in Eastmarch: Bonestrewn Crest, Mzulft Foothills Burial Mound, Witchmist Burial Mound",
+   "people_raw: court placed in the Palace of the Kings (Windhelm)"
+  ]
+ },
+ {
+  "edid": "BQ04Falkreath",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for Falkreath: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of Falkreath",
+    "where": "Hakkvild's High Hall, Falkreath",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in Falkreath",
+  "takesYou": [
+   {
+    "place": "a dragon lair in Falkreath (likely one of: Ancient's Ascent, Bilegulch Ridge Burial Mound, Evergreen Woods Burial Mound)",
+    "hold": "Falkreath",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "Hakkvild's High Hall, Falkreath",
+    "hold": "Falkreath",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of Falkreath",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of Falkreath",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for Falkreath's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The dragon lairs listed in Falkreath are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of Falkreath at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Hakkvild's High Hall in Falkreath is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F16 BQ04Falkreath, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in Falkreath: Ancient's Ascent, Bilegulch Ridge Burial Mound, Evergreen Woods Burial Mound",
+   "people_raw: court placed in Hakkvild's High Hall (Falkreath)"
+  ]
+ },
+ {
+  "edid": "BQ04Haafingar",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for Haafingar: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of Haafingar",
+    "where": "The Blue Palace, Solitude",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in Haafingar",
+  "takesYou": [
+   {
+    "place": "a dragon lair in Haafingar",
+    "hold": "Haafingar",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "The Blue Palace, Solitude",
+    "hold": "Haafingar",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of Haafingar",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of Haafingar",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for Haafingar's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "No dragon lair in Haafingar turns up in the places index, so it's unclear where this one sends you, or whether it can start at all."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of Haafingar at the time pays out; the records don't fix a person, and the court can change hands during the civil war. The Blue Palace in Solitude is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F02 BQ04Haafingar, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in Haafingar: none",
+   "people_raw: court placed in the Blue Palace (Solitude)"
+  ]
+ },
+ {
+  "edid": "BQ04Hjaalmarch",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for Hjaalmarch: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of Hjaalmarch",
+    "where": "Highmoon Hall, Morthal",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in Hjaalmarch",
+  "takesYou": [
+   {
+    "place": "a dragon lair in Hjaalmarch (likely one of: Eldersblood Peak, Karth River Forest Burial Mound, Robber's Gorge Bluffs Burial Mound, Skyborn Altar)",
+    "hold": "Hjaalmarch",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "Highmoon Hall, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of Hjaalmarch",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of Hjaalmarch",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for Hjaalmarch's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The dragon lairs listed in Hjaalmarch are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of Hjaalmarch at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Highmoon Hall in Morthal is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F07 BQ04Hjaalmarch, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in Hjaalmarch: Eldersblood Peak, Karth River Forest Burial Mound, Robber's Gorge Bluffs Burial Mound, Skyborn Altar",
+   "people_raw: court placed in Highmoon Hall (Morthal)"
+  ]
+ },
+ {
+  "edid": "BQ04Pale",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for the Pale: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of the Pale",
+    "where": "The White Hall, Dawnstar",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in the Pale",
+  "takesYou": [
+   {
+    "place": "a dragon lair in the Pale (likely one of: Sea Shore Foothills Burial Mound, Shearpoint, Shimmermist Hills Burial Mound, Yorgrim Burial Mound)",
+    "hold": "The Pale",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "The White Hall, Dawnstar",
+    "hold": "The Pale",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of the Pale",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of the Pale",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for the Pale's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The dragon lairs listed in the Pale are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of the Pale at the time pays out; the records don't fix a person, and the court can change hands during the civil war. The White Hall in Dawnstar is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F11 BQ04Pale, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in The Pale: Sea Shore Foothills Burial Mound, Shearpoint, Shimmermist Hills Burial Mound, Yorgrim Burial Mound",
+   "people_raw: court placed in the White Hall (Dawnstar)"
+  ]
+ },
+ {
+  "edid": "BQ04Reach",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for the Reach: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of the Reach",
+    "where": "Understone Keep, Markarth",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in the Reach",
+  "takesYou": [
+   {
+    "place": "a dragon lair in the Reach (likely one of: Dragontooth Crater, Karthspire Bluffs Burial Mound, Ragnvald Vale Burial Mound, Reachwater Pass Burial Mound)",
+    "hold": "The Reach",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "Understone Keep, Markarth",
+    "hold": "The Reach",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of the Reach",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of the Reach",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for the Reach's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The dragon lairs listed in the Reach are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of the Reach at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Understone Keep in Markarth is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F2A BQ04Reach, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in The Reach: Dragontooth Crater, Karthspire Bluffs Burial Mound, Ragnvald Vale Burial Mound, Reachwater Pass Burial Mound",
+   "people_raw: court placed in Understone Keep (Markarth)"
+  ]
+ },
+ {
+  "edid": "BQ04Rift",
+  "name": "Bounty: Dragon",
+  "plugin": "Favor Quests Seperated.esp (new quest from Favor Quests Separated; no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A jarl's bounty for the Rift: kill the dragon at a place picked when the quest starts, then collect your pay.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "the jarl or steward of the Rift",
+    "where": "Mistveil Keep, Riften",
+    "how": "The bounty is paid by the hold's court; how it is first handed out (asking for work, an innkeeper's tip or a courier's letter) isn't shown in these records."
+   }
+  ],
+  "firstStep": "Kill the dragon at the place marked on your map in the Rift",
+  "takesYou": [
+   {
+    "place": "a dragon lair in the Rift (likely one of: Arcwind Point, Autumnwatch Tower, Lost Tongue Overlook, Northwind Summit)",
+    "hold": "The Rift",
+    "why": "kill the dragon"
+   },
+   {
+    "place": "Mistveil Keep, Riften",
+    "hold": "The Rift",
+    "why": "collect the bounty from the jarl or steward"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Collect from the steward or the jarl",
+    "leadsTo": "either one pays the bounty"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the bounty location",
+     "Collect bounty from the steward (or the jarl)"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jarl of the Rift",
+    "role": "can pay the bounty"
+   },
+   {
+    "name": "Steward of the Rift",
+    "role": "can pay the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records don't show what hands this bounty out. The quest has roles for the Rift's jarl, its steward, an innkeeper and a letter, so it is probably offered by the court, an innkeeper's tip or a courier's letter, but no start event or dialogue line for this version was found."
+   },
+   {
+    "field": "takesYou",
+    "why": "The target place is picked when the quest starts; the rules for picking it aren't in these files. The dragon lairs listed in the Rift are a guess at the pool, not a confirmed list."
+   },
+   {
+    "field": "who",
+    "why": "Whoever is jarl or steward of the Rift at the time pays out; the records don't fix a person, and the court can change hands during the civil war. Mistveil Keep in Riften is where the court is placed."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't given in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000F25 BQ04Rift, type Misc, no other plugin edits it",
+   "objectives 10 kill / 100 steward / 101 jarl; stages 0,10,100,200",
+   "aliases Location, Hold, BountyLocation, Bounty, Jarl, Steward, Innkeeper, Letter, MapMarker",
+   "reward: BQScript.Gold001 (Septim), amount not in files",
+   "quest_starts line jarls-bounties: no dialogue or event conditions found",
+   "quest_givers: no start node for this quest (vanilla BQ01-BQ04 start from BQ<Hold>NodeSHARES change-location nodes)",
+   "vanilla counterpart BQ04 (Skyrim.esm:0CBA9A) edited by Requiem.esp also gives a Requiem bounty reward list (dragon); not carried into this version",
+   "places_raw: LocTypeDragonLair in The Rift: Arcwind Point, Autumnwatch Tower, Lost Tongue Overlook, Northwind Summit",
+   "people_raw: court placed in Mistveil Keep (Riften)"
+  ]
+ }
+]
