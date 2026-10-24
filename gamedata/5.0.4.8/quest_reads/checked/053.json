@@ -1,0 +1,1591 @@
+{
+ "checks": [
+  {
+   "edid": "ksws04DrinkQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Nirenoore's offer line starts it at the first stage; a change-location start node also exists."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Her packages only put her anywhere reachable once The Welkynar Knight is past its opening note; before that she is in the mod's holding cell. Kept as stated, with the existing unsure note."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Nirenoore is the speaker of the offer line."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Default package puts her in the Bannered Mare once the main quest is past the note; a higher package behind a mod setting sends her to a spot in the mod's own space. Existing unsure note covers it."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective: buy wine from the innkeeper alias."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Only the Bannered Mare is supported, and only while her default package applies."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Empty is right: no reward property and no log. Removed 'it may be repeatable' from the unsure note; nothing in the records says so."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ksws04LibraryQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Nirenoore needs the main quest past its note (her packages); the log says you buy the book from Urag, so gold is right. Price not recorded."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Same package reading as the drinking quest."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Matches the first log entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Urag is placed in the Arcanaeum and has a line in this quest."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Refusal fails the quest (log: 'I told her I am not interested')."
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "Removed 'Skies of the North'. The log says you bought it for Nirenoore and should give it to her; buying a quest item is not a reward and nothing records you keep it. Rewards now empty, with an unsure note."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Value stays empty, but the reader's note was wrong that nothing links it to the artifact hunt: the artifact hunt starts from this quest's own story trigger. What would settle it: the trigger's conditions or the artifact line's conditions."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ksws04MainQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Change-location start node, first stage log is the note; no conditions on the line."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions recorded."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Opening line is Nirenoore's, below the meeting stage."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Her default package needs the quest past the note stage, so at the meeting she is wherever the quest puts her; the note names the Bannered Mare. Existing unsure note stands."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Added the stop where Nirenoore leads you after the rescue (log: 'I followed Nirenoore for another reward, but we found her items to have been stolen'), which the records place near Embershard Mine. Thalmor Headquarters, the prison and Embershard Mine agree."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Report (fails, gold), failed rescue (fails), turn down vs accept the reward, and the two lost-belongings endings all match the logs."
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "Hammer and circlet come on only one of the two lost-belongings endings (the other log: 'Nirenoore had nothing left to give me'); reworded 'when'. Gold at the painting and for reporting her, and the belongings on the accept ending, agree."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Empty; the side quests' giver needs this quest's stage for her packages, but nothing says this quest opens them. Existing unsure note stands."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Reporting her fails the quest; so does failing the rescue, which the choices already say."
+    }
+   }
+  },
+  {
+   "edid": "ccMTYSSE001_DES_RelicsoftheCrusader",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "No giver line, no start event and no conditions are recorded; 'by itself' fits the opening log ('I've discovered the whereabouts...'), but what sets it off isn't shown. A start event, script or the dossier's own pickup would settle it."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Empty: no giver."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Empty."
+    },
+    "starts.how": {
+     "verdict": "unsure",
+     "note": "Empty with an unsure note, which is right; the Knight of the North books are likely leads but nothing ties picking one up to the first stage."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Northwatch Keep (Cuirass) and the Inner Sanctum (Helm) agree with the dossier. Rorikstead kept, but its reason now notes the dossier says the Cuirass was already moved to Northwatch Keep. Stendarr's Beacon kept; which relic is there isn't settled."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Serve/steal objectives exist for both the Sword (Arkay) and the Helm (Dibella)."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The seven relic items resolve to these names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "belethorSisterQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Empty, which is fair: you must reach the Soul Cairn, but nothing shows how or whether it needs Dawnguard progress. Existing unsure note stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Belethor's sell package keeps him in his shop 8 am to 8 pm; he goes to the Bannered Mare 8 to 11 pm."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Matches the first log entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Ysolda isn't in her house by day: her packages have her out in Whiterun from 8 am, at the Bannered Mare from 8 pm to midnight, and home to sleep. Replaced 'Ysolda's House' with that. The rest agree."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Empty, but the Speech checks and the two different Ma'dran log entries suggest a persuade path; added an unsure note."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the script's gold property kept, with an unsure note that it's from the script; Lelaegh's shop packages switch on when this quest is completed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The four other quests in the mod all have Lelaegh as giver, and she only leaves the holding cell for the shop once this quest is done."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "belethorSisterQuest02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "First log: 'I got a note from Lelaegh asking me to meet at the Bannered Mare.'"
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Finishing Belethor's Sister is a fair reading (Lelaegh only leaves the holding cell then), but the start trigger's own conditions aren't shown; that would settle it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Named by the first objective."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Ysolda's place fixed as in Belethor's Sister (out in town by day, Bannered Mare evenings, home overnight). Nazeem's line notes his day stops. The meeting room isn't named in the records, so the shop is marked as likely, not certain."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Back Lelaegh or Belethor match the two logs; a silent failed stage exists, already in unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the script kept, with the unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "Lelaegh can't lose a job she never had; reworded to 'Belethor stops being store manager if you elect Lelaegh'. Whether that locks anything else isn't shown (unsure)."
+    }
+   }
+  },
+  {
+   "edid": "belethorSisterQuestBandit",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Radiant job; left as is."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Lelaegh's only packages need Belethor's Sister completed; before that she's in a holding cell."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Sandbox and sleep packages in Belethor's General Goods once Belethor's Sister is completed; she trades 7 am to 9 pm."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Offer line is Lelaegh's at the first stage; target picked when it runs."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place or person is filled when the quest runs."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Only a silent fail stage ('I was unable to do it')."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Leveled-list reward from the script kept, with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "belethorSisterQuestDelivery",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Radiant job; left as is."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Lelaegh's only packages need Belethor's Sister completed; before that she's in a holding cell."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Sandbox and sleep packages in Belethor's General Goods once Belethor's Sister is completed; she trades 7 am to 9 pm."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Offer line is Lelaegh's at the first stage; target picked when it runs."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place or person is filled when the quest runs."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Only a silent fail stage ('I was unable to do it')."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Leveled-list reward from the script kept, with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "belethorSisterQuestFetch",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Radiant job; left as is."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Lelaegh's only packages need Belethor's Sister completed; before that she's in a holding cell."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Sandbox and sleep packages in Belethor's General Goods once Belethor's Sister is completed; she trades 7 am to 9 pm."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Offer line is Lelaegh's at the first stage; target picked when it runs."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place or person is filled when the quest runs."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Only a silent fail stage ('I was unable to do it')."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Leveled-list reward from the script kept, with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Rune01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Rune's line, below the search stage."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "The Thieves Guild talk gate appears with his line, so how far into the guild you must be isn't shown; the line's conditions would settle it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in the Cistern; sleep and sandbox packages there, melee training room 10 pm to 2 am."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Uses the objective's words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Chest and Letter aliases; the coast spot isn't recorded, already in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Placeholder logs only ('Decision stage', 'Finish', 'Fail'); the hedge is right."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property or log."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Only quest in its mod."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "ksws04DrinkQuest",
+   "name": "Drinking with Nirenoore",
+   "plugin": "ksws04_quest.esp (The Welkynar Knight - Quest; no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Nirenoore offers it in conversation; you buy wine from the innkeeper and share it with her.",
+   "needs": [
+    {
+     "what": "Nirenoore must be around to talk to, which these records tie to The Welkynar Knight being under way (she waits at the Bannered Mare)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Nirenoore",
+     "where": "the Bannered Mare in Whiterun",
+     "how": "Talk to Nirenoore and take her up on a drink."
+    }
+   ],
+   "firstStep": "Buy wine from the innkeeper",
+   "takesYou": [
+    {
+     "place": "The Bannered Mare",
+     "hold": "Whiterun",
+     "why": "buy wine and drink with Nirenoore"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Purchase wine from the innkeeper.",
+      "Drink with Nirenoore."
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Nirenoore",
+     "role": "asks you to drink with her"
+    },
+    {
+     "name": "the innkeeper",
+     "role": "sells you the wine; the records don't name which innkeeper"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The quest starts on a change-location event and Nirenoore's offer line; the conditions on that event and line aren't in these files, so whether the main quest must be finished first isn't shown."
+    },
+    {
+     "field": "where",
+     "why": "Nirenoore is placed in the mod's holding cell; her package puts her in the Bannered Mare once The Welkynar Knight has begun, and a second package (behind a mod setting) sends her to a spot these files don't name."
+    },
+    {
+     "field": "people",
+     "why": "The innkeeper alias is filled when the quest runs; who it picks isn't recorded."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded for this quest."
+    }
+   ],
+   "evidence": [
+    "QUST ksws04_quest.esp:000B88",
+    "objectives 100, 200; stage 300 completes",
+    "giver INFO ksws04_quest.esp:000BC0 (Nirenoore, stage < 1)",
+    "SM node ksws04DrinkQuestNode, event change location",
+    "PACK ksws04WaifuDefaultPackage -> Skyrim.esm:01605E (Bannered Mare), GetStage ksws04MainQuest > 100",
+    "PACK ksws04WaifuHomePackage (global ksws04_quest.esp:000BDD == 1)"
+   ]
+  },
+  {
+   "edid": "ksws04LibraryQuest",
+   "name": "A Welkynar Legend",
+   "plugin": "ksws04_quest.esp (The Welkynar Knight - Quest; no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Nirenoore tells you the legend of Siralys Featherwing and asks you to find a book about her.",
+   "needs": [
+    {
+     "what": "Nirenoore must be around to talk to (see The Welkynar Knight)",
+     "kind": "quest"
+    },
+    {
+     "what": "Gold to buy the book from Urag gro-Shub",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Nirenoore",
+     "where": "the Bannered Mare in Whiterun",
+     "how": "Talk to Nirenoore; she tells you about Siralys Featherwing, a Welkynar Knight who explored Skyrim in the Second Era, and suggests researching her at the College of Winterhold."
+    }
+   ],
+   "firstStep": "Get a book about the Welkynar explorer from the College of Winterhold",
+   "takesYou": [
+    {
+     "place": "The Arcanaeum, College of Winterhold",
+     "hold": "Winterhold",
+     "why": "buy Skies of the North from Urag gro-Shub"
+    },
+    {
+     "place": "back to Nirenoore",
+     "hold": "",
+     "why": "show her the book"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Tell Nirenoore you're not interested",
+     "leadsTo": "the quest fails"
+    },
+    {
+     "choice": "Agree to look into it",
+     "leadsTo": "buy the book from Urag, read it and show it to her"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Acquire a book about the Welkynar explorer.",
+      "Read \"Skies of the North\".",
+      "Show \"Skies of the North\" to Nirenoore."
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Nirenoore",
+     "role": "tells you the legend and gets the book"
+    },
+    {
+     "name": "Urag gro-Shub",
+     "role": "sells you the book in the Arcanaeum"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The quest starts on a change-location event plus Nirenoore's line; their conditions aren't in these files, so whether the main quest must be done first isn't shown."
+    },
+    {
+     "field": "opens",
+     "why": "Nirenoore's artifact hunt (she tells you which dungeon holds an item) starts from the same story trigger as this quest, so the two are offered together, but nothing shows this one has to be finished first. Its name is filled in when it runs."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded for finishing it. The book you buy from Urag is handed to Nirenoore, not kept as a reward."
+    }
+   ],
+   "evidence": [
+    "QUST ksws04_quest.esp:000B6C",
+    "stages 100,150,200,300 (completes), 9000 (fails)",
+    "alias book filled 'Skies of the North'",
+    "giver INFO ksws04_quest.esp:000B75 (Nirenoore, stage < 1); Urag gro-Shub dialogue at stage < 101",
+    "SM node ksws04LibraryQuestNode, event change location",
+    "Urag placed in The Arcanaeum (Skyrim.esm:013810); PACK WCollegeUragHoldatArcanaeumMarker",
+    "ksws04ArtifactQuest (ksws04_quest.esp:000B86) shares start node ksws04LibraryQuestNode; giver INFO ksws04_quest.esp:000B6E"
+   ]
+  },
+  {
+   "edid": "ksws04MainQuest",
+   "name": "The Welkynar Knight",
+   "plugin": "ksws04_quest.esp (The Welkynar Knight - Quest; no other plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "A mysterious note reaches you asking for a secret meeting at the Bannered Mare in Whiterun.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Nirenoore (the stranger who sent the note)",
+     "where": "the Bannered Mare in Whiterun",
+     "how": "The quest starts on its own when you travel and you get a note asking for a secret meeting; go to the Bannered Mare and talk to Nirenoore."
+    }
+   ],
+   "firstStep": "Meet the stranger who sent the note at the Bannered Mare",
+   "takesYou": [
+    {
+     "place": "The Bannered Mare",
+     "hold": "Whiterun",
+     "why": "meet Nirenoore, and return to her"
+    },
+    {
+     "place": "Thalmor Headquarters, Solitude",
+     "hold": "Haafingar",
+     "why": "steal the painting of Nirenoore"
+    },
+    {
+     "place": "a Thalmor prison",
+     "hold": "",
+     "why": "escape after the drugged mead, get your gear back and rescue Nirenoore before she is taken over the border"
+    },
+    {
+     "place": "where Nirenoore hid her belongings, near Embershard Mine",
+     "hold": "",
+     "why": "follow her for a second reward; the belongings are gone"
+    },
+    {
+     "place": "Embershard Mine",
+     "hold": "Falkreath",
+     "why": "take Nirenoore's stolen belongings back from the bandits"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Report Nirenoore to the Thalmor",
+     "leadsTo": "you get some gold and the quest fails"
+    },
+    {
+     "choice": "Agree to help her",
+     "leadsTo": "the theft at Thalmor Headquarters and the rest of the quest"
+    },
+    {
+     "choice": "Fail to rescue Nirenoore before the Thalmor take her across the border",
+     "leadsTo": "the quest fails"
+    },
+    {
+     "choice": "Get her stolen belongings back from the bandits, then turn down her reward",
+     "leadsTo": "the quest ends with no reward; the items mattered to her"
+    },
+    {
+     "choice": "Get her belongings back and accept her reward anyway",
+     "leadsTo": "you take the reward"
+    },
+    {
+     "choice": "End it with her belongings still lost",
+     "leadsTo": "she gives you her hammer and circlet, or has nothing to give you"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Meet with the stranger who sent the note.",
+      "Retrieve the painting of Nirenoore.",
+      "Return to Nirenoore.",
+      "Have a drink with Nirenoore.",
+      "Escape.",
+      "Retrieve your items. (Optional)",
+      "Rescue Nirenoore.",
+      "Retrieve the painting of Nirenoore.",
+      "Speak to Nirenoore.",
+      "Follow Nirenoore.",
+      "Speak to Nirenoore.",
+      "Recover Nirenoore's Items.",
+      "Speak to Nirenoore."
+     ]
+    },
+    {
+     "branch": "report her",
+     "objectives": []
+    }
+   ],
+   "rewards": [
+    {
+     "what": "some gold",
+     "when": "when you bring her the painting"
+    },
+    {
+     "what": "some gold",
+     "when": "if you report her to the Thalmor instead"
+    },
+    {
+     "what": "her recovered belongings (the quest holds a sword, shield, wings, pauldrons, helmet, bracers, boots, cape, body armor and a book for this)",
+     "when": "at the end, if you accept"
+    },
+    {
+     "what": "Welkynar Hussar Hammer and Welkynar Hussar Circlet",
+     "when": "at the end, on one of the two endings where her belongings stay lost; on the other she has nothing to give"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [
+    "Reporting her to the Thalmor ends the quest"
+   ],
+   "people": [
+    {
+     "name": "Nirenoore",
+     "role": "the Altmer who sends the note and asks for your help; waits at the Bannered Mare"
+    },
+    {
+     "name": "Kelkemmeriil",
+     "role": "a Thalmor with lines in the quest up to the trap"
+    },
+    {
+     "name": "Thalmor Soldiers",
+     "role": "guard Thalmor Headquarters and the prison"
+    },
+    {
+     "name": "Embershard Mine bandits",
+     "role": "have Nirenoore's stolen belongings"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The opening runs on a change-location event with no conditions shown; how the note is delivered (courier or straight into your pack) isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The prison is in the mod's own cells, which have no name in these files; you're moved in and out by the quest (portal aliases), so where it sits in Skyrim isn't shown."
+    },
+    {
+     "field": "choices",
+     "why": "Who you report Nirenoore to isn't named; Kelkemmeriil, a Thalmor, has lines up to that point and is the likely one. Which choice leads to the hammer-and-circlet or nothing-to-give endings is read from the log text only."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward aliases (sword, shield, wings and so on) are filled from objects the extract doesn't resolve, so the exact pieces aren't known. They may be the Welkynar Hussar set from the companion armor mod. The Footwraps and Ragged Trousers in the script are the prisoner clothes you're given in the cell, not a reward."
+    },
+    {
+     "field": "where",
+     "why": "Nirenoore is placed in a holding cell; her package keeps her in the Bannered Mare once the quest is past the note."
+    },
+    {
+     "field": "hold",
+     "why": "The places index puts Embershard Mine in Falkreath hold, next to Riverwood."
+    },
+    {
+     "field": "opens",
+     "why": "Drinking with Nirenoore and A Welkynar Legend belong to the same mod and are offered by Nirenoore, who only waits at the Bannered Mare once this quest is under way, but no record says this quest unlocks them."
+    },
+    {
+     "field": "takesYou",
+     "why": "Nirenoore leads you to her hiding place; the records only say it is near Embershard Mine ('There is a bandit camp nearby. Embershard Mine I think.')."
+    }
+   ],
+   "evidence": [
+    "QUST ksws04_quest.esp:000A43",
+    "stages 100-1150; 1100/1150/9200/9250 complete; 9000/9100 fail",
+    "giver INFO ksws04_quest.esp:000A9B (Nirenoore, stage < 101); Kelkemmeriil dialogue stage < 501",
+    "SM node ksws04MainQuestNode, event change location",
+    "alias BanditDungeon = Embershard; INFO ksws04_quest.esp:000B46",
+    "cells used: Skyrim.esm:01605E Bannered Mare, Skyrim.esm:071FFE Thalmor Headquarters, Skyrim.esm:0B6BE6 Embershard Mine, ksws04_quest.esp:000810/811/813",
+    "script ksws04MainQuestScript: FavorRewardGoldSmall, Gold001, ksws04_armo_circlet, ksws04_weap_hammer, ClothesPrisonerShoes, ClothesPrisonerRags",
+    "PACK ksws04WaifuDefaultPackage",
+    "stages 800/850/900 logs; INFO ksws04_quest.esp:000B46 'There is a bandit camp nearby'; stages 9200/9250"
+   ]
+  },
+  {
+   "edid": "ccMTYSSE001_DES_RelicsoftheCrusader",
+   "name": "Relics of the Crusader",
+   "plugin": "ccmtysse001-knightsofthenine.esl (Creation Club; last edited by Knight of the North.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "No one hands it out; the journal opens once you learn where one of the Divine Crusader's relics is.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Find the relics of the Divine Crusader",
+   "takesYou": [
+    {
+     "place": "Northwatch Keep",
+     "hold": "Haafingar",
+     "why": "the Thalmor hold the Cuirass of the Crusader here, waiting to ship it to Alinor"
+    },
+    {
+     "place": "Inner Sanctum, Temple of Dibella, Markarth",
+     "hold": "The Reach",
+     "why": "the priestesses keep a relic here; you can serve Dibella to earn the Helm, or steal it"
+    },
+    {
+     "place": "north of Rorikstead",
+     "hold": "Whiterun",
+     "why": "Thalmor orders say the Armor of the Crusader was found here; the Thalmor dossier says the Cuirass has since been taken to Northwatch Keep"
+    },
+    {
+     "place": "Stendarr's Beacon",
+     "hold": "The Rift",
+     "why": "a Thalmor dossier says the Vigilants may be guarding a relic here"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Serve Arkay to earn the Sword of the Crusader",
+     "leadsTo": "you earn the sword"
+    },
+    {
+     "choice": "Steal the Sword of the Crusader",
+     "leadsTo": "you take the sword without earning it"
+    },
+    {
+     "choice": "Serve Dibella to earn the Helm of the Crusader",
+     "leadsTo": "you earn the helm"
+    },
+    {
+     "choice": "Steal the Helm of the Crusader",
+     "leadsTo": "you take the helm without earning it"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the Mace of the Crusader",
+      "Find the Sword of the Crusader",
+      "Serve Arkay to earn the Sword of the Crusader",
+      "Steal the Sword of the Crusader",
+      "Retrieve the Sword of the Crusader",
+      "Find the Boots of the Crusader",
+      "Find the Cuirass of the Crusader",
+      "Find the Gauntlets of the Crusader",
+      "Find the Helm of the Crusader",
+      "Serve Dibella to earn the Helm of the Crusader",
+      "Steal the Helm of the Crusader",
+      "Retrieve the Helm of the Crusader",
+      "Find the Shield of the Crusader"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Mace of the Crusader, Sword of the Crusader, Boots of the Crusader, Cuirass of the Crusader, Gauntlets of the Crusader, Helm of the Crusader, Shield of the Crusader",
+     "when": "each as you find it"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Falk Firebeard",
+     "role": "named in the quest; steward of the Blue Palace in Solitude, in the court by day, at Bryling's House from 2 to 4 am, sleeps in the palace; his part isn't shown in these files"
+    },
+    {
+     "name": "Oren",
+     "role": "a bandit boss from the same Creation; where he stands isn't in these files"
+    },
+    {
+     "name": "Ondolemar",
+     "role": "signs the Thalmor orders to take the relics to Northwatch Keep"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No giver, dialogue or start event is recorded; the opening log says you've 'discovered the whereabouts' of a relic, but which book, note or find sets it off isn't in these files. Knight of the North adds a Thalmor Dossier: Crusader Relics and Justiciar Orders, which are likely leads."
+    },
+    {
+     "field": "takesYou",
+     "why": "Only Northwatch Keep and the Inner Sanctum are tied to this quest in the places index. Rorikstead and Stendarr's Beacon come from the Knight of the North book excerpts, and the excerpt doesn't show which relic is at Stendarr's Beacon. Where the Mace, Boots, Gauntlets and Shield are, and where you serve Arkay, isn't recorded."
+    },
+    {
+     "field": "people",
+     "why": "Falk Firebeard is a quest alias and the Blue Palace is the one cell the quest uses, but no dialogue of his is recorded."
+    },
+    {
+     "field": "rewards",
+     "why": "LoreRim's own Divine Crusader plugin adds copies of these pieces, with forge recipes that need the original piece in your pack; those aren't quest rewards."
+    },
+    {
+     "field": "takesYou",
+     "why": "The orders sending Thalmor north of Rorikstead and the dossier saying the Cuirass is already at Northwatch Keep may be from different times; which one is current in your game isn't shown. In the dossier, the Inner Sanctum passage sits under the Helm, and the Stendarr's Beacon passage sits just before the Helm, after the Cuirass and Gauntlets headings."
+    }
+   ],
+   "evidence": [
+    "QUST ccmtysse001-knightsofthenine.esl:00083C (editedBy Knight of the North.esp)",
+    "stages 5-70, 75 completes",
+    "alias FalkFirebeard -> Skyrim.esm:013274 (Blue Palace)",
+    "tied ref ccmtysse001-knightsofthenine.esl:00084C",
+    "places: Northwatch Keep Skyrim.esm:019285, Inner Sanctum Skyrim.esm:01F317",
+    "BOOK Knight of the North.esp:000817 (Thalmor Dossier: Crusader Relics), :00081E/:00081F (Justiciar Orders), :00081A (Letter to the Jarl)",
+    "ARMO/WEAP ccmtysse001-knightsofthenine.esl:000800-00080D",
+    "NPC ccmtysse001-knightsofthenine.esl:000826 Oren",
+    "PACK SolitudePalaceCourtStewardSandbox6x16, FalkBrylingSecretMeeting2x2, USKPFalkFirebeardSleep24x6"
+   ]
+  },
+  {
+   "edid": "belethorSisterQuest01",
+   "name": "Belethor's Sister",
+   "plugin": "Belethor's Sister.esp (Belethor's Sister - Quest; no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Belethor admits he sold his sister Lelaegh for money and asks you to get her back.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Belethor",
+     "where": "Belethor's General Goods, Whiterun",
+     "how": "Talk to Belethor in his shop; he tells you he sold his sister Lelaegh to Ysolda and asks you to get her back."
+    }
+   ],
+   "firstStep": "Ask Ysolda about Lelaegh",
+   "takesYou": [
+    {
+     "place": "around Whiterun by day; the Bannered Mare from 8 pm to midnight; Ysolda's House overnight",
+     "hold": "Whiterun",
+     "why": "ask Ysolda, who sold Lelaegh on to Ma'dran"
+    },
+    {
+     "place": "Ma'dran's Khajiit caravan",
+     "hold": "",
+     "why": "he gives you a sales contract and tells you which bandits bought her"
+    },
+    {
+     "place": "a bandit hideout",
+     "hold": "",
+     "why": "the bandits' journal says they sold her to necromancers"
+    },
+    {
+     "place": "a necromancer lair",
+     "hold": "",
+     "why": "the necromancers' journal says they sacrificed her to the Ideal Masters"
+    },
+    {
+     "place": "Soul Cairn",
+     "hold": "",
+     "why": "find Lelaegh and buy her freedom from Morven Stroud with 30 Soul Husks"
+    },
+    {
+     "place": "Belethor's General Goods",
+     "hold": "Whiterun",
+     "why": "bring Lelaegh home"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Ask Ysolda about Lelaegh.",
+      "Ask Ma'dran about Lelaegh.",
+      "Read Ma'dran's Sales Contract.",
+      "Search for Lelaegh at the bandit hideout.",
+      "Search for Lelaegh at the necromancer lair.",
+      "Search for Lelaegh in the Soul Cairn.",
+      "Ask Morven Stroud about Lelaegh.",
+      "Collect Soul Husks for Morven Stroud (30)",
+      "Return to Morven Stroud.",
+      "Speak to Lelaegh.",
+      "Return to Belethor.",
+      "Speak to Lelaegh."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "gold",
+     "when": "at the end"
+    },
+    {
+     "what": "Lelaegh moves into Belethor's General Goods and works there",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [
+    "Hostile Takeover",
+    "Lelaegh's jobs: a shipment from bandits, a delivery, and a shipment pickup"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Belethor",
+     "role": "sold his sister and asks you to get her back; in his shop by day"
+    },
+    {
+     "name": "Lelaegh",
+     "role": "Belethor's sister, found in the Soul Cairn"
+    },
+    {
+     "name": "Ysolda",
+     "role": "bought Lelaegh and sold her on"
+    },
+    {
+     "name": "Ma'dran",
+     "role": "Khajiit caravan leader who sold her to bandits"
+    },
+    {
+     "name": "Morven Stroud",
+     "role": "in the Soul Cairn; frees Lelaegh for 30 Soul Husks"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The bandit hideout and necromancer lair are picked when the quest runs, so they change from game to game. Ma'dran travels with a caravan and his route isn't decoded."
+    },
+    {
+     "field": "needs",
+     "why": "You have to reach the Soul Cairn, but these files don't show how this quest gets you there or whether it needs Dawnguard progress."
+    },
+    {
+     "field": "starts",
+     "why": "The quest starts on a change-location event while it isn't finished yet, then Belethor's line; other conditions on his line aren't in these files. The questline uses the Speech checks (50 and 75), so a persuade option likely appears somewhere."
+    },
+    {
+     "field": "where",
+     "why": "Ysolda's day packages send her somewhere in Whiterun (a random stop, then a basket round in the late afternoon) that isn't decoded; the Bannered Mare evening visit and sleeping at home are named."
+    },
+    {
+     "field": "choices",
+     "why": "The quest uses the Speech 50 and 75 checks, and Ma'dran either gives you his sales contract or tells you about the bandits outright (two different log entries), so a persuade option may skip the contract; the records don't show which line does what."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold comes from the quest's script, not a log entry; the amount and the moment it's paid aren't recorded."
+    }
+   ],
+   "evidence": [
+    "QUST Belethor's Sister.esp:000804",
+    "stages 100-850; 900 completes",
+    "fills: waifu = Lelaegh, note01 = Ma'dran's Sales Contract",
+    "giver INFO Belethor's Sister.esp:000811 (Belethor, stage < 1); Ysolda < 101, Ma'dran < 201, Lelaegh < 501",
+    "SM node belethorSisterQuestNode, event change location, GetQuestCompleted(000804) == 0",
+    "globals SpeechAverage, SpeechHard",
+    "script belethorSisterQuest01Script.Gold001",
+    "PACK belethorSisterDefaultWaifuSandboxPackage (Belethor's General Goods, after 000804 completed)",
+    "PACK AIOWRYsoldaRandom8x7, WhiterunYsoldaCarryBasketPatrol16x4, WhiterunYsoldaBanneredMarePackage20x4, DefaultSleepEditorLoc24x8; stages 250 vs 300 logs"
+   ]
+  },
+  {
+   "edid": "belethorSisterQuest02",
+   "name": "Hostile Takeover",
+   "plugin": "Belethor's Sister.esp (Belethor's Sister - Quest; no other plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "Lelaegh sends you a note asking you to meet her at the Bannered Mare.",
+   "needs": [
+    {
+     "what": "Finish Belethor's Sister",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Lelaegh",
+     "where": "the Bannered Mare in Whiterun",
+     "how": "You get a note from Lelaegh; meet her at the Bannered Mare and hear her plan to take majority ownership of Belethor's General Goods."
+    }
+   ],
+   "firstStep": "Meet Lelaegh at the Bannered Mare",
+   "takesYou": [
+    {
+     "place": "The Bannered Mare",
+     "hold": "Whiterun",
+     "why": "meet Lelaegh; buy Hulda's share"
+    },
+    {
+     "place": "around Whiterun by day; the Bannered Mare from 8 pm to midnight; Ysolda's House overnight",
+     "hold": "Whiterun",
+     "why": "buy Ysolda's share"
+    },
+    {
+     "place": "Wintersand Manor, or around Dragonsreach and the Cloud District by day",
+     "hold": "Whiterun",
+     "why": "buy Nazeem's share"
+    },
+    {
+     "place": "Belethor's General Goods",
+     "hold": "Whiterun",
+     "why": "the shareholders' meeting (Lelaegh leads you there; the shop is the likely spot)"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "At the shareholders' meeting, back Lelaegh",
+     "leadsTo": "Lelaegh becomes the new store manager"
+    },
+    {
+     "choice": "Back Belethor",
+     "leadsTo": "Belethor stays store manager"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Meet with Lelaegh at the Bannered Mare.",
+      "Acquire Ysolda's share of Belethor's General Store.",
+      "Acquire Nazeem's share of Belethor's General Store.",
+      "Acquire Hulda's share of Belethor's General Store.",
+      "Return to Lelaegh at the Bannered Mare.",
+      "Follow Lelaegh.",
+      "Speak to Lelaegh."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "gold",
+     "when": "from the quest script; when isn't shown"
+    }
+   ],
+   "type": "none set in the records",
+   "opens": [],
+   "closes": [
+    "Belethor stops being store manager if you elect Lelaegh"
+   ],
+   "people": [
+    {
+     "name": "Lelaegh",
+     "role": "plans the takeover"
+    },
+    {
+     "name": "Ysolda",
+     "role": "sells you her share"
+    },
+    {
+     "name": "Hulda",
+     "role": "sells you her share; runs the Bannered Mare"
+    },
+    {
+     "name": "Nazeem",
+     "role": "sells you his share"
+    },
+    {
+     "name": "Belethor",
+     "role": "at the shareholders' meeting"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Lelaegh only lives in the shop after Belethor's Sister is done, and the note talks about her, so the first quest is assumed to come first; the start event's own conditions aren't shown."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount and when it's paid aren't recorded, and the cost of the shares isn't in these files."
+    },
+    {
+     "field": "choices",
+     "why": "A failed ending exists in the records with no log text; what causes it isn't shown."
+    },
+    {
+     "field": "where",
+     "why": "Ysolda's day packages send her somewhere in Whiterun (a random stop, then a basket round in the late afternoon) that isn't decoded; the Bannered Mare evening visit and sleeping at home are named."
+    },
+    {
+     "field": "where",
+     "why": "Nazeem's packages put him at Wintersand Manor for most of the day, but with stops at Dragonsreach and elsewhere in the Cloud District; Hulda runs the Bannered Mare and visits the Temple of Kynareth early in the morning."
+    },
+    {
+     "field": "takesYou",
+     "why": "You follow Lelaegh to the shareholders' meeting; the records don't name the room."
+    },
+    {
+     "field": "closes",
+     "why": "Whether the election changes who trades in the shop isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Belethor's Sister.esp:00085E (type not set)",
+    "stages 100-599; 600 completes, 699 fails; 500 Lelaegh manager, 599 Belethor stays",
+    "giver INFO Belethor's Sister.esp:00086A (Lelaegh, stage < 101); Ysolda/Hulda/Nazeem < 201",
+    "SM node belethorSisterQuestNode, event change location",
+    "script belethorSisterQuest02Script.Gold001",
+    "PACK WhiterunNazeemWintersandManor7x16, AIOWRNazeemCloudDistrict (Dragonsreach), AIOHuldaVisitTemple7x2, WhiterunInnkeeperPackage"
+   ]
+  },
+  {
+   "edid": "belethorSisterQuestBandit",
+   "name": "The item",
+   "plugin": "Belethor's Sister.esp (Belethor's Sister - Quest; no other plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A job from Lelaegh: get a shipment back from bandits.",
+   "needs": [
+    {
+     "what": "Finish Belethor's Sister (Lelaegh works in the shop afterwards)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Lelaegh",
+     "where": "Belethor's General Goods, Whiterun",
+     "how": "Ask Lelaegh for work; she asks you to retrieve an item from bandits."
+    }
+   ],
+   "firstStep": "Retrieve the item from the bandits",
+   "takesYou": [
+    {
+     "place": "a bandit hideout",
+     "hold": "",
+     "why": "take back the shipment from the bandits' chest"
+    },
+    {
+     "place": "Belethor's General Goods",
+     "hold": "Whiterun",
+     "why": "return it to Lelaegh"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Retrieve the item.",
+      "Return the item to Lelaegh."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "an item from the mod's reward list",
+     "when": "when you return the shipment"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lelaegh",
+     "role": "gives the job"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Lelaegh offers it in conversation; the job's item, place or person is picked when it runs, and the conditions on her offer aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Lelaegh's packages put her in Belethor's General Goods once Belethor's Sister is finished."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is a leveled list; its contents aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The bandit hideout is picked when the quest runs."
+    }
+   ],
+   "evidence": [
+    "QUST Belethor's Sister.esp:000947 (name <alias=item>)",
+    "stages 100, 150 fails, 200, 300 completes",
+    "giver INFO Belethor's Sister.esp:000953 (Lelaegh, stage < 2)",
+    "script belethorSisterQuestBanditScript.belethorSisterReward01 (LVLI Belethor's Sister.esp:00091B)"
+   ]
+  },
+  {
+   "edid": "belethorSisterQuestDelivery",
+   "name": "Delivery for the npc",
+   "plugin": "Belethor's Sister.esp (Belethor's Sister - Quest; no other plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A job from Lelaegh: deliver goods to a customer.",
+   "needs": [
+    {
+     "what": "Finish Belethor's Sister (Lelaegh works in the shop afterwards)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Lelaegh",
+     "where": "Belethor's General Goods, Whiterun",
+     "how": "Ask Lelaegh for work; she gives you up to three items to deliver to someone."
+    }
+   ],
+   "firstStep": "Deliver the goods",
+   "takesYou": [
+    {
+     "place": "the customer",
+     "hold": "",
+     "why": "hand over the delivery"
+    },
+    {
+     "place": "Belethor's General Goods",
+     "hold": "Whiterun",
+     "why": "report back to Lelaegh"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver the first item.",
+      "Deliver the second item.",
+      "Deliver the third item.",
+      "Return to Lelaegh."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "items from the mod's reward lists",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lelaegh",
+     "role": "gives the job"
+    },
+    {
+     "name": "Brill",
+     "role": "named in the quest; placed in Jorrvaskr. Whether he is one of the customers isn't shown"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Lelaegh offers it in conversation; the job's item, place or person is picked when it runs, and the conditions on her offer aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Lelaegh's packages put her in Belethor's General Goods once Belethor's Sister is finished."
+    },
+    {
+     "field": "rewards",
+     "why": "Two leveled lists in the script; their contents and which one you get aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The customer and items are picked when the quest runs."
+    }
+   ],
+   "evidence": [
+    "QUST Belethor's Sister.esp:0008E6 (name 'Delivery for <alias=npc>')",
+    "stages 100, 150 fails, 200, 300 completes",
+    "giver INFO Belethor's Sister.esp:000923 (Lelaegh, stage < 2)",
+    "alias brill -> Skyrim.esm:01A6A2",
+    "script belethorSisterQuestDeliveryScript: belethorSisterReward00, belethorSisterReward02"
+   ]
+  },
+  {
+   "edid": "belethorSisterQuestFetch",
+   "name": "The item",
+   "plugin": "Belethor's Sister.esp (Belethor's Sister - Quest; no other plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A job from Lelaegh: pick up a shipment from a supplier.",
+   "needs": [
+    {
+     "what": "Finish Belethor's Sister (Lelaegh works in the shop afterwards)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Lelaegh",
+     "where": "Belethor's General Goods, Whiterun",
+     "how": "Ask Lelaegh for work; she asks you to collect a shipment from someone."
+    }
+   ],
+   "firstStep": "Retrieve the shipment",
+   "takesYou": [
+    {
+     "place": "the supplier",
+     "hold": "",
+     "why": "collect the shipment"
+    },
+    {
+     "place": "Belethor's General Goods",
+     "hold": "Whiterun",
+     "why": "bring it to Lelaegh"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Retrieve the shipment from the supplier.",
+      "Return to Lelaegh."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "an item from the mod's reward list",
+     "when": "when you bring the shipment back"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lelaegh",
+     "role": "gives the job"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Lelaegh offers it in conversation; the job's item, place or person is picked when it runs, and the conditions on her offer aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Lelaegh's packages put her in Belethor's General Goods once Belethor's Sister is finished."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is a leveled list; its contents aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The supplier is picked when the quest runs."
+    }
+   ],
+   "evidence": [
+    "QUST Belethor's Sister.esp:0008E0 (name <alias=item>)",
+    "stages 100, 150 fails, 200, 300 completes",
+    "giver INFO Belethor's Sister.esp:0008EC (Lelaegh, stage < 2)",
+    "script belethorSisterQuestFetchScript.belethorSisterReward01 (LVLI Belethor's Sister.esp:00091B)"
+   ]
+  },
+  {
+   "edid": "Rune01",
+   "name": "Rune's Scope",
+   "plugin": "Revealing Rune.esp (Revealing Rune; no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Rune asks for help finding a clue to his past on the coast near Solitude.",
+   "needs": [
+    {
+     "what": "Be able to get into the Cistern (Thieves Guild headquarters) to talk to Rune",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Rune",
+     "where": "the Cistern, under the Ragged Flagon in Riften",
+     "how": "Talk to Rune and agree to look into his past."
+    }
+   ],
+   "firstStep": "Search along the coast of Solitude for a clue to Rune's past",
+   "takesYou": [
+    {
+     "place": "the coast near Solitude",
+     "hold": "Haafingar",
+     "why": "find a chest with a letter about Rune's past"
+    },
+    {
+     "place": "the Cistern, Riften",
+     "hold": "The Rift",
+     "why": "bring it back to Rune"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Whether to take the job when Rune asks",
+     "leadsTo": "agreeing sends you to the coast; the records also have a second ending marked as a failure, with no text"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Search along the coast of Solitude for a clue to Rune's past",
+      "Return to Rune"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Rune",
+     "role": "Thieves Guild member who wants to learn about his past; in the Cistern day and night (trains in the training room late at night)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The line touches the Thieves Guild talk gate, so Rune may only offer this once you're far enough in the Thieves Guild; the conditions on his line aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The chest's exact spot on the coast isn't in these files. The letter is probably this mod's Drenched Note (a parent writing to a son before a storm), but the alias isn't resolved."
+    },
+    {
+     "field": "choices",
+     "why": "The journal text is placeholder ('Decision stage', 'Fail'), so what decides the ending isn't shown."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded."
+    }
+   ],
+   "evidence": [
+    "QUST Revealing Rune.esp:000D62",
+    "stages 5 decision, 10, 20, 30 completes, 40 completes ('Fail')",
+    "giver INFO Revealing Rune.esp:000D74 (Rune, stage < 11)",
+    "Rune placed Skyrim.esm:0D4FE0 in The Ragged Flagon - Cistern; PACK ThievesGuildRuneSleep2x6, ThievesGuildTrainingMeleeRoom22x4",
+    "line global TGTalkGate",
+    "BOOK Revealing Rune.esp:000D63 Drenched Note"
+   ]
+  }
+ ]
+}
