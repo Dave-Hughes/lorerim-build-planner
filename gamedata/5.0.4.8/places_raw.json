@@ -676,7 +676,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (Song of Hrormir)"
+     "Two-Handed: Song of Hrormir"
     ]
    }
   },
@@ -736,7 +736,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (2920, Vol. 02: Sun's Dawn)"
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
     ],
     "bossChest": true,
     "crafting": [
@@ -1268,7 +1268,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (The Wolf Queen, Vol. 1)"
+     "Lockpicking: The Wolf Queen, Vol. 1"
     ],
     "bossChest": true
    },
@@ -1361,7 +1361,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (The Lunar Lorkhan)"
+     "Alteration: The Lunar Lorkhan"
     ],
     "bossChest": true,
     "crafting": [
@@ -1440,7 +1440,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (The Locked Room)"
+     "Lockpicking: The Locked Room"
     ],
     "bossChest": true,
     "crafting": [
@@ -1540,7 +1540,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Orsinium and the Orcs)"
+     "Heavy Armor: Orsinium and the Orcs"
     ],
     "bossChest": true
    }
@@ -1569,11 +1569,8 @@
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:02A974",
    "actors": {
-    "count": 20,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Giant"
-    ],
+    "count": 18,
+    "livesHere": "Giant",
     "floor": 1,
     "ceiling": 30,
     "atLevel": [
@@ -1591,7 +1588,7 @@
      "level": "level 16"
     },
     "afterTheWar": {
-     "count": 2,
+     "count": 4,
      "livesHere": "Imperial",
      "floor": 25,
      "ceiling": 30,
@@ -1616,7 +1613,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Chimarvamidium)"
+     "Heavy Armor: Chimarvamidium"
     ],
     "crafting": [
      "a sharpening wheel"
@@ -1848,46 +1845,41 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016249",
    "actors": {
-    "count": 62,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Warlock"
-    ],
-    "floor": 6,
-    "ceiling": 50,
+    "count": 2,
+    "floor": 1,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       6,
-       50
+       1,
+       2
       ],
-      "words": "from 1, 6 to 50"
+      "words": "from 1, 1 to 2"
      }
     ],
     "zoneMin": 6,
-    "boss": {
-     "level": "level 50"
-    },
     "afterTheWar": {
-     "count": 32,
+     "count": 92,
      "livesHere": "Imperial",
-     "floor": 22,
-     "ceiling": 47,
+     "alsoHere": [
+      "Warlock"
+     ],
+     "floor": 6,
+     "ceiling": 50,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
-        47
+        6,
+        50
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 6 to 50"
       }
      ],
      "zoneMin": 6,
      "boss": {
-      "name": "Imperial Soldier",
-      "level": "leveled 22-47"
+      "level": "level 50"
      }
     }
    },
@@ -1896,7 +1888,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Armor Enchantments)"
+     "Enchanting: Catalogue of Armor Enchantments"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -2012,8 +2004,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (The Importance of Where)",
-     "Smithing (Last Scabbard of Akrash)"
+     "One-Handed: The Importance of Where",
+     "Smithing: Last Scabbard of Akrash"
     ],
     "bossChest": true,
     "crafting": [
@@ -2075,7 +2067,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Marksmanship Lesson)"
+     "Marksman: The Marksmanship Lesson"
     ],
     "shrines": [
      "Shrine of Kynareth"
@@ -2110,14 +2102,14 @@
    "plugin": "Update.esm",
    "marker": null,
    "actors": {
-    "count": 6,
+    "count": 4,
     "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Block (The Mirror)",
-     "HeavyArmor (The Knights of the Nine)"
+     "Block: The Mirror",
+     "Heavy Armor: The Knights of the Nine"
     ],
     "crafting": [
      "an alchemy lab",
@@ -2333,23 +2325,26 @@
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
-    "count": 12,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       47
-      ],
-      "words": "from 1, 1 to 47"
+    "count": 0,
+    "afterTheWar": {
+     "count": 12,
+     "livesHere": "Imperial",
+     "floor": 1,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        47
+       ],
+       "words": "from 1, 1 to 47"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
      }
-    ],
-    "boss": {
-     "name": "Imperial Soldier",
-     "level": "leveled 22-47"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -2395,23 +2390,38 @@
    "plugin": "Lux Via.esp",
    "marker": null,
    "actors": {
-    "count": 28,
-    "livesHere": "Imperial",
+    "count": 22,
     "floor": 1,
-    "ceiling": 30,
+    "ceiling": 23,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       30
+       23
       ],
-      "words": "from 1, 1 to 30"
+      "words": "from 1, 1 to 23"
      }
     ],
-    "boss": {
-     "name": "Imperial Soldier",
-     "level": "leveled 25-30"
+    "afterTheWar": {
+     "count": 6,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -2419,8 +2429,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Armor Enchantments)",
-     "Marksman (The Marksmanship Lesson)"
+     "Enchanting: Catalogue of Armor Enchantments",
+     "Marksman: The Marksmanship Lesson"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -3583,8 +3593,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Orsinium and the Orcs)",
-     "TwoHanded (Words and Philosophy)"
+     "Heavy Armor: Orsinium and the Orcs",
+     "Two-Handed: Words and Philosophy"
     ],
     "bossChest": true,
     "crafting": [
@@ -3667,7 +3677,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Pickpocket (Guide to Better Thieving)"
+     "Pickpocket: Guide to Better Thieving"
     ],
     "bossChest": true
    }
@@ -3727,7 +3737,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Hallgerd's Tale)"
+     "Heavy Armor: Hallgerd's Tale"
     ],
     "bossChest": true,
     "crafting": [
@@ -3830,8 +3840,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (Mystery of Talara, Vol. 3)",
-     "Smithing (Cherim's Heart)"
+     "Destruction: Mystery of Talara, Vol. 3",
+     "Smithing: Cherim's Heart"
     ],
     "bossChest": true,
     "crafting": [
@@ -4081,8 +4091,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (The Lunar Lorkhan)",
-     "Smithing (Heavy Armor Forging)"
+     "Alteration: The Lunar Lorkhan",
+     "Smithing: Heavy Armor Forging"
     ],
     "bossChest": true,
     "crafting": [
@@ -4269,8 +4279,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (The Knights of the Nine)",
-     "TwoHanded (Song of Hrormir)"
+     "Heavy Armor: The Knights of the Nine",
+     "Two-Handed: Song of Hrormir"
     ],
     "bossChest": true,
     "crafting": [
@@ -4421,9 +4431,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (A Game at Dinner)",
-     "Enchanting (A Tragedy in Black)",
-     "Sneak (The Red Kitchen Reader)"
+     "Alchemy: A Game at Dinner",
+     "Enchanting: A Tragedy in Black",
+     "Sneak: The Red Kitchen Reader"
     ],
     "crafting": [
      "an alchemy lab",
@@ -4561,7 +4571,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (Rislav the Righteous)"
+     "Light Armor: Rislav the Righteous"
     ]
    }
   },
@@ -4670,8 +4680,8 @@
      "Storm Call"
     ],
     "skillBooks": [
-     "Smithing (Heavy Armor Forging)",
-     "Smithing (Last Scabbard of Akrash)"
+     "Smithing: Heavy Armor Forging",
+     "Smithing: Last Scabbard of Akrash"
     ]
    },
    "danger": {
@@ -4929,7 +4939,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Mystery of Talara, Vol. 4)"
+     "Illusion: Mystery of Talara, Vol. 4"
     ],
     "bossChest": true,
     "crafting": [
@@ -5099,7 +5109,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (A Game at Dinner)"
+     "Alchemy: A Game at Dinner"
     ],
     "crafting": [
      "an alchemy lab",
@@ -5156,7 +5166,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (A Dance in Fire, Vol. 2)"
+     "Block: A Dance in Fire, Vol. 2"
     ],
     "bossChest": true
    },
@@ -5227,7 +5237,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (Mace Etiquette)"
+     "One-Handed: Mace Etiquette"
     ],
     "bossChest": true,
     "crafting": [
@@ -5320,7 +5330,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Surfeit of Thieves)"
+     "Lockpicking: Surfeit of Thieves"
     ],
     "bossChest": true
    },
@@ -5831,7 +5841,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Song of the Alchemists)"
+     "Alchemy: Song of the Alchemists"
     ],
     "crafting": [
      "an alchemy lab",
@@ -5988,7 +5998,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (Legend of Krately House)"
+     "Sneak: Legend of Krately House"
     ]
    }
   },
@@ -6040,7 +6050,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Advances in Lockpicking)"
+     "Lockpicking: Advances in Lockpicking"
     ]
    },
    "pointers": [
@@ -6113,7 +6123,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (The Armorer's Challenge)"
+     "Smithing: The Armorer's Challenge"
     ],
     "bossChest": true,
     "crafting": [
@@ -6319,7 +6329,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Incident at Necrom)"
+     "Illusion: Incident at Necrom"
     ],
     "bossChest": true,
     "crafting": [
@@ -6392,7 +6402,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (2920, Vol. 06: MidYear)"
+     "Heavy Armor: 2920, Vol. 06: MidYear"
     ]
    }
   },
@@ -6415,7 +6425,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (The Exodus)"
+     "Restoration: The Exodus"
     ],
     "crafting": [
      "an alchemy lab"
@@ -6483,8 +6493,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (Rislav the Righteous)",
-     "Smithing (Light Armor Forging)"
+     "Light Armor: Rislav the Righteous",
+     "Smithing: Light Armor Forging"
     ],
     "bossChest": true,
     "crafting": [
@@ -6534,7 +6544,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft (A Dance in Fire, Vol. 6)"
+     "Speechcraft: A Dance in Fire, Vol. 6"
     ],
     "crafting": [
      "an alchemy lab"
@@ -6719,7 +6729,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Proper Lock Design)"
+     "Lockpicking: Proper Lock Design"
     ],
     "bossChest": true,
     "shrines": [
@@ -6850,7 +6860,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (Light Armor Forging)"
+     "Smithing: Light Armor Forging"
     ],
     "bossChest": true,
     "crafting": [
@@ -6957,7 +6967,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Mannimarco, King of Worms)"
+     "Alchemy: Mannimarco, King of Worms"
     ]
    },
    "pointers": [
@@ -7071,7 +7081,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (Liminal Bridges)"
+     "Conjuration: Liminal Bridges"
     ]
    }
   },
@@ -7098,30 +7108,26 @@
    "plugin": "Lux.esp",
    "marker": "Skyrim.esm:016250",
    "actors": {
-    "count": 65,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit"
-    ],
-    "floor": 6,
-    "ceiling": 47,
+    "count": 1,
+    "floor": 1,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       6,
-       47
+       1,
+       2
       ],
-      "words": "from 1, 6 to 47"
+      "words": "from 1, 1 to 2"
      }
     ],
     "zoneMin": 6,
-    "boss": {
-     "level": "leveled 22-47"
-    },
     "afterTheWar": {
-     "count": 35,
+     "count": 99,
      "livesHere": "Imperial",
+     "alsoHere": [
+      "Bandit"
+     ],
      "floor": 6,
      "ceiling": 47,
      "atLevel": [
@@ -7146,7 +7152,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (Jornibret's Last Dance)"
+     "Light Armor: Jornibret's Last Dance"
     ],
     "bossChest": true,
     "crafting": [
@@ -7247,8 +7253,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (Horror of Castle Xyr)",
-     "Enchanting (A Tragedy in Black)"
+     "Destruction: Horror of Castle Xyr",
+     "Enchanting: A Tragedy in Black"
     ],
     "bossChest": true,
     "crafting": [
@@ -7529,7 +7535,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (Response to Bero's Speech)"
+     "Destruction: Response to Bero's Speech"
     ],
     "bossChest": true,
     "crafting": [
@@ -7688,30 +7694,51 @@
    "plugin": "Requiem.esp",
    "marker": null,
    "actors": {
-    "count": 106,
-    "livesHere": "Imperial",
+    "count": 54,
+    "livesHere": "Bandit",
     "alsoHere": [
-     "Bandit",
      "Spider",
      "Skeleton",
+     "Imperial",
      "Bear"
     ],
     "floor": 6,
-    "ceiling": 42,
+    "ceiling": 30,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       42
+       30
       ],
-      "words": "from 1, 6 to 42"
+      "words": "from 1, 6 to 30"
      }
     ],
     "zoneMin": 6,
     "boss": {
      "name": "Raxle Lusius",
      "level": "level 30"
+    },
+    "afterTheWar": {
+     "count": 52,
+     "livesHere": "Imperial",
+     "floor": 6,
+     "ceiling": 42,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        6,
+        42
+       ],
+       "words": "from 1, 6 to 42"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Imperial Battlemage",
+      "level": "level 42"
+     }
     }
    },
    "respawns": "never",
@@ -7719,7 +7746,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Black Arrow, Vol. 2)"
+     "Marksman: The Black Arrow, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -8600,26 +8627,45 @@
    "plugin": "AlternatePerspective.esp",
    "marker": "Skyrim.esm:01DC0A",
    "actors": {
-    "count": 12,
-    "livesHere": "Imperial",
+    "count": 7,
+    "livesHere": "Skeleton",
     "alsoHere": [
-     "Skeleton",
      "Bear"
     ],
     "floor": 1,
-    "ceiling": 20,
+    "ceiling": 14,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       20
+       14
       ],
-      "words": "from 1, 1 to 20"
+      "words": "from 1, 1 to 14"
      }
     ],
     "boss": {
      "level": "leveled 2-14"
+    },
+    "afterTheWar": {
+     "count": 5,
+     "livesHere": "Imperial",
+     "floor": 1,
+     "ceiling": 20,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        1,
+        20
+       ],
+       "words": "from 1, 1 to 20"
+      }
+     ],
+     "boss": {
+      "name": "Torturer",
+      "level": "level 2"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -8627,7 +8673,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Black Arrow, Vol. 2)"
+     "Marksman: The Black Arrow, Vol. 2"
     ],
     "crafting": [
      "an alchemy lab",
@@ -9488,7 +9534,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (The Doors of Oblivion)"
+     "Conjuration: The Doors of Oblivion"
     ],
     "shrines": [
      "Shrine of Arkay"
@@ -9542,7 +9588,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (Father of the Niben)"
+     "Marksman: Father of the Niben"
     ]
    },
    "pointers": [
@@ -9610,9 +9656,9 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Breathing Water)",
-     "Conjuration (The Doors of Oblivion)",
-     "Enchanting (A Tragedy in Black)"
+     "Alteration: Breathing Water",
+     "Conjuration: The Doors of Oblivion",
+     "Enchanting: A Tragedy in Black"
     ],
     "bossChest": true,
     "crafting": [
@@ -9656,36 +9702,20 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 3,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "boss": {
-     "level": "level 1"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 6,
+     "count": 9,
      "livesHere": "Imperial",
-     "floor": 22,
+     "floor": 1,
      "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
+        1,
         47
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 1 to 47"
       }
      ],
      "boss": {
@@ -9735,8 +9765,8 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Death Blow of Ebernanit)",
-     "Pickpocket (Guide to Better Thieving)"
+     "Block: Death Blow of Ebernanit",
+     "Pickpocket: Guide to Better Thieving"
     ],
     "crafting": [
      "an alchemy lab",
@@ -9809,7 +9839,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (Vernaccus and Bourlor)"
+     "Marksman: Vernaccus and Bourlor"
     ],
     "bossChest": true,
     "crafting": [
@@ -10042,7 +10072,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (The Warrior's Charge)"
+     "Conjuration: The Warrior's Charge"
     ],
     "bossChest": true,
     "crafting": [
@@ -10147,7 +10177,7 @@
      "Elemental Fury"
     ],
     "skillBooks": [
-     "Speechcraft (2920, Vol. 05: Second Seed)"
+     "Speechcraft: 2920, Vol. 05: Second Seed"
     ],
     "bossChest": true
    },
@@ -10237,8 +10267,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Mannimarco, King of Worms)",
-     "Block (Battle of Red Mountain)"
+     "Alchemy: Mannimarco, King of Worms",
+     "Block: Battle of Red Mountain"
     ],
     "bossChest": true,
     "crafting": [
@@ -10503,7 +10533,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (The Red Kitchen Reader)"
+     "Sneak: The Red Kitchen Reader"
     ],
     "bossChest": true,
     "crafting": [
@@ -10602,7 +10632,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Weapon Enchantments)"
+     "Enchanting: Catalogue of Weapon Enchantments"
     ]
    }
   },
@@ -10643,29 +10673,28 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 6,
-    "livesHere": "Imperial",
+    "count": 3,
+    "livesHere": "Bear",
     "alsoHere": [
-     "Bear",
      "Bandit"
     ],
     "floor": 3,
-    "ceiling": 27,
+    "ceiling": 24,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        3,
-       27
+       24
       ],
-      "words": "from 1, 3 to 27"
+      "words": "from 1, 3 to 24"
      }
     ],
     "boss": {
-     "level": "leveled 22-27"
+     "level": "leveled 3-24"
     },
     "afterTheWar": {
-     "count": 13,
+     "count": 16,
      "livesHere": "Imperial",
      "floor": 1,
      "ceiling": 27,
@@ -10811,8 +10840,8 @@
      "Fire Breath"
     ],
     "skillBooks": [
-     "Conjuration (2920, Vol. 10: Frostfall)",
-     "Lockpicking (The Wolf Queen, Vol. 1)"
+     "Conjuration: 2920, Vol. 10: Frostfall",
+     "Lockpicking: The Wolf Queen, Vol. 1"
     ],
     "bossChest": true,
     "crafting": [
@@ -10941,8 +10970,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Proper Lock Design)",
-     "Sneak (Sacred Witness)"
+     "Lockpicking: Proper Lock Design",
+     "Sneak: Sacred Witness"
     ],
     "crafting": [
      "an alchemy lab"
@@ -11175,8 +11204,8 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Song of the Alchemists)",
-     "Speechcraft (The Buying Game)"
+     "Alchemy: Song of the Alchemists",
+     "Speechcraft: The Buying Game"
     ],
     "crafting": [
      "an alchemy lab",
@@ -11781,13 +11810,13 @@
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
+     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
      "kind": "book",
      "book": "Walking the World, Vol. 11",
-     "words": "stle Dour and the Temple and you'll get your first sight of the Blue Palace. Along the way, be sure to stop outside the Bards College, a large building on your left marked by the Flame of Callisos burning beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as th",
+     "words": "ng beside the steps.\r\n\r\nNamed for a famous bard, it is said that as long as the flame burns, the college will stand.\r\n\r\nThe Bards College\r\n\r\nLooking up from the Bards College steps, you can see that the college stands taller than the Blue Palace itself. The bards who train here c",
      "record": "BOOK Skyrim.esm:0ED061 (Book Covers Skyrim.esp)"
     },
     {
@@ -11941,7 +11970,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (Cherim's Heart)"
+     "Smithing: Cherim's Heart"
     ],
     "bossChest": true,
     "crafting": [
@@ -11984,15 +12013,15 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 13,
+    "count": 4,
     "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Block (The Mirror)",
-     "Enchanting (A Tragedy in Black)",
-     "LightArmor (The Rear Guard)"
+     "Block: The Mirror",
+     "Enchanting: A Tragedy in Black",
+     "Light Armor: The Rear Guard"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -12324,8 +12353,7 @@
    "plugin": "Lux Orbis.esp",
    "marker": "Skyrim.esm:029DB8",
    "actors": {
-    "count": 22,
-    "livesHere": "Imperial",
+    "count": 14,
     "floor": 1,
     "ceiling": 78,
     "atLevel": [
@@ -12341,6 +12369,26 @@
     "boss": {
      "name": "Michel Lylvieve",
      "level": "level 4"
+    },
+    "afterTheWar": {
+     "count": 8,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "name": "Haafingar Guard",
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -12348,8 +12396,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (King)",
-     "TwoHanded (Song of Hrormir)"
+     "Two-Handed: King",
+     "Two-Handed: Song of Hrormir"
     ],
     "crafting": [
      "an armor workbench"
@@ -12869,40 +12917,23 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:03F510",
    "actors": {
-    "count": 57,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit"
-    ],
-    "floor": 6,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       47
-      ],
-      "words": "from 1, 6 to 47"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "level": "leveled 22-47"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 36,
+     "count": 93,
      "livesHere": "Imperial",
-     "floor": 22,
+     "alsoHere": [
+      "Bandit"
+     ],
+     "floor": 6,
      "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
+        6,
         47
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 6 to 47"
       }
      ],
      "zoneMin": 6,
@@ -12917,7 +12948,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Gold Ribbon of Merit)"
+     "Marksman: The Gold Ribbon of Merit"
     ]
    },
    "danger": {
@@ -13042,7 +13073,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Pickpocket (Beggar)"
+     "Pickpocket: Beggar"
     ]
    },
    "pointers": [
@@ -13115,7 +13146,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Battle of Red Mountain)"
+     "Block: Battle of Red Mountain"
     ],
     "bossChest": true,
     "crafting": [
@@ -13185,7 +13216,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (2920, Vol. 01: Morning Star)"
+     "One-Handed: 2920, Vol. 01: Morning Star"
     ],
     "bossChest": true
    },
@@ -13254,8 +13285,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (2920, Vol. 01: Morning Star)",
-     "TwoHanded (The Legendary Sancre Tor)"
+     "One-Handed: 2920, Vol. 01: Morning Star",
+     "Two-Handed: The Legendary Sancre Tor"
     ],
     "bossChest": true,
     "crafting": [
@@ -13568,7 +13599,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Incident at Necrom)"
+     "Illusion: Incident at Necrom"
     ],
     "bossChest": true
    },
@@ -13643,7 +13674,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Surfeit of Thieves)"
+     "Lockpicking: Surfeit of Thieves"
     ],
     "bossChest": true,
     "crafting": [
@@ -13718,7 +13749,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (The Art of War Magic)"
+     "Destruction: The Art of War Magic"
     ],
     "bossChest": true
    },
@@ -13816,7 +13847,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (2920, Vol. 09: Hearth Fire)"
+     "Conjuration: 2920, Vol. 09: Hearth Fire"
     ],
     "bossChest": true,
     "crafting": [
@@ -13935,7 +13966,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Reality & Other Falsehoods)"
+     "Alteration: Reality & Other Falsehoods"
     ],
     "crafting": [
      "an enchanting table"
@@ -13980,23 +14011,26 @@
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
-    "count": 15,
-    "livesHere": "Imperial",
-    "floor": 4,
-    "ceiling": 27,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       4,
-       27
-      ],
-      "words": "from 1, 4 to 27"
+    "count": 0,
+    "afterTheWar": {
+     "count": 15,
+     "livesHere": "Imperial",
+     "floor": 4,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        4,
+        27
+       ],
+       "words": "from 1, 4 to 27"
+      }
+     ],
+     "boss": {
+      "name": "Stormcloak Soldier",
+      "level": "leveled 22-27"
      }
-    ],
-    "boss": {
-     "name": "Stormcloak Soldier",
-     "level": "leveled 22-27"
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -14071,7 +14105,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (Mystery of Talara, Vol. 3)"
+     "Destruction: Mystery of Talara, Vol. 3"
     ],
     "bossChest": true
    },
@@ -14101,8 +14135,8 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Song of the Alchemists)",
-     "Speechcraft (A Dance in Fire, Vol. 7)"
+     "Alchemy: Song of the Alchemists",
+     "Speechcraft: A Dance in Fire, Vol. 7"
     ],
     "crafting": [
      "an alchemy lab"
@@ -14278,8 +14312,8 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Twin Secrets)",
-     "Speechcraft (A Dance in Fire, Vol. 7)"
+     "Enchanting: Twin Secrets",
+     "Speechcraft: A Dance in Fire, Vol. 7"
     ],
     "crafting": [
      "an alchemy lab",
@@ -14410,7 +14444,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Surfeit of Thieves)"
+     "Lockpicking: Surfeit of Thieves"
     ],
     "bossChest": true
    },
@@ -14498,7 +14532,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (2920, Vol. 04: Rain's Hand)"
+     "Restoration: 2920, Vol. 04: Rain's Hand"
     ],
     "bossChest": true
    }
@@ -14559,7 +14593,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (The Refugees)"
+     "Light Armor: The Refugees"
     ],
     "bossChest": true
    },
@@ -14806,7 +14840,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Advances in Lockpicking)"
+     "Lockpicking: Advances in Lockpicking"
     ],
     "bossChest": true
    },
@@ -14984,7 +15018,7 @@
      "Whirlwind Sprint"
     ],
     "skillBooks": [
-     "Speechcraft (The Buying Game)"
+     "Speechcraft: The Buying Game"
     ],
     "bossChest": true,
     "crafting": [
@@ -15155,8 +15189,8 @@
      "Frost Breath"
     ],
     "skillBooks": [
-     "OneHanded (Fire and Darkness)",
-     "Pickpocket (Purloined Shadows)"
+     "One-Handed: Fire and Darkness",
+     "Pickpocket: Purloined Shadows"
     ],
     "bossChest": true
    },
@@ -15249,43 +15283,43 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016251",
    "actors": {
-    "count": 71,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton",
-     "Warlock",
-     "Bandit",
-     "Necromancer"
-    ],
-    "floor": 6,
-    "ceiling": 47,
+    "count": 1,
+    "livesHere": "Bandit",
+    "floor": 3,
+    "ceiling": 3,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       6,
-       47
+       3,
+       3
       ],
-      "words": "from 1, 6 to 47"
+      "words": "from 1, 3 to 3"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 22-47"
+     "level": "level 3"
     },
     "afterTheWar": {
-     "count": 34,
+     "count": 104,
      "livesHere": "Imperial",
-     "floor": 22,
+     "alsoHere": [
+      "Skeleton",
+      "Warlock",
+      "Bandit",
+      "Necromancer"
+     ],
+     "floor": 6,
      "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
+        6,
         47
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 6 to 47"
       }
      ],
      "zoneMin": 6,
@@ -15300,7 +15334,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (A Dance in Fire, Vol. 2)"
+     "Block: A Dance in Fire, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -15391,7 +15425,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (The Locked Room)"
+     "Lockpicking: The Locked Room"
     ],
     "shrines": [
      "Shrine of Kynareth"
@@ -15424,21 +15458,18 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 7,
+    "count": 4,
     "livesHere": "Skeleton",
-    "alsoHere": [
-     "Imperial"
-    ],
-    "floor": 1,
+    "floor": 30,
     "ceiling": 50,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       1,
+       30,
        50
       ],
-      "words": "from 1, 1 to 50"
+      "words": "from 1, 30 to 50"
      }
     ],
     "boss": {
@@ -15446,7 +15477,7 @@
      "level": "level 50"
     },
     "afterTheWar": {
-     "count": 8,
+     "count": 11,
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
@@ -15624,7 +15655,7 @@
      "Dismay"
     ],
     "skillBooks": [
-     "Conjuration (Liminal Bridges)"
+     "Conjuration: Liminal Bridges"
     ]
    },
    "danger": {
@@ -15923,7 +15954,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft (A Dance in Fire, Vol. 6)"
+     "Speechcraft: A Dance in Fire, Vol. 6"
     ]
    }
   },
@@ -15943,13 +15974,13 @@
    "plugin": "Lux - COTN Morthal patch.esp",
    "marker": null,
    "actors": {
-    "count": 7,
+    "count": 6,
     "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (Racial Phylogeny)"
+     "Restoration: Racial Phylogeny"
     ]
    },
    "pointers": [
@@ -16039,7 +16070,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (2920, Vol. 02: Sun's Dawn)"
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
     ],
     "bossChest": true,
     "crafting": [
@@ -16152,7 +16183,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (Mace Etiquette)"
+     "One-Handed: Mace Etiquette"
     ],
     "bossChest": true,
     "crafting": [
@@ -16230,7 +16261,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Black Arrow, Vol. 2)"
+     "Marksman: The Black Arrow, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -16380,41 +16411,40 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 16,
-    "livesHere": "Imperial",
+    "count": 1,
     "floor": 1,
-    "ceiling": 27,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       27
+       2
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 1 to 2"
      }
     ],
-    "boss": {
-     "name": "Stormcloak Quartermaster",
-     "level": "leveled 22-27"
-    },
     "afterTheWar": {
-     "count": 1,
-     "livesHere": "Skeleton",
+     "count": 16,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
      "floor": 1,
-     "ceiling": 1,
+     "ceiling": 27,
      "atLevel": [
       {
        "from": 1,
        "meets": [
         1,
-        1
+        27
        ],
-       "words": "from 1, 1 to 1"
+       "words": "from 1, 1 to 27"
       }
      ],
      "boss": {
-      "level": "level 1"
+      "name": "Stormcloak Quartermaster",
+      "level": "leveled 22-27"
      }
     }
    },
@@ -16521,8 +16551,7 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01C1BC",
    "actors": {
-    "count": 10,
-    "livesHere": "Imperial",
+    "count": 9,
     "floor": 1,
     "ceiling": 60,
     "atLevel": [
@@ -16540,23 +16569,23 @@
      "level": "level 60"
     },
     "afterTheWar": {
-     "count": 1,
+     "count": 2,
      "livesHere": "Imperial",
-     "floor": 27,
-     "ceiling": 27,
+     "floor": 25,
+     "ceiling": 30,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        27,
-        27
+        25,
+        30
        ],
-       "words": "from 1, 27 to 27"
+       "words": "from 1, 25 to 30"
       }
      ],
      "boss": {
-      "name": "Stormcloak Soldier",
-      "level": "level 27"
+      "name": "Hjaalmarch Guard",
+      "level": "leveled 25-30"
      }
     }
    },
@@ -16565,8 +16594,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Orsinium and the Orcs)",
-     "Speechcraft (2920, Vol. 05: Second Seed)"
+     "Heavy Armor: Orsinium and the Orcs",
+     "Speechcraft: 2920, Vol. 05: Second Seed"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -16825,7 +16854,7 @@
      "Become Ethereal"
     ],
     "skillBooks": [
-     "Restoration (Mystery of Talara, Vol. 2)"
+     "Restoration: Mystery of Talara, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -17042,9 +17071,9 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (The Doors of Oblivion)",
-     "LightArmor (The Rear Guard)",
-     "OneHanded (2920, Vol. 01: Morning Star)"
+     "Conjuration: The Doors of Oblivion",
+     "Light Armor: The Rear Guard",
+     "One-Handed: 2920, Vol. 01: Morning Star"
     ],
     "bossChest": true,
     "crafting": [
@@ -20451,7 +20480,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Hallgerd's Tale)"
+     "Heavy Armor: Hallgerd's Tale"
     ],
     "crafting": [
      "a forge",
@@ -23260,8 +23289,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (The Wolf Queen, Vol. 1)",
-     "Pickpocket (Purloined Shadows)"
+     "Lockpicking: The Wolf Queen, Vol. 1",
+     "Pickpocket: Purloined Shadows"
     ],
     "bossChest": true
    },
@@ -23326,8 +23355,8 @@
      "Marked for Death"
     ],
     "skillBooks": [
-     "Alchemy (A Game at Dinner)",
-     "Block (The Mirror)"
+     "Alchemy: A Game at Dinner",
+     "Block: The Mirror"
     ],
     "bossChest": true,
     "crafting": [
@@ -23393,32 +23422,15 @@
    "plugin": "Fort Dunstad.esp",
    "marker": "Skyrim.esm:01624B",
    "actors": {
-    "count": 86,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit",
-     "Skeleton",
-     "Warlock"
-    ],
-    "floor": 6,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       47
-      ],
-      "words": "from 1, 6 to 47"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "level": "leveled 22-47"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 28,
+     "count": 114,
      "livesHere": "Imperial",
+     "alsoHere": [
+      "Bandit",
+      "Skeleton",
+      "Warlock"
+     ],
      "floor": 6,
      "ceiling": 47,
      "atLevel": [
@@ -23443,7 +23455,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (2920, Vol. 06: MidYear)"
+     "Heavy Armor: 2920, Vol. 06: MidYear"
     ],
     "bossChest": true,
     "crafting": [
@@ -23562,7 +23574,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (The Red Kitchen Reader)"
+     "Sneak: The Red Kitchen Reader"
     ],
     "bossChest": true,
     "crafting": [
@@ -23669,10 +23681,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)",
-     "Block (A Dance in Fire, Vol. 2)",
-     "Enchanting (Catalogue of Armor Enchantments)",
-     "HeavyArmor (The Knights of the Nine)"
+     "Alchemy: Herbalist's Guide to Skyrim",
+     "Block: A Dance in Fire, Vol. 2",
+     "Enchanting: Catalogue of Armor Enchantments",
+     "Heavy Armor: The Knights of the Nine"
     ],
     "crafting": [
      "a forge",
@@ -23814,7 +23826,7 @@
      "Storm Call"
     ],
     "skillBooks": [
-     "Destruction (A Hypothetical Treachery)"
+     "Destruction: A Hypothetical Treachery"
     ],
     "bossChest": true,
     "crafting": [
@@ -23847,41 +23859,42 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 16,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Draugr"
-    ],
+    "count": 4,
+    "livesHere": "Draugr",
     "floor": 1,
-    "ceiling": 47,
+    "ceiling": 30,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       47
+       30
       ],
-      "words": "from 1, 1 to 47"
+      "words": "from 1, 1 to 30"
      }
     ],
     "boss": {
-     "name": "Imperial Quartermaster",
-     "level": "leveled 22-47"
+     "level": "leveled 1-30"
     },
     "afterTheWar": {
-     "count": 2,
-     "floor": 4,
-     "ceiling": 4,
+     "count": 14,
+     "livesHere": "Imperial",
+     "floor": 1,
+     "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        4,
-        4
+        1,
+        47
        ],
-       "words": "from 1, 4 to 4"
+       "words": "from 1, 1 to 47"
       }
-     ]
+     ],
+     "boss": {
+      "name": "Imperial Quartermaster",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -24065,7 +24078,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (Response to Bero's Speech)"
+     "Destruction: Response to Bero's Speech"
     ]
    },
    "pointers": [
@@ -24128,10 +24141,9 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:016224",
    "actors": {
-    "count": 61,
-    "livesHere": "Imperial",
+    "count": 21,
+    "livesHere": "Draugr",
     "alsoHere": [
-     "Draugr",
      "Bandit",
      "Skeleton"
     ],
@@ -24151,6 +24163,26 @@
     "boss": {
      "name": "King Borgas",
      "level": "level 80"
+    },
+    "afterTheWar": {
+     "count": 40,
+     "livesHere": "Imperial",
+     "floor": 27,
+     "ceiling": 27,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        27,
+        27
+       ],
+       "words": "from 1, 27 to 27"
+      }
+     ],
+     "zoneMin": 12,
+     "boss": {
+      "level": "level 27"
+     }
     }
    },
    "respawns": "never",
@@ -24161,7 +24193,7 @@
      "Slow Time"
     ],
     "skillBooks": [
-     "LightArmor (Jornibret's Last Dance)"
+     "Light Armor: Jornibret's Last Dance"
     ],
     "bossChest": true
    },
@@ -24336,7 +24368,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft (A Dance in Fire, Vol. 7)"
+     "Speechcraft: A Dance in Fire, Vol. 7"
     ],
     "bossChest": true
    },
@@ -24550,7 +24582,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Mannimarco, King of Worms)"
+     "Alchemy: Mannimarco, King of Worms"
     ],
     "bossChest": true,
     "crafting": [
@@ -24689,7 +24721,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (Cherim's Heart)"
+     "Smithing: Cherim's Heart"
     ]
    },
    "pointers": [
@@ -24780,7 +24812,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (2920, Vol. 08: Last Seed)"
+     "Sneak: 2920, Vol. 08: Last Seed"
     ],
     "bossChest": true,
     "crafting": [
@@ -25141,7 +25173,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Armor Enchantments)"
+     "Enchanting: Catalogue of Armor Enchantments"
     ],
     "bossChest": true,
     "crafting": [
@@ -25201,7 +25233,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (Ice and Chitin)"
+     "Light Armor: Ice and Chitin"
     ],
     "bossChest": true
    }
@@ -25263,8 +25295,8 @@
      "Disarm"
     ],
     "skillBooks": [
-     "Pickpocket (Thief)",
-     "TwoHanded (Words and Philosophy)"
+     "Pickpocket: Thief",
+     "Two-Handed: Words and Philosophy"
     ],
     "bossChest": true
    },
@@ -25288,25 +25320,21 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 4,
-    "livesHere": "Imperial",
+    "count": 1,
     "floor": 1,
-    "ceiling": 27,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       27
+       2
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 1 to 2"
      }
     ],
-    "boss": {
-     "level": "leveled 22-27"
-    },
     "afterTheWar": {
-     "count": 13,
+     "count": 16,
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
@@ -25418,8 +25446,8 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (The Art of War Magic)",
-     "Enchanting (Catalogue of Weapon Enchantments)"
+     "Destruction: The Art of War Magic",
+     "Enchanting: Catalogue of Weapon Enchantments"
     ],
     "crafting": [
      "an alchemy lab",
@@ -25547,7 +25575,7 @@
      "Aura Whisper"
     ],
     "skillBooks": [
-     "OneHanded (Mace Etiquette)"
+     "One-Handed: Mace Etiquette"
     ],
     "bossChest": true
    },
@@ -25887,8 +25915,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Armor Enchantments)",
-     "Marksman (Father of the Niben)"
+     "Enchanting: Catalogue of Armor Enchantments",
+     "Marksman: Father of the Niben"
     ],
     "shrines": [
      "Shrine of Kynareth"
@@ -26117,27 +26145,46 @@
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "marker": null,
    "actors": {
-    "count": 7,
+    "count": 5,
     "livesHere": "Forsworn",
     "alsoHere": [
-     "Imperial",
      "Hagraven"
     ],
     "floor": 2,
-    "ceiling": 47,
+    "ceiling": 46,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        2,
-       47
+       46
       ],
-      "words": "from 1, 2 to 47"
+      "words": "from 1, 2 to 46"
      }
     ],
     "zoneMin": 2,
     "boss": {
      "level": "level 45"
+    },
+    "afterTheWar": {
+     "count": 2,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 2,
+     "boss": {
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -26145,7 +26192,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (King)"
+     "Two-Handed: King"
     ],
     "bossChest": true
    },
@@ -26205,7 +26252,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Mystery of Talara, Vol. 4)"
+     "Illusion: Mystery of Talara, Vol. 4"
     ],
     "bossChest": true,
     "crafting": [
@@ -26297,8 +26344,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (The Mirror)",
-     "Conjuration (Liminal Bridges)"
+     "Block: The Mirror",
+     "Conjuration: Liminal Bridges"
     ],
     "bossChest": true,
     "shrines": [
@@ -26388,7 +26435,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (A Tragedy in Black)"
+     "Enchanting: A Tragedy in Black"
     ],
     "bossChest": true
    },
@@ -26469,7 +26516,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft (Biography of the Wolf Queen)"
+     "Speechcraft: Biography of the Wolf Queen"
     ],
     "bossChest": true
    },
@@ -26570,7 +26617,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Marksmanship Lesson)"
+     "Marksman: The Marksmanship Lesson"
     ]
    }
   },
@@ -26622,7 +26669,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Sithis)"
+     "Alteration: Sithis"
     ]
    }
   },
@@ -26678,7 +26725,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (A Game at Dinner)"
+     "Alchemy: A Game at Dinner"
     ],
     "bossChest": true,
     "crafting": [
@@ -26819,7 +26866,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (Sacred Witness)"
+     "Sneak: Sacred Witness"
     ],
     "bossChest": true,
     "crafting": [
@@ -27011,7 +27058,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (The Rear Guard)"
+     "Light Armor: The Rear Guard"
     ],
     "bossChest": true,
     "crafting": [
@@ -27082,7 +27129,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Orsinium and the Orcs)"
+     "Heavy Armor: Orsinium and the Orcs"
     ],
     "crafting": [
      "a forge",
@@ -27161,41 +27208,24 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:016252",
    "actors": {
-    "count": 59,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Forsworn",
-     "Bandit"
-    ],
-    "floor": 6,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       47
-      ],
-      "words": "from 1, 6 to 47"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "level": "leveled 22-47"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 24,
+     "count": 83,
      "livesHere": "Imperial",
-     "floor": 22,
+     "alsoHere": [
+      "Forsworn",
+      "Bandit"
+     ],
+     "floor": 6,
      "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
+        6,
         47
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 6 to 47"
       }
      ],
      "zoneMin": 6,
@@ -27210,8 +27240,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Pickpocket (Guide to Better Thieving)",
-     "Smithing (Last Scabbard of Akrash)"
+     "Pickpocket: Guide to Better Thieving",
+     "Smithing: Last Scabbard of Akrash"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -27379,7 +27409,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (Withershins)"
+     "Restoration: Withershins"
     ],
     "bossChest": true
    },
@@ -27439,7 +27469,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (2920, Vol. 08: Last Seed)"
+     "Sneak: 2920, Vol. 08: Last Seed"
     ],
     "bossChest": true,
     "crafting": [
@@ -27518,7 +27548,7 @@
      "Slow Time"
     ],
     "skillBooks": [
-     "Illusion (Mystery of Talara, Vol. 4)"
+     "Illusion: Mystery of Talara, Vol. 4"
     ],
     "bossChest": true,
     "crafting": [
@@ -27582,7 +27612,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (2920, Vol. 04: Rain's Hand)"
+     "Restoration: 2920, Vol. 04: Rain's Hand"
     ],
     "shrines": [
      "Shrine of Arkay"
@@ -27847,7 +27877,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (A Game at Dinner)"
+     "Alchemy: A Game at Dinner"
     ],
     "bossChest": true,
     "crafting": [
@@ -27895,25 +27925,9 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 3,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 1,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       1
-      ],
-      "words": "from 1, 1 to 1"
-     }
-    ],
-    "boss": {
-     "level": "level 1"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 12,
+     "count": 15,
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton",
@@ -27978,7 +27992,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (2920, Vol. 02: Sun's Dawn)"
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
     ],
     "shrines": [
      "Shrine of Dibella"
@@ -28277,8 +28291,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Song of the Alchemists)",
-     "Block (A Dance in Fire, Vol. 2)"
+     "Alchemy: Song of the Alchemists",
+     "Block: A Dance in Fire, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -28505,8 +28519,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)",
-     "HeavyArmor (The Knights of the Nine)"
+     "Alchemy: Herbalist's Guide to Skyrim",
+     "Heavy Armor: The Knights of the Nine"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -28776,7 +28790,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft (Biography of the Wolf Queen)"
+     "Speechcraft: Biography of the Wolf Queen"
     ],
     "bossChest": true
    }
@@ -28973,8 +28987,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (The Knights of the Nine)",
-     "Smithing (The Armorer's Challenge)"
+     "Heavy Armor: The Knights of the Nine",
+     "Smithing: The Armorer's Challenge"
     ],
     "bossChest": true,
     "crafting": [
@@ -29081,7 +29095,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Sithis)"
+     "Alteration: Sithis"
     ],
     "bossChest": true
    },
@@ -29365,7 +29379,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (Battle of Sancre Tor)"
+     "Two-Handed: Battle of Sancre Tor"
     ]
    },
    "pointers": [
@@ -29518,7 +29532,7 @@
      "Kyne's Peace"
     ],
     "skillBooks": [
-     "Restoration (Mystery of Talara, Vol. 2)"
+     "Restoration: Mystery of Talara, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -29664,7 +29678,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (The Doors of Oblivion)"
+     "Conjuration: The Doors of Oblivion"
     ],
     "bossChest": true
    },
@@ -29913,7 +29927,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Chimarvamidium)"
+     "Heavy Armor: Chimarvamidium"
     ]
    },
    "pointers": [
@@ -30046,7 +30060,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Reality & Other Falsehoods)"
+     "Alteration: Reality & Other Falsehoods"
     ],
     "bossChest": true,
     "crafting": [
@@ -30134,7 +30148,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Twin Secrets)"
+     "Enchanting: Twin Secrets"
     ],
     "bossChest": true,
     "crafting": [
@@ -30181,7 +30195,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Speechcraft (The Buying Game)"
+     "Speechcraft: The Buying Game"
     ],
     "crafting": [
      "an alchemy lab"
@@ -30409,10 +30423,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)",
-     "Enchanting (A Tragedy in Black)",
-     "Enchanting (Catalogue of Weapon Enchantments)",
-     "OneHanded (Mace Etiquette)"
+     "Alchemy: Herbalist's Guide to Skyrim",
+     "Enchanting: A Tragedy in Black",
+     "Enchanting: Catalogue of Weapon Enchantments",
+     "One-Handed: Mace Etiquette"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -30671,38 +30685,38 @@
    "plugin": "Natural Waterfalls.esp",
    "marker": null,
    "actors": {
-    "count": 17,
-    "livesHere": "Imperial",
+    "count": 2,
     "floor": 1,
-    "ceiling": 27,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       27
+       2
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 1 to 2"
      }
     ],
-    "boss": {
-     "name": "Stormcloak Quartermaster",
-     "level": "leveled 22-27"
-    },
     "afterTheWar": {
-     "count": 1,
+     "count": 16,
+     "livesHere": "Imperial",
      "floor": 4,
-     "ceiling": 4,
+     "ceiling": 27,
      "atLevel": [
       {
        "from": 1,
        "meets": [
         4,
-        4
+        27
        ],
-       "words": "from 1, 4 to 4"
+       "words": "from 1, 4 to 27"
       }
-     ]
+     ],
+     "boss": {
+      "name": "Stormcloak Quartermaster",
+      "level": "leveled 22-27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -30790,9 +30804,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Daughter of the Niben)",
-     "Conjuration (The Warrior's Charge)",
-     "Smithing (Last Scabbard of Akrash)"
+     "Alteration: Daughter of the Niben",
+     "Conjuration: The Warrior's Charge",
+     "Smithing: Last Scabbard of Akrash"
     ],
     "crafting": [
      "a forge",
@@ -30962,7 +30976,7 @@
      "Aura Whisper"
     ],
     "skillBooks": [
-     "Restoration (Withershins)"
+     "Restoration: Withershins"
     ],
     "bossChest": true,
     "crafting": [
@@ -31136,8 +31150,8 @@
      "Animal Allegiance"
     ],
     "skillBooks": [
-     "Illusion (Before the Ages of Man)",
-     "Speechcraft (A Dance in Fire, Vol. 7)"
+     "Illusion: Before the Ages of Man",
+     "Speechcraft: A Dance in Fire, Vol. 7"
     ],
     "bossChest": true
    },
@@ -31360,7 +31374,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (Jornibret's Last Dance)"
+     "Light Armor: Jornibret's Last Dance"
     ],
     "bossChest": true
    },
@@ -31420,7 +31434,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (Racial Phylogeny)"
+     "Restoration: Racial Phylogeny"
     ],
     "bossChest": true,
     "crafting": [
@@ -31968,7 +31982,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)"
+     "Alchemy: Herbalist's Guide to Skyrim"
     ],
     "crafting": [
      "an alchemy lab"
@@ -32035,7 +32049,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (Battle of Sancre Tor)"
+     "Two-Handed: Battle of Sancre Tor"
     ],
     "bossChest": true
    },
@@ -32217,9 +32231,9 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Destruction (Horror of Castle Xyr)",
-     "Destruction (Mystery of Talara, Vol. 3)",
-     "Illusion (2920, Vol. 02: Sun's Dawn)"
+     "Destruction: Horror of Castle Xyr",
+     "Destruction: Mystery of Talara, Vol. 3",
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
     ],
     "bossChest": true,
     "crafting": [
@@ -32617,9 +32631,9 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (The Lunar Lorkhan)",
-     "Lockpicking (Proper Lock Design)",
-     "Marksman (The Marksmanship Lesson)"
+     "Alteration: The Lunar Lorkhan",
+     "Lockpicking: Proper Lock Design",
+     "Marksman: The Marksmanship Lesson"
     ],
     "bossChest": true,
     "crafting": [
@@ -32857,7 +32871,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (The Exodus)"
+     "Restoration: The Exodus"
     ],
     "bossChest": true,
     "crafting": [
@@ -32935,43 +32949,43 @@
    "plugin": "Requiem.esp",
    "marker": "Skyrim.esm:01624D",
    "actors": {
-    "count": 68,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit",
-     "Spider",
-     "Warlock",
-     "Skeleton"
-    ],
-    "floor": 6,
-    "ceiling": 47,
+    "count": 2,
+    "livesHere": "Skeleton",
+    "floor": 1,
+    "ceiling": 1,
     "atLevel": [
      {
       "from": 1,
       "meets": [
-       6,
-       47
+       1,
+       1
       ],
-      "words": "from 1, 6 to 47"
+      "words": "from 1, 1 to 1"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 22-47"
+     "name": "Skeleton",
+     "level": "level 1"
     },
     "afterTheWar": {
-     "count": 32,
+     "count": 98,
      "livesHere": "Imperial",
-     "floor": 22,
+     "alsoHere": [
+      "Bandit",
+      "Spider",
+      "Warlock"
+     ],
+     "floor": 6,
      "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
+        6,
         47
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 6 to 47"
       }
      ],
      "zoneMin": 6,
@@ -32986,7 +33000,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (Mace Etiquette)"
+     "One-Handed: Mace Etiquette"
     ],
     "bossChest": true,
     "crafting": [
@@ -33073,7 +33087,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (Vernaccus and Bourlor)"
+     "Marksman: Vernaccus and Bourlor"
     ]
    }
   },
@@ -33131,7 +33145,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (Words and Philosophy)"
+     "Two-Handed: Words and Philosophy"
     ],
     "bossChest": true,
     "crafting": [
@@ -33174,7 +33188,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (Racial Phylogeny)"
+     "Restoration: Racial Phylogeny"
     ],
     "shrines": [
      "Shrine of Kynareth"
@@ -33485,41 +33499,40 @@
    "plugin": "Dawnguard.esm",
    "marker": null,
    "actors": {
-    "count": 13,
-    "livesHere": "Imperial",
+    "count": 1,
     "floor": 1,
-    "ceiling": 47,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       47
+       2
       ],
-      "words": "from 1, 1 to 47"
+      "words": "from 1, 1 to 2"
      }
     ],
-    "boss": {
-     "name": "Imperial Quartermaster",
-     "level": "leveled 22-47"
-    },
     "afterTheWar": {
-     "count": 4,
-     "livesHere": "Skeleton",
+     "count": 16,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
      "floor": 1,
-     "ceiling": 1,
+     "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
         1,
-        1
+        47
        ],
-       "words": "from 1, 1 to 1"
+       "words": "from 1, 1 to 47"
       }
      ],
      "boss": {
-      "level": "level 1"
+      "name": "Imperial Quartermaster",
+      "level": "leveled 22-47"
      }
     }
    },
@@ -33566,18 +33579,17 @@
    "plugin": "The Great Town of Ivarstead.esp",
    "marker": "Skyrim.esm:02A49D",
    "actors": {
-    "count": 29,
-    "livesHere": "Imperial",
+    "count": 25,
     "floor": 1,
-    "ceiling": 30,
+    "ceiling": 20,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       30
+       20
       ],
-      "words": "from 1, 1 to 30"
+      "words": "from 1, 1 to 20"
      }
     ],
     "boss": {
@@ -33585,7 +33597,7 @@
      "level": "level 6"
     },
     "afterTheWar": {
-     "count": 4,
+     "count": 8,
      "livesHere": "Imperial",
      "floor": 25,
      "ceiling": 30,
@@ -34191,7 +34203,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Battle of Red Mountain)"
+     "Block: Battle of Red Mountain"
     ],
     "bossChest": true,
     "crafting": [
@@ -34498,18 +34510,18 @@
    "plugin": "Lux - JK's Mistveil Keep patch.esp",
    "marker": null,
    "actors": {
-    "count": 9,
+    "count": 8,
     "hostile": false
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Song of the Alchemists)",
-     "Enchanting (Catalogue of Weapon Enchantments)",
-     "Enchanting (Enchanter's Primer)",
-     "Illusion (Before the Ages of Man)",
-     "Lockpicking (Surfeit of Thieves)",
-     "TwoHanded (Words and Philosophy)"
+     "Alchemy: Song of the Alchemists",
+     "Enchanting: Catalogue of Weapon Enchantments",
+     "Enchanting: Enchanter's Primer",
+     "Illusion: Before the Ages of Man",
+     "Lockpicking: Surfeit of Thieves",
+     "Two-Handed: Words and Philosophy"
     ],
     "crafting": [
      "an alchemy lab",
@@ -34706,7 +34718,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Death Blow of Ebernanit)"
+     "Block: Death Blow of Ebernanit"
     ]
    },
    "danger": {
@@ -34833,7 +34845,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (Heavy Armor Forging)"
+     "Smithing: Heavy Armor Forging"
     ]
    }
   },
@@ -34945,7 +34957,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Battle of Red Mountain)"
+     "Block: Battle of Red Mountain"
     ],
     "bossChest": true,
     "crafting": [
@@ -35054,7 +35066,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Hallgerd's Tale)"
+     "Heavy Armor: Hallgerd's Tale"
     ],
     "bossChest": true,
     "crafting": [
@@ -35336,11 +35348,8 @@
    "plugin": "The Great Town of Shor's Stone.esp",
    "marker": null,
    "actors": {
-    "count": 21,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Troll"
-    ],
+    "count": 19,
+    "livesHere": "Troll",
     "floor": 1,
     "ceiling": 40,
     "atLevel": [
@@ -35358,7 +35367,7 @@
      "level": "level 8"
     },
     "afterTheWar": {
-     "count": 2,
+     "count": 4,
      "livesHere": "Imperial",
      "floor": 25,
      "ceiling": 30,
@@ -35547,40 +35556,40 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:0D3934",
    "actors": {
-    "count": 6,
-    "livesHere": "Imperial",
+    "count": 2,
     "floor": 6,
-    "ceiling": 27,
+    "ceiling": 10,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       27
+       10
       ],
-      "words": "from 1, 6 to 27"
+      "words": "from 1, 6 to 10"
      }
     ],
     "zoneMin": 6,
-    "boss": {
-     "name": "Rift Guard",
-     "level": "level 27"
-    },
     "afterTheWar": {
-     "count": 4,
-     "floor": 1,
-     "ceiling": 1,
+     "count": 8,
+     "livesHere": "Imperial",
+     "floor": 6,
+     "ceiling": 27,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        1,
-        1
+        6,
+        27
        ],
-       "words": "from 1, 1 to 1"
+       "words": "from 1, 6 to 27"
       }
      ],
-     "zoneMin": 6
+     "zoneMin": 6,
+     "boss": {
+      "name": "Rift Guard",
+      "level": "level 27"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -35652,7 +35661,7 @@
      "Kyne's Peace"
     ],
     "skillBooks": [
-     "Illusion (Before the Ages of Man)"
+     "Illusion: Before the Ages of Man"
     ],
     "bossChest": true,
     "crafting": [
@@ -35753,7 +35762,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Breathing Water)"
+     "Alteration: Breathing Water"
     ],
     "bossChest": true,
     "crafting": [
@@ -35807,25 +35816,21 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 4,
-    "livesHere": "Imperial",
+    "count": 1,
     "floor": 1,
-    "ceiling": 27,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       27
+       2
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 1 to 2"
      }
     ],
-    "boss": {
-     "level": "leveled 22-27"
-    },
     "afterTheWar": {
-     "count": 9,
+     "count": 12,
      "livesHere": "Imperial",
      "floor": 22,
      "ceiling": 27,
@@ -35913,8 +35918,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (The Knights of the Nine)",
-     "Restoration (The Exodus)"
+     "Heavy Armor: The Knights of the Nine",
+     "Restoration: The Exodus"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -36465,7 +36470,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (Advances in Lockpicking)"
+     "Lockpicking: Advances in Lockpicking"
     ],
     "bossChest": true,
     "crafting": [
@@ -36546,8 +36551,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Battle of Red Mountain)",
-     "Destruction (Mystery of Talara, Vol. 3)"
+     "Block: Battle of Red Mountain",
+     "Destruction: Mystery of Talara, Vol. 3"
     ],
     "bossChest": true,
     "crafting": [
@@ -36624,7 +36629,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Twin Secrets)"
+     "Enchanting: Twin Secrets"
     ],
     "bossChest": true,
     "crafting": [
@@ -36801,7 +36806,7 @@
      "Unrelenting Force"
     ],
     "skillBooks": [
-     "Pickpocket (Thief)"
+     "Pickpocket: Thief"
     ],
     "bossChest": true,
     "crafting": [
@@ -37211,8 +37216,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Mystery of Talara, Vol. 4)",
-     "Lockpicking (The Wolf Queen, Vol. 1)"
+     "Illusion: Mystery of Talara, Vol. 4",
+     "Lockpicking: The Wolf Queen, Vol. 1"
     ],
     "bossChest": true,
     "crafting": [
@@ -37260,7 +37265,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Before the Ages of Man)"
+     "Illusion: Before the Ages of Man"
     ],
     "crafting": [
      "an alchemy lab",
@@ -38188,7 +38193,7 @@
      "Fire Breath"
     ],
     "skillBooks": [
-     "TwoHanded (Battle of Sancre Tor)"
+     "Two-Handed: Battle of Sancre Tor"
     ],
     "bossChest": true,
     "crafting": [
@@ -38300,8 +38305,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (The Doors of Oblivion)",
-     "Destruction (A Hypothetical Treachery)"
+     "Conjuration: The Doors of Oblivion",
+     "Destruction: A Hypothetical Treachery"
     ],
     "bossChest": true,
     "crafting": [
@@ -38408,7 +38413,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Mannimarco, King of Worms)"
+     "Alchemy: Mannimarco, King of Worms"
     ],
     "bossChest": true,
     "crafting": [
@@ -38442,32 +38447,32 @@
    "plugin": "Fort Greymoor.esp",
    "marker": "Skyrim.esm:01624A",
    "actors": {
-    "count": 96,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit",
-     "Skeleton",
-     "Troll"
-    ],
+    "count": 14,
+    "livesHere": "Bandit",
     "floor": 6,
-    "ceiling": 47,
+    "ceiling": 24,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       47
+       24
       ],
-      "words": "from 1, 6 to 47"
+      "words": "from 1, 6 to 24"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "level": "leveled 22-47"
+     "level": "level 24"
     },
     "afterTheWar": {
-     "count": 49,
+     "count": 131,
      "livesHere": "Imperial",
+     "alsoHere": [
+      "Bandit",
+      "Skeleton",
+      "Troll"
+     ],
      "floor": 6,
      "ceiling": 47,
      "atLevel": [
@@ -38492,7 +38497,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "LightArmor (Rislav the Righteous)"
+     "Light Armor: Rislav the Righteous"
     ],
     "bossChest": true,
     "crafting": [
@@ -38711,7 +38716,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (Vernaccus and Bourlor)"
+     "Marksman: Vernaccus and Bourlor"
     ],
     "bossChest": true
    },
@@ -38861,7 +38866,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (The Knights of the Nine)"
+     "Heavy Armor: The Knights of the Nine"
     ],
     "bossChest": true
    },
@@ -38902,7 +38907,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Death Blow of Ebernanit)"
+     "Block: Death Blow of Ebernanit"
     ],
     "shrines": [
      "Shrine of Arkay"
@@ -39284,10 +39289,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (De Rerum Dirennis)",
-     "Enchanting (Twin Secrets)",
-     "Speechcraft (2920, Vol. 05: Second Seed)",
-     "Speechcraft (Biography of the Wolf Queen)"
+     "Alchemy: De Rerum Dirennis",
+     "Enchanting: Twin Secrets",
+     "Speechcraft: 2920, Vol. 05: Second Seed",
+     "Speechcraft: Biography of the Wolf Queen"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -39977,11 +39982,8 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 5,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Wolf"
-    ],
+    "count": 2,
+    "livesHere": "Wolf",
     "floor": 1,
     "ceiling": 2,
     "atLevel": [
@@ -39999,7 +40001,7 @@
      "level": "level 2"
     },
     "afterTheWar": {
-     "count": 8,
+     "count": 11,
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
@@ -40062,10 +40064,10 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Block (A Dance in Fire, Vol. 2)",
-     "HeavyArmor (Orsinium and the Orcs)",
-     "Marksman (The Marksmanship Lesson)",
-     "TwoHanded (Song of Hrormir)"
+     "Block: A Dance in Fire, Vol. 2",
+     "Heavy Armor: Orsinium and the Orcs",
+     "Marksman: The Marksmanship Lesson",
+     "Two-Handed: Song of Hrormir"
     ]
    },
    "pointers": [
@@ -41481,7 +41483,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Hallgerd's Tale)"
+     "Heavy Armor: Hallgerd's Tale"
     ]
    },
    "pointers": [
@@ -43050,7 +43052,7 @@
      "Kyne's Peace"
     ],
     "skillBooks": [
-     "Destruction (Horror of Castle Xyr)"
+     "Destruction: Horror of Castle Xyr"
     ],
     "bossChest": true,
     "crafting": [
@@ -43165,7 +43167,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Sneak (2920, Vol. 08: Last Seed)"
+     "Sneak: 2920, Vol. 08: Last Seed"
     ],
     "bossChest": true,
     "crafting": [
@@ -43217,8 +43219,7 @@
    "plugin": "Natural Waterfalls.esp",
    "marker": "Skyrim.esm:01BDF3",
    "actors": {
-    "count": 41,
-    "livesHere": "Imperial",
+    "count": 38,
     "floor": 1,
     "ceiling": 40,
     "atLevel": [
@@ -43236,23 +43237,22 @@
      "level": "matches your level, 4 to 40"
     },
     "afterTheWar": {
-     "count": 3,
+     "count": 6,
      "livesHere": "Imperial",
-     "floor": 27,
-     "ceiling": 27,
+     "floor": 25,
+     "ceiling": 30,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        27,
-        27
+        25,
+        30
        ],
-       "words": "from 1, 27 to 27"
+       "words": "from 1, 25 to 30"
       }
      ],
      "boss": {
-      "name": "Stormcloak Soldier",
-      "level": "level 27"
+      "level": "leveled 25-30"
      }
     }
    },
@@ -44531,8 +44531,7 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:029AAE",
    "actors": {
-    "count": 35,
-    "livesHere": "Imperial",
+    "count": 31,
     "floor": 1,
     "ceiling": 31,
     "atLevel": [
@@ -44550,23 +44549,23 @@
      "level": "level 31"
     },
     "afterTheWar": {
-     "count": 4,
+     "count": 8,
      "livesHere": "Imperial",
-     "floor": 27,
-     "ceiling": 27,
+     "floor": 25,
+     "ceiling": 30,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        27,
-        27
+        25,
+        30
        ],
-       "words": "from 1, 27 to 27"
+       "words": "from 1, 25 to 30"
       }
      ],
      "boss": {
-      "name": "Stormcloak Soldier",
-      "level": "level 27"
+      "name": "Whiterun Guard",
+      "level": "leveled 25-30"
      }
     }
    },
@@ -45743,7 +45742,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (Light Armor Forging)"
+     "Smithing: Light Armor Forging"
     ],
     "bossChest": true,
     "crafting": [
@@ -45956,41 +45955,28 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 14,
-    "livesHere": "Imperial",
-    "floor": 15,
-    "ceiling": 27,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       15,
-       27
-      ],
-      "words": "from 1, 15 to 27"
-     }
-    ],
-    "boss": {
-     "name": "Stormcloak Soldier",
-     "level": "leveled 22-27"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 1,
-     "livesHere": "Skeleton",
+     "count": 15,
+     "livesHere": "Imperial",
+     "alsoHere": [
+      "Skeleton"
+     ],
      "floor": 1,
-     "ceiling": 1,
+     "ceiling": 27,
      "atLevel": [
       {
        "from": 1,
        "meets": [
         1,
-        1
+        27
        ],
-       "words": "from 1, 1 to 1"
+       "words": "from 1, 1 to 27"
       }
      ],
      "boss": {
-      "level": "level 1"
+      "name": "Stormcloak Soldier",
+      "level": "leveled 22-27"
      }
     }
    },
@@ -46064,8 +46050,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "OneHanded (Night Falls on Sentinel)",
-     "Pickpocket (Thief)"
+     "One-Handed: Night Falls on Sentinel",
+     "Pickpocket: Thief"
     ],
     "bossChest": true,
     "shrines": [
@@ -46123,7 +46109,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (Withershins)"
+     "Restoration: Withershins"
     ],
     "crafting": [
      "an alchemy lab"
@@ -46857,7 +46843,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Marksman (The Black Arrow, Vol. 2)"
+     "Marksman: The Black Arrow, Vol. 2"
     ],
     "bossChest": true,
     "crafting": [
@@ -46901,22 +46887,37 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01624A",
    "actors": {
-    "count": 17,
-    "livesHere": "Imperial",
+    "count": 3,
     "floor": 5,
-    "ceiling": 30,
+    "ceiling": 15,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        5,
-       30
+       15
       ],
-      "words": "from 1, 5 to 30"
+      "words": "from 1, 5 to 15"
      }
     ],
-    "boss": {
-     "level": "leveled 25-30"
+    "afterTheWar": {
+     "count": 14,
+     "livesHere": "Imperial",
+     "floor": 25,
+     "ceiling": 30,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        25,
+        30
+       ],
+       "words": "from 1, 25 to 30"
+      }
+     ],
+     "boss": {
+      "level": "leveled 25-30"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -47023,7 +47024,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (A Game at Dinner)"
+     "Alchemy: A Game at Dinner"
     ],
     "bossChest": true,
     "crafting": [
@@ -47226,42 +47227,25 @@
    "plugin": "Skyrim.esm",
    "marker": "Skyrim.esm:0DD99A",
    "actors": {
-    "count": 3,
-    "livesHere": "Imperial",
-    "floor": 25,
-    "ceiling": 30,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       25,
-       30
-      ],
-      "words": "from 1, 25 to 30"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "level": "leveled 25-30"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 3,
+     "count": 6,
      "livesHere": "Imperial",
-     "floor": 27,
-     "ceiling": 27,
+     "floor": 25,
+     "ceiling": 30,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        27,
-        27
+        25,
+        30
        ],
-       "words": "from 1, 27 to 27"
+       "words": "from 1, 25 to 30"
       }
      ],
      "zoneMin": 6,
      "boss": {
-      "level": "level 27"
+      "level": "leveled 25-30"
      }
     }
    },
@@ -47343,7 +47327,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (The Locked Room)"
+     "Lockpicking: The Locked Room"
     ],
     "bossChest": true,
     "crafting": [
@@ -47464,10 +47448,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (De Rerum Dirennis)",
-     "Alchemy (Mannimarco, King of Worms)",
-     "Block (Warrior)",
-     "Speechcraft (A Dance in Fire, Vol. 6)"
+     "Alchemy: De Rerum Dirennis",
+     "Alchemy: Mannimarco, King of Worms",
+     "Block: Warrior",
+     "Speechcraft: A Dance in Fire, Vol. 6"
     ],
     "bossChest": true,
     "crafting": [
@@ -47851,9 +47835,9 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)",
-     "Enchanting (Catalogue of Weapon Enchantments)",
-     "Illusion (2920, Vol. 02: Sun's Dawn)"
+     "Alchemy: Herbalist's Guide to Skyrim",
+     "Enchanting: Catalogue of Weapon Enchantments",
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
     ],
     "crafting": [
      "an alchemy lab",
@@ -47901,7 +47885,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Weapon Enchantments)"
+     "Enchanting: Catalogue of Weapon Enchantments"
     ],
     "crafting": [
      "an alchemy lab",
@@ -47981,9 +47965,9 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Warrior)",
-     "LightArmor (The Rear Guard)",
-     "OneHanded (2920, Vol. 01: Morning Star)"
+     "Block: Warrior",
+     "Light Armor: The Rear Guard",
+     "One-Handed: 2920, Vol. 01: Morning Star"
     ],
     "bossChest": true,
     "crafting": [
@@ -48055,7 +48039,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (Orsinium and the Orcs)"
+     "Heavy Armor: Orsinium and the Orcs"
     ],
     "bossChest": true,
     "shrines": [
@@ -48123,42 +48107,25 @@
    "plugin": "Lux Via.esp",
    "marker": "Skyrim.esm:01624F",
    "actors": {
-    "count": 62,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Skeleton",
-     "Necromancer",
-     "Warlock"
-    ],
-    "floor": 6,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       6,
-       47
-      ],
-      "words": "from 1, 6 to 47"
-     }
-    ],
-    "zoneMin": 6,
-    "boss": {
-     "level": "leveled 22-47"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 32,
+     "count": 94,
      "livesHere": "Imperial",
-     "floor": 22,
+     "alsoHere": [
+      "Skeleton",
+      "Necromancer",
+      "Warlock"
+     ],
+     "floor": 6,
      "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
-        22,
+        6,
         47
        ],
-       "words": "from 1, 22 to 47"
+       "words": "from 1, 6 to 47"
       }
      ],
      "zoneMin": 6,
@@ -48173,7 +48140,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (Warrior)"
+     "Block: Warrior"
     ],
     "bossChest": true,
     "crafting": [
@@ -48257,7 +48224,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (Mystery of Talara, Vol. 2)"
+     "Restoration: Mystery of Talara, Vol. 2"
     ],
     "bossChest": true
    },
@@ -48287,10 +48254,10 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Sithis)",
-     "Conjuration (Liminal Bridges)",
-     "Destruction (The Art of War Magic)",
-     "Illusion (2920, Vol. 02: Sun's Dawn)"
+     "Alteration: Sithis",
+     "Conjuration: Liminal Bridges",
+     "Destruction: The Art of War Magic",
+     "Illusion: 2920, Vol. 02: Sun's Dawn"
     ]
    },
    "pointers": [
@@ -48472,8 +48439,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Enchanter's Primer)",
-     "Restoration (The Exodus)"
+     "Enchanting: Enchanter's Primer",
+     "Restoration: The Exodus"
     ],
     "bossChest": true,
     "crafting": [
@@ -48537,45 +48504,29 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 12,
-    "livesHere": "Imperial",
-    "floor": 1,
-    "ceiling": 47,
-    "atLevel": [
-     {
-      "from": 1,
-      "meets": [
-       1,
-       47
-      ],
-      "words": "from 1, 1 to 47"
-     }
-    ],
-    "boss": {
-     "name": "Imperial Quartermaster",
-     "level": "leveled 22-47"
-    },
+    "count": 0,
     "afterTheWar": {
-     "count": 4,
-     "livesHere": "Wolf",
+     "count": 16,
+     "livesHere": "Imperial",
      "alsoHere": [
+      "Wolf",
       "Skeleton"
      ],
      "floor": 1,
-     "ceiling": 6,
+     "ceiling": 47,
      "atLevel": [
       {
        "from": 1,
        "meets": [
         1,
-        6
+        47
        ],
-       "words": "from 1, 1 to 6"
+       "words": "from 1, 1 to 47"
       }
      ],
      "boss": {
-      "name": "Ice Wolf",
-      "level": "level 6"
+      "name": "Imperial Quartermaster",
+      "level": "leveled 22-47"
      }
     }
    },
@@ -48696,7 +48647,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Twin Secrets)"
+     "Enchanting: Twin Secrets"
     ],
     "shrines": [
      "Shrine of Julianos"
@@ -48770,7 +48721,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)"
+     "Alchemy: Herbalist's Guide to Skyrim"
     ],
     "crafting": [
      "an alchemy lab"
@@ -49050,7 +49001,7 @@
      "Ice Form"
     ],
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)"
+     "Alchemy: Herbalist's Guide to Skyrim"
     ],
     "bossChest": true,
     "crafting": [
@@ -49988,7 +49939,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Pickpocket (Aevar Stone-Singer)"
+     "Pickpocket: Aevar Stone-Singer"
     ],
     "bossChest": true
    },
@@ -50069,7 +50020,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Illusion (Before the Ages of Man)"
+     "Illusion: Before the Ages of Man"
     ],
     "bossChest": true
    }
@@ -50130,8 +50081,8 @@
      "Disarm"
     ],
     "skillBooks": [
-     "LightArmor (Ice and Chitin)",
-     "Sneak (Three Thieves)"
+     "Light Armor: Ice and Chitin",
+     "Sneak: Three Thieves"
     ],
     "bossChest": true
    },
@@ -50218,12 +50169,11 @@
    "plugin": "Snowpoint Dungeon.esp",
    "marker": "Skyrim.esm:0C2EF6",
    "actors": {
-    "count": 104,
+    "count": 99,
     "livesHere": "Bandit",
     "alsoHere": [
      "Spider",
-     "Skeleton",
-     "Imperial"
+     "Skeleton"
     ],
     "floor": 5,
     "ceiling": 60,
@@ -50240,6 +50190,27 @@
     "zoneMin": 5,
     "boss": {
      "level": "leveled 19-24"
+    },
+    "afterTheWar": {
+     "count": 5,
+     "livesHere": "Imperial",
+     "floor": 22,
+     "ceiling": 47,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        22,
+        47
+       ],
+       "words": "from 1, 22 to 47"
+      }
+     ],
+     "zoneMin": 5,
+     "boss": {
+      "name": "Imperial Soldier",
+      "level": "leveled 22-47"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -50247,8 +50218,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (The Mirror)",
-     "HeavyArmor (2920, Vol. 06: MidYear)"
+     "Block: The Mirror",
+     "Heavy Armor: 2920, Vol. 06: MidYear"
     ],
     "bossChest": true,
     "crafting": [
@@ -50330,25 +50301,21 @@
    "plugin": "Skyrim.esm",
    "marker": null,
    "actors": {
-    "count": 4,
-    "livesHere": "Imperial",
+    "count": 1,
     "floor": 1,
-    "ceiling": 27,
+    "ceiling": 2,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        1,
-       27
+       2
       ],
-      "words": "from 1, 1 to 27"
+      "words": "from 1, 1 to 2"
      }
     ],
-    "boss": {
-     "level": "leveled 22-27"
-    },
     "afterTheWar": {
-     "count": 10,
+     "count": 13,
      "livesHere": "Imperial",
      "alsoHere": [
       "Skeleton"
@@ -50445,7 +50412,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (The Warrior's Charge)"
+     "Conjuration: The Warrior's Charge"
     ],
     "bossChest": true
    },
@@ -50493,7 +50460,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Breathing Water)"
+     "Alteration: Breathing Water"
     ]
    },
    "pointers": [
@@ -50575,7 +50542,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Restoration (The Exodus)"
+     "Restoration: The Exodus"
     ]
    },
    "pointers": [
@@ -50641,7 +50608,7 @@
    "respawns": "never",
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (De Rerum Dirennis)"
+     "Alchemy: De Rerum Dirennis"
     ],
     "crafting": [
      "an alchemy lab"
@@ -50832,7 +50799,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Smithing (The Armorer's Challenge)"
+     "Smithing: The Armorer's Challenge"
     ]
    },
    "pointers": [
@@ -50989,7 +50956,7 @@
    "respawns": "after 300 days once cleared, 30 ordinarily",
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Enchanter's Primer)"
+     "Enchanting: Enchanter's Primer"
     ],
     "crafting": [
      "an alchemy lab",
@@ -51157,7 +51124,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alteration (Reality & Other Falsehoods)"
+     "Alteration: Reality & Other Falsehoods"
     ],
     "bossChest": true
    },
@@ -51267,7 +51234,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "TwoHanded (The Legendary Sancre Tor)"
+     "Two-Handed: The Legendary Sancre Tor"
     ],
     "bossChest": true
    },
@@ -51397,8 +51364,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (A Tragedy in Black)",
-     "Enchanting (Catalogue of Weapon Enchantments)"
+     "Enchanting: A Tragedy in Black",
+     "Enchanting: Catalogue of Weapon Enchantments"
     ],
     "bossChest": true,
     "crafting": [
@@ -51537,7 +51504,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "HeavyArmor (The Knights of the Nine)"
+     "Heavy Armor: The Knights of the Nine"
     ],
     "bossChest": true,
     "crafting": [
@@ -51811,27 +51778,45 @@
    "plugin": "Lux - Wyrmstooth.esp",
    "marker": null,
    "actors": {
-    "count": 16,
-    "livesHere": "Imperial",
-    "alsoHere": [
-     "Bandit"
-    ],
+    "count": 7,
+    "livesHere": "Bandit",
     "floor": 6,
-    "ceiling": 40,
+    "ceiling": 24,
     "atLevel": [
      {
       "from": 1,
       "meets": [
        6,
-       40
+       24
       ],
-      "words": "from 1, 6 to 40"
+      "words": "from 1, 6 to 24"
      }
     ],
     "zoneMin": 6,
     "boss": {
-     "name": "Fort Commander",
-     "level": "level 40"
+     "name": "Marauder",
+     "level": "leveled 19-24"
+    },
+    "afterTheWar": {
+     "count": 9,
+     "livesHere": "Imperial",
+     "floor": 10,
+     "ceiling": 40,
+     "atLevel": [
+      {
+       "from": 1,
+       "meets": [
+        10,
+        40
+       ],
+       "words": "from 1, 10 to 40"
+      }
+     ],
+     "zoneMin": 6,
+     "boss": {
+      "name": "Fort Commander",
+      "level": "level 40"
+     }
     }
    },
    "respawns": "after 300 days once cleared, 30 ordinarily",
@@ -51953,7 +51938,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Herbalist's Guide to Skyrim)"
+     "Alchemy: Herbalist's Guide to Skyrim"
     ],
     "bossChest": true,
     "crafting": [
@@ -52329,7 +52314,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Block (A Dance in Fire, Vol. 2)"
+     "Block: A Dance in Fire, Vol. 2"
     ],
     "crafting": [
      "a sharpening wheel",
@@ -52527,8 +52512,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (De Rerum Dirennis)",
-     "Destruction (A Hypothetical Treachery)"
+     "Alchemy: De Rerum Dirennis",
+     "Destruction: A Hypothetical Treachery"
     ],
     "bossChest": true,
     "crafting": [
@@ -53289,10 +53274,10 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (De Rerum Dirennis)",
-     "Conjuration (The Warrior's Charge)",
-     "Destruction (A Hypothetical Treachery)",
-     "Sneak (The Red Kitchen Reader)"
+     "Alchemy: De Rerum Dirennis",
+     "Conjuration: The Warrior's Charge",
+     "Destruction: A Hypothetical Treachery",
+     "Sneak: The Red Kitchen Reader"
     ],
     "bossChest": true,
     "crafting": [
@@ -53465,7 +53450,7 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Weapon Enchantments)"
+     "Enchanting: Catalogue of Weapon Enchantments"
     ],
     "bossChest": true,
     "crafting": [
@@ -54840,11 +54825,11 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Enchanting (Catalogue of Armor Enchantments)",
-     "Lockpicking (Surfeit of Thieves)",
-     "Pickpocket (Purloined Shadows)",
-     "Sneak (2920, Vol. 08: Last Seed)",
-     "Sneak (The Red Kitchen Reader)"
+     "Enchanting: Catalogue of Armor Enchantments",
+     "Lockpicking: Surfeit of Thieves",
+     "Pickpocket: Purloined Shadows",
+     "Sneak: 2920, Vol. 08: Last Seed",
+     "Sneak: The Red Kitchen Reader"
     ],
     "crafting": [
      "a forge",
@@ -58575,8 +58560,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Lockpicking (The Locked Room)",
-     "Marksman (Vernaccus and Bourlor)"
+     "Lockpicking: The Locked Room",
+     "Marksman: Vernaccus and Bourlor"
     ]
    },
    "quests": [
@@ -58836,8 +58821,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (Mannimarco, King of Worms)",
-     "Alchemy (Song of the Alchemists)"
+     "Alchemy: Mannimarco, King of Worms",
+     "Alchemy: Song of the Alchemists"
     ],
     "bossChest": true,
     "crafting": [
@@ -59090,8 +59075,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Alchemy (A Game at Dinner)",
-     "LightArmor (The Rear Guard)"
+     "Alchemy: A Game at Dinner",
+     "Light Armor: The Rear Guard"
     ],
     "bossChest": true,
     "crafting": [
@@ -59297,8 +59282,8 @@
    "discoveryXp": 10,
    "worthGoingFor": {
     "skillBooks": [
-     "Conjuration (Liminal Bridges)",
-     "Conjuration (The Doors of Oblivion)"
+     "Conjuration: Liminal Bridges",
+     "Conjuration: The Doors of Oblivion"
     ],
     "bossChest": true,
     "crafting": [

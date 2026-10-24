@@ -116,6 +116,12 @@ WALK_BANDS = [(0.4, "next to it"), (1.0, "a short walk"), (2.0, "half a day")]
 # on the placed activator/container/furniture record -- never a guess at what a leveled list happens to hold.
 WORD_WALL_ACTI = re.compile(r"^NorWordWallWord([A-Za-z]+)$")  # the word taught; a trailing "xxx" is an unused duplicate of the same word
 SKILL_BOOK_EDID = re.compile(r"^Skill([A-Za-z]+)(\d+)$")  # Skyrim's own convention: "SkillAlchemy5" teaches Alchemy, tier 5
+# A skill's own name as a player reads it (Bob, 23 Oct, 18:05): "HeavyArmor" isn't one, never shown bare.
+SKILL_NAMES = {"Alchemy": "Alchemy", "Alteration": "Alteration", "Block": "Block", "Conjuration": "Conjuration",
+               "Destruction": "Destruction", "Enchanting": "Enchanting", "HeavyArmor": "Heavy Armor", "Illusion": "Illusion",
+               "LightArmor": "Light Armor", "Lockpicking": "Lockpicking", "Marksman": "Marksman", "OneHanded": "One-Handed",
+               "Pickpocket": "Pickpocket", "Restoration": "Restoration", "Smithing": "Smithing", "Sneak": "Sneak",
+               "Speechcraft": "Speechcraft", "TwoHanded": "Two-Handed"}
 BOSS_CHEST_EDID = re.compile(r"ChestBoss")  # "TreasBanditChestBoss", "TreasDraugrChestBoss"...
 CRAFTING_FURN = {"CraftingBlackSmithForge": "a forge", "CraftingBlackSmithForgeWR": "a forge",
                  "CraftingBlackSmithForgeSkyforge": "the Skyforge", "CraftingBlacksmithAnvil": "an anvil",
@@ -627,21 +633,37 @@ def build(version):
                 owner[k] = x
                 break
     def cw_garrison(key, seen=None):
-        # WO-144 Part 1e-2: a ref enable-parented to a disabled "CWGarrisonEnableMarker..." (the same convention
-        # across 100+ garrisons, both sides, every fort and camp -- Bethesda's own, not a guess) is the war's later
-        # garrison, not present at the start, even though its own flag says otherwise (Fort Hraggstad's Imperial
-        # Soldiers: not disabled themselves, but enable-parented to one that is). "Disabled" alone isn't enough --
-        # Embershard Mine's wolves are parented to a disabled "E3demoMarker", a leftover with nothing to do with
-        # the war, and stay counted at the start. Walks the chain, not just the one link, with a cycle guard.
+        # WO-144 Part 1e-2/1e-4: the Civil War's own later garrison, shown separately (`afterTheWar`): a marker
+        # named "CWGarrisonEnableMarker..." anywhere up the enable-parent chain (Fort Hraggstad's Imperial
+        # Soldiers), or the actor's own faction naming it a combatant of either side (`CWImperialFaction`,
+        # `CWSonsFaction`, `CWFortFaction`, `CWJobFort...` -- the same 67-faction Civil War naming this load order
+        # carries; Fort Hraggstad's own "lives here: Imperial" at the start turned out to be 20-odd unnamed
+        # `CWImperialFaction` soldiers with no `CWGarrisonEnableMarker` parent at all, caught by faction, not the
+        # marker chain, which alone wasn't the whole war garrison).
+        #
+        # Tried and reverted: excluding *any* disabled ref, Civil War or not (Molag Bal at Stendarr's Beacon and
+        # Embershard Mine's wolves, both disabled, both confirmed wrong by UESP and by Bob's own read). That's too
+        # broad -- it also dropped Wolfskull Cave's Ritual Master, confirmed *right* back in Part 1d-2 ("matches
+        # your level, 10 to 20"): he's enable-parented to "MS06caveStatemarker", a quest-state marker that starts
+        # disabled and is enabled almost as soon as a player reaches the cave, not "later in the game" the way
+        # the war's reinforcement is. A dungeon boss tied to its own quest this way is extremely common; telling
+        # that shape apart from a genuinely absent-until-much-later quest actor (Molag Bal) needs the enabling
+        # quest's own stages or scripts, which this reader doesn't parse. So: Civil War only, by this real,
+        # verified naming convention; Stendarr's Beacon and Embershard Mine's wolves are logged as an open gap,
+        # not guessed at with a rule already shown to break a confirmed-right case.
         seen = seen if seen is not None else set()
         if not key or key in seen:
             return False
         info = enable_info.get(key)
         if not info:
             return False
-        if info["disabled"] and info["edid"].startswith("CWGarrisonEnableMarker"):
+        if info["edid"].startswith("CWGarrisonEnableMarker"):
             return True
         return cw_garrison(info["parent"], seen | {key}) if info["parent"] else False
+
+    def cw_faction(base):
+        n = npcs.get(base) or {}
+        return any(re.match(r"^CW(Imperial|Sons)Faction|^CWJobFort|^CWFortFaction$", fact.get(f, "")) for f in n.get("factions") or [])
 
     by_place, after_war_by_place = collections.defaultdict(list), collections.defaultdict(list)
     for akey, a in actors.items():
@@ -649,7 +671,7 @@ def build(version):
             continue  # a display mannequin (ManakinRace) is never an enemy
         pl = owner.get((cells.get(a["cell"]) or {}).get("location"))
         if pl:
-            (after_war_by_place if cw_garrison(akey) else by_place)[pl].append(a)
+            (after_war_by_place if cw_garrison(akey) or cw_faction(a["base"]) else by_place)[pl].append(a)
     # The encounter zone owning a place, by its location (ECZN's own Location field, not a guess -- Bob decoded the
     # DATA layout by hand on Fort Hraggstad, 23 Oct). Clamps the resolved actor range: a floor it can't fall below,
     # a ceiling when the zone sets one (max 0 means none).
@@ -799,7 +821,7 @@ def build(version):
             if g["wordWalls"]:
                 goodies["wordWall"] = sorted(g["wordWalls"])
             if g["skillBooks"]:
-                goodies["skillBooks"] = sorted(f"{skill} ({title})" for skill, title in g["skillBooks"])
+                goodies["skillBooks"] = sorted(f"{SKILL_NAMES.get(skill, skill)}: {title}" for skill, title in g["skillBooks"])
             if g["bossChest"]:
                 goodies["bossChest"] = True
             if g["crafting"]:
