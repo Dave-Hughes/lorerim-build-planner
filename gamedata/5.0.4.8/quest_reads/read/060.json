@@ -1,0 +1,784 @@
+[
+  {
+    "edid": "HD1ArmorUpgrades",
+    "name": "A New Coat",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "talk",
+    "canDoWhy": "Ask Gore about upgrading his gear, then have Taarie in Solitude make him a new suit of armor.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "wherever he is travelling with you",
+        "how": "Talk to Gore about upgrading his personal equipment; he sends you to Taarie at Radiant Raiment in Solitude."
+      }
+    ],
+    "firstStep": "Speak to Gore about his equipment",
+    "takesYou": [
+      {
+        "place": "Radiant Raiment, Solitude",
+        "hold": "Haafingar",
+        "why": "ask Taarie to make new armor for Gore"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Gore about his equipment",
+          "Speak to Taarie at Radient Raiment about new armor for Gore",
+          "Wait one day for the armor to be finished",
+          "Give the armor to Gore"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gore's Upgraded Armor, Gore's Upgraded Boots and Gore's Upgraded Gauntlets (heavy armor, for Gore to wear)",
+        "when": "Taarie hands them over after a day; you give them to Gore at the end"
+      }
+    ],
+    "type": "none set in the records",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "your follower; the armor is for him"
+      },
+      {
+        "name": "Taarie",
+        "role": "makes the armor, at Radiant Raiment in Solitude"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "the records show the conversation with Gore but not what has to be true before he brings up his equipment"
+      },
+      {
+        "field": "rewards",
+        "why": "the records don't say whether Taarie charges you, or how much"
+      },
+      {
+        "field": "where",
+        "why": "Taarie's schedule puts her in Radiant Raiment from 8 am to 8 pm and at the Winking Skeever for a few hours from 8 pm; the hours are read from package names and times, not tested"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:10A083 stages 0-20, objectives 0/5/10/15",
+      "giver INFO GORE.esp:10A086 (Gore, GetIsID, stage<1); other speaker Taarie Skyrim.esm:0132AB stage<6",
+      "rewards via HD1_QF_HD1ArmorUpgrades_0510A083: GoreFinalCuirass GORE.esp:0F5C6E, GoreFinalBoots 0F5C70, GoreFinalGauntlets 0F5C72",
+      "Taarie packages SolitudeRaimentsTaarieWorkDay8x12, AIOSoTaarieTavern (20:00, 210 min, Winking Skeever)",
+      "quest type null"
+    ]
+  },
+  {
+    "edid": "HD1GoreComeTheCrows",
+    "name": "Come, the Crows",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Part of Gore's story: it appears in your journal asking you to speak to Gore, who then wants to go to an inn well away from Dawnstar.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "wherever he is travelling with you",
+        "how": "The journal tells you to speak to Gore; he and you then head for an inn far from Dawnstar."
+      }
+    ],
+    "firstStep": "Speak to Gore",
+    "takesYou": [
+      {
+        "place": "an inn away from Dawnstar (the records don't name which)",
+        "hold": "",
+        "why": "Gore wants to put distance between you and Dawnstar"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Gore",
+          "Head to an Inn away from Dawnstar"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "your follower"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "the records don't show what makes this quest begin; the journal text reads as part of Gore's own story while he travels with you"
+      },
+      {
+        "field": "takesYou",
+        "why": "the objective only says an inn away from Dawnstar; no inn is named, so any distant inn may do, but that isn't shown in the records"
+      },
+      {
+        "field": "opens",
+        "why": "the Dawnstar link suggests it follows Gore's Dawnstar story (Blood Ties, To Free a Raven), but no record ties them"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:6EA61E stages 0/10/20, objectives 0/10",
+      "alias 0 Gore",
+      "no giver or start event in quest_givers_raw"
+    ]
+  },
+  {
+    "edid": "HD1GoreDH",
+    "name": "The Drunken Hunted",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Part of Gore's story: the journal asks you to take Gore to the Drunken Huntsman next time you're in Whiterun.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "wherever he is travelling with you",
+        "how": "The journal asks you to visit the Drunken Huntsman in Whiterun with Gore."
+      }
+    ],
+    "firstStep": "Head to the Drunken Huntsman in Whiterun",
+    "takesYou": [
+      {
+        "place": "The Drunken Huntsman, Whiterun",
+        "hold": "Whiterun",
+        "why": "take Gore there so he can relax"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Head to the Drunken Huntsman in Whiterun",
+          "Let Gore know he can relax"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "you grow closer with Gore (the journal says so; no item is given)",
+        "when": "at the end"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "your follower"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "the records don't show what makes this quest begin; the journal text reads as part of Gore's own story while he travels with you"
+      },
+      {
+        "field": "rewards",
+        "why": "the closing entry says you're getting closer with Gore; whether that moves his romance or friendship along isn't shown in these records"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:3E8DC9 stages 10/20/30, objectives 10/20",
+      "aliases gore, DrunkenHuntsman",
+      "no giver or start event in quest_givers_raw"
+    ]
+  },
+  {
+    "edid": "HD1GoreEscort",
+    "name": "Wanted",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "talk",
+    "canDoWhy": "After you free Gore, the Thalmor hunting him catch up; talk them down or fight them, then Gore joins you.",
+    "needs": [
+      {
+        "what": "Free Gore in Raven's Flight",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "near Falkreath, where you freed him",
+        "how": "The Thalmor hunting Gore find you both; deal with them, then speak with Gore and he joins you."
+      }
+    ],
+    "firstStep": "Defeat the Thalmor Envoy.",
+    "takesYou": [
+      {
+        "place": "an inn, once you've lost the pursuers (the records don't name which)",
+        "hold": "",
+        "why": "get Gore somewhere safe so he'll open up, including about his name"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Talk to the Thalmor",
+        "leadsTo": "the journal offers talking as the other way past them; what follows isn't spelled out in the records"
+      },
+      {
+        "choice": "Fight the Thalmor",
+        "leadsTo": "defeat the Thalmor Envoy, then speak with Gore"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Defeat the Thalmor Envoy.",
+          "Speak with Gore.",
+          "Take Gore to an inn after losing the pursuers."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gore as a follower",
+        "when": "after you speak with him once the Thalmor are dealt with"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [
+      "The next part of Gore's story: get to know him at an inn"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "the man you rescued; joins you"
+      },
+      {
+        "name": "Thalmor Envoy",
+        "role": "leads the Thalmor hunting Gore"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "that it follows Raven's Flight is read from the story (Gore has just been freed and the Thalmor are hunting him); no record links the two directly"
+      },
+      {
+        "field": "choices",
+        "why": "the journal says you can talk to them or defeat them, but only the fight has its own objective; the talking outcome isn't readable here"
+      },
+      {
+        "field": "opens",
+        "why": "the closing entry points at an inn talk about Gore's name; which quest that is isn't named in the records"
+      },
+      {
+        "field": "starts",
+        "why": "the Thalmor are placed in the open world with no named place in these records"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:1517F2 stages 10/20/21/30, objectives 10/20/21",
+      "aliases HD1GoreThalmor1-3 (NPCs GORE.esp:1517F9, 1517FC), Gore",
+      "giver INFO GORE.esp:7CBD27 (Gore, stage<21)"
+    ]
+  },
+  {
+    "edid": "HD1GoreFearAndLoathing",
+    "name": "Fear and Loathing",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "With Gore along, a Vigilant of Stendarr in Markarth hires the two of you to look into a suspicious house there.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Vigilant Tyranus",
+        "where": "the Silver-Blood Inn, Markarth",
+        "how": "With Gore following you, take the Vigilant's job to investigate a suspicious house in Markarth."
+      }
+    ],
+    "firstStep": "Investigate the house with Gore",
+    "takesYou": [
+      {
+        "place": "a suspicious house in Markarth",
+        "hold": "The Reach",
+        "why": "investigate it with Gore"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Investigate the house with Gore",
+          "Speak with Gore outside"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Vigilant Tyranus",
+        "role": "the Vigilant of Stendarr who hires you"
+      },
+      {
+        "name": "Gore",
+        "role": "your follower; talk to him outside afterwards"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "the records don't show what starts it; the Vigilant is the same man who sends you into the house in The House of Horrors, so it most likely runs alongside that quest, but no record ties them"
+      },
+      {
+        "field": "where",
+        "why": "the records place the Vigilant in the Silver-Blood Inn; his schedule isn't in these files"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:AFF592 stages 0/5/10, objectives 0/5",
+      "alias Tyranus = Skyrim.esm:0A733B, placed Silver-Blood Inn (ref 0A733C); in MarkarthAbandonedHouseFaction; also aliased in DA10 Skyrim.esm:022F08",
+      "no giver or start event in quest_givers_raw"
+    ]
+  },
+  {
+    "edid": "HD1GoreHorse1",
+    "name": "Count Fleet",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Get Gore his own horse at the Whiterun Stables so he can ride with you.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Skulvar Sable-Hilt",
+        "where": "Whiterun Stables, outside Whiterun",
+        "how": "The journal asks you to see about getting Gore a horse at the Whiterun Stables."
+      }
+    ],
+    "firstStep": "See about getting Gore a horse at the Whiterun Stables.",
+    "takesYou": [
+      {
+        "place": "Whiterun Stables",
+        "hold": "Whiterun",
+        "why": "get Gore a horse"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "See about getting Gore a horse at the Whiterun Stables.",
+          "Tell Gore he has a horse now."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Count Fleet, a horse for Gore, so he rides with you",
+        "when": "at the end"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Skulvar Sable-Hilt",
+        "role": "stable master at the Whiterun Stables"
+      },
+      {
+        "name": "Count Fleet",
+        "role": "Gore's horse"
+      },
+      {
+        "name": "Gore",
+        "role": "your follower"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "the records don't show what puts this in your journal"
+      },
+      {
+        "field": "rewards",
+        "why": "the mod has a Summon Count Fleet lesser power, but no record here says this quest gives it; the price of the horse isn't shown either"
+      },
+      {
+        "field": "where",
+        "why": "Skulvar's schedule keeps him at the Whiterun Stables day and evening (read from package names, not tested)"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:2EADD8 stages 10/20, objectives 10/20",
+      "aliases Skulvar (Skyrim.esm:013BB7, Whiterun Stables), CountFleet, gore",
+      "horse NPC GORE.esp:29A818 Count Fleet",
+      "power GORE.esp:2EFEE3 Summon Count Fleet (no link to quest)",
+      "Skulvar packages WhiterunSkulvarStablesSellPackage 8x12, WhiterunSkulvarHomePackage20x4"
+    ]
+  },
+  {
+    "edid": "HD1GoreInterlude",
+    "name": "Where We Stand",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "talk",
+    "canDoWhy": "Gore has something on his mind and wants to show you a spot just outside Ivarstead.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "wherever he is travelling with you",
+        "how": "Ask Gore what's on his mind; he says there's a place just outside Ivarstead he'd like to show you, whenever you have time."
+      }
+    ],
+    "firstStep": "See what Gore wants to say.",
+    "takesYou": [
+      {
+        "place": "a spot near Ivarstead",
+        "hold": "The Rift",
+        "why": "Gore has something planned there"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "See what Gore wants to say.",
+          "Head to the spot near Ivarstead.",
+          "Speak to Gore"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "your follower"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "the records show the conversation with Gore but not what has to be true before he raises it"
+      },
+      {
+        "field": "takesYou",
+        "why": "the spot is a quest marker; the records don't name it"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:7752FD stages 0/10/20/30, objectives 0/10/20",
+      "giver INFO GORE.esp:B7137D (Gore, stage<21)",
+      "Gore line INFO GORE.esp:775301 'a place just outside Ivarstead'"
+    ]
+  },
+  {
+    "edid": "HD1GoreJailtime",
+    "name": "To Free a Raven",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "talk",
+    "canDoWhy": "Gore turns himself in to the jail in Dawnstar; wait a while, then pay the guard for his release.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "wherever he is travelling with you, near Dawnstar",
+        "how": "Gore goes to turn himself in; the journal suggests waiting a while and then paying for his release."
+      }
+    ],
+    "firstStep": "Wait for Gore to turn himself in.",
+    "takesYou": [
+      {
+        "place": "Dawnstar Jail, in the Dawnstar barracks",
+        "hold": "The Pale",
+        "why": "see Gore and talk to the jailer about his release"
+      },
+      {
+        "place": "Windpeak Inn, Dawnstar",
+        "hold": "The Pale",
+        "why": "take Gore there once he's out"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Wait for Gore to turn himself in.",
+          "See how Gore is doing.",
+          "Speak to the guard about Gore's release",
+          "Speak to Gore",
+          "Take Gore to the Windpeak Inn"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "your follower, in jail"
+      },
+      {
+        "name": "Jailer",
+        "role": "the guard in Dawnstar Jail who releases Gore"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "why Gore turns himself in isn't stated here; it most likely follows what happens in Dawnstar in Blood Ties, but no record ties them"
+      },
+      {
+        "field": "rewards",
+        "why": "the journal talks of paying for his release; the amount isn't in these records"
+      },
+      {
+        "field": "steps",
+        "why": "how long you have to wait isn't in these records"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:6245B4 stages 0-50, objectives 0-40",
+      "aliases Gore, Trigger, Jailer (GORE.esp:6CCAA9, Dawnstar Jail, Dawnstar Barracks), Inn",
+      "giver INFO GORE.esp:6CCAAE (Gore, stage<11); Jailer stage<21"
+    ]
+  },
+  {
+    "edid": "HD1GoreMeet",
+    "name": "Raven's Flight",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Word reaches you of Imperial patrols hunting someone near Falkreath; at Peak's Shade Tower you find a Nord with his leg caught in a trap. This is how you meet Gore.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "outside Peak's Shade Tower, a short walk from Falkreath",
+        "how": "Head to the tower; a Nord, Gore, has his leg caught in a trap. Talk to him and help him free it."
+      }
+    ],
+    "firstStep": "Head to Peak's Shade Tower outside of Falkreath.",
+    "takesYou": [
+      {
+        "place": "Peak's Shade Tower",
+        "hold": "Falkreath",
+        "why": "find the trapped Nord"
+      },
+      {
+        "place": "Falkreath",
+        "hold": "Falkreath",
+        "why": "get Gore there once he's back on his feet"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Help the trapped Nord",
+        "leadsTo": "you free his leg, help him back on his feet and take him to Falkreath; his story goes on"
+      },
+      {
+        "choice": "Kill the Nord in the trap",
+        "leadsTo": "Gore dies and the quest fails (the journal reads \"Glory to the Aldmeri Dominion\"); his story ends there"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "help",
+        "objectives": [
+          "Head to Peak's Shade Tower outside of Falkreath.",
+          "Speak with the Nord.",
+          "Help the stranger free his leg.",
+          "See what help the stranger needs."
+        ]
+      },
+      {
+        "branch": "kill",
+        "objectives": [
+          "Head to Peak's Shade Tower outside of Falkreath.",
+          "Speak with the Nord.",
+          "Gore is dead!"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gore's Greatsword",
+        "when": "set by the quest's script while you help Gore"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [
+      "Wanted"
+    ],
+    "closes": [
+      "Kill the trapped Nord and Gore is dead: his companion story is lost"
+    ],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "the Nord caught in the trap at Peak's Shade Tower"
+      },
+      {
+        "name": "Remi",
+        "role": "listed by the quest; most likely the follower Remiel, from another mod in the list, if he's with you"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "the journal opens with a rumour about Imperial patrols near Falkreath, but the records don't show who tells it or what event puts it in your journal; you can also simply walk up to the tower"
+      },
+      {
+        "field": "rewards",
+        "why": "the greatsword is a property on the quest's script; whether it's handed to you or put on Gore isn't readable here"
+      },
+      {
+        "field": "opens",
+        "why": "Wanted picks up with the Thalmor hunting the man you freed; the link is read from the story, not a record"
+      },
+      {
+        "field": "people",
+        "why": "what Remiel does in this quest isn't in these records"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:066720 stages 0/1/10/15(fails)/20/30/40/50, objectives 1/10/15/20/30",
+      "aliases Gore, Remi",
+      "giver INFO GORE.esp:7CBD21 (Gore GORE.esp:000D63, stage<11), Gore placed ref GORE.esp:00B4B1 at Peak's Shade Tower",
+      "start dialogue condition GetGlobalValue HD1PermanentDismiss != 1",
+      "reward GOREGS GORE.esp:00B4B2 via QF_HD1GoreMeet_09066720",
+      "quest_starts line 'gore' opening"
+    ]
+  },
+  {
+    "edid": "HD1GoreMurderer",
+    "name": "The Apple from the Tree",
+    "plugin": "GORE.esp (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Gore needs to talk about everything that has happened; he may walk away, and if you won't let him, it ends in a fight to the death.",
+    "needs": [
+      {
+        "what": "Gore travelling with you as your follower",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Gore",
+        "where": "wherever he is travelling with you",
+        "how": "The journal tells you to talk to Gore about everything that has happened."
+      }
+    ],
+    "firstStep": "Speak to Gore",
+    "takesYou": [],
+    "choices": [
+      {
+        "choice": "Let Gore go",
+        "leadsTo": "Gore leaves your party"
+      },
+      {
+        "choice": "Refuse to let him leave",
+        "leadsTo": "you have to kill Gore; the journal calls it killing him for trying to betray you"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Gore"
+        ]
+      },
+      {
+        "branch": "stop him leaving",
+        "objectives": [
+          "Kill Gore"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "Gore: he either leaves your party or dies"
+    ],
+    "people": [
+      {
+        "name": "Gore",
+        "role": "your follower"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "the records don't show what makes this quest begin; the journal text reads as part of Gore's own story while he travels with you"
+      },
+      {
+        "field": "choices",
+        "why": "the quest has a second way to finish with no journal text; it may be a calmer outcome where Gore stays, but the records don't say"
+      },
+      {
+        "field": "closes",
+        "why": "whether leaving is for good isn't shown in these records"
+      }
+    ],
+    "evidence": [
+      "QUST GORE.esp:6738F7 stages 0/10/20/30(completes)/40(completes), objectives 0/20",
+      "alias Gore",
+      "no giver or start event in quest_givers_raw"
+    ]
+  }
+]

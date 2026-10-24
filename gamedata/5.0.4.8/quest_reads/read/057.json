@@ -1,0 +1,795 @@
+[
+  {
+    "edid": "0WindhelmSceneGuardVampireAftermath",
+    "name": "A Night You Can't Remember",
+    "plugin": "WindhelmSSE.esp (no later plugin edits the quest)",
+    "canDo": "talk",
+    "canDoWhy": "A Windhelm guard in Candlehearth Hall walks up to you and starts it in conversation; it plays out as a drinking night that ends in a blackout.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Windhelm Guard",
+        "where": "Candlehearth Hall, the inn in Windhelm",
+        "how": "This guard comes over to greet you while the quest hasn't started; talking to him starts the night out. Two other guards also have lines for it."
+      }
+    ],
+    "firstStep": "Drink with the guards at Candlehearth Hall",
+    "takesYou": [
+      {
+        "place": "Candlehearth Hall",
+        "hold": "Eastmarch",
+        "why": "where the drinking happens"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Get some fresh air"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Windhelm Guard",
+        "role": "starts the night out, in Candlehearth Hall"
+      },
+      {
+        "name": "Windhelm Guard (two others)",
+        "role": "have lines during the night"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "steps",
+        "why": "Most of the journal text is placeholder (counts of drinks, then 'blackout'); the only real objective is 'Get some fresh air' after you wake. What happens during the blackout isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The guard is set up as the aftermath of a vampire scene in Windhelm, so it may need something to happen first (perhaps Severed Cold); no condition in these files says so."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward shows in the quest's scripts."
+      }
+    ],
+    "evidence": [
+      "QUST WindhelmSSE.esp:2DDFF3",
+      "giver NPC WindhelmSSE.esp:367FA4 (0WHVampireSceneGuard), INFO WindhelmSSE.esp:367F9F, stage below 20",
+      "PACK WindhelmSSE.esp:36D1E8 0WHVampAftermathGreet, GetStage < 20",
+      "other guards WindhelmSSE.esp:367FC6, 1066C1 (stage below 101)",
+      "placement ref WindhelmSSE.esp:367FBF in Candlehearth Hall (Skyrim.esm:016789)",
+      "objective 100 'Get some fresh air'; stages 110 and 200 complete"
+    ]
+  },
+  {
+    "edid": "0WRAddTheKeyQ",
+    "name": "Bluesky Hall",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts when you buy the deed to Bluesky Hall, a house in Whiterun; you then just go and look at it.",
+    "needs": [
+      {
+        "what": "Buy the deed to Bluesky Hall",
+        "kind": "item"
+      }
+    ],
+    "starts": [
+      {
+        "who": "",
+        "where": "Whiterun",
+        "how": "Buying the deed to Bluesky Hall starts it. The key comes wrapped inside the deed."
+      }
+    ],
+    "firstStep": "Inspect your new property, the Key seems to be wrapped inside the Deed",
+    "takesYou": [
+      {
+        "place": "Bluesky Hall",
+        "hold": "Whiterun",
+        "why": "your new house, in the city district behind the Hall of the Dead"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Inspect your new property, the Key seems to be wrapped inside the Deed"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Bluesky Hall (house) and its key",
+        "when": "when you buy the deed"
+      }
+    ],
+    "type": "None",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "These files don't show who sells the deed or what it costs."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:09A75A",
+      "stage 10 log (deed bought, behind the Hall of the Dead); stage 20 completes on visiting",
+      "door SurWR.esp:052A20 into Bluesky Hall needs key SurWR.esp:08B417 'Bluesky Hall Key'",
+      "questlines_raw: opening of the Capital Whiterun Expansion line"
+    ]
+  },
+  {
+    "edid": "0WRDragonKillerScene",
+    "name": "Victory Celebrations",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "background",
+    "canDoWhy": "A celebration scene in Whiterun: guards show off a trophy by the statue of Talos, and you may be handed a gift. No objectives, so it doesn't run like a quest.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "",
+    "takesYou": [
+      {
+        "place": "the statue of Talos in Whiterun",
+        "hold": "Whiterun",
+        "why": "where the guards show off their trophy"
+      }
+    ],
+    "choices": [],
+    "steps": [],
+    "rewards": [
+      {
+        "what": "Victory Wreath (circlet)",
+        "when": "given as a gift during the celebration"
+      }
+    ],
+    "type": "None",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Whiterun Guard (two)",
+        "role": "show off the trophy by the statue of Talos"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "Nothing in these files says what sets the celebration off; the name suggests it follows a dragon kill near Whiterun, but no condition shows it."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:1DFD0B (no objectives)",
+      "stage 10 log 'guards are showing off their new trophy by the statue of Talos', stage 15 'Got a gift'",
+      "fragment QF_0WRDragonKillerScene_051DFD0B.GiftArmor -> ARMO SurWR.esp:1FE498 Victory Wreath",
+      "guards SurWR.esp:1FE48B, 1D09BC placed in Whiterun (Skyrim.esm:01A270)"
+    ]
+  },
+  {
+    "edid": "0WREnableSapling",
+    "name": "Grace of Kynareth",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "background",
+    "canDoWhy": "Runs quietly after you help Danica at the Temple of Kynareth: Gildergreen saplings start growing around Whiterun. Nothing for you to do.",
+    "needs": [
+      {
+        "what": "Help Danica Pure-Spring at the Temple of Kynareth in Whiterun",
+        "kind": "quest"
+      }
+    ],
+    "starts": [],
+    "firstStep": "",
+    "takesYou": [],
+    "choices": [],
+    "steps": [],
+    "rewards": [],
+    "type": "None",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Danica Pure-Spring",
+        "role": "the priestess you help first, at the Temple of Kynareth"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The journal line only says 'after helping Danica'; these files don't name which of her quests sets it off."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:0C8496 (no objectives, no aliases)",
+      "stage 10 log 'After helping Danica, Gildergreen saplings have begun to grow all around Whiterun.'; stage 100 completes",
+      "NPC Skyrim.esm:013BA5 Danica Pure-Spring, Temple of Kynareth"
+    ]
+  },
+  {
+    "edid": "0WRFarmlandQuest",
+    "name": "Farmland Saga",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "cut",
+    "canDoWhy": "Unfinished: the journal holds only the author's plan for a farm-rebuilding quest, with no objectives, no people and no ending.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "",
+    "takesYou": [],
+    "choices": [],
+    "steps": [],
+    "rewards": [],
+    "type": "None",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [],
+    "evidence": [
+      "QUST SurWR.esp:37116B: stages 10/15/20 are design notes ('Player meets a down on his luck farmer...'), no objectives, no aliases, no completing stage",
+      "quest_givers_raw: no people, no giver"
+    ]
+  },
+  {
+    "edid": "0WRGiantQuest",
+    "name": "Ode To The Tundrastriders",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "by itself",
+    "canDoWhy": "A note tells you the Jarl of Whiterun wants the giants outside the city dealt with; you can fight, poison or talk your way through.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "A note",
+        "where": "",
+        "how": "You get a note saying the Jarl wants someone to deal with troublesome giants camped on the tundra outside Whiterun."
+      }
+    ],
+    "firstStep": "Deal with the Giant outside Whiterun",
+    "takesYou": [
+      {
+        "place": "Bleakwind Basin",
+        "hold": "Whiterun",
+        "why": "the giant camp, next to Whiterun; meet or fight the Giant Chieftain"
+      },
+      {
+        "place": "Whiterun",
+        "hold": "Whiterun",
+        "why": "ask around town, and find the blue dye and the poem for Urik"
+      },
+      {
+        "place": "Dragonsreach",
+        "hold": "Whiterun",
+        "why": "collect your reward from the Jarl's steward"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Fight the giant",
+        "leadsTo": "Kill the Giant Chieftain, then the Jarl's steward pays you in gold"
+      },
+      {
+        "choice": "Poison the giants' food",
+        "leadsTo": "Get a strong poison and put it in their food; once the giant is dead, the steward pays you"
+      },
+      {
+        "choice": "Try diplomacy through Urik",
+        "leadsTo": "Bring a painted cow and the poem to the chieftain. If the truce works, the giants stop bothering travellers who keep away from their camp, and the chieftain will trade with you. The steward either pays some gold anyway or pays nothing, because the Jarl wanted the giant dead"
+      },
+      {
+        "choice": "Talks with the chieftain fail",
+        "leadsTo": "You have to kill the giant after all"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Deal with the Giant outside Whiterun",
+          "(Optional) Ask around town for alternative ways to deal with the Giant"
+        ]
+      },
+      {
+        "branch": "diplomacy",
+        "objectives": [
+          "Read Urik's note",
+          "Give Urik 300 gold for a cow",
+          "Acquire some blue Dye - some shop in Whiterun should be able to provide it.",
+          "Bring a copy of the poem \"Ode to the Tundrastriders\" to Urik.",
+          "Get some Paint from the Bucket",
+          "Paint the Gertie the Cow",
+          "Get Gertie the Painted Cow to Follow you",
+          "Go speak to the Giant Chieftain",
+          "(Optional) Tell Urik how it went"
+        ]
+      },
+      {
+        "branch": "end",
+        "objectives": [
+          "Speak to the Jarl's Steward inside Dragonsreach for your reward"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "from the Jarl's steward if the giant dies, or after a truce if the Jarl still pays"
+      },
+      {
+        "what": "The giant chieftain Hrungnir trades with you",
+        "when": "after a successful truce"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "The Giant Chieftain dies if you take the fight or poison route"
+    ],
+    "people": [
+      {
+        "name": "Urik",
+        "role": "a merchant who knows a peaceful way to deal with the giants; he arranges the cow"
+      },
+      {
+        "name": "Nazeem",
+        "role": "someone in town to ask about the giants"
+      },
+      {
+        "name": "Arcadia",
+        "role": "someone in town to ask about the giants"
+      },
+      {
+        "name": "Jaeshe",
+        "role": "someone in town to ask about the giants"
+      },
+      {
+        "name": "Gertie",
+        "role": "the cow you paint and lead to the giants"
+      },
+      {
+        "name": "Giant Chieftain",
+        "role": "the hostile giant outside Whiterun"
+      },
+      {
+        "name": "Hrungnir",
+        "role": "the giant you can strike a truce with; trades with you afterwards"
+      },
+      {
+        "name": "the Jarl's steward",
+        "role": "pays your reward in Dragonsreach"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The records say you get a note but not who sends it or where it turns up."
+      },
+      {
+        "field": "where",
+        "why": "Urik stands outside the city walls by day and goes to the Roadhouse inn at 6 pm for the night; his daytime spot is only his placement."
+      },
+      {
+        "field": "choices",
+        "why": "Where the strong poison comes from isn't in these files, and neither is what decides whether the steward pays after a truce."
+      },
+      {
+        "field": "rewards",
+        "why": "The amount of gold isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:2ECDA4",
+      "stage 5 'Player gets note'; stage 10 three ways; 12-19 diplomacy; 20/30 poison; 90 talks failed; 100 giant dead; 150 truce; 200/250/300 complete",
+      "giver NPC SurWR.esp:10F897 Urik, INFO SurWR.esp:2F1F20, stage below 11; also Nazeem Skyrim.esm:013BBF, Arcadia Skyrim.esm:013BA4, Jaeshe SurWR.esp:02952F",
+      "Urik PACK SurWR.esp:160D2D 0WRRoadhouseSleep1830 -> The Roadhouse; placed SurWR.esp:123CB3 in the wilderness",
+      "aliases HostileGiantAlias SurWR.esp:2ECDA5, DiploGiant SurWR.esp:2ECDB0 (vendor, faction 0WRGiantMerchant)",
+      "Painted Gertie SurWR.esp:2F702C follows at stage 19",
+      "fragment QF_0WRGiantQuest_052ECDA4.Gold001",
+      "LCTN Skyrim.esm:018EEB Bleakwind Basin"
+    ]
+  },
+  {
+    "edid": "0WRHorseQ",
+    "name": "Running Wild",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "by itself",
+    "canDoWhy": "A white (palomino) horse is loose on the fields outside Whiterun; catch it and choose who gets it.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "",
+        "where": "the fields around Whiterun",
+        "how": "The journal says a white or palomino horse is running loose outside Whiterun, and that the Jarl's stablemaster and a woman called Joslin both want it."
+      }
+    ],
+    "firstStep": "Catch the white, or palonimo, horse roaming the fields of Whiterun",
+    "takesYou": [
+      {
+        "place": "the fields outside Whiterun",
+        "hold": "Whiterun",
+        "why": "catch the horse"
+      },
+      {
+        "place": "Whiterun's main gate",
+        "hold": "Whiterun",
+        "why": "bring the horse back"
+      },
+      {
+        "place": "the small stables behind the Bannered Mare",
+        "hold": "Whiterun",
+        "why": "give it to Joslin"
+      },
+      {
+        "place": "outside Dragonsreach",
+        "hold": "Whiterun",
+        "why": "or sell it to the Jarl's stablemaster"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Take the horse to Joslin",
+        "leadsTo": "No gold, but you keep the horse; she makes you a saddle for it (Imperial or Nord)"
+      },
+      {
+        "choice": "Take the horse to the stablemaster outside Dragonsreach",
+        "leadsTo": "You're paid in gold and the horse goes to the Jarl"
+      },
+      {
+        "choice": "The horse dies",
+        "leadsTo": "The quest fails"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Catch the white, or palonimo, horse roaming the fields of Whiterun",
+          "Bring the Horse back to the main gate of Whiterun",
+          "Talk to the Stablemaster outside Dragonsreach OR to Joslin in the small stables behind the Bannered Mare."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "The horse, with an Imperial or Nord saddle",
+        "when": "if you go to Joslin"
+      },
+      {
+        "what": "Gold",
+        "when": "if you go to the stablemaster"
+      },
+      {
+        "what": "The Basics of Horsemanship (book)",
+        "when": "from the quest; which ending gives it isn't shown"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "Choosing one buyer shuts out the other: the horse goes either to you (through Joslin) or to the Jarl"
+    ],
+    "people": [
+      {
+        "name": "Palonimo",
+        "role": "the loose horse; runs from you until caught"
+      },
+      {
+        "name": "Joslin",
+        "role": "horse-lover who works at the small stables behind the Bannered Mare, 8 am to 6 pm; lives in Joslin's House"
+      },
+      {
+        "name": "Erland the Stablemaster",
+        "role": "the Jarl's stablemaster, outside Dragonsreach; sleeps in a storehouse from 9 pm"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "These files don't show what starts the quest (a rumour, a conversation or just finding the horse)."
+      },
+      {
+        "field": "rewards",
+        "why": "How much gold, what decides Imperial or Nord saddle, and when the horsemanship book is given aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Joslin's work spot is near Jorrvaskr in the records, matching 'behind the Bannered Mare' only roughly; Erland has no daytime package, so 'outside Dragonsreach' is just where he's placed."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:0D2AD7",
+      "stages 40/41 Joslin saddles, 45 gold, 50 fails",
+      "giver NPC SurWR.esp:0BE23B Joslin, INFO SurWR.esp:0E1E79, stage below 31; also SurWR.esp:086319 Erland",
+      "horse SurWR.esp:0D2AD2 PACK 0WRHorseFleeTest at stage 10, 0WRStayStillPack from 20",
+      "Joslin PACK 0WRHorseWork 8x10; Erland PACK 0WRErlandSleepPack 21x9 Storehouse",
+      "fragment QF_0WRHorseQ_050D2AD7.ChargeGuide (BOOK SurWR.esp:22BEF4), .Gold001"
+    ]
+  },
+  {
+    "edid": "0WRRatQuest",
+    "name": "A Rat Problem",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "talk",
+    "canDoWhy": "Igna in Whiterun asks you to deal with something in her basement.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Igna",
+        "where": "Igna's House in Whiterun",
+        "how": "Talk to Igna and agree to help with the problem in her basement."
+      }
+    ],
+    "firstStep": "Deal with whatever is down Igna's basement",
+    "takesYou": [
+      {
+        "place": "Igna's Basement",
+        "hold": "Whiterun",
+        "why": "kill what's down there"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Report back and get paid",
+        "leadsTo": "Igna pays you"
+      },
+      {
+        "choice": "Report back without being paid",
+        "leadsTo": "The quest still completes"
+      },
+      {
+        "choice": "Fall out with Igna",
+        "leadsTo": "Igna wants nothing more to do with you and the quest fails"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Deal with whatever is down Igna's basement",
+          "Report back to Igna"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "if Igna pays you at the end"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Igna",
+        "role": "asks for help; lives in Igna's House"
+      },
+      {
+        "name": "Ratmulaag",
+        "role": "the not-so-normal rat in her basement"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Igna spends the day outdoors near Dragonsreach (9 am to 8 pm), 8 to 10 pm at the Drunken Huntsman, then listens to the bard outside near Jorrvaskr, and sleeps at home from midnight; her house is only where she's placed."
+      },
+      {
+        "field": "choices",
+        "why": "What leads to being paid, not being paid or the falling-out isn't in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "The basement door needs its own key; these files don't show who hands it over (most likely Igna)."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:31ABC1",
+      "giver NPC SurWR.esp:0295A7 Igna, INFO SurWR.esp:31ABD4, stage below 20",
+      "alias ratalias SurWR.esp:31095B Ratmulaag in Igna's Basement (SurWR.esp:30B4B2)",
+      "door SurWR.esp:30B4AA needs key SurWR.esp:329F5D 'Key to Igna's Basement'",
+      "stages 100/200 complete, 300 fails",
+      "fragment QF_0WRRatQuest_0531ABC1.Gold001",
+      "Igna PACKs 0WRIgnaWorkOutsidePack 9x11, 0WRIgnaDrunkenHuntsman20x3, 0WRBardOutsideAudienceIgna 22x2"
+    ]
+  },
+  {
+    "edid": "0WRThaneQ01",
+    "name": "Skirmish at Whitewatch",
+    "plugin": "SurWR.esp (no later plugin edits the quest)",
+    "canDo": "by itself",
+    "canDoWhy": "A courier from Whiterun brings you a letter calling the city's Thanes to defend Whitewatch Tower against raiders.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Courier",
+        "where": "comes to find you (she's based in the Whiterun Messenger Tower)",
+        "how": "The courier hands you the letter 'Whiterun Calls on her Thanes'; reading it sends you to Whitewatch Tower."
+      }
+    ],
+    "firstStep": "Read the Message",
+    "takesYou": [
+      {
+        "place": "Whitewatch Tower",
+        "hold": "Whiterun",
+        "why": "join the Thanes and hold the tower on the road east of Whiterun"
+      },
+      {
+        "place": "Dragonsreach",
+        "hold": "Whiterun",
+        "why": "report the battle to the steward"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Read the Message",
+          "Speak to Thane Hroa Hearth-Healer at Whitewatch Tower",
+          "Keep an eye out for trouble",
+          "Keep keeping an eye out for trouble",
+          "(Optional) Make some small-talk with the other Thanes",
+          "Defend Whitewatch Tower",
+          "Speak to Hroa at the Watchtower - After all enemies are dead",
+          "Defend against the Final Raid",
+          "Speak to Hroa at the Watchtower - After the last of the enemies are dead",
+          "Bring a report of the Battle to the Steward in Dragonsreach"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Whiterun Thane Armor",
+        "when": "from the quest; probably at the end"
+      },
+      {
+        "what": "Whiterun Guard Shield",
+        "when": "from the quest; probably at the end"
+      },
+      {
+        "what": "Whiterun Guard Helmet",
+        "when": "from the quest; probably at the end"
+      }
+    ],
+    "type": "None",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Courier",
+        "role": "brings the letter"
+      },
+      {
+        "name": "Thane Hroa Hearth-Healer",
+        "role": "leads the defence at Whitewatch Tower; lives at Hearth-Healer's Hall"
+      },
+      {
+        "name": "Thane Valdemaar Steel-Arm",
+        "role": "fellow Thane at the tower"
+      },
+      {
+        "name": "Vilde Steel-Arm",
+        "role": "at the tower with his father"
+      },
+      {
+        "name": "Mazuka the Knight",
+        "role": "Valdemaar's bodyguard"
+      },
+      {
+        "name": "Housecarl Gudling",
+        "role": "Hroa's housecarl"
+      },
+      {
+        "name": "Tundra Raider",
+        "role": "leads the first wave"
+      },
+      {
+        "name": "War Mammoth",
+        "role": "leads the final raid, with trained sabre cats"
+      },
+      {
+        "name": "the Jarl's steward",
+        "role": "takes your report in Dragonsreach"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The letter is addressed to Whiterun's Thanes, so you probably need to be Thane of Whiterun first, but no condition in these files says what makes the courier come."
+      },
+      {
+        "field": "rewards",
+        "why": "The armour, shield and helmet are in the quest's script, but the stage that gives them isn't shown."
+      }
+    ],
+    "evidence": [
+      "QUST SurWR.esp:3436A3 (type None; objective 10 'TEST' left out)",
+      "giver NPC SurWR.esp:3436A2 Courier, INFO SurWR.esp:3436A6, stage below 11; PACK WRCourierBasicRunHome to Whiterun Messenger Tower SurWR.esp:198C3F",
+      "BOOK SurWR.esp:352AB0 'Whiterun Calls on her Thanes' (fragment StartNote)",
+      "others: Hroa SurWR.esp:0BE279 below 21, Valdemaar SurWR.esp:02E6A0 below 29, Vilde SurWR.esp:0337AD below 31",
+      "raiders SurWR.esp:33E574, 361DD5, sabre cat 36C03E, mammoth 33E58E PACK WRThaneQ01WhitewatchAttack near Whitewatch Tower",
+      "fragment QF_0WRThaneQ01FirstRaid_053436A3.RewardArmor/RewardShield/RewardHelm",
+      "quest_starts_raw line capital-whiterun startGame true, no dialogue conditions"
+    ]
+  },
+  {
+    "edid": "MarkarthSideGritDarQuest",
+    "name": "The Royal Relic",
+    "plugin": "Arena - Markarth Side.esp (no later plugin edits the quest)",
+    "canDo": "talk",
+    "canDoWhy": "Grit-dar, an odd Khajiit in Markarth Side, asks you to fetch a royal relic from a tomb near Windhelm.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Grit-dar",
+        "where": "Markarth Side",
+        "how": "Talk to Grit-dar; he asks you to retrieve a relic from Morvunskar Crypts, the tomb of Windhelm's past rulers."
+      }
+    ],
+    "firstStep": "Find the missing royal relic in Morvunskar Crypts",
+    "takesYou": [
+      {
+        "place": "Morvunskar Crypts",
+        "hold": "Eastmarch",
+        "why": "find the royal relic"
+      },
+      {
+        "place": "The Kings Rest, the inn in Markarth Side",
+        "hold": "",
+        "why": "give the relic to Grit-dar"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find the missing royal relic in Morvunskar Crypts",
+          "Return to Grit-dar in the Markarth Side inn"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "500 gold",
+        "when": "when you hand Grit-dar the relic"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Grit-dar",
+        "role": "Khajiit who sends you; waits at the Markarth Side inn once you have the relic; can't be killed"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Before the quest, Grit-dar is only placed somewhere outdoors in Markarth Side; the exact spot isn't in these files. He moves to The Kings Rest inn once you have the relic."
+      },
+      {
+        "field": "takesYou",
+        "why": "Grit-dar says Morvunskar Crypts is in Eastmarch near Windhelm, but the place record's nearest-town figures point near Riverwood and Whiterun, so the entrance's exact spot is uncertain. The records also put The Kings Rest in Hjaalmarch, which may not match where Markarth Side really is."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest's script also holds an Ancient Royal Crown; it looks like the relic you hand over, not a reward, but that isn't certain."
+      }
+    ],
+    "evidence": [
+      "QUST Arena - Markarth Side.esp:146378",
+      "giver NPC Arena - Markarth Side.esp:146383 Grit-dar (essential), INFO Arena - Markarth Side.esp:14637C, stage below 10; placed ref 16EC9F in the wilderness",
+      "INFO 146380 and 15A7F1 (Morvunskar Crypts near Windhelm)",
+      "PACK Arena - Markarth Side.esp:1AB8C1 MarkarthSideGritDarInnPackage at stage 20 -> The Kings Rest (LCTN 122A5B)",
+      "LCTN Arena - Markarth Side.esp:06B8CE Morvunskar Crypts, hold Eastmarch",
+      "stage 30 log '500 gold'; fragment QF_MarkarthSideGritDarQuest_05146378.Gold001, .Crown (ARMO 1505AF Ancient Royal Crown)",
+      "quest_starts_raw line markarth-side startGame true, no dialogue conditions"
+    ]
+  }
+]

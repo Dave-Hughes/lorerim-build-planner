@@ -281,10 +281,7 @@
    }
   ],
   "type": "Side Quest",
-  "opens": [
-   "Drinking with Nirenoore",
-   "A Welkynar Legend"
-  ],
+  "opens": [],
   "closes": [
    "Reporting her to the Thalmor ends the quest"
   ],
@@ -330,6 +327,10 @@
    {
     "field": "hold",
     "why": "The places index puts Embershard Mine in Falkreath hold, next to Riverwood."
+   },
+   {
+    "field": "opens",
+    "why": "Drinking with Nirenoore and A Welkynar Legend belong to the same mod and are offered by Nirenoore, who only waits at the Bannered Mare once this quest is under way, but no record says this quest unlocks them."
    }
   ],
   "evidence": [
@@ -481,9 +482,9 @@
   "firstStep": "Ask Ysolda about Lelaegh",
   "takesYou": [
    {
-    "place": "Ysolda",
+    "place": "Ysolda's House",
     "hold": "Whiterun",
-    "why": "she sold Lelaegh on to Ma'dran"
+    "why": "ask Ysolda, who sold Lelaegh on to Ma'dran"
    },
    {
     "place": "Ma'dran's Khajiit caravan",
@@ -625,14 +626,14 @@
     "why": "meet Lelaegh; buy Hulda's share"
    },
    {
-    "place": "Ysolda",
+    "place": "Ysolda's House",
     "hold": "Whiterun",
-    "why": "buy her share"
+    "why": "buy Ysolda's share"
    },
    {
-    "place": "Nazeem, at Wintersand Manor or around Whiterun",
+    "place": "Wintersand Manor",
     "hold": "Whiterun",
-    "why": "buy his share"
+    "why": "buy Nazeem's share"
    },
    {
     "place": "Belethor's General Goods",
@@ -709,6 +710,10 @@
    {
     "field": "choices",
     "why": "A failed ending exists in the records with no log text; what causes it isn't shown."
+   },
+   {
+    "field": "where",
+    "why": "Ysolda, Hulda and Nazeem are given by where the records place them (Ysolda's House, the Bannered Mare, Wintersand Manor); their daily schedules weren't checked for this quest."
    }
   ],
   "evidence": [

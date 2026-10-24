@@ -1,0 +1,1011 @@
+[
+ {
+  "edid": "aaaGraniteHillDungeonQuest",
+  "name": "A Plea From Granite Hill",
+  "plugin": "aaaGraniteHill.esp (no other plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "A courier finds you and hands you a note from Granite Hill; nobody has to be talked to first.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "A courier",
+    "where": "wherever you are when he catches up with you",
+    "how": "Moving into a new place can set off the courier, who hands you a note from John in Granite Hill. Read it to start."
+   }
+  ],
+  "firstStep": "Read the courier's note from Granite Hill",
+  "takesYou": [
+   {
+    "place": "Granite Hill",
+    "hold": "Falkreath",
+    "why": "meet John at Jen and John's House"
+   },
+   {
+    "place": "Oddities & Curiosities, Privious's shop in Granite Hill",
+    "hold": "Falkreath",
+    "why": "the crawl space is under the shop"
+   },
+   {
+    "place": "Granite Hill Crawl Space",
+    "hold": "Falkreath",
+    "why": "clear the draugr ruin under the shop; a dragon, Lokjun, waits at the bottom"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the courier's note",
+     "Speak with John in Granite Hill",
+     "Explore the crawl space under the shop",
+     "Speak with John about your journey through the ruins"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The key to a home in Granite Hill",
+    "when": "when you report back to John"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "John",
+    "role": "sent the letter; gives you the crawl space key and the house key. Lives in Jen and John's House in Granite Hill"
+   },
+   {
+    "name": "Privious",
+    "role": "Dunmer shopkeeper of Oddities & Curiosities, where the crawl space was found"
+   },
+   {
+    "name": "Lokjun",
+    "role": "the dragon at the bottom of the crawl space (level 50)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest is started by a location-change event, but the conditions on that event (level, which place) aren't in these files."
+   },
+   {
+    "field": "where",
+    "why": "John is placed in Jen and John's House. His package names say he spends the day from 8 am out and about near a marker the files don't name, goes to a tavern at 8 pm for 3 hours (the cell isn't named; likely the Sheepshead Inn) and sleeps at home from 11 pm."
+   },
+   {
+    "field": "rewards",
+    "why": "The journal says you get the keys to a home in Granite Hill; which house it is isn't named in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The people index tags Granite Hill folk as in Falkreath; Granite Hill's own records put it in Falkreath Hold. Its exact spot on the map isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST aaaGraniteHill.esp:48BBC2 stages 10-50, objectives 10-40",
+   "start node GraniteHillSM (change location)",
+   "NPC John aaaGraniteHill.esp:044DD5 in cell aaaGraniteHill.esp:030934, packages GraniteHillJohnSandboxPackage8x12 / PubPackage / SleepPackage",
+   "NPC Privious aaaGraniteHill.esp:005D15",
+   "LCTN GraniteHillCrawlSpace aaaGraniteHill.esp:04EFE5 boss Lokjun aaaGraniteHill.esp:4F0FF2",
+   "alias PlayerHomeKey, CrawlSpaceKey"
+  ]
+ },
+ {
+  "edid": "aaaLOAQuest",
+  "name": "Legends Of Aetherium",
+  "plugin": "LegendsOfAetherium.esp (no other plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "The quest is set to run from the start of the game; the journal tells you about a Dwemer excavation hiring help, with no giver.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "",
+    "where": "",
+    "how": "The journal entry about an excavation into a lost Dwemer ruin appears on its own; travel to the Itharzel excavation site."
+   }
+  ],
+  "firstStep": "Travel to the Itharzel excavation site",
+  "takesYou": [
+   {
+    "place": "Itharzel excavation site",
+    "hold": "",
+    "why": "the dig into the lost Dwemer ruin"
+   },
+   {
+    "place": "Itharzel Manufactorium",
+    "hold": "",
+    "why": "(optional) find Amandia Screvius, who leads the dig crew"
+   },
+   {
+    "place": "Itharzel Grand Chamber",
+    "hold": "",
+    "why": "the great chamber with the barred central tower and three outer Dwemer structures that free its levers"
+   },
+   {
+    "place": "Itharzel Throne",
+    "hold": "",
+    "why": "defeat the Aetherial Colossus guarding the armoury"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Travel to the Itharzel excavation site",
+     "(Optional) Find Amandia Screvius",
+     "Explore the excavation site",
+     "Investigate the central tower",
+     "Find a way to reach the top of the tower",
+     "Enter the throne room",
+     "Defeat the Aetherial Colossus",
+     "Find the Aetherial Armoury"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Whatever the Aetherial Armoury holds; the mod's gear is the Aetherial Armor set (heavy), the Aetherial Mage Armor and Helmet, and Aetherial bow, sword, greatsword and warhammer",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Forge upgrades for the Aetherial gear (Adorned, then Enriched, then Ascended), each needing the lower piece, an Aetherium Ingot, two Dwarven Metal Ingots and the Dwarven Smithing perk; they unlock once this quest is complete"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Amandia Screvius",
+    "role": "leader of the dig crew, found in the Itharzel Manufactorium (optional)"
+   },
+   {
+    "name": "Aetherial Colossus",
+    "role": "the Dwemer centurion boss in the Itharzel Throne"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest runs from the start of the game, but what puts the first journal entry up (a note, a trigger, a rumour) isn't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "Where the excavation site's entrance is in Skyrim isn't in these files; the place index has no Itharzel entry, so the hold is left blank."
+   },
+   {
+    "field": "rewards",
+    "why": "Which pieces sit in the Aetherial Armoury isn't in these files; the gear listed is what the plugin adds."
+   }
+  ],
+  "evidence": [
+   "QUST LegendsOfAetherium.esp:0A53DD stages 10-70, objectives 10-70",
+   "quest_starts startGame true",
+   "alias FinalBoss = Aetherial Colossus LegendsOfAetherium.esp:0B9860 in Itharzel Throne",
+   "alias MineLeader = Amandia Screvius LegendsOfAetherium.esp:043874 in Itharzel Manufactorium",
+   "COBJ aaaLOARecipe* need GetQuestCompleted LegendsOfAetherium.esp:0A53DD and REQ_Smithing_DwarvenSmithing"
+  ]
+ },
+ {
+  "edid": "TOK_QUST_DialogueVonos",
+  "name": "Lost Heritage",
+  "plugin": "Tools of Kagrenac.esp (no other plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Vonos Dreloth at the College of Winterhold asks you to find his missing ring.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Vonos Dreloth",
+    "where": "the Hall of Attainment (the dormitory) at the College of Winterhold",
+    "how": "Talk to Vonos; he asks you to find his missing ring."
+   }
+  ],
+  "firstStep": "Find Vonos's missing ring",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find Vonos's Missing Ring",
+     "Return to Vonos Dreloth"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Vonos Dreloth",
+    "role": "Dunmer at the College of Winterhold who lost his ring; also the man Kagrenac's Tools sends you to for the cursed key to Sunder's vault"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The dialogue that starts this may only appear while Kagrenac's Tools sends you to Vonos; the line's conditions aren't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The ring is likely the Ring of the Wind (the quest tracks five Ring of the Wind spots), but where those spots are isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Kagrenac's Tools says you got the cursed key from Vonos; whether that is the reward for his ring isn't stated."
+   },
+   {
+    "field": "where",
+    "why": "Vonos is placed in the Hall of Attainment. His package names say breakfast at 8 am and dinner at 6 pm there, mornings from 9 am in the Great Hall on some days, afternoons from 1 pm in the Arcanaeum, and sleep from 11 pm in the Hall of Attainment."
+   }
+  ],
+  "evidence": [
+   "QUST Tools of Kagrenac.esp:21F230 objectives 10, 20",
+   "giver INFO Tools of Kagrenac.esp:22E5AE (Vonos)",
+   "aliases Ring_of_the_Wind_1..5",
+   "ARMO TOK_ARMO_WindRing Tools of Kagrenac.esp:056B03",
+   "NPC Vonos Dreloth Tools of Kagrenac.esp:00AA08 packages TOK_PACK_Vonos*",
+   "QUST 21F221 stage 20 log (cursed key)"
+  ]
+ },
+ {
+  "edid": "TOK_QUST_DialogueYassour",
+  "name": "My Precious",
+  "plugin": "Tools of Kagrenac.esp (no other plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Yassour Tansumiran in Raven Rock asks you to bring Wraithguard back to him; both steps are optional.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Yassour Tansumiran",
+    "where": "The Retching Netch, the tavern in Raven Rock on Solstheim",
+    "how": "Talk to Yassour about Wraithguard, which a thief stole from him."
+   }
+  ],
+  "firstStep": "(Optional) Retrieve Wraithguard for Yassour",
+  "takesYou": [
+   {
+    "place": "Nchardak",
+    "hold": "Solstheim",
+    "why": "where the thief took Wraithguard (from Kagrenac's Tools)"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "(Optional) Retrieve Wraithguard for Yassour",
+     "(Optional) Return to Yassour Tansumiran"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Yassour Tansumiran",
+    "role": "Dunmer in The Retching Netch who had Wraithguard stolen; stays around the tavern all day"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "Both objectives are optional; whether handing Wraithguard back to him costs you the gauntlet or blocks Kagrenac's Tools isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is recorded for returning Wraithguard."
+   },
+   {
+    "field": "needs",
+    "why": "His dialogue likely only opens while Kagrenac's Tools sends you to him; the line's conditions aren't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Tools of Kagrenac.esp:21F231 objectives 10, 20",
+   "giver INFO Tools of Kagrenac.esp:266152 (Yassour)",
+   "NPC Tools of Kagrenac.esp:00AA09 in The Retching Netch Dragonborn.esm:017EC0, editor-location packages only",
+   "QUST 21F221 stage 25 log (Nchardak)"
+  ]
+ },
+ {
+  "edid": "TOK_QUST_KagrenacTools",
+  "name": "Kagrenac's Tools",
+  "plugin": "Tools of Kagrenac.esp (no other plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "A courier brings you an anonymous note from Mathis Valen asking to meet in Markarth.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "A courier, then Mathis Valen",
+    "where": "the note finds you; Mathis waits in the Silver-Blood Inn in Markarth",
+    "how": "A courier hands you an anonymous note. Read it, then meet Mathis Valen at the Silver-Blood Inn; he tells you where the lost Tools of Kagrenac are."
+   }
+  ],
+  "firstStep": "Read the anonymous note",
+  "takesYou": [
+   {
+    "place": "Silver-Blood Inn, Markarth",
+    "hold": "The Reach",
+    "why": "meet Mathis Valen, and later return to him"
+   },
+   {
+    "place": "Hall of Attainment, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "speak to Vonos Dreloth for the cursed key"
+   },
+   {
+    "place": "Rkulftzul, Sealed Vault",
+    "hold": "Winterhold",
+    "why": "Sunder's hiding place, near Winterhold (see Vivec's Trial of Wisdom)"
+   },
+   {
+    "place": "The Retching Netch, Raven Rock",
+    "hold": "Solstheim",
+    "why": "speak to Yassour Tansumiran about Wraithguard"
+   },
+   {
+    "place": "Nchardak",
+    "hold": "Solstheim",
+    "why": "take Wraithguard back from the thief"
+   },
+   {
+    "place": "Ayleid ruins near the Cyrodiil border: Oio-Lalor",
+    "hold": "Falkreath",
+    "why": "find the Bal am as Aedra stones (see Darkest Depths)"
+   },
+   {
+    "place": "Aba-Malatar",
+    "hold": "The Rift",
+    "why": "another Ayleid ruin the quest uses, likely for a Bal am as Aedra stone"
+   },
+   {
+    "place": "Blackreach",
+    "hold": "Winterhold",
+    "why": "meet Mathis at the pedestal; a portal there leads on"
+   },
+   {
+    "place": "Silent Ruins",
+    "hold": "",
+    "why": "the Dwarven ruins in a strange land past the portal, where Mathis waits"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the Anonymous Note",
+     "Meet Mathis Valen at the Silver-Blood Inn in Markarth",
+     "Find and speak to Vonos Dreloth at the College of Winterhold",
+     "Find and speak to Yassour Tansumiran in Raven Rock",
+     "Acquire Sunder",
+     "Acquire Wraithguard",
+     "Find three Bal am as Aedra stones (0/3)",
+     "Return to Mathis Valen at the Silver-Blood Inn in Markarth",
+     "Travel to Blackreach and find the entrance",
+     "Enter the mysterious portal",
+     "Find and enter the Dwarven ruins",
+     "Meet Mathis Valen within the ruins",
+     "Defeat Mathis Valen and both his bodyguards (0/3)",
+     "Restored power to the tools at the ancient pedestal"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Sunder (mace)",
+    "when": "found during the quest, weakened at first"
+   },
+   {
+    "what": "Wraithguard (gauntlets)",
+    "when": "taken back from the thief at Nchardak, weakened at first"
+   },
+   {
+    "what": "The Tools of Kagrenac restored to full power",
+    "when": "at the end, at the ancient pedestal"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Lost Heritage",
+   "My Precious",
+   "Vivec's Trial of Wisdom",
+   "Darkest Depths"
+  ],
+  "closes": [
+   "Mathis Valen and his two Sixth House bodyguards die in the final fight"
+  ],
+  "people": [
+   {
+    "name": "Mathis Valen",
+    "role": "Dunmer who sends the note and waits at the Silver-Blood Inn; turns out to lead what is left of the Sixth House"
+   },
+   {
+    "name": "Vonos Dreloth",
+    "role": "at the College of Winterhold; has the cursed key to Sunder's hiding place"
+   },
+   {
+    "name": "Yassour Tansumiran",
+    "role": "in The Retching Netch, Raven Rock; knows where Wraithguard went"
+   },
+   {
+    "name": "Reaver Plunderer",
+    "role": "the thief carrying Wraithguard toward Nchardak"
+   },
+   {
+    "name": "Ayleid Lich",
+    "role": "boss in the Main Chamber of Oio-Lalor"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest starts when an item enters your inventory (two start nodes). The quest also tracks Keening, so getting Keening may be the trigger, but the conditions aren't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The plugin has both weakened and full-power Sunder, Wraithguard and Keening, and the quest script touches Keening and the weakened Sunder; exactly which items you end up holding isn't spelled out."
+   },
+   {
+    "field": "takesYou",
+    "why": "The journal sends you to Ayleid ruins near the Cyrodiil border for three stones. The records tie Oio-Lalor and Aba-Malatar to this quest; the mod's third ruin, Atalatar (Falkreath), isn't tied to it, so where each stone lies isn't certain."
+   },
+   {
+    "field": "closes",
+    "why": "Mathis Valen is flagged essential in the records, yet the quest has you defeat him; a script likely clears that, but it isn't shown here."
+   },
+   {
+    "field": "where",
+    "why": "Mathis is placed in the Silver-Blood Inn and only has stay-near-his-spot packages, so he should be there at all hours."
+   }
+  ],
+  "evidence": [
+   "QUST Tools of Kagrenac.esp:21F221 stages 2-110, objectives 10-110",
+   "start nodes TOK_SMQN_QuestStart / TOK_SMQN_QuestAltStart (AIPL)",
+   "giver INFO Tools of Kagrenac.esp:326ADF (Mathis)",
+   "NPC Mathis Valen 00AA07 Silver-Blood Inn Skyrim.esm:016DFE",
+   "LCTN TOK_LCTN_SunderVault 0519F6, TOK_LCTN_OioLalor 21A11D, TOK_LCTN_AbaMalatar 21A11E, TOK_LCTN_DwarvenRuin 21A11B",
+   "fragment QF_TOK_QUST_KagrenacTools_0421F221 props MGRKeening, TOK_Sunder_Corrupt",
+   "globals TOK_GLOB_GemTotal 3, TOK_GLOB_DeadTotal 3"
+  ]
+ },
+ {
+  "edid": "TOK_QUST_LabyrinthPuzzle",
+  "name": "Darkest Depths",
+  "plugin": "Tools of Kagrenac.esp (no other plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "A puzzle inside the Ayleid ruin of Oio-Lalor; it has no giver and comes up while you search the ruin.",
+  "needs": [
+   {
+    "what": "Be searching Oio-Lalor during Kagrenac's Tools",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "Oio-Lalor, The Labyrinthian",
+    "how": "Explore Oio-Lalor; a dead Synod scholar there carries Notes on Oio-Lalor."
+   }
+  ],
+  "firstStep": "Lower the western portcullis",
+  "takesYou": [
+   {
+    "place": "Oio-Lalor",
+    "hold": "Falkreath",
+    "why": "the Labyrinthian, the Depths and the Main Chamber"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Lower the western portcullis (0/2)",
+     "Lower the eastern portcullis (0/2)",
+     "Find the key to unlock the Main Chamber",
+     "Enter the Main Chamber",
+     "Defeat the Ayleid Lich"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Dead Synod Scholar",
+    "role": "body in Oio-Lalor, The Labyrinthian, with Notes on Oio-Lalor"
+   },
+   {
+    "name": "Ayleid Lich",
+    "role": "boss in Oio-Lalor, Main Chamber"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "What sets the first step (entering the Labyrinthian, reading the scholar's notes, or Kagrenac's Tools) isn't in these files."
+   },
+   {
+    "field": "needs",
+    "why": "The tie to Kagrenac's Tools comes from the shared ruin and lich; no condition is shown."
+   },
+   {
+    "field": "where",
+    "why": "The Key to Main Chamber lies in the Depths of Oio-Lalor. The door from Oio-Lalor into the Labyrinthian needs a key the records don't name."
+   },
+   {
+    "field": "rewards",
+    "why": "Oio-Lalor has a boss chest; nothing is given by the quest itself."
+   }
+  ],
+  "evidence": [
+   "QUST Tools of Kagrenac.esp:71C218 objectives 10-50",
+   "globals TOK_GLOB_PortcullisRightTotal 2, LeftTotal 2",
+   "alias Synod_Scholar 72B521, Synod_Scholar_Book BOOK 730623",
+   "door 2C15EE key 3AFA72 Key to Main Chamber placed in Depths of Oio-Lalor",
+   "door 29DD11 unnamed key",
+   "LCTN TOK_LCTN_OioLalor 21A11D"
+  ]
+ },
+ {
+  "edid": "TOK_QUST_SunderVault",
+  "name": "Vivec's Trial of Wisdom",
+  "plugin": "Tools of Kagrenac.esp (no other plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "The puzzle guarding Sunder inside Rkulftzul's sealed vault; it has no giver.",
+  "needs": [
+   {
+    "what": "The cursed key from Vonos Dreloth (Kagrenac's Tools)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "Rkulftzul, Sealed Vault, near Winterhold",
+    "how": "Enter Sunder's hiding place with the cursed key; a magical barrier blocks the way."
+   }
+  ],
+  "firstStep": "Find the three Stanzas of Kagrenac",
+  "takesYou": [
+   {
+    "place": "Rkulftzul, Sealed Vault",
+    "hold": "Winterhold",
+    "why": "find the stanzas, place them and drop the barrier around Sunder"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the three Stanzas of Kagrenac (0/3)",
+     "Place the Stanzas on the receptacles",
+     "Disable the magical barrier"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "What sets the first step (entering the vault, seeing the barrier) isn't in these files."
+   },
+   {
+    "field": "needs",
+    "why": "The cursed-key link comes from Kagrenac's Tools' journal; this quest shows no condition."
+   },
+   {
+    "field": "steps",
+    "why": "The quest tracks three Stanza ciphers and three copies of the 36 Lessons of Vivec (sermons 1, 13 and 29), which are likely the clues; how they are used isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Getting past the barrier likely gives you Sunder for Kagrenac's Tools; this quest records no reward."
+   }
+  ],
+  "evidence": [
+   "QUST Tools of Kagrenac.esp:24CBF6 objectives 10-30",
+   "global TOK_GLOB_StanzaTotal 3",
+   "aliases Stanza_Cipher_1..3, 36Lessons_01/13/29",
+   "LCTN TOK_LCTN_SunderVault 0519F6 (Winterhold)",
+   "QUST 21F221 stage 20 log"
+  ]
+ },
+ {
+  "edid": "EVGSirenrootQuest",
+  "name": "Deluge of Deceit",
+  "plugin": "evgSIRENROOT.esm (no other plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Riften fishery workers mention a Black-Briar diving job; Frissa Black-Briar at Elgrim's Elixirs hires you. You can also find the singing plant in the lake yourself.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Bolli, Nivenor or Valindor",
+    "where": "around the Riften Fishery and docks",
+    "how": "They mention the Black-Briars' notice for diving work at the bottom of Lake Honrich; then speak to Frissa Black-Briar at Elgrim's Elixirs."
+   },
+   {
+    "who": "",
+    "where": "the bottom of Lake Honrich, by Riften",
+    "how": "Swim down and find a plant that sings to you in front of a cave; it can't be uprooted, and an alchemist in Riften should know more (Wylandriah has a line for this)."
+   },
+   {
+    "who": "Frissa Black-Briar",
+    "where": "Elgrim's Elixirs, Riften",
+    "how": "Accept the job; she sends you to her diving team north of the Riften docks, by Merryfair Farm."
+   }
+  ],
+  "firstStep": "Accept the job from the Black-Briars at Elgrim's Elixirs",
+  "takesYou": [
+   {
+    "place": "Elgrim's Elixirs, Riften",
+    "hold": "The Rift",
+    "why": "take the job from Frissa Black-Briar, and report back at the end"
+   },
+   {
+    "place": "Lake Honrich shore north of the Riften docks, by Merryfair Farm",
+    "hold": "The Rift",
+    "why": "meet the diving team"
+   },
+   {
+    "place": "Honrich Lake Cave",
+    "hold": "The Rift",
+    "why": "the cave at the lowest point of Lake Honrich, behind the singing plant"
+   },
+   {
+    "place": "Honrich Atasel and the Ayleid ruins below the lake",
+    "hold": "The Rift",
+    "why": "trapped after the cave falls in; place the Varla stones to raise the water and find a way out"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Convince Cayrice to leave the ruins (optional)",
+    "leadsTo": "she can get out alive"
+   },
+   {
+    "choice": "Help Peletius leave (optional)",
+    "leadsTo": "he can get out alive"
+   },
+   {
+    "choice": "Convince Tilael to leave (optional)",
+    "leadsTo": "she can get out alive"
+   },
+   {
+    "choice": "Convince Yineel to leave (optional)",
+    "leadsTo": "he can get out alive; afterwards he is found with Frissa"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "start",
+    "objectives": [
+     "Accept the job from the Black-Briars",
+     "Find the plant in the lake",
+     "Meet with the diving team",
+     "Speak to Ingun's assistant to start the job",
+     "(Optional) Speak to all the members of the diving team (0/4)",
+     "(Optional) Give Yineel 1 Nordic Barnacle and 1 Histcarp"
+    ]
+   },
+   {
+    "branch": "the ruins",
+    "objectives": [
+     "Investigate the cave",
+     "Find a way out",
+     "Find the corresponding Varla Stone",
+     "(Optional) Find Cayrice's Documents",
+     "Find a way onto the bridge",
+     "Gather the team first",
+     "Accompany and loot with Peletius",
+     "Rest.",
+     "Speak to Yineel",
+     "Find Tilael",
+     "Solve the mirrored puzzle!",
+     "Wait for Tilael to solve the puzzle",
+     "(Optional) Speak to Peletius",
+     "(Optional) Convince Cayrice to Leave",
+     "(Optional) Help Peletius Leave",
+     "(Optional) Convince Tilael to Leave",
+     "Go with Tilael to her Soul Gem",
+     "(Optional) Convince Yineel to Leave"
+    ]
+   },
+   {
+    "branch": "end",
+    "objectives": [
+     "Escape!",
+     "Return to Frissa Black-Briar"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Payment from Frissa Black-Briar for the danger you were put in",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Siren's Coronet at a forge, from Coronet of the Deep and 5 Dead Sirenroot Flowers (add a black soul gem for the enchanted one), once you have passed the portal in the ruins"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Frissa Black-Briar",
+    "role": "hires you at Elgrim's Elixirs in Riften and pays you at the end"
+   },
+   {
+    "name": "Yineel",
+    "role": "Argonian, Ingun's assistant, leads the diving team; talk to him to start the dive"
+   },
+   {
+    "name": "Tilael",
+    "role": "diving team member; rests in the ruins' great hall and later leads you to her soul gem"
+   },
+   {
+    "name": "Peletius Flonel",
+    "role": "diving team member who wants to loot the ruins"
+   },
+   {
+    "name": "Cayrice Bentieve",
+    "role": "diving team member; her documents are an optional find"
+   },
+   {
+    "name": "Larelleis",
+    "role": "the Ayleid presence haunting the ruins"
+   },
+   {
+    "name": "Crilduin",
+    "role": "found in Honrich Welkeseli"
+   },
+   {
+    "name": "Morag Tong Assassin",
+    "role": "found in Honrich Morbalseli"
+   },
+   {
+    "name": "Bolli, Nivenor, Valindor",
+    "role": "Riften fishery workers who mention the job"
+   },
+   {
+    "name": "Wylandriah",
+    "role": "Riften's court wizard; has a line if you found the plant first"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "How much Frissa pays isn't in these files."
+   },
+   {
+    "field": "choices",
+    "why": "Each team member's fate hangs on whether you get them out; what happens to the ones left behind isn't spelled out in the journal."
+   },
+   {
+    "field": "people",
+    "why": "The journal calls the woman at the camp an 'Elven woman'; the records list Tilael as Imperial and Larelleis as Altmer, so which one greets you isn't certain. Larelleis as the ghost is a reading of the journal, not stated."
+   },
+   {
+    "field": "opens",
+    "why": "Where Coronet of the Deep comes from isn't in these files."
+   },
+   {
+    "field": "where",
+    "why": "Frissa is placed in Elgrim's Elixirs; after the quest she and Yineel move to a Riften interior the files don't name."
+   }
+  ],
+  "evidence": [
+   "QUST evgSIRENROOT.esm:026BC5 stages 1-150, objectives 1-140",
+   "startGame true",
+   "giver INFO evgSIRENROOT.esm:027BF5 (Bolli; also Nivenor, Valindor, Wylandriah)",
+   "NPC Frissa evgSIRENROOT.esm:0A25D4 Elgrim's Elixirs",
+   "door evgSIRENROOT.esm:0393B0 into Honrich Lake Cave",
+   "packages EVGSirenPostQuestFrissaSandbox / EVGSirenPostQuestYineelSandbox",
+   "COBJ EVGSirenCoronetRecipe / EVGSirenCoronetRecipeEnch"
+  ]
+ },
+ {
+  "edid": "aaaHOTRQuest",
+  "name": "Heart Of The Reach",
+  "plugin": "HeartOfTheReach.esp (no other plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Gwilym, a priest at the Silver-Blood Inn in Markarth, asks you to heal the 'Heart' in a Reach cave.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Gwilym",
+    "where": "the Silver-Blood Inn in Markarth",
+    "how": "Talk to Gwilym; he gives you a remedy recipe and sends you to Ever-Bog to heal the Heart."
+   }
+  ],
+  "firstStep": "Travel to Ever-Bog",
+  "takesYou": [
+   {
+    "place": "Ever-Bog Cave",
+    "hold": "The Reach",
+    "why": "gather the ingredients and cook the remedy or poison"
+   },
+   {
+    "place": "Ever-Bog Heart Chamber",
+    "hold": "The Reach",
+    "why": "use the remedy or poison on the Heart"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Make the remedy and heal the Heart",
+    "leadsTo": "report to Gwilym; he goes back to tend the Heart and can be found there about a day later"
+   },
+   {
+    "choice": "Confront Vinillian, take his poisonous root, and kill the Heart",
+    "leadsTo": "report to Vinillian; he pays you and sends you on your way"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "(Optional) Confront Vinillian",
+     "Travel to Ever-Bog",
+     "Collect Imbued Algae (0/1)",
+     "Collect Bog Beacon (0/10)",
+     "Collect Swamp Spider Eggs (0/5)",
+     "Collect Swamp Taproot (0/3)",
+     "Go to the heart"
+    ]
+   },
+   {
+    "branch": "heal",
+    "objectives": [
+     "Create remedy",
+     "Tell the priest you've healed the heart"
+    ]
+   },
+   {
+    "branch": "kill",
+    "objectives": [
+     "Create poison",
+     "Tell Vinillian you've killed the heart"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   },
+   {
+    "what": "Ring Of The Tree",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Killing the Heart with the poison shuts off the healing ending"
+  ],
+  "people": [
+   {
+    "name": "Gwilym",
+    "role": "Breton priest in the Silver-Blood Inn, Markarth; after the healing ending he lives in the Heart Chamber"
+   },
+   {
+    "name": "Vinillian",
+    "role": "Imperial in the Silver-Blood Inn who wants the Heart dead"
+   },
+   {
+    "name": "Hagraven Of The Glen",
+    "role": "found in Ever-Bog Bowels"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The quest script holds gold and the Ring Of The Tree; which ending gives which isn't stated, though the journal says Vinillian pays you."
+   },
+   {
+    "field": "takesYou",
+    "why": "The journal puts Ever-Bog in the Reach; the place index has no Ever-Bog entry, so its spot on the map isn't confirmed."
+   },
+   {
+    "field": "steps",
+    "why": "The journal says a cooking station in the cave is where you make the remedy or poison."
+   }
+  ],
+  "evidence": [
+   "QUST HeartOfTheReach.esp:0B9E71 stages 10-110, objectives 5-61",
+   "aliases Priest = Gwilym 0C9186, Vinillian 0CE2B4, both in Silver-Blood Inn Skyrim.esm:016DFE",
+   "fragment QF_aaaHOTRQuest_040B9E71 props Gold001, aaaHOTRRing (ARMO 0BEF78)",
+   "Gwilym packages aaaHOTRSandboxInCave / aaaHOTRSpellCast after the healing ending",
+   "doors into Ever-Bog Cave 005900 and Ever-Bog Heart Chamber 09B37A"
+  ]
+ },
+ {
+  "edid": "ksws04ArtifactQuest",
+  "name": "The item",
+  "plugin": "ksws04_quest.esp (no other plugin edits the quest)",
+  "canDo": "radiant",
+  "canDoWhy": "Nirenoore tells you about an artifact and the dungeon it lies in; the journal title becomes the artifact's name.",
+  "needs": [
+   {
+    "what": "Have met Nirenoore in The Welkynar Knight",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Nirenoore",
+    "where": "The Bannered Mare in Whiterun, once The Welkynar Knight is under way",
+    "how": "Talk to Nirenoore; she tells you where to find an artifact."
+   }
+  ],
+  "firstStep": "Retrieve the artifact from the dungeon Nirenoore names",
+  "takesYou": [
+   {
+    "place": "the dungeon Nirenoore names",
+    "hold": "",
+    "why": "retrieve the artifact"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve the artifact."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The artifact itself",
+    "when": "when you pick it up"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Nirenoore",
+    "role": "the Welkynar knight from The Welkynar Knight; tells you where the artifact is"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "Nirenoore is at the Bannered Mare once The Welkynar Knight has begun; whether her line needs the whole quest done, or a story event when you enter a new place, isn't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The artifact and the dungeon are picked when the quest starts; which ones are possible isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest can also fail with 'I couldn't find it'; what makes it fail isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST ksws04_quest.esp:000B86 stages 200, 300, 9000; aliases item, dungeon, chest",
+   "giver INFO ksws04_quest.esp:000B6E (Nirenoore)",
+   "start node ksws04LibraryQuestNode (change location)",
+   "NPC Nirenoore ksws04_quest.esp:000800 package ksws04WaifuDefaultPackage at The Bannered Mare after ksws04MainQuest starts"
+  ]
+ }
+]
