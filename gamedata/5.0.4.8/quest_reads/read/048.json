@@ -1,0 +1,1215 @@
+[
+ {
+  "edid": "MS14",
+  "name": "Laid to Rest",
+  "plugin": "Skyrim.esm (last edited by TheChoiceIsYours.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Hear about the house fire in Morthal, or go straight to the Jarl of Morthal in Highmoon Hall, who hires you to look into it.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Idgrod Ravencrone (Jarl of Morthal)",
+    "where": "Highmoon Hall in Morthal",
+    "how": "Talk to the Jarl about the fire that killed Hroggar's wife and child; she asks you to investigate the burned house."
+   },
+   {
+    "who": "Sorli the Builder (if she is Jarl of Morthal)",
+    "where": "Highmoon Hall in Morthal if she holds the Jarl's seat; otherwise she lives in Sorli's House in Stonehills",
+    "how": "If the Stormcloaks hold Hjaalmarch she is the Jarl, and you take the job from her instead."
+   }
+  ],
+  "firstStep": "Talk to the Jarl of Morthal",
+  "takesYou": [
+   {
+    "place": "Highmoon Hall, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "get the job from the Jarl, show her Alva's journal, report back at the end"
+   },
+   {
+    "place": "Hroggar's burned house, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "investigate the fire; come back after dark to find Helgi's ghost"
+   },
+   {
+    "place": "Alva's House, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "search the house and find Alva's journal; the door is locked (Adept), and Alva and Hroggar carry the key"
+   },
+   {
+    "place": "Movarth's Lair",
+    "hold": "Hjaalmarch",
+    "why": "kill the master vampire, Movarth Piquine; the cave is next to Morthal"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Tell the Jarl about Helgi's ghost (optional)",
+    "leadsTo": "An optional report to the Jarl partway through; the main trail goes on either way"
+   },
+   {
+    "choice": "Go to Movarth's Lair alone or with the townsfolk",
+    "leadsTo": "The Jarl gathers fighters who wait outside Movarth's Lair for you to lead them in; some say they will march whether you come or not"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to the Jarl of Morthal",
+     "Investigate the burned house",
+     "(Optional) Tell the Jarl about Helgi",
+     "Find Helgi after dark",
+     "Ask around about Laelette",
+     "Ask Thonnir about Laelette",
+     "Investigate Alva's house",
+     "Show Alva's Journal to the Jarl",
+     "Kill the master vampire",
+     "Return to Morthal's Jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold from the Jarl",
+    "when": "from the Jarl; the records don't say at which step"
+   },
+   {
+    "what": "A small leveled quest reward",
+    "when": "during the quest; the records don't say at which step"
+   },
+   {
+    "what": "A medium leveled quest reward",
+    "when": "probably at the end, from the Jarl"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Alva, a vampire, is your target; once you show the journal she moves to Movarth's Lair",
+   "Movarth Piquine, the master vampire, dies"
+  ],
+  "people": [
+   {
+    "name": "Idgrod Ravencrone",
+    "role": "Jarl of Morthal (Imperial side); gives the job; Highmoon Hall"
+   },
+   {
+    "name": "Sorli the Builder",
+    "role": "Jarl of Morthal if the Stormcloaks hold Hjaalmarch; otherwise at Sorli's House in Stonehills"
+   },
+   {
+    "name": "Hroggar",
+    "role": "the widower; lives in Alva's House and works at the lumber camp by day"
+   },
+   {
+    "name": "Alva",
+    "role": "the vampire behind the fire; sleeps by day in Alva's House and goes out in the evening and at night"
+   },
+   {
+    "name": "Helgi's Ghost",
+    "role": "Hroggar's dead daughter; appears in Morthal after dark"
+   },
+   {
+    "name": "Laelette the Vampire",
+    "role": "Thonnir's missing wife, turned vampire"
+   },
+   {
+    "name": "Thonnir",
+    "role": "Laelette's husband; works at the Morthal lumber camp by day, home at night (Thonnir's House)"
+   },
+   {
+    "name": "Movarth Piquine",
+    "role": "the master vampire; boss of Movarth's Lair"
+   },
+   {
+    "name": "Lami, Benor, Jorgen, Lurbuk",
+    "role": "townsfolk you can ask about Laelette"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The opening journal entry suggests you hear about the fire from someone in Morthal before seeing the Jarl, but the extracts don't show who says it (the quest has an innkeeper role, which suggests the Moorside Inn)."
+   },
+   {
+    "field": "where",
+    "why": "Sorli's packages only cover Stonehills and Solitude's Blue Palace; nothing in these files says where she stands when she is Jarl of Morthal."
+   },
+   {
+    "field": "plugin",
+    "why": "TheChoiceIsYours.esp is the last plugin to edit this quest, but the extracts don't show what it changes (it may let you refuse or put off the job)."
+   },
+   {
+    "field": "takesYou",
+    "why": "Places data puts the Movarth's Lair boss, Movarth Piquine, at level 140 in this list. That is very high, so check before going in."
+   },
+   {
+    "field": "rewards",
+    "why": "The script has gold and two leveled reward lists, but how much gold and when each is given aren't in the extracts."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:025F3E MS14, editedBy USSEP, TheChoiceIsYours.esp",
+   "giver Sorli 013606 (alias JarlRebel) stage<11 INFO 070E7A; others Idgrod 0135EB <11, Helgi's Ghost 0274A5 <31, Hroggar 0135F0 <40",
+   "stage 20 log 'The Jarl might pay me', objective 20 Talk to the Jarl",
+   "rewards MS14.Gold, QF_MS14_00025F3E.FirstReward LvlQuestReward01Small, .Reward LvlQuestReward02Medium",
+   "Alva packages AlvaSleep6x14, AlvaCarouse21x6, USKPAlvaSandboxMovarthsLair (stage>=95)",
+   "Thonnir MorthalThonnirWorkLumberCamp8x10, Sleep23x8; Hroggar MorthalHroggarWorkLumberCamp9x8",
+   "INFO 02DD28/016AD4 'gather together some able-bodied warriors', 02F1EE, 04C15D",
+   "places Movarth's Lair: Hjaalmarch, next to Morthal, boss Movarth Piquine level 140",
+   "door 0177B8 Alva's House Adept, key carried by Hroggar, Alva"
+  ]
+ },
+ {
+  "edid": "NN01",
+  "name": "A Return To Your Roots",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "No one gives it. It starts when you pick crimson nirnroot or find Sinderion's remains in Blackreach.",
+  "needs": [
+   {
+    "what": "Reach Blackreach",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "no one (crimson nirnroot)",
+    "where": "Blackreach",
+    "how": "Picking crimson nirnroot starts it: 'I've discovered an unusual ingredient called crimson nirnroot.'"
+   },
+   {
+    "who": "Sinderion (remains)",
+    "where": "Sinderion's Field Laboratory in Blackreach",
+    "how": "Finding his remains and journal starts it: he was searching Blackreach for crimson nirnroot."
+   }
+  ],
+  "firstStep": "Discover the significance of Crimson Nirnroot",
+  "takesYou": [
+   {
+    "place": "Blackreach",
+    "hold": "Winterhold",
+    "why": "pick 30 crimson nirnroot"
+   },
+   {
+    "place": "Sinderion's Field Laboratory",
+    "hold": "Winterhold",
+    "why": "find Sinderion's remains and his journal"
+   },
+   {
+    "place": "Sarethi Farm",
+    "hold": "",
+    "why": "give the nirnroot to Avrusa Sarethi, Sinderion's former student"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Discover the significance of Crimson Nirnroot",
+     "Collect Crimson Nirnroot in Blackreach (30)",
+     "Bring 30 Crimson Nirnroot to Avrusa Sarethi"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Sinderion's Serendipity (spell)",
+    "when": "from the quest script; most likely when you hand the nirnroot to Avrusa"
+   },
+   {
+    "what": "The Nirnroot Missive (book)",
+    "when": "from the quest script; the records don't say at which step"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Avrusa Sarethi",
+    "role": "Sinderion's former student; farms at Sarethi Farm and takes the nirnroot"
+   },
+   {
+    "name": "Sinderion",
+    "role": "dead alchemist from Skingrad; his remains are in his field laboratory in Blackreach"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Sarethi Farm isn't in the places index, so its hold isn't given here. These files also don't say how you get into Blackreach."
+   },
+   {
+    "field": "rewards",
+    "why": "The script names both rewards but not when each is handed over."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0C9BA0 NN01, editedBy USSEP",
+   "stages 15/20 logs (crimson nirnroot / Sinderion's remains), 200 completes with Avrusa",
+   "global nn01total = 30",
+   "aliases NN01AvrusaAlias (Sarethi Farm), NN01SinderionCorpseAlias (Sinderion's Field Laboratory, Blackreach)",
+   "rewards QF_NIRN01_000C9BA0.pNN01Spell Skyrim.esm:10BF09, .pNN01SinderionsTome Skyrim.esm:10BEDF",
+   "Avrusa packages SarethiFarmAvrusaFarmingPackage etc.",
+   "places Blackreach hold Winterhold"
+  ]
+ },
+ {
+  "edid": "T01",
+  "name": "The Heart of Dibella",
+  "plugin": "Skyrim.esm (last edited by The Heart Of Dibella - Quest Expansion.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "A letter from Mother Hamal asks you to visit the Temple of Dibella in Markarth. Separately, Kleppr's gossip at the Silver-Blood Inn leads to a statue theft for Degaine.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Mother Hamal (by letter)",
+    "where": "Temple of Dibella, Markarth",
+    "how": "You receive a 'Letter from Mother Hamal' inviting you to the temple. There are two versions, one addressed to the 'Thane of the Reach' and one to a 'Friend of the Reach'."
+   },
+   {
+    "who": "Senna",
+    "where": "Temple of Dibella, Markarth",
+    "how": "At the temple Senna tells you to wait for Mother Hamal, then you talk to Hamal."
+   },
+   {
+    "who": "Kleppr (or Frabbi)",
+    "where": "Silver-Blood Inn, Markarth",
+    "how": "Kleppr gossips that 'Degaine the beggar got himself kicked out of the Temple of Dibella.' This leads to the theft branch."
+   }
+  ],
+  "firstStep": "Visit the Temple of Dibella",
+  "takesYou": [
+   {
+    "place": "Temple of Dibella, Markarth",
+    "hold": "The Reach",
+    "why": "meet Senna and Mother Hamal; bring Fjotra back; pray at Dibella's altar"
+   },
+   {
+    "place": "Karthwasten",
+    "hold": "The Reach",
+    "why": "the vision points to Karthwasten as home of the next Sybil"
+   },
+   {
+    "place": "Broken Tower Redoubt",
+    "hold": "The Reach",
+    "why": "rescue Fjotra from the Forsworn; a fort next to Karthwasten"
+   },
+   {
+    "place": "The Warrens, Markarth",
+    "hold": "The Reach",
+    "why": "theft branch: give the stolen statue to Degaine"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Help the priestesses find the next Sybil",
+    "leadsTo": "Rescue Fjotra, bring her to the temple, pray at the altar and get Dibella's blessing"
+   },
+   {
+    "choice": "Refuse to help the priestesses",
+    "leadsTo": "The quest fails: 'I want no part of it.'"
+   },
+   {
+    "choice": "Steal a statue of Dibella for Degaine",
+    "leadsTo": "A separate ending: you sell the statue to the beggar Degaine"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "the Sybil",
+    "objectives": [
+     "Visit the Temple of Dibella",
+     "Wait for Mother Hamal",
+     "Talk to Mother Hamal",
+     "Find the future Sybil of Dibella",
+     "Rescue Fjotra from the Forsworn",
+     "Bring Fjotra to the Temple",
+     "Pray at Dibella's Altar"
+    ]
+   },
+   {
+    "branch": "the statue",
+    "objectives": [
+     "Enter the Temple of Dibella",
+     "Steal statue of Dibella",
+     "Give the statue to Degaine"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Agent of Dibella (perk, with an Agent of Dibella ability)",
+    "when": "at the end of the Sybil branch, when you pray at the altar"
+   }
+  ],
+  "type": "",
+  "opens": [],
+  "closes": [
+   "Refusing the priestesses fails the quest"
+  ],
+  "people": [
+   {
+    "name": "Hamal",
+    "role": "Mother Hamal, high priestess; Temple of Dibella (sleeps in the Inner Sanctum)"
+   },
+   {
+    "name": "Senna",
+    "role": "priestess at the Temple of Dibella"
+   },
+   {
+    "name": "Fjotra",
+    "role": "the next Sybil, held by the Forsworn"
+   },
+   {
+    "name": "Enmon",
+    "role": "lives in Enmon's House, Karthwasten; tied to Fjotra's home village"
+   },
+   {
+    "name": "Degaine",
+    "role": "beggar in the Warrens, Markarth; buys the stolen statue"
+   },
+   {
+    "name": "Kleppr",
+    "role": "innkeeper, always at the Silver-Blood Inn; passes on the Degaine gossip"
+   },
+   {
+    "name": "Anwen, Orla",
+    "role": "priestesses at the temple"
+   },
+   {
+    "name": "Madanach",
+    "role": "Forsworn leader in Cidhna Mine; the Quest Expansion adds him to this quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The two letter versions suggest you need to be Thane of the Reach or have done good deeds there, but the extracts don't show what triggers the letter or how it arrives."
+   },
+   {
+    "field": "choices",
+    "why": "The Quest Expansion adds an 'alternative location' setting and a Madanach role. It also has Hamal say men aren't allowed into the Inner Sanctum. The extracts don't show when either applies."
+   },
+   {
+    "field": "plugin",
+    "why": "USSEP blocks Kleppr's gossip line once the separate Degaine favor has started. That favor is a different quest."
+   },
+   {
+    "field": "type",
+    "why": "The quest record has no type set."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:023B6C T01, editedBy USSEP, The Heart Of Dibella - Quest Expansion.esp",
+   "stage 55 log 'received a letter', 56 Senna, 57 Hamal, 60 Karthwasten, 70 Forsworn, 80 Fjotra, 100 pray, 200 complete, 205 statue complete, 210 fail",
+   "BOOK The Heart Of Dibella - Quest Expansion.esp:000817 / :000839 Letter from Mother Hamal",
+   "giver Kleppr 0133A3 <10 INFO 0C593E (+T01DegaineFavor 0D45F4 stage10 not done); Frabbi <10; Senna <55; Hamal <57",
+   "INFO The Heart Of Dibella - Quest Expansion.esp:000821 men not allowed; :000808 Karthwasten",
+   "globals T01_QE_PlayerChoice, T01_QE_AlternativeLocation; alias Madanach added",
+   "rewards QF_T01_00023B6C.DibellaPerk 0727FB, .PerkAbility 10A766",
+   "places Broken Tower Redoubt: The Reach, next to Karthwasten"
+  ]
+ },
+ {
+  "edid": "T03",
+  "name": "The Blessings of Nature",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Danica Pure-Spring at the Temple of Kynareth in Whiterun asks you to help heal the Gildergreen. The talk at the Bannered Mare points you to her.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Danica Pure-Spring",
+    "where": "Temple of Kynareth, Whiterun",
+    "how": "Talk to her about the Gildergreen; she asks you to fetch Nettlebane."
+   },
+   {
+    "who": "Hulda or Mikael",
+    "where": "The Bannered Mare, Whiterun",
+    "how": "Hulda says people want Danica to do something about the tree. This points you to inspect the temple."
+   }
+  ],
+  "firstStep": "Inspect the Temple of Kynareth",
+  "takesYou": [
+   {
+    "place": "Temple of Kynareth, Whiterun",
+    "hold": "Whiterun",
+    "why": "Danica and the Gildergreen"
+   },
+   {
+    "place": "Orphan Rock",
+    "hold": "Falkreath",
+    "why": "take Nettlebane from the hagraven nest; near Helgen, boss level 45"
+   },
+   {
+    "place": "Eldergleam Sanctuary",
+    "hold": "Eastmarch",
+    "why": "get sap from the Eldergleam, or take a sapling; next to Darkwater Crossing"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Cut sap from the Eldergleam with Nettlebane",
+    "leadsTo": "'I helped Danica Pure-Spring repair the Gildergreen.'"
+   },
+   {
+    "choice": "Follow Maurice and take a sapling instead",
+    "leadsTo": "'I brought a sapling to Whiterun that will one day be the new Gildergreen.'"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Inspect the Temple of Kynareth",
+     "Retrieve Nettlebane",
+     "Bring Nettlebane to Danica",
+     "Retrieve Eldergleam sap",
+     "Return to Danica"
+    ]
+   },
+   {
+    "branch": "sapling",
+    "objectives": [
+     "Follow Maurice",
+     "Take sapling",
+     "Return to Danica"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Danica Pure-Spring",
+    "role": "priestess of Kynareth; in the temple by day, sometimes at the Whiterun market in the afternoon"
+   },
+   {
+    "name": "Maurice Jondrelle",
+    "role": "pilgrim who offers the sapling; stays in Eldergleam Sanctuary afterwards"
+   },
+   {
+    "name": "Hulda",
+    "role": "Bannered Mare innkeeper; mentions the tree"
+   },
+   {
+    "name": "Mikael",
+    "role": "bard at the Bannered Mare; also mentions it"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "No reward items, gold or perks are listed for this quest in the extracts. Whether you keep Nettlebane isn't shown."
+   },
+   {
+    "field": "people",
+    "why": "Maurice is placed in the Temple of Kynareth, but the extracts don't say where you meet him."
+   },
+   {
+    "field": "type",
+    "why": "The quest record has no type set."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01C48E T03, no other editors",
+   "giver Danica 013BA5 <10 INFO 01C48B; Hulda 013BA3 <20, Mikael 01A670 <20, Maurice 01C605 <40",
+   "INFO 06A3D4 Hulda, 0D76A7 Danica 'Orphan Rock'",
+   "stages 100 / 105 both complete (sap vs sapling)",
+   "Maurice package T03MauriceStayInEldergleam; Danica WhiterunDanicaMarketplace15x4, WhiterunDanicaTemplePackage",
+   "places Orphan Rock Falkreath near Helgen boss lvl 45; Eldergleam Sanctuary Eastmarch near Darkwater Crossing"
+  ]
+ },
+ {
+  "edid": "t02",
+  "name": "The Book of Love",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Modders Patch.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Dinya Balu at the Temple of Mara in Riften asks you to spread Mara's love around Skyrim.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Dinya Balu",
+    "where": "Temple of Mara, Riften",
+    "how": "Talk to her and agree to help the temple. She sends you first to Fastred in Ivarstead."
+   }
+  ],
+  "firstStep": "Talk to Fastred",
+  "takesYou": [
+   {
+    "place": "Fellstar Farm, Ivarstead",
+    "hold": "The Rift",
+    "why": "Fastred and her parents, Jofthor and Boti"
+   },
+   {
+    "place": "Klimmek's House, Ivarstead",
+    "hold": "The Rift",
+    "why": "Fastred's suitors, Bassianus Axius and Klimmek"
+   },
+   {
+    "place": "Understone Keep, Markarth",
+    "hold": "The Reach",
+    "why": "Calcelmo, and Faleen whom he loves"
+   },
+   {
+    "place": "The Treasury House, Markarth",
+    "hold": "The Reach",
+    "why": "Yngvar the Singer writes a love poem for a fee"
+   },
+   {
+    "place": "wherever the long-dead lovers are",
+    "hold": "",
+    "why": "put on the Amulet of Mara, talk to the ghost, find Fenrig and bring him to Ruki"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Match Fastred with Bassianus or with Klimmek",
+    "leadsTo": "Who Fastred ends up with"
+   },
+   {
+    "choice": "Pay Yngvar for a poem for Calcelmo to give Faleen",
+    "leadsTo": "Deliver the poem, then carry Faleen's letter back"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Fastred",
+     "Talk to Fastred's parents",
+     "Talk to Bassianus or Klimmek",
+     "Return to Dinya Balu",
+     "Talk to Calcelmo",
+     "Get advice from Yngvar",
+     "Deliver poem",
+     "Deliver Faleen's letter",
+     "Return to Dinya Balu",
+     "Put on the Amulet of Mara",
+     "Talk to the long-dead lover",
+     "Find Fenrig",
+     "Bring Fenrig to Ruki",
+     "Return to Dinya Balu"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Agent of Mara (perk)",
+    "when": "at the end, from Dinya Balu"
+   },
+   {
+    "what": "Amulet of Mara",
+    "when": "you're given it to wear for the ghost lovers; the records don't say if you keep it"
+   }
+  ],
+  "type": "",
+  "opens": [
+   "The Book of Love - Fastred's Choice (an alternative for Fastred, from TT_FastredsAwakening.esp)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Dinya Balu",
+    "role": "priestess of Mara; in the Temple of Mara except around noon to 3 pm, when she may be at the Riften market"
+   },
+   {
+    "name": "Fastred",
+    "role": "young woman at Fellstar Farm, Ivarstead"
+   },
+   {
+    "name": "Jofthor and Boti",
+    "role": "Fastred's parents, Fellstar Farm"
+   },
+   {
+    "name": "Bassianus Axius and Klimmek",
+    "role": "Fastred's two suitors, Klimmek's House"
+   },
+   {
+    "name": "Calcelmo",
+    "role": "court wizard in Understone Keep, Markarth"
+   },
+   {
+    "name": "Faleen",
+    "role": "Jarl's housecarl in Understone Keep; Calcelmo loves her"
+   },
+   {
+    "name": "Yngvar the Singer",
+    "role": "writes the poem for gold; Treasury House, Markarth"
+   },
+   {
+    "name": "Fenrig and Ruki",
+    "role": "the long-dead lovers"
+   },
+   {
+    "name": "Maramal",
+    "role": "priest at the Temple of Mara"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Fenrig and Ruki are placed in the open world with no named cell, so where the ghosts are isn't in these files."
+   },
+   {
+    "field": "choices",
+    "why": "Yngvar's poem costs gold, but the amount isn't in the extracts."
+   },
+   {
+    "field": "plugin",
+    "why": "Andrealphus Scene Tweaks.esp blocks one of this quest's dialogue lines entirely. The extracts don't say which."
+   },
+   {
+    "field": "type",
+    "why": "The quest record has no type set."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0211D5 t02, editedBy USSEP, USMP",
+   "giver Dinya 013352 <10 INFO 026EBA; Fastred <11; Bassianus/Klimmek <26",
+   "rewards QF_T02_000211D5.MaraPerk 0CC799, alias MonumentAmulet 0C891B, T02QuestScript.YngvarPoemCostItem (a cost)",
+   "INFO 0D0697 Yngvar 'if you've got some gold'",
+   "TT_FastredsAwakening.esp adds GetQuestRunning(TTFA_JourneyQuest)==0 to INFO 03510E; Andrealphus adds GetLevel==-1 to INFO 04EEEB",
+   "Dinya packages RiftenDinyaMarket12x3 etc.",
+   "Fenrig 038287 / Ruki 038289 in Skyrim.esm:000D74 (persistent cell)"
+  ]
+ },
+ {
+  "edid": "TTFA_JourneyQuest",
+  "name": "The Book of Love - Fastred's Choice",
+  "plugin": "TT_FastredsAwakening.esp",
+  "canDo": "talk",
+  "canDoWhy": "During The Book of Love, offer Fastred at Fellstar Farm a third way: travel Skyrim with you instead of settling with either suitor.",
+  "needs": [
+   {
+    "what": "Be at Fastred's part of The Book of Love",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Fastred",
+    "where": "Fellstar Farm, Ivarstead",
+    "how": "While she is torn between Bassianus and Klimmek, suggest she come travelling with you instead."
+   }
+  ],
+  "firstStep": "Suggest an alternative to Fastred",
+  "takesYou": [
+   {
+    "place": "Fellstar Farm, Ivarstead",
+    "hold": "The Rift",
+    "why": "convince her parents; later she tells them her choice"
+   },
+   {
+    "place": "on the road across Skyrim",
+    "hold": "",
+    "why": "travel with Fastred and talk with her along the way"
+   },
+   {
+    "place": "Klimmek's House, Ivarstead",
+    "hold": "The Rift",
+    "why": "she breaks the news to Bassianus and Klimmek"
+   },
+   {
+    "place": "Temple of Mara, Riften",
+    "hold": "The Rift",
+    "why": "return to Dinya Balu"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Return Fastred's feelings, or turn her down",
+    "leadsTo": "Either way you head back to Ivarstead. If you turn her down, things are strained between you."
+   },
+   {
+    "choice": "Fastred leaves Ivarstead for good",
+    "leadsTo": "She tells her parents and both suitors. Bassianus leaves for Riften alone and Klimmek stays. Then Dinya Balu gives Mara's blessing."
+   },
+   {
+    "choice": "Fastred stays in Ivarstead",
+    "leadsTo": "The journey ends. You then help her settle things with Bassianus and Klimmek by speaking to one of them."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Suggest an alternative to Fastred",
+     "Convince Fastred's parents",
+     "Travel with Fastred",
+     "Talk to Fastred",
+     "Return to Ivarstead",
+     "Speak with Fastred about her future"
+    ]
+   },
+   {
+    "branch": "she leaves",
+    "objectives": [
+     "Accompany Fastred while she tells her parents",
+     "Accompany Fastred while she tells Bassianus and Klimmek",
+     "Return to Dinya Balu"
+    ]
+   },
+   {
+    "branch": "she stays",
+    "objectives": [
+     "Talk to one of Fastred's suitors"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Fastred travels with you",
+    "when": "once her parents agree"
+   },
+   {
+    "what": "Mara's blessing from Dinya Balu",
+    "when": "at the end, if Fastred leaves Ivarstead"
+   }
+  ],
+  "type": "",
+  "opens": [],
+  "closes": [
+   "While this runs, one line of The Book of Love's dialogue is switched off",
+   "If Fastred leaves for good, Bassianus goes to Riften alone and Klimmek stays in Ivarstead"
+  ],
+  "people": [
+   {
+    "name": "Fastred",
+    "role": "Fellstar Farm, Ivarstead; your travelling companion"
+   },
+   {
+    "name": "Jofthor",
+    "role": "her father; asks you to keep her safe"
+   },
+   {
+    "name": "Boti",
+    "role": "her mother; supports her choice"
+   },
+   {
+    "name": "Bassianus Axius",
+    "role": "suitor"
+   },
+   {
+    "name": "Klimmek",
+    "role": "suitor"
+   },
+   {
+    "name": "Dinya Balu",
+    "role": "Temple of Mara, Riften; ends the quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "Fastred's opening line has no condition text in the extracts, so the exact point in The Book of Love when she offers it isn't confirmed."
+   },
+   {
+    "field": "rewards",
+    "why": "What 'Mara's blessing' gives (a spell, perk or item) isn't in the extracts. Whether Fastred stays as a permanent follower isn't stated either."
+   },
+   {
+    "field": "type",
+    "why": "The quest record has no type set."
+   }
+  ],
+  "evidence": [
+   "QUST TT_FastredsAwakening.esp:000009, mod 170043",
+   "giver Fastred 0136BF <1 INFO TT_FastredsAwakening.esp:00000D; Dinya <86",
+   "stages 0, 10, 15, 50 (two logs), 55, 75, 80, 85, 90 complete (two logs), 200 complete (stays), 300 complete",
+   "INFO TT_FastredsAwakening.esp:000017, :00009F, :0000A5, :0000A7",
+   "TT_FastredsAwakening.esp adds GetQuestRunning==0 to t02 INFO 03510E"
+  ]
+ },
+ {
+  "edid": "VC01",
+  "name": "Seeking A Cure",
+  "plugin": "Skyrim.esm (last edited by RADQO_COTN_Patch.esp; reworked by RisingAtDawnQuestOverhaul.esp; also Dawnguard.esm, Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "For a vampire: ask Urag gro-Shub in the Arcanaeum about a cure, read 'Undeath Undone', and the note in it leads you to Falion in Morthal.",
+  "needs": [
+   {
+    "what": "Be a vampire",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Urag gro-Shub",
+    "where": "the Arcanaeum, College of Winterhold",
+    "how": "Reading 'Undeath Undone' drops out a note to Urag from Falion. Urag then points you to Falion."
+   },
+   {
+    "who": "Falion",
+    "where": "Falion's House, Morthal (his shop from 8 am to 8 pm)",
+    "how": "Falion is rumoured to have studied vampires. Talk to him about a cure."
+   }
+  ],
+  "firstStep": "Speak to Urag",
+  "takesYou": [
+   {
+    "place": "The Arcanaeum, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "Urag and the book 'Undeath Undone'"
+   },
+   {
+    "place": "Falion's House, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "Falion; the door is locked (Adept)"
+   },
+   {
+    "place": "the ritual site where you meet Falion at dawn",
+    "hold": "Hjaalmarch",
+    "why": "stand in the circle while Falion performs the ritual"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Bring your own filled black soul gem, or ask about Falion's",
+    "leadsTo": "Falion says he has one from his research of the Oblivion realms but it is precious"
+   },
+   {
+    "choice": "Kill Falion after the ritual",
+    "leadsTo": "'As a precaution, I had to kill Falion - he knew too much.'"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Urag",
+     "Speak to Falion",
+     "Wait three days while Falion gets ready",
+     "Speak to Falion",
+     "Bring a filled Black Soul Gem to Falion",
+     "Meet Falion at dawn",
+     "Speak to Falion",
+     "Stand in the center of the circle",
+     "Enact the ritual with Falion",
+     "Speak to Falion",
+     "Kill Falion (optional ending)"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "A Forlorn Hope (Forlorn Hope.esp), which starts with a letter from Falion"
+  ],
+  "closes": [
+   "Both endings say the ritual fails, so this quest doesn't cure you",
+   "Falion dies if you choose to kill him"
+  ],
+  "people": [
+   {
+    "name": "Urag gro-Shub",
+    "role": "librarian; always in the Arcanaeum except at night (sleeps in the Hall of Countenance)"
+   },
+   {
+    "name": "Falion",
+    "role": "wizard of Morthal; runs his shop 8 am to 8 pm, naps around 1 pm, sleeps midnight to 8 am"
+   },
+   {
+    "name": "Agni",
+    "role": "Falion's ward, Falion's House"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Rising at Dawn rewrites the opening, and several of Falion's lines now wait for an early hidden stage. The extracts don't show what sets that stage, or where 'Undeath Undone' sits."
+   },
+   {
+    "field": "needs",
+    "why": "The journal assumes you are a vampire and warns against being Blood-Starved. The vampirism check itself isn't readable in the extracts."
+   },
+   {
+    "field": "takesYou",
+    "why": "The journal says to meet Falion 'at the Black Marsh at dawn', but the objective is just 'Meet Falion at dawn'. The ritual site's name isn't in the extracts."
+   },
+   {
+    "field": "rewards",
+    "why": "The script lists Vampire Lord Form (a Dawnguard spell), probably so it can be taken away. It isn't a reward. Both endings say the ritual fails."
+   },
+   {
+    "field": "opens",
+    "why": "Linking this to A Forlorn Hope comes from that mod's name and Falion's letter. The extracts don't show what sends the letter, or whether killing Falion blocks it."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:05C625 VC01, editedBy Dawnguard.esm, USSEP, RisingAtDawnQuestOverhaul.esp, RADQO_COTN_Patch.esp",
+   "stage 7 log 'Undeath Undone', note to Urag; 50 rumour Falion; 65 wait three days; 100 black soul gem; 150 'Black Marsh at dawn'; 200/201 complete, ritual failed",
+   "giver Falion 0135E9 <4 INFO 05C61F (RADQO: now stage == 3); Urag 01C193 <5",
+   "RADQO aliases BookUndeath RisingAtDawnQuestOverhaul.esp:011DB2, NoteInBook :011DB4; BOOK :011DB3 Note to Urag",
+   "INFO 05C9FE Falion 'I have one ... precious item'",
+   "reward candidate QF_VC01_0005C625.DLC1VampireChange Dawnguard.esm:00283B",
+   "Falion packages MorthalFalionRunStore8x12, Nap13x3, Sleep0x8"
+  ]
+ },
+ {
+  "edid": "OK_FH_Quest",
+  "name": "A Forlorn Hope",
+  "plugin": "Forlorn Hope.esp",
+  "canDo": "by itself",
+  "canDoWhy": "A letter from Falion arrives with a way to make 'daedric essence' for a real vampirism cure.",
+  "needs": [
+   {
+    "what": "Seeking A Cure, ending with the failed ritual",
+    "kind": "quest"
+   },
+   {
+    "what": "Be a vampire",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Falion (by letter)",
+    "where": "",
+    "how": "You receive 'A Letter From Falion'. It says to find a book in the College of Winterhold library or the Bards College, make daedric essence, and take it to Phinis Gestor."
+   }
+  ],
+  "firstStep": "Find a way to create daedric essence",
+  "takesYou": [
+   {
+    "place": "the Arcanaeum (College of Winterhold) or the Bards College",
+    "hold": "Winterhold / Haafingar",
+    "why": "find the book the letter mentions"
+   },
+   {
+    "place": "The Aetherium Forge",
+    "hold": "The Rift",
+    "why": "the journal says you must find the Aetherium Forge first to make the essence"
+   },
+   {
+    "place": "College of Winterhold",
+    "hold": "Winterhold",
+    "why": "bring the essence to Phinis Gestor"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Drink the potion you made",
+    "leadsTo": "The quest ends asking 'Should I drink it?'"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find a way to create daedric essence.",
+     "Bring the essence to Phinis Gestor",
+     "Wait till Phinis contacts me",
+     "Create a potion to remove vampirism"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "A potion to remove vampirism (you make it)",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Falion",
+    "role": "writes the letter; Falion's House, Morthal"
+   },
+   {
+    "name": "Phinis Gestor",
+    "role": "conjuration master; in the Arcanaeum from about noon to 10 pm, otherwise his room in the Hall of Countenance"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "Nothing in the extracts shows what sends Falion's letter. The tie to Seeking A Cure comes from the mod's name and the letter's author."
+   },
+   {
+    "field": "takesYou",
+    "why": "Using the Aetherium Forge may require the Dawnguard quest that opens it (Lost to the Ages), but that requirement isn't in these records."
+   },
+   {
+    "field": "starts",
+    "why": "How the letter arrives (courier or otherwise) isn't in the extracts."
+   }
+  ],
+  "evidence": [
+   "QUST Forlorn Hope.esp:000802, mod 107939",
+   "stage 20 log 'letter from Falion ... daedric essence ... Aetherium Forge'; 30 Phinis; 60 results; 70 complete 'I have created a potion'",
+   "BOOK Forlorn Hope.esp:000805 A Letter From Falion",
+   "aliases Falion (Falion's House), Phinis (Hall of Countenance), Letter01, Letter02",
+   "Phinis packages WCollegePhinisSandboxArcanaeum12x10, WCollegePhinisSleep0x7",
+   "places The Aetherium Forge: The Rift, quest Lost to the Ages"
+  ]
+ },
+ {
+  "edid": "FreeformMorthalA",
+  "name": "Falion's Secret",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Follow Falion out of Morthal in the small hours to a stone circle in the marsh, then confront him there.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Falion",
+    "where": "a circle of stones in the marsh near Morthal (he goes there around 1 am)",
+    "how": "Follow him to the stones and talk to him. You can blackmail him for your silence, or let him be."
+   }
+  ],
+  "firstStep": "Inform the Jarl of Morthal about Falion's activities",
+  "takesYou": [
+   {
+    "place": "the stone circle in the marsh near Morthal",
+    "hold": "Hjaalmarch",
+    "why": "catch Falion at work"
+   },
+   {
+    "place": "Highmoon Hall, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "tell the Jarl, if you choose"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Leave Falion to his work",
+    "leadsTo": "The quest ends there."
+   },
+   {
+    "choice": "Blackmail Falion, then keep quiet",
+    "leadsTo": "You can still go to the Jarl later."
+   },
+   {
+    "choice": "Tell the Jarl",
+    "leadsTo": "The Jarl orders Falion to stop, and he reluctantly agrees."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Inform the Jarl of Morthal about Falion's activities"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Falion",
+    "role": "Morthal's wizard; goes to the summoning circle around 1 am for about 4 hours"
+   },
+   {
+    "name": "Idgrod Ravencrone",
+    "role": "Jarl of Morthal (Imperial side), Highmoon Hall"
+   },
+   {
+    "name": "Sorli the Builder",
+    "role": "Jarl of Morthal if the Stormcloaks hold Hjaalmarch"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The journal says you blackmail him, but no gold or item is in the extracts."
+   },
+   {
+    "field": "starts",
+    "why": "Falion only uses the circle while Seeking A Cure isn't in its middle stretch. Fists of Fury also blocks two of these lines during its Hjaalmarch fight. Neither is likely to matter."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:021891, type Misc, editedBy USSEP",
+   "stage 5 log 'followed Falion out to a circle of stones in the marsh... blackmailed him'; 10 complete leave him; 20 informed jarl; 30 Falion agreed",
+   "giver Falion 0135E9 <5 INFO 021889; Idgrod <20, Sorli <20",
+   "Falion package MorthalFalionSummoningCircle1x4 (conditions on VC01 stage)",
+   "Fists of Fury - Skyrim.esp adds conditions to INFO 02188A, 02188B"
+  ]
+ },
+ {
+  "edid": "dunDarklightQST",
+  "name": "Repentance",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Go into Darklight Tower, southwest of Riften. Illia comes up to you inside and asks for help.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Illia",
+    "where": "inside Darklight Tower, southwest of Riften",
+    "how": "Entering the tower starts it. Illia, a witch who turned against her mother's ritual, walks up and asks you to help her reach the top."
+   }
+  ],
+  "firstStep": "Help Illia reach the top of Darklight Tower",
+  "takesYou": [
+   {
+    "place": "Darklight Tower (and Darklight Chambers)",
+    "hold": "The Rift",
+    "why": "climb with Illia and fight her mother at the top; enemies match your level, 24 to 81"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Help Illia reach the top of Darklight Tower",
+     "Defeat Illia's mother at the top of Darklight Tower"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Illia's mother's staff",
+    "when": "at the end; Illia tells you to take it"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Illia's mother dies"
+  ],
+  "people": [
+   {
+    "name": "Illia",
+    "role": "witch who rebels against her mother; leads you up the tower, then moves to the Bee and Barb in Riften"
+   },
+   {
+    "name": "Silvia",
+    "role": "named in the quest; likely Illia's mother at the top of the tower"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "people",
+    "why": "The boss is filled by a hagraven role and a leveled witch role, plus Silvia. The records don't say which is 'her mother'."
+   },
+   {
+    "field": "rewards",
+    "why": "The staff's name isn't in the extracts. Staff of Hag's Wrath exists in the items list, but nothing ties it to this quest."
+   },
+   {
+    "field": "choices",
+    "why": "There is a second, silent completion. After it, 'Illia leaves darklight tower.esp' sends her to the Bee and Barb, and FDE Illia.esp has her follower lines. The extracts don't show whether you can take her as a follower."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:03FA89, editedBy USSEP",
+   "start events change location (dunDarklightNode, darklightNode)",
+   "Illia packages dunDarklightIlliaForceGreet (stage 0), escort runs, dunDarklightIlliaQuestEndSandbox Bee and Barb (stage>=50, Illia leaves darklight tower.esp)",
+   "stage 40 complete 'take her mother's staff'; 50 complete no log",
+   "aliases Silvia 04B0AE, BossHag EncHagraven, BossWitch LvlWitchAny",
+   "places Darklight Tower: The Rift, 0.5 km from Riften, boss matches your level 24 to 81; INFO 0DA65E 'southwest of the city'"
+  ]
+ }
+]

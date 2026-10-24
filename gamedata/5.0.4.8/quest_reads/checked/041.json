@@ -1,0 +1,1720 @@
+{
+  "checks": [
+    {
+      "edid": "000FCQuest01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Cassia's line runs before the quest starts; a courier letter (stage 10) or finding the ruins yourself (stage 15) also start it; \"talk\" fits"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "the forgotten-city start line lists no dialogue or event conditions"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "giver INFO ForgottenCity.esp:0388AE is Cassia, before stage 1"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Cassia is placed in the Forgotten Ruins (cell ForgottenCity.esp:000D62); \"the Reach\" is the journal's wording (stage 20); the exterior cell is unnamed, kept in unsure"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "stage 10 courier letter, stage 15 found on your own; package 000FCTreasureHunterWaitandGreet while stage <= 20"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objectives 10 and 20"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "journal stages 20, 100/110, 200, 300, 350/375, 2020; Lakehouse leads into Forget-me-not (its stage 400)"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "stages 250, 2000-2020, 3000/3100, 4000-4050; objectives 1000, 1010, 2050; only 4050 completes"
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "the reader left the reward unnamed. Item ForgottenCity.esp:0A0DCE \"Treasure Hunter's Talisman\" (edid 000FCCassiaAmulet01) is the only item tied to Cassia; named as probable, with an unsure note that no script hands it over"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Forget-me-not starts on the far side of the Lakehouse door (its stage 400); Altrius's greeting package needs Forget-me-not completed"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "nothing is locked; Cassia entering the city (stage 4050) is the ending, not a loss"
+        }
+      }
+    },
+    {
+      "edid": "000FCQuest02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "no giver; stage 400 begins after passing through the Lakehouse (The Forgotten City stage 375)"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The Forgotten City stage 375: you must pass through the Lakehouse door"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objectives 400 and 550"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "objectives 575, 600, 605, 720, 755, 835, 940, 1100, 5000"
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "\"the best ending of The Forgotten City\" is a judgment the records don't make. The Forgotten City stage 4000/4050 shows the Arbiter ending is the one that completes that quest; reworded to say that"
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "the item records hold four Immaculate Dwarven pieces (ForgottenCity.esp:069003-069006); the radiation immunity needs the complete set, so a player must know about the Boots and Gauntlets too; their source isn't shown, put in unsure"
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "\"the endings of The Forgotten City\" isn't a quest; what follows is The Forgotten City's back-in-the-present steps (its stage 2000, Altrius package needs this quest completed); reworded"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "stage 5200 fails the quest"
+        }
+      }
+    },
+    {
+      "edid": "GRVEDestroyRealm01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "stage 10 is set by touching Richter's light; no giver"
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "left empty, but the light is inside Gravewind, which you only reach through In the Pines and Lost in the Woods (start line door into Cemetery Homestead; Richter's Flame FalkreathShades.esp:30F477 placed in The Way Home). Added as a need with an unsure note on how far into Lost in the Woods you must be"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "stage 10 journal and objective 10"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "stage 10: escape the falling realm"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "stage 10 journal"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Death Strider FalkreathShades.esp:6EC138 via QF_GRVEDestroyRealm01_054DCCF9.RewardPerk; kept with the reader's unsure note (not in the spell, power or item files)"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "nothing follows in the records"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "stage 40: the house is gone, Gravewind is no more"
+        }
+      }
+    },
+    {
+      "edid": "GRVEMainQuest01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "start line gravewind: startGame true; stage 10 is the discovery"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "door FalkreathShades.esp:024020 into Cemetery Homestead: key LoreRim Gravewind Start Tweak.esp:000001, carried by Vighar (Dark Ancestor alias, Bloodlet Throne)"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 10"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Bloodlet Throne boss \"leveled 55-125\" (place Skyrim.esm:016F85); Cemetery Homestead stage 20"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "none in the records"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "no reward property or item in the records"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "stage 30 completes on escaping into the strange landscape; Lost in the Woods stage 10 picks up there"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "nothing locked"
+        }
+      }
+    },
+    {
+      "edid": "GRVEMainQuest02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "no giver; stage 10 follows In the Pines stage 30"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "In the Pines stage 30 completes on escaping the house; this quest's stage 10 starts there"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 10"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "journal stages 10, 30, 35, 40; Richter placed in The Undercity, Sentinel in Gravewind Temple, Wraithmother in The Way Home"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "none in the records"
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "the reader said Lifesurge isn't in the records; it is a power in powers_raw (FalkreathShades.esp:3C0A9A, 'Once a day, use scarlet lightning to completely restore health'). Added its effect; the rest stays journal-only, in unsure"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "kept: Lost to Oblivion needs Gravewind; added an unsure note that no start link is shown"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "stage 50: Herrah consumed by the void"
+        }
+      }
+    },
+    {
+      "edid": "DLC2RR01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "stage 30/40 journal: you stumble on the fight at the Attius Farm"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "only being on Solstheim; no conditions shown on the start line"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "giver INFO Dragonborn.esm:01B90A is Captain Veleth, before stage 41"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "aliases DLC2RR01AmbushCellAlias / AttiusFarmCellAlias; journal stage 30"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "objectives 10, 20, 30; stage 50"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 10"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "journal stages 50, 80 (Fort Frostmoth \"southeast of Raven Rock\"), 120; Carius level 43, carries the Fort Frostmoth Key"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "objectives 60/70 versus 80-110; one completing stage, 200"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "stage 200: \"awarded me a bounty in gold\"; no gold property in the records, so no amount"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "kept with the reader's unsure note: Served Cold opens with Veleth (before its stage 6) and Adril's \"after everything you've already done for Raven Rock\" (INFO Dragonborn.esm:0295E4)"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "stage 90/100: Carius slain"
+        }
+      }
+    },
+    {
+      "edid": "DLC2RR02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "giver INFO Dragonborn.esm:0295DA, Captain Veleth, before stage 6; stage 10 journal"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "kept with the reader's unsure note; only Adril's line points to March of the Dead"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Veleth (before stage 6), then Adril (before stage 11)"
+        },
+        "starts.where": {
+          "verdict": "fix",
+          "note": "Veleth's times were incomplete: the market package runs 10 am to 2 pm (MarketPackage10x4) and he sleeps midnight to 6 am in The Bulwark Barracks (SleepPackage0x6). Adril's times agree with his packages; added an unsure note on his first, conditional package"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "stages 10, 15 (refuse, return later), 20"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 5"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "journal stages 20, 30, 60, 80/85, objectives 90/100; Ashfallow Citadel near Skaal Village, boss Morag Tong Assassin level 35"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "stage 15 journal"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "no reward property or item in the records; the reader's unsure note about Severin Manor Has A Price.esp editing Morvayn's thank-you line (INFO Dragonborn.esm:02926B) stands"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "nothing in the records"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "stage 90: Vendil Ulen killed"
+        },
+        "people": {
+          "verdict": "fix",
+          "note": "stage 70 says \"his supposed wife Tilisu and his daughter Mirri\": \"supposed\" belongs to Tilisu, not Mirri; corrected both roles"
+        }
+      }
+    },
+    {
+      "edid": "DLC2RR03Intro",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "giver INFO Dragonborn.esm:020A12, Glover, before stage 15"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "no conditions shown"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Glover Mallory"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "packages Vendor8x12 (unnamed spot), Netch20x4, EatBreakfast6x2 in his house; placed in Glover Mallory's House"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "INFO Dragonborn.esm:020A04 \"The one Crescius \\\"borrowed\\\"\""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 10"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Crescius is the second speaker (before stage 20), placed in Caerellius House; objective 20 returns it to Glover"
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "\"a separate ending to the quest\" isn't shown: only stage 200 completes the quest and objective 30 has no outcome text. Reworded to say what the lie leads to isn't in the records"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "FavorRewardGoldLarge (Skyrim.esm:04A41B) via pFavorRewardGoldSmall; gold, amount not shown"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "kept with the reader's unsure note; the record name (DLC2RR03Intro) and Crescius link it to The Final Descent"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "nothing locked"
+        }
+      }
+    },
+    {
+      "edid": "DLC2RR03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "giver INFO Dragonborn.esm:0209F4, Crescius, before stage 11; Aphia before stage 20"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "no conditions shown"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Crescius Caerellius, or Aphia Velothi"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "stage 15 journal (inside Raven Rock Mine); packages CresciusMinePackage (global 018B10 == 1), Sleep23x8, EatDinner20x3, EatBreakfast6x1 in Caerellius House"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "stage 20 journal"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 5"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Gratian placed in Raven Rock Mine; stages 30, 50"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "none in the records"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "FavorRewardGoldLarge via pFavorRewardGoldSmall; Bloodskal Blade alias DLC2RR03BloodskalBladeAlias, item Dragonborn.esm:01AEA4 (text matches); kept with unsure"
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "the Bloodskal Blade Replica recipe is right (Dragonborn.esm:018B15 stage >= 200, Ebony Smithing, 2 Silver Ingots, 3 Leather Strips, 4 Heart Stones). \"The Final Descent Priest\" isn't shown to follow this quest; it shares its location and Seeker and reads as a side objective during it. Moved to unsure"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "nothing locked"
+        },
+        "people": {
+          "verdict": "agree",
+          "note": "\"the barrow was his tomb\" is backed by the book Note from Storn (Destroy the Acolyte Priests.esp:000801): \"Zahkriisos the Bloody was sealed away within Bloodskal Barrow\""
+        }
+      }
+    },
+    {
+      "edid": "DLC2RR03Priest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "no giver; one objective; no stage marked as completing"
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "kept with the reader's unsure note; it shares The Final Descent's location alias and Seeker"
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "none; it starts by itself, so an empty list is right"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "objective 10"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "objective 10"
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "none"
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "no reward property in the records"
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "nothing"
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "nothing"
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "000FCQuest01",
+      "name": "The Forgotten City",
+      "plugin": "ForgottenCity.esp (no other plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "A courier brings you Cassia's letter, or you find the ruins yourself; either way you meet Cassia in the Forgotten Ruins and she asks for help.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Cassia",
+          "where": "inside the Forgotten Ruins, hidden Dwarven ruins in the Reach",
+          "how": "A courier hands you a letter, Cassia's Plea; read it and travel to the ruins in the Reach. If you find the ruins first on your own, the quest starts there instead. Cassia waits near the entrance and greets you; listen to her request."
+        }
+      ],
+      "firstStep": "Read Cassia's Plea, then meet Cassia in the Forgotten Ruins",
+      "takesYou": [
+        {
+          "place": "Forgotten Ruins",
+          "hold": "the Reach",
+          "why": "meet Cassia, who asks you to find her brother Altrius"
+        },
+        {
+          "place": "The Forgotten City",
+          "hold": "the Reach (underground)",
+          "why": "take a leap of faith into the city, explore it and find a way out"
+        },
+        {
+          "place": "Citadel balcony",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "optional: get the Lakehouse key from Altrius's ghost"
+        },
+        {
+          "place": "the Lakehouse",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "the door out of the city; going through it sends you into Forget-me-not"
+        },
+        {
+          "place": "Citadel bathroom",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "smash the cracked wall and escape the city with Altrius"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Find the old man who hanged himself and read his suicide note",
+          "leadsTo": "optional clue; the journal notes he is too old to be Cassia's brother"
+        },
+        {
+          "choice": "Drink the Elixir of Acrobatics",
+          "leadsTo": "optional; you can then confront Deglund about the elixir not working"
+        },
+        {
+          "choice": "Come back to the present after Forget-me-not and find Altrius alive",
+          "leadsTo": "Altrius suggests smashing the cracked wall in the Citadel bathroom; you escort him out of the city and finish your business with Cassia"
+        },
+        {
+          "choice": "Convince the Arbiter to wind back the Dwarves' Law",
+          "leadsTo": "you return to your own time having stopped the events that sent you back; you bring Altrius to Cassia, she rewards you and enters the city. This is the ending that marks the quest complete in the records"
+        },
+        {
+          "choice": "Show the Arbiter his own helmet as proof of your deeds",
+          "leadsTo": "optional objective: travel back in time and show the Arbiter's helmet to him"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "start",
+          "objectives": [
+            "Read Cassia's Plea.",
+            "Meet Cassia in the forgotten ruins.",
+            "Listen to Cassia's request.",
+            "Enter the Forgotten City.",
+            "Explore the Forgotten City for a way out."
+          ]
+        },
+        {
+          "branch": "optional, in the city",
+          "objectives": [
+            "(Optional) Read the old man's suicide note.",
+            "(Optional) Retrive the Lakehouse key from Altrius's ghost on the Citadel balcony.",
+            "(Optional) Enter the Lakehouse.",
+            "(Optional) Drink the Elixir of Acrobatics.",
+            "(Optional) Confront Deglund about the ineffective Elixir."
+          ]
+        },
+        {
+          "branch": "back in the present, Altrius alive",
+          "objectives": [
+            "Talk to Altrius.",
+            "Smash the cracked wall in the bathroom.",
+            "Escape the city through the bathroom."
+          ]
+        },
+        {
+          "branch": "the Arbiter ending",
+          "objectives": [
+            "(Optional) Travel back in time and show the Arbiter's helmet to him as proof of your deeds."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "probably the Treasure Hunter's Talisman (amulet: 50% greater chance of finding special treasure), from Cassia",
+          "when": "at the end, after you bring Altrius to her"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Forget-me-not"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Cassia",
+          "role": "the treasure hunter who wrote to you; waits in the Forgotten Ruins"
+        },
+        {
+          "name": "Altrius",
+          "role": "Cassia's younger brother; his ghost guards the Lakehouse key, and he can be found alive after the time travel"
+        },
+        {
+          "name": "Deglund",
+          "role": "made the Elixir of Acrobatics"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "what makes the courier arrive (a level, a place, a time) isn't in these files; the line lists no start conditions"
+        },
+        {
+          "field": "where",
+          "why": "the ruins' entrance is a door from an exterior cell the places file doesn't name; 'the Reach' comes from the journal text"
+        },
+        {
+          "field": "choices",
+          "why": "the 'escort Altrius out' ending finishes Cassia's business in the journal but is not flagged as completing the quest; only the Arbiter ending is"
+        },
+        {
+          "field": "steps",
+          "why": "the line's data carries an average Speech check value; which conversation uses it isn't shown"
+        },
+        {
+          "field": "rewards",
+          "why": "the journal says Cassia rewards you. The only item tied to her is the Treasure Hunter's Talisman, whose record name marks it as Cassia's amulet; no script property or stage hands it over in these files, so it isn't confirmed. The only item the quest script itself names is her letter."
+        },
+        {
+          "field": "rewards",
+          "why": "Cassia's 'rewards the player' greeting also runs in the escort-Altrius-out ending, so she probably rewards you there too; only the Arbiter ending marks the quest complete"
+        }
+      ],
+      "evidence": [
+        "QUST ForgottenCity.esp:012BB9 stages 10,15,20,30,100,200,250,300,350,375,2000-2050,3000,3100,4000-4050",
+        "giver INFO ForgottenCity.esp:0388AE (Cassia, before stage 1)",
+        "Cassia package 000FCTreasureHunterWaitandGreet (stage<=20)",
+        "Altrius package 000FCAltriusTalkativeForceGreet (in Citadel, stage 2000, Forget-me-not completed)",
+        "door ForgottenCity.esp:034783 from Skyrim.esm:007665 into Forgotten Ruins",
+        "global SpeechAverage 50 on line forgotten-city",
+        "reward Cassia's Plea ForgottenCity.esp:036D8C via QF_000FCQuest01_01012BB9.Note",
+        "item ForgottenCity.esp:0A0DCE Treasure Hunter's Talisman (000FCCassiaAmulet01)",
+        "Cassia package 000FCCassiaRewardsPlayerForcegreet (stage 2030, 2040 or 4050)"
+      ]
+    },
+    {
+      "edid": "000FCQuest02",
+      "name": "Forget-me-not",
+      "plugin": "ForgottenCity.esp (no other plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Starts when Metellus's portal at the Lakehouse throws you 20 years into the past during The Forgotten City.",
+      "needs": [
+        {
+          "what": "Reach the Lakehouse in The Forgotten City and go through",
+          "kind": "quest"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Find a way back to your original timeline: follow your guide to Jarl Metellus",
+      "takesYou": [
+        {
+          "place": "Citadel, top floor",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "talk to Jarl Metellus, who asks you to find who will destroy the city"
+        },
+        {
+          "place": "the residents' homes",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "talk to each resident and look for clues"
+        },
+        {
+          "place": "Underground Tunnels",
+          "hold": "the Reach (beneath the Forgotten City)",
+          "why": "find Habiq's ring, the human remains and necklace, the Immaculate Helmet, or lure a suspect to be killed"
+        },
+        {
+          "place": "the abandoned Palace",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "optional: find a way in for Brol's proof of the Dwarves' Law"
+        },
+        {
+          "place": "city entrance gate",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "stop the looters coming down the shaft"
+        },
+        {
+          "place": "the Lakehouse",
+          "hold": "the Reach (the Forgotten City)",
+          "why": "follow Metellus to use his portal again"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Refuse the Jarl's request",
+          "leadsTo": "you can talk to him again later if you change your mind"
+        },
+        {
+          "choice": "Accept and name a suspect: Domitus, Gulvar, Vernon, Ulrin, Marius, Rykas or Deglund",
+          "leadsTo": "Metellus asks you to lure your suspect to the underground tunnels and kill them"
+        },
+        {
+          "choice": "Accuse Metellus himself, or admit you are the threat",
+          "leadsTo": "separate optional objectives for each"
+        },
+        {
+          "choice": "Refuse Metellus's request to kill your suspect",
+          "leadsTo": "you must get back to your own time without his help"
+        },
+        {
+          "choice": "Follow Metellus to the Lakehouse",
+          "leadsTo": "he sacrifices himself to open a portal back in time; going through it starts the loop again"
+        },
+        {
+          "choice": "Metellus dies before he can make his portal",
+          "leadsTo": "the paradox returns you to your original timeline"
+        },
+        {
+          "choice": "Win the Arbiter over",
+          "leadsTo": "the Arbiter returns you to your own time; this is the ending that completes The Forgotten City"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find a way back to your original timeline.",
+            "Follow your guide to Jarl Metellus.",
+            "Talk to Jarl Metellus on the top floor of the Citadel.",
+            "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+            "Go through the city entrance gate to stop the looters coming down the shaft.",
+            "Follow Metellus to the Lakehouse to use his portal again."
+          ]
+        },
+        {
+          "branch": "Ulrin and Maisi",
+          "objectives": [
+            "(Optional) Ask Ulrin about the disappearance of his wife.",
+            "(Optional) Search Ulrin's home for clues to the whereabouts of his wife.",
+            "(Optional) Find out what happened to Ulrin's wife, Maisi.",
+            "(Optional) Find a way into the locked room in the Citadel.",
+            "(Optional) Free Maisi.",
+            "(Optional) Inform Ulrin of Maisi's whereabouts.",
+            "(Optional) Identify the human remains in the underground tunnels.",
+            "(Optional) Show Ulrin the necklace from the underground tunnels."
+          ]
+        },
+        {
+          "branch": "Quintus, Brol and the Dwarves' Law",
+          "objectives": [
+            "(Optional) Find \"Quintus\" and investigate whether he is a threat.",
+            "(Optional) Talk to Brol the Scholar to find out more about the city.",
+            "(Optional) Find a way into the abandoned Palace.",
+            "(Optional) Show the book to Brol as proof that the Dwarves' Law is real."
+          ]
+        },
+        {
+          "branch": "Immaculate Dwarven armor and radiation",
+          "objectives": [
+            "(Optional) Talk to an expert about the Immaculate Dwarven armor.",
+            "(Optional) Find a way to protect yourself from the radiation.",
+            "(Optional) Obtain the Immaculate Dwarven armor from Rykas.",
+            "(Optional) Show the Immaculate Dwarven Armor to Gaia.",
+            "(Optional) Obtain the Immaculate Helmet from the tunnels."
+          ]
+        },
+        {
+          "branch": "Vernon and Rykas",
+          "objectives": [
+            "(Optional) Talk to Vernon about the threatening note.",
+            "(Optional) Find out who is threatening Vernon.",
+            "(Optional) Confront Rykas about his threats to Vernon.",
+            "(Optional) Tell Vernon that Rykas is writing him threatening notes."
+          ]
+        },
+        {
+          "branch": "Habiq, Dooley, Dwemora",
+          "objectives": [
+            "(Optional) Talk to Habiq about his missing ring.",
+            "(Optional) Access the tunnels beneath the city to find Habiq's ring.",
+            "(Optional) Return Habiq's ring.",
+            "(Optional) Read Dooley's letter.",
+            "(Optional) Return Dooley's letter and tell him what it says.",
+            "(Optional) Search for Dooley's hidden fortune.",
+            "(Optional) Obtain some Skooma as a favour for Dwemora.",
+            "(Optional) Bring some Skooma to Asanshi."
+          ]
+        },
+        {
+          "branch": "naming the threat",
+          "objectives": [
+            "(Optional) Inform Metellus that Domitus is the threat.",
+            "(Optional) Inform Metellus that Gulvar is the threat.",
+            "(Optional) Inform Metellus that Vernon is the threat.",
+            "(Optional) Accuse Metellus of being the threat.",
+            "(Optional) Inform Metellus that Ulrin is the threat.",
+            "(Optional) Inform Metellus that Marius is the threat.",
+            "(Optional) Inform Metellus that Rykas is the threat.",
+            "(Optional) Inform Metellus that Deglund is the threat.",
+            "(Optional) Admit Metellus that you are the threat.",
+            "(Optional) Lure your suspect to the underground tunnels and kill them."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Immaculate Dwarven Armor set: Armor, Helmet, Boots and Gauntlets (heavy armor; makes you immune to radiation only when all are worn together)",
+          "when": "optional: the armor from Rykas, the helmet from the underground tunnels"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "The Forgotten City's last steps, back in the present"
+      ],
+      "closes": [
+        "One ending fails this quest: Metellus kills himself to make his portal and you are left with no way back except through it again"
+      ],
+      "people": [
+        {
+          "name": "Jarl Metellus",
+          "role": "rules the city; on the top floor of the Citadel"
+        },
+        {
+          "name": "Ulrin",
+          "role": "his wife Maisi is missing; Ulrin's House"
+        },
+        {
+          "name": "Gulvar",
+          "role": "resident and suspect; Gulvar's House"
+        },
+        {
+          "name": "Rykas",
+          "role": "has the Immaculate Dwarven armor and writes threats to Vernon; Rykas' House"
+        },
+        {
+          "name": "Vernon",
+          "role": "receives threatening notes"
+        },
+        {
+          "name": "Deglund",
+          "role": "suspect; Deglund's House"
+        },
+        {
+          "name": "Domitus",
+          "role": "suspect; the Citadel"
+        },
+        {
+          "name": "Marius",
+          "role": "suspect; the Citadel"
+        },
+        {
+          "name": "Gaia",
+          "role": "expert on the Immaculate Dwarven armor; the Citadel"
+        },
+        {
+          "name": "Brol the Scholar",
+          "role": "knows the city's history and the Dwarves' Law"
+        },
+        {
+          "name": "Habiq",
+          "role": "lost a ring in the tunnels"
+        },
+        {
+          "name": "Dooley",
+          "role": "has a letter and a hidden fortune"
+        },
+        {
+          "name": "Dwemora",
+          "role": "wants Skooma brought to Asanshi"
+        },
+        {
+          "name": "Asanshi",
+          "role": "receives the Skooma"
+        },
+        {
+          "name": "Looters",
+          "role": "come down the shaft at the city entrance"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the armor pieces are named in the objectives and exist in the item records, but how each is handed over isn't decoded; the quest script's own items are a radiation poisoning effect, a pickaxe and Cassia's letter, which are tools of the story rather than rewards"
+        },
+        {
+          "field": "rewards",
+          "why": "the Arbiter's Helmet exists in the records (cheaper Shock spells, resist elemental damage) and is mentioned by The Forgotten City's last objective; where you get it isn't shown"
+        },
+        {
+          "field": "people",
+          "why": "residents' places are where the records put them; their daily schedules aren't decoded"
+        },
+        {
+          "field": "rewards",
+          "why": "the Boots and Gauntlets are part of the same set in the item records, but no objective says where they are found"
+        },
+        {
+          "field": "closes",
+          "why": "no stage of this quest is marked as completing it; only Metellus's suicide fails it. The Forgotten City's Altrius scene checks that this quest is completed, so something outside these records finishes it"
+        }
+      ],
+      "evidence": [
+        "QUST ForgottenCity.esp:05965B stages 400,550,575,595,600,1500,5000,5200 (fails),5500,6000",
+        "objectives 600-1100",
+        "items ForgottenCity.esp:069003-069006 Immaculate Dwarven set, 0A23DE The Arbiter's Helmet",
+        "script QF__0105965B: Radiation ForgottenCity.esp:0862A4, Pickaxe Skyrim.esm:0E3C16, Note 036D8C",
+        "items ForgottenCity.esp:069003 Boots, 069005 Gauntlets (\"immune from radiation when worn as a complete set\")"
+      ]
+    },
+    {
+      "edid": "GRVEDestroyRealm01",
+      "name": "Lost to Oblivion",
+      "plugin": "FalkreathShades.esp (Gravewind; no other plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Starts when you touch a light Richter left behind in Gravewind; the realm starts falling and you have to get out.",
+      "needs": [
+        {
+          "what": "Get into Gravewind through In the Pines; Richter's light is probably in The Way Home, the last stretch of Lost in the Woods",
+          "kind": "quest"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Touch the light Richter left in Gravewind, then escape before it's too late",
+      "takesYou": [
+        {
+          "place": "Gravewind",
+          "hold": "Gravewind (another realm, reached from Falkreath)",
+          "why": "escape as the realm falls into the abyss"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Touch Richter's light",
+          "leadsTo": "Gravewind falls and the souls enthralled there are freed; the Falkreath house vanishes for good"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Escape before it's too late."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Death Strider",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Gravewind and the house in the Falkreath woods are gone for good"
+      ],
+      "people": [
+        {
+          "name": "Richter",
+          "role": "left the light that brings Gravewind down"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "where the light is isn't shown; an actor named Richter's Flame is placed in The Way Home, in Gravewind Depths, which may be it"
+        },
+        {
+          "field": "rewards",
+          "why": "Death Strider is given through a script property named for a perk; its effect isn't in the spell or power files"
+        },
+        {
+          "field": "needs",
+          "why": "Gravewind is only reached through the Cemetery Homestead (In the Pines, then Lost in the Woods); the records don't say whether Lost in the Woods must be finished first, or only reached as far as The Way Home where Richter's Flame stands"
+        }
+      ],
+      "evidence": [
+        "QUST FalkreathShades.esp:4DCCF9 stages 10,40 (completes)",
+        "reward FalkreathShades.esp:6EC138 via QF_GRVEDestroyRealm01_054DCCF9.RewardPerk",
+        "NPC FalkreathShades.esp:30F477 Richter's Flame in The Way Home"
+      ]
+    },
+    {
+      "edid": "GRVEMainQuest01",
+      "name": "In the Pines",
+      "plugin": "FalkreathShades.esp (Gravewind; no other plugin edits it, but LoreRim Gravewind Start Tweak.esp locks the way in)",
+      "canDo": "by itself",
+      "canDoWhy": "Starts when you find an abandoned homestead among graves and strange flowers in the Falkreath woods. In LoreRim its front door needs a key taken from the vampire Vighar.",
+      "needs": [
+        {
+          "what": "Cemetery Homestead Key, carried by the vampire Vighar in Bloodlet Throne",
+          "kind": "item"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Explore the strange homestead in the woods of Falkreath",
+      "takesYou": [
+        {
+          "place": "Bloodlet Throne",
+          "hold": "Falkreath",
+          "why": "kill Vighar for the Cemetery Homestead Key (vampire lair; its boss is leveled 55 to 125)"
+        },
+        {
+          "place": "Cemetery Homestead",
+          "hold": "Falkreath",
+          "why": "explore the house; the door locks behind you and the basement is a dead end, so find the key to get out"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Explore the strange homestead.",
+            "Find a way out."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [
+        "Lost in the Woods"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Vighar",
+          "role": "vampire in Bloodlet Throne who carries the Cemetery Homestead Key (the target of Dark Ancestor)"
+        },
+        {
+          "name": "Dengeir of Stuhn",
+          "role": "gives Dark Ancestor, the quest to kill Vighar; lives in Dengeir's House in Falkreath"
+        },
+        {
+          "name": "Enthralled Gravekeeper",
+          "role": "found in the Cemetery Homestead"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "LoreRim Gravewind Start Tweak puts a key lock on the homestead's front door and edits the Dark Ancestor quest whose alias holds Vighar; whether Vighar is there without Dark Ancestor running isn't shown"
+        },
+        {
+          "field": "where",
+          "why": "the homestead's door is hidden until another object is enabled; what enables it isn't in these files"
+        },
+        {
+          "field": "where",
+          "why": "the homestead's exterior cell has no name in the places file; 'the woods of Falkreath' is the journal's wording"
+        }
+      ],
+      "evidence": [
+        "QUST FalkreathShades.esp:4CD9DA stages 10,20,30 (completes); runs from game start",
+        "door FalkreathShades.esp:024020 from Skyrim.esm:009C02 into Cemetery Homestead: key LoreRim Gravewind Start Tweak.esp:000001; enable parent FalkreathShades.esp:4DCD13",
+        "QUST Skyrim.esm:0D6986 Dark Ancestor alias Vighar, edited by LoreRim Gravewind Start Tweak.esp",
+        "QUST Skyrim.esm:0B83C3 alias Dengeir",
+        "place Skyrim.esm:016F85 Bloodlet Throne"
+      ]
+    },
+    {
+      "edid": "GRVEMainQuest02",
+      "name": "Lost in the Woods",
+      "plugin": "FalkreathShades.esp (Gravewind; no other plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Starts when you unlock the homestead door and step out into a landscape that isn't Falkreath.",
+      "needs": [
+        {
+          "what": "Finish In the Pines",
+          "kind": "quest"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Find a way home",
+      "takesYou": [
+        {
+          "place": "Gravewind (the land outside the house)",
+          "hold": "Gravewind (another realm)",
+          "why": "find a way home"
+        },
+        {
+          "place": "a pit of bones and tar",
+          "hold": "Gravewind (another realm)",
+          "why": "escape it to reach the underground city"
+        },
+        {
+          "place": "The Undercity",
+          "hold": "Gravewind Depths",
+          "why": "catch up with the author of the notes (Richter), who is trying to burn the place down"
+        },
+        {
+          "place": "the building opposite the Temple",
+          "hold": "Gravewind Depths",
+          "why": "close the barrier in front of the Temple, as Richter's note says"
+        },
+        {
+          "place": "Gravewind Temple",
+          "hold": "Gravewind Depths",
+          "why": "defeat the Gravewind Sentinel"
+        },
+        {
+          "place": "The Way Home",
+          "hold": "Gravewind Depths",
+          "why": "go through the red portal and face the Wraithmother"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find a way home.",
+            "Catch up with the author of the notes.",
+            "Escape Gravewind."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Lifesurge (power: once a day, use scarlet lightning to completely restore health)",
+          "when": "at the end, when you are back in Tamriel"
+        },
+        {
+          "what": "Herrah's Axe (probably the Infused Battleaxe) and her life-stealing Scarlet Cloak",
+          "when": "at the end, when you are back in Tamriel"
+        },
+        {
+          "what": "Gravewind itself, left to you",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Lost to Oblivion"
+      ],
+      "closes": [
+        "Herrah is consumed by the void"
+      ],
+      "people": [
+        {
+          "name": "Richter",
+          "role": "wrote the notes; found dead in The Undercity in front of the Temple"
+        },
+        {
+          "name": "Gravewind Sentinel",
+          "role": "guardian in Gravewind Temple; the Wraithmother rides it"
+        },
+        {
+          "name": "Wraithmother of Gravewind (Herrah)",
+          "role": "final foe, in The Way Home"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "a power, Expel Greater Spirit, lets you expel the soul once trapped in the Gravewind Sentinel; nothing here ties it to this quest's ending"
+        },
+        {
+          "field": "rewards",
+          "why": "the rewards are named only in the journal's last entry, and no script property hands them over. Lifesurge is in the powers file (FalkreathShades.esp:3C0A9A). The Infused Battleaxe (GRVEScarletBattleaxe) is this mod's only battleaxe and may be her Axe; no cloak from this mod is in the item records"
+        },
+        {
+          "field": "opens",
+          "why": "Lost to Oblivion follows from Gravewind being left to you and Richter's light, but nothing in the records shows this quest starting it"
+        }
+      ],
+      "evidence": [
+        "QUST FalkreathShades.esp:4D2AF7 stages 10,30,35,40,50 (completes)",
+        "aliases GRVEWraithmotherBoss FalkreathShades.esp:121B16 (The Way Home), GRVEPyromancerAlias Richter FalkreathShades.esp:1917A4 (The Undercity)",
+        "NPC FalkreathShades.esp:0478C2 Gravewind Sentinel in Gravewind Temple",
+        "power FalkreathShades.esp:49FFEE",
+        "weapon GRVEScarletBattleaxe",
+        "power FalkreathShades.esp:3C0A9A Lifesurge (GRVELivesurgeHeal)"
+      ]
+    },
+    {
+      "edid": "DLC2RR01",
+      "name": "March of the Dead",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Starts when you come upon Captain Veleth fighting ash spawn at the Attius Farm outside Raven Rock and help him.",
+      "needs": [
+        {
+          "what": "Get to Solstheim (Raven Rock)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Captain Veleth",
+          "where": "the Attius Farm, outside Raven Rock on Solstheim",
+          "how": "Find him fighting ash spawn, kill them, then speak to him; he asks you to search the farm for clues."
+        }
+      ],
+      "firstStep": "Kill the ash spawn attacking Captain Veleth",
+      "takesYou": [
+        {
+          "place": "Attius Farm",
+          "hold": "Solstheim",
+          "why": "help Captain Veleth and search the farm for clues"
+        },
+        {
+          "place": "Fort Frostmoth",
+          "hold": "Solstheim",
+          "why": "kill General Falx Carius (southeast of Raven Rock; he is level 43 and carries the fort's key)"
+        },
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "report back to Captain Veleth, or bring Carius's letter to a guard"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Go straight back to Captain Veleth after killing Carius",
+          "leadsTo": "he pays you a bounty in gold"
+        },
+        {
+          "choice": "Search Carius's remains and read his letter first",
+          "leadsTo": "you take the letter to a guard in Raven Rock, then give it to Captain Veleth; same ending"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the ash spawn attacking Captain Veleth",
+            "Speak to Captain Veleth",
+            "Search the Attius Farm for clues",
+            "Give the note to Captain Veleth",
+            "Kill General Falx Carius",
+            "Return to Captain Veleth"
+          ]
+        },
+        {
+          "branch": "Carius's letter",
+          "objectives": [
+            "Search General Carius' remains",
+            "Read the note",
+            "Bring the note to a guard in Raven Rock",
+            "Give the note to Captain Veleth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold, a bounty from Captain Veleth (amount not in these records)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Served Cold"
+      ],
+      "closes": [
+        "General Falx Carius dies"
+      ],
+      "people": [
+        {
+          "name": "Captain Veleth",
+          "role": "Raven Rock's guard captain; found fighting at the Attius Farm. Afterwards he spends 8 to 10 am and 6 to 8 pm in The Retching Netch, late mornings at the market, and sleeps in the Bulwark barracks"
+        },
+        {
+          "name": "General Falx Carius",
+          "role": "the undead Imperial general behind the ash spawn attacks; in Fort Frostmoth"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "what triggers the ash spawn ambush isn't in these files; the journal says you stumble on it at the Attius Farm"
+        },
+        {
+          "field": "opens",
+          "why": "Served Cold is listed because Adril Arano's line in it says 'after everything you've already done for Raven Rock'; the condition on Captain Veleth's line that starts it isn't shown"
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:018B13 stages 30,40,50,60,80,90,100,120,200 (completes)",
+        "giver INFO Dragonborn.esm:01B90A (Veleth, before stage 41)",
+        "INFO 01BFD6 'head out to Fort Frostmoth'",
+        "door Dragonborn.esm:017CFA Fort Frostmoth Key carried by Carius",
+        "place Dragonborn.esm:014293 boss Carius level 43",
+        "Veleth packages DLC2RRModynNetchMorningPackage8x2, MarketPackage10x4, NetchEveningPackage18x2, SleepPackage0x6"
+      ]
+    },
+    {
+      "edid": "DLC2RR02",
+      "name": "Served Cold",
+      "plugin": "Dragonborn.esm (last edited by Severin Manor Has A Price.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Captain Veleth tells you Adril Arano wants to see you about a threat to Councilor Morvayn.",
+      "needs": [
+        {
+          "what": "Finish March of the Dead",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Captain Veleth",
+          "where": "Raven Rock: The Retching Netch from 8 to 10 am and 6 to 8 pm, the market from 10 am to 2 pm, asleep in the Bulwark Barracks from midnight to 6 am, otherwise on patrol in town",
+          "how": "Talk to Captain Veleth; he says Adril Arano, Second Councilor, wants to speak to you right away."
+        },
+        {
+          "who": "Adril Arano",
+          "where": "Morvayn Manor in Raven Rock by day; walking Raven Rock 1 to 5 pm; The Retching Netch 8 pm to midnight",
+          "how": "He asks you to find the Ulen assassins. You can refuse and come back to him later."
+        }
+      ],
+      "firstStep": "Speak to Adril Arano",
+      "takesYou": [
+        {
+          "place": "The Retching Netch",
+          "hold": "Solstheim",
+          "why": "ask Geldis Sadri, the innkeeper and town gossip, for leads"
+        },
+        {
+          "place": "Ulen Ancestral Tomb",
+          "hold": "Solstheim",
+          "why": "wait inside at night to see who leaves ash yam offerings"
+        },
+        {
+          "place": "Severin Manor",
+          "hold": "Solstheim",
+          "why": "find evidence against the Severins"
+        },
+        {
+          "place": "Ashfallow Citadel",
+          "hold": "Solstheim",
+          "why": "meet two Redoran Guard outside (found dead) and kill Vendil Ulen and the Morag Tong inside; near Skaal Village, boss a level 35 Morag Tong Assassin"
+        },
+        {
+          "place": "Morvayn Manor",
+          "hold": "Solstheim",
+          "why": "follow Adril and speak to Councilor Morvayn"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Refuse Adril's request at first",
+          "leadsTo": "nothing lost; return to Adril when you are ready"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Adril Arano",
+            "Speak to Geldis Sadri",
+            "Wait inside Ulen Ancestral Tomb",
+            "Discover the identity of the tomb's visitor",
+            "Report back to Adril Arano",
+            "Recover evidence from Severin Manor",
+            "Bring the evidence to Adril Arano",
+            "Meet up with the Redoran Guard",
+            "End the threat to Councilor Morvayn",
+            "Return to Adril Arano",
+            "Follow Adril Arano",
+            "Speak to Councilor Morvayn"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Vendil Severin (Vendil Ulen) dies"
+      ],
+      "people": [
+        {
+          "name": "Captain Veleth",
+          "role": "passes on Adril's message"
+        },
+        {
+          "name": "Adril Arano",
+          "role": "Second Councilor; gives the investigation"
+        },
+        {
+          "name": "Geldis Sadri",
+          "role": "innkeeper of The Retching Netch; points you to the tomb"
+        },
+        {
+          "name": "Tilisu Severin",
+          "role": "Vendil's supposed wife and the night visitor to the Ulen tomb; Severin Manor"
+        },
+        {
+          "name": "Mirri Severin",
+          "role": "Vendil's daughter, part of the plot; Severin Manor"
+        },
+        {
+          "name": "Vendil Severin",
+          "role": "really Vendil Ulen; waits in Ashfallow Citadel"
+        },
+        {
+          "name": "Lleril Morvayn",
+          "role": "Councilor of Raven Rock; thanks you at the end in Morvayn Manor"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the reward isn't decoded here. Severin Manor Has A Price.esp edits this quest and Councilor Morvayn's thank-you line; the plugin's name suggests Severin Manor must be paid for rather than given, but the records here don't show the price or the hand-over"
+        },
+        {
+          "field": "needs",
+          "why": "the condition on Captain Veleth's opening line isn't in these files; Adril's dialogue ('after everything you've already done for Raven Rock') points to March of the Dead first"
+        },
+        {
+          "field": "closes",
+          "why": "what happens to Tilisu and Mirri Severin isn't in these records"
+        },
+        {
+          "field": "where",
+          "why": "Adril Arano is placed outdoors in Raven Rock; the day and night places come from his package names, and his bed package is switched off while this quest runs"
+        },
+        {
+          "field": "where",
+          "why": "Adril's first package keeps him at an unnamed spot until stage 200 of another Dragonborn quest (Dragonborn.esm:02ADDA) is done; that quest isn't in these files, so early on he may not keep the times above"
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:018B14 stages 10,15,20,30,50,60,70,80,85,90,200 (completes)",
+        "editedBy Unofficial Skyrim Special Edition Patch.esp, Severin Manor Has A Price.esp",
+        "giver INFO Dragonborn.esm:0295DA (Veleth, before stage 6); others Adril <11, Geldis <21, Tilisu <60",
+        "INFO Dragonborn.esm:02926B (Severin Manor Has A Price.esp)",
+        "INFO 0295E4",
+        "place Dragonborn.esm:0142C5 Ashfallow Citadel",
+        "Adril packages DLC2RRAdrilWanderRavenRock13x4, Netch20x4, CourtPackage0x0, SleepPackage (GetQuestRunning 018B14 == 0)",
+        "Veleth packages DLC2RRModynMarketPackage10x4, SleepPackage0x6 (The Bulwark Barracks), PatrolPackage0x0",
+        "Adril package DLC2RRAdrilInit (GetStageDone Dragonborn.esm:02ADDA 200 == 0)"
+      ]
+    },
+    {
+      "edid": "DLC2RR03Intro",
+      "name": "An Axe to Find",
+      "plugin": "Dragonborn.esm (last edited by LoreRim - Dialogue Patch.esp; also TheChoiceIsYours.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Glover Mallory, Raven Rock's smith, asks you to get back the Ancient Nordic Pickaxe that Crescius 'borrowed'.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Glover Mallory",
+          "where": "Raven Rock: at work from 8 am to 8 pm, The Retching Netch from 8 pm to midnight; his home is Glover Mallory's House",
+          "how": "Talk to Glover; he wants his Ancient Nordic Pickaxe back from Crescius Caerellius."
+        }
+      ],
+      "firstStep": "Retrieve the Ancient Nordic Pickaxe",
+      "takesYou": [
+        {
+          "place": "Caerellius House",
+          "hold": "Solstheim",
+          "why": "get the pickaxe from Crescius Caerellius"
+        },
+        {
+          "place": "Glover Mallory's House",
+          "hold": "Solstheim",
+          "why": "return the pickaxe, or lie to Glover about it"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Return the Ancient Nordic Pickaxe to Glover",
+          "leadsTo": "Glover pays you"
+        },
+        {
+          "choice": "Tell Glover a lie about the pickaxe",
+          "leadsTo": "an alternative to handing it back; what it changes isn't in the records"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the Ancient Nordic Pickaxe",
+            "Return the Ancient Nordic Pickaxe to Glover Mallory"
+          ]
+        },
+        {
+          "branch": "lie",
+          "objectives": [
+            "Tell Glover Mallory a lie about the Ancient Nordic Pickaxe"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold (a favor reward)",
+          "when": "when you return the pickaxe"
+        }
+      ],
+      "type": "Misc",
+      "opens": [
+        "The Final Descent"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Glover Mallory",
+          "role": "Raven Rock's blacksmith; wants the pickaxe back"
+        },
+        {
+          "name": "Crescius Caerellius",
+          "role": "has the pickaxe; Caerellius House"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the script holds a gold favor list; which ending pays it and how much isn't shown"
+        },
+        {
+          "field": "choices",
+          "why": "what you keep or lose by lying to Glover isn't in these records"
+        },
+        {
+          "field": "starts",
+          "why": "where Glover works by day is an unnamed spot in the package; it may be his forge outside his house"
+        },
+        {
+          "field": "opens",
+          "why": "the record name marks this as the lead-in to The Final Descent and Crescius is in both; the records don't show this quest starting it"
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:020A1C objectives 10,20,30; stage 200 completes",
+        "editedBy Unofficial Skyrim Special Edition Patch.esp, TheChoiceIsYours.esp, LoreRim - Dialogue Patch.esp",
+        "giver INFO Dragonborn.esm:020A12 (Glover, before stage 15); Crescius before stage 20",
+        "INFO Dragonborn.esm:020A04 'The one Crescius \"borrowed\"'",
+        "reward Skyrim.esm:04A41B via DLC2_QF_DLC2RR03Intro_02020A1C.pFavorRewardGoldSmall",
+        "Glover packages DLC2RRGloverVendorPackage8x12, NetchPackage20x4, EatBreakfastPackage6x2"
+      ]
+    },
+    {
+      "edid": "DLC2RR03",
+      "name": "The Final Descent",
+      "plugin": "Dragonborn.esm (last edited by LoreRim - Dialogue Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Crescius Caerellius, found poking around Raven Rock Mine, asks you to find his great-grandfather's remains at the bottom of the mine.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Crescius Caerellius",
+          "where": "inside Raven Rock Mine, or at home in Caerellius House in Raven Rock (he eats and sleeps there from 8 pm to 7 am)",
+          "how": "Talk to Crescius; he believes the East Empire Company lied about how Gratian Caerellius died and asks you to explore the mine. His wife Aphia Velothi can also bring it up."
+        }
+      ],
+      "firstStep": "Speak to Crescius Caerellius",
+      "takesYou": [
+        {
+          "place": "Raven Rock Mine",
+          "hold": "Solstheim",
+          "why": "find Gratian Caerellius's skeleton and his journal"
+        },
+        {
+          "place": "Bloodskal Barrow",
+          "hold": "Solstheim",
+          "why": "find your way out after recovering the journal"
+        },
+        {
+          "place": "Caerellius House",
+          "hold": "Solstheim",
+          "why": "bring the journal back to Crescius"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Crescius Caerellius",
+            "Retrieve Gratian Caerellius' Journal",
+            "(Optional) Read Gratian Caerellius' Journal",
+            "Escape Bloodskal Barrow",
+            "Return to Crescius Caerellius"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold (a favor reward)",
+          "when": "at the end"
+        },
+        {
+          "what": "Bloodskal Blade (greatsword; releases an energy blast on power attacks)",
+          "when": "found in Bloodskal Barrow during the quest"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Forge recipe: Bloodskal Blade Replica (needs Ebony Smithing; 2 Silver Ingots, 3 Leather Strips, 4 Heart Stones)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Crescius Caerellius",
+          "role": "gives the quest; Caerellius House or Raven Rock Mine"
+        },
+        {
+          "name": "Aphia Velothi",
+          "role": "his wife; can point you to him; Caerellius House"
+        },
+        {
+          "name": "Gratian Caerellius",
+          "role": "skeleton at the bottom of Raven Rock Mine"
+        },
+        {
+          "name": "Zahkriisos",
+          "role": "dragon priest in the mine, level 120; the barrow was his tomb"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Crescius stands in the mine only while a game setting is switched on; what switches it isn't in these files"
+        },
+        {
+          "field": "rewards",
+          "why": "the quest tracks the Bloodskal Blade, but whether it is picked up or handed over isn't shown; the gold amount isn't shown either"
+        },
+        {
+          "field": "people",
+          "why": "the mine's places record lists Zahkriisos as its level 120 boss; whether you must fight him to finish isn't shown"
+        },
+        {
+          "field": "opens",
+          "why": "townsfolk lines about the mine being open again belong to a separate mine tracker quest; the records don't show this quest's ending triggering it"
+        },
+        {
+          "field": "opens",
+          "why": "The Final Descent Priest (\"Slay the Seeker in Bloodskal Barrow\") shares this quest's Raven Rock Mine location and Seeker; it probably runs alongside this quest rather than after it, but nothing shows which starts it"
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:018B15 stages 15,20,30,50,200 (completes)",
+        "editedBy Unofficial Skyrim Special Edition Patch.esp, LoreRim - Dialogue Patch.esp",
+        "giver INFO Dragonborn.esm:0209F4 (Crescius, before stage 11); Aphia before stage 20",
+        "Crescius packages DLC2RRCresciusMinePackage (global Dragonborn.esm:018B10 == 1), DefaultPackage (== 0), SleepPackage23x8, EatDinnerPackage20x3",
+        "alias DLC2RR03BloodskalBladeAlias; item Dragonborn.esm:01AEA4",
+        "recipe Bloodskal Blade - Tweaks and Enhancements.esp:000906 (GetStage 018B15 >= 200)",
+        "reward Skyrim.esm:04A41B via DLC2_QF_DLC2RR03_02018B15.pFavorRewardGoldSmall",
+        "place Dragonborn.esm:01429A boss Zahkriisos level 120"
+      ]
+    },
+    {
+      "edid": "DLC2RR03Priest",
+      "name": "The Final Descent Priest",
+      "plugin": "Dragonborn.esm (no other plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "A side objective that appears in Bloodskal Barrow during The Final Descent: kill the Seeker.",
+      "needs": [
+        {
+          "what": "Be on The Final Descent",
+          "kind": "quest"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Slay the Seeker in Bloodskal Barrow",
+      "takesYou": [
+        {
+          "place": "Bloodskal Barrow",
+          "hold": "Solstheim",
+          "why": "slay the Seeker"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Slay the Seeker in Bloodskal Barrow"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the Seeker",
+          "role": "the target in Bloodskal Barrow"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "what starts this objective isn't in these files; it shares the Raven Rock Mine location with The Final Descent, which also tracks a Seeker"
+        },
+        {
+          "field": "people",
+          "why": "the Seeker isn't named in the people records; the record's own name says 'Priest', and the mine's boss is the dragon priest Zahkriisos, but they may not be the same"
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:03332A stages 10,200; objective 10",
+        "aliases DLC2RR03Priest, DLC2RR03BloodskalLocAlias (Raven Rock Mine)",
+        "DLC2RR03 alias DLC2RR03SeekerAlias"
+      ]
+    }
+  ]
+}

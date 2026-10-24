@@ -1,0 +1,1057 @@
+[
+ {
+  "edid": "DLC2WB01",
+  "name": "Filial Bonds",
+  "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Talk to Wulf Wild-Blood in Skaal Village on Solstheim; he tells you about his missing brother.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Wulf Wild-Blood",
+    "where": "Skaal Village on Solstheim; his home is Wulf Wild-Blood's House",
+    "how": "Talk to Wulf. He tells you his brother Torkild ran off years ago and may have become a werebear, and asks you to keep an eye out for him."
+   }
+  ],
+  "firstStep": "Look for Wulf's brother Torkild",
+  "takesYou": [
+   {
+    "place": "the wilds of Solstheim",
+    "hold": "Solstheim",
+    "why": "Torkild is said to be wandering Solstheim; find and deal with him"
+   },
+   {
+    "place": "Skaal Village",
+    "hold": "Solstheim",
+    "why": "go back to Wulf with the news"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Look for Wulf's brother Torkild",
+     "Examine Torkild",
+     "Return to Wulf"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Wulf teaches you to fight better (the journal says so; which skill isn't in these files)",
+    "when": "when you tell Wulf what happened to Torkild"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Torkild dies: the quest has you kill him, as a man or after he turns into a werebear",
+   "The quest fails if Wulf dies before you bring him the news"
+  ],
+  "people": [
+   {
+    "name": "Wulf Wild-Blood",
+    "role": "gives the quest; lives in Wulf Wild-Blood's House in Skaal Village"
+   },
+   {
+    "name": "Torkild",
+    "role": "Wulf's brother, wandering Solstheim; may turn into a werebear"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Torkild has no placed person record in these files, so where on Solstheim he turns up isn't known."
+   },
+   {
+    "field": "starts.where",
+    "why": "Wulf is placed in his house. His own work package runs from 8 am for 12 hours at a spot the files don't name, so by day he is somewhere in or near Skaal Village rather than indoors. An earlier package has him building with other Skaal while something isn't disabled, probably tied to the Dragonborn main quest."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward item or script property is listed. The only reward is the journal line saying Wulf 'taught me how to fight better'; which skill goes up, and by how much, isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The quest also has a Journal and a Journal Chest, probably Torkild's, but these files don't place them or give their text."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:0209AE stages 10/15/20/100/205, objectives 10/15/20",
+   "editedBy USSEP",
+   "giver INFO Dragonborn.esm:026554 (alias Wulf, below stage 10)",
+   "NPC Dragonborn.esm:018FAE ref 018FB2 in cell 018F48",
+   "packages DLC2SVWulfWork8x12, DLC2SkaalPillarBuildPKG (GetDisabled), DefaultSleepPackageAnyTime",
+   "stage 15/100 log text switches on fn629 (Torkild transformed or not)"
+  ]
+ },
+ {
+  "edid": "DLC2KagrumezQST",
+  "name": "The Kagrumez Gauntlet",
+  "plugin": "Dragonborn.esm",
+  "canDo": "by itself",
+  "canDoWhy": "No one hands this out. It runs inside Kagrumez, a Dwemer ruin near Skaal Village, where you find gems that work the ruin's trials.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "",
+    "where": "Kagrumez, a Dwemer ruin near Skaal Village on Solstheim",
+    "how": "Go into Kagrumez. Its trials are worked with Resonance Gems from around Solstheim."
+   }
+  ],
+  "firstStep": "Find Resonance Gems across Solstheim to complete the Kagrumez trials",
+  "takesYou": [
+   {
+    "place": "Kagrumez",
+    "hold": "Solstheim",
+    "why": "the trials are inside; Dwemer spiders and spheres come out to fight you"
+   },
+   {
+    "place": "around Solstheim",
+    "hold": "Solstheim",
+    "why": "the five Resonance Gems are found across the island"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find Resonance Gems across Solstheim to complete the Kagrumez trials"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Kagrumez has a boss chest",
+    "when": "inside Kagrumez"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Raleth Eldri",
+    "role": "a dead warlock in Kagrumez; his journal, Raleth Eldri's Notes on Kagrumez, calls the ruin a Dwemer training ground with trials"
+   },
+   {
+    "name": "bandits",
+    "role": "a bandit band and its boss inside Kagrumez; one says 'A few Dwemer Spiders will pop out, we kill them, and the Treasure of Kagrumez will be ours!'"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No dialogue, event or condition is recorded as starting it. The quest's only cell is Kagrumez, so going inside probably sets it going, but the exact trigger (the door, a gem, the journal) isn't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The quest has five gem aliases, but these files don't place them, so where on Solstheim each gem lies isn't known."
+   },
+   {
+    "field": "rewards",
+    "why": "There's no reward property. The place record shows a boss chest in Kagrumez, and the bandits talk of a 'Treasure of Kagrumez', but nothing here ties that chest to finishing the trials."
+   },
+   {
+    "field": "starts.where",
+    "why": "The places file puts Kagrumez a short walk from Skaal Village; it has no map marker record here."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:03166D objective 10, stage 250 completes ('set when all fights are completed')",
+   "aliases KagrumezGem01-05, SpiderFriend, SphereFriend, BanditBoss, sceneBandit",
+   "LCTN Dragonborn.esm:0142A2 Kagrumez (boss chest, traps, never respawns)",
+   "door 0186B4 into cell 0142F9",
+   "INFO Dragonborn.esm:0374CE",
+   "BOOK Dragonborn.esm:0374D6",
+   "NPC Dragonborn.esm:03571F DLC2KagrumezCorpse"
+  ]
+ },
+ {
+  "edid": "RE01MiasmaQst",
+  "name": "Miasma",
+  "plugin": "Miasma.esp",
+  "canDo": "talk",
+  "canDoWhy": "Talk to Haj-Xul, an Argonian at the Retching Netch in Raven Rock; he hires you to help catch a Telvanni criminal.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Haj-Xul",
+    "where": "The Retching Netch, the tavern in Raven Rock on Solstheim",
+    "how": "Talk to Haj-Xul. He says he is of the An-Xileel of Black Marsh and hires you to help him capture a criminal from House Telvanni who may have come to Solstheim."
+   }
+  ],
+  "firstStep": "Follow Haj-Xul",
+  "takesYou": [
+   {
+    "place": "Strident Squall (shipwreck)",
+    "hold": "Solstheim",
+    "why": "look for clues in the wreckage"
+   },
+   {
+    "place": "Abandoned Mine, near Raven Rock",
+    "hold": "Solstheim",
+    "why": "investigate the reaver hideout and find the prisoner Catches-Many-Fish; the door needs the Abandoned Mine Key"
+   },
+   {
+    "place": "Ashbound Prison, beside Raven Rock",
+    "hold": "Solstheim",
+    "why": "find and defeat Zirath Ryon in Ashbound Depths, then fight the dragon priest Durvith in Ashbound Sanctum to get out"
+   },
+   {
+    "place": "The Retching Netch, Raven Rock",
+    "hold": "Solstheim",
+    "why": "return to Haj-Xul"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Follow Haj-Xul",
+     "Speak with Haj-Xul",
+     "Look for clues in the wreckage",
+     "Show Haj-Xul what you've found",
+     "Investigate the reaver hideout",
+     "Check on the Prisoner",
+     "Talk to Haj-Xul",
+     "Search the cave",
+     "Bring the notes to Haj-Xul",
+     "Find Zirath Ryon",
+     "Confront Zirath Ryon",
+     "Defeat Zirath Ryon",
+     "Find a way out",
+     "Defeat Durvith",
+     "Return to Haj-Xul"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Haj-Xul's Bow (weapon)",
+    "when": "from Haj-Xul at the end"
+   },
+   {
+    "what": "gold",
+    "when": "from the quest script"
+   },
+   {
+    "what": "named a friend of the An-Xileel",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Zirath Ryon and Durvith die"
+  ],
+  "people": [
+   {
+    "name": "Haj-Xul",
+    "role": "quest giver; an An-Xileel Argonian who stays in the Retching Netch"
+   },
+   {
+    "name": "Catches-Many-Fish",
+    "role": "an Argonian prisoner of the reavers in the Abandoned Mine; Haj-Xul takes him back to Raven Rock for care"
+   },
+   {
+    "name": "Zirath Ryon",
+    "role": "the Telvanni criminal, found in Ashbound Depths inside Ashbound Prison"
+   },
+   {
+    "name": "Durvith",
+    "role": "the dragon priest who drew Zirath to Solstheim; fought in Ashbound Sanctum with waves of draugr"
+   },
+   {
+    "name": "reaver boss",
+    "role": "leads the reavers in the Abandoned Mine"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "The Abandoned Mine door needs the Abandoned Mine Key. The quest has a key alias, but these files don't say who carries it or where it lies."
+   },
+   {
+    "field": "rewards",
+    "why": "The last journal entry says you 'secured the power of Miasma for myself', but no spell is listed as a reward. The mod adds Miasma spells (Miasmic Spray from the Tome of Miasma: Spray, Conjure Miasmic Thrall) and a Durvith mask that boosts Miasma spells, and these files don't say whether you are given them or find them."
+   },
+   {
+    "field": "takesYou",
+    "why": "Ashbound Prison has a word wall (Marked for Death) and a boss chest, but these files don't say whether you reach them on the quest's path."
+   }
+  ],
+  "evidence": [
+   "QUST Miasma.esp:001E23, start-game enabled",
+   "giver INFO Miasma.esp:001E29 (alias Haj)",
+   "NPC Miasma.esp:000D96 ref 00C0F5 in Dragonborn.esm:017EC0; package RE01HajSandboxPackage",
+   "rewards alias HajBow Miasma.esp:001E25, Gold001",
+   "LCTN Miasma.esp:001CB7 Abandoned Mine (door 001CC1 key 001CEF), 000EAD Ashbound Prison, Dragonborn.esm:0142C9 Strident Squall",
+   "QUST Miasma.esp:001906 PriestFight",
+   "INFO Miasma.esp:001E2F, 001E72",
+   "ARMO Miasma.esp:00193C"
+  ]
+ },
+ {
+  "edid": "EnoAcolyteQuest",
+  "name": "Destroy the Acolyte Priests",
+  "plugin": "Destroy the Acolyte Priests.esp",
+  "canDo": "by itself",
+  "canDoWhy": "It starts on its own as you travel on Solstheim. Storn, through a note, tells you to destroy Miraak's three Acolyte Priests in their tombs.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Storn Crag-Strider (by note)",
+    "where": "on Solstheim; Storn lives in the Shaman's Hut in Skaal Village",
+    "how": "The quest starts when you change location. Its journal says Storn has told you to seek out and destroy Miraak's three Acolyte Priests, and a 'Note from Storn' names their tombs."
+   }
+  ],
+  "firstStep": "Destroy Ahzidal",
+  "takesYou": [
+   {
+    "place": "Kolbjorn Barrow, beside Raven Rock",
+    "hold": "Solstheim",
+    "why": "destroy Ahzidal; Storn's note says the barrow has long been buried by ash storms"
+   },
+   {
+    "place": "White Ridge Barrow (White Ridge Sanctum), near Skaal Village",
+    "hold": "Solstheim",
+    "why": "destroy Dukaan; the note puts it in the northwestern mountains"
+   },
+   {
+    "place": "Bloodskal Barrow / Raven Rock Mine",
+    "hold": "Solstheim",
+    "why": "destroy Zahkriisos; the note says Bloodskal Barrow, just outside the Dark Elf mining town, and the records place him inside Raven Rock Mine"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Destroy Ahzidal",
+     "Destroy Dukaan",
+     "Destroy Zahkriisos"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Dragonborn",
+  "opens": [],
+  "closes": [
+   "Ahzidal, Dukaan and Zahkriisos are destroyed"
+  ],
+  "people": [
+   {
+    "name": "Storn Crag-Strider",
+    "role": "Skaal shaman who sends you after the priests; Shaman's Hut, Skaal Village"
+   },
+   {
+    "name": "Frea",
+    "role": "also in the quest's records; Shaman's Hut, Skaal Village"
+   },
+   {
+    "name": "Ahzidal",
+    "role": "Acolyte Priest in Kolbjorn Barrow (level 55 boss there)"
+   },
+   {
+    "name": "Dukaan",
+    "role": "Acolyte Priest in White Ridge Sanctum (level 120 boss there)"
+   },
+   {
+    "name": "Zahkriisos",
+    "role": "Acolyte Priest placed in Raven Rock Mine (level 120 boss there)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The start is a location-change event, and its conditions aren't in these files. The journal speaks of cleansing the land of Miraak's influence, so it probably needs Miraak beaten in the Dragonborn main quest, but that isn't confirmed here."
+   },
+   {
+    "field": "starts",
+    "why": "The quest has separate 'Storn' and 'Storn alive' aliases plus Frea, so who sends the note may change if Storn has died. How the Note from Storn reaches you (courier, or added to your pack) isn't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "These files tie Kolbjorn Barrow to the quest Unearthed (and its dig-site tracking quests), and Raven Rock Mine to The Final Descent. Reaching Ahzidal or Zahkriisos may mean doing those quests first, but nothing here says this quest checks for them."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is listed."
+   }
+  ],
+  "evidence": [
+   "QUST Destroy the Acolyte Priests.esp:000800 stages 10/50, objectives 20/30/40",
+   "start node EnoAcolyteQuestNode (change location)",
+   "aliases Storn, StornAlive, Frea, Note, Bloodskal/Kolbjorn/WhiteRidge barrow markers",
+   "BOOK Destroy the Acolyte Priests.esp:000801 'Note from Storn'",
+   "NPC Dragonborn.esm:0248E9 in 0142EE, 0248E1 in 03C7F5, 0248E8 in 0142FC",
+   "LCTN links: Kolbjorn Barrow - Unearthed; Raven Rock Mine - The Final Descent"
+  ]
+ },
+ {
+  "edid": "MS01",
+  "name": "The Forsworn Conspiracy",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "It comes to you in Markarth. After a woman is attacked in the marketplace, Eltrys gets a note to you asking you to meet him at the Shrine of Talos.",
+  "needs": [
+   {
+    "what": "LoreRim's 'Forsworn Conspiracy - Delayed Start' add-on holds back the marketplace attack until its own switch is set; what sets it isn't readable in these files",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Eltrys",
+    "where": "Markarth's marketplace, right after the attack; Eltrys lives in the Warrens",
+    "how": "Walk into Markarth. A man claiming to be Forsworn attacks a woman (Margret) in the marketplace. Afterwards Eltrys comes to you, and you have his note: 'Meet me at the Shrine of Talos at midnight.'"
+   }
+  ],
+  "firstStep": "Go to the Shrine of Talos",
+  "takesYou": [
+   {
+    "place": "Shrine of Talos, Markarth",
+    "hold": "The Reach",
+    "why": "meet Eltrys"
+   },
+   {
+    "place": "Silver-Blood Inn, Markarth",
+    "hold": "The Reach",
+    "why": "evidence about Margret: her room and journal"
+   },
+   {
+    "place": "The Warrens, Markarth",
+    "hold": "The Reach",
+    "why": "evidence about Weylin: his room, chest and note"
+   },
+   {
+    "place": "Nepos' House, Markarth",
+    "hold": "The Reach",
+    "why": "evidence about Nepos the Nose"
+   },
+   {
+    "place": "The Treasury House, Markarth",
+    "hold": "The Reach",
+    "why": "evidence about Thonar Silver-Blood"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Get the keys to Margret's and Weylin's rooms, or talk to Margret",
+    "leadsTo": "optional ways into their rooms; the evidence is the same"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Go to the Shrine of Talos",
+     "Find evidence about Margret",
+     "(Optional) Obtain the key to Margret's room",
+     "(Optional) Talk to Margret",
+     "Read Margret's Journal",
+     "Find evidence about Weylin",
+     "(Optional) Obtain the key to Weylin's room",
+     "Read Weylin's Note",
+     "Find out who \"N\" is",
+     "Find evidence about Nepos",
+     "Read Nepos' Journal",
+     "Find evidence about Thonar",
+     "Read Thonar's Journal",
+     "Return to Eltrys"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "a medium leveled quest reward",
+    "when": "from the quest script"
+   },
+   {
+    "what": "gold",
+    "when": "from the quest script"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "No One Escapes Cidhna Mine"
+  ],
+  "closes": [
+   "Eltrys is killed and you are framed for his murder"
+  ],
+  "people": [
+   {
+    "name": "Eltrys",
+    "role": "asks you to dig into the attack; lives in the Warrens; killed at the Shrine of Talos at the end"
+   },
+   {
+    "name": "Margret",
+    "role": "the woman attacked in the marketplace; staying at the Silver-Blood Inn"
+   },
+   {
+    "name": "Weylin",
+    "role": "the attacker; his room is in the Warrens"
+   },
+   {
+    "name": "Nepos the Nose",
+    "role": "the 'N' in Weylin's note; Nepos' House, with his servants Uaile, Tynan and Morven"
+   },
+   {
+    "name": "Thonar Silver-Blood",
+    "role": "The Treasury House; his household (Betrid, Nana Ildene, Rhiada, Donnel) is also in the quest"
+   },
+   {
+    "name": "Kleppr",
+    "role": "innkeeper at the Silver-Blood Inn (named in dialogue about where visitors stay)"
+   },
+   {
+    "name": "Hogni Red-Arm, Kerah",
+    "role": "market traders who take part in the marketplace scene"
+   },
+   {
+    "name": "Garvey, Dryston",
+    "role": "in the Warrens; Dryston has a note in the quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The Delayed Start add-on gates Eltrys, Weylin, Margret and the market traders on one of its own globals. That global's value and what changes it aren't in these files, so a player can't be told what unlocks the scene."
+   },
+   {
+    "field": "starts",
+    "why": "Eltrys has a package to walk up to you once the attack is over, and the journal says you 'received a note'. Whether he hands the note over or it reaches you some other way isn't spelled out."
+   },
+   {
+    "field": "starts",
+    "why": "TheChoiceIsYours.esp adds a condition to four of the opening lines that checks Eltrys isn't at his smelter work, which runs from 7 am for 12 hours. So he may only take up the matter outside those hours."
+   },
+   {
+    "field": "steps",
+    "why": "The objective numbers put Thonar before Nepos. In play, Weylin's note points to 'N' and that leads to Nepos, so the order you meet them may differ from this list."
+   },
+   {
+    "field": "rewards",
+    "why": "The script holds a leveled reward and gold, but the files don't say which step pays them out, and the quest ends with Eltrys dead."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:018B4B start-game enabled, stages 15/20/95/100, objectives 10-70",
+   "editedBy USSEP",
+   "BOOK Skyrim.esm:0D1955 Note from Eltrys",
+   "NPC Skyrim.esm:013394 packages MS01EltrysForceGreetPackage / MarkarthEltrysWaitMarketPackage (The Forsworn Conspiracy - Delayed Start.esp, global :000801 == 2, intro quest 0AF75F)",
+   "Weylin/Margret/Hogni/Kerah intro packages from Delayed Start",
+   "TheChoiceIsYours adds fn161==0 on package 0354F8 to INFO 0D3E5B, 0D3E56, 0D66A1, 0D66D6",
+   "rewards QF_MS01_00018B4B LvlQuestReward02Medium, pGold",
+   "alias EltrysDead in Shrine of Talos"
+  ]
+ },
+ {
+  "edid": "MS02",
+  "name": "No One Escapes Cidhna Mine",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp; Update.esm also edits it)",
+  "canDo": "by itself",
+  "canDoWhy": "It follows straight on from The Forsworn Conspiracy: framed for Eltrys' murder, you are thrown into Cidhna Mine and must find Madanach.",
+  "needs": [
+   {
+    "what": "Finish The Forsworn Conspiracy",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "Cidhna Mine, Markarth",
+    "how": "Let yourself be imprisoned in Cidhna Mine after Eltrys is killed and you are framed. Ask a prisoner (Uraccen) about Madanach."
+   }
+  ],
+  "firstStep": "Ask a prisoner about Madanach",
+  "takesYou": [
+   {
+    "place": "Cidhna Mine, Markarth",
+    "hold": "The Reach",
+    "why": "the whole quest happens in the mine, then you escape it"
+   },
+   {
+    "place": "The Treasury House, Markarth",
+    "hold": "The Reach",
+    "why": "only if you kill Madanach: Thonar Silver-Blood pardons you"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Help Madanach escape",
+    "leadsTo": "Follow Madanach out. He and his Forsworn take credit for all your past crimes, clearing your name in the Reach."
+   },
+   {
+    "choice": "Kill Madanach",
+    "leadsTo": "Search his body, read his note and escape the mine yourself. Thonar Silver-Blood pardons you, clearing your name in the Reach."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Ask a prisoner about Madanach",
+     "Get past Borkul the Beast",
+     "Talk to Madanach",
+     "Hear Braig's story",
+     "Return to Madanach",
+     "Kill Grisvar the Unlucky",
+     "Return to Madanach"
+    ]
+   },
+   {
+    "branch": "escape with Madanach",
+    "objectives": [
+     "Follow Madanach"
+    ]
+   },
+   {
+    "branch": "kill Madanach",
+    "objectives": [
+     "Kill Madanach",
+     "Search Madanach's body",
+     "Read Madanach's note",
+     "Escape Cidhna Mine"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Shiv (dagger)",
+    "when": "from the quest script"
+   },
+   {
+    "what": "Silver-Blood Family Ring",
+    "when": "from the quest script"
+   },
+   {
+    "what": "your bounty in the Reach is cleared",
+    "when": "at the end, either way"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Grisvar the Unlucky dies if you do Madanach's bidding",
+   "Kill route: Madanach dies",
+   "Escape route: Madanach and the Forsworn prisoners leave Cidhna Mine"
+  ],
+  "people": [
+   {
+    "name": "Uraccen",
+    "role": "prisoner who points you to Madanach"
+   },
+   {
+    "name": "Borkul the Beast",
+    "role": "Orc prisoner who guards the way to Madanach"
+   },
+   {
+    "name": "Madanach",
+    "role": "the King in Rags, deep in Cidhna Mine"
+   },
+   {
+    "name": "Braig",
+    "role": "prisoner whose story Madanach wants you to hear"
+   },
+   {
+    "name": "Grisvar the Unlucky",
+    "role": "prisoner Madanach wants dead"
+   },
+   {
+    "name": "Urzoga gra-Shugurz",
+    "role": "in the quest's records at Cidhna Mine"
+   },
+   {
+    "name": "Odvan, Duach",
+    "role": "other prisoners in the mine"
+   },
+   {
+    "name": "Thonar Silver-Blood",
+    "role": "pardons you if you kill Madanach; The Treasury House"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The Shiv and the Silver-Blood Family Ring are both in the quest script, but the files don't say which route gives which, or whether the Shiv is given or just tracked."
+   },
+   {
+    "field": "closes",
+    "why": "The Forsworn's packages have them run from the mine to the Markarth entrance and on to Druadach Redoubt, which suggests where they go after the escape. What that does to the city or later quests isn't in these files."
+   },
+   {
+    "field": "steps",
+    "why": "How you get past Borkul (pay, talk or fight) isn't spelled out; his line opens before that step."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:040A5E stages 5/100/250, objectives 10-220",
+   "editedBy Update.esm, USSEP",
+   "giver INFO Skyrim.esm:0DC290 Uraccen (below stage 10); Borkul below 21",
+   "rewards QF_MS02_00040A5E Shiv 0426C8, SilverFishRing 024CFF",
+   "packages MS02ForswornDruadachRedoubtPackage, MS02ForswornRuntoMarkarthEntrance",
+   "MS01 stages 95/100 log"
+  ]
+ },
+ {
+  "edid": "FreeformCidhnaMineA",
+  "name": "Shiv",
+  "plugin": "Skyrim.esm",
+  "canDo": "by itself",
+  "canDoWhy": "It starts when you arrive in Cidhna Mine; Grisvar the Unlucky can get you a shiv if you bring him skooma.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Grisvar the Unlucky",
+    "where": "Cidhna Mine, Markarth",
+    "how": "Being taken into Cidhna Mine sets it going. Talk to Grisvar about getting a shiv."
+   }
+  ],
+  "firstStep": "Talk to Grisvar about getting a shiv",
+  "takesYou": [
+   {
+    "place": "Cidhna Mine, Markarth",
+    "hold": "The Reach",
+    "why": "everything happens inside the mine"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Grisvar about getting a shiv",
+     "Get a bottle of Skooma for Grisvar",
+     "Bring Grisvar the Skooma"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Shiv (dagger)",
+    "when": "from Grisvar once he has the skooma"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Grisvar the Unlucky",
+    "role": "prisoner who trades a shiv for skooma"
+   },
+   {
+    "name": "Duach",
+    "role": "a prisoner listed in this quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "steps",
+    "why": "Who has the skooma isn't stated. Duach is the only other person in the quest, so he is the likely source, but the files don't confirm it."
+   },
+   {
+    "field": "needs",
+    "why": "The start event's conditions aren't in these files. It is probably meant for when you're imprisoned there during No One Escapes Cidhna Mine."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0DB851 objectives 10/20/30",
+   "start node FreeformCidhnaMine (change location)",
+   "aliases Grisvar, Duach, Player",
+   "reward QF_FreeformCidhnaMineA_000DB851.MS02Shiv 0426C8"
+  ]
+ },
+ {
+  "edid": "MS03",
+  "name": "Promises to Keep",
+  "plugin": "Skyrim.esm (dialogue conditions changed by Unofficial Skyrim Special Edition Patch.esp and TheChoiceIsYours.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Talk to Louis Letrush at the Bee and Barb in Riften; he wants a message taken to Sibbi Black-Briar about a horse.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Louis Letrush",
+    "where": "The Bee and Barb, Riften",
+    "how": "Hear Louis out. He wants a message taken to Sibbi Black-Briar about Frost, a breeding horse he is buying."
+   }
+  ],
+  "firstStep": "Listen to Louis Letrush's offer",
+  "takesYou": [
+   {
+    "place": "Riften Jail",
+    "hold": "The Rift",
+    "why": "speak to Sibbi Black-Briar, who is a prisoner there"
+   },
+   {
+    "place": "Black-Briar Lodge",
+    "hold": "",
+    "why": "steal Frost's lineage papers and Frost; optionally the lodge stash"
+   },
+   {
+    "place": "The Bee and Barb, Riften",
+    "hold": "The Rift",
+    "why": "return to Louis"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Steal the lodge stash too",
+    "leadsTo": "optional extra loot at Black-Briar Lodge (a stash key is part of the quest)"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Listen to Louis Letrush's offer",
+     "Speak to Sibbi Black-Briar",
+     "(Optional) Steal the Lodge Stash",
+     "Steal Frost's Lineage Papers",
+     "Steal Frost",
+     "Return to Louis Letrush"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "from Louis when you return"
+   },
+   {
+    "what": "a large leveled quest reward",
+    "when": "from Louis when you return"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Louis Letrush rides off once he has paid you",
+   "The quest can fail"
+  ],
+  "people": [
+   {
+    "name": "Louis Letrush",
+    "role": "quest giver; waits at a spot in the Bee and Barb, leaves after the deal"
+   },
+   {
+    "name": "Sibbi Black-Briar",
+    "role": "a prisoner in Riften Jail; asks you to steal Frost for Louis"
+   },
+   {
+    "name": "Maven Black-Briar",
+    "role": "has lines about this quest until you steal Frost; Black-Briar Manor"
+   },
+   {
+    "name": "Delvin Mallory",
+    "role": "has lines about this quest until you are paid; The Ragged Flagon"
+   },
+   {
+    "name": "Frost",
+    "role": "the horse, kept outdoors at Black-Briar Lodge"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Black-Briar Lodge is only a map-marker alias here; it isn't in the places file, so its hold isn't confirmed."
+   },
+   {
+    "field": "closes",
+    "why": "The quest has a fail stage, but what triggers it (perhaps telling Maven) isn't in these files. What Maven and Delvin say about the deal isn't given either."
+   },
+   {
+    "field": "choices",
+    "why": "One line uses an Easy Speech check (25), probably to persuade Sibbi. Which line it is, and what it skips, isn't spelled out."
+   },
+   {
+    "field": "starts",
+    "why": "TheChoiceIsYours.esp lets two of the follow-on lines open from Louis's first offer instead of after you agree, and the Unofficial Patch pushes two others later. The order you hear things in may differ from vanilla."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01DA3C stages 5/10/25/200/225/275/300, objectives 5-50",
+   "start-game enabled",
+   "giver INFO Skyrim.esm:01DA37 Louis (below 5); Sibbi below 20; Maven below 50; Delvin 01CB78 below 200",
+   "package MS03PreLouisLetrushBeePackage; MS03LouisLetrushRideOffScenePackage (stage >= 200)",
+   "Sibbi packages MS03JailSibbiPackage0x24",
+   "rewards QF_MS03_0001DA3C Gold001, LvlQuestReward03Large",
+   "INFO changes 01DA36/074A3F (USSEP), 067CC7/074A4C (TheChoiceIsYours)",
+   "global SpeechEasy"
+  ]
+ },
+ {
+  "edid": "MS04",
+  "name": "Unfathomable Depths",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "It begins on a level-up. A disturbed Argonian, From-Deepest-Fathoms, turns up on the Riften docks and begs you to take a Lexicon back to Avanchnzel.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "From-Deepest-Fathoms",
+    "where": "the Riften docks",
+    "how": "After you level up, From-Deepest-Fathoms wanders the Riften docks. Speak to her and she gives you the Lexicon to return to Avanchnzel."
+   }
+  ],
+  "firstStep": "Speak to From-Deepest-Fathoms",
+  "takesYou": [
+   {
+    "place": "Avanchnzel",
+    "hold": "The Rift",
+    "why": "carry the Lexicon back. Inside you see visions of the earlier expedition (Breya, Drennen, Watches-The-Roots) and find their bodies"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to From-Deepest-Fathoms",
+     "Take the Lexicon to Avanchnzel"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Ancient Knowledge",
+    "when": "when you return the Lexicon in Avanchnzel"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "From-Deepest-Fathoms",
+    "role": "gives you the Lexicon; wanders the Riften docks"
+   },
+   {
+    "name": "Keerava",
+    "role": "innkeeper of the Bee and Barb, who can speak about her during the quest"
+   },
+   {
+    "name": "Breya, Drennen, Watches-The-Roots",
+    "role": "From-Deepest-Fathoms' old companions, seen in visions and found dead in Avanchnzel"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "It starts from a level-up event. The level it waits for isn't in these files."
+   },
+   {
+    "field": "starts.where",
+    "why": "The journal says she wanders the Riften docks, and her only package is a wander package. Her placed record, though, is in Haelga's Bunkhouse, so where you first meet her may vary."
+   },
+   {
+    "field": "rewards",
+    "why": "Ancient Knowledge exists in two records, a shown one and a hidden one. What it does isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0209CA stages 10/100/900/1000, objectives 10/100",
+   "start node MS04IncreaseLevelNodeSHARES (LEVL)",
+   "giver INFO Skyrim.esm:02B99E From-Deepest-Fathoms (below 10); Keerava below 91",
+   "NPC Skyrim.esm:01335A ref 019DE2 in 016BD4; package MS04FDFWander",
+   "rewards QF_MS04_000209CA MS04Reward 10EB60, MS04RewardNoDisplay 10FDD6",
+   "INFO 0E776C, 0BD701"
+  ]
+ },
+ {
+  "edid": "MS06Start",
+  "name": "The Man Who Cried Wolf",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "In the Blue Palace in Solitude, Varnius Junius of Dragon Bridge asks the court for help with Wolfskull Cave; ask Falk Firebeard about it.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Falk Firebeard",
+    "where": "the Blue Palace, Solitude",
+    "how": "Enter the Blue Palace while the court is hearing Varnius Junius' appeal from Dragon Bridge. Then ask Falk Firebeard about Wolfskull Cave and he asks you to clear it out."
+   }
+  ],
+  "firstStep": "Ask Falk Firebeard about Wolfskull Cave",
+  "takesYou": [
+   {
+    "place": "Wolfskull Cave, near Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "stop the necromancers' ritual to summon Potema, the Wolf Queen"
+   },
+   {
+    "place": "the Blue Palace, Solitude",
+    "hold": "Haafingar",
+    "why": "report back to Falk"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Ask Falk Firebeard about Wolfskull Cave",
+     "Clear out Wolfskull Cave",
+     "Speak to Falk Firebeard"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "a medium leveled quest reward",
+    "when": "from Falk when you report back"
+   }
+  ],
+  "type": "none set in the records",
+  "opens": [
+   "The Wolf Queen Awakened"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Falk Firebeard",
+    "role": "Elisif's steward; gives the job and takes your report; Blue Palace"
+   },
+   {
+    "name": "Varnius Junius",
+    "role": "the Dragon Bridge representative who brings the appeal; afterwards goes back to Dragon Bridge"
+   },
+   {
+    "name": "Elisif the Fair, Sybille Stentor, Bolgeir Bearclaw",
+    "role": "the court in the opening scene; Sybille's scrying says there's nothing there"
+   },
+   {
+    "name": "Ritual Master",
+    "role": "the necromancer leading the ritual in Wolfskull Cave"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest runs from game start, and the court scene is set off by a trigger in the Blue Palace. When the scene will play (any time, or only during court hours) isn't in these files."
+   },
+   {
+    "field": "opens",
+    "why": "The Wolf Queen Awakened starts on a location change (an Unofficial Patch fix), and a 'Letter from Falk Firebeard' asks you to come back to Solitude. These files don't say how long after this quest that happens."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:093807 start-game enabled, stages 15/50/100/250, objectives 15/50/100",
+   "editedBy USSEP",
+   "giver INFO Skyrim.esm:0D8E94 Bolgeir (below 6), with Elisif, Falk, Sybille",
+   "alias MS06StartIntroTriggerAlias",
+   "INFO 026C49, 026C4A, 0A1794, 09654F",
+   "reward QF_MS06Start_00093807 LvlQuestReward02Medium",
+   "LCTN Skyrim.esm:0192C8 Wolfskull Cave",
+   "QUST Skyrim.esm:026C4D MS06 (start USKPMS06FixNode)",
+   "BOOK Skyrim.esm:0D91D1"
+  ]
+ }
+]
