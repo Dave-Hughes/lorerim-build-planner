@@ -35,3 +35,4 @@
 - **031** (Daedric quests: Boethiah, Hircine, Namira, Mehrunes Dagon, Azura): 3 fixed. Boethiah's Calling gives the Blade of Sacrifice (script-named); the Braidwood Inn is in Kynesgrove. Script spells that are tools, not rewards (Blood Harvest, Beast Form) noted.
 - **036** (Solstheim and Morrowind mods): 3 fixed, 7 unsure. Kar-Jei can die in the Redoran raid even if you're loyal; a Black Book's "choice of one power" came from other Black Books, not this one.
 - **040** (Hammerfell's Dragonguard Archives, Sands of the Past): 1 fixed, 6 unsure. Azzin's Journal burns in the fire the quest marks, not any fire.
+- **038** (Hammerfell, the Dark Brotherhood there): 9 fixed, 2 unsure. Three givers are home only at night; "cornerclub" was remembered wording, not the records; the Hammerfell contracts in the order their logs give, The Crimson Eviscerator added; the Unknown Initiate is probably Lucya.
