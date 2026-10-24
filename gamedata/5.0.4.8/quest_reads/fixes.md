@@ -31,3 +31,4 @@
 - **029** (Meridia's Order, Penitus Oculatus start): 2 fixed, 5 unsure. Paladin Marith offers to follow you in The Ritual; A Parting Gift's script-named clothes kept as unconfirmed rewards.
 - **028** (Meridia's Order, Fiya's realm): 3 fixed. Killing a prisoner in A Fate Worse Than Death loses nobody from the Order (they're separate records); The Jester starts in the Malevolent Palace.
 - **027** (Vigilant, Bruiant Mansion, Meridia's Order start): 5 fixed, 2 unsure. Ami-El's Royal Guard Cloak needs the quest done as well as Tailoring & Polishing; the Blood Curses are places of their own; Successor's script-named spells kept as possibly taken, not given.
+- **039** (Dawnguard and Dark Brotherhood add-ons, the Blades' recruits): 1 fixed, 3 unsure. Kindred Judgment isn't the last Dawnguard quest in the records.
