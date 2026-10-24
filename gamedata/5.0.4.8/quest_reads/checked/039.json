@@ -1,0 +1,1402 @@
+{
+ "checks": [
+  {
+   "edid": "DDBQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue quest: Tenerio's INFO in this quest; no start event in quest_starts_raw."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Order from the journal: DDBIntroQuest stage 200 'I might have some new contracts to fulfill' and 'My first ... contract'. Conditions on Tenerio's INFO aren't in the files; reader's unsure note stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Tenerio (000805) for this quest, stage below 21 (spans start to turn-in); he is the quest's alias and the objective 'Go back to/Talk to Tenerio' names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Journal stage 10: 'My first Dark Brotherhood contract in Hammerfell'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Kill the merchant at the Ben Erai Outpost'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stage 10 log and objective name Ben Erai Outpost; objective 20 sends you back to Tenerio in the Sanctuary. No place record for Ben Erai Outpost in places_raw (checked)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or alternative objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Quest script property Gold001 = Septim; amount not in the records. Kept per Bob's 23 Oct ruling, with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Next contract by journal order: Argonian Hero (stage 10 log 'My second ... contract')."
+    },
+    "closes": {
+     "verdict": "unsure",
+     "note": "Closes [] is right for this quest itself. The reader's unsure note says the rival quest Ending the Dark Brotherhood in Hammerfell again (Leollus, Penitus Oculatus Outpost in Ben Erai; objective 'Defeat the Dark Brotherhood leader in Hammerfell') likely ends these contracts because Tenerio isn't essential. But that quest's aliases use a second Tenerio record (Tenerio01 = 001090) as well as the contract-giver (Tenerio00 = 000805), so which Tenerio you fight, and whether the contracts stay open, isn't settled. Would need the conditions on Leollus's INFO 001083 and that quest's script."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue quest: Tenerio's INFO in this quest; no start event in quest_starts_raw."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Order from the journal: Merchant Problem is 'My first ... contract', this one 'My second'. Conditions on Tenerio's INFO aren't in the files; reader's unsure note stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Tenerio (000805) for this quest, stage below 21 (spans start to turn-in); he is the quest's alias and the objective 'Go back to/Talk to Tenerio' names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Journal stage 10: 'My second Dark Brotherhood contract in Hammerfell'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Kill the Argonian at the Lantern of the North'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stage 10 log and objective name Lantern of the North; objective 20 sends you back to Tenerio in the Sanctuary. No place record for Lantern of the North in places_raw (checked)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or alternative objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Quest script property Gold001 = Septim; amount not in the records. Kept per Bob's 23 Oct ruling, with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Next contract by journal order: Wandering Monk ('My third ... contract')."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in this quest's stages locks anything."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue quest: Tenerio's INFO in this quest; no start event in quest_starts_raw."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Order from the journal: Argonian Hero is 'My second', this one 'My third'. Conditions on Tenerio's INFO aren't in the files; reader's unsure note stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Tenerio (000805) for this quest, stage below 21 (spans start to turn-in); he is the quest's alias and the objective 'Go back to/Talk to Tenerio' names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Journal stage 10: 'My third Dark Brotherhood contract in Hammerfell'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Kill the monk at the Lucky Lantern'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stage 10 log and objective name Lucky Lantern; objective 20 sends you back to Tenerio in the Sanctuary. No place record for Lucky Lantern in places_raw (checked)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or alternative objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Quest script property Gold001 = Septim; amount not in the records. Kept per Bob's 23 Oct ruling, with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Next contract by journal order: Alik'r No More ('My fourth ... contract')."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in this quest's stages locks anything."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue quest: Tenerio's INFO in this quest; no start event in quest_starts_raw."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Order from the journal: Wandering Monk is 'My third', this one 'My fourth'. Conditions on Tenerio's INFO aren't in the files; reader's unsure note stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Tenerio (000805) for this quest, stage below 21 (spans start to turn-in); he is the quest's alias and the objective 'Go back to/Talk to Tenerio' names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Journal stage 10: 'My fourth Dark Brotherhood contract in Hammerfell'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Defeat the Alik'r warrior in Ben Erai'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Alias BenErai; stage 10 log 'dispose of an Alik'r warrior in Ben Erai'. Ben Erai is a location in the records (Penitus Oculatus Outpost sits in it); the target isn't placed in the givers file."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or alternative objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Quest script property Gold001 = Septim; amount not in the records. Kept per Bob's 23 Oct ruling, with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Next contract by journal order: No Guard Is Safe ('My final ... contract')."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in this quest's stages locks anything."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest05",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue quest: Tenerio's INFO in this quest; no start event in quest_starts_raw."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Order from the journal: Alik'r No More is 'My fourth', this one 'My final'. Conditions on Tenerio's INFO aren't in the files; reader's unsure note stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Tenerio (000805) for this quest, stage below 21 (spans start to turn-in); he is the quest's alias and the objective 'Go back to/Talk to Tenerio' names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Journal stage 10: 'My final Dark Brotherhood contract in Hammerfell'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Kill Laurentina inside the Fortress of Ben Erai'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Objective 10 and alias Target05000 = Laurentina (000EC4), placed in Fortress of Ben Erai (Gray Fox Cowl.esm location); stage 10 log 'a guard inside the Ben Erai Fortress'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or alternative objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Quest script property Gold001 = Septim; amount not in the records. Kept per Bob's 23 Oct ruling, with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Next contract by journal order: Disappearing in the Dark (its stage 0 entry conditions: GetQuestCompleted No Guard Is Safe and Kindred Judgment)."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in this quest's stages locks anything."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest06",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log: 'I received a letter that said \"Hammerfell needs you\"'; alias NoteAlias. No dialogue start (Tenerio's INFO is stage below 11, i.e. after the letter)."
+    },
+    "needs": {
+     "verdict": "fix",
+     "note": "Both quests are right (stage 0 entry conditions: GetQuestCompleted Dawnguard.esm:007C25 and 000ED1). But 'the last Dawnguard quest' isn't in the records: the Dawnguard story line lists more quests after Kindred Judgment. Kindred Judgment's own objectives do include 'Slay Harkon', so that part stays. Corrected to 'Finish Kindred Judgment (the Dawnguard quest where you slay Harkon)'."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "The letter is the start (NoteAlias, stage 10 log). How it reaches you isn't in the files; reader's unsure note stands."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No delivery record; reader's 'comes to you; how isn't in these files' is the honest answer."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log: 'I suppose I should find Tenerio back in the Alik'r Desert Sanctuary.'"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Talk to Tenerio in the Dark Brotherhood Sanctuary in the Alik'r Desert'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Objectives 20-50 and logs 20-50: village (alias VillaQ06; dead Vampire 000F11 placed in Alik'r Desert exterior), warehouse (alias Warehouse/Trapdoor; Lucya 000FD0 placed in Warehouse Basement 000F75, location Alik'r Desert). No place records for either."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward script property or item in the givers file for this quest."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The Crimson Eviscerator's stage 10 log repeats this quest's stage 200 log word for word."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing locked; Lucya is already dead when found."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest07",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No dialogue opens it: the first INFO is on Lucya's ghost (000FD1, stage below 11), after the quest is running; stage 10 log continues Disappearing in the Dark's ending."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Finish Disappearing in the Dark: agreed (stage 10 log = that quest's stage 200 log). 'A way into the Soul Cairn' is only pointed at by the log ('I know about the Soul Cairn, so I might be able to find her there') and Disappearing in the Dark's Kindred Judgment requirement; nothing names how you get in. Kept with the reader's unsure note."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Tenerio is where the previous quest ends (its stage 200 log: 'Tenerio told me she was after an artifact'); the reader frames it as continuing on from that talk, which is what the records show. The start script isn't in the files; reader's unsure stands."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log identical to DDBQuest06 stage 200."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Find the soul of Lucya in the Soul Cairn'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Lucya ghost 000FD1 placed in Soul Cairn Tower (000F96, location Soul Cairn); Protective Soul 000FEC in Soul Cavern (000F12, location Alik'r Desert); objective 60 back to Tenerio. Stage 20 log: she told me about the cavern and a Crimson Scar weapon."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Script property DDBCrimsonEviscerator -> WEAP 000FCB; objective 50 'Pick up the Crimson Eviscerator' confirms. items_raw: Dagger, damage 60, weight 5 (last edit Synthesis - NPC.esp)."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Crimson Scar Believers follows: stage 10 'Tenerio found out where the vampires are hiding', the vampires named in this quest's stage 20 log."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing locked."
+    }
+   }
+  },
+  {
+   "edid": "DDBQuest08",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Tenerio's INFO 00100C (stage below 31) and stage 10 log 'Tenerio found out where the vampires are hiding'."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Follows The Crimson Eviscerator by story; Tenerio's INFO conditions not in the files, reader's unsure stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Tenerio (000805) for this quest, stage below 31 (spans start to turn-in); he is the quest's alias and the objective 30 'Head back to Tenerio' names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tenerio is placed in Alik'r Desert Sanctuary (cell 0010BA) and his only package, DDBTererioSandbox, sandboxes him there with no conditions; agrees with the reader's own unsure note."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log; whether it starts on its own at the end of The Crimson Eviscerator is unsettled, as the reader says."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: 'Head to the Vampire Hideout'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Aliases Vamp01-04 placed in Vampire Hideout (000F3A, location Alik'r Desert); stage 10 log 'enter their cave'. No place record."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Quest script property Gold001 = Septim; amount not in the records. Kept per Bob's 23 Oct ruling, with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "No later quest in the mod picks up from this one; it is the last of the ten Dark Brotherhood-type quests in the bundle."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing locked."
+    }
+   }
+  },
+  {
+   "edid": "HABLBladesQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Azita's INFO 000B74, stage below 10; stage 10 log 'A girl called Azita challenged me'."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Nothing in the records; INFO conditions not in the files, reader's unsure stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Azita (001855)."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Her placement is in an Alik'r Desert exterior cell (2001E3), but her only package before stage 10, HABLAzitaQuestStart, sandboxes her (radius 512) at a ref in the cell Azzin's Hideout, so 'around Azzin's Hideout' fits."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10/20 logs: retrieve Azzin's sealed sword; 'fight dragons and retrieve the stones they bear'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Stage 10 log: 'activate the pillar that is in front of the magical barrier in Azzin's Hideout'; objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Pillars/barrier aliases in Azzin's Hideout (stage 80-83 logs); FireDragon/FrostDragon/ShockDragon placed in Alik'r Desert worldspace (cell 00FA57). No place record for Azzin's Hideout."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Linear stages 10-83."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Script property HABLBoneshaverReplica -> WEAP 000AC5, confirmed by objective 83 'Pick up the Boneshaver Replica' and stage 200. items_raw: Sword, 66 damage, weight 10 (LoreRim patch)."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records follows from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing locked."
+    }
+   }
+  },
+  {
+   "edid": "HABLBladesQuest02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Za'kir's INFO 000C61, stage below 10."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Inferred from Za'kir's packages (Wind Scour Temple only once A Lost Temple in Hammerfell, 000A8E, is complete) and objective 30 'Head to the Wind Scour Temple and talk to Za'kir'; INFO conditions not in files, reader's unsure stands."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Giver INFO on Loremaster Za'kir (001856)."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in the Common House, but HABLLoremasterSandbox01 (A Lost Temple complete, Sands of the Past not) puts him in the Wind Scour Temple; reader's unsure note covers the move."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log: 'find a potential follower that I deem worthy of joining the Blades in Hammerfell'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Objectives 10-30; aliases Recruit01/02 have no fixed person, so 'wherever your followers are' is right."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The player picks which followers ('that I deem worthy'); it doesn't branch the quest, but it's a real decision the player makes."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property or item in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Sands of the Past (000C5D) is the next Za'kir quest (his alias Zakir02; his package flips on its completion); its start conditions aren't in the files, reader's unsure stands."
+    },
+    "closes": {
+     "verdict": "unsure",
+     "note": "The records say 'I have recruited two people for the Wind Scour Temple', not that they leave you or move there. Reworded to what the log says; whether they stop following you and which followers qualify would need the recruit dialogue conditions and the quest script."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "DDBQuest01",
+   "name": "Merchant Problem",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tenerio hands it out as the first Dark Brotherhood contract in Hammerfell.",
+   "needs": [
+    {
+     "what": "Finish The Dark Brotherhood in Hammerfell",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Tenerio once The Dark Brotherhood in Hammerfell is done; he gives you the first contract."
+    }
+   ],
+   "firstStep": "Kill the merchant at the Ben Erai Outpost",
+   "takesYou": [
+    {
+     "place": "Ben Erai Outpost",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "kill the merchant"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Tenerio"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the merchant at the Ben Erai Outpost",
+      "Go back to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Septims (gold)",
+     "when": "when you report back to Tenerio"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Argonian Hero"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "gives the contract and pays you; in the Alik'r Desert Sanctuary"
+    },
+    {
+     "name": "the merchant",
+     "role": "your target at the Ben Erai Outpost (not named in the records)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The order comes from the journal ('my first/second/... contract') and the intro quest's last entry; the conditions on Tenerio's lines that hand out each contract aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script hands over Septims, but the amount isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The Ben Erai Outpost has no place record in these files; the target merchant isn't named."
+    },
+    {
+     "field": "closes",
+     "why": "A rival quest from the same mod, Ending the Dark Brotherhood in Hammerfell again (from Leollus at the Penitus Oculatus Outpost in Ben Erai), has you defeat the Dark Brotherhood leader in Hammerfell. It uses a second Tenerio as well as this one, so whether doing it ends these contracts isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000ECD stages 10/20/200, objectives 10/20",
+    "giver INFO 000ED8 on Tenerio (000805), stage below 21",
+    "alias Target01000, BenEraiOutpost",
+    "reward script DDB_QF_DDBQuest01_0300082E.Gold001",
+    "DDBIntroQuest 000ECA stage 200 'I might have some new contracts to fulfill'",
+    "Tenerio package DDBTererioSandbox 000EAC (Alik'r Desert Sanctuary, no conditions)"
+   ]
+  },
+  {
+   "edid": "DDBQuest02",
+   "name": "Argonian Hero",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tenerio hands it out as the second Dark Brotherhood contract in Hammerfell.",
+   "needs": [
+    {
+     "what": "Finish Merchant Problem",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Tenerio once Merchant Problem is done; he gives you the second contract."
+    }
+   ],
+   "firstStep": "Kill the Argonian at the Lantern of the North",
+   "takesYou": [
+    {
+     "place": "the Lantern of the North",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "kill the Argonian"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Tenerio"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the Argonian at the Lantern of the North",
+      "Talk to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Septims (gold)",
+     "when": "when you report back to Tenerio"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Wandering Monk"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "gives the contract and pays you; in the Alik'r Desert Sanctuary"
+    },
+    {
+     "name": "the Argonian",
+     "role": "your target at the Lantern of the North (not named in the records)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The order comes from the journal ('my first/second/... contract') and the intro quest's last entry; the conditions on Tenerio's lines that hand out each contract aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script hands over Septims, but the amount isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The Lantern of the North has no place record in these files, so its hold and what kind of building it is aren't confirmed; the Argonian isn't named."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000ECE stages 10/20/200",
+    "giver INFO 000EDB on Tenerio, stage below 21",
+    "alias LotN, Target02000",
+    "reward script DDB_QF_DDBQuest02_0300082F.Gold001"
+   ]
+  },
+  {
+   "edid": "DDBQuest03",
+   "name": "Wandering Monk",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tenerio hands it out as the third Dark Brotherhood contract in Hammerfell.",
+   "needs": [
+    {
+     "what": "Finish Argonian Hero",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Tenerio once Argonian Hero is done; he gives you the third contract."
+    }
+   ],
+   "firstStep": "Kill the monk at the Lucky Lantern",
+   "takesYou": [
+    {
+     "place": "the Lucky Lantern",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "kill the monk"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Tenerio"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the monk at the Lucky Lantern",
+      "Go back to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Septims (gold)",
+     "when": "when you report back to Tenerio"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Alik'r No More"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "gives the contract and pays you; in the Alik'r Desert Sanctuary"
+    },
+    {
+     "name": "the monk",
+     "role": "your target at the Lucky Lantern (not named in the records)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The order comes from the journal ('my first/second/... contract') and the intro quest's last entry; the conditions on Tenerio's lines that hand out each contract aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script hands over Septims, but the amount isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The Lucky Lantern has no place record in these files, so its hold and what kind of building it is aren't confirmed; the monk isn't named."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000ECF stages 10/20/200",
+    "giver INFO 000EDF on Tenerio, stage below 21",
+    "alias LuckyLantern, Target03000",
+    "reward script DDB_QF_DDBQuest03_03000830.Gold001"
+   ]
+  },
+  {
+   "edid": "DDBQuest04",
+   "name": "Alik'r No More",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tenerio hands it out as the fourth Dark Brotherhood contract in Hammerfell.",
+   "needs": [
+    {
+     "what": "Finish Wandering Monk",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Tenerio once Wandering Monk is done; he gives you the fourth contract."
+    }
+   ],
+   "firstStep": "Defeat the Alik'r warrior in Ben Erai",
+   "takesYou": [
+    {
+     "place": "Ben Erai",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "defeat the Alik'r warrior"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Tenerio"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Defeat the Alik'r warrior in Ben Erai",
+      "Talk to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Septims (gold)",
+     "when": "when you report back to Tenerio"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "No Guard Is Safe"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "gives the contract and pays you; in the Alik'r Desert Sanctuary"
+    },
+    {
+     "name": "an Alik'r warrior",
+     "role": "your target in Ben Erai (not named in the records)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The order comes from the journal ('my first/second/... contract') and the intro quest's last entry; the conditions on Tenerio's lines that hand out each contract aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script hands over Septims, but the amount isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "Ben Erai is a city of the Alik'r Desert; where in it the warrior stands isn't in these files, and the warrior isn't named."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000ED0 stages 10/20/200",
+    "giver INFO 000EE2 on Tenerio, stage below 21",
+    "alias BenErai, Target04000",
+    "reward script DDB_QF_DDBQuest04_03000831.Gold001"
+   ]
+  },
+  {
+   "edid": "DDBQuest05",
+   "name": "No Guard Is Safe",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tenerio hands it out as the last of the five Dark Brotherhood contracts in Hammerfell.",
+   "needs": [
+    {
+     "what": "Finish Alik'r No More",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Tenerio once Alik'r No More is done; he gives you the fifth and final contract."
+    }
+   ],
+   "firstStep": "Kill Laurentina inside the Fortress of Ben Erai",
+   "takesYou": [
+    {
+     "place": "Fortress of Ben Erai",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "kill Laurentina, a guard"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Tenerio"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill Laurentina inside the Fortress of Ben Erai",
+      "Go back to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Septims (gold)",
+     "when": "when you report back to Tenerio"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Disappearing in the Dark (once Kindred Judgment is also done)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "gives the contract and pays you; in the Alik'r Desert Sanctuary"
+    },
+    {
+     "name": "Laurentina",
+     "role": "your target, a guard inside the Fortress of Ben Erai"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The order comes from the journal ('my first/second/... contract') and the intro quest's last entry; the conditions on Tenerio's lines that hand out each contract aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script hands over Septims, but the amount isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "Laurentina's own record is marked essential; the quest asks you to kill her, so the quest presumably lifts that, but the script isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000ED1 stages 10/20/200",
+    "giver INFO 000EE4 on Tenerio, stage below 21",
+    "alias Target05000 = Laurentina (000EC4), placed in Fortress of Ben Erai (Gray Fox Cowl.esm:02E5A7)",
+    "Laurentina NPC essential=true",
+    "reward script DDB_QF_DDBQuest05_03000832.Gold001"
+   ]
+  },
+  {
+   "edid": "DDBQuest06",
+   "name": "Disappearing in the Dark",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "A letter saying \"Hammerfell needs you\" reaches you once you've finished the Hammerfell contracts and the Dawnguard story.",
+   "needs": [
+    {
+     "what": "Finish No Guard Is Safe",
+     "kind": "quest"
+    },
+    {
+     "what": "Finish Kindred Judgment (the Dawnguard quest where you slay Harkon)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "a letter (\"Hammerfell needs you\")",
+     "where": "comes to you; how it's delivered isn't in these files",
+     "how": "Once both quests are done you get the letter, then go back to Tenerio in the Alik'r Desert Sanctuary."
+    }
+   ],
+   "firstStep": "Talk to Tenerio in the Dark Brotherhood Sanctuary in the Alik'r Desert",
+   "takesYou": [
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "Tenerio asks you to find a missing initiate, Lucya"
+    },
+    {
+     "place": "the village where Lucya was supposed to be",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "look for Lucya; you find only a dead vampire"
+    },
+    {
+     "place": "an abandoned warehouse (Warehouse Basement)",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "Lucya's body is in the basement, her soul bound to a soul gem"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Tenerio in the Dark Brotherhood Sanctuary in the Alik'r Desert",
+      "Investigate the village where Lucya was supposed to be",
+      "Go back to Tenerio",
+      "Investigate the warehouse that Lucya had mentioned",
+      "Head back to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "The Crimson Eviscerator"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "sends you looking for Lucya; in the Alik'r Desert Sanctuary"
+    },
+    {
+     "name": "Lucya",
+     "role": "the missing initiate who first found you in Skyrim; found dead in the warehouse basement"
+    },
+    {
+     "name": "a vampire",
+     "role": "found dead out in the Alik'r Desert"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The requirements sit on the journal's opening entry; what actually starts the quest and how the letter reaches you (courier, or placed in your pack) isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "Neither the village nor the warehouse has a place record in these files; the dead vampire is placed out in the Alik'r Desert, and Lucya's body in a cell called Warehouse Basement, reached through a trapdoor."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000FCA stage 0 entry conditions: GetQuestCompleted Dawnguard.esm:007C25 (DLC1VQ08 Kindred Judgment) and 000ED1 (No Guard Is Safe)",
+    "stages 10-50, 200; aliases NoteAlias, VillaQ06, Warehouse, Trapdoor, LuciaClean",
+    "giver INFO 000FF2 on Tenerio, stage below 11",
+    "Lucya (dead) 000FD0 placed in Warehouse Basement 000F75",
+    "Vampire 000F11 placed in Alik'r Desert exterior"
+   ]
+  },
+  {
+   "edid": "DDBQuest07",
+   "name": "The Crimson Eviscerator",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "Picks up straight after Disappearing in the Dark: you set out to find Lucya's soul in the Soul Cairn.",
+   "needs": [
+    {
+     "what": "Finish Disappearing in the Dark",
+     "kind": "quest"
+    },
+    {
+     "what": "A way into the Soul Cairn",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "When you tell Tenerio about Lucya's death at the end of Disappearing in the Dark, this quest's first journal entry continues that story and sends you to the Soul Cairn."
+    }
+   ],
+   "firstStep": "Find the soul of Lucya in the Soul Cairn",
+   "takesYou": [
+    {
+     "place": "Soul Cairn Tower, in the Soul Cairn",
+     "hold": "Soul Cairn",
+     "why": "talk to Lucya's soul; she tells you about a Crimson Scar weapon and the cavern that holds it"
+    },
+    {
+     "place": "Soul Cavern",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "use Lucya's soul gem to open the path, beat the Protective Soul and take the Crimson Eviscerator"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "tell Tenerio what happened"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the soul of Lucya in the Soul Cairn",
+      "Enter the Soul Cavern in the Alik'r Desert",
+      "Use Lucya's soul gem to open the path",
+      "Defeat the protector of the cavern",
+      "Pick up the Crimson Eviscerator",
+      "Go back to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Crimson Eviscerator (dagger, 60 damage, weight 5)",
+     "when": "you pick it up in the Soul Cavern"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Crimson Scar Believers"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lucya",
+     "role": "her soul is in Soul Cairn Tower, in the Soul Cairn"
+    },
+    {
+     "name": "Protective Soul",
+     "role": "the cavern's guardian, fought in the Soul Cavern"
+    },
+    {
+     "name": "Tenerio",
+     "role": "you report to him at the end"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The first journal entry repeats the end of Disappearing in the Dark, so it reads as starting the moment that quest ends; the script that starts it isn't in these files."
+    },
+    {
+     "field": "needs",
+     "why": "How to get into the Soul Cairn isn't in these files; the earlier quest's requirement of Kindred Judgment suggests the Dawnguard story is what gives you the way in."
+    },
+    {
+     "field": "takesYou",
+     "why": "The Soul Cavern has no place record in these files; where it is in the Alik'r Desert isn't given."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000FCE stages 10-60, 200",
+    "giver INFO 000FFE on Lucya ghost 000FD1 (stage below 11); Tenerio stage below 61",
+    "Lucya 000FD1 placed in Soul Cairn Tower 000F96",
+    "Protective Soul 000FEC in Soul Cavern 000F12",
+    "reward script DDB_QF_DDBQuest07_04000913.DDBCrimsonEviscerator -> WEAP 000FCB"
+   ]
+  },
+  {
+   "edid": "DDBQuest08",
+   "name": "Crimson Scar Believers",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tenerio has found where the vampires trying to rebuild the Crimson Scar are hiding.",
+   "needs": [
+    {
+     "what": "Finish The Crimson Eviscerator",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tenerio",
+     "where": "inside the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Back at the Sanctuary after The Crimson Eviscerator, Tenerio tells you where the vampires are hiding."
+    }
+   ],
+   "firstStep": "Head to the Vampire Hideout",
+   "takesYou": [
+    {
+     "place": "Vampire Hideout (a cave)",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "kill the four vampires there"
+    },
+    {
+     "place": "Alik'r Desert Sanctuary",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Tenerio"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Head to the Vampire Hideout",
+      "Defeat the hostile vampires",
+      "Head back to Tenerio"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Septims (gold)",
+     "when": "when you report back to Tenerio"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tenerio",
+     "role": "sends you to the hideout and pays you"
+    },
+    {
+     "name": "four vampires",
+     "role": "Crimson Scar believers in the Vampire Hideout"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The records show Tenerio's line in this quest but not its conditions, so whether it starts by itself as The Crimson Eviscerator ends or only when you speak to him isn't certain."
+    },
+    {
+     "field": "takesYou",
+     "why": "The Vampire Hideout has no place record in these files; where it is in the Alik'r Desert isn't given."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script hands over Septims, but the amount isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Tenerio's only package keeps him wandering inside the Alik'r Desert Sanctuary with no time or conditions, so he should be there at any hour; where the Sanctuary sits on the map isn't in these files (the intro quest, The Dark Brotherhood in Hammerfell, sends you there)."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000FCF stages 10-30, 200",
+    "giver INFO 00100C on Tenerio, stage below 31",
+    "aliases Vamp01-04 placed in Vampire Hideout 000F3A",
+    "reward script DDB_QF_DDBQuest08_04000914.Gold001"
+   ]
+  },
+  {
+   "edid": "HABLBladesQuest01",
+   "name": "Protecting What Was Lost",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "A girl named Azita challenges you to win back her grandfather Azzin's sealed sword.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Azita",
+     "where": "around Azzin's Hideout in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Azita; she dares you to break the seal on Azzin's sword by fighting three dragons for their stones."
+    }
+   ],
+   "firstStep": "Activate the pillar in front of the magical barrier in Azzin's Hideout",
+   "takesYou": [
+    {
+     "place": "Azzin's Hideout",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "start the trials at the pillar, and later use the three stones on the fire, frost and shock pillars"
+    },
+    {
+     "place": "out in the Alik'r Desert",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "kill the Fire, Frost and Shock Dragons and take a stone from each body"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Interact with the pillar to begin the trials",
+      "Kill the Fire Dragon",
+      "Pick up the Fire Stone from the Fire Dragon's body",
+      "Kill the Frost Dragon",
+      "Pick up the Frost Stone from the Frost Dragon's body",
+      "Kill the Shock Dragon",
+      "Pick up the Shock Stone from the Shock Dragon's body",
+      "Use the Fire Stone on the pillar",
+      "Use the Frost Stone on the pillar",
+      "Use the Shock Stone on the pillar",
+      "Pick up the Boneshaver Replica"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Boneshaver Replica (sword, 66 damage, weight 10)",
+     "when": "at the end, once the seal is broken"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Azita",
+     "role": "Azzin's granddaughter; waits around Azzin's Hideout until you take her challenge, then moves to the Common House"
+    },
+    {
+     "name": "Fire Dragon, Frost Dragon, Shock Dragon",
+     "role": "the three trial dragons, out in the Alik'r Desert"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The conditions on Azita's opening line aren't in these files, so anything she requires first (for example the mod's Blades story) isn't known."
+    },
+    {
+     "field": "takesYou",
+     "why": "The three dragons are placed in the open Alik'r Desert; exactly where isn't in these files. Azzin's Hideout has no place record either."
+    },
+    {
+     "field": "where",
+     "why": "Azita's package before the quest keeps her near Azzin's Hideout; once it starts she sleeps and sandboxes at the Common House."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000B6B stages 10-83, 200",
+    "giver INFO 000B74 on Azita 001855, stage below 10",
+    "Azita packages HABLAzitaQuestStart (Azzin's Hideout, while quest below stage 10), HABLAzitaSleep/Sandbox (Common House, stage 10+)",
+    "aliases FireDragon 000AC7, FrostDragon 000AC9, ShockDragon 000AC8 placed in Alik'r Desert worldspace",
+    "reward script HABL_QF_HABLBladesQuest01_06000B6B.HABLBoneshaverReplica -> WEAP 000AC5"
+   ]
+  },
+  {
+   "edid": "HABLBladesQuest02",
+   "name": "In need of Scouts",
+   "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest in these records; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Loremaster Za'kir asks you to recruit two followers for the Blades at the Wind Scour Temple.",
+   "needs": [
+    {
+     "what": "Finish A Lost Temple in Hammerfell",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Loremaster Za'kir",
+     "where": "in the Wind Scour Temple, the Blades' temple in the Alik'r Desert (Hammerfell)",
+     "how": "Talk to Za'kir; he asks you to find two worthy followers to join the Blades in Hammerfell."
+    }
+   ],
+   "firstStep": "Find a follower and ask them to join the Blades in Hammerfell",
+   "takesYou": [
+    {
+     "place": "wherever your followers are",
+     "hold": "any",
+     "why": "ask two followers to join the Blades"
+    },
+    {
+     "place": "Wind Scour Temple",
+     "hold": "Alik'r Desert (Hammerfell)",
+     "why": "report back to Za'kir"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "which two followers you ask",
+     "leadsTo": "those two join the Blades at the Wind Scour Temple"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find a follower and ask them to join the Blades in Hammerfell",
+      "Find a second follower to ask them to join the Blades in Hammerfell",
+      "Head to the Wind Scour Temple and talk to Za'kir"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Side Quest",
+   "opens": [
+    "Sands of the Past"
+   ],
+   "closes": [
+    "the two followers you recruit join the Blades for the Wind Scour Temple"
+   ],
+   "people": [
+    {
+     "name": "Loremaster Za'kir",
+     "role": "Blades loremaster who gives and closes the quest"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Za'kir only stands in the Wind Scour Temple once A Lost Temple in Hammerfell is done (his package); the conditions on his opening line aren't in these files."
+    },
+    {
+     "field": "closes",
+     "why": "Whether recruited followers stop following you, and which followers count, isn't in these files."
+    },
+    {
+     "field": "opens",
+     "why": "Sands of the Past is the next Blades quest from Za'kir; its start conditions aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Za'kir is placed in the Common House, but from A Lost Temple in Hammerfell until Sands of the Past is done his package keeps him in the Wind Scour Temple; afterwards he goes to the Common House."
+    }
+   ],
+   "evidence": [
+    "QUST BetalillesHammerfellQuestBundle.esp:000C5C stages 10-30, 200",
+    "giver INFO 000C61 on Za'kir 001856, stage below 10",
+    "Za'kir packages HABLLoremasterSandbox01 (Wind Scour Temple; 000A8E completed, 000C5D not) and Sandbox02 (Common House; 000C5D completed)",
+    "aliases Recruit01, Recruit02, Zakir01"
+   ]
+  }
+ ]
+}
