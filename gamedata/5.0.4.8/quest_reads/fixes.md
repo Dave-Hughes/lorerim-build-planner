@@ -28,3 +28,5 @@
 - **024** (Vigilant story, Ancient Molag Bal): 21 fixed, 19 unsure. Script-named rewards put back (Vampire Form, Cursed Arm, Mark of Molag Bal); Thus Spoke Khajiit doesn't fail if Jo'vanni dies; No Mercy has three endings, not four; the Altar of Molag Bal is beneath Stendarr's Beacon; details that came from memory removed (Iddra, Keerava, "Jacob's past").
 - **030** (Penitus Oculatus, the lost dog): 7 fixed. The Defector is in the Dawnstar Sanctuary only if you spared her earlier; Lod works in Falkreath 8 to 8, home only evenings.
 - **026** (Vigilant, the Molag Bal memories): 8 fixed. The Steward isn't in the Palace of the Kings while Empty Cells runs; the Temple of Stendarr there is Gwyneth's cell in Stuhn Ravine; "Morihaus" and "the prophet" came from lore, not the records.
+- **029** (Meridia's Order, Penitus Oculatus start): 2 fixed, 5 unsure. Paladin Marith offers to follow you in The Ritual; A Parting Gift's script-named clothes kept as unconfirmed rewards.
+- **028** (Meridia's Order, Fiya's realm): 3 fixed. Killing a prisoner in A Fate Worse Than Death loses nobody from the Order (they're separate records); The Jester starts in the Malevolent Palace.

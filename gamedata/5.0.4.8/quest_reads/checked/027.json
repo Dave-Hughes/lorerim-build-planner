@@ -1,0 +1,1282 @@
+{
+  "checks": [
+    {
+      "edid": "zzzCHMemoryQuest07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No dialogue, event or start line in quest_givers/quest_starts sets its first stage; 'by itself' with the reason given is the honest reading."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition in the records names an earlier quest; it sits in the Vigilant line (questlines_raw lines[4]) only."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Alessia (INFO 0731F6, stage below 41) and the nameless Molag Bal (stage below 51) only speak while the quest runs; nothing shows who or what opens it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Only objective (index 0) is 'Where does the man-ape sleep?'; game's words kept."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Both aliased NPCs are placed in cell 06C8AA, world White Wasteland."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two completing stages (70, 150) and nothing that says what picks one; left empty with the reader's unsure note."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "quest_givers has no reward candidates for 06F53C."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCHMemoryQuest08",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No start line or event; Lamae's opening INFO 080E9E needs stage below 11, i.e. the quest already running."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition names an earlier quest."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Same as above; nothing sets the first stage."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Only objective: 'The rolling Stone dwells in the fire, waiting to be picked up'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Order follows the dialogue gates: Lamae <11 and Molag Bal TE <61 in Elder Field, Molag Bal BE <211 in the Stuhn Ravine memory cell 083681 (Laza placed there too), Death Bringer <311 in Sancremor Angasel cell 088A8D."
+        },
+        "choices": {
+          "verdict": "unsure",
+          "note": "Five stages are flagged as completing (90, 230, 350, 370, 999). The records don't say whether these are different endings or just checkpoints of the memory; added to unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Repeater (08221A) and Lamae's Kin (03DCE9) are properties on QF_zzzCHMemoryQuest08_02080E91; kept per Bob's 23 Oct ruling with the reader's unsure note. Lamae's Kin is also a property on The Blood Matron (AbBloodofLamae) and Art of Mercy (AbLamaeCurse), so it may be a curse being changed."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCHMemoryQuest09",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No start line or event; Sheogorath's INFO 2CC210 needs stage below 51 while running."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition names an earlier quest."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nothing sets the first stage."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Only objective: 'Ah, fetus, alas, fetus...'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Sheogorath, Lamae, Molag Bal placed in the Old Forest world; Jacob (zzzCHVigilantElderMemory), Shor (alias Fox) and Tsun in the Whale Graveyard world."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Completing stages 150/200/999, nothing says what decides; reader's unsure note stands."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates in quest_givers for 2CAE30."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCHqSAExile",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No giver, start line or event. Owner, TargetLocation and Victim01-03 are filled when it starts, consistent with 'by itself'."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The two Sacred Anatomancers (4EC7E0, 4E7F96) are also aliases on quest 4EFDFB, which isn't among the kept quests; no condition links them. Unsure note stands."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nothing in the records sets the first stage."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 0 'Take back your name from <Alias=Owner> in <Alias=TargetLocation>' rendered without the alias tags."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Target location is a run-time alias; empty with an unsure note is right."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCHrqSoulShriven",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "'radiant' left alone per Bob's ruling; no 'repeatable' claim made. Enemy alias filled at run time."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, no start line or event."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 'Defeat <Alias=Enemy>' rendered without the tag."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Only aliases are Enemy and Player; no place."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCHSubQuest13",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No start line; Belharza the Bull's INFO 51D632 needs stage below 41 while running."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition names an earlier quest."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nothing sets the first stage."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Only objective: 'Broken horns, sky incarnate'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Placements check out: Morihaus at Barrier Tower of Bala (world Coldharbour), Emperor Belharza in Fort Welkynd cell 0E2693, Bull/Man-Bull/dragon in cell 51D5D5 named '???', Amicus Tharn in Concealed Charnel of Belharza; places_raw lists Broken Horns under Inquisition Court District."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Ami-El's Royal Guard Cloak (zzVcgRecipeDrkCloak) is wrongly in the 'or with the perk even without the quest' group. Its conditions are HasPerk Tailoring & Polishing (AND) then GetQuestCompleted 51ADBF (OR flag on the last condition, so it ORs with nothing): it needs both the quest done and Tailoring & Polishing. The other Drk*/DragonShield* recipes are GetQuestCompleted (OR) then HasPerk Ebony Smithing, i.e. quest OR perk, as the reader said. Mntr* = (global 5353B4 OR quest) AND Ebony; Thrn* = (fn84 OR quest) AND Daedric/Ebony; RomanBull*/HrBattleAxe = quest AND Glass (cloak: Tailoring). Those three groups are right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCOGuide",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No giver, start line or event; the objectives walk the Child of Oblivion mansion."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Kept per Bob's ruling: the objectives (Julius, Blood Curse of Jealousy) point at Child of Oblivion, and no condition confirms it; the reader's unsure note says so."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nothing sets the first stage."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "First objective (index 10): 'Break the Blood Curse of Shivers'."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The Blood Curses aren't shown as rooms of the Bruiant Mansion. The Blood Curse of Jealousy is its own world in the records (Julia the Crimson's placement in Child of Oblivion: world 'Blood Curse of Jealousy', location 'Blood Curse'). Split it out from the mansion; the other curses have no placement here."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCOMq01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Gwyneth (02749A) is the named giver; INFO 0669E9 gated below stage 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Gwyneth's line only checks this quest's stage; nothing names an earlier quest. Unsure note stands."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Gwyneth in the Temple of Stendarr (cell 025091, location Stuhn Ravine) is right as the person to go to, but the journal's first objective is already 'Talk to Gwyneth', so the quest is in your journal before you speak to her. What puts it there isn't in these files; added to unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 0: 'Talk to Gwyneth'."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "'a hidden room on the estate' isn't supported: the killable Bal (064870) is placed in cell 04F6C8 'Hidden Room', location 'Hidden Room', with no world or tie to the Bruiant Estate. The rest checks out (Julius/Marcus/Molag Bal in Bruiant Mansion South Wing, Bal on the Bruiant Estate world, Julia in the Blood Curse of Jealousy)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 80 'Die in flames as a martyr or accept Molag Bal's corruption in exchange for help', aliases MartydomMarker/CorruptMarker, several completing stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Spell Tome (Expert): Conjure Child of Oblivion via QF_zzzCOMq01_01065932.PieceOfBal; spell 10F6AC Conjuration, Expert, minSkill 75. Kept with the script note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "zzzCOSubQ01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Gwyneth INFO 3288EF gated below stage 21; first objective (index 20) 'Talk to Gwyneth'."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition names an earlier quest."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Gwyneth in the Temple of Stendarr; the reader already flags that earlier stages (0, 10) come before 'Talk to Gwyneth'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "'Talk to Gwyneth'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Temple of Stendarr for Gwyneth; second M'que (alias Mque02, 3822C8) placed on the Bruiant Estate world, line gated below 31."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Per Bob's 23 Oct ruling, spells named by the quest's own script stay in rewards with an unsure note. QF_zzzCOSubQ01_02324E7E also holds LamaeBlood -> Lamae's Kin (03DCE9) and MolagCurse -> Mark of Molag Bal (013BEA); nothing contradicts them, so they go back in, flagged as possibly being taken away rather than given."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "NMeridia01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Start-game quest (quest_starts_raw meridias-order startGame true); Marith's INFO 00154C below stage 1 and her forcegreet package start it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Forcegreet NMeridia01MarithForcegreet01 needs DA09 (Skyrim.esm:04E4E1) at stage 500, which is The Break of Dawn's completing stage ('...retrieved the artifact Dawnbreaker')."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "'she comes to you while you're in a settlement' is a guess: the forcegreet's LocationHasKeyword condition names keyword Skyrim.esm:013168, which no file here names. Rewritten without the guess; Marith and the Alara hand-off are right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10: 'Speak with High Priestess Alara at Meridia's Sanctum'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Alara in Meridia's Sanctum (001309); necromancer Malfyur placed in The Winking Skeever (016A0E), Solitude, Haafingar; journal says 'kill a Necromancer in Solitude'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Linear journal (10/20/30/40), no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates; last log says only that Alara will speak to you when ready."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Our Lady (003B23) first log follows on ('After gaining High Priestess Alara's trust...'); Alara's NMeridia01Sit package runs from stage 30 here until Our Lady stage 20."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "zzzCHMemoryQuest07",
+      "name": "Temptation of Marukh",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "One of Vigilant's memories, played out in the White Wasteland; nobody hands it to you, and the records don't show what opens it.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Where does the man-ape sleep?",
+      "takesYou": [
+        {
+          "place": "White Wasteland (a memory)",
+          "hold": null,
+          "why": "where the whole memory takes place, with Alessia and Molag Bal"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Where does the man-ape sleep?"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Alessia",
+          "role": "in the White Wasteland; you talk to her partway through"
+        },
+        {
+          "name": "Molag Bal",
+          "role": "in the White Wasteland; you talk to him partway through (his record has no display name, only the quest's 'Molag Bal' role)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No dialogue line, event or script in these files sets the first stage. Alessia's and Molag Bal's lines only work once the quest is already running, so they are not how it begins."
+        },
+        {
+          "field": "needs",
+          "why": "The quest is part of Vigilant (its record names put it in the Coldharbour chapter), but no condition in these files says which earlier quest must be done first."
+        },
+        {
+          "field": "choices",
+          "why": "The quest has two different finishing stages, so it likely ends one of two ways, but nothing here says what decides it."
+        },
+        {
+          "field": "steps",
+          "why": "The quest has no journal text and only one objective, so the route through the memory can't be read from the records."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:06F53C: type Misc, no journal entries, one objective at stage 0, completing stages 70 and 150",
+        "quest_givers: Alessia Vigilant.esm:0708BE INFO 0731F6 (stage < 41); zzzCHMolagBalInMemoryTail 0708BB (stage < 51)",
+        "alias placements: cell Vigilant.esm:06C8AA, world White Wasteland",
+        "questlines_raw: in the VIGILANT line (modid 11894)"
+      ]
+    },
+    {
+      "edid": "zzzCHMemoryQuest08",
+      "name": "The Nameless Bard",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "One of Vigilant's memories, starting in Elder Field; nobody hands it to you, and the records don't show what opens it.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "The rolling Stone dwells in the fire, waiting to be picked up",
+      "takesYou": [
+        {
+          "place": "Elder Field (a memory)",
+          "hold": null,
+          "why": "meet Lamae Beolfag and Facis, then face Molag Bal"
+        },
+        {
+          "place": "Stuhn Ravine (a memory)",
+          "hold": null,
+          "why": "a second meeting with Molag Bal, with Laza there too"
+        },
+        {
+          "place": "Sancremor Angasel (a memory)",
+          "hold": null,
+          "why": "the last part of the memory, with the Death Bringer"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "The rolling Stone dwells in the fire, waiting to be picked up"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Repeater (spell)",
+          "when": "set by the quest's script; the moment isn't clear from these files"
+        },
+        {
+          "what": "Lamae's Kin (spell)",
+          "when": "set by the quest's script; the moment isn't clear from these files"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Lamae Beolfag",
+          "role": "in Elder Field; the first person you talk to"
+        },
+        {
+          "name": "Facis",
+          "role": "in Elder Field"
+        },
+        {
+          "name": "Molag Bal",
+          "role": "met in Elder Field and again in the Stuhn Ravine memory (the record has no display name)"
+        },
+        {
+          "name": "Laza",
+          "role": "in the Stuhn Ravine memory"
+        },
+        {
+          "name": "the Death Bringer",
+          "role": "in Sancremor Angasel (named only by the quest's 'Volar' role; no display name)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No line or event in these files sets the first stage. Lamae's opening line only works while the quest is already running, so she is the first person you talk to, not the way in."
+        },
+        {
+          "field": "needs",
+          "why": "Part of Vigilant's Coldharbour chapter by its record names, but no condition here names an earlier quest."
+        },
+        {
+          "field": "rewards",
+          "why": "Repeater and Lamae's Kin are properties on the quest's script. These files don't show whether the script gives them or takes them away, and Lamae's Kin is also held by earlier Vigilant quests, so it may be a curse being changed rather than a prize."
+        },
+        {
+          "field": "takesYou",
+          "why": "The order of the three places comes from the order of the dialogue in the quest, not from journal text; the quest has none."
+        },
+        {
+          "field": "choices",
+          "why": "Several stages are marked as finishing the quest, but nothing here says whether they are different endings or just the end of each part of the memory."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:080E91: type Misc, no journal entries, one objective, completing stages 90/230/350/370/999",
+        "quest_givers: Lamae Beolfag 080E93 INFO 080E9E (stage < 11); MolagBalInMemoryTE 080E96 (< 61); MolagBalInMemoryBE 0875EF (< 211); DeathBringerMemory 088BC8 (< 311)",
+        "placements: Elder Field world (cells 07FA2E, 078793, 078791); Stuhn Ravine cell 083681 location Memory; Sancremor Angasel cell 088A8D",
+        "rewards: QF_zzzCHMemoryQuest08_02080E91.Repeater -> 08221A; .LamaeBlood -> 03DCE9"
+      ]
+    },
+    {
+      "edid": "zzzCHMemoryQuest09",
+      "name": "Beyond the Shores of Madness",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "One of Vigilant's memories, set in the Old Forest and the Whale Graveyard; nobody hands it to you, and the records don't show what opens it.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Ah, fetus, alas, fetus...",
+      "takesYou": [
+        {
+          "place": "Old Forest (a memory)",
+          "hold": null,
+          "why": "Sheogorath, Lamae and Molag Bal are here"
+        },
+        {
+          "place": "Whale Graveyard (a memory)",
+          "hold": null,
+          "why": "Jacob, Shor and Tsun are here"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Ah, fetus, alas, fetus..."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Sheogorath",
+          "role": "in the Old Forest; you talk to him partway through (the record has no display name, only the quest's 'Sheogorath' role)"
+        },
+        {
+          "name": "Lamae",
+          "role": "in the Old Forest (no display name on the record)"
+        },
+        {
+          "name": "Molag Bal",
+          "role": "in the Old Forest"
+        },
+        {
+          "name": "Jacob",
+          "role": "in the Whale Graveyard (no display name on the record)"
+        },
+        {
+          "name": "Shor",
+          "role": "in the Whale Graveyard"
+        },
+        {
+          "name": "Tsun",
+          "role": "in the Whale Graveyard"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Nothing in these files sets the first stage. Sheogorath's line only works once the quest is running."
+        },
+        {
+          "field": "needs",
+          "why": "Part of Vigilant's Coldharbour chapter by its record names, but no condition here names an earlier quest."
+        },
+        {
+          "field": "choices",
+          "why": "The quest has more than one finishing stage, but nothing here says what decides which one you reach."
+        },
+        {
+          "field": "people",
+          "why": "Sheogorath, Lamae and Jacob have no display names on their records; the names come from the quest's role labels."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:2CAE30: type Misc, no journal entries, one objective, completing stages 150/200/999",
+        "quest_givers: zzzCHSheogorathMemoryMad 2C8797 INFO 2CC210 (stage < 51)",
+        "placements: Old Forest world (cells 2C5DD4, 2C602B); Whale Graveyard world (cells 2DA952, 2DA93C, 2DA930)",
+        "people_raw: Shor 2E3483, Tsun 2DE6ED"
+      ]
+    },
+    {
+      "edid": "zzzCHqSAExile",
+      "name": "Maggot",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Opens on its own in Vigilant: someone has your name and you must take it back from them; who and where are picked when it starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Take back your name from the person the quest names, in the place it names",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Take back your name from <Alias=Owner> in <Alias=TargetLocation>",
+            "<Alias=Victim01> has been dazzled by the Radiance of Life",
+            "<Alias=Victim02> has been dazzled by the Radiance of Life",
+            "<Alias=Victim03> has been dazzled by the Radiance of Life"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Sacred Anatomancer",
+          "role": "tied to this quest; one is placed in the Old Well, another in the Dungeon beside the Temple of Stendarr in Stuhn Ravine"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No dialogue, event or script in these files sets the first stage. The person who has your name, the place, and the three dazzled victims are all filled in by the game when it starts, so they can't be named ahead of time."
+        },
+        {
+          "field": "needs",
+          "why": "Its link to the Sacred Anatomancer suggests it follows his quest, but no condition here says so."
+        },
+        {
+          "field": "takesYou",
+          "why": "The place is filled in at run time."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:4EC7F3: type Misc, no journal entries; objectives use aliases Owner, TargetLocation, Victim01-03; completing stages 999 and 9999",
+        "aliases SACH (Sacred Anatomancer 4EC7E0, cell Old Well 0B5BBE) and SATam (Sacred Anatomancer 4E7F96, cell Dungeon 4E7F2E)",
+        "quest_starts_raw vigilants: 'Dungeon' door from cell Vigilant.esm:0243FB, the same cell as the Temple of Stendarr doors"
+      ]
+    },
+    {
+      "edid": "zzzCHrqSoulShriven",
+      "name": "Feral Soul-Shriven",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "radiant",
+      "canDoWhy": "A short 'defeat this enemy' task the game fills in itself, pointing you at a feral Soul-Shriven.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Defeat the enemy the quest marks",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Defeat <Alias=Enemy>"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "canDo",
+          "why": "Calling it radiant comes from the enemy being filled in at run time and from the record's name; nothing in these files shows what starts it or whether it repeats."
+        },
+        {
+          "field": "starts",
+          "why": "No dialogue, event or script here sets the first stage."
+        },
+        {
+          "field": "steps",
+          "why": "None of the quest's stages is marked as finishing it, so how it ends isn't clear from the records."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:51532C: type Misc, aliases Enemy and Player, objective 'Defeat <Alias=Enemy>', no completing stage flagged",
+        "quest_givers: no giver, no people"
+      ]
+    },
+    {
+      "edid": "zzzCHSubQuest13",
+      "name": "Broken Horns",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "A Vigilant side story in Coldharbour about Belharza; nobody hands it to you, and the records don't show what opens it.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Broken horns, sky incarnate",
+      "takesYou": [
+        {
+          "place": "Inquisition Court District",
+          "hold": null,
+          "why": "the records tie this district to the quest"
+        },
+        {
+          "place": "Barrier Tower of Bala, in Coldharbour",
+          "hold": null,
+          "why": "Morihaus is here"
+        },
+        {
+          "place": "Fort Welkynd",
+          "hold": null,
+          "why": "Emperor Belharza is here"
+        },
+        {
+          "place": "a place the game names only '???'",
+          "hold": null,
+          "why": "Belharza the Bull, Belharza the Man-Bull and the dragon are here; you talk to Belharza the Bull partway through"
+        },
+        {
+          "place": "Concealed Charnel of Belharza",
+          "hold": null,
+          "why": "Amicus Tharn, the boss"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Broken horns, sky incarnate"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Recipes at the Anvil of Zenithar: Man-Bull Emperor Armor, Boots, Gauntlets, Helmet and Mask, plus Heretic's Staff (each needs Glass Smithing); Man-Bull Emperor Cloak (needs Tailoring & Polishing)",
+          "when": "once the quest is completed"
+        },
+        {
+          "what": "Recipes at the Anvil of Zenithar: Minotaur War Axe, Minotaur Battleaxe and Belharza's Battleaxe (need Ebony Smithing); Sword of Agony (Daedric Smithing) and Greatsword of Agony (Ebony Smithing)",
+          "when": "once the quest is completed, or through another unlock the recipe also accepts"
+        },
+        {
+          "what": "Recipes at the Anvil of Zenithar: Ami-El's Royal Guard Armor, Boots, Gauntlets, Helmet (A and B) and Shield, Alessian Order Dagger, Sword and Greatsword, Shield of the One (Gold)",
+          "when": "once the quest is completed, or with Ebony Smithing even without it"
+        },
+        {
+          "what": "Recipe at the Anvil of Zenithar: Ami-El's Royal Guard Cloak (needs Tailoring & Polishing)",
+          "when": "once the quest is completed"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Belharza the Bull",
+          "role": "you talk to him partway through; placed somewhere the game names only '???'"
+        },
+        {
+          "name": "Belharza the Man-Bull",
+          "role": "in the same '???' place"
+        },
+        {
+          "name": "Emperor Belharza",
+          "role": "in Fort Welkynd"
+        },
+        {
+          "name": "Morihaus",
+          "role": "at the Barrier Tower of Bala in Coldharbour"
+        },
+        {
+          "name": "Amicus Tharn",
+          "role": "the boss, in the Concealed Charnel of Belharza"
+        },
+        {
+          "name": "a dragon (Kah-Kaan-Krein, by its record name)",
+          "role": "in the '???' place; it has no display name"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No dialogue, event or script here sets the first stage. Belharza the Bull's line works only once the quest is running."
+        },
+        {
+          "field": "needs",
+          "why": "Part of Vigilant's Coldharbour chapter by its record names, but no condition names an earlier quest."
+        },
+        {
+          "field": "steps",
+          "why": "No journal text and one objective. The quest also tracks a horn, a ring and a scroll in a container, but the records don't say where that container is or what you do with them."
+        },
+        {
+          "field": "takesYou",
+          "why": "The order of the places isn't in the records, and the '???' place has no real name in the files."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:51ADBF: type Misc, no journal entries, one objective, completing stages 60 and 999; aliases Container, QIHorn, QIRing, QIScroll, MarkerMem, MarkerQuiz, MarkerES",
+        "quest_givers: Belharza the Bull 51D61C INFO 51D632 (stage < 41), cell 51D5D5 '???'",
+        "places_raw: Inquisition Court District 385D89 lists Broken Horns",
+        "recipes_raw: 25 COBJ at zzzCHCraftZenithar (Anvil of Zenithar) with GetQuestCompleted 51ADBF; RomanBull_Gold and HrBattleAxe AND the quest; Mntr*/Thrn* (global 5353B4 or fn84) OR the quest, AND the perk; Drk*/DragonShield* the quest OR the perk",
+        "checker: zzVcgRecipeDrkCloak conditions HasPerk Tailoring & Polishing (AND), GetQuestCompleted 51ADBF (OR, last) = both needed"
+      ]
+    },
+    {
+      "edid": "zzzCOGuide",
+      "name": "Stendarr Guide",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "A guide that runs alongside Child of Oblivion and points you through the Blood Curses in the Bruiant Mansion until Julius is freed.",
+      "needs": [
+        {
+          "what": "Child of Oblivion under way",
+          "kind": "quest"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Break the Blood Curse of Shivers",
+      "takesYou": [
+        {
+          "place": "Bruiant Mansion",
+          "hold": null,
+          "why": "Julius' room, the basement and Bartholo's room; Julius is freed here at the end"
+        },
+        {
+          "place": "the Blood Curses (Shivers, Corruption, Froth, Chains, Jealousy)",
+          "hold": null,
+          "why": "break each one; the Blood Curse of Jealousy is a place of its own, where Julia the Crimson waits"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Break the Blood Curse of Shivers",
+            "Break the Blood Curse of Corruption",
+            "Head to Julius' room",
+            "Head to the basement",
+            "Break the Blood Curse of Froth",
+            "Find the key to Bartholo's room",
+            "Break the Blood Curse of Chains",
+            "Break the Blood Curse of Jealousy",
+            "Free Julius"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Julius",
+          "role": "the one you free at the end; in the Bruiant Mansion South Wing"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The tie to Child of Oblivion comes from the objectives (Julius, the Blood Curse of Jealousy where Julia the Crimson waits). No condition or script in these files says what turns this guide on."
+        },
+        {
+          "field": "starts",
+          "why": "No dialogue, event or script here sets the first stage."
+        },
+        {
+          "field": "takesYou",
+          "why": "Only the Blood Curse of Jealousy has a placement in these files, and it is its own place, not a room of the mansion. How you reach the curses from the mansion isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:43CBAE: type Misc, objectives at stages 10-60, completing stages 70 and 999; aliases GuideCurse01-05, KeyJulius, KeyButcher, KeyVigil, GuideJulius",
+        "QUST Vigilant.esm:065932 aliases Julius (0461D8, Bruiant Mansion South Wing) and Julia (world 'Blood Curse of Jealousy')"
+      ]
+    },
+    {
+      "edid": "zzzCOMq01",
+      "name": "Child of Oblivion",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Talk to Gwyneth, the librarian at Vigilant's Temple of Stendarr in Stuhn Ravine, and she sends you to the Bruiant Mansion.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Gwyneth",
+          "where": "the Temple of Stendarr in Stuhn Ravine",
+          "how": "Talk to Gwyneth; she sends you to investigate the Bruiant Mansion."
+        }
+      ],
+      "firstStep": "Talk to Gwyneth",
+      "takesYou": [
+        {
+          "place": "Temple of Stendarr, Stuhn Ravine",
+          "hold": null,
+          "why": "Gwyneth gives you the job"
+        },
+        {
+          "place": "Bruiant Mansion, on the Bruiant Estate",
+          "hold": null,
+          "why": "investigate what happened there and defeat Julius"
+        },
+        {
+          "place": "the Blood Curse of Jealousy",
+          "hold": null,
+          "why": "Julia the Crimson is here"
+        },
+        {
+          "place": "a Hidden Room",
+          "hold": null,
+          "why": "a Bal you can kill is here"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Die in flames as a martyr",
+          "leadsTo": "one of the quest's endings"
+        },
+        {
+          "choice": "Accept Molag Bal's corruption in exchange for his help",
+          "leadsTo": "a different ending"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Gwyneth",
+            "Travel to the Bruiant Mansion",
+            "Investigate and solve the incident of the Bruiant Mansion",
+            "Defeat Julius",
+            "Escape from the mansion",
+            "Die in flames as a martyr or accept Molag Bal's corruption in exchange for help"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Spell Tome (Expert): Conjure Child of Oblivion (Conjuration, needs skill 75)",
+          "when": "set by the quest's script; the moment isn't clear from these files"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Gwyneth",
+          "role": "librarian at the Temple of Stendarr in Stuhn Ravine; starts the quest"
+        },
+        {
+          "name": "M'que",
+          "role": "a Khajiit Vigilant in Stuhn Ravine; a second one waits on the Bruiant Estate"
+        },
+        {
+          "name": "Marcus Bruiant",
+          "role": "in the Bruiant Mansion South Wing"
+        },
+        {
+          "name": "Bal",
+          "role": "on the Bruiant Estate; a version of him you can kill is in a hidden room"
+        },
+        {
+          "name": "Julius",
+          "role": "in the Bruiant Mansion South Wing; you must defeat him"
+        },
+        {
+          "name": "Julia the Crimson",
+          "role": "in the Blood Curse of Jealousy"
+        },
+        {
+          "name": "Molag Bal",
+          "role": "in the mansion at the end; offers his corruption in exchange for help (talks to you late in the quest)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Gwyneth's opening line only checks the quest's own stage in these files. Vigilant is a chain, and this looks like a later chapter, but no condition here names an earlier quest."
+        },
+        {
+          "field": "where",
+          "why": "Gwyneth is placed in the Temple of Stendarr and works or wanders nearby; her hour-by-hour routine isn't decoded in these files. How to get from Skyrim to Stuhn Ravine isn't in these records either."
+        },
+        {
+          "field": "takesYou",
+          "why": "The M'que on the estate is a Vigilant merchant whose record name suggests a carriage driver, so he may be how you travel to the estate; the records don't say so outright."
+        },
+        {
+          "field": "choices",
+          "why": "Martyrdom and corruption lead to different finishing stages, but these files don't say what each one gives or costs."
+        },
+        {
+          "field": "rewards",
+          "why": "The spell tome is a property on the quest's script; whether you get it on both endings isn't shown."
+        },
+        {
+          "field": "starts",
+          "why": "The journal already tells you to talk to Gwyneth, so the quest is added before you meet her. What adds it isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Hidden Room has no world or nearby place in these files, so it can't be tied to the estate or the mansion."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:065932: type Side Quest; objectives at stages 0/20/30/60/70/80; completing stages 100/200/999/9999; aliases CorruptMarker, MartydomMarker",
+        "quest_givers: Gwyneth 02749A INFO 0669E9 (stage < 10), cell Temple of Stendarr 025091, location Stuhn Ravine; zzzCOMolagBal 04F78D (stage < 71)",
+        "people_schedules: Gwyneth packages zzzAoMlibrarianWorking, zzzAoMLibrarianSandbox",
+        "rewards: QF_zzzCOMq01_01065932.PieceOfBal -> Vigilant.esm:10F6AD; spells_raw 10F6AC Expert, minSkill 75"
+      ]
+    },
+    {
+      "edid": "zzzCOSubQ01",
+      "name": "Successor",
+      "plugin": "Vigilant.esm (no later plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Talk to Gwyneth at the Temple of Stendarr in Stuhn Ravine and look into where the Keeper has gone.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Gwyneth",
+          "where": "the Temple of Stendarr in Stuhn Ravine",
+          "how": "Talk to Gwyneth; she asks you to find out where the Keeper has gone."
+        }
+      ],
+      "firstStep": "Talk to Gwyneth",
+      "takesYou": [
+        {
+          "place": "Temple of Stendarr, Stuhn Ravine",
+          "hold": null,
+          "why": "Gwyneth sends you out and you report back to her"
+        },
+        {
+          "place": "Bruiant Estate",
+          "hold": null,
+          "why": "M'que waits here while you investigate the Keeper's whereabouts"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Gwyneth",
+            "Investigate the Keeper's whereabouts",
+            "Report to Gwyneth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Vigilant Robes, Vigilant Hood, Vigilant Boots and Vigilant Gloves",
+          "when": "set by the quest's script; the moment isn't clear from these files"
+        },
+        {
+          "what": "Histus Flask",
+          "when": "set by the quest's script"
+        },
+        {
+          "what": "Steel Sword",
+          "when": "set by the quest's script"
+        },
+        {
+          "what": "Lamae's Kin (spell)",
+          "when": "set by the quest's script; it may be taken away rather than given"
+        },
+        {
+          "what": "Mark of Molag Bal (spell)",
+          "when": "set by the quest's script; it may be taken away rather than given"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Gwyneth",
+          "role": "librarian at the Temple of Stendarr; starts the quest and takes your report"
+        },
+        {
+          "name": "M'que",
+          "role": "a Khajiit Vigilant; one in Stuhn Ravine, one on the Bruiant Estate, both spoken to during the investigation"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The quest has earlier stages with no objective before 'Talk to Gwyneth', so something may set it up before you speak to her; that isn't shown in these files."
+        },
+        {
+          "field": "needs",
+          "why": "No condition here names an earlier quest, and it isn't clear whether this comes before or after Child of Oblivion."
+        },
+        {
+          "field": "rewards",
+          "why": "Everything listed is a property on the quest's script, not confirmed as handed over. Lamae's Kin and Mark of Molag Bal are marks from earlier Vigilant chapters (No Mercy, The Landing, The Blood Matron, Art of Mercy hold them too); these files don't show whether this quest gives them or removes them."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Bruiant Estate comes from where the second M'que is placed; the investigation's actual route isn't in the records."
+        }
+      ],
+      "evidence": [
+        "QUST Vigilant.esm:324E7E: type Side Quest; objectives at stages 20/30/40; completing stages 60 and 9999; aliases Libra, HornMarker, Mque01, Mque02",
+        "quest_givers: Gwyneth 02749A INFO 3288EF (stage < 21); zzzCOVigilantForCarrage02 3822C8 (stage < 31, Bruiant Estate cell 048B3A); M'que 048B6D (stage < 51, Stuhn Ravine)",
+        "rewards: QF_zzzCOSubQ01_02324E7E properties VigilantRobe/Hood/Boot/Glove, HistBin 11880C, Sword 013989, LamaeBlood 03DCE9, MolagCurse 013BEA"
+      ]
+    },
+    {
+      "edid": "NMeridia01",
+      "name": "Meridia's Order",
+      "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no later plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Once you've finished The Break of Dawn, Paladin Marith comes up to you and says High Priestess Alara wants to see you.",
+      "needs": [
+        {
+          "what": "Finish The Break of Dawn (Meridia's quest for Dawnbreaker)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Paladin Marith",
+          "where": "she comes up to you on her own once you're away from Meridia's Sanctum",
+          "how": "After The Break of Dawn, Marith walks up and speaks to you; her leader, High Priestess Alara, wants to meet you."
+        }
+      ],
+      "firstStep": "Speak with High Priestess Alara at Meridia's Sanctum",
+      "takesYou": [
+        {
+          "place": "Meridia's Sanctum",
+          "hold": null,
+          "why": "meet High Priestess Alara, and come back to her afterwards"
+        },
+        {
+          "place": "Solitude (the necromancer is placed in the Winking Skeever)",
+          "hold": "Haafingar",
+          "why": "kill the necromancer Malfyur the Unliving"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak with High Priestess Alara at Meridia's Sanctum",
+            "Kill the Necromancer in Solitude",
+            "Return to Alara"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Daedric",
+      "opens": [
+        "Our Lady"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Paladin Marith",
+          "role": "comes to you to start the quest; follows you while you hunt the necromancer and go back to Alara"
+        },
+        {
+          "name": "High Priestess Alara",
+          "role": "leader of Meridia's Order, in Meridia's Sanctum; gives you the necromancer job"
+        },
+        {
+          "name": "Arch-Paladin Laracin",
+          "role": "in Meridia's Sanctum"
+        },
+        {
+          "name": "Malfyur the Unliving",
+          "role": "the necromancer you kill; placed in the Winking Skeever in Solitude"
+        },
+        {
+          "name": "Malfyur the Unliving (ghost)",
+          "role": "comes to speak to you after you've killed him"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.where",
+          "why": "Marith's approach only fires away from Meridia's Sanctum and in a certain kind of place, named only by a keyword these files don't spell out, so which kind of place isn't known. The records also don't show how she gets to you from the Sanctum, where she is placed."
+        },
+        {
+          "field": "takesYou.Meridia's Sanctum",
+          "why": "The Sanctum's door opens from an outdoor spot that these files don't tie to a hold or landmark."
+        },
+        {
+          "field": "takesYou.Solitude",
+          "why": "Malfyur is placed in the Winking Skeever and has two half-day routines whose places aren't decoded here. Alara also says he has been defiling bodies in the Hall of the Dead, so he may not be at the inn when you arrive."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is on the quest's script; the journal says only that Alara will speak to you when you're ready, which leads into Our Lady."
+        }
+      ],
+      "evidence": [
+        "QUST Meridia.esp:00154A: type Daedric; journal stages 10/20/30/40 (40 completes); objectives at 10/20/30",
+        "quest_starts_raw meridias-order: startGame true, only version Meridia.esp; Sanctum door Meridia.esp:001532 from Skyrim.esm:006E8B",
+        "PACK NMeridia01MarithForcegreet01 Meridia.esp:001F81: GetStage DA09 (Skyrim.esm:04E4E1) == 500, GetStage NMeridia01 == 0, not in cell 001309, LocationHasKeyword Skyrim.esm:013168",
+        "quest_givers: Paladin Marith 000D6C INFO 00154C (stage < 1); High Priestess Alara 000D6F (stage < 20)",
+        "PACK NMeridia01MarithFollow04 002A90 (stage 20 to <40); NMeridia01MalfyurForceGreet01 0035AA (stage >= 30); NMeridia01Sit 0040DA on Alara (stage >= 30, Our Lady < 20)",
+        "alias Necromancer: Malfyur 001FBB in The Winking Skeever Skyrim.esm:016A0E; packages NMeridia01Necromancer01/02 with no decoded location",
+        "places_raw pointers: Alara INFO 001F8C / 00AC2B (Hall of the Dead)",
+        "QUST Meridia.esp:003B23 Our Lady: first log 'After gaining High Priestess Alara's trust, she has asked me to speak with her.'"
+      ]
+    }
+  ]
+}
