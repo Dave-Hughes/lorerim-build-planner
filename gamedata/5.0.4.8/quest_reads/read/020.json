@@ -1,0 +1,916 @@
+[
+  {
+    "edid": "ExtraContracts_KillThonarSilverblood_Quest",
+    "name": "Contract: Kill Thonar Silver-Blood",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract you accept, then report back to Nazir in the Falkreath Sanctuary.",
+    "needs": [
+      {
+        "what": "Be a member of the Dark Brotherhood",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary near Falkreath",
+        "how": "Accept the additional contract to kill Thonar Silver-Blood; Nazir is the one who pays you when it's done."
+      }
+    ],
+    "firstStep": "Kill Thonar Silver-Blood in Markarth",
+    "takesYou": [
+      {
+        "place": "the Treasury House, Markarth",
+        "hold": "The Reach",
+        "why": "Thonar lives and sleeps here"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Thonar Silver-Blood in Markarth",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A leveled reward item (large quest reward)",
+        "when": "at the end, from Nazir"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Thonar Silver-Blood dies"
+    ],
+    "people": [
+      {
+        "name": "Thonar Silver-Blood",
+        "role": "the target; placed in the Treasury House in Markarth, where his daily routine keeps him"
+      },
+      {
+        "name": "Nazir",
+        "role": "pays you at the Dark Brotherhood Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The records don't show the line that sets the contract going. The extract's giver line is spoken by Thonar while the contract is fresh (likely something he says to you as the target), and Nazir has lines up to the reward. Nazir handing it out is the best reading, not confirmed."
+      },
+      {
+        "field": "needs",
+        "why": "No start condition is in these files; Dark Brotherhood membership is inferred from the contract going through Nazir."
+      },
+      {
+        "field": "people",
+        "why": "Thonar's record is marked essential in these files; how the mod lets you kill him isn't shown."
+      }
+    ],
+    "evidence": [
+      "Additional Contracts For the Dark Brotherhood.esp:000FDA",
+      "stages 10/100/200 logs",
+      "giver info ACDB:000FDD (GetIsID Thonar, stage<11); Nazir Skyrim.esm:01C3AB stage<101",
+      "reward LvlQuestReward03Large via QF_ExtraContracts_Script.LItemReward",
+      "Thonar Skyrim.esm:0133BA packages MarkarthThongvorTreasurySleep22x8Package, MarkarthThonarSandboxTreasuryDefaultPackage"
+    ]
+  },
+  {
+    "edid": "LTNQuestHandler",
+    "name": "LTN Quest Handler",
+    "plugin": "Listen.esp",
+    "canDo": "background",
+    "canDoWhy": "The Listen mod's behind-the-scenes quest that hands out the Night Mother's contracts; never shown in the journal.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "",
+    "takesYou": [],
+    "choices": [],
+    "steps": [],
+    "rewards": [],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "Contract: Kill the target (Markarth, Riften, Solitude, Whiterun and Windhelm versions)"
+    ],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "opens",
+        "why": "Its only stage text is 'Give the player contracts' and it holds a talking object; that it starts the five Listen contracts is inferred from the mod's quest list, not shown as a link."
+      }
+    ],
+    "evidence": [
+      "Listen.esp:000808",
+      "stage 0 'Startup stage', stage 10 'Give the player contracts.'",
+      "aliases TalkingActivator, PlayerREF",
+      "no objectives"
+    ]
+  },
+  {
+    "edid": "LTNQuestMarkarth",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Night Mother contract from the Listen mod; the target is picked by the game and the payment waits at the Markarth dead drop.",
+    "needs": [
+      {
+        "what": "Be the Listener, able to hear the Night Mother",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Night Mother",
+        "where": "her coffin, wherever the Dark Brotherhood's Night Mother rests",
+        "how": "The Night Mother hands you a contract; the journal says she has tasked you with a kill and that payment was left the Markarth Dead Drop."
+      }
+    ],
+    "firstStep": "Kill the target named in your journal",
+    "takesYou": [
+      {
+        "place": "wherever the target is",
+        "hold": "",
+        "why": "kill the target; the game picks who"
+      },
+      {
+        "place": "the Markarth dead drop",
+        "hold": "The Reach",
+        "why": "collect your payment"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Do the killing yourself",
+        "leadsTo": "Kill the target and take the payment from the dead drop (either order); the contract completes."
+      },
+      {
+        "choice": "Hand the contract to another Dark Brotherhood member",
+        "leadsTo": "They do the job and take the payment themselves; you get nothing from the dead drop."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the target.",
+          "Retrieve payment from the Markarth Dead Drop."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (amount not given in these files)",
+        "when": "when you collect the payment"
+      },
+      {
+        "what": "A leveled reward item (medium quest reward)",
+        "when": "when you collect the payment"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "More Night Mother contracts (the journal tells you to return to her for more)"
+    ],
+    "closes": [
+      "The target dies"
+    ],
+    "people": [
+      {
+        "name": "The Night Mother",
+        "role": "gives the contract"
+      },
+      {
+        "name": "Festus Krex, Babette, Adelinda or a Dark Brotherhood Initiate",
+        "role": "can take the contract off your hands"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The giver line in the extract is spoken by Festus Krex, Babette, Adelinda or an Initiate while the contract is still open; that fits the hand-off to another member, not the start. The journal says the Night Mother gives it, and the Listen handler quest uses a talking object (her coffin, most likely). Where her coffin stands isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "No start condition is in these files; being the Listener is inferred from the Night Mother giving the contract."
+      },
+      {
+        "field": "takesYou",
+        "why": "The target is filled at random and the dead drop is not a named place in these files; only the journal's wording gives its rough location."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold and leveled item come from the quest script; the amount and whether they sit in the dead drop or go straight to you aren't shown. Handing the job off has no completion mark, so it may give nothing at all."
+      }
+    ],
+    "evidence": [
+      "Listen.esp:000828",
+      "Listen.esp:000828 stages 10/20/30/40/200 logs",
+      "giver info Listen.esp:00082C (GetIsID Festus Krex/Babette/Initiate/Adelinda, stage<11)",
+      "rewards via QF_LTNQuestMarkarth_01000828: Septim, LvlQuestReward02Medium",
+      "Listen.esp:000808 LTNQuestHandler alias TalkingActivator"
+    ]
+  },
+  {
+    "edid": "LTNQuestRiften",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Night Mother contract from the Listen mod; the target is picked by the game and the payment waits at the Riften dead drop.",
+    "needs": [
+      {
+        "what": "Be the Listener, able to hear the Night Mother",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Night Mother",
+        "where": "her coffin, wherever the Dark Brotherhood's Night Mother rests",
+        "how": "The Night Mother hands you a contract; the journal says she has tasked you with a kill and that payment was left the Dead Drop outside of Riften."
+      }
+    ],
+    "firstStep": "Kill the target named in your journal",
+    "takesYou": [
+      {
+        "place": "wherever the target is",
+        "hold": "",
+        "why": "kill the target; the game picks who"
+      },
+      {
+        "place": "the dead drop outside Riften",
+        "hold": "The Rift",
+        "why": "collect your payment"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Do the killing yourself",
+        "leadsTo": "Kill the target and take the payment from the dead drop (either order); the contract completes."
+      },
+      {
+        "choice": "Hand the contract to another Dark Brotherhood member",
+        "leadsTo": "They do the job and take the payment themselves; you get nothing from the dead drop."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the target.",
+          "Retrieve payment from the Dead Drop outside of Riften."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (amount not given in these files)",
+        "when": "when you collect the payment"
+      },
+      {
+        "what": "A leveled reward item (medium quest reward)",
+        "when": "when you collect the payment"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "More Night Mother contracts (the journal tells you to return to her for more)"
+    ],
+    "closes": [
+      "The target dies"
+    ],
+    "people": [
+      {
+        "name": "The Night Mother",
+        "role": "gives the contract"
+      },
+      {
+        "name": "Festus Krex, Babette, Adelinda or a Dark Brotherhood Initiate",
+        "role": "can take the contract off your hands"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The giver line in the extract is spoken by Festus Krex, Babette, Adelinda or an Initiate while the contract is still open; that fits the hand-off to another member, not the start. The journal says the Night Mother gives it, and the Listen handler quest uses a talking object (her coffin, most likely). Where her coffin stands isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "No start condition is in these files; being the Listener is inferred from the Night Mother giving the contract."
+      },
+      {
+        "field": "takesYou",
+        "why": "The target is filled at random and the dead drop is not a named place in these files; only the journal's wording gives its rough location."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold and leveled item come from the quest script; the amount and whether they sit in the dead drop or go straight to you aren't shown. Handing the job off has no completion mark, so it may give nothing at all."
+      }
+    ],
+    "evidence": [
+      "Listen.esp:00081A",
+      "Listen.esp:00081A stages 10/20/30/40/200 logs",
+      "giver info Listen.esp:000818 (GetIsID Festus Krex/Babette/Initiate/Adelinda, stage<11)",
+      "rewards via QF_LTNQuestRiften_0100081A: Septim, LvlQuestReward02Medium",
+      "Listen.esp:000808 LTNQuestHandler alias TalkingActivator"
+    ]
+  },
+  {
+    "edid": "LTNQuestSolitude",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Night Mother contract from the Listen mod; the target is picked by the game and the payment waits at the Solitude dead drop.",
+    "needs": [
+      {
+        "what": "Be the Listener, able to hear the Night Mother",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Night Mother",
+        "where": "her coffin, wherever the Dark Brotherhood's Night Mother rests",
+        "how": "The Night Mother hands you a contract; the journal says she has tasked you with a kill and that payment was left the Solitude Dead Drop."
+      }
+    ],
+    "firstStep": "Kill the target named in your journal",
+    "takesYou": [
+      {
+        "place": "wherever the target is",
+        "hold": "",
+        "why": "kill the target; the game picks who"
+      },
+      {
+        "place": "the Solitude dead drop",
+        "hold": "Haafingar",
+        "why": "collect your payment"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Do the killing yourself",
+        "leadsTo": "Kill the target and take the payment from the dead drop (either order); the contract completes."
+      },
+      {
+        "choice": "Hand the contract to another Dark Brotherhood member",
+        "leadsTo": "They do the job and take the payment themselves; you get nothing from the dead drop."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the target.",
+          "Retrieve payment from the Solitude Dead Drop."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (amount not given in these files)",
+        "when": "when you collect the payment"
+      },
+      {
+        "what": "A leveled reward item (medium quest reward)",
+        "when": "when you collect the payment"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "More Night Mother contracts (the journal tells you to return to her for more)"
+    ],
+    "closes": [
+      "The target dies"
+    ],
+    "people": [
+      {
+        "name": "The Night Mother",
+        "role": "gives the contract"
+      },
+      {
+        "name": "Festus Krex, Babette, Adelinda or a Dark Brotherhood Initiate",
+        "role": "can take the contract off your hands"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The giver line in the extract is spoken by Festus Krex, Babette, Adelinda or an Initiate while the contract is still open; that fits the hand-off to another member, not the start. The journal says the Night Mother gives it, and the Listen handler quest uses a talking object (her coffin, most likely). Where her coffin stands isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "No start condition is in these files; being the Listener is inferred from the Night Mother giving the contract."
+      },
+      {
+        "field": "takesYou",
+        "why": "The target is filled at random and the dead drop is not a named place in these files; only the journal's wording gives its rough location."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold and leveled item come from the quest script; the amount and whether they sit in the dead drop or go straight to you aren't shown. Handing the job off has no completion mark, so it may give nothing at all."
+      }
+    ],
+    "evidence": [
+      "Listen.esp:000820",
+      "Listen.esp:000820 stages 10/20/30/40/200 logs",
+      "giver info Listen.esp:000825 (GetIsID Festus Krex/Babette/Initiate/Adelinda, stage<11)",
+      "rewards via QF_LTNQuestSolitude_01000820: Septim, LvlQuestReward02Medium",
+      "Listen.esp:000808 LTNQuestHandler alias TalkingActivator"
+    ]
+  },
+  {
+    "edid": "LTNQuestWhiterun",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Night Mother contract from the Listen mod; the target is picked by the game and the payment waits at the Whiterun dead drop.",
+    "needs": [
+      {
+        "what": "Be the Listener, able to hear the Night Mother",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Night Mother",
+        "where": "her coffin, wherever the Dark Brotherhood's Night Mother rests",
+        "how": "The Night Mother hands you a contract; the journal says she has tasked you with a kill and that payment was left the Whiterun Hold Dead Drop."
+      }
+    ],
+    "firstStep": "Kill the target named in your journal",
+    "takesYou": [
+      {
+        "place": "wherever the target is",
+        "hold": "",
+        "why": "kill the target; the game picks who"
+      },
+      {
+        "place": "the Whiterun Hold dead drop",
+        "hold": "Whiterun",
+        "why": "collect your payment"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Do the killing yourself",
+        "leadsTo": "Kill the target and take the payment from the dead drop (either order); the contract completes."
+      },
+      {
+        "choice": "Hand the contract to another Dark Brotherhood member",
+        "leadsTo": "They do the job and take the payment themselves; you get nothing from the dead drop."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the target.",
+          "Retrieve payment from the Whiterun Hold Dead Drop."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (amount not given in these files)",
+        "when": "when you collect the payment"
+      },
+      {
+        "what": "A leveled reward item (medium quest reward)",
+        "when": "when you collect the payment"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "More Night Mother contracts (the journal tells you to return to her for more)"
+    ],
+    "closes": [
+      "The target dies"
+    ],
+    "people": [
+      {
+        "name": "The Night Mother",
+        "role": "gives the contract"
+      },
+      {
+        "name": "Festus Krex, Babette, Adelinda or a Dark Brotherhood Initiate",
+        "role": "can take the contract off your hands"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The giver line in the extract is spoken by Festus Krex, Babette, Adelinda or an Initiate while the contract is still open; that fits the hand-off to another member, not the start. The journal says the Night Mother gives it, and the Listen handler quest uses a talking object (her coffin, most likely). Where her coffin stands isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "No start condition is in these files; being the Listener is inferred from the Night Mother giving the contract."
+      },
+      {
+        "field": "takesYou",
+        "why": "The target is filled at random and the dead drop is not a named place in these files; only the journal's wording gives its rough location."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold and leveled item come from the quest script; the amount and whether they sit in the dead drop or go straight to you aren't shown. Handing the job off has no completion mark, so it may give nothing at all."
+      }
+    ],
+    "evidence": [
+      "Listen.esp:000802",
+      "Listen.esp:000802 stages 10/20/30/40/200 logs",
+      "giver info Listen.esp:00080D (GetIsID Festus Krex/Babette/Initiate/Adelinda, stage<11)",
+      "rewards via QF_LTNQuestWhiterun_06000802: Septim, LvlQuestReward02Medium",
+      "Listen.esp:000808 LTNQuestHandler alias TalkingActivator"
+    ]
+  },
+  {
+    "edid": "LTNQuestWindhelm",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Night Mother contract from the Listen mod; the target is picked by the game and the payment waits at the Eastmarch dead drop.",
+    "needs": [
+      {
+        "what": "Be the Listener, able to hear the Night Mother",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Night Mother",
+        "where": "her coffin, wherever the Dark Brotherhood's Night Mother rests",
+        "how": "The Night Mother hands you a contract; the journal says she has tasked you with a kill and that payment was left the Dead Drop in Eastmarch."
+      }
+    ],
+    "firstStep": "Kill the target named in your journal",
+    "takesYou": [
+      {
+        "place": "wherever the target is",
+        "hold": "",
+        "why": "kill the target; the game picks who"
+      },
+      {
+        "place": "the dead drop in Eastmarch",
+        "hold": "Eastmarch",
+        "why": "collect your payment"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Do the killing yourself",
+        "leadsTo": "Kill the target and take the payment from the dead drop (either order); the contract completes."
+      },
+      {
+        "choice": "Hand the contract to another Dark Brotherhood member",
+        "leadsTo": "They do the job and take the payment themselves; you get nothing from the dead drop."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the target.",
+          "Retrieve payment from the Dead Drop in Eastmarch."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (amount not given in these files)",
+        "when": "when you collect the payment"
+      },
+      {
+        "what": "A leveled reward item (medium quest reward)",
+        "when": "when you collect the payment"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "More Night Mother contracts (the journal tells you to return to her for more)"
+    ],
+    "closes": [
+      "The target dies"
+    ],
+    "people": [
+      {
+        "name": "The Night Mother",
+        "role": "gives the contract"
+      },
+      {
+        "name": "Festus Krex, Babette, Adelinda or a Dark Brotherhood Initiate",
+        "role": "can take the contract off your hands"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The giver line in the extract is spoken by Festus Krex, Babette, Adelinda or an Initiate while the contract is still open; that fits the hand-off to another member, not the start. The journal says the Night Mother gives it, and the Listen handler quest uses a talking object (her coffin, most likely). Where her coffin stands isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "No start condition is in these files; being the Listener is inferred from the Night Mother giving the contract."
+      },
+      {
+        "field": "takesYou",
+        "why": "The target is filled at random and the dead drop is not a named place in these files; only the journal's wording gives its rough location."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold and leveled item come from the quest script; the amount and whether they sit in the dead drop or go straight to you aren't shown. Handing the job off has no completion mark, so it may give nothing at all."
+      }
+    ],
+    "evidence": [
+      "Listen.esp:000819",
+      "Listen.esp:000819 stages 10/20/30/40/200 logs",
+      "giver info Listen.esp:000816 (GetIsID Festus Krex/Babette/Initiate/Adelinda, stage<11)",
+      "rewards via QF_LTNQuestWindhelm_01000819: Septim, LvlQuestReward02Medium",
+      "Listen.esp:000808 LTNQuestHandler alias TalkingActivator"
+    ]
+  },
+  {
+    "edid": "DBrecurring",
+    "name": "The Dark Brotherhood Forever",
+    "plugin": "Skyrim.esm (last edited by LoreRim - Global Modifiers.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "Once you lead the Dark Brotherhood as Listener, the Night Mother keeps sending you to a contact who names a target, over and over.",
+    "needs": [
+      {
+        "what": "Become the Listener and leader of the Dark Brotherhood (end of its story)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Night Mother",
+        "where": "her coffin in the Dark Brotherhood's sanctuary",
+        "how": "Approach the Night Mother and listen; she names a contact somewhere in Skyrim."
+      }
+    ],
+    "firstStep": "Approach the Night Mother",
+    "takesYou": [
+      {
+        "place": "Candlehearth Hall, Windhelm",
+        "hold": "Eastmarch",
+        "why": "a possible contact (Nervous Patron)"
+      },
+      {
+        "place": "The Bee and Barb, Riften",
+        "hold": "The Rift",
+        "why": "a possible contact (Wary Outlaw)"
+      },
+      {
+        "place": "Penitus Oculatus Outpost, Dragon Bridge",
+        "hold": "Haafingar",
+        "why": "a possible contact (Corrupt Agent)"
+      },
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "a possible contact (Scheming Servant)"
+      },
+      {
+        "place": "Windhelm Barracks",
+        "hold": "Eastmarch",
+        "why": "a possible contact (Desperate Gambler)"
+      },
+      {
+        "place": "Temple of Kynareth, Whiterun",
+        "hold": "Whiterun",
+        "why": "a possible contact (Blasphemous Priest)"
+      },
+      {
+        "place": "Bards College, Solitude",
+        "hold": "Haafingar",
+        "why": "a possible contact (Dishonored Skald)"
+      },
+      {
+        "place": "Vilemyr Inn, Ivarstead",
+        "hold": "The Rift",
+        "why": "a possible contact (Indolent Farmer)"
+      },
+      {
+        "place": "Windpeak Inn, Dawnstar",
+        "hold": "The Pale",
+        "why": "a possible contact (Griefstricken Chef)"
+      },
+      {
+        "place": "Frostfruit Inn, Rorikstead",
+        "hold": "Whiterun",
+        "why": "a possible contact (Unemployed Laborer)"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Approach the Night Mother",
+          "Speak with the contact",
+          "Kill the target"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [
+      "The target dies"
+    ],
+    "people": [
+      {
+        "name": "The Night Mother",
+        "role": "names each new contact"
+      },
+      {
+        "name": "Nazir",
+        "role": "part of the quest; placed in the Dark Brotherhood Sanctuary near Falkreath"
+      },
+      {
+        "name": "Contacts (Nervous Patron, Wary Outlaw, Corrupt Agent, Scheming Servant, Desperate Gambler, Blasphemous Priest, Dishonored Skald, Indolent Farmer, Griefstricken Chef, Unemployed Laborer)",
+        "role": "give you the name of a target"
+      },
+      {
+        "name": "Targets: Visiting Noble (Dragonsreach, Whiterun), Big Laborer (Katla's Farm), Itinerant Lumberjack (Morthal), Reckless Mage (The Frozen Hearth, Winterhold), Seasoned Hunter (Falkreath), Poor Fishwife (Riften), Grim Shieldmaiden (Markarth), Traveling Dignitary (Solitude), Coldhearted Gravedigger (Hall of the Dead, Windhelm), Beautiful Barbarian (Ivarstead)",
+        "role": "the people you may be sent to kill"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "What starts it isn't in these files; the journal's 'I am now the Listener and leader of the Dark Brotherhood' is what points to the end of the guild's story (Hail Sithis!)."
+      },
+      {
+        "field": "starts",
+        "why": "Which sanctuary holds the Night Mother's coffin at that point isn't shown for this quest."
+      },
+      {
+        "field": "takesYou",
+        "why": "These are where the ten contacts and targets are placed; which pair you get each time, and which target goes with which contact, isn't shown. Their editor names hint at other towns (for example the Nervous Patron's names Dawnstar), so the placements may not be where they wait during the quest."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is listed in these files for this quest."
+      },
+      {
+        "field": "plugin",
+        "why": "Edited by Unofficial Skyrim Modders Patch, Listen.esp and LoreRim - Global Modifiers; the last is taken as the winner from the order listed. What Listen changes here isn't shown; it may replace or sit beside this with its own Night Mother contracts."
+      }
+    ],
+    "evidence": [
+      "Skyrim.esm:01EA5A",
+      "stage 15 log",
+      "objectives 10/20/30",
+      "aliases NightMotherAlias, NMCoffinAlias, Contact1-10, Target1-10, NazirAlias",
+      "contact line Skyrim.esm:087B7B (GetIsID contacts, stage<21)",
+      "editedBy USMP, Listen.esp, LoreRim - Global Modifiers.esp"
+    ]
+  },
+  {
+    "edid": "CW00A",
+    "name": "Imperial Introductions",
+    "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "A journal note pointing you to join the Imperial Legion; you settle it by talking to Legate Rikke in Castle Dour.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Legate Rikke",
+        "where": "Castle Dour in Solitude (she walks the city in the evening)",
+        "how": "Talk to Legate Rikke about joining the Legion."
+      }
+    ],
+    "firstStep": "Join the Imperial Legion",
+    "takesYou": [
+      {
+        "place": "Castle Dour",
+        "hold": "Haafingar",
+        "why": "see Legate Rikke and General Tullius about joining"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Join the Imperial Legion"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "Joining the Legion"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Legate Rikke",
+        "role": "the one to talk to about joining; in Castle Dour by day"
+      },
+      {
+        "name": "General Tullius",
+        "role": "commands the Legion in Castle Dour"
+      },
+      {
+        "name": "Galmar Stone-Fist",
+        "role": "part of the quest; in the Palace of the Kings, Windhelm"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No journal text, and the records don't show what puts the note in your journal; Rikke's line is the only one tied to it, before it ends."
+      },
+      {
+        "field": "opens",
+        "why": "Joining the Legion (Rikke's Fort Hraggstad task) is the natural next step, but no direct link is in these files."
+      },
+      {
+        "field": "closes",
+        "why": "Galmar is part of this quest, likely so joining the Stormcloaks ends it; not shown."
+      }
+    ],
+    "evidence": [
+      "Skyrim.esm:0D3C5F",
+      "objective 1 'Join the Imperial Legion'",
+      "giver info Skyrim.esm:0D514F (GetIsID Rikke, stage<20)",
+      "aliases Rikke, Galmar, Tullius",
+      "Rikke packages SolitudeCastleCommand6x16, SolitudeCityWalk19x4",
+      "CW01A Skyrim.esm:0D517A"
+    ]
+  },
+  {
+    "edid": "CW00B",
+    "name": "Stormcloak Introductions",
+    "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "A journal note pointing you to join the Stormcloaks; you settle it by talking to Galmar Stone-Fist in Windhelm.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Galmar Stone-Fist",
+        "where": "the Palace of the Kings in Windhelm",
+        "how": "Talk to Galmar about joining the rebellion."
+      }
+    ],
+    "firstStep": "Join the Stormcloak rebellion",
+    "takesYou": [
+      {
+        "place": "the Palace of the Kings, Windhelm",
+        "hold": "Eastmarch",
+        "why": "see Galmar and Ulfric about joining"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Join the Stormcloak rebellion"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "Joining the Stormcloaks"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Galmar Stone-Fist",
+        "role": "the one to talk to about joining; in the Palace of the Kings"
+      },
+      {
+        "name": "Ulfric Stormcloak",
+        "role": "leads the rebellion; stays in the Palace of the Kings"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No journal text and no giver line in these files; Galmar is inferred because he is in the quest and gives the Stormcloak joining task. What puts the note in your journal isn't shown."
+      },
+      {
+        "field": "opens",
+        "why": "Joining the Stormcloaks (Galmar's Serpentstone Isle task) is the natural next step, but no direct link is in these files."
+      }
+    ],
+    "evidence": [
+      "Skyrim.esm:0E1B5A",
+      "objective 2 'Join the Stormcloak rebellion'",
+      "aliases Galmar, Ulfric",
+      "Galmar packages GalmarConsultInPalace; Ulfric UlfricStaysInThePalace",
+      "CW01B Skyrim.esm log stage 1"
+    ]
+  }
+]
