@@ -1,0 +1,767 @@
+[
+ {
+  "edid": "DLC2TTR3a",
+  "name": "Telvanni Research",
+  "plugin": "Dragonborn.esm",
+  "canDo": "talk",
+  "canDoWhy": "Neloth offers it as one of his research jobs when you talk to him in Tel Mithryn.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Neloth",
+    "where": "inside Neloth's tower at Tel Mithryn, on Solstheim",
+    "how": "Talk to Neloth; he wants a sample of ash from an ash spawn, taken with a special extraction tool."
+   }
+  ],
+  "firstStep": "Collect ash from an ash spawn with the extraction tool",
+  "takesYou": [
+   {
+    "place": "wherever you find an ash spawn",
+    "hold": "Solstheim",
+    "why": "take the ash sample"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Collect ash from an ash spawn",
+     "Talk to Neloth"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   },
+   {
+    "what": "Extraction Perk (perk)",
+    "when": "listed on the quest's script; the files don't say when it is given"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Neloth",
+    "role": "gives the task and takes it back; stays in his tower at Tel Mithryn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The game offers Neloth's research jobs through one shared trigger that fires when you change location; that trigger's own conditions aren't in these files, so what you must have done first (and the order the jobs come in) isn't known here."
+   },
+   {
+    "field": "takesYou",
+    "why": "The quest names no particular ash spawn or place; any ash spawn seems to do. Solstheim is assumed because the quest giver and the rest of the job are there."
+   },
+   {
+    "field": "rewards",
+    "why": "The Extraction Perk is probably what lets you use the tool on an ash spawn rather than a lasting reward; the records only give its name."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01B65D",
+   "giver INFO Dragonborn.esm:01CDCD (Neloth, before stage 100)",
+   "story node DLC2NelothQuestNode, change location",
+   "aliases AshExtractor, AshSample",
+   "script DLC2_QF_DLC2TTR3a_0201B65D: Gold, DLC2TTR3aAshExtractionPerk (Dragonborn.esm:01CDF0)",
+   "NPC Dragonborn.esm:01773A, ref 0177DA in cell 017787; package DLC2NelothSandbox"
+  ]
+ },
+ {
+  "edid": "DLC2TTR3b",
+  "name": "Wind and Sand",
+  "plugin": "Dragonborn.esm",
+  "canDo": "talk",
+  "canDoWhy": "Neloth offers it as one of his research jobs; the dungeon holding the book is picked when the quest starts.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Neloth",
+    "where": "inside Neloth's tower at Tel Mithryn, on Solstheim",
+    "how": "Talk to Neloth; he needs a copy of the book Wind and Sand for his spell research and tells you which dungeon it's in."
+   }
+  ],
+  "firstStep": "Get the Wind and Sand book from the dungeon Neloth names",
+  "takesYou": [
+   {
+    "place": "the dungeon Neloth names (chosen when the quest starts)",
+    "hold": "",
+    "why": "the book is in the boss chest"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Get the Wind and Sand book",
+     "Talk to Neloth"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   },
+   {
+    "what": "Talvas Fathryon can then sell you the spell Neloth was researching",
+    "when": "after you hand over the book"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Neloth",
+    "role": "gives the task and takes it back; stays in his tower at Tel Mithryn"
+   },
+   {
+    "name": "Talvas Fathryon",
+    "role": "Neloth's apprentice in Tel Mithryn; sells the spell afterwards (sells from 8 am for 12 hours)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The game offers Neloth's research jobs through one shared trigger that fires when you change location; that trigger's own conditions aren't in these files, so what you must have done first (and the order the jobs come in) isn't known here."
+   },
+   {
+    "field": "takesYou",
+    "why": "The dungeon is filled in when the quest starts; it has both a Solstheim map marker and a Skyrim map marker slot, so it may be on either side of the sea. The book sits in the boss chest."
+   },
+   {
+    "field": "rewards",
+    "why": "The journal says Talvas will sell the spell, but the spell isn't named in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01D8D1",
+   "giver INFO Dragonborn.esm:01D8CF (Neloth, before stage 100)",
+   "story node DLC2NelothQuestNode, change location",
+   "aliases Dungeon, BossChest, Book, MapMarker, SkyrimMapMarker",
+   "stage 300 log names Talvas",
+   "script DLC2_QF_DLC2TTR3b_0201D8D1: Gold",
+   "Talvas NPC Dragonborn.esm:017777, package DLC2TalvasSell8x12"
+  ]
+ },
+ {
+  "edid": "DLC2TTR4a",
+  "name": "Experimental Subject",
+  "plugin": "Dragonborn.esm",
+  "canDo": "talk",
+  "canDoWhy": "Neloth asks you to let him test a new spell on you.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Neloth",
+    "where": "inside Neloth's tower at Tel Mithryn, on Solstheim",
+    "how": "Talk to Neloth; he asks to cast an experimental spell on you and wants to hear about any side effects."
+   }
+  ],
+  "firstStep": "Let Neloth cast his spell on you, then watch for side effects",
+  "takesYou": [],
+  "choices": [
+   {
+    "choice": "Let Neloth cast the spell",
+    "leadsTo": "You carry the spell; normally it boosts your health, but in rain or while swimming it lowers it. Tell Neloth to finish."
+   },
+   {
+    "choice": "Refuse",
+    "leadsTo": "The quest fails."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "accept",
+    "objectives": [
+     "Watch for side effects",
+     "Talk to Neloth"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   },
+   {
+    "what": "Neloth's Health Boost (spell)",
+    "when": "listed on the quest's script; the files don't say when"
+   },
+   {
+    "what": "Check Water (spell)",
+    "when": "listed on the quest's script; the files don't say when"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Neloth",
+    "role": "gives the task and takes it back; stays in his tower at Tel Mithryn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The game offers Neloth's research jobs through one shared trigger that fires when you change location; that trigger's own conditions aren't in these files, so what you must have done first (and the order the jobs come in) isn't known here."
+   },
+   {
+    "field": "rewards",
+    "why": "Neloth's Health Boost and Check Water look like the experiment itself (health up, but down in rain or water), not something you keep. The records give only their names."
+   },
+   {
+    "field": "steps",
+    "why": "The journal doesn't say whether you find the side effect by standing in rain or swimming, or if either works; it names both."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01B664",
+   "giver INFO Dragonborn.esm:01B630 (Neloth, before stage 100)",
+   "story node DLC2NelothQuestNode, change location",
+   "stage 200 log (rain or swim), stage 400 fails (refused)",
+   "script DLC2_QF_DLC2TTR4a_0201B664: DLC2TTR4aFortifyHealth (01BD0A), DLC2CheckWater (03D382), Gold"
+  ]
+ },
+ {
+  "edid": "DLC2TTR4b",
+  "name": "Experimental Subject",
+  "plugin": "Dragonborn.esm",
+  "canDo": "talk",
+  "canDoWhy": "A second, smaller Neloth experiment offered when you talk to him; it shows only as a miscellaneous task.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Neloth",
+    "where": "inside Neloth's tower at Tel Mithryn, on Solstheim",
+    "how": "Talk to Neloth; he asks you to help with his research."
+   }
+  ],
+  "firstStep": "Help Neloth with his research",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Help Neloth with his research"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Neloth",
+    "role": "gives the task and takes it back; stays in his tower at Tel Mithryn"
+   },
+   {
+    "name": "Talvas Fathryon",
+    "role": "Neloth's apprentice; has a part in the experiment"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The game offers Neloth's research jobs through one shared trigger that fires when you change location; that trigger's own conditions aren't in these files, so what you must have done first (and the order the jobs come in) isn't known here."
+   },
+   {
+    "field": "steps",
+    "why": "No journal text for this one, only the single objective. What the help actually is, and what Talvas does in it, isn't in these files."
+   },
+   {
+    "field": "choices",
+    "why": "The quest can fail, so there is probably a way to say no, but the records don't say what it is."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01CDE1",
+   "giver INFO Dragonborn.esm:01CDD2 (Neloth, before stage 100)",
+   "story node DLC2NelothQuestNode, change location",
+   "aliases Neloth, Player, Talvas",
+   "stage 200 completes, 300 fails",
+   "script DLC2_QF_DLC2TTR4b_0201CDE1: Gold"
+  ]
+ },
+ {
+  "edid": "DLC2TTR5",
+  "name": "Briarheart Necropsy",
+  "plugin": "Dragonborn.esm",
+  "canDo": "talk",
+  "canDoWhy": "Neloth asks you to examine a Forsworn Briarheart and report back.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Neloth",
+    "where": "inside Neloth's tower at Tel Mithryn, on Solstheim",
+    "how": "Talk to Neloth; he wants you to examine a Briarheart warrior of the Forsworn, who live in the hills on the western edge of Skyrim."
+   }
+  ],
+  "firstStep": "Find and examine a Briarheart warrior",
+  "takesYou": [
+   {
+    "place": "Forsworn country in the hills on the western edge of Skyrim",
+    "hold": "The Reach",
+    "why": "examine a Briarheart and see how the heart was put in"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Examine a Briarheart warrior",
+     "Talk to Neloth"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   },
+   {
+    "what": "Neloth's Memory Spell (spell)",
+    "when": "listed on the quest's script; the files don't say when"
+   },
+   {
+    "what": "Briarheart Harvest (perk)",
+    "when": "listed on the quest's script; the files don't say when"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Neloth",
+    "role": "gives the task and takes it back; stays in his tower at Tel Mithryn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Unlike Neloth's other jobs, this one isn't tied to the location-change trigger in these files, so how it gets offered, and what you need first, isn't clear. His dialogue line for it is there."
+   },
+   {
+    "field": "takesYou",
+    "why": "Neloth doesn't name a place, only 'the hills on the western edge of Skyrim'. That reads as the Reach, but any Briarheart seems to do."
+   },
+   {
+    "field": "rewards",
+    "why": "Neloth's Memory Spell and Briarheart Harvest are probably how you 'examine' the body (record what you see, take the heart) rather than lasting rewards; the records give only their names."
+   },
+   {
+    "field": "evidence",
+    "why": "The quest carries leftover ash spawn slots that this job never uses; they look like they were copied from Telvanni Research."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01C05C",
+   "giver INFO Dragonborn.esm:01C059 (Neloth, before stage 100)",
+   "no story-node start in quest_givers_raw",
+   "stage 100 log (western edge of Skyrim)",
+   "script DLC2_QF_DLC2TTR5_0201C05C: Gold, DLC2TTR5MemoryStored (01C066), DLC2TTR5BriarheartHarvestPerk (01C05B)",
+   "aliases AshSpawn1-3, AshSpawnMarker"
+  ]
+ },
+ {
+  "edid": "DLC2TTR7",
+  "name": "Azra's Staffs",
+  "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Neloth offers it as one of his research jobs; the dungeon holding the staff is picked when the quest starts.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Neloth",
+    "where": "inside Neloth's tower at Tel Mithryn, on Solstheim",
+    "how": "Talk to Neloth; he wants one of Azra Nightwielder's staffs and tells you which dungeon hides it."
+   }
+  ],
+  "firstStep": "Get Azra Nightwielder's staff from the dungeon Neloth names",
+  "takesYou": [
+   {
+    "place": "the dungeon Neloth names (chosen when the quest starts)",
+    "hold": "",
+    "why": "the staff is in the boss chest"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Get the staff",
+     "Talk to Neloth"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Neloth",
+    "role": "gives the task and takes it back; stays in his tower at Tel Mithryn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The game offers Neloth's research jobs through one shared trigger that fires when you change location; that trigger's own conditions aren't in these files, so what you must have done first (and the order the jobs come in) isn't known here."
+   },
+   {
+    "field": "takesYou",
+    "why": "The dungeon is filled in when the quest starts; it has both a Solstheim map marker and a Skyrim map marker slot, so it may be on either side of the sea."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is listed on this quest's script in these files (Neloth's other jobs list gold). Whether you get gold, or keep the staff, isn't known here."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01BD18 (USSEP last edit)",
+   "giver INFO Dragonborn.esm:01BCF7 (Neloth, before stage 100)",
+   "story node DLC2NelothQuestNode, change location",
+   "aliases Dungeon, DungeonMapMarker, SkyrimMapMarker, BossChest, Staff",
+   "no rewards entry in quest_givers_raw"
+  ]
+ },
+ {
+  "edid": "DLC2TTR8",
+  "name": "Hunting and Gathering",
+  "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Elynea, the alchemist at Tel Mithryn, asks you to fetch a rare ingredient.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Elynea Mothren",
+    "where": "Tel Mithryn Apothecary, at Tel Mithryn on Solstheim (she sells there from 8 am for 12 hours)",
+    "how": "Talk to Elynea; she asks you to bring her one of six rare ingredients."
+   }
+  ],
+  "firstStep": "Bring Elynea the ingredient she asks for",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "one of these, whichever she asks for",
+    "objectives": [
+     "Bring a daedra heart to Elynea",
+     "Bring a giant's toe to Elynea",
+     "Bring a hagraven's claw to Elynea",
+     "Bring some vampire dust to Elynea",
+     "Bring a briar heart to Elynea",
+     "Bring some void salts to Elynea"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand it over"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Elynea Mothren",
+    "role": "gives and takes the task; in the Tel Mithryn Apothecary by day, from 10 pm for 8 hours elsewhere in Tel Mithryn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The quest is offered through a trigger that fires when you change location; that trigger's conditions (for example, whether you must help Tel Mithryn first) aren't in these files."
+   },
+   {
+    "field": "steps",
+    "why": "Six objectives exist, one per ingredient. The records don't say how she picks one, or whether she asks again after you finish."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01F13B (USSEP last edit)",
+   "giver INFO Dragonborn.esm:01F132 (Elynea, before stage 51)",
+   "story node DLC2ElyneaQuestNode, change location",
+   "objectives 101-106",
+   "script DLC2_QF_DLC2TTR8_0201F13B: Gold",
+   "Elynea NPC Dragonborn.esm:017778, ref 0177DC in Tel Mithryn Apothecary; packages DLC2ElyneaStandingStone22x8, DLC2ElyneaSell8x12"
+  ]
+ },
+ {
+  "edid": "DLC2SV01",
+  "name": "Lost Legacy",
+  "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Tharstan, a historian in Skaal Village, hires you to guard him while he explores a newly opened crypt.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Tharstan",
+    "where": "Skaal Village on Solstheim; he sleeps in the Greathall",
+    "how": "Talk to Tharstan; he has found the entrance to an old crypt, offers to hire you as protection and asks you to meet him there."
+   }
+  ],
+  "firstStep": "Travel to Vahlok's Tomb and meet Tharstan",
+  "takesYou": [
+   {
+    "place": "Vahlok's Tomb, right by Skaal Village",
+    "hold": "Solstheim",
+    "why": "explore the crypt with Tharstan and face the dragon priest Vahlok"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Travel to Vahlok's Tomb",
+     "Talk to Tharstan",
+     "Explore Vahlok's Tomb (first work out how to open the doors in the main chamber)",
+     "Find the main burial chamber (find the two word walls and the two halves of an ancient claw to open the sealed chamber)",
+     "Defeat Vahlok",
+     "Talk to Tharstan"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end, from Tharstan"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Tharstan",
+    "role": "hires you and comes along through the tomb; can't be killed"
+   },
+   {
+    "name": "Vahlok",
+    "role": "the dragon priest at the end of the tomb"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No dialogue line or trigger for the start is in these files; the journal only says you met him in Skaal Village."
+   },
+   {
+    "field": "where",
+    "why": "Tharstan has a patrol package from 8 am for 12 hours but no route in these files, then 4 hours around his spot and sleep in the Greathall. Where he walks by day isn't known. While Skaal Village is under the main quest's spell he also has a shared work package."
+   },
+   {
+    "field": "needs",
+    "why": "The game data for this line lists no start conditions; any hidden need isn't known."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:019B4A (USSEP last edit)",
+   "quest_starts_raw line skaal-village: no dialogue or event conditions; USSEP fixes four dialogue conditions (INFO 025740, 025739, 025746, 026AF4)",
+   "stages 10-50 logs, 200 completes",
+   "aliases TombLocation, HalfClaw1/2, Keyhole, Vahlok",
+   "script DLC2_QF_DLC2SV01_02019B4A: Gold001",
+   "Tharstan NPC Dragonborn.esm:018FC8 essential, ref 018FD0 in Greathall; packages DLC2TempleWorkPackage, DLC2SVTharstanPatrol8x12, DefaultSandboxEditorLocation20x4, DLC2SVFanariSleepGreathall",
+   "LCTN Dragonborn.esm:0142BA Vahlok's Tomb, nearest town Skaal Village"
+  ]
+ },
+ {
+  "edid": "DLC2SV02",
+  "name": "A New Source of Stalhrim",
+  "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Skaal Village's smith has gone missing; a villager tells you what he saw.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Deor Woodcutter",
+    "where": "Skaal Village on Solstheim (his house is in the village)",
+    "how": "Deor tells you Baldor Iron-Shaper, the village smith, has gone missing, and that he saw two elves dragging something southwest through the woods that day."
+   }
+  ],
+  "firstStep": "Search for Baldor Iron-Shaper southwest of Skaal Village",
+  "takesYou": [
+   {
+    "place": "Abandoned Lodge",
+    "hold": "Solstheim",
+    "why": "the Thalmor are holding Baldor here"
+   },
+   {
+    "place": "Northshore Landing",
+    "hold": "Solstheim",
+    "why": "the Thalmor leader Ancarion has the stalhrim map"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Search for Baldor Iron-Shaper",
+     "Talk to Baldor Iron-Shaper",
+     "Retrieve the Stalhrim Source Map",
+     "Talk to Baldor Iron-Shaper"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Stalhrim crafting: 108 stalhrim make and improve recipes open up (nearly all also need the Ebony Smithing perk; a few need Arcane Craftsmanship or Stalhrim Smithing)",
+    "when": "once the quest is done"
+   },
+   {
+    "what": "Baldor lets you use his forge",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Stalhrim crafting"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Deor Woodcutter",
+    "role": "tells you Baldor is missing; lives in Skaal Village"
+   },
+   {
+    "name": "Baldor Iron-Shaper",
+    "role": "the kidnapped smith; held by the Thalmor, then back in Skaal Village; can't be killed"
+   },
+   {
+    "name": "Ancarion",
+    "role": "Thalmor leader at Northshore Landing who carries the map"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No start trigger or dialogue line is in these files. Deor is the first person the quest uses and the journal quotes him, so he is the likely start, but that is read from the journal, not from a dialogue record."
+   },
+   {
+    "field": "takesYou",
+    "why": "That Baldor is at the Abandoned Lodge is read from the quest's slots (the lodge, four Thalmor and a lodge key); the journal only says 'southwest'."
+   },
+   {
+    "field": "rewards",
+    "why": "The recipes check that this quest is done; the stage they check isn't shown in these files. They are ordinary forge and grindstone recipes, so any forge should work once the quest is done, not only Baldor's."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:01CAF1 (USSEP last edit)",
+   "stage 10/20/30/200 logs",
+   "aliases Deor, Baldor, Map, Ancarion, Lodge, LodgeThalmor1-4, LodgeKey, NorthShoreLanding, NorthShoreThalmor1-3, Note",
+   "COBJ: 108 recipes with GetStageDone on 01CAF1 (107 with REQ_Smithing_EbonySmithing)",
+   "LCTN Dragonborn.esm:0142C0 Abandoned Lodge",
+   "Ancarion NPC Dragonborn.esm:01CAF3 ref 01E8C7 at Northshore Landing",
+   "Baldor NPC 018FB5 essential; Deor NPC 018FA5 ref 018FA8"
+  ]
+ },
+ {
+  "edid": "DLC2SkaalVillageFreeform1",
+  "name": "Skaal Village Dialogue",
+  "plugin": "Dragonborn.esm",
+  "canDo": "talk",
+  "canDoWhy": "Morwen in Skaal Village asks you to take a necklace back to Skyrim for her.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Morwen",
+    "where": "Skaal Village on Solstheim; she lives in Morwen's House (its door is locked, and she has the key)",
+    "how": "Talk to Morwen; she gives you Bera's Necklace to take to Runil in Falkreath."
+   }
+  ],
+  "firstStep": "Take Bera's Necklace to Runil in Falkreath",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead, Falkreath",
+    "hold": "Falkreath Hold",
+    "why": "give Runil the necklace"
+   },
+   {
+    "place": "Skaal Village",
+    "hold": "Solstheim",
+    "why": "go back to Morwen"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Take Bera's Necklace to Runil in Falkreath",
+     "Return to Morwen in Skaal Village"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Nordic Helmet (heavy armor)",
+    "when": "listed on the quest's script; most likely from Morwen at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Morwen",
+    "role": "gives you the necklace; lives in Skaal Village"
+   },
+   {
+    "name": "Runil",
+    "role": "priest at the Hall of the Dead in Falkreath; from 7 pm for 6 hours he is at Dead Man's Drink"
+   },
+   {
+    "name": "Gjalund Salt-Sage",
+    "role": "ship captain who sails between Raven Rock and Windhelm"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Runil is placed in the Hall of the Dead and has an evening package at Dead Man's Drink; his daytime spot comes from a conditional package that isn't decoded, so look in the Hall of the Dead first."
+   },
+   {
+    "field": "closes",
+    "why": "The quest can fail, but the records don't say what fails it (for example, selling the necklace)."
+   },
+   {
+    "field": "rewards",
+    "why": "The Nordic Helmet is a script property; the stage that hands it over isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Dragonborn.esm:02C8AA",
+   "aliases Morwen, Runil, Necklace, GoToSkyrim (Gjalund at Raven Rock), GoToSolstheim (Gjalund at Windhelm)",
+   "stage 350 fails",
+   "script DLC2_QF_DLC2SkaalVillageFreef_0202C8AA: DLC2ArmorNordicHeavyHelmet (01CD99)",
+   "ARMO Dragonborn.esm:02C8AD Bera's Necklace",
+   "Morwen's House door 018F85 locked Novice by Eli_Skaal Village Overhaul.esp, key carried by Morwen",
+   "Runil NPC Skyrim.esm:01364D ref 019820 Hall of the Dead; package FalkreathDeadMansDrinkSandbox19x6"
+  ]
+ }
+]
