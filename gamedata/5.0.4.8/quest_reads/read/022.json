@@ -6,48 +6,87 @@
     "canDo": "by itself",
     "canDoWhy": "These are the battle orders that appear on their own when your side storms a city in the Civil War; nobody hands them to you.",
     "needs": [
-      {"what": "Be fighting for the Imperial Legion or the Stormcloaks, far enough into the Civil War that your side attacks a city", "kind": "quest"}
+      {
+        "what": "Be fighting for the Imperial Legion or the Stormcloaks, far enough into the Civil War that your side attacks a city",
+        "kind": "quest"
+      }
     ],
     "starts": [],
     "firstStep": "Meet your general outside the city before the assault",
     "takesYou": [
-      {"place": "Whiterun", "hold": "Whiterun Hold", "why": "the Stormcloak assault on Whiterun"},
-      {"place": "Solitude", "hold": "Haafingar", "why": "the Stormcloak final attack, alongside Ulfric Stormcloak"},
-      {"place": "Windhelm", "hold": "Eastmarch", "why": "the Imperial final attack, alongside General Tullius"}
+      {
+        "place": "Whiterun",
+        "hold": "Whiterun Hold",
+        "why": "the Stormcloak assault on Whiterun"
+      },
+      {
+        "place": "Solitude",
+        "hold": "Haafingar",
+        "why": "the Stormcloak final attack, alongside Ulfric Stormcloak"
+      },
+      {
+        "place": "Windhelm",
+        "hold": "Eastmarch",
+        "why": "the Imperial final attack, alongside General Tullius"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": [
-        "Meet with the general",
-        "Break through the enemy Barricade",
-        "Take out the archers",
-        "Follow the general",
-        "Open the exterior gate",
-        "Follow the general",
-        "Open the drawbridge",
-        "Regroup at the city gates",
-        "Enter the city",
-        "Break through the First Barricade",
-        "Break through the Second Barricade",
-        "Break through the Final Barricade",
-        "Force the Jarl to surrender",
-        "Accept the Jarl's surrender"
-      ]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Meet with the general",
+          "Break through the enemy Barricade",
+          "Take out the archers",
+          "Follow the general",
+          "Open the exterior gate",
+          "Follow the general",
+          "Open the drawbridge",
+          "Regroup at the city gates",
+          "Enter the city",
+          "Break through the First Barricade",
+          "Break through the Second Barricade",
+          "Break through the Final Barricade",
+          "Force the Jarl to surrender",
+          "Accept the Jarl's surrender"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Civil War",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Galmar Stone-Fist", "role": "leads the Stormcloak attack on Whiterun"},
-      {"name": "Ulfric Stormcloak", "role": "leads the Stormcloak final attack on Solitude"},
-      {"name": "General Tullius", "role": "leads the Imperial final attack on Windhelm"}
+      {
+        "name": "Galmar Stone-Fist",
+        "role": "leads the Stormcloak attack on Whiterun"
+      },
+      {
+        "name": "Ulfric Stormcloak",
+        "role": "leads the Stormcloak final attack on Solitude"
+      },
+      {
+        "name": "General Tullius",
+        "role": "leads the Imperial final attack on Windhelm"
+      }
     ],
     "unsure": [
-      {"field": "takesYou", "why": "the city, general and Jarl are filled in when the battle starts. The three cities and their generals come from the journal text of the battle quest that runs alongside it (Battle for the city), not from this quest's own records."},
-      {"field": "starts", "why": "nothing in these files shows what starts it. It has no dialogue or event start, so it is most likely started by the main siege quest's script."},
-      {"field": "steps", "why": "the Jarl-surrender objectives may only show in some battles. The final-battle journal text says the enemy leader is killed, and these records don't say which objectives each city uses."},
-      {"field": "rewards", "why": "this quest carries no rewards; any payout belongs to the wider Civil War quests"}
+      {
+        "field": "takesYou",
+        "why": "the city, general and Jarl are filled in when the battle starts. The three cities and their generals come from the journal text of the battle quest that runs alongside it (Battle for the city), not from this quest's own records."
+      },
+      {
+        "field": "starts",
+        "why": "nothing in these files shows what starts it. It has no dialogue or event start, so it is most likely started by the main siege quest's script."
+      },
+      {
+        "field": "steps",
+        "why": "the Jarl-surrender objectives may only show in some battles. The final-battle journal text says the enemy leader is killed, and these records don't say which objectives each city uses."
+      },
+      {
+        "field": "rewards",
+        "why": "this quest carries no rewards; any payout belongs to the wider Civil War quests"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:04E857 CWSiegeAttackObj, type Civil War, editedBy LoreRim - Dialogue Patch.esp",
@@ -65,25 +104,35 @@
     "canDo": "by itself",
     "canDoWhy": "These are the battle orders that appear on their own when your side has to hold a city against an attack in the Civil War.",
     "needs": [
-      {"what": "Be fighting in the Civil War on the side defending the city", "kind": "quest"}
+      {
+        "what": "Be fighting in the Civil War on the side defending the city",
+        "kind": "quest"
+      }
     ],
     "starts": [],
     "firstStep": "Meet your general on the front line",
     "takesYou": [
-      {"place": "Whiterun", "hold": "Whiterun Hold", "why": "hold the outer walls against the Stormcloak attack (Imperial side)"}
+      {
+        "place": "Whiterun",
+        "hold": "Whiterun Hold",
+        "why": "hold the outer walls against the Stormcloak attack (Imperial side)"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": [
-        "Meet with the general on the Front Line.",
-        "Join the General on the Front Line.",
-        "Hold the front line for as long as possible.",
-        "Defend the Barricades",
-        "Defend the Drawbridge",
-        "Fall back and defend the Barricade.",
-        "Defend the Exterior Gate.",
-        "Destroy Attackers (percentage of attackers remaining)"
-      ]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Meet with the general on the Front Line.",
+          "Join the General on the Front Line.",
+          "Hold the front line for as long as possible.",
+          "Defend the Barricades",
+          "Defend the Drawbridge",
+          "Fall back and defend the Barricade.",
+          "Defend the Exterior Gate.",
+          "Destroy Attackers (percentage of attackers remaining)"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Civil War",
@@ -91,9 +140,18 @@
     "closes": [],
     "people": [],
     "unsure": [
-      {"field": "takesYou", "why": "the city is filled in when the battle starts. Whiterun for the Imperial side is the only defense named in the journal text of the companion battle quest (Battle for the city); these records don't show whether other cities use it."},
-      {"field": "people", "why": "the general alias isn't named for the defense in these files"},
-      {"field": "starts", "why": "it has no dialogue or event start in these files, so it is most likely started by the main siege quest's script"}
+      {
+        "field": "takesYou",
+        "why": "the city is filled in when the battle starts. Whiterun for the Imperial side is the only defense named in the journal text of the companion battle quest (Battle for the city); these records don't show whether other cities use it."
+      },
+      {
+        "field": "people",
+        "why": "the general alias isn't named for the defense in these files"
+      },
+      {
+        "field": "starts",
+        "why": "it has no dialogue or event start in these files, so it is most likely started by the main siege quest's script"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:02FF95 CWSiegeDefendObj, type Civil War, editedBy LoreRim - Dialogue Patch.esp",
@@ -110,32 +168,64 @@
     "canDo": "by itself",
     "canDoWhy": "A Civil War add-on: once you serve a side, your commanding officer has a set of champion armor for you to collect.",
     "needs": [
-      {"what": "Be a member of the Imperial Legion or the Stormcloaks", "kind": "faction"}
+      {
+        "what": "Be a member of the Imperial Legion or the Stormcloaks",
+        "kind": "faction"
+      }
     ],
     "starts": [],
     "firstStep": "Pick up champion armor from your commanding officer",
     "takesYou": [],
     "choices": [
-      {"choice": "You serve the Imperial Legion", "leadsTo": "collect the armor from Legate Adventus Caesennius"},
-      {"choice": "You serve the Stormcloaks", "leadsTo": "collect the armor from Captain Yrsarald Thrice-Pierced"}
+      {
+        "choice": "You serve the Imperial Legion",
+        "leadsTo": "collect the armor from Legate Adventus Caesennius"
+      },
+      {
+        "choice": "You serve the Stormcloaks",
+        "leadsTo": "collect the armor from Captain Yrsarald Thrice-Pierced"
+      }
     ],
     "steps": [
-      {"branch": "main", "objectives": ["Pick up champion armor from your commanding officer"]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Pick up champion armor from your commanding officer"
+        ]
+      }
     ],
     "rewards": [
-      {"what": "A set of champion armor for your side", "when": "when you collect it from your commanding officer"}
+      {
+        "what": "A set of champion armor for your side",
+        "when": "when you collect it from your commanding officer"
+      }
     ],
     "type": "Misc",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Legate Adventus Caesennius", "role": "Imperial commanding officer who hands over the armor"},
-      {"name": "Captain Yrsarald Thrice-Pierced", "role": "Stormcloak commanding officer who hands over the armor"}
+      {
+        "name": "Legate Adventus Caesennius",
+        "role": "Imperial commanding officer who hands over the armor"
+      },
+      {
+        "name": "Captain Yrsarald Thrice-Pierced",
+        "role": "Stormcloak commanding officer who hands over the armor"
+      }
     ],
     "unsure": [
-      {"field": "starts", "why": "these files show no dialogue line or event that starts it, so when it appears isn't known"},
-      {"field": "where", "why": "Adventus is placed in the Solitude area and Yrsarald in the Windhelm area, but both run a field-commander routine that moves them with the war. The records don't say where you'll find them when the quest is live."},
-      {"field": "rewards", "why": "the armor pieces aren't named in these files, only the objective's words 'champion armor'"}
+      {
+        "field": "starts",
+        "why": "these files show no dialogue line or event that starts it, so when it appears isn't known"
+      },
+      {
+        "field": "where",
+        "why": "Adventus is placed in the Solitude area and Yrsarald in the Windhelm area, but both run a field-commander routine that moves them with the war. The records don't say where you'll find them when the quest is live."
+      },
+      {
+        "field": "rewards",
+        "why": "the armor pieces aren't named in these files, only the objective's words 'champion armor'"
+      }
     ],
     "evidence": [
       "quests_raw Civil War Champions - Reduced Cut.esp:000800 CWCRQuest, type Misc",
@@ -152,33 +242,53 @@
     "canDo": "by itself",
     "canDoWhy": "After a siege, this starts on its own as you travel, and work crews then rebuild the damaged cities over a few days.",
     "needs": [
-      {"what": "A city damaged by a Civil War siege", "kind": "quest"}
+      {
+        "what": "A city damaged by a Civil War siege",
+        "kind": "quest"
+      }
     ],
-    "starts": [
-      {"who": "", "where": "", "how": "Starts by itself when you move from one location to another after the siege damage."}
-    ],
+    "starts": [],
     "firstStep": "Over the next two days, the Temple of the Divines in Solitude collects donations to speed up the rebuilding",
     "takesYou": [
-      {"place": "Temple of the Divines, Solitude", "hold": "Haafingar", "why": "donations there speed up the repairs"}
+      {
+        "place": "Temple of the Divines, Solitude",
+        "hold": "Haafingar",
+        "why": "donations there speed up the repairs"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": [
-        "During the next two days, the Temple of the Divines in Solitude will be collecting donations to accelerate the reconstruction.",
-        "Works are underway, now it's just a matter of waiting."
-      ]}
+      {
+        "branch": "main",
+        "objectives": [
+          "During the next two days, the Temple of the Divines in Solitude will be collecting donations to accelerate the reconstruction.",
+          "Works are underway, now it's just a matter of waiting."
+        ]
+      }
     ],
     "rewards": [],
     "type": "Civil War",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Workers", "role": "repair crews in Whiterun, Windhelm and Solitude"}
+      {
+        "name": "Workers",
+        "role": "repair crews in Whiterun, Windhelm and Solitude"
+      }
     ],
     "unsure": [
-      {"field": "rewards", "why": "the quest script holds a gold amount, but these files don't show whether that is gold you donate or gold you get"},
-      {"field": "needs", "why": "the start condition behind the change-location event isn't in these files. That it follows a siege comes from the journal text ('the siege will be just a bad memory')."},
-      {"field": "takesYou", "why": "the records don't say whether you must donate at the temple yourself, or how long the repairs take beyond 'many days'"}
+      {
+        "field": "rewards",
+        "why": "the quest script holds a gold amount, but these files don't show whether that is gold you donate or gold you get"
+      },
+      {
+        "field": "needs",
+        "why": "the start condition behind the change-location event isn't in these files. That it follows a siege comes from the journal text ('the siege will be just a bad memory')."
+      },
+      {
+        "field": "takesYou",
+        "why": "the records don't say whether you must donate at the temple yourself, or how long the repairs take beyond 'many days'"
+      }
     ],
     "evidence": [
       "quests_raw CWRepairs.esp:000803, type Civil War; stages 10, 20, 100 (completes); objectives 10, 20",
@@ -196,29 +306,64 @@
     "canDoWhy": "A bard or a tavern rumor points you to the Bards College in Solitude and its headmaster, Viarmo.",
     "needs": [],
     "starts": [
-      {"who": "Karita", "where": "the Windpeak Inn in Dawnstar", "how": "She tells you she trained at the Bards College in Solitude and that wanderers like you should think about applying."},
-      {"who": "Sven", "where": "Sven and Hilde's House in Riverwood", "how": "Ask where he trained; he says the Bards College in Solitude, where they train bards and skalds."},
-      {"who": "Sorex Vinius", "where": "the Winking Skeever in Solitude", "how": "He mentions the Bards College might be looking for recruits and that you should speak to Viarmo."}
+      {
+        "who": "Karita",
+        "where": "the Windpeak Inn in Dawnstar",
+        "how": "She tells you she trained at the Bards College in Solitude and that wanderers like you should think about applying."
+      },
+      {
+        "who": "Sven",
+        "where": "Sven and Hilde's House in Riverwood",
+        "how": "Ask where he trained; he says the Bards College in Solitude, where they train bards and skalds."
+      },
+      {
+        "who": "Sorex Vinius",
+        "where": "the Winking Skeever in Solitude",
+        "how": "He mentions the Bards College might be looking for recruits and that you should speak to Viarmo."
+      }
     ],
     "firstStep": "Go to the Bards College in Solitude",
     "takesYou": [
-      {"place": "the Bards College", "hold": "Haafingar", "why": "meet the headmaster, Viarmo"}
+      {
+        "place": "the Bards College",
+        "hold": "Haafingar",
+        "why": "meet the headmaster, Viarmo"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": ["Investigate the Bards College"]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Investigate the Bards College"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Misc",
-    "opens": ["Tending the Flames"],
+    "opens": [
+      "Tending the Flames"
+    ],
     "closes": [],
     "people": [
-      {"name": "Viarmo", "role": "headmaster of the Bards College; the lead points you to him"}
+      {
+        "name": "Viarmo",
+        "role": "headmaster of the Bards College; the lead points you to him"
+      }
     ],
     "unsure": [
-      {"field": "starts", "why": "these lines belong to this quest's dialogue, but the files don't show which one actually adds the objective. Sorex's line is filed under a separate rumor quest."},
-      {"field": "starts", "why": "Karita, Sven and Sorex are listed by where they are placed; their daily schedules aren't followed here"},
-      {"field": "canDo", "why": "Tending the Flames is set to run from the start of the game, so you can probably skip this lead and walk straight in to talk to Viarmo"}
+      {
+        "field": "starts",
+        "why": "these lines belong to this quest's dialogue, but the files don't show which one actually adds the objective. Sorex's line is filed under a separate rumor quest."
+      },
+      {
+        "field": "starts",
+        "why": "Karita, Sven and Sorex are listed by where they are placed; their daily schedules aren't followed here"
+      },
+      {
+        "field": "canDo",
+        "why": "Tending the Flames is set to run from the start of the game, so you can probably skip this lead and walk straight in to talk to Viarmo"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:042868 MS05Start, type Misc; objective 10; alias Viarmo; leadsTo Skyrim.esm:053511",
@@ -235,59 +380,130 @@
     "canDo": "talk",
     "canDoWhy": "Ask Viarmo at the Bards College about joining. Elisif has banned the Burning of King Olaf festival, and he needs your help to change her mind.",
     "needs": [
-      {"what": "No wedding underway at Castle Dour (Bound Until Death or A Healing Wedding) when Jorn is ready to start the festival; he says it has to wait until after the wedding", "kind": "other"}
+      {
+        "what": "No wedding underway at Castle Dour (Bound Until Death or A Healing Wedding) when Jorn is ready to start the festival; he says it has to wait until after the wedding",
+        "kind": "other"
+      }
     ],
     "starts": [
-      {"who": "Viarmo", "where": "the Bards College in Solitude", "how": "Talk to the headmaster about the College. He explains that Elisif has forbidden the Burning of King Olaf, and asks you to bring him King Olaf's Verse as part of your application."}
+      {
+        "who": "Viarmo",
+        "where": "the Bards College in Solitude",
+        "how": "Talk to the headmaster about the College. He explains that Elisif has forbidden the Burning of King Olaf, and asks you to bring him King Olaf's Verse as part of your application."
+      }
     ],
     "firstStep": "Find King Olaf's Verse",
     "takesYou": [
-      {"place": "Dead Men's Respite", "hold": "Hjaalmarch", "why": "Giraud Gemane believes King Olaf's Verse and Olaf's burial chamber lie there; it's a short walk from Morthal"},
-      {"place": "the Blue Palace, Solitude", "hold": "Haafingar", "why": "watch Viarmo perform the verse for Elisif's court"},
-      {"place": "Castle Dour, Solitude", "hold": "Haafingar", "why": "steal General Tullius' coat for the effigy"},
-      {"place": "the Bards College courtyard, Solitude", "hold": "Haafingar", "why": "the Burning of King Olaf festival and your induction"}
+      {
+        "place": "Dead Men's Respite",
+        "hold": "Hjaalmarch",
+        "why": "Giraud Gemane believes King Olaf's Verse and Olaf's burial chamber lie there; it's a short walk from Morthal"
+      },
+      {
+        "place": "the Blue Palace, Solitude",
+        "hold": "Haafingar",
+        "why": "watch Viarmo perform the verse for Elisif's court"
+      },
+      {
+        "place": "Castle Dour, Solitude",
+        "hold": "Haafingar",
+        "why": "steal General Tullius' coat for the effigy"
+      },
+      {
+        "place": "the Bards College courtyard, Solitude",
+        "hold": "Haafingar",
+        "why": "the Burning of King Olaf festival and your induction"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": [
-        "Find King Olaf's Verse",
-        "Give Viarmo King Olaf's Verse",
-        "Return to the Bards College",
-        "Help Viarmo reconstruct Olaf's Verse",
-        "Meet Viarmo at the Blue Palace",
-        "Watch Viarmo perform Olaf's Verse",
-        "Speak to Viarmo",
-        "Speak to Jorn",
-        "Steal General Tullius' Coat",
-        "Speak to Jorn",
-        "Speak to Jorn after dusk",
-        "Attend the Burning of King Olaf",
-        "Place the Coat on the Effigy"
-      ]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Find King Olaf's Verse",
+          "Give Viarmo King Olaf's Verse",
+          "Return to the Bards College",
+          "Help Viarmo reconstruct Olaf's Verse",
+          "Meet Viarmo at the Blue Palace",
+          "Watch Viarmo perform Olaf's Verse",
+          "Speak to Viarmo",
+          "Speak to Jorn",
+          "Steal General Tullius' Coat",
+          "Speak to Jorn",
+          "Speak to Jorn after dusk",
+          "Attend the Burning of King Olaf",
+          "Place the Coat on the Effigy"
+        ]
+      }
     ],
     "rewards": [
-      {"what": "The Gift of Gab (spell)", "when": "at the end"},
-      {"what": "A quest reward item from a leveled list (small, medium, large or exceptional)", "when": "at the end"},
-      {"what": "Membership in the Bards College", "when": "when you're inducted at the festival"}
+      {
+        "what": "The Gift of Gab (spell)",
+        "when": "at the end"
+      },
+      {
+        "what": "A quest reward item from a leveled list (small, medium, large or exceptional)",
+        "when": "at the end"
+      },
+      {
+        "what": "Membership in the Bards College",
+        "when": "when you're inducted at the festival"
+      }
     ],
     "type": "Side Quest",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Viarmo", "role": "headmaster; gives the quest and reconstructs the verse with you"},
-      {"name": "Giraud Gemane", "role": "at the Bards College; tells you the verse lies in Dead Men's Respite"},
-      {"name": "Elisif the Fair", "role": "Jarl of Solitude in the Blue Palace; hears the verse"},
-      {"name": "Jorn", "role": "at the Bards College; building the King Olaf effigy and needs General Tullius' coat"},
-      {"name": "General Tullius", "role": "in Castle Dour; his coat is the one you steal"},
-      {"name": "Falk Firebeard, Sybille Stentor, Bolgeir Bearclaw, Erikur, Una, Erdi, Odar, Melaran", "role": "members of Elisif's court, present for the verse"},
-      {"name": "Heimvar", "role": "Solitude Blacksmith; takes part in the quest's scenes"}
+      {
+        "name": "Viarmo",
+        "role": "headmaster; gives the quest and reconstructs the verse with you"
+      },
+      {
+        "name": "Giraud Gemane",
+        "role": "at the Bards College; tells you the verse lies in Dead Men's Respite"
+      },
+      {
+        "name": "Elisif the Fair",
+        "role": "Jarl of Solitude in the Blue Palace; hears the verse"
+      },
+      {
+        "name": "Jorn",
+        "role": "at the Bards College; building the King Olaf effigy and needs General Tullius' coat"
+      },
+      {
+        "name": "General Tullius",
+        "role": "in Castle Dour; his coat is the one you steal"
+      },
+      {
+        "name": "Falk Firebeard, Sybille Stentor, Bolgeir Bearclaw, Erikur, Una, Erdi, Odar, Melaran",
+        "role": "members of Elisif's court, present for the verse"
+      },
+      {
+        "name": "Heimvar",
+        "role": "Solitude Blacksmith; takes part in the quest's scenes"
+      }
     ],
     "unsure": [
-      {"field": "rewards", "why": "the quest script holds The Gift of Gab (added by the Unofficial Patch) and four leveled reward lists. These files don't show which list you get or exactly when they are handed over."},
-      {"field": "choices", "why": "the opening carries the game's easy and average Speech thresholds, and the verse reconstruction asks you what 'really happened' to Olaf. These files don't show whether a choice or a Speech check changes the outcome."},
-      {"field": "takesYou", "why": "the records name Castle Dour for General Tullius, but not where in it the coat is kept"},
-      {"field": "needs", "why": "The Gift of Saturalia adds a condition to one of the opening lines: it is held back while A Song in the Dark is running. The files don't say which line it is."},
-      {"field": "people", "why": "Bards College Excavation adds an excavation camp at Dead Men's Respite tied to this quest; its exact effect on the verse hunt isn't shown here"}
+      {
+        "field": "rewards",
+        "why": "the quest script holds The Gift of Gab (added by the Unofficial Patch) and four leveled reward lists. These files don't show which list you get or exactly when they are handed over."
+      },
+      {
+        "field": "choices",
+        "why": "the opening carries the game's easy and average Speech thresholds, and the verse reconstruction asks you what 'really happened' to Olaf. These files don't show whether a choice or a Speech check changes the outcome."
+      },
+      {
+        "field": "takesYou",
+        "why": "the records name Castle Dour for General Tullius, but not where in it the coat is kept"
+      },
+      {
+        "field": "needs",
+        "why": "The Gift of Saturalia adds a condition to one of the opening lines: it is held back while A Song in the Dark is running. The files don't say which line it is."
+      },
+      {
+        "field": "people",
+        "why": "Bards College Excavation adds an excavation camp at Dead Men's Respite tied to this quest; its exact effect on the verse hunt isn't shown here"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:053511 MS05, type Side Quest, editedBy USSEP; log stages 75-300; 300 completes",
@@ -309,29 +525,51 @@
     "canDoWhy": "Giraud Gemane at the Bards College asks you to gather fragments of the Poetic Edda from bards across Skyrim for a new Edda.",
     "needs": [],
     "starts": [
-      {"who": "Giraud Gemane", "where": "the Bards College in Solitude", "how": "Talk to Giraud; he asks you to collect Edda fragments from the bards you meet."}
+      {
+        "who": "Giraud Gemane",
+        "where": "the Bards College in Solitude",
+        "how": "Talk to Giraud; he asks you to collect Edda fragments from the bards you meet."
+      }
     ],
     "firstStep": "Collect parts of the Poetic Edda from bards you meet",
     "takesYou": [],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": [
-        "Collect parts of the Poetic Edda from Bards you meet (parts held / parts needed)",
-        "Take the Edda Fragments to Giraud"
-      ]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Collect parts of the Poetic Edda from Bards you meet (parts held / parts needed)",
+          "Take the Edda Fragments to Giraud"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Side Quest",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Giraud Gemane", "role": "Bards College historian; gives the quest and takes the fragments"}
+      {
+        "name": "Giraud Gemane",
+        "role": "Bards College historian; gives the quest and takes the fragments"
+      }
     ],
     "unsure": [
-      {"field": "needs", "why": "the conditions on Giraud's opening line aren't in these files, so whether you must be a College member first isn't shown"},
-      {"field": "steps", "why": "how many fragments you need, and which bards carry them, isn't in these files; dvEdda.esp sets the count"},
-      {"field": "rewards", "why": "no reward is recorded for this quest in these files"},
-      {"field": "where", "why": "Giraud is placed in the Bards College; he also has a lunch routine at the Winking Skeever"}
+      {
+        "field": "needs",
+        "why": "the conditions on Giraud's opening line aren't in these files, so whether you must be a College member first isn't shown"
+      },
+      {
+        "field": "steps",
+        "why": "how many fragments you need, and which bards carry them, isn't in these files; dvEdda.esp sets the count"
+      },
+      {
+        "field": "rewards",
+        "why": "no reward is recorded for this quest in these files"
+      },
+      {
+        "field": "where",
+        "why": "Giraud is placed in the Bards College; he also has a lunch routine at the Winking Skeever"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:0E7814 BardsCollegePoeticEdda, type Side Quest, editedBy dvEdda.esp; stages 10, 20, 100 (completes)",
@@ -348,27 +586,53 @@
     "canDoWhy": "Giraud Gemane at the Bards College has found a clue to where the legendary drum of Rjorn lies and asks you to fetch it.",
     "needs": [],
     "starts": [
-      {"who": "Giraud Gemane", "where": "the Bards College in Solitude", "how": "Talk to Giraud. He explains that Halldir was the missing link: Rjorn entered Halldir's Cairn in secret and presumably died there."}
+      {
+        "who": "Giraud Gemane",
+        "where": "the Bards College in Solitude",
+        "how": "Talk to Giraud. He explains that Halldir was the missing link: Rjorn entered Halldir's Cairn in secret and presumably died there."
+      }
     ],
     "firstStep": "Find Rjorn's Drum in Halldir's Cairn",
     "takesYou": [
-      {"place": "Halldir's Cairn", "hold": "Falkreath Hold", "why": "Rjorn's Drum is in the boss chest; the cairn is right next to Falkreath"}
+      {
+        "place": "Halldir's Cairn",
+        "hold": "Falkreath Hold",
+        "why": "Rjorn's Drum is in the boss chest; the cairn is right next to Falkreath"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": ["Find Rjorn's Drum", "Give Rjorn's Drum to Giraud"]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Find Rjorn's Drum",
+          "Give Rjorn's Drum to Giraud"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Misc",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Giraud Gemane", "role": "gives the quest and takes the drum back"}
+      {
+        "name": "Giraud Gemane",
+        "role": "gives the quest and takes the drum back"
+      }
     ],
     "unsure": [
-      {"field": "needs", "why": "the conditions on Giraud's opening line aren't in these files, so whether you must be a College member first isn't shown"},
-      {"field": "rewards", "why": "no reward is recorded for this quest in these files"},
-      {"field": "takesYou", "why": "the drum sits in the quest's 'boss container'; the records don't show which chest that is, beyond it being in the dungeon"}
+      {
+        "field": "needs",
+        "why": "the conditions on Giraud's opening line aren't in these files, so whether you must be a College member first isn't shown"
+      },
+      {
+        "field": "rewards",
+        "why": "no reward is recorded for this quest in these files"
+      },
+      {
+        "field": "takesYou",
+        "why": "the drum sits in the quest's 'boss container'; the records don't show which chest that is, beyond it being in the dungeon"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:0D944F BardsCollegeDrum, type Misc, editedBy JS Instruments of Skyrim SE - Uniques.esp; stage 20 log names Halldir's Cairn; 200 completes",
@@ -385,28 +649,57 @@
     "canDoWhy": "Pantea Ateia at the Bards College asks you to recover her lost flute.",
     "needs": [],
     "starts": [
-      {"who": "Pantea Ateia", "where": "the Bards College in Solitude", "how": "Talk to Pantea; she asks you to find her flute."}
+      {
+        "who": "Pantea Ateia",
+        "where": "the Bards College in Solitude",
+        "how": "Talk to Pantea; she asks you to find her flute."
+      }
     ],
     "firstStep": "Find Pantea's Flute in Hob's Fall Cave",
     "takesYou": [
-      {"place": "Hob's Fall Cave", "hold": "Winterhold", "why": "Pantea's Flute is in the boss chest of this warlock lair, a short walk from Dawnstar"}
+      {
+        "place": "Hob's Fall Cave",
+        "hold": "Winterhold",
+        "why": "Pantea's Flute is in the boss chest of this warlock lair, a short walk from Dawnstar"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": ["Find Pantea's Flute", "Return Pantea's Flute"]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Find Pantea's Flute",
+          "Return Pantea's Flute"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Misc",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Pantea Ateia", "role": "gives the quest and takes the flute back"}
+      {
+        "name": "Pantea Ateia",
+        "role": "gives the quest and takes the flute back"
+      }
     ],
     "unsure": [
-      {"field": "takesYou", "why": "this quest has no journal text naming the place. Hob's Fall Cave comes from the quest's dungeon slot as filled in these records."},
-      {"field": "needs", "why": "the conditions on Pantea's opening line aren't in these files, so whether you must be a College member first isn't shown"},
-      {"field": "rewards", "why": "no reward is recorded for this quest in these files"},
-      {"field": "where", "why": "Pantea is placed in the Bards College, but she also has routines at the Winking Skeever and playing flute in Solitude"}
+      {
+        "field": "takesYou",
+        "why": "this quest has no journal text naming the place. Hob's Fall Cave comes from the quest's dungeon slot as filled in these records."
+      },
+      {
+        "field": "needs",
+        "why": "the conditions on Pantea's opening line aren't in these files, so whether you must be a College member first isn't shown"
+      },
+      {
+        "field": "rewards",
+        "why": "no reward is recorded for this quest in these files"
+      },
+      {
+        "field": "where",
+        "why": "Pantea is placed in the Bards College, but she also has routines at the Winking Skeever and playing flute in Solitude"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:0D9431 BardsCollegeFlute, type Misc, editedBy JS Instruments of Skyrim SE - Uniques.esp; no log text; 200 completes",
@@ -423,27 +716,53 @@
     "canDoWhy": "Inge Six Fingers at the Bards College asks you to recover Finn's Lute, which thieves stole from the College over a year ago.",
     "needs": [],
     "starts": [
-      {"who": "Inge Six Fingers", "where": "the Bards College in Solitude", "how": "Talk to Inge; she asks you to get the lute back from the thieves' stronghold."}
+      {
+        "who": "Inge Six Fingers",
+        "where": "the Bards College in Solitude",
+        "how": "Talk to Inge; she asks you to get the lute back from the thieves' stronghold."
+      }
     ],
     "firstStep": "Find Finn's Lute in Stony Creek Cave",
     "takesYou": [
-      {"place": "Stony Creek Cave", "hold": "Eastmarch", "why": "the thieves' stronghold, a bandit camp near Shor's Stone; the lute is in the boss chest"}
+      {
+        "place": "Stony Creek Cave",
+        "hold": "Eastmarch",
+        "why": "the thieves' stronghold, a bandit camp near Shor's Stone; the lute is in the boss chest"
+      }
     ],
     "choices": [],
     "steps": [
-      {"branch": "main", "objectives": ["Find Finn's Lute", "Give Finn's Lute to Inge"]}
+      {
+        "branch": "main",
+        "objectives": [
+          "Find Finn's Lute",
+          "Give Finn's Lute to Inge"
+        ]
+      }
     ],
     "rewards": [],
     "type": "Misc",
     "opens": [],
     "closes": [],
     "people": [
-      {"name": "Inge Six Fingers", "role": "Dean of Lute; gives the quest and takes the lute back"}
+      {
+        "name": "Inge Six Fingers",
+        "role": "Dean of Lute; gives the quest and takes the lute back"
+      }
     ],
     "unsure": [
-      {"field": "takesYou", "why": "the journal only says 'their stronghold'. Stony Creek Cave comes from the quest's dungeon slot as filled in these records."},
-      {"field": "needs", "why": "the conditions on Inge's opening line aren't in these files, so whether you must be a College member first isn't shown"},
-      {"field": "rewards", "why": "no reward is recorded for this quest in these files"}
+      {
+        "field": "takesYou",
+        "why": "the journal only says 'their stronghold'. Stony Creek Cave comes from the quest's dungeon slot as filled in these records."
+      },
+      {
+        "field": "needs",
+        "why": "the conditions on Inge's opening line aren't in these files, so whether you must be a College member first isn't shown"
+      },
+      {
+        "field": "rewards",
+        "why": "no reward is recorded for this quest in these files"
+      }
     ],
     "evidence": [
       "quests_raw Skyrim.esm:0D93FA BardsCollegeLute, type Misc, editedBy USSEP then JS Instruments of Skyrim SE - Uniques.esp; stage 20 log; 200 completes",
