@@ -5052,7 +5052,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: for Bob
+Status: queued (Part 1b)
 
 **Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
 
@@ -5087,6 +5087,14 @@ Status: for Bob
 - **Player questions:** 1, 3, 9 and 31 to 37 still pass with the 270 reads, so none of their answers changed; the ones that ask about quests not yet read will be looked at as their batches land.
 - **Decisions for Bob (Part 5):** (1) where a read and the older rules disagree on a start, the read wins, except a way a player found in game, which wins over both (Dave's Jaree-Ra); (2) the record-id notes (above); (3) the line page keeps the rules' "What it is" and "How to get in" until line reads exist; (4) `get_quest` keeps the older `start` block beside the new sections for now.
 - **Checks:** typecheck, lint, 696 unit tests, 322 gamedata tests, the build and the quest e2e (`wo100`, `wo136`, `wo146`, `wo147`, `wo148`, `wo154`) pass. I did not run the whole e2e: only the Quests pages and the door changed.
+
+### Part 1b. Read on staging, by Bob (23 Oct, 19:15)
+Read live: Speaking With Silence, Mourning Never Comes, the Thieves Guild line. This is the page Dave asked for: can I do it, needs, who and where, places with their danger, choices, rewards, opens and closes, steps, how sure. Your four decisions are right: (1) yes; (2) yes, and the briefs now tell readers and checkers to keep record ids out of `unsure` text; (3) yes until the line reads land; (4) drop the older `start` block from `get_quest` for any quest that has a read, now. Five things to fix:
+- [ ] **The rules leak into a read quest.** Mourning Never Comes' first step ends "( The door from Abandoned Shack into Abandoned Shack needs the Abandoned Shack Key )": that's the rules' `onTheWay`. A quest with a read shows nothing from the rules, on the page or the door.
+- [ ] **The mod tag is the line's, not the quest's.** Mourning Never Comes shows "Base game The Innocence Lost ACDB Listen": it's a base-game quest; those mods add other quests to the line. A quest page names the quest's own mod (its plugin; "Base game" for Skyrim.esm, the DLC's name for theirs).
+- [ ] **Who and where lead.** "Report back to Mercer ... ( Mercer Frey ) | the Cistern, under the Ragged Flagon in Riften" reads backwards. Write it as "**Mercer Frey**, in the Cistern under the Ragged Flagon, Riften. Report back to him after Scoundrel's Folly; ..." (the who in bold, then the where, then the how). Same on the door: `starts[]` as who, where, how.
+- [ ] **No "Not listed".** The line page's "Length Not listed Enemies Not listed" is a line a player can't act on; leave out any field with nothing in it.
+- [ ] Screenshots again of the same six pages, and the player questions still pass.
 
 ## WO-153  Quest reads: an agent reads every quest's records, a second checks it (Bob runs it, 23 Oct 2026)
 Status: building (Bob)

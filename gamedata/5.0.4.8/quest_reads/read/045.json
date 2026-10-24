@@ -1,0 +1,827 @@
+[
+  {
+    "edid": "DLC2WE06",
+    "name": "Black Book",
+    "plugin": "Dragonborn.esm (last edited by UndeathFixes.esp, after Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "A chance encounter while you travel Solstheim's northern, glacier or ash regions points you to a dungeon that holds a Black Book.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "a chance encounter on the road (a person and a note are involved)",
+        "where": "out in the wilds of Solstheim: the northern coast, the glaciers or the ashlands",
+        "how": "Travel those parts of Solstheim. When the encounter fires, you learn which dungeon holds a Black Book."
+      }
+    ],
+    "firstStep": "Find the Black Book in the dungeon the encounter names",
+    "takesYou": [
+      {
+        "place": "a dungeon on Solstheim, chosen when the quest starts",
+        "hold": "Solstheim",
+        "why": "a Black Book is hidden there"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find the Black Book in <the dungeon named>"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "the Black Book's own quest, once you read the book you find (which book is not in these files)"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "a person met on the road (unnamed in the records)",
+        "role": "part of the encounter that starts the quest"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The quest starts from a script event in three Solstheim regions. These files don't say what the encounter looks like: who the person is, whether they're alive, or where the note is."
+      },
+      {
+        "field": "takesYou",
+        "why": "The dungeon and the Black Book are picked when the quest starts. The files don't list which dungeons or which book."
+      },
+      {
+        "field": "plugin",
+        "why": "UndeathFixes.esp edits this quest last, but these files don't show what it changes. It may be tied to Undeath's own Black Book (Whispers of the Veil), but that is not confirmed."
+      },
+      {
+        "field": "opens",
+        "why": "Which Black Book quest follows depends on the book the alias picks, and the records here don't say."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:027A14 DLC2WE06, type Misc, editedBy USSEP then UndeathFixes.esp; stages 0-255 have no log text",
+      "objective 1 'Find the Black Book in <Alias=Dungeon>'; aliases TRIGGER, myHold*, TravelMarker1, Actor1, Dungeon, BlackBook, Note",
+      "quest_givers_raw starts: DLC2WERegionNorthQuestNode, DLC2RegionGlacierQuestNode, DLC2WERegionAshlandQuestNode (script event)"
+    ]
+  },
+  {
+    "edid": "DLC2BlackBook03Quest",
+    "name": "Black Book: Untold Legends",
+    "plugin": "Dragonborn.esm (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts the moment you read the Black Book \"Untold Legends\"; it pulls you into Apocrypha.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "the Black Book \"Untold Legends\" (the book itself)",
+        "where": "",
+        "how": "Read \"Untold Legends\". You are pulled into Hermaeus Mora's realm of Apocrypha and the quest begins."
+      }
+    ],
+    "firstStep": "Learn the Black Book's hidden knowledge",
+    "takesYou": [
+      {
+        "place": "Apocrypha",
+        "hold": "",
+        "why": "the book pulls you into Hermaeus Mora's realm; find the hidden knowledge there, or read the book again to escape"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Read the book again before finishing",
+        "leadsTo": "You escape Apocrypha; the quest stays open for another try"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the Black Book's hidden knowledge"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "These files don't say where this Black Book lies in the world, so the planner can't send the player to it yet."
+      },
+      {
+        "field": "needs",
+        "why": "No conditions on the book or the quest show up here, so any main-quest gating on finding or reading it can't be checked."
+      },
+      {
+        "field": "rewards",
+        "why": "The records hold the Black Book powers (Mora's Boon, Omen of Warding, Secret of Arcana, Secret of Protection, Secret of Strength), but nothing in these files ties any of them, or any other reward, to this book."
+      },
+      {
+        "field": "choices",
+        "why": "The log says reading the book again lets you escape. Whether the quest really stays open afterwards is a guess, since only the opening and closing log entries exist."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:03216C DLC2BlackBook03Quest: two stages, opening log 'I read the Black Book called \"Untold Legends\"... read the book again to escape', closing stage completes; objective 10 'Learn the Black Book's hidden knowledge'; alias Book03Target",
+      "quest_givers_raw: no people, no start event, no rewards",
+      "powers_raw: DLC2BlackBook*Spell powers exist with no link to a specific book ; quest_starts_raw line 'black-books' opens with this quest, no conditions"
+    ]
+  },
+  {
+    "edid": "DLC2BlackBook04Quest",
+    "name": "Black Book: The Winds of Change",
+    "plugin": "Dragonborn.esm (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts the moment you read the Black Book \"The Winds of Change\"; it pulls you into Apocrypha.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "the Black Book \"The Winds of Change\" (the book itself)",
+        "where": "",
+        "how": "Read \"The Winds of Change\". You are pulled into Hermaeus Mora's realm of Apocrypha and the quest begins."
+      }
+    ],
+    "firstStep": "Learn the Black Book's hidden knowledge",
+    "takesYou": [
+      {
+        "place": "Apocrypha",
+        "hold": "",
+        "why": "the book pulls you into Hermaeus Mora's realm; find the hidden knowledge there, or read the book again to escape"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Read the book again before finishing",
+        "leadsTo": "You escape Apocrypha; the quest stays open for another try"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the Black Book's hidden knowledge"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "These files don't say where this Black Book lies in the world, so the planner can't send the player to it yet."
+      },
+      {
+        "field": "needs",
+        "why": "No conditions on the book or the quest show up here, so any main-quest gating on finding or reading it can't be checked."
+      },
+      {
+        "field": "rewards",
+        "why": "The records hold the Black Book powers (Mora's Boon, Omen of Warding, Secret of Arcana, Secret of Protection, Secret of Strength), but nothing in these files ties any of them, or any other reward, to this book."
+      },
+      {
+        "field": "choices",
+        "why": "The log says reading the book again lets you escape. Whether the quest really stays open afterwards is a guess, since only the opening and closing log entries exist."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:03216E DLC2BlackBook04Quest: two stages, opening log 'I read the Black Book called \"The Winds of Change\"... read the book again to escape', closing stage completes; objective 10 'Learn the Black Book's hidden knowledge'; alias BookTarget",
+      "quest_givers_raw: no people, no start event, no rewards",
+      "powers_raw: DLC2BlackBook*Spell powers exist with no link to a specific book"
+    ]
+  },
+  {
+    "edid": "DLC2BlackBook05Quest",
+    "name": "Black Book: The Sallow Regent",
+    "plugin": "Dragonborn.esm (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts the moment you read the Black Book \"The Sallow Regent\"; it pulls you into Apocrypha.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "the Black Book \"The Sallow Regent\" (the book itself)",
+        "where": "",
+        "how": "Read \"The Sallow Regent\". You are pulled into Hermaeus Mora's realm of Apocrypha and the quest begins."
+      }
+    ],
+    "firstStep": "Learn the Black Book's hidden knowledge",
+    "takesYou": [
+      {
+        "place": "Apocrypha",
+        "hold": "",
+        "why": "the book pulls you into Hermaeus Mora's realm; find the hidden knowledge there, or read the book again to escape"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Read the book again before finishing",
+        "leadsTo": "You escape Apocrypha; the quest stays open for another try"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the Black Book's hidden knowledge"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "These files don't say where this Black Book lies in the world, so the planner can't send the player to it yet."
+      },
+      {
+        "field": "needs",
+        "why": "No conditions on the book or the quest show up here, so any main-quest gating on finding or reading it can't be checked."
+      },
+      {
+        "field": "rewards",
+        "why": "The records hold the Black Book powers (Mora's Boon, Omen of Warding, Secret of Arcana, Secret of Protection, Secret of Strength), but nothing in these files ties any of them, or any other reward, to this book."
+      },
+      {
+        "field": "choices",
+        "why": "The log says reading the book again lets you escape. Whether the quest really stays open afterwards is a guess, since only the opening and closing log entries exist."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:03216D DLC2BlackBook05Quest: two stages, opening log 'I read the Black Book called \"The Sallow Regent\"... read the book again to escape', closing stage completes; objective 10 'Learn the Black Book's hidden knowledge'; alias BookTarget",
+      "quest_givers_raw: no people, no start event, no rewards",
+      "powers_raw: DLC2BlackBook*Spell powers exist with no link to a specific book"
+    ]
+  },
+  {
+    "edid": "DLC2BlackBook06Quest",
+    "name": "Black Book: Filament and Filigree",
+    "plugin": "Dragonborn.esm (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts the moment you read the Black Book \"Filament and Filigree\"; it pulls you into Apocrypha.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "the Black Book \"Filament and Filigree\" (the book itself)",
+        "where": "",
+        "how": "Read \"Filament and Filigree\". You are pulled into Hermaeus Mora's realm of Apocrypha and the quest begins."
+      }
+    ],
+    "firstStep": "Learn the Black Book's hidden knowledge",
+    "takesYou": [
+      {
+        "place": "Apocrypha",
+        "hold": "",
+        "why": "the book pulls you into Hermaeus Mora's realm; find the hidden knowledge there, or read the book again to escape"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Read the book again before finishing",
+        "leadsTo": "You escape Apocrypha; the quest stays open for another try"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the Black Book's hidden knowledge"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "These files don't say where this Black Book lies in the world, so the planner can't send the player to it yet."
+      },
+      {
+        "field": "needs",
+        "why": "No conditions on the book or the quest show up here, so any main-quest gating on finding or reading it can't be checked."
+      },
+      {
+        "field": "rewards",
+        "why": "The records hold the Black Book powers (Mora's Boon, Omen of Warding, Secret of Arcana, Secret of Protection, Secret of Strength), but nothing in these files ties any of them, or any other reward, to this book."
+      },
+      {
+        "field": "choices",
+        "why": "The log says reading the book again lets you escape. Whether the quest really stays open afterwards is a guess, since only the opening and closing log entries exist."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:03216F DLC2BlackBook06Quest: two stages, opening log 'I read the Black Book called \"Filament and Filigree\"... read the book again to escape', closing stage completes; objective 10 'Learn the Black Book's hidden knowledge'; alias BookTarget",
+      "quest_givers_raw: no people, no start event, no rewards",
+      "powers_raw: DLC2BlackBook*Spell powers exist with no link to a specific book"
+    ]
+  },
+  {
+    "edid": "DLC2BlackBook07Quest",
+    "name": "Black Book: The Hidden Twilight",
+    "plugin": "Dragonborn.esm (no later plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts the moment you read the Black Book \"The Hidden Twilight\"; it pulls you into Apocrypha.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "the Black Book \"The Hidden Twilight\" (the book itself)",
+        "where": "",
+        "how": "Read \"The Hidden Twilight\". You are pulled into Hermaeus Mora's realm of Apocrypha and the quest begins."
+      }
+    ],
+    "firstStep": "Learn the Black Book's hidden knowledge",
+    "takesYou": [
+      {
+        "place": "Apocrypha",
+        "hold": "",
+        "why": "the book pulls you into Hermaeus Mora's realm; find the hidden knowledge there, or read the book again to escape"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Read the book again before finishing",
+        "leadsTo": "You escape Apocrypha; the quest stays open for another try"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the Black Book's hidden knowledge"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "These files don't say where this Black Book lies in the world, so the planner can't send the player to it yet."
+      },
+      {
+        "field": "needs",
+        "why": "No conditions on the book or the quest show up here, so any main-quest gating on finding or reading it can't be checked."
+      },
+      {
+        "field": "rewards",
+        "why": "The records hold the Black Book powers (Mora's Boon, Omen of Warding, Secret of Arcana, Secret of Protection, Secret of Strength), but nothing in these files ties any of them, or any other reward, to this book."
+      },
+      {
+        "field": "choices",
+        "why": "The log says reading the book again lets you escape. Whether the quest really stays open afterwards is a guess, since only the opening and closing log entries exist."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:032170 DLC2BlackBook07Quest: two stages, opening log 'I read the Black Book called \"The Hidden Twilight\"... read the book again to escape', closing stage completes; objective 10 'Learn the Black Book's hidden knowledge'; alias BookTarget",
+      "quest_givers_raw: no people, no start event, no rewards",
+      "powers_raw: DLC2BlackBook*Spell powers exist with no link to a specific book"
+    ]
+  },
+  {
+    "edid": "DLC2EbonyWarriorQuest",
+    "name": "The Ebony Warrior",
+    "plugin": "Dragonborn.esm (last edited by EbonyGetLost.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "A warrior in ebony armor walks up to you in the streets of a city and challenges you to fight him at his last vigil.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Ebony Warrior",
+        "where": "in the streets of whichever city you are entering when the encounter fires",
+        "how": "He comes to you when you arrive in a city and tries to talk. Talk to him and he challenges you to meet him at the Last Vigil."
+      }
+    ],
+    "firstStep": "Talk to the Ebony Warrior",
+    "takesYou": [
+      {
+        "place": "the Last Vigil",
+        "hold": "",
+        "why": "where he waits to fight you"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Meet him at the Last Vigil and fight",
+        "leadsTo": "You defeat the Ebony Warrior and the quest completes: 'May his soul find rest in Sovngarde.'"
+      },
+      {
+        "choice": "Tell him to get lost",
+        "leadsTo": "You dismiss his challenge; he looks dejected and the quest completes with no fight"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to the Ebony Warrior",
+          "Meet the Ebony Warrior at the Last Vigil"
+        ]
+      },
+      {
+        "branch": "dismiss him",
+        "objectives": [
+          "Tell him to get lost"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "His ebony gear, looted from his body",
+        "when": "after you defeat him"
+      },
+      {
+        "what": "The forge recipes for Vitreous Ebony Armor, Boots, Gauntlets, Helmet and Shield and the Savage Ebony Scimitar (you also need the Ebony Smithing perk)",
+        "when": "once the quest is complete"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "The Ebony Warrior dies if you fight him; dismissing him also ends the quest"
+    ],
+    "people": [
+      {
+        "name": "Ebony Warrior",
+        "role": "challenger; the records place him at the Ebony Warrior's Camp until he seeks you out"
+      },
+      {
+        "name": "Shadowmere",
+        "role": "the quest keeps track of Shadowmere; the records don't say why"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The only start condition here is that the encounter hasn't already fired. No level requirement shows up in these files, though the story event may carry conditions that weren't extracted."
+      },
+      {
+        "field": "takesYou",
+        "why": "These files don't say where the Last Vigil is or what hold it's in. The Ebony Warrior is placed at 'Ebony Warrior's Camp' in Skyrim, and Ryn's Snazzy Last Vigil adds an interior called Ebony Keep there, but the link between them isn't spelled out."
+      },
+      {
+        "field": "starts",
+        "why": "He picks the city when the encounter fires on a location change. The files don't list which cities qualify."
+      },
+      {
+        "field": "rewards",
+        "why": "His outfit comes from Ryn's Snazzy Last Vigil - Ebony Warrior Overhaul, but the pieces in it aren't listed. The forge recipes check only that the quest is complete, and both endings complete it, so dismissing him may unlock them too."
+      },
+      {
+        "field": "closes",
+        "why": "EbonyGetLost.esp adds a second Ebony Warrior and a tied reference with no cell. Whether you can still fight him after dismissing him isn't clear from these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:02C49E: stage 10 log 'tried to talk to me on the streets of <StartCity>', stage 100 challenge, 200 defeated (completes), 250 dismissed (completes); objectives 10/100/150",
+      "quest_givers_raw: giver Ebony Warrior Dragonborn.esm:0285C3 at Ebony Warrior's Camp (cell Skyrim.esm:000D74); start node DLC2EbonyWarriorNode change location",
+      "quest_starts_raw: event condition DLC2EBRun == 0; EbonyGetLost.esp changes opening dialogue INFO 02C439 from stage < 100 to <= 100",
+      "recipes_raw: Ryn_RecipeArmorEbony* need GetQuestCompleted 02C49E + REQ_Smithing_EbonySmithing",
+      "people_schedules_raw: outfit Ryn's Snazzy Last Vigil - Ebony Warrior Overhaul.esp:00080B; EbonyGetLost.esp:000806 second NPC"
+    ]
+  },
+  {
+    "edid": "DLC2dunHaknirTreasureQST",
+    "name": "Deathbrand",
+    "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "Visit Haknir's Shoal on Solstheim, where pirates have dug up an old chest; their treasure map leads you to Haknir Death-Brand's armor and tomb.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "the pirates at Haknir's Shoal",
+        "where": "Haknir's Shoal, a pirate camp on Solstheim",
+        "how": "Go to Haknir's Shoal. The pirates there have uncovered a buried chest holding a piece of stalhrim armor, and the journal asks you to learn more."
+      }
+    ],
+    "firstStep": "Learn more about the buried treasure at Haknir's Shoal",
+    "takesYou": [
+      {
+        "place": "Haknir's Shoal",
+        "hold": "Solstheim",
+        "why": "the pirates and their treasure map"
+      },
+      {
+        "place": "the spots marked on the Deathbrand Treasure Map",
+        "hold": "Solstheim",
+        "why": "dig up the chests holding Haknir's armor; one also holds the Gyldenhul Barrow Key"
+      },
+      {
+        "place": "Gyldenhul Barrow",
+        "hold": "Solstheim",
+        "why": "Haknir's tomb, his cursed gold and his swords"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn more about the buried treasure",
+          "Use the Deathbrand Treasure Map to find the treasure",
+          "Explore Gyldenhul Barrow",
+          "Defeat Haknir Death-Brand"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Deathbrand Helm, Deathbrand Cuirass, Deathbrand Gauntlets and Deathbrand Boots (light stalhrim armor; each piece's effect is strongest with the full set)",
+        "when": "from the chests on the treasure map"
+      },
+      {
+        "what": "Deathbrand (book)",
+        "when": "from the pirate leader at Haknir's Shoal"
+      },
+      {
+        "what": "Gyldenhul Barrow Key",
+        "when": "in one of the treasure chests"
+      },
+      {
+        "what": "Haknir's two swords and his gold",
+        "when": "in Gyldenhul Barrow, after you defeat his ghost"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Pirate leader",
+        "role": "leads the pirates at Haknir's Shoal and carries the book Deathbrand"
+      },
+      {
+        "name": "Haknir Death-Brand",
+        "role": "the legendary pirate king; his ghost attacks in his tomb in Gyldenhul Barrow"
+      },
+      {
+        "name": "Haknir's Crew",
+        "role": "his ghostly crew in Gyldenhul Barrow; touching the cursed gold seals the doors behind you"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No start event or opening dialogue shows up for this quest. The first log is written at Haknir's Shoal, so it probably starts when you arrive there, but that isn't shown."
+      },
+      {
+        "field": "takesYou",
+        "why": "The four chests are quest aliases. These files don't give where the map marks them or which one holds which piece and the key."
+      },
+      {
+        "field": "where",
+        "why": "Both places are on Solstheim, but they have no map markers in these files, so the 'next to Skaal Village' distance there can't be trusted."
+      },
+      {
+        "field": "rewards",
+        "why": "Haknir's swords aren't named in the quest records. ArteFake's replicas of them are called Bloodscythe and Soulrender, which suggests the originals carry those names, but that isn't confirmed. Who holds the treasure map, the leader or another pirate, isn't spelled out either."
+      },
+      {
+        "field": "steps",
+        "why": "Danger: these files list Haknir Death-Brand as a level 200 boss in Gyldenhul Barrow (enemies there run 40 to 200), and the pirates at Haknir's Shoal as 10 to 50 with a leader at 19 to 24."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:024002: logs at 29/30/31/70/80/90/100; objectives 29/30/70/90; aliases ShoalBanditBoss, TreasureMap, Chest01-04, Haknir* armor, GyldenhulBarrowKey, HaknirsSword, ShoalBanditBossBook",
+      "quest_givers_raw rewards: Deathbrand book 03661A via ShoalBanditBossBook; Deathbrand Helm/Boots/Cuirass/Gauntlets 02401A-02401D",
+      "quest_starts_raw: Gyldenhul Barrow door 018D1B needs key 018D1C (USSEP changed lock level 100 to key-only); key placed in ref 016E1E",
+      "places_raw: Gyldenhul Barrow 0142A8 boss Haknir Death-Brand level 200; Haknir's Shoal 0142C2 boss Pirate leveled 19-24",
+      "items_raw: ArteFake.esp:193651/193654 RPC_NULL_DLC2dunHaknirScimitar01/02 = Bloodscythe/Soulrender"
+    ]
+  },
+  {
+    "edid": "DLC2dunKolbjornQST",
+    "name": "Unearthed",
+    "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Meet Ralis Sedarys outside the ash-buried Kolbjorn Barrow on Solstheim and agree to pay for his dig.",
+    "needs": [
+      {
+        "what": "11,000 gold over the whole quest (1,000, then 2,000, 3,000 and 5,000)",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Ralis Sedarys",
+        "where": "outside Kolbjorn Barrow on Solstheim (Raven Rock is the nearest town)",
+        "how": "Go to Kolbjorn Barrow and talk to Ralis. The barrow is buried in ash, and he offers to make you a partner in the dig if you pay for it."
+      }
+    ],
+    "firstStep": "Fund the excavation of Kolbjorn Barrow (1000 gold)",
+    "takesYou": [
+      {
+        "place": "Kolbjorn Barrow",
+        "hold": "Solstheim",
+        "why": "the dig site; you come back after each payment to clear draugr and push deeper"
+      },
+      {
+        "place": "Kolbjorn Barrow, deep inside",
+        "hold": "Solstheim",
+        "why": "find Ralis performing the ritual that frees Ahzidal, and fight Ahzidal"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill Ralis",
+        "leadsTo": "You decide he sacrificed the miners on purpose and kill him for his crimes"
+      },
+      {
+        "choice": "Let Ralis go",
+        "leadsTo": "You accept that Ahzidal controlled him and let him leave in peace. He says he'll go to Raven Rock and lend you a hand if you need it"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "first phase",
+        "objectives": [
+          "Fund the excavation of Kolbjorn Barrow (1000 gold)",
+          "Wait for a message from Ralis",
+          "Visit the Kolbjorn Barrow Excavation",
+          "Clear the Draugr from Kolbjorn Barrow",
+          "Find a way deeper into the Barrow",
+          "Speak to Ralis"
+        ]
+      },
+      {
+        "branch": "second phase",
+        "objectives": [
+          "Fund the next phase of the excavation (2000 gold)",
+          "Wait for a message from Ralis",
+          "Return to Kolbjorn Barrow",
+          "Clear the Draugr from Kolbjorn Barrow",
+          "Search for the missing miners",
+          "Speak to Ralis"
+        ]
+      },
+      {
+        "branch": "third phase",
+        "objectives": [
+          "Fund the next phase of the excavation (3000 gold)",
+          "Wait for a message from Ralis",
+          "Return to Kolbjorn Barrow",
+          "Clear the Draugr from Kolbjorn Barrow",
+          "Speak to Ralis"
+        ]
+      },
+      {
+        "branch": "last phase",
+        "objectives": [
+          "Fund the next phase of the excavation (5000 gold)",
+          "Wait for a message from Ralis",
+          "Return to Kolbjorn Barrow",
+          "Locate Ralis",
+          "Defeat Ahzidal",
+          "Confront Ralis"
+        ]
+      },
+      {
+        "branch": "kill Ralis",
+        "objectives": [
+          "Kill Ralis"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "The Relics of Ahzidal, sealed in Kolbjorn Barrow. The records hold Ahzidal (mask), Ahzidal's Armor, Ahzidal's Boots, Ahzidal's Gauntlets, Ahzidal's Helmet, Ahzidal's Ring of Arcana and Ahzidal's Ring of Necromancy",
+        "when": "inside the barrow, as you dig deeper and after you defeat Ahzidal"
+      },
+      {
+        "what": "Ralis's help in Raven Rock",
+        "when": "if you let him go"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "Ralis Sedarys dies if you choose to kill him",
+      "The miners Bradyn and Mireli are found dead",
+      "Ahzidal is destroyed, which also counts for Destroy the Acolyte Priests"
+    ],
+    "people": [
+      {
+        "name": "Ralis Sedarys",
+        "role": "the explorer running the dig; waits outside Kolbjorn Barrow at first"
+      },
+      {
+        "name": "Ahzidal",
+        "role": "the dragon priest sealed in the barrow; boss of the last phase"
+      },
+      {
+        "name": "Bradyn",
+        "role": "missing miner, found dead in the barrow"
+      },
+      {
+        "name": "Mireli",
+        "role": "missing miner, found dead in the barrow"
+      },
+      {
+        "name": "Geldis Sadri",
+        "role": "at the Retching Netch in Raven Rock, passes on the rumor that Ralis wants gold to dig out Kolbjorn Barrow"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Ralis is placed in the Solstheim wilds and has a package keeping him near the barrow until the dig is funded. After that his only packages are sleeping and sandboxing at the Retching Netch. Where he stands during each phase comes from the quest, and that isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The log calls the Relics of Ahzidal 'sealed in Kolbjorn Barrow', and the records hold those items, but these files don't say where each one lies. Ralis is in the potential-follower faction and promises to 'lend you a hand' if spared, but the dialogue that recruits him isn't shown."
+      },
+      {
+        "field": "choices",
+        "why": "The quest uses an easy Speech check somewhere. These files don't say which line, possibly the one that persuades Ralis or spares him."
+      },
+      {
+        "field": "closes",
+        "why": "Ralis is marked essential in his record. The kill ending must lift that, but the script isn't read here."
+      },
+      {
+        "field": "steps",
+        "why": "Danger: these files list Kolbjorn Barrow's enemies at levels 30 to 55, with Ahzidal at level 55."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:01810B: logs 40-490; objectives 40-480 with gold amounts 1000/2000/3000/5000; aliases Ralis, Ahzidal, QT_Phase2Miner01/02, CourierNote01",
+      "quest_givers_raw: giver Ralis Dragonborn.esm:0179C7 INFO 027587 (stage below 1), ref 018109 in cell 0142EC Solstheim; start node DLC2dunKolbjornNode change location",
+      "people_schedules_raw 0179C7: SandboxAtKolbjornInitial (stage < 99), SleepRetchingNetch24x8, SandboxRetchingNetch; PotentialFollowerFaction; essential",
+      "places_raw Raven Rock pointers: INFO 0275B2 'I'll go to Raven Rock... lend you a hand', INFO 0275A1; Kolbjorn Barrow pointer INFO 02BBB9 Geldis Sadri (TheChoiceIsYours.esp)",
+      "quest_starts_raw: SpeechEasy global used",
+      "items_raw: Ahzidal relics Dragonborn.esm:0240FE, 01DB97-01DB9B, 01C655",
+      "EnoAcolyteQuest (Destroy the Acolyte Priests.esp:000800) objective 'Destroy Ahzidal'"
+    ]
+  },
+  {
+    "edid": "DLC2dunKolbjornMiscQST",
+    "name": "Kolbjorn Barrow Misc Objectives",
+    "plugin": "Dragonborn.esm (no later plugin edits it)",
+    "canDo": "background",
+    "canDoWhy": "A journal pointer, 'Speak to Ralis Sedarys at Kolbjorn Barrow', that leads into Unearthed; it isn't a quest of its own.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Speak to Ralis Sedarys at Kolbjorn Barrow",
+    "takesYou": [
+      {
+        "place": "Kolbjorn Barrow",
+        "hold": "Solstheim",
+        "why": "find Ralis Sedarys outside it, or look into the barrow"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Ralis Sedarys at Kolbjorn Barrow",
+          "Investigate Kolbjorn Barrow"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "Unearthed"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Ralis Sedarys",
+        "role": "the man the pointer sends you to, outside Kolbjorn Barrow"
+      },
+      {
+        "name": "Geldis Sadri",
+        "role": "at the Retching Netch in Raven Rock, tells you Ralis wants gold to dig out Kolbjorn Barrow"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No start event or dialogue for this pointer shows up in these files. The likely trigger is hearing about Ralis, such as Geldis Sadri's rumor at the Retching Netch, which TheChoiceIsYours.esp edits, but that isn't shown, so starts is left empty."
+      },
+      {
+        "field": "steps",
+        "why": "The files don't say when 'Investigate Kolbjorn Barrow' replaces 'Speak to Ralis'."
+      }
+    ],
+    "evidence": [
+      "QUST Dragonborn.esm:02667E: stages 10/20/30 no log; objectives 10 'Speak to Ralis Sedarys at Kolbjorn Barrow', 20 'Investigate Kolbjorn Barrow'; alias Ralis",
+      "quest_givers_raw: no start event, no giver",
+      "places_raw Kolbjorn Barrow pointer INFO Dragonborn.esm:02BBB9 Geldis Sadri (Raven Rock Rumors, TheChoiceIsYours.esp)"
+    ]
+  }
+]

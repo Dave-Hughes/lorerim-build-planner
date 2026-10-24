@@ -54,3 +54,5 @@ Rules for the words:
 When you're done, reply with just the file path.
 
 Working files: keep any scripts you write in `/tmp/claude-0/-home-claude/969323fd-f0e5-5fc7-8db6-cfa833e9ed5a/scratchpad/r<your batch number>/`, never loose in the scratchpad: other readers run at the same time.
+
+No record ids, editor ids or plugin file names in any text a player reads, `unsure` notes included ("the records place him in the Red Wave", not "Skyrim.esm:01328D"). Ids go in `evidence` only.

@@ -1,0 +1,1203 @@
+{
+  "checks": [
+    {
+      "edid": "DLC2RRFavor01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Veleth's line (INFO 024DB6, GetIsID Veleth, stage below 11) starts it; Misc type."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in quest_givers_raw or quest_starts_raw gates it; the opening line's own conditions aren't extracted, so the reader's unsure note stands."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Who and how agree (giver INFO 024DB6, alias DLC2RRFVelethAlias). Where said 'around the Retching Netch': the Netch packages (NetchMorning8x2, NetchEvening18x2) target ref 035E50 whose cell is The Retching Netch, the inn's interior, so he is inside it. Added the hours from the package names."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10: Locate the hidden stash of Emberbrand Wine in Raven Rock."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective names Raven Rock; the barrel alias DLC2RRF01BarrelAlias isn't placed in these files."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or logs."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "quest_givers_raw has no reward candidate for this quest; stage 200 completes with no text."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "DLC2RRFavor02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Milore's line INFO 024DB5 (stage below 11) starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in Ienth Farm (ref 0182A2); packages: NighttimeAlchemy20x4, Breakfast6x2 and Sleep0x6 at Ienth Farm, Vendor8x12 with no named spot; the undecoded AIORRMiloreWeekends package sits on top. The reader's reading and unsure note match."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 with global DLC2RRF02JellyTotal = 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Fine as written; 'from netch' is flagged in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "DLC2RRFavor03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Othreloth's line INFO 024DB4 starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in the Temple (ref 01828B); his sleep package DLC2RROthrelothSleepPackage0x7 targets Temple Location and his default package keeps him near where he's placed."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10: Clear the Temple's tomb of ash spawn."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Tomb alias is the Temple Location (DLC2RRF03TombLocAlias) plus QTTomb; 'under the Temple' is flagged in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate; no stage is flagged as completing (200 has no completes flag), as the reader noted."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DLC2RRFavor04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Geldis's line INFO 024DBC starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in The Retching Netch (ref 018291); DLC2RRGeldisInnkeeperPackage and AIORRGeldisSleep2x5 both target the inn, and he is in JobInnkeeperFaction, which supports 'behind the counter'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10, global DLC2RRF04DrinkTotal = 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Raven Rock and the inn."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "DLC2RRFavor05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Fethis's line INFO 024F96 starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in Alor House; packages Vendor8x12 (no named spot), Breakfast6x2 at Alor House, Netch20x4 at The Retching Netch. Matches."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "The only objective: Locate the East Empire Pendants for Fethis Alor in Raven Rock."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Raven Rock, from the objective."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Gold stays (script property DLC2RRFavor05QuestScript.pGold001), but 'when: handing over the pendants' isn't in the records: the quest has a single objective (locate) and no return step or completing stage. Changed 'when' to the end of the quest, unconfirmed, and kept the pendant out as the item being found."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DLC2RRFavor06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Bralsa's line INFO 024F9B starts it; Geldis has lines below stage 21."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placement in the Abandoned Building (ref 018F16) and DLC2RRBralsaMarketPackage8x8 (global 018B10 == 0) match. Added an unsure note: DLC2RRBralsaSleepPackage0x6 has no named target, and DLC2RRDayBuildPackage (GetInFaction 01C4E5) sits on top."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Inn, then back to Bralsa (objective 20)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing opens; her evening Netch package (DLC2RRBralsaNetchPackage18x4, GetStageDone 024FAD 200) is noted under people."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DLC2RRFavor07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Cindiri's line INFO 033CF9 starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in Morvayn Manor; packages Breakfast6x2 (Morvayn Manor), Wander8x5, NetchLunch14x2 and Netch20x4 (The Retching Netch). The how matches INFO 02BAC0 and 02BABF."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Strident Squall is a shipwreck and bandit camp (LCTN 0142C9, LocTypeShipwreck, LocTypeBanditCamp); chest and book aliases. Its danger is flagged in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DLC2MH01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Bujold's line INFO 01A4E6 (stage below 10) starts it; the quest_starts line 'thirsk' opens on DLC2MH01."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No gate shown; the USSEP GetLevel == -1 on INFO 027DE7 (quest_starts_raw 'changes the opening dialogue's conditions') is rightly left in unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Who agrees. Where added 'below Thirsk Mead Hall', which nothing in the records says (the journal gives only 'the eastern shore of the island'); removed. How said Kuvar, Elmus or Halbarn can also bring it up: quest_givers_raw lists them only as other speakers with lines while the stage is below 26, which doesn't show that they start it; moved to unsure. Also reworked the unsure note: Halbarn and Hilund have camp versions of their packages (DLC2HalbarnSleepAtCamp22x7, DLCHilundEatAtCamp13x3, DLC2ThirskNordsSandboxAtCamp) keyed on GLOB 01A51E like the rest."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10: Join the assault on Thirsk Mead Hall."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Thirsk Mead Hall (door 016FFB) and Hrothmund's Barrow (door 01A52B, INFO 01D971); both in quest_starts_raw doors."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 40 log (opposed her fraud, she attacked) and stage 200 logs split on GetDead Bujold."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing the records tie to this quest's end; the Nords' favor quests have no recorded link to it."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail stage 210 log (helped the rieklings) and DLC2MH02's fail log support the mutual lockout; Bujold's death per stage 200 dead log."
+        }
+      }
+    },
+    {
+      "edid": "DLC2MH02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "The chief's line INFO 01A4F0 (stage below 10) starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in the records; how you get to talk to him is rightly in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Chief (NPC 01A508, named 'Riekling') placed in Thirsk Mead Hall; how matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10: Give Bilgemuck some meat."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Hall, plus the ExileCamp alias and the riekling line INFO 01FE0D ('Live by water')."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch within the quest; refusing is the fail stage 210."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "The chief title is from the stage 200 log; no item reward candidate."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "fix",
+          "note": "The seven Nords are aliases Nord1-7 and the objective is to kill them (GLOB DLC2MH02NordsTotal = 7). A player loses what they offer: people_schedules_raw gives Halbarn JobBlacksmithFaction and PotentialMarriageFaction, Hilund PotentialMarriageFaction, Kuvar JobTrainerHeavyArmorFaction, Elmus JobMerchantFaction, and the favor quests DLC2ThirskFFHalbarn, DLC2ThirskFFHilund, DLC2ThirskFFElmus and DLC2ThirskFFElmusBack are theirs. Added."
+        }
+      }
+    },
+    {
+      "edid": "DLC2ThirskFFElmus",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Elmus's line INFO 038EBC (stage below 10) starts it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Left in unsure, rightly: the sister quest DLC2ThirskFFElmusBack (Juniper Berries) suggests this one is the exile-time favor, but the line's conditions aren't extracted."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Elmus is placed at the camp (ref 01A51B, cell 00EE04, same as Bujold); his camp packages (DLC2ElmusEatBreakfastAtCamp8x3 and others) agree. How matches INFO 038EBC."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "The only objective."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree. Added that the hall may still be held by rieklings (Retaking Thirsk stage 10 log; places_raw Thirsk livesHere Riekling), with the timing in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Kept per Bob's ruling: LvlQuestReward02Medium (LVLI Skyrim.esm:0C0405) from fragment QF_DLC2ThirskFFElmus_02038EBF. Reworded the unsure note to say it's from the script."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail stage 205 exists with no text; the cause is in unsure."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DLC2RRFavor01",
+      "name": "Recipe for Distraction",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Captain Veleth of the Raven Rock guard asks you to find a hidden stash of wine somewhere in town.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Captain Veleth",
+          "where": "Raven Rock: inside The Retching Netch from 8 to 10 am and 6 to 8 pm, at a market spot from 10 am to 2 pm, asleep in the Bulwark barracks from midnight to 6 am, otherwise on patrol in town",
+          "how": "Talk to Captain Veleth; he asks you to track down a hidden stash of Emberbrand Wine."
+        }
+      ],
+      "firstStep": "Find the hidden stash of Emberbrand Wine in Raven Rock",
+      "takesYou": [
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "the wine stash is hidden somewhere in town"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Locate the hidden stash of Emberbrand Wine in Raven Rock",
+            "Report the stash of Emberbrand Wine to Captain Veleth"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Captain Veleth",
+          "role": "Raven Rock's guard captain; gives the quest and takes your report"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "The stash is a barrel the quest points to, but the records here don't say which building or spot it sits in."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the quest's records; anything Veleth hands over would be in dialogue scripts not in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The conditions on Veleth's opening line aren't in these files, so it isn't known whether an earlier Raven Rock quest must be done first."
+        },
+        {
+          "field": "starts.where",
+          "why": "Schedule read from package names only (Netch 8 am and 6 pm for 2 hours, market 10 am for 4 hours, sleep midnight for 6 hours in the Bulwark barracks, patrol otherwise); the market spot and patrol route aren't named."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:024DDE",
+        "giver INFO Dragonborn.esm:024DB6",
+        "NPC Dragonborn.esm:0182AC (essential, IsGuardFaction)",
+        "alias DLC2RRF01BarrelAlias",
+        "packages DLC2RRModynNetchEveningPackage18x2, DLC2RRModynMarketPackage10x4, DLC2RRModynNetchMorningPackage8x2, DLC2RRModynSleepPackage0x6, DLC2RRModynPatrolPackage0x0"
+      ]
+    },
+    {
+      "edid": "DLC2RRFavor02",
+      "name": "Fetch the Netch",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Milore Ienth, Raven Rock's alchemist, wants netch jelly brought to her.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Milore Ienth",
+          "where": "Ienth Farm in Raven Rock (early morning, evening and night); at her vendor spot in town from 8 am to 8 pm",
+          "how": "Talk to Milore Ienth; she asks you to collect netch jelly for her."
+        }
+      ],
+      "firstStep": "Collect 5 netch jelly for Milore Ienth",
+      "takesYou": [
+        {
+          "place": "the wilds of Solstheim, wherever netch are found",
+          "hold": "Solstheim",
+          "why": "netch jelly comes from netch"
+        },
+        {
+          "place": "Ienth Farm, Raven Rock",
+          "hold": "Solstheim",
+          "why": "hand the jelly to Milore"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve netch jelly for Milore Ienth (5)",
+            "Bring the netch jelly to Milore Ienth"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Milore Ienth",
+          "role": "alchemist at Ienth Farm; gives the quest and takes the jelly"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The records give the jelly count but not where netch are; 'from netch' is inferred from the item's name."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the quest's records."
+        },
+        {
+          "field": "starts.where",
+          "why": "Schedule from package names: breakfast 6 am at Ienth Farm, vendor 8 am for 12 hours at a spot the records don't name, alchemy 8 pm for 4 hours at Ienth Farm, sleep midnight at Ienth Farm; an AI Overhaul weekend package with undecoded conditions sits on top and may move her on some days."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:024DE7",
+        "giver INFO Dragonborn.esm:024DB5",
+        "NPC Dragonborn.esm:0182A1",
+        "GLOB DLC2RRF02JellyTotal = 5",
+        "packages AIORRMiloreWeekends, DLC2RRMiloreNighttimeAlchemyPackage20x4, DLC2RRMiloreVendorPackage8x12, DLC2RRIenthEatBreakfastPackage6x2, DLC2RRMiloreSleepBuild0x6"
+      ]
+    },
+    {
+      "edid": "DLC2RRFavor03",
+      "name": "Clean Sweep",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Elder Othreloth asks you to clear ash spawn out of the temple's tomb in Raven Rock.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Elder Othreloth",
+          "where": "the Temple in Raven Rock (he lives and sleeps there)",
+          "how": "Talk to Elder Othreloth in the Temple; he asks you to cleanse the tomb of ash spawn."
+        }
+      ],
+      "firstStep": "Clear the ash spawn out of the Temple's tomb",
+      "takesYou": [
+        {
+          "place": "the tomb under the Temple, Raven Rock",
+          "hold": "Solstheim",
+          "why": "kill the ash spawn"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Clear the Temple's tomb of ash spawn",
+            "Tell Elder Othreloth that the Tomb has been cleansed"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Elder Othreloth",
+          "role": "temple elder in Raven Rock; gives the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The quest's tomb is tied to the Temple's location; the records don't name the tomb's door, so 'under the Temple' is a reading of that link."
+        },
+        {
+          "field": "steps",
+          "why": "The quest records up to eleven ash spawn, but how many actually appear isn't recorded."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed, and no stage is marked as completing the quest; the finish is probably handled in a script not in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:024DFC",
+        "giver INFO Dragonborn.esm:024DB4",
+        "NPC Dragonborn.esm:01828A",
+        "aliases DLC2RRF03TombLocAlias (Temple Location), QTTomb, DLC2RRF03Spawn01-11Alias",
+        "packages DLC2RROthrelothSleepPackage0x7 (Temple), DLC2RROthrelothDefaultPackage"
+      ]
+    },
+    {
+      "edid": "DLC2RRFavor04",
+      "name": "It's All In The Taste",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Geldis Sadri, keeper of the Retching Netch, wants samples of his sujamma handed out around Raven Rock.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Geldis Sadri",
+          "where": "behind the counter at The Retching Netch, Raven Rock's inn",
+          "how": "Talk to Geldis Sadri; he asks you to hand out free samples of Sadri's Sujamma."
+        }
+      ],
+      "firstStep": "Hand out Sadri's Sujamma to people in Raven Rock",
+      "takesYou": [
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "hand out the samples"
+        },
+        {
+          "place": "The Retching Netch, Raven Rock",
+          "hold": "Solstheim",
+          "why": "report back to Geldis"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Distribute Sadri's Sujamma (10)",
+            "Tell Geldis Sadri you've distributed his liquor samples"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Geldis Sadri",
+          "role": "innkeeper; gives the quest"
+        },
+        {
+          "name": "Lleril Morvayn",
+          "role": "has lines for this quest; likely one who takes a sample"
+        },
+        {
+          "name": "Adril Arano",
+          "role": "has lines for this quest; likely one who takes a sample"
+        },
+        {
+          "name": "Cindiri Arano",
+          "role": "has lines for this quest; likely one who takes a sample"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "Ten samples are needed, but only three named people have their own lines for this quest; who else will take one isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the quest's records."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:024E04",
+        "giver INFO Dragonborn.esm:024DBC",
+        "NPC Dragonborn.esm:018290 (last edited by Requiem for the Indifferent.esp)",
+        "giver others: Dragonborn.esm:01827E, 018280, 018282",
+        "GLOB DLC2RRF04DrinkTotal = 10",
+        "packages AIORRGeldisSleep2x5, DLC2RRGeldisInnkeeperPackage (Retching Netch)"
+      ]
+    },
+    {
+      "edid": "DLC2RRFavor05",
+      "name": "Pain in the Necklace",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Fethis Alor wants the East Empire pendants he has lost around Raven Rock found.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Fethis Alor",
+          "where": "at his trader's spot in Raven Rock from 8 am to 8 pm; Alor House early morning; The Retching Netch from 8 pm to midnight",
+          "how": "Talk to Fethis Alor; he asks you to find the East Empire Pendants."
+        }
+      ],
+      "firstStep": "Find the East Empire Pendants in Raven Rock",
+      "takesYou": [
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "the pendants are somewhere in town"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Locate the East Empire Pendants for Fethis Alor in Raven Rock"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when the quest finishes; the amount and the moment aren't recorded"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Fethis Alor",
+          "role": "street trader in Raven Rock; gives the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "How many pendants there are and where they lie isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold is from the quest script (DLC2RRFavor05QuestScript holds a gold property), not confirmed, and its amount isn't recorded. The script also holds the East Empire Pendant, but that is what you are sent to find, so it's left out of rewards. There is no 'bring them back' objective and no stage is marked as completing, so how the quest ends is in the script."
+        },
+        {
+          "field": "starts.where",
+          "why": "Schedule from package names; the vendor spot isn't named in the records."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:024FA8",
+        "giver INFO Dragonborn.esm:024F96",
+        "NPC Dragonborn.esm:018292",
+        "DLC2RRFavor05QuestScript.pGold001, .pDLC2RRF05EECNecklace (ARMO Dragonborn.esm:024FA4)",
+        "packages DLC2RRFethisNetchPackage20x4, DLC2RRFethisVendorPackage8x12, DLC2RRFethisEatBreakfast6x2, DLC2RRFethisSleepBuildPackage0x6"
+      ]
+    },
+    {
+      "edid": "DLC2RRFavor06",
+      "name": "Feeding the Addiction",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Bralsa Drel, a beggar barred from the Retching Netch, asks you to talk the innkeeper into letting her back in.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Bralsa Drel",
+          "where": "Raven Rock: around the market by day, and the Abandoned Building, where she sleeps, at night",
+          "how": "Talk to Bralsa Drel; she asks you to convince Geldis Sadri to let her into the inn."
+        }
+      ],
+      "firstStep": "Convince Geldis Sadri at the Retching Netch to let Bralsa Drel in",
+      "takesYou": [
+        {
+          "place": "The Retching Netch, Raven Rock",
+          "hold": "Solstheim",
+          "why": "talk Geldis round"
+        },
+        {
+          "place": "back to Bralsa Drel in Raven Rock",
+          "hold": "Solstheim",
+          "why": "tell her she's welcome"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Convince Geldis Sadri to admit Bralsa Drel to the inn",
+            "Tell Bralsa Drel she's welcome at the Retching Netch"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Bralsa Drel",
+          "role": "beggar; gives the quest, and spends her evenings at the Retching Netch once it's done"
+        },
+        {
+          "name": "Geldis Sadri",
+          "role": "innkeeper you must convince"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "Whether convincing Geldis needs a speech check, gold or just a chat isn't in these files."
+        },
+        {
+          "field": "starts.where",
+          "why": "Her market package (8 am for 8 hours) only runs while a Raven Rock global is off; when it's on she works in Raven Rock Mine instead. That global probably tracks the mine reopening, but it isn't named here."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the quest's records."
+        },
+        {
+          "field": "starts.where",
+          "why": "She's placed in the Abandoned Building, but her sleep package doesn't name a place, so 'where she sleeps' is a reading of that placement. A build package keyed on a faction sits above her schedule and may move her while it applies."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:024FAD",
+        "giver INFO Dragonborn.esm:024F9B",
+        "NPC Dragonborn.esm:018F15 (last edited by Requiem for the Indifferent.esp)",
+        "giver others: Geldis Dragonborn.esm:018290",
+        "package DLC2RRBralsaNetchPackage18x4 needs this quest finished",
+        "packages DLC2RRBralsaMarketPackage8x8 / DLC2RRBralsaWorkPackage0x0 keyed on GLOB Dragonborn.esm:018B10"
+      ]
+    },
+    {
+      "edid": "DLC2RRFavor07",
+      "name": "First Edition",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Cindiri Arano wants a folio back from the wreck of the Strident Squall.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Cindiri Arano",
+          "where": "Raven Rock: Morvayn Manor in the early morning, walking around town from 8 am, The Retching Netch at 2 pm and from 8 pm to midnight",
+          "how": "Talk to Cindiri Arano; she tells you her folio went down with the Strident Squall and that one sailor crawled to Raven Rock."
+        }
+      ],
+      "firstStep": "Find Cindiri's Folio in the wreck of the Strident Squall",
+      "takesYou": [
+        {
+          "place": "Strident Squall (shipwreck)",
+          "hold": "Solstheim",
+          "why": "the folio is in a chest on the wreck"
+        },
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "return the folio to Cindiri"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Locate Cindiri's Folio from the wreck of the Strident Squall",
+            "Return the Folio to Cindiri Arano in Raven Rock"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Cindiri Arano",
+          "role": "lives in Morvayn Manor; gives the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The Strident Squall is a bandit camp with skeletons and warlocks (levels 10 to 35); its spot on the map isn't given in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the quest's records."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:02BAC6",
+        "giver INFO Dragonborn.esm:033CF9",
+        "INFO Dragonborn.esm:02BAC0, 02BABF",
+        "LCTN Dragonborn.esm:0142C9 Strident Squall",
+        "aliases DLC2RRF07ChestAlias, DLC2RRF07BookAlias",
+        "NPC Dragonborn.esm:018282 (DLC2RRAranoSpouseFaction)",
+        "packages DLC2RRCindiriNetchPackage20x4, DLC2RRCindiriNetchLunchPackage14x2, DLC2RRCindiriWanderRavenRock8x5, DLC2RRCindiriEatBreakfast6x2"
+      ]
+    },
+    {
+      "edid": "DLC2MH01",
+      "name": "Retaking Thirsk",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "The Nords driven out of Thirsk Mead Hall by rieklings are camped nearby and want help taking it back.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Bujold the Intrepid",
+          "where": "Bujold's Retreat, the Nords' camp on Solstheim's eastern shore",
+          "how": "Talk to Bujold; she tells you rieklings took Thirsk Mead Hall and asks you to join the assault."
+        }
+      ],
+      "firstStep": "Join the Nords' assault on Thirsk Mead Hall",
+      "takesYou": [
+        {
+          "place": "Thirsk Mead Hall",
+          "hold": "Solstheim",
+          "why": "kill the rieklings that took it"
+        },
+        {
+          "place": "Hrothmund's Barrow",
+          "hold": "Solstheim",
+          "why": "Bujold seeks the blessing of Thirsk's founder"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "After Hrothmund's spirit refuses Bujold his blessing, back her when she says she will lead anyway",
+          "leadsTo": "Bujold lives and starts a new tradition at Thirsk, focused on the present"
+        },
+        {
+          "choice": "Call her leadership a fraud",
+          "leadsTo": "Bujold attacks you and you have to kill her"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Join the assault on Thirsk Mead Hall",
+            "Approach Thirsk Mead Hall",
+            "Kill the Rieklings",
+            "Speak to Bujold",
+            "Meet Bujold at Hrothmund's Barrow",
+            "Commune with Hrothmund's Spirit"
+          ]
+        },
+        {
+          "branch": "oppose Bujold",
+          "objectives": [
+            "Defeat Bujold"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "The Chief of Thirsk Hall: siding with the Nords fails the rieklings' quest",
+        "Bujold dies if you oppose her at the barrow"
+      ],
+      "people": [
+        {
+          "name": "Bujold the Intrepid",
+          "role": "leader of the Thirsk Nords; gives the quest"
+        },
+        {
+          "name": "Kuvar",
+          "role": "Thirsk Nord at the camp"
+        },
+        {
+          "name": "Elmus",
+          "role": "Thirsk Nord at the camp"
+        },
+        {
+          "name": "Halbarn Iron-Fur",
+          "role": "Thirsk Nord"
+        },
+        {
+          "name": "Hilund",
+          "role": "Thirsk Nord"
+        },
+        {
+          "name": "Sirkjorg",
+          "role": "Thirsk Nord"
+        },
+        {
+          "name": "Herkja",
+          "role": "Thirsk Nord"
+        },
+        {
+          "name": "Hrothmund",
+          "role": "founder of Thirsk; his spirit at Hrothmund's Barrow"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.where",
+          "why": "Bujold, Kuvar and Elmus are placed at the camp, and 'eastern shore' comes from the journal. Halbarn and Hilund are placed inside Thirsk Mead Hall, but every Thirsk Nord has camp and hall versions of the same packages, switched by one global, so they are probably at the camp too while the hall is lost. The global's starting value isn't in these files."
+        },
+        {
+          "field": "starts.how",
+          "why": "Kuvar, Elmus and Halbarn Iron-Fur have lines in this quest until the hall is retaken; whether those lines can start it, or only point you to Bujold, isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The Unofficial Patch adds an impossible level condition to one opening line, which switches that line off; which line it is and whether it matters isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the quest's records. The Nords have their own favor quests afterwards (Halbarn, Hilund and a second Elmus favor), but what unlocks them isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01A50B",
+        "giver INFO Dragonborn.esm:01A4E6; others Dragonborn.esm:01A51C, 01A518, 01A51A",
+        "LCTN Dragonborn.esm:0142CA Bujold's Retreat",
+        "INFO Dragonborn.esm:01D971 (to Hrothmund's Barrow)",
+        "INFO Dragonborn.esm:01D960, 01D965 (Hrothmund)",
+        "completion log conditioned on Bujold alive/dead",
+        "fail log: helped the rieklings",
+        "USSEP INFO Dragonborn.esm:027DE7 GetLevel == -1"
+      ]
+    },
+    {
+      "edid": "DLC2MH02",
+      "name": "The Chief of Thirsk Hall",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "The riekling chief holding Thirsk Mead Hall can talk, and asks you for favors.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "the Riekling chief",
+          "where": "inside Thirsk Mead Hall",
+          "how": "Speak with the riekling chief in the hall; he asks you to help the tribe with small favors."
+        }
+      ],
+      "firstStep": "Give Bilgemuck some meat",
+      "takesYou": [
+        {
+          "place": "Thirsk Mead Hall",
+          "hold": "Solstheim",
+          "why": "the chief and his tribe"
+        },
+        {
+          "place": "the Nords' camp at Bujold's Retreat",
+          "hold": "Solstheim",
+          "why": "the assault on the exiled Nords"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Give Bilgemuck some meat",
+            "Return Bilgemuck to Thirsk",
+            "Talk to the Chief",
+            "Bring 10 Scathecraw to the Chief",
+            "Join the assault",
+            "Kill the Nords (7)",
+            "Speak to the Chief",
+            "Defeat the Chief"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "You become chief of the Thirsk rieklings",
+          "when": "after you defeat the old chief"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Retaking Thirsk: helping the rieklings fails the Nords' quest",
+        "Bujold, Kuvar, Elmus, Halbarn Iron-Fur, Hilund, Sirkjorg and Herkja are killed, and with them Halbarn's smithing and his favor, Kuvar's Heavy Armor training, Elmus's shop and his favors, Hilund's favor, and Halbarn and Hilund as marriage partners",
+        "The old riekling chief, who attacks you"
+      ],
+      "people": [
+        {
+          "name": "Riekling (the chief)",
+          "role": "talking riekling chief in Thirsk Mead Hall; gives the quest"
+        },
+        {
+          "name": "Bilgemuck",
+          "role": "a riekling you feed and bring home"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The conditions on the chief's opening line aren't in these files, so it isn't known how you get to talk to him without the rieklings fighting you."
+        },
+        {
+          "field": "takesYou",
+          "why": "Where Bilgemuck is found isn't given; the quest ties him to a bristleback pen and a spawn point the records don't place."
+        },
+        {
+          "field": "rewards",
+          "why": "No item or gold reward is listed; the chief title comes from the journal."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01A50C",
+        "giver INFO Dragonborn.esm:01A4F0",
+        "NPC Dragonborn.esm:01A508 DLC2ThirskRieklingChief (last edited by Big Tweaks.esp)",
+        "aliases Nord1-7, ExileCamp, BristlebackPen, BilgemuckSpawnPoint",
+        "GLOB DLC2MH02NordsTotal = 7",
+        "INFO Dragonborn.esm:01FE0D",
+        "fail log: chose not to help them"
+      ]
+    },
+    {
+      "edid": "DLC2ThirskFFElmus",
+      "name": "Elmus Favor Quest",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Elmus misses the Ashfire Mead brewed at Thirsk and asks you to fetch some from the hall.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Elmus",
+          "where": "Bujold's Retreat, the Thirsk Nords' camp on Solstheim's eastern shore",
+          "how": "Talk to Elmus; he says he has been missing the Ashfire, a special brew they make at Thirsk."
+        }
+      ],
+      "firstStep": "Get some Ashfire Mead from Thirsk Mead Hall",
+      "takesYou": [
+        {
+          "place": "Thirsk Mead Hall",
+          "hold": "Solstheim",
+          "why": "the Ashfire Mead is there; if the rieklings still hold the hall, expect to fight them"
+        },
+        {
+          "place": "Bujold's Retreat",
+          "hold": "Solstheim",
+          "why": "bring the mead to Elmus"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring Elmus some Ashfire Mead from Thirsk Mead Hall"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A medium leveled quest reward",
+          "when": "handing over the mead"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Elmus",
+          "role": "Thirsk Nord; gives the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "This seems to be the favor Elmus asks while the Nords are still out of the hall (a separate Elmus favor asks for Juniper Berries), but his line's conditions aren't in these files."
+        },
+        {
+          "field": "closes",
+          "why": "The quest can fail and watches Thirsk Mead Hall's door, but what makes it fail isn't recorded here."
+        },
+        {
+          "field": "rewards",
+          "why": "The medium leveled reward is from the quest's script (the fragment holds LvlQuestReward02Medium), not confirmed, and what that list gives isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The journal for Retaking Thirsk says rieklings overran the hall; whether they are still there when Elmus asks depends on when this favor can start, which these files don't settle."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:038EBF",
+        "giver INFO Dragonborn.esm:038EBC",
+        "INFO Dragonborn.esm:038EBB (thanks)",
+        "INFO Dragonborn.esm:01A503",
+        "alias ThirskDoor",
+        "QF_DLC2ThirskFFElmus_02038EBF.LvlQuestReward02Medium (LVLI Skyrim.esm:0C0405)",
+        "related QUST Dragonborn.esm:038EC4 DLC2ThirskFFElmusBack"
+      ]
+    }
+  ]
+}
