@@ -5399,6 +5399,8 @@ From LoreRim's install, each with its file and value in `xp.json`:
 - **A bigger finding: this load order ships 13 callings, not the 9 named elsewhere in this project** (`places.py`'s own docstring, Part 2's own data). Wanderer, Pilgrim, Cook and Alchemist are real, with their own full XP/cap/bonus data in the same `GLOB`s -- worth Mac's own Part 2 and WO-143's own doings index knowing about, since a door that only lists 9 callings would be missing four real ones.
 - **Checks.** 334 gamedata tests pass (9 new).
 
+- Bob, 23 Oct, 19:30: Part 1 read in the order and the commit. The curve is measured from 20 levels across 372 saves, not assumed; quest XP rechecked against Experience.ini; reading and raw skill use pay nothing; Callings read from the plugin's own globals, and the daily cap scales with the calling's rank. Accepted. Part 2 is the Mac's.
+
 ### Part 2. The budget on every act (Mac)
 - `get_playthrough` and the act's card on Play show, per act: **XP needed** to go from its start level to its end level (the curve); **XP its plan pays**: each linked quest's XP by type, each linked place's clear and discovery XP, each passed-by place's discovery XP, and the character's callings at their cap times the days the act says it spends (`set_act` takes `days`; none set means none counted); and **the gap**.
 - **Level ranges are outputs.** An act's start level is the previous act's end; its end level is the level its XP reaches on the curve. `set_act`'s `levels` becomes a target the assistant states; the card shows the target and what the plan reaches, and warns when they differ by a level or more.
