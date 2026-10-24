@@ -54,3 +54,4 @@
 - **050** (the Pale and the Reach: Search and Seizure, Dark Ancestor, Drowned Sorrows): 4 fixed, 5 unsure. Ondolemar moves to the Blue Palace if exiled; the two Dark Ancestor halves don't show which comes first.
 - **053** (Whiterun add-ons: the Welkynar, Belethor's Sister, Hostile Takeover, Relics of the Crusader): 6 fixed, 8 unsure. Skies of the North is bought and handed over, not a reward; Ysolda is out in Whiterun by day and at the Bannered Mare evenings; Lelaegh never was store manager.
 - **056** (Riverwood, Ivarstead, Whiterun side quests): 6 fixed, 2 unsure. Wilhelm is at the Battle-Brew Meadery three days a week; the Volkihar Brute is a gargoyle, not the cave's boss; follow-up jobs moved to unsure.
+- **060** (Gore, the follower's quests): 8 fixed, 5 unsure. Wanted and To Free a Raven start by themselves, not by talking to Gore; Count Fleet just appears in your journal; "getting closer to Gore" isn't a reward; The Apple from the Tree has a second ending.
