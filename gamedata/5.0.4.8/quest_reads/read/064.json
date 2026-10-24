@@ -1,0 +1,879 @@
+[
+ {
+  "edid": "aaFuraQ2",
+  "name": "Bloodmouth",
+  "plugin": "FDE Fura.esp (no later plugin edits it)",
+  "canDo": "talk",
+  "canDoWhy": "Fura Bloodmouth asks you to lure an Imperial legate to a cave so she can settle an old score; you need to be a vampire to do it.",
+  "needs": [
+   {
+    "what": "Be a vampire with the Vampire's Seduction power",
+    "kind": "other"
+   },
+   {
+    "what": "Probably finish Blood Ties (Fura's first quest) first",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Fura Bloodmouth",
+    "where": "Volkihar Keep, Castle Volkihar",
+    "how": "Fura tells you to bend Legate Cipius's will with your vampiric powers and send him to Cold Rock Pass."
+   }
+  ],
+  "firstStep": "Use Vampire's Seduction on Legate Cipius in Whiterun and tell him to go to Cold Rock Pass",
+  "takesYou": [
+   {
+    "place": "Whiterun",
+    "hold": "Whiterun",
+    "why": "find Legate Quentin Cipius and send him off with Vampire's Seduction"
+   },
+   {
+    "place": "Cold Rock Pass",
+    "hold": "Hjaalmarch",
+    "why": "meet Fura and watch her confront Cipius"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Let Fura's Death Hounds kill Cipius",
+    "leadsTo": "Cipius dies and Fura finally has her revenge"
+   },
+   {
+    "choice": "Persuade Fura to let Cipius go",
+    "leadsTo": "Cipius lives; Fura is upset to be denied revenge but accepts your decision"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Use Vampire's Seduction to tell Legate Cipius to go to Cold Rock Pass",
+     "Meet Fura at Cold Rock Pass",
+     "Witness the confrontation",
+     "Let the Death Hounds kill Cipius or try to save Cipius"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "none set in the records",
+  "opens": [],
+  "closes": [
+   "Legate Quentin Cipius dies if you let the Death Hounds kill him"
+  ],
+  "people": [
+   {
+    "name": "Fura Bloodmouth",
+    "role": "gives the quest; found in Volkihar Keep"
+   },
+   {
+    "name": "Legate Quentin Cipius",
+    "role": "the Imperial legate Fura wants dead; the records place him in Whiterun"
+   },
+   {
+    "name": "Death Hounds",
+    "role": "three hounds waiting in Cold Rock Pass"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "Blood Ties ends with 'now we will go finish what must be done', which points to this quest coming next, but no condition in these files ties the two together"
+   },
+   {
+    "field": "needs",
+    "why": "Fura's own record doesn't mark her as a follower; the follower mod may recruit her by script, which these files don't show"
+   },
+   {
+    "field": "where",
+    "why": "Cipius is an Imperial field commander placed in Whiterun; his exact spot depends on a shared war package that isn't decoded, so look around Whiterun or the Imperial camp"
+   },
+   {
+    "field": "rewards",
+    "why": "the quest script holds a 'Reanimate Corpse' spell, but by its property name it is likely used on Cipius's body rather than given to you; the spell isn't in the spell list either"
+   }
+  ],
+  "evidence": [
+   "FDE Fura.esp:000B6B stages 10-80, objectives 10/13/20/30",
+   "giver info FDE Fura.esp:000B6E (Fura, stage<2); Cipius line FDE Fura.esp:000806",
+   "INFO FDE Fura.esp:000B70 'bring him to Cold Rock Pass'",
+   "Cold Rock Pass Skyrim.esm:0BC0A3 hold Hjaalmarch",
+   "Cipius Skyrim.esm:0844D1 placed Skyrim.esm:0BF561 in Whiterun world",
+   "Vampire's Seduction Skyrim.esm:0C4DE2 (lesser power)",
+   "aaFuraQ1 FDE Fura.esp:000933 stage 100 text",
+   "script property aaFu_QF_aaFuraQ2_05048506.DeadThrall -> FDE Fura.esp:000833"
+  ]
+ },
+ {
+  "edid": "aaFaraldaQ1",
+  "name": "With Love, Eilonwy, Part 1",
+  "plugin": "FDE Faralda.esp (no later plugin edits it)",
+  "canDo": "talk",
+  "canDoWhy": "Faralda, travelling with you, asks you to take a family letter to Vekel the Man so it reaches her aunt.",
+  "needs": [
+   {
+    "what": "Faralda travelling with you",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Faralda",
+    "where": "the Hall of Countenance at the College of Winterhold, or wherever she is travelling with you",
+    "how": "Faralda gives you a letter for her aunt Eilonwy and asks you to bring it to Vekel the Man in the Ragged Flagon."
+   }
+  ],
+  "firstStep": "Bring Faralda's family letter to Vekel the Man in the Ragged Flagon, Riften",
+  "takesYou": [
+   {
+    "place": "The Ragged Flagon",
+    "hold": "The Rift",
+    "why": "hand the letter to Vekel the Man"
+   },
+   {
+    "place": "College of Winterhold",
+    "hold": "Winterhold",
+    "why": "return with Faralda once her aunt's reply arrives"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bring Faralda's family letter to Vekel the Man",
+     "Talk to Faralda",
+     "Continue traveling with Faralda",
+     "Return to the College of Winterhold with Faralda",
+     "Talk to Faralda",
+     "Continue traveling with Faralda"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "none set in the records",
+  "opens": [
+   "With Love, Eilonwy, Part 2"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Faralda",
+    "role": "gives the quest; Destruction teacher at the College of Winterhold"
+   },
+   {
+    "name": "Vekel the Man",
+    "role": "takes the letter; in the Ragged Flagon, Riften"
+   },
+   {
+    "name": "Merandil",
+    "role": "Faralda's brother, shown as a Thalmor Commander; waits in Lost Prospect Mine"
+   },
+   {
+    "name": "Colette Marence",
+    "role": "College teacher tied to the quest; her part isn't clear from the records"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the steps ('continue traveling with Faralda') assume she is your companion, but the records here don't show how she is recruited or a condition on the opening line"
+   },
+   {
+    "field": "where",
+    "why": "Faralda sleeps and spends free time in the Hall of Countenance, stands outside in Winterhold from 9 am for 6 hours, and goes to the Frozen Hearth some evenings; if she follows you she will be with you"
+   },
+   {
+    "field": "steps",
+    "why": "the quest can fail, but the records don't say what fails it"
+   }
+  ],
+  "evidence": [
+   "FDE Faralda.esp:00096A stages 10-60, fail 250",
+   "giver info FDE Faralda.esp:00098B (Vekel, stage<11); Faralda stage<41",
+   "Vekel Skyrim.esm:013380 packages in The Ragged Flagon",
+   "Faralda Skyrim.esm:01C197 packages AIOWinterholdFaraldaWeekends, StandOutside9x6, WCollegeFaraldaSleep22x7",
+   "questline Follower Dialogue Expansion - Faralda (00096A -> 000A40)"
+  ]
+ },
+ {
+  "edid": "aaFaraldaQ2",
+  "name": "With Love, Eilonwy, Part 2",
+  "plugin": "FDE Faralda.esp (no later plugin edits it)",
+  "canDo": "talk",
+  "canDoWhy": "After her aunt replies, Faralda learns her brother and aunt may be in danger and asks you to meet them in Lost Prospect Mine.",
+  "needs": [
+   {
+    "what": "Finish With Love, Eilonwy, Part 1",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Faralda",
+    "where": "with you while she travels as your companion",
+    "how": "Faralda tells you her brother and aunt may be in danger and wants to meet them in Lost Prospect Mine, near Riften."
+   }
+  ],
+  "firstStep": "Talk to Faralda about her brother and aunt",
+  "takesYou": [
+   {
+    "place": "Lost Prospect Mine",
+    "hold": "The Rift",
+    "why": "meet Faralda's aunt Eilonwy and her brother Merandil"
+   },
+   {
+    "place": "College of Winterhold",
+    "hold": "Winterhold",
+    "why": "meet Faralda back there afterwards"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Attack Merandil straight away (optional)",
+    "leadsTo": "the fight starts early; you kill Merandil"
+   },
+   {
+    "choice": "Wait",
+    "leadsTo": "Merandil, a Thalmor, tries to force Faralda back to Alinor and attacks you; you kill him"
+   },
+   {
+    "choice": "Let Merandil take Faralda back to Alinor",
+    "leadsTo": "the quest ends with Faralda gone to Alinor with her brother"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Faralda",
+     "Meet Faralda's aunt at Lost Prospect Mine",
+     "(Optional) Attack Merandil now",
+     "Kill Merandil",
+     "Talk to Faralda",
+     "Meet Faralda back at the College of Winterhold"
+    ]
+   },
+   {
+    "branch": "let him take her",
+    "objectives": [
+     "Let Faralda's brother take her back to Alinor"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end, by the quest script (amount not in these files)"
+   }
+  ],
+  "type": "none set in the records",
+  "opens": [
+   "Eilonwy, an Expert Alchemy trainer, settles in the Hall of Countenance at the College of Winterhold"
+  ],
+  "closes": [
+   "Merandil dies if you fight him",
+   "Faralda leaves for Alinor if you let her brother take her"
+  ],
+  "people": [
+   {
+    "name": "Faralda",
+    "role": "gives the quest; your companion"
+   },
+   {
+    "name": "Eilonwy",
+    "role": "Faralda's aunt; waits in Lost Prospect Mine, later lives at the College; Expert Alchemy trainer"
+   },
+   {
+    "name": "Merandil",
+    "role": "Faralda's brother, a Thalmor Commander; in Lost Prospect Mine"
+   },
+   {
+    "name": "Colette Marence",
+    "role": "College teacher tied to the quest; her part isn't clear from the records"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "the records don't show what sets the first step; it appears to follow Part 1 while Faralda travels with you"
+   },
+   {
+    "field": "rewards",
+    "why": "the gold sits in the quest script; the records don't say on which ending it is paid"
+   },
+   {
+    "field": "opens",
+    "why": "Eilonwy's College package switches on once the quest ends; the records don't make clear whether that also happens when Faralda leaves for Alinor"
+   },
+   {
+    "field": "closes",
+    "why": "what happens to Faralda after she leaves for Alinor isn't in these files"
+   }
+  ],
+  "evidence": [
+   "FDE Faralda.esp:000A40 stages 1-120 (100 and 120 complete)",
+   "INFO FDE Faralda.esp:000A51 'They've taken shelter in Lost Prospect Mine'",
+   "giver info FDE Faralda.esp:000A9D (Merandil, stage<23); Faralda stage<51",
+   "Lost Prospect Mine Skyrim.esm:0D566B hold The Rift, next to Riften",
+   "Eilonwy FDE Faralda.esp:000A5B package aaFaraldaEilonwySandbox cond GetStage 000A40 >= 100; trainer Alchemy Expert",
+   "script property aaFa_QF_aaFaraldaQ2_0501590E.Gold001"
+  ]
+ },
+ {
+  "edid": "aaJenassaAmor5RomanceQuest",
+  "name": "Shadows of the Past",
+  "plugin": "FDE Jenassa.esp (no later plugin edits it)",
+  "canDo": "talk",
+  "canDoWhy": "Jenassa asks to visit the tower where she met her first love, then Markarth, to make peace with her past.",
+  "needs": [
+   {
+    "what": "Jenassa travelling with you, probably far along her romance",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Jenassa",
+    "where": "with you as your follower (hired from the Drunken Huntsman in Whiterun)",
+    "how": "Jenassa says she would like to travel to the tower where she met her first love."
+   }
+  ],
+  "firstStep": "Travel with Jenassa to Refugees' Rest, the tower where she met her first love",
+  "takesYou": [
+   {
+    "place": "Refugees' Rest",
+    "hold": "Eastmarch",
+    "why": "the tower from Jenassa's past, a short walk from Windhelm; bandits are there"
+   },
+   {
+    "place": "Markarth",
+    "hold": "The Reach",
+    "why": "talk to Jenassa about her memories of her first love"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Kill the bandits yourself",
+    "leadsTo": "the tower is cleared either way"
+   },
+   {
+    "choice": "Let the beasts finish the bandits",
+    "leadsTo": "the tower is cleared either way"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Travel to the tower where Jenassa met her first love",
+     "Kill the bandits or let the beasts finish the bandits",
+     "Talk to Jenassa at the tower",
+     "Talk to Jenassa at Markarth"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Jenassa",
+    "role": "gives the quest; hireling first found in the Drunken Huntsman, Whiterun"
+   },
+   {
+    "name": "Bandit leader",
+    "role": "at Refugees' Rest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "its name marks it as the fifth step of Jenassa's romance; the earlier steps are dialogue-only and their conditions aren't in these files"
+   },
+   {
+    "field": "steps",
+    "why": "the quest can fail, but the records don't say what fails it"
+   }
+  ],
+  "evidence": [
+   "FDE Jenassa.esp:000D03 stages 1-15, objectives 1-4",
+   "quest_starts jenassa line: dialogue cond GetIsID Skyrim.esm:0B9982",
+   "alias RefugeesRestLocation -> Refugees' Rest Skyrim.esm:0EF572 (Eastmarch, 0.5 km from Windhelm)",
+   "Jenassa Skyrim.esm:0B9982 placed in The Drunken Huntsman; follower/hireling factions"
+  ]
+ },
+ {
+  "edid": "aaMjollAerinQ",
+  "name": "Aerin the Man",
+  "plugin": "FDE Mjoll.esp (no later plugin edits it)",
+  "canDo": "talk",
+  "canDoWhy": "Aerin wants to prove he's a real warrior and win Mjoll's heart; you clear a dungeon with the two of them.",
+  "needs": [
+   {
+    "what": "Mjoll the Lioness travelling with you",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Mjoll the Lioness",
+    "where": "Aerin's House in Riften, or with you as your follower",
+    "how": "Mjoll and Aerin bring you along so Aerin can prove himself in a dungeon."
+   }
+  ],
+  "firstStep": "Clear the dungeon the quest picks with Aerin and Mjoll",
+  "takesYou": [
+   {
+    "place": "a dungeon picked when the quest starts",
+    "hold": "",
+    "why": "clear it with Aerin and Mjoll"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Clear the dungeon with Aerin and Mjoll",
+     "Watch Aerin's confession to Mjoll"
+    ]
+   },
+   {
+    "branch": "if Mjoll dies",
+    "objectives": [
+     "Talk to Aerin"
+    ]
+   },
+   {
+    "branch": "if Aerin dies",
+    "objectives": [
+     "Talk to Mjoll"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "from the quest script (amount and timing not in these files)"
+   }
+  ],
+  "type": "none set in the records",
+  "opens": [],
+  "closes": [
+   "If Mjoll or Aerin dies in the dungeon, the romance fails"
+  ],
+  "people": [
+   {
+    "name": "Mjoll the Lioness",
+    "role": "starts the quest; lives in Aerin's House, Riften"
+   },
+   {
+    "name": "Aerin",
+    "role": "wants to win Mjoll; lives in Aerin's House, Riften"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "the records show Mjoll's lines drive the quest, but not the exact trigger; by day Mjoll is at the Bee and Barb from noon for 6 hours, in the Riften market from 9 am, patrolling Riften at night, and sleeps at Aerin's House"
+   },
+   {
+    "field": "takesYou",
+    "why": "the dungeon is chosen at run time; the records don't say which one"
+   },
+   {
+    "field": "rewards",
+    "why": "the quest script also holds a steel sword and leather armour, bracers and boots; they are likely Aerin's new gear, not a reward for you"
+   },
+   {
+    "field": "closes",
+    "why": "a death leads to a 'talk to' step and the quest can fail; which outcome fails it isn't spelled out"
+   }
+  ],
+  "evidence": [
+   "FDE Mjoll.esp:0008E0 stages 10-90, objectives 10/50/75/80",
+   "giver info FDE Mjoll.esp:00093C (alias Mjoll, stage<61); Aerin stage<76",
+   "Mjoll Skyrim.esm:01336B packages RiftenMjollBeeandBarb12x6, RiftenMjollMarket9x3, RiftenMjollNightimePatrol18x6, RiftenMjollSleep2x6",
+   "script aaMj_QF_aaMjollAerinQ_050059E0 properties SteelSword, LeatherArmor, LeatherGauntlets, LeatherBoots, Gold001",
+   "INFO FDE Mjoll.esp:000929 (confession)"
+  ]
+ },
+ {
+  "edid": "aaErikCompanionJoin",
+  "name": "Erik the Shield Brother",
+  "plugin": "FDE Erik.esp (no later plugin edits it)",
+  "canDo": "talk",
+  "canDoWhy": "Once you are a Companion, Erik the Slayer can ask to join; you speak to Aela, then clear a place with him as his trial.",
+  "needs": [
+   {
+    "what": "Be a member of the Companions",
+    "kind": "faction"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Erik the Slayer",
+    "where": "the Frostfruit Inn in Rorikstead, or with you as your follower",
+    "how": "Erik wants to join the Companions; you then speak to Aela in Jorrvaskr about it."
+   }
+  ],
+  "firstStep": "Speak to Aela the Huntress in Jorrvaskr about Erik joining the Companions",
+  "takesYou": [
+   {
+    "place": "Jorrvaskr",
+    "hold": "Whiterun",
+    "why": "speak to Aela, and later make Erik a Companion"
+   },
+   {
+    "place": "a place picked for Erik's trial",
+    "hold": "",
+    "why": "clear it with Erik"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Aela about Erik joining the Companions",
+     "Clear the trial location with Erik",
+     "Talk to Aela",
+     "Officially make Erik a Companion"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Companions",
+  "opens": [
+   "Erik joins the Companions"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Erik the Slayer",
+    "role": "the hireling who wants to join; found at the Frostfruit Inn, Rorikstead"
+   },
+   {
+    "name": "Aela the Huntress",
+    "role": "gives his trial; in Jorrvaskr, Whiterun"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the opening line checks Companions membership; Erik's thank-you line calls you 'Harbinger', so you may need to have finished the Companions story"
+   },
+   {
+    "field": "takesYou",
+    "why": "the trial location is chosen at run time; the records don't say which one"
+   },
+   {
+    "field": "starts",
+    "why": "Erik is placed at the Frostfruit Inn; whether he must be your follower when he asks isn't in these files"
+   }
+  ],
+  "evidence": [
+   "FDE Erik.esp:0008E8 stages 1-250, objectives 1/10/20/100",
+   "quest_starts erik line: dialogue cond GetInFaction Skyrim.esm:048362 (CompanionsFaction)",
+   "giver info FDE Erik.esp:0008EB (Aela, stage<2); Erik stage<11",
+   "INFO FDE Erik.esp:0008FC 'Thank you, Harbinger'",
+   "Erik Skyrim.esm:065657 package HirelingErikRoriksteadInn (Frostfruit Inn)",
+   "Aela Skyrim.esm:01A696 placed Jorrvaskr Living Quarters"
+  ]
+ },
+ {
+  "edid": "BQ01Eastmarch",
+  "name": "Bounty: Bandit Boss",
+  "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable bounty for Eastmarch: kill a bandit leader at a camp the game picks, then collect from the jarl or steward.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the bandit leader at the place named in the bounty, in Eastmarch",
+  "takesYou": [
+   {
+    "place": "a bandit hideout picked when the bounty is given",
+    "hold": "Eastmarch",
+    "why": "kill the bandit leader"
+   },
+   {
+    "place": "the jarl's hall",
+    "hold": "Eastmarch",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the bandit leader at the bounty location",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty (amount not in these files)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Eastmarch",
+    "role": "pays the bounty"
+   },
+   {
+    "name": "the jarl of Eastmarch",
+    "role": "may pay the bounty instead of the steward"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "no start is recorded for this copy; it carries an innkeeper and a letter slot, so it is likely handed out by an innkeeper's rumour or a courier's letter, but the records here don't confirm it. The base-game bandit bounty starts when you arrive somewhere new in a hold"
+   },
+   {
+    "field": "takesYou",
+    "why": "the hideout, the hold and the people are all filled in when the bounty starts; the hold comes from this copy's name, not from a fixed condition"
+   },
+   {
+    "field": "rewards",
+    "why": "the base-game bounty also hands out an extra reward from a list; this copy's script shows only gold"
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000E42 stages 0/10/100/200, objectives 10/100/101",
+   "aliases Location, Hold, BountyLocation, Jarl, Letter, Innkeeper, Steward",
+   "script BQScript.Gold001",
+   "base BQ01 Skyrim.esm:095125 starts via BQ*NodeSHARES change-location; reward Requiem.esp:AD3926",
+   "questline Favor Quests Separated (opening 000E42)"
+  ]
+ },
+ {
+  "edid": "BQ01Falkreath",
+  "name": "Bounty: Bandit Boss",
+  "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable bounty for Falkreath: kill a bandit leader at a camp the game picks, then collect from the jarl or steward.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the bandit leader at the place named in the bounty, in Falkreath",
+  "takesYou": [
+   {
+    "place": "a bandit hideout picked when the bounty is given",
+    "hold": "Falkreath",
+    "why": "kill the bandit leader"
+   },
+   {
+    "place": "the jarl's hall",
+    "hold": "Falkreath",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the bandit leader at the bounty location",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty (amount not in these files)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Falkreath",
+    "role": "pays the bounty"
+   },
+   {
+    "name": "the jarl of Falkreath",
+    "role": "may pay the bounty instead of the steward"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "no start is recorded for this copy; it carries an innkeeper and a letter slot, so it is likely handed out by an innkeeper's rumour or a courier's letter, but the records here don't confirm it. The base-game bandit bounty starts when you arrive somewhere new in a hold"
+   },
+   {
+    "field": "takesYou",
+    "why": "the hideout, the hold and the people are all filled in when the bounty starts; the hold comes from this copy's name, not from a fixed condition"
+   },
+   {
+    "field": "rewards",
+    "why": "the base-game bounty also hands out an extra reward from a list; this copy's script shows only gold"
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000E36 stages 0/10/100/200, objectives 10/100/101",
+   "aliases Location, Hold, BountyLocation, Jarl, Letter, Innkeeper, Steward",
+   "script BQScript.Gold001",
+   "base BQ01 Skyrim.esm:095125 starts via BQ*NodeSHARES change-location; reward Requiem.esp:AD3926",
+   "questline Favor Quests Separated (opening 000E42)"
+  ]
+ },
+ {
+  "edid": "BQ01Haafingar",
+  "name": "Bounty: Bandit Boss",
+  "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable bounty for Haafingar: kill a bandit leader at a camp the game picks, then collect from the jarl or steward.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the bandit leader at the place named in the bounty, in Haafingar",
+  "takesYou": [
+   {
+    "place": "a bandit hideout picked when the bounty is given",
+    "hold": "Haafingar",
+    "why": "kill the bandit leader"
+   },
+   {
+    "place": "the jarl's hall",
+    "hold": "Haafingar",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the bandit leader at the bounty location",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty (amount not in these files)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Haafingar",
+    "role": "pays the bounty"
+   },
+   {
+    "name": "the jarl of Haafingar",
+    "role": "may pay the bounty instead of the steward"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "no start is recorded for this copy; it carries an innkeeper and a letter slot, so it is likely handed out by an innkeeper's rumour or a courier's letter, but the records here don't confirm it. The base-game bandit bounty starts when you arrive somewhere new in a hold"
+   },
+   {
+    "field": "takesYou",
+    "why": "the hideout, the hold and the people are all filled in when the bounty starts; the hold comes from this copy's name, not from a fixed condition"
+   },
+   {
+    "field": "rewards",
+    "why": "the base-game bounty also hands out an extra reward from a list; this copy's script shows only gold"
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000E1E stages 0/10/100/200, objectives 10/100/101",
+   "aliases Location, Hold, BountyLocation, Jarl, Letter, Innkeeper, Steward",
+   "script BQScript.Gold001",
+   "base BQ01 Skyrim.esm:095125 starts via BQ*NodeSHARES change-location; reward Requiem.esp:AD3926",
+   "questline Favor Quests Separated (opening 000E42)"
+  ]
+ },
+ {
+  "edid": "BQ01Hjaalmarch",
+  "name": "Bounty: Bandit Boss",
+  "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable bounty for Hjaalmarch: kill a bandit leader at a camp the game picks, then collect from the jarl or steward.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the bandit leader at the place named in the bounty, in Hjaalmarch",
+  "takesYou": [
+   {
+    "place": "a bandit hideout picked when the bounty is given",
+    "hold": "Hjaalmarch",
+    "why": "kill the bandit leader"
+   },
+   {
+    "place": "the jarl's hall",
+    "hold": "Hjaalmarch",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the bandit leader at the bounty location",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty (amount not in these files)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Hjaalmarch",
+    "role": "pays the bounty"
+   },
+   {
+    "name": "the jarl of Hjaalmarch",
+    "role": "may pay the bounty instead of the steward"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "no start is recorded for this copy; it carries an innkeeper and a letter slot, so it is likely handed out by an innkeeper's rumour or a courier's letter, but the records here don't confirm it. The base-game bandit bounty starts when you arrive somewhere new in a hold"
+   },
+   {
+    "field": "takesYou",
+    "why": "the hideout, the hold and the people are all filled in when the bounty starts; the hold comes from this copy's name, not from a fixed condition"
+   },
+   {
+    "field": "rewards",
+    "why": "the base-game bounty also hands out an extra reward from a list; this copy's script shows only gold"
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000E24 stages 0/10/100/200, objectives 10/100/101",
+   "aliases Location, Hold, BountyLocation, Jarl, Letter, Innkeeper, Steward",
+   "script BQScript.Gold001",
+   "base BQ01 Skyrim.esm:095125 starts via BQ*NodeSHARES change-location; reward Requiem.esp:AD3926",
+   "questline Favor Quests Separated (opening 000E42)"
+  ]
+ }
+]

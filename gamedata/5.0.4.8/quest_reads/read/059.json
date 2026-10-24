@@ -61,7 +61,7 @@
     "when": "at the end, when the altar opens the door"
    },
    {
-    "what": "a powerful staff found partway through (the plugin's own staff is the Staff of Worms)",
+    "what": "a powerful staff found partway through (the staff added alongside this quest is the Staff of Worms)",
     "when": "during the puzzles"
    }
   ],
@@ -793,7 +793,7 @@
    },
    {
     "place": "Markarth",
-    "hold": "The Reach",
+    "hold": "",
     "why": "one of the leap spots"
    },
    {

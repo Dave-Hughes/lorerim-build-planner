@@ -357,9 +357,9 @@
     "unsure": [
       {"field": "people", "why": "Both Reburrus and Raerek have the buying lines, and the house has an Imperial deed and a Stormcloak deed. Which steward you deal with probably depends on who holds Markarth, but the records here don't confirm it. Raerek has no daily routine in these files beyond a generic one."},
       {"field": "takesYou", "why": "The records put Bilegulch Mine in Falkreath hold, yet you buy the house in Markarth. Hendraheim itself isn't in the places index, so its hold isn't confirmed."},
-      {"field": "rewards", "why": "The shield, helmet and sword are in the quest's script, but it isn't clear whether they're the warrior's gear you take as proof or a gift. The 25,000 price comes from a tweak plugin's setting."},
+      {"field": "rewards", "why": "The shield, helmet and sword are in the quest's script, but it isn't clear whether they're the warrior's gear you take as proof or a gift. The 25,000 price comes from a tweak's setting."},
       {"field": "people", "why": "The warrior isn't named in the quest. A woman named Eydvina Shield-Hearth comes from the same add-on and may be the warrior."},
-      {"field": "needs", "why": "A tweak plugin removed the Companions requirement, but the LoreRim dialogue patch, which loads later, puts it back. So the requirement stands."}
+      {"field": "needs", "why": "One tweak removes the Companions requirement, but a LoreRim patch that loads later puts it back. So the requirement stands."}
     ],
     "evidence": [
       "quests_raw cceejsse004-hall.esl:000C4F stages 10-100, objectives 10-60, aliases Warrior, Raerek, Reburrus, DeedImperial, DeedSons",
@@ -411,7 +411,7 @@
       {"name": "the noble guests", "role": "the 'meal' at the feast"}
     ],
     "unsure": [
-      {"field": "rewards", "why": "This add-on is a house (the courier and the 'home requirements' patch point that way), but the records here don't show the manor being given to you."},
+      {"field": "rewards", "why": "This add-on is likely a house (a patch that sets requirements for add-on homes edits it), but the records here don't show the manor being given to you."},
       {"field": "choices", "why": "The journal shows both paths, but these files don't show the exact condition that splits them. Being a vampire seems to be what lets you join the meal."},
       {"field": "takesYou", "why": "The manor itself isn't in the places index. The hold comes from Frostflow Lighthouse, which the records put in Winterhold."}
     ],
