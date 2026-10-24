@@ -1,0 +1,1388 @@
+{
+  "checks": [
+    {
+      "edid": "DBSideContract02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Hold was blank: Anga's Mill is in The Pale. Ennodius and the other Anga's Mill people (Kodrir, Leifur) are all in CrimeFactionPale and TownAngasMillFaction (people_schedules_raw). His packages are a sandbox and sleep at his placed spot, so the 'where' unsure is settled: he stays around that spot at Anga's Mill."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Beitild's House is only where she sleeps. Her schedule (people_schedules_raw) puts her at work at a mine from 7am for 12 hours (package DawnstarBeitildWorkEasternMine7x17), she is in DawnstarIronBreakerMinersFaction, and her own line says she owns Iron-Breaker Mine. A player going to her house by day won't find her. The exact work spot ref isn't resolved, so that stays in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Place and hold are right (Hern and Hert are CrimeFactionFalkreath; Hert's line is Falkreath Hold Settlement Dialogue). Missing the timing a player needs: his packages have him asleep indoors from 8am to 4pm and working the sawmill from 8pm to 5am, so he is outside only at night."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Moorside Inn, Hjaalmarch: his sandbox and sleep packages are both in the Moorside Inn. The 'no schedule' unsure is replaced with what the schedule shows; one afternoon break spot is unresolved."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Hela's Folly is a Shipwreck in Winterhold, 0.4 km from Dawnstar (places 0192A1). Deekus only has a sandbox and sleep at his placed spot, so he stays there."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "'One of the caravans' can be narrowed: in the caravan quest (Skyrim.esm:03ACDB) Ma'randru-jo is Follower3A, the same caravan as LeaderA Ri'saad, Follower1A Atahbah and Follower2A Khayla. The route is still not in these files, so hold stays blank and the route stays unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract08",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir placed in the Dark Brotherhood Sanctuary (ref 01C3AD, cell 0AD5A1); his only AI package is DefaultSandboxCurrentLocation256, so he stays there. DB02 log puts the Sanctuary in the southern Pine Forest; people index gives Falkreath."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Missing where he is outside stall hours: his base package keeps him in The Drunken Huntsman (where he is placed). Stall package runs 8am for 11 hours; the hunt package runs 5am to 7am on Monday, Wednesday and Friday (AIOWRAnoriathHuntMWF)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract09",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir in the Sanctuary; INFO 0205C1 names Agnis in Fort Greymoor and INFO 024140 is the war-allegiance warning."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Place and hold are right (Fort Greymoor, Whiterun, 0.5 km from Whiterun), but the player needs to know the fort is bandit-held: places 01917D lists Bandit as who lives there (levels 6 to 24), and Agnis is in BanditFriendFaction. The after-the-war Imperial state and how allegiance changes access stay unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract10",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir INFO 0205C0 (USSEP) names Maluril and Helvard together."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Mzinchaleft, The Pale (places 019280: Dwemer ruin, Falmer with bandits and chaurus, traps, levels 16 to 60; next to Stonehills, 0.5 km from Dawnstar). Maluril only sandboxes at his placed spot."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract11",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Type Dark Brotherhood; giver alias DBNazirAlias; no start event, so it comes from talking to Nazir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02 makes you a member; DB02a sends you to Nazir for the first contracts; DB04 stage 50 sends you back for more; DBEviction blocks all Brotherhood business until the fine is paid. Which set this contract is in stays unsure: Nazir's handing-out lines and their conditions are not in these files (only the Agnis and Maluril/Helvard lines appear, in places_raw pointers)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir INFO 0205C0 (USSEP) names Maluril and Helvard together."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches objective 10 and the stage 10 journal text."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Missing the civil-war case: Helvard's only AI package is CWExiledImperialSandboxBluePalace, gated on GovExiled, which moves him to the Blue Palace in Solitude. Otherwise he stays in Hakkvild's High Hall where he is placed."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two objectives, one completing stage (200); no branch in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal: reward collected from Nazir. No reward properties for this quest in quest_givers_raw; the amount stays unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the stages or questline points to a follow-on quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "The target dies."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DBSideContract02",
+      "name": "Contract: Kill Ennodius Papius",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Ennodius Papius and where to find them."
+        }
+      ],
+      "firstStep": "Kill Ennodius Papius, the ex-miller, at Anga's Mill",
+      "takesYou": [
+        {
+          "place": "Anga's Mill",
+          "hold": "The Pale",
+          "why": "kill Ennodius Papius; he stays around the same spot outdoors at Anga's Mill, day and night"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Ennodius Papius",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Ennodius Papius dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Ennodius Papius",
+          "role": "the ex-miller; outdoors at Anga's Mill, where he stays around one spot and sleeps"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA5E DBSideContract02 stages 10 and 200, objectives 10 'Kill Ennodius Papius' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:01360C placed ref Skyrim.esm:02004A in the open world at location Anga's Mill",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Ennodius schedules: AngasMillEnnodiusSandboxPackage (sandbox near his placed spot) + DefaultSleepEditorLoc24x8; factions CrimeFactionPale, TownAngasMillFaction",
+        "Anga's Mill residents Kodrir, Leifur also CrimeFactionPale + TownAngasMillFaction"
+      ]
+    },
+    {
+      "edid": "DBSideContract03",
+      "name": "Contract: Kill Beitild",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Beitild and where to find them."
+        }
+      ],
+      "firstStep": "Kill Beitild, the mine boss, in Dawnstar",
+      "takesYou": [
+        {
+          "place": "Dawnstar: Iron-Breaker Mine by day (about 7am to 7pm), Beitild's House at night",
+          "hold": "The Pale",
+          "why": "kill Beitild"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Beitild",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Beitild dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Beitild",
+          "role": "the mine boss in Dawnstar; works at the mine from about 7am to 7pm, sleeps in Beitild's House"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Her work package is named for Dawnstar's eastern mine and she is in the Iron-Breaker miners' faction and says she owns Iron-Breaker Mine, but the package's target spot isn't resolved to a place in these files. Her meals (6am, noon, 7pm) are at another unresolved spot. A door of Beitild's House is recorded locked (Apprentice, her key)."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA5F DBSideContract03 stages 10 and 200, objectives 10 'Kill Beitild' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:013612 placed ref Skyrim.esm:01A6B6 in cell 013A88 Beitild's House, location Dawnstar",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Beitild dialogue INFO Skyrim.esm:090E06 'I own Iron-Breaker Mine'",
+        "quest record editedBy Unofficial Skyrim Special Edition Patch.esp",
+        "Beitild schedules: DawnstarBeitildWorkEasternMine7x17 (starts 7:00, 720 min, target 0876D0), Eat 6/12/19 at 0D6908, DefaultSleepEditorLoc24x8 (0:00, 480 min); factions DawnstarIronBreakerMinersFaction, JobMinerFaction",
+        "quest_starts door 013C11 Beitild's House -> Dawnstar locked level 25, key 09DA2D carried by Beitild"
+      ]
+    },
+    {
+      "edid": "DBSideContract04",
+      "name": "Contract: Kill Hern",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Hern and where to find them."
+        }
+      ],
+      "firstStep": "Kill Hern, the vampire, at Half-Moon Mill",
+      "takesYou": [
+        {
+          "place": "Half-Moon Mill",
+          "hold": "Falkreath",
+          "why": "kill the vampire Hern; by day he is inside the house at Half-Moon Mill (asleep from about 8am to 4pm), at night (about 8pm to 5am) he works the sawmill outside"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Hern",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Hern dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Hern",
+          "role": "the vampire; sleeps by day inside the house at Half-Moon Mill and works the sawmill at night"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Hert is also at Half-Moon Mill, but these quest records don't involve her. The sawmill spot is a marker, not a named place, in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA60 DBSideContract04 stages 10 and 200, objectives 10 'Kill Hern' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:01367B placed ref Skyrim.esm:01982E in cell 0161EF Half-Moon Mill (people index inTown Falkreath; NPC last edited by USSEP)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Hern schedules: DefaultSleepEditorLoc8x8 (8:00, 480 min, at placement in interior cell 0161EF), HernSawmill* packages (20:00, 540 min, near 083D22), HalfMoonEat18x1/24x1 in cell 0161EF; CrimeFactionFalkreath",
+        "Hert INFO 0C4DFC (Falkreath Hold Settlement Dialogue) 'We supply Falkreath to the south'"
+      ]
+    },
+    {
+      "edid": "DBSideContract05",
+      "name": "Contract: Kill Lurbuk",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Lurbuk and where to find them."
+        }
+      ],
+      "firstStep": "Kill Lurbuk, the bard, in Morthal",
+      "takesYou": [
+        {
+          "place": "Moorside Inn, Morthal",
+          "hold": "Hjaalmarch",
+          "why": "kill the bard Lurbuk"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Lurbuk",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Lurbuk dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Lurbuk",
+          "role": "the bard; placed in the Moorside Inn in Morthal"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "His packages keep him in the Moorside Inn (and sleeping there from about 1am to 6am), but an afternoon break package (about 1pm to 5pm, under many conditions) sends him to a spot that these files don't name."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA61 DBSideContract05 stages 10 and 200, objectives 10 'Kill Lurbuk' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:01AA63 placed ref Skyrim.esm:01AA64 in cell 0138CE Moorside Inn, location Morthal (NPC last edited by Lux - COTN Morthal patch.esp)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Lurbuk schedules: USKPLurbukSandboxInn (Moorside Inn), MorthalLurbukSleep1x5 (Moorside Inn, 1:00, 300 min), AIOMorthalLurbukBreak (13:00, 240 min, target 0604F9, 28 conditions)"
+      ]
+    },
+    {
+      "edid": "DBSideContract06",
+      "name": "Contract: Kill Deekus",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Deekus and where to find them."
+        }
+      ],
+      "firstStep": "Kill Deekus, at the shipwreck on the northern coast",
+      "takesYou": [
+        {
+          "place": "Hela's Folly (a shipwreck on the northern coast, a short walk from Dawnstar)",
+          "hold": "Winterhold",
+          "why": "kill Deekus"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Deekus",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Deekus dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Deekus",
+          "role": "placed at the shipwreck Hela's Folly on the northern coast"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA62 DBSideContract06 stages 10 and 200, objectives 10 'Kill Deekus' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:020040 placed ref Skyrim.esm:0205C3 in the open world at location Hela's Folly (places index: Shipwreck, hold Winterhold, nearest town Dawnstar)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Deekus schedules: DefaultSandboxEditorLocation512 + DefaultSleepEditorLoc24x8 only"
+      ]
+    },
+    {
+      "edid": "DBSideContract07",
+      "name": "Contract: Kill Ma'randru-jo",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Ma'randru-jo and where to find them."
+        }
+      ],
+      "firstStep": "Kill Ma'randru-jo, the Khajiit merchant who travels with one of the caravans",
+      "takesYou": [
+        {
+          "place": "Ri'saad's Khajiit caravan (he travels with Ri'saad, Atahbah and Khayla)",
+          "hold": "",
+          "why": "find and kill Ma'randru-jo"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Ma'randru-jo",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Ma'randru-jo dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Ma'randru-jo",
+          "role": "a Khajiit merchant in Ri'saad's caravan, with Atahbah and Khayla"
+        },
+        {
+          "name": "Ri'saad",
+          "role": "leads the caravan Ma'randru-jo travels with"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The records put him in Ri'saad's caravan, but the caravan's route and stops aren't in these files, and none of its members has a placement in the people index."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA63 DBSideContract07 stages 10 and 200, objectives 10 'Kill Ma'randru-jo' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:01B1D7 placed ref Skyrim.esm:0C8225 in the open world with no named location",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "caravan quest Skyrim.esm:03ACDB aliases: Ri'saad LeaderA, Atahbah Follower1A, Khayla Follower2A, Ma'randru-jo Follower3A (people_schedules_raw quests)"
+      ]
+    },
+    {
+      "edid": "DBSideContract08",
+      "name": "Contract: Kill Anoriath",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Anoriath and where to find them."
+        }
+      ],
+      "firstStep": "Kill Anoriath, the archer, at his food stall in Whiterun or hunting in the plains outside the city",
+      "takesYou": [
+        {
+          "place": "Whiterun: his food stall in the market by day (about 8am to 7pm), The Drunken Huntsman in the evening and at night, hunting on the plains early on Monday, Wednesday and Friday mornings",
+          "hold": "Whiterun",
+          "why": "kill the archer Anoriath"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Anoriath",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Anoriath dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Anoriath",
+          "role": "the archer; at his stall about 8am to 7pm, at The Drunken Huntsman otherwise, hunting outside the city early on Monday, Wednesday and Friday"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The stall and the hunting area are markers these files don't name; the times come from his packages. Which market the stall stands in is from the journal ('his food stall in Whiterun'), not a named place."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA64 DBSideContract08 stages 10 and 200, objectives 10 'Kill Anoriath' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:013B97 placed ref Skyrim.esm:01A680 in cell 0165B7 The Drunken Huntsman (people index inTown Whiterun)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Anoriath schedules: WhiterunAnoriathStallPackage8x11 (8:00, 660 min, target 02BE21), AIOWRAnoriathHuntMWF (5:00, 120 min, day-of-week code 9, radius 3000), WhiterunAnoriathDrunkenHuntsman (any time, The Drunken Huntsman)"
+      ]
+    },
+    {
+      "edid": "DBSideContract09",
+      "name": "Contract: Kill Agnis",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Agnis and where to find them. He warns that your side in the civil war may affect whether you can get into Fort Greymoor."
+        }
+      ],
+      "firstStep": "Kill Agnis, the old servant, in Fort Greymoor",
+      "takesYou": [
+        {
+          "place": "Fort Greymoor (a short walk from Whiterun)",
+          "hold": "Whiterun",
+          "why": "kill Agnis; the fort is held by bandits (she is friendly with them, you are not), levels about 6 to 24"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Agnis",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Agnis dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Agnis",
+          "role": "the old woman who works as a servant in Fort Greymoor; friendly with the bandits there"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "Bandits hold Fort Greymoor at first; after the war the place records show it full of Imperial soldiers. Nazir warns your war allegiance may affect access. How that plays out with Fort Greymoor.esp isn't shown in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA65 DBSideContract09 stages 10 and 200, objectives 10 'Kill Agnis' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:020044 placed ref Skyrim.esm:020045 in cell 01527C Fort Greymoor (NPC last edited by Fort Greymoor.esp)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Nazir INFO Skyrim.esm:0205C1 'eliminate an old woman named Agnis'",
+        "Nazir INFO Skyrim.esm:024140 allegiance in the war may affect access to Fort Greymoor",
+        "places Skyrim.esm:01917D Fort Greymoor: livesHere Bandit; afterTheWar Imperial (plugin Fort Greymoor.esp)",
+        "Agnis INFO Skyrim.esm:024137 (DarkSideContractDialogue)",
+        "Agnis factions BanditFriendFaction; schedules: DefaultSandboxEditorLocation512 + sleep only",
+        "places 01917D Fort Greymoor actors livesHere Bandit, floor 6, ceiling 24"
+      ]
+    },
+    {
+      "edid": "DBSideContract10",
+      "name": "Contract: Kill Maluril",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Maluril and where to find them. In the records Nazir hands this one out together with Helvard."
+        }
+      ],
+      "firstStep": "Kill Maluril, the wizard investigating the Dwarven ruin of Mzinchaleft",
+      "takesYou": [
+        {
+          "place": "Mzinchaleft (a Dwarven ruin near Dawnstar)",
+          "hold": "The Pale",
+          "why": "kill the wizard Maluril; the ruin is a full dungeon (Falmer, bandits, chaurus, traps)"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Maluril",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Maluril dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Maluril",
+          "role": "the Dark Elf wizard investigating Mzinchaleft"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The records place him inside Mzinchaleft; exactly where in the ruin isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA66 DBSideContract10 stages 10 and 200, objectives 10 'Kill Maluril' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:020046 placed ref Skyrim.esm:020047 in cell 01523D Mzinchaleft (NPC last edited by Lux.esp)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Nazir INFO Skyrim.esm:0205C0 'Your targets are... Maluril... And Helvard' (USSEP)",
+        "Nazir INFO Skyrim.esm:01E637 return line",
+        "Maluril INFO Skyrim.esm:024E5D, 0537C9 (DarkSideContractDialogue)",
+        "places Skyrim.esm:019280 Mzinchaleft: hold The Pale, Falmer/Bandit/Chaurus, traps, level 16-60 (Lux.esp)",
+        "Maluril factions BanditAllyFaction; schedules: DefaultSandboxEditorLocation512 + sleep only"
+      ]
+    },
+    {
+      "edid": "DBSideContract11",
+      "name": "Contract: Kill Helvard",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "A Dark Brotherhood side contract Nazir gives you in the Sanctuary once you've joined.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood: finish With Friends Like These...",
+          "kind": "quest"
+        },
+        {
+          "what": "Nazir hands out contracts in Sanctuary (your first set) and again after Whispers in the Dark (more side contracts)",
+          "kind": "quest"
+        },
+        {
+          "what": "No unpaid fine to Nazir for breaking the Sanctuary's rules (Honor Thy Family blocks all Brotherhood business until you pay)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "inside the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Ask Nazir for contract work; he names Helvard and where to find them. In the records Nazir hands this one out together with Maluril."
+        }
+      ],
+      "firstStep": "Kill Helvard, the Housecarl of Falkreath",
+      "takesYou": [
+        {
+          "place": "Hakkvild's High Hall, Falkreath (or the Blue Palace in Solitude if Falkreath's Imperial court has been exiled in the civil war)",
+          "hold": "Falkreath",
+          "why": "kill Helvard"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Nazir and collect your reward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Helvard",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir (amount not in these records)",
+          "when": "when you report back to Nazir"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Helvard dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Helvard",
+          "role": "the Housecarl of Falkreath; in Hakkvild's High Hall, or the Blue Palace in Solitude if the court is exiled"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records show Nazir gives a first set of contracts in Sanctuary and more side contracts after Whispers in the Dark, but these files don't show which set this contract belongs to or the conditions on Nazir's lines."
+        },
+        {
+          "field": "rewards",
+          "why": "The journal says you collect a reward from Nazir; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "His only package is the exile one (Blue Palace, Solitude, when he is in the exiled faction); otherwise he has no schedule and stays where he is placed. Which civil-war outcome puts him in the exiled faction isn't spelled out in these files; the package is the Imperial exile version."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA67 DBSideContract11 stages 10 and 200, objectives 10 'Kill Helvard' and 20 'Report back to Nazir'",
+        "target Skyrim.esm:013657 placed ref Skyrim.esm:019824 in cell 013A79 Hakkvild's High Hall, location Falkreath (NPC last edited by COTN - Falkreath.esp)",
+        "Skyrim.esm:022F47 DB02a 'Sanctuary' log: first set of contracts from Nazir",
+        "Skyrim.esm:01EA53 DB04 stage 50 'Receive a side contract from Nazir'",
+        "Skyrim.esm:06F9A5 DBEviction 'Pay Nazir the fine'",
+        "Skyrim.esm:01EA51 DB02 stage 40 log: Sanctuary in the southern Pine Forest",
+        "Nazir Skyrim.esm:01C3AB placed ref 01C3AD in cell 0AD5A1 Dark Brotherhood Sanctuary (people index inTown Falkreath; NPC last edited by GORE.esp)",
+        "Nazir INFO Skyrim.esm:0205C0 'Your targets are... Maluril... And Helvard, the Housecarl of Falkreath' (USSEP)",
+        "quest record editedBy Unofficial Skyrim Special Edition Patch.esp",
+        "Helvard schedules: only CWExiledImperialSandboxBluePalace (Blue Palace, Haafingar) with condition GetInFaction Skyrim.esm:036629 (GovExiled); factions GovImperial, JobHousecarlFaction, FalkreathJarlsLonghouseFaction"
+      ]
+    }
+  ]
+}
