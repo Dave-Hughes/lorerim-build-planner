@@ -429,7 +429,7 @@
     },
     "rewards": {
      "verdict": "agree",
-     "note": "Parchment from the stage 20 log; the water-damage spell is correctly left out."
+     "note": "Parchment from the stage 20 log; the water-damage spell is correctly left out. Reworded the unsure note to drop a plugin file name."
     },
     "opens": {
      "verdict": "agree",
@@ -1475,7 +1475,7 @@
     },
     {
      "field": "rewards",
-     "why": "The quest script lists a water-damage spell from Dragonborn.esm, which is Apocrypha's hazard, not a reward. The parchment's item name isn't in these files."
+     "why": "The quest script lists a water-damage spell from the Dragonborn add-on, which is Apocrypha's hazard, not a reward. The parchment's item name isn't in these files."
     }
    ],
    "evidence": [
