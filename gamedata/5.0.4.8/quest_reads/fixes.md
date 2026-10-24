@@ -33,3 +33,5 @@
 - **027** (Vigilant, Bruiant Mansion, Meridia's Order start): 5 fixed, 2 unsure. Ami-El's Royal Guard Cloak needs the quest done as well as Tailoring & Polishing; the Blood Curses are places of their own; Successor's script-named spells kept as possibly taken, not given.
 - **039** (Dawnguard and Dark Brotherhood add-ons, the Blades' recruits): 1 fixed, 3 unsure. Kindred Judgment isn't the last Dawnguard quest in the records.
 - **031** (Daedric quests: Boethiah, Hircine, Namira, Mehrunes Dagon, Azura): 3 fixed. Boethiah's Calling gives the Blade of Sacrifice (script-named); the Braidwood Inn is in Kynesgrove. Script spells that are tools, not rewards (Blood Harvest, Beast Form) noted.
+- **036** (Solstheim and Morrowind mods): 3 fixed, 7 unsure. Kar-Jei can die in the Redoran raid even if you're loyal; a Black Book's "choice of one power" came from other Black Books, not this one.
+- **040** (Hammerfell's Dragonguard Archives, Sands of the Past): 1 fixed, 6 unsure. Azzin's Journal burns in the fire the quest marks, not any fire.
