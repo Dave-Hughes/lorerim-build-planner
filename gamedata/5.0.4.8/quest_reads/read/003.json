@@ -1,0 +1,847 @@
+[
+  {
+    "edid": "DLC1RH05",
+    "name": "Ancient Technology",
+    "plugin": "Dawnguard.esm (no later plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Dawnguard job: Sorine sends you to a ruin to fetch an item she can use to improve the Dawnguard's crossbows.",
+    "needs": [
+      {
+        "what": "Join the Dawnguard (turn down Harkon's offer and report back to Isran)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Sorine Jurard",
+        "where": "inside Fort Dawnguard, in Dayspring Canyon",
+        "how": "Help Sorine with her project to improve the crossbow; she sends you to fetch a piece of old technology."
+      }
+    ],
+    "firstStep": "Retrieve the item Sorine wants from the place she names",
+    "takesYou": [
+      {
+        "place": "a ruin picked when the quest starts",
+        "hold": "",
+        "why": "retrieve the item Sorine needs"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve the item from the place Sorine names",
+          "Return to Sorine"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Sorine can use the item to master new technology for the Dawnguard (the quest also holds an enhanced crossbow, a Dwarven crossbow, an enhanced Dwarven crossbow, and fire, ice and shock bolts)",
+        "when": "on returning the item"
+      }
+    ],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Sorine Jurard",
+        "role": "gives the job, placed in Fort Dawnguard"
+      },
+      {
+        "name": "bandits",
+        "role": "the quest holds five bandit scraps and a bandit letter (Dwarven Haul), so bandits may be involved"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The Dawnguard radiant parent quest has a 'Help Sorine with her project to improve the crossbow' objective and a Sorine alias, and this quest has its own start node; the dialogue that hands it out and what must happen first aren't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest holds crossbow and bolt items (enhanced crossbow, Dwarven crossbow, enhanced Dwarven crossbow, fire/ice/shock bolts), and LoreRim's forge recipes for the Improved Dawnguard Crossbow, Dwemer Crossbow, Improved Dwemer Crossbow and elemental bolts are gated by Dawnguard globals; these files don't show which of those this quest gives or unlocks, or in what order."
+      },
+      {
+        "field": "where",
+        "why": "The records place Sorine in Fort Dawnguard; her daily schedule isn't in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "The ruin and the item are filled when the quest starts, so they change from game to game."
+      },
+      {
+        "field": "people",
+        "why": "Bandit scrap and letter aliases exist but no objective mentions them; how they come into play isn't shown."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a Dawnguard (vampire hunter) job, so it belongs to the hunter side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:006BAC DLC1RH05 (aliases QuestGiver, Dungeon, BossContainer, Item, BanditScrap1-5, BanditLetter, BoltFire/Ice/Shock, EnhancedCrossbow, DwarvenCrossbow, EnhancedDwarvenCrossbow)",
+      "start node DLC1RH05QuestNode (script event)",
+      "BanditLetter alias -> BOOK Dawnguard.esm:006BB3 Dwarven Haul",
+      "QUST Dawnguard.esm:004C1C DLC1Radiant objective 20 'Help Sorine with her project to improve the crossbow', alias Sorine",
+      "NPC Dawnguard.esm:00336B Sorine Jurard in Fort Dawnguard (Lux - JK's Fort Dawnguard patch.esp)",
+      "COBJ REQ_Forge_Weapon_DawnguardImproved_Crossbow_Light / REQ_Forge_Weapon_Dwemer_Crossbow_Heavy / REQ_Forge_Weapon_DwemerImproved_Crossbow_Heavy / REQ_Forge_Ench_Bolt_Dwemer_Fire gated by globals Dawnguard.esm:00F19A-00F19D"
+    ]
+  },
+  {
+    "edid": "DLC1RH06",
+    "name": "Rescue",
+    "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Dawnguard job: a vampire has kidnapped someone and you go and free them.",
+    "needs": [
+      {
+        "what": "Join the Dawnguard (turn down Harkon's offer and report back to Isran)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "not named in these records",
+        "where": "",
+        "how": "A Dawnguard radiant job: you are told to speak with whoever has an assignment for you."
+      }
+    ],
+    "firstStep": "Rescue the captive from the place you're sent",
+    "takesYou": [
+      {
+        "place": "a dungeon picked when the quest starts",
+        "hold": "",
+        "why": "free the captive and kill the vampire holding them"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Rescue the captive from the dungeon",
+          "Kill the vampire",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "the captive",
+        "role": "kidnapped by a vampire; the quest can fill this with your spouse or a friend"
+      },
+      {
+        "name": "the vampire",
+        "role": "the kidnapper, to be killed"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The records start this through the Dawnguard radiant system (a parent quest picks the job and fills the quest giver when it runs); no dialogue line in these files names who hands it out. It is almost certainly someone at Fort Dawnguard, but the files don't say who."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is filled in when the quest starts, so it changes from game to game; the records hold no fixed location."
+      },
+      {
+        "field": "people",
+        "why": "The quest has Spouse and Friend aliases as well as Prisoner, so the captive may be your spouse or a friend; how it chooses isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The Dawnguard radiant parent quest's script holds gold and a radiant reward leveled list, which is likely the payout for these jobs, but the files don't show which job pays what."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a Dawnguard (vampire hunter) job, so it belongs to the hunter side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:007201 DLC1RH06 (aliases QuestGiver, Dungeon, Spouse, Friend, Prisoner, Boss, Vampire)",
+      "start node DLC1RadiantHunterQuestNode (script event)",
+      "edited by Unofficial Skyrim Special Edition Patch.esp",
+      "QUST Dawnguard.esm:004C1C DLC1Radiant objective 'Speak with <CurrentQuestGiver> for an assignment'"
+    ]
+  },
+  {
+    "edid": "DLC1RH07",
+    "name": "A Jarl's Justice",
+    "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable Dawnguard job: a vampire is posing as a visiting advisor at a Jarl's court, and you warn the Jarl and destroy it.",
+    "needs": [
+      {
+        "what": "Join the Dawnguard (turn down Harkon's offer and report back to Isran)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "not named in these records",
+        "where": "",
+        "how": "A Dawnguard radiant job: you are told to speak with whoever has an assignment for you."
+      }
+    ],
+    "firstStep": "Warn the Jarl about the vampire threat",
+    "takesYou": [
+      {
+        "place": "a hold capital picked when the quest starts",
+        "hold": "",
+        "why": "warn the Jarl, find evidence and destroy the vampire posing as the Visiting Advisor"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Get the Jarl's permission first (bring the evidence)",
+        "leadsTo": "you can kill the Visiting Advisor openly"
+      },
+      {
+        "choice": "Kill the Visiting Advisor without the Jarl's permission",
+        "leadsTo": "the guards treat it as murder"
+      },
+      {
+        "choice": "The Jarl loses the seat before you finish",
+        "leadsTo": "the quest ends: the Jarl is no longer Jarl and the vampire is no longer a threat"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Warn the Jarl about the vampire threat",
+          "Find evidence linked to the vampire",
+          "Bring evidence to the Jarl",
+          "Destroy the vampire masquerading as a Visiting Advisor",
+          "Return to the quest giver"
+        ]
+      },
+      {
+        "branch": "Jarl replaced",
+        "objectives": [
+          "The quest closes when the Jarl is no longer Jarl of that city"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "the Jarl",
+        "role": "must be warned and shown the evidence"
+      },
+      {
+        "name": "Visiting Advisor",
+        "role": "the vampire posing as an advisor at court"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The records start this through the Dawnguard radiant system (a parent quest picks the job and fills the quest giver when it runs); no dialogue line in these files names who hands it out. It is almost certainly someone at Fort Dawnguard, but the files don't say who."
+      },
+      {
+        "field": "takesYou",
+        "why": "The capital and its Jarl are filled when the quest starts, so they change from game to game."
+      },
+      {
+        "field": "steps",
+        "why": "The quest holds a Letter alias, probably the evidence, but where the evidence is found isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The Dawnguard radiant parent quest's script holds gold and a radiant reward leveled list, which is likely the payout for these jobs, but the files don't show which job pays what."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a Dawnguard (vampire hunter) job, so it belongs to the hunter side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:007EC5 DLC1RH07 (aliases QuestGiver, Jarl, Capital, CapitalHQ, Vampire, Letter)",
+      "Vampire alias fills 'Visiting Advisor'",
+      "stage 10 log 'If I fail to secure <Jarl>'s permission first, the guards will consider it a murder'",
+      "stage 300 completes: '<Jarl> is no longer the Jarl of <Capital>'",
+      "start node DLC1RadiantHunterQuestNode (script event)",
+      "edited by Unofficial Skyrim Special Edition Patch.esp"
+    ]
+  },
+  {
+    "edid": "DLC1RH08",
+    "name": "Lost Relic",
+    "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A Dawnguard job: you go to a dungeon to recover one of the old Dawnguard relics.",
+    "needs": [
+      {
+        "what": "Join the Dawnguard (turn down Harkon's offer and report back to Isran)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "not named in these records",
+        "where": "",
+        "how": "A Dawnguard radiant job: you are told to speak with whoever has an assignment for you."
+      }
+    ],
+    "firstStep": "Retrieve the relic from the dungeon you're sent to",
+    "takesYou": [
+      {
+        "place": "a dungeon picked when the quest starts",
+        "hold": "",
+        "why": "take the relic from the boss's chest"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve the relic from the dungeon",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Ancient Dawnguard Warhammer, Ancient Dawnguard Shield or Ancient Dawnguard War Axe (the relic you recover)",
+        "when": "found in the dungeon"
+      }
+    ],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The records start this through the Dawnguard radiant system (a parent quest picks the job and fills the quest giver when it runs); no dialogue line in these files names who hands it out. It is almost certainly someone at Fort Dawnguard, but the files don't say who."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is filled in when the quest starts, so it changes from game to game; the records hold no fixed location."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest holds all three relics (Hammer, Shield and Axe aliases) plus one Item alias; which relic a given run sends you for, and whether you keep it after returning, isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a Dawnguard (vampire hunter) job, so it belongs to the hunter side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:015017 DLC1RH08 (aliases QuestGiver, Dungeon, Hammer, Shield, Item, BossContainer, Axe)",
+      "Hammer -> WEAP Dawnguard.esm:011BAD Ancient Dawnguard Warhammer; Shield -> ARMO Dawnguard.esm:011BAF Ancient Dawnguard Shield; Axe -> WEAP Dawnguard.esm:01668C Ancient Dawnguard War Axe",
+      "start node DLC1RadiantHunterQuestNode (script event)",
+      "edited by Unofficial Skyrim Special Edition Patch.esp"
+    ]
+  },
+  {
+    "edid": "DLC1RV01",
+    "name": "The Hunt",
+    "plugin": "Dawnguard.esm (no later plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job for Harkon's court: hunt down a Dawnguard member hiding in a town, ideally without being seen.",
+    "needs": [
+      {
+        "what": "Side with Harkon and join the vampires of Castle Volkihar",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Fura Bloodmouth or Garan Marethi",
+        "where": "inside Volkihar Keep, Castle Volkihar (near Solitude)",
+        "how": "Ask either of them for work once you've joined Harkon's court; the job is picked for you."
+      }
+    ],
+    "firstStep": "Kill the Dawnguard member hiding in the town you're sent to",
+    "takesYou": [
+      {
+        "place": "a town picked when the quest starts",
+        "hold": "",
+        "why": "find and kill the Dawnguard member in disguise"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Make it a discreet kill",
+        "leadsTo": "completes the optional objective"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the target",
+          "(Optional) Make it a discreet kill",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Fura Bloodmouth",
+        "role": "gives the job, placed in Volkihar Keep"
+      },
+      {
+        "name": "Garan Marethi",
+        "role": "can also give the job, placed in Volkihar Keep"
+      },
+      {
+        "name": "the target",
+        "role": "a Dawnguard member in disguise, living in the town"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "The records place Fura Bloodmouth and Garan Marethi in Volkihar Keep; their daily schedule isn't in these files, and Fura also has a follower mod (FDE Fura.esp) that can take her away from the castle."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is filled in when the quest starts, so it changes from game to game; the records hold no fixed location."
+      },
+      {
+        "field": "rewards",
+        "why": "The Dawnguard radiant parent quest's script holds gold and a radiant reward leveled list, which is likely the payout for these jobs, but the files don't show which job pays what."
+      },
+      {
+        "field": "rewards",
+        "why": "Whether the discreet kill changes the reward isn't shown."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a job for Harkon's court, so it belongs to the vampire side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:004C1B DLC1RV01 (aliases QuestGiver, Habitation, Inn, Target)",
+      "giver INFO Dawnguard.esm:004C1A GetIsID Fura Bloodmouth (Dawnguard.esm:003363) or Garan Marethi (Dawnguard.esm:003364), before stage 10",
+      "Fura/Garan placed in Volkihar Keep (JK's Castle Volkihar.esp)",
+      "start node DLC1RadiantVampireQuestNode (script event)"
+    ]
+  },
+  {
+    "edid": "DLC1RV02",
+    "name": "Culling the Beast",
+    "plugin": "Dawnguard.esm (no later plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job for Harkon's court: go to a dungeon and kill the creature there.",
+    "needs": [
+      {
+        "what": "Side with Harkon and join the vampires of Castle Volkihar",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Fura Bloodmouth or Garan Marethi",
+        "where": "inside Volkihar Keep, Castle Volkihar (near Solitude)",
+        "how": "Ask either of them for work once you've joined Harkon's court; the job is picked for you."
+      }
+    ],
+    "firstStep": "Kill the creature at the dungeon you're sent to",
+    "takesYou": [
+      {
+        "place": "a dungeon picked when the quest starts",
+        "hold": "",
+        "why": "destroy the creature there"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the creature at the dungeon",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Fura Bloodmouth",
+        "role": "gives the job, placed in Volkihar Keep"
+      },
+      {
+        "name": "Garan Marethi",
+        "role": "can also give the job, placed in Volkihar Keep"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "The records place Fura Bloodmouth and Garan Marethi in Volkihar Keep; their daily schedule isn't in these files, and Fura also has a follower mod (FDE Fura.esp) that can take her away from the castle."
+      },
+      {
+        "field": "takesYou",
+        "why": "The dungeon and the creature are filled when the quest starts, so they change from game to game."
+      },
+      {
+        "field": "rewards",
+        "why": "The Dawnguard radiant parent quest's script holds gold and a radiant reward leveled list, which is likely the payout for these jobs, but the files don't show which job pays what."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a job for Harkon's court, so it belongs to the vampire side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:0050B9 DLC1RV02 (aliases QuestGiver, Dungeon, Boss)",
+      "giver INFO Dawnguard.esm:0050B5 GetIsID Fura Bloodmouth or Garan Marethi, before stage 10",
+      "start node DLC1RadiantVampireQuestNode (script event)"
+    ]
+  },
+  {
+    "edid": "DLC1RV03",
+    "name": "Deceiving the Herd",
+    "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job for Harkon's court: kill someone in a city's streets while dressed as the Dawnguard and plant a letter blaming them.",
+    "needs": [
+      {
+        "what": "Side with Harkon and join the vampires of Castle Volkihar",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "not named in these records",
+        "where": "",
+        "how": "A radiant job for Harkon's court: you are told to speak with whoever has an assignment for you."
+      }
+    ],
+    "firstStep": "Kill someone out in the streets of the city you're sent to",
+    "takesYou": [
+      {
+        "place": "a city picked when the quest starts",
+        "hold": "",
+        "why": "kill a citizen in the street and plant the letter on the body"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill in public while wearing Dawnguard armor",
+        "leadsTo": "completes an optional objective"
+      },
+      {
+        "choice": "Choose a high-profile victim",
+        "leadsTo": "completes an optional objective; the log says the higher the profile the better"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill someone out in the streets of the city",
+          "(Optional) Make it a public kill while wearing Dawnguard armor",
+          "(Optional) Choose a high profile victim",
+          "Plant the letter on the victim's corpse",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "the victim",
+        "role": "anyone you choose to kill in the city's streets"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No giver dialogue for this quest is in these files; it starts through the vampire radiant system, which fills the giver when it runs."
+      },
+      {
+        "field": "steps",
+        "why": "The quest can fail, but what makes it fail isn't shown in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is filled in when the quest starts, so it changes from game to game; the records hold no fixed location."
+      },
+      {
+        "field": "rewards",
+        "why": "The Dawnguard radiant parent quest's script holds gold and a radiant reward leveled list, which is likely the payout for these jobs, but the files don't show which job pays what."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a job for Harkon's court, so it belongs to the vampire side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:0050BD DLC1RV03 (aliases QuestGiver, City, Victim, Letter, UDGPLetterChest)",
+      "stage 300 fails",
+      "start node DLC1RadiantVampireQuestNode (script event)",
+      "edited by Unofficial Skyrim Special Edition Patch.esp"
+    ]
+  },
+  {
+    "edid": "DLC1RV04",
+    "name": "Protecting the Bloodline",
+    "plugin": "Dawnguard.esm (no later plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job for Harkon's court: kill a rogue vampire in a dungeon before it turns its allies.",
+    "needs": [
+      {
+        "what": "Side with Harkon and join the vampires of Castle Volkihar",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Fura Bloodmouth or Garan Marethi",
+        "where": "inside Volkihar Keep, Castle Volkihar (near Solitude)",
+        "how": "Ask either of them for work once you've joined Harkon's court; the job is picked for you."
+      }
+    ],
+    "firstStep": "Kill the vampire at the dungeon you're sent to",
+    "takesYou": [
+      {
+        "place": "a dungeon picked when the quest starts",
+        "hold": "",
+        "why": "destroy the vampire before it turns its allies into vampires"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill the vampire at the dungeon",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Fura Bloodmouth",
+        "role": "gives the job, placed in Volkihar Keep"
+      },
+      {
+        "name": "Garan Marethi",
+        "role": "can also give the job, placed in Volkihar Keep"
+      },
+      {
+        "name": "the vampire",
+        "role": "a rogue vampire in the dungeon"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "The records place Fura Bloodmouth and Garan Marethi in Volkihar Keep; their daily schedule isn't in these files, and Fura also has a follower mod (FDE Fura.esp) that can take her away from the castle."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is filled in when the quest starts, so it changes from game to game; the records hold no fixed location."
+      },
+      {
+        "field": "rewards",
+        "why": "The Dawnguard radiant parent quest's script holds gold and a radiant reward leveled list, which is likely the payout for these jobs, but the files don't show which job pays what."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a job for Harkon's court, so it belongs to the vampire side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:0056FD DLC1RV04 (aliases Questgiver, Dungeon, Boss, Vampire)",
+      "giver INFO Dawnguard.esm:0056FB GetIsID Fura Bloodmouth or Garan Marethi, before stage 10",
+      "start node DLC1RadiantVampireQuestNode (script event)"
+    ]
+  },
+  {
+    "edid": "DLC1RV05",
+    "name": "Ancient Power",
+    "plugin": "Dawnguard.esm (no later plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job for Harkon's court: fetch old remains from a dungeon to strengthen the Bloodstone Chalice.",
+    "needs": [
+      {
+        "what": "Side with Harkon and join the vampires of Castle Volkihar",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "not named in these records",
+        "where": "",
+        "how": "A radiant job for Harkon's court: you are told to speak with whoever has an assignment for you."
+      }
+    ],
+    "firstStep": "Retrieve the remains from the dungeon you're sent to",
+    "takesYou": [
+      {
+        "place": "a dungeon picked when the quest starts",
+        "hold": "",
+        "why": "take the remains from the boss's chest"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve the remains from the dungeon",
+          "Return to the quest giver"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "The power you get from drinking from the Bloodstone Chalice lasts longer",
+        "when": "once the remains are infused into the Chalice"
+      }
+    ],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No giver dialogue for this quest is in these files; it starts through the vampire radiant system, which fills the giver when it runs."
+      },
+      {
+        "field": "needs",
+        "why": "The log is about the Bloodstone Chalice, so it likely comes after The Bloodstone Chalice, but no condition in these files says so."
+      },
+      {
+        "field": "rewards",
+        "why": "The longer-lasting Chalice power comes from the quest log; the spell itself (Blood of the Ancients) sits on the radiant parent quest's script, and the files don't show how much longer it lasts."
+      },
+      {
+        "field": "takesYou",
+        "why": "The dungeon and the remains are filled when the quest starts, so they change from game to game."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a job for Harkon's court, so it belongs to the vampire side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:005702 DLC1RV05 (aliases QuestGiver, Dungeon, BossContainer, Remains)",
+      "stage 10 log mentions infusing the remains into the Bloodstone Chalice",
+      "DLC1Radiant script property DLC1VampireChalicePower -> SPEL Dawnguard.esm:01419B Blood of the Ancients",
+      "start node DLC1RadiantVampireQuestNode (script event)"
+    ]
+  },
+  {
+    "edid": "DLC1RV06",
+    "name": "The Gift",
+    "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A job for Harkon's court if you're married: you're told to turn your spouse into a vampire.",
+    "needs": [
+      {
+        "what": "Side with Harkon and join the vampires of Castle Volkihar",
+        "kind": "faction"
+      },
+      {
+        "what": "Be married",
+        "kind": "other"
+      },
+      {
+        "what": "Be a vampire with the Vampire's Seduction power",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "not named in these records",
+        "where": "",
+        "how": "A radiant job for Harkon's court: you are told to speak with whoever has an assignment for you."
+      }
+    ],
+    "firstStep": "Mesmerize your spouse and turn them into a vampire",
+    "takesYou": [
+      {
+        "place": "wherever your spouse lives",
+        "hold": "",
+        "why": "use Vampire's Seduction on your spouse, then bite them"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Use Vampire's Seduction on your spouse, then embrace and bite them on the neck",
+          "Return to the quest giver while your spouse changes"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dawnguard",
+    "opens": [],
+    "closes": [
+      "Your spouse becomes a vampire"
+    ],
+    "people": [
+      {
+        "name": "your spouse",
+        "role": "the one you are told to turn"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No giver dialogue for this quest is in these files; it starts through the vampire radiant system, which fills the giver when it runs."
+      },
+      {
+        "field": "needs",
+        "why": "The log says that if you lack the power you should go without feeding for a day to gain it. LoreRim's Vampire's Seduction comes from Big Tweaks.esp / Sacrilege, and these files don't show when that build grants it."
+      },
+      {
+        "field": "steps",
+        "why": "The quest can fail, but what makes it fail isn't shown in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is tied to this quest in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The quest is a job for Harkon's court, so it belongs to the vampire side, but the exact condition that opens the radiant jobs isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:0058CA DLC1RV06 (aliases QuestGiver, Spouse)",
+      "stage 10 log: Vampire's Seduction, forego feeding for a day",
+      "stage 300 fails",
+      "SPEL Skyrim.esm:0C4DE2 Vampire's Seduction (Big Tweaks.esp)",
+      "DLC1Radiant script property DLC1VampireTurnPerk -> PERK Dawnguard.esm:00588B Turn",
+      "start node DLC1RadiantVampireQuestNode (script event)",
+      "edited by Unofficial Skyrim Special Edition Patch.esp"
+    ]
+  }
+]

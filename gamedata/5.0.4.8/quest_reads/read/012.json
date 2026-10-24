@@ -1,0 +1,773 @@
+[
+  {
+    "edid": "Cow_illusion",
+    "name": "Back-Stabbing Rodents",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "canDo": "talk",
+    "canDoWhy": "Drevis Neloren offers it as his Illusion lesson, one of the scholars' lessons for new College members.",
+    "needs": [
+      {
+        "what": "Be a member of the College of Winterhold",
+        "kind": "faction"
+      },
+      {
+        "what": "Finish Tolfdir's first lesson (Rapture of the Deep) so the scholars' lessons open up in College Curriculum",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Drevis Neloren",
+        "where": "the Hall of Countenance at the College of Winterhold",
+        "how": "Talk to Drevis about his Illusion lesson; he explains how Illusion can be used and hands you a spell tome."
+      }
+    ],
+    "firstStep": "Learn the spell from Drevis's tome and talk to him again",
+    "takesYou": [
+      {
+        "place": "a skeever den near the College",
+        "hold": "Winterhold",
+        "why": "use the new Illusion spell to turn the skeevers on each other"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Turn down Drevis's class",
+        "leadsTo": "The quest fails and the lesson is skipped."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the spell and talk to Drevis",
+          "Use the spell on the skeevers and deal with them",
+          "Return to Drevis"
+        ]
+      },
+      {
+        "branch": "refuse",
+        "objectives": [
+          "Refuse the lesson (quest fails)"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "An Illusion spell tome from Drevis",
+        "when": "at the start"
+      }
+    ],
+    "type": "Mages Guild",
+    "opens": [],
+    "closes": [
+      "Refusing fails this lesson"
+    ],
+    "people": [
+      {
+        "name": "Drevis Neloren",
+        "role": "Illusion scholar who gives the lesson; placed in the Hall of Countenance"
+      },
+      {
+        "name": "Skeevers (three)",
+        "role": "the test targets in the nearby den"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The three skeevers are placed in an unnamed outdoor cell; the journal only calls it a near-by den, so the exact spot isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The journal says Drevis gives a spell tome but the records here don't name the spell (the lesson is about making enemies fight each other)."
+      },
+      {
+        "field": "needs",
+        "why": "Taken from the College Curriculum journal ('I've completed Tolfdir's lesson, I should check with the other scholars for more lessons'); the dialogue conditions themselves aren't in these files beyond the quest not having started."
+      },
+      {
+        "field": "where",
+        "why": "Drevis's spot is his placement in the Hall of Countenance; his daily schedule isn't in these files."
+      },
+      {
+        "field": "closes",
+        "why": "Whether refusing still counts toward College Curriculum's lesson tally isn't shown in these files."
+      }
+    ],
+    "evidence": [
+      "QUST College Of Winterhold - Quest Expansion.esp:000872",
+      "giver INFO College Of Winterhold - Quest Expansion.esp:0008EC (Drevis Skyrim.esm:01C198, ref 01C1A6 in cell 01380F)",
+      "skeever aliases refs 0008D8/0008D9/0008DA in cell Skyrim.esm:000D74",
+      "stage 30 fails; stage 25 completes",
+      "COW_CentralQuest College Of Winterhold - Quest Expansion.esp:00081D stages 21-27"
+    ]
+  },
+  {
+    "edid": "Cow_Reading",
+    "name": "Reading Comprehension 101",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "canDo": "talk",
+    "canDoWhy": "Urag gro-Shub, the College librarian, sets you a book to read and then tests you on it, as one of the scholars' lessons.",
+    "needs": [
+      {
+        "what": "Be a member of the College of Winterhold",
+        "kind": "faction"
+      },
+      {
+        "what": "Finish Tolfdir's first lesson (Rapture of the Deep) so the scholars' lessons open up in College Curriculum",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Urag gro-Shub",
+        "where": "the Arcanaeum, the College library entered from the Hall of the Elements",
+        "how": "Talk to Urag about a lesson; he gives you a book to read and says to come back when you've read it."
+      }
+    ],
+    "firstStep": "Read Olaf and the Dragon, then talk to Urag gro-Shub",
+    "takesYou": [
+      {
+        "place": "the Arcanaeum",
+        "hold": "Winterhold",
+        "why": "Urag's test happens here"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Answer Urag's test correctly",
+        "leadsTo": "You pass and the lesson is done."
+      },
+      {
+        "choice": "Fail Urag's test",
+        "leadsTo": "You have to read the book properly and talk him into another try; passing then finishes the lesson."
+      },
+      {
+        "choice": "Refuse Urag's test",
+        "leadsTo": "The quest fails."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Read Olaf and the Dragon and talk to Urag gro-Shub"
+        ]
+      },
+      {
+        "branch": "failed the test",
+        "objectives": [
+          "Actually read the book and try again"
+        ]
+      },
+      {
+        "branch": "refuse",
+        "objectives": [
+          "Refuse the test (quest fails)"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Mages Guild",
+    "opens": [],
+    "closes": [
+      "Refusing fails this lesson"
+    ],
+    "people": [
+      {
+        "name": "Urag gro-Shub",
+        "role": "College librarian who sets the test; placed in the Arcanaeum"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "No reward is recorded for this quest in these files; the journal only says he taught you to check the credibility of sources."
+      },
+      {
+        "field": "firstStep",
+        "why": "The book Olaf and the Dragon is named in the objective but no item by that name turns up in the item extract, so where you get it is assumed to be from Urag (journal: 'gave me a book to read')."
+      },
+      {
+        "field": "needs",
+        "why": "Taken from the College Curriculum journal; the dialogue conditions themselves aren't in these files beyond the quest not having started."
+      },
+      {
+        "field": "where",
+        "why": "Urag's spot is his placement in the Arcanaeum; his daily schedule isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST College Of Winterhold - Quest Expansion.esp:000870",
+      "giver INFO College Of Winterhold - Quest Expansion.esp:0008B5 (Urag Skyrim.esm:01C193, ref 01C1B4 in cell 013810)",
+      "stages 20 and 25 both complete; stage 15 failed test; stage 30 fails",
+      "door Skyrim.esm:046BEC Arcanaeum -> Hall of the Elements"
+    ]
+  },
+  {
+    "edid": "Cow_restoration",
+    "name": "None Escape The Light",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "canDo": "talk",
+    "canDoWhy": "Colette Marence gives it as her Restoration lesson; you then test it on draugr in the Midden with Tolfdir's say-so.",
+    "needs": [
+      {
+        "what": "Be a member of the College of Winterhold",
+        "kind": "faction"
+      },
+      {
+        "what": "Finish Tolfdir's first lesson (Rapture of the Deep) so the scholars' lessons open up in College Curriculum",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Colette Marence",
+        "where": "the Hall of Countenance at the College of Winterhold",
+        "how": "Talk to Colette about her Restoration lesson; she explains Restoration against the undead and gives you a spell book."
+      }
+    ],
+    "firstStep": "Learn the spell from Colette's book and talk to her again",
+    "takesYou": [
+      {
+        "place": "the Hall of Attainment",
+        "hold": "Winterhold",
+        "why": "talk to Tolfdir, who has a job for your new spell"
+      },
+      {
+        "place": "The Midden, under the College",
+        "hold": "Winterhold",
+        "why": "draugr have taken it over; use Turn Lesser Undead on one, then deal with them"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Turn down Colette's lesson",
+        "leadsTo": "The quest fails."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Learn the spell and talk to Colette",
+          "Talk to Tolfdir",
+          "Deal with the Draugr in the Midden",
+          "Talk to Colette"
+        ]
+      },
+      {
+        "branch": "refuse",
+        "objectives": [
+          "Refuse the lesson (quest fails)"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A Restoration spell book from Colette (the journal says to use Turn Lesser Undead)",
+        "when": "at the start"
+      }
+    ],
+    "type": "Mages Guild",
+    "opens": [],
+    "closes": [
+      "Refusing fails this lesson"
+    ],
+    "people": [
+      {
+        "name": "Colette Marence",
+        "role": "Restoration scholar who gives the lesson; placed in the Hall of Countenance"
+      },
+      {
+        "name": "Tolfdir",
+        "role": "sends you into the Midden; placed in the Hall of Attainment"
+      },
+      {
+        "name": "Draugr (three)",
+        "role": "enemies placed in the Midden for this quest"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "The journal says Colette gives a spell book and later says to use Turn Lesser Undead, but the records here don't tie the book to that spell directly."
+      },
+      {
+        "field": "needs",
+        "why": "Taken from the College Curriculum journal; the dialogue conditions themselves aren't in these files beyond the quest not having started."
+      },
+      {
+        "field": "where",
+        "why": "Colette's and Tolfdir's spots are their placements; their daily schedules aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST College Of Winterhold - Quest Expansion.esp:00086E",
+      "giver INFO College Of Winterhold - Quest Expansion.esp:000885 (Colette Skyrim.esm:01C19A; Tolfdir 01C19E below stage 11)",
+      "draugr refs 00086D/000874/000875 in The Midden cell Skyrim.esm:02BCD7",
+      "stage 30 fails; stage 25 completes"
+    ]
+  },
+  {
+    "edid": "MG01Pointer",
+    "name": "College Objective Quest",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "A journal pointer that adds \"Visit the College of Winterhold\" to your misc objectives; it has no giver of its own in these files.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Visit the College of Winterhold",
+    "takesYou": [
+      {
+        "place": "the College of Winterhold",
+        "hold": "Winterhold",
+        "why": "the only objective"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Visit the College of Winterhold"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Faralda",
+        "role": "filled into the quest's one person slot; placed in the Hall of Countenance"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "Nothing in these files shows what adds this pointer (no dialogue line or start event points to it)."
+      },
+      {
+        "field": "firstStep",
+        "why": "What finishes it (arriving at the College or meeting Faralda) isn't shown; the records only say Faralda fills its one person slot."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:054D0A",
+      "alias Nirya -> Faralda Skyrim.esm:01C197 (ref 01C1A5)",
+      "stage 200 completes",
+      "no giver or start event in quest_givers_raw"
+    ]
+  },
+  {
+    "edid": "MGR01",
+    "name": "Tolfdir the Absent-Minded",
+    "plugin": "Skyrim.esm (last edited by LoreRim - Economy Overhaul.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Tolfdir has misplaced his alembic and asks you to find it.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Tolfdir",
+        "where": "the Hall of Attainment at the College of Winterhold",
+        "how": "Talk to Tolfdir; he mentions his missing alembic and you offer to find it."
+      }
+    ],
+    "firstStep": "Find Tolfdir's missing Alembic",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find Tolfdir's missing Alembic",
+          "Return to Tolfdir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you return the alembic"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Tolfdir",
+        "role": "quest giver; placed in the Hall of Attainment"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "Where the alembic lies is set by a marker these files don't place."
+      },
+      {
+        "field": "rewards",
+        "why": "The script hands out gold but the amount isn't in these files; LoreRim - Economy Overhaul edits this quest last."
+      },
+      {
+        "field": "needs",
+        "why": "Whether you must be a College member isn't shown; the dialogue condition here only checks the quest hasn't started."
+      },
+      {
+        "field": "where",
+        "why": "Tolfdir's spot is his placement; his daily schedule isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0266F1",
+      "giver INFO Skyrim.esm:0266EC (Tolfdir Skyrim.esm:01C19E, ref 01C1A1 in cell 0CAB91)",
+      "start node MGRTolfdirNode1 (script event)",
+      "reward QF_MGR01_000266F1.Gold001"
+    ]
+  },
+  {
+    "edid": "MGR02",
+    "name": "Out of Balance",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Drevis Neloren asks you to wear special tuning gloves and cleanse the magical focal points around the College.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Drevis Neloren",
+        "where": "the Hall of Countenance at the College of Winterhold",
+        "how": "Talk to Drevis; he gives you the tuning gloves and warns there may be side-effects."
+      }
+    ],
+    "firstStep": "Wear the tuning gloves and cleanse the focal points around the College",
+    "takesYou": [
+      {
+        "place": "the College's dormitory halls",
+        "hold": "Winterhold",
+        "why": "the five focal points to cleanse"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Cleanse the focal points for magical energies around the College",
+          "Return to Drevis Neloren"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A magical effect: Fortify Magicka or Drain Magicka",
+        "when": "from the cleansing / at the end"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Drevis Neloren",
+        "role": "quest giver; placed in the Hall of Countenance"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "The quest script holds a 'good' spell (Fortify Magicka) and a 'bad' one (Drain Magicka); which you get, when, and for how long isn't in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "The places index ties this quest to both College dormitory locations, but doesn't say which named hall each focal point is in."
+      },
+      {
+        "field": "steps",
+        "why": "The journal says to take the gloves back to Drevis; the gloves aren't tied to an item record here (candidates in the item list: Mystic Tuning Gloves, Focusing Gloves)."
+      },
+      {
+        "field": "needs",
+        "why": "Whether you must be a College member isn't shown; the dialogue condition here only checks the quest hasn't started."
+      },
+      {
+        "field": "where",
+        "why": "Drevis's spot is his placement; his daily schedule isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0266F2",
+      "giver INFO Skyrim.esm:026C29 (Drevis Skyrim.esm:01C198)",
+      "start node MGRDrevisNode",
+      "MGR02QuestScript.GoodSpell Skyrim.esm:0E1FED, .BadSpell Skyrim.esm:0E1FEE",
+      "places Skyrim.esm:0D16E5 and 01EB74 list the quest",
+      "items Skyrim.esm:026C3B, 092DBE"
+    ]
+  },
+  {
+    "edid": "MGR10",
+    "name": "Enchanting Pick-Up",
+    "plugin": "Skyrim.esm",
+    "canDo": "radiant",
+    "canDoWhy": "Sergius Turrianus sends you to collect an item from a client somewhere in Skyrim so he can enchant it; the client and place are picked when it starts.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Sergius Turrianus",
+        "where": "the Hall of Countenance at the College of Winterhold",
+        "how": "Ask Sergius if he needs help; he names a client to pick up an item from."
+      }
+    ],
+    "firstStep": "Go to the client Sergius names and pick up the item",
+    "takesYou": [
+      {
+        "place": "the client's town (chosen when the quest starts)",
+        "hold": "",
+        "why": "collect the item"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Go to the client and pick up the item",
+          "Return the item to Sergius Turrianus"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A small random quest reward",
+        "when": "when you bring the item back"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Sergius Turrianus",
+        "role": "quest giver; placed in the Hall of Countenance"
+      },
+      {
+        "name": "the client",
+        "role": "chosen when the quest starts"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The client and their location are filled in when the quest starts, so they aren't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The reward is a small leveled reward list; its contents aren't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "Whether you must be a College member isn't shown; the dialogue condition here only checks the quest hasn't started."
+      },
+      {
+        "field": "where",
+        "why": "Sergius's spot is his placement; his daily schedule isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:028A13",
+      "giver INFO Skyrim.esm:028A09 (Sergius Skyrim.esm:01C23E, ref 01C23F)",
+      "start node MGRSergiusNode",
+      "aliases Client, ClientLocation",
+      "reward QF_MGR10_00028A13.LvlQuestReward01Small Skyrim.esm:0C0404"
+    ]
+  },
+  {
+    "edid": "MGR11",
+    "name": "Restocking Soul Gems",
+    "plugin": "Skyrim.esm",
+    "canDo": "radiant",
+    "canDoWhy": "Sergius Turrianus asks you to bring him soul gems; the gem type is picked when it starts.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Sergius Turrianus",
+        "where": "the Hall of Countenance at the College of Winterhold",
+        "how": "Ask Sergius if he needs help; he asks you to restock his soul gems."
+      }
+    ],
+    "firstStep": "Bring Sergius the soul gems he asks for",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Deliver the soul gems Sergius asked for"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Sergius Turrianus",
+        "role": "quest giver; placed in the Hall of Countenance"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "steps",
+        "why": "The quest has no objectives in the records, only journal lines; which gem type and how many are set when it starts."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is recorded for this quest in these files."
+      },
+      {
+        "field": "needs",
+        "why": "Whether you must be a College member isn't shown; the dialogue condition here only checks the quest hasn't started."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:028A19",
+      "giver INFO Skyrim.esm:028A01 (Sergius Skyrim.esm:01C23E)",
+      "start node MGRSergiusNode",
+      "alias MGR11GemType"
+    ]
+  },
+  {
+    "edid": "MGR12",
+    "name": "Filling Soul Gems",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Sergius Turrianus asks for a filled Grand Soul Gem.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Sergius Turrianus",
+        "where": "the Hall of Countenance at the College of Winterhold",
+        "how": "Ask Sergius if he needs help; he asks you to bring him a filled Grand Soul Gem."
+      }
+    ],
+    "firstStep": "Bring a Filled Grand Soul Gem to Sergius Turrianus",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Bring a Filled Grand Soul Gem to Sergius Turrianus"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Sergius Turrianus",
+        "role": "quest giver; placed in the Hall of Countenance"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "No reward is recorded for this quest in these files."
+      },
+      {
+        "field": "needs",
+        "why": "Whether you must be a College member isn't shown; the dialogue condition here only checks the quest hasn't started."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:028A1E",
+      "giver INFO Skyrim.esm:028A0A (Sergius Skyrim.esm:01C23E)"
+    ]
+  },
+  {
+    "edid": "MGR20",
+    "name": "Fetch me that Book!",
+    "plugin": "Skyrim.esm (last edited by Update.esm)",
+    "canDo": "radiant",
+    "canDoWhy": "Urag gro-Shub wants a copy of a book for the Arcanaeum; the book and the place it's hidden are picked when it starts.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Urag gro-Shub",
+        "where": "the Arcanaeum, the College library entered from the Hall of the Elements",
+        "how": "Ask Urag if he needs anything; he names a book he wants and where to look."
+      }
+    ],
+    "firstStep": "Find the copy of the book Urag names",
+    "takesYou": [
+      {
+        "place": "a location chosen when the quest starts (marked on your map)",
+        "hold": "",
+        "why": "the book is there"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find the copy of the book",
+          "Return the book to Urag gro-Shub"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you return the book"
+      },
+      {
+        "what": "A medium random quest reward",
+        "when": "when you return the book"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Urag gro-Shub",
+        "role": "quest giver; placed in the Arcanaeum"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The book, its location, its container and a note are all filled in when the quest starts, so they aren't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold amount and the leveled reward's contents aren't in these files."
+      },
+      {
+        "field": "name",
+        "why": "A second quest with the same name (Skyrim.esm:0BC096, also from Urag) exists; this read covers only this one."
+      },
+      {
+        "field": "needs",
+        "why": "Whether you must be a College member isn't shown; the dialogue condition here only checks the quest hasn't started."
+      },
+      {
+        "field": "where",
+        "why": "Urag's spot is his placement; his daily schedule isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:028A24",
+      "giver INFO Skyrim.esm:028A04 (Urag Skyrim.esm:01C193, ref 01C1B4 in cell 013810)",
+      "start node MGRUragNode",
+      "aliases Book, BookLocation, LocationMapMarker, Note, BookContainer, HoldingChest",
+      "rewards QF_MGR20_00028A24.Gold001, .LvlQuestReward02Medium Skyrim.esm:0C0405"
+    ]
+  }
+]

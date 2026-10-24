@@ -1,0 +1,507 @@
+[
+  {
+    "edid": "MQ204",
+    "name": "The Throat of the World",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Once Alduin's Wall is read, go back to the Greybeards and talk to Arngeir at High Hrothgar.",
+    "needs": [
+      {"what": "Finish Alduin's Wall (read Alduin's Wall in Sky Haven Temple with Esbern)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Arngeir", "where": "inside High Hrothgar, the Greybeards' monastery on the Throat of the World", "how": "After Alduin's Wall shows that Alduin was beaten by a Shout, go to High Hrothgar and talk to Arngeir about it."}
+    ],
+    "firstStep": "Talk to Arngeir at High Hrothgar",
+    "takesYou": [
+      {"place": "High Hrothgar", "hold": "Whiterun", "why": "Arngeir names the Dragonrend Shout and the Greybeards teach you Clear Skies"},
+      {"place": "Throat of the World (the summit above High Hrothgar)", "hold": "Whiterun", "why": "use Clear Skies to clear the path, then meet Paarthurnax at the top"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Talk to Arngeir",
+        "Learn the \"Clear Skies\" Shout",
+        "Use the \"Clear Skies\" Shout to open the path",
+        "Talk to Paarthurnax",
+        "Learn the Word of Power from Paarthurnax",
+        "Use your \"Fire Breath\" Shout on Paarthurnax",
+        "Talk to Paarthurnax"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Clear Skies (Shout), taught by the Greybeards", "when": "at High Hrothgar, before the climb"},
+      {"what": "A Word of Power for Fire Breath (Shout), taught by Paarthurnax", "when": "at the summit"}
+    ],
+    "type": "Main Quest",
+    "opens": ["Elder Knowledge"],
+    "closes": [],
+    "people": [
+      {"name": "Arngeir", "role": "Greybeard; starts the quest and agrees to show you the way to Paarthurnax. Placed in High Hrothgar"},
+      {"name": "Borri, Einarth and Wulfgar", "role": "the other Greybeards, at High Hrothgar; they take part in teaching Clear Skies"},
+      {"name": "Paarthurnax", "role": "leader of the Greybeards, who turns out to be a dragon; lives at the top of the Throat of the World"}
+    ],
+    "unsure": [
+      {"field": "rewards", "why": "the quest's script also holds a Blades Katana and an Ebony Dagger, but the records don't show whether either is handed to the player"},
+      {"field": "steps", "why": "the quest's last stage checks whether you already carry the Elder Scroll (Dragon); if you got it earlier the next step may differ, but the script that acts on this isn't in these files"},
+      {"field": "people", "why": "Urag gro-Shub (the Arcanaeum, College of Winterhold) is listed in this quest as a 'lorekeeper', but nothing in the stages or objectives says what he does here"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:02D515 stages 10/60/100/200 logs, objectives 10-60, aliases WordClearSkies/2/3, WordFireBreath",
+      "quest_givers_raw MQ204 giver Arngeir (info Skyrim.esm:03F891, stage < 30), other Paarthurnax (< 200); rewards QF_MQ204_0002D515.AkaviriKatana/EbonyDagger/GraybeardTeachFX",
+      "quests_raw MQ203 stage 280 completing log (Alduin's Wall in Sky Haven Temple)",
+      "quests_raw MQ204 stage 200 entry GetItemCount Elder Scroll (Dragon) >= 1; MQ205 stage 100 entry 'MQ204 stage 205 not done'",
+      "questlines_raw Main Quest order",
+      "places_raw High Hrothgar (Whiterun), Throat of the World (Whiterun)",
+      "powers_raw ClearSkiesShout, FireBreathShout"
+    ]
+  },
+  {
+    "edid": "MQ205",
+    "name": "Elder Knowledge",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Paarthurnax gives it at the end of The Throat of the World: find the Elder Scroll that cast Alduin forward in time.",
+    "needs": [
+      {"what": "Finish The Throat of the World", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Paarthurnax", "where": "the summit of the Throat of the World, above High Hrothgar", "how": "Paarthurnax tells you the ancient Nords used an Elder Scroll against Alduin; you need that Scroll."}
+    ],
+    "firstStep": "Learn the location of the Elder Scroll",
+    "takesYou": [
+      {"place": "College of Winterhold (the Arcanaeum)", "hold": "Winterhold", "why": "Esbern or Arngeir point you to the College; Urag gro-Shub in the Arcanaeum points you on to Septimus Signus"},
+      {"place": "Septimus Signus' Outpost", "hold": "Winterhold", "why": "Septimus Signus knows where the Elder Scroll is"},
+      {"place": "Alftand", "hold": "Winterhold", "why": "the way down toward the Scroll"},
+      {"place": "Blackreach", "hold": "Winterhold", "why": "the route from Alftand to the Tower of Mzark"},
+      {"place": "Tower of Mzark", "hold": "Winterhold", "why": "recover the Elder Scroll"}
+    ],
+    "choices": [
+      {"choice": "Ask Esbern or ask Arngeir where to look", "leadsTo": "either one sends you to the College of Winterhold; both are optional"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Learn the location of the Elder Scroll",
+        "(Optional) Talk to Esbern",
+        "(Optional) Talk to Arngeir",
+        "Recover the Elder Scroll"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Elder Scroll (Dragon)", "when": "when you take it at the Tower of Mzark; you need it for Alduin's Bane"}
+    ],
+    "type": "Main Quest",
+    "opens": ["Alduin's Bane"],
+    "closes": [],
+    "people": [
+      {"name": "Paarthurnax", "role": "gives the quest, at the summit of the Throat of the World"},
+      {"name": "Esbern", "role": "optional; suggests the College of Winterhold"},
+      {"name": "Arngeir", "role": "optional; suggests the College of Winterhold. High Hrothgar"},
+      {"name": "Urag gro-Shub", "role": "keeper of the Arcanaeum at the College of Winterhold; leads you to Septimus"},
+      {"name": "Septimus Signus", "role": "scholar of the Elder Scrolls who knows where the Scroll lies; Septimus Signus' Outpost, a short walk from Winterhold"}
+    ],
+    "unsure": [
+      {"field": "people", "why": "the records still place Esbern in the Ratway Warrens under Riften; by this point in the story he is with the Blades (Sky Haven Temple is where Alduin's Wall was read), but his current spot isn't in these files"},
+      {"field": "takesYou", "why": "the route Alftand, Blackreach, Tower of Mzark comes from the quest's door and lock aliases and the place index, not from a log line; the journal only says 'recover the Elder Scroll'"},
+      {"field": "needs", "why": "Septimus's own quest, Discerning the Transmundane, overlaps this one (Dawnguard ties one of its lines to this quest having started), and Requiem raises that quest's minimum level to 20; the records don't show whether that level gate affects Septimus pointing you to the Scroll here"},
+      {"field": "steps", "why": "if you already got the Elder Scroll before Paarthurnax sent you for it, the quest has a separate finish; the exact behaviour is in a script these files don't include"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:02D516 stages 10/50/60/100 logs, objectives 10/20/30/50, aliases Urag, Septimus, AlftandWorldDoor, BlackreachLock, ActualBlackreachDoor, ElderScrollActivator",
+      "quest_givers_raw MQ205 namedGiver Paarthurnax; giver dialogue Delphine (info Skyrim.esm:041F10), Esbern; reward MQ205Script.ElderScroll Skyrim.esm:02D513",
+      "places_raw Alftand, Tower of Mzark, Blackreach, Septimus Signus' Outpost, The Arcanaeum (all Winterhold)",
+      "quest_starts_raw discerning-the-transmundane: Dawnguard dialogue Skyrim.esm:0E3035 GetStage MQ205 > 0; Requiem DA04MinLevel 20",
+      "people_raw Esbern (The Ratway Warrens), Septimus Signus, Urag gro-Shub"
+    ]
+  },
+  {
+    "edid": "MQ206",
+    "name": "Alduin's Bane",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Bring the Elder Scroll back to Paarthurnax at the top of the Throat of the World.",
+    "needs": [
+      {"what": "Finish Elder Knowledge (carry the Elder Scroll (Dragon))", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Paarthurnax", "where": "the summit of the Throat of the World", "how": "Return with the Elder Scroll and talk to Paarthurnax; he tells you to read it at the Time-Wound."}
+    ],
+    "firstStep": "Read the Elder Scroll at the Time-Wound",
+    "takesYou": [
+      {"place": "Throat of the World (the summit, at the Time-Wound)", "hold": "Whiterun", "why": "read the Scroll, see the ancient battle, then fight Alduin"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Read the Elder Scroll at the Time-Wound",
+        "Learn the \"Dragonrend\" Shout from the Nord heroes",
+        "Defeat Alduin"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Dragonrend (Shout)", "when": "learned in the vision of the Nord heroes"}
+    ],
+    "type": "Main Quest",
+    "opens": ["The Fallen"],
+    "closes": [],
+    "people": [
+      {"name": "Paarthurnax", "role": "gives the quest and is there for the fight, at the summit"},
+      {"name": "Gormlaith Golden-Hilt, Hakon One-Eye and Felldir the Old", "role": "the ancient Nord heroes seen in the vision"},
+      {"name": "Alduin", "role": "attacks when you come back from the vision; bring him down with Dragonrend"}
+    ],
+    "unsure": [
+      {"field": "steps", "why": "the quest also holds other dragons that join the attack in the past and present; how many fight you isn't spelled out in the stages"},
+      {"field": "rewards", "why": "the Elder Scroll is listed on the quest's script; the records don't say whether you keep it afterwards"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:036193 stages 10/100/220 logs, objectives 10/20/30, aliases TimeWound, AncientAlduin, Alduin, Gormlaith, Felldir, Hakon, SceneAttackDragon1-3",
+      "quest_givers_raw MQ206 giver Paarthurnax (info Skyrim.esm:0C64EC, stage < 20); MQ206Script.ElderScroll",
+      "places_raw MQ206Location 'Throat of the World', ThroatoftheWorldLocation (Whiterun)",
+      "powers_raw DragonrendShout"
+    ]
+  },
+  {
+    "edid": "MQ301",
+    "name": "The Fallen",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp; also Update.esm)",
+    "canDo": "talk",
+    "canDoWhy": "After Alduin flees the Throat of the World, talk to Paarthurnax about finding his lair.",
+    "needs": [
+      {"what": "Finish Alduin's Bane", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Paarthurnax", "where": "the summit of the Throat of the World", "how": "After Alduin is beaten and flies off, talk to Paarthurnax; one of Alduin's dragon allies could tell you where he went."}
+    ],
+    "firstStep": "Talk to Paarthurnax",
+    "takesYou": [
+      {"place": "Throat of the World (summit)", "hold": "Whiterun", "why": "talk to Paarthurnax"},
+      {"place": "Dragonsreach, the Jarl's palace in Whiterun", "hold": "Whiterun", "why": "persuade the Jarl to help trap a dragon there"},
+      {"place": "High Hrothgar", "hold": "Whiterun", "why": "get the Greybeards to help negotiate a truce in the civil war (this runs as Season Unending)"},
+      {"place": "Dragonsreach, Great Porch", "hold": "Whiterun", "why": "call Odahviing, trap him and question him"}
+    ],
+    "choices": [
+      {"choice": "Ask Paarthurnax, Arngeir or Esbern for help", "leadsTo": "the journal offers talking to each; Esbern or Paarthurnax can tell you how to lure a dragon"},
+      {"choice": "Whether the civil war is still being fought", "leadsTo": "while it rages, the Jarl of Whiterun won't help until a truce is arranged (Season Unending)"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Talk to Paarthurnax",
+        "Talk to Arngeir",
+        "Talk to Esbern",
+        "Talk to the Jarl of Whiterun",
+        "Get Greybeards' help in negotiating a truce",
+        "Learn Shout to call Odahviing",
+        "Prepare trap for Odahviing",
+        "Call Odahviing to Dragonsreach",
+        "Defeat and trap Odahviing",
+        "Interrogate Odahviing"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Call Dragon (Shout), the name of one of Alduin's allies", "when": "before you call Odahviing to Dragonsreach"}
+    ],
+    "type": "Main Quest",
+    "opens": ["Season Unending", "The World-Eater's Eyrie"],
+    "closes": [],
+    "people": [
+      {"name": "Paarthurnax", "role": "starts the quest at the summit; can help you learn how to lure a dragon"},
+      {"name": "Arngeir", "role": "at High Hrothgar; asked to help with a truce"},
+      {"name": "Esbern", "role": "can help with luring a dragon"},
+      {"name": "the Jarl of Whiterun", "role": "in Dragonsreach; agrees to help trap a dragon"},
+      {"name": "Odahviing", "role": "the dragon you call, trap on the Great Porch and question; he reveals Alduin's lair is Skuldafn"}
+    ],
+    "unsure": [
+      {"field": "people", "why": "the Jarl is filled in by the quest, not a fixed person; the records place Balgruuf the Greater in Dragonsreach, but Season Unending also lists Vignar Gray-Mane, so who sits there depends on the civil war"},
+      {"field": "people", "why": "Esbern's placement in the records is the Ratway Warrens under Riften; by this point he is with the Blades, but his current spot isn't in these files"},
+      {"field": "rewards", "why": "which person teaches you Call Dragon isn't named in the records; the journal only says you learned it"},
+      {"field": "rewards", "why": "the quest's script holds a Hunting Light Bow tied to the Jarl; the records don't show whether it goes to the player"},
+      {"field": "steps", "why": "the journal has a separate line for when the trap is already set up; if the civil war is over the truce step may be skipped, but the script that decides this isn't in these files"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:044C56 stages 10/25/30/50/70/200/220 logs, objectives 10-70, aliases Paarthurnax, Esbern, Arngeir, Jarl, Odahviing",
+      "quest_givers_raw MQ301 giver Paarthurnax (info Skyrim.esm:045919, stage < 20), others Esbern, Delphine (< 30); Odahviing placed 'Dragonsreach, Great Porch'; reward QF_MQ301_00044C56.JarlBow",
+      "powers_raw CallDragonShout",
+      "quest_givers_raw MQ302 aliases Vignar, BalgruufAlive",
+      "people_raw Balgruuf the Greater (Dragonsreach), Esbern (The Ratway Warrens)"
+    ]
+  },
+  {
+    "edid": "MQ302",
+    "name": "Season Unending",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Comes out of The Fallen: ask Arngeir to host a peace council so the Jarl of Whiterun will help you.",
+    "needs": [
+      {"what": "Reach the truce step in The Fallen (the Jarl of Whiterun refuses to help while the civil war rages)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Arngeir", "where": "inside High Hrothgar", "how": "Talk to Arngeir and get him to host a peace council between the Imperials and the Stormcloaks."}
+    ],
+    "firstStep": "Talk to Arngeir",
+    "takesYou": [
+      {"place": "High Hrothgar", "hold": "Whiterun", "why": "ask Arngeir to host the council, then hold it there"},
+      {"place": "Castle Dour, Solitude", "hold": "Haafingar", "why": "talk to General Tullius"},
+      {"place": "Palace of the Kings, Windhelm", "hold": "Eastmarch", "why": "talk to Ulfric Stormcloak"}
+    ],
+    "choices": [
+      {"choice": "How you negotiate the truce at the council", "leadsTo": "the terms both sides accept; the quest has different finishes"},
+      {"choice": "Whether you are a member of the Sons of Skyrim (Stormcloaks)", "leadsTo": "parts of the council play differently for a Stormcloak"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Talk to Arngeir",
+        "Talk to General Tullius",
+        "Talk to Ulfric Stormcloak",
+        "Talk to Arngeir",
+        "Take your seat",
+        "Negotiate a truce"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Main Quest",
+    "opens": ["The Fallen (the Jarl of Whiterun agrees to help trap a dragon)"],
+    "closes": [],
+    "people": [
+      {"name": "Arngeir", "role": "hosts the peace council at High Hrothgar"},
+      {"name": "General Tullius", "role": "Imperial side; placed in Castle Dour, Solitude"},
+      {"name": "Legate Rikke", "role": "with Tullius; placed in Castle Dour"},
+      {"name": "Ulfric Stormcloak", "role": "Stormcloak side; placed in the Palace of the Kings, Windhelm"},
+      {"name": "Galmar Stone-Fist", "role": "with Ulfric; placed in the Palace of the Kings"},
+      {"name": "Esbern", "role": "helps you persuade both sides"},
+      {"name": "Delphine", "role": "attends the council"},
+      {"name": "Elenwen", "role": "Thalmor; attends the council"},
+      {"name": "the Jarl of Whiterun, Elisif the Fair, Vignar Gray-Mane, Balgruuf the Greater, Hrongar", "role": "listed by the quest; who appears depends on how the civil war stands"},
+      {"name": "Borri, Einarth, Wulfgar", "role": "the Greybeards at High Hrothgar"}
+    ],
+    "unsure": [
+      {"field": "choices", "why": "the quest tracks holds on each side and two towns (Karthwasten in the Reach and Darkwater Crossing in Eastmarch) that can be traded or raided; the terms offered and what changes hands are in scripts and dialogue not in these files"},
+      {"field": "rewards", "why": "the script holds Imperial and Stormcloak rank-reward lists; the records don't show when or whether the player gets them"},
+      {"field": "starts", "why": "Tullius and Ulfric also have lines about it until the council; the records don't show whether you can start it by talking to them first"},
+      {"field": "steps", "why": "one finish happens without the council being held; it may be the path when the civil war is already over, but that isn't stated in these files"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:045923 stages 10/15/300 logs, stages 100/110 Sons of Skyrim faction entries, completing stages 300/310/350 (350 when stage 40 not done), objectives 10-60",
+      "quest_givers_raw MQ302 namedGiver Arngeir; giver dialogue Tullius (info Skyrim.esm:028DA3, < 61), Ulfric (< 61); aliases ImperialTownRaided Karthwasten, SonsTownRaided Darkwater Crossing; rewards CWRankRewardImperial/Sons",
+      "places_raw High Hrothgar, Karthwasten, Darkwater Crossing, Castle Dour (Haafingar); Windhelm Stables (Eastmarch)",
+      "quests_raw MQ301 stage 30 log (truce)"
+    ]
+  },
+  {
+    "edid": "MQ303",
+    "name": "The World-Eater's Eyrie",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Once Odahviing has told you where Alduin went, set him free in Dragonsreach so he can fly you to Skuldafn.",
+    "needs": [
+      {"what": "Finish The Fallen (Odahviing trapped and questioned)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Odahviing", "where": "trapped on the Great Porch of Dragonsreach, Whiterun", "how": "After he tells you Alduin's portal is in Skuldafn, agree to free him so he can fly you there."}
+    ],
+    "firstStep": "Set Odahviing free",
+    "takesYou": [
+      {"place": "Dragonsreach, Great Porch", "hold": "Whiterun", "why": "free Odahviing and talk to him"},
+      {"place": "Skuldafn, the dragon temple high in the Velothi Mountains (reached only by air)", "hold": "Eastmarch", "why": "fight to the top and enter Alduin's portal to Sovngarde"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Set Odahviing free",
+        "Talk to Odahviing",
+        "Reach Alduin's portal to Sovngarde",
+        "Enter Sovngarde"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Word wall: Storm Call (Shout), in Skuldafn", "when": "on the way through Skuldafn"}
+    ],
+    "type": "Main Quest",
+    "opens": ["Sovngarde"],
+    "closes": [],
+    "people": [
+      {"name": "Odahviing", "role": "freed from the trap; flies you to Skuldafn"},
+      {"name": "Farengar Secret-Fire", "role": "court wizard in Dragonsreach; has lines for this quest"},
+      {"name": "a dragon priest", "role": "the boss guarding Alduin's portal in Skuldafn"}
+    ],
+    "unsure": [
+      {"field": "steps", "why": "the quest tracks a portal staff, a gatekeeper and a draugr carrying a Diamond Claw in Skuldafn; how the portal is opened isn't spelled out in the journal"},
+      {"field": "takesYou", "why": "Skuldafn has no map marker in the records and the way back from Skuldafn isn't in these files"},
+      {"field": "rewards", "why": "the Diamond Claw is carried by a draugr there; the records don't say it's a reward"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:046EF0 stages 10/100/300 logs, objectives 10-40, aliases PORTAL, Gatekeeper, BossDragonPriest, PortalStaff, DraugrWithClaw, DiamondClaw",
+      "quest_givers_raw MQ303 namedGiver Odahviing ('Dragonsreach, Great Porch'); giver dialogue Farengar (info Skyrim.esm:0E16ED, < 40)",
+      "quests_raw MQ301 stage 220 log",
+      "places_raw SkuldafnLocation (Eastmarch, no marker, word wall Storm Call)"
+    ]
+  },
+  {
+    "edid": "MQ304",
+    "name": "Sovngarde",
+    "plugin": "Skyrim.esm (last edited by Update.esm)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts when you step through Alduin's portal at the top of Skuldafn into Sovngarde.",
+    "needs": [
+      {"what": "Finish The World-Eater's Eyrie", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "", "where": "Alduin's portal at the top of Skuldafn", "how": "Entering the portal brings you to Sovngarde and the quest begins."}
+    ],
+    "firstStep": "Find out how to defeat Alduin",
+    "takesYou": [
+      {"place": "Sovngarde, the valley of mist", "hold": "", "why": "cross Alduin's soul-snare mist toward the Hall of Valor"},
+      {"place": "Hall of Valor (the Hall of Heroes), Sovngarde", "hold": "", "why": "get past Tsun and meet the three heroes"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Find out how to defeat Alduin",
+        "Gain admittance to the Hall of Valor",
+        "Talk to the heroes of Sovngarde"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Main Quest",
+    "opens": ["Dragonslayer"],
+    "closes": [],
+    "people": [
+      {"name": "Tsun", "role": "guards the way into the Hall of Valor"},
+      {"name": "lost souls", "role": "trapped in Alduin's mist in the valley"},
+      {"name": "Gormlaith Golden-Hilt, Hakon One-Eye, Felldir the Old", "role": "the three heroes, in the Hall of Valor"},
+      {"name": "Ysgramor", "role": "in the Hall of Valor"}
+    ],
+    "unsure": [
+      {"field": "steps", "why": "what Tsun asks of you to enter the Hall isn't in the journal text in these files"},
+      {"field": "people", "why": "the quest checks the Companions' Glory of the Dead, the Bards College's Tending the Flames and a few other things when you arrive, which likely changes who you meet in Sovngarde; the details are in scripts these files don't include"},
+      {"field": "rewards", "why": "the script holds a Chain Lightning spell; the records don't show whether the player gets it or who uses it"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:046EF1 stages 10/50/200 logs, stage 5 entries (Glory of the Dead stage 200 done, Tending the Flames completed, fn84), objectives 10-30, aliases Tsun, LostSoul1-4, Ysgramor",
+      "quest_givers_raw MQ304 giver Tsun (info Skyrim.esm:0946F0, < 140); heroes placed in Hall of Valor; reward MQ304Script.SpellRef Chain Lightning",
+      "quests_raw MQ303 stage 300 log (entered the portal)"
+    ]
+  },
+  {
+    "edid": "MQ305",
+    "name": "Dragonslayer",
+    "plugin": "Skyrim.esm",
+    "canDo": "by itself",
+    "canDoWhy": "Follows straight on from Sovngarde once the three heroes agree to fight beside you.",
+    "needs": [
+      {"what": "Finish Sovngarde (meet the heroes in the Hall of Valor)", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Gormlaith Golden-Hilt, Hakon One-Eye and Felldir the Old", "where": "the Hall of Valor, Sovngarde", "how": "Once you've talked to the heroes, they come out with you to drive off Alduin's mist."}
+    ],
+    "firstStep": "Help the heroes of Sovngarde dispel Alduin's mist",
+    "takesYou": [
+      {"place": "Sovngarde, outside the Hall of Valor", "hold": "", "why": "clear the mist with Clear Skies alongside the heroes, then fight Alduin"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Help the heroes of Sovngarde dispel Alduin's mist",
+        "Defeat Alduin"
+      ]}
+    ],
+    "rewards": [],
+    "type": "Main Quest",
+    "opens": [],
+    "closes": ["Alduin is destroyed; the main story ends"],
+    "people": [
+      {"name": "Gormlaith Golden-Hilt, Hakon One-Eye, Felldir the Old", "role": "fight Alduin with you"},
+      {"name": "Alduin", "role": "the final foe"},
+      {"name": "Tsun", "role": "in Sovngarde"}
+    ],
+    "unsure": [
+      {"field": "steps", "why": "how you get back to Skyrim afterwards isn't in the journal text in these files"},
+      {"field": "rewards", "why": "the records list no reward for this quest"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:046EF2 stages 10/120/200 logs, objectives 10/20, aliases Gormlaith, Felldir, Hakon, Alduin, Tsun, LostSoul1-8",
+      "quest_givers_raw MQ305 namedGiver Gormlaith Golden-Hilt; giver dialogue Tsun (info Skyrim.esm:0AF1C7, < 200)"
+    ]
+  },
+  {
+    "edid": "MQPaarthurnax",
+    "name": "Paarthurnax",
+    "plugin": "Skyrim.esm (last edited by PaarthurnaxQuestExpansion.esp)",
+    "canDo": "talk",
+    "canDoWhy": "The Blades turn on Paarthurnax partway through the late main quest; talk to him before you decide his fate.",
+    "needs": [
+      {"what": "Have met Paarthurnax (The Throat of the World) and be working with Delphine and Esbern", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Delphine and Esbern", "where": "with the Blades", "how": "They find out Paarthurnax was one of Alduin's chief allies in the Dragon War and refuse to help you any further until you kill him."}
+    ],
+    "firstStep": "Decide Paarthurnax's Fate",
+    "takesYou": [
+      {"place": "Throat of the World (summit)", "hold": "Whiterun", "why": "talk to Paarthurnax, and spare or kill him"}
+    ],
+    "choices": [
+      {"choice": "Kill Paarthurnax", "leadsTo": "you do what the Blades asked; Paarthurnax dies"},
+      {"choice": "Spare Paarthurnax", "leadsTo": "you decide he doesn't deserve to die and must talk the Blades round (talk to Delphine and Esbern)"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Decide Paarthurnax's Fate"]},
+      {"branch": "spare him", "objectives": ["Talk to Delphine", "Talk to Esbern"]}
+    ],
+    "rewards": [],
+    "type": "Main Quest",
+    "opens": [],
+    "closes": ["If you kill him, Paarthurnax is dead", "If you spare him, the Blades refuse to help you further until you bring them round"],
+    "people": [
+      {"name": "Paarthurnax", "role": "the Greybeards' leader, a dragon, at the summit of the Throat of the World"},
+      {"name": "Delphine", "role": "Blades; demands Paarthurnax's death"},
+      {"name": "Esbern", "role": "Blades; demands Paarthurnax's death"},
+      {"name": "Arngeir", "role": "Greybeard; listed in the quest"},
+      {"name": "two dragons", "role": "added near Paarthurnax by the Paarthurnax Quest Expansion"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "the records don't show what event or line from Delphine or Esbern starts the quest, or which earlier quest must be done first; the journal only says they discovered his past"},
+      {"field": "where", "why": "Delphine is placed in the Sleeping Giant Inn, Riverwood and Esbern in the Ratway Warrens, Riften; by this point both are likely at Sky Haven Temple, but that isn't in these files"},
+      {"field": "choices", "why": "Paarthurnax Quest Expansion adds its own Paarthurnax dialogue and two dragon companions; what that dialogue offers isn't in these files, and the quest has two separate finishes whose difference isn't explained"},
+      {"field": "rewards", "why": "the records list no reward for either choice"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:03FA16 stages 20/50/75 logs, completing stages 99/100, objectives 10/20/21, aliases Paar_Friend1/2 (MQ306DragonB/C placed by PaarthurnaxQuestExpansion.esp refs 000D8A/000D89)",
+      "quest_givers_raw MQPaarthurnax giver Paarthurnax (info PaarthurnaxQuestExpansion.esp:000802, stage < 21), others Delphine (< 76), Esbern (< 77)",
+      "people_raw Delphine (Sleeping Giant Inn), Esbern (The Ratway Warrens)",
+      "quests_raw MQ204 stage 60 log (Paarthurnax lives at the top of the Throat of the World)"
+    ]
+  },
+  {
+    "edid": "FreeformHighHrothgarA",
+    "name": "The Words of Power",
+    "plugin": "Skyrim.esm",
+    "canDo": "radiant",
+    "canDoWhy": "Can come up when you arrive at High Hrothgar; it points you to a random word wall in a dungeon.",
+    "needs": [],
+    "starts": [
+      {"who": "", "where": "High Hrothgar", "how": "Fires on its own when you enter High Hrothgar; the quest picks a dungeon with a word wall and marks it on your map."}
+    ],
+    "firstStep": "Find the Word of Power in the dungeon it names",
+    "takesYou": [
+      {"place": "a dungeon with a word wall, chosen by the quest", "hold": "", "why": "find the Word of Power"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find the Word of Power in the named dungeon"]}
+    ],
+    "rewards": [
+      {"what": "A Word of Power from that dungeon's word wall", "when": "when you reach the wall"}
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {"field": "starts", "why": "the records show only that it starts on entering High Hrothgar; whether a Greybeard says something, and what else must be true (how far into the main quest you are, or how often it repeats), isn't in these files"},
+      {"field": "takesYou", "why": "the dungeon is filled in when the quest starts, so it varies; the list of possible dungeons isn't in these files"}
+    ],
+    "evidence": [
+      "quests_raw Skyrim.esm:0E76DE type Misc, stages 10/20 (no log), objective 10 'Find the Word of Power in <Alias=Dungeon>', aliases Dungeon, WordWall, MapMarker",
+      "quest_givers_raw FreeformHighHrothgarA starts node HighHrothgarNode, event 'change location'",
+      "questlines_raw Miscellaneous bucket"
+    ]
+  }
+]

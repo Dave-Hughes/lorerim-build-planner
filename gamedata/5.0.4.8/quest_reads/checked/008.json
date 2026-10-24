@@ -1,0 +1,1339 @@
+{
+  "checks": [
+    {
+      "edid": "CR04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Take Up Arms stage 20 ('agreed to let me join them, if I can handle some preliminary tasks') and stage 100 ('I have joined the Companions'), with Proving Honor following once the work runs out, put these after joining. The node conditions aren't in the files; the unsure note is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Farkas (alias QuestGiver, fills Farkas) via INFO; placed in Jorrvaskr Living Quarters, Whiterun. 'how' matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Intimidate <Brute> in <BruteTown>'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Alias BruteTown, picked at start."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "'fistfight' isn't in the records; the log says 'rough him up' and the objective says 'Intimidate'. Reworded the first choice to the game's words. The rest agrees with stages 30/40 and the fail stages; unsure kept."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Proving Honor's journal opens with 'The Companions leaders say they don't have any more work for me, but that I should speak to Skjor about the next steps', so doing these jobs looks to be what leads into Proving Honor. How many it takes isn't in these files. Moved to unsure rather than left silent."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Take Up Arms stage 20 ('agreed to let me join them, if I can handle some preliminary tasks') and stage 100 ('I have joined the Companions'), with Proving Honor following once the work runs out, put these after joining. The node conditions aren't in the files; the unsure note is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Farkas (alias QuestGiver, fills Farkas) via INFO; placed in Jorrvaskr Living Quarters, Whiterun. 'how' matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Kill the leader of <Location>'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Alias Location + LocationHold; nine log variants by enemy group, as listed."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or alternate logs beyond the main path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Proving Honor's journal opens with 'The Companions leaders say they don't have any more work for me, but that I should speak to Skjor about the next steps', so doing these jobs looks to be what leads into Proving Honor. How many it takes isn't in these files. Moved to unsure rather than left silent."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Take Up Arms stage 20 ('agreed to let me join them, if I can handle some preliminary tasks') and stage 100 ('I have joined the Companions'), with Proving Honor following once the work runs out, put these after joining. The node conditions aren't in the files; the unsure note is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver dialogue in the extract; Skjor/Vilkas read from nodes CompanionsSkjorNode and CompanionsVilkasSkjorDeadNode, with Skjor's death in The Silver Hand stage 200. Both placed in Jorrvaskr Living Quarters. Unsure note kept."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Retrieve the <Gewgaw> from <Location>'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Location + LocationHold; BossChest/SpawnChest aliases support 'kept in the boss's chest' (that it's placed there is read from the alias names)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Only a fail stage (250) with no log saying what triggers it; nothing a player chooses."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Proving Honor's journal opens with 'The Companions leaders say they don't have any more work for me, but that I should speak to Skjor about the next steps', so doing these jobs looks to be what leads into Proving Honor. How many it takes isn't in these files. Moved to unsure rather than left silent."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Take Up Arms stage 20 ('agreed to let me join them, if I can handle some preliminary tasks') and stage 100 ('I have joined the Companions'), with Proving Honor following once the work runs out, put these after joining. The node conditions aren't in the files; the unsure note is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver dialogue in the extract; Skjor/Vilkas read from nodes CompanionsSkjorNode and CompanionsVilkasSkjorDeadNode, with Skjor's death in The Silver Hand stage 200. Both placed in Jorrvaskr Living Quarters. Unsure note kept. A related line (no speaker given) reads 'One of the guards from Dragonsreach came to me, worried about a prisoner who's escaped' (INFO 0E30E0)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Kill the escaped criminal'; log 'track him down and kill him'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "LocationHold plus start/end locations; unsure kept."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Only a fail stage (250) with no log saying what triggers it; nothing a player chooses."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Proving Honor's journal opens with 'The Companions leaders say they don't have any more work for me, but that I should speak to Skjor about the next steps', so doing these jobs looks to be what leads into Proving Honor. How many it takes isn't in these files. Moved to unsure rather than left silent."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR08",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Take Up Arms stage 20 ('agreed to let me join them, if I can handle some preliminary tasks') and stage 100 ('I have joined the Companions'), with Proving Honor following once the work runs out, put these after joining. The node conditions aren't in the files; the unsure note is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nodes CompanionsVilkasAlwaysNode and CompanionsVilkasSkjorDeadNode both name Vilkas; placed in Jorrvaskr Living Quarters. 'how' matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Rescue <Victim> from <Lair>'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Lair (with Boss) and VictimHome aliases; objective 21 escort back."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 25 (escorted home) vs stage 50 ('<Victim> died') with fail stages 150/250; unsure kept."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Proving Honor's journal opens with 'The Companions leaders say they don't have any more work for me, but that I should speak to Skjor about the next steps', so doing these jobs looks to be what leads into Proving Honor. How many it takes isn't in these files. Moved to unsure rather than left silent."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR09",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The Silver Hand stage 200 ('She has enlisted me on her quest for revenge') and Blood's Honor stage 10 ('secret missions with Aela') put these after The Silver Hand; node conditions not in files, unsure kept."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "'camped nearby' isn't in the records: the stage 10 log says the lieutenant is 'camped at <Camp>', a camp picked when the job starts, which can be anywhere. Reworded."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Assassinate the Silver Hand leader'; log names the camp."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Camp + CampBoss aliases."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or alternate logs beyond the main path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Blood's Honor opens with 'Kodlak Whitemane has caught wind of my secret missions with Aela', so Aela's jobs look to be what leads into Blood's Honor. How many it takes isn't in these files."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR10",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The Silver Hand stage 200 ('She has enlisted me on her quest for revenge') and Blood's Honor stage 10 ('secret missions with Aela') put these after The Silver Hand; node conditions not in files, unsure kept."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Aela via INFO (stage below 10), placed in Jorrvaskr Living Quarters; 'how' matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Steal the plans from <Camp>'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Camp + Plans/CampTreasureMarker aliases; log 'stole Silver Hand documents'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or alternate logs beyond the main path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Left empty, but Blood's Honor opens with 'Kodlak Whitemane has caught wind of my secret missions with Aela', so Aela's jobs look to be what leads into Blood's Honor. How many it takes isn't in these files."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR11",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' agrees (targets are aliases filled when the job starts, started by a story-manager node). But canDoWhy called it 'repeatable', which no record shows; Proving Honor's stage 10 log ('they don't have any more work for me') even suggests the jobs run out. Dropped the word and moved it to unsure. What would settle it: the story-manager node's settings or the radiant controller script."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The Silver Hand stage 200 ('She has enlisted me on her quest for revenge') and Blood's Honor stage 10 ('secret missions with Aela') put these after The Silver Hand; node conditions not in files, unsure kept."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Aela via INFO (stage below 10), placed in Jorrvaskr Living Quarters; 'how' matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Retrieve the fragment of Wuuthrad'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Camp + Fragment aliases."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or alternate logs beyond the main path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Reader's unsure about the fragment is fair. Also: Blood's Honor opens with Kodlak hearing of 'my secret missions with Aela', so Aela's jobs look to lead into it; added that to unsure."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR12",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Radiant: Dungeon/Totem aliases filled at start, started by CompanionsAelaNode; stage 10 log says Aela comes with you."
+        },
+        "needs": {
+          "verdict": "unsure",
+          "note": "Agree nothing can be listed. One correction to the reasoning: CompanionsAelaNode also starts Animal Extermination (CR01/CR02), an early job, so the node alone doesn't point to the Circle. The Underforge drop-off (entered as part of The Silver Hand) is the only hint. Settled by the node's conditions."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Aela via INFO 0E308E; stage 10 log: tracked a Totem to <Dungeon> and 'has come with me'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Retrieve the Totem of Hircine'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Dungeon alias; objective 20 'Take the Totem to the Underforge'; The Silver Hand stage 10 puts the meeting 'underneath the Skyforge'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or alternate logs beyond the main path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records points onward."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the stages, aliases or logs locks anything."
+        }
+      }
+    },
+    {
+      "edid": "CR13",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Started by dialogue (INFO 0E3036 conditioned on Vilkas, Farkas as other giver) through the PostQuestline nodes; one-off cure quest, not a picked-target job."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Both start nodes are named PostQuestline and the log refers to 'the same ceremony which cured Kodlak' (Glory of the Dead stages 30/60/65). Conditions not in files; unsure kept."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Vilkas via INFO 0E3036 (GetIsID), Farkas listed as other giver; nodes VilkasPostQuestlineNode and CompanionsFarkasPostQuestlineNode. Vilkas placed in Jorrvaskr Living Quarters."
+        },
+        "firstStep": {
+          "verdict": "unsure",
+          "note": "Objective 10 is 'Collect a Glenmoril Witch's head', so the value stands for the usual path. But stage 15 carries the same opening journal line with the cleansing objective, so the quest can open straight at the cleansing step, likely when you already carry a head from Blood's Honor. And Glenmoril Coven never respawns, so if you wiped it out in Blood's Honor the records don't show where a fresh head comes from. Settled by the start script or the dialogue's stage-setting."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Coven alias = Glenmoril Coven (Falkreath, 0.8 km 'a short walk', lives here: Hagraven, boss Glenmoril Witch); log names the Tomb of Ysgramor (Winterhold, next to the town); spirits placed in Ysgramor's Tomb."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or alternate logs beyond the main path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward items, gold or spells in the quest record or giver extract; left empty with an unsure note, which is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records points onward."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 100 log: \"I helped <Questgiver> cure himself of lycanthropy.\""
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "CR04",
+      "name": "Hired Muscle",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A Companions job from Farkas; the troublemaker and the town are picked when he gives it.",
+      "needs": [
+        {
+          "what": "Be a member of the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Farkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Ask Farkas for work; he names someone who has been causing trouble for a client and the town they're in."
+        }
+      ],
+      "firstStep": "Intimidate the troublemaker Farkas names, in the town he names",
+      "takesYou": [
+        {
+          "place": "the town Farkas names (picked when the job is given)",
+          "hold": "varies",
+          "why": "rough up the troublemaker"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Rough the troublemaker up without killing them",
+          "leadsTo": "They won't cause trouble any more; go back to Farkas"
+        },
+        {
+          "choice": "Kill the troublemaker yourself",
+          "leadsTo": "The journal says you got carried away; the job looks to fail"
+        },
+        {
+          "choice": "Someone else kills the troublemaker",
+          "leadsTo": "The journal says they died through no fault of your own"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Intimidate the troublemaker in their town",
+            "Return to Farkas"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Farkas",
+          "role": "gives the job and takes the report"
+        },
+        {
+          "name": "the troublemaker",
+          "role": "picked at random when the job is given"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The story-manager node that hands out this job is named in the records, but its conditions are not in these files, so exactly when the job becomes available is not confirmed."
+        },
+        {
+          "field": "where",
+          "why": "The records place Farkas in the Jorrvaskr living quarters; his daily schedule isn't in these files, so he may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "choices",
+          "why": "The journal has separate entries for beating them, killing them yourself, and their dying some other way, and the quest has fail stages; which outcome leads to which end is set by script not in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Take Up Arms' journal says the Companions let you join 'if I can handle some preliminary tasks', and Proving Honor opens once they 'don't have any more work for me', which points to these jobs coming after you join; not confirmed by a condition."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Proving Honor starts once the Companions leaders 'don't have any more work for me', so these jobs look to lead to it; how many jobs it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:025231 CR04",
+        "editedBy Update.esm, USSEP (last)",
+        "giver Farkas NPC Skyrim.esm:01A692 via INFO Skyrim.esm:09B14E, start node CompanionsFarkasNode",
+        "Farkas placed ref Skyrim.esm:01A693 in cell Skyrim.esm:07947A Jorrvaskr Living Quarters",
+        "stages 10/20/30/40 logs, 100 completes, 105 and 250 fail",
+        "aliases Brute, BruteTown, BruteTownMapMarker",
+        "C00 stage 20 log, C01 stage 10 log",
+        "C01 stage 10 log: leaders have no more work"
+      ]
+    },
+    {
+      "edid": "CR05",
+      "name": "Trouble in Skyrim",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by USSEP and Requiem.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A Companions job from Farkas; the hideout and who's in it are picked when he gives it.",
+      "needs": [
+        {
+          "what": "Be a member of the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Farkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Ask Farkas for work; he sends you to clear out a place that's been causing trouble in one of the holds."
+        }
+      ],
+      "firstStep": "Kill the leader of the place Farkas names",
+      "takesYou": [
+        {
+          "place": "the hideout Farkas names (picked when the job is given)",
+          "hold": "varies",
+          "why": "kill its leader; the group there can be bandits, draugr, Falmer, Forsworn, giants, hagravens, spriggans, vampires or warlocks"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the leader of the named place",
+            "Return to Farkas"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Farkas",
+          "role": "gives the job and takes the report"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The story-manager node that hands out this job is named in the records, but its conditions are not in these files, so exactly when the job becomes available is not confirmed."
+        },
+        {
+          "field": "where",
+          "why": "The records place Farkas in the Jorrvaskr living quarters; his daily schedule isn't in these files, so he may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "takesYou",
+          "why": "Which enemy group you face depends on the place picked; the journal has a line for each of the nine groups."
+        },
+        {
+          "field": "needs",
+          "why": "Take Up Arms' and Proving Honor's journals point to these jobs coming after you join; not confirmed by a condition."
+        },
+        {
+          "field": "plugin",
+          "why": "Requiem.esp and Companions Radiant Expansion.esp both edit this quest; what they change isn't shown in these files."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Proving Honor starts once the Companions leaders 'don't have any more work for me', so these jobs look to lead to it; how many jobs it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:02522F CR05",
+        "editedBy USSEP, Requiem.esp, Companions Radiant Expansion.esp (last)",
+        "giver Farkas Skyrim.esm:01A692 via INFO Skyrim.esm:054771, node CompanionsFarkasNode",
+        "stage 10 log variants conditioned on Location alias (fn610)",
+        "stage 200 completes",
+        "aliases Location, Boss, MapMarker, LocationHold",
+        "C01 stage 10 log: leaders have no more work"
+      ]
+    },
+    {
+      "edid": "CR06",
+      "name": "Family Heirloom",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by USSEP and Requiem.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A Companions job from Skjor, or from Vilkas once Skjor is dead; the place and the stolen item are picked when it's given.",
+      "needs": [
+        {
+          "what": "Be a member of the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Skjor",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Ask Skjor for work; a family in one of the holds had something valuable stolen and taken to a hideout."
+        },
+        {
+          "who": "Vilkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "After Skjor dies (in The Silver Hand), Vilkas hands out this job instead."
+        }
+      ],
+      "firstStep": "Retrieve the stolen item from the place you're sent",
+      "takesYou": [
+        {
+          "place": "the hideout named in the job (picked when it's given)",
+          "hold": "varies",
+          "why": "take back the family's stolen valuable, kept in the boss's chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the stolen item from the named place",
+            "Return to whoever gave you the job"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Skjor",
+          "role": "gives the job while he lives"
+        },
+        {
+          "name": "Vilkas",
+          "role": "gives the job once Skjor is dead"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The story-manager node that hands out this job is named in the records, but its conditions are not in these files, so exactly when the job becomes available is not confirmed."
+        },
+        {
+          "field": "where",
+          "why": "The records place Skjor in the Jorrvaskr living quarters; his daily schedule isn't in these files, so he may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "starts",
+          "why": "No giver is filled in on the quest itself; Skjor and Vilkas come from the names of the two story-manager nodes that start it (one for Skjor, one for Vilkas when Skjor is dead)."
+        },
+        {
+          "field": "takesYou",
+          "why": "The stolen item is put in the boss chest by the quest; whether you must give it back or it's just taken from you on return isn't in these files."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Proving Honor starts once the Companions leaders 'don't have any more work for me', so these jobs look to lead to it; how many jobs it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0C18E1 CR06",
+        "editedBy USSEP, Requiem.esp, Companions Radiant Expansion.esp (last)",
+        "start nodes CompanionsSkjorNode, CompanionsVilkasSkjorDeadNode",
+        "aliases Location, BossChest, Gewgaw, SpawnChest, LocationHold",
+        "stage 200 completes, 250 fails",
+        "C03 stage 200 log: Skjor fell in battle",
+        "Skjor Skyrim.esm:01A690, Vilkas Skyrim.esm:01A694 in Jorrvaskr Living Quarters",
+        "C01 stage 10 log: leaders have no more work"
+      ]
+    },
+    {
+      "edid": "CR07",
+      "name": "Escaped Criminal",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by Update.esm and USSEP)",
+      "canDo": "radiant",
+      "canDoWhy": "A Companions job from Skjor, or from Vilkas once Skjor is dead; the hold and the criminal are picked when it's given.",
+      "needs": [
+        {
+          "what": "Be a member of the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Skjor",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Ask Skjor for work; an escaped criminal is wandering one of the holds and you're to hunt them down."
+        },
+        {
+          "who": "Vilkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "After Skjor dies (in The Silver Hand), Vilkas hands out this job instead."
+        }
+      ],
+      "firstStep": "Track down and kill the escaped criminal",
+      "takesYou": [
+        {
+          "place": "the roads of the hold named in the job",
+          "hold": "varies",
+          "why": "the criminal travels between two places; catch and kill them"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the escaped criminal",
+            "Speak to whoever gave you the job"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Skjor",
+          "role": "gives the job while he lives"
+        },
+        {
+          "name": "Vilkas",
+          "role": "gives the job once Skjor is dead"
+        },
+        {
+          "name": "the escaped criminal",
+          "role": "picked at random, on the move"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The story-manager node that hands out this job is named in the records, but its conditions are not in these files, so exactly when the job becomes available is not confirmed."
+        },
+        {
+          "field": "where",
+          "why": "The records place Skjor in the Jorrvaskr living quarters; his daily schedule isn't in these files, so he may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "starts",
+          "why": "No giver is filled in on the quest itself; Skjor and Vilkas come from the names of the two story-manager nodes that start it."
+        },
+        {
+          "field": "takesYou",
+          "why": "The quest has start and end spots for the criminal, so they appear to walk a route; the exact places are picked in game."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Proving Honor starts once the Companions leaders 'don't have any more work for me', so these jobs look to lead to it; how many jobs it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:025250 CR07",
+        "editedBy Update.esm, USSEP, Companions Radiant Expansion.esp (last)",
+        "start nodes CompanionsSkjorNode, CompanionsVilkasSkjorDeadNode",
+        "aliases Criminal, LocationHold, LocationStart, LocationEnd, StartingLocation, EndingLocation",
+        "stage 200 completes, 250 fails",
+        "C01 stage 10 log: leaders have no more work"
+      ]
+    },
+    {
+      "edid": "CR08",
+      "name": "Rescue Mission",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by Update.esm, USSEP and Requiem.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A Companions job from Vilkas; the captive, the lair and their home are picked when he gives it.",
+      "needs": [
+        {
+          "what": "Be a member of the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Vilkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Ask Vilkas for work; someone has been kidnapped and taken to a lair, and you're to bring them home."
+        }
+      ],
+      "firstStep": "Rescue the captive from the lair Vilkas names",
+      "takesYou": [
+        {
+          "place": "the lair named in the job (picked when it's given)",
+          "hold": "varies",
+          "why": "free the captive; there's a boss there"
+        },
+        {
+          "place": "the captive's home",
+          "hold": "varies",
+          "why": "escort them back"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Keep the captive alive on the way home",
+          "leadsTo": "Escort them home, take your leave, then report back"
+        },
+        {
+          "choice": "The captive dies",
+          "leadsTo": "The journal records their death and the job fails"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Rescue the captive from the lair",
+            "Talk to the captive",
+            "Escort the captive back home",
+            "Take your leave of the captive",
+            "Return to Vilkas"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Vilkas",
+          "role": "gives the job and takes the report"
+        },
+        {
+          "name": "the captive",
+          "role": "picked at random; must be escorted home"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The story-manager node that hands out this job is named in the records, but its conditions are not in these files, so exactly when the job becomes available is not confirmed."
+        },
+        {
+          "field": "where",
+          "why": "The records place Vilkas in the Jorrvaskr living quarters; his daily schedule isn't in these files, so he may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "starts",
+          "why": "No giver is filled in on the quest itself; Vilkas comes from the names of the two story-manager nodes that start it (Vilkas always, and Vilkas when Skjor is dead)."
+        },
+        {
+          "field": "choices",
+          "why": "The journal has a line for the captive dying and the quest has fail stages; that a death fails the job is read from that, not from a script."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Proving Honor starts once the Companions leaders 'don't have any more work for me', so these jobs look to lead to it; how many jobs it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:025251 CR08",
+        "editedBy Update.esm, USSEP, Requiem.esp, Companions Radiant Expansion.esp (last)",
+        "start nodes CompanionsVilkasAlwaysNode, CompanionsVilkasSkjorDeadNode",
+        "objectives 10,20,21,22,25",
+        "stage 25 and 50 logs, 100 completes, 150 and 250 fail",
+        "aliases Victim, Lair, Boss, VictimHome, ProtectedVictim",
+        "C01 stage 10 log: leaders have no more work"
+      ]
+    },
+    {
+      "edid": "CR09",
+      "name": "Striking the Heart",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by USSEP)",
+      "canDo": "radiant",
+      "canDoWhy": "One of Aela's jobs against the Silver Hand; the camp is picked when she gives it.",
+      "needs": [
+        {
+          "what": "Finish The Silver Hand (join the Circle)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Talk to Aela; she's heard rumours of a Silver Hand lieutenant camped at a place she names, and wants them dead so the Silver Hand weaken."
+        }
+      ],
+      "firstStep": "Assassinate the Silver Hand leader at the camp Aela names",
+      "takesYou": [
+        {
+          "place": "the Silver Hand camp Aela names (picked when the job is given)",
+          "hold": "varies",
+          "why": "kill the lieutenant"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Assassinate the Silver Hand leader",
+            "Return to Aela"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and takes the report"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The Silver Hand ends with Aela enlisting you on her quest for revenge, and Blood's Honor opens with Kodlak hearing of your 'secret missions with Aela'; that places these jobs after The Silver Hand, but the node's conditions aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The records place Aela in the Jorrvaskr living quarters; her daily schedule isn't in these files, so she may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Blood's Honor starts when Kodlak 'has caught wind of my secret missions with Aela', so these jobs look to lead to it; how many it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:025252 CR09",
+        "editedBy USSEP, Companions Radiant Expansion.esp (last)",
+        "giver Aela Skyrim.esm:01A696 via INFO Skyrim.esm:09D6EA, node CompanionsReconNode",
+        "Aela placed ref Skyrim.esm:01A697 in Jorrvaskr Living Quarters",
+        "aliases Camp, CampBoss, MapMarker",
+        "C03 stage 200 log, C04 stage 10 log",
+        "C04 stage 10 log: secret missions with Aela"
+      ]
+    },
+    {
+      "edid": "CR10",
+      "name": "Stealing Plans",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by USSEP)",
+      "canDo": "radiant",
+      "canDoWhy": "One of Aela's jobs against the Silver Hand; the camp is picked when she gives it.",
+      "needs": [
+        {
+          "what": "Finish The Silver Hand (join the Circle)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Talk to Aela; she wants the Silver Hand's plans stolen from a lieutenant's camp so the Companions can find their chief hideout."
+        }
+      ],
+      "firstStep": "Steal the plans from the camp Aela names",
+      "takesYou": [
+        {
+          "place": "the Silver Hand camp Aela names (picked when the job is given)",
+          "hold": "varies",
+          "why": "steal their documents"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Steal the plans from the camp",
+            "Return to Aela"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and takes the report"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The Silver Hand ends with Aela enlisting you on her quest for revenge, and Blood's Honor opens with Kodlak hearing of your 'secret missions with Aela'; that places these jobs after The Silver Hand, but the node's conditions aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The records place Aela in the Jorrvaskr living quarters; her daily schedule isn't in these files, so she may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Blood's Honor starts when Kodlak 'has caught wind of my secret missions with Aela', so these jobs look to lead to it; how many it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:09D6FC CR10",
+        "editedBy USSEP, Companions Radiant Expansion.esp (last)",
+        "giver Aela Skyrim.esm:01A696 via INFO Skyrim.esm:09D6DC, node CompanionsReconNode",
+        "aliases Camp, CampTreasureMarker, Plans, SpawnChest",
+        "C03 stage 200 log, C04 stage 10 log",
+        "C04 stage 10 log: secret missions with Aela"
+      ]
+    },
+    {
+      "edid": "CR11",
+      "name": "Retrieval",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by USSEP)",
+      "canDo": "radiant",
+      "canDoWhy": "One of Aela's jobs against the Silver Hand; the camp is picked when she gives it.",
+      "needs": [
+        {
+          "what": "Finish The Silver Hand (join the Circle)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Talk to Aela; she's heard the Silver Hand are holding a fragment of Wuuthrad at one of their camps."
+        }
+      ],
+      "firstStep": "Retrieve the fragment of Wuuthrad from the camp Aela names",
+      "takesYou": [
+        {
+          "place": "the Silver Hand camp Aela names (picked when the job is given)",
+          "hold": "varies",
+          "why": "take back the fragment of Wuuthrad"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the fragment of Wuuthrad",
+            "Return to Aela"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and takes the report"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The Silver Hand ends with Aela enlisting you on her quest for revenge, and Blood's Honor opens with Kodlak hearing of your 'secret missions with Aela'; that places these jobs after The Silver Hand, but the node's conditions aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The records place Aela in the Jorrvaskr living quarters; her daily schedule isn't in these files, so she may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "opens",
+          "why": "Whether this fragment counts toward the fragments gathered in Purity of Revenge and Glory of the Dead isn't shown in these files."
+        },
+        {
+          "field": "canDo",
+          "why": "The records don't show these jobs repeating: each is a quest whose target is filled when it starts, and Proving Honor's journal says the leaders eventually 'don't have any more work for me'. Whether the same job can be given again isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Blood's Honor starts when Kodlak 'has caught wind of my secret missions with Aela', so these jobs look to lead to it; how many it takes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:09D700 CR11",
+        "editedBy USSEP, Companions Radiant Expansion.esp (last)",
+        "giver Aela Skyrim.esm:01A696 via INFO Skyrim.esm:0C8274, node CompanionsReconNode",
+        "aliases Camp, CampTreasureMarker, Fragment, SpawnChest",
+        "C03 stage 200 log, C04 stage 10 log",
+        "C04 stage 10 log: secret missions with Aela"
+      ]
+    },
+    {
+      "edid": "CR12",
+      "name": "Totems of Hircine",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by Update.esm and USSEP)",
+      "canDo": "radiant",
+      "canDoWhy": "Aela tracks a Totem of Hircine to a dungeon picked when she gives the job, and comes with you to get it.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Talk to Aela; she has tracked one of the Totems of Hircine to a dungeon and comes along to retrieve it with you."
+        }
+      ],
+      "firstStep": "Retrieve the Totem of Hircine from the dungeon Aela names",
+      "takesYou": [
+        {
+          "place": "the dungeon Aela names (picked when the job is given)",
+          "hold": "varies",
+          "why": "find the totem; Aela travels with you"
+        },
+        {
+          "place": "the Underforge, beneath the Skyforge in Whiterun",
+          "hold": "Whiterun",
+          "why": "put the totem in its place"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the Totem of Hircine",
+            "Take the Totem to the Underforge"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and comes with you; kept from dying while the job runs"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Nothing lists a requirement. The same Aela node also starts Animal Extermination, an early job, so the node doesn't point to the Circle; the only hint is that the totem goes to the Underforge, which you first enter in The Silver Hand. The node's conditions aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The records place Aela in the Jorrvaskr living quarters; her daily schedule isn't in these files, so she may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files. The quest has three spots for totems in the Underforge, which suggests there are three totems to bring back, but what each one grants isn't in these extracts."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0E3145 CR12",
+        "editedBy Update.esm, USSEP, Companions Radiant Expansion.esp (last)",
+        "giver Aela Skyrim.esm:01A696 via INFO Skyrim.esm:0E308E, node CompanionsAelaNode",
+        "aliases Dungeon, DungeonTreasureMarker, Totem, QuestgiverEssentialized, TotemMarker1-3",
+        "C03 stage 10 log: Underforge beneath the Skyforge; C06 stage 20 log",
+        "CR01/CR02 also start from CompanionsAelaNode; C03 objective 15 Enter the Underforge"
+      ]
+    },
+    {
+      "edid": "CR13",
+      "name": "Purity",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by USSEP)",
+      "canDo": "talk",
+      "canDoWhy": "After the Companions questline, Farkas or Vilkas asks you to help cure him of being a werewolf.",
+      "needs": [
+        {
+          "what": "Finish Glory of the Dead (the Companions questline)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Vilkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Talk to Vilkas after the questline; he wants to be cured of lycanthropy the way Kodlak was."
+        },
+        {
+          "who": "Farkas",
+          "where": "Jorrvaskr, in Whiterun (the living quarters downstairs)",
+          "how": "Farkas can ask the same after the questline."
+        }
+      ],
+      "firstStep": "Collect a Glenmoril Witch's head",
+      "takesYou": [
+        {
+          "place": "Glenmoril Coven",
+          "hold": "Falkreath",
+          "why": "take a Glenmoril Witch's head; a short walk from Falkreath, full of hagravens"
+        },
+        {
+          "place": "Ysgramor's Tomb",
+          "hold": "Winterhold",
+          "why": "cleanse him with the witch's head at the flame inside, then kill his wolf spirit"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Collect a Glenmoril Witch's head",
+            "Cleanse him of beastblood",
+            "Kill his wolf spirit",
+            "Talk to him"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [
+        "Farkas or Vilkas (whoever asked) is no longer a werewolf"
+      ],
+      "people": [
+        {
+          "name": "Vilkas",
+          "role": "asks to be cured"
+        },
+        {
+          "name": "Farkas",
+          "role": "can ask to be cured instead"
+        },
+        {
+          "name": "Glenmoril Witch",
+          "role": "found in Glenmoril Coven; you need a witch's head"
+        },
+        {
+          "name": "Vilkas' Werewolf Spirit",
+          "role": "fought in Ysgramor's Tomb if Vilkas is being cured"
+        },
+        {
+          "name": "Farkas' Werewolf Spirit",
+          "role": "fought in Ysgramor's Tomb if Farkas is being cured"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The journal calls it 'the same ceremony which cured Kodlak' and both start nodes are named for after the questline; the exact conditions aren't in these files."
+        },
+        {
+          "field": "starts",
+          "why": "The dialogue that starts it is checked for Vilkas, with Farkas as a second giver; whether both brothers can each be cured in turn isn't shown."
+        },
+        {
+          "field": "where",
+          "why": "The records place Vilkas in the Jorrvaskr living quarters; his daily schedule isn't in these files, so he may be upstairs in the hall or out in the yard."
+        },
+        {
+          "field": "takesYou",
+          "why": "That the head is burned in a flame comes from the quest's 'EternalFlame' slot; the records don't give the exact spot inside the tomb."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is set on the quest in these files; any payment is handed out by a script these extracts don't carry."
+        },
+        {
+          "field": "firstStep",
+          "why": "The journal opens the same way at the cleansing step, so if you still carry a Glenmoril Witch's head (from Blood's Honor) the quest may skip collecting one. The coven never respawns, so if you cleared it, where a new head comes from isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0E3163 CR13",
+        "editedBy USSEP, Companions Radiant Expansion.esp (last)",
+        "giver Vilkas Skyrim.esm:01A694 via INFO Skyrim.esm:0E3036 (GetIsID), other Farkas Skyrim.esm:01A692",
+        "start nodes VilkasPostQuestlineNode, CompanionsFarkasPostQuestlineNode",
+        "aliases Coven, Witch, EternalFlame, FarkasSpirit Skyrim.esm:0F6087, VilkasSpirit Skyrim.esm:0F6089, TargetSpirit, HEAD",
+        "stage 100 log/completes",
+        "LCTN Glenmoril Coven Skyrim.esm:019189 (Falkreath); LCTN Ysgramor's Tomb Skyrim.esm:019265 (Winterhold)",
+        "stages 10 and 15 share the opening log; obj 15 Cleanse; Glenmoril Coven respawns never; C00 aliases GlenmorilHead1-5; C04 obj 25 wipe out the witches"
+      ]
+    }
+  ]
+}

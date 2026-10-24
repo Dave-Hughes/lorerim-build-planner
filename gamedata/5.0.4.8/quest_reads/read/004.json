@@ -1,0 +1,1151 @@
+[
+ {
+  "edid": "DLC1RV07",
+  "name": "New Allegiances",
+  "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable job handed out at Castle Volkihar to vampires of Harkon's court: turn a chosen person into a vampire.",
+  "needs": [
+   {
+    "what": "Accept Lord Harkon's gift of blood in Bloodline and join his court at Castle Volkihar",
+    "kind": "quest"
+   },
+   {
+    "what": "The Vampire's Seduction power (the journal says to go a day without feeding if you don't have it yet)",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "A member of Harkon's court",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Ask for work; the game picks the town and the person you are to turn."
+   }
+  ],
+  "firstStep": "Go to the town you are sent to and find the person you are to turn",
+  "takesYou": [
+   {
+    "place": "a town the game picks",
+    "hold": "varies",
+    "why": "find the person you are to turn"
+   },
+   {
+    "place": "Castle Volkihar",
+    "hold": "",
+    "why": "report back"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Turn the chosen person into a vampire: calm them with Vampire's Seduction, then embrace and bite them on the neck",
+     "Return to the vampire who sent you while they undergo the change"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Dawnguard",
+  "opens": [],
+  "closes": [
+   "The person you bite becomes a vampire"
+  ],
+  "people": [],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest is handed out by the vampire radiant-quest node through a script; the record doesn't name the giver. The sister jobs name Garan Marethi and Fura Bloodmouth in Volkihar Keep, so it is probably one of them."
+   },
+   {
+    "field": "needs",
+    "why": "The records don't show the exact check that limits these jobs to Harkon's court; it is inferred from the questline and the journal text."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is recorded on this quest."
+   },
+   {
+    "field": "closes",
+    "why": "The quest can fail; the records don't say what fails it (most likely the person dying before the change)."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:00A29C stages 10/100/255/300",
+   "aliases QuestGiver, Candidate, Habitation",
+   "quest_givers starts: DLC1RadiantVampireQuestNode script event",
+   "editedBy USSEP",
+   "sibling DLC1RV01 giver Fura Bloodmouth / Garan Marethi; DLC1RV10 giver Garan Marethi",
+   "POWER Skyrim.esm:0C4DE2 Vampire's Seduction (Big Tweaks.esp)"
+  ]
+ },
+ {
+  "edid": "DLC1RV08",
+  "name": "Rings of Blood Magic",
+  "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "A job handed out at Castle Volkihar to vampires of Harkon's court: fetch two rings from dungeons the game picks.",
+  "needs": [
+   {
+    "what": "Accept Lord Harkon's gift of blood in Bloodline and join his court at Castle Volkihar",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "A member of Harkon's court",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Ask for work; the game picks the two places the rings are kept."
+   }
+  ],
+  "firstStep": "Retrieve the Ring of the Beast from the first place you are sent",
+  "takesYou": [
+   {
+    "place": "a dungeon the game picks",
+    "hold": "varies",
+    "why": "take the Ring of the Beast from its boss"
+   },
+   {
+    "place": "a second dungeon the game picks",
+    "hold": "varies",
+    "why": "take the Ring of the Erudite from the boss's chest"
+   },
+   {
+    "place": "Castle Volkihar",
+    "hold": "",
+    "why": "report back"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve the Ring of the Beast",
+     "Retrieve the Ring of the Erudite",
+     "Return to the vampire who sent you"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Ring of the Beast: \"While wearing this ring, you will receive <100> extra Health and your claw attacks will do an additional <20> damage.\"",
+    "when": "found during the quest"
+   },
+   {
+    "what": "Ring of the Erudite: \"While wearing this ring, you will receive <100> extra magicka as well as regenerate magicka <150>% faster.\"",
+    "when": "found during the quest"
+   }
+  ],
+  "type": "Dawnguard",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Handed out by the vampire radiant-quest node through a script; the giver isn't named on this quest. Sister jobs name Garan Marethi and Fura Bloodmouth."
+   },
+   {
+    "field": "takesYou",
+    "why": "Both dungeons are chosen when the quest starts; the records only say a boss holds the first ring and a boss's container the second."
+   },
+   {
+    "field": "rewards",
+    "why": "The records name the rings you fetch but don't say whether you keep them after reporting back."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:00CE06 stages 10/110/120/200/255",
+   "fills Item1 Ring of the Beast, Item2 Ring of the Erudite",
+   "aliases Boss1, BossContainer2, Location1, Location2",
+   "ARMO Dawnguard.esm:00E7FD, 00E7FE (LoreRim - ISC Patches.esp)",
+   "starts: DLC1RadiantVampireQuestNode script event",
+   "editedBy USSEP"
+  ]
+ },
+ {
+  "edid": "DLC1RV09",
+  "name": "Amulets of Night Power",
+  "plugin": "Dawnguard.esm",
+  "canDo": "radiant",
+  "canDoWhy": "A job handed out at Castle Volkihar to vampires of Harkon's court: fetch amulets from places the game picks.",
+  "needs": [
+   {
+    "what": "Accept Lord Harkon's gift of blood in Bloodline and join his court at Castle Volkihar",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "A member of Harkon's court",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Ask for work; the game picks where the amulets are."
+   }
+  ],
+  "firstStep": "Retrieve the Amulet of Bats from the first place you are sent",
+  "takesYou": [
+   {
+    "place": "a dungeon the game picks",
+    "hold": "varies",
+    "why": "take the Amulet of Bats from its boss"
+   },
+   {
+    "place": "another place the game picks",
+    "hold": "varies",
+    "why": "take the Amulet of the Gargoyle, near a captive and a dead vampire"
+   },
+   {
+    "place": "Castle Volkihar",
+    "hold": "",
+    "why": "report back"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve the Amulet of Bats",
+     "Retrieve the second amulet",
+     "Retrieve the Amulet of the Gargoyle",
+     "Return to the vampire who sent you"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Amulet of Bats",
+    "when": "found during the quest"
+   },
+   {
+    "what": "Amulet of the Gargoyle: \"While wearing this amulet, your Summon Gargoyle spell summons an additional Gargoyle for <30> seconds.\"",
+    "when": "found during the quest"
+   }
+  ],
+  "type": "Dawnguard",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Handed out by the vampire radiant-quest node through a script; the giver isn't named on this quest. Sister jobs name Garan Marethi and Fura Bloodmouth."
+   },
+   {
+    "field": "steps",
+    "why": "The journal lists three amulets, but the second amulet and its place have no record in this quest, so its name is unknown and it may never be asked for."
+   },
+   {
+    "field": "rewards",
+    "why": "Two items are named Amulet of Bats in LoreRim with different text (one drains life with bats, one changes the Vampire Lord's Night Power), and the records don't say which one this quest uses. They also don't say whether you keep the amulets."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:00CE0B stages 10/110/120/130/200/255",
+   "fills Item1 Amulet of Bats, Item3 Amulet of the Gargoyle; no Item2/Location2 alias",
+   "aliases Boss1, CaptiveMarker3, DeadVampire3",
+   "ARMO Dawnguard.esm:0068AE, 00A2A7 (both Amulet of Bats), 00F4D5",
+   "no editedBy",
+   "starts: DLC1RadiantVampireQuestNode script event"
+  ]
+ },
+ {
+  "edid": "DLC1RV10",
+  "name": "Destroying the Dawnguard",
+  "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "A job given by Garan Marethi at Castle Volkihar to vampires of Harkon's court: attack Fort Dawnguard and kill its leaders.",
+  "needs": [
+   {
+    "what": "Accept Lord Harkon's gift of blood in Bloodline and join his court at Castle Volkihar",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Garan Marethi (Fura Bloodmouth can also give it)",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Ask him for work."
+   }
+  ],
+  "firstStep": "Go to Fort Dawnguard in Dayspring Canyon and kill the Dawnguard leaders",
+  "takesYou": [
+   {
+    "place": "Fort Dawnguard, Dayspring Canyon",
+    "hold": "The Rift",
+    "why": "kill the Dawnguard leaders"
+   },
+   {
+    "place": "Castle Volkihar",
+    "hold": "",
+    "why": "report back"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the Dawnguard Leaders",
+     "Return to the vampire who sent you"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Dawnguard",
+  "opens": [],
+  "closes": [
+   "The Dawnguard leaders die: Isran, Sorine Jurard, Gunmar, Florentius Baenius, Agmaer, Durak, Celann and Beleval are named as targets"
+  ],
+  "people": [
+   {
+    "name": "Garan Marethi",
+    "role": "gives the job, in Volkihar Keep"
+   },
+   {
+    "name": "Fura Bloodmouth",
+    "role": "can also give the job, in Volkihar Keep"
+   },
+   {
+    "name": "Isran",
+    "role": "Dawnguard leader, at Fort Dawnguard"
+   },
+   {
+    "name": "Sorine Jurard",
+    "role": "at Fort Dawnguard"
+   },
+   {
+    "name": "Gunmar",
+    "role": "at Fort Dawnguard"
+   },
+   {
+    "name": "Florentius Baenius",
+    "role": "at Fort Dawnguard"
+   },
+   {
+    "name": "Agmaer",
+    "role": "at Fort Dawnguard"
+   },
+   {
+    "name": "Durak",
+    "role": "at Fort Dawnguard"
+   },
+   {
+    "name": "Celann",
+    "role": "at Fort Dawnguard"
+   },
+   {
+    "name": "Beleval",
+    "role": "at Fort Dawnguard"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The records don't show when in the vampire story this job becomes available; only that the giver's line is checked against this quest not having started."
+   },
+   {
+    "field": "closes",
+    "why": "All eight are aliases on the quest, but the records don't say whether every one must die or whether any are protected."
+   },
+   {
+    "field": "hold",
+    "why": "Fort Dawnguard's hold isn't in the places file; The Rift comes from the Dawnguard rumour objective, which puts the fort southeast of Riften in Dayspring Canyon."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is recorded on this quest."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:019938 stages 10/100/255",
+   "fills Location = Dayspring Canyon",
+   "aliases Isran, Sorine, Gunmar, Florentius, Agmaer, Durak, Celann, Beleval",
+   "giver INFO Dawnguard.esm:019932 GetIsID Garan Marethi (Dawnguard.esm:003364); also Fura Bloodmouth 003363",
+   "DLC1VQ01MiscObjective objective 10 (fort southeast of Riften)",
+   "editedBy USSEP"
+  ]
+ },
+ {
+  "edid": "DLC1VampireBaseIntro",
+  "name": "The Bloodstone Chalice",
+  "plugin": "Dawnguard.esm",
+  "canDo": "talk",
+  "canDoWhy": "After you join Harkon's court, Harkon sends you to Garan Marethi with the words \"It is time.\"",
+  "needs": [
+   {
+    "what": "Accept Lord Harkon's gift of blood in Bloodline",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Lord Harkon",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Harkon tells you to speak to Garan Marethi and tell him simply \"It is time.\""
+   }
+  ],
+  "firstStep": "Speak with Garan Marethi in Volkihar Keep",
+  "takesYou": [
+   {
+    "place": "Redwater Den",
+    "hold": "The Rift",
+    "why": "fill the Bloodstone Chalice from the bloodspring"
+   },
+   {
+    "place": "Castle Volkihar",
+    "hold": "",
+    "why": "bring the chalice back to Garan"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak with Garan Marethi",
+     "Follow Garan",
+     "Take the Bloodstone Chalice to Redwater Spring",
+     "Fill the Chalice from the spring",
+     "Defeat Stalf and Salonia, the two castle vampires who ambush you there",
+     "Fill the Chalice with vampire blood",
+     "Return to Garan Marethi"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Harkon's favour (the journal's words: \"earned Harkon's favor\")",
+    "when": "at the end"
+   }
+  ],
+  "type": "Dawnguard",
+  "opens": [
+   "Prophet (Harkon's court version)"
+  ],
+  "closes": [
+   "Stalf and Salonia Caelia die"
+  ],
+  "people": [
+   {
+    "name": "Garan Marethi",
+    "role": "gives you the chalice; Volkihar Keep"
+   },
+   {
+    "name": "Lord Harkon",
+    "role": "sends you to Garan"
+   },
+   {
+    "name": "Stalf",
+    "role": "ambushes you at the spring"
+   },
+   {
+    "name": "Salonia Caelia",
+    "role": "ambushes you at the spring"
+   },
+   {
+    "name": "Vingalmo",
+    "role": "named in the quest; his part isn't in these records"
+   },
+   {
+    "name": "Orthjolf",
+    "role": "named in the quest; his part isn't in these records"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The opening journal line names Harkon, but the records here don't show the dialogue line or when it is offered; it is inferred to follow accepting the gift in Bloodline."
+   },
+   {
+    "field": "opens",
+    "why": "Prophet's vampire version opens with Harkon waiting for you at the castle; the records don't show which quest's end triggers it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The places file puts Redwater Den in The Rift, but its nearest-town figure points to Dragon Bridge, which doesn't fit; the hold is taken from the location record."
+   },
+   {
+    "field": "people",
+    "why": "Vingalmo and Orthjolf are quest aliases with no stage or objective naming them."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:00594C stages 10/20/40/60/200",
+   "objectives 10-60",
+   "giver INFO Dawnguard.esm:005943 alias GaranAlias",
+   "INFO Dawnguard.esm:00593D (bloodspring of Redwater Den)",
+   "LCTN Dawnguard.esm:004D6F Redwater Den (The Rift)",
+   "no editedBy"
+  ]
+ },
+ {
+  "edid": "DLC1VQ01",
+  "name": "Awakening",
+  "plugin": "Dawnguard.esm",
+  "canDo": "talk",
+  "canDoWhy": "Isran, leader of the Dawnguard, gives it when you first meet him at Fort Dawnguard.",
+  "needs": [
+   {
+    "what": "Hear that the Dawnguard are recruiting and go to Fort Dawnguard",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Isran",
+    "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+    "how": "Talk to Isran (Vigilant Tolan is with him); he asks you to find out what the vampires were after in Dimhollow Crypt."
+   }
+  ],
+  "firstStep": "Go to Dimhollow Crypt and find out what the vampires are seeking",
+  "takesYou": [
+   {
+    "place": "Fort Dawnguard, Dayspring Canyon",
+    "hold": "The Rift",
+    "why": "meet Isran"
+   },
+   {
+    "place": "Dimhollow Crypt",
+    "hold": "The Pale",
+    "why": "find out what the vampires are after"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find out what the vampires are seeking",
+     "Speak to the mysterious woman"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Dawnguard",
+  "opens": [
+   "Bloodline"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Isran",
+    "role": "gives the quest; Fort Dawnguard"
+   },
+   {
+    "name": "Vigilant Tolan",
+    "role": "says he'll meet you in Dimhollow Crypt"
+   },
+   {
+    "name": "Serana",
+    "role": "the mysterious woman you free from a sarcophagus deep in the crypt"
+   },
+   {
+    "name": "Lokil",
+    "role": "vampire you face in the crypt"
+   },
+   {
+    "name": "Vigilant Adalvald",
+    "role": "Vigil of Stendarr whose trail led to the crypt; placed in Dimhollow Cavern"
+   },
+   {
+    "name": "Agmaer",
+    "role": "Dawnguard recruit named in the quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No level or other gate shows in these files; the start comes from Isran's dialogue after the Dawnguard rumour quest."
+   },
+   {
+    "field": "hold",
+    "why": "Fort Dawnguard isn't in the places file; The Rift comes from the rumour objective placing it southeast of Riften."
+   },
+   {
+    "field": "people",
+    "why": "Agmaer and Adalvald are aliases; the records don't show exactly what they do here."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:00352A stages 10/40/200, objectives 30/40",
+   "INFO Dawnguard.esm:00D8D6 (Isran: go see what the vampires were looking for)",
+   "INFO Dawnguard.esm:01A1B0 (Tolan: meet you in Dimhollow Crypt)",
+   "LCTN Dawnguard.esm:004EE8 Dimhollow Crypt (The Pale)",
+   "DLC1VQ01MiscObjective Dawnguard.esm:00D06C objective 10",
+   "no editedBy"
+  ]
+ },
+ {
+  "edid": "DLC1VQ02",
+  "name": "Bloodline",
+  "plugin": "Dawnguard.esm",
+  "canDo": "talk",
+  "canDoWhy": "Starts when you speak to Serana after freeing her in Dimhollow Crypt; she asks you to take her home.",
+  "needs": [
+   {
+    "what": "Finish Awakening",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Serana",
+    "where": "deep in Dimhollow Crypt, by the sarcophagus you freed her from",
+    "how": "Speak to her; she asks you to guide her home to a castle off the northern coast of Skyrim."
+   }
+  ],
+  "firstStep": "Lead Serana home to Castle Volkihar",
+  "takesYou": [
+   {
+    "place": "Castle Volkihar",
+    "hold": "none in the records (an island castle off the northern coast; nearest city Solitude)",
+    "why": "bring Serana home and meet her father, Lord Harkon"
+   },
+   {
+    "place": "Fort Dawnguard, Dayspring Canyon",
+    "hold": "The Rift",
+    "why": "report to Isran if you refuse Harkon"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Accept Lord Harkon's gift of his blood",
+    "leadsTo": "You become a vampire and join his court; the story goes on with Harkon (The Bloodstone Chalice, then Prophet)"
+   },
+   {
+    "choice": "Refuse the gift",
+    "leadsTo": "You are banished from the castle and return to the Dawnguard to tell Vigilant Tolan and Isran (A New Order, then Prophet)"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Lead Serana to her home",
+     "Speak to Harkon"
+    ]
+   },
+   {
+    "branch": "refuse the gift",
+    "objectives": [
+     "Return to Isran"
+    ]
+   },
+   {
+    "branch": "accept the gift",
+    "objectives": []
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Harkon's gift of blood: you become a vampire and join his court",
+    "when": "if you accept"
+   },
+   {
+    "what": "Dawnguard War Axe",
+    "when": "held by the quest's script; the records don't say at which point it's given"
+   }
+  ],
+  "type": "Dawnguard",
+  "opens": [
+   "The Bloodstone Chalice (if you accept)",
+   "A New Order (if you refuse)",
+   "Prophet (both sides)",
+   "Guests for Dinner (cceejsse005-cave.esm; its start checks that Bloodline has ended either way)"
+  ],
+  "closes": [
+   "Your choice sets which side you play for the rest of Dawnguard: Harkon's court or the Dawnguard"
+  ],
+  "people": [
+   {
+    "name": "Serana",
+    "role": "you escort her home"
+   },
+   {
+    "name": "Lord Harkon",
+    "role": "Serana's father, offers you his blood; Volkihar Keep"
+   },
+   {
+    "name": "Vingalmo",
+    "role": "member of Harkon's court"
+   },
+   {
+    "name": "Vigilant Tolan",
+    "role": "you report to him if you refuse"
+   },
+   {
+    "name": "Isran",
+    "role": "you report to him if you refuse; Fort Dawnguard"
+   },
+   {
+    "name": "Garmr and CuSith",
+    "role": "death hounds at Volkihar Keep"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The Dawnguard War Axe is a property on Bloodline's quest script; the records don't say whether it comes on the refuse path or when."
+   },
+   {
+    "field": "closes",
+    "why": "The records show the story splits into two versions here; they don't show whether you can change sides later."
+   },
+   {
+    "field": "steps",
+    "why": "The refuse journal first sends you to Vigilant Tolan and then to Isran; only Return to Isran is an objective."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:002F65 stages 5/20/25/30/40/180/190/200",
+   "objectives 10/20/30",
+   "script DLC1_QF_DLC1VQ01COPY0000_01002F65 property DLC1DawnguardAxe -> WEAP Dawnguard.esm:00D098",
+   "DLC1HunterBaseIntro stage 20 (rejected Harkon's offer)",
+   "quest_starts line guests-for-dinner: GetStageDone Bloodline 180/190/200",
+   "no editedBy"
+  ]
+ },
+ {
+  "edid": "DLC1VQ03Hunter",
+  "name": "Prophet",
+  "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "The Dawnguard version: when you return to Fort Dawnguard, Isran asks you to follow him because Serana has come looking for you.",
+  "needs": [
+   {
+    "what": "Refuse Harkon's gift in Bloodline",
+    "kind": "quest"
+   },
+   {
+    "what": "Finish A New Order",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Isran",
+    "where": "Fort Dawnguard, in Dayspring Canyon",
+    "how": "Return to the fort; Isran says he needs to speak to you and asks you to follow him to Serana."
+   }
+  ],
+  "firstStep": "Follow Isran at Fort Dawnguard",
+  "takesYou": [
+   {
+    "place": "Fort Dawnguard",
+    "hold": "The Rift",
+    "why": "hear Serana out"
+   },
+   {
+    "place": "The Arcanaeum, College of Winterhold",
+    "hold": "",
+    "why": "optional: Urag gro-Shub says the moth priest left for Dragon Bridge"
+   },
+   {
+    "place": "The Winking Skeever, Solitude",
+    "hold": "",
+    "why": "ask the innkeeper about the moth priest"
+   },
+   {
+    "place": "Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "ask the townspeople where the moth priest went"
+   },
+   {
+    "place": "the road south of Dragon Bridge",
+    "hold": "",
+    "why": "find the overturned wagon and the Vampire's Note"
+   },
+   {
+    "place": "Forebears' Holdout",
+    "hold": "Hjaalmarch",
+    "why": "rescue the moth priest"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Follow Isran",
+     "Speak to Serana",
+     "Speak to Isran",
+     "Locate a Moth Priest",
+     "(Optional) Ask carriage drivers about the Moth Priest",
+     "(Optional) Visit the College of Winterhold to ask about the Moth Priest",
+     "(Optional) Ask innkeepers in cities about the Moth Priest",
+     "Speak to the innkeeper in Solitude",
+     "Ask people in Dragon Bridge if they saw the Moth Priest",
+     "Search along the road south of Dragon Bridge",
+     "Investigate the scene of the attack",
+     "Read the Vampire's Note",
+     "Rescue the Moth Priest",
+     "Deactivate the magic barrier",
+     "Defeat the enthralled Moth Priest",
+     "Speak to the Moth Priest",
+     "Report your success to Isran",
+     "Speak to the Moth Priest"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Dawnguard",
+  "opens": [
+   "Chasing Echoes",
+   "Seeking Disclosure"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Isran",
+    "role": "Fort Dawnguard"
+   },
+   {
+    "name": "Serana",
+    "role": "has an Elder Scroll and tells you of Harkon's plan"
+   },
+   {
+    "name": "Dexion Evicus",
+    "role": "the moth priest, held at Forebears' Holdout"
+   },
+   {
+    "name": "Urag gro-Shub",
+    "role": "The Arcanaeum; says the moth priest left for Dragon Bridge"
+   },
+   {
+    "name": "Corpulus Vinius",
+    "role": "innkeeper at the Winking Skeever, Solitude"
+   },
+   {
+    "name": "Hulda",
+    "role": "innkeeper at the Bannered Mare, Whiterun"
+   },
+   {
+    "name": "Michel Lylvieve, Lodvar, Azzada Lylvieve, Horgeir",
+    "role": "Dragon Bridge folk who saw him pass"
+   },
+   {
+    "name": "Malkus",
+    "role": "vampire whose note orders the moth priest taken to Forebears' Holdout"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The opening journal line only says \"when I returned to Fort Dawnguard\"; finishing A New Order first is inferred from that quest ending with Isran planning the attack."
+   },
+   {
+    "field": "where",
+    "why": "Urag, the innkeepers and the Dragon Bridge folk are given by where they are placed, not their daily schedules."
+   },
+   {
+    "field": "takesYou",
+    "why": "The places file gives a hold for Dragon Bridge (Haafingar) and Forebears' Holdout (Hjaalmarch) only; the College, the Winking Skeever and the road south are left without one."
+   },
+   {
+    "field": "rewards",
+    "why": "The only spells tied to the quest script are the moth priest's enthralled effects, not something you get."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:0098CB stages 5-200, objectives 5-60",
+   "namedGiver Isran Dawnguard.esm:00336A",
+   "INFO Dawnguard.esm:014B51 (Isran: the one you found in Dimhollow Crypt)",
+   "INFO Dawnguard.esm:0098C1 (Urag)",
+   "BOOK Dawnguard.esm:006E58 Note from Malkus",
+   "LCTN Dawnguard.esm:00357F Forebears' Holdout (Hjaalmarch)",
+   "DLC1VQElder giver Dexion",
+   "editedBy USSEP"
+  ]
+ },
+ {
+  "edid": "DLC1VQ03Vampire",
+  "name": "Prophet",
+  "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Harkon's court version: when you return to Castle Volkihar, Lord Harkon is waiting to speak to you.",
+  "needs": [
+   {
+    "what": "Accept Harkon's gift in Bloodline",
+    "kind": "quest"
+   },
+   {
+    "what": "Finish The Bloodstone Chalice",
+    "kind": "quest"
+   },
+   {
+    "what": "The Vampire's Seduction power",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Lord Harkon",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Return to the castle; you're told Harkon is waiting. He tells you of a prophecy in the Elder Scrolls that would end the tyranny of the sun and asks you to join him for a proclamation to the court."
+   }
+  ],
+  "firstStep": "Speak to Harkon in Volkihar Keep",
+  "takesYou": [
+   {
+    "place": "Castle Volkihar",
+    "hold": "",
+    "why": "hear Harkon's speech, and later bring the moth priest back"
+   },
+   {
+    "place": "The Arcanaeum, College of Winterhold",
+    "hold": "",
+    "why": "optional: ask Urag gro-Shub about the moth priest"
+   },
+   {
+    "place": "The Winking Skeever, Solitude",
+    "hold": "",
+    "why": "ask the innkeeper about the moth priest"
+   },
+   {
+    "place": "Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "ask the townspeople"
+   },
+   {
+    "place": "the road leading south from Dragon Bridge",
+    "hold": "",
+    "why": "find the overturned wagon and the Vampire's Note"
+   },
+   {
+    "place": "Forebears' Holdout",
+    "hold": "Hjaalmarch",
+    "why": "capture the moth priest"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Harkon",
+     "Listen to Harkon's speech",
+     "Locate a Moth Priest",
+     "(Optional) Ask carriage drivers about the Moth Priest",
+     "(Optional) Visit the College of Winterhold to ask about the Moth Priest",
+     "(Optional) Ask innkeepers in cities about the Moth Priest",
+     "Speak to the innkeeper in Solitude",
+     "Ask people in Dragon Bridge if they saw the Moth Priest",
+     "Search along the road that leads south from Dragon Bridge",
+     "Investigate the scene of the attack",
+     "Read the Vampire's Note",
+     "Capture the Moth Priest",
+     "Deactivate the magic barrier",
+     "Defeat the enthralled Moth Priest",
+     "Use your Vampire's Seduction power on the Moth Priest",
+     "Feed on the Moth Priest to make him your thrall",
+     "Command the Moth Priest to go to Volkihar Castle",
+     "Report your success to Harkon",
+     "Command the Moth Priest to read the Elder Scroll",
+     "Speak to Harkon"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Dawnguard",
+  "opens": [
+   "Chasing Echoes",
+   "Seeking Disclosure"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Lord Harkon",
+    "role": "Volkihar Keep"
+   },
+   {
+    "name": "Serana",
+    "role": "her Elder Scroll is the one read"
+   },
+   {
+    "name": "Dexion Evicus",
+    "role": "the moth priest, held at Forebears' Holdout; you make him your thrall"
+   },
+   {
+    "name": "Urag gro-Shub",
+    "role": "The Arcanaeum, College of Winterhold"
+   },
+   {
+    "name": "Corpulus Vinius",
+    "role": "innkeeper at the Winking Skeever, Solitude"
+   },
+   {
+    "name": "Hulda",
+    "role": "innkeeper at the Bannered Mare, Whiterun"
+   },
+   {
+    "name": "Clinton Lylvieve, Michel Lylvieve, Lodvar",
+    "role": "Dragon Bridge folk who saw him pass"
+   },
+   {
+    "name": "Vanik",
+    "role": "at Forebears' Holdout"
+   },
+   {
+    "name": "Malkus",
+    "role": "found dead at Forebears' Holdout in this version"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The journal only says \"when I returned to Castle Volkihar\"; that The Bloodstone Chalice comes first is inferred, not shown."
+   },
+   {
+    "field": "people",
+    "why": "In this version Malkus is a corpse and the quest names a Dawnguard lieutenant and Vanik at the Holdout, while the journal speaks of a rival band of vampires; the records don't settle who you fight."
+   },
+   {
+    "field": "where",
+    "why": "Urag, the innkeepers and the Dragon Bridge folk are given by where they are placed, not their daily schedules."
+   },
+   {
+    "field": "rewards",
+    "why": "The only spells tied to the quest script are the moth priest's enthralled effects, not something you get."
+   },
+   {
+    "field": "takesYou",
+    "why": "The places file gives a hold for Dragon Bridge (Haafingar) and Forebears' Holdout (Hjaalmarch) only; the College, the Winking Skeever and the road south are left without one."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:004C3D stages 5-200, objectives 10-80",
+   "namedGiver Lord Harkon Dawnguard.esm:003BA7",
+   "aliases MalkusCorpse 003D7B, Vanik 003D03, DawnguardLieutenant",
+   "giver INFO Dawnguard.esm:0076BA (Urag)",
+   "LCTN Dawnguard.esm:00357F Forebears' Holdout",
+   "editedBy USSEP"
+  ]
+ },
+ {
+  "edid": "DLC1VQ04",
+  "name": "Chasing Echoes",
+  "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "After the moth priest's reading, Serana wants to find her mother Valerica, who fled with another Elder Scroll.",
+  "needs": [
+   {
+    "what": "Finish Prophet (either version)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Serana",
+    "where": "wherever she is with you after the moth priest's reading",
+    "how": "Speak to Serana; she thinks her mother left a clue in the courtyard of Castle Volkihar."
+   }
+  ],
+  "firstStep": "Speak to Serana",
+  "takesYou": [
+   {
+    "place": "Castle Volkihar's courtyard, through a hidden entrance on the back side of the island",
+    "hold": "",
+    "why": "find Valerica's moondial"
+   },
+   {
+    "place": "Castle Volkihar's Ruined Tower",
+    "hold": "",
+    "why": "find Valerica's laboratory and journal"
+   },
+   {
+    "place": "Soul Cairn",
+    "hold": "",
+    "why": "follow Valerica through the portal"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Let Serana turn you into a vampire",
+    "leadsTo": "You can pass the portal into the Soul Cairn as a vampire"
+   },
+   {
+    "choice": "Let Serana partially soul trap you",
+    "leadsTo": "You pass the portal still mortal but weakened while you roam the Soul Cairn"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Serana",
+     "Explore Castle Volkihar's Courtyard",
+     "Investigate the moondial",
+     "Explore Castle Volkihar's Ruined Tower",
+     "Locate Valerica's Journal",
+     "Speak to Serana",
+     "Gather Soul Gem Shards",
+     "Gather Finely Ground Bone Meal",
+     "Gather Purified Void Salts",
+     "Place the ingredients in the vessel",
+     "Speak to Serana",
+     "Enter the Soul Cairn",
+     "Speak to Serana"
+    ]
+   },
+   {
+    "branch": "become a vampire",
+    "objectives": [
+     "Become a vampire",
+     "Enter the Soul Cairn"
+    ]
+   },
+   {
+    "branch": "soul trap",
+    "objectives": [
+     "Become partially soul trapped",
+     "Enter the Soul Cairn"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Weakened Soul (spell)",
+    "when": "if you choose to be partially soul trapped"
+   }
+  ],
+  "type": "Dawnguard",
+  "opens": [
+   "Beyond Death"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Serana",
+    "role": "gives the quest and goes with you"
+   },
+   {
+    "name": "Valerica",
+    "role": "Serana's mother, the one you're tracking; she is in the Soul Cairn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "The records don't show whether a player who is already a vampire is offered this choice; the journal describes the life-draining force only for a mortal."
+   },
+   {
+    "field": "where",
+    "why": "Serana's only placement in the records is Dimhollow Cavern; by now she travels with you, so where you speak to her depends on your game."
+   },
+   {
+    "field": "rewards",
+    "why": "Weakened Soul is a property on the quest script; its effect isn't in the spell files, beyond the journal's \"could potentially weaken me\"."
+   }
+  ],
+  "evidence": [
+   "QUST Dawnguard.esm:00284F stages 10-200, objectives 10-120",
+   "stage 20 two log texts by global DLC1PlayingVampireLine",
+   "giver INFO Dawnguard.esm:01218C GetIsID Serana",
+   "script dlc1vq04questscript property pDLC1VQSoulDamage -> SPEL Dawnguard.esm:00EAB5 Weakened Soul",
+   "DLC1VQ05 Beyond Death stage 10",
+   "editedBy USSEP"
+  ]
+ }
+]

@@ -1,0 +1,922 @@
+[
+  {
+    "edid": "DBSideContract12",
+    "name": "Contract: Kill Safia",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "A Dark Brotherhood side contract from Nazir: kill the pirate captain Safia in Solitude, then report back to him.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Nazir is the one the journal sends you back to for payment; the contract comes through him."
+      }
+    ],
+    "firstStep": "Kill Safia",
+    "takesYou": [
+      {
+        "place": "the Red Wave, the ship moored at the Solitude docks",
+        "hold": "Haafingar",
+        "why": "kill Safia, its pirate captain"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "report back to Nazir and collect your reward"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Safia",
+          "Report back to Nazir"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Safia dies"
+    ],
+    "people": [
+      {
+        "name": "Safia",
+        "role": "the target, pirate captain of the Red Wave, placed aboard the ship at the Solitude docks"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for the contract, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal names Nazir at the Sanctuary, but the line, note or event that starts this contract isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "What must be done before Nazir offers it (for example earlier contracts or Dark Brotherhood progress) isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The journal says you collect a reward from Nazir, but no gold or item for it shows in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:01EA68 DBSideContract12 (no later plugin edits in the extract)",
+      "log stages 10, 200; objectives 10, 20",
+      "aliases DBNazirAlias, DBSafiaAlias",
+      "Safia placed in cell Red Wave (Skyrim.esm:0A1793), Solitude",
+      "Nazir placed in Dark Brotherhood Sanctuary (Skyrim.esm:0AD5A1), Falkreath"
+    ]
+  },
+  {
+    "edid": "DB01_OptionalObjectives",
+    "name": "DB01_Opt",
+    "plugin": "Innocence Lost - Quest Expansion.esp",
+    "canDo": "background",
+    "canDoWhy": "A helper from Innocence Lost - Quest Expansion that adds optional ways to deal with Grelod the Kind during Innocence Lost; you don't start it yourself.",
+    "needs": [
+      {
+        "what": "Be on Innocence Lost, sent by Aventus Aretino to deal with Grelod the Kind",
+        "kind": "quest"
+      }
+    ],
+    "starts": [],
+    "firstStep": "Ask a guard to arrest Grelod (Optional)",
+    "takesYou": [
+      {
+        "place": "Honorhall Orphanage",
+        "hold": "The Rift",
+        "why": "Grelod the Kind and Constance Michel are here"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Ask a guard to arrest Grelod",
+        "leadsTo": "You watch Grelod's arrest; in Innocence Lost she is then held in Riften's jail, you check on the children with Constance, and later learn Grelod was killed while imprisoned."
+      },
+      {
+        "choice": "Poison Grelod's wine",
+        "leadsTo": "You wait for Grelod to drink the poisoned wine, dealing with her without a blade."
+      },
+      {
+        "choice": "Ignore both",
+        "leadsTo": "Kill Grelod the usual way, or lure her to the Riften docks, as Innocence Lost itself offers."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "arrest",
+        "objectives": [
+          "Ask a guard to arrest Grelod (Optional)",
+          "Witness Grelod's arrest"
+        ]
+      },
+      {
+        "branch": "poison",
+        "objectives": [
+          "Poison Grelod's Wine (Optional)",
+          "Wait for Grelod to drink the poisoned wine"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [
+      "Grelod the Kind: arrested and jailed, or poisoned"
+    ],
+    "people": [
+      {
+        "name": "Grelod the Kind",
+        "role": "the headmistress to be dealt with, at Honorhall Orphanage"
+      },
+      {
+        "name": "Constance Michel",
+        "role": "at Honorhall Orphanage; Innocence Lost asks you to check with her after an arrest"
+      },
+      {
+        "name": "a guard",
+        "role": "any guard you ask to arrest Grelod"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "This quest has no journal text and no start line in these files; it is presumably switched on by Innocence Lost once you are sent after Grelod."
+      },
+      {
+        "field": "takesYou",
+        "why": "Where to get the Firebrand Wine or the poison isn't in these files; the wine's record sits in a test cell, not a real place."
+      },
+      {
+        "field": "choices",
+        "why": "Whether the poison route ends Innocence Lost the same way as a kill isn't shown here; only the arrest outcome appears in the Innocence Lost journal."
+      },
+      {
+        "field": "name",
+        "why": "Its name is a placeholder ('DB01_Opt'); it may show under Miscellaneous in the journal with that name."
+      }
+    ],
+    "evidence": [
+      "QUST Innocence Lost - Quest Expansion.esp:000836 DB01_OptionalObjectives, stage 0 only, objectives 10-40",
+      "aliases Guard, Constance, Grelod, Firebrand Wine",
+      "globals ILQE_GrelodArrested, ILQE_WinePoisoned, ILQE_GrelodsTrip, ILQE_RoomDiscovered",
+      "DB01 (Skyrim.esm:01EA50) last edited by Innocence Lost - Quest Expansion.esp; logs 20, 198, 199",
+      "Grelod Skyrim.esm:01335E and Constance Skyrim.esm:013350 placed in Honorhall Orphanage (Skyrim.esm:016BD3)"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillBraith_Quest",
+    "name": "Contract: Kill Braith",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Braith; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Braith",
+    "takesYou": [
+      {
+        "place": "Amren's House, Whiterun",
+        "hold": "Whiterun",
+        "why": "kill Braith"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Braith",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (medium tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Braith dies"
+    ],
+    "people": [
+      {
+        "name": "Braith",
+        "role": "the target; placed in Amren's House in Whiterun"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Braith's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Braith has a line of their own while the contract is open; what it says or does isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:000822 ExtraContracts_KillBraith_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward02Medium via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Braith Skyrim.esm:013BA9 placed in Amren's House (Skyrim.esm:0165AB)",
+      "Braith line 000839, stage below 11"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillElenwen_Quest",
+    "name": "Contract: Kill Elenwen",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Elenwen; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Elenwen",
+    "takesYou": [
+      {
+        "place": "Thalmor Embassy",
+        "hold": "Haafingar",
+        "why": "kill Elenwen"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Elenwen",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (top tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Elenwen dies"
+    ],
+    "people": [
+      {
+        "name": "Elenwen",
+        "role": "the target; placed in the Thalmor Embassy"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Elenwen's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "closes",
+        "why": "Elenwen also appears in other quests; what her death changes elsewhere isn't recorded in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "How you get into the embassy isn't covered by this quest's records."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:000FE8 ExtraContracts_KillElenwen_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward04Wow via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Elenwen Skyrim.esm:013269 placed in Thalmor Embassy (Skyrim.esm:07C98B), Haafingar",
+      "Nazir line 000862, stage below 101"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillErikur_Quest",
+    "name": "Contract: Kill Erikur",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Erikur; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Erikur in Solitude",
+    "takesYou": [
+      {
+        "place": "Erikur's House, Solitude",
+        "hold": "Haafingar",
+        "why": "kill Erikur"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Erikur in Solitude",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (large tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Erikur dies"
+    ],
+    "people": [
+      {
+        "name": "Erikur",
+        "role": "the target; placed in Erikur's House in Solitude"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Erikur's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Erikur has a line of their own while the contract is open; what it says or does isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:000E51 ExtraContracts_KillErikur_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward03Large via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Erikur Skyrim.esm:013272 placed in Erikur's House (Skyrim.esm:016A09)",
+      "Erikur line 000E56, stage below 11"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillLemkil_Quest",
+    "name": "Contract: Kill Lemkil",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Lemkil; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Lemkil",
+    "takesYou": [
+      {
+        "place": "Lemkil's Farmhouse, Rorikstead",
+        "hold": "Whiterun",
+        "why": "kill Lemkil"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Lemkil",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (medium tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Lemkil dies"
+    ],
+    "people": [
+      {
+        "name": "Lemkil",
+        "role": "the target; placed in Lemkil's Farmhouse in Rorikstead"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Lemkil's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Lemkil has a line of their own while the contract is open; what it says or does isn't in these files."
+      },
+      {
+        "field": "starts",
+        "why": "A note, 'Contract: Kill Lemkil', describes him as a farmer found around his farm in Rorikstead and asks for a discreet kill; where you get the note isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:000DCA ExtraContracts_KillLemkil_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward02Medium via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Lemkil Skyrim.esm:0136B8 placed in Lemkil's Farmhouse (Skyrim.esm:013867)",
+      "Lemkil line 000DCC, stage below 11",
+      "BOOK Additional Contracts For the Dark Brotherhood.esp:000DC1 'Contract: Kill Lemkil'"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillNazeem_Quest",
+    "name": "Contract: Kill Nazeem",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Nazeem; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Nazeem",
+    "takesYou": [
+      {
+        "place": "Wintersand Manor, Whiterun",
+        "hold": "Whiterun",
+        "why": "kill Nazeem"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Nazeem",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (large tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Nazeem dies"
+    ],
+    "people": [
+      {
+        "name": "Nazeem",
+        "role": "the target; placed in Wintersand Manor, his house in Whiterun"
+      },
+      {
+        "name": "Ahlam",
+        "role": "lives with Nazeem in Wintersand Manor"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Nazeem's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Nazeem has a line of their own while the contract is open; what it says or does isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:00081B ExtraContracts_KillNazeem_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward03Large via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Nazeem Skyrim.esm:013BBF placed in Wintersand Manor (cceejsse001-hstead.esm:00087F), last placed by CC Tundra Homestead - Tweaks and Enhancements.esp",
+      "Nazeem line 000819, stage below 11"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillRolff_Quest",
+    "name": "Contract: Kill Rolff Stone-Fist",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Rolff Stone-Fist; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Rolff",
+    "takesYou": [
+      {
+        "place": "Candlehearth Hall, Windhelm",
+        "hold": "Eastmarch",
+        "why": "kill Rolff Stone-Fist"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Rolff",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (large tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Rolff Stone-Fist dies"
+    ],
+    "people": [
+      {
+        "name": "Rolff Stone-Fist",
+        "role": "the target; placed in Candlehearth Hall in Windhelm"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Rolff Stone-Fist's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Rolff Stone-Fist has a line of their own while the contract is open; what it says or does isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:000858 ExtraContracts_KillRolff_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward03Large via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Rolff Skyrim.esm:03EFE9 placed in Candlehearth Hall (Skyrim.esm:016789)",
+      "Rolff line 00085A, stage below 11"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillSerana_Quest",
+    "name": "Contract: Kill Serana",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Serana; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Serana",
+    "takesYou": [
+      {
+        "place": "Castle Volkihar, or wherever Serana is",
+        "hold": "none in the records (nearest city Solitude)",
+        "why": "kill Serana"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Serana",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (top tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Serana dies"
+    ],
+    "people": [
+      {
+        "name": "Serana",
+        "role": "the target; placed in Dimhollow Cavern, where she is first found"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Serana's spot comes from where the records place them, not their daily schedule; they may be elsewhere in town at some hours."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Serana has a line of their own while the contract is open; what it says or does isn't in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "The contract note says she might be found in Castle Volkihar or wandering Skyrim; the records place her in Dimhollow Cavern, her starting spot. If she travels with you, she is wherever you left her."
+      },
+      {
+        "field": "closes",
+        "why": "Serana is central to the Dawnguard story; whether she can die before or during it, and what killing her locks, isn't in these files."
+      },
+      {
+        "field": "people",
+        "why": "The mod also has a second Serana record of its own, kept in a holding cell; what it is used for isn't shown."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:000E3C ExtraContracts_KillSerana_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward04Wow via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Serana Dawnguard.esm:002B6C placed in Dimhollow Cavern (Dawnguard.esm:000EB7)",
+      "Serana line 000E41, stage below 11",
+      "BOOK Additional Contracts For the Dark Brotherhood.esp:000E32 'Contract: Kill Serana'",
+      "NPC Additional Contracts For the Dark Brotherhood.esp:000E46 Serana, holding cell"
+    ]
+  },
+  {
+    "edid": "ExtraContracts_KillTaarieEndarie_Quest",
+    "name": "Contract: Kill Taarie and Endarie",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "canDo": "talk",
+    "canDoWhy": "An extra Dark Brotherhood contract taken from Nazir; kill the target, then go back to him to be paid.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Nazir",
+        "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+        "how": "Take the additional contract on Taarie and Endarie; you report back to Nazir afterwards for the reward."
+      }
+    ],
+    "firstStep": "Kill Taarie and Endarie",
+    "takesYou": [
+      {
+        "place": "Radiant Raiment, Solitude",
+        "hold": "Haafingar",
+        "why": "kill Taarie and Endarie"
+      },
+      {
+        "place": "Dark Brotherhood Sanctuary",
+        "hold": "Falkreath",
+        "why": "collect your reward from Nazir"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Taarie and Endarie",
+          "Talk to Nazir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "a random item from the quest-reward list (large tier)",
+        "when": "when you talk to Nazir after the kill"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Taarie and Endarie die"
+    ],
+    "people": [
+      {
+        "name": "Taarie",
+        "role": "the first target; placed in Radiant Raiment in Solitude"
+      },
+      {
+        "name": "Endarie",
+        "role": "the second target; placed in Radiant Raiment in Solitude"
+      },
+      {
+        "name": "Nazir",
+        "role": "hands out and pays for Dark Brotherhood contracts, in the Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The journal says you 'accepted an additional contract' and collect the reward from Nazir, so he is the likely source, but the line or note that actually starts it isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions for being offered this contract (for example how far into the Dark Brotherhood you must be) aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Taarie's and Endarie's spot comes from where the records place them, not their daily schedule."
+      },
+      {
+        "field": "rewards",
+        "why": "The item is drawn at random from the quest-reward list; any gold Nazir pays isn't shown in these files."
+      },
+      {
+        "field": "people",
+        "why": "Taarie and Endarie each have a line of their own while the contract is open; what it says or does isn't in these files."
+      },
+      {
+        "field": "steps",
+        "why": "The objective counts the two kills; the counter's numbers aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Additional Contracts For the Dark Brotherhood.esp:00082B ExtraContracts_KillTaarieEndarie_Quest",
+      "objectives 10 / 100, log stages 10, 100, 200",
+      "reward leveled list LvlQuestReward03Large via quest fragment",
+      "Nazir line, stage below 101 (Skyrim.esm:01C3AB)",
+      "Taarie Skyrim.esm:0132AB and Endarie Skyrim.esm:01326F placed in Radiant Raiment (Skyrim.esm:016A0F)",
+      "Taarie line 000849 and Endarie line, stage below 11",
+      "objective 10 uses globals ExtraContracts_KillTaarieEndarie_KillCount_Current / _Total"
+    ]
+  }
+]

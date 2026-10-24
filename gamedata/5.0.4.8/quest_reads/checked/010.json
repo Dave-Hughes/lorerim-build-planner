@@ -1,0 +1,1341 @@
+{
+ "checks": [
+  {
+   "edid": "MGR30",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log: Tolfdir \"has asked that I look into it\"; started by talking to him."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Kept as the reader wrote it, with its unsure note. No start condition is in the files; the giver line (INFO 0C1E4A, own stage < 21) also covers stage 20, so it may be the hand-in line rather than the opener. The log ties the anomaly to Ancano and the Eye of Magnus."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "giver and namedGiver: Tolfdir 01C19E."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Tolfdir placed at ref 01C1A1 in the Hall of Attainment (0CAB91); schedule unknown, kept in unsure."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Matches the stage 10 log, Staff of Magnus suggestion included."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 \"Close the Rupture\"."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Aliases Hold, Anomaly Marker, Anomaly; no fixed place in the files. Return to Tolfdir is objective 20."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages; only 200 and 201 complete it."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "LvlQuestReward03Large 0C0406 via QF_MGR30_000C1E72. Which stage hands it out isn't shown; \"from Tolfdir at the end\" fits the stage 20 to 200 hand-in."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "No follow-on quest named."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing locked in the logs."
+    }
+   }
+  },
+  {
+   "edid": "MGRAppBrelyna01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver INFO 0C04F0, Brelyna, own stage < 10."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No start conditions in the files; kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "alias QuestGiver = Brelyna Maryon 01C196."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "ref 01C1A4, Hall of Attainment; schedule unknown, kept in unsure."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "The stage 20 log has her using you as a test subject for new spells."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Stage 20 log: after the first attempt goes badly, find her once it wears off. Objective 20."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "No place aliases other than Creature1-3."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Stage 20 log: \"if I let her try one more time\". The fail stage 255 has no text, kept in unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward candidate in quest_givers_raw."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "MGRAppJzargo01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver INFO 0958B2, J'zargo, own stage < 20."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No start conditions in the files; kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "alias Jzargo = 01C195."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "ref 01C1A3, Hall of Attainment."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 20 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 20; global MGRJ1Total = 3."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "No place alias; \"anywhere with undead\" follows the objective."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Stage 200 (scrolls don't work as he meant) and stage 255 fail log (ran out of scrolls)."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward candidate in quest_givers_raw."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The stage 200 log says he won't ask again."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "MGRAppOnmund01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver INFO 0C084A, Onmund, own stage < 10."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No start conditions; kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "alias Onmund 01C194."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "ref 01C1A2, Hall of Attainment."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 \"Speak with Enthir\"."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stage 20 log \"search <Alias=StaffLocation>\"; alias not fixed in the files. Hall of the Elements tie kept in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch text; fail stage 255 is blank."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward candidate in quest_givers_raw."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "MGRArniel01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver INFO 06A059, Arniel, own stage < 10."
+    },
+    "needs": {
+     "verdict": "fix",
+     "note": "The ten Dwarven cogs are the task (objective 10), not something you need before Arniel will give the quest; nothing in the files makes the line depend on them. Cleared to []. The cogs stay in firstStep and takesYou; the College membership question stays in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "alias ArnielGane 01C19D."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "ref 01C1AB, Hall of Attainment."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "The files don't say where cogs are; \"Dwarven ruins\" is a reasonable pointer and is flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "FavorRewardGoldLarge 04A41B (leveled gold) through the script property FavorRewardGoldSmall; amount not in the files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The stage 200 log (\"more I can help with\") and the MGRArniel02 stage 10 log (\"asked for more help with his project\") chain them."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "MGRArniel02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log: Arniel asks you to speak with Enthir."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Chain read from the logs; kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "quest_givers_raw picks Enthir (own stage < 11) as the likely giver, but that line follows objective 10 \"Speak to Enthir\". The stage 10 log makes Arniel the one who asks, and his line runs up to stage 40."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Arniel ref 01C1AB, Hall of Attainment."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stage 20 log \"<Alias=Dungeon>\"; not fixed in the files."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward candidate; the soul gem (alias Gem) goes to Arniel."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The stage 200 log and the MGRArniel03 stage 10 log (\"finally revealed\")."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "MGRArniel03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver INFO 06A036, Arniel, own stage < 10."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Kept in unsure, including the Quest Start Fixes edit."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "alias Arniel 01C19D."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Hall of Attainment."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log: dwarves, the warped soul gem, the heating spell."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "\"Eastmarch (Mzulft)\" mixes a place into the hold field. Split into Mzulft (Dwemer ruin, hold Eastmarch, a short walk from Kynesgrove and Windhelm: places_raw 019281, which lists this quest) and \"other Dwarven ruins with convectors\" with the hold blank. The stage 10 log says \"various ruins around Skyrim\", and aliases Convector2-7 give six."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Arniel's Convection 06A104 via QF_MGRArniel03_0006A097.ArnielSpell; the stage 10 log says Arniel has taught it."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The stage 200 log: \"waiting for something else\"."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Stage 255 exists but is blank, and nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "MGRArniel04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver INFO 06A046, Arniel, own stage < 10."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "quest_givers_raw namedGiver is Enthir (objective 10), but giver is Arniel (own stage < 10) and the stage 10 log has Arniel asking."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Hall of Attainment."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 \"Talk to Enthir\"."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Aliases Courier, Dungeon, CaptiveMarker, Hold aren't fixed in the files. places_raw also ties this quest to the College Dormitory (01EB74, WinterholdCollegeDormitoryLocation); added to unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Keening 06A13C (playable, REQ_Artifact_Keening, last edit Synthesis - Gameplay Overwrite.esp, 84 damage) is left behind (stage 200 log). The other Keening, 10F9C6 MGRKeeningNonPlayable, isn't a player item. Summon Arniel's Shade 06A153 via the script property; timing kept in unsure."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Kagrenac's Tools (Tools of Kagrenac.esp:21F221) uses this same Keening (06A13C) through its script property MGRKeening, and places_raw ties it to the Dormitory too. Its own start (an anonymous courier note, giver Mathis Valen at the Silver-Blood Inn) doesn't show whether finishing Arniel's Endeavor is needed. Its start conditions would settle it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Stage 200 log: Arniel has vanished."
+    }
+   }
+  },
+  {
+   "edid": "MGRejoinQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No dialogue opens it. The only Tolfdir line (INFO 0B12C6, own stage < 6) is the stage 5 objective \"Speak with Tolfdir\", so the quest is already running when you suspend."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Stage 5 log; the cause (\"my actions\") kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Empty: it starts on its own."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Empty."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Empty; canDoWhy says how it begins."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 5."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Tolfdir, Hall of Attainment (ref 01C1A1)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The three fees are separate stages (10, 20, 30), not player choices; what sets each is unknown."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Stage 200 log."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "MGRitual01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log: \"I've asked Faralda about additional training in Destruction\". quest_givers_raw has no giver line, only alias Faralda."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Kept in unsure."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "alias Faralda 01C197."
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "\"the College of Winterhold (the records place her in the Hall of Countenance)\" puts record talk in a player field. Now \"the Hall of Countenance, the College of Winterhold\" (ref 01C1A5, cell 01380F); the schedule caveat stays in unsure."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Stage 10 log \"examine the book\"; objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "places_raw Hall of the Elements 01EB7A lists this quest; aliases Pedestal01-03."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "The third reward was written as \"Power of the Elements, which the records list as a tome for Fire Storm\", which is record talk and names the book, not what the player gains. Restated as the Fire Storm spell, taught by the book Power of the Elements (spells_raw Fire Storm 07A82B lists tome 0F37D0 \"Power of the Elements\"). When it is learned is unsure: the quest has Book01-04 aliases, and the files don't show whether Faralda's copy is 0F37D0 or the finished book is. Blizzard 0A270D and Lightning Vortex 0A270E (script property SpellTomeLightningStorm, but the tome teaches Lightning Vortex 07E8E5) are confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "MGR30",
+   "name": "Aftershock",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Tolfdir asks you to look into a magical anomaly after the trouble with the Eye of Magnus.",
+   "needs": [
+    {
+     "what": "Finish The Eye of Magnus (the journal says the anomaly comes from Ancano's meddling with the Eye)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Tolfdir",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Tolfdir; he has heard reports of a magical anomaly and asks you to look into it, suggesting you take the Staff of Magnus."
+    }
+   ],
+   "firstStep": "Close the Rupture",
+   "takesYou": [
+    {
+     "place": "the site of the anomaly, somewhere in one of Skyrim's holds",
+     "hold": "",
+     "why": "close the Rupture"
+    },
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "return to Tolfdir"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Close the Rupture",
+      "Return to Tolfdir"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "a leveled quest reward item",
+     "when": "at the end, from Tolfdir"
+    }
+   ],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tolfdir",
+     "role": "gives the quest and takes your report"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; finishing The Eye of Magnus is read from the journal text, which blames Ancano's meddling with the Eye"
+    },
+    {
+     "field": "takesYou",
+     "why": "the anomaly is placed by the quest in a hold chosen when it starts; these files don't say which hold or where"
+    },
+    {
+     "field": "where",
+     "why": "the records place Tolfdir in the Hall of Attainment; his daily schedule isn't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "the reward is a leveled list, so the exact item isn't fixed in these files"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0C1E72",
+    "giver info Skyrim.esm:0C1E4A (Tolfdir, own stage < 21)",
+    "Tolfdir Skyrim.esm:01C19E placed ref 01C1A1 in Hall of Attainment 0CAB91",
+    "aliases Hold, Anomaly Marker, Anomaly",
+    "reward LvlQuestReward03Large Skyrim.esm:0C0406 via QF_MGR30_000C1E72",
+    "stage 10/20/200 log text"
+   ]
+  },
+  {
+   "edid": "MGRAppBrelyna01",
+   "name": "Brelyna's Practice",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Brelyna Maryon asks you to be the test subject for her new spells.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Brelyna Maryon",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Brelyna; she asks you to act as a test subject while she practises new spells."
+    }
+   ],
+   "firstStep": "Let Brelyna cast her spell on you, then wait for it to wear off",
+   "takesYou": [
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "the whole quest happens with Brelyna"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Let her try a second time",
+     "leadsTo": "a second spell; when it wears off, speak to her and she agrees to practise more first, which finishes the quest"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Wait for Brelyna's spell to wear off",
+      "Speak to Brelyna"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brelyna Maryon",
+     "role": "gives the quest and casts the spells on you"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; she is a College apprentice, so joining the College is likely but not shown"
+    },
+    {
+     "field": "where",
+     "why": "the records place Brelyna in the Hall of Attainment; her daily schedule isn't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is listed in these records"
+    },
+    {
+     "field": "choices",
+     "why": "the quest can fail, but the records give no text for how"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0C0416",
+    "giver info Skyrim.esm:0C04F0 (Brelyna, own stage < 10)",
+    "Brelyna Skyrim.esm:01C196 placed ref 01C1A4 in Hall of Attainment",
+    "aliases Creature1-3",
+    "fail stage 255 has no log"
+   ]
+  },
+  {
+   "edid": "MGRAppJzargo01",
+   "name": "J'zargo's Experiment",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "J'zargo gives you Flame Cloak scrolls he made and asks you to try them on the undead.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "J'zargo",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to J'zargo; he asks for help testing Flame Cloak scrolls he has made."
+    }
+   ],
+   "firstStep": "Use J'zargo's Flame Cloak scrolls while fighting undead",
+   "takesYou": [
+    {
+     "place": "anywhere with undead (draugr, skeletons and the like)",
+     "hold": "",
+     "why": "test the scrolls three times"
+    },
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "report back to J'zargo"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Test the scrolls on the undead and report back",
+     "leadsTo": "you tell him the scrolls don't work as intended, and the quest is done"
+    },
+    {
+     "choice": "Tell J'zargo you ran out of scrolls",
+     "leadsTo": "he no longer wants your help, and the quest fails"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Test J'zargo's Flame Cloak spell on the undead (0/3)",
+      "Speak to J'zargo"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "J'zargo",
+     "role": "gives the quest and the scrolls"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; he is a College apprentice, so joining the College is likely but not shown"
+    },
+    {
+     "field": "where",
+     "why": "the records place J'zargo in the Hall of Attainment; his daily schedule isn't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is listed in these records"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0958B3",
+    "giver info Skyrim.esm:0958B2 (J'zargo, own stage < 20)",
+    "J'zargo Skyrim.esm:01C195 placed ref 01C1A3 in Hall of Attainment",
+    "global MGRJ1Total = 3",
+    "stage 200 complete, stage 255 fail log"
+   ]
+  },
+  {
+   "edid": "MGRAppOnmund01",
+   "name": "Onmund's Request",
+   "plugin": "Skyrim.esm (last edited by Update.esm)",
+   "canDo": "talk",
+   "canDoWhy": "Onmund wants back a family amulet he gave to Enthir.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Onmund",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Onmund; he asks you to get an amulet with sentimental value back from Enthir."
+    }
+   ],
+   "firstStep": "Speak with Enthir",
+   "takesYou": [
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "talk to Enthir, then bring the amulet to Onmund"
+    },
+    {
+     "place": "a dungeon Enthir names",
+     "hold": "",
+     "why": "find the staff Enthir wants"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak with Enthir",
+      "Find the staff for Enthir",
+      "Deliver the staff to Enthir",
+      "Deliver the amulet to Onmund"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Onmund",
+     "role": "gives the quest; gets his amulet back"
+    },
+    {
+     "name": "Enthir",
+     "role": "has the amulet; trades it for a staff"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; Onmund is a College apprentice, so joining the College is likely but not shown"
+    },
+    {
+     "field": "takesYou",
+     "why": "the dungeon with the staff is picked when the quest reaches that point; these files don't say which"
+    },
+    {
+     "field": "where",
+     "why": "the records place Onmund and Enthir in the Hall of Attainment; their daily schedules aren't in these files. The places index also ties this quest to the Hall of the Elements, but doesn't say for what"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is listed in these records"
+    },
+    {
+     "field": "choices",
+     "why": "the quest can fail, but the records give no text for how"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06BC33",
+    "giver info Skyrim.esm:0C084A (Onmund, own stage < 10); Enthir own stage < 11",
+    "Onmund 01C194 ref 01C1A2, Enthir 01C19C ref 01C1AA, both Hall of Attainment",
+    "aliases StaffLocation, StaffContainer, Staff, LocationMapMarker, HoldingChest, Amulet",
+    "places_raw Hall of the Elements Skyrim.esm:01EB7A lists this quest"
+   ]
+  },
+  {
+   "edid": "MGRArniel01",
+   "name": "Arniel's Endeavor",
+   "plugin": "Skyrim.esm (last edited by LoreRim - Economy Overhaul.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Arniel Gane wants ten Dwarven cogs for a secret project; first of four parts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Arniel Gane",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Arniel; he asks you to bring him Dwarven cogs but won't say what they're for."
+    }
+   ],
+   "firstStep": "Deliver ten cogs to Arniel Gane",
+   "takesYou": [
+    {
+     "place": "Dwarven ruins, or anywhere you can find Dwarven cogs",
+     "hold": "",
+     "why": "collect ten cogs"
+    },
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "hand them to Arniel"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver ten cogs to Arniel Gane"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "gold",
+     "when": "when you hand over the cogs"
+    }
+   ],
+   "type": "Mages Guild",
+   "opens": [
+    "Arniel's Endeavor (part two: dealing with Enthir)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Arniel Gane",
+     "role": "gives the quest"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; Arniel is College staff, so joining the College is likely but not shown"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold comes from a leveled gold list; LoreRim's Economy Overhaul is the last edit, and the amount isn't in these files"
+    },
+    {
+     "field": "where",
+     "why": "the records place Arniel in the Hall of Attainment; his daily schedule isn't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "the records don't say where to find cogs; Dwarven ruins is the player's obvious place to look"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06A086",
+    "giver info Skyrim.esm:06A059 (Arniel, own stage < 10)",
+    "Arniel Skyrim.esm:01C19D ref 01C1AB Hall of Attainment",
+    "reward FavorRewardGoldLarge Skyrim.esm:04A41B via property FavorRewardGoldSmall, QF_MGRArniel01_0006A086",
+    "stage 200 log hints at more work"
+   ]
+  },
+  {
+   "edid": "MGRArniel02",
+   "name": "Arniel's Endeavor",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Arniel needs you to make Enthir finish a trade; second of four parts.",
+   "needs": [
+    {
+     "what": "Finish the first part of Arniel's Endeavor (the Dwarven cogs)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Arniel Gane",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Arniel again; he says Enthir won't complete a trade and asks you to speak to him."
+    }
+   ],
+   "firstStep": "Speak to Enthir",
+   "takesYou": [
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "talk to Enthir and Arniel"
+    },
+    {
+     "place": "a dungeon Enthir names",
+     "hold": "",
+     "why": "get the staff Enthir wants"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Enthir",
+      "Acquire the Staff",
+      "Deliver the staff to Enthir",
+      "Talk to Arniel"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Mages Guild",
+   "opens": [
+    "Arniel's Endeavor (part three: the warped soul gem)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Arniel Gane",
+     "role": "gives the quest; gets the soul gem"
+    },
+    {
+     "name": "Enthir",
+     "role": "wants a staff before he hands over Arniel's item"
+    },
+    {
+     "name": "the dungeon's boss",
+     "role": "the boss of the dungeon Enthir names (the quest picks one)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; following part one is read from the journal ('more help with his project')"
+    },
+    {
+     "field": "takesYou",
+     "why": "the dungeon is picked when the quest starts; these files don't say which"
+    },
+    {
+     "field": "where",
+     "why": "the records place Arniel and Enthir in the Hall of Attainment; their daily schedules aren't in these files. The places index also ties this quest to the Hall of the Elements, but doesn't say for what"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is listed in these records; the item you get is the soul gem for Arniel"
+    },
+    {
+     "field": "people",
+     "why": "the quest has a boss alias for the dungeon, but these files don't say whether the boss carries the staff"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06A08D",
+    "giver info Skyrim.esm:06A044 (Enthir, own stage < 11); Arniel own stage < 41",
+    "aliases Dungeon, DungeonBoss, Staff, Gem, HoldingChest",
+    "places_raw Hall of the Elements lists this quest"
+   ]
+  },
+  {
+   "edid": "MGRArniel03",
+   "name": "Arniel's Endeavor",
+   "plugin": "Skyrim.esm (last edited by College of Winterhold Quest Start Fixes.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Arniel sends you to charge a warped soul gem in Dwarven convectors; third of four parts.",
+   "needs": [
+    {
+     "what": "Finish the second part of Arniel's Endeavor (the trade with Enthir)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Arniel Gane",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Arniel; he tells you his project is about the disappearance of the dwarves, gives you a warped soul gem and teaches you a spell to heat the convectors."
+    }
+   ],
+   "firstStep": "Place the warped soul gem into a Convector",
+   "takesYou": [
+    {
+     "place": "Mzulft, a Dwarven ruin a short walk from Kynesgrove and Windhelm",
+     "hold": "Eastmarch",
+     "why": "one of the ruins with a convector"
+    },
+    {
+     "place": "other Dwarven ruins with convectors",
+     "hold": "",
+     "why": "put the gem in a convector and heat it, three times in all"
+    },
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "return the gem to Arniel"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Place the warped soul gem into a Convector",
+      "Heat the Convector",
+      "Retrieve the soul gem",
+      "Place the warped soul gem into another Convector",
+      "Place the warped soul gem into a final Convector",
+      "Deliver the soul gem to Arniel"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Arniel's Convection (spell), used to heat the convectors",
+     "when": "at the start, from Arniel"
+    }
+   ],
+   "type": "Mages Guild",
+   "opens": [
+    "Arniel's Endeavor (part four: the missing courier)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Arniel Gane",
+     "role": "gives the quest, the gem and the spell"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the records tie Mzulft to this quest and list six convectors, but don't name the other ruins"
+    },
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; following part two is read from the journal ('finally revealed'). The last edit is a quest-start fix plugin, and what it changes isn't shown"
+    },
+    {
+     "field": "where",
+     "why": "the records place Arniel in the Hall of Attainment; his daily schedule isn't in these files"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06A097",
+    "giver info Skyrim.esm:06A036 (Arniel, own stage < 10)",
+    "aliases SoulGemStage1-4, Convector2-7",
+    "places_raw Mzulft Skyrim.esm:019281 lists this quest",
+    "spell Arniel's Convection Skyrim.esm:06A104 via QF_MGRArniel03_0006A097.ArnielSpell",
+    "editedBy Update.esm, USSEP, College of Winterhold Quest Start Fixes.esp",
+    "places_raw Mzulft 019281: DwemerRuin, Eastmarch, near Kynesgrove 0.6 km / Windhelm 0.7 km"
+   ]
+  },
+  {
+   "edid": "MGRArniel04",
+   "name": "Arniel's Endeavor",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Arniel's last delivery went missing; track down the courier and watch his experiment. Last of four parts.",
+   "needs": [
+    {
+     "what": "Finish the third part of Arniel's Endeavor (the warped soul gem)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Arniel Gane",
+     "where": "the Hall of Attainment, the College of Winterhold",
+     "how": "Talk to Arniel; he asks you once more to speak to Enthir about something else for his project."
+    }
+   ],
+   "firstStep": "Talk to Enthir",
+   "takesYou": [
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "talk to Enthir, then bring the package to Arniel and watch his experiment"
+    },
+    {
+     "place": "a dungeon where the courier was taken",
+     "hold": "",
+     "why": "find the courier, who is dead, and take the package"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Enthir",
+      "Find the courier",
+      "Deliver the package to Arniel",
+      "Observe Arniel's experiment"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Keening (dagger)",
+     "when": "at the end; Arniel vanishes and leaves it behind"
+    },
+    {
+     "what": "Summon Arniel's Shade (spell)",
+     "when": "from the quest's script"
+    }
+   ],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [
+    "Arniel Gane vanishes during his experiment"
+   ],
+   "people": [
+    {
+     "name": "Arniel Gane",
+     "role": "gives the quest; vanishes at the end"
+    },
+    {
+     "name": "Enthir",
+     "role": "tells you the courier never arrived"
+    },
+    {
+     "name": "the courier",
+     "role": "carrying Keening from Morrowind; found dead"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the courier's dungeon and hold are picked when the quest starts; these files don't say which"
+    },
+    {
+     "field": "rewards",
+     "why": "the spell is set by the quest's script, but these files don't show at which point you get it"
+    },
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files; following part three is read from the journal ('once again')"
+    },
+    {
+     "field": "where",
+     "why": "the records place Arniel and Enthir in the Hall of Attainment; their daily schedules aren't in these files"
+    },
+    {
+     "field": "opens",
+     "why": "Kagrenac's Tools (Tools of Kagrenac mod) uses the same Keening this quest leaves you; these files don't show whether finishing Arniel's Endeavor is needed to start it"
+    },
+    {
+     "field": "takesYou",
+     "why": "the places index also ties this quest to the College Dormitory; these files don't say for what (likely where Arniel's experiment happens, not shown)"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06A119",
+    "giver info Skyrim.esm:06A046 (Arniel, own stage < 10); Enthir own stage < 11",
+    "aliases Courier, Dungeon, CaptiveMarker, Keening, Hold",
+    "rewards Keening Skyrim.esm:06A13C (REQ_Artifact_Keening, last edit Synthesis - Gameplay Overwrite.esp), MGRKeeningNonPlayable 10F9C6, Summon Arniel's Shade 06A153, all via QF_MGRArniel04_0006A119",
+    "stage 200 log: Arniel vanished",
+    "Kagrenac's Tools Tools of Kagrenac.esp:21F221 property MGRKeening -> 06A13C; places_raw Dormitory 01EB74 lists both quests"
+   ]
+  },
+  {
+   "edid": "MGRejoinQuest",
+   "name": "Rejoining the College",
+   "plugin": "Skyrim.esm",
+   "canDo": "by itself",
+   "canDoWhy": "Starts when the College suspends you for something you did; pay Tolfdir to be let back in.",
+   "needs": [
+    {
+     "what": "Be suspended from the College of Winterhold",
+     "kind": "faction"
+    }
+   ],
+   "starts": [],
+   "firstStep": "Speak with Tolfdir",
+   "takesYou": [
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "pay Tolfdir"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak with Tolfdir"
+     ]
+    },
+    {
+     "branch": "fee (one of three)",
+     "objectives": [
+      "Give Tolfdir 250 gold to lift your suspension",
+      "Pay Tolfdir 500 gold to lift your suspension",
+      "Pay Tolfdir 1000 gold to lift your suspension"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "your suspension from the College is lifted",
+     "when": "when you pay"
+    }
+   ],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tolfdir",
+     "role": "takes your payment and lifts the suspension"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the journal says you were suspended 'for my actions'; which actions trigger it isn't in these files"
+    },
+    {
+     "field": "steps",
+     "why": "the journal has three fees (250, 500, 1000 gold); what sets the higher ones isn't in these files"
+    },
+    {
+     "field": "where",
+     "why": "the records place Tolfdir in the Hall of Attainment; his daily schedule isn't in these files"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0C9A0E",
+    "giver info Skyrim.esm:0B12C6 (Tolfdir alias MGRejoinTolfdir, own stage < 6)",
+    "stage 5/10/20/30 log text",
+    "objectives 20/30 spell 'Tolfidr' in the records"
+   ]
+  },
+  {
+   "edid": "MGRitual01",
+   "name": "Destruction Ritual Spell",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Ask Faralda for more Destruction training; she hands you a book that leads to master spells.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Faralda",
+     "where": "the Hall of Countenance, the College of Winterhold",
+     "how": "Ask Faralda about more training in Destruction; she gives you the book Power of the Elements."
+    }
+   ],
+   "firstStep": "Read Power of the Elements and follow its clues",
+   "takesYou": [
+    {
+     "place": "the Hall of the Elements, College of Winterhold",
+     "hold": "Winterhold",
+     "why": "the book's clues are tied to it"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Complete the book Powers of the Elements"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Spell Tome (Master): Blizzard",
+     "when": "when you finish the book"
+    },
+    {
+     "what": "Spell Tome (Master): Lightning Vortex",
+     "when": "when you finish the book"
+    },
+    {
+     "what": "Fire Storm (spell), taught by the book Power of the Elements",
+     "when": "from the book; whether Faralda's copy teaches it at once or only the finished book does isn't settled"
+    }
+   ],
+   "type": "Mages Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Faralda",
+     "role": "gives you the book"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the start conditions aren't in these files, so any Destruction skill level or College rank needed isn't shown"
+    },
+    {
+     "field": "takesYou",
+     "why": "the places index ties this quest to the Hall of the Elements and the quest has three pedestals, but these files don't say exactly where they stand"
+    },
+    {
+     "field": "rewards",
+     "why": "all three are Master Destruction spells (Destruction 100). Faralda gives you Power of the Elements, and a book of that name teaches Fire Storm, but the quest has four book aliases and these files don't show which copy teaches it or when"
+    },
+    {
+     "field": "where",
+     "why": "the records place Faralda in the Hall of Countenance; her daily schedule isn't in these files"
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0A4E82",
+    "Faralda Skyrim.esm:01C197 ref 01C1A5 Hall of Countenance 01380F",
+    "aliases Pedestal01-03, Book01-04, Book01-03Activator, MGHoldingChest",
+    "rewards tomes Skyrim.esm:0A270D, 0A270E via QF_MGRitual01_000A4E82",
+    "spells_raw Fire Storm 07A82B lists Power of the Elements 0F37D0 as a tome",
+    "places_raw Hall of the Elements lists this quest"
+   ]
+  }
+ ]
+}

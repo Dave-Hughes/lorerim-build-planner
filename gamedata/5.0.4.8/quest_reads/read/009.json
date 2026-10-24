@@ -1,0 +1,1102 @@
+[
+ {
+  "edid": "CR14",
+  "name": "Dragon Seekers",
+  "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp; also edited by Unofficial Skyrim Special Edition Patch.esp and Narrative Gameplay Consistent Dialogue Tweaks.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable Companions job: Vilkas or Farkas hears dragon rumors and takes you along to kill one at a dragon lair picked for you.",
+  "needs": [
+   {
+    "what": "Be a member of the Companions (it is handed out as one of their jobs)",
+    "kind": "faction"
+   },
+   {
+    "what": "From Vilkas: only once Skjor is dead (Farkas can give it as one of his own jobs)",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Vilkas",
+    "where": "Jorrvaskr, Whiterun (placed in the living quarters downstairs)",
+    "how": "Ask Vilkas for work once Skjor is dead; he wants to kill a dragon himself and brings you along."
+   },
+   {
+    "who": "Farkas",
+    "where": "Jorrvaskr, Whiterun (placed in the living quarters downstairs)",
+    "how": "Ask Farkas for work; he can hand out the same dragon hunt."
+   }
+  ],
+  "firstStep": "Kill the dragon at the lair named in your journal, with the Companion who gave you the job",
+  "takesYou": [
+   {
+    "place": "a dragon lair chosen when the job is given",
+    "hold": "varies (the journal and map marker name it)",
+    "why": "kill the dragon there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the dragon at the lair named in your journal",
+     "Talk to the Companion who gave you the job"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Companions",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Vilkas",
+    "role": "gives the job once Skjor is dead, and comes with you"
+   },
+   {
+    "name": "Farkas",
+    "role": "can also give the job, and comes with you"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The job comes from the Companions' radiant job system (a Vilkas-after-Skjor's-death node and a Farkas node). The conditions on those nodes, including whether dragons must already be appearing in the world, are not in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is listed on the quest's records; the Companions pay through a shared script that isn't in these files."
+   },
+   {
+    "field": "where",
+    "why": "Vilkas and Farkas are placed in the Jorrvaskr living quarters; where they stand during the day isn't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The lair is filled in when the job starts, so the records can't say which one."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0E3156 (CR14)",
+   "editedBy: USSEP, Narrative Gameplay Consistent Dialogue Tweaks.esp, Companions Radiant Expansion.esp",
+   "giver INFO Narrative Gameplay Consistent Dialogue Tweaks.esp:000F70 (Vilkas Skyrim.esm:01A694; also Farkas Skyrim.esm:01A692)",
+   "starts: CompanionsVilkasSkjorDeadNode, CompanionsFarkasNode (script event); compare CR06/CR07 CompanionsSkjorNode",
+   "aliases QuestGiver, Den, dragon, MapMarker, DenHold",
+   "stage 10/20 logs; objectives 10, 20"
+  ]
+ },
+ {
+  "edid": "MG01",
+  "name": "First Lessons",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp; also edited by Unofficial Skyrim Special Edition Patch.esp, College Of Winterhold - Quest Expansion.esp and CollegeEntry.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Go to the College of Winterhold and talk to Faralda at its entrance; she sets you a test before you can join.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Faralda",
+    "where": "at the entrance to the College of Winterhold, in Winterhold",
+    "how": "Talk to Faralda when you reach the College. To be let in you must show you can do simple magic: she asks you to cast one spell for her."
+   }
+  ],
+  "firstStep": "Talk to Faralda at the entrance to the College of Winterhold",
+  "takesYou": [
+   {
+    "place": "College of Winterhold entrance",
+    "hold": "Winterhold",
+    "why": "pass Faralda's test"
+   },
+   {
+    "place": "College of Winterhold courtyard and halls",
+    "hold": "Winterhold",
+    "why": "tour the grounds with Mirabelle Ervine"
+   },
+   {
+    "place": "Hall of the Elements",
+    "hold": "Winterhold",
+    "why": "Tolfdir's first lesson, where members gather for lectures"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Which spell Faralda asks for",
+    "leadsTo": "One of five tests: cast Magelight, summon a Flame Atronach, cast Firebolt, cast Fear, or cast Healing Hands on Faralda herself. You need that one spell to pass."
+   },
+   {
+    "choice": "A way in other than the spell test",
+    "leadsTo": "Faralda has other ways in through dialogue; in LoreRim one of her lines needs The Way of the Voice finished (CollegeEntry.esp), likely the Dragonborn way in."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Join the College of Winterhold",
+     "Cast a Magelight spell / Summon a Flame Atronach / Cast a Firebolt spell / Cast a Fear spell / Cast a Healing Hands spell (one of these)",
+     "Report to Mirabelle Ervine",
+     "Tour the College of Winterhold",
+     "Listen to Tolfdir"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Membership of the College of Winterhold",
+    "when": "when Faralda lets you in"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "Under Saarthal",
+   "College Curriculum (College of Winterhold - Quest Expansion)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Faralda",
+    "role": "gatekeeper; sets the entry test"
+   },
+   {
+    "name": "Mirabelle Ervine",
+    "role": "Master Wizard; gives the tour"
+   },
+   {
+    "name": "Tolfdir",
+    "role": "teaches the new apprentices; gives the first lesson"
+   },
+   {
+    "name": "Nirya",
+    "role": "talks to you during the joining"
+   },
+   {
+    "name": "Onmund",
+    "role": "fellow apprentice"
+   },
+   {
+    "name": "Brelyna Maryon",
+    "role": "fellow apprentice"
+   },
+   {
+    "name": "J'zargo",
+    "role": "fellow apprentice"
+   },
+   {
+    "name": "Ancano",
+    "role": "Thalmor adviser you meet during the tour"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "The journal says Faralda is 'at the entrance to the College'; her placement record puts her in the Hall of Countenance. Her standing spot comes from AI packages that aren't in these files."
+   },
+   {
+    "field": "choices",
+    "why": "The records list all five spell tests, but the script that picks which one Faralda asks for isn't in these files."
+   },
+   {
+    "field": "choices",
+    "why": "CollegeEntry.esp and Requiem.esp change the conditions on Faralda's entry lines (item checks, a 'Faralda sells spells' setting that is off, and The Way of the Voice for one line). The text of those lines isn't in these files, so the exact other ways in (and whether she sells you the test spell) can't be confirmed."
+   },
+   {
+    "field": "rewards",
+    "why": "No item reward is listed on the quest's records."
+   },
+   {
+    "field": "opens",
+    "why": "College Curriculum is linked only by its first journal line ('As a new member of the College...'); what starts it isn't in these files."
+   },
+   {
+    "field": "where",
+    "why": "Mirabelle and Tolfdir are placed in the Hall of Attainment; Tolfdir's lesson is in the Hall of the Elements according to Mirabelle's tour lines."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F251 (MG01); editedBy USSEP, College Of Winterhold - Quest Expansion.esp, CollegeEntry.esp, LoreRim - Dialogue Patch.esp",
+   "quest_starts line 'college': startGame true",
+   "giver INFO Skyrim.esm:0E0E02 (Faralda Skyrim.esm:01C197, stage below 11); others Nirya, Mirabelle, Tolfdir",
+   "stage 24 log: Healing Hands 'on Faralda at the entrance to the College'",
+   "CollegeEntry.esp INFO Skyrim.esm:0B811F: + The Way of the Voice completed (was Elder Knowledge stage >= 50)",
+   "global MGI_FaraldaSellsSpells (CollegeEntry.esp:000D80) = 0 added to several lines",
+   "INFO Skyrim.esm:020028, 020305 (Mirabelle: Hall of the Elements)",
+   "College Of Winterhold - Quest Expansion.esp:00081D College Curriculum"
+  ]
+ },
+ {
+  "edid": "MG02",
+  "name": "Under Saarthal",
+  "plugin": "Skyrim.esm (last edited by CollegeEntry.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Follows straight on from First Lessons: Tolfdir takes the new apprentices on an expedition to the Saarthal dig near Winterhold.",
+  "needs": [
+   {
+    "what": "Finish First Lessons",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Tolfdir",
+    "where": "the Hall of the Elements, College of Winterhold, at the end of his first lesson",
+    "how": "After Tolfdir's lesson he tells the apprentices to meet him at Saarthal."
+   }
+  ],
+  "firstStep": "Meet Tolfdir outside Saarthal",
+  "takesYou": [
+   {
+    "place": "Saarthal",
+    "hold": "Winterhold",
+    "why": "the College's excavation; meet Tolfdir, help Arniel Gane, and go deeper into the ruins"
+   },
+   {
+    "place": "Arch-Mage's Quarters, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "tell Savos Aren about the orb"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Meet Tolfdir outside Saarthal",
+     "Follow Tolfdir",
+     "Find Arniel Gane",
+     "Search for magical artifacts",
+     "Use the Saarthal Amulet to escape the trap",
+     "Follow Tolfdir",
+     "Tell Tolfdir about the vision",
+     "Follow Tolfdir",
+     "Find the danger within Saarthal",
+     "Talk to the Arch-Mage"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Saarthal Amulet",
+    "when": "picked up in the ruins while searching for artifacts"
+   },
+   {
+    "what": "Enchanted Ring",
+    "when": "one of the artifacts you find in the ruins"
+   },
+   {
+    "what": "Staff of Magelight",
+    "when": "handed out by the quest's script"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "Hitting the Books"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Tolfdir",
+    "role": "leads the expedition"
+   },
+   {
+    "name": "Arniel Gane",
+    "role": "runs the dig; asks you to collect enchanted objects"
+   },
+   {
+    "name": "Savos Aren",
+    "role": "Arch-Mage; you report the orb to him"
+   },
+   {
+    "name": "Nerien",
+    "role": "Psijic monk; the vision in the ruins"
+   },
+   {
+    "name": "Brelyna Maryon",
+    "role": "fellow apprentice on the expedition"
+   },
+   {
+    "name": "Onmund",
+    "role": "fellow apprentice on the expedition"
+   },
+   {
+    "name": "J'zargo",
+    "role": "fellow apprentice on the expedition"
+   },
+   {
+    "name": "Jyrik Gauldurson",
+    "role": "the draugr boss deep in Saarthal"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "First Lessons ends with 'will be accompanying some of the others on an expedition' and Tolfdir gives the first line of this quest, but the script that sets its first stage isn't in these files."
+   },
+   {
+    "field": "where",
+    "why": "Tolfdir is placed in the Hall of Attainment; his lesson takes place in the Hall of the Elements according to the tour dialogue."
+   },
+   {
+    "field": "rewards",
+    "why": "The Saarthal Amulet and Enchanted Ring are quest items in the ruins; the records don't show whether you keep them. The Staff of Magelight is a property on the quest's script; when (or whether) it reaches the player isn't shown."
+   },
+   {
+    "field": "takesYou",
+    "why": "Saarthal is edited by Ryn's Saarthal.esp, which may change the layout from what other guides describe."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F252 (MG02); editedBy USSEP, CollegeEntry.esp",
+   "giver INFO Skyrim.esm:025145 (Tolfdir, stage below 11); others Arniel Gane (<26), Savos Aren (<71)",
+   "aliases MG02AmuletAlias, MG02EnchantedItem01 (Skyrim.esm:02584C), MG02EyeAlias",
+   "QF_MG02_0001F252.StaffMagelight (Skyrim.esm:0BE121)",
+   "Saarthal LCTN Skyrim.esm:019299 (Winterhold; Ryn's Saarthal.esp); boss Jyrik Gauldurson",
+   "MG01 stage 200 log"
+  ]
+ },
+ {
+  "edid": "MG03",
+  "name": "Hitting the Books",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Follows on from Under Saarthal: the College wants to know what the orb is, and Urag sends you after books stolen by a former apprentice.",
+  "needs": [
+   {
+    "what": "Finish Under Saarthal",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Mirabelle Ervine",
+    "where": "College of Winterhold",
+    "how": "After you report the orb at the end of Under Saarthal, the journal sends you to Mirabelle to find out about researching it; you are then sent to Urag gro-Shub in the Arcanaeum."
+   }
+  ],
+  "firstStep": "Speak with Mirabelle Ervine at the College",
+  "takesYou": [
+   {
+    "place": "The Arcanaeum, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "talk to Urag gro-Shub"
+   },
+   {
+    "place": "Fellglow Keep",
+    "hold": "Whiterun",
+    "why": "find the books Orthorn stole; he is held prisoner in the dungeons"
+   },
+   {
+    "place": "The Arcanaeum, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "return the books to Urag"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Free Orthorn in Fellglow Keep, or leave him",
+    "leadsTo": "Freeing him is optional; if freed he offers to help you find the books."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak with Mirabelle Ervine",
+     "Speak with Urag gro-Shub",
+     "Find the stolen books",
+     "(Optional) Free Orthorn",
+     "Return the books"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "A skill book from Urag: one of The Black Arts On Trial (Illusion), 2920, Vol. 09: Hearth Fire (Conjuration), Catalogue of Weapon Enchantments (Enchanting), Response to Bero's Speech (Destruction), Daughter of the Niben (Alteration) or Racial Phylogeny (Restoration)",
+    "when": "when you return the books"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "Good Intentions"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Mirabelle Ervine",
+    "role": "first person to see about the orb"
+   },
+   {
+    "name": "Savos Aren",
+    "role": "Arch-Mage; asks you to look into the orb"
+   },
+   {
+    "name": "Urag gro-Shub",
+    "role": "Arcanaeum librarian; sends you to Fellglow Keep"
+   },
+   {
+    "name": "Orthorn",
+    "role": "former apprentice who stole the books; prisoner in Fellglow Keep's dungeons"
+   },
+   {
+    "name": "The Caller",
+    "role": "found in Fellglow Keep's ritual chamber"
+   },
+   {
+    "name": "Ancano",
+    "role": "Thalmor adviser who takes an interest in the orb"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "What sets the first stage isn't in these files; the order (Mirabelle, then Savos, then Urag) comes from the journal entries."
+   },
+   {
+    "field": "where",
+    "why": "Mirabelle is placed in the Hall of Attainment; where she is during the day isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The six books are properties on the quest's script, one per school; the rule for which one you get isn't in these files. The 'Night of Tears' book is the one Urag finds useful (it leads to Good Intentions)."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F253 (MG03); editedBy USSEP",
+   "giver INFO Skyrim.esm:02ABB7 (Mirabelle, stage below 11); others Urag (<21), Faralda (<30), Ancano (<31)",
+   "INFO Skyrim.esm:02B36F (Urag: Orthorn ran off to Fellglow Keep)",
+   "Fellglow Keep LCTN Skyrim.esm:019177 (Whiterun hold)",
+   "QF_MG03_0001F253 Skill* book properties",
+   "stage 200 log (Night of Tears)"
+  ]
+ },
+ {
+  "edid": "MG04",
+  "name": "Good Intentions",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "After Hitting the Books, Urag asks you to mention the Night of Tears book to Tolfdir, and a Psijic monk is waiting.",
+  "needs": [
+   {
+    "what": "Finish Hitting the Books",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Urag gro-Shub",
+    "where": "The Arcanaeum, College of Winterhold",
+    "how": "When you return the books, Urag asks you to mention the Night of Tears book to Tolfdir; then talk to Tolfdir, who is studying the orb."
+   }
+  ],
+  "firstStep": "Speak with Tolfdir about the Night of Tears book",
+  "takesYou": [
+   {
+    "place": "Hall of the Elements, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "Tolfdir is studying the orb there"
+   },
+   {
+    "place": "Arch-Mage's Quarters, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "Ancano takes you to meet Quaranir of the Psijic Order"
+   },
+   {
+    "place": "The Midden, beneath the College",
+    "hold": "Winterhold",
+    "why": "find the Augur of Dunlain"
+   },
+   {
+    "place": "Arch-Mage's Quarters, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "report to Savos Aren"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak with Tolfdir",
+     "Listen to Tolfdir",
+     "Follow Ancano",
+     "Speak with Quaranir",
+     "Find the Augur of Dunlain",
+     "Report to Savos Aren"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Mage's Circlet (from a leveled list)",
+    "when": "from the quest's script"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "Revealing the Unseen"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Urag gro-Shub",
+    "role": "points you to Tolfdir"
+   },
+   {
+    "name": "Tolfdir",
+    "role": "studying the orb"
+   },
+   {
+    "name": "Ancano",
+    "role": "interrupts and brings you to Quaranir"
+   },
+   {
+    "name": "Quaranir",
+    "role": "Psijic monk; tells you the Eye of Magnus is dangerous"
+   },
+   {
+    "name": "Augur of Dunlain",
+    "role": "in the Midden; tells you to find the Staff of Magnus"
+   },
+   {
+    "name": "Savos Aren",
+    "role": "Arch-Mage; you report to him"
+   },
+   {
+    "name": "Faralda",
+    "role": "can tell you where to find the Augur"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The reward is a leveled list on the quest's script (MG04RewardLVL). The Mage's Circlet records are tagged as this quest's reward, but the list's contents and which circlet you get aren't in these files; when it's handed over isn't shown either."
+   },
+   {
+    "field": "starts",
+    "why": "The first stage follows Urag's request at the end of Hitting the Books; the script that sets it isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The journal says to ask fellow members where the Augur is; Faralda has a line in this quest, but its text isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F254 (MG04); editedBy USSEP",
+   "giver INFO Skyrim.esm:082A10 (Tolfdir, stage below 11); others Ancano (<16), Quaranir (<31), Faralda (<41)",
+   "QF_MG04_0001F254.MG04RewardLVL (Skyrim.esm:0F1B32)",
+   "items REQ_NULL_MG04Reward01-05, REQ_Var_Circlet_SilverMoonstone_MG04Reward (Mage's Circlet)",
+   "The Midden LCTN Skyrim.esm:02BCEB",
+   "stages 10-50 logs"
+  ]
+ },
+ {
+  "edid": "mg06",
+  "name": "Revealing the Unseen",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "After Good Intentions you're sent to Mirabelle about the Staff of Magnus; she points you to the Synod researchers at Mzulft.",
+  "needs": [
+   {
+    "what": "Finish Good Intentions",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Mirabelle Ervine",
+    "where": "College of Winterhold",
+    "how": "After you report to Savos Aren at the end of Good Intentions, speak with Mirabelle about the Staff of Magnus; she says the Synod asked about the ruins of Mzulft."
+   }
+  ],
+  "firstStep": "Speak with Mirabelle Ervine about the Staff of Magnus",
+  "takesYou": [
+   {
+    "place": "Mzulft",
+    "hold": "Eastmarch",
+    "why": "find the Synod researchers, get the focusing crystal back from the Falmer, and work the Oculory"
+   },
+   {
+    "place": "Arch-Mage's Quarters, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "report to Savos Aren, then help him reach Ancano"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak with Mirabelle Ervine",
+     "Find the ruins of Mzulft",
+     "Search for Synod researchers",
+     "Reach the Oculory",
+     "Find the Focusing Crystal",
+     "Return the Crystal to Paratus",
+     "Follow Paratus",
+     "Place the Crystal into the Oculory",
+     "Focus the Oculory",
+     "Talk to Paratus",
+     "Report to Savos Aren",
+     "Reach Ancano"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Research Log (book)",
+    "when": "found during the quest in Mzulft"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "Containment"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Mirabelle Ervine",
+    "role": "points you to Mzulft"
+   },
+   {
+    "name": "Savos Aren",
+    "role": "Arch-Mage; you report to him"
+   },
+   {
+    "name": "Gavros Plinius",
+    "role": "Synod researcher found dying in Mzulft"
+   },
+   {
+    "name": "Paratus Decimius",
+    "role": "surviving Synod researcher, in the Mzulft Aedrome"
+   },
+   {
+    "name": "Nerien",
+    "role": "Psijic monk, appears in the Aedrome"
+   },
+   {
+    "name": "Ancano",
+    "role": "locks himself in the Hall of the Elements with the Eye"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Mirabelle is placed in the Hall of Attainment; where she is during the day isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The Research Log is a quest alias, not a script reward; the records don't say where in Mzulft it lies or whether it's anything more than a note."
+   },
+   {
+    "field": "people",
+    "why": "Gavros Plinius is placed in Mzulft; the journal says only 'one man who died', so whether he is alive when you arrive isn't certain."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F256 (mg06); editedBy USSEP",
+   "giver INFO Skyrim.esm:027567 (Mirabelle, stage below 11: 'They inquired about the ruins of Mzulft'); others Savos Aren (<11), Paratus Decimius (<31)",
+   "Mzulft LCTN Skyrim.esm:019281 (Eastmarch, near Kynesgrove and Windhelm)",
+   "alias MG06Journal (Research Log Skyrim.esm:034CBC)",
+   "INFO Skyrim.esm:0B5F93, 0B811C (Labyrinthian)",
+   "stage 70 log (Ancano locked in Hall of the Elements)"
+  ]
+ },
+ {
+  "edid": "MG05",
+  "name": "Containment",
+  "plugin": "Skyrim.esm (last edited by College of Winterhold Quest Start Fixes.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Follows straight on from Revealing the Unseen: Ancano unleashes the Eye of Magnus and you must find the Arch-Mage and save Winterhold.",
+  "needs": [
+   {
+    "what": "Finish Revealing the Unseen",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Savos Aren",
+    "where": "College of Winterhold",
+    "how": "Revealing the Unseen ends with you helping the Arch-Mage reach Ancano; this quest follows as the Eye of Magnus goes wild."
+   }
+  ],
+  "firstStep": "Assess the damage to the Great Hall and find the Arch-Mage",
+  "takesYou": [
+   {
+    "place": "Hall of the Elements, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "see what Ancano has done and find the Arch-Mage"
+   },
+   {
+    "place": "Winterhold (the town)",
+    "hold": "Winterhold",
+    "why": "fight off the Magic Anomalies attacking the town"
+   },
+   {
+    "place": "College of Winterhold",
+    "hold": "Winterhold",
+    "why": "report to Mirabelle Ervine"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Assess the damage to the Great Hall",
+     "Find the Arch-Mage",
+     "Protect the town of Winterhold",
+     "Defeat the creatures infesting Winterhold",
+     "Report to Mirabelle Ervine"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Savos Aren's Amulet",
+    "when": "from Mirabelle, who says it came from Labyrinthian"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "The Staff of Magnus"
+  ],
+  "closes": [
+   "Savos Aren dies (killed by the Eye's energy)"
+  ],
+  "people": [
+   {
+    "name": "Ancano",
+    "role": "turns the Eye of Magnus against the College"
+   },
+   {
+    "name": "Savos Aren",
+    "role": "Arch-Mage; killed in this quest"
+   },
+   {
+    "name": "Mirabelle Ervine",
+    "role": "you report to her; gives you Savos Aren's Amulet"
+   },
+   {
+    "name": "Tolfdir",
+    "role": "College member involved in the crisis"
+   },
+   {
+    "name": "Faralda",
+    "role": "defends the College gate"
+   },
+   {
+    "name": "Arniel Gane",
+    "role": "defends the College gate"
+   },
+   {
+    "name": "Magic Anomaly",
+    "role": "the creatures attacking Winterhold"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The script that sets the first stage isn't in these files, and College of Winterhold Quest Start Fixes.esp edits this quest; what it changes isn't shown."
+   },
+   {
+    "field": "rewards",
+    "why": "The amulet is a property on the quest's script; Mirabelle's line about it belongs to this quest, but the exact moment it's handed over isn't shown."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F255 (MG05); editedBy USSEP, College of Winterhold Quest Start Fixes.esp",
+   "giver INFO Skyrim.esm:0681CC (Mirabelle, stage below 26); others Tolfdir (<30), Faralda, Arniel Gane (<31)",
+   "QF_MG05_0001F255.MG05RewardAmulet (Savos Aren's Amulet Skyrim.esm:0F1B33)",
+   "INFO Skyrim.esm:09BB8F (Mirabelle: 'He told me it was from Labyrinthian')",
+   "stage 30 log (Arch-Mage killed)",
+   "mg06 stage 70 log"
+  ]
+ },
+ {
+  "edid": "MG07",
+  "name": "The Staff of Magnus",
+  "plugin": "Skyrim.esm (last edited by College of Winterhold Quest Start Fixes.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Follows on from Containment: only the Staff of Magnus can stop Ancano, and it lies in Labyrinthian.",
+  "needs": [
+   {
+    "what": "Finish Containment",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Mirabelle Ervine",
+    "where": "College of Winterhold",
+    "how": "After you report to Mirabelle at the end of Containment, the journal sends you to Labyrinthian for the staff."
+   }
+  ],
+  "firstStep": "Enter Labyrinthian",
+  "takesYou": [
+   {
+    "place": "Labyrinthian",
+    "hold": "Hjaalmarch",
+    "why": "find the Staff of Magnus and defeat the dragon priest Morokei"
+   },
+   {
+    "place": "College of Winterhold",
+    "hold": "Winterhold",
+    "why": "return to Tolfdir with the staff"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Enter Labyrinthian",
+     "Find the Staff of Magnus",
+     "Defeat the Dragon Priest",
+     "Retrieve the Staff of Magnus",
+     "Exit Labrynthian",
+     "Escape the Thalmor",
+     "Find a way out of Labrynthian",
+     "Return to Tolfdir"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Staff of Magnus",
+    "when": "taken from Morokei's chamber in Labyrinthian"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [
+   "The Eye of Magnus"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Morokei",
+    "role": "dragon priest guarding the staff"
+   },
+   {
+    "name": "Savos Aren",
+    "role": "appears as a ghost in Labyrinthian with his old companions"
+   },
+   {
+    "name": "Hafnar Ice-Fist, Atmah, Girduin, Elvali Veren, Takes-In-Light",
+    "role": "ghosts of Savos's companions in Labyrinthian"
+   },
+   {
+    "name": "Enthralled Wizard",
+    "role": "two mages held by Morokei"
+   },
+   {
+    "name": "Estormo",
+    "role": "Thalmor agent who ambushes you on the way out"
+   },
+   {
+    "name": "Tolfdir",
+    "role": "you bring the staff back to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Tolfdir and Mirabelle both have lines in this chain; the script that sets the first stage isn't in these files, and College of Winterhold Quest Start Fixes.esp edits this quest."
+   },
+   {
+    "field": "needs",
+    "why": "Whether Savos Aren's Amulet is needed to get into Labyrinthian isn't shown in these records."
+   },
+   {
+    "field": "takesYou",
+    "why": "Labyrinthian's enemies start at level 24 in LoreRim and its boss record is a level 100 dragon; expect a hard dungeon."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F257 (MG07); editedBy College of Winterhold Quest Start Fixes.esp",
+   "giver INFO Skyrim.esm:09186C (Tolfdir, stage below 50); others Estormo, Arniel Gane (<51)",
+   "alias MG07StaffAlias (Staff of Magnus Skyrim.esm:035369)",
+   "alias MG07DragonPriest = Morokei; ghost aliases",
+   "Labyrinthian LCTN Skyrim.esm:019262 (Hjaalmarch; zoneMin 24)",
+   "MG05 stage 50 log / objective 50"
+  ]
+ },
+ {
+  "edid": "MG08",
+  "name": "The Eye of Magnus",
+  "plugin": "Skyrim.esm (last edited by College of Winterhold Quest Start Fixes.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Follows on from The Staff of Magnus: use the staff to break back into the College and face Ancano.",
+  "needs": [
+   {
+    "what": "Finish The Staff of Magnus",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Tolfdir",
+    "where": "College of Winterhold",
+    "how": "Bring the Staff of Magnus back to Tolfdir; the assault on Ancano follows."
+   }
+  ],
+  "firstStep": "Use the Staff of Magnus to enter the College of Winterhold",
+  "takesYou": [
+   {
+    "place": "College of Winterhold",
+    "hold": "Winterhold",
+    "why": "use the staff to get past the barrier into the College"
+   },
+   {
+    "place": "Hall of the Elements, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "defeat Ancano"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Use the Staff of Magnus to enter the College of Winterhold",
+     "Reach the Hall of the Elements",
+     "Defeat Ancano",
+     "Talk to Tolfdir",
+     "Speak with Quaranir"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Named Arch-Mage of the College of Winterhold (title)",
+    "when": "at the end"
+   },
+   {
+    "what": "Staff of Magnus",
+    "when": "handled by the quest's script"
+   }
+  ],
+  "type": "Mages Guild",
+  "opens": [],
+  "closes": [
+   "Ancano dies",
+   "The Psijic Order takes the Eye of Magnus away"
+  ],
+  "people": [
+   {
+    "name": "Ancano",
+    "role": "the final enemy, in the Hall of the Elements"
+   },
+   {
+    "name": "Tandil",
+    "role": "Thalmor in the Hall of the Elements"
+   },
+   {
+    "name": "Gelebros",
+    "role": "Thalmor in the Hall of the Elements"
+   },
+   {
+    "name": "Tolfdir",
+    "role": "you talk to him after Ancano falls"
+   },
+   {
+    "name": "Quaranir",
+    "role": "Psijic monk; speaks with you at the end"
+   },
+   {
+    "name": "Faralda, Sergius Turrianus, Arniel Gane",
+    "role": "College mages at the gate"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Tolfdir has a line for this quest and The Staff of Magnus ends with 'Return to Tolfdir'; the script that sets the first stage isn't in these files, and College of Winterhold Quest Start Fixes.esp edits this quest."
+   },
+   {
+    "field": "rewards",
+    "why": "The staff is a property on the quest's script; whether the script gives it to you or takes it isn't shown. Any Arch-Mage perks (quarters, robes) aren't in these records; only the title is, in the final journal entry."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F258 (MG08); editedBy College of Winterhold Quest Start Fixes.esp",
+   "giver INFO Skyrim.esm:0596F5 (Tolfdir, stage below 30); other Arniel Gane (<40)",
+   "QF_MG08_0001F258.Staff (Skyrim.esm:035369)",
+   "stage 200 log (named Arch-Mage; Psijics remove the Eye)",
+   "MG07 objective 80"
+  ]
+ },
+ {
+  "edid": "MGR21",
+  "name": "Shalidor's Insights",
+  "plugin": "Skyrim.esm (last edited by CollegeEntry.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "A repeatable job from Urag gro-Shub: find a copy of Arch-Mage Shalidor's writings in a place chosen for you and bring it back.",
+  "needs": [
+   {
+    "what": "Be a member of the College of Winterhold",
+    "kind": "faction"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Urag gro-Shub",
+    "where": "The Arcanaeum, College of Winterhold",
+    "how": "Talk to Urag; he is looking for more of Shalidor's writings to translate and asks you to find a copy."
+   }
+  ],
+  "firstStep": "Find Shalidor's writings at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "a location chosen when the job is given",
+    "hold": "varies (the journal and map marker name it)",
+    "why": "find Shalidor's writings"
+   },
+   {
+    "place": "The Arcanaeum, College of Winterhold",
+    "hold": "Winterhold",
+    "why": "bring them to Urag"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find Shalidor's writings",
+     "Talk to Urag"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Mages Guild",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Urag gro-Shub",
+    "role": "Arcanaeum librarian; gives the job"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The conditions on Urag's offer line aren't in these files; College membership is assumed because it's a College job, and CollegeEntry.esp edits this quest in a way not shown here."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is listed on the quest's records."
+   },
+   {
+    "field": "takesYou",
+    "why": "The location is filled in when the job starts, so the records can't say which one."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0E0E04 (MGR21); editedBy USSEP, CollegeEntry.esp",
+   "giver INFO Skyrim.esm:0F6270 (Urag gro-Shub Skyrim.esm:01C193, stage below 10)",
+   "aliases QuestGiver, BookLocation, BookContainer, Book",
+   "INFO Skyrim.esm:0F6271 (Shalidor in Labyrinthian, lore line)",
+   "questline College of Winterhold"
+  ]
+ }
+]
