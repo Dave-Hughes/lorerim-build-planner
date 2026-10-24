@@ -68,3 +68,4 @@
 - **066** (jarls' bounties): 2 fixed. LoreRim renames the courts: Winterhold's jarl sits in Stonecold Fortress, Falkreath's in Hakkvild's High Hall, not "the Jarl's Longhouse".
 - **067** (more jarls' bounties): 10 fixed. No record shows the court handing these out; the court is where you collect.
 - **062** (Serana's quests): 6 fixed, 2 unsure. Intruders starts from Lucien's line; From Arena to Oblivion needs Serana freed from Dimhollow Crypt, not travelling with you.
+- **069** (town favors): 4 fixed. Brunwulf outside the Palace of the Kings by day; Rustleif is Dawnstar's blacksmith; Captain Aldis is in Castle Dour only at night.

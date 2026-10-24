@@ -1,0 +1,1340 @@
+{
+ "checks": [
+  {
+   "edid": "BQ03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by the story manager, target picked at random."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Nothing in the records names a requirement; the start rules on the story-manager branches aren't extracted, which the reader already flags under starts."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Nine hold start branches, one per hold."
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "The start is a change-location event on each hold's bounty branch: it fires whenever you move between places, not only on reaching somewhere new. The 'most likely through the inn' guess comes only from the Letter and Innkeeper slots, so it moved to unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The records only name the steward or jarl by role; 'palace or longhouse' doesn't fit several holds (Dawnstar's White Hall and Markarth's Understone Keep are keeps). Now 'the jarl's hall in the hold's main town', with the place left to unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold and the Requiem reward list both come from the quest script's Gold and Reward properties; the amounts and list contents aren't in these files, as the reader says."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "BQ04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by the story manager, target picked at random."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "The reader's note says dragons only appear once the main story wakes them; that comes from memory of the game, not from these records. Rewritten to say only that the start rules aren't in these files. What would settle it: the conditions on the hold bounty branches."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Nine hold start branches, one per hold."
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "The start is a change-location event on each hold's bounty branch: it fires whenever you move between places, not only on reaching somewhere new. The 'most likely through the inn' guess comes only from the Letter and Innkeeper slots, so it moved to unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The records only name the steward or jarl by role; 'palace or longhouse' doesn't fit several holds (Dawnstar's White Hall and Markarth's Understone Keep are keeps). Now 'the jarl's hall in the hold's main town', with the place left to unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold and the Requiem reward list both come from the quest script's Gold and Reward properties; the amounts and list contents aren't in these files, as the reader says."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor104",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No start event in the records, while the four per-person copies each have one (Solitude, Darkwater Crossing, Windhelm, Skaal Village). The reader's unsure note on the leftover dialogue is fair."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Empty, as it should be for a quest that can't start."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The script still holds gold and the two enchanted lists, but the quest can't start, so an empty list is right for a player."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor109",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Offer line conditioned on Sybille Stentor."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in the Blue Palace; her sleep, court and lab packages are all in the Blue Palace."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Change-location start for Solitude; objective text names Clearpine Pond."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Game's objective wording."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Pinemoon Cave is a vampire lair next to Dragon Bridge, as is Clearpine Pond; kept as the likely target in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold plus the enchanted-armour and enchanted-weapon lists from the script; added an unsure line that the weapon list is named for swords."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor151",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Igmund is placed in Understone Keep; he has no routine of his own beyond a default stand-around package."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "The camp's hold is given as the Reach with no caveat, but the quest only has an unfilled hold slot. Added an unsure line; what would settle it is the hold slot's fill rule."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold plus the two enchanted lists from the script; added the sword-list note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor153",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in the White Hall; his jarl sit package keeps him on the throne."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold plus the two enchanted lists from the script; added the sword-list note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor154",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in Hakkvild's High Hall, and he belongs to the Falkreath Jarl's Longhouse faction, which ties the hall to the longhouse."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold plus the two enchanted lists from the script; added the sword-list note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor157",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Change-location start for Markarth; the objective says to bring the item to him in Understone Keep."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Requiem points the script's large-gold property at its own reward list, plus the script's Gold."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor158",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in Stonecold Fortress; his lunch package names that cell as the Jarl's Longhouse. Frozen Hearth from 6 to 8 pm checks out."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "The quest item is filled as the Helm of Winterhold."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only the script's Gold."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor001AngasMill",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Aeri fills the quest-giver slot."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in Aeri's House; her mill-work packages run 8 am for 11 hours at Anga's Mill, eating at 7 am and 7 pm."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Change-location start for Anga's Mill; her own offer line isn't in the files, which the reader flags."
+    },
+    "firstStep": {
+     "verdict": "fix",
+     "note": "'Aeri's package' names a form the records don't give: the item slot is unfilled. Now 'the item Aeri gives you', with where Skald is."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The script's Gold; who pays is left unsure, fairly."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "BQ03",
+   "name": "Bounty: Giant",
+   "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "Starts by itself as you travel the holds; the giant and its lair are picked at random, and you're paid by the hold's steward or jarl.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "",
+     "where": "any of the nine holds: the Reach, the Rift, Eastmarch, Winterhold, Falkreath, the Pale, Whiterun, Hjaalmarch or Haafingar",
+     "how": "Starts on its own as you pass from one place to another inside one of the nine holds; the game picks the hold, the lair and the target when it fires. How the bounty notice reaches you isn't in these files."
+    }
+   ],
+   "firstStep": "Kill the giant at the place named on the bounty",
+   "takesYou": [
+    {
+     "place": "a giant lair picked at random",
+     "hold": "the hold that posted the bounty",
+     "why": "kill the giant"
+    },
+    {
+     "place": "the jarl's hall in the hold's main town",
+     "hold": "the hold that posted the bounty",
+     "why": "collect the bounty from the steward or the jarl"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the giant located at the bounty's place in its hold",
+      "Collect the bounty from the steward (or from the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you collect the bounty"
+    },
+    {
+     "what": "An item from Requiem's giant-bounty reward list",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The hold's steward",
+     "role": "pays the bounty"
+    },
+    {
+     "name": "The hold's jarl",
+     "role": "pays the bounty if there's no steward to ask"
+    },
+    {
+     "name": "The hold's innkeeper",
+     "role": "tied to the bounty letter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest is started by the game on entering a new place, and the rules that decide when it fires (level, story progress, how often) aren't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "LoreRim also has separate per-hold bounty quests (a giant bounty for Eastmarch, the Pale and Whiterun); the records don't show whether the game now picks those instead of this one."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount and what's in the reward list aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The lair is chosen when the quest starts, so no fixed place is in the records."
+    },
+    {
+     "field": "starts",
+     "why": "The quest carries a bounty letter and the hold's innkeeper, so the notice probably comes from the innkeeper or as a letter; the records don't show which."
+    },
+    {
+     "field": "takesYou",
+     "why": "Where the steward or jarl stands depends on the hold; the quest only names them by role."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0BD78C",
+    "QUST BQ03 editedBy Requiem.esp",
+    "starts: BQReach/Rift/Eastmarch/Winterhold/Falkreath/Pale/Whiterun/Hjaalmarch/HaafingarNodeSHARES (change location)",
+    "aliases Letter, Innkeeper, Steward, Jarl, BountyLocation, Hold",
+    "objectives 10/100/101",
+    "reward BQScript.Reward -> Requiem.esp:AD391B REQ_LI_Reward_BountyGiant; BQScript.Gold001"
+   ]
+  },
+  {
+   "edid": "BQ04",
+   "name": "Bounty: Dragon",
+   "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "Starts by itself as you travel the holds; the dragon and its lair are picked at random, and you're paid by the hold's steward or jarl.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "",
+     "where": "any of the nine holds: the Reach, the Rift, Eastmarch, Winterhold, Falkreath, the Pale, Whiterun, Hjaalmarch or Haafingar",
+     "how": "Starts on its own as you pass from one place to another inside one of the nine holds; the game picks the hold, the lair and the target when it fires. How the bounty notice reaches you isn't in these files."
+    }
+   ],
+   "firstStep": "Kill the dragon at the place named on the bounty",
+   "takesYou": [
+    {
+     "place": "a dragon lair picked at random",
+     "hold": "the hold that posted the bounty",
+     "why": "kill the dragon"
+    },
+    {
+     "place": "the jarl's hall in the hold's main town",
+     "hold": "the hold that posted the bounty",
+     "why": "collect the bounty from the steward or the jarl"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the dragon located at the bounty's place in its hold",
+      "Collect the bounty from the steward (or from the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you collect the bounty"
+    },
+    {
+     "what": "An item from Requiem's dragon-bounty reward list",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The hold's steward",
+     "role": "pays the bounty"
+    },
+    {
+     "name": "The hold's jarl",
+     "role": "pays the bounty if there's no steward to ask"
+    },
+    {
+     "name": "The hold's innkeeper",
+     "role": "tied to the bounty letter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest is started by the game on entering a new place, and the rules that decide when it fires (level, story progress, how often) aren't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "LoreRim also has separate per-hold bounty quests (a dragon bounty for every hold); the records don't show whether the game now picks those instead of this one."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount and what's in the reward list aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The lair is chosen when the quest starts, so no fixed place is in the records."
+    },
+    {
+     "field": "starts",
+     "why": "The quest carries a bounty letter and the hold's innkeeper, so the notice probably comes from the innkeeper or as a letter; the records don't show which."
+    },
+    {
+     "field": "takesYou",
+     "why": "Where the steward or jarl stands depends on the hold; the quest only names them by role."
+    },
+    {
+     "field": "needs",
+     "why": "The start rules aren't in these files, so whether this bounty waits on main-story progress isn't shown by the records."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0CBA9A",
+    "QUST BQ04 editedBy Requiem.esp",
+    "starts: BQReach/Rift/Eastmarch/Winterhold/Falkreath/Pale/Whiterun/Hjaalmarch/HaafingarNodeSHARES (change location)",
+    "aliases Letter, Innkeeper, Steward, Jarl, BountyLocation, Hold",
+    "objectives 10/100/101",
+    "reward BQScript.Reward -> Requiem.esp:AD3920 REQ_LI_Reward_BountyDragon; BQScript.Gold001"
+   ]
+  },
+  {
+   "edid": "Favor104",
+   "name": "Kill the Bandit Leader",
+   "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+   "canDo": "cut",
+   "canDoWhy": "LoreRim's favour-splitting mod takes this shared version off the game's start list and gives each of its four askers their own copy of the job.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "",
+   "takesYou": [],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit hideout",
+      "Tell the person who asked that the bandit is dead"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Ahtar",
+     "role": "one of the four who used to offer it; now has his own copy, placed in Jala's House in Solitude"
+    },
+    {
+     "name": "Annekke Crag-Jumper",
+     "role": "now has her own copy, in Darkwater Crossing"
+    },
+    {
+     "name": "Brunwulf Free-Winter",
+     "role": "now has his own copy, in Windhelm"
+    },
+    {
+     "name": "Fanari Strong-Voice",
+     "role": "now has her own copy, in the Skaal Village"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "canDo",
+     "why": "This version is no longer attached to any start event in the records, while the four per-person copies are; its old dialogue still exists, so it's treated as replaced rather than proven unreachable."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06FD35",
+    "editedBy USSEP, Favor Quests Seperated.esp (last)",
+    "no story-manager start in quest_givers_raw",
+    "INFO Skyrim.esm:0AD089 GetIsID Ahtar 01325F / Annekke 013666 / Brunwulf 014149 / Fanari Dragonborn.esm:018FC5",
+    "replacements: Favor104Solitude Seperated.esp:000B34, Favor104DarkwaterCrossing, Favor104Windhelm, Favor104SkaalVillage"
+   ]
+  },
+  {
+   "edid": "Favor109",
+   "name": "Kill the Vampire",
+   "plugin": "Skyrim.esm (last edited by TimingIsEverything.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Sybille Stentor, the court wizard in Solitude's Blue Palace, asks you to kill a vampire near Clearpine Pond.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Sybille Stentor",
+     "where": "the Blue Palace in Solitude",
+     "how": "Talk to Sybille Stentor in the Blue Palace; she asks you to kill the vampire leading a lair near Clearpine Pond, west of Solitude. The job is readied when you arrive in Solitude."
+    }
+   ],
+   "firstStep": "Kill the vampire leading the lair near Clearpine Pond, west of Solitude",
+   "takesYou": [
+    {
+     "place": "a vampire lair near Clearpine Pond",
+     "hold": "Haafingar",
+     "why": "kill the vampire leader"
+    },
+    {
+     "place": "the Blue Palace, Solitude",
+     "hold": "Haafingar",
+     "why": "tell Sybille the vampire is dead"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the vampire lair near Clearpine Pond, west of Solitude",
+      "Tell Sybille Stentor in the Blue Palace that the vampire is dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "An enchanted weapon or enchanted armour piece from a random list",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Sybille Stentor",
+     "role": "court wizard who asks for the job; in the Blue Palace. Her routine is named for sleeping from 8 in the morning, holding court from 4 in the afternoon and working in her lab from midnight"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The lair isn't filled in the records; Pinemoon Cave is a vampire lair right by Clearpine Pond and Dragon Bridge, with a boss of level 45 to 50 in LoreRim, so it's the likely target."
+    },
+    {
+     "field": "starts",
+     "why": "A timing mod edits this quest; what it changes isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "An extra Saturday-afternoon visit to Angeline's Aromatics is in her routine under conditions not decoded here."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script holds gold, an enchanted-weapon list and an enchanted-armour list; whether you get one item or both, and how much gold, isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The weapon list the script points at is named as a sword list, so the weapon is probably an enchanted sword; its contents aren't in these files."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0940E0",
+    "editedBy USSEP, TimingIsEverything.esp (last)",
+    "INFO Skyrim.esm:0AD088 GetIsID Sybille 0132AA",
+    "start FavorChangeLocatiomSolitude",
+    "objectives 10/15",
+    "QF_Favor109_000940E0 Gold, FavorRewardEnchArmor 049313, FavorRewardEnchWeapon 0494B0",
+    "Pinemoon Cave Skyrim.esm:019288 LocTypeVampireLair",
+    "packages SolitudePalaceSybilleSleep8x8 / CourtSandbox16x8 / LabSandbox0x8, AIOSoSybilleShopSat16x2"
+   ]
+  },
+  {
+   "edid": "Favor151",
+   "name": "Kill the Forsworn Leader (Jarl)",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Jarl Igmund of Markarth asks you to kill the leader of a Forsworn camp in the Reach.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Igmund",
+     "where": "Understone Keep, Markarth",
+     "how": "Talk to Jarl Igmund in Understone Keep; he asks you to kill a Forsworn leader. The job is readied when you arrive in Markarth."
+    }
+   ],
+   "firstStep": "Kill the leader of the Forsworn camp the jarl names",
+   "takesYou": [
+    {
+     "place": "a Forsworn camp picked when the quest starts",
+     "hold": "the Reach",
+     "why": "kill its leader"
+    },
+    {
+     "place": "Understone Keep, Markarth",
+     "hold": "the Reach",
+     "why": "report back to Igmund"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the Forsworn camp",
+      "Return to Igmund"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "An enchanted weapon or enchanted armour piece from a random list",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Igmund",
+     "role": "Jarl of Markarth; asks for the job in Understone Keep"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The camp is chosen when the quest starts, so no fixed place is in the records."
+    },
+    {
+     "field": "starts",
+     "why": "The offer is tied to Igmund himself; if he loses his seat in the civil war (the records then send him to the Blue Palace in Solitude) it's unclear whether he still offers it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script holds gold, an enchanted-weapon list and an enchanted-armour list; whether you get one item or both, and how much gold, isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The weapon list the script points at is named as a sword list, so the weapon is probably an enchanted sword; its contents aren't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The quest has a hold slot, so the camp is most likely in the Reach, but the records don't fill it."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06C824",
+    "no later edits",
+    "INFO Skyrim.esm:0AD087 GetIsID Igmund 01339F",
+    "start FavorChangeLocationMarkarth",
+    "aliases Dungeon, Hold, Boss",
+    "QF_Favor151_0006C824 Gold, FavorRewardEnchArmor, FavorRewardEnchWeapon",
+    "package CWExiledImperialSandboxBluePalace"
+   ]
+  },
+  {
+   "edid": "Favor153",
+   "name": "Kill the Giant (Jarl)",
+   "plugin": "Skyrim.esm (last edited by TimingIsEverything.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Jarl Skald the Elder of Dawnstar asks you to kill a giant.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Skald the Elder",
+     "where": "the White Hall, Dawnstar",
+     "how": "Talk to Jarl Skald in the White Hall; he asks you to kill the giant at a giant camp. The job is readied when you arrive in Dawnstar."
+    }
+   ],
+   "firstStep": "Kill the giant at the giant camp the jarl names",
+   "takesYou": [
+    {
+     "place": "a giant camp picked when the quest starts",
+     "hold": "the Pale",
+     "why": "kill the giant"
+    },
+    {
+     "place": "the White Hall, Dawnstar",
+     "hold": "the Pale",
+     "why": "report back to Skald"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the giant in the giant camp",
+      "Return to Skald the Elder"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "An enchanted weapon or enchanted armour piece from a random list",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Skald the Elder",
+     "role": "Jarl of Dawnstar; sits his throne in the White Hall"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The camp is chosen when the quest starts; the quest has a hold slot, so it's most likely in the Pale, but no fixed place is in the records."
+    },
+    {
+     "field": "starts",
+     "why": "A timing mod edits this quest; what it changes isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "If Skald loses his seat in the civil war the records send him to the Palace of the Kings in Windhelm; it's unclear whether he still offers it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script holds gold, an enchanted-weapon list and an enchanted-armour list; whether you get one item or both, and how much gold, isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The weapon list the script points at is named as a sword list, so the weapon is probably an enchanted sword; its contents aren't in these files."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:090E36",
+    "editedBy USSEP, TimingIsEverything.esp (last)",
+    "INFO Skyrim.esm:090DF5 GetIsID Skald 013620",
+    "start FavorChangeLocationDawnstar",
+    "aliases GiantCamp, Hold",
+    "QF_Favor153_00090E36 Gold, FavorRewardEnchArmor, FavorRewardEnchWeapon",
+    "packages DawnstarJarlSitPackage, CWExiledSonsSandboxPalace"
+   ]
+  },
+  {
+   "edid": "Favor154",
+   "name": "Kill the Bandit Leader (Jarl)",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Jarl Siddgeir of Falkreath asks you to kill the leader of a bandit camp.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Siddgeir",
+     "where": "the Jarl's Longhouse in Falkreath (his hall, Hakkvild's High Hall)",
+     "how": "Talk to Jarl Siddgeir; he asks you to kill a bandit leader. The job is readied when you arrive in Falkreath."
+    }
+   ],
+   "firstStep": "Kill the leader of the bandit camp the jarl names",
+   "takesYou": [
+    {
+     "place": "a bandit camp picked when the quest starts",
+     "hold": "Falkreath",
+     "why": "kill its leader"
+    },
+    {
+     "place": "Siddgeir's hall, Falkreath",
+     "hold": "Falkreath",
+     "why": "report back to Siddgeir"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit camp",
+      "Return to Siddgeir"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "An enchanted weapon or enchanted armour piece from a random list",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Siddgeir",
+     "role": "Jarl of Falkreath; placed in Hakkvild's High Hall"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The camp is chosen when the quest starts; the quest has a hold slot, so it's most likely in Falkreath hold, but no fixed place is in the records."
+    },
+    {
+     "field": "where",
+     "why": "The records place Siddgeir in Hakkvild's High Hall, the hall inside Falkreath's Jarl's Longhouse; he has no daily routine of his own in these files."
+    },
+    {
+     "field": "starts",
+     "why": "If Siddgeir loses his seat in the civil war the records send him to the Blue Palace in Solitude; it's unclear whether he still offers it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script holds gold, an enchanted-weapon list and an enchanted-armour list; whether you get one item or both, and how much gold, isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The weapon list the script points at is named as a sword list, so the weapon is probably an enchanted sword; its contents aren't in these files."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:07172A",
+    "no later edits",
+    "INFO HearthFires.esm:01612E GetIsID Siddgeir 013653",
+    "start FavorChangeLocationFalkreath",
+    "aliases BanditCamp, BanditBoss, Hold",
+    "QF_Favor054_0007172A Gold, FavorRewardEnchArmor, FavorRewardEnchWeapon",
+    "Jarl's Longhouse Falkreath Skyrim.esm:0200C9 (COTN - Falkreath.esp)"
+   ]
+  },
+  {
+   "edid": "Favor157",
+   "name": "Dungeon Delving (Jarl - Hagravens)",
+   "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Jarl Igmund of Markarth asks you to fetch something from a hagraven lair.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Igmund",
+     "where": "Understone Keep, Markarth",
+     "how": "Talk to Jarl Igmund in Understone Keep; he asks you to recover an item from a hagraven lair. The job is readied when you arrive in Markarth."
+    }
+   ],
+   "firstStep": "Find the item Igmund wants",
+   "takesYou": [
+    {
+     "place": "a hagraven lair picked when the quest starts",
+     "hold": "",
+     "why": "take the item from the boss's chest"
+    },
+    {
+     "place": "Understone Keep, Markarth",
+     "hold": "the Reach",
+     "why": "bring the item to Igmund"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the item for Igmund",
+      "Bring the item to Igmund in Understone Keep"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand over the item"
+    },
+    {
+     "what": "An item from Requiem's reward list for this job",
+     "when": "when you hand over the item"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Igmund",
+     "role": "Jarl of Markarth; asks for the job in Understone Keep"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The lair and the item aren't filled in the records; they're chosen when the quest starts. The quest keeps the item in the boss's chest there."
+    },
+    {
+     "field": "starts",
+     "why": "A timing mod also edits this quest; what it changes isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "Requiem swaps the large-gold reward for its own list; what's in that list isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "If Igmund loses his seat in the civil war it's unclear whether he still offers it."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0A3504",
+    "editedBy TimingIsEverything.esp, Requiem.esp (last)",
+    "INFO Skyrim.esm:0A34A2 GetIsID Igmund 01339F",
+    "start FavorChangeLocationMarkarth",
+    "aliases QuestItem, Dungeon, BossContainer",
+    "QF_Favor157_000A3504 FavorRewardGoldLarge -> Requiem.esp:ADE415 REQ_LI_Reward_Quest_JarlHagraven; Gold"
+   ]
+  },
+  {
+   "edid": "Favor158",
+   "name": "Dungeon Delving (Jarl - Caves)",
+   "plugin": "Skyrim.esm (last edited by Update.esm)",
+   "canDo": "talk",
+   "canDoWhy": "Jarl Korir of Winterhold asks you to recover the Helm of Winterhold from a cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Korir",
+     "where": "the Jarl's Longhouse in Winterhold",
+     "how": "Talk to Jarl Korir; he asks you to bring back the Helm of Winterhold. The job is readied when you arrive in Winterhold."
+    }
+   ],
+   "firstStep": "Find the Helm of Winterhold inside the cave Korir names",
+   "takesYou": [
+    {
+     "place": "a cave picked when the quest starts",
+     "hold": "",
+     "why": "find the Helm of Winterhold in the boss's chest"
+    },
+    {
+     "place": "the Jarl's Longhouse, Winterhold",
+     "hold": "Winterhold",
+     "why": "return the helm to Korir"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the Helm of Winterhold inside the cave",
+      "Return the Helm of Winterhold to Korir"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you return the helm"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Korir",
+     "role": "Jarl of Winterhold; in the Jarl's Longhouse (its hall is called Stonecold Fortress), at lunch there from noon, and in the Frozen Hearth from 6 to 8 in the evening"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The cave isn't filled in the records; it's chosen when the quest starts."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "If Korir loses his seat in the civil war the records send him to Brunwulf Free-Winter's House in Windhelm; it's unclear whether he still offers it."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0940D0",
+    "editedBy Update.esm (last)",
+    "INFO Skyrim.esm:0AD080 GetIsID Korir 01C188",
+    "start FavorChangeLocationWinterhold",
+    "fills QuestItem = Helm of Winterhold",
+    "QF_Favor158_000940D0 Gold",
+    "packages WinterholdKorirLunch12x1, WinterholdKorirWanderInn18x2, CWExiledSonsSandboxBrunwulfsHouse",
+    "place Jarl's Longhouse Skyrim.esm:01EB7D"
+   ]
+  },
+  {
+   "edid": "Favor001AngasMill",
+   "name": "Delivery",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Aeri at Anga's Mill asks you to carry something to Jarl Skald the Elder in Dawnstar.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Aeri",
+     "where": "Anga's Mill, by the mill (her house is Aeri's House)",
+     "how": "Talk to Aeri at Anga's Mill; she's the one asking, and the delivery goes to Skald the Elder in Dawnstar. The job is readied when you arrive at Anga's Mill."
+    }
+   ],
+   "firstStep": "Take the item Aeri gives you to Skald the Elder in the White Hall, Dawnstar",
+   "takesYou": [
+    {
+     "place": "the White Hall, Dawnstar",
+     "hold": "the Pale",
+     "why": "deliver the item to Skald the Elder"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver the item Aeri gives you to Skald the Elder"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when the delivery is made"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Aeri",
+     "role": "asks for the delivery; works the mill at Anga's Mill from 8 in the morning to 7 in the evening"
+    },
+    {
+     "name": "Skald the Elder",
+     "role": "Jarl of Dawnstar, who receives it in the White Hall"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Aeri's offer line isn't in these files; she's the quest's asker and the records only show Skald's line for when you hand it over."
+    },
+    {
+     "field": "steps",
+     "why": "What the item is isn't filled in the records."
+    },
+    {
+     "field": "rewards",
+     "why": "Who pays and how much isn't in these files."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000835",
+    "alias Questgiver = Aeri Skyrim.esm:01360B; Target = Skald Skyrim.esm:013620",
+    "INFO Favor Quests Seperated.esp:000836 (alias Target)",
+    "start FavorChangeLocationAngasMill",
+    "QF_Favor001_000403B0 Gold",
+    "packages AeriWorkMillPackage8x11, AeriEatMorning7x1, AeriEatEvening19x1"
+   ]
+  }
+ ]
+}

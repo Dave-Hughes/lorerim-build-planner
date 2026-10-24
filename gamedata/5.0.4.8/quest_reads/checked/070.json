@@ -1,0 +1,1245 @@
+{
+ "checks": [
+  {
+   "edid": "Favor110Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "He fills the quest-giver role and the offer line is his."
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "His packages put him at home only for breakfast and at night; from 11 am to 8 pm he is out in Windhelm and from 8 pm to midnight at Candlehearth Hall. Saying just his house sends a player to an empty room most of the day."
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "\"Before it has begun\" was misleading: the quest has already started in the background; the offer line only needs it not to have moved past its first stage, i.e. you haven't accepted yet."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective: bring one of the item to Torbjorn; which item is picked when the quest sets itself up."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The hand-in is to Torbjorn himself, not his house; pointed it at wherever he is by the hour."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the fragment script is the only reward the records name. The three skill-book roles in the cast are roles, not reward properties, so they stay in unsure, not rewards."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor204Whiterun",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Fills the quest-giver role; offer line is his."
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "He is at home only 7 to 9 pm and overnight; by day his first package holds him near Jorrvaskr (while a quest of his hasn't moved on) and evenings at the Drunken Huntsman."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Start by entering Whiterun, offer line conditioned only on the quest not having moved on."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 1: find the item inside the dungeon; a map-marker role exists. \"Bandit\" comes from the quest name."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Return trip pointed at his house; the hand-in is to Amren, who is mostly not home."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor204Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "She fills the quest-giver role, the journal names her, and she carries this job's quest-giver faction, so she stays as the giver."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Docks 9 am to 9 pm by her work package; dinner at the Assemblage from 8 pm comes earlier in her list, so 8 to 9 pm she is at home."
+    },
+    "starts.how": {
+     "verdict": "unsure",
+     "note": "No offer line for her was captured. Her own dialogue lines for this job (or a line keyed to the quest-giver faction) would settle how she brings it up."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor205Dawnstar",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in and works at the Mortar and Pestle 8 am to 8 pm; the inn visit in the note has a condition, so the note now says \"may\"."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor205Falkreath",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "Only the Hall of the Dead was given; his first package puts him at Dead Man's Drink from 7 pm to 1 am (it outranks his sleep package, so not asleep at midnight)."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Return place now covers the evening at Dead Man's Drink as well as the Hall of the Dead."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor205Kynesgrove",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Placed in Steamscorch Mine; works there by day, breakfast and dinner at Braidwood Inn, sleeps in his house."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor205Solitude",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "The field itself is right, but the note under it named an execution scene at Solitude's gate, which these files don't say (the packages only say Solitude's opening), and missed a 1 to 4 am outdoor package that outranks his sleep when it isn't raining."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor205Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The job is set up in the background when you enter the town, then offered in conversation; \"talk\" fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No condition on the start or the offer line beyond the quest not having moved on yet."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Forge package 8 am to 8 pm at a spot in Windhelm; dinner at the Blacksmith Quarters 8 to 10 pm; shop hours 8 am to 7 pm."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the quest fragment script; the amount is not in these files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "BQ01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"Radiant\" stands, but \"repeatable\" isn't shown by any record here, and the hold isn't random: each hold has its own start node, so it is the hold you enter. Dropped both."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions captured on the start."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No giver; started by the story manager on entering a location."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Start nodes cover all nine holds."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Hedged guess from the innkeeper and letter roles, already flagged in unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective (kill the bandit leader)."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "\"The jarl's hall\" isn't in the records; the steward and jarl roles are filled at start. Pointed the hand-in at the person and moved the hall guess to unsure."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "Steward or jarl are two journal lines, one of which the quest shows; nothing shows the player choosing between them. Emptied choices and noted it in unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold and a reward leveled list are both quest-script properties; the list's contents aren't in these files, already flagged."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "BQ02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"Radiant\" stands, but \"repeatable\" isn't shown by any record here, and the hold isn't random: each hold has its own start node, so it is the hold you enter. Dropped both."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions captured on the start."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No giver; started by the story manager on entering a location."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Start nodes cover all nine holds."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Hedged guess from the innkeeper and letter roles, already flagged in unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective (kill the Forsworn leader)."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "\"The jarl's hall\" isn't in the records; the steward and jarl roles are filled at start. Pointed the hand-in at the person and moved the hall guess to unsure."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "Steward or jarl are two journal lines, one of which the quest shows; nothing shows the player choosing between them. Emptied choices and noted it in unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold and a reward leveled list are both quest-script properties; the list's contents aren't in these files, already flagged."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "Favor110Windhelm",
+   "name": "Rare Gifts",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Windhelm; Torbjorn Shatter-Shield asks you to bring him a particular item.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Torbjorn Shatter-Shield",
+     "where": "House of Clan Shatter-Shield in Windhelm in the morning (9 to 11 am) and at night; out around Windhelm from 11 am to 8 pm; Candlehearth Hall from 8 pm to midnight",
+     "how": "Walk into Windhelm; the job is set up in the background, and Torbjorn offers it when you talk to him, as long as you haven't taken it on yet."
+    }
+   ],
+   "firstStep": "Bring one of the item Torbjorn names to Torbjorn Shatter-Shield",
+   "takesYou": [
+    {
+     "place": "Windhelm, wherever Torbjorn is at that hour (see where to find him)",
+     "hold": "Eastmarch",
+     "why": "hand the item to Torbjorn"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring one <the item> to Torbjorn"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand over the item"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Torbjorn Shatter-Shield",
+     "role": "asks for the gift; lives in the House of Clan Shatter-Shield"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "firstStep",
+     "why": "Which item he wants is picked when the quest sets itself up; the records don't name it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest also holds three skill books (Alchemy, Block, One-Handed) in its cast; the records here don't show whether one is handed over as a reward. Only gold is shown as a reward."
+    },
+    {
+     "field": "where",
+     "why": "By his packages he has breakfast at home from 9 to 11 am, is out in Windhelm from 11 am to 8 pm, and drinks at Candlehearth Hall from 8 pm to midnight. The daytime package has conditions not decoded here, so on some days he may stay home instead."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000D8F Favor110Windhelm: objective 10 'Bring one <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; aliases QuestItem, House, AlchemyBook, BlockBook, OneHandBook",
+    "quest_givers_raw: giver Torbjorn Shatter-Shield Skyrim.esm:01413F, offer INFO Favor Quests Seperated.esp:000DAC, GetIsID, GetStage < 1; placed Skyrim.esm:01B12B in House of Clan Shatter-Shield (Skyrim.esm:01677E)",
+    "start event 'change location' via story node FavorChangeLocationWindhelm",
+    "reward: gold, QF_Favor110_000CA439.Gold",
+    "people_schedules_raw Skyrim.esm:01413F: WindhelmTorbjornBreakfast9x2, AIOWHTorjornRandom11x9 (conditional), WindhelmTorbjornCandlehearthBar20x4, DefaultSleepPackageAnyTime"
+   ]
+  },
+  {
+   "edid": "Favor204Whiterun",
+   "name": "Dungeon Delving (Bandits)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Whiterun; then Amren asks you to fetch something from a bandit lair.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Amren",
+     "where": "near Jorrvaskr in Whiterun from 8 am to 8 pm (until a quest of his moves on); his house from 7 to 9 pm; the Drunken Huntsman from 9 pm to midnight",
+     "how": "Walk into Whiterun; the job is set up in the background, and Amren offers it when you talk to him."
+    }
+   ],
+   "firstStep": "Find the item Amren wants inside the bandit lair marked on your map",
+   "takesYou": [
+    {
+     "place": "a bandit lair chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "Whiterun, wherever Amren is at that hour (see where to find him)",
+     "hold": "Whiterun",
+     "why": "bring the item back to Amren"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Amren"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Amren"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Amren",
+     "role": "asks for the item; lives in Amren's House in Whiterun"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from bandit-held places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "The records place Amren in his house. By his packages, from 8 am to 8 pm he stands at a spot near Jorrvaskr until a quest of his moves on; he is home 7 to 9 pm, at the Drunken Huntsman 9 pm to midnight, asleep from 2 to 8 am, and on one day of the week (not decoded) in Dragonsreach 10 am to 2 pm. After that quest of his moves on, his daytime spot isn't settled by these files."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DB9 Favor204Whiterun: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocationWhiterun",
+    "quest_givers_raw: Questgiver alias = Amren (Skyrim.esm:013BAA, placed Skyrim.esm:01A66A in Amren's House Skyrim.esm:0165AB)",
+    "offer INFO Favor Quests Seperated.esp:000DC4, GetIsID, GetStage < 11",
+    "people_schedules_raw Skyrim.esm:013BAA: WhiterunAmrenScenePositionPackage (8-20, quest Skyrim.esm:0270A4 var < 2), USKPWhiterunAmrenSleep 2x6, WhiterunAmrenDragonsreachPackage 10x4 dow 10, WhiterunAmrenHomePackage 19x2, WhiterunAmrenDrunkenHuntsmanPackage 21x3",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "Favor204Windhelm",
+   "name": "Dungeon Delving (Bandits)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Windhelm; then Shahvee asks you to fetch something from a bandit lair.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Shahvee",
+     "where": "at the Windhelm docks by day; she lives in the Argonian Assemblage",
+     "how": "Walk into Windhelm; the job is set up in the background, and Shahvee most likely offers it when you talk to her."
+    }
+   ],
+   "firstStep": "Find the item Shahvee wants inside the bandit lair marked on your map",
+   "takesYou": [
+    {
+     "place": "a bandit lair chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "at the Windhelm docks by day; she lives in the Argonian Assemblage",
+     "hold": "Eastmarch",
+     "why": "bring the item back to Shahvee"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Shahvee"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Shahvee"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Shahvee",
+     "role": "asks for the item; placed in the Argonian Assemblage"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from bandit-held places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "The records place Shahvee in the Argonian Assemblage. By her packages she works at the Windhelm docks from 9 am to 9 pm and eats dinner at the Assemblage at 8 pm; some evenings she may be in the New Gnisis Cornerclub (that package has a condition not decoded)."
+    },
+    {
+     "field": "starts",
+     "why": "The records fill the quest-giver role with Shahvee, but no offer line for her was found in these files, so how she brings it up is not shown."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DC2 Favor204Windhelm: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocationWindhelm",
+    "quest_givers_raw: Questgiver alias = Shahvee (Skyrim.esm:01411A, placed Skyrim.esm:01B141 in Argonian Assemblage Skyrim.esm:016776)",
+    "no giver INFO captured in quest_givers_raw for this quest",
+    "people_schedules_raw Skyrim.esm:01411A: AIOWHArgoniansCornerClub 20 (conditional), ShahveeEatDinner20x1, ShahveeEatBreakfast7x1, ShahveeWorkAtDocks9x12",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "Favor205Dawnstar",
+   "name": "Dungeon Delving (Caves)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Dawnstar; then Frida asks you to fetch something from a cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Frida",
+     "where": "The Mortar and Pestle, Dawnstar",
+     "how": "Walk into Dawnstar; the job is set up in the background, and Frida offers it when you talk to her."
+    }
+   ],
+   "firstStep": "Find the item Frida wants inside the cave marked on your map",
+   "takesYou": [
+    {
+     "place": "a cave chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "The Mortar and Pestle, Dawnstar",
+     "hold": "The Pale",
+     "why": "bring the item back to Frida"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Frida"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Frida"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Frida",
+     "role": "asks for the item; runs the Mortar and Pestle"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from cave places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "By her packages Frida keeps the Mortar and Pestle from 8 am to 8 pm and sleeps from midnight to 8 am. From 8 pm to midnight she may go to Windpeak Inn; that package has a condition not decoded here."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DD5 Favor205Dawnstar: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocationDawnstar",
+    "quest_givers_raw: Questgiver alias = Frida (Skyrim.esm:013614, placed Skyrim.esm:01A6B5 in The Mortar and Pestle Skyrim.esm:013A86)",
+    "offer INFO Favor Quests Seperated.esp:000DFE, GetIsID, GetStage < 11",
+    "people_schedules_raw Skyrim.esm:013614: DawnstarFridaVisitInn20x4Package, DawnstarApothecaryServicesPackage8x12, DefaultSleepEditorLoc24x8; vendor 8-20",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "Favor205Falkreath",
+   "name": "Dungeon Delving (Caves)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Falkreath; then Runil asks you to fetch something from a cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Runil",
+     "where": "in and around the Hall of the Dead in Falkreath by day; Dead Man's Drink from 7 pm to 1 am",
+     "how": "Walk into Falkreath; the job is set up in the background, and Runil offers it when you talk to him."
+    }
+   ],
+   "firstStep": "Find the item Runil wants inside the cave marked on your map",
+   "takesYou": [
+    {
+     "place": "a cave chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "Falkreath: the Hall of the Dead by day, Dead Man's Drink in the evening",
+     "hold": "Falkreath",
+     "why": "bring the item back to Runil"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Runil"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Runil"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Runil",
+     "role": "asks for the item; placed in Falkreath's Hall of the Dead"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from cave places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "The records place Runil in the Hall of the Dead. By his packages he is at Dead Man's Drink from 7 pm to 1 am and asleep until 8 am; his daytime package keeps him near where he is placed but has conditions not decoded here."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DF9 Favor205Falkreath: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocationFalkreath",
+    "quest_givers_raw: Questgiver alias = Runil (Skyrim.esm:01364D, placed Skyrim.esm:019820 in Hall of the Dead Skyrim.esm:013A71)",
+    "offer INFO Favor Quests Seperated.esp:000E12, GetIsID, GetStage < 11",
+    "people_schedules_raw Skyrim.esm:01364D: FalkreathDeadMansDrinkSandbox19x6, DefaultSleepEditorLoc24x8, AIOFalkRunilRandom (conditional)",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "Favor205Kynesgrove",
+   "name": "Dungeon Delving (Caves)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Kynesgrove; then Roggi Knot-Beard asks you to fetch something from a cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Roggi Knot-Beard",
+     "where": "Steamscorch Mine, Kynesgrove (by day)",
+     "how": "Walk into Kynesgrove; the job is set up in the background, and Roggi Knot-Beard offers it when you talk to him."
+    }
+   ],
+   "firstStep": "Find the item Roggi Knot-Beard wants inside the cave marked on your map",
+   "takesYou": [
+    {
+     "place": "a cave chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "Steamscorch Mine, Kynesgrove (by day)",
+     "hold": "Eastmarch",
+     "why": "bring the item back to Roggi Knot-Beard"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Roggi Knot-Beard"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Roggi Knot-Beard"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Roggi Knot-Beard",
+     "role": "asks for the item; works Steamscorch Mine"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from cave places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "By his packages Roggi works in Steamscorch Mine from 8 am to 6 pm, eats at Braidwood Inn (7 to 9 am and 7 to 10 pm), and sleeps in his house in Kynesgrove from 11 pm to 6 am."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DF0 Favor205Kynesgrove: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocationKynesgrove",
+    "quest_givers_raw: Questgiver alias = Roggi Knot-Beard (Skyrim.esm:01403F, placed Skyrim.esm:01B084 in Steamscorch Mine Skyrim.esm:013901)",
+    "offer INFO Favor Quests Seperated.esp:000E0D, GetIsID, GetStage < 11",
+    "people_schedules_raw Skyrim.esm:01403F: KynesgroveRoggeEatDinner19x3, KynesgroveRoggeEatBreakfast7x2, KynesgroveRoggiWork8x10, KynesgroveRoggeSleep23x7 (The Great Village of Kynesgrove.esp)",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "Favor205Solitude",
+   "name": "Dungeon Delving (Caves)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Solitude; then Noster Eagle-Eye asks you to fetch something from a cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Noster Eagle-Eye",
+     "where": "begging in the streets of Solitude by day; he sleeps at the Winking Skeever",
+     "how": "Walk into Solitude; the job is set up in the background, and Noster Eagle-Eye offers it when you talk to him."
+    }
+   ],
+   "firstStep": "Find the item Noster Eagle-Eye wants inside the cave marked on your map",
+   "takesYou": [
+    {
+     "place": "a cave chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "begging in the streets of Solitude by day; he sleeps at the Winking Skeever",
+     "hold": "Haafingar",
+     "why": "bring the item back to Noster Eagle-Eye"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Noster Eagle-Eye"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Noster Eagle-Eye"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Noster Eagle-Eye",
+     "role": "asks for the item; a beggar in Solitude"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from cave places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "The records place Noster in the Winking Skeever, where his packages have him sleep (11 pm to 7 am). From 6 am to 10 pm he begs at a spot in Solitude's streets (another spot when it rains). On dry nights another package puts him by a spot in town from 1 to 4 am instead of in bed. Before Solitude's opening scene has played out (the records only name it that way), he follows that scene instead."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DDE Favor205Solitude: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocatiomSolitude",
+    "quest_givers_raw: Questgiver alias = Noster Eagle-Eye (Skyrim.esm:01329C, placed Skyrim.esm:0198BD in The Winking Skeever Skyrim.esm:016A0E)",
+    "offer INFO Favor Quests Seperated.esp:000E03, GetIsID, GetStage < 11",
+    "people_schedules_raw Skyrim.esm:01329C: SolitudeOpeningNosterWalk/Wait (GetStage Skyrim.esm:0B2FD9), AIOSoNosterRain 6x17 (rain), AIOSoNosterSleep23x7 Winking Skeever, SolitudeNosterBegging0x24 6x16; essential",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "Favor205Windhelm",
+   "name": "Dungeon Delving (Caves)",
+   "plugin": "Favor Quests Seperated.esp",
+   "canDo": "talk",
+   "canDoWhy": "Sets itself up when you arrive in Windhelm; then Oengul War-Anvil asks you to fetch something from a cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Oengul War-Anvil",
+     "where": "at the forge in Windhelm by day; he lives in the Blacksmith Quarters",
+     "how": "Walk into Windhelm; the job is set up in the background, and Oengul War-Anvil offers it when you talk to him."
+    }
+   ],
+   "firstStep": "Find the item Oengul War-Anvil wants inside the cave marked on your map",
+   "takesYou": [
+    {
+     "place": "a cave chosen for this job (shown on your map)",
+     "hold": "",
+     "why": "find the item"
+    },
+    {
+     "place": "at the forge in Windhelm by day; he lives in the Blacksmith Quarters",
+     "hold": "Eastmarch",
+     "why": "bring the item back to Oengul War-Anvil"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find <the item> inside <the dungeon>",
+      "Return <the item> to Oengul War-Anvil"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item to Oengul War-Anvil"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Oengul War-Anvil",
+     "role": "asks for the item; Windhelm smith"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The dungeon and the item are picked when the quest sets itself up, from cave places; the records don't fix one place, so the journal and map marker tell you which."
+    },
+    {
+     "field": "where",
+     "why": "The records place Oengul in the Blacksmith Quarters. By his packages he works at a forge in Windhelm from 8 am to 8 pm (the records give a spot in town, not a named building) and eats dinner at home from 8 to 10 pm."
+    }
+   ],
+   "evidence": [
+    "QUST Favor Quests Seperated.esp:000DE7 Favor205Windhelm: objectives 10 'Find <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; stage 20 completes; aliases QuestItem, Dungeon, BossContainer, MapMarker",
+    "quest_givers_raw: start event 'change location' via story node FavorChangeLocationWindhelm",
+    "quest_givers_raw: Questgiver alias = Oengul War-Anvil (Skyrim.esm:014142, placed Skyrim.esm:01B135 in Blacksmith Quarters Skyrim.esm:07D033)",
+    "offer INFO Favor Quests Seperated.esp:000E08, GetIsID, GetStage < 11",
+    "people_schedules_raw Skyrim.esm:014142: WindhelmHermirBreakfast6x2, HermirWorkAtForge8x12, OengulEatDinner20x2; vendor 8-19",
+    "reward: gold from fragment script (Gold property)"
+   ]
+  },
+  {
+   "edid": "BQ01",
+   "name": "Bounty: Bandit Boss",
+   "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty the game hands out on its own when you arrive somewhere in a hold; the target is picked when it starts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "",
+     "where": "any hold",
+     "how": "Starts by itself when you arrive somewhere in a hold. The quest's cast includes an innkeeper and a bounty letter, so the bounty most likely reaches you as a letter from an innkeeper."
+    }
+   ],
+   "firstStep": "Kill the bandit leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "the place named in the bounty (shown on your map)",
+     "hold": "",
+     "why": "kill the bandit leader at the place named in the bounty"
+    },
+    {
+     "place": "the steward or jarl of that hold (the journal names which)",
+     "hold": "",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the bandit leader located at <the place> in <the hold>",
+      "Collect the bounty from the steward or the jarl the journal names"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you collect the bounty"
+    },
+    {
+     "what": "A random item from the bounty reward list",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The hold's steward",
+     "role": "may be named to pay the bounty"
+    },
+    {
+     "name": "The hold's jarl",
+     "role": "may be named to pay the bounty instead of the steward"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The records show the start comes from arriving in a hold, and that an innkeeper and a letter are part of the quest, but not the line or event that hands the letter over."
+    },
+    {
+     "field": "canDo",
+     "why": "Favor Quests Separated adds its own hold-by-hold copies of this bounty. These files don't show whether this original version still fires alongside them or is shut off."
+    },
+    {
+     "field": "rewards",
+     "why": "What is on the bounty reward list isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place, the hold and who pays are picked when the quest starts. The steward and jarl are probably in the jarl's hall, but the records don't fill who they are until then."
+    },
+    {
+     "field": "people",
+     "why": "The journal has one line for collecting from the steward and one for the jarl; the records don't show what decides which one you get."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:095125 BQ01 (Skyrim.esm, edited by Requiem.esp): objectives 10 'Kill the bandit leader located at <Alias=BountyLocation> in <Alias=Hold>', 100 'Collect bounty from <Alias=Steward>', 101 '... <Alias=Jarl>'; aliases Hold, BountyLocation, Jarl, Steward, Innkeeper, Letter, MapMarker",
+    "quest_givers_raw: start event 'change location' via BQReachNodeSHARES, BQRiftNodeSHARES, BQEastmarchNodeSHARES, BQWinterholdNodeSHARES, BQFalkreathNodeSHARES, BQPaleNodeSHARES, BQWhiterunNodeSHARES, BQHjaalmarchNodeSHARES, BQHaafingarNodeSHARES",
+    "rewards: BQScript.Gold001 (gold), BQScript.Reward = REQ_LI_Reward_BountyBandit Requiem.esp:AD3926",
+    "Favor Quests Seperated.esp adds BQ01/BQ02 per-hold copies (e.g. BQ01Eastmarch :000E42, BQ02Reach :000E9A) with no captured start",
+    "objectives 100 (Steward) and 101 (Jarl) are alternate hand-in lines, no player choice captured"
+   ]
+  },
+  {
+   "edid": "BQ02",
+   "name": "Bounty: Forsworn",
+   "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty the game hands out on its own when you arrive somewhere in a hold; the target is picked when it starts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "",
+     "where": "any hold",
+     "how": "Starts by itself when you arrive somewhere in a hold. The quest's cast includes an innkeeper and a bounty letter, so the bounty most likely reaches you as a letter from an innkeeper."
+    }
+   ],
+   "firstStep": "Kill the Forsworn leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "the place named in the bounty (shown on your map)",
+     "hold": "",
+     "why": "kill the forsworn leader at the place named in the bounty"
+    },
+    {
+     "place": "the steward or jarl of that hold (the journal names which)",
+     "hold": "",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of <the place> in <the hold>",
+      "Collect the bounty from the steward or the jarl the journal names"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you collect the bounty"
+    },
+    {
+     "what": "A random item from the bounty reward list",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The hold's steward",
+     "role": "may be named to pay the bounty"
+    },
+    {
+     "name": "The hold's jarl",
+     "role": "may be named to pay the bounty instead of the steward"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The records show the start comes from arriving in a hold, and that an innkeeper and a letter are part of the quest, but not the line or event that hands the letter over."
+    },
+    {
+     "field": "canDo",
+     "why": "Favor Quests Separated adds its own hold-by-hold copies of this bounty. These files don't show whether this original version still fires alongside them or is shut off."
+    },
+    {
+     "field": "rewards",
+     "why": "What is on the bounty reward list isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place, the hold and who pays are picked when the quest starts. The steward and jarl are probably in the jarl's hall, but the records don't fill who they are until then."
+    },
+    {
+     "field": "people",
+     "why": "The journal has one line for collecting from the steward and one for the jarl; the records don't show what decides which one you get."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0BD77F BQ02 (Skyrim.esm, edited by Requiem.esp): objectives 10 'Kill the leader of <Alias=BountyLocation> in <Alias=Hold>', 100 'Collect the bounty from <Alias=Steward>', 101 '... <Alias=Jarl>'; aliases Hold, BountyLocation, Jarl, Steward, Innkeeper, Letter, MapMarker",
+    "quest_givers_raw: start event 'change location' via BQReachNodeSHARES, BQRiftNodeSHARES, BQEastmarchNodeSHARES, BQWinterholdNodeSHARES, BQFalkreathNodeSHARES, BQPaleNodeSHARES, BQWhiterunNodeSHARES, BQHjaalmarchNodeSHARES, BQHaafingarNodeSHARES",
+    "rewards: BQScript.Gold001 (gold), BQScript.Reward = REQ_LI_Reward_BountyBandit Requiem.esp:AD3926",
+    "Favor Quests Seperated.esp adds BQ01/BQ02 per-hold copies (e.g. BQ01Eastmarch :000E42, BQ02Reach :000E9A) with no captured start",
+    "objectives 100 (Steward) and 101 (Jarl) are alternate hand-in lines, no player choice captured"
+   ]
+  }
+ ]
+}

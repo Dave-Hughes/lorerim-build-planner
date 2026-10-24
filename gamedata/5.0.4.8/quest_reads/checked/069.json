@@ -1,0 +1,1210 @@
+{
+ "checks": [
+  {
+   "edid": "Favor018Winterhold",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No giver dialogue in these files; Malur is named only by the objectives and holds the job's giver faction. Talk is the likely way; the reader's unsure note covers it."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Placed in Stonecold Fortress (the Jarl's Longhouse); his packages match the reader's schedule; essential, so he can't be killed."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Item and target place are quest slots filled at start; return to Malur in Winterhold."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold is the only reward the quest script names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor104DarkwaterCrossing",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Giver and placement match the giver records and schedules; start is a town-arrival event."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Dungeon is a quest slot filled at start; return to the giver. Hold matches the places index."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Script names gold plus an enchanted-armor and an enchanted-weapon leveled list; kept with the existing unsure note per Bob's ruling."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor104SkaalVillage",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Placed in the Greathall, where her sleep package keeps her; Skaal Village is on Solstheim per the places index. Unsure note sharpened."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Dungeon is a quest slot filled at start; return to the giver. Hold matches the places index."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Script names gold plus an enchanted-armor and an enchanted-weapon leveled list; kept with the existing unsure note per Bob's ruling."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor104Solitude",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Placement, jailor work hours and the Winking Skeever evenings match his packages. Added to unsure: until that opening town quest is fully finished he holds a spot in Solitude instead."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Dungeon is a quest slot filled at start; return to the giver. Hold matches the places index."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Script names gold plus an enchanted-armor and an enchanted-weapon leveled list; kept with the existing unsure note per Bob's ruling."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor104Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Missing his likeliest daytime spot. His first package, 8 am to 8 pm, keeps him standing outside the Palace of the Kings while a Windhelm quest's flag is unset; once it is set he instead walks about town 8 am to noon and spends 8 pm to midnight at Candlehearth Hall."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Dungeon is a quest slot filled at start; return to the giver. Hold matches the places index."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Script names gold plus an enchanted-armor and an enchanted-weapon leveled list; kept with the existing unsure note per Bob's ruling."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor110Dawnstar",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "He is Dawnstar's blacksmith (blacksmith and smithy-service factions; sells 8 am to 8 pm). 'Works outdoors in town' should say so, since that is how a player finds him."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place is a quest slot filled when the job starts; return trip to the giver's town matches the hold in the records."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold is the only reward the quest script names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor110Falkreath",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Hakkvild's High Hall is the hall inside the place the map calls the Jarl's Longhouse in Falkreath (places index); add that name so a player can find it."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place is a quest slot filled when the job starts; return trip to the giver's town matches the hold in the records."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold is the only reward the quest script names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor110Morthal",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Work package at the Thaumaturgist's Hut 8 am to 8 pm; sleeps at her placement, Jorgen and Lami's House."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place is a quest slot filled when the job starts; return trip to the giver's town matches the hold in the records."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold is the only reward the quest script names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor110Solitude",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Castle Dour is only where he is from 8 pm overnight; by day his training package holds him at an unnamed spot in Solitude. The field should not send a daytime player to Castle Dour alone."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place is a quest slot filled when the job starts; return trip to the giver's town matches the hold in the records."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold is the only reward the quest script names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  },
+  {
+   "edid": "Favor110Whiterun",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Giver dialogue (or, for the theft job, the objectives) names the giver; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files beyond the town-arrival start; nothing to add."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Packages match: around town near Jorrvaskr 8 am to 3 pm, basket round 4 to 8 pm, the Bannered Mare 8 pm to midnight; essential."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target place is a quest slot filled when the job starts; return trip to the giver's town matches the hold in the records."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives or stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold is the only reward the quest script names."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records is locked by it."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "Favor018Winterhold",
+   "name": "Some Light Theft",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Winterhold and talk to Malur Seloth, the jarl's steward; he wants something stolen for him.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Malur Seloth",
+     "where": "the Jarl's Longhouse (Stonecold Fortress) in Winterhold",
+     "how": "The job is readied when you arrive in Winterhold. Talk to Malur Seloth and he asks you to steal an item for him."
+    }
+   ],
+   "firstStep": "Steal the item Malur Seloth wants",
+   "takesYou": [
+    {
+     "place": "the place the item is kept, picked when you take the job",
+     "hold": "",
+     "why": "steal the item"
+    },
+    {
+     "place": "the Jarl's Longhouse in Winterhold",
+     "hold": "Winterhold",
+     "why": "bring the item to Malur Seloth"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Steal the item for Malur Seloth",
+      "Bring the item to Malur Seloth"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item over"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Malur Seloth",
+     "role": "quest giver; in Winterhold's Jarl's Longhouse. By day he wanders the longhouse, steps outside around Winterhold from 10 am to noon and 3 to 5 pm, eats lunch and dinner in the hall and sleeps upstairs from 10 pm. He cannot be killed."
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "What you steal and where it is kept are picked by the game when the job starts; the records don't fix them."
+    },
+    {
+     "field": "starts",
+     "why": "No opening dialogue line for this copy turned up in these files; Malur is named as the giver only by the quest's objectives, so the exact way he hands out the job isn't confirmed."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "rewards",
+     "why": "Only gold is set in the quest script; the amount isn't in these files."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000A14",
+    "NPC Skyrim.esm:01C182 placed in Stonecold Fortress (Skyrim.esm:013818)",
+    "start node FavorChangeLocationWinterhold (change location)",
+    "script QF_Favor018_0003F46A (Gold)",
+    "aliases Questgiver, Location, QuestItem, TargetLocation",
+    "packages WinterholdMalurSleep22x11, WinterholdMalurBreak10x2/15x2, WinterholdMalurLunch12x1, WinterholdMalurDinner18x1, WinterholdMalurWanderJarlsLonghouse",
+    "copy of Skyrim.esm:03F46A Favor018"
+   ]
+  },
+  {
+   "edid": "Favor104DarkwaterCrossing",
+   "name": "Kill the Bandit Leader",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Darkwater Crossing, talk to Annekke Crag-Jumper and ask if there's anything you can do; they ask you to kill a bandit leader.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Annekke Crag-Jumper",
+     "where": "Darkwater Crossing: in Goldenrock Mine from 9 am to 5 pm, otherwise at home in Verner and Annekke's House",
+     "how": "The job is readied when you arrive in Darkwater Crossing. Talk to Annekke and offer help; they name a bandit hideout and ask you to kill its leader."
+    }
+   ],
+   "firstStep": "Kill the leader of the bandit hideout you're sent to",
+   "takesYou": [
+    {
+     "place": "a bandit hideout picked when you take the job",
+     "hold": "",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Darkwater Crossing",
+     "hold": "Eastmarch",
+     "why": "tell Annekke the bandit is dead"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit hideout",
+      "Tell Annekke the bandit is dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "Possibly an enchanted armor piece or an enchanted weapon (random, scaled to your level)",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Annekke Crag-Jumper",
+     "role": "quest giver; works in Goldenrock Mine by day, lives in Verner and Annekke's House"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Which hideout you're sent to is picked by the game when the job starts; the records don't fix it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script names gold plus two random lists, one of enchanted armor and one of enchanted weapons (named for swords); this is from the script and not confirmed: the files don't show whether you get one, both or only gold, or what the lists hold."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000B3E",
+    "giver dialogue Favor Quests Seperated.esp:000B5C",
+    "NPC Skyrim.esm:013666",
+    "script QF_Favor104_0006FD35 (Gold, FavorRewardEnchArmor Skyrim.esm:049313, FavorRewardEnchWeapon Skyrim.esm:0494B0)",
+    "aliases QuestGiver, Boss, Dungeon, Location, MapMarker",
+    "copy of Skyrim.esm:06FD35 Favor104",
+    "start node FavorChangeLocationDarkwaterCrossing (change location)",
+    "packages DarkwaterCrossingAnnekkeMine9x8 (Favor Quests Seperated.esp), DarkwaterCrossingAnnekeVernerWanderTown"
+   ]
+  },
+  {
+   "edid": "Favor104SkaalVillage",
+   "name": "Kill the Bandit Leader",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Skaal Village, talk to Fanari Strong-Voice and ask if there's anything you can do; they ask you to kill a bandit leader.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Fanari Strong-Voice",
+     "where": "the Greathall in Skaal Village, on Solstheim",
+     "how": "The job is readied when you arrive in Skaal Village. Talk to Fanari and offer help; they name a bandit hideout and ask you to kill its leader."
+    }
+   ],
+   "firstStep": "Kill the leader of the bandit hideout you're sent to",
+   "takesYou": [
+    {
+     "place": "a bandit hideout picked when you take the job",
+     "hold": "",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Skaal Village",
+     "hold": "Solstheim",
+     "why": "tell Fanari the bandit is dead"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit hideout",
+      "Tell Fanari the bandit is dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "Possibly an enchanted armor piece or an enchanted weapon (random, scaled to your level)",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Fanari Strong-Voice",
+     "role": "quest giver; a Skaal villager placed in the Greathall"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Which hideout you're sent to is picked by the game when the job starts; the records don't fix it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script names gold plus two random lists, one of enchanted armor and one of enchanted weapons (named for swords); this is from the script and not confirmed: the files don't show whether you get one, both or only gold, or what the lists hold."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "The records place her in the Greathall, where she also sleeps. Her first package is a pillar-building job she shares with seven other Skaal, with no set hours, and her evening package (8 pm to midnight) is shared with other villagers; where she stands by day isn't pinned down."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000B50",
+    "giver dialogue Favor Quests Seperated.esp:000B62",
+    "NPC Dragonborn.esm:018FC5",
+    "script QF_Favor104_0006FD35 (Gold, FavorRewardEnchArmor Skyrim.esm:049313, FavorRewardEnchWeapon Skyrim.esm:0494B0)",
+    "aliases QuestGiver, Boss, Dungeon, Location, MapMarker",
+    "copy of Skyrim.esm:06FD35 Favor104",
+    "start node DLC2FavorSkaalVillage (change location)",
+    "packages DLC2SkaalPillarBuildPKG, DefaultSandboxEditorLocation20x4, DLC2SVFanariSleepGreathall (shared)"
+   ]
+  },
+  {
+   "edid": "Favor104Solitude",
+   "name": "Kill the Bandit Leader",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Solitude, talk to Ahtar and ask if there's anything you can do; they ask you to kill a bandit leader.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Ahtar",
+     "where": "Solitude: placed in Jala's House; he is the town jailor and works from 8 am to 8 pm",
+     "how": "The job is readied when you arrive in Solitude. Talk to Ahtar and offer help; they name a bandit hideout and ask you to kill its leader."
+    }
+   ],
+   "firstStep": "Kill the leader of the bandit hideout you're sent to",
+   "takesYou": [
+    {
+     "place": "a bandit hideout picked when you take the job",
+     "hold": "",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Solitude",
+     "hold": "Haafingar",
+     "why": "tell Ahtar the bandit is dead"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit hideout",
+      "Tell Ahtar the bandit is dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "Possibly an enchanted armor piece or an enchanted weapon (random, scaled to your level)",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Ahtar",
+     "role": "quest giver; Solitude's jailor"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Which hideout you're sent to is picked by the game when the job starts; the records don't fix it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script names gold plus two random lists, one of enchanted armor and one of enchanted weapons (named for swords); this is from the script and not confirmed: the files don't show whether you get one, both or only gold, or what the lists hold."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "His jailor work runs 8 am to 8 pm but the records don't say where he stands for it. During the execution scene you walk into on your first visit he waits there, and until that town quest is fully finished he keeps to a spot in Solitude the records don't name. After it is done his evenings (8 pm on) can be at the Winking Skeever, subject to a further condition these files don't explain."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000B34",
+    "giver dialogue Favor Quests Seperated.esp:000B56",
+    "NPC Skyrim.esm:01325F",
+    "script QF_Favor104_0006FD35 (Gold, FavorRewardEnchArmor Skyrim.esm:049313, FavorRewardEnchWeapon Skyrim.esm:0494B0)",
+    "aliases QuestGiver, Boss, Dungeon, Location, MapMarker",
+    "copy of Skyrim.esm:06FD35 Favor104",
+    "start node FavorChangeLocatiomSolitude (change location)",
+    "packages SolitudeOpeningAhtarWait, SolitudeAhtarEatInn20x4, SolitudeJailorWorkDay8x12",
+    "NPC placed in Jala's House (Skyrim.esm:016A05)"
+   ]
+  },
+  {
+   "edid": "Favor104Windhelm",
+   "name": "Kill the Bandit Leader",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Windhelm, talk to Brunwulf Free-Winter and ask if there's anything you can do; they ask you to kill a bandit leader.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Brunwulf Free-Winter",
+     "where": "Windhelm: from 8 am to 8 pm he may stand outside the Palace of the Kings; otherwise breakfast at Candlehearth Hall at 7 am, about town in the morning, the Temple of Talos or the Palace of the Kings around midday on some days, Candlehearth Hall from 4 pm, and home in Brunwulf Free-Winter's House at night",
+     "how": "The job is readied when you arrive in Windhelm. Talk to Brunwulf and offer help; they name a bandit hideout and ask you to kill its leader."
+    }
+   ],
+   "firstStep": "Kill the leader of the bandit hideout you're sent to",
+   "takesYou": [
+    {
+     "place": "a bandit hideout picked when you take the job",
+     "hold": "",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Windhelm",
+     "hold": "Eastmarch",
+     "why": "tell Brunwulf the bandit is dead"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit hideout",
+      "Tell Brunwulf the bandit is dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back"
+    },
+    {
+     "what": "Possibly an enchanted armor piece or an enchanted weapon (random, scaled to your level)",
+     "when": "when you report back"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brunwulf Free-Winter",
+     "role": "quest giver; lives in Windhelm"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Which hideout you're sent to is picked by the game when the job starts; the records don't fix it."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script names gold plus two random lists, one of enchanted armor and one of enchanted weapons (named for swords); this is from the script and not confirmed: the files don't show whether you get one, both or only gold, or what the lists hold."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "Which daytime pattern he follows depends on a Windhelm quest's state that these files don't name, and his morning walk and late Candlehearth evenings carry weather conditions too. If the Empire takes Windhelm he can become jarl, which would move him. He cannot be killed."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000B47",
+    "giver dialogue Favor Quests Seperated.esp:000B61",
+    "NPC Skyrim.esm:014149",
+    "script QF_Favor104_0006FD35 (Gold, FavorRewardEnchArmor Skyrim.esm:049313, FavorRewardEnchWeapon Skyrim.esm:0494B0)",
+    "aliases QuestGiver, Boss, Dungeon, Location, MapMarker",
+    "copy of Skyrim.esm:06FD35 Favor104",
+    "start node FavorChangeLocationWindhelm (change location)",
+    "packages BrunwulfEatBreakfast7x1, BrunwulfVisitCandlehearth16x4, BrunwulfVisitTempleOfTalosSS12x4, BrunwulfVisitPalaceMWF12x4, WindhelmIntroBrunwulfStand",
+    "alias WindhelmEmpireJarl on Skyrim.esm:0A7B33"
+   ]
+  },
+  {
+   "edid": "Favor110Dawnstar",
+   "name": "Rare Gifts",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Dawnstar and talk to Rustleif; they want a rare item brought to them.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Rustleif",
+     "where": "Dawnstar: the town blacksmith, working outdoors in town (likely at his smithy) from 8 am to 8 pm; home is Rustleif's House",
+     "how": "The job is readied when you arrive in Dawnstar. Talk to Rustleif and they ask you to find one of a rare item for them."
+    }
+   ],
+   "firstStep": "Find the rare item Rustleif asks for and bring one to them",
+   "takesYou": [
+    {
+     "place": "Dawnstar",
+     "hold": "The Pale",
+     "why": "hand the item to Rustleif"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring one of the requested item to Rustleif"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item over"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Rustleif",
+     "role": "quest giver; Dawnstar's blacksmith, trades from 8 am to 8 pm"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "Which item is wanted is picked by the game when the job starts; the records here don't list the choices or where to find them."
+    },
+    {
+     "field": "rewards",
+     "why": "Only gold is set in the quest script. The quest also holds slots for a house and three skill books (Alchemy, Block, One-Handed); these files don't show what they are for or whether a book is ever handed over."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "His work package points at an outdoor spot in Dawnstar that the records don't name; that it is his smithy is inferred from his smithy-service record."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000D7E",
+    "giver dialogue Favor Quests Seperated.esp:000DA3",
+    "NPC Skyrim.esm:01361E",
+    "script QF_Favor110_000CA439 (Gold)",
+    "aliases Questgiver, Location, QuestItem, House, AlchemyBook, BlockBook, OneHandBook",
+    "copy of Skyrim.esm:0CA439 Favor110",
+    "start node FavorChangeLocationDawnstar (change location)",
+    "package DawnstarWorkRustleifPackage8x12",
+    "NPC placed in Rustleif's House (Skyrim.esm:013A83)"
+   ]
+  },
+  {
+   "edid": "Favor110Falkreath",
+   "name": "Rare Gifts",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Falkreath and talk to Siddgeir; they want a rare item brought to them.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Siddgeir",
+     "where": "Hakkvild's High Hall, inside the Jarl's Longhouse in Falkreath",
+     "how": "The job is readied when you arrive in Falkreath. Talk to Siddgeir and they ask you to find one of a rare item for them."
+    }
+   ],
+   "firstStep": "Find the rare item Siddgeir asks for and bring one to them",
+   "takesYou": [
+    {
+     "place": "Falkreath",
+     "hold": "Falkreath",
+     "why": "hand the item to Siddgeir"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring one of the requested item to Siddgeir"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item over"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Siddgeir",
+     "role": "quest giver; Jarl of Falkreath"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "Which item is wanted is picked by the game when the job starts; the records here don't list the choices or where to find them."
+    },
+    {
+     "field": "rewards",
+     "why": "Only gold is set in the quest script. The quest also holds slots for a house and three skill books (Alchemy, Block, One-Handed); these files don't show what they are for or whether a book is ever handed over."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "The records place him in Hakkvild's High Hall; his daily schedule isn't in these files. If he loses his seat in the civil war he moves to the Blue Palace in Solitude. He cannot be killed."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000D86",
+    "giver dialogue Favor Quests Seperated.esp:000DA7",
+    "NPC Skyrim.esm:013653",
+    "script QF_Favor110_000CA439 (Gold)",
+    "aliases Questgiver, Location, QuestItem, House, AlchemyBook, BlockBook, OneHandBook",
+    "copy of Skyrim.esm:0CA439 Favor110",
+    "start node FavorChangeLocationFalkreath (change location)",
+    "NPC placed in Hakkvild's High Hall (Skyrim.esm:013A79)",
+    "package CWExiledImperialSandboxBluePalace",
+    "alias JarlSiddgeir"
+   ]
+  },
+  {
+   "edid": "Favor110Morthal",
+   "name": "Rare Gifts",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Morthal and talk to Lami; they want a rare item brought to them.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Lami",
+     "where": "Morthal: in the Thaumaturgist's Hut from 8 am to 8 pm; home is Jorgen and Lami's House",
+     "how": "The job is readied when you arrive in Morthal. Talk to Lami and they ask you to find one of a rare item for them."
+    }
+   ],
+   "firstStep": "Find the rare item Lami asks for and bring one to them",
+   "takesYou": [
+    {
+     "place": "Morthal",
+     "hold": "Hjaalmarch",
+     "why": "hand the item to Lami"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring one of the requested item to Lami"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item over"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lami",
+     "role": "quest giver; runs the Thaumaturgist's Hut and trains Alchemy"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "Which item is wanted is picked by the game when the job starts; the records here don't list the choices or where to find them."
+    },
+    {
+     "field": "rewards",
+     "why": "Only gold is set in the quest script. The quest also holds slots for a house and three skill books (Alchemy, Block, One-Handed); these files don't show what they are for or whether a book is ever handed over."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000D76",
+    "giver dialogue Favor Quests Seperated.esp:000D9F",
+    "NPC Skyrim.esm:0135EF",
+    "script QF_Favor110_000CA439 (Gold)",
+    "aliases Questgiver, Location, QuestItem, House, AlchemyBook, BlockBook, OneHandBook",
+    "copy of Skyrim.esm:0CA439 Favor110",
+    "start node FavorChangeLocationMorthal (change location)",
+    "packages MorthalLamiWork8x12, MorthalLamiSleep23x8, MorthalLamiSandboxHome"
+   ]
+  },
+  {
+   "edid": "Favor110Solitude",
+   "name": "Rare Gifts",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Solitude and talk to Captain Aldis; they want a rare item brought to them.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Captain Aldis",
+     "where": "Solitude: by day at a training spot in the city; from 8 pm overnight in Castle Dour",
+     "how": "The job is readied when you arrive in Solitude. Talk to Captain Aldis and they ask you to find one of a rare item for them."
+    }
+   ],
+   "firstStep": "Find the rare item Captain Aldis asks for and bring one to them",
+   "takesYou": [
+    {
+     "place": "Solitude",
+     "hold": "Haafingar",
+     "why": "hand the item to Captain Aldis"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring one of the requested item to Captain Aldis"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item over"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Captain Aldis",
+     "role": "quest giver; a captain stationed at Castle Dour"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "Which item is wanted is picked by the game when the job starts; the records here don't list the choices or where to find them."
+    },
+    {
+     "field": "rewards",
+     "why": "Only gold is set in the quest script. The quest also holds slots for a house and three skill books (Alchemy, Block, One-Handed); these files don't show what they are for or whether a book is ever handed over."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "The records place him in Castle Dour, where he is from 8 pm overnight; by day a training package keeps him at a spot in Solitude the records don't name. During the execution scene on your first visit he waits there."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000D6E",
+    "giver dialogue Favor Quests Seperated.esp:000D9B",
+    "NPC Skyrim.esm:041FB8",
+    "script QF_Favor110_000CA439 (Gold)",
+    "aliases Questgiver, Location, QuestItem, House, AlchemyBook, BlockBook, OneHandBook",
+    "copy of Skyrim.esm:0CA439 Favor110",
+    "start node FavorChangeLocatiomSolitude (change location)",
+    "packages SolitudeOpeningCaptainAldisWait, GuardSolitudeImperialDaySleep, SolitudeValdTrainingPackage",
+    "NPC placed in Castle Dour (Skyrim.esm:0213A0)"
+   ]
+  },
+  {
+   "edid": "Favor110Whiterun",
+   "name": "Rare Gifts",
+   "plugin": "Favor Quests Seperated.esp (no other plugin edits this copy)",
+   "canDo": "talk",
+   "canDoWhy": "Go to Whiterun and talk to Ysolda; they want a rare item brought to them.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Ysolda",
+     "where": "Whiterun: home in Ysolda's House; by day around the town near Jorrvaskr, out with her basket from 4 to 8 pm, and in the Bannered Mare from 8 pm to midnight",
+     "how": "The job is readied when you arrive in Whiterun. Talk to Ysolda and they ask you to find one of a rare item for them."
+    }
+   ],
+   "firstStep": "Find the rare item Ysolda asks for and bring one to them",
+   "takesYou": [
+    {
+     "place": "Whiterun",
+     "hold": "Whiterun",
+     "why": "hand the item to Ysolda"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring one of the requested item to Ysolda"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the item over"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Ysolda",
+     "role": "quest giver; a Whiterun trader"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "Which item is wanted is picked by the game when the job starts; the records here don't list the choices or where to find them."
+    },
+    {
+     "field": "rewards",
+     "why": "Only gold is set in the quest script. The quest also holds slots for a house and three skill books (Alchemy, Block, One-Handed); these files don't show what they are for or whether a book is ever handed over."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is switched on by a game event when you arrive in the town; whatever extra conditions that event carries are not in these files, so the job may not always be on offer."
+    },
+    {
+     "field": "where",
+     "why": "Her daytime packages carry weather and other conditions these files don't spell out; in rain she may stay put instead. She cannot be killed."
+    }
+   ],
+   "evidence": [
+    "Favor Quests Seperated.esp:000D97",
+    "giver dialogue Favor Quests Seperated.esp:000DB0",
+    "NPC Skyrim.esm:013BAB",
+    "script QF_Favor110_000CA439 (Gold)",
+    "aliases Questgiver, Location, QuestItem, House, AlchemyBook, BlockBook, OneHandBook",
+    "copy of Skyrim.esm:0CA439 Favor110",
+    "start node FavorChangeLocationWhiterun (change location)",
+    "packages AIOWRYsoldaRandom8x7, WhiterunYsoldaCarryBasketPatrol16x4, WhiterunYsoldaBanneredMarePackage20x4, AIOStayPutRaining8x12",
+    "NPC placed in Ysolda's House (Skyrim.esm:0165AC)"
+   ]
+  }
+ ]
+}

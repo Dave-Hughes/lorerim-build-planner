@@ -1,0 +1,178 @@
+[
+  {
+    "edid": "FreeformCaravansA",
+    "name": "Amulet of the Moon",
+    "plugin": "Skyrim.esm (no other plugin edits the quest)",
+    "canDo": "talk",
+    "canDoWhy": "Kharjo, a guard with one of the Khajiit caravans, wants his Moon Amulet back from a dungeon.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Kharjo",
+        "where": "with Ahkari's Khajiit caravan, near wherever its camp is",
+        "how": "Speak with Kharjo; the quest sends you to find his Moon Amulet in a dungeon and bring it back to him."
+      }
+    ],
+    "firstStep": "Find the Moon Amulet inside the dungeon the quest marks for you",
+    "takesYou": [
+      {
+        "place": "a dungeon the game picks when the quest starts",
+        "hold": "",
+        "why": "find the Moon Amulet"
+      },
+      {
+        "place": "back to Kharjo at the caravan",
+        "hold": "",
+        "why": "return the amulet"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find the Moon Amulet inside the dungeon",
+          "Return the Moon Amulet to Kharjo"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (amount not in these files)",
+        "when": "when you return the amulet"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Kharjo",
+        "role": "quest giver; a guard travelling with Ahkari's Khajiit caravan; listed as someone who can become a follower"
+      },
+      {
+        "name": "Ahkari",
+        "role": "leads the caravan Kharjo travels with"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts.where",
+        "why": "Kharjo has no fixed home in the records: he is placed in the open world and his only package is the caravan's wander-near-the-camp package. The caravan's route between cities isn't in these files, so which city camp he is at on a given day isn't known."
+      },
+      {
+        "field": "starts.how",
+        "why": "The dialogue that sets the first stage isn't in these files and the quest has no start event, so the exact conversation (and any condition on it) can't be read; talking to Kharjo is inferred from him being the quest giver and the objectives naming him."
+      },
+      {
+        "field": "takesYou",
+        "why": "The dungeon is filled in when the quest starts and isn't fixed in the records. The quest also holds a boss container and a map marker, which points to the amulet sitting in the dungeon boss's chest and the dungeon being marked on your map, but that is read from the quest's slot names, not stated outright."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script pays gold, but the amount isn't in these files. Kharjo is flagged as a possible follower; nothing here ties his recruitment to finishing this quest."
+      }
+    ],
+    "evidence": [
+      "quests_raw: Skyrim.esm:0D9393 FreeformCaravansA, type Misc, no editedBy; stages 10, 15, 20 (completes), 200",
+      "objectives 10 'Find the <Alias=QuestItem> inside <Alias=Dungeon>', 15 'Return the <Alias=QuestItem> to <Alias.ShortName=QuestGiver>'; fills QuestItem=Moon Amulet, QuestGiver=Kharjo",
+      "aliases: Questgiver, Dungeon, BossContainer, QuestItem, MapMarker",
+      "quest_givers_raw: Questgiver alias = Kharjo Skyrim.esm:01B1D2, ref Skyrim.esm:0CD92D in persistent cell Skyrim.esm:000D74 (Skyrim worldspace); reward Septim via QF_FreeformCaravansA_000D9393.Gold",
+      "quest_starts_raw: no entry for FreeformCaravansA (no start event, not start-game)",
+      "people_schedules_raw: Kharjo package CaravanTempWanderAtEditorLoc (shared by 8); factions CaravanGuard_Faction, KhajiitCaravanFaction, PotentialFollowerFaction; quest 03ACDB alias Follower3C; Ahkari is CaravanCLeader / LeaderC in 03ACDB",
+      "items_raw: Skyrim.esm:0D9394 Moon Amulet (REQ_Var_Amulet_Silver_Kharjo, LoreRim - Armor Merges.esp), value 250"
+    ]
+  },
+  {
+    "edid": "RelationshipMarriage",
+    "name": "The Bonds of Matrimony",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Once someone agrees to marry you, you arrange the wedding with Maramal at the Temple of Mara in Riften and attend the ceremony.",
+    "needs": [
+      {
+        "what": "Someone who can marry you agrees to it",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "the person you are marrying",
+        "where": "wherever they are",
+        "how": "When a person who can marry you agrees, they tell you to speak to the priest at the Temple of Mara to arrange the ceremony."
+      },
+      {
+        "who": "Maramal",
+        "where": "inside the Temple of Mara, Riften",
+        "how": "Speak to Maramal about arranging your wedding."
+      }
+    ],
+    "firstStep": "Speak to Maramal at the Temple of Mara in Riften about arranging your wedding",
+    "takesYou": [
+      {
+        "place": "Temple of Mara, Riften",
+        "hold": "The Rift",
+        "why": "arrange the wedding with Maramal, then attend the ceremony"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Maramal about arranging your wedding",
+          "Attend your wedding ceremony"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Amulet of Mara",
+        "when": "handled by the quest's script; the records don't say at which point"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Maramal",
+        "role": "priest at the Temple of Mara who arranges and holds the wedding"
+      },
+      {
+        "name": "the person you marry",
+        "role": "any of about 80 people the records mark as able to marry, such as Ysolda, Mjoll the Lioness, Aela the Huntress, Farkas, Camilla Valerius, Lydia or Brelyna Maryon"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The proposal and acceptance lines are not in these files. An amulet mod in the list changes the conditions on several of this quest's lines (adding a check the extract can't name, plus race checks), so whether you must be wearing an Amulet of Mara, or what else a person needs before they'll say yes, can't be read here."
+      },
+      {
+        "field": "choices",
+        "why": "A rejections mod adds lines tied to this quest that let some people turn you down; what decides a refusal isn't readable in these files."
+      },
+      {
+        "field": "starts.where",
+        "why": "Maramal's packages keep him in the Temple of Mara: breakfast at 7 am, dinner at 3 pm, sleep from 1 am for 6 hours, tending the temple otherwise. One package from the alternate-start mod, checked first, sends him to the Bee and Barb after the opening quest is finished until a short Riften scene there is done, so early on he may be at the inn instead."
+      },
+      {
+        "field": "steps",
+        "why": "The quest has more stages than objectives and none of them have journal text here, so when the ceremony happens, what happens if you miss it, and what follows the wedding (moving in, a shared home) can't be read from these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script refers to an Amulet of Mara, but whether it gives one, sells one or takes one isn't shown."
+      }
+    ],
+    "evidence": [
+      "quests_raw: Skyrim.esm:074793 RelationshipMarriage, type Misc, editedBy Unofficial Skyrim Special Edition Patch.esp; stages 0,5,10,15,20,30,100,250; objectives 10 'Speak to Maramal about arranging your wedding', 20 'Attend your wedding ceremony'; aliases LoveInterest, TemplePriest, TempleofMara, TempleCenter",
+      "quest_starts_raw line 'marriage': startGame true, cellsUsed Skyrim.esm:016BD7 (Temple of Mara); foreign dialogue edits by NPCs_Wear_Amulets_Of_Mara.esp (fn726 + GetIsRace 013746/088794 OR GetStageDone 074793 10 on infos 074DE1, 0CD869, 0CDA16-0CDA1A, Dragonborn.esm:03841D; 074DE2 removed GetStageDone 5==0), USSEP on 074DE6, LoreRim - Skyrim Revoiced Patch.esp on Immersive Rejections.esp infos 000821-000897",
+      "quest_givers_raw: giver Maramal Skyrim.esm:01335B via info NPCs_Wear_Amulets_Of_Mara.esp:00080D (stage below 251), ref Skyrim.esm:019DD5 in Temple of Mara, Riften; reward Amulet of Mara Skyrim.esm:0C891B via QF_RelationshipMarriageCourti_00074793.ReligiousSymbolMaraLove",
+      "places_raw Temple of Mara pointers: INFO Skyrim.esm:026B5B, 0CD876, 0CD877, 0CD878 (love-interest lines sending you to the Temple of Mara)",
+      "people_schedules_raw Maramal: RDSScene05MaramalStart (AlternatePerspective.esp; GetQuestCompleted MQ101 ==1 and 05CE25 ==0; Bee and Barb), RiftenMaramalEatDinner15x1, RiftenMaramalEatBreakfast7x1, RiftenMaramalSleep1x6, RiftenMaramalTempleTending0x0 (AI Overhaul.esp); essential",
+      "people_schedules_raw: 81 people with marriageable true"
+    ]
+  }
+]
