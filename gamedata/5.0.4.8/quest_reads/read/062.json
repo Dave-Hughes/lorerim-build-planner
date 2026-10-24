@@ -431,9 +431,9 @@
     ],
     "firstStep": "Talk to Arcadia",
     "takesYou": [
-      {"place": "Arcadia's Cauldron, Whiterun", "hold": "Whiterun Hold", "why": "buy potions; Arcadia asks you to find Braith"},
-      {"place": "around Whiterun", "hold": "Whiterun Hold", "why": "ask townsfolk where Braith went"},
-      {"place": "the Cloud District, outside Dragonsreach", "hold": "Whiterun Hold", "why": "where Braith is waiting"}
+      {"place": "Arcadia's Cauldron, Whiterun", "hold": "Whiterun", "why": "buy potions; Arcadia asks you to find Braith"},
+      {"place": "around Whiterun", "hold": "Whiterun", "why": "ask townsfolk where Braith went"},
+      {"place": "the Cloud District, outside Dragonsreach", "hold": "Whiterun", "why": "where Braith is waiting"}
     ],
     "choices": [],
     "steps": [
@@ -495,7 +495,7 @@
     ],
     "firstStep": "Ask Fralia Grey-Mane to craft you a ring for Serana",
     "takesYou": [
-      {"place": "Fralia Gray-Mane's market stall, Whiterun", "hold": "Whiterun Hold", "why": "order the ring, then come back a day later to collect it"},
+      {"place": "Fralia Gray-Mane's market stall, Whiterun", "hold": "Whiterun", "why": "order the ring, then come back a day later to collect it"},
       {"place": "Castle Volkihar Courtyard", "hold": "none in the records (nearest city Solitude, half a day away)", "why": "give Serana the ring"}
     ],
     "choices": [],

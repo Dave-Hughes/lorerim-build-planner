@@ -87,7 +87,7 @@
    },
    {
     "field": "steps",
-    "why": "the stages run one after another, so the places are probably visited in the order listed; where Auri leads you on 'Follow Auri' isn't named"
+    "why": "each place is asked for only after the one before, so they are probably visited in the order listed; where Auri leads you on 'Follow Auri' isn't named"
    },
    {
     "field": "where",
@@ -305,7 +305,7 @@
    },
    {
     "field": "steps",
-    "why": "several stages have no journal text and three different stages end it, so there may be small branches the records don't describe"
+    "why": "parts of the quest have no journal text and it can finish in more than one way, so there may be small branches the records don't describe"
    }
   ],
   "evidence": [
@@ -747,7 +747,7 @@
    },
    {
     "field": "choices",
-    "why": "two different stages finish it with different journal text, but the records don't show what picks one"
+    "why": "it can finish with two different journal entries, but the records don't show what picks one"
    }
   ],
   "evidence": [

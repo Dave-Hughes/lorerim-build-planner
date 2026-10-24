@@ -1,0 +1,1597 @@
+{
+ "checks": [
+  {
+   "edid": "DLC1LD",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No start conditions or start-game flag; first journal text is meeting Katria inside Arkngthamz."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Matches the first logs (accept her help, or she just warns you). What first switches the quest on stays unsure, as the reader says."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Shard sites match the book and the quest cells. Hold for Arkngthamz conflicts in the records; reader picked the book and flagged it, which is right. Added the follower line that also says the Reach."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "\"You get that one item\" is too strong: the Forge also has Dynamo Core versions of all three artifacts with no Crest and no conditions (Trad_AE_CC_Collection_Requiem_Patch.esp:37AC45-47)."
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "Added the Dynamo Core alternative to the artifact entry and the Kate's Bow materials (3 Iron Ingots, 2 Leather Strips) from its recipe. Item texts match the item records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "madFultheimQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Fultheim has one package with no hours, at Nightgate Inn."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Esbern's alias is placed in Esbern's Vault in the Ratway Warrens; the reader only gave Sky Haven Temple. Added both."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Stages 15/16 are alternatives and stage 40 is the insult failure, but nothing shows whether the proof is your pick. Kept, with a note."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only \"rejoins the Blades\" is supported; the Sky Haven copy is now described from his record (Blades, essential, not a follower)."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "DCQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "unsure",
+     "note": "The note's source isn't in the records; the place given is just Esbern's placement (Ratway Warrens) and his Sky Haven packages. Noted in unsure."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Skuldafn has a hold in the places index (Eastmarch); reader left it blank. Krosis wording softened: the records only put him in the open world, they don't say he isn't at a ruin."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property or reward items on the quest."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "NecroQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by a change-location event; UndeathFixes turns the start-game flag off."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "\"On the road somewhere in the Reach\" is where the caravan is, not where the quest starts. The trigger is a change-location event whose place isn't decoded, so the field is blank and the Silver-Blood Inn hint stays in unsure."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Caravan and Ravenscorn Spire match the logs; Spire not in places, so no hold."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Stage 70 log matches the opening logs of all three follow-ups."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "NecroQuest02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "Starts was empty for a quest players can do. The first log picks up exactly where In their Footsteps ends, so the journal opening is filled in; the script stays in unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Stages 32 and 33 are the two endings."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Shroud of Vyngald is named only in the logs and objectives; not in the item files."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Scourg Barrow begins once all followers are dead and uses Wynestra as an alias."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "NecroQuest03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "Starts was empty; filled with the journal opening after In their Footsteps, as for its sister quests."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Temple of Arkay is the mod's own interior; the journal says Falkreath hold."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "Reworded: what it locks is the priest's life, not \"killing the captive priest\"."
+    }
+   }
+  },
+  {
+   "edid": "NecroQuest04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "Starts was empty; filled with the journal opening after In their Footsteps."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Stages 35, 41, 51 and 61 match."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Both elixirs named in the success logs."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Stage 41 fails the quest and says the mixture can never be completed."
+    }
+   }
+  },
+  {
+   "edid": "NecroQuest05",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Stage 10 log: all of Antioch's followers are defeated; the three are this quest's aliases with letters."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "Starts was empty; filled with the journal opening from the first log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Directions match the Orders note; Scourg Barrow has no hold or marker in the places index."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Barrows of the Mountains kept as a script-named item with its unsure note, per the ruling."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "NecroBlackBookQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "leadsTo said you can come back by reading again, which the records don't state (the reader's own unsure note says so). Changed to what the log supports."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Parchment from the stage 20 log; the water-damage spell is correctly left out."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The Path of Transcendence opens on the parchment written in Apocrypha."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "NecroLichRitualQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "Starts was empty; the first log follows straight on from the Black Book quest."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Split the two sites; the Solitude Sewers are in Solitude (Haafingar) per the people records."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Two sites from the aliases and upgrade books; added the likely seller (The Broker) to unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Names from script properties, kept with the reader's unsure note per the ruling."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Stages 50, 60 and 100 logs."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "DLC1LD",
+   "name": "Lost to the Ages",
+   "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "Found by exploring: the journal opens when you meet Katria's ghost in the Dwarven ruin of Arkngthamz.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Katria (a ghost)",
+     "where": "inside Arkngthamz, the Dwarven ruin",
+     "how": "Go into Arkngthamz. Katria's ghost meets you there and offers to help you climb to the summit; the journal entry begins with that meeting."
+    }
+   ],
+   "firstStep": "Reach the summit of Arkngthamz",
+   "takesYou": [
+    {
+     "place": "Arkngthamz",
+     "hold": "The Reach",
+     "why": "climb to the summit, solve the tonal lock and claim the first Aetherium shard from the treasury"
+    },
+    {
+     "place": "Raldbthar (Raldbthar Deep Market)",
+     "hold": "The Pale",
+     "why": "one of the Aetherium shards"
+    },
+    {
+     "place": "Dwarven Storeroom outside Mzulft",
+     "hold": "Eastmarch",
+     "why": "one of the Aetherium shards"
+    },
+    {
+     "place": "Deep Folk Crossing",
+     "hold": "The Reach",
+     "why": "one of the Aetherium shards, lying out in the open"
+    },
+    {
+     "place": "Ruins of Bthalft, near Ivarstead",
+     "hold": "The Rift",
+     "why": "place the shards to open the way to the Aetherium Forge"
+    },
+    {
+     "place": "The Aetherium Forge",
+     "hold": "The Rift",
+     "why": "defeat the Forge's guardians and forge an artifact"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Accept Katria's help in Arkngthamz, or go on without her",
+     "leadsTo": "Either way she warns you about the tonal lock and the traps, and the quest goes on the same"
+    },
+    {
+     "choice": "Which artifact to make at the Aetherium Forge: Aetherial Shield, Aetherium Crown or Aetherial Staff",
+     "leadsTo": "Making one uses up the Aetherium Crest. The Forge also lists versions of all three that take 2 Aetherium Dynamo Cores instead of the Crest, so with cores you can make the others too."
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Reach the summit of Arkngthamz",
+      "Solve the Tonal Lock",
+      "Claim the treasure of Arkngthamz",
+      "Speak with Katria",
+      "Search for the Aetherium Shards (shards found / total)",
+      "(Optional) Retrieve Katria's Journal",
+      "Locate the Aetherium Forge",
+      "Speak with Katria",
+      "Place the Aetherium Shards",
+      "Retrieve the Aetherium Crest",
+      "Stand Clear",
+      "Find the Aetherium Forge",
+      "Shut off the Steam",
+      "Defeat the Guardians of the Forge",
+      "(Optional) Shut off the Steam",
+      "Speak with Katria",
+      "(Optional) Search for Crafting Materials",
+      "Use the Aetherium Forge"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "One Aetherium artifact of your choice, made at the Aetherium Forge: Aetherial Shield (2 Refined Malachite, 4 Dwarven Metal Ingots), Aetherium Crown (2 Gold Ingots, 2 Flawless Sapphires, 2 Dwarven Metal Ingots) or Aetherial Staff (2 Ebony Ingots, 1 Gold Ingot, 2 Dwarven Metal Ingots), each also needing the Aetherium Crest, or 2 Aetherium Dynamo Cores in its place",
+     "when": "at the end"
+    },
+    {
+     "what": "Aetherium Crown: \"Allows you to have 3 Standing Stone effects at the same time, at double the effectiveness. If you're not under the effect of any Stones, restores 10 Magicka per second.\"",
+     "when": "if you forge the Crown"
+    },
+    {
+     "what": "Aetherial Shield: \"Enemies struck by this shield become ethereal for 15 seconds, making them unable to attack or be attacked.\"",
+     "when": "if you forge the Shield"
+    },
+    {
+     "what": "A chest of crafting materials beside the Forge",
+     "when": "near the end (optional objective)"
+    },
+    {
+     "what": "Kate's Bow becomes craftable at a forge (3 Iron Ingots, 2 Leather Strips; needs the Craftsmanship perk)",
+     "when": "after the quest is done"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Katria",
+     "role": "ghost of an adventurer who died in Arkngthamz; guides you, then meets you again at the Forge entrance and at the Forge"
+    },
+    {
+     "name": "Katria's body",
+     "role": "in Arkngthamz, with her journal (optional objective)"
+    },
+    {
+     "name": "The Forgemaster",
+     "role": "guardian of the Aetherium Forge"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest runs silently before you meet Katria, and the records here don't show what first switches it on. It holds the book The Aetherium Wars and other lead-in books (two of them on adventurers' bodies out in the wilds), so reading one of those is the likely lead, but that isn't confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The four shard sites come from the quest's cells (Raldbthar Deep Market, the Dwarven Storeroom) and the book Uncovering the Aetherium Forge (Raldbthar, a storeroom outside Mzulft, atop Deep Folk Crossing); which shard alias sits where isn't spelled out in these files. The shard total is a global whose value isn't given; the journal says four."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script points at the Aetherium Crown only; the three forge recipes all need the Aetherium Crest you carry. A patch also adds versions that use 2 Aetherium Dynamo Cores instead of the Crest. The Aetherial Staff's effect text isn't in these files."
+    },
+    {
+     "field": "takesYou.hold",
+     "why": "The Aetherium Wars calls Arkngthamz 'the great research center in the southern Reach', and a follower's line says the same; the places index puts it in Falkreath hold with Dragon Bridge and Morthal as nearest towns, which doesn't fit. I went with the book."
+    },
+    {
+     "field": "rewards",
+     "why": "Whether the Forge can still be used after the quest ends (to make the other artifacts with Dynamo Cores) isn't shown in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:005817 (USSEP last)",
+    "alias Katria NPC Dawnguard.esm:004D0C in cell Dawnguard.esm:00140A Arkngthamz",
+    "stage 100/111 logs (accept or not)",
+    "alias QT_D1KatriaIntroBook = BOOK Dawnguard.esm:004D5B The Aetherium Wars; D3/D4BookCorpse in Skyrim worldspace",
+    "cellsUsed Skyrim.esm:078124 Raldbthar Deep Market, 0AF227 Dwarven Storeroom, Dawnguard.esm:005734 Aetherium Forge",
+    "door Dawnguard.esm:0057ED enable parent Dawnguard.esm:0146C5",
+    "BOOK katriaslegacy.esp:000800 shard sites",
+    "places Dawnguard.esm:004D6D hold Falkreath vs book 'southern Reach'",
+    "COBJ Dawnguard.esm:005761/005763/005762 at DLC1LD_CraftingForgeAetherium need DLC1LD_AetheriumCrestNP",
+    "COBJ Trad_AE_CC_Collection_Requiem_Patch.esp:37AC45-47 Dynamo Core variants",
+    "COBJ PenobscotWarBow.esp:000808 GetQuestCompleted DLC1LD + Craftsmanship",
+    "script DLC1_QF_DLC1LD_01005817.DLC1LD_AetherialCrown",
+    "Forgemaster Dawnguard.esm:015401 in Aetherium Forge",
+    "COBJ Trad_AE_CC_Collection_Requiem_Patch.esp:37AC45-47 have no conditions and no Crest",
+    "INFO HLIORemi.esp:1AF301 Arkngthamz 'in The Reach'",
+    "COBJ PenobscotWarBow.esp:000808 mats 3 Iron Ingot, 2 Leather Strips"
+   ]
+  },
+  {
+   "edid": "madFultheimQuest",
+   "name": "A Forgotten Blade",
+   "plugin": "Redeeming Fultheim - Blades Quest Addon.esp",
+   "canDo": "talk",
+   "canDoWhy": "Meet Fultheim, an old man at Nightgate Inn who may once have been a Blade, then ask Delphine about him.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Fultheim",
+     "where": "Nightgate Inn, in the Pale",
+     "how": "Talk to Fultheim at the inn. He hints he was once a Blade but won't say more, and the journal tells you to ask Delphine about him."
+    }
+   ],
+   "firstStep": "Speak to Delphine about Fultheim",
+   "takesYou": [
+    {
+     "place": "Nightgate Inn",
+     "hold": "The Pale",
+     "why": "meet Fultheim and recruit him"
+    },
+    {
+     "place": "wherever Delphine is (the Sleeping Giant Inn in Riverwood, or Sky Haven Temple once the Blades move there)",
+     "hold": "Whiterun / The Reach",
+     "why": "ask Delphine about Fultheim"
+    },
+    {
+     "place": "wherever Esbern is: Esbern's Vault in the Ratway Warrens, or Sky Haven Temple once the Blades move there",
+     "hold": "The Reach (Sky Haven Temple)",
+     "why": "(optional) hear Esbern's thoughts"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Bring Fultheim a Dragon Bone as proof of what the Blades can do",
+     "leadsTo": "He rejoins the Blades to redeem himself as a Dragonslayer"
+    },
+    {
+     "choice": "Bring Fultheim a Thalmor Justiciar's Robes instead",
+     "leadsTo": "He rejoins the Blades, not for honor but for vengeance against the Thalmor"
+    },
+    {
+     "choice": "Insult Fultheim",
+     "leadsTo": "He attacks you and the quest fails; he can't be recruited"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Delphine about Fultheim",
+      "(Optional) Speak to Esbern about Fultheim",
+      "Recruit Fultheim into the Blades"
+     ]
+    },
+    {
+     "branch": "dragon proof",
+     "objectives": [
+      "Bring a Dragon Bone to Fultheim"
+     ]
+    },
+    {
+     "branch": "Thalmor proof",
+     "objectives": [
+      "Bring a Thalmor Justiciar's Robes to Fultheim"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Fultheim rejoins the Blades",
+     "when": "at the end"
+    }
+   ],
+   "type": "Main Quest",
+   "opens": [],
+   "closes": [
+    "Insulting Fultheim fails the quest and turns him hostile"
+   ],
+   "people": [
+    {
+     "name": "Fultheim",
+     "role": "old former Blade; stays at Nightgate Inn day and night"
+    },
+    {
+     "name": "Delphine",
+     "role": "tells you about Fultheim's time in the Blades"
+    },
+    {
+     "name": "Esbern",
+     "role": "optional, gives his thoughts on Fultheim"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No conditions show in these files, but the quest only makes sense once you know Delphine and Esbern as Blades from the main quest."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is flagged to run from game start; the exact line that opens the journal isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The mod has its own Fultheim placed in Sky Haven Temple: a member of the Blades who can't be killed and isn't set up as a follower. He likely takes over from the inn's Fultheim once he joins, but the swap isn't shown in these files."
+    },
+    {
+     "field": "choices",
+     "why": "The journal has two separate proofs (a Dragon Bone or a Thalmor Justiciar's Robes), but these files don't show whether you pick which one in conversation or Fultheim decides."
+    }
+   ],
+   "evidence": [
+    "QUST Redeeming Fultheim - Blades Quest Addon.esp:000D62 (no later edits)",
+    "startGame true",
+    "stage 5/10/15/16/20/30/40 logs; 40 fails",
+    "Fultheim Skyrim.esm:0DA68A, sole package NightgateInnFultheimPackage1 (Nightgate Inn, The Pale)",
+    "second Fultheim Redeeming Fultheim - Blades Quest Addon.esp:000D86 in Sky Haven Temple",
+    "Delphine Skyrim.esm:013478 placed Sleeping Giant Inn; MQ Sky Haven packages",
+    "places Skyrim.esm:018E42 Sky Haven Temple hold The Reach",
+    "alias Esbern placed Skyrim.esm:019DFD in The Ratway Warrens (Esbern's Vault)",
+    "madFultheimTemple: BladesFaction, essential, follower false"
+   ]
+  },
+  {
+   "edid": "DCQuest",
+   "name": "Destroy the Dragon Cult",
+   "plugin": "Defeat the Dragon Cult.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Esbern writes down where the Dragon Priests are, and the journal asks you to kill them before you face Alduin.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Esbern",
+     "where": "the Blades' base: Esbern's Vault in the Ratway Warrens at first, Sky Haven Temple later",
+     "how": "Esbern's 'Note from Esbern' lists the Dragon Priests and where they lie; the journal opens with it."
+    }
+   ],
+   "firstStep": "Defeat the Dragon Priests Esbern has marked",
+   "takesYou": [
+    {
+     "place": "Valthume",
+     "hold": "The Reach",
+     "why": "defeat Hevnoraak"
+    },
+    {
+     "place": "somewhere outdoors in Skyrim; the records give no named place",
+     "hold": "",
+     "why": "defeat Krosis"
+    },
+    {
+     "place": "Labyrinthian",
+     "hold": "Hjaalmarch",
+     "why": "defeat Morokei and investigate Labyrinthian"
+    },
+    {
+     "place": "Skuldafn",
+     "hold": "Eastmarch",
+     "why": "defeat Nahkriin"
+    },
+    {
+     "place": "Ragnvald (Ragnvald Temple)",
+     "hold": "The Reach",
+     "why": "defeat Otar the Mad"
+    },
+    {
+     "place": "Forelhost (Forelhost Refectory)",
+     "hold": "The Rift",
+     "why": "defeat Rahgot"
+    },
+    {
+     "place": "High Gate Ruins (Vokun's Throne Room)",
+     "hold": "The Pale",
+     "why": "defeat Vokun"
+    },
+    {
+     "place": "Volskygge",
+     "hold": "Haafingar",
+     "why": "defeat Volsung"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Defeat Hevnoraak",
+      "Defeat Krosis",
+      "Defeat Morokei",
+      "Defeat Nahkriin",
+      "Defeat Otar the Mad",
+      "Defeat Rahgot",
+      "Defeat Vokun",
+      "Defeat Volsung",
+      "Investigate Labyrinthian"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Main Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Esbern",
+     "role": "wrote the note listing the Dragon Priests"
+    },
+    {
+     "name": "Hevnoraak",
+     "role": "Dragon Priest in Valthume"
+    },
+    {
+     "name": "Krosis",
+     "role": "Dragon Priest out in the wilds"
+    },
+    {
+     "name": "Morokei",
+     "role": "Dragon Priest sealed in Labyrinthian"
+    },
+    {
+     "name": "Nahkriin",
+     "role": "Dragon Priest at Skuldafn"
+    },
+    {
+     "name": "Otar the Mad",
+     "role": "Dragon Priest in Ragnvald Temple"
+    },
+    {
+     "name": "Rahgot",
+     "role": "Dragon Priest in Forelhost"
+    },
+    {
+     "name": "Vokun",
+     "role": "Dragon Priest in High Gate Ruins"
+    },
+    {
+     "name": "Volsung",
+     "role": "Dragon Priest at Volskygge"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Krosis is placed in the open world with no named location in these records. Esbern's note says Nahkriin guards Skuldafn, 'the location of which I am unable to find'; dialogue in the records says you can't set foot in Skuldafn without a dragon to fly you, so he can only be reached during that part of the main quest."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded for finishing."
+    },
+    {
+     "field": "steps",
+     "why": "Esbern's note says Labyrinthian was magically sealed by Savos Aren; what 'Investigate Labyrinthian' needs from you isn't spelled out."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is flagged to run from game start and its first journal entry names Esbern's note, but these files don't show when or how the note reaches you, or what main-quest progress it needs. The place given is where the records put Esbern, not where the note is found."
+    }
+   ],
+   "evidence": [
+    "QUST Defeat the Dragon Cult.esp:000800 (no later edits)",
+    "startGame true",
+    "stage 10 log; 20 completes",
+    "aliases EsbernNote, LabyrinthianNote",
+    "BOOK Defeat the Dragon Cult.esp:000801 Note from Esbern",
+    "alias placements: Valthume Skyrim.esm:033D68, Krosis ref Skyrim.esm:0F8A48 in worldspace, Labyrinthian Tribune, Skuldafn, Ragnvald Temple, Forelhost Refectory, Vokun's Throne Room, Volskygge",
+    "places holds for each",
+    "INFO Skyrim.esm:04DE3D (Odahviing on Skuldafn)",
+    "places Skuldafn hold Eastmarch"
+   ]
+  },
+  {
+   "edid": "NecroQuest01",
+   "name": "In their Footsteps",
+   "plugin": "Undeath.esp (last edited by UndeathFixes.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "You hear a rumor that a Vigil of Stendarr caravan was attacked in the Reach; it opens the Undeath story.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "",
+     "where": "",
+     "how": "Starts on its own as you travel (it fires when you enter a new area): your journal notes a rumor that a Vigil of Stendarr caravan was attacked on a road in the Reach, and you go looking for it."
+    }
+   ],
+   "firstStep": "Search for the Vigil of Stendarr caravan",
+   "takesYou": [
+    {
+     "place": "the ambushed Vigil of Stendarr caravan, on a road in the Reach",
+     "hold": "The Reach",
+     "why": "investigate the attack and read the Ambush Orders on a dead Necromancer"
+    },
+    {
+     "place": "Ravenscorn Spire",
+     "hold": "",
+     "why": "the Necromancers' tower; search it and its basement for Antioch's journal"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Search for the Vigil of Stendarr caravan",
+      "Investigate the scene of the attack",
+      "Read the Ambush Orders",
+      "Travel to Ravenscorn Spire",
+      "Search Ravenscorn Spire for more information",
+      "Search the Tower basement"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Exhuming Power",
+    "Arkay the Enemy",
+    "Infernal Alchemy"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Vigilant Nikolas",
+     "role": "Vigil of Stendarr at the ambushed caravan"
+    },
+    {
+     "name": "Necromancer",
+     "role": "one of the attackers at the caravan, carrying the Ambush Orders"
+    },
+    {
+     "name": "Antioch",
+     "role": "leader of the Necromancers; you read his journal in Ravenscorn Spire, but he has already left"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The start is a change-location event; its conditions aren't decoded in these files, so I can't say which place or level sets it off. The quest also uses the Silver-Blood Inn in Markarth for something the records don't explain, possibly where the rumor is heard."
+    },
+    {
+     "field": "takesYou",
+     "why": "Ravenscorn Spire isn't in the places index, so its hold isn't given. Its door needs the 'Ravernscorn Spire Key' (spelled that way in the records), and these files don't say who carries it; the Necromancer at the caravan is the likely holder."
+    },
+    {
+     "field": "opens",
+     "why": "The three follow-up quests each begin with Antioch's followers being sent out, which matches this quest's last journal entry; the script that starts them isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:1E225A (UndeathFixes.esp last)",
+    "quest_givers start node NecroQuestStart, event change location",
+    "UndeathFixes.esp turns start-game flag off",
+    "stage 10-70 logs; 70 completes",
+    "aliases Orders, Necromancer Undeath.esp:25CFB5, Vigilant Undeath.esp:257E9D, Journal, Journal02, TowerLocation",
+    "door Undeath.esp:0C7D4D locked, key Undeath.esp:267210",
+    "cellsUsed Skyrim.esm:009608, 009A60, 016DFE Silver-Blood Inn"
+   ]
+  },
+  {
+   "edid": "NecroQuest02",
+   "name": "Exhuming Power",
+   "plugin": "Undeath.esp (last edited by UndeathFixes.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "After Ravenscorn Spire, you learn Antioch sent a follower to Winterhold to dig up a former Archmage's body.",
+   "needs": [
+    {
+     "what": "Finish In their Footsteps",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "",
+     "where": "",
+     "how": "Opens in your journal once you finish In their Footsteps at Ravenscorn Spire, where Antioch's journal says he sent his followers out."
+    }
+   ],
+   "firstStep": "Locate the grave of Archmage Vyngald",
+   "takesYou": [
+    {
+     "place": "the grave of former Archmage Vyngald",
+     "hold": "Winterhold",
+     "why": "stop the Necromancers digging up his body"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Re-cover Vyngald's grave",
+     "leadsTo": "He rests in peace; the quest ends"
+    },
+    {
+     "choice": "Take the Shroud of Vyngald from the coffin",
+     "leadsTo": "His enraged spirit attacks you; defeat it to finish and keep the Shroud"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Locate the grave of Archmage Vyngald",
+      "Defeat the Necromancers"
+     ]
+    },
+    {
+     "branch": "let him rest",
+     "objectives": [
+      "Re-cover Archmage Vyngald's grave"
+     ]
+    },
+    {
+     "branch": "take the shroud",
+     "objectives": [
+      "Take the Shroud of Vyngald from the grave",
+      "Defeat Archmage Vyngald's vengeful apparition"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Shroud of Vyngald",
+     "when": "if you take it from the grave"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Scourg Barrow (once all three of Antioch's followers are dead)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Wynestra",
+     "role": "leads the Necromancers at the grave"
+    },
+    {
+     "name": "Archmage Vyngald the Rat",
+     "role": "his apparition attacks if you take the Shroud"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The journal only says Winterhold; the grave is placed in the open world and these files don't name the spot or say whether it means the town or the hold."
+    },
+    {
+     "field": "starts",
+     "why": "The quest opens with a journal entry, not a person; the script that starts it (likely when In their Footsteps ends) isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The Shroud of Vyngald isn't in the item files, so its stats aren't known; Wynestra's letter is needed for Scourg Barrow."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:26C339 (UndeathFixes.esp last)",
+    "stage 0 log names Winterhold; 32/33 complete",
+    "aliases Necromancer01 = Wynestra Undeath.esp:27B6CF, Vyngald Undeath.esp:27B6D5, Coffin, DirtMound",
+    "NecroQuest05 alias LetterWynestra"
+   ]
+  },
+  {
+   "edid": "NecroQuest03",
+   "name": "Arkay the Enemy",
+   "plugin": "Undeath.esp (last edited by UndeathFixes.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "After Ravenscorn Spire, you learn Antioch's followers are going to destroy a Temple of Arkay in Falkreath hold.",
+   "needs": [
+    {
+     "what": "Finish In their Footsteps",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "",
+     "where": "",
+     "how": "Opens in your journal once you finish In their Footsteps at Ravenscorn Spire, where Antioch's journal says he sent his followers out."
+    }
+   ],
+   "firstStep": "Locate the Temple of Arkay",
+   "takesYou": [
+    {
+     "place": "Temple of Arkay",
+     "hold": "Falkreath",
+     "why": "clear out the Necromancers and decide the captive priest's fate"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Free the captive Priest of Arkay",
+     "leadsTo": "He escapes and the quest ends"
+    },
+    {
+     "choice": "Slaughter the priest and cut out his heart",
+     "leadsTo": "You keep the Priest of Arkay's Heart; the journal hints it will come in handy"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Locate the Temple of Arkay",
+      "Clear out the Necromancers from the Temple of Arkay"
+     ]
+    },
+    {
+     "branch": "free him",
+     "objectives": [
+      "Free the captive Priest of Arkay"
+     ]
+    },
+    {
+     "branch": "take the heart",
+     "objectives": [
+      "Slaughter the captive Priest of Arkay",
+      "Take the Priest of Arkay's Heart"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Priest of Arkay's Heart",
+     "when": "if you kill the priest"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Scourg Barrow (once all three of Antioch's followers are dead)"
+   ],
+   "closes": [
+    "The captive Priest of Arkay dies if you choose to take his heart"
+   ],
+   "people": [
+    {
+     "name": "Gundar",
+     "role": "leads the Necromancers at the temple"
+    },
+    {
+     "name": "Priest of Arkay",
+     "role": "the last survivor, held captive at the temple"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "This Temple of Arkay is a place the mod adds; it isn't in the places index, so only the journal's 'Falkreath hold' is known."
+    },
+    {
+     "field": "starts",
+     "why": "Opens with a journal entry; the script that starts it isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The heart's use isn't stated here; the later Lich ritual likely needs it, but that isn't confirmed in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:26C344 (UndeathFixes.esp last)",
+    "stage 0 log names Falkreath hold; 30/35 complete",
+    "alias Necromancer01 = Gundar Undeath.esp:27B6CE in cell Undeath.esp:2859B0 Temple of Arkay",
+    "CaptivePriest Undeath.esp:290027 packages NecroCaptive1Bound/FreePackage"
+   ]
+  },
+  {
+   "edid": "NecroQuest04",
+   "name": "Infernal Alchemy",
+   "plugin": "Undeath.esp (last edited by UndeathFixes.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "After Ravenscorn Spire, you learn Antioch's followers are working an alchemical ritual on a plateau overlooking the Reach.",
+   "needs": [
+    {
+     "what": "Finish In their Footsteps",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "",
+     "where": "",
+     "how": "Opens in your journal once you finish In their Footsteps at Ravenscorn Spire, where Antioch's journal says he sent his followers out."
+    }
+   ],
+   "firstStep": "Locate the Ritual Site",
+   "takesYou": [
+    {
+     "place": "the Ritual Site, a plateau overlooking the Reach",
+     "hold": "The Reach",
+     "why": "kill the Necromancers and deal with their cauldron"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Destroy the cauldron",
+     "leadsTo": "The concoction can never be finished; the quest ends"
+    },
+    {
+     "choice": "Try to complete the concoction yourself",
+     "leadsTo": "If it works you get Namira's Corrosion or Embalming Essence; if it fails the cauldron is spoiled and the quest fails"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Locate the Ritual Site",
+      "Defeat the Necromancers"
+     ]
+    },
+    {
+     "branch": "destroy",
+     "objectives": [
+      "Destroy the Cauldron"
+     ]
+    },
+    {
+     "branch": "brew",
+     "objectives": [
+      "Complete the Concoction"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Namira's Corrosion or Embalming Essence (an elixir)",
+     "when": "if you complete the concoction successfully"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Scourg Barrow (once all three of Antioch's followers are dead)"
+   ],
+   "closes": [
+    "A failed brew spoils the cauldron for good"
+   ],
+   "people": [
+    {
+     "name": "Selonius the Mad",
+     "role": "leads the Necromancers at the Ritual Site"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "What decides whether the brew succeeds, and which of the two elixirs you get, isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The site is placed in the open world with no named location; 'overlooking the Reach' is the journal's wording, so it may sit just outside the hold."
+    },
+    {
+     "field": "starts",
+     "why": "Opens with a journal entry; the script that starts it isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:26C345 (UndeathFixes.esp last)",
+    "stage 0 log; 35/51/61 complete, 41 fails",
+    "alias Necromancer01 = Selonius the Mad Undeath.esp:2AE858; minions with NecroQuest04AlchemistRitual packages",
+    "alias Cauldron, RitualLocation"
+   ]
+  },
+  {
+   "edid": "NecroQuest05",
+   "name": "Scourg Barrow",
+   "plugin": "Undeath.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Once all three of Antioch's followers are dead, their bodies point you to Antioch in the Dragontail Mountains.",
+   "needs": [
+    {
+     "what": "Kill Wynestra (Exhuming Power)",
+     "kind": "quest"
+    },
+    {
+     "what": "Kill Gundar (Arkay the Enemy)",
+     "kind": "quest"
+    },
+    {
+     "what": "Kill Selonius the Mad (Infernal Alchemy)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "",
+     "where": "",
+     "how": "Opens in your journal once Wynestra, Gundar and Selonius the Mad are all dead: search their bodies for a clue to where Antioch went."
+    }
+   ],
+   "firstStep": "Search the Necromancer's body",
+   "takesYou": [
+    {
+     "place": "a cliffside trail deep in the Dragontail Mountains, southwest of Markarth across the mountain spine between High Rock and Hammerfell",
+     "hold": "",
+     "why": "find the hidden crypt"
+    },
+    {
+     "place": "Scourg Barrow",
+     "hold": "",
+     "why": "defeat Antioch in its depths"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Search the Necromancer's body",
+      "Read the Orders",
+      "Travel to the Dragontail Mountains",
+      "Locate and enter Scourg Barrow",
+      "Defeat Antioch"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Antioch's artifacts and knowledge (the journal says they are now yours)",
+     "when": "after defeating Antioch"
+    },
+    {
+     "what": "Barrows of the Mountains (book)",
+     "when": "during the quest"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "Black Book: Whispers of the Veil"
+   ],
+   "closes": [
+    "Antioch dies"
+   ],
+   "people": [
+    {
+     "name": "Antioch",
+     "role": "leader of the Necromancers; boss of Scourg Barrow (level 80 in the records)"
+    },
+    {
+     "name": "Wynestra, Gundar, Selonius the Mad",
+     "role": "Antioch's followers; each carries a letter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Scourg Barrow has no hold or map marker in the places index; the directions come from the Orders note. The places index puts Scourg Barrow's enemies at level 30 to 80."
+    },
+    {
+     "field": "starts",
+     "why": "It opens with a journal entry once the three followers are dead; the script isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "A quest script refers to the book Barrows of the Mountains, but these files don't show whether it's handed to you or placed in the crypt. Antioch's Robes exist as an item and Antioch wears an outfit from the same mod, but the outfit's contents aren't listed, so it isn't confirmed they're on him."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:2BDBBF (no later edits)",
+    "stage 10-50 logs; 50 completes",
+    "aliases Wynestra/Selonius/Gundar + LetterWynestra/LetterSelonius/LetterGundar, Antioch Undeath.esp:18DF35 in cell Undeath.esp:0737EE, MapMarker",
+    "BOOK Undeath.esp:2BDBC0 Orders",
+    "places Undeath.esp:125096 Scourg Barrow",
+    "QF__042BDBBF.NecroScourgBarrowBook01 = BOOK Undeath.esp:1C5C99"
+   ]
+  },
+  {
+   "edid": "NecroBlackBookQuest01",
+   "name": "Black Book: Whispers of the Veil",
+   "plugin": "Undeath.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Read the Black Book 'Whispers of the Veil' found deep in Scourg Barrow and it pulls you into Apocrypha.",
+   "needs": [
+    {
+     "what": "Find the Black Book 'Whispers of the Veil' deep in Scourg Barrow (the story puts this after Antioch is dead)",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "",
+     "where": "deep within Scourg Barrow",
+     "how": "Find and read the Black Book 'Whispers of the Veil'; it takes you to Apocrypha."
+    }
+   ],
+   "firstStep": "Learn the Black Book's hidden knowledge",
+   "takesYou": [
+    {
+     "place": "Apocrypha (Hermaeus Mora's realm)",
+     "hold": "",
+     "why": "uncover the lost Lich ritual"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Read the book again to escape Apocrypha",
+     "leadsTo": "You leave Apocrypha before you learn the ritual"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Learn the Black Book's hidden knowledge"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "The lost ritual to become a Lich, written down on parchment",
+     "when": "at the end"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [
+    "The Path of Transcendence"
+   ],
+   "closes": [],
+   "people": [],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "The journal says you can read the book again to escape; whether you can return afterwards isn't stated."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script lists a water-damage spell from Dragonborn.esm, which is Apocrypha's hazard, not a reward. The parchment's item name isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:125089 (no later edits)",
+    "stage 10/20 logs; 20 completes",
+    "aliases BookTarget, Player, Follower",
+    "NecroBlackBookQuestScript.DLC2abApoWaterDamage = Dragonborn.esm:02A6CB"
+   ]
+  },
+  {
+   "edid": "NecroLichRitualQuest",
+   "name": "The Path of Transcendence",
+   "plugin": "Undeath.esp (last edited by UndeathFixes.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "Once you've learned the ritual in Apocrypha, you can gather its parts and turn yourself into a Lich.",
+   "needs": [
+    {
+     "what": "Finish Black Book: Whispers of the Veil",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "",
+     "where": "",
+     "how": "Opens in your journal when you finish Black Book: Whispers of the Veil and write the ritual down on parchment."
+    }
+   ],
+   "firstStep": "Gather the ritual's parts: the Phylactery, the Elixir of Defilation and a Ritual Site",
+   "takesYou": [
+    {
+     "place": "Ravenscorn Spire",
+     "hold": "",
+     "why": "one choice of Ritual Site: perform the Ritual of Transcendence"
+    },
+    {
+     "place": "the Solitude Sewers, under Solitude",
+     "hold": "Haafingar",
+     "why": "the other choice of Ritual Site: perform the Ritual of Transcendence"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Where to set up the Ritual Site: Ravenscorn Spire or the Solitude Sewers",
+     "leadsTo": "That place becomes your ritual chamber"
+    },
+    {
+     "choice": "Whether to perform the ritual at all",
+     "leadsTo": "Completing it makes you a Lich for good; it can't be undone"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Construct the Phylactery",
+      "Create the Elixir of Defilation",
+      "Establish a Ritual Site",
+      "Go to the Ritual Site",
+      "Complete the Ritual of Transcendence"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "You become an undead Lich",
+     "when": "at the end"
+    },
+    {
+     "what": "Undeath (ability)",
+     "when": "at the end"
+    },
+    {
+     "what": "Dark Resurgence (ability)",
+     "when": "at the end"
+    },
+    {
+     "what": "Unbind Soul (spell)",
+     "when": "at the end"
+    },
+    {
+     "what": "Light Steps (perk)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Dark Brotherhood",
+   "opens": [],
+   "closes": [
+    "Your mortal life: once you are a Lich it can't be reversed, and in your true form people of Skyrim fear and hate you (Illusion magic lets you look mortal again)",
+    "If any part of the ritual is missing or wrong, it fails and you are killed"
+   ],
+   "people": [],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "The recipes for the Phylactery and the Elixir of Defilation aren't in these files. The earlier quests' journals hint that the Priest of Arkay's Heart, Namira's Corrosion or Embalming Essence, and the Shroud of Vyngald matter here, but that isn't confirmed."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward names come from script properties; their effect text isn't in these files. The mod also has 'Assume Lich Form' and 'Revert Form' lesser powers, but these files don't tie them to this quest."
+    },
+    {
+     "field": "choices",
+     "why": "The journal says you 'purchased the necessary items and prepared a secure location'; the two site options come from the quest's Sewer and Tower aliases and the upgrade books 'Solitude Sewers - Ritual Chamber' and 'Ravenscorn Spire - Laboratory'. The seller is probably The Broker, a merchant from this mod found at The Broker's Shack who belongs to its upgrades-merchant group; prices and where the shack is aren't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Undeath.esp:019EC8 (UndeathFixes.esp last)",
+    "stage 10-100 logs; 100 completes",
+    "aliases Sewer, Tower",
+    "NecroLichTrackingQuest props: NecroLichTransformationRitual Undeath.esp:097B7A Unbind Soul, AbLichNecroPassive Undeath.esp:030349 Undeath, LightFoot Skyrim.esm:05820C Light Steps, NecroSewerLaboratoryUpgrade Undeath.esp:0ED521, NecroTowerLaboratoryUpgrade Undeath.esp:0EAB7F, NecroLichForm Undeath.esp:007E47",
+    "QF__03019EC8.NecroPerkPhylacteryRegenAbility = Undeath.esp:3326D4 Dark Resurgence",
+    "powers Undeath.esp:00A444, 013F56",
+    "The Broker Undeath.esp:0BB03A cell The Broker's Shack, NecroUpgradesMerchantFaction Undeath.esp:0EAB85",
+    "Torvalen and others placed in Solitude Sewers, inTown Solitude"
+   ]
+  }
+ ]
+}
