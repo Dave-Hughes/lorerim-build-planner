@@ -42,3 +42,18 @@ Not a story, so not shown as one. No "The story" heading. Grouped by where you p
 ## What Claude gets through the connector
 
 `get_quest` returns sections 2 to 10 as fields, in this order, with the "how sure" line on each field that isn't checked. `suggest_quests` returns 2, 3, 4 and 7 for each result, so a plan never shows `start: null`.
+
+## Dave's answers, 23 Oct 2026, 19:44 (not built yet; everything is paused)
+
+**How sure we are: a confidence line, with what it rests on.** Each quest (and each field that differs) shows a confidence and the sources behind it:
+- **LoreRim's game files**, read by an agent and checked by a second one.
+- **Other sites**: UESP and similar, where they agree or fill a gap (marked when a fact comes only from them).
+- **Community input**: what signed-in players have reported and an admin approved (WO-146).
+- **Checked in game**: a player watched it happen (Dave's Jaree-Ra, Running Wild's board).
+- **Confirmed by players**: a "I can confirm this quest is accurate" button for signed-in (Discord) users; a modal says it's recorded; the page shows how many people confirmed and their names.
+
+The confidence comes from those, in plain words, not a percentage: *checked in game*; *game files, checked, agrees with UESP*; *game files only*; *not confirmed: which ending gives the book*. A field a player confirmed in game drops the read's doubt about it.
+
+**Every NPC named anywhere links to their page.** On quest pages, line pages, the connector's answers, everywhere. Needs the people pages (WO-155).
+
+**Still to settle:** where a person's hours go (beside their name, or a "When" line), and how the jobs pages are grouped.
