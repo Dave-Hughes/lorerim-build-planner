@@ -422,7 +422,7 @@
    "starts": [
     {
      "who": "Vex",
-     "where": "the Ragged Flagon, in the Ratway under Riften; the schedule keeps her there day and night",
+     "where": "the Ragged Flagon, in Riften; the schedule keeps her there day and night",
      "how": "Vex hands this out as one of the extra jobs (the Meet the Family journal says to check in with Vex and Delvin for them). The house and city are picked fresh each time it starts."
     }
    ],
@@ -522,7 +522,7 @@
    "starts": [
     {
      "who": "Delvin Mallory",
-     "where": "the Ragged Flagon, in the Ratway under Riften; the schedule keeps him there day and night",
+     "where": "the Ragged Flagon, in Riften; the schedule keeps him there day and night",
      "how": "Delvin hands this out as one of the extra jobs (the Meet the Family journal says to check in with Vex and Delvin for them). The city is picked fresh each time it starts."
     }
    ],
@@ -621,7 +621,7 @@
    "starts": [
     {
      "who": "Vex",
-     "where": "the Ragged Flagon, in the Ratway under Riften; the schedule keeps her there day and night",
+     "where": "the Ragged Flagon, in Riften; the schedule keeps her there day and night",
      "how": "Vex hands this out as one of the extra jobs (the Meet the Family journal says to check in with Vex and Delvin for them). The item, business and city are picked fresh each time it starts."
     }
    ],
@@ -1057,7 +1057,7 @@
     {
      "place": "Windhelm, to find Niranye",
      "hold": "Eastmarch",
-     "why": "get her to tell you where the Summerset Shadows are; she works 8am to 8pm (place not named) and drinks at the New Gnisis Cornerclub 8pm to 2am; her safe is in Niranye's House"
+     "why": "get her to tell you where the Summerset Shadows are; she works 8am to 8pm (place not named) and drinks at the New Gnisis Cornerclub 8pm to 2am; she lives in Niranye's House"
     },
     {
      "place": "Uttering Hills Cave",
@@ -1231,7 +1231,7 @@
    "firstStep": "Learn more about the Thieves Guild from Vex in the Ragged Flagon",
    "takesYou": [
     {
-     "place": "the Ragged Flagon, in the Ratway under Riften",
+     "place": "the Ragged Flagon, in Riften",
      "hold": "The Rift",
      "why": "talk to Vex, Delvin and Tonilia"
     }
@@ -1306,7 +1306,7 @@
    "starts": [
     {
      "who": "Tonilia",
-     "where": "the Ragged Flagon, in the Ratway under Riften; her schedule keeps her there day and night",
+     "where": "the Ragged Flagon, in Riften; her schedule keeps her there day and night",
      "how": "Tonilia has a line for this quest before the delivery begins; she sends you to deliver Moon Sugar to Ri'saad."
     }
    ],

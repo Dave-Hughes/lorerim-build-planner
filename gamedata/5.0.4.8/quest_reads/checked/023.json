@@ -1,0 +1,1136 @@
+{
+  "checks": [
+    {
+      "edid": "dunBardsLeapSummitQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Objective only at the late stage (200), no start event in quest_starts_raw, no giver dialogue that sets the opening stages; StarterObject alias. 'by itself' fits."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Giraud's INFO 0BC6E7 has only the stage condition; nothing else gates it."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Records tie Azzadal (GhostBard alias, ref 0B3C82 at Bard's Leap Summit, essential) and a StarterObject alias to the quest, but no dialogue, event or ref shows what sets the first stage. Kept as written (hedged in 'how'); Azzadal moved to a 'probably' note in unsure. The stage 0/10 fragment script or the StarterObject's ref would settle it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the only objective (stage 200)."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Bard's Leap Summit Skyrim.esm:018EE7 (The Reach); Giraud placed in Bards College 016A0C, Solitude (Haafingar). 'Where the fragment comes from' is read from the EddaPart/EddaMarker aliases and quest name; reasonable."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching objectives or stages with text."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "dunBardsLeapSummitRewardList 0BC6E8 via QF_..._000AE014.RewardList; list contents not in items_raw. Already carries an unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records points onward. Collecting the Edda (0E7814) is also edited by dvEdda.esp, but no link to this quest is shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DMRClearQ",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO BardExcavation.esp:000863 (Rothen) and Birinna, while the quest is below stage 6."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Only the stage condition on the INFO; no level, faction or quest check. Unsure note about Tending the Flames is fair."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Rothen ref 000803 and Birinna ref 000804 in exterior cell Skyrim.esm:009407, where door 062ED6 leads into Dead Men's Respite; exterior sandbox/sleep packages near ref 000800; Morthal 0.5 km, 'a short walk'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective at stage 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Dead Men's Respite Skyrim.esm:019161, Hjaalmarch."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward property or item in quest_givers_raw; empty with an unsure note is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAomBountyBook",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardPornBook via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAomBountyChickTrader",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'. Temple marker alias unplaced; unsure note naming the Vigilants' temple (Vigilant.esm:025091, Stuhn Ravine) checks out."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective text 'Kill the Chick Trader or buy an orphan'; what killing leads to is unsettled and already in unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardChickTrader via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAoMBountyPiper",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardPiper via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAomBountyRelic",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardMeridia via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "unsure",
+          "note": "Empty is right on the records; whether 'the Beacon' is Meridia's Beacon and what handing it in does to Meridia's quest isn't settled. A link from the Relic alias to a base object would settle it. Reader's unsure note stands."
+        }
+      }
+    },
+    {
+      "edid": "zzzAoMBountyRelicHorn",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardHorn via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAomBountySummoner",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardSummoner via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAomBountyVampire",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Detect Dead (Skyrim.esm:0211EF, Requiem Adept Alteration) is named by the bounty's own script property QF_zzzAomBountyVampire_024E0108.DetectUndead and listed as a reward in quest_givers_raw. Per Bob's 23 Oct ruling it stays in rewards with an unsure note instead of only in unsure. Leveled list zzzAoMLvlBQRewardVampire kept."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "zzzAomBountyWitch",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' stays (aliases filled at start, <Alias=…> text). canDoWhy said 'repeatable' and 'change each time'; nothing in the records shows it repeats (Bob, 23 Oct). Reworded; same wording fixed in the starts note and in people."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or start conditions in these files; the Vigilant questline lists it but opens with 'Join the Vigilants of Stendarr', which doesn't prove a gate. Empty plus unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, start event, book or note in quest_givers_raw or quest_starts_raw; sister 'Radiance' jobs have no giver either. Empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 0 objective, alias tags put in plain words."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places agree with the aliases, but '(changes each time)' / 'changes each time' says it repeats, which no record shows. Reworded to 'picked when the bounty starts'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective path; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Leveled list zzzAoMLvlBQRewardWitch via the quest fragment's RewardItem; its contents aren't in items_raw. 'When' follows the completing stage."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "dunBardsLeapSummitQST",
+      "name": "The Lost Verse",
+      "plugin": "Skyrim.esm (last edited by dvEdda.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Runs quietly from Bard's Leap Summit; it only shows in your journal once you have the ancient Edda fragment to show someone.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Azzadal (a ghostly bard)",
+          "where": "Bard's Leap Summit, in the Reach",
+          "how": "The quest is tied to Azzadal and a starting object at Bard's Leap Summit; the journal task appears once you hold the ancient Edda fragment."
+        }
+      ],
+      "firstStep": "Show the ancient Edda fragment to someone",
+      "takesYou": [
+        {
+          "place": "Bard's Leap Summit",
+          "hold": "The Reach",
+          "why": "where Azzadal is and where the Edda fragment comes from"
+        },
+        {
+          "place": "The Bards College, Solitude",
+          "hold": "Haafingar",
+          "why": "show the fragment to Giraud Gemane"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Show the ancient Edda fragment to someone"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the quest's reward list",
+          "when": "when you hand the fragment over to Giraud Gemane"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Azzadal",
+          "role": "the ghost bard at Bard's Leap Summit"
+        },
+        {
+          "name": "Giraud Gemane",
+          "role": "teacher at the Bards College in Solitude; the one to show the fragment to"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Probably Azzadal, the ghost bard at Bard's Leap Summit: the quest names him as its ghost bard, but nothing in these files shows him starting it."
+        },
+        {
+          "field": "starts",
+          "why": "The quest has a 'starter object' and an 'Edda part' but the early stages have no journal text, so these files don't show what exactly you touch or do at the summit to set it going."
+        },
+        {
+          "field": "where",
+          "why": "Giraud is placed in the Bards College; his schedule also has him teaching class there and eating lunch at the Winking Skeever, so he may not be in the College at midday."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; its contents aren't in these files. That it is given when you talk to Giraud is read from the turn-in dialogue being his."
+        },
+        {
+          "field": "plugin",
+          "why": "dvEdda.esp, which also reworks Collecting the Edda, is the last edit; these files don't show what it changed here."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:0AE014 dunBardsLeapSummitQST, editedBy dvEdda.esp",
+        "objective at stage 200",
+        "aliases GhostBard/StarterObject/EddaPart/Giraud/EddaMarker",
+        "Azzadal Skyrim.esm:0B3C81 ref 0B3C82 at Bard's Leap Summit, essential",
+        "giver Giraud INFO Skyrim.esm:0BC6E7 (stage < 201)",
+        "reward dunBardsLeapSummitRewardList Skyrim.esm:0BC6E8 via QF_dunBardsLeapSummitQST_000AE014.RewardList",
+        "Bard's Leap Summit Skyrim.esm:018EE7 (The Reach)",
+        "Giraud packages SolitudeGiraudEatLunch10x3 (Winking Skeever), SolitudeBardsCollegeClassGiraudTeach14x4"
+      ]
+    },
+    {
+      "edid": "DMRClearQ",
+      "name": "Clear Dead Men's Respite",
+      "plugin": "BardExcavation.esp (Bards College Excavation; no later edits)",
+      "canDo": "talk",
+      "canDoWhy": "Two bards camped at the door of Dead Men's Respite ask you to clear the tomb.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Rothen Adlvel",
+          "where": "camped outside the entrance to Dead Men's Respite, a short walk from Morthal",
+          "how": "Talk to Rothen (or Birinna, who camps with him) and he asks you to clear the tomb."
+        },
+        {
+          "who": "Birinna",
+          "where": "camped outside the entrance to Dead Men's Respite, a short walk from Morthal",
+          "how": "She can give the same task as Rothen."
+        }
+      ],
+      "firstStep": "Clear Dead Men's Respite.",
+      "takesYou": [
+        {
+          "place": "Dead Men's Respite",
+          "hold": "Hjaalmarch",
+          "why": "clear the tomb, then tell the bards"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Clear Dead Men's Respite.",
+            "Inform the bards that the tomb is clear."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Rothen Adlvel",
+          "role": "Dunmer bard of the Bards College, camped outside Dead Men's Respite"
+        },
+        {
+          "name": "Birinna",
+          "role": "Nord bard, camped with Rothen"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "No reward is listed in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Dead Men's Respite is also where Tending the Flames sends you; these files don't show whether doing one affects the other. The tomb is dangerous: creatures from level 6 up to a level 85 boss, King Olaf One-Eye, plus traps."
+        },
+        {
+          "field": "where",
+          "why": "The bards camp outside the tomb and sometimes go inside; once their own story moves on they spend weekends at the Bards College in Solitude, and after Laid to Rest is done they take dinner at the Moorside Inn in Morthal. These files don't say when the College move happens."
+        }
+      ],
+      "evidence": [
+        "BardExcavation.esp:00085E DMRClearQ (Misc)",
+        "objectives at stages 10, 15; completes at 100",
+        "giver Rothen INFO BardExcavation.esp:000863 (stage < 6), also Birinna",
+        "Rothen ref 000803 / Birinna ref 000804 in exterior cell Skyrim.esm:009407 (door 062ED6 into Dead Men's Respite)",
+        "packages DMRespiteExteriorSandbox/Sleep, DMBardsCollegeStaySaturday/Sunday (BardExcavation.esp:000843 stage 5), DMBardsMoorsideDinner (MS14 stage 200 done)",
+        "Dead Men's Respite Skyrim.esm:019161: Hjaalmarch, boss King Olaf One-Eye level 85, traps"
+      ]
+    },
+    {
+      "edid": "zzzAomBountyBook",
+      "name": "Bounty: Book",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Take the erotic book from the named person in the named place",
+      "takesYou": [
+        {
+          "place": "a town or place named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "take the book from its owner"
+        },
+        {
+          "place": "the Collection Chest",
+          "hold": "not in these files",
+          "why": "hand in the book"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Take the erotic book from the named person in the named place",
+            "Put the erotic book in the Collection Chest"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "once the book is in the Collection Chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the book's owner",
+          "role": "named on the bounty; picked when the bounty starts"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Collection Chest is a quest alias; these files don't say where the chest stands."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E1318 zzzAomBountyBook (Misc; Vigilant.esm, no later edits)",
+        "objectives at stages 0, 10; completes at 20",
+        "aliases BookLocation/Target/PornBook/CollectBox/MapMarker",
+        "reward zzzAoMLvlBQRewardPornBook Vigilant.esm:4E494F"
+      ]
+    },
+    {
+      "edid": "zzzAomBountyChickTrader",
+      "name": "Bounty: Chick Trader",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Kill the Chick Trader or buy an orphan in the named town",
+      "takesYou": [
+        {
+          "place": "a town named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "find the Chick Trader"
+        },
+        {
+          "place": "the Temple of Stendarr",
+          "hold": "not in these files",
+          "why": "bring the orphan"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill the Chick Trader",
+          "leadsTo": "stop the trade by force"
+        },
+        {
+          "choice": "Buy an orphan",
+          "leadsTo": "take the child to the Temple of Stendarr"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the Chick Trader or buy an orphan in the named town",
+            "Take the orphan to the Temple of Stendarr"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "at the end"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the Chick Trader",
+          "role": "a dealer in orphans in the named town"
+        },
+        {
+          "name": "an orphan",
+          "role": "to be bought and taken to the Temple of Stendarr"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The temple is a marker alias; these files don't say which Temple of Stendarr. The Vigilants' own Temple of Stendarr is in Stuhn Ravine."
+        },
+        {
+          "field": "choices",
+          "why": "The journal only says 'kill or buy'; these files don't show whether killing the trader ends the bounty at once or still needs the orphan taken to the temple."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E372E zzzAomBountyChickTrader (Misc; Vigilant.esm, no later edits)",
+        "objectives at stages 0, 10; completes at 20; stage 30 has no text",
+        "aliases TownLocation/ChickTrader/Orphan/TempleMarker/HoldLocation",
+        "reward zzzAoMLvlBQRewardChickTrader Vigilant.esm:4E494A",
+        "Vigilant Temple of Stendarr cell Vigilant.esm:025091 (Stuhn Ravine)"
+      ]
+    },
+    {
+      "edid": "zzzAoMBountyPiper",
+      "name": "Bounty: Piper",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Defeat the Piper in the named place",
+      "takesYou": [
+        {
+          "place": "a place named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "defeat the Piper"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Defeat the Piper in the named place"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "when the Piper is defeated"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the Piper",
+          "role": "the target, found with bandits"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E0116 zzzAoMBountyPiper (Misc; Vigilant.esm, no later edits)",
+        "objective at stage 0; completes at 10",
+        "aliases PiperLocation/Bandit/Piper/MapMarker",
+        "reward zzzAoMLvlBQRewardPiper Vigilant.esm:4E494C"
+      ]
+    },
+    {
+      "edid": "zzzAomBountyRelic",
+      "name": "Bounty: Daedric Relic",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Find the relic of Meridia in the named place",
+      "takesYou": [
+        {
+          "place": "a place named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "find the relic of Meridia in a container there"
+        },
+        {
+          "place": "the Collection Chest",
+          "hold": "not in these files",
+          "why": "hand in the relic"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the relic of Meridia in the named place",
+            "Put the Beacon in the Collection Chest"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "once the relic is in the Collection Chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Collection Chest is a quest alias; these files don't say where the chest stands."
+        },
+        {
+          "field": "closes",
+          "why": "The journal calls the relic 'the Beacon'; these files don't say whether it is the same Meridia's Beacon that starts Meridia's own quest, or what handing it in does to that quest."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E011B zzzAomBountyRelic (Misc; Vigilant.esm, no later edits)",
+        "objectives at stages 0, 10; completes at 20",
+        "aliases RelicLocation/Container/Relic/CollectBox/MapMarker",
+        "reward zzzAoMLvlBQRewardMeridia Vigilant.esm:4E494D"
+      ]
+    },
+    {
+      "edid": "zzzAoMBountyRelicHorn",
+      "name": "Bounty: Horn",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Find the lost Horn of Stendarr in the named place",
+      "takesYou": [
+        {
+          "place": "a place named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "find the Horn; a boss guards the place"
+        },
+        {
+          "place": "the Collection Chest",
+          "hold": "not in these files",
+          "why": "hand in the Horn"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the lost Horn of Stendarr in the named place",
+            "Put the Horn in the Collection Chest"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "once the Horn is in the Collection Chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the boss",
+          "role": "guards the Horn; picked when the bounty starts"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Collection Chest is a quest alias; these files don't say where the chest stands."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E0121 zzzAoMBountyRelicHorn (Misc; Vigilant.esm, no later edits)",
+        "objectives at stages 0, 10; completes at 20",
+        "aliases HornLocation/Boss/Horn/CollectBox",
+        "reward zzzAoMLvlBQRewardHorn Vigilant.esm:4E494E"
+      ]
+    },
+    {
+      "edid": "zzzAomBountySummoner",
+      "name": "Bounty: Summoner",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Defeat the summoner in the named place",
+      "takesYou": [
+        {
+          "place": "a place named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "defeat the summoner and their Daedra"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Defeat the summoner in the named place"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "when the summoner is defeated"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the summoner",
+          "role": "the target, with a summoned Daedra"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        },
+        {
+          "field": "steps",
+          "why": "The bounty has a fail ending; these files don't say what makes it fail. (The journal line reads 'Defeath' in the game's own text.)"
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E0102 zzzAomBountySummoner (Misc; Vigilant.esm, no later edits)",
+        "objective at stage 0; completes at 10; stage 999 fails",
+        "aliases TargetLocation/Target/Daedra",
+        "reward zzzAoMLvlBQRewardSummoner Vigilant.esm:4E494B"
+      ]
+    },
+    {
+      "edid": "zzzAomBountyVampire",
+      "name": "Bounty: Vampire",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Find and eliminate the vampire in the named town",
+      "takesYou": [
+        {
+          "place": "a town named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "find the vampire hiding there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find and eliminate the vampire in the named town"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "when the vampire is dead"
+        },
+        {
+          "what": "Detect Dead (spell)",
+          "when": "not shown in these files"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the vampire",
+          "role": "hidden in the named town"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Detect Dead is named by the bounty's own script, not confirmed: these files don't show whether it is given to you or only cast on you to help find the vampire."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E0108 zzzAomBountyVampire (Misc; Vigilant.esm, no later edits)",
+        "objective at stage 0; completes at 10",
+        "aliases TownLocation/Vampire/CenterMarker/HoldLocation/Dummy01-03",
+        "reward zzzAoMLvlBQRewardVampire Vigilant.esm:4E4949",
+        "Detect Dead Skyrim.esm:0211EF via QF_zzzAomBountyVampire_024E0108.DetectUndead"
+      ]
+    },
+    {
+      "edid": "zzzAomBountyWitch",
+      "name": "Bounty: Witch",
+      "plugin": "Vigilant.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Vigilant of Stendarr bounty; the target and the place are picked when the bounty starts.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Kill the witch in the named place",
+      "takesYou": [
+        {
+          "place": "a place named on the bounty (picked when the bounty starts)",
+          "hold": "picked when the bounty starts",
+          "why": "kill the witch, who has Forsworn with her"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the witch in the named place"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "An item from the bounty's reward list",
+          "when": "when the witch is dead"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the witch",
+          "role": "the target, with Forsworn"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "None of these files show who or what hands out this bounty: there is no giver dialogue, no start event and no book or note tied to it. The target and the place are filled in when the bounty starts."
+        },
+        {
+          "field": "needs",
+          "why": "Nothing in these files says whether you must have joined the Vigilants of Stendarr (or reached a point in their story) before bounties are offered."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list; what it holds isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Vigilant.esm:4E010E zzzAomBountyWitch (Misc; Vigilant.esm, no later edits)",
+        "objective at stage 0; completes at 10",
+        "aliases WitchLocation/Forsworn/Witch",
+        "reward zzzAoMLvlBQRewardWitch Vigilant.esm:4E4948"
+      ]
+    }
+  ]
+}
