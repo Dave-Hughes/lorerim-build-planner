@@ -28,7 +28,7 @@ export interface QuestPage {
   /** Section 3. Empty: nothing is needed, any level. */
   needs: PageLink[];
   /** Section 4: who and where, what to do, and who said so when it isn't the game files. */
-  starts: { how: string; who?: string; where?: string; reportedBy?: { source: string; also?: string[] } }[];
+  starts: { how: string; who?: string; where?: string; reportedBy?: { source: string; also?: string[] }; whereIs?: string[]; unplaced?: string }[];
   firstStep?: string;
   /** Section 5, in order, each with the places index's words for its danger when it knows the place. */
   takesYou: { place: string; hold?: string; why?: string; danger?: string }[];
@@ -119,7 +119,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
   const players = playerWays(q);
   const said = new Set(players.map((w) => w.who).filter(Boolean));
   const starts = [
-    ...players.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) } })),
+    ...players.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) }, ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}), ...(w.unplaced ? { unplaced: w.unplaced } : {}) })),
     ...(r.starts ?? []).filter((s) => !(s.who && said.has(s.who))).map((s) => ({ how: s.how ?? "", ...(s.who ? { who: s.who } : {}), ...(s.where ? { where: s.where } : {}) })),
   ].filter((s) => s.how || s.who);
   const unsure = (r.unsure ?? []).map((u) => `${u.field}: ${u.why}`);
@@ -154,7 +154,7 @@ function viaRules(q: Quest): QuestPage {
   const st = q.start;
   const ways = st?.ways ?? [];
   const starts = ways.length
-    ? ways.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), ...(w.checked === "players" ? { reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) } } : {}) }))
+    ? ways.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), ...(w.checked === "players" ? { reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) } } : {}), ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}), ...(w.unplaced ? { unplaced: w.unplaced } : {}) }))
     : st?.who
       ? [{ how: `Talk to ${st.who}`, who: st.who, ...(st.where ? { where: st.where } : {}) }]
       : [];
@@ -166,7 +166,8 @@ function viaRules(q: Quest): QuestPage {
   return {
     source: "rules",
     canDo: null,
-    needs: (st?.needs ?? []).map((text) => ({ text })),
+    // The start check writes each way into its needs too ("One of: ..."); a need that only repeats a way is no need.
+    needs: (st?.needs ?? []).filter((n) => !/^One of: /.test(n) && !ways.some((w) => w.how === n)).map((text) => ({ text })),
     starts,
     ...(st?.then ? { firstStep: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}),
     takesYou: [],
@@ -210,4 +211,26 @@ export function doorPage(q: Quest) {
 export function shortPage(q: Quest) {
   const d = doorPage(q);
   return { canDo: d.canDo, needs: d.needs, starts: d.starts, gets: d.gets, source: d.source };
+}
+
+/**
+ * A quest's row on its line's page (WO-154): what it is in one line, where it takes you with the danger, and what it needs
+ * (the line page drops what the quest before it already needed). Words from the page, nothing new.
+ */
+export function rowOf(q: Quest, before?: Quest) {
+  const p = pageOf(q);
+  const prior = new Set(before ? pageOf(before).needs.map((n) => n.text) : []);
+  // A read's first step says what the quest is; the older rules' says how it starts, which is what they know best.
+  const summary = (p.source === "reads" ? (p.firstStep ?? p.starts[0]?.how) : (p.starts[0]?.how ?? p.firstStep)) ?? null;
+  return {
+    summary: summary && summary.length > 170 ? `${summary.slice(0, 167).trimEnd()}...` : summary,
+    places: p.takesYou.slice(0, 3).map((t) => [t.place, t.danger].filter(Boolean).join(": ")),
+    needs: p.needs.map((n) => n.text).filter((t) => !prior.has(t)),
+    canDo: p.canDo,
+    source: p.source,
+    closes: p.closes,
+    rewards: p.gets.rewards,
+    where: p.starts.find((s) => s.where)?.where ?? null,
+    town: q.start?.towns?.[0] ?? null,
+  };
 }

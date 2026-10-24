@@ -19,7 +19,8 @@ export interface CardLine extends LineGate {
   gate?: string;
   size?: string;
   quests: number;
-  checked: string;
+  /** A line of one quest isn't a line (WO-154): the card opens that quest's page. */
+  solo?: string;
   /** The story told from this line (WO-106): the card's title and link, the line's name under it. */
   story?: { id: string; name: string };
 }
@@ -86,7 +87,7 @@ export function CategoryList({ lines, q }: { lines: CardLine[]; main?: string[];
       )}
       <div className={styles.countLine}>
         <span>
-          {shown.length} quest line{shown.length === 1 ? "" : "s"}
+          {shown.length} quest{shown.length === 1 ? "" : "s"} and lines
         </span>
         <span className={styles.wideOnly}>By level</span>
       </div>
@@ -98,7 +99,7 @@ export function CategoryList({ lines, q }: { lines: CardLine[]; main?: string[];
           return (
             <article key={l.id} className={`${styles.card} ${open ? styles.cardOpen : ""} ${chip.above ? styles.later : ""}`} aria-labelledby={`line-${l.id}`}>
               <h2 id={`line-${l.id}`} className={styles.qname}>
-                <Link href={l.story ? `/quests/s/${l.story.id}` : `/quests/${l.id}`}>{l.story?.name ?? l.name}</Link>
+                <Link href={l.story ? `/quests/s/${l.story.id}` : (l.solo ?? `/quests/${l.id}`)}>{l.story?.name ?? l.name}</Link>
               </h2>
               {l.story && <span className={styles.lineUnder}>{l.name}</span>}
               <span className={styles.meta}>
@@ -145,17 +146,24 @@ export function CategoryList({ lines, q }: { lines: CardLine[]; main?: string[];
                       <dd>{l.size}</dd>
                     </>
                   )}
-                  <dt>Quests</dt>
-                  <dd>
-                    {l.quests}{" "}
-                    <Link href={`/quests/${l.id}`} className={styles.showThem}>
-                      Show them ›
-                    </Link>
-                  </dd>
-                  {l.checked && (
+                  {l.solo ? (
                     <>
-                      <dt>Checked</dt>
-                      <dd className="muted">{l.checked}</dd>
+                      <dt>Quest</dt>
+                      <dd>
+                        <Link href={l.solo} className={styles.showThem}>
+                          Open it ›
+                        </Link>
+                      </dd>
+                    </>
+                  ) : (
+                    <>
+                      <dt>Quests</dt>
+                      <dd>
+                        {l.quests}{" "}
+                        <Link href={`/quests/${l.id}`} className={styles.showThem}>
+                          Show them ›
+                        </Link>
+                      </dd>
                     </>
                   )}
                 </dl>

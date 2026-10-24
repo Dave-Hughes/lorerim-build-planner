@@ -1,22 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import { GOLD, RUN_CHANGE } from "@/lib/quests/run-change";
 import { pageSources } from "@/lib/quests/player-source";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
 import { QuestReport } from "@/components/quests/quest-report";
 import { QuestRow } from "@/components/quests/journal";
+import { rowOf } from "@/lib/quests/reads";
+import { townsIn } from "@/lib/places/suggest";
 import { LineNeeds, type AfterLine } from "@/components/quests/line-start";
 import { categories, categorySlug, gateOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
 import { MAIN } from "@/lib/quests/open";
 import { storyOfLine } from "@/lib/quests/stories-data";
-import { fromLabel } from "@/lib/quests/words";
 import { siteMetadata } from "@/lib/og/metadata";
 import { questHref } from "@/lib/quests/slugs";
-import type { Quest, QuestLine, QuestStart } from "@/lib/quests/types";
+import type { Quest, QuestLine } from "@/lib/quests/types";
 import { startChecked } from "@/lib/quests/types";
 import styles from "@/components/quests/quests.module.css";
 
@@ -31,16 +31,6 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return l ? { title: l.name, ...siteMetadata(`/quests/${l.id}`, l.name, l.begins ?? homeName(l.category)) } : {};
 }
 
-
-/** A line of how a quest starts for its row on the line page (WO-147): its first way, short, and how many others there are. */
-function shortStart(start: QuestStart | undefined): string | null {
-  if (!start || !startChecked(start)) return null;
-  const first = start.ways?.[0]?.how ?? start.needs?.[0];
-  if (!first) return null;
-  const more = (start.ways?.length ?? 0) - 1;
-  const text = first.length > 150 ? `${first.slice(0, 147).trimEnd()}...` : first;
-  return more > 0 ? `${text} (${more} other way${more === 1 ? "" : "s"})` : text;
-}
 
 /** "14 quests pay 100; the rest pay none" */
 function xpNote(quests: Quest[]): string {
@@ -70,6 +60,8 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const { byId, categories: cats, shelves } = questsData();
   const line = byId.get(id);
   if (!line) notFound();
+  // A line of one quest isn't a line (WO-154): its quest's page is the page.
+  if (line.quests.length === 1 && line.category !== "work" && questHref(line.quests[0].edid)) redirect(questHref(line.quests[0].edid)!);
   const home = cats[line.category] ? categories().find((c) => c.key === line.category)! : null;
   const slug = home?.slug ?? "side-stories";
   const main = mainOrder();
@@ -82,10 +74,18 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   // A line of jobs from a board lists them once, as the class, not one by one (WO-136 ruling 3): no story rows, no job rows.
   const story = line.board ? [] : [...(opening && opening.xp > 0 ? [opening] : []), ...line.quests.filter((q) => q.xp > 0 && q !== opening)];
   const jobs = line.board ? [] : line.quests.filter((q) => q.xp === 0);
-  const rewards = line.quests.filter((q) => q.rewards);
+  const shelf0 = line.category === "work";
+  const rows = new Map(line.quests.map((q, i) => [q.edid, rowOf(q, i > 0 ? line.quests[i - 1] : undefined)]));
+  const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards })).filter((g) => g.what.length > 0);
+  const closes = line.quests.flatMap((q) => rows.get(q.edid)!.closes.map((text) => ({ edid: q.edid, name: q.name, text })));
+  const read = line.quests.filter((q) => q.source === "reads").length;
+  // A shelf of jobs is grouped by where you pick them up (WO-154): the town its start names, else where it is, else "Elsewhere".
+  const pickUp = (q: Quest) => {
+    const { where, town } = rows.get(q.edid)!;
+    return town ?? (where ? (townsIn(where)[0] ?? where) : "Where to pick it up isn't read yet");
+  };
+  const groups = shelf0 && !line.board ? [...new Set(line.quests.map(pickUp))].map((place) => ({ place, quests: line.quests.filter((q) => pickUp(q) === place) })) : [];
   const sibs = siblings(line);
-  const checkedFrom = (k: keyof QuestLine["checked"]) => fromLabel(line.checked[k]);
-  const giverFrom = line.giver?.source === "uesp" ? "UESP" : "game files";
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const told = storyOfLine(line.id);
   // A shelf is separate jobs, not a story (WO-147 Part 2): no giver, ways in or first step taken from one of them for the whole.
@@ -145,7 +145,6 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dt>Who</dt>
                   <dd>
                     {line.giver.name}
-                    <span className={styles.src}>{giverFrom}</span>
                   </dd>
                 </>
               )}
@@ -154,7 +153,6 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dt>Where</dt>
                   <dd>
                     {line.giver.place}
-                    <span className={styles.src}>{giverFrom}</span>
                   </dd>
                 </>
               )}
@@ -173,7 +171,6 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                         </li>
                       ))}
                     </ul>
-                    <span className={styles.src}>game files</span>
                   </dd>
                 </>
               )}
@@ -182,7 +179,6 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dt>First step</dt>
                   <dd>
                     {line.firstObjective}
-                    <span className={styles.src}>game files</span>
                   </dd>
                 </>
               )}
@@ -191,7 +187,6 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dt>How</dt>
                   <dd>
                     {line.start}
-                    {checkedFrom("start") && <span className={styles.src}>{checkedFrom("start")}</span>}
                   </dd>
                 </>
               )}
@@ -205,12 +200,10 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             <span className={styles.fact}>
               <b>Length</b>
               <span>{line.size ?? "Not listed"}</span>
-              {checkedFrom("size") && <small>{checkedFrom("size")}</small>}
             </span>
             <span className={styles.fact}>
               <b>Enemies</b>
               <span>{line.level ?? "Not listed"}</span>
-              {checkedFrom("level") && <small>{checkedFrom("level")}</small>}
             </span>
             <span className={styles.fact}>
               <b>Quest XP</b>
@@ -219,57 +212,69 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             </span>
           </div>
 
-          <section className={styles.panel} aria-labelledby="rewards-title">
-            <h2 id="rewards-title" className={styles.h2}>
-              Rewards
-            </h2>
-            {rewards.length ? (
-              <>
-                <span className="muted">From the game files, not checked in game</span>
-                <ul className={styles.rewards}>
-                  {rewards.map((q) => (
-                    <li key={q.edid}>
-                      <b>{q.name}</b>
-                      {[q.rewards!.gold && GOLD[q.rewards!.gold], ...(q.rewards!.items ?? [])].some(Boolean) && <>: {[q.rewards!.gold && GOLD[q.rewards!.gold], ...(q.rewards!.items ?? [])].filter(Boolean).join(", ")}</>}
-                      {/* What an ending hands over that changes a run (WO-129 Part 6), in the journal's words. */}
-                      {q.rewards!.endings?.length ? (
-                        <ul className={styles.runChanges}>
-                          {q.rewards!.endings.map((e) => (
-                            <li key={`${e.kind}${e.stage}`}>
-                              <span className={styles.runChange}>{RUN_CHANGE[e.kind]}</span>
-                              {e.only && <span className="muted"> (one ending of several)</span>}: &ldquo;{e.text}&rdquo;
-                              {e.fromText && <span className={styles.runFrom}> The journal says before it: &ldquo;{e.fromText}&rdquo;</span>}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : null}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <span className={styles.soft}>Not listed yet.</span>
-            )}
-          </section>
+          {gives.length > 0 && (
+            <section className={styles.panel} aria-labelledby="rewards-title">
+              <h2 id="rewards-title" className={styles.h2}>
+                What the whole line gives
+              </h2>
+              <ul className={styles.rewards}>
+                {gives.map((g) => (
+                  <li key={g.edid}>
+                    <b>{g.name}</b>: {g.what.map((r) => r.what + (r.when ? ` (${r.when})` : "")).join("; ")}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {closes.length > 0 && (
+            <section className={styles.panel} aria-labelledby="closes-title">
+              <h2 id="closes-title" className={styles.h2}>
+                What it closes
+              </h2>
+              <ul className={styles.rewards}>
+                {closes.map((c) => (
+                  <li key={c.edid}>
+                    {c.text} <span className="muted">| {c.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <section aria-labelledby="quests-title" className={styles.questsSection}>
             <span className={styles.questsHead}>
               <h2 id="quests-title" className={styles.h2}>
-                Quests
+                {shelf ? "Jobs" : "The quests in order"}
               </h2>
-              <span className="muted">Journals are hidden until you open them</span>
             </span>
-            {story.length > 0 && (
+            {groups.length > 0 &&
+              groups.map((g) => (
+                <div className={styles.group} key={g.place}>
+                  <div className={styles.ghead}>
+                    <h3>{g.place}</h3>
+                    <span>
+                      {g.quests.length} job{g.quests.length === 1 ? "" : "s"}
+                    </span>
+                  </div>
+                  <ul className={styles.qlist}>
+                    {g.quests.map((q) => (
+                      <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={false} href={questHref(q.edid)} summary={rows.get(q.edid)!.summary} places={rows.get(q.edid)!.places} needs={rows.get(q.edid)!.needs} />
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            {!shelf0 && story.length > 0 && (
               <div className={styles.group}>
                 <div className={styles.ghead}>
-                  <h3>The story</h3>
+                  <h3>{shelf ? "Each one on its own" : "In order"}</h3>
                   <span>
                     {story.length} quest{story.length === 1 ? "" : "s"}
                   </span>
                 </div>
                 <ul className={styles.qlist}>
                   {story.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} journal={q.journal} endings={q.endings} start={q.start} href={questHref(q.edid)} how={shortStart(q.start)} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} href={questHref(q.edid)} summary={rows.get(q.edid)!.summary} places={rows.get(q.edid)!.places} needs={rows.get(q.edid)!.needs} />
                   ))}
                 </ul>
               </div>
@@ -293,7 +298,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 <p>{line.radiant.says}</p>
               </div>
             )}
-            {jobs.length > 0 && (
+            {!shelf0 && jobs.length > 0 && (
               <div className={styles.group}>
                 <div className={styles.ghead}>
                   <h3>Jobs and bounties</h3>
@@ -303,12 +308,15 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 </div>
                 <ul className={styles.qlist}>
                   {jobs.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} journal={q.journal} endings={q.endings} start={q.start} href={questHref(q.edid)} how={shortStart(q.start)} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening && line.category !== "work"} href={questHref(q.edid)} summary={rows.get(q.edid)!.summary} places={rows.get(q.edid)!.places} needs={rows.get(q.edid)!.needs} />
                   ))}
                 </ul>
               </div>
             )}
           </section>
+          <p className={styles.sure}>
+            {read === line.quests.length ? "Read from the game files and checked by a second reader" : `${read} of ${line.quests.length} quests are read from the game files and checked by a second reader; the rest are from the planner's older rules`}
+          </p>
           <QuestReport lineId={line.id} quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />
         </div>
 

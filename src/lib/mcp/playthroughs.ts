@@ -20,6 +20,7 @@ import type { Answer, Detect, DoneBy, LinkKind, Never, ObjectiveLink, ObjectiveS
 import { FIRST_ACT, levelsInput, parseLevels, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
+import { shortPage } from "@/lib/quests/reads";
 import { leftOutLine, type Nevers } from "@/lib/quests/never";
 import { openState, type PlayerState } from "@/lib/quests/open";
 import { questHref } from "@/lib/quests/slugs";
@@ -826,6 +827,8 @@ function startFor(s: Story | undefined, line: QuestLine, first: Quest): string {
   if (told) return told;
   // A shelf is separate jobs: no one start is the shelf's.
   if (line.category === "work") return "Separate jobs; open one for how it starts.";
+  const read = first.source === "reads" ? first.read?.starts?.find((x) => x.how)?.how : undefined;
+  if (read) return read;
   const ways = first.start?.ways ?? [];
   const way = ways[0]?.how ?? first.start?.needs?.[0];
   if (way) return ways.length > 1 ? `${way} (${ways.length - 1} other way${ways.length === 2 ? "" : "s"})` : way;
@@ -877,6 +880,8 @@ export function suggestFrom(origin: string, input: { level: number; where?: stri
       // Never null (WO-148 item 2): the story's own checked start, else the opening quest's first way as get_quest gives it, else
       // the line's, else what a shelf is.
       start: startFor(s, line, first),
+      // The opening quest's page in short (WO-154): can I do it, what I need, how to start, what I get.
+      ...shortPage(first),
       checked: "files",
       firstQuest: first.name,
       openForYou: open.says,

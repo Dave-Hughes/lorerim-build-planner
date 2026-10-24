@@ -1,133 +1,21 @@
-"use client";
-
 import Link from "next/link";
-import { pageSources } from "@/lib/quests/player-source";
-import { useEffect, useState } from "react";
-import { checkedLabel } from "@/lib/quests/story";
-import type { QuestEnding, QuestStart } from "@/lib/quests/types";
-import { startChecked } from "@/lib/quests/types";
 import styles from "./quests.module.css";
 
 /**
- * A quest's journal (WO-100): hidden until opened, then the first entry, then the rest on request,
- * then How it starts and How it can end (WO-115 Part 5), each closed until asked for and marked
- * checked or not. A link to #q-<edid> (a story's next step, WO-106) or #end-<edid> opens the row; How
- * it can end stays closed either way.
+ * A quest's row on its line's page (WO-154): its name, what it is in one line, where it takes you and how dangerous, what it
+ * needs that the quest before didn't, and what it pays. Its page has the rest; the journal and its endings are there as steps.
  */
-export function QuestRow({ edid, name, xp, first, journal, endings, start, href, how }: { edid: string; name: string; xp: number; first: boolean; journal: string[]; endings: QuestEnding[]; start?: QuestStart; href?: string | null; how?: string | null }) {
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const check = () => {
-      if (window.location.hash === `#q-${edid}` || window.location.hash === `#end-${edid}`) setOpen(true);
-    };
-    check();
-    window.addEventListener("hashchange", check);
-    return () => window.removeEventListener("hashchange", check);
-  }, [edid]);
-  const [all, setAll] = useState(false);
-  const shown = all ? journal : journal.slice(0, 1);
+export function QuestRow({ edid, name, xp, first, href, summary, places, needs }: { edid: string; name: string; xp: number; first: boolean; href?: string | null; summary?: string | null; places?: string[]; needs?: string[] }) {
   return (
     <li className={styles.q} id={`q-${edid}`}>
       <span className={styles.qn}>
-        {/* The quest's own page (WO-147), the line's row keeping a line of how it starts under the name. */}
         {href ? <Link href={href}>{name}</Link> : name}
         {first && <span className={styles.first}>Starts here</span>}
-        {how && <span className={styles.qhow}>{how}</span>}
+        {summary && <span className={styles.qhow}>{summary}</span>}
+        {places && places.length > 0 && <span className={styles.qhow}>Takes you to {places.join("; ")}</span>}
+        {needs && needs.length > 0 && <span className={styles.qhow}>Needs {needs.join("; ")}</span>}
       </span>
       <span className={`${styles.xp} ${xp ? "" : styles.zero}`}>{xp ? `${xp} XP` : "No XP"}</span>
-      <span className={styles.j}>
-        {(journal.length > 0 || start) && (
-          <button type="button" className={styles.link} aria-expanded={open} onClick={() => setOpen(!open)}>
-            {open ? "Hide journal" : "Journal ›"}
-          </button>
-        )}
-      </span>
-      {open && (
-        <span className={styles.qopen}>
-          {shown.map((t, i) => (
-            <p key={i} className={styles.entry}>
-              “{t}”
-            </p>
-          ))}
-          {!all && journal.length > 1 && (
-            <span className={styles.next}>
-              <button type="button" className="btn btn-sm" onClick={() => setAll(true)}>
-                Show the next {journal.length - 1} {journal.length === 2 ? "entry" : "entries"}
-              </button>
-              <span className="muted">These give the story away</span>
-            </span>
-          )}
-          {start && <Starts start={start} />}
-          <Endings edid={edid} endings={endings} />
-        </span>
-      )}
     </li>
-  );
-}
-
-/**
- * How it starts (WO-115 Part 5, on WO-121): each way in as the start check words it (who to ask and
- * what, and where), then the first step and where it is. No who above the ways: for a quest with many
- * ways in, one name would be a guess.
- */
-function Starts({ start }: { start: QuestStart }) {
-  return (
-    <details className={styles.ends}>
-      <summary>How it starts</summary>
-      {!startChecked(start) ? (
-        <p className="muted">Its start isn&apos;t checked yet.</p>
-      ) : (
-        <>
-          {start.ways?.length ? (
-            <ul className={styles.waysList}>
-              {start.ways.map((w, i) => (
-                <li key={i}>
-                  {w.how}
-                  {w.needs?.length ? <span className="muted"> ({w.needs.join("; ")})</span> : null}
-                  {w.checked === "players" ? <span className={styles.src}>{w.also?.length ? pageSources(w.source ?? "", w.also) : `player report${w.source ? `, ${w.source}` : ""}`}</span> : null}
-                  {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
-                  {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            !start.needs?.length && <p className="muted">It runs from the start of the game.</p>
-          )}
-          {start.then && (
-            <p className={styles.soft}>
-              Then: {start.then}
-              {start.thenWhere ? ` at ${start.thenWhere}` : ""}
-              {start.doors?.map((d) => (
-                <span key={d} className="muted">
-                  {" "}
-                  ({d.replace(/\.$/, "")})
-                </span>
-              ))}
-            </p>
-          )}
-          <span className={styles.src}>{checkedLabel(start.checked, start.source)}</span>
-        </>
-      )}
-    </details>
-  );
-}
-
-/** How it can end: each ending's journal line, with when it shows and whether it fails the quest in muted text. */
-function Endings({ edid, endings }: { edid: string; endings: QuestEnding[] }) {
-  const told = endings.filter((e) => e.text);
-  return (
-    <details className={styles.ends} id={`end-${edid}`}>
-      <summary>How it can end</summary>
-      {told.length ? (
-        told.map((e, i) => (
-          <p key={i} className={styles.ending}>
-            <span className={styles.entry}>“{e.text}”</span>
-            {(e.fails || e.when) && <span className="muted">{[e.fails && "Fails the quest", e.when && `When ${e.when}`].filter(Boolean).join(" | ")}</span>}
-          </p>
-        ))
-      ) : (
-        <p className="muted">{endings.length ? "Its records end it without a journal line." : "Its records don't list an ending."}</p>
-      )}
-    </details>
   );
 }

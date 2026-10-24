@@ -5,7 +5,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CategoryList, type CardLine } from "@/components/quests/category-list";
 import { categories, gateOf, homeName, linesIn, mainOrder, searchLines } from "@/lib/quests/data";
-import { andList, checkedLine } from "@/lib/quests/words";
+import { andList } from "@/lib/quests/words";
+import { questHref } from "@/lib/quests/slugs";
 import { storyOfLine } from "@/lib/quests/stories-data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/quests/quests.module.css";
@@ -48,7 +49,7 @@ export default async function QuestCategoryPage({ params, searchParams }: { para
     gate: l.gate,
     size: l.size,
     quests: l.quests.length,
-    checked: checkedLine(l.checked),
+    ...(l.quests.length === 1 && l.category !== "work" && questHref(l.quests[0].edid) ? { solo: questHref(l.quests[0].edid)! } : {}),
     ...(storyOfLine(l.id) ? { story: { id: storyOfLine(l.id)!.id, name: storyOfLine(l.id)!.name } } : {}),
   }));
   return (

@@ -84,17 +84,12 @@ test("an admin has the agent propose, approves it, and the page shows a player's
   expect(await pageNow.text()).not.toContain("on the board by Joslin");
   await mine.getByRole("button", { name: "Approve", exact: true }).click();
   await expect(mine).toContainText("Approved");
-  await page.goto("/quests/capital-whiterun");
-  // Under the quest's How it starts, closed until opened: marked as a player's report, with who and when.
-  const row = page.locator('[id="q-0WRHorseQ"]');
-  await row.getByRole("button", { name: "Journal ›" }).click();
-  await row.getByText("How it starts", { exact: true }).click();
-  // The row says it under the name in a line too (WO-147), so look in the opened section.
-  const opened = row.locator("details").filter({ hasText: "How it starts" });
+  await page.goto("/quests/q/running-wild");
+  // Under How to start it: marked as a player's report, with who and when, and where the note is.
+  const opened = page.getByRole("region", { name: "How to start it" });
   await expect(opened.getByText(`${NOTE}, on the board by Joslin's house`)).toBeVisible();
   await expect(opened.getByText(/player report, @e2e-reporter-1, \d{1,2} \w{3} \d{4}/)).toBeVisible();
   await expect(opened.getByText("(Whiterun, the board right outside Joslin's house)")).toBeVisible();
-  await row.scrollIntoViewIfNeeded();
   await page.screenshot({ path: "test-results/wo146-quest-page-1440.png" });
 });
 
@@ -146,12 +141,8 @@ test("a second player agreeing is closed as no change, and the page then has two
   const token = (await tokenFor(page, context, baseURL!, from)).access_token;
   const ask = async () => (await call(baseURL!, from, token, "get_quest", { name: "Running Wild", level: 5 })).json();
   await expect.poll(async () => (await ask()).quest.start.ways[0].checked, { timeout: 25_000, intervals: [1000] }).toMatch(/^players' reports, not the game files \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}$/);
-  await page.goto("/quests/capital-whiterun");
-  const row = page.locator('[id="q-0WRHorseQ"]');
-  await row.getByRole("button", { name: "Journal ›" }).click();
-  await row.getByText("How it starts", { exact: true }).click();
-  await expect(row.locator("details").filter({ hasText: "How it starts" }).getByText(/players' reports \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}/)).toBeVisible();
-  await row.scrollIntoViewIfNeeded();
+  await page.goto("/quests/q/running-wild");
+  await expect(page.getByRole("region", { name: "How to start it" }).getByText(/players' reports \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}/)).toBeVisible();
   await page.screenshot({ path: "test-results/wo146-quest-two-sources-1440.png" });
   // The way itself is as it was: still one way.
   expect((await ask()).quest.start.ways).toHaveLength(1);

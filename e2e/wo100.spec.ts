@@ -49,35 +49,13 @@ test("Wyrmstooth: its needs as facts, no marks, and journals hidden until opened
   await expect(page.getByText("Not open to you yet.")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Do this first" })).toHaveCount(0);
 
-  // The opening's journal is hidden until opened, the rest until asked for.
-  const first = "An imperial courier named Theodyn Bienne has requested I speak to Lurius Liore";
-  const quests = page.getByRole("region", { name: "Quests" });
-  await expect(quests.getByText(first)).toHaveCount(0);
+  // Each quest is a row that links to its own page (WO-154): no journal to open, and what it needs beyond the quest before it.
+  const quests = page.getByRole("region", { name: "The quests in order" });
   const opening = quests.getByRole("listitem").filter({ hasText: "Starts here" });
-  await opening.getByRole("button", { name: "Journal ›" }).click();
-  await expect(quests.getByText(first)).toBeVisible();
-  await expect(opening.getByRole("button", { name: /^Show the next \d+ entr/ })).toBeVisible();
-  await expect(opening.getByText("These give the story away")).toBeVisible();
-});
-
-test("Blood on the Ice: How it can end stays closed until asked for, then gives both endings", async ({ page }) => {
-  await page.goto("/quests/blood-on-the-ice");
-  const quest = page.locator("#q-MS11");
-  await quest.getByRole("button", { name: "Journal ›" }).click();
-  const ends = quest.locator("details", { hasText: "How it can end" });
-  await expect(ends).not.toHaveAttribute("open", "");
-  await expect(quest.getByText("Calixto Corrium was the Butcher of Windhelm")).toBeHidden();
-  await ends.getByText("How it can end").click();
-  await expect(quest.getByText("Wuunferth the Unliving was the Butcher of Windhelm")).toBeVisible();
-  await expect(quest.getByText("Calixto Corrium was the Butcher of Windhelm")).toBeVisible();
-});
-
-test("a link to #end-<quest> opens its row with How it can end still closed", async ({ page }) => {
-  await page.goto("/quests/dark-brotherhood#end-DB01");
-  const ends = page.locator("#end-DB01");
-  await expect(ends).toBeVisible();
-  await expect(ends).not.toHaveAttribute("open", "");
-  await expect(page.getByText("I killed Grelod the Kind")).toBeHidden();
+  await expect(opening).toHaveCount(1);
+  await expect(opening.getByRole("link").first()).toHaveAttribute("href", /\/quests\/q\//);
+  await expect(page.getByRole("button", { name: "Journal ›" })).toHaveCount(0);
+  await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
 });
 
 test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastred at Fellstar Farm (WO-121)", async ({ page }) => {
@@ -85,9 +63,8 @@ test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastr
   const start = page.getByRole("region", { name: "How to start it" });
   await expect(start).toContainText("Dinya Balu");
   await expect(start).not.toContainText("Fastred");
-  const quest = page.locator("li", { hasText: "Starts here" });
-  await quest.getByRole("button", { name: "Journal ›" }).click();
-  await quest.getByText("How it starts").click();
-  await expect(quest).toContainText('Ask Dinya Balu "Just tell me what to do." in Temple of Mara');
-  await expect(quest).toContainText("Then: Talk to Fastred at Fellstar Farm");
+  // Its quest's page has the way in and the first step (WO-154).
+  await page.locator("li", { hasText: "Starts here" }).getByRole("link").first().click();
+  await expect(page.getByRole("region", { name: "How to start it" })).toContainText('Ask Dinya Balu "Just tell me what to do." in Temple of Mara');
+  await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Talk to Fastred at Fellstar Farm");
 });

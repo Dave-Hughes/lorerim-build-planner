@@ -10,9 +10,8 @@ import { toldOf } from "@/lib/mcp/playthroughs";
 import { categories, categorySlug, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { pageSources } from "@/lib/quests/player-source";
-import { GOLD, RUN_CHANGE } from "@/lib/quests/run-change";
+import { pageOf } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
-import { checkedLabel } from "@/lib/quests/story";
 import { startChecked } from "@/lib/quests/types";
 import { listMyPlaythroughs } from "@/lib/playthroughs/queries";
 import { playthroughsOn } from "@/lib/features";
@@ -48,11 +47,13 @@ export default async function QuestPage({ params, searchParams }: { params: Para
   const start = quest.start;
   const home = questsData().categories[line.category] ? categories().find((c) => c.key === line.category)! : null;
   const shelf = line.category === "work";
+  // A line of one quest isn't a line (WO-154): the quest sits in its category.
+  const lone = line.quests.length === 1;
   const art = home?.slug ?? "side-stories";
   const here = line.quests.findIndex((q) => q.edid === quest.edid);
   const before = !shelf && here > 0 ? line.quests[here - 1] : null;
   const after = !shelf && here < line.quests.length - 1 ? line.quests[here + 1] : null;
-  const told = quest.endings.filter((e) => e.text);
+  const page = pageOf(quest);
 
   // Open for the player (WO-147): through their most recent run with a save, when they have one.
   let forYou: { run: string; says: string } | null = null;
@@ -64,15 +65,11 @@ export default async function QuestPage({ params, searchParams }: { params: Para
       forYou = { run: run.name, says: openForYou(line, quest, state).says };
     }
   }
-  const ways = start?.ways ?? [];
-  const players = ways.filter((w) => w.checked === "players");
-  const gold = quest.rewards?.gold ? GOLD[quest.rewards.gold] : null;
-  const items = quest.rewards?.items ?? [];
 
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>
-      <Link href={`/quests/${line.id}`} className={styles.back}>
-        ‹ {line.name}
+      <Link href={lone && home ? `/quests/c/${home.slug}` : `/quests/${line.id}`} className={styles.back}>
+        ‹ {lone && home ? homeName(line.category) : line.name}
       </Link>
       <div className={`frame ${styles.cover}`}>
         <img src={`/quests/${art}.png`} alt="" className={styles.coverArt} />
@@ -83,9 +80,8 @@ export default async function QuestPage({ params, searchParams }: { params: Para
             <h1 className={`title ${styles.coverTitle}`}>{name}</h1>
           </span>
           <span className={styles.coverMeta}>
-            <Link href={`/quests/${line.id}`}>{line.name}</Link>
+            {lone ? <span>{homeName(line.category)}</span> : <Link href={`/quests/${line.id}`}>{line.name}</Link>}
             {line.where && <span>{line.where}</span>}
-            <span className="muted">{quest.xp ? `${quest.xp} XP` : "No XP"}</span>
             {line.sources.map((s) =>
               s.modid ? (
                 <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={`${styles.tag} ${styles.mod}`}>
@@ -103,74 +99,62 @@ export default async function QuestPage({ params, searchParams }: { params: Para
 
       <div className={styles.lineGrid}>
         <div className={styles.lineMain}>
-          <section className={`frame ${styles.panel}`} aria-labelledby="start-title">
+          {page.canDo && (
+            <section className={`frame ${styles.panel}`} aria-labelledby="can-title">
+              <h2 id="can-title" className={styles.h2}>
+                Can I do it?
+              </h2>
+              <p>
+                {page.canDo.label}
+                {page.canDo.why ? `. ${page.canDo.why}` : ""}
+              </p>
+            </section>
+          )}
+
+          {(page.source === "reads" || startChecked(start)) && (
+            <section className={styles.panel} aria-labelledby="needs-title">
+              <h2 id="needs-title" className={styles.h2}>
+                What you need first
+              </h2>
+              {page.needs.length ? (
+                <ul className={styles.waysList}>
+                  {page.needs.map((n, i) => (
+                    <li key={i}>{n.href ? <Link href={n.href}>{n.text}</Link> : n.text}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Nothing: any level</p>
+              )}
+            </section>
+          )}
+
+          <section className={styles.panel} aria-labelledby="start-title">
             <h2 id="start-title" className={styles.h2}>
               How to start it
             </h2>
-            {start && startChecked(start) ? (
-              <>
-                {start.who && (
-                  <dl className={styles.who}>
-                    <dt>Who</dt>
-                    <dd>
-                      {start.who}
-                      {start.whoElse && <span className="muted"> ({start.whoElse})</span>}
-                    </dd>
-                    {start.where && (
-                      <>
-                        <dt>Where</dt>
-                        <dd>{start.where}</dd>
-                      </>
-                    )}
-                  </dl>
-                )}
-                {ways.length ? (
-                  <ul className={styles.waysList}>
-                    {ways.map((w, i) => (
-                      <li key={i}>
-                        {w.how}
-                        {w.needs?.length ? <span className="muted"> ({w.needs.join("; ")})</span> : null}
-                        {w.checked === "players" ? <span className={styles.src}>{w.also?.length ? pageSources(w.source ?? "", w.also) : `player report${w.source ? `, ${w.source}` : ""}`}</span> : null}
-                        {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
-                        {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
-                      </li>
-                    ))}
-                  </ul>
-                ) : start.needs?.length ? (
-                  <ul className={styles.waysList}>
-                    {start.needs.map((n, i) => (
-                      <li key={i}>{n}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="muted">It runs from the start of the game.</p>
-                )}
-                {start.then && (
-                  <p>
-                    <b>First step:</b> {start.then}
-                    {start.thenWhere ? ` at ${start.thenWhere}` : ""}
-                    {start.doors?.map((d) => (
-                      <span key={d} className="muted"> ({d.replace(/\.$/, "")})</span>
-                    ))}
-                  </p>
-                )}
-                <span className={styles.src}>{checkedLabel(start.checked, start.source)}</span>
-              </>
+            {page.starts.length ? (
+              <ul className={styles.waysList}>
+                {page.starts.map((w, i) => (
+                  <li key={i}>
+                    {w.how}
+                    {w.who && !w.how.includes(w.who) ? <span className="muted"> ({w.who})</span> : null}
+                    {w.where && !w.how.includes(w.where) ? <span className="muted"> | {w.where}</span> : null}
+                    {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
+                    {w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
+                    {w.reportedBy ? <span className={styles.src}>{w.reportedBy.also?.length ? pageSources(w.reportedBy.source, w.reportedBy.also) : `player report${w.reportedBy.source ? `, ${w.reportedBy.source}` : ""}`}</span> : null}
+                  </li>
+                ))}
+              </ul>
             ) : (
-              <>
-                <p className="muted">Its start isn&apos;t checked yet.</p>
-                {players.length > 0 && (
-                  <ul className={styles.waysList}>
-                    {players.map((w, i) => (
-                      <li key={i}>
-                        {w.how}
-                        <span className={styles.src}>{w.also?.length ? pageSources(w.source ?? "", w.also) : `player report${w.source ? `, ${w.source}` : ""}`}</span>
-                        {w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </>
+              <p className="muted">Its start isn&apos;t read yet.</p>
+            )}
+            {page.firstStep && (
+              <p>
+                <b>First step:</b> {page.firstStep}
+                {start?.doors?.map((d) => (
+                  <span key={d} className="muted"> ({d.replace(/\.$/, "")})</span>
+                ))}
+              </p>
             )}
             {forYou && (
               <p>
@@ -179,84 +163,115 @@ export default async function QuestPage({ params, searchParams }: { params: Para
             )}
           </section>
 
-          <section className={styles.panel} aria-labelledby="objectives-title">
-            <h2 id="objectives-title" className={styles.h2}>
-              Objectives
-            </h2>
-            {quest.objectives.length ? (
+          {page.takesYou.length > 0 && (
+            <section className={styles.panel} aria-labelledby="takes-title">
+              <h2 id="takes-title" className={styles.h2}>
+                Where it takes you
+              </h2>
+              <ol className={styles.waysList}>
+                {page.takesYou.map((t, i) => (
+                  <li key={i}>
+                    <b>{t.place}</b>
+                    {t.hold ? <span className="muted">, {t.hold}</span> : null}
+                    {t.why ? <> | {t.why}</> : null}
+                    {t.danger ? <span className="muted"> | {t.danger}</span> : null}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {page.choices.length > 0 && (
+            <section className={styles.panel} aria-labelledby="choices-title">
+              <h2 id="choices-title" className={styles.h2}>
+                Choices that matter
+              </h2>
               <ul className={styles.waysList}>
-                {quest.objectives.map((o, i) => (
-                  <li key={i}>{o}</li>
+                {page.choices.map((c, i) => (
+                  <li key={i}>
+                    {c.choice}
+                    {c.leadsTo ? <span className="muted"> | {c.leadsTo}</span> : null}
+                  </li>
                 ))}
               </ul>
-            ) : (
-              <span className={styles.soft}>Its records list no objectives.</span>
-            )}
+            </section>
+          )}
+
+          <section className={styles.panel} aria-labelledby="gets-title">
+            <h2 id="gets-title" className={styles.h2}>
+              What you get
+            </h2>
+            <ul className={styles.rewards}>
+              <li>
+                <b>XP</b>: {page.gets.xp ? `${page.gets.xp}${page.gets.type ? ` (${page.gets.type})` : ""}` : "none"}
+              </li>
+              {page.gets.rewards.map((r, i) => (
+                <li key={i}>
+                  {r.what}
+                  {r.when ? <span className="muted"> | {r.when}</span> : null}
+                </li>
+              ))}
+            </ul>
           </section>
 
-          <section className={styles.panel} aria-labelledby="ends-title">
-            <h2 id="ends-title" className={styles.h2}>
-              How it can end
-            </h2>
-            {told.length ? (
-              told.map((e, i) => (
-                <p key={i} className={styles.ending}>
-                  <span className={styles.entry}>“{e.text}”</span>
-                  {(e.fails || e.when) && <span className="muted">{[e.fails && "Fails the quest", e.when && `When ${e.when}`].filter(Boolean).join(" | ")}</span>}
-                </p>
-              ))
-            ) : (
-              <span className={styles.soft}>{quest.endings.length ? "Its records end it without a journal line." : "Its records don't list an ending."}</span>
-            )}
-            {(gold || items.length > 0 || quest.rewards?.endings?.length) && (
-              <>
-                <span className="muted">From the game files, not checked in game</span>
-                <ul className={styles.rewards}>
-                  {(gold || items.length > 0) && (
-                    <li>
-                      <b>Rewards</b>: {[gold, ...items].filter(Boolean).join(", ")}
-                    </li>
-                  )}
-                  {quest.rewards?.endings?.map((e) => (
-                    <li key={`${e.kind}${e.stage}`}>
-                      <span className={styles.runChange}>{RUN_CHANGE[e.kind]}</span>
-                      {e.only && <span className="muted"> (one ending of several)</span>}: &ldquo;{e.text}&rdquo;
-                      {e.fromText && <span className={styles.runFrom}> The journal says before it: &ldquo;{e.fromText}&rdquo;</span>}
-                    </li>
+          {(page.opens.length > 0 || page.closes.length > 0 || (page.source === "rules" && (before || after))) && (
+            <section className={styles.panel} aria-labelledby="opens-title">
+              <h2 id="opens-title" className={styles.h2}>
+                What it opens and closes
+              </h2>
+              {page.opens.length > 0 && (
+                <p>
+                  <b>Opens</b>:{" "}
+                  {page.opens.map((o, i) => (
+                    <span key={i}>
+                      {i > 0 ? ", " : ""}
+                      {o.href ? <Link href={o.href}>{o.text}</Link> : o.text}
+                    </span>
                   ))}
-                </ul>
-              </>
-            )}
-          </section>
+                </p>
+              )}
+              {page.closes.length > 0 && (
+                <p>
+                  <b>Closes</b>: {page.closes.join("; ")}
+                </p>
+              )}
+              {page.source === "rules" && (before || after) && (
+                <p>
+                  {before && (
+                    <>
+                      Before it: <Link href={questHref(before.edid) ?? `/quests/${line.id}`}>{before.name || before.edid}</Link>
+                    </>
+                  )}
+                  {before && after && <span className="muted"> | </span>}
+                  {after && (
+                    <>
+                      After it: <Link href={questHref(after.edid) ?? `/quests/${line.id}`}>{after.name || after.edid}</Link>
+                    </>
+                  )}
+                </p>
+              )}
+            </section>
+          )}
 
-          <section className={styles.panel} aria-labelledby="part-title">
-            <h2 id="part-title" className={styles.h2}>
-              {shelf ? "On the shelf" : "Part of"}
-            </h2>
-            <p>
-              <Link href={`/quests/${line.id}`}>{line.name}</Link>
-              {" "}
-              <span className="muted">
-                {homeName(line.category)}, {line.quests.length} quest{line.quests.length === 1 ? "" : "s"}
-                {shelf ? ", each one on its own" : ""}
-              </span>
-            </p>
-            {(before || after) && (
-              <p>
-                {before && (
-                  <>
-                    Before it: <Link href={questHref(before.edid) ?? `/quests/${line.id}`}>{before.name || before.edid}</Link>
-                  </>
-                )}
-                {before && after && <span className="muted"> | </span>}
-                {after && (
-                  <>
-                    After it: <Link href={questHref(after.edid) ?? `/quests/${line.id}`}>{after.name || after.edid}</Link>
-                  </>
-                )}
-              </p>
-            )}
-          </section>
+          {page.steps.length > 0 && (
+            <section className={styles.panel} aria-labelledby="steps-title">
+              <h2 id="steps-title" className={styles.h2}>
+                The steps
+              </h2>
+              {page.steps.map((st, i) => (
+                <div key={i}>
+                  {st.branch && <h3 className={styles.h3}>{st.branch}</h3>}
+                  <ul className={styles.waysList}>
+                    {st.objectives.map((o, j) => (
+                      <li key={j}>{o}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </section>
+          )}
+
+          <p className={styles.sure}>{page.sure}</p>
 
           <QuestReport
             lineId={line.id}

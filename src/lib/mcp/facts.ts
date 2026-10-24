@@ -24,6 +24,7 @@ import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { gearData } from "@/lib/gear/data";
 import { doorSources } from "@/lib/quests/player-source";
 import { questHref } from "@/lib/quests/slugs";
+import { doorPage } from "@/lib/quests/reads";
 import { HOMES, HOMES_NOTE, MOUNTS, TOME_TRIALS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
@@ -365,6 +366,8 @@ function questFacts(q: Quest, allPlaces = false) {
   return {
     edid: q.edid,
     name: q.name,
+    // The page's sections 2 to 10, in the page's order (WO-154), from the quest's read or, where it has none, the older rules.
+    ...doorPage(q),
     start: {
       // A start the answer key confirmed (WO-136 ruling 2) says it's from the wiki, with the page.
       checked: q.start?.checked === "uesp" ? `from ${q.start.source ?? "UESP"}, confirmed in the planner's answer key${q.start.url ? ` (${q.start.url})` : ""}` : (q.start?.checked ?? "not yet"),

@@ -14,14 +14,13 @@ for (const width of [1440, 390]) {
     const start = page.getByRole("region", { name: "How to start it" });
     await expect(start).toContainText("Read the note pinned to the board outside Joslin's house");
     await expect(start).toContainText("First step: Catch the white, or palonimo, horse roaming the fields of Whiterun");
-    await expect(start).toContainText("game files");
-    await expect(page.getByRole("region", { name: "Objectives" })).toContainText("Bring the Horse back to the main gate of Whiterun");
-    await expect(page.getByRole("region", { name: "How it can end" })).toContainText("A mount");
-    // On a shelf, a quest stands alone: no quest before or after it.
-    const part = page.getByRole("region", { name: "On the shelf" });
-    await expect(part.getByRole("link", { name: "More to do in Whiterun" })).toHaveAttribute("href", "/quests/capital-whiterun");
-    await expect(part).not.toContainText("Before it");
-    await expect(part).not.toContainText("After it");
+    await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
+    await expect(page.getByRole("region", { name: "The steps" })).toContainText("Bring the Horse back to the main gate of Whiterun");
+    await expect(page.getByRole("region", { name: "What you get" })).toContainText(/mount/i);
+    // On a shelf, a quest stands alone: it goes back to the shelf, and no quest comes before or after it.
+    await expect(page.getByRole("link", { name: /More to do in Whiterun/ }).first()).toHaveAttribute("href", "/quests/capital-whiterun");
+    await expect(page.getByText("Before it")).toHaveCount(0);
+    await expect(page.getByText("After it")).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
     await page.screenshot({ path: `test-results/wo147-running-wild-${width}.png`, fullPage: true });
   });
@@ -30,8 +29,8 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/quests/q/bleak-falls-barrow");
     await expect(page.getByRole("heading", { level: 1, name: "Bleak Falls Barrow" })).toBeVisible();
-    const part = page.getByRole("region", { name: "Part of" });
-    await expect(part.getByRole("link", { name: "The Dragonborn" })).toHaveAttribute("href", "/quests/main-quest");
+    await expect(page.getByRole("link", { name: "The Dragonborn" }).first()).toHaveAttribute("href", "/quests/main-quest");
+    const part = page.getByRole("region", { name: "What it opens and closes" });
     await expect(part).toContainText("Before it");
     await expect(part).toContainText("After it");
     await page.screenshot({ path: `test-results/wo147-bleak-falls-barrow-${width}.png`, fullPage: true });
@@ -63,7 +62,7 @@ test("a shelf opens on no quest's opening, its rows link to the quests and say h
   await expect(rat).toContainText("Ask Igna");
   // Skirmish at Whitewatch's placeholder objective is not shown.
   await page.goto("/quests/q/skirmish-at-whitewatch");
-  await expect(page.getByRole("region", { name: "Objectives" })).not.toContainText("TEST");
+  await expect(page.getByRole("region", { name: "The steps" })).not.toContainText("TEST");
   await page.screenshot({ path: "test-results/wo147-shelf-line-1440.png" });
 });
 
