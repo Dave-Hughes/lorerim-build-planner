@@ -1,0 +1,1316 @@
+{
+  "checks": [
+    {
+      "edid": "DLC1VQFVBooks",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No dialogue giver in the records; Urag is only named in the objective (quest_givers_raw namedGiver how \"named\"), so the quest comes to you, not from a conversation."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Only tie to the Vale is the quest name; the Forgotten Vale place record (Dawnguard.esm:00A87C) does not list this quest. Reader already flags how you get there."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "No start event or script line in these files; picking up a tome is the likely trigger. The quest script DLC1FVBQuestScript or the tome items OnActivate/OnContainerChanged would settle it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Bring Ancient Falmer Tome to Urag gro-Shub\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Urag placed in The Arcanaeum, Winterhold College (people_raw Skyrim.esm:01C193, inTown Winterhold)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or objectives."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Reward candidates: Dawnguard.esm:01A3E5 The Betrayed, Dawnguard.esm:01A3E8 Touching the Sky (alias DLC1FVBBookEnglish01/04), gold via DLC1FVBQuestScript.pGold001. Amount and per-tome payout unknown, as the reader says."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC1VampireTutorial",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "The quest has player-visible objectives (Misc type), so on its own it would show up when you first transform. Last edit is Skip Vampire Lord Tutorial.esp, which is not in plugins_raw and whose changes the extract does not show. Its edit (start-enabled flag, stages, or a script that stops it) in xEdit would settle whether players ever see it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Only the Harkon alias and the \"Tranform into the Vampire Lord\" objective tie it to becoming a Vampire Lord."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver, no start event, no dialogue; empty is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 (the record spells it \"Tranform\")."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No dialogue start; stage 5 log is the ambush."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "quest_starts_raw \"dragonborn\" line has no dialogue or event conditions."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Same as the reader: no start event recorded; the cultist ambush (DLC2WE09) is not linked by any record. Stage 20 log only shows when stage 15 is not done, so arriving on Solstheim may pick it up another way. The story-manager node that starts DLC2MQ01, or DLC2WE09's stage script, would settle it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5 \"Find out who sent the Cultists\", then 7 \"Read Cultists' Orders\"."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The shrine can be placed. Raven Rock townsfolk lines in this quest point to it: Fethis Alor \"A shrine, down on the beach near the Earth Stone\" (INFO Dragonborn.esm:0248DB), Garyn Ienth \"a shrine near the Earth Stone\" (0240EE), Crescius Caerellius (0240F3), Rirns Llervu (0240EC), Adril Arano (026ACA). places_raw Earth Stone Dragonborn.esm:0142A4: Solstheim, next to Raven Rock."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates for this quest in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "Missing: 185 forge recipes and 239 tempering recipes need a stage of this quest done (GetStageDone Dragonborn.esm:017F8E) plus the Craftsmanship perk: Bonemold, Chitin, Netch Leather, Ashlander, Redoran, Indoril, Morag Tong, Camonna Tong and other Dunmer/Solstheim armour (recipes_raw; plugins LoreRim - Armor Merges.esp, Armors of the Velothi - Reqtificated.esp, Requiem - Weapons and Armor Redone.esp and others). The extract does not record which stage, so the point in the quest is unsure."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log \"I've found Miraak's temple\" with no dialogue gate; Frea's info Dragonborn.esm:01CB63 (stage below 11) is the \"Talk to Frea\" step."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows DLC2MQ01 \"Reach the Temple of Miraak\"; stage 5 alternative noted as unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Storn's \"where\" was a bare village. He is placed in the Shaman's Hut in Skaal Village (quest_givers_raw Storn ref Dragonborn.esm:017A0E, cell Shaman's Hut, in DLC2MQ03/04/05). He is not an alias in this quest, so that is his placement, not a confirmed spot for this line. The reader's unsure about how the Skaal could already be freed stands."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Talk to Frea\" after arriving (stage 10)."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Temple of Miraak (places_raw Dragonborn.esm:0142B6 lists this quest); Apocrypha from alias Book01DungeonLocation."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Only candidate is DLC2DragonAspectHeadSpell (Dragonborn.esm:01DF99), a head-effect spell, not the Dragon Aspect shout (powers_raw 01DF92). Right to leave it out."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DLC2MQ03 stage 10 log picks up after the Black Book vision."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Frea info Dragonborn.esm:02A584 (stage below 11); DLC2MQ02 stage 200 log \"Frea has suggested we take this information back to her village\"."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "DLC2MQ02 last objective \"Talk to Frea\"."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Accompany Frea to Skaal Village\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Saering's Watch (Dragonborn.esm:019D2B) and Wind Stone (Dragonborn.esm:0142DF), both Solstheim near Skaal Village; dialogue in this quest: \"You must go to Saering's Watch... use that knowledge on the Wind Stone\" (INFO Dragonborn.esm:01FF52)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Word of Power from stage 30/50 logs; Waking Dreams script property correctly left unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DLC2MQ03B stage 5 log and the line in this quest \"If you have released the Wind Stone... perhaps you can do the same for the rest of Solstheim\" (INFO Dragonborn.esm:0362C4); DLC2MQ04 stage 10 log (Storn suggests Neloth)."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ03B",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 5 log \"Storn has asked me\"; backed by INFO Dragonborn.esm:0362C4 in The Fate of the Skaal."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Storn placed in the Shaman's Hut (ref Dragonborn.esm:017A0E)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objectives 10-40."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The reader gave only \"Solstheim\". places_raw gives the nearest settlement for each: Water Stone (0142DE) and Earth Stone (0142A4) by Raven Rock; Beast Stone (014296) and Sun Stone (0142DC) by Skaal Village. None has a map marker in the extract."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Only the Waking Dreams script property, correctly left unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Not part of the questlines_raw chain past this point; nothing gated on it in recipes_raw."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log \"Storn suggested that the wizard Neloth may know\"; Neloth info Dragonborn.esm:025077 (stage below 10)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Reader's unsure about raising it with Neloth first stands."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Talk to Neloth\"; Neloth placed in Tel Mithryn (ref Dragonborn.esm:0177DA)."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Nchardak can be placed better from Neloth's own lines in this quest: \"Nchardak, an ancient Dwemer city, on the eastern side of Solstheim. It's largely flooded now, but luckily the main library is still above the water\" (INFO Dragonborn.esm:019CB5); \"The book we're after is right inside that dome\" (01BBA8); the book is sealed in a protective case in the reading room (02506E)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidates in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DLC2MQ05 stage 10 log."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log follows straight from DLC2MQ04 stage 550."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Reader's unsure about Neloth's line (info Dragonborn.esm:020721) stands."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Read the Black Book\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Nchardak, Apocrypha (alias Book2Apocrypha), Storn placed in the Shaman's Hut."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "unsure",
+          "note": "Both Words of Bend Will are confirmed by stage 340 and 1000 logs and Hermaeus Mora's line \"I give you the Word of Power that you need to challenge Miraak\" (INFO Dragonborn.esm:01D9AC). Objective 20 also has you \"Learn the hidden knowledge of Epistolary Acumen\", which may give something of its own; no spell, power or perk for it is in these files. The book's script would settle it."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DLC2MQ06 stage 10 log."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 1000 log: Hermaeus Mora killed Storn."
+        }
+      }
+    },
+    {
+      "edid": "DLC2MQ06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log follows DLC2MQ05; Miraak's info (stage below 400) is in Apocrypha, not a start."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "\"The Shaman's Hut\" is only Storn's placement; no record says where Storn reads the book or where this quest begins. Softened to Skaal Village, where Storn reads the book. The DLC2MQ05 scene where Storn reads (its location data) would settle the spot."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 200/400 logs: tame the dragon, fly to the temple. Wording tightened so the taming comes before reaching Miraak."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Only candidate is the \"Word Chest\" script property (DLC2HMKillsMiraak), not a player item."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Last quest of the questlines_raw \"Dragonborn\" story line."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 550 log \"fought and killed him\"."
+        }
+      }
+    },
+    {
+      "edid": "DLC2WE09",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Fired by script events from DLC2WEPriorityQuests000-008; no giver."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions recorded; reader flags that edits by TimingIsEverything.esp, Requiem.esp and others are not shown."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Hold-location and travel-marker aliases fit \"on the road in Skyrim\"."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Search the <Alias=Actor1>\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "As the reader says: alias NoteInitial and DLC2MQ01's SearchCultistAmbushObjective fit, but no record links them. The stage scripts of this quest (whether one sets DLC2MQ01 running) would settle it."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DLC1VQFVBooks",
+      "name": "Forgotten Vale Books Quest",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Picking up one of the Ancient Falmer Tomes gives you a task to take it to Urag gro-Shub in the Arcanaeum at the College of Winterhold.",
+      "needs": [
+        {
+          "what": "Reach the Forgotten Vale, where the tomes are",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the Forgotten Vale",
+          "how": "Pick up an Ancient Falmer Tome; the task to bring it to Urag gro-Shub appears in your journal."
+        }
+      ],
+      "firstStep": "Bring the Ancient Falmer Tome to Urag gro-Shub in the Arcanaeum at the College of Winterhold",
+      "takesYou": [
+        {
+          "place": "the Forgotten Vale",
+          "hold": "",
+          "why": "find the Ancient Falmer Tomes"
+        },
+        {
+          "place": "The Arcanaeum, College of Winterhold",
+          "hold": "Winterhold",
+          "why": "hand the tome to Urag gro-Shub"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring Ancient Falmer Tome to Urag gro-Shub"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Translated copies of the tomes, including The Betrayed and Touching the Sky (books)",
+          "when": "when you hand a tome to Urag"
+        },
+        {
+          "what": "Gold",
+          "when": "when you hand a tome to Urag"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Urag gro-Shub",
+          "role": "the one you bring the tomes to; placed in the Arcanaeum, College of Winterhold"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records hold four tome items, four book activators and a holding safe, but not the script line that starts the quest; picking up a tome is the likely trigger, not a confirmed one."
+        },
+        {
+          "field": "where",
+          "why": "The records don't say where in the Forgotten Vale each tome sits; the quest name is the only tie to the Vale."
+        },
+        {
+          "field": "needs",
+          "why": "How you reach the Forgotten Vale (and whether that needs the Dawnguard story) isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Only two of the four translated books resolve to names (The Betrayed, Touching the Sky); the other two and the gold amount aren't in these files. Whether you get a book and gold for each tome, or once, isn't shown."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dawnguard.esm:01A3E4 (objective 10; aliases DLC1FVBBook01-04, DLC1FVBBookEnglish01-04, DLC1FVBActivatorBook01-04, DLC1FVBHoldingSafe; editedBy USSEP)",
+        "quest_givers_raw Dawnguard.esm:01A3E4 namedGiver Urag gro-Shub Skyrim.esm:01C193 at ref Skyrim.esm:01C1B4, cell The Arcanaeum (Winterhold College)",
+        "quest_givers_raw rewards: Dawnguard.esm:01A3E5 The Betrayed (alias DLC1FVBBookEnglish01), Dawnguard.esm:01A3E8 Touching the Sky (alias DLC1FVBBookEnglish04), gold via DLC1FVBQuestScript.pGold001",
+        "people_raw Skyrim.esm:01C193 Urag gro-Shub, The Arcanaeum, Winterhold",
+        "places_raw Dawnguard.esm:00A87C Forgotten Vale (Pass, no hold)"
+      ]
+    },
+    {
+      "edid": "DLC1VampireTutorial",
+      "name": "Power of the Blood",
+      "plugin": "Dawnguard.esm (last edited by Skip Vampire Lord Tutorial.esp)",
+      "canDo": "background",
+      "canDoWhy": "A how-to for your first Vampire Lord transformation, not a real quest; LoreRim loads a mod that skips this tutorial, so you probably won't see it.",
+      "needs": [
+        {
+          "what": "Become a Vampire Lord (Lord Harkon is the only person tied to it)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Transform into the Vampire Lord",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Tranform into the Vampire Lord",
+            "Enter melee mode"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Lord Harkon",
+          "role": "tied to the tutorial; placed in Volkihar Keep"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "canDo",
+          "why": "The last plugin to edit this quest is Skip Vampire Lord Tutorial.esp. The extract shows that it edits the quest but not what it changes, so 'skipped' comes from the plugin's name, not from a record."
+        },
+        {
+          "field": "needs",
+          "why": "No start condition is in these files; the link to becoming a Vampire Lord through Lord Harkon is read from the Harkon alias and the objectives only."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dawnguard.esm:01909F (objectives 10, 20; alias Harkon; no journal text; editedBy Skip Vampire Lord Tutorial.esp)",
+        "quest_givers_raw Dawnguard.esm:01909F alias Harkon = Lord Harkon Dawnguard.esm:003BA7 at ref Dawnguard.esm:003BA8, cell Volkihar Keep",
+        "questlines_raw Miscellaneous bucket"
+      ]
+    },
+    {
+      "edid": "DLC2MQ01",
+      "name": "Dragonborn",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "It begins when a group of cultists attacks you in Skyrim; the note they carry sends you to Solstheim.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Miraak's cultists",
+          "where": "out in Skyrim, wherever they ambush you",
+          "how": "Cultists attack you; search their bodies and read the orders one of them carries."
+        }
+      ],
+      "firstStep": "Find out who sent the cultists: search the bodies and read the Cultists' Orders",
+      "takesYou": [
+        {
+          "place": "Windhelm (the boat the cultists came in on)",
+          "hold": "Eastmarch",
+          "why": "take the boat to Solstheim"
+        },
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "ask the townsfolk about Miraak"
+        },
+        {
+          "place": "a shrine on the beach near the Earth Stone, by Raven Rock",
+          "hold": "Solstheim",
+          "why": "investigate it; Raven Rock townsfolk half-remember building it"
+        },
+        {
+          "place": "Temple of Miraak",
+          "hold": "Solstheim",
+          "why": "find Miraak's temple near the center of the island"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find out who sent the Cultists",
+            "Read Cultists' Orders",
+            "Travel to Solstheim",
+            "Search for information about Miraak",
+            "Investigate the shrine",
+            "Reach the Temple of Miraak"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dragonborn",
+      "opens": [
+        "The Temple of Miraak",
+        "Forging Solstheim and Dunmer armour (Bonemold, Chitin, Netch Leather, Ashlander, Redoran, Indoril and more) at a forge, once you have the Craftsmanship perk"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Gjalund Salt-Sage",
+          "role": "tied to the boat in Windhelm that takes you to Solstheim"
+        },
+        {
+          "name": "Neloth",
+          "role": "has things to say about Miraak while you're still looking for the temple; placed in Tel Mithryn"
+        },
+        {
+          "name": "Miraak",
+          "role": "the man behind the attack; placed at the Temple of Miraak"
+        },
+        {
+          "name": "Raven Rock townsfolk (Fethis Alor, Garyn Ienth, Crescius Caerellius, Rirns Llervu, Adril Arano, Mirri Severin)",
+          "role": "half-remember Miraak and a shrine near the Earth Stone when you ask them"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The quest has no start conditions in these files. The cultist ambush is most likely the world encounter 'Cultists vs Player' (DLC2WE09), but no record links the two directly, and the level or timing it fires at isn't recorded."
+        },
+        {
+          "field": "starts",
+          "why": "There's a second journal line for arriving on Solstheim, shown only if an earlier hidden step hasn't happened, so you may be able to pick the quest up by sailing to Solstheim without the note. The trigger for that isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Gjalund is placed in the Windhelm area of the Skyrim map, not a named spot; the log only says to look for the boat in Windhelm."
+        },
+        {
+          "field": "people",
+          "why": "Neloth is attached to the quest through one dialogue line that's open until you've learned where the temple is; whether he's one of the people who can tell you about it isn't shown."
+        },
+        {
+          "field": "opens",
+          "why": "The Dunmer armour recipes need a point in this quest to be done, but the extract does not say which point."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:017F8E stages 5, 7, 10, 20 (condition: stage 15 not done), 30, 200; objectives 5-30; aliases SearchCultistAmbushObjective, GjalundAlias, Stage20Trigger, MQ01PillarMarker, WizardAlias, Villager1Alias, Villager2Alias, TempleMapMarker; editedBy USSEP",
+        "quest_givers_raw Dragonborn.esm:017F8E giver Neloth Dragonborn.esm:01773A via info Dragonborn.esm:024C36 (stage below 30); Gjalund Dragonborn.esm:0182AE ref Dragonborn.esm:0182AF location Windhelm (Skyrim world)",
+        "quest_starts_raw line 'dragonborn' opening DLC2MQ01, conditions dialogue [] event [], startGame false",
+        "questlines_raw 'Dragonborn' story line order",
+        "places_raw Dragonborn.esm:0142B6 Temple of Miraak (Solstheim)",
+        "places_raw pointers in quest Dragonborn: INFO Dragonborn.esm:0248DB (Fethis Alor), 0240EE (Garyn Ienth), 0240F3, 0240EC, 026ACA, 0240DA; places_raw Dragonborn.esm:0142A4 Earth Stone (Solstheim, next to Raven Rock)",
+        "recipes_raw: 185 make / 239 improve recipes with GetStageDone Dragonborn.esm:017F8E + HasPerk Craftsmanship (stage not recorded)"
+      ]
+    },
+    {
+      "edid": "DLC2MQ02",
+      "name": "The Temple of Miraak",
+      "plugin": "Dragonborn.esm",
+      "canDo": "by itself",
+      "canDoWhy": "It carries on from 'Dragonborn' once you reach Miraak's temple, or once the Skaal shaman Storn asks you to find Frea there.",
+      "needs": [
+        {
+          "what": "Reach the Temple of Miraak in 'Dragonborn'",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the Temple of Miraak, Solstheim",
+          "how": "Arrive at Miraak's temple; Frea is there."
+        },
+        {
+          "who": "Storn Crag-Strider",
+          "where": "the Shaman's Hut in Skaal Village, Solstheim",
+          "how": "After the Skaal are freed from the magic controlling them, Storn asks you to find Frea at the temple."
+        }
+      ],
+      "firstStep": "Talk to Frea at the Temple of Miraak",
+      "takesYou": [
+        {
+          "place": "Temple of Miraak",
+          "hold": "Solstheim",
+          "why": "find Frea and search the temple for the source of Miraak's power"
+        },
+        {
+          "place": "Apocrypha",
+          "hold": "",
+          "why": "the Black Book pulls you into another realm, where you see Miraak"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find Frea",
+            "Talk to Frea",
+            "Defeat Miraak",
+            "Explore the Temple",
+            "Find the source of Miraak's power",
+            "Read the Black Book",
+            "Approach Miraak",
+            "Talk to Frea"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dragonborn",
+      "opens": [
+        "The Fate of the Skaal"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Frea",
+          "role": "Skaal warrior who searches the temple with you"
+        },
+        {
+          "name": "Miraak",
+          "role": "attacks you at the temple and vanishes; you see him again in the other realm"
+        },
+        {
+          "name": "Oslaf",
+          "role": "Skaal villager tied to the quest"
+        },
+        {
+          "name": "Yrsa",
+          "role": "Skaal villager tied to the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records have two opening journal lines (one from Storn, one from finding the temple) but not what triggers each. How the Skaal get freed before this quest isn't shown here; in the next quest that freeing comes later."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a Dragon Aspect spell, but it's a separate record from the Dragon Aspect shout, so it may only be a visual effect. Not listed as a reward."
+        },
+        {
+          "field": "people",
+          "why": "Frea and Storn are placed in the Shaman's Hut in Skaal Village; Frea's position at the temple during the quest isn't in these files."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:017F8F stages 5, 10, 25, 30, 40, 60, 200; objectives 5-60; aliases Frea, MQ02Miraak, MQ02MiraakApocrypha, Book01DungeonLocation (Apocrypha), Oslaf, Ysra, Seeker1-4",
+        "quest_givers_raw Dragonborn.esm:017F8F giver Frea Dragonborn.esm:017934 via info Dragonborn.esm:01CB63 (stage below 11); reward candidate Dragonborn.esm:01DF99 'Dragon Aspect' via DLC2_QF_DLC2MQ02_02017F8F.DLC2DragonAspectHeadSpell",
+        "powers_raw Dragonborn.esm:01DF92 Dragon Aspect shout (different id)",
+        "questlines_raw 'Dragonborn' story line order",
+        "quest_givers_raw Storn Crag-Strider Dragonborn.esm:017935 placed ref Dragonborn.esm:017A0E, Shaman's Hut, Skaal Village (from DLC2MQ03/04/05; not an alias here)"
+      ]
+    },
+    {
+      "edid": "DLC2MQ03",
+      "name": "The Fate of the Skaal",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Frea asks you to come back to Skaal Village with her after the Black Book vision at the temple.",
+      "needs": [
+        {
+          "what": "Finish The Temple of Miraak",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Frea",
+          "where": "the Temple of Miraak, after you come back from the Black Book vision",
+          "how": "Tell Frea what you saw; she asks you to come with her to see the Skaal shaman."
+        }
+      ],
+      "firstStep": "Go with Frea to Skaal Village",
+      "takesYou": [
+        {
+          "place": "Skaal Village (the Shaman's Hut)",
+          "hold": "Solstheim",
+          "why": "talk to Storn Crag-Strider"
+        },
+        {
+          "place": "Saering's Watch",
+          "hold": "Solstheim",
+          "why": "learn the Word of Power written there"
+        },
+        {
+          "place": "Wind Stone",
+          "hold": "Solstheim",
+          "why": "use the Bend Will shout on the stone and free the Skaal working there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Accompany Frea to Skaal Village",
+            "Talk to Storn Crag-Strider",
+            "Learn the Word of Power",
+            "Talk to Storn",
+            "Use the \"Bend Will\" Shout on the Wind Stone",
+            "Defeat the Lurker",
+            "Talk to Storn"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A Word of Power for Bend Will (shout), from Saering's Watch",
+          "when": "partway through"
+        }
+      ],
+      "type": "Dragonborn",
+      "opens": [
+        "Cleansing the Stones",
+        "The Path of Knowledge"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Frea",
+          "role": "takes you back to her village"
+        },
+        {
+          "name": "Storn Crag-Strider",
+          "role": "the Skaal shaman; placed in the Shaman's Hut in Skaal Village"
+        },
+        {
+          "name": "Fanari Strong-Voice",
+          "role": "Skaal villager tied to the quest; placed in the Greathall"
+        },
+        {
+          "name": "Finna",
+          "role": "Skaal villager tied to the quest; placed in Oslaf's House"
+        },
+        {
+          "name": "Aeta",
+          "role": "Skaal villager tied to the quest; placed in Oslaf's House"
+        },
+        {
+          "name": "Nikulas",
+          "role": "Skaal villager tied to the quest; placed in Edla's House"
+        },
+        {
+          "name": "the Lurker",
+          "role": "the creature released when the Wind Stone is freed"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The quest script holds the Black Book: Waking Dreams, but whether it gives you the book or only checks for it isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "That the Word at Saering's Watch belongs to Bend Will comes from the log and the next objective; the word wall record isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The Skaal villagers are listed by where they're placed, not by where they are during the quest; the log says they're working at the Wind Stone against their will."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:017F90 stages 10, 30, 50, 60, 70, 200; objectives 10-70; aliases Storn, Frea, Fanari, Finna, Aeta, Nikulas, WindStoneAlias, Lurker, SaeringsWatchMapMarker, WindStoneMapMarker; editedBy USSEP",
+        "quest_givers_raw Dragonborn.esm:017F90 giver Frea via info Dragonborn.esm:02A584 (stage below 11), also Storn (stage below 60); reward candidate Dragonborn.esm:016E22 Black Book: Waking Dreams via DLC2_QF_DLC2MQ03_02017F90.DLC2BlackBook01",
+        "quests_raw Dragonborn.esm:017F8F stage 200 log (Frea suggests going back to her village)",
+        "places_raw Dragonborn.esm:019D2B Saering's Watch, Dragonborn.esm:0142DF Wind Stone, Dragonborn.esm:0143BB Skaal Village",
+        "powers_raw Dragonborn.esm:0179D8 Bend Will",
+        "places_raw pointers: INFO Dragonborn.esm:01FF52 (Saering's Watch / Wind Stone), 0362C4 (free the rest of Solstheim)"
+      ]
+    },
+    {
+      "edid": "DLC2MQ03B",
+      "name": "Cleansing the Stones",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Once the Wind Stone is free, Storn asks you to free Solstheim's other sacred stones with Bend Will.",
+      "needs": [
+        {
+          "what": "Free the Wind Stone in The Fate of the Skaal",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Storn Crag-Strider",
+          "where": "the Shaman's Hut in Skaal Village, Solstheim",
+          "how": "Talk to Storn after you've freed the Wind Stone and killed the Lurker."
+        }
+      ],
+      "firstStep": "Cleanse the Water, Earth, Beast and Sun Stones with the Bend Will shout",
+      "takesYou": [
+        {
+          "place": "Water Stone, near Raven Rock",
+          "hold": "Solstheim",
+          "why": "cleanse it"
+        },
+        {
+          "place": "Earth Stone, next to Raven Rock",
+          "hold": "Solstheim",
+          "why": "cleanse it"
+        },
+        {
+          "place": "Beast Stone, next to Skaal Village",
+          "hold": "Solstheim",
+          "why": "cleanse it"
+        },
+        {
+          "place": "Sun Stone, near Skaal Village",
+          "hold": "Solstheim",
+          "why": "cleanse it"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Cleanse the Water Stone",
+            "Cleanse the Earth Stone",
+            "Cleanse the Beast Stone",
+            "Cleanse the Sun Stone"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dragonborn",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Storn Crag-Strider",
+          "role": "asks you to free the stones; placed in the Shaman's Hut in Skaal Village"
+        },
+        {
+          "name": "Lurkers",
+          "role": "one is tied to each of the four stones"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "Each stone has its own Lurker in the quest, so expect a fight at each one, but the records don't say when each appears."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds the Black Book: Waking Dreams, but whether it gives you the book or only checks for it isn't in these files. No other reward is recorded."
+        },
+        {
+          "field": "steps",
+          "why": "The four stones look like they can be done in any order (each has its own objective), but the order isn't confirmed. The closing log says the Tree Stone stays locked inside Miraak's temple, so it isn't part of this quest."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:035440 stage 5 log (Storn asks after the Wind Stone), stage 200 log; objectives 10, 20, 30, 40; aliases Storn, WaterStoneAlias, EarthStoneAlias, BeastStoneAlias, SunStoneAlias, LurkerWater, LurkerEarth, LurkerBeast, LurkerSun",
+        "quest_givers_raw Dragonborn.esm:035440 reward candidate Dragonborn.esm:016E22 via DLC2_QF_DLC2MQ03B_02035440.DLC2BlackBook01",
+        "places_raw Dragonborn.esm:0142DE Water Stone, Dragonborn.esm:0142A4 Earth Stone, Dragonborn.esm:014296 Beast Stone, Dragonborn.esm:0142DC Sun Stone (all Solstheim)",
+        "places_raw nearestTown: Water Stone -> Raven Rock, Earth Stone -> Raven Rock, Beast Stone -> Skaal Village, Sun Stone -> Skaal Village; INFO Dragonborn.esm:0362C4 in The Fate of the Skaal"
+      ]
+    },
+    {
+      "edid": "DLC2MQ04",
+      "name": "The Path of Knowledge",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Storn tells you the wizard Neloth may know where to find more Black Books; Neloth takes you to the Dwarven ruin of Nchardak.",
+      "needs": [
+        {
+          "what": "Finish The Fate of the Skaal",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Storn Crag-Strider",
+          "where": "the Shaman's Hut in Skaal Village, Solstheim",
+          "how": "Talk to Storn once the Skaal are free; he sends you to Neloth."
+        }
+      ],
+      "firstStep": "Talk to Neloth in Tel Mithryn",
+      "takesYou": [
+        {
+          "place": "Tel Mithryn",
+          "hold": "Solstheim",
+          "why": "talk to Neloth"
+        },
+        {
+          "place": "Nchardak, a mostly flooded Dwemer city on the eastern side of Solstheim",
+          "hold": "Solstheim",
+          "why": "the Black Book is sealed in a case in the reading room, inside the dome"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Neloth",
+            "Travel to Nchardak with Neloth",
+            "Restore the steam supply to the Dwemer reading room",
+            "Release the book from the Dwemer contraption"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dragonborn",
+      "opens": [
+        "The Gardener of Men"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Storn Crag-Strider",
+          "role": "sends you to Neloth"
+        },
+        {
+          "name": "Neloth",
+          "role": "Telvanni wizard who found the Black Book; goes to Nchardak with you"
+        },
+        {
+          "name": "Centurions",
+          "role": "one is tied to one of the cubes, and there's a boss centurion"
+        },
+        {
+          "name": "Miraak",
+          "role": "turns up in the Nchardak reading room"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "The quest has five Dwemer cubes you carry as quest items and a reading-room button, but the records don't say where each cube is or how to use them."
+        },
+        {
+          "field": "starts",
+          "why": "Neloth has a dialogue line tied to the very start of this quest. Whether you can raise it with him before Storn sends you isn't clear."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:016E1F stages 10, 50, 550 logs; objectives 10, 20, 40, 50; aliases Storn, Neloth, Frea, Nchardak, NchardakCube01-05_AsQuestItem, Cube4Centurion, BossCenturion, ReadingRoomButton, NchardakReadingRoomDoor",
+        "quest_givers_raw Dragonborn.esm:016E1F giver Neloth Dragonborn.esm:01773A via info Dragonborn.esm:025077 (stage below 10), placed ref Dragonborn.esm:0177DA in Tel Mithryn",
+        "places_raw Dragonborn.esm:0142B4 Nchardak (DwemerRuin, Solstheim)",
+        "quests_raw Dragonborn.esm:017F90 stage 70 log (Storn may know how to find Miraak)",
+        "places_raw pointers in The Path of Knowledge: Neloth INFO Dragonborn.esm:019CB5, 01BBA8, 02506E; quest_givers_raw alias Miraak = DLC2MiraakMQ04 Dragonborn.esm:017F81 in Nchardak Reading Room"
+      ]
+    },
+    {
+      "edid": "DLC2MQ05",
+      "name": "The Gardener of Men",
+      "plugin": "Dragonborn.esm",
+      "canDo": "by itself",
+      "canDoWhy": "It follows straight on once you've freed the Black Book in Nchardak: read it, meet Hermaeus Mora, then bring Storn the price he asks.",
+      "needs": [
+        {
+          "what": "Finish The Path of Knowledge",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the reading room in Nchardak, Solstheim",
+          "how": "Once the book is out of the Dwemer contraption, the next step is to read it."
+        }
+      ],
+      "firstStep": "Read the Black Book in Nchardak",
+      "takesYou": [
+        {
+          "place": "Nchardak",
+          "hold": "Solstheim",
+          "why": "read the Black Book"
+        },
+        {
+          "place": "Apocrypha",
+          "hold": "",
+          "why": "learn the hidden knowledge of \"Epistolary Acumen\" and meet Hermaeus Mora"
+        },
+        {
+          "place": "Skaal Village (the Shaman's Hut)",
+          "hold": "Solstheim",
+          "why": "tell Storn what Hermaeus Mora wants"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Read the Black Book",
+            "Learn the hidden knowledge of \"Epistolary Acumen\"",
+            "Talk to Storn",
+            "Wait for Storn to read the book"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "The second Word of Bend Will (shout)",
+          "when": "from Hermaeus Mora in Apocrypha"
+        },
+        {
+          "what": "The third Word of Bend Will (shout)",
+          "when": "at the end, when Storn reads the book"
+        }
+      ],
+      "type": "Dragonborn",
+      "opens": [
+        "At the Summit of Apocrypha"
+      ],
+      "closes": [
+        "Storn Crag-Strider dies"
+      ],
+      "people": [
+        {
+          "name": "Hermaeus Mora",
+          "role": "teaches you the second Word and wants 'the secrets of the Skaal' for the third"
+        },
+        {
+          "name": "Storn Crag-Strider",
+          "role": "agrees to read the book for Hermaeus Mora and is killed"
+        },
+        {
+          "name": "Neloth",
+          "role": "helped you get the book"
+        },
+        {
+          "name": "Frea",
+          "role": "tied to the quest while Storn reads the book"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Neloth has a dialogue line tied to the start of this quest, but these files don't hold its text, so it isn't clear whether he hands you on or just remarks."
+        },
+        {
+          "field": "choices",
+          "why": "No branching is recorded. The Skaal villagers are all in the quest, but these files don't show what they do."
+        },
+        {
+          "field": "rewards",
+          "why": "You also \"learn the hidden knowledge of Epistolary Acumen\"; whether that gives you a power or other bonus isn't in these files."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:0179DE stages 10, 340, 1000 logs; objectives 10, 20, 30, 40; aliases Storn, Frea, Neloth, Book2Apocrypha, Nchardak, HermaeusMora, HermaeusMoraSkaal, SkaalCitizen* (12)",
+        "quest_givers_raw Dragonborn.esm:0179DE giver Neloth via info Dragonborn.esm:020721 (stage below 100); others Storn (below 450), Frea (below 500); reward candidate 'Word Chest' Dragonborn.esm:0323EF via DLC2WordBurnedInChest (not listed: looks like a visual effect)",
+        "quests_raw Dragonborn.esm:016E1F stage 550 log",
+        "places_raw pointer INFO Dragonborn.esm:01D9AC (Hermaeus Mora gives the Word of Power)"
+      ]
+    },
+    {
+      "edid": "DLC2MQ06",
+      "name": "At the Summit of Apocrypha",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "With all three Words of Bend Will learned after Storn's death, this final quest sends you back to Apocrypha to face Miraak.",
+      "needs": [
+        {
+          "what": "Finish The Gardener of Men",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "Skaal Village, where Storn reads the Black Book",
+          "how": "It starts once Hermaeus Mora has taught you the last Word and Storn is dead."
+        }
+      ],
+      "firstStep": "Unlock your Bend Will shout",
+      "takesYou": [
+        {
+          "place": "Apocrypha",
+          "hold": "",
+          "why": "read Waking Dreams to go there, then make for Miraak's temple"
+        },
+        {
+          "place": "Miraak's temple in Apocrypha",
+          "hold": "",
+          "why": "tame his dragon Sahrotaar with Bend Will, ride him to Miraak and fight him"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Unlock your \"Bend Will\" Shout",
+            "Read \"Waking Dreams\"",
+            "Reach Miraak's Temple",
+            "Use the \"Bend Will\" Shout to tame Sahrotaar",
+            "Defeat Miraak"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dragonborn",
+      "opens": [],
+      "closes": [
+        "Miraak dies"
+      ],
+      "people": [
+        {
+          "name": "Miraak",
+          "role": "the final enemy, waiting at his temple in Apocrypha"
+        },
+        {
+          "name": "Sahrotaar",
+          "role": "Miraak's dragon; you tame him with Bend Will and he flies you to the temple"
+        },
+        {
+          "name": "Frea",
+          "role": "tied to the quest"
+        },
+        {
+          "name": "Sirkjorg",
+          "role": "worker tied to the quest; placed on Solstheim"
+        },
+        {
+          "name": "Herkja",
+          "role": "worker tied to the quest; placed on Solstheim"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No start event or giver for the opening is in these files. That it starts right after Storn's death comes from the journal text."
+        },
+        {
+          "field": "takesYou",
+          "why": "Where you find and read Waking Dreams isn't recorded. An earlier quest script holds that book, but whether it's handed to you isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "No real reward is recorded. The script's 'Word Chest' item looks like a visual effect. Miraak's mask isn't tied to this quest in these files."
+        },
+        {
+          "field": "people",
+          "why": "Frea and the two workers are in the quest, but these files don't show what they do. Miraak is placed in a holding cell, not a real spot."
+        },
+        {
+          "field": "where",
+          "why": "No record says where Storn reads the book; Storn is placed in the Shaman's Hut, so that is the likely spot, not a confirmed one."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:0179D7 stages 10, 200, 400, 550 logs; objectives 10-40; aliases Book1Target, Book01Location (Apocrypha), Miraak, FerryDragon, TameDragon, DragonToKill, Frea, ThirskWorker1, ThirskWorker2, Lurker; editedBy USSEP",
+        "quest_givers_raw Dragonborn.esm:0179D7 giver Miraak Dragonborn.esm:01FB98 via info Dragonborn.esm:023F60 (stage below 400); reward candidate 'Word Chest' Dragonborn.esm:03BE38 via DLC2HMKillsMiraak",
+        "people_raw Dragonborn.esm:039B6B Sahrotaar (dragon)",
+        "places_raw Dragonborn.esm:0142B6 Temple of Miraak lists this quest"
+      ]
+    },
+    {
+      "edid": "DLC2WE09",
+      "name": "Cultists vs Player",
+      "plugin": "Dragonborn.esm (last edited by LoreRim - Global Modifiers.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "A random encounter: Miraak's cultists find you while you travel in Skyrim and attack, and you can search them afterwards.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Miraak's cultists",
+          "where": "out on the road in Skyrim",
+          "how": "They come to you while you travel; nobody gives this quest."
+        }
+      ],
+      "firstStep": "Search the cultists' bodies",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Search the <Alias=Actor1>"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [
+        "Dragonborn"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Cultists (up to three)",
+          "role": "attack you; one carries a note"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "opens",
+          "why": "The encounter has a note and a 'search' objective, and 'Dragonborn' starts with a cultist attack and a note, but no record ties the two together. The link is likely, not confirmed."
+        },
+        {
+          "field": "starts",
+          "why": "It fires from game events (nine priority nodes for Dragonborn world encounters). TimingIsEverything.esp, Requiem.esp, the Requiem Dragonborn patch and LoreRim - Global Modifiers.esp all edit it, but the extract doesn't show what level or timing they set."
+        },
+        {
+          "field": "steps",
+          "why": "The objective names the body to search with a placeholder; the cultists' names aren't in these files."
+        }
+      ],
+      "evidence": [
+        "quests_raw Dragonborn.esm:0331C0 objective 10 'Search the <Alias=Actor1>'; aliases TRIGGER, myHoldLocation, myHoldContested/Imperial/Sons, TravelMarker1-2, Actor1-3, NoteInitial; editedBy TimingIsEverything.esp, Requiem.esp, Fozars_Dragonborn_-_Requiem_Patch.esp, LoreRim - Global Modifiers.esp",
+        "quest_givers_raw Dragonborn.esm:0331C0 starts: script events from DLC2WEPriorityQuests000-008",
+        "quests_raw Dragonborn.esm:017F8E alias SearchCultistAmbushObjective, stage 5/7 logs"
+      ]
+    }
+  ]
+}

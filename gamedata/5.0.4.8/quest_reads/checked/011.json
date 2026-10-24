@@ -1,0 +1,1353 @@
+{
+  "checks": [
+    {
+      "edid": "MGRitual02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: Drevis tells you about the hidden books; he is the named giver."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO or conditions for this quest in quest_givers_raw, so leaving it unsure is right; the Master spells are minSkill 100 in spells_raw."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Drevis Neloren, placed in the Hall of Countenance (ref 01C1A6, cell 01380F). No giver INFO exists, so 'how' rests on the stage 10 log; reasonable. Placement caveat already in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 10 log and objective 10."
+        },
+        "takesYou": {
+          "verdict": "unsure",
+          "note": "Dormitory x2, Arcanaeum and Midden all list 0B3233 in places_raw. But both dormitory records are just named 'Dormitory' (WinterholdCollegeDormitoryLocation, WinterholdCollegeDormitory2Location); the '(Hall of Countenance and Hall of Attainment)' mapping isn't in the records. Dropped the parenthetical and added an unsure; the book refs' cells would settle it."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Ritual02Spell = Vision of the Tenth Eye (0B323E), given per the stage 10 log; four Master tomes on the script, stage 200 says 'one of' them. Unsure on which one is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in quest_starts or questlines gates on 0B3233."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "MGRitual03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO Skyrim.esm:0DE43C on Phinis; stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions on 0DE43C in these files; Master Conjuration spells minSkill 100. Unsure is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Phinis Gestor, Hall of Countenance (ref 01C1A7). 'How' matches stage 10 log and INFO 0DB367 ('A sigil stone from an Oblivion gate'). Added the placement caveat to unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "unsure",
+          "note": "Hall of the Elements (01EB7A) does list 099F27, but the 'why' guessed 'likely where you summon the dremora' in a player field. The SummonLocationMarker alias has no place in these files; its ref and cell would settle it. Reworded the 'why' so it doesn't guess."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Ritual03Spell = Summon Unbound Dremora (099F39); four Master thrall tomes on the script; stage 200 'the first of the spells'. Timing and which tome kept in unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "quest_starts dreams-of-the-dead: event GetStageDone Skyrim.esm:099F27 stage 200 == 1, from Creation Club Home Requirements - AIO.esp. The Gallows Hall door also needs a key, so 'other things may gate it' is fair."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "MGRitual04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO Skyrim.esm:0CD985 on Colette; stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions in these files; Bane of the Undead minSkill 100."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Colette Marence, Hall of Countenance (ref 01C1A8); 'how' is the stage 10 log. Added the placement caveat."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 log plus objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 10 log names the Midden; WinterholdCollegeMiddenLocation lists 0CD987."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200: 'granted the Bane of the Undead spell' (08C1AB on the script). Guardian Circle tome and Ritual02Spell also on the script; unsure is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing gates on 0CD987."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "MGRitual05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO Skyrim.esm:0D0746 on Tolfdir; stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions in these files; Dragonhide on Self minSkill 100; dragons needed per stage 10 log."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Tolfdir, Hall of Attainment (ref 01C1A1); 'how' matches stage 10 log. Added the placement caveat."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 log: 'I'll first need to obtain a special dagger known as Kahvozein's Fang'. Objective 10 skips that, so the log-based first step is the better one."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "DaggerDungeon and DaggerContainer aliases are filled at run time; no place in these files. Unsure is right."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "unsure",
+          "note": "Dragonhide tome (SpellTomeDragonskin, 0D2B4E) matches stage 200 'the first copy of the tome'. But 'yours to keep' on the Fang was the reader's own guess (their unsure says so) and sat in a player field. Dropped it from the reward line and kept it in unsure; the stage 200 fragment would settle it."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing gates on 0D0755."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "MGRRogue",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'radiant' fits the run-time Dungeon, Hold, Jarl and Target slots, but nothing shows it is ever started: no giver INFO, no quest_starts line, stage 200 log is empty. MGRejoinQuest (0C9A0E, 'Rejoining the College') has the same MGRejoinTolfdir alias, so this looks tied to the suspension system. Kept 'radiant' as the best guess. Fixed canDoWhy, which said nothing shows what hands it out while starts names Tolfdir."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing recorded."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Tolfdir is the Questgiver alias (quest_givers people) and objective 20 is 'Return to Tolfdir', but no start dialogue exists. If it's never offered, starts should be empty per the brief."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Dungeon alias is filled at run time."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None recorded."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None recorded."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing gates on 05A609."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "Cow_Breathing",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Started by College Curriculum's Tolfdir step; dialogue-driven."
+        },
+        "needs": {
+          "verdict": "unsure",
+          "note": "The value matches COW_CentralQuest stage 5 ('Tolfdir asked me to study a tome of Waterbreathing'). spells_raw lists Waterbreathing (05D175) at Alteration minSkill 25; whether that's needed to learn it isn't shown. Added to unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "The quest is already running when you reach Arniel. His giver line (INFO 00082F) only fires before stage 2, and stage 1's log says you 'have been instructed to talk to Arniel'. What puts you there is talking to Tolfdir after learning Waterbreathing: COW_CentralQuest objective 15 'Learn Waterbreathing and talk to Tolfdir' leads to stage 20 'I should find Arniel Gane'. who is now Tolfdir, not Arniel; firstStep 'Talk to Arniel Gane' still stands."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 1."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Sunken ruins north of the College (stage 5 and 20 logs; 'Dwarven Ruins 2' alias unnamed). The hold Winterhold is inferred from 'north of the College', not recorded; the ruins unsure covers it."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No fail or branch stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No item or spell recorded; stage 50's 'new alteration spell' is Waterbreathing from Curriculum. Unsure kept."
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "Was empty. COW_CentralQuest stage 21: 'I've completed Tolfdir's lesson, I should check with the other scholars for more lessons'. This quest is Tolfdir's lesson (stage 40-50: show Tolfdir the crystal, Tolfdir taught me a new alteration spell), so finishing it is what sends you on to the other six lessons."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "COW_CentralQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Tolfdir giver INFO 000820; stage 0 log already set when you talk to him."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 0 'As a new member of the College' and stage 50 'After joining the College' support it. Added an unsure that Waterbreathing is Alteration 25 in spells_raw."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Tolfdir, Hall of Attainment (ref 01C1A1). The giver line fires before stage 1, so the quest is already in the journal at stage 0; what sets it going isn't in these files (MG01 is edited by this mod). The reader's unsure covers it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Placements from quest_givers: Tolfdir and Arniel in Hall of Attainment, five scholars in Hall of Countenance, Urag in The Arcanaeum."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch stages in this quest; declining is per lesson."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Waterbreathing tome from stage 5 log; nothing else recorded."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "The mod's questline (questlines_raw line 30) holds this hub plus the seven lesson quests, which are all listed. The Saarthal line (INFO 0009DE) is in this quest, but no stage link to Under Saarthal is shown, so leaving it in unsure is right."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "Cow_Conjuration",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 0009B8 on Phinis."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "'Reach Phinis's lesson' doesn't tell a player when. COW_CentralQuest stage 21: 'I've completed Tolfdir's lesson, I should check with the other scholars for more lessons'. So it comes after Rapture of the Deep. Exact line conditions are still unknown and stay in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Phinis Gestor, Hall of Countenance (ref 01C1A7); 'how' matches stage 5 log. Added the placement caveat."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Empty, with the right unsure: 'follow him' (stage 10) has no recorded destination."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 25 completes, stage 30 fails ('declined to participate')."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No Conjure Familiar tome recorded; unsure is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Counts toward College Curriculum; nothing else gates on it."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Declining fails only this quest; whether that blocks Curriculum's 7/7 isn't shown (noted under Curriculum)."
+        }
+      }
+    },
+    {
+      "edid": "Cow_Destruction",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 0008A1 on Faralda."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Same as Phinis's lesson: COW_CentralQuest stage 21 puts the other scholars after Tolfdir's lesson. Firebolt (012FD0) is minSkill 25 Destruction in spells_raw; added to unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Faralda, Hall of Countenance (ref 01C1A5); 'how' is stage 5 log. Added the placement caveat."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "The icewraith ref 00089A sits in the Skyrim worldspace persistent cell with no location; unsure is right."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 20 completes, stage 30 fails ('I won't be taking your class')."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 5: 'She's given me a spell tome of Firebolt'."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing beyond the Curriculum count."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail affects only this quest."
+        }
+      }
+    },
+    {
+      "edid": "Cow_enchantment",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 000916 on Sergius."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Lesson timing is the same as the other lessons (COW_CentralQuest stage 21). The soul gem is right: objective 20 and stage 20 'I need a filled gem'."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Sergius Turrianus, Hall of Countenance (ref 01C23F); 'how' matches stage 10/15 logs. Added the placement caveat."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The enchanter row had no place. places_raw shows both College dormitories (01EB74, 0D16E5) have 'an enchanting table', so a player doesn't need to leave the College. Stonehills: Hjaalmarch, 0.4 km from Morthal 'a short walk' (Skyrim.esm:018A52), named in stage 35 and the Client Details note. Both are right."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 70 completes, stage 80 fails ('I refused to help Sergius')."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Old Enchanted Dagger via IronDagger alias, there to be disenchanted (stage 15). No gold recorded despite the note's 400 Gold, and the client turns out not to have sent the order (stage 40). Unsure is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing gates on it."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail affects only this quest."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "MGRitual02",
+      "name": "Illusion Ritual Spell",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Drevis Neloren at the College of Winterhold hands it out; you hunt down four hidden books around the College.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Drevis Neloren",
+          "where": "Hall of Countenance, College of Winterhold",
+          "how": "Talk to Drevis about Illusion. He gives you the spell Vision of the Tenth Eye and tells you books on powerful Illusion spells are hidden around the College."
+        }
+      ],
+      "firstStep": "Cast Vision of the Tenth Eye and find the four Master Illusion texts hidden around the College",
+      "takesYou": [
+        {
+          "place": "The College dormitories",
+          "hold": "Winterhold",
+          "why": "some of the hidden Master Illusion texts"
+        },
+        {
+          "place": "The Arcanaeum",
+          "hold": "Winterhold",
+          "why": "a hidden Master Illusion text"
+        },
+        {
+          "place": "The Midden",
+          "hold": "Winterhold",
+          "why": "a hidden Master Illusion text"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring the four Master Illusion texts to Drevis Neloren"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Vision of the Tenth Eye (spell)",
+          "when": "when Drevis gives you the task"
+        },
+        {
+          "what": "One Master Illusion spell tome: Call to Arms, Mayhem, Hysteria or Harmony",
+          "when": "at the end, from Drevis"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Drevis Neloren",
+          "role": "the Illusion master; gives the task and the reward, in the Hall of Countenance"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "the conditions on Drevis's opening line (a skill level, College rank or an earlier quest) aren't in these files. The Master spells it rewards are listed at Illusion 100."
+        },
+        {
+          "field": "rewards",
+          "why": "the quest script holds all four Master Illusion tomes, and the journal says he gives you 'one of' them. The records don't show which one you get or how the rest are offered."
+        },
+        {
+          "field": "takesYou",
+          "why": "the places index ties this quest to two dormitory locations, the Arcanaeum and the Midden. Which book is in which room isn't spelled out."
+        },
+        {
+          "field": "where",
+          "why": "Drevis's spot is where the records place him, not his daily schedule."
+        },
+        {
+          "field": "takesYou",
+          "why": "the places index names the two locations only 'Dormitory'; nothing in these files ties them to the Hall of Countenance or the Hall of Attainment. The book placements (refs with cells) would settle which rooms."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:0B3233 stages 10/200, objective 10",
+        "aliases Drevis, Book1-4",
+        "QF_MGRitual02_000B3233 props Ritual02Spell, SpellTomeCallToArms/Mayhem/Hysteria/Harmony",
+        "Drevis ref Skyrim.esm:01C1A6 cell 01380F",
+        "places: WinterholdCollegeDormitoryLocation, WinterholdCollegeDormitory2Location, WinterholdCollegeArcanaeumLocation, WinterholdCollegeMiddenLocation list 0B3233",
+        "spells_raw: Call to Arms/Mayhem/Hysteria/Harmony Master minSkill 100 (Requiem - Magic Redone.esp)"
+      ]
+    },
+    {
+      "edid": "MGRitual03",
+      "name": "Conjuration Ritual Spell",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Phinis Gestor at the College asks you to summon and break an unbound dremora so it fetches him a sigil stone.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Phinis Gestor",
+          "where": "Hall of Countenance, College of Winterhold",
+          "how": "Ask Phinis about Conjuration. He needs a sigil stone from an Oblivion gate to inscribe powerful Conjuration spells, and the way to get one is to summon an unbound dremora and bend it to your will."
+        }
+      ],
+      "firstStep": "Summon and subdue an Unbound Dremora",
+      "takesYou": [
+        {
+          "place": "Hall of the Elements, College of Winterhold",
+          "hold": "Winterhold",
+          "why": "the records tie this quest to the hall; the summoning spot itself isn't named in these files"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Summon and subdue an Unbound Dremora",
+            "Deliver the stone to Phinis"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Summon Unbound Dremora (spell)",
+          "when": "from Phinis, so you can do the summoning"
+        },
+        {
+          "what": "One Master Conjuration spell tome: Reanimate Dead Thrall, Conjure Flame Thrall, Conjure Frost Thrall or Conjure Storm Thrall",
+          "when": "at the end, from Phinis"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [
+        "Dreams of the Dead (its start waits on this quest being finished)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Phinis Gestor",
+          "role": "the Conjuration master; gives the task and the reward, in the Hall of Countenance"
+        },
+        {
+          "name": "Unbound Dremora",
+          "role": "the dremora you summon and beat; it brings back the sigil stone"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "the conditions on Phinis's opening line aren't in these files. The Master spells it rewards are listed at Conjuration 100."
+        },
+        {
+          "field": "rewards",
+          "why": "the script holds all four Master Conjuration tomes, and the journal says he gives you 'the first of the spells'. The records don't say which one, or exactly when the summon spell is handed over."
+        },
+        {
+          "field": "takesYou",
+          "why": "the summoning spot is a quest marker the records don't place. The Hall of the Elements is only where the places index lists this quest."
+        },
+        {
+          "field": "opens",
+          "why": "Creation Club Home Requirements - AIO.esp makes the Dreams of the Dead start event wait on this quest being finished. Other things may also gate that quest."
+        },
+        {
+          "field": "where",
+          "why": "Phinis's spot is where the records place him, not his daily schedule."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:099F27 stages 10/70/200, objectives 10/20",
+        "aliases Phinis, SummonLocationMarker, DremoraAlias, SigilStoneAlias",
+        "giver info Skyrim.esm:0DE43C",
+        "QF_MGRitual03_00099F27 props Ritual03Spell, SpellTomeDeadThrall/FlameThrall/FrostThrall/StormThrall",
+        "INFO Skyrim.esm:0DB367, 0DB36D (sigil stone lines)",
+        "places: WinterholdCollegeHallofElementsLocation lists 099F27",
+        "quest_starts dreams-of-the-dead event GetStageDone 099F27 200"
+      ]
+    },
+    {
+      "edid": "MGRitual04",
+      "name": "Restoration Ritual Spell",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Colette Marence sends you down to the Augur in the Midden, who tests you before teaching more Restoration.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Colette Marence",
+          "where": "Hall of Countenance, College of Winterhold",
+          "how": "Ask Colette for more Restoration training. She says the spells you don't know are kept by the Augur down in the Midden, and you'll need his approval."
+        }
+      ],
+      "firstStep": "Go down to the Midden and gain the Augur's approval",
+      "takesYou": [
+        {
+          "place": "The Midden, under the College of Winterhold",
+          "hold": "Winterhold",
+          "why": "find the Augur and pass his test"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Gain the Augur's approval"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Bane of the Undead (spell)",
+          "when": "at the end, after the Augur's test"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Colette Marence",
+          "role": "the Restoration master; points you to the Augur, in the Hall of Countenance"
+        },
+        {
+          "name": "The Augur",
+          "role": "keeper of the knowledge, deep in the Midden; sets the test"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "the conditions on Colette's opening line aren't in these files. Bane of the Undead is listed at Restoration 100."
+        },
+        {
+          "field": "steps",
+          "why": "the records name three ghosts, a door, a flame and an item container tied to the Augur, but there's no journal text that says what the test involves."
+        },
+        {
+          "field": "rewards",
+          "why": "the script also holds a Guardian Circle tome and Vision of the Tenth Eye, but the journal only names Bane of the Undead. Whether the others are given isn't clear."
+        },
+        {
+          "field": "where",
+          "why": "Colette's spot is where the records place her, not her daily schedule."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:0CD987 stages 10/200, objective 10",
+        "aliases Colette, Augur, ItemTrigger, ItemContainer, AugurDoor, Ghost01-03, AugurFlame",
+        "giver info Skyrim.esm:0CD985",
+        "QF_MGRitual04_000CD987 props BaneoftheUndead, SpellTomeGuardianCircle, Ritual02Spell",
+        "places: WinterholdCollegeMiddenLocation lists 0CD987",
+        "spells_raw Bane of the Undead Master minSkill 100"
+      ]
+    },
+    {
+      "edid": "MGRitual05",
+      "name": "Alteration Ritual Spell",
+      "plugin": "Skyrim.esm (last edited by DragonHunting.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Tolfdir needs dragon heartscales for a new Master Alteration spell; you need the dagger Kahvozein's Fang to cut them.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Tolfdir",
+          "where": "Hall of Attainment, College of Winterhold",
+          "how": "Talk to Tolfdir about Alteration. He is working on a new Master spell and wants dragon heartscales, which can only be taken with a dagger called Kahvozein's Fang."
+        }
+      ],
+      "firstStep": "Find Kahvozein's Fang",
+      "takesYou": [
+        {
+          "place": "A dungeon where Kahvozein's Fang is kept",
+          "hold": "",
+          "why": "get the dagger"
+        },
+        {
+          "place": "Wherever you kill dragons",
+          "hold": "",
+          "why": "use the Fang on dragon remains to take heartscales"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Use Kahvozein's Fang to collect Dragon Heartscales",
+            "Bring the Dragon Heartscales to Tolfdir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Kahvozein's Fang (dagger)",
+          "when": "when you find it in the dungeon the quest picks"
+        },
+        {
+          "what": "Spell Tome (Master): Dragonhide on Self",
+          "when": "at the end, from Tolfdir"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Tolfdir",
+          "role": "gives the task and the tome, in the Hall of Attainment"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "the Fang's dungeon is filled in by the quest when it runs; these files don't name it."
+        },
+        {
+          "field": "needs",
+          "why": "the conditions on Tolfdir's opening line aren't in these files. Dragonhide is listed at Alteration 100, and you will need to kill dragons."
+        },
+        {
+          "field": "steps",
+          "why": "the records don't say how many heartscales Tolfdir wants."
+        },
+        {
+          "field": "rewards",
+          "why": "the script also holds a Paralyzing Storm tome, Bane of the Undead and Vision of the Tenth Eye. The journal only mentions the new tome, so it's unclear whether the others are given."
+        },
+        {
+          "field": "plugin",
+          "why": "DragonHunting.esp is the last to edit this quest; what it changes isn't shown here."
+        },
+        {
+          "field": "rewards",
+          "why": "the records show Kahvozein's Fang is a Requiem artifact dagger (REQ_Artifact_KahvozeinsFang) held by the quest's Dagger alias; they don't show whether the quest lets you keep it or takes it back. The stage 200 script would settle it."
+        },
+        {
+          "field": "where",
+          "why": "Tolfdir's spot is where the records place him, not his daily schedule."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:0D0755 stages 10/20/200, objectives 10/20",
+        "editedBy USSEP, DragonHunting.esp",
+        "aliases Tolfdir, DaggerDungeon, DaggerContainer, Dagger",
+        "giver info Skyrim.esm:0D0746",
+        "QF_MGRitual05_000D0755 props SpellTomeDragonskin, SpellTomeMassParalysis, BaneoftheUndead, Ritual02Spell",
+        "items_raw Skyrim.esm:0D0758 Kahvozein's Fang REQ_Artifact_KahvozeinsFang",
+        "spells_raw Dragonhide on Self Master minSkill 100"
+      ]
+    },
+    {
+      "edid": "MGRRogue",
+      "name": "Rogue Wizard",
+      "plugin": "Skyrim.esm",
+      "canDo": "radiant",
+      "canDoWhy": "A Tolfdir job against a rogue wizard in a dungeon the game picks. Tolfdir is set as its giver, but no line, event or journal text in these files starts it.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Tolfdir",
+          "where": "Hall of Attainment, College of Winterhold",
+          "how": "Tolfdir is the quest's giver, and you report back to him when it's done; the line that starts it isn't in these files."
+        }
+      ],
+      "firstStep": "Deal with the rogue wizard",
+      "takesYou": [
+        {
+          "place": "A dungeon picked when the quest starts",
+          "hold": "",
+          "why": "find the rogue wizard"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Deal with the rogue wizard",
+            "Return to Tolfdir"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Tolfdir",
+          "role": "gives the job and takes the report, in the Hall of Attainment"
+        },
+        {
+          "name": "the rogue wizard",
+          "role": "the target, in the chosen dungeon"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "canDo",
+          "why": "no start line, no start event and no journal text on any stage, so it may never be offered in play. Its Savos, Mirabelle and Tolfdir slots are named like those in Rejoining the College (the quest where you pay Tolfdir to lift a suspension), which hints it was a rejoin route, but nothing confirms it. A Story Manager node or a script that starts this quest would settle it."
+        },
+        {
+          "field": "takesYou",
+          "why": "the dungeon, hold and jarl are filled in when the quest runs; the files don't name them."
+        },
+        {
+          "field": "rewards",
+          "why": "no reward is recorded."
+        },
+        {
+          "field": "starts",
+          "why": "Tolfdir fills the quest's Questgiver slot and you report to him, but no line that starts it is in these files; if the quest is never offered, starts should be empty."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:05A609 stages 0-200 (no log text), objectives 10/20",
+        "aliases MGRejoinSavos, MGRejoinMirabelle, MGRejoinTolfdir, Dungeon, DungeonMarker, Hold, Jarl, Target, Questgiver",
+        "quest_givers: no giver dialogue, no start"
+      ]
+    },
+    {
+      "edid": "Cow_Breathing",
+      "name": "Rapture of the Deep",
+      "plugin": "College Of Winterhold - Quest Expansion.esp",
+      "canDo": "talk",
+      "canDoWhy": "Tolfdir's lesson in College Curriculum: once you've learned Waterbreathing, Arniel Gane takes you to test it in some sunken ruins.",
+      "needs": [
+        {
+          "what": "Learn Waterbreathing from the tome Tolfdir gives you in College Curriculum",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Tolfdir",
+          "where": "Hall of Attainment, College of Winterhold",
+          "how": "Study the Waterbreathing tome Tolfdir gives you in College Curriculum, then talk to him again. He sends you to Arniel Gane, who wants to test the spell north of the College."
+        }
+      ],
+      "firstStep": "Talk to Arniel Gane",
+      "takesYou": [
+        {
+          "place": "Sunken ruins north of the College",
+          "hold": "Winterhold",
+          "why": "dive and find a crystal for Arniel"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Arniel Gane",
+            "Speak with Arniel Gane when ready to depart",
+            "Follow Arniel Gane",
+            "Dive and find the crystal",
+            "Return to Arniel Gane",
+            "Speak with Tolfdir"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Mages Guild",
+      "opens": [
+        "The other scholars' lessons in College Curriculum (the journal sends you to them once Tolfdir's lesson is done)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Tolfdir",
+          "role": "gives you the Waterbreathing tome, sends you to Arniel, and sees the crystal at the end; in the Hall of Attainment"
+        },
+        {
+          "name": "Arniel Gane",
+          "role": "leads you to the test, in the Hall of Attainment"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "the ruins are a quest slot ('Dwarven Ruins 2') with no named place in these files; 'north of the College' comes from the journal."
+        },
+        {
+          "field": "rewards",
+          "why": "the journal says Tolfdir taught you a new Alteration spell; no reward item or spell is recorded."
+        },
+        {
+          "field": "needs",
+          "why": "Waterbreathing is listed at Alteration 25; whether you need that skill to learn it from the tome isn't shown here."
+        },
+        {
+          "field": "where",
+          "why": "Tolfdir's and Arniel's spots are where the records place them (both in the Hall of Attainment), not their daily schedules."
+        }
+      ],
+      "evidence": [
+        "College Of Winterhold - Quest Expansion.esp:000801 stages 1-50, objectives 1-40",
+        "aliases ArnielGane, Crystal, Chest, Dwarven Ruins 2, Tolfdir",
+        "giver info College Of Winterhold - Quest Expansion.esp:00082F",
+        "COW_CentralQuest stages 5/20"
+      ]
+    },
+    {
+      "edid": "COW_CentralQuest",
+      "name": "College Curriculum",
+      "plugin": "College Of Winterhold - Quest Expansion.esp",
+      "canDo": "talk",
+      "canDoWhy": "As a new College member, Tolfdir and the other scholars each give you a lesson in their school of magic.",
+      "needs": [
+        {
+          "what": "Join the College of Winterhold",
+          "kind": "faction"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Tolfdir",
+          "where": "Hall of Attainment, College of Winterhold",
+          "how": "As a new member of the College, you're expected to keep learning; talk to Tolfdir for your next lesson."
+        }
+      ],
+      "firstStep": "Talk to Tolfdir for more lessons",
+      "takesYou": [
+        {
+          "place": "Hall of Attainment, College of Winterhold",
+          "hold": "Winterhold",
+          "why": "Tolfdir and Arniel Gane"
+        },
+        {
+          "place": "Hall of Countenance, College of Winterhold",
+          "hold": "Winterhold",
+          "why": "Colette, Faralda, Drevis, Phinis and Sergius"
+        },
+        {
+          "place": "The Arcanaeum",
+          "hold": "Winterhold",
+          "why": "Urag gro-Shub"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Tolfdir for more lessons",
+            "Learn Waterbreathing and talk to Tolfdir",
+            "Complete lessons for all college scholars (1/7)",
+            "Complete lessons for all college scholars (2/7)",
+            "Complete lessons for all college scholars (3/7)",
+            "Complete lessons for all college scholars (4/7)",
+            "Complete lessons for all college scholars (5/7)",
+            "Complete lessons for all college scholars (6/7)",
+            "Complete the last lesson",
+            "Talk to Tolfdir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Waterbreathing spell tome",
+          "when": "from Tolfdir, at the first lesson"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [
+        "Rapture of the Deep",
+        "I Choose You, Familiar",
+        "A Test of Ice and Fire",
+        "Enchanted To Meet You",
+        "Back-Stabbing Rodents",
+        "Reading Comprehension 101",
+        "None Escape The Light"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Tolfdir",
+          "role": "runs the curriculum and the Alteration lesson, in the Hall of Attainment"
+        },
+        {
+          "name": "Colette Marence",
+          "role": "Restoration lesson, Hall of Countenance"
+        },
+        {
+          "name": "Faralda",
+          "role": "Destruction lesson, Hall of Countenance"
+        },
+        {
+          "name": "Urag gro-Shub",
+          "role": "reading lesson, the Arcanaeum"
+        },
+        {
+          "name": "Drevis Neloren",
+          "role": "Illusion lesson, Hall of Countenance"
+        },
+        {
+          "name": "Phinis Gestor",
+          "role": "Conjuration lesson, Hall of Countenance"
+        },
+        {
+          "name": "Sergius Turrianus",
+          "role": "Enchanting lesson, Hall of Countenance"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "the journal opens with you already a member and told to see Tolfdir, so something sets it going (likely joining the College or finishing First Lessons). What that is isn't in these files. The mod also edits First Lessons."
+        },
+        {
+          "field": "opens",
+          "why": "the closing talk with Tolfdir mentions the College's dig at Saarthal, which suggests it leads into Under Saarthal, but nothing shows the link outright. Whether declining a lesson still counts toward the seven isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "the Waterbreathing tome comes from the journal ('Tolfdir asked me to study a tome'); no reward is recorded for finishing."
+        },
+        {
+          "field": "where",
+          "why": "the scholars' spots are where the records place them, not their daily schedules."
+        },
+        {
+          "field": "needs",
+          "why": "Waterbreathing, the first lesson's spell, is listed at Alteration 25; whether you need that skill to learn it isn't shown here."
+        }
+      ],
+      "evidence": [
+        "College Of Winterhold - Quest Expansion.esp:00081D stages 0-50, objectives 10-30",
+        "aliases Tolfdir, Colette, Faralda, Urag, Drevis, Phinis, Sergius",
+        "giver info College Of Winterhold - Quest Expansion.esp:000820",
+        "INFO College Of Winterhold - Quest Expansion.esp:0009DE (Saarthal line)",
+        "MG01 editedBy College Of Winterhold - Quest Expansion.esp",
+        "questlines: College of Winterhold - Quest Expansion (8 quests)"
+      ]
+    },
+    {
+      "edid": "Cow_Conjuration",
+      "name": "I Choose You, Familiar",
+      "plugin": "College Of Winterhold - Quest Expansion.esp",
+      "canDo": "talk",
+      "canDoWhy": "Phinis Gestor's lesson in College Curriculum: learn Conjure Familiar, then test it against his atronach.",
+      "needs": [
+        {
+          "what": "Finish Tolfdir's Waterbreathing lesson (Rapture of the Deep) in College Curriculum; the journal then sends you to the other scholars",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Phinis Gestor",
+          "where": "Hall of Countenance, College of Winterhold",
+          "how": "Meet Phinis, the Conjuration scholar. He asks you to study Conjure Familiar and come back once you've mastered it."
+        }
+      ],
+      "firstStep": "Learn Conjure Familiar and talk to Phinis",
+      "takesYou": [],
+      "choices": [
+        {
+          "choice": "Take Phinis's lesson",
+          "leadsTo": "you follow him, summon a familiar, watch his atronach destroy it, and he explains what familiars are good for"
+        },
+        {
+          "choice": "Turn down the lesson",
+          "leadsTo": "the quest fails"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Learn Conjure Familiar and Talk to Phinis",
+            "Follow Phinis",
+            "Summon a Familiar",
+            "Talk to Phinis"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Phinis Gestor",
+          "role": "the Conjuration scholar, in the Hall of Countenance"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the journal implies Phinis has you study Conjure Familiar, but no tome or reward is recorded."
+        },
+        {
+          "field": "takesYou",
+          "why": "you follow Phinis somewhere for the test; the records don't say where."
+        },
+        {
+          "field": "needs",
+          "why": "the journal orders it (Tolfdir's lesson first, then the other scholars), but the conditions on Phinis's opening line aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Phinis's spot is where the records place him, not his daily schedule."
+        }
+      ],
+      "evidence": [
+        "College Of Winterhold - Quest Expansion.esp:00086F stages 5-25 (complete), 30 (fail)",
+        "objectives 5-20",
+        "giver info College Of Winterhold - Quest Expansion.esp:0009B8"
+      ]
+    },
+    {
+      "edid": "Cow_Destruction",
+      "name": "A Test of Ice and Fire",
+      "plugin": "College Of Winterhold - Quest Expansion.esp",
+      "canDo": "talk",
+      "canDoWhy": "Faralda's lesson in College Curriculum: learn Firebolt, then use it on an Ice Wraith she has waiting.",
+      "needs": [
+        {
+          "what": "Finish Tolfdir's Waterbreathing lesson (Rapture of the Deep) in College Curriculum; the journal then sends you to the other scholars",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Faralda",
+          "where": "Hall of Countenance, College of Winterhold",
+          "how": "Faralda teaches you about the elements of Destruction and gives you a Firebolt spell tome to study."
+        }
+      ],
+      "firstStep": "Learn the spell and talk to Faralda",
+      "takesYou": [
+        {
+          "place": "Outdoors, where Faralda's Ice Wraith waits",
+          "hold": "",
+          "why": "pass her test using Firebolt"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Take Faralda's lesson",
+          "leadsTo": "you kill the Ice Wraith with Firebolt and she explains picking the right element"
+        },
+        {
+          "choice": "Turn down the lesson",
+          "leadsTo": "the quest fails"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Learn the spell and talk to Faralda",
+            "Pass Faralda's test using Firebolt",
+            "Return to Faralda"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Firebolt spell tome",
+          "when": "at the start, from Faralda"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Faralda",
+          "role": "the Destruction scholar, in the Hall of Countenance"
+        },
+        {
+          "name": "Ice Wraith",
+          "role": "the test target, placed outdoors for this quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "the Ice Wraith is placed in the open world by this mod, and the records don't say near what."
+        },
+        {
+          "field": "rewards",
+          "why": "the tome comes from the journal text; no item is recorded."
+        },
+        {
+          "field": "needs",
+          "why": "the journal orders it (Tolfdir's lesson first, then the other scholars), but the conditions on Faralda's opening line aren't in these files. Firebolt is listed at Destruction 25; whether you need that to learn it isn't shown."
+        },
+        {
+          "field": "where",
+          "why": "Faralda's spot is where the records place her, not her daily schedule."
+        }
+      ],
+      "evidence": [
+        "College Of Winterhold - Quest Expansion.esp:000873 stages 5-20 (complete), 30 (fail)",
+        "objectives 5-15",
+        "aliases Faralda, icewraith (ref College Of Winterhold - Quest Expansion.esp:00089A, Skyrim worldspace)",
+        "giver info College Of Winterhold - Quest Expansion.esp:0008A1",
+        "spells_raw Firebolt Skyrim.esm:012FD0"
+      ]
+    },
+    {
+      "edid": "Cow_enchantment",
+      "name": "Enchanted To Meet You",
+      "plugin": "College Of Winterhold - Quest Expansion.esp",
+      "canDo": "talk",
+      "canDoWhy": "Sergius Turrianus's lesson in College Curriculum: learn an enchantment, enchant a client's sword and deliver it to Stonehills.",
+      "needs": [
+        {
+          "what": "Finish Tolfdir's Waterbreathing lesson (Rapture of the Deep) in College Curriculum; the journal then sends you to the other scholars",
+          "kind": "quest"
+        },
+        {
+          "what": "A filled soul gem",
+          "kind": "item"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Sergius Turrianus",
+          "where": "Hall of Countenance, College of Winterhold",
+          "how": "Sergius is busy, but offers to teach you enchanting. He gives you a note with the client's order and an old dagger to break down."
+        }
+      ],
+      "firstStep": "Find an Arcane Enchanter",
+      "takesYou": [
+        {
+          "place": "An Arcane Enchanter (the College dormitories have one)",
+          "hold": "Winterhold",
+          "why": "disenchant the old dagger and enchant the client's sword"
+        },
+        {
+          "place": "Stonehills, the mining village a short walk from Morthal",
+          "hold": "Hjaalmarch",
+          "why": "deliver the sword to Gretolde, and meet her daughter Adara"
+        },
+        {
+          "place": "College of Winterhold",
+          "hold": "Winterhold",
+          "why": "escort Adara back to the College"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Help Sergius",
+          "leadsTo": "enchant and deliver the sword, then escort Adara to the College to see Faralda"
+        },
+        {
+          "choice": "Refuse Sergius",
+          "leadsTo": "the quest fails"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find an Arcane Enchanter",
+            "Disenchant the old dagger",
+            "Find a filled soul gem",
+            "Enchant the client's sword",
+            "Talk to Sergius",
+            "Read the note",
+            "Deliver the enchanted sword",
+            "Find the actual client",
+            "Talk to Adara",
+            "Talk to Adara's mother",
+            "Escort Adara to the College",
+            "Talk to Adara",
+            "Return to Sergius"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Old Enchanted Dagger (to disenchant; you learn its enchantment)",
+          "when": "at the start, from Sergius"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Sergius Turrianus",
+          "role": "the Enchanting scholar, in the Hall of Countenance"
+        },
+        {
+          "name": "Gretolde",
+          "role": "the 'client' in Stonehills; Adara's mother"
+        },
+        {
+          "name": "Adara",
+          "role": "Gretolde's daughter, who sent the order hoping to meet a College mage; you escort her to the College"
+        },
+        {
+          "name": "Faralda",
+          "role": "won't let Adara join until she sees what she can do"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the order note says Gretolde 'should pay you 400 Gold', but it turns out she didn't send the order; no payment or other reward is recorded. Gretolde's Iron Sword is the item you deliver, not a keepsake."
+        },
+        {
+          "field": "people",
+          "why": "the note spells her name Gretolde, but one journal entry says Gretilde. Gretolde and Adara are placed in the open world, and the records don't pin down a house in Stonehills."
+        },
+        {
+          "field": "needs",
+          "why": "you need a filled soul gem for the enchanting step; the records don't say whether Sergius supplies one."
+        },
+        {
+          "field": "needs",
+          "why": "the journal orders it (Tolfdir's lesson first, then the other scholars), but the conditions on Sergius's opening line aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Sergius's spot is where the records place him, not his daily schedule."
+        }
+      ],
+      "evidence": [
+        "College Of Winterhold - Quest Expansion.esp:000871 stages 10-70 (complete), 80 (fail)",
+        "objectives 10-60",
+        "aliases IronSword, Sergius, IronDagger, Adara, Mum, Faralda",
+        "giver info College Of Winterhold - Quest Expansion.esp:000916",
+        "BOOK College Of Winterhold - Quest Expansion.esp:000956 'Client Details'",
+        "places StonehillsLocation (Hjaalmarch, near Morthal)",
+        "items 00090A Old Enchanted Dagger, 00090E Gretolde's Iron Sword, 0009F5 Adara's Boots",
+        "people 000910 Adara, 00090F Gretolde"
+      ]
+    }
+  ]
+}

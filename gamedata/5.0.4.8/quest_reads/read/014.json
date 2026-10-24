@@ -1,0 +1,935 @@
+[
+  {
+    "edid": "TG08A",
+    "name": "Trinity Restored",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "It follows straight on from The Pursuit, once you've brought Mercer's plans to Brynjolf.",
+    "needs": [
+      {
+        "what": "Finish The Pursuit (bring the plans from Riftweald Manor to Brynjolf)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Karliah and Brynjolf",
+        "where": "with Brynjolf, where you handed him the plans at the end of The Pursuit (the Ragged Flagon, Riften)",
+        "how": "After Brynjolf reads Mercer's plans and decides the Eyes of the Falmer are in Irkngthand, Karliah asks to speak to you both before you go after Mercer."
+      }
+    ],
+    "firstStep": "Listen to Karliah",
+    "takesYou": [
+      {
+        "place": "the old standing stone outside Riften's southwest gate",
+        "hold": "The Rift",
+        "why": "meet Karliah"
+      },
+      {
+        "place": "Nightingale Hall",
+        "hold": "The Rift",
+        "why": "follow Karliah there, put on the Nightingale armor and take the Oath to Nocturnal"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Listen to Karliah",
+          "Meet Karliah at the standing stone",
+          "Follow Karliah",
+          "Activate the Armor Stone",
+          "Equip the Nightingale Armor",
+          "Follow Karliah",
+          "Stand on vacant floor glyph",
+          "Speak to Karliah",
+          "Speak to Brynjolf"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Nightingale armor set: Nightingale Hood, Nightingale Armor, Nightingale Gloves, Nightingale Boots",
+        "when": "from the Armor Stone in Nightingale Hall, partway through"
+      },
+      {
+        "what": "You become a Nightingale, sworn to Nocturnal and the Twilight Sepulcher",
+        "when": "after taking the Oath"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [
+      "Blindsighted"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Karliah",
+        "role": "leads you to the standing stone and Nightingale Hall and gives the Oath"
+      },
+      {
+        "name": "Brynjolf",
+        "role": "comes with you and joins the Nightingales too"
+      },
+      {
+        "name": "Nocturnal",
+        "role": "appears during the Oath"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The quest has no start script in these files; that it begins on its own when The Pursuit ends is read from its first journal line and Brynjolf's Irkngthand line being filed under this quest. Karliah's only placement in the records is Snow Veil Sanctum, not where she stands at this point."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest holds four Nightingale armor pieces, but the records carry several versions of each (two leveled 'player' versions and a stronger one); which version you get isn't shown here."
+      },
+      {
+        "field": "takesYou",
+        "why": "Nightingale Hall has no hold in the places file; it is listed as next to Riften, so The Rift is assumed."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:057F99 (USSEP last)",
+      "giver INFO Skyrim.esm:0587FE Brynjolf, Karliah stage<20",
+      "INFO Skyrim.esm:091942 / 0D7D66 Brynjolf Irkngthand plans line (TG08A)",
+      "TG07 Skyrim.esm:021553 stage 200 log",
+      "aliases NGArmorHelmetAlias/SuitAlias/GlovesAlias/BootsAlias, TG08AArmorStoneAlias, NocturnalAlias",
+      "items Skyrim.esm:05DB86/0FCC0E/0FCC0F, 05DB85/0FCC0C/0FCC0D, 05DB87/0FCC10/0FCC11, 05DB88/0FCC12/0FCC13",
+      "place Nightingale Hall Skyrim.esm:039AA9 (hold null, Riften 0.2 km)"
+    ]
+  },
+  {
+    "edid": "TG08B",
+    "name": "Blindsighted",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp; Dawnguard.esm also edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "It begins when Trinity Restored ends and Karliah sends you after Mercer at Irkngthand.",
+    "needs": [
+      {
+        "what": "Finish Trinity Restored",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Karliah",
+        "where": "Nightingale Hall, near Riften, at the end of Trinity Restored",
+        "how": "Once you've taken the Oath and spoken to Karliah and Brynjolf, you're sent on to Irkngthand, where they'll wait for you inside."
+      }
+    ],
+    "firstStep": "Travel to Irkngthand",
+    "takesYou": [
+      {
+        "place": "Irkngthand",
+        "hold": "The Pale",
+        "why": "meet Karliah and Brynjolf inside, then track down Mercer Frey and the Eyes of the Falmer"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Travel to Irkngthand",
+          "Speak to Karliah",
+          "Locate Mercer Frey",
+          "Slay Mercer Frey",
+          "Retrieve the Skeleton Key",
+          "Escape from Irkngthand",
+          "Speak to Karliah"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "The Skeleton Key of Nocturnal (taken from Mercer's body; you carry it until you return it in Darkness Returns)",
+        "when": "after killing Mercer"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [
+      "Darkness Returns"
+    ],
+    "closes": [
+      "Mercer Frey dies"
+    ],
+    "people": [
+      {
+        "name": "Karliah",
+        "role": "waits for you inside Irkngthand and fights beside you"
+      },
+      {
+        "name": "Brynjolf",
+        "role": "waits for you inside Irkngthand and fights beside you"
+      },
+      {
+        "name": "Mercer Frey",
+        "role": "the target; killed in the depths of Irkngthand"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "The quest's script also holds a Nightingale Bow, but it is labelled as an NPC's bow, so these files don't show it going to you. What else Mercer carries isn't in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "Bronze Water Cave (The Pale) is also tied to this quest in the places file, likely where you come out when escaping, but the records here don't say so plainly."
+      },
+      {
+        "field": "starts",
+        "why": "No start script is in these files; the hand-off from Trinity Restored is read from the journal lines."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:021554 (Dawnguard.esm, USSEP last)",
+      "giver INFO Skyrim.esm:039E35 Karliah stage<21",
+      "script QF_TG08_00021554 pNightingaleBowNPC Skyrim.esm:0DEED8, pSkeletonKeyPerk Skyrim.esm:10F13F",
+      "TG08BQuestScript TGNightingaleShadowMercer Skyrim.esm:0F1993",
+      "aliases SkeletonKeyAlias, TG08BExitMarkerAlias, TG08BIrkDoorAlias",
+      "places Irkngthand Skyrim.esm:01919D, Bronze Water Cave Skyrim.esm:046BAC",
+      "INFO Skyrim.esm:0DF8B5, 0DF8B8"
+    ]
+  },
+  {
+    "edid": "TG09",
+    "name": "Darkness Returns",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Faiths of Skyrim.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "It begins after Blindsighted, once you've escaped Irkngthand with the Skeleton Key and spoken to Karliah.",
+    "needs": [
+      {
+        "what": "Finish Blindsighted",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Karliah",
+        "where": "outside Irkngthand, after the escape at the end of Blindsighted",
+        "how": "Karliah tells you the Skeleton Key must go back to the Twilight Sepulcher, a journey you make alone."
+      }
+    ],
+    "firstStep": "Enter the Twilight Sepulcher",
+    "takesYou": [
+      {
+        "place": "Twilight Sepulcher",
+        "hold": "Falkreath",
+        "why": "return the Skeleton Key to the Ebonmere; it is a short walk from Falkreath"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Choose your Nightingale role at the end",
+        "leadsTo": "You get one Nightingale power: Nightingale Strife, Nightingale Subterfuge, or the shadow power (Shadowcloak of Nocturnal in LoreRim)"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Enter the Twilight Sepulcher",
+          "Speak to the Nightingale Sentinel",
+          "(Optional) Retrieve Nystrom's Journal",
+          "Follow the Pilgrim's Path",
+          "Return the Skeleton Key to the Ebonmere",
+          "Listen to Nocturnal",
+          "Speak to Karliah",
+          "Choose Nightingale Role"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "You become a Nightingale Agent",
+        "when": "at the end"
+      },
+      {
+        "what": "One Nightingale power, by your choice: Nightingale Strife, Nightingale Subterfuge, or Shadowcloak of Nocturnal",
+        "when": "at the end, when you choose your role"
+      },
+      {
+        "what": "Nightingale Shadow Perk",
+        "when": "at the end"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [
+      "The Skeleton Key is returned to the Ebonmere and leaves your inventory"
+    ],
+    "people": [
+      {
+        "name": "Nightingale Sentinel (the spirit of Gallus)",
+        "role": "met inside the Twilight Sepulcher; warns you the other guardian spirits have turned hostile"
+      },
+      {
+        "name": "Nystrom",
+        "role": "a dead pilgrim inside the Sepulcher; his journal is optional"
+      },
+      {
+        "name": "Nocturnal",
+        "role": "appears at the Ebonmere in the inner sanctum"
+      },
+      {
+        "name": "Karliah",
+        "role": "speak to her after Nocturnal to choose your role"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "The three powers are named only by their records (Nightingale Strife, Nightingale Subterfuge, and the shadow power that NightingalePowersRedone.esp renames Shadowcloak of Nocturnal); these files don't tie each one to the choice directly, and the quest script lists only the Nightingale Shadow Perk and the Skeleton Key perk."
+      },
+      {
+        "field": "plugin",
+        "why": "Wintersun - Faiths of Skyrim.esp edits this quest last, but these files don't show what it changes."
+      },
+      {
+        "field": "starts",
+        "why": "Where Karliah stands when the quest begins isn't in these files; her only placement is Snow Veil Sanctum. Whether you need to be at the end of Blindsighted for it to start is read from the journal."
+      },
+      {
+        "field": "opens",
+        "why": "Under New Management may need this quest done, but these files don't show its unlock conditions."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:021555 (Wintersun last)",
+      "giver INFO Skyrim.esm:0E107B Karliah stage<20; Nightingale Sentinel Skyrim.esm:01BB5D stage<21",
+      "script QF_TG09_00021555 pTGSkeletonKeyPerk Skyrim.esm:10F13F, TGNightingaleShadowPerk Skyrim.esm:105874",
+      "powers Skyrim.esm:0F1987 TGNightingaleStrife, 0F1986 TGNightingaleSubterfuge, 017122 TGNightingaleShadowPower (NightingalePowersRedone.esp)",
+      "aliases TG09EbonmereLockAlias, TG09NystromsJournalAlias, TG09NystromsCorpseAlias",
+      "place Twilight Sepulcher Skyrim.esm:01914B (Falkreath, 0.6 km)"
+    ]
+  },
+  {
+    "edid": "TGBan",
+    "name": "Reparations",
+    "plugin": "Skyrim.esm",
+    "canDo": "by itself",
+    "canDoWhy": "It only starts if you break one of the Thieves Guild's rules and get banned.",
+    "needs": [
+      {
+        "what": "Be a member of the Thieves Guild and break one of its rules",
+        "kind": "other"
+      }
+    ],
+    "starts": [
+      {
+        "who": "the guild's leaders (Mercer Frey, Brynjolf or Delvin Mallory)",
+        "where": "the Ragged Flagon and its Cistern, under Riften",
+        "how": "After you break a guild rule, they tell you you're banned; once things calm down, you ask Vex how to make it right."
+      }
+    ],
+    "firstStep": "Speak to Vex in the Ragged Flagon",
+    "takesYou": [
+      {
+        "place": "the Ragged Flagon, under Riften",
+        "hold": "The Rift",
+        "why": "talk to Vex and pay her"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Vex",
+          "Bring gold to Vex (5,000)"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "You're let back into the Thieves Guild",
+        "when": "when you pay"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [
+      "The gold you pay"
+    ],
+    "people": [
+      {
+        "name": "Vex",
+        "role": "tells you the price and takes your gold; placed in the Ragged Flagon"
+      },
+      {
+        "name": "Mercer Frey, Brynjolf, Delvin Mallory",
+        "role": "tell you you've been banned"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The records don't say which rules get you banned; the journal only says 'one of their cardinal rules'."
+      },
+      {
+        "field": "steps",
+        "why": "5,000 gold is the starting value of the price; the quest script could set a different amount."
+      },
+      {
+        "field": "where",
+        "why": "Vex is placed in the Ragged Flagon; her daily schedule isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0B03A2 (no later edits)",
+      "giver INFO Skyrim.esm:0B0396 Mercer stage<11; Brynjolf, Delvin stage<11; Vex stage<30",
+      "global TGBanGoldTotal = 5000",
+      "TGBanQuestScript.pTGGold (Septim)"
+    ]
+  },
+  {
+    "edid": "TGCrown",
+    "name": "No Stone Unturned",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "It starts when you pick up one of the Unusual Gems lying around Skyrim.",
+    "needs": [
+      {
+        "what": "Pick up an Unusual Gem (a Stone of Barenziah)",
+        "kind": "item"
+      },
+      {
+        "what": "Be a full member of the Thieves Guild before Vex will look at it",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Vex",
+        "where": "the Ragged Flagon, under Riften",
+        "how": "Picking up an Unusual Gem starts it. If you ask Maul in Riften, he points you to Vex. Once you're a full guild member, show her the gem."
+      }
+    ],
+    "firstStep": "Bring the Unusual Gem to Vex in the Thieves Guild",
+    "takesYou": [
+      {
+        "place": "the Ragged Flagon, under Riften",
+        "hold": "The Rift",
+        "why": "show Vex the gem and hand in the crown"
+      },
+      {
+        "place": "wherever the 24 Stones of Barenziah lie; the places file lists Ansilvund, Hall of Victory and Stony Creek Cave (Eastmarch); Pinewatch and Sunderstone Gorge (Falkreath); Mistveil Keep (The Rift); Dragonsreach, Fellglow Keep, the Hall of the Dead, Jorrvaskr and Rannveig's Fast (Whiterun); Hob's Fall Cave, the College of Winterhold and Yngvild (Winterhold)",
+        "hold": "several",
+        "why": "collect all 24 stones"
+      },
+      {
+        "place": "Tolvald's Cave",
+        "hold": "The Rift",
+        "why": "recover the Crown of Barenziah; near Shor's Stone"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Become a full member of the Thieves Guild",
+          "Bring the Unusual Gem to Vex in the Thieves Guild",
+          "Recover the Stones of Barenziah (0/24)",
+          "Speak to Vex",
+          "Recover the Crown of Barenziah",
+          "Return to Vex"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Prowler's Profit",
+        "when": "when you return the crown to Vex"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Vex",
+        "role": "appraises the gem and restores the crown; placed in the Ragged Flagon"
+      },
+      {
+        "name": "Maul",
+        "role": "in Riften; can point you to Vex if you ask him about the gem"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The places file leaves out cities, towns and houses, so the list of stone locations isn't complete."
+      },
+      {
+        "field": "needs",
+        "why": "The records don't say which guild quest makes you a 'full member'."
+      },
+      {
+        "field": "rewards",
+        "why": "Prowler's Profit is named in the quest script, but it isn't in the spell or power files here, so what it does in LoreRim isn't shown."
+      },
+      {
+        "field": "starts",
+        "why": "That Maul is the one who points you to Vex is read from the gem handler's journal ('With Maul in Riften no longer speaking to me')."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:09DD77 (USSEP last)",
+      "QUST TGCrownMisc Skyrim.esm:06D585 (Maul Skyrim.esm:0371D6)",
+      "giver INFO Skyrim.esm:06D43C Vex stage<31",
+      "INFO Skyrim.esm:09DFBA Vex Tolvald's Cave line",
+      "globals TGCrownGemsTotal = 24",
+      "script QF_TGCrown_0009DD77 pProwlersProfit Skyrim.esm:0F20BE",
+      "places listing Skyrim.esm:09DD77"
+    ]
+  },
+  {
+    "edid": "TGLeadership",
+    "name": "Under New Management",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Brynjolf offers you the post of Guild Master once the guild is ready for it.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Brynjolf",
+        "where": "the Ragged Flagon, under Riften",
+        "how": "Speak to Brynjolf about becoming the Guild Master."
+      }
+    ],
+    "firstStep": "Speak to Brynjolf about becoming the Guild Master",
+    "takesYou": [
+      {
+        "place": "the Cistern of the Ragged Flagon (Thieves Guild headquarters), under Riften",
+        "hold": "The Rift",
+        "why": "attend your installation ceremony"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Brynjolf about becoming the Guild Master",
+          "Proceed to center of Cistern",
+          "Become Guild Master for the Thieves Guild",
+          "Speak to Brynjolf about being Guild Master",
+          "Retrieve your Guild Leader Armor from Tonilia"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Guild Master title of the Thieves Guild",
+        "when": "after the ceremony"
+      },
+      {
+        "what": "Guild Master armor: Guild Master Hood, Guild Master Cuirass, Guild Master Gloves, Guild Master Boots",
+        "when": "from Tonilia, at the end"
+      },
+      {
+        "what": "Amulet of Articulation",
+        "when": "at the end"
+      },
+      {
+        "what": "Key to the Guild Master's Tribute Chest",
+        "when": "at the end"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Brynjolf",
+        "role": "offers you the post and leads the ceremony"
+      },
+      {
+        "name": "Tonilia",
+        "role": "hands over the Guild Master armor; placed in the Ragged Flagon"
+      },
+      {
+        "name": "Delvin Mallory, Vex, Karliah, Maven Black-Briar, the guild members",
+        "role": "gather for the ceremony"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "These files don't show what makes Brynjolf offer you the post; it is likely tied to finishing the main guild story and the guild's city jobs, but the conditions aren't here."
+      },
+      {
+        "field": "where",
+        "why": "Brynjolf is only placed in Riften with no room given; his daily schedule isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The amulet and the Tribute Chest key come from the journal's closing line; the records hold several versions of the Amulet of Articulation and it isn't shown which one you get. The key isn't in the item files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D7D69 (USSEP last)",
+      "giver INFO Skyrim.esm:0E3F4B Brynjolf stage<11; Delvin, Vex, Niruin stage<20",
+      "script QF_TGLeadership_000D7D69 pArmorLeadFeet/Body/Hands/Head Skyrim.esm:0E35D6-0E35D9",
+      "items Amulet of Articulation Skyrim.esm:09DFF7, 0F6904, 0F690D-0F6911",
+      "aliases TGLeadershipMaven, TGLeadershipKarliah, TGLeadershipTonilia"
+    ]
+  },
+  {
+    "edid": "TGRBE",
+    "name": "The Burglary Job",
+    "plugin": "Skyrim.esm",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable guild job you get by asking Vex for work.",
+    "needs": [
+      {
+        "what": "Be a member of the Thieves Guild",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Vex",
+        "where": "the Ragged Flagon, under Riften",
+        "how": "Ask Vex for work; the job picks a valuable item to steal from a wealthy home."
+      }
+    ],
+    "firstStep": "Steal the named item from the wealthy home Vex names",
+    "takesYou": [
+      {
+        "place": "a town or city chosen when the job is given",
+        "hold": "varies",
+        "why": "a valuable item to steal from a wealthy home"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill someone who lives at the job's location",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Get arrested and go to jail during the job",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Tell the job-giver you quit",
+        "leadsTo": "The job fails and you get no pay"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve the named item from the wealthy home in the town she names",
+          "Return the item to Vex"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Your share of the pay (gold)",
+        "when": "when you report back to Vex"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Vex",
+        "role": "gives the job and pays you; placed in the Ragged Flagon"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "These files don't show at what point in the guild story the job-giver starts offering work."
+      },
+      {
+        "field": "takesYou",
+        "why": "The town, building and target are filled in when the job starts; which ones it can pick isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The pay comes from a gold reward list whose amounts aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:02893B (no later edits)",
+      "start node TRGBEQuestNode (script event)",
+      "script QF_TGRBE_0002893B pReward TGRewardGoldRadiant Skyrim.esm:10E0F6",
+      "fail globals TGRFailVex, TGRFailArrestVex, TGRQuitVex"
+    ]
+  },
+  {
+    "edid": "TGRDU",
+    "name": "The Shill Job",
+    "plugin": "Skyrim.esm",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable guild job you get by asking Vex for work.",
+    "needs": [
+      {
+        "what": "Be a member of the Thieves Guild",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Vex",
+        "where": "the Ragged Flagon, under Riften",
+        "how": "Ask Vex for work; the job picks a wealthy home where you plant evidence."
+      }
+    ],
+    "firstStep": "Plant the evidence in the wealthy home Vex names",
+    "takesYou": [
+      {
+        "place": "a town or city chosen when the job is given",
+        "hold": "varies",
+        "why": "a wealthy home where you plant evidence"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill someone who lives at the job's location",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Get arrested and go to jail during the job",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Tell the job-giver you quit",
+        "leadsTo": "The job fails and you get no pay"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Plant the evidence in the wealthy home in the town she names",
+          "Return to Vex"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Your share of the pay (gold)",
+        "when": "when you report back to Vex"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Vex",
+        "role": "gives the job and pays you; placed in the Ragged Flagon"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "These files don't show at what point in the guild story the job-giver starts offering work."
+      },
+      {
+        "field": "takesYou",
+        "why": "The town, building and target are filled in when the job starts; which ones it can pick isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The pay comes from a gold reward list whose amounts aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:015D24 (no later edits)",
+      "start node TGRDUQuestNode (script event)",
+      "script QF_TGRDU_00015D24 pReward TGRewardGoldRadiant Skyrim.esm:10E0F6",
+      "alias WeathyHomeChest",
+      "fail globals TGRFailVex, TGRFailArrestVex, TGRQuitVex"
+    ]
+  },
+  {
+    "edid": "TGRFO",
+    "name": "The Numbers Job",
+    "plugin": "Skyrim.esm",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable guild job you get by asking Delvin Mallory for work.",
+    "needs": [
+      {
+        "what": "Be a member of the Thieves Guild",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Delvin Mallory",
+        "where": "the Ragged Flagon, under Riften",
+        "how": "Ask Delvin Mallory for work; the job picks a business whose ledger you forge."
+      }
+    ],
+    "firstStep": "Make changes in the ledger at the business Delvin names",
+    "takesYou": [
+      {
+        "place": "a town or city chosen when the job is given",
+        "hold": "varies",
+        "why": "a business whose ledger you forge"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill someone who lives at the job's location",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Get arrested and go to jail during the job",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Tell the job-giver you quit",
+        "leadsTo": "The job fails and you get no pay"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Make changes in the ledger at the business in the town he names",
+          "Return to Delvin"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Your share of the pay (gold)",
+        "when": "when you report back to Delvin Mallory"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Delvin Mallory",
+        "role": "gives the job and pays you; placed in the Ragged Flagon"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "These files don't show at what point in the guild story the job-giver starts offering work."
+      },
+      {
+        "field": "takesYou",
+        "why": "The town, building and target are filled in when the job starts; which ones it can pick isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The pay comes from a gold reward list whose amounts aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:06098E (no later edits)",
+      "start node TGRFOQuestNode (script event)",
+      "script QF_TGRFO_0006098E pReward TGRewardGoldRadiant Skyrim.esm:10E0F6",
+      "fail globals TGRFailDelvin, TGRFailArrestDelvin, TGRQuitDelvin"
+    ]
+  },
+  {
+    "edid": "TGRGF",
+    "name": "The Fishing Job",
+    "plugin": "Skyrim.esm (last edited by CFTO.esp; USSEP also edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable guild job you get by asking Delvin Mallory for work.",
+    "needs": [
+      {
+        "what": "Be a member of the Thieves Guild",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Delvin Mallory",
+        "where": "the Ragged Flagon, under Riften",
+        "how": "Ask Delvin Mallory for work; the job picks a person (the mark) to pickpocket an item from."
+      }
+    ],
+    "firstStep": "Pickpocket the named item from the mark Delvin names",
+    "takesYou": [
+      {
+        "place": "a town or city chosen when the job is given",
+        "hold": "varies",
+        "why": "a person (the mark) to pickpocket an item from"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill the mark",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Get arrested and go to jail during the job",
+        "leadsTo": "The job fails and you lose your share of the pay"
+      },
+      {
+        "choice": "Tell the job-giver you quit",
+        "leadsTo": "The job fails and you get no pay"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Pickpocket the named item from the mark in the town he names",
+          "Return the item to Delvin"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Your share of the pay (gold)",
+        "when": "when you report back to Delvin Mallory"
+      }
+    ],
+    "type": "Thieves Guild",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Delvin Mallory",
+        "role": "gives the job and pays you; placed in the Ragged Flagon"
+      },
+      {
+        "name": "the mark",
+        "role": "the person you pickpocket; chosen when the job starts"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "These files don't show at what point in the guild story the job-giver starts offering work."
+      },
+      {
+        "field": "takesYou",
+        "why": "The town, building and target are filled in when the job starts; which ones it can pick isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The pay comes from a gold reward list whose amounts aren't in these files."
+      },
+      {
+        "field": "plugin",
+        "why": "CFTO.esp edits this quest last, but these files don't show what it changes."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:028922 (USSEP, CFTO.esp last)",
+      "start node TGRGFQuestNode (script event)",
+      "script QF_TGRGF_00028922 pReward TGRewardGoldRadiant Skyrim.esm:10E0F6",
+      "fail globals TGRFailDelvin, TGRFailArrestDelvin, TGRQuitDelvin"
+    ]
+  }
+]
