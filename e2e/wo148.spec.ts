@@ -22,10 +22,11 @@ test("the door: holds, places by level, what a quest pays, a door that isn't a n
   expect((await go("suggest_places", { where: "Solitude" })).isError).toBe(true);
 
   const heart = (await go("get_quest", { id: "T01" })).json();
-  expect(heart.quest.pays).toMatch(/no quest XP$/);
+  expect(heart.quest.pays ?? heart.quest.gets.xp).toMatch(/no quest XP$|^no XP$/);
   const rat = (await go("get_quest", { name: "A Rat Problem", level: 10 })).json();
-  expect(rat.quest.start.needs ?? []).toEqual([]);
-  expect(rat.quest.start.onTheWay[0]).toMatch(/^The door from Whiterun into Igna's Basement needs the Key/);
+  // A door or a key is never a need (WO-148 item 5); a read says none (WO-154).
+  expect(JSON.stringify(rat.quest.needs ?? rat.quest.start?.needs ?? [])).not.toMatch(/door|Key/i);
+  expect(JSON.stringify(rat.quest)).not.toMatch(/Key to Igna/i);
 
   const rules = (await go("get_rules", {})).json();
   expect(rules.tomeTrials).toMatchObject({ exams: 36, after: "Tending the Flames" });

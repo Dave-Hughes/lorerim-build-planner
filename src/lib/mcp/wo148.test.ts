@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { rules } from "./rules-view";
 import { reviewGates, type GateAct } from "@/lib/playthroughs/gate-review";
 import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { holdNamed } from "@/lib/places/holds";
@@ -103,9 +104,9 @@ describe("3. suggest_places takes a place and levels", () => {
 
 describe("4. get_quest says what a quest pays", () => {
   it("a Side Quest pays 100, and The Heart of Dibella and The Blessings of Nature pay none, said plainly", () => {
-    expect(getQuest({ name: "Running Wild" }).quest).toMatchObject({ type: "Side Quest", xp: 100, pays: "Side Quest: pays 100 quest XP" });
+    expect(rules("Running Wild").quest).toMatchObject({ type: "Side Quest", xp: 100, pays: "Side Quest: pays 100 quest XP" });
     for (const name of ["The Heart of Dibella", "The Blessings of Nature"]) {
-      const q = getQuest({ id: name === "The Heart of Dibella" ? "T01" : "T03" }).quest;
+      const q = rules(name === "The Heart of Dibella" ? "T01" : "T03").quest;
       expect(q.xp, name).toBe(0);
       expect(q.pays, name).toMatch(/no quest XP$/);
     }
@@ -118,13 +119,13 @@ describe("5. a key or a door isn't a start", () => {
   it("A Rat Problem and Laid to Rest: a door is never a need, and is the first step's detail only when it is on the way", () => {
     for (const name of ["A Rat Problem", "Laid to Rest"]) {
       const a = getQuest({ name }, undefined, playerState({ level: 15 }));
-      expect(JSON.stringify(a.quest.start.needs ?? []), name).not.toMatch(/door|Key/i);
+      expect(JSON.stringify(rules(name).quest.start.needs ?? []), name).not.toMatch(/door|Key/i);
       expect(a.openForYou?.says, name).not.toMatch(/door|Key/i);
     }
     // Igna's basement key is on the way: the first step goes into that cell.
-    expect(getQuest({ name: "A Rat Problem" }).quest.start.onTheWay).toEqual(["The door from Whiterun into Igna's Basement needs the Key to Igna's Basement."]);
+    expect(rules("A Rat Problem").quest.start.onTheWay).toEqual(["The door from Whiterun into Igna's Basement needs the Key to Igna's Basement."]);
     // Sorli's House is in Stonehills and no step goes there (WO-148 Part 2): dropped.
-    expect(getQuest({ name: "Laid to Rest" }).quest.start.onTheWay).toBeUndefined();
+    expect(rules("Laid to Rest").quest.start.onTheWay).toBeUndefined();
     expect(getQuest({ name: "Laid to Rest" }, undefined, playerState({ level: 15 })).openForYou?.state).toBe("open");
   });
   it("no quest anywhere has one in its needs or ways, in words or in the record form", () => {
@@ -195,12 +196,12 @@ describe("Part 2: three things on the live door", () => {
     }
   });
   it("an unnamed trigger is you arriving there: Laid to Rest reads 'when you arrive in Morthal', and no way says 'something placed'", () => {
-    const ltr = getQuest({ name: "Laid to Rest" }).quest.start.ways?.[0] as { way: string };
+    const ltr = rules("Laid to Rest").quest.start.ways?.[0] as { way: string };
     expect(ltr.way).toBe("It starts when you arrive in Morthal");
     const left = questsData().lines.flatMap((l) => l.quests.flatMap((q) => (q.start?.ways ?? []).filter((w) => /something placed/.test(w.how)).map(() => q.edid)));
     expect(left).toEqual([]);
     // A named one keeps its name; the UESP wording for The Cause stands.
-    expect(getQuest({ name: "The Cause" }).quest.start.ways?.[0]).toMatchObject({ way: expect.stringContaining("A courier brings you Stranger's Plea") });
+    expect(rules("The Cause").quest.start.ways?.[0]).toMatchObject({ way: expect.stringContaining("A courier brings you Stranger's Plea") });
   });
   it("and a trigger way is a way in, not a need: the quest is open for you", () => {
     expect(getQuest({ name: "Laid to Rest" }, undefined, playerState({ level: 15 })).openForYou?.says).toBe("open for you");

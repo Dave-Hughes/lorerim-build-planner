@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { rules } from "./rules-view";
 import { getQuest, getQuestStart, playerState, searchFacts } from "./facts";
 import { suggestQuests } from "./playthroughs";
 import { questsData } from "@/lib/quests/data";
@@ -27,7 +28,7 @@ describe("jobs from a board (WO-136 ruling 3)", () => {
 
 describe("a key row counts as checked (WO-136 ruling 2)", () => {
   it("the quests only the key settles are checked from the wiki, and say so", () => {
-    const book = getQuest({ name: "Black Book: Untold Legends" }).quest.start;
+    const book = rules("Black Book: Untold Legends").quest.start;
     expect(book.checked).toBe("from UESP, confirmed in the planner's answer key (https://en.uesp.net/wiki/Skyrim:Black_Book:_Untold_Legends_(quest))");
     expect(book.ways).toEqual([{ way: "No one gives it" }]);
     for (const edid of ["DLC2BlackBook03Quest", "DLC2KagrumezQST"]) expect(all().find((q) => q.edid === edid)?.start?.checked).toBe("uesp");

@@ -128,10 +128,11 @@ const FIELD_WORDS: Record<string, string> = { canDo: "can I do it", needs: "what
 
 function viaReads(q: Quest, r: QuestRead): QuestPage {
   const players = playerWays(q);
-  const said = new Set(players.map((w) => w.who).filter(Boolean));
+  // A player's way replaces the read's start for the same person, or for no one in particular when it names no one.
+  const said = new Set(players.map((w) => w.who ?? ""));
   const starts = [
     ...players.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) }, ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}), ...(w.unplaced ? { unplaced: w.unplaced } : {}) })),
-    ...(r.starts ?? []).filter((s) => !(s.who && said.has(s.who))).map((s) => ({ how: s.how ?? "", ...(!blank(s.who) ? { who: s.who } : {}), ...(!blank(s.where) ? { where: s.where } : {}) })),
+    ...(r.starts ?? []).filter((s) => !said.has(blank(s.who) ? "" : (s.who ?? ""))).map((s) => ({ how: s.how ?? "", ...(!blank(s.who) ? { who: s.who } : {}), ...(!blank(s.where) ? { where: s.where } : {}) })),
   ].filter((s) => s.how || s.who);
   const unsure = (r.unsure ?? []).filter((u) => u.field).map((u) => ({ ...u, field: FIELD_WORDS[u.field] ?? u.field }));
   const fields = [...new Set(unsure.map((u) => u.field))].join(", ");
@@ -204,7 +205,15 @@ export const pageOf = (q: Quest): QuestPage => (q.read && q.source === "reads" ?
 export function doorPage(q: Quest) {
   const p = pageOf(q);
   // Who, where, then how: the order a player looks for them.
-  const starts = p.starts.map((s) => ({ ...(s.who ? { who: s.who } : {}), ...(s.where ? { where: s.where } : {}), how: s.how, ...(s.reportedBy ? { checked: doorSources(s.reportedBy.source, s.reportedBy.also) } : {}) }));
+  const starts = p.starts.map((s) => ({
+    ...(s.who ? { who: s.who } : {}),
+    ...(s.where ? { where: s.where } : {}),
+    how: s.how,
+    ...(s.reportedBy ? { checked: doorSources(s.reportedBy.source, s.reportedBy.also) } : {}),
+    // Where the thing to read is, from the readables file, or that it isn't checked: never a direction (WO-131).
+    ...(s.whereIs?.length ? { whereIs: s.whereIs } : {}),
+    ...(s.unplaced ? { whereIsIt: `${s.unplaced} Don't tell the player where to look.` } : {}),
+  }));
   return {
     source: p.source,
     ...(p.source === "rules" ? { sourceNote: "This quest hasn't been read yet; these fields are from the planner's older rules. Say it isn't read yet rather than filling the gap." } : {}),

@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
+import { rules } from "@/lib/mcp/rules-view";
 import { getQuest } from "@/lib/mcp/facts";
 import { questsData } from "./data";
 import { cleanFields } from "./reports";
@@ -76,7 +77,7 @@ describe("the agent proposes", () => {
 describe("an approved fact laid over a quest", () => {
   it("replaces the unplaced way: the place and the source show, as a player's report", () => {
     setPlayerFacts([RUNNING_WILD]);
-    const q = getQuest({ name: "Running Wild" }).quest.start.ways?.[0] as { way: string; checked?: string; whereIs?: string[] };
+    const q = rules("Running Wild").quest.start.ways?.[0] as { way: string; checked?: string; whereIs?: string[] };
     expect(q.checked).toBe("a player's report, not the game files (@testplayer, 23 Oct 2026)");
     expect(q.whereIs).toEqual(["Whiterun, near Hearth-Healer's Hall and Joslin's House"]);
   });
@@ -149,7 +150,7 @@ describe("a second player agreeing (Part 1b)", () => {
     const way = questsData().byId.get("capital-whiterun")!.quests.find((q) => q.edid === "0WRHorseQ")!.start!.ways![0];
     expect(way.also).toEqual(["@tapps, 23 Oct 2026"]);
     expect(pageSources(way.source!, way.also)).toBe("players' reports (2): Dave, 22 Oct; @tapps, 23 Oct");
-    const asked = getQuest({ name: "Running Wild" }).quest.start.ways?.[0] as { checked: string };
+    const asked = rules("Running Wild").quest.start.ways?.[0] as { checked: string };
     expect(asked.checked).toBe("players' reports, not the game files (2): Dave, 22 Oct; @tapps, 23 Oct");
   });
   it("three players are (3), and the same player twice counts once", () => {

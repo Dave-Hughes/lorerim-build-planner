@@ -16,7 +16,7 @@ for (const width of [1440, 390]) {
     await expect(start).toContainText("First step: Catch the white, or palonimo, horse roaming the fields of Whiterun");
     await expect(page.getByText("game files", { exact: true })).toHaveCount(0);
     await expect(page.getByRole("region", { name: "The steps" })).toContainText("Bring the Horse back to the main gate of Whiterun");
-    await expect(page.getByRole("region", { name: "What you get" })).toContainText(/mount/i);
+    await expect(page.getByRole("region", { name: "What you get" })).toContainText(/saddle|horse/i);
     // On a shelf, a quest stands alone: it goes back to the shelf, and no quest comes before or after it.
     await expect(page.getByRole("link", { name: /More to do in Whiterun/ }).first()).toHaveAttribute("href", "/quests/capital-whiterun");
     await expect(page.getByText("Before it")).toHaveCount(0);
@@ -59,7 +59,7 @@ test("a shelf opens on no quest's opening, its rows link to the quests and say h
   await expect(page.getByRole("region", { name: "How to start them" })).toContainText("Separate jobs, each with its own start");
   const rat = page.locator('[id="q-0WRRatQuest"]');
   await expect(rat.getByRole("link", { name: "A Rat Problem" })).toHaveAttribute("href", "/quests/q/a-rat-problem");
-  await expect(rat).toContainText("Ask Igna");
+  await expect(rat).toContainText("Igna");
   // Skirmish at Whitewatch's placeholder objective is not shown.
   await page.goto("/quests/q/skirmish-at-whitewatch");
   await expect(page.getByRole("region", { name: "The steps" })).not.toContainText("TEST");

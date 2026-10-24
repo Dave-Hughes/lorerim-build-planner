@@ -29,6 +29,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **3. "How do I start Blood on the Ice?"**
 - Calls: `get_quest({ name: "Blood on the Ice" })` (two quests have the name: the planner asks for the EDID, MS11).
 - Must: it starts by itself at night in Windhelm after you've come in four times, or a Windhelm guard; then "Question the witnesses".
+- Fails today: **WO-154** (Bob's word): Blood on the Ice is read now. Its read says it starts by itself in Windhelm (witnesses over a body) with a second way through the steward; no four visits at night, no guard.
 
 **4. "How do I start Caught Red Handed?"**
 - Calls: `get_quest({ name: "Caught Red Handed" })`.
@@ -37,6 +38,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **5. "How do I start The Blessings of Nature?"**
 - Calls: `get_quest({ name: "The Blessings of Nature" })`.
 - Must: Danica Pure-Spring, Temple of Kynareth, Whiterun; then "Retrieve Nettlebane". Never "Inspect the Temple of Kynareth" as the first step.
+- Fails today: **WO-154** (Bob's word): The Blessings of Nature is read now, and its read gives the first step as Inspect the Temple of Kynareth, which WO-138's ruling dropped for Retrieve Nettlebane.
 
 ## Where things are
 
@@ -75,6 +77,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_quest({ name: "Deathbrand", level: 10 })`.
 - Must: the level gate on "It starts by itself when you level up" (the story node needs level 20, a global that reads 20 now; the page dropped it). Geldis Sadri's talk is shown with its condition, or not at all as a way in: the record has it only when "Deathbrand stage 20 done" and stage <= 1 (a mod's edit), so it is not "the easiest one to aim for". The book's places: the first few named, and a way to see all 14, never "and 11 more places" with no way to ask.
 - Passes since WO-137 (item 1: the level gate, Geldis's talk dropped as a catch-up; item 2: eight places by area, `places: true` for all). After the PC's check (22 Oct) the level-up node is the gate, not a way: the test now wants Level 20 on reading the book and the Haknir's Shoal way. For Bob: the Must line above still names the level-up way.
+- Fails today: **WO-154** (Bob's word): Deathbrand is read now, and its read has no level 20 gate (needs: nothing), though the PC's check found it (WO-137).
 
 **13. "How do I start a missive from the notice board?"**
 - Calls: `get_quest({ name: "Missives" })` and one Missives quest by EDID.
@@ -186,6 +189,7 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 - Calls: `get_quest({ name: "Laid to Rest" })`.
 - Must: the way in (Morthal, the burned house, Lami or the jarl), not a key to Sorli's House; `openForYou` open or a real need.
 - Passes since WO-148 item 5 (the key is the first step's `onTheWay` detail, not a need). The way in the data says is "something placed in Morthal, by the door to Eisa's House", then "Talk to the Jarl of Morthal"; Lami isn't named.
+- Fails today: **WO-154** (Bob's word): Laid to Rest is read now, and its read gives Sorli in Stonehills as another way in when she is Jarl, which WO-148 Part 2 kept out.
 
 **36. "Can Kyria take Tome Trials exams now?"**
 - Calls: `get_rules()` (or the doings index).

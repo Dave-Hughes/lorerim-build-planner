@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { rules } from "./rules-view";
 import { getQuest, styleGuide } from "./facts";
 import { questsData } from "@/lib/quests/data";
 import { promisedDestination, reviewRoutes, type RoutedAct } from "@/lib/playthroughs/route-review";
@@ -98,7 +99,7 @@ describe("warnings on Kyria's Act II (Part 3)", () => {
 
 describe("rewards that change play (Part 6)", () => {
   it("Running Wild returns its horse and saddle endings against the gold one, from the stage text", () => {
-    const q = getQuest({ name: "Running Wild" }).quest as unknown as { changesTheRun: unknown[]; changesTheRunNote: string };
+    const q = rules("Running Wild").quest as unknown as { changesTheRun: unknown[]; changesTheRunNote: string };
     expect(q.changesTheRun).toEqual([
       { gives: "a mount", atStage: 40, ending: "I went to Joslin. In exchange for letting her ride the horse, she made me an imperial saddle.", saidAt: { stage: 30, text: "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself." }, onlyThisEnding: true },
       { gives: "a mount", atStage: 41, ending: "I went to Joslin. In exchange for letting her ride the horse, she made me a nord saddle for it.", saidAt: { stage: 30, text: "If I go to Joslin, I will not get the reward in gold, but I will be able to keep the horse for myself." }, onlyThisEnding: true },

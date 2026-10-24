@@ -371,7 +371,7 @@ function questFacts(q: Quest, allPlaces = false): RulesFacts & Partial<ReturnTyp
   return rulesFacts(q, allPlaces);
 }
 
-function rulesFacts(q: Quest, allPlaces = false) {
+export function rulesFacts(q: Quest, allPlaces = false) {
   return {
     edid: q.edid,
     name: q.name,

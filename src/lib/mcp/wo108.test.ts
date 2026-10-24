@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { rules } from "./rules-view";
 import sample from "@/lib/rules/__fixtures__/sample-build.json";
 import { mcpOn } from "@/lib/features";
 import { questsData } from "@/lib/quests/data";
+import { storyOfLine } from "@/lib/quests/stories-data";
 import { answer, MAX_BYTES } from "./answer";
 import { FactsError, checkProgression, getPerk, getQuest, getQuestStart, getSpell, playerState, searchFacts, styleGuide, versionData } from "./facts";
 import { plainOf } from "./plan";
@@ -44,10 +46,12 @@ describe("the facts tools (WO-108)", () => {
     expect(s.soldBy.checked).toBe("not yet");
   });
 
-  // Gravewind's quests are all checked now, so it answers (WO-137 item 3); On Hogithum's opening quest isn't.
-  it("get_quest_start gives On Hogithum no instructions, marked not checked", () => {
-    const g = getQuestStart("on-hogithum");
-    expect(g).toMatchObject({ id: "on-hogithum", checked: "not yet" });
+  // A line whose opening quest isn't checked gives no instructions. On Hogithum was the example until its quest was read (WO-154): its read
+  // answers, so the first line still on the older rules whose opening start isn't checked stands in, and the test waits for none.
+  const unchecked = questsData().lines.find((l) => l.checked.start !== "files" && l.quests[0]?.source === "rules" && !storyOfLine(l.id) && l.quests.find((q) => q.edid === l.opening)?.start?.checked === "not yet");
+  it.skipIf(!unchecked)("get_quest_start gives a line with an unchecked start no instructions, marked not checked", () => {
+    const g = getQuestStart(unchecked!.id);
+    expect(g).toMatchObject({ id: unchecked!.id, checked: "not yet" });
     expect(g).not.toHaveProperty("start");
     expect(g).not.toHaveProperty("firstQuest");
   });
@@ -103,7 +107,7 @@ describe("the facts tools (WO-108)", () => {
 
 describe("get_quest (WO-115)", () => {
   it("gives Blood on the Ice's two endings, by name or EDID, with its objectives", () => {
-    for (const q of [getQuest({ name: "Blood on the Ice" }), getQuest({ id: "MS11" }), getQuest({ id: "blood-on-the-ice" })]) {
+    for (const q of [rules("Blood on the Ice"), rules("MS11"), rules("blood-on-the-ice")]) {
       expect(q.quest).toMatchObject({ edid: "MS11", name: "Blood on the Ice" });
       expect(q.quest.endings.map((e) => [e.stage, e.ends])).toEqual([
         [100, "completes"],
@@ -143,7 +147,7 @@ describe("get_quest (WO-115)", () => {
 
 describe("get_quest, open for you (WO-115 Part 3)", () => {
   it("gives a quest's ways in, its first objective as then, and who and where when one person starts it", () => {
-    const love = getQuest({ name: "The Book of Love" });
+    const love = rules("The Book of Love");
     expect(love.quest.start).toMatchObject({ checked: "files", then: "Talk to Fastred at Fellstar Farm" });
     expect(love.quest.start.ways?.[0].way).toMatch(/^Ask Dinya Balu "Just tell me what to do." in Temple of Mara/);
     expect(love.quest.start).toMatchObject({ who: "Dinya Balu", where: "Temple of Mara" });

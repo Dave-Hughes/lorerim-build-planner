@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { rules } from "./rules-view";
 import { getQuest, playerState, searchFacts } from "./facts";
 import { startsAt } from "./playthroughs";
 import { questsData } from "@/lib/quests/data";
@@ -8,7 +9,7 @@ const quest = (edid: string) => questsData().lines.flatMap((l) => l.quests).find
 /** WO-131 Part 0: Running Wild's note, where Dave found it in game, marked as a player's report. */
 describe("Running Wild's note (WO-131 Part 0)", () => {
   it("get_quest says the board outside Joslin's house, that a player found it, and where the files put it", () => {
-    const start = getQuest({ name: "Running Wild" }).quest.start;
+    const start = rules("Running Wild").quest.start;
     expect(start.ways).toEqual([
       {
         way: "Read the note pinned to the board outside Joslin's house, behind the Bannered Mare in Whiterun",
@@ -50,7 +51,7 @@ describe("where the thing you read is (WO-131 Part 2)", () => {
 
   it("a way with no place says so, and the quest is never open for that way alone", () => {
     const falion = getQuest({ id: "OK_FH_Quest" }, undefined, playerState({ level: 50, done: [] }));
-    expect(falion.quest.start.ways?.[0]).toMatchObject({ way: "Read A Letter From Falion", whereIsIt: "Where to find A Letter From Falion isn't checked yet. Don't tell the player where to look." });
+    expect(rules("OK_FH_Quest").quest.start.ways?.[0]).toMatchObject({ way: "Read A Letter From Falion", whereIsIt: "Where to find A Letter From Falion isn't checked yet. Don't tell the player where to look." });
     expect(falion.openForYou?.state).not.toBe("open");
   });
 
