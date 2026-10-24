@@ -1,0 +1,956 @@
+[
+ {
+  "edid": "Favor258",
+  "name": "Thane of Falkreath",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "It starts quietly the first time you enter Falkreath; once you have done enough for the hold, you go back to the Jarl to be named Thane.",
+  "needs": [
+   {
+    "what": "Help the people of Falkreath (the journal counts this as \"Assist the people of Falkreath\", 3 needed)",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "nobody (it starts on its own)",
+    "where": "entering Falkreath",
+    "how": "The quest switches on when you arrive in Falkreath. When the hold's needs are met, the journal tells you to return to the Jarl."
+   }
+  ],
+  "firstStep": "Return to the Jarl of Falkreath in Hakkvild's High Hall",
+  "takesYou": [
+   {
+    "place": "Hakkvild's High Hall",
+    "hold": "Falkreath",
+    "why": "the Jarl names you Thane here"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Return to the Jarl of Falkreath"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title Thane of Falkreath",
+    "when": "at the end"
+   },
+   {
+    "what": "Rayya as your housecarl",
+    "when": "at the end"
+   },
+   {
+    "what": "A hold weapon from the Jarl (the quest holds a jarl's-weapon slot)",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold and a piece of armor are set up in the quest's script",
+    "when": "at the end, if given"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Siddgeir",
+    "role": "Jarl of Falkreath, placed in Hakkvild's High Hall"
+   },
+   {
+    "name": "Dengeir of Stuhn",
+    "role": "the other possible Jarl (he sides with the Stormcloaks); placed in Dengeir's House in Falkreath"
+   },
+   {
+    "name": "Rayya",
+    "role": "your housecarl, placed in Hakkvild's High Hall"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The 3-helper count comes from the companion journal quest that tracks favors for every hold; the Jarl's own dialogue conditions aren't in these extracts, so other requirements may apply."
+   },
+   {
+    "field": "needs",
+    "why": "The Hearthfire add-on edits this quest and supplies the housecarl; the records don't show whether you must also own the Lakeview land near Falkreath."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest's script holds a reward armor list, a large gold list and gold, but nothing shows when or whether each is handed over."
+   },
+   {
+    "field": "rewards",
+    "why": "A thane-weapons add-on in the list adds a jarl's-weapon slot; its weapons include a Hunter Axe of Falkreath (one- and two-handed), but the records don't show which one fills the slot."
+   },
+   {
+    "field": "where",
+    "why": "Siddgeir's only listed schedule is a shared civil-war package, so he is given by where he is placed."
+   },
+   {
+    "field": "people",
+    "why": "Which of the two men is Jarl depends on who holds Falkreath; both carry this quest's giver faction (Siddgeir Imperial, Dengeir Stormcloak)."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0A34DE Favor258 stages 0/10/20/25/200, objective 15 'Return to <Alias.ShortName=QuestGiver>'",
+   "editedBy: HearthFires.esm, USSEP, Requiem.esp, Unique Thane Weapons.esp, LoreRim - Dialogue Patch.esp (last)",
+   "quest_givers: start node FavorChangeLocationFalkreath (change location)",
+   "quest_givers rewards: QF_Favor258_000A34DE FavorRewardArmor (Skyrim.esm:04930B), FavorRewardGold (Skyrim.esm:04A41B), Gold",
+   "alias PlayerHousecarl = Rayya HearthFires.esm:005215 in Hakkvild's High Hall (Skyrim.esm:013A79)",
+   "Favor258QuestGiverFaction Skyrim.esm:0A34DF on Siddgeir Skyrim.esm:013653 and Dengeir Skyrim.esm:01365A",
+   "FavorJarlsMakeFriends Skyrim.esm:087E24 objective 90 'Assist the people of Falkreath', FriendsTotalMinorHold = 3",
+   "items: Unique Thane Weapons.esp:000838/000839 Hunter Axe of Falkreath"
+  ]
+ },
+ {
+  "edid": "FreeformRiftenThane",
+  "name": "I Done Got Thaned!",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Weapons.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Once you have done enough for Riften, the journal sends you to the Jarl, who tells you to buy Honeyside to become Thane.",
+  "needs": [
+   {
+    "what": "Earn the Jarl of Riften's favor (the journal later tells you to speak to the Jarl)",
+    "kind": "other"
+   },
+   {
+    "what": "Gold to buy Honeyside",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Laila Law-Giver (or Maven Black-Briar if she rules Riften)",
+    "where": "Mistveil Keep in Riften",
+    "how": "When the journal says to speak to the Jarl of Riften, talk to the Jarl; she tells you to buy a house in the city."
+   }
+  ],
+  "firstStep": "Speak to the Jarl of Riften in Mistveil Keep",
+  "takesYou": [
+   {
+    "place": "Mistveil Keep",
+    "hold": "The Rift",
+    "why": "talk to the Jarl and buy Honeyside from the steward"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to the Jarl of Riften",
+     "Purchase Honeyside from Riften's Steward",
+     "Return to the Jarl of Riften"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Honeyside (house in Riften, bought)",
+    "when": "during the quest"
+   },
+   {
+    "what": "The title Thane of the Rift",
+    "when": "at the end"
+   },
+   {
+    "what": "A hold weapon from the Jarl (the quest holds a jarl's-weapon slot)",
+    "when": "at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Laila Law-Giver",
+    "role": "Jarl of Riften, placed in Mistveil Keep"
+   },
+   {
+    "name": "Maven Black-Briar",
+    "role": "Jarl of Riften if the Empire puts her in charge; placed in Black-Briar Manor"
+   },
+   {
+    "name": "Anuriel",
+    "role": "Laila's steward, sells Honeyside; placed in Mistveil Keep"
+   },
+   {
+    "name": "Hemming Black-Briar",
+    "role": "steward under Maven; placed in Black-Briar Manor"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "What sets the journal to 'speak to the Jarl' isn't in these extracts. The companion favor tracker counts 'Assist the people of The Rift' (5 for a major hold), and the Jarl also appears in the Riften skooma quests, but no condition ties either to this quest here."
+   },
+   {
+    "field": "rewards",
+    "why": "No housecarl is part of this quest's records, and Honeyside's price isn't given."
+   },
+   {
+    "field": "rewards",
+    "why": "A thane-weapons add-on (and a LoreRim weapons patch) adds a jarl's-weapon slot; its weapons include a Black Blade of the Rift, but the records don't show which weapon fills the slot."
+   },
+   {
+    "field": "where",
+    "why": "Laila, Anuriel and Hemming have only shared or general schedules here, so they're given by where they're placed; Maven has her own schedule (market, Bee and Barb, keep visits) and may be elsewhere in Riften by day."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:065BDF FreeformRiftenThane stages 10/15/20/200, objectives 10/20/30",
+   "editedBy: USSEP, Requiem.esp, Unique Thane Weapons.esp, LoreRim - Weapons.esp (last)",
+   "quest_givers giver Laila Skyrim.esm:013366 via INFO Skyrim.esm:065AF6, stage below 11; also Maven Skyrim.esm:01336A",
+   "aliases FFRiftenThaneAnurielStewardAlias (Skyrim.esm:013349), FFRiftenThaneHemmingStewardAlias (Skyrim.esm:013362), FFRiftenThaneJarlWeaponAlias",
+   "FavorJarlsMakeFriends Skyrim.esm:087E24 objective 20, FriendsTotalMajorHold = 5",
+   "items: Unique Thane Weapons.esp:000821 Black Blade of the Rift"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Crab_MQ1",
+  "name": "In A Pinch",
+  "plugin": "ccBGSSSE001-Fish.esm (also edited by CC Fishing - Delayed Start.esp; last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Viriya at the Riften Fishery hands you a bounty letter for a juvenile mudcrab.",
+  "needs": [
+   {
+    "what": "A fishing rod and fishing supplies to fish the mudcrab up",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Viriya",
+    "where": "the Riften Fishery on the Riften docks: by day (6 am to 6 pm) she works out on the fishery docks; evenings and nights she is at Haelga's Bunkhouse",
+    "how": "Talk to Viriya; she hands you a bounty letter. Read it, then tell her you'll take over the bounty."
+   }
+  ],
+  "firstStep": "Read Bounty: Juvenile Mudcrab",
+  "takesYou": [
+   {
+    "place": "a lake west of Broken Fang Cave",
+    "hold": "Whiterun",
+    "why": "a lake known to teem with mudcrabs; fish one up"
+   },
+   {
+    "place": "Riften Fishery",
+    "hold": "The Rift",
+    "why": "bring the mudcrab to Viriya"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read Bounty: Juvenile Mudcrab",
+     "Speak to Viriya about taking over the bounty",
+     "Obtain a juvenile mudcrab for Viriya",
+     "Speak to Viriya"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Riften Fishery key",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Crustacean Extermination"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Viriya",
+    "role": "fishery worker researching mudcrab breeding; gives and takes the bounty"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Viriya's day work spot is read from her schedule names (fishery docks 6 am for 12 hours, bunkhouse in the evening, sleep there at night); the exact spot on the docks isn't decoded."
+   },
+   {
+    "field": "starts",
+    "why": "The meet-the-fishers quest (Angler Acquaintances) sends you to Viriya first, and a delayed-start patch edits this quest, but what exactly gates her bounty isn't in these extracts."
+   },
+   {
+    "field": "steps",
+    "why": "The quest has a dead adventurer and his note (the last person to take the bounty); the records don't show where he lies or whether finding him changes anything."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009D4 stages 10/15/20/200 logs; objectives 1000, 1001, 0, 20",
+   "aliases Viriya, Note, CrabCritter, DeadAdventurer, DeadAdventurerNote",
+   "Viriya ccBGSSSE001-Fish.esm:0008F6 packages RiftenViriyaWorkFisheryDocks6x12 (until End of the Line done), Bunkhouse18x6, Sleep0x6",
+   "Broken Fang Cave Skyrim.esm:01914D hold Whiterun",
+   "Angler Acquaintances ccBGSSSE001-Fish.esm:0009DB"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Crab_MQ2",
+  "name": "Crustacean Extermination",
+  "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Viriya gives you another task directly: a letter about frenzied mudcrabs attacking fishermen near Dawnstar.",
+  "needs": [
+   {
+    "what": "Finish In A Pinch",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Viriya",
+    "where": "the Riften Fishery on the Riften docks: by day (6 am to 6 pm) she works out on the fishery docks; evenings and nights she is at Haelga's Bunkhouse",
+    "how": "Viriya hands you a note about mudcrab attacks; read it."
+   }
+  ],
+  "firstStep": "Read the letter on mudcrab attacks",
+  "takesYou": [
+   {
+    "place": "the fishing shack on the coast west of Dawnstar",
+    "hold": "The Pale",
+    "why": "kill the frenzied mudcrabs and find out what drove them"
+   },
+   {
+    "place": "Riften Fishery",
+    "hold": "The Rift",
+    "why": "report back to Viriya"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the letter on mudcrab attacks",
+     "Investigate the area near the fishing shack west of Dawnstar",
+     "Kill the Frenzied Mudcrabs",
+     "Discover the origin of the frenzied mudcrabs",
+     "Read Seviur's journal",
+     "Kill the Frenzied Mudcrabs (a second wave)",
+     "Return to Viriya"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Alik'ri Fishing Rod",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "End of the Line"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Viriya",
+    "role": "gives the task and the reward"
+   },
+   {
+    "name": "Seviur",
+    "role": "a novice necromancer on the coast who stirred the mudcrabs up; he ends up slain"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Viriya's day work spot is read from her schedule names (fishery docks 6 am for 12 hours, bunkhouse in the evening, sleep there at night); the exact spot on the docks isn't decoded."
+   },
+   {
+    "field": "needs",
+    "why": "That it follows In A Pinch is read from the journal ('another task') and the line's order, not from a condition."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009DA stages 5-200 logs; objectives 0,5,10,20,25,50",
+   "reward QF_ccBGSSSE001_Crab_MQ2_050009DA.AlikriFishingRod = ccBGSSSE001-Fish.esm:00084D",
+   "aliases Necromancer, NecromancerJournal, Crab1-12, Jarl"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Crab_MQ3",
+  "name": "End of the Line",
+  "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A letter from Viriya arrives: she wants to leave the fishery and open a mudcrab stall in Riften's Grand Plaza.",
+  "needs": [
+   {
+    "what": "Finish Crustacean Extermination",
+    "kind": "quest"
+   },
+   {
+    "what": "Firewood, nails, iron fittings and a lock for her stall",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Viriya (by letter)",
+    "where": "delivered to you",
+    "how": "You receive a letter from Viriya; read it."
+   }
+  ],
+  "firstStep": "Read the letter from Viriya",
+  "takesYou": [
+   {
+    "place": "Riften Fishery",
+    "hold": "The Rift",
+    "why": "bring Viriya the building supplies"
+   },
+   {
+    "place": "the Grand Plaza in Riften",
+    "hold": "The Rift",
+    "why": "visit Viriya's new stall a day later"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the letter from Viriya",
+     "Obtain pieces of firewood",
+     "Obtain nails",
+     "Obtain iron fittings",
+     "Obtain a lock",
+     "Bring the building supplies to Viriya",
+     "Wait 24 hours for Viriya to set up her market stall",
+     "Speak to Viriya"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "Wave Breaker"
+  ],
+  "closes": [
+   "Viriya stops working on the fishery docks and runs her stall in the Grand Plaza instead"
+  ],
+  "people": [
+   {
+    "name": "Viriya",
+    "role": "leaving the fishery to sell mudcrab meat from her own stall"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "How many pieces of firewood, nails and fittings she wants is set by values not in these extracts; how the letter arrives (courier or otherwise) and what triggers it aren't shown either."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is named in the journal or the quest's script properties."
+   },
+   {
+    "field": "where",
+    "why": "After this quest Viriya's stall schedule has no place in the records; the Grand Plaza comes from the journal."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009D6 stages 10/20/40/55/200 logs; objectives 0-3,10,20,30,40",
+   "Viriya package ccBGSSSE001_RiftenViriyaWorkFisheryDocks6x12 needs this quest not completed; ccBGSSSE001_ViriyaCrabStallPkg needs it completed",
+   "aliases Viriya, StallEnableMarker, Letter"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Crab_MQ4",
+  "name": "Wave Breaker",
+  "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A hasty letter from Viriya says the frenzied mudcrabs are back west of Dawnstar and she's already heading there.",
+  "needs": [
+   {
+    "what": "Finish Crustacean Extermination",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Viriya (by letter)",
+    "where": "delivered to you",
+    "how": "You receive Viriya's hastily written letter; read it."
+   }
+  ],
+  "firstStep": "Read Viriya's hastily written letter",
+  "takesYou": [
+   {
+    "place": "the shore and fishing shack west of Dawnstar",
+    "hold": "The Pale",
+    "why": "fight the mudcrab waves beside Viriya and the guards, then destroy the Emperor Crab Guardian Spirit with the catapults"
+   },
+   {
+    "place": "Dawnstar (the Jarl's hall)",
+    "hold": "The Pale",
+    "why": "report to the Jarl for your reward"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read Viriya's hastily written letter",
+     "Return to the shore west of Dawnstar",
+     "Kill the Frenzied Mudcrabs",
+     "Prepare for the next wave",
+     "Kill the Frenzied Mudcrabs",
+     "Regroup with Viriya inside the shack",
+     "Speak to Viriya",
+     "Obtain flaming pots from the frenzied mudcrabs",
+     "Fire catapults at the Emperor Crab Guardian Spirit using flaming pots",
+     "Speak to Viriya",
+     "Report to the Jarl in Dawnstar"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold from the Jarl of Dawnstar",
+    "when": "at the end"
+   },
+   {
+    "what": "A weapon from the Jarl (the quest's script holds an Imperial Heavy Bow and a Steel Sword)",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Viriya",
+    "role": "fights beside you at the shore"
+   },
+   {
+    "name": "the Jarl of Dawnstar",
+    "role": "sent the call for help and pays you at the end; Skald the Elder is placed in the White Hall in Dawnstar"
+   },
+   {
+    "name": "Dawnstar guards",
+    "role": "hold the shore with you (Imperial or Stormcloak, depending on who rules)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The journal says the mudcrabs emerged 'once again', so it follows Crustacean Extermination; whether End of the Line must also be done first isn't shown."
+   },
+   {
+    "field": "rewards",
+    "why": "Both a bow and a sword sit in the quest's script; the records don't show whether you get one, both, or a pick."
+   },
+   {
+    "field": "rewards",
+    "why": "The fishing add-on has an Emperor Crab Spirit Charm, but nothing here ties it to this quest."
+   },
+   {
+    "field": "people",
+    "why": "The Jarl is whoever rules Dawnstar; the records only fill that as 'the Jarl'."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009E9 stages 50-2000 logs; objectives 0-100",
+   "rewards QF_ccBGSSSE001_Crab_MQ4_050009E9 ImperialBow (Skyrim.esm:013841), SteelSword (Skyrim.esm:013989), Gold001",
+   "aliases Jarl, GhostEmperorCrab, GuardEnableMarkerSons, GuardEnableMarkerImperial, CatapultTrigger1-4",
+   "Skald the Elder Skyrim.esm:013620 in The White Hall, Dawnstar",
+   "items ccBGSSSE001-Fish.esm:000F07 Emperor Crab Spirit Charm (not linked)"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Fish_MQ1",
+  "name": "Catch of the Day",
+  "plugin": "ccBGSSSE001-Fish.esm (also edited by CC Fishing - Delayed Start.esp; last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Swims-In-Deep-Water at the Riften Fishery gives you a list of fair-weather fish to catch.",
+  "needs": [
+   {
+    "what": "A fishing rod and fishing supplies",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Swims-In-Deep-Water",
+    "where": "inside the Riften Fishery from 5 am to 8 pm; late evening and night at Haelga's Bunkhouse in Riften",
+    "how": "Talk to him; he gives you a list of fish to catch."
+   }
+  ],
+  "firstStep": "Read the list of fair weather fish",
+  "takesYou": [
+   {
+    "place": "the docks near the Riften Fishery",
+    "hold": "The Rift",
+    "why": "lake fishing: goldfish, glassfish and carp"
+   },
+   {
+    "place": "the river toward Ivarstead",
+    "hold": "The Rift",
+    "why": "stream fishing: pogfish and carp"
+   },
+   {
+    "place": "the back room of the Riften Fishery",
+    "hold": "The Rift",
+    "why": "optional: Fishing Mastery, v1 sits on a shelf there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the list of fair weather fish",
+     "(Optional) Read Fishing Mastery, v1",
+     "Obtain a carp",
+     "Obtain a glassfish",
+     "Obtain a goldfish",
+     "Obtain a pogfish",
+     "Return to Swims-In-Deep-Water"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   },
+   {
+    "what": "Riften Fishery key",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Caught in the Rain"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Swims-In-Deep-Water",
+    "role": "Argonian fisherman at the Riften Fishery who sets the fishing challenges"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Swims-In-Deep-Water's hours are read from his schedule names (work inside the fishery 5 am for 15 hours, bunkhouse in the evening, sleep there at night); the schedule bytes aren't decoded."
+   },
+   {
+    "field": "starts",
+    "why": "The meet-the-fishers quest (Angler Acquaintances) sends you to him first, and a delayed-start patch edits this quest, but what exactly gates his list isn't in these extracts."
+   },
+   {
+    "field": "rewards",
+    "why": "The amount of gold isn't given."
+   },
+   {
+    "field": "takesYou",
+    "why": "The journal says these fish bite on a clear day in the warmer parts of Skyrim; the docks and the Ivarstead river are its suggestions, not the only spots."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009DE stages 10/20/21/200 logs; objectives 0-3,50,75,100",
+   "Swims-In-Deep-Water ccBGSSSE001-Fish.esm:0008F8 packages WorkFisheryInside5x15, Bunkhouse20x4, Sleep0x5",
+   "editedBy CC Fishing - Delayed Start.esp, Synthesis - Gameplay Overwrite.esp (last)"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Fish_MQ2",
+  "name": "Caught in the Rain",
+  "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Swims-In-Deep-Water gives you a second list: rainy-weather fish, plus his lost lucky fishing hat.",
+  "needs": [
+   {
+    "what": "Finish Catch of the Day",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Swims-In-Deep-Water",
+    "where": "inside the Riften Fishery from 5 am to 8 pm; late evening and night at Haelga's Bunkhouse in Riften",
+    "how": "Talk to him for another fishing challenge; he gives you a list."
+   }
+  ],
+  "firstStep": "Read the list of rainy weather fish",
+  "takesYou": [
+   {
+    "place": "lakes and streams in the warmer parts of Skyrim, in the rain",
+    "hold": "",
+    "why": "catfish, spadefish and pygmy sunfish in lakes; pearlfish in lakes or streams"
+   },
+   {
+    "place": "a fishing spot west of Sarethi Farm",
+    "hold": "",
+    "why": "fish up his lucky fishing hat"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Give him back his lucky fishing hat",
+    "leadsTo": "You get the Argonian Fishing Rod and gold."
+   },
+   {
+    "choice": "Keep the hat and tell him you couldn't find it",
+    "leadsTo": "You keep the hat and still get the Argonian Fishing Rod, but no gold."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the list of rainy weather fish",
+     "(Optional) Read Fishing Mastery, v2",
+     "Obtain a catfish",
+     "Obtain a pearlfish",
+     "Obtain a pygmy sunfish",
+     "Obtain a spadefish",
+     "Fish up Swims-In-Deep-Water's lucky fishing hat",
+     "Return to Swims-In-Deep-Water"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Argonian Fishing Rod",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold",
+    "when": "at the end, only if you hand back the hat"
+   },
+   {
+    "what": "His lucky fishing hat",
+    "when": "if you keep it"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Frozen Fish"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Swims-In-Deep-Water",
+    "role": "sets the challenge; says the hat makes it rain wherever he fishes"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Swims-In-Deep-Water's hours are read from his schedule names (work inside the fishery 5 am for 15 hours, bunkhouse in the evening, sleep there at night); the schedule bytes aren't decoded."
+   },
+   {
+    "field": "takesYou",
+    "why": "The records don't give the hold for Sarethi Farm."
+   },
+   {
+    "field": "rewards",
+    "why": "The amount of gold isn't given, and the gold is only mentioned in the hand-back ending."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009EB stages 10/20/21/200/210 logs (200 and 210 both complete)",
+   "objectives 0-3,10,50,75,100; aliases Hat, HatFishingSpot",
+   "items ccBGSSSE001-Fish.esm:000850 Argonian Fishing Rod"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Fish_MQ3",
+  "name": "Frozen Fish",
+  "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A letter from Swims-In-Deep-Water says he's ready to resume your fishing challenges; go see him at the fishery.",
+  "needs": [
+   {
+    "what": "Finish Caught in the Rain",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Swims-In-Deep-Water (by letter, then in person)",
+    "where": "inside the Riften Fishery from 5 am to 8 pm; late evening and night at Haelga's Bunkhouse in Riften",
+    "how": "Read his letter about fishing work, then speak to him at the Riften Fishery for a list of arctic fish."
+   }
+  ],
+  "firstStep": "Read the letter on fishing work",
+  "takesYou": [
+   {
+    "place": "Riften Fishery",
+    "hold": "The Rift",
+    "why": "get the list from Swims-In-Deep-Water and hand in the fish"
+   },
+   {
+    "place": "the docks of Windhelm",
+    "hold": "Eastmarch",
+    "why": "freezing-water fishing spot"
+   },
+   {
+    "place": "the water near Dawnstar",
+    "hold": "The Pale",
+    "why": "freezing-water fishing spot"
+   },
+   {
+    "place": "the small lake near Nightgate Inn",
+    "hold": "",
+    "why": "freezing-water fishing spot"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the letter on fishing work",
+     "Speak to Swims-In-Deep-Water",
+     "Read the list of arctic fish",
+     "(Optional) Read Fishing Mastery, v3",
+     "Obtain an angler larvae",
+     "Obtain an arctic char",
+     "Obtain an arctic grayling",
+     "Obtain a cod",
+     "Return to Swims-In-Deep-Water"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "Darkest Depths"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Swims-In-Deep-Water",
+    "role": "sets the challenge"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Swims-In-Deep-Water's hours are read from his schedule names (work inside the fishery 5 am for 15 hours, bunkhouse in the evening, sleep there at night); the schedule bytes aren't decoded."
+   },
+   {
+    "field": "needs",
+    "why": "The letter says he is ready to 'resume' the challenges, which suggests a wait after Caught in the Rain; what triggers the letter (time, level or anything else) isn't in these extracts."
+   },
+   {
+    "field": "rewards",
+    "why": "The journal and the quest's script name no reward for this one."
+   },
+   {
+    "field": "takesYou",
+    "why": "The records don't give the hold for Nightgate Inn."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009E8 stages 4/6/10/20/21/200 logs; objectives 0-4,6,50,75,100; alias CourierNote"
+  ]
+ },
+ {
+  "edid": "ccBGSSSE001_Fish_MQ4",
+  "name": "Darkest Depths",
+  "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Swims-In-Deep-Water gives you a list of fish that only live underground.",
+  "needs": [
+   {
+    "what": "Finish Frozen Fish",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Swims-In-Deep-Water",
+    "where": "inside the Riften Fishery from 5 am to 8 pm; late evening and night at Haelga's Bunkhouse in Riften",
+    "how": "Talk to him for another fishing challenge; he gives you a list."
+   }
+  ],
+  "firstStep": "Read the list of underground fish",
+  "takesYou": [
+   {
+    "place": "Eldergleam Sanctuary",
+    "hold": "Eastmarch",
+    "why": "underground fishing spot"
+   },
+   {
+    "place": "Brood Cavern",
+    "hold": "Hjaalmarch",
+    "why": "underground fishing spot, in the mountains south of Morthal"
+   },
+   {
+    "place": "Embershard Mine",
+    "hold": "Falkreath",
+    "why": "underground fishing spot near Riverwood"
+   },
+   {
+    "place": "Chillwind Depths",
+    "hold": "Hjaalmarch",
+    "why": "underground fishing spot south of Dragon Bridge"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Read the list of underground fish",
+     "(Optional) Read Fishing Mastery, v4",
+     "Obtain a direfish",
+     "Obtain a glass catfish",
+     "Obtain a tripod spiderfish",
+     "Obtain a vampire fish",
+     "Return to Swims-In-Deep-Water"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "Fishing Legend"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Swims-In-Deep-Water",
+    "role": "sets the challenge"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Swims-In-Deep-Water's hours are read from his schedule names (work inside the fishery 5 am for 15 hours, bunkhouse in the evening, sleep there at night); the schedule bytes aren't decoded."
+   },
+   {
+    "field": "needs",
+    "why": "That it follows Frozen Fish is read from the journal ('another fishing challenge') and the line's order, not from a condition."
+   },
+   {
+    "field": "rewards",
+    "why": "The journal and the quest's script name no reward for this one."
+   },
+   {
+    "field": "takesYou",
+    "why": "These caves are dungeons with their own residents; the records list them as fishing spots but say nothing about clearing them."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE001-Fish.esm:0009DD stages 10/20/21/200 logs; objectives 0-3,50,75,100",
+   "places: Eldergleam Sanctuary Skyrim.esm:0192AC Eastmarch; Brood Cavern Skyrim.esm:019150 Hjaalmarch; Embershard Mine Skyrim.esm:0B712C Falkreath; Chillwind Depths Skyrim.esm:019154 Hjaalmarch",
+   "next: Fishing Legend ccBGSSSE001-Fish.esm:0009DC"
+  ]
+ }
+]

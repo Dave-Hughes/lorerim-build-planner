@@ -1,0 +1,721 @@
+[
+ {
+  "edid": "FreeformRiften10",
+  "name": "Stoking the Flames",
+  "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Balimund, Riften's blacksmith, asks you for fire salts when you talk to him.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Balimund",
+    "where": "The Scorched Hammer, Riften's smithy",
+    "how": "Talk to Balimund; he asks you to bring him 10 fire salts."
+   }
+  ],
+  "firstStep": "Collect 10 fire salts for Balimund",
+  "takesYou": [
+   {
+    "place": "The Scorched Hammer",
+    "hold": "The Rift",
+    "why": "bring the fire salts back to Balimund"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Collect 10 fire salts for Balimund",
+     "Bring the 10 fire salts to Balimund, the Riften blacksmith"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "A reward from Requiem's quest-reward list for this quest",
+    "when": "when you hand over the fire salts"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Balimund",
+    "role": "the Riften blacksmith who wants the fire salts; eats and sleeps at The Scorched Hammer and works around the smithy, may head to the Bee and Barb in the evening"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "the reward is a Requiem leveled list whose contents aren't in these files, so what you actually get isn't known"
+   },
+   {
+    "field": "where",
+    "why": "his evening trip to the Bee and Barb only happens under conditions these files don't decode"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:05331D, editedBy Requiem.esp",
+   "giver INFO Skyrim.esm:013628 (Balimund, before quest starts)",
+   "globals ffr10salttotal=10",
+   "reward Requiem.esp:AD3749 REQ_LI_Reward_Quest_StokingTheFlames via QF_FreeformRiften10_0005331D.pFFRiften10Gold",
+   "Balimund Skyrim.esm:01334C placed in The Scorched Hammer (053081); packages RiftenBalimundWorks0x0, AIORiftBalimundStopWorking 20x4"
+  ]
+ },
+ {
+  "edid": "FreeformRiften11",
+  "name": "Caught Red Handed",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp; reworked by Caught Red Handed - Quest Expansion.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Svana Far-Shield in Haelga's Bunkhouse asks you to gather proof against Haelga.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Svana Far-Shield",
+    "where": "Haelga's Bunkhouse, Riften",
+    "how": "Talk to Svana; she sends you to collect Marks of Dibella from three people around Riften, then confront Haelga with them."
+   }
+  ],
+  "firstStep": "Obtain a Mark of Dibella from Bolli, a Riften fisherman",
+  "takesYou": [
+   {
+    "place": "Riften Fishery / Bolli's House",
+    "hold": "The Rift",
+    "why": "get a Mark of Dibella from Bolli"
+   },
+   {
+    "place": "Riften Stables",
+    "hold": "The Rift",
+    "why": "get a Mark of Dibella from Hofgrir"
+   },
+   {
+    "place": "Black-Briar Meadery",
+    "hold": "The Rift",
+    "why": "get a Mark of Dibella from Indaryn"
+   },
+   {
+    "place": "Haelga's Bunkhouse",
+    "hold": "The Rift",
+    "why": "confront Haelga, then report to Svana"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Speak to Haelga yourself and get your own Mark of Dibella (added by the Quest Expansion)",
+    "leadsTo": "another way of gathering the marks before you confront her"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Obtain a Mark of Dibella from Bolli, a Riften fisherman",
+     "Obtain a Mark of Dibella from Hofgrir, owner of the Riften Stables",
+     "Obtain a Mark of Dibella from Indaryn, who runs the operations of Black-Briar Meadery",
+     "Confront Haelga with the Marks of Dibella you've collected around Riften",
+     "Speak to Svana"
+    ]
+   },
+   {
+    "branch": "Quest Expansion: Haelga",
+    "objectives": [
+     "Speak to Haelga",
+     "Get your Mark of Dibella"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "A piece of enchanted armor (leveled)",
+    "when": "from Svana at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [
+   "A Strong Nord Woman (Svana, from the Quest Expansion)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Svana Far-Shield",
+    "role": "gives the quest; lives in Haelga's Bunkhouse"
+   },
+   {
+    "name": "Haelga",
+    "role": "the one you confront (cannot be killed)"
+   },
+   {
+    "name": "Bolli",
+    "role": "Riften fisherman with a mark; works the Riften Fishery by day, sleeps at Bolli's House"
+   },
+   {
+    "name": "Hofgrir Horse-Crusher",
+    "role": "runs the Riften Stables, has a mark; at the stables 8 am to 8 pm"
+   },
+   {
+    "name": "Indaryn",
+    "role": "runs Black-Briar Meadery, has a mark; works and sleeps at the meadery"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "the Quest Expansion adds the 'Speak to Haelga' and 'Get your Mark of Dibella' objectives, but the dialogue that triggers them isn't in these files, so when that path opens is a guess"
+   },
+   {
+    "field": "opens",
+    "why": "A Strong Nord Woman is given by Svana in the same mod; these files don't show the condition tying it to finishing this quest"
+   },
+   {
+    "field": "how",
+    "why": "these files don't say how you get each mark (persuade, pay, or threaten)"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:041F91 editedBy USSEP, Caught Red Handed - Quest Expansion.esp, Requiem.esp, LoreRim - Dialogue Patch.esp",
+   "giver INFO Caught Red Handed - Quest Expansion.esp:000800 (Svana Skyrim.esm:01337C); Haelga Skyrim.esm:01335F stageBelow 12",
+   "objectives 10,11,13,20,30,40,50",
+   "reward Skyrim.esm:049313 FavorRewardEnchArmor via QF_FreeformRiften11_00041F91.pSReward",
+   "alias USKPMarksContainer",
+   "FreeformRiften11b Caught Red Handed - Quest Expansion.esp:000802 giver Svana INFO :000805",
+   "Haelga essential=true"
+  ]
+ },
+ {
+  "edid": "FreeformRiften12",
+  "name": "Helping Hand",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Wujeeta, a worker at the fishery, asks you for a healing potion.",
+  "needs": [
+   {
+    "what": "A healing potion",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Wujeeta",
+    "where": "Haelga's Bunkhouse in the evening; by day the Riften Fishery and the docks beside it",
+    "how": "Talk to Wujeeta; she asks you for a healing potion."
+   }
+  ],
+  "firstStep": "Give Wujeeta a healing potion",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Give Wujeeta a healing potion"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Wujeeta",
+    "role": "fishery worker; on the docks 6 to 9 am, inside the Riften Fishery 9 am to 3 pm, back on the docks 3 to 6 pm, then at Haelga's Bunkhouse, where she sleeps"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "no reward is recorded on the quest's script in these files"
+   },
+   {
+    "field": "where",
+    "why": "the dock package is placed only by a nearby landmark (the Thieves Guild headquarters), so the exact spot on the docks isn't pinned down"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:041FD2",
+   "giver INFO Skyrim.esm:041E20 (Wujeeta Skyrim.esm:013382)",
+   "packages AIORiftWujeetaDoSkooma (GetQuestCompleted 041FD2 == 0), RiftenWujeetaBunkhouse18x6, RiftenWujeetaWorkFisheryDocks15x3, RiftenWujeetaWorkFisheryInside9x6, RiftenWujeetaWorkFisheryDocks6x3, RiftenWujeetaSleep0x6"
+  ]
+ },
+ {
+  "edid": "FreeformRiften13",
+  "name": "Pilgrimage",
+  "plugin": "Skyrim.esm (last edited by Requiem.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Alessandra in Riften's Hall of the Dead asks you to carry her ceremonial dagger to Whiterun.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Alessandra",
+    "where": "Hall of the Dead, Riften",
+    "how": "Talk to Alessandra; she wants her ceremonial dagger taken to Andurs, the caretaker of Whiterun's Hall of the Dead."
+   }
+  ],
+  "firstStep": "Bring Alessandra's Dagger to Andurs in Whiterun",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead, Whiterun",
+    "hold": "Whiterun",
+    "why": "give the dagger to Andurs"
+   },
+   {
+    "place": "Hall of the Dead, Riften",
+    "hold": "The Rift",
+    "why": "return to Alessandra"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bring Alessandra's Dagger to Andurs in Whiterun",
+     "Return to Alessandra, an attendant of Riften's Hall of the Dead"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "A healing spell tome (from a Requiem reward list)",
+    "when": "from Alessandra at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Alessandra",
+    "role": "gives the quest; works in Riften's Hall of the Dead, sleeps in the Temple of Mara, may take a midday break at Elgrim's Elixirs"
+   },
+   {
+    "name": "Andurs",
+    "role": "caretaker of Whiterun's Hall of the Dead, where you deliver the dagger"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "the reward is a Requiem leveled list named for a healing tome; which tome isn't in these files"
+   },
+   {
+    "field": "where",
+    "why": "Andurs has a late-morning package that can take him outside toward Dragonsreach; if he isn't in the Hall of the Dead, look nearby"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:043E1A editedBy USSEP, Requiem.esp",
+   "giver INFO Skyrim.esm:043D27 (Alessandra Skyrim.esm:013347); Andurs Skyrim.esm:013BA8 stageBelow 21",
+   "INFO Skyrim.esm:043DF3 dialogue line about the journey",
+   "item Skyrim.esm:043E1E Alessandra's Dagger",
+   "reward Requiem.esp:22FDA6 REQ_LI_HealingTomeReward via QF_FreeformRiften13_00043E1A.pReward",
+   "Andurs AIOWRAndursGoOutside 11x3 (conds on 043E1A)"
+  ]
+ },
+ {
+  "edid": "FreeformRiften14",
+  "name": "Hunt and Gather",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Wylandriah, in Mistveil Keep, has misplaced three things around Skyrim and asks you to fetch them.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Wylandriah",
+    "where": "Mistveil Keep, Riften",
+    "how": "Talk to Wylandriah; she has lost her spoon, ingot and soul gem and remembers roughly where she last had each."
+   }
+  ],
+  "firstStep": "Retrieve Wylandriah's Spoon",
+  "takesYou": [
+   {
+    "place": "Fellstar Farm, Ivarstead",
+    "hold": "The Rift",
+    "why": "her spoon: she last used it at her friend Boti's house"
+   },
+   {
+    "place": "The Frozen Hearth, Winterhold",
+    "hold": "Winterhold",
+    "why": "one of her lost things is here"
+   },
+   {
+    "place": "Mistveil Keep",
+    "hold": "The Rift",
+    "why": "return to Wylandriah"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve Wylandriah's Spoon",
+     "Retrieve Wylandriah's Ingot",
+     "Retrieve Wylandriah's Soul Gem",
+     "Return to Wylandriah"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Wylandriah",
+    "role": "placed in Mistveil Keep, sells goods 8 am to 8 pm, may go out on errands from late morning"
+   },
+   {
+    "name": "Boti",
+    "role": "Wylandriah's friend at Fellstar Farm in Ivarstead, where the spoon was left"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "the records tie the quest to Ivarstead and The Frozen Hearth in Winterhold, but which item is at the inn, and where the third item is, isn't in these files"
+   },
+   {
+    "field": "rewards",
+    "why": "no reward is recorded on the quest's script in these files"
+   },
+   {
+    "field": "where",
+    "why": "Wylandriah's errands package can take her out of the keep from late morning, under conditions these files don't decode"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:043E25",
+   "giver INFO Skyrim.esm:043D2A (Wylandriah Skyrim.esm:019DEF), stageBelow 60",
+   "places Ivarstead and The Frozen Hearth list quest 043E25",
+   "aliases FFRiften14Satchel01-03Alias",
+   "packages AIORiftWylanRunErrands 11x7, DefaultSandboxCurrentLocation256"
+  ]
+ },
+ {
+  "edid": "FreeformRiften15",
+  "name": "Special Delivery",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Bolli, a Riften fisherman, asks you to take a purchase agreement to Markarth.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Bolli",
+    "where": "the Riften Fishery by day; Bolli's House early morning",
+    "how": "Talk to Bolli; he gives you a purchase agreement to deliver to Kleppr in Markarth."
+   }
+  ],
+  "firstStep": "Deliver the purchase agreement to Kleppr in Markarth",
+  "takesYou": [
+   {
+    "place": "Silver-Blood Inn, Markarth",
+    "hold": "The Reach",
+    "why": "hand the purchase agreement to Kleppr"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the purchase agreement to Kleppr in Markarth"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Bolli",
+    "role": "gives the quest; works the Riften Fishery, sleeps at Bolli's House, may drink at the Bee and Barb in the evening"
+   },
+   {
+    "name": "Kleppr",
+    "role": "innkeeper of the Silver-Blood Inn in Markarth, behind the bar most of the day"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "no reward is recorded on the quest's script in these files"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0557E9",
+   "giver INFO Skyrim.esm:055680 (Bolli Skyrim.esm:01334E); Kleppr Skyrim.esm:0133A3 stageBelow 21",
+   "Kleppr MarkarthInnkeeper0x24Package 7x20 Silver-Blood Inn",
+   "Bolli packages RiftenBolliWorkFisheryProper0x0, RiftenBolliSleep3x6, RiftenBolliBeeandBarb20x7"
+  ]
+ },
+ {
+  "edid": "FreeformRiften16",
+  "name": "Bring It!",
+  "plugin": "Skyrim.esm (last edited by Big Tweaks.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Harrald, in Mistveil Keep, wants his sword picked up from the blacksmith.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Harrald",
+    "where": "Mistveil Keep, Riften",
+    "how": "Talk to Harrald; he asks you to collect his sword from Balimund."
+   }
+  ],
+  "firstStep": "Pick up Harrald's Sword from Balimund",
+  "takesYou": [
+   {
+    "place": "The Scorched Hammer",
+    "hold": "The Rift",
+    "why": "collect the sword from Balimund"
+   },
+   {
+    "place": "Mistveil Keep",
+    "hold": "The Rift",
+    "why": "deliver the sword to Harrald"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Pick up Harrald's Sword from Balimund",
+     "Deliver Harrald's Sword"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Harrald",
+    "role": "gives the quest; eats and sleeps in Mistveil Keep, practises at a training dummy from midday and watches the guards practise late evening"
+   },
+   {
+    "name": "Balimund",
+    "role": "Riften blacksmith holding the sword, at The Scorched Hammer"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "his midday practice and evening guard-watching packages don't name a place in these files, so outside meal times he may be outside the keep"
+   },
+   {
+    "field": "rewards",
+    "why": "no reward is recorded on the quest's script in these files"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0557F3 editedBy Big Tweaks.esp",
+   "giver INFO Skyrim.esm:0556B8 (Harrald Skyrim.esm:013361); Balimund stageBelow 21",
+   "item Skyrim.esm:0557F5 Harrald's Sword",
+   "Harrald packages RiftenHarraldPracticeDummy12x7, RiftenHarraldWatchesGuardsPractice21x3, RiftenHarraldSleep0x8"
+  ]
+ },
+ {
+  "edid": "FreeformRiften17",
+  "name": "Truth Ore Consequences",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Hafjorg at Elgrim's Elixirs needs someone to fetch an ore sample from Shor's Stone.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Hafjorg",
+    "where": "Elgrim's Elixirs, Riften",
+    "how": "Talk to Hafjorg; she asks you to pick up an ore sample from Filnjar in Shor's Stone."
+   }
+  ],
+  "firstStep": "Obtain Ore Sample from Filnjar",
+  "takesYou": [
+   {
+    "place": "Shor's Stone",
+    "hold": "The Rift",
+    "why": "get the ore sample from Filnjar"
+   },
+   {
+    "place": "Elgrim's Elixirs",
+    "hold": "The Rift",
+    "why": "bring the sample back to Hafjorg"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Obtain Ore Sample from Filnjar",
+     "Return Ore Sample to Hafjorg"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Hafjorg",
+    "role": "gives the quest; works, eats and sleeps at Elgrim's Elixirs"
+   },
+   {
+    "name": "Filnjar",
+    "role": "works the forge in Shor's Stone by day, sleeps in Filnjar's House, may go to Riften's market in the afternoon"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "no reward is recorded on the quest's script in these files"
+   },
+   {
+    "field": "where",
+    "why": "Filnjar's afternoon trip to Riften's market only happens under conditions these files don't decode; if he isn't in Shor's Stone, check Riften"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:05B2DE",
+   "giver INFO Skyrim.esm:05AFFE (Hafjorg Skyrim.esm:013360); Filnjar Skyrim.esm:0136C3 stageBelow 21",
+   "INFO Skyrim.esm:05B002, 05B2B3 (Hafjorg on Shor's Stone)",
+   "Filnjar packages AIOShorsStoneFilnjarRiftenMarket 13x4, ShorsStoneFilnjarForgePackage0x0, ShorsStoneFilnjarSleepPackage0x6"
+  ]
+ },
+ {
+  "edid": "FreeformRiften18",
+  "name": "Ringmaker",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Madesi, a trader in Riften's market, asks for materials one at a time.",
+  "needs": [
+   {
+    "what": "2 flawless sapphires",
+    "kind": "item"
+   },
+   {
+    "what": "A mammoth tusk",
+    "kind": "item"
+   },
+   {
+    "what": "Gold ore",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Madesi",
+    "where": "his stand in Riften's market square",
+    "how": "Talk to Madesi; he asks you to find two flawless sapphires."
+   }
+  ],
+  "firstStep": "Find 2 flawless sapphires for Madesi",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find 2 flawless sapphires for Madesi",
+     "Bring the flawless sapphires to Madesi",
+     "Find a mammoth tusk for Madesi",
+     "Bring the mammoth tusk to Madesi",
+     "Find gold ore for Madesi",
+     "Bring the gold ore to Madesi",
+     "Speak to Madesi"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "from Madesi at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Madesi",
+    "role": "Argonian trader in Riften's market; trades 6 am to 8 pm, sleeps in Beggar's Row"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "the script pays gold but the amount isn't in these files"
+   },
+   {
+    "field": "where",
+    "why": "the records place him outdoors in Riften and his work package keeps him near the market plaza; an evening package can move him under conditions these files don't decode"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:05B3A5 editedBy USSEP",
+   "giver INFO Skyrim.esm:05AFE3 (Madesi Skyrim.esm:01B072)",
+   "globals ffr18gemtotal=2, ffr18tusktotal=1, ffr18oretotal=1",
+   "reward Skyrim.esm:00000F gold via QF_FreeformRiften18_0005B3A5.pGold",
+   "packages RiftenMadesiShopkeeperPlaza0x0, RiftenMadesiSleep0x6 (Beggar's Row), RiftenMadesiBunkhouse20x4"
+  ]
+ },
+ {
+  "edid": "FreeformRiften19",
+  "name": "Bloody Nose",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Hofgrir at the Riften Stables will brawl you if you take him up on it.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Hofgrir Horse-Crusher",
+    "where": "Riften Stables",
+    "how": "Talk to Hofgrir and agree to a fistfight."
+   }
+  ],
+  "firstStep": "Defeat Hofgrir in an unarmed brawl",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Defeat Hofgrir in an unarmed brawl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you win the brawl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Hofgrir Horse-Crusher",
+    "role": "runs the Riften Stables, 8 am to 8 pm; may be at the Bee and Barb on weekend evenings"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "the script pays gold but the amount (and whether it's a wager) isn't in these files"
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:065C30",
+   "giver INFO Skyrim.esm:065C2E (Hofgrir Skyrim.esm:013351)",
+   "reward Skyrim.esm:00000F gold via QF_FreeformRiften19_00065C30.pGold",
+   "packages RiftenHofgrirStablesWork8x12, AIORiftHofgrirWeekends"
+  ]
+ }
+]
