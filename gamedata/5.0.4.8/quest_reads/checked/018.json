@@ -636,7 +636,7 @@
         {
           "place": "Half-Moon Mill",
           "hold": "Falkreath",
-          "why": "kill the vampire Hern; by day he is inside the house at Half-Moon Mill (asleep from about 8am to 4pm), at night (about 8pm to 5am) he works the sawmill outside"
+          "why": "kill the vampire Hern; by day he is indoors at Half-Moon Mill (asleep from about 8am to 4pm), at night (about 8pm to 5am) he works the sawmill outside"
         },
         {
           "place": "Dark Brotherhood Sanctuary",
@@ -672,7 +672,7 @@
         },
         {
           "name": "Hern",
-          "role": "the vampire; sleeps by day inside the house at Half-Moon Mill and works the sawmill at night"
+          "role": "the vampire; sleeps by day indoors at Half-Moon Mill and works the sawmill at night"
         }
       ],
       "unsure": [
@@ -1019,7 +1019,7 @@
       "firstStep": "Kill Anoriath, the archer, at his food stall in Whiterun or hunting in the plains outside the city",
       "takesYou": [
         {
-          "place": "Whiterun: his food stall in the market by day (about 8am to 7pm), The Drunken Huntsman in the evening and at night, hunting on the plains early on Monday, Wednesday and Friday mornings",
+          "place": "Whiterun: his food stall by day (about 8am to 7pm), The Drunken Huntsman in the evening and at night, hunting on the plains early on Monday, Wednesday and Friday mornings",
           "hold": "Whiterun",
           "why": "kill the archer Anoriath"
         },
@@ -1071,7 +1071,7 @@
         },
         {
           "field": "where",
-          "why": "The stall and the hunting area are markers these files don't name; the times come from his packages. Which market the stall stands in is from the journal ('his food stall in Whiterun'), not a named place."
+          "why": "The stall and the hunting area are markers these files don't name; the times come from his packages."
         }
       ],
       "evidence": [

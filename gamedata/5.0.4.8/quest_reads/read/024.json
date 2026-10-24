@@ -1,0 +1,1165 @@
+[
+ {
+  "edid": "zzzAoMMq00",
+  "name": "Vigilant of Stendarr",
+  "plugin": "Vigilant.esm (last edited by Vigilant - Delayed Start.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "It starts on its own after you move to a new place, then Altano asks you to join the Vigilants of Stendarr.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "comes to you when the quest starts; his home is the Temple of Stendarr",
+    "how": "The quest starts itself when you travel to a new place. Altano invites you to join the Vigilants of Stendarr and says: \"Follow me. I will guide you to the Temple of Stendarr.\""
+   }
+  ],
+  "firstStep": "Join the Vigilants of Stendarr",
+  "takesYou": [
+   {
+    "place": "Temple of Stendarr",
+    "hold": null,
+    "why": "follow Altano there, then talk to Thorondir and Altano"
+   },
+   {
+    "place": "Dawnstar",
+    "hold": null,
+    "why": "the quest marks Dawnstar; the records don't say what happens there"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Follow Altano, or go to the Temple of Stendarr on your own",
+    "leadsTo": "Either way you meet him in the temple"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Join the Vigilants of Stendarr",
+     "Follow Altano or meet him in the Temple of Stendarr",
+     "Talk to Altano",
+     "Talk to Thorondir",
+     "Talk to Altano"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Amulet of Stendarr",
+    "when": "during the quest (the step isn't in these files)"
+   },
+   {
+    "what": "Old Histus Flask",
+    "when": "during the quest (the step isn't in these files)"
+   },
+   {
+    "what": "Blessing of Stendarr (spell)",
+    "when": "during the quest (the step isn't in these files)"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Bloodsucker"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "Vigilant of Stendarr who recruits you; placed in the Temple of Stendarr"
+   },
+   {
+    "name": "Thorondir",
+    "role": "the Keeper, in the Temple of Stendarr"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Vigilant - Delayed Start.esp switches off the start-at-new-game flag. A story event starts it when you change location. That event's conditions aren't in these files, so neither is the exact place or moment Altano finds you."
+   },
+   {
+    "field": "takesYou",
+    "why": "Dawnstar is a quest marker on this quest and its cells feature in the start data, but no objective names it. It may be where Altano meets you or how you reach the temple."
+   },
+   {
+    "field": "where",
+    "why": "The Temple of Stendarr sits in 'Stuhn Ravine', a location added by Vigilant. Nothing in these files says which hold it is in or how you reach it on foot; its outside door is hidden until something turns it on."
+   },
+   {
+    "field": "rewards",
+    "why": "The three rewards are properties on the quest script. These files don't show which step hands them over."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:005CE2",
+   "editedBy Vigilant - Delayed Start.esp (start-game off)",
+   "start event VigilantDelayedStart: change location",
+   "giver INFO Vigilant.esm:005CE7 (Altano, before stage 10)",
+   "INFO Vigilant.esm:005CE9 'Follow me...'",
+   "NPC Vigilant.esm:000D62 Altano @ cell 025091 Temple of Stendarr, loc Stuhn Ravine",
+   "NPC Vigilant.esm:02748B Thorondir",
+   "alias DawnstarLocation",
+   "stage 15 log cond: zzzAoMqOwl (Vigilant.esm:4419E5) running",
+   "door Vigilant.esm:13C06F hidden until 13C070 enabled",
+   "QF_zzAoMMq00_01005CE2: StendarrAmulet Skyrim.esm:0CC844, HistBin Vigilant.esm:119E3B, ProtectAb Vigilant.esm:005CED"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq01",
+  "name": "Bloodsucker",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The second Vigilant quest. Talk to Altano after you join, and he takes you to Whiterun to hunt a vampire.",
+  "needs": [
+   {
+    "what": "Finish Vigilant of Stendarr",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "most likely still in the Temple of Stendarr, where the last quest ended",
+    "how": "Talk to Altano. He leads you to Whiterun's Hall of the Dead."
+   }
+  ],
+  "firstStep": "Talk to Altano",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead",
+    "hold": "Whiterun",
+    "why": "meet Altano there and track down the vampire"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Follow Altano, or go to Whiterun's Hall of the Dead on your own",
+    "leadsTo": "Either way you meet him there"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano",
+     "Follow Altano or meet him in Whiterun's Hall of the Dead",
+     "Talk to Altano",
+     "Find the vampire",
+     "Defeat the vampire",
+     "Report to Altano"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "He Who Cannot Be Touched"
+  ],
+  "closes": [
+   "Lusine, the vampire, is killed"
+  ],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "your Vigilant partner"
+   },
+   {
+    "name": "Lusine",
+    "role": "the vampire you hunt"
+   },
+   {
+    "name": "Joel",
+    "role": "a priest in the quest"
+   },
+   {
+    "name": "Bal",
+    "role": "a recurring figure in the Vigilant quests"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "people",
+    "why": "Lusine, Joel and Bal are placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest script holds a 'Vampire Form' spell. It may be the vampire's own transformation, not something you get, so it isn't listed as a reward."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:005CE3",
+   "giver INFO Vigilant.esm:006259 (Altano, before stage 10)",
+   "NPC Vigilant.esm:0012D7 Lusine (alias Vampire), Vigilant.esm:4B2C8B Joel (alias Priest), Vigilant.esm:0012CA Bal, all in Actor Room 001845",
+   "CELL Skyrim.esm:01F876 Hall of the Dead, Whiterun",
+   "QF_zzAoMMq01_01005CE3.TransSpell Vigilant.esm:0D9D70 Vampire Form"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq02",
+  "name": "He Who Cannot Be Touched",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The third Vigilant quest. Meet Altano in the Bannered Mare to take on a Daedra.",
+  "needs": [
+   {
+    "what": "Finish Bloodsucker",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "the Bannered Mare in Whiterun",
+    "how": "Talk to Altano in the Bannered Mare."
+   }
+  ],
+  "firstStep": "Talk to Altano in the Bannered Mare",
+  "takesYou": [
+   {
+    "place": "The Bannered Mare",
+    "hold": "Whiterun",
+    "why": "meet Altano"
+   },
+   {
+    "place": "Windhelm",
+    "hold": "Eastmarch",
+    "why": "the quest marks Windhelm, most likely where the Daedra is"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano in the Bannered Mare",
+     "Defeat the Daedra",
+     "Report to Altano"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Force (spell)",
+    "when": "during the quest (the step isn't in these files)"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Lazy Afternoon"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "your Vigilant partner"
+   },
+   {
+    "name": "Vernaccus",
+    "role": "the Daedra you defeat"
+   },
+   {
+    "name": "Bal",
+    "role": "a recurring figure in the Vigilant quests"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "takesYou",
+    "why": "The quest has a Windhelm marker and a marker for the Daedra, but no objective says where you fight Vernaccus."
+   },
+   {
+    "field": "people",
+    "why": "Vernaccus and Bal are placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement."
+   },
+   {
+    "field": "rewards",
+    "why": "'Force' is held on the quest script as BanishSpell. It may be given to you to beat the Daedra rather than kept as a reward."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:006271",
+   "giver INFO Vigilant.esm:006275 (Altano, before stage 10)",
+   "NPC Vigilant.esm:00183B Vernaccus (alias Daedra) in Actor Room",
+   "alias WindHelm -> Windhelm",
+   "QF_zzAoMMq02_01006271.BanishSpell Vigilant.esm:3FA407 Force"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq03",
+  "name": "Lazy Afternoon",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The fourth Vigilant quest. Meet Altano in the Bannered Mare, then follow him to Candlehearth Hall in Windhelm.",
+  "needs": [
+   {
+    "what": "Finish He Who Cannot Be Touched",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "the Bannered Mare in Whiterun",
+    "how": "Talk to Altano in the Bannered Mare. He heads for Candlehearth Hall in Windhelm."
+   }
+  ],
+  "firstStep": "Talk to Altano in the Bannered Mare",
+  "takesYou": [
+   {
+    "place": "The Bannered Mare",
+    "hold": "Whiterun",
+    "why": "meet Altano"
+   },
+   {
+    "place": "Candlehearth Hall",
+    "hold": "Eastmarch",
+    "why": "meet Altano and fight a Daedra"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Follow Altano, or go to Candlehearth Hall on your own",
+    "leadsTo": "Either way you meet him there"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano in the Bannered Mare",
+     "Follow Altano or meet him in Candlehearth Hall",
+     "Follow Altano",
+     "Defeat the Daedra",
+     "Report to Altano"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "The Eye of Madness"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "your Vigilant partner"
+   },
+   {
+    "name": "Kathutet",
+    "role": "the Daedra you defeat"
+   },
+   {
+    "name": "Aina the Wench",
+    "role": "the innkeeper in the quest"
+   },
+   {
+    "name": "Bal",
+    "role": "a recurring figure in the Vigilant quests"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "people",
+    "why": "Kathutet, Aina the Wench and Bal are placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward shows on this quest's script."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:00627F",
+   "giver INFO Vigilant.esm:008850 (Altano, before stage 10)",
+   "NPC Vigilant.esm:00183C Kathutet (alias Daedra), Vigilant.esm:4B2C8E Aina the Wench (alias InnKeeper), in Actor Room",
+   "alias TrgLoc -> Windhelm",
+   "places: Candlehearth Hall Skyrim.esm:0209EA lists this quest"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq04",
+  "name": "The Eye of Madness",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The fifth Vigilant quest. Altano, in Candlehearth Hall, has heard a rumor about a madman in Kynesgrove.",
+  "needs": [
+   {
+    "what": "Finish Lazy Afternoon",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "Candlehearth Hall in Windhelm",
+    "how": "Talk to Altano in Candlehearth Hall: \"I overheard a strange rumor from the guards. Apparently, there's a sinister man in Kynesgrove... They say that anyone who makes eye contact with him goes insane.\""
+   }
+  ],
+  "firstStep": "Talk to Altano in Candlehearth Hall",
+  "takesYou": [
+   {
+    "place": "Candlehearth Hall",
+    "hold": "Eastmarch",
+    "why": "get the job from Altano"
+   },
+   {
+    "place": "Kynesgrove",
+    "hold": "Eastmarch",
+    "why": "look into the rumors about the Eye of Madness; Iddra runs the Braidwood Inn there"
+   },
+   {
+    "place": "Riften",
+    "hold": "The Rift",
+    "why": "the quest marks Riften; most likely where you hunt Balor"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Ask the cultist of Meridia for help (optional)",
+    "leadsTo": "Anton the Brilliant can help with the fight against Balor"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano in Candlehearth Hall",
+     "Investigate the rumors about the Eye of Madness",
+     "Report to Altano",
+     "(Optional) Ask the cultist of Meridia for help",
+     "Kill Balor",
+     "Report to Altano"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Eye of Madness (spell)",
+    "when": "during the quest (the step isn't in these files)"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Dine and Dash"
+  ],
+  "closes": [
+   "Balor is killed"
+  ],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "your Vigilant partner"
+   },
+   {
+    "name": "Balor",
+    "role": "the man with the Eye of Madness; you kill him"
+   },
+   {
+    "name": "Iddra",
+    "role": "innkeeper of the Braidwood Inn, Kynesgrove"
+   },
+   {
+    "name": "Anton the Brilliant",
+    "role": "the cultist of Meridia who can help"
+   },
+   {
+    "name": "Bal",
+    "role": "a recurring figure in the Vigilant quests"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "takesYou",
+    "why": "The quest has Riften and Kynesgrove markers. No objective says where Balor is or where to find the cultist."
+   },
+   {
+    "field": "people",
+    "why": "Balor, Anton the Brilliant and Bal are placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement. These files don't show Iddra's part, only that she is in the quest."
+   },
+   {
+    "field": "rewards",
+    "why": "'Eye of Madness' is a spell on the quest script. It could be Balor's power rather than something you keep."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:0082EA",
+   "giver INFO Vigilant.esm:00934C (Altano, before stage 10) - Kynesgrove rumor line",
+   "NPC Vigilant.esm:0012D5 Balor, Vigilant.esm:4CA976 Anton the Brilliant (alias Cultist), in Actor Room",
+   "NPC Skyrim.esm:013662 Iddra @ Braidwood Inn",
+   "aliases Riften, KynesGrove",
+   "QF_zzAoMMq04_010082EA.MadEyeSpell Vigilant.esm:009366"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq05",
+  "name": "Dine and Dash",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The sixth Vigilant quest. Altano, in Candlehearth Hall, has been called to Stendarr's Beacon by his old mentor.",
+  "needs": [
+   {
+    "what": "Finish The Eye of Madness",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "Candlehearth Hall in Windhelm",
+    "how": "Talk to Altano in Candlehearth Hall: \"Apparently, she's been seen in Riften. My old mentor summoned us to Stendarr's Beacon, so let's go talk to him.\""
+   }
+  ],
+  "firstStep": "Talk to Altano in Candlehearth Hall",
+  "takesYou": [
+   {
+    "place": "Stendarr's Beacon",
+    "hold": "The Rift",
+    "why": "meet Altano and his mentor Jacob, a short walk from Riften"
+   },
+   {
+    "place": "The Bee and Barb",
+    "hold": "The Rift",
+    "why": "the Daedra was seen at this Riften inn; fight it, then settle up with Keerava"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Pay Keerava's 1000 gold yourself",
+    "leadsTo": "Settles the damage to the Bee and Barb"
+   },
+   {
+    "choice": "Borrow the gold from Altano (optional)",
+    "leadsTo": "Altano covers it so you can pay Keerava"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano in Candlehearth Hall",
+     "Follow Altano or meet him at Stendarr's Beacon",
+     "Follow Altano or meet him in the Bee and Barb",
+     "Defeat the Daedra",
+     "Talk to Keerava",
+     "Pay 1000 gold to Keerava",
+     "(Optional) Borrow gold from Altano",
+     "Report to Jacob"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "Thus Spoke Khajiit"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "your Vigilant partner; can lend you the gold"
+   },
+   {
+    "name": "Jacob",
+    "role": "Altano's old mentor, at Stendarr's Beacon"
+   },
+   {
+    "name": "Keerava",
+    "role": "owner of the Bee and Barb, Riften; wants 1000 gold"
+   },
+   {
+    "name": "Amkaos",
+    "role": "the Daedra you defeat"
+   },
+   {
+    "name": "Bal",
+    "role": "a recurring figure in the Vigilant quests"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "people",
+    "why": "Jacob, Amkaos and Bal are placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement. Jacob is at Stendarr's Beacon according to Altano's line and the quest markers."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest script has a gold property. It is most likely the loan from Altano or the 1000 you pay Keerava, not a reward."
+   },
+   {
+    "field": "choices",
+    "why": "These files don't show whether borrowing from Altano costs you anything later."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:0098C9",
+   "giver INFO Vigilant.esm:009E31 (Altano, before stage 10)",
+   "INFO Vigilant.esm:009E44 'My men found her in the Bee and Barb in Riften...'",
+   "NPC Skyrim.esm:013365 Keerava @ The Bee and Barb, Riften",
+   "NPC Vigilant.esm:000D66 Jacob, Vigilant.esm:00183D Amkaos, in Actor Room",
+   "aliases TrgLoc01 Stendarr's Beacon (Skyrim.esm:108A5A, The Rift, 0.5 km from Riften), TrgLoc02 Riften",
+   "QF_zzAoMMq05_010098C9.Gold001"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq06",
+  "name": "Thus Spoke Khajiit",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The seventh Vigilant quest. Talk to Altano, then meet him in the Ragged Flagon to find a Khajiit named Jo'vanni.",
+  "needs": [
+   {
+    "what": "Finish Dine and Dash",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "most likely at Stendarr's Beacon, where Dine and Dash ended",
+    "how": "Talk to Altano. He sends you to meet him in the Ragged Flagon in Riften."
+   }
+  ],
+  "firstStep": "Talk to Altano",
+  "takesYou": [
+   {
+    "place": "The Ragged Flagon",
+    "hold": "The Rift",
+    "why": "meet Altano under Riften"
+   },
+   {
+    "place": "Ivarstead",
+    "hold": "The Rift",
+    "why": "the quest marks Ivarstead, most likely where you find Jo'vanni"
+   },
+   {
+    "place": "Jo'vanni's Dream Theater",
+    "hold": null,
+    "why": "inside Jo'vanni's dream: drive out the Daedra and get Campaner'Ra's pelt from Mar'so"
+   },
+   {
+    "place": "Stendarr's Beacon",
+    "hold": "The Rift",
+    "why": "return there with Altano at the end"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Ask the cultist of Meridia for help (optional)",
+    "leadsTo": "Anton the Brilliant can help"
+   },
+   {
+    "choice": "Kill Jo'vanni",
+    "leadsTo": "Jo'vanni's voice asks why you killed him; the quest has a fail ending"
+   },
+   {
+    "choice": "Drive the Daedra out of Jo'vanni and bring him Campaner'Ra's pelt",
+    "leadsTo": "Jo'vanni thanks you and the quest completes"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano",
+     "Meet Altano in the Ragged Flagon",
+     "Find Jo'vanni",
+     "(Optional) Ask the cultist of Meridia for help",
+     "That one! It is inside Jo'vanni! Make it leave, please!",
+     "Take Campaner'Ra's pelt from Mar'so and bring it back to Jo'vanni! Please, grant this one's last request!",
+     "Jo'vanni cannot wait! Hurry! Khajiit wishes to see Campaner'Ra again!",
+     "Report to Altano"
+    ]
+   },
+   {
+    "branch": "Jo'vanni killed",
+    "objectives": [
+     "Why did you kill Jo'vanni? Why? Jo'vanni simply wished to see Campaner'Ra!"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Staff of Moderate Light",
+    "when": "during the quest; it is held as the 'Meridia' staff, so most likely tied to the cultist's help"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Old Regrets"
+  ],
+  "closes": [
+   "Jo'vanni can die, which fails the quest"
+  ],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "your Vigilant partner"
+   },
+   {
+    "name": "Jo'vanni",
+    "role": "the Khajiit you are looking for"
+   },
+   {
+    "name": "Campaner'Ra",
+    "role": "Jo'vanni's late wife, seen in his dream"
+   },
+   {
+    "name": "Mar'so",
+    "role": "holds Campaner'Ra's pelt in the dream"
+   },
+   {
+    "name": "Empusa",
+    "role": "the Daedra in Jo'vanni's dream"
+   },
+   {
+    "name": "Anton the Brilliant",
+    "role": "the cultist of Meridia who can help"
+   },
+   {
+    "name": "Jacob",
+    "role": "Altano's mentor"
+   },
+   {
+    "name": "Bal",
+    "role": "a recurring figure in the Vigilant quests"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "where",
+    "why": "The first objective doesn't say where Altano is. At the end Altano says \"Let's return to Stendarr's Beacon, then. They must have caught the summoner by now.\""
+   },
+   {
+    "field": "choices",
+    "why": "The records have a fail ending and a 'why did you kill Jo'vanni' objective, but they don't show which actions lead to each."
+   },
+   {
+    "field": "people",
+    "why": "Jo'vanni, Anton the Brilliant, Jacob and Bal are placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:009E68",
+   "giver INFO Vigilant.esm:00A3D7 (Altano, before stage 10)",
+   "INFO Vigilant.esm:00A3FD 'Let's return to Stendarr's Beacon...'",
+   "stage 90 log 'Thank you. Jo'vanni is very grateful to you.' (unless stage 79)",
+   "stage 999 fails",
+   "CELL Vigilant.esm:00185C Jo'vanni's Dream Theater: Campaner'Ra 001844, Mar'so 001842, Empusa 00A3CE",
+   "alias Ivarsted -> Ivarstead",
+   "QF_zzAoMMq06_01009E68.StaffMeridia Vigilant.esm:4CCD7F"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq07",
+  "name": "Old Regrets",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The eighth Vigilant quest. Back at Stendarr's Beacon, Jacob's past catches up with him.",
+  "needs": [
+   {
+    "what": "Finish Thus Spoke Khajiit",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Jacob",
+    "where": "Stendarr's Beacon, a short walk from Riften",
+    "how": "Talk to Jacob at Stendarr's Beacon."
+   }
+  ],
+  "firstStep": "Talk to Jacob",
+  "takesYou": [
+   {
+    "place": "Stendarr's Beacon",
+    "hold": "The Rift",
+    "why": "defend Jacob and face Bal"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Jacob",
+     "Defeat Summoner's Mercenary",
+     "Watch over Jacob",
+     "Defeat Bal",
+     "Talk to Altano",
+     "Give the Mace of Molag Bal to Altano"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "No Mercy"
+  ],
+  "closes": [
+   "Bal is defeated"
+  ],
+  "people": [
+   {
+    "name": "Jacob",
+    "role": "Altano's mentor; you watch over him"
+   },
+   {
+    "name": "Altano",
+    "role": "takes the Mace of Molag Bal from you"
+   },
+   {
+    "name": "Bal",
+    "role": "the enemy you defeat"
+   },
+   {
+    "name": "Taranis",
+    "role": "in the quest as the 'summoner'; placed at the Pond House by Witch's Pond"
+   },
+   {
+    "name": "Orthe",
+    "role": "a Daedra in the fight"
+   },
+   {
+    "name": "Ranyu",
+    "role": "a Daedra in the fight"
+   },
+   {
+    "name": "Rahel",
+    "role": "a ghost tied to Bal"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal opens on 'Talk to Jacob', but the dialogue that starts the quest is spoken by Taranis, the 'summoner'. These files don't show where that talk happens or how it fits with Jacob. Jacob is placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is on this quest's script. You hand the Mace of Molag Bal to Altano."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:00A3FE",
+   "giver INFO Vigilant.esm:00EA72 (Taranis/alias Umbra, before stage 10)",
+   "NPC Vigilant.esm:0012CD Taranis @ Pond House 16E303, Witch's Pond",
+   "NPC Vigilant.esm:000D66 Jacob, 0012CA Bal, 00E4FE Rahel (BalGhost), 00183E Orthe, 00183F Ranyu, in Actor Room",
+   "alias StendarrBeaconLocation",
+   "INFO Vigilant.esm:00EA89 'witch and her child... south of Ivarstead'"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq08",
+  "name": "No Mercy",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The ninth Vigilant quest. You are sent to hunt a witch and her daughter living in a shack south of Ivarstead.",
+  "needs": [
+   {
+    "what": "Finish Old Regrets",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano or Jacob",
+    "where": "Stendarr's Beacon, at the end of Old Regrets",
+    "how": "At the end of Old Regrets you're told: \"Before I leave, I have one more task for you. I heard a rumor of a witch and her child living in a shack south of Ivarstead.\""
+   }
+  ],
+  "firstStep": "Hunt down the witches",
+  "takesYou": [
+   {
+    "place": "Pond House, at Witch's Pond south of Ivarstead",
+    "hold": "The Rift",
+    "why": "find the witches Carene and Lilian"
+   },
+   {
+    "place": "Altar of Molag Bal",
+    "hold": null,
+    "why": "defeat the Ugly One"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Hunt down the witches",
+    "leadsTo": "One way to finish the quest"
+   },
+   {
+    "choice": "Negotiate with Altano (optional)",
+    "leadsTo": "A separate ending"
+   },
+   {
+    "choice": "Defeat Altano (optional)",
+    "leadsTo": "A separate ending"
+   },
+   {
+    "choice": "Defeat the Ugly One",
+    "leadsTo": "A third ending, at the Altar of Molag Bal"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "hunt the witches",
+    "objectives": [
+     "Hunt down the witches"
+    ]
+   },
+   {
+    "branch": "stand against Altano",
+    "objectives": [
+     "(Optional) Negotiate with Altano",
+     "(Optional) Defeat Altano"
+    ]
+   },
+   {
+    "branch": "the Ugly One",
+    "objectives": [
+     "Defeat the Ugly One"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Blessing of Stendarr (spell)",
+    "when": "depends on the ending (the records don't say which)"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "The Endless Fall"
+  ],
+  "closes": [
+   "Carene and her daughter Lilian die if you hunt them down",
+   "Altano can be fought and beaten"
+  ],
+  "people": [
+   {
+    "name": "Carene",
+    "role": "the witch (the mother), at the Pond House"
+   },
+   {
+    "name": "Lilian",
+    "role": "her daughter, at the Pond House"
+   },
+   {
+    "name": "Altano",
+    "role": "can be negotiated with or fought"
+   },
+   {
+    "name": "Ugly One",
+    "role": "a boss at the Altar of Molag Bal"
+   },
+   {
+    "name": "Jacob",
+    "role": "Altano's mentor"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The rumor line is in Old Regrets and the speaker isn't recorded. No Mercy's own dialogue is spoken by Carene, so talking to her at the Pond House is probably what moves it along. Most likely the end of Old Regrets starts it."
+   },
+   {
+    "field": "choices",
+    "why": "The quest has three separate completing endings: one for hunting the witches, one for the Altano branch, one for the Ugly One. These files don't show what decides between them or whether the Ugly One follows the Altano branch."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest script also holds 'Cursed Arm' and the 'Mark of Molag Bal' spell. They look like curses tied to one ending, so they aren't listed as rewards. Which ending gives what isn't in these files."
+   },
+   {
+    "field": "opens",
+    "why": "A related quest, 'Art of Mercy', opens with 'Talk to Carene' and 'Stop Carene'. Nothing here links it to a No Mercy ending."
+   },
+   {
+    "field": "takesYou",
+    "why": "These files only place the Altar of Molag Bal as a Vigilant location, with no hold."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:00EA8A",
+   "giver INFO Vigilant.esm:00EFF5 (Carene/alias Mom, before stage 200)",
+   "INFO Vigilant.esm:00EA89 (tagged Old Regrets) south-of-Ivarstead rumor",
+   "NPC Vigilant.esm:0012D0 Carene, 0012D2 Lilian @ Pond House 16E303, Witch's Pond",
+   "NPC Vigilant.esm:4D0374 Ugly One @ Altar of Molag Bal 004102",
+   "completing stages 30, 230, 310",
+   "QF_zzAoMMq08_0100EA8A: StendarrProtect 005CED, CursedArm 31C3B7, AbMolagCurse 013BEA",
+   "related QUST Vigilant.esm:4D0376 zzzAoMMqGoodEnd Art of Mercy"
+  ]
+ },
+ {
+  "edid": "zzzAoMMq09",
+  "name": "The Endless Fall",
+  "plugin": "Vigilant.esm",
+  "canDo": "talk",
+  "canDoWhy": "The tenth Vigilant quest. Talk to Altano, then fight through Daedra and chase him down to face Molag Bal.",
+  "needs": [
+   {
+    "what": "Finish No Mercy",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Altano",
+    "where": "where No Mercy left him; the records don't say",
+    "how": "Talk to Altano."
+   }
+  ],
+  "firstStep": "Talk to Altano",
+  "takesYou": [
+   {
+    "place": "Stendarr's Beacon Underground",
+    "hold": null,
+    "why": "the ghosts of people from earlier Vigilant quests are here"
+   },
+   {
+    "place": "Altar of Molag Bal",
+    "hold": null,
+    "why": "defeat Molag Bal"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Altano",
+     "Defeat the Daedra",
+     "Look for survivors",
+     "Chase Altano",
+     "Defeat Molag Bal"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Curse of Stendarr (spell)",
+    "when": "during or at the end (the records don't say which)"
+   },
+   {
+    "what": "Spell Tome (Master): Conjure Molag Bal",
+    "when": "during or at the end (the records don't say which)"
+   },
+   {
+    "what": "Mace of Molag Bal",
+    "when": "during or at the end (the records don't say which)"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "The Landing"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Altano",
+    "role": "you chase him"
+   },
+   {
+    "name": "Molag Bal",
+    "role": "the final enemy, at the Altar of Molag Bal"
+   },
+   {
+    "name": "Genghis",
+    "role": "a Daedra you fight"
+   },
+   {
+    "name": "Thorondir",
+    "role": "the Keeper, Temple of Stendarr"
+   },
+   {
+    "name": "Gwyneth",
+    "role": "the librarian, Temple of Stendarr"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No condition in these files ties this quest to the one before it. The order comes from the series numbering (Vigilant quests 00 to 10) and from each first objective sending you to where the last quest ended."
+   },
+   {
+    "field": "starts",
+    "why": "The journal's first objective already shows when the quest begins, so the end of the previous Vigilant quest most likely starts it. The script that does this isn't in these files; Altano's dialogue moves it on."
+   },
+   {
+    "field": "takesYou",
+    "why": "'Look for survivors' doesn't say where. Gwyneth and Thorondir of the Temple of Stendarr are in the quest, so it may be the temple."
+   },
+   {
+    "field": "rewards",
+    "why": "The three items are properties on the quest script; these files don't show when you get them. The Landing goes on to say 'Destroy the Mace of Molag Bal', so you most likely hold the mace when this quest ends."
+   },
+   {
+    "field": "people",
+    "why": "Genghis is placed in a holding cell ('Actor Room') until the quest moves them into the world, so where you meet them comes from the objectives, not from a placement."
+   }
+  ],
+  "evidence": [
+   "QUST Vigilant.esm:00EFF7",
+   "giver INFO Vigilant.esm:011B3C (Altano, before stage 10)",
+   "INFO Vigilant.esm:011B49 '...Where in Oblivion do you think you're going?'",
+   "NPC Vigilant.esm:0072AA Molag Bal @ Altar of Molag Bal 004102",
+   "ghost NPCs 170A2F-170A35 @ Stendarr's Beacon Underground 00185B",
+   "NPC 02748B Thorondir, 02749A Gwyneth @ Temple of Stendarr",
+   "QF_zzAoMMq09_0100EFF7: StendarrCurse 005CEE, PieceOfBal 10C89F, MaceOfMolagBal 00D9FC",
+   "next QUST Vigilant.esm:011B75 zzzAoMMq10 The Landing"
+  ]
+ }
+]
