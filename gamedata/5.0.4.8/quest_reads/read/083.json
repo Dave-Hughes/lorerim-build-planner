@@ -4,7 +4,7 @@
   "name": "Delivery",
   "plugin": "Skyrim.esm",
   "canDo": "talk",
-  "canDoWhy": "Hillevi Cruel-Sea in Windhelm has a delivery for the court wizard; take it to him.",
+  "canDoWhy": "Hillevi Cruel-Sea in Windhelm has a delivery for Wuunferth the Unliving in the Palace of the Kings; take it to him.",
   "needs": [],
   "starts": [
    {
@@ -46,7 +46,7 @@
    },
    {
     "name": "Wuunferth the Unliving",
-    "role": "receives it; court wizard, spends the day in his lab upstairs in the Palace of the Kings"
+    "role": "receives it; spends the day in his lab upstairs in the Palace of the Kings"
    }
   ],
   "unsure": [
@@ -300,7 +300,7 @@
    },
    {
     "name": "Orgnar",
-    "role": "innkeeper at the Sleeping Giant Inn; mentions the love triangle"
+    "role": "at the Sleeping Giant Inn; mentions the love triangle"
    }
   ],
   "unsure": [
@@ -605,11 +605,11 @@
   "people": [
    {
     "name": "Gorm",
-    "role": "housecarl in Highmoon Hall, Morthal; writes the letter"
+    "role": "in Highmoon Hall, Morthal; writes the letter"
    },
    {
     "name": "Captain Aldis",
-    "role": "commander at Castle Dour, Solitude; receives the letter"
+    "role": "at Castle Dour, Solitude; receives the letter"
    }
   ],
   "unsure": [
@@ -624,10 +624,6 @@
    {
     "field": "takesYou",
     "why": "Aldis is placed in Castle Dour and sleeps there from 8 pm; by day he may be out in Solitude near the castle."
-   },
-   {
-    "field": "people",
-    "why": "Gorm's role as housecarl comes from another quest's alias name, not a stated title."
    },
    {
     "field": "rewards",
@@ -748,7 +744,7 @@
    },
    {
     "name": "Kust",
-    "role": "in Falkreath (tied to the Hall of the Dead); you would turn Lod in to him"
+    "role": "in Falkreath (tied to the House of Arkay); you would turn Lod in to him"
    }
   ],
   "unsure": [

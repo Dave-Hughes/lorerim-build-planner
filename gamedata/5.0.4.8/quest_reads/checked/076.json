@@ -1,0 +1,1221 @@
+{
+  "checks": [
+    {
+      "edid": "ccBGSSSE001_Radiant_1",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' kept. canDoWhy said 'repeatable'; nothing in the records shows the bounty repeats, so the word is dropped (Bob's ruling, 23 Oct)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in the records gates it; the reader's unsure note is fair. Swims-In-Deep-Water's own quest list in his record holds his lesson chain and Angler Acquaintances, not these bounties."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Stage 0 log: 'Swims-In-Deep-Water has given me a fishing bounty.'"
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Placed in the Riften Fishery; work package 5 am for 15 hours, then Haelga's Bunkhouse from 8 pm and sleeps there midnight to 5."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the bounty script's gold property; amount not in the files, kept with the unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ccBGSSSE001_Radiant_2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' kept; 'repeatable' dropped from canDoWhy, no record shows it repeats."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Stage 0 log names Swims-In-Deep-Water."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objectives 1000-1003 are the four bounty letters."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the bounty script; kept with the unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ccBGSSSE001_Radiant_3",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'radiant' kept; 'repeatable' dropped from canDoWhy."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Objective 1000: Read Bounty: Cleaning Our Waterways."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Second stop said 'that city's palace or longhouse'; the records only hold the Jarl and Steward people, not where they sit, so the building is dropped and an unsure note added. People entry for the jarl also said he pays 'if there is no steward to see', which contradicts the reader's own note that nothing shows what picks the ending; reworded."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the junk-bounty script; kept with the unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ccBGSSSE001_Start_MQ1",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No giver: the opening log is a rumor, and the fishing quest-start line has no conditions and doesn't run at game start. What fires it isn't recorded; unsure note stands."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right; nothing ties a person or object to the opening."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 0."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Hold was 'Falkreath', read from where the Guardian Stones are. Nothing in the records says so: the stones aren't in the places index and Riverwood is listed in Whiterun Hold. Hold set to not stated, with an unsure note."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward property in the records; empty with the reader's note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "No record links it to Angler Acquaintances; empty with the note."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ccBGSSSE001_Start_MQ2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Opening log sends you to the fishery with no giver. The delayed-start patch edits this quest and the first quest of each chain (In A Pinch, Catch of the Day), not First Catch; what it waits on isn't in the files, as the reader says."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Both are in the quest's roles and named in the opening log."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Both placed in the Riften Fishery. Viriya: docks work 6 am for 12 hours while End of the Line isn't done, Haelga's Bunkhouse from 6 pm, sleeps there to 6 am, crab stall (no place given) after End of the Line. Swims-In-Deep-Water: inside the fishery 5 am to 8 pm, bunkhouse after."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the opening log. Added an unsure note: Keerava of the Bee and Barb is tied to the quest in the records, part unknown."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "In A Pinch opens 'I met Viriya... she handed me a bounty letter'; Catch of the Day opens with Swims-In-Deep-Water's list; this quest's last log hopes 'their assignments' follow. Listed with the reader's unsure note."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HMADQ01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The setting of 10 on the opening is unexplained; reader's unsure note stands."
+        },
+        "starts.who": {
+          "verdict": "fix",
+          "note": "Was 'a hunter or trapper, or a wandering fisherman'. The opening's conditions are only: in the hunters' faction or in the fishermen's faction. 'Trapper' and 'wandering' aren't in the records; trimmed. People role trimmed the same way."
+        },
+        "starts.where": {
+          "verdict": "fix",
+          "note": "Was 'out in the wild'. The records set the quest up when you change location in a hold (nine holds plus Solstheim); where the hunter or fisherman stands isn't recorded. Reworded to 'wherever you meet one'."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Map marker role and the mod's purpose support 'goes on your map'; the line itself isn't in the files, as noted."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the den script; amount and hand-in not recorded; kept with note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HMADQ02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "fix",
+          "note": "Value (empty) is right, but the unsure note said it is 'most likely handed out the same way, through a hunter'. The quest has no hunter role (only the den, its marker and its leader) and starts from a script event; sharing the pay script says nothing about who hands it out. Note rewritten."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold through the same den script's gold property; kept with note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ACFDragonbridgeForsworn",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Quest-giver role filled with Tasius Tragus, last objective is to tell him; the offering line isn't in the files, as noted."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "He isn't in the people index; only his Dragon Bridge faction places him, and his packages are the generic shared ones. Reader's unsure note stands."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Story event on changing location, node named for Dragon Bridge."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The note offered Dragon Bridge Overlook as the one nearby camp; Deepwood Redoubt is also a Forsworn camp a short walk from Dragon Bridge in the places index. Both listed; hold reworded to the Reach near Dragon Bridge."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the job script; kept with note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ACFFalkreathBandits",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.where": {
+          "verdict": "fix",
+          "note": "Value kept (placed in Gray Pine Goods; shop package 8 am for 12 hours; vendor 8 to 20; Dead Man's Drink 8 pm for 3 hours under an undecoded condition). The unsure note said 'if the Stormcloaks take Falkreath'; the records only show the move happens when he is in the exiled-family faction, nothing about who causes it. Trimmed, and noted the shop's location name Gray Pine Luxuries."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Story event on changing location for Falkreath; Solaf role; last objective 'Tell Solaf the warlord is dead.'"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Hold filled as Falkreath. Added Dragon's Teeth Prison to the list of possible camps in the unsure note."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the job script; kept with note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ACFKarthwastenForsworn",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Empty with the Sanuarach Mine note is right; the line's conditions aren't in the files."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Placed in Karthwasten Hall; outside sandbox 7 am for 12 hours (its condition isn't decoded, minor)."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Line quoted matches the dialogue record tied to this quest word for word."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Hold filled as the Reach; camp list in the note matches the places index."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from the job script; kept with note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "ccBGSSSE001_Radiant_1",
+      "name": "Stocking Up",
+      "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A fishing bounty that Swims-In-Deep-Water hands you at the Riften Fishery; an innkeeper somewhere wants fresh fish.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Swims-In-Deep-Water",
+          "where": "inside the Riften Fishery on the Riften docks (he works there from early morning into the evening; nights at Haelga's Bunkhouse)",
+          "how": "He gives you a fishing bounty letter. Read it to learn which innkeeper wants fish and which kind."
+        }
+      ],
+      "firstStep": "Read the bounty letter Swims-In-Deep-Water gave you",
+      "takesYou": [
+        {
+          "place": "an inn in a town picked when the bounty is given",
+          "hold": "varies",
+          "why": "bring the fish to the innkeeper"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Read the bounty letter (one of: Supply of Brook Bass, Supply of Salmon, Supply of Catfish, Supply of Arctic Grayling)",
+            "Obtain the number of fish the bounty asks for: brook bass, salmon, catfish or arctic grayling",
+            "Speak to the innkeeper"
+          ]
+        },
+        {
+          "branch": "innkeeper dies",
+          "objectives": [
+            "The bounty fails if the innkeeper dies before you hand in the fish"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when you hand the fish to the innkeeper"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Swims-In-Deep-Water",
+          "role": "gives the bounty letter, Riften Fishery"
+        },
+        {
+          "name": "the innkeeper (picked by the bounty)",
+          "role": "wants the fish and pays you"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records don't show what Swims-In-Deep-Water needs from you before he hands out bounties; it is likely after you have introduced yourself to him in Angler Acquaintances, but that link isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The town, innkeeper and number of fish are chosen when the bounty is given; the records only hold the slots, not the list of possible inns."
+        },
+        {
+          "field": "rewards",
+          "why": "The amount of gold is set by the quest's script and isn't in these files."
+        }
+      ],
+      "evidence": [
+        "ccBGSSSE001-Fish.esm:000B98 stages 0,10-13,200,250; objectives 0-3,200,1000-1003",
+        "quest_givers reward ccBGSSSE001_RadiantFishQuest.Gold001",
+        "people_schedules ccBGSSSE001-Fish.esm:0008F8 packages WorkFisheryInside5x15, Bunkhouse20x4, Sleep0x5",
+        "editedBy Synthesis - Gameplay Overwrite.esp"
+      ]
+    },
+    {
+      "edid": "ccBGSSSE001_Radiant_2",
+      "name": "Further Study",
+      "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A fishing bounty from Swims-In-Deep-Water: an alchemist in some town wants a rare fish for potion work.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Swims-In-Deep-Water",
+          "where": "inside the Riften Fishery on the Riften docks (he works there from early morning into the evening; nights at Haelga's Bunkhouse)",
+          "how": "He gives you a fishing bounty letter. Read it to learn which alchemist wants which fish."
+        }
+      ],
+      "firstStep": "Read the bounty letter Swims-In-Deep-Water gave you",
+      "takesYou": [
+        {
+          "place": "an alchemist's shop in a town picked when the bounty is given",
+          "hold": "varies",
+          "why": "bring the fish to the alchemist"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Read the bounty letter (one of: Pygmy Sunfish Specimen, Angler Larvae Specimen, Pearlfish Specimen, Spadefish Specimen)",
+            "Obtain the fish the bounty asks for: a pygmy sunfish, an angler larvae, a pearlfish or a spadefish",
+            "Speak to the alchemist"
+          ]
+        },
+        {
+          "branch": "alchemist dies",
+          "objectives": [
+            "The bounty fails if the alchemist dies before you hand in the fish"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when you hand the fish to the alchemist"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Swims-In-Deep-Water",
+          "role": "gives the bounty letter, Riften Fishery"
+        },
+        {
+          "name": "the alchemist (picked by the bounty)",
+          "role": "wants the fish and pays you"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records don't show what Swims-In-Deep-Water needs from you before he hands out bounties; likely after Angler Acquaintances, but that link isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The town and alchemist are chosen when the bounty is given; the records only hold the slots, not the list of possible shops."
+        },
+        {
+          "field": "rewards",
+          "why": "The amount of gold is set by the quest's script and isn't in these files."
+        }
+      ],
+      "evidence": [
+        "ccBGSSSE001-Fish.esm:000C2F stages 0,10-13,200,250; objectives 0-3,200,1000-1003",
+        "quest_givers reward ccBGSSSE001_RadiantFishQuest.Gold001",
+        "people_schedules ccBGSSSE001-Fish.esm:0008F8",
+        "editedBy Synthesis - Gameplay Overwrite.esp"
+      ]
+    },
+    {
+      "edid": "ccBGSSSE001_Radiant_3",
+      "name": "Rubbish Retrieval",
+      "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A fishing bounty from Swims-In-Deep-Water: a jarl wants the rubbish fished out of the water around their city.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Swims-In-Deep-Water",
+          "where": "inside the Riften Fishery on the Riften docks (he works there from early morning into the evening; nights at Haelga's Bunkhouse)",
+          "how": "He gives you a fishing bounty letter, Bounty: Cleaning Our Waterways. Read it to learn which city's waters need cleaning."
+        }
+      ],
+      "firstStep": "Read Bounty: Cleaning Our Waterways",
+      "takesYou": [
+        {
+          "place": "a fishing spot in or around a city picked when the bounty is given",
+          "hold": "varies",
+          "why": "fish up rubbish from the water"
+        },
+        {
+          "place": "the same city, to find the jarl's steward (or the jarl)",
+          "hold": "varies",
+          "why": "collect the bounty"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Read Bounty: Cleaning Our Waterways",
+            "Fish up the number of items the bounty asks for from the water in the named city",
+            "Collect the bounty from the jarl's steward (or from the jarl, when the quest points you to them instead)"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when you collect the bounty from the steward or the jarl"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Swims-In-Deep-Water",
+          "role": "gives the bounty letter, Riften Fishery"
+        },
+        {
+          "name": "the jarl of the city (picked by the bounty)",
+          "role": "posted the bounty; sometimes the journal sends you to the jarl instead of the steward to collect"
+        },
+        {
+          "name": "the jarl's steward",
+          "role": "pays the bounty"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records don't show what Swims-In-Deep-Water needs from you before he hands out bounties; likely after Angler Acquaintances, but that link isn't in these files."
+        },
+        {
+          "field": "steps",
+          "why": "The journal has two endings, one sending you to the steward and one to the jarl; what picks between them isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The amount of gold is set by the quest's script and isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The records only name the jarl and steward of the chosen city, not the building they are in."
+        }
+      ],
+      "evidence": [
+        "ccBGSSSE001-Fish.esm:000C8C stages 0,10,50,60,200; objectives 0,50,60,1000",
+        "quest_givers reward ccBGSSSE001_RadiantJunkQuest.Gold001",
+        "people_schedules ccBGSSSE001-Fish.esm:0008F8",
+        "editedBy Synthesis - Gameplay Overwrite.esp"
+      ]
+    },
+    {
+      "edid": "ccBGSSSE001_Start_MQ1",
+      "name": "First Catch",
+      "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "The journal opens on a rumor of a good fishing spot at a camp near the Guardian Stones, south of Riverwood.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Visit the fishing camp south of Riverwood",
+      "takesYou": [
+        {
+          "place": "the fishing camp near the Guardian Stones, south of Riverwood",
+          "hold": "not in the records (south of Riverwood, which is in Whiterun Hold)",
+          "why": "the fishing spot; a copy of Line and Lure sits at the fisherman's camp"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Visit the fishing camp south of Riverwood",
+            "Equip a fishing rod",
+            "(Optional) Read Line and Lure",
+            "Catch a fish using fishing supplies"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Nothing in these files shows what opens the journal entry: no dialogue, book or event is tied to it, so it most likely starts on its own from a script, but when isn't recorded."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records; the fishing rod and supplies the quest refers to may come from the camp, but the files don't show where you get them."
+        },
+        {
+          "field": "opens",
+          "why": "It may lead to Angler Acquaintances at the Riften Fishery, but no link between the two is in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The camp is only a map marker in the quest. The Guardian Stones aren't in the places index, and Riverwood itself is listed in Whiterun Hold, so which hold the camp falls in isn't settled by these files."
+        }
+      ],
+      "evidence": [
+        "ccBGSSSE001-Fish.esm:0009D3 stages 10,15,50; objectives 0,5,10,20; aliases FishingRod, FishingSupplies, Book, CampMarker",
+        "quest_starts line 'fishing' opening has no conditions, startGame false",
+        "editedBy Synthesis - Gameplay Overwrite.esp only"
+      ]
+    },
+    {
+      "edid": "ccBGSSSE001_Start_MQ2",
+      "name": "Angler Acquaintances",
+      "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp; also edited by CC Fishing - Delayed Start.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "A journal entry tells you to visit the Riften Fishery and meet its two best fishermen.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Viriya and Swims-In-Deep-Water",
+          "where": "the Riften Fishery on the Riften docks",
+          "how": "Once the journal entry appears, go to the Riften Fishery and talk to both of them."
+        }
+      ],
+      "firstStep": "Go to the Riften Fishery and talk to Viriya and Swims-In-Deep-Water",
+      "takesYou": [
+        {
+          "place": "Riften Fishery",
+          "hold": "The Rift",
+          "why": "meet Viriya and Swims-In-Deep-Water"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Gather information on fishing",
+            "Talk to Viriya",
+            "Talk to Swims-In-Deep-Water"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [
+        "In A Pinch (Viriya's bounties)",
+        "Catch of the Day (Swims-In-Deep-Water's fishing lessons)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Viriya",
+          "role": "fisherwoman at the Riften Fishery; works on the fishery docks from about 6 in the morning for 12 hours, evenings and nights at Haelga's Bunkhouse"
+        },
+        {
+          "name": "Swims-In-Deep-Water",
+          "role": "fisherman at the Riften Fishery; works inside the fishery from about 5 in the morning until 8 at night, then Haelga's Bunkhouse"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records don't show what puts this entry in your journal. A load-order patch meant to delay the fishing start edits this quest, so it may wait on something (perhaps First Catch), but what it waits on isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Viriya and Swims-In-Deep-Water each give the first quest of their own chain, but the records don't show a direct link from this quest to those; listed from who gives them."
+        },
+        {
+          "field": "where",
+          "why": "Viriya moves to a crab stall once End of the Line is done; where that stall is isn't in these files."
+        },
+        {
+          "field": "firstStep",
+          "why": "The records also tie Keerava, who keeps the Bee and Barb in Riften, to this quest under a role named for the fishery. She may be part of 'Gather information on fishing', but what she does in it isn't shown."
+        }
+      ],
+      "evidence": [
+        "ccBGSSSE001-Fish.esm:0009DB stages 0,5,200,300; objectives 0,10,20",
+        "people_schedules ccBGSSSE001-Fish.esm:0008F6 (WorkFisheryDocks6x12 while End of the Line not done; Bunkhouse18x6; Sleep0x6; CrabStallPkg after)",
+        "people_schedules ccBGSSSE001-Fish.esm:0008F8 (WorkFisheryInside5x15; Bunkhouse20x4; Sleep0x5)",
+        "people_raw: both placed in Riften Fishery",
+        "quest_givers: Crab_MQ1 named giver Viriya; Fish_MQ1 named giver Swims-In-Deep-Water",
+        "editedBy CC Fishing - Delayed Start.esp, Synthesis - Gameplay Overwrite.esp"
+      ]
+    },
+    {
+      "edid": "HMADQ01",
+      "name": "Hunter Marks Animal Den",
+      "plugin": "Hunters Mark Animal Den on Map.esp (no other plugin edits it)",
+      "canDo": "radiant",
+      "canDoWhy": "A hunter (or a wandering fisherman) you meet can point you to an animal den in the hold you're in, marked on your map.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "a hunter or a fisherman",
+          "where": "wherever you meet one, in any of the nine holds or on Solstheim",
+          "how": "Talk to them; they tell you about an animal den nearby and it goes on your map."
+        }
+      ],
+      "firstStep": "Hunt down animals at the den the hunter marked",
+      "takesYou": [
+        {
+          "place": "an animal den picked from the hold you are in",
+          "hold": "varies (any of the nine holds or Solstheim)",
+          "why": "kill the animals there, including the den's leader"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Hunt down animals at the marked den"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when the den is dealt with"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "a hunter",
+          "role": "tells you where the den is; anyone who belongs with the hunters or the fishermen"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records show the quest is set up each time you move to a new place in a hold, and that the opening talk needs the speaker to be a hunter or the fisherman; the line itself isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold is paid by the quest's script; the amount, and whether you must go back to the hunter to get it, aren't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "A setting of 10 belongs to this quest's opening; it may be a chance or a cooldown, not a level. What it controls isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Hunters Mark Animal Den on Map.esp:000800 stages 0,10,100; objective 10; aliases Hold, AnimalDenLocation, MapMarker, Boss, Hunter",
+        "quest_givers starts: change-location nodes for Falkreath, Whiterun, Rift, Eastmarch, Pale, Hjaalmarch, Haafingar, Winterhold, Reach, Solstheim",
+        "quest_starts 'hunters-mark' dialogue conditions GetInFaction HunterFaction (Skyrim.esm:04E509) OR FishermanFaction (Skyrim.esm:073FC3); global HMADg = 10",
+        "reward HMADQ01Script.Gold001"
+      ]
+    },
+    {
+      "edid": "HMADQ02",
+      "name": "Hunter Marks Animal Den 02",
+      "plugin": "Hunters Mark Animal Den on Map.esp (no other plugin edits it)",
+      "canDo": "radiant",
+      "canDoWhy": "A second animal-den job from the same mod: clear out a den it marks on your map.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Clear out the marked animal den",
+      "takesYou": [
+        {
+          "place": "an animal den picked by the mod",
+          "hold": "varies",
+          "why": "clear it out, including the den's leader"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Clear out the marked den"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when the den is cleared"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The gold amount is set by the script and isn't in these files."
+        },
+        {
+          "field": "starts",
+          "why": "This one is started by a script event, not by talking or by travelling into a hold, and unlike Hunter Marks Animal Den it has no hunter role at all. What script sends it isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Hunters Mark Animal Den on Map.esp:00081E stages 0,10,100; objective 10; aliases AnimalDenLocation, MapMarker, Boss",
+        "quest_givers starts: HMADQ02QuestNode script event",
+        "reward HMADQ01Script.Gold001"
+      ]
+    },
+    {
+      "edid": "ACFDragonbridgeForsworn",
+      "name": "Forsworn of Haafingar",
+      "plugin": "moretodo.esp (no other plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Tasius Tragus in Dragon Bridge asks you to kill the leader of a nearby Forsworn camp.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Tasius Tragus",
+          "where": "Dragon Bridge",
+          "how": "Arriving in Dragon Bridge readies the job; talk to Tasius Tragus to take it."
+        }
+      ],
+      "firstStep": "Kill the leader of the Forsworn at the camp Tasius Tragus names",
+      "takesYou": [
+        {
+          "place": "a Forsworn camp named when the job is given",
+          "hold": "the Reach, near Dragon Bridge (the job is named for Haafingar)",
+          "why": "kill the Forsworn leader"
+        },
+        {
+          "place": "Dragon Bridge",
+          "hold": "Haafingar",
+          "why": "tell Tasius Tragus the leader is dead"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the leader of the Forsworn at the camp",
+            "Tell Tasius Tragus the Forsworn leader is dead"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when you tell Tasius Tragus the leader is dead"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Tasius Tragus",
+          "role": "gives the job and pays you, Dragon Bridge"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "The records give no placement for Tasius Tragus beyond belonging to Dragon Bridge, and his daily routine is the generic one shared by hundreds of people, so where in town he stands isn't known."
+        },
+        {
+          "field": "starts",
+          "why": "The records show the job is set up when you enter Dragon Bridge and is handed in to Tasius Tragus; the dialogue that offers it, and any conditions on it, aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold amount is set by the quest's script and isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The camp is filled in when the job starts and isn't named in the records. The places index has no Forsworn camp in Haafingar; two Reach camps sit by Dragon Bridge, Dragon Bridge Overlook (next to it) and Deepwood Redoubt (a short walk). Which one it picks isn't shown."
+        }
+      ],
+      "evidence": [
+        "moretodo.esp:000818 stages 0,10,100,200; objectives 10,100; aliases QuestGiverAlias, ForswornCampAlias, MapMarkerAlias, ForswornBossAlias",
+        "fills QuestGiverAlias = Tasius Tragus (Skyrim.esm:019A24)",
+        "quest_givers starts: ACFMoreToSayDragonbridgeNode change location; reward ACFKFScript.Gold001",
+        "people_schedules Skyrim.esm:019A24: TownDragonBridgeFaction; DefaultSleepEditorLoc24x8 (shared 208), DefaultSandboxEditorLocation512 (shared 252)",
+        "places_raw: Dragon Bridge Overlook, the Reach, LocTypeForswornCamp"
+      ]
+    },
+    {
+      "edid": "ACFFalkreathBandits",
+      "name": "Chaos in Falkreath",
+      "plugin": "moretodo.esp (no other plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Solaf in Falkreath wants the warlord of a bandit camp in the hold dead.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Solaf",
+          "where": "Gray Pine Goods, his shop in Falkreath (open from 8 in the morning to 8 at night; some evenings he is at Dead Man's Drink)",
+          "how": "Arriving in Falkreath readies the job; talk to Solaf to take it."
+        }
+      ],
+      "firstStep": "Kill the warlord at the bandit camp Solaf names in Falkreath Hold",
+      "takesYou": [
+        {
+          "place": "a bandit camp named when the job is given",
+          "hold": "Falkreath",
+          "why": "kill the warlord"
+        },
+        {
+          "place": "Gray Pine Goods, Falkreath",
+          "hold": "Falkreath",
+          "why": "tell Solaf the warlord is dead"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the warlord at the bandit camp in Falkreath",
+            "Tell Solaf the warlord is dead"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when you tell Solaf the warlord is dead"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Solaf",
+          "role": "gives the job and pays you; runs Gray Pine Goods in Falkreath"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records show the job is set up when you enter Falkreath and is handed in to Solaf; the dialogue that offers it, and any conditions on it, aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold amount is set by the quest's script and isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "If his family is exiled, Solaf moves to Candlehearth Hall in Windhelm; what causes the exile isn't in these files. The shop's location is also named Gray Pine Luxuries in the records, so it may be signed that way. His evening stop at Dead Man's Drink hangs on a condition that isn't decoded."
+        },
+        {
+          "field": "takesYou",
+          "why": "The camp is filled in when the job starts and isn't named in the records. Bandit camps in Falkreath Hold in the places index are Bannermist Tower, Bilegulch Mine, Cracked Tusk Keep, Dragon's Teeth Prison, Embershard Mine and Knifepoint Ridge; which ones it can pick isn't shown."
+        }
+      ],
+      "evidence": [
+        "moretodo.esp:000999 stages 0,10,100,200; objectives 10,100; aliases SolafAlias, BanditCampAlias, MapMarkerAlias, BanditBossAlias, Hold (= Falkreath)",
+        "quest_givers: Solaf (Skyrim.esm:013652) placed in Gray Pine Goods; starts ACFMTSFalkreathQuestsNode change location; reward ACFFBScript.Gold001",
+        "people_schedules Skyrim.esm:013652: FalkreathSolafGrayPineGoods8x12, FalkreathBolundSandbox20x3 (Dead Man's Drink), CWExiledSonsSandboxCandlehearthHall if GovExiled; vendor 8-20",
+        "places_raw: Falkreath LocTypeBanditCamp places"
+      ]
+    },
+    {
+      "edid": "ACFKarthwastenForsworn",
+      "name": "Forsworn of the Reach",
+      "plugin": "moretodo.esp (no other plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Ainethach in Karthwasten fears a Forsworn raid and wants the leader of a nearby camp killed.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Ainethach",
+          "where": "Karthwasten Hall, or outside in Karthwasten by day (from about 7 in the morning for 12 hours)",
+          "how": "Arriving in Karthwasten readies the job; talk to Ainethach. He says: \"Both of my mines are open again, but Karthwasten is a perfect Forsworn target.\""
+        }
+      ],
+      "firstStep": "Kill the leader of the Forsworn at the camp Ainethach names in the Reach",
+      "takesYou": [
+        {
+          "place": "a Forsworn camp named when the job is given",
+          "hold": "The Reach",
+          "why": "kill the Forsworn leader"
+        },
+        {
+          "place": "Karthwasten",
+          "hold": "The Reach",
+          "why": "tell Ainethach the leader is dead"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the leader of the Forsworn at the camp in the Reach",
+            "Tell Ainethach the Forsworn leader is dead"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "when you tell Ainethach the leader is dead"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Ainethach",
+          "role": "gives the job and pays you; owner of Karthwasten's mines"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "His line about both mines being open again suggests this comes after Sanuarach Mine is freed, but the conditions on the line aren't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The camp is filled in when the job starts and isn't named in the records. The Reach has many Forsworn camps in the places index (Broken Tower Redoubt, Bruca's Leap Redoubt, Deepwood Redoubt, Druadach Redoubt, Red Eagle Redoubt and more); which ones it can pick isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold amount is set by the quest's script and isn't in these files."
+        }
+      ],
+      "evidence": [
+        "moretodo.esp:000836 stages 0,10,100,200; objectives 10,100; fills HoldAlias = The Reach, KarthwastenLeaderAlias = Ainethach",
+        "quest_givers: Ainethach (Skyrim.esm:013B69) placed in Karthwasten Hall; starts ACFMoreToSayKarthwastenNode change location; reward ACFKFScript.Gold001",
+        "places_raw Karthwasten pointer: INFO moretodo.esp:00082F (Ainethach line)",
+        "people_schedules Skyrim.esm:013B69: KarthwastenAinethachSandboxOutside7x12; intro package gated on FreeformKarthwastenA (Sanuarach Mine)",
+        "places_raw: Reach LocTypeForswornCamp places"
+      ]
+    }
+  ]
+}
