@@ -1,0 +1,1350 @@
+{
+ "checks": [
+  {
+   "edid": "BQ01Pale",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for the Pale: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "people_raw places five people in the White Hall but none carries a jarl or steward role, and the White Hall lacks the steward's-dwelling keyword; added to unsure so the page doesn't imply a known payer."
+    }
+   }
+  },
+  {
+   "edid": "BQ01Reach",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for the Reach: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "Added a likely name: people_raw marks Igmund as jarl in Understone Keep. Kept in unsure, since the quest's alias isn't filled with a fixed person."
+    }
+   }
+  },
+  {
+   "edid": "BQ01Rift",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for the Rift: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "Added a likely name: people_raw marks Laila Law-Giver as jarl in Mistveil Keep. Kept in unsure, since the quest's alias isn't filled with a fixed person."
+    }
+   }
+  },
+  {
+   "edid": "BQ01Whiterun",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for Whiterun Hold: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "agree",
+     "note": "The court's keep matches where people_raw places that hold's court; no one there carries a jarl or steward role, so no name can be added."
+    }
+   }
+  },
+  {
+   "edid": "BQ01Winterhold",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for Winterhold: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "agree",
+     "note": "people_raw places no one in the Jarl's Longhouse in Winterhold; the reader already says so."
+    }
+   }
+  },
+  {
+   "edid": "BQ02Eastmarch",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for Eastmarch: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "agree",
+     "note": "The court's keep matches where people_raw places that hold's court; no one there carries a jarl or steward role, so no name can be added."
+    }
+   }
+  },
+  {
+   "edid": "BQ02Falkreath",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for Falkreath Hold: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "Same gap as Winterhold: people_raw places no one in the Jarl's Longhouse in Falkreath, so the note the Winterhold read carries is added here."
+    }
+   }
+  },
+  {
+   "edid": "BQ02Haafingar",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for Haafingar: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "agree",
+     "note": "The court's keep matches where people_raw places that hold's court; no one there carries a jarl or steward role, so no name can be added."
+    }
+   }
+  },
+  {
+   "edid": "BQ02Hjaalmarch",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for Hjaalmarch: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "Added a likely name: people_raw marks Aslfur as steward in Highmoon Hall. Kept in unsure, since the quest's alias isn't filled with a fixed person."
+    }
+   }
+  },
+  {
+   "edid": "BQ02Pale",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stands: the target place is an alias filled when the quest starts. The why-line called it repeatable; nothing in the records shows it repeats, so that word is dropped. canDoWhy now: \"A bounty for the Pale: the target place is picked when it starts.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions, level, faction or earlier quest on record for this copy."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Empty is right: quest_givers_raw lists no start event or people for this copy, and the jarls-bounties line in quest_starts_raw has empty dialogue and event conditions. Only the original BQ01/BQ02 carry the change-location starts. The unsure note (Letter and Innkeeper aliases as possible hand-off routes) matches the alias list."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Matches the first objective text, with the alias put in player words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target: BountyLocation alias, filled at start, hold matches the quest. Hand-in: the Steward and Jarl aliases are not filled with a fixed person; the keep named is the hold's castle in places_raw / where the court is placed in people_raw. Already flagged in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching; the steward/jarl hand-in split is a game-picked objective, not a player choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only gold is named by this copy's script (BQScript.Gold001); no amount in quests_raw globals or elsewhere. The Requiem reward list sits only on the original BQ01/BQ02, so it is rightly left out. Unsure note reworded to say the gold comes from the script and is not confirmed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records leads on from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "people_raw places five people in the White Hall but none carries a jarl or steward role, and the White Hall lacks the steward's-dwelling keyword; added to unsure so the page doesn't imply a known payer."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "BQ01Pale",
+   "name": "Bounty: Bandit Boss",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for the Pale: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the bandit leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a bandit hideout in the Pale, picked when the bounty starts",
+     "hold": "The Pale",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "the White Hall in Dawnstar",
+     "hold": "The Pale",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the bandit leader at the place named in the bounty",
+      "Collect the bounty from the steward of the Pale (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of the Pale",
+     "role": "pays the bounty; at the White Hall in Dawnstar"
+    },
+    {
+     "name": "The jarl of the Pale",
+     "role": "may pay the bounty instead; at the White Hall in Dawnstar"
+    },
+    {
+     "name": "The bandit leader",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from the Pale; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds the Pale at the time, which can change during the civil war; the records place the court at the White Hall in Dawnstar."
+    },
+    {
+     "field": "people",
+     "why": "the people files place several people in the White Hall but mark none of them as jarl or steward, so the page can't name who pays"
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E30 BQ01Pale, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at the White Hall in Dawnstar",
+    "people_raw: White Hall has Bulfrek, Captain Jod, Gregor, Madena, Skald the Elder, none with a JobJarl/JobSteward role; places_raw White Hall lacks the steward's-dwelling keyword"
+   ]
+  },
+  {
+   "edid": "BQ01Reach",
+   "name": "Bounty: Bandit Boss",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for the Reach: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the bandit leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a bandit hideout in the Reach, picked when the bounty starts",
+     "hold": "The Reach",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Understone Keep in Markarth",
+     "hold": "The Reach",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the bandit leader at the place named in the bounty",
+      "Collect the bounty from the steward of the Reach (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of the Reach",
+     "role": "pays the bounty; at Understone Keep in Markarth"
+    },
+    {
+     "name": "The jarl of the Reach",
+     "role": "may pay the bounty instead; at Understone Keep in Markarth"
+    },
+    {
+     "name": "The bandit leader",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from the Reach; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds the Reach at the time, which can change during the civil war; the records place the court at Understone Keep in Markarth."
+    },
+    {
+     "field": "people",
+     "why": "The jarl is probably Igmund: the people files mark Igmund as the jarl of the hold, placed in Understone Keep. The quest itself doesn't name who pays."
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E4E BQ01Reach, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at Understone Keep in Markarth",
+    "people_raw: Skyrim.esm:01339F Igmund JobJarl, Understone Keep"
+   ]
+  },
+  {
+   "edid": "BQ01Rift",
+   "name": "Bounty: Bandit Boss",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for the Rift: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the bandit leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a bandit hideout in the Rift, picked when the bounty starts",
+     "hold": "The Rift",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Mistveil Keep in Riften",
+     "hold": "The Rift",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the bandit leader at the place named in the bounty",
+      "Collect the bounty from the steward of the Rift (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of the Rift",
+     "role": "pays the bounty; at Mistveil Keep in Riften"
+    },
+    {
+     "name": "The jarl of the Rift",
+     "role": "may pay the bounty instead; at Mistveil Keep in Riften"
+    },
+    {
+     "name": "The bandit leader",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from the Rift; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds the Rift at the time, which can change during the civil war; the records place the court at Mistveil Keep in Riften."
+    },
+    {
+     "field": "people",
+     "why": "The jarl is probably Laila Law-Giver: the people files mark Laila Law-Giver as the jarl of the hold, placed in Mistveil Keep. The quest itself doesn't name who pays."
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E48 BQ01Rift, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at Mistveil Keep in Riften",
+    "people_raw: Skyrim.esm:013366 Laila Law-Giver JobJarl, Mistveil Keep"
+   ]
+  },
+  {
+   "edid": "BQ01Whiterun",
+   "name": "Bounty: Bandit Boss",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for Whiterun Hold: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the bandit leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a bandit hideout in Whiterun Hold, picked when the bounty starts",
+     "hold": "Whiterun",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "Dragonsreach in Whiterun",
+     "hold": "Whiterun",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the bandit leader at the place named in the bounty",
+      "Collect the bounty from the steward of Whiterun Hold (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of Whiterun Hold",
+     "role": "pays the bounty; at Dragonsreach in Whiterun"
+    },
+    {
+     "name": "The jarl of Whiterun Hold",
+     "role": "may pay the bounty instead; at Dragonsreach in Whiterun"
+    },
+    {
+     "name": "The bandit leader",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from Whiterun Hold; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds Whiterun Hold at the time, which can change during the civil war; the records place the court at Dragonsreach in Whiterun."
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E2A BQ01Whiterun, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at Dragonsreach in Whiterun"
+   ]
+  },
+  {
+   "edid": "BQ01Winterhold",
+   "name": "Bounty: Bandit Boss",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for Winterhold: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the bandit leader at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a bandit hideout in Winterhold, picked when the bounty starts",
+     "hold": "Winterhold",
+     "why": "kill the bandit leader"
+    },
+    {
+     "place": "the Jarl's Longhouse in Winterhold",
+     "hold": "Winterhold",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the bandit leader at the place named in the bounty",
+      "Collect the bounty from the steward of Winterhold (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of Winterhold",
+     "role": "pays the bounty; at the Jarl's Longhouse in Winterhold"
+    },
+    {
+     "name": "The jarl of Winterhold",
+     "role": "may pay the bounty instead; at the Jarl's Longhouse in Winterhold"
+    },
+    {
+     "name": "The bandit leader",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from Winterhold; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds Winterhold at the time, which can change during the civil war; the records place the court at the Jarl's Longhouse in Winterhold."
+    },
+    {
+     "field": "people",
+     "why": "who sits in the Jarl's Longhouse in Winterhold isn't in the people files"
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E3C BQ01Winterhold, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at the Jarl's Longhouse in Winterhold"
+   ]
+  },
+  {
+   "edid": "BQ02Eastmarch",
+   "name": "Bounty: Warlock",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for Eastmarch: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the leader of the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a warlock's lair in Eastmarch, picked when the bounty starts",
+     "hold": "Eastmarch",
+     "why": "kill its leader"
+    },
+    {
+     "place": "the Palace of the Kings in Windhelm",
+     "hold": "Eastmarch",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the place named in the bounty",
+      "Collect the bounty from the steward of Eastmarch (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of Eastmarch",
+     "role": "pays the bounty; at the Palace of the Kings in Windhelm"
+    },
+    {
+     "name": "The jarl of Eastmarch",
+     "role": "may pay the bounty instead; at the Palace of the Kings in Windhelm"
+    },
+    {
+     "name": "The leader of the place (a warlock, going by the bounty's name)",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from Eastmarch; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds Eastmarch at the time, which can change during the civil war; the records place the court at the Palace of the Kings in Windhelm."
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E90 BQ02Eastmarch, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at the Palace of the Kings in Windhelm"
+   ]
+  },
+  {
+   "edid": "BQ02Falkreath",
+   "name": "Bounty: Warlock",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for Falkreath Hold: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the leader of the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a warlock's lair in Falkreath Hold, picked when the bounty starts",
+     "hold": "Falkreath",
+     "why": "kill its leader"
+    },
+    {
+     "place": "the Jarl's Longhouse in Falkreath",
+     "hold": "Falkreath",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the place named in the bounty",
+      "Collect the bounty from the steward of Falkreath Hold (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of Falkreath Hold",
+     "role": "pays the bounty; at the Jarl's Longhouse in Falkreath"
+    },
+    {
+     "name": "The jarl of Falkreath Hold",
+     "role": "may pay the bounty instead; at the Jarl's Longhouse in Falkreath"
+    },
+    {
+     "name": "The leader of the place (a warlock, going by the bounty's name)",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from Falkreath Hold; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds Falkreath Hold at the time, which can change during the civil war; the records place the court at the Jarl's Longhouse in Falkreath."
+    },
+    {
+     "field": "people",
+     "why": "who sits in the Jarl's Longhouse in Falkreath isn't in the people files"
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E86 BQ02Falkreath, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at the Jarl's Longhouse in Falkreath",
+    "people_raw: no one placed in the Jarl's Longhouse (Falkreath); places_raw marks it the hold's castle and steward's dwelling"
+   ]
+  },
+  {
+   "edid": "BQ02Haafingar",
+   "name": "Bounty: Beast",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for Haafingar: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the beast at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a beast's lair in Haafingar, picked when the bounty starts",
+     "hold": "Haafingar",
+     "why": "kill the beast"
+    },
+    {
+     "place": "the Blue Palace in Solitude",
+     "hold": "Haafingar",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the beast at the place named in the bounty",
+      "Collect the bounty from the steward of Haafingar (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of Haafingar",
+     "role": "pays the bounty; at the Blue Palace in Solitude"
+    },
+    {
+     "name": "The jarl of Haafingar",
+     "role": "may pay the bounty instead; at the Blue Palace in Solitude"
+    },
+    {
+     "name": "The beast",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from Haafingar; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds Haafingar at the time, which can change during the civil war; the records place the court at the Blue Palace in Solitude."
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E72 BQ02Haafingar, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at the Blue Palace in Solitude"
+   ]
+  },
+  {
+   "edid": "BQ02Hjaalmarch",
+   "name": "Bounty: Draugr",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for Hjaalmarch: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the draugr at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a draugr tomb in Hjaalmarch, picked when the bounty starts",
+     "hold": "Hjaalmarch",
+     "why": "kill the draugr"
+    },
+    {
+     "place": "Highmoon Hall in Morthal",
+     "hold": "Hjaalmarch",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the draugr at the place named in the bounty",
+      "Collect the bounty from the steward of Hjaalmarch (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of Hjaalmarch",
+     "role": "pays the bounty; at Highmoon Hall in Morthal"
+    },
+    {
+     "name": "The jarl of Hjaalmarch",
+     "role": "may pay the bounty instead; at Highmoon Hall in Morthal"
+    },
+    {
+     "name": "The draugr",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from Hjaalmarch; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds Hjaalmarch at the time, which can change during the civil war; the records place the court at Highmoon Hall in Morthal."
+    },
+    {
+     "field": "people",
+     "why": "The steward is probably Aslfur: the people files mark Aslfur as the steward of the hold, placed in Highmoon Hall. The quest itself doesn't name who pays."
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E77 BQ02Hjaalmarch, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at Highmoon Hall in Morthal",
+    "people_raw: Skyrim.esm:0135E7 Aslfur JobSteward, Highmoon Hall"
+   ]
+  },
+  {
+   "edid": "BQ02Pale",
+   "name": "Bounty: Draugr",
+   "plugin": "Favor Quests Seperated.esp (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A bounty for the Pale: the target place is picked when it starts.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the draugr at the place named in the bounty",
+   "takesYou": [
+    {
+     "place": "a draugr tomb in the Pale, picked when the bounty starts",
+     "hold": "The Pale",
+     "why": "kill the draugr"
+    },
+    {
+     "place": "the White Hall in Dawnstar",
+     "hold": "The Pale",
+     "why": "collect the bounty"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the draugr at the place named in the bounty",
+      "Collect the bounty from the steward of the Pale (or the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in the records)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "The steward of the Pale",
+     "role": "pays the bounty; at the White Hall in Dawnstar"
+    },
+    {
+     "name": "The jarl of the Pale",
+     "role": "may pay the bounty instead; at the White Hall in Dawnstar"
+    },
+    {
+     "name": "The draugr",
+     "role": "the target"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "No dialogue line, letter, or event that starts this bounty is in these files. The original game's bounties start when you travel into a hold, but this hold-by-hold copy has no start of its own on record, so how you are handed it (a jarl or steward, an innkeeper's rumour, or a courier's letter, which the quest has slots for) can't be confirmed."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place is picked by the game when the bounty starts, from the Pale; the rules for which places qualify aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script names gold as the reward, but not the amount, and nothing else in the records confirms it. The original game's version of this bounty also hands out an item from Requiem's reward list; that list isn't attached to this copy in the records."
+    },
+    {
+     "field": "steps",
+     "why": "The quest has two hand-in objectives, one for the steward and one for the jarl; which one the game shows you isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "The jarl and steward are whoever holds the Pale at the time, which can change during the civil war; the records place the court at the White Hall in Dawnstar."
+    },
+    {
+     "field": "people",
+     "why": "the people files place several people in the White Hall but mark none of them as jarl or steward, so the page can't name who pays"
+    }
+   ],
+   "evidence": [
+    "quests_raw: Favor Quests Seperated.esp:000E81 BQ02Pale, type Misc, stages 0/10/100/200; objective 10 = kill at BountyLocation, 100 = collect from Steward, 101 = collect from Jarl; no editedBy",
+    "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (none filled with a fixed NPC in quest_givers_raw)",
+    "quest_givers_raw: reward Septim via BQScript.Gold001; no starts, no people",
+    "quest_starts_raw: line jarls-bounties (opening BQ01Eastmarch) has empty dialogue and event conditions, startGame false",
+    "questlines_raw: Favor Quests Separated mod line, 68 Misc quests",
+    "vanilla BQ01/BQ02 (Skyrim.esm, edited by Requiem.esp) start on change-location nodes BQ<Hold>NodeSHARES and add REQ_LI_Reward_BountyBandit; the separated copy lists only gold",
+    "people_raw/places_raw: court placed at the White Hall in Dawnstar",
+    "people_raw: White Hall has Bulfrek, Captain Jod, Gregor, Madena, Skald the Elder, none with a JobJarl/JobSteward role; places_raw White Hall lacks the steward's-dwelling keyword"
+   ]
+  }
+ ]
+}
