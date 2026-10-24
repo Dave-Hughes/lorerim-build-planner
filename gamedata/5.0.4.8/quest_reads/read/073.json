@@ -380,11 +380,11 @@
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (5 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    }
   ],
   "evidence": [
@@ -486,11 +486,11 @@
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (5 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    },
    {
     "field": "people",
@@ -600,15 +600,15 @@
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (5 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    },
    {
     "field": "rewards",
-    "why": "Several Whiterun weapons exist in the thane-weapons mod; which one this quest gives isn't shown."
+    "why": "Several Whiterun hold weapons exist; which one this quest gives isn't shown."
    }
   ],
   "evidence": [
@@ -714,11 +714,11 @@
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (5 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    }
   ],
   "evidence": [
@@ -810,15 +810,15 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "The records give Sorli the Builder (the Stormcloak-side jarl, from a Hearthfire line) a giver line; no line is named for Idgrod, the jarl at the start."
+    "why": "The records give Sorli the Builder (the Stormcloak-side jarl) a giver line; no line is named for Idgrod, the jarl at the start."
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (3 of 3) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (3 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    },
    {
     "field": "rewards",
@@ -919,11 +919,11 @@
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (3 of 3) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (3 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    },
    {
     "field": "rewards",
@@ -1015,11 +1015,11 @@
    },
    {
     "field": "needs",
-    "why": "The journal counts favours for this hold (3 of 3) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+    "why": "The journal counts favours for this hold (3 needed) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
    },
    {
     "field": "rewards",
-    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+    "why": "A mod in the list adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
    },
    {
     "field": "rewards",

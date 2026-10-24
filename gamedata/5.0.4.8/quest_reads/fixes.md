@@ -63,3 +63,4 @@
 - **061** (Gore's later quests, Remi's quests): 3 fixed, 7 unsure. Blood Ties has one ending; the Tonal Magic book is handed to Remi; Reunion of the Fallen's real choice is hunting Morvic or talking her out of it.
 - **058** (Daedric add-ons, Guests for Dinner, The Cause, Hendraheim): 6 fixed, 1 unsure. Guests for Dinner's path depends on whether you're a vampire, not a choice; On Hogithum's first fragment isn't one of the six marked spots.
 - **059** (Dreams of the Dead, The Unquiet Dead, Battle of the Champions, Paragliding, Leaps of Faith): 9 fixed. Dreams of the Dead starts with rumours after the Conjuration ritual; neutral players go to the Drunken Huntsman for Battle of the Champions; Markarth isn't a leap spot.
+- **063** (Megara's and the Katana quests, The Ravens' Lament): 8 fixed. Only Chadryn starts Honey Nuts and the Chin of Fate; Megara's radiant jobs have no giver line (probably Megara); Al'Tharo isn't a starter of The Khat's Eye.
