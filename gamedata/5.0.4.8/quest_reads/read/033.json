@@ -1,0 +1,1129 @@
+[
+ {
+  "edid": "EC_SS_ElytraPetAcquisition_Mania",
+  "name": "My Pet Elytra (Mania)",
+  "plugin": "ccbgssse025-advdsgs.esm (last edited by Skyrim Extended Cut - Saints and Seducers.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Nobody hands it out: a single 'Free the Elytra Nymph' objective for the caged Mania-side nymph in the Shivering Isles area that Skyrim Extended Cut adds.",
+  "needs": [
+   {
+    "what": "Reach the Shivering Isles area added by Skyrim Extended Cut - Saints and Seducers",
+    "kind": "other"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Free the Elytra Nymph",
+  "takesYou": [
+   {
+    "place": "the Shivering Isles (Skyrim Extended Cut - Saints and Seducers)",
+    "hold": "",
+    "why": "the caged Elytra nymph Pelagius is there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Free the Elytra Nymph"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Pelagius, an Elytra nymph pet",
+    "when": "once freed"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Pelagius",
+    "role": "the caged Elytra nymph you free; becomes your pet"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No dialogue, script event or giver sets the first stage in these files, so it isn't clear whether the objective appears when you pick up the key, open the cage, or see the nymph."
+   },
+   {
+    "field": "where",
+    "why": "The nymph is placed in the Shivering Isles worldspace in a cell from Skyrim Extended Cut - Saints and Seducers.esp; the cell has no name in these files, so the exact spot isn't known."
+   },
+   {
+    "field": "steps",
+    "why": "The quest's aliases are a Saint container, a Mania key and a cage door, so the cage key most likely comes off a Saint (a Golden Saint body or chest). The records don't say which Saint or where."
+   },
+   {
+    "field": "rewards",
+    "why": "Pelagius is in the pet framework's pet and pet-following factions, which is why he is listed as a pet. No reward item is set."
+   }
+  ],
+  "evidence": [
+   "QUST ccbgssse025-advdsgs.esm:0010C3 aliases SaintContainer/ManiaKey/CageDoor/ElytraMania",
+   "NPC ccbgssse025-advdsgs.esm:000CBB EC_SS_ElytraNymphMania_PET (PetFramework_PetFaction)",
+   "ref ccbgssse025-advdsgs.esm:001005 in Saints and Seducers.esp:01F4BF, world Shivering Isles",
+   "sister quest 0010C0 (Dementia) uses SeducerBandit/SeducerCageDoor"
+  ]
+ },
+ {
+  "edid": "DA13",
+  "name": "The Only Cure",
+  "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; also changed by TheOnlyCureQuestExpansion.esp and TOCQE - Wintersun.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Kesh the Clean, at the wilderness Shrine of Peryite near Karthwasten, offers to help you commune with Peryite.",
+  "needs": [
+   {
+    "what": "Reach the character level the game's level-up start uses (the number isn't in these files)",
+    "kind": "level"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Kesh the Clean",
+    "where": "the Shrine of Peryite, out in the wilds next to Karthwasten in the Reach",
+    "how": "Talk to Kesh; he asks for a deathbell flower, a flawless ruby, a silver ingot and some vampire dust so you can commune with Peryite."
+   }
+  ],
+  "firstStep": "Bring Kesh some vampire dust, a deathbell flower, a silver ingot and a flawless ruby",
+  "takesYou": [
+   {
+    "place": "Shrine of Peryite",
+    "hold": "The Reach",
+    "why": "Kesh and Peryite's shrine; inhale the incense there"
+   },
+   {
+    "place": "Bthardamz",
+    "hold": "The Reach",
+    "why": "find Orchendor in Bthardamz Arcanex"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Refuse to help Peryite when you meet him",
+    "leadsTo": "The quest fails."
+   },
+   {
+    "choice": "Kill or talk to Orchendor, then speak with Peryite",
+    "leadsTo": "The usual ending, rewarded with Spellbreaker."
+   },
+   {
+    "choice": "Kill Orchendor, then destroy Peryite's altar (added by The Only Cure Quest Expansion)",
+    "leadsTo": "The plague is stopped and the altar destroyed; the quest still completes."
+   },
+   {
+    "choice": "Learn of Orchendor's plague some other way (Kesh's Journal, added by the expansion) and go to Bthardamz",
+    "leadsTo": "You can deal with Orchendor without the ritual."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Obtain some Vampire Dust",
+     "Obtain a Deathbell Flower",
+     "Obtain a Silver Ingot",
+     "Obtain a Flawless Ruby",
+     "Deliver the Ingredients",
+     "Inhale the Fumes",
+     "Kill or Talk to Orchendor",
+     "Speak with Peryite or Destroy his Altar"
+    ]
+   },
+   {
+    "branch": "destroy the altar",
+    "objectives": [
+     "Destroy Peryite's Altar"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Spellbreaker (shield)",
+    "when": "from Peryite, on the speak-with-Peryite ending"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [
+   "Orchendor dies",
+   "Peryite's altar, if you destroy it"
+  ],
+  "people": [
+   {
+    "name": "Kesh the Clean",
+    "role": "quest giver at the Shrine of Peryite; carries Kesh's Journal (expansion)"
+   },
+   {
+    "name": "Peryite",
+    "role": "the Daedric Prince you commune with"
+   },
+   {
+    "name": "Orchendor",
+    "role": "Peryite's monk, found in Bthardamz Arcanex"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The quest is opened by a level-up story event; the level it checks isn't in these files."
+   },
+   {
+    "field": "where",
+    "why": "Kesh is placed in the open wilderness, not in a named cell. The shrine is the place the log calls 'the wilderness shrine to Peryite', and Kesh's line pointing west to Bthardamz fits it, but the records don't name his spot directly. He has no daily packages."
+   },
+   {
+    "field": "rewards",
+    "why": "Spellbreaker is the only reward in the quest script. The destroy-the-altar ending's reward, if it has one, isn't in these files."
+   },
+   {
+    "field": "choices",
+    "why": "The expansion's alternate path, where you hear of Orchendor without the ritual, has its own log line, but what triggers it isn't shown. Most likely it is reading Kesh's Journal."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:08998D",
+   "start event DA13IncreaseLevelNodeSHARES (LEVL)",
+   "giver INFO Skyrim.esm:0C2D02 Kesh",
+   "INFO 0C1920 Kesh points to Bthardamz",
+   "BOOK TheOnlyCureQuestExpansion.esp:000D65 Kesh's Journal",
+   "global DA13_AltarDestroyed",
+   "reward QF_DA13_0008998D.SpellBreaker -> Skyrim.esm:045F96",
+   "Orchendor ref 045F8E in Bthardamz Arcanex"
+  ]
+ },
+ {
+  "edid": "DA11Intro",
+  "name": "Investigate the Hall of the Dead",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Once you're level 20, Markarth talk about the closed Hall of the Dead and Brother Verulus pleading his case in Understone Keep add the objective to speak to him.",
+  "needs": [
+   {
+    "what": "Character level 20 (LoreRim lowered The Taste of Death - Delayed Start's level from 40 to 20)",
+    "kind": "level"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Brother Verulus",
+    "where": "Understone Keep, Markarth (he stands there while this objective is open; otherwise he keeps the Hall of the Dead)",
+    "how": "Arrive in Markarth and the quest begins on its own; speak to Verulus about the Hall of the Dead."
+   },
+   {
+    "who": "Kleppr or Frabbi",
+    "where": "the Silver-Blood Inn, Markarth",
+    "how": "Rumour: 'Did you hear? The Hall of the Dead is closed.'"
+   }
+  ],
+  "firstStep": "Speak to Verulus about the Hall of the Dead",
+  "takesYou": [
+   {
+    "place": "Understone Keep",
+    "hold": "The Reach",
+    "why": "Brother Verulus"
+   },
+   {
+    "place": "Hall of the Dead, Markarth",
+    "hold": "The Reach",
+    "why": "find out what has been happening inside"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Verulus about the Hall of the Dead",
+     "Investigate the Hall of the Dead",
+     "Tell Verulus the Hall of the Dead is safe"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Amulet of Arkay",
+    "when": "when you tell Verulus the Hall is safe"
+   }
+  ],
+  "type": "Misc",
+  "opens": [
+   "The Taste of Death (Eola is waiting in the Hall of the Dead)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Brother Verulus",
+    "role": "priest of Arkay; holds the Markarth Hall of the Dead Key"
+   },
+   {
+    "name": "Eola",
+    "role": "found inside the Hall of the Dead"
+   },
+   {
+    "name": "Kleppr",
+    "role": "innkeeper rumour, Silver-Blood Inn"
+   },
+   {
+    "name": "Frabbi",
+    "role": "rumour, Silver-Blood Inn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest starts on a change-location event. Which location fires it (the city or Understone Keep) and whether that event also checks level 20 isn't in these files. The level 20 check sits on the two rumour lines, and Verulus's 'you can't go in there' line is also edited by the Delayed Start mod."
+   },
+   {
+    "field": "steps",
+    "why": "The Hall of the Dead doors are locked (Adept) and Verulus carries the key. It isn't shown whether he hands it over or you pick the lock."
+   },
+   {
+    "field": "rewards",
+    "why": "The Amulet of Arkay is held by the quest script; that it comes on the 'tell Verulus' step is inferred from the objective order."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:07D949",
+   "start event DA11IntroSceneNode (change location)",
+   "giver INFO 07D939 Verulus",
+   "rumour INFO 04D1F6 Kleppr, 08794C Frabbi (Delayed Start: level >= ANDR_DA11_LevelReq, now 20 via LoreRim - Global Modifiers.esp)",
+   "PACK 0AEC26 DA11IntroSceneVerulusPackage Understone Keep at stage 5",
+   "reward QF_DA11Favor_0007D949.ReligiousArkayLifeDeath -> 0CC848",
+   "door 07F6AF/016F70 Hall of the Dead lock Adept key 07D94C"
+  ]
+ },
+ {
+  "edid": "DA11",
+  "name": "The Taste of Death",
+  "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Eola, whom you find in Markarth's Hall of the Dead, asks you to join Namira's coven and meet her at Reachcliff Cave.",
+  "needs": [
+   {
+    "what": "Character level 20 (the Markarth rumours and the Hall of the Dead lead-in are held back until then)",
+    "kind": "level"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Eola",
+    "where": "inside the Hall of the Dead, Markarth (reached from Understone Keep or the city)",
+    "how": "Talk to her while investigating the Hall; she says 'Not here. We will meet at Reachcliff Cave.'"
+   }
+  ],
+  "firstStep": "Clear the Draugr from Reachcliff Cave",
+  "takesYou": [
+   {
+    "place": "Reachcliff Cave",
+    "hold": "The Reach",
+    "why": "clear the draugr and meet Eola; the Shrine of Namira is inside"
+   },
+   {
+    "place": "Hall of the Dead, Markarth",
+    "hold": "The Reach",
+    "why": "talk Brother Verulus into following you"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Turn Eola down",
+    "leadsTo": "She says she'll be waiting outside Reachcliff Cave if the hunger calls you."
+   },
+   {
+    "choice": "Kill Eola",
+    "leadsTo": "The quest fails; her journal can start A Bitter Aftertaste."
+   },
+   {
+    "choice": "Kill Verulus anywhere but the Shrine of Namira",
+    "leadsTo": "The quest fails."
+   },
+   {
+    "choice": "Lead Verulus to the shrine, kill him and feast",
+    "leadsTo": "Initiation into the coven and the Ring of Namira."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Clear the Draugr from Reachcliff Cave",
+     "Speak to Eola",
+     "Convince Verulus to follow you",
+     "Lead Verulus to the Shrine of Namira",
+     "Kill Verulus",
+     "Feast on Verulus"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Ring of Namira",
+    "when": "after you feast on Verulus"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [
+   "A Bitter Aftertaste (if Eola dies and you read her journal)"
+  ],
+  "closes": [
+   "Brother Verulus dies on the coven path",
+   "Eola, if you kill her"
+  ],
+  "people": [
+   {
+    "name": "Eola",
+    "role": "quest giver; Namira's follower, in the Hall of the Dead"
+   },
+   {
+    "name": "Brother Verulus",
+    "role": "the priest you lure to the shrine"
+   },
+   {
+    "name": "Hogni Red-Arm",
+    "role": "coven member, Silver-Blood Inn"
+   },
+   {
+    "name": "Lisbet",
+    "role": "coven member, Arnleif and Sons Trading Company"
+   },
+   {
+    "name": "Banning",
+    "role": "coven member, Markarth Stables"
+   },
+   {
+    "name": "Nimphaneth",
+    "role": "cultist in Reachcliff Cave"
+   },
+   {
+    "name": "Sanyon",
+    "role": "cultist in Reachcliff Cave"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The level 20 check is on the rumour lines that lead into Investigate the Hall of the Dead. Eola's own opening line shows no condition in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest script also holds gold and the Invisibility spell; the records don't say whether either is given to you."
+   },
+   {
+    "field": "people",
+    "why": "Eola is in the potential-follower faction and has a post-quest forcegreet, so she may offer to follow you afterwards. The records don't confirm it."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:02C358",
+   "giver INFO 081C7E Eola (stage < 11)",
+   "INFO 0819D4 Eola waits outside Reachcliff Cave",
+   "other giver Verulus stage < 31",
+   "fail stages 250 (Eola killed) and 500 (Verulus killed away from shrine)",
+   "rewards QF_DA11_0002C358 Gold/Invisibility/pRingofNamira -> 02C37B",
+   "PACK 0A0D49 DA11FINEolaForcegreetPackage"
+  ]
+ },
+ {
+  "edid": "madNamiraAddonQuest",
+  "name": "A Bitter Aftertaste",
+  "plugin": "TasteOfDeath_Addon_Dialogue.esp",
+  "canDo": "by itself",
+  "canDoWhy": "Begins when you read Eola's Journal, taken from the cannibal who attacked you; it says more of her coven hide in Markarth.",
+  "needs": [
+   {
+    "what": "Get Eola's Journal from the cannibal who assaults you (Eola)",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "wherever the cannibal attacks you",
+    "how": "Read Eola's Journal. Brother Verulus in the Hall of the Dead can be spoken to as an optional first step."
+   }
+  ],
+  "firstStep": "Search for evidence in Reachcliff Cave (speaking to Brother Verulus first is optional)",
+  "takesYou": [
+   {
+    "place": "Reachcliff Cave",
+    "hold": "The Reach",
+    "why": "find the Champion of Namira's journal, which names the cannibals"
+   },
+   {
+    "place": "Hall of the Dead, Markarth",
+    "hold": "The Reach",
+    "why": "optional: Brother Verulus, for the Jarl's permission"
+   },
+   {
+    "place": "Understone Keep",
+    "hold": "The Reach",
+    "why": "the Jarl of Markarth"
+   },
+   {
+    "place": "Markarth (Silver-Blood Inn, Arnleif and Sons Trading Company, Markarth Stables)",
+    "hold": "The Reach",
+    "why": "confront Hogni Red-Arm, Lisbet and Banning"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Confront the cannibals without the Jarl's leave",
+    "leadsTo": "The log warns this may be unlawful."
+   },
+   {
+    "choice": "Get the Jarl's permission first (via Verulus)",
+    "leadsTo": "You may deal with them as you see fit and can arrest them; arrested ones end up in Cidhna Mine."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "(Optional) Speak to Brother Verulus",
+     "Search for evidence in Reachcliff Cave",
+     "(Optional) Speak to Verulus for the Jarl's permission to confront the cannibals",
+     "Speak to the Jarl of Markarth",
+     "Confront Hogni Red-Arm",
+     "Confront Lisbet",
+     "Confront Banning",
+     "Speak to the Jarl of Markarth for a reward"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Ring of Namira",
+    "when": "found inside Reachcliff Cave"
+   },
+   {
+    "what": "a reward from the Jarl of Markarth",
+    "when": "at the end"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [
+   "Hogni Red-Arm, Lisbet and Banning are jailed or killed"
+  ],
+  "people": [
+   {
+    "name": "Eola",
+    "role": "the cannibal who attacks you; her journal starts the quest"
+   },
+   {
+    "name": "Brother Verulus",
+    "role": "optional; sends you to the Jarl"
+   },
+   {
+    "name": "Igmund or Thongvor Silver-Blood",
+    "role": "Jarl of Markarth, depending on who holds the Reach"
+   },
+   {
+    "name": "Hogni Red-Arm",
+    "role": "cannibal, Silver-Blood Inn"
+   },
+   {
+    "name": "Lisbet",
+    "role": "cannibal, Arnleif and Sons Trading Company"
+   },
+   {
+    "name": "Banning",
+    "role": "cannibal, Markarth Stables"
+   },
+   {
+    "name": "Sanyon and Nimphaneth",
+    "role": "cultists placed out in the wilds"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The journal and the 'assaulted me' log point to Eola turning on you, most likely after you refuse or fail The Taste of Death. What makes her attack isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "What the Jarl gives isn't in the records; only the Ring of Namira is held by the script."
+   },
+   {
+    "field": "people",
+    "why": "Sanyon and Nimphaneth have new copies placed in the open wilderness; their role (ambush or otherwise) isn't stated."
+   }
+  ],
+  "evidence": [
+   "QUST TasteOfDeath_Addon_Dialogue.esp:000050",
+   "BOOK TasteOfDeath_Addon_Dialogue.esp:000001/000003 Eola's Journal",
+   "giver INFO 00004F Verulus (stage < 6); others Igmund 01339F, Thongvor 0133BB",
+   "jail copies 000008/000009 in Cidhna Mine",
+   "reward QF_madNamiraAddonQuest_03000050.myRing -> 02C37B"
+  ]
+ },
+ {
+  "edid": "DA08",
+  "name": "The Whispering Door",
+  "plugin": "Skyrim.esm (last edited by TWDQE - Wintersun patch.esp; reworked by The Whispering Door - Quest Expansion.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Jarl Balgruuf in Dragonsreach asks you to help his troubled son Nelkir; you can also hear about it from his children.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Balgruuf the Greater",
+    "where": "Dragonsreach, Whiterun",
+    "how": "Talk to the Jarl; he asks you to find out what's wrong with Nelkir. Nelkir, Frothar and Dagny have lines that lead into it."
+   }
+  ],
+  "firstStep": "Find out what's wrong with Nelkir",
+  "takesYou": [
+   {
+    "place": "Dragonsreach",
+    "hold": "Whiterun",
+    "why": "Nelkir, the Whispering Door and the Ebony Blade"
+   },
+   {
+    "place": "wherever a Vigilant of Stendarr is",
+    "hold": "",
+    "why": "optional: hand over the Ebony Blade to be rid of it"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Follow Mephala: talk to Nelkir and open the door",
+    "leadsTo": "You take the Ebony Blade."
+   },
+   {
+    "choice": "Warn the Jarl instead (Quest Expansion)",
+    "leadsTo": "You help Balgruuf with his son, then decide what to do with the Blade."
+   },
+   {
+    "choice": "Report to Balgruuf and speak to a Vigilant of Stendarr",
+    "leadsTo": "The Ebony Blade is got rid of; the quest ends."
+   },
+   {
+    "choice": "Keep the Blade and kill allies with it",
+    "leadsTo": "The Blade is restored to its full potential."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find out what's wrong with Nelkir",
+     "Listen to the Whispering Door",
+     "Speak to Nelkir OR warn the Jarl",
+     "Obtain the key to the Whispering Door",
+     "Open the Whispering Door",
+     "Investigate the room",
+     "Retrieve the Ebony Blade. Optional: Inform the Jarl"
+    ]
+   },
+   {
+    "branch": "warn the Jarl",
+    "objectives": [
+     "Report to Jarl Balgruuf OR kill allies with the Ebony Blade",
+     "Speak to a Vigilant of Stendarr OR kill allies with the Ebony Blade"
+    ]
+   },
+   {
+    "branch": "keep the Blade",
+    "objectives": [
+     "Retrieve the Ebony Blade"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Ebony Blade (greatsword)",
+    "when": "when you keep it; restored to full power after you kill allies with it"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [
+   "The Fate of the Ebony Blade (once you hold the Blade)"
+  ],
+  "closes": [
+   "The Ebony Blade, if you give it up to the Vigilants",
+   "Allies you kill to restore the Blade"
+  ],
+  "people": [
+   {
+    "name": "Balgruuf the Greater",
+    "role": "quest giver, Dragonsreach"
+   },
+   {
+    "name": "Nelkir",
+    "role": "the Jarl's troubled son, Dragonsreach"
+   },
+   {
+    "name": "Frothar and Dagny",
+    "role": "the Jarl's other children"
+   },
+   {
+    "name": "Farengar Secret-Fire",
+    "role": "court wizard, Dragonsreach"
+   },
+   {
+    "name": "Fianna",
+    "role": "Dragonsreach Jarl's Quarters (Quest Expansion)"
+   },
+   {
+    "name": "a Vigilant of Stendarr",
+    "role": "takes the Blade off your hands (Quest Expansion)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No earlier quest, title or level shows up on the Jarl's or Nelkir's opening lines in these files, though the Quest Expansion and its patches rewrite those lines several times."
+   },
+   {
+    "field": "where",
+    "why": "Nelkir spends the day in Dragonsreach and sleeps 10 pm to 6 am in the Jarl's Quarters. His family has a Blue Palace package for when the Jarl is exiled in the civil war, so in that case look in Solitude."
+   },
+   {
+    "field": "steps",
+    "why": "Who holds the Whispering Door key isn't shown."
+   },
+   {
+    "field": "rewards",
+    "why": "The Quest Expansion also adds a 'Kid Blood Spell' to the script; it looks like an effect, not something you keep."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:04A37B",
+   "giver INFO 0B1232 Nelkir (stage 0); others Frothar, Dagny, Balgruuf (stage < 10)",
+   "stage 10 log names Balgruuf",
+   "aliases Vigilant/Fianna added by The Whispering Door - Quest Expansion.esp",
+   "stage 60 log variants on TRUEGlobal",
+   "reward DA08QuestScript.RealEbonyBlade -> 0EA29C",
+   "Nelkir PACK 0C36AC sleep 22x8 Jarl's Quarters, 0A926E Blue Palace"
+  ]
+ },
+ {
+  "edid": "DA08MephalaHunt",
+  "name": "The Fate of the Ebony Blade",
+  "plugin": "EbonyBladeCurse.esp",
+  "canDo": "by itself",
+  "canDoWhy": "Starts on its own when you get the Ebony Blade: keep it, or find a fire hotter than the Skyforge to destroy it.",
+  "needs": [
+   {
+    "what": "Get the Ebony Blade from The Whispering Door",
+    "kind": "quest"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Decide the fate of the Ebony Blade",
+  "takesYou": [
+   {
+    "place": "The Aetherium Forge",
+    "hold": "The Rift",
+    "why": "the only place the Ebony Blade can be destroyed"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Keep the Blade",
+    "leadsTo": "You set out to restore it to full power; the quest completes."
+   },
+   {
+    "choice": "Destroy it",
+    "leadsTo": "Find the Aetherium Forge and cast the Blade into its fires; you're freed of its dark magic."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Decide the fate of the Ebony Blade."
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "The Ebony Blade, if you destroy it"
+  ],
+  "people": [],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Nothing in these files shows the trigger; the first log line says it begins once you have the Blade."
+   },
+   {
+    "field": "takesYou",
+    "why": "The Aetherium Forge door stays hidden until a Dawnguard enable parent is switched on, and the Forge belongs to Lost to the Ages. You probably need that quest's progress to get in; the records don't say outright."
+   },
+   {
+    "field": "rewards",
+    "why": "The script holds the Ebony Blade, but that is most likely the Blade it takes away when destroyed, not a reward."
+   }
+  ],
+  "evidence": [
+   "QUST EbonyBladeCurse.esp:000807",
+   "script madHuntedQuest.eBlade -> Skyrim.esm:04A38F",
+   "door Dawnguard.esm:0057ED Aetherium Forge, enable parent Dawnguard.esm:0146C5",
+   "place Dawnguard.esm:005826 The Aetherium Forge (The Rift, near Ivarstead)"
+  ]
+ },
+ {
+  "edid": "DA16",
+  "name": "Waking Nightmare",
+  "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; also Dawnguard.esm)",
+  "canDo": "talk",
+  "canDoWhy": "In Dawnstar you overhear townsfolk complaining of nightmares; the priest of Mara Erandur, at the Windpeak Inn, says he can end them.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Erandur",
+    "where": "the Windpeak Inn, Dawnstar",
+    "how": "Overhear Irgnir and Fruki talk about their nightmares, then talk to Erandur; he takes you to Nightcaller Temple."
+   }
+  ],
+  "firstStep": "Speak to Erandur",
+  "takesYou": [
+   {
+    "place": "Windpeak Inn, Dawnstar",
+    "hold": "The Pale",
+    "why": "Erandur"
+   },
+   {
+    "place": "Nightcaller Temple",
+    "hold": "The Pale",
+    "why": "the source of the nightmares and the Skull of Corruption; a short walk from Dawnstar"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Let Erandur finish his ritual",
+    "leadsTo": "The Skull of Corruption is destroyed and Erandur offers to be your companion."
+   },
+   {
+    "choice": "Kill Erandur before the Skull is destroyed (Vaermina's offer)",
+    "leadsTo": "You take the Skull of Corruption."
+   },
+   {
+    "choice": "Kill Erandur too late",
+    "leadsTo": "Erandur is dead and the Skull is destroyed anyway."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Erandur",
+     "Follow Erandur to Nightcaller Temple",
+     "Speak to Erandur",
+     "Follow Erandur",
+     "Follow Erandur to the Library",
+     "Speak to Erandur",
+     "Locate \"The Dreamstride\"",
+     "Speak to Erandur",
+     "Follow Erandur to the Laboratory",
+     "Speak to Erandur",
+     "Locate Vaermina's Torpor",
+     "Speak to Erandur",
+     "Drink Vaermina's Torpor",
+     "Release the Miasma",
+     "Disable the Magical Barrier",
+     "Speak to Erandur",
+     "Follow Erandur to the Skull of Corruption",
+     "Defeat Veren and Thorek",
+     "Speak to Erandur",
+     "Wait for Erandur to dispel the barrier"
+    ]
+   },
+   {
+    "branch": "spare Erandur",
+    "objectives": [
+     "Allow Erandur to complete his ritual",
+     "Speak to Erandur"
+    ]
+   },
+   {
+    "branch": "side with Vaermina",
+    "objectives": [
+     "Murder Erandur",
+     "Take the Skull of Corruption"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Skull of Corruption (staff)",
+    "when": "if you kill Erandur before the ritual ends"
+   },
+   {
+    "what": "Erandur as a follower",
+    "when": "if you let him finish the ritual"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [
+   "Erandur, if you kill him",
+   "the Skull of Corruption, if Erandur destroys it"
+  ],
+  "people": [
+   {
+    "name": "Erandur",
+    "role": "quest giver, Windpeak Inn; afterwards stays at Nightcaller Temple"
+   },
+   {
+    "name": "Irgnir",
+    "role": "Dawnstar resident with nightmares"
+   },
+   {
+    "name": "Fruki",
+    "role": "Dawnstar resident with nightmares"
+   },
+   {
+    "name": "Thoring",
+    "role": "Windpeak Inn"
+   },
+   {
+    "name": "Veren Duleri and Thorek",
+    "role": "Vaermina's priests who ambush you in the temple"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No level or earlier quest shows on Erandur's opening line in these files; Erandur Dialogue Edits.esp only strips race checks from some of his lines."
+   },
+   {
+    "field": "starts",
+    "why": "The quest runs from the start of the game. That the overheard conversation sets the first log is read from the log text; the scene's trigger isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0242AF",
+   "giver INFO 024240 Erandur (stage < 20)",
+   "Erandur PACK 099D9F Windpeak Inn (stage 20-25), 10E3C0 Nightcaller Temple after completion",
+   "stage 200 log variants on DA16ErandurDead / DA16SkullDestroyed",
+   "INFO 02371D 'Nightcaller Temple is only a short walk from Dawnstar'",
+   "Skull of Corruption Skyrim.esm:035066"
+  ]
+ },
+ {
+  "edid": "aaaMBQuest",
+  "name": "Sleepwalking Into A Nightmare",
+  "plugin": "NightmarePlane.esp",
+  "canDo": "talk",
+  "canDoWhy": "Ralforn, at Green-Tip Cabin, says his wife Gretska vanished overnight and tells you her usual haunts.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Ralforn",
+    "where": "Green-Tip Cabin",
+    "how": "Talk to Ralforn; he tells you about Gretska and her usual spots."
+   }
+  ],
+  "firstStep": "Find Gretska: look for clues at her fishing spot, her archery target and along the path",
+  "takesYou": [
+   {
+    "place": "Green-Tip Cabin",
+    "hold": "",
+    "why": "Ralforn, and where Gretska returns"
+   },
+   {
+    "place": "the place from Gretska's nightmares, somewhere in northern Skyrim",
+    "hold": "",
+    "why": "find Gretska asleep"
+   },
+   {
+    "place": "The Nightmare (Awakening Chambers, Nightmares of Bereavement, Anguish and Self Doubt, Hall Of Awakening)",
+    "hold": "",
+    "why": "overcome the three nightmares and face the Lotus"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Accept Vaermina's offer",
+    "leadsTo": "Kill Gretska and become Vaermina's champion."
+   },
+   {
+    "choice": "Refuse Vaermina's offer",
+    "leadsTo": "Wake Gretska; she meets you back at the cabin with Ralforn."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find Gretska",
+     "Look for clues at Gretska's fishing spot",
+     "Look for clues at Gretska's archery target",
+     "Look for clues along the path",
+     "Search the knapsack for clues",
+     "Read Gretsa's Journal",
+     "Tell Ralforn you found the journal",
+     "Find the location from Gretska's nightmare",
+     "Try to wake up Gretska",
+     "Find a way to wake up Gretska from the nightmare",
+     "Investigate the cave",
+     "Find a way to sleep in the Awakening Chambers",
+     "Loot the Omen Of Anguish",
+     "Loot the Omen Of Self Doubt",
+     "Loot the Omen Of Bereavement",
+     "Overcome the Nightmare Of Bereavement",
+     "Kill the Werewolf",
+     "Overcome the Nightmare Of Anguish",
+     "Tell Gretska's Mother you've fixed the Vase",
+     "Leave the nightmare",
+     "Overcome the Nightmare Of Self Doubt",
+     "Sleep On The Stone Bed",
+     "Defeat the Lotus",
+     "Speak with the statue",
+     "Accept or refuse Vaermina's offer"
+    ]
+   },
+   {
+    "branch": "accept",
+    "objectives": [
+     "Kill Gretska"
+    ]
+   },
+   {
+    "branch": "refuse",
+    "objectives": [
+     "Speak with Gretska",
+     "Speak with Ralforn",
+     "Speak with Gretska"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Daybreak's Embrace (ring, scales with level)",
+    "when": "at the end"
+   },
+   {
+    "what": "Vaermina's Lullaby (bow, scales with level)",
+    "when": "at the end"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [
+   "Gretska dies if you accept Vaermina's offer"
+  ],
+  "people": [
+   {
+    "name": "Ralforn",
+    "role": "quest giver, Green-Tip Cabin"
+   },
+   {
+    "name": "Gretska",
+    "role": "Ralforn's missing wife, trapped in her nightmares"
+   },
+   {
+    "name": "Omen Of Anguish, Omen Of Self Doubt, Omen Of Bereavement",
+    "role": "in The Nightmare; the Anguish and Self Doubt Omens carry the keys to those nightmares"
+   },
+   {
+    "name": "Gretska's Mother",
+    "role": "in the Nightmare Of Anguish (fix the vase)"
+   },
+   {
+    "name": "the Lotus",
+    "role": "ghost you defeat in the Hall Of Awakening"
+   },
+   {
+    "name": "Vaermina",
+    "role": "speaks through the statue and makes her offer"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Green-Tip Cabin's door sits in an exterior cell with no hold or nearby town in these files; Ralforn has no daily packages."
+   },
+   {
+    "field": "rewards",
+    "why": "The script holds a ring and a bow, both from level-scaled lists. Which ending gives which (or both) isn't shown."
+   },
+   {
+    "field": "takesYou",
+    "why": "The journal only says the nightmare place is 'somewhere in northern Skyrim'; the records don't name it."
+   }
+  ],
+  "evidence": [
+   "QUST NightmarePlane.esp:0348DA",
+   "named giver Ralforn NightmarePlane.esp:0348E1 in Green-Tip Cabin 03484F",
+   "door 03484E from Skyrim.esm:0096E2",
+   "locked doors: Key To Self Doubt 0FC67B (Omen Of Self Doubt), Key To Anguish 0FC67C (Omen Of Anguish)",
+   "rewards QF_aaaMBQuest_050348DA RingReward 0CE1B4 / RingRewardLeveled 1C2E42 / BowReward 176CF7"
+  ]
+ },
+ {
+  "edid": "WTAthirFavor",
+  "name": "Retrieving Embersunder",
+  "plugin": "Wyrmstooth.esp",
+  "canDo": "talk",
+  "canDoWhy": "Athir, one of the Wyrmstooth mercenaries, asks you to find his sword Embersunder at the Forsworn camp at Hag's End.",
+  "needs": [
+   {
+    "what": "Meet Athir through the Wyrmstooth quests",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Athir",
+    "where": "on Wyrmstooth (after Barrow of the Wyrm he stays around the island and sleeps at the tradehouse)",
+    "how": "Talk to Athir; he says the one place he hasn't looked is Hag's End, where the Forsworn may have it."
+   }
+  ],
+  "firstStep": "Retrieve Embersunder from Hag's End",
+  "takesYou": [
+   {
+    "place": "Hag's End",
+    "hold": "The Reach",
+    "why": "the Forsworn there have Embersunder"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve Embersunder.",
+     "Return to Athir."
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Athir",
+    "role": "Redguard mercenary on the Wyrmstooth expedition; can follow you"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Athir is placed in a holding cell and is moved by the Wyrmstooth quests. His packages put him on Wyrmstooth (sleeping at the tradehouse) once Barrow of the Wyrm is done, but when this favour first becomes available isn't in these files."
+   },
+   {
+    "field": "needs",
+    "why": "His asking line shows no conditions here; the Wyrmstooth requirement comes from where Athir can be."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is in the records."
+   }
+  ],
+  "evidence": [
+   "QUST Wyrmstooth.esp:3A1467",
+   "giver INFO Wyrmstooth.esp:3A1480 Athir (stage < 1)",
+   "Athir PACK 12BD51 WTPostQuestTradehouseSleep0x6 and 119A56 WTSandboxWyrmstooth when Barrow of the Wyrm (028F01) is at 270",
+   "place Hag's End Skyrim.esm:019191 (The Reach)"
+  ]
+ }
+]

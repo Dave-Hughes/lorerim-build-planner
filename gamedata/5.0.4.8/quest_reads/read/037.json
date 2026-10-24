@@ -1,0 +1,934 @@
+[
+ {
+  "edid": "manny_GF_Books",
+  "name": "Memories of the Umbranox",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "by itself",
+  "canDoWhy": "Starts when you pick up the first of Caio Umbranox's journals during the Gray Cowl story.",
+  "needs": [
+   {
+    "what": "Be partway through The Call of Gray Cowl of Nocturnal, where the journals lie",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "one of the places the Gray Cowl story sends you: the Old Way of the Thief, Sancre Tor, Coldharbour or the Halls of the West",
+    "how": "Pick up a Caio's Journal; the quest starts and asks you to find them all for Seviana."
+   }
+  ],
+  "firstStep": "Find all of Caio's Journals",
+  "takesYou": [
+   {
+    "place": "Old Way of the Thief",
+    "hold": "",
+    "why": "a journal"
+   },
+   {
+    "place": "Sancre Tor",
+    "hold": "",
+    "why": "a journal"
+   },
+   {
+    "place": "Coldharbour",
+    "hold": "",
+    "why": "a journal"
+   },
+   {
+    "place": "Halls of the West",
+    "hold": "",
+    "why": "a journal"
+   },
+   {
+    "place": "Seviana's House",
+    "hold": "",
+    "why": "hand the journals to Seviana Umbranox"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Give the journals to Seviana and take the gold",
+    "leadsTo": "1000 gold"
+   },
+   {
+    "choice": "Give the journals to Seviana and take the spell tome",
+    "leadsTo": "Spell Tome (Apprentice): Unlock Container"
+   },
+   {
+    "choice": "Keep the journals",
+    "leadsTo": "No reward from Seviana; you keep the books"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find all the journals (a counter shows how many you have)",
+     "Deliver the journals to Seviana"
+    ]
+   },
+   {
+    "branch": "missed a journal",
+    "objectives": [
+     "The quest fails if you miss some of the journals"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "1000 gold",
+    "when": "if you choose gold"
+   },
+   {
+    "what": "Spell Tome (Apprentice): Unlock Container (Unlocks the nearest locked (novice and apprentice) container)",
+    "when": "if you choose the tome"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "The quest fails if you miss journals; the Gray Cowl places are one-way, so a missed journal may be gone for good"
+  ],
+  "people": [
+   {
+    "name": "Seviana Umbranox",
+    "role": "takes the journals, in Seviana's House"
+   },
+   {
+    "name": "Valen Dreth",
+    "role": "his remains lie in the Imperial City Prison; tied to the quest, likely carrying a journal"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts.where",
+    "why": "the quest names six journals and several hiding places (chests that vary); which journal is where, and whether one is on Valen Dreth's remains, isn't spelled out in these files"
+   },
+   {
+    "field": "closes",
+    "why": "the failure stage exists but what triggers it (leaving an area for good) isn't in these files"
+   },
+   {
+    "field": "takesYou.hold",
+    "why": "Seviana's House door sits in a Skyrim exterior cell these files don't name; the other places are reached through the Gray Cowl story, outside Skyrim's holds"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:0026F4 stages 10/30/40/50/200, objectives 10/20",
+   "aliases Book1-6, RandomChest1-5, Location1-5 (Old Way of the Thief, Sancre Tor, Coldharbour, Halls of the West), ValenDrethDead",
+   "rewards manny_GF_BooksQuestScript.Gold001, .myBook = BOOK Gray Fox Cowl.esm:022E9C (SPEL 020698 Unlock Container)",
+   "places_raw: Caio's Journal vol. 6 pointer in Halls of the West",
+   "door Gray Fox Cowl.esm:001A88 into Seviana's House from Skyrim.esm:009AA7, needs Key to Seviana's House"
+  ]
+ },
+ {
+  "edid": "manny_GF_BuryValenDreth",
+  "name": "Bury Valen Dreth",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "by itself",
+  "canDoWhy": "A small task that comes up from Valen Dreth's remains in the Imperial City Prison during the Gray Cowl story.",
+  "needs": [
+   {
+    "what": "Reach the Imperial City Prison in The Call of Gray Cowl of Nocturnal",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Valen Dreth (his remains, and his ghost)",
+    "where": "the Imperial City Prison",
+    "how": "Find Valen Dreth's remains; the task to bury them at Falkreath is added."
+   }
+  ],
+  "firstStep": "Bury the remains of Valen Dreth at Falkreath",
+  "takesYou": [
+   {
+    "place": "Imperial City Prison",
+    "hold": "",
+    "why": "take Valen Dreth's remains"
+   },
+   {
+    "place": "Falkreath",
+    "hold": "Falkreath",
+    "why": "bury them at the grave the quest marks"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bury the rests of Valen Dreth at Falkreath"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Left Eye of Coldharbour (ring: \"The Left Eye of Coldharbour lights your way.\")",
+    "when": "at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Valen Dreth",
+    "role": "his remains are in the Imperial City Prison; his ghost appears for the burial"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts.how",
+    "why": "the opening stages have no journal text; whether you pick up the remains or talk to his ghost isn't in these files"
+   },
+   {
+    "field": "takesYou",
+    "why": "the grave and trigger at Falkreath are quest markers; their exact spot isn't named"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:01E072 objective 10, completes at 30",
+   "aliases myValenDreth (NPC 002FCF, Imperial City Prison), myGhostValenDreth (002FB4), myGraveStone, myDestination, myTrigger",
+   "reward manny_GF_ValenQuestScript.myRing = ARMO Gray Fox Cowl.esm:019BB2"
+  ]
+ },
+ {
+  "edid": "manny_GF_ColdharbourQuest",
+  "name": "Reward of Coldharbour",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "by itself",
+  "canDoWhy": "Happens to you inside the Gray Cowl story when you end up in Coldharbour.",
+  "needs": [
+   {
+    "what": "Reach Coldharbour in The Call of Gray Cowl of Nocturnal",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "Coldharbour, during the Gray Cowl story",
+    "how": "You arrive in Coldharbour and must find a way out."
+   }
+  ],
+  "firstStep": "Escape from Coldharbour",
+  "takesYou": [
+   {
+    "place": "Coldharbour",
+    "hold": "",
+    "why": "escape it"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Escape without killing the Guardians of Coldharbour (optional)",
+    "leadsTo": "the optional objective is met; any extra payoff isn't shown in these files"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Escape from Coldharbour",
+     "(Optional) Do not kill the Guardians of Coldharbour"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Daedric",
+  "opens": [
+   "The Call of Gray Cowl of Nocturnal continues in the Alik'r Desert"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Molag Bal",
+    "role": "named in the quest; tied to Coldharbour"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "no reward is attached to this quest in the records despite its name; the Right Eye of Coldharbour amulet exists in the same mod but nothing ties it to this quest"
+   },
+   {
+    "field": "choices",
+    "why": "what not killing the Guardians changes isn't in these files"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:01F56B objectives 5/10, completes at 255",
+   "aliases Molag_Bal, Molag_Bal_Halls",
+   "manny_GF_MQ stage 160 log 'escaped from Coldharbour', stage 170 'I am in a desert region'",
+   "places_raw Halls of the West lists this quest"
+  ]
+ },
+ {
+  "edid": "manny_GF_Farewell",
+  "name": "Time for the Farewells",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "by itself",
+  "canDoWhy": "Seviana and Luvien ask to be seen off at Solitude's docks; what sets it off isn't in the records.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Seviana Umbranox and Luvien",
+    "where": "Seviana's House",
+    "how": "Escort the two of them to the docks of Solitude."
+   }
+  ],
+  "firstStep": "Escort Seviana and Luvien to the docks of Solitude",
+  "takesYou": [
+   {
+    "place": "the docks of Solitude",
+    "hold": "Haafingar",
+    "why": "see Seviana and Luvien off"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Escort Seviana and Luvien to the docks of Solitude"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Seviana and Luvien leave from the docks"
+  ],
+  "people": [
+   {
+    "name": "Seviana Umbranox",
+    "role": "escorted, from Seviana's House"
+   },
+   {
+    "name": "Luvien",
+    "role": "escorted, from Seviana's House"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "no dialogue or condition starting it is in these files; it most likely follows the end of The Call of Gray Cowl of Nocturnal but the records don't say"
+   },
+   {
+    "field": "starts.how",
+    "why": "the opening stage has no text; no giver line was found"
+   },
+   {
+    "field": "closes",
+    "why": "that they leave Skyrim is read from the title and objective, not from a script"
+   },
+   {
+    "field": "where",
+    "why": "Seviana's House is entered from a Skyrim exterior cell these files don't name"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:01CFA7 stages 10/20, completes at 30, objective 10",
+   "aliases Seviana (001F32), Luvien (001F36), Arrival",
+   "Seviana and Luvien: one shared sandbox package, essential"
+  ]
+ },
+ {
+  "edid": "manny_GF_IrlavExperiment",
+  "name": "The Experiment",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "talk",
+  "canDoWhy": "Ilrav Baenius, a shopkeeper in the Alik'r Desert, asks you to help with an experiment.",
+  "needs": [
+   {
+    "what": "Reach the Alik'r Desert (Ben Erai) through The Call of Gray Cowl of Nocturnal",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Ilrav Baenius",
+    "where": "Three Peaks Staff and Magic, his shop in the Alik'r Desert",
+    "how": "Talk to Ilrav; he gives you artifacts to place around Skyrim."
+   }
+  ],
+  "firstStep": "Place the artifacts near Markarth, Falkreath, Windhelm and Dawnstar",
+  "takesYou": [
+   {
+    "place": "near Markarth",
+    "hold": "The Reach",
+    "why": "place an artifact"
+   },
+   {
+    "place": "near Falkreath",
+    "hold": "Falkreath",
+    "why": "place an artifact"
+   },
+   {
+    "place": "near Windhelm",
+    "hold": "Eastmarch",
+    "why": "place an artifact"
+   },
+   {
+    "place": "near Dawnstar",
+    "hold": "The Pale",
+    "why": "place an artifact"
+   },
+   {
+    "place": "Three Peaks Staff and Magic",
+    "hold": "Alik'r Desert",
+    "why": "report back to Ilrav"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Place the artifact near Markarth",
+     "Place the artifact near Falkreath",
+     "Place the artifact near Windhelm",
+     "Place the artifact near Dawnstar",
+     "Something goes wrong and you are nearly killed",
+     "Report to Ilrav the experiment results"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Irlav's Penitence",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Ilrav Baenius",
+    "role": "quest giver; works in Three Peaks Staff and Magic from 8 am for 10 hours, breakfast there at 7 am, sleeps there from 10 pm"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts.where",
+    "why": "his shop is in the Alik'r Desert and he belongs to Ben Erai's townsfolk; the records don't say which street; from 6 pm for 4 hours he goes to a spot these files don't name"
+   },
+   {
+    "field": "rewards",
+    "why": "Irlav's Penitence is the quest's amulet alias; its stats aren't in items_raw"
+   },
+   {
+    "field": "takesYou",
+    "why": "the exact spots for the artifacts are quest markers (holders) not named in these files"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:03039F stages 10/100, completes at 300, objectives 1-4/10",
+   "giver INFO Gray Fox Cowl.esm:0303AD (Ilrav 0167FE)",
+   "alias Amulet = ARMO Gray Fox Cowl.esm:0303BA",
+   "Ilrav packages: Breakfast7x1, OnDuty8x10, Dining18x4, Sleep22x9"
+  ]
+ },
+ {
+  "edid": "manny_GF_MiscQuestShantaFilibb",
+  "name": "Claim Shanta Filibb",
+  "plugin": "Gray Fox Cowl.esm (last edited by Synthesis - Gameplay Overwrite.esp; also GrayCowlMissivesNoNoticeBoard.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Bandits ambush you in the Alik'r Desert; clearing them and their hideout earns you a house.",
+  "needs": [
+   {
+    "what": "Reach the Alik'r Desert (Ben Erai) through The Call of Gray Cowl of Nocturnal",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "the Alik'r Desert",
+    "how": "Unknown attackers jump you; kill them and look for a reward, which leads to the missive to clear out Shanta Filibb."
+   }
+  ],
+  "firstStep": "Kill all the unknown attackers",
+  "takesYou": [
+   {
+    "place": "Shanta Filibb",
+    "hold": "Alik'r Desert",
+    "why": "kill all the bandits"
+   },
+   {
+    "place": "the notice board in Ben Erai",
+    "hold": "Alik'r Desert",
+    "why": "look for a note about a reward"
+   },
+   {
+    "place": "Ben Erai",
+    "hold": "Alik'r Desert",
+    "why": "meet Crassius for the reward"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill all the unknown attackers",
+     "Check for a reward",
+     "Kill all the bandits",
+     "Get your reward",
+     "Buy furnitures for your new home."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Shanta Filibb (a house) and its key",
+    "when": "from Crassius after the bandits are dead"
+   },
+   {
+    "what": "gold",
+    "when": "with the reward"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Crassius",
+    "role": "gives the reward and the house key; outside in Ben Erai by day (from 8 am for 5 hours, then from 2 pm for 5 hours), meals and sleep in the Fortress of Ben Erai"
+   },
+   {
+    "name": "Telrav Baenius",
+    "role": "tied to furnishing the house; works at the Last Sentinel Emporium from 8 am for 11 hours"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "the ambush trigger's spot isn't named; you can also be pointed there by the note 'Missive: Clear out Shanta Filibb'. GrayCowlMissivesNoNoticeBoard.esp edits this quest, so in LoreRim the note may come from a Missives board rather than Ben Erai's notice board"
+   },
+   {
+    "field": "takesYou",
+    "why": "where Shanta Filibb stands in the desert isn't in these files"
+   },
+   {
+    "field": "rewards",
+    "why": "the gold amount is a script property not given here"
+   },
+   {
+    "field": "people",
+    "why": "that Telrav sells the furnishings is read from his being in the quest and running the emporium; the records don't say it outright"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:050159 stages 10/20/50/100/150/200, objectives 10/15/20/30/100; editedBy GrayCowlMissivesNoNoticeBoard.esp, Synthesis - Gameplay Overwrite.esp",
+   "giver INFO Gray Fox Cowl.esm:050E2F (Crassius 0097A5)",
+   "alias QuestNote = BOOK Gray Fox Cowl.esm:05015A; gold via manny_GF_MiscQuestShantaFilibbScript.Gold001",
+   "aliases UnknownAttackersTrigger, NoticeBoard, Telrav (03CFD2), room markers",
+   "Crassius packages Farming 8x5, SandboxDoorEvening 14x5, Lunch/Dinner/Relax/Sleep in Fortress of Ben Erai"
+  ]
+ },
+ {
+  "edid": "manny_GF_MQ",
+  "name": "The Call of Gray Cowl of Nocturnal",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "by itself",
+  "canDoWhy": "Runs from the start of the game; a strange vision tells you where to go.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "",
+    "where": "wherever you are",
+    "how": "You have a strange vision and the quest marker shows you where to go."
+   }
+  ],
+  "firstStep": "Reach the place the vision showed you",
+  "takesYou": [
+   {
+    "place": "Hall of the Initiation",
+    "hold": "",
+    "why": "find it; its door needs the Key to Hall of the Initiation"
+   },
+   {
+    "place": "Imperial City Prison, Old Way of the Thief, Sancre Tor and the Halls of the West",
+    "hold": "",
+    "why": "reach the other side and get the four keys"
+   },
+   {
+    "place": "Coldharbour",
+    "hold": "",
+    "why": "escape it"
+   },
+   {
+    "place": "Alik'r Desert",
+    "hold": "Alik'r Desert",
+    "why": "follow Arenar to his village"
+   },
+   {
+    "place": "Fortress of Ben Erai",
+    "hold": "Alik'r Desert",
+    "why": "speak with Syloria Peleu"
+   },
+   {
+    "place": "Al Shedim, north of Ben Erai",
+    "hold": "Alik'r Desert",
+    "why": "the key to the entrance at Mora Sul"
+   },
+   {
+    "place": "the far north of the region",
+    "hold": "Alik'r Desert",
+    "why": "the Alliance of Ancestral Cheetahs amulet"
+   },
+   {
+    "place": "Mausoleum, in the Oasis of Mora Sul",
+    "hold": "Alik'r Desert",
+    "why": "fire the Arrow of Extrication and take the Gray Cowl"
+   },
+   {
+    "place": "Seviana's House",
+    "hold": "",
+    "why": "return to Seviana through the magic portal"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Reach the place",
+     "Find the Hall of the Initiation",
+     "Reach the other side",
+     "Get the four keys",
+     "Escape from Coldharbour (see Reward of Coldharbour)",
+     "Follow Arenar",
+     "Speak with Arenar",
+     "Speak with Syloria",
+     "Find a way to enter the Mausoleum",
+     "Get into position and shoot the Arrow",
+     "Return to Seviana"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gray Cowl of Nocturnal (light armor, head)",
+    "when": "in the Mausoleum, near the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Reward of Coldharbour",
+   "Memories of the Umbranox",
+   "Bury Valen Dreth",
+   "Time for the Farewells",
+   "the Alik'r Desert and Ben Erai, with their quests (The Experiment, Claim Shanta Filibb, The Curse of Sadraaka, and Betalille's Hammerfell quests)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Seviana Umbranox",
+    "role": "in Seviana's House; you return the Cowl to her"
+   },
+   {
+    "name": "Luvien",
+    "role": "with Seviana in her house"
+   },
+   {
+    "name": "Emperor Uriel Septim VII",
+    "role": "appears in the Imperial City Prison scene, with the Blades Captain Renault, Glenroy and Baurus"
+   },
+   {
+    "name": "Valen Dreth",
+    "role": "appears in the prison scene"
+   },
+   {
+    "name": "Arenar Esdrecus",
+    "role": "met in the Alik'r Desert; you follow him to his village"
+   },
+   {
+    "name": "Syloria Peleu",
+    "role": "in the Fortress of Ben Erai; tells you what to do next"
+   },
+   {
+    "name": "Champion of Cyrodiil",
+    "role": "tied to the Mausoleum"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "the quest is set to run from game start with no conditions, but what moves it to the vision (a level, a time, a script) isn't in these files"
+   },
+   {
+    "field": "takesYou",
+    "why": "the Hall of the Initiation and Seviana's House doors stand in Skyrim exterior cells these files don't name, so their hold is unknown; where the Key to Hall of the Initiation comes from isn't shown"
+   },
+   {
+    "field": "opens",
+    "why": "the desert quests become reachable through this quest; the Betalille Solstheim quest ('Get Lloros Reynel to Hammerfell') may be another way in"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:001E61 stages 10/160/170/300/310/500/700, completes at 999; objectives 10-80",
+   "quest_starts gray-cowl: startGame true, no dialogue/event conditions",
+   "door 001A4D into Hall of the Initiation from Skyrim.esm:009D61, needs KEYM 003293; door 001A88 into Seviana's House from Skyrim.esm:009AA7",
+   "alias GrayCowlItem = ARMO Gray Fox Cowl.esm:017AE5",
+   "Crassius packages need stage 180, Arenar 230, Syloria 300"
+  ]
+ },
+ {
+  "edid": "manny_GF_Sadraaka",
+  "name": "The Curse of Sadraaka",
+  "plugin": "Gray Fox Cowl.esm",
+  "canDo": "by itself",
+  "canDoWhy": "Starts when you find the Forgotten City in the Alik'r Desert, full of Alik'r warrior ghosts.",
+  "needs": [
+   {
+    "what": "Reach the Alik'r Desert through The Call of Gray Cowl of Nocturnal",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "",
+    "where": "the Forgotten City in the Alik'r Desert (not the Forgotten City quest mod)",
+    "how": "Find the city full of ghosts; you must break the curse that holds them."
+   }
+  ],
+  "firstStep": "Find information about the Forgotten City",
+  "takesYou": [
+   {
+    "place": "the Forgotten City",
+    "hold": "Alik'r Desert",
+    "why": "find out about the curse; the book 'We were Yokudans' is the clue"
+   },
+   {
+    "place": "Tomb of the Forgotten Draugr",
+    "hold": "Alik'r Desert",
+    "why": "kill Sadraaka (level 40)"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find information about the Forgotten City",
+     "Kill Sadraaka and free the Forgotten City from the curse"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Sadraaka dies"
+  ],
+  "people": [
+   {
+    "name": "Sadraaka",
+    "role": "a draugr, the tomb's boss, in the Tomb of the Forgotten Draugr"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "no reward is attached; the tomb has a boss chest"
+   },
+   {
+    "field": "where",
+    "why": "where the Forgotten City lies in the desert isn't named in these files"
+   }
+  ],
+  "evidence": [
+   "QUST Gray Fox Cowl.esm:026AE8 stage 5 log, completes at 30, objectives 10/20",
+   "alias Sadraaka (NPC 03A216, Tomb of the Forgotten Draugr), myTriggerBook = BOOK 010202 'We were Yokudans'",
+   "places_raw Tomb of the Forgotten Draugr: boss Sadraaka level 40, traps, boss chest"
+  ]
+ },
+ {
+  "edid": "ASHGAndynQuest",
+  "name": "Helping the Enemy",
+  "plugin": "BetalillesHammerfellQuestBundle.esp",
+  "canDo": "talk",
+  "canDoWhy": "Honai of the Ash'abah warns you about a necromancer and you go with him to see what he's up to.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Honai",
+    "where": "the Ash'abah Hideout, Alik'r Desert",
+    "how": "Talk to Honai; he warns you about Andyn Pamarc and you set out together."
+   }
+  ],
+  "firstStep": "Talk to Andyn Pamarc",
+  "takesYou": [
+   {
+    "place": "out in the Alik'r Desert",
+    "hold": "Alik'r Desert",
+    "why": "find and fight Andyn Pamarc"
+   },
+   {
+    "place": "Ash'abah Hideout",
+    "hold": "Alik'r Desert",
+    "why": "talk to Honai at the end"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Andyn Pamarc",
+     "Defeat Andyn Pamarc",
+     "Talk to Dorian Masterhart",
+     "Talk to Honai"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Respected by the Ash'abah (perk)",
+    "when": "at the end"
+   },
+   {
+    "what": "gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Andyn Pamarc is defeated"
+  ],
+  "people": [
+   {
+    "name": "Honai",
+    "role": "quest giver, of the Ash'abah; goes with you"
+   },
+   {
+    "name": "Nimshat",
+    "role": "of the Ash'abah; goes with you"
+   },
+   {
+    "name": "Andyn Pamarc",
+    "role": "the necromancer, found in the open desert"
+   },
+   {
+    "name": "Dorian Masterhart",
+    "role": "the Ben Erai wizard; check on him after the fight (he lives in Dorian's House, Ben Erai)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "Honai's later packages assume The Ash'abah is done, so this most likely comes after it, but the line's conditions aren't in these files"
+   },
+   {
+    "field": "starts.where",
+    "why": "where the Ash'abah Hideout lies in the desert isn't named in these files"
+   },
+   {
+    "field": "rewards",
+    "why": "what the perk does and the gold amount aren't given here"
+   }
+  ],
+  "evidence": [
+   "QUST BetalillesHammerfellQuestBundle.esp:0017A1 stages 10-40, completes at 200, objectives 10-40",
+   "giver INFO 0017D1 (Honai 00174D)",
+   "rewards ASHG_QF_ASHGAndynQuest_06000CF9.ASHGAshabahPerk = PERK 0017E6, .Gold001",
+   "Honai/Nimshat package ASHGAshabahFinalQuestPackage01; Dorian ASHGWizardSandboxFinalQuestPackage"
+  ]
+ },
+ {
+  "edid": "ASHGAshabahQuest",
+  "name": "The Ash'abah",
+  "plugin": "BetalillesHammerfellQuestBundle.esp",
+  "canDo": "talk",
+  "canDoWhy": "Honai asks you to help the Ash'abah clear undead from ancient ruins in the desert.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Honai",
+    "where": "the Ash'abah Hideout, Alik'r Desert",
+    "how": "Talk to Honai and agree to join the Ash'abah against the undead."
+   }
+  ],
+  "firstStep": "Clear the ancient ruins in the Alik'r Desert",
+  "takesYou": [
+   {
+    "place": "Ancient Ruins",
+    "hold": "Alik'r Desert",
+    "why": "defeat the undead, among them The Silent Sword"
+   },
+   {
+    "place": "Ash'abah Hideout",
+    "hold": "Alik'r Desert",
+    "why": "talk to Honai again"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Clear the ancient ruins in the Alik'r Desert",
+     "Talk to Honai of the Ash'abah"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Helping the Enemy"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Honai",
+    "role": "quest giver, of the Ash'abah; fights alongside you"
+   },
+   {
+    "name": "Nimshat",
+    "role": "of the Ash'abah; fights alongside you"
+   },
+   {
+    "name": "The Silent Sword",
+    "role": "undead in the Ancient Ruins"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "you must first reach the Alik'r Desert; whether you need to know the Ash'abah first isn't in these files"
+   },
+   {
+    "field": "starts.where",
+    "why": "where the Ash'abah Hideout and the Ancient Ruins lie in the desert isn't named"
+   },
+   {
+    "field": "opens",
+    "why": "that Helping the Enemy follows is read from Honai's packages, not a stated condition"
+   },
+   {
+    "field": "rewards",
+    "why": "the gold amount is a script property not given here"
+   }
+  ],
+  "evidence": [
+   "QUST BetalillesHammerfellQuestBundle.esp:0017A0 stages 10/20, completes at 200, objectives 10/20",
+   "giver INFO 001547 (Honai 00174D)",
+   "alias Mummy1 = The Silent Sword (0012B0) in Ancient Ruins (001318)",
+   "reward ASHG_QF_ASHGAshabahQuest_06000CF8.Gold001",
+   "Honai packages after completion conditioned on GetQuestCompleted 0017A0"
+  ]
+ }
+]
