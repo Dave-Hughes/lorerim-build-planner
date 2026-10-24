@@ -1,0 +1,1377 @@
+{
+ "checks": [
+  {
+   "edid": "0WHQuestDeliveryToBro",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Wilhelm's dialogue line runs before the first stage; the line's quest is also flagged to start with the game"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "no condition beyond the quest not yet started"
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "who and how agree; his first package (Battle-Brew Meadery, 8 am for 12 hours, three days a week) is evaluated above the shop package, so on those days he isn't in his shop"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "journal: Higil lives in the Upper Valunstrad, west of the Palace; Clan Hammer-Shield is his placement"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "journal says the document can go on his desk if he is not home"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "gold is a script property; the note is the job paper"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "nothing in the records links this to the Edda quest"
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestFurs",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Frida dialogue line before the first stage"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "none shown"
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "placed in the Cult of Tsun; journal names the Windhelm stables carriage; her hours added to unsure"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "journal only says \"the hills\"; unsure kept"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "no branches in the stages"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "journal: \"I got to keep the pelt myself\"; forge recipe turns the pelt plus 2 Leather Strips and an Iron Ingot into the Pelt of Karhu (light armour, cloak slot) once a stage of this quest is done"
+    },
+    "opens": {
+     "verdict": "fix",
+     "note": "nothing in the records ties Hunting Trip to this quest finishing (Hunting Trip's giver line only checks Hunting Trip itself), and \"repeatable\" has no record; moved to unsure as a likely follow-up"
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestFursRepeating",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stays; dropped \"repeatable\" from the why line, since no record shows the quest repeating"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Frida's line only checks this quest's own stage; unsure kept about Kyne's Trial"
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Frida, placed in the Cult of Tsun"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "each order ends \"to Frida in Windhelm\""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "seven orders in the stages match: six Wolf, three Sabre Cat, three Bear, four Ice Wolf, two Snow Sabre Cat, two Snow Bear, three Cave Bear; how one is picked is not shown"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "gold, a leveled gold list and a hunting reward list are script properties; contents not in these files, unsure kept"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestMead",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Manheim dialogue line before the first stage"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Manheim is placed in the Battle-Brew Meadery"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "the Frozen Hearth is the inn in Winterhold"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "gold is a script property; amount and payer not shown, unsure kept"
+    },
+    "opens": {
+     "verdict": "fix",
+     "note": "the later deliveries' giver line only checks their own stage, and \"repeatable\" has no record; moved to unsure"
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestMeadRepeating",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "\"radiant\" stays; dropped \"repeat deliveries\" from the why line, since no record shows it repeating"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Manheim, Battle-Brew Meadery"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "three stages name the Bannered Mare, the Frozen Hearth and Candlehearth Hall"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "how the inn is picked is not shown; unsure kept"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "no reward property in this quest's records"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestPoetry",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Higil dialogue line before the list stage"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Higil placed in Clan Hammer-Shield; his hours added to unsure; the \"read the book\" stage is still unexplained, unsure kept"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "each spot matches the journal and the person's placement or schedule (Jorn at the Iron Halls 6 to 10 pm, Hellte serving there 11 am to 2 pm and 4 to 11 pm, Alarik at the Palace from noon)"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "no branches; the Alarik/Torbis swap is in unsure"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "gold and The Song of Return are script properties; the verse books are too, but the last objective has you hand them to Higil, so unsure kept"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestRieklings",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Signy dialogue line before the job stage"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "journal: \"talk to woman boarding up the place\"; she is placed outdoors and her other packages are dock buildings, so \"at the docks\" is a fair reading; unsure kept"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "journal says \"a Windhelm warehouse\"; unsure kept"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "decline and death stages exist; the lie hint is from the journal"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "gold is a script property; unsure note added"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestTalosIntro",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Beorn dialogue line before the first stage"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "who and how agree; where: placement says the Old Temple of Talos, but his top package is an all-day trip to an unnamed linked spot before the hunt starts, so the evening Iron Halls visit the reader gave him is outranked; removed from his role, unsure rewritten"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Hverung's package keeps him in the Mustering Hall until the agent is dead; Sorcalin is placed in the Cramped Loft of The Rooftop"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "objectives offer kill or warn the agent, then kill Hverung; two separate Hverung-dead endings exist"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Amulet of Talos is a script property, stage not shown; the headquarters is from the journal"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "no follow-up named; unsure kept"
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestVampires",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "the Dunmer have lines open before the cavern stage, but no record shows those lines starting the quest; the first journal entry is falling into the cavern. \"talk\" kept, note added"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "the four Dunmer share the line; their placements are shacks by the Eastern Gate and an Eastern Gate sandbox"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "journal: caverns outside Windhelm; report to Wuunferth in the Palace; map marker oddity kept in unsure"
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "the optional objective is \"Slay the Volkhair Brute\", and the records make the Volkihar Brute a gargoyle, not the cave's vampire boss; choice reworded to the objective, people list and unsure corrected"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "gold is a script property; unsure note added"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "the wedding bands' records are named for this quest and carry the text \"they usually come as a pair\"; kept as a probable link with the reader's unsure"
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "journal: the Dunmer had all been turned"
+    }
+   }
+  },
+  {
+   "edid": "0WindhelmSceneDunmerCouple",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "no giver; the stage log says you activate a spot with both rings in your pack"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "both bands are script properties; band text says they come as a pair"
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "empty is right: no person starts it"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "the spot is not named; unsure kept"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Silverfang (sword, \"especially effective against undead\") and Gold Circlet are script properties; unsure note added"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "0WHQuestDeliveryToBro",
+   "name": "A Simple Delivery",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Wilhelm offers it when you talk to him in his shop in Windhelm.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Wilhelm",
+     "where": "Wilhelm's Winter Wares, his shop and warehouse in the Windhelm market; on Morndas, Middas and Fredas he works at the Battle-Brew Meadery from 8 am to 8 pm instead",
+     "how": "Talk to Wilhelm; he asks you to carry a purchase agreement to Higil Hammer-Shield."
+    }
+   ],
+   "firstStep": "Deliver the purchase agreement to Higil's home.",
+   "takesYou": [
+    {
+     "place": "Clan Hammer-Shield (Higil's home), in the upper Valunstrad west of the Palace of the Kings",
+     "hold": "Eastmarch",
+     "why": "deliver the purchase agreement"
+    },
+    {
+     "place": "Wilhelm's Winter Wares, Windhelm market",
+     "hold": "Eastmarch",
+     "why": "tell Wilhelm the delivery is done"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Hand the agreement to Higil, or leave it on his desk if he isn't home",
+     "leadsTo": "either way the delivery counts; then go back to Wilhelm"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver the purchase agreement to Higil's home.",
+      "I should tell Wilhelm I've finished the delivery."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back to Wilhelm"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Wilhelm",
+     "role": "gives the job; runs Wilhelm's Winter Wares in the market"
+    },
+    {
+     "name": "Higil Hammer-Shield",
+     "role": "receives the agreement at Clan Hammer-Shield"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "the records give gold but not the amount; Wilhelm's Instructions is the note handed over with the job, not a reward"
+    },
+    {
+     "field": "where",
+     "why": "his shop hours are about 7 am to 8 pm, he drinks at Candlehearth Hall from 7 pm to 11 pm and sleeps in his warehouse; the meadery days come from his schedule's day setting, which these files give as a code"
+    },
+    {
+     "field": "opens",
+     "why": "Higil also gives Collecting the Edda - Windhelm and this is the first quest of the mod's line, but nothing in the records says this delivery unlocks it"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:320702 stages 10/15/30, objectives 10/15",
+    "giver INFO WindhelmSSE.esp:320705 Wilhelm GetStage<10",
+    "Higil other speaker stageBelow 11",
+    "QF_0WHQuestDeliveryToBro_05320702.Gold001, .Note -> BOOK WindhelmSSE.esp:320712",
+    "quest_starts capital-windhelm: startGame true, opening 0WHQuestDeliveryToBro",
+    "Wilhelm placed in Wilhelm's Winter Warehouse (WindhelmSSE.esp:04D3BB)",
+    "Wilhelm packages 0WHWilhelmMeaderyWork, 0WHShopWilhelmSelling, 0WHWinhelmDrinkAtCandlehearth, 0WHWilhelmSleep",
+    "schedule: 0WHWilhelmMeaderyWork dow 9 08:00 720 min (first in order), 0WHShopWilhelmSelling 07:00 780 min, 0WHWinhelmDrinkAtCandlehearth 19:00 240 min, 0WHWilhelmSleep 23:00"
+   ]
+  },
+  {
+   "edid": "0WHQuestFurs",
+   "name": "Kyne's Trial",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Frida the Younger of the Cult of Tsun invites you on a bear hunt when you talk to her.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Frida the Younger",
+     "where": "the Cult of Tsun, her clan hall in the Valunstrad, Windhelm",
+     "how": "Talk to Frida and agree to go hunting with her; you leave together by carriage from the Windhelm Stables."
+    }
+   ],
+   "firstStep": "Take a carriage from the Windhelm Stables to the hills",
+   "takesYou": [
+    {
+     "place": "Windhelm Stables",
+     "hold": "Eastmarch",
+     "why": "take a seat in the carriage"
+    },
+    {
+     "place": "the hills where the great bear lives",
+     "hold": "",
+     "why": "find and kill the great bear with Frida"
+    },
+    {
+     "place": "back to Windhelm by carriage",
+     "hold": "Eastmarch",
+     "why": "end the trip"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Take a carriage from the Windhelm Stables to the hills",
+      "Find and slay the great bear",
+      "Talk to Frida",
+      "Take a carriage back to Windhelm"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "the great bear's pelt (Pelt of Karhu); a forge recipe turns it, with 2 Leather Strips and an Iron Ingot, into the Pelt of Karhu cloak",
+     "when": "after the bear is dead"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Frida the Younger",
+     "role": "gives the quest and hunts the bear with you, following you during the hunt"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the journal only says \"the hills\"; the records here don't name the place the carriage takes you or its hold"
+    },
+    {
+     "field": "where",
+     "why": "Frida's day: weekends 8 to 10 am at Wilhelm's shop in the market, 10 am to noon on the city wall (the journal of another quest calls it the Five Hundred's Wall), Tirdas and Turdas noon to 1:30 pm at Wilhelm's shop, 2 to 3:30 pm near the Palace of the Kings, 6 to 10 pm drinking near the Palace, then sleep; the rest of the time she is home at the Cult of Tsun"
+    },
+    {
+     "field": "opens",
+     "why": "probably leads to Hunting Trip, Frida's pelt orders: same giver and same mod, but nothing in the records makes Hunting Trip wait for this one"
+    },
+    {
+     "field": "rewards",
+     "why": "the forge recipe for the Pelt of Karhu cloak unlocks partway through this quest; at which point isn't shown"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:29178E stages 10-50, objectives 10/20/30/35",
+    "giver INFO WindhelmSSE.esp:296C68 Frida (WindhelmSSE.esp:0622F9) GetStage<10",
+    "quest Frida WindhelmSSE.esp:296CD7 stageBelow 30; package BearQDefaultFollowPlayerRun at stage 20",
+    "COBJ WindhelmSSE.esp:2BA5F3 makes ARMO 2BA5F0 Pelt of Karhu from MISC 2BA5F2, GetStageDone on 29178E",
+    "Frida placed in Cult of Tsun (WindhelmSSE.esp:04DFBA)",
+    "schedule Frida 0622F9: 0WHTsunDaughterVisitShopSS dow 8 08:00, 0WHTsunVisitWall 10:00, 0WHTsunDaughterVisitShopTT dow 10 12:00, 0WHVisitRecruiterAfternoon14x1, 0WHTsunDrinkEvening 18:00, DefaultSleepEditorLoc22x7, DefaultSandboxHomeowner"
+   ]
+  },
+  {
+   "edid": "0WHQuestFursRepeating",
+   "name": "Hunting Trip",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "Frida the Younger asks you for a batch of one kind of pelt.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Frida the Younger",
+     "where": "the Cult of Tsun, her clan hall in the Valunstrad, Windhelm",
+     "how": "Talk to Frida; she asks for a set of pelts of one kind."
+    }
+   ],
+   "firstStep": "Bring the pelts Frida asks for to her in Windhelm",
+   "takesYou": [
+    {
+     "place": "the wilds, wherever the animal she asks for lives",
+     "hold": "",
+     "why": "hunt the pelts"
+    },
+    {
+     "place": "Cult of Tsun, Windhelm",
+     "hold": "Eastmarch",
+     "why": "hand the pelts to Frida"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Which order Frida gives",
+     "leadsTo": "one of: six Wolf, three Sabre Cat, three Bear, four Ice Wolf, two Snow Sabre Cat, two Snow Bear or three Cave Bear pelts"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "one order each time",
+     "objectives": [
+      "Bring six Wolf pelts to Frida in Windhelm",
+      "Bring three Sabre Cat Pelts to Frida in Windhelm",
+      "Bring three Bear Pelts to Frida in Windhelm",
+      "Bring four Ice Wolf pelts to Frida in Windhelm",
+      "Bring two Snow Sabre Cat pelts to Frida in Windhelm",
+      "Bring two Snow Bear Pelts to Frida in Windhelm",
+      "Bring three Cave Bear Pelts to Frida in Windhelm"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold, plus a leveled gold reward",
+     "when": "when you hand in the pelts"
+    },
+    {
+     "what": "an item from Frida's hunting reward list",
+     "when": "when you hand in the pelts"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Frida the Younger",
+     "role": "gives and takes the pelt orders"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the records here don't show whether Kyne's Trial must be done first"
+    },
+    {
+     "field": "choices",
+     "why": "how the game picks which pelt order you get (random or by level) isn't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "the contents of the hunting reward list and the gold amounts aren't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:25E704 stages 31-33, 51-53, 110, 91-103, 111, 200",
+    "giver INFO WindhelmSSE.esp:28C42A Frida GetStage<30",
+    "QF_0WHQuestFurs_0525E704.Gold001, .LeveledGold (LVLI 2C496C), .HuntingReward (LVLI 2C496F)"
+   ]
+  },
+  {
+   "edid": "0WHQuestMead",
+   "name": "The Mead Must Flow",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Manheim at the Battle-Brew Meadery asks you to carry mead to Winterhold.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Manheim",
+     "where": "the Battle-Brew Meadery, Windhelm",
+     "how": "Talk to Manheim; he asks you to deliver mead to the Frozen Hearth."
+    }
+   ],
+   "firstStep": "Deliver some mead to the Frozen Hearth in Winterhold.",
+   "takesYou": [
+    {
+     "place": "the Frozen Hearth, Winterhold",
+     "hold": "Winterhold",
+     "why": "deliver the mead"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver some mead to the Frozen Hearth in Winterhold."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "on delivery"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Manheim",
+     "role": "runs the Battle-Brew Meadery and gives the job"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "gold is in the quest script but the amount and whether the innkeeper or Manheim pays aren't shown"
+    },
+    {
+     "field": "opens",
+     "why": "probably leads to Manheim's later mead deliveries (same name, same giver), but nothing in the records makes them wait for this one"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:24F30A stages 10/200, objective 10",
+    "giver INFO WindhelmSSE.esp:24F331 Manheim (WindhelmSSE.esp:149AB9) GetStage<10",
+    "QF__0524F30A.Gold",
+    "Manheim placed in Battle-Brew Meadery (WindhelmSSE.esp:12FCFF)"
+   ]
+  },
+  {
+   "edid": "0WHQuestMeadRepeating",
+   "name": "The Mead Must Flow",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "Manheim sends you with Battle-Brew reserve to one of three inns.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Manheim",
+     "where": "the Battle-Brew Meadery, Windhelm",
+     "how": "Talk to Manheim; he sends you with Battle-Brew reserve to one inn."
+    }
+   ],
+   "firstStep": "Deliver the Battle-Brew reserve to the inn Manheim names",
+   "takesYou": [
+    {
+     "place": "the Bannered Mare, Whiterun",
+     "hold": "Whiterun",
+     "why": "one possible delivery"
+    },
+    {
+     "place": "the Frozen Hearth, Winterhold",
+     "hold": "Winterhold",
+     "why": "one possible delivery"
+    },
+    {
+     "place": "Candlehearth Hall, Windhelm",
+     "hold": "Eastmarch",
+     "why": "one possible delivery"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Which inn Manheim sends you to",
+     "leadsTo": "the Bannered Mare, the Frozen Hearth or Candlehearth Hall"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "one delivery each time",
+     "objectives": [
+      "Deliver some Battle-Brew reserve to the Bannered Mare in Whiterun",
+      "Deliver some Battle-Brew reserve to the Frozen Hearth in Winterhold",
+      "Deliver some Battle-Brew reserve to Candlehearth Hall in Windhelm"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Manheim",
+     "role": "gives the deliveries"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "no reward shows in this quest's records; payment may come through dialogue not in these files"
+    },
+    {
+     "field": "needs",
+     "why": "the records here don't show whether the first mead delivery must be done first"
+    },
+    {
+     "field": "choices",
+     "why": "how the destination is picked isn't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:24F338 stages 10/20/30/200, objectives 10/20/30",
+    "giver INFO WindhelmSSE.esp:24F33B Manheim GetStage<10"
+   ]
+  },
+  {
+   "edid": "0WHQuestPoetry",
+   "name": "Collecting the Edda - Windhelm",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Higil Hammer-Shield asks you to collect verses from Windhelm's writers.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Higil Hammer-Shield",
+     "where": "Clan Hammer-Shield, his home in the upper Valunstrad west of the Palace of the Kings",
+     "how": "Talk to Higil; he gives you a list of people whose verses he wants."
+    }
+   ],
+   "firstStep": "Get Thane Alarik's verse",
+   "takesYou": [
+    {
+     "place": "House of Thane Alarik in the Valunstrad, or the Palace of the Kings",
+     "hold": "Eastmarch",
+     "why": "Thane Alarik's verse"
+    },
+    {
+     "place": "Jorn's home in the Iron Quarter near the Pit, or the Iron Halls in the evening",
+     "hold": "Eastmarch",
+     "why": "Jorn Scarred-Skald's verse"
+    },
+    {
+     "place": "the Iron Halls",
+     "hold": "Eastmarch",
+     "why": "Hellte's verse (the serving maid)"
+    },
+    {
+     "place": "Audmund's Axes, between the Gray Quarter and the Iron Quarter",
+     "hold": "Eastmarch",
+     "why": "Audmund's verse"
+    },
+    {
+     "place": "Tormund's Tales, the old bookshop beside Candlehearth Hall",
+     "hold": "Eastmarch",
+     "why": "Tormund Tall-Tale's verse"
+    },
+    {
+     "place": "the Windhelm Wheelhouse outside the city, through a gate from the market",
+     "hold": "Eastmarch",
+     "why": "Sulvar's verse"
+    },
+    {
+     "place": "the Cult of Tsun in the Valunstrad, Wilhelm's shop or the Five Hundred's Wall",
+     "hold": "Eastmarch",
+     "why": "Frida the Younger's verse"
+    },
+    {
+     "place": "the Hall of Relics, high up west of the palace",
+     "hold": "Eastmarch",
+     "why": "Hjarrandi's verse"
+    },
+    {
+     "place": "Clan Hammer-Shield",
+     "hold": "Eastmarch",
+     "why": "return the verses to Higil"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Get Thane Alarik's verse",
+      "Get Jorn Scarred-Skald's verse",
+      "Get Hellte's verse",
+      "Get Audmund's verse",
+      "Get Tormund Tall-Tale's verse",
+      "Get Skulvar's verse",
+      "Get Frida the Younger's verse",
+      "Get Hjarrandi's verse",
+      "Return all the verses to Higil"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you return the verses to Higil"
+    },
+    {
+     "what": "The Song of Return: Skyrim, a Preamble (book)",
+     "when": "at the end"
+    },
+    {
+     "what": "each writer's verse (books: Alarik's verse, Scarred-Skald's Verse, Hellte's Verse, Audmund's Verse, Tormund's Verse, Sulvar's Verse, Frida's Verse, Hjarrandi's Verse)",
+     "when": "one from each person on the list, handed to Higil at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Higil Hammer-Shield",
+     "role": "gives the quest; Clan Hammer-Shield"
+    },
+    {
+     "name": "Thane Alarik",
+     "role": "first verse; if he isn't there, Thane-Legate Torbis gives it instead"
+    },
+    {
+     "name": "Jorn Scarred-Skald",
+     "role": "verse; skald who plays in the Iron Halls in the evenings"
+    },
+    {
+     "name": "Hellte",
+     "role": "verse; serving maid at the Iron Halls"
+    },
+    {
+     "name": "Audmund",
+     "role": "verse; Audmund's Axes"
+    },
+    {
+     "name": "Tormund Tall-Tale",
+     "role": "verse; Tormund's Tales"
+    },
+    {
+     "name": "Sulvar the Steady",
+     "role": "verse; Windhelm Wheelhouse (the objective calls him Skulvar)"
+    },
+    {
+     "name": "Frida the Younger",
+     "role": "verse; Cult of Tsun"
+    },
+    {
+     "name": "Hjarrandi",
+     "role": "verse; the Hall of Relics"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "the gold amount isn't given; the verse books are handed out along the way and may be taken back when you return them"
+    },
+    {
+     "field": "people",
+     "why": "Thane-Legate Torbis can stand in for Thane Alarik; what makes the swap happen (likely who holds Windhelm) isn't in these files"
+    },
+    {
+     "field": "where",
+     "why": "Higil's day: weekend nights from 8 pm at the party in Thane Alarik's house, noon to 2 pm near the Palace of the Kings, 2 to 5:30 pm on the city wall, otherwise at home in Clan Hammer-Shield"
+    },
+    {
+     "field": "starts",
+     "why": "the quest also has an earlier \"player has read the book\" step, so reading Higil's list or another book may start it; which book isn't shown"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:1F355A stages 10-200, objectives 20-95",
+    "giver INFO WindhelmSSE.esp:1F86F1 Higil (157B1B) GetStage<11; Alarik 14D885 / Torbis 254479 stageBelow 21; Jorn 14EBF8 stageBelow 31",
+    "QF_0WHQuestPoetry_051F355A: Gold001, IntroNote (Writers of Windhelm), SpecialReward 291AD2, verse BOOKs 26DBE5/26DBE6/26DBF3/26DBF9/26DBFE/26DC00/26DC01/26DC02",
+    "people_raw: Audmund's Axes, Morganna and Hellte's Lodging, Tormund's Tales, Windhelm Wheelhouse, The Hall of Relics",
+    "schedule Higil 157B1B: 0WHAlarikWeekendParty dow 8 20:00 420 min, DefaultEatEditorLoc8x1, 0WHVisitRecruiterLunch12x2, 0WHBroVisitWall 14:00 210 min, DefaultSleepEditorLoc24x8, DefaultSandboxHomeowner"
+   ]
+  },
+  {
+   "edid": "0WHQuestRieklings",
+   "name": "Unusual Imports",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Signy, the dockmaster's wife, asks for help with rieklings loose in a Windhelm warehouse.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Signy",
+     "where": "outside a warehouse at the Windhelm docks, boarding it up",
+     "how": "Talk to the woman boarding up the warehouse; rieklings came in with a shipment from Solstheim and she offers a reward to clear them out."
+    }
+   ],
+   "firstStep": "Enter the warehouse - Kill the stowaways",
+   "takesYou": [
+    {
+     "place": "the warehouse at the Windhelm docks",
+     "hold": "Eastmarch",
+     "why": "kill the rieklings"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Kill every riekling, then talk to Signy",
+     "leadsTo": "she pays you"
+    },
+    {
+     "choice": "Tell Signy the job is done without finishing it",
+     "leadsTo": "the journal hints this is possible; outcome not shown"
+    },
+    {
+     "choice": "Decline to help",
+     "leadsTo": "the quest is set aside"
+    },
+    {
+     "choice": "Signy dies",
+     "leadsTo": "the quest fails"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Enter the warehouse - Kill the stowaways",
+      "Search the warehouse for rieklings then speak to Signy - after you feel that your work is done.",
+      "Talk to Signy about your reward"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you talk to Signy about your reward"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Signy",
+     "role": "the dockmaster's wife; gives the job and the reward"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "the records place Signy outdoors, not in a named building; her packages have her at breakfast in the Wallside Inn, inside the Dockside Warehouse, at the Candlehearth Hall bar from about 8 pm, and sleeping in the Dockmaster's Home"
+    },
+    {
+     "field": "takesYou",
+     "why": "the journal says \"a Windhelm warehouse\"; the Dockside Warehouse is her daytime spot, but the records here don't tie the rieklings to it by name"
+    },
+    {
+     "field": "choices",
+     "why": "what happens if you lie to Signy isn't in the stages"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold comes from the quest's script; the amount isn't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:1066C3 stages 10-60, objectives 20/25/30, alias DockWife",
+    "giver INFO WindhelmSSE.esp:134293 Signy (101500) GetStage<20",
+    "Signy ref WindhelmSSE.esp:1014FE in Tamriel worldspace",
+    "packages 0WHSignyBreakfast, 0WHSignyWarehouseSandbox (Dockside Warehouse), WindhelmTorbjornCandlehearthBar20x4, 0WHSignySleep",
+    "QF_0WHRieklingQuest_051066C3.Gold001"
+   ]
+  },
+  {
+   "edid": "0WHQuestTalosIntro",
+   "name": "The Talos Mistake",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A man named Beorn hands you a manifesto that points you to its writer, Hverung.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Beorn",
+     "where": "the Old Temple of Talos (the Mustering Hall), Windhelm",
+     "how": "Talk to Beorn; he hands you Hverung's Manifesto. Read it and go speak to Hverung."
+    }
+   ],
+   "firstStep": "Speak to the man called Hverung",
+   "takesYou": [
+    {
+     "place": "the Old Temple of Talos (the Mustering Hall), Windhelm",
+     "hold": "Eastmarch",
+     "why": "speak to Hverung"
+    },
+    {
+     "place": "a cramped loft in the Gray Quarter (The Rooftop)",
+     "hold": "Eastmarch",
+     "why": "find the hidden Thalmor agent"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Kill the Thalmor agent and bring Hverung his ears and the Thalmor Dossier",
+     "leadsTo": "Hverung trusts you and you can use his headquarters; he may have more work later"
+    },
+    {
+     "choice": "Warn the Thalmor agent instead",
+     "leadsTo": "you're told to kill Hverung; the plans of this enemy of the Thalmor die with him"
+    },
+    {
+     "choice": "Kill Hverung outright",
+     "leadsTo": "the quest ends with Hverung dead"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to the man called Hverung",
+      "Kill the Thalmor agent hiding in the Gray Quarter",
+      "Return to Hverung with the Ears and the Thalmor Dossier"
+     ]
+    },
+    {
+     "branch": "side with the Thalmor",
+     "objectives": [
+      "OR Warn the Thalmor agent hiding in the Gray Quarter",
+      "Kill Hverung"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Amulet of Talos",
+     "when": "from the quest; which ending gives it isn't shown"
+    },
+    {
+     "what": "use of Hverung's headquarters in the Old Temple of Talos",
+     "when": "if you kill the agent and return to Hverung"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [
+    "Hverung dies if you side with the Thalmor or kill him",
+    "Sorcalin, the Thalmor agent, dies if you side with Hverung"
+   ],
+   "people": [
+    {
+     "name": "Beorn",
+     "role": "hands you the manifesto"
+    },
+    {
+     "name": "Hverung",
+     "role": "writer of the manifesto; Old Temple of Talos"
+    },
+    {
+     "name": "Sorcalin",
+     "role": "the Thalmor agent hiding in a cramped loft in the Gray Quarter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "Beorn is placed in the Old Temple of Talos. Until the hunt for the agent begins, his first package (no set hours) sends him to a linked spot the records don't name, and afterwards another all-day package does the same, so his Iron Halls evening package probably never wins"
+    },
+    {
+     "field": "rewards",
+     "why": "the Amulet of Talos is in the quest script, but which ending hands it over isn't shown"
+    },
+    {
+     "field": "opens",
+     "why": "Hverung hints at more tasks, but no follow-up quest is named in these files"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:1EE2E4 stages 10-300, objectives 30/40/41/50/51, alias Target",
+    "giver INFO WindhelmSSE.esp:1EE2E7 Beorn (1B106B) GetStage<10; Hverung 16857E stageBelow 40",
+    "Target = Sorcalin 28C43E in Cramped Loft (location The Rooftop)",
+    "packages 0WHTalosHverungIntro (Mustering Hall, stage<50), 0WHTalosBjornIntroLink, 0WHIronHallsAfterwork19to24",
+    "QF_0WHQuestTalosIntro_051EE2E4.TalosAm (Skyrim.esm:0CC846), .IntroNote (BOOK 202974)",
+    "schedule Beorn 1B106B: 0WHTalosBjornIntroLink (any time, stage 40 not done), 0WHTalosTableLink (any time, stage 40 done), 0WHIronHallsAfterwork19to24 last"
+   ]
+  },
+  {
+   "edid": "0WHQuestVampires",
+   "name": "Severed Cold",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "The Dunmer living outside Windhelm's Eastern Gate talk about the attacks; the quest itself opens when you fall into a frozen cavern outside the city.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Taluri Moren (also Gilas, Delmon or Tevyn Athin)",
+     "where": "the shacks outside Windhelm's Eastern Gate",
+     "how": "Talk to the Dunmer outside the Eastern Gate about the attacks; the journal starts when you fall through into the frozen caverns below."
+    }
+   ],
+   "firstStep": "Explore the frozen caverns",
+   "takesYou": [
+    {
+     "place": "Frozen Caverns, beneath the ice outside Windhelm",
+     "hold": "Eastmarch",
+     "why": "find out what happened to the Dunmer taken outside the Eastern Gate"
+    },
+    {
+     "place": "Palace of the Kings, Windhelm",
+     "hold": "Eastmarch",
+     "why": "report to Wuunferth, the court mage"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Fight the Volkihar Brute deep in the caverns (an optional objective)",
+     "leadsTo": "talk to the guardsman, then report to Wuunferth; the nest is purged"
+    },
+    {
+     "choice": "Run away",
+     "leadsTo": "tell Wuunferth; he deals with the nest, but the guards who went in are lost; it can end in failure"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Explore the frozen caverns",
+      "(optional) Slay the Volkhair Brute",
+      "Speak to the Guardsman",
+      "Report to Wuunferth, the court mage in the Palace of the Kings"
+     ]
+    },
+    {
+     "branch": "run away",
+     "objectives": [
+      "(optional) Run away",
+      "Speak to Wuunferth again"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [
+    "Death Do Us Part (if you find both Dunmer wedding bands)"
+   ],
+   "closes": [
+    "the Dunmer taken below have all been turned; they can't be saved"
+   ],
+   "people": [
+    {
+     "name": "Taluri Moren",
+     "role": "Dunmer outside the Eastern Gate; Taluri's Shack"
+    },
+    {
+     "name": "Gilas",
+     "role": "Dunmer outside the Eastern Gate"
+    },
+    {
+     "name": "Delmon",
+     "role": "Dunmer smith outside the Eastern Gate"
+    },
+    {
+     "name": "Tevyn Athin",
+     "role": "Dunmer outside the Eastern Gate"
+    },
+    {
+     "name": "Windhelm Guard",
+     "role": "a guard who comes to you and follows you in the caverns; speak to him after the fight"
+    },
+    {
+     "name": "Volkihar Brute",
+     "role": "the creature the optional objective asks you to slay; the records make it a gargoyle in the Frozen Caverns"
+    },
+    {
+     "name": "Exiled Volkihar Warlord",
+     "role": "boss of the Frozen Caverns"
+    },
+    {
+     "name": "Wuunferth the Unliving",
+     "role": "court mage in the Palace of the Kings; you report to him"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "the records show the Dunmer's lines run before the cavern step, but not what makes you fall into the cavern (a trigger or a spot on the ice)"
+    },
+    {
+     "field": "takesYou",
+     "why": "the records place the Frozen Caverns in Eastmarch but put its map marker near Winterhold; the journal says outside Windhelm by the Eastern Gate"
+    },
+    {
+     "field": "choices",
+     "why": "on the run-away path, what decides between the failed ending and Wuunferth finishing the job isn't shown"
+    },
+    {
+     "field": "opens",
+     "why": "the two Dunmer wedding bands are this quest's items and Death Do Us Part needs both, but where in the caverns they lie isn't in these files"
+    },
+    {
+     "field": "people",
+     "why": "the objective names the Volkihar Brute, a gargoyle; the journal says you dealt with a Vampire Lord, and the cave's boss is the Exiled Volkihar Warlord (level 55 to 125); whether the Brute is the fight you can run from isn't settled"
+    },
+    {
+     "field": "canDo",
+     "why": "the Dunmer's lines are only open before you fall into the caverns; whether talking to them sets anything going, or only falling through the ice starts the journal, isn't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold comes from the quest's script; the amount and which ending pays it aren't in these files"
+    },
+    {
+     "field": "opens",
+     "why": "A Night You Can't Remember, from the same mod, is built around Windhelm guards in Candlehearth Hall after a vampire fight; nothing in the records makes it wait for this quest"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:1066C4 stages 70-320, objectives 70/110/111/120/130/310",
+    "giver INFO WindhelmSSE.esp:2C4912 Taluri Moren (172CA3) GetStage<70; Gilas 18312F, Delmon 172CA6, Tevyn Athin 172CB4",
+    "guard WindhelmSSE.esp:2C9AF1 packages 0Quest01VampForcegreet/0WHDefaultFollowPlayerRun at 100, 0Quest01VampAftermath at 120",
+    "0WHVampQRunawayFG at stage 200 (Eastern Gate)",
+    "LCTN WindhelmSSE.esp:39FE09 Frozen Caverns, boss 0FC2A7",
+    "ARMO 2CEC2E/2CEC2F edid 0WHVampQuestWeddingRing",
+    "QF_0WHVampQuest_051066C4.Gold001",
+    "NPC WindhelmSSE.esp:1BF1CF Volkihar Brute race Gargoyle, Frozen Caverns; quest 2DDFF3 giver 367FA4 package 0WHVampAftermathGreet (own stage only)"
+   ]
+  },
+  {
+   "edid": "0WindhelmSceneDunmerCouple",
+   "name": "Death Do Us Part",
+   "plugin": "WindhelmSSE.esp (no other plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "Happens when you bring both Dunmer wedding bands to a certain spot and use it.",
+   "needs": [
+    {
+     "what": "Both Dunmer Wedding Bands",
+     "kind": "item"
+    }
+   ],
+   "starts": [],
+   "firstStep": "With both Dunmer Wedding Bands in your pack, find and use the spot where the dead couple are reunited",
+   "takesYou": [],
+   "choices": [],
+   "steps": [],
+   "rewards": [
+    {
+     "what": "Silverfang (sword, especially effective against undead)",
+     "when": "at the end"
+    },
+    {
+     "what": "Gold Circlet",
+     "when": "at the end"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the records say only that you use a spot with both rings in your pack; where that spot is isn't in these files"
+    },
+    {
+     "field": "needs",
+     "why": "the rings belong to Severed Cold, so they are likely found in the Frozen Caverns, but their placement isn't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "the wedding bands are probably taken from you when you place them"
+    },
+    {
+     "field": "rewards",
+     "why": "Silverfang and the Gold Circlet both come from the quest's script, not a confirmed hand-over; the script's names suggest Silverfang replaced the circlet as the reward, so you may get only one"
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:2CEC4D stages 5/10/100, no objectives, no giver",
+    "QF_0WindhelmSceneDunmerCoupl_052CEC4D: NewReward WEAP 400676 Silverfang (last edited by Synthesis - Gameplay Overwrite.esp), Reward ARMO 1715F0, RingA 2CEC2E, RingB 2CEC2F"
+   ]
+  }
+ ]
+}
