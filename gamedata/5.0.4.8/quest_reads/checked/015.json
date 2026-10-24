@@ -1,0 +1,1388 @@
+{
+ "checks": [
+  {
+   "edid": "TGRHC",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Type Thieves Guild, start node is a story-manager script event, and the target is filled at run time: radiant."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "No condition on the offer is in these files. The Meet the Family closing journal points you to these jobs, which suggests they come after it, but the offering dialogue's conditions would settle it."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Who and where agree: Vex is the alias and the return objective, and the schedule extract settles the 'where' the reader left unsure (people_schedules_raw Vex (01CD90): every sandbox package (6am to midnight in 2-hour blocks) and her USSEP sleep package (midnight-6am) are in The Ragged Flagon; the fallback package has no other place). The 'how' said the job starts 'rather than a fixed line'; the records don't show that. A script event is sent by some script, and the Meet the Family journal says Vex offers extra jobs, so 'how' now says Vex offers it."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Empty is what the records show, but the Thieves Guild special jobs (Silver Lining and the others) say the Guild 'can now count on' an ally in a city, and nothing in these files shows what unlocks them. A controller quest or the jobs' offering conditions would settle whether these jobs count toward them."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Failing ends only this run of the job; nothing is locked."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 with global TGRHCValuablesTotal = 3."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "WealthyHome and City aliases, then objective 20 back to Vex."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The three stage-250 fail entries (TGRFailVex, TGRFailArrestVex, TGRQuitVex), worded as the journal words them."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_TGRHC_00028936.pReward -> TGRewardGoldRadiant; stage 200 journal: received my share of the pay. Amount stays unsure."
+    }
+   }
+  },
+  {
+   "edid": "TGRNT",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Type Thieves Guild, start node is a story-manager script event, and the target is filled at run time: radiant."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "No condition on the offer is in these files. The Meet the Family closing journal points you to these jobs, which suggests they come after it, but the offering dialogue's conditions would settle it."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Who and where agree: Delvin is the alias and the return objective, and the schedule extract settles the 'where' the reader left unsure (people_schedules_raw Delvin (01CB78): every sandbox package, his USSEP sleep package (10pm-2am) and ThievesGuildDelvinStayAtFlagon keep him in The Ragged Flagon). The 'how' said the job starts 'rather than a fixed line'; the records don't show that. A script event is sent by some script, and the Meet the Family journal says Delvin offers extra jobs, so 'how' now says Delvin offers it."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Empty is what the records show, but the Thieves Guild special jobs (Silver Lining and the others) say the Guild 'can now count on' an ally in a city, and nothing in these files shows what unlocks them. A controller quest or the jobs' offering conditions would settle whether these jobs count toward them."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Failing ends only this run of the job; nothing is locked."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 with global TGRNGold = 500; stage 10 journal says items you are seen stealing do not count."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "City alias, then objective 20 back to Delvin."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Seen-stealing rule from the stage 10 journal; jail and quit fail entries at stage 250. No kill-fail entry, correctly left out."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Stage 200 journal: keep everything stolen. pReward -> TGRewardGoldRadiant is on the fragment; whether it pays here stays unsure, as the reader said."
+    }
+   }
+  },
+  {
+   "edid": "TGRSL",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Type Thieves Guild, start node is a story-manager script event, and the target is filled at run time: radiant."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "No condition on the offer is in these files. The Meet the Family closing journal points you to these jobs, which suggests they come after it, but the offering dialogue's conditions would settle it."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Who and where agree: Vex is the alias and the return objective, and the schedule extract settles the 'where' the reader left unsure (people_schedules_raw Vex (01CD90): every sandbox package (6am to midnight in 2-hour blocks) and her USSEP sleep package (midnight-6am) are in The Ragged Flagon; the fallback package has no other place). The 'how' said the job starts 'rather than a fixed line'; the records don't show that. A script event is sent by some script, and the Meet the Family journal says Vex offers extra jobs, so 'how' now says Vex offers it."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Empty is what the records show, but the Thieves Guild special jobs (Silver Lining and the others) say the Guild 'can now count on' an ally in a city, and nothing in these files shows what unlocks them. A controller quest or the jobs' offering conditions would settle whether these jobs count toward them."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Failing ends only this run of the job; nothing is locked."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: retrieve ItemToGet from Business in City."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Business and City aliases; the strongbox is hedged and kept in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Same three stage-250 fail entries as the Sweep Job."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_TGRSL_0002893E.pReward -> TGRewardGoldRadiant; stage 200: received my share of the pay."
+    }
+   }
+  },
+  {
+   "edid": "TGTQ01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue-driven guild job; nothing marks it cut or radiant."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in these files says what must be done first; the start line would settle it."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "The stage 10 journal already says Endon 'has requested assistance from the Thieves Guild', and the first objective is to speak to Endon. So by the time you meet Endon the job is already in your journal: Endon's line (stage below 11) is the first step, not the start. Walking up to Endon without the job does nothing the records show. Who hands you the job isn't named in these files, so 'who' is now left blank with the reason, and Endon moves to the first step."
+    },
+    "firstStep": {
+     "verdict": "fix",
+     "note": "Endon is placed in his house, but his schedule only reliably keeps him there early in the morning (breakfast 6-7am) and at night (sleep at his placed spot midnight-8am). Once another quest stage is done (Skyrim.esm:0AF75F, not in these files) he spends 7am-7pm on a market package and 8pm-11pm at the Silver-Blood Inn."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Pinewatch agrees (Endon INFO 0799D4 'a small cottage called Pinewatch'; LCTN 01928A Falkreath hold, 'next to' Falkreath). Endon's House entry now carries when he is home (people_schedules_raw Endon)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or optional objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_TGTQ01_000799DF.pReward -> TGRewardRandomLightArmor; stage 200 journal: an influential ally in Markarth."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands: nothing here shows what the ally counts toward."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records says anyone dies or anything is locked."
+    }
+   }
+  },
+  {
+   "edid": "TGTQ02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue-driven guild job."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Not in these files."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "The stage 10 journal already says Erikur 'has requested assistance from the Thieves Guild', and the first objective is to speak to Erikur. So by the time you meet Erikur the job is already in your journal: Erikur's line (stage below 11) is the first step, not the start. Walking up to Erikur without the job does nothing the records show. Who hands you the job isn't named in these files, so 'who' is now left blank with the reason, and Erikur moves to the first step."
+    },
+    "firstStep": {
+     "verdict": "fix",
+     "note": "Erikur is placed in his house, but his schedule puts him in the Blue Palace 8am-8pm (SolitudePalaceCourtSandbox8x12, SolitudeCourtEat13x2) and only sleeps at his placed spot midnight-8am. Sending a player to his house by day misses him."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Erikur's entry corrected for his schedule. The Red Wave and Dainty Sload entries agree with the placements (Sabine Nytte in cell Red Wave; Corsairs and First Mate in cell Dainty Sload). While this quest is running Sabine runs TGTQ02SabineSandbox0x24, whose place isn't given, so where she is during the job is now in unsure."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands: chest, safe, key and note slots suggest more than one way to get the Balmora Blue; the dialogue isn't here."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property found for this quest; only the stage 200 ally line."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Same as Silver Lining: what the ally counts toward is not in these files."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Volf is framed, but nothing in the records says he dies or anything locks."
+    }
+   }
+  },
+  {
+   "edid": "TGTQ03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue-driven guild job."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Not in these files."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "The stage 10 journal already says Olfrid Battle-Born 'has requested assistance from the Thieves Guild', and the first objective is to speak to Olfrid Battle-Born. So by the time you meet Olfrid Battle-Born the job is already in your journal: Olfrid Battle-Born's line (stage below 11) is the first step, not the start. Walking up to Olfrid Battle-Born without the job does nothing the records show. Who hands you the job isn't named in these files, so 'who' is now left blank with the reason, and Olfrid Battle-Born moves to the first step."
+    },
+    "firstStep": {
+     "verdict": "unsure",
+     "note": "Olfrid is placed in the House of Clan Battle-Born, but his packages take him out: a 10am-7pm package and a 6pm-8pm family package with no place named, and a 7pm-11pm package named for the Bannered Mare (no place given). His house is where he lives, not a place he reliably stands. Kept the house as where he lives and moved the rest to unsure."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stage 20 journal names the jarl's quarters and the steward's quarters; Olfrid INFO 07D024 places both inside Dragonsreach."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No optional objectives or branching journal entries."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property found; stage 200 journal frees Arn and names the ally."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Same as Silver Lining."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing locked in the records."
+    }
+   }
+  },
+  {
+   "edid": "TGTQ04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dialogue-driven guild job."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Not in these files."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "The stage 10 journal already says Torsten Cruel-Sea 'has requested assistance from the Thieves Guild', and the first objective is to speak to Torsten Cruel-Sea. So by the time you meet Torsten Cruel-Sea the job is already in your journal: Torsten Cruel-Sea's line (stage below 11) is the first step, not the start. Walking up to Torsten Cruel-Sea without the job does nothing the records show. Who hands you the job isn't named in these files, so 'who' is now left blank with the reason, and Torsten Cruel-Sea moves to the first step."
+    },
+    "firstStep": {
+     "verdict": "fix",
+     "note": "Torsten is placed in his house, but his schedule keeps him out most of the day: breakfast 7-9am, a farm-work package 9am-2pm, a market package 2pm-7pm, a package named for Candlehearth 7pm-10pm, and the Palace of the Kings 10pm-midnight unless he is in a faction (0BFC5C) that blocks it. None of the daytime packages is at his house."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Uttering Hills Cave agrees (objective 40; LCTN 0192C0 0.5 km from Windhelm, boss Linwe level 30). Torsten's and Niranye's entries pointed at their houses, but their schedules keep them out most of the day (people_schedules_raw 014136, 014123)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Both optional objectives (30 leverage, 60 banner) are listed; leverage details stay in unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property found; Linwe/Summerset Shadows armor exists in items_raw but nothing here hands it out, as the reader said."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Same as Silver Lining."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Stage 60 journal: Linwe slain, the Summerset Shadows gone from Skyrim."
+    }
+   }
+  },
+  {
+   "edid": "TG00MaulHandler",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "'talk' fits a misc pointer quest, but nothing in these files shows what sets it. Maul is not an alias on this quest (his aliases are on other quests), so the name is the only link to him. The line or script that sets its first stage would settle it."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions in these files; empty is honest."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands. Left empty: nothing names a giver."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10, word for word."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Brynjolf's ref 020545 is in a Riften exterior cell. His schedule packages are all gated on a global (Skyrim.esm:1032BA), so where he stands before that isn't in these files, as the reader said."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "None found."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "None."
+    }
+   }
+  },
+  {
+   "edid": "TG02B",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Three talk objectives in the Ragged Flagon."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Left empty with the reader's reason: nothing in these files sets it. The one thing that changes is that the people are now settled: Vex, Delvin and Tonilia all keep to the Ragged Flagon day and night (people_schedules_raw), so the 'where' unsure comes off."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10; Vex is in the Ragged Flagon at every hour."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "All three aliases are placed in cell 016BCF and their schedules keep them there."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "TG02BQuestScript cuirass, gloves, boots, hood; items_raw confirms all four names (LoreRim - Armor Merges.esp, light armor)."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The stage 200 journal points to Vex's and Delvin's extra jobs; the reader's unsure about which quests is right."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "None."
+    }
+   }
+  },
+  {
+   "edid": "TGFenceCaravan",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Tonilia's line (stage below 11) comes before the delivery objective, so she is the one who hands it out."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Who and how agree. The schedule extract settles where: Tonilia's sleep and sandbox packages are both in the Ragged Flagon, so she is there at every hour."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Ri'saad is in KhajiitCaravanFaction and CaravanALeader and is LeaderA on caravan quest 03ACDB, so 'his caravan, varies' is right. The reader's note called cell 000D74 a holding cell; it is the open world's persistent cell (a world ref whose spot isn't given), so the note is reworded."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_TGFenceCaravan_000D8E40.pReward -> TGRewardGold."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "The reader's unsure stands."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "None."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "TGRHC",
+   "name": "The Sweep Job",
+   "plugin": "Skyrim.esm (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A repeatable Thieves Guild job for Vex; the house and city are picked fresh each time it starts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Vex",
+     "where": "the Ragged Flagon, in the Ratway under Riften; the schedule keeps her there day and night",
+     "how": "Vex hands this out as one of the extra jobs (the Meet the Family journal says to check in with Vex and Delvin for them). The house and city are picked fresh each time it starts."
+    }
+   ],
+   "firstStep": "Clear the house you were sent to of its three valuables",
+   "takesYou": [
+    {
+     "place": "a wealthy home in a city chosen when the job starts",
+     "hold": "varies",
+     "why": "steal the three valuables"
+    },
+    {
+     "place": "the Ragged Flagon",
+     "hold": "The Rift",
+     "why": "bring the valuables back to Vex"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Kill anyone who lives at the house",
+     "leadsTo": "The job fails and you lose your share of the pay."
+    },
+    {
+     "choice": "Get caught and sent to jail",
+     "leadsTo": "The job fails and you lose your share of the pay."
+    },
+    {
+     "choice": "Tell Vex you quit",
+     "leadsTo": "The job fails and you forfeit any pay."
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Clear the house in the city you were given of valuables (0/3)",
+      "Return the valuables to Vex"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold from the Thieves Guild radiant reward list (your share of the pay)",
+     "when": "when you hand the valuables to Vex"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Vex",
+     "role": "hands you the job and takes the valuables; placed in the Ragged Flagon in Riften"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "the quest's loot slots are a horn, a holder, a flagon, an urn, a goblet, a pitcher, a candlestick and a ship model, so the three valuables are likely drawn from those, but which three is picked at run time"
+    },
+    {
+     "field": "rewards",
+     "why": "the amount comes from a leveled reward list whose contents are not in these files"
+    },
+    {
+     "field": "starts",
+     "why": "the records show only a story-manager script event as the start, not Vex's offering line; Vex is tied in by the quest's alias, its 'return to Vex' objective, its fail flags and the Meet the Family journal"
+    },
+    {
+     "field": "needs",
+     "why": "the conditions on when Vex offers this job are not in these files; the Meet the Family journal points you to these jobs, which suggests they come after it"
+    },
+    {
+     "field": "opens",
+     "why": "nothing in these files shows whether finishing these jobs counts toward anything (such as the Guild's city special jobs); the offering conditions or a controller quest would settle it"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:028936 TGRHC",
+    "objectives 10, 20; stages 10, 50, 200 (completes), 250 (fails)",
+    "fail entries gated on globals TGRFailVex, TGRFailArrestVex, TGRQuitVex",
+    "global TGRHCValuablesTotal = 3",
+    "start: TGRHCQuestNode (script event)",
+    "reward: QF_TGRHC_00028936.pReward -> LVLI Skyrim.esm:10E0F6 TGRewardGoldRadiant",
+    "alias Vex -> NPC Skyrim.esm:01CD90, ref 028938 in cell 016BCF The Ragged Flagon",
+    "loot aliases 19-26 (LootHorn ... LootShipModel)",
+    "people_schedules_raw Vex (01CD90) (see verdict)",
+    "TG02B stage 200 journal: check in with Vex and Delvin 'and undertake some of the extra jobs they offer'"
+   ]
+  },
+  {
+   "edid": "TGRNT",
+   "name": "The Bedlam Job",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "A repeatable Thieves Guild job for Delvin Mallory; the city is picked fresh each time it starts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Delvin Mallory",
+     "where": "the Ragged Flagon, in the Ratway under Riften; the schedule keeps him there day and night",
+     "how": "Delvin hands this out as one of the extra jobs (the Meet the Family journal says to check in with Vex and Delvin for them). The city is picked fresh each time it starts."
+    }
+   ],
+   "firstStep": "Steal 500 gold worth of goods in the city you were given, without being seen",
+   "takesYou": [
+    {
+     "place": "a city chosen when the job starts",
+     "hold": "varies",
+     "why": "steal 500 gold worth of goods unseen"
+    },
+    {
+     "place": "the Ragged Flagon",
+     "hold": "The Rift",
+     "why": "report back to Delvin"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Steal while someone sees you",
+     "leadsTo": "Those items don't count toward the 500 gold."
+    },
+    {
+     "choice": "Get caught and sent to jail",
+     "leadsTo": "The job fails."
+    },
+    {
+     "choice": "Tell Delvin you quit",
+     "leadsTo": "The job fails and you forfeit any pay."
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Steal 500 gold in goods from the city you were given",
+      "Return to Delvin"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "You keep everything you stole",
+     "when": "at the end"
+    },
+    {
+     "what": "Gold from the Thieves Guild radiant reward list",
+     "when": "when you return to Delvin"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Delvin Mallory",
+     "role": "hands you the job and takes your report; placed in the Ragged Flagon in Riften"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "the closing journal line only says you keep what you stole; the quest's script also holds the radiant gold reward list, but whether it pays out here isn't shown, and the list's contents aren't in these files"
+    },
+    {
+     "field": "starts",
+     "why": "the records show only a story-manager script event as the start, not Delvin's offering line; Delvin is tied in by the quest's alias, its 'return to Delvin' objective, its fail flags and the Meet the Family journal"
+    },
+    {
+     "field": "needs",
+     "why": "the conditions on when Delvin offers this job are not in these files; the Meet the Family journal points you to these jobs, which suggests they come after it"
+    },
+    {
+     "field": "opens",
+     "why": "nothing in these files shows whether finishing these jobs counts toward anything (such as the Guild's city special jobs); the offering conditions or a controller quest would settle it"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:060990 TGRNT (edited by USSEP)",
+    "objectives 10, 20; stages 10, 50, 200 (completes), 250 (fails)",
+    "fail entries gated on globals TGRFailArrestDelvin, TGRQuitDelvin (no kill-fail entry)",
+    "global TGRNGold = 500",
+    "start: TGRNTQuestNode (script event)",
+    "reward: QF_TGRNT_00060990.pReward -> LVLI Skyrim.esm:10E0F6 TGRewardGoldRadiant",
+    "alias Delvin -> NPC Skyrim.esm:01CB78, ref 01DA41 in cell 016BCF The Ragged Flagon",
+    "people_schedules_raw Delvin (01CB78) (see verdict)",
+    "TG02B stage 200 journal: check in with Vex and Delvin 'and undertake some of the extra jobs they offer'"
+   ]
+  },
+  {
+   "edid": "TGRSL",
+   "name": "The Heist Job",
+   "plugin": "Skyrim.esm (no later plugin edits it)",
+   "canDo": "radiant",
+   "canDoWhy": "A repeatable Thieves Guild job for Vex; the item, shop and city are picked fresh each time it starts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Vex",
+     "where": "the Ragged Flagon, in the Ratway under Riften; the schedule keeps her there day and night",
+     "how": "Vex hands this out as one of the extra jobs (the Meet the Family journal says to check in with Vex and Delvin for them). The item, business and city are picked fresh each time it starts."
+    }
+   ],
+   "firstStep": "Steal the item you were told about from the business you were given",
+   "takesYou": [
+    {
+     "place": "a business in a city chosen when the job starts",
+     "hold": "varies",
+     "why": "steal the named item, likely from a strongbox there"
+    },
+    {
+     "place": "the Ragged Flagon",
+     "hold": "The Rift",
+     "why": "bring the item back to Vex"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Kill anyone who lives at the business",
+     "leadsTo": "The job fails and you lose your share of the pay."
+    },
+    {
+     "choice": "Get caught and sent to jail",
+     "leadsTo": "The job fails and you lose your share of the pay."
+    },
+    {
+     "choice": "Tell Vex you quit",
+     "leadsTo": "The job fails and you forfeit any pay."
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Retrieve the item from the business in the city you were given",
+      "Return the item to Vex"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold from the Thieves Guild radiant reward list (your share of the pay)",
+     "when": "when you hand the item to Vex"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Vex",
+     "role": "hands you the job and takes the item; placed in the Ragged Flagon in Riften"
+    },
+    {
+     "name": "the business's owner",
+     "role": "picked when the job starts; don't kill them or anyone else living there"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the quest has a strongbox slot and an owner slot, so the item is likely in a strongbox at the business, but the records here don't say so in words"
+    },
+    {
+     "field": "rewards",
+     "why": "the amount comes from a leveled reward list whose contents are not in these files"
+    },
+    {
+     "field": "starts",
+     "why": "the records show only a story-manager script event as the start, not Vex's offering line; Vex is tied in by the quest's alias, its 'return to Vex' objective, its fail flags and the Meet the Family journal"
+    },
+    {
+     "field": "needs",
+     "why": "the conditions on when Vex offers this job are not in these files; the Meet the Family journal points you to these jobs, which suggests they come after it"
+    },
+    {
+     "field": "opens",
+     "why": "nothing in these files shows whether finishing these jobs counts toward anything (such as the Guild's city special jobs); the offering conditions or a controller quest would settle it"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:02893E TGRSL",
+    "objectives 10, 20; stages 0, 10, 50, 200 (completes), 250 (fails)",
+    "fail entries gated on globals TGRFailVex, TGRFailArrestVex, TGRQuitVex",
+    "start: TGRSLQuestNode (script event)",
+    "reward: QF_TGRSL_0002893E.pReward -> LVLI Skyrim.esm:10E0F6 TGRewardGoldRadiant",
+    "aliases Vex, Business, City, ItemToGet, Boss, StrongBox",
+    "alias Vex -> NPC Skyrim.esm:01CD90 in cell 016BCF The Ragged Flagon",
+    "people_schedules_raw Vex (01CD90) (see verdict)",
+    "TG02B stage 200 journal: check in with Vex and Delvin 'and undertake some of the extra jobs they offer'"
+   ]
+  },
+  {
+   "edid": "TGTQ01",
+   "name": "Silver Lining",
+   "plugin": "Skyrim.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A Thieves Guild job in Markarth: talk to Endon the silversmith, who wants his stolen silver mold back.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "not named in these records",
+     "where": "",
+     "how": "The job reaches you through the Thieves Guild: when it starts, the journal already says Endon has asked the Guild for help and sends you to speak to Endon in Markarth."
+    }
+   ],
+   "firstStep": "Speak to Endon the Silversmith in Markarth; he is surest to be found at Endon's House early in the morning or at night",
+   "takesYou": [
+    {
+     "place": "Endon's House, Markarth",
+     "hold": "The Reach",
+     "why": "find Endon (early morning or night; he may be out at the market by day and at the Silver-Blood Inn in the evening) to hear what was stolen and to return the mold"
+    },
+    {
+     "place": "Pinewatch",
+     "hold": "Falkreath",
+     "why": "the bandits led by Rigel Strong-Arm took the mold to their hideout, a small cottage next to Falkreath"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Endon the Silversmith",
+      "Enter Pinewatch",
+      "Recover Endon's Silver Mold",
+      "Return to Endon"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "A random piece of light armor (from the Thieves Guild light-armor reward list)",
+     "when": "when you return the mold to Endon"
+    },
+    {
+     "what": "Endon becomes an influential ally of the Thieves Guild in Markarth",
+     "when": "at the end"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Endon",
+     "role": "the silversmith who wants his mold back; placed in Endon's House, Markarth"
+    },
+    {
+     "name": "Rigel Strong-Arm",
+     "role": "leader of the bandits who stole the mold (named in the journal only)"
+    },
+    {
+     "name": "Rhorlak",
+     "role": "placed at Pinewatch; has lines for this quest while you are looking for the mold"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "who sends you to Endon, and what you must have done in the Thieves Guild first, is not in these files"
+    },
+    {
+     "field": "people",
+     "why": "Rhorlak's lines for this quest exist but what he says, and whether he is hostile, isn't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "Pinewatch holds bandits plus draugr and wolves, has traps, and its boss is leveled 19-24; the quest also uses a special door there, but the records here don't say which"
+    },
+    {
+     "field": "opens",
+     "why": "the ending says the Guild gains an ally in Markarth; whether that counts toward a later guild quest isn't shown here"
+    },
+    {
+     "field": "starts",
+     "why": "who gives you this job, and where, is not in these files; the journal only says Endon asked the Guild for help. The dialogue or script that sets the quest's first journal stage would settle it"
+    },
+    {
+     "field": "where",
+     "why": "Endon's day and evening packages (market 7am-7pm with no place named, Silver-Blood Inn 8pm-11pm) only run once stage 1 of quest Skyrim.esm:0AF75F is done; that quest isn't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0799DF TGTQ01",
+    "objectives 10, 20, 30, 40; stages 10, 20, 200 (completes)",
+    "giver INFO Skyrim.esm:0799D3 (Endon, stage below 11); Rhorlak lines below stage 31",
+    "Endon INFO Skyrim.esm:0799D4: mold taken to 'a small cottage called Pinewatch'",
+    "Endon NPC Skyrim.esm:013395, ref 0198F1 in Endon's House (cell 016DFD), Markarth",
+    "Rhorlak NPC Skyrim.esm:0799E4, cell Pinewatch",
+    "LCTN Skyrim.esm:01928A Pinewatch, Falkreath hold, 0.3 km from Falkreath",
+    "reward: QF_TGTQ01_000799DF.pReward -> LVLI Skyrim.esm:0D8836 TGRewardRandomLightArmor",
+    "alias TGTQ01DoorActAlias",
+    "people_schedules_raw Endon (013395): MarkarthEndonEatMorning6x1 at Endon's House; MarkarthEndonSandboxMarketPackage7x12 and MarkarthEndonEatSilverFishInn20x3 gated on GetStageDone 0AF75F 1; DefaultSleepEditorLoc 0-8",
+    "stage 10 journal + objective 10 point you to Endon, so his stage<11 line comes after the start"
+   ]
+  },
+  {
+   "edid": "TGTQ02",
+   "name": "The Dainty Sload",
+   "plugin": "Skyrim.esm (last edited by Vittorias Alternate Wedding.esp, after Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "A Thieves Guild job in Solitude: talk to Erikur, who wants a ship captain framed.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "not named in these records",
+     "where": "",
+     "how": "The job reaches you through the Thieves Guild: when it starts, the journal already says Erikur has asked the Guild for help and sends you to speak to Erikur in Solitude."
+    }
+   ],
+   "firstStep": "Speak to Erikur in Solitude: in the Blue Palace by day (8am to 8pm), at Erikur's House at night",
+   "takesYou": [
+    {
+     "place": "the Blue Palace (by day) or Erikur's House (at night), Solitude",
+     "hold": "Haafingar",
+     "why": "get the job and report back to Erikur"
+    },
+    {
+     "place": "the Red Wave, a ship at Solitude",
+     "hold": "Haafingar",
+     "why": "get the Balmora Blue from Sabine Nytte"
+    },
+    {
+     "place": "the Dainty Sload",
+     "hold": "Haafingar",
+     "why": "plant the Balmora Blue in Captain Volf's footlocker"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Erikur",
+      "Acquire Balmora Blue",
+      "Plant the Balmora Blue",
+      "Return to Erikur"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Erikur becomes an influential ally of the Thieves Guild in Solitude",
+     "when": "at the end"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Erikur",
+     "role": "the merchant who wants Volf framed; placed in Erikur's House, Solitude"
+    },
+    {
+     "name": "Sabine Nytte",
+     "role": "has the Balmora Blue; placed aboard the Red Wave at Solitude"
+    },
+    {
+     "name": "Volf",
+     "role": "captain of the Dainty Sload, the man being framed (named in the journal only)"
+    },
+    {
+     "name": "the Dainty Sload's crew",
+     "role": "a first mate and corsairs are placed aboard the ship"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "who sends you to Erikur, and what you must have done in the Thieves Guild first, is not in these files"
+    },
+    {
+     "field": "choices",
+     "why": "the quest has slots for Sabine's chest, a safe, a key and a note, so there may be more than one way to get the Balmora Blue (from her, or by stealing it), but the dialogue that decides this isn't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "the Red Wave's door opens from an outdoor Solitude cell, which is likely the docks, and the Dainty Sload's mooring isn't given in these files"
+    },
+    {
+     "field": "people",
+     "why": "whether the Dainty Sload's corsairs and first mate are hostile isn't in these files"
+    },
+    {
+     "field": "plugin",
+     "why": "Vittorias Alternate Wedding.esp is the last plugin to edit this quest; what it changed isn't shown in these extracts"
+    },
+    {
+     "field": "starts",
+     "why": "who gives you this job, and where, is not in these files; the journal only says Erikur asked the Guild for help. The dialogue or script that sets the quest's first journal stage would settle it"
+    },
+    {
+     "field": "where",
+     "why": "Erikur's day is settled by his schedule (Blue Palace 8am-8pm); his 7pm-10pm package (AIOSoInnWeekdays19x3) names no place. Sabine Nytte is placed on the Red Wave, but while this quest runs she follows a quest package (TGTQ02SabineSandbox0x24) whose place isn't in these files"
+    },
+    {
+     "field": "opens",
+     "why": "the ending says the Guild gains an ally in Solitude; whether that counts toward a later guild quest isn't shown here"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0799E0 TGTQ02 (edited by USSEP, Vittorias Alternate Wedding.esp)",
+    "objectives 10, 20, 30, 40; stages 10, 20, 25, 30, 200 (completes)",
+    "giver INFO Skyrim.esm:07CD2F (Erikur, stage below 11); Sabine Nytte lines below stage 25",
+    "Erikur NPC Skyrim.esm:013272, ref 0198A9 in Erikur's House (cell 016A09), Solitude",
+    "Sabine Nytte NPC Skyrim.esm:0132A3, ref 0A17A6 in cell 0A1793 Red Wave; door Skyrim.esm:0A17AC from cell 00929A",
+    "aliases TGTQ02ChestAlias, TGTQ02SabineChestAlias, TGTQ02BalmoraBlueAlias, TGTQ02KeyAlias, TGTQ02NoteAlias, TGTQ02Safe",
+    "people_raw: Corsair x3 and First Mate in cell Dainty Sload",
+    "people_schedules_raw Erikur (013272): SolitudePalaceCourtSandbox8x12 and SolitudeCourtEat13x2 at The Blue Palace; DefaultSleepEditorLoc24x8",
+    "people_schedules_raw Sabine Nytte (0132A3): TGTQ02SabineSandbox0x24 gated on GetQuestRunning 0799E0, no place given"
+   ]
+  },
+  {
+   "edid": "TGTQ03",
+   "name": "Imitation Amnesty",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "A Thieves Guild job in Whiterun: talk to Olfrid Battle-Born, who wants his friend Arn freed from jail.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "not named in these records",
+     "where": "",
+     "how": "The job reaches you through the Thieves Guild: when it starts, the journal already says Olfrid Battle-Born has asked the Guild for help and sends you to speak to Olfrid in Whiterun."
+    }
+   ],
+   "firstStep": "Speak to Olfrid Battle-Born in Whiterun; he lives in the House of Clan Battle-Born",
+   "takesYou": [
+    {
+     "place": "House of Clan Battle-Born, Whiterun",
+     "hold": "Whiterun",
+     "why": "get the job and report back"
+    },
+    {
+     "place": "the jarl's quarters in Dragonsreach",
+     "hold": "Whiterun",
+     "why": "steal the letter that incriminates Arn"
+    },
+    {
+     "place": "the steward's quarters in Dragonsreach",
+     "hold": "Whiterun",
+     "why": "forge the prisoner registry"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Olfrid Battle-Born",
+      "Steal the letter incriminating Arn",
+      "Forge the prison registry",
+      "Return to Olfrid Battle-Born"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Arn is freed, and Olfrid Battle-Born becomes an influential ally of the Thieves Guild in Whiterun",
+     "when": "at the end"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Olfrid Battle-Born",
+     "role": "wants Arn freed; placed in the House of Clan Battle-Born, Whiterun"
+    },
+    {
+     "name": "Arn",
+     "role": "Olfrid's friend in Whiterun's jail, due to be executed"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "who sends you to Olfrid, and what you must have done in the Thieves Guild first, is not in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "Olfrid says visitors aren't allowed in the jarl's or the steward's chambers, so expect to sneak in; the records don't say whether being seen fails the job"
+    },
+    {
+     "field": "starts",
+     "why": "who gives you this job, and where, is not in these files; the journal only says Olfrid Battle-Born asked the Guild for help. The dialogue or script that sets the quest's first journal stage would settle it"
+    },
+    {
+     "field": "where",
+     "why": "Olfrid is placed in his family's house, but his schedule has a 10am-7pm package, a 6pm-8pm family package and a 7pm-11pm package named for the Bannered Mare, none with a place in these files, so the house is only reliable at night"
+    },
+    {
+     "field": "opens",
+     "why": "the ending says the Guild gains an ally in Whiterun; whether that counts toward a later guild quest isn't shown here"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0799E1 TGTQ03 (edited by USSEP)",
+    "objectives 10, 20, 30, 40; stages 10, 20, 30, 40, 45, 50, 200 (completes)",
+    "giver INFO Skyrim.esm:07D01F (Olfrid, stage below 11)",
+    "Olfrid INFO Skyrim.esm:07D023, 07D024 (USSEP): correspondence goes to the jarl's private chambers; no visitors in jarl's or steward's chambers",
+    "Olfrid NPC Skyrim.esm:013BB4, ref 01A687 in House of Clan Battle-Born (cell 0165AF), Whiterun",
+    "aliases TGTQ03Letter, TGTQ03Registry",
+    "LCTN Skyrim.esm:01F871 Dragonsreach lists this quest",
+    "people_schedules_raw Olfrid (013BB4): AIOWROlfirdRandom10x9, AIOWRBattlebornFamilyTime 18x2, WhiterunOlfridBanneredMarePackage19x4, no places given"
+   ]
+  },
+  {
+   "edid": "TGTQ04",
+   "name": "Summerset Shadows",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "A Thieves Guild job in Windhelm: talk to Torsten Cruel-Sea, who wants his dead daughter's locket back from a rival guild.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "not named in these records",
+     "where": "",
+     "how": "The job reaches you through the Thieves Guild: when it starts, the journal already says Torsten Cruel-Sea has asked the Guild for help and sends you to speak to Torsten in Windhelm."
+    }
+   ],
+   "firstStep": "Speak to Torsten Cruel-Sea in Windhelm; his house is surest late at night, and by day his schedule takes him out to a farm and the market",
+   "takesYou": [
+    {
+     "place": "House of Clan Cruel-Sea, Windhelm (late at night)",
+     "hold": "Eastmarch",
+     "why": "get the job from Torsten and return the locket; by day he is out at a farm and the market, in the evening at Candlehearth (by the package's name), and he may be at the Palace of the Kings 10pm to midnight"
+    },
+    {
+     "place": "Windhelm, to find Niranye",
+     "hold": "Eastmarch",
+     "why": "get her to tell you where the Summerset Shadows are; she works 8am to 8pm (place not named) and drinks at the New Gnisis Cornerclub 8pm to 2am; her safe is in Niranye's House"
+    },
+    {
+     "place": "Uttering Hills Cave",
+     "hold": "Eastmarch",
+     "why": "the Summerset Shadows' hideout, a short walk from Windhelm; kill Linwe and take the locket"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Find leverage on Niranye before you press her",
+     "leadsTo": "An optional way to sway her into talking."
+    },
+    {
+     "choice": "Destroy the Summerset Shadows' banner in the cave",
+     "leadsTo": "Optional; not needed to finish."
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Torsten Cruel-Sea",
+      "Speak to Niranye",
+      "(Optional) Discover leverage to sway Niranye",
+      "Travel to Uttering Hills Cave",
+      "Recover Fjotli's Silver Locket",
+      "(Optional) Destroy the Summerset Shadow's Banner",
+      "Return to Torsten Cruel-Sea"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Torsten Cruel-Sea becomes an influential ally of the Thieves Guild in Windhelm",
+     "when": "at the end"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [],
+   "closes": [
+    "Linwe dies",
+    "the Summerset Shadows are gone from Skyrim"
+   ],
+   "people": [
+    {
+     "name": "Torsten Cruel-Sea",
+     "role": "wants his daughter Fjotli's locket back; placed in the House of Clan Cruel-Sea, Windhelm"
+    },
+    {
+     "name": "Niranye",
+     "role": "knows where the Summerset Shadows hide; placed in Niranye's House, Windhelm"
+    },
+    {
+     "name": "Linwe",
+     "role": "leader of the Summerset Shadows and boss of Uttering Hills Cave (level 30); has the locket"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "who sends you to Torsten, and what you must have done in the Thieves Guild first, is not in these files"
+    },
+    {
+     "field": "choices",
+     "why": "the quest has slots for Niranye's safe, two notes and a holding, so the leverage is likely found there, but the records here don't say where or what it is"
+    },
+    {
+     "field": "rewards",
+     "why": "no item reward is wired to this quest's scripts in these files; Linwe's and Summerset Shadows armor exist as items but nothing here places them on Linwe or his crew"
+    },
+    {
+     "field": "takesYou",
+     "why": "Uttering Hills Cave holds about 22 bandits, levels 6 to 30, with Linwe at level 30"
+    },
+    {
+     "field": "starts",
+     "why": "who gives you this job, and where, is not in these files; the journal only says Torsten Cruel-Sea asked the Guild for help. The dialogue or script that sets the quest's first journal stage would settle it"
+    },
+    {
+     "field": "where",
+     "why": "Torsten's farm, market, breakfast and Candlehearth packages, and Niranye's 8am-8pm work package, give no place in these files; only the Palace of the Kings (Torsten, late evening) and the New Gnisis Cornerclub (Niranye, 8pm-2am) are named"
+    },
+    {
+     "field": "opens",
+     "why": "the ending says the Guild gains an ally in Windhelm; whether that counts toward a later guild quest isn't shown here"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0799E2 TGTQ04 (edited by USSEP)",
+    "objectives 10-70; stages 10, 20, 25, 30, 35, 40, 50, 55, 60, 65, 200 (completes)",
+    "giver INFO Skyrim.esm:07D671 (Torsten, stage below 11); Niranye lines below stage 21",
+    "Niranye INFO Skyrim.esm:0D77E2: Linwe steals from the dead",
+    "Torsten NPC Skyrim.esm:014136, ref 01B130 in House of Clan Cruel-Sea (cell 01677D); Niranye NPC 014123 in Niranye's House (cell 016788); Linwe NPC 07D679 in Uttering Hills Cave (cell 07BC27)",
+    "LCTN Skyrim.esm:0192C0 Uttering Hills Camp, Eastmarch, 0.5 km from Windhelm, boss Linwe level 30",
+    "aliases TGTQ04NiranyesSafe, TGTQ04NoteAlias, TGTQ04Note01Alias, TGTQ04Holding, TGTQ04BannerAlias, TGTQ04LocketAlias",
+    "ARMO Skyrim.esm:07D678 Fjotli's Silver Locket",
+    "people_schedules_raw Torsten (014136): TorstenWorkTheFarm9x5, WindhelmTorstenMakretBrowse14x5, TorstenEatAtCandlehearth19x3, TorstenSandboxInPalace22x2 (GetInFaction 0BFC5C == 0)",
+    "people_schedules_raw Niranye (014123): NiranyeWork8x12 (no place), NiranyeDrinkAtCornerclub20x6 at New Gnisis Cornerclub"
+   ]
+  },
+  {
+   "edid": "TG00MaulHandler",
+   "name": "TG00 Maul Handler",
+   "plugin": "Skyrim.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A journal pointer that tells you to talk to Brynjolf in Riften about joining the Thieves Guild.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Talk to Brynjolf about joining the Thieves Guild",
+   "takesYou": [
+    {
+     "place": "Riften, out in the city",
+     "hold": "The Rift",
+     "why": "find Brynjolf"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Brynjolf about joining the Thieves Guild"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brynjolf",
+     "role": "the man to talk to about joining; placed outdoors in Riften"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "the quest is named after Maul, a Riften man, but the line or event that sets it is not in these files, so who or what hands you this pointer isn't known"
+    },
+    {
+     "field": "where",
+     "why": "Brynjolf is placed outdoors in Riften; his schedule packages (Thieves Guild Headquarters, the Ragged Flagon) only run once a global (Skyrim.esm:1032BA) is set, so his spot before then isn't in these files"
+    },
+    {
+     "field": "opens",
+     "why": "it points you toward joining the Thieves Guild, but nothing here links it to a specific next quest"
+    },
+    {
+     "field": "canDo",
+     "why": "what sets this pointer is not in these files; Maul is not one of its aliases, so the name is the only hint"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:064A14 TG00MaulHandler",
+    "objective 10; stages 10, 200",
+    "alias TG00MiscHandlerBrynjolfAlias -> NPC Skyrim.esm:01B07D, ref 020545 in Riften exterior cell 016BE0",
+    "Maul NPC Skyrim.esm:0371D6 (Riften)",
+    "people_schedules_raw Brynjolf (01B07D): all packages gated on GetGlobalValue 1032BA == 1",
+    "people_schedules_raw Maul (0371D6): no alias on 064A14"
+   ]
+  },
+  {
+   "edid": "TG02B",
+   "name": "Meet the Family",
+   "plugin": "Skyrim.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A Thieves Guild errand in the Ragged Flagon: talk to Vex and Delvin, then pick up your guild armor from Tonilia.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Learn more about the Thieves Guild from Vex in the Ragged Flagon",
+   "takesYou": [
+    {
+     "place": "the Ragged Flagon, in the Ratway under Riften",
+     "hold": "The Rift",
+     "why": "talk to Vex, Delvin and Tonilia"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Learn more about the Thieves Guild from Vex",
+      "Learn more about the Thieves Guild from Delvin",
+      "Retrieve your Thieves Guild Armor from Tonilia"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Thieves Guild Cuirass, Thieves Guild Gloves, Thieves Guild Boots and Thieves Guild Hood",
+     "when": "from Tonilia"
+    }
+   ],
+   "type": "Misc",
+   "opens": [
+    "the extra jobs Vex and Delvin offer (the closing journal entry says to check in with them for work)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Vex",
+     "role": "tells you about the Guild; placed in the Ragged Flagon"
+    },
+    {
+     "name": "Delvin Mallory",
+     "role": "tells you about the Guild; placed in the Ragged Flagon"
+    },
+    {
+     "name": "Tonilia",
+     "role": "gives you your Thieves Guild armor; placed in the Ragged Flagon"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "the line or event that sets this quest isn't in these files; it reads like a follow-on to joining the Guild, but nothing here ties it to a specific earlier quest"
+    },
+    {
+     "field": "needs",
+     "why": "what you must have done first isn't shown in these files"
+    },
+    {
+     "field": "opens",
+     "why": "the journal points you to Vex's and Delvin's extra jobs, and The Sweep Job, The Heist Job and The Bedlam Job are tied to them, but the records here don't show this quest unlocking them"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:084ABD TG02B",
+    "objectives 10, 20, 30; stages 0-40, 200 (completes)",
+    "aliases TG02BVexAlias (NPC 01CD90), TG02BDelvinAlias (NPC 01CB78), TG02BToniliaAlias (NPC 0B8827), all in cell 016BCF The Ragged Flagon",
+    "rewards via TG02BQuestScript: pTG02BCuirass ARMO 0D3AC3, pTG02BGauntlets 0D3AC4, pTG02BBoots 0D3AC2, pTG02BHelmet 0D3AC5",
+    "people_schedules_raw Vex (01CD90)",
+    "people_schedules_raw Delvin (01CB78)",
+    "people_schedules_raw Tonilia (0B8827)"
+   ]
+  },
+  {
+   "edid": "TGFenceCaravan",
+   "name": "Thieves Guild Caravan Fence Quest",
+   "plugin": "Skyrim.esm (last edited by Update.esm)",
+   "canDo": "talk",
+   "canDoWhy": "A Thieves Guild errand from Tonilia: carry Moon Sugar to Ri'saad of the Khajiit caravans.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Tonilia",
+     "where": "the Ragged Flagon, in the Ratway under Riften; her schedule keeps her there day and night",
+     "how": "Tonilia has a line for this quest before the delivery begins; she sends you to deliver Moon Sugar to Ri'saad."
+    }
+   ],
+   "firstStep": "Deliver the Moon Sugar to Ri'saad",
+   "takesYou": [
+    {
+     "place": "Ri'saad's Khajiit caravan",
+     "hold": "varies",
+     "why": "deliver the Moon Sugar"
+    },
+    {
+     "place": "the Ragged Flagon",
+     "hold": "The Rift",
+     "why": "report back to Tonilia"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver Moon Sugar to Ri'saad",
+      "Return to Tonilia"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold from the Thieves Guild reward list",
+     "when": "at the end"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tonilia",
+     "role": "sends you and pays you; placed in the Ragged Flagon in Riften"
+    },
+    {
+     "name": "Ri'saad",
+     "role": "takes the Moon Sugar; he travels with a Khajiit caravan"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the conditions on Tonilia's line aren't in these files; Thieves Guild membership is likely but not shown"
+    },
+    {
+     "field": "takesYou",
+     "why": "Ri'saad is a persistent world reference and leads a Khajiit caravan (CaravanALeader, LeaderA on the caravan quest), so he moves with it; where the caravan is on a given day isn't in these files"
+    },
+    {
+     "field": "opens",
+     "why": "the quest's name says it is about making the caravan a fence for the Guild, but nothing here shows what changes for the player afterwards"
+    },
+    {
+     "field": "steps",
+     "why": "the Moon Sugar comes as a satchel (the quest has a satchel slot), but the records here don't say so in words"
+    },
+    {
+     "field": "rewards",
+     "why": "the amount comes from a leveled reward list whose contents are not in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0D8E40 TGFenceCaravan (edited by Update.esm)",
+    "objectives 10, 20; stages 10, 20, 30, 200",
+    "giver INFO Skyrim.esm:0D8E31 (Tonilia, stage below 11); Ri'saad lines below stage 21",
+    "aliases TGFCRisaadAlias (NPC 01B1DB, ref 074340 in persistent cell 000D74), TGFCToniliaAlias (NPC 0B8827 in The Ragged Flagon), TGFCSatchelAlias",
+    "reward: QF_TGFenceCaravan_000D8E40.pReward -> LVLI Skyrim.esm:0AF26C TGRewardGold",
+    "people_schedules_raw Tonilia (0B8827)",
+    "people_schedules_raw Ri'saad (01B1DB): factions KhajiitCaravanFaction, CaravanALeader; alias LeaderA on Skyrim.esm:03ACDB"
+   ]
+  }
+ ]
+}
