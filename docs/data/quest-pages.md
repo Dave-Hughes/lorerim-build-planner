@@ -54,4 +54,6 @@ The confidence comes from those, in plain words, not a percentage: *confirmed by
 
 **Every NPC named anywhere links to their page.** On quest pages, line pages, the connector's answers, everywhere. Needs the people pages (WO-155).
 
-**Still to settle:** where a person's hours go (beside their name, or a "When" line), and how the jobs pages are grouped.
+**Hours live on the person's page, not the quest page.** A quest page names the person (linked) and the one place to meet them for this quest ("Lucan Valerius, in the Riverwood Trader"); where they spend the rest of the day and night is on their own page.
+
+**Still to settle:** how the jobs pages are grouped.
