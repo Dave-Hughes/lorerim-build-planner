@@ -1,0 +1,1392 @@
+{
+ "checks": [
+  {
+   "edid": "FOFRiftenBrawlerQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Maul's line opens the quest; the opening journal line is about a letter."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The journal tells you to get more gold and return to The Organizer; no amount anywhere."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Maul is the named giver (line open before the tourney starts). His packages: a day spot near Mistveil Keep from 10 am, a wall-lean package with no hours that runs until a Riften quest moves on, sleep in Black-Briar Manor from midnight. The reader's unsure note covers the wall-lean overlap."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, word for word."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Journal and door records: the arena's door leads in from the Ratway; the Ratway Vaults are where the journal sends you."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward record or script property on this quest; the journal only promises a reward from The Organizer."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "FOFWindhelmBrawlerQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Niranye's line (open before the tourney starts) and the journal: 'I was told by Niranye'."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Nothing in the records asks for a fee or an earlier quest."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Placed in Niranye's House; packages breakfast at 6, work 8 am for 12 hours near the city, Cornerclub from 8 pm. Matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Journal says the tourney is in Eastmarch, east of Windhelm; camp packages point at the Windhelm Brawler's Camp marker."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Objective 'Get your earnings from Reggr'; no reward record. Added an unsure note: Erdith carries a follower flag."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ksws07MainQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by the mod's story node on a change of location, own stage 0."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions beyond the quest not having started."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "No giver for the opening; the first journal line names Belethor's General Goods and the shop is among the cells used. The reader's unsure note on how the mirror is bought stands."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the mirror."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The Cursed Shadow is placed in Wisp Light Crevasse (same map marker as the catacombs), which the reader left out; added it. Frostskarn Vault has no hold or parent in the records, so 'Crag Spire Wastes' changed to 'inside the mirror realm'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Refuse ends the quest (completes, 'I've refused'); kill branch has its own objective and completes on 'I killed her'."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gain Heart and Rimeweld Sword are reward properties on the quest script; kept per Bob's ruling with the unsure note. Added a note on the Frostskarn equipment the quest tracks."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The two book quests need Othriel, whom you only reach here; the shards quest shares the story node and mirror names. Reader's unsure note covers the timing."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Kill branch: 'I will kill her' / 'I killed her'."
+    }
+   }
+  },
+  {
+   "edid": "ksws07BookQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Othriel's line, open before the quest starts."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The book itself; Othriel is only in the mirror realm."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Othriel's packages are all near Othriel's Cabin."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Give: completes; not giving it: fails."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The only script item is the book you hand over, so it isn't a reward; nothing else is named."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ksws07ArmorQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Othriel's line, open before the quest starts."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Book, then 5 Stalhrim (journal and objective count)."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Fails if you don't give the book, or refuse / never hand over the ore; matches the fail stages."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The journal says she crafts a set of Rimeweld Armor; the script property is only the book you give her."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ksws07ShardsQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Same story node as the others, change of location; journal 'I found a piece of a Snow Elf Mirror'."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions shown; reader's unsure note on doing The Frozen Heart first stands."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "The journal itself says 'I can reforge the mirror at a forge or anvil'; the mirror is filled as the Gallery of Mirrors one."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The reforged mirror leading to the Gallery of Mirrors is what the last stage says."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "00TallyMeet",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "Kept 'talk'. The quest runs from the start of the game and its first stage carries the rumour journal line and the 'Find the hidden Statue of Talos' objective, which would make it start by itself; the records here don't show whether that stage is set at once. The quest's startup stage setting would settle it."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Journal: 'A small potion should help'."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "No giver record; Taliesin's own lines are the only dialogue (open until the quest is done). He is placed in an open-world cell with no name."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "The Riverwood line ('If you reconsider, you'll find me there') belongs to this quest, and his Riverwood package runs once it is done."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The journal offers healing or leaving him; only healing has a completing stage."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Last stage: he offers to travel with you; follower flags set."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Taliesin's other dialogue quests exist (follower talk, commentary on the main story) but none has journal text; the reader's wording says so."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "DB05Alt",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The invitation book exists; nothing shows who sends it. Reader's unsure note stands."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Wedding Invitation, signed by Vittoria Vici and Asgeir Snow-Shod, inviting you to the public reception at the Temple of the Divines."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "'Stay or leave the reception' then completion either way."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The wedding bands are quest aliases, not reward properties; reader kept them in unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "'Changes its opening lines to Tending the Flames' misreads it. The mod rewrites two Tending the Flames lines so that, while this quest is between the invitation and arrival at the reception, Jorn says the College must wait until after the wedding. It postpones that quest; it closes nothing."
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestArenaFightRepeating",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Huki's line opens it. Reworded the unsure note: the quest's shown name is 'Pit Fighter', so 'the quest's name says it repeats' would mislead; only the internal name does."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Huki also has an 8 am, 30-minute inspection package near the Palace of the Kings, ahead of the 9 am recruiter visit; added it to where."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The fragment's Reward property is the no-rank arena gold leveled list."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "0WHQuestBuyHouse",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Revyn Sadri's line, open before and at the 'home for sale' stage."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The only gold in the script is a plain gold property on the fragment, and the journal says you bought the deed, so a price is the better reading than a reward. Amount unknown."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Placed in Sadri's Used Wares; work 8 am for 12 hours, Cornerclub from 8 pm."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Buying the deed from Revyn is how the quest moves on, though it isn't a shown objective."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Last stage: 'I am now its owner'."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "steps": {
+     "verdict": "fix",
+     "note": "The quest has one objective, 'Inspect your new property.'; 'Buy the deed to Graystone Lodge from Revyn Sadri' isn't an objective in the records. Removed it from steps (it stays as firstStep)."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "FOFRiftenBrawlerQuest",
+   "name": "Fists of Fury - The Rift",
+   "plugin": "Fists of Fury - Skyrim.esp (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A letter tells you about a brawling tournament; Maul in Riften points you to a fight club in the Ratway.",
+   "needs": [
+    {
+     "what": "Gold for the entry fee (the amount isn't in these files)",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Maul",
+     "where": "outdoors in Riften; by day near Mistveil Keep, at night asleep in Black-Briar Manor",
+     "how": "After a letter about a brawling tournament reaches you, talk to Maul; he sends you down into the Ratway to find the Ratway Arena."
+    }
+   ],
+   "firstStep": "Find the Ratway Arena down in the Ratway Vaults",
+   "takesYou": [
+    {
+     "place": "The Ratway Vaults",
+     "hold": "The Rift",
+     "why": "the way down to the arena"
+    },
+    {
+     "place": "The Ratway Arena",
+     "hold": "The Rift",
+     "why": "the tournament: The Organizer, three contenders and the champion"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the Ratway Arena down in the Ratway Vaults",
+      "Talk to The Organizer (if you're short of gold, get more and come back)",
+      "Defeat the first contender, Drackis",
+      "Defeat the second contender, Fights-With-Fists",
+      "Defeat the last contender, Barin",
+      "Defeat The Rift's Champion, Gian the Fist (the game may tell you to come back later and fight him)",
+      "Talk to Gian",
+      "Talk to The Organizer for your reward"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "A reward from The Organizer (the journal says so; what it is isn't in these files)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Maul",
+     "role": "tells you where the tournament is"
+    },
+    {
+     "name": "The Organizer",
+     "role": "runs the Ratway Arena tourney, takes the entry fee and pays out"
+    },
+    {
+     "name": "Drackis",
+     "role": "first contender"
+    },
+    {
+     "name": "Fights-With-Fists",
+     "role": "second contender"
+    },
+    {
+     "name": "Barin",
+     "role": "last contender"
+    },
+    {
+     "name": "Gian the Fist",
+     "role": "the Rift's champion"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The first journal line says a letter told you about the tournament, but no record here shows who sends it or what triggers it. A separate Fists of Fury quest with no journal text holds Maul, Niranye and Falion together; it is probably what hands out the leads, but its trigger isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Maul's day package points at an unnamed spot near Mistveil Keep and only runs when its conditions hold; another package has him lean on a wall at his placed spot until a Riften quest moves on. The exact spot isn't named. He sleeps at Black-Briar Manor from midnight for 8 hours."
+    },
+    {
+     "field": "needs",
+     "why": "The journal says to get more gold and return, so there is an entry fee, but the amount isn't in these records."
+    },
+    {
+     "field": "steps",
+     "why": "An objective says to come back later and defeat Gian the Fist; what decides when the champion fight is open (time of day, a wait) isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward record is attached to this quest. Gian the Fist is in the trainer faction, so he may offer training afterwards; the records don't say what he trains."
+    }
+   ],
+   "evidence": [
+    "QUST Fists of Fury - Skyrim.esp:04C991 stages 5-100, objectives 10-60",
+    "giver INFO Fists of Fury - Skyrim.esp:04C99B (Maul, stage < 6)",
+    "others: Organizer < 21, Drackis < 31, Fights-With-Fists < 32",
+    "door Fists of Fury - Skyrim.esp:0240B9 into The Ratway Arena (cell Fists of Fury - Skyrim.esp:005900)",
+    "Maul packages AIORiftMaulRandomDay10x8, DRMSMaulWallLeanPackage, USKPRiftenMaulSleep0x8",
+    "Maul also alias in Fists of Fury - Skyrim.esp:089602 with Niranye and Falion",
+    "Gian factions JobTrainerFaction"
+   ]
+  },
+  {
+   "edid": "FOFWindhelmBrawlerQuest",
+   "name": "Fists of Fury - Eastmarch",
+   "plugin": "Fists of Fury - Skyrim.esp (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Niranye in Windhelm tells you about a brawling tourney at a camp east of the city.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Niranye",
+     "where": "Windhelm; she lives in Niranye's House, works a spot in the city from 8 am for 12 hours, and drinks at the New Gnisis Cornerclub from 8 pm",
+     "how": "Talk to Niranye about the brawling tourney; she sends you to the Brawler's Camp east of Windhelm."
+    }
+   ],
+   "firstStep": "Go to the Brawler's Camp east of Windhelm",
+   "takesYou": [
+    {
+     "place": "Windhelm Brawler's Camp, east of Windhelm",
+     "hold": "Eastmarch",
+     "why": "the tourney: Reggr, three challengers and the champion Erdith The Bear"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Go to the Brawler's Camp east of Windhelm",
+      "Talk to Reggr",
+      "Talk to Erdith",
+      "Defeat Kjer",
+      "Defeat Maljorn",
+      "Defeat Ulthyn",
+      "Talk to Erdith",
+      "Defeat the Champion, Erdith The Bear",
+      "Talk to Erdith",
+      "Get your earnings from Reggr"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Your earnings, collected from Reggr (the amount isn't in these files)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Niranye",
+     "role": "tells you about the tourney"
+    },
+    {
+     "name": "Reggr",
+     "role": "at the camp; pays your earnings"
+    },
+    {
+     "name": "Kjer",
+     "role": "challenger"
+    },
+    {
+     "name": "Maljorn",
+     "role": "challenger"
+    },
+    {
+     "name": "Ulthyn",
+     "role": "challenger"
+    },
+    {
+     "name": "Erdith The Bear",
+     "role": "Eastmarch's brawling champion"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Niranye's opening line is open only before the tourney starts. What has to be true for her to bring it up (a letter, another Fists of Fury lead) isn't in these files; a separate Fists of Fury quest with no journal text holds her, Maul and Falion together."
+    },
+    {
+     "field": "where",
+     "why": "Niranye's work package points at an unnamed spot in Windhelm; the exact stall or corner isn't named in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The objective says to collect earnings from Reggr; no reward record shows how much. Erdith The Bear is in the trainer faction, so she may offer training afterwards; the records don't say what."
+    },
+    {
+     "field": "people",
+     "why": "Erdith The Bear is marked as a follower and sits in the current-follower group in the records; whether she can travel with you after the tourney isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Fists of Fury - Skyrim.esp:1D7962 stages 10-100, objectives 10-70",
+    "giver INFO Fists of Fury - Skyrim.esp:1D797C (Niranye, stage < 6)",
+    "others: Reggr < 16, Erdith < 21, Kjer < 31",
+    "Reggr/Erdith packages FOFWindhelmCampSandboxPackage6x16, FOFWindhelmCampSleepPackage22x8 at marker named Windhelm Brawler's Camp",
+    "Niranye packages NiranyeWork8x12, NiranyeDrinkAtCornerclub20x6",
+    "Erdith factions JobTrainerFaction",
+    "Erdith follower flag, CurrentFollowerFaction"
+   ]
+  },
+  {
+   "edid": "ksws07MainQuest",
+   "name": "The Frozen Heart",
+   "plugin": "ksws07_quest.esm (no later plugin edits the quest)",
+   "canDo": "by itself",
+   "canDoWhy": "Buy a strange Snow Elf mirror at Belethor's General Goods in Whiterun and investigate it; it's a portal to another realm.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Belethor (his shop)",
+     "where": "Belethor's General Goods, Whiterun",
+     "how": "Buy the strange Snow Elf mirror from Belethor's General Goods, then investigate it; it carries you into the Labyrinthine Passages."
+    }
+   ],
+   "firstStep": "Investigate the Snow Elf mirror you bought at Belethor's General Goods",
+   "takesYou": [
+    {
+     "place": "Belethor's General Goods",
+     "hold": "Whiterun",
+     "why": "buy the Snow Elf mirror"
+    },
+    {
+     "place": "Labyrinthine Passages",
+     "hold": "inside the mirror realm",
+     "why": "the mirror's first destination; find a way through"
+    },
+    {
+     "place": "Crag Spire Wastes",
+     "hold": "inside the mirror realm",
+     "why": "meet Othriel, a cursed Snow Elf, at her cabin"
+    },
+    {
+     "place": "Frostskarn Vault",
+     "hold": "inside the mirror realm",
+     "why": "retrieve the arms and armor needed to face the curse"
+    },
+    {
+     "place": "Whispering Walls Catacombs",
+     "hold": "Crag Spire Wastes, at the centre of the Whispering Walls maze",
+     "why": "where the curse is imprisoned; defeat the Cursed Shadow"
+    },
+    {
+     "place": "Wisp Light Crevasse",
+     "hold": "inside the mirror realm",
+     "why": "the records place the Cursed Shadow here; it shares a map marker with the Whispering Walls Catacombs"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Agree to help Othriel end her curse",
+     "leadsTo": "the full quest: Frostskarn Vault, the catacombs, the Cursed Shadow, and returning her heart"
+    },
+    {
+     "choice": "Refuse to help her",
+     "leadsTo": "the quest ends there"
+    },
+    {
+     "choice": "Decide to kill her",
+     "leadsTo": "kill Othriel; the quest ends when she is dead"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Investigate the Snow Elf Mirror",
+      "Find a way through the Labyrinthine Passages",
+      "Investigate the Crag Spire Wastes",
+      "(Optional) Find another way through the maze or try again later",
+      "Find a cure to Othriel's curse",
+      "Retrieve equipment from Frostskarn Vault",
+      "Show the equipment to Othriel",
+      "Defeat the Cursed Shadow",
+      "Escape the Whispering Walls Catacombs",
+      "Defeat the Cursed Shadow (the first win was an illusion)",
+      "Dispel the curse",
+      "Speak to Othriel"
+     ]
+    },
+    {
+     "branch": "refuse",
+     "objectives": [
+      "Tell Othriel you won't help; the quest ends"
+     ]
+    },
+    {
+     "branch": "kill her",
+     "objectives": [
+      "Kill Othriel"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gain Heart (spell)",
+     "when": "named in the quest's script; when it's given isn't in these files"
+    },
+    {
+     "what": "Rimeweld Sword",
+     "when": "named in the quest's script; when it's given isn't in these files"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [
+    "A Book for Othriel",
+    "Another Book for Othriel",
+    "Seeking Out Shards"
+   ],
+   "closes": [
+    "Othriel, if you choose to kill her"
+   ],
+   "people": [
+    {
+     "name": "Othriel",
+     "role": "a cursed Snow Elf living at Othriel's Cabin in the Crag Spire Wastes; can become a follower"
+    },
+    {
+     "name": "Cursed Shadow",
+     "role": "the curse made flesh, fought in the Whispering Walls Catacombs"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest is started by the game when you change location, and the first journal line says you bought the mirror at Belethor's General Goods. Whether the mirror is a shop item you buy from Belethor or an object for sale in the shop isn't shown in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "Gain Heart and Rimeweld Sword are properties on the quest script; the files don't say what Gain Heart does or at which point each is handed over."
+    },
+    {
+     "field": "opens",
+     "why": "The three side quests all centre on Othriel or the Snow Elf mirrors; the records don't show the exact point in this quest that unlocks each."
+    },
+    {
+     "field": "people",
+     "why": "Othriel is in the potential-follower faction and the quest tracks a relationship score with her; how that score changes isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The Cursed Shadow is placed in Wisp Light Crevasse, which shares its map marker with the Whispering Walls Catacombs; whether you fight it there or the catacombs lead into it isn't shown. Where Frostskarn Vault lies within the mirror realm isn't in these files either."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest also tracks a sword and six armour pieces (the equipment from Frostskarn Vault); whether you keep them isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST ksws07_quest.esm:002086 stages 100-20100, objectives 100-20000",
+    "story node ksws07QuestNode, change-location event, condition own stage == 0",
+    "cellsUsed Skyrim.esm:0165B3 Belethor's General Goods",
+    "fills MirrorStart = Snow Elf Mirror (Labyrinthine Passages), waifu = Othriel, boss = Cursed Shadow",
+    "giver INFO ksws07_quest.esm:0020E9 (Othriel, stage < 301)",
+    "rewards ksws07MainQuestScript.ksws07GainHeartSpell ksws07_quest.esm:0022DF, .ksws07WeapSword ksws07_quest.esm:0015FF",
+    "places LCTN ksws07_quest.esm:00107F, 001B70, 000E0A, 0019C0; INFO 002103, 00216A",
+    "globals ksws07RelationshipTotal, ksws07RelationshipKnocked",
+    "Othriel packages near Othriel's Cabin; factions PotentialFollowerFaction",
+    "Cursed Shadow placed in cell ksws07_quest.esm:001115, world Wisp Light Crevasse; LCTN 0010DE marker 00154C = Catacombs marker",
+    "aliases Sword, Armor01-06"
+   ]
+  },
+  {
+   "edid": "ksws07BookQuest",
+   "name": "A Book for Othriel",
+   "plugin": "ksws07_quest.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Othriel asks you to bring her a copy of Feyfolken III.",
+   "needs": [
+    {
+     "what": "Meet Othriel in the Crag Spire Wastes (The Frozen Heart)",
+     "kind": "quest"
+    },
+    {
+     "what": "A copy of Feyfolken, Vol. 3",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Othriel",
+     "where": "around Othriel's Cabin in the Crag Spire Wastes, the realm behind the Snow Elf mirror",
+     "how": "Othriel asks you to bring her a copy of \"Feyfolken III\"."
+    }
+   ],
+   "firstStep": "Obtain a copy of \"Feyfolken III\"",
+   "takesYou": [
+    {
+     "place": "Othriel's Cabin, Crag Spire Wastes",
+     "hold": "inside the mirror realm",
+     "why": "hand over the book"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Give her the book",
+     "leadsTo": "the quest completes"
+    },
+    {
+     "choice": "Don't give it to her",
+     "leadsTo": "the quest fails"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Obtain a copy of \"Feyfolken III\"",
+      "Give \"Feyfolken III\" to Othriel"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Othriel",
+     "role": "asks for the book"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Othriel only lives in the Crag Spire Wastes, so you must have reached her through The Frozen Heart; how far into that quest you must be, and whether her mood toward you matters, isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The only item the quest script names is the book itself; no reward is in these records."
+    }
+   ],
+   "evidence": [
+    "QUST ksws07_quest.esm:000BBA stages 100, 200, 900; objectives 90, 100",
+    "giver INFO ksws07_quest.esm:0023F7 (Othriel, stage < 1)",
+    "script property ksws07BookQuestScript.Book3ValuableFeyfolkenIII = Skyrim.esm:01ACED"
+   ]
+  },
+  {
+   "edid": "ksws07ArmorQuest",
+   "name": "Another Book for Othriel",
+   "plugin": "ksws07_quest.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Othriel asks for The Armorer's Challenge so she can learn to forge you Rimeweld Armor.",
+   "needs": [
+    {
+     "what": "Meet Othriel in the Crag Spire Wastes (The Frozen Heart)",
+     "kind": "quest"
+    },
+    {
+     "what": "A copy of The Armorer's Challenge",
+     "kind": "item"
+    },
+    {
+     "what": "5 Stalhrim",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Othriel",
+     "where": "around Othriel's Cabin in the Crag Spire Wastes, the realm behind the Snow Elf mirror",
+     "how": "Othriel asks you to bring her a copy of \"The Armorer's Challenge\" to improve her smithing."
+    }
+   ],
+   "firstStep": "Obtain a copy of \"The Armorer's Challenge\"",
+   "takesYou": [
+    {
+     "place": "Othriel's Cabin, Crag Spire Wastes",
+     "hold": "inside the mirror realm",
+     "why": "hand over the book and the Stalhrim"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Give her the book",
+     "leadsTo": "she studies it, then asks for 5 Stalhrim"
+    },
+    {
+     "choice": "Don't give her the book",
+     "leadsTo": "the quest fails"
+    },
+    {
+     "choice": "Refuse to fetch the Stalhrim, or never hand it over",
+     "leadsTo": "the quest fails with no armor"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Obtain a copy of \"The Armorer's Challenge\"",
+      "Give \"The Armorer's Challenge\" to Othriel",
+      "Wait for Othriel to finish reading \"The Armorer's Challenge\"",
+      "Speak to Othriel",
+      "Obtain Stalhrim Ores (0/5)",
+      "Give 5 Stalhrim Ores to Othriel",
+      "Wait 1 day for Othriel to craft a set of Rimeweld Armor",
+      "Speak to Othriel"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "A set of Rimeweld Armor crafted by Othriel",
+     "when": "at the end, a day after you give her the Stalhrim"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Othriel",
+     "role": "asks for the book and crafts the armor"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "The journal says she crafts a set of Rimeweld Armor; the Rimeweld pieces in the records are Circlet, Cuirass, Gauntlets, Greaves, Pauldrons and Shield, but which of them she hands over isn't in these files."
+    },
+    {
+     "field": "needs",
+     "why": "Whether this comes after A Book for Othriel, or how far into The Frozen Heart you must be, isn't in these records."
+    }
+   ],
+   "evidence": [
+    "QUST ksws07_quest.esm:002444 stages 100-950; objectives 90-400",
+    "giver INFO ksws07_quest.esm:002447 (Othriel, stage < 1)",
+    "script property ksws07ArmorQuestScript.SkillSmithing1 = Skyrim.esm:01AFCE",
+    "objective global ksws07ArmorQuestOreCount",
+    "ARMO ksws07_quest.esm:0020A4-0020A9 Rimeweld pieces"
+   ]
+  },
+  {
+   "edid": "ksws07ShardsQuest",
+   "name": "Seeking Out Shards",
+   "plugin": "ksws07_quest.esm (last edited by The Frozen Heart - Quest Mod - LoreRim Patch.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "Picking up a piece of a broken Snow Elf mirror starts a hunt for the rest of it.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "",
+     "where": "wherever you find the first Snow Elf mirror shard",
+     "how": "Find a piece of a Snow Elf mirror; the journal asks you to find the other pieces and reforge it."
+    }
+   ],
+   "firstStep": "Find all the shards of the Snow Elf Mirror (0/8)",
+   "takesYou": [
+    {
+     "place": "any forge or anvil",
+     "hold": "",
+     "why": "reforge the mirror"
+    },
+    {
+     "place": "Gallery of Mirrors",
+     "hold": "inside the mirror",
+     "why": "where the reforged mirror leads"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find all the shards of the Snow Elf Mirror (0/8)",
+      "Find a frame for the Snow Elf Mirror",
+      "Craft a frame from the shattered Snow Elf Mirror",
+      "Reforge the Snow Elf Mirror",
+      "Investigate the Snow Elf Mirror (Gallery of Mirrors)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "A reforged Snow Elf mirror that leads to the Gallery of Mirrors",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest sits in the same story node as The Frozen Heart (fired on a location change); where the eight shards and the frame lie isn't in these files, and neither is whether The Frozen Heart must be done first."
+    },
+    {
+     "field": "steps",
+     "why": "There are objectives both to find a frame and to craft one from the shattered mirror; which one applies, and what the frame recipe needs, isn't in these records."
+    }
+   ],
+   "evidence": [
+    "QUST ksws07_quest.esm:0024EF stages 100-400, 1000; objectives 100-300",
+    "edited by The Frozen Heart - Quest Mod - LoreRim Patch.esp",
+    "fills mirror = Snow Elf Mirror (Gallery of Mirrors)",
+    "objective global ksws07ShardsQuestShardCount",
+    "story node ksws07QuestNode change location"
+   ]
+  },
+  {
+   "edid": "00TallyMeet",
+   "name": "The Thalmor's Shadow",
+   "plugin": "00Taliesin.esp (last edited by Environs - The Shrines of Talos - Taliesin Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Find a hidden Statue of Talos near Falkreath and the wounded Thalmor, Taliesin, the only one left alive there.",
+   "needs": [
+    {
+     "what": "A healing potion (a small one will do)",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Taliesin",
+     "where": "at a hidden Statue of Talos somewhere in the Falkreath area",
+     "how": "Rumours point to a hidden Statue of Talos near Falkreath. The Thalmor got there first; talk to the injured survivor, who calls himself Taliesin."
+    }
+   ],
+   "firstStep": "Find the hidden Statue of Talos",
+   "takesYou": [
+    {
+     "place": "a hidden Statue of Talos",
+     "hold": "Falkreath",
+     "why": "where Taliesin lies wounded"
+    },
+    {
+     "place": "Riverwood",
+     "hold": "Whiterun",
+     "why": "where Taliesin waits if you don't take him along"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Heal Taliesin",
+     "leadsTo": "he offers to travel with you; the quest completes"
+    },
+    {
+     "choice": "Leave him to bleed",
+     "leadsTo": "the journal offers this; what follows isn't in these files"
+    },
+    {
+     "choice": "Turn down his offer to follow",
+     "leadsTo": "he says you'll find him in Riverwood if you reconsider"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the hidden Statue of Talos",
+      "Talk to Taliesin",
+      "Heal Taliesin's wounds"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Taliesin as a follower",
+     "when": "at the end"
+    }
+   ],
+   "type": "Main Quest",
+   "opens": [
+    "Taliesin's own follower story and commentary (the mod's other quests carry no journal text here)"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Taliesin",
+     "role": "an injured former Thalmor at the statue; becomes a follower"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "Taliesin is placed in the open world with no named cell, and the statue is only described as hidden in the Falkreath area. The last-loaded patch (Environs - The Shrines of Talos) edits this quest, so where the statue stands may differ from the original mod."
+    },
+    {
+     "field": "starts",
+     "why": "The quest runs from the start of the game and its first journal line is about rumours of the statue; whether that line shows up at once or only once you find him isn't clear from these files."
+    },
+    {
+     "field": "choices",
+     "why": "The journal says you can leave him to bleed to death, but nothing in the journal records what happens if you do; he is marked essential."
+    }
+   ],
+   "evidence": [
+    "QUST 00Taliesin.esp:5487A2 stages 0-20, objectives 0-15; start-game enabled",
+    "dialogue conditions GetIsID Taliesin 00Taliesin.esp:005905, GetQuestCompleted == 0",
+    "INFO 00Taliesin.esp:557AE9 (Riverwood line), 00Taliesin.esp:5487A6 (greeting)",
+    "Taliesin package 00Riverwood, runs once stage 20 is done",
+    "Taliesin factions PotentialFollowerFaction; essential"
+   ]
+  },
+  {
+   "edid": "DB05Alt",
+   "name": "A Healing Wedding",
+   "plugin": "Vittorias Alternate Wedding.esp (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "A wedding invitation from Vittoria Vici and Asgeir Snow-Shod asks you to their reception in Solitude.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Vittoria Vici and Asgeir Snow-Shod (by letter)",
+     "where": "",
+     "how": "You receive a Wedding Invitation inviting you to the public reception at the Temple of the Divines in Solitude."
+    }
+   ],
+   "firstStep": "Attend the wedding at the Temple of the Divines in Solitude",
+   "takesYou": [
+    {
+     "place": "Temple of the Divines, Solitude",
+     "hold": "Haafingar",
+     "why": "the wedding reception"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Stay at the reception after Vittoria's speech, or leave",
+     "leadsTo": "either way the quest completes"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Attend the wedding",
+      "Talk to the guests and newly weds",
+      "Listen To Vittoria's speech",
+      "Stay or leave the reception"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [
+    "Tending the Flames is put off while you're invited to or at the wedding: Jorn says the Bards College has to wait until after it"
+   ],
+   "people": [
+    {
+     "name": "Vittoria Vici",
+     "role": "the bride; gives a speech"
+    },
+    {
+     "name": "Asgeir Snow-Shod",
+     "role": "the groom"
+    },
+    {
+     "name": "Kayd",
+     "role": "guest you can talk to"
+    },
+    {
+     "name": "Vivienne Onis",
+     "role": "guest you can talk to"
+    },
+    {
+     "name": "Pantea Ateia",
+     "role": "sings at the wedding"
+    },
+    {
+     "name": "Elisif the Fair",
+     "role": "guest"
+    },
+    {
+     "name": "Vulwulf Snow-Shod",
+     "role": "guest"
+    },
+    {
+     "name": "Nura Snow-Shod",
+     "role": "guest"
+    },
+    {
+     "name": "Bryling",
+     "role": "guest"
+    },
+    {
+     "name": "Erikur",
+     "role": "guest"
+    },
+    {
+     "name": "Rorlund",
+     "role": "Temple of the Divines priest"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The invitation book exists, but no record here shows what sends it (a courier, a script, or a choice in the Dark Brotherhood's Bound Until Death). The quest also holds Astrid, Cicero, Veezara, Amaund Motierre and a Penitus bodyguard, so it is likely tied to the Dark Brotherhood story, but the conditions aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest holds Vittoria's Wedding Band and Asgeir's Wedding Band, but the records don't show whether you're given them or they're just worn by the couple."
+    },
+    {
+     "field": "closes",
+     "why": "The mod moves Jorn's 'wait until after the wedding' reply in Tending the Flames from the Dark Brotherhood wedding to this one, for the stretch from the invitation to arriving at the reception; it doesn't lock Tending the Flames for good."
+    }
+   ],
+   "evidence": [
+    "QUST Vittorias Alternate Wedding.esp:000800 stages 10-210, objectives 10-200",
+    "BOOK Vittorias Alternate Wedding.esp:000842 Wedding Invitation",
+    "giver INFO Vittorias Alternate Wedding.esp:000837 (Vittoria, stage < 21); others Asgeir, Kayd, Vivienne",
+    "MS05 INFO Skyrim.esm:0C4DFD, 0C4DFF conditions changed by this plugin",
+    "aliases Ring1Alias Skyrim.esm:0F5A1C, Ring2Alias Skyrim.esm:0F5A1D",
+    "INFO Vittorias Alternate Wedding.esp:000897 (Pantea)"
+   ]
+  },
+  {
+   "edid": "0WHQuestArenaFightRepeating",
+   "name": "Pit Fighter",
+   "plugin": "WindhelmSSE.esp (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Ask Huki Seven-Swords for a fight in the Pit, Windhelm's fighting pit in the Bloodworks, and get paid for winning.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Huki Seven-Swords",
+     "where": "The Pit Bloodworks in Windhelm; near the Palace of the Kings from 8 to 8:30 am (a morning inspection) and for an hour from 9 am and from 4 pm (visiting the recruiter); she lunches in the Bloodworks at noon",
+     "how": "Talk to Huki about a fight; she sends you down into the Pit, where an opponent is waiting."
+    }
+   ],
+   "firstStep": "Head down to the Pit",
+   "takesYou": [
+    {
+     "place": "The Pit Bloodworks",
+     "hold": "Eastmarch (Windhelm)",
+     "why": "the fight"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Head down to the Pit",
+      "Fight!",
+      "Return to Huki"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold, from a leveled reward list (scales with you)",
+     "when": "when you return to Huki after the fight"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Huki Seven-Swords",
+     "role": "sets up the fight and pays you"
+    },
+    {
+     "name": "Benkum",
+     "role": "the Pit's promoter, who works the street near the Palace of the Kings"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The journal's first entry reads 'Talked to Benkum', then 'Talked to Huki'; Huki's opening line is open only before that first entry, so which of the two you must speak to first isn't certain."
+    },
+    {
+     "field": "canDo",
+     "why": "The quest's internal name marks it as a repeating fight, but its script is the arena's intro script; whether you can take repeat fights, and whether any rank or earlier fight is needed, isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold comes from a leveled list for fighters with no rank; the amount isn't decoded here."
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:3EC170 stages 19-60, objectives 20-50",
+    "giver INFO WindhelmSSE.esp:18B3A1 (Huki, stage < 19)",
+    "reward LVLI WindhelmSSE.esp:200A4A 0WHGoldRewardArenaNoRankLvl via QF_0WHQuestArenaFightIntro_053EC170.Reward",
+    "Huki packages 0WHVisitRecruiterMorning9x1, 0WHPitLunch, 0WHVisitRecruiterAfternoon16x1, HukiDoStuffAroundBloodworks",
+    "Benkum packages BenkumMorningPromoter, BenkumEveningPromoter near Palace of the Kings"
+   ]
+  },
+  {
+   "edid": "0WHQuestBuyHouse",
+   "name": "Graystone",
+   "plugin": "WindhelmSSE.esp (last edited by CWE Taluri fix.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Revyn Sadri sells the deed to Graystone Lodge, a home in Windhelm's gray quarter.",
+   "needs": [
+    {
+     "what": "Gold to buy the deed (the price isn't in these files)",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Revyn Sadri",
+     "where": "Sadri's Used Wares, Windhelm, from 8 am for 12 hours; from 8 pm he eats at the New Gnisis Cornerclub",
+     "how": "Ask Revyn Sadri about the home for sale in the gray quarter and buy the deed to Graystone Lodge."
+    }
+   ],
+   "firstStep": "Buy the deed to Graystone Lodge from Revyn Sadri",
+   "takesYou": [
+    {
+     "place": "Graystone Lodge, Windhelm's gray quarter",
+     "hold": "Eastmarch",
+     "why": "inspect your new property"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Inspect your new property."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Graystone Lodge (house) in Windhelm's gray quarter",
+     "when": "at the end, once you've inspected it"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Revyn Sadri",
+     "role": "sells the deed"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The quest's script holds gold, most likely the price taken when you buy; the amount isn't in these records."
+    },
+    {
+     "field": "starts",
+     "why": "A journal line notes the home is for sale before you buy; Revyn's line is open both before and after that note, so you may not need to hear of it first."
+    }
+   ],
+   "evidence": [
+    "QUST WindhelmSSE.esp:2C495C stages 10-30, objective 20",
+    "edited by CWE Taluri fix.esp",
+    "giver INFO WindhelmSSE.esp:2C495F (Revyn Sadri, stage < 11)",
+    "fragment property QF_0WHQuestBuyHouse_052C495C.Gold001",
+    "Revyn packages RevynSadriWorkInShop8x12, RevynSadriEatAtCornerclub20x4"
+   ]
+  }
+ ]
+}
