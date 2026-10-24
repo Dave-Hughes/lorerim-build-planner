@@ -5140,7 +5140,7 @@ Read live: Speaking With Silence, Mourning Never Comes, the Thieves Guild line. 
 - **Checks:** typecheck, lint, 699 unit tests (one marked), 322 gamedata tests, the build and the quest e2e (`wo100`, `wo136`, `wo146`, `wo147`, `wo148`, `wo154`: 27 tests) pass.
 
 ## WO-153  Quest reads: an agent reads every quest's records, a second checks it (Bob runs it, 23 Oct 2026)
-Status: building (Bob)
+Status: paused (Bob, 23 Oct, 19:30: Dave paused it at 81% of his weekly usage)
 
 **Why.** The bake-off, 23 Oct (20 random quests, UESP as the key, a blind judge): what the planner says today got 48 of 100 fields right and left 23 empty; a fresh agent reading the same quest's records got 72 right and left none empty (wrong: 6 against 4). Three days of rules were the wrong tool: every quest is built a little differently, and a rule can't read. Dave, 23 Oct: do it.
 
@@ -5151,6 +5151,12 @@ How it runs. Bob runs it from the chat session, since it's agents reading, not a
 - [ ] Agreement with the UESP key (`quest_truth.json`, 475 rows) per field, by script, logged; every disagreement on who or where read by Bob.
 - [ ] Part 2: a line read for each quest line from its quests' checked reads (what it is, how to get in, what it gives, what it closes), into `quest_reads/lines/`.
 - [ ] Dave checks 5 quests drawn at random, in game. His result overrides everything.
+
+### Where it stopped (Bob, 23 Oct, 19:30)
+- All 85 batches read (842 quests). Checked: 75 batches. Read but not checked yet: 074, 075, 077, 078, 079, 080, 081, 082, 083, 084. The page uses a read only once it's checked, so those quests still show the older rules.
+- Against the UESP key (`quest_truth.json`), on the checked batches: who starts it agrees on 220 of 251, the first step on 350 of 384. The misses are mostly radiant jobs whose giver the records don't name (Dawnguard's Gunmar and Florentius jobs, Delvin's city jobs); a handful are real disagreements for Dave in game (Mourning Never Comes, Recipe for Disaster, Where You Hang Your Enemy's Head, The Unquiet Dead, Extracting an Argonian, Raven's Flight).
+- Left to do when it resumes: the remaining checks, the ruling pass (fill unnamed givers from UESP, marked as such; list the disagreements), and Part 2, the line reads.
+- WO-155's 20-person test is paused too: 3 of 4 reader batches done, the UESP keys not.
 
 ### Changes to other orders (Bob, 23 Oct)
 - **WO-152** parked: its measure is done (793cb11) and it told us the size. The audit is replaced by WO-153's bake-off and checks; Part 1 (reading packages by rule) by WO-156 (dump) and WO-155 (read).
