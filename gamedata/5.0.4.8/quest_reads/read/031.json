@@ -271,7 +271,7 @@
     ],
     "starts": [
       {"who": "Urag gro-Shub", "where": "the Arcanaeum, the College of Winterhold library", "how": "Once you have Septimus's book, ask Urag about it and he tells you where Septimus lives."},
-      {"who": "Septimus Signus", "where": "Septimus Signus' Outpost, on the ice north of Winterhold", "how": "You can also go straight to Septimus."}
+      {"who": "Septimus Signus", "where": "Septimus Signus' Outpost, in the northern ice fields of Winterhold hold", "how": "You can also go straight to Septimus."}
     ],
     "firstStep": "Ask Urag about the insane book",
     "takesYou": [
@@ -336,7 +336,7 @@
     "firstStep": "Speak to Sinding in Falkreath Jail",
     "takesYou": [
       {"place": "Falkreath Jail", "hold": "Falkreath", "why": "meet Sinding"},
-      {"place": "the wilds, hunting the White Stag", "hold": "", "why": "kill the great beast; Hircine speaks to you through it"},
+      {"place": "the wilds, hunting the White Stag", "hold": "", "why": "kill the great beast; Hircine then gives you his task"},
       {"place": "Bloated Man's Grotto", "hold": "Falkreath", "why": "the hunt for Sinding"}
     ],
     "choices": [
@@ -359,7 +359,7 @@
       {"name": "Sinding", "role": "the werewolf held in Falkreath Jail"},
       {"name": "Mathies and Indara Caerellia", "role": "the dead girl's parents, Corpselight Farm in Falkreath"},
       {"name": "Runil", "role": "priest at the Hall of the Dead in Falkreath"},
-      {"name": "Hircine", "role": "speaks through the White Stag and at the hunt"},
+      {"name": "Hircine", "role": "asks you to finish Sinding off"},
       {"name": "Rissing, J'Kier, Ra'kheran and Eriana", "role": "hunters at Bloated Man's Grotto"},
       {"name": "Lucerne", "role": "Glenmoril Coven witch tied to the quest"}
     ],
@@ -383,7 +383,7 @@
     "canDoWhy": "Silus Vesuius in Dawnstar wants to hire you to gather the pieces of Mehrunes' Razor.",
     "needs": [],
     "starts": [
-      {"who": "Silus Vesuius", "where": "Silus Vesuius' House, his Mythic Dawn museum in Dawnstar", "how": "He offers you a job and gives the details inside his house: bring him the three pieces of Mehrunes' Razor for gold."}
+      {"who": "Silus Vesuius", "where": "Silus Vesuius' House in Dawnstar", "how": "He offers you a job and gives the details inside his house: bring him the three pieces of Mehrunes' Razor for gold."}
     ],
     "firstStep": "Speak to Silus inside his house in Dawnstar",
     "takesYou": [
@@ -491,10 +491,10 @@
     "name": "The Black Star",
     "plugin": "Skyrim.esm (last edited by Wintersun - Faiths of Skyrim.esp)",
     "canDo": "talk",
-    "canDoWhy": "Talk to Aranea, Azura's priestess at the Shrine of Azura southeast of Winterhold.",
+    "canDoWhy": "Talk to Aranea, Azura's priestess at the Shrine of Azura in Winterhold hold.",
     "needs": [],
     "starts": [
-      {"who": "Aranea Ienith", "where": "at the Shrine of Azura, on the mountain in Winterhold hold", "how": "She tells you her vision: find an elven man in Winterhold who can turn the brightest star black as night. Talk of the shrine (from townsfolk, or a Dark Elf pilgrim named Faldrus) points you there."}
+      {"who": "Aranea Ienith", "where": "at the Shrine of Azura, Winterhold hold", "how": "She tells you her vision: find an elven man in Winterhold who can turn the brightest star black as night. Talk of the shrine (from townsfolk, or a Dark Elf pilgrim named Faldrus) points you there."}
     ],
     "firstStep": "Find the elven mage from Aranea's vision in Winterhold",
     "takesYou": [
