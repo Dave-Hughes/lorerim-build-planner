@@ -69,3 +69,5 @@
 - **067** (more jarls' bounties): 10 fixed. No record shows the court handing these out; the court is where you collect.
 - **062** (Serana's quests): 6 fixed, 2 unsure. Intruders starts from Lucien's line; From Arena to Oblivion needs Serana freed from Dimhollow Crypt, not travelling with you.
 - **069** (town favors): 4 fixed. Brunwulf outside the Palace of the Kings by day; Rustleif is Dawnstar's blacksmith; Captain Aldis is in Castle Dour only at night.
+- **070** (town jobs: Torbjorn, Amren, Runil, Shahvee, Rare Gifts): 14 fixed. Givers by the hour (Torbjorn out in Windhelm 11 to 8, Amren near Jorrvaskr by day, Runil at Dead Man's Drink evenings); bounties belong to the hold you walk into.
+- **071** (bounties: giant, dragon; Delivery): 5 fixed, 2 unsure. The jarl's hall in the hold's main town is where you collect; a memory-based note about dragons removed.
