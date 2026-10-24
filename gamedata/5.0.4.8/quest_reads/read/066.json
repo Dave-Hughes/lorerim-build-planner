@@ -1,0 +1,872 @@
+[
+ {
+  "edid": "BQ02Reach",
+  "name": "Bounty: Forsworn",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A The Reach hold bounty: the Forsworn you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the leader of the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "The Reach",
+    "why": "kill the leader"
+   },
+   {
+    "place": "Understone Keep in Markarth",
+    "hold": "The Reach",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the leader of the place named in your journal",
+     "Collect the bounty from the steward",
+     "Collect the bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of The Reach",
+    "role": "pays the bounty, at Understone Keep in Markarth"
+   },
+   {
+    "name": "the jarl of The Reach",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at Understone Keep in Markarth"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this The Reach bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is The Reach going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. Understone Keep in Markarth is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000E9A BQ02Reach type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ02Reach people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ02 Skyrim.esm:0BD77F still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:01F316 Understone Keep (Keep, The Reach)"
+  ]
+ },
+ {
+  "edid": "BQ02Rift",
+  "name": "Bounty: Beast",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A The Rift hold bounty: the beast you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the beast at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "The Rift",
+    "why": "kill the beast"
+   },
+   {
+    "place": "Mistveil Keep in Riften",
+    "hold": "The Rift",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the beast at the place named in your journal",
+     "Collect the bounty from the steward",
+     "Collect the bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of The Rift",
+    "role": "pays the bounty, at Mistveil Keep in Riften"
+   },
+   {
+    "name": "the jarl of The Rift",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at Mistveil Keep in Riften"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this The Rift bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is The Rift going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. Mistveil Keep in Riften is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000E95 BQ02Rift type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ02Rift people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ02 Skyrim.esm:0BD77F still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:022646 Mistveil Keep (Keep, The Rift)"
+  ]
+ },
+ {
+  "edid": "BQ02Whiterun",
+  "name": "Bounty: Beast",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A Whiterun hold bounty: the beast you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the beast at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "Whiterun",
+    "why": "kill the beast"
+   },
+   {
+    "place": "Dragonsreach in Whiterun",
+    "hold": "Whiterun",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the beast at the place named in your journal",
+     "Collect the bounty from the steward",
+     "Collect the bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Whiterun",
+    "role": "pays the bounty, at Dragonsreach in Whiterun"
+   },
+   {
+    "name": "the jarl of Whiterun",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at Dragonsreach in Whiterun"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this Whiterun bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is Whiterun going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. Dragonsreach in Whiterun is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000E7C BQ02Whiterun type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ02Whiterun people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ02 Skyrim.esm:0BD77F still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:01F871 Dragonsreach (Keep, Whiterun)"
+  ]
+ },
+ {
+  "edid": "BQ02Winterhold",
+  "name": "Bounty: Draugr",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A Winterhold hold bounty: the draugr you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the draugr at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "Winterhold",
+    "why": "kill the draugr"
+   },
+   {
+    "place": "the Jarl's Longhouse in Winterhold",
+    "hold": "Winterhold",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the draugr at the place named in your journal",
+     "Collect the bounty from the steward",
+     "Collect the bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Winterhold",
+    "role": "pays the bounty, at the Jarl's Longhouse in Winterhold"
+   },
+   {
+    "name": "the jarl of Winterhold",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at the Jarl's Longhouse in Winterhold"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this Winterhold bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is Winterhold going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. The Jarl's Longhouse in Winterhold is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000E8B BQ02Winterhold type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ02Winterhold people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ02 Skyrim.esm:0BD77F still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:01EB7D Jarl's Longhouse (Keep, Winterhold)"
+  ]
+ },
+ {
+  "edid": "BQ03Eastmarch",
+  "name": "Bounty: Giant",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A Eastmarch hold bounty: the giant you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the giant located at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "Eastmarch",
+    "why": "kill the giant"
+   },
+   {
+    "place": "the Palace of the Kings in Windhelm",
+    "hold": "Eastmarch",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the giant located at the place named in your journal",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Eastmarch",
+    "role": "pays the bounty, at the Palace of the Kings in Windhelm"
+   },
+   {
+    "name": "the jarl of Eastmarch",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at the Palace of the Kings in Windhelm"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this Eastmarch bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is Eastmarch going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. The Palace of the Kings in Windhelm is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000ED3 BQ03Eastmarch type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ03Eastmarch people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ03 Skyrim.esm:0BD78C still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:0209F2 shown as Hall of Victory, record name Palace of the Kings (Keep, Eastmarch); people cell 'Palace of the Kings'"
+  ]
+ },
+ {
+  "edid": "BQ03Falkreath",
+  "name": "Bounty: Spriggan",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A Falkreath hold bounty: the spriggan you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the spriggan located at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "Falkreath",
+    "why": "kill the spriggan"
+   },
+   {
+    "place": "the Jarl's Longhouse in Falkreath",
+    "hold": "Falkreath",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the spriggan located at the place named in your journal",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Falkreath",
+    "role": "pays the bounty, at the Jarl's Longhouse in Falkreath"
+   },
+   {
+    "name": "the jarl of Falkreath",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at the Jarl's Longhouse in Falkreath"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this Falkreath bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is Falkreath going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. The Jarl's Longhouse in Falkreath is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000EC9 BQ03Falkreath type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ03Falkreath people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ03 Skyrim.esm:0BD78C still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:0200C9 Jarl's Longhouse (Keep, Falkreath)"
+  ]
+ },
+ {
+  "edid": "BQ03Haafingar",
+  "name": "Bounty: Vampire",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A Haafingar hold bounty: the vampire you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the vampire located at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "Haafingar",
+    "why": "kill the vampire"
+   },
+   {
+    "place": "the Blue Palace in Solitude",
+    "hold": "Haafingar",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the vampire located at the place named in your journal",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Haafingar",
+    "role": "pays the bounty, at the Blue Palace in Solitude"
+   },
+   {
+    "name": "the jarl of Haafingar",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at the Blue Palace in Solitude"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this Haafingar bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is Haafingar going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. The Blue Palace in Solitude is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000EE2 BQ03Haafingar type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ03Haafingar people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ03 Skyrim.esm:0BD78C still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: cell name 'Blue Palace' (Solitude) in quest_givers; no Blue Palace location in places_raw"
+  ]
+ },
+ {
+  "edid": "BQ03Hjaalmarch",
+  "name": "Bounty: Beast",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A Hjaalmarch hold bounty: the beast you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the beast at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "Hjaalmarch",
+    "why": "kill the beast"
+   },
+   {
+    "place": "Highmoon Hall in Morthal",
+    "hold": "Hjaalmarch",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the beast at the place named in your journal",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of Hjaalmarch",
+    "role": "pays the bounty, at Highmoon Hall in Morthal"
+   },
+   {
+    "name": "the jarl of Hjaalmarch",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at Highmoon Hall in Morthal"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this Hjaalmarch bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is Hjaalmarch going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. Highmoon Hall in Morthal is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000EBA BQ03Hjaalmarch type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ03Hjaalmarch people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ03 Skyrim.esm:0BD78C still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:01EB9A Highmoon Hall (Keep, Hjaalmarch)"
+  ]
+ },
+ {
+  "edid": "BQ03Pale",
+  "name": "Bounty: Giant",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A The Pale hold bounty: the giant you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the giant located at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "The Pale",
+    "why": "kill the giant"
+   },
+   {
+    "place": "the White Hall in Dawnstar",
+    "hold": "The Pale",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the giant located at the place named in your journal",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of The Pale",
+    "role": "pays the bounty, at the White Hall in Dawnstar"
+   },
+   {
+    "name": "the jarl of The Pale",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at the White Hall in Dawnstar"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this The Pale bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is The Pale going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. The White Hall in Dawnstar is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000EC4 BQ03Pale type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ03Pale people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ03 Skyrim.esm:0BD78C still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:020062 The White Hall (Keep, The Pale)"
+  ]
+ },
+ {
+  "edid": "BQ03Reach",
+  "name": "Bounty: Hagraven",
+  "plugin": "Favor Quests Seperated.esp (no later edits)",
+  "canDo": "radiant",
+  "canDoWhy": "A The Reach hold bounty: the hagraven you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "Kill the hagraven located at the place named in your journal",
+  "takesYou": [
+   {
+    "place": "the place named in the bounty (picked when it starts)",
+    "hold": "The Reach",
+    "why": "kill the hagraven"
+   },
+   {
+    "place": "Understone Keep in Markarth",
+    "hold": "The Reach",
+    "why": "collect the bounty from the steward or the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the hagraven located at the place named in your journal",
+     "Collect bounty from the steward",
+     "Collect bounty from the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you collect the bounty from the steward or jarl"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "the steward of The Reach",
+    "role": "pays the bounty, at Understone Keep in Markarth"
+   },
+   {
+    "name": "the jarl of The Reach",
+    "role": "pays the bounty if the journal sends you to the jarl instead, at Understone Keep in Markarth"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These records show nothing that hands you this The Reach bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+   },
+   {
+    "field": "canDo",
+    "why": "Because no start is recorded for this copy, it may never be offered in a normal game; it may only run if something outside these files starts it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The place to clear is picked when the bounty starts, so it changes from game to game. The hold is The Reach going by how the quest is set up; the exact place isn't in these files."
+   },
+   {
+    "field": "people",
+    "why": "The steward and jarl are filled in when the quest starts. Understone Keep in Markarth is the hold's seat in the records, but who sits there can change during the war, and their daily schedules weren't checked."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files. The game's own shared version of this bounty also hands out an extra reward from Requiem; this hold copy lists only gold."
+   },
+   {
+    "field": "steps",
+    "why": "The journal can send you to either the steward or the jarl to collect; what decides which one isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Favor Quests Seperated.esp:000EDD BQ03Reach type Misc, stages 0/10/100/200, objectives 10/100/101, no editedBy",
+   "aliases: Location, LocationCenterMarker, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Player, MapMarker, Steward (all runtime-filled; no fills recorded)",
+   "quest_givers: BQ03Reach people [], no giver, no starts; reward BQScript.Gold001 -> Skyrim.esm:00000F only",
+   "vanilla BQ03 Skyrim.esm:0BD78C still listed under BQ<Hold>NodeSHARES change-location nodes; vanilla carries Requiem REQ_LI_Reward_Bounty* via BQScript.Reward",
+   "quest_starts line jarls-bounties (opening BQ01Eastmarch): no dialogue or event conditions, no cells/refs",
+   "no FQS records in items_raw (no letter), no dialogue naming this quest in places_raw",
+   "hold from edid suffix; seat: place Skyrim.esm:01F316 Understone Keep (Keep, The Reach)"
+  ]
+ }
+]
