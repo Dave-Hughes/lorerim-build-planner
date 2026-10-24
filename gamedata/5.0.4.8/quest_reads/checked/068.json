@@ -1,0 +1,1324 @@
+{
+ "checks": [
+  {
+   "edid": "BQ04Whiterun",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Radiant hold copy of the dragon bounty; the hold quests show no starter of their own."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions recorded for the hold copies."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "No dialogue, event or node in these files starts the hold copy; the game's own bounty is started by a change-location event per hold. No sister hold bounty names a giver either, so there is no likely giver to name. A decoded story-manager node or the quest script would settle it."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective: kill the dragon at the bounty location."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Lair is picked at run time. Dragonsreach holds the jarl (Balgruuf, jarl's job) and the steward (Proventus, steward's job) in these records; the reader flags it as placement only."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branches in stages or objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the bounty script; amount not in these files; kept with an unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "BQ04Winterhold",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Same as the Whiterun copy."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "No starter in these files for the hold copy, and no sister hold bounty names one. A decoded story-manager node or the quest script would settle it."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Stonecold Fortress is right, but the supporting unsure note named the wrong people: in these records the steward's job belongs to Malur Seloth, and Korir carries the jarl's job; Assur and Thaena hold neither (Thaena is a housecarl). Note corrected."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold from the bounty script, amount unknown; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor013Kynesgrove",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue favour; the giver line exists and is tied to this giver."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The start event is a change-location node named for the town; its conditions are not in these files, which the reader says."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Giver line is spoken only by this giver before the quest starts; start event is a change-location node for the town."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the target's name."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Roggi: breakfast 7-9 and dinner 7-10 pm at the Braidwood Inn, Steamscorch Gully Mine 8 am-6 pm, his house from 11 pm. Matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch in stages or objectives; settling it is in dialogue not in these files."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount not in these files; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor013Markarth",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue favour; the giver line exists and is tied to this giver."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The start event is a change-location node named for the town; its conditions are not in these files, which the reader says."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Omluag eats at the Silver-Blood Inn from 7 to 11 pm, a fixed nightly routine with no conditions; a player looking only at the smelter or the Warrens in the evening would miss him. Where is now: outside the smelter in Markarth by day; the Silver-Blood Inn in the evening; the Warrens at night. Same change in the second takesYou entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the target's name."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Second entry (back to Omluag) given the same evening fix. Mulush's entry is right: oversees the smelter 7 am to 7 pm, otherwise at home."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch in stages or objectives; settling it is in dialogue not in these files."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount not in these files; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor013Solitude",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue favour; the giver line exists and is tied to this giver."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The start event is a change-location node named for the town; its conditions are not in these files, which the reader says."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "From 6 pm to midnight Octieve's routine has him near the Blue Palace, not at home; he is home only from midnight to 6 am. The reader's \"Evette San's House at night\" sends a player to the wrong place all evening. Also added to unsure: his first routine keeps him at home until an early Solitude event the files don't name has finished. Same fix in the second takesYou entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the target's name."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Irnskar: Radiant Raiment (10 am-noon) and near Castle Dour (2-4 pm) have no conditions and come before the palace package, so they belong in where to look. The Blue Palace lobby only applies under an undecoded location condition, so it is now \"possibly\". Octieve's entry gets the evening fix."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch in stages or objectives; settling it is in dialogue not in these files."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount not in these files; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor013Whiterun",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue favour; the giver line exists and is tied to this giver."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The start event is a change-location node named for the town; its conditions are not in these files, which the reader says."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Carlotta: marketplace 8 am for about 11 hours, sweeping 1-4 pm, the Bannered Mare 7-10 pm, otherwise home; merchant hours 8 am-8 pm. Matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the target's name."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Mikael is at the Bannered Mare except a conditional break noon-4 pm near Jorrvaskr, which the reader puts in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch in stages or objectives; settling it is in dialogue not in these files."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount not in these files; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor013Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue favour; the giver line exists and is tied to this giver."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The start event is a change-location node named for the town; its conditions are not in these files, which the reader says."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "The Argonian Assemblage is not only his morning spot: his fallback package is sleep at his placed spot, the Argonian Assemblage, any time no other package applies, so at night he is usually there. The Cornerclub evenings were also missing from where. Same fix in the second takesYou entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the target's name."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Second entry given the same fix. Torbjorn's entry agrees: breakfast at home 9-11 am, around Windhelm 11 am-8 pm (conditional), Candlehearth Hall bar 8 pm-midnight, asleep at home otherwise."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch in stages or objectives; settling it is in dialogue not in these files."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount not in these files; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor013Winterhold",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A dialogue favour; the giver line exists and is tied to this giver."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The start event is a change-location node named for the town; its conditions are not in these files, which the reader says."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Haran: sandbox in the Frozen Hearth, outside 9-10:30 am, with Erird noon-2 pm in the inn, sleeps in the cellar 2-9 am unless Hard Answers is running."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective, filled with the target's name."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Ranmir: the Frozen Hearth noon-midnight under many conditions, outdoors midnight-2 am, asleep from 3 am where placed (Birna's Oddments). The reader says so in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branch in stages or objectives; settling it is in dialogue not in these files."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount not in these files; kept with unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor018Falkreath",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The giver alias is filled with this person and the start event is the town's change-location node. No giver line is in these files, which the reader says."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Dengeir spends noon to 4 pm at Dead Man's Drink every day (no conditions), so where now names it. Exile after the war is confirmed by the records (the Candlehearth Hall routine applies when he is in the exiled faction). Same fix in the second takesYou entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective: steal the item for the giver."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Second entry (back to Dengeir) given the Dead Man's Drink hours; first entry agrees (item place filled at run time)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount unknown; kept with unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Favor018Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The giver alias is filled with this person and the start event is the town's change-location node. No giver line is in these files, which the reader says."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "His fallback routine is sleep at his placed spot, the Argonian Assemblage, so he is there overnight as well as in the evening. Same fix in the second takesYou entry."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective: steal the item for the giver."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Second entry given the same overnight fix."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold named by the quest fragment; amount unknown; kept with unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "BQ04Whiterun",
+   "name": "Bounty: Dragon",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "radiant",
+   "canDoWhy": "A dragon bounty for Whiterun Hold; the game picks the dragon's lair when the bounty is handed out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the dragon at the place the bounty names",
+   "takesYou": [
+    {
+     "place": "the dragon's lair named in the bounty (picked by the game)",
+     "hold": "Whiterun Hold",
+     "why": "kill the dragon"
+    },
+    {
+     "place": "Dragonsreach in Whiterun",
+     "hold": "Whiterun Hold",
+     "why": "collect the bounty from the steward or the jarl"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the dragon located at the bounty's location",
+      "Collect bounty from the steward (or from the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "the steward of Whiterun Hold",
+     "role": "pays the bounty (filled by the game, not named in the records)"
+    },
+    {
+     "name": "the jarl of Whiterun Hold",
+     "role": "pays the bounty if there is no steward to collect from (filled by the game)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "This copy of the bounty, made just for Whiterun Hold, has roles for an innkeeper, a bounty letter, the jarl and the steward, but these files show no dialogue line or event that hands it out. So which of them hands it to you isn't known from these records."
+    },
+    {
+     "field": "where",
+     "why": "The steward and the jarl are filled in when the quest runs and can change (for example after the war). In these records Balgruuf the Greater is the jarl and Proventus Avenicci the steward, both placed in Dragonsreach, so you probably collect from Proventus Avenicci."
+    },
+    {
+     "field": "takesYou",
+     "why": "The dragon's lair is chosen when the quest starts; there's no fixed place in the records."
+    },
+    {
+     "field": "rewards",
+     "why": "The game's own dragon bounty also hands out a Requiem reward list, but this hold copy only lists gold. The amount is set in the quest script and isn't in these files."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's dragon bounty into one quest per hold. These files don't show whether the game's own version is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000F0C BQ04Whiterun: stages 0/10/100/200; objectives 10 'Kill the dragon located at <BountyLocation>', 100 'Collect bounty from <Steward>', 101 'Collect bounty from <Jarl>'; aliases Location, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Steward, MapMarker",
+    "quest_givers_raw BQ04Whiterun: no people, no starts; reward Septim via BQScript.Gold001",
+    "quests_raw Skyrim.esm:0CBA9A BQ04 (game's version, edited by Requiem.esp); quest_givers_raw BQ04: starts BQ<Hold>NodeSHARES change location; rewards Gold001 + Requiem.esp:AD3920 REQ_LI_Reward_BountyDragon",
+    "questlines_raw 'Favor Quests Separated' (68 Misc quests); quest_starts_raw line jarls-bounties: no conditions recorded",
+    "people_raw: Balgruuf the Greater and Proventus Avenicci placed in Dragonsreach",
+    "people_schedules_raw factions: Balgruuf JobJarlFaction, Proventus Avenicci JobStewardFaction (both also GovExiled/GovImperial)"
+   ]
+  },
+  {
+   "edid": "BQ04Winterhold",
+   "name": "Bounty: Dragon",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "radiant",
+   "canDoWhy": "A dragon bounty for Winterhold; the game picks the dragon's lair when the bounty is handed out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Kill the dragon at the place the bounty names",
+   "takesYou": [
+    {
+     "place": "the dragon's lair named in the bounty (picked by the game)",
+     "hold": "Winterhold",
+     "why": "kill the dragon"
+    },
+    {
+     "place": "Stonecold Fortress in Winterhold",
+     "hold": "Winterhold",
+     "why": "collect the bounty from the steward or the jarl"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the dragon located at the bounty's location",
+      "Collect bounty from the steward (or from the jarl)"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you collect the bounty"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "the steward of Winterhold",
+     "role": "pays the bounty (filled by the game, not named in the records)"
+    },
+    {
+     "name": "the jarl of Winterhold",
+     "role": "pays the bounty if there is no steward to collect from (filled by the game)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "This copy of the bounty, made just for Winterhold, has roles for an innkeeper, a bounty letter, the jarl and the steward, but these files show no dialogue line or event that hands it out. So which of them hands it to you isn't known from these records."
+    },
+    {
+     "field": "where",
+     "why": "The steward and the jarl are filled in when the quest runs and can change (for example after the war). In these records Korir is the jarl and Malur Seloth is the steward, and both are placed in Stonecold Fortress, so you probably collect from Malur Seloth."
+    },
+    {
+     "field": "takesYou",
+     "why": "The dragon's lair is chosen when the quest starts; there's no fixed place in the records."
+    },
+    {
+     "field": "rewards",
+     "why": "The game's own dragon bounty also hands out a Requiem reward list, but this hold copy only lists gold. The amount is set in the quest script and isn't in these files."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's dragon bounty into one quest per hold. These files don't show whether the game's own version is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000F1B BQ04Winterhold: stages 0/10/100/200; objectives 10 'Kill the dragon located at <BountyLocation>', 100 'Collect bounty from <Steward>', 101 'Collect bounty from <Jarl>'; aliases Location, Hold, BountyLocation, Bounty, Jarl, Letter, Innkeeper, Steward, MapMarker",
+    "quest_givers_raw BQ04Winterhold: no people, no starts; reward Septim via BQScript.Gold001",
+    "quests_raw Skyrim.esm:0CBA9A BQ04 (game's version, edited by Requiem.esp); quest_givers_raw BQ04: starts BQ<Hold>NodeSHARES change location; rewards Gold001 + Requiem.esp:AD3920 REQ_LI_Reward_BountyDragon",
+    "questlines_raw 'Favor Quests Separated' (68 Misc quests); quest_starts_raw line jarls-bounties: no conditions recorded",
+    "people_raw: Korir, Malur Seloth, Assur and Thaena placed in Stonecold Fortress; people_schedules_raw factions: Korir JobJarlFaction, Malur Seloth JobStewardFaction, Thaena JobHousecarlFaction, Assur no job faction"
+   ]
+  },
+  {
+   "edid": "Favor013Kynesgrove",
+   "name": "A Few Words with You",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Iddra asks you to have a word with Roggi Knot-Beard on their behalf.",
+   "needs": [
+    {
+     "what": "Visit Kynesgrove so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Iddra",
+     "where": "the Braidwood Inn in Kynesgrove",
+     "how": "Once you've arrived in Kynesgrove, talk to Iddra; they ask you to go and have a word with Roggi Knot-Beard."
+    }
+   ],
+   "firstStep": "Talk to Roggi Knot-Beard about Iddra",
+   "takesYou": [
+    {
+     "place": "Steamscorch Gully Mine by day, the Braidwood Inn at breakfast and dinner, Roggi's House at night",
+     "hold": "Eastmarch",
+     "why": "talk to Roggi Knot-Beard"
+    },
+    {
+     "place": "the Braidwood Inn in Kynesgrove",
+     "hold": "Eastmarch",
+     "why": "tell Iddra it's taken care of"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Roggi Knot-Beard about Iddra",
+      "Tell Iddra that Roggi Knot-Beard is taken care of"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you report back to Iddra"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Iddra",
+     "role": "asks the favour; works at the Braidwood Inn"
+    },
+    {
+     "name": "Roggi Knot-Beard",
+     "role": "the one to talk to; works the mine by day"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "How you settle things with Roggi is decided in his dialogue, which isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The favour is set up when you arrive in Kynesgrove; the conditions on that event aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Iddra works in the Braidwood Inn from 8 am for 12 hours and sleeps there from 1 am; her daily routine keeps her at the inn."
+    },
+    {
+     "field": "people",
+     "why": "Roggi's daily routine: breakfast at the Braidwood Inn from 7 am, work at Steamscorch Gully Mine from 8 am for 10 hours, dinner at the inn from 7 pm, sleep at Roggi's House from 11 pm; otherwise around the campfire and inn. The hours come from the routine's names, not decoded schedules."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's shared favour into one quest per town. These files don't show whether the game's own version of this favour is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000896 Favor013Kynesgrove: stages 0/10/15/20(completes)/200; objectives 10 'Talk to <Target> about <Questgiver>', 15 'Tell <Questgiver> that <Target> is taken care of'",
+    "quest_givers_raw Favor013Kynesgrove: giver info Favor Quests Seperated.esp:0008E9 GetIsID Iddra, stage < 1; target dialogue while stage < 11; start event change location (FavorChangeLocationKynesgrove); reward Septim via QF_Favor013_000CA209.Gold",
+    "quest_givers_raw Favor013Kynesgrove: QuestGiver placed Braidwood Inn (Skyrim.esm:01B085, cell 013907), Kynesgrove; target placed Steamscorch Mine (Skyrim.esm:01B084), Kynesgrove",
+    "quests_raw Skyrim.esm:0CA209 Favor013 (game's shared version, edited by USSEP and Favor Quests Seperated.esp); quest_starts_raw townsfolk-favours: Favor Quests Seperated.esp adds TRUEGlobal == 0 (always false) to that line's start event and to 26 of the game's favour lines; the game's own Favor013 giver line (Skyrim.esm:03F062) is not among the changed lines",
+    "people_schedules_raw Iddra: KynesgroveIddraWork8x12 (Braidwood Inn), AIOKynesIddraSleep (Braidwood Inn), AIOKynesIddraSandbox",
+    "people_schedules_raw Roggi: KynesgroveRoggeEatDinner19x3, KynesgroveRoggeEatBreakfast7x2 (Braidwood Inn), KynesgroveRoggiWork8x10 (Steamscorch Gully Mine), KynesgroveRoggeSleep23x7 (Roggi's House), KynesgroveHangAroundCampfireAndInn",
+    "places_raw Kynesgrove: Iddra line 'He's been in Kynesgrove forever. Great storyteller. Keeps everyone's spirits up.' (INFO Favor Quests Seperated.esp:0008E9)",
+    "note: the schedules carry decoded hour and duration, not only package names"
+   ]
+  },
+  {
+   "edid": "Favor013Markarth",
+   "name": "A Few Words with You",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Omluag asks you to have a word with Mulush gro-Shugurz on their behalf.",
+   "needs": [
+    {
+     "what": "Visit Markarth so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Omluag",
+     "where": "outside the smelter in Markarth by day; the Silver-Blood Inn in the evening; the Warrens at night",
+     "how": "Once you've arrived in Markarth, talk to Omluag; they ask you to go and have a word with Mulush gro-Shugurz."
+    }
+   ],
+   "firstStep": "Talk to Mulush gro-Shugurz about Omluag",
+   "takesYou": [
+    {
+     "place": "at the smelter in Markarth by day; the Smelter Overseer's House otherwise",
+     "hold": "the Reach",
+     "why": "talk to Mulush gro-Shugurz"
+    },
+    {
+     "place": "outside the smelter in Markarth by day; the Silver-Blood Inn in the evening; the Warrens at night",
+     "hold": "the Reach",
+     "why": "tell Omluag it's taken care of"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Mulush gro-Shugurz about Omluag",
+      "Tell Omluag that Mulush gro-Shugurz is taken care of"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you report back to Omluag"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Omluag",
+     "role": "asks the favour; a metal worker who lives in the Warrens"
+    },
+    {
+     "name": "Mulush gro-Shugurz",
+     "role": "the one to talk to; oversees the smelter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "How you settle things with Mulush is decided in his dialogue, which isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The favour is set up when you arrive in Markarth; the conditions on that event aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "The records place Omluag in the Warrens. His daily routine: work outside the smelter from 7 am for 12 hours (sometimes carrying buckets), eat at the Silver-Blood Inn from 7 pm for 4 hours, a Saturday visit to Arnleif and Sons Trading Company, sleep from midnight. The hours come from the routine's names, not decoded schedules."
+    },
+    {
+     "field": "people",
+     "why": "Mulush's daily routine: oversee the smelter from 7 am for 12 hours; meals, sleep and free time at home (the Smelter Overseer's House)."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's shared favour into one quest per town. These files don't show whether the game's own version of this favour is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:0008B3 Favor013Markarth: stages 0/10/15/20(completes)/200; objectives 10 'Talk to <Target> about <Questgiver>', 15 'Tell <Questgiver> that <Target> is taken care of'",
+    "quest_givers_raw Favor013Markarth: giver info Favor Quests Seperated.esp:0008F5 GetIsID Omluag, stage < 1; target dialogue while stage < 11; start event change location (FavorChangeLocationMarkarth); reward Septim via QF_Favor013_000CA209.Gold",
+    "quest_givers_raw Favor013Markarth: QuestGiver placed The Warrens (Skyrim.esm:0198FC, cell 016D72), Markarth; target placed Smelter Overseer's House (Skyrim.esm:0198FF), Markarth",
+    "quests_raw Skyrim.esm:0CA209 Favor013 (game's shared version, edited by USSEP and Favor Quests Seperated.esp); quest_starts_raw townsfolk-favours: Favor Quests Seperated.esp adds TRUEGlobal == 0 (always false) to that line's start event and to 26 of the game's favour lines; the game's own Favor013 giver line (Skyrim.esm:03F062) is not among the changed lines",
+    "people_schedules_raw Omluag: MarkarthOmluagEatSilverBloodInn19x4Package, AIOMaOmluagSaturday (Arnleif and Sons), MarkarthOmluagCarryBucket*, MarkarthMetalWorkerOutsideSmelter7x12Package, DefaultSleepEditorLoc24x8",
+    "people_schedules_raw Mulush: MarkarthMulushOverseeSmelter7x12Package, DefaultEatEditorLoc*, DefaultSleepEditorLoc24x8, DefaultSandboxHomeowner; protected"
+   ]
+  },
+  {
+   "edid": "Favor013Solitude",
+   "name": "A Few Words with You",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Octieve San asks you to have a word with Irnskar Ironhand on their behalf.",
+   "needs": [
+    {
+     "what": "Visit Solitude so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Octieve San",
+     "where": "around Solitude by day; near the Blue Palace in the evening; Evette San's House after midnight",
+     "how": "Once you've arrived in Solitude, talk to Octieve San; they ask you to go and have a word with Irnskar Ironhand."
+    }
+   ],
+   "firstStep": "Talk to Irnskar Ironhand about Octieve San",
+   "takesYou": [
+    {
+     "place": "Bryling's House in Solitude; Radiant Raiment from 10 am to noon; near Castle Dour from 2 to 4 pm; possibly the Blue Palace by day",
+     "hold": "Haafingar",
+     "why": "talk to Irnskar Ironhand"
+    },
+    {
+     "place": "around Solitude by day; near the Blue Palace in the evening; Evette San's House after midnight",
+     "hold": "Haafingar",
+     "why": "tell Octieve San it's taken care of"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Irnskar Ironhand about Octieve San",
+      "Tell Octieve San that Irnskar Ironhand is taken care of"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you report back to Octieve San"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Octieve San",
+     "role": "asks the favour; lives in Evette San's House"
+    },
+    {
+     "name": "Irnskar Ironhand",
+     "role": "the one to talk to; lives in Bryling's House"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "How you settle things with Irnskar is decided in his dialogue, which isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The favour is set up when you arrive in Solitude; the conditions on that event aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "The records place Octieve in Evette San's House. His daily routine sends him to a spot in Solitude from 6 am for 12 hours and to a spot near the Blue Palace from 6 pm for 6 hours (both under conditions not decoded here), then home to sleep from midnight to 6 am. His first routine keeps him near his house until an early event in Solitude has finished; these files don't name that event."
+    },
+    {
+     "field": "people",
+     "why": "Irnskar's daily routine: Radiant Raiment from 10 am for 2 hours, near Castle Dour from 2 pm for 2 hours, asleep at home from midnight for 8 hours, and the Blue Palace lobby from 8 am for 12 hours only under a location condition not decoded here; otherwise around Bryling's House."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's shared favour into one quest per town. These files don't show whether the game's own version of this favour is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:0008A5 Favor013Solitude: stages 0/10/15/20(completes)/200; objectives 10 'Talk to <Target> about <Questgiver>', 15 'Tell <Questgiver> that <Target> is taken care of'",
+    "quest_givers_raw Favor013Solitude: giver info Favor Quests Seperated.esp:000902 GetIsID Octieve San, stage < 1; target dialogue while stage < 11; start event change location (FavorChangeLocatiomSolitude); reward Septim via QF_Favor013_000CA209.Gold",
+    "quest_givers_raw Favor013Solitude: QuestGiver placed Evette San's House (Skyrim.esm:0198B4, cell 016A08), Solitude; target placed Bryling's House (Skyrim.esm:0198C0, cell 016A0B), Solitude",
+    "quests_raw Skyrim.esm:0CA209 Favor013 (game's shared version, edited by USSEP and Favor Quests Seperated.esp); quest_starts_raw townsfolk-favours: Favor Quests Seperated.esp adds TRUEGlobal == 0 (always false) to that line's start event and to 26 of the game's favour lines; the game's own Favor013 giver line (Skyrim.esm:03F062) is not among the changed lines",
+    "people_schedules_raw Octieve: SolitudeOpeningStayLocation512, AIOSoOctieveDay6x12, AIOSoOctieveNight18x6 (near Blue Palace), DefaultSleepEditorLoc0x6",
+    "people_schedules_raw Irnskar: SolitudeRaimentsShopping10x2, SolitudeBlacksmithShopping14x2 (Castle Dour), DefaultSleepEditorLoc24x8, SolitudePalaceLobbySandbox8x12 (GetInCurrentLoc), DefaultSandboxEditorLocation512",
+    "people_schedules_raw Octieve: SolitudeOpeningStayLocation512 first in order, applies while Skyrim.esm:0B2FD9 is not completed (quest not in these files; package shared by 14); AIOSoOctieveDay6x12 nearest named Solitude; AIOSoOctieveNight18x6 nearest named Blue Palace"
+   ]
+  },
+  {
+   "edid": "Favor013Whiterun",
+   "name": "A Few Words with You",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Carlotta Valentia asks you to have a word with Mikael on their behalf.",
+   "needs": [
+    {
+     "what": "Visit Whiterun so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Carlotta Valentia",
+     "where": "her market stall in Whiterun by day; the Bannered Mare in the evening; Carlotta Valentia's House otherwise",
+     "how": "Once you've arrived in Whiterun, talk to Carlotta Valentia; they ask you to go and have a word with Mikael."
+    }
+   ],
+   "firstStep": "Talk to Mikael about Carlotta Valentia",
+   "takesYou": [
+    {
+     "place": "the Bannered Mare in Whiterun",
+     "hold": "Whiterun Hold",
+     "why": "talk to Mikael"
+    },
+    {
+     "place": "her market stall in Whiterun by day; the Bannered Mare in the evening; Carlotta Valentia's House otherwise",
+     "hold": "Whiterun Hold",
+     "why": "tell Carlotta Valentia it's taken care of"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Mikael about Carlotta Valentia",
+      "Tell Carlotta Valentia that Mikael is taken care of"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you report back to Carlotta Valentia"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Carlotta Valentia",
+     "role": "asks the favour; keeps a market stall"
+    },
+    {
+     "name": "Mikael",
+     "role": "the one to talk to; lives and spends his day at the Bannered Mare"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "How you settle things with Mikael is decided in his dialogue, which isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The favour is set up when you arrive in Whiterun; the conditions on that event aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Carlotta's daily routine: the marketplace from 8 am for about 11 hours, sweeping from 1 pm for 3 hours, the Bannered Mare from 7 pm for 3 hours, otherwise home. The market and sweeping parts have conditions not decoded here (weather may move her indoors)."
+    },
+    {
+     "field": "people",
+     "why": "Mikael's daily routine: sleeps at the Bannered Mare from midnight, takes a break outside from noon for 4 hours (near Jorrvaskr by the records' nearest-named place), otherwise at the Bannered Mare. The break has conditions not decoded here."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's shared favour into one quest per town. These files don't show whether the game's own version of this favour is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000869 Favor013Whiterun: stages 0/10/15/20(completes)/200; objectives 10 'Talk to <Target> about <Questgiver>', 15 'Tell <Questgiver> that <Target> is taken care of'",
+    "quest_givers_raw Favor013Whiterun: giver info Favor Quests Seperated.esp:0008C0 GetIsID Carlotta Valentia, stage < 1; target dialogue while stage < 11; start event change location (FavorChangeLocationWhiterun); reward Septim via QF_Favor013_000CA209.Gold",
+    "quest_givers_raw Favor013Whiterun: QuestGiver placed Carlotta Valentia's House (Skyrim.esm:01A675, cell 0165B1), Whiterun; target placed The Bannered Mare (Skyrim.esm:01A671, cell 01605E), Whiterun",
+    "quests_raw Skyrim.esm:0CA209 Favor013 (game's shared version, edited by USSEP and Favor Quests Seperated.esp); quest_starts_raw townsfolk-favours: Favor Quests Seperated.esp adds TRUEGlobal == 0 (always false) to that line's start event and to 26 of the game's favour lines; the game's own Favor013 giver line (Skyrim.esm:03F062) is not among the changed lines",
+    "people_schedules_raw Carlotta: WhiterunCarlottaSweep13x3, WhiterunCarlottaMarketplace8x11, WhiterunCarlottaBanneredMare19x3, WhiterunCarlottaHomePackage",
+    "people_schedules_raw Mikael: AIOWRMikaelSleepEditorLocNOLOCKING24x8 (Bannered Mare), AIOWRMikaelTakeABreak (noon, 4 h, 16 conditions), WhiterunMikaelBannererdMarePackage"
+   ]
+  },
+  {
+   "edid": "Favor013Windhelm",
+   "name": "A Few Words with You",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Scouts-Many-Marshes asks you to have a word with Torbjorn Shatter-Shield on their behalf.",
+   "needs": [
+    {
+     "what": "Visit Windhelm so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Scouts-Many-Marshes",
+     "where": "the docks at Windhelm by day; the Argonian Assemblage early in the morning and overnight; sometimes the New Gnisis Cornerclub late in the evening",
+     "how": "Once you've arrived in Windhelm, talk to Scouts-Many-Marshes; they ask you to go and have a word with Torbjorn Shatter-Shield."
+    }
+   ],
+   "firstStep": "Talk to Torbjorn Shatter-Shield about Scouts-Many-Marshes",
+   "takesYou": [
+    {
+     "place": "around Windhelm by day; Candlehearth Hall in the evening; the House of Clan Shatter-Shield otherwise",
+     "hold": "Eastmarch",
+     "why": "talk to Torbjorn Shatter-Shield"
+    },
+    {
+     "place": "the docks at Windhelm by day; the Argonian Assemblage early in the morning and overnight; sometimes the New Gnisis Cornerclub late in the evening",
+     "hold": "Eastmarch",
+     "why": "tell Scouts-Many-Marshes it's taken care of"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Torbjorn Shatter-Shield about Scouts-Many-Marshes",
+      "Tell Scouts-Many-Marshes that Torbjorn Shatter-Shield is taken care of"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you report back to Scouts-Many-Marshes"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Scouts-Many-Marshes",
+     "role": "asks the favour; a dockworker who lives in the Argonian Assemblage"
+    },
+    {
+     "name": "Torbjorn Shatter-Shield",
+     "role": "the one to talk to; lives in the House of Clan Shatter-Shield"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "How you settle things with Torbjorn is decided in his dialogue, which isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The favour is set up when you arrive in Windhelm; the conditions on that event aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Scouts-Many-Marshes' daily routine: breakfast in the Argonian Assemblage from 6 am, work at the docks from 8 am for 12 hours, and at night, under conditions not decoded here, the New Gnisis Cornerclub (from 8 pm or 10 pm) or a spot near the Palace of the Kings; otherwise asleep in the Argonian Assemblage."
+    },
+    {
+     "field": "people",
+     "why": "Torbjorn's daily routine: breakfast from 9 am, somewhere around Windhelm from 11 am for 9 hours (conditions not decoded), the bar at Candlehearth Hall from 8 pm for 4 hours, sleep at home."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's shared favour into one quest per town. These files don't show whether the game's own version of this favour is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000878 Favor013Windhelm: stages 0/10/15/20(completes)/200; objectives 10 'Talk to <Target> about <Questgiver>', 15 'Tell <Questgiver> that <Target> is taken care of'",
+    "quest_givers_raw Favor013Windhelm: giver info Favor Quests Seperated.esp:0008CE GetIsID Scouts-Many-Marshes, stage < 1; target dialogue while stage < 11; start event change location (FavorChangeLocationWindhelm); reward Septim via QF_Favor013_000CA209.Gold",
+    "quest_givers_raw Favor013Windhelm: QuestGiver placed Argonian Assemblage (Skyrim.esm:01B140, cell 016776), Windhelm; target placed House of Clan Shatter-Shield (Skyrim.esm:01B12B, cell 01677E), Windhelm",
+    "quests_raw Skyrim.esm:0CA209 Favor013 (game's shared version, edited by USSEP and Favor Quests Seperated.esp); quest_starts_raw townsfolk-favours: Favor Quests Seperated.esp adds TRUEGlobal == 0 (always false) to that line's start event and to 26 of the game's favour lines; the game's own Favor013 giver line (Skyrim.esm:03F062) is not among the changed lines",
+    "people_schedules_raw Scouts-Many-Marshes: AIOWHArgoniansCornerClub, AIOWHScoutsSneakOut, AIOWHScoutsManyMarshesCornerClub, AIOWHScoutsSneakCity, ScoutsManyMarshesEatsBreakfast6x1, ScoutsManyMarshesWorksAtDock8x12",
+    "people_schedules_raw Torbjorn: WindhelmTorbjornBreakfast9x2, AIOWHTorjornRandom11x9, WindhelmTorbjornCandlehearthBar20x4, DefaultSleepPackageAnyTime"
+   ]
+  },
+  {
+   "edid": "Favor013Winterhold",
+   "name": "A Few Words with You",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Haran asks you to have a word with Ranmir on their behalf.",
+   "needs": [
+    {
+     "what": "Visit Winterhold so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Haran",
+     "where": "the Frozen Hearth in Winterhold",
+     "how": "Once you've arrived in Winterhold, talk to Haran; they ask you to go and have a word with Ranmir."
+    }
+   ],
+   "firstStep": "Talk to Ranmir about Haran",
+   "takesYou": [
+    {
+     "place": "the Frozen Hearth in Winterhold from midday",
+     "hold": "Winterhold",
+     "why": "talk to Ranmir"
+    },
+    {
+     "place": "the Frozen Hearth in Winterhold",
+     "hold": "Winterhold",
+     "why": "tell Haran it's taken care of"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Ranmir about Haran",
+      "Tell Haran that Ranmir is taken care of"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you report back to Haran"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Haran",
+     "role": "asks the favour; spends her day in the Frozen Hearth"
+    },
+    {
+     "name": "Ranmir",
+     "role": "the one to talk to; spends afternoons and evenings at the Frozen Hearth"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "How you settle things with Ranmir is decided in his dialogue, which isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The favour is set up when you arrive in Winterhold; the conditions on that event aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Haran's daily routine keeps her at the Frozen Hearth: outside for 90 minutes from 9 am, with Erird from noon for 2 hours, sleeping in the Frozen Hearth cellar from 2 am for 7 hours."
+    },
+    {
+     "field": "people",
+     "why": "The records place Ranmir in Birna's Oddments, but his daily routine puts him in the Frozen Hearth from noon for 12 hours (under many conditions), outdoors in Winterhold from midnight for 2 hours, and asleep from 3 am for 10 hours where he was placed."
+    },
+    {
+     "field": "canDo",
+     "why": "The mod copies the game's shared favour into one quest per town. These files don't show whether the game's own version of this favour is still switched on as well."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000887 Favor013Winterhold: stages 0/10/15/20(completes)/200; objectives 10 'Talk to <Target> about <Questgiver>', 15 'Tell <Questgiver> that <Target> is taken care of'",
+    "quest_givers_raw Favor013Winterhold: giver info Favor Quests Seperated.esp:0008DB GetIsID Haran, stage < 1; target dialogue while stage < 11; start event change location (FavorChangeLocationWinterhold); reward Septim via QF_Favor013_000CA209.Gold",
+    "quest_givers_raw Favor013Winterhold: QuestGiver placed The Frozen Hearth (Skyrim.esm:01C18E, cell 013814), Winterhold; target placed Birna's Oddments (Skyrim.esm:01C18B, cell 013813), Winterhold",
+    "quests_raw Skyrim.esm:0CA209 Favor013 (game's shared version, edited by USSEP and Favor Quests Seperated.esp); quest_starts_raw townsfolk-favours: Favor Quests Seperated.esp adds TRUEGlobal == 0 (always false) to that line's start event and to 26 of the game's favour lines; the game's own Favor013 giver line (Skyrim.esm:03F062) is not among the changed lines",
+    "people_schedules_raw Haran: WinterholdHaranSleep2x7 (Frozen Hearth Cellar, unless Hard Answers is running), AIOWinterholdHaranPlayWithErird, AIOWinterholdHaranOutside, WinterholdHaranSandboxInn",
+    "people_schedules_raw Ranmir: WinterholdRanmirSandboxOutdoors0x2, WinterholdRanmirInn12x12 (28 conditions), WinterholdRanmirSleep3x10, WinterholdRanmirSandboxHome",
+    "people_raw Ranmir: placed Birna's Oddments (The Great City of Winterhold v4.esp)"
+   ]
+  },
+  {
+   "edid": "Favor018Falkreath",
+   "name": "Some Light Theft",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Dengeir of Stuhn wants you to steal something for him.",
+   "needs": [
+    {
+     "what": "Visit Falkreath so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Dengeir of Stuhn",
+     "where": "Dengeir's House in Falkreath; Dead Man's Drink from noon to 4 pm",
+     "how": "Once you've arrived in Falkreath, talk to Dengeir of Stuhn; he asks you to steal an item for him."
+    }
+   ],
+   "firstStep": "Steal the item Dengeir of Stuhn asks for",
+   "takesYou": [
+    {
+     "place": "wherever the item is kept (not in these files)",
+     "hold": "",
+     "why": "steal the item"
+    },
+    {
+     "place": "Dengeir's House in Falkreath; Dead Man's Drink from noon to 4 pm",
+     "hold": "Falkreath Hold",
+     "why": "bring the item to Dengeir of Stuhn"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Steal the item for Dengeir of Stuhn",
+      "Bring the item to Dengeir of Stuhn"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you hand the item to Dengeir of Stuhn"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Dengeir of Stuhn",
+     "role": "asks for the theft; the jarl in these records, lives in Dengeir's House"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The item to steal and the place it's kept are filled in when the quest runs; these files don't name either."
+    },
+    {
+     "field": "starts",
+     "why": "The records name Dengeir of Stuhn as the one asking and show the favour is set up when you arrive in Falkreath, but the dialogue line that offers it isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Dengeir's daily routine: meals at his house at 6 am and 6 pm, Dead Man's Drink from noon for 4 hours, asleep at home from midnight for 8 hours, otherwise around his house. If he has been exiled after the war, his first routine keeps him around Candlehearth Hall in Windhelm instead."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000A0C Favor018Falkreath: stages 0/10/15/20/200; objectives 10 'Steal the <QuestItem> for <QuestGiver>', 15 'Bring the <QuestItem> to <QuestGiver>'; aliases Questgiver, Location, QuestItem, TargetLocation",
+    "quest_givers_raw Favor018Falkreath: namedGiver Dengeir of Stuhn (named in alias fill, no dialogue info found); start event change location (FavorChangeLocationFalkreath); reward Septim via QF_Favor018_0003F46A.Gold",
+    "quest_givers_raw Favor018Falkreath: Questgiver placed Dengeir's House (Skyrim.esm:01981B, cell 013A78), Falkreath",
+    "quests_raw Skyrim.esm:03F46A Favor018 (game's version, edited by Favor Quests Seperated.esp)",
+    "people_schedules_raw Dengeir: CWExiledSonsSandboxCandlehearthHall (faction condition), FalkreathDengeirEat6x1, FalkreathDeadMansDrinkSandbox12x4, FalkreathDengeirEat18x1, DefaultSleepEditorLoc24x8, FalkreathSandboxEditorLocation512; essential",
+    "people_schedules_raw Dengeir: factions JobJarlFaction, GovRuling, GovSons; CWExiledSonsSandboxCandlehearthHall condition GetInFaction GovExiled (Skyrim.esm:036629)"
+   ]
+  },
+  {
+   "edid": "Favor018Windhelm",
+   "name": "Some Light Theft",
+   "plugin": "Favor Quests Seperated.esp (its own record; no later plugin edits it in these files)",
+   "canDo": "talk",
+   "canDoWhy": "Stands-In-Shallows wants you to steal something for him.",
+   "needs": [
+    {
+     "what": "Visit Windhelm so the favour is set up",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Stands-In-Shallows",
+     "where": "the docks at Windhelm by day; the Argonian Assemblage in the evening and overnight",
+     "how": "Once you've arrived in Windhelm, talk to Stands-In-Shallows; he asks you to steal an item for him."
+    }
+   ],
+   "firstStep": "Steal the item Stands-In-Shallows asks for",
+   "takesYou": [
+    {
+     "place": "wherever the item is kept (not in these files)",
+     "hold": "",
+     "why": "steal the item"
+    },
+    {
+     "place": "the docks at Windhelm by day; the Argonian Assemblage in the evening and overnight",
+     "hold": "Eastmarch",
+     "why": "bring the item to Stands-In-Shallows"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Steal the item for Stands-In-Shallows",
+      "Bring the item to Stands-In-Shallows"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "when you hand the item to Stands-In-Shallows"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Stands-In-Shallows",
+     "role": "asks for the theft; a dockworker who lives in the Argonian Assemblage"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The item to steal and the place it's kept are filled in when the quest runs; these files don't name either."
+    },
+    {
+     "field": "starts",
+     "why": "The records name Stands-In-Shallows as the one asking and show the favour is set up when you arrive in Windhelm, but the dialogue line that offers it isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The reward is gold from the quest's script; the amount isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Stands-In-Shallows' daily routine: work at the docks from 9 am for 12 hours, in the Argonian Assemblage from 8 pm for 4 hours, otherwise asleep in the Argonian Assemblage."
+    }
+   ],
+   "evidence": [
+    "quests_raw Favor Quests Seperated.esp:000A1D Favor018Windhelm: stages 0/10/15/20/200; objectives 10 'Steal the <QuestItem> for <QuestGiver>', 15 'Bring the <QuestItem> to <QuestGiver>'; aliases Questgiver, Location, QuestItem, TargetLocation",
+    "quest_givers_raw Favor018Windhelm: namedGiver Stands-In-Shallows (named in alias fill, no dialogue info found); start event change location (FavorChangeLocationWindhelm); reward Septim via QF_Favor018_0003F46A.Gold",
+    "quest_givers_raw Favor018Windhelm: Questgiver placed Argonian Assemblage (Skyrim.esm:01B142, cell 016776), Windhelm",
+    "quests_raw Skyrim.esm:03F46A Favor018 (game's version, edited by Favor Quests Seperated.esp)",
+    "people_schedules_raw Stands-In-Shallows: StandsInShallowsDoesSkooma20x4 (Argonian Assemblage), StandsInShallowsWorksAtDock9x12, DefaultSleepPackageAnyTime"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,814 @@
+[
+  {
+    "edid": "FreeformRiften20",
+    "name": "The Raid",
+    "plugin": "Skyrim.esm (last edited by TheChoiceIsYours.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Wujeeta, an Argonian who lodges at Haelga's Bunkhouse and works at the Riften Fishery, sets you on the trail of the city's skooma dealer.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Wujeeta",
+        "where": "Riften: Haelga's Bunkhouse in the evening and at night, the Riften Fishery and its docks by day",
+        "how": "Talk to Wujeeta; she sends you to find out who is selling skooma in Riften."
+      }
+    ],
+    "firstStep": "Find out who is dealing skooma in Riften",
+    "takesYou": [
+      {
+        "place": "Haelga's Bunkhouse",
+        "hold": "The Rift",
+        "why": "Wujeeta, who gives you the job"
+      },
+      {
+        "place": "Mistveil Keep, Riften",
+        "hold": "The Rift",
+        "why": "report Sarthis Idren to the Jarl of Riften"
+      },
+      {
+        "place": "Riften Warehouse",
+        "hold": "The Rift",
+        "why": "go in after Sarthis Idren and deal with him"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Who you report to",
+        "leadsTo": "You report to whoever is Jarl of Riften at the time: Laila Law-Giver, or Maven Black-Briar if she holds the seat."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Identify Riften's skooma dealer",
+          "Report Sarthis Idren to the Jarl of Riften",
+          "Enter Riften Warehouse",
+          "Eliminate Sarthis Idren",
+          "Recover skooma source information"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "at the end"
+      },
+      {
+        "what": "Purchase Agreement from Sarthis Idren (note)",
+        "when": "found during the quest"
+      },
+      {
+        "what": "Shipment's Ready (note), which names Cragslane Cavern as the skooma's source",
+        "when": "found during the quest, as the source information"
+      }
+    ],
+    "type": "Misc",
+    "opens": [
+      "Supply and Demand (the skooma source note points to Cragslane Cavern, and that quest begins by reporting the skooma source to the Jarl)"
+    ],
+    "closes": [
+      "Sarthis Idren dies"
+    ],
+    "people": [
+      {
+        "name": "Wujeeta",
+        "role": "gives the quest; lodges at Haelga's Bunkhouse and works at the Riften Fishery"
+      },
+      {
+        "name": "Sarthis Idren",
+        "role": "the skooma dealer; you deal with him in Riften Warehouse"
+      },
+      {
+        "name": "Laila Law-Giver",
+        "role": "Jarl of Riften you report to, when she rules; placed in Mistveil Keep"
+      },
+      {
+        "name": "Maven Black-Briar",
+        "role": "Jarl of Riften you report to, if she holds the seat"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The dialogue conditions behind Wujeeta's line aren't in these files, so it isn't shown whether you must first help her with a healing potion (Helping Hand). Her late-night skooma habit only runs while Helping Hand is unfinished."
+      },
+      {
+        "field": "where",
+        "why": "Wujeeta's day as read from her package names: asleep in Haelga's Bunkhouse from midnight to 6 am, on the fishery docks 6 to 9 am, inside the Riften Fishery 9 am to 3 pm, back on the docks 3 to 6 pm, then in the Bunkhouse from 6 pm."
+      },
+      {
+        "field": "plugin",
+        "why": "Another mod in the list also edits this quest; what it changes isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script pays gold, but the amount and who hands it over aren't in these files."
+      },
+      {
+        "field": "people",
+        "why": "Sarthis Idren and a second quest person are spawned for the quest, so their exact spot isn't recorded; the warehouse is the only place the objectives name."
+      },
+      {
+        "field": "opens",
+        "why": "The link to Supply and Demand comes from the note's text and that quest's first objective, not from a record that starts it."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:085D40 objectives 10-50; editedBy USSEP, TheChoiceIsYours.esp",
+      "giver INFO Skyrim.esm:085D30 (Wujeeta 013382, GetStage<11); others Laila 013366 and Maven 01336A at GetStage<21",
+      "aliases FFRiften20LailaJarlAlias / FFRiften20MavenJarlAlias; Sarthis and Orini via spawn-marker aliases",
+      "rewards: BOOK 085D4E Purchase Agreement (FFRiften20NoteAlias), BOOK 065BDA Shipment's Ready (FFRiften20SourceNoteAlias), gold via QF_FreeformRiften20_00085D40.pGold",
+      "BOOK 065BDA text names Cragslane Cavern (places_raw Cragslane Cavern pointer); FreeformRiften01 053305 first objective 'Report skooma source to Jarl of Riften'",
+      "Wujeeta packages: RiftenWujeetaSleep0x6, RiftenWujeetaWorkFisheryDocks6x3, RiftenWujeetaWorkFisheryInside9x6, RiftenWujeetaWorkFisheryDocks15x3, RiftenWujeetaBunkhouse18x6; AIORiftWujeetaDoSkooma needs GetQuestCompleted 041FD2 == 0"
+    ]
+  },
+  {
+    "edid": "FreeformRiften22",
+    "name": "Stabilized",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Shadr, who helps at the Riften Stables, asks you to sort out his debt with Sapphire of the Thieves Guild.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Shadr",
+        "where": "Riften Stables; in Riften's market from 9 am to 1 pm",
+        "how": "Talk to Shadr; he asks you to speak to Sapphire about what he owes."
+      }
+    ],
+    "firstStep": "Speak to Sapphire about Shadr's debt",
+    "takesYou": [
+      {
+        "place": "Riften Stables",
+        "hold": "The Rift",
+        "why": "Shadr"
+      },
+      {
+        "place": "Thieves Guild headquarters, Riften",
+        "hold": "The Rift",
+        "why": "Sapphire"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Sapphire about Shadr's debt",
+          "Return to Shadr"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A small sum of gold",
+        "when": "at the end"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Shadr",
+        "role": "gives the quest; assistant at the Riften Stables"
+      },
+      {
+        "name": "Sapphire",
+        "role": "the Thieves Guild member he owes; lives in the guild's headquarters"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Shadr's packages: asleep at Riften Stables midnight to 6 am, meals at the stables, the Riften market 9 am to 1 pm, otherwise helping at the stables. A separate opening package keeps him in Riften until a short scene (not named in these files) plays out."
+      },
+      {
+        "field": "people",
+        "why": "Sapphire's guild-headquarters routine only applies once that same unnamed scene has moved on; before that she is placed out in Riften's streets."
+      },
+      {
+        "field": "choices",
+        "why": "Sapphire's dialogue isn't in these files, so any way to settle the debt other than talking isn't shown."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions on Shadr's opening line aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0C1E07 objectives 10, 20; no other plugin edits",
+      "giver INFO Skyrim.esm:0C1DFB (Shadr 013371, GetStage<11); Sapphire 0C19A3 at GetStage<21",
+      "reward LVLI 0494DF FavorRewardGoldSmall via QF_FreeformRiften22_000C1E07.pPayoff",
+      "Shadr packages RiftenShadrStartGame (GetStage 0C19A8 < 30), RiftenShadrMarket9x4, RiftenShadrSleep0x6, RiftenShadrAssistantHostler0x0",
+      "Sapphire packages ThievesGuild* need GetStageDone 0C19A8; placed in Riften worldspace cell 016BE0"
+    ]
+  },
+  {
+    "edid": "FreeformValdDebt",
+    "name": "Vald's Debt",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Vald is in debt, and Maven Black-Briar wants the Quill of Gemination brought up from under Lake Honrich.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Vald",
+        "where": "Riften (the records place him out in the city; his exact spot isn't given)",
+        "how": "Talk to Vald about his debt, then speak to Maven Black-Briar about it."
+      }
+    ],
+    "firstStep": "Talk to Maven Black-Briar about Vald's debt",
+    "takesYou": [
+      {
+        "place": "Black-Briar Manor, Riften",
+        "hold": "The Rift",
+        "why": "Maven"
+      },
+      {
+        "place": "Lake Honrich",
+        "hold": "",
+        "why": "find the Quill of Gemination under the water"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Maven about Vald's debt",
+          "Locate the Quill of Gemination under Lake Honrich",
+          "Bring the Quill of Gemination to Maven"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Vald's Debt (note)",
+        "when": "at the end"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Vald",
+        "role": "the man in debt; he also figures in the Thieves Guild quest The Pursuit"
+      },
+      {
+        "name": "Maven Black-Briar",
+        "role": "the one to see about the debt; placed in Black-Briar Manor"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "Maven's line is the one the records tie to the opening, but the quest is already asking you to talk to her by then, so Vald most likely raises it first. His dialogue isn't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Vald has no daily packages in these files, only a placement in Riften's open city."
+      },
+      {
+        "field": "where",
+        "why": "Maven's packages: Black-Briar Manor overnight and at breakfast, the Black-Briar Meadery around 10 am, the Bee and Barb at noon, Mistveil Keep around 2 pm, the market around 4 pm, dinner at home at 6 pm, the Bee and Barb again from 8 pm. Several stop while the Thieves Guild quest Dampened Spirits is running."
+      },
+      {
+        "field": "takesYou",
+        "why": "The quill's spot under the lake (a strongbox) isn't given in these files, nor which hold the lake is counted in."
+      },
+      {
+        "field": "rewards",
+        "why": "The note is the only item tied to the quest; who hands it over, and whether you give it to Vald, isn't shown."
+      },
+      {
+        "field": "steps",
+        "why": "The quest has one more step after the last objective, with no journal text; what happens to Vald then isn't shown."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0C04BA objectives 10-30, stages 0-40, 200; editedBy USSEP",
+      "giver INFO Skyrim.esm:0C04A5 (Maven 01336A, GetStage<11); namedGiver Vald 072B04 'named'",
+      "aliases FVDDebtAlias (BOOK 072B13 Vald's Debt), FVDQuillAlias, FVDStrongboxAlias, FVDHoldingSafeAlias, FVDEnablerAlias",
+      "Vald 072B04: no packages; alias in TG07 (ValdAlias), TG07 objective '(Optional) Speak to Vex about Vald'",
+      "Maven packages RiftenMavenSleep0x8 ... RiftenMavenBeeandBarb20x4; several GetQuestRunning TG03 == 0"
+    ]
+  },
+  {
+    "edid": "FreeformIvarstead01",
+    "name": "Lifting the Shroud",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Wilhelm, the innkeeper of the Vilemyr Inn in Ivarstead, wants someone to look into Shroud Hearth Barrow.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Wilhelm",
+        "where": "behind the bar of the Vilemyr Inn, Ivarstead",
+        "how": "Talk to Wilhelm; he asks you to investigate Shroud Hearth Barrow."
+      }
+    ],
+    "firstStep": "Investigate Shroud Hearth Barrow",
+    "takesYou": [
+      {
+        "place": "Shroud Hearth Barrow",
+        "hold": "The Rift",
+        "why": "find out what haunts it; it sits next to Ivarstead"
+      },
+      {
+        "place": "Vilemyr Inn, Ivarstead",
+        "hold": "The Rift",
+        "why": "bring Wyndelius' Journal back to Wilhelm"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Investigate Shroud Hearth Barrow",
+          "Bring Wyndelius' Journal to Wilhelm"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Wilhelm",
+        "role": "gives the quest; innkeeper of the Vilemyr Inn"
+      },
+      {
+        "name": "Wyndelius Gatharian",
+        "role": "a Dunmer found inside Shroud Hearth Barrow; his journal is what Wilhelm wants"
+      },
+      {
+        "name": "Witch-Lord Grundvik",
+        "role": "the barrow's boss in LoreRim, level 60"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "No reward is tied to this quest in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "In LoreRim the barrow is dangerous: draugr, skeletons and bandits from level 6 up to 60, traps, and a level 60 boss. The quest's own text doesn't warn you."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D9B63 objectives 10, 20; editedBy USSEP",
+      "giver INFO Skyrim.esm:0D9B4F (Wilhelm 0136BB, GetStage<11), placed Vilemyr Inn 013A5C",
+      "Wilhelm package IvarsteadWilhelmBarkeeperPackage0x0 only",
+      "places_raw Shroud Hearth Barrow 06CCC6: The Rift, next to Ivarstead, actors 6-60, boss Witch-Lord Grundvik level 60, traps; quests list includes 0D9B63",
+      "BOOK 0D9B6B Journal - Wyndelius'; NPC 05FFDF Wyndelius Gatharian in Shroud Hearth Barrow"
+    ]
+  },
+  {
+    "edid": "FreeformIvarstead02",
+    "name": "The Straw that Broke",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Narfi of Ivarstead wants to know what happened to Reyda, and Wilhelm at the inn may know.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Narfi",
+        "where": "around Ivarstead (the records place him outdoors in the village; his home isn't named)",
+        "how": "Talk to Narfi; he points you to Wilhelm to ask about Reyda."
+      }
+    ],
+    "firstStep": "Ask Wilhelm at the Vilemyr Inn about Reyda",
+    "takesYou": [
+      {
+        "place": "Vilemyr Inn, Ivarstead",
+        "hold": "The Rift",
+        "why": "ask Wilhelm about Reyda"
+      },
+      {
+        "place": "wherever Reyda's remains lie",
+        "hold": "",
+        "why": "find her necklace"
+      },
+      {
+        "place": "Ivarstead",
+        "hold": "The Rift",
+        "why": "bring the necklace to Narfi"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Ask Wilhelm about Reyda",
+          "Locate Reyda's remains",
+          "Bring Reyda's Necklace to Narfi"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Narfi",
+        "role": "gives the quest; lives in Ivarstead"
+      },
+      {
+        "name": "Wilhelm",
+        "role": "innkeeper of the Vilemyr Inn; knows something about Reyda"
+      },
+      {
+        "name": "Reyda",
+        "role": "missing; you find her remains"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The records don't say where Reyda's remains are. In this quest's dialogue Wilhelm mentions a cave entrance folk call Geirmund's Hall, near Ivarstead, but that line doesn't say the remains are there."
+      },
+      {
+        "field": "where",
+        "why": "Narfi's packages keep him in Ivarstead (meals around 10 am and 8 pm, sleep from 4 am); none names a building."
+      },
+      {
+        "field": "people",
+        "why": "Another mod in the list adds a hagraven boss also named Reyda, and a witch whose dialogue says Reyda went missing and was likely murdered. Nothing in these files ties either to this quest."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is tied to this quest in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D9B64 objectives 10-30; no other plugin edits",
+      "giver INFO Skyrim.esm:0D9B60 (Narfi 0136C0, GetStage<11); Wilhelm 0136BB at GetStage<21",
+      "INFO Skyrim.esm:0D9B5D Wilhelm, quest The Straw that Broke: Geirmund's Hall line (places_raw)",
+      "ARMO Skyrim.esm:0663DA Reyda's Necklace; aliases FFI02SatchelAlias, FFI02NecklaceAlias",
+      "Narfi packages IvarsteadNarfiEatAMPackage, IvarsteadNarfiEatPMPackage, IvarsteadNarfiSleepPackage",
+      "Vigilant.esm:16685A Reyda (hagraven); INFO Vigilant.esm:17F1AB Hilda the Witch"
+    ]
+  },
+  {
+    "edid": "FreeformIvarstead03",
+    "name": "Grin and Bear It",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Temba Wide-Arm, who runs the lumber mill in Ivarstead, wants ten bear pelts.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Temba Wide-Arm",
+        "where": "her lumber mill in Ivarstead by day; the Vilemyr Inn in the evening and at night",
+        "how": "Talk to Temba; she asks you to bring her ten bear pelts."
+      }
+    ],
+    "firstStep": "Gather 10 bear pelts for Temba Wide-Arm",
+    "takesYou": [
+      {
+        "place": "Ivarstead",
+        "hold": "The Rift",
+        "why": "Temba, to hand over the pelts"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Gather 10 bear pelts for Temba Wide-Arm",
+          "Return to Temba Wide-Arm"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Temba Wide-Arm",
+        "role": "gives the quest; owns the mill in Ivarstead"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Temba's packages: asleep at the Vilemyr Inn midnight to 5 am, breakfast there at 5, the mill during the day, dinner at the inn at 4 pm, back at the inn from 8 pm. On some days a second package takes her away for most of the day; where it sends her isn't clear from these files."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is tied to this quest in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D9B65 objectives 10 (counter FFI03BearCount/FFI03BearTotal), 20; editedBy USSEP",
+      "giver INFO Skyrim.esm:0D9B52 (Temba 0658D2, GetStage<11), placed Vilemyr Inn",
+      "Temba packages IvarsteadTembaMillSawLog0x0, IvarsteadTembaMillLoadLog0x0, IvarsteadTembaSleepPackage, IvarsteadTembaVisitInnPackage, AIOIsTembaBreakDays",
+      "INFO Skyrim.esm:0DBB00 Temba on her mill"
+    ]
+  },
+  {
+    "edid": "FreeformIvarstead04",
+    "name": "Climb the Steps",
+    "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Klimmek of Ivarstead asks you to carry his supplies up to High Hrothgar.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Klimmek",
+        "where": "Klimmek's House in Ivarstead; he eats lunch and dinner at the Vilemyr Inn",
+        "how": "Talk to Klimmek; he asks you to take his delivery up to High Hrothgar."
+      }
+    ],
+    "firstStep": "Bring Klimmek's supplies to High Hrothgar",
+    "takesYou": [
+      {
+        "place": "High Hrothgar",
+        "hold": "Whiterun",
+        "why": "leave Klimmek's supplies there"
+      },
+      {
+        "place": "Ivarstead",
+        "hold": "The Rift",
+        "why": "return to Klimmek"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Bring Klimmek's supplies to High Hrothgar",
+          "Return to Klimmek in Ivarstead"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "Afterwards Klimmek makes the trip to High Hrothgar himself on some days"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Klimmek",
+        "role": "gives the quest; lives in Ivarstead"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Klimmek's packages: asleep at home midnight to 4 am, breakfast at home, lunch at 1 pm and dinner at 6 pm at the Vilemyr Inn, wandering Ivarstead with Fastred from 7 pm, fishing otherwise."
+      },
+      {
+        "field": "takesYou",
+        "why": "The supplies go into a chest at High Hrothgar; its exact spot isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is tied to this quest in these files; LoreRim's dialogue patch edits the quest, and what it changed isn't shown."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D9B66 objectives 10, 20; editedBy Requiem.esp, LoreRim - Dialogue Patch.esp",
+      "giver INFO Skyrim.esm:0DA705 (Klimmek 0136C2, GetStage<11), placed Klimmek's House 0139E7",
+      "aliases FFI04ChestAlias, FFI04SackAlias",
+      "Klimmek package AIOIsKlimmekBringSuppliesToHH (High Hrothgar, 9 am, 9 h) needs GetQuestCompleted 0D9B66 == 1",
+      "places_raw High Hrothgar: hold Whiterun"
+    ]
+  },
+  {
+    "edid": "FreeformShorsStone01",
+    "name": "Mine or Yours",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Filnjar, the smith of Shor's Stone, needs the spiders cleared out of Redbelly Mine so the village can work it again.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Filnjar",
+        "where": "at his forge in Shor's Stone by day; Filnjar's House at night",
+        "how": "Talk to Filnjar; he asks you to clear Redbelly Mine of spiders. Grogmar gro-Burzag, a miner in the village, can also talk about it."
+      }
+    ],
+    "firstStep": "Clear Redbelly Mine of spiders",
+    "takesYou": [
+      {
+        "place": "Redbelly Mine",
+        "hold": "The Rift",
+        "why": "kill the spiders"
+      },
+      {
+        "place": "Shor's Stone",
+        "hold": "The Rift",
+        "why": "return to Filnjar"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Clear Redbelly Mine of spiders",
+          "Return to Filnjar"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A large sum of gold",
+        "when": "at the end"
+      }
+    ],
+    "type": "Misc",
+    "opens": [
+      "The Shor's Stone miners (Sylgja, Grogmar) go back to work in Redbelly Mine"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Filnjar",
+        "role": "gives the quest; the village blacksmith"
+      },
+      {
+        "name": "Grogmar gro-Burzag",
+        "role": "Shor's Stone miner who can also bring the quest up"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Filnjar's packages: asleep at home midnight to 6 am, meals at home at 6 am and 7 pm, the evening gathering in the village from 8 pm, the forge otherwise. On some days an extra package sends him to Riften's market from 1 pm for four hours, but only while this quest isn't running."
+      },
+      {
+        "field": "opens",
+        "why": "The miners' mine routine switches on a game setting that is most likely set when the mine is cleared; the setting isn't named in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "Redbelly Mine holds about six spiders, levels 1 to 6."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0E49E7 objectives 10, 20; editedBy USSEP",
+      "giver INFO Skyrim.esm:0E49A9 (Filnjar 0136C3, GetStage<11); Grogmar 0136C6 at GetStage<200",
+      "reward LVLI 04A41B FavorRewardGoldLarge via QF_FreeformShorsStone01_000E49E7.pReward",
+      "INFO Skyrim.esm:0E4905 Filnjar 'Finally, we can reopen the mine...'",
+      "places_raw Redbelly Mine 0226B3: The Rift, 6 spiders levels 1-6",
+      "ShorsStoneSylgjaMinePackage0x0 / ShorsStoneGrogmarMinePackage0x0 need GetGlobalValue 107070 == 1; AIOShorsStoneFilnjarRiftenMarket needs GetQuestRunning 0E49E7 == 0"
+    ]
+  },
+  {
+    "edid": "FreeformShorsStone02",
+    "name": "Special Delivery",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Sylgja of Shor's Stone asks you to carry a satchel to Verner at Darkwater Crossing.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Sylgja",
+        "where": "Sylgja's House in Shor's Stone, or around the village in the evening",
+        "how": "Talk to Sylgja; she asks if you are headed towards Darkwater Crossing and gives you a satchel for Verner."
+      }
+    ],
+    "firstStep": "Deliver the satchel to Verner in Darkwater Crossing",
+    "takesYou": [
+      {
+        "place": "Darkwater Crossing",
+        "hold": "Eastmarch",
+        "why": "give the satchel to Verner Rock-Chucker"
+      },
+      {
+        "place": "Shor's Stone",
+        "hold": "The Rift",
+        "why": "return to Sylgja"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Deliver the satchel to Verner in Darkwater Crossing",
+          "Return to Sylgja"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A piece of jewelry",
+        "when": "at the end"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Sylgja",
+        "role": "gives the quest; a miner of Shor's Stone"
+      },
+      {
+        "name": "Verner Rock-Chucker",
+        "role": "receives the satchel; works Goldenrock Mine at Darkwater Crossing"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "Sylgja's packages: asleep at home 11 pm to 5 am, meals at home at 5 am and 6 pm, the village evening gathering from 7 pm; by day at home until Redbelly Mine is cleared, then in the mine. Another package also sends her to the Bee and Barb in Riften from 6 pm, and the files don't settle which evening plan wins."
+      },
+      {
+        "field": "where",
+        "why": "Verner works in Goldenrock Mine from 9 am for eight hours and is otherwise around his house at Darkwater Crossing."
+      },
+      {
+        "field": "needs",
+        "why": "The conditions on Sylgja's opening line aren't in these files, so it isn't shown whether Redbelly Mine must be cleared first."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0E49E8 objectives 10, 20; no other plugin edits",
+      "giver INFO Skyrim.esm:0E4904 (Sylgja 0C3A3F, GetStage<11); Verner 013665 at GetStage<21",
+      "reward LVLI 04A40F FavorRewardJewelry via QF_FreeformShorsStone02_000E49E8.pReward",
+      "INFO Skyrim.esm:0E4A12 'Would you happen to be headed towards Darkwater Crossing?', 0E4A0B, 02E0FD (places_raw)",
+      "places_raw Darkwater Crossing: hold Eastmarch",
+      "Sylgja packages ShorsStoneSylgjaSleeps23x6, AIOSSSylgjaToRiften, ShorsStoneSylgjaMinePackage0x0; Verner DarkwaterCrossingVernerMine9x8"
+    ]
+  },
+  {
+    "edid": "FreeformMerryfairFarm",
+    "name": "Bow to the Master",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Dravin Llanith of Merryfair Farm, near Riften, wants his lost bow back.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Dravin Llanith",
+        "where": "Merryfair Farm, near Riften (he works the fields by day and sleeps there)",
+        "how": "Talk to Dravin; he asks you to recover his bow."
+      }
+    ],
+    "firstStep": "Retrieve Dravin's Bow",
+    "takesYou": [
+      {
+        "place": "Merryfair Farm",
+        "hold": "The Rift",
+        "why": "Dravin, to start and to hand back the bow"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve Dravin's Bow",
+          "Return Dravin's Bow"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Dravin Llanith",
+        "role": "gives the quest; Dunmer farmer at Merryfair Farm"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The bow sits in a chest that the quest points to, but where that chest is isn't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is tied to this quest in these files. The bow itself is a steel bow (damage 20, worth 50)."
+      },
+      {
+        "field": "starts",
+        "why": "Dravin's opening line still applies one step into the quest, which leaves room for a second way in (such as finding the bow first); these files don't show one."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0E3E9B objectives 10, 20; stages 10, 15, 20, 30; editedBy USSEP",
+      "giver INFO Skyrim.esm:06B997 (Dravin 013353, GetStage<16), placed Merryfair Farm 0161F3",
+      "aliases FFMF01BowAlias, FFMF01ChestAlias; WEAP Skyrim.esm:06B9AD Dravin's Bow (Requiem for the Indifferent.esp)",
+      "Dravin packages MerryfairFarmDravinFarmingPackage, MerryfairFarmDravinSleep (11 pm, 6 h)",
+      "people_raw Dravin: cell Merryfair Farm, inTown Riften"
+    ]
+  }
+]

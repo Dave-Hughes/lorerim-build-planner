@@ -1,0 +1,347 @@
+[
+ {
+  "id": "Skyrim.esm:013356",
+  "name": "Edda",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Riften, begging. The records don't give her a set spot to stand; she sleeps at Beggar's Row.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "7 hours",
+    "where": "Beggar's Row, in the Rift",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "17 hours",
+    "where": "around Riften (her begging has no set place)",
+    "doing": "begging for coin"
+   }
+  ],
+  "changes": [
+   "When it rains she leaves off begging and takes shelter near the Thieves Guild (not while she's asleep)."
+  ],
+  "role": "beggar (you can give her coin)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "No placed spot for her in the extracts; Riften comes from her town and crime factions, not a placement."
+   },
+   {
+    "field": "day",
+    "why": "Her begging package names no place, so where in Riften she begs is not in the records."
+   },
+   {
+    "field": "changes",
+    "why": "The shelter package's condition is undecoded (function 62); rain is read from the package's name and from the same function on other 'stay put when raining' packages."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Her class is not decoded in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "The one quest naming her has no name or text in the quest extracts (a dialogue/helper quest), so none listed."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:044A84 RiftenEddaSleep0x7 (cell Beggar's Row, target Skyrim.esm:044A05)",
+   "AI Overhaul.esp:049EAC AIORiftEddaSeekShelter (fn62==1, near Thieves Guild, radius 512)",
+   "Skyrim.esm:044A89 RiftenEddaBegsForCoin0x0 (no location)",
+   "Skyrim.esm:01B217 DefaultSandboxEditorLocation512 (shared, 252)",
+   "factions: CrimeFactionRift, TownRiftenFaction, FavorJobsBeggarsFaction",
+   "class Skyrim.esm:01327B",
+   "quest alias Skyrim.esm:071226 EddaAlias (not in quests_raw)",
+   "people_raw: cell null, race Imperial"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A28",
+  "name": "Faida",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Four Shields Tavern, Dragon Bridge",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "6 hours",
+    "where": "Four Shields Tavern, Dragon Bridge",
+    "doing": "running the tavern"
+   },
+   {
+    "from": "12 pm",
+    "for": "1 hour",
+    "where": "Four Shields Tavern, near her usual spot",
+    "doing": "eating"
+   },
+   {
+    "from": "1 pm",
+    "for": "13 hours",
+    "where": "Four Shields Tavern, Dragon Bridge",
+    "doing": "running the tavern"
+   },
+   {
+    "from": "2 am",
+    "for": "4 hours",
+    "where": "at or near the tavern, where she's placed",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "innkeeper; merchant; rents a room",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Breaching Security",
+    "how": "named in it; the quest text doesn't say what her part is"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "She is a vendor (trades any hour) but her buy/sell list and stock container aren't resolved to items in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "Her sleep package is 'near where she's placed' with a wide radius, so which bed isn't stated."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Her class is not decoded in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "Breaching Security names her as an alias, but no objective or log line mentions her."
+   },
+   {
+    "field": "changes",
+    "why": "Quest fragments that might move or kill her aren't in the extracts; none found."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:034BE8 DefaultSleepEditorLoc2x4 (shared, 5)",
+   "Skyrim.esm:01E619 DefaultEatEditorLoc12x1 (shared, 36)",
+   "Skyrim.esm:086308 DragonBridgeFaidaTavern (target Skyrim.esm:0E537E, Four Shields Tavern)",
+   "factions: JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction, ServicesDragonBrideFourShieldsInn, TownDragonBridgeFaction",
+   "vendor vendRaw f0140900 vencRaw f46b0a00, hours 0-24",
+   "class Skyrim.esm:013256",
+   "quest Skyrim.esm:01EA55 DB06 alias FaidaAlias",
+   "helper quests not listed: Skyrim.esm:052B98, Skyrim.esm:052B97, Unofficial Skyrim Special Edition Patch.esp:03F6A2",
+   "quest_givers_raw: ref Skyrim.esm:019A29 in Four Shields Tavern, Dragon Bridge"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135F2",
+  "name": "Thonnir",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Morthal: at the lumber mill by day, at Thonnir's House at night",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "11 hours",
+    "where": "the lumber mill, Morthal",
+    "doing": "working: sawing and loading logs"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "Thonnir's House, Morthal",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "On weekends a package keeps him near his house from 8 am to 7 pm instead of at the mill, under conditions the extracts don't decode."
+  ],
+  "role": "lumberjack; Hearthfire: the records name him the lumber seller for one of the homesteads",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Laid to Rest",
+    "how": "a step in it: you ask him about Laelette"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Nothing in his packages covers 7 am to 8 am or 7 pm to 11 pm, so where he is then isn't in the records."
+   },
+   {
+    "field": "changes",
+    "why": "The weekend package's conditions are an undecoded function (612) with contradictory-looking values, so when it actually applies is unclear."
+   },
+   {
+    "field": "role",
+    "why": "The lumber-seller role comes from an alias name in a Hearthfire quest that isn't in the quest extracts; which homestead isn't stated, and he has no vendor list."
+   },
+   {
+    "field": "fightsWith",
+    "why": "His class is not decoded in the extracts."
+   }
+  ],
+  "evidence": [
+   "AI Overhaul.esp:0AF40F AIOMorthalThonnirWeekends (weekends, 8 am, 660 min, near editor location, fn612 conditions)",
+   "Skyrim.esm:03D158 MorthalThonnirSawmillSawLog8x11",
+   "Skyrim.esm:03D157 MorthalThonnirSawmillLoadLog8x11",
+   "Skyrim.esm:0443A4 MorthalThonnirWorkLumberCamp8x10 (target Skyrim.esm:02D3D2, Morthal)",
+   "Skyrim.esm:0443A3 MorthalThonnirSleep23x8",
+   "factions: JobLumberjackFaction, MorthalThonnirsHouseFaction, TownMorthalFaction",
+   "essential true",
+   "class Skyrim.esm:01326E",
+   "quest Skyrim.esm:025F3E MS14 alias Thonnir, objective 60",
+   "HearthFires.esm:00305D alias House2LumberVendor",
+   "helper quest not listed: Skyrim.esm:0414FF",
+   "people_raw: cell Thonnir's House, Morthal"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014121",
+  "name": "Silda the Unseen",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Windhelm, on the street by Candlehearth Hall",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "20 hours",
+    "where": "Windhelm (her begging has no set place)",
+    "doing": "begging"
+   },
+   {
+    "from": "2 am",
+    "for": "4 hours",
+    "where": "Temple of Talos, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "beggar; Pickpocket trainer",
+  "sells": "",
+  "trains": "Pickpocket, up to 100 (expert trainer)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Blood on the Ice",
+    "how": "gives it (talking to her can start it) and is one of the witnesses you question"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The extracts place her in a spot labelled Candlehearth Hall, but town guards and Susanna the Wicked share it, so it is probably the street outside the inn rather than inside."
+   },
+   {
+    "field": "day",
+    "why": "Her three begging packages name no place, so where in Windhelm she begs isn't in the records."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Her class is not decoded in the extracts."
+   },
+   {
+    "field": "changes",
+    "why": "Quest fragments that might move or kill her aren't in the extracts; none found."
+   }
+  ],
+  "evidence": [
+   "Unofficial Skyrim Special Edition Patch.esp:10CE18 USLEEPSildaSleepTemple (Temple of Talos, 2 am, 240 min)",
+   "Skyrim.esm:0CD932 WindhelmSildaBegNight0x8",
+   "Skyrim.esm:0CD930 WindhelmSildaBegAfternoon16x8",
+   "Skyrim.esm:0CD92F WindhelmSildaBegMorning8x8",
+   "factions: JobTrainerFaction, JobTrainerPickpocketFaction, FavorJobsBeggarsFaction, TownWindhelmFaction",
+   "trainer Pickpocket Expert levelCap 100",
+   "class Skyrim.esm:0C6FB6",
+   "quest Skyrim.esm:01F7A3 MS11 alias Witness3; giver info Skyrim.esm:02157A below stage 11",
+   "helper quest not listed: Skyrim.esm:0AF269",
+   "quest_givers_raw: ref Skyrim.esm:01B122 in cell Skyrim.esm:016789 'Candlehearth Hall'"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C183",
+  "name": "Dagur",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Frozen Hearth, Winterhold",
+  "day": [
+   {
+    "from": "1 pm",
+    "for": "23 hours",
+    "where": "The Frozen Hearth, Winterhold",
+    "doing": "running the inn"
+   },
+   {
+    "from": "12 pm",
+    "for": "1 hour",
+    "where": "The Frozen Hearth, near his usual spot",
+    "doing": "eating"
+   }
+  ],
+  "changes": [],
+  "role": "innkeeper; merchant; rents a room",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Drowned Sorrows",
+    "how": "gives it (it starts from talking to him)"
+   },
+   {
+    "quest": "Containment",
+    "how": "one of the Winterhold townspeople the quest names while you protect the town"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no sleep package; the records keep him at the inn around the clock apart from his midday meal."
+   },
+   {
+    "field": "sells",
+    "why": "He is a vendor (trades any hour) but his buy/sell list and stock container aren't resolved to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "His class is not decoded in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "Containment names him as an alias alongside the other townsfolk; no objective or log line mentions him, so his part is read from the alias list."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01E619 DefaultEatEditorLoc12x1 (shared, 36)",
+   "Skyrim.esm:024B72 WinterholdDagurInn (target Skyrim.esm:050308, The Frozen Hearth)",
+   "factions: JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction, ServicesWinterholdFrozenHearth, TownWinterholdFaction",
+   "vendor vendRaw f0140900 vencRaw 60da0900, hours 0-24",
+   "class Skyrim.esm:013256",
+   "quest Skyrim.esm:064EA8 FreeformWinterholdC alias Dagur; giver info Skyrim.esm:064E8F below stage 2",
+   "quest Skyrim.esm:01F255 MG05 alias MG05DagurAlias",
+   "helper quests not listed: Skyrim.esm:06531D, 03194C, 03194A, 031944, 031942, 0318C4, 0318C2"
+  ]
+ }
+]

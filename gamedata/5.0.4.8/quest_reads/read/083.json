@@ -1,0 +1,768 @@
+[
+ {
+  "edid": "FreeformWindhelmA",
+  "name": "Delivery",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Hillevi Cruel-Sea in Windhelm has a delivery for the court wizard; take it to him.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Hillevi Cruel-Sea",
+    "where": "at her street stall in Windhelm by day; at home in the House of Clan Cruel-Sea for breakfast and from 8 pm",
+    "how": "Talk to Hillevi; she is the one sending the Nightshade Extract to Wuunferth."
+   }
+  ],
+  "firstStep": "Deliver the Nightshade Extract to Wuunferth the Unliving",
+  "takesYou": [
+   {
+    "place": "Palace of the Kings (upstairs, Wuunferth's lab)",
+    "hold": "Eastmarch",
+    "why": "hand the Nightshade Extract to Wuunferth"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the Nightshade Extract to Wuunferth the Unliving"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand over the extract"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Hillevi Cruel-Sea",
+    "role": "sends the delivery; street vendor in Windhelm"
+   },
+   {
+    "name": "Wuunferth the Unliving",
+    "role": "receives it; court wizard, spends the day in his lab upstairs in the Palace of the Kings"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Hillevi is the quest's giver in the records, but her opening line isn't in these files, so exactly how she asks isn't shown. The quest is running from the start of the game."
+   },
+   {
+    "field": "starts.where",
+    "why": "Her stall schedule (8 am for 12 hours) has extra conditions, likely weather, so she may stay home on some days."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount is set in the quest script and isn't shown here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0CD882",
+   "alias questgiver=Hillevi Cruel-Sea 01411F",
+   "alias Target=Wuunferth 014146, QuestItem=Nightshade Extract",
+   "giver info 0CD859 (Wuunferth, stage<11)",
+   "quest_starts line odd-jobs-eastmarch startGame=true",
+   "QF_FreeformWindhelmA_000CD882.Gold",
+   "pkg HilleviWorkAtStall8x12, HilleviEatBreakfast7x1, HilleviEatDinner20x4",
+   "pkg WuunferthPuttersAboutInLabAllDay"
+  ]
+ },
+ {
+  "edid": "FreeformShipsWindhelm",
+  "name": "Harsh Master",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "Kjar, a ship's captain on the Windhelm docks, wants the leader of a bandit camp dead; the game picks the camp.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Kjar",
+    "where": "on the Windhelm docks, around his ship",
+    "how": "Talk to Kjar on the docks; the job becomes available when you arrive in Windhelm."
+   }
+  ],
+  "firstStep": "Kill the leader of the bandit camp Kjar names",
+  "takesYou": [
+   {
+    "place": "a bandit camp the game chooses",
+    "hold": "",
+    "why": "kill its leader"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the leader of the bandit camp",
+     "Return to Kjar"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you report back to Kjar"
+   },
+   {
+    "what": "An enchanted piece of armor or an enchanted weapon (leveled to you)",
+    "when": "when you report back to Kjar"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Kjar",
+    "role": "ship's captain on the Windhelm docks; gives the job and pays you"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "The camp is picked by the game when the quest starts; the records don't name one, so the hold varies."
+   },
+   {
+    "field": "rewards",
+    "why": "The script holds both an enchanted-armor list and an enchanted-weapon list; whether you get one or both isn't clear from these files. The gold amount isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:094158",
+   "alias QuestGiver=Kjar 013293; BanditCamp, Boss, MapMarker unfilled",
+   "giver info 09414E (Kjar, stage<16)",
+   "start node FavorChangeLocationWindhelm (change location)",
+   "QF_FreeformShipsWindhelm_00094158: Gold, FavorRewardEnchArmor 049313, FavorRewardEnchWeapon 0494B0",
+   "pkg ShipsNorthwindCaptainSandbox (Windhelm Docks)"
+  ]
+ },
+ {
+  "edid": "FreeformKynesgroveA",
+  "name": "Dravynea's Frost Salts",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Dravynea the Stoneweaver in Kynesgrove wants some Frost Salts; bring her one.",
+  "needs": [
+   {
+    "what": "Some Frost Salts",
+    "kind": "item"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Dravynea the Stoneweaver",
+    "where": "Kynesgrove: in the Braidwood Inn at mealtimes (about 6 am and 5 pm); in Steamscorch Mine from about 10 am to 3 pm and again in the evening",
+    "how": "Talk to Dravynea; the job becomes available when you arrive in Kynesgrove."
+   }
+  ],
+  "firstStep": "Bring some Frost Salts to Dravynea",
+  "takesYou": [
+   {
+    "place": "Braidwood Inn or Steamscorch Mine, Kynesgrove",
+    "hold": "Eastmarch",
+    "why": "hand Dravynea the Frost Salts"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bring some Frost Salts to Dravynea"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you give her the Frost Salts"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Dravynea the Stoneweaver",
+    "role": "Kynesgrove's mage; asks for the Frost Salts and pays you"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The records don't say where to find Frost Salts; any you carry should do, but that isn't confirmed here."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount is set in the quest script and isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:069043",
+   "alias QuestGiver=Dravynea 01365F",
+   "giver info 068F2A (stage<11)",
+   "start node FavorChangeLocationKynesgrove",
+   "QF_FreeformKynesgroveA_00069043.Gold",
+   "pkg KynesgroveDravyneaStudy10x5, WorkInMine20x3, Eat6x1, Eat17x1 (AI Overhaul)"
+  ]
+ },
+ {
+  "edid": "FreeformRiverwood01",
+  "name": "A Lovely Letter",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Global Modifiers.esp; also LovelyLetter.esp, TheChoiceIsYours.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Faendal and Sven in Riverwood both want Camilla Valerius; one of them gives you a letter for her, and you can play them against each other.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Faendal",
+    "where": "around Riverwood by day (lumber work and hunting from about 7 am); in Faendal's House from about 10 pm",
+    "how": "Talk to Faendal; he gives you a letter for Camilla."
+   },
+   {
+    "who": "Sven",
+    "where": "in the Sleeping Giant Inn from about 10 am into the night; at home in Sven and Hilde's House early morning",
+    "how": "Talk to Sven; he gives you a letter for Camilla."
+   }
+  ],
+  "firstStep": "Deliver Faendal's letter (or Sven's) to Camilla in Riverwood",
+  "takesYou": [
+   {
+    "place": "Riverwood Trader",
+    "hold": "Whiterun",
+    "why": "Camilla works there by day; she's in the Sleeping Giant Inn in the early evening"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Take Faendal's letter to Camilla",
+    "leadsTo": "Optionally, tell Sven about Faendal's letter instead"
+   },
+   {
+    "choice": "Take Sven's letter to Camilla",
+    "leadsTo": "Optionally, tell Faendal about Sven's letter instead"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "Faendal's letter",
+    "objectives": [
+     "Deliver Faendal's letter to Camilla in Riverwood",
+     "(Optional) Tell Sven about Faendal's letter"
+    ]
+   },
+   {
+    "branch": "Sven's letter",
+    "objectives": [
+     "Deliver Sven's letter to Camilla in Riverwood",
+     "(Optional) Tell Faendal about Sven's letter"
+    ]
+   },
+   {
+    "branch": "afterwards",
+    "objectives": [
+     "Talk to Faendal",
+     "Talk to Sven"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [
+   "The Heart Will Go On (possibly; a later quest with the same three people)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Faendal",
+    "role": "wood elf in Riverwood, rival for Camilla"
+   },
+   {
+    "name": "Sven",
+    "role": "Riverwood's bard, rival for Camilla"
+   },
+   {
+    "name": "Camilla Valerius",
+    "role": "runs the Riverwood Trader; receives the letter"
+   },
+   {
+    "name": "Orgnar",
+    "role": "innkeeper at the Sleeping Giant Inn; mentions the love triangle"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest is switched on when you enter Riverwood, but the opening lines aren't in these files, so which man approaches you first, and on what terms, isn't shown."
+   },
+   {
+    "field": "choices",
+    "why": "The 'Talk to Faendal' and 'Talk to Sven' steps come after the delivery, but the records don't say exactly which choice leads to which. Two mods add extra stages with no journal text, so the ending may differ from the base game."
+   },
+   {
+    "field": "opens",
+    "why": "Another mod's quest, The Heart Will Go On, reuses Faendal, Sven, Camilla and their letters and calls itself a sequel; what starts it isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Only a gold property is in the records; the amount isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:074A83",
+   "editedBy LovelyLetter.esp, TheChoiceIsYours.esp, LoreRim - Global Modifiers.esp",
+   "objectives 10/20/110/120/210/220",
+   "start node FreeformRiverwoodNode (change location)",
+   "QF_FreeformRiverwood01_00074A83.Gold",
+   "INFO 0453ED (Orgnar, love triangle)",
+   "moretosayriverwood.esp:000F02 (RiverwoodSequelQuestItemHoldingChest)",
+   "pkg FaendalWork7x12, SvenPlayInn10x16, CamillaWorkTrader8x10, CamillaSleeplingGiant18x4"
+  ]
+ },
+ {
+  "edid": "FreeformSalviusFarmA",
+  "name": "Rogatus's Letter",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Rogatus Salvius at his farm near Markarth wants a letter taken to his son Leontius at Old Hroldan.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Rogatus Salvius",
+    "where": "at Salvius Farm outside Markarth, working the fields 8 am to 8 pm; in the Salvius Farmhouse otherwise",
+    "how": "Talk to Rogatus; he gives you a letter for Leontius."
+   }
+  ],
+  "firstStep": "Deliver Rogatus' letter to Leontius",
+  "takesYou": [
+   {
+    "place": "Old Hroldan (outside by day, in the Old Hroldan Inn at night)",
+    "hold": "",
+    "why": "give Leontius the letter"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver Rogatus' letter to Leontius"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you deliver the letter"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Rogatus Salvius",
+    "role": "farmer at Salvius Farm; writes the letter"
+   },
+   {
+    "name": "Leontius Salvius",
+    "role": "at Old Hroldan; receives the letter"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Rogatus is the quest's giver in the records, but no opening line or start event for him is in these files, so how he offers it isn't shown."
+   },
+   {
+    "field": "takesYou.hold",
+    "why": "The files place Leontius at the Old Hroldan Inn but don't say which hold it is in."
+   },
+   {
+    "field": "people",
+    "why": "The two share a family name; that Leontius is his son isn't stated in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0931BF",
+   "alias QuestGiver=Rogatus 0133B5, Leonitus=Leontius 013B76, Letter",
+   "QF_FreeformSalviusFarmA_000931BF.Gold",
+   "pkg SalviusFarmerWorkPackage8x12, OldHroldanLeontiusSandboxOutside7x17Package, OldHroldanLeonitusSleep24x8Package"
+  ]
+ },
+ {
+  "edid": "FreeformWinterholdA",
+  "name": "A Bad Trade",
+  "plugin": "Skyrim.esm (last edited by moretosaywinterhold.esp; also moretodo.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Birna in Winterhold wants something put back in Yngol Barrow, the draugr tomb across the river from Windhelm.",
+  "needs": [
+   {
+    "what": "Not have gone far into Yngol Barrow yet",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Birna",
+    "where": "in Birna's Oddments, Winterhold, during shop hours (8 am to 8 pm); in the Frozen Hearth from 8 to 11 pm",
+    "how": "Talk to Birna in her shop."
+   }
+  ],
+  "firstStep": "Place the burial urn in Yngol Barrow",
+  "takesYou": [
+   {
+    "place": "Yngol Barrow, across the river to the northeast of Windhelm",
+    "hold": "Eastmarch",
+    "why": "put the burial urn back"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Place the burial urn in Yngol Barrow"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Birna",
+    "role": "runs Birna's Oddments in Winterhold; gives the job"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "A patch makes Birna offer this only while the Yngol Barrow dungeon is still early on; exactly how far into the barrow you can go before the offer disappears isn't shown."
+   },
+   {
+    "field": "starts",
+    "why": "Birna's line about the barrow in the records is placeholder text about 'this claw thing', which doesn't match the urn in the objective; what she actually says may differ."
+   },
+   {
+    "field": "takesYou",
+    "why": "Yngol Barrow holds draugr and traps, with a level 51 boss; it is dangerous at low level. Where in the barrow the urn goes isn't described."
+   },
+   {
+    "field": "rewards",
+    "why": "Only a gold property is in the records; whether Birna pays you or you pay her, and how much, isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:062F54",
+   "editedBy moretodo.esp, moretosaywinterhold.esp",
+   "giver info 062F4D (Birna, stage<10); USSEP adds dunYngolBarrowQST 0434A3 stage<10",
+   "info 062F4C (USSEP adds stage==10)",
+   "INFO 062F4E placeholder line",
+   "tiedRefs 062F5C, 0B634D in Yngol Barrow cell 0151F5",
+   "QF_FreeformWinterholdA_00062F54.Gold",
+   "place YngolBarrowLocation 0192C9",
+   "pkg WinterholdBirnaVisitInn20x3"
+  ]
+ },
+ {
+  "edid": "FreeformShipsDawnstar",
+  "name": "Salty Sea-Dogs",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "radiant",
+  "canDoWhy": "Captain Wayfinder on the Dawnstar docks wants Void Salts fetched from a cave; the game picks the cave.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Captain Wayfinder",
+    "where": "on the Dawnstar docks, around his ship",
+    "how": "Talk to Captain Wayfinder; the job becomes available when you arrive in Dawnstar."
+   }
+  ],
+  "firstStep": "Find the Void Salts for Captain Wayfinder",
+  "takesYou": [
+   {
+    "place": "a cave the game chooses",
+    "hold": "",
+    "why": "find the Void Salts in a container there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the Void Salts for Captain Wayfinder",
+     "Bring the Void Salts to Captain Wayfinder"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you bring back the Void Salts"
+   },
+   {
+    "what": "An enchanted piece of armor or an enchanted weapon (leveled to you)",
+    "when": "when you bring back the Void Salts"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Captain Wayfinder",
+    "role": "ship's captain at Dawnstar; gives the job and pays you"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "The cave and the container are picked by the game when the quest starts; the records don't name them."
+   },
+   {
+    "field": "rewards",
+    "why": "The script holds both an enchanted-armor list and an enchanted-weapon list; whether you get one or both isn't clear. The gold amount isn't shown."
+   },
+   {
+    "field": "starts.where",
+    "why": "He wanders the docks in the afternoon under some conditions; otherwise he stays near his ship."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:094152",
+   "alias QuestGiver=Captain Wayfinder 013296; Cave, Container, MapMarker unfilled; QuestItem=Void Salts",
+   "giver info 09414A (stage<16)",
+   "start node FavorChangeLocationDawnstar",
+   "QF_FreeformShipsDawnstar_00094152: Gold, FavorRewardEnchArmor 049313, FavorRewardEnchWeapon 0494B0",
+   "pkg ShipsSeaSquallCaptainSandbox, AIODawnSeaSquallWander"
+  ]
+ },
+ {
+  "edid": "FreeformMorthalB",
+  "name": "For the Good of Morthal",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Gorm in Morthal's Highmoon Hall gives you a letter for Captain Aldis in Solitude.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Gorm",
+    "where": "in Highmoon Hall, Morthal; at the Moorside Inn from 8 to 11 pm",
+    "how": "Talk to Gorm; he gives you his letter for Captain Aldis."
+   }
+  ],
+  "firstStep": "Deliver Gorm's letter to Captain Aldis",
+  "takesYou": [
+   {
+    "place": "Castle Dour, Solitude",
+    "hold": "Haafingar",
+    "why": "give Captain Aldis the letter"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver Gorm's letter to Captain Aldis"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you deliver the letter"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Gorm",
+    "role": "housecarl in Highmoon Hall, Morthal; writes the letter"
+   },
+   {
+    "name": "Captain Aldis",
+    "role": "commander at Castle Dour, Solitude; receives the letter"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "fails",
+    "why": "The quest has a failure stage; what triggers it isn't shown (possibly the letter's recipient being lost)."
+   },
+   {
+    "field": "starts.where",
+    "why": "Gorm has a package that moves him to the Blue Palace in Solitude if he joins a certain faction, likely after a Civil War change in Morthal."
+   },
+   {
+    "field": "takesYou",
+    "why": "Aldis is placed in Castle Dour and sleeps there from 8 pm; by day he may be out in Solitude near the castle."
+   },
+   {
+    "field": "people",
+    "why": "Gorm's role as housecarl comes from another quest's alias name, not a stated title."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:021896",
+   "alias Gorm 0135EA, Note, Aldis 041FB8",
+   "giver info 0AD9F4 (Gorm, stage<10); Aldis stage<11",
+   "stage 255 fails",
+   "QF_FreeformMorthalB_00021896.Gold001",
+   "pkg MorthalGormStandHighMoonHall, MorthalGormEatMoorside18x3, CWExiledImperialSandboxBluePalace; GuardSolitudeImperialDaySleep, SolitudeValdTrainingPackage"
+  ]
+ },
+ {
+  "edid": "FreeformStonehillsA",
+  "name": "Payment Delivery",
+  "plugin": "Skyrim.esm (last edited by Big Tweaks.esp; also Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Pactur in Stonehills has a payment to go to Bryling in Solitude.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Pactur",
+    "where": "in Stonehills: outside around 9 to 11 am, in Rockwallow Mine from about 1 to 4 pm, otherwise at home (placed in Sorli's House)",
+    "how": "Talk to Pactur; he gives you the payment for Bryling."
+   }
+  ],
+  "firstStep": "Speak with Bryling",
+  "takesYou": [
+   {
+    "place": "the Blue Palace, Solitude (by day); Bryling's House at night",
+    "hold": "Haafingar",
+    "why": "hand Bryling the payment"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak with Bryling"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you speak with Bryling"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Pactur",
+    "role": "in Stonehills; sends the payment"
+   },
+   {
+    "name": "Bryling",
+    "role": "spends the day at court in the Blue Palace, Solitude; receives the payment"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "The quest has a failure stage and an extra stage between delivery and failure; whether you can keep the money (and fail) isn't shown in these files."
+   },
+   {
+    "field": "starts.where",
+    "why": "The records place Pactur in Sorli's House; his home package doesn't name the building. He also has steward packages that apply only if he becomes your steward."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't shown; one mod edits this quest late in the load order and what it changes isn't shown."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:064958",
+   "editedBy USSEP, Big Tweaks.esp",
+   "alias Pactur 013605, Bryling 013265",
+   "giver info 064956 (Pactur, stage<10); Bryling stage<11",
+   "stages 20 completes, 25, 30 fails",
+   "QF_FreeformStonehillsA_00064958.Gold001",
+   "pkg StonehillsPacturWorkOutside9x2, StonehillsPacturVisitMine1x3, SolitudePalaceCourtSandbox8x12"
+  ]
+ },
+ {
+  "edid": "FreeformFalkreathQuest01",
+  "name": "Lod's Lot",
+  "plugin": "Skyrim.esm",
+  "canDo": "cut",
+  "canDoWhy": "Looks unfinished in the records: no people or items are set up for it, it gives nothing, and its second step has nothing to switch it on.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Buy the Book off Lod",
+     "Turn Lod in to Kust"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Lod",
+    "role": "Falkreath's blacksmith; would sell you the book"
+   },
+   {
+    "name": "Kust",
+    "role": "in Falkreath (tied to the Hall of the Dead); you would turn Lod in to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "canDo",
+    "why": "Lod and Kust both have dialogue lines tied to this quest, so it may be reachable; but with no start event, no quest people, no reward and a step with no stage behind it, it most likely can't be done."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:093753",
+   "no aliases, no rewards, no start",
+   "objective 20 has no stage 20; stages 0,10,200,255",
+   "giver info 093749 (Lod, stage<1); Kust 01364C stage<11",
+   "Lod faction JobBlacksmithFaction; Kust FalkreathHouseofArkayFaction"
+  ]
+ }
+]

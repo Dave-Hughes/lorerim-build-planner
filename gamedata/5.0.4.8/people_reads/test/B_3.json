@@ -1,0 +1,216 @@
+[
+ {
+  "id": "Skyrim.esm:019DF2",
+  "name": "Asbjorn Fire-Tamer",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Scorched Hammer, the blacksmith's in Riften",
+  "day": [
+   {"from": "midnight", "for": "6 hours", "where": "The Scorched Hammer, Riften", "doing": "sleeping"},
+   {"from": "6 am", "for": "2 hours", "where": "The Scorched Hammer, Riften", "doing": "breakfast"},
+   {"from": "8 am", "for": "12 hours", "where": "The Scorched Hammer, Riften", "doing": "working the shop; he trades 8 am to 8 pm"},
+   {"from": "8 pm", "for": "2 hours", "where": "The Scorched Hammer, Riften", "doing": "dinner"},
+   {"from": "10 pm", "for": "2 hours", "where": "The Scorched Hammer, Riften", "doing": "relaxing at home"}
+  ],
+  "changes": [
+   "On some evenings (8 pm to midnight) a later 'after hours' routine takes over, keeping him near where he is placed, which is the Scorched Hammer; which evenings it runs can't be read from the records",
+   "If a certain person is dead (the record doesn't say who), he spends his working hours at a spot elsewhere in Riften instead of inside the Scorched Hammer"
+  ],
+  "role": "blacksmith; merchant",
+  "sells": "a blacksmith's goods; open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "can die",
+  "unsure": [
+   {"field": "sells", "why": "his vendor buy/sell list and merchant chest are only raw form ids in the extracts; none of the readable files resolve them to items"},
+   {"field": "fightsWith", "why": "his class is given only as a form id; no extract names classes or their skills, and his outfit isn't resolved either"},
+   {"field": "changes", "why": "the evening 'after hours' package's conditions use a condition function the extract doesn't name, so when it applies is unknown; the death check on his working packages names no person"},
+   {"field": "day", "why": "the 'elsewhere in Riften' work spot is a bare reference with no cell or place name"}
+  ],
+  "evidence": [
+   "people_raw: cell The Scorched Hammer, inTown Riften",
+   "factions JobBlacksmithFaction, JobMerchantFaction, ServicesRiftenTheScorchedHammer, RiftenTheScorchedHammerFaction",
+   "vendor startHour 8 endHour 20, vendRaw 33630600, vencRaw bd310a00",
+   "AI Overhaul.esp:10A7F2 AIORiftAsbjornAfterHours (20:00, 240 min, near editor location 512, fn612 conditions)",
+   "Skyrim.esm:0DED92 RiftenAsbjornHomeSandbox (22:00, 2 h, cell Skyrim.esm:053081)",
+   "Skyrim.esm:0DED26 RiftenAsbjornEatDinner (20:00, 2 h)",
+   "Skyrim.esm:0DED25 RiftenAsbjornEatBreakfast6x2",
+   "Skyrim.esm:0DED13 RiftenAsbjornSleeps0x6",
+   "Skyrim.esm:0DED24 RiftenAsbjornSandboxWorking0x0 (near Skyrim.esm:076F3B, GetDead == 1)",
+   "Skyrim.esm:0DECE7 RiftenAsbjornSandboxScorchedHammer0x0 (GetDead == 0)",
+   "class Skyrim.esm:013257; essential false, protected false, follower false, marriageable false"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013654",
+  "name": "Narri",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Dead Man's Drink, the inn in Falkreath, or just outside it in the daytime",
+  "day": [
+   {"from": "1 am", "for": "7 hours", "where": "Dead Man's Drink, Falkreath", "doing": "sleeping"},
+   {"from": "8 am", "for": "8 hours", "where": "outside Dead Man's Drink, Falkreath", "doing": "out and about near the inn, when it isn't raining"},
+   {"from": "4 pm", "for": "9 hours", "where": "Dead Man's Drink, Falkreath", "doing": "serving at the inn"}
+  ],
+  "changes": [
+   "When it's raining she skips the morning outdoors: she sleeps until 9 am and then serves inside the inn"
+  ],
+  "role": "inn server at Dead Man's Drink; merchant; quest giver",
+  "sells": "the inn's goods, any hour",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {"quest": "Shriekwind Bastion", "how": "gives it: clear Shriekwind Bastion of the restless dead, then tell the steward of Falkreath"}
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {"field": "sells", "why": "she's in the inn-server faction with a vendor record open all day, but the buy/sell list and chest are only raw form ids; the actual stock can't be read"},
+   {"field": "fightsWith", "why": "class given only as a form id; no extract names it"},
+   {"field": "quests", "why": "she also fills aliases in several other quests (vanilla and Unofficial Patch ids, and More to Say Falkreath dialogue) that aren't in the quest extracts, so whether any is a real quest can't be told"},
+   {"field": "day", "why": "she sleeps 'near where she's placed', which is in Dead Man's Drink; the exact bed isn't named"}
+  ],
+  "evidence": [
+   "people_raw: cell Dead Man's Drink, inTown Falkreath",
+   "factions JobInnServer, ServicesFalkreathDeadMansDrinkInn, FalkreathDeadMansDrinkFaction",
+   "vendor startHour 0 endHour 24, vendRaw f0140900, vencRaw fa6b0a00",
+   "Skyrim.esm:07275D FalkreathNarriSandboxOutsideInn8x8 (08:00, 480 min, near Skyrim.esm:093641 r450, fn62 IsRaining == 0)",
+   "Skyrim.esm:0F3925 FalkreathNarriSleep1x8 (01:00, 480 min, near editor location)",
+   "Unofficial Skyrim Special Edition Patch.esp:01F8F9 USKPFalkreathNarriBarkeepPackage (cell Skyrim.esm:03A184 Dead Man's Drink)",
+   "quest_givers_raw moretodo.esp:000987 ACFMTSFreeformFalkreath002 giver Narri (dialogue moretodo.esp:00098A)",
+   "aliases not in quests_raw: Skyrim.esm:02B9E9, 02B9E0, 02B9DD, 02B9BE, 0376EE; Unofficial Skyrim Special Edition Patch.esp:03F6A2; moretosayfalkreath.esp:000AA6, 000AC4, 000AE9",
+   "class Skyrim.esm:01326B; essential false, protected false"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:037E04",
+  "name": "Leonara Arius",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Snow-Shod Farm, in the Rift",
+  "day": [
+   {"from": "midnight", "for": "6 hours", "where": "Snow-Shod Farm, the Rift", "doing": "sleeping"},
+   {"from": "6 am", "for": "2 hours", "where": "Snow-Shod Farm, the Rift", "doing": "breakfast"},
+   {"from": "8 am", "for": "11 hours", "where": "the fields at Snow-Shod Farm", "doing": "farming"},
+   {"from": "7 pm", "for": "1 hour", "where": "Snow-Shod Farm, the Rift", "doing": "dinner"},
+   {"from": "8 pm", "for": "4 hours", "where": "the fields at Snow-Shod Farm", "doing": "farming (her default when nothing else is scheduled)"}
+  ],
+  "changes": [
+   "On some days (the routine is named for weekends), from 5 pm to 7:30 pm she spends time at a spot on Snow-Shod Farm instead, but only when it isn't raining"
+  ],
+  "role": "farmer at Snow-Shod Farm",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "protected",
+  "unsure": [
+   {"field": "quests", "why": "she fills an alias in two quests that aren't in the quest extracts, so what they are (or whether they're real quests) can't be told"},
+   {"field": "day", "why": "sleep and meals are in a cell called Snow-Shod Farm; the records don't say whether that's the farmhouse or the farm grounds"},
+   {"field": "changes", "why": "the weekend routine also has conditions using a condition function the extract doesn't name, so which days it runs can't be confirmed"},
+   {"field": "fightsWith", "why": "class given only as a form id; no extract names it"}
+  ],
+  "evidence": [
+   "people_raw: cell Snow-Shod Farm, role JobFarmer",
+   "factions JobFarmerFaction, TownSnowShodFarmFaction, SnowShodFarmHouseFaction",
+   "AI Overhaul.esp:10A7F0 AIORiftLeonaraWeekends (17:00, 150 min, near Skyrim.esm:019E01 r256, fn62 IsRaining == 0, fn612 conditions)",
+   "Skyrim.esm:06BDC5 SnowShodFarmLeanoraEatDinnerPackage (19:00, 60 min, cell Skyrim.esm:0161EA)",
+   "Skyrim.esm:06BDC4 SnowShodFarmLeanoraEatBreakfastPackage (06:00, 120 min)",
+   "Skyrim.esm:06BDC8 SnowShodFarmLeonaraSleepPackage (00:00, 360 min)",
+   "Skyrim.esm:06BDC7 SnowShodFarmLeonaraFarmingPackage (always, near Skyrim.esm:0300A5 r200)",
+   "aliases not in quests_raw: Skyrim.esm:037E09, Skyrim.esm:037E07 (LeanoraAlias)",
+   "class Skyrim.esm:01326C; protected true, essential false"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:0071F1",
+  "name": "Morven Stroud",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "in the Soul Cairn, which you first enter during Chasing Echoes",
+  "day": [
+   {"from": "any hour", "for": "all day", "where": "the Soul Cairn", "doing": "staying close to where he is placed"}
+  ],
+  "changes": [],
+  "role": "a soul in the Soul Cairn; quest figure",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {"quest": "Belethor's Sister", "how": "a step in it: ask him about Lelaegh, collect Soul Husks for him, then return to him"}
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {"field": "firstMeet", "why": "the records place him in the Soul Cairn but give no nearer landmark there"},
+   {"field": "quests", "why": "he fills an alias in one Dawnguard quest that isn't in the quest extracts, so what part he plays in it can't be told"},
+   {"field": "fightsWith", "why": "class given only as a form id; no extract names it"}
+  ],
+  "evidence": [
+   "quest_givers_raw Belethor's Sister.esp:000804 alias morven, ref Dawnguard.esm:0071F0, cell Dawnguard.esm:002D45, Soul Cairn",
+   "quests_raw belethorSisterQuest01 objectives 550, 600, 610",
+   "quests_raw DLC1VQ04 Chasing Echoes objective 'Enter the Soul Cairn'",
+   "Dawnguard.esm:014EDB DLC1SoulPackageIgnoreCombat (shared 31, near editor location r512)",
+   "Dawnguard.esm:014EDA DLC1SoulPackage (shared 28, near editor location r512)",
+   "faction SoulCairnSpecialFaction",
+   "alias not in quests_raw: Dawnguard.esm:016352 (MorvenAlias)",
+   "class Skyrim.esm:013176; essential false, protected false"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A511",
+  "name": "Bujold the Intrepid",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Bujold's Retreat, the camp on Solstheim's eastern shore where the Nords driven out of Thirsk Mead Hall wait to take it back; the hall is up on the hill",
+  "day": [
+   {"from": "10 am", "for": "3 hours", "where": "Bujold's Retreat, Solstheim", "doing": "eating"},
+   {"from": "1 pm", "for": "10 hours", "where": "Bujold's Retreat, Solstheim", "doing": "around the camp"},
+   {"from": "11 pm", "for": "7 hours", "where": "Bujold's Retreat, Solstheim", "doing": "sleeping"},
+   {"from": "6 am", "for": "4 hours", "where": "Bujold's Retreat, Solstheim", "doing": "around the camp"}
+  ],
+  "changes": [
+   "Once Thirsk Mead Hall is retaken (Retaking Thirsk), she keeps the same hours in Thirsk Mead Hall instead of the camp",
+   "In Retaking Thirsk she asks you to meet her at Hrothmund's Barrow; if you oppose her there she attacks you and you may have to kill her",
+   "If you side with the rieklings in The Chief of Thirsk Hall, she and the other Nords are the ones you're sent to kill, and they stay out of the hall for good"
+  ],
+  "role": "leader of the Nords of Thirsk Mead Hall; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {"quest": "Retaking Thirsk", "how": "gives it; you go with her to Hrothmund's Barrow, and opposing her there can end in a fight to the death"},
+   {"quest": "The Chief of Thirsk Hall", "how": "its target if you join the rieklings' assault on the Nords"}
+  ],
+  "canDie": "protected (only you can kill her); a quest-only essential alias covers her for part of Retaking Thirsk",
+  "unsure": [
+   {"field": "day", "why": "both her sleep routines also need a second game setting to be off; the extract doesn't say what that setting tracks, and if it's on she doesn't follow the sleep hours"},
+   {"field": "changes", "why": "the switch between camp and hall is a game setting the extract doesn't name; tying it to retaking the hall comes from the routines' names and the quest's journal text"},
+   {"field": "firstMeet", "why": "the places extract's distances on Solstheim look wrong (it puts Raven Rock under a kilometre from Skaal Village), so no distance to the camp is given"},
+   {"field": "quests", "why": "she fills aliases in eleven other quests that aren't in the quest extracts (probably scenes and dialogue), so none are listed"},
+   {"field": "fightsWith", "why": "her class comes from a Requiem patch and is only a form id; no extract names it"}
+  ],
+  "evidence": [
+   "quest_givers_raw Dragonborn.esm:01A50B DLC2MH01 giver Bujold (dialogue Dragonborn.esm:01A4E6), ref Dragonborn.esm:01A512, cell Dragonborn.esm:00EE04",
+   "quests_raw DLC2MH01 stages 10, 27, 40, 200, 210; alias BujoldEssential",
+   "quests_raw DLC2MH02 alias Nord1, objective 35 'Kill the Nords'",
+   "places_raw Bujold's Retreat Dragonborn.esm:0142CA; Thirsk Dragonborn.esm:0143BA (Kuvar: 'There, up on the hill.' INFO Dragonborn.esm:026552)",
+   "Dragonborn.esm:02412E DLC2BujoldEatInHall10x3 (global Dragonborn.esm:01A51E == 0)",
+   "Dragonborn.esm:01A534 DLC2BujoldEatAtCamp10x3 (global 01A51E == 1)",
+   "Dragonborn.esm:02412D DLC2BujoldSleepInHall23x7 (globals 03BDA4 == 0, 01A51E == 0)",
+   "Dragonborn.esm:01A533 DLC2BujoldSleepAtCamp23x7 (globals 03BDA4 == 0, 01A51E == 1)",
+   "Dragonborn.esm:01A52D DLC2ThirskNordsSandboxInHall; Dragonborn.esm:01A520 DLC2ThirskNordsSandboxAtCamp",
+   "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE754; protected true, essential false",
+   "aliases not in quests_raw: Dragonborn.esm:01A53F, 01A541, 01A543, 01A545, 01D98F, 0251F7, 0251FC, 0251FE, 025200, 025202, 025204"
+  ]
+ }
+]
