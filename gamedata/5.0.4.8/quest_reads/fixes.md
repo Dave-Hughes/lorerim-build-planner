@@ -41,3 +41,4 @@
 - **037** (Gray Cowl of Nocturnal, Hammerfell): 6 fixed, 4 unsure. Claim Shanta Filibb's notice comes after the bandits; the game's own words for the Gray Cowl places; Honai talks to you at the ruins, not the hideout.
 - **035** (Wyrmstooth favors): 4 fixed, 1 unsure. The way back to Skyrim is the Red Wave near Fort Moonwatch (Holmar); two missing endings of The Naked Nord.
 - **034** (Wyrmstooth): 13 fixed, 5 unsure. Six quests now say you need to reach the island first (the Red Wave during Barrow of the Wyrm); Lurius may be aboard the ship; Daenlit and Elmera travel with the expedition before the island; a coffin "in Erikur's House" wasn't in the records.
+- **043** (Solstheim favors, Thirsk): 5 fixed, 1 unsure. A New Debt starts by talking to Slitter, not by itself; From the Ashes only waits while the Dragonborn story hasn't reached the temple; Heart Stones' mine is picked when it starts.

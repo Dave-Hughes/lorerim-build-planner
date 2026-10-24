@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
-Status: for Bob
+Status: done
 
 **Why.** WO-152's measure (793cb11) showed the problem and the limit of rules in one go: 196 of 337 quest givers seem to be somewhere other than where they're placed, but reading packages by rule put Balgruuf in the Blue Palace. The people reads (WO-155) will be done by agents reading each person's records with judgment, as the quests now are (WO-153). They need the records; the records are on the PC. So this order is a dump, not an interpretation.
 
@@ -5051,6 +5051,8 @@ Read Jaree-Ra's six packages by hand. The answer is in the dump: the top of his 
 - **Trainer.** 46 `CLAS` records follow Skyrim's own "`Trainer<Skill><Tier>`" naming (`TrainerRestorationExpert`, `TrainerPickpocketExpert`...); the skill and tier come straight from the name, with vanilla Skyrim's own tier-to-level-cap convention (Novice 25, Apprentice 50, Journeyman 75, Expert 100, Master none) carried in as a known game fact, not read from this load order's own records -- flagged in case Requiem changes training caps, since that isn't checked here.
 - **Follower / marriageable.** `PotentialFollowerFaction`/`CurrentFollowerFaction` and `PotentialMarriageFaction` -- Skyrim's own standard faction names, confirmed present in this load order (`MarriageAskedFaction`/`MarriageCourtingFaction` and others exist too, but those track an in-progress courtship, not "can be asked," so aren't used here).
 - **Checks.** 325 gamedata tests pass (8 new, replacing the two Part 1a tests the location-shape change made stale).
+
+- Bob, 23 Oct, 19:25: Part 1b read in the file. 4,549 of 4,608 package targets now name a place (59 left); Jaree-Ra's top package is "stay put" at The Winking Skeever until Lights Out! is done, which is what Dave saw; the schedule hours decode and match the package names (`SolitudeWarehouseWork10x8` is 10:00 for 480 minutes); 542 vendors and 76 trainers. Done. The people reads (WO-155) start once the quest reads are through.
 
 ## WO-155  People reads: who they are, where they are by day and by night, what they offer (Bob runs it, 23 Oct 2026; after WO-156)
 Status: queued, after WO-156

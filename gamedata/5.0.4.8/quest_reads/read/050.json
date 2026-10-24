@@ -1,0 +1,493 @@
+[
+  {
+    "edid": "dunYngolBarrowQST",
+    "name": "Yngol's Barrow",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "No one hands it out: it's tied to the barrow itself, so you pick it up by going into Yngol Barrow.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "",
+        "where": "Yngol Barrow, across the river to the northeast of Windhelm (Eastmarch)",
+        "how": "Go into the barrow. There's no dialogue or event that starts it; everything it uses (portcullis, motes, the boss and his chest) is inside the barrow."
+      }
+    ],
+    "firstStep": "Explore Yngol's Barrow",
+    "takesYou": [
+      {"place": "Yngol Barrow", "hold": "Eastmarch", "why": "explore it, face Yngol's Shade, then get back out"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Explore Yngol's Barrow", "Escape Yngol's Barrow"]}
+    ],
+    "rewards": [
+      {"what": "The boss chest in Yngol Barrow", "when": "after Yngol's Shade"}
+    ],
+    "type": "none set in the records",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Yngol's Shade", "role": "the barrow's boss (level 51 in LoreRim, from Requiem's NPC tweaks)"},
+      {"name": "Windhelm guards", "role": "warn you the barrow lies across the river to the northeast of the city"},
+      {"name": "Birna", "role": "in Winterhold; her own quest, A Bad Trade, also sends you into Yngol Barrow"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The records show no start dialogue or event. That points to it starting when you enter or reach a trigger inside, but which trigger isn't in these files."},
+      {"field": "steps", "why": "Its stages carry no journal text. Only the two objectives are known, so what triggers 'Escape' (the boss's death, a portcullis) isn't shown."},
+      {"field": "needs", "why": "These files don't show whether you need a key or claw to get past any door inside."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0434A3 (edited by USSEP), type null, objectives 0 and 50",
+      "aliases Mote01, entryPortcullis, Yngol, BossChest, LocationAlias",
+      "quest_starts: no dialogue or event conditions, startGame false; doors Skyrim.esm:02E234 and 015E1D into cell 0151F5",
+      "LCTN Skyrim.esm:0192C9 Yngol Barrow: Eastmarch, next to Windhelm, boss Yngol's Shade level 51, bossChest",
+      "Yngol alias NPC Requiem-general_NPC_tweaks.esp:005AA4",
+      "INFO Skyrim.esm:0DA669 (Windhelm guard line), INFO Skyrim.esm:062F4E (Birna, A Bad Trade)",
+      "QUST Skyrim.esm:062F54 FreeformWinterholdA objective 'Place the burial urn in Yngol Barrow'"
+    ]
+  },
+  {
+    "edid": "dunBlindCliffQST",
+    "name": "The Affairs of Hagravens",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Melka, a hagraven held deep in Blind Cliff Cave, asks you to kill her sister hagraven Petra.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Melka",
+        "where": "Blind Cliff Bastion, the inner part of Blind Cliff Cave, northeast of Markarth beside Karthwasten (the Reach)",
+        "how": "Get through Blind Cliff Cave into the Bastion and speak to Melka while she's held there. She asks you to kill Petra."
+      }
+    ],
+    "firstStep": "Kill the Hagraven Petra",
+    "takesYou": [
+      {"place": "Blind Cliff Cave and Blind Cliff Bastion", "hold": "The Reach", "why": "find Melka, kill Petra"}
+    ],
+    "choices": [
+      {"choice": "Kill Petra for Melka", "leadsTo": "Melka is let out, the quest completes, and she stays in the Bastion afterwards; you get her staff, the Eye of Melka"},
+      {"choice": "Kill Melka", "leadsTo": "The journal records 'The Hagraven Melka is dead.'; the records don't show what else changes"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Kill the Hagraven Petra"]},
+      {"branch": "Melka killed", "objectives": []}
+    ],
+    "rewards": [
+      {"what": "Eye of Melka (staff)", "when": "from Melka, once Petra is dead"}
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Melka", "role": "hagraven held in Blind Cliff Bastion; gives the quest and the staff"},
+      {"name": "Petra", "role": "the hagraven you're asked to kill, also in Blind Cliff Bastion"},
+      {"name": "Markarth guards", "role": "point you to Blind Cliff Cave, a hagraven nest northeast of the city"}
+    ],
+    "unsure": [
+      {"field": "steps", "why": "Most stages have no journal text. A cell button and a prison marker show Melka is shut in and let out, but who presses it (you or the script) isn't shown."},
+      {"field": "choices", "why": "The only sign of the 'kill Melka' branch is its journal line; whether it still pays out or still completes the quest isn't shown."},
+      {"field": "starts", "why": "USSEP adds race checks to several of Melka's lines (different lines for different races). They look like greeting variants, not requirements, but the line text isn't in these files."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:039B3B (edited by USSEP), type Misc; objective 15; stage 100 completes; stage 200 log",
+      "aliases Petra, Melka, MelkaPrisonMarker, MelkaReleaseButton, MelkaGoalMarker",
+      "giver Melka Skyrim.esm:039B3E, INFO Skyrim.esm:077C28, before stage 15; placed in cell 0152B7 Blind Cliff Bastion",
+      "reward QF_dunBlindCliffQST_00039B3B.RewardStaff = Skyrim.esm:0B3DFA Eye of Melka",
+      "Melka package dunBlindCliffMelkaPostQuestSandbox (stage >= 100) in Blind Cliff Bastion",
+      "LCTN Skyrim.esm:018EED Blind Cliff Cave: The Reach, beside Karthwasten, near Markarth (Lux Via)",
+      "USSEP GetIsRace changes on INFO 077C24/077C26/077C27/077C29/0DECE2",
+      "INFO Skyrim.esm:0DA644 Markarth guard line"
+    ]
+  },
+  {
+    "edid": "dunNilheimQST",
+    "name": "Telrav's Request",
+    "plugin": "Skyrim.esm (last edited by Nilheim - Misc Quest Expansion - No Infighting Bandits.esp; also Nilheim_MiscQuestExpansion.esp and USSEP)",
+    "canDo": "talk",
+    "canDoWhy": "Telrav, a hurt 'merchant', is waiting out in the wild near Nilheim and asks you to walk him to his camp.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Telrav",
+        "where": "outdoors near the ruins of Nilheim, a short walk from Ivarstead (the Rift); he waits around that spot",
+        "how": "Talk to him. He says his camp is nearby in the ruins of Nilheim and you'll be rewarded if you get him there safely."
+      }
+    ],
+    "firstStep": "Escort Telrav to his camp.",
+    "takesYou": [
+      {"place": "Nilheim", "hold": "The Rift", "why": "Telrav's 'camp': a bandit hideout where he leads travellers into a trap"}
+    ],
+    "choices": [
+      {"choice": "Escort him and wait for your reward", "leadsTo": "Telrav double-crosses you and you have to kill him; the quest completes when Telrav and his men are dead"},
+      {"choice": "Clear the Nilheim bandits and find Telrav's Journal (added by the Nilheim quest expansion)", "leadsTo": "you can extort Telrav, which also completes the quest"},
+      {"choice": "Kill Telrav outside the double-cross", "leadsTo": "the quest fails ('I have killed Telrav.')"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Escort Telrav to his camp.", "Wait for Telrav to return with your reward", "Kill Telrav"]},
+      {"branch": "extort (Nilheim quest expansion)", "objectives": []}
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": ["Telrav, if you kill him"],
+    "people": [
+      {"name": "Telrav", "role": "bandit pretending to be an injured merchant; quest giver and target"},
+      {"name": "Nilheim bandits", "role": "Telrav's men at the camp (five of them)"}
+    ],
+    "unsure": [
+      {"field": "rewards", "why": "No reward is recorded. The extort ending probably pays, but how much isn't in these files."},
+      {"field": "choices", "why": "The expansion's stages (bandits killed, journal found, extorted, Telrav killed) carry only journal lines; the exact order and what triggers the fail aren't shown."},
+      {"field": "where", "why": "Telrav is placed in the open world inside the Nilheim location and wanders near that spot; his exact spot on the map isn't in these files."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:01BAEC, editedBy USSEP, Nilheim_MiscQuestExpansion.esp, Nilheim - Misc Quest Expansion - No Infighting Bandits.esp; type Misc",
+      "stages 10, 20, 30, 100 (completes), 110, 120, 130 (completes), 150 (fails); objectives 10, 20, 30",
+      "quest_starts startGame true; giver Telrav Skyrim.esm:01BA08, INFO Nilheim_MiscQuestExpansion.esp:000801, before stage 10",
+      "Telrav packages: TelravSandboxStage (stage 0), TelravTravelStage10, TelravTravelStage20Alive/Dead",
+      "INFO Skyrim.esm:01B24C 'My camp is nearby in the ruins of Nilheim...'",
+      "BOOK Nilheim_MiscQuestExpansion.esp:00080D Telrav's Journal",
+      "LCTN Skyrim.esm:019284 Nilheim: The Rift, near Ivarstead, bandit camp"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthM",
+    "name": "Search and Seizure",
+    "plugin": "Skyrim.esm (last edited by Search and Seizure - Quest Expansion.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Ondolemar, the Thalmor Justiciar in Understone Keep, wants proof that Ogmund worships Talos.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Ondolemar",
+        "where": "Understone Keep in Markarth; his packages keep him in the keep (eating, patrolling it), and AI Overhaul sometimes sends him on a patrol to the Silver-Blood Inn",
+        "how": "Talk to Ondolemar; he asks you to break into Ogmund's house and find proof of Talos worship."
+      }
+    ],
+    "firstStep": "Find evidence of Ogmund's Talos worship",
+    "takesYou": [
+      {"place": "Ogmund's House, Markarth", "hold": "The Reach", "why": "look for his Amulet of Talos"},
+      {"place": "Silver-Blood Inn, Markarth", "hold": "The Reach", "why": "where Ogmund plays as a bard by day if you want to warn him"},
+      {"place": "Understone Keep, Markarth", "hold": "The Reach", "why": "report back to Ondolemar"}
+    ],
+    "choices": [
+      {"choice": "Find Ogmund's Amulet of Talos and give it to Ondolemar", "leadsTo": "Ondolemar rewards you; quest complete"},
+      {"choice": "(Optional) Warn Ogmund that the Thalmor are on to him", "leadsTo": "Ogmund rewards you and admits outright to worshipping Talos; you can still go back to Ondolemar"},
+      {"choice": "After warning him, tell Ondolemar that Ogmund admitted it", "leadsTo": "Ondolemar rewards you; quest complete"},
+      {"choice": "(Optional) Lie to Ondolemar about Ogmund", "leadsTo": "Ondolemar believes you and rewards you; quest complete"}
+    ],
+    "steps": [
+      {"branch": "amulet", "objectives": ["Find evidence of Ogmund's Talos worship", "Bring Ogmund's Amulet of Talos to Ondolemar"]},
+      {"branch": "warn Ogmund (Quest Expansion)", "objectives": ["(Optional) Warn Ogmund about Ondolemar", "Report to Ondolemar that Ogmund openly admited to Talos worship.", "(Optional) Bring Ogmund's Amulet of Talos to Ondolemar"]},
+      {"branch": "lie (Quest Expansion)", "objectives": ["(Optional) Lie to Ondolemar about Ogmund's Talos worship"]}
+    ],
+    "rewards": [
+      {"what": "A reward from Ondolemar (what it is isn't recorded)", "when": "on any ending"},
+      {"what": "A reward from Ogmund (what it is isn't recorded)", "when": "if you warn him"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Ondolemar", "role": "Thalmor Justiciar in Understone Keep; gives the quest"},
+      {"name": "Ogmund", "role": "the Nord bard under suspicion; home is Ogmund's House, and his package has him playing at the Silver-Blood Inn from 8 am for 12 hours. He also trains Speech."}
+    ],
+    "unsure": [
+      {"field": "rewards", "why": "Every ending's journal says you were rewarded, but no reward item, gold amount or script property is recorded."},
+      {"field": "closes", "why": "There is a fail stage with no journal text; what causes it (Ogmund dying, the amulet lost) isn't shown."},
+      {"field": "needs", "why": "No conditions on Ondolemar's opening line are recorded, so nothing is listed as needed."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:064798, editedBy Search and Seizure - Quest Expansion.esp; type Side Quest",
+      "stages 10, 12, 15, 19/20/21 (complete), 200 (fails); objectives 10-16",
+      "aliases Ondolemar, Ogmund, QuestItem, QuestContainer",
+      "named giver Ondolemar Skyrim.esm:0133AF (Understone Keep); Ogmund line Search and Seizure - Quest Expansion.esp:0012D0 before stage 11; Ondolemar before stage 13",
+      "Ondolemar packages MarkarthOndolemarEat24x6Package, MarkarthOndolemarPatrolMarkarthKeepPackage, AIOOndolemarPatrolCity",
+      "Ogmund package MarkarthOgmundBardInnPackage8x12 (Silver-Blood Inn); JobTrainerSpeechcraftFaction"
+    ]
+  },
+  {
+    "edid": "FreeformRiften21",
+    "name": "Toying With The Dead",
+    "plugin": "Skyrim.esm (last edited by Toying With The Dead mQE.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Vekel, the barkeep in the Ragged Flagon, offers you a job fetching a dead necromancer's journals from Yngvild.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Vekel the Man",
+        "where": "behind the bar in the Ragged Flagon, in the Ratway under Riften; his packages keep him there around the clock",
+        "how": "Talk to Vekel. He tells you about Arondil, a necromancer who moved into the ice caves of Yngvild, and asks you to bring back his journals."
+      }
+    ],
+    "firstStep": "Enter Yngvild Barrow",
+    "takesYou": [
+      {"place": "Yngvild", "hold": "Winterhold (per the records; a short walk from Dawnstar)", "why": "find Arondil's four journals; Arondil is the boss there"},
+      {"place": "The White Hall, Dawnstar", "hold": "The Pale", "why": "(optional) tell the Jarl of the Pale about the missing people"},
+      {"place": "The Ragged Flagon, Riften", "hold": "The Rift", "why": "return the journals to Vekel"}
+    ],
+    "choices": [
+      {"choice": "(Optional) Tell the Jarl of the Pale what the journals reveal", "leadsTo": "a gold reward from the Jarl (step added by the Toying With The Dead quest expansion)"}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Enter Yngvild Barrow", "Retrieve Arondil's Journals (0/4)", "(Optional) Inform Jarl of the Pale about missing people", "Return to Vekel"]}
+    ],
+    "rewards": [
+      {"what": "Gold from the Jarl of the Pale", "when": "if you tell the Jarl about the missing people"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Vekel the Man", "role": "barkeep at the Ragged Flagon; gives the quest (essential)"},
+      {"name": "Arondil", "role": "the necromancer; boss of Yngvild"},
+      {"name": "Skald the Elder", "role": "Jarl of the Pale, sits in the White Hall in Dawnstar"},
+      {"name": "Brina Merilis", "role": "Jarl of the Pale instead of Skald if the Imperials take the Pale"}
+    ],
+    "unsure": [
+      {"field": "rewards", "why": "Only the Jarl's gold is recorded; whether Vekel pays for the journals isn't shown, and the gold amount isn't in these files."},
+      {"field": "takesYou", "why": "The records file Yngvild under Winterhold even though it's a short walk from Dawnstar."},
+      {"field": "people", "why": "Which Jarl you report to depends on who holds the Pale; that's inferred from both being listed and from their Jarl factions."},
+      {"field": "needs", "why": "No conditions on Vekel's opening line are recorded, so nothing is listed as needed (the Flagon itself is reached through the Ratway)."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:09F179, editedBy Toying With The Dead mQE.esp; type Side Quest",
+      "objectives 10, 20 (FFRiften21JFound/FFRiften21JTotal = 4), 25, 30; stage 200 completes",
+      "alias FFRiften21JarlPale added by Toying With The Dead mQE.esp",
+      "giver Vekel Skyrim.esm:013380, INFO Skyrim.esm:0A311F before stage 11; Brina Merilis 01A6B7 and Skald the Elder 013620 before stage 41",
+      "reward QF_FreeformRiften21_0009F179.JarlRewardGold (gold)",
+      "Vekel packages RiftenVekelFlagonSandbox*, RiftenVekelBartender0x0 all in The Ragged Flagon",
+      "LCTN Skyrim.esm:0192CA Yngvild: hold Winterhold, near Dawnstar, boss Arondil level 40",
+      "INFO Skyrim.esm:0A3122, 0A3127, 0A3120 (Vekel lines)"
+    ]
+  },
+  {
+    "edid": "DarkwaterCrossingDerkeethusRescueQuest",
+    "name": "Extracting an Argonian",
+    "plugin": "Skyrim.esm (last edited by Finding_Derkeethus.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Derkeethus, a fisherman from Darkwater Crossing, is missing; he's being held by Falmer in Darkwater Pass and you get him out.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Derkeethus",
+        "where": "inside Darkwater Pass, the Falmer cave by the waterfalls next to Darkwater Crossing",
+        "how": "Find Derkeethus in the cave and talk to him (the Finding Derkeethus mod adds the line that starts the quest here); the journal says he went looking for better fishing at the waterfalls."
+      }
+    ],
+    "firstStep": "Find Derkeethus",
+    "takesYou": [
+      {"place": "Darkwater Pass", "hold": "The Rift (per the records; it sits next to Darkwater Crossing in Eastmarch)", "why": "find Derkeethus and lead him out past the Falmer"},
+      {"place": "Darkwater Crossing", "hold": "Eastmarch", "why": "he goes home there afterwards"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find Derkeethus", "Get Derkeethus out of the cave"]}
+    ],
+    "rewards": [
+      {"what": "Derkeethus as a follower (he's in the follower and marriage factions)", "when": "the records don't show whether that waits for the rescue"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Derkeethus", "role": "the missing Argonian fisherman; at home he works Goldenrock Mine in Darkwater Crossing"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The quest runs from the game's start and the only recorded opening line is Derkeethus's own. Whether someone in Darkwater Crossing also tells you about him isn't shown."},
+      {"field": "rewards", "why": "No item or gold is recorded; the follower link is read from his factions, not from the quest."},
+      {"field": "where", "why": "His base placement is Goldenrock Mine in Darkwater Crossing, but during the quest he's in Darkwater Pass (the journal and the mod's markers in the cave say so)."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:076B4A, editedBy USSEP, Finding_Derkeethus.esp; type Side Quest",
+      "stage 10 log (missing fisherman, waterfalls), stage 200 completes ('rescued Derkeethus from the Falmer of Darkwater Pass')",
+      "quest_starts startGame true; Finding_Derkeethus.esp adds alias Derk_Spot (ref Finding_Derkeethus.esp:000801); tied refs 000808, 00080D in cell 02C993",
+      "giver Derkeethus Skyrim.esm:01403E, INFO Finding_Derkeethus.esp:000839 before stage 10",
+      "INFO Skyrim.esm:076B35 'Derkeethus, from Darkwater Crossing.'",
+      "Derkeethus factions PotentialFollowerFaction, PotentialMarriageFaction; package DarkwaterCrossingDerkeethusMine10x9",
+      "LCTN Skyrim.esm:01915F Darkwater Pass: Falmer hive, hold The Rift, next to Darkwater Crossing"
+    ]
+  },
+  {
+    "edid": "FreeformFalkreathQuest03",
+    "name": "Dark Ancestor",
+    "plugin": "Skyrim.esm (its opening lines edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Dengeir of Stuhn in Falkreath talks about his vampire ancestor Vighar; this part ends when you tell him Vighar is dead.",
+    "needs": [
+      {"what": "Be level 10 or higher (on one of Dengeir's opening lines)", "kind": "level"}
+    ],
+    "starts": [
+      {
+        "who": "Dengeir of Stuhn",
+        "where": "Dengeir's House in Falkreath; by his packages he's at Dead Man's Drink from noon for about four hours and otherwise at home or around town",
+        "how": "Talk to Dengeir; his lines set you on Vighar (the hunt itself is the companion quest, also called Dark Ancestor)."
+      }
+    ],
+    "firstStep": "Tell Dengeir that Vighar is dead",
+    "takesYou": [
+      {"place": "Dengeir's House, Falkreath", "hold": "Falkreath", "why": "tell Dengeir that Vighar is dead"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Tell Dengeir that Vighar is dead"]}
+    ],
+    "rewards": [
+      {"what": "Gold", "when": "when you tell Dengeir Vighar is dead"}
+    ],
+    "type": "Misc",
+    "opens": ["Dark Ancestor (destroy the vampire Vighar)"],
+    "closes": [],
+    "people": [
+      {"name": "Dengeir of Stuhn", "role": "Vighar's descendant in Falkreath; gives the quest and pays"},
+      {"name": "Vighar", "role": "the vampire, at Bloodlet Throne"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "USSEP sets a level 10 check on one opening line and changes another condition the extract can't name on all three; which line actually starts the quest isn't certain."},
+      {"field": "opens", "why": "How the two Dark Ancestor quests hand over (Dengeir starting the hunt, or killing Vighar first starting this one) isn't shown; neither quest's stages have journal text."},
+      {"field": "rewards", "why": "The gold comes from a script property; the amount isn't in these files."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0B83C3, Skyrim.esm only; type Misc; objective 20; stage 200 completes",
+      "quest_starts startGame true; USSEP edits INFO Skyrim.esm:0B83BD, 0B83BE, 0B83BF (GetLevel >= 10 on 0B83BF; fn403 >= 1 on all)",
+      "giver Dengeir Skyrim.esm:01365A, INFO Skyrim.esm:0B83BE, before stage 1; placed in Dengeir's House 013A78",
+      "reward FreeformFalkreathQuest03Script.Gold001 (gold)",
+      "Dengeir packages FalkreathDeadMansDrinkSandbox12x4, FalkreathDengeirEat6x1/18x1, DefaultSleepEditorLoc24x8"
+    ]
+  },
+  {
+    "edid": "FreeformFalkreathQuest03B",
+    "name": "Dark Ancestor",
+    "plugin": "Skyrim.esm (last edited by LoreRim Gravewind Start Tweak.esp; also USSEP)",
+    "canDo": "talk",
+    "canDoWhy": "The hunt half of Dark Ancestor: destroy the vampire Vighar at Bloodlet Throne, the ancestor Dengeir of Stuhn tells you about.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Dengeir of Stuhn",
+        "where": "Dengeir's House in Falkreath",
+        "how": "Comes from Dengeir's talk about Vighar (see the other Dark Ancestor quest); this one points you at Vighar himself."
+      }
+    ],
+    "firstStep": "Destroy the vampire Vighar",
+    "takesYou": [
+      {"place": "Bloodlet Throne", "hold": "Falkreath", "why": "destroy Vighar, the vampire boss there"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Destroy the vampire Vighar"]}
+    ],
+    "rewards": [
+      {"what": "Gold (paid through Dengeir's quest script)", "when": "when you report back to Dengeir"},
+      {"what": "The boss chest at Bloodlet Throne", "when": "after Vighar"}
+    ],
+    "type": "Misc",
+    "opens": ["Dark Ancestor (tell Dengeir that Vighar is dead)"],
+    "closes": ["Vighar"],
+    "people": [
+      {"name": "Vighar", "role": "vampire boss of Bloodlet Throne (the fort's boss is leveled 55-125)"},
+      {"name": "Dengeir of Stuhn", "role": "in Falkreath; you report to him"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "This quest has no giver or start event in the records; Dengeir as the source is read from the paired quest. It may also start when you get to Vighar."},
+      {"field": "plugin", "why": "LoreRim Gravewind Start Tweak.esp edits this quest; what it changes (perhaps tying it to an alternate start) isn't in these files."},
+      {"field": "rewards", "why": "The gold is recorded on Dengeir's script property; the amount isn't shown."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D6986, editedBy USSEP, LoreRim Gravewind Start Tweak.esp; type Misc; objective 10; stage 200 completes",
+      "alias Vighar = dunBloodletThroneVampireBoss Skyrim.esm:05B830, placed in cell 016EA1 Bloodlet Throne",
+      "reward FreeformFalkreathQuest03Script.Gold001",
+      "not referenced in quest_starts_raw",
+      "LCTN Skyrim.esm:016F85 Bloodlet Throne: Falkreath, vampire lair, boss leveled 55-125, bossChest"
+    ]
+  },
+  {
+    "edid": "FreeformWinterholdC",
+    "name": "Drowned Sorrows",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Ranmir, the drunk at the Frozen Hearth in Winterhold, wants to know what became of his old lover, Isabelle Rolaine.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Ranmir",
+        "where": "The Frozen Hearth inn in Winterhold, from noon until about midnight by his package; he sleeps at home in the mornings",
+        "how": "Talk to Ranmir (Dagur the innkeeper, or his wife Haran, can bring him up). Agree to look for Isabelle."
+      }
+    ],
+    "firstStep": "Find out about Isabelle Rolaine in Winterhold",
+    "takesYou": [
+      {"place": "Winterhold", "hold": "Winterhold", "why": "ask around about Isabelle"},
+      {"place": "The Ragged Flagon, Riften", "hold": "The Rift", "why": "ask Vex what she knows"},
+      {"place": "Hob's Fall Cave", "hold": "Winterhold (per the records; a short walk from Dawnstar)", "why": "find Isabelle and her letter"},
+      {"place": "Winterhold", "hold": "Winterhold", "why": "give the letter to Ranmir"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find out about Isabelle Rolaine in Winterhold", "Speak to Vex in Riften", "Investigate Hob's Fall Cave", "Take Isabelle's letter to Ranmir"]}
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Ranmir", "role": "the grieving drunk; gives the quest and gets the letter"},
+      {"name": "Dagur", "role": "innkeeper of the Frozen Hearth"},
+      {"name": "Haran", "role": "Dagur's wife, at the Frozen Hearth"},
+      {"name": "Birna", "role": "runs Birna's Oddments in Winterhold"},
+      {"name": "Vex", "role": "Thieves Guild member in the Ragged Flagon; tells you Isabelle went treasure hunting at Hob's Fall Cave (essential)"},
+      {"name": "Isabelle Rolaine", "role": "found dead in Hob's Fall Cave with a letter to Ranmir"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "Lines from Dagur and Vex fire before the quest begins, and Ranmir's and Haran's before you agree; that Ranmir is the one you say yes to comes from the first journal entry."},
+      {"field": "rewards", "why": "No reward is recorded; the ending journal only says Ranmir needs time to think."},
+      {"field": "takesYou", "why": "The records file Hob's Fall Cave under Winterhold although its nearest town is Dawnstar."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:064EA8 (edited by USSEP), type Misc; stages 10-40 (40 completes); objectives 10, 15, 20, 30",
+      "stage 15 journal has two versions, one if you're in the Thieves Guild (GetInFaction 029DA9)",
+      "giver Dagur Skyrim.esm:01C183 INFO 064E8F before stage 2; Vex before 2; Ranmir and Haran before 11",
+      "USSEP changes INFO Skyrim.esm:064EA3 to need stage 15",
+      "Ranmir packages WinterholdRanmirInn12x12 (The Frozen Hearth), WinterholdRanmirSleep3x10, WinterholdRanmirSandboxOutdoors0x2",
+      "Vex packages ThievesGuildVexSandbox* in The Ragged Flagon",
+      "LCTN Skyrim.esm:019198 Hob's Fall Cave: hold Winterhold, near Dawnstar; INFO 064E90, 064EA6"
+    ]
+  },
+  {
+    "edid": "FavorOrcsIntro",
+    "name": "The Forgemaster's Fingers",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A game event starts it; the game picks who gives it, which dungeon holds the Forgemaster's Fingers and which Orc chief you bring them to.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Find the Forgemaster's Fingers",
+    "takesYou": [
+      {"place": "a dungeon the game picks", "hold": "", "why": "the Fingers are in its boss chest"},
+      {"place": "an Orc stronghold", "hold": "", "why": "bring the Fingers to its chief"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find the Forgemaster's Fingers", "Bring the Forgemaster's Fingers to the chief"]}
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "a quest giver chosen by the game", "role": "points you to the Fingers"},
+      {"name": "an Orc chief chosen by the game", "role": "receives the Fingers"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "It starts from a story-manager script event; which event, and who can be the giver, aren't decoded in these files."},
+      {"field": "takesYou", "why": "The dungeon, stronghold and chief are filled in when the quest starts, so no fixed place can be given."},
+      {"field": "rewards", "why": "No reward is recorded; what bringing the Fingers to the chief earns you (such as stronghold standing) isn't shown."}
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:076335 (edited by USSEP), type Misc; objectives 10, 20 ('Bring ... to <Alias.ShortName=Chief>')",
+      "aliases QuestGiver, Location, Dungeon, QuestItem, BossContainer, Chief, MapMarker",
+      "quest_givers starts: node FavorOrcsIntroNode, script event; no people",
+      "quest_starts: no conditions, no cells or doors"
+    ]
+  }
+]

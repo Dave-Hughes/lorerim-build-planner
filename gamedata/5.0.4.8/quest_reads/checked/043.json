@@ -1,0 +1,1244 @@
+{
+  "checks": [
+    {
+      "edid": "DLC2ThirskFFElmusBack",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Elmus's INFO 038EBE (stage below 10) is the giver line."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Retaking Thirsk has the Nords retake the hall at its stage 25 (\"I helped the warriors of Thirsk Mead Hall retake their home\"), well before the quest finishes at 200 (Hrothmund's Barrow, Bujold). The hall/camp switch is global Dragonborn.esm:01A51E on his packages; what sets it isn't in these files, so \"finish\" is too strong. Corrected to \"help the Nords retake the hall\"; kept unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "OfferServices package 8 am for 12 hours in Thirsk Mead Hall when global 01A51E == 0; placed ref 01A51B is in exterior cell 00EE04 (Bujold's Retreat by the places pointers). Reader's unsure covers it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Bring Elmus some Juniper Berries\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Nothing names where to find the berries."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path; a fail stage 205 exists with no text."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "LvlQuestReward01Small via QF_DLC2ThirskFFElmusBack_02038EC4, from the script fragment; contents not decoded. Unsure note already says so."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DLC2ThirskFFHalbarn",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Halbarn's INFO 038FB9 (stage below 10) is the giver line."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Empty with an unsure note is right: placed in Thirsk Mead Hall but camp packages exist, and the offer's conditions aren't in these files."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Ref 01A51D in Thirsk Mead Hall; WorkForge8x11 (global 01A51E == 0) vs EatAtCamp/SleepAtCamp (== 1). Camp = Bujold's Retreat is from the places pointers (Elmus, Kuvar speak there)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Globals DLC2ThirskHalbarnStalhrimCount = 10, DLC2ThirskHalbarnEbonyCount = 15."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Nothing names where to get the materials."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path; fail stage 205 has no text."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "LvlQuestReward02Medium via the quest fragment; contents not decoded, noted."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DLC2ThirskFFHilund",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Hilund's INFO 038FB7 (stage below 10) is the giver line."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Empty with an unsure note is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Ref 01A516 in Thirsk Mead Hall; in-hall packages need global 01A51E == 0, camp packages == 1."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Global DLC2ThirskHilundSpearCount = 50; Riekling Spear 017720 is kind ammo (LoreRim - Armor Merges.esp)."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Nothing names where to get the spears."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path; fail stage 205 has no text."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "LvlQuestReward02Medium via the quest fragment; noted as undecoded."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TT1",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Neloth INFO 017E6B (stage below 101) gives it; quest_starts names it the tel-mithryn opening."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition on the opening is in these files; the USSEP change (INFO 0200B6) only moves Elynea's stage-170 line from Old Friends to this quest."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Neloth ref 0177DA in the Tel Mithryn interior cell 017787 (doors from the exterior lead into it)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 150 log: \"She is probably somewhere around Tel Mithryn.\""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Talvas/Ulves/Elynea lines below stage 171; stage 300 log \"body on the road to Raven Rock, apparently killed by ash spawn\"; Fethis Alor INFO 019586 \"Ask around at The Retching Netch\"; Drovas placed there."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path in the stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from DLC2_QF_DLC2TT1_02017E8D.Gold, script only; amount and timing unconfirmed and noted."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "A New Debt's journal: \"Helping Drovas has come back to bite me\"; Drovas has a line in it below stage 201."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Varona is found dead (stages 200-300). Note she is flagged essential by LoreRim - Outfit Distribution.esp; the quest presumably places her body."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TT1b",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "The quest_givers record has Slitter's INFO 019577 (stage below 11) as the line that sets it going, so it is \"talk\". Slitter has no package that brings him to you: he sleeps in The Retching Netch and follows Mogrul while Mogrul lives (DLC2SlitterFollowMogrul), and this quest has no Slitter alias to give him one. The journal's \"sent a messenger for me\" is why he talks to you, not proof he walks up."
+        },
+        "needs": {
+          "verdict": "unsure",
+          "note": "Nothing in these files shows what triggers it. The journal (\"Helping Drovas has come back to bite me\") and Drovas's line below stage 201 support hiring Drovas in Reluctant Steward; whether that quest must be finished isn't shown. Kept, reworded, and noted."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Where: Slitter is placed in The Retching Netch (ref 019598) and follows Mogrul there; \"he seeks you out\" isn't supported. Mogrul also has a line for this quest below stage 11, so talking to him may start it too; added to unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 100 \"Talk to Mogrul\"; Mogrul ref 01959B in The Retching Netch."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 200 log: 1000 septim debt; Mogrul in The Retching Netch."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 300 (paid), 320 (persuaded him to take half), 310 (killed him); stage 200 log \"keep sending thugs after me\". Essential-flag caveat kept in unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Bob's rule keeps script-named gold as a reward, but here the journal says you pay Mogrul 1000 (or 500) septims, so DLC2_QF_DLC2TT1b_0201844E.Gold reads as the payment. Leaving rewards empty with the reader's note is the honest reading."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 310 \"I killed him instead\"; Slitter then switches to UDBPSlitterSandboxIfMorgulDies."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TT2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Neloth INFO 019570 (stage below 11)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stages 0/5/10 are silent and no condition is in these files; unsure note kept."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Neloth in the Tel Mithryn interior; stage 100 log \"He gave me a ring\"."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 100 log: walk the grounds of Tel Mithryn with the ring."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 200 log (heart stone in Ildari's grave), stage 500 log (\"Deep under Highpoint Tower\"), DungeonLocation alias Highpoint Tower (next to Raven Rock per places)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path in the stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "The ring (alias NelothsRing, 01961C) is handed over at the start, as written. DLC2Fling is a plain spell property, not a reward property, and Fling is not among the player spells in spells_raw, so it may be the attack itself; leaving it in unsure rather than rewards is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 500 \"killed her\"; Ildari's essential flag (LoreRim - Outfit Distribution.esp) is noted in unsure."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TTF1",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Talvas INFO 01AA9A (stage below 31); stage 100 log variants for asked vs. stumbled on."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Stage 10 entry condition is DLC2MQ01 (Dragonborn) stage >= 30 OR DLC2MQ01 not running. It doesn't require the story at all if it isn't running (not started or finished); it only holds you back while the Dragonborn quest is in progress and short of Raven Rock telling you of Miraak's temple. Reworded."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Talvas ref 0177DB in the Tel Mithryn interior; stage 100 log variants on stage 50 done / not done."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 100 \"Destroy the Ash Guardian\"; log says \"on the Tel Mithryn grounds\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Same log line."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Tome 01AABA and spell 017782 both in DLC2_QF_DLC2TTF1_0201AAB0; tome listed, spell in unsure, Expert / 75 confirmed in spells_raw (LoreRim - Spells and Magic Effects.esp)."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TTF2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Elynea INFO 01AA91 (stage below 100)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions in these files; fail stage 510 noted."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Elynea ref 0177DC in Tel Mithryn Apothecary."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 100 \"Get three taproots\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 100 log names the headwaters of the Harstrad river; Headwaters of Harstrad carries LocTypeSprigganGrove; stage 300 log \"plant the last one in the withered part of the tower wall\". Spriggan link is from alias names, noted."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward in the quest_givers record or script properties here."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TTR1",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location story event fills the Dungeon and ApocryphaBook aliases: radiant. Nothing claims it repeats."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Neither the story node's nor Neloth's conditions are in these files; noted."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Neloth INFO 01B634 (stage below 100); in the Tel Mithryn interior."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 100 \"Retrieve the Black Book\"; stage 100 log names the dungeon alias."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Dungeon alias filled at start; hold left blank correctly."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from DLC2_QF_DLC2TTR1_0201B65F.Gold, script only; noted."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TTR2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location story event fills HeartStoneMine/MineMapMarker/HeartStoneVein: radiant. Nothing claims it repeats."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Conditions not in these files; noted."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Neloth INFO 01C053 (stage below 100)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 100 \"Get a Heart Stone\"; MineMapMarker alias supports \"the mine Neloth marks\"."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Hold \"Solstheim\" isn't in the records: the mine is an alias filled at start and no place record ties this quest to a mine. The reader's own note calls it assumed. Blanked, as Lost Knowledge does."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One path."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold from DLC2_QF_DLC2TTR2_0201C06E.Gold, script only; noted."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing shown."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DLC2ThirskFFElmusBack",
+      "name": "Elmus Favor Quest",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Elmus asks a small favor once he's back living in Thirsk Mead Hall.",
+      "needs": [
+        {
+          "what": "Help the Nords retake Thirsk Mead Hall in Retaking Thirsk, so they move back into the hall",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Elmus",
+          "where": "Thirsk Mead Hall on Solstheim, once the Nords have moved back in",
+          "how": "Talk to Elmus; he asks you to bring him some Juniper Berries."
+        }
+      ],
+      "firstStep": "Bring Elmus some Juniper Berries",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring Elmus some Juniper Berries"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a small random quest reward",
+          "when": "when you hand over the berries"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Elmus",
+          "role": "asks for the berries; one of the Nords of Thirsk"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Elmus has a second favor quest of the same name (bring him Ashfire Mead from Thirsk Mead Hall), which fits while he's camped at Bujold's Retreat. This one is the 'Back' version, and his packages put him in the hall only once the Nords are back. In Retaking Thirsk the hall is retaken partway through, before the visit to Hrothmund's Barrow; what moves the Nords back, and the conditions on Elmus's offer, aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "His placed reference is outside in the camp (Bujold's Retreat). Once the Nords return his packages put him in Thirsk Mead Hall: trading there from 8 am for 12 hours, dinner at 5 pm, sleeping there at night."
+        },
+        {
+          "field": "needs",
+          "why": "If you side with the rieklings in The Chief of Thirsk Hall, the Nords are driven off or killed; these files don't show the exact condition that blocks this favor then."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script points at a small leveled quest-reward list; what it rolls isn't decoded here. There's also a fail ending; what triggers it isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:038EC4 objective 10",
+        "giver INFO Dragonborn.esm:038EBE (stage below 10)",
+        "alias ThirskDoor",
+        "reward LvlQuestReward01Small Skyrim.esm:0C0404 via QF_DLC2ThirskFFElmusBack_02038EC4",
+        "sister quest DLC2ThirskFFElmus Dragonborn.esm:038EBF (Ashfire Mead)",
+        "packages DLC2ElmusOfferServicesPackage / EatDinnerInHall17x3 need global Dragonborn.esm:01A51E == 0; AtCamp packages need it == 1",
+        "Elmus ref Dragonborn.esm:01A51B in exterior cell Dragonborn.esm:00EE04; places pointer speakerPlace Bujold's Retreat",
+        "DLC2MH01 Retaking Thirsk, DLC2MH02 The Chief of Thirsk Hall",
+        "DLC2MH01 stage 25 log: hall retaken; quest completes at 200"
+      ]
+    },
+    {
+      "edid": "DLC2ThirskFFHalbarn",
+      "name": "Halbarn Favor Quest",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Halbarn Iron-Fur, Thirsk's smith, asks you to bring him Stalhrim and Ebony Ingots.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Halbarn Iron-Fur",
+          "where": "Thirsk Mead Hall on Solstheim (at Bujold's Retreat, the Nords' camp, before the hall is retaken)",
+          "how": "Talk to Halbarn; he asks for 10 Stalhrim and 15 Ebony Ingots."
+        }
+      ],
+      "firstStep": "Bring 10 Stalhrim and 15 Ebony Ingots to Halbarn",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring 10 Stalhrim and 15 Ebony Ingots to Halbarn"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a medium random quest reward",
+          "when": "when you hand over the materials"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Halbarn Iron-Fur",
+          "role": "the Thirsk Nords' blacksmith; asks for the materials"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The dialogue conditions on his offer aren't in these files, so it's not shown whether Retaking Thirsk must be done first."
+        },
+        {
+          "field": "where",
+          "why": "He's placed in Thirsk Mead Hall, but his packages put him at the Nords' camp until the hall is retaken. Once they're back he works his forge at Thirsk from 8 am for 11 hours and sleeps in the hall."
+        },
+        {
+          "field": "needs",
+          "why": "If you side with the rieklings in The Chief of Thirsk Hall, the Nords are driven off or killed; these files don't show the exact condition that blocks this favor then."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script points at a medium leveled quest-reward list; what it rolls isn't decoded here. There's also a fail ending; what triggers it isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:038FBC objective 10",
+        "globals DLC2ThirskHalbarnStalhrimCount = 10, DLC2ThirskHalbarnEbonyCount = 15",
+        "giver INFO Dragonborn.esm:038FB9 (stage below 10)",
+        "reward LvlQuestReward02Medium Skyrim.esm:0C0405 via QF_DLC2ThirskFFHalbarn_02038FBC",
+        "Halbarn ref Dragonborn.esm:01A51D in Thirsk Mead Hall",
+        "packages DLC2HalbarnWorkForge8x11 (global 01A51E == 0), DLC2HalbarnEatAtCamp11x2 / SleepAtCamp (== 1)"
+      ]
+    },
+    {
+      "edid": "DLC2ThirskFFHilund",
+      "name": "Hilund Favor Quest",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Hilund of Thirsk asks you to bring her a pile of Riekling Spears.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Hilund",
+          "where": "Thirsk Mead Hall on Solstheim (at Bujold's Retreat, the Nords' camp, before the hall is retaken)",
+          "how": "Talk to Hilund; she asks for 50 Riekling Spears."
+        }
+      ],
+      "firstStep": "Bring 50 Riekling Spears to Hilund",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring 50 Riekling Spears to Hilund"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a medium random quest reward",
+          "when": "when you hand over the spears"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Hilund",
+          "role": "one of the Nords of Thirsk; asks for the spears"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The dialogue conditions on her offer aren't in these files, so it's not shown whether Retaking Thirsk must be done first."
+        },
+        {
+          "field": "firstStep",
+          "why": "The count comes from a global set to 50 in these records. In LoreRim the Riekling Spear is a thrown spear that counts as ammo, so they come in stacks."
+        },
+        {
+          "field": "where",
+          "why": "She's placed in Thirsk Mead Hall, but her packages put her at the Nords' camp until the hall is retaken. Once they're back she eats in the hall at 1 pm and sleeps there from 11 pm."
+        },
+        {
+          "field": "needs",
+          "why": "If you side with the rieklings in The Chief of Thirsk Hall, the Nords are driven off or killed; these files don't show the exact condition that blocks this favor then."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script points at a medium leveled quest-reward list; what it rolls isn't decoded here. There's also a fail ending; what triggers it isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:038FBB objective 10",
+        "global DLC2ThirskHilundSpearCount = 50",
+        "Riekling Spear Dragonborn.esm:017720 FZR_Riekling_Spear_Thrown, kind ammo (LoreRim - Armor Merges.esp)",
+        "giver INFO Dragonborn.esm:038FB7 (stage below 10)",
+        "reward LvlQuestReward02Medium Skyrim.esm:0C0405 via QF_DLC2ThirskFFHilund_02038FBB",
+        "Hilund ref Dragonborn.esm:01A516 in Thirsk Mead Hall",
+        "packages DLCHilundEatInHall13x3, DLC2HilundSleepInHall23x8 (global 01A51E == 0)"
+      ]
+    },
+    {
+      "edid": "DLC2TT1",
+      "name": "Reluctant Steward",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Neloth asks you to find his missing steward; it opens his run of jobs at Tel Mithryn.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Neloth",
+          "where": "inside his tower at Tel Mithryn, Solstheim",
+          "how": "Talk to Neloth; he asks you to find his steward, Varona Nelas."
+        }
+      ],
+      "firstStep": "Find Varona, Neloth's steward, somewhere around Tel Mithryn",
+      "takesYou": [
+        {
+          "place": "Tel Mithryn",
+          "hold": "Solstheim",
+          "why": "ask Talvas, Ulves and Elynea where Varona went"
+        },
+        {
+          "place": "the road to Raven Rock",
+          "hold": "Solstheim",
+          "why": "find Varona's body, killed by ash spawn"
+        },
+        {
+          "place": "The Retching Netch, Raven Rock",
+          "hold": "Solstheim",
+          "why": "recruit Drovas Relvi as the new steward"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find Varona",
+            "Tell Neloth that Varona is dead",
+            "Find a new steward",
+            "Report back to Neloth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold",
+          "when": "when you report back to Neloth"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "A New Debt"
+      ],
+      "closes": [
+        "Varona Nelas is dead"
+      ],
+      "people": [
+        {
+          "name": "Neloth",
+          "role": "Telvanni wizard of Tel Mithryn; gives the quest"
+        },
+        {
+          "name": "Varona Nelas",
+          "role": "his steward; found dead on the road to Raven Rock"
+        },
+        {
+          "name": "Talvas Fathryon",
+          "role": "Neloth's apprentice; can be asked where Varona went"
+        },
+        {
+          "name": "Ulves Romoran",
+          "role": "in the Tel Mithryn kitchen; says Varona went to Raven Rock for supplies"
+        },
+        {
+          "name": "Elynea Mothren",
+          "role": "in the Tel Mithryn apothecary; says Varona left for Raven Rock"
+        },
+        {
+          "name": "Fethis Alor",
+          "role": "in Raven Rock; tells you to ask around at The Retching Netch"
+        },
+        {
+          "name": "Drovas Relvi",
+          "role": "in The Retching Netch; eager to become the new steward, then moves to Tel Mithryn"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The conditions on Neloth's opening line aren't in these files, so whether you must first meet him through the Dragonborn story isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Varona is placed in the Tel Mithryn Steward's House and her body appears at a marker on the Raven Rock road; the exact spot isn't named. Neloth wanders inside his tower."
+        },
+        {
+          "field": "people",
+          "why": "Ulves and Elynea's lines about Varona going to Raven Rock are in the records; Talvas has a line for this step too, but its words aren't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:017E8D stages 150-500, objectives 150/200/300/400",
+        "giver INFO Dragonborn.esm:017E6B Neloth (stage below 101); Talvas/Ulves/Elynea below 171",
+        "aliases VaronaDeadMarker, AshSpawn1-3, EnchanterDoor",
+        "places pointers INFO 017E72 (Ulves), 017E73 (Elynea), 019586 (Fethis Alor), 03A12E (Drovas)",
+        "USSEP INFO Dragonborn.esm:0200B6 condition moved from Old Friends to Reluctant Steward",
+        "Drovas package DLC2DrovasGetToTelMithryn needs this quest at 400+",
+        "gold via DLC2_QF_DLC2TT1_02017E8D.Gold",
+        "questline tel-mithryn opening DLC2TT1"
+      ]
+    },
+    {
+      "edid": "DLC2TT1b",
+      "name": "A New Debt",
+      "plugin": "Dragonborn.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "After you've helped Drovas, Mogrul's man Slitter passes on that Mogrul wants a word.",
+      "needs": [
+        {
+          "what": "Hire Drovas Relvi as Neloth's new steward in Reluctant Steward",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Slitter",
+          "where": "The Retching Netch in Raven Rock, where he stays with Mogrul",
+          "how": "Talk to Slitter, Mogrul's man; he tells you Mogrul wants a word."
+        }
+      ],
+      "firstStep": "Talk to Mogrul at The Retching Netch in Raven Rock",
+      "takesYou": [
+        {
+          "place": "The Retching Netch, Raven Rock",
+          "hold": "Solstheim",
+          "why": "meet Mogrul about Drovas's 1000 septim debt"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Pay Mogrul the 1000 septims",
+          "leadsTo": "The debt is settled"
+        },
+        {
+          "choice": "Persuade Mogrul",
+          "leadsTo": "He takes half, 500 septims"
+        },
+        {
+          "choice": "Refuse and kill Mogrul",
+          "leadsTo": "The quest ends with Mogrul dead; until it's settled he keeps sending thugs after you"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Mogrul",
+            "Pay Mogrul",
+            "Pay or kill Mogrul"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Mogrul dies, if you choose to kill him"
+      ],
+      "people": [
+        {
+          "name": "Mogrul",
+          "role": "Orc moneylender at The Retching Netch; Drovas owed him"
+        },
+        {
+          "name": "Slitter",
+          "role": "Mogrul's thug and messenger; follows Mogrul"
+        },
+        {
+          "name": "Drovas Relvi",
+          "role": "the new steward whose debt this is"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The journal says Mogrul 'sent a messenger', but Slitter's packages only keep him in The Retching Netch with Mogrul; nothing here shows him coming to find you. Mogrul himself also has a line for this quest before it starts, so talking to him may start it as well."
+        },
+        {
+          "field": "needs",
+          "why": "What sets the quest going isn't in these files. The journal says helping Drovas led to it, so it follows hiring him in Reluctant Steward; whether that quest has to be finished first isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "The script holds a gold property, but by the journal you pay Mogrul, so it is probably the payment, not a reward."
+        },
+        {
+          "field": "choices",
+          "why": "Mogrul's last actor record (LoreRim - Outfit Distribution.esp) marks him essential, yet the quest has a 'killed him' ending; these files don't show the quest lifting that."
+        },
+        {
+          "field": "where",
+          "why": "Mogrul sleeps and has lunch at The Retching Netch at noon; from 9 am for 8 hours an AI Overhaul package sends him to a spot these files don't name."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01844E stages 100-320, objectives 100/200/210",
+        "giver INFO Dragonborn.esm:019577 Slitter (stage below 11); Mogrul below 11, Drovas below 201",
+        "Mogrul Dragonborn.esm:01959A ref 01959B in The Retching Netch; essential flag in schedules record",
+        "Slitter Dragonborn.esm:019596 package DLC2SlitterFollowMogrul",
+        "gold via DLC2_QF_DLC2TT1b_0201844E.Gold",
+        "Slitter packages UDBPSlitterSleep (The Retching Netch), DLC2SlitterFollowMogrul (Mogrul alive), UDBPSlitterSandboxIfMorgulDies; no Slitter alias in this quest",
+        "Mogrul INFO below stage 11 listed as another giver line"
+      ]
+    },
+    {
+      "edid": "DLC2TT2",
+      "name": "Old Friends",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Neloth is under attack from someone unknown and gives you a ring to track them down.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Neloth",
+          "where": "inside his tower at Tel Mithryn, Solstheim",
+          "how": "Talk to Neloth; he gives you Neloth's Ring of Tracking and asks you to find the source of the attacks."
+        }
+      ],
+      "firstStep": "Wear Neloth's ring and walk the grounds of Tel Mithryn to find the source of the attacks",
+      "takesYou": [
+        {
+          "place": "Tel Mithryn grounds",
+          "hold": "Solstheim",
+          "why": "the ring leads to a heart stone hidden in Ildari Sarothril's grave"
+        },
+        {
+          "place": "Highpoint Tower",
+          "hold": "Solstheim",
+          "why": "track down and kill Ildari, deep under the tower"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the source of the attacks",
+            "Talk to Neloth",
+            "Kill Ildari",
+            "Talk to Neloth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Neloth's Ring of Tracking",
+          "when": "at the start, to find the source of the attacks"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Ildari Sarothril dies"
+      ],
+      "people": [
+        {
+          "name": "Neloth",
+          "role": "gives the quest"
+        },
+        {
+          "name": "Ildari Sarothril",
+          "role": "Neloth's former apprentice, alive and seeking revenge; the boss deep under Highpoint Tower"
+        },
+        {
+          "name": "Niyya",
+          "role": "a prisoner in Highpoint Tower you can rescue"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The conditions on Neloth's opening line aren't in these files, so what must come first (for example Reluctant Steward) isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a spell called Fling, but it isn't among the spells a player can learn in these files, so it may be the attack on Neloth rather than a reward. Whether you keep the ring isn't shown either."
+        },
+        {
+          "field": "people",
+          "why": "Ildari's last actor record (LoreRim - Outfit Distribution.esp) marks her essential, though the quest says to kill her; these files don't show the quest lifting that."
+        },
+        {
+          "field": "takesYou",
+          "why": "Highpoint Tower has traps, and its rated level for enemies runs from 20 to 60, with Ildari at level 43."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:0195A1 stages 100-600, objectives 100/200/400/500",
+        "giver INFO Dragonborn.esm:019570 Neloth (stage below 11)",
+        "alias NelothsRing -> Neloth's Ring of Tracking Dragonborn.esm:01961C",
+        "aliases HeartStone, DungeonLocation Highpoint Tower, Niyya",
+        "Highpoint Tower Dragonborn.esm:0184FC boss Ildari Sarothril level 43; INFO 03A310 Niyya, 0279DF, 03A2F9",
+        "script DLC2_QF_DLC2TT2_020195A1.DLC2Fling -> Dragonborn.esm:01772C"
+      ]
+    },
+    {
+      "edid": "DLC2TTF1",
+      "name": "From the Ashes",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Talvas, Neloth's apprentice, has summoned an Ash Guardian by accident and asks you to destroy it; you can also just run into it.",
+      "needs": [
+        {
+          "what": "If the Dragonborn story is under way, get it at least as far as Raven Rock telling you of Miraak's temple",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Talvas Fathryon",
+          "where": "inside Neloth's tower at Tel Mithryn, Solstheim",
+          "how": "Talk to Talvas; he asks you to destroy the Ash Guardian loose on the grounds."
+        },
+        {
+          "who": "",
+          "where": "the grounds of Tel Mithryn",
+          "how": "Come across the Ash Guardian running amok yourself."
+        }
+      ],
+      "firstStep": "Destroy the Ash Guardian on the Tel Mithryn grounds",
+      "takesYou": [
+        {
+          "place": "Tel Mithryn grounds",
+          "hold": "Solstheim",
+          "why": "destroy the Ash Guardian"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Destroy the Ash Guardian",
+            "Talk to Talvas"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Spell Tome (Expert): Conjure Ash Guardian",
+          "when": "when you talk to Talvas afterwards"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Talvas Fathryon",
+          "role": "Neloth's apprentice who summoned the Ash Guardian"
+        },
+        {
+          "name": "Neloth",
+          "role": "has lines during the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "A silent early step goes ahead only once the Dragonborn story has reached Raven Rock pointing you to Miraak's temple, or when that story isn't running at all; how this gates Talvas's offer isn't fully shown."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds both the spell tome and the Conjure Ash Guardian spell; which you're handed isn't shown. In LoreRim the spell is Expert Conjuration, needing skill 75."
+        },
+        {
+          "field": "where",
+          "why": "Talvas is placed in Neloth's tower and sells there from 8 am for 12 hours; at night he sleeps."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01AAB0 stages 10-400, objectives 100/200",
+        "stage 10 entry: DLC2MQ01 stage >= 30 or DLC2MQ01 not running",
+        "stage 100 log variants on stage 50 done / not done",
+        "giver INFO Dragonborn.esm:01AA9A Talvas (stage below 31); Neloth below 201",
+        "Ash Guardian Dragonborn.esm:01AAB2 in holding cell 0142EC",
+        "rewards DLC2SpellTomeConjureAshGuardian 01AABA, DLC2AshGuardian 017782 (REQ_Conjuration4, minSkill 75)",
+        "Talvas package DLC2TalvasSell8x12"
+      ]
+    },
+    {
+      "edid": "DLC2TTF2",
+      "name": "Healing a House",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Elynea needs soaked taproots to heal a withered part of Neloth's tower.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Elynea Mothren",
+          "where": "Tel Mithryn Apothecary, Solstheim",
+          "how": "Talk to Elynea; she needs three taproots soaked in the headwaters of the Harstrad river."
+        }
+      ],
+      "firstStep": "Get three taproots",
+      "takesYou": [
+        {
+          "place": "Headwaters of Harstrad",
+          "hold": "Solstheim",
+          "why": "get the taproots from the spriggans there and soak them in the water"
+        },
+        {
+          "place": "Tel Mithryn",
+          "hold": "Solstheim",
+          "why": "plant a taproot in the withered tower wall"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get three taproots (0/3)",
+            "Soak the taproots",
+            "Talk to Elynea",
+            "Plant the taproot",
+            "Talk to Elynea"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Elynea Mothren",
+          "role": "Tel Mithryn's apothecary; gives the quest, keeps two taproots"
+        },
+        {
+          "name": "Neloth",
+          "role": "has lines during the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The quest places spriggans and a spriggan boss near markers, and the soaking water at the Headwaters of Harstrad (near Skaal Village); that the taproots come from those spriggans is read from the alias names."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is in the quest's script properties in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Her opening line's conditions aren't in these files. There's also a fail ending; what triggers it isn't shown."
+        },
+        {
+          "field": "where",
+          "why": "Elynea sells in the apothecary from 8 am for 12 hours and sleeps from 10 pm."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01AAC8 stages 100-510, objectives 100/110/200/300/400",
+        "global DLC2TTF2TaprootsAcquired",
+        "aliases Spriggan01/02, SprigganBoss, SoakedTaproot1-3, Water, WitheredWall, Harstrad, HarstradMapMarker",
+        "giver INFO Dragonborn.esm:01AA91 Elynea (stage below 100); Neloth below 301",
+        "place Dragonborn.esm:039F98 Headwaters of Harstrad, LocTypeSprigganGrove",
+        "package DLC2ElyneaSell8x12"
+      ]
+    },
+    {
+      "edid": "DLC2TTR1",
+      "name": "Lost Knowledge",
+      "plugin": "Dragonborn.esm (last edited by UndeathFixes.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "Neloth has found another of Hermaeus Mora's Black Books in a dungeon the game picks, and wants you to fetch it.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Neloth",
+          "where": "inside his tower at Tel Mithryn, Solstheim",
+          "how": "Talk to Neloth; he says he has located another Black Book and wants it brought to him."
+        }
+      ],
+      "firstStep": "Retrieve the Black Book from the dungeon Neloth names",
+      "takesYou": [
+        {
+          "place": "a dungeon picked when the quest starts",
+          "hold": "",
+          "why": "retrieve the Black Book"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the Black Book",
+            "Talk to Neloth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold",
+          "when": "when you bring the book to Neloth"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Neloth",
+          "role": "wants the book"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The dungeon and the book are filled in when the quest starts; these files don't list which dungeons it can pick."
+        },
+        {
+          "field": "needs",
+          "why": "The quest is set up by a 'change location' story event and Neloth's line; neither's conditions are in these files. 'Another' Black Book suggests the Dragonborn story's Black Books come first."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01B65F stages 100-300, objectives 100/200",
+        "aliases ApocryphaBook, Dungeon",
+        "start node DLC2BlackBookQuestNode, event change location",
+        "giver INFO Dragonborn.esm:01B634 Neloth (stage below 100)",
+        "gold via DLC2_QF_DLC2TTR1_0201B65F.Gold"
+      ]
+    },
+    {
+      "edid": "DLC2TTR2",
+      "name": "Heart Stones",
+      "plugin": "Dragonborn.esm",
+      "canDo": "radiant",
+      "canDoWhy": "Neloth wants a heart stone for his research, from a mine the game picks.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Neloth",
+          "where": "inside his tower at Tel Mithryn, Solstheim",
+          "how": "Talk to Neloth; he asks you to find him a heart stone."
+        }
+      ],
+      "firstStep": "Get a Heart Stone from the mine Neloth marks",
+      "takesYou": [
+        {
+          "place": "a mine picked when the quest starts",
+          "hold": "",
+          "why": "mine a heart stone from a vein"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get a Heart Stone",
+            "Talk to Neloth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold",
+          "when": "when you bring Neloth the heart stone"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Neloth",
+          "role": "wants the heart stone"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The mine, its map marker and the vein are filled in when the quest starts; these files don't list which mines it can pick, or which hold they're in."
+        },
+        {
+          "field": "needs",
+          "why": "The quest is set up by a 'change location' story event and Neloth's line; neither's conditions are in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:01C06E stages 100-300, objectives 100/200",
+        "aliases HeartStoneMine, MineMapMarker, HeartStoneVein",
+        "start node DLC2NelothQuestNode, event change location",
+        "giver INFO Dragonborn.esm:01C053 Neloth (stage below 100)",
+        "gold via DLC2_QF_DLC2TTR2_0201C06E.Gold"
+      ]
+    }
+  ]
+}
