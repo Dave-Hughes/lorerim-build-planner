@@ -1,0 +1,435 @@
+{
+ "about": "WO-145 Part 1: the XP budget's own numbers, read from the install, not wished. Writes gamedata/<version>/xp.json:",
+ "curve": {
+  "formula": "25 * (level + 11)",
+  "note": "the XP a player at `level` needs to reach level + 1; no file on the install states this outright, so measured from the player's own saves instead",
+  "evidence": [
+   {
+    "save": 1,
+    "level": 1,
+    "lvlUpExp": 300
+   },
+   {
+    "save": 1,
+    "level": 3,
+    "lvlUpExp": 350
+   },
+   {
+    "save": 10,
+    "level": 4,
+    "lvlUpExp": 375
+   },
+   {
+    "save": 20,
+    "level": 5,
+    "lvlUpExp": 400
+   },
+   {
+    "save": 24,
+    "level": 6,
+    "lvlUpExp": 425
+   },
+   {
+    "save": 30,
+    "level": 7,
+    "lvlUpExp": 450
+   },
+   {
+    "save": 35,
+    "level": 8,
+    "lvlUpExp": 475
+   },
+   {
+    "save": 43,
+    "level": 9,
+    "lvlUpExp": 500
+   },
+   {
+    "save": 50,
+    "level": 10,
+    "lvlUpExp": 525
+   },
+   {
+    "save": 80,
+    "level": 11,
+    "lvlUpExp": 550
+   },
+   {
+    "save": 100,
+    "level": 12,
+    "lvlUpExp": 575
+   },
+   {
+    "save": 108,
+    "level": 13,
+    "lvlUpExp": 600
+   },
+   {
+    "save": 114,
+    "level": 15,
+    "lvlUpExp": 650
+   },
+   {
+    "save": 242,
+    "level": 21,
+    "lvlUpExp": 800
+   },
+   {
+    "save": 255,
+    "level": 22,
+    "lvlUpExp": 825
+   },
+   {
+    "save": 279,
+    "level": 23,
+    "lvlUpExp": 850
+   },
+   {
+    "save": 286,
+    "level": 24,
+    "lvlUpExp": 875
+   },
+   {
+    "save": 296,
+    "level": 25,
+    "lvlUpExp": 900
+   },
+   {
+    "save": 326,
+    "level": 26,
+    "lvlUpExp": 925
+   },
+   {
+    "save": 344,
+    "level": 27,
+    "lvlUpExp": 950
+   },
+   {
+    "save": 372,
+    "level": 29,
+    "lvlUpExp": 1000
+   }
+  ]
+ },
+ "questXp": {
+  "from": "Experience.ini (LoreRim - MCM and INI Settings)",
+  "values": {
+   "objectives": 0,
+   "none": 0,
+   "main": 200,
+   "college": 100,
+   "thieves": 100,
+   "brotherhood": 100,
+   "companions": 100,
+   "misc": 0,
+   "daedric": 200,
+   "side": 100,
+   "civilwar": 150,
+   "dawnguard": 200,
+   "dragonborn": 200
+  }
+ },
+ "discoveryXp": {
+  "from": "Experience.ini (LoreRim - MCM and INI Settings)",
+  "values": {
+   "default": 10,
+   "city": 10,
+   "town": 10,
+   "settlement": 10,
+   "cave": 10,
+   "camp": 10,
+   "fort": 10,
+   "nordicruin": 10,
+   "dwemerruin": 10,
+   "shipwreck": 10,
+   "grove": 10,
+   "landmark": 10,
+   "dragonlair": 10,
+   "farm": 10,
+   "woodmill": 10,
+   "mine": 10,
+   "militarycamp": 10,
+   "doomstone": 10,
+   "wheatmill": 10,
+   "smelter": 10,
+   "stable": 10,
+   "imperialtower": 10,
+   "clearing": 10,
+   "pass": 10,
+   "altar": 10,
+   "rock": 10,
+   "lighthouse": 10,
+   "orcstronghold": 10,
+   "giantcamp": 10,
+   "shack": 10,
+   "nordictower": 10,
+   "nordicdwelling": 10,
+   "docks": 10,
+   "daedricshrine": 10,
+   "castle": 10,
+   "miraaktemple": 10,
+   "standingstone": 10,
+   "telvannitower": 10,
+   "castlekarstaag": 10
+  }
+ },
+ "clearXp": {
+  "from": "Experience.ini (LoreRim - MCM and INI Settings)",
+  "values": {
+   "default": 100,
+   "city": 100,
+   "town": 100,
+   "settlement": 100,
+   "cave": 100,
+   "camp": 100,
+   "fort": 200,
+   "nordicruin": 200,
+   "dwemerruin": 200,
+   "shipwreck": 100,
+   "grove": 100,
+   "landmark": 100,
+   "dragonlair": 200,
+   "farm": 100,
+   "woodmill": 100,
+   "mine": 100,
+   "militarycamp": 100,
+   "doomstone": 100,
+   "wheatmill": 100,
+   "smelter": 100,
+   "stable": 100,
+   "imperialtower": 100,
+   "clearing": 100,
+   "pass": 100,
+   "altar": 100,
+   "rock": 100,
+   "lighthouse": 100,
+   "orcstronghold": 100,
+   "giantcamp": 100,
+   "shack": 100,
+   "nordictower": 100,
+   "nordicdwelling": 100,
+   "docks": 100,
+   "daedricshrine": 100,
+   "castle": 100,
+   "miraaktemple": 100,
+   "standingstone": 100,
+   "telvannitower": 100,
+   "castlekarstaag": 100
+  }
+ },
+ "crafting": {
+  "from": "Crafting Grants XP.ini (LoreRim - MCM and INI Settings)",
+  "values": {
+   "alchemyxp": 5,
+   "smithingxp": 0,
+   "tanningxp": 0,
+   "enchantingxp": 5,
+   "smeltingxp": 0,
+   "miningxp": 10,
+   "disenchantxp": 5,
+   "cookingxp": 0,
+   "harvestxp": 0
+  }
+ },
+ "killing": {
+  "from": "Experience.ini (LoreRim - MCM and INI Settings)",
+  "enabled": true,
+  "values": {
+   "flevelfactor": 0.8,
+   "fgroupfactor": 0.0,
+   "fmaxlevelmult": 3.0,
+   "fdamagethreshold": 0.2,
+   "fkillingmult": 1.0
+  }
+ },
+ "reading": {
+  "from": "Experience.ini (LoreRim - MCM and INI Settings)",
+  "enabled": false
+ },
+ "skillUse": {
+  "from": "Experience.ini (LoreRim - MCM and INI Settings)",
+  "enabled": false
+ },
+ "callings": {
+  "Scholar": {
+   "XP": 17,
+   "DailyLimit": 10,
+   "MinSeconds": 10,
+   "SecondsLow": 2,
+   "SecondsHigh": 10,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 13,
+   "Daily_Master": 17,
+   "SeriesXPPerVolume": 10
+  },
+  "Wanderer": {
+   "XP": 15,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "CartographerXP": 10,
+   "HoldXPPerPlace": 10
+  },
+  "Bard": {
+   "XP": 25,
+   "DailyLimit": 5,
+   "FirstInnXP": 50,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 6,
+   "Daily_Master": 7,
+   "Inns_Level": 0,
+   "FirstInstrumentXP": 15,
+   "HoldXPPerInn": 25
+  },
+  "Laborer": {
+   "Scale": 1,
+   "DailyLimit": 3,
+   "RankXP_Journeyman": 10,
+   "RankXP_Master": 20,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "DailyLimit_Journeyman": 3,
+   "DailyLimit_Master": 3,
+   "TradeLevel5XP": 200,
+   "TradeLevel10XP": 500
+  },
+  "Smith": {
+   "FirstXP": 15,
+   "RepeatXP": 4,
+   "DailyXP": 150,
+   "ImproveXP": 2,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "DailyXP_Journeyman": 200,
+   "DailyXP_Master": 250,
+   "SetXP_Basic": 100,
+   "SetXP_Fine": 250,
+   "SetXP_Master": 500
+  },
+  "Gatherer": {
+   "PlantXP": 3,
+   "FirstPlantXP": 10,
+   "WoodXP": 2,
+   "VeinXP": 10,
+   "DailyXP": 150,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "DailyXP_Journeyman": 200,
+   "DailyXP_Master": 250,
+   "HoldXPPerPlant": 15
+  },
+  "Hunter": {
+   "KillXP": 10,
+   "FirstKindXP": 25,
+   "DailyKills": 15,
+   "SkinXPPerHour": 10,
+   "DailySkinXP": 200,
+   "DailySkinXP_Journeyman": 250,
+   "DailySkinXP_Master": 300,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 20,
+   "Daily_Master": 25,
+   "Kinds_Level": 0
+  },
+  "Fisher": {
+   "RodXP": 12,
+   "FirstSpeciesXP": 25,
+   "HandXP": 4,
+   "DailyFish": 15,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 20,
+   "Daily_Master": 25,
+   "Kinds_Level": 0,
+   "WaterXPPerFish": 25
+  },
+  "Thief": {
+   "Mult": 1,
+   "DailyXP": 150,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 200,
+   "Daily_Master": 250,
+   "JarlXP": 100
+  },
+  "Pilgrim": {
+   "XPPerPoint": 1,
+   "DailyXP": 150,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 200,
+   "Daily_Master": 250,
+   "PrayerBaseXP": 25
+  },
+  "Helper": {
+   "XP": 40,
+   "DailyLimit": 5,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 7,
+   "Daily_Master": 8
+  },
+  "Cook": {
+   "FirstXP": 10,
+   "RepeatXP": 3,
+   "DailyXP": 150,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 200,
+   "Daily_Master": 250,
+   "ChapterXPPerDish": 10
+  },
+  "Alchemist": {
+   "FirstXP": 15,
+   "RepeatXP": 4,
+   "DailyXP": 150,
+   "Level": 0,
+   "Ratio": 0,
+   "Rank": 0,
+   "ProgressBonus": 0,
+   "Daily_Journeyman": 200,
+   "Daily_Master": 250,
+   "ChapterXPPerEffect": 10
+  }
+ },
+ "fillers": {
+  "missives": {
+   "xpPerLeg": 100,
+   "note": "never as a lump; see WO-148 item 7"
+  },
+  "tomeTrials": {
+   "xpByTier": [
+    50,
+    100,
+    200
+   ],
+   "note": "gated behind Tending the Flames; see WO-148 item 8"
+  }
+ }
+}
