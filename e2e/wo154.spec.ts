@@ -58,3 +58,21 @@ test("the door: get_quest returns the page's sections in its order, suggest_ques
     expect(Object.keys(x)).toEqual(expect.arrayContaining(["canDo", "needs", "starts", "gets"]));
   }
 });
+
+test("screenshots for Dave: the read quests and the lines, at 1440 and 390", async ({ page }) => {
+  for (const [slug, name] of [
+    ["quests/q/lights-out", "lights-out"],
+    ["quests/q/speaking-with-silence", "speaking-with-silence"],
+    ["quests/q/reparations", "reparations"],
+    ["quests/q/mourning-never-comes", "mourning-never-comes"],
+    ["quests/thieves-guild", "thieves-guild-line"],
+    ["quests/capital-whiterun", "more-to-do-in-whiterun"],
+  ]) {
+    for (const width of [1440, 390]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/${slug}`);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth), `${slug} at ${width}`).toBeLessThanOrEqual(0);
+      await page.screenshot({ path: `test-results/wo154-${name}-${width}.png`, fullPage: true });
+    }
+  }
+});

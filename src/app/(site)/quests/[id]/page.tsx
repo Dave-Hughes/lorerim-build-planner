@@ -76,7 +76,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const jobs = line.board ? [] : line.quests.filter((q) => q.xp === 0);
   const shelf0 = line.category === "work";
   const rows = new Map(line.quests.map((q, i) => [q.edid, rowOf(q, i > 0 ? line.quests[i - 1] : undefined)]));
-  const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards })).filter((g) => g.what.length > 0);
+  const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards.filter((r) => !/^Gold\b/i.test(r.what)) })).filter((g) => g.what.length > 0);
   const closes = line.quests.flatMap((q) => rows.get(q.edid)!.closes.map((text) => ({ edid: q.edid, name: q.name, text })));
   const read = line.quests.filter((q) => q.source === "reads").length;
   // A shelf of jobs is grouped by where you pick them up (WO-154): the town its start names, else where it is, else "Elsewhere".

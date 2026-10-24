@@ -231,7 +231,8 @@ export function rowOf(q: Quest, before?: Quest) {
   return {
     summary: summary && summary.length > 170 ? `${summary.slice(0, 167).trimEnd()}...` : summary,
     places: p.takesYou.slice(0, 3).map((t) => [t.place, t.danger].filter(Boolean).join(": ")),
-    needs: p.needs.map((n) => n.text).filter((t) => !prior.has(t)),
+    // What the quest before it already needed isn't repeated, and neither is finishing that quest: the order says it.
+    needs: p.needs.map((n) => n.text).filter((t) => !prior.has(t) && !(before && t.includes(before.name))),
     canDo: p.canDo,
     source: p.source,
     closes: p.closes,

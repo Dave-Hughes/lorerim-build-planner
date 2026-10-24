@@ -5052,18 +5052,18 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: building (Mac)
+Status: for Bob
 
 **Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
 
-- [ ] `build.py` reads `quest_reads/checked/*.json` and uses each quest's read for every field it has (`canDo`, `needs`, `starts`, `firstStep`, `takesYou`, `choices`, `steps`, `rewards`, `opens`, `closes`, `people`, `unsure`). The old rule-made fields stay only as a fallback for a quest with no read yet, marked `source: "rules"` so the page and the door can say so. Nothing from a read is reworded.
-- [ ] Each `takesYou` place joined to the places index for its danger, in the places words ("bandits from level 6, the chief 18 to 24"). A place the index doesn't know is shown without danger, never a made-up one.
-- [ ] XP from the read's `type` through LoreRim's Experience.ini, as now.
-- [ ] The quest page, the quest line page and the jobs pages exactly as `quest-pages.md` lays them out, in that order. No stage numbers, record ids or per-line "game files" tags anywhere. No line of one quest: a lone quest sits in its category. Jobs grouped by where you pick them up.
-- [ ] `get_quest` returns the page's sections 2 to 10 in order; `suggest_quests` returns `canDo`, `needs`, `starts` and `rewards` for every result, so no result has `start: null`.
-- [ ] The player questions (`docs/player-questions.md`) still pass; questions 1, 3, 9 and 31 to 37 are re-read against the new data and any that change get Bob's word before their answer changes.
-- [ ] Screenshots for Dave: Lights Out!, Speaking With Silence, Reparations, Mourning Never Comes, The Thieves Guild line, More to do in Whiterun.
-- [ ] Build it against the first checked batches (the schema is fixed in `quest_reads/BRIEF.md`); re-run `build.py` as batches land, no code change needed for more of them.
+- [x] `build.py` reads `quest_reads/checked/*.json` and uses each quest's read for every field it has (`canDo`, `needs`, `starts`, `firstStep`, `takesYou`, `choices`, `steps`, `rewards`, `opens`, `closes`, `people`, `unsure`). The old rule-made fields stay only as a fallback for a quest with no read yet, marked `source: "rules"` so the page and the door can say so. Nothing from a read is reworded.
+- [x] Each `takesYou` place joined to the places index for its danger, in the places words ("bandits from level 6, the chief 18 to 24"). A place the index doesn't know is shown without danger, never a made-up one.
+- [x] XP from the read's `type` through LoreRim's Experience.ini, as now.
+- [x] The quest page, the quest line page and the jobs pages exactly as `quest-pages.md` lays them out, in that order. No stage numbers, record ids or per-line "game files" tags anywhere. No line of one quest: a lone quest sits in its category. Jobs grouped by where you pick them up.
+- [x] `get_quest` returns the page's sections 2 to 10 in order; `suggest_quests` returns `canDo`, `needs`, `starts` and `rewards` for every result, so no result has `start: null`.
+- [x] The player questions (`docs/player-questions.md`) still pass; questions 1, 3, 9 and 31 to 37 are re-read against the new data and any that change get Bob's word before their answer changes.
+- [x] Screenshots for Dave: Lights Out!, Speaking With Silence, Reparations, Mourning Never Comes, The Thieves Guild line, More to do in Whiterun.
+- [x] Build it against the first checked batches (the schema is fixed in `quest_reads/BRIEF.md`); re-run `build.py` as batches land, no code change needed for more of them.
 
 ### Jeff's notes, progress (Mac, 23 Oct)
 - **No reads on staging yet** (`quest_reads/read/` and `checked/` are empty), so everything below is built to the schema in `BRIEF.md` and checked on synthetic reads and on the older rules; the boxes stay unticked until real batches land and I have looked at the pages with them.
@@ -5080,6 +5080,13 @@ Status: building (Mac)
 - **How sure.** One short line, "Read from the game files and checked by a second reader. Unsure: rewards, steps, people, starts", with the reasons folded under "Why we're unsure". The readers write 3 to 5 notes per quest, so the full words in a line would be a paragraph.
 - **What a read changes on the page.** The Throat of the World now reads: Starts by itself (the reader's why), needs Alduin's Wall, how to start it, first step, High Hrothgar with the places index's danger ("trolls from level 14, up to 150; the boss The Beast, level 14", the PC's data), what you get, what it opens, the steps, how sure.
 - **Still to do when more batches land:** the screenshots for Dave (Lights Out!, Speaking With Silence, Reparations, Mourning Never Comes, The Thieves Guild line and More to do in Whiterun: none of those are in the first 13 batches, so I have none to show yet), re-reading player questions 1, 3, 9 and 31 to 37 against reads, and dropping the older `start` block from `get_quest` once reads cover the quests those questions ask about.
+
+### Jeff's notes, done for the batches on staging (Mac, 23 Oct, 19:05)
+- **Built and pushed with 270 reads** (27 of the 85 batches); 956 quests are still on the older rules and the page says so ("Not read yet: this page is from the planner's older rules"). Every batch that lands needs `python3 scripts/gamedata/build.py` and a push of `quests.json`; no code changes. I'll keep doing that while I'm on Mac and nothing else is queued.
+- **Screenshots for Dave:** `npx playwright test e2e/wo154.spec.ts` writes `test-results/wo154-<page>-1440.png` and `-390.png` for Lights Out! (still on the rules: the only quest in its line, so it's in Side stories), Speaking With Silence, Reparations, Mourning Never Comes (read), the Thieves Guild line and More to do in Whiterun. No overflow at 390. The line page's "What the whole line gives" lists every non-gold reward of its quests (the line reads, WO-153 Part 2, aren't in yet to pick the big ones), and a row no longer repeats "Needs Finish <the quest before it>".
+- **Player questions:** 1, 3, 9 and 31 to 37 still pass with the 270 reads, so none of their answers changed; the ones that ask about quests not yet read will be looked at as their batches land.
+- **Decisions for Bob (Part 5):** (1) where a read and the older rules disagree on a start, the read wins, except a way a player found in game, which wins over both (Dave's Jaree-Ra); (2) the record-id notes (above); (3) the line page keeps the rules' "What it is" and "How to get in" until line reads exist; (4) `get_quest` keeps the older `start` block beside the new sections for now.
+- **Checks:** typecheck, lint, 696 unit tests, 322 gamedata tests, the build and the quest e2e (`wo100`, `wo136`, `wo146`, `wo147`, `wo148`, `wo154`) pass. I did not run the whole e2e: only the Quests pages and the door changed.
 
 ## WO-153  Quest reads: an agent reads every quest's records, a second checks it (Bob runs it, 23 Oct 2026)
 Status: building (Bob)
