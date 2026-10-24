@@ -44,3 +44,4 @@
 - **043** (Solstheim favors, Thirsk): 5 fixed, 1 unsure. A New Debt starts by talking to Slitter, not by itself; From the Ashes only waits while the Dragonborn story hasn't reached the temple; Heart Stones' mine is picked when it starts.
 - **032** (Malacath, Sheogorath, the Shivering Isles mod): 8 fixed, 1 unsure. The Cursed Tribe's chiefs by the hour; the Sanctum of Malacath is inside Fallowstone Cave, a different spot from the shrine; Bane of the Undead needs Restoration 100; Potema is a he in the records.
 - **041** (The Forgotten City, Gravewind, Served Cold): 9 fixed. Cassia's probable reward is the Treasure Hunter's Talisman; Lost to Oblivion needs In the Pines and Lost in the Woods first; Lifesurge restores all health once a day; Captain Veleth's whole day.
+- **044** (Skaal Village, Neloth's jobs): 5 fixed. Vahlok's Tomb's danger (30 to 120, the boss Vahlok the Jailor at 120, traps); the Abandoned Lodge is by Raven Rock; Morwen works with Baldor by day.

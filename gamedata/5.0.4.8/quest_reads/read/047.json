@@ -1,0 +1,1221 @@
+[
+ {
+  "edid": "MS06",
+  "name": "The Wolf Queen Awakened",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Falk Firebeard in the Blue Palace sends you on once you've dealt with the necromancers in Wolfskull Cave.",
+  "needs": [
+   {
+    "what": "Finish The Man Who Cried Wolf (clear Wolfskull Cave for Falk Firebeard)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Falk Firebeard",
+    "where": "the Blue Palace, Solitude (he keeps the court there from 6 am for 16 hours)",
+    "how": "Report back to Falk after stopping the ritual in Wolfskull Cave; he tells you Potema is gathering power and sends you to Styrr for the key to her catacombs."
+   }
+  ],
+  "firstStep": "Speak to Styrr in Solitude's Hall of the Dead",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead",
+    "hold": "Haafingar",
+    "why": "Styrr gives you the key to Potema's Catacombs, and later blesses her remains"
+   },
+   {
+    "place": "Potema's Catacombs",
+    "hold": "Haafingar",
+    "why": "defeat Potema and take her remains"
+   },
+   {
+    "place": "Blue Palace",
+    "hold": "Haafingar",
+    "why": "report to Falk Firebeard for the reward"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Styrr",
+     "Defeat Potema",
+     "Retrieve Potema's remains",
+     "Return to Falk Firebeard",
+     "Give Potema's remains to Styrr"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "a random reward item from the game's quest-reward lists (the top tier)",
+    "when": "from Falk Firebeard at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Falk Firebeard",
+    "role": "steward in the Blue Palace; gives the quest and the reward"
+   },
+   {
+    "name": "Styrr",
+    "role": "priest of the Hall of the Dead in Solitude; has the catacombs key and blesses Potema's remains. While you're on this quest he waits near the Hall's entrance"
+   },
+   {
+    "name": "Potema",
+    "role": "the Wolf Queen, fought in her catacombs"
+   },
+   {
+    "name": "Sybille Stentor",
+    "role": "court wizard in the Blue Palace; part of the quest's cast"
+   },
+   {
+    "name": "Una",
+    "role": "Blue Palace servant; part of the quest's cast"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No start condition is shown in these files. The link comes from the records: the Wolf Queen story line opens with The Man Who Cried Wolf, which ends with 'return to Falk Firebeard', and this quest's first journal line says Falk has sent you to Styrr."
+   },
+   {
+    "field": "takesYou",
+    "why": "Potema's Catacombs has no map marker or nearest town in the place records. It's entered from a room in Solitude next to the Hall of the Dead, but that room isn't named in these files. The catacombs' boss is listed at levels 100 to 125."
+   },
+   {
+    "field": "starts",
+    "why": "The Unofficial Patch adds a backup start that fires when you change location. Its conditions aren't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:026C4D MS06 (editedBy USSEP)",
+   "giver INFO Skyrim.esm:02C18C Falk Firebeard, others Styrr",
+   "start node USKPMS06FixNode (change location)",
+   "questline the-wolf-queen-awakened opening MS06Start Skyrim.esm:093807; MS06Start stage 100 'I should return to Falk Firebeard'",
+   "MS06 stage 50/100/150/250 logs",
+   "reward QF_MS06_00026C4D.LvlQuestReward04Wow Skyrim.esm:0C0407",
+   "Styrr package SolitudeStyrrHalloftheDeadSandboxEntrance (MS06 stage >=50, !=100, <170)",
+   "Falk package SolitudePalaceCourtStewardSandbox6x16",
+   "door Skyrim.esm:077077 from cell 016A02 into Potema's Catacombs 068B99",
+   "place Potema's Catacombs boss leveled 100-125, hold Haafingar"
+  ]
+ },
+ {
+  "edid": "MS07",
+  "name": "Lights Out!",
+  "plugin": "Skyrim.esm (last edited by SaveTheIcerunner.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Jaree-Ra on the Solitude docks offers you a job.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Jaree-Ra",
+    "where": "the Solitude docks: he works by the warehouse from 10 am for 8 hours and hangs about the docks; he sleeps aboard the Red Wave",
+    "how": "Talk to Jaree-Ra and hear his offer. You can take it, or report him to the guard captain."
+   }
+  ],
+  "firstStep": "Accept Jaree-Ra's offer in Solitude",
+  "takesYou": [
+   {
+    "place": "Solitude Lighthouse",
+    "hold": "Haafingar",
+    "why": "put out the lighthouse fire"
+   },
+   {
+    "place": "Wreck of the Icerunner",
+    "hold": "Haafingar",
+    "why": "meet Deeja at the wrecked ship, up Solitude's eastern shoreline"
+   },
+   {
+    "place": "Broken Oar Grotto",
+    "hold": "Haafingar",
+    "why": "Jaree-Ra's bandits take the loot here, a short walk from Solitude"
+   },
+   {
+    "place": "Castle Dour",
+    "hold": "Haafingar",
+    "why": "Captain Aldis, if you report Jaree-Ra"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Take Jaree-Ra's deal and put out the lighthouse fire",
+    "leadsTo": "The Icerunner runs aground. At the wreck Deeja turns on you; after you defeat her, Jaree-Ra has taken the loot to Broken Oar Grotto and you must defeat him there."
+   },
+   {
+    "choice": "Report Jaree-Ra to the guard captain",
+    "leadsTo": "You must find evidence of his crimes. Once you do, he is arrested."
+   },
+   {
+    "choice": "Find out he's working with the Blackblood Marauders, then confront him",
+    "leadsTo": "Talk him into giving up, or into making you his partner. As partners you put out the fire and take the loot with him, or betray him and the Marauders and keep it yourself."
+   },
+   {
+    "choice": "Find out he's working with the Marauders, then tell the guards",
+    "leadsTo": "He is arrested."
+   },
+   {
+    "choice": "Kill Jaree-Ra",
+    "leadsTo": "If he dies before the ship wrecks, the quest fails and the Icerunner docks safely. If you kill him at the docks later, you go on to the wreck. If he learns you killed his sister Deeja, he turns on you."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "take the job",
+    "objectives": [
+     "Accept Jaree-Ra's offer in Solitude",
+     "Put out the fire in the Solitude Lighthouse",
+     "Return to Jaree-Ra",
+     "Find Deeja at the Wreck of the Icerunner",
+     "Defeat Deeja",
+     "Find out where Jaree-Ra's bandits took the loot",
+     "Travel to Broken Oar Grotto",
+     "Defeat Jaree-Ra"
+    ]
+   },
+   {
+    "branch": "report him",
+    "objectives": [
+     "Report Jaree-Ra to the guard captain",
+     "Find evidence of Jaree-Ra's criminal activity"
+    ]
+   },
+   {
+    "branch": "found out and confront him",
+    "objectives": [
+     "Confront Jaree-Ra",
+     "Report Jaree-Ra to the guard captain",
+     "Put out the fire in the Solitude Lighthouse"
+    ]
+   },
+   {
+    "branch": "killed him at the docks",
+    "objectives": [
+     "Travel to the Wreck of the Icerunner"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "the loot from the Icerunner",
+    "when": "at the wreck or at Broken Oar Grotto, depending on your path"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Deeja dies if she turns on you at the wreck",
+   "Jaree-Ra dies, or is arrested if you expose him"
+  ],
+  "people": [
+   {
+    "name": "Jaree-Ra",
+    "role": "Argonian on the Solitude docks; gives the job"
+   },
+   {
+    "name": "Deeja",
+    "role": "Jaree-Ra's sister; also works the docks, and meets you at the wreck"
+   },
+   {
+    "name": "Captain Aldis",
+    "role": "guard captain, placed in Castle Dour; you can report Jaree-Ra to him"
+   },
+   {
+    "name": "Captain Istar Cairn-Breaker",
+    "role": "the other guard captain the quest can send you to (added by Save the Icerunner)"
+   },
+   {
+    "name": "Blackblood Marauder",
+    "role": "the bandits working with Jaree-Ra"
+   },
+   {
+    "name": "Captain Hargar",
+    "role": "boss of Broken Oar Grotto; the quest uses his journal"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "Save the Icerunner keeps Jaree-Ra in the Winking Skeever until an early Solitude quest is done. These files don't name that quest. His hours are read from his package names."
+   },
+   {
+    "field": "choices",
+    "why": "The branches are read from the journal lines. The dialogue text and the Speech check (the game's 'average' persuade value) aren't in these files. Where you find the evidence isn't stated either; Save the Icerunner adds Hargar's Journal for it."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest's records list no gold or fixed item. The Icerunner's loot chest and treasure spots are quest aliases, and what they hold isn't in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The Solitude Lighthouse and the Wreck of the Icerunner aren't in the place index. Their hold is assumed from the journal (Solitude, its eastern shoreline)."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:023A64 MS07 (editedBy USSEP, SaveTheIcerunner.esp)",
+   "giver INFO Skyrim.esm:0D6C5D Jaree-Ra; others Captain Aldis, Captain Istar Cairn-Breaker (<55), Deeja (<126)",
+   "stages 10,15,50,55,65,90,100,110,120,125,130,150,175,225; completes 250,310,320,330,350; fails 300",
+   "SaveTheIcerunner adds aliases MS07HargarsJournal (ref 0BABB5), MS07Guard, MS07GuardBackup, MS07IcerunnerTreas01-06",
+   "global SpeechAverage 50",
+   "Jaree-Ra packages STIJareeRaStayPutForSolitudeOpening (until 0B2FD9 completed, Winking Skeever), SolitudeWarehouseWork10x8, SolitudeDocksSandbox8x14, DefaultSleepEditorLoc2x8; placed in Red Wave",
+   "place Broken Oar Grotto: book 'Note from Jaree-Ra' Skyrim.esm:0F23E0, boss Captain Hargar"
+  ]
+ },
+ {
+  "edid": "MS08",
+  "name": "In My Time Of Need",
+  "plugin": "Skyrim.esm (last edited by SaadiaToIman.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Redguard warriors at Whiterun ask you to find a Redguard woman.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Alik'r Warrior",
+    "where": "just outside Whiterun's walls, with a Whiterun guard",
+    "how": "Talk to the Alik'r warriors. They're looking for a Redguard woman, and say they'll wait in Rorikstead if you learn anything."
+   }
+  ],
+  "firstStep": "Find the Redguard woman",
+  "takesYou": [
+   {
+    "place": "The Bannered Mare",
+    "hold": "Whiterun",
+    "why": "the barmaid, Saadia (named Iman in LoreRim), works here from 9 am for 12 hours"
+   },
+   {
+    "place": "Dragonsreach Dungeon",
+    "hold": "Whiterun",
+    "why": "question the Alik'r Prisoner"
+   },
+   {
+    "place": "Rorikstead",
+    "hold": "Whiterun",
+    "why": "where the Alik'r wait if you tell them where she is"
+   },
+   {
+    "place": "Swindler's Den",
+    "hold": "Whiterun",
+    "why": "the Alik'r hideout, west of Whiterun near Rorikstead, where Kematu waits"
+   },
+   {
+    "place": "Whiterun Stables",
+    "hold": "Whiterun",
+    "why": "the ambush, if you agree to lead Iman to Kematu"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Side with Iman",
+    "leadsTo": "Get into the Alik'r hideout (the Alik'r Prisoner in Dragonsreach Dungeon knows the way), kill Kematu, and go back to Iman."
+   },
+   {
+    "choice": "Listen to Kematu in Swindler's Den",
+    "leadsTo": "He says Iman betrayed her people to the Dominion. You can still kill him, or lead Iman to an ambush at the Whiterun stables and hand her over."
+   },
+   {
+    "choice": "Tell the Alik'r where she is",
+    "leadsTo": "The quest gives you the objective to inform the Alik'r of her location."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the Redguard woman",
+     "Speak with Saadia",
+     "Talk to the Alik'r Prisoner",
+     "Find a way to enter the Alik'r hideout",
+     "Enter the Alik'r hideout",
+     "Kill Kematu or talk to him"
+    ]
+   },
+   {
+    "branch": "side with Iman",
+    "objectives": [
+     "Kill Kematu",
+     "Return to Iman",
+     "Speak with Iman"
+    ]
+   },
+   {
+    "branch": "side with Kematu",
+    "objectives": [
+     "Kill Kematu OR Convince Iman to meet Kematu",
+     "Lead Iman to the Whiterun Stables"
+    ]
+   },
+   {
+    "branch": "give her away",
+    "objectives": [
+     "Inform the Alik'r of Saadia's location",
+     "Inform the Alik'r of Iman's location"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Kematu dies if you side with Iman",
+   "Iman is handed over to the Alik'r if you side with Kematu"
+  ],
+  "people": [
+   {
+    "name": "Saadia / Iman",
+    "role": "barmaid at the Bannered Mare, a noble on the run from Hammerfell. LoreRim's 'Saadia to Iman' mod renames her Iman"
+   },
+   {
+    "name": "Alik'r Warrior",
+    "role": "the Redguards searching Whiterun; they start the quest"
+   },
+   {
+    "name": "Alik'r Prisoner",
+    "role": "held in Dragonsreach Dungeon"
+   },
+   {
+    "name": "Kematu",
+    "role": "leader of the Alik'r, in Swindler's Den"
+   },
+   {
+    "name": "Whiterun Guard",
+    "role": "with the Alik'r at the start"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The Alik'r are placed in the open area of Whiterun outside the walls (the same area as the stables). The exact spot and whether they ever move aren't in these files; they have no packages."
+   },
+   {
+    "field": "choices",
+    "why": "The early 'tell the Alik'r' branch is read from objective text alone, and it isn't clear how it joins the stables ambush. Her name also changes partway: some objectives still say Saadia, others say Iman."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files, nor who pays it on each branch."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01CF25 MS08 (editedBy Update.esm, USSEP, SaadiaToIman.esp)",
+   "giver INFO Skyrim.esm:0215BD Alik'r Warrior 'we will be in Rorikstead'; others Alik'r Warriors, Whiterun Guard 0215D5",
+   "Alik'r refs 0215CF/055FB3 in Whiterun world cell 01A270",
+   "SaadiaToIman adds alias ImanRename",
+   "Saadia package WhiterunSaadiaBanneredMarePackage9x12",
+   "Kematu package MS08KematuStayWithSaadia (stage 201)",
+   "INFO 0215C2 'Kematu is west of Whiterun ... Swindler's Den'",
+   "stages 10,25,175; completes 200,201",
+   "reward QF_MS08_0001CF25.Gold"
+  ]
+ },
+ {
+  "edid": "MS09",
+  "name": "Missing In Action",
+  "plugin": "Skyrim.esm (last edited by TheChoiceIsYours.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Fralia Gray-Mane in Whiterun believes her son Thorald is alive and asks for your help.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Fralia Gray-Mane",
+    "where": "at her stall outdoors in Whiterun by day (8 am for 11 hours); at House Gray-Mane in the evening",
+    "how": "Talk to Fralia. She thinks her son Thorald is being held prisoner and asks you to visit her at home that evening to talk privately."
+   }
+  ],
+  "firstStep": "Meet Fralia at her home in the evening",
+  "takesYou": [
+   {
+    "place": "House Gray-Mane",
+    "hold": "Whiterun",
+    "why": "Fralia and Avulstein Gray-Mane"
+   },
+   {
+    "place": "House of Clan Battle-Born",
+    "hold": "Whiterun",
+    "why": "find proof of Thorald's fate"
+   },
+   {
+    "place": "Talos' statue in Whiterun",
+    "hold": "Whiterun",
+    "why": "meet Jon Battle-Born"
+   },
+   {
+    "place": "Northwatch Keep",
+    "hold": "Haafingar",
+    "why": "the Thalmor fort on the northwestern coast where Thorald is held"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "How you find the proof",
+    "leadsTo": "Search the Battle-Borns for evidence, get Idolaf Battle-Born to talk, or meet Jon Battle-Born at Talos' statue."
+   },
+   {
+    "choice": "Free Thorald quietly",
+    "leadsTo": "Find a way to get him released from Thalmor custody. The quest uses a prisoner release order, and has you follow a Thalmor guard."
+   },
+   {
+    "choice": "Storm Northwatch Keep with Avulstein",
+    "leadsTo": "Meet Avulstein outside the keep and fight your way in."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Meet Fralia at her home in the evening.",
+     "Find evidence of Thorald's fate",
+     "Meet Jon Battle-Born at Talos' statue",
+     "Deliver proof to Avulstein"
+    ]
+   },
+   {
+    "branch": "free him quietly",
+    "objectives": [
+     "Find a way to release Thorald from Thalmor custody",
+     "Follow the Thalmor guard"
+    ]
+   },
+   {
+    "branch": "assault",
+    "objectives": [
+     "Meet Avulstein at Northwatch Keep",
+     "Rescue Thorald from Northwatch Keep"
+    ]
+   },
+   {
+    "branch": "after",
+    "objectives": [
+     "Lead Thorald to safety",
+     "Speak to Thorald Gray-Mane",
+     "Return to Fralia Gray-Mane"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "a reward item from the quest's own reward list",
+    "when": "from Fralia at the end"
+   },
+   {
+    "what": "gold",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Fralia Gray-Mane",
+    "role": "Thorald's mother; gives the quest"
+   },
+   {
+    "name": "Avulstein Gray-Mane",
+    "role": "Thorald's brother, at House Gray-Mane"
+   },
+   {
+    "name": "Olfina Gray-Mane",
+    "role": "Thorald's sister, at House Gray-Mane"
+   },
+   {
+    "name": "Idolaf Battle-Born",
+    "role": "at House of Clan Battle-Born; knows Thorald was taken to Northwatch Keep"
+   },
+   {
+    "name": "Jon Battle-Born",
+    "role": "meets you at Talos' statue with information"
+   },
+   {
+    "name": "Thorald Gray-Mane",
+    "role": "held in Northwatch Keep; sends a message home to his mother"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "The paths are read from objectives and journal lines. Where you get the prisoner release order ('Imperial Order') isn't shown, and neither is the line with the hard Speech check (75)."
+   },
+   {
+    "field": "starts",
+    "why": "Her stall's location is given only as a marker with no name; the hours come from the package name. IDE Stormcloaks and The Choice Is Yours both edit the quest's dialogue (The Choice Is Yours adds a step before you accept)."
+   },
+   {
+    "field": "takesYou",
+    "why": "Northwatch Keep is listed at levels 12 to 50, with a boss (the Northwatch Interrogator) at 45 to 50."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01CF26 MS09 (editedBy USSEP, TheChoiceIsYours.esp)",
+   "giver INFO Skyrim.esm:039F5B Fralia (TCIY: stage <5)",
+   "Fralia packages WhiterunFraliaStallPackage8x11, WhiterunFraliaHomePackage",
+   "Avulstein WhiterunAvulsteinHomeHangPackage (GameHour >=17, MS09 <10)",
+   "INFO 027F56 Idolaf 'carted off to Northwatch Keep'",
+   "BOOK Skyrim.esm:0524DA Imperial Order (USSEP GetItemCount on INFO 0524D3)",
+   "USSEP alias ThalmorGuard",
+   "global SpeechHard 75",
+   "rewards QF_MS09_0001CF26.MS09Reward Skyrim.esm:02E45C, .Gold",
+   "completes 200/201"
+  ]
+ },
+ {
+  "edid": "MS10",
+  "name": "Rise in the East",
+  "plugin": "Skyrim.esm (last edited by TheChoiceIsYours.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Orthus Endario at the East Empire Company in Windhelm wants help with a pirate problem.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Orthus Endario",
+    "where": "the East Empire Company office in Windhelm (he works, eats and sleeps there)",
+    "how": "Talk to Orthus. Pirates are harassing the Company, and he asks you to help shut them down so the Windhelm office can reopen."
+   }
+  ],
+  "firstStep": "Steal Suvaris Atheron's logbook from Windhelm's Clan Shatter-Shield Office",
+  "takesYou": [
+   {
+    "place": "Clan Shatter-Shield Office",
+    "hold": "Eastmarch",
+    "why": "steal Suvaris Atheron's logbook"
+   },
+   {
+    "place": "Windpeak Inn, Dawnstar",
+    "hold": "The Pale",
+    "why": "talk to Stig Salt-Plank"
+   },
+   {
+    "place": "Windhelm docks",
+    "hold": "Eastmarch",
+    "why": "sail with Adelaisa Vendicci"
+   },
+   {
+    "place": "Japhet's Folly",
+    "hold": "Winterhold",
+    "why": "the Blood Horker base; kill Haldyn"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Steal Suvaris Atheron's logbook. She works in Windhelm's Clan Shatter-Shield Office.",
+     "Give the logbook to Orthus",
+     "Talk to Stig Salt-Plank in Dawnstar",
+     "Report back to Orthus",
+     "Find Adelaisa Vendicci on the Windhelm docks and depart for Japhet's Folly",
+     "Talk to Adelaisa",
+     "Kill Haldyn",
+     "Report back to Adelaisa on the Japhet's Folly docks",
+     "Speak to Adelaisa to return to Windhelm",
+     "Speak to Orthus"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "from Orthus at the end"
+   },
+   {
+    "what": "a random reward item from the game's quest-reward lists (the large tier)",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Orthus Endario",
+    "role": "runs the East Empire Company office in Windhelm; gives the quest. After it's done he works on the docks"
+   },
+   {
+    "name": "Suvaris Atheron",
+    "role": "works in Clan Shatter-Shield Office; you steal her logbook"
+   },
+   {
+    "name": "Stig Salt-Plank",
+    "role": "in the Windpeak Inn, Dawnstar"
+   },
+   {
+    "name": "Alding, Irlof and Gjuk",
+    "role": "Blood Horker pirates placed in the Windpeak Inn"
+   },
+   {
+    "name": "Adelaisa Vendicci",
+    "role": "East Empire Company; takes you by ship to Japhet's Folly and back"
+   },
+   {
+    "name": "Haldyn",
+    "role": "Blood Horker leader in Japhet's Folly Towers"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Japhet's Folly isn't in the place index. The people index files Haldyn under Winterhold, so the hold is a best guess."
+   },
+   {
+    "field": "steps",
+    "why": "What happens at the Windpeak Inn (the three pirates are placed there) isn't in the objective text."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01DBFC MS10 (editedBy TheChoiceIsYours.esp)",
+   "giver INFO Skyrim.esm:01F7A1 Orthus (TCIY adds stage 5)",
+   "Orthus packages OrthusWorkInOffice, OrthusWorkAtDocks13x5 (after quest done)",
+   "aliases Pirate1-3 Alding/Irlof/Gjuk in Windpeak Inn; Haldyn in Japhet's Folly Towers",
+   "rewards ms10questscript.RewardItem (gold), QF_MS10_0001DBFC.Reward Skyrim.esm:0C0406 LvlQuestReward03Large",
+   "completes 100"
+  ]
+ },
+ {
+  "edid": "MS11",
+  "name": "Blood on the Ice",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "In Windhelm you come upon the latest victim of a killer, with witnesses standing over the body.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "a guard and the witnesses (Silda the Unseen, Helgird, Calixto Corrium)",
+    "where": "the murder scene in Windhelm's streets, over the body of Susanna from Candlehearth Hall",
+    "how": "Speak to the people at the scene: 'Another girl killed. This is Susanna, from Candlehearth Hall.' You're asked to help investigate."
+   }
+  ],
+  "firstStep": "Question the witnesses",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead, Windhelm",
+    "hold": "Eastmarch",
+    "why": "Helgird has taken the body there"
+   },
+   {
+    "place": "Palace of the Kings",
+    "hold": "Eastmarch",
+    "why": "the steward advises you; Wuunferth the Unliving works upstairs"
+   },
+   {
+    "place": "Hjerim",
+    "hold": "Eastmarch",
+    "why": "the empty house where you look for clues"
+   },
+   {
+    "place": "Stone Quarter, Windhelm",
+    "hold": "Eastmarch",
+    "why": "patrol at night to catch the killer"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Accuse Wuunferth the Unliving",
+    "leadsTo": "The quest ends with Wuunferth named as the Butcher and jailed. Then the killer strikes again (the second Blood on the Ice)."
+   },
+   {
+    "choice": "Patrol the Stone Quarter at night",
+    "leadsTo": "You catch the real killer, Calixto Corrium."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Question the witnesses",
+     "Report to the guard",
+     "Talk to <Alias=AuthorityFigure>",
+     "Examine the crime scene",
+     "Talk to Helgird",
+     "Get access to Hjerim",
+     "Look for clues",
+     "Follow up on the clues from Hjerim",
+     "Meet Viola outside of Hjerim",
+     "Investigate Hjerim with Viola",
+     "Talk to <Alias=AuthorityFigure>"
+    ]
+   },
+   {
+    "branch": "catch the killer",
+    "objectives": [
+     "Patrol the streets of the Stone Quarter at night",
+     "Catch the murderer",
+     "Talk to <Alias=AuthorityFigure>"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Strange Amulet / Necromancer's Amulet",
+    "when": "the quest's script holds both. The Strange Amulet is a clue in Hjerim; the Necromancer's Amulet is the other one"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Blood on the Ice (the second part, if you accused Wuunferth)"
+  ],
+  "closes": [
+   "Wuunferth is jailed if you accuse him",
+   "Calixto Corrium is brought to justice if you catch him"
+  ],
+  "people": [
+   {
+    "name": "Silda the Unseen",
+    "role": "witness; a beggar in Windhelm's streets day and night"
+   },
+   {
+    "name": "Helgird",
+    "role": "witness; priestess in Windhelm's Hall of the Dead"
+   },
+   {
+    "name": "Calixto Corrium",
+    "role": "witness; runs Calixto's House of Curiosities (10 am for 7 hours) and walks the streets from 2 am for 3 hours"
+   },
+   {
+    "name": "Susanna the Wicked",
+    "role": "the victim, from Candlehearth Hall"
+   },
+   {
+    "name": "Viola Giordano",
+    "role": "helps you investigate Hjerim"
+   },
+   {
+    "name": "Wuunferth the Unliving",
+    "role": "court wizard in the Palace of the Kings; a suspect"
+   },
+   {
+    "name": "Windhelm's steward",
+    "role": "the quest's authority figure; gives advice and takes your report"
+   },
+   {
+    "name": "Arivanya",
+    "role": "a possible later victim, placed at Windhelm Stables"
+   },
+   {
+    "name": "Tova Shatter-Shield",
+    "role": "part of the quest's cast"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No start event or story node for this quest is in these files. The body's spot in Windhelm and the time of day aren't stated; the opening line's speaker isn't named (probably a guard)."
+   },
+   {
+    "field": "people",
+    "why": "The steward is filled from an alias, so which person it is isn't stated. The Unofficial Patch replaced the base game's fixed Jorleif with the alias."
+   },
+   {
+    "field": "steps",
+    "why": "How you get into Hjerim isn't stated. The Unofficial Patch adds a replacement Hjerim key."
+   },
+   {
+    "field": "rewards",
+    "why": "Both amulets are quest script properties, but when each one is handed over isn't in these files. LoreRim's Necromancer's Amulet: improves spellcasting and lets very experienced enchanters craft black soul gems at midnight, but makes the weak-minded wither."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:01F7A3 MS11 (editedBy Update.esm, USSEP); quest_starts startGame false",
+   "giver INFO Skyrim.esm:02157A alias Witness3 (Silda); others Helgird, Calixto (<11), Tova (<55)",
+   "INFO 02157B 'Another girl killed...'",
+   "INFO 02166B Helgird's taken the body into the Hall of the Dead",
+   "alias InitialVictimBody MS11SusannaDeadA in Windhelm world cell 01691F",
+   "USSEP alias AuthorityFigure changed, USKPHjerimReplacementKey added",
+   "completes 100 (Wuunferth), 250 (Calixto)",
+   "rewards ms11questscript.InnocuousAmulet Skyrim.esm:0D2328, .NecromancersAmulet Skyrim.esm:0C891D",
+   "Calixto packages CalixtoRunsHisShop10x7, CalixtoStalksTheStreets2x3",
+   "Silda packages WindhelmSildaBeg*"
+  ]
+ },
+ {
+  "edid": "MS11b",
+  "name": "Blood on the Ice",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "If you accused Wuunferth, the Butcher kills again and this second part begins.",
+  "needs": [
+   {
+    "what": "End Blood on the Ice by naming Wuunferth the Unliving as the Butcher",
+    "kind": "quest"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Speak to Wuunferth",
+  "takesYou": [
+   {
+    "place": "Windhelm",
+    "hold": "Eastmarch",
+    "why": "find Wuunferth, then patrol the Stone Quarter at night"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Wuunferth",
+     "Patrol the streets of the Stone Quarter at night",
+     "Catch the murderer",
+     "Speak to <Alias=AuthorityFigure> for reward"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "a reward from Windhelm's steward",
+    "when": "at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Calixto Corrium is brought to justice",
+   "Wuunferth is cleared"
+  ],
+  "people": [
+   {
+    "name": "Wuunferth the Unliving",
+    "role": "jailed after your accusation; you speak to him again"
+   },
+   {
+    "name": "Calixto Corrium",
+    "role": "the real Butcher"
+   },
+   {
+    "name": "Windhelm's steward",
+    "role": "gives the reward"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records give no start event, giver or conditions. The link to the first part comes from the journal: 'The Butcher has struck again ... after Wuunferth the Unliving was imprisoned.'"
+   },
+   {
+    "field": "rewards",
+    "why": "The last objective says you speak to the steward for a reward, but no reward is listed in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:020556 MS11b (editedBy USSEP)",
+   "stage 15 log 'struck again ... after Wuunferth ... was imprisoned'",
+   "completes 20",
+   "objectives 110,120,130,150",
+   "aliases Wuunferth, AuthorityFigure, StoneQuarterSpot, Calixto"
+  ]
+ },
+ {
+  "edid": "MS12",
+  "name": "The White Phial",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Nurelion, the alchemist in Windhelm, wants you to find the legendary White Phial.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Nurelion",
+    "where": "The White Phial, the alchemy shop in Windhelm (he keeps shop from 8 am for 12 hours)",
+    "how": "Talk to Nurelion in his shop. He asks you to find the White Phial for him."
+   }
+  ],
+  "firstStep": "Retrieve the White Phial",
+  "takesYou": [
+   {
+    "place": "Forsaken Cave",
+    "hold": "The Pale",
+    "why": "the Phial lies in its inner crypt (a cell named Forsaken Crypt), a short walk from Windhelm. Not the separate Forsaken Crypt dungeon near Whiterun"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve the White Phial",
+     "Bring the Phial to Nurelion",
+     "Speak to Quintus"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "from Quintus Navale at the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Repairing the Phial"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Nurelion",
+    "role": "alchemist; gives the quest"
+   },
+   {
+    "name": "Quintus Navale",
+    "role": "Nurelion's assistant, in the shop; pays you"
+   },
+   {
+    "name": "Curalmil",
+    "role": "the boss of Forsaken Cave (level 50)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The Choice Is Yours and NGCDT - Nurelion Edits change the opening dialogue's conditions, and one of Nurelion's lines is blocked outright. These files don't show which line, so check that he still offers the quest."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:02C258 MS12 (editedBy USSEP)",
+   "giver INFO Skyrim.esm:024984 Nurelion (<10), others Quintus (<22)",
+   "NGCDT adds GetGlobalValue TRUEGlobal==0 to INFO 02498C; TCIY adds condition to 024984/02C252",
+   "cells used 02FD85 'Forsaken Crypt' (Skyrim.esm), alias ForsakenCaveMapMarker; place Forsaken Cave boss Curalmil level 50",
+   "Nurelion package WindhelmNurelionMerchantHours8x12",
+   "reward MS12QuestScript.RewardObject gold",
+   "completes 100"
+  ]
+ },
+ {
+  "edid": "MS12b",
+  "name": "Repairing the Phial",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "Some time after The White Phial, Quintus Navale reaches out: he thinks he can repair it.",
+  "needs": [
+   {
+    "what": "Finish The White Phial",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Quintus Navale",
+    "where": "The White Phial, the alchemy shop in Windhelm",
+    "how": "A letter from Quintus starts the quest when you move between places. Go and speak to him."
+   }
+  ],
+  "firstStep": "Speak to Quintus Navale",
+  "takesYou": [
+   {
+    "place": "Throat of the World",
+    "hold": "Whiterun",
+    "why": "the Unmelting Snow, a patch of snow on the top that never melts"
+   },
+   {
+    "place": "Red Eagle Redoubt",
+    "hold": "The Reach",
+    "why": "a Forsworn Heart; the quest points at the Forsworn boss here, next to Karthwasten"
+   },
+   {
+    "place": "The White Phial",
+    "hold": "Eastmarch",
+    "why": "bring the materials back to Quintus"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Quintus Navale",
+     "Retrieve the Unmelting Snow",
+     "Find some Mammoth Tusk Powder",
+     "Take a Forsworn Heart",
+     "Return to Quintus Navale"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "Nurelion dies at the end, after seeing the repaired Phial"
+  ],
+  "people": [
+   {
+    "name": "Quintus Navale",
+    "role": "Nurelion's assistant; runs the repair"
+   },
+   {
+    "name": "Nurelion",
+    "role": "lives to see the Phial repaired"
+   },
+   {
+    "name": "Forsworn boss of Red Eagle Redoubt",
+    "role": "carries or guards the Forsworn Heart"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The start node's conditions aren't in these files. The link comes from the journals: The White Phial ends with the Phial damaged beyond repair, and this quest begins with Quintus finding a way to fix it."
+   },
+   {
+    "field": "takesYou",
+    "why": "The records don't say where to get the Mammoth Tusk Powder. Red Eagle Redoubt's boss matches your level, 48 to 50."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is listed for this quest in these files."
+   },
+   {
+    "field": "starts",
+    "why": "The quest holds a letter from Quintus, but how it reaches you (courier or otherwise) isn't shown."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:02499C MS12b (editedBy Update.esm, USSEP)",
+   "start node MS12bStartingNode (change location)",
+   "aliases LetterFromQuintus, LetterQuestItem, Ingredient1-3, BriarHeartChest, BHW = dunRedEagle_LvlForswornBossAmbush at Red Eagle Redoubt",
+   "INFO 0248EE/026F55 Quintus: unmelting snow on top of the Throat of the World",
+   "completes 100 'before he died'"
+  ]
+ },
+ {
+  "edid": "MS13",
+  "name": "The Golden Claw",
+  "plugin": "Skyrim.esm (last edited by GoldenLie.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Thieves robbed the Riverwood Trader; Lucan Valerius wants his Golden Claw back.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Lucan Valerius",
+    "where": "the Riverwood Trader, Riverwood (he runs the counter from 7 am for 13 hours)",
+    "how": "Talk to Lucan about the break-in. He offers gold if you bring back the Golden Claw from the bandits at Bleak Falls Barrow."
+   },
+   {
+    "who": "Gerdur, Hilde or Delphine",
+    "where": "Riverwood",
+    "how": "Locals mention the robbery at the Riverwood Trader and point you to Lucan."
+   }
+  ],
+  "firstStep": "Retrieve the Golden Claw from Bleak Falls Barrow",
+  "takesYou": [
+   {
+    "place": "Bleak Falls Barrow",
+    "hold": "Whiterun",
+    "why": "the bandits took the claw here, up the mountain path northwest of Riverwood. Camilla offers to show you the way"
+   },
+   {
+    "place": "Riverwood Trader",
+    "hold": "Whiterun",
+    "why": "return the claw"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Give the claw back",
+    "leadsTo": "Lucan, or Camilla if Lucan is dead, rewards you."
+   },
+   {
+    "choice": "Keep the claw",
+    "leadsTo": "You convince Lucan (or Camilla) it was lost and keep it."
+   },
+   {
+    "choice": "If both Lucan and Camilla die",
+    "leadsTo": "The quest fails: no one is left to pay you."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve the Golden Claw",
+     "Cut Arvel down",
+     "Find the secret of Bleak Falls Barrow",
+     "Find the owner of the Golden Claw"
+    ]
+   },
+   {
+    "branch": "return it",
+    "objectives": [
+     "Bring the claw to Lucan",
+     "Bring the claw to Camilla"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "from Lucan or Camilla when you return the claw"
+   },
+   {
+    "what": "a random reward item from the game's quest-reward lists (the medium tier)",
+    "when": "when you return the claw"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Lucan Valerius",
+    "role": "owner of the Riverwood Trader; gives the quest"
+   },
+   {
+    "name": "Camilla Valerius",
+    "role": "Lucan's sister; can guide you toward the barrow, and takes over if Lucan dies"
+   },
+   {
+    "name": "Arvel the Swift",
+    "role": "bandit with the claw, caught in a web in Bleak Falls Temple"
+   },
+   {
+    "name": "Web Mother",
+    "role": "the giant spider in Bleak Falls Temple"
+   },
+   {
+    "name": "Gerdur",
+    "role": "Riverwood local who mentions the robbery"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "The keep-the-claw ending comes from the journal (Golden Lie edits this quest). Golden Claw - More Choices also edits Lucan's lines. The dialogue checks for the lie aren't in these files. When you keep the claw from Camilla, the journal line doesn't mark the quest done."
+   },
+   {
+    "field": "takesYou",
+    "why": "Bleak Falls Barrow's creatures are listed at levels 6 to 20, but its boss (Zulakaroth, Keeper of the Dragonstone) is level 40."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold amount isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:039645 MS13 (editedBy GoldenLie.esp)",
+   "giver INFO Skyrim.esm:039642 Gerdur 'Lucan over in the Riverwood Trader says thieves broke into his store'; others Hilde, Frodnar, Delphine",
+   "INFO 0153B9 Delphine, 039644 Hilde",
+   "Lucan package LucanValeriusTraderServices7x13",
+   "Riverwood Trader Is A Mess adds global condition to INFO 039632",
+   "completes 100,110,120; 130 no complete flag; fails 200",
+   "rewards QF_MS13_00039645.Gold, .LvlQuestReward02Medium Skyrim.esm:0C0405",
+   "INFO 08AFA1 / 017E00 Bleak Falls Barrow northwest of town",
+   "place Bleak Falls Barrow boss Zulakaroth level 40"
+  ]
+ }
+]
