@@ -1,0 +1,1017 @@
+[
+ {
+  "edid": "DA09",
+  "name": "The Break of Dawn",
+  "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; also edited by Update.esm, Unofficial Skyrim Special Edition Patch.esp, Requiem.esp, Wintersun - Faiths of Skyrim.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "It comes to you: after a level-up a voice from Mount Kilkreath tells you to find Meridia's beacon, or you can pick up the beacon first and hear the voice then.",
+  "needs": [
+   {
+    "what": "A level-up (the quest is started by the game's level-up event); the level it needs isn't in these files",
+    "kind": "level"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Meridia (a voice)",
+    "where": "wherever you are when you level up; the beacon itself is in a chest in a dungeon the game picks",
+    "how": "The quest starts on its own after a level-up: an otherworldly voice from Mount Kilkreath tells you to find a beacon and names the place it's in. If you find the strange gem first, the journal starts with the voice telling you to bring it to Mount Kilkreath."
+   }
+  ],
+  "firstStep": "Find Meridia's beacon",
+  "takesYou": [
+   {
+    "place": "a dungeon the game picks when the quest starts",
+    "hold": "varies",
+    "why": "find Meridia's beacon in a chest there"
+   },
+   {
+    "place": "Kilkreath Ruins (Mount Kilkreath)",
+    "hold": "Haafingar",
+    "why": "put the beacon back on Meridia's statue, guide her light through the temple and destroy Malkoran"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find Meridia's beacon",
+     "Bring Meridia's beacon to Mount Kilkreath",
+     "Replace the beacon",
+     "Guide Meridia's Light through the temple",
+     "Destroy Malkoran",
+     "Retrieve Dawnbreaker"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Dawnbreaker (sword)",
+    "when": "at the end, from Meridia's pedestal"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Meridia",
+    "role": "the voice and the statue at Kilkreath Ruins who gives the orders"
+   },
+   {
+    "name": "Malkoran",
+    "role": "the necromancer to destroy, in the Kilkreath Catacombs (the ruins' boss)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The start is a level-up event; its level or other conditions aren't decoded in these files."
+   },
+   {
+    "field": "takesYou",
+    "why": "The beacon's dungeon is chosen by the game when the quest starts, so it differs from game to game."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest script also holds a light-beam spell, but its name says it's the beam you guide through the temple, not something you keep."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:04E4E1 stages 50/100/300/500, objectives 5-40",
+   "quest_givers: start node DA09IncreaseLevelNodeSHARES (LEVL)",
+   "giver INFO Skyrim.esm:04E4CD Meridia, stage < 400",
+   "aliases GemContainer/GemContainerLocation/GemMapMarker",
+   "reward alias Dawnsbreaker -> WEAP Skyrim.esm:04E4EE Dawnbreaker",
+   "DA09Script.beamSpell -> Skyrim.esm:0994DB kilkreathLightBeam",
+   "places: Kilkreath Ruins Skyrim.esm:019260 (Haafingar), boss Malkoran; Malkoran NPC Skyrim.esm:09CB66 in Kilkreath Catacombs"
+  ]
+ },
+ {
+  "edid": "DA06",
+  "name": "The Cursed Tribe",
+  "plugin": "Skyrim.esm (last edited by The Cursed Tribe - LoreRim Patch.esp; reworked by The Cursed Tribe - Quest Expansion.esp; also edited by Unofficial Skyrim Special Edition Patch.esp, Wintersun - Faiths of Skyrim.esp, Wintersun - Reqtificated.esp)",
+  "canDo": "talk",
+  "canDoWhy": "An Orc chief hands you a letter from Largashbur, or you hear a rumor about Largashbur after a level-up; either way you go there and talk to Atub.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Chief Larak",
+    "where": "Mor Khazgur, in the Reach: outside in the stronghold by day (from 7 am), in Larak's Longhouse from 7 pm",
+    "how": "Ask him about Largashbur; he says \"Yes, at Largashbur. Here, take a look.\" and gives you the letter from Largashbur."
+   },
+   {
+    "who": "Chief Burguk",
+    "where": "Dushnikh Yal: about the stronghold by day (from 7 am), in Burguk's Longhouse from 7 pm",
+    "how": "The records give him the same opening as Larak (before the quest starts); his words aren't in these files."
+   },
+   {
+    "who": "Chief Mauhulakh",
+    "where": "Narzulbur: sitting about the stronghold by day (from 7 am), in Mauhulakh's Longhouse from 7 pm",
+    "how": "The records give him the same opening as Larak (before the quest starts); his words aren't in these files."
+   },
+   {
+    "who": "Atub",
+    "where": "Largashbur Longhouse, Largashbur (southwest of Riften, the Rift)",
+    "how": "Go to Largashbur, where giants are attacking, and talk to Atub, the tribe's wise woman; she sends you to Chief Yamarz."
+   }
+  ],
+  "firstStep": "Read the letter from Largashbur, then find out what's happening in Largashbur",
+  "takesYou": [
+   {
+    "place": "Largashbur",
+    "hold": "The Rift",
+    "why": "the cursed Orc stronghold; talk to Atub and Chief Yamarz"
+   },
+   {
+    "place": "Sanctum of Malacath (the shrine northwest of Largashbur)",
+    "hold": "The Rift",
+    "why": "try to reach Malacath; inspect the Orc skeleton and its note"
+   },
+   {
+    "place": "Fallowstone Cave",
+    "hold": "The Rift",
+    "why": "escort Yamarz to the giant Garok Longstride and take Shagrol's Hammer"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Petition Malacath for Yamarz: visit his shrine, then bring Atub troll fat and a Daedra heart for her ritual",
+    "leadsTo": "Malacath orders Yamarz to retake the shrine in Fallowstone Cave; you escort him and kill the giant. Malacath names Gularzob the new chief and you his champion."
+   },
+   {
+    "choice": "At Fallowstone Cave, take Yamarz's offer of more pay to kill the giant yourself, or turn it down",
+    "leadsTo": "Either way you end up fighting the giant; if you turn him down, Yamarz dies trying."
+   },
+   {
+    "choice": "Tell Yamarz you know a spell that can help, and cast Bane of the Undead in Largashbur",
+    "leadsTo": "The haunting ghosts appear and attack the stronghold; defeat them and the quest ends with the ghosts gone, without the Fallowstone Cave trip."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "start",
+    "objectives": [
+     "Read the letter from Largashbur",
+     "Find out what's happening in Largashbur",
+     "Speak with Yamarz",
+     "Return to Atub"
+    ]
+   },
+   {
+    "branch": "Malacath's shrine",
+    "objectives": [
+     "Find the Shrine of Malacath",
+     "Inspect the Skeleton",
+     "Return to Atub",
+     "Bring Troll Fat and a Daedra Heart to Atub",
+     "Observe Atub's ritual",
+     "Speak with Yamarz",
+     "Meet Yamarz at Fallowstone Cave",
+     "Protect Yamarz",
+     "Defeat Garok Longstride",
+     "Take Shagrol's Hammer back to Largashbur",
+     "Place Shagrol's Hammer on the shrine in Largashbur",
+     "Return to Atub"
+    ]
+   },
+   {
+    "branch": "the spell",
+    "objectives": [
+     "Cast Bane of the Undead in Largashbur",
+     "Defeat the ghosts",
+     "Speak with Yamarz",
+     "Speak with Atub"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Volendrung (warhammer)",
+    "when": "at the end of the Malacath's shrine path, as Malacath's champion"
+   },
+   {
+    "what": "Necklace of the Wise Woman (amulet)",
+    "when": "from the quest's script; which ending gives it isn't shown"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [
+   "On the Malacath path Yamarz stops being chief (Gularzob takes over) and can die at Fallowstone Cave",
+   "The spell ending finishes the quest without Malacath's champion ending"
+  ],
+  "people": [
+   {
+    "name": "Atub",
+    "role": "Largashbur's wise woman; starts you off and runs the ritual"
+   },
+   {
+    "name": "Chief Yamarz",
+    "role": "the cursed chief of Largashbur"
+   },
+   {
+    "name": "Ugor",
+    "role": "keeps outsiders away from Largashbur on Yamarz's orders"
+   },
+   {
+    "name": "Gularzob",
+    "role": "named the new chief by Malacath"
+   },
+   {
+    "name": "Garok Longstride",
+    "role": "the giant holding the shrine in Fallowstone Cave"
+   },
+   {
+    "name": "Shagrol",
+    "role": "the ghost leading the haunting (spell path)"
+   },
+   {
+    "name": "Chief Larak",
+    "role": "Mor Khazgur's chief; hands you the letter"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest also has a level-up start (the rumor); its level isn't decoded here. Burguk's and Mauhulakh's opening lines exist but their words aren't in these files. Day spots for the chiefs come from package names; their exact daytime spot isn't named."
+   },
+   {
+    "field": "choices",
+    "why": "Getting the spell choice and some talk with Yamarz and Ugor depend on speech checks and other conditions that aren't fully decoded here; that you need to know Bane of the Undead is read from the objective, not from a condition."
+   },
+   {
+    "field": "rewards",
+    "why": "The script also holds a giant-club version of Shagrol's Warhammer; which rewards go with which ending (and what the two other completing endings are) isn't spelled out in these files."
+   },
+   {
+    "field": "people",
+    "why": "The objective says Garok Longstride; the giant's own record is named Gorak Longstride."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:03B681 stages 10-130, endings 200/210/220/230 complete, 255 fails",
+   "giver INFO The Cursed Tribe - Quest Expansion.esp:000089 Chief Larak (stage < 1), others Burguk Skyrim.esm:013B79, Mauhulakh Skyrim.esm:01B075, Atub (stage < 11)",
+   "start node DA06IncreaseLevelNodeSHARES (LEVL)",
+   "BOOK The Cursed Tribe - Quest Expansion.esp:000079 letter 'To my Orc brethren'",
+   "INFO Skyrim.esm:03BDC4 Atub 'His shrine lies northwest of Largashbur'",
+   "INFO Skyrim.esm:0223D4, 02A5E3 Yamarz lines",
+   "INFO Skyrim.esm:03BDC8 Ugor",
+   "global TCTRC_GLOB_Stage30_IntimidatedYamarz",
+   "rewards QF_DA06_0003B681: Volendrung Skyrim.esm:02ACD2, TCTRC_ARMO_NecklaceWiseWoman, TCTRC_CrGiantClub_Volendrung",
+   "places: Sanctum of Malacath Skyrim.esm:0C33AF (GiantsGroveLocation), Fallowstone Cave Skyrim.esm:019176, Largashbur Skyrim.esm:019263",
+   "packages: MorKhazgurLarakEatOutsidePackage7x12 / EatPackage19x5; DushnikhYalBurguk7x12 / EatLonghouse19x5; NarzulburMauhulakhSitPackage7x12 / EatPackage19x5"
+  ]
+ },
+ {
+  "edid": "DA10",
+  "name": "The House of Horrors",
+  "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; reworked by HouseOfHorrorsQuestExpansion.esp; also edited by Unofficial Skyrim Special Edition Patch.esp, Wintersun - Faiths of Skyrim.esp; House of Horrors - Delayed Start.esp changes its dialogue)",
+  "canDo": "talk",
+  "canDoWhy": "In Markarth, Vigilant Tyranus is looking into an abandoned house he thinks was used for Daedra worship; go in with him.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Vigilant Tyranus",
+    "where": "the records place him in the Silver-Blood Inn, Markarth",
+    "how": "Once you are in Markarth, talk to Tyranus about the abandoned house; the journal opens with him investigating it."
+   }
+  ],
+  "firstStep": "Search the abandoned house",
+  "takesYou": [
+   {
+    "place": "the Abandoned House, Markarth",
+    "hold": "The Reach",
+    "why": "search it with Tyranus and meet Molag Bal at his altar"
+   },
+   {
+    "place": "wherever the priest of Boethiah is held",
+    "hold": "unknown",
+    "why": "free Logrolf and bring him back to the house (Molag Bal path)"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Serve Molag Bal: find Logrolf, the priest of Boethiah, free him and bring him to the house",
+    "leadsTo": "Beat Logrolf into submission at the altar, kill him and speak to Molag Bal; you get the Mace of Molag Bal."
+   },
+   {
+    "choice": "Side with Tyranus and hit the altar to destroy it",
+    "leadsTo": "Escape the basement, talk to Tyranus and find your reward; the house is made safe and you don't get the Mace."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "start",
+    "objectives": [
+     "Search the abandoned house",
+     "Follow Tyranus"
+    ]
+   },
+   {
+    "branch": "destroy the altar",
+    "objectives": [
+     "Hit the altar to destroy it",
+     "Escape the basement",
+     "Talk to Tyranus",
+     "Find your reward"
+    ]
+   },
+   {
+    "branch": "Molag Bal",
+    "objectives": [
+     "Find the priest of Boethiah",
+     "Free Logrolf",
+     "Go to the abandoned house",
+     "Beat Logrolf into submission",
+     "Kill Logrolf",
+     "Speak to Molag Bal"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Mace of Molag Bal",
+    "when": "at the end of the Molag Bal path"
+   },
+   {
+    "what": "gold",
+    "when": "from the quest's script; most likely the reward on the Tyranus path"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [
+   "The quest fails if Tyranus dies",
+   "The quest fails if Logrolf dies before Molag Bal is done with him",
+   "Logrolf dies on the Molag Bal path",
+   "Destroying the altar ends the quest without the Mace of Molag Bal"
+  ],
+  "people": [
+   {
+    "name": "Vigilant Tyranus",
+    "role": "Vigilant of Stendarr investigating the house"
+   },
+   {
+    "name": "Molag Bal",
+    "role": "speaks to you at his altar in the house"
+   },
+   {
+    "name": "Logrolf the Willful",
+    "role": "the priest of Boethiah Molag Bal wants; normally found in the Warrens, Markarth"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The game starts the quest on a change of location (in vanilla, reaching Markarth), but House of Horrors - Delayed Start.esp has its own quest holding Tyranus and switches off some of the opening lines; what it waits for isn't in these files. Tyranus has no daily packages here, so his spot comes only from where he is placed (the Silver-Blood Inn)."
+   },
+   {
+    "field": "takesYou",
+    "why": "Where Logrolf is held is filled in when the quest runs; the place isn't named in these records."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold is a script property; which ending pays it isn't shown."
+   },
+   {
+    "field": "choices",
+    "why": "Which choice comes at which point is read from the objectives and the two endings, not from decoded scripts."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:022F08 stages 10/80, completes 200 and 210, fails 500 and 550; objectives 10-70",
+   "giver INFO HouseOfHorrorsQuestExpansion.esp:000825 Tyranus, stage < 55; Tyranus ref Skyrim.esm:0A733C in cell Skyrim.esm:016DFE (Silver-Blood Inn)",
+   "start node DA10StartNode (change location)",
+   "House of Horrors - Delayed Start.esp:000802 quest has Tyranus alias; it sets INFO Skyrim.esm:0AC99C/0AC99D to TRUEGlobal == 0",
+   "HouseOfHorrorsQuestExpansion.esp adds stage checks != 54 / != 210 to INFO Skyrim.esm:0AAECC, 0DE1B0-0DE1B4",
+   "rewards QF_DA10_00022F08: Mace of Molag Bal Skyrim.esm:0233E3, Gold",
+   "Logrolf Skyrim.esm:0133A6 in The Warrens; Abandoned House cell Skyrim.esm:018BE9"
+  ]
+ },
+ {
+  "edid": "DA15",
+  "name": "The Mind of Madness",
+  "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; also edited by Unofficial Skyrim Special Edition Patch.esp, Wintersun - Faiths of Skyrim.esp; The Mind of Madness - Delayed Start.esp changes its dialogue)",
+  "canDo": "talk",
+  "canDoWhy": "Dervenin in Solitude wants you to talk his master into coming back from vacation, but a delayed-start mod holds his lines back until it is ready.",
+  "needs": [
+   {
+    "what": "The Mind of Madness - Delayed Start mod's switch has to be on before Dervenin will talk about his master; what turns it on isn't in these files",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Dervenin",
+    "where": "inside the Temple of the Divines in Solitude (he stays at that spot)",
+    "how": "Talk to Dervenin; he asks you to speak to his master, who is somewhere in the Pelagius Wing of the Blue Palace."
+   }
+  ],
+  "firstStep": "Gain access to the Pelagius Wing of the Blue Palace",
+  "takesYou": [
+   {
+    "place": "the Blue Palace, Solitude",
+    "hold": "Haafingar",
+    "why": "get the key and enter the Pelagius Wing"
+   },
+   {
+    "place": "Pelagius' mind",
+    "hold": "none (a realm of its own)",
+    "why": "Sheogorath takes you there; use the Wabbajack to find your way out"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Get into the Pelagius Wing through Falk Firebeard, or the palace servants Una or Erdi",
+    "leadsTo": "You get the key to the Pelagius Wing either way."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Gain access to the Pelagius Wing of the Blue Palace",
+     "Use the key to gain access to the Pelagius Wing",
+     "Search for Dervenin's master in the Pelagius Wing",
+     "Use the Wabbajack to escape from Pelagius' Mind",
+     "Escape from the Blue Palace"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Wabbajack (staff)",
+    "when": "from Sheogorath, at the end"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Dervenin",
+    "role": "Sheogorath's servant who sends you"
+   },
+   {
+    "name": "Falk Firebeard",
+    "role": "in the Blue Palace; one way into the Pelagius Wing"
+   },
+   {
+    "name": "Una",
+    "role": "Blue Palace servant; one way into the Pelagius Wing"
+   },
+   {
+    "name": "Erdi",
+    "role": "Blue Palace servant; one way into the Pelagius Wing"
+   },
+   {
+    "name": "Sheogorath",
+    "role": "Dervenin's master, met inside Pelagius' mind"
+   },
+   {
+    "name": "Pelagius the Mad",
+    "role": "the mind you have to fix"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The Mind of Madness - Delayed Start.esp adds its own switch to every opening line (it starts off); these records don't show what sets it. The same plugin gives an approach package to a Bosmer named Gadnor, so someone may seek you out once it's on, but that's not clear from the records."
+   },
+   {
+    "field": "choices",
+    "why": "Falk, Una and Erdi each have lines for this step; how each gets you the key (talk, persuasion, payment) isn't spelled out. One line has a speech check."
+   },
+   {
+    "field": "rewards",
+    "why": "The script also holds fine clothes, shoes and a hat; nothing shows they go to you rather than to Dervenin."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:02AC68 stages 10/50/100/200 (completes); objectives 10-150",
+   "giver INFO Skyrim.esm:02B8C1 Dervenin (stage < 1); others Falk Skyrim.esm:013274, Una Skyrim.esm:0132AC, Erdi Skyrim.esm:013271 (stage < 11)",
+   "Dervenin ref Skyrim.esm:0198DC in Temple of the Divines Skyrim.esm:016A02; package DefaultStayAtEditorLocation",
+   "Delayed Start global ANDR_DA15_Ready (The Mind of Madness - Delayed Start.esp:000801) = 0, required == 1 on INFOs 02AC67, 02BD04, 02BD05, 0302EF, 0302F0, 02E1AA, 02B8BB, 02B8B2, 02B8C1, 02BD06, 02BD02, 02BD01, 02BCFD, 08509E, 0850A4, 0850A5, 0850A8",
+   "Gadnor Skyrim.esm:02EB58 package DA15ApproachPlayer",
+   "speech check INFO Skyrim.esm:02B8BE",
+   "reward QF_DA15_0002AC68.RealWabbajack -> Skyrim.esm:02AC6F"
+  ]
+ },
+ {
+  "edid": "EC_SS_LizardQuest",
+  "name": "The Lunatic's Treasure",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "canDo": "talk",
+  "canDoWhy": "A strange Argonian in the Shivering Isles' marsh will teach you to smith madness ore if you fetch his \"treasure\" from a nearby ruin.",
+  "needs": [
+   {
+    "what": "Reach the Shivering Isles (The Isle of Madness takes you there)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Sees-the-Moon",
+    "where": "his shack in the marsh of the Shivering Isles (Sees-the-Moon's Shack)",
+    "how": "Talk to Sees-the-Moon; he offers to teach you how to smith madness ore in exchange for a treasure from the Drowned Ruin."
+   }
+  ],
+  "firstStep": "Retrieve the treasure from the Drowned Ruin",
+  "takesYou": [
+   {
+    "place": "the Drowned Ruin",
+    "hold": "Shivering Isles",
+    "why": "find the \"treasure\" (a crystalline artifact, under a Cast Iron Pot)"
+   },
+   {
+    "place": "Sees-the-Moon's Shack",
+    "hold": "Shivering Isles",
+    "why": "bring it back to him"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Learn how to smith Madness Ore",
+     "Retrieve the treasure from the Drowned Ruin",
+     "Return the treasure to Sees-the-Moon",
+     "Read Sees-the-Moon's Journal"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Sees-the-Moon's Journal: reading it teaches you how to work madness ore",
+    "when": "when you return; reading it ends the quest"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [
+   "The quest fails if Sees-the-Moon is killed"
+  ],
+  "people": [
+   {
+    "name": "Sees-the-Moon",
+    "role": "the Argonian who gives the quest; it turns out he only wanted the Cast Iron Pot"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No record condition names The Isle of Madness; it's read from Sees-the-Moon being placed in the Shivering Isles."
+   },
+   {
+    "field": "starts",
+    "why": "His exact spot comes from his placement and the shack's name; he has no daily packages here."
+   },
+   {
+    "field": "takesYou",
+    "why": "The Drowned Ruin is named only in the objective; it isn't in the places index, so its spot isn't known here."
+   },
+   {
+    "field": "rewards",
+    "why": "Whether the journal unlocks madness smithing by a perk, a recipe switch or something else isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim Extended Cut - Saints and Seducers.esp:099D1B stages 10/20/40, 255 completes, 300/301 (301 fails)",
+   "giver INFO Skyrim Extended Cut - Saints and Seducers.esp:099DDF Sees-the-Moon (stage < 5)",
+   "NPC Skyrim Extended Cut - Saints and Seducers.esp:033AF4 ref 033AF5 in Shivering Isles world",
+   "place Sees-the-Moon's Shack Skyrim Extended Cut - Saints and Seducers.esp:4E7B1C",
+   "aliases Crown, Heart, Manual"
+  ]
+ },
+ {
+  "edid": "EC_SS_MQ100Int",
+  "name": "The Route of Madness",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "canDo": "by itself",
+  "canDoWhy": "It starts on its own when you feel a quake; the trail leads down a strange tunnel to a Golden Saint named Staada.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "",
+    "where": "the source of a quake; Staada waits in the Solitude Wasteworks",
+    "how": "The quest starts on its own when you move into a new area: investigate the quake, then the strange tunnel, and you meet Staada of the Aureals."
+   }
+  ],
+  "firstStep": "Investigate the source of the quake",
+  "takesYou": [
+   {
+    "place": "the source of the quake",
+    "hold": "unknown",
+    "why": "find what shook the ground"
+   },
+   {
+    "place": "Solitude Wasteworks (through the strange tunnel)",
+    "hold": "Haafingar",
+    "why": "meet Staada"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Investigate the source of the quake",
+     "Investigate the strange tunnel"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [
+   "The Isle of Madness"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Staada",
+    "role": "Golden Saint and guardian of the Shivering Isles, found in the Solitude Wasteworks"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The start is a change-of-location event; which place triggers it, and any level or other conditions, aren't decoded here. Where the quake comes from is filled in at runtime."
+   },
+   {
+    "field": "takesYou",
+    "why": "The Solitude Wasteworks is reached from the Solitude Sewers area (Haafingar) as far as the doors show; the doors into it are hidden until something turns them on."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim Extended Cut - Saints and Seducers.esp:099D18, objectives 10/20, 100 completes; aliases Staada, Wastework, EarthquakeSource",
+   "start node EC_SS_ChangeLocationNode (change location)",
+   "Staada ccbgssse025-advdsgs.esm:198273 ref 19D37A in Solitude Wasteworks cell Skyrim Extended Cut - Saints and Seducers.esp:0EC526",
+   "INFO Skyrim Extended Cut - Saints and Seducers.esp:0BD5A0/0BD5A3/0BD5A6 Staada lines",
+   "Wasteworks doors 005FCA/014C22/287137/287138 with enable parent 0EC9E0",
+   "Solitude Sewers ccBGSSSE025-AdvDSGS.esm:0010CF (Haafingar)"
+  ]
+ },
+ {
+  "edid": "EC_SS_MQ101",
+  "name": "The Isle of Madness",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "canDo": "talk",
+  "canDoWhy": "Staada asks you to come to the Shivering Isles and help her put down a riot at the Asylum.",
+  "needs": [
+   {
+    "what": "Meet Staada in The Route of Madness",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Staada",
+    "where": "Solitude Wasteworks",
+    "how": "Talk to Staada after following the quake's trail; she tells you about a riot in the Shivering Isles' prison and asks you to travel with her to the Asylum."
+   }
+  ],
+  "firstStep": "Enter the Asylum",
+  "takesYou": [
+   {
+    "place": "the Asylum",
+    "hold": "Shivering Isles",
+    "why": "help Staada fight off the rioting prisoners"
+   },
+   {
+    "place": "Stopgap",
+    "hold": "Shivering Isles",
+    "why": "look for signs of Dylora"
+   },
+   {
+    "place": "Glimmering Hollow",
+    "hold": "Shivering Isles",
+    "why": "where the records place Dylora and Thoron"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Enter the Asylum",
+     "Follow Staada",
+     "Investigate Stopgap for signs of Dylora",
+     "Rescue Dylora",
+     "Defeat Thoron",
+     "Return to Staada"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Daedric",
+  "opens": [
+   "The Roots of Madness"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Staada",
+    "role": "Golden Saint who brings you to the Isles"
+   },
+   {
+    "name": "Dylora",
+    "role": "Staada's Dark Seducer counterpart, captured by the prisoners"
+   },
+   {
+    "name": "Thoron",
+    "role": "leader of the prisoners; escapes when you rescue Dylora"
+   },
+   {
+    "name": "Svarig",
+    "role": "named in the quest; his part isn't clear from these records"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Dylora and Thoron are placed in Glimmering Hollow; that it's where you rescue her is inferred, not stated by an objective."
+   },
+   {
+    "field": "people",
+    "why": "Svarig is one of the quest's people but no log or objective names him."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim Extended Cut - Saints and Seducers.esp:099D19 stages 0-51, 52 completes; objectives 0-45",
+   "giver INFO Skyrim Extended Cut - Saints and Seducers.esp:0E0CF3 Staada (stage < 2); Thoron, Dylora stage < 31",
+   "questline opening Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+   "Dylora 099D1D and Thoron ccbgssse025-advdsgs.esm:000A84 in Glimmering Hollow cell 038CDA"
+  ]
+ },
+ {
+  "edid": "EC_SS_MQ102",
+  "name": "The Roots of Madness",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "canDo": "by itself",
+  "canDoWhy": "It follows straight on from The Isle of Madness: Staada sends you for a Shivering Isles weapon that can break Thoron's amber barrier.",
+  "needs": [
+   {
+    "what": "Finish The Isle of Madness",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Staada",
+    "where": "with you in the Shivering Isles, after Dylora is rescued",
+    "how": "When Dylora reveals Thoron is hiding in the Root Nexus behind an amber barrier, Staada sends you to find a weapon that can break it."
+   }
+  ],
+  "firstStep": "Find an artifact originating from the Shivering Isles",
+  "takesYou": [
+   {
+    "place": "Borogove",
+    "hold": "Shivering Isles",
+    "why": "Staada's pick: the hammer Nerveshatter was sealed away in its ruins (optional)"
+   },
+   {
+    "place": "the Grove of Insanity and the laboratory",
+    "hold": "Shivering Isles",
+    "why": "optional tasks: burn them, steal from them or frame the other side"
+   },
+   {
+    "place": "Root Nexus",
+    "hold": "Shivering Isles",
+    "why": "break the amber barrier and defeat Thoron"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Bring Nerveshatter from Borogove, or another artifact from the Shivering Isles (Dylora hints you can find others)",
+    "leadsTo": "Any fitting artifact lets you break the barrier."
+   },
+   {
+    "choice": "Optional: burn the Grove of Insanity and/or the laboratory, steal a Soul Tomato or a Void Essence, and frame the Priests or the Apostles",
+    "leadsTo": "Side tasks within this quest; what each one changes isn't shown in these records."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find an artifact originating from the Shivering Isles",
+     "(Optional) Retrieve Nerveshatter",
+     "(Optional) Talk to Dylora",
+     "Return to Staada",
+     "Destroy the barrier",
+     "Enter the Nexus",
+     "Defeat Thoron",
+     "Talk to Staada"
+    ]
+   },
+   {
+    "branch": "optional",
+    "objectives": [
+     "(Optional) Burn the Grove of Insanity.",
+     "(Optional) Burn the laboratory",
+     "(Optional) Steal a Soul Tomato from the Grove of Insanity",
+     "(Optional) Steal a Void Essence from the laboratory",
+     "(Optional) Frame the Priests for burning the Grove of Insanity",
+     "(Optional) Frame the Apostles for burning the laboratory"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Spell Tome (Master): Conjure Staada",
+    "when": "from Staada at the end"
+   },
+   {
+    "what": "Staada's Helmet",
+    "when": "from the quest's script at the end; may be for you or for Staada"
+   }
+  ],
+  "type": "Daedric",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Staada",
+    "role": "sends you for the weapon and waits at the end"
+   },
+   {
+    "name": "Dylora",
+    "role": "can point you to other artifacts"
+   },
+   {
+    "name": "Thoron",
+    "role": "the escaped prisoner leader, fought in the Root Nexus and the Well of Inversion"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The script also holds several lightning and healing spells whose names say they go in someone's left or right hand, most likely the summoned Staada's; whether the helmet is yours isn't shown."
+   },
+   {
+    "field": "choices",
+    "why": "Who gives the optional burning and framing tasks and what they lead to isn't in these files."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim Extended Cut - Saints and Seducers.esp:09EF5F stages 52-95, 100 completes; objectives 49-90",
+   "giver INFO Skyrim Extended Cut - Saints and Seducers.esp:4403A2 Staada (stage < 66)",
+   "INFO 0E0D09 Staada on Nerveshatter in Borogove; INFO 454869 Dylora",
+   "place Borogove Skyrim Extended Cut - Saints and Seducers.esp:0A5168",
+   "rewards QF_EC_SS_MQ102_0709EF5F: ccBGSSSE025_SpellTomeConjureStaada 19D3F9, EC_SS_ArmorStaadaHelmet 19D389, *RightHand/*LeftHand spells"
+  ]
+ },
+ {
+  "edid": "EC_SS_TheodorQuest",
+  "name": "The Merchant's Masterpiece",
+  "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+  "canDo": "talk",
+  "canDoWhy": "Theodor Gorlash, a merchant in the Shivering Isles, will teach you to smith amber if you bring him a piece of amber shaped like Sheogorath.",
+  "needs": [
+   {
+    "what": "Reach the Shivering Isles (The Isle of Madness takes you there)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Theodor Gorlash",
+    "where": "The Near Corgi Shop, Shivering Isles",
+    "how": "Talk to Theodor; he offers to teach you amber smithing for the Sheogorath-shaped amber and tells you to search the Root Canal."
+   }
+  ],
+  "firstStep": "Find the Sheogorath-Shaped Amber in Root Canal",
+  "takesYou": [
+   {
+    "place": "Root Canal",
+    "hold": "Shivering Isles",
+    "why": "a Root tunnel; the amber is in the Grove of Reflection deep inside"
+   },
+   {
+    "place": "The Near Corgi Shop",
+    "hold": "Shivering Isles",
+    "why": "bring the amber back to Theodor"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Learn how to smith Amber",
+     "Find the Sheogorath-Shaped Amber in Root Canal",
+     "Return the Sheogorath-Shaped Amber to Theodor Gorlash",
+     "Read the Amber Smithing Manual"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Amber Smithing Manual: reading it teaches you how to smith amber",
+    "when": "from Theodor when you return; reading it ends the quest"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Theodor Gorlash",
+    "role": "merchant and former amber sculptor who gives the quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "No record condition names The Isle of Madness; it's read from Theodor's shop being in the Shivering Isles."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest script also refers to the Daedric Smithing perk and a Ring of Disrobing; whether either is given to you, or the perk is only checked, isn't shown."
+   },
+   {
+    "field": "takesYou",
+    "why": "The Root Canal's boss is listed as a level 60 Voracious Hunger."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim Extended Cut - Saints and Seducers.esp:099D1A stages 10/20/40, 255 completes; objectives 5-40",
+   "giver INFO Skyrim Extended Cut - Saints and Seducers.esp:099DD0 Theodor (stage < 5); ref 033ADD in The Near Corgi Shop",
+   "INFO 59F1ED Theodor 'You should search the Root Canal'",
+   "place Root Canal Skyrim Extended Cut - Saints and Seducers.esp:0A516B",
+   "rewards: alias AmberSmithingManual 047621; QF_EC_SSTheodorQuest_07099D1A.DaedricSmithing (Skyrim.esm:0CB413), EC_SS_ClothesRingofDisrobing"
+  ]
+ },
+ {
+  "edid": "EC_SS_ElytraPetAcquisition_Dementia",
+  "name": "My Pet Elytra (Dementia)",
+  "plugin": "ccbgssse025-advdsgs.esm (last edited by Skyrim Extended Cut - Saints and Seducers.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A caged Elytra nymph named Potema is kept in the Shivering Isles; free her and she becomes your pet.",
+  "needs": [
+   {
+    "what": "Reach the Shivering Isles (The Isle of Madness takes you there)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Free the Elytra Nymph",
+  "takesYou": [
+   {
+    "place": "Potema's cage",
+    "hold": "Shivering Isles",
+    "why": "get the key from the Dark Seducer bandit and open the cage"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Free the Elytra Nymph"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Potema, an Elytra nymph pet",
+    "when": "once she is freed"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Potema",
+    "role": "the caged Elytra nymph (Dementia)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "There's no giver or start event in these records; it most likely starts when you find the cage, but that isn't shown."
+   },
+   {
+    "field": "takesYou",
+    "why": "Potema is placed in the Shivering Isles but the exact spot isn't named. That a bandit holds the key is read from the quest's people (a bandit, a key, a cage door), not from a log."
+   },
+   {
+    "field": "rewards",
+    "why": "A Teleport Pet: Potema spell exists in the game, but nothing here ties it to this quest."
+   },
+   {
+    "field": "needs",
+    "why": "No record condition names The Isle of Madness; it's read from Potema being placed in the Shivering Isles."
+   }
+  ],
+  "evidence": [
+   "QUST ccbgssse025-advdsgs.esm:0010C0 objective 10, 25 completes; aliases SeducerBandit, DementiaKey, SeducerCageDoor, ElytraDementia",
+   "Potema ccbgssse025-advdsgs.esm:000CB2 ref 001008 in Shivering Isles world, PetFramework factions, DefaultStayAtEditorLocation",
+   "SPEL ccbgssse025-advdsgs.esm:08BC17 Teleport Pet: Potema"
+  ]
+ }
+]
