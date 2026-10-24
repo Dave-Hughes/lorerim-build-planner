@@ -52,7 +52,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "This copy of the bounty, made just for Whiterun Hold, has roles for an innkeeper, a bounty letter, the jarl and the steward, but these files show no dialogue line or event that hands it out. Most likely an innkeeper, the steward or the jarl gives it, or a letter does, but the records here don't say which."
+    "why": "This copy of the bounty, made just for Whiterun Hold, has roles for an innkeeper, a bounty letter, the jarl and the steward, but these files show no dialogue line or event that hands it out. So which of them hands it to you isn't known from these records."
    },
    {
     "field": "where",
@@ -132,7 +132,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "This copy of the bounty, made just for Winterhold, has roles for an innkeeper, a bounty letter, the jarl and the steward, but these files show no dialogue line or event that hands it out. Most likely an innkeeper, the steward or the jarl gives it, or a letter does, but the records here don't say which."
+    "why": "This copy of the bounty, made just for Winterhold, has roles for an innkeeper, a bounty letter, the jarl and the steward, but these files show no dialogue line or event that hands it out. So which of them hands it to you isn't known from these records."
    },
    {
     "field": "where",

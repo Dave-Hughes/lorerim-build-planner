@@ -1,0 +1,639 @@
+[
+ {
+  "edid": "Favor001DarkwaterCrossing",
+  "name": "Delivery",
+  "plugin": "Favor Quests Seperated.esp",
+  "canDo": "talk",
+  "canDoWhy": "Arrive in Darkwater Crossing and talk to Sondas Drenim; they ask you to carry something to Quintus Navale.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Sondas Drenim",
+    "where": "inside Goldenrock Mine at Darkwater Crossing, where he works from morning until evening",
+    "how": "Once you have come into Darkwater Crossing, speak with Sondas Drenim, who asks you to deliver an item to Quintus Navale."
+   }
+  ],
+  "firstStep": "Deliver the item to Quintus Navale",
+  "takesYou": [
+   {
+    "place": "The White Phial, Windhelm",
+    "hold": "Eastmarch",
+    "why": "hand the item to Quintus Navale"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the item to Quintus Navale"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand the item to Quintus Navale"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Sondas Drenim",
+    "role": "asks for the delivery; works in Goldenrock Mine by day"
+   },
+   {
+    "name": "Quintus Navale",
+    "role": "receives the delivery; keeps the White Phial in Windhelm"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Sondas sleeps and eats in Darkwater Crossing outside the mine; look for him there early morning or at night."
+   },
+   {
+    "field": "steps",
+    "why": "The thing you carry is picked when the job starts; these records don't say what it is."
+   },
+   {
+    "field": "rewards",
+    "why": "The records show the job pays gold but not how much."
+   },
+   {
+    "field": "starts",
+    "why": "The job is readied by the game when you arrive in town; the records here don't show any extra conditions on that, or the exact words the person uses to offer it."
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000842 Favor001DarkwaterCrossing (own record, not overridden)",
+   "aliases Questgiver=Sondas Drenim Skyrim.esm:01366B, Target=Quintus Navale Skyrim.esm:01414C",
+   "start: story node FavorChangeLocationDarkwaterCrossing (change location)",
+   "target hand-in info Favor Quests Seperated.esp:000843, stage below 11",
+   "objective 10 'Deliver <Alias=QuestItem> to <Alias.ShortName=Target>'; stage 20 completes",
+   "reward: QF_Favor001_000403B0.Gold",
+   "packages: DarkwaterCrossingSondasDrenimWork8x14 (Goldenrock Mine), Sleep21x7, Eat7x1/Eat17x1; QuintusStaysInWhitePhial, AIOWHQuintusVisitMarket"
+  ]
+ },
+ {
+  "edid": "Favor001Falkreath",
+  "name": "Delivery",
+  "plugin": "Favor Quests Seperated.esp",
+  "canDo": "talk",
+  "canDoWhy": "Arrive in Falkreath and talk to Thadgeir; they ask you to carry something to Runil.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Thadgeir",
+    "where": "in Falkreath; the records place him in Dengeir's House, and by day he chops wood in town and spends time at the inn",
+    "how": "Once you have come into Falkreath, speak with Thadgeir, who asks you to deliver an item to Runil."
+   }
+  ],
+  "firstStep": "Deliver the item to Runil",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead, Falkreath",
+    "hold": "Falkreath Hold",
+    "why": "hand the item to Runil"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the item to Runil"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand the item to Runil"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Thadgeir",
+    "role": "asks for the delivery"
+   },
+   {
+    "name": "Runil",
+    "role": "receives the delivery; found at the Hall of the Dead"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Thadgeir moves around Falkreath during the day (wood chopping, the inn); the package names give the hours but the exact spots aren't decoded."
+   },
+   {
+    "field": "steps",
+    "why": "The thing you carry is picked when the job starts; these records don't say what it is."
+   },
+   {
+    "field": "rewards",
+    "why": "The records show the job pays gold but not how much."
+   },
+   {
+    "field": "starts",
+    "why": "The job is readied by the game when you arrive in town; the records here don't show any extra conditions on that, or the exact words the person uses to offer it."
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000847 Favor001Falkreath (own record)",
+   "aliases Questgiver=Thadgeir Skyrim.esm:04E5E9, Target=Runil Skyrim.esm:01364D",
+   "start: story node FavorChangeLocationFalkreath (change location)",
+   "target hand-in info Favor Quests Seperated.esp:000849, stage below 11",
+   "reward: QF_Favor001_000403B0.Gold",
+   "packages: FalkreathDengeirEat6x1 (Dengeir's House), WindhelmThadgeirChopWood7x5, FalkreathInnSandbox12x12, FalkreathThadgeirSleep0x6; Runil: FalkreathDeadMansDrinkSandbox19x6, AIOFalkRunilRandom"
+  ]
+ },
+ {
+  "edid": "Favor001Markarth",
+  "name": "Delivery",
+  "plugin": "Favor Quests Seperated.esp",
+  "canDo": "talk",
+  "canDoWhy": "Arrive in Markarth and talk to Banning; they ask you to carry something to Voada.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Banning",
+    "where": "at Markarth Stables, from morning into the evening",
+    "how": "Once you have come into Markarth, speak with Banning, who asks you to deliver an item to Voada."
+   }
+  ],
+  "firstStep": "Deliver the item to Voada",
+  "takesYou": [
+   {
+    "place": "Understone Keep, Markarth",
+    "hold": "The Reach",
+    "why": "hand the item to Voada"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the item to Voada"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand the item to Voada"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Banning",
+    "role": "asks for the delivery; works with the animals at Markarth Stables"
+   },
+   {
+    "name": "Voada",
+    "role": "receives the delivery; servant in Understone Keep"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Voada may be out at the shops in the afternoon; her work package keeps her in Understone Keep for most of the day."
+   },
+   {
+    "field": "steps",
+    "why": "The thing you carry is picked when the job starts; these records don't say what it is."
+   },
+   {
+    "field": "rewards",
+    "why": "The records show the job pays gold but not how much."
+   },
+   {
+    "field": "starts",
+    "why": "The job is readied by the game when you arrive in town; the records here don't show any extra conditions on that, or the exact words the person uses to offer it."
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:000838 Favor001Markarth (own record)",
+   "aliases Questgiver=Banning Skyrim.esm:09A7A8, Target=Voada Skyrim.esm:0133C0",
+   "start: story node FavorChangeLocationMarkarth (change location)",
+   "target hand-in info Favor Quests Seperated.esp:00083C, stage below 11",
+   "reward: QF_Favor001_000403B0.Gold",
+   "packages: MarkarthAnimalTrainerSandboxStables8x12Package; Voada: MarkarthKeepServantWork7x12 (Understone Keep), AIOMaRandomDayShops13x4"
+  ]
+ },
+ {
+  "edid": "Favor001Morthal",
+  "name": "Delivery",
+  "plugin": "Favor Quests Seperated.esp",
+  "canDo": "talk",
+  "canDoWhy": "Arrive in Morthal and talk to Idgrod the Younger; they ask you to carry something to Danica Pure-Spring.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Idgrod the Younger",
+    "where": "in Morthal; she lives in Highmoon Hall, spends the morning just outside it and the afternoon visiting the Thaumaturgist's Hut",
+    "how": "Once you have come into Morthal, speak with Idgrod the Younger, who asks you to deliver an item to Danica Pure-Spring."
+   }
+  ],
+  "firstStep": "Deliver the item to Danica Pure-Spring",
+  "takesYou": [
+   {
+    "place": "Temple of Kynareth, Whiterun",
+    "hold": "Whiterun Hold",
+    "why": "hand the item to Danica Pure-Spring"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the item to Danica Pure-Spring"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand the item to Danica Pure-Spring"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Idgrod the Younger",
+    "role": "asks for the delivery; lives in Highmoon Hall"
+   },
+   {
+    "name": "Danica Pure-Spring",
+    "role": "receives the delivery; spends most of her day at the Temple of Kynareth"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Idgrod's morning package can instead have her following her brother, depending on conditions not decoded here."
+   },
+   {
+    "field": "steps",
+    "why": "The thing you carry is picked when the job starts; these records don't say what it is."
+   },
+   {
+    "field": "rewards",
+    "why": "The records show the job pays gold but not how much."
+   },
+   {
+    "field": "starts",
+    "why": "The job is readied by the game when you arrive in town; the records here don't show any extra conditions on that, or the exact words the person uses to offer it."
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:00083D Favor001Morthal (own record)",
+   "aliases Questgiver=Idgrod the Younger Skyrim.esm:0135EC, Target=Danica Pure-Spring Skyrim.esm:013BA5",
+   "start: story node FavorChangeLocationMorthal (change location)",
+   "target hand-in info Favor Quests Seperated.esp:000841, stage below 11",
+   "reward: QF_Favor001_000403B0.Gold",
+   "packages: MorthalIdgrodYoungerIdleOutsideHighmoon8x6, MorthalIdgrodYoungerVisitLami15x3, Sleep22x9; Danica: WhiterunDanicaTemplePackage, WhiterunDanicaMarketplace15x4, AIOWRDanicaWaterTree"
+  ]
+ },
+ {
+  "edid": "Favor001Windhelm",
+  "name": "Delivery",
+  "plugin": "Favor Quests Seperated.esp",
+  "canDo": "talk",
+  "canDoWhy": "Arrive in Windhelm and talk to Adonato Leotelli; they ask you to carry something to Giraud Gemane.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Adonato Leotelli",
+    "where": "in Candlehearth Hall, the inn in Windhelm, where he writes in the afternoon and evening",
+    "how": "Once you have come into Windhelm, speak with Adonato Leotelli, who asks you to deliver an item to Giraud Gemane."
+   }
+  ],
+  "firstStep": "Deliver the item to Giraud Gemane",
+  "takesYou": [
+   {
+    "place": "Bards College, Solitude",
+    "hold": "Haafingar",
+    "why": "hand the item to Giraud Gemane"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the item to Giraud Gemane"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand the item to Giraud Gemane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Adonato Leotelli",
+    "role": "asks for the delivery; a writer staying at Candlehearth Hall"
+   },
+   {
+    "name": "Giraud Gemane",
+    "role": "receives the delivery; teacher at the Bards College"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "where",
+    "why": "Adonato also wanders Windhelm on some days of the week; the day-of-week rules aren't decoded."
+   },
+   {
+    "field": "steps",
+    "why": "The thing you carry is picked when the job starts; these records don't say what it is."
+   },
+   {
+    "field": "rewards",
+    "why": "The records show the job pays gold but not how much."
+   },
+   {
+    "field": "starts",
+    "why": "The job is readied by the game when you arrive in town; the records here don't show any extra conditions on that, or the exact words the person uses to offer it."
+   }
+  ],
+  "evidence": [
+   "Favor Quests Seperated.esp:00082D Favor001Windhelm (own record)",
+   "aliases Questgiver=Adonato Leotelli Skyrim.esm:01413C, Target=Giraud Gemane Skyrim.esm:013281",
+   "start: story node FavorChangeLocationWindhelm (change location)",
+   "target hand-in info Favor Quests Seperated.esp:00082C, stage below 11",
+   "reward: QF_Favor001_000403B0.Gold",
+   "packages: WindhelmAdonatoWriting12x8, AdonatoStayInCandlehearth, AIOWHAdonatoRandomMWF; Giraud: SolitudeGiraudEatLunch10x3 (Winking Skeever), SolitudeBardsCollegeClassGiraudTeach14x4, BardsCollegeSleepEditorLoc2x8"
+  ]
+ },
+ {
+  "edid": "Favor001",
+  "name": "Delivery",
+  "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+  "canDo": "cut",
+  "canDoWhy": "Switched off in LoreRim: each town's delivery job is now its own separate quest, so this original one never starts.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Deliver the item to the person named"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "on delivery (if it ran)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [],
+  "evidence": [
+   "Skyrim.esm:0403B0 Favor001; last quest edit Favor Quests Seperated.esp",
+   "quest_starts townsfolk-favours: Favor Quests Seperated adds TRUEGlobal == 0 (TRUEGlobal is 1) to the story event and to the quest's dialogue lines, so neither can fire",
+   "info Skyrim.esm:04038B: Scholar's Sting removes the block, LoreRim - Dialogue Patch.esp puts it back (later wins)",
+   "replacements: Favor001AngasMill, Favor001DarkwaterCrossing, Favor001Falkreath, Favor001Markarth, Favor001Morthal, Favor001Windhelm cover all six Favor001QuestGiverFaction members (Aeri, Sondas, Thadgeir, Banning, Idgrod the Younger, Adonato)",
+   "no story-manager start found for this quest"
+  ]
+ },
+ {
+  "edid": "Favor013",
+  "name": "A Few Words with You",
+  "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+  "canDo": "cut",
+  "canDoWhy": "Replaced in LoreRim by separate town-by-town copies of this job (Kynesgrove, Markarth, Solitude, Whiterun, Windhelm, Winterhold); this original has no way to start.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to the person you were sent to about the one who sent you",
+     "Tell the one who sent you that it's taken care of"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you report back (if it ran)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [
+   {
+    "field": "canDo",
+    "why": "The records show the separating mod edits this quest and that no start event is left for it, and every town copy has its own; they don't show the switch-off line itself as they do for Delivery."
+   },
+   {
+    "field": "canDo",
+    "why": "Two dock workers added by the Windhelm overhaul belong to this job's giver group but have no copy of their own; with the original switched off they would offer nothing."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0CA209 Favor013; edited by USSEP then Favor Quests Seperated.esp (last)",
+   "no story-manager start in quest_givers; offer info Skyrim.esm:03F062 (stage below 1, GetIsID Scouts-Many-Marshes, Omluag, Iddra, Octieve San)",
+   "copies: Favor013Kynesgrove (Iddra), Favor013Markarth (Omluag), Favor013Solitude (Octieve San), Favor013Whiterun (Carlotta Valentia), Favor013Windhelm (Scouts-Many-Marshes), Favor013Winterhold (Haran)",
+   "Favor013QuestGiverFaction also holds WindhelmSSE.esp:1014F7 Hears-The-Hist, WindhelmSSE.esp:1014DC Accepts-No-Alms",
+   "reward QF_Favor013_000CA209.Gold"
+  ]
+ },
+ {
+  "edid": "Favor018",
+  "name": "Some Light Theft",
+  "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+  "canDo": "cut",
+  "canDoWhy": "Replaced in LoreRim by separate copies for Falkreath, Windhelm and Winterhold; this original has no way to start.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Steal the item for the person who asked",
+     "Bring the item to them"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand over the item (if it ran)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [
+   {
+    "field": "canDo",
+    "why": "The records show the separating mod edits this quest, no start event is left for it, and all three people in its giver group have their own copy; the switch-off line itself isn't in these files."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:03F46A Favor018; last edit Favor Quests Seperated.esp",
+   "no story-manager start, no giver info in quest_givers",
+   "Favor018QuestGiverFaction: Dengeir of Stuhn, Stands-In-Shallows, Malur Seloth -> copies Favor018Falkreath, Favor018Windhelm, Favor018Winterhold",
+   "reward QF_Favor018_0003F46A.Gold"
+  ]
+ },
+ {
+  "edid": "Favor019",
+  "name": "That Was Always There",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "Talk to Revyn Sadri in his shop in Windhelm; he asks you to plant something in someone's house.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Revyn Sadri",
+    "where": "Sadri's Used Wares, his shop in Windhelm; he works there from morning to evening and eats at the New Gnisis Cornerclub at night",
+    "how": "Once you have come into Windhelm, speak with Revyn Sadri; he asks you to plant an item in another person's house."
+   }
+  ],
+  "firstStep": "Plant the item in the house Revyn names",
+  "takesYou": [
+   {
+    "place": "a house in Windhelm",
+    "hold": "Eastmarch",
+    "why": "plant the item"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Plant the item in the house",
+     "Tell Revyn Sadri the item has been planted"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you tell Revyn it's done"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Revyn Sadri",
+    "role": "asks for the job; runs Sadri's Used Wares in Windhelm"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Which house and which item are set when the job starts; these records don't name them, so the house may not be in Windhelm."
+   },
+   {
+    "field": "steps",
+    "why": "There is a stage between planting and finishing with no journal text; it may be a second way the job ends, but the records don't say what it is."
+   },
+   {
+    "field": "rewards",
+    "why": "The records show gold but not how much."
+   },
+   {
+    "field": "starts",
+    "why": "The separating mod doesn't touch this job, so it still starts from the original town-arrival event; the records here don't show conditions on it."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:03F4EC Favor019; no overrides",
+   "start: story node FavorChangeLocationWindhelm (change location)",
+   "offer info Skyrim.esm:0AD081 GetIsID Revyn Sadri Skyrim.esm:01413A, stage below 11",
+   "Favor019QuestGiverFaction: Revyn Sadri only",
+   "objectives 10 'Plant <Alias=QuestItem> in <Alias=TargetHouse>', 15 'Tell <Alias.ShortName=Questgiver> ...'; stage 17 no objective; stage 20 completes",
+   "reward QF_Favor019_0003F4EC.Gold",
+   "packages RevynSadriWorkInShop8x12, RevynSadriEatAtCornerclub20x4"
+  ]
+ },
+ {
+  "edid": "Favor110",
+  "name": "Rare Gifts",
+  "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+  "canDo": "cut",
+  "canDoWhy": "Replaced in LoreRim by separate copies for Dawnstar, Falkreath, Morthal, Solitude, Whiterun and Windhelm; this original has no way to start.",
+  "needs": [],
+  "starts": [],
+  "firstStep": "",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bring one of the item asked for to the person who asked"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you hand over the item (if it ran)"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [],
+  "unsure": [
+   {
+    "field": "canDo",
+    "why": "The records show the separating mod edits this quest, no start event is left for it, and all six people in its giver group have their own copy; the switch-off line itself isn't in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "The job also holds three skill books (alchemy, blocking, one-handed); the records don't show whether one is given as a reward."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0CA439 Favor110; last edit Favor Quests Seperated.esp",
+   "no story-manager start; offer info Skyrim.esm:079ADA (stage below 1, GetIsID Ysolda, Siddgeir, Lami, Captain Aldis)",
+   "Favor110QuestGiverFaction: Ysolda, Captain Aldis, Lami, Rustleif, Siddgeir, Torbjorn Shatter-Shield -> copies Favor110Whiterun, Favor110Solitude, Favor110Morthal, Favor110Dawnstar, Favor110Falkreath, Favor110Windhelm",
+   "aliases AlchemyBook, BlockBook, OneHandBook",
+   "reward QF_Favor110_000CA439.Gold"
+  ]
+ }
+]

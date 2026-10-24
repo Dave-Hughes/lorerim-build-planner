@@ -1,0 +1,1040 @@
+[
+ {
+  "edid": "Favor204",
+  "name": "Dungeon Delving (Bandits)",
+  "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Amren in Whiterun asks you to fetch something from a bandit hideout.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Amren",
+    "where": "Whiterun: his house by night (home from about 7 pm), Dragonsreach late morning, The Drunken Huntsman from about 9 pm",
+    "how": "Talk to Amren; he asks you to recover an item from a dungeon, picked when the job starts."
+   }
+  ],
+  "firstStep": "Find the item inside the dungeon Amren names",
+  "takesYou": [
+   {
+    "place": "a bandit dungeon chosen when the job starts",
+    "hold": "",
+    "why": "recover the item from the boss's chest"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the item inside the dungeon",
+     "Return the item to Amren"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you return the item"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Amren",
+    "role": "gives the job; Whiterun"
+   },
+   {
+    "name": "Saffir",
+    "role": "Amren's household; her routine changes once this quest is done"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "The dungeon and the item are filled in when the job starts, so the records don't name them."
+   },
+   {
+    "field": "starts",
+    "why": "The start list also ties this quest to an event fired on entering Markarth, which doesn't fit a Whiterun giver; the dialogue with Amren is the clear start."
+   },
+   {
+    "field": "where",
+    "why": "Amren's day is read from his package names (Dragonsreach 10 am for 4 hours, home 7 pm, Drunken Huntsman 9 pm); the schedule details aren't decoded."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:07105B",
+   "quest_givers_raw giver Amren Skyrim.esm:013BAA info 0AD07F stage<11",
+   "reward Gold via QF_Favor031_0007105B",
+   "start node FavorChangeLocationMarkarth (change location)",
+   "Saffir 013B98 package AIOWRSaffirRandom11x3 conditioned GetQuestCompleted 07105B",
+   "Amren packages WhiterunAmrenDragonsreachPackage/HomePackage/DrunkenHuntsmanPackage",
+   "aliases Questgiver/QuestItem/Dungeon/BossContainer"
+  ]
+ },
+ {
+  "edid": "Favor205",
+  "name": "Dungeon Delving (Caves)",
+  "plugin": "Skyrim.esm (last edited by Favor Quests Seperated.esp)",
+  "canDo": "talk",
+  "canDoWhy": "One of several townsfolk asks you to fetch something lost in a cave.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Frida",
+    "where": "The Mortar and Pestle in Dawnstar (works there 8 am to 8 pm; Windpeak Inn in the evening)",
+    "how": "Talk to her; she asks you to recover an item from a cave."
+   },
+   {
+    "who": "Runil",
+    "where": "Falkreath: the Hall of the Dead; Dead Man's Drink in the evening",
+    "how": "Talk to him; same job."
+   },
+   {
+    "who": "Noster Eagle-Eye",
+    "where": "the streets of Solitude by day; sleeps at The Winking Skeever",
+    "how": "Talk to him; same job."
+   },
+   {
+    "who": "Roggi Knot-Beard",
+    "where": "Kynesgrove: Steamscorch Mine by day, Braidwood Inn at breakfast and dinner",
+    "how": "Talk to him; same job."
+   }
+  ],
+  "firstStep": "Find the item inside the cave you are sent to",
+  "takesYou": [
+   {
+    "place": "a cave chosen when the job starts",
+    "hold": "",
+    "why": "recover the item from the boss's chest"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the item inside the cave",
+     "Return the item to whoever gave you the job"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you return the item"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Frida",
+    "role": "can give the job; Dawnstar"
+   },
+   {
+    "name": "Runil",
+    "role": "can give the job; Falkreath"
+   },
+   {
+    "name": "Noster Eagle-Eye",
+    "role": "can give the job; Solitude"
+   },
+   {
+    "name": "Roggi Knot-Beard",
+    "role": "can give the job; Kynesgrove"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "The cave and the item are filled in when the job starts, so the records don't name them."
+   },
+   {
+    "field": "starts",
+    "why": "Any of the four can offer it while the job hasn't started; the records don't say whether taking it from one stops the others offering."
+   },
+   {
+    "field": "where",
+    "why": "Hours are read from package names; the schedule details aren't decoded."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:06FE37",
+   "quest_givers_raw giver Frida 013614 info 0AD08C stage<11, others Runil 01364D, Noster 01329C, Roggi 01403F",
+   "reward Gold via QF_Favor205_0006FE37",
+   "packages DawnstarApothecaryServicesPackage8x12, FalkreathDeadMansDrinkSandbox19x6, SolitudeNosterBegging0x24, KynesgroveRoggiWork8x10"
+  ]
+ },
+ {
+  "edid": "FavorJarlsMakeFriends",
+  "name": "Making Friends and Influencing People",
+  "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "A jarl tells you to help the people of the hold; your journal then counts the favours you do in each hold.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Any jarl",
+    "where": "the jarl's hall in each hold's capital",
+    "how": "Talk to a jarl about earning their trust; the journal then tracks your favours for the people of each hold."
+   }
+  ],
+  "firstStep": "Assist the people of a hold",
+  "takesYou": [
+   {
+    "place": "Markarth",
+    "hold": "The Reach",
+    "why": "help 5 people"
+   },
+   {
+    "place": "Riften",
+    "hold": "The Rift",
+    "why": "help 5 people"
+   },
+   {
+    "place": "Solitude",
+    "hold": "Haafingar",
+    "why": "help 5 people"
+   },
+   {
+    "place": "Whiterun",
+    "hold": "Whiterun",
+    "why": "help 5 people"
+   },
+   {
+    "place": "Windhelm",
+    "hold": "Eastmarch",
+    "why": "help 5 people"
+   },
+   {
+    "place": "Morthal",
+    "hold": "Hjaalmarch",
+    "why": "help 3 people"
+   },
+   {
+    "place": "Dawnstar",
+    "hold": "The Pale",
+    "why": "help 3 people"
+   },
+   {
+    "place": "Winterhold",
+    "hold": "Winterhold",
+    "why": "help 3 people"
+   },
+   {
+    "place": "Falkreath",
+    "hold": "Falkreath",
+    "why": "help 3 people"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Assist the people of The Reach (0/5)",
+     "Assist the people of The Rift (0/5)",
+     "Assist the people of Haafingar (0/5)",
+     "Assist the people of Whiterun (0/5)",
+     "Assist the people of Eastmarch (0/5)",
+     "Assist the people of Hjaalmarch (0/3)",
+     "Assist the people of The Pale (0/3)",
+     "Assist the people of Winterhold (0/3)",
+     "Assist the people of Falkreath (0/3)"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [
+   "Thane of the Reach",
+   "Thane of the Rift",
+   "Thane of Haafingar",
+   "Thane of Whiterun",
+   "Thane of Eastmarch",
+   "Thane of Hjaalmarch",
+   "Thane of the Pale",
+   "Thane of Winterhold",
+   "Thane of Falkreath"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "The jarls of each hold",
+    "role": "their dialogue brings up this tracker"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest runs from the start of the game and is tied to a line spoken by any jarl; the line's text isn't in these files, so what you ask the jarl is a reading, not a quote."
+   },
+   {
+    "field": "opens",
+    "why": "The counts (5 for the big holds, 3 for the small ones) match the thane quests, but the hand-off itself isn't decoded."
+   },
+   {
+    "field": "steps",
+    "why": "Which favours count toward a hold isn't listed in these files."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:087E24 objectives 10-90",
+   "quest_starts_raw line 'thane' opening FavorJarlsMakeFriends startGame true, dialogue GetInFaction 050920 (JobJarlFaction)",
+   "globals FriendsTotalMajorHold=5 FriendsTotalMinorHold=3, FriendsCount<Hold>"
+  ]
+ },
+ {
+  "edid": "Favor250",
+  "name": "Thane of the Reach",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of the Reach and buying a house in Markarth, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of the Reach (5 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of the Reach (Igmund or Thongvor Silver-Blood)",
+    "where": "Understone Keep in Markarth",
+    "how": "The quest wakes up when you first enter Markarth; once you have helped enough people of the hold, the jarl offers the title, but first you must buy a house in Markarth and come back."
+   }
+  ],
+  "firstStep": "Purchase a house in Markarth",
+  "takesYou": [
+   {
+    "place": "Understone Keep",
+    "hold": "The Reach",
+    "why": "speak with the jarl"
+   },
+   {
+    "place": "Vlindrel Hall",
+    "hold": "The Reach",
+    "why": "the house you buy; your housecarl is placed there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Purchase a house in Markarth",
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of the Reach",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Argis the Bulwark as your housecarl (can follow you)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Dwarven Axe of the Reach (likely)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Igmund",
+    "role": "Jarl of the Reach at the start of the game"
+   },
+   {
+    "name": "Thongvor Silver-Blood",
+    "role": "jarl if the hold changes hands in the war"
+   },
+   {
+    "name": "Raerek",
+    "role": "steward, Understone Keep"
+   },
+   {
+    "name": "Argis the Bulwark",
+    "role": "your housecarl; the records place them in Vlindrel Hall"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records don't name a giver line for this quest; the jarl is the giver slot, filled when it runs."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A2C86",
+   "quest_givers_raw Skyrim.esm:0A2C86 starts: change location event FavorChangeLocationMarkarth",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: USSEP, Requiem, Unique Thane Weapons, LoreRim - Dialogue Patch",
+   "housecarl Argis 0A2C8C placed Vlindrel Hall",
+   "jarls by JobJarlFaction: Igmund 01339F (GovRuling), Thongvor 0133BB (GovSons)"
+  ]
+ },
+ {
+  "edid": "Favor252",
+  "name": "Thane of Haafingar",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of Haafingar and buying a house in Solitude, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of Haafingar (5 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of Haafingar (Elisif the Fair or Erikur)",
+    "where": "the Blue Palace in Solitude",
+    "how": "The quest wakes up when you first enter Solitude; once you have helped enough people of the hold, the jarl offers the title, but first you must buy a house in Solitude and come back."
+   }
+  ],
+  "firstStep": "Purchase a house in Solitude",
+  "takesYou": [
+   {
+    "place": "the Blue Palace",
+    "hold": "Haafingar",
+    "why": "speak with the jarl"
+   },
+   {
+    "place": "Proudspire Manor",
+    "hold": "Haafingar",
+    "why": "the house you buy; your housecarl is placed there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Purchase a house in Solitude",
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of Haafingar",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Jordis the Sword-Maiden as your housecarl (can follow you)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Sword of Haafingar (likely)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Elisif the Fair",
+    "role": "Jarl of Haafingar"
+   },
+   {
+    "name": "Erikur",
+    "role": "jarl if the hold changes hands in the war"
+   },
+   {
+    "name": "Jordis the Sword-Maiden",
+    "role": "your housecarl; the records place them in Proudspire Manor"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records don't name a giver line for this quest; the jarl is the giver slot, filled when it runs."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   },
+   {
+    "field": "people",
+    "why": "Who replaces Elisif if Solitude falls isn't clear from the faction lists (Erikur and Bryling both carry the jarl role)."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A2C9B",
+   "quest_givers_raw Skyrim.esm:0A2C9B starts: change location event FavorChangeLocatiomSolitude",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: USSEP, Requiem, Unique Thane Weapons, LoreRim - Dialogue Patch",
+   "housecarl Jordis 0A2C8F placed Proudspire Manor",
+   "jarls by JobJarlFaction: Elisif 01326A, Erikur 013272 (no GovRuling flag on either), Bryling 013265"
+  ]
+ },
+ {
+  "edid": "Favor253",
+  "name": "Thane of Whiterun",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of Whiterun and buying a house in Whiterun, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of Whiterun (5 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of Whiterun (Balgruuf the Greater or Vignar Gray-Mane)",
+    "where": "Dragonsreach in Whiterun",
+    "how": "The quest wakes up when you first enter Whiterun; once you have helped enough people of the hold, the jarl offers the title, but first you must buy a house in Whiterun and come back."
+   }
+  ],
+  "firstStep": "Purchase a house in Whiterun",
+  "takesYou": [
+   {
+    "place": "Dragonsreach",
+    "hold": "Whiterun",
+    "why": "speak with the jarl"
+   },
+   {
+    "place": "Breezehome",
+    "hold": "Whiterun",
+    "why": "the house you buy; your housecarl is placed there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Purchase a house in Whiterun",
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of Whiterun",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Lydia as your housecarl (can follow you)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "one of the Whiterun hold weapons (Blade of Whiterun, Gilded Blade of Whiterun or Axe of Whiterun)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Balgruuf the Greater",
+    "role": "Jarl of Whiterun at the start of the game"
+   },
+   {
+    "name": "Vignar Gray-Mane",
+    "role": "jarl if the hold changes hands in the war"
+   },
+   {
+    "name": "Proventus Avenicci",
+    "role": "steward, Dragonsreach"
+   },
+   {
+    "name": "Lydia",
+    "role": "your housecarl; the records place them in Breezehome"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records don't name a giver line for this quest; the jarl is the giver slot, filled when it runs."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   },
+   {
+    "field": "rewards",
+    "why": "Several Whiterun weapons exist in the thane-weapons mod; which one this quest gives isn't shown."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A2C9E",
+   "quest_givers_raw Skyrim.esm:0A2C9E starts: change location event FavorChangeLocationWhiterun",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: USSEP, Unique Thane Weapons, LoreRim - Dialogue Patch (Requiem doesn't edit this one)",
+   "housecarl Lydia 0A2C8E placed Breezehome",
+   "jarls: Balgruuf 013BBD (GovRuling), Vignar 013BB5"
+  ]
+ },
+ {
+  "edid": "Favor254",
+  "name": "Thane of Eastmarch",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of Eastmarch and buying a house in Windhelm, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of Eastmarch (5 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of Eastmarch (Ulfric Stormcloak or Brunwulf Free-Winter)",
+    "where": "the Palace of the Kings in Windhelm",
+    "how": "The quest wakes up when you first enter Windhelm; once you have helped enough people of the hold, the jarl offers the title, but first you must buy a house in Windhelm and come back."
+   }
+  ],
+  "firstStep": "Purchase a house in Windhelm",
+  "takesYou": [
+   {
+    "place": "the Palace of the Kings",
+    "hold": "Eastmarch",
+    "why": "speak with the jarl"
+   },
+   {
+    "place": "Hjerim",
+    "hold": "Eastmarch",
+    "why": "the house you buy; your housecarl is placed there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Purchase a house in Windhelm",
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of Eastmarch",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Calder as your housecarl (can follow you)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Ebony Warhammer of Eastmarch (likely)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Ulfric Stormcloak",
+    "role": "Jarl of Eastmarch; has the line that sets this quest up"
+   },
+   {
+    "name": "Brunwulf Free-Winter",
+    "role": "jarl if the hold changes hands in the war"
+   },
+   {
+    "name": "Jorleif",
+    "role": "steward, Palace of the Kings"
+   },
+   {
+    "name": "Calder",
+    "role": "your housecarl; the records place them in Hjerim"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records name Ulfric as the speaker of the opening line, before the quest has advanced; the line's text isn't in these files."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (5 of 5) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A2CA6",
+   "quest_givers_raw Skyrim.esm:0A2CA6 starts: change location event FavorChangeLocationWindhelm",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: USSEP, Requiem, Unique Thane Weapons, LoreRim - Dialogue Patch",
+   "giver Ulfric 01414D info 0E0B8A stage<1",
+   "housecarl Calder 0A2C90 placed Hjerim"
+  ]
+ },
+ {
+  "edid": "Favor255",
+  "name": "Thane of Hjaalmarch",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of Hjaalmarch, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of Hjaalmarch (3 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of Hjaalmarch (Idgrod Ravencrone or Sorli the Builder)",
+    "where": "Highmoon Hall in Morthal",
+    "how": "The quest wakes up when you first enter Morthal; once you have helped enough people of the hold, the jarl offers the title."
+   }
+  ],
+  "firstStep": "Return to the jarl",
+  "takesYou": [
+   {
+    "place": "Highmoon Hall",
+    "hold": "Hjaalmarch",
+    "why": "speak with the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of Hjaalmarch",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Valdimar as your housecarl (can follow you)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Silver Warscythe of Hjaalmarch (likely)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Idgrod Ravencrone",
+    "role": "Jarl of Hjaalmarch at the start of the game"
+   },
+   {
+    "name": "Sorli the Builder",
+    "role": "jarl if the hold changes hands in the war; the records give her a line for this quest"
+   },
+   {
+    "name": "Valdimar",
+    "role": "your housecarl; the records place them in Highmoon Hall"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records give Sorli the Builder (the Stormcloak-side jarl, from a Hearthfire line) a giver line; no line is named for Idgrod, the jarl at the start."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (3 of 3) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   },
+   {
+    "field": "rewards",
+    "why": "Valdimar is placed in Highmoon Hall but his routines are for a home you build yourself; when he moves there isn't decoded."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A34CE",
+   "quest_givers_raw Skyrim.esm:0A34CE starts: change location event FavorChangeLocationMorthal",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: HearthFires, USSEP, Requiem, Unique Thane Weapons, LoreRim - Dialogue Patch",
+   "giver Sorli 013606 info HearthFires.esm:011CB4 stage<21",
+   "housecarl Valdimar HearthFires.esm:00521B placed Highmoon Hall, packages BYOHHousecarlHjaalmarchPlayerHouse*",
+   "jarls: Idgrod 0135EB (GovRuling), Sorli 013606 (GovSons)"
+  ]
+ },
+ {
+  "edid": "Favor256",
+  "name": "Thane of the Pale",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of the Pale, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of the Pale (3 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of the Pale (Skald the Elder or Brina Merilis)",
+    "where": "the White Hall in Dawnstar",
+    "how": "The quest wakes up when you first enter Dawnstar; once you have helped enough people of the hold, the jarl offers the title."
+   }
+  ],
+  "firstStep": "Return to the jarl",
+  "takesYou": [
+   {
+    "place": "the White Hall",
+    "hold": "The Pale",
+    "why": "speak with the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of the Pale",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Gregor as your housecarl (can follow you)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Evening Star of the Pale (likely)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Skald the Elder",
+    "role": "Jarl of the Pale at the start of the game"
+   },
+   {
+    "name": "Brina Merilis",
+    "role": "jarl if the hold changes hands in the war"
+   },
+   {
+    "name": "Gregor",
+    "role": "your housecarl; the records place them in the White Hall"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records don't name a giver line for this quest; the jarl is the giver slot, filled when it runs."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (3 of 3) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   },
+   {
+    "field": "rewards",
+    "why": "Gregor is placed in the White Hall but his routines are for a home you build yourself; when he moves there isn't decoded."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A34D4",
+   "quest_givers_raw Skyrim.esm:0A34D4 starts: change location event FavorChangeLocationDawnstar",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: HearthFires, USSEP, Requiem, Unique Thane Weapons, LoreRim - Dialogue Patch",
+   "housecarl Gregor HearthFires.esm:00521E placed The White Hall, packages BYOHHousecarlPalePlayerHouse*",
+   "jarls: Skald 013620 (GovRuling), Brina Merilis 01A6B7"
+  ]
+ },
+ {
+  "edid": "Favor257",
+  "name": "Thane of Winterhold",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Earn the jarl's trust by helping the people of Winterhold, then the jarl names you thane.",
+  "needs": [
+   {
+    "what": "Help the people of Winterhold (3 favours, counted in Making Friends and Influencing People)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "The Jarl of Winterhold (Korir or Kraldar)",
+    "where": "Stonecold Fortress (the jarl's longhouse) in Winterhold",
+    "how": "The quest wakes up when you first enter Winterhold; once you have helped enough people of the hold, the jarl offers the title."
+   }
+  ],
+  "firstStep": "Return to the jarl",
+  "takesYou": [
+   {
+    "place": "Stonecold Fortress (the jarl's longhouse)",
+    "hold": "Winterhold",
+    "why": "speak with the jarl"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Return to the jarl"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "The title of Thane of Winterhold",
+    "when": "at the end"
+   },
+   {
+    "what": "Gold (a large gold reward plus a set sum)",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "A piece of armor from the favour reward list",
+    "when": "when you are named thane"
+   },
+   {
+    "what": "Blade of Winterhold (likely)",
+    "when": "when you are named thane"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Korir",
+    "role": "Jarl of Winterhold at the start of the game"
+   },
+   {
+    "name": "Kraldar",
+    "role": "jarl if the hold changes hands in the war"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records don't name a giver line for this quest; the jarl is the giver slot, filled when it runs."
+   },
+   {
+    "field": "needs",
+    "why": "The journal counts favours for this hold (3 of 3) in Making Friends and Influencing People, but the link between that count and the jarl's offer isn't decoded in these files."
+   },
+   {
+    "field": "rewards",
+    "why": "Unique Thane Weapons adds a hold-weapon slot to this quest; the weapon is likely the one named here, but the files don't show which variant (one- or two-handed) you get."
+   },
+   {
+    "field": "rewards",
+    "why": "Unlike the other holds, this quest has no housecarl slot in the records, so no housecarl is listed."
+   }
+  ],
+  "evidence": [
+   "quests_raw Skyrim.esm:0A34D7",
+   "quest_givers_raw Skyrim.esm:0A34D7 starts: change location event FavorChangeLocationWinterhold",
+   "rewards: FavorRewardArmor 04930B, FavorRewardGoldLarge 04A41B, Gold via fragment script",
+   "aliases QuestGiver/Steward/PlayerHousecarl/JarlWeapon",
+   "globals FriendsTotalMajorHold=5, FriendsTotalMinorHold=3",
+   "editedBy order: USSEP, Requiem, Unique Thane Weapons, LoreRim - Dialogue Patch",
+   "no PlayerHousecarl alias",
+   "jarls: Korir 01C188 (GovRuling), Kraldar 01C180"
+  ]
+ }
+]
