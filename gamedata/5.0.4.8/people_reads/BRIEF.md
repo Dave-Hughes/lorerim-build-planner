@@ -36,6 +36,6 @@ One JSON object per person, in a list:
 
 No record ids, editor ids or plugin file names in any text a player reads; they go in `evidence`. Never invent to fill a field.
 
-Working files: keep any scripts you write in `/tmp/claude-0/-home-claude/969323fd-f0e5-5fc7-8db6-cfa833e9ed5a/scratchpad/p<your batch>/`.
+Working files: keep any scripts you write in `/tmp/p<your batch>/` (outside the repo).
 
 When you're done, reply with just the file path.

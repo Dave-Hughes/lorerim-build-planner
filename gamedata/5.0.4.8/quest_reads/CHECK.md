@@ -17,6 +17,6 @@ Then write the corrected quest object (the reader's object with your fixes appli
 
 Save to the path you are given as `{"checks": [{"edid", "verdicts": {field: {"verdict", "note"}}}], "quests": [corrected objects]}` and reply with the path and one line: how many fields you fixed.
 
-Working files: keep any scripts you write in `/tmp/claude-0/-home-claude/969323fd-f0e5-5fc7-8db6-cfa833e9ed5a/scratchpad/c<your batch number>/`, never loose in the scratchpad: other readers run at the same time.
+Working files: keep any scripts you write in `/tmp/c<your batch number>/` (outside the repo), never loose in a shared folder: other readers run at the same time.
 
 No record ids, editor ids or plugin file names in any text a player reads, `unsure` notes included ("the records place him in the Red Wave", not "Skyrim.esm:01328D"). Ids go in `evidence` only.
