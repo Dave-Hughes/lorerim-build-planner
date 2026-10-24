@@ -272,6 +272,18 @@ export default async function QuestPage({ params, searchParams }: { params: Para
           )}
 
           <p className={styles.sure}>{page.sure}</p>
+          {page.unsure.some((u) => u.why) && (
+            <details className={styles.ends}>
+              <summary>Why we&apos;re unsure</summary>
+              <ul className={styles.waysList}>
+                {page.unsure.filter((u) => u.why).map((u, i) => (
+                  <li key={i}>
+                    <b>{u.field}</b>: {u.why}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
 
           <QuestReport
             lineId={line.id}

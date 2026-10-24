@@ -44,7 +44,8 @@ describe("a quest with a read", () => {
     expect(p.takesYou[1]).not.toHaveProperty("danger");
   });
   it("says how sure we are, with what the reader couldn't settle", () => {
-    expect(p.sure).toBe("Read from the game files and checked by a second reader. Unsure: where: the records place him in the cistern; his schedule isn't in these files");
+    expect(p.sure).toBe("Read from the game files and checked by a second reader. Unsure: where");
+    expect(p.unsure).toEqual([{ field: "where", why: "the records place him in the cistern; his schedule isn't in these files" }]);
   });
   it("a way a player found in game replaces the read's for that person, and the line says so", () => {
     const q = quest({ read, source: "reads", start: { checked: "files", ways: [{ how: "Talk to Mercer Frey by the door", who: "Mercer Frey", where: "the Flagon", checked: "players", source: "Dave, watched in game, 23 Oct 2026" }] } });
@@ -83,7 +84,7 @@ describe("a quest with no read yet", () => {
 describe("the door", () => {
   it("get_quest's fields come in the page's order, with the sources named", () => {
     const d = doorPage(quest({ read, source: "reads" }));
-    expect(Object.keys(d)).toEqual(["source", "canDo", "needs", "starts", "firstStep", "takesYou", "choices", "gets", "opens", "closes", "steps", "howSure"]);
+    expect(Object.keys(d)).toEqual(["source", "canDo", "needs", "starts", "firstStep", "takesYou", "choices", "gets", "opens", "closes", "steps", "howSure", "unsure"]);
     expect(d.canDo).toBe("Talk to someone to start it");
     expect(d.gets.xp).toBe("100 XP (Miscellaneous)");
   });

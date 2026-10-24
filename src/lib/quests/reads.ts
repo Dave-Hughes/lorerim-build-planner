@@ -41,8 +41,10 @@ export interface QuestPage {
   closes: string[];
   /** Section 9: the journal's objectives, by branch when it branches. */
   steps: { branch?: string; objectives: string[] }[];
-  /** Section 10. */
+  /** Section 10: one line. */
   sure: string;
+  /** What the reader couldn't settle, field by field, with why: under the line, folded. */
+  unsure: { field: string; why?: string }[];
 }
 
 const CAN_DO: Record<NonNullable<QuestRead["canDo"]>, string> = {
@@ -122,10 +124,11 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     ...players.map((w) => ({ how: w.how, ...(w.who ? { who: w.who } : {}), ...(w.where ? { where: w.where } : {}), reportedBy: { source: w.source ?? "", ...(w.also?.length ? { also: w.also } : {}) }, ...(w.whereIs?.length ? { whereIs: w.whereIs } : {}), ...(w.unplaced ? { unplaced: w.unplaced } : {}) })),
     ...(r.starts ?? []).filter((s) => !(s.who && said.has(s.who))).map((s) => ({ how: s.how ?? "", ...(s.who ? { who: s.who } : {}), ...(s.where ? { where: s.where } : {}) })),
   ].filter((s) => s.how || s.who);
-  const unsure = (r.unsure ?? []).map((u) => `${u.field}: ${u.why}`);
+  const unsure = (r.unsure ?? []).filter((u) => u.field);
+  const fields = [...new Set(unsure.map((u) => u.field))].join(", ");
   const sure = players.length
-    ? `Checked in game by a player: ${pageSources(players[0].source ?? "", players[0].also)}${unsure.length ? `. Unsure: ${unsure.join("; ")}` : ""}`
-    : `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${unsure.join("; ")}` : ""}`;
+    ? `Checked in game by a player: ${pageSources(players[0].source ?? "", players[0].also)}${unsure.length ? `. Unsure: ${fields}` : ""}`
+    : `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${fields}` : ""}`;
   return {
     source: "reads",
     canDo: r.canDo ? { label: CAN_DO[r.canDo], ...(r.canDo !== "talk" && r.canDoWhy ? { why: r.canDoWhy } : {}) } : null,
@@ -146,6 +149,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     closes: r.closes ?? [],
     steps: (r.steps ?? []).map((s) => ({ ...(s.branch && s.branch !== "main" ? { branch: s.branch } : {}), objectives: s.objectives ?? [] })).filter((s) => s.objectives.length),
     sure,
+    unsure,
   };
 }
 
@@ -177,6 +181,7 @@ function viaRules(q: Quest): QuestPage {
     closes: [],
     steps: q.objectives.length ? [{ objectives: q.objectives }] : [],
     sure: `Not read yet: this page is from the planner's older rules, and ${st && st.checked !== "not yet" ? `its start is checked (${checkedLabel(st.checked, st.source)})` : "its start isn't checked yet"}`,
+    unsure: [],
   };
 }
 
@@ -204,6 +209,7 @@ export function doorPage(q: Quest) {
     closes: p.closes,
     steps: p.steps,
     howSure: p.sure,
+    ...(p.unsure.length ? { unsure: p.unsure } : {}),
   };
 }
 

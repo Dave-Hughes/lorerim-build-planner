@@ -7,10 +7,20 @@ rule-made fields, marked source "rules". Nothing from a read is reworded here.
 import glob
 import json
 import os
+import re
 
 # What a page and the door use, in BRIEF.md's words. `evidence` (record ids) and `plugin` stay in the batch files, not the data.
 FIELDS = ("canDo", "canDoWhy", "needs", "starts", "firstStep", "takesYou", "choices", "steps", "rewards", "type", "opens", "closes", "people", "unsure")
 CAN_DO = ("talk", "by itself", "radiant", "cut", "background")
+
+
+# An editor id or form id a page could show: a note holding one keeps its field but not its words (nothing is reworded, so it is left out whole).
+RECORD_ID = re.compile(r"[A-Za-z]+_[A-Za-z]|^cc|[A-Za-z0-9]\.(esp|esm|esl):")
+
+
+def player_unsure(unsure):
+    """The reader's unsure notes: each keeps its field; its why is dropped when it names a record, so no page shows an id."""
+    return [{"field": u["field"], **({"why": u["why"]} if u.get("why") and not RECORD_ID.search(u["why"]) else {})} for u in unsure or [] if u.get("field")]
 
 
 def load_reads(folder):
@@ -30,7 +40,9 @@ def load_reads(folder):
             read = {k: q[k] for k in FIELDS if k in q}
             if read.get("canDo") not in CAN_DO:
                 read.pop("canDo", None)
-            out[edid] = {**read, "fixed": fixed.get(edid, []), **({"plugin": q["plugin"]} if q.get("plugin") else {})}
+            if "unsure" in read:
+                read["unsure"] = player_unsure(read["unsure"])
+            out[edid] = {**read, "fixed": fixed.get(edid, [])}
     return out
 
 

@@ -5074,6 +5074,13 @@ Status: building (Mac)
 - **Not done:** the line page's "What it is" and "How to get in" still use the rules' line fields until `quest_reads/lines/` exists and its shape is written (WO-153 Part 2); the screenshots for Dave need real reads; player questions 1, 3, 9 and 31 to 37 pass unchanged on the older rules and get re-read when reads land.
 - **Checks:** typecheck, lint, 695 unit tests (11 new), the gamedata tests and the build pass; the quest e2e (`wo100`, `wo106`, `wo121a`, `wo136`, `wo146`, `wo147`, `wo148`, and a new `wo154`, 29 tests) pass.
 
+### Jeff's notes, the first 130 reads (Mac, 23 Oct, 18:50)
+- **Built with the first 13 batches** (130 quests; 1,096 still on the older rules). `build.py` prints the count each time; re-running it as batches land is the only step. I'll rebuild and push `quests.json` each time I see new batches on staging.
+- **Record ids in the readers' unsure notes.** 7 notes name a record (an editor id like SQL_Mortal_Spell_Power_VampiresSeduction, a form id like Skyrim.esm:0BC096, a plugin's file name) and the standing test says no page shows an id. Nothing is reworded: a note that names a record keeps its field in the "Unsure: ..." line but its words aren't shown (page or door). The readers' `plugin` string isn't carried at all (the page's mod tag comes from the line's sources). If you'd rather the checkers write those notes without ids, say so and the words come back.
+- **How sure.** One short line, "Read from the game files and checked by a second reader. Unsure: rewards, steps, people, starts", with the reasons folded under "Why we're unsure". The readers write 3 to 5 notes per quest, so the full words in a line would be a paragraph.
+- **What a read changes on the page.** The Throat of the World now reads: Starts by itself (the reader's why), needs Alduin's Wall, how to start it, first step, High Hrothgar with the places index's danger ("trolls from level 14, up to 150; the boss The Beast, level 14", the PC's data), what you get, what it opens, the steps, how sure.
+- **Still to do when more batches land:** the screenshots for Dave (Lights Out!, Speaking With Silence, Reparations, Mourning Never Comes, The Thieves Guild line and More to do in Whiterun: none of those are in the first 13 batches, so I have none to show yet), re-reading player questions 1, 3, 9 and 31 to 37 against reads, and dropping the older `start` block from `get_quest` once reads cover the quests those questions ask about.
+
 ## WO-153  Quest reads: an agent reads every quest's records, a second checks it (Bob runs it, 23 Oct 2026)
 Status: building (Bob)
 

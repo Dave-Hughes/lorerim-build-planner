@@ -24,7 +24,7 @@ class LoadReadsTest(unittest.TestCase):
             got = qr.load_reads(d)["MS07"]
             self.assertEqual(got["firstStep"], "Talk to Jaree-Ra")
             self.assertEqual(got["fixed"], ["firstStep"])
-            self.assertEqual(got["plugin"], "Skyrim.esm")
+            self.assertNotIn("plugin", got)
             self.assertNotIn("evidence", got)
 
     def test_an_unknown_canDo_is_dropped_not_guessed(self):
@@ -39,6 +39,17 @@ class LoadReadsTest(unittest.TestCase):
             got = qr.load_reads(d)
             self.assertEqual(got["A"]["firstStep"], "two")
             self.assertNotIn("B", got)
+
+
+class UnsureTest(unittest.TestCase):
+    def test_a_note_that_names_a_record_keeps_its_field_and_loses_its_words(self):
+        got = qr.player_unsure([
+            {"field": "rewards", "why": "the script holds a Blades Katana; the records don't show whether it is handed over"},
+            {"field": "powers", "why": "the power is SQL_Mortal_Spell_Power_VampiresSeduction in Big Tweaks.esp"},
+            {"field": "people", "why": "A second quest (Skyrim.esm:0BC096) exists"},
+            {"why": "no field"},
+        ])
+        self.assertEqual(got, [{"field": "rewards", "why": "the script holds a Blades Katana; the records don't show whether it is handed over"}, {"field": "powers"}, {"field": "people"}])
 
 
 class AttachTest(unittest.TestCase):

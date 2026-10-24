@@ -52,10 +52,9 @@ export interface QuestRead {
   opens?: string[];
   closes?: string[];
   people?: { name: string; role?: string }[];
-  unsure?: { field: string; why: string }[];
-  /** The fields the checker fixed, and the plugin that last edits the quest. */
+  unsure?: { field: string; why?: string }[];
+  /** The fields the checker fixed. */
   fixed?: string[];
-  plugin?: string;
 }
 
 export interface Quest {
