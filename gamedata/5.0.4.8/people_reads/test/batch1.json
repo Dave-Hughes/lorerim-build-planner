@@ -1,0 +1,49 @@
+[
+ {
+  "id": "Skyrim.esm:01C18A",
+  "edid": "Assur",
+  "name": "Assur",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01327A",
+  "edid": "VittoriaVici",
+  "name": "Vittoria Vici",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014136",
+  "edid": "Torsten",
+  "name": "Torsten Cruel-Sea",
+  "plugin": "LoreRim - Skyrim Revoiced Patch.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01338B",
+  "edid": "Bothela",
+  "name": "Bothela",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:041FB8",
+  "edid": "CaptainAldis",
+  "name": "Captain Aldis",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

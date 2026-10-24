@@ -1,0 +1,743 @@
+[
+ {
+  "edid": "ACFMTSAngisCampDialogue",
+  "name": "More to Say Find Angi",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Two ways in: Faendal in Riverwood (or Valdr, near Falkreath) tells you about a dangerous hunter who might teach you archery, or Legate Skulnar wants that same fugitive, Angi, dead.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Faendal",
+    "where": "Riverwood; he sleeps in Faendal's House (11 pm for 5 hours) and works around Riverwood from 7 am for 12 hours",
+    "how": "Talk to him and he tells you about a skilled but dangerous hunter who might train you in Archery."
+   },
+   {
+    "who": "Valdr",
+    "where": "Moss Mother Cavern near Falkreath at first; once his own trouble there is over, he hangs around Dead Man's Drink in Falkreath and sleeps in Valdr's House (10 pm)",
+    "how": "He can tell you the same tale of the hunter."
+   },
+   {
+    "who": "Legate Skulnar",
+    "where": "with the Imperial Legion in Falkreath Hold",
+    "how": "He asks you to find and kill a dangerous fugitive."
+   }
+  ],
+  "firstStep": "Train with the seasoned hunter",
+  "takesYou": [
+   {
+    "place": "Angi's Camp",
+    "hold": "Falkreath",
+    "why": "find Angi, the hunter"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Go to her to train",
+    "leadsTo": "Angi trains you in Archery."
+   },
+   {
+    "choice": "Take Legate Skulnar's job and kill her",
+    "leadsTo": "Angi dies; report back to Legate Skulnar."
+   },
+   {
+    "choice": "Take Legate Skulnar's job but spare her",
+    "leadsTo": "You still have to decide what to tell the Legate."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "training",
+    "objectives": [
+     "Train with the seasoned hunter"
+    ]
+   },
+   {
+    "branch": "Legate Skulnar's job",
+    "objectives": [
+     "Kill the seasoned hunter",
+     "Kill Angi or tell her you will spare her",
+     "Report back to Legate Skulnar"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Archery training from Angi",
+    "when": "on the training path"
+   },
+   {
+    "what": "Gold",
+    "when": "from the quest's script; the records don't say how much or on which path"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [
+   "Angi dies if you kill her, and her training goes with her"
+  ],
+  "people": [
+   {
+    "name": "Angi",
+    "role": "the hunter and fugitive; lives at Angi's Camp, sleeps there from 10 pm"
+   },
+   {
+    "name": "Faendal",
+    "role": "tells you about the hunter"
+   },
+   {
+    "name": "Valdr",
+    "role": "can also tell you about the hunter"
+   },
+   {
+    "name": "Legate Skulnar",
+    "role": "wants the fugitive dead; you report back to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The line that hands out Legate Skulnar's job isn't in these files, only his log entry and the 'report back' step; the records give him no placement, only that he is an Imperial field commander for Falkreath Hold."
+   },
+   {
+    "field": "takesYou",
+    "why": "Angi's Camp isn't in the places index, so its hold comes from the quest being Falkreath's and the log calling Skulnar 'the Falkreath Legate'."
+   },
+   {
+    "field": "rewards",
+    "why": "The quest's script holds a gold reward, but which ending pays it, and how much, isn't readable here. The training is from the log, not a script property."
+   },
+   {
+    "field": "steps",
+    "why": "The quest has two endings that complete it and one that fails it; the records don't say which choice leads to the failure."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:00091B stages 20/30/40/55/60/200/220/300, objectives 20/22/25/100",
+   "giver INFO moretodo.esp:000A40 (Faendal Skyrim.esm:013480, GetStage<20; also Valdr Skyrim.esm:0411BA <20, Angi Skyrim.esm:0CAB2F <200)",
+   "start: story manager node ACFMTSFalkreathQuestsNode (change location)",
+   "reward ACFAngiQuestScript.Gold001",
+   "Angi packages USKPAngiSleep 22x8, dunArcherAngiSandboxNearHome (Angi's Camp)",
+   "Valdr packages dunMossMother* (conditioned on Skyrim.esm:0376EE), COTN_FalkreathValdrSandboxPackage, COTN_FalkreathValdrSleepPackage 22x10",
+   "Faendal packages FaendalWork7x12, FaendalSleepHome23x5",
+   "Legate Skulnar Skyrim.esm:08455E, CWFieldCOMasterPackage (shared), no placement"
+  ]
+ },
+ {
+  "edid": "ACFMTSFreeformFalkreath001",
+  "name": "Ingredient Collection",
+  "plugin": "moretodo.esp (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Zaria, the alchemist in Falkreath, asks you to bring her sabre cat eyes.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Zaria",
+    "where": "behind the counter in Grave Concoctions, Falkreath (8 am to 8 pm)",
+    "how": "Talk to her and she asks for sabre cat eyes."
+   }
+  ],
+  "firstStep": "Bring 5 sabre cat eyes to Zaria.",
+  "takesYou": [],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bring 5 sabre cat eyes to Zaria.",
+     "Return to Zaria."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "A small gold reward",
+    "when": "when you hand over the eyes"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Zaria",
+    "role": "the alchemist who wants the eyes"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "If she has been driven out of Falkreath by the war, the records move her to Candlehearth Hall in Windhelm."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:000927 stages 20/200, objectives 10/20",
+   "giver INFO moretodo.esp:00092B (Zaria Skyrim.esm:03A19A, GetStage<11)",
+   "reward QF_ACFMTSFreeformFalkreath00_05000927.pACFFFF001Gold -> FavorRewardGoldSmall Skyrim.esm:0494DF",
+   "Zaria packages CWExiledSonsSandboxCandlehearthHall (GetInFaction Skyrim.esm:036629), FalkreathZariaSellApothecary8x12",
+   "editedBy LoreRim - Dialogue Patch.esp"
+  ]
+ },
+ {
+  "edid": "ACFMTSFreeformFalkreath002",
+  "name": "Shriekwind Bastion",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Narri at Falkreath's inn tells you the dead at Shriekwind Bastion have found no peace.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Narri",
+    "where": "Dead Man's Drink in Falkreath; from 8 am for 8 hours she's outside the inn, otherwise serving inside",
+    "how": "Talk to her: \"Shriekwind Bastion. A tomb like so many in Skyrim where the dead have found no peace.\""
+   }
+  ],
+  "firstStep": "Clear Shriekwind Bastion of the restless dead.",
+  "takesYou": [
+   {
+    "place": "Shriekwind Bastion",
+    "hold": "Falkreath",
+    "why": "clear out the restless dead; it's right next to Falkreath, and its boss is level 60 in the records"
+   },
+   {
+    "place": "Falkreath",
+    "hold": "Falkreath",
+    "why": "tell the steward the tomb is clear"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Clear Shriekwind Bastion of the restless dead.",
+     "Inform the steward of Falkreath that Shriekwind Bastion is clear of the restless dead."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "at the end; the amount isn't readable here"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Narri",
+    "role": "tells you about the tomb"
+   },
+   {
+    "name": "the steward of Falkreath",
+    "role": "you report to them"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "people",
+    "why": "The quest doesn't name the steward; that person is filled in when the quest runs."
+   },
+   {
+    "field": "takesYou",
+    "why": "The places index lists it as North Shriekwind Bastion; the quest calls it Shriekwind Bastion."
+   },
+   {
+    "field": "rewards",
+    "why": "The gold could come from Narri or the steward; the script doesn't say who hands it over."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:000987 objectives 20/100, aliases StewardAlias, ShriekwindBastionBossAlias",
+   "giver INFO moretodo.esp:00098A (Narri Skyrim.esm:013654, GetStage<11)",
+   "place Skyrim.esm:0A0E30 (boss Thjodrek level 60, 0.2 km from Falkreath)",
+   "reward ACFSBScript.Gold001",
+   "Narri packages FalkreathNarriSandboxOutsideInn8x8, USKPFalkreathNarriBarkeepPackage"
+  ]
+ },
+ {
+  "edid": "ACFMTSFreeformWinterhold01",
+  "name": "Birna's Shipment",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Birna in Winterhold has lost a shipment on the roads, maybe stolen by small evil creatures.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Birna",
+    "where": "Birna's Oddments in Winterhold (shop open 8 am to 8 pm); from 8 pm for 3 hours she's at The Frozen Hearth",
+    "how": "Talk to her and she asks you to track down her lost shipment."
+   }
+  ],
+  "firstStep": "Retrieve Birna's shipment from Sightless Pit.",
+  "takesYou": [
+   {
+    "place": "Sightless Pit",
+    "hold": "Winterhold",
+    "why": "get the shipment back from the Falmer; a short walk from Winterhold"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Retrieve Birna's shipment from Sightless Pit.",
+     "Return the missing shipment to Birna."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you return the shipment"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Birna",
+    "role": "owns the lost shipment"
+   }
+  ],
+  "unsure": [],
+  "evidence": [
+   "moretodo.esp:0008E1 stages 20/100/200, objectives 10/100, fills QuestGiver=Birna, QuestLocation=Sightless Pit",
+   "giver INFO moretodo.esp:0008E8 (Birna Skyrim.esm:01C187, GetStage<11)",
+   "place Skyrim.esm:0192A8 (Falmer hive, 0.4 km from Winterhold)",
+   "reward QF_ACFMTSFreeformWinterhold0_050008E1.Reward",
+   "Birna packages WinterholdBirnaVisitInn20x3, vendor hours 8-20"
+  ]
+ },
+ {
+  "edid": "ACFRiverwoodEmbershardBandits",
+  "name": "Embershard Bandits",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Lucan at the Riverwood Trader wants the bandit leader in Embershard Mine dead.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Lucan Valerius",
+    "where": "the Riverwood Trader, Riverwood (7 am for 13 hours); from 8 pm he's at the Sleeping Giant Inn",
+    "how": "He is the one you report to; he's most likely the one who asks."
+   }
+  ],
+  "firstStep": "Kill the bandit leader at Embershard.",
+  "takesYou": [
+   {
+    "place": "Embershard Mine",
+    "hold": "Falkreath",
+    "why": "kill the bandit leader; it's right next to Riverwood"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the bandit leader at Embershard.",
+     "Tell Lucan the bandit leader is dead."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you tell Lucan"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Lucan Valerius",
+    "role": "runs the Riverwood Trader; you report to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The records don't show the line that hands out this job; Lucan is in the quest and it ends with telling him, so he's the likely giver."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:000EEA objectives 10/100, fills QuestLocation=Embershard",
+   "no giver INFO found; LucanAlias Skyrim.esm:01347A",
+   "start: story manager node ACFMTSRiverwoodQuestNode (change location)",
+   "place Skyrim.esm:0B712C Embershard Mine (bandits 6-10)",
+   "reward ACFBQScript.Gold001",
+   "Lucan packages LucanValeriusTraderServices7x13, LucanRiverwoodEatInn20x4"
+  ]
+ },
+ {
+  "edid": "ACFRiverwoodTheHeartWillGoOn",
+  "name": "The Heart Will Go On",
+  "plugin": "moretosayriverwood.esp",
+  "canDo": "talk",
+  "canDoWhy": "Faendal and Sven in Riverwood are still after Camilla's heart, and each wants you to carry his words to her.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Faendal",
+    "where": "Riverwood; he works around the village from 7 am and sleeps in Faendal's House from 11 pm",
+    "how": "He gives you a letter for Camilla."
+   },
+   {
+    "who": "Sven",
+    "where": "the Sleeping Giant Inn in Riverwood from 10 am for 16 hours; sleeps in Sven and Hilde's House from 2 am",
+    "how": "He gives you a ballad for Camilla."
+   }
+  ],
+  "firstStep": "Deliver Faendal's letter to Camilla",
+  "takesYou": [
+   {
+    "place": "the Riverwood Trader",
+    "hold": "Whiterun",
+    "why": "Camilla works there from 8 am for 10 hours"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Carry Faendal's letter",
+    "leadsTo": "Deliver it to Camilla, then talk to Faendal."
+   },
+   {
+    "choice": "Carry Sven's ballad",
+    "leadsTo": "Deliver it to Camilla, then talk to Sven."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "Faendal",
+    "objectives": [
+     "Deliver Faendal's letter to Camilla",
+     "Talk to Faendal"
+    ]
+   },
+   {
+    "branch": "Sven",
+    "objectives": [
+     "Deliver Sven's ballad to Camilla",
+     "Talk to Sven"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "from the quest's script; the amount isn't readable here"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Faendal",
+    "role": "writes a letter to Camilla"
+   },
+   {
+    "name": "Sven",
+    "role": "writes a ballad for Camilla"
+   },
+   {
+    "name": "Camilla Valerius",
+    "role": "the one they both want; Riverwood Trader by day, the Sleeping Giant Inn from 6 pm"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "It reads like a follow-up to Faendal and Sven's earlier rivalry over Camilla, but no condition saying so is in these files."
+   },
+   {
+    "field": "starts",
+    "why": "The records name Faendal as the giver only because of the first objective; the line that hands out either letter isn't here, so who starts it, and whether either man can, isn't confirmed."
+   },
+   {
+    "field": "steps",
+    "why": "No stage is marked as completing the quest, and it has no journal text, so how it ends isn't readable here."
+   }
+  ],
+  "evidence": [
+   "moretosayriverwood.esp:000F02 stages 0-320 (none marked complete), objectives 10/110/210/220",
+   "aliases FaendalsLetter, SvensLetter, RiverwoodSequelQuestItemHoldingChest",
+   "start: story manager node ACFMTSRiverwoodQuestNode (change location)",
+   "reward ACFA_MTS_QF__05005900.Gold",
+   "Sven packages SvenPlayInn10x16, SvenSleepHome2x7; Camilla CamillaWorkTrader8x10, CamillaSleeplingGiant18x4; Faendal FaendalWork7x12, FaendalSleepHome23x5"
+  ]
+ },
+ {
+  "edid": "ACFRoriksteadFreeform03",
+  "name": "The Secret of Rorikstead",
+  "plugin": "secretofrorikstead.esp",
+  "canDo": "talk",
+  "canDoWhy": "Erik the Slayer at the Frostfruit Inn wants you to find out why Rorikstead's harvests are so good.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Erik the Slayer",
+    "where": "the Frostfruit Inn, Rorikstead",
+    "how": "He asks: \"Look, I wanted to ask if you'll... um... if you'd like to, well, head back to Rorikstead... you know, take a look... figure it out?\""
+   }
+  ],
+  "firstStep": "Discover the secret behind Rorikstead's fruitful harvests.",
+  "takesYou": [
+   {
+    "place": "Rorikstead",
+    "hold": "Whiterun",
+    "why": "look into the village's harvests and find evidence"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Discover the secret behind Rorikstead's fruitful harvests.",
+     "Find evidence of suspicious activities in Rorikstead.",
+     "Confront Jouane Manette about his interest in consorting with daedra."
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Erik the Slayer",
+    "role": "asks you to look into it"
+   },
+   {
+    "name": "Reldith",
+    "role": "farmer at Cowflop Farm; boasts that the crops grow as if Rorikstead had the richest soil in the hold"
+   },
+   {
+    "name": "Jouane Manette",
+    "role": "Rorik's steward at Rorik's Manor; the one you confront. In the evenings he's at Rorik's Manor, otherwise often at the Frostfruit Inn"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "No reward is recorded for this quest."
+   },
+   {
+    "field": "steps",
+    "why": "The quest holds a book of Jouane's, likely the evidence, but where it lies isn't in these files."
+   },
+   {
+    "field": "starts",
+    "why": "Erik can be hired as a follower; if he has left the inn with you, he won't be there."
+   }
+  ],
+  "evidence": [
+   "secretofrorikstead.esp:000897 objectives 10/50/100, aliases JouaneBookAlias, ReldithAlias",
+   "giver INFO secretofrorikstead.esp:000935 (Erik Skyrim.esm:065657, GetStage<11)",
+   "INFO secretofrorikstead.esp:000923 (Reldith), INFO secretofrorikstead.esp:0008B3 (Jouane)",
+   "start: story manager node ACFSecretOfRoriksteadChangeLocationNode",
+   "Erik package HirelingErikRoriksteadInn; Jouane RoriksteadJouaneTraining 18x2, RoriksteadJouaneSleep 23x9, RoriksteadJouaneInnPackage"
+  ]
+ },
+ {
+  "edid": "ACFWhiterunBandits",
+  "name": "Bandits of Whiterun Hold",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Belethor in Whiterun wants a bandit leader somewhere in Whiterun Hold killed.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Belethor",
+    "where": "Belethor's General Goods in Whiterun (8 am for 12 hours, and he sleeps there); from 8 pm for 3 hours he's at The Bannered Mare",
+    "how": "He is the one you report to; he's most likely the one who asks."
+   }
+  ],
+  "firstStep": "Kill the bandit leader at (the camp the quest picks) in Whiterun.",
+  "takesYou": [
+   {
+    "place": "a bandit camp in Whiterun Hold",
+    "hold": "Whiterun",
+    "why": "the quest picks the place when it starts; your map marker shows it"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the bandit leader at (the camp the quest picks) in Whiterun.",
+     "Tell Belethor the bandit leader is dead."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you tell Belethor"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Belethor",
+    "role": "you report back to them"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Which place it sends you to is chosen when the quest runs; these files don't say which ones it can pick."
+   },
+   {
+    "field": "starts",
+    "why": "The records don't show the line that hands out this job; Belethor is in the quest and it ends with telling him, so he's the likely giver."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:000803 objectives 10/100, BanditCampAlias unfilled, Hold=Whiterun",
+   "no giver INFO found; BelethorAlias Skyrim.esm:013BA1",
+   "start: story manager node ACFMoreToSayWhiterunChangeLocationNode",
+   "reward ACFWBScript.Gold001",
+   "Belethor packages WhiterunBelethorGeneralGoodsSellPackage 8x12, AIOWRBelethorTavern20x3"
+  ]
+ },
+ {
+  "edid": "ACFWhiterunGiants",
+  "name": "Giants of Whiterun Hold",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Severio Pelagia wants a giant somewhere in Whiterun Hold killed.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Severio Pelagia",
+    "where": "working Pelagia Farm outside Whiterun from 8 am for 12 hours; from 8 pm for 3 hours at The Drunken Huntsman; he sleeps in Severio Pelagia's House",
+    "how": "He is the one you report to; he's most likely the one who asks."
+   }
+  ],
+  "firstStep": "Kill the giant at (the camp the quest picks) in Whiterun.",
+  "takesYou": [
+   {
+    "place": "a giant camp in Whiterun Hold",
+    "hold": "Whiterun",
+    "why": "the quest picks the place when it starts; your map marker shows it"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the giant at (the camp the quest picks) in Whiterun.",
+     "Tell Severio Pelagia the giant is dead."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you tell Severio"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Severio Pelagia",
+    "role": "you report back to them"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Which place it sends you to is chosen when the quest runs; these files don't say which ones it can pick."
+   },
+   {
+    "field": "starts",
+    "why": "The records don't show the line that hands out this job; Severio Pelagia is in the quest and it ends with telling him, so he's the likely giver."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:000B05 objectives 10/100, GiantCampAlias unfilled, Hold=Whiterun",
+   "no giver INFO found; SeverioAlias Skyrim.esm:02C925",
+   "start: story manager node ACFMoreToSayWhiterunChangeLocationNode",
+   "reward ACFWGScript.Gold001",
+   "Severio packages PelagiaFarmWork8x12, WhiterunSeverioDrunkenHuntsman20x3, AIOWRSeverioWeekends (Temple of Kynareth, conditioned)"
+  ]
+ },
+ {
+  "edid": "ACFWhiterunVampires",
+  "name": "Vampires of Whiterun Hold",
+  "plugin": "moretodo.esp",
+  "canDo": "talk",
+  "canDoWhy": "Hulda at The Bannered Mare wants the vampires at a den somewhere in Whiterun Hold dealt with.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Hulda",
+    "where": "The Bannered Mare in Whiterun, where she keeps the inn",
+    "how": "She is the one you report to; she's most likely the one who asks."
+   }
+  ],
+  "firstStep": "Kill the vampires at (the den the quest picks) in Whiterun.",
+  "takesYou": [
+   {
+    "place": "a vampire den in Whiterun Hold",
+    "hold": "Whiterun",
+    "why": "the quest picks the place when it starts; your map marker shows it"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the vampires at (the den the quest picks) in Whiterun.",
+     "Tell Hulda the vampires have been dealt with."
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you tell Hulda"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Hulda",
+    "role": "you report back to them"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Which place it sends you to is chosen when the quest runs; these files don't say which ones it can pick."
+   },
+   {
+    "field": "starts",
+    "why": "The records don't show the line that hands out this job; Hulda is in the quest and it ends with telling her, so she's the likely giver."
+   }
+  ],
+  "evidence": [
+   "moretodo.esp:000BEE objectives 10/100, VampireDenAlias unfilled, Hold=Whiterun",
+   "no giver INFO found; HuldaAlias Skyrim.esm:013BA3",
+   "start: story manager node ACFMoreToSayWhiterunChangeLocationNode",
+   "reward ACFWVScript.Gold001",
+   "Hulda packages WhiterunInnkeeperPackage, AIOWRHuldaSleep, AIOHuldaVisitTemple7x2 (one day a week)"
+  ]
+ }
+]

@@ -1,0 +1,48 @@
+[
+ {
+  "id": "Skyrim.esm:019DF2",
+  "edid": "Asbjorn",
+  "name": "Asbjorn Fire-Tamer",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013654",
+  "edid": "Narri",
+  "name": "Narri",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:037E04",
+  "edid": "LeonaraArius",
+  "name": "Leonara Arius",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:0071F1",
+  "edid": "DLC01SoulCairnSoulMorven",
+  "name": "Morven Stroud",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A511",
+  "edid": "DLC2Bujold",
+  "name": "Bujold the Intrepid",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

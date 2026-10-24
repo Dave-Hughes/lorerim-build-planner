@@ -64,3 +64,7 @@
 - **058** (Daedric add-ons, Guests for Dinner, The Cause, Hendraheim): 6 fixed, 1 unsure. Guests for Dinner's path depends on whether you're a vampire, not a choice; On Hogithum's first fragment isn't one of the six marked spots.
 - **059** (Dreams of the Dead, The Unquiet Dead, Battle of the Champions, Paragliding, Leaps of Faith): 9 fixed. Dreams of the Dead starts with rumours after the Conjuration ritual; neutral players go to the Drunken Huntsman for Battle of the Champions; Markarth isn't a leap spot.
 - **063** (Megara's and the Katana quests, The Ravens' Lament): 8 fixed. Only Chadryn starts Honey Nuts and the Chin of Fate; Megara's radiant jobs have no giver line (probably Megara); Al'Tharo isn't a starter of The Khat's Eye.
+- **064** (follower quests: Bloodmouth, With Love Eilonwy, Shadows of the Past, Aerin the Man; bandit-boss bounties): 13 fixed. Faralda outside in Winterhold 9 to 3; Mjoll at the market, the Bee and Barb noon to 6, on patrol evenings; Eilonwy moves to the College on either ending.
+- **066** (jarls' bounties): 2 fixed. LoreRim renames the courts: Winterhold's jarl sits in Stonecold Fortress, Falkreath's in Hakkvild's High Hall, not "the Jarl's Longhouse".
+- **067** (more jarls' bounties): 10 fixed. No record shows the court handing these out; the court is where you collect.
+- **062** (Serana's quests): 6 fixed, 2 unsure. Intruders starts from Lucien's line; From Arena to Oblivion needs Serana freed from Dimhollow Crypt, not travelling with you.

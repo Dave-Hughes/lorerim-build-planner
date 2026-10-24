@@ -1,0 +1,52 @@
+[
+ {
+  "id": "Skyrim.esm:0133AC",
+  "edid": "Odvan",
+  "name": "Odvan",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01337E",
+  "edid": "Ungrien",
+  "name": "Ungrien",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01402E",
+  "edid": "Aicantar",
+  "name": "Aicantar",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336B",
+  "edid": "Mjoll",
+  "name": "Mjoll the Lioness",
+  "plugin": "LoreRim - NPCs and Races.esp",
+  "roles": [
+   "vendor",
+   "follower",
+   "marriageable",
+   "quests"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FC5",
+  "edid": "DLC2SVFanariStrongVoice",
+  "name": "Fanari Strong-Voice",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ }
+]

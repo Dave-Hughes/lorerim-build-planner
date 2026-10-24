@@ -1,0 +1,50 @@
+[
+ {
+  "id": "Skyrim.esm:013356",
+  "edid": "Edda",
+  "name": "Edda",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A28",
+  "edid": "Faida",
+  "name": "Faida",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135F2",
+  "edid": "Thonnir",
+  "name": "Thonnir",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014121",
+  "edid": "Silda",
+  "name": "Silda the Unseen",
+  "plugin": "LoreRim - Outfit Distribution.esp",
+  "roles": [
+   "trainer",
+   "quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C183",
+  "edid": "Dagur",
+  "name": "Dagur",
+  "plugin": "Requiem for the Indifferent.esp",
+  "roles": [
+   "vendor",
+   "quests"
+  ]
+ }
+]
