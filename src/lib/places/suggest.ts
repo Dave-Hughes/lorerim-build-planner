@@ -2,7 +2,7 @@ import "server-only";
 import { isHelper } from "@/lib/mcp/quest-log";
 import { questsData } from "@/lib/quests/data";
 import type { ActView } from "@/lib/playthroughs/view";
-import { meetsAt, placesData, placeType, rangeOf, type Place } from "./data";
+import { hasLevels, meetsAt, placesData, placeType, rangeOf, type Place } from "./data";
 
 /**
  * suggest_places (WO-128 Part 2): the places near where an act goes, each with what points at it in the game and when
@@ -92,7 +92,7 @@ function bossRange(level: string | undefined): [number, number] | null {
  */
 export function fitOf(p: Place, levelFrom: number, levelTo: number | null): { when: When; note?: string } {
   const top = levelTo ?? levelFrom + 10;
-  if (!p.actors) return { when: "levels not checked yet" };
+  if (!hasLevels(p.actors)) return { when: "levels not checked yet" };
   const floor = meetsAt(p.actors, top)?.[0] ?? rangeOf(p.actors)[0];
   const boss = bossRange(p.actors.boss?.level);
   const floorGap = floor - top;
@@ -110,7 +110,7 @@ export const whenFor = (p: Place, levelFrom: number, levelTo: number | null): Wh
  */
 function meet(p: Place, at: number): string | null {
   const a = p.actors;
-  if (!a) return null;
+  if (!hasLevels(a)) return null;
   const [floor] = rangeOf(a);
   const now = meetsAt(a, at);
   const boss = a.boss;
@@ -215,7 +215,7 @@ export function placesNear(townList: readonly string[], levelFrom: number, level
             // The people live there and aren't a fight: the game's own words to a stranger at the door.
             welcome: `The Orcs of ${p.name} live here. ${p.enters ? `At the door they say: "${p.enters.words}"` : "Outsiders aren't welcome."}`,
           }
-        : p.actors
+        : hasLevels(p.actors)
           ? { levels: `${rangeOf(p.actors)[0]} to ${rangeOf(p.actors)[1]}` }
           : { levels: "not checked yet" }),
       ...(!stronghold && bossLine(p) ? { boss: bossLine(p) } : {}),

@@ -39,8 +39,16 @@ export interface Actors {
   /** The shape before WO-144 Part 1d. */
   levels?: [number, number];
   zoneMin?: number;
+  /** Who the war's garrisons put here later, in this same shape (WO-144 Part 1e-4); the door doesn't read it yet. */
+  afterTheWar?: unknown;
   boss?: { name?: string; level?: string };
 }
+
+/**
+ * Whether the data has a level for the actors at all. A place with a count of nothing and `afterTheWar` (a fort the war's garrisons
+ * take later, WO-144 Part 1e-4) has none to read yet, and the door says "not checked yet" and not a made-up 1.
+ */
+export const hasLevels = (a: Actors | undefined): a is Actors => !!a && (a.floor !== undefined || !!a.levels || !!a.atLevel?.length);
 
 /** The weakest and strongest hostile actor at a place, from whichever shape the data has. */
 export function rangeOf(a: Actors): [number, number] {
