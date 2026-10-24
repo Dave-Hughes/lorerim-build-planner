@@ -1,0 +1,1447 @@
+{
+  "checks": [
+    {
+      "edid": "TGLarceny",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "'by itself' fits: stages 0 and 10 have no text, and the first journal line (stage 20) reads 'I've discovered ... within Goldenglow Estate'. But 'on the Thieves Guild jobs' isn't in the records: the quest is type Misc, filed in the Miscellaneous bucket in questlines_raw, and nothing ties the items to guild jobs (the reader's own unsure says membership isn't shown). Dropped that phrase."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No giver INFO, no conditions in quest_givers_raw; empty with the unsure line is right."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No start record; stage 20 log names Goldenglow and Delvin at the Ragged Flagon. The unsure line covers what switches it on."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 20-80 logs ('take it to Delvin Mallory at the Ragged Flagon')."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Places match the stage 20-80 logs. places_raw: Irkngthand 01919D The Pale, Snow Veil Sanctum 0192AF Winterhold (both nearest Windhelm); Goldenglow and Honningbrew aren't in the index. Map location not given for the shipping map. Unsure lines cover it."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "quest_givers_raw: TGRewardGold (0AF26C, leveled list) via QF_TGLarceny_0004C6C2. Contents and per-item payout not in these files; unsure line covers it."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DLC2TGQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 02AD23 is Glover's, GetIsID, before the quest starts."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Empty is right (giver INFO 02AD23 shows only GetIsID and stage below 1). But the unsure line said the quest is 'filed with the Thieves Guild line'; questlines_raw files it in the Miscellaneous bucket (the reader's own evidence says so), and only the editor ID has 'TG'. Reworded the unsure line."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Who and how are right (giver INFO 02AD23, Glover; objective 10). But 'where' is only his placement. people_schedules_raw gives his day: breakfast at his house 6-8 am (DLC2RRGloverEatBreakfastPackage6x2), a vendor package 8 am-8 pm at a spot with no name in the records (DLC2RRGloverVendorPackage8x12, target 024FEA), and the Retching Netch 8 pm-midnight (DLC2RRGloverNetchPackage20x4, AI Overhaul). A player looking at noon or evening won't find him at home. Added the times and an unsure line for the unnamed daytime spot."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Esmond Tyne alias placed in Castle Karstaag Caverns (02AD3A, cell 0142FB); objective 20 brings the formula to Glover. No Bonemold Formula item in items_raw; the unsure line about where it lies is right."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw; stage 200 entry is blank."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DB01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 01F342 (Aventus, GetIsID, stage below 20); quest_starts dark-brotherhood startGame true; stage 5 log is the rumor."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "quest_starts dialogue conditions empty; nothing else gates it."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Aventus placed in the Aretino Residence (01B121, cell 016784); his AretinoResidenceSandbox package is conditional and his later packages are at Honorhall. Door 016966 unlocked by LoreRim - Windhelm Fixes.esp. Stage 20 log matches the 'how'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Matches stage 20/21/22 logs and objective 27 ('Lure Grelod to the Riften Docks')."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Kill (stage 200), lure to the docks (21, 22), arrest via guards (stage 20 log, 198, 199/201). The leadsTo lines match the logs; ILQE extra routes are in unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Only the stage 200 log names the heirloom; the one reward candidate is the Grelod Bloody spell from ILQE, rightly kept out. No item found in items_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB02 stage 10: 'by killing Grelod the Kind ... I have been taken captive'. Arrest-route link is in unsure."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Grelod dies on every route (200, 22, 199)."
+        }
+      }
+    },
+    {
+      "edid": "DarkBrotherhoodSanctuaryRepair",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "Nothing shows what sets stage 10: no giver INFO in quest_givers_raw, no quest_starts line, and no other quest references 087BA2. The stage 10 log ('I should see Delvin Mallory ... and see if he can help refit') reads as the journal entry appearing on its own, with Delvin as the person you finish with, not the one who starts it. 'talk' may be wrong; the record that sets stage 10 (likely a Dark Brotherhood scene or script) would settle it. Kept the value, added an unsure line."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Read from the journal ('refit the Dawnstar Sanctuary'); Cicero's DBCiceroPostQuestSandboxSanctuary and Babette's USLEEPBabetteSandboxQuarters packages are in Dawnstar Sanctuary, which fits. The quest that moves the Brotherhood isn't named; unsure line covers it."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Same gap: Delvin is the objective target, not shown as the starter. The 'how' already says the journal sends you to him, which is what the records support. Placement is fine: Delvin's packages all keep him in the Ragged Flagon."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 log, objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Ragged Flagon from Delvin's placement and packages; Dawnstar Sanctuary from the logs and captive aliases (cell 0193EE). Not in the places index, so The Pale is read off Dawnstar; acceptable."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 log. Cost and upgrades not shown; unsure line covers it."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DB01Misc",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 0550E4 (Vantus Loreius, stage below 10); Cicero 0550F0 also listed below 10. Stage 5 log is the rumor."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions beyond stage shown."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Both start points match the giver records; Cicero 0550F0 is placed outdoors (cell 000D74) with no named place, so 'by Loreius Farm' rests on the stage 5 log. Fine."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Loreius Farm is right (Vantus and Curwe placed in cell 0161F4, location Loreius Farm). But hold 'Whiterun' isn't in the records: the farm isn't in the places index, the journal only says 'on the road north of Whiterun', and one of the two guard aliases is a Pale Hold Guard. Blanked the hold; the existing unsure line explains it."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "The two choices are right (stage 30 log; 20/40 report route; 50 convince route). But the first leadsTo says 'the quest completes' while the reader's own unsure line says the records don't show which ending completes (200) and which fails (210). That's a guess in a player field. Cut 'the quest completes'."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records; Cicero isn't killed on either route."
+        }
+      }
+    },
+    {
+      "edid": "DB02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No giver INFO for Astrid; stage 10 log says you were taken captive. 'by itself' fits; trigger in unsure."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 10 log: 'by killing Grelod the Kind ... I have been taken captive'."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Who, where and the gist are right (stage 10 log; Astrid placed in the Abandoned Shack, her DBAstridShackStandFixed package runs while DB02 is below stage 50). But 'hooded' captives isn't in any record; three captive aliases (Fultheim, Alea, Vasha) is all that's shown. Cut 'hooded'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Abandoned Shack door 050F1F needs key 02E3F8 (quest_starts). Sanctuary 'southern Pine Forest' from stage 40 log; people_raw puts Nazir/Arnbjorn/Babette in Dark Brotherhood Sanctuary, inTown Falkreath."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Kill a captive (stage 40) or kill Astrid (stage 220 fails: 'never be able to join'). DBDestroy 0934FB stage 10: 'killed a Dark Brotherhood assassin ... report her death to a guard'."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Sanctuary follows in questline order; DBDestroy on the Astrid route."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 220 log; the captive you kill."
+        }
+      }
+    },
+    {
+      "edid": "DB02a",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log ('I must speak with Nazir'); no giver INFO, so it appears on its own after DB02."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Read from questline order and stage 10; unsure line covers it."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir 01C3AB placed in the Sanctuary (cell 0AD5A1); his only package is sandbox at current location."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Matches stage 10."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "QF_DB02a_00022F47 properties: Shrouded Cowl 0D2842, Gloves 0D2843, Cuirass 0D2844, Boots 0D2845; items_raw armorType Light for all four (LoreRim - Armor Merges.esp). Moment unsure, as noted."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Stage 200 'received my first set of contracts'."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DB03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Objective 5 'Speak with Astrid'; stage 10 log 'Astrid has given me my first major contract'."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Read from questline order; unsure line covers the exact condition."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Astrid in the Sanctuary is right, and it's settled: her AI packages (DBAstridSandboxSanctuary and the Sanctuary lean packages) have no conditions, while the shack package only runs while With Friends Like These is below stage 50. Removed the reader's 'where' unsure line. Muiri's description is the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places are right: Muiri placed in The Hag's Cure (0198F8), Raldbthar (Alain 0D2AFF; Muiri's line INFO 0C027A 'near Windhelm'; places_raw Raldbthar 090576 The Pale), Nilsine in House of Clan Shatter-Shield. But Muiri isn't always in the shop: her packages are The Hag's Cure 6 am-8 pm (meals and MarkarthApothecaryAssistant8x12Package) and the Silver-Blood Inn from 7 pm for five hours (MarkarthMuiriEatInnPackage19x5). Added that to the Hag's Cure row so a player looking at night knows where to go. Nilsine also isn't home all day (8 am-6 pm package with conditions, then the Hall of the Dead on weekdays or a temple prayer 6-10 pm); added an unsure line."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 20 log: bonus 'if I also eliminate Nilsine'; objective 30 optional."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 20 'some kind of bonus', stage 50 'been paid'. No reward candidate in quest_givers_raw; Muiri's Ring 06B218/06B219 exists in items_raw but isn't tied here. Unsure line right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Stage 50 report to Astrid; DB04 opens with Astrid. Unsure line right."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Alain dies (stage 40); Nilsine optional."
+        }
+      }
+    },
+    {
+      "edid": "DB04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: Astrid wants you to hide in the coffin."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Questline order; unsure line covers it."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 10 log matches. Astrid's 'where' is settled by her packages (Sanctuary sandbox and lean packages, no conditions; the shack package only while With Friends Like These is below stage 50). Removed the reader's 'where' unsure line."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 10 log ('chamber of the Night Mother'); Cicero 01BDB1 placed in the Sanctuary."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 50/200 'named me Listener'. A title, no item."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB04a stage 5 follows from DB04 objective 50 (back to Nazir)."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DB04a",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "Talk is right (stage 5: Nazir sends you to Astrid; stage 10: Astrid agrees). But 'After your side contract' isn't in the records: stage 5 only says 'I returned to Nazir', and DB04's last objective is to receive a side contract, not finish one. Reworded and added an unsure line."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB04 ends with 'see Nazir for more side contract work'; stage 5 picks up there."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 5/10 logs. Astrid's Sanctuary packages settle her place; Nazir placed in the Sanctuary."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Volunruud: Motierre and Rexus placed in cell 0151FB; Astrid INFO 02AD0A 'a crypt, pretty far to the northeast'; places_raw 0192C3 The Pale. Stage 30 says Delvin is 'in the Riften Ratway'; his placement and packages are the Ragged Flagon, which is fine for a player."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 40: the letter of credit goes to Astrid. No reward candidate."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB05 Bound Until Death (01EA54) is next in questline order."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "TGLarceny",
+      "name": "The Litany of Larceny",
+      "plugin": "Skyrim.esm (last edited by Update.esm)",
+      "canDo": "by itself",
+      "canDoWhy": "Picking up one of the listed treasures adds it to your journal; you hand each one to Delvin Mallory at the Ragged Flagon.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "",
+          "where": "",
+          "how": "Starts on its own when you find one of the listed treasures (for example the queen bee statue inside Goldenglow Estate); the journal then tells you to take it to Delvin Mallory at the Ragged Flagon."
+        }
+      ],
+      "firstStep": "Take the treasure you found to Delvin Mallory at the Ragged Flagon in Riften",
+      "takesYou": [
+        {
+          "place": "Goldenglow Estate",
+          "hold": "",
+          "why": "the Queen Bee Statue is inside"
+        },
+        {
+          "place": "Honningbrew Meadery",
+          "hold": "",
+          "why": "the Honningbrew Decanter is inside"
+        },
+        {
+          "place": "Snow Veil Sanctum",
+          "hold": "Winterhold",
+          "why": "the Ship Model is inside"
+        },
+        {
+          "place": "Calcelmo's Quarters, Markarth",
+          "hold": "The Reach",
+          "why": "the Dwemer Puzzle Cube is inside"
+        },
+        {
+          "place": "Mercer Frey's House, Riften",
+          "hold": "The Rift",
+          "why": "the Bust of the Gray Fox is inside"
+        },
+        {
+          "place": "Irkngthand",
+          "hold": "The Pale",
+          "why": "one of the Eyes of the Falmer"
+        },
+        {
+          "place": "The Ragged Flagon, Riften",
+          "hold": "The Rift",
+          "why": "hand each treasure to Delvin Mallory"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Return the Queen Bee Statue to Delvin",
+            "Return the Honningbrew Decanter to Delvin",
+            "Return the East Empire Shipping Map to Delvin",
+            "Return the Ship Model to Delvin",
+            "Return the Dwemer Puzzle Cube to Delvin",
+            "Return the Bust of the Gray Fox to Delvin",
+            "Return the Eye of the Falmer to Delvin"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold from Delvin (a leveled gold reward)",
+          "when": "when you hand treasures to Delvin"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Delvin Mallory",
+          "role": "takes the treasures; placed in the Ragged Flagon, Riften"
+        },
+        {
+          "name": "Vex",
+          "role": "listed in the quest; placed in the Ragged Flagon, Riften"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "the opening stages carry no journal text, so what exactly switches the quest on isn't shown; the first journal line appears once you find the queen bee statue"
+        },
+        {
+          "field": "needs",
+          "why": "the records don't show whether you must already be in the Thieves Guild"
+        },
+        {
+          "field": "takesYou",
+          "why": "the journal doesn't say where the East Empire Shipping Map is found; Goldenglow Estate and Honningbrew Meadery have no hold in the places index"
+        },
+        {
+          "field": "rewards",
+          "why": "the gold list is a script property on the quest; whether it pays once per item or once overall isn't shown, and Vex's part isn't shown either"
+        },
+        {
+          "field": "takesYou",
+          "why": "the places index files Irkngthand under The Pale and Snow Veil Sanctum under Winterhold, both a short walk from Windhelm; check the map"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:04C6C2 stages 20-80 logs, objectives 20-80",
+        "editedBy Update.esm",
+        "quest_givers rewards Skyrim.esm:0AF26C TGRewardGold via QF_TGLarceny_0004C6C2",
+        "aliases TGLDelvin Skyrim.esm:01CB78, TGLVex Skyrim.esm:01CD90",
+        "places: Irkngthand Skyrim.esm:01919D, Snow Veil Sanctum Skyrim.esm:0192AF list this quest"
+      ]
+    },
+    {
+      "edid": "DLC2TGQuest",
+      "name": "Paid in Full",
+      "plugin": "Dragonborn.esm",
+      "canDo": "talk",
+      "canDoWhy": "Talk to Glover Mallory in his house in Raven Rock on Solstheim; he wants the Bonemold Formula back.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Glover Mallory",
+          "where": "Raven Rock, Solstheim: at Glover Mallory's House in the early morning, at the Retching Netch in the evening; by day he works somewhere in town the records don't name",
+          "how": "Talk to Glover; he asks you to recover the Bonemold Formula for him."
+        }
+      ],
+      "firstStep": "Recover the Bonemold Formula for Glover Mallory",
+      "takesYou": [
+        {
+          "place": "Castle Karstaag Caverns (Castle Karstaag Ruins)",
+          "hold": "Solstheim",
+          "why": "Esmond Tyne, the man the quest tracks for the formula, is placed here"
+        },
+        {
+          "place": "Glover Mallory's House, Raven Rock",
+          "hold": "Solstheim",
+          "why": "bring the formula back"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Recover the Bonemold Formula for Glover Mallory",
+            "Bring the Bonemold Formula to Glover Mallory"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Glover Mallory",
+          "role": "gives the quest; in his house in Raven Rock"
+        },
+        {
+          "name": "Esmond Tyne",
+          "role": "tied to the formula; placed in Castle Karstaag Caverns"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "the conditions on Glover's opening line beyond 'quest not yet started' aren't in these files; the editor ID has 'TG' in it, but the quest is filed with the miscellaneous quests, so whether it needs Thieves Guild standing isn't shown"
+        },
+        {
+          "field": "takesYou",
+          "why": "the records name Esmond Tyne and a formula alias but don't say whether he carries the formula or it lies elsewhere in the caverns"
+        },
+        {
+          "field": "rewards",
+          "why": "the closing stage has no journal text and no reward is listed for this quest"
+        },
+        {
+          "field": "where",
+          "why": "Glover's daytime work spot (8 am to 8 pm) is a map marker with no name in these files, and his night package has no place; only breakfast at home and evenings at the Retching Netch are named"
+        }
+      ],
+      "evidence": [
+        "QUST Dragonborn.esm:02AD26 objectives 10, 20",
+        "giver INFO Dragonborn.esm:02AD23 (Glover, quest not yet started)",
+        "alias DLC2TGEsmondAlias Dragonborn.esm:02AD30 placed in Dragonborn.esm:0142FB",
+        "alias DLC2RRFormulaAlias",
+        "questlines: Miscellaneous bucket",
+        "schedules: DLC2RRGloverEatBreakfastPackage6x2 (house), DLC2RRGloverVendorPackage8x12 (target Dragonborn.esm:024FEA, unnamed), DLC2RRGloverNetchPackage20x4 (The Retching Netch)"
+      ]
+    },
+    {
+      "edid": "DB01",
+      "name": "Innocence Lost",
+      "plugin": "Skyrim.esm (last edited by Innocence Lost - Quest Expansion.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Go to the Aretino Residence in Windhelm and talk to the boy Aventus Aretino; he wants Grelod the Kind dead.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Aventus Aretino",
+          "where": "the Aretino Residence in Windhelm",
+          "how": "You may hear a rumor that a boy in Windhelm is trying to contact the Dark Brotherhood. Go to his house (LoreRim leaves the door unlocked) and talk to him; he asks you to kill Grelod the Kind, the headmistress of Honorhall Orphanage in Riften."
+        }
+      ],
+      "firstStep": "Talk to Aventus Aretino in the Aretino Residence, Windhelm",
+      "takesYou": [
+        {
+          "place": "Aretino Residence, Windhelm",
+          "hold": "Eastmarch",
+          "why": "meet Aventus, and come back to tell him it's done"
+        },
+        {
+          "place": "Honorhall Orphanage, Riften",
+          "hold": "The Rift",
+          "why": "deal with Grelod the Kind"
+        },
+        {
+          "place": "Riften docks",
+          "hold": "The Rift",
+          "why": "if you lure Grelod out to kill her unseen"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill Grelod in the orphanage",
+          "leadsTo": "Tell Aventus she is dead; he gives you a family heirloom. The Dark Brotherhood then comes for you (With Friends Like These)."
+        },
+        {
+          "choice": "Tell Grelod that Aventus is waiting outside Riften and lure her to the docks",
+          "leadsTo": "She follows you to the docks where no one can see, and you kill her there; then tell Aventus."
+        },
+        {
+          "choice": "Talk to the Riften guards to have her arrested",
+          "leadsTo": "Grelod goes to Riften's jail; check on the children with Constance Michel at the orphanage. Later Grelod is killed in her cell, apparently by the Brotherhood."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Aventus Aretino",
+            "Kill Grelod the Kind or find an alternative way to deal with her",
+            "Tell Aventus Aretino that Grelod is dead"
+          ]
+        },
+        {
+          "branch": "lure her to the docks",
+          "objectives": [
+            "Lure Grelod to the Riften Docks",
+            "Kill Grelod the Kind",
+            "Tell Aventus Aretino that Grelod has been dealt with"
+          ]
+        },
+        {
+          "branch": "have her arrested",
+          "objectives": [
+            "Check with Constance at Honorhall Orphanage"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A family heirloom from Aventus Aretino",
+          "when": "when you tell him you killed Grelod"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "With Friends Like These..."
+      ],
+      "closes": [
+        "Grelod the Kind dies (by your hand, or in jail on the arrest route)"
+      ],
+      "people": [
+        {
+          "name": "Aventus Aretino",
+          "role": "gives the quest; in the Aretino Residence, Windhelm"
+        },
+        {
+          "name": "Grelod the Kind",
+          "role": "the target; in Honorhall Orphanage, Riften"
+        },
+        {
+          "name": "Constance Michel",
+          "role": "the orphanage carer you check with on the arrest route"
+        },
+        {
+          "name": "Hroar, Runa Fair-Shield, Samuel, Francois Beaufort",
+          "role": "children at Honorhall Orphanage"
+        },
+        {
+          "name": "Astrid",
+          "role": "listed in the quest; she appears in the next quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "who spreads the rumor isn't in these files; Aventus's opening line works while the quest hasn't moved past meeting him"
+        },
+        {
+          "field": "rewards",
+          "why": "the heirloom is named only in the journal; the item itself isn't listed. A 'Grelod Bloody' spell is attached to the quest script, but it looks like an effect on Grelod, not something you get"
+        },
+        {
+          "field": "choices",
+          "why": "Innocence Lost - Quest Expansion also adds a poisoned-wine route and a hidden-room flag in the orphanage; their steps have no journal text, so how they play out isn't shown"
+        },
+        {
+          "field": "opens",
+          "why": "With Friends Like These says you were taken because you killed Grelod; whether the arrest route still leads there isn't shown"
+        },
+        {
+          "field": "where",
+          "why": "people are given by where the records place them, not their daily schedules"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01EA50 stages 5-201, objectives 5-30",
+        "editedBy Innocence Lost - Quest Expansion.esp",
+        "giver INFO Skyrim.esm:01F342 (Aventus)",
+        "quest_starts dark-brotherhood: startGame true; LoreRim - Windhelm Fixes.esp unlocks door Skyrim.esm:016966",
+        "globals ILQE_GrelodArrested, ILQE_WinePoisoned, ILQE_GrelodsTrip, ILQE_RoomDiscovered",
+        "NGCDT - Distance Checks.esp edits INFO Skyrim.esm:0265BC",
+        "reward fragment ILQE_Blood Innocence Lost - Quest Expansion.esp:000888"
+      ]
+    },
+    {
+      "edid": "DarkBrotherhoodSanctuaryRepair",
+      "name": "Where You Hang Your Enemy's Head...",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "Once the Brotherhood is using the Dawnstar Sanctuary, pay Delvin Mallory in the Ragged Flagon to refit it.",
+      "needs": [
+        {
+          "what": "The Brotherhood has moved into the Dawnstar Sanctuary",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Delvin Mallory",
+          "where": "the Ragged Flagon in Riften",
+          "how": "The journal sends you to Delvin to see if he can help refit the Dawnstar Sanctuary; employ his services."
+        }
+      ],
+      "firstStep": "See Delvin Mallory in the Ragged Flagon about refitting the Dawnstar Sanctuary",
+      "takesYou": [
+        {
+          "place": "The Ragged Flagon, Riften",
+          "hold": "The Rift",
+          "why": "hire Delvin Mallory"
+        },
+        {
+          "place": "Dawnstar Sanctuary",
+          "hold": "The Pale",
+          "why": "the sanctuary being refitted"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Employ Delvin Mallory's services"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "The Dawnstar Sanctuary is refitted and repaired",
+          "when": "once you've employed Delvin"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Delvin Mallory",
+          "role": "does the refit; in the Ragged Flagon, Riften"
+        },
+        {
+          "name": "Cicero",
+          "role": "listed in the quest"
+        },
+        {
+          "name": "Torture Victims",
+          "role": "four captives placed in the Dawnstar Sanctuary, tied to the refit"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "what puts this in your journal isn't in these files; the opening stage has no text"
+        },
+        {
+          "field": "needs",
+          "why": "the quest that moves the Brotherhood to Dawnstar isn't named in these records"
+        },
+        {
+          "field": "rewards",
+          "why": "the cost of Delvin's services and the exact upgrades aren't listed; the four torture victims in the sanctuary are part of this quest"
+        },
+        {
+          "field": "canDo",
+          "why": "the journal line points you to Delvin as if it appears on its own; what puts it there isn't in these files, so it may start by itself rather than by talking to someone"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:087BA2 stages 10, 200, objective 10",
+        "aliases DelvinMalloryAlias Skyrim.esm:01CB78, DBCaptive1-4 in cell Skyrim.esm:0193EE",
+        "places: Dawnstar = The Pale"
+      ]
+    },
+    {
+      "edid": "DB01Misc",
+      "name": "Delayed Burial",
+      "plugin": "Skyrim.esm (last edited by CutContentRestoration - Whiterun Stables Scene.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Find the jester Cicero stuck with a broken cart near Loreius Farm, north of Whiterun, and settle his dispute with the farmer.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Cicero",
+          "where": "on the road by Loreius Farm, north of Whiterun, beside his broken cart",
+          "how": "You may hear about a strange jester with a coffin and a broken wagon wheel. Talk to him; he wants the farmer Vantus Loreius to fix it. You can also start by talking to Loreius at his farm."
+        }
+      ],
+      "firstStep": "Talk to the strange jester by Loreius Farm",
+      "takesYou": [
+        {
+          "place": "Loreius Farm",
+          "hold": "",
+          "why": "Cicero's cart and the farmer Vantus Loreius"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Convince Loreius to fix the wheel",
+          "leadsTo": "Tell Cicero help is on the way."
+        },
+        {
+          "choice": "Side with Loreius and report Cicero to the guard with a made-up offense",
+          "leadsTo": "Tell Loreius you've helped him."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "help Cicero",
+          "objectives": [
+            "Talk to the strange jester",
+            "Convince Loreius to fix the wheel",
+            "Talk to Cicero"
+          ]
+        },
+        {
+          "branch": "help Loreius",
+          "objectives": [
+            "Report Cicero to the guard",
+            "Talk to Loreius"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Cicero",
+          "role": "the jester with the broken cart"
+        },
+        {
+          "name": "Vantus Loreius",
+          "role": "the farmer; at Loreius Farm"
+        },
+        {
+          "name": "Curwe",
+          "role": "at Loreius Farm"
+        },
+        {
+          "name": "Imperial Soldier / Pale Hold Guard",
+          "role": "the guard posted by Loreius Farm (which one depends on who holds the area)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "choices",
+          "why": "one ending completes the quest and another marks it failed; the records don't say which choice gets which. A third ending closes it later based on another Dark Brotherhood quest"
+        },
+        {
+          "field": "rewards",
+          "why": "no reward is listed for either side"
+        },
+        {
+          "field": "takesYou",
+          "why": "Loreius Farm isn't in the places index; the journal puts it on the road north of Whiterun, and a Pale guard is posted there"
+        },
+        {
+          "field": "plugin",
+          "why": "edited by USSEP, The Choice is Yours and Cut Content Restoration - Whiterun Stables Scene; I took the last one listed as the winner. What The Choice is Yours changes about the start isn't shown"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01EA4F stages 5-215, objectives 5-50",
+        "giver INFO Skyrim.esm:0550E4 (Vantus Loreius); Cicero Skyrim.esm:0550F0",
+        "stage 215 conditions on quest 0x01EA5C",
+        "aliases DB01MiscGuardImperial Skyrim.esm:043D21, DB01MiscGuardSons Skyrim.esm:043D22"
+      ]
+    },
+    {
+      "edid": "DB02",
+      "name": "With Friends Like These...",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "After you kill Grelod the Kind, Astrid takes you captive in an abandoned shack and makes you prove yourself.",
+      "needs": [
+        {
+          "what": "Kill Grelod the Kind in Innocence Lost",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Astrid",
+          "where": "the Abandoned Shack",
+          "how": "You come to as a captive in the shack; Astrid says you stole the Brotherhood's kill and will only give you the key if you kill one of her three captives."
+        }
+      ],
+      "firstStep": "Kill one of the captives in the Abandoned Shack",
+      "takesYou": [
+        {
+          "place": "Abandoned Shack",
+          "hold": "",
+          "why": "you wake here; the door needs the Abandoned Shack Key"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary, in the southern Pine Forest near Falkreath",
+          "hold": "Falkreath",
+          "why": "answer the Black Door with \"Silence, my Brother\""
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill one of the captives (Fultheim the Fearless, Alea Quintus or Vasha)",
+          "leadsTo": "Astrid gives you the passphrase; go to the Sanctuary and join the Brotherhood."
+        },
+        {
+          "choice": "Kill Astrid",
+          "leadsTo": "You can never join the Dark Brotherhood; Destroy the Dark Brotherhood! opens instead."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill one of the captives",
+            "Speak with Astrid",
+            "Enter the Dark Brotherhood Sanctuary",
+            "Speak with Astrid"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Sanctuary",
+        "Destroy the Dark Brotherhood! (if you kill Astrid)"
+      ],
+      "closes": [
+        "The Dark Brotherhood, if you kill Astrid",
+        "the captive you kill"
+      ],
+      "people": [
+        {
+          "name": "Astrid",
+          "role": "holds you in the Abandoned Shack; later welcomes you in the Sanctuary"
+        },
+        {
+          "name": "Fultheim the Fearless",
+          "role": "captive in the Abandoned Shack"
+        },
+        {
+          "name": "Alea Quintus",
+          "role": "captive in the Abandoned Shack"
+        },
+        {
+          "name": "Vasha",
+          "role": "captive in the Abandoned Shack"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "what triggers the abduction isn't in these files; the journal only says you were taken after killing Grelod"
+        },
+        {
+          "field": "takesYou",
+          "why": "the Abandoned Shack isn't in the places index, so its hold isn't given; the Sanctuary's spot comes from the journal (southern Pine Forest) and the people index (near Falkreath)"
+        },
+        {
+          "field": "opens",
+          "why": "Destroy the Dark Brotherhood! is linked by its first objective, reporting Astrid's death to a guard"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01EA51 stages 10-220, objectives 10-50",
+        "editedBy USSEP",
+        "aliases DB02Captive1-3Alias, BlackDoorAlias, Astrid Skyrim.esm:01BDB4",
+        "door Skyrim.esm:050F1F needs key Skyrim.esm:02E3F8",
+        "QUST Skyrim.esm:0934FB DBDestroy objective",
+        "people: Nazir/Arnbjorn/Cicero cell Dark Brotherhood Sanctuary inTown Falkreath"
+      ]
+    },
+    {
+      "edid": "DB02a",
+      "name": "Sanctuary",
+      "plugin": "Skyrim.esm",
+      "canDo": "by itself",
+      "canDoWhy": "Once you're welcomed into the Brotherhood, talk to Nazir in the Sanctuary for your first contracts.",
+      "needs": [
+        {
+          "what": "Finish With Friends Like These... by joining the Brotherhood",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "the Dark Brotherhood Sanctuary near Falkreath",
+          "how": "After Astrid welcomes you, the journal sends you to Nazir for your first assassination contracts."
+        }
+      ],
+      "firstStep": "Speak with Nazir in the Dark Brotherhood Sanctuary",
+      "takesYou": [
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "Nazir gives your first contracts"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak with Nazir",
+            "Receive the first set of contracts from Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Shrouded Cowl (light armor)",
+          "when": "during this quest"
+        },
+        {
+          "what": "Shrouded Cuirass (light armor)",
+          "when": "during this quest"
+        },
+        {
+          "what": "Shrouded Gloves (light armor)",
+          "when": "during this quest"
+        },
+        {
+          "what": "Shrouded Boots (light armor)",
+          "when": "during this quest"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Nazir's first contracts"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "hands out contracts; in the Dark Brotherhood Sanctuary"
+        },
+        {
+          "name": "Astrid",
+          "role": "listed in the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the armor is added by this quest's script; which moment and who hands it over isn't shown"
+        },
+        {
+          "field": "starts",
+          "why": "the link from joining to this quest is read from the journal, not a condition"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:022F47 stages 10, 200, objectives 10, 20",
+        "rewards via QF_DB02a_00022F47: Skyrim.esm:0D2842, 0D2844, 0D2843, 0D2845",
+        "alias NazirAlias Skyrim.esm:01C3AB"
+      ]
+    },
+    {
+      "edid": "DB03",
+      "name": "Mourning Never Comes",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Astrid gives you your first major contract: meet Muiri in Markarth, who wants the bandit Alain Dufont dead.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood (finish With Friends Like These...)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Astrid",
+          "where": "the Dark Brotherhood Sanctuary near Falkreath",
+          "how": "Speak with Astrid; she sends you to Muiri, the apothecary's assistant at The Hag's Cure in Markarth, who has performed the Black Sacrament."
+        }
+      ],
+      "firstStep": "Speak with Astrid in the Sanctuary",
+      "takesYou": [
+        {
+          "place": "The Hag's Cure, Markarth",
+          "hold": "The Reach",
+          "why": "meet Muiri, and return to her for payment (she's in the shop by day; in the evening she eats at the Silver-Blood Inn)"
+        },
+        {
+          "place": "Raldbthar",
+          "hold": "The Pale",
+          "why": "kill Alain Dufont at his gang's base"
+        },
+        {
+          "place": "House of Clan Shatter-Shield, Windhelm",
+          "hold": "Eastmarch",
+          "why": "optional: kill Nilsine Shatter-Shield for a bonus"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Astrid"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Also kill Nilsine Shatter-Shield in Windhelm",
+          "leadsTo": "Muiri pays you a bonus on top."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak with Astrid",
+            "Talk to Muiri",
+            "Kill Alain Dufont",
+            "(Optional) Kill Nilsine Shatter-Shield",
+            "Talk to Muiri",
+            "Report back to Astrid"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Muiri",
+          "when": "when you tell her Alain Dufont is dead"
+        },
+        {
+          "what": "A bonus from Muiri",
+          "when": "if you also killed Nilsine Shatter-Shield"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Whispers in the Dark"
+      ],
+      "closes": [
+        "Alain Dufont dies",
+        "Nilsine Shatter-Shield, if you take the bonus"
+      ],
+      "people": [
+        {
+          "name": "Astrid",
+          "role": "gives the contract"
+        },
+        {
+          "name": "Muiri",
+          "role": "the client; in The Hag's Cure, Markarth"
+        },
+        {
+          "name": "Alain Dufont",
+          "role": "the target; in Raldbthar"
+        },
+        {
+          "name": "Nilsine Shatter-Shield",
+          "role": "optional target; in the House of Clan Shatter-Shield, Windhelm"
+        },
+        {
+          "name": "Cicero",
+          "role": "listed in the quest, both on the road and in the Sanctuary"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "the exact condition on Astrid's line isn't in these files"
+        },
+        {
+          "field": "rewards",
+          "why": "the amount and the bonus item aren't listed; a 'Muiri's Ring' exists in the item records but nothing here ties it to this quest"
+        },
+        {
+          "field": "takesYou",
+          "why": "the places index files Raldbthar under The Pale; Muiri says it's near Windhelm"
+        },
+        {
+          "field": "opens",
+          "why": "Whispers in the Dark begins with Astrid; the link is read from the journal, not a condition"
+        },
+        {
+          "field": "takesYou",
+          "why": "Nilsine's daytime package (8 am to 6 pm) has conditions and no named place; from 6 pm she visits Windhelm's Hall of the Dead or prays at a temple, and her other packages name no place, so when she is at home isn't shown"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01EA52 stages 10-200, objectives 5-50",
+        "editedBy USSEP",
+        "giver INFO Skyrim.esm:02144E (Muiri)",
+        "Muiri line INFO Skyrim.esm:0C027A (Raldbthar near Windhelm)",
+        "place Raldbthar Skyrim.esm:090576",
+        "items Skyrim.esm:06B218/06B219 Muiri's Ring",
+        "schedules: Muiri MarkarthApothecaryAssistant8x12Package, MarkarthMuiriEatInnPackage19x5 (Silver-Blood Inn); Nilsine AIOWHNilsine8x10, NilsineVisitBodyMTWRF18x4 (Hall of the Dead); Astrid DBAstridSandboxSanctuary, DBAstridShackStandFixed (only while DB02 below 50)"
+      ]
+    },
+    {
+      "edid": "DB04",
+      "name": "Whispers in the Dark",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "Astrid wants you to hide in the Night Mother's coffin and listen in on Cicero.",
+      "needs": [
+        {
+          "what": "Finish Mourning Never Comes",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Astrid",
+          "where": "the Dark Brotherhood Sanctuary near Falkreath",
+          "how": "Astrid has heard Cicero whispering in the Night Mother's chamber and asks you to sneak in and hide in the coffin."
+        }
+      ],
+      "firstStep": "Hide in the Night Mother's coffin",
+      "takesYou": [
+        {
+          "place": "the Night Mother's chamber, Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "eavesdrop on Cicero"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Hide in the Night Mother's coffin",
+            "Eavesdrop on Cicero",
+            "Talk to Cicero",
+            "Talk to Astrid",
+            "Receive a side contract from Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "The Night Mother names you Listener",
+          "when": "while you're in the coffin"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "The Silence Has Been Broken"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Astrid",
+          "role": "gives the quest"
+        },
+        {
+          "name": "Cicero",
+          "role": "keeper of the Night Mother; in the Sanctuary"
+        },
+        {
+          "name": "Night Mother",
+          "role": "speaks to you in the coffin and tells you to go to Volunruud and speak with Amaund Motierre"
+        },
+        {
+          "name": "Nazir",
+          "role": "gives you a side contract at the end"
+        },
+        {
+          "name": "Arnbjorn",
+          "role": "listed in the quest; in the Sanctuary"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "read from the journal order (Mourning Never Comes ends reporting to Astrid); the condition itself isn't in these files"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01EA53 stages 10-200, objectives 10-50",
+        "giver INFO Skyrim.esm:022438 (Cicero)",
+        "Night Mother line INFO Skyrim.esm:022437 (Volunruud)",
+        "Astrid INFO Skyrim.esm:02ACF9, 02AD0E",
+        "schedules: Astrid DBAstridSandboxSanctuary (no conditions), DBAstridShackStandFixed (DB02 stage < 50)"
+      ]
+    },
+    {
+      "edid": "DB04a",
+      "name": "The Silence Has Been Broken",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "When you go back to Nazir after Whispers in the Dark, he sends you to Astrid, who lets you meet Amaund Motierre in Volunruud.",
+      "needs": [
+        {
+          "what": "Finish Whispers in the Dark",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir, then Astrid",
+          "where": "the Dark Brotherhood Sanctuary near Falkreath",
+          "how": "Go back to Nazir; he tells you to speak with Astrid, who agrees to let you see Amaund Motierre."
+        }
+      ],
+      "firstStep": "Speak with Astrid in the Sanctuary",
+      "takesYou": [
+        {
+          "place": "Volunruud",
+          "hold": "The Pale",
+          "why": "meet Amaund Motierre (Astrid: a crypt pretty far to the northeast)"
+        },
+        {
+          "place": "Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "give Astrid the letter and amulet, and later the letter of credit"
+        },
+        {
+          "place": "The Ragged Flagon, Riften",
+          "hold": "The Rift",
+          "why": "show the amulet to the fence Delvin Mallory"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak with Astrid",
+            "Speak with Amaund Motierre",
+            "Talk to Rexus",
+            "Deliver the letter and amulet to Astrid",
+            "Show the amulet to Delvin Mallory",
+            "Report back to Astrid"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Bound Until Death"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Amaund Motierre",
+          "role": "the client; in Volunruud"
+        },
+        {
+          "name": "Rexus",
+          "role": "Motierre's man; in Volunruud"
+        },
+        {
+          "name": "Astrid",
+          "role": "sends you and receives the letter, amulet and letter of credit"
+        },
+        {
+          "name": "Nazir",
+          "role": "sends you to Astrid"
+        },
+        {
+          "name": "Delvin Mallory",
+          "role": "fence who buys the amulet for a letter of credit; in the Ragged Flagon, Riften"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "the letter of credit goes to Astrid; no reward for you is listed"
+        },
+        {
+          "field": "takesYou",
+          "why": "the places index files Volunruud under The Pale, nearest Stonehills; Astrid calls it far to the northeast"
+        },
+        {
+          "field": "opens",
+          "why": "Bound Until Death is the next Brotherhood contract in the records, but the link isn't a condition read here"
+        },
+        {
+          "field": "needs",
+          "why": "stage 5 only says you returned to Nazir; whether you must finish his side contract first isn't shown"
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:02AD16 stages 5-200, objectives 5-40",
+        "giver INFO Skyrim.esm:05BF28 (Rexus)",
+        "Astrid INFO Skyrim.esm:02AD0A (Volunruud)",
+        "aliases LetterAlias, AmuletAlias, CreditAlias",
+        "place Volunruud Skyrim.esm:0192C3",
+        "QUST Skyrim.esm:01EA54 DB05"
+      ]
+    }
+  ]
+}
