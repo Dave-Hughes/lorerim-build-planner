@@ -1,0 +1,1201 @@
+[
+  {
+    "edid": "NMeridia02",
+    "name": "Our Lady",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "Once Meridia's Order is done, tell High Priestess Alara you're ready and she takes you to Meridia's Shrine.",
+    "needs": [
+      {
+        "what": "Finish Meridia's Order (kill the Necromancer in Solitude for Alara)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "High Priestess Alara",
+        "where": "Meridia's Sanctum",
+        "how": "After you report the Necromancer's death, Alara asks you to speak to her when you are ready. Talk to her and she says you're going traveling."
+      }
+    ],
+    "firstStep": "Speak with Alara",
+    "takesYou": [
+      {
+        "place": "Meridia's Shrine",
+        "hold": "",
+        "why": "Alara tries to commune with Meridia there"
+      },
+      {
+        "place": "Meridia's Sanctum",
+        "hold": "",
+        "why": "back to Alara to hear the plan"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak with Alara",
+          "Follow Alara to Meridia's Shrine",
+          "Speak to Alara",
+          "Kill the attackers",
+          "Speak to Alara"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Daedric",
+    "opens": [
+      "Prisoner"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "High Priestess Alara",
+        "role": "leader of Meridia's Order; gives the quest and leads you to the shrine"
+      },
+      {
+        "name": "Arch-Paladin Laracin",
+        "role": "Order member at the Sanctum"
+      },
+      {
+        "name": "Necromancers",
+        "role": "attack you at the shrine"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The journal calls it Meridia's Shrine (and later Meridia's Statue); these files don't name the map location or its hold."
+      },
+      {
+        "field": "starts",
+        "why": "The journal reads as if the quest opens by itself when Meridia's Order ends; the quest scripts aren't in these files, so whether you must talk to Alara first or it is already in your journal isn't certain."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward item shows in the quest's script properties; the quest has a Letter alias whose contents aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Meridia's Sanctum is the Order's own interior; these files don't say where its door is in the world (the door sits in an unnamed exterior cell)."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:003B23 stages 10-60, objectives 10-50",
+      "giver INFO Meridia.esp:003B27 (Alara, stage below 11)",
+      "NMeridia01 stage 40 log",
+      "Alara packages NMeridia02AlaraForceGreet02 (stage 20), NMeridiaShrineStand04 (30-50), NMeridia02ForceGreet03 (50), NMeridia02AlaraWait (55)",
+      "NMeridia01Sit (01>=30, 02<20)",
+      "questlines_raw Meridia's Order ESMIFIED order"
+    ]
+  },
+  {
+    "edid": "NMeridia03",
+    "name": "Prisoner",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "After Our Lady, talk to Alara back at Meridia's Sanctum; she sends you after a staff held by a Wood Elf named Findar.",
+    "needs": [
+      {
+        "what": "Finish Our Lady",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "High Priestess Alara",
+        "where": "Meridia's Sanctum",
+        "how": "After the trip to Meridia's Statue she asks you to speak to her back at the Sanctum; she asks you to find the staff Summoner's Demise."
+      }
+    ],
+    "firstStep": "Speak with Alara in Meridia's Sanctum",
+    "takesYou": [
+      {
+        "place": "Findar's mother's shack, just outside Solitude",
+        "hold": "Haafingar",
+        "why": "Aradil, Findar's mother, tells you where he is"
+      },
+      {
+        "place": "Dragonsreach Dungeon, Whiterun",
+        "hold": "Whiterun",
+        "why": "Findar is a prisoner there"
+      },
+      {
+        "place": "Golvunter, a ruin just outside Riften",
+        "hold": "The Rift",
+        "why": "the staff is there"
+      },
+      {
+        "place": "Meridia's Sanctum",
+        "hold": "",
+        "why": "return to Alara"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Help Findar escape from the Dragonsreach Dungeon",
+        "leadsTo": "Talk to him at his mother's home outside Solitude; he points you to Golvunter."
+      },
+      {
+        "choice": "Findar dies in the dungeon",
+        "leadsTo": "Talk to Marith, then to Findar's mother, who points you to Golvunter."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak with Alara in Meridia's Sanctum",
+          "Ask members of Meridia's Order about Findar",
+          "Speak to Findar's mother",
+          "Find Findar in the Dragonsreach Dungeon"
+        ]
+      },
+      {
+        "branch": "Findar escapes",
+        "objectives": [
+          "Help Findar escape and talk to him at his Mother's home",
+          "Speak to Findar at his Mother's home"
+        ]
+      },
+      {
+        "branch": "Findar dies",
+        "objectives": [
+          "Speak to Marith",
+          "Speak to Findar's mother"
+        ]
+      },
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve the Staff from Golvunter",
+          "Return to Alara"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Summoner's Demise (staff)",
+        "when": "you take it from Golvunter; Alara tells you to keep it"
+      }
+    ],
+    "type": "none given in the records",
+    "opens": [
+      "Infiltration"
+    ],
+    "closes": [
+      "Findar, if he dies in the dungeon"
+    ],
+    "people": [
+      {
+        "name": "High Priestess Alara",
+        "role": "gives the quest, at Meridia's Sanctum"
+      },
+      {
+        "name": "Paladin Marith",
+        "role": "suggests Findar's mother and travels with you"
+      },
+      {
+        "name": "Arch-Paladin Laracin",
+        "role": "Order member you can ask about Findar"
+      },
+      {
+        "name": "Paladin Asger",
+        "role": "Order member you can ask about Findar"
+      },
+      {
+        "name": "Aradil",
+        "role": "Findar's mother, in a shack just outside Solitude"
+      },
+      {
+        "name": "Findar",
+        "role": "Wood Elf prisoner in the Dragonsreach Dungeon"
+      },
+      {
+        "name": "Dragonsreach Jailor",
+        "role": "guards Findar in the Dragonsreach Dungeon"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "choices",
+        "why": "The records show Findar can escape or die, but not what decides it (talking to the jailor, a fight, or something else); the dialogue and scripts aren't in these files."
+      },
+      {
+        "field": "where",
+        "why": "Aradil is placed out in the open world with no named cell; the journal says her shack is just outside Solitude."
+      },
+      {
+        "field": "takesYou",
+        "why": "Golvunter is named only in the journal; it isn't in the places index, so its exact spot isn't confirmed beyond 'just outside of Riften'."
+      },
+      {
+        "field": "where",
+        "why": "Meridia's Sanctum is the Order's own interior; these files don't say where its door is in the world (the door sits in an unnamed exterior cell)."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:0046DA stages 10-100, objectives 10-90",
+      "giver INFO Meridia.esp:004E33 (Alara); others Marith, Laracin, Asger",
+      "reward Meridia.esp:0046DD Summoner's Demise via QF_NMeridia03_020046DA.NMeridia03Staff",
+      "Marith package NMeridia03MarithFollow01 (25-100)",
+      "Findar packages NMeridiaFindarPrison01 (Dragonsreach Dungeon), NMeridia03FindarTravel01 (35-80)",
+      "Alara package NMeridia03AlaraSit01"
+    ]
+  },
+  {
+    "edid": "NMeridia04",
+    "name": "Infiltration",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "After Prisoner, Alara sends you to Arch-Paladin Laracin, who sends you undercover into a Necromancer group.",
+    "needs": [
+      {
+        "what": "Finish Prisoner",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Arch-Paladin Laracin",
+        "where": "Meridia's Sanctum",
+        "how": "Once you bring back Summoner's Demise, Alara tells you to speak to Laracin; he sends you to Deep Moon Lookout to meet a Necromancer recruiter."
+      }
+    ],
+    "firstStep": "Speak with Laracin",
+    "takesYou": [
+      {
+        "place": "Deep Moon Lookout",
+        "hold": "",
+        "why": "meet Dralos, the Necromancer recruiter"
+      },
+      {
+        "place": "Dark Dawn Sanctuary, next to Rannveig's Fast",
+        "hold": "Whiterun",
+        "why": "get inside and learn the Necromancers' plans"
+      },
+      {
+        "place": "Meridia's Sanctum",
+        "hold": "",
+        "why": "report to Alara"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill Adelaide as Dralos orders",
+        "leadsTo": "Speak to Dralos; he gives you the Sanctuary's location."
+      },
+      {
+        "choice": "Kill the Necromancers instead",
+        "leadsTo": "Speak to Adelaide; she tells you their hideout is next to Rannveig's Fast and to find her in Riverwood later."
+      },
+      {
+        "choice": "Try to reason with them",
+        "leadsTo": "The journal offers it; where it leads isn't shown in these files."
+      },
+      {
+        "choice": "Inside the Sanctuary: search secret documents, win the members' favor, or fight through",
+        "leadsTo": "Each way finds the plan. Winning favor is the side quest The Dark Dawn (Reeshi)."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak with Laracin",
+          "Meet with the Necromancers",
+          "Kill Adelaide"
+        ]
+      },
+      {
+        "branch": "spare Adelaide",
+        "objectives": [
+          "Speak to Adelaide"
+        ]
+      },
+      {
+        "branch": "kill Adelaide",
+        "objectives": [
+          "Speak to Dralos"
+        ]
+      },
+      {
+        "branch": "main",
+        "objectives": [
+          "Gain access to the Dark Dawn Sanctuary",
+          "Gain information about the Necromancer's plans",
+          "Return to Alara"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Daedric",
+    "opens": [
+      "The Dark Dawn",
+      "Fort Justice"
+    ],
+    "closes": [
+      "Adelaide, if you kill her",
+      "Acolyte Kariss is killed in the attack on the Sanctum"
+    ],
+    "people": [
+      {
+        "name": "Arch-Paladin Laracin",
+        "role": "gives the quest, at Meridia's Sanctum"
+      },
+      {
+        "name": "Dralos",
+        "role": "Necromancer recruiter at Deep Moon Lookout"
+      },
+      {
+        "name": "Parinth",
+        "role": "Necromancer with Dralos"
+      },
+      {
+        "name": "Adelaide",
+        "role": "the woman Dralos orders you to kill; if spared she later stays at the Sleeping Giant Inn in Riverwood"
+      },
+      {
+        "name": "Tahlani",
+        "role": "High Elf in the Dark Dawn Sanctuary; meets you inside"
+      },
+      {
+        "name": "High Priestess Alara",
+        "role": "you report the plan to her"
+      },
+      {
+        "name": "Acolyte Kariss",
+        "role": "killed when the Malevolent attack the Sanctum"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "Deep Moon Lookout is named only in the journal; it isn't in the places index, so its hold isn't confirmed."
+      },
+      {
+        "field": "choices",
+        "why": "Adelaide is flagged essential in her record, yet the quest asks you to kill her; the script that handles this isn't in these files, so whether the kill works as written can't be checked."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script holds a Blessed Hood, but these files don't show whether it goes to you or is put on someone."
+      },
+      {
+        "field": "takesYou",
+        "why": "The places index puts Rannveig's Fast in Whiterun hold, a short walk from Morthal."
+      },
+      {
+        "field": "where",
+        "why": "Meridia's Sanctum is the Order's own interior; these files don't say where its door is in the world (the door sits in an unnamed exterior cell)."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:00816C stages 10-70, objectives 10-60",
+      "giver INFO Meridia.esp:007CEA (Laracin); others Dralos, Alara, Adelaide",
+      "INFO Meridia.esp:0081D9/0092ED/00B924 (Dralos: next to Rannveig's Fast), INFO 008218/0365BA (Adelaide)",
+      "Dralos NMeridia04DralosForcegreet01; Tahlani NMeridia04TahlaniForceGreet01 in Dark Dawn Sanctuary",
+      "Adelaide NMeridia04AdelaideSandbox @ Sleeping Giant Inn",
+      "Meridia.esp:000D66 Blessed Hood via QF_NMeridia04_0200816C.NMeridiaHood"
+    ]
+  },
+  {
+    "edid": "NMeridia04ReeshiMisc",
+    "name": "The Dark Dawn",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "A side path inside Infiltration: once you're in the Dark Dawn Sanctuary, Tahlani points you to Reeshi, who sets you tasks.",
+    "needs": [
+      {
+        "what": "Get inside the Dark Dawn Sanctuary during Infiltration",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Reeshi",
+        "where": "Dark Dawn Sanctuary, next to Rannveig's Fast",
+        "how": "Tahlani recommends you speak with Reeshi, the Sanctuary Master; win his favor and he may tell you the group's plans."
+      }
+    ],
+    "firstStep": "Speak to Reeshi",
+    "takesYou": [
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "kill or warn a Court Member (Idina)"
+      },
+      {
+        "place": "wherever the Necromancer Courier is",
+        "hold": "",
+        "why": "deliver Reeshi's letter"
+      },
+      {
+        "place": "Dark Dawn Sanctuary",
+        "hold": "Whiterun",
+        "why": "return to Reeshi and search his chamber"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill the Markarth Court Member",
+        "leadsTo": "Return to Reeshi for your reward and next task."
+      },
+      {
+        "choice": "Warn her instead",
+        "leadsTo": "Return to Reeshi the same way; she leaves Markarth and later stays at the Windpeak Inn in Dawnstar."
+      },
+      {
+        "choice": "Open Reeshi's letter or deliver it sealed",
+        "leadsTo": "Opening it may tell you about the Necromancers' plans."
+      },
+      {
+        "choice": "Turn on the Dark Dawn",
+        "leadsTo": "The quest fails and you may have to fight your way through the Sanctuary for the evidence."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Reeshi",
+          "Kill or warn the Markarth Court Member",
+          "Return to Reeshi",
+          "Recieve your next task from Reeshi",
+          "Deliver the letter to the Necromancer",
+          "Return to Reeshi"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Key to Reeshi's personal chamber",
+        "when": "after all his tasks; search the room for the evidence"
+      }
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": [
+      "Fails if you burn your bridges with the Dark Dawn",
+      "Idina, if you kill her"
+    ],
+    "people": [
+      {
+        "name": "Tahlani",
+        "role": "recommends you to Reeshi"
+      },
+      {
+        "name": "Reeshi",
+        "role": "Sanctuary Master of the Dark Dawn; gives the tasks"
+      },
+      {
+        "name": "Idina",
+        "role": "the Markarth Court Member, in Understone Keep"
+      },
+      {
+        "name": "Crenstian",
+        "role": "the Necromancer Courier who takes the letter"
+      },
+      {
+        "name": "Paladin Marith",
+        "role": "turns up asking to speak with you"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "Crenstian is placed out in the open world with no named cell, so where you hand over the letter isn't in these files."
+      },
+      {
+        "field": "choices",
+        "why": "Idina is flagged essential in her record; the script that lets you kill her isn't in these files. Her move to the Windpeak Inn is read from a package that applies once you've made your choice, so it fits the warn path."
+      },
+      {
+        "field": "rewards",
+        "why": "The journal says Reeshi gives you a reward after the Markarth job; no item shows in the records."
+      },
+      {
+        "field": "choices",
+        "why": "What opening the letter changes isn't shown beyond the journal's hint."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:0092EE stages 10-70 (60 completes, 70 fails), objectives 10-50",
+      "giver INFO Meridia.esp:0092F9 (Reeshi); others Idina, Crenstian",
+      "Infiltration stage 40 log",
+      "Idina NMeridia04IdinaSandbox02 @ Windpeak Inn (quest stage 30 and up)",
+      "Reeshi packages in Dark Dawn Sanctuary"
+    ]
+  },
+  {
+    "edid": "NMeridia05",
+    "name": "Fort Justice",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts when you get back to Meridia's Sanctum at the end of Infiltration and find it attacked by the Malevolent.",
+    "needs": [
+      {
+        "what": "Finish Infiltration",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "High Priestess Alara",
+        "where": "Meridia's Sanctum",
+        "how": "Return to the Sanctum after learning the Dark Dawn's plan; it has been attacked and Acolyte Kariss is dead. Listen to Alara."
+      }
+    ],
+    "firstStep": "Listen to Alara",
+    "takesYou": [
+      {
+        "place": "Fort Justice, an abandoned outpost near Riften",
+        "hold": "The Rift",
+        "why": "make sure it's safe, then clear out Fiya's forces"
+      },
+      {
+        "place": "Meridia's Sanctum",
+        "hold": "",
+        "why": "Kariss' funeral, attacked by Necromancers"
+      },
+      {
+        "place": "Fort Justice",
+        "hold": "The Rift",
+        "why": "meet Alara and the Order there"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Listen to Alara",
+          "Speak with Velteth",
+          "Travel to Fort Justice",
+          "Find a key to access Fort Justice",
+          "Clear out Fort Justice",
+          "Return to Velteth",
+          "Attend Kariss' funeral",
+          "Kill the Necromancers",
+          "Speak with Alara",
+          "Travel to Fort Justice"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "none given in the records",
+    "opens": [
+      "A New Day"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "High Priestess Alara",
+        "role": "leads the Order; sends you on and later moves to Fort Justice"
+      },
+      {
+        "name": "Initiate Velteth",
+        "role": "sends you to Fort Justice"
+      },
+      {
+        "name": "Fiya",
+        "role": "Dark Master of the Malevolent; confronts you at Fort Justice"
+      },
+      {
+        "name": "Malevolent Commander",
+        "role": "leads the Malevolent in Fort Justice"
+      },
+      {
+        "name": "Malevolent Necromancer",
+        "role": "carries the key to Fort Justice"
+      },
+      {
+        "name": "Acolyte Kariss",
+        "role": "killed; her funeral is held at the Sanctum"
+      },
+      {
+        "name": "Paladin Marith",
+        "role": "greets you once you reach Fort Justice at the end"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "canDo",
+        "why": "The journal reads as one continuous scene with the end of Infiltration; the scripts aren't in these files, so whether you must speak to Alara to begin isn't certain."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script holds a Steel Plate Cuirass and a Blessed Hood, but these files don't show whether they go to you or to an NPC."
+      },
+      {
+        "field": "takesYou",
+        "why": "Fort Justice isn't in the places index; the journal calls it an abandoned outpost in the Rift and Laracin calls it a neighbor of Stendarr's Beacon (near Riften)."
+      },
+      {
+        "field": "where",
+        "why": "Meridia's Sanctum is the Order's own interior; these files don't say where its door is in the world (the door sits in an unnamed exterior cell)."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:00BC5D stages 10-110, objectives 10-90",
+      "Infiltration stage 70 log",
+      "giver INFO Meridia.esp:00BC66 (Alara); others Velteth, Marith, Asger",
+      "Fiya NMeridia05Fiya @ Fort Justice; KeyHolder/Key aliases",
+      "Marith NMeridia05MarithForcegreetPack02 @ Fort Justice (stage 100)",
+      "INFO Meridia.esp:00BF0B (Laracin: Stendarr's Beacon)",
+      "script items ArmorSteelPlateCuirass, NMeridiaHood"
+    ]
+  },
+  {
+    "edid": "NMeridia06",
+    "name": "A New Day",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "After Fort Justice, talk to Alara at Fort Justice; she hands you a letter from someone who wants to meet the Champion.",
+    "needs": [
+      {
+        "what": "Finish Fort Justice",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "High Priestess Alara",
+        "where": "Fort Justice, near Riften",
+        "how": "Meet her and the others at Fort Justice; speak with her and she gives you a Letter to the Champion."
+      }
+    ],
+    "firstStep": "Speak to Alara",
+    "takesYou": [
+      {
+        "place": "Old Hroldan Inn",
+        "hold": "The Reach",
+        "why": "meet the letter's author, Vaegra"
+      },
+      {
+        "place": "Vaegra's hideaway (Fort Ruins)",
+        "hold": "",
+        "why": "hear what Vaegra knows"
+      },
+      {
+        "place": "Fort Justice",
+        "hold": "The Rift",
+        "why": "confront Garin and then Velteth; Meridia appears"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Alara",
+          "Read the Letter",
+          "Speak to Alara",
+          "Find who wrote the letter in Old Hroldan Inn",
+          "Kill the Attacker",
+          "Travel to Vaegra's Home",
+          "Listen to Vaegra",
+          "Confront Garin",
+          "Confront Velteth",
+          "Kill Velteth",
+          "Speak to Alara",
+          "Speak with Meridia"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "none given in the records",
+    "opens": [
+      "The Way In"
+    ],
+    "closes": [
+      "Initiate Velteth is executed as a Malevolent plant"
+    ],
+    "people": [
+      {
+        "name": "High Priestess Alara",
+        "role": "gives the letter and travels with you"
+      },
+      {
+        "name": "Vaegra",
+        "role": "Necromancer Union member who wrote the letter; at Old Hroldan Inn"
+      },
+      {
+        "name": "Gathella",
+        "role": "at Vaegra's hideaway"
+      },
+      {
+        "name": "Darlena",
+        "role": "at Vaegra's hideaway"
+      },
+      {
+        "name": "Initiate Garin",
+        "role": "suspected by Alara; names Velteth as the real traitor"
+      },
+      {
+        "name": "Initiate Velteth",
+        "role": "the traitor"
+      },
+      {
+        "name": "Meridia",
+        "role": "appears at Fort Justice and speaks to you"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "Vaegra's home is the cell named Fort Ruins; it isn't in the places index, so its spot and hold aren't in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script holds Blessed Robes and Necromancer Union Robes, but these files don't show whether they go to you or are put on Vaegra or someone else."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:007CFC stages 10-100, objectives 10-90",
+      "Fort Justice stages 90-110 logs",
+      "giver INFO Meridia.esp:0088E0 (Alara); others Vaegra, Garin, Marith",
+      "BOOK Meridia.esp:0088DC Letter to the Champion",
+      "Alara NMeridia06AlaraStart01 @ Fort Justice, NMeridia06AlaraFollow01, NMeridia06AlaraStand02 @ Fort Ruins",
+      "Vaegra NMeridia06VaegraStand01 @ Old Hroldan Inn",
+      "Meridia NPC Meridia.esp:009ED8 @ Fort Justice",
+      "script items NMeridiaRobesUnhooded, NMeridiaUnionRobes"
+    ]
+  },
+  {
+    "edid": "NMeridia07",
+    "name": "The Way In",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "After Meridia speaks to you in A New Day, talk to Garin at Fort Justice about getting into the Malevolent leader's pocket realm.",
+    "needs": [
+      {
+        "what": "Finish A New Day",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Initiate Garin",
+        "where": "Fort Justice, near Riften",
+        "how": "Meridia says Garin can tell you more about the pocket realm Molag Bal gave the Malevolent leader; speak with him."
+      }
+    ],
+    "firstStep": "Speak to Garin",
+    "takesYou": [
+      {
+        "place": "College of Winterhold",
+        "hold": "Winterhold",
+        "why": "search for a Wood Elf who defected from Fiya"
+      },
+      {
+        "place": "the road near Dawnstar",
+        "hold": "The Pale",
+        "why": "keep searching for him"
+      },
+      {
+        "place": "Fort Justice",
+        "hold": "The Rift",
+        "why": "bring Orthelos to Garin and enter Coldharbour"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Garin",
+          "Listen to Vaegra",
+          "Recruit Marith",
+          "Search the College of Winterhold for the Wood Elf",
+          "Search the area",
+          "Search along the road near Dawnstar",
+          "Find Orthelos",
+          "Return to Garin",
+          "Speak to Garin when you are ready to enter Coldharbour"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "none given in the records",
+    "opens": [
+      "The Pocket Realm"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Initiate Garin",
+        "role": "explains how to reach the realm; transfers Orthelos' essence to you"
+      },
+      {
+        "name": "Vaegra",
+        "role": "tells you to search the College of Winterhold"
+      },
+      {
+        "name": "High Priestess Alara",
+        "role": "tells you to ask Marith for help"
+      },
+      {
+        "name": "Paladin Marith",
+        "role": "searches with you"
+      },
+      {
+        "name": "College Guard",
+        "role": "at the Hall of Attainment, College of Winterhold"
+      },
+      {
+        "name": "Orthelos",
+        "role": "Wood Elf, once one of Fiya's top commanders"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "Orthelos is placed out in the open world with no named cell; the objectives only say 'along the road near Dawnstar'."
+      },
+      {
+        "field": "steps",
+        "why": "When you tell Garin you're ready you enter Coldharbour; whether you can come back before finishing The Pocket Realm isn't in these files, so prepare first."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script holds Blessed Robes and Master Robes of Destruction (the property is named for Garin's robes); these files don't show either going to you."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:0103B4 stages 10-90, objectives 10-80",
+      "A New Day stage 100 log",
+      "giver INFO Meridia.esp:0103B6; others Garin, Vaegra, Marith",
+      "Garin NMeridia07GarinStand01 @ Fort Justice",
+      "Marith NMeridia07MarithFollow01/02",
+      "College Guard Meridia.esp:0103B3 in Hall of Attainment",
+      "Orthelos packages NMeridia07OrthelosFollow01, NMeridia07OrthelosKneel",
+      "script items NMeridiaRobesUnhooded, GarinRobes"
+    ]
+  },
+  {
+    "edid": "NMeridia08",
+    "name": "The Pocket Realm",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts when Garin sends you into Coldharbour at the end of The Way In.",
+    "needs": [
+      {
+        "what": "Finish The Way In",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Initiate Garin",
+        "where": "Fort Justice, near Riften",
+        "how": "Tell Garin you're ready to enter Coldharbour; he uses Orthelos' essence to send you into Fiya's pocket realm."
+      }
+    ],
+    "firstStep": "Find a way to destroy the pocket realm",
+    "takesYou": [
+      {
+        "place": "Fiya's pocket realm of Coldharbour (the Malevolent Realm, Palace, Barracks and Dungeon)",
+        "hold": "none (Oblivion)",
+        "why": "destroy it"
+      },
+      {
+        "place": "Fort Justice",
+        "hold": "The Rift",
+        "why": "report to Alara"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Play Fiya's games",
+        "leadsTo": "The side quest A Fate Worse Than Death."
+      },
+      {
+        "choice": "Help The Jester and Alzacar",
+        "leadsTo": "The side quest The Jester, In The Bedroom, With The Knife; Alzacar tells you to kill the conjured dog Molag in the Master Bedroom."
+      },
+      {
+        "choice": "Attack everything in sight",
+        "leadsTo": "The journal offers it as a way through."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find a way to destroy the pocket realm",
+          "Escape the pocket realm",
+          "Report back to Alara"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "none given in the records",
+    "opens": [
+      "A Fate Worse Than Death",
+      "The Jester, In The Bedroom, With The Knife",
+      "The Ritual"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Initiate Garin",
+        "role": "sends you in; meet him inside to escape"
+      },
+      {
+        "name": "Dremora",
+        "role": "guard the realm"
+      },
+      {
+        "name": "Fiya",
+        "role": "Dark Master of the Malevolent; rules the realm"
+      },
+      {
+        "name": "High Priestess Alara",
+        "role": "you report to her at Fort Justice"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "opens",
+        "why": "The next quest's name comes from the places index (The Ritual, tied to the same Order); the journal only says Alara wants to stop Fiya once and for all."
+      },
+      {
+        "field": "choices",
+        "why": "How the 'attack everything' route destroys the realm isn't spelled out; the Jester's path says killing the dog Molag does it."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:019A81 stages 10-40, objectives 10-30",
+      "The Way In stage 90 log",
+      "giver INFO Meridia.esp:01C7E0 (Garin); other Alara",
+      "Garin NMeridia08GarinForcegreet01 @ The Malevolent Realm",
+      "Alara NMeridia08AlaraStand01 @ Fort Justice",
+      "NMeridia08MiscJester stage 50 log (Molag, Master Bedroom); Molag NPC Meridia.esp:01B7B0 in Master Bedroom",
+      "places_raw Old Hroldan Inn/Hob's Fall Cave quests list: The Ritual Meridia.esp:01F41F"
+    ]
+  },
+  {
+    "edid": "NMeridia08MiscFiya",
+    "name": "A Fate Worse Than Death",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "Inside Fiya's pocket realm, Alzacar comes to you; you can play Fiya's games or find another way.",
+    "needs": [
+      {
+        "what": "Enter the pocket realm in The Pocket Realm",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Alzacar",
+        "where": "the Malevolent Realm, inside Fiya's pocket realm",
+        "how": "Alzacar, a Dremora loyal to Fiya, approaches you after you arrive and sends you to confront Fiya."
+      }
+    ],
+    "firstStep": "Confront Fiya",
+    "takesYou": [
+      {
+        "place": "the Malevolent Palace",
+        "hold": "none (Oblivion)",
+        "why": "Fiya"
+      },
+      {
+        "place": "the Malevolent Dungeon",
+        "hold": "none (Oblivion)",
+        "why": "Fiya's first game: Alara and Marith are held there"
+      },
+      {
+        "place": "the Malevolent Realm",
+        "hold": "none (Oblivion)",
+        "why": "Cleans-Many-Boots"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill Marith or Alara for Fiya",
+        "leadsTo": "Confront Fiya again and carry on with her games."
+      },
+      {
+        "choice": "Kill Cleans-Many-Boots for Fiya",
+        "leadsTo": "Return to Fiya."
+      },
+      {
+        "choice": "Wreck the realm instead",
+        "leadsTo": "Fiya flees and this quest fails; you still need to destroy the realm."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Confront Fiya",
+          "Kill Marith or Alara",
+          "Confront Fiya",
+          "Return to Fiya",
+          "Kill Cleans-Many-Boots",
+          "Return to Fiya"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "none given in the records",
+    "opens": [
+      "The Jester, In The Bedroom, With The Knife (The Jester comes to you partway through)"
+    ],
+    "closes": [
+      "Whichever of Alara or Marith you kill here",
+      "Cleans-Many-Boots, if you kill him",
+      "Fails if you cause destruction in the realm and Fiya flees"
+    ],
+    "people": [
+      {
+        "name": "Alzacar",
+        "role": "Dremora servant of Fiya; starts this"
+      },
+      {
+        "name": "Fiya",
+        "role": "sets the games, in the Malevolent Palace"
+      },
+      {
+        "name": "Alara",
+        "role": "held in the Malevolent Dungeon"
+      },
+      {
+        "name": "Marith",
+        "role": "held in the Malevolent Dungeon"
+      },
+      {
+        "name": "Cleans-Many-Boots",
+        "role": "Argonian in the Malevolent Realm"
+      },
+      {
+        "name": "The Jester",
+        "role": "Wood Elf in Fiya's court"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "closes",
+        "why": "The Alara and Marith in the dungeon are separate records from the Order's Alara and Marith, so killing one may not kill the real one; these files don't say what they are."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is in the records; Cleans-Many-Boots has a Sentimental Ring tied to the realm, but who gets it isn't shown."
+      },
+      {
+        "field": "steps",
+        "why": "The journal text never changes past the first entry, so what finishing all of Fiya's games leads to isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:019A82 stages 10-100 (90 completes, 100 fails), objectives 10-80",
+      "giver INFO Meridia.esp:01A1AE (Alzacar, stage below 1); others Fiya, Kelrog, Alara",
+      "Alzacar NMeridia08FiyaMiscAlzacarForcegreet01 @ The Malevolent Realm",
+      "Fiya NMeridia08FiyaMiscFiyaForcegreet01 @ The Malevolent Dungeon",
+      "Jester NMeridia08JesterMiscForcegreet01 (Fiya quest stage 60 and up)",
+      "NPCs Meridia.esp:01A1C3 Alara, 01A1C2 Marith (The Malevolent Dungeon)",
+      "item Meridia.esp:01D892 Sentimental Ring"
+    ]
+  },
+  {
+    "edid": "NMeridia08MiscJester",
+    "name": "The Jester, In The Bedroom, With The Knife",
+    "plugin": "Meridia.esp (Meridia's Order ESMIFIED; no other plugin edits this quest)",
+    "canDo": "talk",
+    "canDoWhy": "Inside Fiya's pocket realm, The Jester asks you to help her destroy it by turning Alzacar against Fiya.",
+    "needs": [
+      {
+        "what": "Enter the pocket realm in The Pocket Realm",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "The Jester",
+        "where": "the Malevolent Barracks, inside Fiya's pocket realm",
+        "how": "Talk to The Jester, or she approaches you once you're partway through Fiya's games; she wants evidence that Fiya is plotting against her or Alzacar."
+      }
+    ],
+    "firstStep": "Find a way to turn Alzacar against Fiya",
+    "takesYou": [
+      {
+        "place": "the Malevolent Palace",
+        "hold": "none (Oblivion)",
+        "why": "find the evidence and kill Kelrog"
+      },
+      {
+        "place": "the Malevolent Barracks",
+        "hold": "none (Oblivion)",
+        "why": "Alzacar and The Jester"
+      },
+      {
+        "place": "the Master Bedroom",
+        "hold": "none (Oblivion)",
+        "why": "kill the conjured dog Molag to destroy the realm"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Turn on The Jester and Alzacar",
+        "leadsTo": "This quest fails; you need another way to learn how to destroy the realm."
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find a way to turn Alzacar against Fiya",
+          "Kill Kelrog",
+          "Return to Alzacar"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "none given in the records",
+    "opens": [],
+    "closes": [
+      "Kelrog Mashul is killed",
+      "Fails if you burn your bridges with The Jester and Alzacar"
+    ],
+    "people": [
+      {
+        "name": "The Jester",
+        "role": "Wood Elf who wants the realm destroyed"
+      },
+      {
+        "name": "Alzacar",
+        "role": "Fiya's servant; turns once you show the evidence and tells you how to destroy the realm"
+      },
+      {
+        "name": "Kelrog Mashul",
+        "role": "Orc advisor to Fiya, in the Malevolent Palace"
+      },
+      {
+        "name": "Molag",
+        "role": "the conjured dog in the Master Bedroom; killing it destroys the realm"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "The Jester is placed in the Malevolent Palace but her packages put her in the Malevolent Barracks once this quest runs; these files don't decode exactly where she stands before then."
+      },
+      {
+        "field": "steps",
+        "why": "Where the evidence of Fiya's plotting is found isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Meridia.esp:01ACCF stages 10-60 (50 completes, 60 fails), objectives 10-40",
+      "giver INFO Meridia.esp:01DE2C (The Jester, stage below 1); other Alzacar",
+      "Jester NMeridia08JesterMiscForcegreet01/Stand01 @ The Malevolent Barracks",
+      "Alzacar NMeridia08JesterMiscAlzacarSit01 @ The Malevolent Barracks",
+      "Kelrog Meridia.esp:01A19A in The Malevolent Palace",
+      "Molag Meridia.esp:01B7B0 in Master Bedroom"
+    ]
+  }
+]
