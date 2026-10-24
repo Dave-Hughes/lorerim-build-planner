@@ -1,0 +1,5479 @@
+[
+ {
+  "batch": "000",
+  "quests": [
+   {
+    "edid": "MQ101",
+    "name": "Unbound",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ102",
+    "name": "Before the Storm",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ103",
+    "name": "Bleak Falls Barrow",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ104",
+    "name": "Dragon Rising",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ105",
+    "name": "The Way of the Voice",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ105Ustengrav",
+    "name": "The Horn of Jurgen Windcaller",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ106",
+    "name": "A Blade in the Dark",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ201",
+    "name": "Diplomatic Immunity",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ202",
+    "name": "A Cornered Rat",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ203",
+    "name": "Alduin's Wall",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   }
+  ]
+ },
+ {
+  "batch": "001",
+  "quests": [
+   {
+    "edid": "MQ204",
+    "name": "The Throat of the World",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ205",
+    "name": "Elder Knowledge",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ206",
+    "name": "Alduin's Bane",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ301",
+    "name": "The Fallen",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ302",
+    "name": "Season Unending",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ303",
+    "name": "The World-Eater's Eyrie",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ304",
+    "name": "Sovngarde",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQ305",
+    "name": "Dragonslayer",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "MQPaarthurnax",
+    "name": "Paarthurnax",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "FreeformHighHrothgarA",
+    "name": "The Words of Power",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   }
+  ]
+ },
+ {
+  "batch": "002",
+  "quests": [
+   {
+    "edid": "FreeformSkyhavenTempleA",
+    "name": "Rebuilding the Blades",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "FreeformSkyHavenTempleB",
+    "name": "Dragon Hunting",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "FreeformSkyHavenTempleD",
+    "name": "Dragon Research",
+    "plugin": "Skyrim.esm",
+    "line": "The Dragonborn"
+   },
+   {
+    "edid": "DLC1VQ01MiscObjective",
+    "name": "Dawnguard",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1HunterBaseIntro",
+    "name": "A New Order",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1HunterBaseStage2",
+    "name": "Bolstering the Ranks",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH01",
+    "name": "Hide and Seek",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH02",
+    "name": "Cleansing Light",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH03",
+    "name": "Preemptive Strike",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH04",
+    "name": "Hunting the Monster",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   }
+  ]
+ },
+ {
+  "batch": "003",
+  "quests": [
+   {
+    "edid": "DLC1RH05",
+    "name": "Ancient Technology",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH06",
+    "name": "Rescue",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH07",
+    "name": "A Jarl's Justice",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RH08",
+    "name": "Lost Relic",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV01",
+    "name": "The Hunt",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV02",
+    "name": "Culling the Beast",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV03",
+    "name": "Deceiving the Herd",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV04",
+    "name": "Protecting the Bloodline",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV05",
+    "name": "Ancient Power",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV06",
+    "name": "The Gift",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   }
+  ]
+ },
+ {
+  "batch": "004",
+  "quests": [
+   {
+    "edid": "DLC1RV07",
+    "name": "New Allegiances",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV08",
+    "name": "Rings of Blood Magic",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV09",
+    "name": "Amulets of Night Power",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1RV10",
+    "name": "Destroying the Dawnguard",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VampireBaseIntro",
+    "name": "The Bloodstone Chalice",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ01",
+    "name": "Awakening",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ02",
+    "name": "Bloodline",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ03Hunter",
+    "name": "Prophet",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ03Vampire",
+    "name": "Prophet",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ04",
+    "name": "Chasing Echoes",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   }
+  ]
+ },
+ {
+  "batch": "005",
+  "quests": [
+   {
+    "edid": "DLC1VQ05",
+    "name": "Beyond Death",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ06",
+    "name": "Unseen Visions",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ07",
+    "name": "Touching the Sky",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQ08",
+    "name": "Kindred Judgment",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQElder",
+    "name": "Seeking Disclosure",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQElderHandler",
+    "name": "Scroll Scouting",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQSaint",
+    "name": "Impatience of a Saint",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC01SoulCairnHorseQuest2",
+    "name": "Soul Cairn Horse Quest",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQDragon",
+    "name": "Durnehviir",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VQDragonMisc",
+    "name": "Durnehviir Misc Objective Handler",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   }
+  ]
+ },
+ {
+  "batch": "006",
+  "quests": [
+   {
+    "edid": "DLC1VQFVBooks",
+    "name": "Forgotten Vale Books Quest",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC1VampireTutorial",
+    "name": "Power of the Blood",
+    "plugin": "Dawnguard.esm",
+    "line": "Dawnguard"
+   },
+   {
+    "edid": "DLC2MQ01",
+    "name": "Dragonborn",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2MQ02",
+    "name": "The Temple of Miraak",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2MQ03",
+    "name": "The Fate of the Skaal",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2MQ03B",
+    "name": "Cleansing the Stones",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2MQ04",
+    "name": "The Path of Knowledge",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2MQ05",
+    "name": "The Gardener of Men",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2MQ06",
+    "name": "At the Summit of Apocrypha",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   },
+   {
+    "edid": "DLC2WE09",
+    "name": "Cultists vs Player",
+    "plugin": "Dragonborn.esm",
+    "line": "Dragonborn"
+   }
+  ]
+ },
+ {
+  "batch": "007",
+  "quests": [
+   {
+    "edid": "C00",
+    "name": "Take Up Arms",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "C01",
+    "name": "Proving Honor",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "C02",
+    "name": "Brotherhood",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "C03",
+    "name": "The Silver Hand",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "C04",
+    "name": "Blood's Honor",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "C05",
+    "name": "Purity of Revenge",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "C06",
+    "name": "Glory of the Dead",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR01",
+    "name": "Animal Extermination",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR02",
+    "name": "Animal Extermination",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR03",
+    "name": "Animal Pelt Collection",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   }
+  ]
+ },
+ {
+  "batch": "008",
+  "quests": [
+   {
+    "edid": "CR04",
+    "name": "Hired Muscle",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR05",
+    "name": "Trouble in Skyrim",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR06",
+    "name": "Family Heirloom",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR07",
+    "name": "Escaped Criminal",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR08",
+    "name": "Rescue Mission",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR09",
+    "name": "Striking the Heart",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR10",
+    "name": "Stealing Plans",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR11",
+    "name": "Retrieval",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR12",
+    "name": "Totems of Hircine",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "CR13",
+    "name": "Purity",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   }
+  ]
+ },
+ {
+  "batch": "009",
+  "quests": [
+   {
+    "edid": "CR14",
+    "name": "Dragon Seekers",
+    "plugin": "Skyrim.esm",
+    "line": "The Companions"
+   },
+   {
+    "edid": "MG01",
+    "name": "First Lessons",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG02",
+    "name": "Under Saarthal",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG03",
+    "name": "Hitting the Books",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG04",
+    "name": "Good Intentions",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG05",
+    "name": "Containment",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "mg06",
+    "name": "Revealing the Unseen",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG07",
+    "name": "The Staff of Magnus",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG08",
+    "name": "The Eye of Magnus",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR21",
+    "name": "Shalidor's Insights",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   }
+  ]
+ },
+ {
+  "batch": "010",
+  "quests": [
+   {
+    "edid": "MGR30",
+    "name": "Aftershock",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRAppBrelyna01",
+    "name": "Brelyna's Practice",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRAppJzargo01",
+    "name": "J'zargo's Experiment",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRAppOnmund01",
+    "name": "Onmund's Request",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRArniel01",
+    "name": "Arniel's Endeavor",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRArniel02",
+    "name": "Arniel's Endeavor",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRArniel03",
+    "name": "Arniel's Endeavor",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRArniel04",
+    "name": "Arniel's Endeavor",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRejoinQuest",
+    "name": "Rejoining the College",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRitual01",
+    "name": "Destruction Ritual Spell",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   }
+  ]
+ },
+ {
+  "batch": "011",
+  "quests": [
+   {
+    "edid": "MGRitual02",
+    "name": "Illusion Ritual Spell",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRitual03",
+    "name": "Conjuration Ritual Spell",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRitual04",
+    "name": "Restoration Ritual Spell",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRitual05",
+    "name": "Alteration Ritual Spell",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGRRogue",
+    "name": "Rogue Wizard",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "Cow_Breathing",
+    "name": "Rapture of the Deep",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "COW_CentralQuest",
+    "name": "College Curriculum",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "Cow_Conjuration",
+    "name": "I Choose You, Familiar",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "Cow_Destruction",
+    "name": "A Test of Ice and Fire",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "Cow_enchantment",
+    "name": "Enchanted To Meet You",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   }
+  ]
+ },
+ {
+  "batch": "012",
+  "quests": [
+   {
+    "edid": "Cow_illusion",
+    "name": "Back-Stabbing Rodents",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "Cow_Reading",
+    "name": "Reading Comprehension 101",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "Cow_restoration",
+    "name": "None Escape The Light",
+    "plugin": "College Of Winterhold - Quest Expansion.esp",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MG01Pointer",
+    "name": "College Objective Quest",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR01",
+    "name": "Tolfdir the Absent-Minded",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR02",
+    "name": "Out of Balance",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR10",
+    "name": "Enchanting Pick-Up",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR11",
+    "name": "Restocking Soul Gems",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR12",
+    "name": "Filling Soul Gems",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "MGR20",
+    "name": "Fetch me that Book!",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   }
+  ]
+ },
+ {
+  "batch": "013",
+  "quests": [
+   {
+    "edid": "MGR20B",
+    "name": "Fetch me that Book!",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "FreeformWinterholdCollegeA",
+    "name": "Research Thief",
+    "plugin": "Skyrim.esm",
+    "line": "The College of Winterhold"
+   },
+   {
+    "edid": "TG00",
+    "name": "A Chance Arrangement",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG01",
+    "name": "Taking Care of Business",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG02",
+    "name": "Loud and Clear",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG03",
+    "name": "Dampened Spirits",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG04",
+    "name": "Scoundrel's Folly",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG05",
+    "name": "Speaking With Silence",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG06",
+    "name": "Hard Answers",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG07",
+    "name": "The Pursuit",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   }
+  ]
+ },
+ {
+  "batch": "014",
+  "quests": [
+   {
+    "edid": "TG08A",
+    "name": "Trinity Restored",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG08B",
+    "name": "Blindsighted",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG09",
+    "name": "Darkness Returns",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGBan",
+    "name": "Reparations",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGCrown",
+    "name": "No Stone Unturned",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGLeadership",
+    "name": "Under New Management",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGRBE",
+    "name": "The Burglary Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGRDU",
+    "name": "The Shill Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGRFO",
+    "name": "The Numbers Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGRGF",
+    "name": "The Fishing Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   }
+  ]
+ },
+ {
+  "batch": "015",
+  "quests": [
+   {
+    "edid": "TGRHC",
+    "name": "The Sweep Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGRNT",
+    "name": "The Bedlam Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGRSL",
+    "name": "The Heist Job",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGTQ01",
+    "name": "Silver Lining",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGTQ02",
+    "name": "The Dainty Sload",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGTQ03",
+    "name": "Imitation Amnesty",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGTQ04",
+    "name": "Summerset Shadows",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG00MaulHandler",
+    "name": "TG00 Maul Handler",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TG02B",
+    "name": "Meet the Family",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "TGFenceCaravan",
+    "name": "Thieves Guild Caravan Fence Quest",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   }
+  ]
+ },
+ {
+  "batch": "016",
+  "quests": [
+   {
+    "edid": "TGLarceny",
+    "name": "The Litany of Larceny",
+    "plugin": "Skyrim.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "DLC2TGQuest",
+    "name": "Paid in Full",
+    "plugin": "Dragonborn.esm",
+    "line": "The Thieves Guild"
+   },
+   {
+    "edid": "DB01",
+    "name": "Innocence Lost",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DarkBrotherhoodSanctuaryRepair",
+    "name": "Where You Hang Your Enemy's Head...",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB01Misc",
+    "name": "Delayed Burial",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB02",
+    "name": "With Friends Like These...",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB02a",
+    "name": "Sanctuary",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB03",
+    "name": "Mourning Never Comes",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB04",
+    "name": "Whispers in the Dark",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB04a",
+    "name": "The Silence Has Been Broken",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   }
+  ]
+ },
+ {
+  "batch": "017",
+  "quests": [
+   {
+    "edid": "DB05",
+    "name": "Bound Until Death",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB06",
+    "name": "Breaching Security",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB07",
+    "name": "The Cure for Madness",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB08",
+    "name": "Recipe for Disaster",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB09",
+    "name": "To Kill an Empire",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB10",
+    "name": "Death Incarnate",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB11",
+    "name": "Hail Sithis!",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBDestroy",
+    "name": "Destroy the Dark Brotherhood!",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBEviction",
+    "name": "Honor Thy Family",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract01",
+    "name": "Contract: Kill Narfi",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   }
+  ]
+ },
+ {
+  "batch": "018",
+  "quests": [
+   {
+    "edid": "DBSideContract02",
+    "name": "Contract: Kill Ennodius Papius",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract03",
+    "name": "Contract: Kill Beitild",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract04",
+    "name": "Contract: Kill Hern",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract05",
+    "name": "Contract: Kill Lurbuk",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract06",
+    "name": "Contract: Kill Deekus",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract07",
+    "name": "Contract: Kill Ma'randru-jo",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract08",
+    "name": "Contract: Kill Anoriath",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract09",
+    "name": "Contract: Kill Agnis",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract10",
+    "name": "Contract: Kill Maluril",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBSideContract11",
+    "name": "Contract: Kill Helvard",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   }
+  ]
+ },
+ {
+  "batch": "019",
+  "quests": [
+   {
+    "edid": "DBSideContract12",
+    "name": "Contract: Kill Safia",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DB01_OptionalObjectives",
+    "name": "DB01_Opt",
+    "plugin": "Innocence Lost - Quest Expansion.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillBraith_Quest",
+    "name": "Contract: Kill Braith",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillElenwen_Quest",
+    "name": "Contract: Kill Elenwen",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillErikur_Quest",
+    "name": "Contract: Kill Erikur",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillLemkil_Quest",
+    "name": "Contract: Kill Lemkil",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillNazeem_Quest",
+    "name": "Contract: Kill Nazeem",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillRolff_Quest",
+    "name": "Contract: Kill Rolff Stone-Fist",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillSerana_Quest",
+    "name": "Contract: Kill Serana",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "ExtraContracts_KillTaarieEndarie_Quest",
+    "name": "Contract: Kill Taarie and Endarie",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   }
+  ]
+ },
+ {
+  "batch": "020",
+  "quests": [
+   {
+    "edid": "ExtraContracts_KillThonarSilverblood_Quest",
+    "name": "Contract: Kill Thonar Silver-Blood",
+    "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "LTNQuestHandler",
+    "name": "LTN Quest Handler",
+    "plugin": "Listen.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "LTNQuestMarkarth",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "LTNQuestRiften",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "LTNQuestSolitude",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "LTNQuestWhiterun",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "LTNQuestWindhelm",
+    "name": "Contract: Kill the target",
+    "plugin": "Listen.esp",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "DBrecurring",
+    "name": "The Dark Brotherhood Forever",
+    "plugin": "Skyrim.esm",
+    "line": "The Dark Brotherhood"
+   },
+   {
+    "edid": "CW00A",
+    "name": "Imperial Introductions",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CW00B",
+    "name": "Stormcloak Introductions",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   }
+  ]
+ },
+ {
+  "batch": "021",
+  "quests": [
+   {
+    "edid": "CW01AOutfitImperial",
+    "name": "Get Outfitted",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "DialogueSolitudeGuardIntro",
+    "name": "Recruitment Drive",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CW01A",
+    "name": "Joining the Legion",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CW01B",
+    "name": "Joining the Stormcloaks",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CW02A",
+    "name": "The Jagged Crown",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CW02B",
+    "name": "The Jagged Crown",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CW03",
+    "name": "Message to Whiterun",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CWCampaignObj",
+    "name": "Campaign for the campaign hold",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CWMission03",
+    "name": "A False Front",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CWMission07",
+    "name": "Compelling Tribute",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   }
+  ]
+ },
+ {
+  "batch": "022",
+  "quests": [
+   {
+    "edid": "CWSiegeAttackObj",
+    "name": "Battle of the city",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CWSiegeDefendObj",
+    "name": "Defense of the city",
+    "plugin": "Skyrim.esm",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CWCRQuest",
+    "name": "Civil War Champion Armor",
+    "plugin": "Civil War Champions - Reduced Cut.esp",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "CWRepairs",
+    "name": "Repairing the Cities",
+    "plugin": "CWRepairs.esp",
+    "line": "The Civil War"
+   },
+   {
+    "edid": "MS05Start",
+    "name": "Investigate the Bards College",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "MS05",
+    "name": "Tending the Flames",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "BardsCollegePoeticEdda",
+    "name": "Collecting the Edda",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "BardsCollegeDrum",
+    "name": "Rjorn's Drum",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "BardsCollegeFlute",
+    "name": "Pantea's Flute",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "BardsCollegeLute",
+    "name": "Finn's Lute",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   }
+  ]
+ },
+ {
+  "batch": "023",
+  "quests": [
+   {
+    "edid": "dunBardsLeapSummitQST",
+    "name": "The Lost Verse",
+    "plugin": "Skyrim.esm",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "DMRClearQ",
+    "name": "Clear Dead Men's Respite",
+    "plugin": "BardExcavation.esp",
+    "line": "The Bards College"
+   },
+   {
+    "edid": "zzzAomBountyBook",
+    "name": "Bounty: Book",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAomBountyChickTrader",
+    "name": "Bounty: Chick Trader",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMBountyPiper",
+    "name": "Bounty: Piper",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAomBountyRelic",
+    "name": "Bounty: Daedric Relic",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMBountyRelicHorn",
+    "name": "Bounty: Horn",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAomBountySummoner",
+    "name": "Bounty: Summoner",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAomBountyVampire",
+    "name": "Bounty: Vampire",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAomBountyWitch",
+    "name": "Bounty: Witch",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   }
+  ]
+ },
+ {
+  "batch": "024",
+  "quests": [
+   {
+    "edid": "zzzAoMMq00",
+    "name": "Vigilant of Stendarr",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq01",
+    "name": "Bloodsucker",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq02",
+    "name": "He Who Cannot Be Touched",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq03",
+    "name": "Lazy Afternoon",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq04",
+    "name": "The Eye of Madness",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq05",
+    "name": "Dine and Dash",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq06",
+    "name": "Thus Spoke Khajiit",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq07",
+    "name": "Old Regrets",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq08",
+    "name": "No Mercy",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMq09",
+    "name": "The Endless Fall",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   }
+  ]
+ },
+ {
+  "batch": "025",
+  "quests": [
+   {
+    "edid": "zzzAoMMq10",
+    "name": "The Landing",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMMqGoodEnd",
+    "name": "Art of Mercy",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMRadDead",
+    "name": "Radiance in the Dead",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMRadDoppler",
+    "name": "Radiance in the Duplicate",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMRadMolag",
+    "name": "Radiance in the Spawn",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMRadVampire",
+    "name": "Radiance in the Vampire",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMRadWitchHunter",
+    "name": "Radiance in the Witch Hunter",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMSubQ02",
+    "name": "Sacred Anatomancer",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzAoMSubQ03",
+    "name": "Legacy of Belharza",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzBMGuide",
+    "name": "Stendarr Guide",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   }
+  ]
+ },
+ {
+  "batch": "026",
+  "quests": [
+   {
+    "edid": "zzzBMMq01",
+    "name": "Empty Cells",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzBMMq02",
+    "name": "Remnants",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzBMMq03",
+    "name": "The Blood Matron",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryGuide",
+    "name": "Memory Guide",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest01",
+    "name": "The Grand Inquisitor",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest02",
+    "name": "The Mad King",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest03",
+    "name": "Knight of Hounds",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest04",
+    "name": "Johan the Fool",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest05",
+    "name": "Adabal",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest06",
+    "name": "Remains of the Miracle",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   }
+  ]
+ },
+ {
+  "batch": "027",
+  "quests": [
+   {
+    "edid": "zzzCHMemoryQuest07",
+    "name": "Temptation of Marukh",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest08",
+    "name": "The Nameless Bard",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHMemoryQuest09",
+    "name": "Beyond the Shores of Madness",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHqSAExile",
+    "name": "Maggot",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHrqSoulShriven",
+    "name": "Feral Soul-Shriven",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCHSubQuest13",
+    "name": "Broken Horns",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCOGuide",
+    "name": "Stendarr Guide",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCOMq01",
+    "name": "Child of Oblivion",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "zzzCOSubQ01",
+    "name": "Successor",
+    "plugin": "Vigilant.esm",
+    "line": "Vigilant"
+   },
+   {
+    "edid": "NMeridia01",
+    "name": "Meridia's Order",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   }
+  ]
+ },
+ {
+  "batch": "028",
+  "quests": [
+   {
+    "edid": "NMeridia02",
+    "name": "Our Lady",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia03",
+    "name": "Prisoner",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia04",
+    "name": "Infiltration",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia04ReeshiMisc",
+    "name": "The Dark Dawn",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia05",
+    "name": "Fort Justice",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia06",
+    "name": "A New Day",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia07",
+    "name": "The Way In",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia08",
+    "name": "The Pocket Realm",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia08MiscFiya",
+    "name": "A Fate Worse Than Death",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridia08MiscJester",
+    "name": "The Jester, In The Bedroom, With The Knife",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   }
+  ]
+ },
+ {
+  "batch": "029",
+  "quests": [
+   {
+    "edid": "NMeridia09",
+    "name": "The Ritual",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridiaAsger01",
+    "name": "Champion's Choice",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridiaGarin01",
+    "name": "Repentance Upheld",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridiaLaracin01",
+    "name": "Stendarr's Mercy",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridiaUna01",
+    "name": "Finding Yourself",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "NMeridiaValrar01",
+    "name": "A Parting Gift",
+    "plugin": "Meridia.esp",
+    "line": "Meridia's Order"
+   },
+   {
+    "edid": "zzzPO00",
+    "name": "Penitus Oculatus",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPO01Informant",
+    "name": "Unfinished Business",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPO02Babette",
+    "name": "Bad Blood",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPO03Cicero",
+    "name": "Fool's Errand",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   }
+  ]
+ },
+ {
+  "batch": "030",
+  "quests": [
+   {
+    "edid": "zzzPO04Sanctuary",
+    "name": "A Nest of Vipers",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPO05AmaundMotierre",
+    "name": "Loose Ends",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPORadiant01",
+    "name": "Unfinished Business",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPORadiant02",
+    "name": "House Cleaning",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPORadiant03",
+    "name": "Paperwork",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPORadiant04",
+    "name": "Inquisition",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "zzzPORadiant05",
+    "name": "Troubleshoot",
+    "plugin": "Penitus_Oculatus.esp",
+    "line": "Penitus Oculatus"
+   },
+   {
+    "edid": "DA03Start",
+    "name": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "plugin": "Skyrim.esm",
+    "line": "A Daedra's Best Friend"
+   },
+   {
+    "edid": "DA03",
+    "name": "A Daedra's Best Friend",
+    "plugin": "Skyrim.esm",
+    "line": "A Daedra's Best Friend"
+   },
+   {
+    "edid": "DA14Start",
+    "name": "Participate in a drinking contest with Sam Guevenne",
+    "plugin": "Skyrim.esm",
+    "line": "A Night To Remember"
+   }
+  ]
+ },
+ {
+  "batch": "031",
+  "quests": [
+   {
+    "edid": "DA14",
+    "name": "A Night To Remember",
+    "plugin": "Skyrim.esm",
+    "line": "A Night To Remember"
+   },
+   {
+    "edid": "DA02",
+    "name": "Boethiah's Calling",
+    "plugin": "Skyrim.esm",
+    "line": "Boethiah's Calling"
+   },
+   {
+    "edid": "DA02AltQuest",
+    "name": "The Man in Black",
+    "plugin": "BoethiahCalling_AlternativeQuest.esp",
+    "line": "Boethiah's Calling"
+   },
+   {
+    "edid": "WEDA02",
+    "name": "DA02 Hook",
+    "plugin": "Skyrim.esm",
+    "line": "Boethiah's Calling"
+   },
+   {
+    "edid": "DA02KillObj",
+    "name": "Boethiah's Bidding",
+    "plugin": "Skyrim.esm",
+    "line": "Boethiah's Calling"
+   },
+   {
+    "edid": "DA04",
+    "name": "Discerning the Transmundane",
+    "plugin": "Skyrim.esm",
+    "line": "Discerning the Transmundane"
+   },
+   {
+    "edid": "DA05",
+    "name": "Ill Met By Moonlight",
+    "plugin": "Skyrim.esm",
+    "line": "Ill Met By Moonlight"
+   },
+   {
+    "edid": "DA07",
+    "name": "Pieces of the Past",
+    "plugin": "Skyrim.esm",
+    "line": "Pieces of the Past"
+   },
+   {
+    "edid": "DA07PlayerHasReforged",
+    "name": "Reforging the Past",
+    "plugin": "SilusJournal_ReforgeRazor.esp",
+    "line": "Pieces of the Past"
+   },
+   {
+    "edid": "DA01",
+    "name": "The Black Star",
+    "plugin": "Skyrim.esm",
+    "line": "The Black Star"
+   }
+  ]
+ },
+ {
+  "batch": "032",
+  "quests": [
+   {
+    "edid": "DA09",
+    "name": "The Break of Dawn",
+    "plugin": "Skyrim.esm",
+    "line": "The Break of Dawn"
+   },
+   {
+    "edid": "DA06",
+    "name": "The Cursed Tribe",
+    "plugin": "Skyrim.esm",
+    "line": "The Cursed Tribe"
+   },
+   {
+    "edid": "DA10",
+    "name": "The House of Horrors",
+    "plugin": "Skyrim.esm",
+    "line": "The House of Horrors"
+   },
+   {
+    "edid": "DA15",
+    "name": "The Mind of Madness",
+    "plugin": "Skyrim.esm",
+    "line": "The Mind of Madness"
+   },
+   {
+    "edid": "EC_SS_LizardQuest",
+    "name": "The Lunatic's Treasure",
+    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+    "line": "Saints and Seducers"
+   },
+   {
+    "edid": "EC_SS_MQ100Int",
+    "name": "The Route of Madness",
+    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+    "line": "Saints and Seducers"
+   },
+   {
+    "edid": "EC_SS_MQ101",
+    "name": "The Isle of Madness",
+    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+    "line": "Saints and Seducers"
+   },
+   {
+    "edid": "EC_SS_MQ102",
+    "name": "The Roots of Madness",
+    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+    "line": "Saints and Seducers"
+   },
+   {
+    "edid": "EC_SS_TheodorQuest",
+    "name": "The Merchant's Masterpiece",
+    "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+    "line": "Saints and Seducers"
+   },
+   {
+    "edid": "EC_SS_ElytraPetAcquisition_Dementia",
+    "name": "My Pet Elytra (Dementia)",
+    "plugin": "ccbgssse025-advdsgs.esm",
+    "line": "Saints and Seducers"
+   }
+  ]
+ },
+ {
+  "batch": "033",
+  "quests": [
+   {
+    "edid": "EC_SS_ElytraPetAcquisition_Mania",
+    "name": "My Pet Elytra (Mania)",
+    "plugin": "ccbgssse025-advdsgs.esm",
+    "line": "Saints and Seducers"
+   },
+   {
+    "edid": "DA13",
+    "name": "The Only Cure",
+    "plugin": "Skyrim.esm",
+    "line": "The Only Cure"
+   },
+   {
+    "edid": "DA11Intro",
+    "name": "Investigate the Hall of the Dead",
+    "plugin": "Skyrim.esm",
+    "line": "The Taste of Death"
+   },
+   {
+    "edid": "DA11",
+    "name": "The Taste of Death",
+    "plugin": "Skyrim.esm",
+    "line": "The Taste of Death"
+   },
+   {
+    "edid": "madNamiraAddonQuest",
+    "name": "A Bitter Aftertaste",
+    "plugin": "TasteOfDeath_Addon_Dialogue.esp",
+    "line": "The Taste of Death"
+   },
+   {
+    "edid": "DA08",
+    "name": "The Whispering Door",
+    "plugin": "Skyrim.esm",
+    "line": "The Whispering Door"
+   },
+   {
+    "edid": "DA08MephalaHunt",
+    "name": "The Fate of the Ebony Blade",
+    "plugin": "EbonyBladeCurse.esp",
+    "line": "The Whispering Door"
+   },
+   {
+    "edid": "DA16",
+    "name": "Waking Nightmare",
+    "plugin": "Skyrim.esm",
+    "line": "Waking Nightmare"
+   },
+   {
+    "edid": "aaaMBQuest",
+    "name": "Sleepwalking Into A Nightmare",
+    "plugin": "NightmarePlane.esp",
+    "line": "Sleepwalking Into A Nightmare"
+   },
+   {
+    "edid": "WTAthirFavor",
+    "name": "Retrieving Embersunder",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   }
+  ]
+ },
+ {
+  "batch": "034",
+  "quests": [
+   {
+    "edid": "WTBarrowOfTheWyrm",
+    "name": "Barrow of the Wyrm",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTBlindRobbersCache",
+    "name": "Blind Robber's Cache",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTBountyAnimal",
+    "name": "Animal Bounty",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTBountyBandit",
+    "name": "Bandit Bounty",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTBountyVampire",
+    "name": "Vampire Bounty",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTBountyWarlock",
+    "name": "Warlock Bounty",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTDaenlitFavor",
+    "name": "Robbed Blind",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTDragonHunt",
+    "name": "Wyrmstooth",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTElmeraFavor",
+    "name": "Stickler in the Mud",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTKillThalmor",
+    "name": "Unwanted Guests",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   }
+  ]
+ },
+ {
+  "batch": "035",
+  "quests": [
+   {
+    "edid": "WTPlayerHome",
+    "name": "Reclaiming the Past",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTPricelessCommodity",
+    "name": "A Priceless Commodity",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTShargamFavor",
+    "name": "Repaying a Debt",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTSignyFavor",
+    "name": "A Debt Unpaid",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTTheNakedNord",
+    "name": "The Naked Nord",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTUberEncounter",
+    "name": "Someone with Backbone",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTWolfFollower",
+    "name": "A Howl Load of Trouble",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "WTWrapMeUp",
+    "name": "Wrap Me Up",
+    "plugin": "Wyrmstooth.esp",
+    "line": "Wyrmstooth"
+   },
+   {
+    "edid": "DefunctQuest01",
+    "name": "A Grand Venture",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "DefunctQuest02",
+    "name": "The Amulet of Old",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   }
+  ]
+ },
+ {
+  "batch": "036",
+  "quests": [
+   {
+    "edid": "DefunctQuest04",
+    "name": "The Bruska Pogrom",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "DefunctQuest07",
+    "name": "The New Temple",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "DefunctQuest09",
+    "name": "Morrowind Boat Travel System",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "SOMRHlervansAshesQuest",
+    "name": "Hlervan's Ashes",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "SOMRLlynelisDaedricQuest",
+    "name": "Daedra and Deceit",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "SOMRSaxhleelQuestMain",
+    "name": "The Struggle for Justice",
+    "plugin": "Journey to Baan Malur.esp",
+    "line": "Journey to Baan Malur"
+   },
+   {
+    "edid": "HYORBlackBook08Quest",
+    "name": "Black Book: The Font of Memory",
+    "plugin": "Siege at Icemoth.esp",
+    "line": "Siege at Icemoth"
+   },
+   {
+    "edid": "HYORBookPointerMiscQST",
+    "name": "Caches of Skorjan Iron-Beard",
+    "plugin": "Siege at Icemoth.esp",
+    "line": "Siege at Icemoth"
+   },
+   {
+    "edid": "HYORdunIcemothQST",
+    "name": "Siege at Icemoth",
+    "plugin": "Siege at Icemoth.esp",
+    "line": "Siege at Icemoth"
+   },
+   {
+    "edid": "HYORdunWintershroudSanctumQST",
+    "name": "The Topaz Claw",
+    "plugin": "Siege at Icemoth.esp",
+    "line": "Siege at Icemoth"
+   }
+  ]
+ },
+ {
+  "batch": "037",
+  "quests": [
+   {
+    "edid": "manny_GF_Books",
+    "name": "Memories of the Umbranox",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_BuryValenDreth",
+    "name": "Bury Valen Dreth",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_ColdharbourQuest",
+    "name": "Reward of Coldharbour",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_Farewell",
+    "name": "Time for the Farewells",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_IrlavExperiment",
+    "name": "The Experiment",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_MiscQuestShantaFilibb",
+    "name": "Claim Shanta Filibb",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_MQ",
+    "name": "The Call of Gray Cowl of Nocturnal",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "manny_GF_Sadraaka",
+    "name": "The Curse of Sadraaka",
+    "plugin": "Gray Fox Cowl.esm",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "ASHGAndynQuest",
+    "name": "Helping the Enemy",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "ASHGAshabahQuest",
+    "name": "The Ash'abah",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   }
+  ]
+ },
+ {
+  "batch": "038",
+  "quests": [
+   {
+    "edid": "ASHGMageQuest",
+    "name": "The Library Lost to the Ages",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "ASHGNecroQuest",
+    "name": "Is There a Necromancer in Town?",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "ASHGPoetryQuest",
+    "name": "Weltan the Poet",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "ASHGSolstheimQuest",
+    "name": "From Solstheim to Hammerfell",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "CYCOHQuest01",
+    "name": "Black Marsh Maps",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "CYCOHQuest02",
+    "name": "Cyrodilic Collections are Recruiting",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "CYCOHQuest03",
+    "name": "Ancient Pottery",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "CYCOHQuest04",
+    "name": "A Special Smell",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBIntroQuest",
+    "name": "The Dark Brotherhood in Hammerfell",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBPenitusOculatusQuest",
+    "name": "Ending the Dark Brotherhood in Hammerfell again",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   }
+  ]
+ },
+ {
+  "batch": "039",
+  "quests": [
+   {
+    "edid": "DDBQuest01",
+    "name": "Merchant Problem",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest02",
+    "name": "Argonian Hero",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest03",
+    "name": "Wandering Monk",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest04",
+    "name": "Alik'r No More",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest05",
+    "name": "No Guard Is Safe",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest06",
+    "name": "Disappearing in the Dark",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest07",
+    "name": "The Crimson Eviscerator",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "DDBQuest08",
+    "name": "Crimson Scar Believers",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLBladesQuest01",
+    "name": "Protecting What Was Lost",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLBladesQuest02",
+    "name": "In need of Scouts",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   }
+  ]
+ },
+ {
+  "batch": "040",
+  "quests": [
+   {
+    "edid": "HABLBladesQuest03",
+    "name": "Sands of the Past",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLQuest01",
+    "name": "A Lost Temple in Hammerfell",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLQuest02",
+    "name": "Dragonguard Archives",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLRaQuest01",
+    "name": "Dragonguard Archives: Book 1",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLRaQuest02",
+    "name": "Dragonguard Archives: Book 2",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLRaQuest03",
+    "name": "Dragonguard Archives: Book 3",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLRaQuest04",
+    "name": "Dragonguard Archives: Book 4",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLRaQuest05",
+    "name": "Dragonguard Archives: Book 5",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "HABLRaQuest06",
+    "name": "Dragonguard Archives: Book 6",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   },
+   {
+    "edid": "LAMIDesertLamiaQuest",
+    "name": "Spectral Lamias in the Desert",
+    "plugin": "BetalillesHammerfellQuestBundle.esp",
+    "line": "The Gray Cowl of Nocturnal"
+   }
+  ]
+ },
+ {
+  "batch": "041",
+  "quests": [
+   {
+    "edid": "000FCQuest01",
+    "name": "The Forgotten City",
+    "plugin": "ForgottenCity.esp",
+    "line": "The Forgotten City"
+   },
+   {
+    "edid": "000FCQuest02",
+    "name": "Forget-me-not",
+    "plugin": "ForgottenCity.esp",
+    "line": "The Forgotten City"
+   },
+   {
+    "edid": "GRVEDestroyRealm01",
+    "name": "Lost to Oblivion",
+    "plugin": "FalkreathShades.esp",
+    "line": "Gravewind"
+   },
+   {
+    "edid": "GRVEMainQuest01",
+    "name": "In the Pines",
+    "plugin": "FalkreathShades.esp",
+    "line": "Gravewind"
+   },
+   {
+    "edid": "GRVEMainQuest02",
+    "name": "Lost in the Woods",
+    "plugin": "FalkreathShades.esp",
+    "line": "Gravewind"
+   },
+   {
+    "edid": "DLC2RR01",
+    "name": "March of the Dead",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RR02",
+    "name": "Served Cold",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RR03Intro",
+    "name": "An Axe to Find",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RR03",
+    "name": "The Final Descent",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RR03Priest",
+    "name": "The Final Descent Priest",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   }
+  ]
+ },
+ {
+  "batch": "042",
+  "quests": [
+   {
+    "edid": "DLC2RRFavor01",
+    "name": "Recipe for Distraction",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RRFavor02",
+    "name": "Fetch the Netch",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RRFavor03",
+    "name": "Clean Sweep",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RRFavor04",
+    "name": "It's All In The Taste",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RRFavor05",
+    "name": "Pain in the Necklace",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RRFavor06",
+    "name": "Feeding the Addiction",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2RRFavor07",
+    "name": "First Edition",
+    "plugin": "Dragonborn.esm",
+    "line": "Raven Rock"
+   },
+   {
+    "edid": "DLC2MH01",
+    "name": "Retaking Thirsk",
+    "plugin": "Dragonborn.esm",
+    "line": "Thirsk Mead Hall"
+   },
+   {
+    "edid": "DLC2MH02",
+    "name": "The Chief of Thirsk Hall",
+    "plugin": "Dragonborn.esm",
+    "line": "Thirsk Mead Hall"
+   },
+   {
+    "edid": "DLC2ThirskFFElmus",
+    "name": "Elmus Favor Quest",
+    "plugin": "Dragonborn.esm",
+    "line": "Thirsk Mead Hall"
+   }
+  ]
+ },
+ {
+  "batch": "043",
+  "quests": [
+   {
+    "edid": "DLC2ThirskFFElmusBack",
+    "name": "Elmus Favor Quest",
+    "plugin": "Dragonborn.esm",
+    "line": "Thirsk Mead Hall"
+   },
+   {
+    "edid": "DLC2ThirskFFHalbarn",
+    "name": "Halbarn Favor Quest",
+    "plugin": "Dragonborn.esm",
+    "line": "Thirsk Mead Hall"
+   },
+   {
+    "edid": "DLC2ThirskFFHilund",
+    "name": "Hilund Favor Quest",
+    "plugin": "Dragonborn.esm",
+    "line": "Thirsk Mead Hall"
+   },
+   {
+    "edid": "DLC2TT1",
+    "name": "Reluctant Steward",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TT1b",
+    "name": "A New Debt",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TT2",
+    "name": "Old Friends",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTF1",
+    "name": "From the Ashes",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTF2",
+    "name": "Healing a House",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR1",
+    "name": "Lost Knowledge",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR2",
+    "name": "Heart Stones",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   }
+  ]
+ },
+ {
+  "batch": "044",
+  "quests": [
+   {
+    "edid": "DLC2TTR3a",
+    "name": "Telvanni Research",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR3b",
+    "name": "Wind and Sand",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR4a",
+    "name": "Experimental Subject",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR4b",
+    "name": "Experimental Subject",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR5",
+    "name": "Briarheart Necropsy",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR7",
+    "name": "Azra's Staffs",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2TTR8",
+    "name": "Hunting and Gathering",
+    "plugin": "Dragonborn.esm",
+    "line": "Neloth of Tel Mithryn"
+   },
+   {
+    "edid": "DLC2SV01",
+    "name": "Lost Legacy",
+    "plugin": "Dragonborn.esm",
+    "line": "Skaal Village"
+   },
+   {
+    "edid": "DLC2SV02",
+    "name": "A New Source of Stalhrim",
+    "plugin": "Dragonborn.esm",
+    "line": "Skaal Village"
+   },
+   {
+    "edid": "DLC2SkaalVillageFreeform1",
+    "name": "Skaal Village Dialogue",
+    "plugin": "Dragonborn.esm",
+    "line": "Skaal Village"
+   }
+  ]
+ },
+ {
+  "batch": "045",
+  "quests": [
+   {
+    "edid": "DLC2WE06",
+    "name": "Black Book",
+    "plugin": "Dragonborn.esm",
+    "line": "The Black Books"
+   },
+   {
+    "edid": "DLC2BlackBook03Quest",
+    "name": "Black Book: Untold Legends",
+    "plugin": "Dragonborn.esm",
+    "line": "The Black Books"
+   },
+   {
+    "edid": "DLC2BlackBook04Quest",
+    "name": "Black Book: The Winds of Change",
+    "plugin": "Dragonborn.esm",
+    "line": "The Black Books"
+   },
+   {
+    "edid": "DLC2BlackBook05Quest",
+    "name": "Black Book: The Sallow Regent",
+    "plugin": "Dragonborn.esm",
+    "line": "The Black Books"
+   },
+   {
+    "edid": "DLC2BlackBook06Quest",
+    "name": "Black Book: Filament and Filigree",
+    "plugin": "Dragonborn.esm",
+    "line": "The Black Books"
+   },
+   {
+    "edid": "DLC2BlackBook07Quest",
+    "name": "Black Book: The Hidden Twilight",
+    "plugin": "Dragonborn.esm",
+    "line": "The Black Books"
+   },
+   {
+    "edid": "DLC2EbonyWarriorQuest",
+    "name": "The Ebony Warrior",
+    "plugin": "Dragonborn.esm",
+    "line": "The Ebony Warrior"
+   },
+   {
+    "edid": "DLC2dunHaknirTreasureQST",
+    "name": "Deathbrand",
+    "plugin": "Dragonborn.esm",
+    "line": "Deathbrand"
+   },
+   {
+    "edid": "DLC2dunKolbjornQST",
+    "name": "Unearthed",
+    "plugin": "Dragonborn.esm",
+    "line": "Unearthed"
+   },
+   {
+    "edid": "DLC2dunKolbjornMiscQST",
+    "name": "Kolbjorn Barrow Misc Objectives",
+    "plugin": "Dragonborn.esm",
+    "line": "Unearthed"
+   }
+  ]
+ },
+ {
+  "batch": "046",
+  "quests": [
+   {
+    "edid": "DLC2WB01",
+    "name": "Filial Bonds",
+    "plugin": "Dragonborn.esm",
+    "line": "Filial Bonds"
+   },
+   {
+    "edid": "DLC2KagrumezQST",
+    "name": "The Kagrumez Gauntlet",
+    "plugin": "Dragonborn.esm",
+    "line": "The Kagrumez Gauntlet"
+   },
+   {
+    "edid": "RE01MiasmaQst",
+    "name": "Miasma",
+    "plugin": "Miasma.esp",
+    "line": "Miasma"
+   },
+   {
+    "edid": "EnoAcolyteQuest",
+    "name": "Destroy the Acolyte Priests",
+    "plugin": "Destroy the Acolyte Priests.esp",
+    "line": "Destroy the Acolyte Priests"
+   },
+   {
+    "edid": "MS01",
+    "name": "The Forsworn Conspiracy",
+    "plugin": "Skyrim.esm",
+    "line": "The Forsworn Conspiracy"
+   },
+   {
+    "edid": "MS02",
+    "name": "No One Escapes Cidhna Mine",
+    "plugin": "Skyrim.esm",
+    "line": "The Forsworn Conspiracy"
+   },
+   {
+    "edid": "FreeformCidhnaMineA",
+    "name": "Shiv",
+    "plugin": "Skyrim.esm",
+    "line": "The Forsworn Conspiracy"
+   },
+   {
+    "edid": "MS03",
+    "name": "Promises to Keep",
+    "plugin": "Skyrim.esm",
+    "line": "Promises to Keep"
+   },
+   {
+    "edid": "MS04",
+    "name": "Unfathomable Depths",
+    "plugin": "Skyrim.esm",
+    "line": "Unfathomable Depths"
+   },
+   {
+    "edid": "MS06Start",
+    "name": "The Man Who Cried Wolf",
+    "plugin": "Skyrim.esm",
+    "line": "The Wolf Queen Awakened"
+   }
+  ]
+ },
+ {
+  "batch": "047",
+  "quests": [
+   {
+    "edid": "MS06",
+    "name": "The Wolf Queen Awakened",
+    "plugin": "Skyrim.esm",
+    "line": "The Wolf Queen Awakened"
+   },
+   {
+    "edid": "MS07",
+    "name": "Lights Out!",
+    "plugin": "Skyrim.esm",
+    "line": "Lights Out!"
+   },
+   {
+    "edid": "MS08",
+    "name": "In My Time Of Need",
+    "plugin": "Skyrim.esm",
+    "line": "In My Time Of Need"
+   },
+   {
+    "edid": "MS09",
+    "name": "Missing In Action",
+    "plugin": "Skyrim.esm",
+    "line": "Missing In Action"
+   },
+   {
+    "edid": "MS10",
+    "name": "Rise in the East",
+    "plugin": "Skyrim.esm",
+    "line": "Rise in the East"
+   },
+   {
+    "edid": "MS11",
+    "name": "Blood on the Ice",
+    "plugin": "Skyrim.esm",
+    "line": "Blood on the Ice"
+   },
+   {
+    "edid": "MS11b",
+    "name": "Blood on the Ice",
+    "plugin": "Skyrim.esm",
+    "line": "Blood on the Ice"
+   },
+   {
+    "edid": "MS12",
+    "name": "The White Phial",
+    "plugin": "Skyrim.esm",
+    "line": "The White Phial"
+   },
+   {
+    "edid": "MS12b",
+    "name": "Repairing the Phial",
+    "plugin": "Skyrim.esm",
+    "line": "The White Phial"
+   },
+   {
+    "edid": "MS13",
+    "name": "The Golden Claw",
+    "plugin": "Skyrim.esm",
+    "line": "The Golden Claw"
+   }
+  ]
+ },
+ {
+  "batch": "048",
+  "quests": [
+   {
+    "edid": "MS14",
+    "name": "Laid to Rest",
+    "plugin": "Skyrim.esm",
+    "line": "Laid to Rest"
+   },
+   {
+    "edid": "NN01",
+    "name": "A Return To Your Roots",
+    "plugin": "Skyrim.esm",
+    "line": "A Return To Your Roots"
+   },
+   {
+    "edid": "T01",
+    "name": "The Heart of Dibella",
+    "plugin": "Skyrim.esm",
+    "line": "The Heart of Dibella"
+   },
+   {
+    "edid": "T03",
+    "name": "The Blessings of Nature",
+    "plugin": "Skyrim.esm",
+    "line": "The Blessings of Nature"
+   },
+   {
+    "edid": "t02",
+    "name": "The Book of Love",
+    "plugin": "Skyrim.esm",
+    "line": "The Book of Love"
+   },
+   {
+    "edid": "TTFA_JourneyQuest",
+    "name": "The Book of Love - Fastred's Choice",
+    "plugin": "TT_FastredsAwakening.esp",
+    "line": "The Book of Love"
+   },
+   {
+    "edid": "VC01",
+    "name": "Seeking A Cure",
+    "plugin": "Skyrim.esm",
+    "line": "Seeking A Cure"
+   },
+   {
+    "edid": "OK_FH_Quest",
+    "name": "A Forlorn Hope",
+    "plugin": "Forlorn Hope.esp",
+    "line": "Seeking A Cure"
+   },
+   {
+    "edid": "FreeformMorthalA",
+    "name": "Falion's Secret",
+    "plugin": "Skyrim.esm",
+    "line": "Falion's Secret"
+   },
+   {
+    "edid": "dunDarklightQST",
+    "name": "Repentance",
+    "plugin": "Skyrim.esm",
+    "line": "Repentance"
+   }
+  ]
+ },
+ {
+  "batch": "049",
+  "quests": [
+   {
+    "edid": "dunForelhostQST",
+    "name": "Siege on the Dragon Cult",
+    "plugin": "Skyrim.esm",
+    "line": "Siege on the Dragon Cult"
+   },
+   {
+    "edid": "dunFrostmereCryptQST",
+    "name": "The Pale Lady",
+    "plugin": "Skyrim.esm",
+    "line": "The Pale Lady"
+   },
+   {
+    "edid": "dunGauldursonQST",
+    "name": "Forbidden Legend",
+    "plugin": "Skyrim.esm",
+    "line": "Forbidden Legend"
+   },
+   {
+    "edid": "dunHighGateRuinsQST",
+    "name": "A Scroll For Anska",
+    "plugin": "Skyrim.esm",
+    "line": "A Scroll For Anska"
+   },
+   {
+    "edid": "dunHillgrundsTombQST",
+    "name": "Ancestral Worship",
+    "plugin": "Skyrim.esm",
+    "line": "Ancestral Worship"
+   },
+   {
+    "edid": "dunHunterQST",
+    "name": "Kyne's Sacred Trials",
+    "plugin": "Skyrim.esm",
+    "line": "Kyne's Sacred Trials"
+   },
+   {
+    "edid": "dunNchuandZelQst",
+    "name": "The Lost Expedition",
+    "plugin": "Skyrim.esm",
+    "line": "The Lost Expedition"
+   },
+   {
+    "edid": "dunTrevasWatchQST",
+    "name": "Infiltration",
+    "plugin": "Skyrim.esm",
+    "line": "Infiltration"
+   },
+   {
+    "edid": "dunValthumeQST",
+    "name": "Evil in Waiting",
+    "plugin": "Skyrim.esm",
+    "line": "Evil in Waiting"
+   },
+   {
+    "edid": "dunVolunruudQST",
+    "name": "Silenced Tongues",
+    "plugin": "Skyrim.esm",
+    "line": "Silenced Tongues"
+   }
+  ]
+ },
+ {
+  "batch": "050",
+  "quests": [
+   {
+    "edid": "dunYngolBarrowQST",
+    "name": "Yngol's Barrow",
+    "plugin": "Skyrim.esm",
+    "line": "Yngol's Barrow"
+   },
+   {
+    "edid": "dunBlindCliffQST",
+    "name": "The Affairs of Hagravens",
+    "plugin": "Skyrim.esm",
+    "line": "The Affairs of Hagravens"
+   },
+   {
+    "edid": "dunNilheimQST",
+    "name": "Telrav's Request",
+    "plugin": "Skyrim.esm",
+    "line": "Telrav's Request"
+   },
+   {
+    "edid": "FreeformMarkarthM",
+    "name": "Search and Seizure",
+    "plugin": "Skyrim.esm",
+    "line": "Search and Seizure"
+   },
+   {
+    "edid": "FreeformRiften21",
+    "name": "Toying With The Dead",
+    "plugin": "Skyrim.esm",
+    "line": "Toying With The Dead"
+   },
+   {
+    "edid": "DarkwaterCrossingDerkeethusRescueQuest",
+    "name": "Extracting an Argonian",
+    "plugin": "Skyrim.esm",
+    "line": "Extracting an Argonian"
+   },
+   {
+    "edid": "FreeformFalkreathQuest03",
+    "name": "Dark Ancestor",
+    "plugin": "Skyrim.esm",
+    "line": "Dark Ancestor"
+   },
+   {
+    "edid": "FreeformFalkreathQuest03B",
+    "name": "Dark Ancestor",
+    "plugin": "Skyrim.esm",
+    "line": "Dark Ancestor"
+   },
+   {
+    "edid": "FreeformWinterholdC",
+    "name": "Drowned Sorrows",
+    "plugin": "Skyrim.esm",
+    "line": "Drowned Sorrows"
+   },
+   {
+    "edid": "FavorOrcsIntro",
+    "name": "The Forgemaster's Fingers",
+    "plugin": "Skyrim.esm",
+    "line": "The Forgemaster's Fingers"
+   }
+  ]
+ },
+ {
+  "batch": "051",
+  "quests": [
+   {
+    "edid": "DLC1LD",
+    "name": "Lost to the Ages",
+    "plugin": "Dawnguard.esm",
+    "line": "Lost to the Ages"
+   },
+   {
+    "edid": "madFultheimQuest",
+    "name": "A Forgotten Blade",
+    "plugin": "Redeeming Fultheim - Blades Quest Addon.esp",
+    "line": "A Forgotten Blade"
+   },
+   {
+    "edid": "DCQuest",
+    "name": "Destroy the Dragon Cult",
+    "plugin": "Defeat the Dragon Cult.esp",
+    "line": "Destroy the Dragon Cult"
+   },
+   {
+    "edid": "NecroBlackBookQuest01",
+    "name": "Black Book: Whispers of the Veil",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   },
+   {
+    "edid": "NecroLichRitualQuest",
+    "name": "The Path of Transcendence",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   },
+   {
+    "edid": "NecroQuest01",
+    "name": "In their Footsteps",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   },
+   {
+    "edid": "NecroQuest02",
+    "name": "Exhuming Power",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   },
+   {
+    "edid": "NecroQuest03",
+    "name": "Arkay the Enemy",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   },
+   {
+    "edid": "NecroQuest04",
+    "name": "Infernal Alchemy",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   },
+   {
+    "edid": "NecroQuest05",
+    "name": "Scourg Barrow",
+    "plugin": "Undeath.esp",
+    "line": "Undeath"
+   }
+  ]
+ },
+ {
+  "batch": "052",
+  "quests": [
+   {
+    "edid": "aaaGraniteHillDungeonQuest",
+    "name": "A Plea From Granite Hill",
+    "plugin": "aaaGraniteHill.esp",
+    "line": "Granite Hill"
+   },
+   {
+    "edid": "aaaLOAQuest",
+    "name": "Legends Of Aetherium",
+    "plugin": "LegendsOfAetherium.esp",
+    "line": "Legends of Aetherium"
+   },
+   {
+    "edid": "TOK_QUST_DialogueVonos",
+    "name": "Lost Heritage",
+    "plugin": "Tools of Kagrenac.esp",
+    "line": "The Tools of Kagrenac"
+   },
+   {
+    "edid": "TOK_QUST_DialogueYassour",
+    "name": "My Precious",
+    "plugin": "Tools of Kagrenac.esp",
+    "line": "The Tools of Kagrenac"
+   },
+   {
+    "edid": "TOK_QUST_KagrenacTools",
+    "name": "Kagrenac's Tools",
+    "plugin": "Tools of Kagrenac.esp",
+    "line": "The Tools of Kagrenac"
+   },
+   {
+    "edid": "TOK_QUST_LabyrinthPuzzle",
+    "name": "Darkest Depths",
+    "plugin": "Tools of Kagrenac.esp",
+    "line": "The Tools of Kagrenac"
+   },
+   {
+    "edid": "TOK_QUST_SunderVault",
+    "name": "Vivec's Trial of Wisdom",
+    "plugin": "Tools of Kagrenac.esp",
+    "line": "The Tools of Kagrenac"
+   },
+   {
+    "edid": "EVGSirenrootQuest",
+    "name": "Deluge of Deceit",
+    "plugin": "evgSIRENROOT.esm",
+    "line": "Deluge of Deceit"
+   },
+   {
+    "edid": "aaaHOTRQuest",
+    "name": "Heart Of The Reach",
+    "plugin": "HeartOfTheReach.esp",
+    "line": "Heart of the Reach"
+   },
+   {
+    "edid": "ksws04ArtifactQuest",
+    "name": "The item",
+    "plugin": "ksws04_quest.esp",
+    "line": "The Welkynar Knight"
+   }
+  ]
+ },
+ {
+  "batch": "053",
+  "quests": [
+   {
+    "edid": "ksws04DrinkQuest",
+    "name": "Drinking with Nirenoore",
+    "plugin": "ksws04_quest.esp",
+    "line": "The Welkynar Knight"
+   },
+   {
+    "edid": "ksws04LibraryQuest",
+    "name": "A Welkynar Legend",
+    "plugin": "ksws04_quest.esp",
+    "line": "The Welkynar Knight"
+   },
+   {
+    "edid": "ksws04MainQuest",
+    "name": "The Welkynar Knight",
+    "plugin": "ksws04_quest.esp",
+    "line": "The Welkynar Knight"
+   },
+   {
+    "edid": "ccMTYSSE001_DES_RelicsoftheCrusader",
+    "name": "Relics of the Crusader",
+    "plugin": "ccmtysse001-knightsofthenine.esl",
+    "line": "Relics of the Crusader"
+   },
+   {
+    "edid": "belethorSisterQuest01",
+    "name": "Belethor's Sister",
+    "plugin": "Belethor's Sister.esp",
+    "line": "Belethor's Sister"
+   },
+   {
+    "edid": "belethorSisterQuest02",
+    "name": "Hostile Takeover",
+    "plugin": "Belethor's Sister.esp",
+    "line": "Belethor's Sister"
+   },
+   {
+    "edid": "belethorSisterQuestBandit",
+    "name": "The item",
+    "plugin": "Belethor's Sister.esp",
+    "line": "Belethor's Sister"
+   },
+   {
+    "edid": "belethorSisterQuestDelivery",
+    "name": "Delivery for the npc",
+    "plugin": "Belethor's Sister.esp",
+    "line": "Belethor's Sister"
+   },
+   {
+    "edid": "belethorSisterQuestFetch",
+    "name": "The item",
+    "plugin": "Belethor's Sister.esp",
+    "line": "Belethor's Sister"
+   },
+   {
+    "edid": "Rune01",
+    "name": "Rune's Scope",
+    "plugin": "Revealing Rune.esp",
+    "line": "Revealing Rune"
+   }
+  ]
+ },
+ {
+  "batch": "054",
+  "quests": [
+   {
+    "edid": "MDSCAngarionQuest",
+    "name": "Grief",
+    "plugin": "MoreToDoSoulCairn.esp",
+    "line": "More to do in the Soul Cairn"
+   },
+   {
+    "edid": "MDSCChapelofLoveQuest",
+    "name": "Chapel of Love",
+    "plugin": "MoreToDoSoulCairn.esp",
+    "line": "More to do in the Soul Cairn"
+   },
+   {
+    "edid": "MDSCSoulGemQuest",
+    "name": "Black Soul Cairn Gem",
+    "plugin": "MoreToDoSoulCairn.esp",
+    "line": "More to do in the Soul Cairn"
+   },
+   {
+    "edid": "Sat_Adoption",
+    "name": "Windhelm By The Sea",
+    "plugin": "TheGiftofSaturalia.esp",
+    "line": "The Gift of Saturalia"
+   },
+   {
+    "edid": "Sat_Dog",
+    "name": "Lending a Paw",
+    "plugin": "TheGiftofSaturalia.esp",
+    "line": "The Gift of Saturalia"
+   },
+   {
+    "edid": "Sat_Laugh",
+    "name": "The Joy of Dawnstar",
+    "plugin": "TheGiftofSaturalia.esp",
+    "line": "The Gift of Saturalia"
+   },
+   {
+    "edid": "Sat_Music",
+    "name": "A Song in the Dark",
+    "plugin": "TheGiftofSaturalia.esp",
+    "line": "The Gift of Saturalia"
+   },
+   {
+    "edid": "Sat_Orphanage",
+    "name": "Three Wise Men",
+    "plugin": "TheGiftofSaturalia.esp",
+    "line": "The Gift of Saturalia"
+   },
+   {
+    "edid": "Sat_TheGiftofSaturalia",
+    "name": "The Gift of Saturalia",
+    "plugin": "TheGiftofSaturalia.esp",
+    "line": "The Gift of Saturalia"
+   },
+   {
+    "edid": "FOFMorthalBrawlerQuest",
+    "name": "Fists of Fury - Hjaalmarch",
+    "plugin": "Fists of Fury - Skyrim.esp",
+    "line": "Fists of Fury"
+   }
+  ]
+ },
+ {
+  "batch": "055",
+  "quests": [
+   {
+    "edid": "FOFRiftenBrawlerQuest",
+    "name": "Fists of Fury - The Rift",
+    "plugin": "Fists of Fury - Skyrim.esp",
+    "line": "Fists of Fury"
+   },
+   {
+    "edid": "FOFWindhelmBrawlerQuest",
+    "name": "Fists of Fury - Eastmarch",
+    "plugin": "Fists of Fury - Skyrim.esp",
+    "line": "Fists of Fury"
+   },
+   {
+    "edid": "ksws07ArmorQuest",
+    "name": "Another Book for Othriel",
+    "plugin": "ksws07_quest.esm",
+    "line": "The Frozen Heart"
+   },
+   {
+    "edid": "ksws07BookQuest",
+    "name": "A Book for Othriel",
+    "plugin": "ksws07_quest.esm",
+    "line": "The Frozen Heart"
+   },
+   {
+    "edid": "ksws07MainQuest",
+    "name": "The Frozen Heart",
+    "plugin": "ksws07_quest.esm",
+    "line": "The Frozen Heart"
+   },
+   {
+    "edid": "ksws07ShardsQuest",
+    "name": "Seeking Out Shards",
+    "plugin": "ksws07_quest.esm",
+    "line": "The Frozen Heart"
+   },
+   {
+    "edid": "00TallyMeet",
+    "name": "The Thalmor's Shadow",
+    "plugin": "00Taliesin.esp",
+    "line": "The Thalmor's Shadow"
+   },
+   {
+    "edid": "DB05Alt",
+    "name": "A Healing Wedding",
+    "plugin": "Vittorias Alternate Wedding.esp",
+    "line": "A Healing Wedding"
+   },
+   {
+    "edid": "0WHQuestArenaFightRepeating",
+    "name": "Pit Fighter",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestBuyHouse",
+    "name": "Graystone",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   }
+  ]
+ },
+ {
+  "batch": "056",
+  "quests": [
+   {
+    "edid": "0WHQuestDeliveryToBro",
+    "name": "A Simple Delivery",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestFurs",
+    "name": "Kyne's Trial",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestFursRepeating",
+    "name": "Hunting Trip",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestMead",
+    "name": "The Mead Must Flow",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestMeadRepeating",
+    "name": "The Mead Must Flow",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestPoetry",
+    "name": "Collecting the Edda - Windhelm",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestRieklings",
+    "name": "Unusual Imports",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestTalosIntro",
+    "name": "The Talos Mistake",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WHQuestVampires",
+    "name": "Severed Cold",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WindhelmSceneDunmerCouple",
+    "name": "Death Do Us Part",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   }
+  ]
+ },
+ {
+  "batch": "057",
+  "quests": [
+   {
+    "edid": "0WindhelmSceneGuardVampireAftermath",
+    "name": "A Night You Can't Remember",
+    "plugin": "WindhelmSSE.esp",
+    "line": "More to do in Windhelm"
+   },
+   {
+    "edid": "0WRAddTheKeyQ",
+    "name": "Bluesky Hall",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WRDragonKillerScene",
+    "name": "Victory Celebrations",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WREnableSapling",
+    "name": "Grace of Kynareth",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WRFarmlandQuest",
+    "name": "Farmland Saga",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WRGiantQuest",
+    "name": "Ode To The Tundrastriders",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WRHorseQ",
+    "name": "Running Wild",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WRRatQuest",
+    "name": "A Rat Problem",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "0WRThaneQ01",
+    "name": "Skirmish at Whitewatch",
+    "plugin": "SurWR.esp",
+    "line": "More to do in Whiterun"
+   },
+   {
+    "edid": "MarkarthSideGritDarQuest",
+    "name": "The Royal Relic",
+    "plugin": "Arena - Markarth Side.esp",
+    "line": "Markarth Side"
+   }
+  ]
+ },
+ {
+  "batch": "058",
+  "quests": [
+   {
+    "edid": "MarkarthSideMageQuest",
+    "name": "The Lost Family Relic",
+    "plugin": "Arena - Markarth Side.esp",
+    "line": "Markarth Side"
+   },
+   {
+    "edid": "REQ_HOGITHUM",
+    "name": "On Hogithum",
+    "plugin": "Requiem.esp",
+    "line": "On Hogithum"
+   },
+   {
+    "edid": "Trad_001_ProfaneDivinityQuest",
+    "name": "Profane Divinity",
+    "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp",
+    "line": "Profane Divinity"
+   },
+   {
+    "edid": "ccBGSSSE014_SpellPack_StartupQuest",
+    "name": "The Lost Library",
+    "plugin": "ccbgssse014-spellpack01.esl",
+    "line": "The Lost Library"
+   },
+   {
+    "edid": "BGSSSE018_ShadowrendQuest",
+    "name": "Through a Glass, Darkly",
+    "plugin": "ccbgssse018-shadowrend.esl",
+    "line": "Through a Glass, Darkly"
+   },
+   {
+    "edid": "ccBGSSSE038_Quest",
+    "name": "In the Shadows",
+    "plugin": "ccbgssse038-bowofshadows.esl",
+    "line": "In the Shadows"
+   },
+   {
+    "edid": "ccBGSSSE067_Quest",
+    "name": "The Cause",
+    "plugin": "ccbgssse067-daedinv.esm",
+    "line": "The Cause"
+   },
+   {
+    "edid": "ccEEJSSE004_Quest",
+    "name": "Hendraheim",
+    "plugin": "cceejsse004-hall.esl",
+    "line": "Hendraheim"
+   },
+   {
+    "edid": "ccEEJSSE005_Quest",
+    "name": "Guests for Dinner",
+    "plugin": "cceejsse005-cave.esm",
+    "line": "Guests for Dinner"
+   },
+   {
+    "edid": "ccKRTSSE001_zQuest",
+    "name": "A Dying Wish",
+    "plugin": "cckrtsse001_altar.esl",
+    "line": "A Dying Wish"
+   }
+  ]
+ },
+ {
+  "batch": "059",
+  "quests": [
+   {
+    "edid": "ccRMSSSE001_Quest",
+    "name": "Dreams of the Dead",
+    "plugin": "ccrmssse001-necrohouse.esl",
+    "line": "Dreams of the Dead"
+   },
+   {
+    "edid": "ccVSVSSE004_MainQuest",
+    "name": "The Unquiet Dead",
+    "plugin": "ccvsvsse004-beafarmer.esl",
+    "line": "The Unquiet Dead"
+   },
+   {
+    "edid": "ccBGSSSE002_SoulStealerQuest",
+    "name": "Stealer of Souls",
+    "plugin": "ccbgssse002-exoticarrows.esl",
+    "line": "Stealer of Souls"
+   },
+   {
+    "edid": "ccFFBSSE001_Quest",
+    "name": "Battle of the Champions",
+    "plugin": "ccffbsse001-imperialdragon.esl",
+    "line": "Battle of the Champions"
+   },
+   {
+    "edid": "THTE_Quest_WintersandDeception",
+    "name": "The Wintersand Deception",
+    "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
+    "line": "The Wintersand Deception"
+   },
+   {
+    "edid": "MyrwatchTNE_Quest",
+    "name": "Myrwatch",
+    "plugin": "Myrwatch - Tweaks and Enhancements.esp",
+    "line": "Myrwatch"
+   },
+   {
+    "edid": "ReturnAegisbaneQuest",
+    "name": "Return Aegisbane",
+    "plugin": "ReturnAegisbane.esp",
+    "line": "Return Aegisbane"
+   },
+   {
+    "edid": "ParaIntro",
+    "name": "Paragliding in Skyrim",
+    "plugin": "Paragliding.esp",
+    "line": "Paragliding in Skyrim"
+   },
+   {
+    "edid": "Leap_MiscQuest",
+    "name": "Leaps Of Faith",
+    "plugin": "LeapsOfFaith.esp",
+    "line": "Leaps Of Faith"
+   },
+   {
+    "edid": "InigoBadVibrations",
+    "name": "Bad Vibrations",
+    "plugin": "Inigo.esp",
+    "line": "Inigo"
+   }
+  ]
+ },
+ {
+  "batch": "060",
+  "quests": [
+   {
+    "edid": "HD1ArmorUpgrades",
+    "name": "A New Coat",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreComeTheCrows",
+    "name": "Come, the Crows",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreDH",
+    "name": "The Drunken Hunted",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreEscort",
+    "name": "Wanted",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreFearAndLoathing",
+    "name": "Fear and Loathing",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreHorse1",
+    "name": "Count Fleet",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreInterlude",
+    "name": "Where We Stand",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreJailtime",
+    "name": "To Free a Raven",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreMeet",
+    "name": "Raven's Flight",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1GoreMurderer",
+    "name": "The Apple from the Tree",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   }
+  ]
+ },
+ {
+  "batch": "061",
+  "quests": [
+   {
+    "edid": "HD1GoreQuest2",
+    "name": "Blood Ties",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HD1Interlude2",
+    "name": "Nest Left Empty",
+    "plugin": "GORE.esp",
+    "line": "Gore"
+   },
+   {
+    "edid": "HLIOADQuest",
+    "name": "Attuned Assassination",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIOArkngchalManager",
+    "name": "Exploring Arkngchal",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIOChaurusPieQuest",
+    "name": "Real Nord Food",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIOMQ1",
+    "name": "Reunion of the Fallen",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIORPCrossbow",
+    "name": "Remi's Crossbow Crucible",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIORPLantern",
+    "name": "We Who Challenge the Sun",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIORPLock",
+    "name": "Picking Remi's Brain",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "HLIOScrapUpgrades",
+    "name": "Upgrades",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   }
+  ]
+ },
+ {
+  "batch": "062",
+  "quests": [
+   {
+    "edid": "HLIOStartingQuest",
+    "name": "The Dwemer Specialist",
+    "plugin": "HLIORemi.esp",
+    "line": "Remiel"
+   },
+   {
+    "edid": "JRLucienGetHorseQuest",
+    "name": "Intruders",
+    "plugin": "Lucien.esp",
+    "line": "Lucien"
+   },
+   {
+    "edid": "JRLucienPersonal1",
+    "name": "The Oblivion Engine",
+    "plugin": "Lucien.esp",
+    "line": "Lucien"
+   },
+   {
+    "edid": "SDE_TheElderScrolls",
+    "name": "From Arena to Oblivion",
+    "plugin": "SeranaDialogueExpansion.esp",
+    "line": "Serana"
+   },
+   {
+    "edid": "SDE_R001",
+    "name": "The Bleeding Flower",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "line": "Serana"
+   },
+   {
+    "edid": "SDE_R002",
+    "name": "Solitude in Company",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "line": "Serana"
+   },
+   {
+    "edid": "SDE_R004",
+    "name": "Mirrors of Youth",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "line": "Serana"
+   },
+   {
+    "edid": "SDE_R005",
+    "name": "Ambivalence",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "line": "Serana"
+   },
+   {
+    "edid": "SDE_RMQ201",
+    "name": "At the Tempo of our Heartbeats",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "line": "Serana"
+   },
+   {
+    "edid": "DLC1SeranaCureSelfQuest",
+    "name": "Serana's cure vampirism",
+    "plugin": "Dawnguard.esm",
+    "line": "Serana"
+   }
+  ]
+ },
+ {
+  "batch": "063",
+  "quests": [
+   {
+    "edid": "018AuriFriendQuest",
+    "name": "Song of the Green",
+    "plugin": "018Auri.esp",
+    "line": "Auri"
+   },
+   {
+    "edid": "AK69CarrotQuest",
+    "name": "The Sweetest Carrot",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69EasterEggsQuest",
+    "name": "Honey Nuts and the Chin of Fate",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69KatanaPersonalQuest",
+    "name": "Chasing the Current",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69MegaraBanditQuest",
+    "name": "Megara's Radiant Quests",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69SerenataQuest",
+    "name": "Serenata",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69SugarandSpiceQuest",
+    "name": "Sugar and Spice",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69TheKhatsEyeQuest",
+    "name": "The Khat's Eye",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "AK69TheRavensLamentQuest",
+    "name": "The Ravens' Lament",
+    "plugin": "Katana.esp",
+    "line": "Katana and Megara"
+   },
+   {
+    "edid": "aaFuraQ1",
+    "name": "Blood Ties",
+    "plugin": "FDE Fura.esp",
+    "line": "Fura Bloodmouth"
+   }
+  ]
+ },
+ {
+  "batch": "064",
+  "quests": [
+   {
+    "edid": "aaFuraQ2",
+    "name": "Bloodmouth",
+    "plugin": "FDE Fura.esp",
+    "line": "Fura Bloodmouth"
+   },
+   {
+    "edid": "aaFaraldaQ1",
+    "name": "With Love, Eilonwy, Part 1",
+    "plugin": "FDE Faralda.esp",
+    "line": "Faralda"
+   },
+   {
+    "edid": "aaFaraldaQ2",
+    "name": "With Love, Eilonwy, Part 2",
+    "plugin": "FDE Faralda.esp",
+    "line": "Faralda"
+   },
+   {
+    "edid": "aaJenassaAmor5RomanceQuest",
+    "name": "Shadows of the Past",
+    "plugin": "FDE Jenassa.esp",
+    "line": "Jenassa"
+   },
+   {
+    "edid": "aaMjollAerinQ",
+    "name": "Aerin the Man",
+    "plugin": "FDE Mjoll.esp",
+    "line": "Mjoll the Lioness"
+   },
+   {
+    "edid": "aaErikCompanionJoin",
+    "name": "Erik the Shield Brother",
+    "plugin": "FDE Erik.esp",
+    "line": "Erik the Slayer"
+   },
+   {
+    "edid": "BQ01Eastmarch",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Falkreath",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Haafingar",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Hjaalmarch",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "065",
+  "quests": [
+   {
+    "edid": "BQ01Pale",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Reach",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Rift",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Whiterun",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01Winterhold",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Eastmarch",
+    "name": "Bounty: Warlock",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Falkreath",
+    "name": "Bounty: Warlock",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Haafingar",
+    "name": "Bounty: Beast",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Hjaalmarch",
+    "name": "Bounty: Draugr",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Pale",
+    "name": "Bounty: Draugr",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "066",
+  "quests": [
+   {
+    "edid": "BQ02Reach",
+    "name": "Bounty: Forsworn",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Rift",
+    "name": "Bounty: Beast",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Whiterun",
+    "name": "Bounty: Beast",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02Winterhold",
+    "name": "Bounty: Draugr",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Eastmarch",
+    "name": "Bounty: Giant",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Falkreath",
+    "name": "Bounty: Spriggan",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Haafingar",
+    "name": "Bounty: Vampire",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Hjaalmarch",
+    "name": "Bounty: Beast",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Pale",
+    "name": "Bounty: Giant",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Reach",
+    "name": "Bounty: Hagraven",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "067",
+  "quests": [
+   {
+    "edid": "BQ03Rift",
+    "name": "Bounty: Draugr",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Whiterun",
+    "name": "Bounty: Giant",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ03Winterhold",
+    "name": "Bounty: Falmer",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Eastmarch",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Falkreath",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Haafingar",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Hjaalmarch",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Pale",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Reach",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Rift",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "068",
+  "quests": [
+   {
+    "edid": "BQ04Whiterun",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04Winterhold",
+    "name": "Bounty: Dragon",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor013Kynesgrove",
+    "name": "A Few Words with You",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor013Markarth",
+    "name": "A Few Words with You",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor013Solitude",
+    "name": "A Few Words with You",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor013Whiterun",
+    "name": "A Few Words with You",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor013Windhelm",
+    "name": "A Few Words with You",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor013Winterhold",
+    "name": "A Few Words with You",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor018Falkreath",
+    "name": "Some Light Theft",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor018Windhelm",
+    "name": "Some Light Theft",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "069",
+  "quests": [
+   {
+    "edid": "Favor018Winterhold",
+    "name": "Some Light Theft",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor104DarkwaterCrossing",
+    "name": "Kill the Bandit Leader",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor104SkaalVillage",
+    "name": "Kill the Bandit Leader",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor104Solitude",
+    "name": "Kill the Bandit Leader",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor104Windhelm",
+    "name": "Kill the Bandit Leader",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor110Dawnstar",
+    "name": "Rare Gifts",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor110Falkreath",
+    "name": "Rare Gifts",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor110Morthal",
+    "name": "Rare Gifts",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor110Solitude",
+    "name": "Rare Gifts",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor110Whiterun",
+    "name": "Rare Gifts",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "070",
+  "quests": [
+   {
+    "edid": "Favor110Windhelm",
+    "name": "Rare Gifts",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor204Whiterun",
+    "name": "Dungeon Delving (Bandits)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor204Windhelm",
+    "name": "Dungeon Delving (Bandits)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor205Dawnstar",
+    "name": "Dungeon Delving (Caves)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor205Falkreath",
+    "name": "Dungeon Delving (Caves)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor205Kynesgrove",
+    "name": "Dungeon Delving (Caves)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor205Solitude",
+    "name": "Dungeon Delving (Caves)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor205Windhelm",
+    "name": "Dungeon Delving (Caves)",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ01",
+    "name": "Bounty: Bandit Boss",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ02",
+    "name": "Bounty: Forsworn",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   }
+  ]
+ },
+ {
+  "batch": "071",
+  "quests": [
+   {
+    "edid": "BQ03",
+    "name": "Bounty: Giant",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "BQ04",
+    "name": "Bounty: Dragon",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor104",
+    "name": "Kill the Bandit Leader",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor109",
+    "name": "Kill the Vampire",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor151",
+    "name": "Kill the Forsworn Leader (Jarl)",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor153",
+    "name": "Kill the Giant (Jarl)",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor154",
+    "name": "Kill the Bandit Leader (Jarl)",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor157",
+    "name": "Dungeon Delving (Jarl - Hagravens)",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor158",
+    "name": "Dungeon Delving (Jarl - Caves)",
+    "plugin": "Skyrim.esm",
+    "line": "Bounties and favours for the jarls"
+   },
+   {
+    "edid": "Favor001AngasMill",
+    "name": "Delivery",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Favours for townsfolk"
+   }
+  ]
+ },
+ {
+  "batch": "072",
+  "quests": [
+   {
+    "edid": "Favor001DarkwaterCrossing",
+    "name": "Delivery",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor001Falkreath",
+    "name": "Delivery",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor001Markarth",
+    "name": "Delivery",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor001Morthal",
+    "name": "Delivery",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor001Windhelm",
+    "name": "Delivery",
+    "plugin": "Favor Quests Seperated.esp",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor001",
+    "name": "Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor013",
+    "name": "A Few Words with You",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor018",
+    "name": "Some Light Theft",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor019",
+    "name": "That Was Always There",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor110",
+    "name": "Rare Gifts",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   }
+  ]
+ },
+ {
+  "batch": "073",
+  "quests": [
+   {
+    "edid": "Favor204",
+    "name": "Dungeon Delving (Bandits)",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "Favor205",
+    "name": "Dungeon Delving (Caves)",
+    "plugin": "Skyrim.esm",
+    "line": "Favours for townsfolk"
+   },
+   {
+    "edid": "FavorJarlsMakeFriends",
+    "name": "Making Friends and Influencing People",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor250",
+    "name": "Thane of the Reach",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor252",
+    "name": "Thane of Haafingar",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor253",
+    "name": "Thane of Whiterun",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor254",
+    "name": "Thane of Eastmarch",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor255",
+    "name": "Thane of Hjaalmarch",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor256",
+    "name": "Thane of the Pale",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "Favor257",
+    "name": "Thane of Winterhold",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   }
+  ]
+ },
+ {
+  "batch": "074",
+  "quests": [
+   {
+    "edid": "Favor258",
+    "name": "Thane of Falkreath",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "FreeformRiftenThane",
+    "name": "I Done Got Thaned!",
+    "plugin": "Skyrim.esm",
+    "line": "Thane of every hold"
+   },
+   {
+    "edid": "ccBGSSSE001_Crab_MQ1",
+    "name": "In A Pinch",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Crab_MQ2",
+    "name": "Crustacean Extermination",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Crab_MQ3",
+    "name": "End of the Line",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Crab_MQ4",
+    "name": "Wave Breaker",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Fish_MQ1",
+    "name": "Catch of the Day",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Fish_MQ2",
+    "name": "Caught in the Rain",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Fish_MQ3",
+    "name": "Frozen Fish",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Fish_MQ4",
+    "name": "Darkest Depths",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   }
+  ]
+ },
+ {
+  "batch": "075",
+  "quests": [
+   {
+    "edid": "ccBGSSSE001_Fish_MQ5",
+    "name": "Fishing Legend",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Dwarven",
+    "name": "Beneath Bronze Waters",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Falkreath",
+    "name": "Clear-Headed",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Khajiit",
+    "name": "Spirits Away",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Markarth",
+    "name": "Private Lessons",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Morthal",
+    "name": "No Contest",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Solitude",
+    "name": "The Ultimate Feast",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_WhiterunPartOne",
+    "name": "Heart of Gold",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_WhiterunPartTwo",
+    "name": "Two of a Kind",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Misc_Windhelm",
+    "name": "Tusked Terror",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   }
+  ]
+ },
+ {
+  "batch": "076",
+  "quests": [
+   {
+    "edid": "ccBGSSSE001_Radiant_1",
+    "name": "Stocking Up",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Radiant_2",
+    "name": "Further Study",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Radiant_3",
+    "name": "Rubbish Retrieval",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Start_MQ1",
+    "name": "First Catch",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "ccBGSSSE001_Start_MQ2",
+    "name": "Angler Acquaintances",
+    "plugin": "ccBGSSSE001-Fish.esm",
+    "line": "Fishing"
+   },
+   {
+    "edid": "HMADQ01",
+    "name": "Hunter Marks Animal Den",
+    "plugin": "Hunters Mark Animal Den on Map.esp",
+    "line": "Hunter's Mark"
+   },
+   {
+    "edid": "HMADQ02",
+    "name": "Hunter Marks Animal Den 02",
+    "plugin": "Hunters Mark Animal Den on Map.esp",
+    "line": "Hunter's Mark"
+   },
+   {
+    "edid": "ACFDragonbridgeForsworn",
+    "name": "Forsworn of Haafingar",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFFalkreathBandits",
+    "name": "Chaos in Falkreath",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFKarthwastenForsworn",
+    "name": "Forsworn of the Reach",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   }
+  ]
+ },
+ {
+  "batch": "077",
+  "quests": [
+   {
+    "edid": "ACFMTSAngisCampDialogue",
+    "name": "More to Say Find Angi",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFMTSFreeformFalkreath001",
+    "name": "Ingredient Collection",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFMTSFreeformFalkreath002",
+    "name": "Shriekwind Bastion",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFMTSFreeformWinterhold01",
+    "name": "Birna's Shipment",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFRiverwoodEmbershardBandits",
+    "name": "Embershard Bandits",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFRiverwoodTheHeartWillGoOn",
+    "name": "The Heart Will Go On",
+    "plugin": "moretosayriverwood.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFRoriksteadFreeform03",
+    "name": "The Secret of Rorikstead",
+    "plugin": "secretofrorikstead.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFWhiterunBandits",
+    "name": "Bandits of Whiterun Hold",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFWhiterunGiants",
+    "name": "Giants of Whiterun Hold",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "ACFWhiterunVampires",
+    "name": "Vampires of Whiterun Hold",
+    "plugin": "moretodo.esp",
+    "line": "More to Say"
+   }
+  ]
+ },
+ {
+  "batch": "078",
+  "quests": [
+   {
+    "edid": "ACFRoriksteadFreeform02",
+    "name": "Sissel's Book",
+    "plugin": "sisselbookquest.esp",
+    "line": "More to Say"
+   },
+   {
+    "edid": "FreeformRiften01",
+    "name": "Supply and Demand",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften02",
+    "name": "The Lover's Requital",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften03",
+    "name": "Under the Table",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften04",
+    "name": "Few and Far Between",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften05",
+    "name": "Spread the Love",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften06",
+    "name": "Sealing the Deal",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften07",
+    "name": "Ice Cold",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften08",
+    "name": "Distant Memories",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften09",
+    "name": "Grimsever's Return",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   }
+  ]
+ },
+ {
+  "batch": "079",
+  "quests": [
+   {
+    "edid": "FreeformRiften10",
+    "name": "Stoking the Flames",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften11",
+    "name": "Caught Red Handed",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften12",
+    "name": "Helping Hand",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften13",
+    "name": "Pilgrimage",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften14",
+    "name": "Hunt and Gather",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften15",
+    "name": "Special Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften16",
+    "name": "Bring It!",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften17",
+    "name": "Truth Ore Consequences",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften18",
+    "name": "Ringmaker",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften19",
+    "name": "Bloody Nose",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   }
+  ]
+ },
+ {
+  "batch": "080",
+  "quests": [
+   {
+    "edid": "FreeformRiften20",
+    "name": "The Raid",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften22",
+    "name": "Stabilized",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformValdDebt",
+    "name": "Vald's Debt",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformIvarstead01",
+    "name": "Lifting the Shroud",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformIvarstead02",
+    "name": "The Straw that Broke",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformIvarstead03",
+    "name": "Grin and Bear It",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformIvarstead04",
+    "name": "Climb the Steps",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformShorsStone01",
+    "name": "Mine or Yours",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformShorsStone02",
+    "name": "Special Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformMerryfairFarm",
+    "name": "Bow to the Master",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   }
+  ]
+ },
+ {
+  "batch": "081",
+  "quests": [
+   {
+    "edid": "FreeformHeartwoodMill",
+    "name": "Flight or Fight",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformSarethiFarm",
+    "name": "Smooth Jazbay",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformRiften11b",
+    "name": "A Strong Nord Woman",
+    "plugin": "Caught Red Handed - Quest Expansion.esp",
+    "line": "Odd jobs in the Rift"
+   },
+   {
+    "edid": "FreeformMarkarthD",
+    "name": "Delivery to Calcelmo",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformMarkarthE",
+    "name": "Lisbet's Missing Shipment",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformMarkarthJ",
+    "name": "Bothela's Discreet Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformMarkarthL",
+    "name": "Skilled Apprenticeship",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformMarkarthN",
+    "name": "Coated in Blood",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformMarkarthO",
+    "name": "Nimhe, the Poisoned One",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformKarthwastenA",
+    "name": "Sanuarach Mine",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   }
+  ]
+ },
+ {
+  "batch": "082",
+  "quests": [
+   {
+    "edid": "FreeformKolskeggrA",
+    "name": "Kolskeggr Mine",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformSoljundsSinkholeA",
+    "name": "Soljund's Sinkhole",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformOldHroldanB",
+    "name": "The Ghost of Old Hroldan",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "FreeformDushnikhYalA",
+    "name": "Gharol's Message",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the Reach"
+   },
+   {
+    "edid": "SolitudeFreeform01",
+    "name": "No News is Good News",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Haafingar"
+   },
+   {
+    "edid": "SolitudeFreeform02",
+    "name": "Fit for a Jarl",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Haafingar"
+   },
+   {
+    "edid": "SolitudeFreeform03",
+    "name": "Return to Grace",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Haafingar"
+   },
+   {
+    "edid": "SolitudeFreeform04",
+    "name": "Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Haafingar"
+   },
+   {
+    "edid": "SolitudeFreeform06",
+    "name": "The Spiced Wine",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Haafingar"
+   },
+   {
+    "edid": "SolitudeFreeform07",
+    "name": "Elisif's Tribute",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Haafingar"
+   }
+  ]
+ },
+ {
+  "batch": "083",
+  "quests": [
+   {
+    "edid": "FreeformWindhelmA",
+    "name": "Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Eastmarch"
+   },
+   {
+    "edid": "FreeformShipsWindhelm",
+    "name": "Harsh Master",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Eastmarch"
+   },
+   {
+    "edid": "FreeformKynesgroveA",
+    "name": "Dravynea's Frost Salts",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Eastmarch"
+   },
+   {
+    "edid": "FreeformRiverwood01",
+    "name": "A Lovely Letter",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Whiterun Hold"
+   },
+   {
+    "edid": "FreeformSalviusFarmA",
+    "name": "Rogatus's Letter",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in Whiterun Hold"
+   },
+   {
+    "edid": "FreeformWinterholdA",
+    "name": "A Bad Trade",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the north"
+   },
+   {
+    "edid": "FreeformShipsDawnstar",
+    "name": "Salty Sea-Dogs",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the north"
+   },
+   {
+    "edid": "FreeformMorthalB",
+    "name": "For the Good of Morthal",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the north"
+   },
+   {
+    "edid": "FreeformStonehillsA",
+    "name": "Payment Delivery",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the north"
+   },
+   {
+    "edid": "FreeformFalkreathQuest01",
+    "name": "Lod's Lot",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the north"
+   }
+  ]
+ },
+ {
+  "batch": "084",
+  "quests": [
+   {
+    "edid": "FreeformCaravansA",
+    "name": "Amulet of the Moon",
+    "plugin": "Skyrim.esm",
+    "line": "Odd jobs in the north"
+   },
+   {
+    "edid": "RelationshipMarriage",
+    "name": "The Bonds of Matrimony",
+    "plugin": "Skyrim.esm",
+    "line": "The Bonds of Matrimony"
+   }
+  ]
+ }
+]

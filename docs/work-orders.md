@@ -5022,8 +5022,60 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
-## WO-152  Where people actually are: by day, by night, not where the editor placed them (PC, then Mac, 23 Oct 2026; before the rest of WO-144 Part 2)
+## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: queued
+
+**Why.** WO-152's measure (793cb11) showed the problem and the limit of rules in one go: 196 of 337 quest givers seem to be somewhere other than where they're placed, but reading packages by rule put Balgruuf in the Blue Palace. The people reads (WO-155) will be done by agents reading each person's records with judgment, as the quests now are (WO-153). They need the records; the records are on the PC. So this order is a dump, not an interpretation.
+
+- [ ] `gamedata/5.0.4.8/people_schedules_raw.json`: for every named person in `people_raw.json` (and every quest giver), every AI package in the order the game evaluates them, **after load order** (the winning record, with which plugin it came from): its type, its schedule (hours, days), its location target resolved to a name (the reference's own name, its cell, the cell's location and hold), its conditions as written in the record, and whether it's a shared package used by many people (with the count).
+- [ ] In the same file, per person: faction ranks, class, vendor (what they buy and sell, from the faction's vendor list), trainer (skill and max level), follower and marriage flags, essential / protected, their default outfit's name, and the quests whose aliases name them, with the alias name.
+- [ ] Nothing in it is interpreted: no "where they are by day". If a field can't be dumped, say so in an `about` block, don't guess.
+- [ ] Spot-check three by hand in the log: Jaree-Ra, Nazeem, Balgruuf. The dump has the packages that put them where Dave and UESP say (Solitude by the Winking Skeever; the Whiterun market and the Cloud District; Dragonsreach), whichever order they come in.
+
+## WO-155  People reads: who they are, where they are by day and by night, what they offer (Bob runs it, 23 Oct 2026; after WO-156)
+Status: queued, after WO-156
+
+The same method as WO-153, for people, against `docs/data/people.md`.
+- [ ] A test first: 20 people drawn at random (seeded) from the quest givers, trainers, merchants and followers. An agent reads each from `people_raw.json` and `people_schedules_raw.json`; the key is UESP, built by an agent that sees neither; a judge scores both blind. Dave checks a few in game. The full run goes ahead only if the reads beat the placement cell clearly.
+- [ ] Then every person a plan uses (quest givers, trainers, merchants, followers, spouses), in batches of 10, each checked by a second agent, into `gamedata/5.0.4.8/people_reads/`.
+- [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
+
+## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
+Status: queued
+
+**Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
+
+- [ ] `build.py` reads `quest_reads/checked/*.json` and uses each quest's read for every field it has (`canDo`, `needs`, `starts`, `firstStep`, `takesYou`, `choices`, `steps`, `rewards`, `opens`, `closes`, `people`, `unsure`). The old rule-made fields stay only as a fallback for a quest with no read yet, marked `source: "rules"` so the page and the door can say so. Nothing from a read is reworded.
+- [ ] Each `takesYou` place joined to the places index for its danger, in the places words ("bandits from level 6, the chief 18 to 24"). A place the index doesn't know is shown without danger, never a made-up one.
+- [ ] XP from the read's `type` through LoreRim's Experience.ini, as now.
+- [ ] The quest page, the quest line page and the jobs pages exactly as `quest-pages.md` lays them out, in that order. No stage numbers, record ids or per-line "game files" tags anywhere. No line of one quest: a lone quest sits in its category. Jobs grouped by where you pick them up.
+- [ ] `get_quest` returns the page's sections 2 to 10 in order; `suggest_quests` returns `canDo`, `needs`, `starts` and `rewards` for every result, so no result has `start: null`.
+- [ ] The player questions (`docs/player-questions.md`) still pass; questions 1, 3, 9 and 31 to 37 are re-read against the new data and any that change get Bob's word before their answer changes.
+- [ ] Screenshots for Dave: Lights Out!, Speaking With Silence, Reparations, Mourning Never Comes, The Thieves Guild line, More to do in Whiterun.
+- [ ] Build it against the first checked batches (the schema is fixed in `quest_reads/BRIEF.md`); re-run `build.py` as batches land, no code change needed for more of them.
+
+## WO-153  Quest reads: an agent reads every quest's records, a second checks it (Bob runs it, 23 Oct 2026)
+Status: building (Bob)
+
+**Why.** The bake-off, 23 Oct (20 random quests, UESP as the key, a blind judge): what the planner says today got 48 of 100 fields right and left 23 empty; a fresh agent reading the same quest's records got 72 right and left none empty (wrong: 6 against 4). Three days of rules were the wrong tool: every quest is built a little differently, and a rule can't read. Dave, 23 Oct: do it.
+
+How it runs. Bob runs it from the chat session, since it's agents reading, not app code. The 842 quests on the pages that aren't Missives (Missives stay one rule: they're all built alike), in 85 batches of 10 kept together by line (`quest_reads/batches.json`). A reader per batch follows `quest_reads/BRIEF.md`; a separate checker per batch follows `quest_reads/CHECK.md` and writes the corrected batch to `quest_reads/checked/`. About 20 at a time.
+
+- [ ] All 85 batches read and checked; every checker's fixes logged under this order with the count per field.
+- [ ] Bob reads every field a checker fixed or left unsure, and a random 5 quests per 10 batches in full, against the records, and writes his rulings to `story_checks/bob-rulings.md`.
+- [ ] Agreement with the UESP key (`quest_truth.json`, 475 rows) per field, by script, logged; every disagreement on who or where read by Bob.
+- [ ] Part 2: a line read for each quest line from its quests' checked reads (what it is, how to get in, what it gives, what it closes), into `quest_reads/lines/`.
+- [ ] Dave checks 5 quests drawn at random, in game. His result overrides everything.
+
+### Changes to other orders (Bob, 23 Oct)
+- **WO-152** parked: its measure is done (793cb11) and it told us the size. The audit is replaced by WO-153's bake-off and checks; Part 1 (reading packages by rule) by WO-156 (dump) and WO-155 (read).
+- **WO-140** closed: the reads write every start in words; there are no conditions left to name by rule.
+- **WO-144 Part 2 (people)** replaced by WO-156 and WO-155. Parts 1e-4 (places) and 3 (where books are) go on: they're structured data, not reading.
+
+---
+
+## WO-152  Where people actually are: by day, by night, not where the editor placed them (PC, then Mac, 23 Oct 2026; before the rest of WO-144 Part 2)
+Status: parked (Bob, 23 Oct: replaced by WO-153, WO-155 and WO-156; see WO-153)
 
 **Why.** Dave (23 Oct, 17:33) looked for Jaree-Ra, who starts Lights Out!. The planner says "Ask Jaree-Ra … in Red Wave, Solitude". He searched the Red Wave three times; Jaree-Ra stands in Solitude by the inn, as in the vanilla game, and Dave found him only by console. The quest's facts (who, the line, the stage) are right; the **where** is the cell the editor placed him in (where he sleeps), not where he spends his day. The same goes for every person-started way: 573 ways name a person and a place, all from the placement cell. Most shopkeepers stand where they're placed; anyone who walks the town, works elsewhere or sleeps aboard a ship is wrong. Bob also sent Dave to the docks from memory before checking; that rule is in `pipeline.md` now.
 
@@ -5474,7 +5526,7 @@ Written to `callings.json` with each item's source.
 ---
 
 ## WO-141  What Mogrash's design needed and couldn't get: strongholds, followers, and where the Smithing books are (Mac, after WO-144 Part 2; the PC parts are folded into WO-144, 23 Oct 2026)
-Status: queued, after WO-144 Part 2
+Status: queued, after WO-155 (people reads replace WO-144 Part 2)
 
 **Why.** Dave's character test (23 Oct): an Orc greatsword outcast who starts in the Windhelm jail and wants his place back at Narzulbur, solo until a follower at level 30. The build came out right in every detail Bob checked. Three things the assistant couldn't do, each a gap in the planner's data, not in the assistant:
 1. **Narzulbur isn't a place the planner knows.** `places.json` (WO-128) holds 477 caves, ruins, forts and landmarks and no Orc stronghold or small settlement, so a reason to travel that ends at a stronghold has nothing to route to.
@@ -5503,7 +5555,7 @@ Status: queued, after WO-144 Part 2
 ---
 
 ## WO-140  Name the conditions: the 338 ways that say "a condition the planner can't put in words yet" (PC, 23 Oct 2026)
-Status: queued, after WO-144 (Dave, 23 Oct: the indexes come first)
+Status: closed (Bob, 23 Oct: the quest reads write every start in words; see WO-153)
 
 **Why.** The quest-start work is closed, and one gap is left that a player sees: 338 ways on the pages carry "a condition the planner can't put in words yet". The facts are right; the words are missing. The start check names about 30 kinds of condition function; the rest print that sentence. Counted 23 Oct in `story_checks/`: fn606 appears 182 times, then fn565 (26), fn249 (24), fn289 (24), fn286 (23), fn655 (21), fn682 (20), fn654 (17), fn722 (16), fn403 (15), fn327, fn300, fn130, fn248, fn159 (12 to 13 each). Naming the top fifteen clears most of the 338.
 

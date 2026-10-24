@@ -6,6 +6,7 @@ Written 23 Oct 2026, after the quest work ran this way for a day. Read this befo
 - **Dave** decides what gets built, tests in the app and through his Claude, and gives the final word.
 - **Bob** (the chat session) designs with Dave, writes orders in `docs/work-orders.md` with "Done when" boxes, reviews every push on `staging`, and writes feedback into the order. Bob never builds.
 - **Jeff on Mac** builds the app and the generated data. **Jeff on PC** reads the game files at `C:\LoreRim` and builds the data tools. Each takes only orders marked for it.
+- **Reads that need judgment** (quests, people) are done by agents reading the records, one batch of 10 each, with a second agent checking every batch. Bob runs those from the chat session; the PC dumps the records raw, the Mac wires the results in. No more rules that try to interpret records (Dave, 23 Oct, after the bake-off in WO-153).
 - **Rex** reviews a sample of any batch work (a fresh agent with no edit tools), so Jeff never grades his own work.
 
 ## The order is the contract
