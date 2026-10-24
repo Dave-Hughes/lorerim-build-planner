@@ -1,0 +1,1590 @@
+{
+  "checks": [
+    {
+      "edid": "DB05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 20 objective \"Report back to Astrid\" and her wedding lines make it her contract."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB04a stage 200 ends with the letter of credit delivered to Astrid."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Astrid's wedding lines (037B5A/0E0E54/0E0E55). Her base record is placed in the Abandoned Shack, but her own package DBAstridSandboxSanctuary keeps her in the Sanctuary, and DB02 stage 40 puts the Sanctuary in the southern Pine Forest; Falkreath is the town the people index gives."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Matches the stage 10 journal."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Babette's line (INFO 06C3FF) says the reception is outside the Temple of the Divines, not inside; a player looking for it should go to the square outside the temple. She also offers to help, which belongs in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Bonus for killing her as she addresses the crowd is in the stage 10 journal."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Bonus from the journal; the two bands come from Ring1Alias/Ring2Alias (each worth 2000 in the items index), kept with the reader's unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB06 stage 5: Astrid sends you to Gabriella next."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Inference kept in unsure; A Healing Wedding's stages need Vittoria's speech."
+        }
+      }
+    },
+    {
+      "edid": "DB06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "The stage 5 journal says \"Astrid informed me that I should speak to Gabriella about my next contract\": Astrid is the one who starts it (when you report back after Bound Until Death); Gabriella, the giver line 01BB64 below stage 6, gives the details."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The schedule book isn't cut off: the Understone Keep pointer for BOOK 015475 carries the rest. Full week: Morndas Solitude, the Emperor's Tower (evening Castle Dour); Tirdas Windhelm, Palace of the Kings (evening the barracks); Middas Riften, Mistveil Keep; Turdas Whiterun, Dragonsreach (evening the Bannered Mare); Fredas Markarth, Understone Keep (evening the guard tower); Loredas and Sundas at his discretion; then repeat."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Bonus rule is in the stage 10 journal and Gabriella's lines 02392F/04404D; the schedule's whereabouts line is credited to Astrid (kept in unsure)."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Bonus from the journal; amount unknown."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB07 stage 10 begins on your return to the Sanctuary."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DB07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10: \"I was informed by Gabriella\"."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver line 06A3DB is Gabriella below stage 11."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objectives 15-60; Dawnstar Sanctuary in The Pale by the towns index. Where Arnbjorn is met stays in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 50 \"Kill Cicero, or leave the Sanctuary\"; that leaving spares him follows from the wording."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Shadowmere via ShadowmereAlias and objective 666, kept with the unsure note per Bob's ruling."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DB08",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Order of the line; what sets stage 2 stays in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver line 0681BA is Festus Krex below stage 3."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 2."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Nightgate Inn has no place record, but the guard line (Extended Guard Dialogue 000867) ties it to Tumble Arch Pass, which the places index puts in The Pale, and Balagog is in the Pale crime faction. Fill the hold as The Pale (kept as unsure) rather than leaving it blank."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 15."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Keep the signed cookbook, but it comes only from the script property QF_DB08_0001EA57.pCookbook and isn't confirmed as handed over; note that. The Writ is said to come \"from Balagog's body\", but the journal only says to steal it once he's dead and the quest also has a PapersBarrelAlias, so where it lies isn't settled."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DB09",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "Stage 5 reads \"It would appear all the contracts... have been completed. I must now speak with Astrid\", which sounds like the quest opens on its own once Recipe for Disaster is done and then sends you to Astrid. What sets stage 5 isn't in these files. Kept as \"talk\" because the first thing you do is talk to Astrid."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Astrid lines 04BCB5/04BCAA/04BCBF/069FEA."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Gianna and the decoy are placed in Castle Dour, Emperor's Tower; stage 70 sends you back to the Sanctuary."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch in the records; the quest has a JarrinAlias, added to unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB10 stage 10."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 70: the man was Titus Mede II's double."
+        }
+      }
+    },
+    {
+      "edid": "DB10",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10; DB09 objective 70 sends you back."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Outdoor soldier aliases support the fight starting outside."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "\"Escape through the Night Mother's coffin\" isn't in the records and the objective order goes against it: \"Escape the Sanctuary\" comes before \"Embrace the Night Mother\", and the quest has a second coffin alias (NMCoffinLakeAlias), so the coffin is reached after you get out."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 81 is optional."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "BladeOfWoeAlias and objective 81, unsure kept."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DB11 stage 5."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 200 journal."
+        }
+      }
+    },
+    {
+      "edid": "DB11",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 5: the Night Mother speaks to you."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 5; follows DB10 objective 80 \"Return to the Night Mother\". The spot stays vague, which is honest."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Motierre's end-game record is placed in The Bannered Mare; the Emperor is in the Katariah's Emperor's Quarters; the urn line 04FDA3 names Volunruud (The Pale)."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "\"On the way\" isn't in the records: the Maro objective is optional and listed after \"Kill the Emperor!\", with nothing saying where you meet him."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Payment via PaymentAlias and Motierre's line; leadership comes from the follow-up's journal (DBrecurring stage 15 \"I am now the Listener and leader\"), unsure kept."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DarkBrotherhoodSanctuaryRepair and DBrecurring are in the same story line; unsure kept."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DBDestroy",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "DB02 stage 220 (killed Astrid, can never join); DBDestroy stage 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Guard line 094E3A (expansion edit) sends you to Commander Maro at Dragon Bridge."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Gabriella's letter is in the records: the expansion book \"Gabriella's Contract\" (000D66) says \"Travel to the New Gnisis Cornerclub in Windhelm. The target will be there.\" That is the likeliest place to track her down, so it goes in takesYou with an unsure note rather than being left under \"wherever the letters point\". Veezara's letter isn't in these files."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 199 fails when you refuse."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold (pGold) and LvlQuestReward04Wow are script properties; stage 200 says you were rewarded. Kept, with the note that they come from the script."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Unsure kept on the Penitus Oculatus mod."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DBEviction",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 journal."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Membership is implied by \"rules of the Sanctuary\"; what triggers it is in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Unsure on Nazir's later spot kept."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 10: \"before I can proceed with any Dark Brotherhood business\"."
+        }
+      }
+    },
+    {
+      "edid": "DBSideContract01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "DB02a gives your first contracts from Nazir; whether Narfi is one of them stays in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nazir line 02412E (edited by CC Farming)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 journal says Ivarstead; Nazir's line gives the ruins outside it."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Ivarstead places fall in The Rift."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200: \"collected my reward from Nazir\"."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DB05",
+      "name": "Bound Until Death",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Astrid gives you this contract once you've brought her Amaund Motierre's letter of credit; you kill the Emperor's cousin at her own wedding in Solitude.",
+      "needs": [
+        {
+          "what": "Finish The Silence Has Been Broken (meet Amaund Motierre and bring Astrid his letter of credit)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Astrid",
+          "where": "the Dark Brotherhood Sanctuary, in the pine forest near Falkreath",
+          "how": "Talk to Astrid after The Silence Has Been Broken. She tells you the wedding of Vittoria Vici is being held at the Temple of the Divines in Solitude, and that the bride's death 'will cause an uproar, which is exactly what we want.'"
+        }
+      ],
+      "firstStep": "Go to the wedding reception at the Temple of the Divines in Solitude and kill Vittoria Vici",
+      "takesYou": [
+        {
+          "place": "outside the Temple of the Divines, Solitude",
+          "hold": "Haafingar",
+          "why": "the public wedding reception of Vittoria Vici and Asgeir Snow-Shod, where you kill the bride"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Astrid"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill Vittoria while she is addressing the crowd",
+          "leadsTo": "a bonus on top of the contract"
+        },
+        {
+          "choice": "Kill her any other way",
+          "leadsTo": "the contract still counts, without the bonus"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Vittoria Vici",
+            "Report back to Astrid"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A bonus for killing Vittoria as she addresses the crowd",
+          "when": "when you report back, if you earned it"
+        },
+        {
+          "what": "Vittoria's Wedding Band and Asgeir's Wedding Band (rings)",
+          "when": "tied to the quest as items; most likely taken from the couple rather than handed to you"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Breaching Security"
+      ],
+      "closes": [
+        "Vittoria Vici dies",
+        "the peaceful wedding quest A Healing Wedding (Vittoria's Alternate Wedding) can't be done once the bride is dead"
+      ],
+      "people": [
+        {
+          "name": "Astrid",
+          "role": "leader of the Sanctuary; gives the contract and takes your report"
+        },
+        {
+          "name": "Vittoria Vici",
+          "role": "the target: the bride, the Emperor's cousin"
+        },
+        {
+          "name": "Asgeir Snow-Shod",
+          "role": "the groom"
+        },
+        {
+          "name": "Amaund Motierre",
+          "role": "the client behind the chain of contracts"
+        },
+        {
+          "name": "Elisif the Fair, Bryling, Erikur, Rorlund, Pantea Ateia, Kayd, Vivienne Onis, Noster Eagle-Eye, Lodi",
+          "role": "wedding guests, staff and onlookers in Solitude"
+        },
+        {
+          "name": "Vulwulf Snow-Shod and Nura Snow-Shod",
+          "role": "the groom's family in Snow-Shod Manor, Riften; they react to the killing"
+        },
+        {
+          "name": "Penitus Oculatus bodyguard",
+          "role": "guards the wedding in Solitude"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "Astrid's base record is placed in the Abandoned Shack; her package DBAstridSandboxSanctuary keeps her in the Sanctuary, but which room isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "the bonus amount isn't in these files. The two wedding bands are linked to the quest through its aliases, not a script, so they are probably on Vittoria and Asgeir."
+        },
+        {
+          "field": "choices",
+          "why": "the quest has a statue and a statue-enable marker in its aliases, which suggests a set-piece way to kill her, but the records here don't say how it works."
+        },
+        {
+          "field": "closes",
+          "why": "Vittoria's Alternate Wedding changes the Bards College dialogue so it checks neither wedding quest is running; the records don't show an explicit lock on A Healing Wedding, but it needs Vittoria alive."
+        },
+        {
+          "field": "choices",
+          "why": "Babette says \"I think I can help you\" about the wedding (INFO 06C3FF, Sanctuary dialogue); what help she offers isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA54 stages 10/200, objectives 10/20, aliases VittoriaViciAlias, AstridAlias, StatueAlias, Ring1Alias, Ring2Alias",
+        "INFO Skyrim.esm:037B5A / 0E0E54 / 0E0E55 (Astrid, Temple of the Divines)",
+        "INFO Skyrim.esm:0618C0 (Vulwulf reacts)",
+        "DB04a Skyrim.esm:02AD16 stage 200",
+        "rewards Skyrim.esm:0F5A1C, 0F5A1D via alias",
+        "Vittorias Alternate Wedding.esp:000800 (DB05Alt); INFO Skyrim.esm:0C4DFD conditions",
+        "editedBy: Unofficial Skyrim Special Edition Patch.esp",
+        "INFO Skyrim.esm:06C3FF (Babette: reception outside the Temple)",
+        "package Skyrim.esm:02E3FA DBAstridSandboxSanctuary"
+      ]
+    },
+    {
+      "edid": "DB06",
+      "name": "Breaching Security",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "After the wedding, Astrid sends you to Gabriella, who gives you the contract on Gaius Maro of the Penitus Oculatus.",
+      "needs": [
+        {
+          "what": "Finish Bound Until Death",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Astrid",
+          "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+          "how": "Report back to Astrid after Bound Until Death; she tells you to speak to Gabriella about your next contract. Gabriella explains Gaius Maro is about to leave the Penitus Oculatus outpost at Dragon Bridge to inspect the security of each city in Skyrim."
+        }
+      ],
+      "firstStep": "Speak with Gabriella in the Sanctuary",
+      "takesYou": [
+        {
+          "place": "Penitus Oculatus Outpost, Dragon Bridge",
+          "hold": "Haafingar",
+          "why": "where Gaius Maro starts out; the office there holds his travel schedule"
+        },
+        {
+          "place": "the cities on Gaius Maro's weekly route: Morndas Solitude (the Emperor's Tower, evenings Castle Dour); Tirdas Windhelm (Palace of the Kings, evenings the barracks); Middas Riften (Mistveil Keep); Turdas Whiterun (Dragonsreach, evenings the Bannered Mare); Fredas Markarth (Understone Keep, evenings the guard tower); Loredas and Sundas his own time",
+          "hold": "Haafingar, Eastmarch, The Rift, Whiterun, The Reach",
+          "why": "kill him in one of these cities for the bonus"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Gabriella"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Steal Gaius Maro's travel schedule from the office at the Dragon Bridge outpost",
+          "leadsTo": "you know where he'll be on each day (optional)"
+        },
+        {
+          "choice": "Kill him in one of the cities he visits",
+          "leadsTo": "the bonus"
+        },
+        {
+          "choice": "Kill him in Dragon Bridge or on the road",
+          "leadsTo": "the contract still counts, but no bonus"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak with Gabriella",
+            "(Optional) Steal Gaius Maro's travel schedule",
+            "Kill Gaius Maro",
+            "Plant the Incriminating Letter on Gaius Maro's body",
+            "Report back to Gabriella"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A bonus for killing Gaius Maro in one of the cities, not in Dragon Bridge or on the road",
+          "when": "when you report back, if you earned it"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "The Cure for Madness"
+      ],
+      "closes": [
+        "Gaius Maro dies"
+      ],
+      "people": [
+        {
+          "name": "Astrid",
+          "role": "points you to Gabriella"
+        },
+        {
+          "name": "Gabriella",
+          "role": "gives the contract and the Incriminating Letter, takes your report"
+        },
+        {
+          "name": "Gaius Maro",
+          "role": "the target, an agent of the Emperor's security; starts at the Penitus Oculatus Outpost in Dragon Bridge"
+        },
+        {
+          "name": "Commander Maro",
+          "role": "his father, head of the Penitus Oculatus at Dragon Bridge; the letter is meant to ruin him"
+        },
+        {
+          "name": "Faida",
+          "role": "runs the Four Shields Tavern in Dragon Bridge"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "choices",
+          "why": "the line saying the schedule is 'in his office, in the Legion stronghold of Dragon Bridge' is credited to Astrid in the places index; it may really be Gabriella's line in this conversation."
+        },
+        {
+          "field": "rewards",
+          "why": "the bonus amount and the contract's base payment aren't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Gaius Maro is placed at the Dragon Bridge outpost and his package is a stay-at-current-location; the week in his schedule book is what the game says he follows, but whether he keeps to it day by day isn't shown."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA55 stages 5/10/200, objectives 5/8/10/20/30, aliases GaiusMaroAlias, MaroScheduleAlias, IncriminatingLetterAlias",
+        "INFO Skyrim.esm:0D13DA, 02392F, 04404A, 04404D (Gabriella)",
+        "INFO Skyrim.esm:01546B (schedule in the Dragon Bridge office)",
+        "BOOK Skyrim.esm:015475 (schedule), BOOK Skyrim.esm:0CC86A (letter to Gaius)",
+        "giver INFO Skyrim.esm:01BB64 (Gabriella)",
+        "BOOK Skyrim.esm:015475 full text via places pointers (Castle Dour, Mistveil Keep, Dragonsreach, Understone Keep)"
+      ]
+    },
+    {
+      "edid": "DB07",
+      "name": "The Cure for Madness",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "When you come back to the Sanctuary after killing Gaius Maro, Gabriella tells you Cicero has gone berserk; Astrid sends you after him.",
+      "needs": [
+        {
+          "what": "Finish Breaching Security",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Gabriella",
+          "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+          "how": "Return to the Sanctuary after Breaching Security. Gabriella tells you there's been an 'incident' with Cicero and sends you to Astrid."
+        }
+      ],
+      "firstStep": "Talk to Astrid about what happened with Cicero",
+      "takesYou": [
+        {
+          "place": "Cicero's room in the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "search it and read his diary"
+        },
+        {
+          "place": "the Dawnstar Sanctuary",
+          "hold": "The Pale",
+          "why": "find Arnbjorn, then go in after Cicero"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Astrid"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill Cicero",
+          "leadsTo": "the matter is closed and Cicero is dead"
+        },
+        {
+          "choice": "Leave the Dawnstar Sanctuary without killing him",
+          "leadsTo": "the quest still finishes; Cicero lives"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Astrid",
+            "Search Cicero's room",
+            "Read Cicero's diary",
+            "Talk to Astrid",
+            "Locate Arnbjorn",
+            "Talk to Arnbjorn",
+            "Enter the Dawnstar Sanctuary",
+            "Kill Cicero, or leave the Sanctuary",
+            "Report back to Astrid",
+            "Behold Shadowmere"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Shadowmere (horse)",
+          "when": "at the end; the quest points you to him with 'Behold Shadowmere'"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Recipe for Disaster"
+      ],
+      "closes": [
+        "Cicero dies, if you choose to kill him"
+      ],
+      "people": [
+        {
+          "name": "Gabriella",
+          "role": "tells you about the incident"
+        },
+        {
+          "name": "Astrid",
+          "role": "orders you to find and kill Cicero"
+        },
+        {
+          "name": "Cicero",
+          "role": "tends the Night Mother; attacked Astrid and fled to the Dawnstar Sanctuary"
+        },
+        {
+          "name": "Arnbjorn",
+          "role": "chased Cicero; you locate and talk to him before entering the Dawnstar Sanctuary"
+        },
+        {
+          "name": "Shadowmere",
+          "role": "the horse the quest ends with"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "the records place Arnbjorn and Cicero in the Falkreath Sanctuary; where you meet Arnbjorn on the way to Dawnstar isn't in these files."
+        },
+        {
+          "field": "steps",
+          "why": "the Dawnstar Sanctuary's passphrase in these records ('Innocence, my brother') comes from the Penitus Oculatus mod's journal; whether this quest asks you for it isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "Shadowmere is tied to the quest by an alias and the 'Behold Shadowmere' objective; the moment he's given and where he waits aren't spelled out. Any gold for the contract isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA56 stages 10/15/200, objectives 10-60 and 666, aliases JournalAlias, DoorAlias, ShadowmereAlias, ShadowmereTargetMarkerAlias",
+        "giver INFO Skyrim.esm:06A3DB (Gabriella); others Arnbjorn, Cicero",
+        "Penitus_Oculatus.esp:00CA4B stage 1 (passphrase)"
+      ]
+    },
+    {
+      "edid": "DB08",
+      "name": "Recipe for Disaster",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "After the Cicero business, Festus Krex has your next target: the famous chef known as the Gourmet.",
+      "needs": [
+        {
+          "what": "Finish The Cure for Madness",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Festus Krex",
+          "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+          "how": "Speak with Festus Krex once The Cure for Madness is done. He tells you the target is the Gourmet, and only Anton Virane knows who and where the chef really is."
+        }
+      ],
+      "firstStep": "Report to Festus Krex in the Sanctuary",
+      "takesYou": [
+        {
+          "place": "Understone Keep, Markarth",
+          "hold": "The Reach",
+          "why": "question Anton Virane, then kill him"
+        },
+        {
+          "place": "Nightgate Inn (Balagog is placed in its cellar)",
+          "hold": "The Pale",
+          "why": "kill Balagog gro-Nolob, take his Writ of Passage and hide the body"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "report back to Festus Krex"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Drag Balagog's body to a hiding place",
+          "leadsTo": "a bonus (optional)"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Report to Festus Krex",
+            "Question Anton Virane",
+            "Kill Anton Virane",
+            "Kill Balagog gro-Nolob",
+            "(Optional) Drag Balagog's body to a hiding place",
+            "Take the Writ of Passage",
+            "Report back to Festus Krex"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Uncommon Taste - Signed (book)",
+          "when": "from the quest's script; not confirmed when (or that) it is handed over"
+        },
+        {
+          "what": "A bonus for hiding Balagog's body",
+          "when": "when you report back, if you earned it"
+        },
+        {
+          "what": "The Gourmet's Writ of Passage (quest item for the next contract)",
+          "when": "after you kill Balagog; the records also tie the papers to a barrel, so it may not be on his body"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "To Kill an Empire"
+      ],
+      "closes": [
+        "Anton Virane dies",
+        "Balagog gro-Nolob (the Gourmet) dies"
+      ],
+      "people": [
+        {
+          "name": "Festus Krex",
+          "role": "gives the contract and takes your report"
+        },
+        {
+          "name": "Anton Virane",
+          "role": "knows the Gourmet's identity; in Understone Keep, Markarth"
+        },
+        {
+          "name": "Balagog gro-Nolob",
+          "role": "the Gourmet, an Orc; the target, at the Nightgate Inn"
+        },
+        {
+          "name": "Astrid",
+          "role": "tied to the quest's aliases"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "the records show Festus as the one you speak to first, but not what event hands you the quest after The Cure for Madness."
+        },
+        {
+          "field": "hold",
+          "why": "Nightgate Inn isn't in the places index; guard talk ties it to Tumble Arch Pass (The Pale) and Balagog is in the Pale crime faction, so The Pale is likely but not confirmed."
+        },
+        {
+          "field": "where",
+          "why": "Anton Virane and Balagog are where the records place them. Balagog's packages include cellar packages and one named GourmetPondTravel, so he isn't always in the cellar."
+        },
+        {
+          "field": "rewards",
+          "why": "the bonus amount isn't in these files. \"Uncommon Taste - Signed\" is a property of the quest's script, not confirmed as a hand-over. The Writ of Passage has both a papers alias and a papers-barrel alias."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA57 stages 2/4/10/200, objectives 2-30, aliases PapersAlias, hiding-place aliases, NightgateDoorAlias",
+        "giver INFO Skyrim.esm:0681BA (Festus); others Anton Virane",
+        "reward Skyrim.esm:06851B via QF_DB08_0001EA57.pCookbook",
+        "INFO Extended Guard Dialogue.esp:000867 (Nightgate / Tumble Arch Pass)",
+        "alias PapersBarrelAlias",
+        "Balagog packages GourmetCellarDefaultPackage, GourmetPondTravel; faction CrimeFactionPale",
+        "places: Tumble Arch Pass hold The Pale"
+      ]
+    },
+    {
+      "edid": "DB09",
+      "name": "To Kill an Empire",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "With the lead-up contracts done, Astrid sends you to Castle Dour posing as the Gourmet to kill the Emperor at his feast.",
+      "needs": [
+        {
+          "what": "Finish Recipe for Disaster (you need the Gourmet's Writ of Passage)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Astrid",
+          "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+          "how": "Speak with Astrid once all the contracts leading up to the Emperor are done. She tells you to go to Castle Dour in Solitude and present the Gourmet's Writ of Passage to Commander Maro."
+        }
+      ],
+      "firstStep": "Report to Astrid, then take the Writ of Passage to Commander Maro at Castle Dour",
+      "takesYou": [
+        {
+          "place": "Castle Dour, Solitude",
+          "hold": "Haafingar",
+          "why": "present the Writ of Passage to Commander Maro"
+        },
+        {
+          "place": "Castle Dour, Emperor's Tower",
+          "hold": "Haafingar",
+          "why": "cook for the Emperor with Gianna, then kill him and escape the tower"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "go back to help the Family when the Penitus Oculatus attack"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Report to Astrid",
+            "Report to Commander Maro",
+            "Report to Gianna",
+            "Report to Gianna while wearing a chef's hat",
+            "Make the Potage le Magnifique",
+            "Follow Gianna to the dining room",
+            "Kill the Emperor",
+            "Escape the Tower!",
+            "Return to the Sanctuary"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Death Incarnate"
+      ],
+      "closes": [
+        "the Emperor's double dies"
+      ],
+      "people": [
+        {
+          "name": "Astrid",
+          "role": "sends you to Castle Dour"
+        },
+        {
+          "name": "Commander Maro",
+          "role": "the officer in charge at Castle Dour; reveals the trap"
+        },
+        {
+          "name": "Gianna",
+          "role": "the cook in the Emperor's Tower who has you make the Potage le Magnifique"
+        },
+        {
+          "name": "Emperor Titus Mede II (the double)",
+          "role": "the man at the feast; turns out to be a decoy"
+        },
+        {
+          "name": "Penitus Oculatus agents",
+          "role": "guard the tower and ambush you on the way out"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "the journal says you may kill the Emperor \"using any tools at my disposal\"; the quest has an alias named JarrinAlias, which points at something to put in the potage, but no item record for it is in these files."
+        },
+        {
+          "field": "where",
+          "why": "Commander Maro's placement is the Dragon Bridge outpost; Astrid's line puts him at Castle Dour for this quest, but his exact spot isn't in these files."
+        },
+        {
+          "field": "canDo",
+          "why": "the journal suggests the quest opens by itself after Recipe for Disaster and points you to Astrid; what sets it off isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA58 stages 5/10/70/200, objectives 5-70, aliases GiannaAlias, EmperorDecoyAlias, MaroBridgeMarkerAlias, DB09AmbushGuard aliases",
+        "INFO Skyrim.esm:04BCB5 / 04BCAA / 04BCBF / 069FEA (Astrid: Castle Dour)",
+        "giver INFO Skyrim.esm:04BCB2 (Maro); others Gianna",
+        "alias JarrinAlias (no item record found)"
+      ]
+    },
+    {
+      "edid": "DB10",
+      "name": "Death Incarnate",
+      "plugin": "Skyrim.esm",
+      "canDo": "by itself",
+      "canDoWhy": "Starts when you get back to the Sanctuary after the trap at Castle Dour and find it under attack.",
+      "needs": [
+        {
+          "what": "Finish To Kill an Empire",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "outside the Dark Brotherhood Sanctuary, near Falkreath",
+          "how": "Return to the Sanctuary as To Kill an Empire tells you; the quest begins with the Penitus Oculatus assault already under way."
+        }
+      ],
+      "firstStep": "Enter the Sanctuary",
+      "takesYou": [
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "fight the Penitus Oculatus, find survivors, save Nazir and escape the burning Sanctuary"
+        },
+        {
+          "place": "the Night Mother's coffin, outside the Sanctuary after your escape",
+          "hold": null,
+          "why": "embrace the Night Mother, deal with Astrid, then return to the Night Mother"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Retrieve the Blade of Woe after killing Astrid",
+          "leadsTo": "you keep the Blade of Woe (optional)"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Enter the Sanctuary",
+            "Search for survivors",
+            "Kill the Legion soldiers inside the Sanctuary (5)",
+            "Kill Nazir's attacker!",
+            "Speak with Nazir",
+            "Escape the Sanctuary",
+            "Embrace the Night Mother",
+            "Talk to Astrid",
+            "Kill Astrid",
+            "Return to the Night Mother",
+            "(Optional) Retrieve the Blade of Woe"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Blade of Woe (dagger)",
+          "when": "optional, from Astrid after you kill her"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Hail Sithis!"
+      ],
+      "closes": [
+        "the Falkreath Sanctuary is burned",
+        "most of the Family is killed in the attack",
+        "Astrid dies: she is the one who betrayed you"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "survivor you save and speak with"
+        },
+        {
+          "name": "Babette",
+          "role": "survivor"
+        },
+        {
+          "name": "Arnbjorn",
+          "role": "fights the soldiers in werewolf form"
+        },
+        {
+          "name": "Astrid",
+          "role": "revealed as the traitor; you kill her"
+        },
+        {
+          "name": "The Night Mother",
+          "role": "her coffin is moved out of the Sanctuary; you embrace her after escaping, and return to her after Astrid"
+        },
+        {
+          "name": "Penitus Oculatus soldiers (including Arcturus)",
+          "role": "the attackers"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "closes",
+          "why": "the journal says 'most of the Family members' die; the records don't name which ones besides Astrid."
+        },
+        {
+          "field": "rewards",
+          "why": "the Blade of Woe is tied to an alias; that it's on Astrid's body is inferred from the objective order."
+        },
+        {
+          "field": "takesYou",
+          "why": "where the Night Mother's coffin is taken after the escape isn't in these files; the quest has a coffin alias named for a lake."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:03CEDA stages 10/200, objectives 10-81, aliases AstridEndAlias, NightMotherAlias, NMCoffinAlias, BladeOfWoeAlias, ArnbjornWerewolfAlias, PenitusSoldier aliases",
+        "DB09 Skyrim.esm:01EA58 stage 70",
+        "giver INFO Skyrim.esm:048195 (Nazir); others Babette, Astrid",
+        "global db10legionattackerdeadcount",
+        "aliases NMCoffinAlias, NMCoffinLakeAlias; objective order 40 then 50"
+      ]
+    },
+    {
+      "edid": "DB11",
+      "name": "Hail Sithis!",
+      "plugin": "Skyrim.esm",
+      "canDo": "by itself",
+      "canDoWhy": "After the Sanctuary falls, the Night Mother speaks to you again: the real Emperor must still die.",
+      "needs": [
+        {
+          "what": "Finish Death Incarnate",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "The Night Mother",
+          "where": "where her coffin ends up after Death Incarnate",
+          "how": "Once Death Incarnate ends, the Night Mother speaks to you and tells you the contract with Amaund Motierre must be completed. You then talk to Nazir."
+        }
+      ],
+      "firstStep": "Talk to Nazir",
+      "takesYou": [
+        {
+          "place": "The Bannered Mare, Whiterun",
+          "hold": "Whiterun",
+          "why": "meet Amaund Motierre"
+        },
+        {
+          "place": "the Katariah, the Emperor's ship (Penitus Oculatus guard the Solitude docks)",
+          "hold": "Haafingar",
+          "why": "board the ship and kill the real Emperor"
+        },
+        {
+          "place": "Volunruud",
+          "hold": "The Pale",
+          "why": "your payment is in an urn in the chamber where you first met Motierre"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill Commander Maro (optional)",
+          "leadsTo": "Maro dies (optional)"
+        },
+        {
+          "choice": "Kill Amaund Motierre after he pays you",
+          "leadsTo": "Motierre dies (optional)"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Nazir",
+            "Talk to Amaund Motierre",
+            "Board the Katariah",
+            "Kill the Emperor!",
+            "(Optional) Kill Commander Maro",
+            "Report to Amaund Motierre",
+            "Retrieve the payment",
+            "(Optional) Kill Amaund Motierre",
+            "Report to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Amaund Motierre's payment",
+          "when": "in an urn in Volunruud, after you report the kill"
+        },
+        {
+          "what": "Leadership of the Dark Brotherhood in Skyrim, as Listener",
+          "when": "after the quest"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Where You Hang Your Enemy's Head...",
+        "The Dark Brotherhood Forever"
+      ],
+      "closes": [
+        "Emperor Titus Mede II dies",
+        "Commander Maro and Amaund Motierre die if you choose to kill them"
+      ],
+      "people": [
+        {
+          "name": "The Night Mother",
+          "role": "orders you to finish the contract"
+        },
+        {
+          "name": "Nazir",
+          "role": "gives you the next step and takes your final report"
+        },
+        {
+          "name": "Babette",
+          "role": "the other survivor"
+        },
+        {
+          "name": "Amaund Motierre",
+          "role": "the client; waiting in The Bannered Mare, Whiterun"
+        },
+        {
+          "name": "Emperor Titus Mede II",
+          "role": "the target, aboard the Katariah"
+        },
+        {
+          "name": "Commander Maro",
+          "role": "optional kill"
+        },
+        {
+          "name": "Rexus",
+          "role": "met with Motierre at Volunruud"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "Nazir and Babette are still placed in the Falkreath Sanctuary in the records; after it burns the Family moves on (the follow-up quest refits the Dawnstar Sanctuary), but where you find Nazir here isn't in these files."
+        },
+        {
+          "field": "hold",
+          "why": "the Katariah is its own location; it's tied to Solitude only through the dock guards' placement."
+        },
+        {
+          "field": "rewards",
+          "why": "the payment's amount isn't in these files. 'Leader of the Dark Brotherhood' comes from the journal of The Dark Brotherhood Forever, not this quest."
+        },
+        {
+          "field": "opens",
+          "why": "both follow-ups fit by their journals (refitting the Dawnstar Sanctuary; serving as Listener and leader), but the records here don't show what starts them."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA59 stages 5/200, objectives 5-80, aliases KatariahChainAlias, PenitusDocksAlias, VolunruudUrnAlias, PaymentAlias",
+        "INFO Skyrim.esm:04FDA3 (Motierre: payment in Volunruud urn)",
+        "giver INFO Skyrim.esm:0769CC (Nazir); others Amaund Motierre, Babette",
+        "Skyrim.esm:087BA2 (DarkBrotherhoodSanctuaryRepair) stages 10/200; Skyrim.esm:01EA5A (DBrecurring) stage 15"
+      ]
+    },
+    {
+      "edid": "DBDestroy",
+      "name": "Destroy the Dark Brotherhood!",
+      "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp; also edited by Destroy the Dark Brotherhood - Quest Expansion.esp and DIS_Heavy_Legion.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "If you kill Astrid in the Abandoned Shack instead of joining, this starts: report it, and Commander Maro asks you to wipe out the Sanctuary.",
+      "needs": [
+        {
+          "what": "Kill Astrid in the Abandoned Shack during With Friends Like These...",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the Abandoned Shack",
+          "how": "Kill Astrid when she has you captive. The journal tells you to report her death to a guard; the guard sends you to Commander Maro at the Penitus Oculatus outpost in Dragon Bridge."
+        }
+      ],
+      "firstStep": "Report Astrid's death to a guard",
+      "takesYou": [
+        {
+          "place": "any guard",
+          "hold": null,
+          "why": "report Astrid's death"
+        },
+        {
+          "place": "Penitus Oculatus Outpost, Dragon Bridge",
+          "hold": "Haafingar",
+          "why": "Commander Maro gives you the task and the reward"
+        },
+        {
+          "place": "around the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "find a way to learn the passphrase (Gaston Bellefort)"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "kill every assassin"
+        },
+        {
+          "place": "New Gnisis Cornerclub, Windhelm (probably, for Gabriella); Veezara's letter isn't in these files",
+          "hold": "Eastmarch",
+          "why": "track down the two assassins away from the Sanctuary"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Accept Commander Maro's task",
+          "leadsTo": "you clear out the Sanctuary and are rewarded"
+        },
+        {
+          "choice": "Refuse Commander Maro",
+          "leadsTo": "the quest ends there"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "accept",
+          "objectives": [
+            "Report Astrid's death to a guard",
+            "Speak with Commander Maro",
+            "Learn the passphrase to enter the Dark Brotherhood Sanctuary",
+            "Kill the Dark Brotherhood assassins!",
+            "Track down and kill Gabriella",
+            "Track down and kill Veezara",
+            "Report back to Commander Maro"
+          ]
+        },
+        {
+          "branch": "refuse",
+          "objectives": [
+            "Report Astrid's death to a guard",
+            "Speak with Commander Maro and refuse"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end, from Commander Maro"
+        },
+        {
+          "what": "A leveled reward item",
+          "when": "at the end, from Commander Maro"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "the whole Dark Brotherhood questline: you can never join",
+        "the Sanctuary's assassins (Nazir, Babette, Festus Krex, Arnbjorn, Gabriella, Veezara) are your targets and die if you finish"
+      ],
+      "people": [
+        {
+          "name": "Commander Maro",
+          "role": "Penitus Oculatus commander at the Dragon Bridge outpost; gives the task and reward"
+        },
+        {
+          "name": "Gaston Bellefort",
+          "role": "someone you talk to while learning the passphrase (the expansion adds him alive; the vanilla skeleton of the same name is in the Sanctuary)"
+        },
+        {
+          "name": "Gabriella",
+          "role": "target; you track her down using a letter"
+        },
+        {
+          "name": "Veezara",
+          "role": "target; you track him down using a letter"
+        },
+        {
+          "name": "Nazir, Babette, Festus Krex, Arnbjorn",
+          "role": "targets in the Sanctuary"
+        },
+        {
+          "name": "Lis",
+          "role": "a frostbite spider in the Sanctuary, among the quest's targets"
+        },
+        {
+          "name": "Vasha, Fultheim, Alea",
+          "role": "added by the expansion; placed at Orotheim, the Moorside Inn in Morthal and Morthal Jail"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "plugin",
+          "why": "'last edited' is taken from the order the edits are listed; the load order itself isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "the expansion's Gaston Bellefort stands at an unnamed marker while you look for the way in, and comes up to talk to you; after the quest his package moves him to the Bards College. \"Gabriella's Contract\" reads as instructions left behind while she is away, so New Gnisis Cornerclub is likely her spot but not confirmed. Veezara's letter isn't in these files."
+        },
+        {
+          "field": "people",
+          "why": "Vasha, Fultheim, Alea and a 'Companion' at the outpost are in the quest's aliases, but their part in it isn't in the objectives."
+        },
+        {
+          "field": "rewards",
+          "why": "the gold and the leveled reward are properties of the quest's script (stage 200 says you were rewarded), not confirmed hand-overs; the gold amount isn't in these files. The script also holds plain clothes, Shrouded Robes/Shoes/Hood and a scimitar, which look like outfits for the NPCs rather than rewards."
+        },
+        {
+          "field": "opens",
+          "why": "the Penitus Oculatus mod adds a joinable Penitus Oculatus line under Commander Maro (hunting escaped assassins like Babette and Cicero); the records don't show whether this quest is what opens it."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:0934FB stages 10/20/25/30/40/199/200, objectives 10-40",
+        "DB02 Skyrim.esm:01EA51 stage 220",
+        "INFO Skyrim.esm:094E3A (guard: report to Maro)",
+        "giver INFO Destroy the Dark Brotherhood - Quest Expansion.esp:000856 (Maro); others Gaston Bellefort, Gabriella, Veezara",
+        "rewards via QF_DBDestroy_000934FB: pGold, LvlQuestReward04Wow",
+        "BOOK Destroy the Dark Brotherhood - Quest Expansion.esp:000D66",
+        "editedBy: Destroy the Dark Brotherhood - Quest Expansion.esp, DIS_Heavy_Legion.esp, LoreRim - Dialogue Patch.esp",
+        "packages DBDestroyGastonStandPackage01 / Forcegreet01 / Package02 (Bards College after stage 200)"
+      ]
+    },
+    {
+      "edid": "DBEviction",
+      "name": "Honor Thy Family",
+      "plugin": "Skyrim.esm",
+      "canDo": "by itself",
+      "canDoWhy": "Starts if you break the Sanctuary's rules; you must pay Nazir a fine before you can do any more Brotherhood business.",
+      "needs": [
+        {
+          "what": "Be a member of the Dark Brotherhood",
+          "kind": "faction"
+        },
+        {
+          "what": "Break the rules of the Sanctuary",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the Dark Brotherhood Sanctuary",
+          "how": "Break the Sanctuary's rules; the quest starts on its own and Nazir collects the fine."
+        }
+      ],
+      "firstStep": "Pay Nazir the fine",
+      "takesYou": [
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "pay Nazir"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Pay Nazir the fine"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Dark Brotherhood business is blocked until the fine is paid"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "collects the fine"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "which rules count (and what sets the quest off) isn't in these files."
+        },
+        {
+          "field": "steps",
+          "why": "the size of the fine isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Nazir is placed in the Falkreath Sanctuary; after Death Incarnate the Family moves, so where you'd pay him later isn't shown."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:06F9A5 stages 10/200, objective 10, alias NazirAlias"
+      ]
+    },
+    {
+      "edid": "DBSideContract01",
+      "name": "Contract: Kill Narfi",
+      "plugin": "Skyrim.esm (last edited by CC Farming - Tweaks and Enhancements.esp)",
+      "canDo": "talk",
+      "canDoWhy": "One of the side contracts Nazir hands out in the Sanctuary: kill the beggar Narfi near Ivarstead.",
+      "needs": [
+        {
+          "what": "Join the Dark Brotherhood (finish With Friends Like These...)",
+          "kind": "quest"
+        },
+        {
+          "what": "Talk to Nazir for your first contracts (Sanctuary)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Nazir",
+          "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+          "how": "Ask Nazir for contracts. He tells you Narfi is 'a hapless beggar living in some ruins just outside the village of Ivarstead.'"
+        }
+      ],
+      "firstStep": "Go to the ruins just outside Ivarstead and kill Narfi",
+      "takesYou": [
+        {
+          "place": "ruins just outside Ivarstead",
+          "hold": "The Rift",
+          "why": "kill Narfi"
+        },
+        {
+          "place": "the Dark Brotherhood Sanctuary",
+          "hold": "Falkreath",
+          "why": "collect your reward from Nazir"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Narfi",
+            "Report back to Nazir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Payment from Nazir",
+          "when": "when you report back"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "Narfi dies"
+      ],
+      "people": [
+        {
+          "name": "Nazir",
+          "role": "gives the contract and pays you"
+        },
+        {
+          "name": "Narfi",
+          "role": "the target, a beggar near Ivarstead"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "the conditions on Nazir's contract lines aren't in these files; it's one of his side contracts, which he starts handing out after you join."
+        },
+        {
+          "field": "where",
+          "why": "Narfi is placed in the open near Ivarstead with no named spot. CC Farming - Tweaks and Enhancements edits this quest and Nazir's line; what it changes isn't shown here."
+        },
+        {
+          "field": "rewards",
+          "why": "the payment amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "Skyrim.esm:01EA5B stages 10/200, objectives 10/20, aliases DBSideContract01NazirAlias, DBSideContract01NarfiAlias",
+        "INFO Skyrim.esm:02412E (Nazir, edited by CC Farming - Tweaks and Enhancements.esp)",
+        "DB02a Skyrim.esm:022F47 stages 10/200",
+        "editedBy: CC Farming - Tweaks and Enhancements.esp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,862 @@
+[
+  {
+    "edid": "zzzPO04Sanctuary",
+    "name": "A Nest of Vipers",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "by itself",
+    "canDoWhy": "Follows on from Fool's Errand: Cicero's journal gives you the Dawnstar Sanctuary passphrase and the journal entry has you heading there.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus",
+        "kind": "faction"
+      },
+      {
+        "what": "Finish Fool's Errand (kill Cicero and read his journal for the Dawnstar Sanctuary passphrase)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "After you kill Cicero and learn the passphrase from his journal in Fool's Errand, you report to Commander Maro and this mission follows: investigate the other Dark Brotherhood sanctuary in Dawnstar."
+      }
+    ],
+    "firstStep": "Investigate the Dawnstar Sanctuary (the passphrase is \"innocence, my brother\")",
+    "takesYou": [
+      {
+        "place": "Dawnstar Sanctuary",
+        "hold": "The Pale",
+        "why": "get in with the passphrase and clear out the Dark Brotherhood hiding there"
+      },
+      {
+        "place": "Penitus Oculatus Outpost, Dragon Bridge",
+        "hold": "Haafingar",
+        "why": "report to Commander Maro"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Investigate the Dawnstar Sanctuary",
+          "Clear out the Dawnstar Sanctuary",
+          "Read Dark Brotherhood Listener's Journal",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report to Commander Maro"
+      },
+      {
+        "what": "Items the quest sets in the Dawnstar Sanctuary: Uncommon Taste - Signed (book), Wedding Dress, Wedding Sandals, Wedding Wreath, Emperor's Robes, Muiri's Ring, Firiniel's End, Windshear, Nightweaver's Band, Gilded Wristguards",
+        "when": "inside the Dawnstar Sanctuary"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [
+      "Loose Ends (the Listener's Journal points to Amaund Motierre at Volunruud)"
+    ],
+    "closes": [
+      "The Dark Brotherhood remnant in the Dawnstar Sanctuary: its Listener and five assassins are killed",
+      "Afterwards Penitus Oculatus agents move into the Dawnstar Sanctuary and live there (and the Dark Brotherhood Defector from Unfinished Business, if she's with them)"
+    ],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Dark Brotherhood Listener",
+        "role": "leader of the remnant, found in the Dawnstar Sanctuary; carries or leaves the Listener's Journal"
+      },
+      {
+        "name": "Dark Brotherhood Assassin (five)",
+        "role": "found in the Dawnstar Sanctuary"
+      },
+      {
+        "name": "Torture Victim (four)",
+        "role": "found in the Dawnstar Sanctuary"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No dialogue or script line in these files sets the first stage; that it follows Fool's Errand comes from Fool's Errand's last journal entry (passphrase found, report to Maro) and this quest's first entry (passphrase in hand, heading to Dawnstar). Whether it begins on reporting to Maro or the moment you read Cicero's journal isn't shown."
+      },
+      {
+        "field": "needs",
+        "why": "How you join the Penitus Oculatus isn't part of this quest; the opening quest has a 'Legion requirement' setting whose conditions aren't decoded here."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold amount isn't in these files. The listed items are filled into the quest's item slots in the sanctuary; the records don't say whether they're loot in a chest, on the mannequin, or on display, and one item slot has no item named."
+      },
+      {
+        "field": "closes",
+        "why": "The agents' move into the sanctuary comes from their packages, which switch on once this quest is finished; what the sanctuary becomes for the player (a base, a home) isn't stated."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:00CA4B (zzzPO04Sanctuary), no other plugin edits it",
+      "stage 1 log: passphrase 'innocence, my brother'; stage 4 log: plot to assassinate the emperor foiled",
+      "fills: Location=Dawnstar Sanctuary, Journal=Dark Brotherhood Listener's Journal, Questgiver=Commander Maro",
+      "zzzPO03Cicero stage 3 log + objective 'Report to Questgiver'",
+      "aliases Item1,Item3-Item11 (Skyrim.esm:06851B, 088956, 088958, 08895A, 015516, 06B218, 017059, 06EA8B, 068B83, 0E84C1); gold via QF_zzzPO04Sanctuary_0100CA4B.Gold001",
+      "PO agents Penitus_Oculatus.esp:015C43-015C46 and defector 00A9C2: zzzPODawnstar* packages conditioned GetStage(00CA4B)>=5",
+      "PO doors Penitus_Oculatus.esp:00FAEA/00FAF1 into Dawnstar Sanctuary, enable parent 00FAF2",
+      "BOOK Penitus_Oculatus.esp:00D51D (Listener's Journal mentions Amaund Motierre at Volunruud)"
+    ]
+  },
+  {
+    "edid": "zzzPO05AmaundMotierre",
+    "name": "Loose Ends",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "by itself",
+    "canDoWhy": "Follows A Nest of Vipers: the Listener's Journal exposes Amaund Motierre's plot against the Emperor and you're sent to kill him.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus",
+        "kind": "faction"
+      },
+      {
+        "what": "Finish A Nest of Vipers (clear the Dawnstar Sanctuary and read the Listener's Journal)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "After you read the Listener's Journal in A Nest of Vipers and report to Commander Maro, you're given Amaund Motierre, hiding at Volunruud, as your next target."
+      }
+    ],
+    "firstStep": "Eliminate Amaund Motierre at Volunruud",
+    "takesYou": [
+      {
+        "place": "Volunruud",
+        "hold": "The Pale",
+        "why": "find and kill Amaund Motierre"
+      },
+      {
+        "place": "Penitus Oculatus Outpost, Dragon Bridge",
+        "hold": "Haafingar",
+        "why": "report to Commander Maro"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Eliminate Amaund Motierre",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report to Commander Maro"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [
+      "Amaund Motierre dies"
+    ],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Amaund Motierre",
+        "role": "the target, hiding at Volunruud; the quest also places a guard with him"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No dialogue or script line in these files sets the first stage; the link to A Nest of Vipers comes from that quest's journal (it names Motierre at Volunruud) and its last entry (plot foiled, report to Maro)."
+      },
+      {
+        "field": "takesYou",
+        "why": "Volunruud is listed under The Pale in the places index (nearest settlement Stonehills)."
+      },
+      {
+        "field": "people",
+        "why": "Motierre is spawned for this quest at Volunruud; whether he's alone apart from the one guard slot isn't shown."
+      },
+      {
+        "field": "rewards",
+        "why": "The gold amount isn't in these files."
+      },
+      {
+        "field": "opens",
+        "why": "Nothing in the records says what follows; the Penitus Oculatus assignments from Maro may open after this, but their offer conditions aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:00DFE9 (zzzPO05AmaundMotierre), no other plugin edits it",
+      "fills: Target=Amaund Motierre, Location=Volunruud, Questgiver=Commander Maro",
+      "aliases Spawn, SpawnGuard, Guard",
+      "BOOK Penitus_Oculatus.esp:00D51D (Listener's Journal)",
+      "gold via QF_zzzPO05AmaundMotierre_0100DFE9.Gold001",
+      "places index: Volunruud, hold The Pale"
+    ]
+  },
+  {
+    "edid": "zzzPORadiant01",
+    "name": "Unfinished Business",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable assignment Commander Maro gives Penitus Oculatus agents; the place changes each time.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus (join through Commander Maro in Dragon Bridge)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "Ask Commander Maro for an assignment; he sends you to track down and kill an escaped Dark Brotherhood assassin at a named place."
+      }
+    ],
+    "firstStep": "Eliminate the Dark Brotherhood remnant",
+    "takesYou": [
+      {
+        "place": "a location chosen when the assignment is given (named in your journal)",
+        "hold": "varies",
+        "why": "track down and kill an escaped Dark Brotherhood assassin"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Eliminate the Dark Brotherhood remnant",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report back to Commander Maro"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Dark Brotherhood assassin",
+        "role": "the target, placed at the assignment's location"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "Commander Maro's offer line for this assignment is in the records, but its conditions aren't in these files, so it's not known what else (if anything, such as finishing the main Penitus Oculatus missions) has to be true before he offers it."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is picked when the assignment starts; the records leave it unfilled, so there is no fixed location to name."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script hands out gold, but the amount isn't in these files."
+      },
+      {
+        "field": "name",
+        "why": "This repeatable assignment has the same name as the earlier, one-time Penitus Oculatus mission with the Dark Brotherhood Defector at the Moorside Inn (a different quest); players may see two 'Unfinished Business' entries."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:003884 (zzzPORadiant01)",
+      "giver dialogue INFO Penitus_Oculatus.esp:00388F (Maro, before the first stage)",
+      "reward: script QF_zzzPORadiant01 Gold001",
+      "Maro package DefaultStayAtEditorLocation; placed in Penitus Oculatus Outpost (cell Skyrim.esm:013A7B)"
+    ]
+  },
+  {
+    "edid": "zzzPORadiant02",
+    "name": "House Cleaning",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable assignment Commander Maro gives Penitus Oculatus agents; the place changes each time.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus (join through Commander Maro in Dragon Bridge)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "Ask Commander Maro for an assignment; he sends you to track down and kill several rogue Penitus Oculatus agents at a named place."
+      }
+    ],
+    "firstStep": "Eliminate the rogue Penitus Oculatus agents",
+    "takesYou": [
+      {
+        "place": "a location chosen when the assignment is given (named in your journal)",
+        "hold": "varies",
+        "why": "track down and kill three rogue Penitus Oculatus agents"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Eliminate the rogue Penitus Oculatus agents",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report back to Commander Maro"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Rogue Penitus Oculatus agents (three)",
+        "role": "the targets, placed at the assignment's location"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "Commander Maro's offer line for this assignment is in the records, but its conditions aren't in these files, so it's not known what else (if anything, such as finishing the main Penitus Oculatus missions) has to be true before he offers it."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is picked when the assignment starts; the records leave it unfilled, so there is no fixed location to name."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script hands out gold, but the amount isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:01B2C2 (zzzPORadiant02)",
+      "giver dialogue INFO Penitus_Oculatus.esp:01B2C5 (Maro, before the first stage)",
+      "reward: script QF_zzzPORadiant02 Gold001",
+      "Maro package DefaultStayAtEditorLocation; placed in Penitus Oculatus Outpost (cell Skyrim.esm:013A7B)"
+    ]
+  },
+  {
+    "edid": "zzzPORadiant03",
+    "name": "Paperwork",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable assignment Commander Maro gives Penitus Oculatus agents; the place changes each time.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus (join through Commander Maro in Dragon Bridge)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "Ask Commander Maro for an assignment; he sends you to take documents from a Thalmor agent at a named place without getting tangled up with the hold's authorities."
+      }
+    ],
+    "firstStep": "Obtain the Thalmor documents",
+    "takesYou": [
+      {
+        "place": "a location chosen when the assignment is given (named in your journal)",
+        "hold": "varies",
+        "why": "get documents from a Thalmor agent, keeping clear of the hold's guards"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Obtain the Thalmor documents",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report back to Commander Maro"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Thalmor agent",
+        "role": "holds the documents, placed at the assignment's location"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "Commander Maro's offer line for this assignment is in the records, but its conditions aren't in these files, so it's not known what else (if anything, such as finishing the main Penitus Oculatus missions) has to be true before he offers it."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is picked when the assignment starts; the records leave it unfilled, so there is no fixed location to name."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script hands out gold, but the amount isn't in these files."
+      },
+      {
+        "field": "choices",
+        "why": "The journal says to avoid any entanglement with the hold's authorities; the records don't show what happens if you're caught or if the agent can be spared."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:01B2CB (zzzPORadiant03)",
+      "giver dialogue INFO Penitus_Oculatus.esp:01B2D0 (Maro, before the first stage)",
+      "reward: script QF_zzzPORadiant03 Gold001",
+      "Maro package DefaultStayAtEditorLocation; placed in Penitus Oculatus Outpost (cell Skyrim.esm:013A7B)"
+    ]
+  },
+  {
+    "edid": "zzzPORadiant04",
+    "name": "Inquisition",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable assignment Commander Maro gives Penitus Oculatus agents; the place changes each time.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus (join through Commander Maro in Dragon Bridge)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "Ask Commander Maro for an assignment; he sends you to kill a noble at a named place who is a traitor working for the Aldmeri Dominion, without getting tangled up with the hold's authorities."
+      }
+    ],
+    "firstStep": "Eliminate the traitorous noble",
+    "takesYou": [
+      {
+        "place": "a location chosen when the assignment is given (named in your journal)",
+        "hold": "varies",
+        "why": "kill a noble who is secretly working for the Aldmeri Dominion, keeping clear of the hold's guards"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Eliminate the traitorous noble",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report back to Commander Maro"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Traitorous noble",
+        "role": "the target, placed at the assignment's location"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "Commander Maro's offer line for this assignment is in the records, but its conditions aren't in these files, so it's not known what else (if anything, such as finishing the main Penitus Oculatus missions) has to be true before he offers it."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is picked when the assignment starts; the records leave it unfilled, so there is no fixed location to name."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script hands out gold, but the amount isn't in these files."
+      },
+      {
+        "field": "choices",
+        "why": "The journal says to avoid any entanglement with the hold's authorities; the records don't show what happens if you're seen. The quest also has a note whose contents aren't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:01BD9F (zzzPORadiant04)",
+      "giver dialogue INFO Penitus_Oculatus.esp:01BDA7 (Maro, before the first stage)",
+      "reward: script QF_zzzPORadiant04 Gold001",
+      "Maro package DefaultStayAtEditorLocation; placed in Penitus Oculatus Outpost (cell Skyrim.esm:013A7B)"
+    ]
+  },
+  {
+    "edid": "zzzPORadiant05",
+    "name": "Troubleshoot",
+    "plugin": "Penitus_Oculatus.esp",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable assignment Commander Maro gives Penitus Oculatus agents; the place changes each time.",
+    "needs": [
+      {
+        "what": "Be a member of the Penitus Oculatus (join through Commander Maro in Dragon Bridge)",
+        "kind": "faction"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Commander Maro",
+        "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+        "how": "Ask Commander Maro for an assignment; he sends you to kill a Thalmor agent at a named place who is interfering with Penitus Oculatus operations, without getting tangled up with the hold's authorities."
+      }
+    ],
+    "firstStep": "Eliminate the Thalmor agent",
+    "takesYou": [
+      {
+        "place": "a location chosen when the assignment is given (named in your journal)",
+        "hold": "varies",
+        "why": "kill a Thalmor agent who is interfering with the Penitus Oculatus, keeping clear of the hold's guards"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Eliminate the Thalmor agent",
+          "Report to Commander Maro"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "when you report back to Commander Maro"
+      }
+    ],
+    "type": "Dark Brotherhood",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Commander Maro",
+        "role": "Penitus Oculatus commander who hands out the assignment and takes your report; stays at the Penitus Oculatus Outpost in Dragon Bridge"
+      },
+      {
+        "name": "Thalmor agent",
+        "role": "the target, placed at the assignment's location"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "Commander Maro's offer line for this assignment is in the records, but its conditions aren't in these files, so it's not known what else (if anything, such as finishing the main Penitus Oculatus missions) has to be true before he offers it."
+      },
+      {
+        "field": "takesYou",
+        "why": "The place is picked when the assignment starts; the records leave it unfilled, so there is no fixed location to name."
+      },
+      {
+        "field": "rewards",
+        "why": "The quest script hands out gold, but the amount isn't in these files."
+      },
+      {
+        "field": "choices",
+        "why": "The journal says to avoid any entanglement with the hold's authorities; the records don't show what happens if you're seen."
+      }
+    ],
+    "evidence": [
+      "QUST Penitus_Oculatus.esp:01CDD1 (zzzPORadiant05)",
+      "giver dialogue INFO Penitus_Oculatus.esp:01CDD7 (Maro, before the first stage)",
+      "reward: script QF_zzzPORadiant05 Gold001",
+      "Maro package DefaultStayAtEditorLocation; placed in Penitus Oculatus Outpost (cell Skyrim.esm:013A7B)"
+    ]
+  },
+  {
+    "edid": "DA03Start",
+    "name": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; also edited by Unofficial Skyrim Special Edition Patch.esp, Requiem.esp, Wintersun - Faiths of Skyrim.esp)",
+    "canDo": "talk",
+    "canDoWhy": "A guard at the Falkreath gate tells you Lod the blacksmith is offering a reward for a lost dog.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "a Falkreath gate guard (Imperial or Stormcloak, whoever holds Falkreath)",
+        "where": "at the gate outside Falkreath",
+        "how": "A guard outside Falkreath mentions that Lod, the blacksmith, is looking for a dog and offering a reward."
+      }
+    ],
+    "firstStep": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "takesYou": [
+      {
+        "place": "Lod's House, Falkreath",
+        "hold": "Falkreath",
+        "why": "talk to Lod about the dog"
+      },
+      {
+        "place": "the road outside Falkreath",
+        "hold": "Falkreath",
+        "why": "look for the dog, who turns out to be Barbas"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+          "Look around on the road outside Falkreath for Lod's dog"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "A Daedra's Best Friend"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Lod",
+        "role": "Falkreath's blacksmith; lives in Lod's House. By day (8 am for 12 hours) he works around a fixed spot in Falkreath; sleeps at home from midnight"
+      },
+      {
+        "name": "Falkreath gate guards",
+        "role": "Imperial or Stormcloak, depending on who holds Falkreath; one tells you about the dog"
+      },
+      {
+        "name": "Barbas",
+        "role": "the 'dog', met on the road outside Falkreath"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "The conditions on the guard's line (a level or anything else) aren't in these files; Requiem and Wintersun both edit this quest and what they changed isn't shown."
+      },
+      {
+        "field": "where",
+        "why": "Lod's day package points at a spot near his house (likely his forge), but that marker isn't named in these files; his placement is Lod's House."
+      },
+      {
+        "field": "rewards",
+        "why": "The journal says Lod is offering a reward, but no reward is attached to this quest in the records. The quest also sets out a piece of meat on the road, whose purpose isn't stated."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0D7939 (DA03Start), editedBy USSEP, Requiem, Wintersun - Faiths of Skyrim, Wintersun - Reqtificated; leadsTo Skyrim.esm:01BFC4",
+      "stage 5 log 'A guard outside Falkreath mentioned...'; objectives 5, 10",
+      "aliases Lod, ImperialGateGuard1/2, SonsGateGuard1/2, DA03Meat, DA03StartBarbasMeetMarker",
+      "Lod Skyrim.esm:013650: cell Lod's House, Falkreath; packages FalkreathLodSandbox8x12 (target Skyrim.esm:0CDEBB), DefaultSleepEditorLoc24x8"
+    ]
+  },
+  {
+    "edid": "DA03",
+    "name": "A Daedra's Best Friend",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Faiths of Skyrim.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Barbas, the talking dog you find on the road outside Falkreath; he wants help getting back to his master, Clavicus Vile.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Barbas",
+        "where": "on the road outside Falkreath (where Lod's lost dog is looked for)",
+        "how": "Find Barbas while looking for Lod's dog and talk to him; he asks for your help. If you put him off, he waits for you outside Haemar's Shame."
+      }
+    ],
+    "firstStep": "Talk with Barbas",
+    "takesYou": [
+      {
+        "place": "Haemar's Shame",
+        "hold": "Falkreath",
+        "why": "the shrine of Clavicus Vile inside, where Vile agrees to take Barbas back for the Rueful Axe"
+      },
+      {
+        "place": "Rimerock Burrow",
+        "hold": "Haafingar",
+        "why": "retrieve the Rueful Axe with Barbas; the wizard Sebastian Lort is there"
+      },
+      {
+        "place": "Haemar's Shame",
+        "hold": "Falkreath",
+        "why": "bring the Rueful Axe and Barbas back to the shrine"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Give the Rueful Axe to Clavicus Vile",
+        "leadsTo": "Barbas and Clavicus Vile are reunited and you receive the Masque of Clavicus Vile"
+      },
+      {
+        "choice": "Kill Barbas with the Rueful Axe",
+        "leadsTo": "Barbas dies and you keep the Rueful Axe"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk with Barbas",
+          "Join Barbas outside Haemar's Shame",
+          "Travel with Barbas to the shrine of Clavicus Vile",
+          "Join Barbas outside Rimerock Burrow",
+          "Retrieve the Rueful Axe with Barbas",
+          "Join Barbas outside Haemar's Shame",
+          "Return to the shrine of Clavicus Vile with Barbas and the Rueful Axe",
+          "Give the Rueful Axe to Clavicus Vile OR kill Barbas with the Rueful Axe"
+        ]
+      },
+      {
+        "branch": "kill Barbas",
+        "objectives": [
+          "Speak to Clavicus Vile"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Masque of Clavicus Vile",
+        "when": "if you give the Rueful Axe to Clavicus Vile"
+      },
+      {
+        "what": "Rueful Axe",
+        "when": "if you kill Barbas with it and keep it"
+      }
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": [
+      "Barbas dies, if you kill him with the Rueful Axe",
+      "You give up either the Rueful Axe or the Masque of Clavicus Vile: you can't get both"
+    ],
+    "people": [
+      {
+        "name": "Barbas",
+        "role": "Clavicus Vile's talking dog; travels with you"
+      },
+      {
+        "name": "Clavicus Vile",
+        "role": "Daedric Prince, speaks through his shrine in Haemar's Shame"
+      },
+      {
+        "name": "Sebastian Lort",
+        "role": "wizard leader in Rimerock Burrow, where the Rueful Axe is"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "Barbas's offer line has no conditions in these files; whether you can meet him without first hearing about Lod's dog isn't shown. His placement is inside Haemar's Shame, and the quest moves him to a meeting marker on the road."
+      },
+      {
+        "field": "needs",
+        "why": "Wintersun - Faiths of Skyrim edits this quest last; what it changed (for example anything tied to worship) isn't shown in these files."
+      },
+      {
+        "field": "takesYou",
+        "why": "The places index lists Haemar's Shame under Falkreath hold (nearest settlement Ivarstead) and Rimerock Burrow under Haafingar, near Dragon Bridge."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:01BFC4 (DA03), editedBy Wintersun - Faiths of Skyrim.esp",
+      "giver Barbas Skyrim.esm:01BFC5, INFO Skyrim.esm:07EAE0 (before stage 10); INFO Skyrim.esm:0896A7 'find me outside Haemar's Shame'",
+      "stage 25/50/70/150/155/200 logs; objectives 20-155",
+      "rewards via QF_DA03_0001BFC4.Masque (Skyrim.esm:0D2846), .RuefulAxe (Skyrim.esm:01C4E6)",
+      "INFO Skyrim.esm:0209C1, 01CDAB (Rueful Axe in Rimerock Burrow)",
+      "WizardLeader Sebastian Lort Skyrim.esm:01C4E5 in Rimerock Burrow; DA03Start leadsTo DA03"
+    ]
+  },
+  {
+    "edid": "DA14Start",
+    "name": "Participate in a drinking contest with Sam Guevenne",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Sam Guevenne, a stranger in an inn, challenges you to a drinking contest.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Sam Guevenne",
+        "where": "an inn; the records place him in The Bee and Barb in Riften",
+        "how": "Talk to Sam Guevenne and take him up on his drinking contest."
+      }
+    ],
+    "firstStep": "Participate in a drinking contest with Sam Guevenne",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Participate in a drinking contest with Sam Guevenne"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [
+      "A Night To Remember"
+    ],
+    "closes": [],
+    "people": [
+      {
+        "name": "Sam Guevenne",
+        "role": "challenges you to the drinking contest; essential"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "where",
+        "why": "The quest has its own inn and town-centre slots and a marker for Sam's package, so it can move him to whichever inn it picks; his fixed placement in the records is The Bee and Barb in Riften. Which inn, and what event starts it (for example a level), isn't in these files."
+      },
+      {
+        "field": "needs",
+        "why": "No start conditions for this quest are in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:03FA17 (DA14Start), editedBy USSEP; leadsTo Skyrim.esm:01BB9B (DA14)",
+      "objective 20; stage 70 completes",
+      "aliases EventLocation, TownCenterMarker, InnMarker, InnLocation, DA14StartSamwellPackageMarker, DA14StartSamwell",
+      "Sam Guevenne Skyrim.esm:01BB9C: ref Skyrim.esm:0A96A0 in The Bee and Barb (Riften); package DefaultSandboxCurrentLocation256; essential"
+    ]
+  }
+]

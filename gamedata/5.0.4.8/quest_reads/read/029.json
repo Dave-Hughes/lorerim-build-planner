@@ -1,0 +1,934 @@
+[
+ {
+  "edid": "NMeridia09",
+  "name": "The Ritual",
+  "plugin": "Meridia.esp (no later plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "It begins on its own when you finish The Pocket Realm; then you talk to High Priestess Alara at Fort Justice.",
+  "needs": [
+   {
+    "what": "Finish The Pocket Realm (Meridia's Order)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "High Priestess Alara",
+    "where": "Fort Justice, the Order's fort in the Rift",
+    "how": "When you come back from destroying Fiya's pocket realm, the journal tells you to speak with Alara when you are ready. Talk to her to set out after Fiya."
+   }
+  ],
+  "firstStep": "Speak to Alara",
+  "takesYou": [
+   {
+    "place": "Fort Justice",
+    "hold": "The Rift",
+    "why": "Alara briefs you here, and you come back here at the end"
+   },
+   {
+    "place": "Hob's Fall Cave",
+    "hold": "Winterhold",
+    "why": "Fiya's hideaway, where she is trying to raise the First Vampire"
+   },
+   {
+    "place": "Lamae's Catacomb",
+    "hold": "",
+    "why": "Lamae Bal pulls you into her crypt; you must destroy her to escape"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Alara",
+     "Stop the Ritual",
+     "Speak with Fiya",
+     "Destroy Lamae Bal",
+     "Return to Alara",
+     "Speak with Meridia"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Lesser Ring of Khajiiti (ring)",
+    "when": "at the end, from Meridia"
+   }
+  ],
+  "type": "None",
+  "opens": [
+   "Champion's Choice",
+   "Repentance Upheld",
+   "Stendarr's Mercy",
+   "Finding Yourself",
+   "A Parting Gift"
+  ],
+  "closes": [
+   "Lamae Bal is destroyed"
+  ],
+  "people": [
+   {
+    "name": "High Priestess Alara",
+    "role": "leader of Meridia's Order; gives the quest and travels with you to Fiya's hideaway"
+   },
+   {
+    "name": "Paladin Marith",
+    "role": "travels with you; afterwards offers to fight at your side"
+   },
+   {
+    "name": "Fiya",
+    "role": "leader of the Malevolent, found in Hob's Fall Cave"
+   },
+   {
+    "name": "Lamae Bal",
+    "role": "the First Vampire, fought in Lamae's Catacomb"
+   },
+   {
+    "name": "Meridia",
+    "role": "speaks with you at Fort Justice at the end"
+   },
+   {
+    "name": "Vaegra",
+    "role": "named in the quest (she lives at Old Hroldan Inn); her part isn't clear from the records"
+   },
+   {
+    "name": "Orthelos",
+    "role": "named in the quest, at Fort Justice"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "The quest's opening journal text is the same as the last entry of The Pocket Realm, so it seems to be started by that quest's ending; the script that does it isn't in these files."
+   },
+   {
+    "field": "opens",
+    "why": "The closing journal entry says to see what else you can do for the Order's members; the five members' own quests are listed here on that basis. Their dialogue conditions aren't in these files, so whether they truly wait for this quest is not confirmed."
+   },
+   {
+    "field": "rewards",
+    "why": "The journal says 'Ring of Khajiiti'; the quest script gives the Lesser Ring of Khajiiti. A separate 'Ring of Khajiiti' item exists, and how you get that one isn't shown here."
+   },
+   {
+    "field": "choices",
+    "why": "There is a 'Speak with Fiya' step and Fiya follows you in the catacomb, but whether you can spare or side with her isn't in the records."
+   },
+   {
+    "field": "takesYou",
+    "why": "Lamae's Catacomb has no hold or map location in these files."
+   }
+  ],
+  "evidence": [
+   "quests_raw NMeridia09 Meridia.esp:01F41F stages 10-80, objectives",
+   "quests_raw NMeridia08 completing stage 40 log == NMeridia09 stage 10 log",
+   "quest_givers giver Alara INFO Meridia.esp:02554A stageBelow 11",
+   "quest_givers reward QF_NMeridia09_0201F41F.NMeridiaRingofKhajiiti -> Meridia.esp:026B06",
+   "people_schedules Alara NMeridia07AlaraStand02 (Fort Justice, NMeridia07>=80), NMeridia09FollowPlayer (stage 20, shared by Alara+Marith), NMeridia09AlaraForcegreet01 (Fort Justice, stage 60)",
+   "people_schedules Marith NMeridia09Forcegreet01 Hob's Fall Cave stage 60",
+   "people_schedules Fiya NMeridia09FiyaFollow01 stage 30, FiyaForcegreet01 Lamae's Catacomb",
+   "places_raw Hob's Fall Cave hold Winterhold; NMeridia05 log: Fort Justice 'an abandoned outpost in the Rift'",
+   "places_raw Marith INFO Meridia.esp:028BA6",
+   "items_raw Meridia.esp:062242 Ring of Khajiiti"
+  ]
+ },
+ {
+  "edid": "NMeridiaAsger01",
+  "name": "Champion's Choice",
+  "plugin": "Meridia.esp (no later plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Paladin Asger of Meridia's Order asks you to lead a mission to Riften.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Paladin Asger",
+    "where": "Fort Justice, the Order's fort in the Rift",
+    "how": "Offer Asger your help; he asks you to take the lead and travel with him to Riften to hear a noble who says he saw a warlock. You can also turn him down."
+   }
+  ],
+  "firstStep": "Speak to Arandar in Mistveil Keep, Riften",
+  "takesYou": [
+   {
+    "place": "Mistveil Keep",
+    "hold": "The Rift",
+    "why": "hear the noble Arandar's story"
+   },
+   {
+    "place": "The Ratway Warrens (near Esbern's Vault)",
+    "hold": "The Rift",
+    "why": "find Orfoljt, the man Arandar calls a warlock"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Believe Arandar and kill Orfoljt",
+    "leadsTo": "One of two endings with Asger"
+   },
+   {
+    "choice": "Believe Orfoljt and kill Arandar",
+    "leadsTo": "The other ending with Asger"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Arandar",
+     "Find Orfoljt",
+     "Kill Orfoljt or Arandar",
+     "Speak to Asger"
+    ]
+   },
+   {
+    "branch": "Arandar must die",
+    "objectives": [
+     "Kill Arandar",
+     "Speak to Asger"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Paladin Asger offers his services (he can follow you)",
+    "when": "at the good ending"
+   }
+  ],
+  "type": "None",
+  "opens": [],
+  "closes": [
+   "Arandar or Orfoljt dies",
+   "At the bad ending Asger asks you to keep your distance from him"
+  ],
+  "people": [
+   {
+    "name": "Paladin Asger",
+    "role": "gives the quest and travels with you"
+   },
+   {
+    "name": "Arandar",
+    "role": "noble in Mistveil Keep, Riften"
+   },
+   {
+    "name": "Orfoljt",
+    "role": "the accused man, in the Ratway Warrens near Esbern's Vault"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The conditions on Asger's offer aren't in these files. The Ritual's last journal entry points you to the Order's members, so it likely opens after that, but this isn't confirmed."
+   },
+   {
+    "field": "where",
+    "why": "Asger is placed in Meridia's Sanctum; his packages keep him at Fort Justice once the Order has moved there, which is where he should be by this point."
+   },
+   {
+    "field": "choices",
+    "why": "The records have one ending where Asger offers his services and one where he is upset, but they don't say which choice leads to which."
+   }
+  ],
+  "evidence": [
+   "quests_raw NMeridiaAsger01 Meridia.esp:02B1F6 stages 5 (rejection), 10-51, objectives",
+   "quest_givers giver Asger INFO Meridia.esp:02BCC7 stageBelow 1; Arandar stageBelow 11; Orfoljt stageBelow 21",
+   "people_raw Arandar Mistveil Keep Riften; Orfoljt The Ratway Warrens / Esbern's Vault",
+   "people_schedules Asger NMeridiaAsger01FollowPlayer01, NMeridiaFortJusticeAsger01-03 (NMeridia09>=25), NMeridiaAsgerFortJustice04; PotentialFollowerFaction",
+   "places_raw Mistveil Keep lists Champion's Choice"
+  ]
+ },
+ {
+  "edid": "NMeridiaGarin01",
+  "name": "Repentance Upheld",
+  "plugin": "Meridia.esp (no later plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Initiate Garin asks you to go with him to confront the leader of his old cult in Windhelm.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Initiate Garin",
+    "where": "Fort Justice, the Order's fort in the Rift",
+    "how": "Offer Garin your help; he asks you to come with him to face the leader of the cult he used to belong to. You can also turn him down."
+   }
+  ],
+  "firstStep": "Find the cult leader in Windhelm",
+  "takesYou": [
+   {
+    "place": "Hall of the Dead, Windhelm",
+    "hold": "Eastmarch",
+    "why": "the cult leader Rosette is here"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the Cult Leader in Windhelm",
+     "Confront Rosette",
+     "Speak to Garin",
+     "Kill Rosette",
+     "Speak to Garin"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Initiate Garin offers his services (he can follow you)",
+    "when": "at the end"
+   }
+  ],
+  "type": "None",
+  "opens": [],
+  "closes": [
+   "Rosette dies"
+  ],
+  "people": [
+   {
+    "name": "Initiate Garin (Garin Anathri)",
+    "role": "gives the quest and comes with you"
+   },
+   {
+    "name": "Rosette",
+    "role": "the cult leader, in Windhelm's Hall of the Dead"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The conditions on Garin's offer aren't in these files; like the other members' quests it likely follows The Ritual, but this isn't confirmed."
+   },
+   {
+    "field": "where",
+    "why": "Garin is placed in Meridia's Sanctum; his packages keep him at Fort Justice once the Order has moved there."
+   }
+  ],
+  "evidence": [
+   "quests_raw NMeridiaGarin01 Meridia.esp:02A183 stages 5-50, objectives",
+   "quest_givers giver Garin INFO Meridia.esp:02A18E stageBelow 1",
+   "people_raw Rosette Meridia.esp:02A184 Hall of the Dead Windhelm",
+   "people_schedules Garin NMeridiaGarin01FollowPlayer01/02, NMeridiaGarin01Forcegreet01 (Windhelm Hall of the Dead, stage 20), NMeridiaFortJusticeGarin01/02; PotentialFollowerFaction",
+   "places_raw Garin INFO Meridia.esp:02E30A"
+  ]
+ },
+ {
+  "edid": "NMeridiaLaracin01",
+  "name": "Stendarr's Mercy",
+  "plugin": "Meridia.esp (no later plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "After a run-in with the Vigilants of Stendarr, Arch-Paladin Laracin asks you to help kill their leader at Stendarr's Beacon.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Arch-Paladin Laracin",
+    "where": "Fort Justice, the Order's fort in the Rift",
+    "how": "After the Order's confrontation with the Vigilants, Laracin asks you to join him in wiping them out at Stendarr's Beacon. Agree, talk him into letting you try for a truce, or tell him to deal with it himself."
+   }
+  ],
+  "firstStep": "Lead Laracin up the hill to Stendarr's Beacon and kill the Vigilant leader",
+  "takesYou": [
+   {
+    "place": "Stendarr's Beacon",
+    "hold": "The Rift",
+    "why": "the Vigilants' leader is here"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Help Laracin kill the Vigilant leader",
+    "leadsTo": "Laracin offers you his services"
+   },
+   {
+    "choice": "Convince Laracin to let you try a truce, and make it",
+    "leadsTo": "Peace with the Vigilants; the quest ends there"
+   },
+   {
+    "choice": "Refuse to help",
+    "leadsTo": "The quest fails; Laracin deals with it himself"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "kill",
+    "objectives": [
+     "Kill the Vigilant Leader",
+     "Speak to Laracin"
+    ]
+   },
+   {
+    "branch": "truce",
+    "objectives": [
+     "Kill the Vigilant Leader or make a truce",
+     "Speak to Laracin"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Arch-Paladin Laracin offers his services (he can follow you)",
+    "when": "if you kill the Vigilant leader"
+   }
+  ],
+  "type": "None",
+  "opens": [],
+  "closes": [
+   "Killing path: the Vigilant leader dies",
+   "Refusing fails the quest"
+  ],
+  "people": [
+   {
+    "name": "Arch-Paladin Laracin",
+    "role": "gives the quest and comes with you"
+   },
+   {
+    "name": "Vigilant Varacus",
+    "role": "the Vigilant at the centre of the quest, likely the leader"
+   },
+   {
+    "name": "Vigilant Archeus",
+    "role": "a Vigilant you can talk to; part of the confrontation and likely the truce"
+   },
+   {
+    "name": "High Priestess Alara",
+    "role": "has lines in this quest"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The quest follows a small unnamed scene where Vigilant Archeus confronts you; that scene's trigger and the conditions on Laracin's offer aren't in these files."
+   },
+   {
+    "field": "people",
+    "why": "Varacus and Archeus have no fixed placement in these files, so where exactly you meet them isn't confirmed; Laracin's lines put the leader at Stendarr's Beacon. Which of them the truce is made with isn't stated."
+   },
+   {
+    "field": "rewards",
+    "why": "Only the killing ending's journal says Laracin offers his services; the truce ending doesn't mention a reward."
+   },
+   {
+    "field": "where",
+    "why": "Laracin is placed in Meridia's Sanctum; his packages keep him at Fort Justice once the Order has moved there."
+   }
+  ],
+  "evidence": [
+   "quests_raw NMeridiaLaracin01 Meridia.esp:02A15E stages 5, 10-40 (27 & 30 complete, 40 fails), objectives",
+   "quest_givers giver Laracin INFO Meridia.esp:02A165 stageBelow 1; Archeus stageBelow 16; Alara stageBelow 21",
+   "places_raw Stendarr's Beacon (The Rift) Laracin INFO Meridia.esp:02A166, 02A168, 02A16D, 02A173",
+   "people_schedules Archeus NMeridiaVigilantMiscForcegreet01 (Meridia.esp:02A13F stage 0); Laracin NMeridiaLaracin01LaracinFollow01; Varacus/Archeus placed in persistent cell Skyrim.esm:000D74"
+  ]
+ },
+ {
+  "edid": "NMeridiaUna01",
+  "name": "Finding Yourself",
+  "plugin": "Meridia.esp (no later plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Acolyte Una doubts her place in Meridia's Order and asks you to come with her on a journey of self-discovery.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Acolyte Una",
+    "where": "Fort Justice, the Order's fort in the Rift",
+    "how": "Offer Una your help; she asks you to go with her, starting with a talk with High Priestess Alara. You can also turn her down."
+   }
+  ],
+  "firstStep": "Accompany Una to Alara",
+  "takesYou": [
+   {
+    "place": "Meridia's Shrine",
+    "hold": "",
+    "why": "travel there with Una"
+   },
+   {
+    "place": "Meridia's Sanctum",
+    "hold": "",
+    "why": "the Order's old home; a vampire waits there"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Accompany Una to Alara",
+     "Travel to Meridia's Shrine with Una",
+     "Travel to Meridia's Sanctum",
+     "Kill the Vampire",
+     "Speak to Una"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Acolyte Una offers her services as a trader",
+    "when": "at the end"
+   }
+  ],
+  "type": "None",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Acolyte Una",
+    "role": "gives the quest and travels with you; becomes a trader"
+   },
+   {
+    "name": "High Priestess Alara",
+    "role": "Una talks to her first"
+   },
+   {
+    "name": "a vampire",
+    "role": "the enemy at Meridia's Sanctum"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "Neither Meridia's Shrine nor Meridia's Sanctum has a hold or map location in these files."
+   },
+   {
+    "field": "needs",
+    "why": "The conditions on Una's offer aren't in these files; like the other members' quests it likely follows The Ritual, but this isn't confirmed."
+   },
+   {
+    "field": "where",
+    "why": "Una is placed in Meridia's Sanctum; her packages keep her at Fort Justice once the Order has moved there."
+   }
+  ],
+  "evidence": [
+   "quests_raw NMeridiaUna01 Meridia.esp:02C7C9 stages 5-60, objectives",
+   "quest_givers giver Una INFO Meridia.esp:02CD35 stageBelow 1; Alara stageBelow 21; Vampire Meridia.esp:02CD61 in persistent cell",
+   "people_schedules Una NMeridiaUna01FollowPlayer01, NMeridiaFortJusticeUna01-03; NMeridiaMerchantUnaFaction"
+  ]
+ },
+ {
+  "edid": "NMeridiaValrar01",
+  "name": "A Parting Gift",
+  "plugin": "Meridia.esp (no later plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Initiate Valrar wants back the family ring he gave his ex-partner in Riverwood, without anyone getting hurt.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Initiate Valrar",
+    "where": "Fort Justice, the Order's fort in the Rift",
+    "how": "Offer Valrar your help; he tells you he gave his family ring to his ex, a mill worker in Riverwood, and asks you to get it back without harming him. You can also turn him down."
+   }
+  ],
+  "firstStep": "Obtain Valrar's family ring from Dario in Riverwood",
+  "takesYou": [
+   {
+    "place": "Sleeping Giant Inn, Riverwood",
+    "hold": "Whiterun",
+    "why": "Dario, Valrar's ex-partner, has the ring"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Get the ring peacefully and give it to Valrar",
+    "leadsTo": "Valrar becomes a trader, cures your diseases and gives you a free potion every day"
+   },
+   {
+    "choice": "Give him the ring and talk him into leaving the Order for Dario",
+    "leadsTo": "Valrar leaves the Order and moves to Riverwood"
+   },
+   {
+    "choice": "Kill Dario and tell Valrar",
+    "leadsTo": "Valrar is upset and asks you to keep away from him"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Obtain Valrar's Family Ring",
+     "Return to Valrar"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Valrar's services: trader, disease cure, a free potion each day",
+    "when": "if you return the ring and he stays in the Order"
+   }
+  ],
+  "type": "None",
+  "opens": [],
+  "closes": [
+   "If you kill Dario, Valrar turns you away",
+   "If you talk him into leaving, Valrar leaves the Order for the Sleeping Giant Inn"
+  ],
+  "people": [
+   {
+    "name": "Initiate Valrar",
+    "role": "gives the quest; a healer and trader of the Order"
+   },
+   {
+    "name": "Dario",
+    "role": "Valrar's ex-partner, at the Sleeping Giant Inn in Riverwood"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The quest script holds Fine Quilted Clothes and Blessed Robes, but it isn't clear whether you get them or they are Valrar's change of clothes when he leaves the Order."
+   },
+   {
+    "field": "steps",
+    "why": "There is a 'Jar' in the quest, possibly where the ring is kept; how you get the ring from Dario isn't in these files."
+   },
+   {
+    "field": "needs",
+    "why": "The conditions on Valrar's offer aren't in these files; like the other members' quests it likely follows The Ritual, but this isn't confirmed."
+   },
+   {
+    "field": "where",
+    "why": "Valrar is placed in Meridia's Sanctum; his packages keep him at Fort Justice once the Order has moved there."
+   }
+  ],
+  "evidence": [
+   "quests_raw NMeridiaValrar01 Meridia.esp:030946 stages 5-50 (30/40/50 complete), objectives, alias Jar",
+   "quest_givers giver Valrar INFO Meridia.esp:031992 stageBelow 1; Dario stageBelow 11; rewards QF_NMeridiaValrar01_02030946.Clothes / .robes",
+   "places_raw Riverwood Valrar INFO Meridia.esp:031993, 031998, 08ECD7",
+   "people_raw Dario Sleeping Giant Inn Riverwood",
+   "people_schedules Valrar NMeridiaValrar01Sandbox (Sleeping Giant Inn, stage 50), NMeridiaMerchantValrarFaction"
+  ]
+ },
+ {
+  "edid": "zzzPO00",
+  "name": "Penitus Oculatus",
+  "plugin": "Penitus_Oculatus.esp (last edited by JKs Dark Brotherhood Sanctuary - Penitus Oculatus patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Join the Penitus Oculatus by talking to Commander Maro at their outpost in Dragon Bridge.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Commander Maro",
+    "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+    "how": "Talk to Maro and join; the journal then tells you to speak to him for assignments."
+   }
+  ],
+  "firstStep": "Speak to Commander Maro for assignments",
+  "takesYou": [
+   {
+    "place": "Penitus Oculatus Outpost, Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "Maro hands out the assignments here"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Speak to Commander Maro for assignments"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Penitus Oculatus Cuirass, Bracers, Helmet and Boots",
+    "when": "on joining"
+   }
+  ],
+  "type": "Dark Brotherhood",
+  "opens": [
+   "Unfinished Business"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Commander Maro",
+    "role": "head of the Penitus Oculatus in Skyrim; gives every assignment"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The conditions on Maro's joining line aren't in these files. The mod has a 'Legion requirement met' setting that starts off, so joining may need something to do with the Imperial Legion; and its jobs hunt 'escaped' Dark Brotherhood members, which suggests it expects the Brotherhood to have been destroyed. Neither is confirmed."
+   },
+   {
+    "field": "rewards",
+    "why": "The armour is held by the quest's script; that it is handed over on joining is the likely reading, not confirmed."
+   },
+   {
+    "field": "opens",
+    "why": "Maro is also the giver of the line's repeatable jobs (a second Unfinished Business, House Cleaning, Paperwork, Inquisition, Troubleshoot); what unlocks them isn't in these files."
+   },
+   {
+    "field": "where",
+    "why": "Maro uses a stay-where-placed package, so the outpost should be right, but that package is shared by many people."
+   },
+   {
+    "field": "closes",
+    "why": "Maro is a target in the Dark Brotherhood's own quests (To Kill an Empire, Hail Sithis!); how that clashes with this line isn't in the records."
+   }
+  ],
+  "evidence": [
+   "quests_raw zzzPO00 Penitus_Oculatus.esp:0012D1 stage 1, editedBy JKs Dark Brotherhood Sanctuary - Penitus Oculatus patch.esp",
+   "quest_givers giver Maro INFO Penitus_Oculatus.esp:10DD93 stageBelow 1; rewards zzzPO00script.ArmorPenitus*",
+   "quest_starts penitus-oculatus startGame true, global zzzPOLegionRequirementMet = 0",
+   "people_schedules Maro DefaultStayAtEditorLocation; quests DB09, DB11, DBDestroy aliases",
+   "people_raw Commander Maro Penitus Oculatus Outpost, Dragon Bridge"
+  ]
+ },
+ {
+  "edid": "zzzPO01Informant",
+  "name": "Unfinished Business",
+  "plugin": "Penitus_Oculatus.esp (no later plugin edits the quest)",
+  "canDo": "talk",
+  "canDoWhy": "Commander Maro's first assignment: hunt down an escaped Dark Brotherhood assassin at Moorside Inn in Morthal.",
+  "needs": [
+   {
+    "what": "Join the Penitus Oculatus",
+    "kind": "faction"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Commander Maro",
+    "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+    "how": "Ask Maro for an assignment; he sends you after a Dark Brotherhood assassin seen at Moorside Inn."
+   }
+  ],
+  "firstStep": "Eliminate the Dark Brotherhood remnant at Moorside Inn",
+  "takesYou": [
+   {
+    "place": "Moorside Inn, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "the assassin is hiding here"
+   },
+   {
+    "place": "Penitus Oculatus Outpost, Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "escort her here if she defects, and report to Maro"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Kill her",
+    "leadsTo": "Search her body for intel; you learn where Cicero and Babette are"
+   },
+   {
+    "choice": "Let her defect",
+    "leadsTo": "Escort her to the outpost in Dragon Bridge and talk to her there; she gives you the Listener's Orders with Cicero's and Babette's whereabouts"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "kill",
+    "objectives": [
+     "Eliminate the Dark Brotherhood remnant",
+     "Report to Commander Maro"
+    ]
+   },
+   {
+    "branch": "defect",
+    "objectives": [
+     "Talk to the Dark Brotherhood informer at the Penitus Oculatus outpost",
+     "Read Listener's Orders",
+     "Report to Commander Maro"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you report to Maro"
+   }
+  ],
+  "type": "Dark Brotherhood",
+  "opens": [
+   "Bad Blood",
+   "Fool's Errand"
+  ],
+  "closes": [
+   "If you kill her, the Dark Brotherhood Defector dies"
+  ],
+  "people": [
+   {
+    "name": "Commander Maro",
+    "role": "gives the assignment"
+   },
+   {
+    "name": "Dark Brotherhood Defector",
+    "role": "the escaped assassin at Moorside Inn; she offers to defect"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The amount of gold isn't in these files."
+   },
+   {
+    "field": "opens",
+    "why": "Both endings give you Cicero's and Babette's locations, which is what Bad Blood and Fool's Errand need; the script that starts those two isn't in these files."
+   },
+   {
+    "field": "name",
+    "why": "A repeatable job with the same name exists in this mod; this entry is the fixed Moorside Inn one."
+   }
+  ],
+  "evidence": [
+   "quests_raw zzzPO01Informant Penitus_Oculatus.esp:00A9C4 stages 1-20, objectives, fills (Location=Moorside Inn, Note=Listener's Orders)",
+   "quest_givers giver Maro INFO Penitus_Oculatus.esp:00AF29 stageBelow 1; Defector stageBelow 2; reward Gold001",
+   "places_raw Dragon Bridge INFO Penitus_Oculatus.esp:00AF38",
+   "people_raw Dark Brotherhood Defector Moorside Inn, Morthal",
+   "people_schedules Defector zzzPOInformantDawnstarSandbox (zzzPO04Sanctuary>=5)",
+   "quests_raw zzzPORadiant01 same name"
+  ]
+ },
+ {
+  "edid": "zzzPO02Babette",
+  "name": "Bad Blood",
+  "plugin": "Penitus_Oculatus.esp (no later plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "Opens once you've learned Babette's whereabouts in Unfinished Business; track her down and kill her, then report to Maro.",
+  "needs": [
+   {
+    "what": "Finish Unfinished Business (learn where Babette is)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Eliminate Babette",
+  "takesYou": [
+   {
+    "place": "Penitus Oculatus Outpost, Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "report to Maro"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Eliminate Babette",
+     "Report to Commander Maro"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you report to Maro"
+   }
+  ],
+  "type": "Dark Brotherhood",
+  "opens": [],
+  "closes": [
+   "Babette dies"
+  ],
+  "people": [
+   {
+    "name": "Babette",
+    "role": "the escaped Dark Brotherhood assassin you hunt"
+   },
+   {
+    "name": "Commander Maro",
+    "role": "you report to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No giver line for this quest is in these files; it seems to start from the intel you get in Unfinished Business, but the script that does it isn't here."
+   },
+   {
+    "field": "takesYou",
+    "why": "Where Babette is hiding is filled in by the quest at run time and isn't in these files."
+   },
+   {
+    "field": "needs",
+    "why": "Babette must still be alive, which suggests the Dark Brotherhood has been broken up first; not confirmed."
+   },
+   {
+    "field": "rewards",
+    "why": "The amount of gold isn't in these files."
+   }
+  ],
+  "evidence": [
+   "quests_raw zzzPO02Babette Penitus_Oculatus.esp:004E19 stages 1-3, fills Babette / Commander Maro",
+   "quest_givers no giver; reward Gold001",
+   "quests_raw zzzPO01Informant stages 5 & 13 (locations of Cicero and Babette), aliases BabetteLocation/CiceroLocation"
+  ]
+ },
+ {
+  "edid": "zzzPO03Cicero",
+  "name": "Fool's Errand",
+  "plugin": "Penitus_Oculatus.esp (no later plugin edits the quest)",
+  "canDo": "by itself",
+  "canDoWhy": "Opens once you've learned Cicero's whereabouts in Unfinished Business; kill him, read his journal, then report to Maro.",
+  "needs": [
+   {
+    "what": "Finish Unfinished Business (learn where Cicero is)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Eliminate Cicero",
+  "takesYou": [
+   {
+    "place": "Penitus Oculatus Outpost, Dragon Bridge",
+    "hold": "Haafingar",
+    "why": "report to Maro"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Eliminate Cicero",
+     "Read Cicero's journal",
+     "Report to Commander Maro"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Gold",
+    "when": "when you report to Maro"
+   }
+  ],
+  "type": "Dark Brotherhood",
+  "opens": [
+   "A Nest of Vipers"
+  ],
+  "closes": [
+   "Cicero dies"
+  ],
+  "people": [
+   {
+    "name": "Cicero",
+    "role": "the escaped Dark Brotherhood jester you hunt; his journal holds the Dawnstar Sanctuary passphrase"
+   },
+   {
+    "name": "Commander Maro",
+    "role": "you report to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "No giver line for this quest is in these files; it seems to start from the intel you get in Unfinished Business, but the script that does it isn't here."
+   },
+   {
+    "field": "takesYou",
+    "why": "Where Cicero is hiding is filled in by the quest at run time and isn't in these files."
+   },
+   {
+    "field": "opens",
+    "why": "A Nest of Vipers begins with you holding the Dawnstar Sanctuary passphrase, which this quest gives you; whether it also needs Bad Blood done isn't shown."
+   },
+   {
+    "field": "rewards",
+    "why": "The amount of gold isn't in these files."
+   }
+  ],
+  "evidence": [
+   "quests_raw zzzPO03Cicero Penitus_Oculatus.esp:008968 stages 1-4, fills Cicero / Commander Maro, alias Journal",
+   "quest_givers no giver; reward Gold001",
+   "quests_raw zzzPO04Sanctuary first log (passphrase 'innocence, my brother')"
+  ]
+ }
+]
