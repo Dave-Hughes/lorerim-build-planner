@@ -1,0 +1,1363 @@
+{
+  "checks": [
+    {
+      "edid": "WTPlayerHome",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Lurius's line INFO 28D0B9 offers the fort while this quest is below stage 11; stage 10 log 'I should speak to Lurius Liore about the fate of Fort Valus'."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Lurius is in the Wyrmstooth Holder Cell until the Wyrmstooth scripts use him: Bannered Mare while WTDragonHunt runs, Solitude/Red Wave at WTBarrowOfTheWyrm 10, Stonehollow sandbox from Barrow stage 180 (WTLuriusSandboxWyrmstooth), Tradehouse packages at Barrow 270."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "who/how agree (stage 10 log, objective 10, INFO 28D0B9 on Fort Moonwatch/the fort's history). where: WTPostQuestWritingLedger is in cell East Empire Company Tradehouse but its place is 'Wyrmstooth Longhouse', not Stonehollow; sleep/flee packages target 00665B, unnamed. Kept the reader's words, added an unsure note."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Ask Lurius Liore about Fort Valus.'"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Fort Valus is the subject of the quest (people placed in Fort Valus Barracks/Muster). Tradehouse location covered by the new unsure note."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Aliases UpgradeCleanup…UpgradeCommonHouse; stage 20 log 'upgrade the fort or hire a crew'."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 20 log 'bought the deed to Fort Valus'; upgrade aliases. No price in the records; reader's unsure note says so."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "WTPricelessCommodity",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 1 log (Bolmar's note); WTBolmarForcegreet while stage <= 1; giver INFO 48F997 while stage < 2."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Only being on Wyrmstooth; no conditions beyond the stage gate in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "who Bolmar (Wyrmstooth.esp:489147), placed in the Wyrmstooth exterior at location Gronndal Grove; how: note or his forcegreet."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 1 'Speak to Bolmar at Gronndal Grove.'"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Matriarch and spriggans placed in cell Gronndal Grove (486526). Not in the places index, as the reader says."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 15/20/30 (kill the Matriarch), 40/50/60 (side with her), 45/46/47 (betray her). WTGronndalMiners at 30 or 47 moves Bolmar, Geitrich and the miners into the grove."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward alias, item or gold in quests_raw or quest_givers."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Objective 40 'Kill the miners' (aliases Miner1-3); stage 15 Matriarch turns hostile. Bolmar is essential, so 'the miners' is right rather than Bolmar."
+        }
+      }
+    },
+    {
+      "edid": "WTShargamFavor",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 3A149C (Shargam, stage < 1); stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Shargam sits in the Wyrmstooth Holder Cell until the Wyrmstooth quests use him (WTDragonHunt/WTBarrowOfTheWyrm packages). Timing unsure, as the reader says."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "who/how agree. where: 'stays around Stonehollow' isn't in the records; his post-story sandbox WTSandboxWyrmstooth targets Wyrmstooth.esp:00B402, which no file names (Lurius's Stonehollow sandbox is a different ref, 002837). Reworded and added an unsure note."
+        },
+        "firstStep": {
+          "verdict": "fix",
+          "note": "Correct target, but missing how to get off the island: Shargam's idle line INFO B723B0 says the Red Wave is docked near Fort Moonwatch and Holmar gives passage back to Skyrim. Added."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Added the Red Wave near Fort Moonwatch (INFO B723B0, places_raw Fort Moonwatch pointer). Silver-Blood Inn agrees (INFO 3A149C, WTUlfgarSandboxSilverbloodInn)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages; Ulfgar has his own line while stage < 11 and stage 15 'confronted', covered in the reader's unsure note."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward alias, item or gold in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 20 'I have killed Ulfgar'; objective 10 'Kill Ulfgar.'"
+        }
+      }
+    },
+    {
+      "edid": "WTSignyFavor",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO B5DA1C (Signy, stage < 1); stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Only reaching Stonehollow; Stonehollow being in ruins mid-story is already in the unsure note."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "who Signy (Wyrmstooth.esp:009530), placed in Hulgard And Svenja's House, location Stonehollow; packages as the reader read them (WTKidsPlayOutside8x10, eat 7/18, sleep 0x7)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Steal the ledger.'"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 10: she doesn't know where the ledger is kept; Erikur is placed in Erikur's House, Solitude. Added his daytime Blue Palace packages to the unsure note so a player knows where he'll be."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None named in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "WTTheNakedNord",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 1 log (the note); giver INFO C651E1 (Gjalrunn, stage < 2)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Objective 25 'Exchange a daedra heart for the paralysis antidote.'; stage 70 'the antidote I obtained from Glendora'."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "who Gjalrunn (Wyrmstooth.esp:BCCBEE) in the Wyrmstooth exterior, no location; paralysed per stages 10/20 and WTGjalrunnDoNothingPackage."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objectives 1 and 2."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 20 'old castle on the island to the north-west'; stage 30 / objective 30 Krakevisa; Ritual Master in Krakevisa Midden. Glendora also walks up to you at stage 20 (WTGlendoraForcegreet). Belonir's Borg kept in unsure as the reader has it."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "Missing the endings for telling Gjalrunn the pants went to Glendora: stage 70 he refuses the antidote and will 'seek revenge', stage 78 he takes it and 'vowed revenge'. Added as a choice."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 50 'in return for a reward' (unnamed); stages 76/79 'His pants are mine now and ought to fetch a nice sum of gold'; alias GoldPants."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "places_raw Krakevisa lists Wyrmstooth.esp:CAD2D3 'Gjalrunn resting in an inn' and C7FF05 'Gjalrunn meets the player on the road'; neither is in quests_raw, so the reader's unsure note stands."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 254 objective 'Kill Gjalrunn to end his misery.'; stage 255 fails on his death."
+        }
+      }
+    },
+    {
+      "edid": "WTUberEncounter",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No dialogue giver; stage 5 (book) and stage 10 (voice on entering the cave)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing beyond being on Wyrmstooth."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 5 / BOOK History of Wyrmstooth; stage 10; Vulom placed in Tomb of Vulom."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5 'Investigate Vulom's tomb.'"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 20 'search inside the nordic ruins across Wyrmstooth'; places_raw quest links on Tomb of Vulom, Haetar's Cave, Wyrmstooth Barrow."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 15 (turn him down, come back to the skull) vs 20/30/40/50."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None named; Staff of Vulom (WEAP 64D203) isn't tied to the quest by any alias or script property, so it rightly stays in unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "WTWolfFollower",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 1 log (note); WTDunyickForcegreet radius 600 while stage <= 1; giver INFO 2E6C75."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing beyond being on Wyrmstooth."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Dunyick placed in the Wyrmstooth exterior with no named location; CWFortSoldierWoundedPackage (lying wounded); 'Dunyick's camp' from stage 40."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 1."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 10 'mountains near the mining settlement' (Stonehollow is the mining settlement per WTBarrowOfTheWyrm stage 50); bandit aliases placed in the open world, unnamed."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 40 'tell Faelor to go back to Dunyick's camp or take her with me'."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Faelor: stage 40, PlayerPotentialAnimalFaction. Added an unsure note on the pay the note mentions."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 30 'Dunyick has died from his injuries'; alias DunyickDeadAliveSwitcher."
+        }
+      }
+    },
+    {
+      "edid": "WTWrapMeUp",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 3920D9 (Alberthor, stage < 1; also Falmer Alberthor 38FE08)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Alberthor is placed in Wyrmstooth Barrow Temple and enters the story at WTBarrowOfTheWyrm stage 120; objective 10 wants 8 (global WTWispWrappingsGlobalCount)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in Wyrmstooth Barrow Temple."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 10 'wisp mothers or buy them from an alchemist'; Cragwater Cavern boss Wispmother level 28 in places_raw."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None named in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        }
+      }
+    },
+    {
+      "edid": "DefunctQuest01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Two stages, 0 and 100 'finished quest', no objectives or aliases, no giver; questlines_raw lists it as the Baan Malur line's opening with begins 'finished quest', but nothing sets it. Background/cut unsettled, in the reader's unsure note."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nothing starts it in these files."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "DefunctQuest02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 03DDA5 (Adimmisaru, stage < 1); stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "quest_starts baan-malur: Arena Market reached by doors from Dragonborn.esm:00F4EC; places_raw lists Baan Malur places under Morrowind."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Adimmisaru placed in Arena Market; BaanWDDrinksPKG hour 8, 720 minutes; sleep 23."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 names Varanie as the suspect; objective 10 'Solve the dispute.'"
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 40 / objective 40 'Search the Krettin'; goblins placed in Bulwark Krettin."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 31 fail/32/33 (fake), 51 (return), 53 fail (sell to Varanie), 52/54 no ending, 100/200 kill one."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Aliases AdimmisaruGold and VaranieGold (amounts not given); stage 51 'he paid me', 33 'a nice bonus'; alias Amulet. Script-named, kept per Bob's ruling with the reader's unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stages 100 and 200."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "WTPlayerHome",
+      "name": "Reclaiming the Past",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Find the abandoned Fort Valus on Wyrmstooth, then ask Lurius Liore about it and buy the deed.",
+      "needs": [
+        {
+          "what": "Be on the island of Wyrmstooth with Lurius Liore around, which means getting there through the Wyrmstooth quests (Wyrmstooth, then Barrow of the Wyrm)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Lurius Liore",
+          "where": "Wyrmstooth; once Barrow of the Wyrm is over he works by day in the East Empire Company Tradehouse in Stonehollow and sleeps there",
+          "how": "Find the old abandoned fort on Wyrmstooth (Fort Valus), then ask Lurius about what happened to it. He tells you its history and sells you the deed."
+        }
+      ],
+      "firstStep": "Ask Lurius Liore about Fort Valus",
+      "takesYou": [
+        {
+          "place": "Fort Valus",
+          "hold": "Wyrmstooth",
+          "why": "the old fort you find and then buy"
+        },
+        {
+          "place": "East Empire Company Tradehouse, Stonehollow",
+          "hold": "Wyrmstooth",
+          "why": "where Lurius works after the main Wyrmstooth story, to buy the deed and order upgrades"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Which upgrades to pay for",
+          "leadsTo": "The quest lists clean-up, a mess hall, armory, kitchen, bedroom, barracks, prison, garden and common house, plus hiring a crew; you go back to Lurius for each"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Ask Lurius Liore about Fort Valus.",
+            "Speak to Lurius Liore about upgrading Fort Valus."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Fort Valus as your own fort (the deed)",
+          "when": "when you buy it from Lurius"
+        },
+        {
+          "what": "Fort upgrades and a hired crew",
+          "when": "each time you pay Lurius for one"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Lurius Liore",
+          "role": "East Empire Company man who sells you the deed and the upgrades"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The journal says the quest begins when you find the fort; what exactly sets it (entering the fort, discovering it on the map) isn't in these files. His deed dialogue is offered until you have bought it, so asking him first may also work, but I can't confirm it."
+        },
+        {
+          "field": "needs",
+          "why": "Lurius sits in a holding area until the Wyrmstooth scripts move him, so you can't meet him before that story starts. Whether he sells the fort during Barrow of the Wyrm or only after it isn't shown."
+        },
+        {
+          "field": "where",
+          "why": "From his packages: after Barrow of the Wyrm he writes his ledger in the East Empire Company Tradehouse, sleeps there from midnight for 6 hours, and spends evenings from 7 pm for 5 hours at a tavern that isn't named in these files (probably The Handsome Hermit in Stonehollow). The tavern visit also depends on another quest these files don't name."
+        },
+        {
+          "field": "rewards",
+          "why": "The price of the deed and of each upgrade isn't in these records. People placed at Fort Valus (a jailor, a blacksmith, workers) are probably the crew, but nothing here ties them to the upgrades."
+        },
+        {
+          "field": "steps",
+          "why": "The quest has a final hidden stage that ends it with no journal text; probably it closes once every upgrade is bought, but that isn't stated."
+        },
+        {
+          "field": "where",
+          "why": "The records file the East Empire Company Tradehouse under a place called 'Wyrmstooth Longhouse', not under Stonehollow, so 'in Stonehollow' is likely but not confirmed. Before the story ends (from the dragon's-den part of Barrow of the Wyrm on) he hangs around Stonehollow itself."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:28D0B5 stages 10/20/40, objectives 10/20, aliases Upgrade*",
+        "giver INFO Wyrmstooth.esp:28D0B9 (Lurius, available while stage < 11)",
+        "NPC Wyrmstooth.esp:00BF55 placed in Wyrmstooth Holder Cell",
+        "Lurius packages WTPostQuestWritingLedger (East Empire Company Tradehouse), WTPostQuestTradehouseSleep0x6, WTVisitTavern19x5 (cond GetStage Wyrmstooth.esp:11E1D3 >= 30), all after WTBarrowOfTheWyrm stage 270",
+        "people_raw: Castus Arius (Fort Valus Barracks), Fort Valus Muster workers"
+      ]
+    },
+    {
+      "edid": "WTPricelessCommodity",
+      "name": "A Priceless Commodity",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Read Bolmar's note or just go to Gronndal Grove on Wyrmstooth; Bolmar comes up to you and asks for help with spriggans.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Bolmar",
+          "where": "outside Gronndal Grove, the miners' site on Wyrmstooth",
+          "how": "Read Bolmar's note about the miners digging into a spriggan sanctuary, or simply get close to him: he walks up and talks to you. Offer your help."
+        }
+      ],
+      "firstStep": "Speak to Bolmar at Gronndal Grove",
+      "takesYou": [
+        {
+          "place": "Gronndal Grove",
+          "hold": "Wyrmstooth",
+          "why": "the spriggan sanctuary the miners broke into"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill the Spriggan Matriarch",
+          "leadsTo": "Clear the grove of spriggans and report back to Bolmar; the miners then move in to work the grove"
+        },
+        {
+          "choice": "Side with the Spriggan Matriarch",
+          "leadsTo": "She asks you to kill the miners who got away; do it and return to her to restore the sanctity of Kyne"
+        },
+        {
+          "choice": "Agree to help the Matriarch, then betray her",
+          "leadsTo": "Finish clearing the grove and return to Bolmar"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "miners",
+          "objectives": [
+            "Speak to Bolmar at Gronndal Grove.",
+            "Investigate the spriggans at Gronndal Grove.",
+            "Clear the spriggans from Gronndal Grove.",
+            "Return to Bolmar."
+          ]
+        },
+        {
+          "branch": "spriggans",
+          "objectives": [
+            "Investigate the spriggans at Gronndal Grove.",
+            "Kill the miners.",
+            "Return to the Spriggan Matriarch."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Siding with the spriggans means killing the Gronndal miners",
+        "Siding with the miners means killing the Spriggan Matriarch"
+      ],
+      "people": [
+        {
+          "name": "Bolmar",
+          "role": "East Empire Company miner who asks for help; found outside Gronndal Grove"
+        },
+        {
+          "name": "Spriggan Matriarch",
+          "role": "found inside Gronndal Grove; speaks to you as you investigate"
+        },
+        {
+          "name": "Geitrich",
+          "role": "East Empire Company guard at Gronndal Grove; joins the miners in the grove if you side with them"
+        },
+        {
+          "name": "the miners",
+          "role": "three miners near Gronndal Grove; your targets if you side with the spriggans"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "No reward is named in these records for either side."
+        },
+        {
+          "field": "starts",
+          "why": "Where Bolmar's note is found isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "Gronndal Grove isn't in the places index, so where it sits on the island isn't given."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:48F992 stages 1-60",
+        "giver INFO Wyrmstooth.esp:48F997 (Bolmar, while stage < 2); Matriarch lines while stage < 11",
+        "Bolmar package WTBolmarForcegreet (stage <= 1); WTGronndalMiners (stage 30 or 47) sends Bolmar/Geitrich into cell Wyrmstooth.esp:486526",
+        "Spriggan Matriarch WTSprigganMatriarchForceGreet (stage <= 10), hostile at stage 15"
+      ]
+    },
+    {
+      "edid": "WTShargamFavor",
+      "name": "Repaying a Debt",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Shargam, one of Lurius Liore's hired mercenaries, asks you to kill a man named Ulfgar in Markarth.",
+      "needs": [
+        {
+          "what": "Meet Shargam through the Wyrmstooth quest, where he is one of the mercenaries Lurius Liore hires",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Shargam",
+          "where": "on Wyrmstooth, with Lurius Liore's mercenaries; after Barrow of the Wyrm he wanders the island, sleeps in the East Empire Company Tradehouse and some evenings goes to a tavern",
+          "how": "Talk to Shargam; he asks you to go to Markarth and kill Ulfgar to settle a debt."
+        }
+      ],
+      "firstStep": "Sail back to Skyrim on the Red Wave, then find Ulfgar at the Silver-Blood Inn in Markarth and kill him",
+      "takesYou": [
+        {
+          "place": "the Red Wave, docked near Fort Moonwatch",
+          "hold": "Wyrmstooth",
+          "why": "Shargam says to speak to Holmar there for passage back to Skyrim"
+        },
+        {
+          "place": "Silver-Blood Inn, Markarth",
+          "hold": "The Reach",
+          "why": "Ulfgar is staying there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill Ulfgar.",
+            "Return to Shargam."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Ulfgar dies"
+      ],
+      "people": [
+        {
+          "name": "Shargam",
+          "role": "Orc mercenary from the Wyrmstooth crew, can follow you"
+        },
+        {
+          "name": "Ulfgar",
+          "role": "the man you are sent to kill, staying in the Silver-Blood Inn"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records only show his line is offered before the quest starts; whether Shargam asks during the main Wyrmstooth story or only once it's over isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is named in these records."
+        },
+        {
+          "field": "steps",
+          "why": "The journal notes you 'confronted' Ulfgar before he dies, so there may be a talk first, but no other outcome is written."
+        },
+        {
+          "field": "where",
+          "why": "After Barrow of the Wyrm his daytime package keeps him within a short walk of a spot on Wyrmstooth that these files don't name, so 'around Stonehollow' isn't confirmed. The evening tavern visit also depends on a quest these files don't name."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:3A1468 stages 10/15/20/30",
+        "giver INFO Wyrmstooth.esp:3A149C (Shargam, while stage < 1): 'Go to Skyrim, to Markarth, and find Ulfgar. He'll be staying at the Silver-Blood Inn.'",
+        "Ulfgar package WTUlfgarSandboxSilverbloodInn (Skyrim.esm:016DFE); alias MarkarthMoveTo",
+        "Shargam packages: WTSandboxWyrmstooth, WTPostQuestTradehouseSleep0x6 after WTBarrowOfTheWyrm 270; WTDragonHunt alias FollowerShargam",
+        "Shargam idle INFO Wyrmstooth.esp:B723B0: 'The Red Wave is still docked near Fort Moonwatch. Speak to Holmar to secure passage back to Skyrim, then travel to Markarth.'",
+        "Shargam WTSandboxWyrmstooth target Wyrmstooth.esp:00B402 (unnamed), WTVisitTavern19x5 (GetStage 11E1D3 >= 30)"
+      ]
+    },
+    {
+      "edid": "WTSignyFavor",
+      "name": "A Debt Unpaid",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Signy, a girl in Stonehollow, asks you to make Erikur of Solitude lose the ledger her father's debt is written in.",
+      "needs": [
+        {
+          "what": "Get to Stonehollow on Wyrmstooth",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Signy",
+          "where": "Hulgard and Svenja's House in Stonehollow, or playing outside it by day",
+          "how": "Talk to Signy; she tells you her father owes Erikur of Solitude and that he might forget the debt if he lost his ledger."
+        }
+      ],
+      "firstStep": "Steal Erikur's debt ledger",
+      "takesYou": [
+        {
+          "place": "Solitude (Erikur lives in Erikur's House)",
+          "hold": "Haafingar",
+          "why": "find and steal Erikur's debt ledger"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Steal the ledger.",
+            "Return to Signy."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Signy",
+          "role": "child in Stonehollow who asks the favour"
+        },
+        {
+          "name": "Erikur",
+          "role": "Solitude merchant who holds the debt ledger"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "Signy doesn't know where the ledger is kept, and the records don't place it; Erikur's House in Solitude is the obvious place to look but isn't confirmed. Erikur himself spends the day at the Blue Palace (court packages from 8 am for 12 hours, a meal there at 1 pm), some weekday evenings at an inn, and sleeps at home."
+        },
+        {
+          "field": "where",
+          "why": "Her packages: home in Hulgard and Svenja's House, eating at 7 am and 6 pm, sleeping from midnight for 7 hours, and playing outside from 8 am for 10 hours once a Stonehollow quest these files don't name has moved on. Whether she is in Stonehollow while the main Wyrmstooth story has it in ruins isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is named in these records."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:B5DA18 stages 10/20/30",
+        "giver INFO Wyrmstooth.esp:B5DA1C (Signy, while stage < 1)",
+        "NPC Wyrmstooth.esp:009530 placed in Hulgard And Svenja's House (Stonehollow), last edit LoreRim - NPCs and Races.esp",
+        "Signy package WTKidsPlayOutside8x10 (cond GetStage Wyrmstooth.esp:11E1D3 >= 20)",
+        "Erikur Skyrim.esm:013272 in Erikur's House, Solitude",
+        "Erikur packages SolitudePalaceCourtSandbox8x12, SolitudeCourtEat13x2 (Blue Palace), AIOSoInnWeekdays19x3, DefaultSleepEditorLoc24x8"
+      ]
+    },
+    {
+      "edid": "WTTheNakedNord",
+      "name": "The Naked Nord",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Read a note about a naked Nord stuck in the wilds of Wyrmstooth, or come across him; he asks you to get back the pants a witch stole.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth",
+          "kind": "other"
+        },
+        {
+          "what": "A daedra heart, if you want Glendora's antidote for him",
+          "kind": "item"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Gjalrunn",
+          "where": "out in the wilds of Wyrmstooth, paralysed and unable to move",
+          "how": "Read the note about a naked Nord spotted in the wilderness, or find him yourself and talk to him about his predicament."
+        }
+      ],
+      "firstStep": "Find the naked Nord and ask about his predicament",
+      "takesYou": [
+        {
+          "place": "an old castle on the island north-west of Wyrmstooth",
+          "hold": "Wyrmstooth",
+          "why": "Gjalrunn thinks the witch who robbed him belongs to a coven there"
+        },
+        {
+          "place": "Krakevisa",
+          "hold": "Wyrmstooth",
+          "why": "warlocks took the golden pants there to strip the enchantment off them in a ritual"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Reach Krakevisa before the ritual ends",
+          "leadsTo": "You recover the golden pants; if you are too late they burn to ash"
+        },
+        {
+          "choice": "Give the pants to Glendora the witch",
+          "leadsTo": "She rewards you; Gjalrunn is upset if you tell him"
+        },
+        {
+          "choice": "Give the pants back to Gjalrunn",
+          "leadsTo": "He is grateful"
+        },
+        {
+          "choice": "Keep the pants and lie to him",
+          "leadsTo": "The pants are yours to sell"
+        },
+        {
+          "choice": "Trade Glendora a daedra heart for the paralysis antidote and give it to him",
+          "leadsTo": "He is freed and you may meet him on the road later"
+        },
+        {
+          "choice": "Tell him you gave the pants to Glendora",
+          "leadsTo": "He may refuse the antidote and stay paralysed, or take it and swear revenge on the witches; either way the quest ends"
+        },
+        {
+          "choice": "Tell him there's no cure",
+          "leadsTo": "He asks you to end his misery; killing him (or him dying) fails the quest"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the naked nord.",
+            "Speak to the naked nord about his predicament.",
+            "Find the witch that paralyzed the nord and stole his pants.",
+            "Find out why the witch stole the pants.",
+            "Retrieve the golden pants from Krakevisa.",
+            "Return the pants to Gjalrunn or Glendora.",
+            "Obtain the paralysis antidote for Gjalrunn.",
+            "Exchange a daedra heart for the paralysis antidote.",
+            "Deliver the paralysis antidote to Gjalrunn."
+          ]
+        },
+        {
+          "branch": "too late at Krakevisa",
+          "objectives": [
+            "Deliver the bad news to Gjalrunn or Glendora."
+          ]
+        },
+        {
+          "branch": "no cure",
+          "objectives": [
+            "Kill Gjalrunn to end his misery."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A reward from Glendora (not named in the records)",
+          "when": "if you give her the pants"
+        },
+        {
+          "what": "Gjalrunn's golden pants, to keep or sell",
+          "when": "if you lie to him about finding them"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Gjalrunn meets the player on the road",
+        "Gjalrunn resting in an inn"
+      ],
+      "closes": [
+        "Gjalrunn dies if you put him out of his misery"
+      ],
+      "people": [
+        {
+          "name": "Gjalrunn",
+          "role": "paralysed, robbed Nord found in the wilds"
+        },
+        {
+          "name": "Glendora",
+          "role": "the witch who stole the pants and makes the antidote"
+        },
+        {
+          "name": "Ritual Master",
+          "role": "warlock leading the ritual in Krakevisa Midden"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The castle isn't named in the quest. The books describe a witches' coven holding Belonir's Borg, a ruin seen across the sea, so it's probably Belonir's Borg, but nothing here ties Glendora to it. Glendora's own placement is just 'the wilds of Wyrmstooth'."
+        },
+        {
+          "field": "choices",
+          "why": "Whether the Krakevisa ritual runs on a timer or on something you do isn't in these files; the journal only says you can arrive too late."
+        },
+        {
+          "field": "starts",
+          "why": "Where the note is found, and where on the island Gjalrunn stands, aren't given."
+        },
+        {
+          "field": "opens",
+          "why": "The two Gjalrunn follow-ups are known only by name (they are listed against Krakevisa in the places index); the endings say you may cross paths again, or that he'll seek revenge, but nothing here shows what starts them."
+        },
+        {
+          "field": "rewards",
+          "why": "The items' values and Glendora's reward aren't in these records."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:C651DA stages 1-79, 254, 255, objectives 1-254",
+        "giver INFO Wyrmstooth.esp:C651E1 (Gjalrunn, while stage < 2); Glendora lines while stage < 21; Ritual Master while stage < 31",
+        "Glendora INFO C69466/C6946A/C6B5A5 on Krakevisa; WTGlendoraForcegreet at stage 20",
+        "Ritual Master Wyrmstooth.esp:C6946F in Krakevisa Midden",
+        "places_raw Belonir's Borg pointers: Bandit's Letter 56B761, Explorer's Guide 8EB3B4",
+        "places_raw Krakevisa quests: Wyrmstooth.esp:CAD2D3, Wyrmstooth.esp:C7FF05"
+      ]
+    },
+    {
+      "edid": "WTUberEncounter",
+      "name": "Someone with Backbone",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "by itself",
+      "canDoWhy": "Read about Vulom's tomb in a book on Wyrmstooth's history, or walk into the cave and a ghostly voice speaks to you.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "Tomb of Vulom, a cave on Wyrmstooth",
+          "how": "Read the History of Wyrmstooth book, which mentions an ancient necromancer's tomb, or just enter the cave: a disembodied voice speaks and you follow it to Vulom's skull."
+        }
+      ],
+      "firstStep": "Investigate Vulom's tomb",
+      "takesYou": [
+        {
+          "place": "Tomb of Vulom",
+          "hold": "Wyrmstooth",
+          "why": "the voice, Vulom's skull, and where the bones go back"
+        },
+        {
+          "place": "Haetar's Cave",
+          "hold": "Wyrmstooth",
+          "why": "one of the Nordic ruins where his bones lie"
+        },
+        {
+          "place": "Wyrmstooth Barrow",
+          "hold": "Wyrmstooth",
+          "why": "one of the Nordic ruins where his bones lie"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Turn Vulom down",
+          "leadsTo": "Nothing happens; you can come back and speak to his skull in the tomb later"
+        },
+        {
+          "choice": "Find his bones and bring them back",
+          "leadsTo": "He rises as a lich and you have to destroy him"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Investigate Vulom's tomb.",
+            "Follow the disembodied voice.",
+            "Find Vulom's bones.",
+            "Return the bones to Vulom.",
+            "Destroy the lich Vulom."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Vulom",
+          "role": "the voice in the tomb; turns out to be a lich and becomes the boss fight"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The quest names five bones (left and right legs, ribcage, left and right arms) but not where each lies. The places index links Haetar's Cave and Wyrmstooth Barrow to this quest, so the bones are probably spread across those and the tomb itself."
+        },
+        {
+          "field": "rewards",
+          "why": "None named. A 'Staff of Vulom' exists in the Wyrmstooth items and the tomb has a boss chest, but nothing here says the staff is his drop."
+        },
+        {
+          "field": "people",
+          "why": "Vulom is listed as a level 51 boss; at the final step he chases you."
+        },
+        {
+          "field": "starts",
+          "why": "Where the History of Wyrmstooth book is found isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:2F1A74 stages 5-50, aliases VulomSkull/VulomTalkActivator/Vulom*Leg/Arm/RibCage",
+        "no dialogue giver; namedGiver Vulom Wyrmstooth.esp:2F1A75 in Tomb of Vulom",
+        "places_raw: Tomb of Vulom, Haetar's Cave, Wyrmstooth Barrow list this quest; boss Vulom level 51",
+        "Vulom package WTVulomPursuePlayer at stage 40",
+        "BOOK History of Wyrmstooth Wyrmstooth.esp:30EC1D",
+        "WEAP Wyrmstooth.esp:64D203 Staff of Vulom"
+      ]
+    },
+    {
+      "edid": "WTWolfFollower",
+      "name": "A Howl Load of Trouble",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Read a note from the tracker Dunyick or get near him; the wounded tracker asks you to find his wolf.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Dunyick",
+          "where": "a tracker's camp out in the wilds of Wyrmstooth; he is lying wounded",
+          "how": "Read Dunyick's note about marauders he wants a mercenary to deal with, or get close to him: he calls you over and talks to you."
+        }
+      ],
+      "firstStep": "Speak to Dunyick about the marauders",
+      "takesYou": [
+        {
+          "place": "the mountains near the mining settlement (Stonehollow)",
+          "hold": "Wyrmstooth",
+          "why": "look for Faelor, a rust-coloured wolf"
+        },
+        {
+          "place": "the marauders' hideout",
+          "hold": "Wyrmstooth",
+          "why": "kill the bandits who attacked Dunyick"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "After the bandits are dead, send Faelor home or take her along",
+          "leadsTo": "She goes back to Dunyick's camp, or travels with you as a companion"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Dunyick about the marauders.",
+            "Find Dunyick's wolf Faelor.",
+            "Return Faelor to Dunyick.",
+            "Eliminate the bandits that killed Dunyick."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Faelor the wolf as a companion",
+          "when": "at the end, if you take her with you"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Dunyick dies of his wounds while you're bringing Faelor back"
+      ],
+      "people": [
+        {
+          "name": "Dunyick",
+          "role": "wounded tracker who asks for help"
+        },
+        {
+          "name": "Faelor",
+          "role": "Dunyick's wolf, found in the mountains; can become your companion"
+        },
+        {
+          "name": "Marauder chief and his band",
+          "role": "the bandits who attacked Dunyick"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The marauders' camp isn't named; they and Dunyick are placed in the open on Wyrmstooth with no location given."
+        },
+        {
+          "field": "closes",
+          "why": "Every path in the journal has Dunyick die once you've found Faelor; no step lets him live."
+        },
+        {
+          "field": "starts",
+          "why": "Where the note is found isn't in these files. A 'Dunyick's Note' book points to Haetar's Cave and Thalmor, which may be a different note."
+        },
+        {
+          "field": "rewards",
+          "why": "Dunyick's note says he wants to pay a mercenary, but no gold is named in these records and he dies before you can collect."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:2E49AF stages 1-40, aliases BanditChief, Bandit1-4, DunyickDeadAliveSwitcher",
+        "giver INFO Wyrmstooth.esp:2E6C75 (Dunyick, while stage < 2)",
+        "Dunyick packages WTDunyickForcegreet (stage <= 1), CWFortSoldierWoundedPackage",
+        "Faelor Wyrmstooth.esp:2E8F53: WTFaelorRunaway (stage < 20), WTFaelorFollowPlayer (stage 20/30), PlayerPotentialAnimalFaction"
+      ]
+    },
+    {
+      "edid": "WTWrapMeUp",
+      "name": "Wrap Me Up",
+      "plugin": "Wyrmstooth.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "The old mage Alberthor asks you to bring him 8 wisp wrappings.",
+      "needs": [
+        {
+          "what": "Meet Alberthor in Wyrmstooth Barrow during Barrow of the Wyrm",
+          "kind": "quest"
+        },
+        {
+          "what": "8 wisp wrappings",
+          "kind": "item"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Alberthor",
+          "where": "the Temple level of Wyrmstooth Barrow",
+          "how": "Talk to Alberthor and he asks for 8 wisp wrappings."
+        }
+      ],
+      "firstStep": "Gather 8 wisp wrappings",
+      "takesYou": [
+        {
+          "place": "anywhere with wispmothers, or an alchemist's shop",
+          "hold": "",
+          "why": "wisp wrappings drop from wispmothers or can be bought"
+        },
+        {
+          "place": "Cragwater Cavern",
+          "hold": "Wyrmstooth",
+          "why": "its boss is a wispmother, a nearby source"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find 8 wisp wrappings.",
+            "Deliver the wisp wrappings to Alberthor."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Alberthor",
+          "role": "old Breton mage in Wyrmstooth Barrow; later in the main story he appears in Falmer form, and that form can also give this quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "No reward is named in these records."
+        },
+        {
+          "field": "where",
+          "why": "Outside his main-quest scenes Alberthor just wanders near where he's placed in the Barrow Temple; where he ends up after the main story isn't shown."
+        },
+        {
+          "field": "needs",
+          "why": "His line is offered before the quest starts; whether he asks during Barrow of the Wyrm or only after it isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:3920D5 stages 10/20/30, global WTWispWrappingsGlobalCount",
+        "giver INFO Wyrmstooth.esp:3920D9 (Alberthor 07B242, while stage < 1; also Falmer Alberthor 38FE08)",
+        "Alberthor placed in Wyrmstooth Barrow Temple; packages all keyed to WTBarrowOfTheWyrm stages, else DefaultSandboxEditorLocation1024",
+        "places_raw Cragwater Cavern boss Wispmother level 28"
+      ]
+    },
+    {
+      "edid": "DefunctQuest01",
+      "name": "A Grand Venture",
+      "plugin": "Journey to Baan Malur.esp (no other plugin edits the quest)",
+      "canDo": "background",
+      "canDoWhy": "A bare placeholder: it has no objectives, no people and only the words 'finished quest', and nothing in these files starts it.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "",
+      "takesYou": [],
+      "choices": [],
+      "steps": [],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "canDo",
+          "why": "If a script runs it, the player would see 'A Grand Venture' finish with the text 'finished quest'; nothing here shows what (if anything) sets it, so it could be a mod-wide tracking quest or simply unused."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:2B52A7 stages 0 and 100 ('finished quest'), no objectives, no aliases",
+        "quest_givers: no people, no giver",
+        "no other raw file references the id"
+      ]
+    },
+    {
+      "edid": "DefunctQuest02",
+      "name": "The Amulet of Old",
+      "plugin": "Journey to Baan Malur.esp (no other plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "An Ashlander trader in Baan Malur's Arena Market has lost his family amulet and blames another trader.",
+      "needs": [
+        {
+          "what": "Reach Baan Malur (Journey to Baan Malur and Morrowind)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Adimmisaru",
+          "where": "his drinks stall in the Arena Market in Baan Malur, from 8 am for about 12 hours",
+          "how": "Talk to Adimmisaru of the Ahemmusa tribe; he's lost an heirloom amulet and thinks Varanie took it."
+        }
+      ],
+      "firstStep": "Talk to Varanie, the jeweller in the Arena Market",
+      "takesYou": [
+        {
+          "place": "Arena Market, Baan Malur",
+          "hold": "Morrowind",
+          "why": "both traders have stalls here"
+        },
+        {
+          "place": "Bulwark Krettin",
+          "hold": "Morrowind",
+          "why": "a goblin stronghold where Varanie says the real amulet is"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Take Varanie's fake amulet to Adimmisaru",
+          "leadsTo": "If he believes you, the quest is done and Varanie pays a bonus when you go back; if he doesn't, the quest fails"
+        },
+        {
+          "choice": "Get the real amulet from the Krettin and give it back",
+          "leadsTo": "Adimmisaru pays you"
+        },
+        {
+          "choice": "Sell the real amulet to Varanie",
+          "leadsTo": "She plans to blackmail him; the quest fails"
+        },
+        {
+          "choice": "Keep the real amulet and refuse them both",
+          "leadsTo": "No ending is written for this; the quest is left open"
+        },
+        {
+          "choice": "Kill Adimmisaru or kill Varanie",
+          "leadsTo": "The quarrel is settled and the quest completes"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Solve the dispute."
+          ]
+        },
+        {
+          "branch": "real amulet",
+          "objectives": [
+            "Search the Krettin."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold from Adimmisaru",
+          "when": "for returning the real amulet"
+        },
+        {
+          "what": "A bonus from Varanie",
+          "when": "after the fake fools Adimmisaru"
+        },
+        {
+          "what": "The real amulet",
+          "when": "if you keep it"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Adimmisaru or Varanie dies if you choose to kill one of them"
+      ],
+      "people": [
+        {
+          "name": "Adimmisaru",
+          "role": "Ashlander drinks seller who lost the amulet; stall in the Arena Market, sleeps from 11 pm"
+        },
+        {
+          "name": "Varanie",
+          "role": "Altmer jeweller in the Arena Market who has the fake and knows where the real one is; sleeps from 10 pm"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "Bulwark Krettin is known only as a cell full of goblins (chiefs, berserkers, shamans); where it lies isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "How you travel to Baan Malur isn't covered here. The Arena Market is entered through doors from a Dragonborn cell, and the mod has a Morrowind boat-travel quest."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold amounts aren't in these records, and the real amulet isn't in the items index (only the 'Cheap Silver Amulet' fake, which you hand over)."
+        },
+        {
+          "field": "where",
+          "why": "Their hours come from the package time bytes, read the same way that matches named packages like WTVisitTavern19x5; their sleeping places aren't named."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:03DD9D stages 10-200, aliases Fake/VaranieGold/AdimmisaruGold/Amulet",
+        "giver INFO Journey to Baan Malur.esp:03DDA5 (Adimmisaru, while stage < 1); Varanie while stage < 11",
+        "packages BaanWDDrinksPKG / BaanWDJewellerPKG (Arena Market, psdt hour 08, 720 min); BaanWDDrinksSleep (23h), BaanWDJewellerSleep (22h)",
+        "people_raw goblins in cell Bulwark Krettin",
+        "quest_starts baan-malur: doors Journey to Baan Malur.esp:3D591A/3D591B from Dragonborn.esm:00F4EC",
+        "ARMO Journey to Baan Malur.esp:03DDC3 Cheap Silver Amulet (alias Fake)"
+      ]
+    }
+  ]
+}

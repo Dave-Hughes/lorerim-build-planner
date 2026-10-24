@@ -1,0 +1,1295 @@
+{
+  "checks": [
+    {
+      "edid": "WTDragonHunt",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Courier package WTTheodynBienneDeliverMessage forcegreets the player at GetLevel >= WTStartLevel, which Requiem - Wyrmstooth.esp sets to 20 (was 10)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Level 20 is what the courier waits for (WTStartLevel = 20). Theodyn's own opening line 0237D5 only checks the quest hasn't begun, so whether you can get it earlier by finding him in the Bannered Mare stays in unsure, as the reader has it."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Theodyn's packages read top first: DeliverMessage (level >= 20, quest running, stage 0) comes before WTTheodynBienneSandbox in the Bannered Mare (Skyrim.esm:01605E). INFO 0237D7: 'You'd best head on over to The Bannered Mare in Whiterun. Speak to Lurius Liore. He mentioned something about trouble with a dragon.' What starts the quest running is still not in these files (startGame false, no dialogue/event conditions); 'Help Theodyn Find Player' is listed at the Bannered Mare."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Places and order match the logs and objectives, but the road where the mercenaries wait has no hold in the records (reference Skyrim.esm:08F648 only); 'Falkreath' was a guess, so the hold is blanked with an unsure note. Added the Ancient's Ascent danger note (dragon lair with its own boss dragon)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages or choice logs."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate in quest_givers and no reward script property."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Barrow of the Wyrm stage 10 log: 'Lurius has asked me to meet him at the docks in Solitude', and Lurius is its giver; the reader's unsure note about the exact check stays."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing in the records locks anything; Vulthurkrah flees rather than dies here (stage 110 log)."
+        }
+      }
+    },
+    {
+      "edid": "WTBarrowOfTheWyrm",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log names Lurius and the docks in Solitude; Lurius is the giver (info 028F06)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows Wyrmstooth: Lurius sits in the Bannered Mare while that quest runs and its last log sends you back to him. Reader's unsure note on the exact check stays."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Lurius's last package WTLuriusLioreSandboxBanneredMare keeps him in the Bannered Mare while Wyrmstooth runs, and nothing above it applies before this quest's stage 10. 'How' matches the stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "fix",
+          "note": "Lurius has two stage-10 packages: one at a dock spot (shared with Holmar's Solitude spot) with an extra condition, and one inside the Red Wave (Skyrim.esm:0A1793). A player who doesn't see him on the dock should look aboard; added that."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Fort Moonwatch landing (INFO C37DFC), Stonehollow (stage 50/70 logs), Wyrmstooth Barrow on the south-eastern corner (History of Wyrmstooth), Dimfrost (alias, Alberthor INFO 38FE06), back to Stonehollow (stage 230). Reworded the first entry's why to match the firstStep fix."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No choice logs; the mercenaries following depends on globals (B073C4 Athir, B073C5 Daenlit, B073C9 Elmera) set elsewhere, as the reader notes."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Objective 260 'Receive your reward from Lurius Liore' supports a reward; nothing names it. Reanimate (Self) is the script property AlberthorFalmerReanimation, not a reward property, so leaving it out of rewards is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "No record ties a later quest to this one finishing; the mercenaries' and Lurius's settled packages turn on at stage 270, but that is placement, not a quest opening."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Vulthurkrah is defeated (stage 260); nothing else is locked in the records."
+        }
+      }
+    },
+    {
+      "edid": "WTBlindRobbersCache",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log opens on reading Fjeimir's letter; no giver line."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty. Rolgar is placed in Dimfrost, which the records only reach through Wyrmstooth Barrow in Barrow of the Wyrm, on an island reached by ship. A player needs both; added them, with the 'can you get there earlier' question kept in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Fjeimir's Note (BOOK 46DA24) is the start per the stage 10 log; its location isn't in these files."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Dimfrost (Rolgar alias) and Blind Robber's Bluff (place lists this quest)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Nothing named; the cache is the payoff (Hemvor's Note: 'guarding the spoils'). Blind Robber's Bluff has a boss chest per places."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    },
+    {
+      "edid": "WTBountyAnimal",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "No giver, no start event, no log. 'By itself' is the closest fit for a notice-board job and is kept, but the records don't show how it starts; note added to unsure."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty. The target is placed on Wyrmstooth, an island the records only reach by ship in Barrow of the Wyrm; added that, with the open question in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Empty is right: nothing in the records names who or what hands it out. The notice-board lead is in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Bear alias placed in the Wyrmstooth world; objective says south of Fort Valus."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective, no branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    },
+    {
+      "edid": "WTBountyBandit",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "No giver, no start event, no log. 'By itself' is the closest fit for a notice-board job and is kept, but the records don't show how it starts; note added to unsure."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty. The target is placed on Wyrmstooth, an island the records only reach by ship in Barrow of the Wyrm; added that, with the open question in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Empty is right: nothing in the records names who or what hands it out. The notice-board lead is in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Clanlord alias in Cragwater Cavern; Marauder Warning and Yngfa's line put it on the southern coast."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective, no branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    },
+    {
+      "edid": "WTBountyVampire",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "No giver, no start event, no log. 'By itself' is the closest fit for a notice-board job and is kept, but the records don't show how it starts; note added to unsure."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty. The target is placed on Wyrmstooth, an island the records only reach by ship in Barrow of the Wyrm; added that, with the open question in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Empty is right: nothing in the records names who or what hands it out. The notice-board lead is in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Vampire boss alias in Bloodfrost Burrow; Vampire Warning puts it on the eastern side of Wyrmstooth."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective, no branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    },
+    {
+      "edid": "WTBountyWarlock",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "No giver, no start event, no log. 'By itself' is the closest fit for a notice-board job and is kept, but the records don't show how it starts; note added to unsure."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty. The target is placed on Wyrmstooth, an island the records only reach by ship in Barrow of the Wyrm; added that, with the open question in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Empty is right: nothing in the records names who or what hands it out. The notice-board lead is in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Warlock alias in Krakevisa Midden; the Hunter's line puts Krakevisa north of Stonehollow and Warlock Trouble gives the back way in from the docks."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single objective, no branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    },
+    {
+      "edid": "WTDaenlitFavor",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 3A14B8 from Daenlit; 'Bosmer archer' is from Athir's Note."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing beyond the quest not having begun is shown; reader's unsure note stands."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "'Where' said only after Barrow of the Wyrm, but her line only checks this quest hasn't begun, and she travels with the expedition before that (follow/sandbox packages in Wyrmstooth and Barrow of the Wyrm). Also 'around the island by day' overstated a sandbox around one unnamed point (Wyrmstooth.esp:00B402, radius 2048). Rewrote: with the mercenaries during the expedition, then that unnamed spot by day and the Tradehouse at night (WTPostQuestTradehouseSleep0x6 -> 00665B, the cell WTFleeToTradehouse also uses), and noted she can follow you."
+        },
+        "firstStep": {
+          "verdict": "fix",
+          "note": "'From Erikur's house' assumed where the coffin is; the records only place Erikur there. Reworded to what the log says (an enchanted necklace in Erikur's possession, a merchant living in Solitude)."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "Kept Erikur's House as the place to go (Erikur is placed there), but the coffin holding the necklace has no location in these files and 'Nighthunter Locket' is only an alias name; said so in the why and in unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing; stealing it is the objective, and any bounty for being caught isn't in the quest records."
+        }
+      }
+    },
+    {
+      "edid": "WTElmeraFavor",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 3A14D4 from Elmera; stage 10 log."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty, but the job can't be done without reaching the Deadlands. The Cause, in this load order, is the one quest in these files that goes there, and the patch editing this quest is named for it. Added as a probable need, with the open part in unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Same as Daenlit: her line only checks this quest hasn't begun and she travels with the expedition before Barrow of the Wyrm ends; the by-day sandbox is around one unnamed point, not the whole island. Rewrote 'where' accordingly."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 (count kept as the global WTElmeraSpiddalCount)."
+        },
+        "takesYou": {
+          "verdict": "unsure",
+          "note": "The Deadlands is right per the log. Added how the records show you getting there (The Cause's gate in Red Scar Cavern); that the sticks are there and that this is the intended route is from the patch name, not confirmed. Rewrote the unsure note."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    },
+    {
+      "edid": "WTKillThalmor",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 3943AB from Alberthor (either form); stage 10 log."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Was empty. Alberthor is placed in Wyrmstooth Barrow Temple, inside a barrow that is locked until Barrow of the Wyrm opens it with Goreduster (stages 90-110), on an island reached by ship. Added; the reader's note that his line itself doesn't check this stays."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Alberthor placed in Wyrmstooth Barrow Temple; his human form's last package is a sandbox at his editor location. The Falmer form (placed in Dimfrost) can also give it; reader's unsure covers which one a player finds."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10; ThalmorBoss alias in Haetar's Cave."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Haetar's Cave, an ice cave per Dunyick's Note, Thalmor holed up there."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None in the records."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward candidate or reward property."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "WTDragonHunt",
+      "name": "Wyrmstooth",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest; Requiem - Wyrmstooth.esp raises the level the courier waits for from 10 to 20)",
+      "canDo": "talk",
+      "canDoWhy": "Once you reach level 20 an Imperial courier, Theodyn Bienne, comes looking for you and sends you to Lurius Liore in Whiterun.",
+      "needs": [
+        {
+          "what": "Reach level 20",
+          "kind": "level"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Theodyn Bienne",
+          "where": "he walks up to you wherever you are; otherwise he waits inside the Bannered Mare in Whiterun",
+          "how": "Once you are level 20 the courier seeks you out and tells you to go to the Bannered Mare and speak to Lurius Liore about trouble with a dragon."
+        }
+      ],
+      "firstStep": "Speak to Lurius Liore at the Bannered Mare in Whiterun",
+      "takesYou": [
+        {
+          "place": "The Bannered Mare",
+          "hold": "Whiterun",
+          "why": "meet Lurius Liore, who has hired mercenaries to hunt a dragon"
+        },
+        {
+          "place": "the road to Falkreath",
+          "hold": "",
+          "why": "meet Athir and the other mercenaries Lurius hired"
+        },
+        {
+          "place": "Ancient's Ascent",
+          "hold": "Falkreath",
+          "why": "find and fight the dragon Vulthurkrah, in the mountains south-east of Falkreath"
+        },
+        {
+          "place": "The Bannered Mare",
+          "hold": "Whiterun",
+          "why": "tell Lurius the dragon fled to Wyrmstooth"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Lurius Liore at The Bannered Mare in Whiterun",
+            "Meet up with the mercenaries on the road to Falkreath",
+            "Find and defeat the dragon at Ancient's Ascent",
+            "Speak to Athir",
+            "Return to Lurius Liore"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [
+        "Barrow of the Wyrm"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Theodyn Bienne",
+          "role": "Imperial courier who brings Lurius's message"
+        },
+        {
+          "name": "Lurius Liore",
+          "role": "hires you and the mercenaries; waits in the Bannered Mare"
+        },
+        {
+          "name": "Athir",
+          "role": "leader of the mercenaries; tells you where the dragon was seen"
+        },
+        {
+          "name": "Daenlit",
+          "role": "mercenary (Bosmer archer) travelling with Athir"
+        },
+        {
+          "name": "Elmera",
+          "role": "mercenary (Altmer mage) travelling with Athir"
+        },
+        {
+          "name": "Shargam",
+          "role": "mercenary (Orc berserker) travelling with Athir"
+        },
+        {
+          "name": "Vulthurkrah",
+          "role": "the dragon; flees from Ancient's Ascent to Wyrmstooth"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No dialogue or event in these files starts the quest; the courier's walk-to-the-player package needs the quest already running and your level at or above the start-level global (20 under Requiem - Wyrmstooth.esp). A helper quest 'Help Theodyn Find Player' is tied to the Bannered Mare but isn't in these extracts."
+        },
+        {
+          "field": "starts",
+          "why": "Whether Theodyn will hand over the message below level 20 if you find him in the Bannered Mare yourself isn't shown; his opening line's conditions aren't in these files beyond the quest not having begun."
+        },
+        {
+          "field": "where",
+          "why": "The mercenaries wait at a spot on the road to Falkreath (a reference not named in these files); while they wait some of them also have a package to stay at the Dead Man's Drink in Falkreath, which a note from Lurius says he paid for."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed for this quest in the records."
+        },
+        {
+          "field": "opens",
+          "why": "Lurius gives Barrow of the Wyrm next, but the check on this quest being finished isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The spot on the road where the mercenaries wait has no name or hold in these files, so the hold is left blank. Athir himself has a package to wait there; the other mercenaries can be at the Dead Man's Drink in Falkreath instead."
+        },
+        {
+          "field": "danger",
+          "why": "Ancient's Ascent is a dragon lair in the records with its own boss dragon (Krahjotdaan, leveled 30-79) besides Vulthurkrah."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:022528 stages 10-130, objectives 10/20/100/110/120",
+        "GLOB WTStartLevel Wyrmstooth.esp:AC356A = 20 (Requiem - Wyrmstooth.esp, was 10)",
+        "PACK WTTheodynBienneDeliverMessage Wyrmstooth.esp:0218B8: GetLevel >= WTStartLevel, quest running, stage 0, target player",
+        "PACK WTTheodynBienneSandbox / WTLuriusLioreSandboxBanneredMare -> Skyrim.esm:01605E (Bannered Mare) while quest running",
+        "INFO Wyrmstooth.esp:0237D5 / 0237D7 Theodyn: 'You'd best head on over to The Bannered Mare...'",
+        "giver others: Lurius <11, Athir <21, Vulthurkrah <101",
+        "PACK WTAthirForcegreetRoad / WTMercenariesSandboxWaitingForPlayer -> Skyrim.esm:08F648 at stage 20; WTSandboxDeadmansDrink -> Skyrim.esm:03A184",
+        "PACK WTGotoAncientsAscent stage 100; WTAthirForcegreetAncientsAscent stage 110; WTMercenariesGoToBanneredMare stage 120",
+        "INFO Wyrmstooth.esp:59790C Athir: 'Ancient's Ascent is likely where it's roosting'",
+        "BOOK Athir's Note Wyrmstooth.esp:60B793",
+        "quest_starts line 'wyrmstooth': no dialogue/event conditions, startGame false",
+        "PACK WTAthirForcegreetRoad -> Skyrim.esm:08F648 at stage 20 (Athir only), listed above the sandbox/Dead Man's Drink packages",
+        "places: Ancient's Ascent danger dragonLair, boss Krahjotdaan leveled 30-79"
+      ]
+    },
+    {
+      "edid": "WTBarrowOfTheWyrm",
+      "name": "Barrow of the Wyrm",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Lurius Liore gives it after you report back about the dragon; he sails you and the mercenaries to the island of Wyrmstooth.",
+      "needs": [
+        {
+          "what": "Finish Wyrmstooth (the hunt at Ancient's Ascent)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Lurius Liore",
+          "where": "inside the Bannered Mare in Whiterun",
+          "how": "Talk to Lurius after telling him the dragon fled to Wyrmstooth; he asks you to meet him at the Solitude docks, where he has a ship ready."
+        }
+      ],
+      "firstStep": "Speak to Lurius Liore at the docks in Solitude; he waits by the Red Wave or aboard it",
+      "takesYou": [
+        {
+          "place": "Solitude docks (the Red Wave)",
+          "hold": "Haafingar",
+          "why": "find Lurius by the ship or inside it, then board with him and the mercenaries"
+        },
+        {
+          "place": "Wyrmstooth (the ship lands near Fort Moonwatch)",
+          "hold": "Wyrmstooth",
+          "why": "follow Lurius to the mining settlement of Stonehollow"
+        },
+        {
+          "place": "Stonehollow",
+          "hold": "Wyrmstooth",
+          "why": "find it wrecked by the dragon"
+        },
+        {
+          "place": "Wyrmstooth Barrow",
+          "hold": "Wyrmstooth",
+          "why": "on the far (south-eastern) end of the island; open it with the sword Goreduster and go through it"
+        },
+        {
+          "place": "Dimfrost",
+          "hold": "Wyrmstooth",
+          "why": "the dragon's den, an underground Dwemer ruin below the barrow"
+        },
+        {
+          "place": "Stonehollow",
+          "hold": "Wyrmstooth",
+          "why": "defend the survivors when Vulthurkrah escapes and attacks"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Lurius Liore at the docks in Solitude.",
+            "Follow Lurius Liore.",
+            "Enter Wyrmstooth Barrow.",
+            "Search the barrow entrance for a clue.",
+            "Retrieve Goreduster and enter the barrow.",
+            "Explore Wyrmstooth Barrow.",
+            "Follow Alberthor.",
+            "Let Alberthor cast the spell.",
+            "Find the switch to open the gate.",
+            "Find a way into the dragon's den through the barrow.",
+            "Defend Stonehollow from Vulthurkrah.",
+            "Receive your reward from Lurius Liore."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a reward from Lurius Liore (not named in the records)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Lurius Liore",
+          "role": "leads the expedition; waits by the Red Wave at the Solitude docks, later on Wyrmstooth"
+        },
+        {
+          "name": "Holmar",
+          "role": "the Red Wave's sailor, at the Solitude docks and on Wyrmstooth"
+        },
+        {
+          "name": "Theodyn Bienne",
+          "role": "Lurius's courier, comes along"
+        },
+        {
+          "name": "Athir, Daenlit, Elmera, Shargam",
+          "role": "the mercenaries; travel with you to the barrow"
+        },
+        {
+          "name": "Alberthor",
+          "role": "old Breton mage found in the Wyrmstooth Barrow Temple; knows a way through the barrow"
+        },
+        {
+          "name": "Vulthurkrah",
+          "role": "the dragon, found in Dimfrost and fought at Stonehollow"
+        },
+        {
+          "name": "Legate Hamlin",
+          "role": "leads the Imperial soldiers in the fight at Stonehollow"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Lurius gives this while the first quest's stage is low enough, but the check on Wyrmstooth being finished isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Goreduster's location isn't in these files; the bandit's journal says it opens the gate, and a Marauder's Journal says marauders took 'the dockmaster's acquisition' that opens a sealed ruin to their storeroom at Blind Robber's Bluff."
+        },
+        {
+          "field": "rewards",
+          "why": "The final objective says Lurius rewards you, but the reward itself isn't in these extracts. The one spell tied to the quest script (Reanimate (Self)) is cast by Alberthor on himself, not given to you."
+        },
+        {
+          "field": "choices",
+          "why": "Whether each mercenary follows you into the barrow depends on globals set elsewhere (one per mercenary); how they get set isn't in these files."
+        },
+        {
+          "field": "danger",
+          "why": "Wyrmstooth Barrow's enemies run level 24-60 and Dimfrost's 24-79; the records don't say how hard the required route is."
+        },
+        {
+          "field": "firstStep",
+          "why": "Lurius waits at a spot on the dock that Holmar also uses, under a condition these files don't decode; when it doesn't hold, he waits inside the Red Wave instead."
+        },
+        {
+          "field": "where",
+          "why": "The quest also tracks a marauder 'thief' placed in the barrow's refectory; whether he has anything to do with Goreduster isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:028F01 stages 10-270, objectives 10-260",
+        "giver Lurius Wyrmstooth.esp:00BF55 info 028F06 stage <11; others Alberthor 07B242 <111, Elmera <191, Alberthor (Falmer) 38FE08 <206",
+        "PACK WTLuriusWaitSolitudeRedWave -> Skyrim.esm:04C488 stage 10; WTLuriusWaitSolitudeRedWaveInterior -> Red Wave Skyrim.esm:0A1793; WTHolmarSandboxSolitude same spot",
+        "INFO Wyrmstooth.esp:C37DFC 'we'll need to dock near Fort Moonwatch instead'",
+        "PACK WTGotoBarrow stage >=70; WTLuriusSandboxWyrmstooth -> Stonehollow stage >=180; WTLuriusFinalForcegreet stage 260",
+        "aliases Goreduster, BanditJournal, SwordSlot, DraugrControl, Dimfrost, VulthurkrahFinal (Stonehollow)",
+        "reward candidate Wyrmstooth.esp:38FE0A Reanimate (Self) via AlberthorFalmerReanimation",
+        "INFO Wyrmstooth.esp:38FE06 Alberthor on Dimfrost",
+        "BOOK Marauder's Journal Wyrmstooth.esp:8A0CBD",
+        "places: Wyrmstooth Barrow (Lux - Wyrmstooth.esp) levels 24-60; Dimfrost levels 24-79",
+        "PACK WTLuriusWaitSolitudeRedWave (stage 10, fn726 == 0) above WTLuriusWaitSolitudeRedWaveInterior (stage 10, cell Red Wave Skyrim.esm:0A1793); PACK WTHolmarSandboxSolitude -> Skyrim.esm:04C488"
+      ]
+    },
+    {
+      "edid": "WTBlindRobbersCache",
+      "name": "Blind Robber's Cache",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "by itself",
+      "canDoWhy": "Reading Fjeimir's letter on Wyrmstooth points you to Rolgar, who took the key to the robbers' cache down into Dimfrost.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth (the only crossing the records show is on Lurius Liore's ship, the Red Wave, during Barrow of the Wyrm)",
+          "kind": "other"
+        },
+        {
+          "what": "Get into Dimfrost, the cavern below Wyrmstooth Barrow, where Rolgar's body lies (Barrow of the Wyrm takes you there)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Fjeimir's Note",
+          "where": "on Wyrmstooth (exact spot not in these files)",
+          "how": "Read Fjeimir's letter: Rolgar stole the key to Blind Robber's Cache and went to Dimfrost after more treasure."
+        }
+      ],
+      "firstStep": "Find Rolgar's body in Dimfrost and take the key",
+      "takesYou": [
+        {
+          "place": "Dimfrost",
+          "hold": "Wyrmstooth",
+          "why": "Rolgar's body, with the key"
+        },
+        {
+          "place": "Blind Robber's Bluff",
+          "hold": "Wyrmstooth",
+          "why": "the locked door to the cache"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the key from Rolgar's corpse.",
+            "Unlock the door to Blind Robber's Cache."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "whatever is stored in the cache",
+          "when": "when you unlock the door"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Rolgar",
+          "role": "robber who stole the key; his body lies in Dimfrost"
+        },
+        {
+          "name": "Fjeimir",
+          "role": "writer of the letter"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Where Fjeimir's Note lies isn't in these files, and how reading it starts the quest (book script) isn't shown."
+        },
+        {
+          "field": "needs",
+          "why": "Dimfrost is the dragon's den reached through Wyrmstooth Barrow during Barrow of the Wyrm; whether you can get there before that quest isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "The cache's contents aren't listed; Hemvor's Note says Rolgar locked Hemvor inside to guard the spoils."
+        },
+        {
+          "field": "needs",
+          "why": "Wyrmstooth is its own world reached by ship; the records show the first crossing in Barrow of the Wyrm ('a vessel ready that can take us to the island of Wyrmstooth', then 'We've arrived at Wyrmstooth'). Whether Holmar will sail you there before that isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:46DA2A stages 10/20/30, objectives 10/20",
+        "aliases Rolgar (Wyrmstooth.esp:46DA2B placed in Dimfrost world), CacheDoor",
+        "places: Blind Robber's Bluff Wyrmstooth.esp:477832 lists this quest",
+        "BOOK Fjeimir's Note Wyrmstooth.esp:46DA24; BOOK Hemvor's Note Wyrmstooth.esp:6AB76F",
+        "QUST WTBarrowOfTheWyrm stages 10/50 logs; aliases HolmarSolitude/HolmarWyrmstooth; INFO Wyrmstooth.esp:B723B0 Shargam: 'Speak to Holmar to secure passage back to Skyrim'",
+        "alias Rolgar placed in world Dimfrost (Wyrmstooth.esp:082777); Barrow objective 180 'Find a way into the dragon's den through the barrow'"
+      ]
+    },
+    {
+      "edid": "WTBountyAnimal",
+      "name": "Animal Bounty",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "by itself",
+      "canDoWhy": "A bounty job on Wyrmstooth: kill a bear south of Fort Valus.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth (the only crossing the records show is on Lurius Liore's ship, the Red Wave, during Barrow of the Wyrm)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Kill the bear south of Fort Valus",
+      "takesYou": [
+        {
+          "place": "south of Fort Valus",
+          "hold": "Wyrmstooth",
+          "why": "the bear"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the Bear south of Fort Valus."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No giver or start event in these files. Wyrmstooth has a 'Check the notice board for work' pointer, so this is likely taken from a notice on Wyrmstooth, but the board and its note aren't in these extracts."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "needs",
+          "why": "Wyrmstooth is its own world reached by ship; the records show the first crossing in Barrow of the Wyrm ('a vessel ready that can take us to the island of Wyrmstooth', then 'We've arrived at Wyrmstooth'). Whether Holmar will sail you there before that isn't shown."
+        },
+        {
+          "field": "canDo",
+          "why": "How the job is handed out isn't in these files. 'By itself' fits a note taken from a board (Wyrmstooth has a 'Check the notice board for work' pointer quest), but nothing confirms it; the board's quest or the note's script would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:4B9DEE objective 10, completes at 20, no log",
+        "alias Animal = Bear Skyrim.esm:023A8C placed in Wyrmstooth world",
+        "QUST WTNoticeboardPointer Wyrmstooth.esp:C92734 'Check the notice board for work.'",
+        "QUST WTBarrowOfTheWyrm stages 10/50 logs; aliases HolmarSolitude/HolmarWyrmstooth; INFO Wyrmstooth.esp:B723B0 Shargam: 'Speak to Holmar to secure passage back to Skyrim'"
+      ]
+    },
+    {
+      "edid": "WTBountyBandit",
+      "name": "Bandit Bounty",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "by itself",
+      "canDoWhy": "A bounty job on Wyrmstooth: kill the marauder clanlord who led the attack on Stonehollow.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth (the only crossing the records show is on Lurius Liore's ship, the Red Wave, during Barrow of the Wyrm)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Kill the Marauder Clanlord at Cragwater Cavern",
+      "takesYou": [
+        {
+          "place": "Cragwater Cavern",
+          "hold": "Wyrmstooth",
+          "why": "the marauders' main camp on the southern coast, where the clanlord is"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the Marauder Clanlord at Cragwater Cavern."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Marauder Clanlord",
+          "role": "the target, in Cragwater Cavern"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No giver or start event in these files. A 'Marauder Warning' note names the clanlord in Cragwater Cavern, and Wyrmstooth has a notice-board pointer; neither the note's place nor how it starts the job is in these extracts."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "needs",
+          "why": "Wyrmstooth is its own world reached by ship; the records show the first crossing in Barrow of the Wyrm ('a vessel ready that can take us to the island of Wyrmstooth', then 'We've arrived at Wyrmstooth'). Whether Holmar will sail you there before that isn't shown."
+        },
+        {
+          "field": "canDo",
+          "why": "How the job is handed out isn't in these files. 'By itself' fits a note taken from a board (Wyrmstooth has a 'Check the notice board for work' pointer quest), but nothing confirms it; the board's quest or the note's script would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:4B9DED objective 10, completes at 20",
+        "alias BanditBoss = Marauder Wyrmstooth.esp:BE56DF in Cragwater Cavern",
+        "BOOK Marauder Warning Wyrmstooth.esp:4B9DFB",
+        "INFO Wyrmstooth.esp:CC7EAF Yngfa: 'Marauders have an encampment at Cragwater Cavern.'",
+        "QUST WTBarrowOfTheWyrm stages 10/50 logs; aliases HolmarSolitude/HolmarWyrmstooth; INFO Wyrmstooth.esp:B723B0 Shargam: 'Speak to Holmar to secure passage back to Skyrim'",
+        "note: BOOK Marauder Warning 4B9DFB and BOOK Warlock Trouble 4B9E05 sit in the same id run as the bounty quests 4B9DED-4B9DF0 and their aliases"
+      ]
+    },
+    {
+      "edid": "WTBountyVampire",
+      "name": "Vampire Bounty",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "by itself",
+      "canDoWhy": "A bounty job on Wyrmstooth: kill the master vampire in Bloodfrost Burrow.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth (the only crossing the records show is on Lurius Liore's ship, the Red Wave, during Barrow of the Wyrm)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Kill the Master Vampire at Bloodfrost Burrow",
+      "takesYou": [
+        {
+          "place": "Bloodfrost Burrow",
+          "hold": "Wyrmstooth",
+          "why": "the vampires' cave on the eastern side of the island"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the Master Vampire at Bloodfrost Burrow."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Master Vampire",
+          "role": "the target, in Bloodfrost Burrow"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No giver or start event in these files. A 'Vampire Warning' from the Vigilants of Stendarr names Bloodfrost Burrow, and Wyrmstooth has a notice-board pointer; how the job starts isn't in these extracts."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "danger",
+          "why": "Bloodfrost Burrow's boss is listed as leveled 55-125."
+        },
+        {
+          "field": "needs",
+          "why": "Wyrmstooth is its own world reached by ship; the records show the first crossing in Barrow of the Wyrm ('a vessel ready that can take us to the island of Wyrmstooth', then 'We've arrived at Wyrmstooth'). Whether Holmar will sail you there before that isn't shown."
+        },
+        {
+          "field": "canDo",
+          "why": "How the job is handed out isn't in these files. 'By itself' fits a note taken from a board (Wyrmstooth has a 'Check the notice board for work' pointer quest), but nothing confirms it; the board's quest or the note's script would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:4B9DF0 objective 10, completes at 20",
+        "alias Vampire = LvlVampireBoss Skyrim.esm:02F9E2 in Bloodfrost Burrow",
+        "BOOK Vampire Warning Wyrmstooth.esp:BEDB3D",
+        "QUST WTBarrowOfTheWyrm stages 10/50 logs; aliases HolmarSolitude/HolmarWyrmstooth; INFO Wyrmstooth.esp:B723B0 Shargam: 'Speak to Holmar to secure passage back to Skyrim'"
+      ]
+    },
+    {
+      "edid": "WTBountyWarlock",
+      "name": "Warlock Bounty",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "by itself",
+      "canDoWhy": "A bounty job on Wyrmstooth: kill a troublesome warlock at Krakevisa, north of Stonehollow.",
+      "needs": [
+        {
+          "what": "Get to the island of Wyrmstooth (the only crossing the records show is on Lurius Liore's ship, the Red Wave, during Barrow of the Wyrm)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Kill the troublesome warlock at Krakevisa",
+      "takesYou": [
+        {
+          "place": "Krakevisa",
+          "hold": "Wyrmstooth",
+          "why": "the warlock coven's ruins north of Stonehollow; a note says the back way in is from the docks behind it"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the troublesome warlock at Krakevisa."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "the warlock",
+          "role": "the target, in Krakevisa Midden"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No giver or start event in these files. A 'Warlock Trouble' note talks about getting into Krakevisa, and Wyrmstooth has a notice-board pointer; how the job starts isn't in these extracts."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "needs",
+          "why": "Wyrmstooth is its own world reached by ship; the records show the first crossing in Barrow of the Wyrm ('a vessel ready that can take us to the island of Wyrmstooth', then 'We've arrived at Wyrmstooth'). Whether Holmar will sail you there before that isn't shown."
+        },
+        {
+          "field": "canDo",
+          "why": "How the job is handed out isn't in these files. 'By itself' fits a note taken from a board (Wyrmstooth has a 'Check the notice board for work' pointer quest), but nothing confirms it; the board's quest or the note's script would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:4B9DEF objective 10, completes at 20",
+        "alias Warlock = LvlWarlockNecromancer Skyrim.esm:01E7CA in Krakevisa Midden",
+        "BOOK Warlock Trouble Wyrmstooth.esp:4B9E05",
+        "INFO Wyrmstooth.esp:B69FEC 'stay away from the ruins of Krakevisa, north of Stonehollow'",
+        "QUST WTBarrowOfTheWyrm stages 10/50 logs; aliases HolmarSolitude/HolmarWyrmstooth; INFO Wyrmstooth.esp:B723B0 Shargam: 'Speak to Holmar to secure passage back to Skyrim'",
+        "note: BOOK Warlock Trouble 4B9E05 sits in the same id run as the bounty quests 4B9DED-4B9DF0"
+      ]
+    },
+    {
+      "edid": "WTDaenlitFavor",
+      "name": "Robbed Blind",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Daenlit, the Bosmer archer from Lurius's mercenaries, asks you to steal an enchanted necklace from Erikur in Solitude.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Daenlit",
+          "where": "with Lurius's mercenaries while Wyrmstooth and Barrow of the Wyrm run; afterwards on Wyrmstooth by day (a spot the records don't name) and asleep in the East Empire Company Tradehouse at night. She can also be your follower.",
+          "how": "Talk to Daenlit; she asks you to get the necklace Erikur keeps."
+        }
+      ],
+      "firstStep": "Steal the enchanted necklace Erikur has in Solitude",
+      "takesYou": [
+        {
+          "place": "Erikur's House, Solitude",
+          "hold": "Haafingar",
+          "why": "Erikur, who has the necklace, is placed here; the quest marks a coffin of his that holds it, but the coffin's spot isn't in these files"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Steal the necklace.",
+            "Return to Daenlit."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Daenlit",
+          "role": "Bosmer archer mercenary who gives the job; can be a follower"
+        },
+        {
+          "name": "Erikur",
+          "role": "Solitude merchant who has the necklace, in Erikur's House"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Her opening line is only checked for the quest not having begun; any other condition (being her friend, finishing Barrow of the Wyrm) isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Before Barrow of the Wyrm she travels with the expedition; after it her packages keep her around Wyrmstooth, and a later stage of another Wyrmstooth quest moves her to Wyrmstooth Barrow. Package hours aren't decoded beyond the names (Tradehouse sleep 0x6, Barrow sandbox 8x16)."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "takesYou",
+          "why": "The quest calls the necklace the Nighthunter Locket and marks a coffin of Erikur's as holding it; neither the necklace's own record nor the coffin's location is in these files. Erikur himself is placed in Erikur's House."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:3A1469 stages 10/20/30",
+        "giver Daenlit Wyrmstooth.esp:020C4E info 3A14B8 stage <1",
+        "aliases NighthunterLocket, ErikurCoffin, BossLocation = Erikur Skyrim.esm:013272 in Erikur's House (Solitude)",
+        "PACK WTSandboxWyrmstooth / WTPostQuestTradehouseSleep0x6 at Barrow stage 270; WTPostQuestBarrowSandbox8x16 at Wyrmstooth.esp:11E1D3 >= 20",
+        "aliases NighthunterLocket / ErikurCoffin have no placement in quest_givers; BossLocation = Erikur in Erikur's House Skyrim.esm:016A09",
+        "BOOK Athir's Note 60B793: 'Daenlit: A bosmer archer.'",
+        "people_schedules Daenlit: PotentialFollowerFaction, CurrentFollowerFaction"
+      ]
+    },
+    {
+      "edid": "WTElmeraFavor",
+      "name": "Stickler in the Mud",
+      "plugin": "Wyrmstooth.esp (last edited by JELWyrmstoothCausePatch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Elmera, the Altmer mage from Lurius's mercenaries, wants 30 spiddal sticks from the Deadlands.",
+      "needs": [
+        {
+          "what": "A way into the Deadlands; in this load order the Creation Club quest The Cause leads through an Oblivion Gate in Red Scar Cavern into the Deadlands (probably where the sticks are)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Elmera",
+          "where": "with Lurius's mercenaries while Wyrmstooth and Barrow of the Wyrm run; afterwards on Wyrmstooth by day (a spot the records don't name) and asleep in the East Empire Company Tradehouse at night. She can also be your follower.",
+          "how": "Talk to Elmera; she asks you to gather 30 spiddal sticks."
+        }
+      ],
+      "firstStep": "Gather 30 spiddal sticks",
+      "takesYou": [
+        {
+          "place": "the Deadlands, through the Oblivion Gate in Red Scar Cavern from The Cause",
+          "hold": "",
+          "why": "Elmera says spiddal sticks are common there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Gather 30 spiddal sticks for Elmera (count/30)",
+            "Return to Elmera."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Elmera",
+          "role": "Altmer mage mercenary who gives the job; can be a follower"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Her opening line is only checked for the quest not having begun; any other condition isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "After Barrow of the Wyrm her packages keep her around Wyrmstooth and send her to the tavern in the evening once another Wyrmstooth quest moves on; hours aren't decoded beyond package names."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "takesYou",
+          "why": "Elmera's line and log only say the Deadlands. The Cause (a Creation Club quest in this load order) is the only quest in these files that takes you into the Deadlands, through an Oblivion Gate in Red Scar Cavern, and the patch that last edits this quest is named for The Cause; what that patch changes, and whether spiddal sticks are placed there, isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Whether you must finish The Cause, or only reach its Oblivion Gate, isn't shown; The Cause can end with the gate closed or left open."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:3A146A stages 10/20/30, editedBy JELWyrmstoothCausePatch.esp",
+        "giver Elmera Wyrmstooth.esp:020C4F info 3A14D4 stage <1",
+        "INFO Wyrmstooth.esp:3A14D8 'In Oblivion. More specifically, Mehrunes Dagon's realm of Oblivion.'",
+        "global WTElmeraSpiddalCount in objective",
+        "PACK WTSandboxWyrmstooth / WTPostQuestTradehouseSleep0x6 at Barrow stage 270; WTVisitTavern19x5 at Wyrmstooth.esp:11E1D3 >= 30",
+        "QUST ccBGSSSE067_Quest The Cause stages 170 (Red Scar Cavern gate), 220 (inside the Deadlands), 230 Gate Closed / 240 Gate Open",
+        "BOOK Athir's Note 60B793: 'Elmera: An eccentric altmer mage'",
+        "people_schedules Elmera: PotentialFollowerFaction, CurrentFollowerFaction"
+      ]
+    },
+    {
+      "edid": "WTKillThalmor",
+      "name": "Unwanted Guests",
+      "plugin": "Wyrmstooth.esp (no later plugin edits the quest)",
+      "canDo": "talk",
+      "canDoWhy": "Alberthor, the old mage in Wyrmstooth Barrow, asks you to get rid of the Thalmor spies on the island.",
+      "needs": [
+        {
+          "what": "Get into Wyrmstooth Barrow, where Alberthor is: Barrow of the Wyrm opens it with the sword Goreduster",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Alberthor",
+          "where": "the Temple inside Wyrmstooth Barrow, on Wyrmstooth",
+          "how": "Talk to Alberthor; he asks you to dispatch the Thalmor spies."
+        }
+      ],
+      "firstStep": "Kill the Thalmor spies in Haetar's Cave",
+      "takesYou": [
+        {
+          "place": "Haetar's Cave",
+          "hold": "Wyrmstooth",
+          "why": "the ice cave where the Thalmor are holed up"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the Thalmor spies.",
+            "Return to Alberthor."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Alberthor",
+          "role": "gives the job; found in the Wyrmstooth Barrow Temple (either his own form or, later, his Falmer form can give it)"
+        },
+        {
+          "name": "Thalmor leader",
+          "role": "the spies' boss, in Haetar's Cave"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "Alberthor is placed in the Wyrmstooth Barrow Temple; during Barrow of the Wyrm he moves into a Falmer body in Dimfrost, and where that form ends up isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "His opening line is only checked for the quest not having begun; whether you must first meet him in Barrow of the Wyrm isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is listed in the records."
+        },
+        {
+          "field": "needs",
+          "why": "Wyrmstooth is its own world reached by ship; the records show the first crossing in Barrow of the Wyrm ('a vessel ready that can take us to the island of Wyrmstooth', then 'We've arrived at Wyrmstooth'). Whether Holmar will sail you there before that isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Wyrmstooth.esp:3943A0 stages 10/20/30",
+        "giver Alberthor Wyrmstooth.esp:07B242 info 3943AB stage <1; other Alberthor (Falmer) Wyrmstooth.esp:38FE08 stage <1",
+        "aliases ThalmorKillMarker, ThalmorBoss = LvlThalmorBoss Skyrim.esm:07DCAA in Haetar's Cave",
+        "BOOK Dunyick's Note Wyrmstooth.esp:272AAD names Haetar's Cave",
+        "PACK WTAlberthorFalmerForcegreet/FollowPlayer/Goodbye at Barrow stages 205-208",
+        "Barrow of the Wyrm stage 90 'The entrance to the barrow appears to be locked', stage 110 opened with Goreduster, stage 120 first mention of Alberthor; PACK WTAlberthorForcegreet at Barrow stage <= 110 in Wyrmstooth Barrow Temple"
+      ]
+    }
+  ]
+}
