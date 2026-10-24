@@ -1,0 +1,1403 @@
+{
+ "checks": [
+  {
+   "edid": "ccRMSSSE001_Quest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "'by itself' is right, but the reason was wrong: the start event is a change of location once the ritual is done, not walking into the fort. The first journal entry is a rumour that sends you to the fort, and only the second says you were trapped after entering. Records: start node event 'change location'; the first two journal entries."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "event condition: Conjuration Ritual Spell finished (its last stage completes it), added by the home-requirements patch"
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Corrected: it starts by itself on your next change of location after the ritual, with rumours of necromancers in an abandoned fort; you are trapped once you go in. Records: start node 'change location' event; the first two journal entries."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective 'Investigate the abandoned fort'"
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Gallows Hall and the dream world both come from the logs; the hold of its outside door isn't in these files. Added an unsure note on the enemies the Requiem patch places inside."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "no branching stages"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "home from the last stage's log; the staff only as 'a powerful staff' in the log, with the Staff of Worms as the likely item, already marked unsure"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ccVSVSSE004_MainQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "'talk' fits the steward line the farming tweak adds; start remains marked unsure"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "no conditions beyond the steward line's stage limit"
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "'Brill instead if Vignar Gray-Mane rules Whiterun' isn't in the records: Brill has the same lines but no condition says when, and he is placed in Jorrvaskr, not Dragonsreach. Kept Proventus as the likely start, moved the rest to unsure, and added the bounty note piece. Records: the steward lines list Brill as a second speaker; the people records place him in Jorrvaskr; the quest has a bounty note piece."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "first objective 'Travel to Goldenhills Plantation'"
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "'east of Rorikstead' isn't in the records; the journal only says 'near Rorikstead'. Records: journal text. The well, Rannveig's Fast (Whiterun hold in places) and Dragonsreach agree."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "one path only"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "both reward lists are script properties; added an unsure note per Bob's ruling. 10,000 gold price from the tweak's price setting; deeds are quest pieces"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "Brill's role: the condition that makes him the steward isn't in the records; he's placed in Jorrvaskr."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE002_SoulStealerQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "the winning version has objectives but no stages and no aliases (the only such quest in the records); 'cut' with the unsure note is right"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "empty is right for a quest that can't start"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "nothing hands over the arrows in these records"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ccFFBSSE001_Quest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "courier letter for sided players; journal sends neutral players to Whiterun"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "joining a side is one route, not a requirement"
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "'look around Whiterun's taverns' isn't in the records: the journal itself points neutral players to the Drunken Huntsman ('Investigate the Drunken Huntsman for information'), and the letter is found there. Records: objectives, journal text, tied object in the Drunken Huntsman."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The Legate is placed outdoors in Solitude, not in Castle Dour; only the chest is in Castle Dour. Split into two entries. Records: Legate placement in the Solitude exterior; journal text."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "pelts or stealing from Klija for the Stormcloaks, posing and persuading for the Imperials, from the journal text and objectives"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "armor sets from the chests (journal text); light and heavy types match the item records. Added an unsure note on the plugin's weapons."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "THTE_Quest_WintersandDeception",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "first log: found the dossier, bring it to the Jarl"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "dossier start from the first log; where it lies stays unsure. Added a note on the second same-named dossier."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Dragonsreach and the manor cellar, from the journal text; door locks and keys right"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "failure stage when both are dead"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "large leveled reward from the script; added the unsure note"
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "nothing named; added a note on the manor door swap the plugin makes, which the records don't tie to this quest"
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "kept unsure on what happens to the couple"
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "'Jarl instead if the Stormcloaks hold Whiterun' isn't in the records; Vignar has the same line and is placed in Jorrvaskr. Moved to unsure."
+    }
+   }
+  },
+  {
+   "edid": "MyrwatchTNE_Quest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "starts with the game; first log is the note found in the vestibule"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "maze and Diadem or another way, from the first log; 20,000 gold from the house-price setting"
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "College of Winterhold and Labyrinthian (Hjaalmarch in places). Tolfdir's schedule note reworded: the packages give sleep and classroom, not 'the dormitory'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "key and deed from the last log"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ReturnAegisbaneQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "no start condition; 'by itself' with the unsure note is the honest reading"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Alain Dufont placed in Raldbthar; the quest's pieces are Alain, Aegisbane and Torbjorn"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Raldbthar is in the Pale in places; Torbjorn in his family house in Windhelm"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "'Return Aegisbane or keep it' log"
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Aegisbane's text matches the item record"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "ParaIntro",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "first log: a man fell out of the sky and died"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Fred is placed in the open world with no fixed spot; unsure kept"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "platform atop the Jerall Mountains from the journal text"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the paraglider"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "Leap_MiscQuest",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "starts with the game"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Markarth isn't one of the leap spots in the records: the twelve leap markers from this mod are in twelve cells, none of them Markarth; the quest's Markarth tie is an ordinary game object. Moved Markarth to unsure. Records: the quest's tied objects list."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "none in the records"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  },
+  {
+   "edid": "InigoBadVibrations",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Inigo's opening line, then 'We are going there to investigate'"
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "following Inigo is supported by 'Follow Inigo!' and the logs; what makes him raise it stays unsure"
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Inigo placed in Riften Jail"
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Snowpoint Beacon in Winterhold (places); Langley's House placed in Winterhold, door hidden and keyed to Langley's Cabin Key"
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the tome is the quest script's property and the journal text points to it; spell record matches"
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": ""
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": ""
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "ccRMSSSE001_Quest",
+   "name": "Dreams of the Dead",
+   "plugin": "ccrmssse001-necrohouse.esl (last edited by Creation Club Home Requirements - AIO.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "Starts on its own once you have finished Phinis Gestor's master Conjuration ritual: the next time you arrive somewhere new, you hear rumours of necromancers in an abandoned fort.",
+   "needs": [
+    {
+     "what": "Finish Conjuration Ritual Spell (Phinis Gestor's master Conjuration ritual)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "no one: it starts by itself",
+     "where": "anywhere, the next time you move to a new place after the ritual is done",
+     "how": "Finish the Conjuration ritual for Phinis Gestor. The next time you travel to a new location the quest begins with rumours of necromancers in one of the old abandoned forts, and sends you to investigate Gallows Hall. Once you go in, you are trapped inside."
+    }
+   ],
+   "firstStep": "Investigate the abandoned fort",
+   "takesYou": [
+    {
+     "place": "Gallows Hall",
+     "hold": "",
+     "why": "the whole quest happens inside; you are locked in until you solve the necromancer's puzzles"
+    },
+    {
+     "place": "a dream world reached by sleeping in the fort",
+     "hold": "",
+     "why": "find the Dreamer's soul gems in the necromancer's coffins"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Investigate the abandoned fort",
+      "Read Naara's Journal",
+      "Read the Arch Necromancer's First Clue",
+      "Pick up the torches that trace the mage's path",
+      "Pick up the fallen staff",
+      "Read the fallen spell tome",
+      "Find a use for the staff",
+      "Examine the raised skeleton",
+      "Search the necromancer's safe",
+      "Read the Arch Necromancer's Second Clue",
+      "Find a way to the dream world (pray to Vaermina and sleep)",
+      "Find the gems inside a necromancer's coffers (3)",
+      "Exit the dream",
+      "Read the Arch Necromancer's Final Instructions",
+      "Find the last Dreamer's Soul Gem",
+      "Use the Dreamer's Greater Soul Gems on the altar"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gallows Hall as your own home",
+     "when": "at the end, when the altar opens the door"
+    },
+    {
+     "what": "a powerful staff found partway through (the staff added alongside this quest is the Staff of Worms)",
+     "when": "during the puzzles"
+    }
+   ],
+   "type": "none given",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Naara",
+     "role": "her journal lies in the fort and gives the first clue"
+    },
+    {
+     "name": "Skeleton Mage",
+     "role": "you raise him with the staff; he carries the safe key"
+    },
+    {
+     "name": "Arch Necromancer",
+     "role": "placed in Gallows Hall (a dragon priest); the clues carry his name"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "Gallows Hall is an interior; the records don't say which hold its outside door stands in, only that the journal calls it one of the old abandoned forts"
+    },
+    {
+     "field": "starts",
+     "why": "the home-requirements patch also turns the outside door into a key-only lock without naming the key; it isn't clear from the records whether the door opens before the Conjuration ritual is done or how"
+    },
+    {
+     "field": "rewards",
+     "why": "the log only says 'a powerful staff'; the Staff of Worms is the staff this plugin adds, but the records don't tie it to that step by name"
+    },
+    {
+     "field": "starts",
+     "why": "the records show the quest starting on a change of location, not on entering the fort; whether the journal marks Gallows Hall on your map isn't spelled out"
+    },
+    {
+     "field": "takesYou",
+     "why": "the Requiem patch also places an Arch Necromancer (a dragon priest), a Bone Colossus and several skeletons inside Gallows Hall; whether they fight you isn't in these records"
+    }
+   ],
+   "evidence": [
+    "quests_raw ccrmssse001-necrohouse.esl:000CC4 stages 10-200, objectives",
+    "quest_givers_raw start node CCHRGallowsHallQuestNode, change location event",
+    "quest_starts_raw event condition GetStageDone Skyrim.esm:099F27 (MGRitual03) stage 200, added by Creation Club Home Requirements - AIO.esp",
+    "quest_starts_raw door Dawnguard.esm:01534F into Update.esm:002FD0 lock 255 (Home Requirements)",
+    "items_raw ccrmssse001-necrohouse.esl:000CF2 Staff of Worms",
+    "people_raw Naara ccrmssse001-necrohouse.esl:000CCA, Skeleton Mage :000CE5",
+    "check: start node event is change location (quest_givers_raw), stage 10 log 'I've heard rumors'; stage 20 log 'Shortly after entering ... trapped'; MGRitual03 stage 200 completes; people_raw Trad_AE_CC_Collection_Requiem_Patch.esp:07A073/07A074 in Gallows Hall"
+   ]
+  },
+  {
+   "edid": "ccVSVSSE004_MainQuest",
+   "name": "The Unquiet Dead",
+   "plugin": "ccvsvsse004-beafarmer.esl (last edited by CC Farming - Tweaks and Enhancements.esp)",
+   "canDo": "talk",
+   "canDoWhy": "The Steward of Whiterun is offering Goldenhills Plantation to whoever lays its ghosts to rest.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Proventus Avenicci, the Steward of Whiterun (Brill can also take the same lines)",
+     "where": "Dragonsreach, Whiterun (Brill is placed in Jorrvaskr)",
+     "how": "Talk to the steward about the haunted plantation near Rorikstead."
+    }
+   ],
+   "firstStep": "Travel to Goldenhills Plantation",
+   "takesYou": [
+    {
+     "place": "Goldenhills Plantation",
+     "hold": "Whiterun",
+     "why": "near Rorikstead; the haunted farm you search for clues"
+    },
+    {
+     "place": "the old well near the farm",
+     "hold": "Whiterun",
+     "why": "the son's second journal"
+    },
+    {
+     "place": "Rannveig's Fast",
+     "hold": "Whiterun",
+     "why": "find the son's remains and his toy sword"
+    },
+    {
+     "place": "Dragonsreach",
+     "hold": "Whiterun",
+     "why": "report to the steward and buy the plantation"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Travel to Goldenhills Plantation",
+      "Search the plantation for clues",
+      "Find the hidden laboratory",
+      "Search the laboratory for clues",
+      "Find evidence of Urval's guilt",
+      "Find out what happened to the son",
+      "Find the old well",
+      "Investigate the well",
+      "Look for the son at Rannveig's Fast",
+      "Return the son's toy sword to the farm",
+      "Speak to the son",
+      "Speak to the Steward of Whiterun",
+      "Buy Goldenhills Plantation"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "a reward from the steward (the farming tweak's own reward list plus a large leveled quest reward)",
+     "when": "when you tell the steward the ghosts are at rest"
+    },
+    {
+     "what": "Goldenhills Plantation, for sale at 10,000 gold, with its ownership deed",
+     "when": "after reporting to the steward"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Proventus Avenicci",
+     "role": "Steward of Whiterun; offers the plantation and pays you"
+    },
+    {
+     "name": "Brill",
+     "role": "has the same steward lines as Proventus; placed in Jorrvaskr"
+    },
+    {
+     "name": "Jonquil",
+     "role": "the farmer's wife, a ghost at the plantation"
+    },
+    {
+     "name": "Urval",
+     "role": "the farmer, a ghost at the plantation"
+    },
+    {
+     "name": "their son",
+     "role": "his ghost you speak to once his toy sword is back at the farm"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "the farming tweak switches off the plantation's original opening line; the steward's line it adds is open until you report back, so talking to him is the likely start, but no rumour, note or trigger that starts it is spelled out"
+    },
+    {
+     "field": "where",
+     "why": "Proventus is placed in Dragonsreach; his daily schedule isn't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "the plantation's house door is locked (Adept) with a key the records don't name"
+    },
+    {
+     "field": "people",
+     "why": "the son's name isn't filled in the journal text in these records"
+    },
+    {
+     "field": "starts",
+     "why": "the records give Brill the same steward lines as Proventus but don't say when he speaks for Whiterun instead"
+    },
+    {
+     "field": "starts",
+     "why": "the quest also has a bounty note among its pieces; the records don't say where it is or whether reading it starts the quest"
+    },
+    {
+     "field": "rewards",
+     "why": "the steward's reward comes from the quest script's reward lists; what you get isn't confirmed"
+    }
+   ],
+   "evidence": [
+    "quests_raw ccvsvsse004-beafarmer.esl:000D28 stages 15-1000, fills FarmLocation/Husband/Wife",
+    "quest_givers_raw giver Skyrim.esm:013BBA info CC Farming - Tweaks and Enhancements.esp:000A11 stage<211; other Brill Skyrim.esm:01A6A2",
+    "quest_starts_raw changes: info ccvsvsse004-beafarmer.esl:000D04 conditions added (TRUEGlobal==0 OR stage==200, stage==201)",
+    "quest_starts_raw global GoldenhillsPlantationPriceGlobal 10000",
+    "rewards CCFarmTnE_GhostFamilyReward, LvlQuestReward03Large",
+    "doors Dawnguard.esm:01545B/01547A lock 50 key ccvsvsse004-beafarmer.esl:00085D (Trad_AE_CC_Collection_Requiem_Patch.esp)",
+    "places_raw Rannveig's Fast Skyrim.esm:019290; deed BOOK CC Farming T&E :000A20/:000FAB",
+    "check: people_raw Brill Skyrim.esm:01A6A2 cell Jorrvaskr; alias BountyNote; stage 15 log 'near Rorikstead'; info ccvsvsse004-beafarmer.esl:000D04 now needs TRUEGlobal==0 so it can't fire"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE002_SoulStealerQuest",
+   "name": "Stealer of Souls",
+   "plugin": "ccbgssse002-exoticarrows.esl (last edited by LoreRim - Arrow Tweaks.esp)",
+   "canDo": "cut",
+   "canDoWhy": "In LoreRim the quest is left with no stages, so it can't start or advance.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "",
+   "takesYou": [],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Read the Letter from Calcelmo",
+      "Travel to Solstheim",
+      "Find the Soul Stealer Arrows"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "none given",
+   "opens": [],
+   "closes": [],
+   "people": [],
+   "unsure": [
+    {
+     "field": "canDo",
+     "why": "the winning version of the quest carries objectives but no stages and no aliases; that reads as switched off, but nothing in these files says so outright"
+    },
+    {
+     "field": "takesYou",
+     "why": "the only place tied to it is Raven Rock on Solstheim; the arrows (Soul Stealer Arrow) exist in the item records, but how else to get them isn't covered here"
+    }
+   ],
+   "evidence": [
+    "quests_raw ccbgssse002-exoticarrows.esl:00081E stages [] (only quest in the file with none), objectives 5/10/20, editedBy LoreRim - Arrow Tweaks.esp",
+    "quest_starts_raw no dialogue or event conditions; tiedRef ccbgssse002-exoticarrows.esl:000820 in Dragonborn.esm:00EED6 (Raven Rock)",
+    "items_raw ccbgssse002-exoticarrows.esl:000801 Soul Stealer Arrow"
+   ]
+  },
+  {
+   "edid": "ccFFBSSE001_Quest",
+   "name": "Battle of the Champions",
+   "plugin": "ccffbsse001-imperialdragon.esl (last edited by Civil War Champions - Reduced Cut.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "News comes to you: a courier letter if you have joined a side in the war, or a letter in Whiterun if you haven't.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "a courier",
+     "where": "any major hold city",
+     "how": "If you have joined the Stormcloaks or the Imperials, go to a major hold and wait for a courier with a letter from your commander."
+    },
+    {
+     "who": "no one: a letter",
+     "where": "the Drunken Huntsman, Whiterun",
+     "how": "If you haven't joined a side, the journal sends you to the Drunken Huntsman for information; a letter found there tells of the battle of champions."
+    }
+   ],
+   "firstStep": "Head to a major hold and await news from a courier (or, if you've joined no side, investigate the Drunken Huntsman)",
+   "takesYou": [
+    {
+     "place": "the Drunken Huntsman",
+     "hold": "Whiterun",
+     "why": "the letter, if you haven't taken a side"
+    },
+    {
+     "place": "Windhelm",
+     "hold": "Eastmarch",
+     "why": "Captain Yrsarald Thrice-Pierced, the Stormcloak commander"
+    },
+    {
+     "place": "Kynesgrove",
+     "hold": "Eastmarch",
+     "why": "Klija Wolf-Claw has snow bear pelts you can take"
+    },
+    {
+     "place": "Solitude",
+     "hold": "Haafingar",
+     "why": "Legate Adventus Caesennius, the Imperial commander"
+    },
+    {
+     "place": "Castle Dour, Solitude",
+     "hold": "Haafingar",
+     "why": "the chest with the Imperial champion's armor and the map"
+    },
+    {
+     "place": "the battle site on the map from your commander",
+     "hold": "",
+     "why": "fight the opposing champion and garrison"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Stormcloak: deliver five snow bear pelts to Yrsarald (or steal them from Klija), or come as a Stormcloak soldier",
+     "leadsTo": "Yrsarald gives you a key to a chest with the Storm-Bear Armor and the battle map; you fight the Imperial champion"
+    },
+    {
+     "choice": "Imperial: pose as an Imperial soldier and persuade the Legate, or come as an Imperial soldier",
+     "leadsTo": "the Legate gives you a key to a chest in Castle Dour with the Imperial Dragon Armor and the map; you fight the Stormcloak champion"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "no side yet",
+     "objectives": [
+      "Read the letter",
+      "Investigate the Drunken Huntsman for information",
+      "Pose as an Imperial soldier and speak to the Legate",
+      "Deliver five snow bear pelts to Yrsarald in Windhelm",
+      "(Optional) Steal the snow bear pelts from Klija in Kynesgrove",
+      "(Optional) Persuade the Legate to make you his champion"
+     ]
+    },
+    {
+     "branch": "Stormcloak",
+     "objectives": [
+      "Head to a major hold and await news from a courier",
+      "Read the letter",
+      "Meet with your commanding officer",
+      "Retrieve the Storm-Bear Armor and map",
+      "Join the Stormcloak garrison at the battle site",
+      "Speak with the Imperial Champion",
+      "Defeat the Imperial soldiers"
+     ]
+    },
+    {
+     "branch": "Imperial",
+     "objectives": [
+      "Head to a major hold and await news from a courier",
+      "Read the letter",
+      "Meet with your commanding officer",
+      "Retrieve the Imperial Dragon Armor and map",
+      "Join the Imperial garrison at the battle site",
+      "Speak with the Stormcloak Champion",
+      "Defeat the Stormcloak soldiers"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Storm-Bear Armor set (light armor)",
+     "when": "Stormcloak champion: from the chest Yrsarald's key opens"
+    },
+    {
+     "what": "Imperial Dragon Armor set (heavy armor)",
+     "when": "Imperial champion: from the chest in Castle Dour"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Captain Yrsarald Thrice-Pierced",
+     "role": "Stormcloak commander in Windhelm; wants five snow bear pelts"
+    },
+    {
+     "name": "Legate Adventus Caesennius",
+     "role": "Imperial commander in Solitude"
+    },
+    {
+     "name": "Klija Wolf-Claw",
+     "role": "warrior in Kynesgrove with the snow bear pelts"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "no start condition or event is in these records; the courier and Whiterun letter come from the journal text, so what exactly triggers it (and when) isn't confirmed"
+    },
+    {
+     "field": "where",
+     "why": "both commanders are placed outdoors in their cities on war-camp packages; the exact building isn't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "the battle site is an outdoor spot the records don't name"
+    },
+    {
+     "field": "rewards",
+     "why": "one late journal entry says the Legate gave Storm-Bear armor, which contradicts the rest; the armor you keep is the set from your side's chest"
+    },
+    {
+     "field": "choices",
+     "why": "persuading the Legate uses Speech checks; the records list an average and a very hard check but don't say which line uses which"
+    },
+    {
+     "field": "starts",
+     "why": "the letter's exact spot isn't given; the quest ties something to the Drunken Huntsman and the journal says the letter was found in Whiterun"
+    },
+    {
+     "field": "rewards",
+     "why": "the plugin also adds weapons (Storm-Bear Sword, Akatosh's Talon, Dragon's Oath, Tsun's Judgement); the records don't show whether they're in the champions' chests"
+    }
+   ],
+   "evidence": [
+    "quests_raw ccffbsse001-imperialdragon.esl:000927 stages 10-1000, objectives 1-260, editedBy Civil War Champions - Reduced Cut.esp",
+    "quest_givers_raw SonsQuestGiver Skyrim.esm:084551 (Windhelm), ImpQuestGiver Skyrim.esm:0844B1 (Solitude)",
+    "quest_starts_raw tiedRef ccffbsse001-imperialdragon.esl:000953 in Skyrim.esm:0165B7 (The Drunken Huntsman); globals SpeechAverage, SpeechVeryHard",
+    "items_raw Storm-Bear set :00084C etc., Imperial Dragon set :000D69 etc.",
+    "people_raw Klija Wolf-Claw :00095C/:00095D",
+    "check: objective 10 'Investigate the Drunken Huntsman for information' comes before the neutral letter log; stages 50/230 chest in Castle Dour; Legate placed in Solitude exterior Skyrim.esm:037EE6"
+   ]
+  },
+  {
+   "edid": "THTE_Quest_WintersandDeception",
+   "name": "The Wintersand Deception",
+   "plugin": "CC Tundra Homestead - Tweaks and Enhancements.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Starts when you find a Thalmor dossier naming Nazeem and Ahlam as Thalmor informants.",
+   "needs": [
+    {
+     "what": "Find the Thalmor Dossier: Nazeem & Ahlam",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "no one: a Thalmor dossier",
+     "where": "",
+     "how": "Pick up the Thalmor Dossier: Nazeem & Ahlam, then take it to the Jarl of Whiterun."
+    }
+   ],
+   "firstStep": "Talk to the Jarl of Whiterun",
+   "takesYou": [
+    {
+     "place": "Dragonsreach",
+     "hold": "Whiterun",
+     "why": "show the Jarl the dossier, and come back with proof"
+    },
+    {
+     "place": "the cellar of Wintersand Manor",
+     "hold": "Whiterun",
+     "why": "find the letter to Elenwen"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Bring the letter back to the Jarl",
+     "leadsTo": "you're rewarded for exposing them"
+    },
+    {
+     "choice": "Nazeem and Ahlam both die before it's done",
+     "leadsTo": "the quest fails"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to the Jarl of Whiterun",
+      "Obtain additional evidence",
+      "Return to the Jarl of Whiterun"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "a large leveled quest reward",
+     "when": "when you show the Jarl the letter"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Balgruuf the Greater",
+     "role": "Jarl of Whiterun, in Dragonsreach"
+    },
+    {
+     "name": "Vignar Gray-Mane",
+     "role": "has the same Jarl line as Balgruuf; placed in Jorrvaskr"
+    },
+    {
+     "name": "Nazeem",
+     "role": "Thalmor informant, lives in Wintersand Manor; carries the house key and a safe key"
+    },
+    {
+     "name": "Ahlam",
+     "role": "Thalmor informant, lives in Wintersand Manor; carries the house key and a safe key"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "the records don't say where the dossier lies"
+    },
+    {
+     "field": "takesYou",
+     "why": "Wintersand Manor's door is locked (Expert); the key is carried by Nazeem and Ahlam. The letter seems to sit in a safe whose keys they also carry, but the records only show the safe and keys as quest pieces"
+    },
+    {
+     "field": "closes",
+     "why": "what happens to Nazeem and Ahlam once exposed isn't in these records"
+    },
+    {
+     "field": "starts",
+     "why": "the records give Vignar Gray-Mane the same Jarl line as Balgruuf but don't say when he is Jarl instead"
+    },
+    {
+     "field": "starts",
+     "why": "another mod adds a second book with the same name, Thalmor Dossier: Nazeem & Ahlam; the records don't show which copy starts the quest or where either lies"
+    },
+    {
+     "field": "opens",
+     "why": "the same plugin swaps Wintersand Manor's front doors for ones that need a second manor key once something is switched on, which may make the manor yours later; no record ties that to this quest"
+    },
+    {
+     "field": "rewards",
+     "why": "the reward comes from the quest script's reward list; what you get isn't confirmed"
+    }
+   ],
+   "evidence": [
+    "quests_raw CC Tundra Homestead - Tweaks and Enhancements.esp:00000A stages 5-30, stage 25 fails",
+    "quest_givers_raw giver Skyrim.esm:013BBD info :000055 stage<6; other Skyrim.esm:013BB5",
+    "aliases Safe, LetterElenwen, SafeKeyNazeem, SafeKeyAhlam",
+    "places_raw pointer BOOK CC Tundra Homestead - Tweaks and Enhancements.esp:00000B (Thalmor Dossier: Nazeem & Ahlam)",
+    "quest_starts_raw doors into cceejsse001-hstead.esm:00087F lock 75 key Skyrim.esm:093B14",
+    "reward LvlQuestReward03Large",
+    "check: people_raw Vignar Skyrim.esm:013BB5 in Jorrvaskr; places_raw dossier BOOK More Thalmor Dossiers.esp:000832 and CC Tundra Homestead - Tweaks and Enhancements.esp:00000B; doors :000008/:000814 vs :00084D/Update.esm:002F3C enable parent :000813"
+   ]
+  },
+  {
+   "edid": "MyrwatchTNE_Quest",
+   "name": "Myrwatch",
+   "plugin": "Myrwatch - Tweaks and Enhancements.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Enter Myrwatch's vestibule and a note tells you the house must be bought from Tolfdir at the College of Winterhold.",
+   "needs": [
+    {
+     "what": "Complete Shalidor's Maze and get the Diadem of the Savant, or otherwise convince Tolfdir",
+     "kind": "other"
+    },
+    {
+     "what": "20,000 gold to buy Myrwatch",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "no one: a note",
+     "where": "the Vestibule of Myrwatch",
+     "how": "Go into the vestibule; the note sends you to Tolfdir."
+    }
+   ],
+   "firstStep": "Speak to Tolfdir",
+   "takesYou": [
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "talk Tolfdir into selling you Myrwatch, then buy it"
+    },
+    {
+     "place": "Shalidor's Maze, Labyrinthian",
+     "hold": "Hjaalmarch",
+     "why": "one way to prove yourself: finish the maze and take the Diadem of the Savant"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Show Tolfdir you finished Shalidor's Maze and have the Diadem of the Savant",
+     "leadsTo": "he agrees to sell"
+    },
+    {
+     "choice": "Find some other way to convince him",
+     "leadsTo": "he agrees to sell"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Tolfdir",
+      "Purchase Myrwatch"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Myrwatch, with its key and deed",
+     "when": "when you pay Tolfdir"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Tolfdir",
+     "role": "sells you Myrwatch at the College of Winterhold"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "the records don't say which hold Myrwatch's outside door is in"
+    },
+    {
+     "field": "where",
+     "why": "Tolfdir is placed in the Hall of Attainment; by his packages he sleeps from about 1 am for 5 hours and otherwise spends his time in the classroom, and College quests move him elsewhere"
+    },
+    {
+     "field": "choices",
+     "why": "the 'other way' is likely a persuasion line, since a very hard Speech check is in play, but the records don't spell it out"
+    },
+    {
+     "field": "name",
+     "why": "the quest has no journal name of its own in the records; 'Myrwatch' is the name of the house"
+    }
+   ],
+   "evidence": [
+    "quests_raw Myrwatch - Tweaks and Enhancements.esp:0008E3 stages 5/10/100",
+    "quest_givers_raw giver Skyrim.esm:01C19E info :0008E6 stage<6",
+    "quest_starts_raw startGame true; global ccEEJSSE002_HousePrice 20000 (Myrwatch - Tweaks and Enhancements.esp); SpeechVeryHard",
+    "door Update.esm:002F96 into myrwatchhomefixer.esp:005900 lock 255 (myrwatchhomefixer.esp)",
+    "items_raw Skyrim.esm:0F9904 Diadem of the Savant",
+    "people_schedules Tolfdir WCollegeTolfdirSleep1x5"
+   ]
+  },
+  {
+   "edid": "ReturnAegisbaneQuest",
+   "name": "Return Aegisbane",
+   "plugin": "ReturnAegisbane.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Get hold of Aegisbane, the Shatter-Shield family warhammer, then decide whether to give it back to Torbjorn.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "no one: the warhammer",
+     "where": "Raldbthar, with the bandit leader Alain Dufont",
+     "how": "Get Aegisbane, which ties this quest to Alain Dufont."
+    }
+   ],
+   "firstStep": "Retrieve the Shatter-Shield family warhammer",
+   "takesYou": [
+    {
+     "place": "Raldbthar",
+     "hold": "The Pale",
+     "why": "Alain Dufont and his bandits hold the warhammer"
+    },
+    {
+     "place": "House of Clan Shatter-Shield, Windhelm",
+     "hold": "Eastmarch",
+     "why": "talk to Torbjorn about Aegisbane"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Give Aegisbane back to Torbjorn",
+     "leadsTo": "the quest ends"
+    },
+    {
+     "choice": "Keep it",
+     "leadsTo": "the quest ends and you keep the warhammer"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Retrieve the Shatter-Shield family warhammer",
+      "Speak to Torbjorn Shatter-Shield about Aegisbane"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Aegisbane (warhammer; more damage against blocking enemies)",
+     "when": "if you keep it"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Alain Dufont",
+     "role": "bandit leader in Raldbthar who has the warhammer"
+    },
+    {
+     "name": "Torbjorn Shatter-Shield",
+     "role": "head of the family it belongs to, in Windhelm"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "no start condition or event is in these records; it most likely starts when you take the warhammer, but that isn't confirmed"
+    },
+    {
+     "field": "rewards",
+     "why": "nothing in the records shows a reward for returning it"
+    },
+    {
+     "field": "where",
+     "why": "Torbjorn is placed in his family's house; by schedule he has breakfast around 9 am, is out from 11 am for about 9 hours, and drinks at Candlehearth Hall from 8 pm for 4 hours"
+    }
+   ],
+   "evidence": [
+    "quests_raw ReturnAegisbane.esp:000800 stages 10/20/30, objectives 10/20",
+    "quest_givers_raw Alain Skyrim.esm:01B074 in Raldbthar Skyrim.esm:015257; Torbjorn Skyrim.esm:01413F in Skyrim.esm:01677E; reward alias Aegisbane Skyrim.esm:0D2AFE",
+    "people_schedules Torbjorn WindhelmTorbjornBreakfast9x2, AIOWHTorjornRandom11x9, WindhelmTorbjornCandlehearthBar20x4",
+    "places_raw Raldbthar hold The Pale"
+   ]
+  },
+  {
+   "edid": "ParaIntro",
+   "name": "Paragliding in Skyrim",
+   "plugin": "Paragliding.esp",
+   "canDo": "by itself",
+   "canDoWhy": "A man falls out of the sky and dies in front of you; his journal leads to a paraglider.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Flying Fred (dead)",
+     "where": "",
+     "how": "See a man fall from the sky, then inspect his body."
+    }
+   ],
+   "firstStep": "Inspect the body",
+   "takesYou": [
+    {
+     "place": "Fred's flight platform atop the Jerall Mountains",
+     "hold": "",
+     "why": "the paraglider waits there"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Inspect the body",
+      "Investigate Flying Fred's flight platform",
+      "Take the paraglider"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "the paraglider",
+     "when": "at the flight platform"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Flying Fred",
+     "role": "falls to his death; his journal points to the platform"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Fred is placed somewhere in the open world on a patrol, but where he falls and what sets it off aren't in these records"
+    },
+    {
+     "field": "takesYou",
+     "why": "the platform isn't one of the places in these records, so its hold isn't given"
+    }
+   ],
+   "evidence": [
+    "quests_raw Paragliding.esp:00801F stages 10-40",
+    "quest_givers_raw Falling Fred Paragliding.esp:00650D ref :008022 in Skyrim.esm:000D74",
+    "people_schedules Flying Fred DefaultPatrolLinkedRefNoConvo",
+    "quest_starts_raw no conditions, startGame false"
+   ]
+  },
+  {
+   "edid": "Leap_MiscQuest",
+   "name": "Leaps Of Faith",
+   "plugin": "LeapsOfFaith.esp",
+   "canDo": "by itself",
+   "canDoWhy": "Runs from the start of the game; it counts your progress as you find and make each of twelve leaps.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "no one",
+     "where": "",
+     "how": "It's already running; it shows up as you complete leaps."
+    }
+   ],
+   "firstStep": "Find and complete the remaining 11 Leaps of Faith",
+   "takesYou": [
+    {
+     "place": "Kagrenzel",
+     "hold": "",
+     "why": "one of the leap spots"
+    },
+    {
+     "place": "College of Winterhold",
+     "hold": "Winterhold",
+     "why": "one of the leap spots"
+    },
+    {
+     "place": "other spots across Skyrim",
+     "hold": "",
+     "why": "the rest of the twelve leaps"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find and complete the remaining Leaps of Faith (counts down from 11)",
+      "All Leaps of Faith completed"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the twelve leap markers sit in twelve different spots; only Kagrenzel and the College of Winterhold grounds can be named from these records. The quest also ties in something in Markarth, but it isn't one of the twelve markers"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is in the records"
+    },
+    {
+     "field": "starts",
+     "why": "the first objective already says 11 remain, so the journal entry probably appears after your first leap; the records don't confirm it"
+    }
+   ],
+   "evidence": [
+    "quests_raw LeapsOfFaith.esp:000836 stages 0-12, objectives 1-12",
+    "quest_starts_raw startGame true; tiedRefs LeapsOfFaith.esp:000800-000834 in 12 cells incl. Skyrim.esm:052FEB (Kagrenzel), Skyrim.esm:008E81 (Winterhold College), Skyrim.esm:020EEB (Markarth)",
+    "check: the 12 LeapsOfFaith.esp refs are in 12 cells, none of them Skyrim.esm:020EEB; the Markarth tie is the vanilla ref Skyrim.esm:10F6AB"
+   ]
+  },
+  {
+   "edid": "InigoBadVibrations",
+   "name": "Bad Vibrations",
+   "plugin": "Inigo.esp",
+   "canDo": "talk",
+   "canDoWhy": "Inigo, the Khajiit follower, brings up his painful visions and asks you to go with him to Snowpoint Beacon.",
+   "needs": [
+    {
+     "what": "Have Inigo as your follower",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Inigo",
+     "where": "travelling with you (you first meet him in Riften Jail)",
+     "how": "Inigo tells you about his visions; agree to go to Snowpoint Beacon with him."
+    }
+   ],
+   "firstStep": "Get to Snowpoint Beacon and talk to Inigo",
+   "takesYou": [
+    {
+     "place": "Snowpoint Beacon",
+     "hold": "Winterhold",
+     "why": "near the source of Inigo's visions"
+    },
+    {
+     "place": "Langley's House",
+     "hold": "Winterhold",
+     "why": "the cabin the wooden posts lead to; collect Snow Thrush eggs around it"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Get to Snowpoint Beacon and talk to Inigo",
+      "Follow Inigo!",
+      "Find the cabin",
+      "Find at least six Snow Thrush eggs in the area outside Langley's house",
+      "Check on the state of Inigo's mind",
+      "Get a copy of the Summon Inigo spell from Langley",
+      "Learn the spell and cast it"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Spell Tome (Novice): Summon Inigo (Conjuration; summons Inigo to where you aim)",
+     "when": "from Langley, near the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Inigo",
+     "role": "follower whose visions start it; first found in Riften Jail"
+    },
+    {
+     "name": "Langley",
+     "role": "lives in the cabin; wants six Snow Thrush eggs and has the Summon Inigo spell"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Inigo's opening line has no condition here beyond who says it; what makes him bring it up (time together, an earlier talk) isn't in these records"
+    },
+    {
+     "field": "takesYou",
+     "why": "Langley's house stays hidden until the quest reveals it, and its door needs the Cabin Key Langley carries"
+    },
+    {
+     "field": "steps",
+     "why": "the quest has two separate finishing points with no journal text, so the records don't show whether there's more than one way it ends"
+    }
+   ],
+   "evidence": [
+    "quests_raw Inigo.esp:0695C5 stages 70-250 (230 and 250 complete), objectives 70-180",
+    "quest_givers_raw giver Inigo.esp:000D62 info :069B33 stage<1; other Langley Inigo.esp:056C01; reward Inigo.esp:07085E",
+    "quest_starts_raw startGame true; door Inigo.esp:05B65B Cabin Key Inigo.esp:06C130, enable parent Inigo.esp:08A3A6",
+    "spells_raw Inigo.esp:055666 Summon Inigo",
+    "places_raw Snowpoint Beacon hold Winterhold",
+    "people_schedules Inigo InigoRelaxLangleyCab (Langley's House, Winterhold)"
+   ]
+  }
+ ]
+}
