@@ -1,0 +1,1093 @@
+[
+ {
+  "edid": "018AuriFriendQuest",
+  "name": "Song of the Green",
+  "plugin": "018Auri.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Once you've met Auri and become close friends, she opens up about being homesick and you offer to show her Skyrim's green places.",
+  "needs": [
+   {
+    "what": "Meet Auri and finish her introduction",
+    "kind": "other"
+   },
+   {
+    "what": "Raise your friendship with Auri to her third level or higher",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Auri",
+    "where": "her house, Auri's House, in Falkreath",
+    "how": "Talk to Auri once you're good friends; she is homesick and you decide to cheer her up by taking her to the most beautiful places in Skyrim."
+   }
+  ],
+  "firstStep": "Take Auri to Moss Mother Cavern",
+  "takesYou": [
+   {
+    "place": "Moss Mother Cavern",
+    "hold": "Falkreath",
+    "why": "the first beautiful place to show Auri"
+   },
+   {
+    "place": "Eldergleam Sanctuary",
+    "hold": "Eastmarch",
+    "why": "show Auri the sanctuary"
+   },
+   {
+    "place": "Ancestor Glade",
+    "hold": "Falkreath",
+    "why": "show Auri the glade"
+   },
+   {
+    "place": "Bloated Man's Grotto",
+    "hold": "Falkreath",
+    "why": "show Auri the grotto"
+   },
+   {
+    "place": "Shadowgreen Cavern",
+    "hold": "Haafingar",
+    "why": "the last place to show Auri"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Take Auri to Moss Mother Cavern",
+     "Take Auri to Eldergleam Sanctuary",
+     "Take Auri to Ancestor Glade",
+     "Take Auri to Bloated Man's Grotto",
+     "Take Auri to Shadowgreen Cavern",
+     "Follow Auri",
+     "Talk to Auri"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "You can make Auri's Bow and Bone Arrows at a tanning rack, and improve the bow at a sharpening wheel, even if you aren't a Wood Elf (you still need the Craftsmanship perk)",
+    "when": "once the quest is done"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Auri",
+    "role": "the Wood Elf follower you take on the tour; lives in her house in Falkreath"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the records gate the talk on Auri's introduction being done and her friendship being at its third step or higher, but don't say how friendship is earned"
+   },
+   {
+    "field": "steps",
+    "why": "the stages run one after another, so the places are probably visited in the order listed; where Auri leads you on 'Follow Auri' isn't named"
+   },
+   {
+    "field": "where",
+    "why": "by her schedule Auri stays around her house day and night when she isn't following you; her house is the placement the records give"
+   },
+   {
+    "field": "rewards",
+    "why": "the bow recipes open for Wood Elves or anyone who has finished this quest; no other reward shows in the records"
+   }
+  ],
+  "evidence": [
+   "018Auri.esp:03E4B1 stages 10-80, objectives 10-70",
+   "giver INFO 018Auri.esp:03E4B5 (Auri, stage<10)",
+   "start conditions: global 018AuriIntroDone (018Auri.esp:5131D1)==1, 018AuriFriendship (018Auri.esp:596C78)>=3, starts at 2",
+   "Auri 018Auri.esp:000D63 placed in Auri's House 018Auri.esp:30953A (Falkreath); packages 018AuriSandboxHomeowner, 018AuriSleepEditorLoc12x8 when not CurrentFollowerFaction",
+   "recipes REQ_Rack_Bone_Bow 018Auri.esp:276706, REQ_Rack_Bone_Arrow 018Auri.esp:299E9A, REQ_Temper_Weapon_Bone_Bow 018Auri.esp:276707: Craftsmanship AND (WoodElfRace OR ... OR GetQuestCompleted 018Auri.esp:03E4B1)",
+   "places: Moss Mother Cavern, Ancestor Glade, Bloated Man's Grotto (Falkreath), Eldergleam Sanctuary (Eastmarch), Shadowgreen Cavern (Haafingar)"
+  ]
+ },
+ {
+  "edid": "AK69CarrotQuest",
+  "name": "The Sweetest Carrot",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Megara tells you about a special carrot at Chillfurrow Farm and asks you to help her steal it for her horse, Cappy.",
+  "needs": [
+   {
+    "what": "Have Megara with you (Katana's friend, met during Chasing the Current)",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Megara",
+    "where": "wherever she is travelling with you; she is first placed in the Drunken Huntsman in Whiterun",
+    "how": "Megara mentions a carrot at Chillfurrow Farm; agree to find out what's special about it."
+   }
+  ],
+  "firstStep": "Head to the Chillfurrow Farm area and then talk to Megara",
+  "takesYou": [
+   {
+    "place": "Chillfurrow Farm",
+    "hold": "Whiterun",
+    "why": "steal the carrot with Megara"
+   },
+   {
+    "place": "The Bannered Mare, Whiterun",
+    "hold": "Whiterun",
+    "why": "talk things over with Megara"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Help Megara steal the carrot",
+    "leadsTo": "the theft at Chillfurrow Farm; later Megara gives the carrot to Cappy"
+   },
+   {
+    "choice": "Refuse to help with the carrot",
+    "leadsTo": "the quest fails"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Head to the Chillfurrow Farm area and then talk to Megara",
+     "With Megara, steal the carrot",
+     "Head to the Bannered Mare",
+     "Talk to Megara",
+     "Give Megara some time",
+     "Check in with Megara"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Megara",
+    "role": "gives the quest and steals the carrot with you"
+   },
+   {
+    "name": "Katana",
+    "role": "can also be talked to about it early on"
+   },
+   {
+    "name": "Wilmuth",
+    "role": "works Chillfurrow Farm, where the carrot is"
+   },
+   {
+    "name": "Cappy",
+    "role": "Megara's horse, who gets the carrot"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the records only show Megara offers it before the quest begins; they don't show what else must be done first, but Megara only travels with you after Katana's story with her begins"
+   },
+   {
+    "field": "rewards",
+    "why": "no item, gold or spell is given in the records"
+   },
+   {
+    "field": "choices",
+    "why": "taking the carrot is theft from the farm; whether being seen gives a bounty isn't in these files"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:E02209 stages 10-69 (60 completes, 69 fails)",
+   "giver INFO Katana.esp:E2AA72 (Megara, stage<1); Katana stage<11",
+   "aliases Megara, Carrot, Katana, Chillfurrow, Bannered Mare, Wilmuth",
+   "Megara Katana.esp:8E6C1E placed in The Drunken Huntsman (Whiterun)",
+   "Wilmuth Skyrim.esm:09CCD9 placed at Chillfurrow Farm (Whiterun)"
+  ]
+ },
+ {
+  "edid": "AK69EasterEggsQuest",
+  "name": "Honey Nuts and the Chin of Fate",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "After the trouble with Chadryn, you take Katana and Megara on a light-hearted trip around Skyrim to clear your heads.",
+  "needs": [
+   {
+    "what": "Finish Serenata (where Chadryn turns up)",
+    "kind": "quest"
+   },
+   {
+    "what": "Have Katana and Megara with you",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Chadryn, or Megara",
+    "where": "Chadryn only appears during Katana and Megara's story; Megara travels with you",
+    "how": "Talk to Chadryn or Megara after dealing with Chadryn; the three of you decide you need some fun."
+   }
+  ],
+  "firstStep": "Head to Solitude with Katana and Megara",
+  "takesYou": [
+   {
+    "place": "Solitude",
+    "hold": "Haafingar",
+    "why": "the first stop of the trip"
+   },
+   {
+    "place": "Honningbrew Meadery",
+    "hold": "",
+    "why": "stop by with Katana and Megara"
+   },
+   {
+    "place": "Riften",
+    "hold": "The Rift",
+    "why": "find a special plant rumored to grow near the city"
+   },
+   {
+    "place": "the bridge in Riverwood",
+    "hold": "Whiterun",
+    "why": "listen to the river, stroll through town and have a drink"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Head to Solitude with Katana and Megara",
+     "Stop by the Honningbrew Meadery with Katana and Megara",
+     "Head to Riften with Katana and Megara",
+     "Head to Riverwood with Katana and Megara"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "none recorded",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Katana",
+    "role": "travels with you"
+   },
+   {
+    "name": "Megara",
+    "role": "travels with you; suggests Riverwood"
+   },
+   {
+    "name": "Chadryn",
+    "role": "can start it; appears during the outing"
+   },
+   {
+    "name": "Deepvos",
+    "role": "appears during the outing"
+   },
+   {
+    "name": "Azatar",
+    "role": "appears during the outing"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the opening journal line says 'after dealing with Chadryn', and Chadryn is in Serenata, so it likely follows that quest; the records don't show the exact condition"
+   },
+   {
+    "field": "starts",
+    "why": "Chadryn has no fixed home in the records; he is brought in by the story, so where you meet him isn't given"
+   },
+   {
+    "field": "takesYou",
+    "why": "Honningbrew Meadery isn't in the places index, so its hold isn't given here"
+   },
+   {
+    "field": "steps",
+    "why": "several stages have no journal text and three different stages end it, so there may be small branches the records don't describe"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:B74A58 stages 10-70 (65 and 66 complete), objectives 10,11,20,30",
+   "type null",
+   "giver INFO Katana.esp:DB0FAD (Chadryn, stage<1); Megara stage<31",
+   "aliases Chadryn, Deepvos, Azatar + markers, SolitudeMarker, RiftenMarker, RiverwoodMarker",
+   "Chadryn Katana.esp:B37E04 / Deepvos B6F944 / Azatar B51326 placed in Marker Storage Unit",
+   "Chadryn and Azatar and Deepvos are also aliases in Serenata Katana.esp:8BB421",
+   "place pointer INFO Katana.esp:4F12E1 (Megara: Riverwood bridge)"
+  ]
+ },
+ {
+  "edid": "AK69KatanaPersonalQuest",
+  "name": "Chasing the Current",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Some time after Katana joins you, she asks for help tracking down a thief, which sends you around Skyrim's inns and bandit hideouts on Megara's leads.",
+  "needs": [
+   {
+    "what": "Recruit Katana (Meeting Katana)",
+    "kind": "quest"
+   },
+   {
+    "what": "Give it some time after recruiting her",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Katana",
+    "where": "travelling with you; you first meet her in the Winking Skeever in Solitude",
+    "how": "After recruiting her, talk to Katana when you have a moment; she has a plan but needs time, then sends you to the Drunken Huntsman."
+   }
+  ],
+  "firstStep": "Talk to Katana when you have a moment",
+  "takesYou": [
+   {
+    "place": "The Drunken Huntsman, Whiterun",
+    "hold": "Whiterun",
+    "why": "sit at a table and wait to be approached (by Megara)"
+   },
+   {
+    "place": "Silent Moons Camp",
+    "hold": "Whiterun",
+    "why": "defeat Lucky Irnsvar for the bounty"
+   },
+   {
+    "place": "Silver-Blood Inn, Markarth",
+    "hold": "The Reach",
+    "why": "sit at a table and tell Megara; read Lucky Irnsvar's letter"
+   },
+   {
+    "place": "Kolskeggr Mine",
+    "hold": "The Reach",
+    "why": "defeat Galtun Bold-Thief"
+   },
+   {
+    "place": "The Bee and Barb, Riften",
+    "hold": "The Rift",
+    "why": "meet Megara again; read Galtun's note"
+   },
+   {
+    "place": "Broken Helm Hollow",
+    "hold": "The Rift",
+    "why": "defeat Runir Wulfhart"
+   },
+   {
+    "place": "The Frozen Hearth, Winterhold",
+    "hold": "Winterhold",
+    "why": "collect your reward and the thief's location from Megara"
+   },
+   {
+    "place": "a house near Fort Fellhammer (Kilerth's Rest)",
+    "hold": "Winterhold",
+    "why": "confront River, the thief"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "What you say to Elli, who warns you off Fort Fellhammer and offers coins",
+    "leadsTo": "if you still go to Fort Fellhammer she says you'll be enemies"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Katana when you have a moment",
+     "Check in with Katana",
+     "Wait to hear about Katana's plan",
+     "Talk to Katana",
+     "Head to the Drunken Huntsman",
+     "Wait to be approached",
+     "(Optional) Talk to Katana",
+     "Defeat Lucky Irnsvar",
+     "Head to Silver-Blood Inn",
+     "Wait for Megara",
+     "Read Lucky Irnsvar's letter",
+     "(Optional) Talk to Katana",
+     "Defeat Galtun Bold-Thief",
+     "Head to the Bee and Barb",
+     "Wait for Megara",
+     "Read Galtun Bold-Thief's Note",
+     "(Optional) Talk to Katana",
+     "Defeat Runir Wulfhart",
+     "Head to the Frozen Hearth",
+     "Talk to Katana",
+     "Head to the location",
+     "Confront River",
+     "Talk to Katana"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "bounty reward from Megara",
+    "when": "after defeating Runir Wulfhart, at the Frozen Hearth"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Megara joining you",
+   "Sugar and Spice",
+   "The Ravens' Lament"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Katana",
+    "role": "asks for your help; her story"
+   },
+   {
+    "name": "Megara",
+    "role": "the informant who meets you at inns and hands out the bounties; first in the Drunken Huntsman"
+   },
+   {
+    "name": "Lucky Irnsvar",
+    "role": "bandit at Silent Moons Camp"
+   },
+   {
+    "name": "Galtun Bold-Thief",
+    "role": "bandit at Kolskeggr Mine"
+   },
+   {
+    "name": "Runir Wulfhart",
+    "role": "bandit at Broken Helm Hollow"
+   },
+   {
+    "name": "Elli",
+    "role": "at the Frozen Hearth in Winterhold; warns you away from Fort Fellhammer"
+   },
+   {
+    "name": "River",
+    "role": "the thief; gets away at the end"
+   },
+   {
+    "name": "Cappy",
+    "role": "Megara's horse"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the records also require a step of another quest that isn't in these files, and a waiting timer tied to days passed; the exact wait isn't decoded"
+   },
+   {
+    "field": "rewards",
+    "why": "the journal promises a reward from Megara, but its size isn't in the records"
+   },
+   {
+    "field": "choices",
+    "why": "Elli's lines suggest she offers coins to keep you away, and there is a lock-out switch in the records, but which answer locks you out isn't shown"
+   },
+   {
+    "field": "takesYou",
+    "why": "the journal says 'a house near Fort Fellhammer'; River is placed in Kilerth's Rest and the same hideout appears in Sugar and Spice, so that is likely the house"
+   },
+   {
+    "field": "opens",
+    "why": "the closing journal hopes Megara will join you; the later quests mention River and Kilerth's Rest, but the records don't show the exact condition linking them"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:8E1B19 stages 0-300 (270 completes)",
+   "start conditions: global AK69KatanaRecruited Katana.esp:617D76==1, GetStage Meeting Katana Katana.esp:617D75>=15 ('Katana recruited.'), GetStage Katana.esp:7D55E1>=5 (not in these files)",
+   "globals AK69KatanaQuestReadyTimeVar, GameDaysPassed, AK69PQLockedOut",
+   "giver INFO Katana.esp:809D90 (Katana, stage<10); Megara <21, Elli <161, River <221",
+   "place pointers INFO Katana.esp:9DEDB1, 9DEDB7, A168E3, A80E93, A80E97, ABDAE7, B13ECB, B18FCC",
+   "River Katana.esp:8FB025 placed in Kilerth's Rest (Winterhold); Elli Katana.esp:92DA3A in The Frozen Hearth",
+   "Galtun Katana.esp:A117D5 in Kolskeggr Mine; Runir Katana.esp:A76C7E in Broken Helm Hollow"
+  ]
+ },
+ {
+  "edid": "AK69MegaraBanditQuest",
+  "name": "Megara's Radiant Quests",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "radiant",
+  "canDoWhy": "Megara can send you to clear out a bandit leader at a camp she picks, then pays you.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Megara",
+    "where": "travelling with you, or in the Drunken Huntsman in Whiterun",
+    "how": "Ask Megara for work; she names a bandit hideout."
+   }
+  ],
+  "firstStep": "Kill the leader of the bandits at the place Megara names",
+  "takesYou": [
+   {
+    "place": "a bandit hideout Megara picks",
+    "hold": "",
+    "why": "kill the bandit leader"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the leader of the bandits at the named place",
+     "Collect reward from Megara"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "gold",
+    "when": "when you collect from Megara"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Megara",
+    "role": "gives the job and pays you"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "the records don't hold the line Megara offers this on, or what must be done before she offers it"
+   },
+   {
+    "field": "takesYou",
+    "why": "the hideout is picked each time, so no fixed place"
+   },
+   {
+    "field": "rewards",
+    "why": "the amount of gold isn't in the records"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:BEE373 stages 0-30, objectives 10,20",
+   "aliases BanditLocation, Bandit, MapMarker, Megara",
+   "reward Septim via AK69_QF_AK69MegaraBanditQuest_05BEE373.Gold001",
+   "no giver line found"
+  ]
+ },
+ {
+  "edid": "AK69SerenataQuest",
+  "name": "Serenata",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Megara, looking anxious, wants to talk; Katana and Megara are getting married and you look after Shale while they plan it.",
+  "needs": [
+   {
+    "what": "Have Katana and Shale with you",
+    "kind": "other"
+   },
+   {
+    "what": "Finish The Ravens' Lament (where you meet Shale)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Megara",
+    "where": "in a city during the day, with Katana and Shale along",
+    "how": "With Katana and Shale, talk to Megara in a city during the day."
+   }
+  ],
+  "firstStep": "With Katana and Shale, talk to Megara in a city during the day",
+  "takesYou": [
+   {
+    "place": "wherever the scroll carries you",
+    "hold": "",
+    "why": "find Katana and Megara and attend their wedding"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "With Katana and Shale, talk to Megara in a city during the day",
+     "Journey with Shale for about a day",
+     "With Shale, read the note from Katana and Megara",
+     "With Shale, use the scroll when you're ready",
+     "Find Katana and Megara",
+     "Enjoy the ceremony",
+     "(Optional) Chat with everyone",
+     "Let Megara know when you're ready to leave",
+     "With Shale, await Katana and Megara's return",
+     "Talk to Megara to continue your journey",
+     "(Optional) Talk to Katana"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [
+   "Honey Nuts and the Chin of Fate"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Megara",
+    "role": "starts it; one of the two brides"
+   },
+   {
+    "name": "Katana",
+    "role": "the other bride"
+   },
+   {
+    "name": "Shale",
+    "role": "travels with you while they plan"
+   },
+   {
+    "name": "Chadryn",
+    "role": "turns up at the ceremony"
+   },
+   {
+    "name": "Azatar",
+    "role": "at the ceremony"
+   },
+   {
+    "name": "Deepvos",
+    "role": "at the ceremony"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "takesYou",
+    "why": "the scroll takes you to the ceremony, but the place isn't named in the records"
+   },
+   {
+    "field": "needs",
+    "why": "the first objective asks for Katana and Shale; Shale joins at the end of The Ravens' Lament, but the exact condition isn't in the records"
+   },
+   {
+    "field": "steps",
+    "why": "a courier brings the note after about a day; where the courier finds you isn't fixed"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:8BB421 stages 0-190 (190 completes), objectives 1-161",
+   "giver INFO Katana.esp:0DDA3C (Megara, stage<1); Shale <41, Chadryn <131, Katana <131",
+   "aliases NoteAliasRef, ScrollAliasRef, Chadryn, Azatar, Deep",
+   "Shale Katana.esp:8283EB placed in Marker Storage Unit (brought in by story)"
+  ]
+ },
+ {
+  "edid": "AK69SugarandSpiceQuest",
+  "name": "Sugar and Spice",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Katana takes you back to Kilerth's Rest for a private moment, then to the coast by Katla's Farm.",
+  "needs": [
+   {
+    "what": "Finish Chasing the Current",
+    "kind": "quest"
+   },
+   {
+    "what": "Have Katana with you",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Katana",
+    "where": "travelling with you",
+    "how": "Talk to Katana; she asks you to go to Kilerth's Rest with her."
+   }
+  ],
+  "firstStep": "Head to Kilerth's Rest with Katana",
+  "takesYou": [
+   {
+    "place": "Kilerth's Rest, the house near Fort Fellhammer",
+    "hold": "Winterhold",
+    "why": "Katana wants to go back there"
+   },
+   {
+    "place": "the coast by Katla's Farm",
+    "hold": "Haafingar",
+    "why": "spend some time with Katana"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "How the time at Katla's Farm plays out",
+    "leadsTo": "one of two endings: a quiet, interesting time together, or Katana getting the better of you ('Well played, Katana')"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Head to Kilerth's Rest with Katana",
+     "Get comfortable and close your eyes",
+     "Head to the coast by Katla's Farm with Katana"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Katana",
+    "role": "starts it and goes with you"
+   },
+   {
+    "name": "Megara",
+    "role": "part of the quest"
+   },
+   {
+    "name": "Katla",
+    "role": "her farm is the meeting spot by the coast"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the journal says 'after everything that's happened' and the hideout is River's from Chasing the Current, so it likely follows that; the exact condition isn't in the records"
+   },
+   {
+    "field": "choices",
+    "why": "two different stages finish it with different journal text, but the records don't show what picks one"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:E39DE4 stages 0-70 (60, 69, 70 complete)",
+   "giver INFO Katana.esp:E39DE7 (Katana, stage<1)",
+   "aliases Hideout, Throne, Bed, Door, Katla",
+   "River placed in Kilerth's Rest Katana.esp:ADC254 (Winterhold); Throne and RiverHideout aliases also in Katana.esp:8E1B19",
+   "Katla Skyrim.esm:013290 at Katla's Farm (Solitude)"
+  ]
+ },
+ {
+  "edid": "AK69TheKhatsEyeQuest",
+  "name": "The Khat's Eye",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Megara wants to fix the Moorside Inn's cheese surplus; in Morthal you help a Khajiit, Al'Tharo, recover his spectacles from Thalmor spies.",
+  "needs": [
+   {
+    "what": "Have Katana and Megara with you",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Megara",
+    "where": "travelling with you",
+    "how": "Megara mentions the Moorside Inn is knee-deep in cheese but short on customers; take Katana and Megara to Morthal."
+   },
+   {
+    "who": "Al'Tharo",
+    "where": "the Moorside Inn, Morthal",
+    "how": "Talk to him at the inn; he dropped his spectacles by Movarth's Lair."
+   }
+  ],
+  "firstStep": "Relax at Moorside Inn with Katana and Megara",
+  "takesYou": [
+   {
+    "place": "Moorside Inn, Morthal",
+    "hold": "Hjaalmarch",
+    "why": "relax and meet Al'Tharo"
+   },
+   {
+    "place": "Movarth's Lair",
+    "hold": "Hjaalmarch",
+    "why": "look for Al'Tharo's spectacles and fight Thalmor spies"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Relax at Moorside Inn with Katana and Megara",
+     "Look for Al'Tharo's spectacles",
+     "Defeat the Thalmor spies",
+     "Return Al'Tharo's spectacles"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Side Quest",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Megara",
+    "role": "suggests the trip"
+   },
+   {
+    "name": "Katana",
+    "role": "comes along"
+   },
+   {
+    "name": "Al'Tharo",
+    "role": "Khajiit at the Moorside Inn who lost his spectacles"
+   },
+   {
+    "name": "Thalmor spies",
+    "role": "five of them waiting near Movarth's Lair"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the records don't show what must happen before Megara brings up the Moorside Inn"
+   },
+   {
+    "field": "rewards",
+    "why": "no reward shows in the records"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:C5896B stages 0-100 (80 completes), objectives 5,40,50,60",
+   "giver INFO Katana.esp:D2D40E (Al'Tharo, stage<10); Megara <10",
+   "place pointers INFO Katana.esp:47CB27 (Megara Companion Quest, Moorside cheese), INFO Katana.esp:C589BB (Al'Tharo, Movarth's Lair)",
+   "item Al'Tharo's Spectacles Katana.esp:C9F7D1",
+   "aliases AlTharoMoorsideMarker, MovarthsLairMarker, Thalmor1-5"
+  ]
+ },
+ {
+  "edid": "AK69TheRavensLamentQuest",
+  "name": "The Ravens' Lament",
+  "plugin": "Katana.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "River is back and getting to Katana; you, Katana and Megara go after her for good and rescue Shale along the way.",
+  "needs": [
+   {
+    "what": "Finish Chasing the Current",
+    "kind": "quest"
+   },
+   {
+    "what": "Have Katana and Megara with you",
+    "kind": "other"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Katana (or Megara)",
+    "where": "travelling with you",
+    "how": "Talk to Katana about visiting the Bee and Barb; she wants to end the problem with River and wants you and Megara with her."
+   }
+  ],
+  "firstStep": "Talk to Katana",
+  "takesYou": [
+   {
+    "place": "The Bee and Barb, Riften",
+    "hold": "The Rift",
+    "why": "meet River; she slips away and leaves a note"
+   },
+   {
+    "place": "Vilemyr Inn, Ivarstead",
+    "hold": "The Rift",
+    "why": "Katana's guess for where River is"
+   },
+   {
+    "place": "Fallowstone Cave",
+    "hold": "The Rift",
+    "why": "Megara's guess for where River is"
+   },
+   {
+    "place": "River's camp",
+    "hold": "",
+    "why": "defeat River and her hagravens"
+   },
+   {
+    "place": "The Bee and Barb, Riften",
+    "hold": "The Rift",
+    "why": "rest and drink afterwards"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Follow Katana's guess (Vilemyr Inn) or Megara's (Fallowstone Cave)",
+    "leadsTo": "both are offered; the records name River's frost atronachs in Fallowstone Cave"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Katana",
+     "Head to the Bee and Barb with Katana and Megara",
+     "Search for traces of River",
+     "(Optional) Talk to Megara",
+     "(Optional) Talk to Katana",
+     "Take River's note",
+     "Go to Vilemyr Inn",
+     "Go to Fallowstone Cave",
+     "Search for signs of River",
+     "Talk to Megara",
+     "Find River and Shale",
+     "Defeat River's summons",
+     "Follow Megara on foot",
+     "Follow Shale on foot",
+     "Defeat River and her friends",
+     "Head to the Bee and Barb",
+     "Let Katana know when you're ready to leave the Bee and Barb",
+     "(Optional) Talk to Megara",
+     "(Optional) Talk to Shale"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Tsukikage (sword; Shale's blade)",
+    "when": "near the end"
+   }
+  ],
+  "type": "Side Quest",
+  "opens": [
+   "Shale joining you",
+   "Serenata"
+  ],
+  "closes": [
+   "River"
+  ],
+  "people": [
+   {
+    "name": "Katana",
+    "role": "leads the hunt for River"
+   },
+   {
+    "name": "Megara",
+    "role": "comes along; guesses Fallowstone Cave"
+   },
+   {
+    "name": "River",
+    "role": "the enemy; gone by the end"
+   },
+   {
+    "name": "Shale",
+    "role": "River's captive whom you save; may join you"
+   },
+   {
+    "name": "Katana's Shade",
+    "role": "saves everyone in the final fight"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "choices",
+    "why": "both inns/caves have objectives and there's a warning set up at Vilemyr Inn, so Vilemyr may be the wrong lead, but the records don't spell out what each path does"
+   },
+   {
+    "field": "rewards",
+    "why": "Tsukikage is held by the quest's script and there's a crate set aside for a sword; whether it's handed to you or left in that crate isn't clear"
+   },
+   {
+    "field": "takesYou",
+    "why": "River's camp with the hagravens isn't named in the records"
+   },
+   {
+    "field": "closes",
+    "why": "the journal says 'River's gone'; whether she dies isn't stated"
+   },
+   {
+    "field": "needs",
+    "why": "River first appears in Chasing the Current; the exact condition linking the two isn't in the records"
+   }
+  ],
+  "evidence": [
+   "Katana.esp:8BB420 stages 0-320 (310 completes)",
+   "giver INFO Katana.esp:263BF1 (Megara, stage<11); Katana <11, Shale <231, River <231",
+   "reward Tsukikage Katana.esp:CE3174 via AK69_QF_AK69TheRavensLamentQu_058BB420.AK69Tsukikage; alias CrateForSword",
+   "place pointers INFO Katana.esp:925982, 925983, 939DE9, 94E232, 2EC82E, CDE06C",
+   "aliases VilemyrInnMarker, VilemyrWarning, FallowstoneMarker, Atronach1-2 (Fallowstone Cave), Hag1-5, Shade"
+  ]
+ },
+ {
+  "edid": "aaFuraQ1",
+  "name": "Blood Ties",
+  "plugin": "FDE Fura.esp (no other plugin edits it in these records)",
+  "canDo": "talk",
+  "canDoWhy": "Fura Bloodmouth, a Volkihar vampire, asks you to come with her to Solitude to meet her mother, Angeline.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "Fura Bloodmouth",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Talk to Fura; agree to go with her to Solitude to meet her mother."
+   }
+  ],
+  "firstStep": "Bring Fura to her mother",
+  "takesYou": [
+   {
+    "place": "Angeline's Aromatics, Solitude",
+    "hold": "Haafingar",
+    "why": "Fura's mother, Angeline Morrard, runs this shop"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Let Fura and her mother reunite",
+    "leadsTo": "the quest completes; Fura says you'll go finish what must be done"
+   },
+   {
+    "choice": "Kill Angeline, as a true Volkihar",
+    "leadsTo": "the quest completes with Angeline dead"
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Bring Fura to her mother",
+     "Talk to Fura",
+     "Stay with Fura"
+    ]
+   },
+   {
+    "branch": "Volkihar",
+    "objectives": [
+     "Kill Angeline, as a true Volkihar"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "none recorded",
+  "opens": [
+   "Bloodmouth"
+  ],
+  "closes": [
+   "Angeline Morrard, if you kill her (she runs Angeline's Aromatics)"
+  ],
+  "people": [
+   {
+    "name": "Fura Bloodmouth",
+    "role": "Volkihar vampire who asks you to come"
+   },
+   {
+    "name": "Angeline Morrard",
+    "role": "Fura's mother, at Angeline's Aromatics in Solitude"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "the records hold no condition on Fura's opening line; she lives in Castle Volkihar among the vampire court, so you likely need to be welcome there and have her following you"
+   },
+   {
+    "field": "where",
+    "why": "Fura has no daily schedule in these files; Volkihar Keep is only where she's placed"
+   },
+   {
+    "field": "opens",
+    "why": "the next quest from the same add-on, Bloodmouth, also involves Fura; the records don't show that this one must come first"
+   },
+   {
+    "field": "choices",
+    "why": "there is also a failing end and a 'Fura's mother is dead' entry, likely if Angeline dies another way; the records don't say what triggers them"
+   }
+  ],
+  "evidence": [
+   "FDE Fura.esp:000933 stages 1-170 (100 and 170 complete, 160 fails)",
+   "type null",
+   "giver INFO FDE Fura.esp:00094E (Fura, stage<11); Angeline stage<31",
+   "no start conditions (quest_starts 'fura' line)",
+   "Fura Dawnguard.esm:003363 placed in Volkihar Keep Dawnguard.esm:000803; factions DLC1VampireFaction",
+   "Angeline Skyrim.esm:013260 placed in Angeline's Aromatics Skyrim.esm:016A11 (Solitude)",
+   "next in line: aaFuraQ2 Bloodmouth FDE Fura.esp:000B6B"
+  ]
+ }
+]

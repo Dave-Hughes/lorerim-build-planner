@@ -1,0 +1,1434 @@
+{
+  "checks": [
+    {
+      "edid": "dunForelhostQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; Valmir outside asks you to bring back the mask (his line: \"Return to me here once you have obtained the mask\")."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No conditions on the start in the records."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Both Valmir versions are placed outside Forelhost and stand there until you bring the mask; both carry the Forelhost Entrance Key. Which version you meet stays unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Forelhost is in the Rift; Rahgot is in Forelhost Refectory; the crypt holds the draugr warlord and the crypt chest, matching the Catacombs objective."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage logs for handing over, tricking, fighting Valmir, and the IDE Thalmor branch (journal line switched by its truth global) all match."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "The mask alias points at Rahgot, whose text matches. No other reward in the records."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunFrostmereCryptQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; stage 1 log describes finding the bandits attacking Eisa."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Eisa is placed outside Frostmere Crypt; her line is open until the quest moves on; the first objective (learn more about the theft) is optional."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Frostmere Crypt is in the Pale; Kyr, Ra'jirr, the Pale Lady and the altar are in the Frostmere Depths space under it."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 90 (sword returned) and 91 (killed her, kept the sword)."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Pale Blade item texts match; five level versions."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "A Morthal add-on in the list has a second Eisa Blackthorn who lives in Morthal (her own house, Moorside Inn some evenings), run by that add-on's own quest. These files don't show whether that follows on from this quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunGauldursonQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No story-manager start or giver; stages 6-9 are the four \"cryptic message\" openings, stage 10 the legend."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Writ and edict aliases match the four tombs; Lost Legends is an alias. The quest also has book aliases for Geirmund's Hall, Saarthal and Folgunthur, which supports the reader's unsure about where copies are."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Holds match the places index; the three brothers and Gauldur are placed in Reachwater Rock for the ending; stage 105 log describes the ambush."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "\"Used up when you reforge the amulet\" is not in the records; the logs only say you bring the fragments to the tomb and forge the amulet anew. Reworded."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunHighGateRuinsQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; Anska's line is open before the quest begins."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Anska is placed in the first cell through the ruin's outside door and sandboxes there until she joins you; her follow package runs only inside High Gate Ruins."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "The places index puts High Gate Ruins in the Pale; the \"nearest city\" figure is a separate measure and doesn't contradict it, so that unsure note was dropped. Vokun is in Vokun's Throne Room."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 10 (alone) vs 20 (help Anska); stage 150 fails on failing to protect her."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 100 log: \"a powerful new fire spell\". No spell is named by the quest's scripts."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunHillgrundsTombQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; Golldir's line is open before the quest begins."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Golldir is placed outside the tomb and sandboxes there until you agree; he carries the tomb key."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Hillgrund's Tomb is in Eastmarch; the door needs the key Golldir carries."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "Nothing in the records offers a choice to bring or leave Golldir. He leaves his spot outside once you agree to help, and protecting him is an optional objective, so he comes along. Moved to unsure; choices emptied."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "The quest script's reward list is the large quest-reward leveled list. Added an unsure note that it comes from the script."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunHunterQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No story-manager start; Froki's opening line is open until the second round."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "Alternate Perspective adds \"Unbound completed\" to two lines of this quest, but neither is Froki's opening line (that line is unchanged). The two changed lines sit in the same block as Froki and his grandson Haming talking about Helgen. Nothing shows the trials need Unbound done. Moved to unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Froki is placed in Froki's Shack in the Rift; stage 21 log says he marks you so the guardians appear."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Six guardians are placed in the open world with no named place; the troll is in Graywinter Watch (Whiterun)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Kyne's Token is the quest script's reward-amulet property; Blessing of Kyne is only in the final log, and no spell by that name is in these files. Added an unsure note for the token."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunNchuandZelQst",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; first log sends you after the researchers in Alethius's note."
+        },
+        "needs": {
+          "verdict": "unsure",
+          "note": "Two lines bear on getting in: a Markarth guard says Calcelmo has to give his say-so, and Calcelmo says he'll let you in if you deal with a giant spider his workers call Nimhe. These files don't show whether that gate blocks this quest. Added Calcelmo's line to the unsure note."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "A Markarth guard's line puts the dwarven city underneath the keep."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Final log: \"received some gold\"; no amount in these files."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunTrevasWatchQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; stage 1 log \"Speak with Stalleo or Brurid.\""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stalleo is placed outside; the stage 10 log puts the tunnel next to his camp. Brurid is placed inside and has force-greet packages."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 5, 10/15, 16, 95, 97 and 100 match."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 60 log promises a reward from Stalleo; no item or gold is named."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "fix",
+          "note": "Both stage logs offer talking the other man into leaving as well as killing him, so the one you turn against isn't always lost. Reworded."
+        }
+      }
+    },
+    {
+      "edid": "dunValthumeQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Change-location start; Valdar's line is open before the quest begins: \"Find the three vessels within Valthume, then return to me.\""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Valdar is placed in Valthume Vestibule, the cell behind the outside door."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Final log: \"Valdar told me to take his iron mask\"; the Hevnoraak mask text matches. Not handed over by a script."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "dunVolunruudQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No start event or giver in the records; the dead genealogist and field journal aliases point at the trigger."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Heddic Volunnar is placed in Volunruud."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Volunruud is in the Pale; Kvenel is in Volunruud Elder's Cairn."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Bob's ruling: the Ceremonial Axe and Ceremonial Sword are named by the quest script's own properties, so they stay in rewards with an unsure note (they are also the keys for the Cairn door, and the records don't show whether you keep them)."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "dunForelhostQST",
+      "name": "Siege on the Dragon Cult",
+      "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp; also edited by Unofficial Skyrim Special Edition Patch.esp, Unofficial Skyrim Modders Patch.esp and IDE Thalmor.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Go to Forelhost in the Rift; a soldier named Valmir waiting outside asks you to kill the Dragon Priest inside and bring back his mask.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Valmir",
+          "where": "outside Forelhost, in the Rift",
+          "how": "The quest wakes up when you reach Forelhost. Talk to Valmir outside the ruin; he asks you to defeat the Dragon Priest and bring him the mask, and he carries the Forelhost Entrance Key for the stronghold door."
+        }
+      ],
+      "firstStep": "Talk to Valmir outside Forelhost, then go in after the Dragon Priest Rahgot",
+      "takesYou": [
+        {
+          "place": "Forelhost",
+          "hold": "The Rift",
+          "why": "the ruin itself; the stronghold door needs the Forelhost Entrance Key Valmir carries"
+        },
+        {
+          "place": "Forelhost Crypt (the Catacombs)",
+          "hold": "The Rift",
+          "why": "optional: find the key to the well, which gets you past the collapsed areas"
+        },
+        {
+          "place": "Forelhost Refectory",
+          "hold": "The Rift",
+          "why": "Rahgot, the Dragon Priest, and his mask"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Hand Rahgot's mask over to Valmir",
+          "leadsTo": "The quest ends with Valmir taking the mask."
+        },
+        {
+          "choice": "Tell Valmir the mask was destroyed",
+          "leadsTo": "The quest ends with Valmir tricked and you keeping the mask."
+        },
+        {
+          "choice": "Turn on Valmir once soldiers show he is an impostor",
+          "leadsTo": "You fight Valmir, a Thalmor agent posing as a soldier; you keep the mask."
+        },
+        {
+          "choice": "With IDE Thalmor: Valmir asks you to help him kill the soldiers he tricked",
+          "leadsTo": "You decide whether to side with Valmir or with the soldiers."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "(Optional) Find Skorm Snow-Strider's journal",
+            "(Optional) Show Skorm Snow-Strider's journal to Valmir",
+            "(Optional) Find the key to the well in the Catacombs",
+            "Obtain Rahgot's mask",
+            "Return to Valmir"
+          ]
+        },
+        {
+          "branch": "Valmir is unmasked",
+          "objectives": [
+            "Kill the imposter Valmir"
+          ]
+        },
+        {
+          "branch": "IDE Thalmor: Valmir asks for help",
+          "objectives": [
+            "Help Valmir or the soldiers"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Rahgot (Dragon Priest mask): \"Rahgot's fortitude is yours as long as you wear the mask, increasing your stamina greatly as well as poison and disease resist.\"",
+          "when": "taken from Rahgot; you keep it unless you hand it to Valmir"
+        }
+      ],
+      "type": null,
+      "opens": [],
+      "closes": [
+        "Valmir, if you fight him"
+      ],
+      "people": [
+        {
+          "name": "Valmir",
+          "role": "quest giver, waiting outside Forelhost; there are two versions of him in the records, one Imperial and one Stormcloak"
+        },
+        {
+          "name": "Rahgot",
+          "role": "Dragon Priest boss in Forelhost Refectory, carries the mask"
+        },
+        {
+          "name": "Skorm Snow-Strider",
+          "role": "left the journal that shows the way past the collapsed areas"
+        },
+        {
+          "name": "the soldiers at the end",
+          "role": "Imperial or Stormcloak soldiers who turn up when you come back with the mask"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.who",
+          "why": "The records hold an Imperial Valmir and a Stormcloak Valmir; which one you meet (probably by Civil War side) isn't in these files."
+        },
+        {
+          "field": "choices",
+          "why": "IDE Thalmor adds a branch where Valmir asks for your help against the soldiers, but these files don't show which line or choice switches it on."
+        },
+        {
+          "field": "rewards",
+          "why": "No gold or item reward from Valmir appears in the quest's scripts here; the mask is the only reward named."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:035354 editedBy USSEP, USMP, IDE Thalmor.esp, LoreRim - Dialogue Patch.esp",
+        "start: story node dunForelhostNode, change location",
+        "stage 10/20/40/50/60 logs; 70 log split on global aaThalmorValmirTruth (IDE Thalmor.esp:000A29); 120/130/150 completing logs",
+        "aliases GrifterImp=ValmirImperial (07E5B6), GrifterSons=ValmirSons (07E5B5), placed in exterior at Forelhost; package dunForelhostGrifterSandboxEditorLocation512",
+        "door Skyrim.esm:015DCB into Forelhost Stronghold needs Forelhost Entrance Key 03A694, carried by both Valmirs",
+        "DragonPriest01 = Rahgot 035351 in Forelhost Refectory 022F52",
+        "reward alias DragonPriestMask = Rahgot 061CC0 (text from LoreRim - Armor Merges.esp)",
+        "IDE Thalmor adds aaThalmorValmirTruth==0 to INFO 0729EE, 0C3567, 0C3569, 06223B",
+        "place Forelhost (01917A) hold The Rift"
+      ]
+    },
+    {
+      "edid": "dunFrostmereCryptQST",
+      "name": "The Pale Lady",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Walk up to Frostmere Crypt in the Pale and you find bandits attacking one of their own; the quest starts there.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Eisa Blackthorn",
+          "where": "outside Frostmere Crypt, in the Pale",
+          "how": "Arrive at Frostmere Crypt and you find bandits attacking Eisa because her friend stole the gang leader's sword. Talking to her to learn about the theft is optional."
+        }
+      ],
+      "firstStep": "Deal with the bandits outside Frostmere Crypt, then go in after Kyr and Ra'jirr",
+      "takesYou": [
+        {
+          "place": "Frostmere Crypt",
+          "hold": "The Pale",
+          "why": "the bandit hideout; follow Kyr and Ra'jirr into the tunnels"
+        },
+        {
+          "place": "Frostmere Depths",
+          "hold": "The Pale",
+          "why": "the underground forest where the stolen sword, the altar and the Pale Lady are"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Put the sword back on the Pale Lady's altar",
+          "leadsTo": "She is returned to her rest and the sword stays behind."
+        },
+        {
+          "choice": "Kill the Pale Lady",
+          "leadsTo": "You keep the sword, the Pale Blade."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "(Optional) Learn more about the theft in Frostmere Crypt",
+            "Follow Kyr and Ra'jirr into the tunnels",
+            "Find the stolen sword",
+            "Banish the Pale Lady"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "The Pale Blade (sword); its strongest version reads: \"Target takes <25> points of frost damage and <50> points of Stamina damage. Weaker creatures and people flee for <30> seconds.\"",
+          "when": "if you kill the Pale Lady instead of returning it"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Eisa Blackthorn",
+          "role": "bandit being attacked outside the crypt; tells you about the theft"
+        },
+        {
+          "name": "Ra'jirr",
+          "role": "bandit who stole the sword to stop the Pale Lady haunting his dreams; found in Frostmere Depths"
+        },
+        {
+          "name": "Kyr",
+          "role": "the bandit leader chasing Ra'jirr; found in Frostmere Depths"
+        },
+        {
+          "name": "The Pale Lady",
+          "role": "the spirit sealed by the sword; the final fight"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The sword comes in several level versions; the records don't say which you get at a given level. The effect numbers rise with each version."
+        },
+        {
+          "field": "opens",
+          "why": "A Morthal add-on in the list has a second Eisa Blackthorn who lives in Morthal, run by that add-on's own quest. These files don't show whether that follows on from this quest."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0CF915 editedBy USSEP; type Side Quest",
+        "start: story node dunStonehillBarrowNode, change location",
+        "stage 1 log 'Outside Frostmere Crypt, I found a group of bandits attacking one of their own'; stages 7/8/9 logs; 90 returned, 91 killed",
+        "giver Eisa Blackthorn 0D001A (info 01FD53, stage below 16), placed in exterior at Frostmere Crypt",
+        "Kyr 0D37D1, Ra'jirr 0D37CF, The Pale Lady 0D37F4 in Frostmere Depths cell 0C97EC",
+        "alias PaleBlade; items The Pale Blade 0D37CE, 0F5D2A-0F5D2D",
+        "place Frostmere Crypt (0192B8) hold The Pale",
+        "checker: second Eisa Blackthorn Environs - Hroggars House.esp:000805, packages conditioned on its quest 000904 (not in quests_raw)"
+      ]
+    },
+    {
+      "edid": "dunGauldursonQST",
+      "name": "Forbidden Legend",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "No one gives it: it starts when you find a cryptic writ or edict in one of four tombs, or read about the Gauldur legend.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "",
+          "where": "Reachwater Rock, in the Reach",
+          "how": "Find the message saying the tomb here was sealed and should be forgotten forever."
+        },
+        {
+          "who": "",
+          "where": "Folgunthur, in Hjaalmarch",
+          "how": "Find the message on the body of a powerful draugr, condemning him for his ancient crimes."
+        },
+        {
+          "who": "",
+          "where": "Geirmund's Hall, in the Rift",
+          "how": "Find the message on the body of a powerful draugr, condemning him for his ancient crimes."
+        },
+        {
+          "who": "",
+          "where": "Saarthal, in Winterhold",
+          "how": "Find the message on the body of a powerful draugr, condemning him for his ancient crimes."
+        },
+        {
+          "who": "",
+          "where": "anywhere you find the book",
+          "how": "Read the book Lost Legends, which tells of Archmage Gauldur's murder and his three sons."
+        }
+      ],
+      "firstStep": "Investigate the cryptic message",
+      "takesYou": [
+        {
+          "place": "Folgunthur",
+          "hold": "Hjaalmarch",
+          "why": "Daynas Valen's notes, and Mikrul Gauldurson with the first fragment"
+        },
+        {
+          "place": "Geirmund's Hall",
+          "hold": "The Rift",
+          "why": "Sigdis Gauldurson and the second fragment"
+        },
+        {
+          "place": "Saarthal",
+          "hold": "Winterhold",
+          "why": "Jyrik Gauldurson and the third fragment"
+        },
+        {
+          "place": "Reachwater Rock",
+          "hold": "The Reach",
+          "why": "Gauldur's tomb, where you reforge the amulet and the three brothers' ghosts ambush you"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Investigate the cryptic message",
+            "Investigate the Gauldur legend",
+            "Learn the truth from Daynas Valen",
+            "Read Daynas Valen's notes",
+            "Find the Gauldur Amulet Fragment in Folgunthur",
+            "Find the Gauldur Amulet Fragment in Geirmund's Hall",
+            "Find the Gauldur Amulet Fragment in Saarthal",
+            "Reforge the Gauldur Amulet",
+            "Take the Gauldur Amulet"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gauldur Amulet: \"The restored amulet's magic combines its fragments powers into an even more powerful magical aura.\"",
+          "when": "at the end, in Gauldur's tomb at Reachwater Rock"
+        },
+        {
+          "what": "three Gauldur Amulet Fragments",
+          "when": "one from each brother's tomb; you take them to Gauldur's tomb to reforge the amulet"
+        }
+      ],
+      "type": null,
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Daynas Valen",
+          "role": "the mage who spent his life chasing the legend; found in Folgunthur with his journal and the claw for its door"
+        },
+        {
+          "name": "Mikrul Gauldurson",
+          "role": "first brother, in Folgunthur Crypt"
+        },
+        {
+          "name": "Sigdis Gauldurson",
+          "role": "second brother, in Geirmund's Hall"
+        },
+        {
+          "name": "Jyrik Gauldurson",
+          "role": "third brother, in Saarthal"
+        },
+        {
+          "name": "Gauldur",
+          "role": "the murdered Archmage, at his tomb in Reachwater Rock"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records name the messages (three Writs of Sealing and an edict at Reachwater Rock) and the book Lost Legends, but don't show where copies of Lost Legends turn up or exactly which object sets the quest going."
+        },
+        {
+          "field": "takesYou.Saarthal",
+          "why": "Saarthal is also used by the College of Winterhold quests; these files don't show whether Jyrik's chamber can be reached before or without those."
+        },
+        {
+          "field": "people.Daynas Valen",
+          "why": "His journal is placed with him in Folgunthur; the records here don't say outright whether he is alive or a body."
+        },
+        {
+          "field": "rewards",
+          "why": "The records hold the Gauldur Blackblade, Gauldur Blackbow and Staff of Jyrik Gauldurson named after the brothers, but don't tie them to this quest, so they aren't listed."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0E4D31 editedBy USSEP; no story-manager start",
+        "stages 6/7/8/9 logs (Reachwater Rock, Folgunthur, Geirmund's Hall, Saarthal), 10, 20, 30, 100, 105, 150",
+        "aliases QT_FolgunthurWrit/SaarthalWrit/GeirmundWrit (Writ of Sealing 0F1C17/0F1C18/0F1C19), QT_ReachwaterRockEdict, QT_BookReachwaterRock (Lost Legends 0ED608), DragonClawIvory, DragonClawEmerald",
+        "Daynas Valen 04CEDF in Folgunthur 015280; Mikrul 0AB6FF in Folgunthur Crypt; Sigdis 0A6842 in Geirmund's Hall; Jyrik 01BB28 in Saarthal; Gauldur 0ECEDA in Reachwater Rock",
+        "places pointer: Daynas Valen's journal part 1 'this time, I have the claw'",
+        "item Gauldur Amulet 02D773, fragments 02D74F/02D753/02D75A (LoreRim - ISC Patches.esp)",
+        "holds: Reachwater Rock The Reach, Folgunthur Hjaalmarch, Geirmund's Hall The Rift, Saarthal Winterhold"
+      ]
+    },
+    {
+      "edid": "dunHighGateRuinsQST",
+      "name": "A Scroll For Anska",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Anska is just inside High Gate Ruins; talk to her and she asks you to fetch a scroll from deeper in.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Anska",
+          "where": "inside High Gate Ruins, near the entrance",
+          "how": "Enter High Gate Ruins and talk to Anska. She wants a scroll from the ruin; you can fetch it for her or take her along."
+        }
+      ],
+      "firstStep": "Talk to Anska inside High Gate Ruins",
+      "takesYou": [
+        {
+          "place": "High Gate Ruins",
+          "hold": "The Pale",
+          "why": "the ruin where Anska waits and the scroll lies"
+        },
+        {
+          "place": "Vokun's Throne Room",
+          "hold": "The Pale",
+          "why": "the deepest part of the ruin, where the Dragon Priest Vokun is"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Go after the scroll alone",
+          "leadsTo": "Bring the scroll back to Anska for your reward."
+        },
+        {
+          "choice": "Let Anska come with you",
+          "leadsTo": "She follows you through the ruin; if she dies, the quest fails."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "alone",
+          "objectives": [
+            "Find And Return Anska's Scroll To Her",
+            "Return The Scroll To Anska"
+          ]
+        },
+        {
+          "branch": "with Anska",
+          "objectives": [
+            "Help Anska Retrieve Her Scroll"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a fire spell (the journal calls it \"a powerful new fire spell\")",
+          "when": "at the end, from Anska"
+        }
+      ],
+      "type": null,
+      "opens": [],
+      "closes": [
+        "Anska, if she dies on the way: the quest fails"
+      ],
+      "people": [
+        {
+          "name": "Anska",
+          "role": "quest giver; can follow you through the ruin"
+        },
+        {
+          "name": "Vokun",
+          "role": "Dragon Priest in Vokun's Throne Room at the end of the ruin"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The journal says Anska gives a powerful new fire spell, but the spell isn't named in these files."
+        },
+        {
+          "field": "takesYou.Vokun's Throne Room",
+          "why": "The records don't place the scroll itself; it is assumed to be near the end because Vokun and the quest's last markers are there."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0443F4 editedBy USSEP",
+        "start: story node dunHighGateRuinsNode, change location; giver Anska 0443F3 (info 0443E7, stage below 1) in High Gate Ruins 015262",
+        "stage 10 / 20 / 90 / 100 logs; 150 fails 'I have failed to protect Anska'",
+        "Anska packages highGateRuinsAnskaSandbox, Follow00, Travel10/20/30",
+        "alias Ianusu = Vokun 0327C2 in Vokun's Throne Room 02F83D; alias Scroll",
+        "USSEP edits INFO 044683, 0B776E, 0E36B9, 0E36BD",
+        "place High Gate Ruins (019195) hold The Pale, nearest city Solitude"
+      ]
+    },
+    {
+      "edid": "dunHillgrundsTombQST",
+      "name": "Ancestral Worship",
+      "plugin": "Skyrim.esm (no other plugin edits the quest record; Unofficial Skyrim Special Edition Patch.esp edits two of its lines)",
+      "canDo": "talk",
+      "canDoWhy": "Golldir is outside Hillgrund's Tomb in Eastmarch; talk to him and he asks for help stopping the warlock Vals Veran.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Golldir",
+          "where": "outside Hillgrund's Tomb, in Eastmarch",
+          "how": "Talk to Golldir outside the tomb; he asks you to help protect his ancestral tomb from the warlock Vals Veran. He has the key to the tomb door."
+        }
+      ],
+      "firstStep": "Talk to Golldir outside Hillgrund's Tomb",
+      "takesYou": [
+        {
+          "place": "Hillgrund's Tomb",
+          "hold": "Eastmarch",
+          "why": "the tomb, which needs Hillgrund's Tomb Key; Vals Veran is inside, past a secret passage"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "(Optional) Protect Golldir",
+            "Defeat Vals Veran",
+            "Find the Secret Passage in Hillgrund's Tomb",
+            "Speak with Golldir"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a random item from a large quest reward list",
+          "when": "at the end, when you speak with Golldir"
+        }
+      ],
+      "type": null,
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Golldir",
+          "role": "quest giver outside the tomb; carries the tomb key; is listed as a potential follower"
+        },
+        {
+          "name": "Vals Veran",
+          "role": "the Dunmer warlock in the tomb; the boss"
+        },
+        {
+          "name": "Agna",
+          "role": "Golldir's aunt, found inside the tomb"
+        },
+        {
+          "name": "Lynly Star-Sung",
+          "role": "with More to Say, at the Vilemyr Inn in Ivarstead she can ask you to go and find Golldir (a separate errand)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "people.Golldir",
+          "why": "He is in the potential follower faction, but these files don't show whether he can be recruited before the quest or only after."
+        },
+        {
+          "field": "starts",
+          "why": "Two of Golldir's opening lines check whether you are a Dunmer, so a Dark Elf player gets a different greeting; the line text isn't in these files."
+        },
+        {
+          "field": "choices",
+          "why": "Golldir leaves his spot outside once you agree to help, and keeping him alive is optional, so he seems to come into the tomb with you. The records don't show a choice to leave him behind."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward comes from the quest script's reward list (a random item from the large quest-reward list), not confirmed in game."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:03E897, no editedBy",
+        "start: story node HillgrundsTombNode, change location; giver Golldir 019FE8 (info 0A8502, stage below 1), placed in exterior at Hillgrund's Tomb",
+        "stage 10 log 'I've agreed to help Golldir protect his ancestral tomb from the warlock, Vals Veran'",
+        "door 015ECE into Hillgrund's Tomb needs Hillgrund's Tomb Key 019CFF, carried by Golldir",
+        "reward: QF_dunHillgrundsTombQST_0003E897.RewardList = LvlQuestReward03Large 0C0406",
+        "Golldir factions PotentialFollowerFaction, CurrentFollowerFaction",
+        "USSEP INFO 0A8500/0A8501 GetIsRace DarkElfRace 013742 / 08883D",
+        "moretodo.esp:000815 'Find Golldir for Lynly', Lynly in Vilemyr Inn",
+        "place Hillgrund's Tomb (019196) hold Eastmarch, boss Vals Veran"
+      ]
+    },
+    {
+      "edid": "dunHunterQST",
+      "name": "Kyne's Sacred Trials",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp; AlternatePerspective.esp changes some of Froki's lines and his door)",
+      "canDo": "talk",
+      "canDoWhy": "Froki, an old Nord hunter, lives in a shack in the Rift; talk to him and he sends you to hunt guardian beast spirits.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Froki Whetted-Blade",
+          "where": "Froki's Shack, in the Rift",
+          "how": "Talk to Froki in his shack. He offers to guide you through Kyne's Sacred Trials and marks you so the guardian spirits appear when you visit their lairs."
+        }
+      ],
+      "firstStep": "Talk to Froki in Froki's Shack",
+      "takesYou": [
+        {
+          "place": "Froki's Shack",
+          "hold": "The Rift",
+          "why": "Froki, who gives each round of the trials and the reward"
+        },
+        {
+          "place": "the wild lairs of the mudcrab, skeever, wolf, bear, mammoth and sabre cat",
+          "hold": "",
+          "why": "each guardian spirit appears at its lair"
+        },
+        {
+          "place": "Graywinter Watch",
+          "hold": "Whiterun",
+          "why": "the Guardian Troll, the last trial"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Defeat the Guardian Mudcrab",
+            "Defeat the Guardian Skeever",
+            "Defeat the Guardian Wolf",
+            "Return to Froki",
+            "Defeat the Guardian Bear",
+            "Defeat the Guardian Mammoth",
+            "Defeat the Guardian Sabre Cat",
+            "Return to Froki",
+            "Defeat the Guardian Troll",
+            "Return to Froki"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Kyne's Token (amulet)",
+          "when": "at the end, from Froki"
+        },
+        {
+          "what": "the Blessing of Kyne",
+          "when": "at the end (named in the journal)"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Froki Whetted-Blade",
+          "role": "the old hunter in Froki's Shack who runs the trials"
+        },
+        {
+          "name": "the guardian spirits",
+          "role": "Mudcrab, Skeever, Wolf, Ursine (bear), Mammoth, Sabre Cat and Troll guardians you must defeat"
+        },
+        {
+          "name": "Haming",
+          "role": "Froki's grandson, who lives with him in Froki's Shack"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Alternate Perspective makes two of this quest's lines wait until Unbound (your opening quest) is done. They aren't Froki's opening line; they sit with Froki and his grandson Haming talking about Helgen. Nothing shows the trials themselves need Unbound done."
+        },
+        {
+          "field": "starts.where",
+          "why": "Alternate Perspective puts a lock on Froki's Shack door that needs a key it doesn't name; these files don't show whether that stops you getting in."
+        },
+        {
+          "field": "takesYou",
+          "why": "Six of the guardians are placed out in the open world with no named location in these records; only the troll's lair, Graywinter Watch, is named."
+        },
+        {
+          "field": "rewards",
+          "why": "The Blessing of Kyne is named only in the journal; the spell record isn't tied to this quest here."
+        },
+        {
+          "field": "closes",
+          "why": "The quest can fail, but the records here don't show what fails it."
+        },
+        {
+          "field": "rewards",
+          "why": "Kyne's Token is the amulet the quest's script hands out as its reward; not confirmed in game."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:018601 editedBy USSEP; type Side Quest; no story-manager start",
+        "giver Froki Whetted-Blade 0185F6 (info 0E7EA5, stage below 51) in Froki's Shack 018460",
+        "stage 20/21/50/51/70/71/80/100 logs; stage 200 fails",
+        "guardian aliases 0E662B/0E662E/0E662D/0E7EA9/0E7EAD/0E7EAF in exterior with no location; guardianTroll 0E7EB2 in Graywinter Watch 01526C",
+        "reward QF_dunHunterQST_00018601.dunHunterRewardAmulet = Kyne's Token 107E2D",
+        "AlternatePerspective.esp adds GetQuestCompleted MQ101 (Unbound, 03372B) to INFO 0BFB74 and 0BFBBF; adds lock 255, no key, to door 018574",
+        "places: Froki's Shack (0D5663) The Rift; Graywinter Watch (01918B) Whiterun",
+        "checker: giver INFO 0E7EA5 not edited by AlternatePerspective.esp; AP INFOs 0BFB74/0BFBBF sit beside Haming 0BFBBB and Froki 0BFB72 (Helgen lines)"
+      ]
+    },
+    {
+      "edid": "dunNchuandZelQst",
+      "name": "The Lost Expedition",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "It starts inside Nchuand-Zel, the Dwemer city under Markarth, when you find Alethius's note about the missing researchers.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "",
+          "where": "Nchuand-Zel, beneath Understone Keep in Markarth",
+          "how": "Explore Nchuand-Zel and find Alethius's note; it sends you to look for the researchers of the lost expedition."
+        }
+      ],
+      "firstStep": "Recover Stromm's journal",
+      "takesYou": [
+        {
+          "place": "Nchuand-Zel",
+          "hold": "The Reach",
+          "why": "find the four researchers' journals and the lever that wakes the city's automatons"
+        },
+        {
+          "place": "Understone Keep, Markarth",
+          "hold": "The Reach",
+          "why": "tell Calcelmo what happened to the expedition"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Recover Stromm's journal",
+            "Recover Erj's journal",
+            "Recover Krag's journal",
+            "Recover Staubin's journal",
+            "Re-activate Nchuand-Zel's automated defenses",
+            "Find someone who knows about the expedition."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "gold from Calcelmo",
+          "when": "at the end, when you tell him about the journal"
+        }
+      ],
+      "type": null,
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Alethius",
+          "role": "wrote the note that starts the search"
+        },
+        {
+          "name": "Stromm",
+          "role": "researcher; you find his body first"
+        },
+        {
+          "name": "Erj, Krag and Staubin",
+          "role": "the other researchers; Staubin's journal names the lever"
+        },
+        {
+          "name": "Calcelmo",
+          "role": "court wizard in Understone Keep, Markarth; pays you at the end. He eats with Faleen early morning and evening."
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Two lines bear on getting in: a Markarth guard says Calcelmo has to give his say-so, and Calcelmo says he'll let you in if you deal with a giant spider in Nchuand-Zel his workers call Nimhe. These files don't show whether that blocks this quest."
+        },
+        {
+          "field": "rewards",
+          "why": "The amount of gold isn't in these files."
+        },
+        {
+          "field": "closes",
+          "why": "The quest can fail, but the records here don't show what fails it."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0C3709 editedBy USSEP",
+        "start: story node dunNchuandZelNode0, change location; alias AlethiusNote",
+        "stage 10/20/50/100/110 logs; 200 fails",
+        "giver Calcelmo 01338E (info 0D93A0, stage below 100) in Understone Keep 016DF2; packages MarkarthCalcelmoEatWithFaleen20x2, ...6x2, MarkarthCastleWizardVendor0x24",
+        "places pointer INFO 053328 'If you want in, Calcelmo has to give his say-so'",
+        "place Nchuand-Zel (019283) hold The Reach",
+        "checker: places pointer INFO 053321 (Calcelmo, Nimhe), INFO 03F150 (city underneath the keep)"
+      ]
+    },
+    {
+      "edid": "dunTrevasWatchQST",
+      "name": "Infiltration",
+      "plugin": "Skyrim.esm (last edited by Infiltration - Quest Expansion.esp; also edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Reach Treva's Watch in the Rift and the quest starts: speak with Stalleo, camped outside, or Brurid, the wizard holding the fort.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Stalleo",
+          "where": "his camp outside Treva's Watch, next to the fort's escape tunnel",
+          "how": "Stalleo says Brurid took over his family's fort and kidnapped his family, and asks you to deal with Brurid and secure the fort."
+        },
+        {
+          "who": "Brurid",
+          "where": "inside Treva's Watch",
+          "how": "Go into the fort and Brurid, a wizard, comes to talk to you; he asks you to take care of his old friend Stalleo outside."
+        }
+      ],
+      "firstStep": "Speak with Stalleo or Brurid",
+      "takesYou": [
+        {
+          "place": "Treva's Watch",
+          "hold": "The Rift",
+          "why": "the fort; Stalleo's way in is the escape tunnel beside his camp, and the gate lever is inside"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Side with Stalleo: kill Brurid, talk him into leaving, or hear his side",
+          "leadsTo": "Open the front gate from the inside and return to Stalleo for your reward; Stalleo gets his home back."
+        },
+        {
+          "choice": "Side with Brurid: kill Stalleo or talk him into leaving",
+          "leadsTo": "Report to Brurid; the fort becomes his."
+        },
+        {
+          "choice": "If Stalleo confronts Brurid, Brurid asks you to help kill Stalleo",
+          "leadsTo": "You can side with either of them."
+        },
+        {
+          "choice": "Both men end up dead",
+          "leadsTo": "The quest fails and no one pays you."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "Stalleo",
+          "objectives": [
+            "Use the backdoor to gain access to Treva's Watch",
+            "Kill Brurid or convince him to leave",
+            "Use the lever to open the gate to Treva's Watch",
+            "Speak to Stalleo"
+          ]
+        },
+        {
+          "branch": "Brurid",
+          "objectives": [
+            "Join with Stalleo or deal with him",
+            "Return to Brurid"
+          ]
+        },
+        {
+          "branch": "confrontation",
+          "objectives": [
+            "Deal with Stalleo or deal with Brurid",
+            "Speak to Brurid"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "a reward from Stalleo",
+          "when": "after you open the gate and speak to him"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Stalleo or Brurid, if you kill the one you turn against (you can also talk him into leaving)"
+      ],
+      "people": [
+        {
+          "name": "Stalleo",
+          "role": "camped outside his old family home with two bodyguards"
+        },
+        {
+          "name": "Brurid",
+          "role": "Breton wizard who holds the fort; added by Infiltration - Quest Expansion"
+        },
+        {
+          "name": "Stalleo's Bodyguards",
+          "role": "two guards at his camp"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The journal says Stalleo rewards you, but no item or gold is named in these files; nothing is listed for siding with Brurid."
+        },
+        {
+          "field": "choices",
+          "why": "The quest uses persuasion difficulty settings, so talking either man into leaving likely takes a Speech check; the exact check isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:04B2A1 editedBy USSEP, Infiltration - Quest Expansion.esp; type Side Quest",
+        "start: story node dunTrevaWatchNode, change location",
+        "stage 1 log 'Speak with Stalleo or Brurid.'; 5/7/10/15/16/17/18/20/60 logs; 95 and 100 complete; 97 fails",
+        "Stalleo 04B4AF placed in exterior; packages dunTrevasWatchQSTFollowPlayer, dunTrevas_StalleoAfter",
+        "Brurid Infiltration - Quest Expansion.esp:000D62 in Treva's Watch 015200; forcegreet packages",
+        "door 047998 into Treva's Watch Escape Tunnel",
+        "globals SpeechEasy/Average/Hard/VeryHard used by the quest's dialogue",
+        "place Treva's Watch (0192BD) hold The Rift"
+      ]
+    },
+    {
+      "edid": "dunValthumeQST",
+      "name": "Evil in Waiting",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "In the first room of Valthume, in the Reach, the spirit Valdar asks you to gather three vessels to defeat the Dragon Priest Hevnoraak.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Valdar",
+          "where": "Valthume Vestibule, the first room inside Valthume",
+          "how": "Enter Valthume and talk to the ghost Valdar; he asks you to find the three vessels within Valthume and bring them back to him."
+        }
+      ],
+      "firstStep": "Talk to Valdar in Valthume Vestibule",
+      "takesYou": [
+        {
+          "place": "Valthume",
+          "hold": "The Reach",
+          "why": "find the three vessels, then perform the ritual and fight Hevnoraak"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Collect the Vessels (0/3)",
+            "Perform the ritual with Valdar",
+            "Defeat Hevnoraak"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Hevnoraak (Dragon Priest mask): \"Hevnoraak's durability is yours as long as you wear the mask, rendering you immune to both poison and disease.\"",
+          "when": "after Hevnoraak falls; Valdar tells you to take his iron mask"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Valdar",
+          "role": "ghost in Valthume Vestibule who gives the quest and leads the ritual"
+        },
+        {
+          "name": "Hevnoraak",
+          "role": "the Dragon Priest boss in Valthume"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The mask is named only through the journal; the quest's scripts here don't hand it over directly, so it is presumably taken from Hevnoraak."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:03ED82 editedBy USSEP; type Side Quest",
+        "start: story node dunValthumeNode, change location; giver Valdar 02C18D (info 05DD97, stage below 1) in Valthume Vestibule 08CDEE",
+        "stage 3/15/50/60 logs; objective 5 counts global dunValthumeVesselCollectedCount",
+        "aliases dunValthumeBrain/Heart/Lungs (the vessels); Hevnoraak 04D6E7 in Valthume 033D68",
+        "item Hevnoraak mask 061CC1 (LoreRim - Armor Merges.esp)",
+        "place Valthume (033DA0) hold The Reach"
+      ]
+    },
+    {
+      "edid": "dunVolunruudQST",
+      "name": "Silenced Tongues",
+      "plugin": "Skyrim.esm (no other plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "No one gives it: inside Volunruud, in the Pale, you find a dead genealogist's field journal that sends you after two ceremonial weapons.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "",
+          "where": "inside Volunruud, by the body of Heddic Volunnar",
+          "how": "Find Heddic Volunnar's field journal; it tells you two ceremonial weapons in Volunruud will open the Elder's Cairn."
+        }
+      ],
+      "firstStep": "Locate The Ceremonial Weapons",
+      "takesYou": [
+        {
+          "place": "Volunruud",
+          "hold": "The Pale",
+          "why": "find the ceremonial axe and sword"
+        },
+        {
+          "place": "Volunruud Elder's Cairn",
+          "hold": "The Pale",
+          "why": "open its door with the two weapons and defeat the draugr Kvenel"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Locate The Ceremonial Weapons",
+            "Open the Elder's Cairn",
+            "Defeat Kvenel"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Kvenel's chest",
+          "when": "at the end, in the Elder's Cairn"
+        },
+        {
+          "what": "Ceremonial Axe",
+          "when": "found in Volunruud"
+        },
+        {
+          "what": "Ceremonial Sword",
+          "when": "found in Volunruud"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Heddic Volunnar",
+          "role": "dead genealogist in Volunruud; carries the field journal"
+        },
+        {
+          "name": "Kvenel",
+          "role": "ancient draugr in the Elder's Cairn; the boss"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No start event is recorded; the field journal on Heddic is the likely trigger, but these files don't show it setting the quest going."
+        },
+        {
+          "field": "rewards",
+          "why": "The Ceremonial Axe and Ceremonial Sword are named by the quest's script, not confirmed as things you keep: they open the Elder's Cairn door, and the records don't show whether they stay in the door."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:08ADFA, no editedBy; type Side Quest; no story-manager start in quest_givers_raw",
+        "stage 10/13/14/20/100 logs",
+        "aliases DeadGeneaologist = Heddic Volunnar 08AD96 in Volunruud 0151FB; FieldJournal; PuzzleDoor; Kvenel = DunVolunruudBoss 1019C6 in Volunruud Elder's Cairn 02031A; BossChest",
+        "script QF_dunVolunruudQST_0008ADFA relic01BaseID Ceremonial Axe 08ADFB, relic02baseID Ceremonial Sword 08ADFC",
+        "place Volunruud (0192C3) hold The Pale"
+      ]
+    }
+  ]
+}

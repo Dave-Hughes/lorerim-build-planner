@@ -1,0 +1,643 @@
+[
+  {
+    "edid": "HLIOStartingQuest",
+    "name": "The Dwemer Specialist",
+    "plugin": "HLIORemi.esp (last edited by LoreRim - Remi Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Remiel, a Breton scholar in the Silver-Blood Inn in Markarth, and agree to take her into Nchuand-Zel; this is how she joins you.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Remiel (Remi)",
+        "where": "the Silver-Blood Inn in Markarth",
+        "how": "Talk to her and agree to take her to see Nchuand-Zel, the Dwemer ruin under the city. She then sends you to Calcelmo about the giant spider in the excavation site."
+      }
+    ],
+    "firstStep": "Speak to Calcelmo about the spider in the excavation site.",
+    "takesYou": [
+      {"place": "Understone Keep, Markarth", "hold": "The Reach", "why": "talk to Calcelmo, who controls access to the excavation"},
+      {"place": "Nchuand-Zel Excavation Site", "hold": "The Reach", "why": "kill Nimhe, the giant spider, and read the note by a dead guard"},
+      {"place": "Nchuand-Zel", "hold": "The Reach", "why": "follow a lost expedition, collect artifacts for Remi and turn the ruin's defenses back on"},
+      {"place": "Nchuand-Zel Control", "hold": "The Reach", "why": "pull the lever that reactivates the defenses"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main (Nimhe still alive, ruin not yet explored)",
+        "objectives": [
+          "Speak to Calcelmo about the spider in the excavation site.",
+          "Kill Nimhe.",
+          "Read the note by the guard's body.",
+          "Look for the researchers and for interesting artifacts in Nchuand-Zel (the log counts a Unique Gear, a Unique Cog and a Unique Gyro as you find them)",
+          "Pull the lever.",
+          "Watch Remi.",
+          "Talk to Remi.",
+          "Talk to Remi again after leaving Nchuand-Zel"
+        ]
+      },
+      {
+        "branch": "you had already killed Nimhe",
+        "objectives": [
+          "Read the note by the guard's body (the Calcelmo and spider steps are skipped)",
+          "then as the main branch"
+        ]
+      },
+      {
+        "branch": "you had already explored Nchuand-Zel",
+        "objectives": [
+          "Look for interesting artifacts in Nchuand-Zel (Unique Gear, Unique Cog, Unique Gyro)",
+          "Demonstrate how Nchuand-Zel's Defenses Activate",
+          "Watch Remi.",
+          "Talk to Remi.",
+          "Talk to Remi again after leaving Nchuand-Zel"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Remiel as a follower (she asks to travel with you)", "when": "at the end"},
+      {"what": "Scrap, a Dwemer spider Remi repairs and keeps", "when": "near the end, after the defenses are back on"},
+      {"what": "Conjure Scrap (spell)", "when": "handed out by the quest's script; most likely at the end"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Remiel (Remi)", "role": "the Breton scholar who asks you to take her into Nchuand-Zel; becomes your follower"},
+      {"name": "Calcelmo", "role": "court wizard in Understone Keep; makes a deal: kill Nimhe and you get into Nchuand-Zel"},
+      {"name": "Nimhe", "role": "giant spider in the Nchuand-Zel Excavation Site"},
+      {"name": "Alethius", "role": "placed in the Nchuand-Zel Excavation Site; his notes are part of the trail"}
+    ],
+    "unsure": [
+      {"field": "starts.where", "why": "Remiel has no daily-routine package of her own until she's recruited, so she should stay where the records place her, in the Silver-Blood Inn; the exact spot inside isn't given"},
+      {"field": "starts", "why": "the records show no condition on talking to her (no level or earlier quest), so it looks open from the start of the game, but the line that starts it isn't in these files"},
+      {"field": "takesYou (Calcelmo)", "why": "Calcelmo works out of Understone Keep all day and eats there at 6 am and 8 pm; the city guards say he's usually in front of Nchuand-Zel, just down the tunnel"},
+      {"field": "steps", "why": "the 'demonstrate the defenses' step has no journal entry of its own; I placed it in the already-explored branch because that's where the surrounding entries fit"},
+      {"field": "rewards", "why": "the spell is a property of the quest's script; the exact moment it's given isn't readable here"},
+      {"field": "opens", "why": "Remiel has nine more quests, but nothing in these files shows which one this unlocks"}
+    ],
+    "evidence": [
+      "QUST HLIORemi.esp:0E4852, edited by LoreRim - Remi Patch.esp",
+      "stages 10-110 logs; 35/45/55/65/75/85 are the already-killed / already-explored branches; 110 completes",
+      "aliases Calcelmo, Remi, Nimhe, Alethius, HLIOGear/Cog/Gyro/Dynamo, HLIOLever, journals Erjbook/KragJournal/StaubinJournal/AlethiusNote",
+      "Remiel NPC HLIORemi.esp:005900 placed ref HLIORemi.esp:033226 in Silver-Blood Inn (Skyrim.esm:016DFE)",
+      "Calcelmo Skyrim.esm:01338E placed in Understone Keep; packages MarkarthCalcelmoEatWithFaleen6x2/20x2, MarkarthCastleWizardVendor0x24",
+      "guard line INFO Skyrim.esm:053328 'He's usually in front of Nchuand-Zel. Just down the tunnel.'",
+      "Nimhe alias = EncFrostbiteSpiderGiantAmbush ref Skyrim.esm:060BB5 in Nchuand-Zel Excavation Site (Skyrim.esm:015237)",
+      "quest_starts line 'remiel': startGame true, no dialogue or event conditions; cells used incl. Nchuand-Zel Control Skyrim.esm:058B4C",
+      "reward HLIORemi.esp:005909 Conjure Scrap via HLIO_QF_HLIOStartingQuest_080E4852.HLIOConjureScrapLvl1"
+    ]
+  },
+  {
+    "edid": "JRLucienGetHorseQuest",
+    "name": "Intruders",
+    "plugin": "Lucien.esp",
+    "canDo": "by itself",
+    "canDoWhy": "After Lucien has made Dumzbthar his lab, his resonant sphere sounds an alarm while he's with you and you go back to defend it.",
+    "needs": [
+      {"what": "Finish The Oblivion Engine (Lucien's Dumzbthar quest)", "kind": "quest"},
+      {"what": "Lucien Flavius travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Lucien Flavius",
+        "where": "wherever he is travelling with you",
+        "how": "His resonant sphere starts making a strange noise; he tells you it means Dumzbthar is under attack and you should go there at once."
+      }
+    ],
+    "firstStep": "Return to Dumzbthar",
+    "takesYou": [
+      {"place": "Dumzbthar", "hold": "Solstheim", "why": "Lucien's lab, a short walk from Raven Rock, is under attack by Daedra"},
+      {"place": "Dumzbthar Core", "hold": "Solstheim", "why": "fight the Daedra that came through the Oblivion Gate"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Return to Dumzbthar",
+          "Talk to Dumzbthar",
+          "Defeat the Daedra",
+          "Talk to Dumzbthar",
+          "Defeat the Daedra",
+          "Talk to Lucien"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Clive, a strange horse that now travels with Lucien and appears whenever he needs it", "when": "at the end"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Lucien Flavius", "role": "your follower; owns the lab and reactivated Dumzbthar"},
+      {"name": "Dumzbthar", "role": "the ruin's reactivated intelligence, in Dumzbthar Core; explains the attack"},
+      {"name": "Dremora", "role": "the first Daedra you fight inside"},
+      {"name": "a Lurker", "role": "the main Daedra in Dumzbthar Core"},
+      {"name": "Gjalund Salt-Sage", "role": "marked by the quest for the trip to Solstheim"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "the line that starts it isn't in these files; the order is read from the journal (Lucien 'has reactivated' Dumzbthar, which you shut down in The Oblivion Engine, and he admits he brought it back) rather than from a written condition"},
+      {"field": "starts", "why": "Lucien says the sphere is tuned to 'the one I gave you' and to a console at Dumzbthar; when he gives you a sphere isn't shown here"},
+      {"field": "people (Gjalund)", "why": "the quest marks Gjalund Salt-Sage, whom the records place in Windhelm, for travel to Solstheim; his exact spot there isn't given"}
+    ],
+    "evidence": [
+      "QUST Lucien.esp:62424C, type null, no other plugin edits it",
+      "giver: Lucien Flavius Lucien.esp:005900, INFO Lucien.esp:62935F, stage below 1; Dumzbthar Lucien.esp:62424D below 21",
+      "stages 10-200 logs; 200 completes (Clive)",
+      "aliases IntroDaedra = LvlDremoraMelee, BossDaedra = DLC2LvlLurker in Dumzbthar Core Lucien.esp:1A668B, LucienHorse = JRLucienHorse Lucien.esp:60FDFF, SolstheimTravel = Gjalund Salt-Sage",
+      "INFO Lucien.esp:629364 (resonant sphere), Lucien.esp:65BEB5 ('You're upset that I brought Dumzbthar back')",
+      "Dumzbthar NPC package JRLucienDumzbtharNPCSandbox needs this quest at 200+",
+      "place Dumzbthar Lucien.esp:2B1404, Solstheim, Raven Rock 0.5 km"
+    ]
+  },
+  {
+    "edid": "JRLucienPersonal1",
+    "name": "The Oblivion Engine",
+    "plugin": "Lucien.esp",
+    "canDo": "talk",
+    "canDoWhy": "Once Lucien has told you about a Dwemer ruin called Dumzbthar and some time has passed, he gets a letter and key from his father and asks you to take him there.",
+    "needs": [
+      {"what": "Lucien Flavius as your follower, having talked with him about Dumzbthar", "kind": "other"},
+      {"what": "Some days must pass after that talk", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Lucien Flavius",
+        "where": "wherever he is travelling with you (he's first found in Dead Man's Drink in Falkreath)",
+        "how": "Talk to him when his father's letter arrives: 'It's from my father - do you remember I said he was looking into Dumzbthar for me?' He wants you to take him to the ruin on Solstheim."
+      }
+    ],
+    "firstStep": "Take Lucien to Dumzbthar",
+    "takesYou": [
+      {"place": "Solstheim", "hold": "Solstheim", "why": "the ruin is on the island; the quest marks Gjalund Salt-Sage for the crossing"},
+      {"place": "Dumzbthar", "hold": "Solstheim", "why": "a Dwemer ruin a short walk from Raven Rock; open the vault doors and explore"},
+      {"place": "Dumzbthar Core", "hold": "Solstheim", "why": "reach and shut down the Daedric intelligence running the ruin"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Take Lucien to Dumzbthar",
+          "Activate the first switch",
+          "Activate the second switch",
+          "Explore Dumzbthar",
+          "Turn the Valves",
+          "Reach Dumzbthar's Core",
+          "Destroy Dumzbthar",
+          "Talk to Lucien"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Lucien sets up his laboratory in Dumzbthar; when you dismiss him he goes back there and will rejoin you whenever you ask", "when": "at the end"}
+    ],
+    "type": "none set",
+    "opens": ["Intruders"],
+    "closes": [],
+    "people": [
+      {"name": "Lucien Flavius", "role": "your follower; the quest is his"},
+      {"name": "Dumzbthar", "role": "the voice and Daedric intelligence governing the ruin; you shut it down"},
+      {"name": "Dwarven Commander", "role": "a Dwemer enemy in Dumzbthar Core"},
+      {"name": "Gjalund Salt-Sage", "role": "marked by the quest for travel to Solstheim"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "the start needs a stage of Lucien's follower quest to be done, plus two more checks these files can't decode; the 'told you about Dumzbthar' part comes from his follower line 'Somewhere here in Skyrim there's a Dwemer ruin called Dumzbthar'"},
+      {"field": "needs (time)", "why": "the quest keeps a 'ready time' against days passed, so the letter comes after a wait; how many days isn't readable here"},
+      {"field": "starts.where", "why": "the records place Lucien in Dead Man's Drink, Falkreath; once he follows you he's wherever you are"},
+      {"field": "rewards", "why": "the records list four spells on the quest's boss script (Lightning Vortex, Ice Sphere, Fire Storm, Fireball); those are what the boss casts, not things you get, so I left them out. Dumzbthar itself has a boss chest, an alchemy lab and an enchanting table"},
+      {"field": "takesYou (Gjalund)", "why": "the records place Gjalund Salt-Sage in Windhelm; his exact spot isn't given"}
+    ],
+    "evidence": [
+      "QUST Lucien.esp:2B13ED, type null, no other plugin edits it",
+      "giver: Lucien Flavius Lucien.esp:005900, INFO Lucien.esp:2B13F0, stage below 1",
+      "quest_starts line 'lucien': dialogue conditions GetStageDone Lucien.esp:00591E stage 15 == 1 AND (fn426 OR fn359); globals JRLucienDumzbtharReadyTime, GameDaysPassed",
+      "INFO Lucien.esp:2B13F7 (father's letter), Lucien.esp:2B13F9 (follower quest mentions Dumzbthar), Lucien.esp:2C08CA (arrival)",
+      "stages 30-800 logs; 800 completes",
+      "Lucien packages JRLucienDumzbtharHomeTravel/HomeSandbox need this quest at 800+ and Lucien not a current follower",
+      "aliases Letter1, Letter2, Gjalund, DumzbtharVault switches, Valve1-3, OblivionGate, BrainConsole, SentinelCommander = Dwarven Commander Lucien.esp:2027ED",
+      "boss script JR_BossFunctions spells Skyrim.esm:07E8E5, 045F9C, 01C789, Lucien.esp:38701B",
+      "place Dumzbthar Lucien.esp:2B1404: Solstheim, Raven Rock 0.5 km, boss chest, alchemy lab, enchanting table"
+    ]
+  },
+  {
+    "edid": "SDE_TheElderScrolls",
+    "name": "From Arena to Oblivion",
+    "plugin": "SeranaDialogueExpansion.esp",
+    "canDo": "talk",
+    "canDoWhy": "Serana asks you to find her four history books about the events behind the Dragonborn Prophecy, and offers you lessons in return.",
+    "needs": [
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "She asks you to find books about the events that led to the Dragonborn Prophecy; in return she'll teach you a few lessons in skills she's good at. She suggests the College of Winterhold."
+      }
+    ],
+    "firstStep": "Ask Urag-gro-Shub for books",
+    "takesYou": [
+      {"place": "The Arcanaeum, College of Winterhold", "hold": "Winterhold", "why": "ask Urag gro-Shub for the books"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Ask Urag-gro-Shub for books",
+          "Find \"A Brief History of the Empire V.4\" and give it to Serana",
+          "Find \"Where were you when the Dragon Broke?\" and give it to Serana",
+          "Find \"The Battle of the Red Mountain\" and give it to Serana",
+          "Find \"The Oblivion Crisis\" and give it to Serana",
+          "Talk to Serana"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Serana's Ring: 'A ring crafted by Harkon to commemorate Serana's birth. It shields its bearer from poison and disease.'", "when": "at the end"},
+      {"what": "lessons from Serana in skills she's good at", "when": "promised when the quest starts"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Serana", "role": "asks for the books"},
+      {"name": "Urag gro-Shub", "role": "keeper of the Arcanaeum at the College of Winterhold; where the search starts"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "the line that starts it isn't in these files beyond 'Serana, before the quest has begun'; any extra condition (an earlier quest, being at a certain point of the main story) isn't shown"},
+      {"field": "starts.where", "why": "the records place Serana in Dimhollow Cavern; as a follower she's with you, and when not following she stays at Fort Dawnguard or in Volkihar Keep depending on which side you joined"},
+      {"field": "rewards (lessons)", "why": "the journal promises lessons, but which skills, or whether it's free training, isn't readable here"},
+      {"field": "steps", "why": "the four book titles are script properties on the quest; whether Urag hands them over, sells them, or they are placed somewhere isn't readable here"}
+    ],
+    "evidence": [
+      "QUST SeranaDialogueExpansion.esp:0000C8, no other plugin edits it",
+      "giver: Serana Dawnguard.esm:002B6C, INFO SeranaDialogueExpansion.esp:00011D, stage below 10; Urag Skyrim.esm:01C193 below 11",
+      "stage 10 log (books, lessons, College of Winterhold); 100 completes ('I brought her four books')",
+      "reward Serana's Ring SeranaDialogueExpansion.esp:000138 via QF_SDE_MQ204_TheElderScrolls_051E6955.SeranasRingReward; book properties SDE_Book1Arena..SDE_Book4Oblivion",
+      "Urag placed in The Arcanaeum Skyrim.esm:013810; package WCollegeUragHoldatArcanaeumMarker",
+      "Serana packages DLC1SeranaSandboxInHQ (Fort Dawnguard) / DLC1SeranaSandboxInCastle (Volkihar Keep)"
+    ]
+  },
+  {
+    "edid": "SDE_R001",
+    "name": "The Bleeding Flower",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "canDo": "talk",
+    "canDoWhy": "On the romance path, Serana asks to feed on your blood while you sleep; find somewhere safe to rest.",
+    "needs": [
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "She tells you she hasn't fed in years and asks you to donate some blood; it's best done while you sleep, so you need a safe place to rest."
+      }
+    ],
+    "firstStep": "Find a place to sleep (tavern recommended)",
+    "takesYou": [
+      {"place": "any safe bed (an inn is recommended)", "hold": "any", "why": "sleep so Serana can feed"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find a place to sleep (tavern recommended)",
+          "Talk to Serana"
+        ]
+      },
+      {
+        "branch": "fail",
+        "objectives": [
+          "If you reach Serana's home before sleeping, she reprimands you and the quest fails"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "two effects named Anemia and Blood Feeding", "when": "after you sleep and she feeds"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Serana", "role": "asks to feed on you"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "this belongs to the romance add-on; the conditions on Serana's line (how far the romance must have gone, or which quest comes first) aren't in these files"},
+      {"field": "rewards", "why": "the quest's script holds Anemia and Blood Feeding, but these files don't say who gets which or what they do"},
+      {"field": "steps (fail)", "why": "the journal says 'reached her home'; which place counts as her home isn't stated"}
+    ],
+    "evidence": [
+      "QUST SeranaDialogueExpansion - Romance.esp:000001",
+      "giver: Serana Dawnguard.esm:002B6C, INFO SeranaDialogueExpansion - Romance.esp:000005, stage below 10",
+      "stage 200 completes; stage 250 fails",
+      "script SDER_QF_SDE_R001_05005900 properties SDE_R001Anemia (…:000098), SDE_R001AnemiaBuff (…:00009F)"
+    ]
+  },
+  {
+    "edid": "SDE_R002",
+    "name": "Solitude in Company",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "canDo": "talk",
+    "canDoWhy": "Serana wants to see Solitude and you offer to be her guide; the tour turns into a job for Jarl Elisif.",
+    "needs": [
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "She says she'd like to explore Solitude and you offer to show her around."
+      }
+    ],
+    "firstStep": "Take Serana to Solitude",
+    "takesYou": [
+      {"place": "Solitude", "hold": "Haafingar", "why": "the tour"},
+      {"place": "the Solitude Windmill and the Bridge", "hold": "Haafingar", "why": "first tour stop"},
+      {"place": "the Bards College (outside)", "hold": "Haafingar", "why": "second tour stop"},
+      {"place": "Radiant Raiment", "hold": "Haafingar", "why": "Serana wants a circlet but her coins are from another era"},
+      {"place": "the Blue Palace", "hold": "Haafingar", "why": "ask Jarl Elisif for a job"},
+      {"place": "Kilkreath Ruins (the journal calls it Kilkreath Temple)", "hold": "Haafingar", "why": "find the thief and get Torygg's scroll back"}
+    ],
+    "choices": [
+      {"choice": "At Kilkreath, deal with the corrupt guard and his two bandits", "leadsTo": "a fight in most cases; one journal line ('I can't believe he fell for it...') hints at a trick that also works. Either way you get the scroll"}
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Take Serana to Solitude",
+          "Take Serana to the Solitude Windmill",
+          "Take Serana to the Bards College",
+          "Visit Taarie in the Radiant Raiment",
+          "Find a job for Serana",
+          "Find the thief and retrieve Torygg's scroll",
+          "Talk to Serana",
+          "Return to Jarl Elisif",
+          "Meet up with Taarie in the Radiant Raiment",
+          "Talk to Serana outside the shop"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "500 septims from Jarl Elisif (each, for you and Serana)", "when": "when you return the scroll"},
+      {"what": "Serana buys her circlet", "when": "at the end"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Serana", "role": "the one you're guiding"},
+      {"name": "Taarie", "role": "runs Radiant Raiment in Solitude, there from 8 am to 8 pm; sells the circlet"},
+      {"name": "Endarie", "role": "Taarie's sister in Radiant Raiment"},
+      {"name": "Elisif the Fair", "role": "Jarl of Solitude in the Blue Palace; gives the job"},
+      {"name": "Solitude Guard", "role": "the corrupt guard who stole Torygg's scroll, at Kilkreath"},
+      {"name": "Bohrok gro-Kal and Louis Lemonds", "role": "the guard's two bandit partners"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "part of the romance add-on; the conditions on Serana's line aren't in these files"},
+      {"field": "choices", "why": "only the journal hints at a non-fighting way through at Kilkreath; the dialogue isn't in these files"},
+      {"field": "people (Elisif)", "why": "the records place her in the Blue Palace and her court package runs from 6 am for 16 hours; the room isn't named"}
+    ],
+    "evidence": [
+      "QUST SeranaDialogueExpansion - Romance.esp:00000D",
+      "giver: Serana, INFO SeranaDialogueExpansion - Romance.esp:000011, stage below 5; Taarie below 26, Elisif below 36, Guard below 41",
+      "stage 41 (fight), 43 ('I can't believe he fell for it...'), 55 (500 septims each), 65 completes",
+      "aliases BridgeMarker, CollegeMarker, RadiantRaiment, Scroll; Guard …:0000A2, Bohrok …:0000A4, Louis …:0000A5 placed in Skyrim worldspace",
+      "Taarie package SolitudeRaimentsTaarieWorkDay8x12; Elisif SolitudePalaceCourt6x16",
+      "place Kilkreath Ruins, Haafingar"
+    ]
+  },
+  {
+    "edid": "SDE_R004",
+    "name": "Mirrors of Youth",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "canDo": "talk",
+    "canDoWhy": "During Unseen Visions, before you go to the Ancestor Glade, Serana wants to stock up on potions in Whiterun; Arcadia trades a discount for finding Braith.",
+    "needs": [
+      {"what": "Be on Unseen Visions, before reaching the Ancestor Glade", "kind": "quest"},
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "Before you reach the Ancestor Glade she says you should be extra prepared, so you head to Whiterun to buy potions at Arcadia's Cauldron and deliver Arcadia a note."
+      }
+    ],
+    "firstStep": "Talk to Arcadia",
+    "takesYou": [
+      {"place": "Arcadia's Cauldron, Whiterun", "hold": "Whiterun Hold", "why": "buy potions; Arcadia asks you to find Braith"},
+      {"place": "around Whiterun", "hold": "Whiterun Hold", "why": "ask townsfolk where Braith went"},
+      {"place": "the Cloud District, outside Dragonsreach", "hold": "Whiterun Hold", "why": "where Braith is waiting"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Arcadia",
+          "Bring Serana up to speed",
+          "Ask around about Braith",
+          "Ask Mila Valentia about Braith",
+          "Find Braith",
+          "Let Serana handle it",
+          "Return the potion to Arcadia"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Arcadia's potions at half price; Serana holds the potions and gives them when you ask", "when": "at the end"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Serana", "role": "talks Braith round"},
+      {"name": "Arcadia", "role": "alchemist at Arcadia's Cauldron, there from 8 am to 8 pm"},
+      {"name": "Braith", "role": "a girl planning to use Arcadia's experimental potion on her crush, Lars"},
+      {"name": "Mila Valentia", "role": "says Braith went up to the Cloud District"},
+      {"name": "Brenuin and Jon Battle-Born", "role": "also point you to the Cloud District, outside Dragonsreach"},
+      {"name": "Lars Battle-Born", "role": "Braith's crush"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "the link to Unseen Visions comes from the journal ('before reaching the Ancestor Glade to learn the location of Auriel's Bow'), not from a written condition; romance-path requirements, if any, aren't in these files"},
+      {"field": "rewards", "why": "the size of the discount is read from the journal ('potions half the price'); the potions themselves aren't listed"}
+    ],
+    "evidence": [
+      "QUST SeranaDialogueExpansion - Romance.esp:000197",
+      "giver: Serana, INFO SeranaDialogueExpansion - Romance.esp:00019C, stage below 2; Arcadia below 6; Nazeem and Jenassa below 16",
+      "stage 5 log (Ancestor Glade, Arcadia's Cauldron, note), 25 (Cloud District), 50 completes",
+      "INFO …:0001CC (Mila), …:0001D3 (Brenuin), …:0001D5/0001D7 (Jon), …:000281 (Serana holds potions)",
+      "Arcadia package WhiterunArcadiaStorePackage 8 am, 12 h",
+      "Ancestor Glade appears in DLC1VQ06 Unseen Visions"
+    ]
+  },
+  {
+    "edid": "SDE_R005",
+    "name": "Ambivalence",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "canDo": "talk",
+    "canDoWhy": "Tell Serana how you feel about her; she admits she feels the same but doubts herself, so you have Fralia Gray-Mane make a ring for her.",
+    "needs": [
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "Confess your feelings to her. She admits she feels something too, but believes she doesn't deserve it; the journal suggests a ring from Fralia Gray-Mane."
+      }
+    ],
+    "firstStep": "Ask Fralia Grey-Mane to craft you a ring for Serana",
+    "takesYou": [
+      {"place": "Fralia Gray-Mane's market stall, Whiterun", "hold": "Whiterun Hold", "why": "order the ring, then come back a day later to collect it"},
+      {"place": "Castle Volkihar Courtyard", "hold": "none in the records (nearest city Solitude, half a day away)", "why": "give Serana the ring"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Ask Fralia Grey-Mane to craft you a ring for Serana",
+          "Wait for Fralia to have the ring ready (a day)",
+          "Pick up the ring from Fralia Grey-Mane",
+          "Give the ring to Serana in Castle Volkihar's Courtyard"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Loved (the rested bonus a spouse normally gives)", "when": "at the end"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Serana", "role": "the one you confess to"},
+      {"name": "Fralia Gray-Mane", "role": "jeweller; her stall is by Jorrvaskr from 8 am for about 11 hours, home in House Gray-Mane in the evening"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "part of the romance add-on; how far the romance must have gone first isn't in these files"},
+      {"field": "rewards", "why": "the script also holds an Ebony Ruby Ring; it is most likely the ring you buy from Fralia and give away, so I didn't list it as yours. The ring's price isn't shown"},
+      {"field": "takesYou (Fralia)", "why": "her stall package is near Jorrvaskr in the market; it carries a weather check these files can't decode, so on some days she may stay home"}
+    ],
+    "evidence": [
+      "QUST SeranaDialogueExpansion - Romance.esp:000198",
+      "giver: Serana, INFO SeranaDialogueExpansion - Romance.esp:00028B, stage below 1; Fralia Skyrim.esm:013B9C below 6",
+      "stages 5-30 logs; 30 completes",
+      "script SDER_QF_SDE_R005_0517230E: RestedMarriagePerk = Loved Skyrim.esm:10D96A; SDE_EbonyRing …:0002DF",
+      "alias CourtyardMoondial",
+      "Fralia packages WhiterunFraliaStallPackage8x11 (near Jorrvaskr), WhiterunFraliaCookPackage, WhiterunFraliaHomePackage"
+    ]
+  },
+  {
+    "edid": "SDE_RMQ201",
+    "name": "At the Tempo of our Heartbeats",
+    "plugin": "SeranaDialogueExpansion - Romance.esp",
+    "canDo": "talk",
+    "canDoWhy": "Ask Serana to dance; she's upset at first, so apologise the next day and talk it through in the castle courtyard.",
+    "needs": [
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "Ask her to dance. It makes her uncomfortable, and you should wait until tomorrow and apologise."
+      }
+    ],
+    "firstStep": "Talk to Serana tomorrow",
+    "takesYou": [
+      {"place": "Castle Volkihar Courtyard", "hold": "none in the records (nearest city Solitude, half a day away)", "why": "Serana wants to finish the conversation there"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Serana tomorrow",
+          "Talk to Serana",
+          "Take Serana to the Castle Courtyard",
+          "Talk to Serana"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Serana", "role": "your dance partner"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "part of the romance add-on; the conditions on the dance line aren't in these files, and where it falls among the other romance quests isn't shown"}
+    ],
+    "evidence": [
+      "QUST SeranaDialogueExpansion - Romance.esp:000179",
+      "giver: Serana, INFO SeranaDialogueExpansion - Romance.esp:00017D ('Where in Oblivion did that come from?!'), stage below 2",
+      "stages 3-20 logs; 20 completes",
+      "alias Moondial"
+    ]
+  },
+  {
+    "edid": "DLC1SeranaCureSelfQuest",
+    "name": "Serana's cure vampirism",
+    "plugin": "Dawnguard.esm (last edited by SeranaCureQuestPlus.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Serana goes to Falion in Morthal to be cured; you follow her and watch the ritual at the summoning circle in the swamp.",
+    "needs": [
+      {"what": "Serana travelling with you", "kind": "other"}
+    ],
+    "starts": [
+      {
+        "who": "Serana",
+        "where": "wherever she is travelling with you",
+        "how": "Once she decides to be cured she heads off to Falion in Morthal, and the journal tells you to follow and see how it goes."
+      }
+    ],
+    "firstStep": "Follow Serana",
+    "takesYou": [
+      {"place": "Falion's House, Morthal", "hold": "Hjaalmarch", "why": "Serana goes to Falion for the cure"},
+      {"place": "the summoning circle in the swamp near Morthal", "hold": "Hjaalmarch", "why": "the ritual"}
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Follow Serana",
+          "See how Serana is doing",
+          "Talk to Serana",
+          "Serana cured vamprism"
+        ]
+      }
+    ],
+    "rewards": [
+      {"what": "Serana's Gold Ruby Necklace: 'A gold necklace granted by Serana as a thank you for supporting her in her cure. Health regenerates 50% faster.'", "when": "after the cure, going by the necklace's own text"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": ["Serana is no longer a vampire"],
+    "people": [
+      {"name": "Serana", "role": "the one being cured"},
+      {"name": "Falion", "role": "Morthal's wizard, in Falion's House; performs the ritual"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "these files don't show the line or event that starts it (what you say to Serana, or which Dawnguard quest has to be done first)"},
+      {"field": "rewards", "why": "the necklace comes from Serana Dialogue Expansion, not this quest; its text ties it to the cure, but the hand-over isn't traced in these files"},
+      {"field": "takesYou (summoning circle)", "why": "the journal says 'the summoning circle in the swamp'; the ritual's timing isn't readable here"}
+    ],
+    "evidence": [
+      "QUST Dawnguard.esm:005044, edited by SeranaCureQuestPlus.esp (last)",
+      "no giver line in quest_givers; namedGiver Falion Skyrim.esm:0135E9 placed in Falion's House Skyrim.esm:0138D0",
+      "stage 10 log (Falion in Morthal), 40 (summoning circle in the swamp), 200 completes",
+      "aliases Serana, HomeMarker, SCQPSummoningCircleMarker, Falion",
+      "ritual INFO SeranaCureQuestPlus.esp:000810, 000812",
+      "item SeranaDialogueExpansion.esp:0002E6 SDE_SeranaNecklaceRewardCure"
+    ]
+  }
+]
