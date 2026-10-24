@@ -71,3 +71,4 @@
 - **069** (town favors): 4 fixed. Brunwulf outside the Palace of the Kings by day; Rustleif is Dawnstar's blacksmith; Captain Aldis is in Castle Dour only at night.
 - **070** (town jobs: Torbjorn, Amren, Runil, Shahvee, Rare Gifts): 14 fixed. Givers by the hour (Torbjorn out in Windhelm 11 to 8, Amren near Jorrvaskr by day, Runil at Dead Man's Drink evenings); bounties belong to the hold you walk into.
 - **071** (bounties: giant, dragon; Delivery): 5 fixed, 2 unsure. The jarl's hall in the hold's main town is where you collect; a memory-based note about dragons removed.
+- **072** (town deliveries, cut favors): 0 fixed, 2 unsure. Five delivery copies hold up; four old favors confirmed cut; receivers' hours added.

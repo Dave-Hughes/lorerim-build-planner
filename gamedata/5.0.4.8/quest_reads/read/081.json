@@ -1,0 +1,739 @@
+[
+  {
+    "edid": "FreeformHeartwoodMill",
+    "name": "Flight or Fight",
+    "plugin": "Skyrim.esm (last edited by Big Tweaks.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Grosta at Heartwood Mill asks you to find her missing husband Leifnarr.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Grosta",
+        "where": "Heartwood Mill, the lumber mill in the Rift: at the sawmill by day, inside the house in the evening",
+        "how": "Talk to Grosta. She says Leifnarr went east toward the Morrowind border to trade their grain with some folks at Broken Helm Hollow."
+      },
+      {
+        "who": "Leifnarr (his body)",
+        "where": "Broken Helm Hollow, a bandit cave near Riften",
+        "how": "If you find Leifnarr's body before speaking to Grosta, the journal asks you to report his death to his family."
+      }
+    ],
+    "firstStep": "Find Leifnarr",
+    "takesYou": [
+      {
+        "place": "Broken Helm Hollow",
+        "hold": "The Rift",
+        "why": "Leifnarr's body is in this bandit cave (enemies around level 6 to 24)"
+      },
+      {
+        "place": "Heartwood Mill",
+        "hold": "The Rift",
+        "why": "go back and tell Grosta"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find Leifnarr",
+          "Return to Grosta"
+        ]
+      },
+      {
+        "branch": "found him first",
+        "objectives": [
+          "Report Leifnarr's death to his family"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Grosta",
+        "role": "gives the quest; lives and works at Heartwood Mill"
+      },
+      {
+        "name": "Leifnarr",
+        "role": "Grosta's husband; found dead in Broken Helm Hollow"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "choices",
+        "why": "One of Grosta's lines ('tell him he can go straight to Oblivion, he's not welcome here any more') suggests she thinks he left her, but the records here don't show what you can say to her or whether that changes the ending."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records for this quest."
+      },
+      {
+        "field": "steps",
+        "why": "The quest has a closing stage after the completion stage whose purpose isn't spelled out in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0E3EA5 editedBy USSEP, Big Tweaks.esp",
+      "giver INFO Skyrim.esm:06BBA8 (Grosta, stage<11)",
+      "INFO Skyrim.esm:0E3E70 Grosta 'straight to Oblivion'",
+      "Leifnarr NPC Skyrim.esm:0E3EAD edid FFHM01LeifnarrTreasCorpse, ref 0C2871 in Broken Helm Hollow cell 0152B0",
+      "objective 5 'Report Leifnarr's death to his family'",
+      "Grosta packages HeartwoodMillGrostaSawmill*/RelaxIndoors20x4/Sleeps; CrimeFactionRift"
+    ]
+  },
+  {
+    "edid": "FreeformSarethiFarm",
+    "name": "Smooth Jazbay",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Avrusa Sarethi at Sarethi Farm asks you to gather Jazbay grapes for her.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Avrusa Sarethi",
+        "where": "Sarethi Farm in the Rift, working the fields by day and in the farmhouse at mealtimes and night",
+        "how": "Talk to Avrusa; she asks for 20 Jazbay."
+      }
+    ],
+    "firstStep": "Find 20 Jazbay",
+    "takesYou": [
+      {
+        "place": "Sarethi Farm",
+        "hold": "The Rift",
+        "why": "Avrusa lives here; bring her the grapes"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Find 20 Jazbay",
+          "Bring the Jazbay to Avrusa Sarethi"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Avrusa Sarethi",
+        "role": "gives the quest; farmer at Sarethi Farm (cannot be killed)"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "The records don't say where the Jazbay grows; the quest only counts what you pick up."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records for this quest."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0E3308",
+      "giver INFO Skyrim.esm:0E3E6F (Avrusa, stage<11)",
+      "objective 10 uses globals FFSarethi01JazCount/JazTotal",
+      "Avrusa NPC Skyrim.esm:019BFE essential, CrimeFactionRift, SarethiFarm* packages"
+    ]
+  },
+  {
+    "edid": "FreeformRiften11b",
+    "name": "A Strong Nord Woman",
+    "plugin": "Caught Red Handed - Quest Expansion.esp",
+    "canDo": "talk",
+    "canDoWhy": "Svana Far-Shield at Haelga's Bunkhouse in Riften sends you to deal with Tythis Ulen.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Svana Far-Shield",
+        "where": "Haelga's Bunkhouse in Riften (she stays there all day)",
+        "how": "Talk to Svana; she sends you to talk to Tythis."
+      }
+    ],
+    "firstStep": "Talk to Tythis",
+    "takesYou": [
+      {
+        "place": "Haelga's Bunkhouse, Riften",
+        "hold": "The Rift",
+        "why": "Svana and Tythis both live here"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Fight Tythis in a brawl",
+        "leadsTo": "win the brawl against Tythis"
+      },
+      {
+        "choice": "Threaten Tythis",
+        "leadsTo": "threaten Tythis"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Tythis",
+          "Win the brawl against Tythis",
+          "Threaten Tythis",
+          "Talk to Svana"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Svana Far-Shield",
+        "role": "gives the quest; lives at Haelga's Bunkhouse"
+      },
+      {
+        "name": "Tythis Ulen",
+        "role": "the man you confront; in the bunkhouse in the evening, early morning and night, out in Riften working wood and at the market by day"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "This quest comes from the mod that expands Caught Red Handed (Svana's quest about Haelga), so it probably follows it, but the condition on Svana's line isn't in these files."
+      },
+      {
+        "field": "choices",
+        "why": "The journal has both a brawl objective and a threaten objective; the records don't show whether they are two ways to do it or two steps in a row."
+      },
+      {
+        "field": "steps",
+        "why": "The quest can fail; these records don't say what causes it."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records for this quest."
+      }
+    ],
+    "evidence": [
+      "QUST Caught Red Handed - Quest Expansion.esp:000802",
+      "giver INFO Caught Red Handed - Quest Expansion.esp:000805 (Svana stage<11; Tythis stage<21)",
+      "fail stage 150",
+      "related QUST Skyrim.esm:041F91 FreeformRiften11 'Caught Red Handed'",
+      "Svana packages RiftenSvana* all in Haelga's Bunkhouse",
+      "Tythis packages RiftenTythisBunkhouse18x6, Works*7-15, Market15x3"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthD",
+    "name": "Delivery to Calcelmo",
+    "plugin": "Skyrim.esm (last edited by Big Tweaks.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Carry a ring to Calcelmo, the court wizard in Understone Keep in Markarth.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Kerah",
+        "where": "her silversmith stall in the Markarth market by day (8 am to 8 pm); the Silver-Blood Inn in the evening; Endon's House at night",
+        "how": "Kerah, the jeweler, is the other person tied to this quest besides Calcelmo; she most likely hands you the ring."
+      }
+    ],
+    "firstStep": "Deliver the ring to Calcelmo",
+    "takesYou": [
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "give the ring to Calcelmo"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Deliver the ring to Calcelmo"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "on delivering the ring"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Calcelmo",
+        "role": "receives the ring; court wizard, in Understone Keep at all hours"
+      },
+      {
+        "name": "Kerah",
+        "role": "jeweler tied to the ring"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "The records name Calcelmo as the quest's giver slot and also tie Kerah to the quest, but no dialogue line that starts it is in these files, so who hands you the ring isn't confirmed."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:075399 editedBy Big Tweaks.esp; startGame true",
+      "aliases QuestGiver=Calcelmo (Skyrim.esm:01338E), Ring, Kerah (Skyrim.esm:0133A2)",
+      "reward QF_FreeformMarkarthD_00075399.Gold",
+      "Kerah packages MarkarthSilversmithStall8x12, EatSilverBloodInn20x3, sleep at editor loc (Endon's House)",
+      "Calcelmo packages CastleWizardVendor0x24 Understone Keep"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthE",
+    "name": "Lisbet's Missing Shipment",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Lisbet at Arnleif and Sons in Markarth wants her stolen shipment back from a Forsworn camp.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Lisbet",
+        "where": "Arnleif and Sons Trading Company in Markarth, minding the shop from 8 am to midnight",
+        "how": "Talk to Lisbet about her missing shipment."
+      }
+    ],
+    "firstStep": "Retrieve Lisbet's shipment from a Forsworn camp",
+    "takesYou": [
+      {
+        "place": "a Forsworn camp (picked when the quest starts; marked on your map)",
+        "hold": "",
+        "why": "the shipment, a Dibella statue, is in the chest of the camp's leader"
+      },
+      {
+        "place": "Arnleif and Sons Trading Company, Markarth",
+        "hold": "The Reach",
+        "why": "bring the statue back to Lisbet"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Retrieve Lisbet's shipment from the Forsworn camp",
+          "Bring the Dibella Statue to Lisbet"
+        ]
+      },
+      {
+        "branch": "Lisbet dies",
+        "objectives": [
+          "Quest fails: Lisbet is dead so her shipment can no longer be returned to her."
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold (a large favor reward)",
+        "when": "on returning the statue"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Lisbet",
+        "role": "gives the quest; runs Arnleif and Sons Trading Company"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "takesYou",
+        "why": "Which Forsworn camp is chosen when the quest starts, so the hold and the place aren't fixed."
+      },
+      {
+        "field": "where",
+        "why": "Lisbet's evenings: the records give her a chance of going to the Silver-Blood Inn at 8 pm, but her shop package covers those hours too and comes first."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0753A1 editedBy USSEP",
+      "aliases QuestGiver=Lisbet Skyrim.esm:0133A5, Statue, ForswornCamp, BossContainer, MapMarker",
+      "stage 30 fail log",
+      "rewards FavorRewardGoldLarge Skyrim.esm:04A41B + Gold",
+      "Lisbet packages MarkarthGeneralStoreVendor8x16xPackage, AIOMaLisbetTavern"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthJ",
+    "name": "Bothela's Discreet Delivery",
+    "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Bothela at The Hag's Cure in Markarth asks you to quietly deliver a potion to the steward.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Bothela",
+        "where": "The Hag's Cure in Markarth (her shop, 8 am to 8 pm; she sleeps there too)",
+        "how": "Becomes available once you arrive in Markarth; talk to Bothela and she gives you a Stallion's Potion to deliver."
+      }
+    ],
+    "firstStep": "Deliver the Stallion's Potion to the steward",
+    "takesYou": [
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "the steward of Markarth is there"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Deliver the Stallion's Potion to the steward"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Gold",
+        "when": "on delivery"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Bothela",
+        "role": "gives the quest; apothecary at The Hag's Cure"
+      },
+      {
+        "name": "Raerek",
+        "role": "steward of Markarth in Understone Keep"
+      },
+      {
+        "name": "Reburrus Quintilius",
+        "role": "has a delivery line in this quest; holds the steward role when the Stormcloaks run Markarth"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "people",
+        "why": "The delivery goes to whoever is steward at the time. The records give both Raerek and Reburrus Quintilius a steward role (Reburrus with the Stormcloak government), so who you deliver to likely depends on who holds Markarth."
+      },
+      {
+        "field": "starts",
+        "why": "The quest is started when you enter Markarth; the exact line Bothela uses to offer it isn't in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0790E1 editedBy LoreRim - Dialogue Patch.esp",
+      "start event FavorChangeLocationMarkarth (change location)",
+      "aliases QuestGiver=Bothela Skyrim.esm:01338B, Potion fills 'Stallion's Potion', Steward",
+      "INFO USSEP:0528F7 GetIsID Reburrus Skyrim.esm:0133B3 stage<11",
+      "Raerek Skyrim.esm:0133B2 JobStewardFaction GovImperial; Reburrus JobStewardFaction GovSons",
+      "reward QF_FreeformMarkarthJ_000790E1.Gold",
+      "Bothela packages MarkarthBothelaSleepPackage 22x10 Hag's Cure, vendor 8-20"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthL",
+    "name": "Skilled Apprenticeship",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Ghorza gra-Bagol, the blacksmith in Understone Keep, wants a copy of The Last Scabbard of Akrash.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Ghorza gra-Bagol",
+        "where": "the forge in Understone Keep, Markarth, from 8 am to 8 pm",
+        "how": "Talk to Ghorza; the quest asks you to bring her the book The Last Scabbard of Akrash."
+      }
+    ],
+    "firstStep": "Bring The Last Scabbard of Akrash to Ghorza",
+    "takesYou": [
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "bring the book to Ghorza"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Bring The Last Scabbard of Akrash to Ghorza"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Ghorza gra-Bagol",
+        "role": "wants the book; blacksmith and smithing trainer in Understone Keep"
+      },
+      {
+        "name": "Tacitus Sallustius",
+        "role": "the other blacksmith at the keep's forge, tied to this quest"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "No dialogue line that starts this quest is in these files; Ghorza is the person the journal names, and Tacitus is also tied to the quest, so either could be the one who brings it up."
+      },
+      {
+        "field": "takesYou",
+        "why": "The records don't say where to find a copy of the book."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records for this quest."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:06099C",
+      "aliases Ghorza Skyrim.esm:01339A, Tacitus Skyrim.esm:01402D, Book",
+      "Ghorza trainer Smithing Journeyman; packages BlacksmithIntroScene8x12, Eat20x4, AIOMaGhorzaTavern 21x4 Silver-Blood Inn"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthN",
+    "name": "Coated in Blood",
+    "plugin": "Skyrim.esm",
+    "canDo": "talk",
+    "canDoWhy": "Moth gro-Bagol, the blacksmith at Understone Keep, wants a Daedra's Heart.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Moth gro-Bagol",
+        "where": "working the forge in Understone Keep, Markarth, from 8 am to 8 pm",
+        "how": "Talk to Moth; the quest asks you to bring him a Daedra's Heart."
+      }
+    ],
+    "firstStep": "Bring a Daedra's Heart to Moth",
+    "takesYou": [
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "bring the heart to Moth"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Bring a Daedra's Heart to Moth"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Moth gro-Bagol",
+        "role": "wants the heart; blacksmith at Understone Keep (some evenings at the Silver-Blood Inn)"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "Moth is the only person tied to this quest, but no dialogue line that starts it is in these files."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records for this quest."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0647B3",
+      "alias Moth Skyrim.esm:055A5E",
+      "Moth packages MarkarthMothWorkForgePackage 8x12 Understone Keep (USSEP), AIOMaMothGroTavern 21x4"
+    ]
+  },
+  {
+    "edid": "FreeformMarkarthO",
+    "name": "Nimhe, the Poisoned One",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Calcelmo will let you into his Nchuand-Zel dig if you kill the giant spider his workers call Nimhe.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Calcelmo",
+        "where": "Understone Keep in Markarth (he is there at all hours)",
+        "how": "Talk to Calcelmo about Nchuand-Zel: 'I'll let you in if you agree to something for me. There's a giant spider in Nchuand-Zel. My workers call her Nimhe, the poisoned one.'"
+      }
+    ],
+    "firstStep": "Kill Nimhe inside Nchuand-Zel",
+    "takesYou": [
+      {
+        "place": "Nchuand-Zel Excavation Site (entered from inside Understone Keep)",
+        "hold": "The Reach",
+        "why": "Nimhe, a giant frostbite spider, is here"
+      },
+      {
+        "place": "Understone Keep, Markarth",
+        "hold": "The Reach",
+        "why": "tell Calcelmo she's dead"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Kill Nimhe inside Nchuand-Zel",
+          "Tell Calcelmo that Nimhe is dead"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Calcelmo",
+        "role": "gives the quest; court wizard in Understone Keep"
+      },
+      {
+        "name": "Nimhe",
+        "role": "giant frostbite spider in the Nchuand-Zel excavation"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records beyond being let into the dig."
+      },
+      {
+        "field": "takesYou",
+        "why": "Nchuand-Zel as a whole holds Falmer, spiders and Dwemer machines from about level 16 up; the records don't give Nimhe's own level."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:053804 editedBy USSEP",
+      "giver INFO Skyrim.esm:05332D (Calcelmo stage<16)",
+      "INFO Skyrim.esm:053321 Calcelmo 'I'll let you in...'",
+      "alias Nimhe = EncFrostbiteSpiderGiantAmbush Skyrim.esm:02A1DC ref 060BB5 in Nchuand-Zel Excavation Site cell 015237",
+      "door Skyrim.esm:03EF54 from 015237 into Understone Keep",
+      "places Nchuand-Zel The Reach 16-60"
+    ]
+  },
+  {
+    "edid": "FreeformKarthwastenA",
+    "name": "Sanuarach Mine",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Silver-Blood mercenaries have taken Karthwasten's Sanuarach Mine; the miners ask for help when you arrive.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Lash gra-Dushnikh or Ragnar",
+        "where": "Karthwasten in the Reach; a scene plays with the miners and the mercenaries when you first arrive. By day the two miners work at Fenn's Gulch Mine; they sleep in the Miner's Barracks",
+        "how": "Arrive in Karthwasten and talk to Lash or Ragnar about the mercenaries in Sanuarach Mine."
+      }
+    ],
+    "firstStep": "Convince Atar to leave Sanuarach Mine",
+    "takesYou": [
+      {
+        "place": "Sanuarach Mine, Karthwasten",
+        "hold": "The Reach",
+        "why": "Atar and the Silver-Blood mercenaries hold the mine"
+      },
+      {
+        "place": "Karthwasten Hall",
+        "hold": "The Reach",
+        "why": "Ainethach, who owns the mine"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Side with the miners: get Atar and his mercenaries out of the mine",
+        "leadsTo": "tell Ainethach that Atar has been dealt with; the mercenaries leave for the Silver-Blood Inn in Markarth and the miners go back to Sanuarach Mine"
+      },
+      {
+        "choice": "Side with the Silver-Bloods: get Ainethach to sell the mine",
+        "leadsTo": "tell Atar that Ainethach has been dealt with"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "miners",
+        "objectives": [
+          "Convince Atar to leave Sanuarach Mine",
+          "Tell Ainethach that Atar has been dealt with"
+        ]
+      },
+      {
+        "branch": "Silver-Bloods",
+        "objectives": [
+          "Convince Ainethach to sell Sanuarach Mine",
+          "Tell Atar that Ainethach has been dealt with"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Atar",
+        "role": "leader of the Silver-Blood mercenaries, sits in Sanuarach Mine"
+      },
+      {
+        "name": "Ainethach",
+        "role": "owns Karthwasten and the mine; outside in Karthwasten by day, Karthwasten Hall at night"
+      },
+      {
+        "name": "Lash gra-Dushnikh",
+        "role": "miner who brings up the trouble"
+      },
+      {
+        "name": "Ragnar",
+        "role": "miner who brings up the trouble"
+      },
+      {
+        "name": "Silver-Blood Mercenaries",
+        "role": "three guards with Atar in the mine"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "choices",
+        "why": "'Dealt with' covers talking or fighting; the records here don't show which persuasion, bribe or fight options each side offers."
+      },
+      {
+        "field": "rewards",
+        "why": "No reward is named in these records for either side."
+      },
+      {
+        "field": "closes",
+        "why": "The quest has three ending stages; only the miners' ending (mercenaries leave, miners return to the mine) is visible in these files."
+      }
+    ],
+    "evidence": [
+      "QUST Skyrim.esm:0622E8 editedBy USSEP",
+      "start event FreeformKarthwastenAQuest (change location)",
+      "giver INFO Skyrim.esm:08307F (Lash stage<100; Ragnar)",
+      "intro packages KarthwastenIntro* until stage 5 done",
+      "Atar/merc FreeformKarthwastenAGuardsLeaveMinePackage Silver-Blood Inn at stage>=100; Lash/Ragnar KarthwastenSandboxOutsideSauranachMine8x12 at stage>=100, else FennGulchMine8x12",
+      "objectives 10/20/30/40",
+      "Atar Skyrim.esm:0622E5 KarthwastenSilverFishGuards"
+    ]
+  }
+]
