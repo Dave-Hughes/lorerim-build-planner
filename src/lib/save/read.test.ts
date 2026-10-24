@@ -66,6 +66,24 @@ describe("skills and the lute (WO-123)", () => {
   it("leaves skills out when the player's list isn't there, or isn't the only one", () => {
     expect(parseSkills(new Uint8Array(400))).toBeNull();
   });
+
+  it("reads Save 114's own bytes, not a fixture (WO-149)", () => {
+    // Kyria's own base actor-value list, bytes 70139 to 70355 of Save 114's decompressed player change form
+    // (0x14), read by hand with a Python port of this file after the installed save connector (the .mcpb Dave
+    // had) came back skills: {} -- that connector predates WO-123 (no parseSkills in its bundle at all); this
+    // reader was never the bug. Checked against Kyria's own skills menu at Save 114.
+    // prettier-ignore
+    const hex = "000000000000000001000000000000000200000000004842030000000000404004000000000000000500000000000000060000" +
+      "00000020410700000000008042080000000000a040090000000000a0410a000000000070410b000000000080420c0000000000" +
+      "70410d0000000000803f0e000000000070410f00000000000000100000000000c040110000000000484212000000000080411300" +
+      "000000000000140000000000c84115000000000000001600000000007042170000000000a0401800000000001b43190000000000" +
+      "0243 1a00000000001143";
+    const bytes = Uint8Array.from(hex.replace(/\s+/g, "").match(/../g)!.map((b) => parseInt(b, 16)));
+    expect(parseSkills(bytes)).toEqual({
+      "One-Handed": 10, "Two-Handed": 64, Marksman: 5, Block: 20, Smithing: 15, "Heavy Armor": 64, Evasion: 15, Finesse: 1, Wayfarer: 15,
+      Sneak: 0, Alchemy: 6, Speech: 50, Alteration: 16, Conjuration: 0, Destruction: 25, Illusion: 0, Restoration: 60, Enchanting: 5,
+    });
+  });
 });
 
 describe("the decompressors", () => {

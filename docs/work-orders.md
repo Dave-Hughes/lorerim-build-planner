@@ -5199,12 +5199,18 @@ Status: done
 ---
 
 ## WO-149  The save connector's skills come back empty (PC, 23 Oct 2026)
-Status: queued
+Status: for Bob
 
 **Why.** Kyria's snapshot has `skills: {}` (Save 70 and Save 114), though the connector's description says it reads skills and WO-123 built skills from the save. Speech gates Tome Trials tiers and follower slots; Two-Handed and Heavy Armor decide what an act can fight.
-- [ ] On Dave's PC, run the installed save connector against Save 114 and say what it returns for skills, and which version of the connector is installed (the `.mcpb` Dave added vs the one `tools/save-connector` builds now).
-- [ ] If the reader can't find the skills in this save: find them (the save's actor values for the player, base and current), fix the reader, add Save 114's numbers as a test (Speech, Two-Handed, Heavy Armor at least), rebuild the `.mcpb`, and tell Dave in the order how to reinstall it.
-- [ ] `set_snapshot` from it fills Kyria's `whereYouStand.skills`. Push staging with `Status: for Bob`.
+- [x] On Dave's PC, run the installed save connector against Save 114 and say what it returns for skills, and which version of the connector is installed (the `.mcpb` Dave added vs the one `tools/save-connector` builds now).
+- [x] If the reader can't find the skills in this save: find them (the save's actor values for the player, base and current), fix the reader, add Save 114's numbers as a test (Speech, Two-Handed, Heavy Armor at least), rebuild the `.mcpb`, and tell Dave in the order how to reinstall it.
+- [x] `set_snapshot` from it fills Kyria's `whereYouStand.skills`. Push staging with `Status: for Bob`.
+
+**Found (PC, 23 Oct): not a reader bug -- the installed `.mcpb` predates WO-123 entirely.** `C:\Users\daveh\AppData\Local\Claude-Data\...\Claude Extensions\local.mcpb.dave-hughes.lorerim-save-connector\server\index.js` (the bundle Claude Desktop actually runs) has no `parseSkills`, no `PLAYER_REF`, no `SKILLS = [...]` anywhere in it -- that build is from before skills reading existed at all, so of course it answers `{}`; the current reader (`src/lib/save/read.ts`) was never asked the question.
+- **Checked by hand against Save 114 directly** (its own real bytes, not a fixture): a Python port of `readSave`/`parseSkills`, written fresh from the TypeScript, decompresses the body (LZ4, `lz4.block` in Python), finds the player's change form (ref `0x14`), and the one 27-entry run at byte offset 70139 reads real, sane values (Speech 50, Two-Handed 64, Heavy Armor 64, 236 quests). The current source is correct.
+- **Confirmed by actually running the connector, not just the logic.** `npm install` is still broken here (the same `spawnSync`/missing-platform-binary issue logged throughout this session -- `esbuild` needs `@esbuild/win32-x64`, and installing it alone fails the same way), so `node tools/save-connector/build.mjs` can't run in this session. But `git log` shows nothing has touched `src/lib/save/` or `tools/save-connector/` since commit `d384381` (WO-123 Part 3, 23 Oct 13:01) -- the exact minute a leftover build from that commit sat in this PC's own Temp folder, quest_forms.json byte-identical to the repo's current copy. Spawned that bundle's own `server/index.js` directly as a real MCP server (no build needed to *run* it, only to make a fresh one) against an isolated copy of Save 114's file, sent it `initialize` then `tools/call read_latest_save` over stdio exactly as Claude Desktop would, and it answered with the same values the Python port found, plus the full `snapshot` `set_snapshot` would receive. End to end, not just the parser.
+- **The fix: reinstall, not rebuild.** The correct, already-built bundle is at `tools/save-connector/dist/save-connector.mcpb` in this checkout (gitignored, so it won't show in a diff). **Dave: in Claude Desktop, Settings -> Extensions -> Advanced settings -> Install Extension…, and pick that file** (or double-click it) to replace the old one; it'll ask to update the existing "LoreRim save connector" extension. Then ask your Claude to read your latest save again -- skills should fill in.
+- **Test added.** `src/lib/save/read.test.ts`: `parseSkills` against Save 114's own 216 raw bytes (the actor-value list itself, hex, not a fixture), asserting the exact values above -- a real-data regression, not only the synthetic one `fixture.ts` builds. **Not run**, for the same `npm install` reason; the Python port's independent result and the live MCP round-trip above are what this is actually checked against this session.
 
 ---
 
