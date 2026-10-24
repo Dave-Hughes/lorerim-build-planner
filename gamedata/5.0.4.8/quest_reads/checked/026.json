@@ -1,0 +1,1320 @@
+{
+ "checks": [
+  {
+   "edid": "zzzBMMq01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Objective 0 is \"Talk to the Courier\" (filled Windhelm Guard), then the Steward, whose line 038AC1 is the giver line (stage below 11)."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records says what sends the courier. The Steward's \"incident at the Temple of Stendarr\" line and his zzzBMGenAct2NPCFaction point at Vigilant's first act being done first; the script that sets stage 0 would settle which quest."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Courier alias = Windhelm Guard; Steward alias = Vigilant.esm:4B2C91, giver INFO 038AC1."
+    },
+    "starts.where": {
+     "verdict": "fix",
+     "note": "The Steward's Palace of the Kings sandbox (zzzBMM01StweardSandbox) only applies once the quest is completed (GetQuestCompleted); while it runs he has only zzzBMMq01StewardWait (GetQuestRunning, no place), and he is placed in the Actor Room holding cell. Pointing a player at the Palace for this quest is wrong; where you meet the guard and the Steward is not in the records."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Steward line from INFO 038AC1 quoted verbatim (places_raw pointer)."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 0, Courier = Windhelm Guard."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The Temple of Stendarr here is Gwyneth's cell (Libra alias, cell Vigilant.esm:025091), whose location is Stuhn Ravine; say so instead of leaving it with no place. The places-index \"Temple of Stendarr\" (37FBC0) is a debug room (zzzAoMLocDebugRoom). The lair names under Windhelm stay inferred, as the reader noted."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Stages 255 and 9999 also complete the quest with no journal text; likely fail/shutdown stages. The stage scripts would settle it."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gold property QF_zzzBMMq01_01038524.Gold (Septim) kept with an unsure note, per Bob's 23 Oct ruling; amount and moment not in the records."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "Remnants follows by editor id (zzzBMMq01 -> zzzBMMq02) and its targets are the corrupt Vigilants in the lairs; no record links them. Kept as likely, with the unsure note."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    }
+   }
+  },
+  {
+   "edid": "zzzBMMq02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No start event or opening dialogue; Paulo's and Thingol's lines (stage below 21 / 41) come mid-quest, after \"Defeat Gwaji gro-Agnam\"."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Empty Cells ends on \"Eliminate the vampires under Windhelm\" and Remnants is zzzBMMq02, but no record links them. The script that starts Remnants would settle it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No giver or start event in the records; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No giver or start event in the records; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No giver or start event in the records; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10, Vamp01 = Gwaji gro-Agnam, placed in cell Hidden Passage, location Old Sewers."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Cells match the alias placements. The Eastmarch hold is an inference (these cells have no hold in the records); kept with the reader's unsure note."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Vampire's Shadow is the script's \"InvisibleSpell\" property, not a reward property, so it stays out of rewards with the reader's unsure note."
+    },
+    "opens": {
+     "verdict": "unsure",
+     "note": "The Blood Matron follows by editor id (zzzBMMq03); no record link. Kept as likely."
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "\"Thingol's fate is settled by Stendarr's Mercy\" locks nothing the records show: Thingol's objectives are \"Talk to\" and \"Give Stendarr's Mercy to\", his package is a sit-and-ignore-combat one, and nothing says whether he lives. Moved to unsure. The four \"Defeat\" targets are non-essential, so the deaths stay."
+    }
+   }
+  },
+  {
+   "edid": "zzzBMMq03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "Lamae Beolfag has the first line (INFO 03BC15, stage below 31), but the first objective is at stage 60 and she has a sleeping package; the records don't show whether talking to her starts the quest or it is already running from Remnants. Kept \"talk\" as the likely way, with an unsure note."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Only the editor id order (zzzBMMq02 -> 03) links it to Remnants."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "Lamae Beolfag is the likely giver (first line, stage below 31). Kept, with an unsure note."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "LamaeHum placed in Matron's Chamber; PACK zzzBMq03LamaeSleeping."
+    },
+    "starts.how": {
+     "verdict": "unsure",
+     "note": "Reworded to \"probably\": whether her line starts the quest isn't shown."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "She is placed in Matron's Chamber; the first objective comes later."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Matron's Chamber (Molag Bal, Lamae Beolfag, Curse, draugr Lamae Bal) and Lamae's Dream worldspace (Lamae Bal 037468)."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Completing stages 100 and 220 (after a separate 200-220 run) suggest two endings, and the objectives are both \"Defeat\" and \"Free ... from the curse\"; no text says what decides it. Stage scripts would settle it."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Lamae's Kin (AbBloodofLamae) is not a reward property, and Art of Mercy holds the same spell as \"AbLamaeCurse\", a curse. Fire Storm (Weak) is \"StandUpSpell\". Both stay out of rewards with the unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "\"Lamae Bal is defeated\" is the objective, not something the quest locks, and the other objective is to free her from the curse, so whether she dies isn't settled. Emptied and moved to unsure."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryGuide",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No giver, start event or dialogue; objectives only."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Nothing in the records; the unsure note covers it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No giver or start event; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No giver or start event; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No giver or start event; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "First objective (stage 100); stages 0-90 show nothing."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Aliases are DreamPelinal, DreamBull, DreamAlessia with no fills. Coldharbour places named for Pelinal (Barrier Tower of Agea, edid zzzCHDistrictTombPelinal, boss Pelinal Whitestrake) and Morihaus (Barrier Tower of Bala, zzzCHDistrictTombMorihaus) exist, but nothing links the riddles to them. Added to the unsure note."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "\"Morihaus\" isn't in this quest's records; the alias is DreamBull. Naming him is from memory of the lore. Changed to \"the Bull\". The aliases have no person filled in, so these may be dream places or objects, not people."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "No giver line in the records; the riddle is objective 0."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records starts it; the Coldharbour act script would settle it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No giver or start event; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No giver or start event; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No giver or start event; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 0."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Mara alias = Mary the Dark Maiden in Bed of Corruption, Inquisitor = Pepe in Imperial City Prison (location Memory). Same alias pattern as The Mad King, where the location record does list the quest; here none does. Kept with the note."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Completing stages 20 and 100; no text for either."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryQuest02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The riddle is objective 0, so the quest is running before Dro'Zel's line (stage below 11)."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records starts it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Dro'Zel's line is inside the memory, after the quest is running; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Dro'Zel's line is inside the memory, after the quest is running; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Dro'Zel's line is inside the memory, after the quest is running; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "LCTN Malatar Mansion lists this quest and its boss is Mad King Dro'Zel."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Malatar Mansion (LCTN quest list) and Mad King's Bedroom (King alias, location Memory). No hold, as noted."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Completing stages 30 and 130; no text."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryQuest03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The riddle is objective 0; Belharza's line (below 21) is inside the memory."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records starts it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 0."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Ritho speaks to you in this quest (line before stage 41) and is placed at Waterfront, so it belongs in takesYou. Waterfront also holds copies with no race of Varla's hounds Maril and Umar, plus Belharza's Dragonrider Knight, which makes it part of the memory. Added as \"Waterfront (probably inside the memory)\"."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Completing stages 30 and 130; no text."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryQuest04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The riddle is objective 0; Simon's line (below 21) is inside the memory."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records starts it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "LCTN Chapel of Arkay Cemetery lists this quest; a Martha record (129BE5, Bone Human Race) is also placed in the cemetery."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Cemetery (LCTN), Pell's Gate and Bravil Underground (alias placements, location Memory)."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "\"and the brothers\" has no support: nothing ties Simon and Tlass to the ending. The records give the BadEndMarker alias and the line \"Leaving blind Martha alone... What in Oblivion were you thinking?\", which points at Martha. Narrowed to her."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryQuest05",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The riddle is objective 0; Marukh's line (below 11) is inside the memory."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records starts it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 0."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Cliffs of Colovia matches the Marukh and Pepe placements (location Memory). Where you enter is unknown. The quest also has a \"MemoryDulsa\" alias, and St. Dulsa's Charnel exists as a cell (Alessian Inquisitor, Alessian Knight, another Aredhel are placed there); it may be the way in, but nothing says so. Added to the note."
+    },
+    "choices": {
+     "verdict": "unsure",
+     "note": "Completing stages 50 and 120; no text."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Renald Invisibility is the \"InvisibleSpell\" property, not a reward property; stays out with the note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "\"the prophet\" isn't in the records (Marukh is zzzCHMarukhMemory, Imga Race); removed. \"Later memory\" for Pepe overstates an editor id ending in 2; reworded."
+    }
+   }
+  },
+  {
+   "edid": "zzzCHMemoryQuest06",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The riddle is objective 0; Pepe's line (below 11) is inside the memory."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records starts it."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "No start event; empty is right."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 0."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Fort Cedrian matches Pepe's placement (location Memory); no Coldharbour place lists the quest. Kept with the note."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Only one completing stage (30)."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "zzzBMMq01",
+   "name": "Empty Cells",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A Windhelm guard brings you a message, then the Steward of Windhelm asks you to look into vampires under the city.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "A Windhelm guard acting as a courier, then the Steward",
+     "where": "Windhelm. Where the guard finds you and where the Steward waits during the quest are not in the records.",
+     "how": "Talk to the guard who brings the message, then to the Steward. He greets you with \"Welcome, I've been expecting you. I heard about the incident at the Temple of Stendarr...\""
+    }
+   ],
+   "firstStep": "Talk to the Windhelm guard who has a message for you",
+   "takesYou": [
+    {
+     "place": "Windhelm",
+     "hold": "Eastmarch",
+     "why": "meet the Steward"
+    },
+    {
+     "place": "the dungeons under Windhelm",
+     "hold": "Eastmarch",
+     "why": "investigate the empty cells"
+    },
+    {
+     "place": "Temple of Stendarr, in Stuhn Ravine",
+     "hold": null,
+     "why": "find the Windhelm Report"
+    },
+    {
+     "place": "the vampire lair under Windhelm",
+     "hold": "Eastmarch",
+     "why": "eliminate the vampires"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to the courier (a Windhelm guard)",
+      "Talk to the Steward",
+      "Investigate Windhelm dungeons",
+      "Ask the Steward about the Maiden Statue",
+      "Look for the Windhelm Report in the Temple of Stendarr",
+      "Talk to the Steward",
+      "Eliminate the vampires under Windhelm",
+      "Report to the Steward"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not in these files)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [
+    "Remnants"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Steward",
+     "role": "Steward of Windhelm, who sets the investigation; essential"
+    },
+    {
+     "name": "Windhelm Guard",
+     "role": "the courier who brings you to the Steward"
+    },
+    {
+     "name": "Gwyneth",
+     "role": "Vigilant librarian at the Temple of Stendarr; has lines early in the quest"
+    },
+    {
+     "name": "Facis",
+     "role": "a vampire merchant found in Matron's Chamber; essential"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Nothing in these files says what sends the courier. The Steward mentions 'the incident at the Temple of Stendarr' and his faction marks him as part of Vigilant's second act, so it probably follows the first act (The Landing / Art of Mercy). Not confirmed."
+    },
+    {
+     "field": "starts.where",
+     "why": "The Steward is placed in a holding cell and moved in by script. While the quest runs he only has a \"wait\" package with no place; he sandboxes in the Palace of the Kings only after it is finished. Where the guard finds you isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The objectives only say \"Windhelm dungeons\" and \"under Windhelm\". Which cells those are (Old Sewers, Bloody Well, Asylum, Enchantress' Palace, Matron's Chamber hold the act's vampires) is inferred, not stated. The Temple of Stendarr belongs to Stuhn Ravine, which has no hold in the records."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script has a Gold property; the amount and the exact moment you get it aren't in these files."
+    },
+    {
+     "field": "opens",
+     "why": "Inferred from the mod's quest order and the shared vampire lairs; no record link to Remnants was found."
+    },
+    {
+     "field": "choices",
+     "why": "Besides the normal finish, the quest has two more end stages with no journal text. They are probably fail/shutdown stages, but that isn't certain."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:038524",
+    "alias Courier = Windhelm Guard; alias Steward = Vigilant.esm:4B2C91",
+    "INFO Vigilant.esm:038AC1 / 03959F / 0395A7 (Steward lines)",
+    "PACK zzzBMMq01StewardWait (GetQuestRunning) and zzzBMM01StweardSandbox at Skyrim.esm:01677C Palace of the Kings (GetQuestCompleted)",
+    "Steward factions TownWindhelmFaction, JobStewardFaction, zzzBMGenAct2NPCFaction",
+    "BOOK Vigilant.esm:038AAE Windhelm Report (4E 180)",
+    "QF_zzzBMMq01_01038524.Gold",
+    "completing stages 110, 255, 9999",
+    "Gwyneth (alias Libra) in cell Temple of Stendarr Vigilant.esm:025091, location Stuhn Ravine"
+   ]
+  },
+  {
+   "edid": "zzzBMMq02",
+   "name": "Remnants",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "Hunt down the five corrupt Vigilants turned vampire in the lairs under Windhelm; it has no giver of its own.",
+   "needs": [
+    {
+     "what": "Probably Empty Cells (sent to eliminate the vampires under Windhelm)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [],
+   "firstStep": "Defeat Gwaji gro-Agnam in the Hidden Passage of the Old Sewers",
+   "takesYou": [
+    {
+     "place": "Old Sewers (Hidden Passage)",
+     "hold": "Eastmarch",
+     "why": "defeat Gwaji gro-Agnam"
+    },
+    {
+     "place": "Bloody Well",
+     "hold": "Eastmarch",
+     "why": "defeat Paulo"
+    },
+    {
+     "place": "Asylum",
+     "hold": "Eastmarch",
+     "why": "defeat Jericho and deal with Thingol"
+    },
+    {
+     "place": "Enchantress' Palace",
+     "hold": "Eastmarch",
+     "why": "defeat Aredhel"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Defeat Gwaji gro-Agnam",
+      "Defeat Paulo",
+      "Defeat Jericho",
+      "Talk to Thingol",
+      "Give Stendarr's Mercy to Thingol",
+      "Defeat Aredhel"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Side Quest",
+   "opens": [
+    "The Blood Matron"
+   ],
+   "closes": [
+    "Gwaji gro-Agnam, Paulo, Jericho and Aredhel die"
+   ],
+   "people": [
+    {
+     "name": "Gwaji gro-Agnam",
+     "role": "corrupt Vigilant, Hidden Passage in the Old Sewers"
+    },
+    {
+     "name": "Paulo",
+     "role": "corrupt Vigilant in Bloody Well; speaks to you before the fight"
+    },
+    {
+     "name": "Jericho",
+     "role": "corrupt Vigilant in the Asylum"
+    },
+    {
+     "name": "Thingol",
+     "role": "corrupt Vigilant sitting in the Asylum; you talk to him rather than fight"
+    },
+    {
+     "name": "Aredhel",
+     "role": "corrupt Vigilant in Enchantress' Palace"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Nothing in these files starts it by dialogue. It most likely starts from Empty Cells' 'Eliminate the vampires under Windhelm' step, but no record link was found."
+    },
+    {
+     "field": "takesYou.hold",
+     "why": "These lairs have no hold in the records. Eastmarch assumes they are the 'vampires under Windhelm' from Empty Cells."
+    },
+    {
+     "field": "steps",
+     "why": "'Stendarr's Mercy' isn't an item or spell in these files, so it's not clear what you hand Thingol or whether he dies. Stages with no objective sit between Thingol and Aredhel."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest script has Vampire's Shadow as an 'InvisibleSpell' property. It is probably cast by a vampire during a fight, not given to you, so it isn't listed as a reward."
+    },
+    {
+     "field": "opens",
+     "why": "Inferred from the mod's quest order; no record link was found."
+    },
+    {
+     "field": "closes",
+     "why": "\"Die\" is read from the \"Defeat\" objectives on four non-essential people. What happens to Thingol after you give him Stendarr's Mercy isn't in these files. The \"Give Stendarr's Mercy\" objective names an alias (Vamp04) with no person filled in; Thingol fills the talk alias (Vamp04ESS), so it is probably him."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:038525",
+    "aliases Vamp01-05 / Vamp04ESS",
+    "NPCs 03167C, 032894, 033044, 033043, 03430D in zzzBMFactionCorruptVigilant",
+    "giver INFO Vigilant.esm:039B3B (Paulo); Thingol has lines before stage 41",
+    "PACK zzzBMThigolSitIgnoreCombat",
+    "QF_zzzBMMq02_01038525.InvisibleSpell = Skyrim.esm:033976"
+   ]
+  },
+  {
+   "edid": "zzzBMMq03",
+   "name": "The Blood Matron",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Find Lamae Beolfag in Matron's Chamber and face Lamae Bal, the Blood Matron cursed by Molag Bal.",
+   "needs": [
+    {
+     "what": "Probably Remnants",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Lamae Beolfag",
+     "where": "Matron's Chamber, where she lies asleep",
+     "how": "Probably by speaking with Lamae Beolfag: she has the quest's first line. Molag Bal and Lamae Bal speak to you later in the quest."
+    }
+   ],
+   "firstStep": "Find Lamae Beolfag in Matron's Chamber",
+   "takesYou": [
+    {
+     "place": "Matron's Chamber",
+     "hold": null,
+     "why": "find Lamae and face Molag Bal"
+    },
+    {
+     "place": "Lamae's Dream",
+     "hold": null,
+     "why": "fight Lamae Bal"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "How the curse ends (the records show two separate endings)",
+     "leadsTo": "unclear from these files; see unsure"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Defeat Lamae Bal",
+      "Free Lamae Bal from the curse of Molag Bal"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lamae Beolfag",
+     "role": "Vigilant of Stendarr, asleep in Matron's Chamber; first to speak"
+    },
+    {
+     "name": "Molag Bal",
+     "role": "appears in Matron's Chamber"
+    },
+    {
+     "name": "Lamae Bal",
+     "role": "the Blood Matron; fought in Lamae's Dream and as an undead in Matron's Chamber"
+    },
+    {
+     "name": "Blood Curse of Molag Bal",
+     "role": "in Matron's Chamber; essential"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Inferred from the mod's quest order (it comes after Remnants); no record link was found."
+    },
+    {
+     "field": "starts.where",
+     "why": "Matron's Chamber has no hold or parent town in the records. It is likely under Windhelm with the other lairs, but that isn't stated."
+    },
+    {
+     "field": "choices",
+     "why": "The quest can complete at two different points: one after the main objectives, one at the end of a separate run of stages. That suggests two endings, but the records have no text saying what they are."
+    },
+    {
+     "field": "rewards",
+     "why": "The script holds Lamae's Kin (as \"AbBloodofLamae\") and Fire Storm (Weak) (as \"StandUpSpell\"). Art of Mercy holds the same Lamae's Kin as \"AbLamaeCurse\", so it is a curse that may be given or lifted here, not an earned reward. Fire Storm looks like a scripted effect. Neither is listed as a sure reward."
+    },
+    {
+     "field": "starts",
+     "why": "Lamae Beolfag has the first dialogue line and is the likely giver, but she is asleep and the first objective comes later; whether talking to her starts the quest or it is already running from Remnants isn't in these files."
+    },
+    {
+     "field": "closes",
+     "why": "You either defeat Lamae Bal or free her from Molag Bal's curse; whether she dies in either ending isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:038526",
+    "giver INFO Vigilant.esm:03BC15 (Lamae Beolfag, stage <31); Molag Bal and Lamae Bal speak before stage 51",
+    "PACK zzzBMq03LamaeSleeping",
+    "NPC 037468 in worldspace Lamae's Dream; 03748D draugr Lamae Bal in Matron's Chamber",
+    "QF_zzzBMMq03_01038526.AbBloodofLamae = Vigilant.esm:03DCE9; .StandUpSpell = Vigilant.esm:14301E",
+    "completing stages 100, 220, 9999",
+    "QF_zzzAoMMqGoodEnd_024D0376.AbLamaeCurse = Vigilant.esm:03DCE9 (same spell)"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryGuide",
+   "name": "Memory Guide",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "A hint tracker the mod runs for itself; its journal lines are riddles pointing you at certain dream memories.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"Like when the dream no longer needs its dreamer\"",
+   "takesYou": [],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Like when the dream no longer needs its dreamer",
+      "Against the dying of the light",
+      "Blind eyes could blaze like meteors"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Pelinal",
+     "role": "one of the dreams it points to (alias only; no person filled in)"
+    },
+    {
+     "name": "the Bull",
+     "role": "one of the dreams it points to (alias only; no person filled in)"
+    },
+    {
+     "name": "Alessia",
+     "role": "one of the dreams it points to (alias only; no person filled in)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "There is no giver or start event. It starts from a script in Vigilant's Coldharbour act, which these files don't show."
+    },
+    {
+     "field": "takesYou",
+     "why": "The riddles name no place. The aliases only say they point to dreams of Pelinal, the Bull and Alessia. Coldharbour has a Barrier Tower of Agea (tomb of Pelinal, boss Pelinal Whitestrake) and a Barrier Tower of Bala (tomb of Morihaus), but nothing links the riddles to them."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:42E0B1",
+    "aliases DreamPelinal, DreamBull, DreamAlessia",
+    "objectives at stages 100, 110, 120",
+    "LCTN Barrier Tower of Agea zzzCHDistrictTombPelinal; Barrier Tower of Bala zzzCHDistrictTombMorihaus (no quest link)"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest01",
+   "name": "The Grand Inquisitor",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "One of Vigilant's Coldharbour memories: a riddle in your journal points you to it, and you play the memory out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"Unfulfilled dreams drown in silence\" to the memory",
+   "takesYou": [
+    {
+     "place": "Bed of Corruption",
+     "hold": null,
+     "why": "where Mary the Dark Maiden is"
+    },
+    {
+     "place": "Imperial City Prison (inside the memory)",
+     "hold": null,
+     "why": "meet Inquisitor Pepe"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Unfulfilled dreams drown in silence"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Mary the Dark Maiden",
+     "role": "a shoggoth mother in the Bed of Corruption, tied to this memory"
+    },
+    {
+     "name": "Inquisitor Pepe",
+     "role": "of the Alessian Order, met in the memory at the Imperial City Prison"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No dialogue or event that starts it is in these files. It opens with only a riddle, probably handed out by Vigilant's Coldharbour act."
+    },
+    {
+     "field": "choices",
+     "why": "It can complete at two different points, which hints at two outcomes, but nothing says what they are. In the memory someone asks, 'Why in Oblivion would you interfere with us now? Don't you know what will happen to you tomorrow?'"
+    },
+    {
+     "field": "takesYou",
+     "why": "Mary the Dark Maiden sits in the Bed of Corruption and is a boss in another Vigilant quest too. That she guards the way into this memory is a guess."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:12C4F4",
+    "alias Mara = Vigilant.esm:0F9649 (Bed of Corruption); alias Inquisitor = 12BF48 (Imperial City Prison, location Memory)",
+    "INFO Vigilant.esm:12D04B / 12D053",
+    "completing stages 20, 100"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest02",
+   "name": "The Mad King",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "One of Vigilant's Coldharbour memories: a riddle in your journal points you to it, and you play the memory out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"Madness sets with the moons\"; it leads to Malatar Mansion",
+   "takesYou": [
+    {
+     "place": "Malatar Mansion",
+     "hold": null,
+     "why": "the place tied to this memory; its boss is Mad King Dro'Zel"
+    },
+    {
+     "place": "Mad King's Bedroom (inside the memory)",
+     "hold": null,
+     "why": "talk to Dro'Zel"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Madness sets with the moons"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Dro'Zel",
+     "role": "the Mad King, met in his bedroom in the memory; speaks to you first"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No dialogue or event that starts it is in these files. It opens with only a riddle, probably handed out by Vigilant's Coldharbour act."
+    },
+    {
+     "field": "choices",
+     "why": "It can complete at two different points, which hints at two outcomes; nothing says what they are."
+    },
+    {
+     "field": "takesYou.hold",
+     "why": "Malatar Mansion has no hold in the records. It is one of Vigilant's own places."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:13712B",
+    "LCTN Vigilant.esm:26C069 Malatar Mansion lists this quest (boss Mad King Dro'Zel, level 60)",
+    "giver INFO Vigilant.esm:137130 (Dro'Zel, stage <11)",
+    "completing stages 30, 130"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest03",
+   "name": "Knight of Hounds",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "One of Vigilant's Coldharbour memories: a riddle in your journal points you to it, and you play the memory out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"Blood is thicker than water\" to the memory",
+   "takesYou": [
+    {
+     "place": "Varla's Hall",
+     "hold": null,
+     "why": "where Varla the Man-Hunter is"
+    },
+    {
+     "place": "Mackamentain (inside the memory)",
+     "hold": null,
+     "why": "meet Emperor Belharza and Enola"
+    },
+    {
+     "place": "Waterfront (probably inside the memory)",
+     "hold": null,
+     "why": "Ritho speaks to you there"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Blood is thicker than water"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Emperor Belharza",
+     "role": "met in the memory at Mackamentain; speaks to you first"
+    },
+    {
+     "name": "Enola",
+     "role": "in the memory at Mackamentain; speaks later"
+    },
+    {
+     "name": "Ritho",
+     "role": "speaks to you partway through"
+    },
+    {
+     "name": "Varla the Man-Hunter",
+     "role": "a corrupted knight in Varla's Hall, tied to this memory"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No dialogue or event that starts it is in these files. It opens with only a riddle, probably handed out by Vigilant's Coldharbour act."
+    },
+    {
+     "field": "choices",
+     "why": "It can complete at two different points, which hints at two outcomes; nothing says what they are. The quest also holds Enola's skull, a bard and travel markers."
+    },
+    {
+     "field": "takesYou",
+     "why": "Varla is a boss in another Vigilant quest too. That you must face him here is a guess. Waterfront, where Ritho stands, also holds copies of Varla's hounds Maril and Umar and Belharza's knights, so it is probably part of the memory, but the records don't say."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:13965A",
+    "giver INFO Vigilant.esm:139667 (Belharza, stage <21); Ritho 23611E before stage 41; Enola 137E65 before stage 100",
+    "alias Knight = Vigilant.esm:0E6A48 (Varla's Hall)",
+    "aliases EnolaSkull, Bard, ValraMemory",
+    "completing stages 30, 130",
+    "Waterfront: Ritho 23611E, Maril 138F93, Umar 138F92, Belharza's Dragonrider Knight 236121"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest04",
+   "name": "Johan the Fool",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "One of Vigilant's Coldharbour memories: a riddle in your journal points you to it, and you play the memory out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"The dead dream beneath the soil\"; it leads to the Chapel of Arkay Cemetery",
+   "takesYou": [
+    {
+     "place": "Chapel of Arkay Cemetery",
+     "hold": null,
+     "why": "the place tied to this memory"
+    },
+    {
+     "place": "Pell's Gate (inside the memory)",
+     "hold": null,
+     "why": "meet Simon and Tlass"
+    },
+    {
+     "place": "Bravil Underground (inside the memory)",
+     "hold": null,
+     "why": "find Martha"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Whether you leave blind Martha alone",
+     "leadsTo": "a good or a bad ending to the memory (one line scolds you for leaving her; details not in these files)"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "The dead dream beneath the soil"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Simon",
+     "role": "a big brother in the memory at Pell's Gate; speaks to you first"
+    },
+    {
+     "name": "Tlass",
+     "role": "the other brother at Pell's Gate; speaks next"
+    },
+    {
+     "name": "Priest of Arkay",
+     "role": "at Pell's Gate in the memory"
+    },
+    {
+     "name": "Attendants",
+     "role": "six attendants at Pell's Gate in the memory"
+    },
+    {
+     "name": "Martha",
+     "role": "blind Martha, a ghoul feeding in the Bravil Underground in the memory"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No dialogue or event that starts it is in these files. It opens with only a riddle, probably handed out by Vigilant's Coldharbour act."
+    },
+    {
+     "field": "choices",
+     "why": "The quest has a bad-ending marker and two completion points, so it can end well or badly. One line warns, 'Leaving blind Martha alone... What in Oblivion were you thinking?' What decides the ending isn't in these files."
+    },
+    {
+     "field": "takesYou",
+     "why": "The records say the Chapel of Arkay Cemetery's boss is Dinok the Gray (level 120). Whether you have to fight him for this memory isn't stated. A skeletal Martha is also placed in the cemetery, which ties it to the memory's Martha."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:140225",
+    "LCTN Vigilant.esm:3822FC Chapel of Arkay Cemetery lists this quest",
+    "giver INFO Vigilant.esm:140233 (Simon, stage <21); Tlass before stage 31",
+    "aliases BadEndMarker, ReturnMarker, Martha (PACK zzzCHMeq4MarthFeeding)",
+    "INFO Vigilant.esm:14022E / 141F27",
+    "completing stages 60, 100",
+    "NPC Vigilant.esm:129BE5 Martha (Bone Human Race) in Chapel of Arkay Cemetery"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest05",
+   "name": "Adabal",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "One of Vigilant's Coldharbour memories: a riddle in your journal points you to it, and you play the memory out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"Dance on the dead under the moons\" to the memory",
+   "takesYou": [
+    {
+     "place": "Cliffs of Colovia (inside the memory)",
+     "hold": null,
+     "why": "meet Marukh"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Dance on the dead under the moons"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Marukh",
+     "role": "met in the memory on the Cliffs of Colovia; speaks to you first"
+    },
+    {
+     "name": "Inquisitor Pepe",
+     "role": "another memory of him on the Cliffs of Colovia (the record has no display name); speaks partway through"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No dialogue or event that starts it is in these files. It opens with only a riddle, probably handed out by Vigilant's Coldharbour act."
+    },
+    {
+     "field": "takesYou",
+     "why": "No Coldharbour place in these files lists this quest, so where you enter the memory isn't known. The quest has a \"MemoryDulsa\" alias, and St. Dulsa's Charnel is a place in the records, so it may be the way in; nothing confirms it."
+    },
+    {
+     "field": "people",
+     "why": "The second Pepe record has no display name, only an editor id marking it as a memory of Inquisitor Pepe."
+    },
+    {
+     "field": "choices",
+     "why": "It can complete at two different points, which hints at two outcomes; nothing says what they are."
+    },
+    {
+     "field": "rewards",
+     "why": "The script holds Renald Invisibility as an 'InvisibleSpell' property. It is probably a scripted effect in the scene, not a reward."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:05AE03",
+    "giver INFO Vigilant.esm:05AE0A (Marukh, stage <11); Pepe 05ADFD (zzzCHInquisitorPepeMemory2) before stage 41",
+    "INFO Vigilant.esm:05AE19",
+    "QF_zzzCHMemoryQuest05_0205AE03.InvisibleSpell = Vigilant.esm:05184E",
+    "completing stages 50, 120"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest06",
+   "name": "Remains of the Miracle",
+   "plugin": "Vigilant.esm (no later plugin edits it)",
+   "canDo": "by itself",
+   "canDoWhy": "One of Vigilant's Coldharbour memories: a riddle in your journal points you to it, and you play the memory out.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "Follow the riddle \"A priest laughs in the broken Tower\" to the memory",
+   "takesYou": [
+    {
+     "place": "Fort Cedrian (inside the memory)",
+     "hold": null,
+     "why": "meet Pepe"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "A priest laughs in the broken Tower"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Inquisitor Pepe",
+     "role": "a later memory of him at Fort Cedrian; he speaks to you"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "No dialogue or event that starts it is in these files. It opens with only a riddle, probably handed out by Vigilant's Coldharbour act."
+    },
+    {
+     "field": "takesYou",
+     "why": "The riddle points at a 'broken Tower', but no Coldharbour place in these files lists this quest. Where you enter isn't known."
+    },
+    {
+     "field": "people",
+     "why": "This Pepe record has no display name, only an editor id marking it as a later memory of Inquisitor Pepe."
+    }
+   ],
+   "evidence": [
+    "QUST Vigilant.esm:06A23B",
+    "giver INFO Vigilant.esm:06B54F (Vigilant.esm:06A230 zzzCHInquisitorPepeMemory3, stage <11) at Fort Cedrian, location Memory",
+    "completing stage 30"
+   ]
+  }
+ ]
+}
