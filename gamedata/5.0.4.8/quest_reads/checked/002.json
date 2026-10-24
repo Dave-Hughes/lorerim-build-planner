@@ -1,0 +1,1388 @@
+{
+ "checks": [
+  {
+   "edid": "FreeformSkyhavenTempleA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "No start line, script or event is recorded for this quest, so 'talk' isn't shown; the dialogue or script that sets its first stage would settle it."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Alduin's Wall is a fair inference and is backed by Delphine's AI packages (she moves to Sky Haven Temple once The Throat of the World begins), but the quest's own start condition isn't recorded. Paarthurnax: MQPaarthurnax stage 20 has the Blades refuse help, and PaarthurnaxQuestExpansion.esp stage 75 lets you spare him and win them round; how that gates this quest isn't shown."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Delphine is the alias you bring followers to (objectives 10-30)."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Settled by people_schedules_raw: Delphine's MQDelphineSandboxSkyHavenTemple and MQSkyHavenDelphineSleep0x6 packages keep her in Sky Haven Temple (The Reach) once The Throat of the World has begun. The reader's 'where' unsure is removed."
+    },
+    "starts.how": {
+     "verdict": "unsure",
+     "note": "No offering line of Delphine's is in these files; the wording is inferred from the objectives."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 'Bring a follower to Delphine'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Sky Haven Temple, The Reach (places_raw Skyrim.esm:018E42)."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No branching stages or objectives."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "The Blades Katana is only a property on FreeformSkyHavenTempleAScript (AkaviriKatana -> Skyrim.esm:03AEB9); who receives it isn't shown. Moved out of rewards into unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Objective 40 'Ask Esbern about dragon lairs' leads into Dragon Hunting ('Kill the Dragon in <lair>', 'Return to Esbern'); the link is by journal text, not a recorded trigger."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing in the records locks anything."
+    }
+   }
+  },
+  {
+   "edid": "FreeformSkyHavenTempleB",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by the story manager (SkyHavenTempleNode, change location) with the lair picked at run time: radiant."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Following 'Ask Esbern about dragon lairs' is inferred from FreeformSkyhavenTempleA objective 40; the start node's conditions would settle it."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "Esbern is who you report to (objective 20); no one hands the quest over, since the start is an event."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Settled by Esbern's packages (MQEsbernSandboxSkyHavenTemple, MQSkyHavenEsbernSleep4x6: Sky Haven Temple, The Reach, once The Throat of the World has begun). The reader's 'where' unsure is removed."
+    },
+    "starts.how": {
+     "verdict": "fix",
+     "note": "The reader says asking Esbern starts it. The records' only start is a change-location event on SkyHavenTempleNode (quest_givers_raw starts). Rewritten to say the game starts it by itself after the Esbern step."
+    },
+    "firstStep": {
+     "verdict": "fix",
+     "note": "Objective 10 is 'Kill the Dragon in <DragonLair>'; nothing shows Esbern naming the lair. The quest has a MapMarker alias, so the lair is marked. Reworded."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "DragonLair alias (picked at run time), then Sky Haven Temple."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None in the records."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward property or item recorded."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    }
+   }
+  },
+  {
+   "edid": "FreeformSkyHavenTempleD",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "No start line or event is recorded; 'talk' is inferred from the objective naming Esbern. The dialogue or script that sets its first stage would settle it."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Empty is honest; Esbern's packages put him at Sky Haven Temple only after The Throat of the World begins, which supports 'after Alduin's Wall' as the practical point, but the quest's own condition isn't shown."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Esbern is the only alias and the objective names him."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Settled by Esbern's Sky Haven Temple packages; the reader's 'where' unsure is removed."
+    },
+    "starts.how": {
+     "verdict": "unsure",
+     "note": "No line of Esbern's offering this is in these files."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 verbatim."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Sky Haven Temple."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward recorded."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    }
+   }
+  },
+  {
+   "edid": "DLC1VQ01MiscObjective",
+   "verdicts": {
+    "canDo": {
+     "verdict": "unsure",
+     "note": "quest_starts_raw lists no dialogue or event conditions and startGame false; the rumor line or script that sets stage 10 would settle it."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "No conditions recorded; empty is right as far as the records go."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "No one is tied to the start. Durak's line (stage below 110) is inside Fort Dawnguard, after you've arrived, as the reader says."
+    },
+    "starts.where": {
+     "verdict": "unsure",
+     "note": "Not recorded."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Paraphrases the stage 10 log ('vampire hunters known as the Dawnguard ... looking for new recruits')."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 verbatim."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Fort Dawnguard (cell Dawnguard.esm:001DBA, Dayspring Canyon); The Rift from the objective's 'southeast of Riften'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "The crossbow is only a property on the fragment script (DLC1CrossBow -> Requiem.esp:AD3746); recipient and moment aren't shown. Moved into unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "This quest's own lines have Isran send you to Dimhollow Crypt (INFO Dawnguard.esm:00D8D6), and Awakening stage 10 opens with meeting Isran."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    }
+   }
+  },
+  {
+   "edid": "DLC1HunterBaseIntro",
+   "verdicts": {
+    "canDo": {
+     "verdict": "fix",
+     "note": "Stage 20, the first logged stage, reads 'I've rejected Harkon's offer ... Now I need to return to Isran', so the quest is already in the journal before you talk to anyone; talking to Isran moves it to stage 30. Changed 'talk' to 'by itself'."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Stage 20 log and Bloodline stage 30 ('I refused the gift ... return to Isran')."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Isran is who you report to (objective 20; giver Isran)."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Isran placed in Fort Dawnguard; his only package (patrol) gives no other place."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Matches stage 20/30 logs."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 20 'Speak with Isran', with the Tolan step left in unsure."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "Stendarr's Beacon depends on a step that may never show (stage 10 objective before stage 20; Tolan sandboxes at the fort from stage 20). Moved to unsure. Ruunvald's hold: the conflicting nearest towns come from a map marker shared by four unrelated places, so The Rift stands and that unsure is dropped. Dwemer ruin, Gunmar's hunting ground and Ruunvald agree."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "None recorded."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Stage 70 'return to Isran and help him formulate a plan of attack' -> Prophet stage 5 'When I returned to Fort Dawnguard, Isran told me that he needed to speak to me'. Inferred from journal text, as the reader notes."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded; the vampire side is closed by Bloodline's refusal, not by this quest."
+    }
+   }
+  },
+  {
+   "edid": "DLC1HunterBaseStage2",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Sorine's opening line (INFO Dawnguard.esm:014360, stage below 10) starts it; Isran and Tolan have lines too."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "The opening line's full conditions aren't shown; recruiting Sorine first is an inference."
+    },
+    "starts.who": {
+     "verdict": "agree",
+     "note": "Sorine is the recorded giver; the stage 10 log's 'It's been suggested' fits Isran or Tolan also saying it, as the reader notes."
+    },
+    "starts.where": {
+     "verdict": "agree",
+     "note": "Sorine placed in Fort Dawnguard."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Matches stage 10 log."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Fort Dawnguard, then Ruunvald (stage 20/200 logs). The hold doubt is settled: the Dragon Bridge/Morthal figures come from a placeholder map marker shared by four places, so The Rift stands. That unsure is removed."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Stage 200: Florentius agrees to return to Fort Dawnguard and aid the cause. An outcome rather than an item, but true."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    }
+   }
+  },
+  {
+   "edid": "DLC1RH01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by script event on DLC1RadiantHunterQuestNode with every target filled at run time."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Hunter node vs. the separate vampire node supports 'Dawnguard side', but the node's conditions (and whether A New Order must be done first) aren't shown; those conditions would settle it."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "QuestGiver alias is filled at run time. Correction to the reader's note: Sorine is in the parent quest for the crossbow project, not as job giver."
+    },
+    "starts.where": {
+     "verdict": "unsure",
+     "note": "Fort Dawnguard is likely (every Dawnguard member is placed there) but the giver isn't fixed."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Parent quest objective 'Speak with <current quest giver> for an assignment'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Matches the aliases and stage 10 log."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "Nothing on the job quest itself; the parent's Gold001 and DLC1RadiantReward are the likely payout but not tied to this quest. Moved out of rewards into unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 'Discreetly kill the <Target>'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    }
+   }
+  },
+  {
+   "edid": "DLC1RH02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by script event on DLC1RadiantHunterQuestNode with every target filled at run time."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Hunter node vs. the separate vampire node supports 'Dawnguard side', but the node's conditions (and whether A New Order must be done first) aren't shown; those conditions would settle it."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "QuestGiver alias is filled at run time. Correction to the reader's note: Sorine is in the parent quest for the crossbow project, not as job giver."
+    },
+    "starts.where": {
+     "verdict": "unsure",
+     "note": "Fort Dawnguard is likely (every Dawnguard member is placed there) but the giver isn't fixed."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Parent quest objective 'Speak with <current quest giver> for an assignment'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Matches the aliases and stage 10 log."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "Nothing on the job quest itself; the parent's Gold001 and DLC1RadiantReward are the likely payout but not tied to this quest. Moved out of rewards into unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 'Kill the <Boss> at <Dungeon>'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    }
+   }
+  },
+  {
+   "edid": "DLC1RH03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by script event on DLC1RadiantHunterQuestNode with every target filled at run time."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Hunter node vs. the separate vampire node supports 'Dawnguard side', but the node's conditions (and whether A New Order must be done first) aren't shown; those conditions would settle it."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "QuestGiver alias is filled at run time. Correction to the reader's note: Sorine is in the parent quest for the crossbow project, not as job giver."
+    },
+    "starts.where": {
+     "verdict": "unsure",
+     "note": "Fort Dawnguard is likely (every Dawnguard member is placed there) but the giver isn't fixed."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Parent quest objective 'Speak with <current quest giver> for an assignment'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Matches the aliases and stage 10 log."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "Nothing on the job quest itself; the parent's Gold001 and DLC1RadiantReward are the likely payout but not tied to this quest. Moved out of rewards into unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 'Kill the <Vampire> at <Dungeon>'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "None."
+    }
+   }
+  },
+  {
+   "edid": "DLC1RH04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Started by script event on DLC1RadiantHunterQuestNode with every target filled at run time."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Hunter node vs. the separate vampire node supports 'Dawnguard side', but the node's conditions (and whether A New Order must be done first) aren't shown; those conditions would settle it."
+    },
+    "starts.who": {
+     "verdict": "unsure",
+     "note": "QuestGiver alias is filled at run time. Correction to the reader's note: Sorine is in the parent quest for the crossbow project, not as job giver."
+    },
+    "starts.where": {
+     "verdict": "unsure",
+     "note": "Fort Dawnguard is likely (every Dawnguard member is placed there) but the giver isn't fixed."
+    },
+    "starts.how": {
+     "verdict": "agree",
+     "note": "Parent quest objective 'Speak with <current quest giver> for an assignment'."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Matches the aliases and stage 10 log."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "Nothing on the job quest itself; the parent's Gold001 and DLC1RadiantReward are the likely payout but not tied to this quest. Moved out of rewards into unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing recorded."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 verbatim."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "The second branch stated as fact that 'a letter in the contact's home gives the lair'. The records only have Dwelling, HouseContainer and Letter aliases and the log's 'or searching for evidence'; whose home it is isn't shown. Reworded to what the records support."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "FreeformSkyhavenTempleA",
+   "name": "Rebuilding the Blades",
+   "plugin": "Skyrim.esm (last edited by PaarthurnaxQuestExpansion.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Delphine asks you to find new members for the Blades and bring them to her.",
+   "needs": [
+    {
+     "what": "Finish Alduin's Wall (Delphine and Esbern settle in Sky Haven Temple)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Delphine",
+     "where": "Sky Haven Temple, the old Blades sanctuary in the crags of the Reach",
+     "how": "Talk to Delphine once the Blades have moved into Sky Haven Temple; she asks you to bring her followers to join the Blades."
+    }
+   ],
+   "firstStep": "Bring a follower to Delphine",
+   "takesYou": [
+    {
+     "place": "Sky Haven Temple",
+     "hold": "The Reach",
+     "why": "bring each recruit to Delphine"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring a follower to Delphine (three times, one for each new Blade)",
+      "Ask Esbern about dragon lairs"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [
+    "Dragon Hunting"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Delphine",
+     "role": "leader of the Blades; takes your recruits"
+    },
+    {
+     "name": "Esbern",
+     "role": "tells you about dragon lairs at the end"
+    },
+    {
+     "name": "three followers you choose",
+     "role": "become the new Blades"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "What starts this quest isn't in these files (no start line or event). Finishing Alduin's Wall is inferred: Delphine only lives at Sky Haven Temple once The Throat of the World, the quest after Alduin's Wall, has begun, and this quest's people are Delphine, Esbern and three Blades."
+    },
+    {
+     "field": "needs",
+     "why": "In Paarthurnax, Delphine and Esbern refuse to help you until Paarthurnax is dead; PaarthurnaxQuestExpansion.esp adds a path where you spare him and 'talk some sense into the Blades'. It also edits this quest last, and what it changes here isn't shown, so the Paarthurnax choice may lock or delay this quest."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script holds a Blades Katana, but the records don't say who it is handed to: it may be the sword your recruits are given rather than one for you. Which followers count as recruits isn't in these files either."
+    },
+    {
+     "field": "canDo",
+     "why": "No dialogue line, script or event that starts this quest is in these files; 'talk to Delphine' is inferred from her being the one you bring followers to."
+    },
+    {
+     "field": "how",
+     "why": "No line of Delphine's that offers this quest is in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0E38C9 FreeformSkyhavenTempleA, edited by PaarthurnaxQuestExpansion.esp",
+    "objectives 10/20/30 'Bring a follower to Delphine', 40 'Ask Esbern about dragon lairs'",
+    "aliases Delphine, Blade01-03, Esbern",
+    "script FreeformSkyHavenTempleAScript.AkaviriKatana -> WEAP Skyrim.esm:03AEB9 Blades Katana",
+    "NPC Delphine Skyrim.esm:013478 placed in Sleeping Giant Inn (Skyrim.esm:0133C6)",
+    "INFO Skyrim.esm:07509D (Alduin's Wall, Delphine): Sky Haven Temple 'a better hideout'",
+    "MQPaarthurnax stage 20 log: Delphine and Esbern refuse help until Paarthurnax is killed",
+    "people_schedules_raw: Delphine packages MQDelphineSandboxSkyHavenTemple (The Throat of the World started) and MQSkyHavenDelphineSleep0x6 (cell Sky Haven Temple, The Reach; The Throat of the World stage 20+)",
+    "people_schedules_raw: Esbern packages MQEsbernSandboxSkyHavenTemple (The Throat of the World started), MQSkyHavenEsbernSleep4x6 (cell Sky Haven Temple, The Reach), MQEsbernSandboxSkyHavenTempleExterior10x4",
+    "MQPaarthurnax stage 75 log (PaarthurnaxQuestExpansion.esp): spared him, 'talk some sense into the Blades'",
+    "MQ204 The Throat of the World stage 10 log follows Alduin's Wall"
+   ]
+  },
+  {
+   "edid": "FreeformSkyHavenTempleB",
+   "name": "Dragon Hunting",
+   "plugin": "Skyrim.esm (last edited by PaarthurnaxQuestExpansion.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "Esbern sends you to a dragon lair the game picks; kill the dragon and report back.",
+   "needs": [
+    {
+     "what": "Ask Esbern about dragon lairs (the last step of Rebuilding the Blades)",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Esbern",
+     "where": "Sky Haven Temple in the Reach",
+     "how": "It isn't offered in dialogue: the game starts it by itself on a change of location tied to Sky Haven Temple, after you've asked Esbern about dragon lairs in Rebuilding the Blades. It picks a dragon lair, marks it on your map, and you report back to Esbern."
+    }
+   ],
+   "firstStep": "Kill the dragon in the lair the journal names (it's marked on your map)",
+   "takesYou": [
+    {
+     "place": "a dragon lair the game picks",
+     "hold": "",
+     "why": "kill the dragon there"
+    },
+    {
+     "place": "Sky Haven Temple",
+     "hold": "The Reach",
+     "why": "return to Esbern"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the Dragon in the chosen lair",
+      "Return to Esbern"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Esbern",
+     "role": "picks the lair and takes your report"
+    },
+    {
+     "name": "the three new Blades",
+     "role": "named in the quest; whether they come with you isn't shown"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest is started by a change-location event on the Sky Haven Temple story node, not by a dialogue line. That it follows asking Esbern about dragon lairs comes from Rebuilding the Blades' last objective; the event's own conditions aren't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded for this quest in these files."
+    },
+    {
+     "field": "canDo",
+     "why": "Whether it can be repeated for more lairs isn't shown in these files."
+    },
+    {
+     "field": "needs",
+     "why": "PaarthurnaxQuestExpansion.esp edits this quest last; what it changes isn't shown, so the Paarthurnax choice may affect it."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0E3E67 FreeformSkyHavenTempleB, edited by USSEP then PaarthurnaxQuestExpansion.esp",
+    "start: SkyHavenTempleNode, change location event",
+    "objectives 10 'Kill the Dragon in <Alias=DragonLair>', 20 'Return to Esbern'",
+    "aliases DragonLair, Boss, MapMarker, Blade01-03, Esbern, SkyhavenCenter",
+    "places_raw: Sky Haven Temple (Skyrim.esm:018E42, The Reach) lists Dragon Hunting",
+    "FreeformSkyhavenTempleA objective 40 'Ask Esbern about dragon lairs'",
+    "people_schedules_raw: Esbern packages MQEsbernSandboxSkyHavenTemple (The Throat of the World started), MQSkyHavenEsbernSleep4x6 (cell Sky Haven Temple, The Reach), MQEsbernSandboxSkyHavenTempleExterior10x4"
+   ]
+  },
+  {
+   "edid": "FreeformSkyHavenTempleD",
+   "name": "Dragon Research",
+   "plugin": "Skyrim.esm (last edited by DragonHuntingPaarthurnaxQE.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Esbern wants dragon remains to study; bring him the parts he asks for.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Esbern",
+     "where": "Sky Haven Temple in the Reach",
+     "how": "Talk to Esbern; he asks you to bring him dragon blood, bile and rheum."
+    }
+   ],
+   "firstStep": "Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern",
+   "takesYou": [
+    {
+     "place": "Sky Haven Temple",
+     "hold": "The Reach",
+     "why": "hand the dragon parts to Esbern"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Esbern",
+     "role": "asks for the dragon parts"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "What makes Esbern offer this isn't in these files. Esbern only lives at Sky Haven Temple once The Throat of the World (after Alduin's Wall) has begun, so it likely comes after that."
+    },
+    {
+     "field": "steps",
+     "why": "Dragon Blood, Dragon Bile and Dragon Rheum aren't in the item or recipe extracts. DragonHunting.esp and its Paarthurnax patch edit this quest (DragonHunting.esp also edits Tolfdir's Kahvozein's Fang quest), so the parts most likely come from that mod's dragon harvesting; how you get them isn't shown."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded for this quest in these files."
+    },
+    {
+     "field": "canDo",
+     "why": "No line, script or event that starts this quest is in these files; 'talk to Esbern' comes from the objective naming him."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0E6DF1 FreeformSkyHavenTempleD, edited by PaarthurnaxQuestExpansion.esp, DragonHunting.esp, DragonHuntingPaarthurnaxQE.esp (last)",
+    "objective 10 'Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern'",
+    "alias Esbern (Skyrim.esm:013358, placed in The Ratway Warrens Skyrim.esm:03B696)",
+    "INFO Skyrim.esm:0D2D04 / 048F0B (The Fallen, Esbern): working in Sky Haven Temple",
+    "no Dragon Blood/Bile/Rheum record in items_raw.json",
+    "people_schedules_raw: Esbern packages MQEsbernSandboxSkyHavenTemple (The Throat of the World started), MQSkyHavenEsbernSleep4x6 (cell Sky Haven Temple, The Reach), MQEsbernSandboxSkyHavenTempleExterior10x4",
+    "MGRitual05 (Kahvozein's Fang, Tolfdir) edited by DragonHunting.esp"
+   ]
+  },
+  {
+   "edid": "DLC1VQ01MiscObjective",
+   "name": "Dawnguard",
+   "plugin": "Dawnguard.esm (last edited by Requiem.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "It goes in your journal once you learn the Dawnguard vampire hunters are recruiting, and points you to their fort.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "not named in these records",
+     "where": "not given in these records",
+     "how": "You hear that a band of vampire hunters called the Dawnguard is looking for recruits; the journal then sends you to Fort Dawnguard."
+    }
+   ],
+   "firstStep": "Speak with the leader of the Dawnguard, located within Fort Dawnguard, which is southeast of Riften and inside of Dayspring Canyon.",
+   "takesYou": [
+    {
+     "place": "Fort Dawnguard, inside Dayspring Canyon",
+     "hold": "The Rift",
+     "why": "speak with the Dawnguard's leader, Isran"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak with the leader of the Dawnguard, located within Fort Dawnguard, which is southeast of Riften and inside of Dayspring Canyon."
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dawnguard",
+   "opens": [
+    "Awakening"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Isran",
+     "role": "leader of the Dawnguard, in Fort Dawnguard"
+    },
+    {
+     "name": "Vigilant Tolan",
+     "role": "at Fort Dawnguard"
+    },
+    {
+     "name": "Agmaer",
+     "role": "at Fort Dawnguard"
+    },
+    {
+     "name": "Durak",
+     "role": "at Fort Dawnguard"
+    },
+    {
+     "name": "Celann",
+     "role": "at Fort Dawnguard"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The line, event or script that first puts this in the journal isn't in these files: the quest start extract lists no dialogue or event conditions for it. The giver extract picks Durak because he has a line in this quest, but the records place him inside Fort Dawnguard, so he isn't the one who sends you there."
+    },
+    {
+     "field": "canDo",
+     "why": "'By itself' is chosen because no start line is recorded; it may in fact come from someone telling you about the Dawnguard."
+    },
+    {
+     "field": "where",
+     "why": "The records place Isran, Tolan, Agmaer, Durak and Celann in Fort Dawnguard; where each stands day to day isn't in these files."
+    },
+    {
+     "field": "hold",
+     "why": "Fort Dawnguard isn't in the places extract; The Rift comes from the objective's 'southeast of Riften'."
+    },
+    {
+     "field": "rewards",
+     "why": "This quest's script holds a Dawnguard Crossbow (Requiem's version), which may be handed to you at Fort Dawnguard, but which step uses it and who receives it isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:00D06C DLC1VQ01MiscObjective, edited by USSEP then Requiem.esp",
+    "stage 10 log 'I've learned of a group of vampire hunters known as the Dawnguard...'",
+    "objective 10 'Speak with the leader of the Dawnguard...'",
+    "stage 180 completes when stage 10 done",
+    "quest_starts_raw line 'dawnguard': no dialogue/event conditions, startGame false",
+    "giver Durak Dawnguard.esm:01541D INFO Dawnguard.esm:00E8A1 (stage below 110); others Isran, Tolan, Celann",
+    "script DLC1_QF_DLC1VQ01MiscObjective_0100D06C.DLC1CrossBow -> Requiem.esp:AD3746 Dawnguard Crossbow",
+    "DLC1VQ01 Awakening stage 10 log 'I've met Isran...'",
+    "people_schedules_raw: Isran has one package (DLC1IsranPatrol10x8) with no place given"
+   ]
+  },
+  {
+   "edid": "DLC1HunterBaseIntro",
+   "name": "A New Order",
+   "plugin": "Dawnguard.esm (last edited by Requiem.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "It goes in your journal when you turn down Harkon's offer in Bloodline; you then report to Isran, who sends you to recruit people to fight the vampires.",
+   "needs": [
+    {
+     "what": "Refuse Harkon's offer to become a vampire in Bloodline",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Isran",
+     "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+     "how": "Return to Isran after refusing Harkon's gift and tell him what you learned at the vampire castle."
+    }
+   ],
+   "firstStep": "Speak with Isran",
+   "takesYou": [
+    {
+     "place": "Fort Dawnguard",
+     "hold": "The Rift",
+     "why": "report to Isran, then bring the recruits back"
+    },
+    {
+     "place": "a Dwemer ruin in the Reach the game picks",
+     "hold": "The Reach",
+     "why": "find Sorine Jurard"
+    },
+    {
+     "place": "a place the game picks where Gunmar is hunting a bear",
+     "hold": "",
+     "why": "find Gunmar and help him kill the bear"
+    },
+    {
+     "place": "Ruunvald Excavation",
+     "hold": "The Rift",
+     "why": "find Florentius Baenius"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Meet Tolan at Stendarr's Beacon",
+      "Speak with Isran",
+      "Recruit Sorine Jurard",
+      "Recruit Gunmar",
+      "Help Gunmar defeat the bear",
+      "Speak to Gunmar",
+      "Recruit Florentius Baenius",
+      "Return to Isran"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dawnguard",
+   "opens": [
+    "Prophet"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Isran",
+     "role": "gives the quest at Fort Dawnguard"
+    },
+    {
+     "name": "Vigilant Tolan",
+     "role": "meets you at Stendarr's Beacon"
+    },
+    {
+     "name": "Sorine Jurard",
+     "role": "recruit, searching a Dwemer ruin in the Reach"
+    },
+    {
+     "name": "Gunmar",
+     "role": "recruit, out hunting a bear"
+    },
+    {
+     "name": "Florentius Baenius",
+     "role": "recruit"
+    },
+    {
+     "name": "Serana",
+     "role": "named in the quest; her part isn't shown"
+    },
+    {
+     "name": "Durak",
+     "role": "named in the quest"
+    },
+    {
+     "name": "Celann",
+     "role": "named in the quest"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "'Meet Tolan at Stendarr's Beacon' (with three Vigilants and three ambush creatures) is an objective here and Stendarr's Beacon (The Rift) is linked to this quest, but it sits before 'Speak with Isran', Tolan's package moves him to Fort Dawnguard from the point you refuse Harkon, and the Beacon Vigilants are placed in Dayspring Canyon. Whether a player ever sees this step isn't in these files, so Stendarr's Beacon is left out of where the quest takes you."
+    },
+    {
+     "field": "where",
+     "why": "Sorine's ruin and Gunmar's hunting ground are filled in by the game when the quest starts; the journal only says 'a Dwemer ruin somewhere in the Reach' and 'near' a location it names then. The records place Sorine, Gunmar and Florentius in Fort Dawnguard, which is where they end up once recruited."
+    },
+    {
+     "field": "opens",
+     "why": "Prophet's first journal entry has you return to Fort Dawnguard and Isran asks to speak with you; the records don't state the link outright."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is recorded for this quest in these files."
+    },
+    {
+     "field": "canDo",
+     "why": "The first journal entry already says you've rejected Harkon and must return to Isran, so the quest is in your journal before you speak to him; the script that sets it isn't shown."
+    },
+    {
+     "field": "opens",
+     "why": "Bolstering the Ranks (Florentius) is suggested by Sorine at the fort, which needs her recruited first; how it overlaps with this quest's own 'Recruit Florentius Baenius' step isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:004E24 DLC1HunterBaseIntro, edited by USSEP then Requiem.esp",
+    "stage 20 log 'I've rejected Harkon's offer...'; stage 30 log on Sorine and Gunmar",
+    "objectives 10-60 as listed",
+    "giver Isran Dawnguard.esm:00336A INFO Dawnguard.esm:005946 (stage below 20); also Gunmar",
+    "aliases ArielleDwarvenRuinAlias, GunmarDungeonLocationAlias, BearAlias, StendarrsBeaconLocAlias, BeaconVigilant1-3, AmbushCreature1-3, ForgottenFallsExtDoor, SeranaAlias",
+    "DLC1VQ02 Bloodline stage 30 log: refused the gift, return to Isran",
+    "places_raw: Stendarr's Beacon (Skyrim.esm:108A5A) and Ruunvald Excavation (Dawnguard.esm:007B21) list A New Order",
+    "INFO Dawnguard.esm:0088F7 'He's still at that fort near Stendarr's Beacon'",
+    "people_schedules_raw: Vigilant Tolan DLC1TolanSandboxHunterHQ at Fort Dawnguard when A New Order stage 20+",
+    "quest_givers_raw: BeaconVigilant1/2 placed in Dawnguard.esm:001DBB (Dayspring Canyon)",
+    "places_raw: Ruunvald Excavation marker Skyrim.esm:016220 is shared with Arkngthamz, Chillwind Depths and Redwater Den, so its nearest-town figures aren't usable; hold The Rift stands"
+   ]
+  },
+  {
+   "edid": "DLC1HunterBaseStage2",
+   "name": "Bolstering the Ranks",
+   "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Someone at Fort Dawnguard suggests recruiting Florentius, a former priest of Arkay; Isran knows where he went.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Sorine Jurard",
+     "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+     "how": "Sorine suggests the Dawnguard could use Florentius; ask Isran where he might be."
+    }
+   ],
+   "firstStep": "Speak with Isran",
+   "takesYou": [
+    {
+     "place": "Fort Dawnguard",
+     "hold": "The Rift",
+     "why": "ask Isran about Florentius"
+    },
+    {
+     "place": "Ruunvald Excavation",
+     "hold": "The Rift",
+     "why": "rescue Florentius, who is held captive there"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak with Isran",
+      "Find Florentius"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Florentius Baenius joins the Dawnguard at Fort Dawnguard",
+     "when": "at the end"
+    }
+   ],
+   "type": "Dawnguard",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Sorine Jurard",
+     "role": "suggests Florentius"
+    },
+    {
+     "name": "Isran",
+     "role": "tells you where Florentius was last seen"
+    },
+    {
+     "name": "Florentius Baenius",
+     "role": "former Priest of Arkay, captive in Ruunvald"
+    },
+    {
+     "name": "Vigilant Tolan",
+     "role": "may also bring Florentius up"
+    },
+    {
+     "name": "Gunmar",
+     "role": "named in the quest"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "who",
+     "why": "Sorine is the first speaker the records tie to the start; Isran and Vigilant Tolan also have opening lines in this quest. Who says it in your game may differ."
+    },
+    {
+     "field": "needs",
+     "why": "The conditions on the opening line aren't in these files. Sorine has to be at the fort, which suggests it follows recruiting her in A New Order, and A New Order also has a 'Recruit Florentius Baenius' step; how the two overlap isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:013F1F DLC1HunterBaseStage2, edited by USSEP",
+    "stage 10 log 'It's been suggested ... Florentius, a former Priest of Arkay'",
+    "stage 20 log 'last seen helping the Vigilants of Stendarr in Ruunvald'",
+    "stage 200 log 'I've rescued Florentius Baenius from Ruunvald, where he was being held captive'",
+    "giver Sorine Jurard Dawnguard.esm:00336B INFO Dawnguard.esm:014360 (stage below 10); others Isran, Tolan (stage below 11)",
+    "places_raw: Ruunvald Excavation Dawnguard.esm:007B21, hold The Rift",
+    "places_raw: Ruunvald Excavation marker Skyrim.esm:016220 shared with Arkngthamz, Chillwind Depths and Redwater Den; hold The Rift stands"
+   ]
+  },
+  {
+   "edid": "DLC1RH01",
+   "name": "Hide and Seek",
+   "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "A Dawnguard job: a vampire is hiding in a town disguised as one of the locals, and you must kill it quietly.",
+   "needs": [
+    {
+     "what": "Be on the Dawnguard side",
+     "kind": "faction"
+    }
+   ],
+   "starts": [
+    {
+     "who": "a Dawnguard member who gives out jobs (picked by the game)",
+     "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+     "how": "Ask for work; the game picks the town and the disguised vampire."
+    }
+   ],
+   "firstStep": "Discreetly kill the vampire in disguise",
+   "takesYou": [
+    {
+     "place": "a town or village the game picks",
+     "hold": "",
+     "why": "find the vampire posing as a local and kill it"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Discreetly kill the disguised vampire (the journal names the local it poses as)",
+      "Return to the Dawnguard member who sent you"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dawnguard",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "the quest giver",
+     "role": "Dawnguard member who sends you"
+    },
+    {
+     "name": "the target",
+     "role": "vampire disguised as a townsperson"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "who",
+     "why": "The job giver is a quest alias the game fills when the job starts; the parent quest only says 'Speak with <the current quest giver> for an assignment'. Sorine Jurard is in that parent quest for her crossbow project ('Help Sorine with her project to improve the crossbow'), not as the job giver, so the records name no giver. All the Dawnguard members are placed in Fort Dawnguard, which is why it's the likely place to ask."
+    },
+    {
+     "field": "needs",
+     "why": "The conditions for being offered these jobs aren't in these files. They are Dawnguard-type quests started by the Dawnguard hunter job system (the vampire side has its own system run from Castle Volkihar), so siding with the Dawnguard is implied, not shown."
+    },
+    {
+     "field": "rewards",
+     "why": "The job quest itself holds no reward. The parent quest that runs Dawnguard and vampire jobs has gold and a leveled reward list in its script, which is most likely your payout when you report back; the amount and what's in the list aren't in these files."
+    },
+    {
+     "field": "steps",
+     "why": "The journal warns that the law doesn't know about the vampire and will treat the kill as murder, so do it unseen; the bounty rules themselves aren't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:005E4A DLC1RH01, edited by USSEP",
+    "start: DLC1RadiantHunterQuestNode, script event",
+    "stage 10 log '...find and kill the vampire masquerading as a <Alias=Target>... the law ... will assume I have murdered a citizen'",
+    "objectives 10 'Discreetly kill the <Alias=Target>', 100 'Return to <Alias=QuestGiver>'",
+    "aliases QuestGiver, Habitation, Inn, Target, MapMarker",
+    "DLC1Radiant Dawnguard.esm:004C1C objective 'Speak with <Alias=CurrentQuestGiver> for an assignment'; script dlc1radiantscript Gold001, DLC1RadiantReward",
+    "DLC1Radiant objective 20 'Help Sorine with her project to improve the crossbow' (why the Sorine alias exists); hunter jobs use DLC1RadiantHunterQuestNode, vampire jobs DLC1RadiantVampireQuestNode (givers Fura Bloodmouth, Garan Marethi)"
+   ]
+  },
+  {
+   "edid": "DLC1RH02",
+   "name": "Cleansing Light",
+   "plugin": "Dawnguard.esm",
+   "canDo": "radiant",
+   "canDoWhy": "A Dawnguard job: go to a dungeon the game picks and destroy the creature leading it.",
+   "needs": [
+    {
+     "what": "Be on the Dawnguard side",
+     "kind": "faction"
+    }
+   ],
+   "starts": [
+    {
+     "who": "a Dawnguard member who gives out jobs (picked by the game)",
+     "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+     "how": "Ask for work; the game picks the dungeon and its boss and marks it on your map."
+    }
+   ],
+   "firstStep": "Kill the boss at the dungeon you're sent to",
+   "takesYou": [
+    {
+     "place": "a dungeon the game picks",
+     "hold": "",
+     "why": "destroy its boss"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the boss at the dungeon (the journal names both)",
+      "Return to the Dawnguard member who sent you"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dawnguard",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "the quest giver",
+     "role": "Dawnguard member who sends you"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "who",
+     "why": "The job giver is a quest alias the game fills when the job starts; the parent quest only says 'Speak with <the current quest giver> for an assignment'. Sorine Jurard is in that parent quest for her crossbow project ('Help Sorine with her project to improve the crossbow'), not as the job giver, so the records name no giver. All the Dawnguard members are placed in Fort Dawnguard, which is why it's the likely place to ask."
+    },
+    {
+     "field": "needs",
+     "why": "The conditions for being offered these jobs aren't in these files. They are Dawnguard-type quests started by the Dawnguard hunter job system (the vampire side has its own system run from Castle Volkihar), so siding with the Dawnguard is implied, not shown."
+    },
+    {
+     "field": "rewards",
+     "why": "The job quest itself holds no reward. The parent quest that runs Dawnguard and vampire jobs has gold and a leveled reward list in its script, which is most likely your payout when you report back; the amount and what's in the list aren't in these files."
+    },
+    {
+     "field": "firstStep",
+     "why": "What kind of creature the boss is isn't fixed in the records; it is filled in when the job starts."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:005E53 DLC1RH02, no later edits",
+    "start: DLC1RadiantHunterQuestNode, script event",
+    "objectives 10 'Kill the <Alias=Boss> at <Alias=Dungeon>', 100 'Return to <Alias=QuestGiver>'",
+    "aliases QuestGiver, Dungeon, Boss, MapMarker",
+    "DLC1Radiant Dawnguard.esm:004C1C script dlc1radiantscript Gold001, DLC1RadiantReward",
+    "DLC1Radiant objective 20 'Help Sorine with her project to improve the crossbow' (why the Sorine alias exists); hunter jobs use DLC1RadiantHunterQuestNode, vampire jobs DLC1RadiantVampireQuestNode (givers Fura Bloodmouth, Garan Marethi)"
+   ]
+  },
+  {
+   "edid": "DLC1RH03",
+   "name": "Preemptive Strike",
+   "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "A Dawnguard job: kill a vampire in a dungeon before it turns its allies into vampires.",
+   "needs": [
+    {
+     "what": "Be on the Dawnguard side",
+     "kind": "faction"
+    }
+   ],
+   "starts": [
+    {
+     "who": "a Dawnguard member who gives out jobs (picked by the game)",
+     "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+     "how": "Ask for work; the game picks the dungeon and the vampire and marks it on your map."
+    }
+   ],
+   "firstStep": "Kill the vampire at the dungeon you're sent to",
+   "takesYou": [
+    {
+     "place": "a dungeon the game picks",
+     "hold": "",
+     "why": "kill the vampire before it turns the others"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the vampire at the dungeon (the journal names both)",
+      "Return to the Dawnguard member who sent you"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dawnguard",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "the quest giver",
+     "role": "Dawnguard member who sends you"
+    },
+    {
+     "name": "the vampire",
+     "role": "your target, among the dungeon's other residents"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "who",
+     "why": "The job giver is a quest alias the game fills when the job starts; the parent quest only says 'Speak with <the current quest giver> for an assignment'. Sorine Jurard is in that parent quest for her crossbow project ('Help Sorine with her project to improve the crossbow'), not as the job giver, so the records name no giver. All the Dawnguard members are placed in Fort Dawnguard, which is why it's the likely place to ask."
+    },
+    {
+     "field": "needs",
+     "why": "The conditions for being offered these jobs aren't in these files. They are Dawnguard-type quests started by the Dawnguard hunter job system (the vampire side has its own system run from Castle Volkihar), so siding with the Dawnguard is implied, not shown."
+    },
+    {
+     "field": "rewards",
+     "why": "The job quest itself holds no reward. The parent quest that runs Dawnguard and vampire jobs has gold and a leveled reward list in its script, which is most likely your payout when you report back; the amount and what's in the list aren't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:005E58 DLC1RH03, edited by USSEP",
+    "start: DLC1RadiantHunterQuestNode, script event",
+    "stage 10 log '...destroy the <Alias=Vampire> before it turns its allies into vampires'",
+    "objectives 10 'Kill the <Alias=Vampire> at <Alias=Dungeon>', 100 'Return to <Alias=QuestGiver>'",
+    "aliases Questgiver, Dungeon, Boss, Vampire, MapMarker",
+    "DLC1Radiant Dawnguard.esm:004C1C script dlc1radiantscript Gold001, DLC1RadiantReward",
+    "DLC1Radiant objective 20 'Help Sorine with her project to improve the crossbow' (why the Sorine alias exists); hunter jobs use DLC1RadiantHunterQuestNode, vampire jobs DLC1RadiantVampireQuestNode (givers Fura Bloodmouth, Garan Marethi)"
+   ]
+  },
+  {
+   "edid": "DLC1RH04",
+   "name": "Hunting the Monster",
+   "plugin": "Dawnguard.esm",
+   "canDo": "radiant",
+   "canDoWhy": "A Dawnguard job: track a vampire through its last known contact in a town, then kill it in its lair.",
+   "needs": [
+    {
+     "what": "Be on the Dawnguard side",
+     "kind": "faction"
+    }
+   ],
+   "starts": [
+    {
+     "who": "a Dawnguard member who gives out jobs (picked by the game)",
+     "where": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+     "how": "Ask for work; the game picks the town, the contact, the vampire and its lair."
+    }
+   ],
+   "firstStep": "Find evidence of the vampire's whereabouts",
+   "takesYou": [
+    {
+     "place": "a town or village the game picks",
+     "hold": "",
+     "why": "question the vampire's contact or search for evidence"
+    },
+    {
+     "place": "a dungeon the game picks",
+     "hold": "",
+     "why": "kill the vampire in its lair"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Question the vampire's last known contact",
+     "leadsTo": "they tell you where the vampire's lair is"
+    },
+    {
+     "choice": "Search for evidence instead",
+     "leadsTo": "a letter the quest places in a house in the town points you to the lair"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find evidence of the vampire's whereabouts",
+      "Kill the vampire at its lair (the journal names both)",
+      "Return to the Dawnguard member who sent you"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Dawnguard",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "the quest giver",
+     "role": "Dawnguard member who sends you"
+    },
+    {
+     "name": "the contact",
+     "role": "the vampire's last known contact in the town"
+    },
+    {
+     "name": "the vampire",
+     "role": "your target, in a dungeon lair"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "who",
+     "why": "The job giver is a quest alias the game fills when the job starts; the parent quest only says 'Speak with <the current quest giver> for an assignment'. Sorine Jurard is in that parent quest for her crossbow project ('Help Sorine with her project to improve the crossbow'), not as the job giver, so the records name no giver. All the Dawnguard members are placed in Fort Dawnguard, which is why it's the likely place to ask."
+    },
+    {
+     "field": "needs",
+     "why": "The conditions for being offered these jobs aren't in these files. They are Dawnguard-type quests started by the Dawnguard hunter job system (the vampire side has its own system run from Castle Volkihar), so siding with the Dawnguard is implied, not shown."
+    },
+    {
+     "field": "rewards",
+     "why": "The job quest itself holds no reward. The parent quest that runs Dawnguard and vampire jobs has gold and a leveled reward list in its script, which is most likely your payout when you report back; the amount and what's in the list aren't in these files."
+    },
+    {
+     "field": "choices",
+     "why": "The journal says you can interrogate the contact or search for evidence. The quest has a house, a container in it and a letter, so the letter is the likely evidence, but whose house it is and where the letter sits isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Dawnguard.esm:006952 DLC1RH04, no later edits",
+    "start: DLC1RadiantHunterQuestNode, script event",
+    "stage 10 log '...through interrogation of his last known contact <Alias=Friend>, or searching for evidence...'",
+    "stage 50 log '...learned from <Alias=Friend> the whereabouts...'",
+    "objectives 10 'Find evidence of the vampire's whereabouts', 50 'Kill the <Alias=Vampire> at <Alias=Dungeon>', 100 'Return to <Alias=QuestGiver>'",
+    "aliases Habitation, Dwelling, Friend, HouseContainer, Letter, MapMarkerHabitation, MapMarkerDungeon",
+    "DLC1Radiant Dawnguard.esm:004C1C script dlc1radiantscript Gold001, DLC1RadiantReward",
+    "DLC1Radiant objective 20 'Help Sorine with her project to improve the crossbow' (why the Sorine alias exists); hunter jobs use DLC1RadiantHunterQuestNode, vampire jobs DLC1RadiantVampireQuestNode (givers Fura Bloodmouth, Garan Marethi)"
+   ]
+  }
+ ]
+}

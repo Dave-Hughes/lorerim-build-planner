@@ -1,0 +1,926 @@
+[
+ {
+  "edid": "CW01AOutfitImperial",
+  "name": "Get Outfitted",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A small errand that shows up as part of joining the Legion: collect your Imperial gear from Beirand, Solitude's blacksmith.",
+  "needs": [
+   {
+    "what": "Be joining or have joined the Imperial Legion (Joining the Legion)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Beirand",
+    "where": "the blacksmith's forge in Solitude during the day; the records place him in Bits and Pieces",
+    "how": "Once the errand is in your journal, talk to Beirand and he hands over your Imperial gear."
+   }
+  ],
+  "firstStep": "Get Imperial gear from Beirand",
+  "takesYou": [
+   {
+    "place": "Solitude",
+    "hold": "Haafingar",
+    "why": "Beirand, the blacksmith, has your gear"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Get Imperial gear from Beirand"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "Imperial Legion gear",
+    "when": "when you talk to Beirand"
+   }
+  ],
+  "type": "Misc",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Beirand",
+    "role": "Solitude's blacksmith; gives you the gear"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These files don't show what puts this errand in your journal. It belongs to the Legion recruitment, so it most likely opens when Rikke swears you in, but that isn't confirmed."
+   },
+   {
+    "field": "rewards",
+    "why": "The objective says 'Imperial gear', but these files don't list which pieces Beirand gives."
+   },
+   {
+    "field": "where",
+    "why": "His work schedule puts him at the Solitude forge from morning to evening; his placement record is in Bits and Pieces. Check the forge first in daytime."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0C349B objective 1",
+   "giver INFO Skyrim.esm:0C3490 (Beirand, while stage < 2)",
+   "Beirand Skyrim.esm:013261 placed REFR 0198D8 in cell 016A10 Bits and Pieces",
+   "package SolitudeBlacksmithWorkDay8x14",
+   "factions SolitudeBlacksmithFaction"
+  ]
+ },
+ {
+  "edid": "DialogueSolitudeGuardIntro",
+  "name": "Recruitment Drive",
+  "plugin": "Skyrim.esm",
+  "canDo": "talk",
+  "canDoWhy": "A guard in Solitude points you to Legate Rikke if you show interest in joining the Legion.",
+  "needs": [],
+  "starts": [
+   {
+    "who": "An Imperial guard in Solitude",
+    "where": "on the streets of Solitude (two guards are posted for this)",
+    "how": "Talk to the guard. He says: \"There's no greater honor than to serve. If you're serious about enlisting, speak to Legate Rikke in Castle Dour.\""
+   }
+  ],
+  "firstStep": "Talk to Rikke about joining the Imperial Legion",
+  "takesYou": [
+   {
+    "place": "Castle Dour, in Solitude",
+    "hold": "Haafingar",
+    "why": "Legate Rikke handles recruits"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Rikke about joining the Imperial Legion"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Misc",
+  "opens": [
+   "Imperial Introductions",
+   "Joining the Legion"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Solitude guard",
+    "role": "points you to Rikke"
+   },
+   {
+    "name": "Legate Rikke",
+    "role": "in Castle Dour; the person you are sent to"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The quest's script has a gold property, but these files don't show it being given to you, or how much."
+   },
+   {
+    "field": "where",
+    "why": "Only the two guards' posts in Solitude are recorded, not exactly where they stand or patrol."
+   },
+   {
+    "field": "opens",
+    "why": "Rikke's recruit test (Fort Hraggstad) is in Imperial Introductions and Joining the Legion; this errand only sends you to her."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:034B58 objective 20",
+   "giver INFO Skyrim.esm:034B38 (alias Guard1, stage < 1)",
+   "INFO Skyrim.esm:034B35 (USSEP) 'speak to Legate Rikke in Castle Dour'",
+   "aliases Guard1 REFR 0C5885, Guard2 REFR 02E1B4 (Solitude worldspace)",
+   "fragment QF_SolitudeFreeformGuardIntro_00034B58.Gold"
+  ]
+ },
+ {
+  "edid": "CW01A",
+  "name": "Joining the Legion",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Ask to join the Legion in Castle Dour; Legate Rikke sends you to clear Fort Hraggstad as your test.",
+  "needs": [
+   {
+    "what": "Talk to General Tullius and Legate Rikke in Castle Dour about joining (Imperial Introductions)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Legate Rikke",
+    "where": "the war room of Castle Dour, in Solitude (by day; she walks the city in the evening)",
+    "how": "After speaking with General Tullius about joining, talk to Rikke. She says: \"I'm sending you to clear out Fort Hraggstad. If you survive, you'll pass.\""
+   }
+  ],
+  "firstStep": "Clear out Fort Hraggstad",
+  "takesYou": [
+   {
+    "place": "Fort Hraggstad",
+    "hold": "Haafingar",
+    "why": "kill the bandits holding it"
+   },
+   {
+    "place": "Castle Dour, in Solitude",
+    "hold": "Haafingar",
+    "why": "report back to Rikke and take the oath"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Clear out Fort Hraggstad",
+     "Report to Legate Rikke",
+     "Take the oath"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "You join the Imperial Legion",
+    "when": "when you take the oath"
+   }
+  ],
+  "type": "Civil War",
+  "opens": [
+   "Get Outfitted",
+   "The Jagged Crown (Legion)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Legate Rikke",
+    "role": "gives the test and swears you in"
+   },
+   {
+    "name": "General Tullius",
+    "role": "in Castle Dour; present for the oath"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "closes",
+    "why": "The quest has a failure ending, but these files don't show what triggers it (most likely joining the Stormcloaks instead)."
+   },
+   {
+    "field": "starts",
+    "why": "The lines that send you to Fort Hraggstad belong to Imperial Introductions; the records don't show the exact handover, only that Rikke gives the test."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0D517A log stage 1, objectives 1/100/160, complete 200, fail 999",
+   "CW00A Skyrim.esm:0D3C5F giver INFO 0D514F 'Are you ready to test yourself at Fort Hraggstad?'",
+   "INFO 0D513C (USSEP) 'I'm sending you to clear out Fort Hraggstad'",
+   "INFO 0D6613 'I trust you'll be finished with Fort Hraggstad soon?'",
+   "Fort Hraggstad Skyrim.esm:019181 (Haafingar)",
+   "Rikke package SolitudeCastleCommand6x16, SolitudeCityWalk19x4"
+  ]
+ },
+ {
+  "edid": "CW01B",
+  "name": "Joining the Stormcloaks",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Ask to join the Stormcloaks in Windhelm; Galmar sends you to kill an ice wraith on Serpentstone Isle as your test.",
+  "needs": [
+   {
+    "what": "Talk to Ulfric or Galmar about joining (Stormcloak Introductions)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Galmar Stone-Fist",
+    "where": "the Palace of the Kings in Windhelm",
+    "how": "Ulfric tells you to speak with Galmar, who handles the new recruits. Galmar gives you your test."
+   }
+  ],
+  "firstStep": "Kill the Ice Wraith",
+  "takesYou": [
+   {
+    "place": "Serpentstone Isle (The Serpent Doomstone)",
+    "hold": "Winterhold",
+    "why": "kill the ice wraith"
+   },
+   {
+    "place": "Palace of the Kings, Windhelm",
+    "hold": "Eastmarch",
+    "why": "return to Galmar and take the oath"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Kill the Ice Wraith",
+     "Return to Galmar",
+     "Take the oath"
+    ]
+   }
+  ],
+  "rewards": [
+   {
+    "what": "You join the Stormcloaks",
+    "when": "when you take the oath"
+   }
+  ],
+  "type": "Civil War",
+  "opens": [
+   "The Jagged Crown (Stormcloak)"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Galmar Stone-Fist",
+    "role": "gives the test and swears you in"
+   },
+   {
+    "name": "Ulfric Stormcloak",
+    "role": "in the Palace of the Kings; sends you to Galmar"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "closes",
+    "why": "The quest has a failure ending, but these files don't show what triggers it (most likely joining the Legion instead)."
+   },
+   {
+    "field": "starts",
+    "why": "The line telling you to see Galmar comes from Alternate Perspective's version of Stormcloak Introductions; the records don't show the exact handover."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0E2D29 log stage 1, objectives 1/100/160, complete 200, fail 999",
+   "giver INFO Skyrim.esm:056178 (Galmar, GetIsID)",
+   "INFO 0C3489 (AlternatePerspective.esp) 'Speak with Galmar. He handles the new recruits.'",
+   "alias Location = The Serpent Doomstone Skyrim.esm:0D567B (Winterhold)",
+   "Galmar package GalmarConsultInPalace"
+  ]
+ },
+ {
+  "edid": "CW02A",
+  "name": "The Jagged Crown",
+  "plugin": "Skyrim.esm (also edited by Unofficial Skyrim Special Edition Patch.esp; last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Your first Legion assignment: Legate Rikke takes you to Korvanjund to beat the Stormcloaks to the Jagged Crown.",
+  "needs": [
+   {
+    "what": "Finish Joining the Legion",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Legate Rikke",
+    "where": "the war room of Castle Dour, in Solitude",
+    "how": "Once you've joined the Legion, talk to Rikke for your first assignment. She tells you to meet the men outside Korvanjund."
+   }
+  ],
+  "firstStep": "Talk to Legate Rikke",
+  "takesYou": [
+   {
+    "place": "Korvanjund",
+    "hold": "The Pale",
+    "why": "meet Rikke outside, fight past the Stormcloaks and recover the crown"
+   },
+   {
+    "place": "Castle Dour, in Solitude",
+    "hold": "Haafingar",
+    "why": "deliver the crown to General Tullius"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Legate Rikke",
+     "Meet Legate Rikke outside Korvanjund",
+     "Defeat the enemy soldiers",
+     "Retrieve the Jagged Crown",
+     "Follow Legate Rikke",
+     "Find a way past the ambush",
+     "Open the Hall of Stories door",
+     "Find a way to open the gate",
+     "Defeat the Draugr",
+     "Deliver the crown to General Tullius",
+     "Get new orders"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Civil War",
+  "opens": [
+   "Message to Whiterun"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Legate Rikke",
+    "role": "gives the assignment and leads the attack"
+   },
+   {
+    "name": "General Tullius",
+    "role": "in Castle Dour; you deliver the crown to him"
+   },
+   {
+    "name": "Hadvar",
+    "role": "a fellow soldier who greets you if you came through Helgen with him"
+   },
+   {
+    "name": "King Borgas",
+    "role": "draugr boss in Korvanjund Crypt (level 80 in LoreRim)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The only reward-like item the scan found is an Iron Warhammer left over from a reused script; nothing in these files shows a real reward. The Jagged Crown itself is handed over to Tullius."
+   },
+   {
+    "field": "steps",
+    "why": "The objectives are listed in the quest's order, but the order you see them in Korvanjund may differ a little."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:02D75C logs 10/30, objectives 10-99, complete 200",
+   "giver INFO Skyrim.esm:01A2A5 (alias LegateRikke, stage < 30); Hadvar INFO 0E6C5A",
+   "INFO 0B6BDB, 0C3484 Rikke 'Rendezvous ... outside Korvanjund'",
+   "Korvanjund Skyrim.esm:019261 (The Pale); DraugrBoss King Borgas LoreRim - Magink Bosses.esp:000A0A",
+   "fragment QF_MQ103A_0002D75C.RalofWarhammer"
+  ]
+ },
+ {
+  "edid": "CW02B",
+  "name": "The Jagged Crown",
+  "plugin": "Skyrim.esm (also edited by Unofficial Skyrim Special Edition Patch.esp; last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "Your first Stormcloak mission: Galmar takes you to Korvanjund to claim the Jagged Crown before the Legion does.",
+  "needs": [
+   {
+    "what": "Finish Joining the Stormcloaks",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Galmar Stone-Fist",
+    "where": "the Palace of the Kings in Windhelm",
+    "how": "Once you've joined, talk to Galmar for your first mission. He says he's tracked down the tomb of King Borgas at Korvanjund: \"Don't wait around for me. I bet I'll beat you to Korvanjund even though you start first.\""
+   }
+  ],
+  "firstStep": "Talk to Galmar",
+  "takesYou": [
+   {
+    "place": "Korvanjund",
+    "hold": "The Pale",
+    "why": "meet Galmar outside, fight past the Imperials and recover the crown"
+   },
+   {
+    "place": "Palace of the Kings, Windhelm",
+    "hold": "Eastmarch",
+    "why": "deliver the crown to Ulfric Stormcloak"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Talk to Galmar",
+     "Meet Galmar outside Korvanjund",
+     "Defeat the enemy soldiers guarding Korvanjund",
+     "Retrieve the Jagged Crown",
+     "Find a way to open the gate",
+     "Deliver the crown to Ulfric Stormcloak",
+     "Get new orders"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Civil War",
+  "opens": [
+   "Message to Whiterun"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Galmar Stone-Fist",
+    "role": "gives the mission and leads the attack"
+   },
+   {
+    "name": "Ulfric Stormcloak",
+    "role": "in the Palace of the Kings; you deliver the crown to him"
+   },
+   {
+    "name": "Ralof",
+    "role": "a fellow soldier who greets you if you came through Helgen with him"
+   },
+   {
+    "name": "King Borgas",
+    "role": "draugr boss in Korvanjund Crypt (level 80 in LoreRim)"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The only reward-like item the scan found is an Iron Warhammer from a reused script; nothing in these files shows a real reward. The crown is handed over to Ulfric."
+   },
+   {
+    "field": "people",
+    "why": "Torsten Cruel-Sea and Scouts-Many-Marshes of Windhelm are named in the quest, but these files don't show what they do in it."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:02610B logs 10/30, objectives 10-99, complete 200",
+   "giver INFO Skyrim.esm:0A0354 (Galmar, GetIsID, stage < 40); Ralof INFO 0E6C33",
+   "INFO 0E2D10 Galmar 'final resting place of King Borgas - Korvanjund'",
+   "INFO 0E7A25 Ulfric 'supposed to be at Korvanjund'",
+   "Korvanjund Skyrim.esm:019261 (The Pale)",
+   "MQ103QuestScript.Warhammer"
+  ]
+ },
+ {
+  "edid": "CW03",
+  "name": "Message to Whiterun",
+  "plugin": "Skyrim.esm (also edited by Unofficial Skyrim Special Edition Patch.esp; last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "talk",
+  "canDoWhy": "After the Jagged Crown, your side's leader sends you to Dragonsreach to make Jarl Balgruuf pick a side.",
+  "needs": [
+   {
+    "what": "Finish The Jagged Crown for your side",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "General Tullius",
+    "where": "Castle Dour, in Solitude",
+    "how": "Legion side: ask Tullius for new orders after delivering the crown; he gives you a message for the Jarl of Whiterun."
+   },
+   {
+    "who": "Ulfric Stormcloak",
+    "where": "the Palace of the Kings in Windhelm",
+    "how": "Stormcloak side: ask Ulfric for new orders after delivering the crown; he gives you an axe to deliver to the Jarl of Whiterun."
+   }
+  ],
+  "firstStep": "Deliver the message (Legion) or the axe (Stormcloaks) to the Jarl of Whiterun",
+  "takesYou": [
+   {
+    "place": "Dragonsreach, in Whiterun",
+    "hold": "Whiterun",
+    "why": "deliver the message or axe to Jarl Balgruuf"
+   },
+   {
+    "place": "Palace of the Kings, Windhelm",
+    "hold": "Eastmarch",
+    "why": "Stormcloak side: bring Balgruuf's answer back to Ulfric"
+   },
+   {
+    "place": "Whiterun",
+    "hold": "Whiterun",
+    "why": "Legion side: warn the Jarl and report to Legate Quentin Cipius"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "You serve the Legion",
+    "leadsTo": "You carry Tullius's message, then warn the Jarl that Ulfric is coming and report to Legate Quentin Cipius."
+   },
+   {
+    "choice": "You serve the Stormcloaks",
+    "leadsTo": "You carry Ulfric's axe, bring the Jarl's answer back to Ulfric, and wait for his orders."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "Legion",
+    "objectives": [
+     "Deliver message to the Jarl of Whiterun",
+     "Assist Jarl Balgruuf with the dragon threat",
+     "Wait for the Jarl's response",
+     "Return to Whiterun and warn the Jarl",
+     "Report to Legate Quentin Cipius"
+    ]
+   },
+   {
+    "branch": "Stormcloaks",
+    "objectives": [
+     "Deliver axe to the Jarl of Whiterun",
+     "Assist Jarl Balgruuf with the dragon threat",
+     "Wait for the Jarl's response",
+     "Deliver axe to Jarl Ulfric",
+     "Wait for orders from Jarl Ulfric"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Civil War",
+  "opens": [
+   "Battle for Whiterun"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Balgruuf the Greater",
+    "role": "Jarl of Whiterun, in Dragonsreach; must choose a side"
+   },
+   {
+    "name": "Proventus Avenicci",
+    "role": "Balgruuf's steward, in Dragonsreach"
+   },
+   {
+    "name": "Irileth",
+    "role": "Balgruuf's housecarl, in Dragonsreach"
+   },
+   {
+    "name": "General Tullius",
+    "role": "Legion leader; sends the message"
+   },
+   {
+    "name": "Ulfric Stormcloak",
+    "role": "Stormcloak leader; sends the axe"
+   },
+   {
+    "name": "Galmar Stone-Fist",
+    "role": "in the Palace of the Kings with Ulfric"
+   },
+   {
+    "name": "Legate Quentin Cipius",
+    "role": "Legion commander at Whiterun; you report to him"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "steps",
+    "why": "'Assist Jarl Balgruuf with the dragon threat' looks like a detour that only shows if you haven't got far enough in the main quest's dragon business at Whiterun; the condition isn't in these files."
+   },
+   {
+    "field": "steps",
+    "why": "Which branch gets 'Return to Whiterun and warn the Jarl' is read from the journal text; the records don't tag it to a side."
+   },
+   {
+    "field": "opens",
+    "why": "The next step, the battle at Whiterun, is read from the war's objectives (report to Legate Quentin Cipius or the Stormcloak camp at Whiterun); the link isn't written in this quest."
+   },
+   {
+    "field": "rewards",
+    "why": "The script holds a Steel War Axe, which looks like the axe you carry, not a reward."
+   },
+   {
+    "field": "where",
+    "why": "Legate Quentin Cipius is placed in Whiterun, but these files don't pin the exact spot."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0D661C logs 10/50/100, objectives 10-225, completes 210/240/255",
+   "giver INFO Skyrim.esm:0C9826 (Tullius, GetIsID, stage < 50); Ulfric also stage < 50",
+   "aliases MessageFromTullius, AxeUlfrics, AxeBalgruufs, BalgruufAlive/Dead; ImperialFieldCO = Legate Quentin Cipius Skyrim.esm:0844D1",
+   "CWObj Skyrim.esm:029940 objectives 10/11",
+   "CW03Script.SteelWarAxe"
+  ]
+ },
+ {
+  "edid": "CWCampaignObj",
+  "name": "Campaign for the campaign hold",
+  "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "The war's running journal entry for each hold your side fights over; it opens as the war moves to a new hold.",
+  "needs": [
+   {
+    "what": "Be a member of the Legion or the Stormcloaks and have the war moving into a new hold",
+    "kind": "faction"
+   }
+  ],
+  "starts": [],
+  "firstStep": "Report to your side's field commander for this hold",
+  "takesYou": [
+   {
+    "place": "your side's military camp in the hold being fought over",
+    "hold": "the hold being fought over",
+    "why": "report to the field commander"
+   }
+  ],
+  "choices": [],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Report to the field commander",
+     "Help conquer the hold",
+     "Report success to your side's leader",
+     "Report failure to your side's leader",
+     "[Optional] Find the Jarl and escape with them through the city"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Civil War",
+  "opens": [
+   "A False Front",
+   "Compelling Tribute"
+  ],
+  "closes": [],
+  "people": [
+   {
+    "name": "Field commander",
+    "role": "your side's officer at the hold's camp; changes with the hold"
+   },
+   {
+    "name": "General Tullius or Ulfric Stormcloak",
+    "role": "your side's leader, who you report to"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "starts",
+    "why": "These files don't show what opens this entry; it fills in the hold, the commander and the leader by itself as the war moves on."
+   },
+   {
+    "field": "opens",
+    "why": "The missions (A False Front, Compelling Tribute and others) are handed out during a campaign, but the link isn't written in this quest's records."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:026F45 objectives 10/15/20/30/50, complete 200, fail 300",
+   "aliases CampaignHold, FieldCO, FactionLeader, Jarl",
+   "no start event or giver in quest_givers_raw"
+  ]
+ },
+ {
+  "edid": "CWMission03",
+  "name": "A False Front",
+  "plugin": "Skyrim.esm (also edited by Unofficial Skyrim Special Edition Patch.esp; last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A war mission your field commander hands out during a hold campaign: rob an enemy courier, then deliver forged orders to the enemy.",
+  "needs": [
+   {
+    "what": "Be in the middle of a hold campaign for your side (Legion in the Pale, Stormcloaks in Hjaalmarch)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Your side's field commander",
+    "where": "your side's military camp in the hold being fought over",
+    "how": "The war gives you this mission when you report to the commander during a campaign."
+   }
+  ],
+  "firstStep": "Find the enemy courier",
+  "takesYou": [
+   {
+    "place": "Four Shields Tavern in Dragon Bridge, or Frostfruit Inn in Rorikstead",
+    "hold": "Haafingar / Whiterun",
+    "why": "Stormcloak side: catch the Imperial courier at the inn"
+   },
+   {
+    "place": "Nightgate Inn, or Candlehearth Hall in Windhelm",
+    "hold": "The Pale / Eastmarch",
+    "why": "Legion side: catch the Stormcloak courier at the inn"
+   },
+   {
+    "place": "your side's camp",
+    "hold": "the hold being fought over",
+    "why": "bring the documents back and get the forgeries"
+   },
+   {
+    "place": "the enemy-held capital: Morthal (Stormcloak side) or Dawnstar (Legion side)",
+    "hold": "Hjaalmarch / The Pale",
+    "why": "hand the forged documents to the enemy commander"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Which side you fight for",
+    "leadsTo": "Decides which inns the courier stops at and which enemy commander you fool."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find the courier",
+     "Retrieve the courier's package",
+     "Bring the documents to the field commander",
+     "Bring the forged documents to the enemy commander"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Civil War",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Faida",
+    "role": "innkeeper at the Four Shields Tavern, Dragon Bridge (Stormcloak side)"
+   },
+   {
+    "name": "Mralki",
+    "role": "innkeeper at the Frostfruit Inn, Rorikstead (Stormcloak side)"
+   },
+   {
+    "name": "Hadring",
+    "role": "innkeeper at Nightgate Inn (Legion side)"
+   },
+   {
+    "name": "Elda Early-Dawn",
+    "role": "runs Candlehearth Hall, Windhelm (Legion side)"
+   },
+   {
+    "name": "Captain Taurinus Duilis",
+    "role": "Imperial commander at Morthal; the one you fool on the Stormcloak side (named by Andrealphus Jobs Overhaul)"
+   },
+   {
+    "name": "Frorkmar Banner-Torn",
+    "role": "Stormcloak commander for Dawnstar; the one you fool on the Legion side"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "needs",
+    "why": "The hold pairing (Legion in the Pale, Stormcloaks in Hjaalmarch) is read from the names of the war's mission slots and the capitals' commanders, not stated outright."
+   },
+   {
+    "field": "takesYou",
+    "why": "Which of the two inns the courier uses is picked when the mission starts; the records list both."
+   },
+   {
+    "field": "where",
+    "why": "Frorkmar and Captain Taurinus Duilis have no fixed spot in these files beyond Dawnstar and Morthal."
+   },
+   {
+    "field": "rewards",
+    "why": "No reward is recorded for this mission."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:03BCC4 logs 10/200, objectives 10-40, complete 50/200, fail 205",
+   "starts: CWPaleQuestMission03Node, CWHjaalmarchQuestMission03Node, CWMissionNode (script event)",
+   "aliases InnkeeperASons Faida, InnkeeperBSons Mralki, InnkeeperAImperial Hadring, InnkeeperBImperial1 Elda Early-Dawn, FieldCODawnstar Frorkmar Skyrim.esm:084553, FieldCOMorthal Andrealphus Jobs Overhaul - MASTER.esp:000B66",
+   "INFO 0D2798/0D6B47 'inns at Dragon Bridge and Rorikstead are frequent stops for Imperial runners'"
+  ]
+ },
+ {
+  "edid": "CWMission07",
+  "name": "Compelling Tribute",
+  "plugin": "Skyrim.esm (also edited by Unofficial Skyrim Special Edition Patch.esp; last edited by LoreRim - Dialogue Patch.esp)",
+  "canDo": "by itself",
+  "canDoWhy": "A war mission your field commander hands out during a hold campaign: blackmail the Jarl's steward, then raid the enemy supply caravan he tells you about.",
+  "needs": [
+   {
+    "what": "Be in the middle of a hold campaign for your side (Legion in the Rift, Stormcloaks in the Reach)",
+    "kind": "quest"
+   }
+  ],
+  "starts": [
+   {
+    "who": "Your side's field commander",
+    "where": "your side's military camp in the hold being fought over",
+    "how": "The war gives you this mission when you report to the commander during a campaign."
+   }
+  ],
+  "firstStep": "Find evidence against the Jarl's steward",
+  "takesYou": [
+   {
+    "place": "Mistveil Keep, in Riften",
+    "hold": "The Rift",
+    "why": "Legion side: find evidence on and blackmail Anuriel"
+   },
+   {
+    "place": "Understone Keep, in Markarth",
+    "hold": "The Reach",
+    "why": "Stormcloak side: find evidence on and blackmail Raerek"
+   },
+   {
+    "place": "your side's camp",
+    "hold": "the hold being fought over",
+    "why": "report what the steward told you"
+   },
+   {
+    "place": "the caravan's route near the enemy capital",
+    "hold": "the hold being fought over",
+    "why": "meet your men, ambush the enemy scout and take the caravan"
+   }
+  ],
+  "choices": [
+   {
+    "choice": "Which side you fight for",
+    "leadsTo": "Decides whose steward you blackmail (Anuriel in Riften or Raerek in Markarth) and whether Hadvar or Ralof leads the ambush."
+   }
+  ],
+  "steps": [
+   {
+    "branch": "main",
+    "objectives": [
+     "Find evidence",
+     "Blackmail the steward",
+     "Report to the field commander",
+     "Meet the men",
+     "Follow your friend and ambush enemy scout",
+     "Take over the caravan",
+     "Report to your friend",
+     "Report success to the field commander"
+    ]
+   }
+  ],
+  "rewards": [],
+  "type": "Civil War",
+  "opens": [],
+  "closes": [],
+  "people": [
+   {
+    "name": "Anuriel",
+    "role": "steward to Jarl Laila Law-Giver in Mistveil Keep, Riften (Legion side)"
+   },
+   {
+    "name": "Raerek",
+    "role": "steward to Jarl Igmund in Understone Keep, Markarth (Stormcloak side)"
+   },
+   {
+    "name": "Hadvar",
+    "role": "leads the ambush on the Legion side"
+   },
+   {
+    "name": "Ralof",
+    "role": "leads the ambush on the Stormcloak side"
+   }
+  ],
+  "unsure": [
+   {
+    "field": "rewards",
+    "why": "The scan lists Raerek's Inscribed Amulet of Talos, but it's the evidence you find on the Stormcloak side, not a reward. No real reward is recorded."
+   },
+   {
+    "field": "needs",
+    "why": "The hold pairing (Legion in the Rift, Stormcloaks in the Reach) is read from the names of the war's mission slots and which Jarl and steward each side targets, not stated outright."
+   },
+   {
+    "field": "takesYou",
+    "why": "Where the evidence is hidden and where the caravan travels are set when the mission starts; these files don't give the spots."
+   },
+   {
+    "field": "where",
+    "why": "Hadvar and Ralof have no fixed spot in these files for this mission; they wait near the caravan with the men."
+   }
+  ],
+  "evidence": [
+   "QUST Skyrim.esm:0504F0 logs 10/30/40/200, objectives 10-100, fail 205",
+   "starts: CWRiftQuestMission07Node, CWReachQuestMission07Node, CWMissionNode (script event)",
+   "aliases JarlImperial Laila Law-Giver, StewardImperial Anuriel (Mistveil Keep); JarlSons Igmund, StewardSons Raerek (Understone Keep); FriendHadvar, FriendRalof",
+   "giver INFO Skyrim.esm:0E1743 (Hadvar/Ralof, stage < 41) is the meet-the-men line",
+   "CWMission07Script.CWMission07EvidenceMarkarth = Raerek's Inscribed Amulet of Talos Skyrim.esm:0E0BA2"
+  ]
+ }
+]
