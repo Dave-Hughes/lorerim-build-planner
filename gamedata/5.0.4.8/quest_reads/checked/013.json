@@ -1,0 +1,1551 @@
+{
+ "checks": [
+  {
+   "edid": "MGR20B",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "The quest fills its Book, BookLocation, BookContainer and map-marker aliases when it starts, so it is a radiant job."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "Nothing in the records names a requirement. What would settle it: the conditions on Urag's line INFO 0BC092 and on the story-manager node MGRUragNode (which of MGR20 / MGR20B it picks, and whether it checks College membership)."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Urag's INFO 0BC092 (stage < 10) and the MGRUragNode script event. His packages keep him at the Arcanaeum marker at all hours apart from sleep (midnight to 6am in the Hall of Countenance dormitory)."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10: \"Find the copy of <Alias=Book>\"."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Book place is an alias filled at start; there is no fixed place."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "One path, two objectives."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_MGR20B_000BC096.Gold001 is gold. Unlike MGR20, there is no leveled reward list."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Not in any story line. It sits in the Miscellaneous bucket and opens nothing."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing."
+    }
+   }
+  },
+  {
+   "edid": "FreeformWinterholdCollegeA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Nirya's line INFO 05D2E3 (stage < 10) and the first objective, \"Talk to Nirya\"."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "No condition shown. What would settle it: the full conditions on INFO 05D2E3 and on Faralda's stage < 11 line."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Which line sets the quest going is still open. The first objective is \"Talk to Nirya to see what she's plotting\", so the quest seems to be under way before you speak to her, which makes Faralda's line (valid at stage < 11) the likelier opener. The info conditions or stage scripts would settle it. Where they are, refined from their packages: Nirya sleeps and sandboxes in her Hall of Attainment room, spends 11am to 5pm in the Arcanaeum, and visits the Hall of Countenance 11pm to 2am. Faralda stands outside from 9am to 3pm (the spot isn't named), eats and sleeps in the Hall of Countenance, and goes to the Frozen Hearth on weekend evenings."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "\"Faralda and her notes\" in the Hall of Countenance isn't in the records. The Notes and NotesMarker aliases don't say where the notes are. Faralda is in the Hall of Countenance only in the evening and at night; from 9am to 3pm her package has her outside. Nirya is in the Arcanaeum by day. Packages: AIOWinterholdFaraldaStandOutside9x6, WCollegeFaraldaSandboxRoom, WCollegeNiryaSandboxArcanaeum11x6, WCollegeNiryaSandboxRoom."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The two choices come from objectives 20 and 30. The reader already marked which ending stage goes with which as unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No reward is listed for this quest in quest_givers."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Nothing."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  },
+  {
+   "edid": "TG00",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Start-game enabled (quest_starts thieves-guild). It opens on Brynjolf's INFO 020ADA at stage < 1, and the stage 8 log says he \"has convinced me\"."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "quest_starts lists no opening conditions. The USSEP edits it reports are to Riften gate-guard lines (DialogueRiftenGateGuards), not to Brynjolf."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Brynjolf's placement (ref 020545) is in Riften's persistent outdoor cell, not a spot. His own packages are all guild ones; his market post during this quest would come from quest alias packages, which aren't in these files."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 8."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Riften. Madesi's and Brand-Shei's day packages are their market-stall (plaza) packages, so the ring work happens in Riften's market area. Exact spot of TG00MadesiChest isn't given."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Linear."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "TG00QuestScript.pTG00Gold. The perk and Madesi's Silver Ring (a 10-gold ring) are rightly held in unsure as quest helpers."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Next in the Thieves Guild line is TG01, and the TG00 end log promises more coin."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  },
+  {
+   "edid": "TG01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log: Brynjolf promises more work at the Ragged Flagon."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "TG00's end log and TG01's stage 10 log chain the two; the story line order agrees."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "\"Riften\" alone isn't a spot. Where Brynjolf stands when you finish A Chance Arrangement isn't in these files; that comes from TG00 alias packages."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The records do show how to reach the Ragged Flagon. A door from Riften's streets (exterior cell 042247) leads into The Ratway (door 048FA0), and the Ratway has doors into The Ragged Flagon (105CE4, 0A1E20). Also, during this quest Bersi's Pawned Prawn packages are all switched off (each needs Taking Care of Business not running). His active package, RiftenBersiShopkeeperDuringTG01, has no named place, so \"the Pawned Prawn\" for Bersi is unsettled. Haelga's market and Bee and Barb packages are also off during the quest, which leaves her at her bunkhouse."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "These are the three optional objectives (21, 31, 41). Brynjolf's INFO 020542 backs the Talen-Jei hint."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "TG01QuestScript.pTG01Gold."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG02 is next in the line."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  },
+  {
+   "edid": "TG02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "TG01's end and TG02's stage 10 log chain them; the story line order agrees."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "\"The Ragged Flagon\" is a fair guess: TG01 has you find Brynjolf there. But where he waits when you come back with the debts isn't in these files. His own Ragged Flagon package (2pm to 10pm) depends on a guild global, and otherwise he is in the Cistern. The reader marked the same thing unsure for TG01, TG03 and TG04 but not here."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Mercer is placed in the Cistern and his package keeps him there. The stage 30 log says Goldenglow is \"just outside of Riften\"."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "These are the optional objectives 45, 47 and 48."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The stage 20 log covers membership; the gold is the TGRewardGold leveled list (TG02QuestScript.pReward)."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG03 is next."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  },
+  {
+   "edid": "TG03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Story line order and the stage 10 log."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Brynjolf sends you (stage 10 log), but where he is when Loud and Clear ends isn't in these files."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The separate \"Whiterun\" stop is wrong for a player. The journal says Maven sends you \"to Whiterun\", but Mallus Maccius is placed in Honningbrew Meadery (people_raw lists it under Whiterun), and his packages keep him there round the clock: works, eats, sleeps (HonningbrewMallusWorks0x0 and the rest). Merged into the meadery entry. Black-Briar Manor stands, with a caveat: while this quest runs, Maven's manor, keep, meadery and noon Bee and Barb packages are switched off. Her fallback is to sandbox at her placement in Black-Briar Manor, but RiftenMavenMarket16x2 (4pm to 6pm, outdoors) and RiftenMavenBeeandBarb20x4 (8pm to midnight, the Bee and Barb) still apply."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Linear."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "pTG03Gold, plus the TGRewardEnchWeapon1Ha leveled list (an enchanted one-handed weapon by its name)."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG04 is next."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Stage 80/90 logs. Sabjorn's post-quest packages put him in Whiterun Jail in Dragonsreach Dungeon, and Mallus gets post-quest meadery packages."
+    }
+   }
+  },
+  {
+   "edid": "TG04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10/20 logs."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Story line order; the stage 10 log refers back to Honningbrew and Goldenglow."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Brynjolf and Mercer both have lines at stage < 11; Brynjolf is the giver line. Where he is when Dampened Spirits ends isn't in these files."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "The Cistern for Mercer is fine (Cistern sandbox at any time). The Winking Skeever is less sure than the reader thought. Gulum-Ei's only own package, SolitudeGulumEiPreTG04Package0x0, keeps him at the Winking Skeever only while Scoundrel's Folly is not running. Once the quest is running his whereabouts come from the quest's alias packages, which aren't in these files. Settling it needs TG04's alias packages."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "\"For example, he dies\" is a guess, and the records argue against it: Gulum-Ei's record is flagged essential (people_schedules). Objective 55, \"Find alternative source of information\", exists, along with TG04DeathNote and TG04KillChestAlias, but nothing shows what triggers it. The second choice is reworded without the death example, and the trigger stays in unsure."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Only the Goldenglow Bill of Sale is listed (TG04QuestScript.pTG04Deed), rightly held in unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG05 is next, and Mercer's INFO 02CC4D in this quest names Snow Veil Sanctum."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  },
+  {
+   "edid": "TG05",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log and Mercer's INFO 080C0F, \"When you're ready, meet me at Snow Veil Sanctum.\""
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Story line order. Mercer names Snow Veil at the end of Scoundrel's Folly (INFO 02CC4D)."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Mercer's INFO 02C34C (stage < 11) and 080C0F. He is placed in the Cistern, and his leader package keeps him there."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Snow Veil Sanctum: hold Winterhold, a short walk from Windhelm (places_raw 0192AF), with Karliah placed inside."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Linear."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The TGRewardPoisonAllBest leveled list (pTG05Reward). The reader rightly kept Karliah's Invisibility in unsure; it is in no player spell list."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG06 is next."
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "Mercer's betrayal is a story beat, not something the quest locks; no record shows it shutting off a side, a guild or a person. Mercer's Cistern package lasts until Blindsighted runs. Moved to unsure in case later quests show a lock-out."
+    }
+   }
+  },
+  {
+   "edid": "TG06",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Story line order. The TG05 end log leaves you in Karliah's care."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Karliah's placement is in Snow Veil Sanctum and she has no package for this point in the story. Where you speak to her after waking isn't shown."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "The Falmer stone isn't \"in the museum\". The stage 40 log says Calcelmo's notes come from \"a massive stone slab in his tower\". Reworded so the museum is what you get into and the stone is in his tower. Enthir's packages keep him in his Hall of Attainment room most of the day, and Calcelmo's keep him in Understone Keep."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Optional objective 27."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Nothing. Karliah's Invisibility is rightly in unsure."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG07 is next."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  },
+  {
+   "edid": "TG07",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Stage 10 log."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Story line order. The TG06 end log has Karliah insist on taking the proof to Brynjolf."
+    },
+    "starts": {
+     "verdict": "unsure",
+     "note": "Where Karliah is when Hard Answers ends isn't shown; TG06's last objective is \"Speak to Karliah\"."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Logs at stages 10, 30 and 40. The Snazzy Interiors door change to Riftweald Manor is rightly flagged."
+    },
+    "choices": {
+     "verdict": "fix",
+     "note": "\"Vald, who guards Mercer's house\" isn't in the records. Vald is placed in Riften's persistent outdoor cell, has no packages and no factions. All the records show is that objective 42, \"(Optional) Speak to Vex about Vald\", comes during the break-in, next to the ramp step. Reworded to what the records support."
+    },
+    "rewards": {
+     "verdict": "unsure",
+     "note": "Vald's Debt (pDebt) is a note the script hands over during the optional Vex/Vald step. Like Madesi's ring in A Chance Arrangement, it may be a quest item you pass on rather than a keepsake. Moved to unsure. What would settle it: the fragment that uses pDebt."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "TG08A, Trinity Restored, is next. The stage 200 log points at the Eyes of the Falmer."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Nothing shown."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "MGR20B",
+   "name": "Fetch me that Book!",
+   "plugin": "Skyrim.esm (last edited by LoreRim - Economy Overhaul.esp, after Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "Urag gro-Shub hands out book-fetching jobs; the game picks which book and where it is each time.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Urag gro-Shub",
+     "where": "the Arcanaeum, the library of the College of Winterhold",
+     "how": "Ask Urag for work; he sends you to bring back a copy of a book for the library."
+    }
+   ],
+   "firstStep": "Find the copy of the book Urag asked for",
+   "takesYou": [],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the copy of the book",
+      "Return the book to Urag gro-Shub"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand the book to Urag"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Urag gro-Shub",
+     "role": "the College librarian who gives the job, in the Arcanaeum"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the book, its container and the dungeon are filled in by the game when the job starts, so there is no fixed place"
+    },
+    {
+     "field": "needs",
+     "why": "there is a second quest with the same name (MGR20); these files don't say whether this one only comes after the first, or whether College membership is required"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold amount isn't in these files, and LoreRim - Economy Overhaul edits this quest, so it may differ from the base game"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0BC096",
+    "giver INFO Skyrim.esm:0BC092 (GetIsID Urag, stage < 10)",
+    "start node MGRUragNode (script event)",
+    "Urag ref Skyrim.esm:01C1B4 in cell 013810 The Arcanaeum",
+    "reward QF_MGR20B_000BC096.Gold001",
+    "aliases Book/BookLocation/BookContainer/LocationMapMarker",
+    "sibling QUST Skyrim.esm:028A24 MGR20",
+    "Urag packages WCollegeUragHoldatArcanaeumMarker (any time), WCollegeUragSleep0x6 (Hall of Countenance)"
+   ]
+  },
+  {
+   "edid": "FreeformWinterholdCollegeA",
+   "name": "Research Thief",
+   "plugin": "Skyrim.esm (last edited by FDE Faralda.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Nirya at the College is plotting against Faralda; talk to her and pick a side.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Nirya",
+     "where": "the College of Winterhold: her room in the Hall of Attainment, or the Arcanaeum from late morning to late afternoon",
+     "how": "Talk to Nirya; she is plotting to steal Faralda's notes."
+    },
+    {
+     "who": "Faralda",
+     "where": "the College of Winterhold: outside from morning to mid-afternoon, otherwise the Hall of Countenance",
+     "how": "Faralda also has a line at the start of this quest; the journal sends you to Nirya."
+    }
+   ],
+   "firstStep": "Talk to Nirya to see what she's plotting",
+   "takesYou": [
+    {
+     "place": "College of Winterhold, Hall of Attainment and the Arcanaeum",
+     "hold": "Winterhold",
+     "why": "Nirya"
+    },
+    {
+     "place": "College of Winterhold, Hall of Countenance",
+     "hold": "Winterhold",
+     "why": "Faralda"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Help Nirya steal Faralda's notes",
+     "leadsTo": "bring the notes to Nirya"
+    },
+    {
+     "choice": "Tell Faralda about the plot",
+     "leadsTo": "the quest ends with Faralda warned"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Nirya to see what she's plotting",
+      "Help Nirya steal the notes or tell Faralda the plot",
+      "Bring the notes to Nirya or tell Faralda the plot"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Nirya",
+     "role": "the plotter; her room is in the Hall of Attainment, and she spends the day in the Arcanaeum"
+    },
+    {
+     "name": "Faralda",
+     "role": "the target; outside by day, in the Hall of Countenance in the evening and at night"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "no condition in these files says whether you must be a College member"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is listed in the quest's scripts; FDE Faralda.esp edits the quest and may change it"
+    },
+    {
+     "field": "choices",
+     "why": "the quest has two separate ending stages but the files don't say which choice leads to which"
+    },
+    {
+     "field": "starts",
+     "why": "both Nirya's and Faralda's lines can come before the first objective, and that objective tells you to go and talk to Nirya, so Faralda's line may be the opener; the files don't show which line sets the quest going"
+    },
+    {
+     "field": "takesYou",
+     "why": "where Faralda's notes are kept isn't given (the quest's Notes and NotesMarker aliases have no place); where Faralda stands outside by day isn't named"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:05D2E9",
+    "giver INFO Skyrim.esm:05D2E3 (GetIsID Nirya, stage < 10)",
+    "Faralda dialogue stage < 11",
+    "Nirya ref Skyrim.esm:01C1A9 cell 0CAB91 Hall of Attainment",
+    "Faralda ref Skyrim.esm:01C1A5 cell 01380F Hall of Countenance",
+    "aliases Notes/NotesMarker",
+    "completing stages 200 and 255",
+    "packages AIOWinterholdFaraldaStandOutside9x6, AIOWinterholdCollegeDinner17x2, WCollegeFaraldaSleep22x7, AIOWinterholdFaraldaWeekends; WCollegeNiryaSandboxArcanaeum11x6, WCollegeNiryaVisitSergius23x3, WCollegeNiryaSleep2x7"
+   ]
+  },
+  {
+   "edid": "TG00",
+   "name": "A Chance Arrangement",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Brynjolf in Riften offers you a job; this is how the Thieves Guild begins.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Brynjolf",
+     "where": "outdoors in Riften",
+     "how": "Talk to Brynjolf in Riften; he talks you into one of his schemes and tells you to meet him during the day."
+    }
+   ],
+   "firstStep": "Meet Brynjolf during daytime",
+   "takesYou": [
+    {
+     "place": "Riften",
+     "hold": "The Rift",
+     "why": "steal Madesi's ring and plant it"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Meet Brynjolf during daytime",
+      "Steal Madesi's Ring",
+      "Plant Madesi's Ring",
+      "Speak to Brynjolf"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end, from Brynjolf"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [
+    "Taking Care of Business"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brynjolf",
+     "role": "gives the job, in Riften"
+    },
+    {
+     "name": "Madesi",
+     "role": "the merchant whose silver ring you steal from his chest"
+    },
+    {
+     "name": "Brand-Shei",
+     "role": "the one the ring is planted on"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "the records place Brynjolf outdoors in Riften but not at a stall or spot; his daily schedule isn't in these files"
+    },
+    {
+     "field": "starts",
+     "why": "the quest runs from the start of the game; the exact line that opens it isn't in these files"
+    },
+    {
+     "field": "steps",
+     "why": "who the ring is planted on comes from the quest's people (Brand-Shei); the objective itself doesn't name him"
+    },
+    {
+     "field": "rewards",
+     "why": "the script also hands out a 'TG00 Pickpocket Boost' perk, likely a help while planting the ring; the files don't say if it stays. Madesi's Silver Ring is the item you steal and plant, not a keepsake. The gold amount isn't given."
+    },
+    {
+     "field": "other",
+     "why": "the story line's opening uses a hard Speech check (75); which line it belongs to isn't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:021556",
+    "start-game enabled (quest_starts thieves-guild)",
+    "giver INFO Skyrim.esm:020ADA (GetIsID Brynjolf)",
+    "Brynjolf ref Skyrim.esm:020545 in Riften exterior cell 016BE0",
+    "Madesi ref Skyrim.esm:021EA6 cell 042247",
+    "aliases TG00MadesiChest, BrandSheiAlias",
+    "rewards TG00QuestScript.pTG00Gold, QF_TG00_00021556.pTG00Pickpockethelper (perk 10F21E), pRing (076F12)",
+    "global SpeechHard 75",
+    "Madesi package RiftenMadesiShopkeeperPlaza0x0; Brand-Shei RiftenBrandSheiShopkeeperPlaza0x0"
+   ]
+  },
+  {
+   "edid": "TG01",
+   "name": "Taking Care of Business",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp, after Update.esm)",
+   "canDo": "talk",
+   "canDoWhy": "After his first job, Brynjolf tells you to find him at the Ragged Flagon for more work.",
+   "needs": [
+    {
+     "what": "Finish A Chance Arrangement",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Brynjolf",
+     "where": "Riften",
+     "how": "At the end of A Chance Arrangement he promises more work if you can find him at the Ragged Flagon."
+    }
+   ],
+   "firstStep": "Locate Brynjolf at the Ragged Flagon",
+   "takesYou": [
+    {
+     "place": "The Ragged Flagon, reached through the Ratway under Riften",
+     "hold": "The Rift",
+     "why": "find Brynjolf and get the job"
+    },
+    {
+     "place": "The Bee and Barb, Riften",
+     "hold": "The Rift",
+     "why": "collect Keerava's debt"
+    },
+    {
+     "place": "The Pawned Prawn, Riften (Bersi may be elsewhere while this quest runs)",
+     "hold": "The Rift",
+     "why": "collect Bersi Honey-Hand's debt"
+    },
+    {
+     "place": "Haelga's Bunkhouse, Riften",
+     "hold": "The Rift",
+     "why": "collect Haelga's debt"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Use Talen-Jei to get to Keerava",
+     "leadsTo": "a way to make Keerava pay"
+    },
+    {
+     "choice": "Smash Bersi's prized Dwarven Urn",
+     "leadsTo": "a way to make Bersi pay"
+    },
+    {
+     "choice": "Steal Haelga's Statue of Dibella",
+     "leadsTo": "a way to make Haelga pay"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Locate Brynjolf at the Ragged Flagon",
+      "Collect Keerava's debt",
+      "(Optional) Use Talen-Jei to get to Keerava",
+      "Collect Bersi Honey-Hand's debt",
+      "(Optional) Smash Bersi's prized Dwarven Urn",
+      "Collect Haelga's debt",
+      "(Optional) Steal Haelga's Statue of Dibella",
+      "Return to Brynjolf"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end, from Brynjolf"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [
+    "Loud and Clear"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brynjolf",
+     "role": "gives the job at the Ragged Flagon"
+    },
+    {
+     "name": "Keerava",
+     "role": "owes a debt, at the Bee and Barb"
+    },
+    {
+     "name": "Talen-Jei",
+     "role": "at the Bee and Barb; Brynjolf says he can help you get to Keerava"
+    },
+    {
+     "name": "Bersi Honey-Hand",
+     "role": "owes a debt, at the Pawned Prawn"
+    },
+    {
+     "name": "Drifa",
+     "role": "at the Pawned Prawn"
+    },
+    {
+     "name": "Haelga",
+     "role": "owes a debt, at Haelga's Bunkhouse"
+    },
+    {
+     "name": "Svana Far-Shield",
+     "role": "at Haelga's Bunkhouse"
+    },
+    {
+     "name": "Vekel the Man",
+     "role": "at the Ragged Flagon"
+    },
+    {
+     "name": "Dirge",
+     "role": "at the Ragged Flagon"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold amount isn't given"
+    },
+    {
+     "field": "where",
+     "why": "the records place Brynjolf outdoors in Riften, not at the spot where you report back to him; his schedule isn't in these files"
+    },
+    {
+     "field": "where",
+     "why": "Drifa's and Svana's part in the quest isn't spelled out"
+    },
+    {
+     "field": "takesYou",
+     "why": "while this quest runs, Bersi's usual Pawned Prawn packages switch off and a quest-time shop package takes over whose place isn't named; he may not be in the Pawned Prawn"
+    },
+    {
+     "field": "takesYou",
+     "why": "which Ratway entrance you use isn't named; the door from Riften's streets into the Ratway is in an unnamed outdoor part of the city"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:01F326",
+    "giver INFO Skyrim.esm:020541 (GetIsID Brynjolf, stage < 11)",
+    "Brynjolf INFO Skyrim.esm:020542 (Talen-Jei hint)",
+    "Keerava ref 019DC8 Bee and Barb",
+    "Bersi ref 019DD0 Pawned Prawn",
+    "Haelga ref 019DDA Haelga's Bunkhouse",
+    "aliases TG01UrnAlias, TG01HaelgaStatueAlias, TG01TalenJeiAlias",
+    "reward TG01QuestScript.pTG01Gold",
+    "doors 048FA0 (Riften 042247 -> The Ratway), 105CE4/0A1E20 (Ratway -> Ragged Flagon)",
+    "Bersi RiftenBersiShopkeeperDuringTG010x0 (TG01 running, no place); Haelga market/B&B packages need TG01 not running"
+   ]
+  },
+  {
+   "edid": "TG02",
+   "name": "Loud and Clear",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Brynjolf takes you to meet the Guild Master once you've collected the debts.",
+   "needs": [
+    {
+     "what": "Finish Taking Care of Business",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Brynjolf",
+     "where": "the Ragged Flagon, under Riften (where you found him in Taking Care of Business)",
+     "how": "Report back to Brynjolf after collecting the three debts; he takes you to meet the leader of his organization."
+    }
+   ],
+   "firstStep": "Follow Brynjolf",
+   "takesYou": [
+    {
+     "place": "The Ragged Flagon - Cistern",
+     "hold": "The Rift",
+     "why": "meet Mercer Frey and join the Thieves Guild"
+    },
+    {
+     "place": "Goldenglow Estate, just outside Riften",
+     "hold": "The Rift",
+     "why": "burn three bee hives and empty Aringoth's safe"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Speak to Vex about Goldenglow Estate first",
+     "leadsTo": "advice on getting in"
+    },
+    {
+     "choice": "Enter Goldenglow through the sewer",
+     "leadsTo": "a back way in"
+    },
+    {
+     "choice": "Get the key to Aringoth's safe",
+     "leadsTo": "open the safe with the key"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Follow Brynjolf",
+      "Listen to Mercer Frey",
+      "Talk to Brynjolf",
+      "Burn three bee hives (0/3)",
+      "(Optional) Speak to Vex about Goldenglow Estate",
+      "(Optional) Enter Goldenglow using sewer",
+      "(Optional) Obtain the key to Aringoth's safe",
+      "Clear out Aringoth's safe",
+      "Return to Brynjolf"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Membership in the Thieves Guild",
+     "when": "when Mercer Frey welcomes you"
+    },
+    {
+     "what": "Gold (Thieves Guild reward)",
+     "when": "at the end, from Brynjolf"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [
+    "Dampened Spirits"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brynjolf",
+     "role": "brings you in and sends you to Goldenglow"
+    },
+    {
+     "name": "Mercer Frey",
+     "role": "Guild Master, in the Cistern"
+    },
+    {
+     "name": "Vex",
+     "role": "at the Ragged Flagon; optional advice on Goldenglow"
+    },
+    {
+     "name": "Delvin Mallory",
+     "role": "has lines during this quest"
+    },
+    {
+     "name": "Aringoth",
+     "role": "owner of Goldenglow Estate, on its second floor"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "choices",
+     "why": "the files don't say how dealing with Aringoth himself plays out, only that his safe must be emptied"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold comes from a leveled list; the amount isn't given"
+    },
+    {
+     "field": "starts",
+     "why": "where Brynjolf waits when you return with the three debts isn't in these files; his own packages put him in the Ragged Flagon only in the afternoon and evening, and only when a guild setting is on, otherwise the Cistern"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:02154E",
+    "giver INFO Skyrim.esm:025D7F (GetIsID Brynjolf, stage < 11)",
+    "Mercer ref Skyrim.esm:022651 cell 016BD0 Ragged Flagon - Cistern",
+    "Aringoth ref 019E13 Goldenglow Estate Second Floor",
+    "Vex ref 028938",
+    "global TG02HiveCount",
+    "aliases TG02AringothsSafeAlias, TG02AringothSafeKeyAlias, TG02VexTunnelMarkerAlias, TG02BillofSaleAlias",
+    "reward TG02QuestScript.pReward (TGRewardGold 0AF26C)"
+   ]
+  },
+  {
+   "edid": "TG03",
+   "name": "Dampened Spirits",
+   "plugin": "Skyrim.esm (last edited by Update.esm)",
+   "canDo": "talk",
+   "canDoWhy": "Brynjolf sends you to Maven Black-Briar, who has a job against a rival meadery.",
+   "needs": [
+    {
+     "what": "Finish Loud and Clear",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Brynjolf",
+     "where": "Riften",
+     "how": "After Goldenglow, Brynjolf tells you to go and see Maven Black-Briar and follow her directions to the letter."
+    }
+   ],
+   "firstStep": "Speak to Maven Black-Briar",
+   "takesYou": [
+    {
+     "place": "Black-Briar Manor, Riften",
+     "hold": "The Rift",
+     "why": "get the job from Maven (in the evening she may be at the Bee and Barb)"
+    },
+    {
+     "place": "Honningbrew Meadery, near Whiterun",
+     "hold": "Whiterun",
+     "why": "meet Mallus Maccius, poison the nest in the tunnels below, taint the mead and find Sabjorn's backer"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Maven Black-Briar",
+      "Speak to Mallus Maccius",
+      "Speak to Sabjorn",
+      "Poison the Nest",
+      "Poison the Honningbrew Vat",
+      "Return to Sabjorn",
+      "Attend the tasting ceremony",
+      "Speak to Mallus Maccius",
+      "Identify Sabjorn's silent partner",
+      "Return to Maven Black-Briar",
+      "Return to Brynjolf"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end"
+    },
+    {
+     "what": "An enchanted one-handed weapon (Thieves Guild reward)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [
+    "Scoundrel's Folly"
+   ],
+   "closes": [
+    "Sabjorn is jailed and Honningbrew Meadery closes; Mallus Maccius takes it over"
+   ],
+   "people": [
+    {
+     "name": "Maven Black-Briar",
+     "role": "gives the job, in Black-Briar Manor"
+    },
+    {
+     "name": "Mallus Maccius",
+     "role": "your partner in the scheme, at Honningbrew Meadery"
+    },
+    {
+     "name": "Sabjorn",
+     "role": "owner of Honningbrew Meadery, the target; ends up in Whiterun's jail under Dragonsreach"
+    },
+    {
+     "name": "Eimar",
+     "role": "Honningbrew worker; while this quest runs he is at the Bannered Mare in Whiterun"
+    },
+    {
+     "name": "Whiterun's Captain of the Guard",
+     "role": "drinks the poisoned mead at the tasting"
+    },
+    {
+     "name": "Brynjolf",
+     "role": "sends you and gets your report"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "steps",
+     "why": "Sabjorn's silent partner is found through a letter in his chest; the exact spot isn't given"
+    },
+    {
+     "field": "rewards",
+     "why": "the gold amount and which weapon you get aren't fixed in these files"
+    },
+    {
+     "field": "where",
+     "why": "the records place Brynjolf outdoors in Riften, not at the spot where you report back to him; his schedule isn't in these files"
+    },
+    {
+     "field": "where",
+     "why": "while this quest runs Maven's usual manor, keep and meadery packages switch off; she falls back to Black-Briar Manor but spends 4pm to 6pm outdoors (spot not named) and 8pm to midnight at the Bee and Barb; quest-time packages for her aren't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:02154F",
+    "giver INFO Skyrim.esm:02BA6B (GetIsID Maven, stage < 11)",
+    "Maven ref 019DD1 Black-Briar Manor",
+    "Mallus ref 02BA8F, Sabjorn ref 02BA8D, Eimar ref 0B2978 in cell 015207 Honningbrew Meadery",
+    "aliases TG03SabjornChest, TG03SabjornLetterAlias, TG03CaptainAlias, TG03NestAlias, TG03BrewingVatAlias",
+    "rewards QF_TG03_0002154F.pTG03Gold, pTG03Reward (TGRewardEnchWeapon1Ha 0AF251)",
+    "Mallus HonningbrewMallusWorks0x0/Sleeps0x6 (Honningbrew Meadery); people_raw Mallus inTown Whiterun",
+    "Maven packages: manor/keep/meadery need TG03 not running; RiftenMavenMarket16x2, RiftenMavenBeeandBarb20x4, DefaultSandboxEditorLocation512",
+    "Eimar HonningbrewEimarAtMare0x0DuringTG03 (Bannered Mare)",
+    "Sabjorn TG03SabjornPostQuestInJail* (Whiterun Jail)"
+   ]
+  },
+  {
+   "edid": "TG04",
+   "name": "Scoundrel's Folly",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "After the meadery job, Mercer Frey sends you to Solitude to make an old contact talk.",
+   "needs": [
+    {
+     "what": "Finish Dampened Spirits",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Brynjolf",
+     "where": "Riften",
+     "how": "Report back to Brynjolf after Dampened Spirits; it's time to find the Guild's hidden enemy, and he points you to Mercer Frey in the Cistern."
+    }
+   ],
+   "firstStep": "Speak to Mercer Frey",
+   "takesYou": [
+    {
+     "place": "The Ragged Flagon - Cistern",
+     "hold": "The Rift",
+     "why": "get orders from Mercer Frey"
+    },
+    {
+     "place": "The Winking Skeever, Solitude",
+     "hold": "Haafingar",
+     "why": "find Gulum-Ei"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Gulum-Ei talks once you have leverage on him",
+     "leadsTo": "he names the Guild's enemy"
+    },
+    {
+     "choice": "Gulum-Ei can't be made to talk",
+     "leadsTo": "the journal has you find another source of information instead"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Mercer Frey",
+      "(Optional) Speak to Brynjolf",
+      "Speak to Gulum-Ei",
+      "Steal case of Firebrand Wine",
+      "Get information from Gulum-Ei",
+      "Shadow Gulum-Ei",
+      "Confront Gulum-Ei",
+      "Find alternative source of information",
+      "Return to Mercer Frey"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Thieves Guild",
+   "opens": [
+    "Speaking With Silence"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Mercer Frey",
+     "role": "Guild Master, in the Cistern"
+    },
+    {
+     "name": "Brynjolf",
+     "role": "optional talk before you go"
+    },
+    {
+     "name": "Gulum-Ei",
+     "role": "the Guild's old contact, at the Winking Skeever in Solitude"
+    },
+    {
+     "name": "Maven Black-Briar",
+     "role": "has lines during this quest"
+    },
+    {
+     "name": "Karliah",
+     "role": "named at the end as the Guild's enemy"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "where Gulum-Ei goes when you shadow him, and where you confront him, aren't in these files"
+    },
+    {
+     "field": "choices",
+     "why": "the other-source branch is read from a note and a chest the quest holds for that case; what triggers it isn't spelled out"
+    },
+    {
+     "field": "rewards",
+     "why": "the script handles the Goldenglow Bill of Sale, but the files don't say whether you get it or hand it over; no other reward is listed"
+    },
+    {
+     "field": "where",
+     "why": "the records place Brynjolf outdoors in Riften, not at the spot where you report back to him; his schedule isn't in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "Gulum-Ei's own package keeps him at the Winking Skeever only while this quest is not running; once it runs his place comes from the quest, which these files don't show"
+    },
+    {
+     "field": "choices",
+     "why": "Gulum-Ei is flagged essential, so his death is unlikely to be what sends you to another source; what does trigger that branch isn't shown"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:021550",
+    "giver INFO Skyrim.esm:02BA6D (GetIsID Brynjolf, stage < 11); Mercer stage < 11",
+    "Gulum-Ei ref 0198B7 cell 016A0E The Winking Skeever",
+    "Mercer INFO Skyrim.esm:02CC4D (names Snow Veil Sanctum)",
+    "aliases TG04FirebrandWine, TG04DeathNote, TG04KillChestAlias, TG04DeedAlias",
+    "TG04QuestScript.pTG04Deed (07A508)",
+    "Gulum-Ei SolitudeGulumEiPreTG04Package0x0 (needs TG04 not running); essential",
+    "Mercer ThievesGuildMercerFreyLeaderSandbox0x0 (Cistern)"
+   ]
+  },
+  {
+   "edid": "TG05",
+   "name": "Speaking With Silence",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp, after Update.esm and Dawnguard.esm)",
+   "canDo": "talk",
+   "canDoWhy": "Mercer Frey asks you to meet him at the ruin where Karliah was last seen.",
+   "needs": [
+    {
+     "what": "Finish Scoundrel's Folly",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Mercer Frey",
+     "where": "the Cistern, under the Ragged Flagon in Riften",
+     "how": "Report back to Mercer after Scoundrel's Folly; he tells you to meet him at Snow Veil Sanctum when you're ready."
+    }
+   ],
+   "firstStep": "Meet Mercer Frey outside Snow Veil Sanctum",
+   "takesYou": [
+    {
+     "place": "Snow Veil Sanctum",
+     "hold": "Winterhold",
+     "why": "hunt down Karliah with Mercer"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Meet Mercer Frey outside Snow Veil Sanctum",
+      "Enter Snow Veil Sanctum",
+      "Find Karliah",
+      "Speak to Karliah"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Poisons (Thieves Guild reward)",
+     "when": "from the quest's script"
+    }
+   ],
+   "type": "Thieves Guild",
+   "opens": [
+    "Hard Answers"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Mercer Frey",
+     "role": "meets you outside Snow Veil Sanctum"
+    },
+    {
+     "name": "Karliah",
+     "role": "found in Snow Veil Sanctum"
+    },
+    {
+     "name": "Brynjolf",
+     "role": "part of the quest's cast"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "the script also uses 'Karliah's Invisibility'; it isn't in the player spell list here, so it may be the spell Karliah casts rather than one you learn. When the poisons are given isn't shown."
+    },
+    {
+     "field": "where",
+     "why": "Snow Veil Sanctum is in Winterhold hold, a short walk from Windhelm by these files"
+    },
+    {
+     "field": "closes",
+     "why": "Mercer turns on you and is revealed as Gallus' killer, but no record here shows that locking anything; his Cistern package stays until Blindsighted"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:021551",
+    "giver INFO Skyrim.esm:02C34C (GetIsID Mercer, stage < 11)",
+    "Mercer INFO Skyrim.esm:080C0F ('meet me at Snow Veil Sanctum')",
+    "Karliah ref 058F1A cell 025E24 Snow Veil Sanctum",
+    "place Skyrim.esm:0192AF hold Winterhold",
+    "rewards QF_TG05_00021551.pTG05KarliahInvisibilitySpell (0D61E3), pTG05Reward (TGRewardPoisonAllBest 0AF00D)"
+   ]
+  },
+  {
+   "edid": "TG06",
+   "name": "Hard Answers",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp, after Update.esm)",
+   "canDo": "talk",
+   "canDoWhy": "Karliah needs Gallus' coded journal read, which sends you to the College and then Markarth.",
+   "needs": [
+    {
+     "what": "Finish Speaking With Silence",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Karliah",
+     "where": "Snow Veil Sanctum",
+     "how": "Talk to Karliah after Mercer's betrayal; she needs Gallus' journal deciphered and names Enthir at the College of Winterhold."
+    }
+   ],
+   "firstStep": "Speak with Enthir",
+   "takesYou": [
+    {
+     "place": "College of Winterhold, Hall of Attainment",
+     "hold": "Winterhold",
+     "why": "Enthir, who can read the journal"
+    },
+    {
+     "place": "Understone Keep, Markarth",
+     "hold": "The Reach",
+     "why": "Calcelmo; get into his museum and copy the Falmer writing on the stone slab in his tower"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Get the key to Calcelmo's Museum",
+     "leadsTo": "an easier way into the museum"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak with Enthir",
+      "Speak with Calcelmo",
+      "Gain entry to Calcelmo's Museum",
+      "(Optional) Obtain the key to Calcelmo's Museum",
+      "Obtain Calcelmo's Falmer Translating Guide",
+      "Duplicate the writing on Calcelmo's Stone",
+      "Return to Enthir",
+      "Speak to Enthir",
+      "Speak to Karliah"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Thieves Guild",
+   "opens": [
+    "The Pursuit"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Karliah",
+     "role": "starts it and hears the journal's contents"
+    },
+    {
+     "name": "Enthir",
+     "role": "wizard in the Hall of Attainment who translates the journal"
+    },
+    {
+     "name": "Calcelmo",
+     "role": "court wizard in Understone Keep who won't share his Falmer notes"
+    },
+    {
+     "name": "Brynjolf",
+     "role": "the one Karliah wants to take the proof to"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "where",
+     "why": "the records place Karliah in Snow Veil Sanctum, but after the last quest you wake in her care; these files don't say where she stands at that point"
+    },
+    {
+     "field": "takesYou",
+     "why": "the museum's exact way in isn't named; the quest has a trail of markers and one by a waterfall"
+    },
+    {
+     "field": "rewards",
+     "why": "the script uses 'Karliah's Invisibility' again; it may be cast by Karliah rather than given to you. No other reward is listed."
+    },
+    {
+     "field": "takesYou",
+     "why": "the records name the museum and Calcelmo's tower but not the route between them; the files elsewhere name a cell \"Calcelmo's Tower, Dwemer Museum\" and Calcelmo's Laboratory, and which one holds the stone isn't tied to this quest"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:021552",
+    "giver INFO Skyrim.esm:032D55 (GetIsID Enthir, stage < 11); Karliah stage < 11; Calcelmo stage < 21",
+    "Enthir ref 01C1AA cell 0CAB91 Hall of Attainment",
+    "Calcelmo ref 019908 cell 016DF2 Understone Keep",
+    "aliases TranslationStoneAlias, TG06RubbingAlias, TG06MuseumKey, TG06WaterfallBreadcrumb",
+    "Karliah INFO Skyrim.esm:0531AA (Twilight Sepulcher)",
+    "QF_TG06_00021552.TG05KarliahInvisibilitySpell",
+    "TG06 stage 40 log (\"stone slab in his tower\")",
+    "Enthir WCollegeEnthirSandboxRoom; Calcelmo MarkarthCastleWizardVendor0x24Package"
+   ]
+  },
+  {
+   "edid": "TG07",
+   "name": "The Pursuit",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "With the journal read, Karliah meets you at the Ragged Flagon to convince Brynjolf, then you hunt Mercer.",
+   "needs": [
+    {
+     "what": "Finish Hard Answers",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Karliah",
+     "where": "wherever you speak to her at the end of Hard Answers",
+     "how": "Talk to Karliah once Enthir has translated the journal; she tells you to meet her at the Ragged Flagon."
+    }
+   ],
+   "firstStep": "Meet Karliah at the Ragged Flagon",
+   "takesYou": [
+    {
+     "place": "The Ragged Flagon and the Cistern",
+     "hold": "The Rift",
+     "why": "convince Brynjolf; the Guild's vault is found empty"
+    },
+    {
+     "place": "Riftweald Manor, Riften",
+     "hold": "The Rift",
+     "why": "Mercer's house; find where he went"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Speak to Vex about Vald",
+     "leadsTo": "an optional way past Vald while you break into Mercer's house"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Meet Karliah at the Ragged Flagon",
+      "Follow Karliah",
+      "Speak to Brynjolf",
+      "Infiltrate Mercer's House",
+      "Shoot the mechanism to lower the ramp",
+      "(Optional) Speak to Vex about Vald",
+      "Discover evidence of Mercer's location",
+      "Speak to Brynjolf"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Thieves Guild",
+   "opens": [
+    "Trinity Restored"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Karliah",
+     "role": "meets you at the Ragged Flagon"
+    },
+    {
+     "name": "Brynjolf",
+     "role": "convinced of Mercer's betrayal"
+    },
+    {
+     "name": "Vex",
+     "role": "at the Ragged Flagon; tells you about Vald"
+    },
+    {
+     "name": "Delvin Mallory",
+     "role": "at the Ragged Flagon"
+    },
+    {
+     "name": "Vald",
+     "role": "in Riften, in your way during the break-in at Mercer's house; Vex knows about him"
+    },
+    {
+     "name": "Maven Black-Briar",
+     "role": "part of the quest's cast"
+    },
+    {
+     "name": "Mercer Frey",
+     "role": "the man you're hunting"
+    },
+    {
+     "name": "Guild members in the Cistern",
+     "role": "Vipir the Fleet, Niruin, Sapphire, Cynric Endell, Thrynn, Rune, Garthar and Ravyn Imyan are all part of the quest"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the order comes from the Thieves Guild story line and the journal text; the conditions on the opening dialogue aren't in these files"
+    },
+    {
+     "field": "starts",
+     "why": "the files don't say where Karliah is when Hard Answers ends"
+    },
+    {
+     "field": "takesYou",
+     "why": "Snazzy Interiors - Riften AIO hides and adds Riftweald Manor doors in LoreRim, so the way into Mercer's house may differ from the base game"
+    },
+    {
+     "field": "opens",
+     "why": "the plans point to the Eyes of the Falmer; Brynjolf names Irkngthand in The Pale during Trinity Restored"
+    },
+    {
+     "field": "rewards",
+     "why": "the script hands out a note, Vald's Debt, tied to the optional Vex/Vald step; whether you keep it or hand it to Vald isn't shown. Maven's and the Cistern members' parts aren't spelled out"
+    },
+    {
+     "field": "choices",
+     "why": "Vald is placed in Riften's general outdoor area with no packages, so where he stands and what he does at Mercer's house isn't in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:021553",
+    "giver INFO Skyrim.esm:055A9E (GetIsID Karliah, stage < 11)",
+    "Vald ref 072B09 Riften exterior",
+    "aliases FalmerPlansAlias, TG07RampMarker, TG07BackDoorAlias, ValdAlias, TG07MavenAlias",
+    "reward QF_TG07_00021553.pDebt (072B13)",
+    "quest_starts thieves-guild: Riftweald Manor doors under Snazzy Location Resources.esp:0575FF/0575FE",
+    "Irkngthand INFO Skyrim.esm:091942 (Trinity Restored)",
+    "next in line QUST Skyrim.esm:057F99 TG08A",
+    "Vald people_schedules: no packages, no factions"
+   ]
+  }
+ ]
+}
