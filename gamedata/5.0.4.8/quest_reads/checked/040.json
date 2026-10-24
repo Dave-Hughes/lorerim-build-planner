@@ -1,0 +1,1418 @@
+{
+  "checks": [
+    {
+      "edid": "HABLBladesQuest03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 000C7E is GetIsID Za'kir, stage below 31: a talk quest."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Kept with the reader's unsure notes. Za'kir's HABLLoremasterSandbox01 (Wind Scour Temple) needs HABLQuest01 completed and this quest not completed, and objectives 30/50/70 send you to him in the temple; the dialogue line itself carries no quest condition in these files. Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Loremaster Za'kir (001856), GetIsID on INFO 000C7E."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "His placed ref is in the Common House (000B35), but Sandbox01 puts him in the Wind Scour Temple from the end of A Lost Temple until this quest is done; the temple is right."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Stage 10 log: 'Za'kir has sent me the location of two caves'. The reader's unsure note on note-vs-talk stands."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "'any fire' isn't supported: the quest has a Burn alias (index 7), a fixed slot, so the objective most likely points at one fire. Changed to 'the fire the quest marks' and added an unsure note. The rest agrees: Blade ghosts 000C43/000C45 sandbox in the two Akaviri Ruins cells (000BD4/000BFB), Azzin 000C49 in Azzin's Lair (000C15), Jonathan's ref 02F224 in Skyrim.esm:008DF5 (world Skyrim)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages run straight 10-90 then 200; no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold via HABL_QF_HABLBladesQuest03_06000C5D.Gold001; amount not in the files. Added the script-only unsure note per Bob's ruling."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records names a follow-on. Its only after-effect is Za'kir moving to the Common House (HABLLoremasterSandbox02, on completion)."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Jonathan is a skeleton already; nothing is locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLQuest01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 000A75, GetIsID Duraelm, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Duraelm (001852); journal spells him Duarelm."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Placed ref 000A61 in Gray Fox Cowl.esm:2001E3 (Alik'r Desert, unnamed). No package applies before stage 50 (QuestPackage at 50/60, Sleep/Sandbox after 60), so the placement holds. The Vulstad guess is fair and hedged: Azita is placed in the same cell and sleeps in the Common House, and Duraelm, Azita, Za'kir and Vulstad's townsfolk (Majya, Terinen, Nahtil, the guards) share HABLVulstadFaction. Still unconfirmed, so the unsure note stays."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Aliases Zone01-03; stage 30 says the second spot was a hideout, stage 40 a trap door; Duraelm follows you (QuestPackage at 50/60) and then sandboxes in the Wind Scour Temple (00080A) after stage 60."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold via HABL_QF_HABLQuest01_03000A8E.Gold001. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Kept as an inference with the reader's unsure note. Za'kir is only in the temple once this quest is completed (Sandbox01), and Sands of the Past / In need of Scouts send you to him there; Duraelm only lives in the temple after stage 60, and the Dragonguard Archives finish in the temple. No start condition names this quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLQuest02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 000A8B, GetIsID Duraelm, stage below 10; Location alias filled at start."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Kept as an inference. Duraelm's Sleep/Sandbox in the Wind Scour Temple need HABLQuest01 past stage 60, not completed, so I added that nuance to unsure. Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Duraelm (001852)."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Wind Scour Temple per HABLDuarelmSandboc/Sleep (cell 00080A)."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Stage 10 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 with <Alias=Location> worded for a player."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Location/Container/Book aliases; options not in the files."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold via HABL_QF_HABLQuest02_03000A8F.Gold001. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "No record ties it to the Book 1-6 quests."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLRaQuest01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'by itself' is the best reading and nothing contradicts it, but the records don't settle what starts it: quest_givers_raw has no giver and no start event; only the Notice/Note aliases hint at a note. Kept the value, added an unsure note on what would settle it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown. The 'after A Lost Temple' guess is rightly left in unsure."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right: no giver in the records."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective 10 names Vulstad; objective 20 is the chest in the Wind Scour Temple."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 10/20/200, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "HABL_QF_HABLRaQuest01_03000AB8: HABLCM76 = Crafting Motif 76: Dragonguard Style (BOOK 000A6A) and Gold001. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLRaQuest02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'by itself' is the best reading and nothing contradicts it, but the records don't settle what starts it: quest_givers_raw has no giver and no start event; only the Notice/Note aliases hint at a note. Kept the value, added an unsure note on what would settle it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown. The 'after A Lost Temple' guess is rightly left in unsure."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right: no giver in the records."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective 10 names Ben Erai Barracks; people_raw puts the Ben Erai City Guards in a 'Guard Barracks' cell, so 'the Guard Barracks in Ben Erai' is a fair reading; objective 20 is the chest in the Wind Scour Temple."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 10/20/200, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "HABL_QF_HABLRaQuest02_03000AB9.Gold001 only. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLRaQuest03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'by itself' is the best reading and nothing contradicts it, but the records don't settle what starts it: quest_givers_raw has no giver and no start event; only the Notice/Note aliases hint at a note. Kept the value, added an unsure note on what would settle it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown. The 'after A Lost Temple' guess is rightly left in unsure."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right: no giver in the records."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective 10 names Ben Erai; objective 20 is the chest in the Wind Scour Temple."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 10/20/200, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "HABL_QF_HABLRaQuest03_03000AB7.Gold001 only. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLRaQuest04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'by itself' is the best reading and nothing contradicts it, but the records don't settle what starts it: quest_givers_raw has no giver and no start event; only the Notice/Note aliases hint at a note. Kept the value, added an unsure note on what would settle it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown. The 'after A Lost Temple' guess is rightly left in unsure."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right: no giver in the records."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective 10 names the Fortress of Ben Erai (a cell of that name holds Coventina, Marcus and others in people_raw); objective 20 is the chest in the Wind Scour Temple."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 10/20/200, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "HABL_QF_HABLRaQuest04_03000ABB.Gold001 only; the BookJadarri1 alias is correctly left in unsure. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLRaQuest05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'by itself' is the best reading and nothing contradicts it, but the records don't settle what starts it: quest_givers_raw has no giver and no start event; only the Notice/Note aliases hint at a note. Kept the value, added an unsure note on what would settle it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown. The 'after A Lost Temple' guess is rightly left in unsure."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right: no giver in the records."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective 10 names Arenar's Camp; objective 20 is the chest in the Wind Scour Temple."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 10/20/200, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "HABL_QF_HABLRaQuest05_03000ABA: HABLHornofJadarri2 = Searching for the Horn of Ja'darri, Part 2 (BOOK 000A6B) and Gold001. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "HABLRaQuest06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "'by itself' is the best reading and nothing contradicts it, but the records don't settle what starts it: quest_givers_raw has no giver and no start event; only the Notice/Note aliases hint at a note. Kept the value, added an unsure note on what would settle it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown. The 'after A Lost Temple' guess is rightly left in unsure."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Empty is right: no giver in the records."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Empty, as above."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objective 10 names Khenzedum (places_raw 00E3F4: Dwemer ruin, 15-60, Dwarven Praetorian level 60, traps, lists this quest); objective 20 is the chest in the Wind Scour Temple."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 10/20/200, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "HABL_QF_HABLRaQuest06_03000ABC.Gold001 only. Added the script-only unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "LAMIDesertLamiaQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 001268, GetIsID Oziriana, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every place is in the Alik'r Desert worldspace (Gray Fox Cowl.esm cells); The Call of Gray Cowl of Nocturnal (manny_GF_MQ) is in quests_raw. No other way in shown."
+        },
+        "starts.who": {
+          "verdict": "agree",
+          "note": "Oziriana (0011F5)."
+        },
+        "starts.where": {
+          "verdict": "agree",
+          "note": "Placed ref 001201 in Gray Fox Cowl.esm:20064F (Alik'r Desert, unnamed). Before the quest she is in neither follower faction, so LAMIOzirianaSandboxPackage (near marker 001280, cell unnamed) applies. The reader's unsure note covers it."
+        },
+        "starts.how": {
+          "verdict": "agree",
+          "note": "Stage 10 log: 'I told her I would help her.'"
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Feiria 001222, ref 001224 in Gray Fox Cowl.esm:00FA57 (the same cell holds the persistent dragons of Protecting What Was Lost, so it's not a real spot); Fire and Activator aliases for the fire. Oziriana follows you at stages 10-40 (FollowQuestPackage)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold via LAMI_QF_LAMIDesertLamiaQuest_06000862.Gold001. Added the script-only note and a note on the Spectral Lamia spell, which the records don't tie to this quest."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Feiria is not essential (protected only) and the quest has you defeat her; fair as 'a person who dies'."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "HABLBladesQuest03",
+      "name": "Sands of the Past",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Loremaster Za'kir gives it at the Wind Scour Temple once the Blades have moved in.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        },
+        {
+          "what": "Finish A Lost Temple in Hammerfell",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Loremaster Za'kir",
+          "where": "the Wind Scour Temple, Alik'r Desert",
+          "how": "Talk to Za'kir. He sends you the locations of two caves where he thinks ghosts are causing trouble."
+        }
+      ],
+      "firstStep": "Head to the first location given by Za'kir and defeat the ghost haunting the place",
+      "takesYou": [
+        {
+          "place": "Akaviri Ruins (two caves)",
+          "hold": "Alik'r Desert",
+          "why": "defeat the Blade ghosts haunting them"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "report back to Za'kir"
+        },
+        {
+          "place": "Azzin's Lair (the journal calls it the Akaviri Cave)",
+          "hold": "Alik'r Desert",
+          "why": "the bigger cave Za'kir found; pick up Azzin's journal"
+        },
+        {
+          "place": "wherever Jonathan Seven-Swords is hiding",
+          "hold": "unknown (the records place him in Skyrim, not Hammerfell)",
+          "why": "try to recruit the blademaster's descendant; you find him dead"
+        },
+        {
+          "place": "the fire the quest marks",
+          "hold": "",
+          "why": "burn Azzin's Journal there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Head to the first location given by Za'kir and defeat the ghost haunting the place",
+            "Head to the second location given by Za'kir and defeat the ghost haunting the place",
+            "Go back to Loremaster Za'kir in the Wind Scour Temple",
+            "Find something of interest in the new location given by Za'kir",
+            "Head back to Za'kir in the Wind Scour Temple",
+            "Find out where Jonathan Seven-Swords is hiding",
+            "Tell Za'kir in the Wind Scour Temple that Jonathan is dead",
+            "Burn Azzin's Journal in a fire",
+            "Talk to Loremaster Za'kir again"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Loremaster Za'kir",
+          "role": "gives the quest; in the Wind Scour Temple until it's done, then he moves to the Common House"
+        },
+        {
+          "name": "Blade (ghost)",
+          "role": "two of them, one in each Akaviri Ruins cave"
+        },
+        {
+          "name": "Azzin",
+          "role": "ghost of an ancient Blade, in Azzin's Lair; laid to rest by burning his journal"
+        },
+        {
+          "name": "Jonathan Seven-Swords",
+          "role": "descendant of a blademaster; found dead"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "needs",
+          "why": "Za'kir only stands in the Wind Scour Temple once A Lost Temple in Hammerfell is finished, which is why that's listed. He also gives In need of Scouts, which may have to come first; no condition saying so is in these files."
+        },
+        {
+          "field": "starts",
+          "why": "The dialogue line the records tie to Za'kir applies while the quest is early on, but the line that sets the first stage isn't confirmed. The journal says he 'sent' the locations, so the start could be a note rather than a talk."
+        },
+        {
+          "field": "takesYou",
+          "why": "Jonathan Seven-Swords (a skeleton) is placed in an outdoor cell of the Skyrim worldspace, not the Alik'r Desert; the exact spot isn't named in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "Which Akaviri Ruins cave is 'first' and which 'second' isn't in these files; both cells are named Akaviri Ruins."
+        },
+        {
+          "field": "takesYou",
+          "why": "The quest has its own slot for the fire (Burn), so it most likely points at one particular fire rather than any fire; which one, and where, isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold comes from the quest script's Gold001 property; it isn't confirmed which step pays it or how much."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000C5D: stages 10-90, 200; objectives 10-90",
+        "giver INFO 000C7E (GetIsID Za'kir 001856, stage below 31)",
+        "Za'kir package HABLLoremasterSandbox01 (Wind Scour Temple) needs 000A8E completed and 000C5D not completed; HABLLoremasterSandbox02 (cell 000B35 Common House) after 000C5D completed",
+        "Blade ghosts 000C43/000C45 in Akaviri Ruins cells 000BD4/000BFB; Azzin 000C49 in Azzin's Lair 000C15",
+        "Jonathan 000C4E ref 02F224 in Skyrim.esm:008DF5 (world Skyrim)",
+        "reward HABL_QF_HABLBladesQuest03_06000C5D.Gold001",
+        "gold is a script property (Gold001); the amount isn't in these files",
+        "alias 7 Burn (a fixed slot for the burn objective)"
+      ]
+    },
+    {
+      "edid": "HABLQuest01",
+      "name": "A Lost Temple in Hammerfell",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "An old Redguard, Duraelm, asks you to help him find the Wind Scour Temple.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Duraelm (the journal spells it Duarelm)",
+          "where": "outdoors in the Alik'r Desert, likely in or near Vulstad",
+          "how": "Talk to Duraelm. He asks you to search the desert for a secret entrance to the Wind Scour Temple."
+        }
+      ],
+      "firstStep": "Search the first location",
+      "takesYou": [
+        {
+          "place": "three places in the Alik'r Desert Duraelm marks",
+          "hold": "Alik'r Desert",
+          "why": "look for the temple's hidden entrance; the third has a trap door"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "go in with Duraelm, then come back later once he has reclaimed it"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Search the first location",
+            "You didn't find anything there, search the second location",
+            "There was a hideout but not a temple, search the third location",
+            "You have found the Wind Scour Temple, go back to Duarelm",
+            "Head to the Wind Scour Temple",
+            "Talk to Duarelm",
+            "Wait for Duarelm to reclaim the Wind Scour Temple",
+            "Go back to Duarelm in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "Dragonguard Archives",
+        "Sands of the Past",
+        "In need of Scouts"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Duraelm",
+          "role": "gives the quest; walks with you to the temple, then lives and sleeps in the Wind Scour Temple"
+        },
+        {
+          "name": "Falama",
+          "role": "in the Wind Scour Temple"
+        },
+        {
+          "name": "Hainin",
+          "role": "in the Wind Scour Temple"
+        },
+        {
+          "name": "Jali",
+          "role": "in the Wind Scour Towers"
+        },
+        {
+          "name": "Jawalar",
+          "role": "in the Wind Scour Towers"
+        },
+        {
+          "name": "Loremaster Za'kir",
+          "role": "moves into the Wind Scour Temple once this quest is done"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "where",
+          "why": "Before the temple is found, Duraelm has no package that applies, so he stays where he is placed: an outdoor cell of the Alik'r Desert that these files don't name. Azita is placed in the same cell and both are in the Vulstad faction, so it is probably in or near Vulstad, but that isn't confirmed."
+        },
+        {
+          "field": "takesYou",
+          "why": "The three search spots are quest markers (Zone01-03); their names aren't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "Inferred: Duraelm only lives in the temple after this quest's later stages, and Za'kir only stands there once it is finished. No condition in these files names this quest as the start of the others."
+        },
+        {
+          "field": "people",
+          "why": "Falama, Hainin, Jali and Jawalar fill this quest's Person slots; what they do in it isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold comes from the quest script's Gold001 property; it isn't confirmed which step pays it or how much."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000A8E: stages 10-80, 200; objectives 10-80",
+        "giver INFO 000A75 (GetIsID Duraelm 001852, stage below 10); Duraelm ref 000A61 in Gray Fox Cowl.esm:2001E3",
+        "Duraelm packages: HABLDuarelmQuestPackage at stage 50/60; HABLDuarelmSleep/Sandboc in Wind Scour Temple (cell 00080A) after stage 60",
+        "Za'kir HABLLoremasterSandbox01 needs 000A8E completed",
+        "aliases Person02-05: Falama 000807, Hainin 000804, Jali 000808, Jawalar 000809",
+        "reward HABL_QF_HABLQuest01_03000A8E.Gold001",
+        "gold is a script property (Gold001); the amount isn't in these files"
+      ]
+    },
+    {
+      "edid": "HABLQuest02",
+      "name": "Dragonguard Archives",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Duraelm asks you to fetch a book for the Dragonguard archives. The game picks where the book is.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        },
+        {
+          "what": "Finish A Lost Temple in Hammerfell",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Duraelm (the journal spells it Duarelm)",
+          "where": "the Wind Scour Temple, Alik'r Desert",
+          "how": "Talk to Duraelm. He asks you to bring back a Dragonguard book from a place he names."
+        }
+      ],
+      "firstStep": "Find the Dragonguard book in the place Duraelm names and bring it back to him",
+      "takesYou": [
+        {
+          "place": "a place picked when the quest starts",
+          "hold": "",
+          "why": "find the Dragonguard book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "give the book to Duraelm"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the Dragonguard book in <the place he names> and bring it back to Duarelm",
+            "Go back to Duarelm"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Duraelm",
+          "role": "gives the quest and takes the book; lives in the Wind Scour Temple"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "takesYou",
+          "why": "The book's place is a Location slot filled when the quest starts; which places it can pick isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Inferred: Duraelm only lives in the Wind Scour Temple after the temple is found in A Lost Temple in Hammerfell. Before that he stands outdoors in the desert (see that quest). The dialogue conditions beyond the stage aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold comes from the quest script's Gold001 property; it isn't confirmed which step pays it or how much."
+        },
+        {
+          "field": "needs",
+          "why": "Duraelm's temple packages apply once A Lost Temple is past stage 60, so this may be offered a little before that quest is formally finished."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000A8F: stages 10/20/200; objectives 10/20; aliases Location, Container, Book, Duarelm",
+        "giver INFO 000A8B (GetIsID Duraelm 001852, stage below 10)",
+        "Duraelm packages in Wind Scour Temple apply after 000A8E stage 60",
+        "reward HABL_QF_HABLQuest02_03000A8F.Gold001",
+        "gold is a script property (Gold001); the amount isn't in these files"
+      ]
+    },
+    {
+      "edid": "HABLRaQuest01",
+      "name": "Dragonguard Archives: Book 1",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Nobody gives this one in the records. It likely starts when you read a notice or note, but what starts it isn't shown.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Get the Dragonguard book from Vulstad",
+      "takesYou": [
+        {
+          "place": "Vulstad",
+          "hold": "Alik'r Desert",
+          "why": "get the book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "put the book in the archive chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get the Dragonguard book from Vulstad",
+            "Put the Dragonguard book in the chest in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Crafting Motif 76: Dragonguard Style (book)",
+          "when": "once the book is in the chest"
+        },
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "once the book is in the chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "starts",
+          "why": "No person hands this out in the records and there is no start event. The quest has Notice and Note slots, so it probably starts from a notice or note, but what sets the first stage isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Probably comes after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple, but no condition saying so is in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "Vulstad has guards of its own in the records, but it isn't in the places index, so where it lies in the desert isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Every reward here comes from the quest script's properties; it isn't confirmed which step hands them over, or how much gold."
+        },
+        {
+          "field": "canDo",
+          "why": "No giver and no start event in these files. A notice or note being read (the quest's Notice and Note slots) or another quest's script (perhaps Duraelm's Dragonguard Archives) could set the first stage; the script or the notice's placement would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000AB8 (HABLRaQuest01): objectives 10/20, stages 10/20/200; aliases include Notice, Note, BookContainer",
+        "quest_givers_raw HABLRaQuest01: no giver, no start event; rewards via HABL_QF_HABLRaQuest01 script",
+        "gold is a script property (Gold001); the amount isn't in these files",
+        "reward HABL_QF_HABLRaQuest01_03000AB8.HABLCM76 = BOOK 000A6A Crafting Motif 76: Dragonguard Style"
+      ]
+    },
+    {
+      "edid": "HABLRaQuest02",
+      "name": "Dragonguard Archives: Book 2",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Nobody gives this one in the records. It likely starts when you read a notice or note, but what starts it isn't shown.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Get the Blades book from the Ben Erai Barracks",
+      "takesYou": [
+        {
+          "place": "the Guard Barracks in Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "get the book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "put the book in the archive chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get the Blades book from the Ben Erai Barracks",
+            "Put the Blades book in the chest in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "once the book is in the chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "starts",
+          "why": "No person hands this out in the records and there is no start event. The quest has Notice and Note slots, so it probably starts from a notice or note, but what sets the first stage isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Probably comes after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple, but no condition saying so is in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Every reward here comes from the quest script's properties; it isn't confirmed which step hands them over, or how much gold."
+        },
+        {
+          "field": "canDo",
+          "why": "No giver and no start event in these files. A notice or note being read (the quest's Notice and Note slots) or another quest's script (perhaps Duraelm's Dragonguard Archives) could set the first stage; the script or the notice's placement would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000AB9 (HABLRaQuest02): objectives 10/20, stages 10/20/200; aliases include Notice, Note, BookContainer",
+        "quest_givers_raw HABLRaQuest02: no giver, no start event; rewards via HABL_QF_HABLRaQuest02 script",
+        "gold is a script property (Gold001); the amount isn't in these files"
+      ]
+    },
+    {
+      "edid": "HABLRaQuest03",
+      "name": "Dragonguard Archives: Book 3",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Nobody gives this one in the records. It likely starts when you read a notice or note, but what starts it isn't shown.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Get the Blades book from Ben Erai",
+      "takesYou": [
+        {
+          "place": "Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "get the book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "put the book in the archive chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get the Blades book from Ben Erai",
+            "Put the Blades book in the chest in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "once the book is in the chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "starts",
+          "why": "No person hands this out in the records and there is no start event. The quest has Notice and Note slots, so it probably starts from a notice or note, but what sets the first stage isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Probably comes after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple, but no condition saying so is in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The objective only says Ben Erai; which building or container holds the book isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Every reward here comes from the quest script's properties; it isn't confirmed which step hands them over, or how much gold."
+        },
+        {
+          "field": "canDo",
+          "why": "No giver and no start event in these files. A notice or note being read (the quest's Notice and Note slots) or another quest's script (perhaps Duraelm's Dragonguard Archives) could set the first stage; the script or the notice's placement would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000AB7 (HABLRaQuest03): objectives 10/20, stages 10/20/200; aliases include Notice, Note, BookContainer",
+        "quest_givers_raw HABLRaQuest03: no giver, no start event; rewards via HABL_QF_HABLRaQuest03 script",
+        "gold is a script property (Gold001); the amount isn't in these files"
+      ]
+    },
+    {
+      "edid": "HABLRaQuest04",
+      "name": "Dragonguard Archives: Book 4",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Nobody gives this one in the records. It likely starts when you read a notice or note, but what starts it isn't shown.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Get the Dragonguard book from the Fortress of Ben Erai",
+      "takesYou": [
+        {
+          "place": "Fortress of Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "get the book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "put the book in the archive chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get the Dragonguard book from the Fortress of Ben Erai",
+            "Put the Dragonguard book in the chest in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "once the book is in the chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "starts",
+          "why": "No person hands this out in the records and there is no start event. The quest has Notice and Note slots, so it probably starts from a notice or note, but what sets the first stage isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Probably comes after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple, but no condition saying so is in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "This one has a Chest slot and a slot for Searching for the Horn of Ja'darri, Part 1, so that book is probably found with it, but it isn't listed as a reward in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Every reward here comes from the quest script's properties; it isn't confirmed which step hands them over, or how much gold."
+        },
+        {
+          "field": "canDo",
+          "why": "No giver and no start event in these files. A notice or note being read (the quest's Notice and Note slots) or another quest's script (perhaps Duraelm's Dragonguard Archives) could set the first stage; the script or the notice's placement would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000ABB (HABLRaQuest04): objectives 10/20, stages 10/20/200; aliases include Notice, Note, BookContainer",
+        "quest_givers_raw HABLRaQuest04: no giver, no start event; rewards via HABL_QF_HABLRaQuest04 script",
+        "gold is a script property (Gold001); the amount isn't in these files",
+        "aliases Chest, BookJadarri1 (no Book alias)"
+      ]
+    },
+    {
+      "edid": "HABLRaQuest05",
+      "name": "Dragonguard Archives: Book 5",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Nobody gives this one in the records. It likely starts when you read a notice or note, but what starts it isn't shown.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Get Dragonguard book from Arenar's Camp",
+      "takesYou": [
+        {
+          "place": "Arenar's Camp",
+          "hold": "Alik'r Desert",
+          "why": "get the book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "put the book in the archive chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get Dragonguard book from Arenar's Camp",
+            "Put the Dragonguard book in the chest in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Searching for the Horn of Ja'darri, Part 2 (book)",
+          "when": "once the book is in the chest"
+        },
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "once the book is in the chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "starts",
+          "why": "No person hands this out in the records and there is no start event. The quest has Notice and Note slots, so it probably starts from a notice or note, but what sets the first stage isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Probably comes after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple, but no condition saying so is in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "Arenar's Camp isn't in the places index, so where it lies isn't in these files (Arenar Esdrecus is a Gray Cowl character)."
+        },
+        {
+          "field": "rewards",
+          "why": "Every reward here comes from the quest script's properties; it isn't confirmed which step hands them over, or how much gold."
+        },
+        {
+          "field": "canDo",
+          "why": "No giver and no start event in these files. A notice or note being read (the quest's Notice and Note slots) or another quest's script (perhaps Duraelm's Dragonguard Archives) could set the first stage; the script or the notice's placement would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000ABA (HABLRaQuest05): objectives 10/20, stages 10/20/200; aliases include Notice, Note, BookContainer",
+        "quest_givers_raw HABLRaQuest05: no giver, no start event; rewards via HABL_QF_HABLRaQuest05 script",
+        "gold is a script property (Gold001); the amount isn't in these files",
+        "reward HABL_QF_HABLRaQuest05_03000ABA.HABLHornofJadarri2 = BOOK 000A6B"
+      ]
+    },
+    {
+      "edid": "HABLRaQuest06",
+      "name": "Dragonguard Archives: Book 6",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Nobody gives this one in the records. It likely starts when you read a notice or note, but what starts it isn't shown.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Get the Dragonguard book from Khenzedum",
+      "takesYou": [
+        {
+          "place": "Khenzedum (Dwemer ruin; enemies level 15 to 60, a level 60 Dwarven Praetorian boss, traps)",
+          "hold": "Alik'r Desert",
+          "why": "get the book"
+        },
+        {
+          "place": "Wind Scour Temple",
+          "hold": "Alik'r Desert",
+          "why": "put the book in the archive chest"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get the Dragonguard book from Khenzedum",
+            "Put the Dragonguard book in the chest in the Wind Scour Temple"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "once the book is in the chest"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "starts",
+          "why": "No person hands this out in the records and there is no start event. The quest has Notice and Note slots, so it probably starts from a notice or note, but what sets the first stage isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Probably comes after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple, but no condition saying so is in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Every reward here comes from the quest script's properties; it isn't confirmed which step hands them over, or how much gold."
+        },
+        {
+          "field": "canDo",
+          "why": "No giver and no start event in these files. A notice or note being read (the quest's Notice and Note slots) or another quest's script (perhaps Duraelm's Dragonguard Archives) could set the first stage; the script or the notice's placement would settle it."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000ABC (HABLRaQuest06): objectives 10/20, stages 10/20/200; aliases include Notice, Note, BookContainer",
+        "quest_givers_raw HABLRaQuest06: no giver, no start event; rewards via HABL_QF_HABLRaQuest06 script",
+        "gold is a script property (Gold001); the amount isn't in these files",
+        "LCTN Gray Fox Cowl.esm:00E3F4 Khenzedum lists this quest"
+      ]
+    },
+    {
+      "edid": "LAMIDesertLamiaQuest",
+      "name": "Spectral Lamias in the Desert",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits this quest; its people are edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "A Lamia named Oziriana asks for help against her sister, who is causing trouble in the Alik'r Desert.",
+      "needs": [
+        {
+          "what": "Get to the Alik'r Desert in Hammerfell (The Call of Gray Cowl of Nocturnal takes you there)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Oziriana",
+          "where": "outdoors in the Alik'r Desert",
+          "how": "Talk to Oziriana and agree to help her defeat her sister."
+        }
+      ],
+      "firstStep": "Defeat Feiria the Matriarch",
+      "takesYou": [
+        {
+          "place": "wherever Feiria the Matriarch is",
+          "hold": "Alik'r Desert",
+          "why": "defeat her"
+        },
+        {
+          "place": "the spectral fire",
+          "hold": "Alik'r Desert",
+          "why": "put out the fire her sister started"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Defeat Feiria the Matriarch",
+            "Talk to Oziriana",
+            "Set the spectral fire off",
+            "Talk to Oziriana again"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold (amount not in these files)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Feiria the Matriarch is defeated"
+      ],
+      "people": [
+        {
+          "name": "Oziriana",
+          "role": "gives the quest; travels with you until it's done; also a merchant"
+        },
+        {
+          "name": "Feiria the Matriarch",
+          "role": "Oziriana's sister, the rogue Lamia you defeat"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Every place in this quest is in the Alik'r Desert worldspace from The Gray Cowl of Nocturnal. That mod's main quest takes you to Hammerfell; these files don't show whether there is any other way in."
+        },
+        {
+          "field": "where",
+          "why": "Oziriana is placed in an outdoor cell of the Alik'r Desert that these files don't name. Outside the quest she stays near a marker that isn't named either."
+        },
+        {
+          "field": "takesYou",
+          "why": "Feiria is a persistent reference, so these files don't show where in the desert she is; the fire's place isn't named either."
+        },
+        {
+          "field": "people",
+          "why": "Oziriana has follower packages tied to two factions of this mod, so she may be recruitable after the quest, but these files don't show how."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold comes from the quest script's Gold001 property; it isn't confirmed which step pays it or how much."
+        },
+        {
+          "field": "rewards",
+          "why": "This mod adds a Conjure Spectral Lamia spell (tome 00122F) and Oziriana is a merchant, so she may sell it, but nothing in these files makes it a reward for this quest."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:001252: stages 10-40, 200; objectives 10-40",
+        "giver INFO 001268 (GetIsID Oziriana 0011F5, stage below 10); Oziriana ref 001201 in Gray Fox Cowl.esm:20064F",
+        "Oziriana LAMIOzirianaFollowQuestPackage at stages 10-40; factions JobMerchantFaction, LAMIOzirianaMerchantFaction",
+        "Feiria 001222 ref 001224 in Gray Fox Cowl.esm:00FA57 (persistent)",
+        "reward LAMI_QF_LAMIDesertLamiaQuest_06000862.Gold001",
+        "gold is a script property (Gold001); the amount isn't in these files"
+      ]
+    }
+  ]
+}

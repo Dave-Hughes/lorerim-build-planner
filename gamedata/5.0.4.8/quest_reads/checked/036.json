@@ -1,0 +1,1355 @@
+{
+  "checks": [
+    {
+      "edid": "DefunctQuest04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: the guard at Fort Tulis mentioned the disturbances; a talk start."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No quest or level condition found; reaching the mod's Morrowind is the only real need. The route is rightly left in unsure (ferry aliases BaanMalurtoRavenRock in DefunctQuest09)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Guard alias has no fill; Captain Delevin (SOMRTulisGuardCaptain, package SOMRTulisCaptainPKG at Fort Tulis) is the only named non-goblin there, so 'probably' with an unsure entry is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Goblins and Bruska Warchief placed in Fort Tulis; the Shaman (NPC 070FBE, in-game name 'Shaman') placed in Bruska Cave."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 20/21/23 are the three reports, all leading to objective 20; stage 31 fails if the guard dies."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Alias Reward -> LVLI SOMRGoblinTulisQuestReward, stage 30 log 'The guard at Fort Tulis has rewarded me'. The staff is linked only by edid (GoblinShamanStaffLightningBruska) and is correctly flagged unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 31 fails: guard dead."
+        }
+      }
+    },
+    {
+      "edid": "DefunctQuest07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 296BD8 GetIsID Sadren Solis, stage below 1."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No quest or level condition found; reaching the mod's Morrowind is the only real need. The route is rightly left in unsure (ferry aliases BaanMalurtoRavenRock in DefunctQuest09)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Sadren (28C924) has no placement and one package CormarisSadrenPKG; the stage 10 log puts his temple in Cormaris. Flagged unsure, fine."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Find Feldrin.'; stage 10 log names Cormar Crossing."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Forager alias placed in Llerush Kwama Mine; stage 11 log 'the nearby Kwama mine'; stage 23 log 'may be at the Baan Malur docks' vs Helvf's Cormaris packages, flagged unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stages 21 (took the money) and 22 (pay later) both lead to stage 23."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Alias SadrenGold supports gold; amount and whether the later payment ever comes aren't in the files, already in unsure. Feldrin's Axe correctly kept out."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Nothing in the records."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "No fail stage."
+        }
+      }
+    },
+    {
+      "edid": "DefunctQuest09",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No log entries, 30 empty stages, route aliases: a travel system, not a story quest."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in the records; the check aliases are noted in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Left empty with the booking method in unsure; nothing in the records names a captain or fare."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Port aliases PortBaanMalur, PortRavenRock, PortCormaris, PortLlethrinFel, PortPryai. Vivec only has a check alias, rightly not listed as a port."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Route aliases (BaanMalurtoCormaris etc.) show a destination pick."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "SOMRHlervansAshesQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "unsure",
+          "note": "Nothing in the records shows what sets stage 10. The elders' line (INFO 136F47, stage below 11) is the hand-in, since the objective sends you to the temple they stand in, so 'by itself' (finding the ashes) is the best reading, but it rests on the alias names Ashes/Urn only. Moved to unsure; kept the value."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No quest or level condition found; reaching the mod's Morrowind is the only real need. The route is rightly left in unsure (ferry aliases BaanMalurtoRavenRock in DefunctQuest09)."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "'Pick up Hlervan's ashes' is inferred from the aliases Ashes and Urn; no item record named Hlervan's Ashes is in items_raw and no start event or dialogue is recorded. Added an unsure entry for how."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Elder Fothryn and Elder Tymen placed in Temple of Reclamations, Baan Malur."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single completing stage 20."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Alias Reward -> LVLI SOMRHAReward; stays per Bob's ruling. Added an unsure note that the contents aren't in these files."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "SOMRLlynelisDaedricQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 0BA427 GetIsID Llynelis, stage below 10; stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No quest or level condition found; reaching the mod's Morrowind is the only real need. The route is rightly left in unsure (ferry aliases BaanMalurtoRavenRock in DefunctQuest09)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Placed in Llynelis Manor; SOMRLlynelisMeetPKG holds her there while stage < 5. Basement trigger flagged unsure; Llynelis' Notes speak of 'the Daedra summoning next door', consistent."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Clannfears placed in Ashimmidarum and Dunnashammipuri; List of Locations of Interest text matches the descriptions; Folivyn's Note mentions an Oblivion Gate near Cormaris. Keys can be brought in any order (stages 21/22/23 and 31/32/33)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 61 (kill, completes) and 70 (spare, completes)."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Aliases LocationList, ResearchNotes, LlynelisReward (LVLI LlynelisRewardItem). Timing of the leveled reward rightly in unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 61 log: you kill her. Llynelis is protected, not essential."
+        }
+      }
+    },
+    {
+      "edid": "SOMRSaxhleelQuestMain",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO 3270A5 GetIsID Kar-Jei, stage below 10; stage 20 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No quest or level condition found; reaching the mod's Morrowind is the only real need. The route is rightly left in unsure (ferry aliases BaanMalurtoRavenRock in DefunctQuest09)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Kar-Jei placed in Kar-Jei's Tent, Saxhleel Camp; SOMRSaxhleelKarJeiStartPKG holds him at an unnamed marker before stage 10, flagged unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 20."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Dres Slaver's Camp (Dres Captain boss), stage 90 log 'Fort Blacklight, in Baan Malur', return objective 100."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "Stage 130 says 'Kar-Jei survived', but stage 140 fails the quest when 'Kar-Jei was killed in a raid on the Saxhleel Camp'; nothing limits that to the sell-out branches. The loyal ending should say you return to a Redoran raid and get the knife if Kar-Jei lives through it, not that he is sure to survive."
+        },
+        "rewards": {
+          "verdict": "unsure",
+          "note": "Kar-Jei's Naming Knife is confirmed by the stage 130 log. Stage1Reward (LVLI 3555C0) is a script alias; 'after the slaver camp' is read from its name only. Kept per Bob's ruling and added an unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None; Kar-Jei's move to the Ragged Flagon (CleanUp packages at stage >= 130) is a person note, not a quest."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 140 fails."
+        }
+      }
+    },
+    {
+      "edid": "HYORBlackBook08Quest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: reading the book puts you in Apocrypha."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in the records; Dragonborn question rightly in unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Alias BookTarget; Black Book Init is listed at Winter Shroud Sanctum in places_raw, flagged unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Apocrypha, per stage 10 log."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "Missing the way out the player needs: stage 10 log says 'or read the book again to escape'. Added it."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "'A choice of one power' isn't in the records; it comes from how other Black Books work. The three powers (Omen of Gluttony, Omen of Immobility, Omen of Warding) are the only HYORBlackBook* powers in powers_raw and this is the mod's only Black Book quest, so they stay as 'probably', but without the 'choice of one'."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "HYORBookPointerMiscQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "A book-pointer quest; no giver."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "None in the records."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Objective 2 is 'Read the book', so the quest is already running before you read it; what starts it (picking the book up is the likely trigger) isn't recorded. Added an unsure entry for how."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 2."
+        },
+        "takesYou": {
+          "verdict": "unsure",
+          "note": "The mercenary's ref sits in the Skyrim worldspace's persistent cell (Skyrim.esm:000D74), which says the main map but not a hold. Reworded the unsure note so it doesn't read as 'a Skyrim hold'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 15 is optional, no branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "CacheAlias; contents unknown, in unsure."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "The quest's own name marks it as a book pointer, its dead mercenary (NPC 3A6807, ref 3A6808) has ids right next to the Waterlogged Journal (BOOK 3A680A) that starts Siege at Icemoth, and that quest begins at 'the corpse of a mercenary by a beached sailboat'. That suggests it leads to Siege at Icemoth, but no record ties them. Left opens empty; added an unsure entry."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "HYORdunIcemothQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "quest_starts: startGame true; stage 10 log on finding the journal."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "None in the records. Fort Icemoth's boss is level 50, zone 24-50 (places_raw), worth a warning but not a need."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Corpse and journal per the stage 10 log. The beach isn't named; the dead mercenary in Caches of Skorjan Iron-Beard (near the Old Wooden Jetty) may be the same corpse (ids beside the Waterlogged Journal), but no record ties them. Added that to the unsure note."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Fort Icemoth, hold Hjorkvild Isles (places_raw); Silas placed in Fort Icemoth."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward alias; Fort Icemoth has a boss chest (places_raw)."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "The Topaz Claw stage 10 log starts with reading Silas's journal (alias SilasJournal); flagged unsure."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "HYORdunWintershroudSanctumQST",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Start event change location (HYORdunWintershroudSanctumNode); stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Silas's things at Fort Icemoth hold the claw (stage 15 log)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 10 log 'Reading through Silas's journal'; the location-change trigger is flagged unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Fort Icemoth (stage 15 log, places_raw lists The Topaz Claw there); Winter Shroud Sanctum on 'the main island' (stage 20 log), hold Hjorkvild Isles."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branches."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Mask ARMO 6F5DC4 'Tovinaan' matches the boss by name only, kept as 'probably' with unsure; Winter Shroud Sanctum has a boss chest."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DefunctQuest04",
+      "name": "The Bruska Pogrom",
+      "plugin": "Journey to Baan Malur.esp (no later plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "A guard at Fort Tulis in Morrowind tells you about goblin trouble deep under the fort.",
+      "needs": [
+        {
+          "what": "Reach Baan Malur and the mainland of Morrowind added by Journey to Baan Malur",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "the guard at Fort Tulis (most likely Captain Delevin)",
+          "where": "Fort Tulis, Morrowind",
+          "how": "Talk to the guard; he mentions disturbances in the depths of the fort that he thinks are goblins."
+        }
+      ],
+      "firstStep": "Investigate the depths of Fort Tulis",
+      "takesYou": [
+        {
+          "place": "Fort Tulis (its depths)",
+          "hold": "Morrowind",
+          "why": "clear out the Bruska goblins"
+        },
+        {
+          "place": "Bruska Cave",
+          "hold": "Morrowind",
+          "why": "find and kill the Bruska Shaman"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Tell the guard you killed all the goblins, that you didn't, or that you aren't sure",
+          "leadsTo": "Only his reply changes; either way he sends you after the clan's Shaman"
+        },
+        {
+          "choice": "Let the guard die",
+          "leadsTo": "The quest fails and no one pays you for the Shaman"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Investigate the depths of Fort Tulis.",
+            "Find and kill the Bruska Shaman."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A reward from the guard (drawn from a leveled list)",
+          "when": "after you kill the Shaman and return"
+        },
+        {
+          "what": "Bruska Shaman's Staff (lightning staff), likely carried by the Shaman",
+          "when": "from the Shaman"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [
+        "Fails if the Fort Tulis guard dies"
+      ],
+      "people": [
+        {
+          "name": "Captain Delevin",
+          "role": "the guard captain posted at Fort Tulis; probably the guard who gives and pays for the job"
+        },
+        {
+          "name": "Bruska Shaman",
+          "role": "the target, placed in Bruska Cave"
+        },
+        {
+          "name": "Bruska Warchief",
+          "role": "goblin leader found in Fort Tulis"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.who",
+          "why": "The quest's guard role isn't filled with a named person in these files; Captain Delevin is the guard captain posted at Fort Tulis, so he is the likely one."
+        },
+        {
+          "field": "rewards",
+          "why": "The Shaman's Staff is only linked to the Shaman by name; the quest's own reward is a leveled list whose contents aren't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Shaman is placed in Bruska Cave; the records don't say where that cave is relative to Fort Tulis."
+        },
+        {
+          "field": "needs",
+          "why": "The records show a ferry between Raven Rock on Solstheim and Baan Malur, and a book calls the Dwemer ruin Kalbthurz a way through to Morrowind; which route a new player should take isn't set out in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:1A7730 stages 10/20/21/23/30/31",
+        "alias Guard (no fill), alias Reward -> LVLI 1AC84D SOMRGoblinTulisQuestReward",
+        "NPC 0AFBDB Captain Delevin SOMRTulisGuardCaptain pkg SOMRTulisCaptainPKG at Fort Tulis",
+        "NPC 070FBE Shaman GoblinShamanBruska cell Bruska Cave",
+        "WEAP 070FBB Bruska Shaman's Staff",
+        "NPC 2A1A20 Bruska Warchief cell Fort Tulis"
+      ]
+    },
+    {
+      "edid": "DefunctQuest07",
+      "name": "The New Temple",
+      "plugin": "Journey to Baan Malur.esp (no later plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Sadren Solis, a would-be acolyte, asks for help building a temple in Cormaris.",
+      "needs": [
+        {
+          "what": "Reach Baan Malur and the mainland of Morrowind added by Journey to Baan Malur",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Sadren Solis",
+          "where": "Cormaris, Morrowind",
+          "how": "Talk to Sadren; he wants to prove himself to the House of Reclamations by building a temple in Cormaris and needs wood for the foundations."
+        }
+      ],
+      "firstStep": "Find Feldrin, a lumberjack at Cormar Crossing",
+      "takesYou": [
+        {
+          "place": "Cormar Crossing",
+          "hold": "Morrowind",
+          "why": "talk to Feldrin the lumberjack"
+        },
+        {
+          "place": "Llerush Kwama Mine",
+          "hold": "Morrowind",
+          "why": "get Feldrin's axe back"
+        },
+        {
+          "place": "the docks (the journal says Baan Malur)",
+          "hold": "Morrowind",
+          "why": "find Helvf Blackthorn, the captain bringing the stone"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Take the little money Sadren can pay, or let him pay you later",
+          "leadsTo": "You get his gold now or he promises it later; the quest carries on either way"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find Feldrin.",
+            "Return Feldrin's axe to him.",
+            "Return to Sadren.",
+            "Find Helvf Blackthorn in Baan Malur."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Some gold from Sadren",
+          "when": "once the wood arrives (or later, if you let him owe you)"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Sadren Solis",
+          "role": "aspiring acolyte of the House of Reclamations; gives the quest"
+        },
+        {
+          "name": "Feldrin",
+          "role": "lumberjack at Cormar Crossing who has lost his axe"
+        },
+        {
+          "name": "Kwama Forager",
+          "role": "in Llerush Kwama Mine, where the axe is"
+        },
+        {
+          "name": "Helvf Blackthorn",
+          "role": "ship captain delivering the stone"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.where",
+          "why": "The records don't give Sadren's placement; his only package is named for Cormaris and keeps him near where he stands. Later in the quest another copy of him appears in a Temple of Reclamations, apparently the new temple."
+        },
+        {
+          "field": "takesYou",
+          "why": "The objective says to find Helvf Blackthorn in Baan Malur, but his own packages are a Cormaris town idle and a bed; where he actually stands isn't clear."
+        },
+        {
+          "field": "steps",
+          "why": "After you find Helvf Blackthorn the journal entries are the author's placeholder notes (a mason, a priest, back to Sadren) with no objectives; the later part may be unfinished or show no journal text."
+        },
+        {
+          "field": "rewards",
+          "why": "Feldrin's Axe is a quest item you hand back, not a reward. Whether anything is paid at the very end isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The records show a ferry between Raven Rock on Solstheim and Baan Malur, and a book calls the Dwemer ruin Kalbthurz a way through to Morrowind; which route a new player should take isn't set out in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:28C8ED stages 10-23, 30-41 placeholder logs",
+        "giver INFO 296BD8 GetIsID 28C924 Sadren Solis; Feldrin 29BCE6",
+        "NPC 28C924 SOMRSadrenSolis01 pkg CormarisSadrenPKG (no placement)",
+        "NPC 291ACE SOMRSadrenSolis02 pkg in cell 291A42 when quest stage>=40",
+        "alias Forager 2A0E7F in Llerush Kwama Mine; alias Axe WEAP 2A0E81",
+        "NPC 08A5D0 Helvf Blackthorn CormarisCaptain pkgs CormarisCaptainSleepPKG, CormarisTownIdlePKG",
+        "alias SadrenGold"
+      ]
+    },
+    {
+      "edid": "DefunctQuest09",
+      "name": "Morrowind Boat Travel System",
+      "plugin": "Journey to Baan Malur.esp (no later plugin edits it)",
+      "canDo": "background",
+      "canDoWhy": "This is the ferry service between Morrowind ports, not a story quest; it runs when you take a boat.",
+      "needs": [],
+      "starts": [],
+      "firstStep": "Take a seat on the ferry bench",
+      "takesYou": [
+        {
+          "place": "Baan Malur",
+          "hold": "Morrowind",
+          "why": "ferry port"
+        },
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "ferry port"
+        },
+        {
+          "place": "Cormaris",
+          "hold": "Morrowind",
+          "why": "ferry port"
+        },
+        {
+          "place": "Llethrin Fel",
+          "hold": "Morrowind",
+          "why": "ferry port"
+        },
+        {
+          "place": "Pryai",
+          "hold": "Morrowind",
+          "why": "ferry port"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Pick a destination port",
+          "leadsTo": "The ferry carries you there"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Take a seat on the ferry bench."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "How you book a crossing (which captain, what it costs) isn't in these files. The quest also checks something before offering Llethrin Fel, Pryai and Vivec, so those routes may need unlocking first."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:1240DA stages 10-39 no logs, objective 10",
+        "aliases BaanMalurtoRavenRock ... PryaiBench, PortBaanMalur..PortPryai",
+        "aliases LlethrinFelCheck/PryaiCheck/VivecCheck NPCs 148095/148096/2B1E72 in Baan Malur cell 18BF62"
+      ]
+    },
+    {
+      "edid": "SOMRHlervansAshesQuest",
+      "name": "Hlervan's Ashes",
+      "plugin": "Journey to Baan Malur.esp (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "You come across Hlervan's ashes and the journal asks you to take them to the temple in Baan Malur.",
+      "needs": [
+        {
+          "what": "Reach Baan Malur and the mainland of Morrowind added by Journey to Baan Malur",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "wherever Hlervan's ashes are found",
+          "how": "Pick up Hlervan's ashes; the quest asks you to deliver them to the Temple in Baan Malur."
+        }
+      ],
+      "firstStep": "Deliver Hlervan's Ashes to the Temple in Baan Malur",
+      "takesYou": [
+        {
+          "place": "Temple of Reclamations, Baan Malur",
+          "hold": "Morrowind",
+          "why": "hand the ashes to an elder"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Deliver Hlervan's Ashes to the Temple in Baan Malur."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A reward from the temple (drawn from a leveled list)",
+          "when": "when you hand over the ashes"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Elder Fothryn",
+          "role": "elder in the Temple of Reclamations, Baan Malur; takes the ashes"
+        },
+        {
+          "name": "Elder Tymen",
+          "role": "the other elder there; can also take them"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.where",
+          "why": "The records name the ashes and an urn but not where they lie."
+        },
+        {
+          "field": "plugin",
+          "why": "The same plugin holds an older copy of this quest under another record; this one is the copy whose dialogue is read here."
+        },
+        {
+          "field": "needs",
+          "why": "The records show a ferry between Raven Rock on Solstheim and Baan Malur, and a book calls the Dwemer ruin Kalbthurz a way through to Morrowind; which route a new player should take isn't set out in these files."
+        },
+        {
+          "field": "canDo",
+          "why": "Nothing in the records shows what starts the quest; finding the ashes is read from the quest's Ashes and Urn and the objective, since the elders' dialogue is where you hand them in."
+        },
+        {
+          "field": "starts.how",
+          "why": "No start event, dialogue or item record for the ashes is in these files; picking them up is the likely trigger."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward is a leveled list named in the quest's script; its contents aren't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:136F43 stages 10/20, aliases Ashes, Urn, Reward",
+        "INFO 136F47 GetIsID 0D3FE8 Elder Fothryn, also 0D3FE6 Elder Tymen, stage below 11",
+        "LVLI 10D806 SOMRHAReward",
+        "older copy QUST 10D7F7 DefunctQuest05"
+      ]
+    },
+    {
+      "edid": "SOMRLlynelisDaedricQuest",
+      "name": "Daedra and Deceit",
+      "plugin": "Journey to Baan Malur.esp (no later plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "After you clear Daedra from a basement in Baan Malur, the scholar Llynelis hires you to fetch three Daedric keys.",
+      "needs": [
+        {
+          "what": "Reach Baan Malur and the mainland of Morrowind added by Journey to Baan Malur",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Llynelis",
+          "where": "Llynelis Manor, Baan Malur",
+          "how": "Clear out the Daedra in the basement, then talk to Llynelis; she gives you a list of places where the keys are."
+        }
+      ],
+      "firstStep": "Bring Llynelis the first key from the list",
+      "takesYou": [
+        {
+          "place": "Ashimmidarum",
+          "hold": "Morrowind",
+          "why": "a Daedric ruin in the craglands south of Baan Malur; a clannfear there holds a key"
+        },
+        {
+          "place": "Dunnashammipuri",
+          "hold": "Morrowind",
+          "why": "a flooded Daedric ruin on the north coast just east of Cormaris; a clannfear there holds a key"
+        },
+        {
+          "place": "near Cormaris, by an Oblivion Gate",
+          "hold": "Morrowind",
+          "why": "the Daedra hunter Folivyn Dromas already has the third key"
+        },
+        {
+          "place": "the Daedric Ruin under Baan Malur",
+          "hold": "Morrowind",
+          "why": "explore it once all three keys are in"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill Llynelis when you confront her",
+          "leadsTo": "The quest ends with her dead"
+        },
+        {
+          "choice": "Spare Llynelis",
+          "leadsTo": "The quest ends with her alive"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Bring Llynelis the first key from the list.",
+            "Bring Llynelis a second key from the list.",
+            "Bring Llynelis the final key from the list.",
+            "Explore the Daedric Ruin under Baan Malur.",
+            "Confront Llynelis."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "List of Locations of Interest (book)",
+          "when": "at the start"
+        },
+        {
+          "what": "Llynelis' Notes (book)",
+          "when": "after your first key"
+        },
+        {
+          "what": "A reward from Llynelis (drawn from a leveled list)",
+          "when": "near the end"
+        }
+      ],
+      "type": "Daedric",
+      "opens": [],
+      "closes": [
+        "Llynelis dies if you choose to kill her"
+      ],
+      "people": [
+        {
+          "name": "Llynelis",
+          "role": "Dunmer scholar in Llynelis Manor, Baan Malur; secretly a worshipper of Molag Bal"
+        },
+        {
+          "name": "Kpollimminnass",
+          "role": "clannfear in Ashimmidarum"
+        },
+        {
+          "name": "Pashattminnam",
+          "role": "clannfear in Dunnashammipuri"
+        },
+        {
+          "name": "Folivyn Dromas",
+          "role": "Daedra hunter carrying the third key, outdoors near Cormaris"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.how",
+          "why": "The basement fight is told only in the journal and her notes (they speak of a Daedra summoning next door); what triggers it isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The records don't say whether her reward is given on both endings, or when exactly."
+        },
+        {
+          "field": "takesYou",
+          "why": "Folivyn Dromas is placed outdoors; his note says he was heading to check an Oblivion Gate near Cormaris, which is the best clue to where he is."
+        },
+        {
+          "field": "needs",
+          "why": "The records show a ferry between Raven Rock on Solstheim and Baan Malur, and a book calls the Dwemer ruin Kalbthurz a way through to Morrowind; which route a new player should take isn't set out in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:0BA420 stages 5-70; 61 and 70 complete",
+        "INFO 0BA427 GetIsID 20149D Llynelis, stage below 10",
+        "NPC 20149D pkg SOMRLlynelisMeetPKG in Llynelis Manor while stage<5; protected, not essential",
+        "BOOK 09B2FB List of Locations of Interest; BOOK 21AE09 Llynelis' Notes; BOOK 210A97 Folivyn's Note",
+        "LVLI 243FDE LlynelisRewardItem",
+        "older copy QUST 20149E DefunctQuest06"
+      ]
+    },
+    {
+      "edid": "SOMRSaxhleelQuestMain",
+      "name": "The Struggle for Justice",
+      "plugin": "Journey to Baan Malur.esp (no later plugin edits it)",
+      "canDo": "talk",
+      "canDoWhy": "Kar-Jei, leader of an Argonian camp south of Baan Malur, asks you to free his people from Dres slavers.",
+      "needs": [
+        {
+          "what": "Reach Baan Malur and the mainland of Morrowind added by Journey to Baan Malur",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Kar-Jei",
+          "where": "Saxhleel Camp, in the craglands south of Baan Malur (his tent is in the camp)",
+          "how": "Find the Argonian camp and talk to Kar-Jei; he sends you to the Dres Slaver's Camp, west of the nearby Daedric ruin."
+        }
+      ],
+      "firstStep": "Investigate the Dres Slaver's Camp",
+      "takesYou": [
+        {
+          "place": "Dres Slaver's Camp",
+          "hold": "Morrowind",
+          "why": "kill the Dres Captain and free the slaves"
+        },
+        {
+          "place": "Fort Blacklight, Baan Malur",
+          "hold": "Morrowind",
+          "why": "steal military documents without being seen"
+        },
+        {
+          "place": "Saxhleel Camp",
+          "hold": "Morrowind",
+          "why": "report back to Kar-Jei"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Free the caged slaves at the Dres camp, or leave them",
+          "leadsTo": "Noted in the journal; Kar-Jei still sends you on"
+        },
+        {
+          "choice": "Bring the stolen documents back to Kar-Jei",
+          "leadsTo": "You come back to find Redoran soldiers raiding the camp; if Kar-Jei lives through it he gives you his Naming-Knife and the quest is done. If he is killed, the quest fails."
+        },
+        {
+          "choice": "Sell out the Saxhleel to the Redoran captain at Fort Blacklight",
+          "leadsTo": "Redoran soldiers raid the camp"
+        },
+        {
+          "choice": "Sell out the Saxhleel to the Dres Captain at the slaver camp",
+          "leadsTo": "Dres slavers raid the camp"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Investigate the Dres Slaver's Camp.",
+            "Return to Kar-Jei.",
+            "Steal military documents from Fort Blacklight. Take care not to be spotted.",
+            "Return to Kar-Jei."
+          ]
+        },
+        {
+          "branch": "sell out",
+          "objectives": [
+            "Go to the Saxhleel Camp."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A reward from Kar-Jei (drawn from a leveled list)",
+          "when": "after the slaver camp"
+        },
+        {
+          "what": "Kar-Jei's Naming Knife (dagger)",
+          "when": "at the end, if you stay loyal"
+        }
+      ],
+      "type": "none set in the records",
+      "opens": [],
+      "closes": [
+        "The quest fails if Kar-Jei is killed in a raid on the camp"
+      ],
+      "people": [
+        {
+          "name": "Kar-Jei",
+          "role": "leader of the Saxhleel Camp; gives the quest. After the loyal ending he and the survivors move to the Ragged Flagon in Riften"
+        },
+        {
+          "name": "Dres Soldier",
+          "role": "door guard outside the slaver camp; can let you in"
+        },
+        {
+          "name": "Dres Captain",
+          "role": "leads the slaver camp; kill him, or sell the Argonians out to him"
+        },
+        {
+          "name": "Captain Tythis",
+          "role": "leads the Redoran raid on the Saxhleel Camp"
+        },
+        {
+          "name": "Commander Ulith",
+          "role": "commander at Fort Blacklight"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "choices",
+          "why": "The sell-out branches have no ending marked in the journal; what happens to Kar-Jei and whether you are paid isn't in these files."
+        },
+        {
+          "field": "starts.where",
+          "why": "Before the quest Kar-Jei waits at one marked spot near the camp; the records don't name it."
+        },
+        {
+          "field": "people",
+          "why": "The journal says you sell out to 'the Redoran Captain at Fort Blacklight'; Commander Ulith is the fort's commander in the records, but the quest doesn't name him."
+        },
+        {
+          "field": "needs",
+          "why": "The records show a ferry between Raven Rock on Solstheim and Baan Malur, and a book calls the Dwemer ruin Kalbthurz a way through to Morrowind; which route a new player should take isn't set out in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The first reward is a leveled list named in the quest's script for its first stage; that it comes after the slaver camp is read from its name, and its contents aren't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Journey to Baan Malur.esp:3179BE stages 10-150; 130 completes, 140 fails; type empty",
+        "INFO 3270A5 GetIsID 3126A7 Kar-Jei stage below 10; Dres Soldier 350429 below 40; Dres Captain 44F882 below 120",
+        "NPC 3126A7 pkgs SOMRSaxhleelKarJeiStartPKG (stage<10), SOMRSaxhleelCleanUpPKG01/02 to The Ragged Flagon at stage>=130",
+        "alias CageLever, Stage1Reward LVLI 3555C0, KarJeiKnife WEAP 463D03",
+        "NPC 44A72B Captain Tythis RedoranSoldierRaid03",
+        "NPC 37968B Commander Ulith at Fort Blacklight"
+      ]
+    },
+    {
+      "edid": "HYORBlackBook08Quest",
+      "name": "Black Book: The Font of Memory",
+      "plugin": "Siege at Icemoth.esp (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Reading the Black Book 'The Font of Memory' pulls you into Hermaeus Mora's realm, Apocrypha.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "",
+          "where": "the Black Book 'The Font of Memory', added by Siege at Icemoth",
+          "how": "Read the Black Book."
+        }
+      ],
+      "firstStep": "Learn the Black Book's hidden knowledge",
+      "takesYou": [
+        {
+          "place": "Apocrypha",
+          "hold": "",
+          "why": "uncover the knowledge hidden in the book"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Read the book again while in Apocrypha",
+          "leadsTo": "You leave Apocrypha; the quest stays open until you uncover the hidden knowledge"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Learn the Black Book's hidden knowledge"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Probably the mod's Black Book powers: Omen of Gluttony, Omen of Immobility and Omen of Warding",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [],
+      "unsure": [
+        {
+          "field": "starts.where",
+          "why": "Where the book lies isn't in these files; the mod's Black Book setup quest is tied to Winter Shroud Sanctum, so it is likely there."
+        },
+        {
+          "field": "rewards",
+          "why": "The three Omen powers carry this mod's Black Book names and are the only ones that do, but the records read here don't tie them to this quest's ending, or say whether you get all three or pick one."
+        },
+        {
+          "field": "needs",
+          "why": "Whether Apocrypha needs any Dragonborn progress first isn't shown in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Siege at Icemoth.esp:59F97E stages 10/20, alias BookTarget",
+        "Black Book Init QUST 5C396A listed at Winter Shroud Sanctum",
+        "SPEL 5AB9C8 HYORBlackBookFoodBonus, 2C140A HYORBlackBookStopRuneSpell, 2C1408 HYORBlackBookNoFallingDamageSpell"
+      ]
+    },
+    {
+      "edid": "HYORBookPointerMiscQST",
+      "name": "Caches of Skorjan Iron-Beard",
+      "plugin": "Siege at Icemoth.esp (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Reading the book 'The Caches of Skorjan Iron-Beard' points you to a hidden cache.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "",
+          "where": "the book 'The Caches of Skorjan Iron-Beard'",
+          "how": "Pick up and read the book."
+        }
+      ],
+      "firstStep": "Read \"The Caches of Skorjan Iron-Beard\"",
+      "takesYou": [
+        {
+          "place": "the Old Wooden Jetty",
+          "hold": "",
+          "why": "find the hidden cache nearby"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Read \"The Caches of Skorjan Iron-Beard\"",
+            "Travel to the Old Wooden Jetty",
+            "(Optional) Investigate the dead mercenary",
+            "Locate the hidden cache near the Old Wooden Jetty"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Whatever is in the hidden cache",
+          "when": "at the end"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Mercenary",
+          "role": "a dead mercenary near the Old Wooden Jetty"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The jetty is a map marker the quest adds; these files don't name its hold. The dead mercenary is placed on the main Skyrim map, but the records don't say in which hold or near which town."
+        },
+        {
+          "field": "starts.where",
+          "why": "Where copies of the book are found isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The cache's contents aren't in these files."
+        },
+        {
+          "field": "starts.how",
+          "why": "The quest is already running when it asks you to read the book; what starts it (most likely picking the book up) isn't in these files."
+        },
+        {
+          "field": "opens",
+          "why": "This dead mercenary may be the same corpse by a beached sailboat that starts Siege at Icemoth (his record sits right beside the Waterlogged Journal's), which would make this book the way into that quest; no record ties them."
+        }
+      ],
+      "evidence": [
+        "QUST Siege at Icemoth.esp:936795 objectives 2/10/15/20, aliases JettyMapmarkerAlias, CacheAlias, MercenaryAlias",
+        "NPC 3A6807 Mercenary HYOR_TreasCorpseAdventurer3 ref 3A6808 in Skyrim worldspace",
+        "BOOK 9307C3 The Caches of Skorjan Iron-Beard"
+      ]
+    },
+    {
+      "edid": "HYORdunIcemothQST",
+      "name": "Siege at Icemoth",
+      "plugin": "Siege at Icemoth.esp (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "While travelling the coast you find a dead mercenary by a beached sailboat; his journal points you to Fort Icemoth.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "a dead mercenary",
+          "where": "by a beached sailboat on the coast",
+          "how": "Read the Waterlogged Journal he carries; it tells of an old Imperial fort, Fort Icemoth, on frozen islands north of Jehanna, full of undead."
+        }
+      ],
+      "firstStep": "Travel to Fort Icemoth",
+      "takesYou": [
+        {
+          "place": "Fort Icemoth",
+          "hold": "Hjorkvild Isles",
+          "why": "deal with the necromancer Silas Marceau and his undead"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Travel to Fort Icemoth",
+            "Deal with the source of undead at Fort Icemoth"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Fort Icemoth's boss chest and loot (no scripted quest reward)",
+          "when": "after Silas Marceau is dead"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "The Topaz Claw"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Silas Marceau",
+          "role": "Breton necromancer holding Fort Icemoth; the boss (level 50)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts.where",
+          "why": "The beach with the sailboat is in a coastal cell these files don't name. The dead mercenary near the Old Wooden Jetty (Caches of Skorjan Iron-Beard) may be the same corpse, since his record sits beside the Waterlogged Journal's, but no record ties them."
+        },
+        {
+          "field": "takesYou",
+          "why": "How you cross to the Hjorkvild Isles isn't spelled out; the sailboat is part of the quest, but the records here don't show it carrying you."
+        },
+        {
+          "field": "opens",
+          "why": "The Topaz Claw begins with Silas's journal, which you find among his things at Fort Icemoth."
+        }
+      ],
+      "evidence": [
+        "QUST Siege at Icemoth.esp:5A079F stages 10/20/30, aliases Sailboat, Silas",
+        "quest_starts: startGame true, cells 02E4B0/02E4B2/0B6E83 and Skyrim.esm:006E92",
+        "BOOK 3A680A Waterlogged Journal",
+        "NPC 2F7886 Silas Marceau in Fort Icemoth; LCTN 0FA292 boss level 50, zone 24-50, never respawns"
+      ]
+    },
+    {
+      "edid": "HYORdunWintershroudSanctumQST",
+      "name": "The Topaz Claw",
+      "plugin": "Siege at Icemoth.esp (no later plugin edits it)",
+      "canDo": "by itself",
+      "canDoWhy": "Silas Marceau's journal mentions a topaz dragon claw; finding it opens a barrow on the main island.",
+      "needs": [
+        {
+          "what": "Reach Silas Marceau's belongings at Fort Icemoth (part of Siege at Icemoth)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "Silas Marceau's journal, at Fort Icemoth on the Hjorkvild Isles",
+          "how": "Read Silas's journal; it mentions an ancient Nord dragon claw key."
+        }
+      ],
+      "firstStep": "Obtain the Topaz Dragon Claw",
+      "takesYou": [
+        {
+          "place": "Fort Icemoth",
+          "hold": "Hjorkvild Isles",
+          "why": "search Silas's things for the claw"
+        },
+        {
+          "place": "Winter Shroud Sanctum",
+          "hold": "Hjorkvild Isles",
+          "why": "the claw opens a portcullis in this Nord barrow on the main island"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Obtain the Topaz Dragon Claw",
+            "Find a use for the Topaz Dragon Claw",
+            "Find the secret of Winter Shroud Sanctum"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Probably the dragon priest mask 'Tovinaan'",
+          "when": "from the dragon priest at the end"
+        },
+        {
+          "what": "Winter Shroud Sanctum's boss chest",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Tovinaan",
+          "role": "dragon priest at the end of Winter Shroud Sanctum (level 55)"
+        },
+        {
+          "name": "Silas Marceau",
+          "role": "his journal and belongings hold the claw"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The quest is set up when you change location; the records don't say which, and the journal entry begins with reading Silas's journal."
+        },
+        {
+          "field": "rewards",
+          "why": "The mask named Tovinaan is in the mod, but the records read here don't put it on him or tie it to the quest."
+        }
+      ],
+      "evidence": [
+        "QUST Siege at Icemoth.esp:097057 stages 10/15/20/100, aliases Tovinaan, TopazDragonClaw, TopazKeyhole, SilasJournal",
+        "start event: change location, node HYORdunWintershroudSanctumNode",
+        "NPC 6FBD9A Tovinaan in Winter-Shroud Catacombs; LCTN 4CD0C4 boss level 55, zone 30-55",
+        "ARMO 6F5DC4 Tovinaan (dragon priest mask)"
+      ]
+    }
+  ]
+}

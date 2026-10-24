@@ -1,0 +1,1345 @@
+{
+  "checks": [
+    {
+      "edid": "ASHGMageQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 000D1A on Dorian, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert). The College question is rightly left unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Dorian's House is only where he sleeps: his sleep package comes first in his list, his daytime sandbox is around an unnamed marker (Gray Fox Cowl.esm:036086). 'where' now says Ben Erai, house at night, and the gap moved to unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stages 10-40; the Forgotten City is only the journal's hint and is flagged."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branching stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001 on the quest script; amount unknown, flagged."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Helping the Enemy (ASHGAndynQuest, given by Honai) uses Dorian (alias Dorian01, 'Talk to Dorian Masterhart', his package ASHGWizardSandboxFinalQuestPackage). A condition tying it to this quest isn't in these files; added to unsure, opens left empty."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "ASHGNecroQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 000D65 on Thaik, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert)."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Thaik's House is where he sleeps (ASHGThaikSleepPackage01); his only other package sandboxes around an unnamed marker (00164B, radius 800), so by day he is not in the house. 'where' reworded."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Camp unnamed; note sharpened: cell Gray Fox Cowl.esm:00FA57 is shared by refs all over the desert."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001 on the quest script."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ASHGPoetryQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 001785 on Sharza, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert)."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Same as the other givers: the house is her sleep package's cell (ASHGSharzaSleepPackage01); her day package is around unnamed marker 00157B. 'where' reworded."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Library and Mausoleum are as the log says; the Mora Sul link is flagged as coming from the Gray Cowl journal."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001 kept. The two book properties (ASHGBookWeltan01/02) are left out of rewards rightly: the completion log says you 'brought them back to Sharza', so the records point to them being handed in, not given."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "ASHGSolstheimQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 000D2C on Lloros, stage below 11."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert). Solstheim access is a fair second need."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "'cornerclub' isn't in the records (it's remembered Skyrim wording); the cell is 'The Retching Netch' in Raven Rock (Dragonborn.esm:017EC0, shared by Ralis Sedarys's and Niyya's Retching Netch packages; people_raw places its regulars in Raven Rock). Wording fixed; the Ben Erai placement vs. Solstheim package stays in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001 on the quest script."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Kept as the reader wrote it, but the unsure note claimed the aliases sit 'in Solstheim and in Ben Erai'. No raw file gives those references' cells; SK may as well be Salas Kazas. Note corrected."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "CYCOHQuest01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 00118D on Jukka, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Both of Jukka's packages are in the Cyrodilic Collections cell; where the museum stands in the desert isn't in these files."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Khenzedum levels and boss match places_raw."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Order read from the logs ('The first thing Jukka asked me to do', Q04 'the last quest'); kept as likely, flagged."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "CYCOHQuest02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Line 00119E is the hand-in (stage below 41); the previous-quest need is rightly marked 'probably' and flagged."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Likely, flagged."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "CYCOHQuest03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "No place named Sadraaka; Tomb of the Forgotten Draugr (boss Sadraaka) and manny_GF_Sadraaka are fair leads, flagged."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "INFO 0011A5 under Ancient Pottery points at Al Shedim (places_raw pointer)."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "CYCOHQuest04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "That 0011A5 is said at the hand-in is an inference; it is already flagged under needs."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Both Al Shedim records match places_raw; north of Ben Erai is from manny_GF_MQ stage 300."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Gold001."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "fix",
+          "note": "Being the museum's last job locks nothing: no side, person or place is shut off. The 'last quest' fact is already in canDoWhy. closes emptied."
+        }
+      }
+    },
+    {
+      "edid": "DDBIntroQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 000E71 on the Unknown Initiate, stage below 10; Tenerio below 21 for the second step."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert). The Dark Brotherhood requirement is rightly left unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Her package target (Skyrim.esm:0E992F) is in the 'Dawnstar Sanctuary' cell itself, the same cell name the Penitus Oculatus mod's Sanctuary assassins are placed in, so she waits inside the Sanctuary, not 'around' it. Also flagged that Lucya shares her package."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "No reward property in the records for this quest; 'access to contracts' is what it opens, not a reward. rewards emptied."
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "The reader listed all seven as opened by this quest. The logs show Merchant Problem is the first contract and the rest follow in numbered order; Disappearing in the Dark starts from a letter and leads into The Crimson Eviscerator (missing from the list), with Crimson Scar Believers after. Rewritten in that order."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DDBPenitusOculatusQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver line 001083 on Leollus, stage below 10."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Same as the records: no giver condition beyond the stage; the Hammerfell-access need is correctly an inference kept in unsure (manny_GF_MQ stages 170/300 put you in the desert). The Sanctuary/Brotherhood question is rightly unsure."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Leollus sleeps at the outpost; his day sandbox has no location, which keeps him near where he's placed (the outpost)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Per Bob's 23 Oct ruling an item named by the quest's own script stays in rewards: Crimson Eviscerator (000FCB, property DDBCrimsonEviscerator on DDB_QF_DDBPenitusOculatusQues_040009BC) added, with the unsure note kept."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Hostile Tenerio (DDBTenerioKill, DDBADFightFaction) swapped in; the friendly Tenerio is alias Tenerio00. Flagged as read from aliases."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "ASHGMageQuest",
+      "name": "The Library Lost to the Ages",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Dorian Masterhart in Ben Erai asks you to find a lost library in the Alik'r Desert.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Dorian Masterhart",
+          "where": "Ben Erai (Alik'r Desert, Hammerfell): he sleeps in Dorian's House; by day he is out near a spot the records don't name",
+          "how": "Talk to Dorian; he asks you to find an ancient library somewhere in the Alik'r Desert."
+        }
+      ],
+      "firstStep": "Find the ancient library in the Alik'r Desert",
+      "takesYou": [
+        {
+          "place": "the ancient library (the journal suggests looking at the Forgotten City)",
+          "hold": "Alik'r Desert",
+          "why": "find the lost library"
+        },
+        {
+          "place": "Dorian's House, Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "tell Dorian where it is"
+        },
+        {
+          "place": "the ancient library, then a bigger library its teleporting stone leads to",
+          "hold": "Alik'r Desert",
+          "why": "show Dorian the way and talk to him inside"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the ancient library in the Alik'r Desert",
+            "Go back to Dorian in Ben Erai",
+            "Bring Dorian to the ancient library in the Alik'r Desert",
+            "Talk to Dorian"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Mages Guild",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Dorian Masterhart",
+          "role": "quest giver; a Breton wizard from Ben Erai who studies the library for the College of Winterhold. He follows you to the library and stays to study it afterwards."
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The places index has no entry for the library or the Forgotten City; only the journal's hint ('Maybe the Forgotten City could have something to do with a forgotten library') points there."
+        },
+        {
+          "field": "needs",
+          "why": "The quest is typed as a Mages Guild quest and the log mentions the College of Winterhold, but the conditions on Dorian's opening line aren't in these files, so a College requirement can't be confirmed or ruled out."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Before the quest Dorian's sleep package puts him in Dorian's House at night; his daytime sandbox package centres on a Gray Fox Cowl marker with no cell or place in these files, so where he stands by day isn't known. Try his house at night."
+        },
+        {
+          "field": "opens",
+          "why": "Dorian is in Honai's quest Helping the Enemy (an objective says to talk to him, and a package moves him while that quest runs), so the two are linked; whether this quest must be done first isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:00179F stages 10/20/30/40/200, objectives 10-40",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:000D1A (GetIsID Dorian 001743, stage < 10)",
+        "Dorian ref 001746 in Dorian's House (cell 0016DD), Ben Erai",
+        "Dorian packages ASHGWizardSleepPackage01/02, Sandbox01-04 conditioned on 00179F",
+        "reward ASHG_QF_ASHGMageQuest_06000CF7.Gold001",
+        "Dorian packages: ASHGWizardSleepPackage01 (Dorian's House, while 00179F < 30) before ASHGWizardSandboxPackage01 (Gray Fox Cowl.esm:036086, no cell); ASHGWizardSandboxFinalQuestPackage on 0017A1 stages 10-30; quest_givers ASHGAndynQuest others: Dorian stage < 31"
+      ]
+    },
+    {
+      "edid": "ASHGNecroQuest",
+      "name": "Is There a Necromancer in Town?",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Thaik in Salas Kazas asks you to deal with a band of necromancers in the desert.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Thaik",
+          "where": "Salas Kazas (Alik'r Desert, Hammerfell): he sleeps in Thaik's House; by day he is out near a spot the records don't name",
+          "how": "Talk to Thaik; he is worried about necromancers causing havoc in the Alik'r Desert and asks you to take care of them."
+        }
+      ],
+      "firstStep": "Find the necromancer camp in the desert and deal with the necromancers",
+      "takesYou": [
+        {
+          "place": "a necromancer camp out in the open desert",
+          "hold": "Alik'r Desert",
+          "why": "kill the necromancers"
+        },
+        {
+          "place": "Thaik's House, Salas Kazas",
+          "hold": "Alik'r Desert",
+          "why": "report back"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the necromancer camp in the desert and deal with the necromancers",
+            "Go back to Thaik in Salas Kazas"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Thaik",
+          "role": "quest giver, an old Redguard of Salas Kazas"
+        },
+        {
+          "name": "Agryval Stemuseph",
+          "role": "Breton necromancer at the camp, one of your targets"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Thaik's sleep package puts him in Thaik's House at night; his daytime sandbox (wide radius) centres on a marker with no cell in these files. Try his house at night."
+        },
+        {
+          "field": "takesYou",
+          "why": "Agryval Stemuseph is placed in the Alik'r Desert's catch-all outdoor cell (the same cell holds Crassius in Ben Erai and the Blades quest's dragons), so his placement says nothing about where the camp is."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:001545 stages 10/20/200",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:000D65 (GetIsID Thaik 001640, stage < 10)",
+        "Thaik ref 0014FB in Thaik's House (cell 00160C); packages ASHGThaikSleepPackage01, ASHGThaikSandboxPackage01",
+        "alias Necro01 = Agryval Stemuseph 00175D, ref 001494 in Gray Fox Cowl.esm:00FA57",
+        "reward ASHG_QF_ASHGNecroQuest_06000A9B.Gold001"
+      ]
+    },
+    {
+      "edid": "ASHGPoetryQuest",
+      "name": "Weltan the Poet",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Sharza in Salas Kazas asks you to find two poetry books by Weltan.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Sharza",
+          "where": "Salas Kazas (Alik'r Desert, Hammerfell): she sleeps in Sharza's House; by day she is near a spot the records don't name",
+          "how": "Talk to Sharza; she wants two poem books by Weltan, one said to be in a library and the other in the Mausoleum."
+        }
+      ],
+      "firstStep": "Find the two books written by Weltan in the Alik'r Desert",
+      "takesYou": [
+        {
+          "place": "a library in the Alik'r Desert",
+          "hold": "Alik'r Desert",
+          "why": "one of Weltan's books"
+        },
+        {
+          "place": "the Mausoleum (in the Oasis of Mora Sul, per The Gray Cowl of Nocturnal's journal)",
+          "hold": "Alik'r Desert",
+          "why": "the other book"
+        },
+        {
+          "place": "Sharza's House, Salas Kazas",
+          "hold": "Alik'r Desert",
+          "why": "hand the books in"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the two books written by Weltan in the Alik'r Desert and bring them back to Sharza in Kazas Salas"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Sharza",
+          "role": "quest giver, a Redguard of Salas Kazas"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Sharza's sleep package puts her in Sharza's House at night; her daytime sandbox centres on a marker with no cell in these files (small radius, so possibly close to the house). Try her house at night."
+        },
+        {
+          "field": "takesYou",
+          "why": "The quest only says 'a library' and 'the Mausoleum'. The Gray Cowl of Nocturnal's own journal puts the Mausoleum of the Champion of Cyrodiil in the Oasis of Mora Sul and needs a key from Al Shedim to enter, so the second book may only be reachable during or after that quest. Which library holds the first book isn't stated (possibly the one from The Library Lost to the Ages)."
+        },
+        {
+          "field": "rewards",
+          "why": "The script also points at the two books, On the Immortality of Dust and Epode of the Ansei Wards; these are the books you find and hand in, most likely taken from you rather than given. The gold amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:001781 stages 10/200; aliases Book01, Book02",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:001785 (GetIsID Sharza 001607, stage < 10)",
+        "Sharza ref 00160B in Sharza's House (cell 001557), Salas Kazas",
+        "script ASHG_QF_ASHGPoetryQuest_06000CD9: Gold001, ASHGBookWeltan01 (0014D2), ASHGBookWeltan02 (0014D3)",
+        "Gray Fox Cowl.esm manny_GF_MQ stage 300 log (Mausoleum in the Oasis of Mora Sul, key in Al Shedim)"
+      ]
+    },
+    {
+      "edid": "ASHGSolstheimQuest",
+      "name": "From Solstheim to Hammerfell",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "A Dunmer merchant on Solstheim, Lloros Reynel, wants you to take him to Hammerfell to open a shop.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        },
+        {
+          "what": "Be able to reach Solstheim",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Lloros Reynel",
+          "where": "The Retching Netch in Raven Rock, Solstheim",
+          "how": "Talk to Lloros; he wants to set up a shop for Dunmer goods in Hammerfell and you agree to go with him."
+        }
+      ],
+      "firstStep": "Get Lloros Reynel to Hammerfell",
+      "takesYou": [
+        {
+          "place": "Raven Rock",
+          "hold": "Solstheim",
+          "why": "meet Lloros"
+        },
+        {
+          "place": "Reynel's House, Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "where Lloros settles"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get Lloros Reynel to Hammerfell"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Reynel's House in Ben Erai, where the Reynels sell Dunmer goods (Naris and Eris Reynel are merchants there)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Lloros Reynel",
+          "role": "the Dunmer merchant you escort; he follows you during the quest and lives in Reynel's House in Ben Erai afterwards"
+        },
+        {
+          "name": "Naris Reynel",
+          "role": "Dunmer merchant at Reynel's House, Ben Erai"
+        },
+        {
+          "name": "Eris Reynel",
+          "role": "Dunmer merchant; splits her time between Reynel's House in Ben Erai and the inn at Salas Kazas"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Lloros's placement record is in Reynel's House in Ben Erai, but his package for before the quest keeps him in the Retching Netch in Raven Rock, and the journal calls him 'a merchant in Solstheim'. The Retching Netch is read from the other people who share that cell's packages; how he is moved between the two isn't in these files."
+        },
+        {
+          "field": "steps",
+          "why": "How you get him from Solstheim to Hammerfell isn't in the records; he simply follows you while the quest runs."
+        },
+        {
+          "field": "opens",
+          "why": "The quest holds two sets of references, SK1-18 and BE1-17, plus the two Reynel sellers; BE is likely Ben Erai, and SK may be Salas Kazas (Eris Reynel spends weekdays at Salas Kazas' Inn) rather than Solstheim. Nothing in these files says where those references are or that the shop is closed before the quest: Naris and Eris have no packages tied to it."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:00179E stages 10/200; aliases SK1-18, BE1-17, Disable01-02, Sellor01-02, Lloros01",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:000D2C (GetIsID Lloros 001747, stage < 11)",
+        "Lloros ref 0014F2 in Reynel's House (cell 0016F1)",
+        "Lloros package ASHGReynelSandboxPackage02 in cell Dragonborn.esm:017EC0 (shared target with DLC2NiyyaSandboxRetchingNetch, DLC2dunKolbjornRalis_SleepRetchingNetch24x8) while stage < 10",
+        "ASHGReynelFollowPackage01 at stage 10; Sleep/Sandbox in Ben Erai once completed",
+        "questlines_raw: this quest is the mod's listed opening",
+        "reward ASHG_QF_ASHGSolstheimQuest_06000CF6.Gold001"
+      ]
+    },
+    {
+      "edid": "CYCOHQuest01",
+      "name": "Black Marsh Maps",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Find the Cyrodilic Collections museum in Hammerfell and Jukka asks you to collect two lost maps of Black Marsh.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Jukka",
+          "where": "the Cyrodilic Collections museum in the Alik'r Desert, Hammerfell",
+          "how": "Talk to Jukka at the new Cyrodilic Collections museum; her first job is gathering maps of Black Marsh lost around the desert."
+        }
+      ],
+      "firstStep": "Find the first map in Khenzedum",
+      "takesYou": [
+        {
+          "place": "Khenzedum (Dwemer ruin)",
+          "hold": "Alik'r Desert",
+          "why": "the first map"
+        },
+        {
+          "place": "somewhere in the Alik'r Desert",
+          "hold": "Alik'r Desert",
+          "why": "the second map"
+        },
+        {
+          "place": "Cyrodilic Collections",
+          "hold": "Alik'r Desert",
+          "why": "bring the maps to Jukka"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the first map in Khenzedum",
+            "Find the second map in the Alik'r Desert",
+            "Go back to Jukka in the Cyrodilic Collections"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Cyrodilic Collections are Recruiting (likely next from Jukka)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Jukka",
+          "role": "quest giver, an Argonian who runs the Cyrodilic Collections museum; she stays in the museum day and night"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The objective doesn't name where the second map is; the quest's aliases are called Shadowfen and Murkmire (likely the two maps), but their placement isn't in these files. Khenzedum is a dangerous Dwemer ruin (levels 15 to 60, Dwarven Praetorian boss)."
+        },
+        {
+          "field": "opens",
+          "why": "The order of Jukka's four quests is read from their logs (the last calls itself the last one); the conditions that unlock each next quest aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:00117E stages 10/20/30/200; aliases Shadowfen, Murkmire, Jukka01",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:00118D (GetIsID Jukka 001167, stage < 10)",
+        "Jukka ref 001168 in Cyrodilic Collections (cell 001125); packages CYCOJukkaSleep, CYCOJukkaSandbox both in that cell",
+        "place Gray Fox Cowl.esm:00E3F4 Khenzedum",
+        "reward CYCO_QF_CYCOHQuest01_07000893.Gold001"
+      ]
+    },
+    {
+      "edid": "CYCOHQuest02",
+      "name": "Cyrodilic Collections are Recruiting",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Jukka sends you to Ben Erai to put up three recruiting signs for the museum.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        },
+        {
+          "what": "Probably finish Black Marsh Maps first",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Jukka",
+          "where": "the Cyrodilic Collections museum in the Alik'r Desert, Hammerfell",
+          "how": "Talk to Jukka; she gives you three signs to post in Ben Erai because the museum is looking for guards."
+        }
+      ],
+      "firstStep": "Place the first sign in Ben Erai",
+      "takesYou": [
+        {
+          "place": "Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "post three signs"
+        },
+        {
+          "place": "Cyrodilic Collections",
+          "hold": "Alik'r Desert",
+          "why": "report to Jukka"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Place the first sign in Ben Erai",
+            "Place the second sign in Ben Erai",
+            "Place the third sign in Ben Erai",
+            "Go back to Jukka"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Ancient Pottery (likely next from Jukka)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Jukka",
+          "role": "quest giver at the Cyrodilic Collections"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The line found for Jukka in this quest is the hand-in, not the offer; the condition that makes her offer it isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "The three sign spots are activators in Ben Erai; exactly where in town isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:00117F stages 10/20/30/40/200; aliases Activator01-03, Poster01-03, Jukka02",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:00119E (GetIsID Jukka, stage < 41)",
+        "reward CYCO_QF_CYCOHQuest02_07000894.Gold001"
+      ]
+    },
+    {
+      "edid": "CYCOHQuest03",
+      "name": "Ancient Pottery",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Jukka sends you to Sadraaka to recover an ancient Argonian pottery for the museum.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        },
+        {
+          "what": "Probably finish Cyrodilic Collections are Recruiting first",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Jukka",
+          "where": "the Cyrodilic Collections museum in the Alik'r Desert, Hammerfell",
+          "how": "Talk to Jukka; she sends you to Sadraaka to find an ancient pottery."
+        }
+      ],
+      "firstStep": "Find the artifact Jukka was talking about in Sadraaka",
+      "takesYou": [
+        {
+          "place": "Sadraaka",
+          "hold": "Alik'r Desert",
+          "why": "find the ancient Argonian pottery in a container there"
+        },
+        {
+          "place": "Cyrodilic Collections",
+          "hold": "Alik'r Desert",
+          "why": "bring it to Jukka"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find the artifact Jukka was talking about in Sadraaka",
+            "Go back to Jukka in the Cyrodilic Collections"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "A Special Smell (Jukka points you to Al Shedim when you hand this one in)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Jukka",
+          "role": "quest giver at the Cyrodilic Collections"
+        },
+        {
+          "name": "Chumz",
+          "role": "an Argonian in a Guard House in the Alik'r Desert whom this quest's script touches; his part isn't clear"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "No place called Sadraaka is in the places index. Sadraaka is the boss of the Tomb of the Forgotten Draugr and the curse in The Gray Cowl of Nocturnal's quest The Curse of Sadraaka (the Forgotten City), so the pottery is probably in one of those; the container's placement isn't in these files."
+        },
+        {
+          "field": "people",
+          "why": "Chumz and four other references sit in this quest's 'Disable' aliases, so the quest probably hides or swaps them (perhaps the guards recruited in the previous quest); the script isn't read here."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:001180 stages 10/20/200; aliases Container01, Pottery01, Jukka03, Disable01-05",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:0011A3 (GetIsID Jukka, stage < 21)",
+        "Jukka line INFO BetalillesHammerfellQuestBundle.esp:0011A5 under Ancient Pottery: 'I believe you could find something of use inside Al Shedim.'",
+        "place Gray Fox Cowl.esm:03C023 Tomb of the Forgotten Draugr (boss Sadraaka); quest manny_GF_Sadraaka",
+        "reward CYCO_QF_CYCOHQuest03_07000895.Gold001"
+      ]
+    },
+    {
+      "edid": "CYCOHQuest04",
+      "name": "A Special Smell",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Jukka's last job: find something for the museum in Al Shedim.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        },
+        {
+          "what": "Finish Ancient Pottery",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Jukka",
+          "where": "the Cyrodilic Collections museum in the Alik'r Desert, Hammerfell",
+          "how": "When you hand in Ancient Pottery, Jukka says you could find something of use inside Al Shedim."
+        }
+      ],
+      "firstStep": "Find an artifact for the Cyrodilic Collections in Al Shedim",
+      "takesYou": [
+        {
+          "place": "Al Shedim (north of Ben Erai)",
+          "hold": "Alik'r Desert",
+          "why": "find a censer"
+        },
+        {
+          "place": "Cyrodilic Collections",
+          "hold": "Alik'r Desert",
+          "why": "bring the censer to Jukka"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find an artifact for the Cyrodilic Collections in Al Shedim",
+            "Go back to Jukka in the Cyrodilic Collections"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Jukka",
+          "role": "quest giver at the Cyrodilic Collections"
+        },
+        {
+          "name": "Ancora",
+          "role": "a Redguard in a Guard House in the Alik'r Desert whom this quest's script touches; her part isn't clear"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "takesYou",
+          "why": "Al Shedim has two parts in the records: one with desert wolves (levels 10 to 30) and a deeper one with draugr (levels 15 to 80, boss Ben Sala). Which holds the censer isn't in these files. 'North of Ben Erai' comes from The Gray Cowl of Nocturnal's journal."
+        },
+        {
+          "field": "needs",
+          "why": "Jukka's pointer to Al Shedim is filed under Ancient Pottery, which suggests this follows it; the exact condition isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds a gold property; the amount isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:001181 stages 10/20/200; aliases Container02, Censer01, Jukka04, Disable01-11",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:0011AA (GetIsID Jukka, stage < 21)",
+        "INFO 0011A5 (Ancient Pottery) pointer to Al Shedim",
+        "places Gray Fox Cowl.esm:01DACD / 01DACF Al Shedim",
+        "reward CYCO_QF_CYCOHQuest04_07000896.Gold001"
+      ]
+    },
+    {
+      "edid": "DDBIntroQuest",
+      "name": "The Dark Brotherhood in Hammerfell",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "An Unknown Initiate of the Dark Brotherhood in Skyrim sends you to a Sanctuary in Hammerfell's Alik'r Desert.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Unknown Initiate",
+          "where": "inside the Dawnstar Sanctuary, near Dawnstar in the Pale",
+          "how": "Talk to the Unknown Initiate; she asks you to go to the Alik'r Desert in Hammerfell and find a Dark Brotherhood Sanctuary."
+        }
+      ],
+      "firstStep": "Head to the Alik'r Desert Sanctuary",
+      "takesYou": [
+        {
+          "place": "Alik'r Desert Sanctuary",
+          "hold": "Alik'r Desert",
+          "why": "find the Sanctuary and talk to Tenerio, the only one there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Head to the Alik'r Desert Sanctuary",
+            "Talk to Tenerio"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dark Brotherhood",
+      "opens": [
+        "Merchant Problem, Tenerio's first contract; the next four follow in the order their logs number them: Argonian Hero, Wandering Monk, Alik'r No More, then No Guard Is Safe (the final one)",
+        "Later, Disappearing in the Dark, which starts with a letter ('Hammerfell needs you') sending you back to Tenerio, then The Crimson Eviscerator and Crimson Scar Believers"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Unknown Initiate",
+          "role": "Dark Brotherhood initiate who sends you to Hammerfell"
+        },
+        {
+          "name": "Tenerio",
+          "role": "the Imperial who runs the Alik'r Desert Sanctuary and gives the contracts"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The conditions on her opening line aren't in these files. She is in the Dark Brotherhood faction and waits at the Dawnstar Sanctuary, so this may need you to be in the Dark Brotherhood and far enough in its quests for that Sanctuary to be open; not confirmed."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Alik'r Desert Sanctuary isn't in the places index, so where it sits in the desert isn't known from these files."
+        },
+        {
+          "field": "where",
+          "why": "Her only package sandboxes around a reference inside the Dawnstar Sanctuary cell; she is first placed outdoors in a Skyrim cell the files don't name. Whether you need to be able to get into the Sanctuary to reach her isn't in these files."
+        },
+        {
+          "field": "people",
+          "why": "Lucya, the initiate in Disappearing in the Dark, shares the Unknown Initiate's package, and that quest's log says Lucya 'was the one sent to find me back in Skyrim'; so the Unknown Initiate is probably Lucya. Not confirmed."
+        },
+        {
+          "field": "opens",
+          "why": "The contract order is read from their logs ('My first ... contract', 'My final ...'); the conditions on each of Tenerio's lines aren't in these files. That Crimson Scar Believers comes after The Crimson Eviscerator is read from the story, not a condition."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:000ECA stages 10/20/200; aliases TheDoor, DDBTenerio01, UnknownInitiate, BedDoor",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:000E71 (GetIsID Unknown Initiate 000EC5, stage < 10); Tenerio 000805 stage < 21",
+        "Unknown Initiate ref 024FFF in Skyrim.esm:008E38 (Skyrim worldspace); package DDBUiSandbox around Skyrim.esm:0E992F, Dawnstar Sanctuary, The Pale",
+        "Tenerio ref 000EA0 in Alik'r Desert Sanctuary (cell 0010BA); package DDBTererioSandbox",
+        "quest_givers: DDBQuest01-06, DDBQuest08 giver Tenerio",
+        "DDBUiSandbox target Skyrim.esm:0E992F cell 'Dawnstar Sanctuary', also used by Lucya 000FD0/000FD1; DDBQuest06 stage 0 ';Quest Start', stages 10/20; DDBQuest07 stage 10 continues DDBQuest06 stage 200; DDBQuest01-05 logs numbered first to final"
+      ]
+    },
+    {
+      "edid": "DDBPenitusOculatusQuest",
+      "name": "Ending the Dark Brotherhood in Hammerfell again",
+      "plugin": "BetalillesHammerfellQuestBundle.esp (no later plugin edits the quest; its people are last edited by The Gray Cowl - Betalilles LoreRim Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Leollus of the Penitus Oculatus in Ben Erai has found the Hammerfell Sanctuary and asks you to wipe it out.",
+      "needs": [
+        {
+          "what": "Be able to reach Hammerfell's Alik'r Desert, the region The Gray Cowl of Nocturnal opens",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Leollus",
+          "where": "Penitus Oculatus Outpost, Ben Erai (Alik'r Desert, Hammerfell)",
+          "how": "Talk to Leollus; the Penitus Oculatus has found where the Dark Brotherhood hides in the Alik'r Desert and tasks you with defeating them."
+        }
+      ],
+      "firstStep": "Defeat the Dark Brotherhood leader in Hammerfell",
+      "takesYou": [
+        {
+          "place": "Alik'r Desert Sanctuary",
+          "hold": "Alik'r Desert",
+          "why": "kill Tenerio and his initiates"
+        },
+        {
+          "place": "Penitus Oculatus Outpost, Ben Erai",
+          "hold": "Alik'r Desert",
+          "why": "report to Leollus"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Defeat the Dark Brotherhood leader in Hammerfell",
+            "Go back to the Penitus Oculatus Outpost in Hammerfell"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Gold",
+          "when": "at the end"
+        },
+        {
+          "what": "Crimson Eviscerator (dagger)",
+          "when": "probably at the end"
+        }
+      ],
+      "type": "Dark Brotherhood",
+      "opens": [],
+      "closes": [
+        "the Dark Brotherhood in Hammerfell: Tenerio, who gives the Hammerfell contracts, dies, along with two initiates"
+      ],
+      "people": [
+        {
+          "name": "Leollus",
+          "role": "Imperial Penitus Oculatus agent who gives the quest; sleeps at the outpost"
+        },
+        {
+          "name": "Tenerio",
+          "role": "the Dark Brotherhood leader in the Alik'r Desert Sanctuary; a hostile version of him is the target"
+        },
+        {
+          "name": "Dark Brotherhood Initiate",
+          "role": "two initiates (an Imperial and a Redguard) fight you in the Sanctuary"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest's own records don't say how you get to Hammerfell. The Gray Cowl of Nocturnal's quest The Call of Gray Cowl of Nocturnal is the one whose log puts you there ('I am in a desert region, now', 'I'm in Hammerfell'); whether there is another way in isn't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The conditions on Leollus's opening line aren't in these files, so whether you must first have found the Sanctuary, or be outside the Brotherhood, isn't known."
+        },
+        {
+          "field": "where",
+          "why": "Leollus sleeps at the Penitus Oculatus Outpost; his daytime package has no location, so he likely stays near where he is placed (the outpost)."
+        },
+        {
+          "field": "rewards",
+          "why": "The gold and the Crimson Eviscerator both come from the quest script's properties (Gold001, DDBCrimsonEviscerator); neither amount nor hand-over is confirmed in these files. The same dagger is what you win in the Brotherhood's own The Crimson Eviscerator."
+        },
+        {
+          "field": "closes",
+          "why": "The quest swaps in a separate hostile Tenerio and fighting initiates; that the friendly Tenerio and his contracts are gone afterwards is read from the aliases, not from the script."
+        }
+      ],
+      "evidence": [
+        "QUST BetalillesHammerfellQuestBundle.esp:001076 stages 10/20/200; aliases Tenerio00, Penitus00, Surplus01-02, Tenerio01, UI00",
+        "giver INFO BetalillesHammerfellQuestBundle.esp:001083 (GetIsID Leollus 001072, stage < 10)",
+        "Leollus ref 001075 in Penitus Oculatus Outpost (cell 001057), Ben Erai; packages DDBLeollusSleep, DDBLeollusSandbox",
+        "Tenerio01 = DDBTenerioKill 001090 (DDBADFightFaction); Surplus01/02 = DDBInitiateFight 00108B/00108C",
+        "script DDB_QF_DDBPenitusOculatusQues_040009BC: Gold001, DDBCrimsonEviscerator (000FCB)"
+      ]
+    }
+  ]
+}
