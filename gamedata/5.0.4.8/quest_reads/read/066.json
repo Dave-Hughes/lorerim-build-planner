@@ -4,7 +4,7 @@
   "name": "Bounty: Forsworn",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A The Reach hold bounty: the Forsworn you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in The Reach: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the leader of the place named in your journal",
@@ -12,7 +12,7 @@
    {
     "place": "the place named in the bounty (picked when it starts)",
     "hold": "The Reach",
-    "why": "kill the leader"
+    "why": "kill the leader there"
    },
    {
     "place": "Understone Keep in Markarth",
@@ -53,7 +53,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this The Reach bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in The Reach: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -91,7 +91,7 @@
   "name": "Bounty: Beast",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A The Rift hold bounty: the beast you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in The Rift: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the beast at the place named in your journal",
@@ -140,7 +140,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this The Rift bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in The Rift: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -178,7 +178,7 @@
   "name": "Bounty: Beast",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A Whiterun hold bounty: the beast you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in Whiterun: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the beast at the place named in your journal",
@@ -227,7 +227,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this Whiterun bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in Whiterun: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -265,7 +265,7 @@
   "name": "Bounty: Draugr",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A Winterhold hold bounty: the draugr you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in Winterhold: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the draugr at the place named in your journal",
@@ -314,7 +314,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this Winterhold bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in Winterhold: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -352,7 +352,7 @@
   "name": "Bounty: Giant",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A Eastmarch hold bounty: the giant you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in Eastmarch: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the giant located at the place named in your journal",
@@ -401,7 +401,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this Eastmarch bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in Eastmarch: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -439,7 +439,7 @@
   "name": "Bounty: Spriggan",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A Falkreath hold bounty: the spriggan you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in Falkreath: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the spriggan located at the place named in your journal",
@@ -488,7 +488,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this Falkreath bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in Falkreath: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -526,7 +526,7 @@
   "name": "Bounty: Vampire",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A Haafingar hold bounty: the vampire you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in Haafingar: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the vampire located at the place named in your journal",
@@ -575,7 +575,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this Haafingar bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in Haafingar: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -613,7 +613,7 @@
   "name": "Bounty: Beast",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A Hjaalmarch hold bounty: the beast you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in Hjaalmarch: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the beast at the place named in your journal",
@@ -662,7 +662,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this Hjaalmarch bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in Hjaalmarch: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -700,7 +700,7 @@
   "name": "Bounty: Giant",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A The Pale hold bounty: the giant you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in The Pale: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the giant located at the place named in your journal",
@@ -749,7 +749,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this The Pale bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in The Pale: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
@@ -787,7 +787,7 @@
   "name": "Bounty: Hagraven",
   "plugin": "Favor Quests Seperated.esp (no later edits)",
   "canDo": "radiant",
-  "canDoWhy": "A The Reach hold bounty: the hagraven you hunt and where it is are picked when the bounty starts, but these records don't show what offers it.",
+  "canDoWhy": "A bounty in The Reach: the target and where it is are picked when the bounty starts, but these records don't show what offers it.",
   "needs": [],
   "starts": [],
   "firstStep": "Kill the hagraven located at the place named in your journal",
@@ -836,7 +836,7 @@
   "unsure": [
    {
     "field": "starts",
-    "why": "These records show nothing that hands you this The Reach bounty: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
+    "why": "These records show nothing that hands you this bounty in The Reach: no dialogue line, no letter and no start event point to it. The quest has slots for an innkeeper and a letter, which suggests an innkeeper's letter or the hold's steward offers it, but that can't be confirmed here. The game's own shared bounty quests are still the ones wired to start when you enter a hold."
    },
    {
     "field": "canDo",
