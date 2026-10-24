@@ -1,0 +1,490 @@
+[
+  {
+    "edid": "MarkarthSideMageQuest",
+    "name": "The Lost Family Relic",
+    "plugin": "Arena - Markarth Side.esp (no later edits)",
+    "canDo": "talk",
+    "canDoWhy": "Varimo, who runs the magic shop in Markarth Side, asks you to get back a family relic an employee ran off with.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Varimo",
+        "where": "The Boiling Cauldron, the magic shop in Markarth Side. He works there from 8 am to 8 pm, spends 8 pm to midnight at The Kings Rest inn, and sleeps at the shop.",
+        "how": "Talk to Varimo; he tells you an employee ran off with an old family relic and asks you to bring it back."
+      }
+    ],
+    "firstStep": "Find the missing employee and get back the relic",
+    "takesYou": [
+      {"place": "The Boiling Cauldron, Markarth Side", "hold": "Hjaalmarch", "why": "where Varimo gives you the job and where you bring the amulet back"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find the missing employee and retrieve the relic", "Return the amulet to Varimo in Markarth Side"]}
+    ],
+    "rewards": [
+      {"what": "Necklace of the Dead (amulet)", "when": "at the end, from Varimo"},
+      {"what": "Gold", "when": "at the end, from Varimo"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Varimo", "role": "runs the magic shop in Markarth Side; gives the job, and turns out to have dabbled in necromancy"}
+    ],
+    "unsure": [
+      {"field": "takesYou", "why": "The relic turns up on a dead draugr, but the records don't say where that body lies."},
+      {"field": "hold", "why": "Varimo's daily routines are all set in Hjaalmarch, but the records here don't place the town of Markarth Side itself on the map."},
+      {"field": "choices", "why": "The journal has only one ending: Varimo confesses, swears off necromancy and pays you to keep quiet. The records show no other way to end it."}
+    ],
+    "evidence": [
+      "quests_raw Arena - Markarth Side.esp:10E4AC stages 10/20/30, objectives 10/20",
+      "quest_givers_raw giver Varimo Arena - Markarth Side.esp:0C7595, info 10E4B0, cell The Boiling Cauldron 0801B3",
+      "people_schedules_raw 0C7595: MarkarthSideMagic1Work 8x12 Boiling Cauldron; MarkarthSideMagic1Inn 20x4 The Kings Rest; MarkarthSideMagicShop1Sleep 0x8; packages hold Hjaalmarch; CrimeFactionHjaalmarch",
+      "rewards: alias MarkarthSideMagicAmulet 10E4B6; QF_MarkarthSideMageQuest_0510E4AC.Gold001",
+      "alias MarkarthSideDraugrBody (no placement in raw files)"
+    ]
+  },
+  {
+    "edid": "REQ_HOGITHUM",
+    "name": "On Hogithum",
+    "plugin": "Requiem.esp (no later edits)",
+    "canDo": "by itself",
+    "canDoWhy": "Starts when you find a fragment of an old poem; you then gather the rest and bring them to Giraud Gemane at the Bards College.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "",
+        "where": "any of the places a fragment lies (see below)",
+        "how": "Pick up a fragment of the poem; your journal says to look into it at the Bards College in Solitude."
+      }
+    ],
+    "firstStep": "Find more about the poem fragment at the Bards College in Solitude",
+    "takesYou": [
+      {"place": "Bards College", "hold": "Haafingar", "why": "find a report about the song and talk to Giraud Gemane"},
+      {"place": "Wolfskull Cave", "hold": "Haafingar", "why": "a fragment"},
+      {"place": "Frostmere Crypt", "hold": "The Pale", "why": "a fragment"},
+      {"place": "Robber's Gorge", "hold": "Hjaalmarch", "why": "a fragment"},
+      {"place": "Darklight Tower", "hold": "The Rift", "why": "a fragment"},
+      {"place": "the swamp around Morthal", "hold": "Hjaalmarch", "why": "a fragment"},
+      {"place": "Pelagius Wing, Blue Palace, Solitude", "hold": "Haafingar", "why": "a fragment"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find more information about the missing fragment", "Find all six missing fragments", "Talk to Giraud Gemane", "Read the complete \"On Hogithum\""]}
+    ],
+    "rewards": [
+      {"what": "On Hogithum (book, with the poem's last verse)", "when": "from Giraud once you bring him all the fragments"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Giraud Gemane", "role": "at the Bards College in Solitude; puts the fragments together and gives you the full poem. He teaches at the College from 2 pm to 6 pm, eats there at 6 pm, may lunch at the Winking Skeever from 10 am to noon, and sleeps from 2 am."}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The records don't say which fragment starts the quest. Any of the six probably does, but that isn't confirmed."},
+      {"field": "takesYou", "why": "The quest's own label for one fragment calls it a cove, but the records tie the quest to Robber's Gorge. The Morthal swamp and Pelagius Wing spots are named only in the quest's labels, not placed."},
+      {"field": "rewards", "why": "The last journal line says you can now brew \"a lethal food\", so reading the poem may teach a recipe or effect. The records here don't show what it is."},
+      {"field": "people", "why": "Giraud's lunch at the Winking Skeever only happens under a condition these files don't decode."}
+    ],
+    "evidence": [
+      "quests_raw Requiem.esp:AD383D stages 10/50/100/110/120; aliases WolfskullCaveFragment, FrostmereCryptFragment, RobbersCoveFragment, DarklightTowerFragment, MorthalSwampFragment, PelagiusWingFragment, Reward",
+      "quest_givers_raw giver Giraud Gemane Skyrim.esm:013281, info Requiem.esp:AD383E, Bards College 016A0C",
+      "reward alias Reward Requiem.esp:AD3846 (book On Hogithum)",
+      "places_raw quests list On Hogithum: Wolfskull Cave 0192C8, Frostmere Crypt 0192B8, Robber's Gorge 01929B, Darklight Tower 01915D",
+      "people_schedules_raw 013281: SolitudeGiraudEatLunch10x3 (cond), SolitudeBardsCollegeClassGiraudTeach14x4, SolitudeBardsCollegeDiningHallEat18x1, BardsCollegeSleepEditorLoc2x8",
+      "quest_starts_raw on-hogithum: no dialogue/event conditions"
+    ]
+  },
+  {
+    "edid": "Trad_001_ProfaneDivinityQuest",
+    "name": "Profane Divinity",
+    "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp (no later edits)",
+    "canDo": "by itself",
+    "canDoWhy": "A short journal entry after a forbidden ritual on your own heart. You finish it by using the profane heart.",
+    "needs": [
+      {"what": "The ritual the journal describes, using Kagrenac's tools, heartstones and the power of the masks of the Tribunal and Dagoth Ur", "kind": "item"}
+    ],
+    "starts": [],
+    "firstStep": "Use the profane heart",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Use the profane heart"]}
+    ],
+    "rewards": [
+      {"what": "Heartless (spell or effect)", "when": "when the quest ends"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {"field": "starts", "why": "Nothing in these files shows what starts the quest: no dialogue, event or item. The needs line comes only from the journal text."},
+      {"field": "rewards", "why": "The quest's script gives a spell named Heartless, but the script calls it a 'bad spell' and its effect isn't in these files. It may be a drawback, not a gift."}
+    ],
+    "evidence": [
+      "quests_raw Trad_AE_CC_Collection_Requiem_Patch.esp:64E16A stages 10/20/50, objective 20",
+      "quest_givers_raw reward Trad_AE_CC_Collection_Requiem_Patch.esp:64E16D via QF_Trad_001_ProfaneDivinityQ_4664E16A.BadSpell01",
+      "quest_starts_raw profane-divinity: no conditions, no cells"
+    ]
+  },
+  {
+    "edid": "ccBGSSSE014_SpellPack_StartupQuest",
+    "name": "The Lost Library",
+    "plugin": "ccbgssse014-spellpack01.esl (last edited by Trad_AE_CC_Collection_Requiem_Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "Your journal picks up a rumour of a lost library of spell tomes near Winterhold. Find the chest to finish it.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Find the Lost Library of Spell Tomes",
+    "takesYou": [
+      {"place": "Hob's Fall Cave", "hold": "Winterhold", "why": "the chest of ancient spell tomes is here"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Find the Lost Library of Spell Tomes"]}
+    ],
+    "rewards": [
+      {"what": "A chest of ancient spell tomes", "when": "when you find it in Hob's Fall Cave"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {"field": "starts", "why": "The records hold no dialogue or event that starts it. The opening journal line reads like the quest starts on its own, but what sets it off isn't shown."},
+      {"field": "rewards", "why": "The records don't list what's in the chest. The same add-on adds spells such as Elemental Flare, Choking Grasp, Mara's Wrath and the Unbounded spells, but these files don't confirm that the chest holds them."},
+      {"field": "takesYou", "why": "The records put Hob's Fall Cave in Winterhold hold, with Dawnstar the nearest town."}
+    ],
+    "evidence": [
+      "quests_raw ccbgssse014-spellpack01.esl:00083C stages 0/10, alias TomeChest",
+      "places_raw Hob's Fall Cave Skyrim.esm:019198 (hold Winterhold) quests list The Lost Library",
+      "spells_raw ccbgssse014-spellpack01.esl spells (not tied to the chest)",
+      "quest_starts_raw the-lost-library: no conditions"
+    ]
+  },
+  {
+    "edid": "BGSSSE018_ShadowrendQuest",
+    "name": "Through a Glass, Darkly",
+    "plugin": "ccbgssse018-shadowrend.esl (last edited by ECSS - Shadowrend Patch.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "An inner voice pulls you to a geyser pool in Eastmarch, where you fight a shadow of yourself for the weapon Shadowrend.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Go to the Grove of Reflection",
+    "takesYou": [
+      {"place": "Grove of Reflection, a geyser pool", "hold": "Eastmarch", "why": "try to take the weapon, then defeat your shadow"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Go to the Grove of Reflection", "Return to the Grove of Reflection", "Defeat your Shadow", "Retrieve Shadowrend"]}
+    ],
+    "rewards": [
+      {"what": "Shadowrend (two-handed weapon)", "when": "taken from your defeated shadow"}
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "your Shadow", "role": "a dark copy of you, pulled out when you try to take the weapon; you must defeat it"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The records hold no dialogue or event that starts it. The journal's 'inner voice' suggests it starts on its own, but what sets it off isn't shown."},
+      {"field": "takesYou", "why": "The Grove of Reflection is named only in the objectives. It isn't in the places index, so its exact spot in Eastmarch isn't confirmed."},
+      {"field": "rewards", "why": "The records list Shadowrend as both a battleaxe and a greatsword. Which one you get isn't shown here."}
+    ],
+    "evidence": [
+      "quests_raw ccbgssse018-shadowrend.esl:00081C stages 5/10/15/20, objectives 5/8/10/15",
+      "items_raw Shadowrend ccbgssse018-shadowrend.esl:000D62 (battleaxe), 000D63 (greatsword)",
+      "quest_starts_raw through-a-glass-darkly: no conditions"
+    ]
+  },
+  {
+    "edid": "ccBGSSSE038_Quest",
+    "name": "In the Shadows",
+    "plugin": "ccbgssse038-bowofshadows.esl (last edited by Bow of Shadows - Reduced Cut.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "Your journal suggests asking the Whiterun Jarl's steward for work. That leads to an assassination plot and the Bow of Shadows.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Proventus Avenicci",
+        "where": "Dragonsreach, Whiterun",
+        "how": "Ask the Jarl's steward for work; he hands you a note about a job."
+      }
+    ],
+    "firstStep": "Speak to the Jarl's steward in Dragonsreach",
+    "takesYou": [
+      {"place": "Dragonsreach", "hold": "Whiterun", "why": "the steward gives the job and the reward; the assassin waits on the upper floor"},
+      {"place": "Arcadia's Cauldron, Whiterun", "hold": "Whiterun", "why": "take a copy of the alchemist's ledger"},
+      {"place": "Hall of the Dead, Whiterun", "hold": "Whiterun", "why": "check on a priest who bought poison"},
+      {"place": "Whiterun Stables", "hold": "Whiterun", "why": "check on a stable boy who bought poison; find a body and clues"},
+      {"place": "Silent Moons Camp", "hold": "Whiterun", "why": "find the assassin's journal"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Speak to the Jarl's Steward", "Read the Steward's Note", "Take the ledger copy at Arcadia's Cauldron", "Read the Business Ledger Copy", "Investigate the Hall of the Dead", "Check the stables", "Investigate the Silent Moons Camp", "Find the Assassin on the upper floor of Dragonsreach when the Jarl is unoccupied", "Retrieve the Bow of Shadows", "Speak to the Jarl's Steward"]}
+    ],
+    "rewards": [
+      {"what": "Bow of Shadows", "when": "taken from the assassin"},
+      {"what": "Spell Tome (Adept): Detect Life", "when": "during the quest"},
+      {"what": "Gold (a large reward)", "when": "from the steward at the end"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Proventus Avenicci", "role": "the Jarl's steward in Dragonsreach; gives the job and pays you at the end"},
+      {"name": "Arcadia", "role": "Whiterun's alchemist; her shop holds the ledger copy. She's in Arcadia's Cauldron from 8 am to 8 pm."},
+      {"name": "the stable boy", "role": "bought poison; the trail leads to the Whiterun Stables"},
+      {"name": "the Assassin", "role": "plans to shoot the Jarl from the upper floor of Dragonsreach with the Bow of Shadows"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The records hold no dialogue or event that starts it. The opening journal line suggests it starts on its own and points you to the steward."},
+      {"field": "people", "why": "The quest also names Brill, whom the records place at Jorrvaskr. His part in the poison trail isn't clear from these files."},
+      {"field": "rewards", "why": "The Detect Life tome is tied to the quest, but these files don't say where you pick it up."},
+      {"field": "starts", "why": "Proventus has no daily routine in these files except one that applies only if the Jarl is exiled. The records place him in Dragonsreach."}
+    ],
+    "evidence": [
+      "quests_raw ccbgssse038-bowofshadows.esl:00080E stages 0-100, objectives 10-100, aliases Proventus, Brill, StableBoy, Assassin, BowofShadows, DetectLife",
+      "quest_givers_raw rewards: DetectLife Skyrim.esm:0A26E7; FavorRewardGoldLarge Skyrim.esm:04A41B via ccBGSSSE038_Quest_0500080E",
+      "items_raw Bow of Shadows ccbgssse038-bowofshadows.esl:000807",
+      "people_raw Proventus Avenicci Skyrim.esm:013BBA Dragonsreach; Brill Skyrim.esm:01A6A2 Jorrvaskr; Arcadia 013BA4",
+      "places_raw Silent Moons Camp Skyrim.esm:0192A9 (Whiterun); Hall of the Dead 01F876 quests list In the Shadows",
+      "people_schedules_raw Arcadia WhiterunArcadiaStorePackage 8x12"
+    ]
+  },
+  {
+    "edid": "ccBGSSSE067_Quest",
+    "name": "The Cause",
+    "plugin": "ccbgssse067-daedinv.esm (last edited by CauseTweakAlternateStart.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "A letter from a stranger draws you into a Mythic Dawn plot to reopen an Oblivion Gate. It ends with your choice to close the gate or keep it open.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "",
+        "where": "a letter on the body of a dead Vigilant of Stendarr, out in the wilds of Skyrim",
+        "how": "The journal tells you to watch for news. Find and read the stranger's plea, a letter from Skorvild asking to meet at the Shrine to Stendarr."
+      }
+    ],
+    "firstStep": "Read the Stranger's Plea and meet Skorvild at the Shrine to Stendarr",
+    "takesYou": [
+      {"place": "the Shrine to Stendarr", "hold": "", "why": "meet Skorvild; he's already dead and two Mythic Dawn assassins attack"},
+      {"place": "the Mythic Dawn camp", "hold": "", "why": "clues to the ruin they are digging into"},
+      {"place": "Rielle", "hold": "", "why": "an Ayleid ruin: find four Ayleid Elemental Shards, open the secret chamber, take the Great Welkynd Stone and defeat Norion the Undying"},
+      {"place": "Red Scar Cavern", "hold": "", "why": "the Mythic Dawn hideout with the Oblivion Gate; defeat Vonos"},
+      {"place": "the Deadlands", "hold": "", "why": "through the gate; find the Sigil Stone, fight two Dremora champions, rescue Vigilants"}
+    ],
+    "choices": [
+      {"choice": "Take the Sigil Stone", "leadsTo": "The gate closes and is destroyed; the Mythic Dawn are defeated."},
+      {"choice": "Place the Great Welkynd Stone on the altar", "leadsTo": "The gate is recharged and sealed open, following Mehrunes Dagon's will."}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Watch for any news", "Read the Stranger's Plea", "Meet Skorvild at the Shrine to Stendarr", "Defeat the Mythic Dawn Assassins", "Search the bodies for information", "Read Skorvild's Journal", "Read the Mythic Dawn Orders", "Search for clues in the Mythic Dawn camp", "Search Rielle for clues about the secret chamber", "Read Janus' Journal", "Retrieve the Ayleid Elemental Shards (0/4)", "Locate the Ayleid Elemental Shard Holders", "Place the Ayleid Elemental Shards", "Enter the secret chamber", "Take the Great Welkynd Stone", "Defeat Norion the Undying", "Search Norion's remains", "Find clues to the Oblivion Gate's location", "Read the Vigil Enforcer's Journal", "Locate the Oblivion Gate", "(Optional) Wear a set of Mythic Dawn robes", "Defeat Vonos", "Retrieve Vonos' Journal", "Read Vonos' Journal", "Use the Scroll of Liminal Breach", "(Optional) Find the missing Vigilants (0/3)", "Locate the Sigil Stone in the Deadlands"]},
+      {"branch": "close the gate", "objectives": ["Defeat the Dremora Valkynaz", "Retrieve Scourge", "Defeat Valkyn Skoria", "Retrieve Torment", "Take the Sigil Stone", "Escape the Deadlands"]},
+      {"branch": "keep the gate open", "objectives": ["Place the Great Welkynd Stone", "Escape the Deadlands"]}
+    ],
+    "rewards": [
+      {"what": "Scourge (mace)", "when": "from one of the Dremora champions in the Deadlands"},
+      {"what": "Torment (sword)", "when": "from the other Dremora champion in the Deadlands"},
+      {"what": "Summon Daedric Horse (spell, from a spellbook)", "when": "during the quest"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": [
+      "Your choice at the end is final: the gate is either destroyed or sealed open for good."
+    ],
+    "people": [
+      {"name": "Skorvild", "role": "wrote the letter, a reformed Mythic Dawn member; murdered before you arrive"},
+      {"name": "Janus", "role": "a Mythic Dawn explorer whose journal in Rielle points to the shards"},
+      {"name": "Norion the Undying", "role": "Ayleid lich guarding the Great Welkynd Stone in Rielle Crypt"},
+      {"name": "Vonos", "role": "leader of the Mythic Dawn, in the Mythic Dawn Temple past Red Scar Cavern"},
+      {"name": "the missing Vigilants", "role": "three prisoners you can rescue in the Deadlands (optional)"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "No dialogue or event in these files starts the quest. The letter lies on a dead Vigilant somewhere in the Skyrim wilds, but the records give only a map cell, not a named place. An alternate-start patch also edits this quest, and these files don't show what it changes. One early journal entry reads as if a start places you at the gate already."},
+      {"field": "takesYou", "why": "The Shrine to Stendarr, Rielle, Red Scar Cavern and the Deadlands aren't in the places index, so their holds aren't known from these files."},
+      {"field": "choices", "why": "The objectives show both champions and the Sigil Stone on the closing path. Which steps the open-gate path skips isn't fully clear from the records."},
+      {"field": "rewards", "why": "The Daedric Horse spellbook and an Ayleid crown are tied to the quest, but where you get them isn't shown. The records name the champions Valkynaz and Valkyn Skoria; which carries which weapon is taken from the objective order."}
+    ],
+    "evidence": [
+      "quests_raw ccbgssse067-daedinv.esm:06BFC1 stages 1-250, objectives 10-305, aliases NoteFromStrangerContainerAlias, ObjectWeaponScourge, ObjectWeaponTorment, ObjectSpellbookDaedricHorse, ObjectAyleidCrown, ActivatorFinalStoneChoice",
+      "quest_givers_raw people: NoteFromStrangerContainerAlias -> REQ_Corpse_Vigilant_NordMale2 Dawnguard.esm:019FFC ref 019FFD in Skyrim.esm:000D74",
+      "items_raw Scourge ccbgssse067-daedinv.esm:000B5E, Torment 000B5F; spells_raw Summon Daedric Horse 000B62",
+      "people_raw Norion the Undying 000B73 Rielle Crypt; Janus 0B8A14 Rielle; Vonos 039270 Mythic Dawn Temple; Mythic Dawn Guard Red Scar Cavern",
+      "quest_starts_raw the-cause: no conditions; versions CauseTweakAlternateStart.esp"
+    ]
+  },
+  {
+    "edid": "ccEEJSSE004_Quest",
+    "name": "Hendraheim",
+    "plugin": "cceejsse004-hall.esl (last edited by LoreRim - Dialogue Patch.esp, after Creation Club Home Requirements - AIO.esp and Hendraheim - Tweaks and Enhancements.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "Once you're far enough into the Companions, a courier brings a warrior's challenge. Beat the warrior to earn the right to buy the house Hendraheim from Markarth's steward.",
+    "needs": [
+      {"what": "Reach the part of the Companions quest The Silver Hand where you've joined the Circle as a werewolf and Aela asks you to avenge Skjor", "kind": "quest"}
+    ],
+    "starts": [
+      {
+        "who": "a courier",
+        "where": "on arrival in a major hold",
+        "how": "Once you meet the Companions requirement, a courier finds you when you travel into a new place and hands you the Warrior's Challenge."
+      }
+    ],
+    "firstStep": "Read the Warrior's Challenge, then go to Hendraheim in the mountains north of Bilegulch Mine",
+    "takesYou": [
+      {"place": "Hendraheim, in the mountains north of Bilegulch Mine", "hold": "", "why": "fight the owner to prove your worth"},
+      {"place": "Markarth (the steward)", "hold": "The Reach", "why": "buy the house"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Await news from a courier", "Read the Warrior's Challenge", "Speak to the warrior at Hendraheim", "Prove your worth", "Purchase Hendraheim", "Enter Hendraheim"]}
+    ],
+    "rewards": [
+      {"what": "Hendraheim (a house, bought for 25,000 gold)", "when": "from the steward in Markarth after you beat the warrior"},
+      {"what": "Hide Shield, Scale Helmet and Steel Sword of Scorching", "when": "given by the quest's script"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Reburrus Quintilius", "role": "sells you the house; the records place him in the Treasury House in Markarth. He spends 8 am to 8 pm around the upper part of Markarth and sleeps at the Treasury House from midnight."},
+      {"name": "Raerek", "role": "can also sell you the house; the records place him in Understone Keep, Markarth"},
+      {"name": "the warrior", "role": "owner of Hendraheim, who challenges you to a fight"}
+    ],
+    "unsure": [
+      {"field": "people", "why": "Both Reburrus and Raerek have the buying lines, and the house has an Imperial deed and a Stormcloak deed. Which steward you deal with probably depends on who holds Markarth, but the records here don't confirm it. Raerek has no daily routine in these files beyond a generic one."},
+      {"field": "takesYou", "why": "The records put Bilegulch Mine in Falkreath hold, yet you buy the house in Markarth. Hendraheim itself isn't in the places index, so its hold isn't confirmed."},
+      {"field": "rewards", "why": "The shield, helmet and sword are in the quest's script, but it isn't clear whether they're the warrior's gear you take as proof or a gift. The 25,000 price comes from a tweak plugin's setting."},
+      {"field": "people", "why": "The warrior isn't named in the quest. A woman named Eydvina Shield-Hearth comes from the same add-on and may be the warrior."},
+      {"field": "needs", "why": "A tweak plugin removed the Companions requirement, but the LoreRim dialogue patch, which loads later, puts it back. So the requirement stands."}
+    ],
+    "evidence": [
+      "quests_raw cceejsse004-hall.esl:000C4F stages 10-100, objectives 10-60, aliases Warrior, Raerek, Reburrus, DeedImperial, DeedSons",
+      "quest_givers_raw giver Reburrus Quintilius Skyrim.esm:0133B3 (stage < 81, info Hendraheim - Tweaks and Enhancements.esp:00084C), other Raerek 0133B2; starts node CCHRHendraheimQuestNode event change location",
+      "quest_starts_raw hendraheim: event GetStageDone Skyrim.esm:01CEF4 (C03 The Silver Hand) stage 200; removed by Hendraheim - Tweaks, re-added by LoreRim - Dialogue Patch.esp; global cceejsse004_HousePrice 25000",
+      "rewards via SSE_QF_ccEEJSSE004_Quest_05000C4F: ArmorHideShield 013914, ArmorScaledHelmet 01B3A1, DLC2EnchNordicSwordFire03 04B453",
+      "places_raw Bilegulch Mine (hold Falkreath)",
+      "people_schedules_raw 0133B3: MarkarthDrySideUpperSandboxMultiPackage8x12, MarkarthThongvorTreasurySleep22x8Package"
+    ]
+  },
+  {
+    "edid": "ccEEJSSE005_Quest",
+    "name": "Guests for Dinner",
+    "plugin": "cceejsse005-cave.esm (last edited by Creation Club Home Requirements - AIO.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "After you bring Serana home in the Dawnguard story, a courier brings a dinner invitation to a manor that turns out to be a vampire feast.",
+    "needs": [
+      {"what": "In Bloodline, bring Serana home and either accept or refuse her father's gift of his blood", "kind": "quest"}
+    ],
+    "starts": [
+      {
+        "who": "a courier",
+        "where": "on arrival in a major hold",
+        "how": "Once Bloodline reaches that point, a courier finds you when you travel into a new place and hands you a Dinner Invitation."
+      }
+    ],
+    "firstStep": "Read the Dinner Invitation, then go to the manor south of Frostflow Lighthouse",
+    "takesYou": [
+      {"place": "a large manor south of Frostflow Lighthouse (entered through Bloodchill Cavern)", "hold": "Winterhold", "why": "attend the banquet"}
+    ],
+    "choices": [
+      {"choice": "Come as a vampire and join the feast", "leadsTo": "You feed on the noble guests, fight off a surprise group of Dawnguard, then speak to the waiter."},
+      {"choice": "Fight the vampires", "leadsTo": "You defend against the vampire attack and speak to the survivor, a Dawnguard member who had slipped into the party."}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Await news from a courier", "Read the Dinner Invitation", "Attend the banquet feast", "Speak to the Waiter", "Travel to the banquet table", "Begin the feast", "Take a seat at the feast table", "Read the feast note"]},
+      {"branch": "join the feast (vampire)", "objectives": ["Join the feast", "Finish the feast", "Speak to the Waiter"]},
+      {"branch": "fight the vampires", "objectives": ["Defend against the vampire attack", "Speak to the survivor"]}
+    ],
+    "rewards": [
+      {"what": "Gold (a large reward)", "when": "at the end"}
+    ],
+    "type": "none set",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "the Waiter", "role": "greets you at the manor and hands you the menu"},
+      {"name": "the Dawnguard survivor", "role": "a Dawnguard member who slipped into the party; thanks you if you fight the vampires"},
+      {"name": "the noble guests", "role": "the 'meal' at the feast"}
+    ],
+    "unsure": [
+      {"field": "rewards", "why": "This add-on is a house (the courier and the 'home requirements' patch point that way), but the records here don't show the manor being given to you."},
+      {"field": "choices", "why": "The journal shows both paths, but these files don't show the exact condition that splits them. Being a vampire seems to be what lets you join the meal."},
+      {"field": "takesYou", "why": "The manor itself isn't in the places index. The hold comes from Frostflow Lighthouse, which the records put in Winterhold."}
+    ],
+    "evidence": [
+      "quests_raw cceejsse005-cave.esm:0B7AED stages 10-300, objectives 10-100",
+      "quest_starts_raw guests-for-dinner: event GetStageDone Dawnguard.esm:002F65 (DLC1VQ02 Bloodline) stage 180 OR 190 OR 200; door into Bloodchill Cavern Update.esm:002FD1",
+      "quest_givers_raw starts node CCHRBloodchillQuestNode event change location; reward FavorRewardGoldLarge via ccEEJSSE005_Quest_050B7AED",
+      "places_raw Frostflow Lighthouse (hold Winterhold)"
+    ]
+  },
+  {
+    "edid": "ccKRTSSE001_zQuest",
+    "name": "A Dying Wish",
+    "plugin": "cckrtsse001_altar.esl (last edited by Bittercup - Tweaks and Enhancements.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "Rumours of hagraven rituals near Falkreath lead to an altar that grants one of three wishes: power, fortune or nothing.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "",
+        "where": "Dead Man's Drink, the inn in Falkreath",
+        "how": "Your journal sends you to the inn in Falkreath, where a journal tells of an altar that grants wishes."
+      }
+    ],
+    "firstStep": "Find information at Dead Man's Drink in Falkreath",
+    "takesYou": [
+      {"place": "Dead Man's Drink, Falkreath", "hold": "Falkreath", "why": "a journal about the altar"},
+      {"place": "Roadside Ruins, next to Falkreath", "hold": "Falkreath", "why": "the altar and its cup; choose a bowl"},
+      {"place": "Giant's Tooth, an island full of mammoth bones", "hold": "", "why": "(wish for nothing) find the Ironwood Fruit in a cave there"},
+      {"place": "Temple of Kynareth, Whiterun", "hold": "Whiterun", "why": "(wish for nothing) give the Ironwood Soup to the priestess and check on Rulnik"}
+    ],
+    "choices": [
+      {"choice": "Fill the bowl that promises power", "leadsTo": "Sleep one night; you wake in a dungeon, and the quest ends."},
+      {"choice": "Fill the bowl that promises fortune", "leadsTo": "Sleep one night; your wish comes as a job, and the quest ends."},
+      {"choice": "Fill the bowl that promises nothing", "leadsTo": "A courier later brings a note from the Temple of Kynareth, sending you to Giant's Tooth for a rare fruit to save a sick man."}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Find information at Dead Man's Drink", "Travel to the Roadside Ruins", "Choose a bowl at the altar"]},
+      {"branch": "power or fortune", "objectives": ["Wait for your wish to be granted"]},
+      {"branch": "nothing", "objectives": ["Return to town", "Read the Note from the Temple of Kynareth", "Read the Fisherman's Journal", "Find a ferryman who will take you to Giant's Tooth", "Board the ferryman's boat", "Investigate the area around Giant's Tooth", "Investigate the camp", "Investigate the cave", "Return to the mainland with the ingredient", "Ask an alchemist about the Ironwood Fruit", "Read the Note from the Temple of Kynareth", "Craft the Ironwood Soup at a cooking station", "Give the Ironwood Soup to the temple priestess", "Wait an entire day for Rulnik to heal", "Check on Rulnik"]}
+    ],
+    "rewards": [
+      {"what": "Rulnik's Dagger", "when": "given by the quest's script"},
+      {"what": "Heal Other (spell)", "when": "given by the quest's script"},
+      {"what": "Close Wounds (spell)", "when": "given by the quest's script"},
+      {"what": "Ferryman's Ring", "when": "given by the quest's script"}
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "Only one bowl can be filled; the other two wishes are lost."
+    ],
+    "people": [
+      {"name": "Danica Pure-Spring", "role": "the priestess at the Temple of Kynareth in Whiterun who takes the Ironwood Soup. She sleeps at the temple from midnight to 8 am and spends 3 pm to 7 pm at the market."},
+      {"name": "Rulnik", "role": "the sick man at the Temple of Kynareth"},
+      {"name": "Harlaug", "role": "a ferryman who can take you to Giant's Tooth"},
+      {"name": "Ysleif", "role": "a ferryman stationed at Giant's Tooth"},
+      {"name": "the alchemists of the holds", "role": "any of them can tell you about the Ironwood Fruit: Arcadia (Whiterun), Frida (Dawnstar), Elgrim (Riften), Bothela (Markarth), Lami (Morthal), Quintus Navale (Windhelm), Vivienne Onis (Solitude), Zaria (Falkreath)"},
+      {"name": "Neski Skull-Sabre", "role": "from this add-on; the records place her in The Pit, Falkreath, which may be the dungeon you wake in on the power path"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "No dialogue or event in these files starts the quest. The opening journal line suggests it starts on its own."},
+      {"field": "rewards", "why": "The dagger, the two healing spells and the ring are in the quest's script, but the records don't say which path or step gives each. They are probably on the 'nothing' path."},
+      {"field": "takesYou", "why": "Giant's Tooth has its own map space and the records don't give its hold. The quest has ferry spots at Solitude, Windhelm and Dawnstar; the cave there seems to be Iron Tusk Cave."},
+      {"field": "people", "why": "Rulnik isn't placed in these files. The power path's dungeon is never named in the journal; The Pit is a guess from where this add-on's people are placed. Danica's other daytime routines depend on conditions these files don't decode."}
+    ],
+    "evidence": [
+      "quests_raw cckrtsse001_altar.esl:000D63 stages 0-200 (completes 40/50/200), objectives 1-170, aliases AltarPOWER, AltarFORTUNE, AltarNOTHING, Rulnik, Danica, FerrySolitude/Windhelm/Dawnstar",
+      "quest_givers_raw people: Danica Skyrim.esm:013BA5, Harlaug cckrtsse001_altar.esl:000B1E, Ysleif 000FD1, alchemist aliases; rewards via ccKRTSSE001_QF_01000D63",
+      "places_raw Dead Man's Drink Skyrim.esm:05CA26, Roadside Ruins Skyrim.esm:04787B (Falkreath, next to it)",
+      "quest_starts_raw a-dying-wish doors: Iron Tusk Cave Update.esm:002FD8",
+      "people_raw Neski Skull-Sabre cckrtsse001_altar.esl:000817 The Pit, Falkreath",
+      "people_schedules_raw 013BA5: WhiterunDanicaSleep24x8, WhiterunDanicaMarketplace15x4 (cond)"
+    ]
+  }
+]
