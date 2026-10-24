@@ -52,3 +52,5 @@ Rules for the words:
 - Empty lists are fine. Never invent to fill a field.
 
 When you're done, reply with just the file path.
+
+Working files: keep any scripts you write in `/tmp/claude-0/-home-claude/969323fd-f0e5-5fc7-8db6-cfa833e9ed5a/scratchpad/r<your batch number>/`, never loose in the scratchpad: other readers run at the same time.

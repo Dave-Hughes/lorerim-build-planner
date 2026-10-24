@@ -16,3 +16,5 @@ Two rulings from Bob, 23 Oct, after the first ten batches:
 Then write the corrected quest object (the reader's object with your fixes applied, and anything unsettled moved to `unsure`).
 
 Save to the path you are given as `{"checks": [{"edid", "verdicts": {field: {"verdict", "note"}}}], "quests": [corrected objects]}` and reply with the path and one line: how many fields you fixed.
+
+Working files: keep any scripts you write in `/tmp/claude-0/-home-claude/969323fd-f0e5-5fc7-8db6-cfa833e9ed5a/scratchpad/c<your batch number>/`, never loose in the scratchpad: other readers run at the same time.
