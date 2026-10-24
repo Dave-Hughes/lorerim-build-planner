@@ -1,5 +1,8 @@
 # The pipeline: how work moves between Dave, Bob and the two Jeffs
 
+> **Paused, 23 Oct 2026, 19:35.** Every open order is `held`. Don't take one until Dave says to resume. Where each one stopped: `docs/pause-2026-10-23.md`.
+
+
 Written 23 Oct 2026, after the quest work ran this way for a day. Read this before taking an order.
 
 ## Who does what

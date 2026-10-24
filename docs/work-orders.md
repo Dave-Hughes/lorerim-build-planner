@@ -2480,7 +2480,7 @@ Today every skill shows twice in the editor: in the left list, where its points 
 ---
 
 ## WO-63  FAQ page: gameplay (13 Oct 2026)
-Status: queued
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: queued)
 
 The site's first guide page: the gameplay questions players ask most on the LoreRim Discord, answered and checked against the 5.0.4.8 files. Install and performance questions come later as more sections on the same page, so build it to grow.
 
@@ -5055,7 +5055,7 @@ Read Jaree-Ra's six packages by hand. The answer is in the dump: the top of his 
 - Bob, 23 Oct, 19:25: Part 1b read in the file. 4,549 of 4,608 package targets now name a place (59 left); Jaree-Ra's top package is "stay put" at The Winking Skeever until Lights Out! is done, which is what Dave saw; the schedule hours decode and match the package names (`SolitudeWarehouseWork10x8` is 10:00 for 480 minutes); 542 vendors and 76 trainers. Done. The people reads (WO-155) start once the quest reads are through.
 
 ## WO-155  People reads: who they are, where they are by day and by night, what they offer (Bob runs it, 23 Oct 2026; after WO-156)
-Status: queued, after WO-156
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: queued, after WO-156)
 
 The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] A test first: 20 people drawn at random (seeded) from the quest givers, trainers, merchants and followers. An agent reads each from `people_raw.json` and `people_schedules_raw.json`; the key is UESP, built by an agent that sees neither; a judge scores both blind. Dave checks a few in game. The full run goes ahead only if the reads beat the placement cell clearly.
@@ -5063,7 +5063,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: for Bob
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: for Bob)
 
 **Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
 
@@ -5276,7 +5276,7 @@ Status: done
 ---
 
 ## WO-149  The save connector's skills come back empty (PC, 23 Oct 2026)
-Status: for Bob
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: for Bob)
 
 **Why.** Kyria's snapshot has `skills: {}` (Save 70 and Save 114), though the connector's description says it reads skills and WO-123 built skills from the save. Speech gates Tome Trials tiers and follower slots; Two-Handed and Heavy Armor decide what an act can fight.
 - [x] On Dave's PC, run the installed save connector against Save 114 and say what it returns for skills, and which version of the connector is installed (the `.mcpb` Dave added vs the one `tools/save-connector` builds now).
@@ -5389,7 +5389,7 @@ Dave sent "The note is on the board by Joslin's house" on Running Wild. The prop
 ---
 
 ## WO-145  An XP budget for every act: level ranges computed, not wished (PC, then Mac, 23 Oct 2026)
-Status: Part 1 for Bob (PC); Part 2 queued (Mac)
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: Part 1 for Bob (PC); Part 2 queued (Mac))
 
 **Why.** Dave, from Kyria's run (23 Oct): Act III says "levels 8 to 20" and ends at a level-20 gate (The Mind of Madness). She reached Solitude at 15 (Save 114: level 15, 186 / 650 XP). Almost nothing in Act III pays XP: the Skeever room, shifts, nightly songs and Beirand are tasks; Holy Fire is a spell; the Edda waits on Tending the Flames (Act VII); The Mind of Madness is the gate. 15 to 20 is about 3,300 XP; her two callings cap near 170 a day each, so that's about ten in-game days of nothing but songs and books. The range was typed in as a wish. Dave: "my confidence that we're able to design characters and accurately recommend levels that could be achieved based on the steps the user takes through the acts is very low." The planner already holds quest XP by type (`QUEST_XP` from Experience.ini in `quest_pages.py`: Main and Daedric 200, Side 100, Misc 0) and each place's clear XP (`places.json`), and the save connector reads current XP. What's missing is the curve, discovery XP, the callings' caps, and the sum.
 
@@ -5444,7 +5444,7 @@ Kyria's Act III shows the gap from Save 114 and fillers that follow the shape (a
 ---
 
 ## WO-144  The indexes a design needs (PC, 23 Oct 2026; takes the PC's queue before WO-140)
-Status: building (PC)
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: building (PC))
 
 **Why.** Dave (23 Oct), after Bob's three design tests and his own: every gap the assistants hit was data, not logic. The door did what it was told; what it was told was missing. So the PC's next stretch is one indexing program, in the order the tests hit the gaps, each part with a player question so it is tested as it lands, not taken on faith. Mac keeps building the door (WO-139, WO-142) in parallel; the Mac halves of WO-141 and WO-143 wait on the parts here. Bob re-runs the design battery (`docs/design-tests.md`) after each part. Under WO-138 Part 5 the PC decides what it finds and logs it under this order. The rules: the game's words, every row with its source, never a guess, and "not checked" where the files don't say.
 
@@ -5624,7 +5624,7 @@ Bob checks values on every part, not counts.
 ---
 
 ## WO-143  A calling's things to do: what a bard, a scholar, a fisher can do in each town (Mac, after WO-144 Part 4; Part 1 is folded into WO-144 Part 4, 23 Oct 2026)
-Status: queued, after WO-144 Part 4
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: queued, after WO-144 Part 4)
 
 **Why.** Dave (23 Oct): designing a character with a calling (his Callings mod) means giving them things to do that use it. Kyria is a bard, so the Bards College is an obvious stop; but there are also many books to read there, and every town has an inn to play. The planner has no idea what a calling can do where, so an assistant can't plan an act around one. The style guide says an act has a standing rule ("Play the Bee and Barb most nights") but nothing tells the assistant which inns exist, which towns have bookshelves worth reading, where the fish are.
 
@@ -5652,7 +5652,7 @@ Written to `callings.json` with each item's source.
 ---
 
 ## WO-141  What Mogrash's design needed and couldn't get: strongholds, followers, and where the Smithing books are (Mac, after WO-144 Part 2; the PC parts are folded into WO-144, 23 Oct 2026)
-Status: queued, after WO-155 (people reads replace WO-144 Part 2)
+Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: queued, after WO-155 (people reads replace WO-144 Part 2))
 
 **Why.** Dave's character test (23 Oct): an Orc greatsword outcast who starts in the Windhelm jail and wants his place back at Narzulbur, solo until a follower at level 30. The build came out right in every detail Bob checked. Three things the assistant couldn't do, each a gap in the planner's data, not in the assistant:
 1. **Narzulbur isn't a place the planner knows.** `places.json` (WO-128) holds 477 caves, ruins, forts and landmarks and no Orc stronghold or small settlement, so a reason to travel that ends at a stronghold has nothing to route to.
