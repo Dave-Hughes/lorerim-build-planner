@@ -1,0 +1,1362 @@
+{
+  "checks": [
+    {
+      "edid": "C00",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Opening lines from Aela, Farkas, Skjor and Vilkas set the first journal entry; the quest itself runs from game start but stays hidden until then."
+        },
+        "needs": {
+          "verdict": "unsure",
+          "note": "The skill/Health/Stamina check is real on four opening lines (NGCDT adds it, Companions Dialogue Bundle removes it, LoreRim - Dialogue Patch puts it back last), but the records do not show it gates joining. NGCDT also adds two lines for players below every one of those marks who have not finished The Horn of Jurgen Windcaller, Kindred Judgment, At the Summit of Apocrypha or Destroy the Dark Brotherhood!, which the reader missed. Moved out of needs into unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Placement is only where they sleep. Their schedules (people_schedules_raw) have the four eating in the main hall, training for hours each day, and otherwise moving about Jorrvaskr; downstairs is wrong for most of the day. Kodlak is right: his package keeps him in his quarters apart from dinner, 6 to 8 pm."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 and the stage 10 journal."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objectives 20-50. Eorlund works at the Skyforge from 8 am to 9 pm (WhiterunEorlundSkyforgePackage), which settles the reader's unsure."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Vilkas Spar Skip strips three conditions from one line; with no line text the skip stays unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 100 log; Farkas shows you to your quarters. Script items are shared housekeeping properties, not tied to this quest."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Questline order; Aela's jobs start from her job event."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "C01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 journal; Skjor's line with Farkas, Aela, Vilkas variants (06F6BA)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Questline order; the journal says the leaders have no more work, so some jobs likely come first (kept in unsure)."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Skjor is placed downstairs but his schedule has him eating in the main hall 10 am to 1 pm, training 3 to 8 pm and sleeping midnight to 8 am."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "AmbushSH1-5 placed in Dustman's Cairn, C00 reserves it, the places index lists this quest there; Dustman's Cairn is in Whiterun hold."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch in stages or objectives."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Script weapons and Werewolf Form are for the observer."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Ends with Follow Vilkas into Brotherhood."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "C02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 journal follows straight on from Proving Honor."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Questline order."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "The greeter is a runtime alias. Proving Honor ends with \"Follow Vilkas\", which points to Vilkas, and the quest also keeps a LastQuestObserver alias; neither settles it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "No place alias for the induction."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 journal."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Questline order."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "None."
+        }
+      }
+    },
+    {
+      "edid": "C03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 5 journal; Aela/Farkas/Vilkas line, Skjor line (0C5C16)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Questline order."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Skjor is placed downstairs but by his schedule he eats in the main hall 10 am to 1 pm, trains 3 to 8 pm and sleeps midnight to 8 am. While this quest runs his wander-about-Jorrvaskr package is switched off."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 10 and 25 journals; GallowsRock alias; Gallows Rock is in Eastmarch by Kynesgrove."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Nothing in the records shows a refusal branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Beast Form is a lesser power in Growl - Reqtificated.esp, given by the quest's fragment; the Skyforge Steel weapon slots on C03QuestScript are named rewards."
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "Missing Aela's Silver Hand jobs: the stage 200 journal says Aela \"has enlisted me on her quest for revenge\", Blood's Honor opens on \"my secret missions with Aela\", and Striking the Heart, Stealing Plans and Retrieval are Aela's Silver Hand jobs (CompanionsReconNode)."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 200: Skjor fell in battle."
+        }
+      }
+    },
+    {
+      "edid": "C04",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 journal; Vilkas/Farkas/Aela/Kodlak line 05829E."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Questline order; the unsure about Aela's missions stands (now named)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Kodlak's package keeps him in his quarters."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Hagraven aliases and GlenmorilCoven in Falkreath hold; stage 200 and 0582D1 for the attack on Jorrvaskr."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Optional objective 25."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "The witch head is a quest item you need for Glory of the Dead, not a reward; the reader's own unsure says no reward is tied to this quest. Rewards emptied."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Questline order."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 200: Kodlak killed by the Silver Hand."
+        }
+      }
+    },
+    {
+      "edid": "C05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Vilkas line 092A43; stage 10 journal."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Questline order."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 and stage 10 journal."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "SilverHandHQ alias is Driftshade Sanctuary, Winterhold hold, by Dawnstar; 092A45 sends you back to Jorrvaskr."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Optional objective 11."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "The fragments are quest items handed on in Glory of the Dead, not a reward. Rewards emptied."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Questline order."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "C06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 journal; C05 ends sending you back to Jorrvaskr."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Objective 60 needs a witch head."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Nothing names what sets the first stage; empty with unsure is right."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Objectives and aliases. Eorlund's Skyforge package (8 am to 9 pm) settles where to find him."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Wuuthrad via the stage fragment, SHIELD alias, stage 200 Harbinger. The Wolf Helmet is Vilkas's."
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "Purity follows this quest: it starts from Farkas's and Vilkas's post-questline job events and its journal is about taking a witch head to Ysgramor's Tomb for \"the same ceremony which cured Kodlak\"."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "CR01",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Aela job; QuestGiver alias fills as Aela."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Membership from the questline; job-system conditions not in these files."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Aela is placed downstairs but by her schedule she eats in the main hall 10 am to 1 pm, trains 1 to 8 pm, sleeps midnight to 8 am and otherwise moves about Jorrvaskr."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Runtime aliases."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward tied to the quest; shared gold property amount unknown."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail stage exists but its cause is not in the records."
+        }
+      }
+    },
+    {
+      "edid": "CR02",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Aela job; QuestGiver alias fills as Aela."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Membership from the questline; job-system conditions not in these files."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Aela is placed downstairs but by her schedule she eats in the main hall 10 am to 1 pm, trains 1 to 8 pm, sleeps midnight to 8 am and otherwise moves about Jorrvaskr."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Runtime aliases."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward tied to the quest; shared gold property amount unknown."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail stage exists but its cause is not in the records."
+        }
+      }
+    },
+    {
+      "edid": "CR03",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Aela job; QuestGiver alias fills as Aela."
+        },
+        "needs": {
+          "verdict": "fix",
+          "note": "The entry is right, but the unsure note says Companions Radiant Expansion adds this job; the quest is Skyrim.esm and that mod only edits it last. Unlike the Animal Extermination jobs, no job-event start is recorded for it."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Aela is placed downstairs but by her schedule she eats in the main hall 10 am to 1 pm, trains 1 to 8 pm, sleeps midnight to 8 am and otherwise moves about Jorrvaskr."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Pelts can come from anywhere; no place alias."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "None."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward tied to the quest; shared gold property amount unknown."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Fail stage exists but its cause is not in the records."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "C00",
+      "name": "Take Up Arms",
+      "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Ask one of the Companions in Jorrvaskr about joining and they send you to Kodlak Whitemane.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Aela the Huntress, Farkas, Skjor or Vilkas",
+          "where": "Jorrvaskr, Whiterun. They eat in the main hall (Aela and Skjor 10 am to 1 pm, Farkas 1 to 4 pm, Vilkas 7 to 10 pm), train for several hours a day (Farkas in the morning, the others in the afternoon), otherwise move about Jorrvaskr, and sleep downstairs in the living quarters.",
+          "how": "Ask about joining; they tell you to find Kodlak, who is in his quarters downstairs at the end of the hall in Jorrvaskr."
+        },
+        {
+          "who": "Kodlak Whitemane",
+          "where": "his quarters, downstairs at the end of the hall in Jorrvaskr, Whiterun; he eats in Jorrvaskr from 6 to 8 pm",
+          "how": "Speak to him; he agrees to let you join if you handle some first tasks."
+        }
+      ],
+      "firstStep": "Speak to Kodlak Whitemane in Jorrvaskr",
+      "takesYou": [
+        {
+          "place": "Jorrvaskr",
+          "hold": "Whiterun",
+          "why": "meet Kodlak and the Companions"
+        },
+        {
+          "place": "the training yard behind Jorrvaskr",
+          "hold": "Whiterun",
+          "why": "spar with Vilkas"
+        },
+        {
+          "place": "the Skyforge",
+          "hold": "Whiterun",
+          "why": "give Vilkas' sword to Eorlund Gray-Mane, who works there from 8 am to 9 pm"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Kodlak Whitemane",
+            "Spar with Vilkas in the training yard behind Jorrvaskr",
+            "Give Vilkas' sword to Forgemaster Eorlund Grey-Mane, at the Skyforge",
+            "Bring Aela her repaired shield",
+            "Follow Farkas to your quarters"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Membership in the Companions, with a bed in Jorrvaskr",
+          "when": "at the end"
+        }
+      ],
+      "type": "Companions",
+      "opens": [
+        "Proving Honor",
+        "work for the Companions (Animal Extermination, Animal Pelt Collection and the other jobs)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Kodlak Whitemane",
+          "role": "Harbinger of the Companions; lets you join"
+        },
+        {
+          "name": "Vilkas",
+          "role": "spars with you in the training yard"
+        },
+        {
+          "name": "Eorlund Gray-Mane",
+          "role": "forgemaster at the Skyforge; takes Vilkas' sword"
+        },
+        {
+          "name": "Aela the Huntress",
+          "role": "gets her repaired shield back"
+        },
+        {
+          "name": "Farkas",
+          "role": "shows you to your quarters"
+        },
+        {
+          "name": "Skjor",
+          "role": "can point you to Kodlak"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Narrative Gameplay Consistent Dialogue Tweaks puts a check on four opening lines (named for Aela's welcome): one of One-Handed, Two-Handed, Archery or Block at 30 or more, or Health or Stamina at 150 or more. Companions Dialogue Bundle takes it off and LoreRim - Dialogue Patch, later in load order, puts it back. The same mod adds two lines that only play if you're below all those marks and haven't finished The Horn of Jurgen Windcaller, Kindred Judgment, At the Summit of Apocrypha or Destroy the Dark Brotherhood!, which looks like a brush-off for untested newcomers that those quests let you skip. The line text isn't in these files, so whether this stops you joining is unsettled; Farkas, Skjor and Vilkas also have lines that send you to Kodlak."
+        },
+        {
+          "field": "choices",
+          "why": "Vilkas Spar Skip.esp loosens the conditions on a line tied to the spar with Vilkas, which suggests a way to skip the fight; the line text isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The Companions' shared script lists gold, Beast Form, Beastblood and a disabled Ring of Hircine power, and Companions Dialogue Bundle adds an 'Inspired' spell from Skjor's advice; none of these is tied to finishing this quest in the records. Vilkas's Sword and Aela's Shield are the quest items you carry."
+        },
+        {
+          "field": "where",
+          "why": "The schedules send them to a training spot the records don't name (it's a marker, not a place); the yard behind Jorrvaskr, where Vilkas spars, is the likely spot."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:04B2D9",
+        "giver INFO Companions Dialogue Bundle.esp:000808 (Aela; also Farkas, Skjor, Vilkas; stage < 11)",
+        "INFO Companions Dialogue Bundle.esp:00080E-000818 (where is Kodlak)",
+        "INFO Skyrim.esm:0231C8, 05477B, 05477C condition edits (NGCDT, CDB, LoreRim - Dialogue Patch; GetActorValue 6/7/8/9 >= 30, 24/26 >= 150)",
+        "Vilkas Spar Skip.esp opening-dialogue edit",
+        "objectives 10-50, stage 100 completes",
+        "questline Companions opening Skyrim.esm:04B2D9",
+        "startGame true",
+        "INFO Skyrim.esm:0F11BC, 0A3E65 (NGCDT: below 30/150 and none of 0713DC, Dawnguard 007C25, Dragonborn 0179D7, 0934FB completed)",
+        "people_schedules_raw packages: CompanionsShift1/2/3 Eat/Train/Sleep, AIOWR Train/Dinner/Random (target Skyrim.esm:0165B5 Jorrvaskr)",
+        "WhiterunEorlundSkyforgePackage 8:00 for 13h",
+        "KodlakPutterAroundInQuarters; AIOWRCompanionsDinner 18:00 for 2h"
+      ]
+    },
+    {
+      "edid": "C01",
+      "name": "Proving Honor",
+      "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Once you've joined, the Companions eventually say they have no more work and send you to Skjor for your trial.",
+      "needs": [
+        {
+          "what": "Finish Take Up Arms",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress, Farkas or Vilkas",
+          "where": "Jorrvaskr, Whiterun",
+          "how": "When they have no more work for you, they tell you to speak to Skjor about the next steps."
+        },
+        {
+          "who": "Skjor",
+          "where": "Jorrvaskr, Whiterun. Skjor eats in the main hall from 10 am to 1 pm, trains from 3 pm to 8 pm, sleeps from midnight to 8 am, and otherwise moves about Jorrvaskr.",
+          "how": "He gives you a final trial: fetch a fragment of Wuuthrad from a barrow northwest of Whiterun while a Companion watches."
+        }
+      ],
+      "firstStep": "Speak to Skjor in Jorrvaskr",
+      "takesYou": [
+        {
+          "place": "Dustman's Cairn",
+          "hold": "Whiterun",
+          "why": "retrieve a fragment of Wuuthrad while your observer judges you; Silver Hand lie in wait"
+        },
+        {
+          "place": "Jorrvaskr",
+          "hold": "Whiterun",
+          "why": "return once you have the fragment"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Skjor",
+            "Speak to your observer",
+            "Retrieve the fragment",
+            "Return to Jorrvaskr",
+            "Follow Vilkas"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Your place in the Companions earned",
+          "when": "at the end"
+        }
+      ],
+      "type": "Companions",
+      "opens": [
+        "Brotherhood"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Skjor",
+          "role": "sets the trial"
+        },
+        {
+          "name": "your observer (a Companion)",
+          "role": "goes with you and judges your valor"
+        },
+        {
+          "name": "Silver Hand",
+          "role": "ambush you inside Dustman's Cairn"
+        },
+        {
+          "name": "Vilkas",
+          "role": "you follow him at the end"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "people",
+          "why": "The observer is picked when the quest runs and isn't named in the records. The quest script keeps spare weapons for Aela and Farkas, which suggests it's one of them."
+        },
+        {
+          "field": "starts",
+          "why": "How many jobs you must do before they send you to Skjor isn't in these files; the journal only says the leaders have no more work for you."
+        },
+        {
+          "field": "takesYou",
+          "why": "The journal names only 'a barrow northwest of Whiterun'; Dustman's Cairn comes from where the quest's Silver Hand ambushers are placed and from the places index listing this quest there."
+        },
+        {
+          "field": "rewards",
+          "why": "No item or gold reward is tied to this quest in the records; the weapons on its script are for the observer."
+        },
+        {
+          "field": "where",
+          "why": "The schedules send them to a training spot the records don't name (it's a marker, not a place); the yard behind Jorrvaskr, where Vilkas spars, is the likely spot."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:06E803",
+        "giver INFO Skyrim.esm:06F6BA (Skjor; also Farkas, Aela, Vilkas; stage < 10)",
+        "aliases AmbushSH1-5 placed in Dustman's Cairn",
+        "LCTN Skyrim.esm:019173 quests list Proving Honor",
+        "C01QuestScript AelaBaseMeleeWeapon/FarkasBaseMeleeWeapon",
+        "stage 20 log, stage 200 completes",
+        "people_schedules_raw packages: CompanionsShift1/2/3 Eat/Train/Sleep, AIOWR Train/Dinner/Random (target Skyrim.esm:0165B5 Jorrvaskr)"
+      ]
+    },
+    {
+      "edid": "C02",
+      "name": "Brotherhood",
+      "plugin": "Skyrim.esm (last edited by Update.esm)",
+      "canDo": "by itself",
+      "canDoWhy": "Comes straight after Proving Honor: back at Jorrvaskr a Companion tells you they've been waiting and leads you to your induction.",
+      "needs": [
+        {
+          "what": "Finish Proving Honor",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "a Companion (picked when the quest runs)",
+          "where": "Jorrvaskr, Whiterun",
+          "how": "On your return they say the Companions have been waiting for you and ask you to follow."
+        }
+      ],
+      "firstStep": "Follow the Companion who greets you",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Follow the Companion who greets you"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Full membership in the Companions",
+          "when": "at the end"
+        }
+      ],
+      "type": "Companions",
+      "opens": [
+        "The Silver Hand"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Kodlak Whitemane",
+          "role": "inducts you"
+        },
+        {
+          "name": "Aela the Huntress, Farkas, Vilkas, Skjor",
+          "role": "the Circle, at the induction"
+        },
+        {
+          "name": "Athis, Njada Stonearm, Ria, Torvar, Vignar Gray-Mane, Brill, Tilma the Haggard",
+          "role": "others in Jorrvaskr during the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The Companion who greets you is filled when the quest runs. Proving Honor ends with you following Vilkas, so it is most likely Vilkas, but the quest also tracks your Proving Honor observer and the records don't say which one speaks."
+        },
+        {
+          "field": "takesYou",
+          "why": "The records don't say where you're led for the induction."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:06E804",
+        "stage 10 log (waiting for my return)",
+        "giver INFO Skyrim.esm:0734B5 (Kodlak, stage < 21)",
+        "stage 200 log (inducted)"
+      ]
+    },
+    {
+      "edid": "C03",
+      "name": "The Silver Hand",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "After your induction the Companions tell you Skjor and Aela have a special mission for you.",
+      "needs": [
+        {
+          "what": "Finish Brotherhood",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress, Farkas or Vilkas",
+          "where": "Jorrvaskr, Whiterun",
+          "how": "They tell you Aela and Skjor want to speak to you about a special mission."
+        },
+        {
+          "who": "Skjor",
+          "where": "Jorrvaskr, Whiterun. Skjor eats in the main hall from 10 am to 1 pm, trains from 3 pm to 8 pm and sleeps from midnight to 8 am.",
+          "how": "Talk to him; he tells you to meet him underneath the Skyforge that night."
+        }
+      ],
+      "firstStep": "Talk to Skjor in Jorrvaskr",
+      "takesYou": [
+        {
+          "place": "the Underforge, beneath the Skyforge",
+          "hold": "Whiterun",
+          "why": "meet Skjor at night and take part in the blood ritual"
+        },
+        {
+          "place": "Gallows Rock",
+          "hold": "Eastmarch",
+          "why": "attack the Silver Hand camp with Aela and Skjor"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Skjor",
+            "Meet with Skjor at night",
+            "Enter the Underforge",
+            "Participate in the blood ritual",
+            "Talk to Aela",
+            "Kill the werewolf hunters",
+            "Talk to Aela"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Beast Form (lesser power; Growl - Reqtificated version)",
+          "when": "at the blood ritual: you join the Circle and become a werewolf"
+        },
+        {
+          "what": "A Skyforge Steel weapon (sword, greatsword, war axe, battleaxe or dagger)",
+          "when": "unclear; held on the quest's script"
+        }
+      ],
+      "type": "Companions",
+      "opens": [
+        "Aela's missions against the Silver Hand (Striking the Heart, Stealing Plans, Retrieval)",
+        "Blood's Honor",
+        "Hendraheim (a home quest that waits for this quest to finish)"
+      ],
+      "closes": [
+        "Skjor dies at the Silver Hand stronghold"
+      ],
+      "people": [
+        {
+          "name": "Skjor",
+          "role": "leads the blood ritual; falls in battle"
+        },
+        {
+          "name": "Aela the Huntress",
+          "role": "leads you to the Silver Hand camp; starts her revenge"
+        },
+        {
+          "name": "Krev the Skinner",
+          "role": "Silver Hand leader placed at Gallows Rock"
+        },
+        {
+          "name": "Kodlak Whitemane, Farkas, Vilkas, Eorlund Gray-Mane",
+          "role": "in Whiterun during the quest"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "choices",
+          "why": "The records don't show whether you can turn down the blood ritual."
+        },
+        {
+          "field": "rewards",
+          "why": "The script holds one Skyforge Steel weapon per weapon type and the records don't say how one is picked or when it's given; its 'mace' slot points at a Staff of Chain Lightning, which looks like a leftover."
+        },
+        {
+          "field": "takesYou",
+          "why": "The places index puts Gallows Rock in Eastmarch near Kynesgrove; GORE.esp is the last plugin to edit it. The Underforge's door spot isn't in these files; the journal only says 'underneath the Skyforge'."
+        },
+        {
+          "field": "opens",
+          "why": "That Aela's Silver Hand missions follow comes from the journals ('She has enlisted me on her quest for revenge'; Blood's Honor opens on 'my secret missions with Aela'); what starts them, and how many lead to Blood's Honor, isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "The schedules send them to a training spot the records don't name (it's a marker, not a place); the yard behind Jorrvaskr, where Vilkas spars, is the likely spot."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01CEF4",
+        "giver INFO Skyrim.esm:0C5C16 (Aela; also Farkas, Vilkas stage < 5, Skjor stage < 6)",
+        "stage 10/25/200 logs",
+        "alias KrevTheSkinner placed in Gallows Rock",
+        "INFO Skyrim.esm:032883 / 07F413 (Gallows Rock)",
+        "QF_C01_0001CEF4.BeastForm -> Skyrim.esm:092C48 (Growl - Reqtificated.esp)",
+        "C03QuestScript GreatswordReward/BattleaxeReward/WaraxeReward/DaggerReward/SwordReward/MaceReward",
+        "LCTN Skyrim.esm:019187",
+        "hendraheim line: GetStageDone C03 200",
+        "people_schedules_raw packages: CompanionsShift1/2/3 Eat/Train/Sleep, AIOWR Train/Dinner/Random (target Skyrim.esm:0165B5 Jorrvaskr)",
+        "AIOWRCompainonLeadersRandom condition: C03 not running",
+        "CR09/CR10/CR11 giver Aela, start CompanionsReconNode"
+      ]
+    },
+    {
+      "edid": "C04",
+      "name": "Blood's Honor",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Kodlak hears about your secret missions with Aela and asks to see you; the others pass the word. Keep a Glenmoril Witch's head: Glory of the Dead needs it.",
+      "needs": [
+        {
+          "what": "Finish The Silver Hand",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Vilkas, Farkas or Aela the Huntress",
+          "where": "Jorrvaskr, Whiterun",
+          "how": "They tell you Kodlak wants to speak with you."
+        },
+        {
+          "who": "Kodlak Whitemane",
+          "where": "his quarters, downstairs at the end of the hall in Jorrvaskr, Whiterun",
+          "how": "He asks you to kill the Glenmoril Witches and bring back their heads to cure his lycanthropy."
+        }
+      ],
+      "firstStep": "Speak to Kodlak Whitemane in Jorrvaskr",
+      "takesYou": [
+        {
+          "place": "Glenmoril Coven",
+          "hold": "Falkreath",
+          "why": "collect a Glenmoril Witch's head"
+        },
+        {
+          "place": "Jorrvaskr",
+          "hold": "Whiterun",
+          "why": "return to Kodlak, and find the Silver Hand have attacked"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill every Glenmoril Witch, not just one",
+          "leadsTo": "an optional objective; one head is all the quest needs"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Kodlak Whitemane",
+            "Collect a Glenmoril Witch's head",
+            "(Optional) Wipe out the Glenmoril Witches",
+            "Return to Kodlak"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [
+        "Purity of Revenge"
+      ],
+      "closes": [
+        "Kodlak Whitemane is killed by the Silver Hand"
+      ],
+      "people": [
+        {
+          "name": "Kodlak Whitemane",
+          "role": "sends you for the heads; killed while you're away"
+        },
+        {
+          "name": "Glenmoril Witches",
+          "role": "hagravens in Glenmoril Coven"
+        },
+        {
+          "name": "Lucerne",
+          "role": "a hagraven the quest places in Glenmoril Coven"
+        },
+        {
+          "name": "Vilkas, Farkas, Aela the Huntress",
+          "role": "in Jorrvaskr when you return"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The order comes from the questline and the journal ('my secret missions with Aela'). Aela's Silver Hand missions (Striking the Heart, Stealing Plans, Retrieval) are the likely 'secret missions', but the exact trigger and how many you must do aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "No item or gold reward is tied to this quest in the records; the witch's head is a quest item."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01CEF5",
+        "giver INFO Skyrim.esm:05829E (Vilkas; also Farkas, Aela, Kodlak; stage < 10)",
+        "stage 10/20/200 logs",
+        "aliases Hagraven1-5 and DA05Hagraven (Lucerne) in Glenmoril Coven",
+        "INFO Skyrim.esm:0582E0, 0582D1",
+        "LCTN Skyrim.esm:019189"
+      ]
+    },
+    {
+      "edid": "C05",
+      "name": "Purity of Revenge",
+      "plugin": "Skyrim.esm (last edited by Update.esm)",
+      "canDo": "talk",
+      "canDoWhy": "After Kodlak's death, Vilkas comes with you to wipe out the Silver Hand.",
+      "needs": [
+        {
+          "what": "Finish Blood's Honor",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Vilkas",
+          "where": "Jorrvaskr, Whiterun",
+          "how": "Talk to him after the Silver Hand attack; he joins you to avenge Kodlak."
+        }
+      ],
+      "firstStep": "Go with Vilkas to retrieve the fragments of Wuuthrad from the Silver Hand",
+      "takesYou": [
+        {
+          "place": "Driftshade Sanctuary",
+          "hold": "Winterhold",
+          "why": "the Silver Hand's stronghold, where the fragments of Wuuthrad are"
+        },
+        {
+          "place": "Jorrvaskr",
+          "hold": "Whiterun",
+          "why": "return afterwards"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Kill every Silver Hand in the stronghold",
+          "leadsTo": "an optional objective; the fragments are what the quest needs"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the fragments of Wuuthrad",
+            "(Optional) Wipe out the Silver Hand",
+            "Return to Jorrvaskr"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [
+        "Glory of the Dead"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Vilkas",
+          "role": "fights alongside you"
+        },
+        {
+          "name": "Silver Hand",
+          "role": "enemies at Driftshade Sanctuary"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "No item or gold reward is tied to this quest in the records; the fragments are quest items."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:06E805",
+        "giver INFO Skyrim.esm:092A43 (Vilkas, stage < 11)",
+        "alias SilverHandHQ = Driftshade Sanctuary",
+        "aliases FragmentSack/FragmentSackBox",
+        "INFO Skyrim.esm:092A44, 092A45",
+        "LCTN Skyrim.esm:01916E"
+      ]
+    },
+    {
+      "edid": "C06",
+      "name": "Glory of the Dead",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Follows Purity of Revenge: back in Whiterun you're told to attend Kodlak's funeral.",
+      "needs": [
+        {
+          "what": "Finish Purity of Revenge",
+          "kind": "quest"
+        },
+        {
+          "what": "A Glenmoril Witch's head from Blood's Honor",
+          "kind": "item"
+        }
+      ],
+      "starts": [],
+      "firstStep": "Attend Kodlak's funeral in Whiterun",
+      "takesYou": [
+        {
+          "place": "Kodlak's funeral, outdoors in Whiterun",
+          "hold": "Whiterun",
+          "why": "attend the funeral"
+        },
+        {
+          "place": "the Skyforge",
+          "hold": "Whiterun",
+          "why": "give the fragments of Wuuthrad to Eorlund, who works there from 8 am to 9 pm"
+        },
+        {
+          "place": "Kodlak's quarters in Jorrvaskr",
+          "hold": "Whiterun",
+          "why": "retrieve Kodlak's own fragment"
+        },
+        {
+          "place": "the Underforge",
+          "hold": "Whiterun",
+          "why": "meet the Circle"
+        },
+        {
+          "place": "Ysgramor's Tomb",
+          "hold": "Winterhold",
+          "why": "return Wuuthrad to Ysgramor and cleanse Kodlak's soul"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Attend Kodlak's funeral",
+            "Give the fragments of Wuuthrad to Eorlund",
+            "Retrieve Kodlak's fragment",
+            "Give the final fragment to Eorlund",
+            "Meet the Circle",
+            "Go to Ysgramor's Tomb with the Circle",
+            "Return Wuuthrad to Ysgramor",
+            "Get to the burial chamber",
+            "Speak to Kodlak",
+            "Put witch head into fire",
+            "Defeat the wolf spirit",
+            "Speak to Kodlak"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Wuuthrad (battleaxe)",
+          "when": "during the quest, after Eorlund prepares the fragments"
+        },
+        {
+          "what": "Shield of Ysgramor",
+          "when": "in Ysgramor's Tomb"
+        },
+        {
+          "what": "The title of Harbinger of the Companions",
+          "when": "at the end"
+        }
+      ],
+      "type": "Companions",
+      "opens": [
+        "Purity (Farkas or Vilkas asks to be cured the way Kodlak was)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Eorlund Gray-Mane",
+          "role": "takes the fragments of Wuuthrad to prepare them"
+        },
+        {
+          "name": "Aela the Huntress, Farkas, Vilkas",
+          "role": "the Circle; go with you to Ysgramor's Tomb"
+        },
+        {
+          "name": "Kodlak Whitemane (ghost)",
+          "role": "met in Ysgramor's Tomb"
+        },
+        {
+          "name": "Kodlak's Werewolf Spirit",
+          "role": "the wolf spirit you defeat in Ysgramor's Tomb"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Who or what sets the first stage isn't in these files; the first objective is the funeral, so it most likely starts when you get back from Driftshade Sanctuary."
+        },
+        {
+          "field": "where",
+          "why": "The funeral spot is a marker the quest fills at runtime; Kodlak's body is placed outdoors in Whiterun."
+        },
+        {
+          "field": "rewards",
+          "why": "Wuuthrad is given by the quest's stage script and the Shield of Ysgramor is a quest alias; the exact moment each is handed over isn't shown. The script also holds a Wolf Helmet for Vilkas, which doesn't look like a player reward."
+        },
+        {
+          "field": "opens",
+          "why": "Purity's starts are named for after the questline and its journal needs Kodlak's cure; what else gates it isn't in these files. Totems of Hircine starts from Aela's job event and nothing ties it to this quest."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01CEF6",
+        "giver INFO Skyrim.esm:0E4A31 (Eorlund, stage < 19; Aela, Farkas, Vilkas stage < 20)",
+        "QF_C03_0001CEF6.YsgramorsBlade -> Skyrim.esm:0956B5 Wuuthrad",
+        "alias SHIELD -> Skyrim.esm:0E41D8",
+        "alias DeadKodlak1 (C06DeadKodlak) in Whiterun worldspace",
+        "aliases GhostKodlak, WolfSpirit in Ysgramor's Tomb",
+        "stage 200 log (Harbinger)",
+        "LCTN Skyrim.esm:019265",
+        "WhiterunEorlundSkyforgePackage 8:00 for 13h",
+        "CR13 Purity start CompanionsFarkasPostQuestlineNode / VilkasPostQuestlineNode; stage log 'same ceremony which cured Kodlak'"
+      ]
+    },
+    {
+      "edid": "CR01",
+      "name": "Animal Extermination",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A job from Aela: clear a beast out of someone's home in a town she picks.",
+      "needs": [
+        {
+          "what": "Join the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, Whiterun. Aela eats in the main hall from 10 am to 1 pm, trains from 1 pm to 8 pm, sleeps from midnight to 8 am, and otherwise moves about Jorrvaskr.",
+          "how": "Ask her for work."
+        }
+      ],
+      "firstStep": "Kill the animal in the home Aela names",
+      "takesYou": [
+        {
+          "place": "a home in a town picked when the quest starts",
+          "hold": "varies",
+          "why": "kill the animal that got in"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Kill the animal",
+            "Return to Aela"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and pays out"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest starts from the Companions' job system (story event 'CompanionsAelaNode'); its conditions aren't in these files. Being a member comes from the questline and the Proving Honor journal."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is tied to this quest in the records; the Companions' shared script has a gold reward, but how much and for which jobs isn't shown."
+        },
+        {
+          "field": "where",
+          "why": "Aela's training spot is a marker the records don't name; the yard behind Jorrvaskr is the likely spot."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:01CEEE",
+        "giver INFO Skyrim.esm:05343E (Aela, alias QuestGiver)",
+        "start: CompanionsAelaNode script event",
+        "stage 10/20 logs, 200 completes, 250 fails",
+        "people_schedules_raw packages: CompanionsShift1/2/3 Eat/Train/Sleep, AIOWR Train/Dinner/Random (target Skyrim.esm:0165B5 Jorrvaskr)"
+      ]
+    },
+    {
+      "edid": "CR02",
+      "name": "Animal Extermination",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A job from Aela: clear out an animal den in a hold she picks.",
+      "needs": [
+        {
+          "what": "Join the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, Whiterun. Aela eats in the main hall from 10 am to 1 pm, trains from 1 pm to 8 pm, sleeps from midnight to 8 am, and otherwise moves about Jorrvaskr.",
+          "how": "Ask her for work."
+        }
+      ],
+      "firstStep": "Clear out the animal den Aela names",
+      "takesYou": [
+        {
+          "place": "an animal den picked when the quest starts",
+          "hold": "varies",
+          "why": "kill the beasts and their leader"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Clear out the animal den",
+            "Return to Aela"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and pays out"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The quest starts from the Companions' job system (story event 'CompanionsAelaNode'); its conditions aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is tied to this quest in the records; how the Companions pay for jobs isn't shown."
+        },
+        {
+          "field": "where",
+          "why": "Aela's training spot is a marker the records don't name; the yard behind Jorrvaskr is the likely spot."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:025185",
+        "giver INFO Skyrim.esm:053F09 (Aela, alias QuestGiver)",
+        "start: CompanionsAelaNode script event",
+        "stage 10/20 logs, 100 and 200 complete, 250 fails",
+        "people_schedules_raw packages: CompanionsShift1/2/3 Eat/Train/Sleep, AIOWR Train/Dinner/Random (target Skyrim.esm:0165B5 Jorrvaskr)"
+      ]
+    },
+    {
+      "edid": "CR03",
+      "name": "Animal Pelt Collection",
+      "plugin": "Skyrim.esm (last edited by Companions Radiant Expansion.esp)",
+      "canDo": "radiant",
+      "canDoWhy": "A job from Aela: bring back a set number of one kind of animal pelt.",
+      "needs": [
+        {
+          "what": "Join the Companions (Take Up Arms)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Aela the Huntress",
+          "where": "Jorrvaskr, Whiterun. Aela eats in the main hall from 10 am to 1 pm, trains from 1 pm to 8 pm, sleeps from midnight to 8 am, and otherwise moves about Jorrvaskr.",
+          "how": "Ask her for work."
+        }
+      ],
+      "firstStep": "Collect the pelts Aela asks for",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Collect the pelts (count shown in the journal)",
+            "Return to Aela"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Companions",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Aela the Huntress",
+          "role": "gives the job and takes the pelts"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "Animal Pelt Collection is a Skyrim.esm job that Companions Radiant Expansion.esp edits last. Unlike the two Animal Extermination jobs, no job-system start is recorded for it, so how Aela offers it and what it needs isn't in these files. Being a member comes from the questline."
+        },
+        {
+          "field": "steps",
+          "why": "The pelt type and count are picked when the quest runs."
+        },
+        {
+          "field": "rewards",
+          "why": "No reward is tied to this quest in the records."
+        },
+        {
+          "field": "where",
+          "why": "Aela's training spot is a marker the records don't name; the yard behind Jorrvaskr is the likely spot."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:025230",
+        "giver INFO Skyrim.esm:054763 (Aela, alias Questgiver)",
+        "globals CR03TotalPeltsNeeded / CR03PeltsGotten",
+        "stage 10/20 logs, 200 completes, 250 fails",
+        "people_schedules_raw packages: CompanionsShift1/2/3 Eat/Train/Sleep, AIOWR Train/Dinner/Random (target Skyrim.esm:0165B5 Jorrvaskr)"
+      ]
+    }
+  ]
+}
