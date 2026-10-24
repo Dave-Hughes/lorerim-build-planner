@@ -1064,7 +1064,7 @@
     },
     {
      "field": "opens",
-     "why": "The records hold three siege quests that fill in the city by script (Battle for <city>, Battle of <city>, Defense of <city>) and the war's tracker's 'Report to Legate Quentin Cipius' step; none names this quest, so which one follows on each side isn't settled."
+     "why": "The records hold three siege quests that fill in the city by script (Battle for [city], Battle of [city], Defense of [city]) and the war's tracker's 'Report to Legate Quentin Cipius' step; none names this quest, so which one follows on each side isn't settled."
     },
     {
      "field": "takesYou",
