@@ -39,6 +39,9 @@ export interface Actors {
   /** The shape before WO-144 Part 1d. */
   levels?: [number, number];
   zoneMin?: number;
+  /** What mainly lives there, and what else ("Bandit", ["Skeleton"]). */
+  livesHere?: string;
+  alsoHere?: string[];
   /** Who the war's garrisons put here later, in this same shape (WO-144 Part 1e-4); the door doesn't read it yet. */
   afterTheWar?: unknown;
   boss?: { name?: string; level?: string };

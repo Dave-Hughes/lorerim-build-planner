@@ -34,6 +34,30 @@ export interface RunChange {
   fromText?: string;
 }
 
+/**
+ * What an agent read from a quest's records and a second one checked (WO-153, WO-154), as quest_reads/BRIEF.md lays it out and
+ * scripts/gamedata/quest_reads.py carries it. The words are the reader's own and are never reworded.
+ */
+export interface QuestRead {
+  canDo?: "talk" | "by itself" | "radiant" | "cut" | "background";
+  canDoWhy?: string;
+  needs?: { what: string; kind?: string }[];
+  starts?: { who?: string; where?: string; how?: string }[];
+  firstStep?: string;
+  takesYou?: { place: string; hold?: string; why?: string }[];
+  choices?: { choice: string; leadsTo?: string }[];
+  steps?: { branch?: string; objectives?: string[] }[];
+  rewards?: { what: string; when?: string }[];
+  type?: string;
+  opens?: string[];
+  closes?: string[];
+  people?: { name: string; role?: string }[];
+  unsure?: { field: string; why: string }[];
+  /** The fields the checker fixed, and the plugin that last edits the quest. */
+  fixed?: string[];
+  plugin?: string;
+}
+
 export interface Quest {
   edid: string;
   name: string;
@@ -53,6 +77,9 @@ export interface Quest {
   people?: string[];
   /** What players call it that the records don't hold (WO-133, overrides.json questNames): "Palomino". */
   calledBy?: string[];
+  /** The quest's read (WO-154), and which made the page: "reads", or the older rules where it has none yet. */
+  read?: QuestRead;
+  source?: "reads" | "rules";
 }
 
 /**

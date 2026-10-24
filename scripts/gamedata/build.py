@@ -490,6 +490,12 @@ def main():
             for k, v in (words.items() if isinstance(words, dict) else []):
                 if not k.startswith("_") and json.dumps(v, ensure_ascii=False)[1:-1] not in said.get(edid, ""):
                     print(f"overrides.json questStarts: {edid}'s \"{k}\" isn't in its start any more")
+        # WO-154: what the quest reads say replaces the rule-made fields, quest by quest; one with no read yet keeps the rules.
+        from quest_reads import attach_reads, load_reads
+
+        reads = load_reads(os.path.join(RAW, "quest_reads", "checked"))
+        with_read, without_read, unmatched = attach_reads(pages, reads)
+        print(f"{with_read} quests read and checked, {without_read} on the older rules" + (f"; {len(unmatched)} reads match no quest on the pages: {', '.join(unmatched[:8])}" if unmatched else ""))
         cur = load("questlines.json")
         with open(os.path.join(RAW, "questlines_report.md"), "w", encoding="utf-8") as f:
             f.write(questlines_report(lines, cur, cur.get("notInRecords", []), start_disagreements(pages)))
