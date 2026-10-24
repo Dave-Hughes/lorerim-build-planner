@@ -1,0 +1,1347 @@
+{
+  "checks": [
+    {
+      "edid": "HD1GoreQuest2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Gore's own line for this quest opens it before the first stage."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Nothing in the records shows a condition beyond talking to Gore; the reader already says so in unsure. 'Raven's Flight' confirms Peak's Shade Tower is outside Falkreath."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Gore is the speaker of the opening line; the first two objectives are 'Get to know Gore better' and 'Head to Dawnstar with Gore'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Pate's family are placed in Dawnstar; Pate himself has no named spot."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "The records show no branch: one completing stage, and the last objective is 'Intervene...' after 'I'd better talk to Gore before he does anything crazy'. Nothing shows that letting the scene play out is an option, or what it would change. Choice removed; Gore's 'Run! Run, you little bastards!' line moved to unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward property, item or gold is tied to this quest."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Nothing links it to a later quest by condition. Besides 'The Apple from the Tree', Gore's 'Come, the Crows' begins 'Gore and I are headed to an Inn far from Dawnstar', which reads like the next step after this one. A condition on either quest's first stage would settle it."
+        },
+        "closes": {
+          "verdict": "unsure",
+          "note": "Gore's line says he killed Pate and the mother is next, so someone may die here, but no stage or log confirms who."
+        }
+      }
+    },
+    {
+      "edid": "HD1Interlude2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Started by Gore's line in his general follower talk; the reader flags it as likely, not proven, which matches the records."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition is in the records; Gore must be with you for the line."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "The line: 'There's a waterfall near Ivarstead... whenever you have the time. I marked it on the map a few days ago, take a look.' Stage 0 log: head to that waterfall with Gore."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 0."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Ivarstead is in the Rift; the exact spot is only a quest marker."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Single path: arrive, survive the ambush, talk to Gore."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Nothing tied to the quest."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIOADQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Remi's line for this quest is open before the first journal stage."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No condition beyond Remi being the speaker."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 20 and 30 logs: she's thinking of a Tonal Magic project and you head to the Bards College or the College of Winterhold."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objectives 20 and 30 are the two alternatives."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Places index lists this quest under Bards College (Haafingar, in Solitude) and The Arcanaeum (Winterhold)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Two book aliases, one per college; both lead to the same 'Give the book to Remi' stage."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "The Thesis book is a quest property, but objective 40 is 'Give the book to Remi', so you hand it over; it's not yours to keep. Removed from rewards. The fork and Disable Automaton stay, from the quest script, with the unsure note."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIOArkngchalManager",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Remi's line for this quest is open before stage 2."
+        },
+        "needs": {
+          "verdict": "unsure",
+          "note": "No condition is shown. Arkngchal is only reached in Reunion of the Fallen ('Head to Arkngchal'), so it almost certainly needs that, but a condition on Remi's opening line would settle it."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 4 log: Remi waits for you to signal which order to pull the levers blocking the way, and gave you a spell for the automaton prototypes."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5, the only shown objective."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Arkngchal isn't in the places index. Remi's line about trying a ruin 'closer to the Hammerfell border' before Nchuand-Zel doesn't name it, but Reunion of the Fallen calls Arkngchal the ruin she stayed in when she first crossed the border, so it's probably that one."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch in the stages."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "'Tell Remi to Pull the Lever' is a quest-script spell and the stage 4 log confirms she gives you a spell; it's a puzzle tool."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIOChaurusPieQuest",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Remi's line for this quest is open before stage 21."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 30 log: 'After reading the book I gave her about Chaurus Pie'. The book isn't named."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 30 log lists the ingredients; objective 30 is 'Tell Remi once you've acquired all the ingredients'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Candlehearth Hall, an inn in Windhelm, Eastmarch; places index lists this quest there."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 90 fails: 'we don't have time for that'."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 80 log: 'at least I get a Chaurus Pie out of it'."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIOMQ1",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Remi's line open before stage 21 is 'Who in Oblivion was that?! They really didn't seem to like you much!', so it follows the attack; the attack comes first."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Assassin is held in a storage cell and sent by script; stage 20 log 'I was attacked by an assassin'. Reader's unsure note covers what triggers it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 20."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Breton Sailor placed in the Winking Skeever (Solitude), ship boss on the Mercenaries' Ship, smuggler outdoors in Riften, Mistveil Keep lists this quest, Morvic placed in Arkngchal."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "Framing Morvic isn't one side of the choice: both endings' logs say Remiel framed him as a daedra worshipper, and in both Morvic comes to Skyrim. The split is whether you go along with her hunting him down (kill him in Arkngchal, she makes it her workshop) or tell her she's taking it too far (she stops plotting; the log doesn't say what becomes of Morvic). Reworded."
+        },
+        "rewards": {
+          "verdict": "unsure",
+          "note": "Remi's Backpack is a quest-script property, a worn item; the records don't say when it's handed over or whether it goes to you or to Remi. Kept, with an unsure note."
+        },
+        "opens": {
+          "verdict": "unsure",
+          "note": "Neither link has a condition. Exploring Arkngchal runs during the Arkngchal part of this quest rather than after it; We Who Challenge the Sun calls Arkngchal 'her Dwemer ruin', which points to the workshop ending."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 190 log: 'we managed to kill him'."
+        }
+      }
+    },
+    {
+      "edid": "HLIORPCrossbow",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: 'She's asked me to help her gather the necessary materials'. No opening line in the records; reader flags it."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Who and how follow the stage 10 log; the reader's unsure note is right that no line is recorded."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5; the five gathering objectives run side by side."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "No place named."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward property on this quest; the crossbow items exist in the mod but nothing ties them here. Left in unsure, as the reader did."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIORPLantern",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: Remi has decided she wants to make a 'portable chandelier'."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Reader's unsure note matches: 'her Dwemer ruin' points at the workshop ending, no condition."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "No line or event is recorded. After the workshop ending Remi stays in Arkngchal for a while ('Leave Remi in Arkngchal', 'Return to Remi'), so she may raise this there rather than on the road; her schedule would settle it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 50 log: she built a lantern for herself; tell her if you want her to stop using it."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIORPLock",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 20 log: Remi has an idea and wants to make a tension wrench at the Markarth forge."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Objective 20: give Remi an iron ingot."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 20."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Alias Forge; journal says the forge in Markarth."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 80 fails: 'I refused to help Remi'."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 70 log: keep it with you so lockpicking is easier; not in the item index."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "HLIOScrapUpgrades",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Start event: change location, through the mod's own story node."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 10 log: after Nchuand-Zel, where she fixed up Scrap, you let her come along."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Change-location event; the node's own conditions aren't in the files, but stage 10 says she's come along with you."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Four ruin objectives; no list of which ruins count."
+        },
+        "choices": {
+          "verdict": "unsure",
+          "note": "Three endings: good friends, romance available, adventures at an end. Telling her you don't want her around is plainly your answer. But the friends and romance endings read 'Spoken to Remi, romance unavailable' and 'Spoken to Remi again, Romance Available', so whether romance comes from your answer or from something else (talking to her a second time, or a condition) isn't shown. The dialogue conditions would settle it. Reworded to say so."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Five Conjure Scrap spells on the quest script; the first level also comes from The Dwemer Specialist. Reader's unsure note on who receives them stands."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Reader's unsure note matches: the log says your adventures are at an end, nothing shows she leaves for good."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "HD1GoreQuest2",
+      "name": "Blood Ties",
+      "plugin": "GORE.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Gore opens it in conversation while he is travelling with you.",
+      "needs": [
+        {
+          "what": "Have Gore as your follower (you first meet him at Peak's Shade Tower outside Falkreath)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Gore",
+          "where": "travelling with you as your follower (first found at Peak's Shade Tower, outside Falkreath)",
+          "how": "Talk to Gore to get to know him better; he asks you to head to Dawnstar with him."
+        }
+      ],
+      "firstStep": "Get to know Gore better",
+      "takesYou": [
+        {
+          "place": "Dawnstar",
+          "hold": "The Pale",
+          "why": "Gore goes looking for a man named Pate, whose family lives there"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Get to know Gore better.",
+            "Head to Dawnstar with Gore.",
+            "Watch this play out...",
+            "Speak to Gore",
+            "Watch the scene.",
+            "Intervene..."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Gore",
+          "role": "your follower; the quest is about his past"
+        },
+        {
+          "name": "Pate",
+          "role": "the man Gore is after, found on the way to or in Dawnstar"
+        },
+        {
+          "name": "June",
+          "role": "one of Pate's family, in Dawnstar"
+        },
+        {
+          "name": "Reese",
+          "role": "one of Pate's family, in Dawnstar"
+        },
+        {
+          "name": "Dorothy",
+          "role": "one of Pate's family, in Dawnstar"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records don't show what Gore's opening line needs. The quest 'Wanted' ends with a note to get to know Gore better, so this probably follows it, but no condition confirms that."
+        },
+        {
+          "field": "where",
+          "why": "Pate is placed in the open world with no named spot; his family are placed in Dawnstar, but the records don't say which building."
+        },
+        {
+          "field": "choices",
+          "why": "The scene ends with an 'Intervene...' step after Gore looks ready to do 'anything crazy'. The records hold a line where Gore shouts at the children that he sent Pate to Oblivion and their mother is next, but they don't show whether that happens if you don't step in, or whether there is any other path: the quest has only one ending."
+        },
+        {
+          "field": "opens",
+          "why": "Nothing in the records links this to a later quest. Gore's 'Come, the Crows' begins with the two of you heading to an inn far from Dawnstar, and 'The Apple from the Tree' begins 'talk to Gore about everything that has happened'; either may follow this one."
+        },
+        {
+          "field": "closes",
+          "why": "Gore's line says he killed Pate and that the mother is next, so Pate, and maybe June, may die here; no stage or log confirms it."
+        }
+      ],
+      "evidence": [
+        "QUST GORE.esp:5A610A stages 0-60, objectives 0-50",
+        "giver INFO GORE.esp:5B7675 (Gore, GetIsID, stage below 1)",
+        "Gore placed GORE.esp:00B4B1 at Peak's Shade Tower",
+        "aliases Pate GORE.esp:5C1511, June 5E675B, Reese 5E6757, Dorothy 5E6759 (location Dawnstar)",
+        "INFO GORE.esp:6738E8 Gore 'Run! Run, you little bastards!...'",
+        "HD1GoreEscort GORE.esp:1517F2 stage 21 log",
+        "HD1GoreMurderer GORE.esp:6738F7 logs",
+        "HD1GoreComeTheCrows GORE.esp:6EA61E stage 10 log",
+        "HD1GoreQuest2 only completing stage 60"
+      ]
+    },
+    {
+      "edid": "HD1Interlude2",
+      "name": "Nest Left Empty",
+      "plugin": "GORE.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Gore mentions a waterfall near Ivarstead he has marked on your map.",
+      "needs": [
+        {
+          "what": "Have Gore as your follower",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Gore",
+          "where": "travelling with you as your follower",
+          "how": "Gore says there's a waterfall near Ivarstead he'd like to visit and that he marked it on your map."
+        }
+      ],
+      "firstStep": "Head to the spot marked on your map",
+      "takesYou": [
+        {
+          "place": "a waterfall near Ivarstead",
+          "hold": "The Rift",
+          "why": "Gore wants to show it to you"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Head to the spot marked on your map.",
+            "Survive the ambush",
+            "Speak to Gore."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Gore",
+          "role": "your follower; he takes you to the waterfall"
+        },
+        {
+          "name": "Bandits",
+          "role": "four ambushers at the waterfall"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The waterfall line belongs to Gore's general follower talk, not to this quest, so it's a likely start, not a proven one. The records don't show what has to be true first."
+        },
+        {
+          "field": "takesYou",
+          "why": "The spot is a map marker the quest sets. The records only say 'a waterfall near Ivarstead', and the ambushers are placed with no named location. Gore's 'Where We Stand' also sends you to a spot near Ivarstead, and it may or may not be the same place."
+        }
+      ],
+      "evidence": [
+        "QUST GORE.esp:89E472 stages 0-100, objectives 0-20, alias Marker",
+        "INFO GORE.esp:8AAAA9 (HD1GoreFollows) 'There's a waterfall near Ivarstead... I marked it on the map'",
+        "ambush aliases HD1AmbushActor1-4 (bandit templates) in persistent cell",
+        "INFO GORE.esp:775301 (Where We Stand) spot outside Ivarstead"
+      ]
+    },
+    {
+      "edid": "HLIOADQuest",
+      "name": "Attuned Assassination",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Remi brings up a new Tonal Magic project while she is travelling with you.",
+      "needs": [
+        {
+          "what": "Have Remi (Remiel) as your follower",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Remiel (Remi)",
+          "where": "travelling with you as your follower (she is first met at the Silver-Blood Inn in Markarth)",
+          "how": "Talk to Remi; she wants a book on Tonal Magic and suggests looking at the Bards College or the College of Winterhold."
+        }
+      ],
+      "firstStep": "Take Remi to the Bards College or the College of Winterhold",
+      "takesYou": [
+        {
+          "place": "the Bards College, Solitude",
+          "hold": "Haafingar",
+          "why": "look for a book on Tonal Magic (one of two choices)"
+        },
+        {
+          "place": "the Arcanaeum, College of Winterhold",
+          "hold": "Winterhold",
+          "why": "look for a book on Tonal Magic (the other choice)"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Search the Bards College or the College of Winterhold",
+          "leadsTo": "Either one has the book; the rest of the quest is the same"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "Bards College",
+          "objectives": [
+            "Take Remi to the Bard's College."
+          ]
+        },
+        {
+          "branch": "College of Winterhold",
+          "objectives": [
+            "Take Remi to the College of Winterhold."
+          ]
+        },
+        {
+          "branch": "main",
+          "objectives": [
+            "Give the book to Remi.",
+            "Wait for Remi to read the book.",
+            "Check in with Remi."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Remi's Tuning Fork, a dagger only she can use. It lets her shut down automatons she sneaks up on.",
+          "when": "at the end"
+        },
+        {
+          "what": "Disable Automaton (spell), used with the tuning fork",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower; she builds the tuning fork"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The records don't show what Remi's opening line needs, beyond her being with you."
+        },
+        {
+          "field": "rewards",
+          "why": "The fork and the Disable Automaton spell come from the quest's script, not a confirmed hand-over. The fork's text says only Remi knows how to use it, and the closing journal says she will shut down automatons she can sneak up on, so both are probably hers, not yours. The Tonal Magic book is found at the college and given to Remi."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:62E259 stages 20-70, objectives 20-60",
+        "giver INFO HLIORemi.esp:62E25D (Remiel, stage below 10)",
+        "aliases MCBook, BCBook; places Bards College and The Arcanaeum list this quest",
+        "rewards via HLIO_QF_HLIOADQuest_0562E259: SPEL 5B9AA8, BOOK 62E271, WEAP 5C3CB3",
+        "WEAP HLIORemi.esp:5C3CB3 text 'Only she knows how to use it'"
+      ]
+    },
+    {
+      "edid": "HLIOArkngchalManager",
+      "name": "Exploring Arkngchal",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Remi sets the puzzle when you reach the blocked levers in Arkngchal during her main story.",
+      "needs": [
+        {
+          "what": "Reach Arkngchal with Remi in Reunion of the Fallen",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Remiel (Remi)",
+          "where": "inside Arkngchal, at the levers blocking the way",
+          "how": "Remi waits for you to tell her which order to pull the levers, and gives you a spell for marking them."
+        }
+      ],
+      "firstStep": "Tell Remi what order to pull the levers",
+      "takesYou": [
+        {
+          "place": "Arkngchal",
+          "hold": "",
+          "why": "the Dwemer ruin Remi stayed in when she first crossed the border"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Tell Remi what order to pull the levers. Hit the stationary automaton prototypes beneath each lever with the spell she gives you.",
+            "Find a machine that acts as a heat source, then something that gives the ruin the kinetic jumpstart it needs.",
+            "Brew Remi's metal lubricant at the cauldron: her drawings say three \"golden bowls\" and two \"grey ferns\".",
+            "Use the lubricant on the stuck door.",
+            "Remi runs off ahead. Fill the chests across from the automaton statues. The clue to what goes in them is somewhere the Dwemer worked on their machines.",
+            "Make your way through the rest of Arkngchal."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Tell Remi to Pull the Lever (spell)",
+          "when": "at the start, for the lever puzzle"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "works the puzzles with you, then runs ahead"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "Arkngchal is added by the Remi mod and isn't in the places index, so its hold isn't in these files. Remi mentions first trying a ruin closer to the Hammerfell border before Nchuand-Zel, and Reunion of the Fallen calls Arkngchal the ruin she stayed in when she first crossed the border, so it is probably near there."
+        },
+        {
+          "field": "starts",
+          "why": "The quest's early stages have no journal text, and the event that begins it isn't in these files. It runs alongside the Arkngchal part of Reunion of the Fallen, where Remi also runs ahead and meets Morvic."
+        },
+        {
+          "field": "steps",
+          "why": "Only the lever step is a shown objective; the rest comes from the journal. The journal doesn't say which ingredients 'golden bowls' and 'grey ferns' stand for."
+        },
+        {
+          "field": "needs",
+          "why": "No condition is shown, but you only reach Arkngchal during Reunion of the Fallen, when Remi suggests searching it for Morvic."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:6A304E stages 4-60, objective 5",
+        "giver INFO HLIORemi.esp:6B76AC (Remiel, stage below 2)",
+        "reward SPEL HLIORemi.esp:6B7778 via HLIO_QF_HLIOArkngchalManager_056A304E.HLIOBustCommand",
+        "HLIOMQ1 stages 150-180",
+        "INFO HLIORemi.esp:A1AABF 'closer to the Hammerfell border'"
+      ]
+    },
+    {
+      "edid": "HLIOChaurusPieQuest",
+      "name": "Real Nord Food",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "After you give Remi a book about Chaurus Pie, she wants to try making one.",
+      "needs": [
+        {
+          "what": "Have Remi (Remiel) as your follower",
+          "kind": "other"
+        },
+        {
+          "what": "A book about Chaurus Pie to give her",
+          "kind": "item"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Remiel (Remi)",
+          "where": "travelling with you as your follower (she is first met at the Silver-Blood Inn in Markarth)",
+          "how": "Give Remi the book about Chaurus Pie. Once she's read it, she asks you to gather the ingredients."
+        }
+      ],
+      "firstStep": "Gather the ingredients and tell Remi once you have them all",
+      "takesYou": [
+        {
+          "place": "the kitchen of Candlehearth Hall, Windhelm",
+          "hold": "Eastmarch",
+          "why": "Remi wants to bake the pie there, like Nils does"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Tell Remi you don't have time for it",
+          "leadsTo": "the quest fails"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Gather chaurus chitin, a tomato, honey, salt, a potato, a carrot and an apple.",
+            "Tell Remi once you've acquired all the ingredients.",
+            "Take Remi to Candlehearth Hall.",
+            "Wait for Remi to make the Chaurus Pie.",
+            "Talk to Remi."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A Chaurus Pie (Remi didn't like it)",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower; she bakes the pie"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The journal says you gave her a book about Chaurus Pie, but the records here don't name the book or say where to find it."
+        },
+        {
+          "field": "rewards",
+          "why": "The pie comes from the closing journal line; no reward record for it is in these files."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:59B47F stages 30-90 (90 fails), objectives 30-70",
+        "giver INFO HLIORemi.esp:59B483 (Remiel, stage below 21)",
+        "alias CookingPot; place Candlehearth Hall lists this quest"
+      ]
+    },
+    {
+      "edid": "HLIOMQ1",
+      "name": "Reunion of the Fallen",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "by itself",
+      "canDoWhy": "An assassin attacks you while Remi is travelling with you, and the quest begins from his body.",
+      "needs": [
+        {
+          "what": "Have Remi (Remiel) as your follower",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "an assassin",
+          "where": "wherever you are travelling with Remi",
+          "how": "An assassin attacks you. Search his body and read the letter: it is a contract on Remi."
+        }
+      ],
+      "firstStep": "Investigate the assassin's corpse",
+      "takesYou": [
+        {
+          "place": "the Winking Skeever, Solitude",
+          "hold": "Haafingar",
+          "why": "find an out-of-place Breton sailor and get the ship key from her"
+        },
+        {
+          "place": "the mercenaries' ship in Solitude harbour",
+          "hold": "Haafingar",
+          "why": "find out who hired the assassin"
+        },
+        {
+          "place": "Riften",
+          "hold": "The Rift",
+          "why": "find a smuggler with news of Remi's family"
+        },
+        {
+          "place": "Mistveil Keep, Riften",
+          "hold": "The Rift",
+          "why": "probably where the guards keep the confiscated skooma"
+        },
+        {
+          "place": "Markarth",
+          "hold": "The Reach",
+          "why": "look for Morvic"
+        },
+        {
+          "place": "Arkngchal",
+          "hold": "",
+          "why": "track Morvic to the Dwemer ruin Remi once stayed in"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Tell Remi you don't have time to look into the attack yet",
+          "leadsTo": "the quest waits until you ask her to start investigating"
+        },
+        {
+          "choice": "Go along with Remi when she wants to hunt Morvic down",
+          "leadsTo": "you track him through Markarth to Arkngchal and kill him; Remi stays and turns the ruin into her workshop"
+        },
+        {
+          "choice": "Tell Remi she's taking her revenge too far",
+          "leadsTo": "she stops her plotting and the quest ends there, without the Arkngchal workshop; the records don't say what becomes of Morvic"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Investigate the assassin's corpse.",
+            "Read the note found on the assassin's corpse.",
+            "Ask Remi about the assassin.",
+            "Investigate Solitude.",
+            "Board the Ship in the Harbour.",
+            "Discover who sent the assassin.",
+            "Show the note to Remi.",
+            "Search Riften for someone who has information about Remi's family.",
+            "Get information from the smuggler.",
+            "Find the confiscated Skooma.",
+            "Bring the Shipment back to the Smuggler.",
+            "Read the note.",
+            "Talk to Remi about the note.",
+            "Wait for the results of Remi's tip-off.",
+            "Check with the smuggler in Riften for any news about Remi's note.",
+            "Talk to Remi."
+          ]
+        },
+        {
+          "branch": "hunt Morvic down",
+          "objectives": [
+            "Search Markarth for Morvic.",
+            "Head to Arkngchal.",
+            "Search Arkngchal for Morvic.",
+            "Kill Morvic.",
+            "Talk to Remi.",
+            "Leave Remi in Arkngchal.",
+            "Return to Remi."
+          ]
+        },
+        {
+          "branch": "talk her down",
+          "objectives": [
+            "Talk Remi out of her revenge; the quest ends."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Remi's Backpack (worn item)",
+          "when": "during the quest; the records don't say at which step"
+        },
+        {
+          "what": "Arkngchal becomes Remi's workshop, the site of her later projects",
+          "when": "at the end, if Morvic is killed"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Exploring Arkngchal",
+        "We Who Challenge the Sun"
+      ],
+      "closes": [
+        "Morvic dies if you hunt him down"
+      ],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower; the target of the contract"
+        },
+        {
+          "name": "Assassin",
+          "role": "attacks you; carries the first letter"
+        },
+        {
+          "name": "Breton Sailor",
+          "role": "in the Winking Skeever, Solitude; has the ship key"
+        },
+        {
+          "name": "Man Called 'L'",
+          "role": "aboard the mercenaries' ship"
+        },
+        {
+          "name": "Suspicious Merchant",
+          "role": "the smuggler, outdoors in Riften"
+        },
+        {
+          "name": "Morvic",
+          "role": "Remi's ex-fiancé who hired the mercenaries; found in Arkngchal"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The assassin is kept in a holding cell and sent in by script. What sets him loose, and how long after meeting Remi, isn't in these files. The mod's opening quest is The Dwemer Specialist, so this probably comes after it."
+        },
+        {
+          "field": "choices",
+          "why": "Both endings say Remi framed Morvic and that he came to Skyrim after her, so the choice seems to come once he is rumoured to be in Markarth and Remi wants to hunt him down. The records don't show the exact moment, or what happens to Morvic if you talk her out of it."
+        },
+        {
+          "field": "takesYou",
+          "why": "Arkngchal isn't in the places index, so its hold is unknown; Remi says it is near the Hammerfell border. The smuggler is placed outdoors in Riften with no named spot. Mistveil Keep is tied to this quest in the places index, but the skooma's exact spot isn't stated."
+        },
+        {
+          "field": "opens",
+          "why": "Neither link has a condition in the records. Exploring Arkngchal runs while you search Arkngchal in this quest. 'We Who Challenge the Sun' calls Arkngchal 'her Dwemer ruin', which suggests it needs the workshop ending."
+        },
+        {
+          "field": "rewards",
+          "why": "Remi's Backpack comes from the quest's script, not a confirmed hand-over; the records don't say at which step it's given or whether you or Remi wear it."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:46FA55 stages 20-230 (220 and 230 complete), objectives 20-210",
+        "giver INFO HLIORemi.esp:7AB4E5 (Remiel, stage below 21); others Breton Sailor HLIORemi.esp:46FB2C (below 41), Suspicious Merchant 4841C0 (below 81)",
+        "Assassin HLIORemi.esp:46FA5F in Marker Storage Unit",
+        "Breton Sailor placed in The Winking Skeever; Man Called 'L' in Mercenaries' Ship cell 46FB43",
+        "Morvic HLIORemi.esp:502E1D placed in Arkngchal; package HLIOMorvicStay while stage <= 180",
+        "reward ARMO HLIORemi.esp:117380 via HLIO_QF_HLIOMQ1_0546FA55.HLIOLeatherBackpack",
+        "notes BOOK 46FA63 'Easy Job', 46FDA1 'A Job For You'",
+        "place Mistveil Keep lists this quest",
+        "Remiel package HLIOArkngHoldingPack (global 763FEE)",
+        "HLIOMQ1 stage 230 log (framed, came to Skyrim, talked down)",
+        "INFO HLIORemi.esp:7AB4E5 'Who in Oblivion was that?!'"
+      ]
+    },
+    {
+      "edid": "HLIORPCrossbow",
+      "name": "Remi's Crossbow Crucible",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Remi asks you to help gather parts for a crossbow she wants to build.",
+      "needs": [
+        {
+          "what": "Have Remi (Remiel) as your follower",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Remiel (Remi)",
+          "where": "travelling with you as your follower (she is first met at the Silver-Blood Inn in Markarth)",
+          "how": "Remi says she wants to try making a crossbow and asks you to gather the parts."
+        }
+      ],
+      "firstStep": "Find two Dwemer cogs",
+      "takesYou": [],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find two dwemer cogs.",
+            "Find eight dwemer gears.",
+            "Find a dwemer lever.",
+            "Find three pieces of wood.",
+            "Find six dwarven metal ingots.",
+            "Bring Remi the supplies for her crossbow project while she's relaxing.",
+            "Wait for Remi to finish her project.",
+            "Return to Remi to see her finished product."
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower; she builds the crossbow"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records name no dialogue line or event that begins this quest, so how Remi raises it is a guess from the journal."
+        },
+        {
+          "field": "rewards",
+          "why": "The mod has 'Remi's Crossbow', 'Remiel's Crossbow' and 'Remi's Crossbow Bolts', but nothing here ties them to this quest or says who gets which."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:22DCD3 stages 0-40, objectives 5-40",
+        "globals HLIORPCCogsTotal 2, GearsTotal 8, LeverTotal 1, WoodTotal 3, IngotsTotal 6",
+        "WEAP HLIORemi.esp:232DD4, 237EE4; AMMO 232DD7",
+        "Remiel package HLIORelax"
+      ]
+    },
+    {
+      "edid": "HLIORPLantern",
+      "name": "We Who Challenge the Sun",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Remi wants to build a 'portable chandelier' and needs Aetherium from her ruin, Arkngchal.",
+      "needs": [
+        {
+          "what": "Arkngchal is Remi's workshop (end of Reunion of the Fallen)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Remiel (Remi)",
+          "where": "travelling with you as your follower (she is first met at the Silver-Blood Inn in Markarth)",
+          "how": "Remi says she wants to make a portable chandelier and thinks there's Aetherium in Arkngchal."
+        }
+      ],
+      "firstStep": "Find Aetherium in Arkngchal",
+      "takesYou": [
+        {
+          "place": "Arkngchal",
+          "hold": "",
+          "why": "find Aetherium"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find Aetherium in Arkngchal.",
+            "Bring the Aetherium to Remi.",
+            "Wait for Remi to build the lantern.",
+            "Talk to Remi."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Remi carries a lantern she built; tell her if you want her to stop using it",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower; she builds the lantern"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "needs",
+          "why": "The journal calls Arkngchal 'her Dwemer ruin', which points to the workshop ending of Reunion of the Fallen, but no condition here confirms it."
+        },
+        {
+          "field": "starts",
+          "why": "The records name no dialogue line or event that begins this quest. Remi stays in Arkngchal for a while after making it her workshop, so she may bring this up there rather than while travelling."
+        },
+        {
+          "field": "takesYou",
+          "why": "Arkngchal isn't in the places index, so its hold is unknown. The quest marks something called a pipe, perhaps where the Aetherium is."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:8486EB stages 9-50, objectives 10-40",
+        "alias Pipe"
+      ]
+    },
+    {
+      "edid": "HLIORPLock",
+      "name": "Picking Remi's Brain",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "talk",
+      "canDoWhy": "Remi has an idea for a tool to make lockpicking quicker and asks for your help.",
+      "needs": [
+        {
+          "what": "Have Remi (Remiel) as your follower",
+          "kind": "other"
+        },
+        {
+          "what": "An iron ingot",
+          "kind": "item"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Remiel (Remi)",
+          "where": "travelling with you as your follower (she is first met at the Silver-Blood Inn in Markarth)",
+          "how": "Remi wants to make a 'tension wrench' at the forge in Markarth and asks you for an iron ingot."
+        }
+      ],
+      "firstStep": "Give Remi an iron ingot at the Markarth forge",
+      "takesYou": [
+        {
+          "place": "the forge in Markarth",
+          "hold": "The Reach",
+          "why": "Remi makes the tension wrench there"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Refuse to help Remi",
+          "leadsTo": "the quest fails"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Give Remi an iron ingot at the Markarth Forge.",
+            "Wait for Remi to finish crafting.",
+            "Talk to Remi.",
+            "Pick five locks with the tension wrench in your inventory.",
+            "Report to Remi about lockpicking with the tension wrench next time you two are relaxing."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Remi's improved tension wrench; keep it on you to make lockpicking easier",
+          "when": "at the end"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower; she makes the tension wrench"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The records name no dialogue line or event that begins this quest."
+        },
+        {
+          "field": "rewards",
+          "why": "The wrench comes from the journal; it isn't in the item index, so what it actually does isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:237EE7 stages 20-80 (80 fails), objectives 20-60",
+        "alias Forge",
+        "global HLIORPLocksPickedTotal 5"
+      ]
+    },
+    {
+      "edid": "HLIOScrapUpgrades",
+      "name": "Upgrades",
+      "plugin": "HLIORemi.esp (no other plugin edits this quest)",
+      "canDo": "by itself",
+      "canDoWhy": "Begins once Remi joins you after Nchuand-Zel, and moves on as you visit Dwemer ruins with her.",
+      "needs": [
+        {
+          "what": "Finish The Dwemer Specialist (explore Nchuand-Zel with Remi, where she fixes up Scrap)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "",
+          "how": "Starts by itself when you change location with Remi following you, after Nchuand-Zel."
+        }
+      ],
+      "firstStep": "Take Remi to see a Dwemer ruin",
+      "takesYou": [
+        {
+          "place": "any four Dwemer ruins",
+          "hold": "",
+          "why": "Remi wants to see more ruins; each one makes Scrap stronger"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "How you answer Remi when she asks about your adventures",
+          "leadsTo": "you stay good friends; or a romance with her becomes possible; or you tell her you don't want her around and your adventures together end. The records don't show whether the romance comes from your answer alone."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Take Remi to see a dwemer ruin.",
+            "Take Remi to see another dwemer ruin.",
+            "Take Remi to see yet another dwemer ruin.",
+            "Take Remi to see one more dwemer ruin.",
+            "Talk to Remi about your adventures."
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Scrap, Remi's dwarven spider, gets stronger: Conjure Scrap is upgraded step by step",
+          "when": "as you visit ruins"
+        },
+        {
+          "what": "Remi can be romanced",
+          "when": "at the end, if you choose that answer"
+        }
+      ],
+      "type": "Side Quest",
+      "opens": [
+        "Romance with Remi (one ending)"
+      ],
+      "closes": [
+        "Remi leaves you, if you tell her you don't want her around"
+      ],
+      "people": [
+        {
+          "name": "Remiel (Remi)",
+          "role": "your follower"
+        },
+        {
+          "name": "Scrap",
+          "role": "Remi's dwarven spider"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The quest script holds five Conjure Scrap spells. The journal says Remi learned to make Scrap powerful, so they are probably hers, but the records don't say who receives them."
+        },
+        {
+          "field": "takesYou",
+          "why": "The records don't list which ruins count. Remi mentions Mzulft in one line of this quest."
+        },
+        {
+          "field": "closes",
+          "why": "The 'don't want her around' ending reads like Remi leaving for good, but the records don't show that she does."
+        },
+        {
+          "field": "choices",
+          "why": "The friends ending is marked 'romance unavailable' and the romance ending 'spoken to Remi again', so the romance may need a second talk with her, or something not in these files, rather than one answer."
+        }
+      ],
+      "evidence": [
+        "QUST HLIORemi.esp:08E59F stages 10-80 (60, 70, 80 complete), objectives 10-50",
+        "start event: story node HLIOUpgradesNode, change location",
+        "giver INFO HLIORemi.esp:8E080F (Remiel, stage below 50) 'Maybe some in Mzulft do too'",
+        "rewards via HLIO_QF_HLIOScrapUpgradesQ_0708E59F: SPEL 005909, 08E59B, 08E595, 08E59D, 00590B",
+        "HLIOStartingQuest HLIORemi.esp:0E4852 (The Dwemer Specialist), start-game quest"
+      ]
+    }
+  ]
+}
