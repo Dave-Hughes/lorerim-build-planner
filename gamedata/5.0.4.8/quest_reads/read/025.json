@@ -1,0 +1,730 @@
+[
+  {
+    "edid": "zzzAoMMq10",
+    "name": "The Landing",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "by itself",
+    "canDoWhy": "The records name no one who hands it out; it looks like it follows straight on from The Endless Fall, with Altano as your first contact.",
+    "needs": [
+      {
+        "what": "Finish The Endless Fall (likely; the records don't show the link outright)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Altano",
+        "where": "the Temple of Stendarr in Stuhn Ravine, the Vigilants' home",
+        "how": "The journal tells you to talk to Altano. Nothing in the records says what sets the quest going; it most likely starts by itself once The Endless Fall ends."
+      }
+    ],
+    "firstStep": "Talk to Altano",
+    "takesYou": [
+      {
+        "place": "Temple of Stendarr",
+        "hold": "Stuhn Ravine (the Vigilants' own land, not a Skyrim hold)",
+        "why": "talk to Altano, then come back here at the end"
+      },
+      {
+        "place": "Stendarr's Beacon",
+        "hold": "The Rift",
+        "why": "the places index ties this quest to Stendarr's Beacon, a short walk from Riften; probably where the Mace of Molag Bal is destroyed"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Altano",
+          "Destroy the Mace of Molag Bal",
+          "Return to the Temple of Stendarr"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Mark of Molag Bal (a curse; the journal says: \"Molag Bal left his curse on me. If even a spot of further corruption touches my soul, I will be dragged into his realm.\")",
+        "when": "after you destroy the mace"
+      },
+      {
+        "what": "You can now forge the Rusty Armor set (Rusty Armor, Boots, Gauntlets, Helmet) if you have Ebony Smithing",
+        "when": "once the quest is finished"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Altano",
+        "role": "the Vigilant you talk to first; placed in the Temple of Stendarr"
+      },
+      {
+        "name": "Gwyneth",
+        "role": "the temple librarian, in the Temple of Stendarr; has a line for you during this quest, most likely when you return"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "no dialogue line or event in these files starts this quest; it shares the Mace of Molag Bal with The Endless Fall (which gives you the mace), so it most likely follows on from that quest"
+      },
+      {
+        "field": "where",
+        "why": "Altano is placed in the Temple of Stendarr, but in The Endless Fall you chase him; where he stands when this quest begins isn't in these files"
+      },
+      {
+        "field": "takesYou",
+        "why": "where you destroy the mace isn't named; Stendarr's Beacon is only linked to this quest in the places index"
+      },
+      {
+        "field": "choices",
+        "why": "the quest has two separate finishing points, so there may be two outcomes, but the records don't say what decides between them"
+      },
+      {
+        "field": "closes",
+        "why": "crafting the Rusty Armor needs this quest OR Art of Mercy finished, which suggests the two are alternate endings of the Vigilant story, but nothing here says one locks out the other"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:011B75 zzzAoMMq10, stages 0-9999, log at stage 30",
+      "objectives 0/10/30",
+      "aliases Mace, Altano, MolagBalVoiceMarker, Librarian",
+      "quest_givers: Gwyneth Vigilant.esm:02749A INFO 02853A, GetStage < 31",
+      "Altano Vigilant.esm:000D62 placed at REFR 027482, cell 025091 Temple of Stendarr, location Stuhn Ravine",
+      "reward spell Vigilant.esm:013BEA Mark of Molag Bal via QF_zzAoMMq10_01011B75.MolagBalCurse",
+      "QUST 00EFF7 The Endless Fall rewards Mace of Molag Bal 00D9FC",
+      "places_raw Stendarr's Beacon Skyrim.esm:108A5A lists The Landing",
+      "COBJ 0D5E89-0D5E8C (Lorerim - Vigilant Patch.esp): GetQuestCompleted 011B75 OR GetQuestCompleted 4D0376, AND HasPerk REQ_Smithing_EbonySmithing, station zzzCHCraftZenithar"
+    ]
+  },
+  {
+    "edid": "zzzAoMMqGoodEnd",
+    "name": "Art of Mercy",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Carene, the witch of Witch's Pond; this looks like the merciful ending of the Vigilant story.",
+    "needs": [
+      {
+        "what": "Reach Carene and her daughter during No Mercy, most likely by sparing them (not confirmed in these files)",
+        "kind": "quest"
+      }
+    ],
+    "starts": [
+      {
+        "who": "Carene",
+        "where": "the Pond House at Witch's Pond",
+        "how": "Talk to Carene; her opening line is only there before the quest starts."
+      }
+    ],
+    "firstStep": "Talk to Carene",
+    "takesYou": [
+      {
+        "place": "Pond House, Witch's Pond",
+        "hold": "unknown",
+        "why": "talk to Carene"
+      },
+      {
+        "place": "Temple of Stendarr",
+        "hold": "Stuhn Ravine (the Vigilants' own land, not a Skyrim hold)",
+        "why": "report to Thorondir"
+      },
+      {
+        "place": "Stendarr's Beacon",
+        "hold": "The Rift",
+        "why": "talked about in this quest: the bloody place beneath Stendarr's Beacon, and someone vows to go there and destroy the altar"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Kill Carene (optional)",
+        "leadsTo": "the records list it as an optional objective; what changes afterwards isn't shown"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Carene",
+          "Stop Carene",
+          "Talk to Carene",
+          "(Optional) Kill Carene",
+          "Leave this place",
+          "Report to Thorondir"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "The quest's script handles Mark of Molag Bal and Lamae's Kin (records don't say if it gives or lifts them)",
+        "when": "during the quest"
+      },
+      {
+        "what": "You can now forge the Rusty Armor set (Rusty Armor, Boots, Gauntlets, Helmet) if you have Ebony Smithing",
+        "when": "once the quest is finished"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Carene",
+        "role": "the mother witch, placed in the Pond House at Witch's Pond; you have to stop her"
+      },
+      {
+        "name": "Lilian",
+        "role": "Carene's daughter, also placed in the Pond House"
+      },
+      {
+        "name": "Thorondir",
+        "role": "Keeper of the Vigilants in the Temple of Stendarr; you report to him at the end"
+      },
+      {
+        "name": "Orlando the Knowledgeable",
+        "role": "an owl, placed in the Dark Tunnel; plays a part in this quest"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "Carene's opening line has no condition here except that this quest hasn't started. She and Lilian are the witches you hunt in No Mercy, and the edid marks this as the main story's good ending, so it most likely follows a merciful choice in No Mercy"
+      },
+      {
+        "field": "where",
+        "why": "Carene is placed in the Pond House; where you have to 'stop' her and which place you are told to 'leave' aren't named"
+      },
+      {
+        "field": "hold",
+        "why": "the hold of Witch's Pond isn't in these files"
+      },
+      {
+        "field": "rewards",
+        "why": "the script holds Mark of Molag Bal and Lamae's Kin as properties; whether it adds or removes them isn't in these files"
+      },
+      {
+        "field": "choices",
+        "why": "the quest can finish at two points (an early one and after reporting to Thorondir); what decides which isn't shown"
+      },
+      {
+        "field": "closes",
+        "why": "the Rusty Armor recipes accept this quest OR The Landing, so they look like alternate endings, but nothing here says one locks out the other"
+      },
+      {
+        "field": "people",
+        "why": "the speaker of the Stendarr's Beacon lines isn't named in the records"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4D0376 zzzAoMMqGoodEnd, completes at 50, 120, 9999",
+      "objectives 0/10/20/29/30/110",
+      "aliases Mother, Daughter, Keeper, Owl",
+      "quest_givers: Carene Vigilant.esm:0012D0 INFO 4D037A GetStage < 10; Thorondir 02748B GetStage < 111",
+      "Carene REFR 16E36D cell 16E303 Pond House, location Witch's Pond",
+      "Orlando 4419E1 REFR 4419E2 cell 4419CE Dark Tunnel",
+      "fragment QF_zzzAoMMqGoodEnd_024D0376 properties AbMolagCurse (013BEA), AbLamaeCurse (03DCE9)",
+      "INFO 4D03A6, 4D03AA, 4D0394 (Vigilant.esm)",
+      "QUST 00EA8A No Mercy uses the same Carene and Lilian",
+      "COBJ 0D5E89-0D5E8C OR-condition on 011B75 / 4D0376"
+    ]
+  },
+  {
+    "edid": "zzzAoMRadDead",
+    "name": "Radiance in the Dead",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job: kill an undead boss in a place the game picks.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Slay the undead boss in the place you're sent to",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Slay the boss in the place named in your journal"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A random item from the quest's undead reward list",
+        "when": "when the boss is dead"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "nothing in these files hands this quest out; who offers these Vigilant jobs isn't recorded"
+      },
+      {
+        "field": "takesYou",
+        "why": "the target place and boss are picked when the quest starts"
+      },
+      {
+        "field": "rewards",
+        "why": "the reward list's contents aren't in these files; 'undead' comes from the list's name"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4EA3A8 zzzAoMRadDead",
+      "objective 0: Slay the <Alias=Boss> in <Alias=TargetLocation>",
+      "aliases TargetLocation, Boss, MapMarker (unfilled)",
+      "reward LVLI Vigilant.esm:4E91B3 zzzAoMLvlRQRewardUndead via QF_zzzAoMRadDead_024EA3A8.RewardItems"
+    ]
+  },
+  {
+    "edid": "zzzAoMRadDoppler",
+    "name": "Radiance in the Duplicate",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job: kill a Duplicate in a place the game picks.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Slay the Duplicate in the place you're sent to",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Slay the Duplicate in the place named in your journal"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A random item from the quest's reward list",
+        "when": "when the Duplicate is dead"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Duplicate",
+        "role": "the target; the quest also has a second target slot"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "nothing in these files hands this quest out; who offers these Vigilant jobs isn't recorded"
+      },
+      {
+        "field": "takesYou",
+        "why": "the target place is picked when the quest starts"
+      },
+      {
+        "field": "rewards",
+        "why": "the reward list's contents aren't in these files"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4EA3D1 zzzAoMRadDoppler",
+      "objective 0: Slay <Alias=Target> in <Alias=TargetLocation>, Target fills as 'Duplicate'",
+      "aliases TargetLocation, CenterMarker, Target, MapMarker, Player, Target2",
+      "reward LVLI Vigilant.esm:4E91B4 zzzAoMLvlRQRewardDoppler"
+    ]
+  },
+  {
+    "edid": "zzzAoMRadMolag",
+    "name": "Radiance in the Spawn",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job: kill a Spawn of Molag Bal in a place the game picks.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Slay the Spawn of Molag Bal in the place you're sent to",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Slay the Spawn of Molag Bal in the place named in your journal"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A random item from the quest's reward list",
+        "when": "when the Spawn is dead"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Spawn of Molag Bal",
+        "role": "the target"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "nothing in these files hands this quest out; who offers these Vigilant jobs isn't recorded"
+      },
+      {
+        "field": "takesYou",
+        "why": "the target place is picked when the quest starts"
+      },
+      {
+        "field": "rewards",
+        "why": "the reward list's contents aren't in these files"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4EA3AC zzzAoMRadMolag",
+      "objective 0: Slay <Alias=Target> in <Alias=TargetLocation>, Target fills as 'Spawn of Molag Bal'",
+      "aliases TargetLocation, Target, CenterMarker, MapMarker, Player",
+      "reward LVLI Vigilant.esm:4E91B5 zzzAoMLvlRQRewardMolag"
+    ]
+  },
+  {
+    "edid": "zzzAoMRadVampire",
+    "name": "Radiance in the Vampire",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job: kill a vampire boss in a place the game picks.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Slay the vampire boss in the place you're sent to",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Slay the boss in the place named in your journal"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A random item from the quest's vampire reward list",
+        "when": "when the boss is dead"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "nothing in these files hands this quest out; who offers these Vigilant jobs isn't recorded"
+      },
+      {
+        "field": "takesYou",
+        "why": "the target place and boss are picked when the quest starts"
+      },
+      {
+        "field": "rewards",
+        "why": "the reward list's contents aren't in these files; 'vampire' comes from the list's name"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4E91B0 zzzAoMRadVampire",
+      "objective 0: Slay the <Alias=Boss> in <Alias=TargetLocation>",
+      "aliases TargetLocation, Boss, MapMarker (unfilled)",
+      "reward LVLI Vigilant.esm:4E91B1 zzzAoMLvlRQRewardVamp"
+    ]
+  },
+  {
+    "edid": "zzzAoMRadWitchHunter",
+    "name": "Radiance in the Witch Hunter",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "radiant",
+    "canDoWhy": "A repeatable job: kill a witch hunter in a place the game picks.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Slay the witch hunter in the place you're sent to",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Slay the witch hunter in the place named in your journal"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "A random item from the quest's witch hunter reward list",
+        "when": "when the witch hunter is dead"
+      }
+    ],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "nothing in these files hands this quest out; who offers these Vigilant jobs isn't recorded"
+      },
+      {
+        "field": "takesYou",
+        "why": "the target place is picked when the quest starts"
+      },
+      {
+        "field": "people",
+        "why": "the quest has slots for a boss and two helpers, but which witch hunter you face isn't fixed in the records"
+      },
+      {
+        "field": "rewards",
+        "why": "the reward list's contents aren't in these files"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4EA3C8 zzzAoMRadWitchHunter",
+      "objective 0: Slay the witch hunter in <Alias=TargetLocation>",
+      "aliases TargetLocation, Boss, Target, Player, Sub01, Sub02, MapMarker",
+      "reward LVLI Vigilant.esm:4E91B2 zzzAoMLvlRQRewardHunter"
+    ]
+  },
+  {
+    "edid": "zzzAoMSubQ02",
+    "name": "Sacred Anatomancer",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "talk",
+    "canDoWhy": "Find the Anatomancer, Pale Feet, and either help him with his grisly work or kill him.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Pale Feet (the Anatomancer)",
+        "where": "the Anatomancer's Room",
+        "how": "The journal sends you to find the Anatomancer and prove yourself to him; he then talks to you."
+      }
+    ],
+    "firstStep": "Find the Anatomancer",
+    "takesYou": [
+      {
+        "place": "Anatomancer's Room",
+        "hold": "unknown",
+        "why": "find Pale Feet and do his work, or kill him"
+      },
+      {
+        "place": "Riften",
+        "hold": "The Rift",
+        "why": "on the evil path, snatch a child (the quest's 'two-legged sheep') to bring back"
+      }
+    ],
+    "choices": [
+      {
+        "choice": "Help the Anatomancer (evil)",
+        "leadsTo": "snatch a child, bring the sack back, feed it to the grinder and listen to the Song of Life"
+      },
+      {
+        "choice": "Kill the Anatomancer (good)",
+        "leadsTo": "examine his corpse"
+      }
+    ],
+    "steps": [
+      {
+        "branch": "start",
+        "objectives": [
+          "Find the Anatomancer",
+          "Prove yourself to the Anatomancer",
+          "Talk to the Anatomancer"
+        ]
+      },
+      {
+        "branch": "evil",
+        "objectives": [
+          "Help the Anatomancer (Evil)",
+          "Snatch a two-legged sheep",
+          "Return to the Anatomancer",
+          "Put the sack into the grinder",
+          "Activate the grinder",
+          "Talk to the Anatomancer",
+          "Listen to the Song of Life"
+        ]
+      },
+      {
+        "branch": "good",
+        "objectives": [
+          "Kill the Anatomancer (Good)",
+          "Examine the Anatomancer's corpse"
+        ]
+      },
+      {
+        "branch": "unclear",
+        "objectives": [
+          "Divine the future from the guts"
+        ]
+      }
+    ],
+    "rewards": [
+      {
+        "what": "Anatomancer's Pipe (staff)",
+        "when": "during the quest; which branch gives it isn't shown"
+      }
+    ],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [
+      "Pale Feet dies if you take the good path"
+    ],
+    "people": [
+      {
+        "name": "Pale Feet",
+        "role": "the Anatomancer, placed in the Anatomancer's Room"
+      },
+      {
+        "name": "Urchin",
+        "role": "a Riften child placed in the Anatomancer's Room; the quest's victim"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "starts",
+        "why": "nothing in these files says how the quest is first given (no book, note or dialogue that sets it going); the first objective just says to find the Anatomancer"
+      },
+      {
+        "field": "where",
+        "why": "where the Anatomancer's Room is (which hold, which entrance) isn't in these files"
+      },
+      {
+        "field": "steps",
+        "why": "'Divine the future from the guts' leads to its own ending, but the records don't show which branch reaches it"
+      },
+      {
+        "field": "rewards",
+        "why": "the staff is a script property; when you get it isn't shown"
+      },
+      {
+        "field": "closes",
+        "why": "whether the Riften child dies on the evil path isn't clear; the Urchin is marked essential"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:4D4C3D zzzAoMSubQ02, completes at 220, 310, 9999",
+      "objectives 0/1/10/20/30/40/50/55/60/70/200/210/300",
+      "aliases Anatomancer, Victim, Riften (location), SackV, SackP, SongMarker",
+      "quest_givers: Pale Feet 4D3A1A INFO 4D4C57 GetStage < 11, REFR 4D3A1B cell 4D3987 Anatomancer's Room",
+      "Urchin 4D5E66: TownRiftenFaction, essential",
+      "reward WEAP Vigilant.esm:4D5E65 Anatomancer's Pipe via QF_zzzAoMSubQ02_024D4C3D.PiperStaff"
+    ]
+  },
+  {
+    "edid": "zzzAoMSubQ03",
+    "name": "Legacy of Belharza",
+    "plugin": "Vigilant.esm (no other plugin edits it; Lux - Vigilant patch.esp edits the two minotaurs)",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Mordog the Man-Bull in the Hidden Minotaur Village, then meet the chief.",
+    "needs": [],
+    "starts": [
+      {
+        "who": "Mordog the Man-Bull",
+        "where": "the Hidden Minotaur Village, in Stuhn Ravine",
+        "how": "Talk to Mordog; his opening line is only there before the quest starts."
+      }
+    ],
+    "firstStep": "Talk to Mordog the Man-Bull",
+    "takesYou": [
+      {
+        "place": "Hidden Minotaur Village",
+        "hold": "Stuhn Ravine (the Vigilants' own land, not a Skyrim hold)",
+        "why": "talk to Mordog, then meet Horbahha the Chief"
+      }
+    ],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Talk to Mordog the Man-Bull",
+          "Meet the Chief of Minotaurs"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Side Quest",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {
+        "name": "Mordog the Man-Bull",
+        "role": "the minotaur who gives the quest; essential"
+      },
+      {
+        "name": "Horbahha the Chief",
+        "role": "Chief of Minotaurs, in the Hidden Minotaur Village; essential"
+      }
+    ],
+    "unsure": [
+      {
+        "field": "needs",
+        "why": "no condition on Mordog's line beyond the quest not having started; how you find the hidden village isn't in these files"
+      },
+      {
+        "field": "rewards",
+        "why": "no reward is set in the quest's script; Mordog's record is named as a follower, so he may join you, but nothing here confirms it"
+      },
+      {
+        "field": "steps",
+        "why": "the quest finishes partway through its stages; what happens after meeting the chief isn't in the journal text"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:51EAC1 zzzAoMSubQ03, completes at 30",
+      "objectives 1/10",
+      "quest_givers: Mordog 51EAA8 INFO 51EAC5 GetStage < 5; Horbahha 51D895 GetStage < 21",
+      "Mordog REFR 51EAA9 cell 51D6B2 Hidden Minotaur Village, location Stuhn Ravine; NPC edid zzzCHMntrFollower, essential",
+      "NPC records last edited by Lux - Vigilant patch.esp / Synthesis - World.esp"
+    ]
+  },
+  {
+    "edid": "zzzBMGuide",
+    "name": "Stendarr Guide",
+    "plugin": "Vigilant.esm (no other plugin edits it)",
+    "canDo": "background",
+    "canDoWhy": "A helper journal entry that points you along a trail of blood; it seems to run alongside the Blood Matron storyline and isn't a quest you pick up.",
+    "needs": [],
+    "starts": [],
+    "firstStep": "Trace the blood",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {
+        "branch": "main",
+        "objectives": [
+          "Trace the blood",
+          "Trace the elder blood"
+        ]
+      }
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": [],
+    "closes": [],
+    "people": [],
+    "unsure": [
+      {
+        "field": "canDo",
+        "why": "nothing in these files starts it; its two markers are set up for Lamae and for Thingol (a vampire in Remnants), which ties it to the Blood Matron storyline, but how it is switched on isn't shown"
+      },
+      {
+        "field": "people",
+        "why": "the marker slots aren't filled with particular people in these records"
+      }
+    ],
+    "evidence": [
+      "QUST Vigilant.esm:43B81F zzzBMGuide, objectives 0/10, completes at 20 and 999",
+      "aliases GuideLamae, GuideThingol",
+      "Thingol Vigilant.esm:033043 is alias Vamp04ESS in QUST 038525 Remnants",
+      "edid prefix zzzBM shared with Empty Cells, Remnants, The Blood Matron"
+    ]
+  }
+]

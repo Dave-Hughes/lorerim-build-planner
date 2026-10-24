@@ -1,0 +1,1601 @@
+{
+  "checks": [
+    {
+      "edid": "MQ101",
+      "verdicts": {
+        "canDo": {
+          "verdict": "fix",
+          "note": "canDoWhy said that without the Dragonborn start the note sends you to Matlara instead; nothing in the records ties the note to other starts. The note BOOK AlternatePerspective.esp:20A30F lies in the Resting Pilgrim (AP_HelgenInnLocation), and Matlara's AP_MQ101MatlaraUseFurniture package runs while Unbound is already under way (stage >= 5, not completed), which points to the note being part of the Dragonborn start, not a separate way in. Kept 'talk' (the Matlara step), reworded the why, and moved the open part to unsure."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "No requirement beyond choosing the start; nothing in the records adds one."
+        },
+        "starts": {
+          "verdict": "unsure",
+          "note": "Both leads are in the records: the Dragonborn start (starts_raw, options Helgen Keep (Start) 0x47F943 / (End) 0x484A45 = APS_MQSkipKeepEnd) and the inn note (BOOK AlternatePerspective.esp:20A30F). Matlara's place is better than a placement: people_schedules_raw gives her AP_HelgenInnKeeperPackage at the Resting Pilgrim, with innkeeper and room-rent factions. What isn't shown is whether the Matlara talk is a step inside the Dragonborn start or also works from other starts; AP's start quests (0x47F943, 0x484A45) and Matlara's dialogue would settle it."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "First objective (30) is \"Make your way to the Keep\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Helgen and Helgen Keep, Falkreath hold, per the objectives and places."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Before the Storm logs (stage 10) split on following Hadvar (uncle the blacksmith) or Ralof (sister owns the lumber mill)."
+        },
+        "rewards": {
+          "verdict": "unsure",
+          "note": "The items are script properties (QF_MQ101_0003372B_new, APMQ101), not a list of what reaches the player. Under Alternate Perspective you aren't a prisoner (stage 150 log with MQQuickstart 7: 'The Empire captured Ulfric...'), so the prisoner clothes may be replaced by AP's gold, Stitched Boots and Clothes. The Sparks tome (TorturerSpellTome) is the clearest one. Which set you get needs the AP fragment script."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Before the Storm is next in the main-quest line and its first log follows the escape."
+        },
+        "closes": {
+          "verdict": "unsure",
+          "note": "The Resting Pilgrim, Jacob's Farm, Vilod's House, Skalei's Scrap and other Helgen doors 'stay visible until enable parent AlternatePerspective.esp:312D3C is disabled' (quest_starts_raw). That they shut 'once the attack happens' is a guess: when 312D3C is disabled isn't in these files. Reworded to say they can be shut, not when."
+        }
+      }
+    },
+    {
+      "edid": "MQ102",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No dialogue or event starts it apart from the escape; the stage 10 logs follow from the Hadvar/Ralof follow-quests."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Every stage 10/20/30/100 log needs the Hadvar (Skyrim.esm:02BF9C) or Ralof (02610A) follow-quest; those come out of Unbound."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Irileth isn't a start. Her line (INFO 0D39A8, giver 0D39B2, stage below 100) is the 'Talk to the Jarl' step when you reach Dragonsreach, and all the 'I've arrived in Whiterun' logs (stage 100/110) need the Hadvar or Ralof quest. Moved her to steps; whether her line could begin the quest for someone who never escaped Helgen is put in unsure."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10: talk to Alvor/Gerdur (RiverwoodFriend) in Riverwood."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Riverwood and Dragonsreach; both in Whiterun hold."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 100/110 logs cover reaching Whiterun without the Riverwood step; the last stage 160 log covers the Jarl rewarding you without it."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "JarlRewardHeavyArmor / JarlRewardLightArmor (REQ_LI_MQ102_Reward1/2); stage 160 log says the Jarl rewarded you. Which list applies is rightly in unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Bleak Falls Barrow stage 10: the Jarl thinks you can help Farengar."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ103",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: Jarl Balgruuf thinks you can help Farengar; it comes out of the talk with the Jarl."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows the Jarl conversation that ends Before the Storm."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 10 log; the Jarl line \"That tablet is your priority now...\" (INFO 0D5534, Delay Bleak Falls Barrow.esp)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 15 \"Talk to Farengar\"; Farengar placed in Dragonsreach."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Bleak Falls Barrow: Whiterun hold, next to Riverwood (places Skyrim.esm:018EE9); Farengar: \"It's near Riverwood\" (INFO 0D50DA)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 50 entry conditioned on carrying the Dragonstone; INFO 0D8B7C \"You already found it!\""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 190 log: Farengar promised the Jarl will reward you; Dragon Rising stage 10 then sends you to the Jarl for it."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Dragon Rising stage 10 log follows the delivery."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ104",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log (\"I recovered the Dragonstone... speak to him about my reward\") follows the delivery with no other trigger."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows Bleak Falls Barrow."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Irileth, INFO 05D2FE (stage below 16), line quoted correctly; stage 13 log."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5 \"Talk to Jarl Balgruuf\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Western Watchtower, Whiterun hold, a short walk from Whiterun (places Skyrim.esm:0D9079)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch in the logs."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 90/160 logs (power absorbed; thane with a housecarl), alias JarlWeapon = Blade of Whiterun Unique Thane Weapons.esp:000804 (a greatsword in items_raw), FavorRewardEnchArmor list. Lydia's spot is settled by people_schedules_raw: HousecarlWhiterunGreetPlayer and HousecarlWhiterunSandboxDragonsreach keep her in Dragonsreach, so she meets you there; people/unsure updated."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "The Way of the Voice stage 10 log: the Greybeards summoned you after the dragon; INFO 05EE3F."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ105",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log: the Greybeards summoned you; no talk needed."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 30 variant needs Dragon Rising stage 90 (power absorbed)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Giver Arngeir (INFO 02F2C6, stage below 30) placed in High Hrothgar; IvarsteadMapMarker alias."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Speak to the Greybeards\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Ivarstead (The Rift) and High Hrothgar (Whiterun hold in places)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 30 variant for Dragon Rising 90 done and 150 not done."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Objectives 30/50/60 name Einarth's word (Unrelenting Force) and Borri's (followed by demonstrating Whirlwind Sprint); GraybeardTeachFX."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Stage 160 log: sent on the final trial for the Horn of Jurgen Windcaller."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ105Ustengrav",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Arngeir's line (INFO 030315) sends you; stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows The Way of the Voice (its stage 160 log)."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "INFO 030315 quoted correctly; Arngeir in High Hrothgar."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The note's text is in the records: BOOK Skyrim.esm:03031F 'Note from a Friend': \"Rent the attic room at the Sleeping Giant Inn in Riverwood, and I'll meet you.\" A player needs to know to rent the attic room, not just turn up. Updated the Sleeping Giant Inn reason and the step; the unsure about the note is settled and removed."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Objective 40 (Wulfgar's word) and stage 60 log (\"High Hrothgar is now open to me\")."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "A Blade in the Dark: Delphine \"I'm the one who left the note in Ustengrav\" (INFO 05C2FC); its stage 30 log."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ106",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver Delphine (INFO 0453EE, stage below 10), placed in the Sleeping Giant Inn."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "The Horn of Jurgen Windcaller stage 20 (note found) leads here."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "The meeting has a condition the player needs: the note (BOOK Skyrim.esm:03031F) says to rent the attic room at the Sleeping Giant Inn, and Delphine meets you there (alias SleepingGiantRoomMarker in the horn quest). Rest agrees: INFO 05C2FC, stage 30 log 'She gave me back the Horn'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Talk to Delphine\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Kynesgrove and the Braidwood Inn (Eastmarch); Delphine INFO 103227 \"The innkeeper ought to be able to tell us if there's any dragon mound nearby\", 032910."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "INFO 0C659F (travel together or split up), 0CA635 (\"I'll meet you at Kynesgrove\")."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 log: \"After we killed the dragon and I absorbed its power\". Leaving the gold, katana and bow out is right: the property names (DelpineSword, Bow) point to Delphine."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Diplomatic Immunity stage 30 log follows the Kynesgrove fight."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ201",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver Delphine, INFO 035D52 (stage below 20)."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 30 log follows the Kynesgrove fight."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Delphine says this near Kynesgrove, not in the Sleeping Giant Inn: the line is \"Meet me back in Riverwood. If I'm not back when you get there, wait for me\" (INFO 03B495), said once you talk to her after Sahloknir (A Blade in the Dark objective 40). The inn is where she waits afterwards. Corrected 'where'."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 5."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 40 log (Malborn, Winking Skeever, Solitude); objective 30 (Solitude stables); Thalmor Embassy (Elenwen placed there, Haafingar)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Objective 5 offers storming; stages 250 and 255 both complete the quest. What storming skips is rightly in unsure."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward properties in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Stage 210/250 logs: the Thalmor are searching Riften for Esbern; A Cornered Rat stage 10."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked in the records."
+        }
+      }
+    },
+    {
+      "edid": "MQ202",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log follows the embassy with no trigger of its own."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows Diplomatic Immunity (its last objective: \"Talk to Delphine or search for Esbern\")."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "Vekel isn't the start: the quest begins by itself as Diplomatic Immunity ends (stage 10 log 'Esbern, who Delphine says is an expert...'), and its named giver is Delphine. Vekel the Man and Dirge (Ragged Flagon) are the ones with lead lines in Riften (giver INFO 03B69D and others, stage below 130). Brynjolf isn't among them, only an alias, so he's removed from the 'how'. 'Behind the bar' isn't in the records: Vekel's packages are sandboxes in the Ragged Flagon."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Ask in Riften about Esbern\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Riften, the Ratway (Shavari, ambush aliases), the Ratway Vaults (MainAmbush/FinalAmbush) and the Ratway Warrens (Esbern placed in Esbern's Vault)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "No branch in the logs."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "No reward properties."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Alduin's Wall stage 10 log: you got to Esbern first."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    },
+    {
+      "edid": "MQ203",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log follows reaching Esbern."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Follows A Cornered Rat."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Esbern INFO 06EBDC quoted correctly (filed under MQ Always On); Esbern placed in the Ratway Warrens."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 \"Escort Esbern to Riverwood\"."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 60 log; Delphine INFO 0ADD8E (Karth River Canyon), Esbern INFO 0A8BF1 (\"past the Forsworn camp\"); places Karthspire and Sky Haven Temple, The Reach."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "INFO 10323C (\"Lead on\"), 0A8C57 (\"I'll get Esbern there... We'll wait for you near Karthspire\")."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "None in the records; Dragonbane items are REQ_NULL_ (Requiem's placeholder records), so leaving them out is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "The hand-off is in the records after all: The Throat of the World (MQ204) opens with \"With Esbern's help, I've deciphered Alduin's Wall... Maybe the Greybeards can teach me this Shout\". Unsure entry removed."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Nothing locked."
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "MQ101",
+      "name": "Unbound",
+      "plugin": "Skyrim.esm (last edited by Alternate Perspective - Gate to Sovngarde Edition.esp; Alternate Perspective rewrites it)",
+      "canDo": "talk",
+      "canDoWhy": "Alternate Perspective keeps Helgen a living town. The Dragonborn start puts you on this quest, and a note in the Resting Pilgrim in Helgen says talking to the innkeeper Matlara about staying longer may set something off.",
+      "needs": [],
+      "starts": [
+        {
+          "who": "Alternate Perspective start menu",
+          "where": "the character start choice",
+          "how": "Pick the \"Dragonborn\" start (\"You are the Dragonborn of legend, saving the world from Alduin.\"), either at the start of Helgen Keep or at its end."
+        },
+        {
+          "who": "Matlara",
+          "where": "The Resting Pilgrim, the inn in Helgen (she keeps to the inn)",
+          "how": "A note in the inn says you've rented a room at the Resting Pilgrim and that talking to the innkeeper Matlara about extending your stay might make \"something interesting\" happen."
+        }
+      ],
+      "firstStep": "Survive the dragon attack on Helgen and make your way to the Keep",
+      "takesYou": [
+        {
+          "place": "Helgen",
+          "hold": "Falkreath",
+          "why": "the dragon attacks the town"
+        },
+        {
+          "place": "Helgen Keep",
+          "hold": "Falkreath",
+          "why": "escape through the keep with Hadvar or Ralof"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Enter the keep with Hadvar (Imperial)",
+          "leadsTo": "Hadvar sends you to his uncle Alvor, the blacksmith in Riverwood, in Before the Storm"
+        },
+        {
+          "choice": "Enter the keep with Ralof (Stormcloak)",
+          "leadsTo": "Ralof sends you to his sister Gerdur, who runs the lumber mill in Riverwood, in Before the Storm"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Make your way to the Keep",
+            "Enter the Keep with Hadvar or Ralof",
+            "Find some equipment",
+            "Loot Gunjar's body",
+            "(Optional) Search the barrel for potions",
+            "(Optional) Attempt to pick the lock to the cage",
+            "(Optional) Recover your gear",
+            "Escape Helgen"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Steel Dagger, Imperial Sword, Imperial Heavy Bow, Long Bow and prisoner clothes (Roughspun Tunic, Footwraps)",
+          "when": "found or handed out inside Helgen Keep"
+        },
+        {
+          "what": "Spell Tome (Novice): Sparks",
+          "when": "in the keep's torture room"
+        },
+        {
+          "what": "Gold, Stitched Boots and Clothes (Alternate Perspective's script)",
+          "when": "during the Alternate Perspective version of the escape"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "Before the Storm"
+      ],
+      "closes": [
+        "Helgen as a living town: Alternate Perspective can shut away its inn, houses and shops (the records don't show exactly when)"
+      ],
+      "people": [
+        {
+          "name": "Matlara",
+          "role": "innkeeper of the Resting Pilgrim in Helgen"
+        },
+        {
+          "name": "Hadvar",
+          "role": "Imperial soldier you can escape with"
+        },
+        {
+          "name": "Ralof",
+          "role": "Stormcloak you can escape with"
+        },
+        {
+          "name": "Ulfric Stormcloak",
+          "role": "the prisoner the Empire means to execute"
+        },
+        {
+          "name": "General Tullius",
+          "role": "Imperial commander at the execution"
+        },
+        {
+          "name": "Elenwen",
+          "role": "Thalmor envoy at the execution"
+        },
+        {
+          "name": "Lokir",
+          "role": "prisoner on the cart"
+        },
+        {
+          "name": "Alduin",
+          "role": "the dragon that attacks Helgen"
+        },
+        {
+          "name": "Torture Master",
+          "role": "in the keep's torture room"
+        },
+        {
+          "name": "Gunjar",
+          "role": "dead Stormcloak whose body you loot"
+        },
+        {
+          "name": "Skalei",
+          "role": "lives at Skalei's Scrap in Helgen (added by Alternate Perspective)"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "The Resting Pilgrim note may be part of the Dragonborn start (Matlara's inn behaviour runs while this quest is already under way) or a separate way in from other starts; Alternate Perspective's start quests and Matlara's dialogue aren't in these files."
+        },
+        {
+          "field": "starts",
+          "why": "The start menu offers \"Helgen Keep (Start)\" and \"Helgen Keep (End)\"; the records don't spell out how much of the escape the End option skips."
+        },
+        {
+          "field": "steps",
+          "why": "Alternate Perspective changes the journal text so the Empire captured Ulfric (not you), which suggests you aren't one of the prisoners; the records hold both versions and don't settle which one shows."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script also holds Fury, Conjure Spirit Wolf and Sparks spells; nothing shows the player is given them in normal play, so they're left out."
+        },
+        {
+          "field": "closes",
+          "why": "Helgen doors (Resting Pilgrim, houses, Skalei's Scrap) are tied to an Alternate Perspective switch that hides them; when exactly it flips isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The weapons and prisoner clothes are properties on the vanilla quest script; with Alternate Perspective you aren't a prisoner, so AP's gold, Stitched Boots and Clothes may replace them. Which set the player actually gets isn't shown."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:03372B MQ101, editedBy USSEP, AlternatePerspective.esp, Alternate Perspective - Gate to Sovngarde Edition.esp",
+        "GLOB MQQuickstart set to 7 by AlternatePerspective.esp (was 0); stage 150/900 log variants conditioned on MQQuickstart == 7",
+        "starts_raw: Dragonborn start, options Helgen Keep (Start) 0x47F943 / (End) 0x484A45",
+        "BOOK AlternatePerspective.esp:20A30F 'Alternate Perspective' note (Resting Pilgrim, Matlara)",
+        "quest_starts_raw main-quest: doors gated on AlternatePerspective.esp:312D3C / 0D09AE enable parents",
+        "objectives 30,50,60,65,70,75,80,100",
+        "quest_givers_raw MQ101 rewards: QF_MQ101_0003372B_new properties, APMQ101 properties, MQ101QuestScript spells",
+        "aliases Hadvar, Ralof, CivilianMatlara, CivilianSkalei, Torturer, GunjarCorpse, PlayerGearChest (added by AP)",
+        "people_schedules_raw Matlara: AP_HelgenInnKeeperPackage (The Resting Pilgrim), AP_MQ101MatlaraUseFurniture (Unbound running, stage >= 5)"
+      ]
+    },
+    {
+      "edid": "MQ102",
+      "name": "Before the Storm",
+      "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Begins as you get out of Helgen, with the companion you escaped with pointing you to Riverwood.",
+      "needs": [
+        {
+          "what": "Escape Helgen in Unbound",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Hadvar or Ralof",
+          "where": "outside Helgen Keep, after the escape",
+          "how": "Whoever you escaped with suggests heading to Riverwood: Hadvar to his uncle Alvor the blacksmith, Ralof to his sister Gerdur at the lumber mill."
+        }
+      ],
+      "firstStep": "Talk to Alvor or Gerdur in Riverwood",
+      "takesYou": [
+        {
+          "place": "Riverwood",
+          "hold": "Whiterun",
+          "why": "tell Alvor or Gerdur about Helgen"
+        },
+        {
+          "place": "Dragonsreach, Whiterun",
+          "hold": "Whiterun",
+          "why": "warn Jarl Balgruuf and ask him to protect Riverwood"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Go to Riverwood first (Alvor if you followed Hadvar, Gerdur if you followed Ralof)",
+          "leadsTo": "they ask you to take word to the Jarl and ask for soldiers for Riverwood"
+        },
+        {
+          "choice": "Skip Riverwood and go straight to Whiterun",
+          "leadsTo": "you simply tell the Jarl about the dragon; the quest still ends with his reward"
+        },
+        {
+          "choice": "(Optional) Travel to Riverwood with Hadvar or Ralof",
+          "leadsTo": "you walk there together"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Alvor or Gerdur in Riverwood",
+            "(Optional) Travel to Riverwood with Hadvar or Ralof",
+            "Talk to the Jarl of Whiterun (Irileth stops you in Dragonsreach: \"You know about Helgen? The jarl will want to speak to you personally. Approach.\")"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A piece of armor from Jarl Balgruuf, from Requiem's heavy-armor or light-armor reward list",
+          "when": "when you tell the Jarl about Helgen"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "Bleak Falls Barrow"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Hadvar",
+          "role": "Imperial who points you to Riverwood"
+        },
+        {
+          "name": "Ralof",
+          "role": "Stormcloak who points you to Riverwood"
+        },
+        {
+          "name": "Alvor",
+          "role": "Hadvar's uncle, blacksmith; Alvor and Sigrid's House, Riverwood"
+        },
+        {
+          "name": "Gerdur",
+          "role": "Ralof's sister, runs the lumber mill; Hod and Gerdur's House, Riverwood"
+        },
+        {
+          "name": "Irileth",
+          "role": "the Jarl's housecarl, Dragonsreach"
+        },
+        {
+          "name": "Balgruuf the Greater",
+          "role": "Jarl of Whiterun, Dragonsreach"
+        },
+        {
+          "name": "Proventus Avenicci",
+          "role": "the Jarl's steward, Dragonsreach"
+        },
+        {
+          "name": "Farengar Secret-Fire",
+          "role": "court wizard, Dragonsreach"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The Jarl's reward is one of two Requiem leveled lists (heavy or light armor); what decides which you get isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Alvor, Gerdur, Irileth and Balgruuf are given by where the records place them, not their daily schedules."
+        },
+        {
+          "field": "starts",
+          "why": "How this quest starts after an Alternate Perspective start other than the Dragonborn one isn't shown in these files."
+        },
+        {
+          "field": "starts",
+          "why": "Irileth's line only needs this quest not yet at the Jarl step, so whether walking into Dragonsreach without the Helgen escape starts it isn't settled; the journal lines for that case all assume you escaped with Hadvar or Ralof."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:04E50D MQ102, editedBy USSEP",
+        "stage 10/20/30 log variants conditioned on follow-Hadvar (Skyrim.esm:02BF9C) or follow-Ralof (Skyrim.esm:02610A) quests; the index mislabels these 'Season Unending'",
+        "stage 100/110/160 log variants for arriving in Whiterun without the Riverwood step",
+        "objectives 10,20,30",
+        "giver Irileth, INFO Skyrim.esm:0D39B2 / place pointer INFO Skyrim.esm:0D39A8",
+        "rewards QF_MQ102_0004E50D.JarlRewardHeavyArmor (REQ_LI_MQ102_Reward1 Skyrim.esm:0CD9EE), JarlRewardLightArmor (REQ_LI_MQ102_Reward2 Skyrim.esm:0CD9EF)",
+        "dialogue INFO Skyrim.esm:0D2327 (Alvor), 0DF01D (Gerdur), 02D756 (directions to Dragonsreach)"
+      ]
+    },
+    {
+      "edid": "MQ103",
+      "name": "Bleak Falls Barrow",
+      "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp; also Delay Bleak Falls Barrow.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Jarl Balgruuf points you to his court wizard Farengar once you've told him about Helgen.",
+      "needs": [
+        {
+          "what": "Finish Before the Storm",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Jarl Balgruuf the Greater",
+          "where": "Dragonsreach, Whiterun",
+          "how": "After you report the dragon, the Jarl thinks you can help Farengar with something to do with dragons."
+        }
+      ],
+      "firstStep": "Talk to Farengar in Dragonsreach",
+      "takesYou": [
+        {
+          "place": "Dragonsreach, Whiterun",
+          "hold": "Whiterun",
+          "why": "Farengar gives you the task"
+        },
+        {
+          "place": "Bleak Falls Barrow",
+          "hold": "Whiterun",
+          "why": "retrieve the Dragonstone; it's next to Riverwood"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "You already carry the Dragonstone when you speak to Farengar",
+          "leadsTo": "Farengar takes it on the spot and you skip the trip"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Farengar",
+            "Retrieve the Dragonstone",
+            "Deliver the Dragonstone to Farengar"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Farengar promises the Jarl will reward you; the reward is given in Dragon Rising",
+          "when": "at the end"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "Dragon Rising"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Farengar Secret-Fire",
+          "role": "court wizard in Dragonsreach who wants the Dragonstone"
+        },
+        {
+          "name": "Balgruuf the Greater",
+          "role": "Jarl of Whiterun, sends you to Farengar"
+        },
+        {
+          "name": "Irileth",
+          "role": "the Jarl's housecarl"
+        },
+        {
+          "name": "Delphine",
+          "role": "innkeeper at the Sleeping Giant Inn, Riverwood; named in the quest"
+        },
+        {
+          "name": "Zulakaroth, Keeper of the Dragonstone",
+          "role": "the boss of Bleak Falls Barrow (level 40), in Bleak Falls Sanctum"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Delay Bleak Falls Barrow.esp and LoreRim - Dialogue Patch.esp both edit this quest; the files show they edit it and a Jarl line (\"That tablet is your priority now...\"), but not exactly how the start is delayed."
+        },
+        {
+          "field": "people",
+          "why": "Zulakaroth is the boss the places index lists for Bleak Falls Barrow; the records don't confirm he is the one holding the Dragonstone."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0D0800 MQ103, editedBy USSEP, Delay Bleak Falls Barrow.esp, LoreRim - Dialogue Patch.esp",
+        "stage 10 log (Jarl -> Farengar); stage 50 log conditioned GetItemCount Dragonstone Skyrim.esm:0DF202 > 0",
+        "objectives 15,50,80; stage 190 log 'promised that the jarl will reward me'",
+        "INFO Skyrim.esm:0D8B7C / 0E0EB9 (already found it), 0D5534 (edited by Delay Bleak Falls Barrow.esp), 0E0EB7",
+        "places Skyrim.esm:018EE9 Bleak Falls Barrow, hold Whiterun, near Riverwood, boss Zulakaroth (LoreRim - Magink Bosses.esp:0008B7) level 40"
+      ]
+    },
+    {
+      "edid": "MQ104",
+      "name": "Dragon Rising",
+      "plugin": "Skyrim.esm (last edited by LoreRim - Weapons.esp; also Requiem.esp and Unique Thane Weapons.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "Begins when you hand Farengar the Dragonstone: Irileth arrives with news of a dragon near Whiterun.",
+      "needs": [
+        {
+          "what": "Finish Bleak Falls Barrow",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Irileth",
+          "where": "Dragonsreach, Whiterun",
+          "how": "Right after the Dragonstone is delivered she brings word of a dragon and asks you to come with her to the Jarl: \"You're the one that got out of Helgen, aren't you? I could use anyone who's tangled with a dragon before.\""
+        }
+      ],
+      "firstStep": "Talk to Jarl Balgruuf",
+      "takesYou": [
+        {
+          "place": "Dragonsreach, Whiterun",
+          "hold": "Whiterun",
+          "why": "the Jarl sends you with Irileth"
+        },
+        {
+          "place": "Western Watchtower",
+          "hold": "Whiterun",
+          "why": "a dragon is attacking it; a short walk from Whiterun"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Jarl Balgruuf",
+            "Meet Irileth near the Western Watchtower",
+            "Kill the dragon",
+            "Investigate the dragon",
+            "Report back to Jarl Balgruuf",
+            "(Optional) Use your new Shout power"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "The dragon's power, absorbed from its corpse, and a new Shout power",
+          "when": "when you investigate the dead dragon"
+        },
+        {
+          "what": "Thane of Whiterun",
+          "when": "when you report back to the Jarl"
+        },
+        {
+          "what": "Lydia as your housecarl",
+          "when": "when you report back to the Jarl"
+        },
+        {
+          "what": "Blade of Whiterun (greatsword)",
+          "when": "when you report back to the Jarl"
+        },
+        {
+          "what": "Enchanted armor from Requiem's reward list",
+          "when": "when you report back to the Jarl"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "The Way of the Voice"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Irileth",
+          "role": "leads the soldiers to the watchtower"
+        },
+        {
+          "name": "Balgruuf the Greater",
+          "role": "Jarl of Whiterun, Dragonsreach"
+        },
+        {
+          "name": "Mirmulnir",
+          "role": "the dragon at the Western Watchtower"
+        },
+        {
+          "name": "Lydia",
+          "role": "your housecarl; she greets you in Dragonsreach, and later keeps to Breezehome"
+        },
+        {
+          "name": "Hrongar",
+          "role": "the Jarl's brother, Dragonsreach"
+        },
+        {
+          "name": "Farengar Secret-Fire",
+          "role": "court wizard, Dragonsreach"
+        },
+        {
+          "name": "Proventus Avenicci",
+          "role": "the Jarl's steward, Dragonsreach"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The enchanted armor is a Requiem leveled list; which piece you get isn't in these files."
+        },
+        {
+          "field": "steps",
+          "why": "Companions at Mirmulnir.esp edits this quest's dialogue (its name suggests the Companions join the fight); what it changes isn't in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:02610C MQ104, editedBy USSEP, Requiem.esp, Unique Thane Weapons.esp, LoreRim - Weapons.esp",
+        "stage 10/13/40/80/90/160 logs ('I am now a thane of Whiterun with my own personal housecarl')",
+        "objectives 5,15,20,30,40,50",
+        "giver Irileth INFO Skyrim.esm:05D2FE",
+        "rewards: alias JarlWeapon Blade of Whiterun (Unique Thane Weapons.esp:000804); QF_MQ104B_0002610C.FavorRewardEnchArmor (REQ_LI_FavorRewardMQ104 Requiem.esp:246A1A)",
+        "alias dragon -> Mirmulnir; alias PlayerHousecarl -> Lydia (Breezehome)",
+        "places Skyrim.esm:0D9079 Western Watchtower, hold Whiterun; INFO Skyrim.esm:0DD03D edited by Companions at Mirmulnir.esp",
+        "people_schedules_raw Lydia: HousecarlWhiterunGreetPlayer / HousecarlWhiterunSandboxDragonsreach (Dragonsreach), USKPLydiaSandboxBreezehome"
+      ]
+    },
+    {
+      "edid": "MQ105",
+      "name": "The Way of the Voice",
+      "plugin": "Skyrim.esm",
+      "canDo": "by itself",
+      "canDoWhy": "The Greybeards summon you once you absorb the dragon's power at the Western Watchtower.",
+      "needs": [
+        {
+          "what": "Kill the dragon and absorb its power in Dragon Rising",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Arngeir",
+          "where": "High Hrothgar, on the slopes of the Throat of the World",
+          "how": "The Greybeards' summons is heard after the dragon fight; go up the mountain from Ivarstead and speak to the Greybeards."
+        }
+      ],
+      "firstStep": "Travel to High Hrothgar and speak to the Greybeards",
+      "takesYou": [
+        {
+          "place": "Ivarstead",
+          "hold": "The Rift",
+          "why": "the path up to High Hrothgar starts here"
+        },
+        {
+          "place": "High Hrothgar",
+          "hold": "Whiterun",
+          "why": "the Greybeards' monastery; their tests take place here"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Go to High Hrothgar before reporting back to Jarl Balgruuf",
+          "leadsTo": "allowed; the journal just notes the Jarl hasn't heard yet"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to the Greybeards",
+            "Demonstrate your \"Unrelenting Force\" Shout",
+            "Speak to Arngeir",
+            "Learn the Word of Power from Einarth",
+            "Demonstrate your \"Unrelenting Force\" Shout (hit the targets)",
+            "Learn the Word of Power from Borri",
+            "Demonstrate your \"Whirlwind Sprint\" Shout",
+            "Speak to Arngeir for further training"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A Word of Power for Unrelenting Force, taught by Einarth",
+          "when": "during the training"
+        },
+        {
+          "what": "A Word of Power for Whirlwind Sprint, taught by Borri",
+          "when": "during the training"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "The Horn of Jurgen Windcaller"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Arngeir",
+          "role": "Greybeard who speaks for the others, High Hrothgar"
+        },
+        {
+          "name": "Einarth",
+          "role": "Greybeard, teaches a Word of Unrelenting Force"
+        },
+        {
+          "name": "Borri",
+          "role": "Greybeard, teaches a Word of Whirlwind Sprint"
+        },
+        {
+          "name": "Wulfgar",
+          "role": "Greybeard"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The places index lists trolls and a boss called The Beast (level 14) in the High Hrothgar area; whether they're on the path up isn't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The reward list names only \"Unrelenting Force - Fus\"; the other words come from the objectives."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0242BA MQ105, no later edits",
+        "stage 10/30/160 logs; stage 30 variant conditioned on Dragon Rising stage 90 done and 150 not done",
+        "objectives 10,20,25,30,40,50,60,70",
+        "giver Arngeir INFO Skyrim.esm:02F2C6; aliases IvarsteadMapMarker, HighHrothgarMapMarker",
+        "reward QF_MQ105_000242BA.GraybeardTeachFX (Unrelenting Force - Fus Skyrim.esm:103963)",
+        "INFO Skyrim.esm:05EE3F ('summoning you to High Hrothgar'); places Skyrim.esm:018E34 High Hrothgar, hold Whiterun"
+      ]
+    },
+    {
+      "edid": "MQ105Ustengrav",
+      "name": "The Horn of Jurgen Windcaller",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "Arngeir sends you on this last trial when your training at High Hrothgar is done.",
+      "needs": [
+        {
+          "what": "Finish The Way of the Voice",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Arngeir",
+          "where": "High Hrothgar",
+          "how": "\"Retrieve the Horn of Jurgen Windcaller, our founder, from his tomb in the ancient fane of Ustengrav.\""
+        }
+      ],
+      "firstStep": "Retrieve the Horn of Jurgen Windcaller from Ustengrav",
+      "takesYou": [
+        {
+          "place": "Ustengrav",
+          "hold": "Hjaalmarch",
+          "why": "Jurgen Windcaller's tomb, a short walk from Morthal; the horn is gone and a note is left in its place"
+        },
+        {
+          "place": "Sleeping Giant Inn, Riverwood",
+          "hold": "Whiterun",
+          "why": "rent the attic room, as the note in Ustengrav asks; whoever took the horn meets you there"
+        },
+        {
+          "place": "High Hrothgar",
+          "hold": "Whiterun",
+          "why": "return the horn to Arngeir"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Retrieve the Horn of Jurgen Windcaller",
+            "Read the note",
+            "Meet with whoever took the horn (the note says to rent the attic room at the Sleeping Giant Inn in Riverwood)",
+            "Return the horn to Arngeir",
+            "Learn the Word of Power from Wulfgar",
+            "Receive the Greybeards' greeting"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "A Word of Power taught by Wulfgar",
+          "when": "when you return the horn"
+        },
+        {
+          "what": "High Hrothgar is open to you",
+          "when": "after the Greybeards' greeting"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "A Blade in the Dark"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Arngeir",
+          "role": "sends you for the horn, High Hrothgar"
+        },
+        {
+          "name": "Delphine",
+          "role": "took the horn; waits at the Sleeping Giant Inn"
+        },
+        {
+          "name": "Wulfgar",
+          "role": "Greybeard, teaches a Word of Power"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The places index lists Ustengrav's boss as The Lost Paladin, level 75, with draugr, spiders, bandits and necromancers inside; whether you must face him to reach the horn isn't shown."
+        },
+        {
+          "field": "rewards",
+          "why": "Which Shout Wulfgar's word belongs to isn't named in these records."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:0713DC MQ105Ustengrav, no later edits",
+        "stage 10/20/30/60 logs; objectives 10,15,20,30,40,50",
+        "INFO Skyrim.esm:030315 (Arngeir, Ustengrav)",
+        "aliases HornActivator, MysteriousNote, Delphine, SleepingGiantRoomMarker, WulfgarWord",
+        "places Skyrim.esm:0192BF Ustengrav, hold Hjaalmarch, near Morthal, boss The Lost Paladin level 75, word wall Become Ethereal",
+        "BOOK Skyrim.esm:03031F Note from a Friend ('Rent the attic room at the Sleeping Giant Inn in Riverwood')"
+      ]
+    },
+    {
+      "edid": "MQ106",
+      "name": "A Blade in the Dark",
+      "plugin": "Skyrim.esm",
+      "canDo": "talk",
+      "canDoWhy": "Talk to Delphine at the Sleeping Giant Inn after finding her note in Ustengrav.",
+      "needs": [
+        {
+          "what": "Find the note in place of the horn in The Horn of Jurgen Windcaller",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Delphine",
+          "where": "Sleeping Giant Inn, Riverwood",
+          "how": "Rent the attic room at the Sleeping Giant Inn, as the note in Ustengrav asks, and Delphine meets you; she admits \"I'm the one who left the note in Ustengrav\" and gives you the horn back."
+        }
+      ],
+      "firstStep": "Talk to Delphine at the Sleeping Giant Inn",
+      "takesYou": [
+        {
+          "place": "Sleeping Giant Inn, Riverwood",
+          "hold": "Whiterun",
+          "why": "Delphine explains herself"
+        },
+        {
+          "place": "Kynesgrove",
+          "hold": "Eastmarch",
+          "why": "the next dragon burial site; ask at the Braidwood Inn"
+        },
+        {
+          "place": "the dragon burial mound near Kynesgrove",
+          "hold": "Eastmarch",
+          "why": "kill the dragon Sahloknir"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Travel to Kynesgrove with Delphine",
+          "leadsTo": "she walks with you"
+        },
+        {
+          "choice": "Split up and meet her there",
+          "leadsTo": "she goes ahead and meets you at Kynesgrove"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Talk to Delphine",
+            "Locate the dragon burial site",
+            "Kill the dragon Sahloknir",
+            "Talk to Delphine"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Sahloknir's power, absorbed from the dead dragon",
+          "when": "after the fight"
+        }
+      ],
+      "type": "Main Quest",
+      "opens": [
+        "Diplomatic Immunity"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Delphine",
+          "role": "innkeeper at the Sleeping Giant Inn; reveals she is one of the last Blades"
+        },
+        {
+          "name": "Orgnar",
+          "role": "works the Sleeping Giant Inn"
+        },
+        {
+          "name": "Iddra",
+          "role": "innkeeper at the Braidwood Inn, Kynesgrove; can tell you about the mound"
+        },
+        {
+          "name": "Sahloknir",
+          "role": "the dragon raised at the burial mound"
+        },
+        {
+          "name": "Alduin",
+          "role": "the dragon that raises Sahloknir"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The quest's scripts hold gold, a Blades Katana and an Orcish Heavy Bow; nothing shows they go to you rather than to Delphine, so they're left out."
+        },
+        {
+          "field": "takesYou",
+          "why": "Dragons Awaken adds a separate Witchmist Burial Mound next to Kynesgrove; these files don't tie it to this quest, so don't mistake it for Sahloknir's mound."
+        },
+        {
+          "field": "where",
+          "why": "Delphine and Iddra are given by where the records place them, not their daily schedules."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:032926 MQ106, no later edits",
+        "stage 30/50/150/200 logs; objectives 10,20,30,40",
+        "giver Delphine INFO Skyrim.esm:0453EE; other giver Iddra",
+        "INFO Skyrim.esm:05C2FC (note in Ustengrav), 032910, 0C659F (travel together or split up), 103227 (ask the innkeeper)",
+        "aliases dragon -> Sahloknir, Alduin -> MQ106Alduin, KynesgroveLocation",
+        "rewards candidates MQ106Script.Gold, QF_MQ106_00032926.DelpineSword (Blades Katana), .Bow (Orcish Heavy Bow)",
+        "BOOK Skyrim.esm:03031F Note from a Friend; MQ105 alias SleepingGiantRoomMarker"
+      ]
+    },
+    {
+      "edid": "MQ201",
+      "name": "Diplomatic Immunity",
+      "plugin": "Skyrim.esm (last edited by Storm the Thalmor Embassy.esp; also Update.esm)",
+      "canDo": "talk",
+      "canDoWhy": "Delphine sets it up after the dragon at Kynesgrove, suspecting the Thalmor are behind the dragons.",
+      "needs": [
+        {
+          "what": "Finish A Blade in the Dark",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Delphine",
+          "where": "near Kynesgrove, when you talk to her after Sahloknir is dead",
+          "how": "She goes to talk to her contacts about getting into the Thalmor Embassy and tells you: \"Meet me back in Riverwood. If I'm not back when you get there, wait for me.\" She'll be at the Sleeping Giant Inn."
+        }
+      ],
+      "firstStep": "Meet Delphine in Riverwood, or storm the Thalmor Embassy",
+      "takesYou": [
+        {
+          "place": "Sleeping Giant Inn, Riverwood",
+          "hold": "Whiterun",
+          "why": "Delphine's plan"
+        },
+        {
+          "place": "the Winking Skeever, Solitude",
+          "hold": "Haafingar",
+          "why": "meet her contact Malborn and hand him your equipment"
+        },
+        {
+          "place": "Solitude stables",
+          "hold": "Haafingar",
+          "why": "meet Delphine before the party"
+        },
+        {
+          "place": "Thalmor Embassy",
+          "hold": "Haafingar",
+          "why": "the ambassador's party; search Elenwen's office and the torture chamber"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Go to the party as a guest with Delphine and Malborn's help",
+          "leadsTo": "Malborn smuggles your gear in; you slip away from the party to search"
+        },
+        {
+          "choice": "Storm the Thalmor Embassy",
+          "leadsTo": "skips the party plan (added by Storm the Thalmor Embassy)"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Meet Delphine in Riverwood or storm the Thalmor Embassy",
+            "Meet Malborn in Solitude",
+            "Give Malborn the equipment",
+            "Meet Delphine at the Solitude stables",
+            "Talk to Malborn",
+            "Create a distraction and get away from the party",
+            "(Optional) Retrieve your gear",
+            "Search for information about the dragons returning",
+            "Search the torture chamber",
+            "Escape the Thalmor Embassy",
+            "Talk to Delphine or search for Esbern"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Main Quest",
+      "opens": [
+        "A Cornered Rat"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Delphine",
+          "role": "plans the infiltration"
+        },
+        {
+          "name": "Malborn",
+          "role": "Delphine's contact; meet him at the Winking Skeever, works inside the embassy"
+        },
+        {
+          "name": "Elenwen",
+          "role": "Thalmor ambassador hosting the party"
+        },
+        {
+          "name": "Rulindil",
+          "role": "in Elenwen's Solar at the embassy"
+        },
+        {
+          "name": "Gissur",
+          "role": "in Elenwen's Solar at the embassy"
+        },
+        {
+          "name": "Etienne Rarnis",
+          "role": "the embassy's prisoner"
+        },
+        {
+          "name": "Brelas",
+          "role": "at the Thalmor Embassy"
+        },
+        {
+          "name": "Tsavani",
+          "role": "the embassy cook"
+        },
+        {
+          "name": "Razelan",
+          "role": "at the Thalmor Embassy"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "choices",
+          "why": "Storm the Thalmor Embassy.esp adds the storming option and a second way to finish the quest; which of the party steps it skips isn't shown in these files."
+        },
+        {
+          "field": "people",
+          "why": "The records place Etienne Rarnis in the Ragged Flagon Cistern in Riften, though the quest treats him as the embassy's prisoner; where you'll find him during the quest isn't settled here."
+        },
+        {
+          "field": "where",
+          "why": "Malborn is placed inside the embassy in the records; the Winking Skeever meeting comes from the journal."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:035D5F MQ201, editedBy Update.esm, Storm the Thalmor Embassy.esp",
+        "stage 30/40/100/140/210/250 logs; stages 250 and 255 both complete the quest",
+        "objectives 5,10,20,30,40,50,55,60,70,80,90",
+        "giver Delphine INFO Skyrim.esm:035D52; other givers Malborn, Carriage Driver",
+        "INFO Skyrim.esm:03B495 (meet me back in Riverwood)",
+        "aliases ElenwenOfficeNote, TortureChamberNote, Prisoner -> Etienne Rarnis, PlayerGearContainer"
+      ]
+    },
+    {
+      "edid": "MQ202",
+      "name": "A Cornered Rat",
+      "plugin": "Skyrim.esm (last edited by Requiem.esp; also Update.esm)",
+      "canDo": "by itself",
+      "canDoWhy": "Begins once you learn at the Thalmor Embassy that they're hunting a Blade named Esbern in Riften.",
+      "needs": [
+        {
+          "what": "Finish Diplomatic Immunity",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Delphine",
+          "where": "Riverwood (the records place her in the Sleeping Giant Inn)",
+          "how": "Once you're out of the Thalmor Embassy the quest begins: talk to Delphine, who knows Esbern, or go straight to Riften."
+        },
+        {
+          "who": "Vekel the Man or Dirge",
+          "where": "the Ragged Flagon, in the Ratway under Riften",
+          "how": "Ask around about Esbern; either of them can point you into the Ratway."
+        }
+      ],
+      "firstStep": "Ask in Riften about Esbern",
+      "takesYou": [
+        {
+          "place": "Riften",
+          "hold": "The Rift",
+          "why": "ask about Esbern"
+        },
+        {
+          "place": "The Ratway",
+          "hold": "The Rift",
+          "why": "search for Esbern's hideout; Thalmor agents are waiting"
+        },
+        {
+          "place": "The Ratway Warrens",
+          "hold": "The Rift",
+          "why": "Esbern is hiding behind his door here"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Ask in Riften about Esbern",
+            "Search the Ratway for Esbern's hideout",
+            "Find Esbern in the Ratway Warrens",
+            "Talk to Esbern"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Main Quest",
+      "opens": [
+        "Alduin's Wall"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Esbern",
+          "role": "Blades loremaster hiding in the Ratway Warrens"
+        },
+        {
+          "name": "Vekel the Man",
+          "role": "in the Ragged Flagon; can tell you about Esbern"
+        },
+        {
+          "name": "Dirge",
+          "role": "in the Ragged Flagon; can tell you about Esbern"
+        },
+        {
+          "name": "Brynjolf",
+          "role": "named in the quest; the records don't show him giving the lead"
+        },
+        {
+          "name": "Keerava",
+          "role": "runs the Bee and Barb in Riften"
+        },
+        {
+          "name": "Gissur",
+          "role": "the Thalmor's man hunting Esbern; carries a note"
+        },
+        {
+          "name": "Shavari",
+          "role": "Thalmor agent in the Ratway; carries a note"
+        },
+        {
+          "name": "Delphine",
+          "role": "sent you to find Esbern"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "Requiem edits this quest; what it changes isn't in these files."
+        },
+        {
+          "field": "where",
+          "why": "Where Delphine waits after the embassy isn't shown (the records place her in the Sleeping Giant Inn); Vekel and Dirge are given by placement and their Ragged Flagon sandbox packages."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:036191 MQ202, editedBy Update.esm, Requiem.esp",
+        "stage 10/50/150/180 logs; objectives 10,20,30,40",
+        "giver Vekel INFO Skyrim.esm:03B69D; other givers Dirge, Delphine",
+        "aliases EsbernsDoor, GissurNote, ShavariNote, FlagonAmbush1-3, MainAmbush1/3/4, FinalAmbush1-2 (Thalmor agents)",
+        "Esbern placed in The Ratway Warrens (Skyrim.esm:03B696)",
+        "namedGiver Delphine; people_schedules_raw Vekel: RiftenVekelFlagonSandbox packages (The Ragged Flagon)"
+      ]
+    },
+    {
+      "edid": "MQ203",
+      "name": "Alduin's Wall",
+      "plugin": "Skyrim.esm",
+      "canDo": "by itself",
+      "canDoWhy": "Begins when you reach Esbern in the Ratway Warrens; he wants to go to Delphine in Riverwood.",
+      "needs": [
+        {
+          "what": "Find Esbern in A Cornered Rat",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Esbern",
+          "where": "his hideout in the Ratway Warrens, under Riften",
+          "how": "Once he lets you in, escort him to Delphine: \"When we get to Riverwood... with Delphine... I'll tell you both then.\""
+        }
+      ],
+      "firstStep": "Escort Esbern to Riverwood",
+      "takesYou": [
+        {
+          "place": "Sleeping Giant Inn, Riverwood",
+          "hold": "Whiterun",
+          "why": "Esbern explains Alduin's Wall to you and Delphine"
+        },
+        {
+          "place": "Karthspire",
+          "hold": "The Reach",
+          "why": "a Forsworn camp in the Karth River Canyon; the temple's entrance is past it"
+        },
+        {
+          "place": "Sky Haven Temple",
+          "hold": "The Reach",
+          "why": "the old Blades sanctuary that holds Alduin's Wall"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Travel with Delphine and Esbern",
+          "leadsTo": "they come with you to Karthspire"
+        },
+        {
+          "choice": "Go on your own",
+          "leadsTo": "Delphine takes Esbern and they wait for you near Karthspire"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Escort Esbern to Riverwood",
+            "Talk to Esbern",
+            "Gain entrance to Sky Haven Temple",
+            "Learn the secret of Alduin's Wall"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Main Quest",
+      "opens": [
+        "The Throat of the World"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Esbern",
+          "role": "Blades loremaster; knows where Sky Haven Temple is"
+        },
+        {
+          "name": "Delphine",
+          "role": "meets you in Riverwood and goes to Karthspire"
+        },
+        {
+          "name": "Orgnar",
+          "role": "at the Sleeping Giant Inn"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "takesYou",
+          "why": "The places index lists Karthspire's Forsworn at levels 25 to 52; how many stand between you and the temple isn't shown."
+        },
+        {
+          "field": "steps",
+          "why": "Getting in takes a pillar puzzle (Esbern: turn all the pillars to the Dragonborn's symbol) and a sealed door; the exact steps aren't spelled out in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "Delphine calls the temple \"a better hideout than I could have hoped for\", and items called Dragonbane are named after this quest, but nothing here makes either a reward."
+        }
+      ],
+      "evidence": [
+        "QUST Skyrim.esm:036192 MQ203, no later edits",
+        "stage 10/60/280 logs; objectives 10,20,30,40",
+        "giver Delphine INFO Skyrim.esm:06EBDE; other giver Esbern",
+        "INFO Skyrim.esm:06EBDC (Esbern, Riverwood), 0ADD8E / 0A8C57 (Karthspire), 0AD042 (pillars), 07509D (hideout)",
+        "places Skyrim.esm:01925F Karthspire (The Reach, Forsworn 25-52), Skyrim.esm:018E42 Sky Haven Temple (The Reach)",
+        "questlines_raw Main Quest order: MQ203 then Skyrim.esm:02D515 MQ204 The Throat of the World",
+        "MQ204 Skyrim.esm:02D515 first log: deciphered Alduin's Wall with Esbern's help"
+      ]
+    }
+  ]
+}
