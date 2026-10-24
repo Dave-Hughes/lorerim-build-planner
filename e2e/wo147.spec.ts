@@ -30,9 +30,9 @@ for (const width of [1440, 390]) {
     await page.goto("/quests/q/bleak-falls-barrow");
     await expect(page.getByRole("heading", { level: 1, name: "Bleak Falls Barrow" })).toBeVisible();
     await expect(page.getByRole("link", { name: "The Dragonborn" }).first()).toHaveAttribute("href", "/quests/main-quest");
-    const part = page.getByRole("region", { name: "What it opens and closes" });
-    await expect(part).toContainText("Before it");
-    await expect(part).toContainText("After it");
+    // Read from its records (WO-154): what it needs is Before the Storm, what it opens is Dragon Rising, each a link to its page.
+    await expect(page.getByRole("region", { name: "What you need first" }).getByRole("link", { name: /Before the Storm/ })).toHaveAttribute("href", "/quests/q/before-the-storm");
+    await expect(page.getByRole("region", { name: "What it opens and closes" }).getByRole("link", { name: "Dragon Rising" })).toHaveAttribute("href", "/quests/q/dragon-rising");
     await page.screenshot({ path: `test-results/wo147-bleak-falls-barrow-${width}.png`, fullPage: true });
   });
 }
