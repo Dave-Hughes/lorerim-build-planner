@@ -1,0 +1,540 @@
+[
+  {
+    "edid": "DA14",
+    "name": "A Night To Remember",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Take Sam Guevenne's drinking contest in an inn; you black out and wake in Markarth with the quest under way.",
+    "needs": [
+      {"what": "Find Sam Guevenne in an inn and accept his drinking contest", "kind": "other"}
+    ],
+    "starts": [
+      {"who": "Sam Guevenne", "where": "an inn; the records place him in the Bee and Barb in Riften", "how": "Take his drinking contest. When you black out, you wake in the Temple of Dibella in Markarth and Sam and the staff he promised you are gone."}
+    ],
+    "firstStep": "Wake in the Temple of Dibella in Markarth and talk to Senna, the priestess",
+    "takesYou": [
+      {"place": "Temple of Dibella, Markarth", "hold": "The Reach", "why": "you wake here and must help clean up and apologize to the priestesses"},
+      {"place": "Cowflop Farmhouse, Rorikstead", "hold": "Whiterun", "why": "Ennis wants his goat Gleda back"},
+      {"place": "Ysolda's House, Whiterun", "hold": "Whiterun", "why": "Ysolda has your note of debt and wants her ring back"},
+      {"place": "Witchmist Grove", "hold": "Eastmarch", "why": "take back the wedding ring you gave a hagraven"},
+      {"place": "Morvunskar", "hold": "Eastmarch", "why": "find Sam and the staff"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Find Sam Guevenne",
+        "Find the Staff",
+        "Help clean up the Temple of Dibella",
+        "Apologize to the priestesses of Dibella",
+        "Ask about Sam and the staff in Rorikstead",
+        "Find Gleda the Goat",
+        "Bring Gleda the Goat back to Ennis in Rorikstead",
+        "Talk to Ysolda in Whiterun about the staff",
+        "Find the wedding ring in Witchmist Grove",
+        "Take the wedding ring",
+        "Return the wedding ring to Ysolda in Whiterun",
+        "Head to Morvunskar",
+        "Search Morvunskar for Sam and the Staff"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Sanguine Rose (staff)", "when": "at the end, after \"Sam\" reveals himself as Sanguine"}
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Sam Guevenne", "role": "starts it with the drinking contest; turns out to be Sanguine"},
+      {"name": "Senna", "role": "priestess of Dibella, Temple of Dibella in Markarth; the first person you talk to after waking"},
+      {"name": "Orla, Hamal and Anwen", "role": "the other priestesses at the Temple of Dibella"},
+      {"name": "Ennis", "role": "Cowflop Farmhouse, Rorikstead; wants his goat back"},
+      {"name": "Gleda the Goat", "role": "the stolen goat, out in the wild"},
+      {"name": "Grok", "role": "a giant tied to the goat's rescue"},
+      {"name": "Ysolda", "role": "Ysolda's House, Whiterun; holds your debt and wants her ring back"},
+      {"name": "Moira", "role": "the hagraven at Witchmist Grove who has the wedding ring"},
+      {"name": "Sanguine", "role": "waits at Morvunskar"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The lead-in quest (\"Participate in a drinking contest with Sam Guevenne\") moves Sam to an inn it picks. These files don't show which inn, what triggers it, or any level gate. His placement in the Bee and Barb is where he stands before it fires."},
+      {"field": "takesYou", "why": "Gleda and the giant Grok are placed in the open world. The records don't name the spot or hold."},
+      {"field": "choices", "why": "Persuasion globals (average and hard) are tied to the quest's dialogue, so some steps may have a talk-your-way-out option. The records here don't show which steps. With MoiraFollowerMod.esp the hagraven Moira has a line, \"Please, lets be on our way to Morvunskar,\" so she may come along with you. How you get there isn't shown."},
+      {"field": "rewards", "why": "The Broken Staff is a quest item tied to the quest. It isn't clear from these files whether you keep it."}
+    ],
+    "evidence": [
+      "quests_raw DA14 Skyrim.esm:01BB9B editedBy USSEP, Wintersun - Faiths of Skyrim, Wintersun - Reqtificated",
+      "quests_raw DA14Start Skyrim.esm:03FA17 leadsTo 01BB9B; aliases InnLocation, InnMarker, DA14StartSamwell",
+      "quest_givers DA14 giver Senna Skyrim.esm:0133B7 info 01F387 stage<6; others Orla, Hamal, Anwen",
+      "quest_givers DA14 rewards Sanguine Rose 01CB36 via QF_DA14_0001BB9B; Broken Staff 01CB30 alias",
+      "people_schedules Sam Guevenne 01BB9C: DefaultSandboxCurrentLocation256 only",
+      "places_raw Morvunskar, Witchmist Grove pointers (Ysolda INFO 01F3A3, 0C41FC; MoiraFollowerMod INFO 000801)",
+      "quest_starts a-night-to-remember globals SpeechAverage, SpeechHard"
+    ]
+  },
+  {
+    "edid": "DA02",
+    "name": "Boethiah's Calling",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp; TheChoiceIsYours.esp adds the refuse branch)",
+    "canDo": "by itself",
+    "canDoWhy": "It starts on its own when you level up past a point, and it sends you to Boethiah's shrine in Eastmarch.",
+    "needs": [
+      {"what": "Reach a high enough level (the records don't give the number)", "kind": "level"},
+      {"what": "Someone to lead to the Pillar of Sacrifice, if you follow Boethiah's way", "kind": "other"}
+    ],
+    "starts": [
+      {"who": "", "where": "anywhere, when you level up", "how": "The game starts it on a level-up. A Boethiah cultist encounter on the road (\"Investigate the Boethiah cultist\") can also point you there."}
+    ],
+    "firstStep": "Find the Sacellum of Boethiah",
+    "takesYou": [
+      {"place": "Shrine of Boethiah (the Sacellum)", "hold": "Eastmarch", "why": "find the cult and make the sacrifice"},
+      {"place": "Knifepoint Ridge (Knifepoint Mine)", "hold": "Falkreath", "why": "kill Boethiah's old champion and take the Ebony Mail"},
+      {"place": "Blue Palace, Solitude", "hold": "Haafingar", "why": "Boethiah's last order: kill the Jarl of Solitude"},
+      {"place": "a Shrine of Stendarr", "hold": "", "why": "if you refuse Boethiah, to lift her curse"},
+      {"place": "the Altar of Molag Bal in Markarth", "hold": "The Reach", "why": "if you refuse Boethiah and side with Molag Bal"}
+    ],
+    "choices": [
+      {"choice": "Lead someone onto the Pillar of Sacrifice and kill them", "leadsTo": "Boethiah appears in their corpse; fight the other cultists to the death, then she sends you after her old champion at Knifepoint Ridge. Kill him, put on the Ebony Mail, and you become her champion."},
+      {"choice": "Refuse to sacrifice a follower", "leadsTo": "After you slay her cultists Boethiah curses you. Pray at a Shrine of Stendarr for the Gauntlets of the Crusader, or visit Molag Bal's altar in Markarth for the Hands of Coldharbour."}
+    ],
+    "steps": [
+      {"branch": "Boethiah's champion", "objectives": [
+        "Find the Sacellum of Boethiah",
+        "Find the cult of Boethiah",
+        "Lead someone to become trapped by the shrine and slay them",
+        "Slay the other cultists",
+        "Slay everyone at Knifepoint Ridge stealthily",
+        "Retrieve and equip the Ebony Mail",
+        "Slay the Jarl of Solitude",
+        "Speak to Boethiah's Conduit"
+      ]},
+      {"branch": "refuse Boethiah", "objectives": [
+        "Visit a Shrine of Stendarr",
+        "Visit the Altar of Molag Bal"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Ebony Mail", "when": "when you kill her old champion and equip it"},
+      {"what": "Gauntlets of the Crusader", "when": "refuse path: granted by Stendarr"},
+      {"what": "Hands of Coldharbour", "when": "refuse path: granted by Molag Bal at his altar in Markarth"},
+      {"what": "Boethiah's Curse (a curse, not a gift)", "when": "refuse path: laid on you until a god lifts it"}
+    ],
+    "type": "Daedric",
+    "opens": ["Boethiah's Bidding"],
+    "closes": ["The person you sacrifice dies", "The Jarl of Solitude, if you carry out Boethiah's order"],
+    "people": [
+      {"name": "Boethiah", "role": "speaks through the corpse of the person you sacrifice, and later through her Conduit"},
+      {"name": "Champion of Boethiah", "role": "Knifepoint Mine at Knifepoint Ridge"},
+      {"name": "Elisif the Fair", "role": "Jarl of Solitude, in the Blue Palace; Boethiah's final target"},
+      {"name": "Bolgeir Bearclaw", "role": "in the Blue Palace, Solitude"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "The quest starts on a level-up, but the level isn't in these files."},
+      {"field": "starts", "why": "The quest script holds the book \"Boethiah's Proving\" and the Blade of Sacrifice as properties. The records don't show whether the book is how the player first hears of the shrine, or whether the dagger is yours to keep."},
+      {"field": "choices", "why": "The refuse branch comes from TheChoiceIsYours.esp. The records show what it leads to but not the exact dialogue moment where you refuse."}
+    ],
+    "evidence": [
+      "quests_raw DA02 Skyrim.esm:04D8D6 editedBy Update, USSEP, TheChoiceIsYours, Wintersun Faiths, Wintersun Reqtificated",
+      "quest_givers DA02 starts node DA02IncreaseLevelNodeSHARES event LEVL",
+      "quest_givers DA02 rewards: Ebony Mail 052794, Blade of Sacrifice 079B1D, Boethiah's Proving 032E72 (DA02Script); Boethiah's Curse TheChoiceIsYours.esp:0083F5",
+      "items_raw Gauntlets of the Crusader TheChoiceIsYours.esp:008402; Hands of Coldharbour TheChoiceIsYours.esp:008400",
+      "DA02 stage 300-315 logs (Stendarr / Molag Bal)",
+      "quest_givers DA02 Champion in Knifepoint Mine 079F9F; Elisif, Bolgeir in Blue Palace 016A04",
+      "places_raw Shrine of Boethiah Eastmarch; Knifepoint Ridge Falkreath"
+    ]
+  },
+  {
+    "edid": "DA02AltQuest",
+    "name": "The Man in Black",
+    "plugin": "BoethiahCalling_AlternativeQuest.esp",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Rudin Filaro, a Dark Elf in the Braidwood Inn, who hires you to escort him to a shrine.",
+    "needs": [],
+    "starts": [
+      {"who": "Rudin Filaro", "where": "standing in the Braidwood Inn, Eastmarch", "how": "Agree to escort him to the \"Temple of Mara\" in the mountains northeast of Kynesgrove. It's a trap."}
+    ],
+    "firstStep": "Escort Rudin to the shrine",
+    "takesYou": [
+      {"place": "Braidwood Inn", "hold": "Eastmarch", "why": "meet Rudin"},
+      {"place": "Shrine of Boethiah", "hold": "Eastmarch", "why": "you wake there after his rune paralyzes you and you were sacrificed"},
+      {"place": "Knifepoint Ridge", "hold": "Falkreath", "why": "track Rudin down and kill him"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Escort Rudin to the Shrine.",
+        "Investigate the nearby area.",
+        "Search for clues on Rudin's whereabouts.",
+        "Leave the shrine.",
+        "Find Rudin Filaro.",
+        "Kill Rudin Filaro."
+      ]}
+    ],
+    "rewards": [],
+    "type": "Daedric",
+    "opens": [],
+    "closes": ["Rudin Filaro dies", "Boethiah's old champion at Knifepoint Ridge is found dead, killed by Rudin"],
+    "people": [
+      {"name": "Rudin Filaro", "role": "the Dark Elf who lures you; Braidwood Inn, then Knifepoint Ridge"},
+      {"name": "Nort", "role": "found near the shrine"},
+      {"name": "Boethiah Cultists", "role": "at the Shrine of Boethiah; some rise as undead"}
+    ],
+    "unsure": [
+      {"field": "closes", "why": "Both this quest and Boethiah's Calling use Knifepoint Ridge and a Champion of Boethiah, so the two may clash. The records don't show whether doing one blocks the other."},
+      {"field": "rewards", "why": "The quest script holds the spell Reanimate (Self). It looks like it's what raises the undead cultists, not a gift to you, and no other reward shows in these files."},
+      {"field": "people", "why": "Rudin's base record is marked essential, yet the last objective is to kill him. The quest probably lifts that, but these files don't show it."}
+    ],
+    "evidence": [
+      "quests_raw DA02AltQuest BoethiahCalling_AlternativeQuest.esp:000800",
+      "quest_givers giver Rudin Filaro 00081B info 000808 stage<10; Nort 000821 stage<26",
+      "people_schedules Rudin: madManInBlackStand at Braidwood Inn (Eastmarch) until stage 10, then madManInBlackFollowPlayer",
+      "places_raw Knifepoint Ridge pointers: Bloodstained Note, Rudin's Journal",
+      "quest_givers rewards Reanimate (Self) 0E1529 via QF_madDA02Alt.SpellRef"
+    ]
+  },
+  {
+    "edid": "WEDA02",
+    "name": "DA02 Hook",
+    "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+    "canDo": "radiant",
+    "canDoWhy": "A random encounter on the road with a Boethiah cultist, which points you toward Boethiah's Calling.",
+    "needs": [],
+    "starts": [
+      {"who": "a Boethiah cultist", "where": "out in the wild, in whichever hold you're travelling", "how": "The game sets the encounter up as you travel. Investigate the cultist."}
+    ],
+    "firstStep": "Investigate the Boethiah cultist",
+    "takesYou": [],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Investigate the Boethiah cultist"]}
+    ],
+    "rewards": [],
+    "type": "Misc",
+    "opens": ["Boethiah's Calling"],
+    "closes": [],
+    "people": [
+      {"name": "Boethiah cultist", "role": "the random encounter"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "It's a wilderness-encounter quest. These files don't show where it spawns, what the cultist carries, or how it hands over to Boethiah's Calling."},
+      {"field": "opens", "why": "The link to Boethiah's Calling is from the quest's own name and objective, not from a start record."}
+    ],
+    "evidence": [
+      "quests_raw WEDA02 Skyrim.esm:04A602; aliases TRIGGER, myHoldLocation, Cultist, TravelMarker1",
+      "quest_givers WEDA02 starts node WEPriorityQuests event script event"
+    ]
+  },
+  {
+    "edid": "DA02KillObj",
+    "name": "Boethiah's Bidding",
+    "plugin": "Skyrim.esm",
+    "canDo": "by itself",
+    "canDoWhy": "Once you're Boethiah's champion she sends you to kill the Jarl of Solitude.",
+    "needs": [
+      {"what": "Become Boethiah's champion in Boethiah's Calling", "kind": "quest"}
+    ],
+    "starts": [
+      {"who": "Boethiah", "where": "after you earn the Ebony Mail", "how": "As her champion, Boethiah orders you to assassinate the Jarl of Solitude using guile, deception and stealth."}
+    ],
+    "firstStep": "Assassinate the Jarl of Solitude",
+    "takesYou": [
+      {"place": "Blue Palace, Solitude", "hold": "Haafingar", "why": "the Jarl, Elisif the Fair, is there"}
+    ],
+    "choices": [],
+    "steps": [
+      {"branch": "main", "objectives": ["Assassinate the Jarl of Solitude"]}
+    ],
+    "rewards": [],
+    "type": "Companions",
+    "opens": [],
+    "closes": ["Elisif the Fair, Jarl of Solitude, dies"],
+    "people": [
+      {"name": "Elisif the Fair", "role": "Jarl of Solitude, in the Blue Palace"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "No start record. It's tied to Boethiah's Calling through its log text and the Jarl objective there. Boethiah's Calling also holds an \"Elisif is essential\" alias, so whether and when she can die isn't clear from these files."},
+      {"field": "rewards", "why": "No reward shows in these files."},
+      {"field": "type", "why": "The records file it under Companions, which looks like a leftover label; it plays as part of Boethiah's line."}
+    ],
+    "evidence": [
+      "quests_raw DA02KillObj Skyrim.esm:052795 stages 50, 200",
+      "quest_givers DA02KillObj alias Elisif 01326A Blue Palace",
+      "quests_raw DA02 objective 50 'Slay the Jarl of Solitude'; alias ElisifIsEssential"
+    ]
+  },
+  {
+    "edid": "DA04",
+    "name": "Discerning the Transmundane",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Reqtificated.esp)",
+    "canDo": "by itself",
+    "canDoWhy": "At level 20 you're handed Septimus Signus's book about the Elder Scrolls, and it sends you to Urag in the College's Arcanaeum.",
+    "needs": [
+      {"what": "Level 20", "kind": "level"}
+    ],
+    "starts": [
+      {"who": "Urag gro-Shub", "where": "the Arcanaeum, the College of Winterhold library", "how": "Once you have Septimus's book, ask Urag about it and he tells you where Septimus lives."},
+      {"who": "Septimus Signus", "where": "Septimus Signus' Outpost, on the ice north of Winterhold", "how": "You can also go straight to Septimus."}
+    ],
+    "firstStep": "Ask Urag about the insane book",
+    "takesYou": [
+      {"place": "The Arcanaeum, College of Winterhold", "hold": "Winterhold", "why": "ask Urag about the book"},
+      {"place": "Septimus Signus' Outpost", "hold": "Winterhold", "why": "meet Septimus, and later bring him the lexicon and the blood"},
+      {"place": "Alftand, then Blackreach and the Tower of Mzark", "hold": "Winterhold", "why": "the dwarven observatory where you transcribe the lexicon"}
+    ],
+    "choices": [
+      {"choice": "Kill Septimus", "leadsTo": "The quest fails."}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Ask Urag about the insane book",
+        "Find Septimus Signus",
+        "Transcribe the Lexicon",
+        "Give the Lexicon to Septimus",
+        "Return to Septimus",
+        "Harvest High Elf blood",
+        "Harvest Wood Elf blood",
+        "Harvest Dark Elf blood",
+        "Harvest Falmer blood",
+        "Harvest Orc blood",
+        "Bring blood to Septimus",
+        "Take the Oghma Infinium"
+      ]}
+    ],
+    "rewards": [
+      {"what": "Oghma Infinium (book)", "when": "at the end, from the opened lockbox"}
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Urag gro-Shub", "role": "keeper of the Arcanaeum; sleeps in the Hall of Countenance"},
+      {"name": "Septimus Signus", "role": "paces inside his outpost on the ice"},
+      {"name": "Hermaeus Mora", "role": "speaks once the lockbox is opened"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "The quest is always running, and the log says you were \"given\" the book. These files don't say who hands it to you. The level 20 figure is the DA04MinLevel setting as Requiem changes it (was 15)."},
+      {"field": "needs", "why": "Transcribing the lexicon uses an Elder Scroll, which the log says is in the observatory. Dawnguard ties one of Urag's lines to Elder Knowledge having started. How far the two quests overlap isn't spelled out here."}
+    ],
+    "evidence": [
+      "quests_raw DA04 Skyrim.esm:02D512 editedBy Dawnguard, USSEP, Wintersun Faiths, Wintersun Reqtificated",
+      "quest_starts discerning-the-transmundane startGame true; global DA04MinLevel 20 (Requiem.esp, was 15)",
+      "quest_givers giver Urag 01C193 info Dawnguard.esm:0126DE stage<10; Septimus 02D514 stage<11",
+      "DA04 aliases AlftandWorldDoor, BlackreachLock, TowerOfMzarkDoor, LexiconStand, ElderScroll, HermaeusMora",
+      "DA04 stage 105 fails (killed Septimus)",
+      "people_schedules Urag WCollegeUragHoldatArcanaeumMarker, WCollegeUragSleep0x6; Septimus DA04SeptimusPace"
+    ]
+  },
+  {
+    "edid": "DA05",
+    "name": "Ill Met By Moonlight",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Faiths of Skyrim.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Hear about the girl's murder in Falkreath and talk to Sinding, locked in Falkreath Jail.",
+    "needs": [],
+    "starts": [
+      {"who": "Sinding", "where": "in a cell in Falkreath Jail", "how": "Talk to him. He hands you the ring he stole and asks you to beg Hircine's forgiveness."},
+      {"who": "Mathies", "where": "Corpselight Farm, Falkreath", "how": "The murdered girl's father talks about the vagrant who killed her, which points you to Sinding."}
+    ],
+    "firstStep": "Speak to Sinding in Falkreath Jail",
+    "takesYou": [
+      {"place": "Falkreath Jail", "hold": "Falkreath", "why": "meet Sinding"},
+      {"place": "the wilds, hunting the White Stag", "hold": "", "why": "kill the great beast; Hircine speaks to you through it"},
+      {"place": "Bloated Man's Grotto", "hold": "Falkreath", "why": "the hunt for Sinding"}
+    ],
+    "choices": [
+      {"choice": "Hunt Sinding for Hircine", "leadsTo": "Join the hunters in Bloated Man's Grotto, kill and skin Sinding, then speak with Hircine for the Savior's Hide."},
+      {"choice": "Defend Sinding", "leadsTo": "Kill the hunters Hircine sent and earn Sinding's friendship."}
+    ],
+    "steps": [
+      {"branch": "start", "objectives": ["Speak to Sinding", "Kill the great beast"]},
+      {"branch": "hunt Sinding", "objectives": ["Begin the hunt", "Join the hunt", "Kill Sinding", "Skin Sinding", "Speak with Hircine"]},
+      {"branch": "defend Sinding", "objectives": ["Kill the Hunters", "Talk to Sinding"]}
+    ],
+    "rewards": [
+      {"what": "Cursed Ring of Hircine", "when": "Sinding gives it to you at the start"},
+      {"what": "Savior's Hide", "when": "if you kill Sinding for Hircine"}
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": ["Sinding dies if you hunt him", "Hircine's hunters die if you defend Sinding"],
+    "people": [
+      {"name": "Sinding", "role": "the werewolf held in Falkreath Jail"},
+      {"name": "Mathies and Indara Caerellia", "role": "the dead girl's parents, Corpselight Farm in Falkreath"},
+      {"name": "Runil", "role": "priest at the Hall of the Dead in Falkreath"},
+      {"name": "Hircine", "role": "speaks through the White Stag and at the hunt"},
+      {"name": "Rissing, J'Kier, Ra'kheran and Eriana", "role": "hunters at Bloated Man's Grotto"},
+      {"name": "Lucerne", "role": "Glenmoril Coven witch tied to the quest"}
+    ],
+    "unsure": [
+      {"field": "rewards", "why": "These files list no reward for defending Sinding. The uncursed Ring of Hircine exists in the records but isn't tied to this quest's script here."},
+      {"field": "takesYou", "why": "The White Stag is placed in the open world. The records don't name the spot."},
+      {"field": "people", "why": "Lucerne at Glenmoril Coven has a line in this quest before the hunt, but the records don't show what she adds."}
+    ],
+    "evidence": [
+      "quests_raw DA05 Skyrim.esm:02A49A editedBy Update, Wintersun Faiths; startGame true",
+      "quest_givers giver Sinding 06C1B7 info 02B38D stage<10 in Falkreath Jail 0EF324; others Mathies stage<10, Lucerne stage<50, Eriana stage<60",
+      "quest_givers rewards Cursed Ring of Hircine 0F82FE alias; Savior's Hide 02AC61 via QF_DA05_0002A49A; Beast Form DA05QuestScript",
+      "DA05 stages 100 (kill) and 105 (defend) complete; 205 fails"
+    ]
+  },
+  {
+    "edid": "DA07",
+    "name": "Pieces of the Past",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Faiths of Skyrim.esp; SilusJournal.esp makes the shrine door pickable)",
+    "canDo": "talk",
+    "canDoWhy": "Silus Vesuius in Dawnstar wants to hire you to gather the pieces of Mehrunes' Razor.",
+    "needs": [],
+    "starts": [
+      {"who": "Silus Vesuius", "where": "Silus Vesuius' House, his Mythic Dawn museum in Dawnstar", "how": "He offers you a job and gives the details inside his house: bring him the three pieces of Mehrunes' Razor for gold."}
+    ],
+    "firstStep": "Speak to Silus inside his house in Dawnstar",
+    "takesYou": [
+      {"place": "Silus Vesuius' House, Dawnstar", "hold": "The Pale", "why": "get the job and hand in the pieces"},
+      {"place": "Dead Crone Rock", "hold": "The Reach", "why": "the pommel, held by Drascua"},
+      {"place": "Cracked Tusk Keep", "hold": "Falkreath", "why": "the blade shards, held by Ghunzul"},
+      {"place": "Jorgen and Lami's House, Morthal", "hold": "Hjaalmarch", "why": "the hilt, from Jorgen"},
+      {"place": "Shrine of Mehrunes Dagon", "hold": "The Pale", "why": "meet Silus to reforge the Razor"}
+    ],
+    "choices": [
+      {"choice": "Kill Silus for Mehrunes Dagon", "leadsTo": "Dagon reforges the Razor when you place your hands on his altar, and it's yours."},
+      {"choice": "Refuse to kill Silus", "leadsTo": "The Razor is forever out of your grasp."},
+      {"choice": "Reforge the Razor yourself (Silus's alternative)", "leadsTo": "See Reforging the Past."}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": [
+        "Speak to Silus inside his house",
+        "Retrieve the pommel of Mehrunes' Razor",
+        "Retrieve the blade shards of Mehrunes' Razor",
+        "Retrieve the hilt of Mehrunes' Razor",
+        "Bring the pommel stone to Silus",
+        "Bring the blade shards to Silus",
+        "Bring the hilt to Silus",
+        "Meet Silus at the Shrine of Mehrunes Dagon",
+        "Speak to Mehrunes Dagon"
+      ]},
+      {"branch": "side with Dagon", "objectives": ["Kill Silus", "Speak to Mehrunes Dagon", "Reforge Mehrunes' Razor", "Claim Mehrunes' Razor"]}
+    ],
+    "rewards": [
+      {"what": "Gold from Silus", "when": "for bringing him the pieces"},
+      {"what": "Mehrunes' Razor", "when": "if you kill Silus for Dagon"}
+    ],
+    "type": "Daedric",
+    "opens": ["Reforging the Past"],
+    "closes": ["Silus dies if you side with Dagon; if he dies early the quest fails"],
+    "people": [
+      {"name": "Silus Vesuius", "role": "museum owner in Dawnstar"},
+      {"name": "Drascua", "role": "Forsworn leader at Dead Crone Rock; has the pommel"},
+      {"name": "Ghunzul", "role": "Cracked Tusk Keep; has the blade shards"},
+      {"name": "Jorgen", "role": "Jorgen and Lami's House, Morthal; has the hilt"},
+      {"name": "Mehrunes Dagon", "role": "speaks at his shrine"},
+      {"name": "Dremora", "role": "at the Shrine of Mehrunes Dagon"}
+    ],
+    "unsure": [
+      {"field": "starts", "why": "Silus is placed inside his house and sandboxes around it. The opening log (\"He'll give me the details inside his house\") suggests you first meet him outside, but his schedule doesn't show it."},
+      {"field": "takesYou", "why": "The Hag Rock Redoubt is also tied to the quest, but these files don't say what you do there."}
+    ],
+    "evidence": [
+      "quests_raw DA07 Skyrim.esm:0240B8 editedBy Update, Wintersun Faiths; startGame true",
+      "quest_givers rewards Septim via QF_DA07_000240B8.Gold; Mehrunes' Razor 0240D2; The Keepers of the Razor 0973AC",
+      "quest_givers Drascua at Dead Crone Rock, Ghunzul in Cracked Tusk Keep 01526A, Jorgen in 0138CF Morthal",
+      "quest_starts pieces-of-the-past: SilusJournal.esp sets shrine door 0240EC lock to Master 100 (was key-only)",
+      "DA07 stages 100, 150 complete; 200 fails",
+      "people_schedules Silus 0240CC: DA07SilusRunHomeIgnoreCombatPackage, DefaultSandboxHomeowner"
+    ]
+  },
+  {
+    "edid": "DA07PlayerHasReforged",
+    "name": "Reforging the Past",
+    "plugin": "SilusJournal_ReforgeRazor.esp",
+    "canDo": "talk",
+    "canDoWhy": "During Pieces of the Past, Silus can agree to let you reforge the Razor at a forge without Mehrunes Dagon.",
+    "needs": [
+      {"what": "Be partway through Pieces of the Past with Silus", "kind": "quest"},
+      {"what": "Skill in working with both enchanted and Daedric materials", "kind": "other"}
+    ],
+    "starts": [
+      {"who": "Silus Vesuius", "where": "Silus Vesuius' House in Dawnstar", "how": "Talk to Silus while you're gathering the Razor pieces; he agrees to let you reforge it yourself."}
+    ],
+    "firstStep": "Reforge the Razor at any forge",
+    "takesYou": [
+      {"place": "any forge (the records mark the Dawnstar forge)", "hold": "The Pale", "why": "reforge the Razor"},
+      {"place": "Silus Vesuius' House, Dawnstar", "hold": "The Pale", "why": "optionally hand the Razor to Silus"}
+    ],
+    "choices": [
+      {"choice": "Give the reforged Razor to Silus", "leadsTo": "You get a substantial reward."},
+      {"choice": "Keep the Razor", "leadsTo": "It's yours."}
+    ],
+    "steps": [
+      {"branch": "main", "objectives": ["Reforge the Razor at any forge.", "(Optional) Return the Razor to Silus."]}
+    ],
+    "rewards": [
+      {"what": "Mehrunes' Razor", "when": "if you keep it"},
+      {"what": "a \"substantial reward\" from Silus", "when": "if you give him the Razor"}
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Silus Vesuius", "role": "museum owner in Dawnstar"}
+    ],
+    "unsure": [
+      {"field": "needs", "why": "The log says it needs skill \"in working with both enchanted and Daedric materials\". These files don't name the exact perks or skill level."},
+      {"field": "starts", "why": "This mod adds a line to Silus that is open only before he has all three pieces. I take that line to be the reforging offer, but its words aren't in these files."},
+      {"field": "rewards", "why": "What Silus pays isn't in these files."},
+      {"field": "closes", "why": "It isn't shown whether taking this route ends the Shrine of Mehrunes Dagon part of Pieces of the Past."}
+    ],
+    "evidence": [
+      "quests_raw DA07PlayerHasReforged SilusJournal_ReforgeRazor.esp:000D9B stages 5, 20, 25, 30; aliases Silus, DawnStarForge",
+      "quest_givers DA07 giver info SilusJournal_ReforgeRazor.esp:000D9A on Silus, DA07 stage<50"
+    ]
+  },
+  {
+    "edid": "DA01",
+    "name": "The Black Star",
+    "plugin": "Skyrim.esm (last edited by Wintersun - Faiths of Skyrim.esp)",
+    "canDo": "talk",
+    "canDoWhy": "Talk to Aranea, Azura's priestess at the Shrine of Azura southeast of Winterhold.",
+    "needs": [],
+    "starts": [
+      {"who": "Aranea Ienith", "where": "at the Shrine of Azura, on the mountain in Winterhold hold", "how": "She tells you her vision: find an elven man in Winterhold who can turn the brightest star black as night. Talk of the shrine (from townsfolk, or a Dark Elf pilgrim named Faldrus) points you there."}
+    ],
+    "firstStep": "Find the elven mage from Aranea's vision in Winterhold",
+    "takesYou": [
+      {"place": "Shrine of Azura", "hold": "Winterhold", "why": "meet Aranea"},
+      {"place": "The Frozen Hearth, Winterhold", "hold": "Winterhold", "why": "Nelacar, the elven mage"},
+      {"place": "Ilinalta's Deep", "hold": "Falkreath", "why": "Malyn Varen's last hideout, where Azura's Star lies"}
+    ],
+    "choices": [
+      {"choice": "Take the Star to Aranea", "leadsTo": "Azura purifies it after you destroy Malyn's soul: you keep Azura's Star."},
+      {"choice": "Take the Star to Nelacar", "leadsTo": "Nelacar completes it after you destroy Malyn's soul: you keep the Black Star."}
+    ],
+    "steps": [
+      {"branch": "start", "objectives": ["Find the elven mage from Aranea's vision", "Speak to Nelacar", "Find Azura's Star"]},
+      {"branch": "Aranea", "objectives": ["Bring the Star to Aranea", "Speak to Azura", "Tell Azura you're ready to enter the Star", "Destroy Malyn Varen's soul"]},
+      {"branch": "Nelacar", "objectives": ["Bring the Star to Nelacar", "Tell Nelacar you're ready to enter the Star", "Destroy Malyn Varen's soul"]}
+    ],
+    "rewards": [
+      {"what": "Azura's Star (endless soul gem)", "when": "Aranea path"},
+      {"what": "The Black Star (endless black soul gem)", "when": "Nelacar path"}
+    ],
+    "type": "Daedric",
+    "opens": [],
+    "closes": [],
+    "people": [
+      {"name": "Aranea Ienith", "role": "priestess at the Shrine of Azura; she prays there"},
+      {"name": "Nelacar", "role": "the elven mage, The Frozen Hearth in Winterhold; in his room by day, in the inn's common area from 6 pm, sleeps from midnight"},
+      {"name": "Malyn Varen", "role": "his corpse is in Ilinalta's Deluge; his soul waits inside the Star"},
+      {"name": "Azura", "role": "speaks at her shrine"},
+      {"name": "Nirya", "role": "Hall of Attainment, College of Winterhold"}
+    ],
+    "unsure": [
+      {"field": "people", "why": "Nelacar's hours come from his package names (wander the inn 6 pm for 6 hours, his room 6 am for 12 hours, sleep at midnight). An AI Overhaul package sometimes puts him outside instead, under a condition these files don't decode. Nirya is tied to the quest, but these files don't show her part."},
+      {"field": "starts", "why": "The shrine rumour and the pilgrim come from separate small intro quests that aren't in these files. Only their lines are."}
+    ],
+    "evidence": [
+      "quests_raw DA01 Skyrim.esm:028AD6 editedBy USSEP, Wintersun Faiths; startGame true",
+      "quest_givers giver Aranea 028AD0 info 0917AC stage<40 at Shrine of Azura",
+      "places_raw Shrine of Azura pointers DA01Intro INFO 024528, Faldrus INFO 0B85B1; Ilinalta's Deep pointer Nelacar INFO 024659",
+      "people_schedules Nelacar 01E7D5: WinterholdNelacarWanderInn18x6, WanderRoom6x12, Sleep00x6, AIOWinterholdNelacarOutside",
+      "DA01 stages 100 (Azura's Star), 110 (Black Star) complete; 250 fails"
+    ]
+  }
+]
