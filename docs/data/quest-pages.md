@@ -56,4 +56,4 @@ The confidence comes from those, in plain words, not a percentage: *confirmed by
 
 **Hours live on the person's page, not the quest page.** A quest page names the person (linked) and the one place to meet them for this quest ("Lucan Valerius, in the Riverwood Trader"); where they spend the rest of the day and night is on their own page.
 
-**Still to settle:** how the jobs pages are grouped.
+**The Quests page: the big lines first, then everything else by place, and a search that works.** Dave, 23 Oct, 19:49: a player landing on Quests sees the major quest lines (main stories, guilds and factions, Daedric Princes, new lands, followers), then everything that isn't part of one, grouped by town or other location. Many players will just search for a quest by name, so search has to be solid: by name, by a person ("Brynjolf"), by a place ("Riften"), tolerant of misspellings (Dave typed "Palonimo"), and it finds a quest whether or not it has its own line.
