@@ -1,0 +1,2726 @@
+{
+ "about": "WO-144 Part 3: the books that teach, and where a scholar reads in bulk. Writes gamedata/<version>/book_places.json:",
+ "smithingBooks": [
+  {
+   "perk": "Advanced Light Armors",
+   "book": "About Elven Craftsmanship",
+   "bookId": "Requiem.esp:05CBD7",
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:383995",
+     "where": "Thalmor Embassy, Barracks, Thalmor Embassy",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 7
+      }
+     ],
+     "plugin": "Requiem.esp"
+    },
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:383993",
+     "where": "Thalmor Embassy",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 11
+      }
+     ],
+     "plugin": "Requiem.esp"
+    },
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:05CBE6",
+     "where": "The Arcanaeum",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 23
+      },
+      {
+       "door": "Hall of the Elements",
+       "metres": 27
+      }
+     ],
+     "plugin": "Requiem.esp"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "The Arcanaeum"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "...",
+      "Ancient Library, Forgotten City",
+      "Angeline's Aromatics",
+      "Arch-Mage's Quarters, Arch Mage's Quarters",
+      "Archives, Forgotten City",
+      "Bards College, The Bards College",
+      "Black-Briar Lodge",
+      "Black-Briar Manor",
+      "Bloodchill Cavern",
+      "Bloodfrost Burrow",
+      "Breezehome",
+      "Bruiant Mansion South Wing",
+      "Bryling's House",
+      "Castle Dour",
+      "Clan Hammer-Shield, Home of Clan Hammer-Shield",
+      "Cliffside Manor",
+      "Dark Dawn Sanctuary",
+      "Dorian's House, Ben Erai",
+      "Dragonsreach",
+      "Dragonsreach Jarl's Quarters, Dragonsreach",
+      "Ebony Keep",
+      "Elgrim's Elixirs",
+      "Erikur's House",
+      "Fallowstone Hall, Fallowstone Vault",
+      "Fort Dawnguard",
+      "Frostview Hall",
+      "Hall of Attainment, Dormitory",
+      "Hall of Countenance, Dormitory",
+      "Hall of the Vigilant",
+      "Highmoon Hall",
+      "Hjerim",
+      "Honeyside",
+      "House Gray-Mane",
+      "House of Clan Battle-Born",
+      "House of Clan Cruel-Sea",
+      "House of Clan Shatter-Shield",
+      "Hroldar's Castle, Realm of Dream",
+      "Krakevisa Midden, Krakevisa",
+      "Kraldar's House, Korri's House",
+      "Llynelis Manor, Baan Malur",
+      "Mistveil Keep, Riften Mistveil Keep",
+      "Myrwatch Workshop, Myrwatch",
+      "Nepos' House",
+      "Nightgate Inn",
+      "Nightingale Hall",
+      "Palace of the Kings",
+      "Palace of the Kings Upstairs, Palace of the Kings",
+      "Palace of the Kings, Upstairs, Palace of the Kings",
+      "Proudspire Manor",
+      "Ravenscorn Spire",
+      "Riftweald Manor, Riften Mercer's House",
+      "Riftweald Manor, Riftweald Manor Player Home",
+      "Sharza's House, Salas Kazas",
+      "Snow-Shod Manor, House of Clan Snow-Shod",
+      "Stonecold Fortress, Upstairs, Jarl's Longhouse",
+      "Tel Mithryn, Tel Mithryn Tower",
+      "Temple of Mara",
+      "Temple of Stendarr",
+      "Temple of the Divines",
+      "Terinen's House, Alik'r Desert",
+      "The Arcanaeum",
+      "The Rootspire",
+      "The Sepia Pages, Baan Malur",
+      "The Silverspoon Trading Company",
+      "The Treasury House, Treasury House",
+      "The Winking Skeever",
+      "Tormund's Tales",
+      "Tower of Barenziah, Baan Malur",
+      "Upper Halls, Hall of Relics",
+      "Viola Giordano's House",
+      "Vittoria Vici's House",
+      "Vlindrel Hall",
+      "Volkihar Keep",
+      "Volkihar Ruins, Castle Volkihar",
+      "Wind Scour Temple, Alik'r Desert",
+      "Winterhold Library, Hall of Runes",
+      "somewhere in Skyrim"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "Abandoned House, Tele Village",
+      "Abandoned Lodge",
+      "Abandoned Mine",
+      "Abandoned Palace",
+      "Aerin's House",
+      "Alftand Glacial Ruins, Alftand",
+      "Arena District",
+      "Aretino Residence",
+      "Argonian Assemblage",
+      "Arkngchal",
+      "Atalatar",
+      "Atheron Residence",
+      "Belyn Hlaalu's House",
+      "Benkongerike",
+      "Bilegulch Mine",
+      "Black-Briar Lodge",
+      "Black-Briar Manor",
+      "Blind Robber's Bluff",
+      "Bloodfrost Burrow",
+      "Bonechill Passage",
+      "Brightflour Bakery",
+      "Broder's Home, Home",
+      "Brunwulf Free-Winter's House",
+      "Bryling's House",
+      "Bujold's Retreat",
+      "Calixto's House of Curiosities",
+      "Castle Depths, Realm of Dream",
+      "Castle Dour",
+      "Castle Karstaag Caverns, Castle Karstaag Ruins",
+      "Chalureel Farm",
+      "Champion's Rest",
+      "Champion's Rest Amphitheater, Champion's Rest",
+      "Chillwind Depths",
+      "Coldwave Crescent, Cragwater Cavern",
+      "Cracked Tusk Keep",
+      "Cradlecrush Rock",
+      "Cragwallow Slope",
+      "Cragwater Cavern",
+      "Dainty Sload",
+      "Damphall Mine",
+      "Dark Brotherhood Sanctuary",
+      "Darkshade, Darkshade Copse",
+      "Dawnstar",
+      "Dimfrost Boilery, Dimfrost",
+      "Dragon's Teeth Prison",
+      "Dragonsreach Jarl's Quarters, Dragonsreach",
+      "East Empire Company Warehouse, Fort Icemoth",
+      "Ebony Keep Mine, Ebony Keep",
+      "Erikur's House",
+      "Erundil's Shack, Erundil's House",
+      "Ever-Bog Chamber",
+      "Evette San's House",
+      "Falkreath",
+      "Fellglow Keep",
+      "Fort Frostmoth",
+      "Fort Greenwall",
+      "Fort Greenwall Prison, Fort Greenwall",
+      "Fort Hraggstad Prison, Fort Hraggstad",
+      "Fort Icemoth Dungeons, Fort Icemoth",
+      "Fort Kastav Prison, Fort Kastav",
+      "Fort Moonwatch Muster, Fort Moonwatch",
+      "Fort Snowhawk",
+      "Fort Sungard Tower, Fort Sungard",
+      "Fort Valus Common House, Fort Valus",
+      "Fort Valus Muster, Fort Valus",
+      "Frossel",
+      "Frostflow Abyss, Frostflow Lighthouse",
+      "Frostflow Lighthouse",
+      "Frostmoon Crag",
+      "Gallows Rock",
+      "Glimmering Hollow, Decrepit House",
+      "Gloomreach Cavern, Gloomreach",
+      "Goldenglow Estate",
+      "Goldenglow Estate Second Floor, Goldenglow Estate",
+      "Graywinter Watch",
+      "Greathall, Skaal Village Greathall",
+      "Gronndal Grove",
+      "Guard Tower, Markarth Guard Tower",
+      "Gundrud Family House, Gundrud's Family House",
+      "Haelga's Bunkhouse",
+      "Haetar's Cave",
+      "Hall of Attainment, Dormitory",
+      "Hall of the Dead, Windhelm Hall of the Dead",
+      "Halted Stream Camp",
+      "Hearth-Healer's Hall, Home of Thane Hearth-Healer",
+      "Hidden Passage, Old Sewers",
+      "Highpoint Tower",
+      "Hillgrund's Tomb",
+      "Honrich Gordarseli",
+      "Honrich Ruins",
+      "Honrich Varlorsel",
+      "Honrich Welkeseli",
+      "House of Clan Battle-Born",
+      "House of Clan Cruel-Sea",
+      "House of Clan Shatter-Shield",
+      "House of Thane Skjorta, Home of Thane Skjorta",
+      "Hrodulf's Cellar, Hrodulf's House",
+      "Hroldar's Keep, Realm of Dream",
+      "Ilinalta's Deep",
+      "Inqusition District",
+      "Ironback Hideout Cellar",
+      "Jala's House",
+      "Jorn's Home, Home",
+      "Kagrumez",
+      "Karthwasten Hall, Karhwasten Hall",
+      "Katla's Farm",
+      "Kh-Utta's Territory",
+      "Knifepoint Ridge",
+      "Kolbjorn Barrow",
+      "Kolskeggr Mine",
+      "Krakevisa Midden, Krakevisa",
+      "Kynesgrove",
+      "Left Hand Mine",
+      "Lipsand Cave",
+      "Living Quarters, Mustering Hall",
+      "Lost Knife Hideout",
+      "Malada Burosel",
+      "Malatar District",
+      "Markarth Outskirts",
+      "Masvos Ruins",
+      "Mercenaries' Ship",
+      "Mitta Village",
+      "Mor Khazgur",
+      "Mor Khazgur Mine",
+      "Morthal",
+      "Morvayn Manor",
+      "Mzulft",
+      "Mzulft Aedrome, Mzulft",
+      "Narzulbur",
+      "Nchardak",
+      "Nerius Manor, Cormaris",
+      "Niranye's House",
+      "Northwatch Keep",
+      "Northwind Mine",
+      "Old Temple of the Eight Divines",
+      "Raven Rock",
+      "Reachcliff Cave",
+      "Red Scar Cavern",
+      "Red Wave, Solitude",
+      "Redbelly Mine",
+      "Redwater Den",
+      "Redwater Warehouse, Redwater Den",
+      "Rift Watchtower",
+      "Riften",
+      "Riftweald Manor, Riften Mercer's House",
+      "Riftweald Manor, Riftweald Manor Player Home",
+      "Rorik's Manor",
+      "Runoff Caverns",
+      "Salvius Farm",
+      "Sard's Charnel",
+      "Sarethi Farm, Sarethi Farm Interior",
+      "Scourg Barrow",
+      "Serpent's Bluff Redoubt",
+      "Sinderion's Field Laboratory",
+      "Sivdur's Respite",
+      "Skalei's Scrap, Helgen",
+      "Slums Second Floor, Slums",
+      "Smelter Overseer's House",
+      "Snow-Shod Manor, House of Clan Snow-Shod",
+      "Snowpoint Bastion, Snowpoint Beacon",
+      "Solitude",
+      "Solitude Brewery",
+      "Solitude Sawmill",
+      "Solitude Sewers, Solitude",
+      "Solitude Wasteworks, Root to Nirn",
+      "Stairway, Windhelm",
+      "Steamcrag Camp",
+      "Stendarr's Beacon",
+      "Stonehollow",
+      "Stonehollow Well",
+      "Storehouse, Warehouse",
+      "Strident Squall",
+      "Sverre's Cabin",
+      "Swindler's Den",
+      "Temple of Stendarr",
+      "Thalmor Embassy Interior, Thalmor Embassy",
+      "Thalmor Embassy, Barracks, Thalmor Embassy",
+      "The Apprentice Doomstone",
+      "The Boiling Cauldron",
+      "The Guardian Vault",
+      "The Icerunner",
+      "The Icerunner, Solitude",
+      "The Kings Rest",
+      "The Leaning Cabin",
+      "The Long Serpent, Solitude",
+      "The Malevolent Barracks",
+      "The Pit Bloodworks, Bloodworks",
+      "The Retching Netch",
+      "The Roadhouse",
+      "The Rootspire",
+      "The Seasaw",
+      "The Treasury House, Treasury House",
+      "The Trusty Witch, Maddock's House",
+      "The White Phial",
+      "The Winking Skeever",
+      "Thormoor's House",
+      "Tolvald's Crossing, Tolvald's Cave",
+      "Tomb of Vulom",
+      "Toril's House",
+      "Tower of Mzark",
+      "Treva's Watch",
+      "Twilight Sepulcher",
+      "Ulrenssen's House",
+      "Uttering Hills Cave, Uttering Hills Camp",
+      "Valthume",
+      "Viola Giordano's House",
+      "Vittoria Vici's House",
+      "Volkihar Undercroft, Castle Volkihar",
+      "Wallside Inn",
+      "Warden's Tower, Fort Tulis",
+      "Warehouse, Dockside Warehouse",
+      "Warehouse, East Empire Company",
+      "Watchtower",
+      "Waterfront District",
+      "White Ridge Sanctum, White Ridge Barrow",
+      "Whiterun",
+      "Whiterun Customs Hall",
+      "Wind Scour Temple, Alik'r Desert",
+      "Windhelm",
+      "Windhelm Barracks, Bloodworks",
+      "Winterhold",
+      "Wyrmstooth Barrow",
+      "Wyrmstooth Barrow Crypt, Wyrmstooth Barrow",
+      "Wyrmstooth Barrow Refectory, Wyrmstooth Barrow",
+      "Wyrmstooth Barrow Temple, Wyrmstooth Barrow",
+      "somewhere in Alik'r Desert",
+      "somewhere in Coldharbour",
+      "somewhere in Dimfrost",
+      "somewhere in Eldergleam Sanctuary",
+      "somewhere in Labyrinthian, Tribune",
+      "somewhere in Morrowind",
+      "somewhere in Riften",
+      "somewhere in Skyrim",
+      "somewhere in Soul Cairn",
+      "somewhere in Wyrmstooth"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Understone Keep"
+     ]
+    },
+    {
+     "kind": "carried",
+     "holder": "Talsgar the Wanderer",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "The Resting Pilgrim Cellar, The Resting Pilgrim",
+      "somewhere in Darkfall Passage"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "Wintersand Manor",
+      "Wintersand Manor, Cellar, Wintersand Manor"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "Myrwatch"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "Shadowfoot Sanctum"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "Hendraheim"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "Hall of Attainment, Dormitory",
+      "Hall of the Elements"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "The Arcanaeum"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "Riften"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "The Honest Trader"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "Cave"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "somewhere in Skyrim"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack (Player)",
+     "where": [
+      "Temple of Stendarr"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": null
+    },
+    {
+     "kind": "container",
+     "holder": "Bookcase",
+     "where": [
+      "The Hall of Relics, Hall of Relics",
+      "Tormund's Tales"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Warehouse Bookshelves"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "somewhere in Skyrim"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "Septimus Signus' Outpost"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Knapsack",
+     "where": [
+      "Volkihar Keep"
+     ]
+    },
+    {
+     "kind": "levelled",
+     "list": "LItemBook0All",
+     "where": null
+    }
+   ]
+  },
+  {
+   "perk": "Arcane Craftsmanship",
+   "book": "Arcane Craftsmanship",
+   "bookId": "Requiem.esp:AD3748",
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:AD374A",
+     "where": "The Chill, Winterhold",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 2
+      }
+     ],
+     "plugin": "Requiem.esp"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "The Arcanaeum"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Understone Keep"
+     ]
+    },
+    {
+     "kind": "carried",
+     "holder": "Katria",
+     "where": [
+      "Arkngthamz"
+     ]
+    },
+    {
+     "kind": "levelled",
+     "list": "REQ_LI_Reward_Quest_StokingTheFlames",
+     "where": null
+    }
+   ]
+  },
+  {
+   "perk": "Craftsmanship",
+   "book": "Art of the Advanced Nordic Blacksmiths",
+   "bookId": "Fozars_Dragonborn_-_Requiem_Patch.esp:228854",
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "somewhere in Whiterun"
+     ]
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Baldor Iron-Shaper's House, Skaal Village Baldor Iron-shaper's House"
+     ]
+    }
+   ]
+  },
+  {
+   "perk": "Tailoring & Polishing",
+   "book": "Complete History of the Radiant Raiment",
+   "bookId": "Requiem Smithing Books Give Perks.esp:000903",
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Radiant Raiment, Radiant Raiments"
+     ]
+    }
+   ]
+  },
+  {
+   "perk": "Daedric Smithing",
+   "book": "Daedric Craftsmanship",
+   "bookId": "Requiem.esp:05CBDE",
+   "places": [
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Shrine of Mehrunes Dagon"
+     ]
+    }
+   ]
+  },
+  {
+   "perk": "Ebony Smithing",
+   "book": "Harder than Steel - How to work with Ebony",
+   "bookId": "Requiem.esp:05CBE0",
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:05CBEA",
+     "where": "Alftand Animonculory, Alftand",
+     "nearDoors": [
+      {
+       "door": "somewhere in Alftand Cathedral",
+       "metres": 24
+      }
+     ],
+     "plugin": "Requiem.esp"
+    },
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:3839A2",
+     "where": "Narzulbur",
+     "nearDoors": [
+      {
+       "door": "Mauhulakh's Cellar",
+       "metres": 26
+      },
+      {
+       "door": "somewhere in Skyrim",
+       "metres": 28
+      }
+     ],
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "kind": "container",
+     "holder": "Chest",
+     "where": [
+      "Mauhulakh's Longhouse"
+     ]
+    }
+   ]
+  },
+  {
+   "perk": "Legendary Blacksmithing",
+   "book": "Saint Jiub's Opus",
+   "bookId": "Dawnguard.esm:003F79",
+   "places": [
+    {
+     "kind": "container",
+     "holder": "All Dawnguard Misc or Other Items",
+     "where": [
+      "Editor Smoke Test Cell"
+     ]
+    },
+    {
+     "kind": "delivered",
+     "quest": "Impatience of a Saint",
+     "script": "DLC1_QF_DLC1VQSaint_0101400B"
+    }
+   ]
+  },
+  {
+   "perk": "Draconic Blacksmithing",
+   "book": "The Compendium of Draconic Armor",
+   "bookId": "Requiem.esp:05CBDA",
+   "places": [
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:266D0C",
+     "where": "Sky Haven Temple",
+     "plugin": "Requiem.esp"
+    },
+    {
+     "kind": "placed",
+     "ref": "Requiem.esp:05CBED",
+     "where": "Skuldafn North Tower, Skuldafn",
+     "nearDoors": [
+      {
+       "door": "somewhere in Skuldafn",
+       "metres": 10
+      }
+     ],
+     "plugin": "Requiem.esp"
+    }
+   ]
+  }
+ ],
+ "readingRooms": [
+  {
+   "place": "Blue Palace, The Blue Palace",
+   "books": 424
+  },
+  {
+   "place": "Krakevisa Midden, Krakevisa",
+   "books": 324
+  },
+  {
+   "place": "somewhere in Skyrim",
+   "books": 254
+  },
+  {
+   "place": "The Rootspire",
+   "books": 209
+  },
+  {
+   "place": "Bards College, The Bards College",
+   "books": 200
+  },
+  {
+   "place": "Goldenhills Plantation",
+   "books": 199
+  },
+  {
+   "place": "Apocrypha",
+   "books": 175
+  },
+  {
+   "place": "Myrwatch",
+   "books": 142
+  },
+  {
+   "place": "Llynelis Manor, Baan Malur",
+   "books": 133
+  },
+  {
+   "place": "Captain Steffan's Rooms, Sancre Tor",
+   "books": 132
+  },
+  {
+   "place": "Black-Briar Lodge",
+   "books": 129
+  },
+  {
+   "place": "Ravenscorn Spire",
+   "books": 128
+  },
+  {
+   "place": "The Arcanaeum",
+   "books": 126
+  },
+  {
+   "place": "Riftweald Manor, Riftweald Manor Player Home",
+   "books": 125
+  },
+  {
+   "place": "Dead Man's Dread",
+   "books": 122
+  },
+  {
+   "place": "Volkihar Keep",
+   "books": 121
+  },
+  {
+   "place": "Tormund's Tales",
+   "books": 119
+  },
+  {
+   "place": "Palace of the Kings, Upstairs, Palace of the Kings",
+   "books": 115
+  },
+  {
+   "place": "Crossway Cottage",
+   "books": 113
+  },
+  {
+   "place": "Cyrus's Rooms, Sancre Tor",
+   "books": 113
+  },
+  {
+   "place": "The Katariah",
+   "books": 109
+  },
+  {
+   "place": "Warehouse Bookshelves",
+   "books": 103
+  },
+  {
+   "place": "Riftweald Manor, Riften Mercer's House",
+   "books": 101
+  },
+  {
+   "place": "Baragon's Rooms, Sancre Tor",
+   "books": 96
+  },
+  {
+   "place": "Gallows Hall",
+   "books": 96
+  },
+  {
+   "place": "Dragonsreach Jarl's Quarters, Dragonsreach",
+   "books": 95
+  },
+  {
+   "place": "The Sepia Pages, Baan Malur",
+   "books": 95
+  },
+  {
+   "place": "The Hall of Relics, Hall of Relics",
+   "books": 91
+  },
+  {
+   "place": "Erikur's House",
+   "books": 88
+  },
+  {
+   "place": "Jorrvaskr Living Quarters, Jorrvaskr",
+   "books": 83
+  },
+  {
+   "place": "Vittoria Vici's House",
+   "books": 80
+  },
+  {
+   "place": "Fortress of Ben Erai",
+   "books": 76
+  },
+  {
+   "place": "Fort Snowhawk",
+   "books": 75
+  },
+  {
+   "place": "Bryling's House",
+   "books": 73
+  },
+  {
+   "place": "Dragonsreach",
+   "books": 73
+  },
+  {
+   "place": "House of Clan Battle-Born",
+   "books": 71
+  },
+  {
+   "place": "Viola Giordano's House",
+   "books": 70
+  },
+  {
+   "place": "Black-Briar Manor",
+   "books": 69
+  },
+  {
+   "place": "High Hrothgar",
+   "books": 69
+  },
+  {
+   "place": "Solitude Sewers, Solitude",
+   "books": 69
+  },
+  {
+   "place": "Thalmor Embassy, Elenwen's Solar, Thalmor Embassy",
+   "books": 69
+  },
+  {
+   "place": "The Treasury House, Treasury House",
+   "books": 69
+  },
+  {
+   "place": "East Empire Company Tradehouse, Wyrmstooth Longhouse",
+   "books": 64
+  },
+  {
+   "place": "Imperial City Prison",
+   "books": 64
+  },
+  {
+   "place": "Wintersand Manor",
+   "books": 61
+  },
+  {
+   "place": "Dreamworld",
+   "books": 60
+  },
+  {
+   "place": "The Retching Netch",
+   "books": 60
+  },
+  {
+   "place": "Belonir's Borg",
+   "books": 59
+  },
+  {
+   "place": "Hidden chambers of Sancre Tor, Sancre Tor",
+   "books": 59
+  },
+  {
+   "place": "Breaking Dawn Cottage",
+   "books": 54
+  },
+  {
+   "place": "New Moon Cottage",
+   "books": 54
+  },
+  {
+   "place": "Temple of Reclamations, Baan Malur",
+   "books": 54
+  },
+  {
+   "place": "Shadowfoot Sanctum",
+   "books": 53
+  },
+  {
+   "place": "Understone Keep",
+   "books": 53
+  },
+  {
+   "place": "The Vexed Stone, Baan Malur",
+   "books": 52
+  },
+  {
+   "place": "Bloodchill Cavern",
+   "books": 49
+  },
+  {
+   "place": "Drelas' Cottage, Drelas Cottage",
+   "books": 49
+  },
+  {
+   "place": "Angeline's Aromatics",
+   "books": 48
+  },
+  {
+   "place": "Castle Dour",
+   "books": 48
+  },
+  {
+   "place": "Cragwallow Slope",
+   "books": 48
+  },
+  {
+   "place": "Ebony Keep",
+   "books": 48
+  },
+  {
+   "place": "Fort Neugrad",
+   "books": 48
+  },
+  {
+   "place": "Mistveil Keep, Riften Mistveil Keep",
+   "books": 48
+  },
+  {
+   "place": "House of Clan Cruel-Sea",
+   "books": 47
+  },
+  {
+   "place": "Fellglow Keep Dungeons, Fellglow Keep",
+   "books": 46
+  },
+  {
+   "place": "Jhunal's Library",
+   "books": 45
+  },
+  {
+   "place": "Scourg Barrow",
+   "books": 45
+  },
+  {
+   "place": "Temple of the Divines",
+   "books": 43
+  },
+  {
+   "place": "Champion's Quarters",
+   "books": 42
+  },
+  {
+   "place": "Citadel",
+   "books": 42
+  },
+  {
+   "place": "House of Clan Shatter-Shield",
+   "books": 42
+  },
+  {
+   "place": "Snowpoint Bastion, Snowpoint Beacon",
+   "books": 42
+  },
+  {
+   "place": "The Kings Rest",
+   "books": 42
+  },
+  {
+   "place": "The Scrambling Scrib, Baan Malur",
+   "books": 42
+  },
+  {
+   "place": "Tolvald's Crossing, Tolvald's Cave",
+   "books": 42
+  },
+  {
+   "place": "somewhere in Emperor's Quarters",
+   "books": 42
+  },
+  {
+   "place": "The Winking Skeever",
+   "books": 41
+  },
+  {
+   "place": "Nepos' House",
+   "books": 40
+  },
+  {
+   "place": "Sky Haven Temple",
+   "books": 39
+  },
+  {
+   "place": "Ashfallow Citadel",
+   "books": 38
+  },
+  {
+   "place": "Oritius' House",
+   "books": 38
+  },
+  {
+   "place": "Pinewatch Bandit's Sanctuary, Pinewatch",
+   "books": 38
+  },
+  {
+   "place": "The Silverspoon Trading Company",
+   "books": 38
+  },
+  {
+   "place": "GORE.esp:00AF0F",
+   "books": 36
+  },
+  {
+   "place": "Honningbrew Meadery",
+   "books": 36
+  },
+  {
+   "place": "Twilight Sepulcher",
+   "books": 35
+  },
+  {
+   "place": "Arnleif and Sons Trading Company",
+   "books": 34
+  },
+  {
+   "place": "Candlehearth Hall",
+   "books": 34
+  },
+  {
+   "place": "East Empire Company Warehouse",
+   "books": 34
+  },
+  {
+   "place": "Fort Greymoor",
+   "books": 34
+  },
+  {
+   "place": "Highmoon Hall",
+   "books": 34
+  },
+  {
+   "place": "House Gray-Mane",
+   "books": 34
+  },
+  {
+   "place": "Nightgate Inn",
+   "books": 34
+  },
+  {
+   "place": "The Ratway Warrens, Esbern's Vault",
+   "books": 34
+  },
+  {
+   "place": "Wyrmstooth Barrow Temple, Wyrmstooth Barrow",
+   "books": 34
+  },
+  {
+   "place": "Karthwasten Hall, Karhwasten Hall",
+   "books": 33
+  },
+  {
+   "place": "The Broker's Shack",
+   "books": 33
+  },
+  {
+   "place": "East Empire Company Outpost",
+   "books": 32
+  },
+  {
+   "place": "Fellglow Keep",
+   "books": 32
+  },
+  {
+   "place": "Mistwatch Folly, Mistwatch",
+   "books": 32
+  },
+  {
+   "place": "Morvunskar",
+   "books": 32
+  },
+  {
+   "place": "Rorik's Manor",
+   "books": 32
+  },
+  {
+   "place": "Temple of Mara",
+   "books": 32
+  },
+  {
+   "place": "Volkihar Ruins, Castle Volkihar",
+   "books": 32
+  },
+  {
+   "place": "White Ridge Sanctum, White Ridge Barrow",
+   "books": 32
+  },
+  {
+   "place": "Riften Jail",
+   "books": 31
+  },
+  {
+   "place": "somewhere in Wyrmstooth",
+   "books": 31
+  },
+  {
+   "place": "Bits and Pieces",
+   "books": 30
+  },
+  {
+   "place": "Fort Frostmoth",
+   "books": 30
+  },
+  {
+   "place": "Nchuanthumz",
+   "books": 30
+  },
+  {
+   "place": "Jorrvaskr",
+   "books": 29
+  },
+  {
+   "place": "Solitude Observaton Station",
+   "books": 29
+  },
+  {
+   "place": "Ulrenssen's House",
+   "books": 29
+  },
+  {
+   "place": "Blacksmith Quarters, Aretino Residence",
+   "books": 28
+  },
+  {
+   "place": "Glover Mallory's House",
+   "books": 28
+  },
+  {
+   "place": "Hall of the Dead",
+   "books": 28
+  },
+  {
+   "place": "Hendraheim",
+   "books": 28
+  },
+  {
+   "place": "Inner Sanctum, Temple of Dibella",
+   "books": 28
+  },
+  {
+   "place": "Oddities & Curiosities, Granite Hill",
+   "books": 28
+  },
+  {
+   "place": "sosPlaques.esp:000A00",
+   "books": 28
+  },
+  {
+   "place": "Cliffside Manor",
+   "books": 27
+  },
+  {
+   "place": "House Steel-Arm, Home of Thane Valdemaar",
+   "books": 27
+  },
+  {
+   "place": "Loviriil's House",
+   "books": 27
+  },
+  {
+   "place": "Thormoor's House",
+   "books": 27
+  },
+  {
+   "place": "Valtheim Towers",
+   "books": 27
+  },
+  {
+   "place": "Benkongerike Great Hall, Benkongerike",
+   "books": 26
+  },
+  {
+   "place": "Bloodlet Throne",
+   "books": 26
+  },
+  {
+   "place": "Jon's Cave, High Hrothgar",
+   "books": 26
+  },
+  {
+   "place": "Morvayn Manor",
+   "books": 26
+  },
+  {
+   "place": "Morvayn Manor Chambers, Morvayn Manor",
+   "books": 26
+  },
+  {
+   "place": "Northwatch Keep",
+   "books": 26
+  },
+  {
+   "place": "Sarethi Farm, Sarethi Farm Interior",
+   "books": 26
+  },
+  {
+   "place": "Snow-Shod Manor, House of Clan Snow-Shod",
+   "books": 26
+  },
+  {
+   "place": "Thalmor Headquarters, The Blue Palace",
+   "books": 26
+  },
+  {
+   "place": "House of Thane Alarik, Home of Thane Alarik",
+   "books": 25
+  },
+  {
+   "place": "Ilinalta's Deep",
+   "books": 25
+  },
+  {
+   "place": "Rimerock Burrow",
+   "books": 25
+  },
+  {
+   "place": "Swindler's Den",
+   "books": 25
+  },
+  {
+   "place": "Temple of Kynareth",
+   "books": 25
+  },
+  {
+   "place": "The Frozen Hearth",
+   "books": 25
+  },
+  {
+   "place": "somewhere in Soul Cairn",
+   "books": 25
+  },
+  {
+   "place": "Brittleshin Pass",
+   "books": 24
+  },
+  {
+   "place": "Dwemer Museum",
+   "books": 24
+  },
+  {
+   "place": "Halted Stream Camp",
+   "books": 24
+  },
+  {
+   "place": "Othriel's Cabin",
+   "books": 24
+  },
+  {
+   "place": "The Splended Spool",
+   "books": 24
+  },
+  {
+   "place": "Arkngchal",
+   "books": 23
+  },
+  {
+   "place": "Borogove",
+   "books": 23
+  },
+  {
+   "place": "Digitus Quintus' House",
+   "books": 23
+  },
+  {
+   "place": "Fort Valus Muster, Fort Valus",
+   "books": 23
+  },
+  {
+   "place": "Hjerim",
+   "books": 23
+  },
+  {
+   "place": "Hob's Fall Cave",
+   "books": 23
+  },
+  {
+   "place": "Morvunskar Crypts",
+   "books": 23
+  },
+  {
+   "place": "Sadri's Used Wares",
+   "books": 23
+  },
+  {
+   "place": "The Icerunner",
+   "books": 23
+  },
+  {
+   "place": "The Icerunner, Solitude",
+   "books": 23
+  },
+  {
+   "place": "Bloodskal Barrow",
+   "books": 22
+  },
+  {
+   "place": "Dark Brotherhood Sanctuary",
+   "books": 22
+  },
+  {
+   "place": "Endon's House",
+   "books": 22
+  },
+  {
+   "place": "Fort Icemoth",
+   "books": 22
+  },
+  {
+   "place": "Haemar's Cavern, Haemar's Shame",
+   "books": 22
+  },
+  {
+   "place": "Langley's House",
+   "books": 22
+  },
+  {
+   "place": "Sleeping Giant Inn",
+   "books": 22
+  },
+  {
+   "place": "Valthume",
+   "books": 22
+  },
+  {
+   "place": "Alor House",
+   "books": 21
+  },
+  {
+   "place": "Bruiant Mansion South Wing",
+   "books": 21
+  },
+  {
+   "place": "Chillfurrow Farm, Chillfurrow Farm Interior",
+   "books": 21
+  },
+  {
+   "place": "Crossroads Goods, Granite Hill",
+   "books": 21
+  },
+  {
+   "place": "Fort Dunstad Commander's Quarters, Fort Dunstad",
+   "books": 21
+  },
+  {
+   "place": "Hall of Attainment, Dormitory",
+   "books": 21
+  },
+  {
+   "place": "New Gnisis Cornerclub",
+   "books": 21
+  },
+  {
+   "place": "Solitude Brewery",
+   "books": 21
+  },
+  {
+   "place": "Thalmor Embassy",
+   "books": 21
+  },
+  {
+   "place": "The Brinehammer Below Deck, Brinehammer",
+   "books": 21
+  },
+  {
+   "place": "Ashfall's Tear",
+   "books": 20
+  },
+  {
+   "place": "Bolli's House",
+   "books": 20
+  },
+  {
+   "place": "Cracked Tusk Keep",
+   "books": 20
+  },
+  {
+   "place": "Fort Moonwatch Quarters, Fort Moonwatch",
+   "books": 20
+  },
+  {
+   "place": "Lost Knife Hideout",
+   "books": 20
+  },
+  {
+   "place": "Niranye's House",
+   "books": 20
+  },
+  {
+   "place": "Pelagia Farm",
+   "books": 20
+  },
+  {
+   "place": "Solitude Merchants' House, Solitude Merchant's House",
+   "books": 20
+  },
+  {
+   "place": "Sunderstone Gorge",
+   "books": 20
+  },
+  {
+   "place": "The Hag's Cure, Hag's Cure",
+   "books": 20
+  },
+  {
+   "place": "Thorleif's House",
+   "books": 20
+  },
+  {
+   "place": "Treva's Watch",
+   "books": 20
+  },
+  {
+   "place": "Arcadia's Cauldron",
+   "books": 19
+  },
+  {
+   "place": "Broken Oar Grotto",
+   "books": 19
+  },
+  {
+   "place": "Brol the Scholar's Chambers",
+   "books": 19
+  },
+  {
+   "place": "Faldar's Tooth",
+   "books": 19
+  },
+  {
+   "place": "Jauffre's Rooms, Sancre Tor",
+   "books": 19
+  },
+  {
+   "place": "Proudspire Manor",
+   "books": 19
+  },
+  {
+   "place": "Temple, Temple Location",
+   "books": 19
+  },
+  {
+   "place": "Fort Justice",
+   "books": 18
+  },
+  {
+   "place": "Nightingale Hall",
+   "books": 18
+  },
+  {
+   "place": "Radiant Raiment, Radiant Raiments",
+   "books": 18
+  },
+  {
+   "place": "Windhelm Barracks, Bloodworks",
+   "books": 18
+  },
+  {
+   "place": "Aerin's House",
+   "books": 17
+  },
+  {
+   "place": "Broken Fang Cave",
+   "books": 17
+  },
+  {
+   "place": "Dark Dawn Sanctuary",
+   "books": 17
+  },
+  {
+   "place": "Dragon's Teeth Prison",
+   "books": 17
+  },
+  {
+   "place": "Forlorn Tower, Pryai",
+   "books": 17
+  },
+  {
+   "place": "Fort Amol Prison, Fort Amol",
+   "books": 17
+  },
+  {
+   "place": "Fort Greenwall Captain's Quarters, Fort Greenwall",
+   "books": 17
+  },
+  {
+   "place": "Guard Barracks",
+   "books": 17
+  },
+  {
+   "place": "Hall of Kyne",
+   "books": 17
+  },
+  {
+   "place": "Markarth Side Barracks",
+   "books": 17
+  },
+  {
+   "place": "Narfin's Inquisition Court",
+   "books": 17
+  },
+  {
+   "place": "Palace of the Kings Upstairs, Palace of the Kings",
+   "books": 17
+  },
+  {
+   "place": "Septimus Signus' Outpost",
+   "books": 17
+  },
+  {
+   "place": "Abandoned Prison",
+   "books": 16
+  },
+  {
+   "place": "Atheron Residence",
+   "books": 16
+  },
+  {
+   "place": "Frostmere Crypt",
+   "books": 16
+  },
+  {
+   "place": "Hall of the Vigilant",
+   "books": 16
+  },
+  {
+   "place": "Honeyside",
+   "books": 16
+  },
+  {
+   "place": "Liar's Retreat",
+   "books": 16
+  },
+  {
+   "place": "Stendarr's Beacon Underground",
+   "books": 16
+  },
+  {
+   "place": "Storm-Hull Farm",
+   "books": 16
+  },
+  {
+   "place": "Tel Mithryn, Tel Mithryn Tower",
+   "books": 16
+  },
+  {
+   "place": "Arena Market",
+   "books": 15
+  },
+  {
+   "place": "Balmir's House",
+   "books": 15
+  },
+  {
+   "place": "Castle Dour Dungeon, Solitude Jail",
+   "books": 15
+  },
+  {
+   "place": "Dawnstar Sanctuary",
+   "books": 15
+  },
+  {
+   "place": "Driftshade Refuge, Driftshade Sanctuary",
+   "books": 15
+  },
+  {
+   "place": "Nightcaller Temple",
+   "books": 15
+  },
+  {
+   "place": "Pawned Prawn, The Pawned Prawn",
+   "books": 15
+  },
+  {
+   "place": "Potent Potables, Granite Hill",
+   "books": 15
+  },
+  {
+   "place": "Riverwood Trader, Lucan's Dry Goods",
+   "books": 15
+  },
+  {
+   "place": "Rkulftzul, Sealed Vault",
+   "books": 15
+  },
+  {
+   "place": "The Ragged Flagon - Cistern, Thieves Guild Headquarters",
+   "books": 15
+  },
+  {
+   "place": "Abandoned Mine",
+   "books": 14
+  },
+  {
+   "place": "Belethor's General Goods",
+   "books": 14
+  },
+  {
+   "place": "Burguk's Longhouse",
+   "books": 14
+  },
+  {
+   "place": "Fort Dawnguard",
+   "books": 14
+  },
+  {
+   "place": "Hall of the Elements",
+   "books": 14
+  },
+  {
+   "place": "Hrodulf's Cellar, Hrodulf's House",
+   "books": 14
+  },
+  {
+   "place": "Ilinalta's Deluge, Ilinalta's Deep",
+   "books": 14
+  },
+  {
+   "place": "Movarth's Lair",
+   "books": 14
+  },
+  {
+   "place": "Ruunvald Excavation",
+   "books": 14
+  },
+  {
+   "place": "Slums Second Floor, Slums",
+   "books": 14
+  },
+  {
+   "place": "Solitude Blacksmith",
+   "books": 14
+  },
+  {
+   "place": "Stonehollow",
+   "books": 14
+  },
+  {
+   "place": "Windstad Manor",
+   "books": 14
+  },
+  {
+   "place": "Alvor and Sigrid's House",
+   "books": 13
+  },
+  {
+   "place": "Arch-Mage's Quarters, Arch Mage's Quarters",
+   "books": 13
+  },
+  {
+   "place": "Deep Library",
+   "books": 13
+  },
+  {
+   "place": "Fort Neugrad Prison, Fort Neugrad",
+   "books": 13
+  },
+  {
+   "place": "Healers and Dealers",
+   "books": 13
+  },
+  {
+   "place": "Helgen Keep, Helgen",
+   "books": 13
+  },
+  {
+   "place": "Mad King's Bedroom, Memory",
+   "books": 13
+  },
+  {
+   "place": "Master Bedroom",
+   "books": 13
+  },
+  {
+   "place": "Moorside Inn",
+   "books": 13
+  },
+  {
+   "place": "Palace of the Kings",
+   "books": 13
+  },
+  {
+   "place": "Pryai Councillor's House, Pryai",
+   "books": 13
+  },
+  {
+   "place": "Redoran's Retreat",
+   "books": 13
+  },
+  {
+   "place": "Temple of Talos",
+   "books": 13
+  },
+  {
+   "place": "Uthgerd's House",
+   "books": 13
+  },
+  {
+   "place": "Archives, Forgotten City",
+   "books": 12
+  },
+  {
+   "place": "Bloodfrost Burrow",
+   "books": 12
+  },
+  {
+   "place": "Bruiant Mansion North Wing",
+   "books": 12
+  },
+  {
+   "place": "Clan Hammer-Shield, Home of Clan Hammer-Shield",
+   "books": 12
+  },
+  {
+   "place": "Deepwood Redoubt",
+   "books": 12
+  },
+  {
+   "place": "Fort Hraggstad",
+   "books": 12
+  },
+  {
+   "place": "Ienth Farm",
+   "books": 12
+  },
+  {
+   "place": "Malatar Mansion",
+   "books": 12
+  },
+  {
+   "place": "Mistwatch East Tower, Mistwatch",
+   "books": 12
+  },
+  {
+   "place": "Mor Khazgur",
+   "books": 12
+  },
+  {
+   "place": "Myrwatch Gallery, Myrwatch",
+   "books": 12
+  },
+  {
+   "place": "Nerius Manor, Cormaris",
+   "books": 12
+  },
+  {
+   "place": "Reachcliff Cave",
+   "books": 12
+  },
+  {
+   "place": "Serpent's Bluff Ruins, Serpent's Bluff Redoubt",
+   "books": 12
+  },
+  {
+   "place": "Three Peaks Staff and Magic",
+   "books": 12
+  },
+  {
+   "place": "Vlindrel Hall",
+   "books": 12
+  },
+  {
+   "place": "Wanderer's House",
+   "books": 12
+  },
+  {
+   "place": "somewhere in Whiterun",
+   "books": 12
+  },
+  {
+   "place": "Battle-Born Farm",
+   "books": 11
+  },
+  {
+   "place": "Calcelmo's Laboratory",
+   "books": 11
+  },
+  {
+   "place": "Cult of Tsun",
+   "books": 11
+  },
+  {
+   "place": "Dainty Sload",
+   "books": 11
+  },
+  {
+   "place": "Fort Verin",
+   "books": 11
+  },
+  {
+   "place": "Fort Welkynd",
+   "books": 11
+  },
+  {
+   "place": "Freuchen's Office, Home",
+   "books": 11
+  },
+  {
+   "place": "Frostflow Lighthouse",
+   "books": 11
+  },
+  {
+   "place": "Gundrud Family House, Gundrud's Family House",
+   "books": 11
+  },
+  {
+   "place": "Hod and Gerdur's House",
+   "books": 11
+  },
+  {
+   "place": "Karlsten's House",
+   "books": 11
+  },
+  {
+   "place": "Mercenaries' Ship",
+   "books": 11
+  },
+  {
+   "place": "Meridia's Sanctum",
+   "books": 11
+  },
+  {
+   "place": "Mzulft Aedrome, Mzulft",
+   "books": 11
+  },
+  {
+   "place": "Pinewatch",
+   "books": 11
+  },
+  {
+   "place": "Silent Moons Camp",
+   "books": 11
+  },
+  {
+   "place": "Slums",
+   "books": 11
+  },
+  {
+   "place": "Snow-Shod Farm Cellar",
+   "books": 11
+  },
+  {
+   "place": "Verner and Annekke's House, Verner's House",
+   "books": 11
+  },
+  {
+   "place": "Windhelm",
+   "books": 11
+  },
+  {
+   "place": "somewhere in Labyrinthine Passages",
+   "books": 11
+  },
+  {
+   "place": "Brunwulf Free-Winter's House",
+   "books": 10
+  },
+  {
+   "place": "Calcelmo's Tower, Dwemer Museum",
+   "books": 10
+  },
+  {
+   "place": "Chapel of Zenithar",
+   "books": 10
+  },
+  {
+   "place": "Do Not Delete - Not A Test Cell",
+   "books": 10
+  },
+  {
+   "place": "Forsaken Crypt",
+   "books": 10
+  },
+  {
+   "place": "Fort Dunstad",
+   "books": 10
+  },
+  {
+   "place": "Fort Dunstad Trader",
+   "books": 10
+  },
+  {
+   "place": "Greathall, Skaal Village Greathall",
+   "books": 10
+  },
+  {
+   "place": "Malada Aldmerisel",
+   "books": 10
+  },
+  {
+   "place": "Morganna and Hellte's Lodging",
+   "books": 10
+  },
+  {
+   "place": "Myrwatch Workshop, Myrwatch",
+   "books": 10
+  },
+  {
+   "place": "Riften Fishery",
+   "books": 10
+  },
+  {
+   "place": "Skybound Watch Pass, North Skybound Watch",
+   "books": 10
+  },
+  {
+   "place": "The Pit Spectators House",
+   "books": 10
+  },
+  {
+   "place": "The Ragged Flagon",
+   "books": 10
+  },
+  {
+   "place": "The White Phial",
+   "books": 10
+  },
+  {
+   "place": "somewhere in Brinewater Grotto",
+   "books": 10
+  },
+  {
+   "place": "Abandoned House, Mitta Village",
+   "books": 9
+  },
+  {
+   "place": "Caerellius House",
+   "books": 9
+  },
+  {
+   "place": "Dragonborn.esm:016E1E",
+   "books": 9
+  },
+  {
+   "place": "East Empire Company",
+   "books": 9
+  },
+  {
+   "place": "Elgrim's Elixirs",
+   "books": 9
+  },
+  {
+   "place": "Fletcher, Castle Fletcher",
+   "books": 9
+  },
+  {
+   "place": "Fort Moonwatch Muster, Fort Moonwatch",
+   "books": 9
+  },
+  {
+   "place": "Fort Snowhawk Prison, Fort Snowhawk",
+   "books": 9
+  },
+  {
+   "place": "Ganner's House, Baan Malur",
+   "books": 9
+  },
+  {
+   "place": "Haelga's Bunkhouse",
+   "books": 9
+  },
+  {
+   "place": "Harmugstahl",
+   "books": 9
+  },
+  {
+   "place": "Highpoint Tower",
+   "books": 9
+  },
+  {
+   "place": "Jo'vanni's House",
+   "books": 9
+  },
+  {
+   "place": "Largashbur Cellar, Largashbur's Longhouse",
+   "books": 9
+  },
+  {
+   "place": "Largashbur Longhouse, Largashbur's Longhouse",
+   "books": 9
+  },
+  {
+   "place": "Nalion And Gildan's House",
+   "books": 9
+  },
+  {
+   "place": "Saryvar's House, Baan Malur",
+   "books": 9
+  },
+  {
+   "place": "Soljund's Sinkhole",
+   "books": 9
+  },
+  {
+   "place": "Strident Squall",
+   "books": 9
+  },
+  {
+   "place": "The Bee and Barb, Bee and Barb",
+   "books": 9
+  },
+  {
+   "place": "The Resting Pilgrim Cellar, The Resting Pilgrim",
+   "books": 9
+  },
+  {
+   "place": "The Roadhouse",
+   "books": 9
+  },
+  {
+   "place": "Whiterun",
+   "books": 9
+  },
+  {
+   "place": "Alftand Glacial Ruins, Alftand",
+   "books": 8
+  },
+  {
+   "place": "Ancient Ruins",
+   "books": 8
+  },
+  {
+   "place": "Ansilvund Burial Chambers, Ansilvund",
+   "books": 8
+  },
+  {
+   "place": "Ash'abah Hideout",
+   "books": 8
+  },
+  {
+   "place": "Beggar's Path, Slums",
+   "books": 8
+  },
+  {
+   "place": "Black-Briar Meadery",
+   "books": 8
+  },
+  {
+   "place": "Buro Temple",
+   "books": 8
+  },
+  {
+   "place": "Duskglow Crevice",
+   "books": 8
+  },
+  {
+   "place": "Forelhost Refectory, Forelhost",
+   "books": 8
+  },
+  {
+   "place": "Fort Amol",
+   "books": 8
+  },
+  {
+   "place": "Guards' Quarters",
+   "books": 8
+  },
+  {
+   "place": "Herman's Holdout, Herman's Hideout",
+   "books": 8
+  },
+  {
+   "place": "Kazmalgur Longhouse, Kazmalgur",
+   "books": 8
+  },
+  {
+   "place": "Malada Gandrasel",
+   "books": 8
+  },
+  {
+   "place": "Mara's Eye Den, Mara's Eye Pond",
+   "books": 8
+  },
+  {
+   "place": "Riften Stables",
+   "books": 8
+  },
+  {
+   "place": "Robber's Gorge",
+   "books": 8
+  },
+  {
+   "place": "Severin Manor",
+   "books": 8
+  },
+  {
+   "place": "Sven and Hilde's House, Sven's House",
+   "books": 8
+  },
+  {
+   "place": "Tel Mithryn Steward's House, Tel Mithryn Steward",
+   "books": 8
+  },
+  {
+   "place": "Telvanni Embassy, Baan Malur",
+   "books": 8
+  },
+  {
+   "place": "Temple of Stendarr",
+   "books": 8
+  },
+  {
+   "place": "The Scrappy Mudcrab, Baan Malur",
+   "books": 8
+  },
+  {
+   "place": "White River Watch",
+   "books": 8
+  },
+  {
+   "place": "Wind Scour Temple, Alik'r Desert",
+   "books": 8
+  },
+  {
+   "place": "Windhelm Wheelhouse, Shack",
+   "books": 8
+  },
+  {
+   "place": "somewhere in Morrowind",
+   "books": 8
+  },
+  {
+   "place": "Alva's House",
+   "books": 7
+  },
+  {
+   "place": "Ashbound Depths, Ashbound Prison",
+   "books": 7
+  },
+  {
+   "place": "Audmund's Axes",
+   "books": 7
+  },
+  {
+   "place": "Auri's House, Falkreath",
+   "books": 7
+  },
+  {
+   "place": "Belethor's Sister.esp:000806",
+   "books": 7
+  },
+  {
+   "place": "Braidwood Inn",
+   "books": 7
+  },
+  {
+   "place": "Breezehome",
+   "books": 7
+  },
+  {
+   "place": "Clan Shatter-Shield Office, Clan Shatter-Shield Offices",
+   "books": 7
+  },
+  {
+   "place": "Curia Morimath",
+   "books": 7
+  },
+  {
+   "place": "Darkfall Cave",
+   "books": 7
+  },
+  {
+   "place": "Dorte's Cabin",
+   "books": 7
+  },
+  {
+   "place": "Faendal's House",
+   "books": 7
+  },
+  {
+   "place": "Fort Fellhammer Garrison, Fort Fellhammer",
+   "books": 7
+  },
+  {
+   "place": "Fort Sepredia",
+   "books": 7
+  },
+  {
+   "place": "Fort Valus Barracks, Fort Valus",
+   "books": 7
+  },
+  {
+   "place": "Gilfre's House",
+   "books": 7
+  },
+  {
+   "place": "Golvunter",
+   "books": 7
+  },
+  {
+   "place": "Gravewind Study, Gravewind Depths",
+   "books": 7
+  },
+  {
+   "place": "Guard Barracks, Whiterun Guardhouse",
+   "books": 7
+  },
+  {
+   "place": "Hakkvild's High Hall, Upstairs, Jarl's Longhouse",
+   "books": 7
+  },
+  {
+   "place": "Happy Homestead General Goods",
+   "books": 7
+  },
+  {
+   "place": "Hroldar's Castle, Realm of Dream",
+   "books": 7
+  },
+  {
+   "place": "Hulgard And Svenja's House, Hulgard and Svenja's House",
+   "books": 7
+  },
+  {
+   "place": "Inqusition District",
+   "books": 7
+  },
+  {
+   "place": "Lund's Hut",
+   "books": 7
+  },
+  {
+   "place": "Malada",
+   "books": 7
+  },
+  {
+   "place": "Malatar District",
+   "books": 7
+  },
+  {
+   "place": "Mathmalatu Priory",
+   "books": 7
+  },
+  {
+   "place": "Mauhulakh's Longhouse",
+   "books": 7
+  },
+  {
+   "place": "Mistveil Keep Jarl's Chambers, Riften Mistveil Keep",
+   "books": 7
+  },
+  {
+   "place": "Sancremor Ceysel",
+   "books": 7
+  },
+  {
+   "place": "Silver-Blood Inn",
+   "books": 7
+  },
+  {
+   "place": "Sinderion's Field Laboratory",
+   "books": 7
+  },
+  {
+   "place": "The Bannered Mare",
+   "books": 7
+  },
+  {
+   "place": "The Bulwark, The Bulwark Barracks",
+   "books": 7
+  },
+  {
+   "place": "Tower of Mzark",
+   "books": 7
+  },
+  {
+   "place": "Uttering Hills Cave, Uttering Hills Camp",
+   "books": 7
+  },
+  {
+   "place": "Wisp Light Crevasse",
+   "books": 7
+  },
+  {
+   "place": "somewhere in Solitude",
+   "books": 7
+  },
+  {
+   "place": "Alik'r Desert Sanctuary, Alik'r Desert",
+   "books": 6
+  },
+  {
+   "place": "Aranea Lenith's Home",
+   "books": 6
+  },
+  {
+   "place": "Arena District",
+   "books": 6
+  },
+  {
+   "place": "Bannermist Tower",
+   "books": 6
+  },
+  {
+   "place": "Bulwark, The Bulwark Barracks",
+   "books": 6
+  },
+  {
+   "place": "Castle Dour, Emperor's Tower",
+   "books": 6
+  },
+  {
+   "place": "Embershard Mine, Embershard",
+   "books": 6
+  },
+  {
+   "place": "Emperor Gorieus' Charnel District",
+   "books": 6
+  },
+  {
+   "place": "Falkreath Watchtower",
+   "books": 6
+  },
+  {
+   "place": "Fort Greenwall",
+   "books": 6
+  },
+  {
+   "place": "Fort Kastav Captain's Quarters, Fort Kastav",
+   "books": 6
+  },
+  {
+   "place": "Fort Valus Common House, Fort Valus",
+   "books": 6
+  },
+  {
+   "place": "Goldenglow Estate",
+   "books": 6
+  },
+  {
+   "place": "Hlaalu Farm",
+   "books": 6
+  },
+  {
+   "place": "Karthspire",
+   "books": 6
+  },
+  {
+   "place": "Marukh's Underground Priory",
+   "books": 6
+  },
+  {
+   "place": "Mill Maintenance, Markarth Mill Maintenance",
+   "books": 6
+  },
+  {
+   "place": "Pond House",
+   "books": 6
+  },
+  {
+   "place": "Raven Rock Mine",
+   "books": 6
+  },
+  {
+   "place": "Rift Watchtower",
+   "books": 6
+  },
+  {
+   "place": "Riverside Shack",
+   "books": 6
+  },
+  {
+   "place": "Sharza's House, Salas Kazas",
+   "books": 6
+  },
+  {
+   "place": "Silorn's Priory",
+   "books": 6
+  },
+  {
+   "place": "Stonecold Fortress, Upstairs, Jarl's Longhouse",
+   "books": 6
+  },
+  {
+   "place": "The Scorched Hammer, Blacksmith",
+   "books": 6
+  },
+  {
+   "place": "The Stumbling Sabrecat",
+   "books": 6
+  },
+  {
+   "place": "Underground Lake",
+   "books": 6
+  },
+  {
+   "place": "Valtyr's House",
+   "books": 6
+  },
+  {
+   "place": "somewhere in Alik'r Desert",
+   "books": 6
+  },
+  {
+   "place": "Abandoned House, Tele Village",
+   "books": 5
+  },
+  {
+   "place": "Adrian and Arriana House",
+   "books": 5
+  },
+  {
+   "place": "Alftand Animonculory, Alftand",
+   "books": 5
+  },
+  {
+   "place": "Amren's House",
+   "books": 5
+  },
+  {
+   "place": "Arlowe and Edda House",
+   "books": 5
+  },
+  {
+   "place": "Ashbound Prison",
+   "books": 5
+  },
+  {
+   "place": "Baptist's House",
+   "books": 5
+  },
+  {
+   "place": "Bleak Falls Temple, Bleak Falls Barrow",
+   "books": 5
+  },
+  {
+   "place": "Calixto's House of Curiosities",
+   "books": 5
+  },
+  {
+   "place": "Chalureel Farm",
+   "books": 5
+  },
+  {
+   "place": "Champion's Rest Amphitheater, Champion's Rest",
+   "books": 5
+  },
+  {
+   "place": "Chillwater Mill",
+   "books": 5
+  },
+  {
+   "place": "Cragwater Cavern",
+   "books": 5
+  },
+  {
+   "place": "Dead Man's Drink",
+   "books": 5
+  },
+  {
+   "place": "Decrepit House",
+   "books": 5
+  },
+  {
+   "place": "Dengeir's House, Dengeir's Hall",
+   "books": 5
+  },
+  {
+   "place": "Dushnikh Yal",
+   "books": 5
+  },
+  {
+   "place": "Fellstar Farm",
+   "books": 5
+  },
+  {
+   "place": "Fort Icemoth Dungeons, Fort Icemoth",
+   "books": 5
+  },
+  {
+   "place": "Green-Tip Cabin",
+   "books": 5
+  },
+  {
+   "place": "Haemar's Shame",
+   "books": 5
+  },
+  {
+   "place": "Haetar's Cave",
+   "books": 5
+  },
+  {
+   "place": "Hall of Countenance, Dormitory",
+   "books": 5
+  },
+  {
+   "place": "Heljarchen Hall",
+   "books": 5
+  },
+  {
+   "place": "Honorhall Orphanage",
+   "books": 5
+  },
+  {
+   "place": "Ironback Hideout Cellar",
+   "books": 5
+  },
+  {
+   "place": "Japhet's Folly Towers, Japhet's Folly",
+   "books": 5
+  },
+  {
+   "place": "Jen and John's House, Granite Hill",
+   "books": 5
+  },
+  {
+   "place": "Jeshol's House",
+   "books": 5
+  },
+  {
+   "place": "Kolbjorn Barrow",
+   "books": 5
+  },
+  {
+   "place": "Lakeview Manor",
+   "books": 5
+  },
+  {
+   "place": "Loreius Farm, Loreius Farmhouse",
+   "books": 5
+  },
+  {
+   "place": "Luki's Chambers",
+   "books": 5
+  },
+  {
+   "place": "Malpenix and Isobel House",
+   "books": 5
+  },
+  {
+   "place": "Merryfair Farm",
+   "books": 5
+  },
+  {
+   "place": "Mudcrab Den",
+   "books": 5
+  },
+  {
+   "place": "Nenyond's Underground Priory",
+   "books": 5
+  },
+  {
+   "place": "Old Hroldan Inn",
+   "books": 5
+  },
+  {
+   "place": "Old Lighthouse",
+   "books": 5
+  },
+  {
+   "place": "Old Ned's House, Abandoned Building",
+   "books": 5
+  },
+  {
+   "place": "Redeyn Household, Cormaris",
+   "books": 5
+  },
+  {
+   "place": "Ruined Homestead",
+   "books": 5
+  },
+  {
+   "place": "Severio Pelagia's House, Severio Pelagias' House",
+   "books": 5
+  },
+  {
+   "place": "Shanta Filibb Home, Shanta Filibb",
+   "books": 5
+  },
+  {
+   "place": "Shrine of Mehrunes Dagon",
+   "books": 5
+  },
+  {
+   "place": "Shroud Hearth Barrow",
+   "books": 5
+  },
+  {
+   "place": "Silus Vesuius' House",
+   "books": 5
+  },
+  {
+   "place": "Snowpoint Beacon",
+   "books": 5
+  },
+  {
+   "place": "Solitude Sewers",
+   "books": 5
+  },
+  {
+   "place": "Thaumaturgist's Hut",
+   "books": 5
+  },
+  {
+   "place": "The Empire Trader",
+   "books": 5
+  },
+  {
+   "place": "The Forgotten City",
+   "books": 5
+  },
+  {
+   "place": "The Guardian Vault",
+   "books": 5
+  },
+  {
+   "place": "The Handsome Hermit, The Hermit",
+   "books": 5
+  },
+  {
+   "place": "The Malevolent Barracks",
+   "books": 5
+  },
+  {
+   "place": "The Resting Pilgrim Upstairs, The Resting Pilgrim",
+   "books": 5
+  },
+  {
+   "place": "The White Hall",
+   "books": 5
+  },
+  {
+   "place": "Ustengrav",
+   "books": 5
+  },
+  {
+   "place": "Wyrmstooth Jail, Wyrmstooth Barracks",
+   "books": 5
+  },
+  {
+   "place": "somewhere in Bisexual Ram Ranch",
+   "books": 5
+  },
+  {
+   "place": "somewhere in Boneyard",
+   "books": 5
+  },
+  {
+   "place": "somewhere in Riften",
+   "books": 5
+  },
+  {
+   "place": "somewhere in The Nightmare",
+   "books": 5
+  }
+ ]
+}
