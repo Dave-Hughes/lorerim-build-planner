@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
-Status: queued
+Status: for Bob
 
 **Why.** WO-152's measure (793cb11) showed the problem and the limit of rules in one go: 196 of 337 quest givers seem to be somewhere other than where they're placed, but reading packages by rule put Balgruuf in the Blue Palace. The people reads (WO-155) will be done by agents reading each person's records with judgment, as the quests now are (WO-153). They need the records; the records are on the PC. So this order is a dump, not an interpretation.
 
