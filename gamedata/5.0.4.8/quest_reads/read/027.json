@@ -424,8 +424,8 @@
       {"name": "Malfyur the Unliving (ghost)", "role": "comes to speak to you after you've killed him"}
     ],
     "unsure": [
-      {"field": "starts.where", "why": "Marith's approach only fires while you're outside Meridia's Sanctum and in a location with a certain location-type keyword (Skyrim.esm:013168); these files don't name that keyword, so 'settlement' is a guess at which kind. The records also don't show how she gets to you."},
-      {"field": "takesYou.Meridia's Sanctum", "why": "The Sanctum's door opens from an outdoor cell (Skyrim.esm:006E8B) that these files don't tie to a hold or landmark."},
+      {"field": "starts.where", "why": "Marith's approach only fires while you're outside Meridia's Sanctum and in a location with a certain location-type keyword; these files don't name that keyword, so 'settlement' is a guess at which kind. The records also don't show how she gets to you."},
+      {"field": "takesYou.Meridia's Sanctum", "why": "The Sanctum's door opens from an outdoor spot that these files don't tie to a hold or landmark."},
       {"field": "takesYou.Solitude", "why": "Malfyur is placed in the Winking Skeever and has two half-day routines whose places aren't decoded here. Alara also says he has been defiling bodies in the Hall of the Dead, so he may not be at the inn when you arrive."},
       {"field": "rewards", "why": "No reward is on the quest's script; the journal says only that Alara will speak to you when you're ready, which leads into Our Lady."}
     ],
