@@ -38,3 +38,5 @@
 - **038** (Hammerfell, the Dark Brotherhood there): 9 fixed, 2 unsure. Three givers are home only at night; "cornerclub" was remembered wording, not the records; the Hammerfell contracts in the order their logs give, The Crimson Eviscerator added; the Unknown Initiate is probably Lucya.
 - **042** (Raven Rock favors, Thirsk): 5 fixed. Veleth is inside the Retching Netch; Thirsk's Nords at the camp while the hall is lost; what dies with them (Halbarn's smithing, Kuvar's training, Elmus's shop, two spouses, four favors).
 - **033** (Markarth, Wyrmstooth add-ons): 5 fixed, 5 unsure. Only Hogni and Lisbet can be jailed in A Bitter Aftertaste; Athir isn't only on Wyrmstooth; the level 20 check sits on the rumour lines, not the quests.
+- **037** (Gray Cowl of Nocturnal, Hammerfell): 6 fixed, 4 unsure. Claim Shanta Filibb's notice comes after the bandits; the game's own words for the Gray Cowl places; Honai talks to you at the ruins, not the hideout.
+- **035** (Wyrmstooth favors): 4 fixed, 1 unsure. The way back to Skyrim is the Red Wave near Fort Moonwatch (Holmar); two missing endings of The Naked Nord.
