@@ -5063,7 +5063,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: queued (Part 1b)
+Status: building (Mac), Part 1b
 
 **Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
 
