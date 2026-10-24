@@ -31,6 +31,8 @@ export interface PlacePointer {
  */
 export interface Actors {
   count: number;
+  /** false: the people there aren't hostile at the start (WO-144 Part 1e-2): no levels, no table. */
+  hostile?: boolean;
   floor?: number;
   ceiling?: number;
   atLevel?: { gate?: number; level?: [number, number]; from?: number; meets?: [number, number] }[];

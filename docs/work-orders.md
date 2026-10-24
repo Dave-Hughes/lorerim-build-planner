@@ -5094,6 +5094,7 @@ Status: done
 - **Tests and checks.** `wo151.test.ts` now has five tests for this (the town's line, Forelhost and Crystaldrift left out, no unattributed line anywhere, Whiterun and Solitude name their own towns, a named speaker stays); `wo128.test.ts` and its e2e expect Nirenoore's line for Embershard Mine. Typecheck, lint, 681 unit tests, the build and the places and door e2e (17 tests) pass.
 
 - Bob, 23 Oct, 17:42: the attribution fix read; 227 door tests pass. Done.
+- **The PC's new shape (23 Oct, after 1e-2).** `places.json` now has `actors: {count, hostile: false}` for the 69 places whose people aren't hostile (inns, guild halls, temples, keeps, stables, and the four Orc strongholds), with no floor, ceiling or table. That turned the contract test's shape check red on staging. The door was unaffected (all 65 non-strongholds were already stops, and the strongholds are handled by type), but I added `hostile` to the `Actors` type, made `hostile: false` a reason to leave a place out of `placesNear` (strongholds excepted), and let the shape check skip those places. A test checks that none comes back. This is the "any place whose people aren't hostile" half of the first WO-151 part, now from the data and not only the type.
 
 ---
 

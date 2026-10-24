@@ -143,7 +143,7 @@ const STOPS = new Set(["City", "Town", "Settlement", "Inn", "Temple", "Keep", "S
  * Not a suggestion (WO-151): a stop, or anything the index says sits inside a town (a guild hall, an inn, a temple), where nobody
  * starts out hostile. A "boss" in the Thieves Guild Headquarters is a guildmaster, not a fight.
  */
-const notASuggestion = (p: Place) => STOPS.has(p.type) || !!p.inTown;
+const notASuggestion = (p: Place) => STOPS.has(p.type) || !!p.inTown || (p.actors?.hostile === false && !isStronghold(p));
 
 /** An Orc stronghold stays in as a destination, but its people aren't enemies: no levels, no boss, no fit (WO-151). */
 const isStronghold = (p: Place) => p.type === "OrcStronghold";

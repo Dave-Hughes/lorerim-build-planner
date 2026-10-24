@@ -24,8 +24,8 @@ describe("suggest_places on the real places.json", () => {
   const places = placesData().places;
   const towns = [...new Set(places.flatMap((p) => (p.nearestTown ? [p.nearestTown.town] : [])))];
 
-  it("the index has the shape the tool reads: every place with actors has a floor, a ceiling and a table", () => {
-    const bad = places.filter((p) => p.actors && !(Number.isFinite(p.actors.floor) && Number.isFinite(p.actors.ceiling) && Array.isArray(p.actors.atLevel))).map((p) => p.name);
+  it("the index has the shape the tool reads: every place with hostile actors has a floor, a ceiling and a table", () => {
+    const bad = places.filter((p) => p.actors && p.actors.hostile !== false && !(Number.isFinite(p.actors.floor) && Number.isFinite(p.actors.ceiling) && Array.isArray(p.actors.atLevel))).map((p) => p.name);
     expect(bad).toEqual([]);
   });
   it("every town, at three stretches of levels, with and without an end: no throw, a fit and its words for every place", () => {

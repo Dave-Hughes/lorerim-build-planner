@@ -41,6 +41,11 @@ describe("no guild halls or friendly places as suggestions", () => {
     const towns = [...new Set(placesData().places.flatMap((p) => (p.nearestTown ? [p.nearestTown.town] : [])))];
     for (const t of towns) for (const p of placesNear([t], 1, 10, none, 1000)) expect(inside.has(p.place), `${p.place} near ${t}`).toBe(false);
   });
+  it("nowhere whose people aren't hostile at the start (the data's hostile: false) comes back, but a stronghold", () => {
+    const calm = new Set(placesData().places.filter((p) => p.actors?.hostile === false && p.type !== "OrcStronghold").map((p) => p.name));
+    const towns = [...new Set(placesData().places.flatMap((p) => (p.nearestTown ? [p.nearestTown.town] : [])))];
+    for (const t of towns) for (const p of placesNear([t], 1, 10, none, 1000)) expect(calm.has(p.place), `${p.place} near ${t}`).toBe(false);
+  });
   it("an Orc stronghold stays in as a destination, with no enemies, no boss and no fit, and the people's own words", () => {
     const l = riften().find((p) => p.place === "Largashbur")!;
     expect(l).toBeDefined();
