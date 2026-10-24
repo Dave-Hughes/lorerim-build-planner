@@ -45,6 +45,7 @@ One JSON object per quest, in a list, saved to the path you are given. Fields:
 ```
 
 Rules for the words:
+- For where a person is by day and by night, read their packages in `people_schedules_raw.json` (in the order the game evaluates them, top first; a package's conditions decide whether it applies). The schedule bytes aren't decoded yet; most package names carry the hour and length (`…Work10x8` is 10 am for 8 hours). A package shared by hundreds of people says nothing about this one.
 - `where` is how a player would look: a building, a room, "outside the Winking Skeever", never a bare city when the person stands in one spot. The records give where a person is placed, not their daily schedule; if the place matters and you only have the placement, put it in `unsure`.
 - No stage numbers, record ids or condition text in any field a player reads. They go in `evidence`.
 - A quest that is cut, console-only or never shown to the player: say so in `canDo` and leave `starts` empty.

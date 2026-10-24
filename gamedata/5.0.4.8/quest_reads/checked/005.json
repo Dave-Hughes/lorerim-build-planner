@@ -1,0 +1,1422 @@
+{
+  "checks": [
+    {
+      "edid": "DLC1VQ05",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log opens on arrival in the Soul Cairn; Chasing Echoes stage 200 is the step through the portal."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Chasing Echoes stages 100/200 and objectives 100/110/120 back both items. The records don't say whether a player who is already a vampire skips the vampire-or-soul-trap step; added to unsure."
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "who: nobody hands this quest over. It begins by itself as you enter the Soul Cairn (stage 10 log), and the Valerica giver line (INFO Dawnguard.esm:005855, stage below 26) is the later 'Speak to Valerica' talk, not the start. Set who to empty and kept Serana in how. where and how agree (Chasing Echoes stages 90/200)."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10 'Locate Valerica'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 30 log (ruin, barrier, Keepers, 'ramshackle living space'), stage 50 log, givers placing Valerica and all three Keepers in Soul Cairn cell Dawnguard.esm:0028B9."
+        },
+        "choices": {
+          "verdict": "fix",
+          "note": "The side only changes the stage 200 log wording (global DLC1PlayingVampireLine 0/1); that part agrees. But 'Valerica stays in the Soul Cairn either way' reads as permanent. Stage 200 only says she won't come back until Harkon is dealt with, and a separate quest, Beyond Death Post Quest Handler, has her saying 'I'll return to Castle Volkihar as soon as I'm finished gathering my things.' (INFO Dawnguard.esm:015A0A, 0159FD). Reworded."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Objectives 60/100 'Retrieve the Elder Scroll', alias DLC1VQ05ElderScrollThreeAlias; named as the Blood scroll by Seeking Disclosure objective 20 and Unseen Visions stage 60 / objective 40. No reward script on this quest in quest_givers_raw."
+        },
+        "opens": {
+          "verdict": "fix",
+          "note": "Missing the direct follow-on: the scroll you carry out is what Seeking Disclosure's 'Find The Elder Scroll (Blood)' objective asks for, and bringing both scrolls to Dexion is the next step, before Unseen Visions. Also missing: More to do in the Soul Cairn (MoreToDoSoulCairn.esp) adds three more Soul Cairn quests, Grief, Chapel of Love and Black Soul Cairn Gem (quests_raw MoreToDoSoulCairn.esp:0008F7/0009E7/000A00). The Durnehviir and Jiub/horse items agree."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Objective 30 and stage 50 log: all three Keepers slain."
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQ06",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Seeking Disclosure stage 200 (Dexion goes blind) leads straight into this quest's stage 10 log."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Seeking Disclosure stage 200: 'bring all three Elder Scrolls to the Ancestor Glade'. Objective 40 names the Blood scroll."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "who/where: Dexion at Fort Dawnguard or Castle Volkihar per Seeking Disclosure stage 40 and Prophet stage 100 logs. how: Seeking Disclosure stage 200 and this quest's stage 10. Note the 'draw knife' line INFO Dawnguard.esm:01A950 sits under Seeking Disclosure, not this quest."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 log (on the way to the Ancestor Glade) and objective 10. Ancestor Glade is 0.3 km from Falkreath, 'next to it'."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "LCTN Dawnguard.esm:003583, hold Falkreath; stage 50/60 logs."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 200 has two texts by DLC1PlayingVampireLine; only the closing sentence differs."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "The three scrolls are script properties only (quest_givers_raw); you already carry them. Empty is right."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Stage 200 log (cave on the western edge of Skyrim) and Touching the Sky stage 10 (Darkfall Cave)."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQ07",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Stage 10 log follows from the Unseen Visions vision."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "fix",
+          "note": "how is missing the step that ends Unseen Visions: its last objective is 'Speak to Serana' (objective 60), and that quest's 'Where is this \"Darkfall Cave?\"' lines (INFO Dawnguard.esm:015FB2/015FB3) belong to that talk. So this quest picks up after you talk to Serana about the vision, not straight from the vision. who (empty) and where agree."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 10 log and objective 20; Darkfall Cave is 0.6 km from Karthwasten, 'a short walk' (LCTN Dawnguard.esm:00A87A)."
+        },
+        "takesYou": {
+          "verdict": "fix",
+          "note": "The places agree (Gelebor in Darkfall Cave, Prelate Sidanyis in Darkfall Passage, four prelates in the Forgotten Vale, Vyrthur in the Forgotten Vale). But 'wayshrine' isn't in any record. The records have five basin aliases (DLC1VQ07Basin00-04Alias) matched to the five prelates, plus a temple basin. Changed to the records' terms and made clear the first fill is in Darkfall Passage (5 fills, global DLC1VQ07EwerTotal = 5)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "One objective list, one stage 200 text."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Objective 130 and stage 200 log ('I now possess ... Auriel's Bow'). The ability/perk script properties stay in unsure."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Kindred Judgment stage 20: 'With Auriel's Bow in my possession'."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Objective 110 and stage 200 log. Gelebor lives on ('Even with Vyrthur gone ... my duty ... remains', INFO Dawnguard.esm:0071C5)."
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQ08",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 20 log: 'With Auriel's Bow in my possession'."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Objective 10 'Speak to Serana'. Isran is the giver line on the Dawnguard side (INFO Dawnguard.esm:019305, stage below 21), placed in Fort Dawnguard, Dayspring Canyon; 'We meet outside Castle Volkihar' is INFO Dawnguard.esm:019F8F."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Isran and the fort aliases in Fort Dawnguard (Dayspring Canyon); Harkon battle forms in Volkihar Cathedral (CELL Dawnguard.esm:019DFE); Castle Volkihar has no hold in places_raw."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 20 has one text per DLC1PlayingVampireLine; one objective list ending 'Slay Harkon'."
+        },
+        "rewards": {
+          "verdict": "fix",
+          "note": "Auriel's Bow shouldn't be listed: Touching the Sky stage 200 already gives it ('I now possess ... Auriel's Bow') and this quest's stage 20 starts 'With Auriel's Bow in my possession'. The DLC1AurielsBow script property and DLC1VQ08AurielsBowAlias point to handling the bow you already have, not a new one. Removed it and noted it in unsure. Vampire Lord Ornament stays, with its caveat."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "DDBQuest06 stage 0: 'Kindred Judgment completed and No Guard Is Safe completed'. Small extra: Narrative Gameplay Consistent Dialogue Tweaks puts 'Kindred Judgment not completed' on one of Aela's Companions greetings (INFO Skyrim.esm:0F11BC / 0A3E65), so finishing it swaps which greeting she uses. That's a dialogue variant, not a quest, so I left it off the list."
+        },
+        "closes": {
+          "verdict": "fix",
+          "note": "'This is the last quest of the Dawnguard story' isn't something the quest locks, and no record says it. questlines_raw lists the Dawnguard quests in no story order. Removed it. 'Lord Harkon dies' agrees (objective 40)."
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQElder",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Prophet's last step is a talk (Dawnguard: 'Speak to the Moth Priest'; vampires: 'Speak to Harkon'), and its stage 200 log flows into this quest's stage 10. Which line sets stage 10 isn't in the files, which the reader already flags."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Prophet (DLC1VQ03Hunter/Vampire) stage 200; 'enthrall' matches the vampire objective 'Feed on the Moth Priest to make him your thrall'."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "who/how: stage 10 log. where: Prophet stage 100 logs and this quest's stage 40 (Fort Dawnguard / imprisoned at Castle Volkihar). The giver placement is only Forebears' Holdout (REF Dawnguard.esm:007B88), as the reader says."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objectives 10 and 20."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Urag is an alias of this quest, placed in The Arcanaeum; Tower of Mzark is linked to this quest in places_raw (with odd nearest-town figures, flagged); stage 40 for the return."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 40 texts by DLC1PlayingVampireLine; Scroll Scouting stage 200 has three endings by DLC1VQElderHandlerGlob 1/2/3."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "pGold and pDLC1ElderScrollDragon are script properties only."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": "Scroll Scouting stage 20/30 logs; Unseen Visions stage 10 follows stage 200."
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": "Stage 200 log (Dexion goes blind) and Unseen Visions stage 10 ('secure alternate means')."
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQElderHandler",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Stage 20 log: 'I need to acquire the Elder Scroll' with the Dragon scroll's wording; stage 30 covers the sold-to-Urag case."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "No giver or start event in quest_givers_raw; the log is all there is, as the reader says."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Stage 20 log ('ask at the College of Winterhold'); Urag is the quest's alias, placed in The Arcanaeum."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Septimus Signus' Outpost, hold Winterhold, 0.5 km 'a short walk' from Winterhold; Septimus placed there (people_raw Skyrim.esm:02D514)."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": "Stage 200 texts by DLC1VQElderHandlerGlob 1/2/3."
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQSaint",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Jiub giver INFO Dawnguard.esm:01414D, stage below 11."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Stage 20 log; Jiub (Dunmer) placed in Soul Cairn cell Dawnguard.esm:002C96."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10; global DLC1VQSaintTotal = 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Stage 20 log: pages 'spread across the entire Soul Cairn'."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 200 log (amulet and a pristine copy of his first volume); script properties pDLC1JiubNecklace, pDLC1VQSaintFinalBook; the Locket's text matches items_raw (LoreRim - Armor Merges.esp)."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC01SoulCairnHorseQuest2",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Giver INFO Dawnguard.esm:002B0A from the RiderSoul alias, stage below 20."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": "Soul NPC Dawnguard.esm:002B0D, two placements in Soul Cairn cell 0028B9."
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 20."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "unsure",
+          "note": "Summon Arvak is right (script property SummonAvrak, SPEL Dawnguard.esm:00C600). 'at the end' isn't shown: the quest has no log entries and the records don't say which stage gives the spell. A stage script would settle it. Changed the when and added an unsure entry."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQDragon",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "No giver line in the files, but the Misc Objective Handler's 'Speak to Durnehviir at his lair' and the stage 30 pact log back 'talk'."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": "Beyond Death objective 70 and stage 80 log. 'Fight' is the right word, since he's alive afterwards."
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": "Stage 30 and 60 logs and objectives 20-40; SHOU Dawnguard.esm:0030D2 Summon Durnehviir and 007CB6 Soul Tear in powers_raw. Granting script not in the files, already flagged."
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    },
+    {
+      "edid": "DLC1VQDragonMisc",
+      "verdicts": {
+        "canDo": {
+          "verdict": "agree",
+          "note": "Misc type, one objective, no log, no giver."
+        },
+        "needs": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "starts": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "firstStep": {
+          "verdict": "agree",
+          "note": "Objective 10."
+        },
+        "takesYou": {
+          "verdict": "agree",
+          "note": "Alias DLC1VQDragonMiscSCAlias is the Soul Cairn location."
+        },
+        "choices": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "rewards": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "opens": {
+          "verdict": "agree",
+          "note": ""
+        },
+        "closes": {
+          "verdict": "agree",
+          "note": ""
+        }
+      }
+    }
+  ],
+  "quests": [
+    {
+      "edid": "DLC1VQ05",
+      "name": "Beyond Death",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "It begins as you and Serana step into the Soul Cairn at the end of Chasing Echoes.",
+      "needs": [
+        {
+          "what": "Finish Chasing Echoes (step through the portal into the Soul Cairn with Serana)",
+          "kind": "quest"
+        },
+        {
+          "what": "To get through the portal, Chasing Echoes makes you either become a vampire or let Serana partly soul trap you",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the portal in Valerica's laboratory, in the ruined tower at Castle Volkihar",
+          "how": "Begins by itself as you and Serana step through the portal into the Soul Cairn at the end of Chasing Echoes. The first log entry says you've entered the Soul Cairn after her mother, Valerica, and the Elder Scroll she took."
+        }
+      ],
+      "firstStep": "Find Valerica in the Soul Cairn",
+      "takesYou": [
+        {
+          "place": "Soul Cairn",
+          "hold": "none (a plane of Oblivion)",
+          "why": "find Valerica, who is shut inside a ruin behind a barrier"
+        },
+        {
+          "place": "the Boneyard Keepers' spots around the Soul Cairn",
+          "hold": "none (Soul Cairn)",
+          "why": "kill the three Keepers so the barrier around Valerica's prison falls"
+        },
+        {
+          "place": "Valerica's living quarters in the ruin",
+          "hold": "none (Soul Cairn)",
+          "why": "follow Valerica to the hidden Elder Scroll"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Which side you joined (Dawnguard or the Volkihar vampires)",
+          "leadsTo": "Only changes the wording of the final log entry: stop Harkon, or finish the Tyranny of the Sun your own way. Either way Valerica won't leave the Soul Cairn yet; she says she'll come back once Harkon is dealt with."
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Locate Valerica",
+            "Speak to Valerica",
+            "Kill the Boneyard Keepers (0/3)",
+            "Speak to Valerica",
+            "Follow Valerica",
+            "Retrieve the Elder Scroll",
+            "Slay Durnehviir",
+            "Speak to Valerica",
+            "Return to Tamriel"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Elder Scroll (Blood)",
+          "when": "picked up from the hiding place Valerica leads you to"
+        }
+      ],
+      "type": "Dawnguard",
+      "opens": [
+        "Seeking Disclosure: the Elder Scroll you carry out is the Elder Scroll (Blood) it asks for; next, bring both scrolls to Dexion",
+        "Unseen Visions (after Seeking Disclosure; you read the Blood scroll first)",
+        "Durnehviir (the dragon you fight here)",
+        "Impatience of a Saint and Soul Cairn Horse Quest can be picked up while you're in the Soul Cairn",
+        "More to do in the Soul Cairn adds Grief, Chapel of Love and Black Soul Cairn Gem in the Soul Cairn"
+      ],
+      "closes": [
+        "The three Boneyard Keepers die"
+      ],
+      "people": [
+        {
+          "name": "Serana",
+          "role": "travels with you"
+        },
+        {
+          "name": "Valerica",
+          "role": "Serana's mother, imprisoned in a ruin in the Soul Cairn; has the Elder Scroll"
+        },
+        {
+          "name": "Keeper (three of them)",
+          "role": "guardians of the barrier around Valerica's prison; kill all three"
+        },
+        {
+          "name": "Durnehviir",
+          "role": "a dragon who attacks as Valerica leads you to the scroll"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "The records list a second run of 'Speak to Valerica / Follow Valerica / Retrieve the Elder Scroll' after the Durnehviir fight. The files don't show when that second run is used instead of the first."
+        },
+        {
+          "field": "rewards",
+          "why": "There's no reward script for this quest in these files. The scroll is named as the Elder Scroll (Blood) only by the next quest, Unseen Visions, which calls it 'the Elder Scroll I obtained from the Soul Cairn'."
+        },
+        {
+          "field": "takesYou",
+          "why": "The Keepers and Valerica are placed in the Soul Cairn's one big outdoor space; these files give no landmark names for where each Keeper stands."
+        },
+        {
+          "field": "needs",
+          "why": "Chasing Echoes offers 'become a vampire' or 'be partially soul trapped' at the portal. The records don't show whether a player who is already a vampire skips that step."
+        },
+        {
+          "field": "choices",
+          "why": "A separate handler quest (Beyond Death Post Quest Handler) has Valerica say she'll return to Castle Volkihar. Its conditions aren't in these files, so when she leaves the Soul Cairn isn't known."
+        },
+        {
+          "field": "opens",
+          "why": "The three More to do in the Soul Cairn quests are tied to the Soul Cairn by place only; their start conditions aren't in these files (the line is listed as starting with the game)."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:002850 stages 10/30/50/80/200, objectives 10-120",
+        "Valerica giver INFO Dawnguard.esm:005855 (placed REF Dawnguard.esm:003B8E, Soul Cairn)",
+        "Keepers Dawnguard.esm:007B0F/0074F9/0074F8",
+        "global DLC1VQ05KeepersTotal = 3",
+        "INFO Dawnguard.esm:00F851 'When I fled Castle Volkihar, I fled with two Elder Scrolls.'",
+        "DLC1VQ04 stage 90/100/200 (portal, vampire or soul trap)",
+        "DLC1VQ06 stage 60 and objective 40 (Elder Scroll (Blood) from the Soul Cairn)",
+        "INFO Dawnguard.esm:015A0A/0159FD (Beyond Death Post Quest Handler, Valerica)",
+        "MoreToDoSoulCairn.esp:0008F7/0009E7/000A00",
+        "DLC1VQElder objective 20"
+      ]
+    },
+    {
+      "edid": "DLC1VQ06",
+      "name": "Unseen Visions",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "It follows on from Seeking Disclosure, once Dexion goes blind reading the scrolls.",
+      "needs": [
+        {
+          "what": "Finish Seeking Disclosure (bring both Elder Scrolls to Dexion)",
+          "kind": "quest"
+        },
+        {
+          "what": "Have all three Elder Scrolls with you (Sun, Dragon and Blood)",
+          "kind": "item"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Dexion Evicus",
+          "where": "Fort Dawnguard if you're with the Dawnguard; Castle Volkihar if you're with the vampires",
+          "how": "Once Dexion goes blind reading the first scroll, he says you might read the Elder Scrolls yourself using the moth priests' old ritual in the Ancestor Glade. The quest picks up from there."
+        }
+      ],
+      "firstStep": "Go to the Ancestor Glade by Falkreath and find a Moth Priest's knife",
+      "takesYou": [
+        {
+          "place": "Ancestor Glade",
+          "hold": "Falkreath",
+          "why": "do the Ritual of the Ancestor Moth so you can read the Elder Scrolls"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Which side you joined",
+          "leadsTo": "Only changes the wording of the final log entry (stop Harkon, or finish the Tyranny of the Sun before him)"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find a Moth Priest's knife",
+            "Gather bark from a Canticle Tree",
+            "Attract Ancestor Moth Swarms (0/7)",
+            "Enter the column of light and read the Elder Scroll (Blood)",
+            "Read the Elder Scroll (Blood)",
+            "Speak to Serana"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dawnguard",
+      "opens": [
+        "Touching the Sky (the vision points to a cave on the western edge of Skyrim: Darkfall Cave)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Serana",
+          "role": "travels with you; talk to her after the vision"
+        },
+        {
+          "name": "Dexion Evicus",
+          "role": "the blinded moth priest who tells you about the ritual"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The quest script holds all three Elder Scrolls (Blood, Dragon, Sun), but these files don't show whether it gives, takes or only checks them, so none are listed as rewards."
+        },
+        {
+          "field": "starts",
+          "why": "No start dialogue or event for this quest is in these files. The start comes from its first log entry and the end of Seeking Disclosure."
+        },
+        {
+          "field": "takesYou",
+          "why": "The places index puts the Ancestor Glade right next to Falkreath. The knife and the seven moth swarms are aliases with no placement in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:002852 stages 10/50/60/200, objectives 10-60",
+        "global DLC1VQ06MothsTotal = 7",
+        "script DLC1_QF_DLC1VQ06_01002852 props pDLC1ElderScrollBlood/Dragon/Sun",
+        "LCTN Dawnguard.esm:003583 Ancestor Glade, hold Falkreath",
+        "INFO Dawnguard.esm:01A950 Dexion 'draw knife'",
+        "INFO Dawnguard.esm:015FB2/015FB3 'Where is this \"Darkfall Cave?\"'"
+      ]
+    },
+    {
+      "edid": "DLC1VQ07",
+      "name": "Touching the Sky",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "It starts once the Elder Scroll vision in Unseen Visions shows you Darkfall Cave.",
+      "needs": [
+        {
+          "what": "Finish Unseen Visions",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "the Ancestor Glade, after the vision",
+          "how": "Once you've read the Elder Scrolls and talked to Serana about the vision at the end of Unseen Visions, the quest begins and points you to Darkfall Cave. Inside the cave, Knight-Paladin Gelebor gives you the real job."
+        }
+      ],
+      "firstStep": "Go to Darkfall Cave, a short walk from Karthwasten, to find Auriel's Bow",
+      "takesYou": [
+        {
+          "place": "Darkfall Cave",
+          "hold": "not given in the records (nearest town Karthwasten, nearest city Markarth)",
+          "why": "the vision's cave; Knight-Paladin Gelebor waits inside"
+        },
+        {
+          "place": "Darkfall Passage",
+          "hold": "none given",
+          "why": "get through it alive; Prelate Sidanyis blesses the Initiate's Ewer at the first basin here"
+        },
+        {
+          "place": "Forgotten Vale",
+          "hold": "none given",
+          "why": "fill the rest of the Initiate's Ewer at the basins where the other four prelates appear, then get into the Chantry's Inner Sanctum"
+        },
+        {
+          "place": "the Inner Sanctum of the Chantry of Auri-El",
+          "hold": "none given (Forgotten Vale)",
+          "why": "confront and kill Arch-Curate Vyrthur, then take Auriel's Bow"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Locate Auriel's Bow",
+            "Speak to Gelebor",
+            "Survive Darkfall Passage",
+            "Fill the Initiate's Ewer (0/5)",
+            "Gain entry to the Inner Sanctum",
+            "Locate Arch-Curate Vyrthur",
+            "Confront Arch-Curate Vyrthur",
+            "Slay Arch-Curate Vyrthur",
+            "Speak to Gelebor",
+            "Retrieve Auriel's Bow"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Auriel's Bow (bow)",
+          "when": "picked up at the end, once Vyrthur is dead"
+        }
+      ],
+      "type": "Dawnguard",
+      "opens": [
+        "Kindred Judgment"
+      ],
+      "closes": [
+        "Arch-Curate Vyrthur dies"
+      ],
+      "people": [
+        {
+          "name": "Knight-Paladin Gelebor",
+          "role": "snow elf knight in Darkfall Cave; asks you to kill his brother Vyrthur and gives you the Initiate's Ewer"
+        },
+        {
+          "name": "Arch-Curate Vyrthur",
+          "role": "Gelebor's brother, in the Inner Sanctum; the Tyranny of the Sun was his revenge on Auriel; you must kill him"
+        },
+        {
+          "name": "Prelate Sidanyis",
+          "role": "spirit in Darkfall Passage; blesses the Initiate's Ewer at the first basin"
+        },
+        {
+          "name": "Prelate Athring, Prelate Celegriath, Prelate Nirilor, Prelate Edhelbor",
+          "role": "spirits in the Forgotten Vale; each one blesses the ewer at a basin"
+        },
+        {
+          "name": "Serana",
+          "role": "travels with you; Vyrthur needs her blood for his ritual"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "rewards",
+          "why": "The quest script also grants an ability named 'Auriel's Bow' and a perk named 'Auriel's Arrows Blocker'. These files don't describe what either one does."
+        },
+        {
+          "field": "takesYou",
+          "why": "The places index gives no hold for Darkfall Cave, Darkfall Passage or the Forgotten Vale. Karthwasten and Markarth are just the nearest towns by distance."
+        },
+        {
+          "field": "starts",
+          "why": "No start event for this quest is in these files. The start comes from its first log entry, which says the vision points to Darkfall Cave."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:002853 stages 10/50/100/110/200, objectives 20-130",
+        "Gelebor giver INFO Dawnguard.esm:002B3F (REF Dawnguard.esm:00A878, Darkfall Cave)",
+        "global DLC1VQ07EwerTotal = 5",
+        "script DLC1_QF_DLC1VQ07_01002853 props DLC1AbAurielsBow (SPEL Dawnguard.esm:007EBC), DLC1AurielsArrowBlocker (PERK Dawnguard.esm:01A189)",
+        "prelate INFOs Dawnguard.esm:014F3F/002B40/014F40/014F41/014F42",
+        "LCTN Dawnguard.esm:00A87A Darkfall Cave, Dawnguard.esm:00A87C Forgotten Vale",
+        "DLC1VQ06 objective 60 'Speak to Serana'",
+        "aliases DLC1VQ07Basin00-04Alias, DLC1VQ07TempleBasinAlias",
+        "INFO Dawnguard.esm:0071C5 Gelebor after Vyrthur"
+      ]
+    },
+    {
+      "edid": "DLC1VQ08",
+      "name": "Kindred Judgment",
+      "plugin": "Dawnguard.esm (also edited by Unofficial Skyrim Special Edition Patch.esp and Requiem.esp; last edited by Requiem_VampireCollection.esp)",
+      "canDo": "by itself",
+      "canDoWhy": "It begins once you have Auriel's Bow at the end of Touching the Sky.",
+      "needs": [
+        {
+          "what": "Finish Touching the Sky (have Auriel's Bow)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Serana",
+          "where": "with you, after you take Auriel's Bow in the Forgotten Vale",
+          "how": "With the bow in hand, the quest begins and tells you to speak to Serana. On the Dawnguard side you then report to Isran at Fort Dawnguard, who gathers the fort for the attack and says to meet outside Castle Volkihar."
+        }
+      ],
+      "firstStep": "Speak to Serana",
+      "takesYou": [
+        {
+          "place": "Fort Dawnguard, in Dayspring Canyon",
+          "hold": "not given in the records",
+          "why": "Dawnguard side: speak to Isran and rally the Dawnguard"
+        },
+        {
+          "place": "Castle Volkihar",
+          "hold": "not given in the records (nearest town Dragon Bridge, nearest city Solitude)",
+          "why": "confront Lord Harkon with Auriel's Bow"
+        },
+        {
+          "place": "Volkihar Cathedral, in Castle Volkihar",
+          "hold": "not given",
+          "why": "the fight with Harkon"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Dawnguard side",
+          "leadsTo": "Rally the Dawnguard with Isran, then go to Castle Volkihar to stop Harkon and the prophecy"
+        },
+        {
+          "choice": "Volkihar vampire side",
+          "leadsTo": "Confront Harkon yourself and 'reshape the prophecy as I see fit'; Harkon still has to die"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "Dawnguard",
+          "objectives": [
+            "Speak to Serana",
+            "Speak to Isran",
+            "Confront Harkon with Auriel's Bow",
+            "Slay Harkon"
+          ]
+        },
+        {
+          "branch": "Volkihar vampires",
+          "objectives": [
+            "Speak to Serana",
+            "Confront Harkon with Auriel's Bow",
+            "Slay Harkon"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Vampire Lord Ornament (armour)",
+          "when": "from the quest script; when, and for which side, isn't shown"
+        }
+      ],
+      "type": "Dawnguard",
+      "opens": [
+        "Disappearing in the Dark (Betalille's Hammerfell quests): it needs Kindred Judgment done and No Guard Is Safe done"
+      ],
+      "closes": [
+        "Lord Harkon dies"
+      ],
+      "people": [
+        {
+          "name": "Serana",
+          "role": "talk to her first"
+        },
+        {
+          "name": "Isran",
+          "role": "Dawnguard leader at Fort Dawnguard; rallies the fort for the attack"
+        },
+        {
+          "name": "Sorine Jurard, Gunmar, Florentius Baenius",
+          "role": "Dawnguard members at Fort Dawnguard with their own lines before the assault"
+        },
+        {
+          "name": "Agmaer, Beleval, Celann, Durak, Ingjard",
+          "role": "Dawnguard members at Fort Dawnguard who join the assault"
+        },
+        {
+          "name": "Lord Harkon",
+          "role": "vampire lord of Castle Volkihar; you must slay him"
+        },
+        {
+          "name": "Vingalmo, Orthjolf, Feran Sadri, Garan Marethi, Fura Bloodmouth, Hestla, Ronthil, Rargal Thrallmaster, Salonia Caelia, Stalf, Modhna, Namasur",
+          "role": "the Volkihar court at Castle Volkihar; part of this quest"
+        },
+        {
+          "name": "Garmr, CuSith",
+          "role": "death hounds at Castle Volkihar"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "steps",
+          "why": "The records have one objective list. I left 'Speak to Isran' out of the vampire branch because the Isran lines belong to the Dawnguard side, but nothing in these files says so outright."
+        },
+        {
+          "field": "people",
+          "why": "The Volkihar court are all aliases in this quest, but these files don't say whether you fight them (Dawnguard side) or they fight beside you."
+        },
+        {
+          "field": "rewards",
+          "why": "The Vampire Lord Ornament isn't in the items list, so what it does isn't known here. Which side gets it isn't shown either."
+        },
+        {
+          "field": "plugin",
+          "why": "Requiem.esp and Requiem_VampireCollection.esp both edit this quest. These files don't show what they change. 'Last' assumes the editedBy list is in load order."
+        },
+        {
+          "field": "where",
+          "why": "Isran and the others are given by their placement at Fort Dawnguard (moved by Lux - JK's Fort Dawnguard patch); their daily schedules aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script also holds Auriel's Bow, but you already have the bow from Touching the Sky, so it's left off. These files don't show what the script does with it."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:007C25 stages 20/200, objectives 10-40, editedBy USSEP, Requiem.esp, Requiem_VampireCollection.esp",
+        "Isran giver INFO Dawnguard.esm:019305; also Sorine/Gunmar/Florentius",
+        "INFO Dawnguard.esm:019F8F Isran 'We meet outside Castle Volkihar.'",
+        "INFO Dawnguard.esm:01930C Gunmar",
+        "Harkon battle forms in CELL Dawnguard.esm:019DFE Volkihar Cathedral",
+        "script DLC1_QF_DLC1VQ08_01007C25 props DLC1VampireLordRoyalArmor (Dawnguard.esm:011A85), DLC1AurielsBow (Dawnguard.esm:000800)",
+        "BetalillesHammerfellQuestBundle.esp:000FCA DDBQuest06 start condition",
+        "separate quest FDE Fura.esp:0009EB DLC1VQ08Test shares the name",
+        "DLC1VQ07 stage 200 (bow already in hand)",
+        "NGCDT INFO Skyrim.esm:0F11BC/0A3E65 'Kindred Judgment not completed'"
+      ]
+    },
+    {
+      "edid": "DLC1VQElder",
+      "name": "Seeking Disclosure",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Dexion tells you after his reading of Serana's scroll that two more Elder Scrolls are needed.",
+      "needs": [
+        {
+          "what": "Finish Prophet (rescue or enthrall the moth priest and have him read Serana's Elder Scroll)",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Dexion Evicus",
+          "where": "Fort Dawnguard if you're with the Dawnguard; Castle Volkihar if you're with the vampires",
+          "how": "After Dexion reads Serana's Elder Scroll at the end of Prophet, he says two more scrolls are needed: one about the dragons and one about mortal blood defying the gods."
+        }
+      ],
+      "firstStep": "Find the Elder Scroll (Dragon) and the Elder Scroll (Blood)",
+      "takesYou": [
+        {
+          "place": "The Arcanaeum, at the College of Winterhold",
+          "hold": "Winterhold",
+          "why": "ask Urag gro-Shub about the Elder Scroll (Dragon) (see Scroll Scouting)"
+        },
+        {
+          "place": "Tower of Mzark",
+          "hold": "Winterhold (per the places index)",
+          "why": "a place this quest uses, along with the main quest's Elder Scroll quests"
+        },
+        {
+          "place": "Soul Cairn",
+          "hold": "none (a plane of Oblivion)",
+          "why": "the Elder Scroll (Blood), taken there by Valerica (Chasing Echoes and Beyond Death)"
+        },
+        {
+          "place": "Fort Dawnguard or Castle Volkihar",
+          "hold": "not given",
+          "why": "bring both scrolls back to Dexion"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "Which side you joined",
+          "leadsTo": "Decides where Dexion waits: Fort Dawnguard, or a prisoner at Castle Volkihar"
+        },
+        {
+          "choice": "How you get the Elder Scroll (Dragon)",
+          "leadsTo": "If you sold it to Urag gro-Shub you buy it back; otherwise Urag or Septimus Signus points you onward (see Scroll Scouting)"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find The Elder Scroll (Dragon)",
+            "Find The Elder Scroll (Blood)",
+            "Bring both Elder Scrolls to Dexion"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dawnguard",
+      "opens": [
+        "Scroll Scouting (helps you track down the Elder Scroll (Dragon))",
+        "Unseen Visions (Dexion goes blind; you go to the Ancestor Glade)"
+      ],
+      "closes": [
+        "Dexion Evicus is left blind and can't read the scrolls any more"
+      ],
+      "people": [
+        {
+          "name": "Dexion Evicus",
+          "role": "the moth priest; needs both scrolls and goes blind reading them"
+        },
+        {
+          "name": "Urag gro-Shub",
+          "role": "College librarian in the Arcanaeum; knows about the Elder Scroll (Dragon)"
+        },
+        {
+          "name": "Serana",
+          "role": "travels with you"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "Dexion's start line has no text in these files, and his only placement is Forebears' Holdout, where he was held in Prophet. Where he waits comes from this quest's log entries."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest script holds gold and the Elder Scroll (Dragon), but these files don't show whether it gives them or takes them (for example, paying Urag)."
+        },
+        {
+          "field": "takesYou",
+          "why": "The places index ties this quest to the Tower of Mzark but doesn't say why. That tower's nearest-town figures (Stonehills and Whiterun, both under a kilometre) don't fit together, so treat its hold as unconfirmed."
+        },
+        {
+          "field": "needs",
+          "why": "The order between this quest and Beyond Death isn't fixed in these files: Chasing Echoes and Beyond Death look like the way to the Elder Scroll (Blood) while this one is open."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:005DA9 stages 10/40/200, objectives 10-30",
+        "Dexion giver INFO Dawnguard.esm:003D96",
+        "Urag alias, REF Skyrim.esm:01C1B4 in The Arcanaeum",
+        "Urag INFO Skyrim.esm:0AF0E6: Dawnguard.esm adds this quest's stage >= 10 as an OR to Elder Knowledge's stage 50; USSEP makes it stop once stage 20 is done",
+        "DLC1VQ03Hunter/Vampire stage 200 (two more Elder Scrolls)",
+        "LCTN Skyrim.esm:02D51D Tower of Mzark quest link",
+        "script DLC1_QF_DLC1VQElder_01005DA9 props pGold, pDLC1ElderScrollDragon"
+      ]
+    },
+    {
+      "edid": "DLC1VQElderHandler",
+      "name": "Scroll Scouting",
+      "plugin": "Dawnguard.esm",
+      "canDo": "by itself",
+      "canDoWhy": "Shows up during Seeking Disclosure to point you to the College of Winterhold for the Elder Scroll (Dragon).",
+      "needs": [
+        {
+          "what": "Seeking Disclosure started, and the Elder Scroll (Dragon) not yet in hand",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "",
+          "how": "Comes up during Seeking Disclosure. The log says you've been told to ask at the College of Winterhold. If you sold the scroll to Urag gro-Shub earlier, it tells you to go back and buy it."
+        }
+      ],
+      "firstStep": "Ask Urag gro-Shub in the Arcanaeum at the College of Winterhold about the Elder Scroll (Dragon)",
+      "takesYou": [
+        {
+          "place": "The Arcanaeum, at the College of Winterhold",
+          "hold": "Winterhold",
+          "why": "talk to Urag gro-Shub, or buy the scroll back from him"
+        },
+        {
+          "place": "Septimus Signus' Outpost",
+          "hold": "Winterhold (a short walk from Winterhold)",
+          "why": "one way it can end: meeting Septimus Signus, who knows about the scroll"
+        }
+      ],
+      "choices": [
+        {
+          "choice": "You sold the Elder Scroll (Dragon) to Urag gro-Shub earlier",
+          "leadsTo": "Buy it back from him"
+        },
+        {
+          "choice": "You never had the scroll",
+          "leadsTo": "Ends once you've talked with Urag, or once you meet Septimus Signus; then you go after the scroll in Seeking Disclosure"
+        }
+      ],
+      "steps": [
+        {
+          "branch": "find out where it is",
+          "objectives": [
+            "Discover the location of the Elder Scroll (Dragon)"
+          ]
+        },
+        {
+          "branch": "you sold it to Urag",
+          "objectives": [
+            "Buy back the Elder Scroll (Dragon) from Urag gro-Shub"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Dawnguard",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Urag gro-Shub",
+          "role": "librarian in the Arcanaeum at the College of Winterhold"
+        },
+        {
+          "name": "Septimus Signus",
+          "role": "strange old man at Septimus Signus' Outpost who knows about the scroll"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No start event or conditions for this quest are in these files. When it appears comes from its log entries."
+        },
+        {
+          "field": "where",
+          "why": "Urag is given by his placement in the Arcanaeum and Septimus by his placement at his outpost; their daily schedules aren't in these files."
+        },
+        {
+          "field": "choices",
+          "why": "The three endings (talked with Urag, bought from Urag, met Septimus) are set by a global. These files don't show what sets it."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:0181BF stages 20/30/200 (three endings by global DLC1VQElderHandlerGlob 1/2/3), objectives 10/20",
+        "Urag alias, REF Skyrim.esm:01C1B4 (The Arcanaeum)",
+        "NPC Skyrim.esm:02D514 Septimus Signus, Septimus Signus' Outpost (LCTN Skyrim.esm:02D51C)"
+      ]
+    },
+    {
+      "edid": "DLC1VQSaint",
+      "name": "Impatience of a Saint",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Talk to Jiub's soul in the Soul Cairn; he asks you to find his lost pages.",
+      "needs": [
+        {
+          "what": "Be in the Soul Cairn (reached through Chasing Echoes and Beyond Death)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Jiub",
+          "where": "the Soul Cairn",
+          "how": "Talk to Jiub, a Dunmer soul writing the second volume of his life story. He has lost the notes from his first volume and asks you to find the pages scattered across the Soul Cairn."
+        }
+      ],
+      "firstStep": "Find the ten pages of Saint Jiub's Opus around the Soul Cairn",
+      "takesYou": [
+        {
+          "place": "Soul Cairn",
+          "hold": "none (a plane of Oblivion)",
+          "why": "pages are spread across the whole Soul Cairn"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find pages from Saint Jiub's Opus (0/10)",
+            "Return to Jiub"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Locket of Saint Jiub (amulet): \"Saint Jiub's grace invigorates your muscles, increasing your Stamina and Carry Weight capacity by 50 points.\"",
+          "when": "when you hand Jiub all the pages"
+        },
+        {
+          "what": "Saint Jiub's Opus (book)",
+          "when": "when you hand Jiub all the pages"
+        }
+      ],
+      "type": "Dawnguard",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Jiub",
+          "role": "Dunmer soul in the Soul Cairn who lost his notes"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "Jiub is placed in a different Soul Cairn cell from Valerica and the Keepers, but these files give no landmark for it."
+        },
+        {
+          "field": "takesYou",
+          "why": "The ten pages are aliases with no placement in these files."
+        },
+        {
+          "field": "needs",
+          "why": "Jiub's dialogue conditions aren't in these files. Only his placement in the Soul Cairn ties this quest to the Dawnguard story."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:01400B stages 20/30/200, objectives 10/20",
+        "Jiub giver INFO Dawnguard.esm:01414D (REF Dawnguard.esm:01401A, CELL Dawnguard.esm:002C96)",
+        "global DLC1VQSaintTotal = 10",
+        "script DLC1_QF_DLC1VQSaint_0101400B props pDLC1VQSaintFinalBook (Dawnguard.esm:003F79), pDLC1JiubNecklace (ARMO Dawnguard.esm:018B91)"
+      ]
+    },
+    {
+      "edid": "DLC01SoulCairnHorseQuest2",
+      "name": "Soul Cairn Horse Quest",
+      "plugin": "Dawnguard.esm",
+      "canDo": "talk",
+      "canDoWhy": "A soul in the Soul Cairn asks you to find Arvak's skull.",
+      "needs": [
+        {
+          "what": "Be in the Soul Cairn (reached through Chasing Echoes and Beyond Death)",
+          "kind": "other"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Soul (a rider's soul)",
+          "where": "the Soul Cairn",
+          "how": "Talk to the soul. The quest then asks you to find Arvak's skull in the Soul Cairn."
+        }
+      ],
+      "firstStep": "Find Arvak's skull in the Soul Cairn",
+      "takesYou": [
+        {
+          "place": "Soul Cairn",
+          "hold": "none (a plane of Oblivion)",
+          "why": "find Arvak's skull and bring it back"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Find Arvak's skull in the Soul Cairn",
+            "Retrieve Arvak's skull",
+            "Return Arvak's skull"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Summon Arvak (spell)",
+          "when": "from the quest script; the step that gives it isn't shown"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Soul",
+          "role": "the rider's soul who starts the quest; placed in two spots in the Soul Cairn"
+        },
+        {
+          "name": "Arvak",
+          "role": "the horse whose skull you look for"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "where",
+          "why": "The soul is placed at two points in the Soul Cairn's outdoor space. These files give no landmark for either."
+        },
+        {
+          "field": "steps",
+          "why": "Where the skull lies and who 'Return Arvak's skull' means (probably the soul, but not stated) aren't in these files."
+        },
+        {
+          "field": "needs",
+          "why": "The soul's dialogue conditions aren't in these files."
+        },
+        {
+          "field": "rewards",
+          "why": "The quest has no log entries and these files don't show which stage gives Summon Arvak."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:0163CD objectives 20/100/150, no log entries",
+        "giver NPC Dawnguard.esm:002B0D 'Soul', INFO Dawnguard.esm:002B0A, REFs Dawnguard.esm:002B0E/011F9E in Soul Cairn",
+        "script DLC1_QF_DLC01SoulCairnHorseQu_010163CD prop SummonAvrak (SPEL Dawnguard.esm:00C600 Summon Arvak)"
+      ]
+    },
+    {
+      "edid": "DLC1VQDragon",
+      "name": "Durnehviir",
+      "plugin": "Dawnguard.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+      "canDo": "talk",
+      "canDoWhy": "Make a pact with the dragon Durnehviir at his lair in the Soul Cairn.",
+      "needs": [
+        {
+          "what": "Fight Durnehviir in Beyond Death",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "Durnehviir",
+          "where": "his lair in the Soul Cairn",
+          "how": "Speak to him. You agree to summon him to Tamriel now and then, and in return he fights at your side and teaches you his shout."
+        }
+      ],
+      "firstStep": "Summon Durnehviir in Tamriel",
+      "takesYou": [
+        {
+          "place": "Durnehviir's lair in the Soul Cairn",
+          "hold": "none (a plane of Oblivion)",
+          "why": "make the pact"
+        },
+        {
+          "place": "anywhere in Tamriel (Skyrim)",
+          "hold": "any",
+          "why": "summon him; each time he teaches you another word of Soul Tear"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Summon Durnehviir in Tamriel",
+            "Learn the first word of the Soul Tear shout",
+            "Learn the second word of the Soul Tear shout",
+            "Learn the final word of the Soul Tear shout"
+          ]
+        }
+      ],
+      "rewards": [
+        {
+          "what": "Summon Durnehviir (shout)",
+          "when": "with the pact, so you can call him to Tamriel"
+        },
+        {
+          "what": "Soul Tear (shout), all three words",
+          "when": "one word at a time, from Durnehviir after you summon him in Tamriel"
+        },
+        {
+          "what": "Durnehviir fights at your side when summoned",
+          "when": "after the pact"
+        }
+      ],
+      "type": "Misc",
+      "opens": [],
+      "closes": [],
+      "people": [
+        {
+          "name": "Durnehviir",
+          "role": "ancient dragon of the Soul Cairn; makes the pact and teaches you Soul Tear"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No start dialogue or conditions for this quest are in these files. The pact comes from its first log entry, and 'his lair' from the Durnehviir Misc Objective Handler's objective."
+        },
+        {
+          "field": "rewards",
+          "why": "The Summon Durnehviir and Soul Tear shouts exist in the powers list, but these files don't show the script that grants them. They come from the objectives and the log entry about teaching his shout."
+        },
+        {
+          "field": "needs",
+          "why": "Tying this to the Beyond Death fight comes from the story order. No condition linking the two is in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:00C73A stages 30/60, objectives 10-40",
+        "SHOU Dawnguard.esm:0030D2 Summon Durnehviir, SHOU Dawnguard.esm:007CB6 Soul Tear (powers list)",
+        "DLC1VQ05 objective 70 'Slay Durnehviir', stage 80",
+        "DLC1VQDragonMisc objective 10"
+      ]
+    },
+    {
+      "edid": "DLC1VQDragonMisc",
+      "name": "Durnehviir Misc Objective Handler",
+      "plugin": "Dawnguard.esm",
+      "canDo": "by itself",
+      "canDoWhy": "A miscellaneous objective that tells you to go and speak to Durnehviir at his lair in the Soul Cairn.",
+      "needs": [
+        {
+          "what": "Fight Durnehviir in Beyond Death",
+          "kind": "quest"
+        }
+      ],
+      "starts": [
+        {
+          "who": "",
+          "where": "",
+          "how": "The objective appears on its own and points you to Durnehviir's lair in the Soul Cairn."
+        }
+      ],
+      "firstStep": "Speak to Durnehviir at his lair in the Soul Cairn",
+      "takesYou": [
+        {
+          "place": "Durnehviir's lair in the Soul Cairn",
+          "hold": "none (a plane of Oblivion)",
+          "why": "talk to Durnehviir"
+        }
+      ],
+      "choices": [],
+      "steps": [
+        {
+          "branch": "main",
+          "objectives": [
+            "Speak to Durnehviir at his lair in the Soul Cairn"
+          ]
+        }
+      ],
+      "rewards": [],
+      "type": "Misc",
+      "opens": [
+        "Durnehviir (the pact)"
+      ],
+      "closes": [],
+      "people": [
+        {
+          "name": "Durnehviir",
+          "role": "the dragon you're sent to talk to"
+        }
+      ],
+      "unsure": [
+        {
+          "field": "starts",
+          "why": "No start event or conditions are in these files, so when the objective appears isn't known. It has no log entries, only the one objective."
+        },
+        {
+          "field": "needs",
+          "why": "Tying this to the Beyond Death fight comes from the story order. No condition linking the two is in these files."
+        }
+      ],
+      "evidence": [
+        "QUST Dawnguard.esm:01119F objective 10, aliases DLC1VQDragonMiscAlias, DLC1VQDragonMiscSCAlias (Soul Cairn)"
+      ]
+    }
+  ]
+}
