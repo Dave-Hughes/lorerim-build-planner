@@ -1,0 +1,1156 @@
+{
+ "checks": [
+  {
+   "edid": "FreeformKolskeggrA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Kolskeggr's giver line is Pavo's (GetIsID Pavo Attius), held open only while the stage is below 21; quest_givers shows no story-event start and quest_starts has no line for this id. A talk quest."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Pavo's line carries no condition but the stage-below-21 gate, and no start line in quest_starts names Kolskeggr; nothing to bring or finish first."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Pavo's packages top first: LeftHandMineIntroPavoScenePackage at Left Hand Mine until that scene's stage 100, Kolskeggr work/sleep/sandbox only at Kolskeggr stage 100, then LefthandMineRestInBarracksPackage with no conditions. So he's at Left Hand Mine, not his placed Pavo's House, when you meet him."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Kolskeggr's objective 10 reads 'Clear the Forsworn from Kolskeggr Mine', stages 10, 15, 20, 100."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Kolskeggr's aliases Boss and KolskeggrMine, then objective 20 'Tell Pavo that Kolskeggr Mine is cleared' while Pavo still sits in the Left Hand barracks package."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Kolskeggr has two objectives (10 clear, 20 tell Pavo) over stages 10, 15, 20, 100; no second ending stage and no alternate alias."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Kolskeggr's fragment QF_FreeformKolskeggrA carries FavorRewardGoldLarge (a leveled gold list) and Gold; which stage pays and the amount aren't in quest_givers."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Kolskeggr's id only turns up in Pavo's and Gat's Kolskeggr packages (work 8x12, sleep, house sandbox at stage 100) and the Miscellaneous bucket in questlines; no other quest's start or stage points at it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Kolskeggr's people, Pavo and Gat, are neither essential nor protected; the only packages keyed to it move them to Kolskeggr at stage 100, which locks nothing."
+    }
+   }
+  },
+  {
+   "edid": "FreeformSoljundsSinkholeA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Soljund's giver line INFO 061348 is Perth's (GetIsID), open below stage 21; no event node in quest_givers and no quest_starts line for the sinkhole."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Perth's line has only the stage-below-21 gate; the sinkhole id appears in no quest_starts line, so no level, quest or faction shows."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Perth's top package FreeformSoljundsPerthStandOutsidePackage puts him at Soljund's Sinkhole before stage 5; his placement is the Miner's House there. Objective 10's own words give 'the eastern edge of The Reach'."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Soljund's objective 10 is the game's own sentence ending 'Clear the mine of draugr.'; stages 5, 10, 20, 100."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Soljund's aliases Boss and SoljundsSinkholeMine; objective 20 'Tell Perth that the Draugr are dead', with Perth on FreeformSoljundsPerthStandOutsidePackage2 (7 am, 12 hours) below stage 100."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The sinkhole runs objective 10 then 20 through stages 5, 10, 20, 100, with one boss alias and no branch stage."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Soljund's fragment QF_FreeformSoljundsSinkholeA carries FavorRewardGoldLarge and Gold001; no amount or paying stage shows in quest_givers."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "The sinkhole's id is keyed only in Perth's and Tuthul's mine packages (NoWork below 100, WorkMiner at 100) and its questlines bucket; no follow-up quest names it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Perth and Tuthul, the sinkhole's only people, aren't essential; their packages keyed to it just switch from idle to mining at stage 100."
+    }
+   }
+  },
+  {
+   "edid": "FreeformOldHroldanB",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Old Hroldan's quest_givers start is the story node FreeformOldHroldanNode on a change-location event, not a dialogue line; it starts by itself."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Old Hroldan's event node shows no conditions and Eydis's line only the stage-below-11 gate; quest_starts has no line for this id."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Eydis's line INFO 068943 (GetIsID) is open below stage 11; she's on DefaultSandboxHomeowner at the Old Hroldan Inn, and the Ghost (no packages) is placed in the same inn cell."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Old Hroldan's only objective, 10, 'Bring Hjalti's Sword to the Ghost of Old Hroldan'; stages 5, 10, 15, 20, 100."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Old Hroldan's aliases Dungeon, BossContainer and MapMarker get filled when it runs, naming no fixed dungeon; the inn is in the Reach in places_raw."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Old Hroldan has the single sword objective and one ghost alias; stages 5 to 100 show no split ending."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "quest_givers lists no reward properties at all for Old Hroldan; items_raw has two Hjalti's Sword records (base and ArteFake), so empty plus the unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Old Hroldan's id isn't a condition on anyone's package and no quest_starts line names it; only the Miscellaneous bucket lists it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Eydis and the Ghost of Old Hroldan, its only people, are not essential and no package of theirs is keyed to the quest."
+    }
+   }
+  },
+  {
+   "edid": "FreeformDushnikhYalA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Gharol fills the QuestGiver alias and the quest is named for her; the only dialogue line found, INFO 099763, is Lash's (alias Lash, below stage 11), which is the hand-in."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "places_raw's entry line for Dushnikh Yal tells non-Orcs who aren't Blood-Kin to stay out; whether Gharol's offer checks that isn't shown, so unsure."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Gharol's packages: DushnikYalGharolBlacksmithPackage8x12 at Dushnikh Yal, DushnikhYalGharolLonghouseEatPackage20x4 in Burguk's Longhouse, default sleep at her longhouse placement."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Gharol's Message has one objective, 10, 'Deliver Gharol's sword to Lash'; stages 10, 20, 200."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Lash is placed in Karthwasten's Miner's Barracks and works Fenn's Gulch Mine 8x12, or outside Sanuarach Mine once that quest reaches 100."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Gharol's Message goes straight from stage 10 to 20 to 200 with the one delivery objective and a Sword alias."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The fragment for Gharol's Message (script QF_FreeformShugurzburA_0009976E) holds FavorRewardGoldSmall and Gold, no amount; the Sword alias is the item you hand to Lash, not a reward."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "No package keys on Gharol's Message and quest_starts has no line pointing from it; Lash's own Sanuarach Mine is separate and not started by it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Gharol and Lash are both non-essential; Lash also sits in Sanuarach Mine's aliases, but nothing in this quest touches that."
+    }
+   }
+  },
+  {
+   "edid": "SolitudeFreeform01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Angeline's line INFO 0E8BCD (GetIsID) is open only below stage 1, and quest_starts' odd-jobs-haafingar line opens with this quest; talk to her."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The odd-jobs-haafingar line lists no dialogue or event conditions for No News is Good News; the USSEP edit it notes is to a different line, 034B39."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Angeline's packages SolitudeAromaticsWorkDay8x12 and AIOSoAngelineWeekend both sit in Angeline's Aromatics; vendor hours 8 to 20."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "No News's objective 10 filled with Aldis and Angeline: 'Ask Captain Aldis for information about Angeline Morrard's daughter'; stages 0, 5, 10, 20, 30, 200."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Aldis's packages: GuardSolitudeImperialDaySleep in Castle Dour starts at 8 pm for 12 hours; by day SolitudeValdTrainingPackage keeps him outdoors in Solitude. Castle Dour only finds him at night; by day look for him out in town."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "No News has objectives 10 (ask Aldis) and 20 (tell Angeline) and one completing stage, 200; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "No News's fragment QF_SolitudeFreeform01 has a single Gold property; quest_givers gives no amount."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "No News's id is keyed in no package; odd-jobs-haafingar opens with it, but its doors and cells are only Castle Dour and Angeline's Aromatics."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Angeline and Aldis aren't essential; Aldis is also in For the Good of Morthal, Lights Out! and Rare Gifts, and nothing here kills or moves him."
+    }
+   }
+  },
+  {
+   "edid": "SolitudeFreeform02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Taarie's line INFO 0C7B99 (GetIsID) is open below stage 10; no event start for Fit for a Jarl."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Taarie's line shows only the stage-below-10 gate and quest_starts has no line naming Fit for a Jarl."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Taarie's packages, top first: the opening wait (execution stage below 40), Winking Skeever 8 pm for 3.5 hours, SolitudeTaarieCarryFirewood8x4 at 8 am for 4 hours when it isn't raining, then Radiant Raiments 8x12. On dry mornings she's out carrying firewood until noon, not in the shop."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Fit for a Jarl's objective 10 filled: 'Speak to Elisif the Fair with Taarie's outfit on'; stages 0, 10, 20, 30, 200."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Elisif's SolitudePalaceCourt6x16 and Blue Palace placement for the outfit; the turn-in at Radiant Raiment by Taarie's work package."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Fit for a Jarl runs objectives 10 and 20 through stages 0 to 200 with aliases QuestGiver, target and Outfit; no alternate ending."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Fit for a Jarl's fragment QF_SolitudeFreeform02 has Gold and nothing else; the Outfit alias isn't a reward property, hence the unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Fit for a Jarl's id is a condition on no one's package; Taarie's other alias, Solitude in Company, isn't pointed at by it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Elisif is essential and Taarie isn't killed or moved by anything keyed to Fit for a Jarl."
+    }
+   }
+  },
+  {
+   "edid": "SolitudeFreeform03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Svari's line INFO 0C7D34 (GetIsID) is open below stage 10, the only giver line below the first objective."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Roggvir fills the DeadPerson alias and his one package, SolitudeOpeningPrisonerWait, holds until the execution scene completes; kept with the reader's unsure note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Greta's line is open below stage 11, which covers stage 10, the 'Speak to Greta' step itself; that's the first step, not a second way to start. Svari is the only giver line below stage 10. Greta's packages also put her by a well in town 3 to 6 pm and near the Blue Palace evenings once Tending the Flames is done."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Return to Grace's objective 10 filled: 'Speak to Greta about going to the Temple of Divines'; stages 0, 10, 20, 30, 40, 200."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Greta placed in Addvar's House; Roggvir placed outdoors in Solitude in cell 037EE9, the same cell as Angeline's Aromatics' door."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Return to Grace's three objectives (10 Greta, 20 take the amulet off Roggvir, 30 return it) run in a line to stage 200."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Return to Grace's fragment QF_SolitudeFreeform03 holds Gold only; the Amulet of Talos is the Item alias you give back."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Return to Grace is keyed in SolitudeTempleVisit6x9 (Greta, Kirsta, Rikvald, once it's completed), which sends them to the temple; no quest is started by it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Svari, Greta and Roggvir are all non-essential, and the only package tied to Return to Grace adds temple visits rather than removing anyone."
+    }
+   }
+  },
+  {
+   "edid": "SolitudeFreeform04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Sorex fills Delivery's Questgiver alias; the one line found, INFO 0D0553, is Falk's (GetIsID, below stage 11), the hand-in."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Delivery's only line is Falk's hand-in with the stage-below-11 gate, and no quest_starts line names it."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Sorex is placed in the Winking Skeever, SolitudeSorexWorking8x16 from 8 am, with dry-day outings near the Blue Palace 7 to 9 am and around town 4 to 7 pm above it."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Delivery's objective 10 with QuestItem filled as Stros M'Kai Rum and Target as Falk Firebeard; stages 10, 20, 200."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Falk's SolitudePalaceCourtStewardSandbox6x16 in the Blue Palace, with FalkBrylingSecretMeeting2x2 at Bryling's House as the one gap."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Delivery has just objective 10 and stages 10, 20, 200; nothing forks."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Delivery's fragment QF_SolitudeFreeform04 has a Gold property, no amount shown."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Delivery's id is in no package condition; Sorex's later aliases (Prophet) aren't triggered from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Falk is essential and Sorex isn't, but no package keys on Delivery, so nothing is shut."
+    }
+   }
+  },
+  {
+   "edid": "SolitudeFreeform06",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Evette's line INFO 0D69B8 (GetIsID) is open below stage 10; no event start."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Evette's line has only the stage-below-10 gate; quest_starts has nothing for The Spiced Wine."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Vittoria's line is open below stage 11, which covers stage 10, the 'Convince Vittoria' step; nothing shows her starting it. And SolitudeFruitSellerWork6x14 only points at Solitude, no market is named; 'market' dropped."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "The Spiced Wine's objective 10 filled: 'Convince Vittoria Vici to release the Spiced Wine shipment'; stages 10, 20, 30, 200."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "the turn-in place 'Solitude market' isn't in the records; Evette's work package only points at Solitude. Vittoria's SolitudeWarehouseWork8x12 at the East Empire Company Warehouse matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "The Spiced Wine shows objectives 10 and 20 and stages 10, 20, 30, 200, with only Questgiver and Target aliases; how you persuade her isn't in the records."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The Spiced Wine's fragment QF_SolitudeFreeform06 carries Gold; no sum is recorded."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "No package keys on The Spiced Wine and nothing in quest_starts follows from it."
+    },
+    "closes": {
+     "verdict": "unsure",
+     "note": "Vittoria is essential in her record but is the target of Bound Until Death (alias VittoriaViciAlias); if that contract is done first this quest likely can't finish. Kept unsure."
+    }
+   }
+  },
+  {
+   "edid": "SolitudeFreeform07",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Elisif's line INFO 0E728E (GetIsID) is open only below stage 1; talk to her."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Elisif's line shows no condition beyond stage below 1 and quest_starts has no line for Elisif's Tribute; unsure note kept."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Elisif is placed in the Blue Palace and runs SolitudePalaceCourt6x16 with meals at 7 and 12."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Elisif's Tribute objective 10, Item filled as Torygg's War Horn: 'Take Torygg's War Horn to the Shrine of Talos for Elisif the Fair'; stages 0, 10, 20, 30, 200."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Elisif's own lines (INFO 0E73B5, 0E73B7) say 'place it at a Shrine of Talos', any one; the Location alias is filled when the quest runs. The places file's only 'Shrine of Talos' is Whiterun's and is linked by name only. Place now 'a Shrine of Talos', hold left blank rather than 'unknown'. Also: Agent Lorcalin, a Thalmor Justiciar in the player-enemy faction, has a package (dunPOIRaidingThalmorSandbox) keyed to this quest's stages 10 to 20, after travelling to a shrine near Shimmermist Cave; added to people and unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Elisif's Tribute has objectives 10 (horn to the shrine) and 20 ('Talk to Elisif') and aliases for the horn activator and placed horn; no fork."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Elisif's Tribute fragment QF_SolitudeFreeform07 holds Gold with no amount."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Elisif's Tribute is keyed only in Agent Lorcalin's raiding package; no quest_starts line follows from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Elisif is essential; the one package keyed to this quest is Lorcalin's raid while it runs, which ends at stage 20 rather than shutting anything."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "FreeformKolskeggrA",
+   "name": "Kolskeggr Mine",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Pavo Attius asks you to clear the Forsworn out of Kolskeggr Mine.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Pavo Attius",
+     "where": "Left Hand Mine, in the Reach: he rests in the Left Hand Miner's Barracks until Kolskeggr is cleared",
+     "how": "Talk to Pavo; he wants the Forsworn driven out of Kolskeggr Mine so he can work it again."
+    }
+   ],
+   "firstStep": "Clear the Forsworn from Kolskeggr Mine",
+   "takesYou": [
+    {
+     "place": "Kolskeggr Mine",
+     "hold": "The Reach",
+     "why": "kill the Forsworn holding the mine, including their leader"
+    },
+    {
+     "place": "Left Hand Mine",
+     "hold": "The Reach",
+     "why": "tell Pavo the mine is clear"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Clear the Forsworn from Kolskeggr Mine",
+      "Tell Pavo that Kolskeggr Mine is cleared"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (a large favor reward)",
+     "when": "when you tell Pavo the mine is cleared"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Pavo Attius",
+     "role": "quest giver; once the mine is cleared he works Kolskeggr Mine from 8 am for 12 hours and sleeps in Pavo's House by the mine"
+    },
+    {
+     "name": "Gat gro-Shargakh",
+     "role": "works with Pavo; keeps the same hours as Pavo, at Left Hand Mine before and at Kolskeggr after"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "the records place Pavo in Pavo's House, but his packages keep him at Left Hand Mine (its intro scene, then the miners' barracks) until Kolskeggr is cleared; the exact spot by day isn't decoded"
+    },
+    {
+     "field": "steps",
+     "why": "Pavo's quest dialogue stays open until the turn-in, so clearing the mine before talking to him may also work; the records here don't show the dialogue text"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:01FD72 FreeformKolskeggrA; stages 10,15,20,100; objectives 10,20; aliases Boss, Pavo, Gat, KolskeggrMine",
+    "giver Pavo Attius Skyrim.esm:0133B1 INFO Skyrim.esm:0DEC69 stageBelow 21",
+    "Pavo packages: LeftHandMineIntroPavoScenePackage (GetStageDone Skyrim.esm:0987A4 100 == 0), KolskeggrWorkMinePackage8x12 / KolskeggrSleepPackage24x8 / KolskeggrDefaultSandboxMinerHousePackage (GetStage FreeformKolskeggrA == 100), LefthandMineRestInBarracksPackage (no conditions)",
+    "Gat gro-Shargakh Skyrim.esm:0199B7 same package set",
+    "rewards: QF_FreeformKolskeggrA_0001FD72 FavorRewardGoldLarge Skyrim.esm:04A41B, Gold"
+   ]
+  },
+  {
+   "edid": "FreeformSoljundsSinkholeA",
+   "name": "Soljund's Sinkhole",
+   "plugin": "Skyrim.esm (last edited by Big Tweaks.esp; also edited by Unofficial Skyrim Special Edition Patch.esp and TheChoiceIsYours.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Perth, a miner at Soljund's Sinkhole, asks you to clear the draugr out of the mine.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Perth",
+     "where": "standing outside the mine at Soljund's Sinkhole, on the eastern edge of the Reach (he lives in the Miner's House there)",
+     "how": "Talk to Perth; the mine has a draugr problem and he wants it cleared."
+    }
+   ],
+   "firstStep": "Clear the draugr out of Soljund's Sinkhole",
+   "takesYou": [
+    {
+     "place": "Soljund's Sinkhole",
+     "hold": "The Reach",
+     "why": "kill the draugr in the mine, including their leader, then tell Perth"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Soljund's Sinkhole, on the eastern edge of The Reach, has a draugr problem. Clear the mine of draugr.",
+      "Tell Perth that the Draugr are dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (a large favor reward)",
+     "when": "when you tell Perth the draugr are dead"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Perth",
+     "role": "quest giver; waits outside the mine until you take the job, then outside it from 7 am for 12 hours until it's done; afterwards works the mine from 8 am for 12 hours"
+    },
+    {
+     "name": "Tuthul",
+     "role": "the other miner; stays in the Miner's House until the mine is cleared, then works it from 8 am"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "plugin",
+     "why": "the load order isn't in these files; the patch taken as winning is the last one listed as editing the quest"
+    },
+    {
+     "field": "starts",
+     "why": "a patch that lets you choose whether to take on quests edits this one; what it changes isn't shown in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:06136B FreeformSoljundsSinkholeA; stages 5,10,20,100; objectives 10,20; aliases Perth, SoljundsSinkholeMine, Boss, Tuthul; editedBy USSEP, TheChoiceIsYours.esp, Big Tweaks.esp",
+    "giver Perth Skyrim.esm:01996C INFO Skyrim.esm:061348 stageBelow 21",
+    "Perth packages: FreeformSoljundsPerthStandOutsidePackage (stage < 5), FreeformSoljundsPerthStandOutsidePackage2 7x12 (stage < 100), SoljundsSinkholeWorkMinerPackage8x12 (stage == 100), SoljundsSinkholeNoWorkPackage8x12 Miner's House (stage < 100)",
+    "Tuthul Skyrim.esm:01996D: SoljundsSinkholeNoWorkPackage8x12 / SoljundsSinkholeWorkMinerPackage8x12",
+    "rewards: QF_FreeformSoljundsSinkholeA_0006136B FavorRewardGoldLarge Skyrim.esm:04A41B, Gold001"
+   ]
+  },
+  {
+   "edid": "FreeformOldHroldanB",
+   "name": "The Ghost of Old Hroldan",
+   "plugin": "Skyrim.esm",
+   "canDo": "by itself",
+   "canDoWhy": "It sets itself up when you arrive at Old Hroldan; Eydis at the inn and the inn's ghost lead you on to Hjalti's Sword.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Eydis",
+     "where": "the Old Hroldan Inn, which she runs, in the Reach",
+     "how": "The quest starts when you arrive at Old Hroldan. Talk to Eydis, the innkeeper, about the inn; the Ghost of Old Hroldan, also in the inn, asks you to bring him Hjalti's Sword."
+    }
+   ],
+   "firstStep": "Bring Hjalti's Sword to the Ghost of Old Hroldan",
+   "takesYou": [
+    {
+     "place": "Old Hroldan Inn",
+     "hold": "The Reach",
+     "why": "meet Eydis and the ghost, and bring the sword back"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring Hjalti's Sword to the Ghost of Old Hroldan"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Eydis",
+     "role": "innkeeper of the Old Hroldan Inn; talks about the inn before the ghost's task"
+    },
+    {
+     "name": "Ghost of Old Hroldan",
+     "role": "asks for Hjalti's Sword; placed in the Old Hroldan Inn"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "the sword is in a boss's chest in a dungeon the game picks when the quest runs; the dungeon isn't named in these files"
+    },
+    {
+     "field": "starts",
+     "why": "the quest also tracks the bed Tiber Septim slept in at the inn; how the ghost first appears (talking to Eydis, or sleeping in that bed) isn't spelled out in these files"
+    },
+    {
+     "field": "rewards",
+     "why": "no reward is listed in the quest's scripts; two versions of Hjalti's Sword exist in the records and which one you find isn't shown"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:06819A FreeformOldHroldanB; stages 5,10,15,20,100; objective 10; aliases TiberSeptimBed, Eydis, Ghost, HjaltiSword, BossContainer, Dungeon, MapMarker",
+    "start: story event node FreeformOldHroldanNode, event change location",
+    "giver Eydis Skyrim.esm:013B77 INFO Skyrim.esm:068943 stageBelow 11; Ghost Skyrim.esm:0681A2 placed Old Hroldan Inn Skyrim.esm:0138BE",
+    "items: Hjalti's Sword Skyrim.esm:068976 and ArteFake.esp:00997F",
+    "no reward entries in quest_givers_raw"
+   ]
+  },
+  {
+   "edid": "FreeformDushnikhYalA",
+   "name": "Gharol's Message",
+   "plugin": "Skyrim.esm (last edited by ArteFake.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Gharol, the smith at Dushnikh Yal, gives you a sword to carry to Lash in Karthwasten.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Gharol",
+     "where": "at work as the smith in Dushnikh Yal, the Orc stronghold in the Reach, from 8 am to 8 pm; in Burguk's Longhouse from 8 pm",
+     "how": "Talk to Gharol; she hands you her sword to deliver to Lash."
+    }
+   ],
+   "firstStep": "Deliver Gharol's sword to Lash",
+   "takesYou": [
+    {
+     "place": "Karthwasten",
+     "hold": "The Reach",
+     "why": "give the sword to Lash gra-Dushnikh"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver Gharol's sword to Lash"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (a small favor reward)",
+     "when": "when you give Lash the sword"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Gharol",
+     "role": "quest giver; smith of Dushnikh Yal"
+    },
+    {
+     "name": "Lash gra-Dushnikh",
+     "role": "receives the sword; lives in the Miner's Barracks in Karthwasten; stands at Karthwasten's opening scene until Sanuarach Mine has begun, then works Fenn's Gulch Mine from 8 am for 12 hours (outside Sanuarach Mine instead once Sanuarach Mine is done)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Dushnikh Yal warns outsiders who aren't Orcs or Blood-Kin to stay out; whether you must be welcome there before Gharol will talk isn't shown in these files"
+    },
+    {
+     "field": "steps",
+     "why": "the sword you carry is the reworked Gharol's Sword from an artifact mod that edits this quest; you hand it to Lash"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:09976E FreeformDushnikhYalA; stages 10,20,200; objective 10; aliases QuestGiver, Lash, Sword; editedBy ArteFake.esp",
+    "QuestGiver = Gharol Skyrim.esm:013B7C; packages DushnikYalGharolBlacksmithPackage8x12, DushnikhYalGharolLonghouseEatPackage20x4",
+    "giver INFO Skyrim.esm:099763 (alias Lash, stageBelow 11)",
+    "Lash Skyrim.esm:013B6E packages: KarthwastenIntroLashPackage (FreeformKarthwastenA not done), KarthwastenSandboxOutsideSauranachMine8x12Package (FreeformKarthwastenA >= 100), KarthwastenSandboxFennGulchMine8x12Package",
+    "item Gharol's Sword ArteFake.esp:008954",
+    "rewards: QF_FreeformShugurzburA_0009976E FavorRewardGoldSmall Skyrim.esm:0494DF, Gold",
+    "checker: Lash KarthwastenIntroLashPackage (FreeformKarthwastenA stage 5 not done) on top"
+   ]
+  },
+  {
+   "edid": "SolitudeFreeform01",
+   "name": "No News is Good News",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Angeline Morrard wants news of her daughter; you ask Captain Aldis and bring back what he says.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Angeline Morrard",
+     "where": "Angeline's Aromatics, her shop in Solitude, 8 am to 8 pm",
+     "how": "Talk to Angeline; she asks you to find out from Captain Aldis what has become of her daughter."
+    }
+   ],
+   "firstStep": "Ask Captain Aldis for information about Angeline Morrard's daughter",
+   "takesYou": [
+    {
+     "place": "Castle Dour (at night) or out in Solitude (by day)",
+     "hold": "Haafingar",
+     "why": "find Captain Aldis: he's in Castle Dour from 8 pm to 8 am and training soldiers outdoors in Solitude by day"
+    },
+    {
+     "place": "Angeline's Aromatics",
+     "hold": "Haafingar",
+     "why": "tell Angeline what Aldis said"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Ask Captain Aldis for information about Angeline Morrard's daughter.",
+      "Tell Angeline Morrard what Captain Aldis said."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you tell Angeline what Aldis said"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Angeline Morrard",
+     "role": "quest giver; runs Angeline's Aromatics"
+    },
+    {
+     "name": "Captain Aldis",
+     "role": "in Castle Dour from 8 pm for 12 hours, and around Solitude (training soldiers) by day"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "Captain Aldis waits at Solitude's opening scene until it has played; after that his daytime spot is only given as Solitude in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0E8BD7 SolitudeFreeform01; stages 0,5,10,20,30,200; objectives 10,20; fills Target=Aldis, Questgiver=Angeline",
+    "giver Angeline Morrard Skyrim.esm:013260 INFO Skyrim.esm:0E8BCD stageBelow 1; other Captain Aldis Skyrim.esm:041FB8 stageBelow 11",
+    "Angeline packages: SolitudeAromaticsWorkDay8x12, vendor 8-20",
+    "Aldis packages: SolitudeOpeningCaptainAldisWait (GetStage Skyrim.esm:0B2FD9 < 45), GuardSolitudeImperialDaySleep Castle Dour 20x12, SolitudeValdTrainingPackage",
+    "quest_starts line odd-jobs-haafingar opening; rewards QF_SolitudeFreeform01_000E8BD7 Gold",
+    "checker: Aldis GuardSolitudeImperialDaySleep hour 20 dur 720 Castle Dour; SolitudeValdTrainingPackage nearest Solitude 0.1 km, no hour"
+   ]
+  },
+  {
+   "edid": "SolitudeFreeform02",
+   "name": "Fit for a Jarl",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Taarie gives you one of her outfits to wear in front of Jarl Elisif.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Taarie",
+     "where": "Radiant Raiment, the clothing shop in Solitude, from noon to 8 pm (and from 8 am when it's raining); on dry mornings she's out carrying firewood; at the Winking Skeever for a few hours after 8 pm",
+     "how": "Talk to Taarie; she gives you an outfit and asks you to wear it when you speak to Jarl Elisif."
+    }
+   ],
+   "firstStep": "Speak to Elisif the Fair with Taarie's outfit on",
+   "takesYou": [
+    {
+     "place": "the Blue Palace",
+     "hold": "Haafingar",
+     "why": "speak to Jarl Elisif while wearing the outfit"
+    },
+    {
+     "place": "Radiant Raiment",
+     "hold": "Haafingar",
+     "why": "tell Taarie what Elisif said"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Elisif the Fair with Taarie's outfit on.",
+      "Tell Taarie what Elisif the Fair said about the outfit."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you tell Taarie what Elisif said"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Taarie",
+     "role": "quest giver; works at Radiant Raiment"
+    },
+    {
+     "name": "Elisif the Fair",
+     "role": "Jarl of Solitude; holds court in the Blue Palace from 6 am for 16 hours"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "the outfit is given through the quest; which clothes they are and whether you keep them isn't shown in these files"
+    },
+    {
+     "field": "where",
+     "why": "Taarie waits at Solitude's opening scene until it has played, so she may not be in her shop on your first visit"
+    },
+    {
+     "field": "where",
+     "why": "where she carries the firewood on dry mornings isn't given in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0C7D1C SolitudeFreeform02; stages 0,10,20,30,200; objectives 10,20; aliases QuestGiver, target, Outfit; fills Target=Elisif, Questgiver=Taarie",
+    "giver Taarie Skyrim.esm:0132AB INFO Skyrim.esm:0C7B99 stageBelow 10",
+    "Taarie packages: SolitudeOpeningTaarieWait (GetStage Skyrim.esm:0B2FD9 < 40), AIOSoTaarieTavern Winking Skeever 20x3.5h, SolitudeRaimentsTaarieWorkDay8x12",
+    "Elisif Skyrim.esm:01326A SolitudePalaceCourt6x16",
+    "rewards QF_SolitudeFreeform02_000C7D1C Gold",
+    "checker: Taarie SolitudeTaarieCarryFirewood8x4 (not raining) sits above SolitudeRaimentsTaarieWorkDay8x12"
+   ]
+  },
+  {
+   "edid": "SolitudeFreeform03",
+   "name": "Return to Grace",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Svari tells you about Greta, who won't go to the Temple of the Divines; you fetch an Amulet of Talos from Roggvir's body for her.",
+   "needs": [
+    {
+     "what": "Roggvir must be dead: he is the prisoner in Solitude's opening scene",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Svari",
+     "where": "Addvar's House in Solitude, or out in town for part of the day",
+     "how": "Talk to Svari; she tells you about Greta, who won't go to the Temple of the Divines."
+    }
+   ],
+   "firstStep": "Speak to Greta about going to the Temple of Divines",
+   "takesYou": [
+    {
+     "place": "Addvar's House",
+     "hold": "Haafingar",
+     "why": "talk to Greta"
+    },
+    {
+     "place": "Solitude (where Roggvir's body lies)",
+     "hold": "Haafingar",
+     "why": "take the Amulet of Talos off Roggvir"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Greta about going to the Temple of Divines.",
+      "Retrieve Amulet of Talos off of Roggvir.",
+      "Return Amulet of Talos to Greta."
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you give Greta the amulet"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Svari",
+     "role": "quest giver; a child living in Addvar's House"
+    },
+    {
+     "name": "Greta",
+     "role": "lives in Addvar's House with Svari; out by a well in town 3 to 6 pm; once the quest is done she visits the Temple of the Divines from 6 am for 9 hours"
+    },
+    {
+     "name": "Roggvir",
+     "role": "the dead man who carries the Amulet of Talos"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "the quest names Roggvir as its dead person and he only waits at Solitude's opening scene; that the scene ends in his death is read from that, not stated outright"
+    },
+    {
+     "field": "takesYou",
+     "why": "the records place Roggvir outdoors in Solitude, in the same part of town as the door to Angeline's Aromatics; where his body ends up isn't shown"
+    },
+    {
+     "field": "starts",
+     "why": "Greta has a line of her own while you're sent to talk to her; whether talking to her first, before Svari, also starts the quest isn't shown"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0C7D42 SolitudeFreeform03; stages 0,10,20,30,40,200; objectives 10,20,30; aliases QuestGiver, target, Item, DeadPerson; fills Greta, Amulet of Talos, Roggvir",
+    "giver Svari Skyrim.esm:0132A9 INFO Skyrim.esm:0C7D34 stageBelow 10; other Greta Skyrim.esm:013283 stageBelow 11",
+    "Roggvir Skyrim.esm:0A3BDB alias Prisoner in Skyrim.esm:0B2FD9; package SolitudeOpeningPrisonerWait (GetQuestCompleted 0B2FD9 == 0); placed in cell Skyrim.esm:037EE9 (same cell as the Angeline's Aromatics door Skyrim.esm:037F24)",
+    "Greta package SolitudeTempleVisit6x9 (GetQuestCompleted SolitudeFreeform03 == 1)",
+    "rewards QF_SolitudeFreeform03_000C7D42 Gold",
+    "checker: Greta stageBelow 11 covers objective 10; Greta SolitudeWellsMarker1Sandbox15x3, SolitudeAvenuesMarker2Sandbox18x4 (MS05 completed, not raining)"
+   ]
+  },
+  {
+   "edid": "SolitudeFreeform04",
+   "name": "Delivery",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Sorex Vinius at the Winking Skeever asks you to carry a bottle of Stros M'Kai Rum to Falk Firebeard.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Sorex Vinius",
+     "where": "the Winking Skeever in Solitude, from 8 am for most of the day",
+     "how": "Talk to Sorex; he gives you the rum to deliver to Falk Firebeard."
+    }
+   ],
+   "firstStep": "Deliver the Stros M'Kai Rum to Falk Firebeard",
+   "takesYou": [
+    {
+     "place": "the Blue Palace",
+     "hold": "Haafingar",
+     "why": "give the rum to Falk Firebeard"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver the Stros M'Kai Rum to Falk Firebeard"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you give Falk the rum"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Sorex Vinius",
+     "role": "quest giver; works at the Winking Skeever"
+    },
+    {
+     "name": "Falk Firebeard",
+     "role": "steward of Solitude; at court in the Blue Palace from 6 am for 16 hours, sleeps there from midnight"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "where",
+     "why": "Sorex waits at Solitude's opening scene until it has played; Falk slips out to Bryling's House around 2 am for two hours"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0D055D SolitudeFreeform04; stages 10,20,200; objective 10; fills QuestItem=Stros M'Kai Rum, Target=Falk Firebeard",
+    "Questgiver Sorex Vinius Skyrim.esm:0132A7 placed Winking Skeever; packages SolitudeOpeningSorexWait (0B2FD9 < 35), SolitudeSorexWorking8x16",
+    "giver INFO Skyrim.esm:0D0553 Falk Firebeard Skyrim.esm:013274 stageBelow 11; packages SolitudePalaceCourtStewardSandbox6x16, FalkBrylingSecretMeeting2x2, USKPFalkFirebeardSleep24x6",
+    "rewards QF_SolitudeFreeform04_000D055D Gold"
+   ]
+  },
+  {
+   "edid": "SolitudeFreeform06",
+   "name": "The Spiced Wine",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Evette San's shipment of spiced wine is held up; you talk Vittoria Vici into releasing it.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Evette San",
+     "where": "out in Solitude, selling fruit from 6 am for 14 hours; she sleeps in Evette San's House",
+     "how": "Talk to Evette; she asks you to get Vittoria Vici to release her Spiced Wine shipment."
+    }
+   ],
+   "firstStep": "Convince Vittoria Vici to release the Spiced Wine shipment",
+   "takesYou": [
+    {
+     "place": "East Empire Company Warehouse",
+     "hold": "Haafingar",
+     "why": "find Vittoria Vici at work"
+    },
+    {
+     "place": "Solitude",
+     "hold": "Haafingar",
+     "why": "tell Evette the shipment is released; she sells fruit out in town by day"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Convince Vittoria Vici to release the Spiced Wine shipment",
+      "Tell Evette that Vittoria agreed to release the shipment"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you tell Evette the shipment is released"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Evette San",
+     "role": "quest giver; sells fruit out in Solitude by day"
+    },
+    {
+     "name": "Vittoria Vici",
+     "role": "works in the East Empire Company Warehouse from 8 am for 12 hours, sleeps in her house in Solitude"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "steps",
+     "why": "how you convince Vittoria (a speech check, a bribe, or just asking) isn't in these files"
+    },
+    {
+     "field": "closes",
+     "why": "Vittoria can't be killed in an ordinary fight, but she's the target of the Dark Brotherhood's Bound Until Death; if that's done first this quest likely can't be finished"
+    },
+    {
+     "field": "where",
+     "why": "Evette waits at Solitude's opening scene until it has played; her stall is only given as Solitude in these files"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0D69FB SolitudeFreeform06; stages 10,20,30,200; objectives 10,20; fills Target=Vittoria Vici, Questgiver=Evette",
+    "giver Evette San Skyrim.esm:013273 INFO Skyrim.esm:0D69B8 stageBelow 10; other Vittoria Vici Skyrim.esm:01327A stageBelow 11",
+    "Evette packages: SolitudeOpeningEvetteWait (0B2FD9 < 30), SolitudeFruitSellerWork6x14",
+    "Vittoria packages: SolitudeWarehouseWork8x12 East Empire Company Warehouse; alias VittoriaViciAlias in DB05",
+    "rewards QF_SolitudeFreeform06_000D69FB Gold",
+    "checker: Vittoria essential true; her stageBelow 11 covers objective 10; SolitudeFruitSellerWork6x14 nearest Solitude, no cell"
+   ]
+  },
+  {
+   "edid": "SolitudeFreeform07",
+   "name": "Elisif's Tribute",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Jarl Elisif asks you to lay Torygg's War Horn at the Shrine of Talos.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Elisif the Fair",
+     "where": "at court in the Blue Palace, Solitude, from 6 am for 16 hours",
+     "how": "Talk to Elisif; she gives you Torygg's War Horn to take to the Shrine of Talos."
+    }
+   ],
+   "firstStep": "Take Torygg's War Horn to the Shrine of Talos for Elisif the Fair",
+   "takesYou": [
+    {
+     "place": "a Shrine of Talos",
+     "hold": "",
+     "why": "place Torygg's War Horn on the shrine; Elisif asks you to place it 'at a Shrine of Talos'"
+    },
+    {
+     "place": "the Blue Palace",
+     "hold": "Haafingar",
+     "why": "talk to Elisif again"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Take Torygg's War Horn to the Shrine of Talos for Elisif the Fair.",
+      "Talk to Elisif"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you talk to Elisif after placing the horn"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Elisif the Fair",
+     "role": "quest giver; Jarl of Solitude"
+    },
+    {
+     "name": "Agent Lorcalin",
+     "role": "a hostile Thalmor Justiciar; travels to a shrine near Shimmermist Cave in Whiterun Hold and waits there while you're taking the horn"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "Elisif says 'a Shrine of Talos', and the quest picks the shrine when it runs; which shrines count isn't shown in these files (the one place of that name in the places list is in Whiterun)"
+    },
+    {
+     "field": "needs",
+     "why": "no conditions on Elisif's offer show up in these files"
+    },
+    {
+     "field": "takesYou",
+     "why": "a Thalmor agent heads to a shrine near Shimmermist Cave and waits there only while this quest is under way; it may be the shrine the quest picks, and he will fight you, but the records don't tie him to the horn"
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:0E77BA SolitudeFreeform07; stages 0,10,20,30,200; objectives 10,20; aliases Questgiver, Item, Location, HornActivator, PlacedHorn; fills Item=Torygg's War Horn",
+    "giver Elisif the Fair Skyrim.esm:01326A INFO Skyrim.esm:0E728E stageBelow 1; package SolitudePalaceCourt6x16",
+    "places: Shrine of Talos Skyrim.esm:01F87B (WhiterunShrineofTalosLocation)",
+    "rewards QF_SolitudeFreeform07_000E77BA Gold",
+    "checker: places pointers INFO Skyrim.esm:0E73B5 / 0E73B7 'place it at a Shrine of Talos'; alias Location 29",
+    "checker: Agent Lorcalin Skyrim.esm:0DD99E packages USSEPLorcalinTravelToShrine (near Shimmermist Cave), dunPOIRaidingThalmorSandbox (GetStage 0E77BA >=10, <=20); faction WEPlayerEnemy"
+   ]
+  }
+ ]
+}
