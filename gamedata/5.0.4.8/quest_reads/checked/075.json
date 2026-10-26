@@ -1,0 +1,1324 @@
+{
+ "checks": [
+  {
+   "edid": "ccBGSSSE001_Fish_MQ5",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the quest's only named giver is Swims-In-Deep-Water and stage 10's log says he has given me another challenge; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "needs: the fishing line orders Darkest Depths (Fish_MQ4) just before this one and stage 20 calls it the final challenge; stage 21 says angelfish and lyretail anthias only bite on the Alik'ri rod (Crustacean Extermination's stage 200 reward) and angler and scorpion fish only on the Argonian rod (Caught in the Rain's stage 200/210 reward); matches."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "starts: Swims-In-Deep-Water's own packages put him working inside the fishery from 5 am for 15 hours, in Haelga's Bunkhouse from 8 pm and asleep there midnight to 5; the List alias is the list he hands over; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 100 is 'Read the list of rare fish', shown at stage 10 before the fish objectives; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: stage 21's log names temperate lakes (angelfish), temperate streams (anthias), freezing waters (angler) and underground (scorpion fish), and objective 50 sends you back to Swims-In-Deep-Water; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: one completing stage (200) and no branch entries; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 200's log says he granted me the Fang of Haynekhtnamet, and the item record of that name is a dagger; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: it is the last Swims-In-Deep-Water quest in the fishing line's order and stage 200 calls it his final challenge; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; Swims-In-Deep-Water is essential; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Dwarven",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the bounties handler's objective 70 is 'Read Bounty: Dwarven Investigation' alongside 'Ask Viriya about additional fishing bounties'; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Bounty: Dwarven Investigation' objective."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Investigate the entrance of Bronze Water Cave' with stage 0's log about Calcelmo's apparatus; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: the objectives send you to Bronze Water Cave, Alftand Ruined Tower and Calcelmo, whose placement is Understone Keep in Markarth; the place records give Bronze Water Cave to the Pale and Alftand to Winterhold; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stages run one way from 0 to 300 with no conditioned entries; the two dynamo stages (100/101) carry the same log; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 90's log says Calcelmo has given me the Dwarven fishing rod; the Axe and Axe02 aliases hold the Fire and Freezing Irkngthand war axes and stage 300 raises a submerged chest; the reader's note on one or both stays; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: no stage points to another quest and the fishing line lists nothing after it; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; the spider ambush aliases are enemies, not people; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Falkreath",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 0 is 'Read Bounty: Glassfish' and Zaria holds a giver line before the first stage; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Bounty: Glassfish' objective. Zaria's sell package at Grave Concoctions runs 8 am for 12 hours, but a package above it moves her to Candlehearth Hall when she is in the exiled-government faction; noted in unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Obtain a glassfish for Zaria in Falkreath'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: Catch of the Day's stage 21 says glassfish are only caught in lakes in the warmer parts of Skyrim; objectives 40 and 50 name the Falkreath Barracks and its jail; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stage 45 (guard killed) and stage 200's two entries split on whether the guard alias is dead, one pleased, one disapproving, both with the Jarl's ring; matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 20's log says she handed me a sum of gold, the script's Gold001 property backs it, and stage 200 gives the enchanted ring, the script's ArtifactRing property, the Ring of Surroundings; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: no stage points onward and nothing in the fishing line follows it; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: stage 45 is 'I killed the guard suspected of using skooma'; the guard dies only on that path; matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Khajiit",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 50 is 'Read Bounty: Lost Wares'; stage 0's log says Ri'saad put out a bounty; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Bounty: Lost Wares' objective."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Find the Khajiit caravan's overturned cart west of Old Hroldan Inn'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: stage 20 puts the cart on the river west of Old Hroldan Inn, which the place records give to the Reach; Ri'saad's placement is an open-world spot with no schedule in the files, so 'wherever the caravan is camped' is fair; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: four stages in a line, no conditioned entries; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 200 says he paid with an enchanted ring for moving quickly and silently; the script's RingOfKhajiit property is the Replica Ring of Khajiit and its item text is the quoted line; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: nothing in the stages points onward; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Markarth",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 40 is 'Read Wanted: Fishing Tutor'; stage 0 says her letter has her waiting in the Silver-Blood Inn; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Wanted: Fishing Tutor' objective."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Speak to Lynea about private fishing lessons'; her placement is the Silver-Blood Inn in Markarth; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: stage 0 names the Silver-Blood Inn and objective 10 'the docks near the Warrens'; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stages run 0 to 200 with no branches; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 200 says she gave me her amulet of Dibella, the script's Amulet property, Lynea's Amulet of Dibella; the script's PracticeRod and SteelDagger properties are neither reward properties nor handed over by a stage, so left out; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: nothing points onward; her packages after completion only move her between temple, docks and inn; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Morthal",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 20 is 'Read Notice: Fishing Contest'; stage 0 says to meet Brutius on the docks in Morthal; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Notice: Fishing Contest' objective."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Talk to Brutius in Morthal about a fishing contest', with stage 0 placing him on the Morthal docks; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: stage 10 says he marked the contest spot on my map and stage 50 says he lured fishers into the woods to a spot by the river where the ring was lost; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stage 30's two entries only change the wording on whether the ambushers were fought; no player choice; none, matches."
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "rewards: stage 200 says I fished up the Warlock's Ring, and the item record matches. 'Whatever Brutius carries' has nothing behind it: stage 40 finds only his journal on the body, and the script's one property is an Invisibility spell, not a reward. Removed."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: nothing points onward; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: objective 15 'Defeat Brutius' and stage 40 'On Brutius's body'; he dies; matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Solitude",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 60 is 'Read Wanted: A Seafood Feast'; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Wanted: A Seafood Feast' objective. The quest also has a courier-letter alias, so the letter may come by courier as well; noted in unsure."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objectives 0 to 2 are the steamed crab legs, cooked arctic char and crab stew, shown first; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: stage 0 says to set the table on the second floor of the Winking Skeever and objective 40 to check Gisli's table there; Gisli's eating package is at the Winking Skeever from 4 pm; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: one completing stage and no branch entries; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 200 says a letter of thanks and a coin purse were left on her plate; the Reward alias holds it; the amount isn't in the files, as the reader says; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: nothing points onward; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_WhiterunPartOne",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 10 is 'Read Bounty: Goldfish!'; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Bounty: Goldfish!' objective."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Obtain a goldfish for Mila Valentia in Whiterun'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: Catch of the Day's stage 21 says goldfish are only caught in lakes in the warmer parts; objectives 20 and 30 are speak to Mila and follow her, whose placement is Carlotta Valentia's House in Whiterun; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stages run 0 to 200 with no branches; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 200 says she handed me a single septim; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: Two of a Kind's stage 10 says the goldfish I brought her needs a companion, and the line lists PartOne then PartTwo; matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_WhiterunPartTwo",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: stage 5 is 'I received a letter from Mila Valentia' and the quest has a courier-letter alias; it comes to you, matches."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "needs: stage 10 refers back to the goldfish I brought her, which is Heart of Gold; matches."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "starts: the CourierLetter alias and stage 5's log; a courier finds you; the delay isn't in the files, as the reader notes; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 1000 'Read the letter from Mila Valentia', shown at stage 5; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "takesYou: stage 20 sends you to follow her to the trough and stage 70 to her hiding place behind Dragonsreach; Catch of the Day's stage 21 has goldfish in lakes only; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stages in a line to 200, no branches; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 60 gives a note and a key, and stage 200 says her treasure box holds a set of rare alchemy ingredients; which ones isn't in the files; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: nothing after it in the line or the stages; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: no stage kills or disables anyone; none, matches."
+    }
+   }
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Windhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "canDo: the handler's objective 30 is 'Read Bounty: Fangtusk' and the quest has a BountyLetter alias; a talk start, matches."
+    },
+    "needs": {
+     "verdict": "unsure",
+     "note": "needs: the handler's 'Ask Viriya about additional fishing bounties around Skyrim' objective is the only gate shown; the conditions on that dialogue aren't in these files, so what must come first is open. Kept empty with the reader's note."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "starts: Viriya's day package on the fishery docks (6 am for 12 hours) only runs while End of the Line is unfinished; once it is done a crab-stall package with no hours takes the day, and her bunkhouse packages (6 pm for 6 hours, sleep midnight to 6) are unchanged. The reader missed the switch; added. The bounty letter itself is named by the handler's 'Read Bounty: Fangtusk' objective."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "firstStep: objective 0 'Obtain an arctic grayling'; matches."
+    },
+    "takesYou": {
+     "verdict": "unsure",
+     "note": "takesYou: stage 10 puts Fangtusk north of Hollyfrost Farm and Frozen Fish's stage 21 names the Windhelm docks, the water near Dawnstar and the lake near Nightgate Inn for freezing-water fish; the Steward alias points to Jorleif, whose post is in the Palace of the Kings. Hollyfrost Farm isn't in the place records, so the hold is a guess; the farm's place record would settle it."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "choices: stages 10 to 200 in a line, no branches; none, matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "rewards: stage 70 finds the vampiric ring in Fangtusk's gut (the Vampiric Ring item, whose text is quoted) and stage 200 says the steward rewarded me; the amount isn't in the files; matches."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "opens: nothing points onward; none, matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "closes: Fangtusk dies (objective 40) but it is a horker, not a person or side; none, matches."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "ccBGSSSE001_Fish_MQ5",
+   "name": "Fishing Legend",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Swims-In-Deep-Water at the Riften Fishery gives you this last fishing challenge after the four before it.",
+   "needs": [
+    {
+     "what": "Finish Darkest Depths (Swims-In-Deep-Water's fourth challenge)",
+     "kind": "quest"
+    },
+    {
+     "what": "An Alik'ri fishing rod, Viriya's reward for Crustacean Extermination (the angelfish and lyretail anthias only bite on it)",
+     "kind": "item"
+    },
+    {
+     "what": "An Argonian fishing rod, Swims-In-Deep-Water's reward for Caught in the Rain (the angler and scorpion fish only bite on it)",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Swims-In-Deep-Water",
+     "where": "inside the Riften Fishery (5 am to 8 pm); Haelga's Bunkhouse in Riften in the evening and at night",
+     "how": "Talk to him once Darkest Depths is done; he hands you a list of rare fish."
+    }
+   ],
+   "firstStep": "Read Swims-In-Deep-Water's list of rare fish",
+   "takesYou": [
+    {
+     "place": "lakes in the warmer parts of Skyrim",
+     "hold": "",
+     "why": "catch an angelfish with the Alik'ri fishing rod"
+    },
+    {
+     "place": "streams in the warmer parts of Skyrim",
+     "hold": "",
+     "why": "catch a lyretail anthias with the Alik'ri fishing rod"
+    },
+    {
+     "place": "freezing waters near snow and ice",
+     "hold": "",
+     "why": "catch an angler with the Argonian fishing rod"
+    },
+    {
+     "place": "underground fishing spots (caves, flooded mines)",
+     "hold": "",
+     "why": "catch a scorpion fish with the Argonian fishing rod"
+    },
+    {
+     "place": "Riften Fishery",
+     "hold": "The Rift",
+     "why": "hand the fish to Swims-In-Deep-Water"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Read the list of rare fish",
+      "(Optional) Read Fishing Mastery, v5",
+      "Obtain an angelfish",
+      "Obtain an angler",
+      "Obtain a lyretail anthias",
+      "Obtain a scorpion fish",
+      "Return to Swims-In-Deep-Water"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Fang of Haynekhtnamet (Argonian dagger)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Swims-In-Deep-Water",
+     "role": "Argonian fisherman at the Riften Fishery who sets the challenge and takes the fish"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The records don't show the exact dialogue line that hands over this challenge or whether time must pass after Darkest Depths; the journal only says he has given you another challenge."
+    },
+    {
+     "field": "takesYou",
+     "why": "The journal and guide name only the kind of water for each fish, not a particular fishing spot."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009DC stages 10/20/21/200, objectives 0-3/50/75/100",
+    "quests_raw 0009DA stage 200 (Alik'ri rod), 0009EB stages 200/210 (Argonian rod)",
+    "items_raw ccBGSSSE001-Fish.esm:000ED3 Fang of Haynekhtnamet",
+    "people_schedules 0008F8 packages WorkFisheryInside5x15, Bunkhouse20x4, Sleep0x5",
+    "questlines_raw ccBGSSSE001-Fish order: 0009DD then 0009DC"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Dwarven",
+   "name": "Beneath Bronze Waters",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Ask Viriya at the Riften Fishery about fishing bounties; one is Calcelmo's Dwarven investigation.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Bounty: Dwarven Investigation, Calcelmo's request to look into a strange apparatus outside Bronze Water Cave."
+    }
+   ],
+   "firstStep": "Investigate the entrance of Bronze Water Cave",
+   "takesYou": [
+    {
+     "place": "Bronze Water Cave (the entrance and the water outside it)",
+     "hold": "The Pale",
+     "why": "find the fishermen's journal, later fish up the dynamo cores and power the mechanism"
+    },
+    {
+     "place": "Alftand Ruined Tower, at Alftand",
+     "hold": "Winterhold",
+     "why": "find the Dwarven fishing rod schematic"
+    },
+    {
+     "place": "Understone Keep in Markarth",
+     "hold": "The Reach",
+     "why": "give the schematic to Calcelmo and collect the rod a day later"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Investigate the entrance of Bronze Water Cave",
+      "Read the fisherman's journal",
+      "Find the Dwarven fishing rod schematic in Alftand Ruined Tower",
+      "Bring the Dwarven fishing rod schematic to Calcelmo",
+      "Wait 24 hours for Calcelmo to build the fishing rod",
+      "Return to Calcelmo",
+      "Use the dwarven fishing rod to catch the strange objects near Bronze Water Cave",
+      "Insert the aetherium dynamo core into the dynamo actuator"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Dwarven Fishing Rod",
+     "when": "from Calcelmo, a day after you bring the schematic"
+    },
+    {
+     "what": "Irkngthand War Axe of Fire or Irkngthand War Axe of Freezing, in the submerged chest that rises",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Calcelmo",
+     "role": "court wizard in Understone Keep, Markarth; builds the Dwarven fishing rod"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest holds two axes, one of Fire and one of Freezing, in two chests; the records don't show whether you get one or both."
+    },
+    {
+     "field": "takesYou",
+     "why": "The records put Bronze Water Cave in The Pale; spiders are set to ambush near the schematic."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:000AD6 stages 0-300, objectives 0-50, aliases Axe/Axe02/Chest/ColumnChest/Spider1Ambush1",
+    "quests_raw 0009E6 objective 70 'Read Bounty: Dwarven Investigation', objective 2000 'Ask Viriya about additional fishing bounties'",
+    "quest_givers_raw 000AD6 rewards 0009D9, 04D05E; Calcelmo Skyrim.esm:01338E in Understone Keep",
+    "items_raw 00084E Dwarven Fishing Rod",
+    "places_raw Skyrim.esm:046BAC Bronze Water Cave (The Pale), 018EE1 Alftand (Winterhold)",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Falkreath",
+   "name": "Clear-Headed",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Zaria, the alchemist in Falkreath, wants a glassfish; the bounty comes from Viriya at the Riften Fishery.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Bounty: Glassfish."
+    },
+    {
+     "who": "Zaria",
+     "where": "Grave Concoctions in Falkreath (she sells there 8 am to 8 pm)",
+     "how": "She may also start it herself when you talk to her."
+    }
+   ],
+   "firstStep": "Obtain a glassfish for Zaria in Falkreath",
+   "takesYou": [
+    {
+     "place": "a lake in the warmer parts of Skyrim",
+     "hold": "",
+     "why": "catch a glassfish (the first Fishing Mastery volume says glassfish live only in lakes)"
+    },
+    {
+     "place": "Grave Concoctions in Falkreath",
+     "hold": "Falkreath",
+     "why": "give Zaria the fish and get the disguised potion"
+    },
+    {
+     "place": "Falkreath Barracks and its jail",
+     "hold": "Falkreath",
+     "why": "hand the potion to the suspected guard and follow him"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Give the guard the disguised potion and watch him drink it",
+     "leadsTo": "He turns invisible and is scared off skooma; Zaria is pleased and gives you the Jarl's ring."
+    },
+    {
+     "choice": "Kill the guard",
+     "leadsTo": "Zaria disapproves but still gives you the Jarl's ring; the guard is dead."
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Obtain a glassfish for Zaria in Falkreath",
+      "Speak to Zaria",
+      "Read Zaria's note from the Jarl",
+      "Obtain the disguised invisibility potion from Zaria",
+      "Give the disguised invisibility potion to the guard in the Falkreath Barracks",
+      "Follow the guard into the Falkreath Barracks Jail",
+      "Return to Zaria"
+     ]
+    },
+    {
+     "branch": "guard killed",
+     "objectives": [
+      "Tell Zaria that the guard is dead"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "a sum of gold",
+     "when": "when you hand over the glassfish"
+    },
+    {
+     "what": "Ring of Surroundings (an enchanted ring from the Jarl)",
+     "when": "at the end, either way"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [
+    "The suspected guard dies if you kill him"
+   ],
+   "people": [
+    {
+     "name": "Zaria",
+     "role": "owner of Grave Concoctions in Falkreath; wants the glassfish and brews the disguised potion"
+    },
+    {
+     "name": "the Jarl of Falkreath",
+     "role": "asked Zaria for help; sends the note and the ring"
+    },
+    {
+     "name": "a Falkreath guard",
+     "role": "suspected of using skooma, in the Falkreath Barracks"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "starts",
+     "why": "The records hold a line of Zaria's tied to the quest before it begins, but its words aren't in these files, so whether she starts it herself is not certain."
+    },
+    {
+     "field": "people",
+     "why": "Which guard is the suspect is chosen by the quest and isn't named in these files."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    },
+    {
+     "field": "where",
+     "why": "Zaria works in Grave Concoctions from 8 am for 12 hours, but if the civil war exiles Falkreath's court she moves to Candlehearth Hall in Windhelm."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009EC stages 0-200, stage 200 entries conditioned on GetDead alias 7",
+    "quest_givers_raw 0009EC giver Zaria Skyrim.esm:03A19A, info 0009D1 stageBelow 1; rewards 000BC0 Ring of Surroundings, gold",
+    "quests_raw 0009E6 objective 0 'Read Bounty: Glassfish'",
+    "quests_raw 0009DE stage 21 (glassfish only in lakes)",
+    "people_schedules Skyrim.esm:03A19A FalkreathZariaSellApothecary8x12",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Khajiit",
+   "name": "Spirits Away",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Ri'saad's bounty for lost bottles of flin comes from Viriya at the Riften Fishery.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Bounty: Lost Wares, Ri'saad's bounty for flin lost in the river west of Old Hroldan Inn."
+    }
+   ],
+   "firstStep": "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn",
+   "takesYou": [
+    {
+     "place": "the river west of Old Hroldan Inn, by the caravan's overturned cart",
+     "hold": "The Reach",
+     "why": "fish up the bottles of aged flin"
+    },
+    {
+     "place": "wherever Ri'saad's caravan is camped",
+     "hold": "",
+     "why": "hand over the flin"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn",
+      "Fish up Ri'saad's lost bottles of aged flin",
+      "Speak to Ri'saad"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Replica Ring of Khajiit: \"You move 10% faster and 25% faster when sneaking. Allows you to cast the spell Hide.\"",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Ri'saad",
+     "role": "Khajiit caravan leader who lost the flin and pays the bounty"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "where",
+     "why": "The records place Ri'saad out in the open world with his caravan; the caravan's route isn't in these files, so where to find him for the hand-in isn't pinned down."
+    },
+    {
+     "field": "steps",
+     "why": "The number of bottles is set by a counter whose value isn't in these files; the quest holds three."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009E2 stages 0/20/50/200, objectives 0/10/200, aliases Bottle1-3",
+    "quests_raw 0009E6 objective 50 'Read Bounty: Lost Wares'",
+    "quest_givers_raw 0009E2 Ri'saad Skyrim.esm:01B1DB ref 074340 in worldspace; reward 000B94",
+    "items_raw ccBGSSSE001-Fish.esm:000B94 text",
+    "places_raw Skyrim.esm:01F7CB Old Hroldan Inn (The Reach)",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Markarth",
+   "name": "Private Lessons",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Lynea in Markarth wants a fishing tutor; her notice comes from Viriya at the Riften Fishery.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Wanted: Fishing Tutor; it says Lynea is waiting in the Silver-Blood Inn in Markarth."
+    }
+   ],
+   "firstStep": "Speak to Lynea about private fishing lessons in the Silver-Blood Inn, Markarth",
+   "takesYou": [
+    {
+     "place": "Silver-Blood Inn, Markarth",
+     "hold": "The Reach",
+     "why": "agree to teach Lynea"
+    },
+    {
+     "place": "the docks near the Warrens, Markarth",
+     "hold": "The Reach",
+     "why": "catch fish while she watches"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak to Lynea about private fishing lessons",
+      "Meet Lynea on the docks near the Warrens",
+      "Catch fish with Lynea",
+      "Speak to Lynea"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Lynea's Amulet of Dibella",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lynea",
+     "role": "the student; waits in the Silver-Blood Inn. Once the lesson is done she spends mornings at the Temple of Dibella, late morning to evening on the docks and nights at the inn."
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "steps",
+     "why": "How many fish you must catch is set by a counter whose value isn't in these files, and she meets you on the docks only 'when she is ready', so some waiting may be needed."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009DF stages 0-200, objectives 0-40",
+    "quests_raw 0009E6 objective 40 'Read Wanted: Fishing Tutor'",
+    "people_raw ccBGSSSE001-Fish.esm:000C63 Lynea in Silver-Blood Inn",
+    "people_schedules 000C63 packages Inn18x14/Docks11x7/TempleDibella8x3, all conditioned on 0009DF completed",
+    "quest_givers_raw 0009DF reward 000C66",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Morthal",
+   "name": "No Contest",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "A fishing-contest notice from Viriya at the Riften Fishery points you to Brutius on the Morthal docks.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Notice: Fishing Contest; Brutius challenges all comers on the docks in Morthal."
+    }
+   ],
+   "firstStep": "Talk to Brutius on the docks in Morthal about a fishing contest",
+   "takesYou": [
+    {
+     "place": "the docks in Morthal",
+     "hold": "Hjaalmarch",
+     "why": "place your bet with Brutius"
+    },
+    {
+     "place": "the contest spot he marks on your map, by a river in the woods",
+     "hold": "",
+     "why": "the contest is an ambush; afterwards fish up his lost ring there"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Talk to Brutius in Morthal about a fishing contest",
+      "Meet Brutius at the fishing spot",
+      "Defeat Brutius",
+      "Defeat the ambushers",
+      "Search Brutius",
+      "Read Brutius's journal",
+      "Fish up Brutius's lost ring"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Warlock's Ring (fished up at the contest spot)",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [
+    "Brutius dies"
+   ],
+   "people": [
+    {
+     "name": "Brutius",
+     "role": "a wizard posing as a fisherman who lures fishers into the woods; found on the Morthal docks"
+    },
+    {
+     "name": "wizard ambushers",
+     "role": "attack with Brutius at the contest spot"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "where",
+     "why": "Brutius has no fixed placement in these files; the notice and journal put him on the Morthal docks. The contest spot is only 'marked on your map'."
+    },
+    {
+     "field": "starts",
+     "why": "The bet is a wager; the amount and whether you lose it aren't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009E4 stages 0-200, objectives 0-50, stage 30 entries conditioned on stage 20",
+    "quests_raw 0009E6 objective 20 'Read Notice: Fishing Contest'",
+    "people_raw ccBGSSSE001-Fish.esm:000B30 Brutius (no cell)",
+    "items_raw ccBGSSSE001-Fish.esm:000B2A Warlock's Ring",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Solitude",
+   "name": "The Ultimate Feast",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Gisli's request for a seafood feast comes as a notice from Viriya at the Riften Fishery.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Wanted: A Seafood Feast, Gisli's list for a meal at the Winking Skeever in Solitude."
+    }
+   ],
+   "firstStep": "Gather steamed crab legs, a cooked arctic char and a bowl of crab stew",
+   "takesYou": [
+    {
+     "place": "the Winking Skeever in Solitude, second floor",
+     "hold": "Haafingar",
+     "why": "set Gisli's table, then collect her payment from it"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Obtain a pair of steamed crab legs",
+      "Obtain a cooked arctic char",
+      "Obtain a bowl of crab stew",
+      "Set a table for Gisli at the Winking Skeever",
+      "Wait for Gisli to take her seat",
+      "Wait an hour for Gisli to finish dining",
+      "Check Gisli's table at the Winking Skeever"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "a coin purse and a letter of thanks, left on her plate",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Gisli",
+     "role": "the diner; lives in Erikur's House in Solitude and spends late afternoon and evening at the Winking Skeever"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "steps",
+     "why": "The journal says the innkeeper doesn't stock everything; how to cook each dish isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The amount of gold in the coin purse isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    },
+    {
+     "field": "starts",
+     "why": "The quest can also hand you its letter by courier; the records don't say when that happens instead of Viriya's board."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009E3 stages 0-200, objectives 0-50, aliases DinnerGuest/Plate/Reward/CourierLetter",
+    "quests_raw 0009E6 objective 60 'Read Wanted: A Seafood Feast'",
+    "quest_givers_raw 0009E3 Gisli Skyrim.esm:013282 in Erikur's House",
+    "people_schedules 013282 SolitudeGisliInnEat16x8 at The Winking Skeever",
+    "quests_raw 0009E3 alias CourierLetter",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_WhiterunPartOne",
+   "name": "Heart of Gold",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Mila Valentia in Whiterun wants a pet goldfish; the notice comes from Viriya at the Riften Fishery.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Bounty: Goldfish!"
+    }
+   ],
+   "firstStep": "Obtain a goldfish for Mila Valentia in Whiterun",
+   "takesYou": [
+    {
+     "place": "a lake in the warmer parts of Skyrim",
+     "hold": "",
+     "why": "catch a goldfish (the first Fishing Mastery volume says goldfish live only in lakes)"
+    },
+    {
+     "place": "Whiterun",
+     "hold": "Whiterun",
+     "why": "give Mila the goldfish and follow her"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Obtain a goldfish for Mila Valentia in Whiterun",
+      "Speak to Mila Valentia",
+      "Follow Mila"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "a single septim",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [
+    "Two of a Kind"
+   ],
+   "closes": [],
+   "people": [
+    {
+     "name": "Mila Valentia",
+     "role": "a child in Whiterun; lives in Carlotta Valentia's House, at the market late morning, out playing in the afternoon, at the Bannered Mare in the evening"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:000E5D stages 0-200, objectives 0-30",
+    "quests_raw 0009E6 objective 10 'Read Bounty: Goldfish!'",
+    "quests_raw 0009DE stage 21 (goldfish only in lakes)",
+    "people_schedules Skyrim.esm:013BAD MarketplacePackage 11x2, PlayPackage 13x6, BanneredMare 19x3, Sleep 23",
+    "quests_raw 0009D7 stage 10 follows on from the first goldfish",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_WhiterunPartTwo",
+   "name": "Two of a Kind",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "by itself",
+   "canDoWhy": "After Heart of Gold a courier brings you a letter from Mila asking for a second goldfish.",
+   "needs": [
+    {
+     "what": "Finish Heart of Gold",
+     "kind": "quest"
+    }
+   ],
+   "starts": [
+    {
+     "who": "a courier",
+     "where": "finds you",
+     "how": "Delivers a letter from Mila Valentia saying her goldfish needs a companion."
+    }
+   ],
+   "firstStep": "Read the letter from Mila Valentia",
+   "takesYou": [
+    {
+     "place": "a lake in the warmer parts of Skyrim",
+     "hold": "",
+     "why": "catch another goldfish"
+    },
+    {
+     "place": "Whiterun",
+     "hold": "Whiterun",
+     "why": "give Mila the goldfish and follow her to the trough where she keeps them"
+    },
+    {
+     "place": "Mila's secret hiding spot behind Dragonsreach",
+     "hold": "Whiterun",
+     "why": "open her treasure box with the key she gives you"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Read the letter from Mila Valentia",
+      "Find another goldfish for Mila Valentia",
+      "Speak to Mila Valentia",
+      "Follow Mila",
+      "Read Mila's note",
+      "Find Mila's secret hiding spot"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "the key to Mila's treasure box, which holds a set of rare alchemy ingredients",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Mila Valentia",
+     "role": "the child from Heart of Gold"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "How long after Heart of Gold the courier letter arrives isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "Which ingredients are in the box isn't in these files."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009D7 stages 5-200, objectives 0-50/1000, aliases CourierLetter/Chest/Note",
+    "questlines_raw ccBGSSSE001-Fish order: 000E5D then 0009D7"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Windhelm",
+   "name": "Tusked Terror",
+   "plugin": "ccBGSSSE001-Fish.esm (last edited by Synthesis - Gameplay Overwrite.esp)",
+   "canDo": "talk",
+   "canDoWhy": "The Jarl of Windhelm's bounty on the horker Fangtusk comes from Viriya at the Riften Fishery.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Viriya",
+     "where": "Riften Fishery docks by day (6 am to 6 pm) until End of the Line is done, then at her crab stall by day; Haelga's Bunkhouse in Riften from 6 pm and through the night",
+     "how": "Ask her about more fishing bounties around Skyrim and read Bounty: Fangtusk."
+    }
+   ],
+   "firstStep": "Obtain an arctic grayling",
+   "takesYou": [
+    {
+     "place": "freezing waters near snow and ice (the third Fishing Mastery volume names the Windhelm docks, the water near Dawnstar and the lake near Nightgate Inn)",
+     "hold": "",
+     "why": "catch an arctic grayling for bait"
+    },
+    {
+     "place": "Fangtusk's feeding grounds, north of Hollyfrost Farm",
+     "hold": "Eastmarch",
+     "why": "leave the grayling, kill Fangtusk and inspect its body"
+    },
+    {
+     "place": "Palace of the Kings, Windhelm",
+     "hold": "Eastmarch",
+     "why": "show the ring to the Jarl's steward"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Obtain an arctic grayling",
+      "Place an arctic grayling at Fangtusk's feeding grounds",
+      "Kill Fangtusk",
+      "Inspect Fangtusk",
+      "Speak to the steward in Windhelm"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Vampiric Ring: \"The ring grants the power to drain the life force of others and those nearby.\"",
+     "when": "found inside Fangtusk"
+    },
+    {
+     "what": "the bounty reward from the steward",
+     "when": "at the end"
+    }
+   ],
+   "type": "Side Quest",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Fangtusk",
+     "role": "a monstrous horker that drains the life of those around it"
+    },
+    {
+     "name": "the steward of Windhelm",
+     "role": "pays the bounty in the Palace of the Kings (the records give the post to Jorleif)"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The bounty letter comes from Viriya when you ask her about fishing bounties around Skyrim. These files don't show what you must have done before she offers it; meeting her at the Riften Fishery is the likely minimum, and in LoreRim the fishing introduction does not start at the beginning of the game."
+    },
+    {
+     "field": "rewards",
+     "why": "What the steward pays isn't in these files, nor whether you keep the ring after showing it."
+    },
+    {
+     "field": "people",
+     "why": "The steward is filled in by the quest; who holds the post can change with the civil war."
+    },
+    {
+     "field": "takesYou",
+     "why": "Hollyfrost Farm isn't in the place records; Eastmarch is assumed from it being the Jarl of Windhelm's bounty."
+    },
+    {
+     "field": "where",
+     "why": "Once End of the Line is done Viriya spends her days at a crab stall; the records don't say where the stall stands."
+    }
+   ],
+   "evidence": [
+    "quests_raw ccBGSSSE001-Fish.esm:0009D5 stages 10-200, objectives 0-80, aliases Steward/Jarl/Fangtusk/Ring/BountyLetter",
+    "quests_raw 0009E6 objective 30 'Read Bounty: Fangtusk'",
+    "quests_raw 0009E8 stage 21 (arctic fishing spots)",
+    "items_raw ccBGSSSE001-Fish.esm:000C07 Vampiric Ring",
+    "people_raw 000BF9 Fangtusk (Horker)",
+    "people_schedules Skyrim.esm:014135 Jorleif, WindhelmSteward faction, Palace of the Kings",
+    "people_schedules ccBGSSSE001-Fish.esm:0008F6 WorkFisheryDocks6x12 (End of the Line not completed), CrabStallPkg (End of the Line completed), Bunkhouse18x6, Sleep0x6"
+   ]
+  }
+ ]
+}
