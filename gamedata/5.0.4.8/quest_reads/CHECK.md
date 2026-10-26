@@ -13,6 +13,8 @@ Two rulings from Bob, 23 Oct, after the first ten batches:
 - **Don't empty a field a player needs just because the records only point at the answer.** An item, spell or gold named by the quest's own script properties (a reward property, a `Reward…` or the item the last stage hands over) stays in `rewards`, with an `unsure` note saying it's from the script and not confirmed. A likely giver (the one every sister job uses) goes in `unsure` with the name, so the page can say "probably Fura Bloodmouth". Remove only what the records contradict or what nothing in them supports.
 - **"Radiant" is fine; "repeatable" needs a record.** Leave `canDo: "radiant"` alone; drop "repeatable" or "repeats" unless the records show it.
 
+**Every verdict's note names what you compared** (Bob, 26 Oct). Not "matches" or "checked against the raw records": say which record and what it showed, in a few words. "starts: the greeting line is Jaree-Ra's, and his first package keeps him by the Winking Skeever; matches." "rewards: the last stage's script hands over no item; matches." A note that would fit any quest isn't a check, and the batch goes back. Ids are fine in notes (they aren't player text).
+
 Then write the corrected quest object (the reader's object with your fixes applied, and anything unsettled moved to `unsure`).
 
 Save to the path you are given as `{"checks": [{"edid", "verdicts": {field: {"verdict", "note"}}}], "quests": [corrected objects]}` and reply with the path and one line: how many fields you fixed.
