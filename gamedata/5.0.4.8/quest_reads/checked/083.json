@@ -1,0 +1,1178 @@
+{
+ "checks": [
+  {
+   "edid": "FreeformWindhelmA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Windhelm delivery: questgiver alias holds Hillevi Cruel-Sea 01411F and the lone objective is 'Deliver the Nightshade Extract to Wuunferth the Unliving'; a talk job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Hillevi's line odd-jobs-eastmarch has empty dialogue and event conditions and startGame=true, so the quest is already running; nothing to earn first."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Hillevi is placed in House of Clan Cruel-Sea 01677D; HilleviEatBreakfast7x1 and HilleviEatDinner20x4 keep her home, HilleviWorkAtStall8x12 puts her at a stall in Windhelm under weather-type checks. The only giver INFO 0CD859 is Wuunferth's, so her own offer line isn't shown, as the unsure says."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 reads 'Deliver the <QuestItem> to <Target>', filled with Nightshade Extract and Wuunferth the Unliving: same wording."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Target alias Wuunferth 014146 is placed in Palace of the Kings 01677C; WuunferthPuttersAboutInLabAllDay targets 'Palace of the Kings, Upstairs' and AIOWHWuunferthEatDinner takes him to the main hall 5-8 pm: upstairs lab is right."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Delivery has stages 10, 20 and 200 with the single extract objective; Wuunferth's line 0CD859 (stage<11) is the only handover, no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "The Gold property on fragment script QF_FreeformWindhelmA_000CD882 is the only reward listed; no septim count is in the records, so 'Gold' plus the unsure note stands."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Searched every quest_starts line and all schedule conditions for 0CD882: only its own line odd-jobs-eastmarch and Hillevi's/Wuunferth's alias entries carry it; nothing follows on."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Neither Hillevi nor Wuunferth is essential or protected, but no package of theirs is keyed to 0CD882 and the quest has no fail stage, so the delivery locks nothing."
+    }
+   }
+  },
+  {
+   "edid": "FreeformShipsWindhelm",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Harsh Master's BanditCamp, Boss and MapMarker aliases have no fixed fill and FavorChangeLocationWindhelm starts it; the camp is picked per run, radiant."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Kjar's giver INFO 09414E is gated only on stage<16 and the start node is a plain change-location event; no level, faction or quest gate."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "QuestGiver alias holds Kjar 013293, placed on the Windhelm exterior 000D74; ShipsNorthwindCaptainSandbox, his only package, centres on Windhelm Docks at 0 km. Arriving in Windhelm fires the node."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 reads 'Kill the leader of <BanditCamp>': the reader's step, with the camp left for the game to choose."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "The BanditCamp alias for Kjar's job is never filled in the records, so there is no camp or hold to name; the reader's blank hold and unsure note fit."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Kjar's job runs objective 10 (kill the leader) then 15 'Return to Kjar', and stage 20 completes it; no alternative stage or objective."
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "Fragment QF_FreeformShipsWindhelm_00094158 property FavorRewardEnchWeapon points at list FavorRewardEnchSword 0494B0, so the weapon is likely a sword; added that, kept the armor list 049313 and the gold, noted it's from the script."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Searched quest_starts and every NPC package condition for 094158: only Kjar's QuestGiver alias entry carries it, and no other quest's start line names Harsh Master."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Kjar is neither essential nor protected, yet no package of his is keyed to 094158 and stages 0-200 hold no fail; killing a camp boss locks nothing else."
+    }
+   }
+  },
+  {
+   "edid": "FreeformKynesgroveA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dravynea's job: QuestGiver alias holds Dravynea the Stoneweaver 01365F, giver INFO 068F2A, objective 'Bring some Frost Salts to Dravynea'; a talk-and-fetch job."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Objective 10 asks for 'some Frost Salts' and there is no QuestItem alias, so any Frost Salts you own count; the item need and its unsure note hold."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Dravynea is placed in Braidwood Inn 013907; KynesgroveDravyneaEat6x1/Eat17x1 (Braidwood Inn), Study10x5 (Steamscorch Mine interior), WorkInMine20x3 (8-11 pm), else HangAroundCampfireAndInn; FavorChangeLocationKynesgrove fires on arrival."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "The step 'Bring some Frost Salts to Dravynea' is word for word objective 10 with the QuestGiver short name filled in."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "You hand the salts back to Dravynea herself, whose packages put her only in Braidwood Inn or Steamscorch Mine in Kynesgrove, Eastmarch."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Frost Salts job has stages 10, 20 and 200 and one objective; her giver line 068F2A (stage<11) is the only turn-in, no fork."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_FreeformKynesgroveA_00069043 lists a single Gold property and no item or leveled list; the amount isn't in the records."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "No start line or package condition anywhere names 069043 except Dravynea's own QuestGiver alias entry; nothing chained after it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Dravynea is essential and protected, and none of her six packages is keyed to 069043; with no fail stage the job can't cost you her or her services."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiverwood01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A Lovely Letter's objectives 10 and 110 deliver Faendal's or Sven's letter, started by FreeformRiverwoodNode on entering Riverwood; a talk quest."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "The Riverwood start event's one condition is the location check fn576; the line odd-jobs-whiterun has no dialogue gate, so nothing is needed beyond being there."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Aliases Faendal 013480 and Sven 01347F: FaendalWork7x12 near Riverwood, FaendalEatHome22x1/SleepHome23x5 in Faendal's House; SvenPlayInn10x16 in the Sleeping Giant Inn, SvenSleepHome2x7 and BreakfastHome9x1 in Sven and Hilde's House."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "'Deliver Faendal's letter to Camilla in Riverwood' is objective 10 as written, with objective 110 the Sven version the reader puts in brackets."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Camilla alias 01347B: CamillaWorkTrader8x10 in the Riverwood Trader and CamillaSleeplingGiant18x4 in the Sleeping Giant Inn, Whiterun hold; the reader's times match."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Objectives 10/20 (Faendal's letter, optionally tell Sven) and 110/120 (Sven's, optionally tell Faendal) are the two branches; LovelyLetter.esp and NGCDT patches edit lines keyed to stages 220-240, so the unsure on endings is fair."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Fragment QF_FreeformRiverwood01_00074A83 carries a Gold property only; no letter-ending item and no amount appear."
+    },
+    "opens": {
+     "verdict": "fix",
+     "note": "ACFRiverwoodTheHeartWillGoOn starts from its own change-location node ACFMTSRiverwoodQuestNode with no condition on 074A83, and no quest_starts line references this quest; the 'sequel' is only a chest alias name. Moved to unsure, opens emptied."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Sven and Faendal are protected, Camilla is neither essential nor protected, and none of the three has a package keyed to 074A83; stages 0-350 hold no fail, so no one is lost."
+    }
+   }
+  },
+  {
+   "edid": "FreeformSalviusFarmA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Rogatus's Letter has a QuestGiver alias (Rogatus 0133B5) and a Letter alias with one delivery objective; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "quest_givers has no giver INFO for 0931BF and quest_starts has no line for it at all, so no gate shows; empty needs fits."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Rogatus is placed in Salvius Farmhouse 0161ED; SalviusFarmerWorkPackage8x12 keeps him around Salvius Farm 8 am-8 pm, otherwise shared eat/sleep/sandbox packages at his placement; no offer line exists, as the unsure says."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 is exactly 'Deliver Rogatus' letter to Leontius'."
+    },
+    "takesYou": {
+     "verdict": "fix",
+     "note": "Old Hroldan Inn location 01F7CB has hold The Reach, and Leontius's sleep package names The Reach; filled the hold and dropped that unsure note. Outside by day (OldHroldanLeontiusSandboxOutside7x17) / inn at night matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Rogatus's letter quest has stages 10, 20, 200 and no second objective or fail stage; one path."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_FreeformSalviusFarmA_000931BF holds one Gold property; the records give no amount and no item for Leontius to hand over."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Only Rogatus's QuestGiver and Leontius's Leonitus alias entries carry 0931BF; no start line or package condition elsewhere points to it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Rogatus and Leontius are both non-essential, but neither has a package keyed to 0931BF and there's no fail stage; the letter locks nothing."
+    }
+   }
+  },
+  {
+   "edid": "FreeformWinterholdA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "A Bad Trade: Birna alias 01C187 with giver INFO 062F4D (stage<10) and the one objective to place the urn; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "USSEP adds Yngol's Barrow quest 0434A3 stage<10 to Birna's offer line 062F4D, so the offer closes once that barrow quest moves on; the reader's need and unsure note match."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Birna's packages are WinterholdBirnaVisitInn20x3 (Frozen Hearth), Lunch13x1 (her shop), Sleep0x7 and WanderHome; there is no 8 am-8 pm shop package, so the hours were invented. Reworded to 'through the day, lunch at 1 pm'. Placeholder line 062F4E ('this claw thing') confirmed."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 20 'Place the burial urn in Yngol Barrow' is the first and only objective; same words."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Yngol Barrow 0192C9: Eastmarch, 0.4 km from Windhelm, draugr crypt with traps, boss Yngol's Shade level 51; the Windhelm guard line 0DA669 says 'across the river to the northeast'."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Birna's urn job has stages 0, 10, 20, 30 and USSEP's 062F4C line needs stage==10; nothing splits it."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_FreeformWinterholdA_00062F54 has a Gold property; Birna's line says the item is 'worth more than its weight in gold', but no amount or payer shows, as the unsure says."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Beyond its own line odd-jobs-the-north (two USSEP condition changes) and Birna's alias entry, nothing references 062F54."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Birna is not essential and no package of hers is keyed to 062F54; tied refs 062F5C and 0B634D sit in the barrow cell 0151F5 but no fail stage exists, so nothing locks."
+    }
+   }
+  },
+  {
+   "edid": "FreeformShipsDawnstar",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Salty Sea-Dogs' Cave, Container and MapMarker aliases are unfilled and FavorChangeLocationDawnstar starts it; picked per run, radiant."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Captain Wayfinder's giver INFO 09414A is gated only on stage<16, and his start node is a change-location event with no extra checks."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "QuestGiver Captain Wayfinder 013296 is placed on the exterior 000D74 at Dawnstar; ShipsSeaSquallCaptainSandbox centres on Dawnstar at 0 km and AIODawnSeaSquallWander runs 1 pm for 5 h under weather checks."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 fills to 'Find the Void Salts for Captain Wayfinder', the reader's wording."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Wayfinder's Cave and Container aliases carry no fixed fill, so no cave or hold can be named; the unsure stays."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Wayfinder's job runs 'Find the Void Salts' then 'Bring the Void Salts to Wayfinder', completing at stage 20; no fork."
+    },
+    "rewards": {
+     "verdict": "fix",
+     "note": "FavorRewardEnchWeapon points at the list FavorRewardEnchSword 0494B0, so likely a sword; added that, kept armor and gold, noted it's from the script."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Searched the start lines and NPC package conditions for 094152; only Wayfinder's QuestGiver alias entry turns up."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Captain Wayfinder is protected, not essential, and has no package keyed to 094152; stages 10-200 have no fail, so the Void Salts run locks nothing."
+    }
+   }
+  },
+  {
+   "edid": "FreeformMorthalB",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "For the Good of Morthal: Gorm alias 0135EA with giver INFO 0AD9F4 and a Note alias for the letter; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Gorm's line 0AD9F4 needs only stage<10 and no quest_starts line exists for 021896; nothing to earn first."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Gorm is placed in Highmoon Hall; MorthalGormStandHighMoonHall, MorthalGormEatMoorside18x3 (8-11 pm, Moorside Inn), MorthalGormSleep23x7 in the hall, CWExiledImperialSandboxBluePalace gated on faction 036629."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "'Deliver Gorm's letter to Captain Aldis' is objective 10 unchanged."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Aldis 041FB8 is placed in Castle Dour; GuardSolitudeImperialDaySleep (Castle Dour from 8 pm), SolitudeValdTrainingPackage outdoors in Solitude; Haafingar. The unsure on daytime fits."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Gorm's letter has stage 20 completing and 255 failing with no text and no second objective; no player choice shows."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "Gorm's fragment QF_FreeformMorthalB_00021896 lists Gold001 and nothing else; no amount."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Only Gorm's and Aldis's alias entries carry 021896; no start line or package condition elsewhere names it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Gorm is essential, Aldis is not, and neither has a package keyed to 021896; stage 255 fails this quest only, so closes stays empty with the reader's note."
+    }
+   }
+  },
+  {
+   "edid": "FreeformStonehillsA",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Payment Delivery: Pactur alias 013605 with giver INFO 064956 and the objective 'Speak with Bryling'; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Pactur's line 064956 is gated on stage<10 alone, and there's no quest_starts line for 064958."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "schedule matches (WorkOutside9x2, VisitMine1x3 in Rockwallow Mine 1-4 pm, SandboxHome, placed in Sorli's House), but the BYOHPacturSteward packages are gated on faction 050922 and send him to Highmoon Hall in Morthal, not to your house; reworded the unsure note."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 reads only 'Speak with Bryling', as the reader has it."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Bryling 013265: SolitudePalaceCourtSandbox8x12 and SolitudeCourtEat13x2 in the Blue Palace, placed in Bryling's House; Haafingar."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Stage 20 completes, 25 and 30 (fails) carry no text, and Bryling's line needs stage<11; a keep-the-money path isn't shown, unsure fair."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "QF_FreeformStonehillsA_00064958 has Gold001 as its only reward; Big Tweaks.esp edits the quest but no change to it shows."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "Pactur's and Bryling's alias entries are the only places 064958 appears outside its own records; nothing follows."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Pactur and Bryling are both essential and neither has a package keyed to 064958; fail stage 30 ends only this job."
+    }
+   }
+  },
+  {
+   "edid": "FreeformFalkreathQuest01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Lod's Lot has no aliases, no reward entry and no start node; objective 20 'Turn Lod in to Kust' has no stage 20 (stages 0/10/200/255), while giver INFO 093749 for Lod (stage<1) and a Kust line (stage<11) exist; 'cut' with the unsure note fits."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Lod's INFO 093749 is gated on stage<1 and there is no quest_starts line for 093753, so no gate shows."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "With no start node and no aliases, empty starts is right; Lod (placed in Lod's House, protected) has the one offer line 093749, which the unsure covers."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "Objective 10 'Buy the Book off Lod' exists, but with the quest likely unreachable a blank step is consistent."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Lod's Lot fills no alias, so it points at no place; Lod's House and Kust's cemetery package aren't quest targets."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "Lod's Lot stages 0, 10, 200, 255 carry no text or branch flags; nothing to choose."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "quest_givers has no rewards entry and no fragment script for 093753; empty."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "093753 appears only in the Miscellaneous questline list and its own quest_givers entry; no start line chains from it."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Lod and Kust are protected, not essential, and neither lists 093753 among their quests; nothing is closed."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "FreeformWindhelmA",
+   "name": "Delivery",
+   "plugin": "Skyrim.esm",
+   "canDo": "talk",
+   "canDoWhy": "Hillevi Cruel-Sea in Windhelm has a delivery for Wuunferth the Unliving in the Palace of the Kings; take it to him.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Hillevi Cruel-Sea",
+     "where": "at her street stall in Windhelm by day; at home in the House of Clan Cruel-Sea for breakfast and from 8 pm",
+     "how": "Talk to Hillevi; she is the one sending the Nightshade Extract to Wuunferth."
+    }
+   ],
+   "firstStep": "Deliver the Nightshade Extract to Wuunferth the Unliving",
+   "takesYou": [
+    {
+     "place": "Palace of the Kings (upstairs, Wuunferth's lab)",
+     "hold": "Eastmarch",
+     "why": "hand the Nightshade Extract to Wuunferth"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver the Nightshade Extract to Wuunferth the Unliving"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you hand over the extract"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Hillevi Cruel-Sea",
+     "role": "sends the delivery; street vendor in Windhelm"
+    },
+    {
+     "name": "Wuunferth the Unliving",
+     "role": "receives it; spends the day in his lab upstairs in the Palace of the Kings"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Hillevi is the quest's giver in the records, but her opening line isn't in these files, so exactly how she asks isn't shown. The quest is running from the start of the game."
+    },
+    {
+     "field": "starts.where",
+     "why": "Her stall schedule (8 am for 12 hours) has extra conditions, likely weather, so she may stay home on some days."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount is set in the quest script and isn't shown here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0CD882",
+    "alias questgiver=Hillevi Cruel-Sea 01411F",
+    "alias Target=Wuunferth 014146, QuestItem=Nightshade Extract",
+    "giver info 0CD859 (Wuunferth, stage<11)",
+    "quest_starts line odd-jobs-eastmarch startGame=true",
+    "QF_FreeformWindhelmA_000CD882.Gold",
+    "pkg HilleviWorkAtStall8x12, HilleviEatBreakfast7x1, HilleviEatDinner20x4",
+    "pkg WuunferthPuttersAboutInLabAllDay"
+   ]
+  },
+  {
+   "edid": "FreeformShipsWindhelm",
+   "name": "Harsh Master",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "Kjar, a ship's captain on the Windhelm docks, wants the leader of a bandit camp dead; the game picks the camp.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Kjar",
+     "where": "on the Windhelm docks, around his ship",
+     "how": "Talk to Kjar on the docks; the job becomes available when you arrive in Windhelm."
+    }
+   ],
+   "firstStep": "Kill the leader of the bandit camp Kjar names",
+   "takesYou": [
+    {
+     "place": "a bandit camp the game chooses",
+     "hold": "",
+     "why": "kill its leader"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Kill the leader of the bandit camp",
+      "Return to Kjar"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you report back to Kjar"
+    },
+    {
+     "what": "An enchanted piece of armor or an enchanted weapon, probably a sword (leveled to you)",
+     "when": "when you report back to Kjar"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Kjar",
+     "role": "ship's captain on the Windhelm docks; gives the job and pays you"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The camp is picked by the game when the quest starts; the records don't name one, so the hold varies."
+    },
+    {
+     "field": "rewards",
+     "why": "From the quest script, not confirmed: it holds an enchanted-armor list and an enchanted-weapon list (the weapon list is named for swords); whether you get one or both, and the gold amount, aren't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:094158",
+    "alias QuestGiver=Kjar 013293; BanditCamp, Boss, MapMarker unfilled",
+    "giver info 09414E (Kjar, stage<16)",
+    "start node FavorChangeLocationWindhelm (change location)",
+    "QF_FreeformShipsWindhelm_00094158: Gold, FavorRewardEnchArmor 049313, FavorRewardEnchWeapon 0494B0",
+    "pkg ShipsNorthwindCaptainSandbox (Windhelm Docks)",
+    "weapon list edid FavorRewardEnchSword 0494B0"
+   ]
+  },
+  {
+   "edid": "FreeformKynesgroveA",
+   "name": "Dravynea's Frost Salts",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Dravynea the Stoneweaver in Kynesgrove wants some Frost Salts; bring her one.",
+   "needs": [
+    {
+     "what": "Some Frost Salts",
+     "kind": "item"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Dravynea the Stoneweaver",
+     "where": "Kynesgrove: in the Braidwood Inn at mealtimes (about 6 am and 5 pm); in Steamscorch Mine from about 10 am to 3 pm and again in the evening",
+     "how": "Talk to Dravynea; the job becomes available when you arrive in Kynesgrove."
+    }
+   ],
+   "firstStep": "Bring some Frost Salts to Dravynea",
+   "takesYou": [
+    {
+     "place": "Braidwood Inn or Steamscorch Mine, Kynesgrove",
+     "hold": "Eastmarch",
+     "why": "hand Dravynea the Frost Salts"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Bring some Frost Salts to Dravynea"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you give her the Frost Salts"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Dravynea the Stoneweaver",
+     "role": "Kynesgrove's mage; asks for the Frost Salts and pays you"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The records don't say where to find Frost Salts; any you carry should do, but that isn't confirmed here."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount is set in the quest script and isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:069043",
+    "alias QuestGiver=Dravynea 01365F",
+    "giver info 068F2A (stage<11)",
+    "start node FavorChangeLocationKynesgrove",
+    "QF_FreeformKynesgroveA_00069043.Gold",
+    "pkg KynesgroveDravyneaStudy10x5, WorkInMine20x3, Eat6x1, Eat17x1 (AI Overhaul)"
+   ]
+  },
+  {
+   "edid": "FreeformRiverwood01",
+   "name": "A Lovely Letter",
+   "plugin": "Skyrim.esm (last edited by LoreRim - Global Modifiers.esp; also LovelyLetter.esp, TheChoiceIsYours.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Faendal and Sven in Riverwood both want Camilla Valerius; one of them gives you a letter for her, and you can play them against each other.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Faendal",
+     "where": "around Riverwood by day (lumber work and hunting from about 7 am); in Faendal's House from about 10 pm",
+     "how": "Talk to Faendal; he gives you a letter for Camilla."
+    },
+    {
+     "who": "Sven",
+     "where": "in the Sleeping Giant Inn from about 10 am into the night; at home in Sven and Hilde's House early morning",
+     "how": "Talk to Sven; he gives you a letter for Camilla."
+    }
+   ],
+   "firstStep": "Deliver Faendal's letter (or Sven's) to Camilla in Riverwood",
+   "takesYou": [
+    {
+     "place": "Riverwood Trader",
+     "hold": "Whiterun",
+     "why": "Camilla works there by day; she's in the Sleeping Giant Inn in the early evening"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Take Faendal's letter to Camilla",
+     "leadsTo": "Optionally, tell Sven about Faendal's letter instead"
+    },
+    {
+     "choice": "Take Sven's letter to Camilla",
+     "leadsTo": "Optionally, tell Faendal about Sven's letter instead"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "Faendal's letter",
+     "objectives": [
+      "Deliver Faendal's letter to Camilla in Riverwood",
+      "(Optional) Tell Sven about Faendal's letter"
+     ]
+    },
+    {
+     "branch": "Sven's letter",
+     "objectives": [
+      "Deliver Sven's letter to Camilla in Riverwood",
+      "(Optional) Tell Faendal about Sven's letter"
+     ]
+    },
+    {
+     "branch": "afterwards",
+     "objectives": [
+      "Talk to Faendal",
+      "Talk to Sven"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Faendal",
+     "role": "wood elf in Riverwood, rival for Camilla"
+    },
+    {
+     "name": "Sven",
+     "role": "Riverwood's bard, rival for Camilla"
+    },
+    {
+     "name": "Camilla Valerius",
+     "role": "runs the Riverwood Trader; receives the letter"
+    },
+    {
+     "name": "Orgnar",
+     "role": "at the Sleeping Giant Inn; mentions the love triangle"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "The quest is switched on when you enter Riverwood, but the opening lines aren't in these files, so which man approaches you first, and on what terms, isn't shown."
+    },
+    {
+     "field": "choices",
+     "why": "The 'Talk to Faendal' and 'Talk to Sven' steps come after the delivery, but the records don't say exactly which choice leads to which. Two mods add extra stages with no journal text, so the ending may differ from the base game."
+    },
+    {
+     "field": "opens",
+     "why": "Another mod adds a quest, The Heart Will Go On, with the same three people and the same letters, but it starts on its own when you enter Riverwood; nothing in the records ties it to this quest being finished, so it may be a replacement rather than a follow-up."
+    },
+    {
+     "field": "rewards",
+     "why": "Only a gold property is in the records; the amount isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:074A83",
+    "editedBy LovelyLetter.esp, TheChoiceIsYours.esp, LoreRim - Global Modifiers.esp",
+    "objectives 10/20/110/120/210/220",
+    "start node FreeformRiverwoodNode (change location)",
+    "QF_FreeformRiverwood01_00074A83.Gold",
+    "INFO 0453ED (Orgnar, love triangle)",
+    "moretosayriverwood.esp:000F02 (RiverwoodSequelQuestItemHoldingChest)",
+    "pkg FaendalWork7x12, SvenPlayInn10x16, CamillaWorkTrader8x10, CamillaSleeplingGiant18x4",
+    "ACFRiverwoodTheHeartWillGoOn start node ACFMTSRiverwoodQuestNode (change location), no condition on 074A83"
+   ]
+  },
+  {
+   "edid": "FreeformSalviusFarmA",
+   "name": "Rogatus's Letter",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Rogatus Salvius at his farm near Markarth wants a letter taken to his son Leontius at Old Hroldan.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Rogatus Salvius",
+     "where": "at Salvius Farm outside Markarth, working the fields 8 am to 8 pm; in the Salvius Farmhouse otherwise",
+     "how": "Talk to Rogatus; he gives you a letter for Leontius."
+    }
+   ],
+   "firstStep": "Deliver Rogatus' letter to Leontius",
+   "takesYou": [
+    {
+     "place": "Old Hroldan (outside by day, in the Old Hroldan Inn at night)",
+     "hold": "The Reach",
+     "why": "give Leontius the letter"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver Rogatus' letter to Leontius"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you deliver the letter"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Rogatus Salvius",
+     "role": "farmer at Salvius Farm; writes the letter"
+    },
+    {
+     "name": "Leontius Salvius",
+     "role": "at Old Hroldan; receives the letter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Rogatus is the quest's giver in the records, but no opening line or start event for him is in these files, so how he offers it isn't shown."
+    },
+    {
+     "field": "people",
+     "why": "The two share a family name; that Leontius is his son isn't stated in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0931BF",
+    "alias QuestGiver=Rogatus 0133B5, Leonitus=Leontius 013B76, Letter",
+    "QF_FreeformSalviusFarmA_000931BF.Gold",
+    "pkg SalviusFarmerWorkPackage8x12, OldHroldanLeontiusSandboxOutside7x17Package, OldHroldanLeonitusSleep24x8Package",
+    "place OldHroldanInnLocation 01F7CB hold The Reach; pkg OldHroldanLeonitusSleep24x8 hold The Reach"
+   ]
+  },
+  {
+   "edid": "FreeformWinterholdA",
+   "name": "A Bad Trade",
+   "plugin": "Skyrim.esm (last edited by moretosaywinterhold.esp; also moretodo.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Birna in Winterhold wants something put back in Yngol Barrow, the draugr tomb across the river from Windhelm.",
+   "needs": [
+    {
+     "what": "Not have gone far into Yngol Barrow yet",
+     "kind": "other"
+    }
+   ],
+   "starts": [
+    {
+     "who": "Birna",
+     "where": "in Birna's Oddments, Winterhold, through the day (she has lunch there at 1 pm); at the Frozen Hearth from 8 to 11 pm",
+     "how": "Talk to Birna in her shop."
+    }
+   ],
+   "firstStep": "Place the burial urn in Yngol Barrow",
+   "takesYou": [
+    {
+     "place": "Yngol Barrow, across the river to the northeast of Windhelm",
+     "hold": "Eastmarch",
+     "why": "put the burial urn back"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Place the burial urn in Yngol Barrow"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Birna",
+     "role": "runs Birna's Oddments in Winterhold; gives the job"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "A patch makes Birna offer this only while the Yngol Barrow dungeon is still early on; exactly how far into the barrow you can go before the offer disappears isn't shown."
+    },
+    {
+     "field": "starts",
+     "why": "Birna's line about the barrow in the records is placeholder text about 'this claw thing', which doesn't match the urn in the objective; what she actually says may differ."
+    },
+    {
+     "field": "takesYou",
+     "why": "Yngol Barrow holds draugr and traps, with a level 51 boss; it is dangerous at low level. Where in the barrow the urn goes isn't described."
+    },
+    {
+     "field": "rewards",
+     "why": "Only a gold property is in the records; whether Birna pays you or you pay her, and how much, isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:062F54",
+    "editedBy moretodo.esp, moretosaywinterhold.esp",
+    "giver info 062F4D (Birna, stage<10); USSEP adds dunYngolBarrowQST 0434A3 stage<10",
+    "info 062F4C (USSEP adds stage==10)",
+    "INFO 062F4E placeholder line",
+    "tiedRefs 062F5C, 0B634D in Yngol Barrow cell 0151F5",
+    "QF_FreeformWinterholdA_00062F54.Gold",
+    "place YngolBarrowLocation 0192C9",
+    "pkg WinterholdBirnaVisitInn20x3",
+    "pkg WinterholdBirnaLunch13x1, WinterholdBirnaSleep0x7, WinterholdBirnaWanderHome"
+   ]
+  },
+  {
+   "edid": "FreeformShipsDawnstar",
+   "name": "Salty Sea-Dogs",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "radiant",
+   "canDoWhy": "Captain Wayfinder on the Dawnstar docks wants Void Salts fetched from a cave; the game picks the cave.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Captain Wayfinder",
+     "where": "on the Dawnstar docks, around his ship",
+     "how": "Talk to Captain Wayfinder; the job becomes available when you arrive in Dawnstar."
+    }
+   ],
+   "firstStep": "Find the Void Salts for Captain Wayfinder",
+   "takesYou": [
+    {
+     "place": "a cave the game chooses",
+     "hold": "",
+     "why": "find the Void Salts in a container there"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find the Void Salts for Captain Wayfinder",
+      "Bring the Void Salts to Captain Wayfinder"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you bring back the Void Salts"
+    },
+    {
+     "what": "An enchanted piece of armor or an enchanted weapon, probably a sword (leveled to you)",
+     "when": "when you bring back the Void Salts"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Captain Wayfinder",
+     "role": "ship's captain at Dawnstar; gives the job and pays you"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "takesYou",
+     "why": "The cave and the container are picked by the game when the quest starts; the records don't name them."
+    },
+    {
+     "field": "rewards",
+     "why": "From the quest script, not confirmed: it holds an enchanted-armor list and an enchanted-weapon list (the weapon list is named for swords); whether you get one or both, and the gold amount, aren't shown."
+    },
+    {
+     "field": "starts.where",
+     "why": "He wanders the docks in the afternoon under some conditions; otherwise he stays near his ship."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:094152",
+    "alias QuestGiver=Captain Wayfinder 013296; Cave, Container, MapMarker unfilled; QuestItem=Void Salts",
+    "giver info 09414A (stage<16)",
+    "start node FavorChangeLocationDawnstar",
+    "QF_FreeformShipsDawnstar_00094152: Gold, FavorRewardEnchArmor 049313, FavorRewardEnchWeapon 0494B0",
+    "pkg ShipsSeaSquallCaptainSandbox, AIODawnSeaSquallWander",
+    "weapon list edid FavorRewardEnchSword 0494B0"
+   ]
+  },
+  {
+   "edid": "FreeformMorthalB",
+   "name": "For the Good of Morthal",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Gorm in Morthal's Highmoon Hall gives you a letter for Captain Aldis in Solitude.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Gorm",
+     "where": "in Highmoon Hall, Morthal; at the Moorside Inn from 8 to 11 pm",
+     "how": "Talk to Gorm; he gives you his letter for Captain Aldis."
+    }
+   ],
+   "firstStep": "Deliver Gorm's letter to Captain Aldis",
+   "takesYou": [
+    {
+     "place": "Castle Dour, Solitude",
+     "hold": "Haafingar",
+     "why": "give Captain Aldis the letter"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Deliver Gorm's letter to Captain Aldis"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you deliver the letter"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Gorm",
+     "role": "in Highmoon Hall, Morthal; writes the letter"
+    },
+    {
+     "name": "Captain Aldis",
+     "role": "at Castle Dour, Solitude; receives the letter"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "fails",
+     "why": "The quest has a failure stage; what triggers it isn't shown (possibly the letter's recipient being lost)."
+    },
+    {
+     "field": "starts.where",
+     "why": "Gorm has a package that moves him to the Blue Palace in Solitude if he joins a certain faction, likely after a Civil War change in Morthal."
+    },
+    {
+     "field": "takesYou",
+     "why": "Aldis is placed in Castle Dour and sleeps there from 8 pm; by day he may be out in Solitude near the castle."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:021896",
+    "alias Gorm 0135EA, Note, Aldis 041FB8",
+    "giver info 0AD9F4 (Gorm, stage<10); Aldis stage<11",
+    "stage 255 fails",
+    "QF_FreeformMorthalB_00021896.Gold001",
+    "pkg MorthalGormStandHighMoonHall, MorthalGormEatMoorside18x3, CWExiledImperialSandboxBluePalace; GuardSolitudeImperialDaySleep, SolitudeValdTrainingPackage"
+   ]
+  },
+  {
+   "edid": "FreeformStonehillsA",
+   "name": "Payment Delivery",
+   "plugin": "Skyrim.esm (last edited by Big Tweaks.esp; also Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Pactur in Stonehills has a payment to go to Bryling in Solitude.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Pactur",
+     "where": "in Stonehills: outside around 9 to 11 am, in Rockwallow Mine from about 1 to 4 pm, otherwise at home (placed in Sorli's House)",
+     "how": "Talk to Pactur; he gives you the payment for Bryling."
+    }
+   ],
+   "firstStep": "Speak with Bryling",
+   "takesYou": [
+    {
+     "place": "the Blue Palace, Solitude (by day); Bryling's House at night",
+     "hold": "Haafingar",
+     "why": "hand Bryling the payment"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Speak with Bryling"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "when you speak with Bryling"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Pactur",
+     "role": "in Stonehills; sends the payment"
+    },
+    {
+     "name": "Bryling",
+     "role": "spends the day at court in the Blue Palace, Solitude; receives the payment"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "choices",
+     "why": "The quest has a failure stage and an extra stage between delivery and failure; whether you can keep the money (and fail) isn't shown in these files."
+    },
+    {
+     "field": "starts.where",
+     "why": "The records place Pactur in Sorli's House; his home package doesn't name the building. He also has packages that keep him in Highmoon Hall, Morthal, if he joins a certain faction (likely after a change in who rules Morthal)."
+    },
+    {
+     "field": "rewards",
+     "why": "The gold amount isn't shown; one mod edits this quest late in the load order and what it changes isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:064958",
+    "editedBy USSEP, Big Tweaks.esp",
+    "alias Pactur 013605, Bryling 013265",
+    "giver info 064956 (Pactur, stage<10); Bryling stage<11",
+    "stages 20 completes, 25, 30 fails",
+    "QF_FreeformStonehillsA_00064958.Gold001",
+    "pkg StonehillsPacturWorkOutside9x2, StonehillsPacturVisitMine1x3, SolitudePalaceCourtSandbox8x12",
+    "pkg BYOHPacturSteward* gated on GetInFaction 050922, target Highmoon Hall"
+   ]
+  },
+  {
+   "edid": "FreeformFalkreathQuest01",
+   "name": "Lod's Lot",
+   "plugin": "Skyrim.esm",
+   "canDo": "cut",
+   "canDoWhy": "Looks unfinished in the records: no people or items are set up for it, it gives nothing, and its second step has nothing to switch it on.",
+   "needs": [],
+   "starts": [],
+   "firstStep": "",
+   "takesYou": [],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Buy the Book off Lod",
+      "Turn Lod in to Kust"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Lod",
+     "role": "Falkreath's blacksmith; would sell you the book"
+    },
+    {
+     "name": "Kust",
+     "role": "in Falkreath (tied to the House of Arkay); you would turn Lod in to him"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "canDo",
+     "why": "Lod and Kust both have dialogue lines tied to this quest, so it may be reachable; but with no start event, no quest people, no reward and a step with no stage behind it, it most likely can't be done."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:093753",
+    "no aliases, no rewards, no start",
+    "objective 20 has no stage 20; stages 0,10,200,255",
+    "giver info 093749 (Lod, stage<1); Kust 01364C stage<11",
+    "Lod faction JobBlacksmithFaction; Kust FalkreathHouseofArkayFaction"
+   ]
+  }
+ ]
+}
