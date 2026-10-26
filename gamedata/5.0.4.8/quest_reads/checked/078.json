@@ -1,0 +1,1171 @@
+{
+ "checks": [
+  {
+   "edid": "ACFRoriksteadFreeform02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "quest record has no giver line of its own; a change-location story node starts it and Sissel's line (asking about Helgen) leads into the book request, so 'talk' is the player's way in; matches."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "the giver record has no giver line conditions for this quest, only the change-location node. Sissel's Helgen line (INFO 00089A) has no conditions in the files; the unsure note about Helgen stands."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "people-schedule packages: RoriksteadSisselRun 6 am for 12 h (no place), RoriksteadSisselTraining 6 pm for 2 h at Rorik's Manor, shared default sleep at her placement in Lemkil's Farmhouse. Added the Rorik's Manor evening to where."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Find one <book alias>', filled as Kolb and the Dragon; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "the book isn't in the items extract and no place pointer names it; empty with the unsure note is right."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "the quest record has stages 0, 5, 10, 100, 200 and just two objectives, 'Find one Kolb and the Dragon' and 'Bring one … to Sissel', with no second ending stage; no choice."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "giver record's reward is Septim via ACFRoriksteadScript.Gold001, no count; kept as gold, amount unknown."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "questlines file puts it in its own one-quest line from the Sissel's Book mod, with nothing after it; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Sissel's people record isn't essential, and her packages (run, training at Rorik's Manor, sleep) have no conditions on this quest; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften01",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "giver record lists dialogue lines for Laila and Maven (stage below 11) and Niluva and Wujeeta (below 21); a talk quest."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Laila's (INFO 085DF1) and Maven's lines carry only the quest stage below 11, and Niluva's and Wujeeta's only below 21. Wujeeta's tie to Helping Hand is on her skooma-taking package, not on these lines, so it stays an unsure note, not a need."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Niluva's and Wujeeta's lines run to stage 20 and the first objective already says to report to the Jarl, so a user telling you the source fits; which line sets the first stage isn't in the files, unsure note kept. Schedules: Wujeeta at the fishery and its docks 6 am to 6 pm, bunkhouse after; Niluva works the Black-Briar Meadery, bunkhouse 6 to 10 pm; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Report skooma source to Jarl of Riften'; Laila's giver placement is Mistveil Keep; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "objective 20 names Cragslane Cavern; the places record puts it in Eastmarch beside Shor's Stone, bandits, boss Butcher level 28; matches, with the hold note in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "objectives run 'Report skooma source' → 'Search … for Cragslane Cavern' → 'Disrupt the skooma operation' → 'Report to the Jarl'. Stage 200 is the only ending; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the giver record for this quest has no rewards list (no gold or leveled-list property), and the last stage (200) only completes it; empty, with the unsure note about the second mod's edit."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "the Miscellaneous bucket in the questlines file lists it beside the other Riften jobs. The Raid is the one that also hunts skooma, but nothing in the records ties it to this quest's stages; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "the last stage (200) only completes the quest. Laila is essential in her record, and Niluva's and Wujeeta's packages have no conditions on this quest; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften02",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Sibbi Black-Briar's line (INFO 03C48F, quest stage below 11) is the quest's giver line, said from his Riften Jail cell; a talk quest."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Sibbi's giver line (INFO 03C48F) carries only the quest stage below 11. His jail packages switch only on whether Promises to Keep is running, and he stays in Riften Jail either way; no need."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Sibbi's placement and both his package sets (RiftenSibbiPrisoner, MS03JailSibbiPackage) are in the Riften Jail cell; nothing in the records puts that cell inside Mistveil Keep, so that part is removed."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Discover Svidi's whereabouts'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Lynly is placed in the Vilemyr Inn, Ivarstead, and has a line at stage below 21; Sibbi's own line 'Ivarstead? So close to Riften?' confirms it; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "objectives 20 'Tell Sibbi about Lynly' and 30 'Lie to Sibbi about Lynly' are the two branches; Sibbi's Ivarstead line backs the truth branch; matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the giver record for this quest has no rewards list at all, and neither the truth nor the lie objective names an item; empty."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "listed in the Miscellaneous bucket of the questlines file with no quest after it. Stage 250 has no objective or log text; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Lynly's packages (barmaid, sleep, and innkeeper if someone is dead) and Sibbi's jail packages don't check this quest, and neither is changed by the answer; none."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften03",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Romlyn Dreth's line (INFO 041E0E, stage below 11) is the giver line, the one asking for the keg to go to Wilhelm; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Romlyn's giver line (INFO 041E0E) carries only the quest stage below 11, with no level, faction or earlier quest; none."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Romlyn's line asks for the keg to go to Wilhelm at the Vilemyr Inn; his packages: meadery carry work by day, Bee and Barb 6 to 10 pm, home 10 pm to 5 am; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Deliver Mead to Wilhelm'; Wilhelm's only package keeps him tending the bar at the Vilemyr Inn; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Wilhelm placed in the Vilemyr Inn; Indaryn placed and working in the Black-Briar Meadery (Bee and Barb from 7 pm); matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "objective 10 'Deliver Mead to Wilhelm' and objective 20 'Show Mead to Indaryn' are the two branches, with Indaryn and Wilhelm each having lines below stage 21; matches."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "fragment property pFFR03Gold is Septim, no count; kept as gold with the unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "the Miscellaneous bucket in the questlines file lists it as one of the Riften freeform jobs. Stage 250 and both delivery stages have no objective pointing anywhere else; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Romlyn's jail packages hang on a global and an unofficial-patch quest stage that aren't in these files; the read's unsure note is right."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften04",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Ingun Black-Briar's line (INFO 03C48E, stage below 11) is the only giver line, and objective 10 names her; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Ingun's giver line (INFO 03C48E) carries only the quest stage below 11. The LoreRim dialogue patch's edit isn't shown as a condition; none."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Ingun's packages: breakfast at Black-Briar Manor 8 am, Elgrim's Elixirs 9 am for 8 hours unless it rains (the stay-put-when-raining package sits above it), dinner and tinkering at the manor 6 pm to midnight, sleeps there; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 asks for 20 nirnroot; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "all hand-ins go to Ingun; no other place in the objectives; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "stages 10 to 60 alternate find and bring for nirnroot, nightshade and deathbell, then 'Speak to Ingun'. Stage 200 is the end; stage 250 has no objective. No branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "fragment property pFF04Gold is the FavorRewardGoldLarge leveled list; 'a large gold reward' fits, amount unknown."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "the Miscellaneous bucket in the questlines file lists it with nothing after it; Ingun's people record names no follow-up; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Ingun's packages (Elgrim's Elixirs, the manor, staying in when it rains) have no conditions on this quest, and she isn't essential but nothing here harms her; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften05",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Dinya Balu's line (INFO 041EBF, stage below 11) is the only giver line; the giver record marks it as dialogue; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Dinya's giver line (INFO 041EBF) carries only the quest stage below 11. Her market package checks A Chance Arrangement, but that's her schedule, not this line; none."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Dinya placed in the Temple of Mara; her packages keep her there except the market 12 to 3 pm (not in rain); matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Distribute the Warmth of Mara within Riften' with a served/total counter; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "objectives 10 and 20 name Riften and Dinya; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "two objectives, 'Distribute the Warmth of Mara within Riften' (served/total counter) and 'Return to Dinya'. Stages 25 and 30 have no objective of their own; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the only script item is pFF05Pamphlet, The Warmth of Mara, which you hand out; not a reward, empty is right."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "the Miscellaneous bucket lists it between Few and Far Between and Sealing the Deal with no link to either. Dinya's line opens no other quest; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Dinya's Temple of Mara packages don't check this quest; handing out the pamphlets changes nobody's record; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften06",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Talen-Jei's line (INFO 0369F7, stage below 11) is the only giver line, and objective 10 names him; talk."
+    },
+    "canDoWhy": {
+     "verdict": "fix",
+     "note": "the quest only has a Keerava alias; no line or objective says the amethysts are for her. Reworded to what objective 10 says."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Talen-Jei's giver line (INFO 0369F7) carries only the quest stage below 11; none."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Talen-Jei's packages are all at the Bee and Barb (assistant innkeeper, meals, sleep); matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Get 3 flawless amethysts for Talen-Jei'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "objective 20 'Return to Talen-Jei' at the Bee and Barb; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "two objectives, 'Get 3 flawless amethysts' (found/total counter) and 'Return to Talen-Jei'. Stage 200 is the only ending; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "fragment property pLoot is the FFRiften06Reward100 leveled list; its contents aren't in the items extract; kept with the unsure note."
+    },
+    "people": {
+     "verdict": "fix",
+     "note": "Keerava's role 'the gems are for her' isn't in any record; changed to 'part of the quest, the records don't say how'."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "listed in the Miscellaneous bucket. The FFRiften06Reward100 list is the only thing the end stage hands out, and no quest starts from it; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Talen-Jei and Keerava are both essential in their records, and their packages only check an unrelated scene quest; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften07",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Marise Aravel's line (INFO 0E82A3, stage below 11) is the giver line, followed by her Ancient's Ascent line (0E82A5); talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Marise's giver line (INFO 0E82A3) carries only the quest stage below 11; her Ancient's Ascent line (0E82A5) is advice, not a condition; none."
+    },
+    "starts": {
+     "verdict": "fix",
+     "note": "Marise's packages, top first: sleep at home 11 pm for 6 h, an after-hours package 8 to 11 pm with no place, dinner at home 6 pm, breakfast at home 5 am, vendor 8 am for 12 h. The read's 'house early morning and night' missed the 6 pm dinner and the unplaced 8 to 11 pm stretch; where rewritten."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Find 5 Ice Wraith Teeth for Marise'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "Marise's line names Ancient's Ascent; places record: Falkreath hold by Helgen, a dragon lair with Krahjotdaan 30 to 79; matches, kept as a tip in unsure."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "two objectives, 'Find 5 Ice Wraith Teeth for Marise' (count/total) and 'Return to Marise'; stages 10, 20, 200, 250, with no second ending; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the giver record for this quest has no rewards entry and no gold or leveled-list property; empty with the unsure note."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "listed in the Miscellaneous bucket. The Ancient's Ascent dragon lair is Wyrmstooth's lead too, but nothing in this quest's records starts that; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Marise's packages (vendor, after hours, home) don't check this quest; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften08",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Brand-Shei's line (INFO 0E82A4, stage below 11) is the giver line, followed by his Pride of Tel Vos line (0E82A2); talk."
+    },
+    "canDoWhy": {
+     "verdict": "fix",
+     "note": "'his real family' isn't in the records; objective 10 says 'a clue about Brand-Shei's past' and his line only speaks of a woman buying passage on the Pride of Tel Vos. Reworded."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Brand-Shei's giver line (INFO 0E82A4) carries only the quest stage below 11; none."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Brand-Shei's packages: shopkeeper in the plaza (Riften) by default, breakfast 6 am and evenings 8 pm to midnight at Haelga's Bunkhouse, sleeps there; jail only on a global; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Locate a clue about Brand-Shei's past'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "his line names the Pride of Tel Vos; places record: the wreck in Winterhold hold, bandits 12 to 24; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "two objectives, 'Locate a clue about Brand-Shei's past' and 'Return to Brand-Shei'. Stages 0, 10, 20, 30 lead to 200, with no second ending; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "the giver record has no rewards entry. The chest and book aliases are the clue, not handed to you as a reward; empty."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "listed in the Miscellaneous bucket. The book alias found at the wreck isn't named as a start for any other quest; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Brand-Shei's packages only switch to Riften Jail on a global value, not on this quest; nothing is locked."
+    }
+   }
+  },
+  {
+   "edid": "FreeformRiften09",
+   "verdicts": {
+    "canDo": {
+     "verdict": "agree",
+     "note": "Mjoll's line (INFO 045304, stage below 11) is the giver line. The level-up node FFR09KickerNode can also start it, but you still get the job from her; talk."
+    },
+    "needs": {
+     "verdict": "agree",
+     "note": "Mjoll's giver line (INFO 045304) carries only the quest stage below 11. The other start is the level-up story node FFR09KickerNode, with no level given in the files; the unsure note stands."
+    },
+    "starts": {
+     "verdict": "agree",
+     "note": "Mjoll's packages: breakfast at Aerin's House 8 am, market 9 to noon, Bee and Barb noon to 6 pm, patrol 6 pm for 6 h; her line names Mzinchaleft; matches."
+    },
+    "firstStep": {
+     "verdict": "agree",
+     "note": "objective 10 'Locate Grimsever'; matches."
+    },
+    "takesYou": {
+     "verdict": "agree",
+     "note": "places record: Mzinchaleft in the Pale by Stonehills, Falmer with bandits and chaurus, 16 to 60, traps; matches."
+    },
+    "choices": {
+     "verdict": "agree",
+     "note": "two objectives, 'Locate Grimsever' and 'Return to Mjoll'; stages 10, 20, 30 lead to 200, with no second ending; no branch."
+    },
+    "rewards": {
+     "verdict": "agree",
+     "note": "fragment property pFFGS is Grimsever itself, the sword objective 20 has you take back to Mjoll; a fetched item, so out of rewards with the unsure note, as the read has it."
+    },
+    "opens": {
+     "verdict": "agree",
+     "note": "the Miscellaneous bucket in the questlines file lists it with nothing after it. Mjoll is a follower and marriageable in her record, but no record ties either to this quest; none."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Mjoll is essential in her record, so nothing here can kill her; none."
+    }
+   }
+  }
+ ],
+ "quests": [
+  {
+   "edid": "ACFRoriksteadFreeform02",
+   "name": "Sissel's Book",
+   "plugin": "sisselbookquest.esp (More to Say - Sissel's Book Quest; no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Sissel, the girl at Lemkil's farm in Rorikstead, asks you about the dragon at Helgen and wants a book.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Sissel",
+     "where": "Lemkil's Farmhouse in Rorikstead at night; out and about in Rorikstead from 6 am to 6 pm; at Rorik's Manor from 6 to 8 pm",
+     "how": "The quest is set up when you arrive in the area; Sissel then talks to you about the dragon at Helgen and asks you to find her a copy of Kolb and the Dragon."
+    }
+   ],
+   "firstStep": "Find a copy of Kolb and the Dragon",
+   "takesYou": [],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find one Kolb and the Dragon.",
+      "Bring one Kolb and the Dragon to Sissel"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold (amount not given in the records)",
+     "when": "when you hand Sissel the book"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Sissel",
+     "role": "asks for the book; lives at Lemkil's Farmhouse in Rorikstead"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "Sissel's line asks whether you went to Helgen, so she may only bring it up after the dragon attack there; the line's conditions aren't in these files."
+    },
+    {
+     "field": "starts",
+     "why": "The quest is started by entering a location, but which place sets it off isn't in these files."
+    },
+    {
+     "field": "where",
+     "why": "Her daytime package (6 am for 12 hours) has no place in the records, so where she runs about isn't known; the evening one is at Rorik's Manor."
+    },
+    {
+     "field": "takesYou",
+     "why": "The records don't say where a copy of Kolb and the Dragon can be found."
+    },
+    {
+     "field": "rewards",
+     "why": "The quest's script gives gold, but the amount isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST sisselbookquest.esp:000889 stages 0,5,10,100,200; objectives 10,100; fills SisselBookAlias=Kolb and the Dragon",
+    "story node ACFMoreToSayRoriksteadChangeLocationNode (change location)",
+    "INFO sisselbookquest.esp:00089A",
+    "reward ACFRoriksteadScript.Gold001",
+    "NPC Skyrim.esm:0136BA placed in Lemkil's Farmhouse (Skyrim.esm:013867)",
+    "packages RoriksteadSisselRun (6h, 720m), RoriksteadSisselTraining (18h, 120m, Rorik's Manor)"
+   ]
+  },
+  {
+   "edid": "FreeformRiften01",
+   "name": "Supply and Demand",
+   "plugin": "Skyrim.esm (last edited by TheChoiceIsYours.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Learn where Riften's skooma comes from, tell the Jarl, then shut the dealers down.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Wujeeta or Niluva Hlaalu",
+     "where": "Haelga's Bunkhouse in Riften (Wujeeta works at the Riften Fishery by day; Niluva at the Black-Briar Meadery)",
+     "how": "One of the two skooma users tells you where the skooma comes from; the journal then sends you to the Jarl of Riften."
+    }
+   ],
+   "firstStep": "Report the skooma source to the Jarl of Riften in Mistveil Keep",
+   "takesYou": [
+    {
+     "place": "Mistveil Keep",
+     "hold": "The Rift",
+     "why": "report the skooma source to the Jarl"
+    },
+    {
+     "place": "Cragslane Cavern",
+     "hold": "Eastmarch",
+     "why": "find the skooma dealers and break up their operation"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Report skooma source to Jarl of Riften",
+      "Search the northeastern region of The Rift for Cragslane Cavern and find the skooma dealers within",
+      "Disrupt the skooma operation within Cragslane Cavern",
+      "Report to the Jarl of Riften"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Wujeeta",
+     "role": "skooma user; Haelga's Bunkhouse, works at the Riften Fishery 6 am to 6 pm"
+    },
+    {
+     "name": "Niluva Hlaalu",
+     "role": "skooma user; Haelga's Bunkhouse, works at the Black-Briar Meadery"
+    },
+    {
+     "name": "Laila Law-Giver",
+     "role": "Jarl of Riften, in Mistveil Keep"
+    },
+    {
+     "name": "Maven Black-Briar",
+     "role": "takes the Jarl's part if she rules Riften"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "starts",
+     "why": "Wujeeta and Niluva both have lines for this quest before it reaches the cave, and the Jarl has one while you're reporting; which line actually starts it isn't shown in these files. Wujeeta's other quest, Helping Hand, may need doing first."
+    },
+    {
+     "field": "takesYou",
+     "why": "The place records put Cragslane Cavern in Eastmarch, near Shor's Stone and close to Riften, though the journal calls it the northeastern Rift."
+    },
+    {
+     "field": "rewards",
+     "why": "No reward is listed in these records. Another mod also edits this quest; what it changes isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:053305 objectives 10,20,30,40; stage 200 completes",
+    "giver INFO Skyrim.esm:085DF1 (Laila, stage<11); Maven stage<11; Niluva Skyrim.esm:01336E and Wujeeta Skyrim.esm:013382 stage<21",
+    "alias FFRiften01CragslaneMarkerAlias; LCTN Skyrim.esm:019159 hold Eastmarch",
+    "editedBy TheChoiceIsYours.esp"
+   ]
+  },
+  {
+   "edid": "FreeformRiften02",
+   "name": "The Lover's Requital",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Sibbi Black-Briar, locked up in Riften's jail, wants you to find the woman who left him.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Sibbi Black-Briar",
+     "where": "a cell in Riften Jail, in Riften",
+     "how": "Talk to Sibbi in his cell; he asks you to find out where Svidi went."
+    }
+   ],
+   "firstStep": "Find out where Svidi went",
+   "takesYou": [
+    {
+     "place": "Vilemyr Inn, Ivarstead",
+     "hold": "The Rift",
+     "why": "Svidi is living there as Lynly Star-Sung"
+    },
+    {
+     "place": "Riften Jail",
+     "hold": "The Rift",
+     "why": "report back to Sibbi"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Tell Sibbi the truth about Lynly",
+     "leadsTo": "Sibbi learns she is in Ivarstead"
+    },
+    {
+     "choice": "Lie to Sibbi about Lynly",
+     "leadsTo": "Lynly stays hidden from him"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Discover Svidi's whereabouts"
+     ]
+    },
+    {
+     "branch": "tell the truth",
+     "objectives": [
+      "Tell Sibbi about Lynly"
+     ]
+    },
+    {
+     "branch": "lie",
+     "objectives": [
+      "Lie to Sibbi about Lynly"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Sibbi Black-Briar",
+     "role": "asks for help; prisoner in Riften Jail"
+    },
+    {
+     "name": "Lynly Star-Sung",
+     "role": "the woman he's looking for; barmaid at the Vilemyr Inn in Ivarstead"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "No reward for either choice is listed in these records."
+    },
+    {
+     "field": "choices",
+     "why": "What each answer leads to afterwards isn't spelled out in these records beyond the two objectives."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:053306 objectives 10,20,30; stage 200 completes; stage 250",
+    "giver INFO Skyrim.esm:03C48F (Sibbi, stage<11); Lynly stage<21",
+    "INFO Skyrim.esm:05327A",
+    "Sibbi packages RiftenSibbiPrisoner0x0 at Riften Jail",
+    "Lynly placed in Vilemyr Inn (Skyrim.esm:013A5C)"
+   ]
+  },
+  {
+   "edid": "FreeformRiften03",
+   "name": "Under the Table",
+   "plugin": "Skyrim.esm (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A meadery worker in Riften wants a keg of Black-Briar Mead taken quietly to the innkeeper in Ivarstead.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Romlyn Dreth",
+     "where": "the Black-Briar Meadery in Riften by day; the Bee and Barb from 6 pm to 10 pm; his house in Riften at night",
+     "how": "Talk to Romlyn; he asks you to take a small keg of Black-Briar Mead to Wilhelm at the Vilemyr Inn in Ivarstead."
+    }
+   ],
+   "firstStep": "Take the keg of mead to Wilhelm at the Vilemyr Inn in Ivarstead",
+   "takesYou": [
+    {
+     "place": "Vilemyr Inn, Ivarstead",
+     "hold": "The Rift",
+     "why": "deliver the mead to Wilhelm"
+    },
+    {
+     "place": "Black-Briar Meadery, Riften",
+     "hold": "The Rift",
+     "why": "or show the mead to Indaryn instead"
+    }
+   ],
+   "choices": [
+    {
+     "choice": "Deliver the keg to Wilhelm",
+     "leadsTo": "the deal goes through as Romlyn asked"
+    },
+    {
+     "choice": "Show the keg to Indaryn, who runs the meadery",
+     "leadsTo": "Romlyn's side deal is exposed"
+    }
+   ],
+   "steps": [
+    {
+     "branch": "deliver",
+     "objectives": [
+      "Deliver Mead to Wilhelm"
+     ]
+    },
+    {
+     "branch": "tell Indaryn",
+     "objectives": [
+      "Show Mead to Indaryn"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Gold",
+     "when": "at the end (which choice pays isn't shown)"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Romlyn Dreth",
+     "role": "gives the keg; works at the Black-Briar Meadery"
+    },
+    {
+     "name": "Wilhelm",
+     "role": "innkeeper of the Vilemyr Inn, Ivarstead"
+    },
+    {
+     "name": "Indaryn",
+     "role": "runs the Black-Briar Meadery; by day at the meadery, at the Bee and Barb in the evening"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "The script pays gold, but the amount and which choice pays it aren't in these files."
+    },
+    {
+     "field": "closes",
+     "why": "Romlyn has packages that keep him in Riften Jail under a condition set elsewhere; it may follow from telling Indaryn, but these files don't connect the two."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:053307 objectives 10,20; stage 200 completes; stage 250",
+    "giver INFO Skyrim.esm:041E0E (Romlyn, stage<11); Indaryn, Wilhelm stage<21",
+    "INFO Skyrim.esm:05325E (last edited by NGCDT - Distance Checks.esp)",
+    "reward QF_FreeformRiften03_00053307.pFFR03Gold",
+    "alias FFRiften03KegAlias",
+    "Romlyn packages RiftenRomlynWorkCarry*Meadery, RiftenRomlynBeeandBarb18x4, RiftenRomlynSleep22x6, USKPRomlynSleepJail"
+   ]
+  },
+  {
+   "edid": "FreeformRiften04",
+   "name": "Few and Far Between",
+   "plugin": "Skyrim.esm (last edited by LoreRim - Dialogue Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Ingun Black-Briar, who studies alchemy, wants rare ingredients gathered in bulk.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Ingun Black-Briar",
+     "where": "Elgrim's Elixirs in Riften from 9 am to 5 pm (she stays home when it rains); Black-Briar Manor mornings and evenings",
+     "how": "Talk to Ingun; she asks for 20 nirnroot."
+    }
+   ],
+   "firstStep": "Gather 20 nirnroot for Ingun Black-Briar",
+   "takesYou": [
+    {
+     "place": "Elgrim's Elixirs or Black-Briar Manor, Riften",
+     "hold": "The Rift",
+     "why": "hand each batch to Ingun"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find 20 nirnroot for Ingun Black-Briar",
+      "Bring the nirnroot to Ingun Black-Briar",
+      "Find 20 nightshade for Ingun Black-Briar",
+      "Bring the nightshade to Ingun Black-Briar",
+      "Find 20 deathbell for Ingun Black-Briar",
+      "Bring the deathbell to Ingun Black-Briar",
+      "Speak to Ingun Black-Briar"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "A large gold reward",
+     "when": "from Ingun (whether after each batch or only at the end isn't shown)"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Ingun Black-Briar",
+     "role": "asks for the ingredients; works at Elgrim's Elixirs, lives at Black-Briar Manor"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "The quest pays from a large gold-reward list; the amount and when it's paid aren't in these files."
+    },
+    {
+     "field": "steps",
+     "why": "A LoreRim patch also edits this quest; what it changes isn't shown."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:053308 objectives 10,15,20,25,30,35,40; stages 200,250",
+    "giver INFO Skyrim.esm:03C48E (Ingun, stage<11)",
+    "reward LVLI FavorRewardGoldLarge Skyrim.esm:04A41B via pFF04Gold",
+    "Ingun packages RiftenIngunTinkerAtElgrimsElixirs9x8, AIOStayPutRaining8x12, RiftenIngunSleeps0x8"
+   ]
+  },
+  {
+   "edid": "FreeformRiften05",
+   "name": "Spread the Love",
+   "plugin": "Skyrim.esm (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "A priestess of Mara asks you to hand out her temple's pamphlets around Riften.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Dinya Balu",
+     "where": "the Temple of Mara in Riften (she's out at the market from noon to 3 pm)",
+     "how": "Talk to Dinya; she gives you copies of The Warmth of Mara to hand out."
+    }
+   ],
+   "firstStep": "Hand out The Warmth of Mara to people in Riften",
+   "takesYou": [
+    {
+     "place": "Riften",
+     "hold": "The Rift",
+     "why": "give the pamphlets to people around the city"
+    },
+    {
+     "place": "Temple of Mara, Riften",
+     "hold": "The Rift",
+     "why": "return to Dinya"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Distribute the Warmth of Mara within Riften",
+      "Return to Dinya"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Dinya Balu",
+     "role": "priestess at the Temple of Mara; gives the pamphlets"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "The only item the quest's script gives is the pamphlets to hand out; no reward for finishing is listed in these records."
+    },
+    {
+     "field": "steps",
+     "why": "How many pamphlets you must hand out is set by a counter whose total isn't in these files."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:053309 objectives 10,20; stages 200,250",
+    "giver INFO Skyrim.esm:041EBF (Dinya, stage<11)",
+    "BOOK Skyrim.esm:053347 The Warmth of Mara via pFF05Pamphlet",
+    "globals FFRiften05Served/FFRiften05Total",
+    "Dinya packages RiftenDinyaTempleAttendant0x0, RiftenDinyaMarket12x3"
+   ]
+  },
+  {
+   "edid": "FreeformRiften06",
+   "name": "Sealing the Deal",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Talen-Jei at the Bee and Barb asks you for three flawless amethysts.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Talen-Jei",
+     "where": "behind the bar at the Bee and Barb in Riften",
+     "how": "Talk to Talen-Jei; he asks you for three flawless amethysts."
+    }
+   ],
+   "firstStep": "Get 3 flawless amethysts for Talen-Jei",
+   "takesYou": [
+    {
+     "place": "The Bee and Barb, Riften",
+     "hold": "The Rift",
+     "why": "bring the amethysts to Talen-Jei"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Get 3 flawless amethysts for Talen-Jei",
+      "Return to Talen-Jei"
+     ]
+    }
+   ],
+   "rewards": [
+    {
+     "what": "Leveled reward from Talen-Jei",
+     "when": "when you hand over the amethysts"
+    }
+   ],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Talen-Jei",
+     "role": "asks for the amethysts; works at the Bee and Barb"
+    },
+    {
+     "name": "Keerava",
+     "role": "runs the Bee and Barb; part of the quest, but the records don't say how"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "The reward comes from a leveled list; what it holds isn't in these files."
+    },
+    {
+     "field": "people",
+     "why": "Keerava is part of the quest, but nothing in these records says the gems are for her or what she does in it."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:053318 objectives 10,20; stage 200 completes; stage 250",
+    "giver INFO Skyrim.esm:0369F7 (Talen-Jei, stage<11)",
+    "reward LVLI FFRiften06Reward100 Skyrim.esm:036CF2 via pLoot",
+    "alias FFRiften06Keerava",
+    "Talen packages RiftenTalenAssistantInnkeeper0x0 at Bee and Barb"
+   ]
+  },
+  {
+   "edid": "FreeformRiften07",
+   "name": "Ice Cold",
+   "plugin": "Skyrim.esm (last edited by Unofficial Skyrim Special Edition Patch.esp)",
+   "canDo": "talk",
+   "canDoWhy": "Marise Aravel, a Riften market trader, wants ice wraith teeth.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Marise Aravel",
+     "where": "her stall in Riften's market from 8 am to 8 pm (home for dinner at 6 pm); somewhere in the city 8 to 11 pm; her house in Riften for breakfast at 5 am and to sleep from 11 pm",
+     "how": "Talk to Marise; she asks for 5 ice wraith teeth and says a traveler found them at Ancient's Ascent."
+    }
+   ],
+   "firstStep": "Find 5 ice wraith teeth for Marise",
+   "takesYou": [
+    {
+     "place": "Ancient's Ascent",
+     "hold": "Falkreath",
+     "why": "where Marise heard the teeth were found"
+    },
+    {
+     "place": "Riften",
+     "hold": "The Rift",
+     "why": "return to Marise"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Find 5 Ice Wraith Teeth for Marise",
+      "Return to Marise"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Marise Aravel",
+     "role": "asks for the teeth; trader in Riften"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "No reward is listed in these records."
+    },
+    {
+     "field": "takesYou",
+     "why": "Ancient's Ascent is only Marise's tip; any ice wraith teeth should count. The place records list a dragon there."
+    },
+    {
+     "field": "where",
+     "why": "Her trading package (8 am for 12 hours) and her late-evening one (8 to 11 pm) have no place in the records, and their conditions aren't decoded; the market stall is a guess from the package's name."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:05331A objectives 10,20; stages 200,250",
+    "giver INFO Skyrim.esm:0E82A3 (Marise, stage<11)",
+    "INFO Skyrim.esm:0E82A5 names Ancient's Ascent",
+    "LCTN Ancient's Ascent hold Falkreath, boss Krahjotdaan",
+    "Marise packages RiftenMariseVendorPackage (8h,720m), RiftenMariseSleep23x6"
+   ]
+  },
+  {
+   "edid": "FreeformRiften08",
+   "name": "Distant Memories",
+   "plugin": "Skyrim.esm (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Brand-Shei, a Riften trader, wants help finding out about his past.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Brand-Shei",
+     "where": "his stall in Riften's market square by day; Haelga's Bunkhouse in the evening and at night",
+     "how": "Talk to Brand-Shei about his past; he tells you the trail ran cold at a ship called the Pride of Tel Vos."
+    }
+   ],
+   "firstStep": "Find a clue about Brand-Shei's past",
+   "takesYou": [
+    {
+     "place": "Wreck of the Pride of Tel Vos",
+     "hold": "Winterhold",
+     "why": "look for a clue in the wreck"
+    },
+    {
+     "place": "Riften",
+     "hold": "The Rift",
+     "why": "return to Brand-Shei"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Locate a clue about Brand-Shei's past",
+      "Return to Brand-Shei"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Brand-Shei",
+     "role": "asks for help; trader in Riften, sleeps at Haelga's Bunkhouse"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "rewards",
+     "why": "No reward is listed in these records."
+    },
+    {
+     "field": "takesYou",
+     "why": "The quest marks a chest and a book as the clue, but the records here don't say where they are; the wreck is named only in Brand-Shei's line. The place records list bandits at the wreck."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:05331B objectives 10,20; stages 0,10,20,30,200,250",
+    "giver INFO Skyrim.esm:0E82A4 (Brand-Shei, stage<11)",
+    "INFO Skyrim.esm:0E82A2 names the Pride of Tel Vos",
+    "aliases FFRiften08ChestAlias, FFRiften08BookAlias",
+    "Brand-Shei packages RiftenBrandSheiShopkeeperPlaza0x0, RiftenBrandSheiBunkhouse20x4, RiftenBrandSheiSleep0x6"
+   ]
+  },
+  {
+   "edid": "FreeformRiften09",
+   "name": "Grimsever's Return",
+   "plugin": "Skyrim.esm (no other plugin edits it)",
+   "canDo": "talk",
+   "canDoWhy": "Mjoll the Lioness asks you to recover the sword she lost in a Dwemer ruin.",
+   "needs": [],
+   "starts": [
+    {
+     "who": "Mjoll the Lioness",
+     "where": "Riften: the market 9 am to noon, the Bee and Barb noon to 6 pm, walking the streets at night; she lives in Aerin's House",
+     "how": "Talk to Mjoll; she says Grimsever rests in the Dwemer ruin of Mzinchaleft."
+    }
+   ],
+   "firstStep": "Find Grimsever in Mzinchaleft",
+   "takesYou": [
+    {
+     "place": "Mzinchaleft",
+     "hold": "The Pale",
+     "why": "find Grimsever"
+    },
+    {
+     "place": "Riften",
+     "hold": "The Rift",
+     "why": "return to Mjoll"
+    }
+   ],
+   "choices": [],
+   "steps": [
+    {
+     "branch": "main",
+     "objectives": [
+      "Locate Grimsever",
+      "Return to Mjoll"
+     ]
+    }
+   ],
+   "rewards": [],
+   "type": "Misc",
+   "opens": [],
+   "closes": [],
+   "people": [
+    {
+     "name": "Mjoll the Lioness",
+     "role": "asks for her sword; lives in Aerin's House, Riften"
+    }
+   ],
+   "unsure": [
+    {
+     "field": "needs",
+     "why": "The quest can also be set off when you level up; any level it waits for isn't in these files."
+    },
+    {
+     "field": "rewards",
+     "why": "Grimsever (a glass greatsword in LoreRim) is the item you fetch for Mjoll; whether you keep it or get anything else isn't shown in these records."
+    },
+    {
+     "field": "takesYou",
+     "why": "Mzinchaleft is full of Falmer, Chaurus and bandits, with enemies from level 16 up to 60 and traps."
+    }
+   ],
+   "evidence": [
+    "QUST Skyrim.esm:05331C objectives 10,20; stage 200 completes; stage 250",
+    "giver INFO Skyrim.esm:045304 (Mjoll, stage<11)",
+    "INFO Skyrim.esm:045311 names Mzinchaleft",
+    "story node FFR09KickerNode (LEVL)",
+    "WEAP Skyrim.esm:053379 Grimsever via pFFGS (Greatsword)",
+    "Mjoll packages RiftenMjollMarket9x3, RiftenMjollBeeandBarb12x6, RiftenMjollNightimePatrol18x6"
+   ]
+  }
+ ]
+}
