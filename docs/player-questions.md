@@ -201,4 +201,9 @@ repo and shrinks. When Dave finds a question that fails, Bob adds it here before
 **37. "Where do I find Jaree-Ra?"**
 - Calls: `get_quest({ name: "Lights Out!" })`, `get_person({ name: "Jaree-Ra" })`.
 - Must: by day on the streets of Solitude near the Winking Skeever (Dave, in game, 23 Oct); never "in Red Wave" as where to find him.
-- Fails today: **WO-152**.
+- Passes since WO-159 Part 5 (`get_person`; Dave's watched day replaces the read's docks, and the answer says it is a player's report).
+
+**38. "How does Lydia join me, and can I marry her?"**
+- Calls: `get_person({ name: "Lydia" })`.
+- Must: she joins as your housecarl once you're made Thane of Whiterun (the end of Dragon Rising, or Thane of Whiterun); she can be married; read from the game files and checked by a second reader. Never the reader's "the extracts" in the words.
+- Passes since WO-159 Part 5.

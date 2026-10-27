@@ -23,7 +23,7 @@ function registered() {
 describe("tool input schemas (WO-111b)", () => {
   it("carry no anyOf or oneOf in any tool, nor a field of two types", () => {
     const tools = registered();
-    expect(tools.size).toBe(44); // suggest_places (WO-128)
+    expect(tools.size).toBe(45); // suggest_places (WO-128), get_person (WO-159)
     for (const [name, schema] of tools) {
       const json = JSON.stringify(z.toJSONSchema(schema, { io: "input" }));
       expect(json, name).not.toMatch(/"(anyOf|oneOf)"/);

@@ -22,9 +22,7 @@ export function HomeHero({ compact, line, children }: { compact?: boolean; line?
       <span className={styles.shade} />
       <div className={styles.big}>
         <h1 className={styles.title}>
-          LoreRim
-          <br />
-          Planner
+          LoreRim Planner
         </h1>
         {line && !compact ? <p className={styles.line}>{line}</p> : null}
         <SearchLauncher />

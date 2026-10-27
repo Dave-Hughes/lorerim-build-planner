@@ -96,7 +96,7 @@ export default async function PlacePage({ params }: { params: Params }) {
 
   return (
     <main className={`page ${styles.main}`}>
-      <PageTop back={{ href: place.hold ? `/quests?q=${encodeURIComponent(place.hold)}` : "/quests", label: place.hold ?? "Quests" }} />
+      <PageTop back={{ href: "/places", label: "Places" }} />
 
       <TitleBox
         title={place.name}

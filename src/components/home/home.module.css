@@ -98,7 +98,7 @@
   margin: 0;
   font-family: var(--font-pixel), var(--font-title);
   font-weight: 400;
-  font-size: clamp(64px, 11.7vw, 168px);
+  font-size: clamp(56px, 11.7vw, 168px);
   line-height: 0.82;
   color: #f4ead2;
   text-shadow: 6px 6px 0 #0b0f14;
@@ -208,6 +208,24 @@
 .u a {
   font-size: 18px;
   font-weight: 600;
+}
+.nameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+}
+/* The page-tag style, smaller: what the entry is, before its name. */
+.kind {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--line-bright);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 400;
+  white-space: nowrap;
 }
 .u .what {
   display: block;

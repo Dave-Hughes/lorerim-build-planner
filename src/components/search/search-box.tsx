@@ -25,6 +25,8 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
   const [results, setResults] = useState<Results | null>(null);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
+  // A question that has been out for a moment with nothing back: the list says it is searching (WO-159).
+  const [slow, setSlow] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   // Suggestions show only while there is enough typed to ask for them.
   const live = q.trim().length >= 2 ? results : null;
@@ -36,19 +38,24 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
     const text = q.trim();
     if (text.length < 2) return;
     const ctl = new AbortController();
+    let wait: ReturnType<typeof setTimeout> | undefined;
     const t = setTimeout(async () => {
+      wait = setTimeout(() => setSlow(true), 150);
       try {
         const r = await fetch(`/api/search?q=${encodeURIComponent(text)}${all ? "&all=1" : ""}`, { signal: ctl.signal });
         if (r.ok) {
           setResults(await r.json());
           setActive(-1);
         }
+        clearTimeout(wait);
+        setSlow(false);
       } catch {
         // Cancelled, or offline: the last suggestions stay.
       }
     }, 150);
     return () => {
       clearTimeout(t);
+      clearTimeout(wait);
       ctl.abort();
     };
   }, [q, all]);
@@ -67,7 +74,8 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
     router.push(href);
   };
   const all_ = () => go(`/search?q=${encodeURIComponent(q.trim())}`);
-  const shown = open && live && flat.length > 0;
+  const searching = open && slow && q.trim().length >= 2;
+  const shown = open && ((live && flat.length > 0) || searching);
   return (
     <div ref={box} className={`${styles.box} ${className ?? ""}`}>
       <form
@@ -116,11 +124,21 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
       </form>
       {shown && (
         <div id={`${id}-list`} role="listbox" aria-label="Suggestions" className={styles.list}>
+          {searching && (
+            <div role="status" className={styles.searching}>
+              <span className={styles.embers} aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              Searching
+            </div>
+          )}
           {GROUPS.map(([key, title]) =>
-            live![key].length ? (
+            live?.[key].length ? (
               <div key={key} role="group" aria-label={title}>
                 <div className={styles.group}>{title}</div>
-                {live![key].map((h) => {
+                {live[key].map((h) => {
                   const mine = at.get(h.href) ?? -1;
                   return (
                     <div key={h.href} id={`${id}-o${mine}`} role="option" aria-selected={active === mine} className={`${styles.opt} ${active === mine ? styles.on : ""}`} onMouseEnter={() => setActive(mine)} onMouseDown={(e) => { e.preventDefault(); go(h.href); }}>
@@ -132,9 +150,11 @@ export function SearchBox({ placeholder = "Search quests, people, places", initi
               </div>
             ) : null,
           )}
-          <button type="button" className={styles.all} onMouseDown={(e) => { e.preventDefault(); all_(); }}>
-            All results for “{q.trim()}” ›
-          </button>
+          {flat.length > 0 && (
+            <button type="button" className={styles.all} onMouseDown={(e) => { e.preventDefault(); all_(); }}>
+              All results for “{q.trim()}” ›
+            </button>
+          )}
         </div>
       )}
     </div>

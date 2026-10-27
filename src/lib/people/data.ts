@@ -10,6 +10,56 @@ import { currentVersion } from "@/lib/rules/server";
  * cell), and the page is built on the best placed of them.
  */
 
+/** What a read says about a person (WO-159): the checker's corrected object, field by field, with each field's verdict. */
+export interface PersonRead {
+  firstMeet: string;
+  day: { from: string; for: string; where: string; doing: string }[];
+  changes: string[];
+  role: string;
+  sells: string;
+  trains: string;
+  joins: string;
+  marries: string;
+  fightsWith: string;
+  quests: { quest: string; how: string }[];
+  canDie: string;
+  unsure: { field: string; why: string }[];
+  /** Per field: agree, fix (the checker corrected it), unsure, or players (a player's found-in-game fact replaced it). */
+  verdicts: Record<string, string>;
+  /** The fields a player's found-in-game fact replaced, and the number of reports approved. */
+  fromPlayers?: string[];
+  reports?: number;
+}
+
+/** A field's name in a player's words, for "Not sure yet". */
+export const READ_FIELD_WORDS: Record<string, string> = {
+  firstMeet: "Where you first meet them",
+  day: "Where they are through the day and night",
+  changes: "What changes where they are",
+  role: "What they are to you",
+  sells: "What they sell",
+  trains: "What they train",
+  joins: "How they join you",
+  marries: "Whether and how you can marry them",
+  fightsWith: "How they fight",
+  quests: "Which quests they are in",
+  canDie: "Whether they can die",
+};
+
+/**
+ * What a read is not sure of: every doubt the reader and the checker left, each with its reason, and a field the checker marked unsure
+ * with no reason given. In a player's words.
+ */
+export function notSureOf(read: PersonRead): { field: string; why?: string }[] {
+  const out: { field: string; why?: string }[] = read.unsure.map((u) => ({ field: READ_FIELD_WORDS[u.field] ?? u.field, why: u.why }));
+  const said = new Set(read.unsure.map((u) => u.field));
+  for (const [f, v] of Object.entries(read.verdicts)) if (v === "unsure" && !said.has(f)) out.push({ field: READ_FIELD_WORDS[f] ?? f });
+  return out;
+}
+
+/** The fields the checker could not settle: the page says "not sure" beside them. */
+export const unsureFields = (read: PersonRead) => new Set(Object.entries(read.verdicts).filter(([, v]) => v === "unsure").map(([f]) => f));
+
 export interface PersonRow {
   name: string;
   race?: string;
@@ -24,6 +74,8 @@ export interface PersonRow {
   sells?: true;
   innkeeper?: true;
   trainer?: { skill: string; cap?: number };
+  /** The people read (WO-155 by way of WO-159), when this person has been read and checked. */
+  read?: PersonRead;
 }
 
 export interface Person extends PersonRow {
@@ -66,8 +118,8 @@ export const slugOf = (s: string) =>
 
 export const nameKey = (s: string) => s.toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, " ").trim();
 
-/** Which of two placements of one name is the better base: one with a town and a cell and a race says most. */
-const score = (r: PersonRow) => (r.inTown ? 4 : 0) + (r.cell ? 2 : 0) + (r.race ? 1 : 0);
+/** Which of two placements of one name is the better base: one that has been read says most, then one with a town and a cell and a race. */
+const score = (r: PersonRow) => (r.read ? 8 : 0) + (r.inTown ? 4 : 0) + (r.cell ? 2 : 0) + (r.race ? 1 : 0);
 
 let cached: { all: Person[]; byName: Map<string, Person>; bySlug: Map<string, Person> } | null = null;
 

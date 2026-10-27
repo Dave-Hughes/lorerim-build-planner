@@ -16,9 +16,29 @@
   justify-content: space-between;
   gap: 16px;
 }
-.back {
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px 0 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--text);
   font-size: 15px;
   text-decoration: none;
+}
+.backButton:hover {
+  border-color: var(--ember);
+}
+.backArrow {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: currentColor;
+  mask: url(/icons/arrow-left.svg) center / contain no-repeat;
+  image-rendering: pixelated;
 }
 .px {
   image-rendering: pixelated;
@@ -735,6 +755,12 @@ a.tag:hover {
   font-size: 15px;
   color: var(--soft);
 }
+/* A quest with the read's own words for how the person is in it: the name, then the words beside it. */
+.qrowRead {
+  grid-template-columns: minmax(140px, 240px) minmax(0, 1fr);
+  gap: 4px 24px;
+  align-items: start;
+}
 .offer {
   display: flex;
   flex-direction: column;
@@ -758,6 +784,71 @@ a.tag:hover {
 .nk {
   color: var(--muted);
   font-style: normal;
+}
+.qname {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* A person's day (WO-159): when, where, doing what. */
+.firstMeet {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.firstMeet b {
+  font-weight: 600;
+}
+.dayList {
+  display: flex;
+  flex-direction: column;
+}
+.dayRow {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 4px 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.when,
+.where {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.when b,
+.where b {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+.when small,
+.where span {
+  font-size: 15px;
+  color: var(--soft);
+}
+.changes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.changes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.dayNote {
+  margin: 10px 0 0;
+  font-size: 15px;
+  color: var(--muted);
 }
 
 /* Place page: the level gauge, the foes, what is worth going for, the book that points here, the facts. */
@@ -926,6 +1017,10 @@ a.tag:hover {
 @media (max-width: 1000px) {
   .cols,
   .foot {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dayRow,
+  .qrowRead {
     grid-template-columns: minmax(0, 1fr);
   }
   .search {

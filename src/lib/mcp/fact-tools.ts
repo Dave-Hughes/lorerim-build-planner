@@ -9,7 +9,7 @@ import { REPORT_FIELD_MAX, REPORT_KINDS } from "@/lib/quests/player-types";
 import { REPORT_TEXT_MAX, REPORT_THANKS, REPORT_WHAT } from "@/lib/quests/report-words";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
-import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide, withQuestLink } from "./facts";
+import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getPerson, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide, withQuestLink } from "./facts";
 import { toldOf } from "./playthroughs";
 
 /**
@@ -123,6 +123,16 @@ export function registerFactTools(server: Server, guarded: Guarded, origin = "")
       inputSchema: z.object(questInput),
     },
     async (a: QuestArgs, ctx) => guarded(() => quest(a, ctx)),
+  );
+  server.registerTool(
+    "get_person",
+    {
+      title: "A person",
+      description:
+        "Get a person in LoreRim by name: their race and town, and for the people who have been read and checked (more every week) where you first meet them, where they are through the day and night, what changes it, what they sell and train, how they join you as a follower, whether and how you can marry them, how they fight, the quests they are in and how each touches them, and whether they can die. notSure lists what the checkers could not settle, each with the reason; say so to the player rather than guess. A person not read yet comes back without those fields and says so.",
+      inputSchema: z.object({ name: z.string().min(1).max(120).describe("The person's name, as in the game.") }),
+    },
+    async (a: { name: string }) => guarded(() => getPerson(a, origin)),
   );
   server.registerTool(
     "get_quest_start",

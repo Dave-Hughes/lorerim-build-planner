@@ -27,6 +27,7 @@ conditions and what they fight with, jarls/stewards/housecarls grouped by hold (
 import collections
 import json
 import os
+import re
 import struct
 import sys
 
@@ -157,15 +158,112 @@ def person_facts(dump):
     return out
 
 
-def build_site(rows, facts=None):
+# A reader's own aside about what it could read ("the extracts don't say which city", "the records I can read don't show what unlocks it").
+# It is not something a player should be told; what it points at is in the read's `unsure` list with its reason.
+META = re.compile(r"\bextracts?\b|\brecords I can read\b|\bthese records\b|\bin the records\b|\bthe records (?:don't|do not|give no|say no|show no)\b", re.I)
+
+
+def tidy_read(text):
+    """
+    A read's sentence without the reader's asides: a clause (between semicolons or full stops, or inside a bracket) that talks about the
+    extracts or the records the reader could see is dropped. A sentence that is nothing else is dropped whole.
+    """
+    if not text:
+        return text
+
+    def inner(m):
+        parts = [x for x in re.split(r";\s*", m.group(1)) if not META.search(x)]
+        return f" ({'; '.join(parts)})" if parts else ""
+
+    t = re.sub(r"\s*\(([^()]*)\)", lambda m: inner(m) if META.search(m.group(1)) else m.group(0), text)
+    kept = []
+    for sentence in re.split(r"(?<=[.!?])\s+", t):
+        clauses = [c for c in re.split(r";\s*", sentence) if not META.search(c)]
+        if clauses:
+            kept.append("; ".join(clauses))
+    out = " ".join(kept).strip()
+    if out and out != text.strip() and out[-1] not in ".!?)\"'":
+        out += "."
+    return out
+
+
+def tidy_why(text):
+    """A reason for a doubt, in words that fit the page: the extracts are the game's files, and "I" is "we"."""
+    t = re.sub(r"\bthe extracts?\b", "the game files", text)
+    t = re.sub(r"\bextracts?\b", "game files", t)
+    t = re.sub(r"\brecords I can read\b", "records", t)
+    return re.sub(r"\bI (can't|cannot|couldn't)\b", r"we \1", t)
+
+
+def tidy_person_read(read):
+    """The reader's asides out of every sentence a player will read."""
+    for k in ("firstMeet", "role", "sells", "trains", "joins", "marries", "fightsWith", "canDie"):
+        if k in read:
+            read[k] = tidy_read(read[k])
+    read["changes"] = [c for c in (tidy_read(c) for c in read.get("changes", [])) if c]
+    read["day"] = [{**d, "where": tidy_read(d.get("where", "")), "doing": tidy_read(d.get("doing", ""))} for d in read.get("day", [])]
+    read["quests"] = [{**q, "how": tidy_read(q.get("how", ""))} for q in read.get("quests", [])]
+    read["unsure"] = [{**u, "why": tidy_why(u.get("why", ""))} for u in read.get("unsure", [])]
+    return read
+
+
+# What a read says about a person (WO-159): the checker's corrected object, field by field.
+READ_FIELDS = ("firstMeet", "day", "changes", "role", "sells", "trains", "joins", "marries", "fightsWith", "quests", "canDie", "unsure")
+
+
+def load_reads(folder):
+    """
+    The people reads (WO-155, brought in by WO-159): every file in `people_reads/checked/`, the checker's corrected objects under `people`
+    and each field's verdict under `checks`. Keyed by record id: the fields a player reads, with `verdicts` (agree, fix or unsure, no
+    notes: those name records). A later batch lands with a rebuild, no code change.
+    """
+    out = {}
+    if not os.path.isdir(folder):
+        return out
+    for name in sorted(os.listdir(folder)):
+        if not name.endswith(".json"):
+            continue
+        with open(os.path.join(folder, name), encoding="utf-8") as f:
+            batch = json.load(f)
+        checks = {c["id"]: c.get("verdicts", {}) for c in batch.get("checks", [])}
+        for p in batch.get("people", []):
+            read = {k: p[k] for k in READ_FIELDS if k in p}
+            read["verdicts"] = {k: v.get("verdict") for k, v in checks.get(p["id"], {}).items()}
+            out[p["id"]] = tidy_person_read(read)
+    return out
+
+
+def apply_rulings(read, ruling):
+    """
+    A player's found-in-game fact replaces the read's field (Dave watched Jaree-Ra for a day: overrides.json `people`). The fields it
+    replaces are `fromPlayers`, their verdict is "players", the doubts about them go, and `reports` counts the approved report.
+    """
+    fields = [k for k in READ_FIELDS if k in ruling]
+    for k in fields:
+        read[k] = ruling[k]
+        read.setdefault("verdicts", {})[k] = "players"
+    if "unsure" not in ruling:
+        read["unsure"] = [u for u in read.get("unsure", []) if u.get("field") not in fields]
+    read["fromPlayers"] = fields
+    read["reports"] = ruling.get("reports", 1)
+    return read
+
+
+def build_site(rows, facts=None, reads=None, rulings=None):
     """
     The planner's people.json from the raw rows: what a page or an assistant shows, without record ids. `facts` is person_facts' answer:
-    what each person is (follower, spouse, trainer, merchant, essential), joined by record id.
+    what each person is (follower, spouse, trainer, merchant, essential), joined by record id. `reads` is load_reads' answer, joined the
+    same way, and `rulings` the overrides' `people` by name (WO-159).
     """
     out = []
     for p in rows:
         r = {k: p[k] for k in ("name", "race", "sex", "cell", "inTown", "role") if p.get(k) is not None}
         r.update((facts or {}).get(p.get("id"), {}))
+        read = (reads or {}).get(p.get("id"))
+        if read:
+            read = json.loads(json.dumps(read))
+            ruling = (rulings or {}).get(p.get("name"))
+            r["read"] = apply_rulings(read, ruling) if ruling else read
         out.append(r)
     return out
 

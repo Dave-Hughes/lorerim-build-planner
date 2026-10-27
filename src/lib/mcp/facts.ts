@@ -24,7 +24,9 @@ import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { gearData } from "@/lib/gear/data";
 import { doorSources } from "@/lib/quests/player-source";
 import { questHref } from "@/lib/quests/slugs";
-import { doorPage } from "@/lib/quests/reads";
+import { doorPage, playersWords } from "@/lib/quests/reads";
+import { notSureOf, peopleData, personByName } from "@/lib/people/data";
+import { questsOf } from "@/lib/people/quests";
 import { HOMES, HOMES_NOTE, MOUNTS, TOME_TRIALS } from "./living";
 import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
@@ -530,6 +532,55 @@ export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, versio
   // With kill on the never list (Part 5): an open quest says it is kill-free as far as its objectives go.
   const kills = p.neverKills ? "kill-free as far as the objectives go" : null;
   return { state: r.state, says: `${r.state === "open" ? `${SAYS.open}${r.places?.length ? `, in ${r.places.join(" or ")}` : ""}` : `${SAYS[r.state]}: ${r.because.join("; ")}`}${kills ? `; ${kills}` : ""}`, because: r.because, ...(kills ? { kills } : {}) };
+}
+
+/**
+ * get_person (WO-159): a person, by name. Who they are, and when they have been read and checked (people_reads/checked) the same
+ * fields their page shows: the first meeting, their day, what changes it, what they sell and train, how they join you, whether
+ * you can marry them, how they fight, their quests and how each touches them, and whether they can die. What the checker
+ * could not settle is in `notSure`, each with its reason; a person not read yet says so and gives only what the index holds.
+ */
+export function getPerson({ name }: { name?: string }, origin = "") {
+  if (!name?.trim()) throw new FactsError("Give the person's name.");
+  const p = personByName(name);
+  if (!p) {
+    const want = norm(name);
+    const like = peopleData().all.filter((x) => norm(x.name).includes(want)).slice(0, 5);
+    throw new FactsError(`No person is named ${name}.${like.length ? ` Close: ${like.map((x) => x.name).join(", ")}.` : ""} Ask the player where they met them; don't search the web.`);
+  }
+  const r = p.read;
+  const links = new Map(questsOf(p.name).map((q) => [q.name.toLowerCase(), `${origin}${q.href}`]));
+  return {
+    person: {
+      name: p.name,
+      ...(p.race ? { race: p.race } : {}),
+      ...(p.sex ? { sex: p.sex } : {}),
+      ...(p.inTown ? { town: p.inTown } : {}),
+      link: `${origin}/people/${p.slug}`,
+      ...(p.follower ? { follower: true } : {}),
+      ...(p.marriage ? { canMarry: true } : {}),
+      ...(p.essential ? { essential: true } : {}),
+      ...(r
+        ? {
+            firstMeet: r.firstMeet,
+            day: r.day,
+            changes: r.changes,
+            role: r.role,
+            sells: r.sells,
+            trains: r.trains,
+            joins: r.joins,
+            marries: r.marries,
+            fightsWith: r.fightsWith,
+            quests: r.quests.map((q) => ({ quest: q.quest, how: q.how, ...(links.get(q.quest.toLowerCase()) ? { link: links.get(q.quest.toLowerCase()) } : {}) })),
+            canDie: r.canDie,
+            notSure: notSureOf(r),
+          }
+        : {}),
+    },
+    howSure: r
+      ? `Read from the game files and checked by a second reader.${r.reports ? ` ${playersWords(r.reports)}: ${(r.fromPlayers ?? []).join(", ")} come from ${r.reports === 1 ? "a player's report" : "player reports"}, not the game files.` : ""}`
+      : "From the game files: race, where they are placed and their quests. Where they are through the day, what they offer and how they join you have not been read yet; say so, and don't guess.",
+  };
 }
 
 /** get_quest_start, kept as an alias of get_quest for a release (WO-115). */

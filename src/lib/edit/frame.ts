@@ -56,6 +56,8 @@ export interface EditFrameData {
   traits: string;
   aiAssisted: boolean;
   storyOn: boolean;
+  /** The owner's Playthrough tab on a character with no run yet (WO-159). */
+  playOn: boolean;
 }
 
 function buildPart(b: BuildRecord, guide: Awaited<ReturnType<typeof getGuide>>): NonNullable<EditFrameData["build"]> {
@@ -108,6 +110,7 @@ function frame(b: BuildRecord | null, guide: Awaited<ReturnType<typeof getGuide>
     traits: b ? [b.plan.race, b.plan.birthsign ? `The ${b.plan.birthsign}` : null, b.plan.deity || null].filter(Boolean).join(" | ") : "",
     aiAssisted: p ? !!p.draftedBy && p.showDrafted : !!b?.draftedBy && b.showDrafted !== false,
     storyOn: storyOn(),
+    playOn: playthroughsOn() && !!b && !b.isSample && !p,
   };
 }
 

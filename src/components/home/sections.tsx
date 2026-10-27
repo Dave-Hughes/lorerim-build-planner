@@ -4,6 +4,9 @@ import type { Change } from "@/lib/changes";
 import { formatDayMonth } from "@/lib/format/date";
 import styles from "./home.module.css";
 
+/** What each kind of change is, said before the name. */
+const KIND: Record<Change["kind"], string> = { quest: "Quest", line: "Quest line", report: "Player report" };
+
 /** New in the world: real changes only, from the data builds and the approved reports (src/lib/changes.ts). */
 export function NewInTheWorld({ changes }: { changes: Change[] }) {
   if (!changes.length) return null;
@@ -14,7 +17,10 @@ export function NewInTheWorld({ changes }: { changes: Change[] }) {
         <div key={`${c.kind}-${c.href}`} className={styles.u}>
           <img className={styles.px} src={`/icons/${c.icon}.svg`} alt="" width={32} height={32} />
           <span>
-            <Link href={c.href}>{c.name}</Link>
+            <span className={styles.nameRow}>
+              <span className={styles.kind}>{KIND[c.kind]}</span>
+              <Link href={c.href}>{c.name}</Link>
+            </span>
             <span className={styles.what}>{c.what}</span>
           </span>
           <time dateTime={c.date}>{formatDayMonth(`${c.date}T12:00:00Z`)}</time>

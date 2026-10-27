@@ -647,5 +647,25 @@
         "CWSiegeObj"
       ]
     }
+  },
+  "people": {
+    "_note": "WO-159: a fact a player found in game replaces the read's field for that person, the way questStarts does for a quest start. The build marks the replaced fields as from players, drops the read's doubts about them, and counts one approved report. Keyed by the person's name.",
+    "Jaree-Ra": {
+      "_checked": "players",
+      "_source": "Dave, watched in game for a day, 23 Oct 2026",
+      "_why": "The reads put Jaree-Ra on the Solitude docks and the Red Wave. Dave watched him for a full in-game day: he stands in Solitude by the Winking Skeever, day and night, and never goes to the docks or the Red Wave (WO-152 Part 0).",
+      "firstMeet": "In Solitude, by the Winking Skeever.",
+      "day": [
+        {
+          "from": "any hour",
+          "for": "24 hours",
+          "where": "Solitude, by the Winking Skeever",
+          "doing": "standing about; he stays there day and night"
+        }
+      ],
+      "changes": [
+        "Lights Out! settles what happens to him: he can be arrested if you report him, killed on the docks, persuaded to give up, or followed to Broken Oar Grotto with the stolen loot and killed there; he can also become your partner in looting the Icerunner."
+      ]
+    }
   }
 }

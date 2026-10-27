@@ -245,6 +245,7 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
   if (r) out.push({ key: "story", label: "Story", href: `/p/${r.id}/edit/story/title` });
   else if (f?.storyOn && b) out.push({ key: "story", label: "Story", href: `/b/${b.id}/edit/story` });
   if (r) out.push({ key: "play", label: "Playthrough", href: `/p/${r.id}/edit/play` });
+  else if (f?.playOn && b) out.push({ key: "play", label: "Playthrough", href: `/b/${b.id}/play` });
   return out;
 }
 

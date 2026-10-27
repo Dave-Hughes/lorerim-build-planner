@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { BackButton } from "./back-button";
 import { PageSearch } from "./page-search";
 import styles from "./page-kit.module.css";
 
@@ -19,9 +19,7 @@ export function Icon({ name, size = 32 }: { name: string; size?: number }) {
 export function PageTop({ back }: { back: { href: string; label: string } }) {
   return (
     <div className={styles.top}>
-      <Link href={back.href} className={styles.back}>
-        ‹ {back.label}
-      </Link>
+      <BackButton home={back} />
       <PageSearch />
     </div>
   );

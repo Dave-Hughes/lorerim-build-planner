@@ -59,7 +59,7 @@ const nexus = (id: string) =>
 /**
  * A quest's own page (WO-154 Part 2), from the canvas board "Quest page: Lights Out!, second pass": the title box with where it is and
  * what changed it, how to start it, N ways to finish it, where it takes you; rewards and people at the side; what it closes and how sure
- * we are at the foot. (A quest's page never speaks of a player's character or run, Dave 27 Oct: whether a quest is open for someone is the connector's to say, to their assistant.) A story's page keeps the quest line it is part of in its back link; a lone quest's goes to its category.
+ * we are at the foot. (A quest's page never speaks of a player's character or run, Dave 27 Oct: whether a quest is open for someone is the connector's to say, to their assistant.) Its back button goes to the page the visitor came from, or to the quest's category when they came from outside (WO-159).
  */
 export default async function QuestPage({
   params,
@@ -80,8 +80,6 @@ export default async function QuestPage({
   const home = questsData().categories[line.category]
     ? categories().find((c) => c.key === line.category)!
     : null;
-  // A line of one quest isn't a line (WO-154): the quest sits in its category.
-  const lone = line.quests.length === 1;
   const page = pageOf(quest);
   const reads = page.source === "reads";
   const town = line.where ?? start?.towns?.[0] ?? null;
@@ -169,11 +167,7 @@ export default async function QuestPage({
   return (
     <main className={`page ${styles.main}`}>
       <PageTop
-        back={
-          lone && home
-            ? { href: `/quests/c/${home.slug}`, label: homeName(line.category) }
-            : { href: `/quests/${line.id}`, label: line.name }
-        }
+        back={home ? { href: `/quests/c/${home.slug}`, label: homeName(line.category) } : { href: `/quests/${line.id}`, label: line.name }}
       />
 
       <TitleBox

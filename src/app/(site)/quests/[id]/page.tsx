@@ -7,7 +7,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
 import { Linked } from "@/components/pages/linked";
-import { InformationConfidence, TitleBox } from "@/components/pages/page-kit";
+import { InformationConfidence, PageTop, TitleBox } from "@/components/pages/page-kit";
 import { placeNames } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
@@ -108,9 +108,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const shelf = line.category === "work";
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>
-      <Link href={home ? `/quests/c/${home.slug}` : "/quests"} className={styles.back}>
-        ‹ {home?.name ?? shelves[line.category]?.name ?? "Quests"}
-      </Link>
+      <PageTop back={{ href: home ? `/quests/c/${home.slug}` : "/quests", label: home?.name ?? shelves[line.category]?.name ?? "Quests" }} />
       {told && (
         <Link href={`/quests/s/${told.id}`} className={styles.storyLink}>
           Read it as a story ›

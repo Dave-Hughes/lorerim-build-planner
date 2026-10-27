@@ -5053,6 +5053,9 @@ Dave: "For followers, we have no information on how any of them join you." The r
 ### Part 6. Checks
 - [ ] Typecheck, lint, tests, build and e2e; screenshots at 1440 and 390 of the home, the palette loading, a back button, the empty Playthrough tab, and Lydia's page.
 
+### Jeff's progress (Mac, 27 Oct)
+Parts 1 to 5 are built and pass their own e2e (`e2e/wo159.spec.ts`, 13 tests); the full suite is running now, then the boxes and screenshots.
+
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
 Status: blocked (PC; Part 1i fixed the bearing itself, needs Dave's run again -- see "How Dave runs it" below)
 

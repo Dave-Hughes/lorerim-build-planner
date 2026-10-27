@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it } from "vitest";
-import { FactsError, getQuest, getRules, playerState, searchFacts, withQuestLink } from "./facts";
+import { FactsError, getPerson, getQuest, getRules, playerState, searchFacts, withQuestLink } from "./facts";
 import { modsOf, placesAt, suggestFrom, suggestQuests } from "./playthroughs";
 import { modIndex, readGuide } from "@/lib/game-guide/guide";
 import { styleGuide } from "./facts";
@@ -348,6 +348,20 @@ const QUESTIONS: Question[] = [
     asks: "Can Kyria take Tome Trials exams now?",
     ask: () => [getRules().tomeTrials],
     must: ["None of the 36 exams is open until Tending the Flames is complete", "50 XP", "100", "Speech 50", "200", "Speech 75"],
+  },
+  {
+    n: 37,
+    asks: "Where do I find Jaree-Ra?",
+    ask: () => [getQuest({ name: "Lights Out!" }).quest.starts, getPerson({ name: "Jaree-Ra" })],
+    must: ["Solitude, by the Winking Skeever", "Winking Skeever", "1 report approved", "a player's report, not the game files"],
+    never: [/in Red Wave/i, /Red Wave, Solitude/, /Solitude docks/i, /aboard/i],
+  },
+  {
+    n: 38,
+    asks: "How does Lydia join me, and can I marry her?",
+    ask: () => [getPerson({ name: "Lydia" })],
+    must: ["housecarl", "Thane of Whiterun", "potential spouse", "Read from the game files and checked by a second reader"],
+    never: [/extracts?\b/i],
   },
   {
     n: 26,

@@ -586,11 +586,16 @@ def main():
 
         # What each person is to a player (follower, spouse, trainer, merchant, essential): the dump's record fields, joined by record id.
         dump = load("people_schedules_raw.json")["people"] if os.path.exists(os.path.join(RAW, "people_schedules_raw.json")) else {}
-        rows = build_people_site(load("people_raw.json")["people"], person_facts(dump))
+        from people import load_reads
+
+        # The people reads (WO-159): every checked batch, with a player's found-in-game fact over the read where overrides.json has one.
+        reads = load_reads(os.path.join(RAW, "people_reads", "checked"))
+        rulings = {k: v for k, v in overrides.get("people", {}).items() if not k.startswith("_")}
+        rows = build_people_site(load("people_raw.json")["people"], person_facts(dump), reads, rulings)
         with open(os.path.join(OUT, "people.json"), "w", encoding="utf-8") as f:
             json.dump({"people": rows}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
-        print(f"{len(rows)} people -> people.json")
+        print(f"{len(rows)} people, {sum(1 for r in rows if r.get('read'))} read -> people.json")
     for p in problems:
         print("note:", p)
 
