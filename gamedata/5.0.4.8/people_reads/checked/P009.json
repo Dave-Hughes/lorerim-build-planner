@@ -1,0 +1,2297 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:013380",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Ragged Flagon; his catch-all bartender package (no hours) is the bar counter"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "six 2-hour Flagon sandboxes at 8,12,16,20 and 2,4 (USSEP moved 0x2 to 2 am), sleep 10 pm-2 am, bartender package fills 6-8,10-12,14-16,18-20; reader's grid matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest condition; Reparations only lists him among guild aliases"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction + ServicesRiftenRaggedFlagon, vendor hours 0-24, ThievesGuildFaction; giver of Toying With The Dead"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor faction present but its buy/sell lists aren't resolved to items in any extract"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no PotentialFollowerFaction, follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013256 has no name or skills anywhere in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Toying With The Dead giver dialogue is his (objective 30 'Return to Vekel'); With Love, Eilonwy 1 objective 10 brings the letter to him; A Cornered Rat lists him as one asked about Esbern"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential flag true"
+    }
+   }
+  },
+  {
+   "id": "FDE Faralda.esp:00096B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest-givers place his ref in Lost Prospect Mine (next to Riften); alias Merandil in With Love, Eilonwy 2, objective 10 meets there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages at all, so he holds his placed spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Part 2 stage 18/30/40 logs: he's a Thalmor, attacks, is killed; stage 120 lets him take Faralda to Alinor"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only faction is his own; the quest logs name him Faralda's brother Merandil"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor block"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01317A unresolved in extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Part 2 objective 30 'Kill Merandil'; Part 1 only aliases him, no objective names him"
+    },
+    "canDie": {
+     "verdict": "unsure",
+     "note": "record essential=true, but Part 2 stage 40 log says 'I killed him'; the flag change isn't in the extracts"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013260",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Angeline's Aromatics, Solitude; work package targets the shop"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "top package is weekends-only (day code 8) 8-11 pm in the shop with undecoded conditions; workday 8 am-8 pm shop; default sleep midnight-8 at editor location; Solitude sandbox otherwise"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Blood Ties stage 120 'Fura's mother is dead', 170 'I've killed Fura's mother'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobApothecaryFaction, JobMerchantFaction, ServicesSolitudeAngelinesAromatics; gives No News is Good News"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor 8-20 present, lists unresolved"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013258 unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "No News is Good News giver dialogue is hers (objectives: ask Captain Aldis, tell her); Blood Ties objective 30 'Kill Angeline'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0844D1",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "placed ref is in Whiterun's exterior; CW03 objective 150 'Report to' him; exact spot and pre-war presence not in extracts"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "single shared CWFieldCOMasterPackage (31 users), no hours"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Bloodmouth stage 40/49 Death Hounds kill him, stage 50 Fura lets him go"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CWImperialFaction, CWFieldCOFaction, IsGuardFaction; no job factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Message to Whiterun fills ImperialFieldCO ('Report to'); Bloodmouth objective 10 Vampire's Seduction to Cold Rock Pass; CWObj objective 10 'Report to' him (record's name is a template)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential=true; Bloodmouth stage 40 log has him killed - reader states both"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0B9982",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Drunken Huntsman, Whiterun"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package, HirelingJanessaSandbox, editor location radius 128, no hours"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "CurrentHireling/CurrentFollowerFaction at rank 255 until hired"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, PotentialHireling, PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24 with the follower trade list and no vendor container; reader leaves blank with reason"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "PotentialHireling; price isn't in any extract"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013181 unresolved"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Shadows of the Past has a location alias for Refugees' Rest, an Imperial tower 0.5 km from Windhelm in places_raw: that is the tower objective 1 sends you to; reader didn't name it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected=true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013346",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Aerin's House, Riften; Bee and Barb noon-6 pm package is his only fixed daytime spot"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Bee and Barb 12x6, breakfast 6x1, sleep 2x4 at home; else follow-Mjoll / stay-home packages gated on follower factions and being in Riften"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "Aerin the Man stage 80 log 'Aerin is dead' and objective 10 takes him to a dungeon with you; reader listed neither in changes"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only RiftenMjollHouseFaction and town factions; no job"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Aerin the Man objectives 10 clear dungeon with Aerin and Mjoll, 50 his confession; stage 80 Aerin dead"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:11C37A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Fists of Fury - Hjaalmarch stage 10/20: Falion at the Summoning Stones outside Morthal summons ghosts; placed ref in an exterior cell"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 20 log 'Falion has summoned some sort of ghost'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only CR04/CR08 exclusion factions; quest fighter alias"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawl tourney is the quest's premise; class unresolved, reader flags it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objective 20 'Defeat Erel Pure-Heart', alias Fighter01"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:11C382",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Fists of Fury - Hjaalmarch stage 10/20: Falion at the Summoning Stones outside Morthal summons ghosts; placed ref in an exterior cell"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 20 log 'Falion has summoned some sort of ghost'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only CR04/CR08 exclusion factions; quest fighter alias"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawl tourney is the quest's premise; class unresolved, reader flags it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objective 21 'Defeat the Forgotten Captain', alias Fighter02 is this record"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:11C378",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Fists of Fury - Hjaalmarch stage 10/20: Falion at the Summoning Stones outside Morthal summons ghosts; placed ref in an exterior cell"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 20 log 'Falion has summoned some sort of ghost'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only CR04/CR08 exclusion factions; quest fighter alias"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawl tourney is the quest's premise; class unresolved, reader flags it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objective 22 'Defeat the Lost Blade', alias Fighter03"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0371D6",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in Riften's exterior; wall-lean package holds him in place"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "top: AI Overhaul 10 am-6 pm by Mistveil Keep marker (undecoded conditions); then wall-lean until stage 40 of an unnamed quest, which sits above his midnight-8 am Black-Briar Manor sleep; after stage 40 the all-day package at the Mistveil Keep marker"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "wall-lean needs GetStageDone 40 == 0, day package needs it == 1"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobHousecarlFaction, RiftenBlackBriarHouseFaction, ThievesGuildFaction; gives Fists of Fury - The Rift"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01317E unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "FoF The Rift stage 5/10: talk to Maul, he sends you to the Ratway Arena; No Stone Unturned handler stage 20 'Maul ... no longer speaking to me'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential=true"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:019E6A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Ratway Arena; FoF The Rift objective 10 'Ratway Arena down in the Ratway Vaults'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "all four timed packages need the quest completed; default package needs stage >= 21; before that no package, so he holds his spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "after completion: idle 8 am-6 pm, watch 6-8 pm, eat 8-10 pm, sleep 10 pm-8 am, all Ratway Arena"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FOFRatwayArenaFaction rank 2; objective 20 'Talk to The Organizer'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stages 20/21 talk to him, more gold; stage 60 'talk to The Organizer for my reward'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:01EF7F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Ratway Arena"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "timed packages all need FoF The Rift completed; until then only the all-day default package at his spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "after completion: practice 4-7 pm, brawl 7-8 pm, viewers sandbox 8-10 pm, sleep 10 pm-8 am"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FOFRatwayArenaFaction; contender alias in FoF The Rift"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawling tourney; mod class unresolved, flagged"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objective 30 'Defeat the first contender, Drackis'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:01EF80",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Ratway Arena"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "timed packages all need FoF The Rift completed; until then only the all-day default package at his spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "after completion: practice 4-7 pm, brawl 7-8 pm, viewers sandbox 8-10 pm, sleep 10 pm-8 am"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FOFRatwayArenaFaction; contender alias in FoF The Rift"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawling tourney; mod class unresolved, flagged"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objective 31 'Defeat the second contender, Fights-With-Fists'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:014123",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "work package 8 am-8 pm at a marker 0.1 km from Windhelm; placed in Niranye's House"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "breakfast 6-8 at editor location, work 8 am-8 pm, Cornerclub 8 pm-2 am, default sleep fills 2-6 am"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package has a quest condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction rank 0, JobFenceFaction 255, ServicesWindhelmNiranye; gives FoF Eastmarch"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor 8-19, lists unresolved"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01317E unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "FoF Eastmarch stage 10 'I was told by Niranye to go to a brawler's camp'; Summerset Shadows objectives 20 and 30"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential=true"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:1D7963",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "shared camp packages point at a marker at Windhelm Brawler's Camp; the quest's CampEnableAlias suggests the camp only appears with the tourney"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "camp sandbox 6 am-10 pm and camp sleep 10 pm-6 am, both at the camp marker, no conditions"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "alias GuardAlias; objectives 15 'Talk to Reggr' and 70 'Get your earnings from Reggr'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01CE15 unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objectives 15 and 70 name him"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:1D7967",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "shared camp packages point at a marker at Windhelm Brawler's Camp; the quest's CampEnableAlias suggests the camp only appears with the tourney"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "camp sandbox 6 am-10 pm and camp sleep 10 pm-6 am, both at the camp marker, no conditions"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest condition"
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "ChampAlias, objective 50 'Defeat the Champion, Erdith The Bear'; she has only CurrentFollowerFaction at rank 255 and no PotentialFollowerFaction, so 'can follow you' isn't shown by the records"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24 with the follower trade list and no container"
+    },
+    "trains": {
+     "verdict": "unsure",
+     "note": "JobTrainerFaction but trainer block null"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "follower flag set but no PotentialFollowerFaction; no recruiting dialogue in the extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawling champion; mod class unresolved, flagged"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objectives 20, 40, 60 'Talk to Erdith' and 50 defeat her"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected=true"
+    }
+   }
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:1D7964",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "shared camp packages point at a marker at Windhelm Brawler's Camp; the quest's CampEnableAlias suggests the camp only appears with the tourney"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "camp sandbox 6 am-10 pm and camp sleep 10 pm-6 am, both at the camp marker, no conditions"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Fighter01Alias, FOFWindhelmCampFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "brawl tourney; mod class unresolved, flagged"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objective 30 'Defeat Kjer'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "ForgottenCity.esp:01096E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Forgotten Ruins; WaitandGreet package while The Forgotten City stage <= 20; objective 20 'Meet Cassia in the forgotten ruins'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "after greeting, default sandbox at editor location (Forgotten Ruins)"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "reward forcegreet at stage 2030/2040/4050; asks after Altrius if he's dead at 2000-2024; sleeps at the ruins at 2025-2040/4025; stage 4050 log 'has entered the city'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "giver dialogue for The Forgotten City is hers"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class is a patcher record, unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Forgotten City giver; Forget-me-not only an alias"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "ForgottenCity.esp:0A2EB3",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "stage 2000 log 'found Altrius alive and well'; forcegreet needs a cell and Forget-me-not done; placed in Underground Tunnels"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom default package: look at statue near himself, no hours"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 2015 leads to bathroom, 2020 follows, 2030/2040 sleeps at Forgotten Ruins, 4015 runs to Cassia, 4050 patrols with Cassia"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Altrius/AltriusYoung aliases; no factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01CE17 unresolved"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objectives 2000 'Talk to Altrius', 2020 escape through the bathroom; stage 3000 escorted out, 4030 brought to Cassia"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false; Cassia's package checks his dead count"
+    }
+   }
+  },
+  {
+   "id": "GORE.esp:000D63",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Raven's Flight objective 1 'Head to Peak's Shade Tower outside of Falkreath'; his ref is at Peak's Shade Tower; stage 10 his leg is trapped"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages on this record"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "To Free a Raven objectives: turns himself in, guard at Dawnstar Jail, Windpeak Inn; The Apple from the Tree stage 10 leaves, 30 killed"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, DismissedFollowerFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "follower trade list, no container"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "Wanted stage 21 log 'Now that Gore has joined me' after the Thalmor"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01CE15 unresolved; Gore's Greatsword is a Raven's Flight reward to the player"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "twelve GORE quests checked: giver dialogue is his for Raven's Flight, Wanted, To Free a Raven, Blood Ties, Where We Stand, A New Coat; other steps match their logs"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false; The Apple from the Tree stage 30 kills him"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:013380",
+   "name": "Vekel the Man",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Behind the bar of the Ragged Flagon, Riften.",
+   "day": [
+    {
+     "from": "10 pm",
+     "for": "4 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "2 am",
+     "for": "4 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "going about the Flagon"
+    },
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "tending the bar"
+    },
+    {
+     "from": "8 am",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "going about the Flagon"
+    },
+    {
+     "from": "10 am",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "tending the bar"
+    },
+    {
+     "from": "noon",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "going about the Flagon"
+    },
+    {
+     "from": "2 pm",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "tending the bar"
+    },
+    {
+     "from": "4 pm",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "going about the Flagon"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "tending the bar"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "going about the Flagon"
+    }
+   ],
+   "changes": [],
+   "role": "bartender of the Ragged Flagon and a Thieves Guild member; trades at any hour; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Toying With The Dead",
+     "how": "gives it: he offers you a job retrieving the necromancer Arondil's journals from Yngvild Barrow, and you return to him"
+    },
+    {
+     "quest": "A Cornered Rat",
+     "how": "a step in it: one of the people in the Ragged Flagon you can ask about Esbern"
+    },
+    {
+     "quest": "With Love, Eilonwy, Part 1",
+     "how": "a step in it: you bring Faralda's family letter to him and he sees it delivered to her aunt"
+    },
+    {
+     "quest": "Taking Care of Business",
+     "how": "named in it (he's at the Flagon where you find Brynjolf); the records give him no step of his own"
+    },
+    {
+     "quest": "Reparations",
+     "how": "one of the Guild members it covers while you're banned from the Thieves Guild; the extracts don't say what it changes for him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "He's in the merchant group with the Flagon's services and trades all day, but his vendor lists don't resolve to items in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in seven more quests that have no name in the extracts (one from a face-sculptor mod)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013380",
+    "RiftenVekelFlagonSandbox20x2 Skyrim.esm:10F117",
+    "RiftenVekelFlagonSandbox16x2 Skyrim.esm:10F116",
+    "RiftenVekelFlagonSandbox12x2 Skyrim.esm:10F115",
+    "RiftenVekelFlagonSandbox8x2 Skyrim.esm:10F114",
+    "RiftenVekelFlagonSandbox4x2 Skyrim.esm:10F119",
+    "RiftenVekelFlagonSandbox0x2 Skyrim.esm:10F118",
+    "USKPThievesGuildVekelSleep Unofficial Skyrim Special Edition Patch.esp:0412FF",
+    "RiftenVekelBartender0x0 Skyrim.esm:044A69",
+    "ThievesGuildFaction, JobMerchantFaction, ServicesRiftenRaggedFlagon, RiftenRaggedFlagonFaction",
+    "vendor 0-24, vendRaw f0140900",
+    "FreeformRiften21 Skyrim.esm:09F179 (giver)",
+    "MQ202 Skyrim.esm:036191 alias Vekel",
+    "aaFaraldaQ1 FDE Faralda.esp:00096A alias Vekel",
+    "TG01 Skyrim.esm:01F326 alias VekelAlias",
+    "TGBan Skyrim.esm:0B03A2 alias TGBanVekelAlias",
+    "class Skyrim.esm:013256"
+   ]
+  },
+  {
+   "id": "FDE Faralda.esp:00096B",
+   "name": "Thalmor Commander",
+   "race": "Altmer",
+   "sex": "male",
+   "firstMeet": "In Lost Prospect Mine, next to Riften, when you bring Faralda there to meet her aunt in With Love, Eilonwy, Part 2. He is Merandil, Faralda's brother.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "Lost Prospect Mine, outside Riften",
+     "doing": "standing where he's placed (he has no schedule of his own)"
+    }
+   ],
+   "changes": [
+    "In With Love, Eilonwy, Part 2 he turns out to be a Thalmor who wants to force Faralda back to Alinor; he attacks (or you can attack first) and you kill him, or you let him take her back to Alinor."
+   ],
+   "role": "Faralda's brother; the enemy in her follower quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "With Love, Eilonwy, Part 2",
+     "how": "its target: you meet him at Lost Prospect Mine, then kill Merandil or let him take Faralda to Alinor"
+    },
+    {
+     "quest": "With Love, Eilonwy, Part 1",
+     "how": "named in it (Faralda's brother); no step of his own"
+    }
+   ],
+   "canDie": "can die in With Love, Eilonwy, Part 2 (the quest has you kill him), though his record is flagged essential",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "His record is flagged essential, yet the quest's objective and log have you kill him; the quest presumably lifts the flag, but the extracts don't show it."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Whether he's in the mine before the quest brings you there isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "FDE Faralda.esp:00096B",
+    "no AI packages",
+    "aaFaraldaMerandilFaction",
+    "aaFaraldaQ2 FDE Faralda.esp:000A40 alias Merandil (stages 18, 30, 40, 120; objective 30 Kill Merandil)",
+    "aaFaraldaQ1 FDE Faralda.esp:00096A alias Merandil",
+    "placed ref FDE Faralda.esp:000A78 in Lost Prospect Mine",
+    "class Skyrim.esm:01317A"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013260",
+   "name": "Angeline Morrard",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "In her shop, Angeline's Aromatics, Solitude.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Angeline's Aromatics, Solitude",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Angeline's Aromatics, Solitude",
+     "doing": "working the shop (she trades 8 am to 8 pm)"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "in and around Angeline's Aromatics, Solitude",
+     "doing": "going about; on weekend evenings (8 to 11 pm) she may keep to the shop floor"
+    }
+   ],
+   "changes": [
+    "She can be killed in Blood Ties, Fura Bloodmouth's follower quest, if you take that ending."
+   ],
+   "role": "apothecary; runs Angeline's Aromatics; quest giver",
+   "sells": "apothecary's stock (her item lists don't resolve in the extracts)",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "No News is Good News",
+     "how": "gives it: ask Captain Aldis for news of her daughter and tell her what he said"
+    },
+    {
+     "quest": "Blood Ties",
+     "how": "its target: you bring Fura to her mother; one ending has you kill Angeline"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her weekend-evening package has several conditions the extracts don't decode, so how often it applies isn't certain."
+    },
+    {
+     "field": "sells",
+     "why": "She's in the apothecary and merchant groups, but the vendor lists don't resolve to items."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in two more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013260",
+    "AIOSoAngelineWeekend AI Overhaul.esp:17A04A (weekends 20:00 3h; undecoded fn62/fn612 conditions)",
+    "SolitudeAromaticsWorkDay8x12 Skyrim.esm:034BCD",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "SolitudeSandboxEditorLocation512 Skyrim.esm:0C97B8",
+    "JobApothecaryFaction, JobMerchantFaction, ServicesSolitudeAngelinesAromatics",
+    "vendor 8-20, vendRaw 9f370900",
+    "SolitudeFreeform01 Skyrim.esm:0E8BD7 alias Questgiver",
+    "aaFuraQ1 FDE Fura.esp:000933 alias Angeline (stages 120, 170)",
+    "class Skyrim.esm:013258"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0844D1",
+   "name": "Legate Quentin Cipius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In Whiterun, as the Imperial Legion's commander there during the Civil War; Message to Whiterun has you report to him.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "Whiterun, wherever the Civil War has him posted",
+     "doing": "commanding (a shared field-commander package; no daily schedule)"
+    }
+   ],
+   "changes": [
+    "Bloodmouth (Fura Bloodmouth's follower quest) has you send him to Cold Rock Pass, where Fura's Death Hounds kill him unless you talk her into letting him go."
+   ],
+   "role": "Imperial field commander in Whiterun (Civil War)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Message to Whiterun",
+     "how": "a step in it: you report to him"
+    },
+    {
+     "quest": "Bloodmouth",
+     "how": "its target: you use Vampire's Seduction to send him to Cold Rock Pass, then let the Death Hounds kill him or save him"
+    },
+    {
+     "quest": "the Imperial Civil War campaign",
+     "how": "a step: the Whiterun campaign has you report to him"
+    }
+   ],
+   "canDie": "essential, though Bloodmouth can have him killed",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His placed reference is inside Whiterun's walls, but the exact spot and whether he's there before the Civil War reaches Whiterun aren't in the extracts; his only package is shared by all field commanders."
+    },
+    {
+     "field": "canDie",
+     "why": "His record is flagged essential, yet Bloodmouth can end with him killed; the extracts don't show the quest lifting the flag."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0844D1",
+    "CWFieldCOMasterPackage Skyrim.esm:0C4A97 (shared by 31)",
+    "CWImperialFaction, CWFieldCOFaction",
+    "placed ref Skyrim.esm:0BF561, cell Skyrim.esm:01A270, world Whiterun",
+    "CW03 Skyrim.esm:0D661C alias ImperialFieldCO",
+    "CWObj Skyrim.esm:029940 alias WhiterunCapitalImperialFieldCO",
+    "aaFuraQ2 FDE Fura.esp:000B6B alias Cipius (stages 40, 49, 50)",
+    "class Skyrim.esm:017008"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0B9982",
+   "name": "Jenassa",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "In the Drunken Huntsman, Whiterun.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "the Drunken Huntsman, Whiterun",
+     "doing": "staying close to her spot in the inn"
+    }
+   ],
+   "changes": [
+    "Once hired she travels with you."
+   ],
+   "role": "sellsword for hire (follower); can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "hire her at the Drunken Huntsman; the price isn't in the extracts",
+   "marries": "yes; she's a marriage candidate (the dialogue's conditions aren't in the extracts)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Shadows of the Past",
+     "how": "her own story: she asks you to travel to the tower where she met her first love (Refugees' Rest, a short walk from Windhelm), then to Markarth"
+    },
+    {
+     "quest": "Mirrors of Youth",
+     "how": "a step in it: one of the people in Whiterun you can ask about Braith"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "She carries the follower trade set-up, not a shop's; nothing in the extracts shows a stock."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in about 38 more quests with no name in the extracts, most from follower-dialogue mods (her own, Lydia's, Brelyna's, Illia's, Aela's) and an encounters mod."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0B9982",
+    "HirelingJanessaSandbox Skyrim.esm:0B998B",
+    "PotentialFollowerFaction, PotentialHireling, PotentialMarriageFaction",
+    "vendor 0-24, vendRaw 48cb0600",
+    "aaJenassaAmor5RomanceQuest FDE Jenassa.esp:000D03",
+    "SDE_R004 SeranaDialogueExpansion - Romance.esp:000197 alias Jenasa",
+    "placed ref Skyrim.esm:0E1BA9 in The Drunken Huntsman",
+    "class Skyrim.esm:013181"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013346",
+   "name": "Aerin",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In Riften, usually at Mjoll the Lioness's side; noon to 6 pm he's at the Bee and Barb. The two live in Aerin's House.",
+   "day": [
+    {
+     "from": "2 am",
+     "for": "4 hours",
+     "where": "Aerin's House, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Aerin's House, Riften",
+     "doing": "eating breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "5 hours",
+     "where": "around Riften",
+     "doing": "following Mjoll; at home in Aerin's House when she's away travelling with you"
+    },
+    {
+     "from": "noon",
+     "for": "6 hours",
+     "where": "the Bee and Barb, Riften",
+     "doing": "at the inn"
+    },
+    {
+     "from": "6 pm",
+     "for": "8 hours",
+     "where": "around Riften",
+     "doing": "following Mjoll; at home in Aerin's House when she's away travelling with you"
+    }
+   ],
+   "changes": [
+    "When Mjoll is your follower and away from Riften, he stays home in Aerin's House instead of following her.",
+    "In Aerin the Man he goes with you and Mjoll to clear a dungeon, and can die there."
+   ],
+   "role": "Mjoll the Lioness's companion in Riften",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Aerin the Man",
+     "how": "a step in it: he clears a dungeon with you and Mjoll and confesses his love to her; he can die in it"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The follow-Mjoll and stay-home packages check faction membership and being in Riften, but the extracts don't say whose (presumably Mjoll's); two of the factions don't resolve to names."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in eight more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013346",
+    "RiftenAerinBeeandBarb12x6 Skyrim.esm:044A5C",
+    "RiftenAerinEatBreakfast6x1 Skyrim.esm:044A5A",
+    "RiftenAerinSleep2x4 Skyrim.esm:044A58",
+    "RiftenAerinSandboxHomeMjollFollower0x0 Skyrim.esm:101CD0",
+    "RiftenAerinFollowMjoll0x0 Skyrim.esm:044A59",
+    "RiftenMjollHouseFaction",
+    "aaMjollAerinQ FDE Mjoll.esp:0008E0 alias Aerin (stage 80 Aerin is dead)",
+    "class Skyrim.esm:013176"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:11C37A",
+   "name": "Erel Pure-Heart",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At the Summoning Stones outside Morthal, when Falion summons them as ghosts during the Hjaalmarch brawling tourney.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "while summoned",
+     "where": "the Summoning Stones, outside Morthal",
+     "doing": "brawling you (they have no schedule)"
+    }
+   ],
+   "changes": [
+    "Only appear when Falion summons them in Fists of Fury - Hjaalmarch."
+   ],
+   "role": "ghostly opponent in the Hjaalmarch brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Hjaalmarch",
+     "how": "its target: you must defeat Erel Pure-Heart, the first ghost"
+    }
+   ],
+   "canDie": "can die (not essential or protected)",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Their class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:11C37A",
+    "no AI packages",
+    "FOFMorthalBrawlerQuest Fists of Fury - Skyrim.esp:149C95 alias FOFMorthalFighter01",
+    "placed ref Fists of Fury - Skyrim.esp:11C38C in an exterior cell",
+    "class Fists of Fury - Skyrim.esp:019E5D"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:11C382",
+   "name": "Forgotten Commander",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "At the Summoning Stones outside Morthal, when Falion summons them as ghosts during the Hjaalmarch brawling tourney.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "while summoned",
+     "where": "the Summoning Stones, outside Morthal",
+     "doing": "brawling you (they have no schedule)"
+    }
+   ],
+   "changes": [
+    "Only appear when Falion summons them in Fists of Fury - Hjaalmarch."
+   ],
+   "role": "ghostly opponent in the Hjaalmarch brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Hjaalmarch",
+     "how": "its target: you must defeat her (the objective calls her the Forgotten Captain)"
+    }
+   ],
+   "canDie": "can die (not essential or protected)",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Their class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    },
+    {
+     "field": "name",
+     "why": "The quest's objective calls her the Forgotten Captain; her record's name is Forgotten Commander."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:11C382",
+    "no AI packages",
+    "FOFMorthalBrawlerQuest Fists of Fury - Skyrim.esp:149C95 alias FOFMorthalFighter02",
+    "placed ref Fists of Fury - Skyrim.esp:11C38D in an exterior cell",
+    "class Fists of Fury - Skyrim.esp:019E5D"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:11C378",
+   "name": "Lost Blade",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "At the Summoning Stones outside Morthal, when Falion summons them as ghosts during the Hjaalmarch brawling tourney.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "while summoned",
+     "where": "the Summoning Stones, outside Morthal",
+     "doing": "brawling you (they have no schedule)"
+    }
+   ],
+   "changes": [
+    "Only appear when Falion summons them in Fists of Fury - Hjaalmarch."
+   ],
+   "role": "ghostly opponent in the Hjaalmarch brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Hjaalmarch",
+     "how": "its target: you must defeat the Lost Blade"
+    }
+   ],
+   "canDie": "can die (not essential or protected)",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Their class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:11C378",
+    "no AI packages",
+    "FOFMorthalBrawlerQuest Fists of Fury - Skyrim.esp:149C95 alias FOFMorthalFighter03",
+    "placed ref Fists of Fury - Skyrim.esp:11C38E in an exterior cell",
+    "class Fists of Fury - Skyrim.esp:019E5D"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0371D6",
+   "name": "Maul",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Out in Riften's streets, leaning against a wall.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "his spot in Riften",
+     "doing": "leaning on a wall (until a Riften event moves him on; see changes)"
+    },
+    {
+     "from": "10 am",
+     "for": "8 hours",
+     "where": "near Mistveil Keep, Riften",
+     "doing": "keeping watch, when the package's conditions pass"
+    }
+   ],
+   "changes": [
+    "Once an unnamed Riften quest reaches its stage 40, he stops leaning at his first spot: from then he's near Mistveil Keep in the day and sleeps at Black-Briar Manor from midnight to 8 am."
+   ],
+   "role": "Black-Briar enforcer (in the housecarl group) and a Thieves Guild member; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Fists of Fury - The Rift",
+     "how": "gives it: the tourney letter sends you to him, and he tells you to find the Ratway Arena"
+    },
+    {
+     "quest": "No Stone Unturned",
+     "how": "a step: he's the appraiser in Riften to bring an Unusual Gem to; if he stops speaking to you, you must find someone else"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His wall-leaning package sits above his sleep package and holds until stage 40 of a quest the extracts don't name, so before that he may not go home to sleep; his 10 am to 6 pm package carries many conditions the extracts don't decode."
+    },
+    {
+     "field": "firstMeet",
+     "why": "His placed spot is in Riften, but the extracts give no street or landmark for it."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in six more quests with no name in the extracts; the gem objective's quest is a handler whose player-facing name is taken from its editor name."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0371D6",
+    "AIORiftMaulRandomDay10x8 AI Overhaul.esp:0591DC (marker AI Overhaul.esp:03FC36, by Mistveil Keep; undecoded fn612 conditions)",
+    "DRMSMaulWallLeanPackage Skyrim.esm:0649FF (GetStageDone Skyrim.esm:0649FC 40 == 0)",
+    "USKPRiftenMaulSleep0x8 Unofficial Skyrim Special Edition Patch.esp:077A6C",
+    "RiftenMaulDocksDay8x12 Skyrim.esm:064A02 (GetStageDone Skyrim.esm:0649FC 40 == 1)",
+    "JobHousecarlFaction, RiftenBlackBriarHouseFaction, ThievesGuildFaction",
+    "placed ref Skyrim.esm:03BE26, world Riften",
+    "FOFRiftenBrawlerQuest Fists of Fury - Skyrim.esp:04C991 (giver)",
+    "TGCrownMisc Skyrim.esm:06D585 alias TGCrownMiscMaulAlias",
+    "class Skyrim.esm:01317E"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:019E6A",
+   "name": "The Organizer",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In the Ratway Arena, down in the Ratway Vaults under Riften.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "the Ratway Arena, Riften",
+     "doing": "running the tourney from his spot"
+    }
+   ],
+   "changes": [
+    "After you finish Fists of Fury - The Rift: 8 am to 6 pm about his spot in the arena, 6 pm to 8 pm watching the bouts, 8 pm to 10 pm eating, 10 pm to 8 am asleep, all in the Ratway Arena."
+   ],
+   "role": "runs the Rift's brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Fists of Fury - The Rift",
+     "how": "a step in it: talk to him to start the tourney (he sends you for more gold if you're short), and again for your reward"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:019E6A",
+    "FOFRatwayArenaOrganizerEat20x2 Fists of Fury - Skyrim.esp:029203",
+    "FOFRatwayArenaOrganizerIdle8x10 Fists of Fury - Skyrim.esp:0291FF",
+    "FOFRatwayArenaOrganizerSleep22x10 Fists of Fury - Skyrim.esp:029202",
+    "FOFRatwayArenaOrganizerWatch18x2 Fists of Fury - Skyrim.esp:029200 (all GetQuestCompleted Fists of Fury - Skyrim.esp:04C991)",
+    "FOFRiftenDefaultOrganizer Fists of Fury - Skyrim.esp:0751E1 (stage >= 21)",
+    "placed ref Fists of Fury - Skyrim.esp:019E6F in The Ratway Arena",
+    "class Skyrim.esm:017008"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:01EF7F",
+   "name": "Drackis",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "In the Ratway Arena, down in the Ratway Vaults under Riften.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "the Ratway Arena, Riften",
+     "doing": "waiting at his spot in the arena"
+    }
+   ],
+   "changes": [
+    "After you finish Fists of Fury - The Rift: 4 pm to 7 pm practising, 7 pm to 8 pm in a bout, 8 pm to 10 pm with the crowd, 10 pm to 8 am asleep, the rest of the day at his spot, all in the Ratway Arena."
+   ],
+   "role": "contender in the Rift's brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - The Rift",
+     "how": "its target: the first contender you must defeat"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "His class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:01EF7F",
+    "FOFRatwayArenaFighter02BrawlPackage Fists of Fury - Skyrim.esp:02E355",
+    "FOFRatwayArenaFighter02Practice Fists of Fury - Skyrim.esp:02E34B",
+    "FOFRatwayArenaFightersSleepPackage Fists of Fury - Skyrim.esp:02E34E",
+    "FOFRatwayArenaViewersInnSandbox20x2 Fists of Fury - Skyrim.esp:0240EC (all GetQuestCompleted Fists of Fury - Skyrim.esp:04C991)",
+    "FOFRiftenDefaultFighter02 Fists of Fury - Skyrim.esp:0751E5",
+    "FOFRiftenBrawlerQuest objective 30",
+    "class Fists of Fury - Skyrim.esp:019E5D"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:01EF80",
+   "name": "Fights-With-Fists",
+   "race": "Argonian",
+   "sex": "male",
+   "firstMeet": "In the Ratway Arena, down in the Ratway Vaults under Riften.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "the Ratway Arena, Riften",
+     "doing": "waiting near his spot in the arena"
+    }
+   ],
+   "changes": [
+    "After you finish Fists of Fury - The Rift: 4 pm to 7 pm practising, 7 pm to 8 pm in a bout, 8 pm to 10 pm with the crowd, 10 pm to 8 am asleep, the rest of the day near his spot, all in the Ratway Arena."
+   ],
+   "role": "contender in the Rift's brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - The Rift",
+     "how": "its target: the second contender you must defeat"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "His class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:01EF80",
+    "FOFRatwayArenaFighter03BrawlPackage Fists of Fury - Skyrim.esp:02E356",
+    "FOFRatwayArenaFighter03Practice Fists of Fury - Skyrim.esp:02E34C",
+    "FOFRatwayArenaFightersSleepPackage Fists of Fury - Skyrim.esp:02E34E",
+    "FOFRatwayArenaViewersInnSandbox20x2 Fists of Fury - Skyrim.esp:0240EC",
+    "FOFRiftenDefaultFighter03 Fists of Fury - Skyrim.esp:0751E6",
+    "FOFRiftenBrawlerQuest objective 31",
+    "class Fists of Fury - Skyrim.esp:019E5D"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:014123",
+   "name": "Niranye",
+   "race": "Altmer",
+   "sex": "female",
+   "firstMeet": "Trading in Windhelm in the day; she lives in Niranye's House.",
+   "day": [
+    {
+     "from": "2 am",
+     "for": "4 hours",
+     "where": "Niranye's House, Windhelm",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Niranye's House, Windhelm",
+     "doing": "eating breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "her trading spot in Windhelm",
+     "doing": "working (she trades 8 am to 7 pm)"
+    },
+    {
+     "from": "8 pm",
+     "for": "6 hours",
+     "where": "New Gnisis Cornerclub, Windhelm",
+     "doing": "drinking"
+    }
+   ],
+   "changes": [],
+   "role": "trader in Windhelm; in the fence group; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Eastmarch",
+     "how": "gives it: she tells you to go to the brawler's camp east of Windhelm"
+    },
+    {
+     "quest": "Summerset Shadows",
+     "how": "a step in it: speak to Niranye, optionally after finding leverage to sway her"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "She's in the merchant and fence groups and trades 8 am to 7 pm, but the vendor lists don't resolve to items."
+    },
+    {
+     "field": "role",
+     "why": "Her fence membership is at the rank that usually means not yet active; whether a quest turns it on isn't in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "Her work spot is a marker the extracts place only as Windhelm (0.1 km), not a named stall or building."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in ten more quests with no name in the extracts (several from a Windhelm dialogue mod)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:014123",
+    "NiranyeEatBreakfast6x2 Skyrim.esm:035E31",
+    "NiranyeWork8x12 Skyrim.esm:035E30 (marker Skyrim.esm:035F44)",
+    "NiranyeDrinkAtCornerclub20x6 Skyrim.esm:035E32",
+    "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+    "JobMerchantFaction, JobMiscFaction, JobFenceFaction rank 255, ServicesWindhelmNiranye",
+    "vendor 8-19, vendRaw 48cb0600",
+    "FOFWindhelmBrawlerQuest Fists of Fury - Skyrim.esp:1D7962 (giver)",
+    "TGTQ04 Skyrim.esm:0799E2 alias TGTQ04NiranyeAlias",
+    "class Skyrim.esm:01317E"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:1D7963",
+   "name": "Reggr",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "At the Brawler's Camp east of Windhelm, during the Eastmarch brawling tourney.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "16 hours",
+     "where": "the Brawler's Camp, east of Windhelm",
+     "doing": "about the camp"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "the Brawler's Camp, east of Windhelm",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "keeps the Eastmarch brawler's camp; pays out your earnings",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Eastmarch",
+     "how": "a step in it: talk to Reggr when you reach the camp, and get your earnings from him at the end"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The quest has an alias that enables the camp, so the camp and its people may only be there once the tourney starts; the extracts don't show the enable state."
+    },
+    {
+     "field": "race",
+     "why": "His race record is named Elder; the extracts don't say which people that is."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:1D7963",
+    "FOFWindhelmCampSandboxPackage6x16 Fists of Fury - Skyrim.esp:1E1BB3",
+    "FOFWindhelmCampSleepPackage22x8 Fists of Fury - Skyrim.esp:1E1BB1",
+    "FOFWindhelmBrawlerQuest Fists of Fury - Skyrim.esp:1D7962 (CampEnableAlias)",
+    "alias GuardAlias",
+    "class Skyrim.esm:01CE15"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:1D7967",
+   "name": "Erdith The Bear",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At the Brawler's Camp east of Windhelm, during the Eastmarch brawling tourney.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "16 hours",
+     "where": "the Brawler's Camp, east of Windhelm",
+     "doing": "about the camp"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "the Brawler's Camp, east of Windhelm",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "the champion of the Eastmarch brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "the records mark her as a follower; how she's recruited isn't in the extracts",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Eastmarch",
+     "how": "its target: talk to Erdith, beat the challengers, then defeat her, the Champion of Eastmarch"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The quest has an alias that enables the camp, so the camp and its people may only be there once the tourney starts; the extracts don't show the enable state."
+    },
+    {
+     "field": "joins",
+     "why": "She's flagged as a follower (in the current-follower group at the not-yet rank) but has no potential-follower membership; the recruiting dialogue isn't in the extracts."
+    },
+    {
+     "field": "trains",
+     "why": "She's in the trainer group, but no skill or level is in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "She carries the follower trade set-up, not a shop's; nothing shows a stock."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Her class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:1D7967",
+    "FOFWindhelmCampSandboxPackage6x16 Fists of Fury - Skyrim.esp:1E1BB3",
+    "FOFWindhelmCampSleepPackage22x8 Fists of Fury - Skyrim.esp:1E1BB1",
+    "FOFWindhelmBrawlerQuest Fists of Fury - Skyrim.esp:1D7962 (CampEnableAlias)",
+    "alias ChampAlias",
+    "CurrentFollowerFaction rank 255, JobTrainerFaction, FOFWindhelmCampFaction rank 1",
+    "vendor 0-24, vendRaw 48cb0600",
+    "class Fists of Fury - Skyrim.esp:1D27F9"
+   ]
+  },
+  {
+   "id": "Fists of Fury - Skyrim.esp:1D7964",
+   "name": "Kjer",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At the Brawler's Camp east of Windhelm, during the Eastmarch brawling tourney.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "16 hours",
+     "where": "the Brawler's Camp, east of Windhelm",
+     "doing": "about the camp"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "the Brawler's Camp, east of Windhelm",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "challenger in the Eastmarch brawling tourney",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "bare fists (a brawling tourney)",
+   "quests": [
+    {
+     "quest": "Fists of Fury - Eastmarch",
+     "how": "its target: the first challenger you must defeat"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The quest has an alias that enables the camp, so the camp and its people may only be there once the tourney starts; the extracts don't show the enable state."
+    },
+    {
+     "field": "fightsWith",
+     "why": "His class is a mod class the extracts don't resolve; fists is from the quest being a brawling tourney."
+    }
+   ],
+   "evidence": [
+    "Fists of Fury - Skyrim.esp:1D7964",
+    "FOFWindhelmCampSandboxPackage6x16 Fists of Fury - Skyrim.esp:1E1BB3",
+    "FOFWindhelmCampSleepPackage22x8 Fists of Fury - Skyrim.esp:1E1BB1",
+    "FOFWindhelmBrawlerQuest Fists of Fury - Skyrim.esp:1D7962 (CampEnableAlias)",
+    "alias Fighter01Alias",
+    "class Fists of Fury - Skyrim.esp:019E5D"
+   ]
+  },
+  {
+   "id": "ForgottenCity.esp:01096E",
+   "name": "Cassia",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "At the Forgotten Ruins, hidden Dwarven ruins in the Reach; her letter (Cassia's Plea), brought by a courier, sends you there, and she waits to greet you.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "the Forgotten Ruins, the Reach",
+     "doing": "waiting for you, then staying near the ruins' entrance"
+    }
+   ],
+   "changes": [
+    "If you bring her brother Altrius out of the city she rewards you and rests at the ruins.",
+    "If Altrius is dead she asks you about him.",
+    "In the ending where you return to your own time with Altrius saved, she rewards you and goes into the city with him."
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Forgotten City",
+     "how": "gives it: she asks you to find her younger brother, Altrius, in the ruins, and rewards you if he comes back"
+    },
+    {
+     "quest": "Forget-me-not",
+     "how": "named in it; the extracts give her no step of her own"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Her packages also check stages of another Forgotten City quest with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Her class is a patcher-made record the extracts don't resolve."
+    }
+   ],
+   "evidence": [
+    "ForgottenCity.esp:01096E",
+    "000FCCassiaRewardsPlayerForcegreet ForgottenCity.esp:0AE7B2",
+    "000FCCassiaAsksAfterAltrius ForgottenCity.esp:0AF285 (GetDeadCount ForgottenCity.esp:0A2EB3 >= 1)",
+    "000FCCassiaFollowsAltriusOnTour ForgottenCity.esp:0A4A11",
+    "000FCCassiaFinalSleep ForgottenCity.esp:0AE7B4",
+    "000FCTreasureHunterWaitandGreet ForgottenCity.esp:03786A (stage <= 20)",
+    "000FCTreasureHunterDefaultSandbox ForgottenCity.esp:038345",
+    "000FCQuest01 ForgottenCity.esp:012BB9 (giver; stages 10, 20, 4050)",
+    "000FCQuest02 ForgottenCity.esp:05965B alias Cassia",
+    "placed ref ForgottenCity.esp:01096F in Forgotten Ruins",
+    "class Synthesis - Requiem Patcher.esp:000053"
+   ]
+  },
+  {
+   "id": "ForgottenCity.esp:0A2EB3",
+   "name": "Altrius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In the Forgotten City, under the Forgotten Ruins in the Reach, only after you've been sent into the past and come back to the present (The Forgotten City finds him \"alive and well\"). His placed spot is in the city's Underground Tunnels.",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "the Forgotten City",
+     "doing": "looking at a statue near his spot"
+    }
+   ],
+   "changes": [
+    "He suggests breaking the cracked wall in the Citadel bathroom and leads you there to escape the city; once out, he rests at the Forgotten Ruins.",
+    "In the ending where the Dwarves' Law is wound back, he runs up to his sister Cassia and then goes about the city with her."
+   ],
+   "role": "Cassia's younger brother, the man you're sent to find",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Forgotten City",
+     "how": "its target: Cassia asks you to find him; you escort him out of the city or bring him back to her"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "He has two aliases in the quest and his first-meeting greeting needs Forget-me-not done and a cell the extracts don't name; when he's first in the city isn't settled."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+    }
+   ],
+   "evidence": [
+    "ForgottenCity.esp:0A2EB3",
+    "000FCAltriusSleepsWaitingforCassia ForgottenCity.esp:0A9626",
+    "000FCAltriusTalkativeForceGreet ForgottenCity.esp:0A02B1 (cell ForgottenCity.esp:01AC64, stage 2000, Forget-me-not done)",
+    "000FCAltriusLeadstoBathroom ForgottenCity.esp:0A8069 (stage 2015)",
+    "000FCAltriusFollowtoBathroom ForgottenCity.esp:0A805B (stage 2020)",
+    "000FCAltriusFinalSleep ForgottenCity.esp:0AE7B5",
+    "000FCAltriusRunstoCassAlone ForgottenCity.esp:0AF28A (stage 4015)",
+    "000FCAltriusYoungPatrolwithCassia ForgottenCity.esp:0A4A12 (stage 4050)",
+    "000FCAltriusYoungLookatStatue ForgottenCity.esp:0A6FF8",
+    "000FCQuest01 ForgottenCity.esp:012BB9 aliases Altrius, AltriusYoung",
+    "placed ref ForgottenCity.esp:0A2EB4 in Underground Tunnels",
+    "class Skyrim.esm:01CE17"
+   ]
+  },
+  {
+   "id": "GORE.esp:000D63",
+   "name": "Gore",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At Peak's Shade Tower outside Falkreath, a Nord with his leg caught in a trap (Raven's Flight, which starts from rumours of Imperial patrols near Falkreath).",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "Peak's Shade Tower, outside Falkreath",
+     "doing": "stuck in the trap until you free him (he has no schedule of his own)"
+    }
+   ],
+   "changes": [
+    "To Free a Raven: he turns himself in at Dawnstar Jail; you pay for his release and take him to the Windpeak Inn.",
+    "The Apple from the Tree: he can leave you, or you can kill him for it."
+   ],
+   "role": "follower (a companion with his own quests)",
+   "sells": "",
+   "trains": "",
+   "joins": "free him from the trap in Raven's Flight, then deal with the Thalmor hunting him in Wanted; after that he's joined you",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Raven's Flight",
+     "how": "its subject: you find him trapped at Peak's Shade Tower and free him (or kill him)"
+    },
+    {
+     "quest": "Wanted",
+     "how": "gives it: the Thalmor catch up with you both"
+    },
+    {
+     "quest": "To Free a Raven",
+     "how": "gives it: he turns himself in and you get him out of Dawnstar Jail"
+    },
+    {
+     "quest": "Blood Ties",
+     "how": "gives it: you go with him to Dawnstar, where he finds Pate"
+    },
+    {
+     "quest": "Where We Stand",
+     "how": "gives it: he takes you to a spot near Ivarstead"
+    },
+    {
+     "quest": "A New Coat",
+     "how": "gives it: Taarie at Radiant Raiment, Solitude, makes his new armour"
+    },
+    {
+     "quest": "The Drunken Hunted",
+     "how": "a step in it: take him to the Drunken Huntsman in Whiterun"
+    },
+    {
+     "quest": "Count Fleet",
+     "how": "a step in it: get him a horse at the Whiterun Stables"
+    },
+    {
+     "quest": "Fear and Loathing",
+     "how": "a step in it: you and he investigate a house in Markarth for a Vigilant of Stendarr"
+    },
+    {
+     "quest": "Nest Left Empty",
+     "how": "a step in it: you go to a waterfall with him and are ambushed"
+    },
+    {
+     "quest": "Come, the Crows",
+     "how": "a step in it: you head with him to an inn far from Dawnstar"
+    },
+    {
+     "quest": "The Apple from the Tree",
+     "how": "changed by it: he may leave you, or you kill him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "His quests name him by alias but the person record lists none, so which steps are his is read from the quest text and giver dialogue."
+    },
+    {
+     "field": "sells",
+     "why": "He carries the follower trade set-up, not a shop's."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Raven's Flight hands out Gore's Greatsword, but whether it's his or yours isn't clear; his class doesn't resolve."
+    },
+    {
+     "field": "evidence",
+     "why": "A second, separate Gore record with a relax package exists in the same mod (a camp version); this read is the main one."
+    }
+   ],
+   "evidence": [
+    "GORE.esp:000D63",
+    "no AI packages",
+    "PotentialFollowerFaction, DismissedFollowerFaction, HD1GoreFaction",
+    "vendor 0-24, vendRaw 48cb0600",
+    "placed ref GORE.esp:00B4B1 at Peak's Shade Tower",
+    "HD1GoreMeet GORE.esp:066720",
+    "HD1GoreEscort GORE.esp:1517F2 (stage 21)",
+    "HD1GoreJailtime GORE.esp:6245B4",
+    "HD1GoreQuest2 GORE.esp:5A610A",
+    "HD1GoreInterlude GORE.esp:7752FD",
+    "HD1ArmorUpgrades GORE.esp:10A083",
+    "HD1GoreDH GORE.esp:3E8DC9",
+    "HD1GoreHorse1 GORE.esp:2EADD8",
+    "HD1GoreFearAndLoathing GORE.esp:AFF592",
+    "HD1Interlude2 GORE.esp:89E472",
+    "HD1GoreComeTheCrows GORE.esp:6EA61E",
+    "HD1GoreMurderer GORE.esp:6738F7",
+    "HD1CampGore GORE.esp:E0657E",
+    "class Skyrim.esm:01CE15"
+   ]
+  }
+ ]
+}
