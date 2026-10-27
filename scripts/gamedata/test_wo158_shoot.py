@@ -58,10 +58,13 @@ class ShapeTest(unittest.TestCase):
             lines = wo.person_lines(target, others)
             self.assertEqual(lines.count("tfc 1"), 2, (slug, lines))
 
-    def test_time_is_frozen_not_merely_normal_speed(self):
-        # sgtm 1 is only normal speed -- noon would drift to afternoon over several hand-framed shots. sgtm 0
-        # freezes the clock; that's the one this order actually needs.
-        self.assertIn("sgtm 0", wo.start_lines())
+    def test_time_is_frozen_without_the_true_zero_that_hangs(self):
+        # Found live, 27 Oct (Part 1d): sgtm 0 hung the game outright on this heavily scripted install -- the
+        # console wouldn't even close. sgtm 1 is only normal speed and would let noon drift to afternoon over
+        # several hand-framed shots. Only a near-zero, never-exactly-zero multiplier is safe here.
+        self.assertIn(f"sgtm {wo.TIME_FROZEN}", wo.start_lines())
+        self.assertNotEqual(float(wo.TIME_FROZEN), 0.0)
+        self.assertNotIn("sgtm 0", wo.start_lines())
         self.assertNotIn("sgtm 1", wo.start_lines())
 
     def test_every_person_disables_exactly_the_other_four(self):

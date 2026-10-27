@@ -70,9 +70,15 @@ after the last shot, since each is a toggle):
 
 Weather: `fw SClearSkySN` sets `NAT-ENB.esp`'s own clear sky, the plainest this load order's weather mod ships,
 reused for every shot rather than one found per hold -- a simplification, logged as a decision, not a hunt for
-nine different regional clear weathers this test doesn't need. `sgtm 0` freezes the game clock at the multiplier
-(not `sgtm 1`, which is only normal speed and would still let noon drift to afternoon over several shots), so
-the light doesn't change while Dave works the camera by hand.
+nine different regional clear weathers this test doesn't need.
+
+**Time: `sgtm 0.0001`, never `sgtm 0`.** Found live, 27 Oct (Part 1d): `sgtm 0` hung the game outright -- Esc
+and the console's own key both did nothing, a real engine freeze, not a UI quirk, needing the game killed from
+outside it. A true zero multiplier is a well-known way to do this on a heavily scripted install: LoreRim's own
+hundreds of Papyrus scripts can carry a wait on some game-time condition, and a multiplier of exactly zero means
+that condition never arrives, so whatever is waiting waits forever. `sgtm 0.0001` is as close to frozen as this
+order needs (noon drifts by a fraction of a real second over several minutes of hand-framing, nothing a
+screenshot would ever show) without the hard zero that hangs.
 """
 import math
 import os
@@ -83,6 +89,7 @@ REPO = os.path.dirname(os.path.dirname(HERE))
 LORERIM = os.environ.get("LORERIM_ROOT") or r"C:\LoreRim"
 
 CLEAR_WEATHER = "SClearSkySN"  # NAT-ENB.esp, the winning "clear" weather in this load order; see module docstring
+TIME_FROZEN = "0.0001"  # never "0" -- a true zero can hang a heavily scripted install; see module docstring
 
 # Bob's own three numbers (Part 1b item 2), in one place to change after Dave's first look at Broken Oar Grotto.
 HEIGHT = 300.0       # units above the entrance door the camera sits at
@@ -158,7 +165,7 @@ def door_camera(door_pos, door_yaw):
 
 
 def start_lines():
-    return ["tfc 1", "tcl", "tai", f"fw {CLEAR_WEATHER}", "set gamehour to 12", "sgtm 0", f"fov {FOV}"]
+    return ["tfc 1", "tcl", "tai", f"fw {CLEAR_WEATHER}", "set gamehour to 12", f"sgtm {TIME_FROZEN}", f"fov {FOV}"]
 
 
 def end_lines():

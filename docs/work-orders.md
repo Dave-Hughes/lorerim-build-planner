@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1c fixed the two bugs Dave's own test found, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1d fixed the game-hang Dave's second test found, needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5080,6 +5080,12 @@ Dave: "The command did free my character camera, but it also hid the console UI 
 - [x] **`tm` hid the console along with the HUD.** `wo158-start.txt` ran `tm` as one of its opening toggles; `tm` hides the console's own input box too, so Dave couldn't see what he was typing from that point on. Fixed: `tm` is its own file now, `wo158-toggle-hud.txt`, run by hand right before and right after each screenshot -- never inside a file that runs ahead of something Dave needs to watch.
 - [x] **The camera didn't move with the player.** "My character disappeared" is exactly right: `player.setpos` was still moving the player (confirmed -- an NPC `moveto player`-ed afterwards lands correctly), but the free camera, once `tfc` detaches it, doesn't follow a position change on the thing it detached from -- so the camera stayed at the old spot while the character vanished from it. Fixed: every place and person file now toggles `tfc` off immediately before its own `setpos`/`setangle` lines and back on immediately after (`with_camera_reattached`), so the camera re-detaches starting from the new position each time -- the mechanism Bob's Part 1b note asked for, just missing the retoggle around each individual shot.
 - **Checks.** `test_wo158_shoot.py` rewritten for the new shape (12 tests: `tm` lives only in its own file; every camera move brackets exactly two `tfc 1`s around its own `setpos`/`moveto`; `tcl`/`tai` still only in start/end; the rest unchanged). 369 gamedata tests pass.
+
+### Part 1d. Dave's second live test: a real engine hang, not a UI quirk (Dave, 27 Oct)
+Same two commands run again, same result -- so Part 1c's own fix wasn't the whole story. Asked Dave the one thing that actually told the two apart: "when the console disappears, does pressing ~ or Esc bring it back?" **"Nothing happens, game seems stuck."** That's not a hidden console; that's a hang. Dave had to kill the game from outside it.
+- [x] **`sgtm 0` hung the game.** `wo158-start.txt` set the game-time multiplier to exactly zero to stop noon drifting during the hand-framing Part 1b and 1c both still need. A true zero is a well-known way to hang a heavily scripted Skyrim install: LoreRim carries hundreds of Papyrus scripts, and more than a few of them can be waiting on some game-time condition that a multiplier of exactly zero means never arrives -- whatever's waiting, waits forever, and the whole engine stalls with it (the console included, since it's part of the same stalled process). This reader's own addition, in Part 1c's own fix for the time-drift problem, not anything Dave did.
+- [x] **Fixed: `sgtm 0.0001`, never `sgtm 0`.** Close enough to frozen that noon doesn't move in any way a screenshot would ever show, far enough from a true zero that nothing is left waiting on a time that never comes.
+- **Checks.** `test_wo158_shoot.py`'s time test rewritten to assert the multiplier is never exactly zero, not only that it isn't `1`. 369 gamedata tests pass (unchanged count; the test itself is the fix's own guard).
 
 ### How Dave runs it
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
