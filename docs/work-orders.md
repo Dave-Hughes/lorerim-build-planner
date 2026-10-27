@@ -5022,6 +5022,23 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-161  Small fixes from Bob's walk of every page (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-160)
+
+**Why.** Bob walked every page on staging (`docs/page-templates.md`, the catalog). These are the small ones; the place page, the quest categories and the colour pass get their own orders with boards.
+
+- [ ] **Guide** in the top menu goes to a 404 on staging (the guide is off there). Show Guide only when the guide is on; same on the phone menu.
+- [ ] The browser tab says "LoreRim Build Planner" on every page; it's **LoreRim Planner** now (titles, the share cards' site name, the manifest). A quest's tab reads "The Golden Claw | The Golden Claw": once.
+- [ ] Characters, not builds, wherever a player reads it: `/u/<handle>` ("Builds by Tapps" → "Tapps's characters"; tabs Characters and Liked), `/me` signed out ("My builds" → "My characters").
+- [ ] **One character card.** The home page's Recent characters card (WO-157 Part 10) becomes the card on `/characters` and `/u/<handle>` too, in a grid; the Featured character keeps a wide card at the top of `/characters` in the same style.
+- [ ] `/playthroughs/new` signed out: one line on what a playthrough is (acts, each with a goal and a place, and the quests in each; your save says where you stand) above Sign in.
+- [ ] **Search results**: the kind icon and kind tag on each result (Quest, Quest line, Person, Place, Character), and the reason in plain words ("Lydia is named in it", not "Its name.").
+- [ ] **Everything that changed**: the newest day open, older days folded with their counts; a filter by kind at the top.
+- [ ] **New in the world** on home: each kind its own icon (a quest line the line's icon, a person `quest-people`, a place `quest-travel`, a report `quest-sure`), and the line under the name says what's new in that entry, not the same sentence six times ("Its 7 chapters and 19 quests, read from the game files").
+- [ ] **People**: the town filter applies as you pick it; no Show button.
+- [ ] **Phone**: the New character button says "New" beside the plus; the back button and the search box sit at the content's full width, one above the other.
+- [ ] Checks and screenshots at 1440 and 390 of each, then `for Bob`.
+
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
 Status: building (Mac)
 
@@ -5033,6 +5050,8 @@ Status: building (Mac)
 - [ ] Spoilers: every chapter and quest name shows; "Hide what's ahead" hides chapter names and quests after the first chapter, remembered per viewer.
 - [ ] The colours mean one thing each, everywhere they're used: green how to start and what's done, red levels and danger, blue places, orange people and links, gold XP and rewards, purple choices and what a quest opens. Write them into `docs/design-rules.md`.
 - [ ] Every line gets it: the main quest, Dawnguard, Dragonborn, the guilds, the Daedric lines, the mod lines. Check Dragonborn, Dawnguard (two sides: show both in the story, as two runs after the shared start) and one mod line at 1440 and 390.
+
+- [ ] **Quest XP says one thing.** The Companions' story page says 700 XP and "they pay no quest XP" for the jobs along the way; the line page says 2,100; `quests.json` has every job at 100. At a glance shows the story's XP and, under it, "jobs along the way pay 100 each" when they pay; Along the way says the same. Check every line with jobs.
 
 ### Part 2. The category pages
 - [ ] Main stories as `MainStoriesPage`: the three stories only, main quest first, then Dragonborn, then Dawnguard; then "Tied to these stories" for the mod quests that sit there now. No boxes, no Tell me more.
