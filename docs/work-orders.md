@@ -5170,6 +5170,15 @@ Dave: being signed in doesn't mean he doesn't want Recent characters and New in 
 - A flex quirk showed up in the screenshot: the home's `main` shrank to its content when the sections were short (a column of two recent characters), so it now has `width: 100%`.
 - Checks: typecheck, lint, 704 unit tests, the build, `wo157` (12 tests, two of them the signed-in home at 1440 and 390) and the other specs that load `/` (`wo24`, `wo80`, `wo84`, `wo84-soon`, `wo96-soon`). Screenshots: `/tmp/s157/p9/wo157-home-signed-in-1440.png` and `-390.png`, and `visitor-1440.png`.
 
+### Part 10. Recent characters, dressed up (Dave, 27 Oct, 13:39: "this looks great")
+Board: `HomeCharacters` (canvas row 34, right of `HomeYou`), https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1. Same compact strip of five, portrait covers; Dave wants these to be the eye candy of the home page.
+- [ ] **On each card:** the cover edge to edge (each card keeps the cover's own position the owner set); top left, the race's pixel icon in a small dark square; top right, Featured, Video and Playthrough when the character has them (at most two); over the fade, the name (two lines at most), the tagline in the flavour face (two lines at most), and the race with its traits; under a thin rule, the maker's avatar and name, the likes, and the planned level as "LV 50" in the pixel face, right-aligned. A character with a listed run also gets "Act 2 of 4" with its act's name and a bar of the acts, from the run itself; leave it off when there's no run.
+- [ ] **Motion at rest:** each cover drifts slowly (a slow zoom and pan, about 16 s, each card out of step with the next); the cards rise in one after another the first time the strip comes into view.
+- [ ] **Under the pointer (and on keyboard focus):** the card lifts about 8 px with a deep shadow; the cover zooms a little and warms; four brass corner marks slide in; firelight rises from the bottom edge; pixel embers drift up. All of it as the board's CSS shows; no images needed beyond the cover.
+- [ ] **Phone and reduced motion:** no hover effects on touch; the strip scrolls sideways with cards about 272 px wide. With reduced motion on, no drift, rise or embers; the hover still lifts and shows the corners.
+- [ ] Design rules: the pixel face on the home page now covers the hero, the Three ways numbers and the level on these cards; write it.
+- [ ] Screenshots at 1440 (one card hovered) and 390, then `for Bob`.
+
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: done
 
