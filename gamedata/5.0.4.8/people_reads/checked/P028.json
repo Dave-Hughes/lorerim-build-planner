@@ -1,0 +1,2005 @@
+{
+ "checks": [
+  {
+   "id": "Vigilant.esm:51EAA8",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: editor id says follower, but the follower flag is off and he has no follower faction; blank is right"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: Legacy of Belharza giver ref is in the Hidden Minotaur Village cell, location Stuhn Ravine"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no packages, no stage records naming him beyond the opening talk"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: quest giver INFO for Legacy of Belharza below stage 5, first objective 'Talk to' his alias"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: fills alias Mntr; objectives 1 'Talk to' him, 10 'Meet the Chief of Minotaurs'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set on the record"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:51D895",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: MntrChief alias ref placed in Hidden Minotaur Village; objective 10 sends you to the chief"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: one shared sit-at-linked-ref package, ignore combat, no schedule or conditions"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: package has no conditions; nothing in the extracts moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: alias MntrChief, objective 'Meet the Chief of Minotaurs'; not the opening giver"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: speaker in Legacy of Belharza below stage 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:4B2C91",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "firstMeet: nothing in the extracts says the courier is a Windhelm guard (the Courier alias has no person); while Empty Cells runs his top package is a stay-put wait with no place, and his placed ref is in a holding cell. Windhelm is supported by the objectives ('Investigate Windhelm dungeons') and his Windhelm town faction; removed the guard claim"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: packages in order: wait while Empty Cells runs (GetQuestRunning), palace sandbox once it is completed (GetQuestCompleted, Palace of the Kings cell), else a shared current-location sandbox"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: the two quest-gated packages match, and before the quest the default sandbox leaves him in the Actor Room holding cell"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: named Steward, Windhelm town faction and the palace package; his steward-job faction rank is 255 (-1), so the job faction alone wouldn't prove it; giver INFO below stage 11"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Empty Cells objectives 10/30/50/100 name his alias (talk, Maiden Statue, report); gold reward in the quest fragment"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:032894",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: Vamp02 alias ref placed in the Bloody Well cell"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: objective 30 'Defeat' his alias"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: an objective target; speaks below stage 21 but the quest opens with Defeat Gwaji, so 'enemy' fits"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Remnants alias Vamp02, objective 30 Defeat, INFO below stage 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither essential nor protected"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:03167C",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: Vamp01 ref in Hidden Passage cell, location Old Sewers"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: objective 10 'Defeat' his alias"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: the first objective's target; no giver dialogue"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Remnants alias Vamp01, first objective 'Defeat Gwaji gro-Agnam'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither essential nor protected"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:033043",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: Vamp04ESS ref placed in the Asylum cell"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: one unconditioned sit, ignore-combat package"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "changes: only objective 60 'Talk to' names his alias (Vamp04ESS); objective 70 'Give Stendarr's Mercy to' names a different alias, Vamp04, that no person fills in the extracts, so 'give it to him' is unconfirmed; moved to unsure"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: talked to in Remnants; speaker below stage 41"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quests: Stendarr Guide has no people in the extracts and his record fills only Vamp04ESS; the GuideThingol alias name alone isn't a fill, and it's a guide-marker misc quest; removed. Mercy step trimmed as above"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: record not essential/protected; alias name ends ESS, so unsure is right"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:035D7D",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: LamaeHum ref placed in Matron's Chamber; top package is a sleeping package near its editor location"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: one unconditioned sleep package, radius 500 near editor location"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no conditions on her package; nothing in the extracts moves her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO for The Blood Matron below stage 31"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quests: Stendarr Guide lists no people and her record fills only LamaeHum; the GuideLamae alias name isn't a fill, and it is a guide-marker misc quest; removed"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither essential nor protected"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:037468",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: LamaeBal ref in cell of world Lamae's Dream"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: objectives 60 Defeat and 90 Free from the curse of Molag Bal name her alias"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: objective target; also a speaker below stage 51"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: The Blood Matron alias LamaeBal; rewards Lamae's Kin and Fire Storm (Weak) from the fragment"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither essential nor protected"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:0368E0",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: MolagBal alias ref in Matron's Chamber"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no stage records about him in the extracts"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: speaker in The Blood Matron below stage 51; no objective names him"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: alias MolagBal, speaker below stage 51"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither flag set; unsure on whether you fight him is fair"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:137126",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the King alias ref in the Mad King's Bedroom, location Memory, for The Mad King"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO below stage 11 in a memory quest"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: The Mad King, alias King, first objective 'Madness sets with the moons'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:137E63",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Emperor alias ref in Mackamentain, location Memory, for Knight of Hounds"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO below stage 21"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Knight of Hounds alias Emperor, opening objective 'Blood is thicker than water'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:23611E",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: people extract places him in the Waterfront cell with Belharza's Dragonrider Knight and Alessian Knight; tie to Knight of Hounds is only via his speaker lines, flagged unsure"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: one shared meditate-at-linked-ref package with an undecoded function-362 condition; unsure is right"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: speaker below stage 41 in Knight of Hounds; fills no alias"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: quest-giver extract lists him under Knight of Hounds' other speakers, below stage 41"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:137E65",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Enola alias ref in Mackamentain, location Memory, for Knight of Hounds"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: speaker below stage 100, alias Enola"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Knight of Hounds alias Enola"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:140211",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Simon alias ref in Pell's Gate, location Memory, for Johan the Fool"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO below stage 21"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Johan the Fool alias Simon, opening objective 'The dead dream beneath the soil'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:140212",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Tlass alias ref in Pell's Gate, location Memory, for Johan the Fool"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: speaker below stage 31"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Johan the Fool alias Tlass"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:05ADEF",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Marukh alias ref in the Cliffs of Colovia, location Memory, for Adabal"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: one shared meditate-at-linked-ref package with an undecoded function-362 condition"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO below stage 11"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Adabal alias Marukh; Renald Invisibility from the quest fragment"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: protected flag set, not essential"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:05ADFD",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Pepe alias ref in the Cliffs of Colovia, location Memory, for Adabal"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: speaker below stage 41; the record has no name of its own, flagged unsure"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Adabal alias Pepe"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:06A230",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: quest-giver extract puts the Pepe alias ref in Fort Cedrian, location Memory, for Remains of the Miracle"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO below stage 11; no name on the record, flagged unsure"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Remains of the Miracle alias Pepe, objective 'A priest laughs in the broken Tower'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: essential flag set"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:0708BE",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: Alessia alias ref in a cell of world White Wasteland; Temptation of Marukh is a memory quest"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: one shared stay-at-linked-ref package with an undecoded function-362 condition"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: giver INFO below stage 41"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Temptation of Marukh alias Alessia, objective 'Where does the man-ape sleep?'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither essential nor protected"
+    }
+   }
+  },
+  {
+   "id": "Vigilant.esm:0708BB",
+   "verdicts": {
+    "sells": {
+     "verdict": "agree",
+     "note": "sells: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries: no vendor, trainer, follower or marriage flags on the record; no job factions"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class and outfit are only record ids in the extracts; no skills or weapon resolve, so blank with a reason is right"
+    },
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "firstMeet: MolagBal alias ref in the same White Wasteland cell as Alessia"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "day: no AI packages on the record, so they stay where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "changes: no package conditions or quest stages in the extracts move them; only the memory cell holds them"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "role: speaker below stage 51; no name on the record, flagged unsure"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quests: Temptation of Marukh alias MolagBal"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "canDie: neither essential nor protected"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Vigilant.esm:51EAA8",
+   "name": "Mordog the Man-Bull",
+   "race": "Minotaur",
+   "sex": "male",
+   "firstMeet": "In the Hidden Minotaur Village, in Stuhn Ravine.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Hidden Minotaur Village, Stuhn Ravine",
+     "doing": "stays near where he stands; he has no schedule of his own"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Legacy of Belharza",
+     "how": "gives it: the first step is to talk to him, then meet the Chief of Minotaurs"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His placed spot is in the Hidden Minotaur Village cell but the extract tags it Stuhn Ravine; how a player finds the hidden village isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:51EAA8",
+    "placed ref Vigilant.esm:51EAA9 in Hidden Minotaur Village (Vigilant.esm:51D6B2), location Stuhn Ravine",
+    "no AI packages",
+    "zzzCHMntrVillageFaction Vigilant.esm:51EA98",
+    "zzzCHMntrFaction Vigilant.esm:510B0B",
+    "class Skyrim.esm:01CE16",
+    "zzzAoMSubQ03 Vigilant.esm:51EAC1 alias Mntr; giver INFO Vigilant.esm:51EAC5 below stage 5"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:51D895",
+   "name": "Horbahha the Chief",
+   "race": "Minotaur",
+   "sex": "male",
+   "firstMeet": "Seated in the Hidden Minotaur Village; Mordog sends you to him in Legacy of Belharza.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Hidden Minotaur Village",
+     "doing": "sitting in his seat; his one package keeps him seated and ignoring combat, with no hours or conditions"
+    }
+   ],
+   "changes": [],
+   "role": "quest figure: chief of the minotaurs",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Legacy of Belharza",
+     "how": "a step in it: \"Meet the Chief of Minotaurs\"; he has dialogue in it below stage 21"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:51D895",
+    "placed ref Vigilant.esm:51D896 in Hidden Minotaur Village (Vigilant.esm:51D6B2)",
+    "zzzAomSitAtLinkedRefIngoreCombat Vigilant.esm:4D8332",
+    "zzzCHMntrVillageFaction",
+    "zzzCHMntrFaction",
+    "class Skyrim.esm:017008",
+    "zzzAoMSubQ03 Vigilant.esm:51EAC1 alias MntrChief"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:4B2C91",
+   "name": "Steward",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Windhelm during Empty Cells, once the quest's courier sends you to him; after the quest he is in the Palace of the Kings, Windhelm.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Palace of the Kings, Windhelm (after Empty Cells)",
+     "doing": "going about the palace"
+    }
+   ],
+   "changes": [
+    "While Empty Cells is running he waits where he has been put, with no hours.",
+    "Once Empty Cells is completed he spends all day in the Palace of the Kings, Windhelm.",
+    "Before the quest starts, his only placed copy is in a storage cell no player reaches."
+   ],
+   "role": "steward (Windhelm); quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Empty Cells",
+     "how": "gives it: you talk to him, ask him about the Maiden Statue, and report back to him after the vampires under Windhelm are dealt with; he pays the gold reward"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "name",
+     "why": "The record's own name is just \"Steward\"."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "firstMeet",
+     "why": "His placed copy is in a holding cell and his wait package during Empty Cells names no place, so the exact spot in Windhelm isn't in the records; who the courier is isn't either. Windhelm comes from the quest's objectives and his Windhelm town faction."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:4B2C91",
+    "placed ref Vigilant.esm:4B2C92 in Actor Room (Vigilant.esm:001845)",
+    "zzzBMMq01StewardWait Vigilant.esm:4B2C94 (GetQuestRunning zzzBMMq01)",
+    "zzzBMM01StweardSandbox Vigilant.esm:4EDA17 (GetQuestCompleted zzzBMMq01; in cell Palace of the Kings Skyrim.esm:01677C)",
+    "DefaultSandboxCurrentLocation1024 Skyrim.esm:0BFB6B",
+    "JobStewardFaction rank 255",
+    "TownWindhelmFaction",
+    "CrimeFactionEastmarch",
+    "zzzBMGenAct2NPCFaction",
+    "class Skyrim.esm:01326B",
+    "zzzBMMq01 Vigilant.esm:038524 alias Steward; giver INFO Vigilant.esm:038AC1",
+    "Empty Cells Courier alias has no person in the extracts"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:032894",
+   "name": "Paulo",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "At the Bloody Well, during Remnants.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Bloody Well",
+     "doing": "stays near where he stands; he has no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Defeated in Remnants."
+   ],
+   "role": "enemy; quest target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Remnants",
+     "how": "its target: \"Defeat Paulo\"; he also has dialogue early in it (below stage 21)"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The Bloody Well isn't in the places extract, so I can't say where it sits; Empty Cells points at vampires under Windhelm, but nothing ties this cell to the city."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:032894",
+    "placed ref Vigilant.esm:032896 in Bloody Well (Vigilant.esm:031BE5)",
+    "no AI packages",
+    "zzzBMFactionCorruptVigilant Vigilant.esm:032895",
+    "class Skyrim.esm:10BFF0",
+    "zzzBMMq02 Vigilant.esm:038525 alias Vamp02; INFO Vigilant.esm:039B3B"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:03167C",
+   "name": "Gwaji gro-Agnam",
+   "race": "Orsimer",
+   "sex": "male",
+   "firstMeet": "In a hidden passage in the Old Sewers, the first foe of Remnants.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "a hidden passage in the Old Sewers",
+     "doing": "stays near where he stands; he has no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Defeated in Remnants."
+   ],
+   "role": "enemy; quest target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Remnants",
+     "how": "its target: the first objective is \"Defeat Gwaji gro-Agnam\""
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The Old Sewers aren't in the places extract, so which city they lie under isn't confirmed (Empty Cells, which comes before, sends you after vampires under Windhelm)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:03167C",
+    "placed ref Vigilant.esm:03167D in Hidden Passage (Vigilant.esm:0302D8), location Old Sewers",
+    "no AI packages",
+    "zzzBMFactionCorruptVigilant Vigilant.esm:032895",
+    "class Skyrim.esm:10BFF0",
+    "zzzBMMq02 Vigilant.esm:038525 alias Vamp01"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:033043",
+   "name": "Thingol",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Sitting in the Asylum, during Remnants.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Asylum",
+     "doing": "sitting; his one package keeps him seated and ignoring combat"
+    }
+   ],
+   "changes": [
+    "In Remnants you are sent to talk to him."
+   ],
+   "role": "quest figure",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Remnants",
+     "how": "a step in it: \"Talk to Thingol\"; he has dialogue below stage 41"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "His record isn't flagged essential, but the alias he fills in Remnants is named as the essential one, so he may be protected while the quest runs."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "The next objective, \"Give Stendarr's Mercy\", names a separate quest role that no person fills in the records, so whether you give it to him, and what it does to him, isn't settled."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:033043",
+    "placed ref Vigilant.esm:033045 in Asylum (Vigilant.esm:03289E)",
+    "zzzBMThigolSitIgnoreCombat Vigilant.esm:03ADFF",
+    "zzzBMFactionCorruptVigilant Vigilant.esm:032895",
+    "class Skyrim.esm:10BFEF",
+    "zzzBMMq02 Vigilant.esm:038525 alias Vamp04ESS",
+    "Remnants objective 70 names alias Vamp04, unfilled in the extracts"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:035D7D",
+   "name": "Lamae Beolfag",
+   "race": "Nede",
+   "sex": "female",
+   "firstMeet": "Asleep in the Matron's Chamber.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Matron's Chamber",
+     "doing": "sleeping, near where she lies"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Blood Matron",
+     "how": "gives it (her dialogue below stage 31); the quest is about freeing her cursed self, Lamae Bal, from Molag Bal"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The Matron's Chamber isn't in the places extract, so where it lies isn't confirmed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:035D7D",
+    "placed ref Vigilant.esm:0368D6 in Matron's Chamber (Vigilant.esm:034E12)",
+    "zzzBMq03LamaeSleeping Vigilant.esm:13E8EB (near editor location, radius 500)",
+    "zzzAoMFactionVigilantOfStendarr Vigilant.esm:000D63",
+    "class Skyrim.esm:01E7D0",
+    "zzzBMMq03 Vigilant.esm:038526 alias LamaeHum; giver INFO Vigilant.esm:03BC15"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:037468",
+   "name": "Lamae Bal",
+   "race": "Nede",
+   "sex": "female",
+   "firstMeet": "Inside Lamae's Dream, during The Blood Matron.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Lamae's Dream",
+     "doing": "stays near where she stands; she has no schedule of her own"
+    }
+   ],
+   "changes": [
+    "You defeat her, then free her from the curse of Molag Bal, in The Blood Matron."
+   ],
+   "role": "enemy; quest target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Blood Matron",
+     "how": "its target: \"Defeat Lamae Bal\", then \"Free Lamae Bal from the curse of Molag Bal\"; rewards Lamae's Kin and Fire Storm (Weak)"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "How you enter Lamae's Dream isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:037468",
+    "placed ref Vigilant.esm:03746B in cell Vigilant.esm:03545D, world Lamae's Dream",
+    "no AI packages",
+    "class Skyrim.esm:01E7D0",
+    "zzzBMMq03 Vigilant.esm:038526 alias LamaeBal"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:0368E0",
+   "name": "Molag Bal",
+   "race": "Argonian",
+   "sex": "male",
+   "firstMeet": "In the Matron's Chamber, during The Blood Matron.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Matron's Chamber",
+     "doing": "stays near where he stands; he has no schedule of his own"
+    }
+   ],
+   "changes": [],
+   "role": "quest figure",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Blood Matron",
+     "how": "a step in it: he speaks in it (below stage 51)"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "The record gives Argonian; this is a guise Molag Bal wears, not a plain Argonian."
+    },
+    {
+     "field": "canDie",
+     "why": "Not flagged essential or protected, but whether you can or must fight him isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:0368E0",
+    "placed ref Vigilant.esm:0368EA in Matron's Chamber (Vigilant.esm:034E12)",
+    "no AI packages",
+    "class Skyrim.esm:017008",
+    "zzzBMMq03 Vigilant.esm:038526 alias MolagBal"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:137126",
+   "name": "Dro'Zel",
+   "race": "Khajiit",
+   "sex": "male",
+   "firstMeet": "Only inside a memory: the Mad King's Bedroom, during The Mad King.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Mad King's Bedroom (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Mad King",
+     "how": "gives it: his dialogue opens it (\"Madness sets with the moons\")"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "changes",
+     "why": "Malatar Mansion is the place tied to The Mad King, and a separate Mad King Dro'Zel is its boss; whether the memory is entered there isn't stated."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:137126",
+    "placed ref Vigilant.esm:137127 in Mad King's Bedroom (Vigilant.esm:136F82), location Memory",
+    "no AI packages",
+    "zzzCHCorruptedFaction Vigilant.esm:0AE98B",
+    "zzzCHMemoryQuest02 Vigilant.esm:13712B alias King; INFO Vigilant.esm:137130",
+    "places: Malatar Mansion lists The Mad King"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:137E63",
+   "name": "Emperor Belharza",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "Only inside a memory: Mackamentain, during Knight of Hounds.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Mackamentain (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Knight of Hounds",
+     "how": "gives it: his dialogue opens it (\"Blood is thicker than water\")"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:137E63",
+    "placed ref Vigilant.esm:137E64 in Mackamentain (Vigilant.esm:137C97), location Memory",
+    "no AI packages",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest03 Vigilant.esm:13965A alias Emperor; INFO Vigilant.esm:139667"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:23611E",
+   "name": "Ritho",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "Only inside a memory: the Waterfront, during Knight of Hounds.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Waterfront (a memory)",
+     "doing": "meditating at his spot; the package has a single condition the extract can't name"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Knight of Hounds",
+     "how": "a step in it: he speaks in it (below stage 41); he fills no alias"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "That his Waterfront spot is part of the Knight of Hounds memory is inferred from his dialogue in that quest; the extract doesn't tie the cell to it."
+    },
+    {
+     "field": "day",
+     "why": "His one package has a condition (function 362) the extract doesn't decode."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:23611E",
+    "placed ref in Waterfront",
+    "zzzCHMeditatingAtLinkedRefIgnore Vigilant.esm:13318F (one condition, function 362 == 1)",
+    "class Skyrim.esm:01CE15",
+    "zzzCHMemoryQuest03 Vigilant.esm:13965A speaker below stage 41"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:137E65",
+   "name": "Enola",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Only inside a memory: Mackamentain, during Knight of Hounds.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Mackamentain (a memory)",
+     "doing": "stays where the memory puts her; no schedule of her own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Knight of Hounds",
+     "how": "a step in it: she speaks late in it (below stage 100)"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:137E65",
+    "placed ref Vigilant.esm:137E66 in Mackamentain (Vigilant.esm:137C97), location Memory",
+    "no AI packages",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest03 Vigilant.esm:13965A alias Enola"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:140211",
+   "name": "Simon",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "Only inside a memory: Pell's Gate, during Johan the Fool.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Pell's Gate (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Johan the Fool",
+     "how": "gives it: his dialogue opens it (\"The dead dream beneath the soil\")"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:140211",
+    "placed ref Vigilant.esm:140213 in Pell's Gate (Vigilant.esm:13F449), location Memory",
+    "no AI packages",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest04 Vigilant.esm:140225 alias Simon; INFO Vigilant.esm:140233",
+    "places: Chapel of Arkay Cemetery lists Johan the Fool"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:140212",
+   "name": "Tlass",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "Only inside a memory: Pell's Gate, during Johan the Fool.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Pell's Gate (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Johan the Fool",
+     "how": "a step in it: he speaks in it (below stage 31)"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:140212",
+    "placed ref Vigilant.esm:140214 in Pell's Gate (Vigilant.esm:13F449), location Memory",
+    "no AI packages",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest04 Vigilant.esm:140225 alias Tlass"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:05ADEF",
+   "name": "Marukh",
+   "race": "Imga",
+   "sex": "male",
+   "firstMeet": "Only inside a memory: the Cliffs of Colovia, during Adabal.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Cliffs of Colovia (a memory)",
+     "doing": "meditating at his spot; the package has a single condition the extract can't name"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Adabal",
+     "how": "gives it: his dialogue opens it (\"Dance on the dead under the moons\"); rewards Renald Invisibility"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:05ADEF",
+    "placed ref Vigilant.esm:05ADF0 in Cliffs of Colovia (Vigilant.esm:05426A), location Memory",
+    "zzzCHMeditatingAtLinkedRef Vigilant.esm:0B37D4 (one condition, function 362 == 1)",
+    "protected flag",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest05 Vigilant.esm:05AE03 alias Marukh; INFO Vigilant.esm:05AE0A"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:05ADFD",
+   "name": "Inquisitor Pepe",
+   "race": "",
+   "sex": "",
+   "firstMeet": "Only inside a memory: the Cliffs of Colovia, during Adabal.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Cliffs of Colovia (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Adabal",
+     "how": "a step in it: he speaks in it (below stage 41)"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "name",
+     "why": "The record has no name of its own; it fills the quest's \"Pepe\" alias and two other records are named Inquisitor Pepe, so the in-game name may differ or be blank."
+    },
+    {
+     "field": "race",
+     "why": "This record isn't in the people extract, so race and sex aren't given."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:05ADFD",
+    "placed ref Vigilant.esm:05ADFF in Cliffs of Colovia (Vigilant.esm:05426A), location Memory",
+    "no AI packages",
+    "zzzCHAlessianOrderFaction Vigilant.esm:081E47",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest05 Vigilant.esm:05AE03 alias Pepe"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:06A230",
+   "name": "Inquisitor Pepe",
+   "race": "",
+   "sex": "",
+   "firstMeet": "Only inside a memory: Fort Cedrian, during Remains of the Miracle.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Fort Cedrian (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Remains of the Miracle",
+     "how": "gives it: his dialogue opens it (\"A priest laughs in the broken Tower\")"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "name",
+     "why": "The record has no name of its own; it fills the quest's \"Pepe\" alias and two other records are named Inquisitor Pepe, so the in-game name may differ or be blank."
+    },
+    {
+     "field": "race",
+     "why": "This record isn't in the people extract, so race and sex aren't given."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:06A230",
+    "placed ref Vigilant.esm:06A231 in Fort Cedrian (Vigilant.esm:06A202), location Memory",
+    "no AI packages",
+    "class Skyrim.esm:0A93B3",
+    "zzzCHMemoryQuest06 Vigilant.esm:06A23B alias Pepe; INFO Vigilant.esm:06B54F"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:0708BE",
+   "name": "Alessia",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Only inside a memory: the White Wasteland, during Temptation of Marukh.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the White Wasteland (a memory)",
+     "doing": "stays at her spot; the package has a single condition the extract can't name"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Temptation of Marukh",
+     "how": "gives it: her dialogue opens it (below stage 41; \"Where does the man-ape sleep?\")"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:0708BE",
+    "placed ref Vigilant.esm:0708BF in cell Vigilant.esm:06C8AA, world White Wasteland",
+    "zzzCHcrStayAtLinkedRefNoDisturb Vigilant.esm:0BBD54 (one condition, function 362 == 1)",
+    "class Skyrim.esm:017008",
+    "zzzCHMemoryQuest07 Vigilant.esm:06F53C alias Alessia; INFO Vigilant.esm:0731F6"
+   ]
+  },
+  {
+   "id": "Vigilant.esm:0708BB",
+   "name": "Molag Bal",
+   "race": "",
+   "sex": "",
+   "firstMeet": "Only inside a memory: the White Wasteland, during Temptation of Marukh.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the White Wasteland (a memory)",
+     "doing": "stays where the memory puts him; no schedule of his own"
+    }
+   ],
+   "changes": [
+    "Found only inside the memory; the extracts don't say whether you can return to it once it ends."
+   ],
+   "role": "quest figure (inside a memory)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Temptation of Marukh",
+     "how": "a step in it: he speaks in it (below stage 51)"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The memories are reached through the Vigilant of Stendarr story; how and where you enter this one isn't in the extracts."
+    },
+    {
+     "field": "name",
+     "why": "The record has no name of its own; it fills the quest's \"MolagBal\" alias and wears the same outfit as the Molag Bal in The Blood Matron."
+    },
+    {
+     "field": "race",
+     "why": "This record isn't in the people extract, so race and sex aren't given."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Vigilant.esm:0708BB",
+    "placed ref Vigilant.esm:0708BC in cell Vigilant.esm:06C8AA, world White Wasteland",
+    "no AI packages",
+    "class Skyrim.esm:013178",
+    "outfit Vigilant.esm:0368E9 (same as the Molag Bal in The Blood Matron)",
+    "zzzCHMemoryQuest07 Vigilant.esm:06F53C alias MolagBal"
+   ]
+  }
+ ]
+}
