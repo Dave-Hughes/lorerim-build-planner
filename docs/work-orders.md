@@ -5054,7 +5054,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 - [ ] Typecheck, lint, tests, build and e2e; screenshots at 1440 and 390 of the home, the palette loading, a back button, the empty Playthrough tab, and Lydia's page.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1h fixed the camera's own sign error, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1i fixed the bearing itself, needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5139,6 +5139,12 @@ Progress -- `player.moveto` worked, `wo158-toggle-hud` confirmed working in the 
 - [x] **Fixed: subtract, not add.** `cx, cy = entrance - approach * DISTANCE` (not `entrance + approach * DISTANCE`) puts the camera back on the approach side -- at or past the marker, the way into the place, never through it. The yaw (computed fresh from wherever the camera actually lands) now points at the entrance from the correct side without any separate fix needed.
 - [x] **Test rewritten to check the right geometry, not the wrong one it had been passing.** The marker-south/entrance-north worked example now asserts the camera lands south of the entrance (the approach side) facing north, not north of it facing south.
 - **Checked.** Rebuilt `wo158-place-broken-oar-grotto.txt`: the `setpos` numbers moved close to the marker's own position (previously past the entrance, now short of it), the `setangle z` flipped by exactly 180 degrees, as the sign fix predicts. Not independently confirmed live this session (Dave's next test will). `door_camera()` (the Winking Skeever's own, no marker to check against) is untouched -- it was never shown wrong, and its own convention is a separate, still-unconfirmed question logged in the module docstring, not assumed fixed by this. 370 gamedata tests pass.
+
+### Part 1i. The seventh live test: the position was right, the facing was still wrong (Dave, 27 Oct)
+Dave confirmed, asked directly: "standing right in front of it. Almost too close to it to be honest but its fine." Part 1h's own position fix held -- and he was still facing away. With the position confirmed correct, that isolates the bug to the bearing itself, not the geometry around it: `setangle z` set to a plain compass bearing (`atan2(dx, dy)`, 0 degrees north) faces *away* from the target on this install, not toward it.
+- [x] **Fixed in `yaw_to` itself, the one place every camera function reads from.** Adds 180 degrees to the plain bearing. Why `setangle z` works this way on this install isn't independently confirmed (this reader's own guess: its own "0" may be the engine's south rather than a compass's north, or the axis mapping runs the other way) -- the fix is written as a flat `+ 180` specifically so it's a one-line undo if a shot is ever wrong the other way, not a rewrite.
+- [x] **`door_camera()` gets the fix for free** -- it reads the same `yaw_to`, not a copy of the formula, so the Winking Skeever's own still-unconfirmed shot is covered by the same correction without a separate change.
+- **Checks.** `test_yaw_to_matches_skyrims_own_compass` renamed and rewritten to the confirmed values (target due north now needs `setangle z 180`, not `0`); the entrance-camera worked example's own expected yaw updated to match. 370 gamedata tests pass. `DISTANCE` (700) read as "almost too close" live -- not changed yet, since Dave said it's fine for this test; worth a small bump before the real run at scale.
 
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.

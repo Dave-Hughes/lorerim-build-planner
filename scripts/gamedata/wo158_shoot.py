@@ -48,10 +48,10 @@ Falls Barrow: four; Fort Hraggstad: three), the one nearest the map marker is ta
 to; the others are side or interior exits, not where "a player first sees them." Riverwood has no single entrance
 door at all -- a village, framed from above its middle instead, per the order's own words.
 
-**The bearing.** Yaw (`setangle z`) is computed as `atan2(dx, dy)` in degrees over the horizontal vector from the
-camera to its subject, on Skyrim's own convention (0 degrees faces north, +Y; 90 faces east, +X) -- this
-convention is well documented for the engine but not independently checked against a live camera this session;
-if every shot faces backward, negate the yaw (or add 180) in `yaw_to` below, in one place.
+**The bearing.** Confirmed live, 27 Oct (Part 1i), after it wasn't: `setangle z` set to a plain compass bearing
+(`atan2(dx, dy)`, 0 degrees north) faced *away* from the target on this install, with the camera's own position
+already confirmed correct by then. `yaw_to` adds 180 degrees to the plain bearing for exactly this reason -- see
+its own docstring for what's confirmed and what's still a guess about why.
 
 **Height, distance and field of view: the three numbers Bob asked for, here at the top, tune after Dave's first
 look at Broken Oar Grotto.** `HEIGHT`/`DISTANCE`/`TILT_DOWN` for the five places; `PEOPLE_DISTANCE`/`PEOPLE_HEIGHT`
@@ -143,9 +143,17 @@ PHOTO_ROOM = "QASmoke"  # Skyrim.esm's own empty testing cell: flat, evenly lit,
 
 
 def yaw_to(from_xy, to_xy):
-    """Compass bearing (degrees, Skyrim's own convention: 0 north/+Y, 90 east/+X) from one point to another."""
+    """The `player.setangle z` value that faces the player from one point toward another.
+
+    Found live, 27 Oct (Part 1i): with Part 1h's own position fix confirmed landing Dave in the right spot,
+    he was still facing away -- so the bearing itself, not the position, is what's backward. A plain compass
+    bearing (`atan2(dx, dy)`, 0 degrees north) is mathematically the direction *to* the target; empirically,
+    on this install, `setangle z` set to that value faces *away* from it. Rather than guess why (this reader's
+    own best guess: `setangle z`'s "0" may be the engine's south, not a compass's north, or the axis mapping
+    may run the other way -- neither independently confirmed), this adds 180 degrees to the plain bearing and
+    says so plainly, so if it's ever wrong the other way, removing the `+ 180` is the one-line undo."""
     dx, dy = to_xy[0] - from_xy[0], to_xy[1] - from_xy[1]
-    return math.degrees(math.atan2(dx, dy)) % 360
+    return (math.degrees(math.atan2(dx, dy)) + 180) % 360
 
 
 def entrance_camera(marker, entrance):

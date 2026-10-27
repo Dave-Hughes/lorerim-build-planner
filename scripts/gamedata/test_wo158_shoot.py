@@ -107,26 +107,28 @@ class ShapeTest(unittest.TestCase):
         for slug, lines in all_place_lines():
             self.assertTrue(any(l.startswith("fw ") for l in lines), slug)
 
-    def test_yaw_to_matches_skyrims_own_compass(self):
-        # 0 north (+Y), 90 east (+X), 180 south (-Y), 270 west (-X).
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, 10)), 0.0)
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (10, 0)), 90.0)
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, -10)), 180.0)
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (-10, 0)), 270.0)
+    def test_yaw_to_faces_toward_the_target_on_this_install(self):
+        # Found live, 27 Oct (Part 1i): with the position confirmed correct (Dave standing right in front of
+        # Broken Oar Grotto), he was still facing away -- so `setangle z` set to a plain compass bearing
+        # (0 north) faces away from the target on this install, not toward it. yaw_to adds 180 to correct for
+        # that; these values are what `setangle z` actually needs to produce each facing, not the plain bearing.
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, 10)), 180.0)   # target due north -> needs 180
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (10, 0)), 270.0)   # target due east -> needs 270
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, -10)), 0.0)    # target due south -> needs 0
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (-10, 0)), 90.0)   # target due west -> needs 90
 
     def test_entrance_camera_sits_back_from_the_entrance_on_the_markers_own_side(self):
-        # Found live, 27 Oct (Part 1h): the marker is due south of the entrance (a player walks north to reach
-        # it); the camera must land on that same southern, approach side -- at or past the marker, never past
-        # the entrance itself -- raised, facing north back at the entrance. The first version of this test
-        # asserted the opposite (the camera further north, past the entrance, facing south) and passed, because
-        # it was checking the same backward formula that put Dave on the ground facing away from the real place.
+        # Found live, 27 Oct (Part 1h, then 1i): the marker is due south of the entrance (a player walks north
+        # to reach it); the camera must land on that same southern, approach side -- at or past the marker,
+        # never past the entrance itself -- raised, and set to whatever `yaw_to` says actually faces the
+        # entrance on this install (confirmed live to be 180 for a target due north, not the plain bearing 0).
         marker = (0.0, 0.0, 0.0)
         entrance = (0.0, 100.0, 0.0)
         cx, cy, cz, yaw = wo.entrance_camera(marker, entrance)
         self.assertAlmostEqual(cx, 0.0, places=3)
         self.assertLess(cy, 100.0)  # south of the entrance, i.e. on the approach side, not past it
         self.assertAlmostEqual(cz, wo.HEIGHT, places=3)
-        self.assertAlmostEqual(yaw, 0.0)  # facing north, at the entrance
+        self.assertAlmostEqual(yaw, 180.0)  # what setangle z needs to actually face the entrance, confirmed live
 
     def test_entrance_camera_never_divides_by_zero_when_marker_and_entrance_coincide(self):
         p = (10.0, 20.0, 30.0)
