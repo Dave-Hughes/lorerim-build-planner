@@ -1,0 +1,1650 @@
+[
+ {
+  "id": "Skyrim.esm:01A670",
+  "name": "Mikael",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In the Bannered Mare, Whiterun, where he's the bard.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "playing and going about the inn"
+   },
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "outside, close by Jorrvaskr, Whiterun",
+    "doing": "taking a break, when it isn't raining (the package has further checks the extracts don't decode); otherwise he stays in the inn"
+   },
+   {
+    "from": "4 pm",
+    "for": "8 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "playing and going about the inn"
+   }
+  ],
+  "changes": [],
+  "role": "bard at the Bannered Mare; the inn's stand-in innkeeper",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "its target: Carlotta Valentia asks you to have a word with him about her"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "He carries the inn's vendor set-up (open all hours) and innkeeper and merchant factions, and the records cast him as the Bannered Mare's backup innkeeper, so he may only trade if he takes over the inn; the vendor lists don't resolve to items in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "His noon break is gated by a no-rain check and a run of other conditions the extracts leave undecoded, so how often he actually steps out isn't certain."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five more quests that have no name in the extracts (one of them from a follower-dialogue mod)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A670",
+   "AIOWRMikaelSleepEditorLocNOLOCKING24x8 AI Overhaul.esp:13D2E4",
+   "AIOWRMikaelTakeABreak AI Overhaul.esp:005A76 (marker Skyrim.esm:02BE1B; IsRaining == 0)",
+   "WhiterunMikaelBannererdMarePackage Skyrim.esm:02BE18",
+   "JobBardFaction, BardSingerFaction, JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction",
+   "vendor: faction 0x0914F0, chest 0x09CAFB, 0-24",
+   "alias InnkeeperBackup in Skyrim.esm:0270A4",
+   "Favor013Whiterun Favor Quests Seperated.esp:000869 alias target",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412E",
+  "name": "Scouts-Many-Marshes",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "Working the Windhelm docks by day; he lives in the Argonian Assemblage on the docks.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the Argonian Assemblage, Windhelm docks",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the Windhelm docks",
+    "doing": "working the docks"
+   },
+   {
+    "from": "8 pm",
+    "for": "3.5 hours",
+    "where": "New Gnisis Cornerclub, Windhelm",
+    "doing": "drinking, while the Empire holds Windhelm"
+   },
+   {
+    "from": "9 pm",
+    "for": "6 hours",
+    "where": "Windhelm",
+    "doing": "while the Stormcloaks hold Windhelm: 9 pm slips through the city to a spot by the Palace of the Kings, 10 pm to 1 am in New Gnisis Cornerclub, 1 am sneaks back home"
+   },
+   {
+    "from": "any other hour",
+    "for": "",
+    "where": "the Argonian Assemblage, Windhelm docks",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Which side holds Windhelm in the civil war changes his evenings: under the Empire he drinks openly at the Cornerclub from 8 pm; under the Stormcloaks he sneaks to it later and slips home at 1 am."
+  ],
+  "role": "trainer (Light Armor); quest giver; can marry",
+  "sells": "",
+  "trains": "Light Armor, up to 75",
+  "joins": "",
+  "marries": "yes; he is a marriage candidate (the dialogue's conditions aren't in the extracts)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "gives it: asks you to have a word with Torbjorn Shatter-Shield"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The dock-work package carries no place in the records; 'the docks' comes from its name. The sneak-to-the-palace package also has checks the extracts don't decode."
+   },
+   {
+    "field": "quests",
+    "why": "He is named in The Jagged Crown, but the records don't show what he does in it; he also fills aliases in five quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01412E",
+   "AIOWHArgoniansCornerClub AI Overhaul.esp:4A4213 (quest var == CWImperial)",
+   "AIOWHScoutsSneakCity AI Overhaul.esp:4A421B",
+   "AIOWHScoutsManyMarshesCornerClub AI Overhaul.esp:4A4214",
+   "AIOWHScoutsSneakOut AI Overhaul.esp:4A421C (quest var == CWSons)",
+   "ScoutsManyMarshesEatsBreakfast6x1 Skyrim.esm:035E65",
+   "ScoutsManyMarshesWorksAtDock8x12 Skyrim.esm:035E6F",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "trainer LightArmor Journeyman cap 75",
+   "PotentialMarriageFaction",
+   "Favor013Windhelm Favor Quests Seperated.esp:000878 alias QuestGiver",
+   "CW02B Skyrim.esm:02610B alias ScoutsManyMarshes",
+   "class Skyrim.esm:0B8340"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01413F",
+  "name": "Torbjorn Shatter-Shield",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the House of Clan Shatter-Shield in Windhelm in the morning; around the city by day.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "2 hours",
+    "where": "the House of Clan Shatter-Shield, Windhelm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "11 am",
+    "for": "9 hours",
+    "where": "around Windhelm",
+    "doing": "wandering the city, subject to a weather check the extracts don't name and other undecoded checks; otherwise at home"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Candlehearth Hall, Windhelm",
+    "doing": "at the bar"
+   },
+   {
+    "from": "midnight",
+    "for": "9 hours",
+    "where": "the House of Clan Shatter-Shield, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "trainer (Two-Handed); quest giver",
+  "sells": "",
+  "trains": "Two-Handed, up to 100",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rare Gifts",
+    "how": "gives it"
+   },
+   {
+    "quest": "Return Aegisbane",
+    "how": "its end: you get the Shatter-Shield family warhammer Aegisbane back from Alain Dufont and speak to him about it (or keep it)"
+   },
+   {
+    "quest": "A Few Words with You",
+    "how": "its target: Scouts-Many-Marshes asks you to have a word with him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "Return Aegisbane has no giver in the records, so how it starts isn't shown; he also fills aliases in three quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01413F",
+   "WindhelmTorbjornBreakfast9x2 Skyrim.esm:0353D2",
+   "AIOWHTorjornRandom11x9 AI Overhaul.esp:0029C2",
+   "WindhelmTorbjornCandlehearthBar20x4 Skyrim.esm:03550F",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "trainer TwoHanded Expert cap 100",
+   "Favor110Windhelm Favor Quests Seperated.esp:000D8F",
+   "ReturnAegisbaneQuest ReturnAegisbane.esp:000800",
+   "Favor013Windhelm alias target",
+   "class Skyrim.esm:042DC5"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C184",
+  "name": "Haran",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In the Frozen Hearth, Winterhold.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "7 hours",
+    "where": "the Frozen Hearth's cellar, Winterhold",
+    "doing": "sleeping"
+   },
+   {
+    "from": "9 am",
+    "for": "1.5 hours",
+    "where": "outside in Winterhold",
+    "doing": "out in the town, subject to a weather check the extracts don't name; otherwise in the inn"
+   },
+   {
+    "from": "10:30 am",
+    "for": "1.5 hours",
+    "where": "the Frozen Hearth, Winterhold",
+    "doing": "going about the inn"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "the Frozen Hearth, Winterhold",
+    "doing": "playing with Eirid"
+   },
+   {
+    "from": "2 pm",
+    "for": "12 hours",
+    "where": "the Frozen Hearth, Winterhold",
+    "doing": "going about the inn"
+   }
+  ],
+  "changes": [
+   "While Hard Answers is running she doesn't use her cellar bed and stays about the inn instead."
+  ],
+  "role": "works the Frozen Hearth; trades; quest giver",
+  "sells": "the Frozen Hearth's trade goods, at any hour",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "gives it: asks you to have a word with Ranmir"
+   },
+   {
+    "quest": "Drowned Sorrows",
+    "how": "one of the people who can tell you about Isabelle Rolaine"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her vendor set-up (the same buying list the Bannered Mare's staff use, plus her own chest) doesn't resolve to items in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She is also named in Containment, but its records don't show what she does; and she fills aliases in four quests with no name in the extracts. Her part in Drowned Sorrows comes from her being listed among those who can raise it in talk."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C184",
+   "WinterholdHaranSleep2x7 Skyrim.esm:05031B (GetQuestRunning TG06 == 0)",
+   "AIOWinterholdHaranOutside AI Overhaul.esp:174F1E",
+   "AIOWinterholdHaranPlayWithErird AI Overhaul.esp:174F1F",
+   "WinterholdHaranSandboxInn Skyrim.esm:024B74",
+   "vendor: faction 0x0914F0, chest 0x09DA60, 0-24",
+   "ServicesWinterholdFrozenHearth",
+   "Favor013Winterhold Favor Quests Seperated.esp:000887",
+   "FreeformWinterholdC Skyrim.esm:064EA8 giver others",
+   "MG05 alias MG05HaranAlias",
+   "class Skyrim.esm:013256"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C186",
+  "name": "Ranmir",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Drinking at the Frozen Hearth, Winterhold, from noon to midnight.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "2 hours",
+    "where": "outside in Winterhold",
+    "doing": "wandering the town"
+   },
+   {
+    "from": "2 am",
+    "for": "1 hour",
+    "where": "where he's placed (Birna's Oddments, Winterhold)",
+    "doing": "idling"
+   },
+   {
+    "from": "3 am",
+    "for": "9 hours",
+    "where": "where he's placed (Birna's Oddments, Winterhold)",
+    "doing": "sleeping"
+   },
+   {
+    "from": "noon",
+    "for": "12 hours",
+    "where": "the Frozen Hearth, Winterhold",
+    "doing": "drinking"
+   }
+  ],
+  "changes": [
+   "His inn package has a quest check and other checks the extracts don't decode; when it fails he stays at his own place (and sleeps there until 1 pm)."
+  ],
+  "role": "a drunk; at the heart of Drowned Sorrows",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Drowned Sorrows",
+    "how": "it's about him: you look for his former lover Isabelle Rolaine and bring her letter back to him (Dagur at the Frozen Hearth starts it)"
+   },
+   {
+    "quest": "A Few Words with You",
+    "how": "its target: Haran asks you to have a word with him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His sleep and home packages point to where he's placed, which the records give as Birna's Oddments, not a house of his own; and the inn package's extra checks aren't decoded."
+   },
+   {
+    "field": "quests",
+    "why": "He is also named in Containment, but its records don't show what he does; he fills aliases in three quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C186",
+   "WinterholdRanmirSandboxOutdoors0x2 Skyrim.esm:05031C",
+   "WinterholdRanmirInn12x12 Skyrim.esm:02A321 (GetQuestRunning Skyrim.esm:0B2174 == 0, fn590, fn612)",
+   "WinterholdRanmirSleep3x10 Skyrim.esm:02A320",
+   "WinterholdRanmirSandboxHome Skyrim.esm:05031D",
+   "FavorJobsDrunksFaction",
+   "FreeformWinterholdC Skyrim.esm:064EA8",
+   "Favor013Winterhold alias target",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01365A",
+  "name": "Dengeir of Stuhn",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At Dengeir's House in Falkreath, or at Dead Man's Drink from noon to 4 pm.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Dengeir's House, Falkreath",
+    "doing": "sleeping (up for breakfast at 6 am)"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Dengeir's House, Falkreath",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "in and around his house, Falkreath",
+    "doing": "going about town"
+   },
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "Dead Man's Drink, Falkreath",
+    "doing": "at the inn"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "in and around his house, Falkreath",
+    "doing": "going about town"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Dengeir's House, Falkreath",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "in and around his house, Falkreath",
+    "doing": "going about town"
+   }
+  ],
+  "changes": [
+   "If he is exiled in the civil war, his top package sends him to Candlehearth Hall in Windhelm, where he stays."
+  ],
+  "role": "quest giver; a jarl in the records, not the ruling one at the start",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dark Ancestor",
+    "how": "gives it: you tell him when Vighar is dead"
+   },
+   {
+    "quest": "Some Light Theft",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "role",
+    "why": "He is in the jarl faction but not the ruling one; the war quests that would make him Falkreath's jarl have no name in the extracts, so when he takes the seat isn't shown."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five quests with no name in the extracts (war and dialogue quests)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01365A",
+   "CWExiledSonsSandboxCandlehearthHall Skyrim.esm:0A9273 (GetInFaction Skyrim.esm:036629)",
+   "FalkreathDengeirEat6x1 Skyrim.esm:086306",
+   "FalkreathDeadMansDrinkSandbox12x4 Skyrim.esm:0862FD",
+   "FalkreathDengeirEat18x1 Skyrim.esm:0862D3",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "FalkreathSandboxEditorLocation512 Skyrim.esm:0CF016",
+   "JobJarlFaction, GovRuling (rank -1), GovSons",
+   "FreeformFalkreathQuest03 Skyrim.esm:0B83C3",
+   "Favor018Falkreath Favor Quests Seperated.esp:000A0C",
+   "class Skyrim.esm:013176"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014130",
+  "name": "Stands-In-Shallows",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "Working the Windhelm docks by day; in the Argonian Assemblage in the evening.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "11 hours",
+    "where": "the Windhelm docks",
+    "doing": "working the docks"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Argonian Assemblage, Windhelm docks",
+    "doing": "taking skooma"
+   },
+   {
+    "from": "midnight",
+    "for": "9 hours",
+    "where": "the Argonian Assemblage, Windhelm docks",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "dockworker; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Some Light Theft",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The dock-work package carries no place in the records; 'the docks' comes from its name."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in four quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014130",
+   "StandsInShallowsDoesSkooma20x4 Skyrim.esm:035E71",
+   "StandsInShallowsWorksAtDock9x12 Skyrim.esm:035E64",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "Favor018Windhelm Favor Quests Seperated.esp:000A1D",
+   "class Skyrim.esm:013180"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C182",
+  "name": "Malur Seloth",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "In Stonecold Fortress, Winterhold, where he's the steward.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "11 hours",
+    "where": "Stonecold Fortress, upstairs, Winterhold",
+    "doing": "sleeping"
+   },
+   {
+    "from": "9 am",
+    "for": "1 hour",
+    "where": "Stonecold Fortress, Winterhold",
+    "doing": "going about the hall"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "outside in Winterhold",
+    "doing": "taking a break"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Stonecold Fortress, Winterhold",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "2 hours",
+    "where": "Stonecold Fortress, Winterhold",
+    "doing": "going about the hall"
+   },
+   {
+    "from": "3 pm",
+    "for": "2 hours",
+    "where": "outside in Winterhold",
+    "doing": "taking a break"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Stonecold Fortress, Winterhold",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "1.5 hours",
+    "where": "Stonecold Fortress, Winterhold",
+    "doing": "stoking the fire"
+   }
+  ],
+  "changes": [],
+  "role": "steward of Winterhold; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Some Light Theft",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Nothing is scheduled for 5 to 6 pm or 8:30 to 10 pm, and the fire-stoking package has no place in the records; he is most likely in the fortress then."
+   },
+   {
+    "field": "quests",
+    "why": "He is named in Containment, but its records don't show what he does; he fills aliases in two quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C182",
+   "WinterholdMalurSleep22x11 Skyrim.esm:0502D9",
+   "AIOWinterholdMalurStokeFire AI Overhaul.esp:258DC8",
+   "WinterholdMalurBreak15x2 Skyrim.esm:0502D5",
+   "WinterholdMalurDinner18x1 Skyrim.esm:0502D8",
+   "WinterholdMalurLunch12x1 Skyrim.esm:0502D6",
+   "WinterholdMalurBreak10x2 Skyrim.esm:0502D4",
+   "WinterholdMalurWanderJarlsLonghouse Skyrim.esm:024B70",
+   "JobStewardFaction",
+   "Favor018Winterhold Favor Quests Seperated.esp:000A14",
+   "class Skyrim.esm:013178"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013666",
+  "name": "Annekke Crag-Jumper",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In Goldenrock Mine at Darkwater Crossing by day (9 am to 5 pm); at her house in Darkwater Crossing otherwise.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "at home"
+   },
+   {
+    "from": "9 am",
+    "for": "8 hours",
+    "where": "Goldenrock Mine, Darkwater Crossing",
+    "doing": "mining"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "at home"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "Once she follows you she goes where you go."
+  ],
+  "role": "miner; follower; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "she's a potential follower; what recruits her isn't in the extracts",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Kill the Bandit Leader",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "She is set up as a potential follower, but the dialogue that recruits her (and any condition on it) isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "She has a vendor entry with no chest, shared with other followers; it's likely the follower trade, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in three quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013666",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "DefaultEatEditorLoc6x1 Skyrim.esm:01E618",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DarkwaterCrossingAnnekkeMine9x8 Skyrim.esm:03011D",
+   "DarkwaterCrossingAnnekeVernerWanderTown Skyrim.esm:0E7548",
+   "PotentialFollowerFaction",
+   "vendor faction 0x06CB48, no chest",
+   "Favor104DarkwaterCrossing Favor Quests Seperated.esp:000B3E",
+   "class Skyrim.esm:013181"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01325F",
+  "name": "Ahtar",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "In Solitude's square at the execution you walk in on when you first reach the city; afterwards at his work by day and Jala's House at night.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "30 minutes",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "eating and drinking (finishing his evening there)"
+   },
+   {
+    "from": "12:30 am",
+    "for": "7.5 hours",
+    "where": "Jala's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Solitude",
+    "doing": "his workday as jailor"
+   },
+   {
+    "from": "8 pm",
+    "for": "4.5 hours",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "eating and drinking, subject to a weather check the extracts don't name; otherwise near Jala's House"
+   }
+  ],
+  "changes": [
+   "Until Solitude's opening quest (the execution) reaches its stage 40 he waits at his spot for it; until it is finished he stays near the execution site in the city.",
+   "The evening at the Winking Skeever only starts once that opening quest is completed.",
+   "Once he follows you he goes where you go."
+  ],
+  "role": "Solitude's jailor and headsman; follower; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "he's a potential follower; what recruits him isn't in the extracts",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Kill the Bandit Leader",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His workday package has no place in the records; 'jailor' comes from its name. The opening quest that holds him is unnamed in the extracts."
+   },
+   {
+    "field": "role",
+    "why": "'Headsman' is read from his opening packages (post-execution); the extracts carry no job faction for it."
+   },
+   {
+    "field": "joins",
+    "why": "He is set up as a potential follower, but the recruiting dialogue isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "He has a vendor entry with no chest, shared with other followers; likely the follower trade, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in three quests with no name in the extracts, one being the Solitude opening."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01325F",
+   "SolitudeOpeningAhtarWait Skyrim.esm:0A3BE0 (GetStage Skyrim.esm:0B2FD9 < 40)",
+   "SolitudeOpeningAhtarPostExecution Skyrim.esm:101D9B (GetStageDone 0B2FD9 200 == 0)",
+   "SolitudeAhtarEatInn20x4 Skyrim.esm:0B243D (GetQuestCompleted 0B2FD9)",
+   "SolitudeJailorWorkDay8x12 Skyrim.esm:034BEC",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "SolitudeSandboxEditorLocation512 Skyrim.esm:0C97B8",
+   "PotentialFollowerFaction",
+   "Favor104Solitude Favor Quests Seperated.esp:000B34",
+   "class Skyrim.esm:01CE15"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014149",
+  "name": "Brunwulf Free-Winter",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Around Windhelm by day, often at Candlehearth Hall; his house is in Windhelm.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Candlehearth Hall, Windhelm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "around Windhelm",
+    "doing": "walking the city, subject to a weather check the extracts don't name and a town quest's state"
+   },
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "the Temple of Talos, Windhelm (Loredas and Sundas); the Palace of the Kings (Morndas, Middas, Fredas)",
+    "doing": "visiting"
+   },
+   {
+    "from": "4 pm",
+    "for": "8 hours",
+    "where": "Candlehearth Hall, Windhelm",
+    "doing": "at the hall"
+   },
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "Brunwulf Free-Winter's House, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "While a Windhelm town quest is at its first state and the Stormcloaks hold Windhelm, he stands at a spot by the Palace of the Kings from 8 am to 8 pm instead.",
+   "His palace visits are skipped while certain Windhelm quests are running.",
+   "The records cast him as Windhelm's jarl if the Empire takes the city."
+  ],
+  "role": "quest giver; Windhelm's jarl if the Empire wins there",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Kill the Bandit Leader",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The town quest that gates his standing spot and the war quest that makes him jarl have no names in the extracts; the war-control check is read as Windhelm's from the package."
+   },
+   {
+    "field": "day",
+    "why": "On Tirdas and Turdas nothing is set for noon to 4 pm; he is likely at the hall or about the city."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in twelve quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014149",
+   "WindhelmIntroBrunwulfStand Skyrim.esm:0C828D (GameHour 8-20, quest var Skyrim.esm:03502E == 0, fn606 == CWSons)",
+   "BrunwulfEatBreakfast7x1 Skyrim.esm:035EB4",
+   "AIOWHBrunwulfRandom8x4 AI Overhaul.esp:001ED4",
+   "BrunwulfVisitTempleOfTalosSS12x4 Skyrim.esm:035EB7",
+   "BrunwulfVisitPalaceMWF12x4 Skyrim.esm:035EB6",
+   "BrunwulfVisitCandlehearth16x4 Skyrim.esm:035EB5",
+   "AIOWHBrunwulfRandom20x4 AI Overhaul.esp:001ED5",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "alias WindhelmEmpireJarl in Skyrim.esm:0A7B33",
+   "JobJarlFaction; GovRuling rank -1; GovImperial",
+   "Favor104Windhelm Favor Quests Seperated.esp:000B47",
+   "class Skyrim.esm:013176"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01361E",
+  "name": "Rustleif",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At his forge outside in Dawnstar, 8 am to 8 pm.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "Rustleif's House, Dawnstar",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Rustleif's House, Dawnstar",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "his forge, Dawnstar",
+    "doing": "smithing"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "in and around Rustleif's House, Dawnstar",
+    "doing": "at home"
+   }
+  ],
+  "changes": [],
+  "role": "blacksmith; quest giver",
+  "sells": "a blacksmith's stock, 8 am to 8 pm, near his forge",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rare Gifts",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His vendor lists (blacksmith buying list and his own chest) don't resolve to items in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in two quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01361E",
+   "DawnstarWorkRustleifPackage8x12 Skyrim.esm:03197F",
+   "DefaultEatMorning7x1 Skyrim.esm:034BCB",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "JobBlacksmithFaction, JobMerchantFaction, ServicesDawnstarRustleifSmithy",
+   "vendor faction 0x066333, chest 0x09DA40, 8-20",
+   "Favor110Dawnstar Favor Quests Seperated.esp:000D7E",
+   "class Skyrim.esm:013257"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013653",
+  "name": "Siddgeir",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In Hakkvild's High Hall, Falkreath, where he's the jarl.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Hakkvild's High Hall, Falkreath",
+    "doing": "holding court; he has no daily schedule of his own, so he stays where he's placed"
+   }
+  ],
+  "changes": [
+   "If he is exiled in the civil war, he goes to the Blue Palace in Solitude and stays there."
+  ],
+  "role": "Jarl of Falkreath; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rare Gifts",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His only package is the exile one; with nothing else, the game keeps him near where he's placed, so no sleep hours are given."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five quests with no name in the extracts (jarl and war quests)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013653",
+   "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E (GetInFaction Skyrim.esm:036629)",
+   "placed in Hakkvild's High Hall (Skyrim.esm:013A79)",
+   "JobJarlFaction, GovRuling, GovImperial, MarriageExcludedFaction",
+   "Favor110Falkreath Favor Quests Seperated.esp:000D86",
+   "class Skyrim.esm:01325B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135EF",
+  "name": "Lami",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At the Thaumaturgist's Hut in Morthal, 8 am to 8 pm.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Jorgen and Lami's House, Morthal",
+    "doing": "at home"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the Thaumaturgist's Hut, Morthal",
+    "doing": "running her shop"
+   },
+   {
+    "from": "8 pm",
+    "for": "3 hours",
+    "where": "Jorgen and Lami's House, Morthal",
+    "doing": "at home"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "Jorgen and Lami's House, Morthal",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "apothecary; trainer (Alchemy); quest giver",
+  "sells": "an apothecary's stock, 8 am to 8 pm",
+  "trains": "Alchemy, up to 75",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rare Gifts",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her vendor lists (apothecary buying list and her own chest) don't resolve to items in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She is named in Laid to Rest among Morthal's townsfolk, but the records don't show what she does in it; she fills aliases in four quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0135EF",
+   "MorthalLamiWork8x12 Skyrim.esm:0443A1",
+   "MorthalLamiSleep23x8 Skyrim.esm:0443A0",
+   "MorthalLamiSandboxHome Skyrim.esm:09E29B",
+   "trainer Alchemy Journeyman cap 75",
+   "JobApothecaryFaction, JobMerchantFaction, ServicesMorthalLami",
+   "vendor faction 0x09379F, chest 0x09DA5A, 8-20",
+   "Favor110Morthal Favor Quests Seperated.esp:000D76",
+   "MS14 alias Lami",
+   "class Skyrim.esm:0E3A5D"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BAA",
+  "name": "Amren",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "Near Jorrvaskr in Whiterun by day; his house is in Whiterun.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "Amren's House, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "Whiterun",
+    "doing": "doing repairs, while the Empire holds Whiterun"
+   },
+   {
+    "from": "10 am",
+    "for": "4 hours",
+    "where": "Dragonsreach, Whiterun",
+    "doing": "visiting, on Tirdas and Turdas"
+   },
+   {
+    "from": "7 pm",
+    "for": "2 hours",
+    "where": "Amren's House, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "9 pm",
+    "for": "3 hours",
+    "where": "the Drunken Huntsman, Whiterun",
+    "doing": "drinking"
+   },
+   {
+    "from": "any other hour",
+    "for": "",
+    "where": "around his house, Whiterun",
+    "doing": "patrolling the street, subject to a weather check the extracts don't name"
+   }
+  ],
+  "changes": [
+   "While a Whiterun town quest is at an early state, his top package holds him at a spot by Jorrvaskr from 8 am to 8 pm, ahead of everything else in his day."
+  ],
+  "role": "trainer (One-Handed); quest giver",
+  "sells": "",
+  "trains": "One-Handed, up to 75",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dungeon Delving (Bandits)",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The Whiterun town quest behind his Jorrvaskr spot has no name in the extracts, so when it lets him go isn't known; the repairs package has no place in the records."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in four quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BAA",
+   "WhiterunAmrenScenePositionPackage Skyrim.esm:09E0B7 (GameHour 8-20, quest var Skyrim.esm:0270A4 < 2)",
+   "USKPWhiterunAmrenSleep Unofficial Skyrim Special Edition Patch.esp:044EC9",
+   "WhiterunRepairs8x3 Skyrim.esm:101A69 (fn606 == CWImperial)",
+   "WhiterunAmrenDragonsreachPackage Skyrim.esm:02C8FF (day-of-week 10)",
+   "WhiterunAmrenHomePackage Skyrim.esm:02C901",
+   "WhiterunAmrenDrunkenHuntsmanPackage Skyrim.esm:02C902",
+   "WhiterunAmrenPatrolPackage Skyrim.esm:0914FA",
+   "trainer OneHanded Journeyman cap 75",
+   "Favor204Whiterun Favor Quests Seperated.esp:000DB9",
+   "class Skyrim.esm:0E3A5E"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013614",
+  "name": "Frida",
+  "race": "Elder",
+  "sex": "female",
+  "firstMeet": "In the Mortar and Pestle, Dawnstar, 8 am to 8 pm.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Mortar and Pestle, Dawnstar",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the Mortar and Pestle, Dawnstar",
+    "doing": "running her shop"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Windpeak Inn, Dawnstar",
+    "doing": "visiting the inn when it isn't snowing; otherwise at the Mortar and Pestle"
+   }
+  ],
+  "changes": [],
+  "role": "apothecary; quest giver",
+  "sells": "an apothecary's stock, 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dungeon Delving (Caves)",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her vendor lists (apothecary buying list and her own chest) don't resolve to items in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in four quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013614",
+   "DawnstarFridaVisitInn20x4Package Skyrim.esm:05A312 (IsSnowing == 0)",
+   "DawnstarApothecaryServicesPackage8x12 Skyrim.esm:02D797",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "JobApothecaryFaction, JobMerchantFaction, ServicesDawnstarUsefulThingsApothecary",
+   "vendor faction 0x09379F, chest 0x09DA30, 8-20",
+   "Favor205Dawnstar Favor Quests Seperated.esp:000DD5",
+   "class Skyrim.esm:013258"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329C",
+  "name": "Noster Eagle-Eye",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In Solitude during the execution you walk in on when you first arrive; afterwards begging in Solitude's streets by day.",
+  "day": [
+   {
+    "from": "11 pm",
+    "for": "2 hours",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "1 am",
+    "for": "3 hours",
+    "where": "by a well in Solitude",
+    "doing": "loitering, when it isn't raining; otherwise asleep at the Winking Skeever"
+   },
+   {
+    "from": "4 am",
+    "for": "3 hours",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "15 hours",
+    "where": "the streets of Solitude",
+    "doing": "begging"
+   },
+   {
+    "from": "10 pm",
+    "for": "1 hour",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "going about the inn"
+   }
+  ],
+  "changes": [
+   "When it rains he spends 6 am to 11 pm at a sheltered spot in Solitude instead of begging.",
+   "Until Solitude's opening quest (the execution) reaches its stage 45 he walks to and waits at his spot in the city for it."
+  ],
+  "role": "beggar; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dungeon Delving (Caves)",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The begging and rain spots are markers the extracts only place as 'Solitude', not a named street."
+   },
+   {
+    "field": "quests",
+    "why": "He is named in Bound Until Death and A Healing Wedding (the wedding at the Temple of the Divines), but the records don't show what he does there; he fills aliases in two quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01329C",
+   "SolitudeOpeningNosterWalk Skyrim.esm:0C7CE1 (GetStage Skyrim.esm:0B2FD9 < 5)",
+   "SolitudeOpeningNosterWait Skyrim.esm:0A3BE2 (GetStage 0B2FD9 < 45)",
+   "SolitudeWellsMarker1Sandbox1x3 Skyrim.esm:085442 (IsRaining == 0)",
+   "AIOSoNosterRain AI Overhaul.esp:17A04F (IsRaining == 1)",
+   "AIOSoNosterSleep23x7 AI Overhaul.esp:006AD0",
+   "SolitudeNosterBegging0x24 Skyrim.esm:06B329",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "FavorJobsBeggarsFaction",
+   "Favor205Solitude Favor Quests Seperated.esp:000DDE",
+   "DB05 alias NosterAlias; DB05Alt alias NosterAlias",
+   "class Skyrim.esm:01327B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014142",
+  "name": "Oengul War-Anvil",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the forge in Windhelm, 8 am to 8 pm.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "2 hours",
+    "where": "the Blacksmith Quarters, Windhelm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the forge, Windhelm",
+    "doing": "smithing"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "the Blacksmith Quarters, Windhelm",
+    "doing": "dinner"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "the Blacksmith Quarters, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "blacksmith; quest giver",
+  "sells": "a blacksmith's stock, 8 am to 7 pm, near the forge",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dungeon Delving (Caves)",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His vendor lists (blacksmith buying list and the forge's chest) don't resolve to items in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014142",
+   "WindhelmHermirBreakfast6x2 Skyrim.esm:035E61",
+   "HermirWorkAtForge8x12 Skyrim.esm:035E60",
+   "OengulEatDinner20x2 Skyrim.esm:035E8D",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "JobBlacksmithFaction, JobMerchantFaction, ServicesWindhelmBlacksmith",
+   "vendor faction 0x066333, chest 0x0A3F18, 8-19",
+   "Favor205Windhelm Favor Quests Seperated.esp:000DE7",
+   "class Skyrim.esm:013257"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A696",
+  "name": "Aela the Huntress",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At Jorrvaskr, Whiterun; in the training yard outside it in the afternoon.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Jorrvaskr Living Quarters, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Jorrvaskr, Whiterun",
+    "doing": "going about the hall, when it isn't raining"
+   },
+   {
+    "from": "10 am",
+    "for": "3 hours",
+    "where": "Jorrvaskr, Whiterun",
+    "doing": "eating"
+   },
+   {
+    "from": "1 pm",
+    "for": "2 hours",
+    "where": "Jorrvaskr, Whiterun",
+    "doing": "training, subject to a weather check the extracts don't name"
+   },
+   {
+    "from": "3 pm",
+    "for": "5 hours",
+    "where": "outside Jorrvaskr, Whiterun",
+    "doing": "training in the yard"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Jorrvaskr, Whiterun",
+    "doing": "going about the hall, when it isn't raining"
+   }
+  ],
+  "changes": [
+   "Once she follows you she goes where you go."
+  ],
+  "role": "member of the Companions' Circle; quest giver; follower; can marry",
+  "sells": "",
+  "trains": "",
+  "joins": "she's a potential follower; what recruits her isn't in the extracts",
+  "marries": "yes; she is a marriage candidate (the dialogue's conditions aren't in the extracts)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Animal Extermination",
+    "how": "gives it (both versions)"
+   },
+   {
+    "quest": "Animal Pelt Collection",
+    "how": "gives it"
+   },
+   {
+    "quest": "Striking the Heart",
+    "how": "gives it"
+   },
+   {
+    "quest": "Stealing Plans",
+    "how": "gives it"
+   },
+   {
+    "quest": "Retrieval",
+    "how": "gives it"
+   },
+   {
+    "quest": "Totems of Hircine",
+    "how": "gives it"
+   },
+   {
+    "quest": "Erik the Shield Brother",
+    "how": "gives it: you speak to her about Erik joining the Companions"
+   },
+   {
+    "quest": "The Silver Hand",
+    "how": "a step in it: you talk to her after the blood ritual and after the werewolf hunters fall"
+   },
+   {
+    "quest": "Brotherhood",
+    "how": "a step in it"
+   },
+   {
+    "quest": "Blood's Honor",
+    "how": "a step in it"
+   },
+   {
+    "quest": "Glory of the Dead",
+    "how": "a step in it: one of the Circle you meet and go to Ysgramor's Tomb with"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "trains",
+    "why": "She is in the archery trainer faction, but carries no trainer data in the records, so whether and how far she trains isn't shown."
+   },
+   {
+    "field": "day",
+    "why": "The 1 to 3 pm training package uses a place type the extracts don't resolve; with rain, her hall package has nothing to say and her whereabouts at those hours aren't given."
+   },
+   {
+    "field": "joins",
+    "why": "She is set up as a potential follower, but the recruiting dialogue (and when in the Companions' story it opens) isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "She has a vendor entry with no chest, shared with other followers; likely the follower trade, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "Her part in Brotherhood and Blood's Honor isn't spelled out in their records; she fills aliases in over fifty more quests with no name in the extracts, most from Companions and follower-dialogue mods."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A696",
+   "AIOWRCompainonAelaTrain13x2 AI Overhaul.esp:207D3B",
+   "AIOWRCompainonAelaTrain15x1 AI Overhaul.esp:207D3C",
+   "CompanionsShift1Train15x5 Skyrim.esm:023E56",
+   "CompanionsShift1Eat10x3 Skyrim.esm:023E54",
+   "CompanionsShift1Sleep0x8 Skyrim.esm:023E53",
+   "AIOWRCompanionsDinner AI Overhaul.esp:193567",
+   "AIOWRCompainonAelaRandom AI Overhaul.esp:13D2F3 (IsRaining == 0)",
+   "PotentialFollowerFaction, PotentialMarriageFaction, CompanionsCircle, JobTrainerMarksmanFaction; trainer null",
+   "CR01 Skyrim.esm:01CEEE, CR02 Skyrim.esm:025185, CR03 Skyrim.esm:025230, CR09 Skyrim.esm:025252, CR10 Skyrim.esm:09D6FC, CR11 Skyrim.esm:09D700, CR12 Skyrim.esm:0E3145",
+   "C02 Skyrim.esm:06E804, C03 Skyrim.esm:01CEF4, C04 Skyrim.esm:01CEF5, C06 Skyrim.esm:01CEF6",
+   "aaErikCompanionJoin FDE Erik.esp:0008E8",
+   "class Skyrim.esm:042DC2"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:065657",
+  "name": "Erik the Slayer",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the Frostfruit Inn, Rorikstead.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Frostfruit Inn, Rorikstead",
+    "doing": "waiting to be hired"
+   }
+  ],
+  "changes": [
+   "Once hired he goes where you go."
+  ],
+  "role": "hireling (follower)",
+  "sells": "",
+  "trains": "",
+  "joins": "hire him at the Frostfruit Inn; the price isn't in the extracts",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Erik the Shield Brother",
+    "how": "a step in it: you clear a place with him as his trial to join the Companions, then make him a Companion"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He is set up as a hireling (paid follower), but the hiring dialogue and its price aren't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "He has a vendor entry with no chest, shared with other followers; likely the follower trade, not a shop."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in eight follower-dialogue quests with no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so how they fight can't be read here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:065657",
+   "HirelingErikRoriksteadInn Skyrim.esm:0656E4",
+   "PotentialFollowerFaction, PotentialHireling, HirelingErikCrimeFaction",
+   "aaErikCompanionJoin FDE Erik.esp:0008E8 alias Erik",
+   "class Skyrim.esm:013176"
+  ]
+ }
+]
