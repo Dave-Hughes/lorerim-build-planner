@@ -1,0 +1,2611 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:02BF9F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "starts_raw lists Helgen only as the \"Dragonborn\" start (Helgen Keep, start or end), one of about 25 Alternate Perspective starts; Unbound (MQ101) is not a start-game quest here; his own hold-position package also needs Unbound below stage 20 and the quick-start global at 0 or 6+. The reader gave Helgen as the start for everyone"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: CWHangoutInRiverwoodInn (Message to Whiterun stage 10 done) > MQ102HadvarSandboxInAlvorsHouse (unnamed quest >= 52) > MQ101HadvarHoldPosition (Unbound < 20) > DefaultSandboxCurrentLocation256; all unscheduled, so \"any hour\" is right"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "inn package sits above the house package as the reader says; Compelling Tribute and Rescue name him in the FriendHadvar alias; The Jagged Crown (CW02A) has alias Hadvar"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CWImperialFaction, CWDialogueSoldierFaction, CWBuddies; Unbound objective 50 names him"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false; no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01327F does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:057A29 would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Compelling Tribute stage 10 and Rescue stage 10 logs both say the field commander sends you; he is the Friend you meet, follow (\"Follow <Friend> and ambush enemy scout\") and report to, not the giver. The Jagged Crown (Legion) giver is Legate Rikke (\"Talk to Legate Rikke\"); Hadvar only has dialogue in it below stage 50"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on the record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:02BF9D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "starts_raw lists Helgen only as the \"Dragonborn\" start (Helgen Keep, start or end), one of about 25 Alternate Perspective starts; Unbound (MQ101) is not a start-game quest here; his MQ101 alias is the only thing putting him in Helgen. The reader gave Helgen as the start for everyone"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: CWHangoutInRiverwoodInn (Message to Whiterun stage 10 done) > MQ102RalofSandboxInGerdursHouse (unnamed quest >= 52) > DefaultSandboxCurrentLocation256; no Helgen package of his own"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "inn above house as said; civil war missions name him in FriendRalof (CWMission04/07) and alias Ralof in CW02B"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CWSonsFaction, CWDialogueSoldierFaction, CWBuddies"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no marriage faction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013280 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:0FE535 would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Rescue and Compelling Tribute stage 10 logs say the field commander sends you, so he is not the giver; The Jagged Crown (Stormcloak) giver is Galmar Stone-Fist (\"Talk to Galmar\"), Ralof only has dialogue in it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01327E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "starts_raw lists Helgen only as the \"Dragonborn\" start (Helgen Keep, start or end), one of about 25 Alternate Perspective starts; Unbound (MQ101) is not a start-game quest here; he is placed in Castle Dour (ref 0198BA), which is where most players first find him"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: MQ101TulliusHoldPosition (Unbound 10 to <20) > DefaultEatEditorLoc12x1 > SolitudeCastleDourCommand6x20 (8 am, 12 h, Castle Dour) > DefaultSleepEditorLoc24x8 > DefaultSandboxEditorLocation512; noon eat beats the command package, giving the reader's split"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "MQ101TulliusHoldPosition holds only for Unbound stages 10 to below 20, before objective 30 \"Make your way to the Keep\", not \"until you've made it into the keep\"; the rest checks (MQ302 stage 15/300, CWSiegeObj 9000 \"killed General Tullius\")"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CWImperialFaction, SolitudeCastleDourFaction; CWObj stage 1 \"help General Tullius quell the Stormcloak rebellion\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "MarriageExcludedFaction, marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01327F does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:0CD6DD would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Season Unending is started by Arngeir (objective 10 \"Talk to Arngeir\", named giver); Tullius only has council dialogue below stage 61. Imperial Introductions' giver is Legate Rikke (dialogue below 20); \"Join the Imperial Legion\" is not his step. Unbound applies only on the Helgen start"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; CWSiegeObj stage 9000 log on the Stormcloak side kills him"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01414D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "starts_raw lists Helgen only as the \"Dragonborn\" start (Helgen Keep, start or end), one of about 25 Alternate Perspective starts; Unbound (MQ101) is not a start-game quest here; placed in the Palace of the Kings (ref 01B131). \"on his throne\" is not in any record: UlfricStaysInThePalace only says the palace"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: DefaultSleepEditorLoc24x8 (midnight, 8 h) > UlfricStaysInThePalace (unscheduled, Palace of the Kings r500), so 8 am to midnight in the palace"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "MQ302CouncilFaction, Season Unending stage 15/300; CWSiegeObj stage 9000 Legion line \"killed Ulfric Stormcloak\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobJarlFaction, GovRuling, GovSons; Favor254 (Thane of Eastmarch) giver dialogue below 1"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:101AF2 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "each checked: CW03 other giver below 50 and objective 50 \"Deliver axe to Jarl Ulfric\"; CW02B objective 80; CWSiegeObj objectives 4001/4101 and stage 1 Solitude/Whiterun lines; Favor254 giver; MQ302 objective 30; MS11 alias only. Unbound stage 150 log (quick-start 7 version) has him captured and taken to Helgen"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; Legion win kills him (CWSiegeObj 9000)"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:028AD0",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DA01 giver ref 028AD1 at Shrine of Azura; places_raw: Winterhold hold, nearest town Winterhold, \"a short walk\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: DA01FINAraneaForcegreetPackage (Black Star 100 done) > DA01AraneaStandAwayfromAltarPackage (Black Star 60 done, not completed) > AraneaPraysPackage (no conditions) at the bottom"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the forcegreet needs The Black Star stage 100 (\"I have cleansed Azura's Star\"); the Nelacar ending is stage 110 (\"completed the Black Star\"), which does not trigger it; the reader didn't say which ending"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, PotentialMarriageFaction, follower and marriageable flags true; DA01 giver below 40"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor block (raw 0x06CB48, 0-24 h) but no JobMerchantFaction and no list that resolves; left empty with the reader's unsure"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "follower flag and PotentialFollowerFaction set, but no dialogue or follower-quest stage in the extracts; the follower dialogue would settle it"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "PotentialMarriageFaction rank 0; condition not in the extracts, as the reader says"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01317A does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Priestly_Fashions.esp:000934 would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Dawn and Dusk (New Beginnings) has her as its only alias and objective 10 \"Talk to the priestess of Azura\", stage 10 log \"I have completed my pilgrimage to the Shrine of Azura. I should speak to the priestess to receive Azura's blessing\" — the records do say what she does"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01BFC5",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DA03 stage 25 log \"I ran in to a talking dog named Barbas... He's waiting outside Haemar's Shame\"; aliases DA03BarbasMeetTrigger, HaemarsShameMarker; places_raw: Haemar's Shame in Falkreath hold, nearest town Ivarstead"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages in people_schedules_raw; placed ref 052535 in Haemar's Shame; objective 25 \"Join Barbas outside Haemar's Shame\""
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "objectives 50/75/100/105/110 (shrine, Rimerock Burrow, back to Haemar's Shame, shrine); places_raw: Rimerock Burrow nearest town Dragon Bridge; stage 155 and 200 endings"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA03 giver Barbas below 10; DA03BarbasFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false; he travels with you only as the quest's alias"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit (none) would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA03 objective 20 \"Talk with Barbas\", objective 150 \"...OR kill Barbas with the Rueful Axe\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected flags false but ProtectedFaction rank 0; stage 155 log has the player kill him; reader's unsure kept"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:02D514",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 02D4F2 in Septimus Signus' Outpost; DA04 stage 20 \"living in the northern ice fields\"; places_raw: Winterhold hold, \"a short walk\" from Winterhold"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package, DA04SeptimusPace, no conditions and no schedule"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DA04 stage 105 log \"I met and killed...\" against stage 100 where he lives; one ending, as the reader's unsure says"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA04 named giver; MQ205 stage 60 \"a scholar named Septimus Signus might know where to find it\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Travelling Priest - SkyPatched.esp:00080B would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "DA04's likely giver is Urag gro-Shub (dialogue below 10, objective 5 \"Ask Urag about the insane book\"; stage 10 \"I've learned that Septimus Signus... is living in the far north\"); Septimus's own dialogue starts it only below stage 11, i.e. if you reach him first"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential/protected false; DA04 alias SeptimusEssential, stages unknown, as the reader says"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:06C1B7",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 06C1B8 in Falkreath Jail; DA05 stage 10 \"stories in Falkreath of a strange vagrant who savagely killed a little girl\", objective 10 \"Speak to Sinding\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: SindingSandboxByGrottoEntrance (unnamed quest 0955CF >= 100) > DefaultSandboxCurrentLocation256, so in the jail until then"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "dunBloatedMan_SindingFaction ties him to Bloated Man's Grotto (places_raw: Falkreath hold, \"a short walk\"); DA05 stages 100/105; grotto package gate unnamed, kept unsure"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA05 named giver (alias Sinding) below 10; stage 20 log"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:0A1984 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA05 objectives 10, 60, 61, 70, 80 as quoted"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true; objective 60 \"Kill Sinding\" and stage 100"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01364E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 01981A in Corpselight Farm, Falkreath; FalkreathMathiesFarmingSandbox6x12 is his daytime package"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "order read: FalkreathMathiesFarmingSandbox6x12 (6 am, 12 h; condition fn149 on 819744 unnamed) > FalkreathMathiesInn18x6 (6 pm, 6 h, Dead Man's Drink, in Falkreath per places_raw) > DefaultSleepEditorLoc24x8 > FalkreathSandboxEditorLocation512; the hours match, but whether he farms depends on that unnamed condition. Naming condition function 149 and form 819744 would settle it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package and no stage in the extracts moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FalkreathCorpselightFarmFaction, FavorJobsGatherWheatFaction; DA05 alias VictimFather"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326C does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:01DC10 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA05 other giver below 10 with alias VictimFather; stage 10 log"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:02ABBE",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DA05 alias GlenmorilLeader, ref 0A032C in Glenmoril Coven; places_raw: Falkreath hold, \"a short walk\" from Falkreath"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages in people_schedules_raw"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Blood's Honor stage 20 log \"sent me to kill the Glenmoril Witches and bring back their heads\"; alias DA05Hagraven in C04"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "race Hagraven; GlenmorilLeader alias; no vendor/trainer"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit (none) would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "C04 objectives 20/25 and alias DA05Hagraven; DA05 other giver below 50"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:02ABC4",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DA05 alias Hunter 4, ref 02ABC5 in the Bloated Man's Grotto worldspace"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "order read: dunBloatedManHuntersLeave (grotto quest 0955CF == 100) > dunBloatedManHuntersPatrolLinkCustom01 (in faction 0C1986 and fn362) > dunBloatedManHunterGroup2FollowsPlayer (0955CF 66 done, 80 not, fn310); patrol sits ABOVE follow, so whether she patrols or follows at a given moment hangs on unnamed conditions. Naming fn362/fn310 and faction 0C1986 would settle it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "leave package at 0955CF stage 100, target 0954B1 not resolved; DA05 objective 70 \"Kill the Hunters\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA05HuntersOfHircineFaction, DA05HunterStallFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit LoreRim - Outfit Distribution.esp:00084E would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA05 other giver below 60, objectives 55/70"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019951",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in his longhouse; places_raw: Mor Khazgur (The Reach; nearest town Karthwasten, \"a short walk\")"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: eat 19x5 in the longhouse > MorKhazgurLarakEatOutsidePackage7x12 (7 am, 12 h, marker r50) > DefaultSleepEditorLoc24x8 > default sandbox; the 7 am package beats sleep from 7, giving midnight to 7 am asleep"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobOrcChiefFaction, Favor017QuestGiverFaction; JobTrainerBlockFaction, trainer Block tier Master, levelCap null"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "JobTrainerBlockFaction, trainer Block tier Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0B5FB4 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Requiem.esp:ADE374 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Cursed Tribe giver dialogue (from The Cursed Tribe expansion) below stage 1 lists Larak, Burguk and Mauhulakh; first objective \"Read the letter from Largashbur\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013B79",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in his longhouse; places_raw: Dushnikh Yal (The Reach; Markarth \"a short walk\")"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: eat 19x5 in the longhouse > DushnikhYalBurguk7x12Package (7 am, 12 h, no place) > DefaultSleepEditorLoc24x8 > default sandbox; the 7 am package beats sleep from 7, giving midnight to 7 am asleep"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobOrcChiefFaction, Favor017QuestGiverFaction; JobTrainerOneHandedFaction, trainer OneHanded tier Master, levelCap null"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "JobTrainerOneHandedFaction, trainer OneHanded tier Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0B5FB5 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Requiem.esp:ADE374 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Cursed Tribe giver dialogue (from The Cursed Tribe expansion) below stage 1 lists Larak, Burguk and Mauhulakh; first objective \"Read the letter from Largashbur\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01B075",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in his longhouse; places_raw: Narzulbur (Eastmarch; next to Kynesgrove, Windhelm \"a short walk\")"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: eat 19x5 in the longhouse > NarzulburMauhulakhSitPackage7x12 (7 am, 12 h, no place) > DefaultSleepEditorLoc24x8 > default sandbox; the 7 am package beats sleep from 7, giving midnight to 7 am asleep"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobOrcChiefFaction, Favor017QuestGiverFaction; no trainer or vendor data"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer or vendor data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:10E714 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Requiem.esp:ADE374 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Cursed Tribe giver dialogue (from The Cursed Tribe expansion) below stage 1 lists Larak, Burguk and Mauhulakh; first objective \"Read the letter from Largashbur\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019E18",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 019E19 in Largashbur Longhouse; places_raw: Largashbur in The Rift, \"a short walk\" from Riften; DA06 stage 20 \"besieged by giants. Atub, the wise woman...\""
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "top package DA06AtubWaitForGiantDeath (stay at her placed spot, radius 0) holds whenever a Cursed Tribe script variable is 0, with no stage check; if that variable starts at 0, she stays put in the longhouse from the start of the game until it changes, not at the apothecary spot. Below it: DefaultSleepEditorLoc24x8 > USKPAtubSandboxApothecary (unscheduled, r384). The variable's name and starting value would settle it"
+    },
+    "changes": {
+     "verdict": "unsure",
+     "note": "same package: gated only on a script variable of The Cursed Tribe, so \"at the start of the quest until the giant is dead\" is read from the package name, as the reader says"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobOrcWiseWomanFaction, JobApothecaryFaction, JobMerchantFaction, JobTrainerIllusionFaction; DA06 other giver below 11"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20, radius 384; JobApothecaryFaction; vendor list 0x0544244C and container 0x0ACB6D do not resolve in the extracts"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Illusion, tier Expert, levelCap 100"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0B812C does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Travelling Priest - SkyPatched.esp:00080D would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA06 objectives 30/45/50/60/67/130 and stage 20/50 logs"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0240CC",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0240CE in Silus Vesuius' House, Dawnstar; DA07 stage 10 \"He'll give me the details inside his house in Dawnstar\"; objective 10"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: DA07SilusRunHomeIgnoreCombatPackage (Pieces of the Past 150 done and not in his house) > DefaultSandboxHomeowner"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "objective 30 \"Meet Silus at the Shrine of Mehrunes Dagon\" (places_raw: The Pale, next to Stonehills); stage 80; run-home package on stage 150 \"I refused to kill Silus\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA07 giver below 50; stage 10 \"owner of a museum dedicated to the Mythic Dawn cult\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01E7D0 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:0B146C would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA07 objectives 10-24, 50; Reforging the Past stage 5 \"Silus has agreed to let me reforge\" and stage 25 \"substantial reward\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false; objective 50 \"Kill Silus\""
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01434D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dragonsreach, Whiterun (people_raw cell Dragonsreach)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: CWExiledImperialSandboxBluePalace (faction 036629) > dinner 17x2 > lunch 12x1 > ... sleep 22x8 in the Jarl's Quarters; WhiterunNelkirDragonsreach11x1 and WhiterunDragonsreachKidsSandbox9x10, no kids-default package, so 6-9 am and 7-10 pm are uncovered"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "exile package at the top, gated on unnamed faction 036629; GovImperial on the record; kept unsure as the reader did"
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "The Whispering Door stage 10 log: \"Balgruuf the Greater... has a troubled child. He's asked me to help the boy\", Balgruuf's giver dialogue below 10; Nelkir's own line sits below stage 0, alongside Frothar's and Dagny's, so he is not the giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013279 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit (child clothes) would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "same record: the Jarl gives The Whispering Door; Nelkir is its subject (\"Find out what's wrong with Nelkir\", \"Speak to Nelkir OR warn the Jarl\"); stage 42 also sends you to tell the Jarl where to find Nelkir. Other entries check (MQ102/103/104 aliases, MQ303 other giver below 50)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01434C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dragonsreach, Whiterun (people_raw cell Dragonsreach)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: CWExiledImperialSandboxBluePalace (faction 036629) > dinner 17x2 > lunch 12x1 > ... sleep 22x8 in the Jarl's Quarters; WhiterunDragonsreachFrotharPackage9x10 and WhiterunDragonsreachKidsDefault (Jarl's Quarters) filling the gaps"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "exile package at the top, gated on unnamed faction 036629; GovImperial on the record; kept unsure as the reader did"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "GovRuling, DragonsreachOccupants; the reader's unsure about parentage stands"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013279 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit (child clothes) would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA08 other giver below 0; MQ102/103/104 aliases; MQ303 other giver below 50"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01434B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dragonsreach, Whiterun (people_raw cell Dragonsreach)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order read: CWExiledImperialSandboxBluePalace (faction 036629) > dinner 17x2 > lunch 12x1 > ... sleep 22x8 in the Jarl's Quarters; WhiterunDragonsreachKidsSandbox9x10 and WhiterunDragonsreachKidsDefault (Jarl's Quarters) filling the gaps"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "exile package at the top, gated on unnamed faction 036629; GovImperial on the record; kept unsure as the reader did"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "GovRuling, DragonsreachOccupants; the reader's unsure about parentage stands"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013279 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit (child clothes) would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA08 other giver below 0; MQ102/103/104 aliases; MQ303 other giver below 50"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:04E4DF",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "The Break of Dawn has two openings: stage 50 \"An otherworldly voice coming from Mount Kilkreath is commanding me to find a beacon\" (before you have it) and stage 100 \"I've found a strange gem\"; the reader gave only the second. Places_raw: Kilkreath Ruins, Haafingar, next to Dragon Bridge"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package, DA09MeridiaSkySceneStart (target 04E4DD, unconditioned); DA09 alias Meridia ref 04E4E0 at Kilkreath Ruins"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "nothing in the extracts moves her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA09 giver alias Meridia below 400; stage 300/500 logs (Dawnbreaker)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on the record; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 does not resolve in any extract (no class name, skill weights or outfit contents); the class record or outfit Skyrim.esm:081184 would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA09 stage 50/300 logs quoted correctly"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:02BF9F",
+   "name": "Hadvar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Only if you pick the Dragonborn start (Helgen Keep): in Helgen during Unbound, where you can escape the keep with him. If you go with him, he then waits at his uncle Alvor's house (Alvor and Sigrid's House) in Riverwood. On any other start the records don't place him until Message to Whiterun brings him to the Sleeping Giant Inn, Riverwood.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "until Helgen is behind you",
+     "where": "Helgen",
+     "doing": "with you during the escape; he holds his place while the opening scene plays"
+    },
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Alvor and Sigrid's House, Riverwood",
+     "doing": "goes about the house, once you've reached Riverwood with him after Helgen"
+    },
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Sleeping Giant Inn, Riverwood",
+     "doing": "hangs about the inn, once Message to Whiterun is under way"
+    }
+   ],
+   "changes": [
+    "After Helgen he moves into Alvor and Sigrid's House in Riverwood.",
+    "From the start of Message to Whiterun he hangs about the Sleeping Giant Inn in Riverwood instead (this package sits above the house one).",
+    "On the Imperial side of the civil war he turns up in the field for missions (Compelling Tribute, Rescue from a fort, The Jagged Crown)."
+   ],
+   "role": "Imperial soldier; your companion out of Helgen if you follow him; a civil war contact on the Legion side",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Unbound",
+     "how": "a step in it: 'Enter the Keep with Hadvar or Ralof'; you can escape Helgen with him"
+    },
+    {
+     "quest": "Before the Storm",
+     "how": "a step in it: if you escaped with him, he's the friend you talk to in Riverwood ('Hadvar suggested that I head to the nearby town of Riverwood. His uncle is the blacksmith there')"
+    },
+    {
+     "quest": "Compelling Tribute",
+     "how": "a step in it (Legion side): the field commander sends you; you meet Hadvar, 'Follow' him 'and ambush enemy scout', take over the caravan and 'Report to' him"
+    },
+    {
+     "quest": "Rescue from a fort (Rescue from <fort>)",
+     "how": "a step in it (Legion side): the field commander sends you to 'Meet the men near' the fort; he's with them, and you 'Report back to' him at the end"
+    },
+    {
+     "quest": "The Jagged Crown (Legion version)",
+     "how": "a step in it: Legate Rikke sends you; he's with the Legion party at Korvanjund"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Which quest stage moves him into Alvor's house is given only by a quest id the extracts don't name; 'once you reach Riverwood with him' is read from the package's place and Before the Storm's log."
+    },
+    {
+     "field": "day",
+     "why": "The Riverwood inn package needs only Message to Whiterun's stage 10, so he may hang about the inn even if you never joined the Legion; the records don't add a faction check."
+    },
+    {
+     "field": "quests",
+     "why": "Two more quests from another plugin name him, but their names aren't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "That he is the friend in the Legion versions (and Ralof in the Stormcloak ones) is read from the quests' FriendHadvar and FriendRalof aliases; the rule that fills the Friend alias isn't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Where he stands on starts other than Helgen isn't in the extracts: his placed reference sits in the open world with no cell or town."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02BF9F",
+    "CWHangoutInRiverwoodInn Skyrim.esm:105948 (CW03 stage 10 done)",
+    "MQ102HadvarSandboxInAlvorsHouse Skyrim.esm:02C305 (Skyrim.esm:02BF9C >= 52)",
+    "MQ101HadvarHoldPosition Skyrim.esm:04679F (MQ101 < 20)",
+    "DefaultSandboxCurrentLocation256 Skyrim.esm:0956B8",
+    "MQ101 alias Hadvar; placed ref Skyrim.esm:02BFA2",
+    "MQ102 stage 10 log",
+    "CWMission07 Skyrim.esm:0504F0 giver below 41",
+    "CWMission04 Skyrim.esm:035A23 other giver below 12",
+    "CW02A Skyrim.esm:02D75C other giver below 50",
+    "Extended Encounters.esp:000038, :00010A",
+    "essential flag",
+    "class Skyrim.esm:01327F",
+    "starts_raw Dragonborn start: Helgen Keep (Start)/(End)",
+    "CWMission07 obj 50/90, stage 10 log (FieldCO)",
+    "CWMission04 obj 10/50, stage 10 log (FieldCO)",
+    "CW02A giver Legate Rikke Skyrim.esm:0132A1 below 30"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:02BF9D",
+   "name": "Ralof",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Only if you pick the Dragonborn start (Helgen Keep): in Helgen during Unbound, where you can escape the keep with him. If you go with him, he then waits at his sister Gerdur's house (Hod and Gerdur's House) in Riverwood. On any other start the records don't place him until Message to Whiterun brings him to the Sleeping Giant Inn, Riverwood.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Hod and Gerdur's House, Riverwood",
+     "doing": "goes about the house, once you've reached Riverwood with him after Helgen"
+    },
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Sleeping Giant Inn, Riverwood",
+     "doing": "hangs about the inn, once Message to Whiterun is under way"
+    }
+   ],
+   "changes": [
+    "After Helgen he moves into Hod and Gerdur's House in Riverwood.",
+    "From the start of Message to Whiterun he hangs about the Sleeping Giant Inn in Riverwood instead (this package sits above the house one).",
+    "On the Stormcloak side of the civil war he turns up in the field for missions (Rescue from a fort, Compelling Tribute, The Jagged Crown)."
+   ],
+   "role": "Stormcloak soldier; your companion out of Helgen if you follow him; a civil war contact on the Stormcloak side",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Unbound",
+     "how": "a step in it: 'Enter the Keep with Hadvar or Ralof'; you can escape Helgen with him"
+    },
+    {
+     "quest": "Before the Storm",
+     "how": "a step in it: if you escaped with him, he's the friend you talk to in Riverwood ('Ralof suggested that I head to the nearby town of Riverwood. His sister owns a lumber mill there')"
+    },
+    {
+     "quest": "Rescue from a fort (Rescue from <fort>)",
+     "how": "a step in it (Stormcloak side): the field commander sends you to 'Meet the men near' the fort; he's with them, and you 'Report back to' him at the end"
+    },
+    {
+     "quest": "Compelling Tribute",
+     "how": "a step in it (Stormcloak side): the field commander sends you; you meet Ralof, 'Follow' him 'and ambush enemy scout', take over the caravan and 'Report to' him"
+    },
+    {
+     "quest": "The Jagged Crown (Stormcloak version)",
+     "how": "a step in it: Galmar Stone-Fist sends you; Ralof takes part in it"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Which quest stage moves him into Gerdur's house is given only by a quest id the extracts don't name; 'once you reach Riverwood with him' is read from the package's place and Before the Storm's log."
+    },
+    {
+     "field": "day",
+     "why": "He has no package of his own for Helgen; during the opening he follows the scene."
+    },
+    {
+     "field": "day",
+     "why": "The Riverwood inn package needs only Message to Whiterun's stage 10, so he may hang about the inn even if you never joined the Stormcloaks."
+    },
+    {
+     "field": "quests",
+     "why": "A few more quests name him but their names aren't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "That he is the friend in the Stormcloak versions is read from the quests' FriendRalof alias; the rule that fills the Friend alias isn't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Where he stands on starts other than Helgen isn't in the extracts: his placed reference sits in the open world with no cell or town."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02BF9D",
+    "CWHangoutInRiverwoodInn Skyrim.esm:105948",
+    "MQ102RalofSandboxInGerdursHouse Skyrim.esm:05799A (Skyrim.esm:02610A >= 52)",
+    "DefaultSandboxCurrentLocation256",
+    "MQ101 alias Ralof (other giver below 70 is Ulfric; Ralof placed ref Skyrim.esm:02BF9E)",
+    "MQ102 stage 10 log",
+    "CWMission04 giver below 12",
+    "CWMission07 other giver below 41",
+    "CW02B Skyrim.esm:02610B other giver below 130",
+    "Skyrim.esm:04F8BF alias Friend",
+    "essential flag",
+    "class Skyrim.esm:013280",
+    "starts_raw Dragonborn start",
+    "CWMission04/CWMission07 stage 10 logs (FieldCO)",
+    "CW02B giver Galmar Stone-Fist Skyrim.esm:014128 below 40"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01327E",
+   "name": "General Tullius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In Castle Dour, Solitude. If you pick the Dragonborn start (Helgen Keep), you also see him at Helgen during Unbound.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "4 hours",
+     "where": "Castle Dour, Solitude",
+     "doing": "at his command post"
+    },
+    {
+     "from": "noon",
+     "for": "1 hour",
+     "where": "Castle Dour, Solitude",
+     "doing": "eats"
+    },
+    {
+     "from": "1 pm",
+     "for": "7 hours",
+     "where": "Castle Dour, Solitude",
+     "doing": "at his command post"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Castle Dour, Solitude",
+     "doing": "goes about the castle"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Castle Dour, Solitude",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [
+    "On the Dragonborn start, he holds his place in Helgen early in Unbound's opening scene, before you're sent to the keep.",
+    "He attends the peace council at High Hrothgar in Season Unending.",
+    "If you take Solitude for the Stormcloaks (the civil war's last battle), he is killed: 'We have captured Solitude, killed General Tullius'."
+   ],
+   "role": "general of the Imperial Legion in Skyrim; leads the Legion side of the civil war",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Unbound",
+     "how": "a step in it, on the Dragonborn start only: he's at Helgen; the records list him among those who speak in it"
+    },
+    {
+     "quest": "Imperial Introductions",
+     "how": "named in it; Legate Rikke is the one who gives it ('Join the Imperial Legion')"
+    },
+    {
+     "quest": "Joining the Legion",
+     "how": "a step in it: you join the Legion at Castle Dour ('Take the oath')"
+    },
+    {
+     "quest": "Message to Whiterun",
+     "how": "gives it on the Legion side"
+    },
+    {
+     "quest": "The Jagged Crown (Legion version)",
+     "how": "a step in it: 'Deliver the crown to General Tullius'"
+    },
+    {
+     "quest": "The Jagged Crown (Stormcloak version)",
+     "how": "named in it; no step is his"
+    },
+    {
+     "quest": "The civil war's main quest",
+     "how": "its leader on the Legion side, and its target on the Stormcloak side"
+    },
+    {
+     "quest": "Battle for Windhelm / Battle for Solitude",
+     "how": "you join his attack on Windhelm; on the Stormcloak side 'Force General Tullius to surrender' and 'Execute General Tullius'"
+    },
+    {
+     "quest": "Season Unending",
+     "how": "a step in it: 'Talk to General Tullius' at the peace council at High Hrothgar; Arngeir starts it"
+    },
+    {
+     "quest": "Tending the Flames",
+     "how": "a step in it: 'Steal General Tullius' Coat'"
+    }
+   ],
+   "canDie": "essential, until the Stormcloaks take Solitude",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His eating and sleeping packages use 'where he's placed', which is Castle Dour; the extracts don't say which room."
+    },
+    {
+     "field": "quests",
+     "why": "Several more quests name him but their names aren't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "Message to Whiterun's giver is set by dialogue below stage 50; the records don't say whether he or a Legion officer starts it in play."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01327E",
+    "placed in Castle Dour, Solitude (ref Skyrim.esm:0198BA)",
+    "MQ101TulliusHoldPosition Skyrim.esm:0467A2 (MQ101 10-<20)",
+    "DefaultEatEditorLoc12x1 Skyrim.esm:01E619",
+    "SolitudeCastleDourCommand6x20 Skyrim.esm:034C06 (8 am, 12 h)",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "MQ101 other giver below 150",
+    "CW03 giver below 50",
+    "MQ302 giver below 61, stage 300 log",
+    "CWObj Skyrim.esm:029940 stage 255",
+    "CWSiegeObj Skyrim.esm:096E71 stage 9000, objectives 4002/4102",
+    "MS05 alias MS05GeneralTullius",
+    "essential flag",
+    "class Skyrim.esm:01327F",
+    "CW00A giver Legate Rikke below 20",
+    "MQ302 named giver Arngeir, objective 10"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01414D",
+   "name": "Ulfric Stormcloak",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In the Palace of the Kings, Windhelm. If you pick the Dragonborn start (Helgen Keep), you also see him at Helgen during Unbound, captured and sentenced to death with his rebels.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "16 hours",
+     "where": "the Palace of the Kings, Windhelm",
+     "doing": "stays in the palace"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Palace of the Kings, Windhelm",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [
+    "He attends the peace council at High Hrothgar in Season Unending.",
+    "If the Legion takes Windhelm (the civil war's last battle), he is killed: 'We have captured Windhelm, killed Ulfric Stormcloak'."
+   ],
+   "role": "Jarl of Windhelm; leads the Stormcloak rebellion; makes you Thane of Eastmarch",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Unbound",
+     "how": "a step in it: a fellow prisoner taken to Helgen; the records list him among those who speak in it"
+    },
+    {
+     "quest": "Stormcloak Introductions",
+     "how": "a step in it: 'Join the Stormcloak rebellion'"
+    },
+    {
+     "quest": "Joining the Stormcloaks",
+     "how": "a step in it: you join at the Palace of the Kings ('Take the oath')"
+    },
+    {
+     "quest": "Message to Whiterun",
+     "how": "can give it on the Stormcloak side, and a step in it: 'Deliver axe to Jarl Ulfric'"
+    },
+    {
+     "quest": "The Jagged Crown (Stormcloak version)",
+     "how": "a step in it: 'Deliver the crown to Ulfric Stormcloak'"
+    },
+    {
+     "quest": "The Jagged Crown (Legion version)",
+     "how": "named in it; no step is his"
+    },
+    {
+     "quest": "The civil war's main quest",
+     "how": "its leader on the Stormcloak side, and its target on the Legion side"
+    },
+    {
+     "quest": "Battle for Whiterun / Battle for Solitude / Battle for Windhelm",
+     "how": "orders you to Whiterun and leads the attack on Solitude; on the Legion side 'Force Ulfric Stormcloak to surrender' and 'Execute Ulfric Stormcloak'"
+    },
+    {
+     "quest": "Thane of Eastmarch",
+     "how": "gives it: 'Purchase a house in Windhelm', then return to him"
+    },
+    {
+     "quest": "Season Unending",
+     "how": "a step in it: 'Talk to Ulfric Stormcloak'"
+    },
+    {
+     "quest": "Blood on the Ice",
+     "how": "named in it as Windhelm's jarl; no step is his"
+    }
+   ],
+   "canDie": "essential, until the Legion takes Windhelm",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His sleep package uses 'where he's placed', which is the Palace of the Kings; the extracts don't say which room."
+    },
+    {
+     "field": "quests",
+     "why": "Many more quests name him (some from other plugins) but their names aren't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01414D",
+    "placed in Palace of the Kings, Windhelm (ref Skyrim.esm:01B131)",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "UlfricStaysInThePalace Skyrim.esm:035EB2",
+    "JobJarlFaction",
+    "MQ101 other giver below 70, stage 150 log",
+    "CW03 other giver below 50",
+    "CWSiegeObj named giver, stage 9000, objectives 4001/4101",
+    "CWObj stage 255",
+    "Favor254 Skyrim.esm:0A2CA6 giver",
+    "MQ302 other giver below 61",
+    "MS11 alias Ulfric",
+    "essential flag",
+    "class Skyrim.esm:013176",
+    "MQ101 stage 150 log (MQQuickstart 7)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:028AD0",
+   "name": "Aranea Ienith",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "At the Shrine of Azura in Winterhold hold, a short walk from Winterhold.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Shrine of Azura, Winterhold hold",
+     "doing": "prays at the shrine"
+    }
+   ],
+   "changes": [
+    "During The Black Star, once you're told to speak to Azura, she stands back from the altar until the quest is done.",
+    "After you cleanse Azura's Star with Azura (not the Black Star ending with Nelacar), she seeks you out to talk to you."
+   ],
+   "role": "priestess of Azura; gives The Black Star; follower; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes; she's in the marriage faction, but what she needs first isn't in the extracts",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Black Star",
+     "how": "gives it ('Aranea, a priestess of Azura, says I am destined to find an elven man...'); 'Bring the Star to Aranea' is one of its two ways"
+    },
+    {
+     "quest": "Dawn and Dusk",
+     "how": "a step in it: after your pilgrimage to the Shrine of Azura you 'Talk to the priestess of Azura' to receive Azura's blessing"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "She's in the potential-follower faction, but the dialogue that recruits her isn't in the extracts; her forcegreet after you cleanse the Star (stage 100) suggests that's when she offers, but the records don't say."
+    },
+    {
+     "field": "sells",
+     "why": "She has a vendor setup (open all hours) but no merchant job faction, and her vendor list doesn't resolve in the extracts."
+    },
+    {
+     "field": "marries",
+     "why": "The marriage faction is there; the condition (a quest, or having her as a friend) isn't."
+    },
+    {
+     "field": "changes",
+     "why": "The forcegreet stops when a quest the extracts don't name reaches stage 10."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "quests",
+     "why": "Several follower-dialogue quests from other plugins name her, but their names aren't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:028AD0",
+    "placed ref Skyrim.esm:028AD1 at Shrine of Azura",
+    "DA01FINAraneaForcegreetPackage Skyrim.esm:04C44B (DA01 stage 100 done, Skyrim.esm:01DD49 stage 10 not done)",
+    "DA01AraneaStandAwayfromAltarPackage Skyrim.esm:04C443 (DA01 60 done, not completed)",
+    "AraneaPraysPackage Skyrim.esm:024677",
+    "DA01 giver below 40",
+    "Alternate Perspective -- New Beginnings.esp:00083C alias Aranea",
+    "PotentialFollowerFaction, PotentialMarriageFaction",
+    "vendor VEND 0x06CB48 raw, hours 0-24",
+    "protected flag",
+    "class Skyrim.esm:01317A",
+    "Dawn and Dusk objective 10, stage 10 log",
+    "DA01 stage 100 vs 110 logs"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01BFC5",
+   "name": "Barbas",
+   "race": "",
+   "sex": "male",
+   "firstMeet": "A talking dog you run into who asks for your help (A Daedra's Best Friend); he then waits outside Haemar's Shame, a cave in Falkreath hold near Ivarstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "outside Haemar's Shame, near Ivarstead",
+     "doing": "waits for you; he has no AI packages of his own"
+    }
+   ],
+   "changes": [
+    "During A Daedra's Best Friend he travels with you to the shrine of Clavicus Vile, to Rimerock Burrow (near Dragon Bridge) for the Rueful Axe, and back.",
+    "At the end you either give the axe back and he returns to Clavicus Vile, or you kill him with it: 'I decided to kill Barbas and keep the Rueful Axe'."
+   ],
+   "role": "Clavicus Vile's dog; gives A Daedra's Best Friend and travels with you through it",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Daedra's Best Friend",
+     "how": "gives it ('Talk with Barbas'), travels with you through it, and the ending can be to kill him with the Rueful Axe"
+    }
+   ],
+   "canDie": "can die (killed if you keep the Rueful Axe)",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "His race doesn't resolve in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "His placed spot is at Haemar's Shame; that he meets you on the road comes from the quest log ('I ran in to a talking dog named Barbas') and a meeting trigger in the quest, not a place."
+    },
+    {
+     "field": "canDie",
+     "why": "He's in the protected faction, though his record has neither essential nor protected set; whether he can be killed outside the quest's ending isn't settled."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01BFC5",
+    "placed ref Skyrim.esm:052535 in Haemar's Shame (Skyrim.esm:0216BB)",
+    "no packages",
+    "DA03 Skyrim.esm:01BFC4 giver below 10, stages 25/150/155/200, objectives 25-150",
+    "ProtectedFaction, DA03BarbasFaction",
+    "class Skyrim.esm:013176"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:02D514",
+   "name": "Septimus Signus",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "In Septimus Signus' Outpost, a cave out on the northern ice fields, a short walk from Winterhold.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Septimus Signus' Outpost, near Winterhold",
+     "doing": "paces about the outpost"
+    }
+   ],
+   "changes": [
+    "Discerning the Transmundane can end with him dead: 'I met and killed a strange hermit named Septimus Signus'."
+   ],
+   "role": "scholar of the Elder Scrolls; gives Discerning the Transmundane; tells you where to find the Elder Scroll",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Discerning the Transmundane",
+     "how": "its central figure: usually Urag gro-Shub at the Arcanaeum sends you ('Find Septimus Signus'), or he starts it if you find him first; then 'Give the Lexicon to Septimus' and 'Bring blood to Septimus'"
+    },
+    {
+     "quest": "Elder Knowledge",
+     "how": "a step in it: 'Learn the location of the Elder Scroll' (the log names a scholar)"
+    }
+   ],
+   "canDie": "can die; Discerning the Transmundane keeps him alive while it runs",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "His record isn't essential; the quest has an alias named for keeping him essential, but the extracts don't show which stages it covers."
+    },
+    {
+     "field": "changes",
+     "why": "Stage 105's log says the player killed him; whether that happens in every ending isn't in the records."
+    },
+    {
+     "field": "race",
+     "why": "His race reads 'Elder', a race name, not one of the playable races."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02D514",
+    "placed ref Skyrim.esm:02D4F2 in Septimus Signus' Outpost (Skyrim.esm:02D4E4)",
+    "DA04SeptimusPace Skyrim.esm:09862F",
+    "DA04 Skyrim.esm:02D512 other/named giver below 11, stages 10-105, alias SeptimusEssential",
+    "MQ205 Skyrim.esm:02D516 alias Septimus, objective 10",
+    "class Skyrim.esm:013176",
+    "DA04 giver Urag gro-Shub Skyrim.esm:01C193 below 10, objective 5"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:06C1B7",
+   "name": "Sinding",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Locked in Falkreath Jail; the talk in Falkreath of a vagrant who killed a little girl leads you to him.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Falkreath Jail, Falkreath",
+     "doing": "stays in his cell"
+    }
+   ],
+   "changes": [
+    "Ill Met By Moonlight: the hunt for him takes place at Bloated Man's Grotto, a short walk from Falkreath, where Hircine's hunters are.",
+    "If you take Hircine's side, you kill and skin him ('I helped kill him as a service to Hircine').",
+    "If you defend him against the hunters, he lives ('earned his friendship') and afterwards stays by the grotto's entrance."
+   ],
+   "role": "werewolf cursed by Hircine; gives Ill Met By Moonlight",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Ill Met By Moonlight",
+     "how": "gives it ('Speak to Sinding'); its target if you side with Hircine ('Kill Sinding', 'Skin Sinding'), or the one you protect ('Kill the Hunters', 'Talk to Sinding')"
+    }
+   ],
+   "canDie": "protected; can be killed in Ill Met By Moonlight",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The 'by the grotto entrance' package is gated on a quest the extracts don't name reaching stage 100, and it has no place set, so where exactly he settles and whether that is only on the save-him ending isn't settled."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "quests",
+     "why": "Two patch quests name him; their names aren't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:06C1B7",
+    "placed ref Skyrim.esm:06C1B8 in Falkreath Jail (Skyrim.esm:0EF324)",
+    "SindingSandboxByGrottoEntrance Skyrim.esm:0CE0A8 (Skyrim.esm:0955CF >= 100)",
+    "DefaultSandboxCurrentLocation256",
+    "DA05 Skyrim.esm:02A49A giver below 10, stages 10/20/50/70/100/105",
+    "protected flag",
+    "class Skyrim.esm:013176"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01364E",
+   "name": "Mathies",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At Corpselight Farm in Falkreath, working the fields by day.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "12 hours",
+     "where": "Corpselight Farm, Falkreath",
+     "doing": "farming"
+    },
+    {
+     "from": "6 pm",
+     "for": "6 hours",
+     "where": "Dead Man's Drink, Falkreath",
+     "doing": "at the inn"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Corpselight Farm, Falkreath",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [],
+   "role": "farmer at Corpselight Farm; father of the girl Sinding killed",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Ill Met By Moonlight",
+     "how": "can start it: the girl's father, one of those who tell you of 'a strange vagrant who savagely killed a little girl'"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His farming package has one condition the extract doesn't name (likely weather); when it fails he goes about Falkreath instead."
+    },
+    {
+     "field": "role",
+     "why": "He's in a crop-gathering jobs faction, which usually means he'll buy crops you harvest on his farm; the dialogue isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "quests",
+     "why": "Three more quests name him but their names aren't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01364E",
+    "placed in Corpselight Farm, Falkreath (ref Skyrim.esm:01981A)",
+    "FalkreathMathiesFarmingSandbox6x12 Skyrim.esm:0D396F (fn149 == 0)",
+    "FalkreathMathiesInn18x6 Skyrim.esm:0D5A8F",
+    "DefaultSleepEditorLoc24x8",
+    "FalkreathSandboxEditorLocation512 Skyrim.esm:0CF016",
+    "DA05 alias VictimFather, other giver below 10, stage 10 log",
+    "FavorJobsGatherWheatFaction",
+    "class Skyrim.esm:01326C"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:02ABBE",
+   "name": "Lucerne",
+   "race": "Hagraven",
+   "sex": "male",
+   "firstMeet": "In Glenmoril Coven, a cave a short walk from Falkreath, leading the witches there.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Glenmoril Coven, near Falkreath",
+     "doing": "where she's placed; no AI packages"
+    }
+   ],
+   "changes": [
+    "Blood's Honor sends you to kill the Glenmoril Witches and bring back their heads."
+   ],
+   "role": "hagraven, leader of the Glenmoril witches; hostile target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Blood's Honor",
+     "how": "its target: 'Collect a Glenmoril Witch's head' / '(Optional) Wipe out the Glenmoril Witches'"
+    },
+    {
+     "quest": "Ill Met By Moonlight",
+     "how": "a step in it: the Glenmoril witches' leader; the records list her among those who can move it on before the hunt"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sex",
+     "why": "The record says male, though she's a hagraven; given as the record has it."
+    },
+    {
+     "field": "quests",
+     "why": "The records don't show what she says in Ill Met By Moonlight."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02ABBE",
+    "placed ref Skyrim.esm:0A032C in Glenmoril Coven (Skyrim.esm:01526E)",
+    "no packages",
+    "C04 Skyrim.esm:01CEF5 alias DA05Hagraven",
+    "DA05 alias GlenmorilLeader, other giver below 50",
+    "class Skyrim.esm:013176"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:02ABC4",
+   "name": "Eriana",
+   "race": "Redguard",
+   "sex": "female",
+   "firstMeet": "In Bloated Man's Grotto, a short walk from Falkreath, as one of Hircine's hunters during Ill Met By Moonlight.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "during the hunt",
+     "where": "Bloated Man's Grotto, near Falkreath",
+     "doing": "hunts Sinding with the other hunters; patrols, then follows you"
+    }
+   ],
+   "changes": [
+    "When the grotto's hunt is over she leaves Bloated Man's Grotto.",
+    "If you defend Sinding, she's one of 'the Hunters' you must kill."
+   ],
+   "role": "one of Hircine's hunters in Ill Met By Moonlight",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Ill Met By Moonlight",
+     "how": "a step in it: 'Join the hunt'; its target if you defend Sinding ('Kill the Hunters'); the records list her among those who can speak to you before you choose"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her packages hang on a grotto quest the extracts don't name (stages 66, 80, 100), so the exact moments she follows you and leaves aren't in player terms."
+    },
+    {
+     "field": "changes",
+     "why": "Where she goes when she leaves the grotto isn't given."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Her patrol package sits above her follow-you package, and both hang on conditions the extracts don't name, so when she patrols and when she follows isn't settled."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02ABC4",
+    "placed ref Skyrim.esm:02ABC5 in Bloated Man's Grotto",
+    "dunBloatedManHuntersLeave Skyrim.esm:10E2C9 (Skyrim.esm:0955CF == 100)",
+    "dunBloatedManHuntersPatrolLinkCustom01 Skyrim.esm:0FA49A",
+    "dunBloatedManHunterGroup2FollowsPlayer Skyrim.esm:0FA498 (0955CF 66 done, 80 not)",
+    "DA05 alias Hunter 4, other giver below 60",
+    "DA05HuntersOfHircineFaction",
+    "class Skyrim.esm:017008"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019951",
+   "name": "Chief Larak",
+   "race": "Orsimer",
+   "sex": "male",
+   "firstMeet": "In Mor Khazgur, the Orc stronghold in The Reach near Karthwasten; at night in Larak's Longhouse.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "12 hours",
+     "where": "Mor Khazgur",
+     "doing": "eats and goes about the stronghold"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "Larak's Longhouse, Mor Khazgur",
+     "doing": "eats in the longhouse"
+    },
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "Larak's Longhouse, Mor Khazgur",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [],
+   "role": "chief of Mor Khazgur; Block trainer",
+   "sells": "",
+   "trains": "Block (master trainer; the records set no level cap)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Cursed Tribe",
+     "how": "can start it: the records list him among those whose talk sends you to Largashbur, before it begins"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His sleep package uses 'where he's placed', which is his longhouse; the 7 am package is set by a marker outside, so 'outdoors' is the marker's place."
+    },
+    {
+     "field": "quests",
+     "why": "Three or more other quests name him (stronghold quests), but their names aren't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Whether you need to be blood-kin or an Orc to be let into the stronghold isn't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019951",
+    "placed in Larak's Longhouse, Mor Khazgur",
+    "MorKhazgurLarakEatPackage19x5 Skyrim.esm:0C78C6",
+    "MorKhazgurLarakEatOutsidePackage7x12 Skyrim.esm:060701",
+    "DefaultSleepEditorLoc24x8",
+    "DefaultSandboxHomeowner Skyrim.esm:031730",
+    "DA06 giver below 1 (dialogue)",
+    "JobTrainerBlockFaction, trainer tier Master, no cap",
+    "JobOrcChiefFaction",
+    "class Skyrim.esm:0B5FB4"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013B79",
+   "name": "Chief Burguk",
+   "race": "Orsimer",
+   "sex": "male",
+   "firstMeet": "In Dushnikh Yal, the Orc stronghold in The Reach a short walk from Markarth; at night in Burguk's Longhouse.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "12 hours",
+     "where": "Dushnikh Yal",
+     "doing": "his daytime package has no place set; he's about the stronghold"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "Burguk's Longhouse, Dushnikh Yal",
+     "doing": "eats in the longhouse"
+    },
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "Burguk's Longhouse, Dushnikh Yal",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [],
+   "role": "chief of Dushnikh Yal; One-handed trainer",
+   "sells": "",
+   "trains": "One-handed (master trainer; the records set no level cap)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Cursed Tribe",
+     "how": "can start it: the records list him among those whose talk sends you to Largashbur, before it begins"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His sleep package uses 'where he's placed', which is his longhouse; the 7 am package has no place, so 'about the stronghold' is a reading of where he'd be."
+    },
+    {
+     "field": "quests",
+     "why": "Three or more other quests name him (stronghold quests), but their names aren't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Whether you need to be blood-kin or an Orc to be let into the stronghold isn't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013B79",
+    "placed in Burguk's Longhouse, Dushnikh Yal",
+    "DushnikhYalBurgukEatLonghouse19x5 Skyrim.esm:0C509E",
+    "DushnikhYalBurguk7x12Package Skyrim.esm:06C822",
+    "DefaultSleepEditorLoc24x8",
+    "DefaultSandboxEditorLocation512",
+    "DA06 other giver below 1",
+    "JobTrainerOneHandedFaction, trainer tier Master, no cap",
+    "JobOrcChiefFaction",
+    "class Skyrim.esm:0B5FB5"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01B075",
+   "name": "Chief Mauhulakh",
+   "race": "Orsimer",
+   "sex": "male",
+   "firstMeet": "In Narzulbur, the Orc stronghold in Eastmarch near Kynesgrove, not far from Windhelm; at night in Mauhulakh's Longhouse.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "12 hours",
+     "where": "Narzulbur",
+     "doing": "sits (the package has no place set)"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "Mauhulakh's Longhouse, Narzulbur",
+     "doing": "eats in the longhouse"
+    },
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "Mauhulakh's Longhouse, Narzulbur",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [],
+   "role": "chief of Narzulbur",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Cursed Tribe",
+     "how": "can start it: the records list him among those whose talk sends you to Largashbur, before it begins"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "role",
+     "why": "He's a chief with no trainer or vendor setup in the records."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His sleep package uses 'where he's placed', which is his longhouse; the 7 am package has no place, so 'about the stronghold' is a reading of where he'd be."
+    },
+    {
+     "field": "quests",
+     "why": "Three or more other quests name him (stronghold quests), but their names aren't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Whether you need to be blood-kin or an Orc to be let into the stronghold isn't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01B075",
+    "placed in Mauhulakh's Longhouse, Narzulbur",
+    "NarzulburMauhulukEatPackage19x5 Skyrim.esm:0C78D5",
+    "NarzulburMauhulakhSitPackage7x12 Skyrim.esm:0C78D3",
+    "DefaultSleepEditorLoc24x8",
+    "DefaultSandboxHomeowner",
+    "DA06 other giver below 1",
+    "JobOrcChiefFaction",
+    "class Skyrim.esm:10E714"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019E18",
+   "name": "Atub",
+   "race": "Orsimer",
+   "sex": "female",
+   "firstMeet": "At Largashbur, the Orc stronghold a short walk from Riften in the Rift, during The Cursed Tribe while giants attack the gate; she lives in the Largashbur Longhouse.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "16 hours",
+     "where": "Largashbur, near Riften",
+     "doing": "about the stronghold at her apothecary spot; trades 8 am to 8 pm"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Largashbur Longhouse, Largashbur",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [
+    "At the start of The Cursed Tribe she stays put in Largashbur until the giant attacking it is dead."
+   ],
+   "role": "wise woman of Largashbur; apothecary merchant; Illusion trainer; gives The Cursed Tribe",
+   "sells": "apothecary goods, 8 am to 8 pm (her item lists don't resolve in the extracts)",
+   "trains": "Illusion, up to 100 (expert trainer)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Cursed Tribe",
+     "how": "can give it ('Atub, the wise woman of the tribe, has asked me to talk the chief, Yamarz'), and steps in it: 'Return to Atub', 'Bring Troll Fat and a Daedra Heart to Atub', 'Observe Atub's ritual'"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "trains",
+     "why": "Expert tier with a cap of 100 is as the record has it."
+    },
+    {
+     "field": "changes",
+     "why": "The stay-put package hangs on a variable in The Cursed Tribe's script; reading it as 'until the giant is dead' is from the package's name."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Whether you can enter the stronghold without the quest isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Her top package (stay where she's placed) holds while a Cursed Tribe script variable is 0, with no stage check; if that's true before the quest, she stays in the longhouse rather than at her apothecary spot until the quest moves on."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019E18",
+    "placed ref Skyrim.esm:019E19 in Largashbur Longhouse (Skyrim.esm:01525C)",
+    "DA06AtubWaitForGiantDeath Skyrim.esm:028D4B",
+    "DefaultSleepEditorLoc24x8",
+    "USKPAtubSandboxApothecary Unofficial Skyrim Special Edition Patch.esp:00284D",
+    "vendor hours 8-20",
+    "JobApothecaryFaction, JobMerchantFaction, JobTrainerIllusionFaction (Expert, cap 100)",
+    "DA06 other giver below 11, stages 20/40/50",
+    "protected flag",
+    "class Skyrim.esm:0B812C"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0240CC",
+   "name": "Silus Vesuius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In Dawnstar, at his house, which he keeps as a museum to the Mythic Dawn ('He'll give me the details inside his house in Dawnstar').",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Silus Vesuius' House, Dawnstar",
+     "doing": "at home (his museum)"
+    }
+   ],
+   "changes": [
+    "Pieces of the Past: once the Razor's pieces are gathered he meets you at the Shrine of Mehrunes Dagon, in the Pale near Stonehills.",
+    "There you can kill him for Mehrunes Dagon ('I have killed Silus Vesuius for Mehrunes Dagon').",
+    "If you refuse, he heads straight home to his house in Dawnstar."
+   ],
+   "role": "Mythic Dawn collector; gives Pieces of the Past",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Pieces of the Past",
+     "how": "gives it ('Speak to Silus inside his house'; bring him the pommel, shards and hilt); its target if you obey Mehrunes Dagon ('Kill Silus')"
+    },
+    {
+     "quest": "Reforging the Past",
+     "how": "gives it: he lets you reforge Mehrunes' Razor yourself, and pays 'a substantial reward' if you bring it back"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The records place him in his house; the stage 10 log suggests he approaches you in Dawnstar first, but where isn't given."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id is in the extracts; it doesn't resolve to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "quests",
+     "why": "Two more quests name him but their names aren't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0240CC",
+    "placed ref Skyrim.esm:0240CE in Silus Vesuius' House (Skyrim.esm:0240B7)",
+    "DA07SilusRunHomeIgnoreCombatPackage Skyrim.esm:0BA1CD (DA07 stage 150 done, not in his house)",
+    "DefaultSandboxHomeowner",
+    "DA07 Skyrim.esm:0240B8 giver below 50, stages 10/13/50/70/80/150, objective 30",
+    "DA07PlayerHasReforged SilusJournal_ReforgeRazor.esp:000D9B stages 5/20/25/30",
+    "class Skyrim.esm:01E7D0"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01434D",
+   "name": "Nelkir",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Dragonsreach, Whiterun: a son of Jarl Balgruuf.",
+   "day": [
+    {
+     "from": "9 am",
+     "for": "2 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "goes about the palace"
+    },
+    {
+     "from": "11 am",
+     "for": "1 hour",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "off on his own about the palace"
+    },
+    {
+     "from": "noon",
+     "for": "1 hour",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "lunch"
+    },
+    {
+     "from": "1 pm",
+     "for": "4 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "goes about the palace"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "dinner"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [
+    "If the ruling family loses Whiterun in the civil war and is exiled, they live in the Blue Palace, Solitude instead (this package sits above all the others)."
+   ],
+   "role": "Jarl Balgruuf's troubled son; The Whispering Door is about him",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Whispering Door",
+     "how": "its subject: Jarl Balgruuf asks you to 'Find out what's wrong with Nelkir'; then 'Speak to Nelkir OR warn the Jarl'"
+    },
+    {
+     "quest": "Before the Storm",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "Bleak Falls Barrow",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "Dragon Rising",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "The World-Eater's Eyrie",
+     "how": "the records list them among those who can speak of it early on; what is said isn't in the extracts"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "6 am to 9 am and 7 pm to 10 pm aren't covered by any of his packages; the records don't say where he is then."
+    },
+    {
+     "field": "day",
+     "why": "What he does in his own 11 am hour isn't said beyond 'in Dragonsreach'."
+    },
+    {
+     "field": "changes",
+     "why": "The exile package is gated on a faction the extracts don't name; 'exiled after the civil war' is read from the package's name."
+    },
+    {
+     "field": "quests",
+     "why": "His part in the main-quest scenes in Dragonsreach isn't shown."
+    },
+    {
+     "field": "fightsWith",
+     "why": "A child; only a class id in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01434D",
+    "placed ref Skyrim.esm:01A67B in Dragonsreach",
+    "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E (in faction Skyrim.esm:036629)",
+    "WhiterunDragonsReachDinner17x2 Skyrim.esm:0D0FEF",
+    "WhiterunDragonsReachLunch12x1 Skyrim.esm:0D0FED",
+    "WhiterunNelkirDragonsreach11x1 Skyrim.esm:037CBB",
+    "WhiterunDragonsreachKidsSleep22x8 Skyrim.esm:0C36AC",
+    "WhiterunDragonsreachKidsSandbox9x10 Skyrim.esm:0C36AB",
+    "DA08 Skyrim.esm:04A37B named giver, stages 10/42/44",
+    "MQ102/MQ103/MQ104 aliases",
+    "MQ303 other giver below 50",
+    "GovRuling, DragonsreachOccupants",
+    "DA08 giver dialogue Balgruuf Skyrim.esm:013BBD below 10, stage 10 log"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01434C",
+   "name": "Frothar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Dragonsreach, Whiterun, with the Jarl's family.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "3 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "in the family's quarters"
+    },
+    {
+     "from": "9 am",
+     "for": "3 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "goes about the palace"
+    },
+    {
+     "from": "noon",
+     "for": "1 hour",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "lunch"
+    },
+    {
+     "from": "1 pm",
+     "for": "4 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "goes about the palace"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "3 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "in the family's quarters"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [
+    "If the ruling family loses Whiterun in the civil war and is exiled, they live in the Blue Palace, Solitude instead (this package sits above all the others)."
+   ],
+   "role": "child of Whiterun's ruling family in Dragonsreach",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Whispering Door",
+     "how": "the records list him among those who can raise it before it starts; it's about Nelkir"
+    },
+    {
+     "quest": "Before the Storm",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "Bleak Falls Barrow",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "Dragon Rising",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "The World-Eater's Eyrie",
+     "how": "the records list them among those who can speak of it early on; what is said isn't in the extracts"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The exile package is gated on a faction the extracts don't name; 'exiled after the civil war' is read from the package's name."
+    },
+    {
+     "field": "role",
+     "why": "The records put him in Whiterun's ruling-family faction; that he's Balgruuf's child isn't stated."
+    },
+    {
+     "field": "quests",
+     "why": "Main-quest parts in Dragonsreach aren't shown; one more quest names him but its name isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "A child; only a class id in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01434C",
+    "placed ref Skyrim.esm:01A679 in Dragonsreach",
+    "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E",
+    "WhiterunDragonsReachDinner17x2",
+    "WhiterunDragonsReachLunch12x1",
+    "WhiterunDragonsreachFrotharPackage9x10 Skyrim.esm:0C36AD",
+    "WhiterunDragonsreachKidsSleep22x8",
+    "WhiterunDragonsreachKidsDefault Skyrim.esm:0D16D8",
+    "DA08 other giver below 0",
+    "MQ102/MQ103/MQ104 aliases",
+    "MQ303 other giver below 50",
+    "GovRuling, DragonsreachOccupants"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01434B",
+   "name": "Dagny",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In Dragonsreach, Whiterun, with the Jarl's family.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "3 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "in the family's quarters"
+    },
+    {
+     "from": "9 am",
+     "for": "3 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "goes about the palace"
+    },
+    {
+     "from": "noon",
+     "for": "1 hour",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "lunch"
+    },
+    {
+     "from": "1 pm",
+     "for": "4 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "goes about the palace"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "3 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "in the family's quarters"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "the Jarl's Quarters, Dragonsreach",
+     "doing": "sleeps"
+    }
+   ],
+   "changes": [
+    "If the ruling family loses Whiterun in the civil war and is exiled, they live in the Blue Palace, Solitude instead (this package sits above all the others)."
+   ],
+   "role": "child of Whiterun's ruling family in Dragonsreach",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Whispering Door",
+     "how": "the records list her among those who can raise it before it starts; it's about Nelkir"
+    },
+    {
+     "quest": "Before the Storm",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "Bleak Falls Barrow",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "Dragon Rising",
+     "how": "in Dragonsreach for it; no step names them"
+    },
+    {
+     "quest": "The World-Eater's Eyrie",
+     "how": "the records list them among those who can speak of it early on; what is said isn't in the extracts"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The exile package is gated on a faction the extracts don't name; 'exiled after the civil war' is read from the package's name."
+    },
+    {
+     "field": "role",
+     "why": "The records put her in Whiterun's ruling-family faction; that she's Balgruuf's child isn't stated."
+    },
+    {
+     "field": "quests",
+     "why": "Main-quest parts in Dragonsreach aren't shown; one more quest names her but its name isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "A child; only a class id in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01434B",
+    "placed ref Skyrim.esm:01A67A in Dragonsreach",
+    "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E",
+    "WhiterunDragonsReachDinner17x2",
+    "WhiterunDragonsReachLunch12x1",
+    "WhiterunDragonsreachKidsSandbox9x10 Skyrim.esm:0C36AB",
+    "WhiterunDragonsreachKidsSleep22x8",
+    "WhiterunDragonsreachKidsDefault Skyrim.esm:0D16D8",
+    "DA08 other giver below 0",
+    "MQ102/MQ103/MQ104 aliases",
+    "MQ303 other giver below 50",
+    "GovRuling, DragonsreachOccupants"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:04E4DF",
+   "name": "Meridia",
+   "race": "Altmer",
+   "sex": "female",
+   "firstMeet": "As a voice from Mount Kilkreath: either she calls you to find her beacon, or you pick up the beacon and she tells you to bring it to her. She's met at her shrine at the Kilkreath Ruins, next to Dragon Bridge in Haafingar.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Shrine of Meridia, Kilkreath Ruins, near Dragon Bridge",
+     "doing": "appears in the sky above the shrine during The Break of Dawn"
+    }
+   ],
+   "changes": [],
+   "role": "Daedric Prince; gives The Break of Dawn and its reward, Dawnbreaker",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Break of Dawn",
+     "how": "gives it: 'An otherworldly voice coming from Mount Kilkreath is commanding me to find a beacon'; 'Meridia has commanded me to enter Kilkreath Ruins, destroy Malkoran, and retrieve the artifact Dawnbreaker'"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Where the beacon is found is filled in by the game at run time (the log leaves the place blank), so the records don't say where you first hear her."
+    },
+    {
+     "field": "fightsWith",
+     "why": "A Daedric Prince speaking from the sky; only a class id in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:04E4DF",
+    "DA09MeridiaSkySceneStart Skyrim.esm:04E4E3 (marker at Shrine of Meridia)",
+    "DA09 Skyrim.esm:04E4E1 giver below 400, stages 50/100/300/500; alias placed ref Skyrim.esm:04E4E0 at Kilkreath Ruins",
+    "essential flag",
+    "class Skyrim.esm:013176",
+    "DA09 stage 50 and 100 logs"
+   ]
+  }
+ ]
+}
