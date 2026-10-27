@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1e fixed the fix never reaching Dave's actual files, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1f dropped tfc entirely, needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5092,9 +5092,16 @@ Dave's third test, same symptoms Part 1d was meant to have fixed -- because it w
 - [x] **`wo158_shoot.py`'s own `main()` now also writes straight into `C:\LoreRim\Stock Game\`**, flat, the same files, every run -- the one location confirmed live to actually work. `_fieldguide\tools\wo158\` is kept too, as the readable copy; `Stock Game` is the one that matters to the game itself from here on, so a future fix can't silently miss it the same way again.
 - **Checked.** Ran the generator against this PC's own install: all fourteen files land in `C:\LoreRim\Stock Game\`, `wo158-start.txt` there reads `sgtm 0.0001` (Part 1d's own fix), confirming the copy Dave will actually run now matches staging. 369 gamedata tests pass (no test written for this one -- it's a file-copy destination, not a behaviour `test_wo158_shoot.py`'s own line-by-line checks would ever catch).
 
+### Part 1f. A fourth live test, same symptom -- `tfc` itself, not any of the three real bugs already fixed (Dave, 27 Oct)
+Dave's fourth test, genuinely running the corrected Part 1e copy this time ("ESC is trying to do something -- I can hear the menu appear but I can't see any of it. I can't move around or anything"), and still the same shape of failure. Three real, separate bugs had already been found and fixed in `tm`, the camera retoggle and `sgtm` -- and the symptom outlived all three, which means none of them was ever the actual mechanism. Free camera suppressing a menu's own rendering while leaving its sound and input partly alive is a documented Skyrim quirk on its own, independent of all three fixes.
+- [x] **`tfc` dropped entirely, not patched a fifth time.** It was never load-bearing: `player.setpos`/`player.setangle` already move and aim the player directly (confirmed live, more than once), and Skyrim's own first-person view shows exactly what the player's eyes are pointed at, with no character model in the way -- the same framing a detached free camera would have given, from the same numbers, without a free camera at all. `tcl` (no collision) stays, since a player placed in open air above an entrance needs it to not just fall; `tfc` does not.
+- [x] **One manual step this adds, since nothing else can do it:** before `wo158-start`, switch to first-person view by hand and stay there for the session -- third person would show the player's own body hanging in the air at every place shot. Written into "How Dave runs it" below.
+- **Checks.** `test_wo158_shoot.py`'s retoggle test replaced with one asserting `tfc` never appears anywhere at all, in any file. 369 gamedata tests pass.
+
 ### How Dave runs it
+0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
-2. Open the console (usually `~`) and run `bat wo158-start` once. The files now land in `C:\LoreRim\Stock Game\` directly (Part 1e), the folder confirmed live to work -- no more copying by hand.
+2. Open the console (usually `~`) and run `bat wo158-start` once. The files land in `C:\LoreRim\Stock Game\` directly (Part 1e), the folder confirmed live to work.
 3. For each of the five places: `bat wo158-place-<slug>` (the five slugs: `broken-oar-grotto`, `bleak-falls-barrow`, `fort-hraggstad`, `riverwood`, `winking-skeever-outside`), then `bat wo158-toggle-hud` (HUD and console both hide now), the screenshot key, then `bat wo158-toggle-hud` again (console back, so the next command can be typed and checked). For the Winking Skeever's inside comparison shot, walk through the door by hand afterwards and shoot again, same settings otherwise.
 4. Run `bat wo158-photoroom-setup` once, then for each of the five people: `bat wo158-person-<slug>` (`lucan-valerius`, `jaree-ra`, `mjoll-the-lioness`, `captain-aldis`, `delphine`), then the same `wo158-toggle-hud` / screenshot / `wo158-toggle-hud` pair as step 3.
 5. Run `bat wo158-end` once, when all ten are taken.

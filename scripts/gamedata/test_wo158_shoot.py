@@ -16,8 +16,8 @@ def all_place_lines():
     for name, slug, target, note, marker, entrance in wo.PLACES:
         yield slug, wo.place_lines(target, marker, entrance)
     ws = wo.WINKING_SKEEVER_DOOR
-    yield "winking-skeever-outside", [f"fw {wo.CLEAR_WEATHER}", "set gamehour to 12"] + wo.with_camera_reattached(
-        wo.camera_setpos_lines(*wo.door_camera(ws["pos"], ws["door_yaw"])))
+    yield "winking-skeever-outside", [f"fw {wo.CLEAR_WEATHER}", "set gamehour to 12"] + wo.camera_setpos_lines(
+        *wo.door_camera(ws["pos"], ws["door_yaw"]))
 
 
 class ShapeTest(unittest.TestCase):
@@ -45,18 +45,19 @@ class ShapeTest(unittest.TestCase):
             others = [t for _, _, t in wo.PEOPLE if t != target]
             self.assertNotIn("tm", wo.person_lines(target, others), slug)
 
-    def test_every_camera_move_retoggles_tfc_around_itself(self):
-        # Found live, 27 Oct: once tfc is on, repositioning the player doesn't move the already-detached free
-        # camera. Every block that actually sets where the camera looks from must toggle tfc off, reposition,
-        # then toggle it back on -- exactly twice, bracketing the move, never left as a single on/off.
+    def test_tfc_is_never_used_anywhere(self):
+        # Part 1f: free camera suppressed a menu's own rendering independently of tm, the retoggle and sgtm --
+        # three real, separate bugs fixed across Parts 1c-1e, and the same symptom still came back a fourth
+        # time. Dropped entirely rather than chased further: player.setpos/setangle already move and aim the
+        # player directly, and first person shows exactly that with no free camera needed at all.
         for slug, lines in all_place_lines():
-            self.assertEqual(lines.count("tfc 1"), 2, (slug, lines))
-            i, j = [k for k, l in enumerate(lines) if l == "tfc 1"]
-            self.assertTrue(any("setpos" in l or "moveto" in l for l in lines[i + 1:j]), (slug, lines))
+            self.assertFalse(any(l.startswith("tfc") for l in lines), (slug, lines))
+        for f in (wo.start_lines(), wo.end_lines(), wo.camera_mark_lines(), wo.person_mark_lines()):
+            self.assertFalse(any(l.startswith("tfc") for l in f), f)
         for name, slug, target in wo.PEOPLE:
             others = [t for _, _, t in wo.PEOPLE if t != target]
             lines = wo.person_lines(target, others)
-            self.assertEqual(lines.count("tfc 1"), 2, (slug, lines))
+            self.assertFalse(any(l.startswith("tfc") for l in lines), (slug, lines))
 
     def test_time_is_frozen_without_the_true_zero_that_hangs(self):
         # Found live, 27 Oct (Part 1d): sgtm 0 hung the game outright on this heavily scripted install -- the
@@ -80,8 +81,7 @@ class ShapeTest(unittest.TestCase):
 
     def test_a_person_goes_to_the_mark_before_being_brought_in(self):
         # moveto player drops the NPC wherever the player already stands, so the player must be back on the
-        # mark (not left at the previous shot's camera spot) before any prid/enable/moveto runs, and that move
-        # happens outside any tfc bracket -- it only needs the player's own position right, not the camera's.
+        # mark (not left at the previous shot's camera spot) before any prid/enable/moveto runs.
         lines = wo.person_lines(wo.PEOPLE[0][2], [t for _, _, t in wo.PEOPLE[1:]])
         self.assertEqual(lines[:3], wo.person_mark_lines())
 

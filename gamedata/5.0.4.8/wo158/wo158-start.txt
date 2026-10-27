@@ -1,4 +1,3 @@
-tfc 1
 tcl
 tai
 fw SClearSkySN
