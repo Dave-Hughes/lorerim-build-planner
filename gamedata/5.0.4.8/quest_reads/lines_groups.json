@@ -1,0 +1,75 @@
+{
+ "about": "LINES.md groups: read lines/L<nn>.json, check lines/checked/L<nn>.json",
+ "groups": {
+  "L01": [
+   "main-quest",
+   "dawnguard",
+   "dragonborn",
+   "companions",
+   "college"
+  ],
+  "L02": [
+   "thieves-guild",
+   "dark-brotherhood",
+   "civil-war",
+   "bards-college",
+   "vigilants"
+  ],
+  "L03": [
+   "meridias-order",
+   "penitus-oculatus",
+   "a-daedras-best-friend",
+   "a-night-to-remember",
+   "boethiahs-calling"
+  ],
+  "L04": [
+   "pieces-of-the-past",
+   "saints-and-seducers",
+   "the-taste-of-death",
+   "the-whispering-door",
+   "wyrmstooth"
+  ],
+  "L05": [
+   "baan-malur",
+   "siege-at-icemoth",
+   "gray-cowl",
+   "forgotten-city",
+   "gravewind"
+  ],
+  "L06": [
+   "raven-rock",
+   "thirsk",
+   "tel-mithryn",
+   "skaal-village",
+   "black-books"
+  ],
+  "L07": [
+   "unearthed",
+   "forsworn-conspiracy",
+   "the-wolf-queen-awakened",
+   "blood-on-the-ice",
+   "the-white-phial"
+  ],
+  "L08": [
+   "the-book-of-love",
+   "seeking-a-cure",
+   "dark-ancestor",
+   "undeath",
+   "the-tools-of-kagrenac"
+  ],
+  "L09": [
+   "the-welkynar-knight",
+   "belethors-sister",
+   "the-frozen-heart",
+   "gore",
+   "remiel"
+  ],
+  "L10": [
+   "lucien",
+   "serana",
+   "katana",
+   "fura",
+   "faralda"
+  ]
+ }
+}
