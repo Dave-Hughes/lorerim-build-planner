@@ -1,0 +1,1262 @@
+[
+ {
+  "id": "Meridia.esp:000D6E",
+  "name": "Arch-Paladin Laracin",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "Meridia's Sanctum, the hall of Meridia's Order, where he stands guard; you meet him once Paladin Marith brings you to High Priestess Alara in Meridia's Order",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "20 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "standing guard"
+   },
+   {
+    "from": "midnight",
+    "for": "4 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [
+   "From the end of Prisoner (once you've found the staff) until Infiltration sends you to the Dark Dawn: sits in the Sanctum all day.",
+   "From the end of Infiltration until early in Fort Justice: patrols.",
+   "Fort Justice, after Kariss' funeral and the attack on it: sits (all day) until you're told to meet the Order at Fort Justice.",
+   "During A New Day: stays at a spot by Riften all day.",
+   "After A New Day until The Pocket Realm: around Fort Justice (an abandoned outpost in the Rift) all day.",
+   "From The Pocket Realm until The Ritual is under way: stands at his post inside Fort Justice.",
+   "Once The Ritual is under way (stage 25) and from then on he lives at Fort Justice: 6 pm to 10 pm around the fort, 10 pm to 6 am at a spot in the fort; 6 am to 6 pm his package names no place.",
+   "Stendarr's Mercy: follows you while you deal with the Vigilant leader at Stendarr's Beacon."
+  ],
+  "role": "Arch-Paladin of Meridia's Order; quest giver; can become a follower",
+  "sells": "",
+  "trains": "",
+  "joins": "Help him in Stendarr's Mercy: once you've killed the Vigilant leader at Stendarr's Beacon he offers you his services. If you turn him down he deals with it alone.",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Infiltration",
+    "how": "gives it: he's spearheading the plan to infiltrate the Necromancers and sends you to Deep Moon Lookout"
+   },
+   {
+    "quest": "Stendarr's Mercy",
+    "how": "gives it: asks you to help assassinate the leader of Stendarr's Beacon"
+   },
+   {
+    "quest": "Prisoner",
+    "how": "a step in it: one of the Order you ask about Findar; Alara says your next task will come from him"
+   },
+   {
+    "quest": "Meridia's Order",
+    "how": "named in it as one of the Order at the Sanctum; the journal gives him no task"
+   },
+   {
+    "quest": "Our Lady",
+    "how": "named in it; the journal gives him no task"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "a step in it: with the Order through Kariss' funeral and the move to Fort Justice"
+   },
+   {
+    "quest": "The Ritual",
+    "how": "named in it; changed by it: he moves to Fort Justice for good"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Meridia's Sanctum is an interior; the records I may read don't name where its door is in Skyrim or which hold it's in."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   },
+   {
+    "field": "sells",
+    "why": "carries the same vendor entry as many plain followers (Iona, J'zargo, Erik the Slayer), with no merchant chest; that is the follower trade list, not a shop."
+   },
+   {
+    "field": "joins",
+    "why": "the truce ending of Stendarr's Mercy (stage 27) doesn't say whether he still offers his services."
+   },
+   {
+    "field": "changes",
+    "why": "a ninth quest without a name makes him follow you at stages 20 and 40, come to talk at 30, and sit at 50; I can't tell what it is."
+   },
+   {
+    "field": "changes",
+    "why": "the 'by Riften' package during A New Day points at a marker only placed as 'Riften' at 0 km; it may be the grounds of Fort Justice near Riften."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:000D6E",
+   "NMeridiaLaracinGuard01 Meridia.esp:0014EB",
+   "NMeridiaLaracinSit01 Meridia.esp:00153C",
+   "NMeridia04LaracinSit01 Meridia.esp:005ED8",
+   "NMeridia04LaracinPatrol01 Meridia.esp:0087AD",
+   "NMeridia05LaracinSit01 Meridia.esp:00CD08",
+   "NMeridia05LaracinSit02 Meridia.esp:00CD2F",
+   "NMeridia06RiftenSandbox Meridia.esp:008F5B",
+   "NMeridiaFortJusticeSandbox Meridia.esp:00CD42",
+   "NMeridia08LaracinStand01 Meridia.esp:01DE61",
+   "NMeridia09FortJusticeLaracin01 Meridia.esp:029BDA",
+   "NMeridiaFortJusticeLaracin02 Meridia.esp:029BDB",
+   "NMeridiaFortJusticeLaracin03 Meridia.esp:029BDC",
+   "NMeridiaLaracin01LaracinFollow01 Meridia.esp:02A171",
+   "NMeridia05LaracinFollowPackage01/02, ForcegreetPackage01 (quest Meridia.esp:05FA59)",
+   "quest Stendarr's Mercy Meridia.esp:02A15E stages 10-40, giver",
+   "quest Infiltration Meridia.esp:00816C giver",
+   "factions PotentialFollowerFaction, NMeridiasOrderFaction rank 3",
+   "vendor vendRaw 48cb0600 no VENC",
+   "essential flag",
+   "class Skyrim.esm:01317C",
+   "unnamed quest Meridia.esp:05FA59"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6D",
+  "name": "Paladin Asger",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Meridia's Sanctum, standing guard, among Meridia's Order",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "standing guard"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "After Infiltration until early in Fort Justice: lies wounded (the attack on the Sanctum).",
+   "Fort Justice, after the attack on Kariss' funeral: sits all day until the Order moves to Fort Justice.",
+   "During A New Day: stays at a spot by Riften all day.",
+   "After A New Day until The Pocket Realm: around Fort Justice (an abandoned outpost in the Rift).",
+   "From The Pocket Realm until The Ritual is under way: stands at his post inside Fort Justice.",
+   "Once The Ritual is under way he lives at Fort Justice: 6 am to 6 pm around the fort, 6 pm to midnight near wherever he is, midnight to 6 am sleeping.",
+   "Champion's Choice: follows you to Riften for the mission.",
+   "If you upset him in Champion's Choice he asks you to keep your distance."
+  ],
+  "role": "Paladin of Meridia's Order; trainer; quest giver; can become a follower",
+  "sells": "",
+  "trains": "Two-handed, up to 100 (expert trainer)",
+  "joins": "Finish Champion's Choice to his liking and he offers you his services. If you upset him on that mission he asks you to keep your distance instead.",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Champion's Choice",
+    "how": "gives it: asks you to take the lead on a mission about a warlock in Riften"
+   },
+   {
+    "quest": "Prisoner",
+    "how": "a step in it: one of the Order you ask about Findar"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "a step in it: wounded in the attack, then with the Order at Kariss' funeral"
+   },
+   {
+    "quest": "The Ritual",
+    "how": "named in it; changed by it: he moves to Fort Justice for good"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Meridia's Sanctum is an interior; the records I may read don't name where its door is in Skyrim or which hold it's in."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   },
+   {
+    "field": "sells",
+    "why": "carries the same vendor entry as many plain followers (Iona, J'zargo, Erik the Slayer), with no merchant chest; that is the follower trade list, not a shop."
+   },
+   {
+    "field": "day",
+    "why": "his sleep package names no bed, so where in the Sanctum (and later the fort) he sleeps isn't recorded."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:000D6D",
+   "NMeridiaAsgerGuard01 Meridia.esp:0014EA",
+   "NMeridiaAsgerSleep01 Meridia.esp:00153B",
+   "NMeridia04AsgerWounded01 Meridia.esp:0087A7",
+   "NMeridia05AsgerSit01/02",
+   "NMeridia06RiftenSandbox Meridia.esp:008F5B",
+   "NMeridiaFortJusticeSandbox Meridia.esp:00CD42",
+   "NMeridia08AsgerStand01 Meridia.esp:01DE5F",
+   "NMeridiaFortJusticeAsger01/02/03 Meridia.esp:028615-028617",
+   "NMeridiaAsger01FollowPlayer01 Meridia.esp:02C25A",
+   "NMeridiaAsgerFortJustice04 Meridia.esp:02FE4A",
+   "quest Champion's Choice Meridia.esp:02B1F6 stages 10-51, giver",
+   "trainer TwoHanded Expert cap 100",
+   "vendor vendRaw 48cb0600 no VENC",
+   "essential flag",
+   "class Skyrim.esm:042DC5"
+  ]
+ },
+ {
+  "id": "Meridia.esp:006459",
+  "name": "Dralos",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "Deep Moon Lookout, during Infiltration: the Dark Dawn recruiter Laracin sends you to meet",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "at a training dummy"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "practising magic"
+   },
+   {
+    "from": "2 pm",
+    "for": "10 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "about the sanctuary"
+   }
+  ],
+  "changes": [
+   "Infiltration: waits for you at Deep Moon Lookout and comes up to talk; stays there while you decide about Adelaide; then the day above at the Dark Dawn Sanctuary, which he says is next to Rannveig's Fast in Whiterun hold."
+  ],
+  "role": "recruiter for the Dark Dawn necromancers; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Infiltration",
+    "how": "a step in it: the recruiter who tells you to kill Adelaide and then where the sanctuary is; or a target, if you choose to kill the Necromancers instead"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   },
+   {
+    "field": "firstMeet",
+    "why": "Deep Moon Lookout isn't in the places extract, so I can't say which hold it's in."
+   },
+   {
+    "field": "day",
+    "why": "he is placed out in the world for Infiltration; whether he is about before that quest reaches stage 20 isn't clear."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:006459",
+   "NMeridia04DralosForcegreet01 Meridia.esp:008213",
+   "NMeridia04DralosWait02 Meridia.esp:008214",
+   "NMeridia04DralosSleep01 Meridia.esp:00718B",
+   "NMeridia04DralosDummy01 Meridia.esp:007189",
+   "NMeridia04DralosMagic01 Meridia.esp:007BE6",
+   "NMeridia04DralosSandbox01 Meridia.esp:00718A",
+   "quest Infiltration Meridia.esp:00816C stages 20-30, alias Dralos ref Meridia.esp:008224",
+   "INFO Meridia.esp:0081D9 'Our Sanctuary is next to Rannveig's Fast'",
+   "factions NMeridiaDarkDawnFaction, NMeridiaDarkDawnRecruitFaction",
+   "class Skyrim.esm:01317A"
+  ]
+ },
+ {
+  "id": "Meridia.esp:0081BC",
+  "name": "Adelaide",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "a captive of the Dark Dawn recruiters, tied up, during Infiltration (Dralos orders you to kill her)",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "where the recruiters hold her",
+    "doing": "bound"
+   }
+  ],
+  "changes": [
+   "Once Infiltration moves on to the sanctuary (stage 30), if she lives: at the Sleeping Giant Inn, Riverwood, all day. She tells you to come find her in Riverwood."
+  ],
+  "role": "part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Infiltration",
+    "how": "its target: Dralos orders you to kill her; spare her (by killing the Necromancers) and she tells you their hideout is next to Rannveig's Fast"
+   }
+  ],
+  "canDie": "essential in her record, but Infiltration lets you choose to kill her",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "she is placed out in the world with no place name; it is probably by Deep Moon Lookout, where Dralos waits, but the record doesn't say."
+   },
+   {
+    "field": "canDie",
+    "why": "her record is flagged essential, yet the journal says 'I made the choice to kill her'; the quest must lift the flag, which I can't see."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:0081BC",
+   "NMeridia04AdelaideBound01 Meridia.esp:0081BD",
+   "NMeridia04AdelaideSandbox Meridia.esp:0081DA (Sleeping Giant Inn)",
+   "quest Infiltration Meridia.esp:00816C stages 25-27, alias Adelaide ref Meridia.esp:0081BF",
+   "INFO Meridia.esp:008218",
+   "class Skyrim.esm:013263"
+  ]
+ },
+ {
+  "id": "Meridia.esp:00645A",
+  "name": "Reeshi",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Dark Dawn Sanctuary (next to Rannveig's Fast, Whiterun hold), once you've got inside during Infiltration; Tahlani sends you to him",
+  "day": [
+   {
+    "from": "10 am",
+    "for": "7 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "about the sanctuary"
+   },
+   {
+    "from": "5 pm",
+    "for": "7 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "at his usual spot"
+   },
+   {
+    "from": "midnight",
+    "for": "10 hours",
+    "where": "Dark Dawn Sanctuary",
+    "doing": "at his usual spot"
+   }
+  ],
+  "changes": [
+   "If you burn your bridges with the Dark Dawn (stage 70 of The Dark Dawn), you may have to fight your way through the sanctuary."
+  ],
+  "role": "Sanctuary Master of the Dark Dawn; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Dark Dawn",
+    "how": "gives it: sends you to Markarth to kill a court member, then to deliver a letter, then gives you the key to his chamber"
+   },
+   {
+    "quest": "Infiltration",
+    "how": "a step in it: winning his favour is one way to learn the Necromancers' plans"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "his class is a Requiem-patched record not in the extracts I may read."
+   },
+   {
+    "field": "day",
+    "why": "the evening and night packages name no place, so he stays wherever he's placed in the sanctuary."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:00645A",
+   "NMeridia04ReeshiSandbox02 Meridia.esp:007192",
+   "NMeridia04ReeshiIdleMarker01/02 Meridia.esp:007190/007193",
+   "quest The Dark Dawn Meridia.esp:0092EE giver",
+   "faction NMeridiaDarkDawnFaction",
+   "class Synthesis - Requiem Patcher.esp:000033"
+  ]
+ },
+ {
+  "id": "Meridia.esp:0092EF",
+  "name": "Idina",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Understone Keep, Markarth",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "about the keep"
+   }
+  ],
+  "changes": [
+   "After you've dealt with her in The Dark Dawn (stage 30), if you warned her: at Windpeak Inn, Dawnstar, all day."
+  ],
+  "role": "a Markarth court member; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Dark Dawn",
+    "how": "its target: Reeshi sends you to kill her; you can kill her or warn her"
+   }
+  ],
+  "canDie": "essential in her record, but The Dark Dawn lets you kill her",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "flagged essential, yet the quest is to kill her; the quest must lift the flag, which I can't see."
+   },
+   {
+    "field": "changes",
+    "why": "the move to Windpeak Inn is my reading of the package that starts at stage 30; the journal doesn't say she leaves Markarth."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:0092EF",
+   "NMeridia04IdinaSandboxs Meridia.esp:009303 (Understone Keep)",
+   "NMeridia04IdinaSandbox02 Meridia.esp:009311 (Windpeak Inn)",
+   "quest The Dark Dawn Meridia.esp:0092EE stages 20-30",
+   "faction CrimeFactionReach",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Meridia.esp:009313",
+  "name": "Crenstian",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "out in the wilds, where Reeshi sends you to deliver his letter in The Dark Dawn",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "where he's placed",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [],
+  "role": "the Necromancer courier; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Dark Dawn",
+    "how": "a step in it: the Necromancer you deliver Reeshi's letter to"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "he's placed in the open world with no place name in the extracts; I can't say where."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:009313",
+   "NMeridia04CrenstianSit01 Meridia.esp:009315",
+   "quest The Dark Dawn Meridia.esp:0092EE stage 40, alias Crenstian ref Meridia.esp:009314",
+   "faction NMeridia04CrenstianFaction",
+   "class Skyrim.esm:0C969F"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D62",
+  "name": "Acolyte Kariss",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Meridia's Sanctum",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "about the Sanctum"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Killed when The Malevolent attack the Sanctum near the end of Infiltration; the Order holds her funeral in Fort Justice. She's gone after that."
+  ],
+  "role": "acolyte of Meridia's Order; trainer",
+  "sells": "",
+  "trains": "Restoration, up to 75 (journeyman trainer), until she is killed",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Infiltration",
+    "how": "changed by it: killed in the attack on the Sanctum"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "changed by it: the quest opens with her death and you attend her funeral"
+   }
+  ],
+  "canDie": "essential in her record, but the story kills her",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Meridia's Sanctum is an interior; the records I may read don't name where its door is in Skyrim or which hold it's in."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   },
+   {
+    "field": "quests",
+    "why": "she's also an alias in an unnamed quest I can't read."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:000D62",
+   "NMeridiaKarissSandbox01 Meridia.esp:0014EF",
+   "NMeridiaKarissSleep01 Meridia.esp:001534",
+   "NMeridia04KarissDeath01 Meridia.esp:008D30 (Infiltration >= 30)",
+   "quest Infiltration Meridia.esp:00816C stage 70",
+   "quest Fort Justice Meridia.esp:00BC5D stages 10-60",
+   "trainer Restoration Journeyman cap 75",
+   "class Skyrim.esm:0C2914",
+   "unnamed quest Meridia.esp:000D70"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6B",
+  "name": "Initiate Velteth",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Meridia's Sanctum",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "leaning at his spot"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Fort Justice: comes up to talk once you've cleared the fort; sits during and after Kariss' funeral.",
+   "A New Day: prays until he's exposed as a Malevolent plant, then is executed. He's gone after that."
+  ],
+  "role": "initiate of Meridia's Order; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Fort Justice",
+    "how": "a step in it: asks you to travel to Fort Justice and make sure it's safe; you report back to him"
+   },
+   {
+    "quest": "A New Day",
+    "how": "its target: the traitor, executed after his confession"
+   },
+   {
+    "quest": "The Way In",
+    "how": "named in it after his death; the journal gives him no part"
+   }
+  ],
+  "canDie": "essential in his record, but executed in A New Day",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Meridia's Sanctum is an interior; the records I may read don't name where its door is in Skyrim or which hold it's in."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:000D6B",
+   "NMeridiaVeltethLean01 Meridia.esp:0014F2",
+   "NMeridiaVeltethSleep01 Meridia.esp:001538",
+   "NMeridia05VeltethLean01/Forecegreet01/Sit01/Sit02",
+   "NMeridia06VeltethPrayer01 Meridia.esp:008981",
+   "quest Fort Justice Meridia.esp:00BC5D stages 20-50",
+   "quest A New Day Meridia.esp:007CFC stages 65-80",
+   "faction NMeridiaVeltethFaction",
+   "class Skyrim.esm:072887"
+  ]
+ },
+ {
+  "id": "Meridia.esp:00DDBD",
+  "name": "Vaegra",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Old Hroldan Inn, the Reach, during A New Day: she wrote the 'Letter to the Champion' asking to meet you there",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "Old Hroldan Inn",
+    "doing": "waiting for you (A New Day, stage 20)"
+   }
+  ],
+  "changes": [
+   "A New Day: after the Necromancer's attack she travels to her hideaway; later she follows along.",
+   "The Way In: travels with the party.",
+   "After The Way In (once Orthelos is brought in) she lives at Fort Justice: around the fort until The Pocket Realm, then at a set spot in the fort for good."
+  ],
+  "role": "member of the Necromancer Union who helps Meridia's Order; part of quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A New Day",
+    "how": "a step in it: she tells you the Order has been infiltrated by a Dark Elf"
+   },
+   {
+    "quest": "The Way In",
+    "how": "a step in it: tells you to search the College of Winterhold for the Wood Elf"
+   },
+   {
+    "quest": "The Ritual",
+    "how": "named in it; the journal gives her no task"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "no package applies before A New Day reaches stage 20, so whether she's at the inn earlier isn't clear."
+   },
+   {
+    "field": "changes",
+    "why": "her follow packages name no one; I can't tell whether she follows you or Alara."
+   },
+   {
+    "field": "changes",
+    "why": "where her hideaway is isn't named in her packages."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:00DDBD",
+   "NMeridia06VaegraStand01 Meridia.esp:00897D (Old Hroldan Inn)",
+   "NMeridiaVaegraTravel01 Meridia.esp:00897E",
+   "NMeridia06VaegraFollow01 Meridia.esp:008984",
+   "NMeridia07Follow01 Meridia.esp:0103BE",
+   "NMeridia07Sandbox01 Meridia.esp:019A7F",
+   "NMeridia08VaegraStand01 Meridia.esp:01DE66",
+   "quest A New Day Meridia.esp:007CFC stages 20-60",
+   "quest The Way In Meridia.esp:0103B4 stage 40",
+   "BOOK Meridia.esp:0088DC",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Meridia.esp:001F7B",
+  "name": "Initiate Garin",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Meridia's Sanctum",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "16 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "about the Sanctum"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "The day above holds until Kariss' funeral in Fort Justice.",
+   "After Infiltration until early in Fort Justice: patrols.",
+   "A New Day and The Way In: stands at his posts in Fort Justice.",
+   "The Pocket Realm: waits in the Malevolent Realm to help you escape.",
+   "From The Pocket Realm's end until The Ritual is under way: stands at his post in Fort Justice.",
+   "Once The Ritual is under way he lives at Fort Justice: 6 am to midnight around the fort, midnight to 6 am at his spot in the fort.",
+   "Repentance Upheld: follows you to Windhelm and waits in the Hall of the Dead to talk."
+  ],
+  "role": "initiate of Meridia's Order; quest giver; can become a follower",
+  "sells": "",
+  "trains": "",
+  "joins": "Finish Repentance Upheld with him (confront and kill Rosette, his old cult leader) and he offers you his services.",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Repentance Upheld",
+    "how": "gives it: asks you to come with him to confront the leader of his old cult in Windhelm"
+   },
+   {
+    "quest": "The Pocket Realm",
+    "how": "gives it: tells you how to destroy Fiya's realm and gets you out"
+   },
+   {
+    "quest": "The Way In",
+    "how": "a step in it: transfers Orthelos' essence into you so you can enter Coldharbour"
+   },
+   {
+    "quest": "A New Day",
+    "how": "a step in it: accused of being the traitor; points you to Velteth and helps execute him"
+   },
+   {
+    "quest": "Infiltration",
+    "how": "named in it; patrols after the attack on the Sanctum"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "named in it; with the Order at Kariss' funeral"
+   },
+   {
+    "quest": "The Ritual",
+    "how": "named in it; changed by it: moves to Fort Justice for good"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Meridia's Sanctum is an interior; the records I may read don't name where its door is in Skyrim or which hold it's in."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   },
+   {
+    "field": "sells",
+    "why": "carries the same vendor entry as many plain followers (Iona, J'zargo, Erik the Slayer), with no merchant chest; that is the follower trade list, not a shop."
+   },
+   {
+    "field": "changes",
+    "why": "two unnamed quests make him follow you, come to talk, or sit; I can't tell what they are."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:001F7B",
+   "NMeridiaGarinSandbox01 Meridia.esp:001F79",
+   "NMeridiaGarinSleep01 Meridia.esp:001F7A",
+   "NMeridia04GarinPatrol01 Meridia.esp:0087AF",
+   "NMeridia06GarinStand01/02",
+   "NMeridia07GarinStand01/02, Lean02",
+   "NMeridia08GarinForcegreet01 Meridia.esp:01CD54",
+   "NMeridia08GarinStand01 Meridia.esp:01DE60",
+   "NMeridiaFortJusticeGarin01/02 Meridia.esp:028618/028619",
+   "NMeridiaGarin01FollowPlayer01/02, Forcegreet01 (Hall of the Dead, Windhelm)",
+   "quest Repentance Upheld Meridia.esp:02A183 stage 50",
+   "quest The Pocket Realm Meridia.esp:019A81 giver",
+   "vendor vendRaw 48cb0600 no VENC",
+   "class Skyrim.esm:01317A",
+   "unnamed quests Meridia.esp:05FA5A, Meridia.esp:06223C"
+  ]
+ },
+ {
+  "id": "Meridia.esp:019A80",
+  "name": "Alzacar",
+  "race": "Dremora",
+  "sex": "male",
+  "firstMeet": "the Malevolent Realm, Fiya's pocket realm of Coldharbour: he comes up to you as you arrive in The Pocket Realm",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "the Malevolent Realm",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [
+   "During The Jester, In The Bedroom, With The Knife: in the Malevolent Barracks.",
+   "Only reachable while you're in the pocket realm during The Pocket Realm."
+  ],
+  "role": "a loyal servant of Fiya in her pocket realm; part of quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Fate Worse Than Death",
+    "how": "gives it: greets you when you enter the realm"
+   },
+   {
+    "quest": "The Jester, In The Bedroom, With The Knife",
+    "how": "a step in it: turn him against Fiya and he tells you how to destroy the realm"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "his class is a Requiem-patched record not in the extracts I may read."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:019A80",
+   "NMeridia08FiyaMiscAlzacarForcegreet01 Meridia.esp:01A1BD",
+   "NMeridia08FiyaMiscAlzacarSit01 Meridia.esp:01A1BE",
+   "NMeridia08JesterMiscAlzacarSit01 Meridia.esp:01D2C5",
+   "quest A Fate Worse Than Death Meridia.esp:019A82 giver",
+   "quest Meridia.esp:01ACCF stages 10-50",
+   "class Synthesis - Requiem Patcher.esp:000035"
+  ]
+ },
+ {
+  "id": "Meridia.esp:019A8D",
+  "name": "Fiya",
+  "race": "",
+  "sex": "",
+  "firstMeet": "the Malevolent Palace, in her pocket realm of Coldharbour, during The Pocket Realm",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "the Malevolent Palace",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [
+   "A Fate Worse Than Death: comes to you in the Malevolent Dungeon to set her test (kill Marith or Alara).",
+   "Flees once you start destroying the realm."
+  ],
+  "role": "Dark Master of The Malevolent, in her pocket realm; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Fate Worse Than Death",
+    "how": "a step in it: you can play her games (kill Marith or Alara, kill Cleans-Many-Boots) or find another way"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "name",
+    "why": "this record has no name of its own; the quest calls her Dark Master Fiya and she shares Fiya's class and outfit, but I can't read a template."
+   },
+   {
+    "field": "race",
+    "why": "not in the people extract for this record."
+   },
+   {
+    "field": "fightsWith",
+    "why": "class record not in the extracts I may read."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:019A8D (NMeridia08Fiya01)",
+   "NMeridia08FiyaSit01 Meridia.esp:01A1A1",
+   "NMeridia08FiyaMiscFiyaForcegreet01 Meridia.esp:01A1D1",
+   "quest A Fate Worse Than Death Meridia.esp:019A82 alias Fiya ref Meridia.esp:01A19F (The Malevolent Palace)",
+   "outfit Meridia.esp:00B1F5, class Skyrim.esm:043BCC (same as Meridia.esp:00B1F0)"
+  ]
+ },
+ {
+  "id": "Meridia.esp:01A19A",
+  "name": "Kelrog Mashul",
+  "race": "Orsimer",
+  "sex": "male",
+  "firstMeet": "the Malevolent Palace, in Fiya's pocket realm, during The Pocket Realm",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "the Malevolent Palace",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [
+   "Later in A Fate Worse Than Death: 6 am to 6 pm around the Malevolent Palace; 6 pm to midnight around the Malevolent Realm; midnight to 6 am his package names no place."
+  ],
+  "role": "Fiya's fierce and loyal advisor; part of quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Jester, In The Bedroom, With The Knife",
+    "how": "its target: you must kill him before Alzacar will help"
+   },
+   {
+    "quest": "A Fate Worse Than Death",
+    "how": "one of those you can talk to as it begins"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   },
+   {
+    "field": "quests",
+    "why": "also an alias in an unnamed quest."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:01A19A",
+   "NMeridia08KelrogSit01 Meridia.esp:01A1A0",
+   "NMeridia08KelrogRoutine01/02/03 Meridia.esp:01DE46/01DE47/01DE49",
+   "quest Meridia.esp:01ACCF stage 30",
+   "quest Meridia.esp:019A82 giver others",
+   "faction NMeridia08DremoraGuardFaction",
+   "class Skyrim.esm:01317C",
+   "unnamed quest Meridia.esp:0710B4"
+  ]
+ },
+ {
+  "id": "Meridia.esp:01A1C3",
+  "name": "Alara",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "a prisoner in the Malevolent Dungeon, in Fiya's pocket realm, during A Fate Worse Than Death",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "the Malevolent Dungeon",
+    "doing": "bound"
+   }
+  ],
+  "changes": [
+   "Follows along at stage 50 of A Fate Worse Than Death."
+  ],
+  "role": "a captive Alara in Fiya's realm; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Fate Worse Than Death",
+    "how": "its target: Fiya's test is to kill Marith or Alara"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "name",
+    "why": "a separate record from High Priestess Alara; the records don't say how the two relate."
+   },
+   {
+    "field": "day",
+    "why": "her bound package holds only from stage 10 to 30; outside it nothing is set."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:01A1C3",
+   "NMeridia08FiyaMiscAlaraBound01 Meridia.esp:01A1C8",
+   "NMeridia08FiyaMiscAlaraMarithFollow01 Meridia.esp:01ACCC",
+   "quest Meridia.esp:019A82 objective 30, alias Alara ref Meridia.esp:01A1C7",
+   "class Skyrim.esm:017008"
+  ]
+ },
+ {
+  "id": "Meridia.esp:019A95",
+  "name": "The Jester",
+  "race": "Bosmer",
+  "sex": "female",
+  "firstMeet": "the Malevolent Palace, in Fiya's pocket realm, drinking",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "the Malevolent Palace",
+    "doing": "drinking"
+   }
+  ],
+  "changes": [
+   "Late in A Fate Worse Than Death she comes to you in the Malevolent Barracks; during her own quest she stays there."
+  ],
+  "role": "a Wood Elf held in Fiya's realm; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Jester, In The Bedroom, With The Knife",
+    "how": "gives it: asks you to find evidence that Fiya plots against Alzacar so he'll help destroy the realm"
+   },
+   {
+    "quest": "A Fate Worse Than Death",
+    "how": "named in it; her approach comes late in it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:019A95",
+   "NMeridia08JesterDrinks01 Meridia.esp:01A1A2",
+   "NMeridia08JesterMiscForcegreet01 Meridia.esp:01D2C7",
+   "NMeridia08JesterMiscStand01 Meridia.esp:01D2C9",
+   "quest Meridia.esp:01ACCF giver",
+   "class Skyrim.esm:013179"
+  ]
+ },
+ {
+  "id": "Meridia.esp:00B1F0",
+  "name": "Fiya",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "her hideaway, Hob's Fall Cave (Winterhold hold, a short walk from Dawnstar), at the climax of The Ritual",
+  "day": [],
+  "changes": [
+   "Fort Justice: stands in Fort Justice when you arrive, then moves deeper in.",
+   "The Ritual: performing her ritual to raise the First Vampire; then, in Lamae's Catacomb, comes to talk and follows you."
+  ],
+  "role": "Dark Master of The Malevolent; part of quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Ritual",
+    "how": "a step in it: you interrupt her ritual and speak with her in Lamae Bal's crypt"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "a step in it: confronts you as you enter Fort Justice"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "she has no routine; she's only where the quests put her."
+   },
+   {
+    "field": "quests",
+    "why": "the Fort Justice quest's own Fiya alias is another record; this one has packages for those stages too, so which one you meet there isn't clear."
+   },
+   {
+    "field": "changes",
+    "why": "she follows you in Lamae's Catacomb; the records don't say whether she fights on your side."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:00B1F0",
+   "NMeridia05FiyaStand01 Meridia.esp:00C76B",
+   "NMeridia05FiyaTravel02 Meridia.esp:00C76D",
+   "NMeridia09FiyaPrayer01 Meridia.esp:02554B",
+   "NMeridia09FiyaForcegreet01 Meridia.esp:025553 (Lamae's Catacomb)",
+   "NMeridia09FiyaFollow01 Meridia.esp:026B0D",
+   "quest The Ritual Meridia.esp:01F41F alias Fiya ref Meridia.esp:02658A (Hob's Fall Cave)",
+   "faction NMeridiaFiyaFaction",
+   "class Skyrim.esm:043BCC"
+  ]
+ },
+ {
+  "id": "Meridia.esp:02B75A",
+  "name": "Arandar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Mistveil Keep, Riften",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [],
+  "role": "a Riften noble; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Champion's Choice",
+    "how": "a step in it: the noble who says he saw a warlock; once you hear both stories you may kill him or Orfoljt"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:02B75A",
+   "NMeridiaAsger01ArandarSit01 Meridia.esp:02BCBF (Mistveil Keep)",
+   "quest Champion's Choice Meridia.esp:02B1F6 stages 10-43, alias ref Meridia.esp:02BCBD",
+   "class Skyrim.esm:017008"
+  ]
+ },
+ {
+  "id": "Meridia.esp:02B759",
+  "name": "Orfoljt",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "the Ratway Warrens, under Riften, during Champion's Choice",
+  "day": [],
+  "changes": [
+   "Champion's Choice: comes up to talk when you find him, then waits while you decide."
+  ],
+  "role": "the alleged warlock in the Ratway; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Champion's Choice",
+    "how": "a step in it: the man in the Ratway whose story differs from the noble's; you may kill him or Arandar"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "no package applies outside Champion's Choice, so he stays where placed."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:02B759",
+   "NMeridiaAsger01OrfoljtForcegreet01 Meridia.esp:02BCD5",
+   "NMeridiaAsger01OrfoljtStand01 Meridia.esp:02BCC3",
+   "quest Champion's Choice Meridia.esp:02B1F6 stages 20-35, alias ref Meridia.esp:02BCC2",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Meridia.esp:02A140",
+  "name": "Vigilant Archeus",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Fort Justice: he comes up to you there when the Vigilants of Stendarr confront the Order",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "24 hours",
+    "where": "Stendarr's Beacon, the Rift (a short walk from Riften)",
+    "doing": "about the tower"
+   }
+  ],
+  "changes": [
+   "Before the confrontation he waits at Fort Justice; after it he stays at Stendarr's Beacon."
+  ],
+  "role": "a Vigilant of Stendarr; part of a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Stendarr's Mercy",
+    "how": "a step in it: the Vigilant you can talk into a truce instead of killing their leader"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "the confrontation is an unnamed quest I can't read; its timing isn't known."
+   },
+   {
+    "field": "fightsWith",
+    "why": "the class record and outfit contents aren't in the extracts I may read, so I can't say how this person fights."
+   }
+  ],
+  "evidence": [
+   "NPC Meridia.esp:02A140",
+   "NMeridiaVigilantMiscForcegreet01 Meridia.esp:02A154",
+   "NMeridiaVigilantSandbox01 Meridia.esp:02A156",
+   "quest Stendarr's Mercy Meridia.esp:02A15E giver others below stage 16",
+   "faction NMeridiaVigilantFaction",
+   "class Skyrim.esm:017008",
+   "unnamed quest Meridia.esp:02A13F"
+  ]
+ }
+]
