@@ -567,8 +567,11 @@ def main():
     # People (WO-144 Part 2): the people index, from people.py's raw file.
     if os.path.exists(os.path.join(RAW, "people_raw.json")):
         from people import build_site as build_people_site
+        from people import person_facts
 
-        rows = build_people_site(load("people_raw.json")["people"])
+        # What each person is to a player (follower, spouse, trainer, merchant, essential): the dump's record fields, joined by record id.
+        dump = load("people_schedules_raw.json")["people"] if os.path.exists(os.path.join(RAW, "people_schedules_raw.json")) else {}
+        rows = build_people_site(load("people_raw.json")["people"], person_facts(dump))
         with open(os.path.join(OUT, "people.json"), "w", encoding="utf-8") as f:
             json.dump({"people": rows}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")

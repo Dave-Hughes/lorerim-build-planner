@@ -705,30 +705,19 @@ export default async function QuestPage({
                   />
                 }
               />
-              <Link
-                href={`${questHref(quest.edid)}?report=1#report`}
-                className="btn"
-              >
-                Report a mistake
-              </Link>
+              <QuestReport
+                lineId={line.id}
+                quests={[{ edid: quest.edid, name }]}
+                signedIn={!!userId}
+                open={reporting}
+                label="Report a mistake"
+                buttonClass="btn"
+                signIn={<SignInButton redirectTo={`${questHref(quest.edid)}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
+              />
             </>
           }
         />
       </div>
-
-      <QuestReport
-        lineId={line.id}
-        quests={[{ edid: quest.edid, name }]}
-        signedIn={!!userId}
-        open={reporting}
-        signIn={
-          <SignInButton
-            redirectTo={`${questHref(quest.edid)}?report=1#report`}
-            className="btn btn-sm btn-primary"
-            label="Sign in with Discord"
-          />
-        }
-      />
     </main>
   );
 }

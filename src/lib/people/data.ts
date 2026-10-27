@@ -17,6 +17,13 @@ export interface PersonRow {
   cell?: string;
   inTown?: string;
   role?: string;
+  /** What they are to a player, from the records' own fields (the WO-156 dump, joined in build.py): essential, a follower, a spouse, a merchant, a trainer. */
+  essential?: true;
+  follower?: true;
+  marriage?: true;
+  sells?: true;
+  innkeeper?: true;
+  trainer?: { skill: string; cap?: number };
 }
 
 export interface Person extends PersonRow {

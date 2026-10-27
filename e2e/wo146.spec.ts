@@ -56,7 +56,7 @@ test("a signed-in player sends where it is, and nothing changes on the page", as
   await page.getByLabel("Which quest?").selectOption({ label: "Running Wild" });
   await page.getByLabel("Where is it?").fill(PLACE);
   await page.getByRole("button", { name: "Send" }).click();
-  await expect(page.locator("#report")).toHaveText("Thanks. We'll check it.");
+  await expect(page.getByRole("dialog").getByRole("status")).toHaveText("Thanks. We'll check it.");
   // Not on the page yet: the way is still the files' and Dave's.
   await page.goto("/quests/capital-whiterun");
   await expect(page.getByText("E2E: the board right outside")).toHaveCount(0);
@@ -88,12 +88,14 @@ test("an admin has the agent propose, approves it, and the page shows a player's
   // Under How to start it: marked as a player's report, with who and when, and where the note is.
   const opened = page.getByRole("region", { name: "How to start it" });
   await expect(opened.getByText(`${NOTE}, on the board by Joslin's house`)).toBeVisible();
-  await expect(opened.getByText(/player report, @e2e-reporter-1, \d{1,2} \w{3} \d{4}/i)).toBeVisible();
+  // No player's name on the page (WO-154 Part 4).
+  await expect(opened.getByText("A player's report")).toBeVisible();
+  await expect(opened).not.toContainText("e2e-reporter-1");
   await expect(opened.getByText("(Whiterun, the board right outside Joslin's house)")).toBeVisible();
   await page.screenshot({ path: "test-results/wo146-quest-page-1440.png" });
 });
 
-test("get_quest says it is a player's report, with the player and the date; /me thanks them", async ({ page, context, baseURL }) => {
+test("get_quest says it is a player's report, not whose; /me thanks them", async ({ page, context, baseURL }) => {
   await signIn(context);
   const from = ip();
   const token = (await tokenFor(page, context, baseURL!, from)).access_token;
@@ -102,7 +104,8 @@ test("get_quest says it is a player's report, with the player and the date; /me 
   await expect.poll(async () => (await ask()).quest.starts[0].how, { timeout: 25_000, intervals: [1000] }).toBe(`${NOTE}, on the board by Joslin's house`);
   const got = await ask();
   const way = got.quest.starts[0];
-  expect(way.checked).toMatch(/^a player's report, not the game files \(@e2e-reporter-1, \d{1,2} \w{3} \d{4}\)$/);
+  // The door says a player's report, not whose (WO-154 Part 4).
+  expect(way.checked).toBe("a player's report, not the game files");
   expect(way.whereIs).toEqual(["Whiterun, the board right outside Joslin's house"]);
   expect(got.openForYou.state).toBe("open");
 
@@ -120,7 +123,7 @@ test("a second player agreeing is closed as no change, and the page then has two
   await page.getByLabel("Which quest?").selectOption({ label: "Running Wild" });
   await page.getByLabel("Where is it?").fill("E2E AGREES: the board by Joslin's house");
   await page.getByRole("button", { name: "Send" }).click();
-  await expect(page.locator("#report")).toHaveText("Thanks. We'll check it.");
+  await expect(page.getByRole("dialog").getByRole("status")).toHaveText("Thanks. We'll check it.");
 
   await context.clearCookies();
   await signIn(context);
@@ -140,9 +143,9 @@ test("a second player agreeing is closed as no change, and the page then has two
   const from = ip();
   const token = (await tokenFor(page, context, baseURL!, from)).access_token;
   const ask = async () => (await call(baseURL!, from, token, "get_quest", { name: "Running Wild", level: 5 })).json();
-  await expect.poll(async () => (await ask()).quest.starts[0].checked, { timeout: 25_000, intervals: [1000] }).toMatch(/^players' reports, not the game files \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}$/);
+  await expect.poll(async () => (await ask()).quest.starts[0].checked, { timeout: 25_000, intervals: [1000] }).toBe("players' reports, not the game files (2)");
   await page.goto("/quests/q/running-wild");
-  await expect(page.getByRole("region", { name: "How to start it" }).getByText(/players' reports \(2\): @e2e-reporter-1, \d{1,2} \w{3}; @e2e-reporter-3, \d{1,2} \w{3}/)).toBeVisible();
+  await expect(page.getByRole("region", { name: "How to start it" }).getByText("Players' reports (2)")).toBeVisible();
   await page.screenshot({ path: "test-results/wo146-quest-two-sources-1440.png" });
   // The way itself is as it was: still one way.
   expect((await ask()).quest.starts).toHaveLength(1);

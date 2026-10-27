@@ -963,3 +963,97 @@ a.tag:hover {
   font-size: 26px;
   line-height: 1;
 }
+
+/* A search result: its name, what it is, why it matched. */
+.result {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.result a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.result .why {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* The People and Places landing pages: compact groups, filter chips, a short list per group. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-bright);
+  color: var(--text);
+  font-size: 14px;
+  text-decoration: none;
+}
+.chip small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.chip:hover {
+  border-color: var(--ember);
+}
+.chipOn {
+  border-color: var(--ember);
+  color: var(--ember-text);
+}
+.groupGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+  background: #121922;
+}
+.groupHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.groupHead h2,
+.groupHead h3 {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text);
+}
+.groupHead span {
+  color: var(--muted);
+  font-size: 14px;
+}
+.few {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+}
+.few small {
+  color: var(--muted);
+  margin-left: 6px;
+}
+.all {
+  font-size: 14px;
+}

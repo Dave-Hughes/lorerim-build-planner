@@ -73,7 +73,10 @@ test("a person's page: race, town, the cell they are placed in, their quests, an
   await page.goto("/people/mjoll-the-lioness");
   await expect(page.getByRole("heading", { level: 1, name: "Mjoll the Lioness" })).toBeVisible();
   await expect(page.locator("main")).toContainText("Nord");
-  await expect(page.locator("main")).toContainText("Aerin's House");
+  // What she is, from the records' own fields (WO-154 Part 4); and no "placed in": the editor's cell isn't where you meet her.
+  await expect(page.locator("main")).toContainText("A Nord in Riften. She gives two quests.");
+  await expect(page.locator("main")).not.toContainText("placed in");
+  for (const chip of ["Follower", "Can marry", "Gives quests", "Can't be killed"]) await expect(page.locator("main").getByText(chip, { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Not known yet").first()).toBeVisible();
   await expect(page.getByRole("region", { name: "How sure we are" })).toContainText("Not read by a reader yet");
   expect((await page.goto("/people/not-a-person"))?.status()).toBe(404);
@@ -99,12 +102,12 @@ test("a line with a read: its own words for what it is, how to get in, the quest
 });
 
 test("search forgives a misspelling and finds a quest, a person and a place; the menu has People and Places", async ({ page }) => {
-  await page.goto("/quests?q=Palonimo");
-  await expect(page.getByRole("region", { name: /For/ }).getByRole("link", { name: "Running Wild" })).toBeVisible();
-  await page.goto("/quests?q=Brynjof");
-  await expect(page.getByRole("link", { name: "Brynjolf" }).first()).toHaveAttribute("href", /\/people\/brynjolf/);
-  await page.goto("/quests?q=Broken Oar");
-  await expect(page.getByRole("link", { name: "Broken Oar Grotto" }).first()).toHaveAttribute("href", "/places/broken-oar-grotto");
+  await page.goto("/search?q=Palonimo");
+  await expect(page.getByRole("region", { name: "Quests" }).getByRole("link", { name: "Running Wild" })).toBeVisible();
+  await page.goto("/search?q=Brynjof");
+  await expect(page.getByRole("region", { name: "People" }).getByRole("link", { name: "Brynjolf" }).first()).toHaveAttribute("href", /\/people\/brynjolf/);
+  await page.goto("/search?q=Broken Oar");
+  await expect(page.getByRole("region", { name: "Places" }).getByRole("link", { name: "Broken Oar Grotto" }).first()).toHaveAttribute("href", "/places/broken-oar-grotto");
   await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link")).toContainText(["Builds", "Quests", "People", "Places"]);
 });
 

@@ -131,11 +131,41 @@ def report(people):
     return "\n".join(out) + "\n"
 
 
-def build_site(rows):
-    """The planner's people.json from the raw rows: what a page or an assistant shows, without record ids."""
+def person_facts(dump):
+    """
+    What a person is to a player, from the WO-156 dump's record fields (not their AI packages): `essential`, `follower`, `marriage`,
+    `sells` (has a vendor list), `innkeeper` (in the innkeepers' faction) and `trainer` ({skill, cap}). Keyed by record id; a person with none of them has no entry.
+    """
+    out = {}
+    for pid, d in (dump or {}).items():
+        f = {}
+        if d.get("essential"):
+            f["essential"] = True
+        if d.get("follower"):
+            f["follower"] = True
+        if d.get("marriageable"):
+            f["marriage"] = True
+        if d.get("vendor"):
+            f["sells"] = True
+        if any(x.get("edid") == "JobInnkeeperFaction" for x in d.get("factions", [])):
+            f["innkeeper"] = True
+        t = d.get("trainer")
+        if t and t.get("skill"):
+            f["trainer"] = {"skill": t["skill"], **({"cap": t["levelCap"]} if t.get("levelCap") else {})}
+        if f:
+            out[pid] = f
+    return out
+
+
+def build_site(rows, facts=None):
+    """
+    The planner's people.json from the raw rows: what a page or an assistant shows, without record ids. `facts` is person_facts' answer:
+    what each person is (follower, spouse, trainer, merchant, essential), joined by record id.
+    """
     out = []
     for p in rows:
         r = {k: p[k] for k in ("name", "race", "sex", "cell", "inTown", "role") if p.get(k) is not None}
+        r.update((facts or {}).get(p.get("id"), {}))
         out.append(r)
     return out
 

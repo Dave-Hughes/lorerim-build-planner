@@ -33,14 +33,16 @@ export default async function PersonPage({ params }: { params: Params }) {
   const confirmed = await confirmationsOf("person", person.slug, userId);
   const quests = questsOf(person.name);
   const gives = quests.filter((q) => q.gives);
-  const role = roleWords(person.role);
-  const placed = [person.cell, person.inTown].filter(Boolean).join(", ");
-  const lede = [
-    `${person.race ? `A${/^[AEIOU]/i.test(person.race) ? "n" : ""} ${person.race}` : "Someone"}${person.inTown ? ` in ${person.inTown}` : ""}${person.cell ? ` placed in ${person.cell}` : ""}.`,
-    gives.length ? `They give ${gives.length === 1 ? "a quest" : `${gives.length} quests`}.` : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  // A merchant is "Sells goods" once, whether the records say so by a role or by a vendor list.
+  const role = person.sells && /^Sells/.test(roleWords(person.role) ?? "") ? null : roleWords(person.role);
+  const they = person.sex === "female" ? "her" : person.sex === "male" ? "him" : "them";
+  const can = person.sex === "female" ? "She" : person.sex === "male" ? "He" : "They";
+  // One person is he or she by the record's sex, never "they"; and only what is known: race, town, and the quests (WO-154 Part 4).
+  const he = person.sex === "female" ? "She" : person.sex === "male" ? "He" : null;
+  const count = (n: number) => ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][n] ?? String(n);
+  const what = person.race ? `A${/^[AEIOU]/i.test(person.race) ? "n" : ""} ${person.race}${person.inTown ? ` in ${person.inTown}` : ""}.` : person.inTown ? `Lives in ${person.inTown}.` : "";
+  const gave = gives.length ? `${he ?? person.name} gives ${count(gives.length)} quest${gives.length === 1 ? "" : "s"}.` : "";
+  const lede = [what, gave].filter(Boolean).join(" ");
 
   return (
     <main className={`page ${styles.main}`}>
@@ -53,12 +55,17 @@ export default async function PersonPage({ params }: { params: Params }) {
             {person.race && <span className={styles.tag}>{person.race}</span>}
             {person.inTown && <span className={styles.tag}>{person.inTown}</span>}
             {role && <span className={styles.role}>{role}</span>}
+            {person.follower && <span className={styles.role}>Follower</span>}
+            {person.marriage && <span className={styles.role}>Can marry</span>}
             {gives.length > 0 && <span className={styles.role}>Gives quests</span>}
+            {person.sells && <span className={styles.role}>Sells goods</span>}
+            {person.trainer && <span className={styles.role}>Trains {person.trainer.skill}</span>}
+            {person.essential && <span className={styles.tag}>Can&apos;t be killed</span>}
           </>
         }
       />
 
-      <p className={styles.lede}>{lede}</p>
+      {lede && <p className={styles.lede}>{lede}</p>}
 
       <div className={styles.cols}>
         <div className={styles.body}>
@@ -76,21 +83,10 @@ export default async function PersonPage({ params }: { params: Params }) {
               <span>Midnight</span>
             </div>
             <div style={{ paddingTop: 10 }}>
-              {placed ? (
-                <div className={styles.slot}>
-                  <span>The game places them in {placed}</span>
-                  <small>Where they go through the day and night isn&apos;t known yet</small>
-                </div>
-              ) : (
-                <div className={styles.slot}>
-                  <span className={styles.muted}>Not known yet</span>
-                </div>
-              )}
-              {person.cells.length > 1 && (
-                <div className={styles.slot}>
-                  <span>Also placed in {person.cells.slice(1).join(", ")}</span>
-                </div>
-              )}
+              <div className={styles.slot}>
+                <span className={styles.muted}>Not known yet</span>
+                <small>Where they go through the day and night</small>
+              </div>
             </div>
           </Section>
 
@@ -106,9 +102,9 @@ export default async function PersonPage({ params }: { params: Params }) {
           )}
         </div>
 
-        {(role || gives.length > 0) && (
+        {(role || person.follower || person.marriage || person.sells || person.trainer || person.essential || gives.length > 0) && (
           <aside className={styles.side}>
-            <Panel id="offers" icon="quest-people" title="What they offer">
+            <Panel id="offers" icon="quest-people" title={they === "them" ? "What they offer" : `What ${they === "her" ? "she" : "he"} offers`}>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {role && (
                   <span className={styles.offer}>
@@ -116,6 +112,42 @@ export default async function PersonPage({ params }: { params: Params }) {
                     <span>
                       From the records. <em className={styles.nk}>What exactly isn&apos;t known yet.</em>
                     </span>
+                  </span>
+                )}
+                {person.follower && (
+                  <span className={styles.offer}>
+                    <b>Follower</b>
+                    <span>
+                      {can} can join you. <em className={styles.nk}>How to recruit {they} isn&apos;t known yet.</em>
+                    </span>
+                  </span>
+                )}
+                {person.marriage && (
+                  <span className={styles.offer}>
+                    <b>Marriage</b>
+                    <span>
+                      You can marry {they}. <em className={styles.nk}>What {can.toLowerCase()} needs first isn&apos;t known yet.</em>
+                    </span>
+                  </span>
+                )}
+                {person.sells && (
+                  <span className={styles.offer}>
+                    <b>Sells goods</b>
+                    <span>
+                      <em className={styles.nk}>What {can.toLowerCase()} sells isn&apos;t known yet.</em>
+                    </span>
+                  </span>
+                )}
+                {person.trainer && (
+                  <span className={styles.offer}>
+                    <b>Trains {person.trainer.skill}</b>
+                    <span>{person.trainer.cap ? `Up to ${person.trainer.cap}.` : "How far isn't known yet."}</span>
+                  </span>
+                )}
+                {person.essential && (
+                  <span className={styles.offer}>
+                    <b>Can&apos;t be killed</b>
+                    <span>{can} is essential: {can.toLowerCase()} goes down in a fight but gets back up.</span>
                   </span>
                 )}
                 {gives.length > 0 && (
@@ -140,7 +172,7 @@ export default async function PersonPage({ params }: { params: Params }) {
             ? { mark: "yes", name: "Players", note: `${confirmed.names.length} confirmed this page`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
             : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
-        unsure={[{ field: "where they are through the day and night" }, { field: "whether they follow you, marry or sell and train" }, { field: "what changes where they are" }]}
+        unsure={[{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])]}
         actions={
           <>
             <ConfirmButton kind="person" id={person.slug} path={`/people/${person.slug}`} title={person.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/people/${person.slug}`} className="btn btn-primary" label="Sign in to confirm" />} />

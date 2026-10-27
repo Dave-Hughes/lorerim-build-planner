@@ -47,12 +47,12 @@ test.describe("tags", () => {
 // The Long build is listed by the tags test above (this file runs in order).
 test("search finds a build by part of its description, and the address keeps it", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("Search").fill("twenty lev");
+  await page.getByRole("main").getByLabel("Search").fill("twenty lev");
   await expect(page).toHaveURL(/q=twenty\+lev|q=twenty%20lev/);
   await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Test Shield-Wall" })).toHaveCount(0);
   await page.reload();
-  await expect(page.getByLabel("Search")).toHaveValue("twenty lev");
+  await expect(page.getByRole("main").getByLabel("Search")).toHaveValue("twenty lev");
   await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();
 });
 

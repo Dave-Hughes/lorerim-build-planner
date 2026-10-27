@@ -3,7 +3,7 @@ import { placeByName, rangeOf, hasLevels, type Place } from "@/lib/places/data";
 import { GOLD, RUN_CHANGE } from "./run-change";
 import { questHref } from "./slugs";
 import { questsData } from "./data";
-import { doorSources, pageSources } from "./player-source";
+import { doorSources } from "./player-source";
 import { checkedLabel } from "./story";
 import type { Quest, QuestRead, QuestWays } from "./types";
 

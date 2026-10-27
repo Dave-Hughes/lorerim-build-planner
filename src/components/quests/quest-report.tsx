@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, useTransition } from "react";
+import { useEffect, useId, useRef, useState, useTransition } from "react";
 import { reportQuest } from "@/lib/quests/report-actions";
 import { REPORT_FIELD_MAX, type ReportKind } from "@/lib/quests/player-types";
 import { REPORT_TEXT_MAX, REPORT_THANKS, REPORT_WHAT, type ReportWhat } from "@/lib/quests/report-words";
@@ -10,9 +10,10 @@ import styles from "./quest-report.module.css";
  * This was wrong (WO-103), under a quest line's quests: what was wrong and what happened in the player's game. Signed
  * out, it asks for Discord first (WO-121a Part 5), and the sign-in comes back here with the form open (`open`).
  */
-export function QuestReport({ lineId, quests, signedIn, signIn, open: startOpen = false }: { lineId: string; quests: { edid: string; name: string }[]; signedIn: boolean; signIn: React.ReactNode; open?: boolean }) {
+export function QuestReport({ lineId, quests, signedIn, signIn, open: startOpen = false, label = "This was wrong", buttonClass }: { lineId: string; quests: { edid: string; name: string }[]; signedIn: boolean; signIn: React.ReactNode; open?: boolean; label?: string; buttonClass?: string }) {
   const id = useId();
-  const [open, setOpen] = useState(startOpen);
+  // A modal (WO-154 Part 4): the button opens it, and so does coming back from signing in.
+  const dialog = useRef<HTMLDialogElement>(null);
   const [kind, setKind] = useState<ReportKind>("wrong");
   const [quest, setQuest] = useState(quests[0]?.edid ?? "");
   const [fields, setFields] = useState({ who: "", where: "", how: "", place: "" });
@@ -23,7 +24,7 @@ export function QuestReport({ lineId, quests, signedIn, signIn, open: startOpen 
   const [pending, start] = useTransition();
   // Back from signing in: the form is where the player left it.
   useEffect(() => {
-    if (startOpen) document.getElementById("report")?.scrollIntoView({ block: "center" });
+    if (startOpen) dialog.current?.showModal();
   }, [startOpen]);
   const send = () => {
     if (kind === "wrong" && !what) return setError("Choose what was wrong.");
@@ -37,27 +38,37 @@ export function QuestReport({ lineId, quests, signedIn, signIn, open: startOpen 
       else setError(r.error);
     });
   };
-  if (done)
-    return (
-      <p id="report" className={styles.done} role="status">
-        {REPORT_THANKS}
-      </p>
-    );
   return (
-    <div id="report" className={styles.wrap}>
-      <button type="button" className={styles.link} aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
-        This was wrong
+    <>
+      <button type="button" className={buttonClass ?? styles.link} onClick={() => dialog.current?.showModal()}>
+        {label}
       </button>
-      {open && !signedIn && (
-        <div id={id} className={styles.form}>
-          <p>Sign in with Discord to tell us. You&apos;ll come back here.</p>
-          {signIn}
-        </div>
-      )}
-      {open && signedIn && (
+      <dialog ref={dialog} className={`frame ${styles.modal}`} aria-labelledby={`${id}-title`}>
+        <h2 id={`${id}-title`} className={styles.modalTitle}>
+          Report a mistake
+        </h2>
+        {done && (
+          <>
+            <p className={styles.done} role="status">
+              {REPORT_THANKS}
+            </p>
+            <span className={styles.actions}>
+              <button type="button" className="btn btn-sm btn-primary" onClick={() => dialog.current?.close()}>
+                Close
+              </button>
+            </span>
+          </>
+        )}
+        {!signedIn && !done && (
+          <div id={id} className={styles.formIn}>
+            <p>Sign in with Discord to tell us. You&apos;ll come back here.</p>
+            {signIn}
+          </div>
+        )}
+      {signedIn && !done && (
         <form
           id={id}
-          className={styles.form}
+          className={styles.formIn}
           onSubmit={(e) => {
             e.preventDefault();
             send();
@@ -136,12 +147,13 @@ export function QuestReport({ lineId, quests, signedIn, signIn, open: startOpen 
             <button type="submit" className="btn btn-sm btn-primary" disabled={pending}>
               {pending ? "Sending…" : "Send"}
             </button>
-            <button type="button" className="btn btn-sm btn-quiet" onClick={() => setOpen(false)}>
+            <button type="button" className="btn btn-sm btn-quiet" onClick={() => dialog.current?.close()}>
               Cancel
             </button>
           </span>
         </form>
       )}
-    </div>
+      </dialog>
+    </>
   );
 }

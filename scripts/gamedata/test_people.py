@@ -43,6 +43,19 @@ class BuiltIndex(unittest.TestCase):
         self.assertNotIn("plugin", row)
         self.assertEqual(row["name"], "Someone")
 
+    def test_what_a_person_is_comes_from_the_dump_by_record_id_and_nothing_else_is_added(self):
+        dump = {
+            "X:000001": {"essential": True, "follower": True, "marriageable": True, "vendor": {"startHour": 9}, "trainer": {"skill": "Restoration", "tier": "Expert", "levelCap": 100}, "packages": [{"edid": "NotCopied"}], "factions": [{"edid": "JobInnkeeperFaction"}]},
+            "X:000002": {"essential": False, "follower": False, "marriageable": False, "vendor": None, "trainer": None},
+        }
+        facts = ppl.person_facts(dump)
+        self.assertEqual(facts, {"X:000001": {"essential": True, "follower": True, "marriage": True, "sells": True, "innkeeper": True, "trainer": {"skill": "Restoration", "cap": 100}}})
+        raw = [{"id": "X:000001", "name": "Mjoll", "race": "Nord", "sex": "female"}, {"id": "X:000002", "name": "Nobody", "race": "Nord", "sex": "male"}]
+        a, b = ppl.build_site(raw, facts)
+        self.assertEqual((a["follower"], a["marriage"], a["trainer"]["skill"]), (True, True, "Restoration"))
+        self.assertNotIn("follower", b)
+        self.assertNotIn("packages", a)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -15,7 +15,7 @@ async function isComingSoon(page: Page) {
 }
 async function isApp(page: Page) {
   // The app's own header (the site's, or /new's focused one), and no coming soon page.
-  await expect(page.getByRole("banner").getByRole("link", { name: "LoreRim Build Planner" })).toBeVisible();
+  await expect(page.getByRole("banner").getByRole("link", { name: "LoreRim Planner" })).toBeVisible();
   await expect(page.getByText("Opening soon")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "How this started" })).toHaveCount(0);
 }

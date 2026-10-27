@@ -1,0 +1,152 @@
+/* The search box with its suggestions, the header's Search button and the command palette (WO-154 Part 4). Square corners, no glows. */
+.box {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+}
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  background: #121922;
+}
+.field:focus-within {
+  border-color: var(--ember);
+}
+.label {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  min-width: 0;
+}
+.field input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+}
+.field input::placeholder {
+  color: var(--muted);
+}
+.list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  min-width: min(420px, calc(100vw - 32px));
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+}
+.group {
+  padding: 10px 14px 4px;
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.opt {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.opt.on {
+  background: var(--panel-raised);
+  box-shadow: inset 2px 0 0 var(--ember);
+}
+.name {
+  font-size: 16px;
+  color: var(--text);
+}
+.opt small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.all {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  background: none;
+  color: var(--ember);
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* The header button. */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--soft);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.trigger:hover {
+  color: var(--text);
+  border-color: var(--line-bright);
+}
+@media (max-width: 899px) {
+  .triggerWord {
+    display: none;
+  }
+  .trigger {
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
+/* The palette. */
+.palette {
+  width: min(620px, calc(100vw - 32px));
+  margin-top: 12vh;
+  box-sizing: border-box;
+  padding: 18px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: var(--text);
+  overflow: visible;
+}
+.palette::backdrop {
+  background: rgba(8, 11, 15, 0.72);
+}
+.palette .box {
+  width: 100%;
+}
+.palette .list {
+  position: static;
+  max-height: 55vh;
+  margin-top: 8px;
+}
+.hint {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}

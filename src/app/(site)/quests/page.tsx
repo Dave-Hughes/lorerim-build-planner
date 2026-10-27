@@ -2,6 +2,7 @@
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { QuestSearch } from "@/components/quests/quest-search";
 import { categories, linesIn, questsData } from "@/lib/quests/data";
 import { questHref } from "@/lib/quests/slugs";
@@ -18,6 +19,7 @@ type Search = Promise<{ q?: string }>;
 export default async function QuestsHome({ searchParams }: { searchParams: Search }) {
   await loadPlayerFacts();
   const q = ((await searchParams).q ?? "").slice(0, 100).trim();
+  if (q) redirect(`/search?q=${encodeURIComponent(q)}`);
   const { lines } = questsData();
   const found = q ? searchEverything(q) : null;
   // Everything that isn't one of the big lines (side stories and the jobs), by the town or place it is in (WO-154).
@@ -85,7 +87,7 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
         ))}
       </div>
 
-      <section aria-labelledby="rest-title" className={styles.jobs}>
+      <section aria-labelledby="rest-title" className={styles.rest}>
         <span className={styles.jobsHead}>
           <img className={styles.px} src="/icons/quest-side-stories.svg" alt="" width={48} height={48} />
           <span className={styles.jobsWords}>
@@ -97,18 +99,20 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
             </span>
           </span>
         </span>
-        {places.map(([place, ls]) => (
-          <div key={place}>
-            <h3 className={styles.h3}>{place}</h3>
-            <span className={styles.jobChips}>
-              {ls.map((l) => (
-                <Link key={l.id} href={hrefOfLine(l)} className={styles.job}>
-                  {l.name} {l.quests.length > 1 && <small>{l.quests.length}</small>}
-                </Link>
-              ))}
-            </span>
-          </div>
-        ))}
+        <div className={styles.restGrid}>
+          {places.map(([place, ls]) => (
+            <div key={place}>
+              <h3 className={styles.h3}>{place}</h3>
+              <span className={styles.restList}>
+                {ls.map((l) => (
+                  <Link key={l.id} href={hrefOfLine(l)}>
+                    {l.name} {l.quests.length > 1 && <small>{l.quests.length}</small>}
+                  </Link>
+                ))}
+              </span>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );

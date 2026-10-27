@@ -10,11 +10,11 @@ const from = ip();
 
 test("signed out, This was wrong asks for Discord and comes back to the form", async ({ page }) => {
   await page.goto("/quests/wyrmstooth");
-  await page.getByRole("button", { name: "This was wrong" }).click();
+  await page.getByRole("button", { name: "Report a mistake" }).click();
   await expect(page.getByText("Sign in with Discord to tell us. You'll come back here.")).toBeVisible();
-  await expect(page.locator("#report").getByRole("button", { name: "Sign in with Discord" })).toBeVisible();
-  await expect(page.locator("#report").locator("input[name=redirectTo]")).toHaveValue("/quests/wyrmstooth?report=1#report");
-  // Where the sign-in comes back to: the form, open.
+  await expect(page.getByRole("dialog").getByRole("button", { name: "Sign in with Discord" })).toBeVisible();
+  await expect(page.getByRole("dialog").locator("input[name=redirectTo]")).toHaveValue("/quests/wyrmstooth?report=1");
+  // Where the sign-in comes back to: the modal, open.
   await page.goto("/quests/wyrmstooth?report=1#report");
   await expect(page.getByText("Sign in with Discord to tell us.")).toBeVisible();
 });
@@ -30,7 +30,7 @@ test("signed in, a report sends; the sixth in an hour is refused; /admin shows t
     await page.getByRole("button", { name: "Send" }).click();
   };
   await send(1);
-  await expect(page.locator("#report")).toHaveText("Thanks. We'll check it.");
+  await expect(page.getByRole("dialog").getByRole("status")).toHaveText("Thanks. We'll check it.");
 
   // Through the door, signed in with facts: what the planner said and what the player saw.
   const t = await tokenFor(page, context, baseURL!, from, "facts");
@@ -43,10 +43,10 @@ test("signed in, a report sends; the sixth in an hour is refused; /admin shows t
   // Five in the hour now (four from the page, one through the door): the sixth is refused.
   for (let n = 2; n <= 4; n++) {
     await send(n);
-    await expect(page.locator("#report")).toHaveText("Thanks. We'll check it.");
+    await expect(page.getByRole("dialog").getByRole("status")).toHaveText("Thanks. We'll check it.");
   }
   await send(5);
-  await expect(page.locator("#report").getByRole("alert")).toHaveText("You've sent a few already. Try again later.");
+  await expect(page.getByRole("dialog").getByRole("alert")).toHaveText("You've sent a few already. Try again later.");
 
   await context.clearCookies();
   await signIn(context);

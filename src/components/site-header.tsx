@@ -7,6 +7,7 @@ import { playthroughsOn } from "@/lib/features";
 import { looksLikeBot } from "@/lib/moderation/bot";
 import { countOpenReview } from "@/lib/moderation/review";
 import { AccountMenu } from "./account-menu";
+import { SearchPalette } from "./search/search-palette";
 import { SiteNav } from "./site-nav";
 import styles from "./site-header.module.css";
 
@@ -30,6 +31,7 @@ export async function SiteHeader() {
           <SiteNav />
         </span>
         <div className={styles.actions}>
+          <SearchPalette />
           {/* A build and a playthrough are one character (WO-114): New character, while playthroughs are on. */}
           <Link href="/new" className={`btn btn-primary ${styles.newBuild}`} aria-label={newLabel}>
             <span className={styles.newIcon} aria-hidden="true">

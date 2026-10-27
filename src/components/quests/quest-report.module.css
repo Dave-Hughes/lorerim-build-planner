@@ -61,3 +61,37 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* The report as a modal (WO-154 Part 4). */
+.modal {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 26px 28px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: var(--text);
+}
+.modal::backdrop {
+  background: rgba(8, 11, 15, 0.72);
+}
+.modal[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.modalTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+}
+.formIn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

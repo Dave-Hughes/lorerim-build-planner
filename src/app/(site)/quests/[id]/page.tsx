@@ -466,9 +466,15 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               ]}
               unsure={(lr.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
               actions={
-                <Link href={`/quests/${line.id}?report=1#report`} className="btn">
-                  Report a mistake
-                </Link>
+                <QuestReport
+                  lineId={line.id}
+                  quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))}
+                  signedIn={signedIn}
+                  open={reporting}
+                  label="Report a mistake"
+                  buttonClass="btn"
+                  signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
+                />
               }
             />
           ) : (
@@ -476,7 +482,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             {read === line.quests.length ? "Read from the game files and checked by a second reader" : `${read} of ${line.quests.length} quests are read from the game files and checked by a second reader; the rest are from the planner's older rules`}
           </p>
           )}
-          <QuestReport lineId={line.id} quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />
+          {!lr && <QuestReport lineId={line.id} quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />}
         </div>
 
         <aside className={styles.side}>
