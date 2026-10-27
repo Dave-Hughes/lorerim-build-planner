@@ -1,0 +1,2532 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:01C199",
+   "name": "Phinis Gestor",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Hall of Countenance (people_raw); WCollegePhinisSandboxArcanaeum12x10 puts him in the Arcanaeum noon-10 pm"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "read top down: AIOWinterholdPhinisEat 7-9 am Dormitory, Arcanaeum 12x10 (unless First Lessons running), Sleep 0x7, SandboxRoom fills 9-noon and 10 pm-midnight"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Arcanaeum package conditioned GetQuestRunning(MG01 First Lessons)==0; while it runs he falls to the room sandbox"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobSpellFaction + JobMerchantFaction + vendor record, JobTrainerConjurationFaction, giver of MGRitual03 and Cow_Conjuration in quest_givers"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor record 0-24h exists but its buy/sell list and chest (vendRaw/vencRaw) are unresolved in the readable files; spells_raw has no seller data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer block: Conjuration, Expert, levelCap 100"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 0E3A78)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "MGRitual03 objectives \"Summon and subdue an Unbound Dremora\"/\"Deliver the stone to Phinis\"; Cow_Conjuration giver; COW_CentralQuest 7 scholars; OK_FH_Quest objective 30 \"Bring the essence to Phinis Gestor\"; MG05 alias only"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on the record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C23E",
+   "name": "Sergius Turrianus",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Hall of Countenance; Great Hall package 12x12 puts him in the Hall of the Elements afternoon/evening"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order Dinner18x1, Arcanaeum12x3, Lunch11x1 (near self), Sleep3x8, GreatHall12x12 (var==0), DefaultSandbox: gives 0-3 idle, 3-11 sleep, 11 lunch, 12-15 Arcanaeum, 15-18 hall, 18 dinner, 19-24 hall"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "WCollegeSergiusSandboxGreatHall12x12 needs GetVMQuestVariable(03618F)==0; the same switch at 1 sends Drevis to WCollegeDrevisSandboxRoomUnsafe, so \"unsafe\" is a fair reading; quest unnamed in the records"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobTrainerEnchantingFaction; giver of MGR10/MGR11/MGR12 and Cow_enchantment"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "in JobMerchantFaction but vendor is null, so no barter; empty is right"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer block: Enchanting, Expert, levelCap 100"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 0E3A76)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "MGR12 \"Bring a Filled Grand Soul Gem to Sergius\"; MGR11 \"Sergius has asked for my help in restocking soul gems\"; MGR10 client pick-up; Cow_enchantment stage 35 Gretilde in Stonehills; mg06/MG05 alias only"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected true"
+    }
+   }
+  },
+  {
+   "id": "College Of Winterhold - Quest Expansion.esp:00090F",
+   "name": "Gretolde",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "shares Gestur Rockbreaker's packages (StonehillsGestur*, shared 2); Gestur is placed in Rockwallow Mine, Stonehills; Cow_enchantment stage 35 sends you to Stonehills"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order SandboxMine 6 am x15h Rockwallow Mine, Sleep 1 am x5h, SandboxHome otherwise (9 pm-1 am); the sleep and home spots are Gestur's markers, unresolved cells, so \"home, Stonehills\" is the reasonable reading"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditions on any package; no quest stage in the readable records moves her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no job factions; alias Mum in Cow_enchantment, stage 45 \"talk to Adara's mother\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 01326D)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Cow_enchantment alias Mum; stages 40-50: the client had nothing to do with the order, mother agrees to let Adara join"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "College Of Winterhold - Quest Expansion.esp:000910",
+   "name": "Adara",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Cow_enchantment stages 40-43 meet her at Stonehills; her only package sandboxes at her editor spot"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "single package CowAdara_DefaultSandboxEditorLocation1024, no schedule"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the package is gated GetStageDone(Cow_enchantment, 55)==0 and stage 55 is \"Faralda won't let Adara join until she sees her magical aptitudes\", so her schedule ends when you reach the College and Faralda asks to test her, not after the test"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "alias Adara in Cow_enchantment; stage 50 escort her to the College; CollegeofWinterholdFaction rank 4"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false; the escort is a quest step, not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 01CE14)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Cow_enchantment objectives 43 Talk to Adara, 50 Escort Adara to the College, 55 Talk to Adara"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C198",
+   "name": "Drevis Neloren",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Hall of Countenance; WCollegeDrevisSandboxArcanaeum10x5 puts him in the Arcanaeum 10 am-3 pm"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order SandboxRoomUnsafe (var==1), Arcanaeum10x5 (var==0), AIOWinterholdCollegeDinner17x2, Sleep23x8, SandboxRoom: 11 pm-7 sleep, 7-10 room, 10-3 Arcanaeum, 3-5 room, 5-7 dinner, 7-11 room"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "WCollegeDrevisSandboxRoomUnsafe sits first with GetVMQuestVariable(03618F)==1 and no hours, so while set he stays in his room all day; the quest is unnamed in the records"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobSpellFaction + JobMerchantFaction + vendor, JobTrainerIllusionFaction; giver of MGR02, MGRitual02, Cow_illusion"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor 0-24h; list unresolved"
+    },
+    "trains": {
+     "verdict": "unsure",
+     "note": "trainer block Illusion, Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 042DC6)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "MGRitual02 obj 10 \"Bring the four Master Illusion texts to Drevis Neloren\"; MGR02 \"Cleanse the focal points\"; Cow_illusion lesson; COW_CentralQuest; MG05 alias only"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:002B0D",
+   "name": "Soul",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest_givers DLC01SoulCairnHorseQuest2 places aliases RiderSoul/RiderSoul2 at two refs in the Soul Cairn worldspace; which one is live isn't in the records, rightly left unsure"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "DLC1SoulPackageIgnoreCombat / DLC1SoulPackage, shared editor-location sandboxes"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "SoulCairnSpecialFaction; giver of Soul Cairn Horse Quest (quest_givers)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 017008)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Soul Cairn Horse Quest objectives \"Find Arvak's skull in the Soul Cairn\", \"Return Arvak's skull\"; giver alias RiderSoul; reward Summon Arvak"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:00336A",
+   "name": "Isran",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Fort Dawnguard; DLC1VQ01MiscObjective objective says Fort Dawnguard, southeast of Riften, inside Dayspring Canyon"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only DLC1IsranPatrol10x8 (10 am x8h, no location in the record); outside it no package, left unsure correctly"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DLC1RV10 Destroying the Dawnguard aliases him; objective \"Kill the Dawnguard Leaders\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC1HunterFaction; giver of A New Order and Kindred Judgment in quest_givers"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 0E7F45)"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Dawnguard (DLC1VQ01MiscObjective): the objective is \"Speak with the leader of the Dawnguard\", a talk-to, so he is a step in it, not its target; the rest match Bloodline obj 30, A New Order stage 30, Bolstering obj 10, Prophet obj 5/50, Kindred Judgment obj 20, DLC1RV10"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; the vampire-side kill quest is carried in changes"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:00336C",
+   "name": "Gunmar",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "A New Order stage 30: \"Gunmar was last seen hunting a bear near <GunmarDungeonLocationAlias>\" (filled at run time); placed Fort Dawnguard"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages at all; placed in Fort Dawnguard"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "A New Order obj 40-47 recruit him and the bear; DLC1RV10 alias Gunmar"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC1ServicesGunmar + vendor record, JobTrainer Smithing Master"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor 0-24h radius 1000 exists; buy/sell list unresolved in readable records"
+    },
+    "trains": {
+     "verdict": "unsure",
+     "note": "trainer block Smithing, Master, levelCap null; the records give no cap"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 042DC1)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A New Order obj 40 Recruit Gunmar, 45 Help Gunmar defeat the bear; Bolstering alias only; Kindred Judgment alias; DLC1RV10 alias Gunmar"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:00336B",
+   "name": "Sorine Jurard",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "A New Order stage 30: \"Sorine Jurard was searching for a Dwemer ruin somewhere in the Reach\"; ruin alias ArielleDwarvenRuinAlias filled at run time"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages; placed Fort Dawnguard"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "A New Order obj 30 Recruit Sorine Jurard; DLC1RV10 alias Sorine"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC1ServicesSorineJurard + vendor, Marksman Master trainer; DLC1Radiant objective 20 \"Help Sorine with her project to improve the crossbow\""
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor 0-24h radius 1000; list unresolved"
+    },
+    "trains": {
+     "verdict": "unsure",
+     "note": "Marksman, Master, levelCap null in the trainer block"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 0E3A66)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers names her giver of Bolstering the Ranks (stage 10 \"It's been suggested ... Florentius\"); A New Order obj 30; Kindred Judgment and DLC1RV10 aliases"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:00352D",
+   "name": "Vigilant Tolan",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "A New Order obj 10 \"Meet Tolan at Stendarr's Beacon\" (places_raw: The Rift, by Riften); placed ref is Fort Dawnguard; where he is earlier is unsettled, kept unsure"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "single package DLC1TolanSandboxHunterHQ Fort Dawnguard, GetStage(A New Order)>=20"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "same condition: from A New Order stage 20 (\"return to Isran\") he sandboxes in Fort Dawnguard"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "VigilantOfStendarrFaction + DLC1HunterFaction; listed among those who can start Dawnguard (quest_givers others)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class Requiem ADDDDC)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Bloodline stage 25 \"return to Vigilant Tolan\"; A New Order obj 10; Dawnguard giver others; Awakening/Bolstering aliases"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:004D0C",
+   "name": "Katria",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Arkngthamz; Lost to the Ages stage 100 \"In Arkngthamz, I met Katria, the ghost of an adventurer\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "single DLC1LD_KatriaStayAtCurrentLocation"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Lost to the Ages stage 130 \"She left to search for the other shards\", stage 160 \"met her outside its long-sealed entrance\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "namedGiver of Lost to the Ages (quest_givers)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "stage 100 \"She offered to join me in my fight to the summit\"; follower flag false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 004D0E)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Lost to the Ages: Katria alias, objectives 125/160/210 Speak with Katria"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:003363",
+   "name": "Fura Bloodmouth",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Volkihar Keep, Castle Volkihar (people_raw, quest_givers where); Bloodline stage 5 \"castle off the northern coast\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "Bloodmouth (aaFuraQ2) objective 13 \"Meet Fura at Cold Rock Pass\" and stage 10 put her at Cold Rock Pass for the Cipius confrontation; the reader only listed Blood Ties"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC1VampireFaction; giver of The Hunt, Culling the Beast, Protecting the Bloodline, Blood Ties, Bloodmouth in quest_givers"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 042DC4)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: giver of DLC1RV01/02/04, others for DLC1RV10; Blood Ties obj 1 \"Bring Fura to her mother\"; Bloodmouth obj 10 lure Cipius to Cold Rock Pass; spectator aliases in Bloodline/Prophet"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:003364",
+   "name": "Garan Marethi",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Volkihar Keep"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest stage in the readable records moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Destruction Expert trainer; giver of The Bloodstone Chalice and Destroying the Dawnguard"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer block Destruction, Expert, levelCap 100"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 0E3A5C)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Bloodstone Chalice objectives 20-60 (Redwater Spring, Stalf and Salonia, return to Garan); DLC1RV10 giver; others on DLC1RV01/02/04"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0135E9",
+   "name": "Falion",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Falion's House, Morthal"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order SummoningCircle1x4 (VC01 >195 or <=100), Nap13x3, RunStore8x12, Sleep0x8, DefaultSandbox: 0-1 sleep, 1-5 circle, 5-8 sleep, 8-1 pm store, 1-4 pm nap (above store), 4-8 pm store, 8-midnight sandbox"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "circle package skips VC01 stages 101-195, which the reader has right; but VC01's only endings, stages 200 and 201, both say \"the ritual failed\", and 201 is the one where you kill him, so the change is not \"if it fails\""
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "\"can cure vampirism\" is wrong for this load order: Seeking A Cure stages 200/201 both read \"attempted to cure me of vampirism, but the ritual failed\""
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor 8-20h, JobSpellFaction; list unresolved"
+    },
+    "trains": {
+     "verdict": "unsure",
+     "note": "Conjuration, Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 0E3A6A)"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Seeking A Cure: he performs the ritual but it fails in this load order (stages 200/201), so \"he cures vampirism\" misleads; others match FreeformMorthalA, FOFMorthalBrawlerQuest obj 10, OK_FH_Quest stage 20, DLC1SeranaCureSelfQuest stage 10"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true, with VC01 objective 197 \"Kill Falion\" correctly flagged unsure"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:01541D",
+   "name": "Durak",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Fort Dawnguard; but he gives Dawnguard and fills a Messenger alias in an unnamed quest, so he may come to you; reader kept it unsure"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DLC1RV10 alias Durak"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, follower true, DLC1DawnguardFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower flag true; no unlock condition in the readable records, unsure kept"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 013181)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers names him giver of Dawnguard (DLC1VQ01MiscObjective), stage 10 \"looking for new recruits\"; A New Order/Kindred Judgment/DLC1RV10 aliases"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Dawnguard.esm:01541E",
+   "name": "Celann",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Fort Dawnguard; no packages"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no AI packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DLC1RV10 alias Celann"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, follower true"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower true; unlock not in readable records"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 07289D)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Dawnguard giver others include Celann; Kindred Judgment/DLC1RV10 aliases"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019A2E",
+   "name": "Michel Lylvieve",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Lylvieve Family's House; campfire package 2-8 pm"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order SundayTavern (Sundas 12x2, IsRaining==0), Campfire14x20 (dry + fn612 tests), FamilyEat12x2, FamilyEat20x2, DefaultSleep0x8, DefaultSandbox: matches the reader"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "fn62 (rain) == 0 on the tavern and campfire packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "TownDragonBridgeFaction only, no job faction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 01326C)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: giver of Prophet (Dawnguard side) and in the others of the vampire-side Prophet; objective 30 \"Ask people in Dragon Bridge\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019A22",
+   "name": "Lodvar",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Horgeir's House; ReclineLumberMill/Saw/Load packages 8 am-6 pm at the mill"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order DayOff (Loredas 6x12 dry), SawLumber, LoadLumber, ReclineLumberMill8x10, Tavern20x2 (fn149), Family2Eat18x4, SleepAnyTime: 8-6 mill, 6-8 eat, 8-10 tavern, then sleep"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "AIODBLodvarDayOff dow 6 (Loredas), fn62==0"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobLumberjackFaction, DragonBridgeLumberCampFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 01326E)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers vampire-side Prophet lists Lodvar among those who answer about the moth priest"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019A2A",
+   "name": "Azzada Lylvieve",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Lylvieve Family's House; Woodcutter6x12 by day"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order FamilyEat12x2, DayOff (Sundas), Woodcutter6x12, Sandbox18x2, FamilyEat20x2, DefaultSleep0x8, DefaultSandbox: matches the reader, lunch above the woodcutting"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "AIODBAzzadaDayOff dow 0 (Sundas), fn62==0, sits below the lunch package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FavorJobsGatherWheatFaction; unsure on the detail kept"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 01326C)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers Dawnguard-side Prophet others include Azzada Lylvieve"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019A1D",
+   "name": "Horgeir",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed Horgeir's House; LumberCamp6x12 by day, HorgeirInn20x4 evenings"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order DayOff (Sundas), Inn20x4, LumberCamp6x12, Family2Eat18x4, DefaultSleep0x8: 0-6 sleep, 6-6 mill, 6-8 eat, 8-midnight Four Shields"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "AIODBHrogeirDayOff dow 0, fn62==0"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobLumberjackFaction, DragonBridgeLumberCampFaction, FavorJobsChopWoodFaction; \"runs\" kept unsure"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith: class is an id only and outfit unresolved in the readable records; no skill weights or weapon to read (class 01326E)"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers Dawnguard-side Prophet others include Horgeir"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:01C199",
+   "name": "Phinis Gestor",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "The College of Winterhold: his quarters in the Hall of Countenance, or the Arcanaeum from noon",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "his quarters, Hall of Countenance, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "7 am",
+     "for": "2 hours",
+     "where": "Hall of Countenance, College of Winterhold",
+     "doing": "eating"
+    },
+    {
+     "from": "9 am",
+     "for": "3 hours",
+     "where": "his quarters, Hall of Countenance",
+     "doing": "around his room"
+    },
+    {
+     "from": "noon",
+     "for": "10 hours",
+     "where": "the Arcanaeum, College of Winterhold",
+     "doing": "reading and studying"
+    },
+    {
+     "from": "10 pm",
+     "for": "2 hours",
+     "where": "his quarters, Hall of Countenance",
+     "doing": "around his room"
+    }
+   ],
+   "changes": [
+    "While First Lessons is running he skips the Arcanaeum and stays in the Hall of Countenance from noon to 10 pm."
+   ],
+   "role": "College of Winterhold master of Conjuration: spell merchant, Conjuration trainer, quest giver",
+   "sells": "Spell tomes (he's a spell vendor, open at any hour); his exact stock isn't in the records I can read",
+   "trains": "Conjuration, up to 100 (expert trainer)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Conjuration Ritual Spell",
+     "how": "gives it: subdue an unbound dremora for a sigil stone and bring it to him"
+    },
+    {
+     "quest": "I Choose You, Familiar",
+     "how": "gives it: his Conjuration lesson"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "a step in it: his lesson is one of the seven scholars' lessons"
+    },
+    {
+     "quest": "A Forlorn Hope",
+     "how": "a step in it: you bring him the daedric essence and wait for his results"
+    },
+    {
+     "quest": "Containment",
+     "how": "named in it as one of the College masters; no step of it is his"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "The vendor record points at a buy/sell list and a merchant chest that aren't resolved in the records I can read, so which tomes and from what level is unknown."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from. He trains Conjuration, which hints at a conjurer, but that isn't his class."
+    },
+    {
+     "field": "quests",
+     "why": "He also fills roles in three College quests that have no name in the records; left out."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C199",
+    "AIOWinterholdPhinisEat (AI Overhaul.esp:22B4A3)",
+    "WCollegePhinisSandboxArcanaeum12x10 (Skyrim.esm:036A69) cond GetQuestRunning MG01 Skyrim.esm:01F251 == 0",
+    "WCollegePhinisSleep0x7 (Skyrim.esm:036A68)",
+    "WCollegePhinisSandboxRoom (Skyrim.esm:036A6A)",
+    "factions JobSpellFaction, JobMerchantFaction, ServicesWinterholdCollegePhinis, JobTrainerConjurationFaction",
+    "trainer Conjuration Expert levelCap 100",
+    "vendor 0-24h",
+    "quests MGRitual03 Skyrim.esm:099F27, Cow_Conjuration COW-QE:00086F, COW_CentralQuest COW-QE:00081D, OK_FH_Quest Forlorn Hope.esp:000802, MG05 Skyrim.esm:01F255",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C23E",
+   "name": "Sergius Turrianus",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "The College of Winterhold: the Hall of the Elements in the afternoon and evening, or his quarters in the Hall of Countenance",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "3 hours",
+     "where": "near his spot in the Hall of Countenance, College of Winterhold",
+     "doing": "idling"
+    },
+    {
+     "from": "3 am",
+     "for": "8 hours",
+     "where": "his quarters, Hall of Countenance",
+     "doing": "sleeping"
+    },
+    {
+     "from": "11 am",
+     "for": "1 hour",
+     "where": "wherever he is",
+     "doing": "lunch"
+    },
+    {
+     "from": "noon",
+     "for": "3 hours",
+     "where": "the Arcanaeum, College of Winterhold",
+     "doing": "reading and studying"
+    },
+    {
+     "from": "3 pm",
+     "for": "3 hours",
+     "where": "the Hall of the Elements, College of Winterhold",
+     "doing": "working the hall"
+    },
+    {
+     "from": "6 pm",
+     "for": "1 hour",
+     "where": "Hall of Countenance",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "the Hall of the Elements",
+     "doing": "working the hall"
+    }
+   ],
+   "changes": [
+    "When a College-wide 'unsafe' switch the records don't name is set, he stays out of the Hall of the Elements and idles near his spot in the Hall of Countenance instead."
+   ],
+   "role": "College of Winterhold master enchanter: Enchanting trainer, quest giver",
+   "sells": "",
+   "trains": "Enchanting, up to 100 (expert trainer)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Enchanted To Meet You",
+     "how": "gives it: his Enchanting lesson and a delivery to Stonehills"
+    },
+    {
+     "quest": "Enchanting Pick-Up",
+     "how": "gives it: fetch a client's item for him to enchant"
+    },
+    {
+     "quest": "Restocking Soul Gems",
+     "how": "gives it"
+    },
+    {
+     "quest": "Filling Soul Gems",
+     "how": "gives it: bring him a filled Grand Soul Gem"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "a step in it: his lesson is one of the seven scholars' lessons"
+    },
+    {
+     "quest": "Revealing the Unseen",
+     "how": "named in it as one of the College masters; no step of it is his"
+    },
+    {
+     "quest": "Containment",
+     "how": "named in it as one of the College masters; no step of it is his"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "He's in the merchant faction but has no vendor record, so he doesn't run a shop as far as the records show."
+    },
+    {
+     "field": "changes",
+     "why": "The switch that keeps him out of the Hall of the Elements belongs to a quest with no name in the records I can read."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C23E",
+    "WCollegeSergiusDinner18x1",
+    "WCollegeSergiusSandboxArcanaeum12x3",
+    "WCollegeSergiusLunch11x1",
+    "WCollegeSergiusSleep3x8",
+    "WCollegeSergiusSandboxGreatHall12x12 cond GetVMQuestVariable Skyrim.esm:03618F == 0",
+    "DefaultSandboxEditorLocation512",
+    "trainer Enchanting Expert levelCap 100",
+    "vendor null",
+    "quests MGR10 Skyrim.esm:028A13, MGR11 Skyrim.esm:028A19, MGR12 Skyrim.esm:028A1E, Cow_enchantment COW-QE:000871, mg06 Skyrim.esm:01F256, MG05 Skyrim.esm:01F255, COW_CentralQuest",
+    "protected true"
+   ]
+  },
+  {
+   "id": "College Of Winterhold - Quest Expansion.esp:00090F",
+   "name": "Gretolde",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Stonehills: in Rockwallow Mine by day, at home in Stonehills at night",
+   "day": [
+    {
+     "from": "1 am",
+     "for": "5 hours",
+     "where": "her home, Stonehills",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "15 hours",
+     "where": "Rockwallow Mine, Stonehills",
+     "doing": "working the mine"
+    },
+    {
+     "from": "9 pm",
+     "for": "4 hours",
+     "where": "her home, Stonehills",
+     "doing": "around the house"
+    }
+   ],
+   "changes": [],
+   "role": "Adara's mother, the client in Enchanted To Meet You",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Enchanted To Meet You",
+     "how": "a step in it: the client Sergius sends you to; you talk her into letting Adara go to the College"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "name",
+     "why": "The quest log spells her 'Gretilde in Stonehills'; her record says Gretolde."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "College Of Winterhold - Quest Expansion.esp:00090F",
+    "StonehillsGesturSandboxMine (Rockwallow Mine) 6am+900min",
+    "StonehillsGesturSleep1x5 target Skyrim.esm:0D5F88 near Stonehills",
+    "StonehillsGesturSandboxHome target Skyrim.esm:0D5F7C",
+    "alias Mum in Cow_enchantment COW-QE:000871; stage 35/45/50 logs",
+    "TownStonehillsFaction",
+    "essential true"
+   ]
+  },
+  {
+   "id": "College Of Winterhold - Quest Expansion.esp:000910",
+   "name": "Adara",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Stonehills, with her mother Gretolde, during Enchanted To Meet You",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "around where she stands in Stonehills",
+     "doing": "idling"
+    }
+   ],
+   "changes": [
+    "Enchanted To Meet You: you escort her to the College of Winterhold. Her own schedule ends when you arrive and Faralda asks to see her magic for herself; the records I can read don't say where she settles after."
+   ],
+   "role": "young would-be mage you escort to the College",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Enchanted To Meet You",
+     "how": "a step in it: she sent the order; talk to her, escort her to the College, talk to her after Faralda's test"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "After the escort she has no schedule package; a quest with no name in the records also holds her. Most likely she stays at the College, but the records read don't show it."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "College Of Winterhold - Quest Expansion.esp:000910",
+    "CowAdara_DefaultSandboxEditorLocation1024 cond GetStageDone COW-QE:000871 stage 55 == 0",
+    "alias Adara in Cow_enchantment; stages 43, 50, 55",
+    "alias Adara in COW-QE:00092C (unnamed)",
+    "factions TownStonehillsFaction, CollegeofWinterholdFaction",
+    "essential true",
+    "CowAdara package gated GetStageDone(Cow_enchantment,55)==0; stage 55 log is Faralda asking to test her"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C198",
+   "name": "Drevis Neloren",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "The College of Winterhold: the Arcanaeum mid-morning to mid-afternoon, otherwise his quarters in the Hall of Countenance",
+   "day": [
+    {
+     "from": "11 pm",
+     "for": "8 hours",
+     "where": "his quarters, Hall of Countenance, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "7 am",
+     "for": "3 hours",
+     "where": "his quarters, Hall of Countenance",
+     "doing": "around his room"
+    },
+    {
+     "from": "10 am",
+     "for": "5 hours",
+     "where": "the Arcanaeum, College of Winterhold",
+     "doing": "reading and studying"
+    },
+    {
+     "from": "3 pm",
+     "for": "2 hours",
+     "where": "his quarters, Hall of Countenance",
+     "doing": "around his room"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Hall of Countenance",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "4 hours",
+     "where": "his quarters, Hall of Countenance",
+     "doing": "around his room"
+    }
+   ],
+   "changes": [
+    "When a College-wide 'unsafe' switch the records don't name is set, he stays in his quarters all day (that rule sits above all his others)."
+   ],
+   "role": "College of Winterhold master wizard: spell merchant, Illusion trainer, quest giver",
+   "sells": "Spell tomes (he's a spell vendor, open at any hour); his exact stock isn't in the records I can read",
+   "trains": "Illusion (master trainer; the records set no level cap)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Illusion Ritual Spell",
+     "how": "gives it: find the four Master Illusion texts hidden in the College"
+    },
+    {
+     "quest": "Out of Balance",
+     "how": "gives it: cleanse the focal points around the College"
+    },
+    {
+     "quest": "Back-Stabbing Rodents",
+     "how": "gives it: his Illusion lesson"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "a step in it: his lesson is one of the seven scholars' lessons"
+    },
+    {
+     "quest": "Containment",
+     "how": "named in it as one of the College masters; no step of it is his"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "The vendor record points at a buy/sell list and merchant chest that aren't resolved in the records I can read."
+    },
+    {
+     "field": "trains",
+     "why": "Master-tier trainers carry no level cap in the records."
+    },
+    {
+     "field": "changes",
+     "why": "The switch that confines him to his room belongs to a quest with no name in the records I can read."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    },
+    {
+     "field": "quests",
+     "why": "He also fills roles in four quests with no name in the records; left out."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C198",
+    "WCollegeDrevisSandboxRoomUnsafe cond GetVMQuestVariable Skyrim.esm:03618F == 1",
+    "WCollegeDrevisSandboxArcanaeum10x5",
+    "AIOWinterholdCollegeDinner17x2",
+    "WCollegeDrevisSleep23x8",
+    "WCollegeDrevisSandboxRoom",
+    "factions JobSpellFaction, ServicesWinterholdCollegeDrevis, JobTrainerIllusionFaction",
+    "trainer Illusion Master",
+    "quests MGRitual02 Skyrim.esm:0B3233, MGR02 Skyrim.esm:0266F2, Cow_illusion COW-QE:000872, COW_CentralQuest, MG05",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:002B0D",
+   "name": "Soul",
+   "race": "Redguard",
+   "sex": "male",
+   "firstMeet": "In the Soul Cairn",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "near where he's placed in the Soul Cairn",
+     "doing": "wandering"
+    }
+   ],
+   "changes": [],
+   "role": "a soul in the Soul Cairn who sends you after Arvak's skull",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Soul Cairn Horse Quest",
+     "how": "gives it: find Arvak's skull in the Soul Cairn and return it"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The quest lists two placed spots for him in the Soul Cairn; the records don't say which is used."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:002B0D",
+    "DLC1SoulPackageIgnoreCombat (shared by 31)",
+    "DLC1SoulPackage (shared by 28)",
+    "quest_givers Dawnguard.esm:0163CD giver alias RiderSoul, refs Dawnguard.esm:011F9E, Dawnguard.esm:002B0E in Soul Cairn",
+    "SoulCairnSpecialFaction"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:00336A",
+   "name": "Isran",
+   "race": "Redguard",
+   "sex": "male",
+   "firstMeet": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+   "day": [
+    {
+     "from": "10 am",
+     "for": "8 hours",
+     "where": "Fort Dawnguard",
+     "doing": "walking a patrol"
+    },
+    {
+     "from": "6 pm",
+     "for": "16 hours",
+     "where": "his spot in Fort Dawnguard",
+     "doing": "standing by"
+    }
+   ],
+   "changes": [
+    "Destroying the Dawnguard (vampire side): he's one of the Dawnguard leaders you're sent to kill."
+   ],
+   "role": "leader of the Dawnguard; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Dawnguard",
+     "how": "a step in it: the leader of the Dawnguard you are sent to speak with in Fort Dawnguard"
+    },
+    {
+     "quest": "Bloodline",
+     "how": "a step in it: return to him after refusing Harkon"
+    },
+    {
+     "quest": "A New Order",
+     "how": "gives it: find Sorine Jurard, Gunmar and Florentius"
+    },
+    {
+     "quest": "Bolstering the Ranks",
+     "how": "a step in it: ask him where Florentius is"
+    },
+    {
+     "quest": "Prophet",
+     "how": "a step in it (Dawnguard side): follow him, and report the moth priest's rescue to him"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "gives it (Dawnguard side): speak to him to rally the Dawnguard against Harkon"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "its target (vampire side): one of the leaders to kill"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His patrol package has no place in the records; I assume it's within the fort. Outside it he has no package, so he stays where he's placed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:00336A",
+    "DLC1IsranPatrol10x8 (Dawnguard.esm:011BA5) 10am+480min, no location",
+    "quests DLC1VQ01MiscObjective Dawnguard.esm:00D06C, DLC1VQ02 Dawnguard.esm:002F65, DLC1HunterBaseIntro Dawnguard.esm:004E24, DLC1HunterBaseStage2 Dawnguard.esm:013F1F, DLC1VQ03Hunter Dawnguard.esm:0098CB, DLC1VQ08 Dawnguard.esm:007C25, DLC1RV10 Dawnguard.esm:019938",
+    "placed ref Dawnguard.esm:003478 cell Dawnguard.esm:001DBA",
+    "essential true",
+    "DLC1VQ01MiscObjective Dawnguard.esm:00D06C objective 10 is a speak-to"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:00336C",
+   "name": "Gunmar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Out hunting a bear at a place A New Order picks for you; after you recruit him, Fort Dawnguard",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "his spot in Fort Dawnguard",
+     "doing": "standing by (no schedule)"
+    }
+   ],
+   "changes": [
+    "A New Order: until you recruit him he's out hunting a bear; afterwards he's at Fort Dawnguard.",
+    "Destroying the Dawnguard (vampire side): he's one of the Dawnguard leaders you're sent to kill."
+   ],
+   "role": "Dawnguard smith: merchant, Smithing trainer",
+   "sells": "",
+   "trains": "Smithing (master trainer; the records set no level cap)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A New Order",
+     "how": "a step in it: recruit him and help him defeat the bear"
+    },
+    {
+     "quest": "Bolstering the Ranks",
+     "how": "named in it; no step of it is his"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "a step in it (Dawnguard side): one of the Dawnguard rallied against Harkon"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "its target (vampire side): one of the leaders to kill"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The bear hunt's location is filled in by the quest at run time; the records don't name it."
+    },
+    {
+     "field": "sells",
+     "why": "He has a vendor record (any hour) but its buy/sell list isn't resolved in the records I can read."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:00336C",
+    "no AI packages",
+    "A New Order stage 30 log: Gunmar hunting a bear near <GunmarDungeonLocationAlias>; objectives 40/45/47",
+    "factions DLC1ServicesGunmar, DLC1GunmarFaction",
+    "trainer Smithing Master",
+    "vendor 0-24h radius 1000",
+    "quests Dawnguard.esm:004E24, 013F1F, 007C25, 019938",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:00336B",
+   "name": "Sorine Jurard",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Searching a Dwemer ruin in the Reach during A New Order; after you recruit her, Fort Dawnguard",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "her spot in Fort Dawnguard",
+     "doing": "standing by (no schedule)"
+    }
+   ],
+   "changes": [
+    "A New Order: until you recruit her she's at a Dwemer ruin in the Reach; afterwards she's at Fort Dawnguard.",
+    "Destroying the Dawnguard (vampire side): she's one of the Dawnguard leaders you're sent to kill."
+   ],
+   "role": "Dawnguard crossbow maker: merchant, Marksman trainer, quest giver (also asks you to help with her project to improve the crossbow)",
+   "sells": "",
+   "trains": "Marksman (master trainer; the records set no level cap)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A New Order",
+     "how": "a step in it: recruit her"
+    },
+    {
+     "quest": "Bolstering the Ranks",
+     "how": "gives it: suggests Florentius for the Dawnguard"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "a step in it (Dawnguard side): one of the Dawnguard rallied against Harkon"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "its target (vampire side): one of the leaders to kill"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Which Dwemer ruin is filled in by the quest at run time; the records don't name it."
+    },
+    {
+     "field": "sells",
+     "why": "She has a vendor record (any hour) but its buy/sell list isn't resolved in the records I can read."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from. She trains Marksman."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:00336B",
+    "no AI packages",
+    "A New Order stage 30 log; alias ArielleDwarvenRuinAlias",
+    "factions DLC1ServicesSorineJurard",
+    "trainer Marksman Master",
+    "vendor 0-24h radius 1000",
+    "DLC1Radiant Dawnguard.esm:004C1C objective 20 'Help Sorine with her project to improve the crossbow'",
+    "quest_givers DLC1HunterBaseStage2 giver",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:00352D",
+   "name": "Vigilant Tolan",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "A Vigilant of Stendarr met early in the Dawnguard story (A New Order has you meet him at Stendarr's Beacon, near Riften); later at Fort Dawnguard",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "Fort Dawnguard",
+     "doing": "around the fort (once A New Order has reached its second step)"
+    }
+   ],
+   "changes": [
+    "From the point in A New Order where you go back to speak with Isran, he lives at Fort Dawnguard."
+   ],
+   "role": "Vigilant of Stendarr who points you to the Dawnguard",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Dawnguard",
+     "how": "a step in it: one of those who can tell you about the Dawnguard"
+    },
+    {
+     "quest": "Awakening",
+     "how": "named in it; no step of it is his in the records"
+    },
+    {
+     "quest": "Bloodline",
+     "how": "a step in it: return to him after refusing Harkon (one of two people you can report to)"
+    },
+    {
+     "quest": "A New Order",
+     "how": "a step in it: meet him at Stendarr's Beacon"
+    },
+    {
+     "quest": "Bolstering the Ranks",
+     "how": "named in it; can speak about Florentius"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His only placed spot in the records is Fort Dawnguard, and before A New Order he has no schedule; where you'd meet him before the fort is moved in by quests the records don't spell out."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:00352D",
+    "DLC1TolanSandboxHunterHQ cond GetStage Dawnguard.esm:004E24 >= 20",
+    "A New Order objective 10 'Meet Tolan at Stendarr's Beacon'",
+    "Bloodline stage 25",
+    "quest_givers DLC1VQ01MiscObjective others stageBelow 150",
+    "VigilantOfStendarrFaction",
+    "not essential/protected"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:004D0C",
+   "name": "Katria",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Inside Arkngthamz, as a ghost",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "wherever she is",
+     "doing": "staying put"
+    }
+   ],
+   "changes": [
+    "Lost to the Ages: after the treasury of Arkngthamz she leaves to search for the other shards; you meet her again outside the Aetherium Forge's entrance."
+   ],
+   "role": "ghost adventurer who leads Lost to the Ages",
+   "sells": "",
+   "trains": "",
+   "joins": "Only during Lost to the Ages: she fights alongside you to the summit of Arkngthamz. Not a regular follower.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Lost to the Ages",
+     "how": "gives it: you meet her in Arkngthamz and she guides the hunt for the Aetherium Forge"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:004D0C",
+    "DLC1LD_KatriaStayAtCurrentLocation",
+    "placed cell Arkngthamz",
+    "DLC1LD Dawnguard.esm:005817 alias Katria; stages 100, 130, 160",
+    "DLC1LD_KatriaFaction",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:003363",
+   "name": "Fura Bloodmouth",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Volkihar Keep, Castle Volkihar, off the northern coast of Skyrim",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "her spot in Volkihar Keep",
+     "doing": "standing by (no schedule)"
+    }
+   ],
+   "changes": [
+    "Blood Ties: she travels with you to Solitude to meet her mother.",
+    "Bloodmouth: she waits at Cold Rock Pass to confront Legate Cipius, whom you send there from Whiterun."
+   ],
+   "role": "vampire of Harkon's court; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Blood Ties",
+     "how": "gives it: take her to her mother in Solitude"
+    },
+    {
+     "quest": "Bloodmouth",
+     "how": "gives it: lure Legate Cipius to Cold Rock Pass for her revenge"
+    },
+    {
+     "quest": "The Hunt",
+     "how": "gives it (vampire side)"
+    },
+    {
+     "quest": "Culling the Beast",
+     "how": "gives it (vampire side)"
+    },
+    {
+     "quest": "Protecting the Bloodline",
+     "how": "gives it (vampire side)"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "can give it (vampire side)"
+    },
+    {
+     "quest": "Bloodline",
+     "how": "one of the court watching when you bring Serana home"
+    },
+    {
+     "quest": "Prophet",
+     "how": "one of the court at Harkon's speech (vampire side)"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "named in it as one of Harkon's court; the records read don't show what happens to her"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Several more quests from the mod that adds Blood Ties and Bloodmouth hold her, with no names in the records; they may move her."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:003363",
+    "no AI packages",
+    "placed ref Dawnguard.esm:0033B2 in Volkihar Keep",
+    "quest_givers aaFuraQ1 FDE Fura.esp:000933, aaFuraQ2 FDE Fura.esp:000B6B, Dawnguard.esm:004C1B, 0050B9, 0056FD giver; 019938 other",
+    "Bloodline stage 5 log 'castle off the northern coast'",
+    "essential true",
+    "aaFuraQ2 FDE Fura.esp:000B6B objective 13 Meet Fura at Cold Rock Pass"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:003364",
+   "name": "Garan Marethi",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Volkihar Keep, Castle Volkihar, off the northern coast of Skyrim",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "his spot in Volkihar Keep",
+     "doing": "standing by (no schedule)"
+    }
+   ],
+   "changes": [],
+   "role": "vampire of Harkon's court; Destruction trainer, quest giver",
+   "sells": "",
+   "trains": "Destruction, up to 100 (expert trainer)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Bloodstone Chalice",
+     "how": "gives it: fill the Chalice at Redwater Spring and bring it back"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "gives it (vampire side)"
+    },
+    {
+     "quest": "The Hunt",
+     "how": "can give it (vampire side)"
+    },
+    {
+     "quest": "Culling the Beast",
+     "how": "can give it (vampire side)"
+    },
+    {
+     "quest": "Protecting the Bloodline",
+     "how": "can give it (vampire side)"
+    },
+    {
+     "quest": "Bloodline",
+     "how": "one of the court watching when you bring Serana home"
+    },
+    {
+     "quest": "Prophet",
+     "how": "one of the court at Harkon's speech (vampire side)"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "named in it as one of Harkon's court; the records read don't show what happens to him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from. He trains Destruction."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:003364",
+    "no AI packages",
+    "placed ref Dawnguard.esm:0033AB in Volkihar Keep",
+    "trainer Destruction Expert levelCap 100",
+    "quest_givers DLC1VampireBaseIntro Dawnguard.esm:00594C giver, DLC1RV10 Dawnguard.esm:019938 giver, 004C1B/0050B9/0056FD other",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0135E9",
+   "name": "Falion",
+   "race": "Redguard",
+   "sex": "male",
+   "firstMeet": "His house in Morthal",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "1 hour",
+     "where": "his house, Morthal",
+     "doing": "sleeping"
+    },
+    {
+     "from": "1 am",
+     "for": "4 hours",
+     "where": "the summoning stones in the marsh outside Morthal",
+     "doing": "at the stone circle"
+    },
+    {
+     "from": "5 am",
+     "for": "3 hours",
+     "where": "his house, Morthal",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "5 hours",
+     "where": "his house, Morthal",
+     "doing": "running his shop"
+    },
+    {
+     "from": "1 pm",
+     "for": "3 hours",
+     "where": "his house, Morthal",
+     "doing": "napping"
+    },
+    {
+     "from": "4 pm",
+     "for": "4 hours",
+     "where": "his house, Morthal",
+     "doing": "running his shop"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "around his house, Morthal",
+     "doing": "idling"
+    }
+   ],
+   "changes": [
+    "Seeking A Cure: from the point he has the black soul gem until the ritual, he skips his night trips to the stones; you meet him at dawn at the stone circle for the ritual.",
+    "Seeking A Cure: the ritual fails; the quest can end with you killing him.",
+    "Falion's Secret: tell the Jarl and she orders him to stop what he does in the marsh."
+   ],
+   "role": "Morthal wizard: spell merchant, Conjuration trainer, quest giver; attempts a vampirism cure ritual",
+   "sells": "Spell tomes (he's a spell vendor, 8 am to 8 pm); his exact stock isn't in the records I can read",
+   "trains": "Conjuration (master trainer; the records set no level cap)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Falion's Secret",
+     "how": "gives it: follow him to the stone circle, then keep quiet or tell the Jarl"
+    },
+    {
+     "quest": "Seeking A Cure",
+     "how": "gives it: bring him a filled black soul gem and meet him at the stone circle at dawn; the ritual fails, and the quest can end with you killing him"
+    },
+    {
+     "quest": "Fists of Fury - Hjaalmarch",
+     "how": "gives it: the brawling tournament at the Summoning Stones"
+    },
+    {
+     "quest": "A Forlorn Hope",
+     "how": "gives it: his letter on making daedric essence"
+    },
+    {
+     "quest": "Serana's cure vampirism",
+     "how": "a step in it: Serana visits him to be cured"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "His record is essential, but Seeking A Cure's log has a stage where you kill him; the quest presumably lifts that, which the records I can read don't show."
+    },
+    {
+     "field": "sells",
+     "why": "The vendor record points at a buy/sell list and merchant chest that aren't resolved in the records I can read."
+    },
+    {
+     "field": "day",
+     "why": "Whether he trades during his 1 pm nap isn't settled; the shop window is 8 am to 8 pm."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from. He trains Conjuration."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0135E9",
+    "MorthalFalionSummoningCircle1x4 target Skyrim.esm:044389 cond GetStage VC01 > 195 OR <= 100",
+    "MorthalFalionNap13x3",
+    "MorthalFalionRunStore8x12",
+    "MorthalFalionSleep0x8",
+    "DefaultSandboxEditorLocation512",
+    "vendor 8-20h",
+    "trainer Conjuration Master",
+    "quests FreeformMorthalA Skyrim.esm:021891, VC01 Skyrim.esm:05C625 (stage 150, 201), FOFMorthalBrawlerQuest, OK_FH_Quest, DLC1SeranaCureSelfQuest",
+    "essential true",
+    "VC01 Skyrim.esm:05C625 stages 200/201 both log a failed ritual; 201 adds killing him"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:01541D",
+   "name": "Durak",
+   "race": "Orsimer",
+   "sex": "male",
+   "firstMeet": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "his spot in Fort Dawnguard",
+     "doing": "standing by (no schedule)"
+    }
+   ],
+   "changes": [
+    "Destroying the Dawnguard (vampire side): he's one of the Dawnguard you're sent to kill."
+   ],
+   "role": "Dawnguard member; can become a follower",
+   "sells": "",
+   "trains": "",
+   "joins": "Can be asked to follow you; the records I can read don't show what unlocks it",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Dawnguard",
+     "how": "gives it: tells you the Dawnguard are looking for recruits"
+    },
+    {
+     "quest": "A New Order",
+     "how": "named in it; no step of it is his"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "a step in it (Dawnguard side): one of the Dawnguard rallied against Harkon"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "its target (vampire side): one of those to kill"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "He's a potential follower, but the dialogue or quest that lets him join isn't in the records I can read."
+    },
+    {
+     "field": "firstMeet",
+     "why": "He has no schedule; he's placed at Fort Dawnguard. Quests with no names in the records also hold him and may move him."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:01541D",
+    "no AI packages",
+    "PotentialFollowerFaction, DLC1DawnguardFaction, follower true",
+    "DLC1VQ01MiscObjective giver stageBelow 110",
+    "alias Messenger in Dawnguard.esm:00D90B (unnamed)",
+    "quests Dawnguard.esm:004E24, 007C25, 019938",
+    "not essential/protected"
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:01541E",
+   "name": "Celann",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "Fort Dawnguard, in Dayspring Canyon southeast of Riften",
+   "day": [
+    {
+     "from": "any time",
+     "for": "all day",
+     "where": "his spot in Fort Dawnguard",
+     "doing": "standing by (no schedule)"
+    }
+   ],
+   "changes": [
+    "Destroying the Dawnguard (vampire side): he's one of the Dawnguard you're sent to kill."
+   ],
+   "role": "Dawnguard member; can become a follower",
+   "sells": "",
+   "trains": "",
+   "joins": "Can be asked to follow you; the records I can read don't show what unlocks it",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Dawnguard",
+     "how": "a step in it: one of those who can tell you about the Dawnguard"
+    },
+    {
+     "quest": "A New Order",
+     "how": "named in it; no step of it is his"
+    },
+    {
+     "quest": "Kindred Judgment",
+     "how": "a step in it (Dawnguard side): one of the Dawnguard rallied against Harkon"
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "how": "its target (vampire side): one of those to kill"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "He's a potential follower, but the dialogue or quest that lets him join isn't in the records I can read."
+    },
+    {
+     "field": "firstMeet",
+     "why": "He has no schedule; he's placed at Fort Dawnguard. Quests with no names in the records also hold him and may move him."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Dawnguard.esm:01541E",
+    "no AI packages",
+    "PotentialFollowerFaction, DLC1DawnguardFaction, follower true",
+    "DLC1VQ01MiscObjective others stageBelow 200",
+    "quests Dawnguard.esm:004E24, 007C25, 019938",
+    "not essential/protected"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019A2E",
+   "name": "Michel Lylvieve",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Dragon Bridge: around the Lylvieve family's house, or by a campfire in town in the afternoon",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Lylvieve Family's House, Dragon Bridge",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "4 hours",
+     "where": "around the Lylvieve Family's House",
+     "doing": "idling"
+    },
+    {
+     "from": "noon",
+     "for": "2 hours",
+     "where": "Lylvieve Family's House",
+     "doing": "eating (Sundas, in dry weather: at the Four Shields Tavern)"
+    },
+    {
+     "from": "2 pm",
+     "for": "6 hours",
+     "where": "a campfire in Dragon Bridge",
+     "doing": "sitting by the fire (dry weather; otherwise around home)"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "Lylvieve Family's House",
+     "doing": "dinner"
+    },
+    {
+     "from": "10 pm",
+     "for": "2 hours",
+     "where": "around the Lylvieve Family's House",
+     "doing": "idling"
+    }
+   ],
+   "changes": [
+    "Rain keeps her from the tavern on Sundas and from the campfire."
+   ],
+   "role": "Dragon Bridge villager",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Prophet",
+     "how": "a step in it: one of the Dragon Bridge villagers you ask about the moth priest"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The campfire rule carries further conditions coded as functions the records don't name; it may hold back more than rain."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019A2E",
+    "AIODBMichelSundayTavern dow 0, cond fn62 (IsRaining) == 0",
+    "DragonBridgeMichelCampfire14x20 target Skyrim.esm:0B70BF, cond fn62 == 0 + fn612 x26",
+    "DragonBridgeFamilyEat12x2",
+    "DragonBridgeFamilyEat20x2",
+    "DefaultSleepEditorLoc24x8",
+    "DefaultSandboxEditorLocation512",
+    "quest_givers Dawnguard.esm:0098CB giver stageBelow 60; Dawnguard.esm:004C3D other"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019A22",
+   "name": "Lodvar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "The lumber mill in Dragon Bridge by day; Horgeir's House at night",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "10 hours",
+     "where": "the lumber mill, Dragon Bridge",
+     "doing": "sawing and loading logs, resting at the mill"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "Horgeir's House, Dragon Bridge",
+     "doing": "eating"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "Four Shields Tavern, Dragon Bridge",
+     "doing": "drinking"
+    },
+    {
+     "from": "10 pm",
+     "for": "10 hours",
+     "where": "Horgeir's House, Dragon Bridge",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Loredas, in dry weather: day off from 6 am to 6 pm around Horgeir's House instead of the mill."
+   ],
+   "role": "lumberjack at the Dragon Bridge mill",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Prophet",
+     "how": "a step in it: one of the Dragon Bridge villagers you ask about the moth priest"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His tavern trip and day off carry conditions coded as functions the records don't name."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019A22",
+    "AIODBLodvarDayOff dow 6 cond fn62 == 0 + fn612",
+    "DragonBridgeSawLumber / DragonBridgeLoadLumber GetDistance < 500 Skyrim.esm:0B70BB",
+    "DragonBridgeHorgeirReclineLumberMill8x10 target Skyrim.esm:0B70BB",
+    "DragonBridgeTavern20x2 cond fn149 param 0x0C8220 == 0",
+    "DragonBridgeFamily2Eat18x4",
+    "DefaultSleepPackageAnyTime",
+    "JobLumberjackFaction, DragonBridgeLumberCampFaction",
+    "quest_givers Dawnguard.esm:0098CB, 004C3D others stageBelow 60"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019A2A",
+   "name": "Azzada Lylvieve",
+   "race": "Redguard",
+   "sex": "male",
+   "firstMeet": "Dragon Bridge: chopping wood in town by day, the Lylvieve family's house at night",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Lylvieve Family's House, Dragon Bridge",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "6 hours",
+     "where": "a woodcutting spot in Dragon Bridge",
+     "doing": "chopping wood"
+    },
+    {
+     "from": "noon",
+     "for": "2 hours",
+     "where": "Lylvieve Family's House",
+     "doing": "eating"
+    },
+    {
+     "from": "2 pm",
+     "for": "4 hours",
+     "where": "a woodcutting spot in Dragon Bridge",
+     "doing": "chopping wood"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "around Dragon Bridge",
+     "doing": "idling"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "Lylvieve Family's House",
+     "doing": "dinner"
+    },
+    {
+     "from": "10 pm",
+     "for": "2 hours",
+     "where": "around the Lylvieve Family's House",
+     "doing": "idling"
+    }
+   ],
+   "changes": [
+    "Sundas, in dry weather: day off around town from 6 am to 6 pm (lunch still at home)."
+   ],
+   "role": "Dragon Bridge villager; buys wheat",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Prophet",
+     "how": "a step in it: one of the Dragon Bridge villagers you ask about the moth priest"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His woodcutting and day-off rules carry conditions coded as functions the records don't name; when they fail he sleeps until 8 am and idles near home."
+    },
+    {
+     "field": "role",
+     "why": "'Buys wheat' is read from his favour-job faction; the price and dialogue aren't in the records I can read."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019A2A",
+    "DragonBridgeFamilyEat12x2",
+    "AIODBAzzadaDayOff dow 0 target Skyrim.esm:0B70BD cond fn62 == 0",
+    "DragonBridgeWoodcutter6x12 target Skyrim.esm:0B70C0",
+    "DragonBridgeSandbox18x2 target Skyrim.esm:098B83",
+    "DragonBridgeFamilyEat20x2",
+    "DefaultSleepEditorLoc24x8",
+    "FavorJobsGatherWheatFaction",
+    "quest_givers Dawnguard.esm:0098CB other stageBelow 60"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019A1D",
+   "name": "Horgeir",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "The lumber mill in Dragon Bridge by day; the Four Shields Tavern in the evening",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Horgeir's House, Dragon Bridge",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "12 hours",
+     "where": "the lumber mill, Dragon Bridge",
+     "doing": "working the mill"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "Horgeir's House",
+     "doing": "eating"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Four Shields Tavern, Dragon Bridge",
+     "doing": "drinking"
+    }
+   ],
+   "changes": [
+    "Sundas, in dry weather: day off from 6 am to 6 pm around his house."
+   ],
+   "role": "runs the Dragon Bridge lumber mill; buys firewood",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Prophet",
+     "how": "a step in it: one of the Dragon Bridge villagers you ask about the moth priest"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His day off carries conditions coded as functions the records don't name."
+    },
+    {
+     "field": "role",
+     "why": "'Runs the mill' and 'buys firewood' are read from his lumber-camp and favour-job factions and his mill package; the dialogue isn't in the records I can read."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class and outfit are only ids in the records I can read; no skill weights or gear names to read a fighting style from."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019A1D",
+    "AIODBHrogeirDayOff6x12 dow 0 cond fn62 == 0 + fn612",
+    "DragonBridgeHorgeirInn20x4 (Four Shields Tavern)",
+    "DragonBridgeLumberCamp6x12 target Skyrim.esm:0ABF83",
+    "DragonBridgeFamily2Eat18x4",
+    "DefaultSleepEditorLoc24x8",
+    "JobLumberjackFaction, FavorJobsChopWoodFaction, DragonBridgeLumberCampFaction",
+    "quest_givers Dawnguard.esm:0098CB other stageBelow 60"
+   ]
+  }
+ ]
+}
