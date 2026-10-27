@@ -1,8 +1,11 @@
 """
-WO-158 Part 1c (Dave's own live test, 27 Oct): two real bugs Part 1b's design had, found the only way they
-could be -- by actually running it. Writes `bat <file>` scripts to gamedata/5.0.4.8/wo158/ (committed, so
-Bob/Dave can read exactly what each shot does) and, when `C:\\LoreRim` exists, also to
-`C:\\LoreRim\\_fieldguide\\tools\\wo158\\` for Dave to actually run:
+WO-158 Parts 1c to 1e: real bugs Part 1b's design had, found the only way they could be -- by actually running
+it. Writes `bat <file>` scripts to gamedata/5.0.4.8/wo158/ (committed, so Bob/Dave can read exactly what each
+shot does) and, when `C:\\LoreRim` exists, also to `C:\\LoreRim\\_fieldguide\\tools\\wo158\\` **and directly into
+`C:\\LoreRim\\Stock Game\\`** (Part 1e: `bat` on this install only reaches files sitting in the game's own
+actual root, not a subfolder of it -- Dave had to move them there by hand the first time, and every fix pushed
+after that kept landing in `_fieldguide` alone, so he kept testing the original, broken copy without either of
+us realising it):
   python3 scripts/gamedata/wo158_shoot.py
 
 **What Dave found, live:**
@@ -264,12 +267,19 @@ def build(base):
 
 
 def main():
-    build(os.path.join(REPO, "gamedata", "5.0.4.8", "wo158"))
+    wrote = [os.path.join(REPO, "gamedata", "5.0.4.8", "wo158")]
+    build(wrote[0])
     if os.path.isdir(LORERIM):
-        build(os.path.join(LORERIM, "_fieldguide", "tools", "wo158"))
-        print("wrote the bat files to gamedata/5.0.4.8/wo158/ and", os.path.join(LORERIM, "_fieldguide", "tools", "wo158"))
-    else:
-        print("wrote the bat files to gamedata/5.0.4.8/wo158/ (LoreRim root not found here, so not copied there too)")
+        wrote.append(os.path.join(LORERIM, "_fieldguide", "tools", "wo158"))
+        build(wrote[-1])
+        # `bat` on this install only reaches files in the game's own actual root (found live, 27 Oct: Dave had
+        # to move them there by hand before `bat` could see them at all) -- written flat, directly in that
+        # folder, not a subfolder of it, matching where Dave's own copy had to go to work.
+        stock_game = os.path.join(LORERIM, "Stock Game")
+        if os.path.isdir(stock_game):
+            wrote.append(stock_game)
+            build(stock_game)
+    print("wrote the bat files to:", *wrote)
 
 
 if __name__ == "__main__":

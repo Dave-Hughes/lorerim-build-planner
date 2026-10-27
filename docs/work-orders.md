@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1d fixed the game-hang Dave's second test found, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1e fixed the fix never reaching Dave's actual files, needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5087,9 +5087,14 @@ Same two commands run again, same result -- so Part 1c's own fix wasn't the whol
 - [x] **Fixed: `sgtm 0.0001`, never `sgtm 0`.** Close enough to frozen that noon doesn't move in any way a screenshot would ever show, far enough from a true zero that nothing is left waiting on a time that never comes.
 - **Checks.** `test_wo158_shoot.py`'s time test rewritten to assert the multiplier is never exactly zero, not only that it isn't `1`. 369 gamedata tests pass (unchanged count; the test itself is the fix's own guard).
 
+### Part 1e. The fix was never reaching Dave at all (Dave, 27 Oct)
+Dave's third test, same symptoms Part 1d was meant to have fixed -- because it was never his to re-test. Dave: "if you updated them you need to update them [in Stock Game], since the console couldn't reach them at tools/wo158/." He'd had to move the very first copy of the files into `C:\LoreRim\Stock Game\` by hand before `bat` would read them at all (`_fieldguide\tools\wo158\` doesn't work -- `bat` on this install only reaches the game's own actual root, not a subfolder anywhere else). Every fix since Part 1c kept writing to `gamedata/5.0.4.8/wo158/` and `_fieldguide\tools\wo158\` only, so Dave had been testing the original, broken `wo158-start.txt` three times running without either side realising the fixes never reached the copy `bat` was actually reading.
+- [x] **`wo158_shoot.py`'s own `main()` now also writes straight into `C:\LoreRim\Stock Game\`**, flat, the same files, every run -- the one location confirmed live to actually work. `_fieldguide\tools\wo158\` is kept too, as the readable copy; `Stock Game` is the one that matters to the game itself from here on, so a future fix can't silently miss it the same way again.
+- **Checked.** Ran the generator against this PC's own install: all fourteen files land in `C:\LoreRim\Stock Game\`, `wo158-start.txt` there reads `sgtm 0.0001` (Part 1d's own fix), confirming the copy Dave will actually run now matches staging. 369 gamedata tests pass (no test written for this one -- it's a file-copy destination, not a behaviour `test_wo158_shoot.py`'s own line-by-line checks would ever catch).
+
 ### How Dave runs it
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
-2. Open the console (usually `~`) and run `bat wo158-start` once. If the game says it can't find the file, the bat files need to sit in the game's own actual install folder for `bat` to see them (copy `C:\LoreRim\_fieldguide\tools\wo158\*.txt` into `C:\LoreRim\Stock Game\` and try again) -- unconfirmed which of the two this install needs, logged above as the first of the two untested things.
+2. Open the console (usually `~`) and run `bat wo158-start` once. The files now land in `C:\LoreRim\Stock Game\` directly (Part 1e), the folder confirmed live to work -- no more copying by hand.
 3. For each of the five places: `bat wo158-place-<slug>` (the five slugs: `broken-oar-grotto`, `bleak-falls-barrow`, `fort-hraggstad`, `riverwood`, `winking-skeever-outside`), then `bat wo158-toggle-hud` (HUD and console both hide now), the screenshot key, then `bat wo158-toggle-hud` again (console back, so the next command can be typed and checked). For the Winking Skeever's inside comparison shot, walk through the door by hand afterwards and shoot again, same settings otherwise.
 4. Run `bat wo158-photoroom-setup` once, then for each of the five people: `bat wo158-person-<slug>` (`lucan-valerius`, `jaree-ra`, `mjoll-the-lioness`, `captain-aldis`, `delphine`), then the same `wo158-toggle-hud` / screenshot / `wo158-toggle-hud` pair as step 3.
 5. Run `bat wo158-end` once, when all ten are taken.
