@@ -1,0 +1,1707 @@
+[
+ {
+  "id": "018Auri.esp:000D63",
+  "name": "Auri",
+  "race": "Bosmer",
+  "sex": "female",
+  "firstMeet": "At her house in Falkreath (Auri's House).",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "in and around Auri's House, Falkreath",
+    "doing": "going about her home; her sandbox package sits above her midnight-to-8 am sleep package and has no hours, so the records give her no separate bedtime"
+   }
+  ],
+  "changes": [
+   "Both of her home packages only run while she isn't your follower; once she follows you she goes where you go."
+  ],
+  "role": "follower; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Song of the Green",
+    "how": "gives it: she's homesick, and you take her to beautiful places (Moss Mother Cavern, Eldergleam Sanctuary, Ancestor Glade, Bloated Man's Grotto and more)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "She is set up as a potential follower, but the dialogue that recruits her (and any condition on it) isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "She has a vendor entry (same buy list as Belethor's General Goods, open all hours) but no merchant chest and no merchant faction, so it may only be follower trading; not confirmed."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in six more of her own quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "018Auri.esp:000D63",
+   "018AuriSandboxHomeowner 018Auri.esp:3B099A",
+   "018AuriSleepEditorLoc12x8 018Auri.esp:3B099B",
+   "PotentialFollowerFaction",
+   "CurrentFollowerFaction (condition on both packages)",
+   "018AuriFriendQuest 018Auri.esp:03E4B1",
+   "placed ref 018Auri.esp:3139C8 in Auri's House"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA9",
+  "name": "Braith",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "Out and about in Whiterun by day; she lives at Amren's House.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "3 hours",
+    "where": "outdoors in Whiterun",
+    "doing": "out of the house"
+   },
+   {
+    "from": "noon",
+    "for": "3 hours",
+    "where": "Amren's House, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "3 pm",
+    "for": "4 hours",
+    "where": "outdoors in Whiterun",
+    "doing": "out of the house"
+   },
+   {
+    "from": "7 pm",
+    "for": "2 hours",
+    "where": "Amren's House, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "9 pm",
+    "for": "12 hours",
+    "where": "Amren's House, Whiterun",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Above all of this sits a 'fight' package that runs 8 am to 8 pm at a spot in Whiterun while a flag on an unnamed quest is unset; while it holds she's there instead.",
+   "Dies if you take the Dark Brotherhood contract on her."
+  ],
+  "role": "townsperson; quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Contract: Kill Braith",
+    "how": "its target; you collect from Nazir"
+   },
+   {
+    "quest": "Mirrors of Youth",
+    "how": "a step in it: Arcadia offers Serana and you a discount for finding her; you're told to look in the Cloud District outside Dragonsreach, and Serana talks her round"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The fight package's flag comes from an unnamed quest, so I can't say when it stops; the two 'outside' packages carry no place, only that she's out."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BA9",
+   "WhiterunBraithFightPackage Skyrim.esm:092A68",
+   "WhiterunBraithOutsidepackage1 Skyrim.esm:02C906",
+   "WhiterunBraithOutsidePackage2 Skyrim.esm:02C904",
+   "WhiterunBraithSleep21x12 Skyrim.esm:10F979",
+   "WhiterunBraithHomePackage Skyrim.esm:02C903",
+   "quest Skyrim.esm:0270A4 (fight condition)",
+   "ExtraContracts_KillBraith_Quest",
+   "SDE_R004"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C3AB",
+  "name": "Nazir",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "The Dark Brotherhood Sanctuary near Falkreath.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Dark Brotherhood Sanctuary",
+    "doing": "going about wherever he is; his only package is a shared 'stay near your current place' one"
+   }
+  ],
+  "changes": [
+   "The Sanctuary is attacked in Death Incarnate; you save him from his attacker. Where he goes after that isn't in his packages.",
+   "In Destroy the Dark Brotherhood! he's one of the assassins you're sent to kill."
+  ],
+  "role": "Dark Brotherhood contract giver; trainer",
+  "sells": "",
+  "trains": "Light Armor (a master-tier trainer)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sanctuary",
+    "how": "gives it: your first set of contracts"
+   },
+   {
+    "quest": "Contract: Kill Narfi",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Ennodius Papius",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Beitild",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Hern",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Lurbuk",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Deekus",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Ma'randru-jo",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Anoriath",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Agnis",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Maluril",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Helvard",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Safia",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Elenwen",
+    "how": "gives it and pays you"
+   },
+   {
+    "quest": "Contract: Kill Braith",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Erikur",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Lemkil",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Nazeem",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Rolff Stone-Fist",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Serana",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Taarie and Endarie",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Contract: Kill Thonar Silver-Blood",
+    "how": "pays you when it's done"
+   },
+   {
+    "quest": "Whispers in the Dark",
+    "how": "a step in it: receive a side contract from him"
+   },
+   {
+    "quest": "The Silence Has Been Broken",
+    "how": "a step in it: he sends you to Astrid"
+   },
+   {
+    "quest": "Honor Thy Family",
+    "how": "a step in it: pay him the fine for breaking the Sanctuary's rules"
+   },
+   {
+    "quest": "Death Incarnate",
+    "how": "a step in it: kill his attacker and speak with him"
+   },
+   {
+    "quest": "Hail Sithis!",
+    "how": "a step in it: talk to him at the start and report to him at the end"
+   },
+   {
+    "quest": "Destroy the Dark Brotherhood!",
+    "how": "its target"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "trains",
+    "why": "The records give the skill and a 'master' tier but no level cap."
+   },
+   {
+    "field": "changes",
+    "why": "No package moves him after Death Incarnate; where he turns up for Hail Sithis! isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C3AB",
+   "DefaultSandboxCurrentLocation256 Skyrim.esm:0956B8 (shared, 18)",
+   "JobTrainerLightArmorFaction",
+   "trainer tier Master",
+   "placed ref Skyrim.esm:01C3AD",
+   "DB02a",
+   "DBSideContract01-12",
+   "DB04",
+   "DB04a",
+   "DBEviction",
+   "DB10",
+   "DB11",
+   "DBDestroy Skyrim.esm:0934FB",
+   "Additional Contracts For the Dark Brotherhood.esp contract quests"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013269",
+  "name": "Elenwen",
+  "race": "Altmer",
+  "sex": "female",
+  "firstMeet": "The Thalmor Embassy, in Haafingar.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "the Thalmor Embassy",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the Thalmor Embassy",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "the Thalmor Embassy",
+    "doing": "back to bed"
+   },
+   {
+    "from": "8 am",
+    "for": "9 hours",
+    "where": "the Thalmor Embassy",
+    "doing": "in residence"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "the Thalmor Embassy",
+    "doing": "supper"
+   },
+   {
+    "from": "6 pm",
+    "for": "6 hours",
+    "where": "the Thalmor Embassy",
+    "doing": "in residence"
+   }
+  ],
+  "changes": [
+   "Dies if you carry out the Dark Brotherhood contract on her."
+  ],
+  "role": "Thalmor ambassador; quest figure",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Diplomatic Immunity",
+    "how": "in it: it's her embassy party you slip into"
+   },
+   {
+    "quest": "Season Unending",
+    "how": "in it: she has a seat at the peace council at High Hrothgar"
+   },
+   {
+    "quest": "Contract: Kill Elenwen",
+    "how": "its target; Nazir gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "Her record is essential, yet a contract quest has you kill her; the extracts don't show the contract lifting the flag."
+   },
+   {
+    "field": "quests",
+    "why": "Five more quests from a Thalmor dialogue mod name her but have no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013269",
+   "DefaultEatEditorLoc17x1NOUNLOCK Skyrim.esm:0FFF3B",
+   "DefaultEatEditorLoc6x1NOUNLOCK Skyrim.esm:0FFF3A",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "ElenwennResidenceCommand Skyrim.esm:034C0E",
+   "MQ302CouncilFaction",
+   "MQ201 Skyrim.esm:035D5F",
+   "MQ302 Skyrim.esm:045923",
+   "ExtraContracts_KillElenwen_Quest",
+   "placed ref Skyrim.esm:0198BC"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013272",
+  "name": "Erikur",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At court in the Blue Palace, Solitude, by day; his house in Solitude at night.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Erikur's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "5 hours",
+    "where": "the Blue Palace, Solitude",
+    "doing": "at court"
+   },
+   {
+    "from": "1 pm",
+    "for": "2 hours",
+    "where": "the Blue Palace, Solitude",
+    "doing": "eating"
+   },
+   {
+    "from": "3 pm",
+    "for": "5 hours",
+    "where": "the Blue Palace, Solitude",
+    "doing": "at court"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Erikur's House, Solitude",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "Weekdays 7 pm to 10 pm, when it isn't raining, he's at the Winking Skeever instead.",
+   "From 8 am to 8 pm in rain he stays wherever he already is rather than going to court.",
+   "Dies if you carry out the Dark Brotherhood contract on him."
+  ],
+  "role": "Solitude noble; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Dainty Sload",
+    "how": "gives it: plant Balmora Blue on Volf's ship to frame him"
+   },
+   {
+    "quest": "Contract: Kill Erikur",
+    "how": "its target; you collect from Nazir"
+   },
+   {
+    "quest": "Robbed Blind",
+    "how": "its target: Daenlit wants an enchanted necklace he has"
+   },
+   {
+    "quest": "A Debt Unpaid",
+    "how": "its target: you take his debt ledger for Signy"
+   },
+   {
+    "quest": "Diplomatic Immunity",
+    "how": "one of the guests at the embassy party"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills an alias in Bound Until Death, A Healing Wedding and The Man Who Cried Wolf, but no log line says what he does in them; he also fills a 'new jarl' alias in an unnamed quest."
+   },
+   {
+    "field": "quests",
+    "why": "Diplomatic Immunity comes from his party-guest faction, not from the quest's own aliases."
+   },
+   {
+    "field": "day",
+    "why": "His 'home' hours come from shared packages tied to where he's placed (his house); the rain test is read from the package's name and weather conditions."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013272",
+   "SolitudeCourtEat13x2 Skyrim.esm:0ABE12",
+   "AIOSoInnWeekdays19x3 AI Overhaul.esp:006AE0",
+   "AIOStayPutRaining8x12 AI Overhaul.esp:11EC63",
+   "SolitudePalaceCourtSandbox8x12 Skyrim.esm:034BE1",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "MQ201PartyGuestFaction",
+   "TGTQ02 Skyrim.esm:0799E0",
+   "ExtraContracts_KillErikur_Quest",
+   "WTDaenlitFavor Wyrmstooth.esp:3A1469",
+   "WTSignyFavor Wyrmstooth.esp:B5DA18",
+   "DB05",
+   "DB05Alt",
+   "MS06Start",
+   "Skyrim.esm:01A4EA NewJarl alias",
+   "placed ref Skyrim.esm:0198A9"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136B8",
+  "name": "Lemkil",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Working his farm in Rorikstead.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "12 hours",
+    "where": "his farm, Rorikstead",
+    "doing": "working"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Frostfruit Inn, Rorikstead",
+    "doing": "evening meal"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "Frostfruit Inn, Rorikstead",
+    "doing": "relaxing"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Lemkil's Farmhouse, Rorikstead",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Dies if you carry out the Dark Brotherhood contract on him."
+  ],
+  "role": "farmer; takes wheat you gather",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Contract: Kill Lemkil",
+    "how": "its target; you collect from Nazir"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He fills aliases in four unnamed quests and one from a Rorikstead dialogue mod; no role shows in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136B8",
+   "RoriksteadLemkilWork Skyrim.esm:09754E",
+   "RoriksteadLemkilEveningMeal Skyrim.esm:09754C",
+   "RoriksteadLemkilRelax Skyrim.esm:097550",
+   "RoriksteadLemkilSleep Skyrim.esm:09754F",
+   "JobFarmerFaction",
+   "FavorJobsGatherWheatFaction",
+   "ExtraContracts_KillLemkil_Quest",
+   "placed ref Skyrim.esm:01A6AD"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBF",
+  "name": "Nazeem",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "In Whiterun by day (browsing near Jorrvaskr in the morning, up at Dragonsreach late morning on weekdays); he lives at Wintersand Manor.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Wintersand Manor",
+    "doing": "at home"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Whiterun, near Jorrvaskr",
+    "doing": "browsing"
+   },
+   {
+    "from": "10 am",
+    "for": "4 hours",
+    "where": "Dragonsreach, Whiterun",
+    "doing": "in the Cloud District (weekdays); on Loredas and Sundas he keeps browsing until noon, then walks about town"
+   },
+   {
+    "from": "2 pm",
+    "for": "2 hours",
+    "where": "Whiterun",
+    "doing": "walking about town"
+   },
+   {
+    "from": "4 pm",
+    "for": "7 hours",
+    "where": "Wintersand Manor",
+    "doing": "at home"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "Wintersand Manor",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "His browsing, Dragonsreach and town walks are all skipped in rain; he stays at Wintersand Manor.",
+   "From 2 pm to 9 pm a package can hold him at a spot elsewhere when a condition I can't read passes.",
+   "The Wintersand Deception exposes him and Ahlam as Thalmor informants; the quest can end with both dead.",
+   "Dies if you carry out the Dark Brotherhood contract on him."
+  ],
+  "role": "Whiterun resident; quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Wintersand Deception",
+    "how": "its target: a Thalmor dossier names him as an informant"
+   },
+   {
+    "quest": "Hostile Takeover",
+    "how": "a step in it: buy his share of Belethor's General Goods"
+   },
+   {
+    "quest": "Contract: Kill Nazeem",
+    "how": "its target; you collect from Nazir"
+   },
+   {
+    "quest": "The Sweetest Carrot",
+    "how": "its target: the carrot you take is his"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The records put Wintersand Manor under Whiterun but don't say whether it's inside the walls or out in the hold."
+   },
+   {
+    "field": "day",
+    "why": "The 2 pm to 9 pm package's place has no name and its second condition isn't decoded; 'near Jorrvaskr' is the nearest named place to his browsing spot."
+   },
+   {
+    "field": "quests",
+    "why": "He's in Mirrors of Youth's cast but no log line says what he does there."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BBF",
+   "AIOWRNazeemCloudDistrict AI Overhaul.esp:258DC5",
+   "WhiterunNazeemBrowse8x4 Skyrim.esm:0E1BAB",
+   "WhiterunNazeemJarlsBackside14x7 Skyrim.esm:02C91A",
+   "WhiterunNazeemPatrol12x4 Skyrim.esm:0E1BAC",
+   "WhiterunNazeemWintersandManor7x16 Skyrim.esm:0E1BAA",
+   "WhiterunWintersandManorSleepAny Skyrim.esm:1036F3",
+   "THTE_Quest_WintersandDeception",
+   "belethorSisterQuest02",
+   "ExtraContracts_KillNazeem_Quest",
+   "AK69CarrotQuest Katana.esp:E02209",
+   "placed ref Skyrim.esm:01A6A4 in Wintersand Manor"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03EFE9",
+  "name": "Rolff Stone-Fist",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "On the streets of Windhelm; he's placed at Candlehearth Hall.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "4 hours",
+    "where": "Windhelm",
+    "doing": "walking the streets"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Windhelm, outdoors",
+    "doing": "drunk outside"
+   }
+  ],
+  "changes": [
+   "Early on, a scene package holds him standing at one spot in Windhelm until a flag on an unnamed quest changes; while it holds it beats his whole day.",
+   "Dies if you carry out the Dark Brotherhood contract on him."
+  ],
+  "role": "Windhelm resident; quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Contract: Kill Rolff Stone-Fist",
+    "how": "its target; you collect from Nazir"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "From 4 am to 8 pm he has only an untimed package near a spot in Windhelm with conditions I can't decode; when it fails he has no package and stays where he is."
+   },
+   {
+    "field": "canDie",
+    "why": "His record is essential, yet a contract quest has you kill him."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in ten quests from a Windhelm dialogue mod and one unnamed vanilla quest; none has a name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:03EFE9",
+   "WindhelmBullySceneRolffStand Skyrim.esm:0CD926",
+   "quest Skyrim.esm:03502E",
+   "WindhelmRolffPatrol0x4 Skyrim.esm:03F001",
+   "WindhelmRolffDrunkOutside20x4 Skyrim.esm:03F000",
+   "AIOWHRandomPackage AI Overhaul.esp:001ED0",
+   "ExtraContracts_KillRolff_Quest",
+   "placed ref Skyrim.esm:03EFED"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:002B6C",
+  "name": "Serana",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Sealed in a sarcophagus deep in Dimhollow Crypt, which you reach in Awakening.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "wherever the Dawnguard story has her: Castle Volkihar, then Fort Dawnguard if you side with the Dawnguard",
+    "doing": "going about the place"
+   }
+  ],
+  "changes": [
+   "Stays in her sarcophagus until you free her in Awakening.",
+   "After you bring her home in Bloodline she stays at Castle Volkihar.",
+   "Once she comes to Fort Dawnguard in the Dawnguard side of Prophet, she stays there.",
+   "Serana's cure vampirism: she can go to Falion in Morthal to be cured.",
+   "Dies if you carry out the Dark Brotherhood contract on her."
+  ],
+  "role": "Dawnguard companion; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "She travels with you as part of the Dawnguard story (you lead her home in Bloodline, and she goes with you after the Elder Scrolls and her mother in Chasing Echoes and Beyond Death).",
+  "marries": "not through marriage; a romance line (Ambivalence) ends with giving her a ring in Castle Volkihar's courtyard",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Awakening",
+    "how": "a step in it: you free her"
+   },
+   {
+    "quest": "Bloodline",
+    "how": "a step in it: lead her home"
+   },
+   {
+    "quest": "Prophet",
+    "how": "a step in it: her Elder Scroll is the one the moth priest must read"
+   },
+   {
+    "quest": "Chasing Echoes",
+    "how": "gives it: find her mother Valerica"
+   },
+   {
+    "quest": "Beyond Death",
+    "how": "a step in it: she goes into the Soul Cairn with you"
+   },
+   {
+    "quest": "Unseen Visions",
+    "how": "a step in it: speak to her"
+   },
+   {
+    "quest": "Kindred Judgment",
+    "how": "a step in it: speak to her"
+   },
+   {
+    "quest": "Serana's cure vampirism",
+    "how": "changed by it: she's cured"
+   },
+   {
+    "quest": "From Arena to Oblivion",
+    "how": "gives it: bring her four books; she teaches you lessons in her skills"
+   },
+   {
+    "quest": "The Bleeding Flower",
+    "how": "gives it: let her feed while you sleep somewhere safe"
+   },
+   {
+    "quest": "Solitude in Company",
+    "how": "gives it: show her round Solitude"
+   },
+   {
+    "quest": "Mirrors of Youth",
+    "how": "gives it: a potion run to Arcadia in Whiterun"
+   },
+   {
+    "quest": "Ambivalence",
+    "how": "gives it: have Fralia Gray-Mane make a ring for her"
+   },
+   {
+    "quest": "At the Tempo of our Heartbeats",
+    "how": "gives it: a dance in Castle Volkihar's courtyard"
+   },
+   {
+    "quest": "Contract: Kill Serana",
+    "how": "its target; you collect from Nazir"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "Her record isn't essential or protected; quest aliases may protect her while they hold, which the extracts don't show."
+   },
+   {
+    "field": "joins",
+    "why": "She isn't flagged as a follower; how she joins comes from the quest logs, not a recruit line."
+   },
+   {
+    "field": "quests",
+    "why": "She's in A New Order's cast with no stated role."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:002B6C",
+   "DLC1SeranaStartInCoffin Dawnguard.esm:00F7F7",
+   "DLC1SeranaSandboxInCastle Dawnguard.esm:013EB3",
+   "DLC1SeranaSandboxInHQ Dawnguard.esm:013EB4",
+   "DLC1VQ01 Dawnguard.esm:00352A stage 20",
+   "DLC1VQ02 Dawnguard.esm:002F65 stage 10",
+   "DLC1VQ03Hunter Dawnguard.esm:0098CB stage 10",
+   "DLC1VQ04",
+   "DLC1VQ05",
+   "DLC1VQ06",
+   "DLC1VQ08",
+   "DLC1SeranaCureSelfQuest Dawnguard.esm:005044",
+   "SDE_TheElderScrolls",
+   "SDE_R001",
+   "SDE_R002",
+   "SDE_R004",
+   "SDE_R005",
+   "SDE_RMQ201",
+   "ExtraContracts_KillSerana_Quest",
+   "placed ref Dawnguard.esm:002B74"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AB",
+  "name": "Taarie",
+  "race": "Altmer",
+  "sex": "female",
+  "firstMeet": "Radiant Raiment, Solitude.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "Solitude",
+    "doing": "carrying firewood (fair weather; in rain she's in the shop)"
+   },
+   {
+    "from": "noon",
+    "for": "8 hours",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "working"
+   },
+   {
+    "from": "8 pm",
+    "for": "3.5 hours",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "evening at the inn"
+   },
+   {
+    "from": "11:30 pm",
+    "for": "half an hour",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "back home"
+   }
+  ],
+  "changes": [
+   "At the very start a package holds her waiting at a spot in Solitude until an unnamed quest passes stage 40.",
+   "Dies if you carry out the Dark Brotherhood contract on her and Endarie."
+  ],
+  "role": "merchant (clothier); can marry; quest giver",
+  "sells": "clothing at Radiant Raiment; open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "yes",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Fit for a Jarl",
+    "how": "gives it: wear her outfit to speak to Elisif and tell her what was said"
+   },
+   {
+    "quest": "A New Coat",
+    "how": "a step in it: she makes Gore's new armour; wait a day"
+   },
+   {
+    "quest": "Solitude in Company",
+    "how": "a step in it: visit her shop, where Serana wants a circlet"
+   },
+   {
+    "quest": "Contract: Kill Taarie and Endarie",
+    "how": "its target; you collect from Nazir"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her buy/sell list and chest are ids I can't resolve; 'clothing' comes from her tailor and Radiant Raiment factions."
+   },
+   {
+    "field": "marries",
+    "why": "She's in the marriage faction; any favour she needs first isn't in the extracts."
+   },
+   {
+    "field": "changes",
+    "why": "The quest that holds her at the start has no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0132AB",
+   "SolitudeOpeningTaarieWait Skyrim.esm:0A3BD7",
+   "quest Skyrim.esm:0B2FD9",
+   "AIOSoTaarieTavern AI Overhaul.esp:114A12",
+   "SolitudeTaarieCarryFirewood8x4 Skyrim.esm:08543F",
+   "SolitudeWellsMarker2Sandbox19x2 Skyrim.esm:085441",
+   "SolitudeRaimentsTaarieWorkDay8x12 Skyrim.esm:1065FD",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "SolitudeSandboxEditorLocation512 Skyrim.esm:0C97B8",
+   "JobTailorFaction",
+   "ServicesSolitudeRadiantRaiments",
+   "PotentialMarriageFaction",
+   "vendor 8-20",
+   "SolitudeFreeform02 Skyrim.esm:0C7D1C",
+   "HD1ArmorUpgrades GORE.esp:10A083",
+   "SDE_R002",
+   "ExtraContracts_KillTaarieEndarie_Quest",
+   "placed ref Skyrim.esm:0198AC"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01326F",
+  "name": "Endarie",
+  "race": "Altmer",
+  "sex": "female",
+  "firstMeet": "Radiant Raiment, Solitude.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "working"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "off duty around the shop"
+   }
+  ],
+  "changes": [
+   "On Fredas, 9 pm to 10:30 pm, in fair weather, she has a meal near the shop.",
+   "Dies if you carry out the Dark Brotherhood contract on her and Taarie."
+  ],
+  "role": "merchant (clothier)",
+  "sells": "clothing at Radiant Raiment; open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Contract: Kill Taarie and Endarie",
+    "how": "its target; you collect from Nazir"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her buy/sell list and chest are ids I can't resolve; 'clothing' comes from her tailor and Radiant Raiment factions."
+   },
+   {
+    "field": "quests",
+    "why": "She's in Solitude in Company's cast but no log line says what she does there."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01326F",
+   "SolitudeRaimentsEndarieWorkDay8x12 Skyrim.esm:06B327",
+   "AIOSoEndaireEat21x2 AI Overhaul.esp:16FE0E",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "SolitudeSandboxEditorLocation512 Skyrim.esm:0C97B8",
+   "JobMerchantFaction",
+   "JobTailorFaction",
+   "ServicesSolitudeRadiantRaiments",
+   "vendor 8-20",
+   "ExtraContracts_KillTaarieEndarie_Quest",
+   "SDE_R002",
+   "placed ref Skyrim.esm:0198AD"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133BA",
+  "name": "Thonar Silver-Blood",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Treasury House, Markarth.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Treasury House, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "4 pm",
+    "for": "3 hours",
+    "where": "the Treasury House, Markarth",
+    "doing": "going about the house"
+   }
+  ],
+  "changes": [
+   "He has no package for the other hours, so he stays wherever he is, which is the Treasury House unless something has moved him.",
+   "He's among the people the Forsworn attack in No One Escapes Cidhna Mine.",
+   "Dies if you carry out the Dark Brotherhood contract on him."
+  ],
+  "role": "Markarth noble; quest figure",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Forsworn Conspiracy",
+    "how": "its target: find evidence about him and read his journal"
+   },
+   {
+    "quest": "No One Escapes Cidhna Mine",
+    "how": "a step in it: he pardons you for killing Madanach"
+   },
+   {
+    "quest": "Contract: Kill Thonar Silver-Blood",
+    "how": "its target; you collect from Nazir"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His sleep and afternoon packages carry conditions I can't decode, and nothing covers 8 am to 4 pm or 7 pm to midnight."
+   },
+   {
+    "field": "changes",
+    "why": "'Attacked by the Forsworn' comes from his membership in that quest's victims faction, not from a stage."
+   },
+   {
+    "field": "canDie",
+    "why": "His record is essential, yet a contract quest has you kill him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133BA",
+   "MarkarthThongvorTreasurySleep22x8Package Skyrim.esm:052201",
+   "MarkarthThonarSandboxTreasuryDefaultPackage Skyrim.esm:036F18",
+   "MS02VictimsFaction",
+   "MS01 Skyrim.esm:018B4B",
+   "MS02 Skyrim.esm:040A5E stage 250",
+   "ExtraContracts_KillThonarSilverblood_Quest",
+   "placed ref Skyrim.esm:0198E6"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0CAB2F",
+  "name": "Angi",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At Angi's Camp, her camp out in the wilds.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Angi's Camp",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "16 hours",
+    "where": "around Angi's Camp",
+    "doing": "going about her camp"
+   }
+  ],
+  "changes": [
+   "In More to Say Find Angi, Legate Skulnar of Falkreath can send you to kill her; you can kill her or spare her."
+  ],
+  "role": "archery teacher; quest figure",
+  "sells": "",
+  "trains": "Archery, through her target practice (not a paid trainer)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Target Practice",
+    "how": "gives it: one of the New Beginnings starts puts you at her camp"
+   },
+   {
+    "quest": "More to Say Find Angi",
+    "how": "a step in it (Faendal points you to a seasoned hunter who trains you) or its target (the Legate wants her dead)"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The camp is in the open world and the extracts give no hold or nearest town for it."
+   },
+   {
+    "field": "trains",
+    "why": "The training is quest dialogue; how far it takes Archery isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0CAB2F",
+   "USKPAngiSleep Unofficial Skyrim Special Edition Patch.esp:047B09",
+   "dunArcherAngiSandboxNearHome Skyrim.esm:0D034D",
+   "nearest named: Angi's Camp",
+   "AFLOLALAngiQuest Alternate Perspective -- New Beginnings.esp:000858",
+   "ACFMTSAngisCampDialogue moretodo.esp:00091B",
+   "dunArcherQST",
+   "placed ref Skyrim.esm:0CAB2E (Tamriel exterior)"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:146383",
+  "name": "Grit-dar",
+  "race": "Khajiit",
+  "sex": "male",
+  "firstMeet": "Outdoors in Markarth Side.",
+  "day": [],
+  "changes": [
+   "Once you've found the relic for The Royal Relic, he waits at The Kings Rest, the inn in Markarth Side, until you hand it over."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Royal Relic",
+    "how": "gives it: fetch a relic from Morvunskar Crypts, near Windhelm; pays 500 gold"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no package apart from the quest one, so he stands where he's placed; the extracts give that spot only as open world, not a named place."
+   },
+   {
+    "field": "changes",
+    "why": "After the quest ends no package moves him back, so he may stay at the inn."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Arena - Markarth Side.esp:146383",
+   "MarkarthSideGritDarInnPackage Arena - Markarth Side.esp:1AB8C1",
+   "MarkarthSideGritDarQuest Arena - Markarth Side.esp:146378 stage 20",
+   "placed ref Arena - Markarth Side.esp:16EC9F"
+  ]
+ },
+ {
+  "id": "Arena - Markarth Side.esp:0C7595",
+  "name": "Varimo",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Boiling Cauldron, the magic shop in Markarth Side.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "The Boiling Cauldron, Markarth Side",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "The Boiling Cauldron, Markarth Side",
+    "doing": "working the shop"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "The Kings Rest, Markarth Side",
+    "doing": "evening at the inn"
+   }
+  ],
+  "changes": [],
+  "role": "merchant (magic shop); quest giver",
+  "sells": "magic shop goods at The Boiling Cauldron; open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Lost Family Relic",
+    "how": "gives it: an employee ran off with a family relic; he turns out to dabble in necromancy and pays for your silence"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His buy/sell list and chest are ids I can't resolve; 'magic shop' comes from his shop faction and the quest log."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Arena - Markarth Side.esp:0C7595",
+   "MarkarthSideMagic1Work Arena - Markarth Side.esp:0C7593",
+   "MarkarthSideMagic1Inn Arena - Markarth Side.esp:0C7594",
+   "MarkarthSideMagicShop1Sleep Arena - Markarth Side.esp:0C7592",
+   "MarkarthSideMagicShop1Sandbox Arena - Markarth Side.esp:0C7591",
+   "ServicesMarkarthSideMagicShopFaction",
+   "vendor 8-20",
+   "MarkarthSideMageQuest Arena - Markarth Side.esp:10E4AC",
+   "placed ref Arena - Markarth Side.esp:0C7596"
+  ]
+ },
+ {
+  "id": "BardExcavation.esp:000801",
+  "name": "Rothen Adlvel",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Camped outside Dead Men's Respite, near Morthal, with Birinna.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "16 hours",
+    "where": "outside Dead Men's Respite, near Morthal",
+    "doing": "camped by the ruin"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "outside Dead Men's Respite, near Morthal",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Weekdays 9 am to 3 pm they work inside Dead Men's Respite when a condition I can't read passes.",
+   "Once Laid to Rest is done they spend weekday evenings, 5 pm to 10 pm, at Moorside Inn in Morthal.",
+   "When a stage of their own excavation quest is set, they spend weekends in Solitude: around the city by day, and at the Bards College from Loredas evening to early Sundas.",
+   "Under the same condition as the excavation work he practises the flute for half an hour at 3 pm."
+  ],
+  "role": "bard; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Clear Dead Men's Respite",
+    "how": "gives it: clear the tomb and tell the bards"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The quest that sends them to Solitude has no name in the extracts, and the weekday-work condition isn't decoded."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "BardExcavation.esp:000801",
+   "DMBardsCollegeStaySaturday BardExcavation.esp:000841",
+   "DMBardsCollegeStaySunday BardExcavation.esp:000842",
+   "DMBardSolitudeWeekend BardExcavation.esp:000840",
+   "quest BardExcavation.esp:000843 stage 5",
+   "DMBardsMoorsideDinner BardExcavation.esp:000827",
+   "MS14 Skyrim.esm:025F3E stage 200",
+   "RothenFlutePractice BardExcavation.esp:000882",
+   "DMRespiteInteriorSandbox BardExcavation.esp:000829",
+   "DMRespiteExteriorSleep BardExcavation.esp:000820",
+   "DMRespiteExteriorSandbox BardExcavation.esp:00081F",
+   "DMRClearQ BardExcavation.esp:00085E",
+   "SolitudeBardsCollegeFaction",
+   "placed ref BardExcavation.esp:000803"
+  ]
+ },
+ {
+  "id": "BardExcavation.esp:000802",
+  "name": "Birinna",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Camped outside Dead Men's Respite, near Morthal, with Rothen Adlvel.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "16 hours",
+    "where": "outside Dead Men's Respite, near Morthal",
+    "doing": "camped by the ruin"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "outside Dead Men's Respite, near Morthal",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Weekdays 9 am to 3 pm they work inside Dead Men's Respite when a condition I can't read passes.",
+   "Once Laid to Rest is done they spend weekday evenings, 5 pm to 10 pm, at Moorside Inn in Morthal.",
+   "When a stage of their own excavation quest is set, they spend weekends in Solitude: around the city by day, and at the Bards College from Loredas evening to early Sundas.",
+   "Under the same condition as the excavation work she practises the lute for half an hour at noon."
+  ],
+  "role": "bard; quest figure",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Clear Dead Men's Respite",
+    "how": "a step in it: one of the bards you report to once the tomb is clear; she can also start it"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The quest that sends them to Solitude has no name in the extracts, and the weekday-work condition isn't decoded."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "BardExcavation.esp:000802",
+   "DMBardsCollegeStaySunday BardExcavation.esp:000842",
+   "DMBardsCollegeStaySaturday BardExcavation.esp:000841",
+   "DMBardSolitudeWeekend BardExcavation.esp:000840",
+   "DMBardsMoorsideDinner BardExcavation.esp:000827",
+   "BirinnaLutePractice BardExcavation.esp:000881",
+   "DMRespiteInteriorSandbox BardExcavation.esp:000829",
+   "DMRespiteExteriorSleep BardExcavation.esp:000820",
+   "DMRespiteExteriorSandbox BardExcavation.esp:00081F",
+   "DMRClearQ BardExcavation.esp:00085E",
+   "placed ref BardExcavation.esp:000804"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA1",
+  "name": "Belethor",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Behind the counter of Belethor's General Goods, Whiterun.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Belethor's General Goods, Whiterun",
+    "doing": "minding the shop"
+   },
+   {
+    "from": "8 pm",
+    "for": "3 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "evening at the inn"
+   },
+   {
+    "from": "11 pm",
+    "for": "9 hours",
+    "where": "Belethor's General Goods, Whiterun",
+    "doing": "sleeping; he lives in the shop"
+   }
+  ],
+  "changes": [
+   "His evening at the Bannered Mare has weather and other conditions; when they fail he stays home.",
+   "In Hostile Takeover a shareholders' meeting can make his sister Lelaegh the store's manager instead of him."
+  ],
+  "role": "merchant (general goods); quest giver",
+  "sells": "general goods at Belethor's General Goods; trades 7 am to 9 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Belethor's Sister",
+    "how": "gives it: he sold his sister and wants her back"
+   },
+   {
+    "quest": "Hostile Takeover",
+    "how": "a step in it: the shareholders' meeting over his shop"
+   },
+   {
+    "quest": "Bandits of Whiterun Hold",
+    "how": "a step in it: tell him the bandit leader is dead"
+   },
+   {
+    "quest": "The Frozen Heart",
+    "how": "starts from his shop: you buy a strange Snow Elf mirror there"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His buy/sell list and chest are ids I can't resolve; 'general goods' is his shop's name."
+   },
+   {
+    "field": "day",
+    "why": "The inn package's conditions are mostly undecoded functions, so 'most evenings' is as far as I can go."
+   },
+   {
+    "field": "quests",
+    "why": "He's in Mirrors of Youth's cast but no log line says what he does there."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BA1",
+   "WhiterunBelethorGeneralGoodsSellPackage Skyrim.esm:02BE19",
+   "AIOWRBelethorTavern20x3 AI Overhaul.esp:001954",
+   "WhiterunBelethorSleepHomePackage Skyrim.esm:096107",
+   "ServicesWhiterunBelethorsGoods",
+   "vendor 7-21",
+   "belethorSisterQuest01 Belethor's Sister.esp:000804",
+   "belethorSisterQuest02 Belethor's Sister.esp:00085E",
+   "ACFWhiterunBandits moretodo.esp:000803",
+   "ksws07MainQuest ksws07_quest.esm:002086",
+   "placed ref Skyrim.esm:01A672"
+  ]
+ },
+ {
+  "id": "Belethor's Sister.esp:000803",
+  "name": "Lelaegh",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "Not in Whiterun at first: in Belethor's Sister you trace her from buyer to buyer until you find her in the Soul Cairn and buy her freedom from Morven Stroud.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Belethor's General Goods, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "16 hours",
+    "where": "Belethor's General Goods, Whiterun",
+    "doing": "in the shop"
+   }
+  ],
+  "changes": [
+   "She only lives at Belethor's General Goods once Belethor's Sister is complete; before that she has no package and stays where she's placed.",
+   "Hostile Takeover can make her the store's manager."
+  ],
+  "role": "merchant (general goods, after you rescue her); quest giver",
+  "sells": "general goods, from Belethor's shop lists; trades 7 am to 9 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Belethor's Sister",
+    "how": "its target: the sister you bring home"
+   },
+   {
+    "quest": "Hostile Takeover",
+    "how": "gives it: buy up shares of the shop from Ysolda, Hulda and Nazeem; meet her at the Bannered Mare"
+   },
+   {
+    "quest": "Deliveries, fetches and shipment runs for the shop",
+    "how": "gives them (repeating jobs whose titles fill in the item or person)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Her placed cell has no name in the extracts; the Soul Cairn comes from the quest log."
+   },
+   {
+    "field": "sells",
+    "why": "She shares Belethor's vendor lists, which I can't resolve to items."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Belethor's Sister.esp:000803",
+   "belethorSisterDefaultWaifuSleepPackage Belethor's Sister.esp:000844",
+   "belethorSisterDefaultWaifuSandboxPackage Belethor's Sister.esp:000843",
+   "belethorSisterQuest01 Belethor's Sister.esp:000804 (completed)",
+   "belethorSisterQuest02 Belethor's Sister.esp:00085E",
+   "belethorSisterQuestBandit Belethor's Sister.esp:000947",
+   "belethorSisterQuestDelivery Belethor's Sister.esp:0008E6",
+   "belethorSisterQuestFetch Belethor's Sister.esp:0008E0",
+   "ServicesWhiterunBelethorsGoods",
+   "vendor 7-21",
+   "placed ref Belethor's Sister.esp:000805 in cell Belethor's Sister.esp:000806"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BAB",
+  "name": "Ysolda",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Around Whiterun by day; she lives at Ysolda's House.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Ysolda's House, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "7 hours",
+    "where": "Whiterun, near Jorrvaskr",
+    "doing": "wandering"
+   },
+   {
+    "from": "3 pm",
+    "for": "1 hour",
+    "where": "Ysolda's House, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "4 pm",
+    "for": "4 hours",
+    "where": "Whiterun",
+    "doing": "carrying a basket about town"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "evening at the inn"
+   }
+  ],
+  "changes": [
+   "From 8 am to 8 pm in rain she stays wherever she already is; after 8 pm in rain she goes home instead of to the inn."
+  ],
+  "role": "trader; can marry; quest giver",
+  "sells": "trades from Belethor's General Goods lists, 7 am to 9 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "yes",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Night To Remember",
+    "how": "a step in it: return the wedding ring from Witchmist Grove and she points you to Morvunskar"
+   },
+   {
+    "quest": "Rare Gifts",
+    "how": "gives it: bring her an item"
+   },
+   {
+    "quest": "Belethor's Sister",
+    "how": "a step in it: Belethor sold his sister to her, and she sold her on to Ma'dran"
+   },
+   {
+    "quest": "Hostile Takeover",
+    "how": "a step in it: buy her share of Belethor's General Goods"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "She shares Belethor's vendor lists, which I can't resolve to items, and she has no merchant faction of her own."
+   },
+   {
+    "field": "marries",
+    "why": "She's in the marriage faction; any favour she needs first isn't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "Rare Gifts doesn't name the item; she's also in Mirrors of Youth's cast with no stated role."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BAB",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "AIOStayPutRaining8x12 AI Overhaul.esp:11EC63",
+   "AIOWRYsoldaRandom8x7 AI Overhaul.esp:001950",
+   "WhiterunYsoldaCarryBasketPatrol16x4 Skyrim.esm:0CE32E",
+   "WhiterunYsoldaBanneredMarePackage20x4 Skyrim.esm:02C3BA",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "PotentialMarriageFaction",
+   "ServicesWhiterunBelethorsGoods",
+   "vendor 7-21",
+   "DA14 Skyrim.esm:01BB9B",
+   "Favor110 Skyrim.esm:0CA439",
+   "Favor110Whiterun Favor Quests Seperated.esp:000D97",
+   "belethorSisterQuest01",
+   "belethorSisterQuest02",
+   "placed ref Skyrim.esm:01A69A"
+  ]
+ }
+]
