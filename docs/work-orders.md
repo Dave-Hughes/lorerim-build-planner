@@ -5090,7 +5090,7 @@ Your note says the camera can only be framed by hand. Try setting it through the
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
-Status: for Bob (Parts 8 and 9 built; the full e2e passed after Part 8, and the specs that load / pass after Part 9)
+Status: queued (Mac; Part 10 added 27 Oct 13:41. Bob is reviewing Parts 8 and 9 on the preview meanwhile)
 
 **Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
 
