@@ -44,7 +44,7 @@ Every order has, under its heading:
 ## Dave's part
 - Start each Jeff once with its standing prompt (below), and again if it stops or after a long compaction. Keep the chat with Bob open while they run, or the watcher sleeps.
 - Review in the app at milestones Bob names, and test through the connector against `docs/final-test.md`.
-- The Jeffs never push `main`. Dave fast-forwards `main` when staging is reviewed.
+- The Jeffs never push `main`. **Bob fast-forwards `main`** (Dave, 27 Oct: "all you and the Jeffs") once Dave has approved what's on staging, at a commit where every order since the last `main` is approved, never while an order is half-built. Pushed on its own, never with `staging` in one go. Vercel migrates production on the deploy, so check that the migrations in between are additive first, and look at production after.
 
 ## The standing prompts
 Mac:
