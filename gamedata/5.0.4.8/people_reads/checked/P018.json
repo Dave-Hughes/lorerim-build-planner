@@ -1,0 +1,2060 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:04BCC3",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "placed ref 04BCC4 is in the cell 'Castle Dour, Emperor's Tower'; nothing in the records says kitchen, so I dropped it. DB09 stage 10 log (enter Castle Dour as the chef) supports the rest"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "package order: GiannaDefaultPackage sits first with no conditions and no location, so it always wins and DefaultStayAtEditorLocation below it never runs; what her own package does isn't readable (template type, no place), so the day is only 'near her spot in the tower', not a confirmed stand-still"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DB09 objectives 20/25/30/40: report to Gianna, report while wearing a chef's hat, make the Potage le Magnifique, follow Gianna to the dining room"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "factions DBGiannaFaction and DB09TowerFaction only; vendor null in the schedules extract despite the people index's JobMerchant tag, which the reader rightly left unsure"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01326E and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DB09 To Kill an Empire, alias GiannaAlias; objectives 20-40 name her"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on her record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:04D6D0",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 04D6D1 in Dark Brotherhood Sanctuary (inTown Falkreath); DB10 stage 200 log has Astrid revealed at the burned Sanctuary"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package is the shared DefaultStayAtEditorLocation (radius 5, no conditions): stays at her spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "edid AstridEnd is a separate record from Astrid 01BDB4 who fills the earlier quests; DB10 objectives 60 'Talk to Astrid', 70 'Kill Astrid'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no factions, no vendor/trainer; only DB10's AstridEndAlias in the quest-givers extract"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01317F and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DB10 Death Incarnate alias AstridEndAlias (quest-givers extract), objectives 60/70"
+    },
+    "canDie": {
+     "verdict": "unsure",
+     "note": "essential true, yet DB10 objective 70 is 'Kill Astrid'; whatever lifts it isn't in the extracts; reader's unsure stands"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:04E64F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 04FA2F in The Bannered Mare, Whiterun; DB11 objective 10 'Talk to Amaund Motierre' and quest-givers names him there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "DefaultSandboxEditorLocation512 (no conditions) under the forcegreet: sandboxes within 512 of his spot in the Bannered Mare"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "DB04AmaundForcegreet at Volunruud is gated on The Silence Has Been Broken stage == 10 (the 'see Motierre in Volunruud' step); the reader's 'shouldn't matter in play' is a guess, since whether this second Motierre is in the world then isn't in the extracts. Reworded and kept the DB11 steps"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "factions CrimeFactionWhiterun, DBAmaundMotierreFaction; no vendor/trainer; DB11 names him"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01325D and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DB11 Hail Sithis! objectives 10, 50, 60, 70 '(Optional) Kill Amaund Motierre'; quest-givers lists him as a named giver"
+    },
+    "canDie": {
+     "verdict": "unsure",
+     "note": "essential true but DB11 objective 70 is an optional kill; what lifts it isn't in the extracts"
+    }
+   }
+  },
+  {
+   "id": "Destroy the Dark Brotherhood - Quest Expansion.esp:000D64",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DBDestroyGastonForcegreet01 (DBDestroy stage 25, global 00085B == 0) targets a marker 0 km from the Dark Brotherhood Sanctuary; objective 25 is 'Learn the passphrase'"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "his three packages are all quest-gated (stage 25, stages 25-30, stage >= 200) with no default below; the reader's day gave 'by the Sanctuary, any hour' with no condition. It holds only at stages 25-30; pre-25 his spot is an unresolved ref in the Skyrim worldspace"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Package02 stage >= 200 r3000 at the Bards College, Solitude; Stand package stage 25-30, global == 1, dead counts 0 for Arnbjorn 01BDB0, Nazir 01C3AB, Festus Krex 01BDB2; forcegreet stage 25, global == 0"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no factions, vendor or trainer; quest alias Gaston only"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class Synthesis 000064 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "the quest-givers extract fills the 'GastonSkeleton' alias with a different record (0F23B8, edid DBTreasCorpseSkeleton, placed inside the Sanctuary), so it isn't an outcome of this living Gaston; the reader's unsure is settled and removed"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:087B8B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 09725B in Candlehearth Hall, Windhelm (quest-givers Contact1Alias); DBrecurring stage 15 log makes you the Listener and objective 20 is 'Speak with the contact'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package DBRecurringContactSandbox (shared by 10, no conditions, radius 512 near editor spot): loiters in Candlehearth Hall"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DBrecurring objectives 20 'Speak with the contact', 30 'Kill the target'; no package moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only DBRecuringContact1CrimeFaction; quest-givers lists him as a DBrecurring giver by dialogue below stage 21"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01CE15 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DBrecurring The Dark Brotherhood Forever, Contact1Alias; giver entry, stageBelow 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on his record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:087B8D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 09DCD2 in The Bee and Barb, Riften (quest-givers Contact2Alias); DBrecurring stage 15 log makes you the Listener and objective 20 is 'Speak with the contact'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package DBRecurringContactSandbox (shared by 10, no conditions, radius 512 near editor spot): loiters in The Bee and Barb"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DBrecurring objectives 20 'Speak with the contact', 30 'Kill the target'; no package moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only DBRecuringContact2CrimeFaction; quest-givers lists him as a DBrecurring giver by dialogue below stage 21"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01CE15 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DBrecurring The Dark Brotherhood Forever, Contact2Alias; giver entry, stageBelow 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on his record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:087B8C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0A030F in Penitus Oculatus Outpost, Dragon Bridge (quest-givers Contact3Alias); DBrecurring stage 15 log makes you the Listener and objective 20 is 'Speak with the contact'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package DBRecurringContactSandbox (shared by 10, no conditions, radius 512 near editor spot): loiters in Penitus Oculatus Outpost"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DBrecurring objectives 20 'Speak with the contact', 30 'Kill the target'; no package moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only DBRecuringContact3CrimeFaction; quest-givers lists him as a DBrecurring giver by dialogue below stage 21"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01CE15 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DBrecurring The Dark Brotherhood Forever, Contact3Alias; giver entry, stageBelow 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on his record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:087B8F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0A0313 in Understone Keep, Markarth (quest-givers Contact4Alias); DBrecurring stage 15 log makes you the Listener and objective 20 is 'Speak with the contact'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package DBRecurringContactSandbox (shared by 10, no conditions, radius 512 near editor spot): loiters in Understone Keep"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DBrecurring objectives 20 'Speak with the contact', 30 'Kill the target'; no package moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only DBRecuringContact4CrimeFaction; quest-givers lists him as a DBrecurring giver by dialogue below stage 21"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01CE15 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DBrecurring The Dark Brotherhood Forever, Contact4Alias; giver entry, stageBelow 21"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on his record"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0F684E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest-givers places Guard1/Guard2 refs 0C5885 and 02E1B4 in the Solitude worldspace"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "the record has no packages in the schedules extract; IsGuardFaction/GuardFactionSolitude only; routine unreadable, reader's empty day with unsure stands"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "nothing in the records moves or changes him; 'talking starts Recruitment Drive' is quest content already under quests, so changes is emptied"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "factions GuardFactionSolitude, IsGuardFaction, CWImperialFaction; DialogueSolitudeGuardIntro giver (alias Guard1, stageBelow 1)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 017008 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Recruitment Drive objective 20 'Talk to Rikke about joining the Imperial Legion'; giver by dialogue"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:039B3E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0220BB in Blind Cliff Bastion, location Blind Cliff Cave, the Reach (near Karthwasten 0.3 km); prison marker alias left unsure"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package dunBlindCliffMelkaPostQuestSandbox needs stage >= 100; before that nothing runs, so she stays where she is"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "post-quest sandbox r1024 at Blind Cliff Bastion from stage 100 (completes); stage 200 log 'The Hagraven Melka is dead.'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DunPlayerAllyFaction; quest-givers names her giver (GetIsID, stageBelow 15)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 0A93B3 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quest-givers lists the reward 'Eye of Melka' (weapon, via the quest's reward-staff fragment); the reader left the reward out; added"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:048C2F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "dunDarklightIlliaForceGreet at stage 0 in Darklight Tower r150; placed ref 04B22E in Darklight Tower"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "stage 0 forcegreet is the only package live before the quest; it greets you inside the tower"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "EscortPlayerRun01-04 at stages 10/14/15/18, ForceGreetLever 12, GreetLockedDoor 16, Plan 20 in Darklight Chambers; QuestEndForceGreet stage 40 outdoors 0.1 km from the tower; QuestEndSandbox stage >= 50 at The Bee and Barb r512"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, PotentialMarriageFaction, follower and marriageable true; quest-givers giver (alias Illia, stageBelow 1)"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor entry VEND 06CB48, no VENC, 0-24 hours, but no merchant faction; reader's empty sells with unsure stands"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "follower true and PotentialFollowerFaction, but no recruiting dialogue or condition in the extracts; reader's unsure stands"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "PotentialMarriageFaction and marriageable true; no condition in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 01317A and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Repentance (dunDarklightQST) objectives 10/20; stage 40 log has her tell you to take her mother's staff"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0D001A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0D001B outdoors, location Frostmere Crypt (the Pale, near Stonehills); The Pale Lady stage 1 log: bandits attacking one of their own"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages in the schedules extract"
+    },
+    "changes": {
+     "verdict": "unsure",
+     "note": "no packages and no stage naming her fate; reader's unsure stands"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "dunFrostmereCryptEisaFaction only; quest-givers giver by dialogue (alias Eisa, stageBelow 16)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 013176 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Pale Lady objective 1 '(Optional) Learn more about the theft in Frostmere Crypt'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0443F3",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0443F2 in High Gate Ruins (the Pale); highGateRuinsAnskaSandbox at stage < 20"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "highGateRuinsAnskaSandbox (stage < 20, near her current location) is top of her list: she stays in the ruins"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "order matters: highGateRuinsAnskaFollow00 (stages 20-90, in location 019195 = High Gate Ruins) sits above the three Travel packages, so through the whole scroll hunt she follows you; the Travel10/20/30 walks to points in the ruins only run outside that window, keyed to an actor-value setting the extracts don't name. Stage 150 'I have failed to protect Anska' kept"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DunPlayerAllyFaction; quest-givers giver (GetIsID, stageBelow 1)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 013176 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A Scroll For Anska objectives 10/20/90; stage 100 log 'a powerful new fire spell', not named in the quest-givers rewards"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true; stage 150 fails the quest"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019FE6",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 019FE7 in Hillgrund's Tomb (Eastmarch, near Darkwater Crossing 0.6 km)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages in the schedules extract"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages; Ancestral Worship stage 100 completes with no text about him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no factions; Ancestral Worship objective 10 'Defeat Vals Veran'; the giver is Golldir"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class 017008 unresolved; stage 10 log calls him 'the warlock', not enough to name spells"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Ancestral Worship alias ValsVeran, objective 10, stage 10 log"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0185F6",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0185F5 in Froki's Shack (the Rift, near Ivarstead 0.6 km)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages in the schedules extract"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages; nothing in Kyne's Sacred Trials moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CrimeFactionRift only; quest-givers giver by dialogue below stage 51"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 013181 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quest-givers lists a reward 'Kyne's Token' (armour, the quest's reward-amulet fragment) besides the stage 100 'Blessing of Kyne'; added. Unofficial-patch quest 03F7B8 isn't in quests_raw, unsure kept"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01BA08",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 01BA06 outdoors, location Nilheim; stage 10 log 'injured merchant'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "TelravSandboxStage (stage 0, radius 512 near his placed spot) is first"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the bottom package DefaultMasterPackage is type 'near editor location' r512, so after the quest he wanders near where he was placed by Nilheim, not 'near wherever he is'. Stage 10 travel to the Statue of Phynaster and stage 20 Alive/Dead travel to Nilheim agree"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DunPlayerAllyFaction; quest-givers giver (GetIsID, stageBelow 10); stage 30 objective 'Kill Telrav'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 017008 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Telrav's Request stages 10-150: escort, double-cross (30), extort (130 completes)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false; stage 150 'I have killed Telrav'"
+    }
+   }
+  },
+  {
+   "id": "Infiltration - Quest Expansion.esp:000D62",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 000D63 in Treva's Watch (the Rift, near Ivarstead); Forcegreet01 at Infiltration stage 1"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only quest-gated forcegreets and Brurid_BadBoy_STAY (unknown fn289) with no default: he stays in the fort"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Forcegreet01 stage 1, Forcegreet02 stages 10-15, Forcegreet03 stage 16 plus add-on quest 000D69 stage 10; stage 16 log 'Brurid asked me for my help in killing Stalleo'; endings 95/100"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchBruridFaction; quest-givers giver (GetIsID, stageBelow 2)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 017008 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Infiltration alias Brurid; stage 5 he asks you to take care of Stalleo; objective 15 'Kill Brurid or convince him to leave'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:04B4AF",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed outdoors (no location in the extract); stage 10 log: Stalleo camped outside his old family home"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom DefaultMasterPackage, near editor location r512, is the only one live before the quest's steps"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchQSTFollowPlayer (add-on quest 000D69 stage 10), dunTrevasWatchAttackPACKAGE (stage 60, marker at Treva's Watch), dunTrevas_StalleoAfter (stage 100, r512 at Treva's Watch); stage 95 log for Brurid's ending"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchFaction, DunPlayerAllyFaction; quest-givers names him giver (stageBelow 2); stage 10 log, objective 60 'Speak to Stalleo'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 039D30 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Infiltration; quest-givers names him giver (stageBelow 2); stage 10 log, objective 60 'Speak to Stalleo'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:04B4B1",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed outdoors (no location in the extract); stage 10 log: Stalleo camped outside his old family home"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom DefaultMasterPackage, near editor location r512, is the only one live before the quest's steps"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchQSTFollowPlayer (add-on quest 000D69 stage 10), dunTrevasWatchAttackPACKAGE (stage 60, marker at Treva's Watch), dunTrevas_StalleoAfter (stage 100, r512 at Treva's Watch); stage 95 log for Brurid's ending"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchFaction, DunPlayerAllyFaction; quest-givers lists him among the others giving dialogue below stage 10"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 017008 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Infiltration; quest-givers lists him among the others giving dialogue below stage 10"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:093A76",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed outdoors (no location in the extract); stage 10 log: Stalleo camped outside his old family home"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom DefaultMasterPackage, near editor location r512, is the only one live before the quest's steps"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchQSTFollowPlayer (add-on quest 000D69 stage 10), dunTrevasWatchAttackPACKAGE (stage 60, marker at Treva's Watch), dunTrevas_StalleoAfter (stage 100, r512 at Treva's Watch); stage 95 log for Brurid's ending"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "dunTrevasWatchFaction, DunPlayerAllyFaction; quest-givers lists her among the others giving dialogue below stage 10"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "sells empty: no vendor entry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trains empty: trainer is null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "joins empty: follower flag false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marries no: marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "fightsWith left blank: class 017008 and the outfit appear only as ids in the schedules extract; no class name, skill weights or weapon to read"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Infiltration; quest-givers lists her among the others giving dialogue below stage 10"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:04BCC3",
+   "name": "Gianna",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "In the Emperor's Tower of Castle Dour, Solitude, when you arrive as the chef during To Kill an Empire.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Emperor's Tower, Castle Dour, Solitude",
+     "doing": "her own package always runs; the records don't say what it has her do, so expect her near her spot in the tower"
+    }
+   ],
+   "changes": [
+    "She's part of To Kill an Empire: you report to her (in a chef's hat), make the Potage le Magnifique, then follow her to the dining room."
+   ],
+   "role": "quest character (the cook you report to in To Kill an Empire)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "To Kill an Empire",
+     "how": "a step in it: report to her, cook the Potage le Magnifique, follow her to the dining room"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "role",
+     "why": "The people index tags her as a merchant, but she has no vendor entry and no merchant faction in the schedules extract, so I haven't called her one."
+    },
+    {
+     "field": "firstMeet",
+     "why": "Whether she's in the tower before To Kill an Empire starts isn't in the extracts (no enable state); she only matters to the player during that quest."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Her top package has no conditions and no place, so it always runs, but what it does isn't in the extracts; the stand-still package below it never gets a turn."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:04BCC3",
+    "GiannaDefaultPackage Skyrim.esm:1033B6",
+    "DefaultStayAtEditorLocation Skyrim.esm:025BFC",
+    "DBGiannaFaction Skyrim.esm:0D059E",
+    "DB09TowerFaction Skyrim.esm:10FE28",
+    "DB09 Skyrim.esm:01EA58 alias GiannaAlias, objectives 20/25/30/40",
+    "placed ref Skyrim.esm:04BCC4 in Castle Dour, Emperor's Tower"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:04D6D0",
+   "name": "Astrid",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In the Dark Brotherhood Sanctuary near Falkreath, after the Penitus Oculatus have burned it, near the end of Death Incarnate.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Dark Brotherhood Sanctuary, near Falkreath",
+     "doing": "staying where she's placed"
+    }
+   ],
+   "changes": [
+    "This is the Astrid of Death Incarnate's ending, a separate person from the Astrid who runs the Sanctuary earlier. She revealed herself as the one who betrayed you; the quest asks you to talk to her, then kill her."
+   ],
+   "role": "quest character (Death Incarnate)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Death Incarnate",
+     "how": "a step in it and its target: talk to Astrid, then kill Astrid"
+    }
+   ],
+   "canDie": "essential in her record; Death Incarnate asks you to kill her",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "Her record is essential, yet the quest's objective is 'Kill Astrid'; the step that lifts it isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:04D6D0",
+    "DefaultStayAtEditorLocation Skyrim.esm:025BFC",
+    "DB10 Skyrim.esm:03CEDA alias AstridEndAlias, objectives 60/70, stage 200 log",
+    "placed ref Skyrim.esm:04D6D1 in Dark Brotherhood Sanctuary"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:04E64F",
+   "name": "Amaund Motierre",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "In the Bannered Mare, Whiterun, during Hail Sithis!",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around the Bannered Mare, Whiterun",
+     "doing": "going about the inn near where he's placed"
+    }
+   ],
+   "changes": [
+    "Above his inn package sits a wait-and-greet package at Volunruud in the Pale, live only at the 'see Motierre in Volunruud' step of The Silence Has Been Broken.",
+    "In Hail Sithis! you report to him after the Emperor dies, collect the payment, and may kill him (optional)."
+   ],
+   "role": "quest character (the client in Hail Sithis!)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Hail Sithis!",
+     "how": "a step in it: talk to him, report to him after the kill, retrieve the payment; optional target (Kill Amaund Motierre)"
+    }
+   ],
+   "canDie": "essential in his record; Hail Sithis! offers killing him as an optional objective",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "His record is essential, but the quest lists '(Optional) Kill Amaund Motierre'; what lifts that isn't in the extracts."
+    },
+    {
+     "field": "firstMeet",
+     "why": "This is a second Motierre record (the one in The Silence Has Been Broken is a different id); whether he's in the Bannered Mare before Hail Sithis! isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "Whether this later Motierre is in the world during The Silence Has Been Broken (when his Volunruud package would apply) isn't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:04E64F",
+    "DB04AmaundForcegreet Skyrim.esm:03BCF9 (GetStage DB04a == 10, Volunruud)",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "DB11 Skyrim.esm:01EA59 alias AmaundMotierreAlias, objectives 10/50/60/70",
+    "placed ref Skyrim.esm:04FA2F in The Bannered Mare",
+    "CrimeFactionWhiterun, DBAmaundMotierreFaction"
+   ]
+  },
+  {
+   "id": "Destroy the Dark Brotherhood - Quest Expansion.esp:000D64",
+   "name": "Gaston Bellefort",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "Outside, by the Dark Brotherhood Sanctuary near Falkreath, while you're looking for a way in during Destroy the Dark Brotherhood!",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "by the Dark Brotherhood Sanctuary, near Falkreath",
+     "doing": "only while you're at the 'learn the passphrase' step of Destroy the Dark Brotherhood!: coming to talk to you, or standing by the Sanctuary"
+    },
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "around the Bards College, Solitude",
+     "doing": "once Destroy the Dark Brotherhood! is finished"
+    }
+   ],
+   "changes": [
+    "At the 'Learn the passphrase' step he comes up to talk to you by the Sanctuary.",
+    "From that step until you're killing the assassins inside, he may instead stand at a spot by the Sanctuary, but only if Arnbjorn, Nazir and Festus Krex are all still alive and a choice in the quest has been made.",
+    "Once Destroy the Dark Brotherhood! is finished he lives around the Bards College in Solitude, any hour."
+   ],
+   "role": "quest character (Destroy the Dark Brotherhood!)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Destroy the Dark Brotherhood!",
+     "how": "a step in it: talk to him while you're learning the passphrase to the Sanctuary"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The stand-by-the-Sanctuary package needs a quest setting whose meaning isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Before the passphrase step, and between it and the end of the quest, none of his packages apply and his placed spot is only given as outdoors in Skyrim, so where he is then isn't known."
+    }
+   ],
+   "evidence": [
+    "Destroy the Dark Brotherhood - Quest Expansion.esp:000D64",
+    "DBDestroyGastonPackage02 :00084A (DBDestroy stage >= 200, Bards College r3000)",
+    "DBDestroyGastonStandPackage01 :00085C (stage 25-30, global :00085B == 1, Arnbjorn/Nazir/Festus Krex alive)",
+    "DBDestroyGastonForcegreet01 :000D6E (stage 25, global == 0)",
+    "DBDestroy Skyrim.esm:0934FB aliases Gaston, GastonSkeleton; dialogue at stage < 26",
+    "placed ref :000D6C in Skyrim worldspace"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:087B8B",
+   "name": "Nervous Patron",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Candlehearth Hall, Windhelm, once you are the Listener and the Night Mother sends you to the contact.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around Candlehearth Hall, Windhelm",
+     "doing": "loitering near where he's placed"
+    }
+   ],
+   "changes": [
+    "He's one of the contacts in The Dark Brotherhood Forever: after you speak with him there's a target to kill."
+   ],
+   "role": "Dark Brotherhood contact (gives a contract)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Dark Brotherhood Forever",
+     "how": "gives it: one of its contacts; speak with him to get a target"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Whether he's there before his contract comes up isn't in the extracts (no enable state)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:087B8B",
+    "DBRecurringContact1Dawnstar",
+    "DBRecurringContactSandbox Skyrim.esm:09725C (shared by 10)",
+    "DBRecuringContact1CrimeFaction",
+    "DBrecurring Skyrim.esm:01EA5A alias Contact1Alias",
+    "placed ref Skyrim.esm:09725B in Candlehearth Hall"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:087B8D",
+   "name": "Wary Outlaw",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In the Bee and Barb, Riften, once you are the Listener and the Night Mother sends you to the contact.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around the Bee and Barb, Riften",
+     "doing": "loitering near where he's placed"
+    }
+   ],
+   "changes": [
+    "He's one of the contacts in The Dark Brotherhood Forever: after you speak with him there's a target to kill."
+   ],
+   "role": "Dark Brotherhood contact (gives a contract)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Dark Brotherhood Forever",
+     "how": "gives it: one of its contacts; speak with him to get a target"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Whether he's there before his contract comes up isn't in the extracts (no enable state)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:087B8D",
+    "DBRecurringContact2Riften",
+    "DBRecurringContactSandbox Skyrim.esm:09725C (shared by 10)",
+    "DBRecuringContact2CrimeFaction",
+    "DBrecurring Skyrim.esm:01EA5A alias Contact2Alias",
+    "placed ref Skyrim.esm:09DCD2 in The Bee and Barb"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:087B8C",
+   "name": "Corrupt Agent",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In the Penitus Oculatus Outpost, Dragon Bridge, once you are the Listener and the Night Mother sends you to the contact.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around the Penitus Oculatus Outpost, Dragon Bridge",
+     "doing": "loitering near where he's placed"
+    }
+   ],
+   "changes": [
+    "He's one of the contacts in The Dark Brotherhood Forever: after you speak with him there's a target to kill."
+   ],
+   "role": "Dark Brotherhood contact (gives a contract)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Dark Brotherhood Forever",
+     "how": "gives it: one of its contacts; speak with him to get a target"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Whether he's there before his contract comes up isn't in the extracts (no enable state)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:087B8C",
+    "DBRecurringContact3DragonBridge",
+    "DBRecurringContactSandbox Skyrim.esm:09725C (shared by 10)",
+    "DBRecuringContact3CrimeFaction",
+    "DBrecurring Skyrim.esm:01EA5A alias Contact3Alias",
+    "placed ref Skyrim.esm:0A030F in Penitus Oculatus Outpost"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:087B8F",
+   "name": "Scheming Servant",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Understone Keep, Markarth, once you are the Listener and the Night Mother sends you to the contact.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around Understone Keep, Markarth",
+     "doing": "loitering near where he's placed"
+    }
+   ],
+   "changes": [
+    "He's one of the contacts in The Dark Brotherhood Forever: after you speak with him there's a target to kill."
+   ],
+   "role": "Dark Brotherhood contact (gives a contract)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Dark Brotherhood Forever",
+     "how": "gives it: one of its contacts; speak with him to get a target"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Whether he's there before his contract comes up isn't in the extracts (no enable state)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:087B8F",
+    "DBRecurringContact4Markarth",
+    "DBRecurringContactSandbox Skyrim.esm:09725C (shared by 10)",
+    "DBRecuringContact4CrimeFaction",
+    "DBrecurring Skyrim.esm:01EA5A alias Contact4Alias",
+    "placed ref Skyrim.esm:0A0313 in Understone Keep"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0F684E",
+   "name": "Solitude guard (Imperial)",
+   "race": "",
+   "sex": "male",
+   "firstMeet": "On the streets of Solitude; two of these guards stand in the city.",
+   "day": [],
+   "changes": [],
+   "role": "city guard; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Recruitment Drive",
+     "how": "gives it: tells you to talk to Rikke about joining the Imperial Legion"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "name",
+     "why": "The record has no name of its own; it's a guard template, so the in-game name comes from somewhere the extracts don't show."
+    },
+    {
+     "field": "race",
+     "why": "No race in the extracts for this template."
+    },
+    {
+     "field": "sex",
+     "why": "Taken from the template's editor id (Male guard), not from a flag."
+    },
+    {
+     "field": "day",
+     "why": "The template has no AI packages of its own; the guards' routines aren't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0F684E",
+    "GuardSolitudeImperialDayMaleGuard",
+    "CWImperialFaction, GuardFactionSolitude, IsGuardFaction",
+    "DialogueSolitudeGuardIntro Skyrim.esm:034B58 aliases Guard1, Guard2",
+    "placed refs Skyrim.esm:0C5885, Skyrim.esm:02E1B4 in Solitude worldspace"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:039B3E",
+   "name": "Melka",
+   "race": "Hagraven",
+   "sex": "",
+   "firstMeet": "In Blind Cliff Bastion, inside Blind Cliff Cave in the Reach, near Karthwasten.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Blind Cliff Bastion, Blind Cliff Cave, the Reach",
+     "doing": "no package before the quest is done; she stays where she is"
+    }
+   ],
+   "changes": [
+    "After The Affairs of Hagravens is done she wanders Blind Cliff Bastion, any hour.",
+    "The quest also has a stage whose log reads 'The Hagraven Melka is dead.'"
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Affairs of Hagravens",
+     "how": "gives it: kill the Hagraven Petra; she rewards you with the Eye of Melka"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sex",
+     "why": "Her record has no female flag, so the extract reads male; that's a default, not a statement."
+    },
+    {
+     "field": "firstMeet",
+     "why": "The quest has a prison marker and a release button for her, so she's likely held captive when you find her, but the extracts don't say how."
+    },
+    {
+     "field": "changes",
+     "why": "How Melka comes to die (her stage 200) isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:039B3E",
+    "dunBlindCliffMelkaPostQuestSandbox Skyrim.esm:0B3DF9 (dunBlindCliffQST stage >= 100)",
+    "dunBlindCliffQST Skyrim.esm:039B3B aliases Melka, MelkaPrisonMarker, MelkaReleaseButton; stage 200",
+    "DunPlayerAllyFaction",
+    "placed ref Skyrim.esm:0220BB in Blind Cliff Bastion"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:048C2F",
+   "name": "Illia",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "Inside Darklight Tower in the Rift, near Riften; she comes to talk to you.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Darklight Tower, the Rift",
+     "doing": "before Repentance: waiting to greet you inside the tower"
+    }
+   ],
+   "changes": [
+    "During Repentance she runs ahead of you up the tower to its levers, locked doors and the chambers, stopping to talk at each.",
+    "When her mother is dead she meets you outside the tower.",
+    "After Repentance ends with her alive she lives at the Bee and Barb, Riften, any hour.",
+    "As your follower she goes where you go."
+   ],
+   "role": "quest giver; follower; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes; she's a marriage candidate (what she needs first isn't in the extracts)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Repentance",
+     "how": "gives it: help her reach the top of Darklight Tower and defeat her mother; she tells you to take her mother's staff"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "She's set up as a potential follower, but the dialogue that recruits her (and any condition on it) isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "She has a vendor entry (a buy list shared by over two hundred people, open all hours) but no merchant chest and no merchant faction, so it's most likely follower trading, not a shop."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:048C2F",
+    "dunDarklightIlliaForceGreet Skyrim.esm:04F4D9 (stage 0)",
+    "dunDarklightEscortPlayerRun01-04 Skyrim.esm:02E108/078167/0782F9/0782FA (stages 10/14/15/18)",
+    "dunDarklightIlliaForceGreetLever :078191, GreetLockedDoor :078200, ForceGreetPlan :051EEF, Travel01A :0304FF",
+    "dunDarklightIlliaQuestEndForceGreet Skyrim.esm:051EFE (stage 40)",
+    "dunDarklightIlliaQuestEndSandbox Skyrim.esm:051EFD (stage >= 50, Bee and Barb r512, Illia leaves darklight tower.esp)",
+    "PotentialFollowerFaction, PotentialMarriageFaction, DunPlayerAllyFaction",
+    "vendor VEND 06CB48 no VENC",
+    "dunDarklightQST Skyrim.esm:03FA89 alias Illia",
+    "placed ref Skyrim.esm:04B22E in Darklight Tower"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0D001A",
+   "name": "Eisa Blackthorn",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Outside Frostmere Crypt in the Pale, near Stonehills, being attacked by her own bandit gang.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "outside Frostmere Crypt, the Pale",
+     "doing": "no AI packages; she stays where she's placed"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Pale Lady",
+     "how": "gives it: tells you about the sword stolen in Frostmere Crypt"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "What happens to her after you talk to her isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0D001A",
+    "no packages",
+    "dunFrostmereCryptEisaFaction",
+    "dunFrostmereCryptQST Skyrim.esm:0CF915 alias Eisa, stage 1 log",
+    "placed ref Skyrim.esm:0D001B outside, location Frostmere Crypt"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0443F3",
+   "name": "Anska",
+   "race": "",
+   "sex": "",
+   "firstMeet": "In High Gate Ruins in the Pale.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "High Gate Ruins, the Pale",
+     "doing": "before you help her: staying in the ruins"
+    }
+   ],
+   "changes": [
+    "Once you agree to help her retrieve the scroll she follows you through High Gate Ruins until you have it.",
+    "She also has three walks to points in the ruins, but they sit below her follow package, so they don't run during the scroll hunt.",
+    "If she dies the quest fails ('I have failed to protect Anska')."
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Scroll For Anska",
+     "how": "gives it: find her scroll in High Gate Ruins (or help her retrieve it); she rewards you with a powerful new fire spell"
+    }
+   ],
+   "canDie": "protected (the quest fails if she dies)",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "Her record has no race in the extracts (it likely comes from a template)."
+    },
+    {
+     "field": "sex",
+     "why": "The extract reads male only for want of a female flag; with the race missing too, it likely comes from a template."
+    },
+    {
+     "field": "quests",
+     "why": "Which fire spell she gives isn't named in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "Her three walks to points in the ruins depend on a setting the extracts don't name, and nothing says what she does after the quest."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0443F3",
+    "highGateRuinsAnskaSandbox Skyrim.esm:0443FD (stage < 20)",
+    "highGateRuinsAnskaFollow00 Skyrim.esm:044402 (stage 20-90, in location Skyrim.esm:019195)",
+    "highGateRuinsAnskaTravel10/20/30 Skyrim.esm:0443FF/044400/044401",
+    "dunHighGateRuinsQST Skyrim.esm:0443F4 stages 100, 150",
+    "placed ref Skyrim.esm:0443F2 in High Gate Ruins"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019FE6",
+   "name": "Vals Veran",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Inside Hillgrund's Tomb in Eastmarch, near Darkwater Crossing.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Hillgrund's Tomb, Eastmarch",
+     "doing": "no AI packages; he stays where he's placed"
+    }
+   ],
+   "changes": [],
+   "role": "enemy (quest target)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Ancestral Worship",
+     "how": "its target: Golldir asks you to defeat him, 'the warlock, Vals Veran'"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The quest calls him a warlock, but his class id and outfit don't resolve in the extracts, so I can't say which spells or weapons."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019FE6",
+    "no packages",
+    "dunHillgrundsTombQST Skyrim.esm:03E897 alias ValsVeran, objective 10, stage 10 log",
+    "placed ref Skyrim.esm:019FE7 in Hillgrund's Tomb"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0185F6",
+   "name": "Froki Whetted-Blade",
+   "race": "Nord (elder)",
+   "sex": "male",
+   "firstMeet": "At Froki's Shack in the Rift, near Ivarstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Froki's Shack, the Rift",
+     "doing": "no AI packages; he stays at his shack"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Kyne's Sacred Trials",
+     "how": "gives it: sends you after the guardian spirits (mudcrab, skeever, wolf; bear, sabre cat, mammoth; troll) and you return to him after each round; reward is the Blessing of Kyne and Kyne's Token"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "He also fills an alias in a second, unnamed quest from the Unofficial Patch that isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0185F6",
+    "no packages",
+    "CrimeFactionRift",
+    "dunHunterQST Skyrim.esm:018601 alias Froki, objectives 50/70/100, stage 100 log",
+    "Unofficial Skyrim Special Edition Patch.esp:03F7B8 alias Froki",
+    "placed ref Skyrim.esm:0185F5 in Froki's Shack",
+    "race record 'Elder'"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01BA08",
+   "name": "Telrav",
+   "race": "",
+   "sex": "",
+   "firstMeet": "Outdoors near Nilheim in the Rift, near Ivarstead, posing as an injured merchant.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "outdoors near Nilheim, the Rift",
+     "doing": "before the quest: wandering near where he's placed"
+    }
+   ],
+   "changes": [
+    "Once you agree to escort him he walks to a spot by the Statue of Phynaster, then on into Nilheim to fetch your 'reward'.",
+    "It's a double-cross: the quest turns to 'Kill Telrav'. Other endings in the records: you kill the Nilheim bandits, find his journal, or extort him.",
+    "After the quest he wanders near where he was first found, outside Nilheim."
+   ],
+   "role": "quest giver; enemy (he double-crosses you)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Telrav's Request",
+     "how": "gives it (escort him to his camp) and its target (Kill Telrav); can also be extorted"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "No race in the extracts (his record likely takes it from a template)."
+    },
+    {
+     "field": "sex",
+     "why": "The extract reads male only for want of a female flag; with the race missing, it likely comes from a template."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01BA08",
+    "REQ_Bandit_Loc_Nilheim_Telrav",
+    "TelravSandboxStage Skyrim.esm:072A94 (stage 0)",
+    "TelravTravelStage10 Skyrim.esm:01BB17 (nearest Statue of Phynaster)",
+    "TelravTravelStage20Alive Skyrim.esm:01BB1D / TelravTravelStage20Dead Skyrim.esm:072A92 (Nilheim)",
+    "DefaultMasterPackage Skyrim.esm:03EAB9",
+    "dunNilheimQST Skyrim.esm:01BAEC stages 10-150",
+    "placed ref Skyrim.esm:01BA06, location Nilheim"
+   ]
+  },
+  {
+   "id": "Infiltration - Quest Expansion.esp:000D62",
+   "name": "Brurid",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "Inside Treva's Watch in the Rift, near Ivarstead; a wizard who has taken over the fort.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Treva's Watch, the Rift",
+     "doing": "staying in the fort"
+    }
+   ],
+   "changes": [
+    "When you first enter (and again while you're working for Stalleo) he comes up to talk to you.",
+    "If Stalleo confronts him, he asks you to help kill Stalleo.",
+    "Infiltration can end with the fort his, with him killed, or with him convinced to leave."
+   ],
+   "role": "quest giver; enemy if you side with Stalleo",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Infiltration",
+     "how": "gives it (asks you to deal with Stalleo) or its target (kill him or convince him to leave) if you side with Stalleo"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "One package keeps him in place under a condition the extracts don't decode, and another needs a stage of an unnamed add-on quest."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Infiltration - Quest Expansion.esp:000D62",
+    "dunTrevasWatchBruridForcegreet03 :000861 (stage 16 + add-on quest :000D69 stage 10)",
+    "dunTrevasWatchQSTBruridForcegreet02 :00081D (stages 10-15)",
+    "dunTrevasWatchQSTBruridForcegreet01 :00081C (stage 1)",
+    "Brurid_BadBoy_STAY :000880 (fn289)",
+    "dunTrevasWatchBruridFaction",
+    "dunTrevasWatchQST Skyrim.esm:04B2A1 alias Brurid, stages 5/15/16/95",
+    "placed ref :000D63 in Treva's Watch"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:04B4AF",
+   "name": "Stalleo",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Camped outside Treva's Watch, his old family home, in the Rift near Ivarstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "camped outside Treva's Watch, the Rift",
+     "doing": "before the quest is done: by the camp where they're placed"
+    }
+   ],
+   "changes": [
+    "If you take Stalleo's side and an add-on step is reached, they follow you.",
+    "When you open the gate of Treva's Watch they charge the fort.",
+    "Once you've secured the fort for Stalleo they live at Treva's Watch, any hour.",
+    "If you side with Brurid instead, Stalleo is 'no longer a problem' and the fort is Brurid's."
+   ],
+   "role": "quest giver; enemy if you side with Brurid",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Infiltration",
+     "how": "gives it (take back the fort from Brurid, reward when you open the gate) or its target if you side with Brurid"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The follow package needs a stage of an unnamed add-on quest that isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:04B4AF",
+    "alias stalleo",
+    "placed ref Skyrim.esm:04B4AA outdoors",
+    "dunTrevasWatchQSTFollowPlayer Infiltration - Quest Expansion.esp:000819 (add-on quest :000D69 stage 10)",
+    "dunTrevasWatchAttackPACKAGE Skyrim.esm:06C2B2 (stage 60)",
+    "dunTrevas_StalleoAfter Infiltration - Quest Expansion.esp:00087B (stage 100, from 9 am for 24 hours)",
+    "DefaultMasterPackage Skyrim.esm:03EAB9",
+    "dunTrevasWatchFaction, DunPlayerAllyFaction",
+    "dunTrevasWatchQST Skyrim.esm:04B2A1"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:04B4B1",
+   "name": "Stalleo's Bodyguard",
+   "race": "",
+   "sex": "male",
+   "firstMeet": "With Stalleo at his camp outside Treva's Watch, in the Rift near Ivarstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "camped outside Treva's Watch, the Rift",
+     "doing": "before the quest is done: by the camp where they're placed"
+    }
+   ],
+   "changes": [
+    "If you take Stalleo's side and an add-on step is reached, they follow you.",
+    "When you open the gate of Treva's Watch they charge the fort.",
+    "Once you've secured the fort for Stalleo they live at Treva's Watch, any hour.",
+    "If you side with Brurid instead, Stalleo is 'no longer a problem' and the fort is Brurid's."
+   ],
+   "role": "Stalleo's companion in a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Infiltration",
+     "how": "a step in it: with Stalleo; can talk to you early in the quest"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "No race in the extracts (likely from a template)."
+    },
+    {
+     "field": "changes",
+     "why": "The follow package needs a stage of an unnamed add-on quest that isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:04B4B1",
+    "alias BodyGuard1",
+    "placed ref Skyrim.esm:04B4AD outdoors",
+    "dunTrevasWatchQSTFollowPlayer Infiltration - Quest Expansion.esp:000819 (add-on quest :000D69 stage 10)",
+    "dunTrevasWatchAttackPACKAGE Skyrim.esm:06C2B2 (stage 60)",
+    "dunTrevas_StalleoAfter Infiltration - Quest Expansion.esp:00087B (stage 100, from 9 am for 24 hours)",
+    "DefaultMasterPackage Skyrim.esm:03EAB9",
+    "dunTrevasWatchFaction, DunPlayerAllyFaction",
+    "dunTrevasWatchQST Skyrim.esm:04B2A1"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:093A76",
+   "name": "Stalleo's Bodyguard",
+   "race": "",
+   "sex": "",
+   "firstMeet": "With Stalleo at his camp outside Treva's Watch, in the Rift near Ivarstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "camped outside Treva's Watch, the Rift",
+     "doing": "before the quest is done: by the camp where they're placed"
+    }
+   ],
+   "changes": [
+    "If you take Stalleo's side and an add-on step is reached, they follow you.",
+    "When you open the gate of Treva's Watch they charge the fort.",
+    "Once you've secured the fort for Stalleo they live at Treva's Watch, any hour.",
+    "If you side with Brurid instead, Stalleo is 'no longer a problem' and the fort is Brurid's."
+   ],
+   "role": "Stalleo's companion in a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Infiltration",
+     "how": "a step in it: with Stalleo; can talk to you early in the quest"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "No race in the extracts (likely from a template)."
+    },
+    {
+     "field": "sex",
+     "why": "The extract reads male for want of a female flag, but the record is the female bodyguard by its editor id; likely from a template."
+    },
+    {
+     "field": "changes",
+     "why": "The follow package needs a stage of an unnamed add-on quest that isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:093A76",
+    "dunTrevasWatchStalleosVanguardFemale",
+    "alias BodyGuard2",
+    "placed ref Skyrim.esm:04B4AC outdoors",
+    "dunTrevasWatchQSTFollowPlayer Infiltration - Quest Expansion.esp:000819 (add-on quest :000D69 stage 10)",
+    "dunTrevasWatchAttackPACKAGE Skyrim.esm:06C2B2 (stage 60)",
+    "dunTrevas_StalleoAfter Infiltration - Quest Expansion.esp:00087B (stage 100, from 9 am for 24 hours)",
+    "DefaultMasterPackage Skyrim.esm:03EAB9",
+    "dunTrevasWatchFaction, DunPlayerAllyFaction",
+    "dunTrevasWatchQST Skyrim.esm:04B2A1"
+   ]
+  }
+ ]
+}
