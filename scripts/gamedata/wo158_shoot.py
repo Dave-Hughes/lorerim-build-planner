@@ -1,10 +1,17 @@
 """
-WO-158 Part 1g: `player.moveto` restored before the fine `setpos` offset, after Part 1f's own fix finally ran
-clean (no freeze, no hidden console) and still landed Dave indoors, nowhere near the entrance. Writes `bat
-<file>` scripts to gamedata/5.0.4.8/wo158/ (committed, so Bob/Dave can read exactly what each shot does) and,
-when `C:\\LoreRim` exists, also to `C:\\LoreRim\\_fieldguide\\tools\\wo158\\` and directly into
+WO-158 Part 1k: every place is two files now -- `wo158-place-<slug>.txt` travels (one `player.moveto`), and
+`wo158-frame-<slug>.txt` frames (`setpos`/`setangle`), run by hand after the load. Writes `bat <file>` scripts
+to gamedata/5.0.4.8/wo158/ (committed, so Bob/Dave can read exactly what each shot does) and, when
+`C:\\LoreRim` exists, also to `C:\\LoreRim\\_fieldguide\\tools\\wo158\\` and directly into
 `C:\\LoreRim\\Stock Game\\` (Part 1e):
   python3 scripts/gamedata/wo158_shoot.py
+
+**Why two files (Part 1k).** Three different `setangle z` values (217.5, 37.5, -142.5) gave Dave one identical
+view: at the marker, on the ground, facing the marker's own rotation. A `moveto` across worldspaces lands on a
+later frame than the bat file that issued it; every `setpos`/`setangle` after it in the same file ran first and
+was then overwritten when the teleport finished. `player.setangle z -142.5` typed on its own, with no teleport
+pending, turned him (the view only redraws once the console closes -- a second thing found live, written into
+the run steps). So the teleport and the framing can't share a file; the person between them is the wait.
 
 **Why Dave ended up indoors.** `player.setpos` only moves the player within whatever cell or worldspace
 they're already loaded into -- it never loads a new one. The entrance-camera branch of `place_lines()` went
@@ -214,23 +221,28 @@ def camera_setpos_lines(cx, cy, cz, yaw):
             f"player.setangle x {TILT_DOWN}", f"player.setangle z {yaw:.1f}"]
 
 
-def place_lines(target, marker=None, entrance=None):
-    lines = [f"fw {CLEAR_WEATHER}", "set gamehour to 12"]
+def travel_lines(target):
+    """`wo158-place-<slug>.txt`: weather, noon, and the teleport -- nothing else. `player.setpos` only moves the
+    player within whatever cell/worldspace they're already in; `player.moveto` is the one command that loads a
+    new one (Part 1g). But a `moveto` across worldspaces finishes on a later frame than the bat file that ran it
+    (Part 1k): anything after it in the same file runs first and is then overwritten when the teleport lands --
+    position back on the marker, height back on the ground, facing back to the marker's own rotation. Which is
+    exactly the one view Dave got from three different `setangle z` values. So the teleport gets a file to itself,
+    and the framing waits for the load to finish, in `wo158-frame-<slug>.txt`."""
+    return [f"fw {CLEAR_WEATHER}", "set gamehour to 12", f"player.moveto {target}"]
+
+
+def frame_lines(marker=None, entrance=None):
+    """`wo158-frame-<slug>.txt`: the camera's own position and angle, run by hand once the place has loaded.
+    No `moveto` in here, ever -- see `travel_lines`."""
     if marker and entrance:
-        # `player.setpos` only moves the player within whatever cell/worldspace they're already in -- it does
-        # not load a new one. `player.moveto` does (it's how `prid`+`moveto player` already worked for people),
-        # so it has to run first, landing exactly on the marker in the right worldspace; the setpos lines after
-        # it then do the fine offset from there. Found live, 27 Oct (Part 1g): without this, running a place's
-        # file just nudged Dave around inside whatever interior his character already stood in.
-        lines += [f"player.moveto {target}"] + camera_setpos_lines(*entrance_camera(marker, entrance))
-    elif marker:
-        # Riverwood: no single entrance to aim at -- straight to the marker, well above it, tilted further down.
-        # `setpos` takes an absolute coordinate, not a relative one, so the marker's own z plus the offset is
-        # computed here rather than written as "+N" (which the console doesn't parse as an offset).
-        lines += [f"player.moveto {target}", f"player.setpos z {marker[2] + HEIGHT * 2:.1f}", "player.setangle x 60"]
-    else:
-        lines += [f"player.moveto {target}"]
-    return lines
+        return camera_setpos_lines(*entrance_camera(marker, entrance))
+    if marker:
+        # Riverwood: no single entrance to aim at -- well above its own centre marker, tilted further down. The
+        # player is already standing on the marker after the travel step, so only z and the tilt change.
+        # `setpos` takes an absolute coordinate, so the marker's own z plus the offset is computed here.
+        return [f"player.setpos z {marker[2] + HEIGHT * 2:.1f}", "player.setangle x 60"]
+    return []
 
 
 def person_mark_lines():
@@ -254,7 +266,9 @@ def person_lines(this_target, others):
 
 
 def photoroom_lines():
-    return [f"coc {PHOTO_ROOM}", f"fw {CLEAR_WEATHER}", "set gamehour to 12"] + list(person_mark_lines())
+    """`coc` is a cell load like `moveto` (Part 1k), so nothing positional follows it here: each person's own file
+    puts the player on the mark itself, first thing, after this has finished loading."""
+    return [f"fw {CLEAR_WEATHER}", "set gamehour to 12", f"coc {PHOTO_ROOM}"]
 
 
 def write(path, lines):
@@ -268,13 +282,15 @@ def build(base):
     write(os.path.join(base, "wo158-end.txt"), end_lines())
     write(os.path.join(base, "wo158-toggle-hud.txt"), hud_toggle_lines())
     for name, slug, target, note, marker, entrance in PLACES:
-        lines = [f"; {name}" + (f" -- {note}" if note else "")] + place_lines(target, marker, entrance)
-        write(os.path.join(base, f"wo158-place-{slug}.txt"), lines)
+        head = f"; {name}" + (f" -- {note}" if note else "")
+        write(os.path.join(base, f"wo158-place-{slug}.txt"), [head + " (travel; then wait for the load)"] + travel_lines(target))
+        write(os.path.join(base, f"wo158-frame-{slug}.txt"), [head + " (frame; run after the place has loaded)"] + frame_lines(marker, entrance))
     ws = WINKING_SKEEVER_DOOR
-    ws_lines = [f"; The Winking Skeever (outside) -- no outdoor map marker (an interior inn); the door's own "
-                f"rotation stands in for a marker-to-door vector", f"fw {CLEAR_WEATHER}", "set gamehour to 12"]
-    ws_lines += [f"player.moveto {ws['target']}"] + camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"]))
-    write(os.path.join(base, "wo158-place-winking-skeever-outside.txt"), ws_lines)
+    ws_head = ("; The Winking Skeever (outside) -- no outdoor map marker (an interior inn); the door's own "
+               "rotation stands in for a marker-to-door vector")
+    write(os.path.join(base, "wo158-place-winking-skeever-outside.txt"), [ws_head + " (travel)"] + travel_lines(ws["target"]))
+    write(os.path.join(base, "wo158-frame-winking-skeever-outside.txt"),
+          [ws_head + " (frame)"] + camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"])))
     write(os.path.join(base, "wo158-photoroom-setup.txt"), [f"; {PHOTO_ROOM}, the photo room; run once"] + photoroom_lines())
     all_targets = [t for _, _, t in PEOPLE]
     for name, slug, target in PEOPLE:

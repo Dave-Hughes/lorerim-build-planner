@@ -5057,7 +5057,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 Parts 1 to 5 are built and pass their own e2e (`e2e/wo159.spec.ts`, 13 tests); the full suite is running now, then the boxes and screenshots.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1j: the plain bearing in -180..180, read off a real compass this time, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1k: travel and frame are two files now, the teleport was overwriting the framing; needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5157,12 +5157,24 @@ Dave: "No change" -- still facing exactly away, the grotto behind him when he tu
 - **Checks.** `yaw_to`'s test rewritten to the plain bearing with a sweep asserting every output stays within -180..180; a new test pins Broken Oar Grotto's own value to `-142.5` and away from `37.5`, the one number checked against a real compass. 377 gamedata tests pass.
 - **For the people shots, before Dave gets there:** the character in his screenshots is level 29 with a full build -- that looks like a real save, not the throwaway the order's own "Before the run" item 1 asks for. The place shots only move the player; the people shots `disable` four named NPCs and `moveto` a fifth into a test cell, and `tai` freezes every actor in the loaded area. On a real save, saved afterwards, that could leave Lucan, Jaree-Ra, Mjoll, Aldis or Delphine missing from their own quests. Flagged here and in chat; not this reader's call to make.
 
+### Part 1k. Three bearings, one view: the teleport was overwriting the framing (Dave, 27 Oct)
+Part 1j's `-142.5` changed nothing either -- "literally nothing changed." Three `setangle z` values 180 or more apart (217.5, 37.5, -142.5) giving one identical view can't be a wrong number; it's the number being thrown away. And it explains the two things hand-waved since Part 1h: "on the ground" and "almost too close" are what standing exactly on the marker looks like. Dave then typed `player.setangle z -142.5` by hand, on its own -- and turned to face the grotto (his screenshot: the cave mouth, from the marker, filling the frame).
+- [x] **A `moveto` across worldspaces lands on a later frame than the bat file that issued it.** Every `setpos`/`setangle` after it in the same file ran first and was overwritten when the teleport finished: position back on the marker, height back on the ground, facing back to the marker's own rotation (40 degrees here -- NNE, the sea). The same number typed with no teleport pending works. So each place is two files now: `wo158-place-<slug>.txt` is weather, noon and the one `player.moveto`, nothing after it; `wo158-frame-<slug>.txt` is the `setpos`/`setangle` lines, run by hand once the place has loaded. The person between the two is the wait a bat file can't do. `coc` is a load too, so `wo158-photoroom-setup.txt` ends on it and each person's own file sets the mark itself (it already did).
+- [x] **The view only redraws when the console actually closes** (Dave: "my angle does not change until I close the console") -- `tm` hides the console, it doesn't close it. Written into the run steps: close the console after each file before judging or shooting.
+- **Checks.** `test_a_teleport_never_shares_a_file_with_the_framing`: a travel file has exactly one `moveto`, as its last line, and nothing positional; a frame file is positional only, no `moveto` or `coc`; the photo room's setup ends on its `coc`. 377 gamedata tests pass.
+- **Still open, and now actually testable:** `HEIGHT`/`DISTANCE`/`TILT_DOWN` have never been seen on screen -- every shot so far was from the marker, on the ground. Dave's first framed look at Broken Oar Grotto is the first real data for Bob's "pick the numbers" box.
+
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
 2. Open the console (usually `~`) and run `bat wo158-start` once. The files land in `C:\LoreRim\Stock Game\` directly (Part 1e), the folder confirmed live to work.
-3. For each of the five places: `bat wo158-place-<slug>` (the five slugs: `broken-oar-grotto`, `bleak-falls-barrow`, `fort-hraggstad`, `riverwood`, `winking-skeever-outside`), then `bat wo158-toggle-hud` (HUD and console both hide now), the screenshot key, then `bat wo158-toggle-hud` again (console back, so the next command can be typed and checked). For the Winking Skeever's inside comparison shot, walk through the door by hand afterwards and shoot again, same settings otherwise.
-4. Run `bat wo158-photoroom-setup` once, then for each of the five people: `bat wo158-person-<slug>` (`lucan-valerius`, `jaree-ra`, `mjoll-the-lioness`, `captain-aldis`, `delphine`), then the same `wo158-toggle-hud` / screenshot / `wo158-toggle-hud` pair as step 3.
+3. For each of the five places (slugs: `broken-oar-grotto`, `bleak-falls-barrow`, `fort-hraggstad`, `riverwood`, `winking-skeever-outside`), five steps, closing the console (`~`) after each file so the game applies it (Part 1k):
+   `bat wo158-place-<slug>` -> close the console, wait for the place to load ->
+   `bat wo158-frame-<slug>` -> close the console, check the view ->
+   `bat wo158-toggle-hud` -> close the console -> the screenshot key ->
+   `bat wo158-toggle-hud` (console and HUD back).
+   For the Winking Skeever's inside comparison shot, walk through the door by hand afterwards and shoot again, same settings otherwise.
+4. Run `bat wo158-photoroom-setup` once and close the console to let it load; then for each of the five people: `bat wo158-person-<slug>` (`lucan-valerius`, `jaree-ra`, `mjoll-the-lioness`, `captain-aldis`, `delphine`), close the console, check the view, then the same `wo158-toggle-hud` / screenshot / `wo158-toggle-hud` as step 3.
 5. Run `bat wo158-end` once, when all ten are taken.
 6. Pictures land in `C:\LoreRim\Stock Game\` (confirmed live, Part 1j -- the game's own root, the same folder the bat files sit in); move or rename the ten into `C:\LoreRim\_fieldguide\screens\wo158\` as the order's own naming asks (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`, …).
 

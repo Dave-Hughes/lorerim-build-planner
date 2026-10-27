@@ -1,7 +1,4 @@
 ; QASmoke, the photo room; run once
-coc QASmoke
 fw SClearSkySN
 set gamehour to 12
-player.setpos x 0
-player.setpos y 0
-player.setpos z 0
+coc QASmoke

@@ -13,23 +13,32 @@ import wo158_shoot as wo  # noqa: E402
 SESSION_TOGGLES = ("tcl", "tai")  # on once at the start, off once at the end -- never inside a shot's own file
 
 
-def all_place_lines():
+def all_travel_lines():
     for name, slug, target, note, marker, entrance in wo.PLACES:
-        yield slug, wo.place_lines(target, marker, entrance)
+        yield slug, wo.travel_lines(target)
+    yield "winking-skeever-outside", wo.travel_lines(wo.WINKING_SKEEVER_DOOR["target"])
+
+
+def all_frame_lines():
+    for name, slug, target, note, marker, entrance in wo.PLACES:
+        yield slug, wo.frame_lines(marker, entrance)
     ws = wo.WINKING_SKEEVER_DOOR
-    yield "winking-skeever-outside", [f"fw {wo.CLEAR_WEATHER}", "set gamehour to 12", f"player.moveto {ws['target']}"] + wo.camera_setpos_lines(
-        *wo.door_camera(ws["pos"], ws["door_yaw"]))
+    yield "winking-skeever-outside", wo.camera_setpos_lines(*wo.door_camera(ws["pos"], ws["door_yaw"]))
+
+
+def all_shot_lines():
+    yield from all_travel_lines()
+    yield from all_frame_lines()
+    for name, slug, target in wo.PEOPLE:
+        others = [t for _, _, t in wo.PEOPLE if t != target]
+        yield slug, wo.person_lines(target, others)
 
 
 class ShapeTest(unittest.TestCase):
     def test_session_toggles_only_live_in_start_and_end(self):
         # tcl and tai flip state each time they run -- they may only appear in the two files meant to bracket
         # the whole session, never inside a per-place or per-person shot.
-        for slug, lines in all_place_lines():
-            self.assertFalse(any(line.split()[0] in SESSION_TOGGLES for line in lines), (slug, lines))
-        for name, slug, target in wo.PEOPLE:
-            others = [t for _, _, t in wo.PEOPLE if t != target]
-            lines = wo.person_lines(target, others)
+        for slug, lines in all_shot_lines():
             self.assertFalse(any(line.split()[0] in SESSION_TOGGLES for line in lines), (slug, lines))
         self.assertEqual(set(l.split()[0] for l in wo.start_lines()) & set(SESSION_TOGGLES), set(SESSION_TOGGLES))
         self.assertEqual(set(l.split()[0] for l in wo.end_lines()) & set(SESSION_TOGGLES), set(SESSION_TOGGLES))
@@ -40,25 +49,18 @@ class ShapeTest(unittest.TestCase):
         self.assertNotIn("tm", wo.start_lines())
         self.assertNotIn("tm", wo.end_lines())
         self.assertEqual(wo.hud_toggle_lines(), ["tm"])
-        for slug, lines in all_place_lines():
+        for slug, lines in all_shot_lines():
             self.assertNotIn("tm", lines, slug)
-        for name, slug, target in wo.PEOPLE:
-            others = [t for _, _, t in wo.PEOPLE if t != target]
-            self.assertNotIn("tm", wo.person_lines(target, others), slug)
 
     def test_tfc_is_never_used_anywhere(self):
         # Part 1f: free camera suppressed a menu's own rendering independently of tm, the retoggle and sgtm --
         # three real, separate bugs fixed across Parts 1c-1e, and the same symptom still came back a fourth
         # time. Dropped entirely rather than chased further: player.setpos/setangle already move and aim the
         # player directly, and first person shows exactly that with no free camera needed at all.
-        for slug, lines in all_place_lines():
+        for slug, lines in all_shot_lines():
             self.assertFalse(any(l.startswith("tfc") for l in lines), (slug, lines))
-        for f in (wo.start_lines(), wo.end_lines(), wo.camera_mark_lines(), wo.person_mark_lines()):
+        for f in (wo.start_lines(), wo.end_lines(), wo.camera_mark_lines(), wo.person_mark_lines(), wo.photoroom_lines()):
             self.assertFalse(any(l.startswith("tfc") for l in f), f)
-        for name, slug, target in wo.PEOPLE:
-            others = [t for _, _, t in wo.PEOPLE if t != target]
-            lines = wo.person_lines(target, others)
-            self.assertFalse(any(l.startswith("tfc") for l in lines), (slug, lines))
 
     def test_time_is_frozen_without_the_true_zero_that_hangs(self):
         # Found live, 27 Oct (Part 1d): sgtm 0 hung the game outright on this heavily scripted install -- the
@@ -68,6 +70,21 @@ class ShapeTest(unittest.TestCase):
         self.assertNotEqual(float(wo.TIME_FROZEN), 0.0)
         self.assertNotIn("sgtm 0", wo.start_lines())
         self.assertNotIn("sgtm 1", wo.start_lines())
+
+    def test_a_teleport_never_shares_a_file_with_the_framing(self):
+        # Found live, 27 Oct (Part 1k): a moveto across worldspaces (or a coc) finishes on a later frame than the
+        # bat file that ran it, and when it lands it overwrites any setpos/setangle that ran after it in the same
+        # file -- three different setangle z values gave Dave the same view. So: a travel file is weather, noon
+        # and one moveto, nothing positional after it; a frame file is positional and has no moveto or coc at all.
+        positional = ("player.setpos", "player.setangle")
+        for slug, lines in all_travel_lines():
+            self.assertEqual(sum(l.startswith("player.moveto") for l in lines), 1, (slug, lines))
+            self.assertEqual(lines[-1].split()[0], "player.moveto", (slug, lines))
+            self.assertFalse(any(l.startswith(positional) for l in lines), (slug, lines))
+        for slug, lines in all_frame_lines():
+            self.assertTrue(lines, slug)
+            self.assertTrue(all(l.startswith(positional) for l in lines), (slug, lines))
+        self.assertEqual(wo.photoroom_lines()[-1], f"coc {wo.PHOTO_ROOM}")
 
     def test_every_person_disables_exactly_the_other_four(self):
         all_targets = [t for _, _, t in wo.PEOPLE]
@@ -82,21 +99,11 @@ class ShapeTest(unittest.TestCase):
 
     def test_a_person_goes_to_the_mark_before_being_brought_in(self):
         # moveto player drops the NPC wherever the player already stands, so the player must be back on the
-        # mark (not left at the previous shot's camera spot) before any prid/enable/moveto runs.
+        # mark (not left at the previous shot's camera spot) before any prid/enable/moveto runs. The photo
+        # room's own setup no longer sets the mark itself (Part 1k: coc is a load, nothing positional after it),
+        # so each person's file has to.
         lines = wo.person_lines(wo.PEOPLE[0][2], [t for _, _, t in wo.PEOPLE[1:]])
         self.assertEqual(lines[:3], wo.person_mark_lines())
-
-    def test_every_place_moves_to_its_marker_before_any_fine_setpos(self):
-        # Found live, 27 Oct (Part 1g): player.setpos only moves the player within whatever cell/worldspace
-        # they're already in -- it never loads a new one. Running a place's file without a moveto first just
-        # nudged Dave around inside wherever his character happened to start. player.moveto has to come before
-        # any setpos/setangle line, every time, since it's the one command that's worldspace-aware.
-        for slug, lines in all_place_lines():
-            moveto_at = next((i for i, l in enumerate(lines) if l.startswith("player.moveto")), None)
-            setpos_at = next((i for i, l in enumerate(lines) if l.startswith("player.setpos") or l.startswith("player.setangle")), None)
-            self.assertIsNotNone(moveto_at, (slug, lines))
-            if setpos_at is not None:
-                self.assertLess(moveto_at, setpos_at, (slug, lines))
 
     def test_every_target_is_unique(self):
         place_targets = [t for _, _, t, _, _, _ in wo.PLACES] + [wo.WINKING_SKEEVER_DOOR["target"]]
@@ -104,9 +111,10 @@ class ShapeTest(unittest.TestCase):
         self.assertEqual(len(place_targets), len(set(place_targets)))
         self.assertEqual(len(people_targets), len(set(people_targets)))
 
-    def test_place_lines_set_weather_and_noon(self):
-        for slug, lines in all_place_lines():
+    def test_travel_sets_weather_and_noon(self):
+        for slug, lines in all_travel_lines():
             self.assertTrue(any(l.startswith("fw ") for l in lines), slug)
+            self.assertTrue(any("gamehour" in l for l in lines), slug)
 
     def test_yaw_to_is_the_plain_bearing_in_the_minus_180_to_180_range(self):
         # Found live, 27 Oct (Part 1j), from a screenshot's own compass: the plain bearing is the right

@@ -1,0 +1,3 @@
+; Riverwood -- a village, not a single entrance -- framed from above its own centre marker instead (frame; run after the place has loaded)
+player.setpos z 464.5
+player.setangle x 60
