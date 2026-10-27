@@ -634,6 +634,255 @@ a.tag:hover {
   color: var(--text);
 }
 
+/* Person page: a day strip, the times, what changes it, their quests, what they offer. */
+.day {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  height: 56px;
+  margin-top: 20px;
+  border: 1px solid var(--rule);
+}
+.seg {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  background: repeating-linear-gradient(135deg, #141b23 0 6px, #1c2430 6px 12px);
+}
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) 0;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.ticks span:last-child {
+  justify-self: end;
+  white-space: nowrap;
+}
+.slot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 17px;
+  color: var(--text);
+}
+.slot small {
+  color: var(--muted);
+  font-size: 14px;
+}
+.chg {
+  margin: 0;
+  padding: 16px 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chg li {
+  font-size: 16px;
+  color: var(--soft);
+  padding-left: 18px;
+  position: relative;
+}
+.chg li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--brass);
+}
+.qrow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.qrow a {
+  font-size: 18px;
+  font-weight: 600;
+}
+.qrow span {
+  font-size: 15px;
+  color: var(--soft);
+}
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.offer:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.offer b {
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 600;
+}
+.offer span {
+  font-size: 15px;
+  color: var(--soft);
+}
+.nk {
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* Place page: the level gauge, the foes, what is worth going for, the book that points here, the facts. */
+.gauge {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(50, minmax(0, 1fr));
+  grid-template-rows: 26px 26px;
+  row-gap: 4px;
+  padding: 4px 0;
+  margin-top: 22px;
+  border: 1px solid var(--rule);
+  background: var(--sunk);
+}
+.band {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  background: var(--rule-strong);
+  color: var(--text);
+}
+.bandBoss {
+  background: #7a4038;
+  color: #f3d2cb;
+  border-left: 1px solid var(--ground);
+}
+.gticks {
+  display: grid;
+  grid-template-columns: repeat(50, minmax(0, 1fr));
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.foe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 20px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.foe b {
+  font-size: 19px;
+  color: var(--text);
+  font-weight: 600;
+}
+.foe .lv {
+  font-size: 17px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.foe small {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  color: var(--muted);
+}
+.foeBoss b,
+.foeBoss .lv {
+  color: #e3a093;
+}
+.flag {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding: 14px 0 0;
+  font-size: 16px;
+  color: var(--text);
+}
+.flag b {
+  color: #e3a093;
+}
+.worth {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 4px 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.worth:last-child {
+  border-bottom: 0;
+}
+.worth b {
+  font-size: 18px;
+  color: var(--text);
+  font-weight: 600;
+}
+.worth small {
+  grid-column: 2;
+  font-size: 14px;
+  color: var(--muted);
+}
+.note {
+  margin: 0;
+  padding: 18px 22px;
+  border-left: 2px solid var(--brass);
+  background: var(--panel);
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: #ddd5c6;
+  white-space: pre-line;
+}
+.facts {
+  display: flex;
+  flex-direction: column;
+}
+.facts > span {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 16px;
+  color: var(--text);
+}
+.facts > span:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.facts b {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  padding-top: 2px;
+}
+@media (max-width: 1000px) {
+  .band,
+  .seg {
+    font-size: 0;
+    padding: 0;
+  }
+}
+
 @media (max-width: 1000px) {
   .cols,
   .foot {

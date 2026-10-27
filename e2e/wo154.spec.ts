@@ -69,9 +69,30 @@ test("the door: get_quest returns the page's sections in its order, suggest_ques
   }
 });
 
+test("a person's page: race, town, the cell they are placed in, their quests, and what isn't known said so", async ({ page }) => {
+  await page.goto("/people/mjoll-the-lioness");
+  await expect(page.getByRole("heading", { level: 1, name: "Mjoll the Lioness" })).toBeVisible();
+  await expect(page.locator("main")).toContainText("Nord");
+  await expect(page.locator("main")).toContainText("Aerin's House");
+  await expect(page.getByText("Not known yet").first()).toBeVisible();
+  await expect(page.getByRole("region", { name: "How sure we are" })).toContainText("Not read by a reader yet");
+  expect((await page.goto("/people/not-a-person"))?.status()).toBe(404);
+});
+
+test("a place's page: the danger gauge, the boss, what points here, what it pays", async ({ page }) => {
+  await page.goto("/places/broken-oar-grotto");
+  await expect(page.getByRole("heading", { level: 1, name: "Broken Oar Grotto" })).toBeVisible();
+  await expect(page.getByRole("img", { name: /Bandits from level 6 to 24; the boss from level 19 to 24/ })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Quests that bring you here" }).getByRole("link", { name: "Lights Out!" })).toHaveAttribute("href", "/quests/q/lights-out");
+  await expect(page.getByRole("region", { name: "What points here" })).toContainText("Note from Jaree-Ra");
+  await expect(page.getByRole("region", { name: "Rewards" })).toContainText("100 XP");
+});
+
 test("screenshots for Dave: the read quests and the lines, at 1440 and 390", async ({ page }) => {
   for (const [slug, name] of [
     ["quests/q/lights-out", "lights-out"],
+    ["people/mjoll-the-lioness", "mjoll"],
+    ["places/broken-oar-grotto", "broken-oar-grotto"],
     ["quests/q/speaking-with-silence", "speaking-with-silence"],
     ["quests/q/reparations", "reparations"],
     ["quests/q/mourning-never-comes", "mourning-never-comes"],

@@ -1,0 +1,251 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Gold, HowSure, Icon, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
+import { personHref } from "@/lib/people/data";
+import { questsData } from "@/lib/quests/data";
+import { hasLevels, placeBySlug, placeHref, placeType, rangeOf } from "@/lib/places/data";
+import { levelWords, pageOf } from "@/lib/quests/reads";
+import { questHref } from "@/lib/quests/slugs";
+import { siteMetadata } from "@/lib/og/metadata";
+import styles from "@/components/pages/page-kit.module.css";
+
+export const dynamic = "force-dynamic";
+
+type Params = Promise<{ slug: string }>;
+
+const PLURAL: Record<string, string> = { Bandit: "Bandits", Draugr: "Draugr", Skeleton: "Skeletons", Falmer: "Falmer", Forsworn: "Forsworn", Giant: "Giants", Warlock: "Warlocks", Spider: "Spiders", Wolf: "Wolves", Vampire: "Vampires", Troll: "Trolls" };
+
+/** The levels a boss's words give: "leveled 19-24" is 19 to 24; "45" is 45 to 45. */
+const bossRange = (level: string | undefined): [number, number] | null => {
+  const m = /(\d+)(?:\s*-\s*(\d+))?/.exec(level ?? "");
+  return m ? [Number(m[1]), Number(m[2] ?? m[1])] : null;
+};
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const p = placeBySlug((await params).slug);
+  if (!p) return {};
+  return { title: p.name, ...siteMetadata(`${placeHref(p.name)}`, p.name, [placeType(p.type), p.hold].filter(Boolean).join(" in ")) };
+}
+
+/** Which expansion or mod a place's record is from, by its form id's plugin: "Vanilla" for the base game. */
+const originOf = (id: string) => {
+  const plugin = id.split(":")[0].toLowerCase();
+  return plugin === "skyrim.esm" ? "Vanilla" : ({ "dawnguard.esm": "Dawnguard", "dragonborn.esm": "Dragonborn", "hearthfires.esm": "Hearthfires" } as Record<string, string>)[plugin] ?? null;
+};
+
+/**
+ * A place's page (WO-154 Part 2), from the canvas board "Place page: Broken Oar Grotto", out of places.json: what lives there and how
+ * strong, what is worth going for, the quests that bring you here, what points here in the game's own words, and what finding and clearing it pay.
+ */
+export default async function PlacePage({ params }: { params: Params }) {
+  const place = placeBySlug((await params).slug);
+  if (!place) notFound();
+  const a = place.actors;
+  const levels = hasLevels(a) && a.hostile !== false ? rangeOf(a!) : null;
+  const boss = a?.boss?.name ? { name: a.boss.name, range: bossRange(a.boss.level), words: levelWords(a.boss.level) } : null;
+  const foes = a?.livesHere ? (PLURAL[a.livesHere] ?? `${a.livesHere}s`) : "Enemies";
+  const town = place.nearestTown;
+  const origin = originOf(place.id);
+  const worth = place.worthGoingFor;
+  const hasWorth = !!(worth?.skillBooks?.length || worth?.bossChest || worth?.crafting?.length);
+
+  // The quests that go here, with what each one says about it.
+  const byName = new Map(questsData().lines.flatMap((l) => l.quests.map((q) => [q.name, q] as const)));
+  const quests = (place.quests ?? []).flatMap((name) => {
+    const q = byName.get(name);
+    const href = q ? questHref(q.edid) : null;
+    if (!q || !href) return [];
+    const says = pageOf(q).takesYou.find((t) => t.place.toLowerCase() === place.name.toLowerCase())?.why;
+    return [{ name, href, says }];
+  });
+  const lede = `${/^[AEIOU]/i.test(placeType(place.type)) ? "An" : "A"} ${placeType(place.type).toLowerCase()}${town ? ` ${town.walk ?? "near"} ${town.walk ? "from" : ""} ${town.town}` : place.hold ? ` in ${place.hold}` : ""}.${boss ? ` Its boss is ${boss.name}.` : ""}`.replace(/\s+/g, " ");
+  const tick = (n: number) => (n === 1 ? "Level 1" : String(n));
+
+  return (
+    <main className={`page ${styles.main}`}>
+      <PageTop back={{ href: place.hold ? `/quests?q=${encodeURIComponent(place.hold)}` : "/quests", label: place.hold ?? "Quests" }} />
+
+      <TitleBox
+        title={place.name}
+        tags={
+          <>
+            <span className={styles.tag}>{placeType(place.type)}</span>
+            {place.hold && <span className={styles.tag}>{place.hold}</span>}
+            {origin && <span className={styles.tag}>{origin}</span>}
+            {town && <span className={styles.tagText}>{town.walk ? `${town.walk.charAt(0).toUpperCase()}${town.walk.slice(1)} from ${town.town}` : `Near ${town.town}`}</span>}
+          </>
+        }
+      />
+
+      <p className={styles.lede}>{lede}</p>
+
+      <div className={styles.cols}>
+        <div className={styles.body}>
+          <Section id="danger" icon="chapter-death" title="Danger">
+            {levels ? (
+              <>
+                <div className={styles.gauge} role="img" aria-label={`${foes} from level ${levels[0]} to ${levels[1]}${boss?.range ? `; the boss from level ${boss.range[0]} to ${boss.range[1]}` : ""}, on a scale of 1 to 50`}>
+                  <span className={styles.band} style={{ gridColumn: `${Math.min(levels[0], 50)} / ${Math.min(levels[1], 50) + 1}`, gridRow: 1 }}>
+                    {foes} {levels[0] === levels[1] ? levels[0] : `${levels[0]} to ${levels[1]}`}
+                  </span>
+                  {boss?.range && (
+                    <span className={`${styles.band} ${styles.bandBoss}`} style={{ gridColumn: `${Math.min(boss.range[0], 50)} / ${Math.min(boss.range[1], 50) + 1}`, gridRow: 2 }}>
+                      Boss {boss.range[0] === boss.range[1] ? boss.range[0] : `${boss.range[0]} to ${boss.range[1]}`}
+                    </span>
+                  )}
+                </div>
+                <div className={styles.gticks} aria-hidden="true">
+                  {[1, 10, 20, 30, 40].map((n, i) => (
+                    <span key={n} style={{ gridColumn: i === 0 ? "1 / 10" : `${n} / ${n + 10}` }}>
+                      {tick(n)}
+                    </span>
+                  ))}
+                  <span style={{ gridColumn: 50, justifySelf: "end" }}>50</span>
+                </div>
+                <div style={{ paddingTop: 8 }}>
+                  <div className={styles.foe}>
+                    <b>{foes}</b>
+                    <span className={styles.lv}>{levels[0] === levels[1] ? `Level ${levels[0]}` : `Level ${levels[0]} to ${levels[1]}`}</span>
+                    {(a?.alsoHere?.length || a?.count) && (
+                      <small>
+                        {a?.alsoHere?.length ? `${a.alsoHere.map((x) => PLURAL[x] ?? `${x}s`).join(", ")} too. ` : ""}
+                        {a?.count ? `${a.count} in all.` : ""}
+                      </small>
+                    )}
+                  </div>
+                  {boss && (
+                    <div className={`${styles.foe} ${styles.foeBoss}`}>
+                      <b>
+                        The boss: {personHref(boss.name) ? <Link href={personHref(boss.name)!}>{boss.name}</Link> : boss.name}
+                      </b>
+                      {boss.words ? <span className={styles.lv}>Level {boss.words}</span> : null}
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : a?.hostile === false ? (
+              <p className={styles.way}>Nobody here is hostile.</p>
+            ) : (
+              <p className={styles.way}>
+                <span className={styles.muted}>How dangerous it is isn&apos;t known yet.</span>
+              </p>
+            )}
+            {place.danger?.traps && (
+              <div className={styles.flag}>
+                <b>!</b>
+                <span>Traps</span>
+              </div>
+            )}
+          </Section>
+
+          {hasWorth && (
+            <Section id="worth" icon="mark-skill-book" title="Worth going for">
+              {worth?.skillBooks?.map((b) => (
+                <div key={b} className={styles.worth}>
+                  <Icon name="mark-skill-book" />
+                  <b>{b.includes(": ") ? b.split(": ")[1] : b}</b>
+                  <small>{b.includes(": ") ? `A ${b.split(": ")[0]} skill book` : "A skill book"}</small>
+                </div>
+              ))}
+              {worth?.bossChest && (
+                <div className={styles.worth}>
+                  <Icon name="quest-chest" />
+                  <b>A boss chest</b>
+                </div>
+              )}
+              {worth?.crafting?.length ? (
+                <div className={styles.worth}>
+                  <Icon name="smithing" />
+                  <b>{worth.crafting.join(", ").replace(/, ([^,]*)$/, " and $1").replace(/^./, (c) => c.toUpperCase())}</b>
+                  <small>For crafting and improving gear</small>
+                </div>
+              ) : null}
+            </Section>
+          )}
+
+          {quests.length > 0 && (
+            <Section id="quests" icon="tab-play" title="Quests that bring you here">
+              {quests.map((q) => (
+                <div key={q.href} className={styles.qrow} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+                  <Link href={q.href}>{q.name}</Link>
+                  {q.says ? <span>{q.says.charAt(0).toUpperCase() + q.says.slice(1)}{q.says.endsWith(".") ? "" : "."}</span> : null}
+                </div>
+              ))}
+            </Section>
+          )}
+
+          {place.pointers?.length ? (
+            <Section id="hear" icon="speech" title="What points here">
+              {place.pointers.map((p, i) => (
+                <div key={i} style={{ display: "flex", flexDirection: "column", gap: 10, paddingTop: 16 }}>
+                  <span style={{ fontSize: 17, fontWeight: 600 }}>{p.kind === "book" ? p.book : p.speaker ? `${p.speaker} says` : "Someone says"}</span>
+                  <p className={styles.note}>{p.words.replace(/\r\n?/g, "\n")}</p>
+                </div>
+              ))}
+            </Section>
+          ) : null}
+        </div>
+
+        <aside className={styles.side}>
+          {(place.discoveryXp || place.clearXp) && (
+            <Gold id="xp">
+              {place.discoveryXp ? (
+                <span className={styles.rw}>
+                  <span>{place.discoveryXp} XP</span>
+                  <small>For finding it</small>
+                </span>
+              ) : null}
+              {place.clearXp ? (
+                <span className={styles.rw}>
+                  <span>{place.clearXp} XP</span>
+                  <small>For clearing it</small>
+                </span>
+              ) : null}
+            </Gold>
+          )}
+          <Panel id="facts" title="Good to know">
+            <div className={styles.facts}>
+              {place.hold && (
+                <span>
+                  <b>Hold</b>
+                  {place.hold}
+                </span>
+              )}
+              {town && (
+                <span>
+                  <b>Nearest town</b>
+                  <span>
+                    {town.town}
+                    {town.walk ? `, ${town.walk}` : ""}
+                  </span>
+                </span>
+              )}
+              {place.respawns && (
+                <span>
+                  <b>Comes back</b>
+                  {place.respawns === "never" ? "Never. Once cleared, it stays cleared." : place.respawns.charAt(0).toUpperCase() + place.respawns.slice(1)}
+                </span>
+              )}
+            </div>
+          </Panel>
+        </aside>
+      </div>
+
+      <HowSure
+        id="sure"
+        line="Counted from the game files. No player has confirmed it yet."
+        sources={[
+          { mark: "yes", name: "LoreRim's game files", note: "Who lives here, the boss, books, crafting and XP, read from the records" },
+          { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
+        ]}
+        unsure={worth?.bossChest ? [{ field: "what's in the boss chest" }] : []}
+        actions={
+          <Link href="/quests" className="btn">
+            Report a mistake
+          </Link>
+        }
+      />
+    </main>
+  );
+}
