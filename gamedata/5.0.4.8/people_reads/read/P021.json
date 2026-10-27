@@ -1,0 +1,1552 @@
+[
+ {
+  "id": "Skyrim.esm:01334F",
+  "name": "Brand-Shei",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "At his stall in Riften's market by day; he lodges at Haelga's Bunkhouse.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "13 hours",
+    "where": "his stall in Riften's market",
+    "doing": "selling"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "evening at the bunkhouse"
+   }
+  ],
+  "changes": [
+   "If Madesi's ring is planted on him in A Chance Arrangement he can end up in Riften Jail: his top package keeps him in the jail while a game flag for his arrest is set, and that beats his whole day."
+  ],
+  "role": "street merchant in Riften's market; quest giver",
+  "sells": "street-vendor goods; trades 7 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Distant Memories",
+    "how": "gives it: find a clue about his past and return to him"
+   },
+   {
+    "quest": "A Chance Arrangement",
+    "how": "its target: Madesi's ring is planted on him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The jail package hangs on a global flag; the extracts don't show which quest stage sets or clears it, so how long he stays in jail isn't settled."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor lists are ids that don't resolve to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01334F",
+   "RiftenBrandSheiInPrison Skyrim.esm:076F18 (GetGlobalValue Skyrim.esm:103649 == 1, Riften Jail)",
+   "RiftenBrandSheiSleep0x6 Skyrim.esm:044A07",
+   "RiftenBrandSheiEatBreakfast6x1 Skyrim.esm:044A08",
+   "RiftenBrandSheiBunkhouse20x4 Skyrim.esm:044A0A",
+   "RiftenBrandSheiShopkeeperPlaza0x0 Skyrim.esm:044A09",
+   "vendor 7-20, JobStreetVendorFaction, ServicesRiftenPlazaBrandish",
+   "FreeformRiften08 Skyrim.esm:05331B",
+   "TG00 Skyrim.esm:021556 BrandSheiAlias",
+   "TG00SPArrestBrandSheiAlias Skyrim.esm:04EF25"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334C",
+  "name": "Balimund",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Scorched Hammer, Riften's smithy; by day he works outside it.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "The Scorched Hammer, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "The Scorched Hammer, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "6 hours",
+    "where": "outside The Scorched Hammer, Riften",
+    "doing": "smithing"
+   },
+   {
+    "from": "1 pm",
+    "for": "1 hour",
+    "where": "The Scorched Hammer, Riften",
+    "doing": "lunch"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "outside The Scorched Hammer, Riften",
+    "doing": "smithing"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "The Scorched Hammer, Riften",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "outside The Scorched Hammer, Riften",
+    "doing": "smithing"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "evening at the inn, when its extra checks pass; otherwise still at work"
+   }
+  ],
+  "changes": [],
+  "role": "Riften's blacksmith; Smithing trainer; quest giver; can marry",
+  "sells": "blacksmith's goods; trades 8 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+  "trains": "Smithing, expert trainer, up to 100",
+  "joins": "",
+  "marries": "yes; he's a marriage candidate (what he needs first isn't in the extracts)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Stoking the Flames",
+    "how": "gives it: bring him 10 fire salts"
+   },
+   {
+    "quest": "Bring It!",
+    "how": "a step in it: you pick up Harrald's sword from him"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The 8 pm Bee and Barb package carries a run of condition checks the extracts don't name, so which evenings he goes isn't settled."
+   },
+   {
+    "field": "sells",
+    "why": "He has a vendor entry and the smithy's services faction, but his merchant and blacksmith job factions are at rank -1; the item lists don't resolve."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01334C",
+   "AIORiftBalimundStopWorking AI Overhaul.esp:05E2DB (20x4, fn612 checks)",
+   "RiftenBalimundEatDinner18x1 Skyrim.esm:076F3F",
+   "RiftenBalimundEatLunch13x1 Skyrim.esm:076F3E",
+   "RiftenBalimundEatBreakfast6x1 Skyrim.esm:076F3D",
+   "RiftenBalimundSleep0x6 Skyrim.esm:076F40",
+   "RiftenBalimundWorks0x0 Skyrim.esm:076F41",
+   "trainer Smithing Expert levelCap 100",
+   "vendor 8-20; ServicesRiftenTheScorchedHammer; JobBlacksmithFaction/JobMerchantFaction rank -1",
+   "PotentialMarriageFaction",
+   "FreeformRiften10 Skyrim.esm:05331D",
+   "FreeformRiften16 Skyrim.esm:0557F3"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335F",
+  "name": "Haelga",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Haelga's Bunkhouse, Riften.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "7 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "Riften's market",
+    "doing": "browsing, when it isn't raining"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "evening at the inn"
+   }
+  ],
+  "changes": [
+   "While Taking Care of Business is running she skips the market and the Bee and Barb.",
+   "She also skips the market while you're stealing or planting Madesi's ring in A Chance Arrangement."
+  ],
+  "role": "keeps Haelga's Bunkhouse; quest figure",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Taking Care of Business",
+    "how": "its target: you collect her debt (optionally by stealing her Statue of Dibella)"
+   },
+   {
+    "quest": "Caught Red Handed",
+    "how": "a step in it: you speak to her, then confront her with the Marks of Dibella"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her work package has no place in the extract; I've put her at the bunkhouse, where she's placed."
+   },
+   {
+    "field": "role",
+    "why": "Her merchant and rent-a-room job factions are both at rank -1 and she has no vendor entry, so whether she sells or rents anything isn't settled."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01335F",
+   "RiftenHaelgaBeeandBarb20x4 Skyrim.esm:0449EA (GetQuestRunning TG01 == 0)",
+   "RiftenHaelgaEatDinner19x1 Skyrim.esm:0449E9",
+   "RiftenHaelgaMarket14x4 Skyrim.esm:05EF16 (TG00 stage != 10/20, TG01 not running, fn62 == 0)",
+   "RiftenHaelgaEatBreakfast6x1 Skyrim.esm:0449E5",
+   "RiftenHaelgaSleep0x6 Skyrim.esm:0449E4",
+   "RiftenHaelgaWork0x0 Skyrim.esm:06D635",
+   "TG01 Skyrim.esm:01F326",
+   "FreeformRiften11 Skyrim.esm:041F91"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013347",
+  "name": "Alessandra",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Riften's Hall of the Dead.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "the Temple of Mara, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "the Hall of the Dead, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "the Hall of the Dead, Riften",
+    "doing": "tending the hall"
+   },
+   {
+    "from": "noon",
+    "for": "3 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "midday break, when it isn't raining"
+   },
+   {
+    "from": "3 pm",
+    "for": "4 hours",
+    "where": "the Hall of the Dead, Riften",
+    "doing": "tending the hall"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "the Hall of the Dead, Riften",
+    "doing": "dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Hall of the Dead, Riften",
+    "doing": "tending the hall"
+   }
+  ],
+  "changes": [],
+  "role": "attendant of Riften's Hall of the Dead; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Pilgrimage",
+    "how": "gives it: take her dagger to Andurs in Whiterun, then return to her"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The midday break also carries condition checks the extracts don't name, so some days she may stay in the hall."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013347",
+   "AIORiftAlessandraMidDayBreak AI Overhaul.esp:123D62 (12x3, fn62 == 0, fn612 checks)",
+   "RiftenAlessandraEatDinner19x1 Skyrim.esm:0449E2",
+   "RiftenAlessandraEatBreakfast7x1 Skyrim.esm:0449E0",
+   "RiftenAlessandraSleep0x7 Skyrim.esm:0449DE",
+   "RiftenAlessandraWorkPackage0x0 Skyrim.esm:06D62C",
+   "FreeformRiften13 Skyrim.esm:043E1A"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA8",
+  "name": "Andurs",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Whiterun's Hall of the Dead.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "the Hall of the Dead, Whiterun",
+    "doing": "going about the hall"
+   },
+   {
+    "from": "11 am",
+    "for": "3 hours",
+    "where": "outdoors in Whiterun, near Dragonsreach",
+    "doing": "out for air, when it isn't raining"
+   },
+   {
+    "from": "2 pm",
+    "for": "6 hours",
+    "where": "the Hall of the Dead, Whiterun",
+    "doing": "going about the hall"
+   },
+   {
+    "from": "8 pm",
+    "for": "12 hours",
+    "where": "the Hall of the Dead, Whiterun",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "While Pilgrimage is past its first step (you're on the way to him with Alessandra's dagger) he skips his late-morning walk and stays in the hall."
+  ],
+  "role": "keeper of Whiterun's Hall of the Dead",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Pilgrimage",
+    "how": "a step in it: you bring him Alessandra's dagger"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His walk also needs another quest of his not to be running and some condition checks the extracts don't name; his sleep package has no hours, so 8 pm to 8 am is the gap it fills."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BA8",
+   "AIOWRAndursGoOutside AI Overhaul.esp:123D6B (11x3, fn62 == 0, Skyrim.esm:094E3C not running, Pilgrimage not running or stage < 20)",
+   "WhiterunAndersHallOfTheDeadSandbox8x12 Skyrim.esm:02C90B",
+   "AndursSleepPackage Skyrim.esm:1075EE",
+   "FreeformRiften13 Skyrim.esm:043E1A"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A3",
+  "name": "Kleppr",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Silver-Blood Inn, Markarth.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "20 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "behind the counter, running the inn"
+   },
+   {
+    "from": "3 am",
+    "for": "4 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "going about the inn"
+   }
+  ],
+  "changes": [],
+  "role": "innkeeper of the Silver-Blood Inn; rents rooms; quest figure",
+  "sells": "inn goods (he's the innkeeper and a merchant); trades at any hour. The exact stock list isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Special Delivery",
+    "how": "a step in it: you deliver Bolli's purchase agreement to him"
+   },
+   {
+    "quest": "The Heart of Dibella",
+    "how": "can start it in conversation"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His vendor lists are ids that don't resolve to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133A3",
+   "MarkarthInnkeeper0x24Package Skyrim.esm:0354EE (decodes 7 am for 1200 min)",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217 (shared, 252)",
+   "vendor 0-24; JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction rank 0",
+   "FreeformRiften15 Skyrim.esm:0557E9",
+   "T01 Skyrim.esm:023B6C giver info Skyrim.esm:0C593E"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013361",
+  "name": "Harrald",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Mistveil Keep, Riften.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the jarl's chambers, Mistveil Keep, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "noon",
+    "for": "7 hours",
+    "where": "at a practice dummy",
+    "doing": "weapons practice, in fair weather"
+   },
+   {
+    "from": "7 pm",
+    "for": "2 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "dinner"
+   },
+   {
+    "from": "9 pm",
+    "for": "3 hours",
+    "where": "not given in the records",
+    "doing": "watching the guards practise"
+   }
+  ],
+  "changes": [
+   "If his family is exiled (the ruling family loses the Rift in the war), he lives in the Palace of the Kings in Windhelm instead."
+  ],
+  "role": "son of the jarl's family at Mistveil Keep; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bring It!",
+    "how": "gives it: pick up his sword from Balimund and deliver it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The practice and guard-watching packages' places aren't decoded, and nothing covers 10 am to noon; Mistveil Keep is the likely answer but the records don't say."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013361",
+   "CWExiledSonsSandboxPalace Skyrim.esm:0A9272 (GetInFaction GovExiled)",
+   "RiftenHarraldWatchesGuardsPractice21x3 Skyrim.esm:10CEE2",
+   "RiftenHarraldEatDinner19x2 Skyrim.esm:044D30",
+   "RiftenHarraldPracticeDummy12x7 Skyrim.esm:10CEE0 (weather 819744 == 0)",
+   "RiftenHarraldEatBreakfast8x2 Skyrim.esm:044D2E",
+   "RiftenHarraldSleep0x8 Skyrim.esm:044D2D",
+   "GovRuling, GovSons",
+   "FreeformRiften16 Skyrim.esm:0557F3"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013360",
+  "name": "Hafjorg",
+  "race": "Elder",
+  "sex": "female",
+  "firstMeet": "Elgrim's Elixirs, Riften.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "3 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "helping in the shop"
+   },
+   {
+    "from": "9 am",
+    "for": "1 hour",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "10 am",
+    "for": "1 hour",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "helping in the shop"
+   },
+   {
+    "from": "11 am",
+    "for": "6 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "minding the counter"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "helping in the shop"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "helping in the shop"
+   }
+  ],
+  "changes": [
+   "If Elgrim dies she runs the counter herself whenever she isn't eating or sleeping; she never leaves the shop either way."
+  ],
+  "role": "apothecary at Elgrim's Elixirs; quest giver",
+  "sells": "apothecary goods; trades at any hour. The exact stock list isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Truth Ore Consequences",
+    "how": "gives it: fetch an ore sample from Filnjar and bring it back to her"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her vendor lists are ids that don't resolve to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013360",
+   "RiftenHafjorgShopkeeperElgrimAlive11x6 Skyrim.esm:044A7B (GetDeadCount Elgrim <= 0)",
+   "RiftenHafjorgShopkeeperAssistantElgrimAlive0x0 Skyrim.esm:044A7F",
+   "RiftenHafjorgShopkeeperElgrimDead0x0 Skyrim.esm:044A80",
+   "RiftenHafjorgSleep0x6 Skyrim.esm:044A7C",
+   "RiftenHafjorgEatBreakfast9x1 Skyrim.esm:044A7D",
+   "RiftenHafjorgEatDinner18x1 Skyrim.esm:044A7E",
+   "Elgrim Skyrim.esm:013357",
+   "vendor 0-24; JobApothecaryFaction",
+   "FreeformRiften17 Skyrim.esm:05B2DE"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C3",
+  "name": "Filnjar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At his forge in Shor's Stone.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Filnjar's House, Shor's Stone",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Filnjar's House, Shor's Stone",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "his forge in Shor's Stone",
+    "doing": "smithing"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Filnjar's House, Shor's Stone",
+    "doing": "dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "out in Shor's Stone",
+    "doing": "evening gathering with the villagers"
+   }
+  ],
+  "changes": [
+   "On Loredas he goes to Riften's market from 1 pm to 5 pm, unless Mine or Yours is running.",
+   "Truth Ore Consequences and Mine or Yours both go through him."
+  ],
+  "role": "Shor's Stone's blacksmith; quest giver; can marry",
+  "sells": "blacksmith's goods; trades 7 am to 7 pm. The exact stock list isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "yes; he's a marriage candidate (what he needs first isn't in the extracts)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Mine or Yours",
+    "how": "gives it: clear Redbelly Mine of spiders and return to him"
+   },
+   {
+    "quest": "Truth Ore Consequences",
+    "how": "a step in it: you get an ore sample from him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The Loredas market trip also carries condition checks the extracts don't name."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor lists are ids that don't resolve to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136C3",
+   "AIOShorsStoneFilnjarRiftenMarket AI Overhaul.esp:434C1D (dow 6, 13x4, Mine or Yours not running, fn612 checks)",
+   "ShorsStoneFilnjarEveningGathering20x4 Skyrim.esm:068B5E",
+   "ShorsStoneFilnjarEatDinnerPackage19x1 Skyrim.esm:068B39",
+   "ShorsStoneFilnjarEatBreakfastPackage6x1 Skyrim.esm:068B37",
+   "ShorsStoneFilnjarSleepPackage0x6 Skyrim.esm:068B3B",
+   "ShorsStoneFilnjarForgePackage0x0 Skyrim.esm:02E112",
+   "vendor 7-19; JobBlacksmithFaction; ServicesShorsStoneFilnjar",
+   "PotentialMarriageFaction",
+   "FreeformShorsStone01 Skyrim.esm:0E49E7",
+   "FreeformRiften17 Skyrim.esm:05B2DE"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B072",
+  "name": "Madesi",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "At his stall in Riften's market.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Beggar's Row, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "14 hours",
+    "where": "his stall in Riften's market",
+    "doing": "selling"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "around the market, Riften",
+    "doing": "evening, when its extra checks pass; otherwise still at his stall"
+   }
+  ],
+  "changes": [
+   "In A Chance Arrangement you steal his ring from his strongbox and plant it on Brand-Shei."
+  ],
+  "role": "street merchant in Riften's market; quest giver",
+  "sells": "street-vendor goods; trades 6 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Ringmaker",
+    "how": "gives it: bring him flawless sapphires, a mammoth tusk and gold ore"
+   },
+   {
+    "quest": "A Chance Arrangement",
+    "how": "its target: you steal his ring"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The 8 pm package is named for the bunkhouse but its place decodes only as 'near where he's placed' (the market), and it carries condition checks the extracts don't name."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor lists are ids that don't resolve to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01B072",
+   "RiftenMadesiBunkhouse20x4 Skyrim.esm:044AA7 (editor location, fn612 checks)",
+   "RiftenMadesiSleep0x6 Skyrim.esm:044AA3",
+   "RiftenMadesiShopkeeperPlaza0x0 Skyrim.esm:044AA4",
+   "placed ref Skyrim.esm:021EA6 (Riften)",
+   "vendor 6-20; JobStreetVendorFaction; ServicesRiftenPlazaMadesi",
+   "FreeformRiften18 Skyrim.esm:05B3A5",
+   "TG00 Skyrim.esm:021556 objectives 10, 20"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013351",
+  "name": "Hofgrir Horse-Crusher",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Riften Stables, outside the city.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Riften Stables",
+    "doing": "working the stables"
+   },
+   {
+    "from": "8 pm",
+    "for": "1 hour",
+    "where": "around Riften Stables",
+    "doing": "going about"
+   },
+   {
+    "from": "9 pm",
+    "for": "4 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "evening at the inn, on the nights its checks pass"
+   },
+   {
+    "from": "1 am",
+    "for": "7 hours",
+    "where": "Riften Stables",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "runs Riften Stables; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bloody Nose",
+    "how": "gives it: beat him in an unarmed brawl"
+   },
+   {
+    "quest": "Caught Red Handed",
+    "how": "a step in it: you get a Mark of Dibella from him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The Bee and Barb package is named for weekends but has no day set; its condition checks aren't named in the extracts. On other nights his shared packages keep him at the stables and let him sleep there."
+   },
+   {
+    "field": "role",
+    "why": "His hostler and merchant job factions are at rank -1, so whether he sells horses himself isn't settled."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013351",
+   "AIORiftHofgrirWeekends AI Overhaul.esp:10A7F1 (21x4, fn612 checks)",
+   "RiftenHofgrirStablesWork8x12 Skyrim.esm:0C7FD6",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217 (shared, 252)",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA (shared, 48)",
+   "JobHostlerFaction rank -1",
+   "FreeformRiften19 Skyrim.esm:065C30",
+   "FreeformRiften11 Skyrim.esm:041F91"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6B7",
+  "name": "Brina Merilis",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Out in Dawnstar, near the middle of town.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Brina's House, Dawnstar",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "Brina's House, Dawnstar",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "3 hours",
+    "where": "Dawnstar",
+    "doing": "patrolling the town"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Brina's House, Dawnstar",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "Dawnstar",
+    "doing": "patrolling the town"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Brina's House, Dawnstar",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Dawnstar",
+    "doing": "patrolling the town"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Brina's House, Dawnstar",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "At the start of the game she stands at one spot in Dawnstar until an opening scene there finishes; only then does her day begin.",
+   "She's on the Imperial side with a jarl's role held in reserve, so the war can make her Dawnstar's jarl; if she's exiled she lives in the Winking Skeever in Solitude."
+  ],
+  "role": "Imperial-side townswoman of Dawnstar; a jarl-in-waiting",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Toying With The Dead",
+    "how": "a step in it, if she is Jarl of the Pale: you can tell her about the missing people"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "Which quest seats her as jarl, and what her day is then, isn't in the extracts; the opening scene's quest has no name in them either."
+   },
+   {
+    "field": "day",
+    "why": "The patrol package has no place and an unnamed condition; her meals and sleep are shared 'near where she's placed' packages, which is her house."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A6B7",
+   "CWExiledImperialSandboxWinkingSkeever Skyrim.esm:0A926F (GetInFaction GovExiled)",
+   "DawnstarIntroBrinaPackage Skyrim.esm:031974 (Skyrim.esm:031893 stage 100 not done)",
+   "DefaultEatEditorLoc18x1/12x1/8x1",
+   "DawnstarPatrolDawnstarPackage8x12 Skyrim.esm:05A316 (fn606 != 1)",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "GovImperial; JobJarlFaction rank -1",
+   "FreeformRiften21 Skyrim.esm:09F179 (other speaker below stage 41)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013371",
+  "name": "Shadr",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "On the streets of Riften at the start of the game; afterwards at Riften Stables.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Riften Stables",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "Riften Stables",
+    "doing": "helping at the stables"
+   }
+  ],
+  "changes": [
+   "At first he stands at one spot in Riften until an opening scene there moves on; then he settles at the stables.",
+   "Some packages (meals at the stables and a 9 am to 1 pm market walk) only run on a 'dead' check whose subject the extracts don't show."
+  ],
+  "role": "stable hand at Riften Stables; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Stabilized",
+    "how": "gives it: speak to Sapphire about his debt, then return to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "His meal and market packages need a 'dead' check whose subject isn't in the extract; his hostler job faction is at rank -1. The opening scene's quest has no name in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013371",
+   "RiftenShadrStartGame Skyrim.esm:0C19B1 (Skyrim.esm:0C19A8 stage < 30)",
+   "RiftenShadrEatDinner18x1/EatLunch13x1/EatBreakfast6x1 (GetDead == 1)",
+   "RiftenShadrMarket9x4 Skyrim.esm:05EF83 (GetDead == 1, TG00 stage != 10/20)",
+   "RiftenShadrSleep0x6 Skyrim.esm:044A9E",
+   "RiftenShadrAssistantHostler0x0 Skyrim.esm:044AA0 (GetDead == 0)",
+   "FreeformRiften22 Skyrim.esm:0C1E07"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0C19A3",
+  "name": "Sapphire",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "On the streets of Riften at the start of the game; after that in the Ragged Flagon's Cistern, the Thieves Guild's hideout.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "4 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "4 hours",
+    "where": "the guild's training room",
+    "doing": "sparring practice"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "going about the guild"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "eating"
+   },
+   {
+    "from": "8 pm",
+    "for": "10 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "going about the guild"
+   }
+  ],
+  "changes": [
+   "None of her guild packages run until an opening scene in Riften finishes; until then she stays where she's placed in the city."
+  ],
+  "role": "Thieves Guild member",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Stabilized",
+    "how": "a step in it: you speak to her about Shadr's debt"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "present in the guild during it"
+   },
+   {
+    "quest": "Reparations",
+    "how": "present in the guild if you're banned"
+   },
+   {
+    "quest": "Under New Management",
+    "how": "present at your installation as Guild Master"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her all-day guild package needs Taking Care of Business or A Cornered Rat completed plus checks the extracts don't name; the training room's place isn't decoded."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0C19A3",
+   "ThievesGuildEatPackage18x2 Skyrim.esm:10328B",
+   "ThievesGuildTrainingMeleeRoom10x4 Skyrim.esm:10329D",
+   "ThievesGuildSapphireSleep6x4 Skyrim.esm:1032B5",
+   "ThievesGuildSapphireSandboxMultiPackage0x0 Skyrim.esm:000F8D (TG01 or MQ202 completed)",
+   "all need Skyrim.esm:0C19A8 stage 200 done",
+   "placed ref Skyrim.esm:0C19A5 (Riften)",
+   "ThievesGuildFaction",
+   "FreeformRiften22 Skyrim.esm:0C1E07",
+   "TG07 Skyrim.esm:021553",
+   "TGBan Skyrim.esm:0B03A2",
+   "TGLeadership Skyrim.esm:0D7D69"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019BFE",
+  "name": "Avrusa Sarethi",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "Sarethi Farm, in the Rift, working the fields.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "the farmhouse, Sarethi Farm",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the farmhouse, Sarethi Farm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "11 hours",
+    "where": "the fields, Sarethi Farm",
+    "doing": "farming"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the farmhouse, Sarethi Farm",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "the fields, Sarethi Farm",
+    "doing": "farming"
+   }
+  ],
+  "changes": [],
+  "role": "farmer and alchemist at Sarethi Farm; quest giver; can marry",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes; she's a marriage candidate (what she needs first isn't in the extracts)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Smooth Jazbay",
+    "how": "gives it: bring her 20 jazbay grapes"
+   },
+   {
+    "quest": "A Return To Your Roots",
+    "how": "a step in it: you bring her the crimson nirnroot from Blackreach"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "role",
+    "why": "'Alchemist' comes from the quest text (a former student of Sinderion); she has no vendor entry."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:019BFE",
+   "SarethiFarmAvrusaEatDinnerPackage Skyrim.esm:06BBBC",
+   "SarethiFarmAvrusaEatBreakfastPackage Skyrim.esm:06BBBB",
+   "SarethiFarmAvrusaSleepPackage Skyrim.esm:06BBBE",
+   "SarethiFarmAvrusaFarmingPackage Skyrim.esm:0303EE",
+   "JobFarmerFaction; PotentialMarriageFaction; CrimeFactionRift",
+   "FreeformSarethiFarm Skyrim.esm:0E3308",
+   "NN01 Skyrim.esm:0C9BA0 stage 200"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013296",
+  "name": "Captain Wayfinder",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Dawnstar's harbour, by his ship.",
+  "day": [
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "around his ship, Dawnstar",
+    "doing": "wandering, in fair weather"
+   },
+   {
+    "from": "6 pm",
+    "for": "19 hours",
+    "where": "his ship at Dawnstar",
+    "doing": "going about the ship"
+   }
+  ],
+  "changes": [],
+  "role": "ship's captain at Dawnstar; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Salty Sea-Dogs",
+    "how": "gives it: find Void Salts for him"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The afternoon wander also carries condition checks the extracts don't name."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013296",
+   "AIODawnSeaSquallWander AI Overhaul.esp:0AF436 (13x5, weather 819745 == 0, fn612 checks)",
+   "ShipsSeaSquallCaptainSandbox Skyrim.esm:01C06C (near Dawnstar)",
+   "placed ref Skyrim.esm:0A17AB",
+   "FreeformShipsDawnstar Skyrim.esm:094152"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013293",
+  "name": "Kjar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Windhelm's docks, by his ship.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "his ship at the Windhelm docks",
+    "doing": "going about the ship"
+   }
+  ],
+  "changes": [],
+  "role": "ship's captain at Windhelm; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Harsh Master",
+    "how": "gives it: kill the leader of a bandit camp"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013293",
+   "ShipsNorthwindCaptainSandbox Skyrim.esm:0A3900 (near Windhelm Docks)",
+   "placed ref Skyrim.esm:0A17A9",
+   "FreeformShipsWindhelm Skyrim.esm:094158"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C6",
+  "name": "Grogmar gro-Burzag",
+  "race": "Orsimer",
+  "sex": "male",
+  "firstMeet": "Shor's Stone; before Redbelly Mine is cleared he stays in Odfel's and Grogmar's House.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "1 hour",
+    "where": "Odfel's and Grogmar's House, Shor's Stone",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "11 hours",
+    "where": "Redbelly Mine",
+    "doing": "mining (once the mine is cleared)"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Odfel's and Grogmar's House, Shor's Stone",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "out in Shor's Stone",
+    "doing": "evening gathering with the villagers"
+   },
+   {
+    "from": "11 pm",
+    "for": "6 hours",
+    "where": "Odfel's and Grogmar's House, Shor's Stone",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until Redbelly Mine is cleared of spiders (Mine or Yours) he spends his working hours at home instead of in the mine."
+  ],
+  "role": "miner at Shor's Stone",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Mine or Yours",
+    "how": "can bring it up in conversation until it's done; its outcome sends him back to work in the mine"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Nothing covers 6 am to 7 am. The mine package hangs on a global flag; that Mine or Yours sets it is inferred from the packages' names, not shown in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136C6",
+   "ShorsStoneGrogmarSleepPackage23x6 Skyrim.esm:068B43",
+   "ShorsStoneGrogmarEveningGathering19x4 Skyrim.esm:068B61",
+   "ShorsStoneGrogmarEatDinnerPackage18x1 Skyrim.esm:068B41",
+   "ShorsStoneGrogmarEatBreakfastPackage5x1 Skyrim.esm:068B3F",
+   "ShorsStoneGrogmarMinePackage0x0 Skyrim.esm:02E116 (7x15, global Skyrim.esm:107070 == 1)",
+   "ShorsStoneOdfelGrogSandboxInLocationPreMineClear0x0 Skyrim.esm:107071 (global == 0)",
+   "FreeformShorsStone01 Skyrim.esm:0E49E7 other speaker below stage 200"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0C3A3F",
+  "name": "Sylgja",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Sylgja's House, Shor's Stone; she works Redbelly Mine once it's cleared.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "1 hour",
+    "where": "Sylgja's House, Shor's Stone",
+    "doing": "breakfast"
+   },
+   {
+    "from": "6 am",
+    "for": "12 hours",
+    "where": "Redbelly Mine",
+    "doing": "mining (once the mine is cleared; before that, at home)"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Sylgja's House, Shor's Stone",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "out in Shor's Stone",
+    "doing": "evening gathering with the villagers"
+   },
+   {
+    "from": "11 pm",
+    "for": "6 hours",
+    "where": "Sylgja's House, Shor's Stone",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "On Loredas she spends 6 pm to 10 pm at the Bee and Barb in Riften instead of dinner and the gathering.",
+   "Until Redbelly Mine is cleared of spiders she spends her working hours at home."
+  ],
+  "role": "miner at Shor's Stone; quest giver; can marry",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes; she's a marriage candidate (what she needs first isn't in the extracts)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Special Delivery",
+    "how": "gives it: deliver a satchel to Verner in Darkwater Crossing, then return to her"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The mine package hangs on a global flag; that clearing the mine sets it is inferred from the packages' names."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0C3A3F",
+   "ShorsStoneSylgjaSleeps23x6 Skyrim.esm:0C3A45",
+   "AIOSSSylgjaToRiften AI Overhaul.esp:13D2E9 (dow 6, 18x4, Bee and Barb)",
+   "ShorsStoneSylgjaEveningGathering19x4 Skyrim.esm:0C3A44",
+   "ShorsStoneSylgjaEatDinner18x1 Skyrim.esm:0C3A43",
+   "ShorsStoneSylgjaEatBreakfast5x1 Skyrim.esm:0C3A42",
+   "ShorsStoneSylgjaMinePackage0x0 Skyrim.esm:0C3A41 (global Skyrim.esm:107070 == 1)",
+   "ShorsStoneSylgjaSandboxPreMineClear0x0 Skyrim.esm:107072",
+   "PotentialMarriageFaction",
+   "FreeformShorsStone02 Skyrim.esm:0E49E8"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013665",
+  "name": "Verner Rock-Chucker",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Darkwater Crossing: his house, or Goldenrock Mine by day.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "Darkwater Crossing",
+    "doing": "about town"
+   },
+   {
+    "from": "9 am",
+    "for": "8 hours",
+    "where": "Goldenrock Mine",
+    "doing": "mining"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "Darkwater Crossing",
+    "doing": "about town"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Verner and Annekke's House, Darkwater Crossing",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Darkwater Crossing",
+    "doing": "about town"
+   }
+  ],
+  "changes": [],
+  "role": "miner at Darkwater Crossing",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Special Delivery",
+    "how": "a step in it: you deliver Sylgja's satchel to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His meals and sleep are shared 'near where he's placed' packages (his house); his town wander centres on his house cell, so 'about town' may mean at home."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013665",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "DefaultEatEditorLoc6x1 Skyrim.esm:01E618",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DarkwaterCrossingVernerMine9x8 Skyrim.esm:03011C",
+   "DarkwaterCrossingAnnekeVernerWanderTown Skyrim.esm:0E7548",
+   "FreeformShorsStone02 Skyrim.esm:0E49E8"
+  ]
+ }
+]
