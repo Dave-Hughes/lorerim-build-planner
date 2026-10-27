@@ -1,0 +1,1377 @@
+[
+ {
+  "id": "Skyrim.esm:013BB8",
+  "name": "Irileth",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "In Dragonsreach, the jarl's palace in Whiterun, at Jarl Balgruuf's side; she speaks to you there when you bring the jarl news of Helgen.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Dragonsreach, Whiterun",
+    "doing": "standing near where she's placed; she has no daily schedule of her own"
+   }
+  ],
+  "changes": [
+   "If the jarl's court is exiled in the civil war, her one package sends her to the Blue Palace in Solitude, where she wanders the palace at any hour.",
+   "In Dragon Rising she leads the jarl's soldiers out to the Western Watchtower to fight the dragon."
+  ],
+  "role": "the jarl's housecarl in Whiterun; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Before the Storm",
+    "how": "a step in it: she has words for you in Dragonsreach while you're bringing the jarl news of the dragon at Helgen"
+   },
+   {
+    "quest": "Dragon Rising",
+    "how": "gives it: she brings word of a dragon at the Western Watchtower and you meet her there with the jarl's soldiers"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills aliases in Bleak Falls Barrow and Message to Whiterun, but the extracts don't show what she does in them; plus several unnamed quests, one of which (a housecarl alias) is from a mod."
+   },
+   {
+    "field": "day",
+    "why": "With no package of her own while the court rules Whiterun, the records only say she stays where she's placed in Dragonsreach; quest packages may move her."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BB8",
+   "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E (GetInFaction GovExiled)",
+   "JobHousecarlFaction rank -1",
+   "MQ102 Skyrim.esm:04E50D giver info Skyrim.esm:0D39B2",
+   "MQ104 Skyrim.esm:02610C stage 13, objective 15",
+   "CW03 Skyrim.esm:0D661C",
+   "MQ103 Skyrim.esm:0D0800",
+   "placed in Dragonsreach (people_raw)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BBB",
+  "name": "Farengar Secret-Fire",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In his room in Dragonsreach, Whiterun; the jarl sends you to him in Bleak Falls Barrow.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Dragonsreach, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "6 hours",
+    "where": "his workroom in Dragonsreach",
+    "doing": "working at his lab"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Dragonsreach",
+    "doing": "lunch with the court"
+   },
+   {
+    "from": "1 pm",
+    "for": "4 hours",
+    "where": "his workroom in Dragonsreach",
+    "doing": "working at his lab"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "Dragonsreach",
+    "doing": "dinner with the court"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "his workroom in Dragonsreach",
+    "doing": "working at his lab"
+   }
+  ],
+  "changes": [
+   "Until you've first spoken to him, he keeps to one spot in Dragonsreach from 8 am to 8 pm (outside meals) instead of working at his lab."
+  ],
+  "role": "the jarl's court wizard; merchant; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bleak Falls Barrow",
+    "how": "gives it: asks you to bring him the Dragonstone from Bleak Falls Barrow, then takes it back from you"
+   },
+   {
+    "quest": "The World-Eater's Eyrie",
+    "how": "a step in it: has words for you in Dragonsreach while Odahviing is held there"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "He's a merchant with his own buy-and-sell list and his own merchant chest, open all hours, but the extracts don't list what's in them, so I can't say what he sells."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in Before the Storm, Dragon Rising and The Whispering Door, but the extracts don't show his part in them."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BBB",
+   "WhiterunDragonsReachDinner17x2 Skyrim.esm:0D0FEF",
+   "WhiterunDragonsReachLunch12x1 Skyrim.esm:0D0FED",
+   "FarengarUntilTalkedTo8x12 Skyrim.esm:0D16D1 (GetTalkedToPC == 0)",
+   "FarengarSleep22x8 Skyrim.esm:0B7AA6",
+   "FarengarWorkInLabAllDay Skyrim.esm:05F922",
+   "JobCourtWizardFaction",
+   "JobMerchantFaction",
+   "ServicesWhiterunFarengar",
+   "vendor chest 0x000ABB42, hours 0-24",
+   "MQ103 Skyrim.esm:0D0800 stages 50, 190",
+   "MQ303 Skyrim.esm:046EF0 giver info Skyrim.esm:0E16ED"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02C6C7",
+  "name": "Arngeir",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "High Hrothgar, the Greybeards' monastery on the slopes of the Throat of the World, when the Greybeards summon you in The Way of the Voice.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "High Hrothgar",
+    "doing": "sleeping"
+   },
+   {
+    "from": "2 am",
+    "for": "2 hours",
+    "where": "High Hrothgar",
+    "doing": "walking in meditation (the west walk)"
+   },
+   {
+    "from": "4 am",
+    "for": "4 hours",
+    "where": "outside High Hrothgar",
+    "doing": "walking in meditation outdoors"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "High Hrothgar",
+    "doing": "walking in meditation by the fire"
+   },
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "High Hrothgar",
+    "doing": "walking in meditation in the centre of the hall"
+   },
+   {
+    "from": "4 pm",
+    "for": "4 hours",
+    "where": "High Hrothgar",
+    "doing": "walking in meditation (the east walk)"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "High Hrothgar's living area",
+    "doing": "reading"
+   }
+  ],
+  "changes": [
+   "During one stage of The Way of the Voice he skips his 4 am outdoor walk.",
+   "He hosts the peace council at High Hrothgar in Season Unending."
+  ],
+  "role": "Greybeard; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Way of the Voice",
+    "how": "gives it: recognises you as Dragonborn and sets your Shout trials"
+   },
+   {
+    "quest": "The Throat of the World",
+    "how": "gives it: names the Dragonrend Shout, can't teach it, and shows you the way up to Paarthurnax"
+   },
+   {
+    "quest": "Season Unending",
+    "how": "a step in it: you ask him to host the peace council, and he does, at High Hrothgar"
+   },
+   {
+    "quest": "Elder Knowledge",
+    "how": "a step in it: optionally, you can ask him about the Elder Scroll"
+   },
+   {
+    "quest": "The Fallen",
+    "how": "a step in it: one of the people the quest has you talk to"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "The meditation walks are routes with no named spot in the extracts; where in High Hrothgar each one goes is read from the package names only."
+   },
+   {
+    "field": "quests",
+    "why": "He is also named in the quest Paarthurnax, but the extracts don't show what he does in it."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:02C6C7",
+   "GreybeardSleep22x4 Skyrim.esm:1094E2",
+   "GreybeardMeditationPatrolWest2x2 Skyrim.esm:109504",
+   "GreybeardMeditationPatrolExterior4x4 Skyrim.esm:109500 (MQ105 stage != 220)",
+   "GreybeardMeditationPatrolFire8x4 Skyrim.esm:109501",
+   "GreybeardMeditationPatrolCenter12x4 Skyrim.esm:109502",
+   "GreybeardMeditationPatrolEast16x4 Skyrim.esm:109503",
+   "GreybeardReadHighHrothgarLivingArea Skyrim.esm:1094E6",
+   "GreybeardFaction",
+   "MQ105 Skyrim.esm:0242BA",
+   "MQ204 Skyrim.esm:02D515 stage 60",
+   "MQ302 Skyrim.esm:045923 stage 15",
+   "MQ205 Skyrim.esm:02D516 objective 30",
+   "MQ301 Skyrim.esm:044C56 objective 11",
+   "MQPaarthurnax Skyrim.esm:03FA16"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:036194",
+  "name": "Malborn",
+  "race": "Bosmer",
+  "sex": "male",
+  "firstMeet": "The Winking Skeever in Solitude, during Diplomatic Immunity: Delphine sends you to meet him there. His own placed spot is inside the Thalmor Embassy.",
+  "day": [
+   {
+    "from": "noon",
+    "for": "8 hours",
+    "where": "the Thalmor Embassy",
+    "doing": "sleeping near where he's placed"
+   },
+   {
+    "from": "8 pm",
+    "for": "16 hours",
+    "where": "the Thalmor Embassy",
+    "doing": "standing near where he's placed; no other package of his own"
+   }
+  ],
+  "changes": [
+   "Diplomatic Immunity moves him: you meet him at the Winking Skeever, then inside the Embassy at the party."
+  ],
+  "role": "quest helper (Delphine's contact inside the Thalmor Embassy)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Diplomatic Immunity",
+    "how": "a step in it: you meet him at the Winking Skeever and give him your gear to smuggle into the Embassy; at the party you talk to him and he helps you slip away"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "He fills an alias in one more unnamed quest that may say where he goes after Diplomatic Immunity; the extracts don't show it."
+   },
+   {
+    "field": "day",
+    "why": "His only package of his own is a shared noon-to-8 pm sleep near his placed spot; his whereabouts at the Winking Skeever come from the quest's journal, not a package."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:036194",
+   "DefaultSleepEditorLoc12x8 Skyrim.esm:034BF9",
+   "MQMalbornFaction",
+   "MQ201 Skyrim.esm:035D5F stages 40, 100, objectives 10, 20, 40",
+   "Skyrim.esm:04CECE (unnamed)",
+   "placed in Thalmor Embassy (people_raw)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:021207",
+  "name": "Carriage Driver",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Only in Diplomatic Immunity: he drives the carriage that takes you to the Thalmor Embassy party. The quest has you meet Delphine at the Solitude stables first.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "his carriage (exact spot not given in the extracts)",
+    "doing": "sitting at his seat"
+   }
+  ],
+  "changes": [],
+  "role": "quest character: the driver who takes you to the Embassy party",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Diplomatic Immunity",
+    "how": "a step in it: drives you to the Thalmor Embassy for the party"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed spot is in the open world with no named place in the extracts; that his carriage waits at the Solitude stables is read from the quest's objective to meet Delphine there, not from his own record."
+   },
+   {
+    "field": "role",
+    "why": "Nothing in the extracts says he offers ordinary carriage rides; he isn't in any carriage-service faction."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:021207",
+   "MQ201PartyCarriageDriver",
+   "MQ201SitLinkedRef Skyrim.esm:021218",
+   "MQ201 Skyrim.esm:035D5F alias PlayerCarriageDriver, objective 30",
+   "placed ref Skyrim.esm:021217"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336D",
+  "name": "Dirge",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "The Ragged Flagon in Riften, the Thieves Guild's tavern, reached through the Ratway.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "4 hours",
+    "where": "the Ragged Flagon, Riften",
+    "doing": "wandering the tavern"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "the Ragged Flagon",
+    "doing": "standing at his post as bouncer"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "the Ragged Flagon",
+    "doing": "wandering the tavern"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "the Ragged Flagon",
+    "doing": "standing at his post as bouncer"
+   },
+   {
+    "from": "2 pm",
+    "for": "2 hours",
+    "where": "the Ragged Flagon",
+    "doing": "wandering the tavern"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "the Ragged Flagon",
+    "doing": "standing at his post as bouncer"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "the Ragged Flagon",
+    "doing": "wandering the tavern"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "the Ragged Flagon",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "Thieves Guild member; the Ragged Flagon's bouncer; merchant",
+  "sells": "the same stock as Vekel the Man: he trades from Vekel's merchant chest, with the buy-and-sell list innkeepers use",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Cornered Rat",
+    "how": "a step in it: one of the people in the Ragged Flagon you can ask about Esbern"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "The extracts give only the shared list and chest, not the items in them."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in Taking Care of Business and Reparations, and in several unnamed quests, but the extracts don't show his part."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01336D",
+   "ThievesGuildDirgeSandbox2x2/6x2/10x2/14x2/18x2/22x2 Skyrim.esm:10F127/10F126/10F12A/10F129/10F128/10F12B",
+   "USKPThievesGuildDirgeSleep Unofficial Skyrim Special Edition Patch.esp:0412FE",
+   "RiftenDirgeBouncerStatic0x0 Skyrim.esm:103080",
+   "ThievesGuildFaction",
+   "ServicesRiftenRaggedFlagon",
+   "vendor list 0x000914F0 (shared with Hulda and other innkeepers), chest 0x000A31C0 (shared with Vekel the Man)",
+   "MQ202 Skyrim.esm:036191 giver others"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03C57C",
+  "name": "Paarthurnax",
+  "race": "Dragon",
+  "sex": "male",
+  "firstMeet": "At the top of the Throat of the World, during The Throat of the World: Arngeir shows you the way up and you clear the path with the Clear Skies Shout.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the top of the Throat of the World",
+    "doing": "waiting there; he comes to speak to you when you arrive"
+   }
+  ],
+  "changes": [
+   "In the quest Paarthurnax the Blades won't help you until he's dead; you can kill him or spare him."
+  ],
+  "role": "master of the Greybeards; a dragon; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "a dragon",
+  "quests": [
+   {
+    "quest": "The Throat of the World",
+    "how": "a step in it: you talk to him, learn a Word of Power from him and use Fire Breath on him"
+   },
+   {
+    "quest": "Elder Knowledge",
+    "how": "a step in it: he tells you an Elder Scroll was used to cast Alduin forward in time"
+   },
+   {
+    "quest": "Alduin's Bane",
+    "how": "gives it: read the Elder Scroll at the Time-Wound beside him"
+   },
+   {
+    "quest": "The Fallen",
+    "how": "gives it: talk to him about finding Alduin's lair"
+   },
+   {
+    "quest": "Paarthurnax",
+    "how": "its target: the Blades want him dead; you decide his fate"
+   }
+  ],
+  "canDie": "essential, except that the quest Paarthurnax lets you kill him",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed spot is in the open world with no named place in the extracts; the top of the Throat of the World comes from the quest journals."
+   },
+   {
+    "field": "changes",
+    "why": "LoreRim adds to the quest Paarthurnax; the extracts don't show what the addition changes."
+   },
+   {
+    "field": "quests",
+    "why": "He is also named in Season Unending and in several unnamed quests, but the extracts don't show his part."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:03C57C",
+   "MQPaarthurnaxForceGreetNormal Skyrim.esm:0BBEAF (MQ301, MQ206, Skyrim.esm:046EF3 not running)",
+   "placed ref Skyrim.esm:03C57D",
+   "MQ204 Skyrim.esm:02D515 stages 60, 100, objectives 30-60",
+   "MQ205 Skyrim.esm:02D516 stage 10",
+   "MQ206 Skyrim.esm:036193",
+   "MQ301 Skyrim.esm:044C56",
+   "MQPaarthurnax Skyrim.esm:03FA16 stages 20, 50, 75 (edited by PaarthurnaxQuestExpansion.esp)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:045920",
+  "name": "Odahviing",
+  "race": "Dragon",
+  "sex": "male",
+  "firstMeet": "Dragonsreach in Whiterun, during The Fallen: you call him there with a Shout, then defeat and trap him on the Great Porch.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Great Porch, Dragonsreach, Whiterun",
+    "doing": "held in the trap, from the moment you trap him until you set him free"
+   }
+  ],
+  "changes": [
+   "Once you set him free in The World-Eater's Eyrie, he flies you to Skuldafn.",
+   "Later, once a further unnamed quest moves on, his package has him circling in the sky over a spot the extracts don't name."
+  ],
+  "role": "a dragon; ally in the main quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "a dragon",
+  "quests": [
+   {
+    "quest": "The Fallen",
+    "how": "its target: you call him to Dragonsreach, defeat and trap him, and interrogate him about Alduin's lair"
+   },
+   {
+    "quest": "The World-Eater's Eyrie",
+    "how": "a step in it: you set him free and he flies you to Skuldafn"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "He also has a package that sends him to a mountain when a further, unnamed quest is running, which reads like being called with a Shout after the main quest; the extracts don't name that quest or the place, and his circling spot isn't named either."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:045920",
+   "MQ301OdahviingInTrap Skyrim.esm:046F04 (MQ301 stage 180 done, MQ303 stage 100 not done)",
+   "MQCallDragonToMountain Skyrim.esm:046B91 (Skyrim.esm:046B8E stage >= 100)",
+   "MQCallDragonToSkuldafn Skyrim.esm:0D2E74",
+   "MQOdahviingDefaultOrbit Skyrim.esm:10FE2B (Skyrim.esm:046EF3 stage 10 done)",
+   "MQ301 Skyrim.esm:044C56 objectives 50-70",
+   "MQ303 Skyrim.esm:046EF0 stages 10, 100",
+   "placed ref Skyrim.esm:045921 in Dragonsreach, Great Porch"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04F828",
+  "name": "Tsun",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In Sovngarde, during the quest Sovngarde: he guards the bridge, and you must gain admittance from him to reach the Hall of Valor.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the bridge to the Hall of Valor, Sovngarde",
+    "doing": "guarding the bridge"
+   }
+  ],
+  "changes": [
+   "You can only reach Sovngarde through the main quest."
+  ],
+  "role": "quest giver; the guardian of the way into the Hall of Valor",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sovngarde",
+    "how": "gives it: you need his leave to enter the Hall of Valor"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also has words in Dragonslayer and fills an alias in one unnamed quest, but the extracts don't show his part."
+   },
+   {
+    "field": "day",
+    "why": "The bridge comes from his package's name; its target spot has no place name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:04F828",
+   "TsunGuardBridge Skyrim.esm:04FA4B",
+   "placed ref Skyrim.esm:04F829 in Sovngarde",
+   "MQ304 Skyrim.esm:046EF1 objective 20",
+   "MQ305 Skyrim.esm:046EF2 giver info Skyrim.esm:0AF1C7"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:044236",
+  "name": "Gormlaith Golden-Hilt",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "The Hall of Valor in Sovngarde, during the quest Sovngarde.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Hall of Valor, Sovngarde",
+    "doing": "no schedule; she stays where she's placed"
+   }
+  ],
+  "changes": [
+   "In Dragonslayer she leaves the hall with Hakon One-Eye and Felldir the Old to fight Alduin beside you."
+  ],
+  "role": "one of the ancient heroes who help you fight Alduin",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sovngarde",
+    "how": "a step in it: one of the heroes of Sovngarde you talk to in the Hall of Valor"
+   },
+   {
+    "quest": "Dragonslayer",
+    "how": "a step in it: with Hakon and Felldir she helps you dispel Alduin's mist and fight him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The Gormlaith you see in the vision at the Time-Wound in Alduin's Bane is a separate record, not this one."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:044236",
+   "no packages",
+   "MQAncientHeroFaction",
+   "MQ304 Skyrim.esm:046EF1 stage 200, objective 30",
+   "MQ305 Skyrim.esm:046EF2 stages 10-200",
+   "placed ref Skyrim.esm:0CD9F8 in Hall of Valor",
+   "vision copy Skyrim.esm:0CD9F7 in MQ206"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013394",
+  "name": "Eltrys",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "In Markarth: he waits in the market and comes up to you after the attack there; otherwise outside the smelter by day or in the Warrens.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "outside the smelter, Markarth",
+    "doing": "working the metal"
+   },
+   {
+    "from": "7 pm",
+    "for": "12 hours",
+    "where": "the Warrens, Markarth",
+    "doing": "going about near where he's placed"
+   }
+  ],
+  "changes": [
+   "Before the attack in the market has played out, he waits in the market; after it, he comes to give you his message (only while LoreRim's later start for The Forsworn Conspiracy has let it begin).",
+   "He is killed in The Forsworn Conspiracy: the journal says he's dead and you're framed for it."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Forsworn Conspiracy",
+    "how": "gives it: sends you a note to meet him at the Shrine of Talos, asks you to find evidence; he is killed at its end"
+   },
+   {
+    "quest": "No One Escapes Cidhna Mine",
+    "how": "changed by it: you're imprisoned for his murder at its start"
+   }
+  ],
+  "canDie": "essential until The Forsworn Conspiracy, which kills him",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "The market-wait and approach packages depend on an unnamed quest (the market attack) and a value set by LoreRim's delayed start; the extracts don't say what sets that value."
+   },
+   {
+    "field": "day",
+    "why": "The smelter spot is read from a shared package's name; its target has no place name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013394",
+   "MS01EltrysForceGreetPackage Skyrim.esm:0806CD",
+   "MarkarthEltrysWaitMarketPackage Skyrim.esm:09C8B3",
+   "MarkarthMetalWorkerOutsideSmelter7x12Package Skyrim.esm:0354F8",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "global The Forsworn Conspiracy - Delayed Start.esp:000801 == 2",
+   "Skyrim.esm:0AF75F stage 300",
+   "MS01 Skyrim.esm:018B4B stages 15, 20, 95, 100",
+   "MS02 Skyrim.esm:040A5E stage 5",
+   "placed in The Warrens (people_raw)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133BD",
+  "name": "Uraccen",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Inside Cidhna Mine, Markarth's prison, once you're locked up there.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Cidhna Mine, Markarth",
+    "doing": "sitting in his spot"
+   }
+  ],
+  "changes": [
+   "If you help Madanach escape in No One Escapes Cidhna Mine, he runs out of Markarth with the Forsworn and lives in Druadach Redoubt."
+  ],
+  "role": "Cidhna Mine prisoner; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "No One Escapes Cidhna Mine",
+    "how": "gives it: he's the prisoner you ask about Madanach"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in two mod encounters where Madanach and his followers fight Markarth's guards near Druadach Redoubt; the extracts don't say when they happen."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133BD",
+   "CidhnaMineUraccenIntroSitPackage Skyrim.esm:0D9231",
+   "CidhnaMineSleepPackage Skyrim.esm:0D9230 (below the sit package)",
+   "MS02ForswornDruadachRedoubtPackage Skyrim.esm:0E2511",
+   "MS02ForswornRunDruadachExterior Skyrim.esm:10F79C",
+   "MS02ForswornRuntoMarkarthEntrance Skyrim.esm:10F79D (MS02 stage 100 done)",
+   "MS02 Skyrim.esm:040A5E giver info Skyrim.esm:0DC290",
+   "Extended Encounters.esp:0000B6, 0000B8"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A7",
+  "name": "Madanach",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Inside Cidhna Mine, Markarth's prison, past Borkul the Beast.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Cidhna Mine, Markarth",
+    "doing": "sitting"
+   }
+  ],
+  "changes": [
+   "If you help him escape in No One Escapes Cidhna Mine, he and his Forsworn leave Markarth and live in Druadach Redoubt.",
+   "If you kill him instead, Thonar Silver-Blood pardons you."
+  ],
+  "role": "the King in Rags, leader of the Forsworn in Cidhna Mine; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "No One Escapes Cidhna Mine",
+    "how": "the person the quest is about: talk to him, run his errands (hear Braig's story, kill Grisvar), then follow him out; or kill him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in The Heart of Dibella and in two mod encounters where he and his followers fight Markarth's guards near Druadach Redoubt; the extracts don't show his part or when those happen."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133A7",
+   "MadanachSitPackage Skyrim.esm:0DC53B",
+   "MS02ForswornDruadachRedoubtPackage Skyrim.esm:0E2511",
+   "MS02ForswornRunDruadachExterior Skyrim.esm:10F79C",
+   "MS02ForswornRuntoMarkarthEntrance Skyrim.esm:10F79D (MS02 stage 100 done)",
+   "MS02 Skyrim.esm:040A5E stages 5, 100, 250, objectives 25-70, 150",
+   "T01 Skyrim.esm:023B6C alias Madanach",
+   "Extended Encounters.esp:0000B6, 0000B8"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01338A",
+  "name": "Borkul the Beast",
+  "race": "Orsimer",
+  "sex": "male",
+  "firstMeet": "Inside Cidhna Mine, Markarth's prison, guarding the way to Madanach.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "18 hours",
+    "where": "Cidhna Mine, Markarth",
+    "doing": "sitting at his spot"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "Cidhna Mine",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "If you help Madanach escape in No One Escapes Cidhna Mine, he runs out of Markarth with the Forsworn and lives in Druadach Redoubt."
+  ],
+  "role": "Cidhna Mine prisoner; Madanach's guard",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "No One Escapes Cidhna Mine",
+    "how": "a step in it: you have to get past him to reach Madanach"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in two mod encounters where Madanach and his followers fight Markarth's guards near Druadach Redoubt; the extracts don't say when they happen."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01338A",
+   "CidhnaMineSleepPackage Skyrim.esm:0D9230",
+   "CidhnaMineBorkulSitPackage Skyrim.esm:0DC539",
+   "MS02ForswornDruadachRedoubtPackage Skyrim.esm:0E2511",
+   "MS02ForswornRunDruadachExterior Skyrim.esm:10F79C",
+   "MS02ForswornRuntoMarkarthEntrance Skyrim.esm:10F79D",
+   "MS02 Skyrim.esm:040A5E objective 20, giver others",
+   "Extended Encounters.esp:0000B6, 0000B8"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013368",
+  "name": "Louis Letrush",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "The Bee and Barb, Riften.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "staying put"
+   }
+  ],
+  "changes": [
+   "Once Promises to Keep reaches the point where he pays you for Frost, he leaves the Bee and Barb (riding off, or walking off on the other branch)."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Promises to Keep",
+    "how": "gives it: wants you to see Sibbi Black-Briar about Frost, a horse he's buying, and pays you when you steal Frost for him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "Where he goes when he leaves isn't named in the extracts. He also fills an alias in one unnamed quest."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013368",
+   "MS03PreLouisLetrushBeePackage Skyrim.esm:046767",
+   "MS03LouisLetrushRideOffScenePackage Skyrim.esm:0D7941 (MS03 stage >= 200)",
+   "MS03LouisLetrushWalkOffScenePackage Skyrim.esm:000E82 (MS03 stage 225 done)",
+   "MS03 Skyrim.esm:01DA3C stages 5, 10, 25, 200, 225"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335A",
+  "name": "From-Deepest-Fathoms",
+  "race": "Argonian",
+  "sex": "female",
+  "firstMeet": "In Riften; the quest journal says she was wandering the Riften docks. Her placed spot is Haelga's Bunkhouse.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Riften (the docks, by the journal)",
+    "doing": "wandering"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Unfathomable Depths",
+    "how": "gives it: hands you a Lexicon to take back to Avanchnzel"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her one package is a wander with no place in the extracts; the docks come from the journal, and her placed cell is Haelga's Bunkhouse."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01335A",
+   "MS04FDFWander Skyrim.esm:0E9E17",
+   "MS04FDFFaction",
+   "MS04 Skyrim.esm:0209CA stages 10, 100, giver info Skyrim.esm:02B99E",
+   "placed ref Skyrim.esm:019DE2 in Haelga's Bunkhouse"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013365",
+  "name": "Keerava",
+  "race": "Argonian",
+  "sex": "female",
+  "firstMeet": "The Bee and Barb, Riften.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "near where she's placed; she has no daily schedule of her own"
+   }
+  ],
+  "changes": [],
+  "role": "innkeeper of the Bee and Barb; merchant",
+  "sells": "what innkeepers sell: she uses the same buy-and-sell list as Hulda and the other innkeepers, from her own chest, open all hours",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Taking Care of Business",
+    "how": "its target: Brynjolf sends you to collect her debt (Talen-Jei can help you get to her)"
+   },
+   {
+    "quest": "Dine and Dash",
+    "how": "a step in it: you talk to her and pay her 1,000 gold"
+   },
+   {
+    "quest": "Unfathomable Depths",
+    "how": "a step in it: she has words about it as the Bee and Barb's innkeeper"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "The extracts give the shared list and her chest, not the items in them."
+   },
+   {
+    "field": "day",
+    "why": "Her only package is a scene that runs until an unnamed quest is done; otherwise the records leave her where she's placed in the inn."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills aliases in Sealing the Deal, A Cornered Rat, Angler Acquaintances and several unnamed quests, but the extracts don't show her part."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013365",
+   "RDSScene05KeeravaStart Skyrim.esm:05CE2B (Skyrim.esm:05CE25 not completed)",
+   "JobInnkeeperFaction rank -1",
+   "JobRentRoomFaction rank -1",
+   "ServicesRiftenBeeandBarb",
+   "RiftenBeeandBarbFaction",
+   "vendor list 0x000914F0 (shared with Hulda), chest 0x000A0704, hours 0-24",
+   "TG01 Skyrim.esm:01F326 objectives 20, 21",
+   "zzzAoMMq05 Vigilant.esm:0098C9 objectives 30, 40",
+   "MS04 Skyrim.esm:0209CA alias MS04Innkeeper"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132AD",
+  "name": "Viarmo",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "The Bards College in Solitude.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "4 hours",
+    "where": "the Bards College, Solitude",
+    "doing": "going about near where he's placed"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the Bards College",
+    "doing": "in the lobby"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "the Bards College dining hall",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "the Bards College",
+    "doing": "in the lobby"
+   },
+   {
+    "from": "11 am",
+    "for": "3 hours",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "lunch (only when it isn't raining; otherwise he stays in the College lobby)"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "the Bards College",
+    "doing": "in the lobby"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Bards College dining hall",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "7 hours",
+    "where": "the Bards College",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "In Tending the Flames he goes to the Blue Palace to perform King Olaf's Verse."
+  ],
+  "role": "headmaster of the Bards College; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Investigate the Bards College",
+    "how": "the lead that sends you to him"
+   },
+   {
+    "quest": "Tending the Flames",
+    "how": "gives it: asks you to find King Olaf's Verse as your application, then to help him rebuild it"
+   },
+   {
+    "quest": "A Song in the Dark",
+    "how": "a step in it: you arrange Diane's audition with him and bring her to him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in several unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0132AD",
+   "SolitudeBardsCollegeDiningHallEat7x1 Skyrim.esm:0A95C0",
+   "SolitudeViarmoEatLunch10x3 Skyrim.esm:0B240F (IsRaining == 0)",
+   "SolitudeBardsCollegeDiningHallEat18x1 Skyrim.esm:0A95C1",
+   "BardsCollegeSleepEditorLoc18x8 Skyrim.esm:0C2A56",
+   "SolitudeBardsCollegeLobbySandbox6x12 Skyrim.esm:06F1AF",
+   "SolitudeSandboxEditorLocation512 Skyrim.esm:0C97B8",
+   "MS05Start Skyrim.esm:042868",
+   "MS05 Skyrim.esm:053511 stages 75-175",
+   "Sat_Music TheGiftofSaturalia.esp:0009D2 objectives 10, 20"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328F",
+  "name": "Jorn",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Bards College in Solitude.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "4 hours",
+    "where": "the Bards College, Solitude",
+    "doing": "in Inge's class"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "the Bards College",
+    "doing": "in Pantea's class"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "the Bards College",
+    "doing": "going about the College"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "the Bards College",
+    "doing": "in Giraud's class"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "carousing (only when it isn't raining; otherwise at the College)"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "the Bards College",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until an opening event in Solitude has finished, he stays near where he's placed at the College instead of following this day."
+  ],
+  "role": "bard of the Bards College; sings",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Tending the Flames",
+    "how": "a step in it: he's preparing the King Olaf effigy and won't finish it without General Tullius' Coat, which you steal for him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "The quest that holds him in place at the start has no name in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "The class packages have no spot in the extracts; the teachers' names come from the package names."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in many unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01328F",
+   "SolitudeOpeningStayLocation512 Skyrim.esm:0B3B1B (Skyrim.esm:0B2FD9 not completed)",
+   "SolitudeBardsCollegeClassIngeJornAttend4x4 Skyrim.esm:0D6A14",
+   "SolitudeBardsCollegeClassPanteaJornAttend8x4 Skyrim.esm:0D6A0F",
+   "SolitudeBardsCollegeClassGiraudJornAttend14x4 Skyrim.esm:0D6A01",
+   "SolitudeSkeeverCarouseNight18x4 Skyrim.esm:034BCE (IsRaining == 0)",
+   "BardsCollegeSleepEditorLoc22x8 Skyrim.esm:0C2A57",
+   "SolitudeBardsCollegeSandbox Skyrim.esm:034BDF",
+   "JobBardFaction",
+   "BardSingerFaction",
+   "MS05 Skyrim.esm:053511 stages 200-254"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A8",
+  "name": "Styrr",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "The Hall of the Dead in Solitude.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "3 hours",
+    "where": "not named in the records",
+    "doing": "praying"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "the Hall of the Dead, Solitude",
+    "doing": "going about the hall"
+   },
+   {
+    "from": "noon",
+    "for": "8 hours",
+    "where": "the Hall of the Dead",
+    "doing": "sleeping near where he's placed"
+   },
+   {
+    "from": "8 pm",
+    "for": "1 hour",
+    "where": "the Hall of the Dead",
+    "doing": "going about the hall"
+   },
+   {
+    "from": "9 pm",
+    "for": "2.5 hours",
+    "where": "outside (spot not named in the records)",
+    "doing": "out of doors, only when it isn't raining; otherwise in the hall"
+   },
+   {
+    "from": "11:30 pm",
+    "for": "7.5 hours",
+    "where": "the Hall of the Dead",
+    "doing": "going about the hall"
+   }
+  ],
+  "changes": [
+   "During The Wolf Queen Awakened, from when Falk sends you to him until you bring back Potema's remains (except while he's handing you the key), he waits at the entrance of the Hall of the Dead all day."
+  ],
+  "role": "keeper of Solitude's Hall of the Dead; quest character",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Wolf Queen Awakened",
+    "how": "a step in it: he gives you the key to Potema's Catacombs, and blesses Potema's remains when you bring them back"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His sleep package runs noon to 8 pm as recorded, which is odd for a priest but is what the records say; the morning prayer and the evening outing have no named place in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills an alias in The Man Who Cried Wolf, but the extracts don't show his part in it."
+   },
+   {
+    "field": "role",
+    "why": "That he keeps the Hall of the Dead is read from where he's placed and the quest; the records give no priest faction for him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0132A8",
+   "SolitudeStyrrHalloftheDeadSandboxEntrance Skyrim.esm:0D6AEE (MS06 stage >= 50, != 100, < 170)",
+   "AIOStyrrPray7x3 AI Overhaul.esp:0122B9",
+   "AIOSoStyrrOutside AI Overhaul.esp:16FE0B (IsRaining == 0)",
+   "DefaultSleepEditorLoc12x8 Skyrim.esm:034BF9",
+   "SolitudeStyrrHalloftheDeadSandbox Skyrim.esm:0D6AED",
+   "SolitudeSandboxEditorLocation512 Skyrim.esm:0C97B8",
+   "MS06 Skyrim.esm:026C4D stages 50-150, objectives 50, 155",
+   "MS06Start Skyrim.esm:093807 alias MS06Styrr"
+  ]
+ }
+]
