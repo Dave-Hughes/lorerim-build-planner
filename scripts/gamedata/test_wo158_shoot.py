@@ -14,16 +14,16 @@ SESSION_TOGGLES = ("tcl", "tai")  # on once at the start, off once at the end --
 
 
 def all_travel_lines():
-    for name, slug, target, note, marker, entrance in wo.PLACES:
+    for name, slug, target, note, marker, entrance, kind in wo.PLACES:
         yield slug, wo.travel_lines(target)
     yield "winking-skeever-outside", wo.travel_lines(wo.WINKING_SKEEVER_DOOR["target"])
 
 
 def all_frame_lines():
-    for name, slug, target, note, marker, entrance in wo.PLACES:
-        yield slug, wo.frame_lines(marker, entrance)
-    ws = wo.WINKING_SKEEVER_DOOR
-    yield "winking-skeever-outside", wo.camera_setpos_lines(*wo.door_camera(ws["pos"], ws["door_yaw"]))
+    for name, slug, target, note, marker, entrance, kind in wo.PLACES:
+        yield slug, wo.frame_lines(marker, entrance, kind)
+    ws, f = wo.WINKING_SKEEVER_DOOR, wo.framing_for("Inn")
+    yield "winking-skeever-outside", wo.camera_setpos_lines(*wo.door_camera(ws["pos"], ws["door_yaw"], f["distance"], f["height"]))
 
 
 def all_shot_lines():
@@ -42,6 +42,15 @@ class ShapeTest(unittest.TestCase):
             self.assertFalse(any(line.split()[0] in SESSION_TOGGLES for line in lines), (slug, lines))
         self.assertEqual(set(l.split()[0] for l in wo.start_lines()) & set(SESSION_TOGGLES), set(SESSION_TOGGLES))
         self.assertEqual(set(l.split()[0] for l in wo.end_lines()) & set(SESSION_TOGGLES), set(SESSION_TOGGLES))
+
+    def test_session_toggles_act_on_the_player_not_the_last_prid(self):
+        # Part 1o: tcl and tai act on the console's selected reference, falling back to the player only when
+        # nothing is selected -- and every person file selects an NPC. Dave fell into the sea with collision on.
+        # 14 is the player's own form id; selecting it first makes both toggles land on the player every time.
+        for lines in (wo.start_lines(), wo.end_lines()):
+            self.assertEqual(lines[0], "prid 14", lines)
+            first_toggle = next(i for i, l in enumerate(lines) if l.split()[0] in SESSION_TOGGLES)
+            self.assertGreater(first_toggle, 0)
 
     def test_tm_lives_only_in_its_own_file(self):
         # Found live, 27 Oct: tm hides the console's own input box along with the HUD, so Dave couldn't see
@@ -106,7 +115,7 @@ class ShapeTest(unittest.TestCase):
         self.assertEqual(lines[:3], wo.person_mark_lines())
 
     def test_every_target_is_unique(self):
-        place_targets = [t for _, _, t, _, _, _ in wo.PLACES] + [wo.WINKING_SKEEVER_DOOR["target"]]
+        place_targets = [t for _, _, t, _, _, _, _ in wo.PLACES] + [wo.WINKING_SKEEVER_DOOR["target"]]
         people_targets = [t for _, _, t in wo.PEOPLE]
         self.assertEqual(len(place_targets), len(set(place_targets)))
         self.assertEqual(len(people_targets), len(set(people_targets)))
@@ -161,7 +170,8 @@ class ShapeTest(unittest.TestCase):
     def test_broken_oar_grotto_faces_south_west_as_the_screenshots_own_compass_showed(self):
         # The one shot checked live against a real compass (Part 1j): the camera stands NE of the entrance;
         # facing it is SSW, a plain bearing of 217.5, which the console must be handed as -142.5.
-        name, slug, target, note, marker, entrance = next(p for p in wo.PLACES if p[1] == "broken-oar-grotto")
+        name, slug, target, note, marker, entrance, kind = next(p for p in wo.PLACES if p[1] == "broken-oar-grotto")
+        self.assertEqual(kind, "Cave")
         cx, cy, cz, yaw, pitch = wo.entrance_camera(marker, entrance)
         self.assertAlmostEqual(yaw, -142.5, places=1)
         self.assertNotAlmostEqual(yaw, 37.5, places=1)  # Part 1i's value: the sea, not the grotto
@@ -169,6 +179,27 @@ class ShapeTest(unittest.TestCase):
         self.assertLess(math.hypot(cx - (-66239.31), cy - 142940.16), 120.0)
         self.assertAlmostEqual(cz, -13256.03, delta=5.0)
         self.assertAlmostEqual(pitch, 14.0, delta=0.5)
+
+    def test_framing_is_per_kind_of_place(self):
+        # Part 1n (Dave: "Bleak Falls Barrow is massive and the same camera angle won't work"): a cave's numbers
+        # can't be a mountain ruin's. Each place frames by its own kind -- a ruin further back and higher than a
+        # cave; an unknown kind falls back to the cave's, never to nothing.
+        self.assertGreater(wo.framing_for("NordicRuin")["distance"], wo.framing_for("Cave")["distance"])
+        self.assertGreater(wo.framing_for("NordicRuin")["height"], wo.framing_for("Cave")["height"])
+        self.assertEqual(wo.framing_for("SomethingNew"), wo.framing_for("Cave"))
+        self.assertEqual({p[6] for p in wo.PLACES}, {"Cave", "NordicRuin", "Fort", "Town"})  # one of each kind
+
+        def back_from_door(place):
+            name, slug, target, note, marker, entrance, kind = place
+            f = wo.framing_for(kind)
+            cx, cy, cz, yaw, pitch = wo.entrance_camera(marker, entrance, f["distance"], f["height"])
+            return math.hypot(cx - entrance[0], cy - entrance[1])
+
+        by_slug = {p[1]: p for p in wo.PLACES}
+        d_bog, d_bfb = back_from_door(by_slug["broken-oar-grotto"]), back_from_door(by_slug["bleak-falls-barrow"])
+        self.assertAlmostEqual(d_bog, wo.framing_for("Cave")["distance"], places=1)
+        self.assertAlmostEqual(d_bfb, wo.framing_for("NordicRuin")["distance"], places=1)
+        self.assertGreater(d_bfb, d_bog)  # the barrow is shot from further back than the grotto
 
     def test_entrance_camera_never_divides_by_zero_when_marker_and_entrance_coincide(self):
         p = (10.0, 20.0, 30.0)

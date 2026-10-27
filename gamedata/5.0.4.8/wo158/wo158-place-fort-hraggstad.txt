@@ -1,4 +1,4 @@
-; Fort Hraggstad -- of three gates, the one nearest the marker (travel; then wait for the load)
+; Fort Hraggstad (Fort: 4500 back, 1200 up) -- of three gates, the one nearest the marker (travel; then wait for the load)
 fw SClearSkySN
 set gamehour to 12
 player.moveto FortHraggstadMapMarker

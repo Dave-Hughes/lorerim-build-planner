@@ -1,4 +1,4 @@
-; Riverwood -- a village, not a single entrance -- framed from above its own centre marker instead (travel; then wait for the load)
+; Riverwood (Town: 2500 back, 390 up) -- a village, not a single entrance -- framed from above its own centre marker instead (travel; then wait for the load)
 fw SClearSkySN
 set gamehour to 12
 player.moveto RiverwoodLocationCenterMarker

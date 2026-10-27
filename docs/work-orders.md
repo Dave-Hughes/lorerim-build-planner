@@ -5104,7 +5104,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 - **Screenshots** (in `test-results/`): `wo159-home-1440.png`, `wo159-home-390.png`, `wo159-palette-searching-1440.png`, `wo159-back-1440.png`, `wo159-playthrough-empty-1440.png`, `wo159-lydia-1440.png`, `wo159-lydia-390.png`, `wo159-jaree-ra-1440.png`, `wo159-lucan-1440.png`.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1l: the numbers read off Dave's own framing, 2,500 back and 390 up, tilt derived; needs his look at the result, then the other four -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1o: travel and frame both land now, `tcl` pinned to the player; framing is per kind of place (Cave measured, the rest first guesses); needs Dave's look at Broken Oar Grotto, then one hand-framed reading per kind for the other four -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5219,10 +5219,27 @@ The two-step worked: floating, facing the grotto. But 300 up and 700 back from t
 - **Checks.** The Broken Oar Grotto test now pins the computed camera to within 120 units of Dave's own spot, 5 units of his height, half a degree of 14 down; a test for height-from-the-higher-ground, a test for `pitch_to` (1000 up, 1000 back = 45 degrees). 379 gamedata tests pass.
 - **`getangle z` reports 218.02** -- the engine reads angles back in 0..360 even though (Part 1k's best explanation) `setangle z` only took them in -180..180. Noted; the normalisation stays.
 
+### Part 1m. Where the files and the pictures actually live (Dave, 27 Oct)
+Dave: "screenshots seem to move [to `overwrite\Root\screenshots\`] when I close the game." They do -- and so did all eighteen bat files written into `Stock Game`: MO2 sweeps anything the game's own root gained during a session into `overwrite\Root` when the game closes, which is also why the five `frame` files had "vanished" from `Stock Game` between two checks. `overwrite\Root` is what MO2 shows the game as its root, so it's the copy that survives a session.
+- [x] `wo158_shoot.py` writes to `overwrite\Root` as well (and still to `Stock Game`, so a first launch after a regenerate finds them before any sweep; MO2 merges identical copies on exit).
+- [x] **Pictures:** Print Screen writes `ScreenshotNNN.png` into the game root; MO2 moves them to `C:\LoreRim\overwrite\Root\` when the game closes (the `CS_*.png` in `overwrite\Root\screenshots\` are Community Shaders' own copies of the same shots). Step 6 corrected again.
+
+### Part 1n. One cave's numbers can't be a mountain ruin's (Dave, 27 Oct)
+Dave: "some locations are huge and need to be moved further back. Bleak Falls Barrow is massive and the same camera angle won't work... This is what I was worried about to begin with." He's right, and the order's own "the same numbers for the other four" was taken at face value here when it shouldn't have been. The fix isn't per-place hand-tuning (that's the hundreds-of-hours problem back again); it's **per kind of place**, which every row of `places_raw.json` already carries as `type`.
+- [x] `FRAMING`: distance and height per kind -- Cave measured (Part 1l); NordicRuin (6,000 back, 1,500 up), Fort (4,500, 1,200) and Inn (the cave's) are first guesses, set far and high on purpose so the first look errs toward "too far" rather than "inside the wall". The five test places are one of each kind, which is exactly what makes them useful: each kind is calibrated once, on its own test place, and every other place of that kind inherits it. The bat files' own first line now says the kind and the numbers.
+- [x] Riverwood (Town) keeps its own overhead framing (`VILLAGE_HEIGHT`).
+- **At scale:** the driver reads each place's `type` from `places_raw.json`; a kind with no entry falls back to the cave's numbers, never to nothing.
+
+### Part 1o. "The new commands worked but I immediately fell into the water" (Dave, 27 Oct)
+Travel and frame both landed (the first time a frame step has run at all) -- and then gravity. `tcl` wasn't on. Two causes, both real: every toggle resets when the game restarts (and Dave had just restarted it after the sweep), and `tcl`/`tai` act on whatever the console has *selected*, falling back to the player only when nothing is -- every person file selects an NPC with `prid`, and so does clicking on anything with the console open.
+- [x] `wo158-start.txt` and `wo158-end.txt` begin with `prid 14` (the player's own form id, always), so both toggles land on the player regardless of what was selected last.
+- [x] The console's own echo is the check, written into the run steps: after `bat wo158-start` it must say `Collision -> Off` and `AI -> Off`; if either says `On` (start run twice in one session), one `tcl`/`tai` by hand. Start must be run again after every restart of the game.
+- **Checks.** 381 gamedata tests pass (per-kind framing, `prid 14` first, the Broken Oar Grotto pin to Dave's own spot).
+
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
-2. Open the console (usually `~`) and run `bat wo158-start` once. The files land in `C:\LoreRim\Stock Game\` directly (Part 1e), the folder confirmed live to work.
+2. Open the console (usually `~`) and run `bat wo158-start` -- once per launch of the game, since every toggle resets on restart (Part 1o). The console must echo `Collision -> Off` and `AI -> Off`; if either says `On`, type that one (`tcl` or `tai`) by hand. The files sit in `C:\LoreRim\Stock Game\` and `C:\LoreRim\overwrite\Root\` (Parts 1e, 1m), both confirmed live to work.
 3. For each of the five places (slugs: `broken-oar-grotto`, `bleak-falls-barrow`, `fort-hraggstad`, `riverwood`, `winking-skeever-outside`), five steps, closing the console (`~`) after each file so the game applies it (Part 1k):
    `bat wo158-place-<slug>` -> close the console, wait for the place to load ->
    `bat wo158-frame-<slug>` -> close the console, check the view ->
@@ -5231,7 +5248,7 @@ The two-step worked: floating, facing the grotto. But 300 up and 700 back from t
    For the Winking Skeever's inside comparison shot, walk through the door by hand afterwards and shoot again, same settings otherwise.
 4. Run `bat wo158-photoroom-setup` once and close the console to let it load; then for each of the five people: `bat wo158-person-<slug>` (`lucan-valerius`, `jaree-ra`, `mjoll-the-lioness`, `captain-aldis`, `delphine`), close the console, check the view, then the same `wo158-toggle-hud` / screenshot / `wo158-toggle-hud` as step 3.
 5. Run `bat wo158-end` once, when all ten are taken.
-6. Pictures land in `C:\LoreRim\Stock Game\` (confirmed live, Part 1j -- the game's own root, the same folder the bat files sit in); move or rename the ten into `C:\LoreRim\_fieldguide\screens\wo158\` as the order's own naming asks (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`, …).
+6. Pictures land as `ScreenshotNNN.png` in the game root while the game runs and are moved to `C:\LoreRim\overwrite\Root\` when it closes (Part 1m; the `CS_*.png` in `overwrite\Root\screenshots\` are Community Shaders' copies of the same shots). Move or rename the ten into `C:\LoreRim\_fieldguide\screens\wo158\` as the order's own naming asks (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`, …).
 
 ### Report for Dave and Bob
 - [ ] The 10 pictures, staged for Bob to send to Dave.

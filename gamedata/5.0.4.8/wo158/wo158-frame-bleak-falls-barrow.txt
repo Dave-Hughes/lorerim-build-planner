@@ -1,6 +1,6 @@
-; Bleak Falls Barrow -- of four doors, the one nearest the marker; the other three are side/interior exits (frame; run after the place has loaded)
-player.setpos x -790.2
-player.setpos y -42254.9
-player.setpos z 6470.6
-player.setangle x 8.9
+; Bleak Falls Barrow (NordicRuin: 6000 back, 1500 up) -- of four doors, the one nearest the marker; the other three are side/interior exits (frame; run after the place has loaded)
+player.setpos x 2364.2
+player.setpos y -40738.4
+player.setpos z 7580.6
+player.setangle x 14.0
 player.setangle z -115.7

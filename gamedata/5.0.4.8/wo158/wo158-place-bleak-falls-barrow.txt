@@ -1,4 +1,4 @@
-; Bleak Falls Barrow -- of four doors, the one nearest the marker; the other three are side/interior exits (travel; then wait for the load)
+; Bleak Falls Barrow (NordicRuin: 6000 back, 1500 up) -- of four doors, the one nearest the marker; the other three are side/interior exits (travel; then wait for the load)
 fw SClearSkySN
 set gamehour to 12
 player.moveto BleakFallsBarrowMapMarkerREF

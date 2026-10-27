@@ -115,10 +115,27 @@ TIME_FROZEN = "0.0001"  # never "0" -- a true zero can hang a heavily scripted i
 # 17.86, yaw 218.02). That spot is within 120 units of the marker-to-door line, 2,493 units back from the door
 # along it, 387 above the marker (622 above the door, which sits downhill inside the hill), facing 218 -- half a
 # degree off the computed bearing. The first guess (300 up, 700 back) had put the camera inside the cave mouth.
-HEIGHT = 390.0       # units above the higher of the marker's and the door's own ground
-DISTANCE = 2500.0    # units back from the entrance door, along the line from the map marker through the door
+HEIGHT = 390.0       # units above the higher of the marker's and the door's own ground (a cave's; see FRAMING)
+DISTANCE = 2500.0    # units back from the entrance door, along the line from the map marker through the door (a cave's)
 VILLAGE_HEIGHT = 1500.0  # a village (Riverwood) is shot from above its own centre: this far up, 60 degrees down. Not yet seen live.
 FOV = 70.0           # degrees, `fov <n>`
+
+# Part 1n (Dave, 27 Oct: "some locations are huge ... Bleak Falls Barrow is massive and the same camera angle
+# won't work"): one cave's numbers can't be a mountain ruin's. The distance and height are set per *kind* of
+# place -- the `type` every row of places_raw.json already carries -- calibrated once per kind on the test's
+# own five (one of each), and inherited by every other place of that kind. Only Cave is measured so far
+# (Broken Oar Grotto, Part 1l); the rest are first guesses, deliberately far and high so the first look errs
+# toward "too far" rather than "inside the wall", to be read off Dave's own framing the same way Cave's was.
+FRAMING = {
+    "Cave":       {"distance": DISTANCE, "height": HEIGHT},   # measured, Part 1l
+    "NordicRuin": {"distance": 6000.0, "height": 1500.0},    # guess: Bleak Falls Barrow
+    "Fort":       {"distance": 4500.0, "height": 1200.0},    # guess: Fort Hraggstad
+    "Inn":        {"distance": 2500.0, "height": 390.0},     # guess: a building from the street, the cave's numbers
+}
+
+
+def framing_for(kind):
+    return FRAMING.get(kind, FRAMING["Cave"])
 # No fixed tilt: the pitch is derived so the door sits in the middle of the frame (14 degrees here; Dave's own
 # 17.9 looked a touch below it, at the mouth) -- see pitch_to.
 
@@ -126,18 +143,18 @@ PEOPLE_DISTANCE = 150.0  # units the camera stands back from the person's own ma
 PEOPLE_HEIGHT = 65.0     # units up from the floor -- roughly head height on a standing adult race
 
 PLACES = [
-    # name, slug, moveto target, note, marker pos (x,y,z) or None, entrance door pos (x,y,z) or None
+    # name, slug, moveto target, note, marker pos (x,y,z), entrance door pos (x,y,z) or None, kind (places_raw.json's own `type`)
     ("Broken Oar Grotto", "broken-oar-grotto", "000B77C3", "Skyrim.esm's own map marker, no EditorID of its own",
-     (-66962.9, 141812.0, -13643.3), (-67668.4, 140893.4, -13878.0)),
+     (-66962.9, 141812.0, -13643.3), (-67668.4, 140893.4, -13878.0), "Cave"),
     ("Bleak Falls Barrow", "bleak-falls-barrow", "BleakFallsBarrowMapMarkerREF",
      "of four doors, the one nearest the marker; the other three are side/interior exits",
-     (1482.5, -41162.3, 5726.5), (-3043.3, -43338.2, 6080.6)),
+     (1482.5, -41162.3, 5726.5), (-3043.3, -43338.2, 6080.6), "NordicRuin"),
     ("Fort Hraggstad", "fort-hraggstad", "FortHraggstadMapMarker",
      "of three gates, the one nearest the marker",
-     (-112292.0, 114083.4, -5402.3), (-112958.4, 114528.3, -5338.6)),
+     (-112292.0, 114083.4, -5402.3), (-112958.4, 114528.3, -5338.6), "Fort"),
     ("Riverwood", "riverwood", "RiverwoodLocationCenterMarker",
      "a village, not a single entrance -- framed from above its own centre marker instead",
-     (22242.7, -44616.1, -135.5), None),
+     (22242.7, -44616.1, -135.5), None, "Town"),
 ]
 
 # The Winking Skeever has no outdoor map marker (it's an interior inn), so there's no marker-to-door vector to
@@ -178,8 +195,8 @@ def yaw_to(from_xy, to_xy):
     return yaw - 360 if yaw > 180 else yaw
 
 
-def entrance_camera(marker, entrance):
-    """Camera (x, y, z, yaw): back from the entrance along the marker-to-entrance line -- on the approach side,
+def entrance_camera(marker, entrance, distance=DISTANCE, height=HEIGHT):
+    """Camera (x, y, z, yaw, pitch): back from the entrance along the marker-to-entrance line -- on the approach side,
     where the marker is, not past the entrance in the direction of travel -- raised, facing the entrance.
     Never the marker's own rotation (see the module docstring).
 
@@ -193,10 +210,10 @@ def entrance_camera(marker, entrance):
     dx, dy = entrance[0] - marker[0], entrance[1] - marker[1]
     d = math.hypot(dx, dy) or 1.0
     ux, uy = dx / d, dy / d  # unit vector, marker -> entrance (the approach direction)
-    cx, cy = entrance[0] - ux * DISTANCE, entrance[1] - uy * DISTANCE
+    cx, cy = entrance[0] - ux * distance, entrance[1] - uy * distance
     # Part 1l: the door can sit downhill, inside the hill (Broken Oar Grotto's is 235 units below its own
     # marker), so "HEIGHT above the door" was barely above the beach. Measure from the higher of the two.
-    cz = max(marker[2], entrance[2]) + HEIGHT
+    cz = max(marker[2], entrance[2]) + height
     yaw = yaw_to((cx, cy), (entrance[0], entrance[1]))
     return cx, cy, cz, yaw, pitch_to((cx, cy, cz), entrance)
 
@@ -209,23 +226,29 @@ def pitch_to(camera, target):
     return math.degrees(math.atan2(camera[2] - target[2], horizontal))
 
 
-def door_camera(door_pos, door_yaw):
+def door_camera(door_pos, door_yaw, distance=DISTANCE, height=HEIGHT):
     """Camera (x, y, z, yaw, pitch): back from a door along its own facing (not a marker-to-door vector --
     there's no marker to measure from), raised, facing back and down at the door."""
     rad = math.radians(door_yaw)
     ux, uy = math.sin(rad), math.cos(rad)  # the direction the door's own rotation points, same convention as yaw_to
-    cx, cy = door_pos[0] + ux * DISTANCE, door_pos[1] + uy * DISTANCE
-    cz = door_pos[2] + HEIGHT
+    cx, cy = door_pos[0] + ux * distance, door_pos[1] + uy * distance
+    cz = door_pos[2] + height
     yaw = yaw_to((cx, cy), (door_pos[0], door_pos[1]))
     return cx, cy, cz, yaw, pitch_to((cx, cy, cz), door_pos)
 
 
 def start_lines():
-    return ["tcl", "tai", f"fw {CLEAR_WEATHER}", "set gamehour to 12", f"sgtm {TIME_FROZEN}", f"fov {FOV}"]
+    # `prid 14` first (Part 1o): `tcl` and `tai` act on whatever the console has selected, and only fall back
+    # to the player when nothing is. After any `prid` (every person file; clicking on anything with the console
+    # open) they'd act on that instead. 14 is the player's own form id, always. Found live: Dave fell into the
+    # sea the moment a frame placed him over it -- collision was on. Each is a toggle, so a restart resets them
+    # and running this file twice in one session turns them back off: the console's own echo is the check
+    # (`Collision -> Off`, `AI -> Off`), and one more `tcl`/`tai` by hand if it says On.
+    return ["prid 14", "tcl", "tai", f"fw {CLEAR_WEATHER}", "set gamehour to 12", f"sgtm {TIME_FROZEN}", f"fov {FOV}"]
 
 
 def end_lines():
-    return ["tai", "tcl", "sgtm 1"]
+    return ["prid 14", "tai", "tcl", "sgtm 1"]
 
 
 def hud_toggle_lines():
@@ -252,11 +275,12 @@ def travel_lines(target):
     return [f"fw {CLEAR_WEATHER}", "set gamehour to 12", f"player.moveto {target}"]
 
 
-def frame_lines(marker=None, entrance=None):
+def frame_lines(marker=None, entrance=None, kind="Cave"):
     """`wo158-frame-<slug>.txt`: the camera's own position and angle, run by hand once the place has loaded.
-    No `moveto` in here, ever -- see `travel_lines`."""
+    No `moveto` in here, ever -- see `travel_lines`. `kind` picks the distance and height (FRAMING, Part 1n)."""
     if marker and entrance:
-        return camera_setpos_lines(*entrance_camera(marker, entrance))
+        f = framing_for(kind)
+        return camera_setpos_lines(*entrance_camera(marker, entrance, f["distance"], f["height"]))
     if marker:
         # Riverwood: no single entrance to aim at -- VILLAGE_HEIGHT above its own centre marker, 60 degrees down.
         # The player is already standing on the marker after the travel step, so only z and the tilt change.
@@ -301,16 +325,17 @@ def build(base):
     write(os.path.join(base, "wo158-start.txt"), start_lines())
     write(os.path.join(base, "wo158-end.txt"), end_lines())
     write(os.path.join(base, "wo158-toggle-hud.txt"), hud_toggle_lines())
-    for name, slug, target, note, marker, entrance in PLACES:
-        head = f"; {name}" + (f" -- {note}" if note else "")
+    for name, slug, target, note, marker, entrance, kind in PLACES:
+        f = framing_for(kind)
+        head = f"; {name} ({kind}: {f['distance']:.0f} back, {f['height']:.0f} up)" + (f" -- {note}" if note else "")
         write(os.path.join(base, f"wo158-place-{slug}.txt"), [head + " (travel; then wait for the load)"] + travel_lines(target))
-        write(os.path.join(base, f"wo158-frame-{slug}.txt"), [head + " (frame; run after the place has loaded)"] + frame_lines(marker, entrance))
-    ws = WINKING_SKEEVER_DOOR
-    ws_head = ("; The Winking Skeever (outside) -- no outdoor map marker (an interior inn); the door's own "
-               "rotation stands in for a marker-to-door vector")
+        write(os.path.join(base, f"wo158-frame-{slug}.txt"), [head + " (frame; run after the place has loaded)"] + frame_lines(marker, entrance, kind))
+    ws, f = WINKING_SKEEVER_DOOR, framing_for("Inn")
+    ws_head = (f"; The Winking Skeever (outside) (Inn: {f['distance']:.0f} back, {f['height']:.0f} up) -- no outdoor "
+               "map marker (an interior inn); the door's own rotation stands in for a marker-to-door vector")
     write(os.path.join(base, "wo158-place-winking-skeever-outside.txt"), [ws_head + " (travel)"] + travel_lines(ws["target"]))
     write(os.path.join(base, "wo158-frame-winking-skeever-outside.txt"),
-          [ws_head + " (frame)"] + camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"])))
+          [ws_head + " (frame)"] + camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"], f["distance"], f["height"])))
     write(os.path.join(base, "wo158-photoroom-setup.txt"), [f"; {PHOTO_ROOM}, the photo room; run once"] + photoroom_lines())
     all_targets = [t for _, _, t in PEOPLE]
     for name, slug, target in PEOPLE:
@@ -331,6 +356,14 @@ def main():
         if os.path.isdir(stock_game):
             wrote.append(stock_game)
             build(stock_game)
+        # Part 1m: MO2 sweeps anything the game's own root gained while it ran into `overwrite\Root` when the
+        # game closes -- it did it to all eighteen of these (Dave found his screenshots had moved the same way).
+        # `overwrite\Root` is what MO2 shows the game as its root, so it's the copy that survives a session;
+        # Stock Game is kept so the first launch after a regenerate finds them too, before any sweep.
+        overwrite_root = os.path.join(LORERIM, "overwrite", "Root")
+        if os.path.isdir(overwrite_root):
+            wrote.append(overwrite_root)
+            build(overwrite_root)
     print("wrote the bat files to:", *wrote)
 
 

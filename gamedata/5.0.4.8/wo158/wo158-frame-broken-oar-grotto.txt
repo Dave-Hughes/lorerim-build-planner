@@ -1,4 +1,4 @@
-; Broken Oar Grotto -- Skyrim.esm's own map marker, no EditorID of its own (frame; run after the place has loaded)
+; Broken Oar Grotto (Cave: 2500 back, 390 up) -- Skyrim.esm's own map marker, no EditorID of its own (frame; run after the place has loaded)
 player.setpos x -66145.6
 player.setpos y 142876.1
 player.setpos z -13253.3

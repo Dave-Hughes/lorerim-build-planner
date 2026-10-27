@@ -1,4 +1,4 @@
-; Broken Oar Grotto -- Skyrim.esm's own map marker, no EditorID of its own (travel; then wait for the load)
+; Broken Oar Grotto (Cave: 2500 back, 390 up) -- Skyrim.esm's own map marker, no EditorID of its own (travel; then wait for the load)
 fw SClearSkySN
 set gamehour to 12
 player.moveto 000B77C3
