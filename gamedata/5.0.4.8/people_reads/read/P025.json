@@ -1,0 +1,1434 @@
+[
+ {
+  "id": "Skyrim.esm:035533",
+  "name": "Hilde",
+  "race": "Elder",
+  "sex": "female",
+  "firstMeet": "In Riverwood. Once you've escaped Helgen she sits at a spot in the village until early in Before the Storm; her home is Sven and Hilde's House.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "from the end of Unbound until an early step of Before the Storm",
+    "where": "a spot in Riverwood",
+    "doing": "sitting"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours, weekdays only",
+    "where": "a spot in Riverwood",
+    "doing": "loitering, when it isn't raining (breaks off 6 to 7 pm to eat)"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "near Sven and Hilde's House, Riverwood",
+    "doing": "eating"
+   },
+   {
+    "from": "10 pm",
+    "for": "7 hours",
+    "where": "Sven and Hilde's House, Riverwood",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Her sitting spot only holds while Unbound is done and Before the Storm hasn't reached a step that has no journal text."
+  ],
+  "role": "Riverwood villager",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "She fills aliases only in three unnamed scene or dialogue quests (one shared with Sven, one with Sigrid); none is a quest a player sees."
+   },
+   {
+    "field": "day",
+    "why": "Weekends, rainy days and 7 to 10 pm have no package of her own, so the records don't say where she is then (most likely at or near home)."
+   },
+   {
+    "field": "race",
+    "why": "The record's race is the elderly race the extracts call 'Elder'."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:035533",
+   "HildeIntroSit Skyrim.esm:0EA073 (MQ101 done; Skyrim.esm:0954D9 stage 10 not done; MQ102 stage 50 not done)",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "HildeLoiter8x12 Skyrim.esm:08B828 (weekdays, fn62==0)",
+   "DefaultSleepEditorLoc22x7 Skyrim.esm:01CB15",
+   "quests Skyrim.esm:0954DD, 0954D9, 08CDBF (unnamed)",
+   "placed in Sven and Hilde's House"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347E",
+  "name": "Frodnar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Playing outdoors in Riverwood by day; he lives in Hod and Gerdur's House.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Hod and Gerdur's House, Riverwood",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Hod and Gerdur's House, Riverwood",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "a play spot in Riverwood",
+    "doing": "playing (eats noon to 1 pm); if he's near a set spot in the village, he plays near you instead (7 am to 5 pm)"
+   },
+   {
+    "from": "7 pm",
+    "for": "90 minutes",
+    "where": "Hod and Gerdur's House, Riverwood",
+    "doing": "family time"
+   },
+   {
+    "from": "8:30 pm",
+    "for": "until midnight",
+    "where": "around home, Riverwood",
+    "doing": "going about"
+   }
+  ],
+  "changes": [
+   "If Hod or Gerdur is dead, he spends 3 to 5 pm mourning at a spot in Riverwood."
+  ],
+  "role": "Riverwood villager (Hod and Gerdur's household)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "His aliases are only in three unnamed quests (shared with Hod, Gerdur, Sven, Stump and Dorthe); none is a quest a player sees."
+   },
+   {
+    "field": "day",
+    "why": "His play packages carry one weather check and many conditions the extract doesn't decode, so which play package runs on a given day isn't settled."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01347E",
+   "AIORWMournGerdurHod (GetDeadCount Hod or Gerdur)",
+   "AIORWFrodnarFamilyTime 19x1.5 in Hod and Gerdur's House",
+   "DefaultEatEditorLoc12x1",
+   "FrodnarPlayNearPlayer7x12 (GetDistance < 1000 to Skyrim.esm:08D2B7)",
+   "FrodnarPlay7x12 (fn612 checks)",
+   "DefaultEatEditorLoc6x1",
+   "DefaultSleepEditorLoc24x8",
+   "DefaultSandboxEditorLocation512",
+   "quests Skyrim.esm:0340A4, 026E55, 02610A (unnamed)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135E6",
+  "name": "Alva",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At night in the Moorside Inn, Morthal (9 pm to 3 am); by day she's down in the cellar of Alva's House.",
+  "day": [
+   {
+    "from": "9 pm",
+    "for": "6 hours",
+    "where": "Moorside Inn, Morthal",
+    "doing": "carousing"
+   },
+   {
+    "from": "3 am",
+    "for": "3 hours",
+    "where": "around Alva's House, Morthal",
+    "doing": "going about"
+   },
+   {
+    "from": "6 am",
+    "for": "14 hours",
+    "where": "the cellar, Alva's House, Morthal",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 pm",
+    "for": "1 hour",
+    "where": "around Alva's House, Morthal",
+    "doing": "going about"
+   }
+  ],
+  "changes": [
+   "Laid to Rest: once you've shown her journal to the Jarl, she's in Movarth's Lair, outside Morthal, and no longer in town."
+  ],
+  "role": "Morthal resident; the vampire behind Laid to Rest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Laid to Rest",
+    "how": "its target: you investigate her house and find her journal, which shows she's a vampire who enslaved Hroggar and had his family killed in the fire"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her home package carries checks the extract doesn't decode."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0135E6",
+   "USKPAlvaSandboxMovarthsLair (MS14 stage >= 95)",
+   "AlvaCarouse21x6 Moorside Inn",
+   "AlvaSleep6x14 Alva's Cellar",
+   "AlvaSandboxGuardHouse",
+   "MS14 alias Alva; stage 95 log; objective 70 'Investigate Alva's house'",
+   "factions MS14AlvaAndHroggar, TownMorthalFaction"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0274A5",
+  "name": "Helgi's Ghost",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Outside in Morthal after dark, during Laid to Rest ('Find Helgi after dark').",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "",
+    "where": "where she appears, Morthal",
+    "doing": "staying put"
+   }
+  ],
+  "changes": [],
+  "role": "ghost in Laid to Rest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Laid to Rest",
+    "how": "a step in it: you find her after dark while investigating the burned house"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Her placed record is outdoors in Morthal with no named cell; the records don't say exactly where in town, or how she's kept to night time."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0274A5",
+   "DefaultStayAtCurrentLocation",
+   "MS14 alias Helgi; objective 40 'Find Helgi after dark'",
+   "quest giver extract: ref Skyrim.esm:0E826B, Morthal exterior"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0135F0",
+  "name": "Hroggar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Chopping wood at Morthal's lumber camp, 9 am to 5 pm; he lives in Alva's House.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "Alva's House, Morthal",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "2 hours",
+    "where": "around Alva's House, Morthal",
+    "doing": "going about"
+   },
+   {
+    "from": "9 am",
+    "for": "8 hours",
+    "where": "the lumber camp, Morthal",
+    "doing": "chopping wood"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "around Alva's House, Morthal",
+    "doing": "going about"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Alva's House, Morthal",
+    "doing": "rousing Alva (until you've shown her journal to the Jarl)"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "around Alva's House, Morthal",
+    "doing": "going about; drinking once you've shown the Jarl Alva's journal"
+   }
+  ],
+  "changes": [
+   "After Laid to Rest is done he spends 5 to 7 pm mourning at a spot in Morthal."
+  ],
+  "role": "lumberjack; the man Morthal suspects in Laid to Rest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Laid to Rest",
+    "how": "a step in it: the fire killed his wife and child, the town suspects him, and the truth is that Alva enslaved him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His mourning and home packages carry checks the extract doesn't decode."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0135F0",
+   "AIOMorthHroggarMourn 17x2 (MS14 completed)",
+   "HroggarSleep0x7 Alva's House",
+   "MorthalHroggarWorkLumberCamp9x8",
+   "HroggarDrink20x4 (MS14 stage >= 100)",
+   "MorthalHroggarRouseAlva19x1 (MS14 stage < 100)",
+   "AlvaSandboxGuardHouse",
+   "JobLumberjackFaction",
+   "MS14 alias Hroggar; stage 20 and 95 logs"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01335B",
+  "name": "Maramal",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "At first in the Bee and Barb, Riften, held there by a short scene with Keerava and Talen-Jei; after that, in the Temple of Mara, Riften.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "until his scene in the Bee and Barb has played",
+    "where": "the Bee and Barb, Riften",
+    "doing": "standing at his spot"
+   },
+   {
+    "from": "1 am",
+    "for": "6 hours",
+    "where": "Temple of Mara, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Temple of Mara, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "17 hours",
+    "where": "Temple of Mara, Riften",
+    "doing": "tending the temple (eats 3 to 4 pm)"
+   }
+  ],
+  "changes": [
+   "Once his Bee and Barb scene (with Keerava and Talen-Jei) is done, he keeps to the Temple of Mara."
+  ],
+  "role": "priest of Mara; arranges weddings",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Bonds of Matrimony",
+    "how": "a step in it: speak to him about arranging your wedding, then attend the ceremony at the Temple of Mara"
+   },
+   {
+    "quest": "Three Wise Men",
+    "how": "a step in it: you can try to convince him to donate (optional)"
+   },
+   {
+    "quest": "The Book of Love",
+    "how": "one of its people; the journal sends you back to Dinya Balu at his temple"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The Bee and Barb package lasts until an unnamed scene quest completes; the records don't say what finishes it."
+   },
+   {
+    "field": "quests",
+    "why": "The Book of Love names him but its journal and objectives never ask you to deal with him; Dinya Balu is the one you report to."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01335B",
+   "RDSScene05MaramalStart (MQ101 done, Skyrim.esm:05CE25 not done)",
+   "RiftenMaramalEatDinner15x1",
+   "RiftenMaramalEatBreakfast7x1",
+   "RiftenMaramalSleep1x6",
+   "RiftenMaramalTempleTending0x0",
+   "JobPriestFaction",
+   "RelationshipMarriage alias TemplePriest",
+   "Sat_Orphanage objective 10",
+   "t02 alias Maramal",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A9",
+  "name": "Svari",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In Solitude, at a spot in town while Roggvir's execution plays out; she lives in Addvar's House.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "until the execution scene starts",
+    "where": "a spot in Solitude",
+    "doing": "waiting"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Addvar's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "10 hours",
+    "where": "about Solitude",
+    "doing": "playing about town (a package shared with two others)"
+   },
+   {
+    "from": "other hours",
+    "for": "",
+    "where": "around Addvar's House, Solitude",
+    "doing": "going about"
+   }
+  ],
+  "changes": [],
+  "role": "Solitude resident; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Return to Grace",
+    "how": "gives it: speak to Greta about going to the Temple of the Divines, retrieve the Amulet of Talos off Roggvir, and return it to Greta"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her 10 am to 8 pm play package is shared with two others, has no place of its own, and needs both 'not raining' and 'raining' checks to pass as the extract reads them, so it may never run; if it doesn't, she's around Addvar's House by day."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The opening package is tied to an unnamed Solitude scene quest whose prisoner alias is Roggvir; that it's his execution comes from that alias, not a quest name."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0132A9",
+   "SvariPreExecutionWaitPackage (Skyrim.esm:0B2FD9 stage < 10)",
+   "SolitudeMinetteFollowKayd10x10",
+   "DefaultSleepEditorLoc24x8",
+   "SolitudeSandboxEditorLocation512",
+   "SolitudeFreeform03 alias QuestGiver; fills Greta, Amulet of Talos, Roggvir",
+   "Skyrim.esm:0B2FD9 alias Prisoner = Roggvir"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013283",
+  "name": "Greta",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In Solitude, at a spot in town while Roggvir's execution plays out; she lives in Addvar's House.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "until the execution scene is well along",
+    "where": "a spot in Solitude",
+    "doing": "waiting"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Addvar's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "7 hours",
+    "where": "around Addvar's House, Solitude; at the Temple of the Divines once Return to Grace is done",
+    "doing": "going about / visiting the temple"
+   },
+   {
+    "from": "3 pm",
+    "for": "3 hours",
+    "where": "by a well in Solitude",
+    "doing": "going about (skipped in one kind of weather)"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "the streets near the Blue Palace, Solitude, once Tending the Flames is done and it isn't raining; otherwise around home",
+    "doing": "going about"
+   },
+   {
+    "from": "10 pm",
+    "for": "2 hours",
+    "where": "around Addvar's House, Solitude",
+    "doing": "going about"
+   }
+  ],
+  "changes": [
+   "After Return to Grace she spends 8 am to 3 pm at the Temple of the Divines.",
+   "After Tending the Flames she's out near the Blue Palace 6 to 10 pm on dry evenings.",
+   "She has a backup fish-seller package (6 am to 8 pm) that runs only once someone is dead; by its name she takes over the fish stall if the fishmonger dies."
+  ],
+  "role": "Solitude resident",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Return to Grace",
+    "how": "its target: you persuade her to go to the Temple of the Divines and bring her the Amulet of Talos from Roggvir"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The backup fish-seller package checks 'is dead' without naming who in the extract, and she has no vendor record, so whether she ever sells fish isn't settled."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013283",
+   "SolitudeOpeningGretaWait (Skyrim.esm:0B2FD9 stage < 45)",
+   "AIOSoGretaSleep",
+   "SolitudeAvenuesMarker2Sandbox18x4 (MS05 done, fn62==0)",
+   "SolitudeBackupFishmongerWork6x14 (GetDead)",
+   "SolitudeTempleVisit6x9 (SolitudeFreeform03 done)",
+   "SolitudeWellsMarker1Sandbox15x3",
+   "SolitudeSandboxEditorLocation512",
+   "SolitudeFreeform03 alias target",
+   "JobMerchantFaction, no vendor record"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013273",
+  "name": "Evette San",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At her fruit stall outdoors in Solitude, 6 am to 8 pm (at first she waits at a spot in town during Roggvir's execution).",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "until the execution scene is under way",
+    "where": "a spot in Solitude",
+    "doing": "waiting"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Evette San's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "14 hours",
+    "where": "her fruit stall, Solitude",
+    "doing": "selling"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "around Solitude",
+    "doing": "out in town, when it isn't raining; otherwise near home"
+   }
+  ],
+  "changes": [],
+  "role": "street vendor (fruit stall); quest giver",
+  "sells": "food at her fruit stall, 8 am to 8 pm; she shares the food-and-drink buy list most innkeepers use",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Spiced Wine",
+    "how": "gives it: convince Vittoria Vici to release the Spiced Wine shipment, then tell Evette"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her vendor chest isn't resolved to items; 'fruit' comes from her stall faction and work package."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013273",
+   "SolitudeOpeningEvetteWait Skyrim.esm:0A3BD2 (Skyrim.esm:0B2FD9 stage < 30)",
+   "SolitudeFruitSellerWork6x14 Skyrim.esm:06967C",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "AIOSoRandomNight AI Overhaul.esp:004F9E (fn62==0)",
+   "vendor 8-20, buy list shared with 111 inn and food sellers",
+   "JobMerchantFaction, JobStreetVendorFaction, ServicesSolitudeFruitEvette",
+   "SolitudeFreeform06 alias Questgiver"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013398",
+  "name": "Frabbi",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Working in the Silver-Blood Inn, Markarth.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "16 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "working the inn"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "works the Silver-Blood Inn with Kleppr: innkeeper, serves, rents rooms",
+  "sells": "inn food and drink, at any hour; the same buy list as most innkeepers",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "Her aliases are only in five unnamed quests (shared with Kleppr and Hreinn); none is a quest a player sees."
+   },
+   {
+    "field": "sells",
+    "why": "Her vendor chest isn't resolved to items."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013398",
+   "MarkarthSilverBloodInnWork20x4Package Skyrim.esm:0F9954",
+   "MarkarthSilverBloodInnWork8x12Package Skyrim.esm:0F9953",
+   "DefaultSleepEditorLocNoLock24x8 Skyrim.esm:0F9955",
+   "vendor 0-24",
+   "JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction, JobInnServer, ServicesMarkarthSilverFishInn",
+   "quests Skyrim.esm:025F02, 025EFB, 025EF7, 025EF3, 025EED (unnamed)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BF",
+  "name": "Fastred",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Working the fields of Fellstar Farm, Ivarstead (by Shroud Hearth Barrow).",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Fellstar Farm, Ivarstead",
+    "doing": "sleeping (up 6 to 7 am for breakfast)"
+   },
+   {
+    "from": "8 am",
+    "for": "16 hours",
+    "where": "the fields of Fellstar Farm, Ivarstead",
+    "doing": "farming (lunch 11 am to noon and dinner 3 to 4 pm at the farmhouse)"
+   },
+   {
+    "from": "7 am",
+    "for": "8 hours, Sundas only",
+    "where": "out near Pinepeak Cavern, by Ivarstead",
+    "doing": "her day off, when it isn't raining"
+   }
+  ],
+  "changes": [
+   "In The Book of Love - Fastred's Choice she can leave Ivarstead to travel with you, and may leave for good; or she decides to stay."
+  ],
+  "role": "farmer at Fellstar Farm; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "travels with you during The Book of Love - Fastred's Choice, once you've convinced her parents",
+  "marries": "no (not in the marriage pool); Fastred's Choice can end with the two of you together, blessed by Dinya Balu",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Book of Love",
+    "how": "a step in it: talk to Fastred, then her parents, then Bassianus or Klimmek"
+   },
+   {
+    "quest": "The Book of Love - Fastred's Choice",
+    "how": "gives it: suggest an alternative to her two suitors, convince her parents, travel with her, then help her decide her future"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "She isn't flagged as a follower; the travelling comes from the quest's journal, and how it works in game isn't in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "Her farming package is skipped in one kind of weather; the extract doesn't say where she goes then."
+   },
+   {
+    "field": "changes",
+    "why": "Where she lives after leaving with you, or after the quest ends, isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136BF",
+   "AIOIsFastredDayoff (Sundas 7x8, fn62==0)",
+   "IvarsteadFastredEatDinner/Lunch/BreakfastPackage",
+   "IvarsteadFastredSleepPackage",
+   "IvarsteadFastredFarmingPackage (fn149==0)",
+   "JobFarmerFaction",
+   "t02 alias Fastred",
+   "TTFA_JourneyQuest alias Fastred; stages 10-90, 200"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136C1",
+  "name": "Bassianus Axius",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In the Vilemyr Inn, Ivarstead, where he spends most of the day; he sleeps at Klimmek's House.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "Klimmek's House, Ivarstead",
+    "doing": "sleeping"
+   },
+   {
+    "from": "4 am",
+    "for": "1 hour",
+    "where": "Klimmek's House, Ivarstead",
+    "doing": "breakfast"
+   },
+   {
+    "from": "5 am",
+    "for": "17 hours",
+    "where": "Vilemyr Inn, Ivarstead",
+    "doing": "at the inn (lunch 1 to 2 pm, dinner 6 to 7 pm)"
+   },
+   {
+    "from": "5 am",
+    "for": "8 hours, Mondas, Middas and Fredas",
+    "where": "out near Pinepeak Cavern, by Ivarstead",
+    "doing": "going about, when it isn't raining"
+   }
+  ],
+  "changes": [
+   "In The Book of Love - Fastred's Choice, if Fastred leaves Ivarstead, the journal says Bassianus leaves for Riften alone."
+  ],
+  "role": "Ivarstead resident; Fastred's suitor",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Book of Love",
+    "how": "a step in it: talk to Bassianus or Klimmek about Fastred"
+   },
+   {
+    "quest": "The Book of Love - Fastred's Choice",
+    "how": "changed by it: Fastred breaks the news to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The journal says he leaves for Riften, but no package of his shows where he goes."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136C1",
+   "AIOIsBassianusRandomDays (day-of-week 9, 5x8, fn62==0)",
+   "IvarsteadBassianusSleepPackage",
+   "IvarsteadBassianusEatDinner/Lunch (Vilemyr Inn)",
+   "IvarsteadBassianusEatBreakfastPackage",
+   "IvarsteadBassianusVisitInnPackage",
+   "t02 objective 25",
+   "TTFA_JourneyQuest stage 85"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C605",
+  "name": "Maurice Jondrelle",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Most likely at Eldergleam Sanctuary (by Darkwater Crossing, Eastmarch): his only package keeps him at a spot named for Eldergleam whenever The Blessings of Nature isn't running or is past its middle.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "",
+    "where": "Eldergleam Sanctuary",
+    "doing": "staying put"
+   }
+  ],
+  "changes": [
+   "During The Blessings of Nature, before the sapling is taken, his Eldergleam package lets go and the quest has you follow him."
+  ],
+  "role": "pilgrim; part of The Blessings of Nature",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Blessings of Nature",
+    "how": "a step in it: after you fetch the Eldergleam sap, you follow Maurice"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed record is in the Temple of Kynareth, Whiterun; the package's spot only resolves to an id, and 'Eldergleam' comes from its editor id, not a place record."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C605",
+   "T03MauriceStayInEldergleam (T03 stage >= 70 or T03 not running), target Skyrim.esm:06768C",
+   "T03 alias Maurice; objective 50 'Follow Maurice'",
+   "placed in Temple of Kynareth"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B07D",
+  "name": "Brynjolf",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Outdoors in Riften by day (the journal: 'Meet Brynjolf during daytime'); later in the Ragged Flagon and the Cistern below it.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "6 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "going about"
+   },
+   {
+    "from": "2 pm",
+    "for": "6 hours",
+    "where": "the Ragged Flagon, Riften",
+    "doing": "in the bar"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "eating"
+   },
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "going about"
+   }
+  ],
+  "changes": [
+   "His Ragged Flagon and Cistern routine only runs once a guild switch is set; before that the records give him no place but his placing in Riften's streets."
+  ],
+  "role": "Thieves Guild; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Chance Arrangement",
+    "how": "gives it: his scheme with Madesi's ring"
+   },
+   {
+    "quest": "Taking Care of Business",
+    "how": "gives it: find him in the Ragged Flagon, then collect three debts"
+   },
+   {
+    "quest": "Loud and Clear",
+    "how": "gives it: follow him to Mercer Frey, then the Goldenglow job"
+   },
+   {
+    "quest": "Dampened Spirits",
+    "how": "sends you to Maven Black-Briar; you return to him at the end"
+   },
+   {
+    "quest": "Scoundrel's Folly",
+    "how": "a step in it (optional: speak to Brynjolf)"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "a step in it: you convince him of Mercer's betrayal and bring him the plans"
+   },
+   {
+    "quest": "Trinity Restored",
+    "how": "a step in it: he becomes a Nightingale with you"
+   },
+   {
+    "quest": "Blindsighted",
+    "how": "a step in it: he and Karliah join you in Irkngthand"
+   },
+   {
+    "quest": "Under New Management",
+    "how": "gives it: speak to him about becoming Guild Master"
+   },
+   {
+    "quest": "A Cornered Rat",
+    "how": "one of the Riften people you can ask about Esbern"
+   },
+   {
+    "quest": "Reparations",
+    "how": "named in it: if you're banned from the Guild"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His daytime Riften routine isn't among his own packages (it would come from the quest); 'Riften by day' is from his placed reference and the journal."
+   },
+   {
+    "field": "quests",
+    "why": "Hard Answers and Darkness Returns also hold him in an alias, but neither's journal asks anything of him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01B07D",
+   "ThievesGuildEatPackage20x2",
+   "ThievesGuildBrynjolfEatFlagon14x8 (global Skyrim.esm:1032BA == 1)",
+   "ThievesGuildBrynjolfSleep2x6 (same global)",
+   "ThievesGuildBrynjolfSandboxMultiPackage0x0 (same global)",
+   "quest giver extract: ref Skyrim.esm:020545 in Riften worldspace",
+   "TG00, TG01, TG02, TG03, TG04, TG07, TG08A, TG08B, TGLeadership, MQ202, TGBan aliases",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334D",
+  "name": "Bersi Honey-Hand",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Behind the counter of his shop, the Pawned Prawn, Riften.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "the Pawned Prawn, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "2 hours",
+    "where": "the Pawned Prawn, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "10 hours",
+    "where": "the Pawned Prawn, Riften",
+    "doing": "keeping shop (lunch 1 to 2 pm)"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Pawned Prawn, Riften",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "the streets of Riften",
+    "doing": "a night stroll, when it isn't raining"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "the Pawned Prawn, Riften",
+    "doing": "keeping shop"
+   }
+  ],
+  "changes": [
+   "While Taking Care of Business is running he stays in his shop at all hours."
+  ],
+  "role": "merchant (the Pawned Prawn); quest giver",
+  "sells": "general goods at the Pawned Prawn, 8 am to 8 pm; same buy list as Belethor's General Goods",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Taking Care of Business",
+    "how": "its target: collect his debt for Brynjolf (optional: smash his prized Dwarven Urn)"
+   },
+   {
+    "quest": "Three Wise Men",
+    "how": "a step in it: get toys from him for the orphanage"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His vendor chest isn't resolved to items; 'general goods' comes from the shared buy list."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01334D",
+   "RiftenBersiNightStroll19x4 Skyrim.esm:04466F (TG01 not running, fn62==0)",
+   "RiftenBersiEatDinner18x1",
+   "RiftenBersiEatLunch13x1",
+   "RiftenBersiEatBreakfast6x2",
+   "RiftenBersiSleep0x6",
+   "RiftenBersiShopkeeperDuringTG010x0 Skyrim.esm:10F982 (TG01 running)",
+   "RiftenBersiShopkeeper0x0 Skyrim.esm:044D2B",
+   "vendor 8-20, buy list 48cb0600 shared with Belethor",
+   "ServicesRiftenPawnedPrawn",
+   "TG01 objectives 30, 31",
+   "Sat_Orphanage objective 0",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B07C",
+  "name": "Mercer Frey",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "In the Cistern under the Ragged Flagon (Thieves Guild Headquarters), Riften, when Brynjolf brings you to him in Loud and Clear.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "",
+    "where": "the Cistern, Thieves Guild Headquarters, Riften",
+    "doing": "presiding as Guild Master"
+   }
+  ],
+  "changes": [
+   "Speaking With Silence: he meets you outside Snow Veil Sanctum and is revealed as Gallus' killer.",
+   "Blindsighted: you slay him in Irkngthand; his Cistern package stops while that quest runs."
+  ],
+  "role": "Guild Master of the Thieves Guild; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Loud and Clear",
+    "how": "a step in it: listen to Mercer Frey"
+   },
+   {
+    "quest": "Scoundrel's Folly",
+    "how": "gives it: he sends you to Gulum-Ei in Solitude; you report back to him"
+   },
+   {
+    "quest": "Speaking With Silence",
+    "how": "a step in it: meet him outside Snow Veil Sanctum; he betrays you"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "its target: you search his house for where he's gone"
+   },
+   {
+    "quest": "Blindsighted",
+    "how": "its target: slay Mercer Frey and take the Skeleton Key"
+   },
+   {
+    "quest": "Reparations",
+    "how": "named in it: if you're banned from the Guild"
+   }
+  ],
+  "canDie": "essential, but Blindsighted has you slay him",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "Where he is between Speaking With Silence and Blindsighted isn't in his own packages; only the journal places him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01B07C",
+   "ThievesGuildMercerFreyLeaderSandbox0x0 (TG08B not running)",
+   "TG02 objective 20",
+   "TG04 stages 20, 60",
+   "TG05 stages 10, 200",
+   "TG07 stage 40",
+   "TG08B objective 40, stage 45",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BA8E",
+  "name": "Mallus Maccius",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "At Honningbrew Meadery, outside Whiterun.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Honningbrew Meadery",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "14 hours",
+    "where": "Honningbrew Meadery",
+    "doing": "working (breakfast 6 to 7 am, lunch noon to 1 pm); tending the bar once Dampened Spirits is done"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Honningbrew Meadery",
+    "doing": "dinner"
+   }
+  ],
+  "changes": [
+   "After Dampened Spirits he owns Honningbrew Meadery and works its bar."
+  ],
+  "role": "Maven's man at Honningbrew Meadery; fence",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dampened Spirits",
+    "how": "a step in it: Maven sends you to him; together you frame Sabjorn, and he takes over the meadery"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "role",
+    "why": "He's in the fence faction and a Thieves Guild fence list quest, but he has no vendor record, so when he fences isn't in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "Every package of his needs a global switch to be off; if it's on, the records give him nothing."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:02BA8E",
+   "TG03MallusPostQuestSleep0x6 (global Skyrim.esm:105176 == 0, TG03 done)",
+   "HonningbrewMallusEatsDinner20x4",
+   "TG03MallusPostQuestBartender0x0 (TG03 done)",
+   "HonningbrewMallusEatsLunch12x1",
+   "HonningbrewMallusEatsBreakfast6x1",
+   "HonningbrewMallusSleeps0x6",
+   "HonningbrewMallusWorks0x0",
+   "JobFenceFaction",
+   "Skyrim.esm:0D8828 alias TGFMallusAlias",
+   "TG03 stages 20, 90",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02BA8C",
+  "name": "Sabjorn",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Behind the bar at Honningbrew Meadery, outside Whiterun.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Honningbrew Meadery",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "18 hours",
+    "where": "Honningbrew Meadery",
+    "doing": "tending the bar"
+   }
+  ],
+  "changes": [
+   "After Dampened Spirits he's in Whiterun Jail (Dragonsreach Dungeon), sleeping midnight to 6 am and idling there the rest of the day."
+  ],
+  "role": "owner of Honningbrew Meadery; merchant",
+  "sells": "mead, food and drink at Honningbrew Meadery, at any hour; the same buy list as most innkeepers",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dampened Spirits",
+    "how": "its target: you poison his mead to frame him, and he's carted off to jail"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His vendor chest isn't resolved to items; 'mead' comes from his meadery services faction."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:02BA8C",
+   "TG03SabjornPostQuestInJailSleep0x6 Skyrim.esm:101958 (TG03 done)",
+   "TG03SabjornPostQuestInJailSandbox0x0 Skyrim.esm:101959",
+   "HonningbrewSabjornSleep0x6 Skyrim.esm:04E3CD",
+   "HonningbrewSabjornBartend0x0 Skyrim.esm:04E3CE",
+   "vendor 0-24",
+   "ServicesHonningbrewMeadery",
+   "TG03 stages 30, 80",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013284",
+  "name": "Gulum-Ei",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "In the Winking Skeever, Solitude.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "",
+    "where": "the Winking Skeever, Solitude",
+    "doing": "staying at his spot"
+   }
+  ],
+  "changes": [
+   "While Scoundrel's Folly runs he leaves the inn on a daily routine you shadow, until you confront him."
+  ],
+  "role": "Thieves Guild contact; fence",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Scoundrel's Folly",
+    "how": "its target: get information from him, shadow him and confront him; he names Karliah"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "His routine during Scoundrel's Folly comes from the quest, not his own packages; the extracts don't say where it takes him."
+   },
+   {
+    "field": "role",
+    "why": "He's in the fence faction and a Thieves Guild fence list quest, but has no vendor record, so when he fences isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013284",
+   "SolitudeGulumEiPreTG04Package0x0 (TG04 not running)",
+   "JobFenceFaction",
+   "Skyrim.esm:0D8828 alias TGFGulumEiAlias",
+   "TG04 objectives 30-50, stage 200",
+   "essential flag"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0B8827",
+  "name": "Tonilia",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "In the Ragged Flagon, Riften.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "the Ragged Flagon, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "18 hours",
+    "where": "the Ragged Flagon, Riften",
+    "doing": "going about"
+   }
+  ],
+  "changes": [],
+  "role": "Thieves Guild fence and merchant; quest giver",
+  "sells": "fences goods for the Thieves Guild, at any hour, from a buy list of her own",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Meet the Family",
+    "how": "a step in it: retrieve your Thieves Guild Armor from her"
+   },
+   {
+    "quest": "Scoundrel's Folly Post",
+    "how": "gives it: exchange a piece of armor with her"
+   },
+   {
+    "quest": "Thieves Guild Caravan Fence Quest",
+    "how": "gives it: deliver Moon Sugar to Ri'saad, then return to her"
+   },
+   {
+    "quest": "Under New Management",
+    "how": "a step in it: retrieve your Guild Leader Armor from her"
+   },
+   {
+    "quest": "Reparations",
+    "how": "named in it: if you're banned from the Guild"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her buy list and chest are ids the extracts don't resolve to items."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a class name, skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0B8827",
+   "USKPThievesGuildTonillaSleep Unofficial Skyrim Special Edition Patch.esp:041301",
+   "RiftenToniliaSandboxFlagon0x0 Skyrim.esm:0B882B",
+   "vendor 0-24, buy list 874d440a used by no one else",
+   "JobMerchantFaction, JobFenceFaction, ServicesThievesGuildTonilia",
+   "TG02B objective 30",
+   "TG04Post objective 10",
+   "TGFenceCaravan objectives",
+   "TGLeadership objective 50",
+   "essential flag"
+  ]
+ }
+]
