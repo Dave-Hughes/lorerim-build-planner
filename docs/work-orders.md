@@ -5022,6 +5022,26 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-160  One page per quest line (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-159)
+
+**Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
+
+### Part 1. One page
+- [ ] Every quest line has one page, at `/quests/<line>`, built from `LinePage`. A line with a story (chapters) shows them; a line without shows its quests in order the same way, as one unnamed run. `/quests/s/<story>` redirects to its line. The story's name ("Become the Dragonborn") is the page title; "The main quest" is a tag under it.
+- [ ] The page, top to bottom, as the board: back button; title; tags; the one-paragraph pitch; **At a glance** (how it starts, level, length, quest XP, where it takes you), a full-width tinted band; then **The story** (chapters, each quest linked, its first objective, who and where as coloured chips, its XP) with **Along the way** after it; on the right, sticky, the contents, **Opens other stories** and **How it starts** in full; Information Confidence last. Everything the two old pages showed that isn't on the board (what the whole line gives, what it closes, the cultists' note on Dragonborn) goes in as its own section in the same style, after Along the way, not dropped.
+- [ ] Spoilers: every chapter and quest name shows; "Hide what's ahead" hides chapter names and quests after the first chapter, remembered per viewer.
+- [ ] The colours mean one thing each, everywhere they're used: green how to start and what's done, red levels and danger, blue places, orange people and links, gold XP and rewards, purple choices and what a quest opens. Write them into `docs/design-rules.md`.
+- [ ] Every line gets it: the main quest, Dawnguard, Dragonborn, the guilds, the Daedric lines, the mod lines. Check Dragonborn, Dawnguard (two sides: show both in the story, as two runs after the shared start) and one mod line at 1440 and 390.
+
+### Part 2. The category pages
+- [ ] Main stories as `MainStoriesPage`: the three stories only, main quest first, then Dragonborn, then Dawnguard; then "Tied to these stories" for the mod quests that sit there now. No boxes, no Tell me more.
+- [ ] The other categories (Guilds and factions, Daedric Princes, Side stories, New lands, Followers) take the same row style for their lines, with single quests listed after them.
+
+### Part 3. Checks
+- [ ] Old links to `/quests/s/...` land on the right page; the door's line and story tools return one record per line.
+- [ ] Typecheck, lint, tests, build, e2e; screenshots at 1440 and 390 of Main stories, the main quest, Dragonborn and Dawnguard.
+
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
 Status: for Bob (all six parts built; typecheck, lint, 706 unit tests, 375 gamedata tests, the build and the full e2e pass)
 
