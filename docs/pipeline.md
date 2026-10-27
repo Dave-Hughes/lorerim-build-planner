@@ -1,6 +1,6 @@
 # The pipeline: how work moves between Dave, Bob and the two Jeffs
 
-> **Paused, 23 Oct 2026, 19:35.** Every open order is `held`. Don't take one until Dave says to resume. Where each one stopped: `docs/pause-2026-10-23.md`.
+> **Resumed for Mac, 26 Oct 2026, 20:25.** Dave restarted Jeff on Mac with WO-154 (Part 1c first). Every other order stays `held` until Dave says otherwise; where each stopped: `docs/pause-2026-10-23.md`.
 
 
 Written 23 Oct 2026, after the quest work ran this way for a day. Read this before taking an order.
