@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; needs the live game -- see "Before the run" and "The test" below)
+Status: queued (PC; Bob's Part 1b, 27 Oct 13:10, then blocked again for Dave's run)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5057,6 +5057,13 @@ Checking "which screenshot key and folder LoreRim uses" meant checking which mod
 - **Not built, and not this reader's to do: the camera.** Skyrim's console has no "set the free camera's position/angle" command -- `tfc` only turns free movement on; the actual height, distance, tilt and field of view the order asks for ("pick them on Broken Oar Grotto... write them in the log") can only be set by a person looking at the screen and moving the camera by hand, with `fov <n>` for the field of view once a number is chosen. That, the throwaway save (item 1), and the actual ten shots all wait on Dave having the game open on a save made for this.
 - **Checks.** `test_wo158_shoot.py`, new (4 tests): the toggle rule, each person's own disable list, every target unique, every place file sets weather and noon before moving. 357 gamedata tests pass.
 
+### Part 1b. Bob: the camera can be set without a person (27 Oct, 13:10)
+Your note says the camera can only be framed by hand. Try setting it through the player before `tfc`: the free camera starts from where the player's camera is, so put the player where the camera should be.
+- [ ] In each place's file, after `player.moveto <marker>`: `tcl` off collision is already a toggle, so leave it to the start file; then `player.setpos x/y/z` to the marker's own position plus an offset (back along the entrance's facing and up, worked out by `wo158_shoot.py` from the marker's position and rotation in `places_raw.json`), then `player.setangle x 35` (tilt down) and `player.setangle z <facing toward the marker>`. Add `tcl` and first person (`tfc` after) to the start file with the other toggles.
+- [ ] The height, distance and `fov` as numbers at the top of `wo158_shoot.py`, one place to change them after Dave's first look at Broken Oar Grotto.
+- [ ] The same for the photo room: the person moved to a fixed spot, the player set at a fixed distance facing them at head height.
+- [ ] Write in the log that this is untested until Dave runs it, and what Dave should change if the framing is off (the three numbers). Then `Status: blocked (PC)` for Dave's run, with the exact steps for him in plain words: which save, which file to run first, which per shot, and where the pictures land.
+
 ### Report for Dave and Bob
 - [ ] The 10 pictures, staged for Bob to send to Dave.
 - [ ] How long each took (travel, load, shot), what failed (a person who wouldn't come, a place that loaded dark, an NPC walking into frame, the HUD showing), and what the program needed by hand from Dave.
@@ -5064,7 +5071,7 @@ Checking "which screenshot key and folder LoreRim uses" meant checking which mod
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
-Status: for Bob (built 27 Oct; screenshots of every page are listed in Jeff's notes)
+Status: queued (Mac; Bob's review, Part 8, 27 Oct 13:10)
 
 **Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
 
@@ -5108,6 +5115,21 @@ Status: for Bob (built 27 Oct; screenshots of every page are listed in Jeff's no
 - **Preview** on a link to a person, place or quest: after 350 ms of hover or focus, a small card from `/api/preview?href=…` (icon, name, "Solitude | Guard captain", and one fact: the quest it gives, what it trains, the danger, how a quest starts). None on a touch screen. It is on every `Linked` name and on the lists of quests, places and people on the three pages; the search results and landing lists have plain links.
 - **Phone (390).** A menu button before the brand opens Characters, World (with its icons) and Guide; the search opens full screen; the hero keeps the scene and the title at 64 px; the strip of recent characters scrolls sideways.
 - **Checks.** Typecheck, lint, 349 gamedata tests, 703 unit tests (the 7 known marks), build; e2e 411 in the full run, 5 test updates after it (the nav, the tour offer, `No characters match.`) and the affected files rerun green on the final build (`wo157`, 8 tests, new). Screenshots, in `/tmp/s157/` on this Mac: `home-full.png`, `home-390.png`, `quest.png`, `quest-390.png`, `person.png`, `person-390.png`, `place.png`, `line.png`, `people.png`, `quests.png`, `world-panel.png`.
+
+### Part 8. Bob's review on the staging preview (27 Oct, 13:10)
+Checked on the preview at 1440 and 390: home, the World panel, Characters, `/playthroughs` (redirects to `/characters?run=1`), `/changes`, People, Lights Out!, The Golden Claw, Lucan Valerius, Bleak Falls Barrow, and the hover preview on Lucan. The menu, the World panel, Characters, the hover preview and Information Confidence match the boards. Fix these:
+- [ ] **Tapps sits on the Browse characters button** in the home hero: at 1440 by 900 his helmet covers the button's bottom edge, and at 390 he's on top of the button's label. Keep the buttons clear of the fire scene at every width (move the scene down, or give the hero room under the buttons).
+- [ ] **Bleak Falls Barrow's "What points here" is a wall**: about 40 quotes, most headed "Someone says", each in a box. Show the people who name the place (named speakers first, one line each, quote included) and the notes and books, and put the rest behind "All 40 lines" closed. No box per quote; a quote is italic text with the rule on its left, nothing more.
+- [ ] **Broken characters in book and note text**: "Strange note" shows `What�s`, `�ancient Nord wisdom�`. The text is read as UTF-8 but it's Windows-1252; decode it as cp1252 where it isn't valid UTF-8 (fix it in the data build, not the page). Arvel's journal also stops mid-word ("place to keep th"): show the whole text, or end on a full sentence with "…".
+- [ ] **Place summary and tag grammar**: "A nordic ruin next to it from Riverwood" and the tag "Next to it from Riverwood". Say "A Nordic ruin next to Riverwood" and "Next to Riverwood" (capital N on Nordic, from the type's own name).
+- [ ] **"Level level 40"** for the boss on the place page. One "Level".
+- [ ] **"Comes back: After 300 days once cleared, 30 ordinarily"** reads backwards. Say "In 30 days, or 300 once cleared".
+- [ ] **The Golden Claw, How to start it**: "bandits in Bleak Falls Barrow in Bleak Falls Barrow". When the place and its location are the same name, say it once.
+- [ ] **Person page, What he offers** repeats his quests ("Quests: The Golden Claw, Embershard Bandits") right beside His quests. Drop the Quests row from What he offers.
+- [ ] **Information Confidence on a person**: "Read from the game files. Not read by a reader yet." reads as a contradiction. Say "From the game files. A second reader hasn't checked this page yet."
+- [ ] **Rewards in lowercase**: "the loot from the Icerunner", "gold", "a random reward item…" start lowercase in the Rewards box. Capitalise the first letter where the text is shown as a heading.
+- [ ] Your question about the door's `checked: "a player's report, not the game files"`: keep it. It tells the assistant where a way came from, and an assistant should know that. It's only out of the pages.
+- [ ] Screenshots of each fix at 1440 and 390, then `for Bob`.
 
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: done
