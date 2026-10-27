@@ -2,8 +2,8 @@
 fw SClearSkySN
 set gamehour to 12
 player.moveto FortHraggstadMapMarker
-player.setpos x -113540.6
-player.setpos y 114917.0
+player.setpos x -112376.2
+player.setpos y 114139.6
 player.setpos z -5038.6
 player.setangle x 35.0
-player.setangle z 123.7
+player.setangle z 303.7

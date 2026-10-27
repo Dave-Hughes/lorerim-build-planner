@@ -149,12 +149,21 @@ def yaw_to(from_xy, to_xy):
 
 
 def entrance_camera(marker, entrance):
-    """Camera (x, y, z, yaw): back from the entrance along the marker-to-entrance line, raised, facing the
-    entrance -- never the marker's own rotation (see the module docstring)."""
+    """Camera (x, y, z, yaw): back from the entrance along the marker-to-entrance line -- on the approach side,
+    where the marker is, not past the entrance in the direction of travel -- raised, facing the entrance.
+    Never the marker's own rotation (see the module docstring).
+
+    Found live, 27 Oct (Part 1h): the sign here was backward. `ux, uy` is the direction from the marker toward
+    the entrance (the way a player walks in); adding that to the entrance's own position, as this did before,
+    moves further in the same direction -- past the entrance, roughly where the dungeon's own interior begins,
+    not outside it. Dave ended up on the ground facing away from Broken Oar Grotto, which fits exactly: placed
+    near or past the doorway rather than outside it, the ground is wherever that happens to be, and "facing
+    the entrance" from the wrong side doesn't look anything like the establishing shot the order asks for.
+    Subtracting instead puts the camera back on the approach side, the way into the place, not through it."""
     dx, dy = entrance[0] - marker[0], entrance[1] - marker[1]
     d = math.hypot(dx, dy) or 1.0
     ux, uy = dx / d, dy / d  # unit vector, marker -> entrance (the approach direction)
-    cx, cy = entrance[0] + ux * DISTANCE, entrance[1] + uy * DISTANCE
+    cx, cy = entrance[0] - ux * DISTANCE, entrance[1] - uy * DISTANCE
     cz = entrance[2] + HEIGHT
     yaw = yaw_to((cx, cy), (entrance[0], entrance[1]))
     return cx, cy, cz, yaw

@@ -2,8 +2,8 @@
 fw SClearSkySN
 set gamehour to 12
 player.moveto BleakFallsBarrowMapMarkerREF
-player.setpos x -3674.2
-player.setpos y -43641.5
+player.setpos x -2412.4
+player.setpos y -43034.9
 player.setpos z 6380.6
 player.setangle x 35.0
-player.setangle z 64.3
+player.setangle z 244.3

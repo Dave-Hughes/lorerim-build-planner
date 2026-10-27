@@ -2,8 +2,8 @@
 fw SClearSkySN
 set gamehour to 12
 player.moveto 000B77C3
-player.setpos x -68094.8
-player.setpos y 140338.2
+player.setpos x -67242.0
+player.setpos y 141448.6
 player.setpos z -13578.0
 player.setangle x 35.0
-player.setangle z 37.5
+player.setangle z 217.5

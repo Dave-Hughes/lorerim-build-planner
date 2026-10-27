@@ -115,15 +115,18 @@ class ShapeTest(unittest.TestCase):
         self.assertAlmostEqual(wo.yaw_to((0, 0), (-10, 0)), 270.0)
 
     def test_entrance_camera_sits_back_from_the_entrance_on_the_markers_own_side(self):
-        # The marker is due south of the entrance; the camera should land further south still (behind the
-        # marker's own approach direction), raised, facing due north back at the entrance.
+        # Found live, 27 Oct (Part 1h): the marker is due south of the entrance (a player walks north to reach
+        # it); the camera must land on that same southern, approach side -- at or past the marker, never past
+        # the entrance itself -- raised, facing north back at the entrance. The first version of this test
+        # asserted the opposite (the camera further north, past the entrance, facing south) and passed, because
+        # it was checking the same backward formula that put Dave on the ground facing away from the real place.
         marker = (0.0, 0.0, 0.0)
         entrance = (0.0, 100.0, 0.0)
         cx, cy, cz, yaw = wo.entrance_camera(marker, entrance)
         self.assertAlmostEqual(cx, 0.0, places=3)
-        self.assertGreater(cy, 100.0)  # further north than the entrance, i.e. past it along the approach
+        self.assertLess(cy, 100.0)  # south of the entrance, i.e. on the approach side, not past it
         self.assertAlmostEqual(cz, wo.HEIGHT, places=3)
-        self.assertAlmostEqual(yaw, 180.0)  # facing back south at the entrance
+        self.assertAlmostEqual(yaw, 0.0)  # facing north, at the entrance
 
     def test_entrance_camera_never_divides_by_zero_when_marker_and_entrance_coincide(self):
         p = (10.0, 20.0, 30.0)
