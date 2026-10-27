@@ -77,14 +77,30 @@ test.describe("at 1440", () => {
     await expect(tip).toContainText("Solitude");
   });
 
-  test("home signed in: the same hero, shorter, then your characters, in no framed box", async ({ page, context }) => {
+  test("home signed in is the visitor's home: the shorter hero, Recent characters, New in the world, then Your characters small and last (Part 9)", async ({ page, context }) => {
     await signIn(context);
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1, name: "LoreRim Planner" })).toBeVisible();
-    const mine = page.getByRole("region", { name: "Your characters" });
-    await expect(mine.getByRole("heading", { level: 3 }).first()).toBeVisible();
-    await expect(page.getByRole("link", { name: "Make a character", exact: true })).toHaveCount(0);
     expect((await page.locator("section[aria-label='LoreRim Planner']").boundingBox())!.height).toBeLessThan(700);
+    await expect(page.getByRole("link", { name: "Make a character", exact: true })).toHaveCount(0);
+    await expect(page.getByRole("region", { name: "New in the world" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "Three ways to use it" })).toHaveCount(0);
+    // Your characters: last, a row of covers with names that link, and the way to all of them; none of the run, drafts or Claude.
+    const mine = page.getByRole("region", { name: "Your characters" });
+    await expect(mine.getByRole("link", { name: "All my characters ›" })).toHaveAttribute("href", "/me");
+    await expect(mine.locator('a[href^="/b/"]').first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: /^(Drafts|Your Claude)$/ })).toHaveCount(0);
+    const after = await mine.evaluate((el) => {
+      let n = el.nextElementSibling;
+      let c = 0;
+      while (n) {
+        c++;
+        n = n.nextElementSibling;
+      }
+      return c;
+    });
+    expect(after).toBe(0);
+    await page.screenshot({ path: "test-results/wo157-home-signed-in-1440.png", fullPage: true });
     await page.getByRole("banner").getByRole("button", { name: /account menu/ }).click();
     await expect(page.getByRole("menuitem", { name: "My characters" })).toBeVisible();
   });
@@ -154,5 +170,13 @@ test.describe("at 390", () => {
     expect(box!.width).toBe(390);
     expect(box!.height).toBeGreaterThan(800);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+  });
+
+  test("home signed in at 390: Your characters is a row that scrolls sideways, and the page doesn't", async ({ page, context }) => {
+    await signIn(context);
+    await page.goto("/");
+    await expect(page.getByRole("region", { name: "Your characters" })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+    await page.screenshot({ path: "test-results/wo157-home-signed-in-390.png", fullPage: true });
   });
 });

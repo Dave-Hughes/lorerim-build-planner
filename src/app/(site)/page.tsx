@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { HomeHero } from "@/components/home/hero";
-import { HomeYou } from "@/components/home/you";
+import { YourCharacters } from "@/components/home/you";
 import { RecentCharacters, NewInTheWorld, ThreeWays } from "@/components/home/sections";
 import { TourOffer } from "@/components/tour/tour";
 import { tourSampleId } from "@/lib/builds/sample-config";
@@ -39,27 +39,23 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     <>
       {/* A first visit: Tapps offers the sample build (WO-80). */}
       <TourOffer href={`/b/${tourSampleId()}`} />
-      {userId ? (
-        <HomeYou userId={userId} />
-      ) : (
-        <>
-          <HomeHero line="Plan a LoreRim character from the first perk to the last quest, checked against the game's own files.">
-            <span className={styles.cta}>
-              <Link href="/new" className="btn btn-primary btn-lg">
-                Make a character
-              </Link>
-              <Link href="/characters" className="btn btn-lg">
-                Browse characters
-              </Link>
-            </span>
-          </HomeHero>
-          <main className={styles.main}>
-            <RecentCharacters builds={recent} />
-            <NewInTheWorld changes={changes} />
-            <ThreeWays playthroughs={playthroughsOn()} />
-          </main>
-        </>
-      )}
+      <HomeHero compact={!!userId} line={userId ? undefined : "Plan a LoreRim character from the first perk to the last quest, checked against the game's own files."}>
+        {userId ? null : (
+          <span className={styles.cta}>
+            <Link href="/new" className="btn btn-primary btn-lg">
+              Make a character
+            </Link>
+            <Link href="/characters" className="btn btn-lg">
+              Browse characters
+            </Link>
+          </span>
+        )}
+      </HomeHero>
+      <main className={styles.main}>
+        <RecentCharacters builds={recent} />
+        <NewInTheWorld changes={changes} />
+        {userId ? <YourCharacters userId={userId} /> : <ThreeWays playthroughs={playthroughsOn()} />}
+      </main>
     </>
   );
 }

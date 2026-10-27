@@ -5090,7 +5090,7 @@ Your note says the camera can only be framed by hand. Try setting it through the
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
-Status: building (Mac; Part 8 is pushed and passes; Dave's Part 9, 27 Oct 13:15)
+Status: for Bob (Parts 8 and 9 built; the full e2e passed after Part 8, and the specs that load / pass after Part 9)
 
 **Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
 
@@ -5160,10 +5160,15 @@ Checked on the preview at 1440 and 390: home, the World panel, Characters, `/pla
 
 ### Part 9. Signed in, home is the same home (Dave, 27 Oct, 13:15)
 Dave: being signed in doesn't mean he doesn't want Recent characters and New in the world, and he doesn't want his own builds leading the page. This replaces the signed-in home in Part 2 (`HomeYou`).
-- [ ] Signed in, `/` shows the same page a visitor gets: the hero (keep it the shorter height), Recent characters, New in the world.
-- [ ] Then **Your characters**, last and small: one row of your characters as small covers with the name, linking to each; "All my characters ›" to My characters. No objectives, no act, no drafts, no Your Claude on home; all of that stays on My characters.
-- [ ] **Three ways to use it** shows only to a visitor.
-- [ ] Screenshots signed in at 1440 and 390, then `for Bob`.
+- [x] Signed in, `/` shows the same page a visitor gets: the hero (keep it the shorter height), Recent characters, New in the world.
+- [x] Then **Your characters**, last and small: one row of your characters as small covers with the name, linking to each; "All my characters ›" to My characters. No objectives, no act, no drafts, no Your Claude on home; all of that stays on My characters.
+- [x] **Three ways to use it** shows only to a visitor.
+- [x] Screenshots signed in at 1440 and 390, then `for Bob`.
+
+### Jeff's notes on Part 9 (Mac, 27 Oct)
+- Signed in, `/` is the visitor's page with the shorter hero (the title, the search box, no line and no buttons), Recent characters and New in the world, then **Your characters** last: one row of up to six small covers with the name over a fade, each a link to its build, and "All my characters ›" to `/me`. On a phone it is a row that scrolls sideways. The objectives, the act, drafts and Your Claude are gone from home and stay on My characters; Three ways to use it shows to a visitor only. The old signed-in home component is deleted.
+- A flex quirk showed up in the screenshot: the home's `main` shrank to its content when the sections were short (a column of two recent characters), so it now has `width: 100%`.
+- Checks: typecheck, lint, 704 unit tests, the build, `wo157` (12 tests, two of them the signed-in home at 1440 and 390) and the other specs that load `/` (`wo24`, `wo80`, `wo84`, `wo84-soon`, `wo96-soon`). Screenshots: `/tmp/s157/p9/wo157-home-signed-in-1440.png` and `-390.png`, and `visitor-1440.png`.
 
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: done
