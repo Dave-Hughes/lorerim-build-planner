@@ -1,0 +1,2139 @@
+{
+ "checks": [
+  {
+   "id": "GORE.esp:6CCAA9",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 6CCAAB in Dawnstar Jail; quest_givers puts him in To Free a Raven's Jailer alias there"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "packages list is empty; only the placed cell says where he is, and the reader flags it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages, no factions; nothing in To Free a Raven's stages moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no job factions; his only tie is the Jailer alias in To Free a Raven (stage 20 'Speak to the guard about Gore's release')"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit 0874FA don't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "To Free a Raven: alias Jailer, quest_givers 'others' entry stageBelow 21; stage 0 log says you may be able to pay for Gore's release"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:002FCF",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 002FD0 in Imperial City Prison; both his quest aliases point there"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "no packages; CreatureFaction/SkeletonFaction and the edid's 'Dead' don't say whether the remains rise"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Bury Valen Dreth's only objective is 'Bury the rests of Valen Dreth at Falkreath'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "aliases myValenDreth (Bury Valen Dreth) and ValenDrethDead (Memories of the Umbranox); no job factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:023C0C doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: Bury Valen Dreth names him (objective 10); Memories of the Umbranox alias ValenDrethDead sits beside the Book aliases; whether a journal is on him isn't shown, reader flags it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:001F36",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 001F37 in Seviana's House; both quest aliases place him there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package, DefaultSandboxCurrentLocation1024 (shared by 43): sandbox near where he is"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Time for the Farewells stage 10/20: escort Seviana and Luvien to the docks of Solitude; nothing says where after, reader flags it"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only faction manny_GF_Faction_SevianaLuvien; aliases in the main quest and Farewells"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01317E doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "aliases Luvien in manny_GF_MQ (no stage text names him) and manny_GF_Farewell (objective 10 escort)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:0167FE",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Three Peaks Staff and Magic, hold Alik'r Desert per his packages"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "packages in order: Breakfast 7 for 60 min, OnDuty 8 for 600 min, Dining 18 for 240 min (exterior marker, nearest named the shop at 0.0 km), Sleep 22 for 540 min; no conditions"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction plus his own service faction; quest_givers names him giver of The Experiment by dialogue"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor list a1370900 is the one 26 spell sellers use (Tolfdir, Faralda, Neloth...), hours 8-18; the list itself doesn't resolve, reader says so"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013180 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Experiment objectives 1-4 place artifacts near Markarth, Falkreath, Windhelm, Dawnstar, objective 10 report to Ilrav; 02F26D isn't in quests_raw"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:0097A5",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Claim Shanta Filibb's alias places him in Ben Erai (exterior); his packages centre on Ben Erai Fortress"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "package order: Farming 8 for 300 min, Lunch 13 for 60, SandboxDoorEvening 14 for 300, Dinner 19, Relax 20 for 120, Sleep 22 for 600; times match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Lunch, Dinner, Relax, Sleep all need GetStage manny_GF_MQ >= 180; stage 170 is 'following Arenar to his village'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no job factions; quest_givers lists him as giver of Claim Shanta Filibb only via the stage-100 reward dialogue, so 'hands over the reward' is the right reading"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01317E doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Claim Shanta Filibb stage 100 'meet Crassius for the reward', 150 'got the key of the house from Crassius'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "HeartOfTheReach.esp:0C9186",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0CE294 in Silver-Blood Inn; stage 10 log: 'a priest I met in the Silver Blood Inn in Markarth'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "before stage 100 both mod packages fail (GetStageDone 100), so DefaultSandboxEditorLocation256 keeps him at the inn"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "SpellCast 10 am for 720 min needs GetInCell heart chamber + stage 100 done; SandboxInCave needs only stage 100; stage 100 log 'he should be there in a day'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "alias Priest, edid aaaHOTRPriest, stage 10 calls him a priest; no factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013276 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers namedGiver Gwilym; stages 10/11/60/61/100/110 give the remedy and Vinillian's poison endings"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "HLIORemi.esp:005900",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 033226 in Silver-Blood Inn; The Dwemer Specialist stage 10: 'met a Breton named Remiel at the Silverblood Inn'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "her three packages need a global == 1 or her relax/home factions; none hold before she follows, so she stays where placed"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "Reunion of the Fallen stage 200 has her stay in Arkngchal for a while after Morvic dies (objective 'Leave Remi in Arkngchal'), 210/220 you return and it becomes her workshop; the records don't show she stays there for good, and the 230 ending (you talk her out of revenge) has no Arkngchal stay"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, PotentialMarriageFaction, follower and marriageable true; quest_givers names her giver of several quests"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600 with no chest is the follower-trade list used by 215 followers, not a shop"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "The Dwemer Specialist stage 110: Remi repaired Scrap 'and has asked to accompany me'"
+    },
+    "marries": {
+     "verdict": "unsure",
+     "note": "PotentialMarriageFaction; Upgrades stage 70 'Romance Available' vs stage 60 'romance unavailable' after the four ruins; what decides it isn't in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class HLIORemi.esp:4C5F14 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quest_givers names her giver of Reunion of the Fallen (dialogue before stage 21) and of Exploring Arkngchal (before stage 2); the reader listed her only as a target / a step; 'Remi is Here!' is a map-marker helper and rightly left out"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "HLIORemi.esp:46FB2C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 46FB2D in The Winking Skeever; Reunion of the Fallen stage 45 'a sailor in the Winking Skeever who appeared out of place'"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "no packages; only the placed cell"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages; nothing in the quest moves her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only tie is alias HLIOSailorAssassin in Reunion of the Fallen"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stage 50: 'convince her to part with a key to the ship in the harbour'; alias name ties her to the assassins, reader flags hostility as unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "HLIORemi.esp:4841C0",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest_givers puts his ref 4841C2 in Riften's outdoor cell 016BE0; stage 85 'found a smuggler'"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "HLIOSmugglerPackage has no location or hours in the extract"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "one unconditioned package; nothing moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "alias Smuggler; stages 85-130 call him a smuggler"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objectives 87-130: get information, find the confiscated Skooma, check with the smuggler for news"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Inigo.esp:000D62",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 008AE9 in Riften Jail; all quest_givers entries place him there"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "inigomeetcell needs GetStage of Inigo.esp:0012DF == 0 (an unnamed quest, not Bad Vibrations as the reader's evidence says), and it sits below the Langley's House packages whose only condition is GetDisabled == 0 on an unknown subject; which one wins before you meet him isn't settled"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "InigoRelaxLangleyCabSleep 23:00 for 360 min and InigoRelaxLangleyCab in Langley's House (hold Winterhold); follow/wait/relax packages keyed to actor value 95 and teammate status"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "follow-on-foot/horse and wait packages with GetPlayerTeammate; quest_givers names him giver of Bad Vibrations"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600 with no chest is the shared follower-trade list"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "follower flag false and no PotentialFollowerFaction; his own follower quests (Requiem - Inigo 000801) carry no text; reader leaves it blank with a reason"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Inigo.esp:01F686 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Bad Vibrations stage 70 visions, Snowpoint Beacon, the cabin; the map-marker, NPC-chat and player-journey quests are helpers and rightly left out"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Inigo.esp:056C01",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 05CBFB in Langley's House; Bad Vibrations objective 110 'Find the cabin' after Snowpoint Beacon"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "packages are right (LangleySitsWait while Inigo.esp:05F27D is at stage 0, then sandbox), but 'Langley's House, Winterhold' reads as the town; his packages give the hold, and Bad Vibrations puts the cabin out past Snowpoint Beacon"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "LangleySandboxSitWithoutPlayer only adds a sandbox after Bad Vibrations completes; nothing moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "alias Actor 2 in Bad Vibrations; no factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013177 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Bad Vibrations stage 150 six Snow Thrush eggs, 165 'ask Langley about the Summon Inigo spell'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0A2C8E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "HousecarlWhiterunGreetPlayer (Dragonsreach) is her top package until she has spoken to you; her placed ref is in Breezehome"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Greet (fn50 == 0) then HousecarlWhiterunSandboxDragonsreach while a script value on 0A7B33 is 0, then USKPLydiaSandboxBreezehome"
+    },
+    "changes": {
+     "verdict": "unsure",
+     "note": "what flips the 0A7B33 variable isn't in the extracts; Thane of Whiterun's objective 'Purchase a house in Whiterun' fits the reader's 'presumably once you own Breezehome'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PlayerHousecarlFaction, PotentialFollowerFaction, PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 48cb0600 with no chest is the follower-trade list"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "fix",
+     "note": "Dragon Rising stage 160 is right but Thane of Whiterun (Favor253 alias PlayerHousecarl) is the other way: 'Purchase a house in Whiterun', then return to the quest giver"
+    },
+    "marries": {
+     "verdict": "unsure",
+     "note": "PotentialMarriageFaction, marriageable true; conditions not in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "MQ104 stage 160 'thane of Whiterun with my own personal housecarl'; Favor253 alias PlayerHousecarl; ~20 FDE/encounter quests have no names"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected true"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:03DD7E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Arena Market; quest alias ref 41CB1B there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "BaanWDDrinksSleep 23:00 for 420 min in Adimmisaru's House, BaanWDDrinksPKG 8 for 720 min in Arena Market; 20-23 uncovered, reader flags it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "The Amulet of Old stage 100: 'I've killed Adimmisaru, and resolved their quarrel'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, BaanWDDrinksFaction; quest_givers giver of The Amulet of Old"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor list f0140900 is shared by 111 inn and food sellers, hours 8-21; the list doesn't resolve"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stage 10: Ashlander of the Ahemmusa Tribe, lost heirloom amulet, suspects Varanie"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:03DD92",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Arena Market; quest alias ref 41CA8E there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "BaanWDJewellerSleep 22:00 for 480 min in Dreflas' House, market package 8 for 720 min; 20-22 uncovered, reader flags it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "The Amulet of Old stage 200: 'I've killed Varanie'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, BaanWDJewellersFaction"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor a7370900 is also Adara's and Kerah's (Markarth jewellers), hours 8-20; list doesn't resolve"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Synthesis - Requiem Patcher.esp:000009 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stages 30/33 fake amulet and bonus, 40 Krettin, 53 buys the amulet to blackmail him"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:20149D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Llynelis Manor; Daedra and Deceit stage 10 'after clearing out the Daedra in her basement'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "SOMRLlynelisMeetPKG (one spot, radius 150) while Daedra and Deceit < 5, then SOMRLlynelisPKG in Llynelis Manor"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Daedra and Deceit stages 61 (killed) and 70 (spared) after learning she worships Molag Bal"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "stage 10 'a Dunmer scholar called Llynelis'; giver of both key quests in quest_givers"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "unsure",
+     "note": "both quests carry the same story and both name her giver; her meet package keys on Daedra and Deceit's stage, which hints that one is live, but nothing settles it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected true"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:28C924",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "no placed ref in people_raw and his quest alias has no 'where'; Cormaris comes from The New Temple stage 10 and CormarisCrimeFaction"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package CormarisSadrenPKG, type 3 radius 500: near where he's placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditions on his package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "HouseofReclamationsFaction; stage 10 'an aspiring acolyte of the House of Reclamations'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Synthesis - Requiem Patcher.esp:000022 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers giver of The New Temple; stages 10-23 wood from Feldrin then stone from a captain at the Baan Malur docks"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:29BCE6",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest ref 29BD5D outdoors in Morrowind; SOMRFeldrinPKG nearest named Llerush Kwama Mine 0.1 km; stage 10 'at Cormar Crossing'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one unconditioned package around that marker, radius 512"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "stage 10 'a local lumberjack called Feldrin'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stage 11: 'needs me to get his axe back... in the nearby Kwama mine'; stage 20 shipment on its way"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:0D3FE8",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Temple of Reclamations"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "BaanTDElder02Sleep 0:00 for 360 min in Fothryn's Hut, BaanTDElderPKG 6 for 1080 min in the temple"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditions on either package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "HouseofReclamationsFaction only; no job factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013177 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "his quests list is empty and no quest_givers entry names him"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:0D3FE6",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Temple of Reclamations"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "BaanTDElder01Sleep 0:00 for 360 min in Tymen's Hut, BaanTDElderPKG 6 for 1080 min in the temple"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditions on either package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "HouseofReclamationsFaction only"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013177 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Hlervan's Ashes alias Elder01, objective 'Deliver Hlervan's Ashes to the Temple in Baan Malur'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Journey to Baan Malur.esp:3126A7",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Kar-Jei's Tent, Saxhleel Camp; stage 20 'a camp of Argonians in the Craglands south of Baan Malur'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Mor 6, Aft 12, Eve 18 (360 min each, around camp markers), Nat 0 in his tent, all need 10 < stage < 100; StartPKG (stage < 10) one spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "CleanUp 01/02 send him to The Ragged Flagon at stage >= 130 (stage 130: he survived and gave the Naming-Knife); stage 140 'Kar-Jei was killed in a raid'; 110/120 are the sell-outs"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "SOMRSaxhleelFaction; quest_givers giver of The Struggle for Justice"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no trainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013181 doesn't resolve in the extracts"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "stages 20 Dres Slaver's Camp, 90 documents from Fort Blacklight, 130 Naming-Knife"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "GORE.esp:6CCAA9",
+   "name": "Jailer",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Dawnstar Jail, during To Free a Raven, when Gore has turned himself in.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Dawnstar Jail, Dawnstar",
+     "doing": "where he's placed; he has no AI packages of his own"
+    }
+   ],
+   "changes": [],
+   "role": "jailer; a step in Gore's quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "To Free a Raven",
+     "how": "a step in it: \"Speak to the guard about Gore's release\" (you may be able to pay for it)"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "He has no packages at all, so the records only say where he's placed, not whether he's always there or only during the quest."
+    }
+   ],
+   "evidence": [
+    "GORE.esp:6CCAA9",
+    "placed in Dawnstar Jail (Skyrim.esm:0EB440) ref GORE.esp:6CCAAB",
+    "HD1GoreJailtime GORE.esp:6245B4 alias Jailer, stage 20/objective 20",
+    "class Skyrim.esm:01326B"
+   ]
+  },
+  {
+   "id": "Gray Fox Cowl.esm:002FCF",
+   "name": "Valen Dreth",
+   "race": "Skeleton",
+   "sex": "male",
+   "firstMeet": "His remains, in the Imperial City Prison (part of The Gray Cowl of Nocturnal).",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Imperial City Prison",
+     "doing": "his remains lie there; he has no AI packages"
+    }
+   ],
+   "changes": [
+    "Bury Valen Dreth has you take his remains to be buried at Falkreath."
+   ],
+   "role": "remains you can bury; quest target",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Bury Valen Dreth",
+     "how": "its target: \"Bury the rests of Valen Dreth at Falkreath\""
+    },
+    {
+     "quest": "Memories of the Umbranox",
+     "how": "a step in it: he fills a place in the hunt for Caio's journals, which go to Seviana"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "In Memories of the Umbranox the records only show his remains fill one of the quest's places next to the journals; they don't say whether a journal is on him."
+    },
+    {
+     "field": "day",
+     "why": "He is a skeleton in the creature and skeleton factions; the records don't say whether he lies dead or rises to fight."
+    }
+   ],
+   "evidence": [
+    "Gray Fox Cowl.esm:002FCF",
+    "placed ref Gray Fox Cowl.esm:002FD0 in Imperial City Prison (Gray Fox Cowl.esm:002F30)",
+    "manny_GF_BuryValenDreth Gray Fox Cowl.esm:01E072 alias myValenDreth",
+    "manny_GF_Books Gray Fox Cowl.esm:0026F4 alias ValenDrethDead",
+    "CreatureFaction, SkeletonFaction",
+    "class Skyrim.esm:023C0C"
+   ]
+  },
+  {
+   "id": "Gray Fox Cowl.esm:001F36",
+   "name": "Luvien",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "At Seviana's House, with Seviana Umbranox.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around Seviana's House",
+     "doing": "going about wherever he is (a shared 'stay near where you are' package)"
+    }
+   ],
+   "changes": [
+    "Time for the Farewells: you escort him and Seviana to the docks of Solitude."
+   ],
+   "role": "Seviana's companion; part of The Gray Cowl of Nocturnal",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Time for the Farewells",
+     "how": "a step in it: you escort him and Seviana to the docks of Solitude"
+    },
+    {
+     "quest": "The Call of Gray Cowl of Nocturnal",
+     "how": "a step in it: he is one of the people at Seviana's House in the quest; the records don't say what he does in it"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The extracts don't say which town or hold Seviana's House is in."
+    },
+    {
+     "field": "changes",
+     "why": "The records don't say where he goes after the Solitude docks."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Gray Fox Cowl.esm:001F36",
+    "placed ref Gray Fox Cowl.esm:001F37 in Seviana's House (Gray Fox Cowl.esm:001AA2)",
+    "DefaultSandboxCurrentLocation1024 Skyrim.esm:0BFB6B (shared)",
+    "manny_GF_Farewell Gray Fox Cowl.esm:01CFA7 alias Luvien",
+    "manny_GF_MQ Gray Fox Cowl.esm:001E61 alias Luvien",
+    "class Skyrim.esm:01317E"
+   ]
+  },
+  {
+   "id": "Gray Fox Cowl.esm:0167FE",
+   "name": "Ilrav Baenius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "At his shop, Three Peaks Staff and Magic, in the Alik'r Desert (Hammerfell).",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "1 hour",
+     "where": "Three Peaks Staff and Magic",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "10 hours",
+     "where": "Three Peaks Staff and Magic",
+     "doing": "minding the shop"
+    },
+    {
+     "from": "6 pm",
+     "for": "4 hours",
+     "where": "near Three Peaks Staff and Magic",
+     "doing": "dining"
+    },
+    {
+     "from": "10 pm",
+     "for": "9 hours",
+     "where": "Three Peaks Staff and Magic",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "merchant; quest giver",
+   "sells": "magic goods at Three Peaks Staff and Magic (same buy list as the College's spell sellers); trades 8 am to 6 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Experiment",
+     "how": "gives it: place his artifacts near Markarth, Falkreath, Windhelm and Dawnstar, then report the results to him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "His merchant chest's lists don't resolve to items in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He fills a place in one more Gray Cowl quest that has no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Gray Fox Cowl.esm:0167FE",
+    "manny_GF_P__Ilrav_Breakfast7x1 Gray Fox Cowl.esm:016809",
+    "manny_GF_P__Ilrav_OnDuty8x10 Gray Fox Cowl.esm:016807",
+    "manny_GF_P__Ilrav_Dining18x4 Gray Fox Cowl.esm:01680A",
+    "manny_GF_P__Ilrav_Sleep22x9 Gray Fox Cowl.esm:016808",
+    "JobMerchantFaction",
+    "vendor list a1370900 (shared with Tolfdir, Phinis Gestor, Faralda, Colette Marence), chest 35c00204, 8-18",
+    "manny_GF_IrlavExperiment Gray Fox Cowl.esm:03039F alias Irlav",
+    "Gray Fox Cowl.esm:02F26D alias Irlav (unnamed)"
+   ]
+  },
+  {
+   "id": "Gray Fox Cowl.esm:0097A5",
+   "name": "Crassius",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "At the Fortress of Ben Erai, in the Alik'r Desert (Hammerfell).",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "5 hours",
+     "where": "outside the Fortress of Ben Erai",
+     "doing": "farming"
+    },
+    {
+     "from": "1 pm",
+     "for": "1 hour",
+     "where": "inside the Fortress of Ben Erai",
+     "doing": "lunch"
+    },
+    {
+     "from": "2 pm",
+     "for": "5 hours",
+     "where": "by the door of the Fortress of Ben Erai",
+     "doing": "passing the time"
+    },
+    {
+     "from": "7 pm",
+     "for": "1 hour",
+     "where": "inside the Fortress of Ben Erai",
+     "doing": "dinner"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "inside the Fortress of Ben Erai",
+     "doing": "relaxing"
+    },
+    {
+     "from": "10 pm",
+     "for": "10 hours",
+     "where": "inside the Fortress of Ben Erai",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "His indoor packages (lunch, dinner, evening, sleep) only run once The Call of Gray Cowl of Nocturnal has reached Ben Erai (after you follow Arenar to his village); before that he only has his farming and by-the-door packages."
+   ],
+   "role": "quest giver (hands over the reward in Claim Shanta Filibb)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Claim Shanta Filibb",
+     "how": "a step in it: after you kill the bandits he gives you the key to Shanta Filibb, your new home"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Gray Fox Cowl.esm:0097A5",
+    "manny_GF_P__BenEraiFortress_Farming Gray Fox Cowl.esm:0097CB",
+    "manny_GF_P__BenEraiFortress_Lunch Gray Fox Cowl.esm:0097CF (GetStage manny_GF_MQ >= 180)",
+    "manny_GF_P__BenEraiFortress_SandboxDoorEvening Gray Fox Cowl.esm:0097CE",
+    "manny_GF_P__BenEraiFortress_Dinner Gray Fox Cowl.esm:0097D0",
+    "manny_GF_P__BenEraiFortress_Relax Gray Fox Cowl.esm:0097D1",
+    "manny_GF_P__BenEraiFortress_Sleep Gray Fox Cowl.esm:0097D2",
+    "manny_GF_MiscQuestShantaFilibb Gray Fox Cowl.esm:050159 alias Crassius, stages 100/150",
+    "manny_GF_MQ stage 170 text"
+   ]
+  },
+  {
+   "id": "HeartOfTheReach.esp:0C9186",
+   "name": "Gwilym",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "In the Silver-Blood Inn, Markarth.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Silver-Blood Inn, Markarth",
+     "doing": "around the spot he's placed (a shared package)"
+    }
+   ],
+   "changes": [
+    "Once you heal the Heart and tell him (Heart Of The Reach, remedy ending) he goes to Ever-Bog Heart Chamber, a cave in the Reach (\"he should be there in a day\"). There he works at the Heart from 10 am to 10 pm and spends the rest of the day in the chamber."
+   ],
+   "role": "priest; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Heart Of The Reach",
+     "how": "gives it: heal the \"Heart\" in Ever-Bog with the remedy he provides (or kill it with Vinillian's poison instead)"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "If you take Vinillian's poison ending instead, nothing in his packages moves him; he presumably stays at the inn, but the records don't say so outright."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "HeartOfTheReach.esp:0C9186",
+    "placed ref HeartOfTheReach.esp:0CE294 in Silver-Blood Inn (Skyrim.esm:016DFE)",
+    "aaaHOTRSpellCast HeartOfTheReach.esp:0EC8E5 (10 am, 12 h; GetInCell heart chamber and stage 100 done)",
+    "aaaHOTRSandboxInCave HeartOfTheReach.esp:0EC8E3 (stage 100 done)",
+    "DefaultSandboxEditorLocation256 Skyrim.esm:09361E",
+    "aaaHOTRQuest HeartOfTheReach.esp:0B9E71 alias Priest, stages 10/100"
+   ]
+  },
+  {
+   "id": "HLIORemi.esp:005900",
+   "name": "Remiel",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "At the Silver-Blood Inn in Markarth.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Silver-Blood Inn, Markarth",
+     "doing": "waiting where she's placed; she has no daily schedule before she follows you"
+    }
+   ],
+   "changes": [
+    "Once she follows you she goes where you go; told to relax, she stays around wherever you are; sent home, she goes to a home spot the extracts don't place.",
+    "After Morvic is dead in Reunion of the Fallen, she asks to stay a while in Arkngchal, her dwemer ruin; when you come back she has made it her workshop. If you instead talk her out of her revenge, there's no stay at Arkngchal.",
+    "If you tell her you don't want her around (the end of Upgrades), her adventures with you end."
+   ],
+   "role": "follower; can marry; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "after The Dwemer Specialist: once you've explored Nchuand-Zel together and she's repaired Scrap, she asks to accompany you",
+   "marries": "yes; her romance opens in Upgrades once you've taken her to four more dwemer ruins and talked with her about your adventures (the romance ending)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Dwemer Specialist",
+     "how": "gives it: take her to see Nchuand-Zel, the dwemer ruin under Markarth"
+    },
+    {
+     "quest": "Upgrades",
+     "how": "gives it: take her to see more dwemer ruins"
+    },
+    {
+     "quest": "Reunion of the Fallen",
+     "how": "gives it, after an assassin attacks you both: she is the assassins' target, and you investigate who wants her dead, which leads to Solitude, Riften and Arkngchal"
+    },
+    {
+     "quest": "Exploring Arkngchal",
+     "how": "gives it: she waits for you to signal the order to pull the levers, then guides you through her ruin"
+    },
+    {
+     "quest": "Real Nord Food",
+     "how": "gives it: she wants to make Chaurus Pie at Candlehearth Hall"
+    },
+    {
+     "quest": "Attuned Assassination",
+     "how": "gives it: she wants a book on Tonal Magic from the Bard's College or the College of Winterhold"
+    },
+    {
+     "quest": "We Who Challenge the Sun",
+     "how": "gives it: find Aetherium in Arkngchal for her lantern"
+    },
+    {
+     "quest": "Remi's Crossbow Crucible",
+     "how": "gives it: gather the parts for her crossbow"
+    },
+    {
+     "quest": "Picking Remi's Brain",
+     "how": "gives it: give her an iron ingot at the Markarth Forge for a tension wrench"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "None of her own packages run until she has followed you, so the records give her no schedule at the inn; she likely stands where she's placed."
+    },
+    {
+     "field": "changes",
+     "why": "Her home package points at a marker in a storage cell, which the mod presumably moves; where 'home' is isn't in the extracts."
+    },
+    {
+     "field": "marries",
+     "why": "She is in the potential marriage faction, and Upgrades' journal says the romance becomes available; the dialogue conditions for the proposal aren't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "She fills places in three more of her own quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "The records show she stays in Arkngchal for a while after Morvic dies and makes it her workshop; they don't say whether she stays there for good or will follow you again."
+    }
+   ],
+   "evidence": [
+    "HLIORemi.esp:005900",
+    "placed ref HLIORemi.esp:033226 in Silver-Blood Inn",
+    "HLIOArkngHoldingPack HLIORemi.esp:763FEF (global HLIORemi.esp:763FEE == 1)",
+    "HLIORelax HLIORemi.esp:1AA1F9 (in faction HLIORemi.esp:1AA1F8)",
+    "HLIOHomePackage HLIORemi.esp:19FFE3 (in faction HLIORemi.esp:4D0119, target in Marker Storage Unit)",
+    "PotentialFollowerFaction, PotentialMarriageFaction",
+    "vendor 48cb0600 with no chest (follower trading)",
+    "HLIOStartingQuest HLIORemi.esp:0E4852 stage 110",
+    "HLIOScrapUpgrades HLIORemi.esp:08E59F stages 60/70/80",
+    "HLIOMQ1 HLIORemi.esp:46FA55 objective 200",
+    "HLIOArkngchalManager HLIORemi.esp:6A304E",
+    "HLIOChaurusPieQuest HLIORemi.esp:59B47F",
+    "HLIOADQuest HLIORemi.esp:62E259",
+    "HLIORPLantern HLIORemi.esp:8486EB",
+    "HLIORPCrossbow HLIORemi.esp:22DCD3",
+    "HLIORPLock HLIORemi.esp:237EE7",
+    "unnamed: HLIORemi.esp:014C11, 2985FD, 3211E5"
+   ]
+  },
+  {
+   "id": "HLIORemi.esp:46FB2C",
+   "name": "Breton Sailor",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "In the Winking Skeever, Solitude, during Reunion of the Fallen.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "The Winking Skeever, Solitude",
+     "doing": "where she's placed; she has no AI packages"
+    }
+   ],
+   "changes": [],
+   "role": "a step in Remiel's quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Reunion of the Fallen",
+     "how": "a step in it: a sailor who seems out of place; pressed, she gives up a key to the ship in the harbour"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "With no packages the records only give where she's placed, not whether she's there before the quest needs her."
+    },
+    {
+     "field": "quests",
+     "why": "The quest's records tie her to the assassins; whether she turns hostile isn't shown."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "HLIORemi.esp:46FB2C",
+    "placed ref HLIORemi.esp:46FB2D in The Winking Skeever (Skyrim.esm:016A0E)",
+    "HLIOMQ1 HLIORemi.esp:46FA55 alias HLIOSailorAssassin, stages 45/50"
+   ]
+  },
+  {
+   "id": "HLIORemi.esp:4841C0",
+   "name": "Suspicious Merchant",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Outdoors in Riften, during Reunion of the Fallen.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Riften",
+     "doing": "his one package has no place or hours in the extracts"
+    }
+   ],
+   "changes": [],
+   "role": "smuggler; a step in Remiel's quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Reunion of the Fallen",
+     "how": "a step in it: the smuggler in Riften with news of Remi's family; you find his confiscated Skooma for him, and later check with him for news of Morvic"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His placed spot is in Riften's outdoor city cell; which part of the city isn't named in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "HLIORemi.esp:4841C0",
+    "placed ref HLIORemi.esp:4841C2 in Riften (Skyrim.esm:016BE0)",
+    "HLIOSmugglerPackage HLIORemi.esp:4841C4",
+    "HLIOMQ1 HLIORemi.esp:46FA55 alias Smuggler, objectives 80-130"
+   ]
+  },
+  {
+   "id": "Inigo.esp:000D62",
+   "name": "Inigo",
+   "race": "Khajiit",
+   "sex": "male",
+   "firstMeet": "In Riften Jail.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Riften Jail, Riften",
+     "doing": "waiting near where he's placed until you meet him"
+    }
+   ],
+   "changes": [
+    "Once with you he follows on foot or on horseback, waits when told, or relaxes around where you are.",
+    "He has a stay at Langley's House, Winterhold (near Snowpoint Beacon): around the cabin, sleeping there 11 pm to 5 am; the condition that switches this on isn't readable in the extracts."
+   ],
+   "role": "follower; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Bad Vibrations",
+     "how": "gives it: he suffers painful visions; you go with him to Snowpoint Beacon and on to Langley's cabin"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "He uses his own follower system; the dialogue that recruits him (and any condition) isn't in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "His wait-in-the-jail package holds only while a quest not named in the extracts is at its start, and it sits below the Langley's House packages, whose only condition (something not being disabled) names no subject here; so which of them holds before you meet him isn't certain."
+    },
+    {
+     "field": "quests",
+     "why": "He fills places in a follower quest and a banter quest with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Inigo.esp:000D62",
+    "placed ref Inigo.esp:008AE9 in Riften Jail (Skyrim.esm:0A8B23)",
+    "InigoNoMovementPackage Inigo.esp:08306E",
+    "InigoRelaxSandbox1 Inigo.esp:075B89",
+    "InigoWaitPackage Inigo.esp:056698",
+    "InigoFollowOnHorsePackage Inigo.esp:05669A",
+    "InigoFollowOnFootPackage Inigo.esp:050AED",
+    "InigoRelaxLangleyCabSleep Inigo.esp:09C815 (11 pm, 6 h)",
+    "InigoRelaxLangleyCab Inigo.esp:09C814",
+    "inigomeetcell Inigo.esp:00A0A2 (GetStage Inigo.esp:0012DF == 0, an unnamed quest)",
+    "vendor 48cb0600 with no chest (follower trading)",
+    "InigoBadVibrations Inigo.esp:0695C5 alias Actor 1",
+    "unnamed: Requiem - Inigo.esp:000801, 018InigoBanterPatch.esp:000800",
+    "InigoRelaxLangleyCab/Sleep condition: GetDisabled == 0 (subject not in the extract)"
+   ]
+  },
+  {
+   "id": "Inigo.esp:056C01",
+   "name": "Langley",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At Langley's House, near Snowpoint Beacon in Winterhold hold, during Bad Vibrations.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around Langley's House, a cabin out past Snowpoint Beacon (Winterhold hold)",
+     "doing": "going about his cabin, often sitting"
+    }
+   ],
+   "changes": [],
+   "role": "a step in Inigo's quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Bad Vibrations",
+     "how": "a step in it: he wants at least six Snow Thrush eggs, and has the Summon Inigo spell you can get a copy of"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His top package (sit and wait) is gated on a quest not in the extracts, so when he sits waiting versus wanders the cabin isn't certain."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Inigo.esp:056C01",
+    "placed ref Inigo.esp:05CBFB in Langley's House (Inigo.esp:05B595)",
+    "LangleySitsWait Inigo.esp:0618C7 (GetStage Inigo.esp:05F27D == 0)",
+    "LangleySandboxSitWithoutPlayer Inigo.esp:089DF9 (Bad Vibrations completed)",
+    "LangleyBASIC_Sandbox Inigo.esp:05CBFC",
+    "InigoBadVibrations Inigo.esp:0695C5 alias Actor 2, stages 150/165"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0A2C8E",
+   "name": "Lydia",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In Dragonsreach, Whiterun, once the Jarl makes you Thane (end of Dragon Rising, or Thane of Whiterun).",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "waiting to greet you; after you've spoken, going about Dragonsreach"
+    }
+   ],
+   "changes": [
+    "Later she lives in Breezehome, Whiterun (when the housecarl quest's setting changes, which the extracts don't spell out; presumably once you own Breezehome).",
+    "As your follower she goes where you go."
+   ],
+   "role": "housecarl; follower; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "as your housecarl once you're made Thane of Whiterun: at the end of Dragon Rising (\"my own personal housecarl\"), or through Thane of Whiterun, which asks you to buy a house in Whiterun and return to the one who set the task",
+   "marries": "yes (she is a potential spouse); the conditions aren't in the extracts",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Dragon Rising",
+     "how": "changed by it: at its end the Jarl names you thane and gives you her as your housecarl"
+    },
+    {
+     "quest": "Thane of Whiterun",
+     "how": "changed by it: becoming thane this way also gives you her as your housecarl"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Her Dragonsreach package runs while a script value on a quest not in the extracts is 0; what flips it (presumably buying Breezehome) isn't readable here."
+    },
+    {
+     "field": "quests",
+     "why": "She fills places in about twenty more quests (her own dialogue add-on, Aela's, other followers' and encounter mods) that have no name in the extracts."
+    },
+    {
+     "field": "marries",
+     "why": "She's in the potential marriage faction, but the conditions aren't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0A2C8E",
+    "HousecarlWhiterunGreetPlayer Skyrim.esm:100770 (GetTalkedToPC == 0)",
+    "HousecarlWhiterunSandboxDragonsreach Skyrim.esm:0E0EC6 (GetVMQuestVariable Skyrim.esm:0A7B33 == 0)",
+    "USKPLydiaSandboxBreezehome USSEP:00C51E",
+    "PlayerHousecarlFaction, PotentialFollowerFaction, PotentialMarriageFaction",
+    "vendor 48cb0600 with no chest (follower trading)",
+    "MQ104 Skyrim.esm:02610C alias PlayerHousecarl, stage 160",
+    "Favor253 Skyrim.esm:0A2C9E alias PlayerHousecarl",
+    "placed ref Skyrim.esm:0A2C94 in Breezehome"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:03DD7E",
+   "name": "Adimmisaru",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "At his stall in the Arena Market, Baan Malur (Morrowind).",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "his stall, Arena Market, Baan Malur",
+     "doing": "selling"
+    },
+    {
+     "from": "11 pm",
+     "for": "7 hours",
+     "where": "Adimmisaru's House, Baan Malur",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "He can be killed to settle the dispute in The Amulet of Old."
+   ],
+   "role": "merchant; quest giver",
+   "sells": "food and drink (same buy list as innkeepers and food stalls); trades 8 am to 9 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Amulet of Old",
+     "how": "gives it: an Ashlander of the Ahemmusa Tribe who has lost an heirloom amulet and suspects Varanie"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Nothing covers 8 pm to 11 pm."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:03DD7E",
+    "BaanWDDrinksSleep Journey to Baan Malur.esp:00ADE0",
+    "BaanWDDrinksPKG Journey to Baan Malur.esp:03DDE1",
+    "JobMerchantFaction",
+    "vendor f0140900, chest 17cb4107, 8-21",
+    "DefunctQuest02 Journey to Baan Malur.esp:03DD9D alias Adimmisaru, stages 10/100"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:03DD92",
+   "name": "Varanie",
+   "race": "Altmer",
+   "sex": "female",
+   "firstMeet": "At her stall in the Arena Market, Baan Malur (Morrowind).",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "her stall, Arena Market, Baan Malur",
+     "doing": "selling"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "Dreflas' House, Baan Malur",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "She can be killed to settle the dispute in The Amulet of Old."
+   ],
+   "role": "merchant; part of a quest",
+   "sells": "jewellery (same buy list as Markarth's jewellers); trades 8 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Amulet of Old",
+     "how": "a step in it: the trader Adimmisaru suspects; she gives you a fake to calm him, or points you to the Krettin, or buys the real amulet to blackmail him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Nothing covers 8 pm to 10 pm."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:03DD92",
+    "BaanWDJewellerSleep Journey to Baan Malur.esp:00ADE1",
+    "BaanWDJewellerPKG Journey to Baan Malur.esp:03DDE0",
+    "JobMerchantFaction",
+    "vendor a7370900 (shared with Adara, Kerah, Fyra Llefta), chest 6bca4107, 8-20",
+    "DefunctQuest02 Journey to Baan Malur.esp:03DD9D alias Varanie, stages 30/33/40/53/200"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:20149D",
+   "name": "Llynelis",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "At Llynelis Manor, Baan Malur, after you clear the Daedra out of her basement.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Llynelis Manor, Baan Malur",
+     "doing": "at home; before you first deal with her she waits at one spot in the manor"
+    }
+   ],
+   "changes": [
+    "At the end of Daedra and Deceit you learn she worships Molag Bal, and can kill her or spare her."
+   ],
+   "role": "scholar; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Daedra and Deceit",
+     "how": "gives it: bring her three Daedric keys; it ends with confronting her"
+    },
+    {
+     "quest": "The Secrets of Oblivion",
+     "how": "gives it: the same story of the keys and the ruin under Baan Malur"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "Daedra and Deceit and The Secrets of Oblivion tell the same story; the records don't show which one a player actually gets."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:20149D",
+    "SOMRLlynelisMeetPKG Journey to Baan Malur.esp:210A33 (GetStage SOMRLlynelisDaedricQuest < 5)",
+    "SOMRLlynelisPKG Journey to Baan Malur.esp:243FF3",
+    "SOMRLlynelisDaedricQuest Journey to Baan Malur.esp:0BA420 alias Llynelis, stages 10/50/61/70",
+    "DefunctQuest06 Journey to Baan Malur.esp:20149E alias Llynelis"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:28C924",
+   "name": "Sadren Solis",
+   "race": "",
+   "sex": "male",
+   "firstMeet": "In Cormaris (Morrowind), where he wants to build a temple.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Cormaris",
+     "doing": "around where he's placed"
+    }
+   ],
+   "changes": [],
+   "role": "aspiring acolyte of the House of Reclamations; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The New Temple",
+     "how": "gives it: help him get wood (from Feldrin) and stone to build a temple in Cormaris"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "He has no placed record in the people extract, so his race isn't given; his sex is from the quest's journal (\"himself\")."
+    },
+    {
+     "field": "firstMeet",
+     "why": "He has no placement in the extracts; Cormaris comes from his quest's journal and his crime faction."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:28C924",
+    "CormarisSadrenPKG Journey to Baan Malur.esp:0AAACB",
+    "CormarisCrimeFaction, HouseofReclamationsFaction",
+    "DefunctQuest07 Journey to Baan Malur.esp:28C8ED alias SadrenAcolyte, stage 10"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:29BCE6",
+   "name": "Feldrin",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "At Cormar Crossing, by Llerush Kwama Mine (Morrowind).",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "near Llerush Kwama Mine, Cormar Crossing",
+     "doing": "working the area"
+    }
+   ],
+   "changes": [],
+   "role": "lumberjack; a step in a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The New Temple",
+     "how": "a step in it: he'll send Sadren's wood once you bring back his axe from the nearby kwama mine"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:29BCE6",
+    "SOMRFeldrinPKG Journey to Baan Malur.esp:29BCE5 (nearest named Llerush Kwama Mine, 0.1 km)",
+    "DefunctQuest07 Journey to Baan Malur.esp:28C8ED alias Feldrin, stages 10/11/12",
+    "quest-giver ref Journey to Baan Malur.esp:29BD5D"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:0D3FE8",
+   "name": "Elder Fothryn",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "In the Temple of Reclamations, Baan Malur (Morrowind).",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "18 hours",
+     "where": "Temple of Reclamations, Baan Malur",
+     "doing": "at the temple"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Fothryn's Hut, Baan Malur",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "temple elder (House of Reclamations); no services in the records",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "No quest in the extracts names him."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:0D3FE8",
+    "BaanTDElder02Sleep Journey to Baan Malur.esp:0D3FEC",
+    "BaanTDElderPKG Journey to Baan Malur.esp:0D3FEA (shared with Elder Tymen)",
+    "HouseofReclamationsFaction"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:0D3FE6",
+   "name": "Elder Tymen",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "In the Temple of Reclamations, Baan Malur (Morrowind).",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "18 hours",
+     "where": "Temple of Reclamations, Baan Malur",
+     "doing": "at the temple"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Tymen's Hut, Baan Malur",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "temple elder (House of Reclamations)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Hlervan's Ashes",
+     "how": "a step in it: the elder at the temple you deliver Hlervan's Ashes to"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:0D3FE6",
+    "BaanTDElder01Sleep Journey to Baan Malur.esp:0D3FEB",
+    "BaanTDElderPKG Journey to Baan Malur.esp:0D3FEA",
+    "HouseofReclamationsFaction",
+    "DefunctQuest05 Journey to Baan Malur.esp:10D7F7 alias Elder01, objective 10"
+   ]
+  },
+  {
+   "id": "Journey to Baan Malur.esp:3126A7",
+   "name": "Kar-Jei",
+   "race": "Argonian",
+   "sex": "male",
+   "firstMeet": "At the Saxhleel Camp, an Argonian camp in the Craglands south of Baan Malur (Morrowind).",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "6 hours",
+     "where": "Saxhleel Camp",
+     "doing": "at his post in the camp"
+    },
+    {
+     "from": "noon",
+     "for": "6 hours",
+     "where": "around the Saxhleel Camp",
+     "doing": "going about the camp"
+    },
+    {
+     "from": "6 pm",
+     "for": "6 hours",
+     "where": "around the Saxhleel Camp",
+     "doing": "going about the camp"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Kar-Jei's Tent, Saxhleel Camp",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Before The Struggle for Justice starts he stands at one spot in the camp at all hours; the day above holds while it runs.",
+    "If you finish it his way (the documents from Fort Blacklight) the camp is raided but he survives, then moves to the Ragged Flagon in Riften.",
+    "If you sell the Saxhleel out (to the Redoran captain at Fort Blacklight or to the Dres captain) he is killed in a raid on the camp."
+   ],
+   "role": "Saxhleel leader; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Struggle for Justice",
+     "how": "gives it: free his people from the Dres Slaver's Camp, then steal military documents from Fort Blacklight; he gives you his Naming-Knife at the end"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "From the documents stage until the quest ends, none of his daily packages hold (they need the quest below that stage), and the raid package's conditions can't both be true; where he is in that gap isn't settled."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Journey to Baan Malur.esp:3126A7",
+    "SOMRSaxhleelKarJeiStartPKG Journey to Baan Malur.esp:3270BA (stage < 10)",
+    "SOMRSaxhleelKarJeiPKGMor Journey to Baan Malur.esp:317A9A",
+    "SOMRSaxhleelKarJeiPKGAft Journey to Baan Malur.esp:317A9B",
+    "SOMRSaxhleelKarJeiPKGEve Journey to Baan Malur.esp:317A9C",
+    "SOMRSaxhleelKarJeiPKGNat Journey to Baan Malur.esp:317A99 (10 < stage < 100)",
+    "SOMRSaxhleelCleanUpPKG01/02 Journey to Baan Malur.esp:4AAF93/4AAF94 (stage >= 130, The Ragged Flagon)",
+    "SOMRSaxhleelBeemPaRaidPKG Journey to Baan Malur.esp:44A749 (stage <= 100 and >= 120)",
+    "SOMRSaxhleelQuestMain Journey to Baan Malur.esp:3179BE alias KarJei, stages 20/110/120/130/140"
+   ]
+  }
+ ]
+}
