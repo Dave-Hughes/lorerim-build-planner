@@ -1,0 +1,1446 @@
+[
+ {
+  "id": "Skyrim.esm:013363",
+  "name": "Hroar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Honorhall Orphanage, Riften.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Honorhall Orphanage, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "1 hour",
+    "where": "the orphanage yard, Riften",
+    "doing": "playing in the yard"
+   },
+   {
+    "from": "3 pm",
+    "for": "1 hour",
+    "where": "Honorhall Orphanage, Riften",
+    "doing": "eating"
+   },
+   {
+    "from": "other hours",
+    "for": "",
+    "where": "in and around Honorhall Orphanage, Riften",
+    "doing": "going about the orphanage"
+   }
+  ],
+  "changes": [
+   "While a scene at the orphanage hasn't played out, he stays at a fixed spot inside Honorhall (that package sits above his daily routine).",
+   "If Constance Michel is killed before Innocence Lost is finished, he flees."
+  ],
+  "role": "orphan at Honorhall; can be adopted (Hearthfire)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Innocence Lost",
+    "how": "a step in it: one of the Honorhall children you can talk to about Grelod the Kind before she's dealt with"
+   }
+  ],
+  "canDie": "not marked essential or protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "canDie",
+    "why": "His record has neither flag; whether the game protects children some other way isn't in the extracts."
+   },
+   {
+    "field": "changes",
+    "why": "The scene package is gated on a variable in an unnamed quest; I can't tell from the extracts what ends it."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in three unnamed quests (one from Hearthfire, one from Auri's mod)."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013363",
+   "HroarHonorhallScenePackage Skyrim.esm:08BADC",
+   "RiftenHonorhallKidsYardPackage Skyrim.esm:026679",
+   "RiftenHonorhallMealPackage Skyrim.esm:02661F",
+   "HonorhallKidSleepHroar22x8 Skyrim.esm:02665D",
+   "HonorhallKidSandboxLocation512 Skyrim.esm:016CE8",
+   "ConstanceDeadFleePackage Skyrim.esm:0CB26B",
+   "BYOHRelationshipAdoptableFaction",
+   "DB01 Skyrim.esm:01EA50 HroarAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013359",
+  "name": "Francois Beaufort",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Honorhall Orphanage, Riften.",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Honorhall Orphanage, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "1 hour",
+    "where": "the orphanage yard, Riften",
+    "doing": "playing in the yard"
+   },
+   {
+    "from": "3 pm",
+    "for": "1 hour",
+    "where": "Honorhall Orphanage, Riften",
+    "doing": "eating"
+   },
+   {
+    "from": "other hours",
+    "for": "",
+    "where": "in and around Honorhall Orphanage, Riften",
+    "doing": "going about the orphanage"
+   }
+  ],
+  "changes": [
+   "While a scene at the orphanage hasn't played out, he stays at a fixed spot inside Honorhall (that package sits above his daily routine).",
+   "If Constance Michel is killed before Innocence Lost is finished, he flees."
+  ],
+  "role": "orphan at Honorhall; can be adopted (Hearthfire)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Innocence Lost",
+    "how": "a step in it: one of the Honorhall children you can talk to about Grelod the Kind before she's dealt with"
+   }
+  ],
+  "canDie": "not marked essential or protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "canDie",
+    "why": "His record has neither flag; whether the game protects children some other way isn't in the extracts."
+   },
+   {
+    "field": "changes",
+    "why": "The scene package is gated on a variable in an unnamed quest; I can't tell from the extracts what ends it."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in two unnamed quests (one from Hearthfire)."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013359",
+   "FrancoisHonorhallScenePackage Skyrim.esm:08BAD9",
+   "RiftenHonorhallKidsYardPackage Skyrim.esm:026679",
+   "RiftenHonorhallMealPackage Skyrim.esm:02661F",
+   "HonorhallKidSleepFrancois22x8 Skyrim.esm:02665F",
+   "HonorhallKidSandboxLocation512 Skyrim.esm:016CE8",
+   "ConstanceDeadFleePackage Skyrim.esm:0CB26B",
+   "BYOHRelationshipAdoptableFaction",
+   "DB01 Skyrim.esm:01EA50 FrancoisAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A6B1",
+  "name": "Vantus Loreius",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Loreius Farm, on the road north of Whiterun.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Loreius Farm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "11 hours",
+    "where": "the fields of Loreius Farm",
+    "doing": "working the farm"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Loreius Farm",
+    "doing": "supper"
+   },
+   {
+    "from": "8 pm",
+    "for": "11 hours",
+    "where": "Loreius Farm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "farmer; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Delayed Burial",
+    "how": "gives it: he wants the jester Cicero gone; you either talk him into fixing Cicero's wagon wheel or report Cicero to the nearby guard for him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills an alias in two unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A6B1",
+   "DefaultEatMorning7x1 Skyrim.esm:034BCB",
+   "LoreiusFarmSandboxWorkerPackage8x12 Skyrim.esm:057A74",
+   "DefaultEatEvening19x1 Skyrim.esm:034BCC",
+   "DBLoreiusSleepPackage Skyrim.esm:0CF070",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "JobFarmerFaction",
+   "DB01Misc Skyrim.esm:01EA4F LoreiusAlias (giver)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0550F0",
+  "name": "Cicero",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "On the road north of Whiterun by Loreius Farm, beside his wagon with a broken wheel and his mother's coffin.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "by his broken wagon near Loreius Farm",
+    "doing": "waiting with the wagon; he has only the shared stay-near-where-placed package"
+   }
+  ],
+  "changes": [
+   "This is Cicero on the road. Once Delayed Burial is resolved, the Cicero you deal with later is the one in the Dark Brotherhood Sanctuary (a separate record)."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Delayed Burial",
+    "how": "a step in it: the strange jester whose wagon wheel is broken; you help him or report him to the guard"
+   },
+   {
+    "quest": "Mourning Never Comes",
+    "how": "named in the quest; his role in it isn't clear from the records"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in Mourning Never Comes but no objective or journal entry names him there."
+   },
+   {
+    "field": "day",
+    "why": "His placed reference is in the open world with no cell name; the spot comes from the Delayed Burial journal (north of Whiterun, near Loreius Farm)."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0550F0",
+   "CiceroRoad",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "placed ref Skyrim.esm:0550F1",
+   "DB01Misc Skyrim.esm:01EA4F CiceroRoadAlias",
+   "DB03 Skyrim.esm:01EA52 CiceroRoadAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB1",
+  "name": "Cicero",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath, once you've joined the Brotherhood (With Friends Like These...).",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "going about the Sanctuary"
+   }
+  ],
+  "changes": [
+   "In The Cure for Madness he goes berserk, tries to kill Astrid and flees to the Dawnstar Sanctuary; you're sent there to kill him, or leave him."
+  ],
+  "role": "Dark Brotherhood member; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Whispers in the Dark",
+    "how": "gives it: you eavesdrop on him from the Night Mother's coffin, then talk to him"
+   },
+   {
+    "quest": "The Cure for Madness",
+    "how": "its target: kill Cicero in the Dawnstar Sanctuary, or leave"
+   },
+   {
+    "quest": "Mourning Never Comes",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "The Silence Has Been Broken",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "Bound Until Death",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "Breaching Security",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "named in the quest"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "joins",
+    "why": "His record isn't set as a follower and no recruiting dialogue is in the extracts, so I can't say whether he can join you after The Cure for Madness."
+   },
+   {
+    "field": "canDie",
+    "why": "His record is essential, yet The Cure for Madness asks you to kill him; the quest must lift that, but the extracts don't show it."
+   },
+   {
+    "field": "quests",
+    "why": "In several Brotherhood quests he fills an alias without an objective or journal line naming his part; one unnamed quest from the Taliesin mod also uses him."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01BDB1",
+   "DBDefaultCiceroSancPackage Skyrim.esm:0FF121",
+   "dunDawnstarSanctuaryCiceroFaction",
+   "DarkBrotherhoodFaction",
+   "DB04 Skyrim.esm:01EA53 (giver)",
+   "DB07 Skyrim.esm:01EA56 CiceroAlias",
+   "DB01Misc Skyrim.esm:01EA4F (dialogue before stage 11)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:043D21",
+  "name": "Imperial Soldier",
+  "race": "",
+  "sex": "male",
+  "firstMeet": "On guard at Loreius Farm, north of Whiterun.",
+  "day": [],
+  "changes": [
+   "Delayed Burial also has a Pale Hold Guard posted at the farm; which of the two you meet likely depends on who holds the Pale."
+  ],
+  "role": "guard",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Delayed Burial",
+    "how": "a step in it: the guard you can report Cicero to, lying about his offence"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His record has no AI packages in the extracts; only his placed spot at Loreius Farm is known."
+   },
+   {
+    "field": "race",
+    "why": "No race resolves for his record (he's probably levelled from a template)."
+   },
+   {
+    "field": "changes",
+    "why": "Guessing from the two guard aliases (Imperial and Pale Hold); no condition choosing between them is in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:043D21",
+   "GuardLoreiusFarmImperial",
+   "placed ref Skyrim.esm:043D20",
+   "DB01Misc Skyrim.esm:01EA4F DB01MiscGuardImperial",
+   "CWImperialFaction",
+   "IsGuardFaction"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02E3EF",
+  "name": "Alea Quintus",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Bound and hooded in the Abandoned Shack, one of Astrid's three captives in With Friends Like These...",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Abandoned Shack",
+    "doing": "tied up as a captive"
+   }
+  ],
+  "changes": [
+   "Once the quest frees the captives, she stops being bound and moves about where she is."
+  ],
+  "role": "captive in a Dark Brotherhood quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "With Friends Like These...",
+    "how": "its target: one of the three captives, and you must kill one of them; she speaks to you when you talk to the captives"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "The bound and free packages switch on a script variable in With Friends Like These...; the extracts don't say which stage sets it."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:02E3EF",
+   "DB02Captive2BoundPackage Skyrim.esm:02E3E9",
+   "DB02Captive2FreePackage Skyrim.esm:08CBFC",
+   "DB02 Skyrim.esm:01EA51 DB02Captive2Alias (giver dialogue)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB4",
+  "name": "Astrid",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In the Abandoned Shack, where you're taken captive after Innocence Lost (With Friends Like These...).",
+  "day": [
+   {
+    "from": "before you reach the Sanctuary",
+    "for": "",
+    "where": "the Abandoned Shack",
+    "doing": "standing, waiting for you to kill a captive"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "leaning at a table"
+   },
+   {
+    "from": "6 am",
+    "for": "6 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "leaning against a wall"
+   },
+   {
+    "from": "noon",
+    "for": "6 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "leaning at a table"
+   },
+   {
+    "from": "6 pm",
+    "for": "6 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "leaning against a wall"
+   }
+  ],
+  "changes": [
+   "She stays in the Abandoned Shack until you've reached the Sanctuary in With Friends Like These...; after that she's in the Sanctuary.",
+   "If you kill her instead of joining, you can never join the Brotherhood and Destroy the Dark Brotherhood! begins.",
+   "In Death Incarnate the Sanctuary is burned and she's revealed as the one who betrayed you; the quest uses a separate record for her there."
+  ],
+  "role": "leader of the Dark Brotherhood Sanctuary; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "With Friends Like These...",
+    "how": "gives it: kill one of her captives to repay your debt"
+   },
+   {
+    "quest": "Mourning Never Comes",
+    "how": "gives it: your first major contract, Muiri in Markarth"
+   },
+   {
+    "quest": "Breaching Security",
+    "how": "gives it: sends you to Gabriella"
+   },
+   {
+    "quest": "The Cure for Madness",
+    "how": "gives it: Cicero attacked her and fled"
+   },
+   {
+    "quest": "To Kill an Empire",
+    "how": "gives it"
+   },
+   {
+    "quest": "Innocence Lost",
+    "how": "named in the quest; she takes you captive after it"
+   },
+   {
+    "quest": "Whispers in the Dark",
+    "how": "a step in it: she asks you to eavesdrop on Cicero, and you talk to her after"
+   },
+   {
+    "quest": "The Silence Has Been Broken",
+    "how": "a step in it: she lets you meet Amaund Motierre; you bring her his letter and amulet"
+   },
+   {
+    "quest": "Bound Until Death",
+    "how": "a step in it: report back to her"
+   },
+   {
+    "quest": "Recipe for Disaster",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "Destroy the Dark Brotherhood!",
+    "how": "its target: killing her starts it"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "Her four leaning packages have no place in the extracts; I put them in the Sanctuary because her fallback package is there. She has no sleep package."
+   },
+   {
+    "field": "changes",
+    "why": "The shack package also checks a script variable in an unnamed quest that the extracts don't explain."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01BDB4",
+   "DBAstridShackStandFixed Skyrim.esm:0C8704",
+   "DBAstridSanctuaryTableLean1 Skyrim.esm:0E0F99",
+   "DBAstridSanctuaryWallLean1 Skyrim.esm:0E0F9C",
+   "DBAstridSanctuaryTableLean2 Skyrim.esm:0E0F9D",
+   "DBAstridSanctuaryWallLean2 Skyrim.esm:0E0F9E",
+   "DBAstridSandboxSanctuary Skyrim.esm:02E3FA",
+   "DB02 Skyrim.esm:01EA51 stage 220",
+   "DB10 Skyrim.esm:03CEDA AstridEnd Skyrim.esm:04D6D0",
+   "DBDestroy Skyrim.esm:0934FB"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:02E3E8",
+  "name": "Fultheim the Fearless",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Bound and hooded in the Abandoned Shack, one of Astrid's three captives in With Friends Like These...",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Abandoned Shack",
+    "doing": "tied up as a captive"
+   }
+  ],
+  "changes": [
+   "Once the quest frees the captives, he stops being bound and moves about where he is."
+  ],
+  "role": "captive in a Dark Brotherhood quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "With Friends Like These...",
+    "how": "its target: one of the three captives, and you must kill one of them; he speaks to you when you talk to the captives"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "The bound and free packages switch on a script variable in With Friends Like These...; the extracts don't say which stage sets it."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:02E3E8",
+   "DB02Captive1BoundPackage Skyrim.esm:02E3E7",
+   "DB02Captive1FreePackage Skyrim.esm:08CBFD",
+   "DB02 Skyrim.esm:01EA51 DB02Captive1Alias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01406B",
+  "name": "Muiri",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "The Hag's Cure, Markarth.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "The Hag's Cure, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "The Hag's Cure, Markarth",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "The Hag's Cure, Markarth",
+    "doing": "working in the shop (trades 8 am to 8 pm)"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "The Hag's Cure, Markarth",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "6 hours",
+    "where": "The Hag's Cure, Markarth",
+    "doing": "working in the shop"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "eating and drinking"
+   }
+  ],
+  "changes": [],
+  "role": "apothecary's assistant at The Hag's Cure; merchant; quest giver; can marry",
+  "sells": "apothecary goods at The Hag's Cure, 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "yes",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Mourning Never Comes",
+    "how": "gives it: she performed the Black Sacrament and wants Alain Dufont dead, with a bonus for Nilsine Shatter-Shield"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "sells",
+    "why": "Her buy/sell list and merchant chest are only raw ids in the extracts; I can't list her stock."
+   },
+   {
+    "field": "marries",
+    "why": "She's in the marriage faction and flagged marriageable, but any condition on proposing isn't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in five more unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01406B",
+   "MarkarthMuiriEatInnPackage19x5 Skyrim.esm:0753B3",
+   "MarkarthMuiriEatHomePackage12x1 Skyrim.esm:055667",
+   "MarkarthMuiriEatHomePackage6x1 Skyrim.esm:055666",
+   "MarkarthApothecaryAssistant8x12Package Skyrim.esm:0362AD",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "JobApothecaryFaction",
+   "JobMerchantFaction",
+   "PotentialMarriageFaction",
+   "DB03 Skyrim.esm:01EA52 (giver)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01B074",
+  "name": "Alain Dufont",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Raldbthar, a Dwemer ruin a short walk from Windhelm, holed up with his gang.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Raldbthar",
+    "doing": "with his gang in the ruin"
+   }
+  ],
+  "changes": [],
+  "role": "bandit leader; quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Mourning Never Comes",
+    "how": "its target: Muiri's contract is to kill him"
+   },
+   {
+    "quest": "Return Aegisbane",
+    "how": "its target: he has Aegisbane, the Shatter-Shield family warhammer, which you can take back to Torbjorn Shatter-Shield"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His only package works only inside one cell; the extracts don't name that cell, so his exact spot inside Raldbthar isn't known."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in three unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01B074",
+   "AlainDefaultSandboxPackage Skyrim.esm:023DF5",
+   "placed ref Skyrim.esm:0D2AFF in Raldbthar",
+   "BanditFriendFaction",
+   "DB03 Skyrim.esm:01EA52 AlainDufontAlias",
+   "ReturnAegisbaneQuest ReturnAegisbane.esp:000800"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01412C",
+  "name": "Nilsine Shatter-Shield",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Windhelm: the House of Clan Shatter-Shield, or Candlehearth Hall in the morning.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "2 hours",
+    "where": "Candlehearth Hall, Windhelm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "10 hours",
+    "where": "about Windhelm",
+    "doing": "out in town (she browses the market)"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "the Hall of the Dead, Windhelm (Monday to Friday)",
+    "doing": "visiting the dead"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "Windhelm (Saturday and Sunday)",
+    "doing": "praying at the temple"
+   },
+   {
+    "from": "10 pm",
+    "for": "2 hours",
+    "where": "House of Clan Shatter-Shield, Windhelm",
+    "doing": "supper"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "House of Clan Shatter-Shield, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "The daytime out-in-town routine has conditions the extracts don't decode; when they fail she stays home."
+  ],
+  "role": "quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Mourning Never Comes",
+    "how": "its target (optional): Muiri pays a bonus if you also kill her"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "The weekend prayer package has no place in the extracts; the 8 am to 6 pm package has undecoded conditions."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills aliases in two unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01412C",
+   "NilsineEatBreakfast6x2 Skyrim.esm:035E5C",
+   "AIOWHNilsine8x10 AI Overhaul.esp:0029C8",
+   "NilsineVisitBodyMTWRF18x4 Skyrim.esm:035E5B",
+   "NilsinePrayAtTempleSS18x4 Skyrim.esm:035E5A",
+   "NilsineEatDinner22x2 Skyrim.esm:035E5D",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "WindhelmMarketBrowsers",
+   "DB03 Skyrim.esm:01EA52 NilsineAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:05BF2B",
+  "name": "Rexus",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Volunruud, a Nordic ruin near Stonehills, standing guard with Amaund Motierre.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Volunruud",
+    "doing": "standing still where he's placed"
+   }
+  ],
+  "changes": [],
+  "role": "Amaund Motierre's man (shares his faction); quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Silence Has Been Broken",
+    "how": "a step in it: talk to Rexus at Volunruud"
+   },
+   {
+    "quest": "Whispers in the Dark",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "Hail Sithis!",
+    "how": "named in the quest"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:05BF2B",
+   "DefaultStayAtEditorLocation Skyrim.esm:025BFC",
+   "DBAmaundMotierreFaction",
+   "placed ref Skyrim.esm:05BF2C in Volunruud",
+   "DB04a Skyrim.esm:02AD16 RexusAlias (giver dialogue)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:03B43A",
+  "name": "Amaund Motierre",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Volunruud, a Nordic ruin near Stonehills, once Astrid sends you there in The Silence Has Been Broken.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Volunruud",
+    "doing": "waiting where he is"
+   }
+  ],
+  "changes": [
+   "For Hail Sithis! a separate Amaund Motierre waits at the Bannered Mare, Whiterun."
+  ],
+  "role": "client of the Dark Brotherhood; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Silence Has Been Broken",
+    "how": "gives it: commissions the Emperor's assassination and hands you a letter and amulet"
+   },
+   {
+    "quest": "Whispers in the Dark",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "Bound Until Death",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "named in the quest"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:03B43A",
+   "DefaultStayAtCurrentLocation Skyrim.esm:02AC7B",
+   "placed ref Skyrim.esm:03B43B in Volunruud",
+   "DB04a Skyrim.esm:02AD16 AmaundMotierreAlias",
+   "AmaundMotierreEnd Skyrim.esm:04E64F (DB11)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334B",
+  "name": "Asgeir Snow-Shod",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Riften: Black-Briar Meadery by day, the Bee and Barb in the evening; lives at Snow-Shod Manor.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "Snow-Shod Manor, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "Snow-Shod Manor, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "7 hours",
+    "where": "Black-Briar Meadery, Riften",
+    "doing": "working in the office"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "the Riften docks, near the Thieves Guild's hideout",
+    "doing": "at the docks"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Snow-Shod Manor, Riften",
+    "doing": "supper"
+   },
+   {
+    "from": "7 pm",
+    "for": "7 hours",
+    "where": "the Bee and Barb, Riften",
+    "doing": "eating and drinking"
+   }
+  ],
+  "changes": [
+   "Once Bound Until Death (or A Healing Wedding) starts, his Riften routine stops: he's the groom at his wedding to Vittoria Vici at the Temple of the Divines in Solitude."
+  ],
+  "role": "Vittoria Vici's betrothed; works at Black-Briar Meadery",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bound Until Death",
+    "how": "a step in it: the groom at the wedding where you kill Vittoria Vici"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "a step in it: one of the newlyweds you talk to at the reception"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "The Bee and Barb package has one more condition the extracts don't decode."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in five unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01334B",
+   "RiftenAsgeirBeeandBarb19x7 Skyrim.esm:044D28",
+   "RiftenAsgeirEatDinner18x1 Skyrim.esm:06D62D",
+   "RiftenAsgeirDocks16x2 Skyrim.esm:0445BE",
+   "RiftenAsgeirEatBreakfast8x1 Skyrim.esm:044D27",
+   "RiftenAsgeirSleeps2x6 Skyrim.esm:0445BB",
+   "RiftenAsgeirWorkatMeaderyOffice0x0 Skyrim.esm:0445BC",
+   "DB05 Skyrim.esm:01EA54 stage 10",
+   "DB05Alt Vittorias Alternate Wedding.esp:000800 stage 10"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C3AA",
+  "name": "Veezara",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "In the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "16 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "going about the Sanctuary"
+   }
+  ],
+  "changes": [
+   "The journal for Death Incarnate says most of the Family is killed when the Sanctuary is attacked; the records here don't say who."
+  ],
+  "role": "Dark Brotherhood assassin",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Destroy the Dark Brotherhood!",
+    "how": "its target: track down and kill Veezara"
+   },
+   {
+    "quest": "Bound Until Death",
+    "how": "a step in it: at the wedding in Solitude"
+   },
+   {
+    "quest": "Breaching Security",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "The Cure for Madness",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "named in the quest"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "canDie",
+    "why": "Essential on his record, yet Destroy the Dark Brotherhood! asks you to kill him; the quest must lift that, not shown in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "His part at the wedding isn't spelt out in the records; he also fills aliases in two unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C3AA",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "DBDestroy Skyrim.esm:0934FB VeezaraAlias",
+   "DB05 Skyrim.esm:01EA54 VeezaraAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013292",
+  "name": "Kayd",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "Solitude, at or near Bits and Pieces.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Bits and Pieces, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "10 hours",
+    "where": "by a well in Solitude",
+    "doing": "wandering near the well"
+   },
+   {
+    "from": "other hours",
+    "for": "",
+    "where": "around Bits and Pieces, Solitude",
+    "doing": "near home"
+   }
+  ],
+  "changes": [
+   "Until a Solitude opening quest is done he stays near where he's placed.",
+   "Under AI Overhaul he sometimes follows Bryling about the city in the daytime.",
+   "He's a guest at Vittoria Vici's wedding in Bound Until Death."
+  ],
+  "role": "child of Solitude",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bound Until Death",
+    "how": "a step in it: a wedding guest you can talk to"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "a step in it: one of the guests to talk to at the reception"
+   }
+  ],
+  "canDie": "not marked essential or protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "canDie",
+    "why": "His record has neither flag; whether the game protects children some other way isn't in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "The well and Bryling packages carry conditions the extracts don't decode; the gating Solitude quest is unnamed."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in three unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013292",
+   "SolitudeOpeningStayLocation512 Skyrim.esm:0B3B1B",
+   "AIOSoChildrenFollowBryling AI Overhaul.esp:193562",
+   "SolitudeKaydWanderWell10x10 Skyrim.esm:069676",
+   "USKPKaydSleep0x8 Unofficial Skyrim Special Edition Patch.esp:0407EC",
+   "DB05 Skyrim.esm:01EA54 KaydAlias",
+   "DB05Alt Vittorias Alternate Wedding.esp:000800 KaydAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB8",
+  "name": "Gabriella",
+  "race": "Dunmer",
+  "sex": "female",
+  "firstMeet": "In the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "16 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "going about the Sanctuary"
+   }
+  ],
+  "changes": [
+   "The journal for Death Incarnate says most of the Family is killed when the Sanctuary is attacked; the records here don't say who."
+  ],
+  "role": "Dark Brotherhood assassin; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Breaching Security",
+    "how": "gives it: the contract on Gaius Maro"
+   },
+   {
+    "quest": "The Cure for Madness",
+    "how": "gives it: tells you of the incident with Cicero when you return"
+   },
+   {
+    "quest": "Destroy the Dark Brotherhood!",
+    "how": "its target: track down and kill Gabriella"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "canDie",
+    "why": "Essential on her record, yet Destroy the Dark Brotherhood! asks you to kill her; the quest must lift that, not shown in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills aliases in three unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01BDB8",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "DB06 Skyrim.esm:01EA55 (giver)",
+   "DB07 Skyrim.esm:01EA56 (giver)",
+   "DBDestroy Skyrim.esm:0934FB GabriellaAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01BDB0",
+  "name": "Arnbjorn",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "16 hours",
+    "where": "the Dark Brotherhood Sanctuary, in the Pine Forest near Falkreath",
+    "doing": "going about the Sanctuary"
+   }
+  ],
+  "changes": [
+   "In The Cure for Madness he goes after Cicero when Cicero flees; you have to find him and talk to him.",
+   "The journal for Death Incarnate says most of the Family is killed when the Sanctuary is attacked; the records here don't say who."
+  ],
+  "role": "Dark Brotherhood member",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Cure for Madness",
+    "how": "a step in it: locate Arnbjorn and talk to him"
+   },
+   {
+    "quest": "Destroy the Dark Brotherhood!",
+    "how": "its target: one of the assassins to kill"
+   },
+   {
+    "quest": "Whispers in the Dark",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "The Silence Has Been Broken",
+    "how": "named in the quest"
+   },
+   {
+    "quest": "Breaching Security",
+    "how": "named in the quest"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in four unnamed quests (two from an Aela mod)."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01BDB0",
+   "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "DB07 Skyrim.esm:01EA56 ArnbjornAlias",
+   "DBDestroy Skyrim.esm:0934FB ArnbjornAlias"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013387",
+  "name": "Anton Virane",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Understone Keep, Markarth, where he's the castle cook.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "5 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "working as a servant in the keep"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "working; on some days out shopping in Markarth from 1 pm to 4 pm"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "supper"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "about the keep"
+   }
+  ],
+  "changes": [],
+  "role": "castle cook at Understone Keep; merchant; quest target",
+  "sells": "he trades at any hour; as the castle cook his stock is likely food, but the list isn't resolved",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Recipe for Disaster",
+    "how": "its target: question him for the Gourmet's identity, then kill him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "sells",
+    "why": "His buy/sell list and merchant chest are only raw ids in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "The shopping trip runs on a day-of-week code (likely Monday, Wednesday and Friday) and has undecoded conditions."
+   },
+   {
+    "field": "canDie",
+    "why": "Essential on his record, yet Recipe for Disaster asks you to kill him; the quest must lift that, not shown in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in three unnamed quests."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013387",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "DefaultEatEditorLoc12x1 Skyrim.esm:01E619",
+   "DefaultEatEditorLoc6x1 Skyrim.esm:01E618",
+   "AIOMaAntonShop AI Overhaul.esp:1056A2",
+   "MarkarthKeepServantWork7x12 Skyrim.esm:036F22",
+   "MarkarthKeepSleepEditorLoc24x8 Skyrim.esm:10CBA2",
+   "ServicesMarkarthCastleCook",
+   "JobMerchantFaction",
+   "DB08 Skyrim.esm:01EA57 AntonViraneAlias"
+  ]
+ }
+]
