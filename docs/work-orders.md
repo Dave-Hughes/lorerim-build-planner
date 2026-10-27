@@ -5022,6 +5022,29 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
+Status: queued (PC; Dave, 27 Oct, 12:14. The LoreRim team agreed to in-game pictures on the site)
+
+**Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
+
+**How it works, for Dave.** The game runs on Dave's PC as usual. A small program, written by Jeff on PC, runs beside it and drives the game through the console: it travels to each place (or brings each person to one room), sets the time and weather, hides the HUD, frames the shot and presses the screenshot key, then moves on. Dave loads a save made only for this, starts the program and leaves the PC alone until it's done.
+
+### Before the run
+- [ ] **A save only for pictures.** Dave makes or loads a throwaway character and a save named for this; never Kyria's, Azrem's or any save he plays. The program never saves the game. Moving people by console can break their quests; in a throwaway save that doesn't matter.
+- [ ] **How the program talks to the game.** Find what works in LoreRim on Dave's install and say which: Skyrim's own `bat <file>` (runs a text file of console commands from the game folder), and/or a helper that types into the console and presses keys (AutoHotkey or Python on the PC). Find which screenshot key and folder LoreRim uses (the game's own Print Screen with `bAllowScreenShot`, Steam's, or the shader's), and set it so pictures land in one known folder.
+- [ ] **The settings for every shot:** HUD hidden (`tm`), time noon (`set gamehour to 12`), clear weather (`fw` with a clear weather of the region), free camera (`tfc`) for framing, and the same field of view for every shot of a kind. Write the exact commands in the log.
+
+### The test
+- [ ] **Five places**, as a wide shot from outside at noon, where a player first sees them: Broken Oar Grotto (a cave), Bleak Falls Barrow (a ruin on a mountain), Fort Hraggstad (a fort), Riverwood (a village) and the Winking Skeever (an inn, from inside). Use each place's map marker or entrance from `places.json` / `places_raw.json` to get there.
+- [ ] **Five people**, as a portrait, all in one "photo room": an interior with plain, even light and nothing else in frame, picked and named in the log. Bring each one there by console (`prid <their reference>`, then move them to the player), stop their AI so they stand still, and shoot head and shoulders from the same camera spot: Lucan Valerius, Jaree-Ra, Mjoll the Lioness, Captain Aldis, Delphine. References from `people_raw.json`.
+- [ ] Pictures at full resolution, PNG, named by place or person (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`), saved to `C:\LoreRim\_fieldguide\screens\wo158\`. Not committed to the repo and not used on the site yet.
+
+### Report for Dave and Bob
+- [ ] The 10 pictures, staged for Bob to send to Dave.
+- [ ] How long each took (travel, load, shot), what failed (a person who wouldn't come, a place that loaded dark, an NPC walking into frame, the HUD showing), and what the program needed by hand from Dave.
+- [ ] An estimate for the full run (566 places, about 1,000 people) from the test's times.
+- [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
+
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
 Status: building (Mac; Dave approved the boards, 27 Oct, 12:04)
 
