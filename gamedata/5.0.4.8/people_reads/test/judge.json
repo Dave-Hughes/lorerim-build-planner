@@ -1,7 +1,462 @@
 {
-  "status": "not run",
-  "why": "The UESP key could not be built: en.uesp.net is blocked by this cloud session's network policy (the proxy refuses it with 403), so there is nothing to score the reads and the placements against. No key was written from memory.",
-  "toRun": "Allow en.uesp.net in the environment's network access, build uesp_key.json, then run the blind judge on the checked reads (C_0 to C_3) against the editor placements in people_raw.json.",
-  "summary": null,
-  "totals": null
+ "status": "run",
+ "method": "The key was built from en.uesp.net (uesp_key.json) by an agent that saw only the names. The judge saw each person's two answers as X/Y in seeded random order, scored them against the key, then was told which was which; scores were not changed after.",
+ "totals": {
+  "read": {
+   "right": 18,
+   "partlyRight": 2,
+   "wrong": 0
+  },
+  "placement": {
+   "right": 3,
+   "partlyRight": 14,
+   "wrong": 3
+  }
+ },
+ "summary": "The reads got 18 of 20 right and 2 partly right; the placements got 3 right, 14 partly right and 3 wrong. Placements mostly named the right building but gave no role, sent you to the night spot instead of the day one (Ungrien, Aicantar, Vittoria, Thonnir), or gave nothing at all (Edda, Morven Stroud, Bujold). The reads' misses were Morven Stroud (his soul-husk trade left out) and Bujold (asleep in camp when she should be at the Beast Stone at night); their smaller slips were a few missed quests and roles (Fanari not called chief, Torsten called a merchant, Mjoll's follower condition). The placements never contradicted UESP; they only left things out.",
+ "scores": [
+  {
+   "id": "Skyrim.esm:013356",
+   "name": "Edda",
+   "read": {
+    "score": "right",
+    "why": "Riften beggar sleeping in Beggar's Row midnight to 7am, matching UESP."
+   },
+   "placement": {
+    "score": "wrong",
+    "why": "Gives no place and no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:019A28",
+   "name": "Faida",
+   "read": {
+    "score": "right",
+    "why": "Four Shields Tavern, innkeeper, merchant and room rental all match UESP."
+   },
+   "placement": {
+    "score": "right",
+    "why": "Right place and innkeeper role, though bare (no room or quests)."
+   }
+  },
+  {
+   "id": "Skyrim.esm:0135F2",
+   "name": "Thonnir",
+   "read": {
+    "score": "right",
+    "why": "Mill by day, his house at night, lumberjack, Hearthfire lumber seller and Laid to Rest all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right house but no role, and misses that he is at the mill by day."
+   }
+  },
+  {
+   "id": "Skyrim.esm:014121",
+   "name": "Silda the Unseen",
+   "read": {
+    "score": "right",
+    "why": "Begs around Windhelm, Pickpocket expert trainer and Blood on the Ice all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Summary location only, no role (misses the Pickpocket trainer)."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C183",
+   "name": "Dagur",
+   "read": {
+    "score": "right",
+    "why": "Frozen Hearth innkeeper, merchant, rents rooms, Drowned Sorrows all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right inn but no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C18A",
+   "name": "Assur",
+   "read": {
+    "score": "right",
+    "why": "Longhouse, Frozen Hearth dinner, playing outside, jarl's child and exile to Brunwulf's house all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right longhouse but no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01327A",
+   "name": "Vittoria Vici",
+   "read": {
+    "score": "right",
+    "why": "Docks by day, house by night, EEC official, Emperor's cousin, Spiced Wine, Bound Until Death, Diplomatic Immunity all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right house but no role and misses her daytime at the docks."
+   }
+  },
+  {
+   "id": "Skyrim.esm:014136",
+   "name": "Torsten Cruel-Sea",
+   "read": {
+    "score": "right",
+    "why": "Breakfast, farm, market, Candlehearth, palace, home at midnight and Summerset Shadows all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right house but no role and misses his day schedule."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01338B",
+   "name": "Bothela",
+   "read": {
+    "score": "right",
+    "why": "Hag's Cure 8am-8pm apothecary and Bothela's Discreet Delivery match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right shop but no role (misses she sells)."
+   }
+  },
+  {
+   "id": "Skyrim.esm:041FB8",
+   "name": "Captain Aldis",
+   "read": {
+    "score": "right",
+    "why": "Training soldiers by day, Castle Dour at night, guard captain and his three UESP quests all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right castle but no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133AC",
+   "name": "Odvan",
+   "read": {
+    "score": "right",
+    "why": "Cidhna Mine prisoner leaving for Druadach Redoubt with Madanach matches."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right place but no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01337E",
+   "name": "Ungrien",
+   "read": {
+    "score": "right",
+    "why": "Meadery by day, bunkhouse at night, meadery merchant all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Gives only his bunkhouse, not the meadery where he works by day, and no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01402E",
+   "name": "Aicantar",
+   "read": {
+    "score": "right",
+    "why": "Understone Keep with Calcelmo, never sleeps, wizard's assistant all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Names the lab (his placement) rather than Understone Keep where he spends his time, and no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:01336B",
+   "name": "Mjoll the Lioness",
+   "read": {
+    "score": "right",
+    "why": "Market, Bee and Barb, street patrol, follower, can marry and Grimsever's Return all match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Only her house, no follower or marriage role."
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018FC5",
+   "name": "Fanari Strong-Voice",
+   "read": {
+    "score": "right",
+    "why": "Greathall, Wind Stone under Miraak, Kill the Bandit Leader match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right Greathall but no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:019DF2",
+   "name": "Asbjorn Fire-Tamer",
+   "read": {
+    "score": "right",
+    "why": "Scorched Hammer, blacksmith, 8am-8pm, sleep midnight-6am all match."
+   },
+   "placement": {
+    "score": "right",
+    "why": "Right shop and blacksmith role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:013654",
+   "name": "Narri",
+   "read": {
+    "score": "right",
+    "why": "Outside the inn by day, serving from 4pm, sleeps 1am match."
+   },
+   "placement": {
+    "score": "partly right",
+    "why": "Right inn but no role."
+   }
+  },
+  {
+   "id": "Skyrim.esm:037E04",
+   "name": "Leonara Arius",
+   "read": {
+    "score": "right",
+    "why": "Snow-Shod Farm farmer, breakfast, crops, 7pm dinner, midnight-6am sleep match."
+   },
+   "placement": {
+    "score": "right",
+    "why": "Right farm and farmer role."
+   }
+  },
+  {
+   "id": "Dawnguard.esm:0071F1",
+   "name": "Morven Stroud",
+   "read": {
+    "score": "partly right",
+    "why": "Right place (Soul Cairn), but misses his role trading an item for 25 soul husks."
+   },
+   "placement": {
+    "score": "wrong",
+    "why": "Gives no place and no role."
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01A511",
+   "name": "Bujold the Intrepid",
+   "read": {
+    "score": "partly right",
+    "why": "Right camp, later Thirsk Mead Hall, and Retaking Thirsk, but has her asleep in camp at night when UESP has her working at the Beast Stone until it is cleansed."
+   },
+   "placement": {
+    "score": "wrong",
+    "why": "Gives no place and no role."
+   }
+  }
+ ],
+ "readDisagreesWithUesp": [
+  {
+   "id": "Skyrim.esm:014121",
+   "name": "Silda the Unseen",
+   "read says": "sleeps 2am-6am in the Temple of Talos",
+   "UESP says": "never sleeps in vanilla; USLEEP gives 3am-8am in the Temple of Talos",
+   "likely": "LoreRim change",
+   "why": "USLEEP-style sleep package; hours differ slightly"
+  },
+  {
+   "id": "Skyrim.esm:014121",
+   "name": "Silda the Unseen",
+   "read says": "talking to her can start Blood on the Ice",
+   "UESP says": "a witness at the graveyard",
+   "likely": "can't tell",
+   "why": "may be a start alias in the records UESP doesn't describe"
+  },
+  {
+   "id": "Skyrim.esm:01C183",
+   "name": "Dagur",
+   "read says": "in Containment as a Winterhold townsperson",
+   "UESP says": "lists only Drowned Sorrows",
+   "likely": "can't tell",
+   "why": "Containment is a vanilla quest; its town aliases may just go unlisted on his page"
+  },
+  {
+   "id": "Skyrim.esm:01C18A",
+   "name": "Assur",
+   "read says": "in Containment",
+   "UESP says": "no related quests",
+   "likely": "can't tell",
+   "why": "same as Dagur"
+  },
+  {
+   "id": "Skyrim.esm:01C18A",
+   "name": "Assur",
+   "read says": "warms up at the Frozen Hearth 3pm-4pm",
+   "UESP says": "only the 6pm dinner at the Frozen Hearth",
+   "likely": "LoreRim change",
+   "why": "extra schedule slot looks like an AI overhaul package"
+  },
+  {
+   "id": "Skyrim.esm:01327A",
+   "name": "Vittoria Vici",
+   "read says": "bride in A Healing Wedding",
+   "UESP says": "not listed",
+   "likely": "LoreRim change",
+   "why": "a quest UESP doesn't know, likely a LoreRim add-on"
+  },
+  {
+   "id": "Skyrim.esm:01327A",
+   "name": "Vittoria Vici",
+   "read says": "works the docks weekdays only",
+   "UESP says": "docks 8am-8pm, no weekday split",
+   "likely": "LoreRim change",
+   "why": "plugin package with a weekday condition"
+  },
+  {
+   "id": "Skyrim.esm:014136",
+   "name": "Torsten Cruel-Sea",
+   "read says": "a wealthy merchant",
+   "UESP says": "a farmer with no merchant role",
+   "likely": "read's mistake",
+   "why": "role misread"
+  },
+  {
+   "id": "Skyrim.esm:014136",
+   "name": "Torsten Cruel-Sea",
+   "read says": "at home 7pm-7:20pm before Candlehearth",
+   "UESP says": "goes from market to Candlehearth dinner",
+   "likely": "can't tell",
+   "why": "short package, could be either"
+  },
+  {
+   "id": "Skyrim.esm:01338B",
+   "name": "Bothela",
+   "read says": "some evenings out near Understone Keep 8pm-10pm",
+   "UESP says": "goes to bed after work",
+   "likely": "LoreRim change",
+   "why": "evening package looks like an AI overhaul addition"
+  },
+  {
+   "id": "Skyrim.esm:041FB8",
+   "name": "Captain Aldis",
+   "read says": "in Lights Out! as a captain you can report to",
+   "UESP says": "not listed on his page",
+   "likely": "can't tell",
+   "why": "vanilla quest; may just go unlisted"
+  },
+  {
+   "id": "Skyrim.esm:01337E",
+   "name": "Ungrien",
+   "read says": "no quests",
+   "UESP says": "Spread the Love",
+   "likely": "read's mistake",
+   "why": "missed a quest"
+  },
+  {
+   "id": "Skyrim.esm:01402E",
+   "name": "Aicantar",
+   "read says": "shops at the Hag's Cure Tirdas and Turdas 1pm-4pm",
+   "UESP says": "stays in Understone Keep with Calcelmo",
+   "likely": "LoreRim change",
+   "why": "day-conditioned package, likely AI overhaul"
+  },
+  {
+   "id": "Skyrim.esm:01336B",
+   "name": "Mjoll the Lioness",
+   "read says": "gives Aerin the Man",
+   "UESP says": "not listed",
+   "likely": "LoreRim change",
+   "why": "the read names it as LoreRim's follower add-on"
+  },
+  {
+   "id": "Skyrim.esm:01336B",
+   "name": "Mjoll the Lioness",
+   "read says": "what unlocks following isn't in the records",
+   "UESP says": "follows after Grimsever's Return",
+   "likely": "read's mistake",
+   "why": "missed the follower condition"
+  },
+  {
+   "id": "Dragonborn.esm:018FC5",
+   "name": "Fanari Strong-Voice",
+   "read says": "a Skaal villager",
+   "UESP says": "chief of Skaal Village",
+   "likely": "read's mistake",
+   "why": "role understated"
+  },
+  {
+   "id": "Dragonborn.esm:018FC5",
+   "name": "Fanari Strong-Voice",
+   "read says": "quests: Kill the Bandit Leader, The Fate of the Skaal",
+   "UESP says": "also A New Source of Stalhrim, The Gardener of Men",
+   "likely": "read's mistake",
+   "why": "missed quests"
+  },
+  {
+   "id": "Skyrim.esm:013654",
+   "name": "Narri",
+   "read says": "sells the inn's goods at any hour",
+   "UESP says": "the sell option is missing in vanilla (bug fixed by USKP)",
+   "likely": "LoreRim change",
+   "why": "unofficial patch fix in the load order"
+  },
+  {
+   "id": "Skyrim.esm:013654",
+   "name": "Narri",
+   "read says": "gives Shriekwind Bastion",
+   "UESP says": "no related quests",
+   "likely": "can't tell",
+   "why": "may be a vanilla rumour alias UESP doesn't tie to her"
+  },
+  {
+   "id": "Skyrim.esm:037E04",
+   "name": "Leonara Arius",
+   "read says": "farms 8pm-midnight",
+   "UESP says": "doesn't say",
+   "likely": "can't tell",
+   "why": "UESP silent"
+  },
+  {
+   "id": "Dawnguard.esm:0071F1",
+   "name": "Morven Stroud",
+   "read says": "step in Belethor's Sister",
+   "UESP says": "no related quests",
+   "likely": "LoreRim change",
+   "why": "quest UESP doesn't know, likely a LoreRim add-on"
+  },
+  {
+   "id": "Dawnguard.esm:0071F1",
+   "name": "Morven Stroud",
+   "read says": "no trade role",
+   "UESP says": "trades one leveled item for 25 soul husks",
+   "likely": "read's mistake",
+   "why": "missed his trade"
+  },
+  {
+   "id": "Dragonborn.esm:01A511",
+   "name": "Bujold the Intrepid",
+   "read says": "sleeps in camp 11pm-6am from the start",
+   "UESP says": "works at the Beast Stone at night until it is cleansed",
+   "likely": "read's mistake",
+   "why": "missed the stone package (the Fanari read caught the same kind)"
+  },
+  {
+   "id": "Dragonborn.esm:01A511",
+   "name": "Bujold the Intrepid",
+   "read says": "target in The Chief of Thirsk Hall",
+   "UESP says": "not listed",
+   "likely": "can't tell",
+   "why": "vanilla quest; may just go unlisted"
+  },
+  {
+   "id": "Dragonborn.esm:01A511",
+   "name": "Bujold the Intrepid",
+   "read says": "no Her Word Against Theirs",
+   "UESP says": "Her Word Against Theirs",
+   "likely": "read's mistake",
+   "why": "missed a quest"
+  }
+ ],
+ "placementDisagreesWithUesp": []
 }
