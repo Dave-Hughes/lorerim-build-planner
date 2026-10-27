@@ -6,7 +6,7 @@ import { expect, test } from "@playwright/test";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("the home shows six categories and Jobs and errands, with no player context (WO-115)", async ({ page }) => {
+test("the home shows the categories and everything else by place, with no player context (WO-115)", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Quests" }).click();
   await expect(page).toHaveURL(/\/quests$/);
@@ -14,7 +14,8 @@ test("the home shows six categories and Jobs and errands, with no player context
   const cats = page.locator('a[href^="/quests/c/"]');
   await expect(cats).toHaveCount(6);
   for (const name of ["Main stories", "Guilds and factions", "Daedric Princes", "New lands", "Side stories", "Followers"]) await expect(cats.filter({ hasText: name })).toHaveCount(1);
-  await expect(page.getByRole("heading", { name: "Jobs and errands" })).toBeVisible();
+  // The jobs and the side stories sit under "Everything else, by place" (WO-154 Part 2).
+  await expect(page.getByRole("heading", { name: "Everything else, by place" })).toBeVisible();
   await expect(page.getByRole("link", { name: /^Missives/ })).toBeVisible();
   // How many lines; nothing about the player: no Where you are, no "open to you".
   await expect(cats.filter({ hasText: "Daedric Princes" })).toContainText(/\d+ quest lines/);
@@ -62,7 +63,8 @@ test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastr
   await page.goto("/quests/the-book-of-love");
   const start = page.getByRole("region", { name: "How to start it" });
   await expect(start).toContainText("Dinya Balu");
-  await expect(start).not.toContainText("Fastred");
+  // The line's read words how to get in as the read does, with where she sends you first (WO-154 Part 2).
+  await expect(start).toContainText("Fastred");
   // Its quest's page has the way in and the first step (WO-154).
   await page.locator("li", { hasText: "Starts here" }).getByRole("link").first().click();
   await expect(page.getByRole("region", { name: "How to start it" })).toContainText(/Dinya Balu\s+in Temple of Mara, Riften/);

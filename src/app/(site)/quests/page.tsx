@@ -3,7 +3,9 @@ import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { QuestSearch } from "@/components/quests/quest-search";
-import { categories, homeName, linesIn, questsData, searchLines } from "@/lib/quests/data";
+import { categories, linesIn, questsData } from "@/lib/quests/data";
+import { questHref } from "@/lib/quests/slugs";
+import { searchEverything } from "@/lib/search/everything";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/quests/quests.module.css";
 
@@ -16,9 +18,15 @@ type Search = Promise<{ q?: string }>;
 export default async function QuestsHome({ searchParams }: { searchParams: Search }) {
   await loadPlayerFacts();
   const q = ((await searchParams).q ?? "").slice(0, 100).trim();
-  const { shelves, lines } = questsData();
-  const results = q ? searchLines(q) : [];
-  const work = lines.filter((l) => l.category === "work");
+  const { lines } = questsData();
+  const found = q ? searchEverything(q) : null;
+  // Everything that isn't one of the big lines (side stories and the jobs), by the town or place it is in (WO-154).
+  const rest = lines.filter((l) => l.category === "side" || l.category === "work");
+  const placeOf = (l: (typeof rest)[number]) => l.where ?? l.quests.find((x) => x.start?.towns?.[0])?.start?.towns?.[0] ?? "Elsewhere";
+  const byPlace = new Map<string, typeof rest>();
+  for (const l of rest) byPlace.set(placeOf(l), [...(byPlace.get(placeOf(l)) ?? []), l]);
+  const places = [...byPlace.entries()].sort(([a], [b]) => (a === "Elsewhere" ? 1 : b === "Elsewhere" ? -1 : a.localeCompare(b)));
+  const hrefOfLine = (l: (typeof rest)[number]) => (l.quests.length === 1 && l.category !== "work" ? (questHref(l.quests[0].edid) ?? `/quests/${l.id}`) : `/quests/${l.id}`);
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.homeHead}>
@@ -26,30 +34,37 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
         <QuestSearch initial={q} />
       </div>
 
-      {q && (
+      {found && (
         <section aria-labelledby="results-title" className={styles.results}>
           <h2 id="results-title" className={styles.h2}>
-            {results.length ? `${results.length} quest line${results.length === 1 ? "" : "s"} for “${q}”` : `Nothing for “${q}”`}
+            {found.quests.length + found.people.length + found.places.length ? `For “${q}”` : `Nothing for “${q}”`}
           </h2>
-          {results.length > 0 && (
-            <ul className={styles.resultList}>
-              {results.map(({ line, hit }) => (
-                <li key={line.id}>
-                  <Link href={`/quests/${line.id}`}>{line.name}</Link>
-                  <span className="muted">
-                    {homeName(line.category)}
-                    {hit && ` | ${hit}`}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          {(
+            [
+              ["Quests", found.quests],
+              ["People", found.people],
+              ["Places", found.places],
+            ] as const
+          ).map(([title, list]) =>
+            list.length ? (
+              <div key={title}>
+                <h3 className={styles.h3}>{title}</h3>
+                <ul className={styles.resultList}>
+                  {list.map((f) => (
+                    <li key={f.href}>
+                      <Link href={f.href}>{f.name}</Link>
+                      {f.note && <span className="muted">{f.note}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null,
           )}
         </section>
       )}
 
-
       <div className={styles.cats}>
-        {categories().map((c) => (
+        {categories().filter((c) => c.key !== "side").map((c) => (
           <Link key={c.key} href={`/quests/c/${c.slug}`} className={`frame ${styles.cat}`}>
             <img className={styles.art} src={`/quests/${c.slug}.png`} alt="" width={160} height={64} />
             <span className={styles.catBody}>
@@ -70,26 +85,31 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
         ))}
       </div>
 
-      {shelves.work && (
-        <section aria-labelledby="jobs-title" className={styles.jobs}>
-          <span className={styles.jobsHead}>
-            <img className={styles.px} src="/icons/quest-jobs-and-errands.svg" alt="" width={48} height={48} />
-            <span className={styles.jobsWords}>
-              <h2 id="jobs-title" className={styles.jobsTitle}>
-                {shelves.work.name}
-              </h2>
-              <span className={styles.sub}>{shelves.work.subtitle}</span>
+      <section aria-labelledby="rest-title" className={styles.jobs}>
+        <span className={styles.jobsHead}>
+          <img className={styles.px} src="/icons/quest-side-stories.svg" alt="" width={48} height={48} />
+          <span className={styles.jobsWords}>
+            <h2 id="rest-title" className={styles.jobsTitle}>
+              Everything else, by place
+            </h2>
+            <span className={styles.sub}>
+              Side stories, notice boards and favours, by the town or place they start in. <Link href="/quests/c/side-stories">All side stories ›</Link>
             </span>
           </span>
-          <span className={styles.jobChips}>
-            {work.map((l) => (
-              <Link key={l.id} href={`/quests/${l.id}`} className={styles.job}>
-                {l.name} <small>{l.quests.length}</small>
-              </Link>
-            ))}
-          </span>
-        </section>
-      )}
+        </span>
+        {places.map(([place, ls]) => (
+          <div key={place}>
+            <h3 className={styles.h3}>{place}</h3>
+            <span className={styles.jobChips}>
+              {ls.map((l) => (
+                <Link key={l.id} href={hrefOfLine(l)} className={styles.job}>
+                  {l.name} {l.quests.length > 1 && <small>{l.quests.length}</small>}
+                </Link>
+              ))}
+            </span>
+          </div>
+        ))}
+      </section>
     </main>
   );
 }

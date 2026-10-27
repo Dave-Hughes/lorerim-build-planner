@@ -30,10 +30,13 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   expect(JSON.parse(textOf(await client.callTool({ name: "get_perk", arguments: { name: "Haggling" } })))).toMatchObject({ tree: "Speech", ranks: 1 });
   const spell = JSON.parse(textOf(await client.callTool({ name: "get_spell", arguments: { name: "Holy Fire" } })));
   expect(spell).toMatchObject({ school: "Destruction", tier: "Apprentice", soldBy: { checked: "not yet" } });
-  expect(JSON.parse(textOf(await client.callTool({ name: "get_quest_start", arguments: { id: "on-hogithum" } })))).toMatchObject({ checked: "not yet" });
+  // On Hogithum is read now (WO-154): the door says it from the read, and says so.
+  expect(JSON.parse(textOf(await client.callTool({ name: "get_quest_start", arguments: { id: "on-hogithum" } })))).toMatchObject({ quest: { source: "reads" } });
   expect(JSON.parse(textOf(await client.callTool({ name: "get_quest_start", arguments: { id: "become-the-dragonborn" } })))).toMatchObject({ checked: "files", firstQuest: { name: "Unbound" } });
   const ice = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Blood on the Ice" } })));
-  expect(ice.quest.endings.map((e: { stage: number }) => e.stage)).toEqual([100, 250]);
+  // Read from its records (WO-154): the door says its read's fields, not the older rules' stage numbers.
+  expect(ice.quest.source).toBe("reads");
+  expect(ice.quest).not.toHaveProperty("endings");
   // Open for you (WO-115 Part 3): only when told where the player is; a quest the planner can't judge is unknown.
   expect(ice).not.toHaveProperty("openForYou");
   const arms = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Take Up Arms", level: 6 } })));

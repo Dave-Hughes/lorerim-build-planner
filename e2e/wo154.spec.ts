@@ -88,15 +88,65 @@ test("a place's page: the danger gauge, the boss, what points here, what it pays
   await expect(page.getByRole("region", { name: "Rewards" })).toContainText("100 XP");
 });
 
+test("a line with a read: its own words for what it is, how to get in, the quests in order, what it gives, and how sure", async ({ page }) => {
+  await page.goto("/quests/main-quest");
+  await expect(page.getByRole("heading", { level: 1, name: "The main quest" })).toBeVisible();
+  await expect(page.locator("main")).toContainText("Dragons have come back to Skyrim");
+  await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Helgen");
+  await expect(page.getByRole("link", { name: "Bleak Falls Barrow" }).first()).toHaveAttribute("href", "/quests/q/bleak-falls-barrow");
+  await expect(page.getByRole("region", { name: "What the whole line gives" })).toContainText("Thane of Whiterun");
+  await expect(page.getByRole("region", { name: "How sure we are" })).toBeVisible();
+});
+
+test("search forgives a misspelling and finds a quest, a person and a place; the menu has People and Places", async ({ page }) => {
+  await page.goto("/quests?q=Palonimo");
+  await expect(page.getByRole("region", { name: /For/ }).getByRole("link", { name: "Running Wild" })).toBeVisible();
+  await page.goto("/quests?q=Brynjof");
+  await expect(page.getByRole("link", { name: "Brynjolf" }).first()).toHaveAttribute("href", /\/people\/brynjolf/);
+  await page.goto("/quests?q=Broken Oar");
+  await expect(page.getByRole("link", { name: "Broken Oar Grotto" }).first()).toHaveAttribute("href", "/places/broken-oar-grotto");
+  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link")).toContainText(["Builds", "Quests", "People", "Places"]);
+});
+
+test("the Quests page: the big lines first, then everything else by place", async ({ page }) => {
+  await page.goto("/quests");
+  const heads = await page.locator("main h2").allInnerTexts();
+  expect(heads.at(-1)).toMatch(/Everything else, by place/i);
+  await expect(page.getByRole("heading", { name: "Riften", level: 3, exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Main stories/ }).first()).toBeVisible();
+});
+
+test("confirm it's accurate: signed out it asks to sign in; signed in it records, shows the name and the count, and Undo takes it back", async ({ page, context }) => {
+  await page.goto("/quests/q/lights-out");
+  await expect(page.getByRole("button", { name: "Sign in to confirm" })).toBeVisible();
+  await signIn(context);
+  for (const url of ["/quests/q/lights-out", "/people/mjoll-the-lioness", "/places/broken-oar-grotto"]) {
+    await page.goto(url);
+    await page.getByRole("button", { name: "Confirm it's accurate" }).click();
+    const dialog = page.getByRole("dialog", { name: "Confirmed" });
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toContainText("Your name is now on");
+    await dialog.getByRole("button", { name: "Close" }).click();
+    await page.reload();
+    await expect(page.getByRole("region", { name: "How sure we are" })).toContainText("1 confirmed this page");
+    await page.getByRole("button", { name: "Undo my confirmation" }).click();
+    await expect(page.getByRole("button", { name: "Confirm it's accurate" })).toBeVisible();
+    await page.reload();
+    await expect(page.getByRole("region", { name: "How sure we are" })).not.toContainText("1 confirmed this page");
+  }
+});
+
 test("screenshots for Dave: the read quests and the lines, at 1440 and 390", async ({ page }) => {
   for (const [slug, name] of [
     ["quests/q/lights-out", "lights-out"],
+    ["quests/q/the-golden-claw", "golden-claw"],
     ["people/mjoll-the-lioness", "mjoll"],
     ["places/broken-oar-grotto", "broken-oar-grotto"],
     ["quests/q/speaking-with-silence", "speaking-with-silence"],
     ["quests/q/reparations", "reparations"],
     ["quests/q/mourning-never-comes", "mourning-never-comes"],
     ["quests/thieves-guild", "thieves-guild-line"],
+    ["quests/main-quest", "main-quest-line"],
     ["quests/capital-whiterun", "more-to-do-in-whiterun"],
   ]) {
     for (const width of [1440, 390]) {

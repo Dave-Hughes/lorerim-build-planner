@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
+import { ConfirmButton } from "@/components/pages/confirm-button";
 import { Linked } from "@/components/pages/linked";
+import { confirmationsOf } from "@/lib/quests/confirmations";
 import { Gold, HowSure, PageTop, Panel, Section, TitleBox, type SureSource } from "@/components/pages/page-kit";
 import { Steps } from "@/components/pages/steps";
 import { QuestReport } from "@/components/quests/quest-report";
@@ -81,11 +83,17 @@ export default async function QuestPage({ params, searchParams }: { params: Para
   // How sure we are: a tick per source.
   const reported = (start?.ways ?? []).filter((w) => w.checked === "players");
   const reporters = [...new Set(reported.flatMap((w) => [w.source, ...(w.also ?? [])]).filter((x): x is string => !!x).map(handleOf))];
+  const confirmed = await confirmationsOf("quest", quest.edid, userId);
   const sources: SureSource[] = [
     reads ? { mark: "yes", name: "LoreRim's game files", note: "Read, then checked by a second reader" } : { mark: "part", name: "LoreRim's game files", note: "From the planner's older rules. Not read by a reader yet" },
     start?.checked === "uesp" ? { mark: "part", name: "UESP", note: `Confirms who starts it${start.url ? "" : ""}` } : { mark: "no", name: "UESP", note: "Not compared yet" },
-    reporters.length
-      ? { mark: "yes", name: "Players", note: `${reported.length} report${reported.length === 1 ? "" : "s"}. ${pageSources(reported[0].source ?? "", reported[0].also)}`, names: reporters.map((r) => <span key={r}>{r}</span>) }
+    reporters.length || confirmed.names.length
+      ? {
+          mark: "yes",
+          name: "Players",
+          note: [reported.length ? `${reported.length} report${reported.length === 1 ? "" : "s"}: ${pageSources(reported[0].source ?? "", reported[0].also)}` : "", confirmed.names.length ? `${confirmed.names.length} confirmed this page` : ""].filter(Boolean).join(". "),
+          names: [...reporters, ...confirmed.names.filter((n) => !reporters.includes(n))].map((r) => <span key={r}>{r}</span>),
+        }
       : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
   ];
   const sureLine = page.sure.replace(/\.?\s*Unsure: .*$/, "");
@@ -380,9 +388,20 @@ export default async function QuestPage({ params, searchParams }: { params: Para
           sources={sources}
           unsure={page.unsure}
           actions={
-            <Link href={`${questHref(quest.edid)}?report=1#report`} className="btn">
-              Report a mistake
-            </Link>
+            <>
+              <ConfirmButton
+                kind="quest"
+                id={quest.edid}
+                path={questHref(quest.edid) ?? "/quests"}
+                title={name}
+                signedIn={!!userId}
+                mine={confirmed.mine}
+                signIn={<SignInButton redirectTo={`${questHref(quest.edid)}`} className="btn btn-primary" label="Sign in to confirm" />}
+              />
+              <Link href={`${questHref(quest.edid)}?report=1#report`} className="btn">
+                Report a mistake
+              </Link>
+            </>
           }
         />
       </div>

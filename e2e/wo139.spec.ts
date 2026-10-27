@@ -35,7 +35,7 @@ test("an assistant keeps the answers and the never list, and the quest tools kee
   pid = (await go("create_playthrough", { name: "E2E Hunter" })).json().playthrough;
   const set = await go("set_details", { playthrough: pid, answers: ANSWERS, never: NEVER, mods: MODS });
   expect(set.isError, set.text).toBe(false);
-  expect(set.json().about.never.map((n: { is: string }) => n.is)).toEqual(["a quest line: The Dragonborn", "a quest line: The Dark Brotherhood", "the player's own words"]);
+  expect(set.json().about.never.map((n: { is: string }) => n.is)).toEqual(["a quest line: The main quest", "a quest line: The Dark Brotherhood", "the player's own words"]);
   expect(set.json().neverNote).toContain("keep to it yourself");
   // An id that names nothing is refused, and nothing changes.
   const slip = await go("set_details", { playthrough: pid, never: [{ what: "the-thieves-gild" }] });

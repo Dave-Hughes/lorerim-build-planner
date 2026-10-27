@@ -6,6 +6,10 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
+import { Linked } from "@/components/pages/linked";
+import { HowSure } from "@/components/pages/page-kit";
+import { placeNames } from "@/lib/pages/names";
+import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
 import { QuestRow } from "@/components/quests/journal";
 import { rowOf } from "@/lib/quests/reads";
@@ -31,6 +35,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return l ? { title: l.name, ...siteMetadata(`/quests/${l.id}`, l.name, l.begins ?? homeName(l.category)) } : {};
 }
 
+
+/** A line read's field names as a player says them. */
+const LINE_FIELD_WORDS: Record<string, string> = { about: "what it is", getIn: "how to get in", order: "the order of its quests", branches: "the choices", gives: "what it gives", closes: "what it closes" };
 
 /** "14 quests pay 100; the rest pay none" */
 function xpNote(quests: Quest[]): string {
@@ -73,7 +80,9 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const opening = line.quests.find((q) => q.edid === line.opening);
   // A line of jobs from a board lists them once, as the class, not one by one (WO-136 ruling 3): no story rows, no job rows.
   const story = line.board ? [] : [...(opening && opening.xp > 0 ? [opening] : []), ...line.quests.filter((q) => q.xp > 0 && q !== opening)];
-  const jobs = line.board ? [] : line.quests.filter((q) => q.xp === 0);
+  // A quest the read already lists in order isn't a job again.
+  const ordered = new Set((line.read?.order ?? []).map((o) => o.quest));
+  const jobs = line.board ? [] : line.quests.filter((q) => q.xp === 0 && !ordered.has(q.name));
   const shelf0 = line.category === "work";
   const rows = new Map(line.quests.map((q, i) => [q.edid, rowOf(q, i > 0 ? line.quests[i - 1] : undefined)]));
   const gives = line.quests.map((q) => ({ edid: q.edid, name: q.name, what: rows.get(q.edid)!.rewards.filter((r) => !/^Gold\b/i.test(r.what)) })).filter((g) => g.what.length > 0);
@@ -86,6 +95,13 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   };
   const groups = shelf0 && !line.board ? [...new Set(line.quests.map(pickUp))].map((place) => ({ place, quests: line.quests.filter((q) => pickUp(q) === place) })) : [];
   const sibs = siblings(line);
+  // The line's read (WO-154 Part 2): what it is, how to get in, the quests in order with the branches, what it gives and closes.
+  const lr = line.read;
+  const names = placeNames();
+  const hrefOf = (name: string) => {
+    const q = line.quests.find((x) => x.name === name);
+    return q ? questHref(q.edid) : null;
+  };
   const waysIn = line.ways ?? (startChecked(opening?.start) ? opening!.start!.ways : undefined);
   const told = storyOfLine(line.id);
   // A shelf is separate jobs, not a story (WO-147 Part 2): no giver, ways in or first step taken from one of them for the whole.
@@ -132,7 +148,11 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
 
       <div className={styles.lineGrid}>
         <div className={styles.lineMain}>
-          {line.begins && (line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={styles.plainBig}>{line.begins}</p>)}
+          {lr?.about ? (
+            <p className={k.lede}>{lr.about}</p>
+          ) : (
+            line.begins && (line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={styles.plainBig}>{line.begins}</p>)
+          )}
 
           <section className={`frame ${styles.panel}`} aria-labelledby="start-title">
             <h2 id="start-title" className={styles.h2}>
@@ -140,7 +160,31 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             </h2>
             {shelf && <p className={styles.soft}>Separate jobs, each with its own start. Open one for how it starts.</p>}
             <dl className={styles.who}>
-              {!shelf && line.giver && (
+              {!shelf && lr?.getIn?.who && (
+                <>
+                  <dt>Who</dt>
+                  <dd>
+                    <Linked text={lr.getIn.who} names={names} />
+                  </dd>
+                </>
+              )}
+              {!shelf && lr?.getIn?.where && (
+                <>
+                  <dt>Where</dt>
+                  <dd>
+                    <Linked text={lr.getIn.where} names={names} />
+                  </dd>
+                </>
+              )}
+              {!shelf && lr?.getIn?.how && (
+                <>
+                  <dt>How</dt>
+                  <dd>
+                    <Linked text={lr.getIn.how} names={names} />
+                  </dd>
+                </>
+              )}
+              {!shelf && !lr?.getIn && line.giver && (
                 <>
                   <dt>Who</dt>
                   <dd>
@@ -148,7 +192,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   </dd>
                 </>
               )}
-              {!shelf && line.giver?.place && (
+              {!shelf && !lr?.getIn && line.giver?.place && (
                 <>
                   <dt>Where</dt>
                   <dd>
@@ -157,7 +201,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 </>
               )}
               {/* No one giver (WO-121): the opening quest's ways in, as the start check words them; every opening's, when the line has more than one (WO-121b). */}
-              {!shelf && !line.giver && !!waysIn?.length && (
+              {!shelf && !lr?.getIn && !line.giver && !!waysIn?.length && (
                 <>
                   <dt>Ways in</dt>
                   <dd>
@@ -174,7 +218,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   </dd>
                 </>
               )}
-              {!shelf && !line.giver && line.firstObjective && (
+              {!shelf && !lr?.getIn && !line.giver && line.firstObjective && (
                 <>
                   <dt>First step</dt>
                   <dd>
@@ -182,7 +226,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   </dd>
                 </>
               )}
-              {line.start && (
+              {!lr?.getIn?.how && line.start && (
                 <>
                   <dt>How</dt>
                   <dd>
@@ -191,6 +235,15 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                 </>
               )}
             </dl>
+            {!!lr?.getIn?.needs?.length && (
+              <ul className={k.needs}>
+                {lr.getIn.needs.map((n, i) => (
+                  <li key={i}>
+                    <Linked text={n} names={names} />
+                  </li>
+                ))}
+              </ul>
+            )}
             <div className={styles.needsBlock}>
               <LineNeeds gate={gateOf(line)} after={after} main={main} />
             </div>
@@ -220,7 +273,22 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             </div>
           )}
 
-          {gives.length > 0 && (
+          {lr?.gives?.length ? (
+            <section className={styles.panel} aria-labelledby="rewards-title">
+              <h2 id="rewards-title" className={styles.h2}>
+                What the whole line gives
+              </h2>
+              <ul className={k.list}>
+                {lr.gives.map((g, i) => (
+                  <li key={i}>
+                    <Linked text={g} names={names} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
+          {!lr?.gives && gives.length > 0 && (
             <section className={styles.panel} aria-labelledby="rewards-title">
               <h2 id="rewards-title" className={styles.h2}>
                 What the whole line gives
@@ -235,7 +303,22 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             </section>
           )}
 
-          {closes.length > 0 && (
+          {lr?.closes?.length ? (
+            <section className={styles.panel} aria-labelledby="closes-title">
+              <h2 id="closes-title" className={styles.h2}>
+                What it closes
+              </h2>
+              <ul className={k.list}>
+                {lr.closes.map((c, i) => (
+                  <li key={i}>
+                    <Linked text={c} names={names} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
+          {!lr?.closes && closes.length > 0 && (
             <section className={styles.panel} aria-labelledby="closes-title">
               <h2 id="closes-title" className={styles.h2}>
                 What it closes
@@ -272,7 +355,57 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   </ul>
                 </div>
               ))}
-            {!shelf0 && story.length > 0 && (
+            {!shelf0 && lr?.order?.length ? (
+              <div className={styles.group}>
+                <div className={styles.ghead}>
+                  <h3>In order</h3>
+                  <span>
+                    {lr.order.length} quest{lr.order.length === 1 ? "" : "s"}
+                  </span>
+                </div>
+                <ol className={styles.qlist} style={{ listStyle: "none", padding: 0 }}>
+                  {lr.order.map((o, i) => {
+                    const href = hrefOf(o.quest);
+                    const branch = lr.branches?.find((b) => b.at === o.quest);
+                    return (
+                      <li key={i} style={{ display: "flex", flexDirection: "column", gap: 4, padding: "14px 0", borderBottom: "1px solid var(--rule-soft)" }}>
+                        <span style={{ fontSize: 18, fontWeight: 600 }}>
+                          <span className="muted" style={{ marginRight: 10, fontWeight: 400 }}>
+                            {i + 1}
+                          </span>
+                          {href ? <Link href={href}>{o.quest}</Link> : o.quest}
+                          {o.quest === opening?.name && line.category !== "work" ? <span className={styles.first}>Starts here</span> : null}
+                        </span>
+                        {o.what ? (
+                          <span style={{ color: "var(--soft)" }}>
+                            <Linked text={o.what} names={names} />
+                          </span>
+                        ) : null}
+                        {o.where ? (
+                          <span className="muted">
+                            <Linked text={o.where} names={names} />
+                          </span>
+                        ) : null}
+                        {o.needs ? <span className="muted">Needs: {o.needs}</span> : null}
+                        {branch && (
+                          <span className={k.sharedNote}>
+                            You choose:
+                            <ul style={{ margin: "4px 0 0", paddingLeft: 18 }}>
+                              {branch.options.map((opt, j) => (
+                                <li key={j}>
+                                  <Linked text={opt} names={names} />
+                                </li>
+                              ))}
+                            </ul>
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            ) : null}
+            {!shelf0 && !lr?.order?.length && story.length > 0 && (
               <div className={styles.group}>
                 <div className={styles.ghead}>
                   <h3>{shelf ? "Each one on its own" : "In order"}</h3>
@@ -322,9 +455,27 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               </div>
             )}
           </section>
+          {lr ? (
+            <HowSure
+              id="sure-line"
+              line={`Read from the game files and checked by a second reader${read === line.quests.length ? "" : `; ${line.quests.length - read} of its ${line.quests.length} quests are from the planner's older rules`}`}
+              sources={[
+                { mark: "yes", name: "LoreRim's game files", note: "The line and its quests, read, then checked by a second reader" },
+                { mark: "no", name: "UESP", note: "Not compared yet" },
+                { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
+              ]}
+              unsure={(lr.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
+              actions={
+                <Link href={`/quests/${line.id}?report=1#report`} className="btn">
+                  Report a mistake
+                </Link>
+              }
+            />
+          ) : (
           <p className={styles.sure}>
             {read === line.quests.length ? "Read from the game files and checked by a second reader" : `${read} of ${line.quests.length} quests are read from the game files and checked by a second reader; the rest are from the planner's older rules`}
           </p>
+          )}
           <QuestReport lineId={line.id} quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />
         </div>
 

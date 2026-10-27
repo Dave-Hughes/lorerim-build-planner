@@ -168,7 +168,12 @@
     gap: 14px;
   }
   .nav {
-    gap: 12px;
-    font-size: 15px;
+    gap: 10px;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    /* Builds, Quests, People, Places and Playthroughs (WO-154) don't all fit a phone: the menu scrolls rather than push the page wide. */
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 }

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { auth } from "@/auth";
+import { ConfirmButton } from "@/components/pages/confirm-button";
+import { SignInButton } from "@/components/site-header";
+import { confirmationsOf } from "@/lib/quests/confirmations";
 import { Gold, HowSure, Icon, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
@@ -41,6 +45,9 @@ const originOf = (id: string) => {
 export default async function PlacePage({ params }: { params: Params }) {
   const place = placeBySlug((await params).slug);
   if (!place) notFound();
+  const slug = (await params).slug;
+  const userId = (await auth())?.user?.id ?? null;
+  const confirmed = await confirmationsOf("place", slug, userId);
   const a = place.actors;
   const levels = hasLevels(a) && a.hostile !== false ? rangeOf(a!) : null;
   const boss = a?.boss?.name ? { name: a.boss.name, range: bossRange(a.boss.level), words: levelWords(a.boss.level) } : null;
@@ -237,13 +244,18 @@ export default async function PlacePage({ params }: { params: Params }) {
         line="Counted from the game files. No player has confirmed it yet."
         sources={[
           { mark: "yes", name: "LoreRim's game files", note: "Who lives here, the boss, books, crafting and XP, read from the records" },
-          { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
+          confirmed.names.length
+            ? { mark: "yes", name: "Players", note: `${confirmed.names.length} confirmed this page`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
+            : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
         unsure={worth?.bossChest ? [{ field: "what's in the boss chest" }] : []}
         actions={
-          <Link href="/quests" className="btn">
-            Report a mistake
-          </Link>
+          <>
+            <ConfirmButton kind="place" id={slug} path={`/places/${slug}`} title={place.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/places/${slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
+            <Link href="/quests" className="btn">
+              Report a mistake
+            </Link>
+          </>
         }
       />
     </main>

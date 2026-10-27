@@ -1363,3 +1363,14 @@ a.mod:hover {
   font-size: 15px;
   color: var(--muted);
 }
+
+/* A small heading inside a section (WO-154): the result groups and the places. */
+.h3 {
+  margin: 18px 0 8px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soft);
+}

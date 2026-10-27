@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { auth } from "@/auth";
+import { ConfirmButton } from "@/components/pages/confirm-button";
+import { SignInButton } from "@/components/site-header";
+import { confirmationsOf } from "@/lib/quests/confirmations";
 import { HowSure, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
 import { personBySlug, roleWords } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
@@ -25,6 +29,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function PersonPage({ params }: { params: Params }) {
   const person = personBySlug((await params).slug);
   if (!person) notFound();
+  const userId = (await auth())?.user?.id ?? null;
+  const confirmed = await confirmationsOf("person", person.slug, userId);
   const quests = questsOf(person.name);
   const gives = quests.filter((q) => q.gives);
   const role = roleWords(person.role);
@@ -130,13 +136,18 @@ export default async function PersonPage({ params }: { params: Params }) {
         sources={[
           { mark: "yes", name: "LoreRim's game files", note: "Their race, where they are placed and their quests, from the records" },
           { mark: "no", name: "Second reader", note: "Not yet" },
-          { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
+          confirmed.names.length
+            ? { mark: "yes", name: "Players", note: `${confirmed.names.length} confirmed this page`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
+            : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
         unsure={[{ field: "where they are through the day and night" }, { field: "whether they follow you, marry or sell and train" }, { field: "what changes where they are" }]}
         actions={
-          <Link href="/quests" className="btn">
-            Report a mistake
-          </Link>
+          <>
+            <ConfirmButton kind="person" id={person.slug} path={`/people/${person.slug}`} title={person.name} signedIn={!!userId} mine={confirmed.mine} signIn={<SignInButton redirectTo={`/people/${person.slug}`} className="btn btn-primary" label="Sign in to confirm" />} />
+            <Link href="/quests" className="btn">
+              Report a mistake
+            </Link>
+          </>
         }
       />
     </main>

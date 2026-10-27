@@ -204,6 +204,13 @@
       "when": 1792789093432,
       "tag": "0028_quest_fact_confirms",
       "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1793070132669,
+      "tag": "0029_eminent_jubilee",
+      "breakpoints": true
     }
   ]
 }

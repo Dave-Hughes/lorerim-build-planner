@@ -577,3 +577,21 @@ export const questPlayerFacts = pgTable(
   },
   (t) => [index("quest_player_fact_quest_idx").on(t.quest)],
 );
+
+/**
+ * "I can confirm this is accurate" (WO-154 Part 3): a signed-in player's word, from the page of a quest, a person or a place, that what it
+ * says matches their game. One per player per page; Undo deletes the row. `key` is the quest's EDID, the person's or the place's page slug.
+ */
+export const pageConfirmations = pgTable(
+  "page_confirmation",
+  {
+    id: serial("id").primaryKey(),
+    kind: text("kind").$type<"quest" | "person" | "place">().notNull(),
+    key: text("key").notNull(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("page_confirmation_one_per_player").on(t.kind, t.key, t.userId), index("page_confirmation_page").on(t.kind, t.key)],
+);

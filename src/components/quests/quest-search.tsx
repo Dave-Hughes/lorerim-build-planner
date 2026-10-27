@@ -19,7 +19,7 @@ export function QuestSearch({ initial }: { initial: string }) {
     >
       <label className="field">
         <span className="sr-only">Search quests</span>
-        <input className="input" type="search" value={q} placeholder="Search quests, or the journal's words" onChange={(e) => setQ(e.target.value)} />
+        <input className="input" type="search" value={q} placeholder="Search quests, people, places" onChange={(e) => setQ(e.target.value)} />
       </label>
     </form>
   );

@@ -4,11 +4,11 @@ import { LINK_ONLY_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("the header's nav is Builds, Quests, Playthroughs, Gear and Guide (WO-66, WO-92, WO-100, WO-111); New character is a button (WO-114); the avatar menu works by keyboard", async ({ page, context }) => {
+test("the header's nav is Builds, Quests, People, Places, Playthroughs, Gear and Guide (WO-66, WO-92, WO-100, WO-111, WO-154); New character is a button (WO-114); the avatar menu works by keyboard", async ({ page, context }) => {
   await signIn(context);
   await page.goto("/me");
   const header = page.getByRole("banner");
-  await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Builds", "Quests", "Playthroughs", "Gear", "Guide"]);
+  await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Builds", "Quests", "People", "Places", "Playthroughs", "Gear", "Guide"]);
   await expect(header.getByRole("link", { name: "Browse builds" })).toHaveCount(0);
   await expect(header.getByRole("link", { name: "New character" })).toHaveClass(/btn-primary/);
 
