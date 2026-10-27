@@ -5170,6 +5170,8 @@ Dave: being signed in doesn't mean he doesn't want Recent characters and New in 
 - A flex quirk showed up in the screenshot: the home's `main` shrank to its content when the sections were short (a column of two recent characters), so it now has `width: 100%`.
 - Checks: typecheck, lint, 704 unit tests, the build, `wo157` (12 tests, two of them the signed-in home at 1440 and 390) and the other specs that load `/` (`wo24`, `wo80`, `wo84`, `wo84-soon`, `wo96-soon`). Screenshots: `/tmp/s157/p9/wo157-home-signed-in-1440.png` and `-390.png`, and `visitor-1440.png`.
 
+**Bob, 27 Oct 13:45:** Part 8 checked on the preview at 1440 and 390: every fix is there (Tapps clear of the buttons, the place page's quotes and characters, the wording). Part 9 is signed-in only; Dave checks it in the app.
+
 ### Part 10. Recent characters, dressed up (Dave, 27 Oct, 13:39: "this looks great")
 Board: `HomeCharacters` (canvas row 34, right of `HomeYou`), https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1. Same compact strip of five, portrait covers; Dave wants these to be the eye candy of the home page.
 - [ ] **On each card:** the cover edge to edge (each card keeps the cover's own position the owner set); top left, the race's pixel icon in a small dark square; top right, Featured, Video and Playthrough when the character has them (at most two); over the fade, the name (two lines at most), the tagline in the flavour face (two lines at most), and the race with its traits; under a thin rule, the maker's avatar and name, the likes, and the planned level as "LV 50" in the pixel face, right-aligned. A character with a listed run also gets "Act 2 of 4" with its act's name and a bar of the acts, from the run itself; leave it off when there's no run.
