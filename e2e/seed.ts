@@ -530,6 +530,7 @@ export async function seed() {
       ],
     );
     await seedKyria(db);
+    await seedListedCharacter(db);
     // The test author's seeded builds were all made two days ago, so the day's limit of 10 new builds
     // (WO-40) is left for the tests that make builds. The limit's own tests use Busy Builder.
     await db.update(schema.builds).set({ createdAt: new Date(Date.now() - 2 * 86_400_000) }).where(eq(schema.builds.ownerId, TEST_USER_ID));
@@ -544,8 +545,23 @@ export const KYRIA_PLAYTHROUGH_ID = "e2ekyrya22";
 export const MENDER_BUILD_ID = "e2estry333";
 /** Kyria's own build (WO-114): the character's cover is the build's, so hers has one. */
 export const KYRIA_BUILD_ID = "e2ekyryb22";
+/** WO-154 Part 5: a Listed build with a Listed run, for the Characters page. */
+export const LISTED_CHARACTER_BUILD_ID = "e2echarfv2";
+export const LISTED_CHARACTER_RUN_ID = "e2echarrn2";
 
 const para = (...texts: string[]): GuideDoc => ({ type: "doc", content: texts.map((text) => ({ type: "paragraph", content: [{ type: "text", text }] })) });
+
+/** A character anyone can see: a Listed build and its Listed run with two acts (WO-154 Part 5). */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function seedListedCharacter(db: any) {
+  const earlier = new Date(Date.now() - 2 * 86_400_000);
+  await db.insert(schema.builds).values({ id: LISTED_CHARACTER_BUILD_ID, ownerId: OTHER_USER_ID, name: "Part Five Ranger", description: "A Bosmer ranger who walks everywhere.", visibility: "public", gameVersion: "5.0.4.8", plan: samplePlan(), createdAt: earlier });
+  await db.insert(schema.playthroughs).values({ id: LISTED_CHARACTER_RUN_ID, ownerId: OTHER_USER_ID, buildId: LISTED_CHARACTER_BUILD_ID, name: "Part Five Ranger's run", line: "A ranger on foot from Falkreath to Riften.", gameVersion: "5.0.4.8", visibility: "public" });
+  await db.insert(schema.playthroughActs).values([
+    { playthroughId: LISTED_CHARACTER_RUN_ID, position: 1, name: "The Road North", levelFrom: 1, levelTo: 8, place: "Falkreath", goal: "Reach Whiterun on foot." },
+    { playthroughId: LISTED_CHARACTER_RUN_ID, position: 2, name: "The Rift", levelFrom: 8, levelTo: 20, place: "Riften", goal: "Settle in Riften." },
+  ]);
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function seedKyria(db: any) {

@@ -5064,7 +5064,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: building (Mac; Part 5: one Characters page, Dave 27 Oct. Parts 1c to 4 are built and await Dave's review)
+Status: for Bob
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
@@ -5173,9 +5173,20 @@ People and Places landing pages (today a long list):
 
 ### Part 5. One Characters page in place of Builds and Playthroughs (Dave, 27 Oct)
 A character is a build and, if it has one, a run (WO-114). Your own are already one list on `/me`; the public side is still two menu items (Builds, the home page's browse; Playthroughs, a bare list), so a player looks in two places for one person's character.
-- [ ] One menu item, **Characters**, in place of Builds and Playthroughs. One page of public characters: each card is the build's card and, if the character has a listed run, its acts on the card the way My characters shows them. Keep Browse's search and filters (tags, race, version) and add a filter for "has a playthrough".
-- [ ] `/playthroughs` redirects to the Characters page with that filter on; build and run pages (`/b/…`, `/p/…`) stay where they are.
-- [ ] Screenshots at 1440 and 390.
+- [x] One menu item, **Characters**, in place of Builds and Playthroughs. One page of public characters: each card is the build's card and, if the character has a listed run, its acts on the card the way My characters shows them. Keep Browse's search and filters (tags, race, version) and add a filter for "has a playthrough".
+- [x] `/playthroughs` redirects to the Characters page with that filter on; build and run pages (`/b/…`, `/p/…`) stay where they are.
+- [x] Screenshots at 1440 and 390.
+
+**Jeff's notes, Part 5 (Mac, 27 Oct).** Typecheck, lint, unit, the build and the whole e2e suite (408 tests) pass; new e2e is `e2e/wo154p5.spec.ts` (4 tests), with a Listed build and a Listed run, owned by the second test account, added to the e2e seed (`Part Five Ranger`). `wo18` and `wo154` changed for the menu's and the empty list's new wording.
+- **Where it lives.** The Characters page is the home page (`/`), which was Browse builds: the brand and the menu's one item both go there, so no address changed. While playthroughs are on, the menu reads Characters (Quests, People, Places, Gear, Guide follow) and the page's title is "Characters"; with playthroughs off, nothing changes (Builds). `/p/...` pages light the Characters item.
+- **The cards** are the build's card. A character with a Listed run shows "Where the run stands" on it as My characters does: the current act, the place, the bar and "N of M done", with "Play ›" to the run. A build with no run shows no run box on the public page (the "Build alone, start a run" box is for its owner). Only a Listed run shows: Link-only and private runs don't.
+- **The filter.** A "Playthrough" select, "Any" or "Has a playthrough", beside Tags, Race, Version and Sort; it is `run=1` in the address, so it can be shared, and Browse's search and filters work inside it ("No characters match." with Clear filters when nothing does).
+- **`/playthroughs`** redirects to `/?run=1`; with playthroughs off it is a 404 as before. A Listed run with no build yet (made before WO-114) has no card, so it is listed under the grid as "Runs with no build yet" on the playthrough view, so none disappears from the public side.
+- **Searches** are unchanged (the palette and /search find builds and quests as before).
+- **E2E assertions changed:** the menu list in `wo24`, and the page and menu names in `wo66`, `wo80`, `wo81-launch`, `wo84`, `wo84-soon` and `wo96-soon` now accept Builds or Characters (the first while playthroughs are off).
+- **Screenshots at 1440 and 390:** `test-results/wo154p5-characters-*.png` and `wo154p5-characters-run-*.png` (from `npx playwright test e2e/wo154p5.spec.ts`).
+- **Dave's note, 27 Oct (a fix to Part 4):** a quest's page showed "For Kyria Severa, Sword of Stendarr: unknown: ..." under How to start it, taken from the signed-in player's latest run. A quest page, a person page, a place page and the search have no context of a character or a playthrough now: that line (and the run lookup behind it) is gone from the quest page, and `wo147` asserts the page never says "For ...:", "open for you" or a run's name, signed in. Whether a quest is open for a character is still the connector's to say (`get_quest` with a level or a playthrough), to that player's assistant, not the page.
+- **Not done:** nothing the order asks. I did not rename "Builds" anywhere else (My characters, guide copy, metadata): say if you want that swept.
 
 **Jeff's notes, Part 2 and 3 (Mac, 26 Oct).** Built on a shared kit (`src/components/pages/`: title box, section head, gold rewards, "How sure we are", the 1440/390 layout from the boards). Screenshots: `npx playwright test e2e/wo154.spec.ts` writes `test-results/wo154-<page>-1440.png` and `-390.png` for Lights Out!, The Golden Claw, the Thieves Guild line, the main quest's line, Mjoll the Lioness and Broken Oar Grotto, with the older ones. Typecheck, lint (the one warning, `wo129.test.ts`, was there before), unit tests, 348 gamedata tests, the build and the whole e2e suite pass; one new table, `page_confirmation` (`drizzle/0029_*.sql`, additive only), applied to the dev database.
 - **Data (Python, `scripts/gamedata/quest_reads.py`, wired in `build.py`):** each read quest carries its ways (`read.ways`, 228 quests; the game's `<Alias>` and `<Global>` tags filled the way objectives are), each of the 50 read lines its line read (`line.read`), each quest the mods that changed it (`changedBy`). `get_quest` returns `ways` (and `stepsEveryWayTakes` for an "endings" quest) and `changedBy`; nothing generated was renamed. The main quest's line is "The main quest" (in `questlines.json`, not in the generated file).

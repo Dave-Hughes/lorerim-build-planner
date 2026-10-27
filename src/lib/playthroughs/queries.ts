@@ -188,6 +188,19 @@ export async function runsByBuild(userId: string): Promise<Map<string, RunSummar
   return out;
 }
 
+/** Of these builds, those with a Listed run (WO-154 Part 5): the build's id to its latest listed run's summary, for the public Characters page. */
+export async function listedRunsByBuild(buildIds: string[]): Promise<Map<string, RunSummary & { name: string }>> {
+  const out = new Map<string, RunSummary & { name: string }>();
+  if (!buildIds.length) return out;
+  const rows = await db()
+    .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
+    .from(schema.playthroughs)
+    .where(and(inArray(schema.playthroughs.buildId, buildIds), eq(schema.playthroughs.visibility, "public")))
+    .orderBy(desc(schema.playthroughs.updatedAt));
+  for (const r of rows) if (r.buildId && !out.has(r.buildId)) out.set(r.buildId, { ...(await runOf(r.id)), name: r.name });
+  return out;
+}
+
 export const listMyPlaythroughs = (userId: string) => cards(eq(schema.playthroughs.ownerId, userId), 100);
 export const listListedPlaythroughs = () => cards(eq(schema.playthroughs.visibility, "public"), 60);
 

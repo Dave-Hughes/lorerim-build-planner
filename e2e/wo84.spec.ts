@@ -5,7 +5,7 @@ test.use({ viewport: { width: 1440, height: 900 } });
 
 test("point 1: with the switch off, / is the usual home page", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "Builds" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^(Builds|Characters)$/ })).toBeVisible();
   await expect(page.getByText("Opening soon")).toHaveCount(0);
 });
 

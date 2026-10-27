@@ -18,8 +18,6 @@ import {
 import { Steps } from "@/components/pages/steps";
 import { QuestReport } from "@/components/quests/quest-report";
 import { SignInButton } from "@/components/site-header";
-import { openForYou, playerState } from "@/lib/mcp/facts";
-import { toldOf } from "@/lib/mcp/playthroughs";
 import { modNames, personNames, placeNames } from "@/lib/pages/names";
 import { placeOnly, vaguePlace } from "@/lib/pages/where";
 import { categories, homeName, questsData } from "@/lib/quests/data";
@@ -27,8 +25,6 @@ import { loadPlayerFacts } from "@/lib/quests/player-facts";
 import { pageSources } from "@/lib/quests/player-source";
 import { dangerParts, pageOf, placeNamed } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
-import { listMyPlaythroughs } from "@/lib/playthroughs/queries";
-import { playthroughsOn } from "@/lib/features";
 import { placeHref } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/pages/page-kit.module.css";
@@ -62,7 +58,7 @@ const nexus = (id: string) =>
 /**
  * A quest's own page (WO-154 Part 2), from the canvas board "Quest page: Lights Out!, second pass": the title box with where it is and
  * what changed it, how to start it, N ways to finish it, where it takes you; rewards and people at the side; what it closes and how sure
- * we are at the foot. A story's page keeps the quest line it is part of in its back link; a lone quest's goes to its category.
+ * we are at the foot. (A quest's page never speaks of a player's character or run, Dave 27 Oct: whether a quest is open for someone is the connector's to say, to their assistant.) A story's page keeps the quest line it is part of in its back link; a lone quest's goes to its category.
  */
 export default async function QuestPage({
   params,
@@ -90,21 +86,6 @@ export default async function QuestPage({
   const town = line.where ?? start?.towns?.[0] ?? null;
   const mod = quest.mod ?? line.sources[0];
   const changed = quest.changedBy ?? [];
-
-  // Open for the player (WO-147): through their most recent run with a save, when they have one.
-  let forYou: { run: string; says: string } | null = null;
-  if (userId && playthroughsOn()) {
-    const run = (await listMyPlaythroughs(userId))[0];
-    if (run)
-      forYou = {
-        run: run.name,
-        says: openForYou(
-          line,
-          quest,
-          playerState(await toldOf({ playthrough: run.id }, userId)),
-        ).says,
-      };
-  }
 
   // The people and places the page names, as links.
   const people = [
@@ -328,11 +309,6 @@ export default async function QuestPage({
                       ({d.replace(/\.$/, "")})
                     </span>
                   ))}
-              </p>
-            )}
-            {forYou && (
-              <p className={styles.way}>
-                <b>For {forYou.run}:</b> {forYou.says}
               </p>
             )}
           </Section>

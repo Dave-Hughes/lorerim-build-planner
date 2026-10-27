@@ -31,7 +31,7 @@ test.describe("tags", () => {
     await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();
     await page.goto("/?tags=necromancy,marksman");
     await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toHaveCount(0);
-    await expect(page.getByText("No builds match.")).toBeVisible();
+    await expect(page.getByText(/^No (builds|characters) match\.$/)).toBeVisible();
     await page.getByRole("button", { name: "Clear filters" }).click();
     await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();
 

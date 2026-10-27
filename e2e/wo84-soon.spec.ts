@@ -38,6 +38,6 @@ test("point 2: /signin shows the button, the auth API still answers, and an admi
   // The seeded test author is an admin (ADMIN_DISCORD_IDS).
   await signIn(context);
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "Builds" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^(Builds|Characters)$/ })).toBeVisible();
   await expect(page.getByText("Opening soon")).toHaveCount(0);
 });

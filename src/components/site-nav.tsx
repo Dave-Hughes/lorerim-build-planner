@@ -19,8 +19,9 @@ export function SiteNav() {
   const { siteGuide, gear, quests, playthroughs } = useFeatures();
   return (
     <nav className={styles.nav} aria-label="Site">
-      <Link href="/" aria-current={builds ? "page" : undefined}>
-        Builds
+      {/* A build and a run are one character (WO-114): one public page, Characters, in place of Builds and Playthroughs (WO-154 Part 5). */}
+      <Link href="/" aria-current={builds || (playthroughs && playHere) ? "page" : undefined}>
+        {playthroughs ? "Characters" : "Builds"}
       </Link>
       {quests && (
         <Link href="/quests" aria-current={questsHere ? "page" : undefined}>
@@ -35,11 +36,6 @@ export function SiteNav() {
       {quests && (
         <Link href="/places" aria-current={placesHere ? "page" : undefined}>
           Places
-        </Link>
-      )}
-      {playthroughs && (
-        <Link href="/playthroughs" aria-current={playHere ? "page" : undefined}>
-          Playthroughs
         </Link>
       )}
       {gear && (

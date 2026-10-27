@@ -13,7 +13,7 @@ import styles from "./browse-filters.module.css";
  * and sort. Everything lives in the URL, so a filtered list can be shared; typing updates the list
  * after 300 ms without a full page load.
  */
-export function BrowseFilters({ state, versions, defaultVersion, races, empty }: { state: BrowseState; versions: string[]; defaultVersion: string; races: string[]; empty: boolean }) {
+export function BrowseFilters({ state, versions, defaultVersion, races, empty, characters = false }: { state: BrowseState; versions: string[]; defaultVersion: string; races: string[]; empty: boolean; characters?: boolean }) {
   const router = useRouter();
   const [q, setQ] = useState(state.q);
   const [tagsOpen, setTagsOpen] = useState(false);
@@ -31,7 +31,7 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
   const tagsWrap = useRef<HTMLDivElement>(null);
   const tagsButton = useRef<HTMLButtonElement>(null);
   useDismiss({ open: tagsOpen, onClose: () => setTagsOpen(false), inside: [tagsWrap], trigger: tagsButton });
-  const filtered = !!(state.q || state.tags.length || state.race);
+  const filtered = !!(state.q || state.tags.length || state.race || state.run);
   const clear = () => {
     typed.current = false;
     setQ("");
@@ -39,7 +39,7 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
   };
   return (
     <>
-      <section aria-label="Find builds" className={styles.row}>
+      <section aria-label={characters ? "Find characters" : "Find builds"} className={styles.row}>
         <label className={`field ${styles.search}`}>
           <span className="label">Search</span>
           <input
@@ -102,6 +102,15 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
             <option value="all">All versions</option>
           </select>
         </label>
+        {characters && (
+          <label className={`field ${styles.small}`}>
+            <span className="label">Playthrough</span>
+            <select className="select" value={state.run ? "run" : ""} onChange={(e) => go({ run: e.target.value === "run" })}>
+              <option value="">Any</option>
+              <option value="run">Has a playthrough</option>
+            </select>
+          </label>
+        )}
         <label className={`field ${styles.small}`}>
           <span className="label">Sort</span>
           <select className="select" value={state.sort} onChange={(e) => go({ sort: e.target.value === "liked" ? "liked" : "newest" })}>
@@ -121,7 +130,7 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
       )}
       {empty && filtered && (
         <div className={styles.none}>
-          <p className="muted">No builds match.</p>
+          <p className="muted">{characters ? "No characters match." : "No builds match."}</p>
           <button type="button" className="btn btn-sm" onClick={clear}>
             Clear filters
           </button>

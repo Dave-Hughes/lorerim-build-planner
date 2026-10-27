@@ -60,7 +60,7 @@ test("signed in, Come in lands on the app, and the app stays open on later pages
   await zen.page.getByRole("button", { name: "Come in" }).click();
   await zen.page.waitForURL((u) => u.pathname === "/");
   await isApp(zen.page);
-  await expect(zen.page.getByRole("heading", { name: "Builds" })).toBeVisible();
+  await expect(zen.page.getByRole("heading", { name: /^(Builds|Characters)$/ })).toBeVisible();
   for (const path of ["/new", "/me", "/"]) {
     await zen.page.goto(path);
     await isApp(zen.page);

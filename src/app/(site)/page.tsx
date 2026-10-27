@@ -3,6 +3,9 @@ import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { BrowseFilters } from "@/components/build/browse-filters";
 import { browseHref, type BrowseState } from "@/lib/builds/browse";
 import { getFeaturedBuild, searchBuilds } from "@/lib/builds/queries";
+import { PlaythroughCards } from "@/components/playthrough/cards";
+import { playthroughsOn } from "@/lib/features";
+import { listListedPlaythroughs, listedRunsByBuild } from "@/lib/playthroughs/queries";
 import { sampleBuild } from "@/lib/builds/sample";
 import { tourSampleId } from "@/lib/builds/sample-config";
 import { TourOffer } from "@/components/tour/tour";
@@ -14,7 +17,7 @@ export const dynamic = "force-dynamic";
 
 const PAGE = 24;
 
-type Search = Promise<{ q?: string; tags?: string; race?: string; sort?: string; version?: string; n?: string }>;
+type Search = Promise<{ q?: string; tags?: string; race?: string; sort?: string; version?: string; n?: string; run?: string }>;
 
 export default async function Home({ searchParams }: { searchParams: Search }) {
   const sp = await searchParams;
@@ -32,7 +35,11 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     race: sp.race && races.includes(sp.race) ? sp.race : "",
     version,
     sort: sp.sort === "liked" ? "liked" : "newest",
+    // Characters with a listed playthrough only (WO-154 Part 5); builds alone while playthroughs are off.
+    run: playthroughsOn() && sp.run === "1",
   };
+  // A build and a run are one character (WO-114, WO-154 Part 5): one public page for both, while playthroughs are on.
+  const characters = playthroughsOn();
   const shown = Math.min(240, Math.max(PAGE, Number(sp.n) || PAGE));
   const { builds, more } = await searchBuilds({
     q: state.q,
@@ -41,8 +48,13 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     gameVersion: version === "all" ? undefined : version,
     sort: state.sort,
     limit: shown,
+    withRun: state.run,
   });
-  const filtered = !!(state.q || state.tags.length || state.race);
+  const filtered = !!(state.q || state.tags.length || state.race || state.run);
+  // Each card with a listed run shows where it stands, as My characters does; a build alone shows no run box.
+  const runs = characters ? await listedRunsByBuild(builds.map((b) => b.id)) : null;
+  // Listed runs made before a build was attached have no card of their own: they sit under the grid on the playthrough view.
+  const unattached = characters && state.run ? (await listListedPlaythroughs()).filter((p) => !p.buildId) : [];
   // The featured build comes first, and larger, when nothing narrows the list (WO-39); with a search
   // or filter it sits in the grid like any other card.
   const featured = !filtered && version === defaultVersion ? await getFeaturedBuild() : null;
@@ -53,9 +65,9 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
       {/* A first visit: Tapps offers the sample build (WO-80). */}
       <TourOffer href={`/b/${tourSampleId()}`} />
       <div className={styles.head}>
-        <h1 className="title">Builds</h1>
+        <h1 className="title">{characters ? "Characters" : "Builds"}</h1>
       </div>
-      <BrowseFilters state={state} versions={versions} defaultVersion={defaultVersion} races={races} empty={builds.length === 0} />
+      <BrowseFilters state={state} versions={versions} defaultVersion={defaultVersion} races={races} empty={builds.length === 0 && unattached.length === 0} characters={characters} />
       {builds.length === 0 && !filtered ? (
         <div className={styles.empty}>
           <p className="muted">No builds listed yet. Here is the example build, or start your own.</p>
@@ -86,9 +98,9 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
       ) : builds.length > 0 || featured ? (
         <>
           <BuildGrid>
-            {featured && <BuildCard key={featured.id} build={featured} featured={{ intro: featured.intro }} />}
+            {featured && <BuildCard key={featured.id} build={featured} featured={{ intro: featured.intro }} run={runs?.get(featured.id)} />}
             {rest.map((b) => (
-              <BuildCard key={b.id} build={b} />
+              <BuildCard key={b.id} build={b} run={runs?.get(b.id)} />
             ))}
           </BuildGrid>
           {more && (
@@ -98,6 +110,14 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
           )}
         </>
       ) : null}
+      {unattached.length > 0 && (
+        <section aria-labelledby="unattached" style={{ display: "flex", flexDirection: "column", gap: 20, marginTop: 32 }}>
+          <h2 id="unattached" className="section-title">
+            Runs with no build yet
+          </h2>
+          <PlaythroughCards rows={unattached} />
+        </section>
+      )}
     </main>
   );
 }

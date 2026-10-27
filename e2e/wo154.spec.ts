@@ -108,7 +108,7 @@ test("search forgives a misspelling and finds a quest, a person and a place; the
   await expect(page.getByRole("region", { name: "People" }).getByRole("link", { name: "Brynjolf" }).first()).toHaveAttribute("href", /\/people\/brynjolf/);
   await page.goto("/search?q=Broken Oar");
   await expect(page.getByRole("region", { name: "Places" }).getByRole("link", { name: "Broken Oar Grotto" }).first()).toHaveAttribute("href", "/places/broken-oar-grotto");
-  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link")).toContainText(["Builds", "Quests", "People", "Places"]);
+  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link")).toContainText(["Characters", "Quests", "People", "Places"]);
 });
 
 test("the Quests page: the big lines first, then everything else by place", async ({ page }) => {

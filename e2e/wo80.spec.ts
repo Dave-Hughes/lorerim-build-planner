@@ -44,13 +44,13 @@ test("point 2: No thanks closes it, and the tour starts on the next build opened
   await page.getByRole("dialog", { name: "New here?" }).getByRole("button", { name: "No thanks" }).click();
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await page.reload();
-  await expect(page.getByRole("heading", { name: "Builds" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^(Builds|Characters)$/ })).toBeVisible();
   await expect(page.getByRole("dialog", { name: "New here?" })).toHaveCount(0);
   await page.goto(`/b/${FOUR_BUILD_ID}`);
   await expect(page.getByRole("dialog", { name: "Levels" })).toContainText("1 of");
   await page.keyboard.press("Escape");
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "Builds" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^(Builds|Characters)$/ })).toBeVisible();
   await expect(page.getByRole("dialog")).toHaveCount(0);
 });
 
