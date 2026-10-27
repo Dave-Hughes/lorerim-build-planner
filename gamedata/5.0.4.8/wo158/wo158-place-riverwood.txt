@@ -1,6 +1,8 @@
 ; Riverwood -- a village, not a single entrance -- framed from above its own centre marker instead
 fw SClearSkySN
 set gamehour to 12
+tfc 1
 player.moveto RiverwoodLocationCenterMarker
 player.setpos z 464.5
 player.setangle x 60
+tfc 1

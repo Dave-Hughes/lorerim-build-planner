@@ -1,5 +1,4 @@
 tai
 tcl
 tfc 1
-tm
 sgtm 1

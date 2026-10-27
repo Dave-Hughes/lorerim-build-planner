@@ -1,8 +1,10 @@
 ; Broken Oar Grotto -- Skyrim.esm's own map marker, no EditorID of its own
 fw SClearSkySN
 set gamehour to 12
+tfc 1
 player.setpos x -68094.8
 player.setpos y 140338.2
 player.setpos z -13578.0
 player.setangle x 35.0
 player.setangle z 37.5
+tfc 1

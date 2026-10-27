@@ -1,9 +1,23 @@
 """
-WO-158 Part 1b (Bob, 27 Oct 13:10): the console commands for the picture test, written as `bat <file>` scripts,
-now setting the camera itself through the player rather than leaving it to a person's hands. Writes them to
-gamedata/5.0.4.8/wo158/ (committed, so Bob/Dave can read exactly what each shot does) and, when `C:\\LoreRim`
-exists, also to `C:\\LoreRim\\_fieldguide\\tools\\wo158\\` for Dave to actually run:
+WO-158 Part 1c (Dave's own live test, 27 Oct): two real bugs Part 1b's design had, found the only way they
+could be -- by actually running it. Writes `bat <file>` scripts to gamedata/5.0.4.8/wo158/ (committed, so
+Bob/Dave can read exactly what each shot does) and, when `C:\\LoreRim` exists, also to
+`C:\\LoreRim\\_fieldguide\\tools\\wo158\\` for Dave to actually run:
   python3 scripts/gamedata/wo158_shoot.py
+
+**What Dave found, live:**
+1. `wo158-start.txt` ran `tm` as part of its opening toggles -- `tm` hides the console's own input box along
+   with the HUD, so once it had run Dave couldn't see what he was typing to check it was right. `tm` is now its
+   own file (`wo158-toggle-hud.txt`), run by hand, with his eyes on the screen, right before and right after
+   each screenshot -- never baked into a file that runs ahead of something he needs to watch happen.
+2. Running a place's file "blindly" (Dave's own word) moved his character but the camera stayed exactly where
+   it was. The reason: once `tfc` is on, `player.setpos`/`player.moveto` still move the player's own position
+   (confirmed -- bringing an NPC to that position with `moveto player` afterwards still worked), but the free
+   camera, already detached, simply doesn't follow a position change on the thing it detached from. Every place
+   and person file now toggles `tfc` off immediately before its own `player.setpos`/`setangle` lines and back on
+   immediately after (`with_camera_reattached`, below) -- which is exactly the mechanism Bob's own note asked
+   for ("the free camera starts from where the player's camera is"), just missing the retoggle around each
+   individual shot, not only once at the very start.
 
 Every reference below is the game's own EditorID where one exists (so the command still works if the plugin's
 load-order index ever shifts) and a load-order-safe `00` + local id only for Skyrim.esm's own records (Skyrim.esm
@@ -46,15 +60,13 @@ the mark (`setangle z 0`, north, since the camera sits due south of the mark on 
 open enough in the vanilla records that a few hundred units off centre is never a real risk; not independently
 measured this session.
 
-What each file assumes is already true (set once, by hand, from the console, before running any of these --
-they're toggles, so a bat file can't safely flip them more than once):
-  tm       HUD hidden
-  tfc 1    free camera on (the free camera starts from wherever the player's own camera already is, so setting
-           the player's position and angle below, before `tfc`, is what actually aims the shot)
+What `wo158-start.txt` turns on once, for the whole session (`wo158-end.txt` turns the same three back off,
+after the last shot, since each is a toggle):
+  tfc 1    free camera on -- left on between shots; each place/person file toggles it off and back on around
+           its own repositioning (see `with_camera_reattached`), never left to a single on/off at the ends
   tcl      no collision (so `player.setpos` can place the camera in open air above the entrance)
   tai      AI processing off (every actor stands still, not only the one framed)
-These four are the opening lines of `wo158-start.txt`; `wo158-end.txt` runs the same four again, after every shot
-is taken, since each is a toggle.
+`tm` (the HUD) is deliberately not among them -- see "What Dave found, live", item 1, above.
 
 Weather: `fw SClearSkySN` sets `NAT-ENB.esp`'s own clear sky, the plainest this load order's weather mod ships,
 reused for every shot rather than one found per hold -- a simplification, logged as a decision, not a hunt for
@@ -146,11 +158,30 @@ def door_camera(door_pos, door_yaw):
 
 
 def start_lines():
-    return ["tm", "tfc 1", "tcl", "tai", f"fw {CLEAR_WEATHER}", "set gamehour to 12", "sgtm 0", f"fov {FOV}"]
+    return ["tfc 1", "tcl", "tai", f"fw {CLEAR_WEATHER}", "set gamehour to 12", "sgtm 0", f"fov {FOV}"]
 
 
 def end_lines():
-    return ["tai", "tcl", "tfc 1", "tm", "sgtm 1"]
+    return ["tai", "tcl", "tfc 1", "sgtm 1"]
+
+
+def hud_toggle_lines():
+    """Its own file, run twice by hand around each screenshot (once to hide the HUD, once to show it again) --
+    never baked into start/end. `tm` hides the console's own input box along with the HUD (found live, 27 Oct:
+    Dave couldn't see what he was typing once `wo158-start` had run), so it has to stay a step Dave takes with
+    his eyes on the screen, not something that's already been run by the time he opens the console again."""
+    return ["tm"]
+
+
+def with_camera_reattached(lines):
+    """Wraps a block that repositions the player so the detached free camera actually goes there. Found live,
+    27 Oct: once `tfc` is on, `player.setpos`/`player.moveto` still move the player's own position (confirmed --
+    an NPC `moveto player`-ed afterwards lands correctly) but the free camera, already detached, doesn't follow;
+    Dave watched his own character vanish from where it had been while the camera stayed put. Toggling `tfc`
+    off first reattaches the camera to the player for the move, then back on detaches it again starting from
+    the new spot -- which is the mechanism Bob's own note actually asked for ("the free camera starts from
+    where the player's camera is"), just missing the retoggle around each shot, not only once at the start."""
+    return ["tfc 1"] + lines + ["tfc 1"]
 
 
 def camera_setpos_lines(cx, cy, cz, yaw):
@@ -161,14 +192,15 @@ def camera_setpos_lines(cx, cy, cz, yaw):
 def place_lines(target, marker=None, entrance=None):
     lines = [f"fw {CLEAR_WEATHER}", "set gamehour to 12"]
     if marker and entrance:
-        lines += camera_setpos_lines(*entrance_camera(marker, entrance))
+        lines += with_camera_reattached(camera_setpos_lines(*entrance_camera(marker, entrance)))
     elif marker:
         # Riverwood: no single entrance to aim at -- straight to the marker, well above it, tilted further down.
         # `setpos` takes an absolute coordinate, not a relative one, so the marker's own z plus the offset is
         # computed here rather than written as "+N" (which the console doesn't parse as an offset).
-        lines += [f"player.moveto {target}", f"player.setpos z {marker[2] + HEIGHT * 2:.1f}", "player.setangle x 60"]
+        lines += with_camera_reattached(
+            [f"player.moveto {target}", f"player.setpos z {marker[2] + HEIGHT * 2:.1f}", "player.setangle x 60"])
     else:
-        lines += [f"player.moveto {target}"]
+        lines += with_camera_reattached([f"player.moveto {target}"])
     return lines
 
 
@@ -179,8 +211,11 @@ def person_mark_lines():
 
 
 def camera_mark_lines():
-    """The player back at the camera spot, PEOPLE_DISTANCE south of the mark, at head height, facing north."""
-    return ["player.setpos x 0", f"player.setpos y {-PEOPLE_DISTANCE:.1f}", f"player.setpos z {PEOPLE_HEIGHT:.1f}", "player.setangle z 0"]
+    """The player back at the camera spot, PEOPLE_DISTANCE south of the mark, at head height, facing north.
+    Wrapped in `with_camera_reattached` for the same reason every place's own move is -- this is the step the
+    screenshot actually sees, not the step that only needs the player's own position to be right."""
+    return with_camera_reattached(
+        ["player.setpos x 0", f"player.setpos y {-PEOPLE_DISTANCE:.1f}", f"player.setpos z {PEOPLE_HEIGHT:.1f}", "player.setangle z 0"])
 
 
 def person_lines(this_target, others):
@@ -205,13 +240,14 @@ def write(path, lines):
 def build(base):
     write(os.path.join(base, "wo158-start.txt"), start_lines())
     write(os.path.join(base, "wo158-end.txt"), end_lines())
+    write(os.path.join(base, "wo158-toggle-hud.txt"), hud_toggle_lines())
     for name, slug, target, note, marker, entrance in PLACES:
         lines = [f"; {name}" + (f" -- {note}" if note else "")] + place_lines(target, marker, entrance)
         write(os.path.join(base, f"wo158-place-{slug}.txt"), lines)
     ws = WINKING_SKEEVER_DOOR
     ws_lines = [f"; The Winking Skeever (outside) -- no outdoor map marker (an interior inn); the door's own "
                 f"rotation stands in for a marker-to-door vector", f"fw {CLEAR_WEATHER}", "set gamehour to 12"]
-    ws_lines += camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"]))
+    ws_lines += with_camera_reattached(camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"])))
     write(os.path.join(base, "wo158-place-winking-skeever-outside.txt"), ws_lines)
     write(os.path.join(base, "wo158-photoroom-setup.txt"), [f"; {PHOTO_ROOM}, the photo room; run once"] + photoroom_lines())
     all_targets = [t for _, _, t in PEOPLE]
