@@ -5022,6 +5022,37 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-157 Part 10)
+
+**Why.** Dave tested staging on 27 Oct and sent a list. The quest line pages need a design first (a separate order, after Dave sees the boards); everything here is settled and can be built now.
+
+### Part 1. Home
+- [ ] The hero title **LoreRim Planner** on one line at 1440 (smaller size if it needs it); at 390 it may wrap.
+- [ ] **New in the world**: each entry says what it is, as a small tag before the name in the page-tag style: Quest, Quest line, Person, Place, Player report.
+
+### Part 2. Search
+- [ ] The command palette shows it's working while results load: after about 150 ms with nothing back, a row of three small pixel embers in the accent colour lighting in turn, and "Searching" beside it, where the results go. Earlier results stay visible under it as the query grows. Reduced motion: the embers stay lit, no animation.
+
+### Part 3. Back links go where they say
+- [ ] Bug: a person's or a place's back link reads "‹ Whiterun" but goes to `/quests?q=Whiterun` (Lydia, Bleak Falls Barrow). Every back link goes to the page its label names.
+- [ ] The rule, for every quest, line, person and place page: if you came from a page on this site, the back link goes back to it and names it ("Back to The Golden Claw"); if you came from outside (a shared link, a search engine), it goes to the page's home in the World: a quest or line to its category, a person to People, a place to Places, and names it. Write the rule into `docs/design-rules.md`.
+- [ ] Dress it as a button, not a bare text link: a square-cornered, outlined button with the pixel left arrow from `public/icons` (or a new 16 px one in the same style) and the label, the same height as the page's search box beside it.
+
+### Part 4. A playthrough from the start
+- [ ] Making a character shows only Character, Build and Guide (and Story when it's on): the Playthrough tab appears only once a run exists, so there's no way to see you can add one. The owner always sees the **Playthrough** tab in the edit bar; with no run yet it opens a short page: one line on what a playthrough is (acts, each with a goal and a place, and the quests in each; your save says where you stand) and **Plan a playthrough**, which makes the run (the same as the character page's existing Plan a run) and opens it.
+
+### Part 5. The people reads on the person pages (WO-155's Mac part, brought forward)
+Dave: "For followers, we have no information on how any of them join you." The reads have it: `gamedata/5.0.4.8/people_reads/checked/P001` to `P028` (560 people, the checker's corrected objects under `people`, each field's verdict under `checks`). 34 of them can join you; the other followers are in batches P029 to P052, not read yet.
+- [ ] The data build reads every file in `people_reads/checked/` (so later batches land with a rebuild, no code change) and adds to each person in `people.json`: first meeting, their day (where, what hours, doing what), what changes it, role, what they sell and train, **how they join you**, whether and how you can marry them, how they fight, their quests with how each touches them, whether they can die, and what's unsure, with each field's verdict.
+- [ ] The person page shows them: **Where to find them** (first meeting, then the day as times and places; this replaces "Not known yet" and the section comes back), and in What they offer: Follower with how they join, Marriage with what it needs, Sells, Trains. A field the checker marked unsure shows the read with "not sure" beside it, and goes into Information Confidence's Not sure yet with its reason. A person not read yet stays as now.
+- [ ] Information Confidence on a read person: "Read from the game files and checked by a second reader", Second reader ticked.
+- [ ] The door's person tool returns the same fields.
+- [ ] Spot check, on the preview, Lydia (joins as your housecarl when you're made Thane of Whiterun), Jaree-Ra (by the Winking Skeever, not the docks) and Lucan Valerius; screenshots.
+
+### Part 6. Checks
+- [ ] Typecheck, lint, tests, build and e2e; screenshots at 1440 and 390 of the home, the palette loading, a back button, the empty Playthrough tab, and Lydia's page.
+
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
 Status: blocked (PC; Part 1f dropped tfc entirely, needs Dave's run again -- see "How Dave runs it" below)
 
