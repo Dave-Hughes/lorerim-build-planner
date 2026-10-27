@@ -1,0 +1,1525 @@
+[
+ {
+  "id": "Dawnguard.esm:003BA7",
+  "name": "Lord Harkon",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Castle Volkihar (inside Volkihar Keep), when you bring Serana home in Bloodline",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Volkihar Keep, Castle Volkihar",
+    "doing": "stays where he's placed; he has no daily routine"
+   }
+  ],
+  "changes": [
+   "During Bloodline, once you've led Serana home and until the quest ends, he reacts to Serana in the keep.",
+   "Before you've listened to his speech in Prophet (vampire side), he stays put to give it.",
+   "After Bloodline is finished he waits in his quarters in the keep.",
+   "Kindred Judgment ends with the objective \"Slay Harkon\", on either side."
+  ],
+  "role": "quest giver; lord of Castle Volkihar and the vampires' leader in Dawnguard",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bloodline",
+    "how": "a step in it: you bring Serana home and he offers you his blood"
+   },
+   {
+    "quest": "Prophet",
+    "how": "gives it on the vampire side (\"Speak to Harkon\", \"Listen to Harkon's speech\")"
+   },
+   {
+    "quest": "Power of the Blood",
+    "how": "a step in it: the Vampire Lord lesson that follows his gift"
+   },
+   {
+    "quest": "Kindred Judgment",
+    "how": "its target (\"Confront Harkon with Auriel's Bow\", \"Slay Harkon\")"
+   }
+  ],
+  "canDie": "essential in his record, but Kindred Judgment has you slay him",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "Power of the Blood: the records only show him in one of its aliases; that it follows accepting his gift is read from Bloodline's journal, not a stage script."
+   },
+   {
+    "field": "canDie",
+    "why": "The records don't show where Kindred Judgment lifts his essential flag; the objective says to slay him."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:003BA7",
+   "placed ref Dawnguard.esm:003BA8 in Dawnguard.esm:000803 (Volkihar Keep)",
+   "DLC1HarkonWaitInQuarters (GetStageDone DLC1VQ02 200)",
+   "DLC1HarkonSpeechVQ03Stage10 (DLC1VQ03Vampire stage 20 not done)",
+   "DLC1VQ02HarkonReactToSerana (DLC1VQ02 10 done, 200 not)",
+   "DLC1VQ02",
+   "DLC1VQ03Vampire",
+   "DLC1VampireTutorial",
+   "DLC1VQ08",
+   "factions DLC1VampireFaction, DLC1VampireCrimeFaction",
+   "essential=true",
+   "class Skyrim.esm:02E00F",
+   "outfit Dawnguard.esm:015CCD"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019A2C",
+  "name": "Clinton Lylvieve",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Dragon Bridge, walking his rounds in the village by day; at home in the Lylvieve family's house at mealtimes and at night",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "Dragon Bridge",
+    "doing": "walking a set route around the village"
+   },
+   {
+    "from": "12 pm",
+    "for": "2 hours",
+    "where": "Lylvieve Family's House, Dragon Bridge",
+    "doing": "eating with the family"
+   },
+   {
+    "from": "2 pm",
+    "for": "6 hours",
+    "where": "Dragon Bridge",
+    "doing": "walking a second set route around the village"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "Lylvieve Family's House, Dragon Bridge",
+    "doing": "eating with the family"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Lylvieve Family's House, Dragon Bridge",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "Dragon Bridge villager",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Both walking routes follow markers that aren't resolved in the extracts, so I can only say 'around Dragon Bridge'."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in two quests that have no name or journal in the records, so I can't say which quest or what he does in it."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:019A2C",
+   "Skyrim.esm:013A7E (Lylvieve Family's House)",
+   "DragonBridgePatrolA8x4",
+   "DragonBridgePatrolB14x6",
+   "DragonBridgeFamilyEat12x2",
+   "DragonBridgeFamilyEat20x2",
+   "DragonBridgeClintonSleep22x10",
+   "DefaultSandboxEditorLocation512",
+   "aliases in Skyrim.esm:052B90, Skyrim.esm:052B8E (unnamed)",
+   "factions TownDragonBridgeFaction, DragonBridgeLylvieveHouseFaction",
+   "class Skyrim.esm:013279",
+   "outfit Skyrim.esm:0958C1"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:003B8B",
+  "name": "Valerica",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "the Soul Cairn, imprisoned inside a great ruin, in Beyond Death",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Soul Cairn",
+    "doing": "held in her prison until the Keepers are killed"
+   }
+  ],
+  "changes": [
+   "In Beyond Death, once you've killed the three Boneyard Keepers the barrier fades and she leads you to the Elder Scroll.",
+   "At the end of Beyond Death she stays behind: she won't come back to Tamriel until her husband is dealt with."
+  ],
+  "role": "quest character in Dawnguard; Serana's mother",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Beyond Death",
+    "how": "a step in it: you locate her, free her and follow her to the Elder Scroll"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her one package walks her to a marker that isn't resolved in the extracts; the quest record puts her in the Soul Cairn."
+   },
+   {
+    "field": "changes",
+    "why": "A later quest keeps an alias for her after Beyond Death, but it has no name or journal, so I can't say whether she ever leaves the Soul Cairn."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:003B8B",
+   "DLC1ValericaStartPackage (target Dawnguard.esm:003B8D)",
+   "DLC1VQ05 alias DLC1VQ05ValericaAlias, ref Dawnguard.esm:003B8E in Soul Cairn",
+   "Dawnguard.esm:015A16 alias DLC1VQ05PostValericaAlias",
+   "essential=true",
+   "class Skyrim.esm:02E00F",
+   "outfit Dawnguard.esm:016904"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00A877",
+  "name": "Knight-Paladin Gelebor",
+  "race": "High Elf",
+  "sex": "male",
+  "firstMeet": "Darkfall Cave, on the way to Auriel's Bow in Touching the Sky",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Darkfall Cave",
+    "doing": "stays where he's placed"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver; snow elf Knight-Paladin of the Chantry of Auri-El",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Touching the Sky",
+    "how": "a step in it: he asks you to kill his brother, Arch-Curate Vyrthur, and gives you the Initiate's Ewer"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He has no packages and his placed reference is in the cell the records call Darkfall Cave; I can't place him more exactly within it."
+   },
+   {
+    "field": "changes",
+    "why": "A quest keeps an alias for him after Touching the Sky but has no name or journal in the records."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:00A877",
+   "placed ref Dawnguard.esm:00A878 in Dawnguard.esm:004346 (Darkfall Cave)",
+   "no packages",
+   "DLC1VQ07 alias DLC1VQ07GeleborAlias, stage 50",
+   "Dawnguard.esm:015A68 alias DLC1VQ07PostGeleborAlias",
+   "essential=true",
+   "class Skyrim.esm:017008",
+   "outfit Dawnguard.esm:002B49"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:00336D",
+  "name": "Florentius Baenius",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Ruunvald, held captive, when Isran sends you after him in Bolstering the Ranks; after that at Fort Dawnguard",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Fort Dawnguard",
+    "doing": "stays near where he's placed; he has no daily routine"
+   }
+  ],
+  "changes": [
+   "Once rescued in Bolstering the Ranks he returns to Fort Dawnguard.",
+   "If you side with the vampires, Destroying the Dawnguard sends you to kill the Dawnguard leaders, him among them."
+  ],
+  "role": "Dawnguard member; trainer; merchant",
+  "sells": "he's a merchant with apothecary goods by his job, open at all hours",
+  "trains": "Restoration, master tier",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bolstering the Ranks",
+    "how": "its target: you rescue him from Ruunvald"
+   },
+   {
+    "quest": "A New Order",
+    "how": "a step in it (\"Recruit Florentius Baenius\")"
+   },
+   {
+    "quest": "Kindred Judgment",
+    "how": "a step in it: one of the Dawnguard forces you rally"
+   },
+   {
+    "quest": "Destroying the Dawnguard",
+    "how": "its target on the vampire side"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His shop's stock lives in a vendor container whose lists aren't resolved in the extracts; only his apothecary job faction says what kind of shop it is."
+   },
+   {
+    "field": "trains",
+    "why": "The trainer record gives Restoration at master tier but no level cap."
+   },
+   {
+    "field": "firstMeet",
+    "why": "A New Order also has the objective \"Recruit Florentius Baenius\", but its journal only names Sorine and Gunmar; the Ruunvald rescue is from Bolstering the Ranks."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:00336D",
+   "placed in Dawnguard.esm:001DBA (Fort Dawnguard)",
+   "no packages",
+   "trainer Restoration Master",
+   "vendor 0-24h, VENC 2cf80002",
+   "factions JobApothecaryFaction, JobMerchantFaction, DLC1HunterFaction, DLC1ServicesFlorentius",
+   "DLC1HunterBaseStage2 stage 200",
+   "DLC1HunterBaseIntro objective 50",
+   "DLC1VQ08",
+   "DLC1RV10",
+   "essential=true",
+   "class Skyrim.esm:0E3A75",
+   "outfit Skyrim.esm:0C7891"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:0058B0",
+  "name": "Dexion Evicus",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Forebears' Holdout, captured and enthralled by vampires, in Prophet",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Fort Dawnguard (Dawnguard side) or Castle Volkihar (vampire side)",
+    "doing": "spends his time around the place"
+   }
+  ],
+  "changes": [
+   "In Prophet you rescue him (Dawnguard) or make him your thrall (vampires); he then lives at Fort Dawnguard or Castle Volkihar depending on the side you chose.",
+   "In Seeking Disclosure he reads the Elder Scrolls and is struck blind."
+  ],
+  "role": "Moth Priest; quest character in Dawnguard",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Prophet",
+    "how": "its target: you find him at Forebears' Holdout and free him or enthrall him"
+   },
+   {
+    "quest": "Seeking Disclosure",
+    "how": "a step in it: you bring both Elder Scrolls to him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:0058B0",
+   "DLC1DexionSandboxDawnguardHQ (global Dawnguard.esm:00587A = 0)",
+   "DLC1DexionSandboxVampireCastle (global Dawnguard.esm:00587A = 1)",
+   "global DLC1PlayingVampireLine",
+   "DLC1VQ03Hunter, DLC1VQ03Vampire, DLC1VQElder",
+   "alias where Forebears' Holdout Dawnguard.esm:002F82",
+   "essential=true",
+   "class Skyrim.esm:013177",
+   "outfit Dawnguard.esm:0153AD"
+  ]
+ },
+ {
+  "id": "Dawnguard.esm:0093A1",
+  "name": "Jiub",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "the Soul Cairn, a lost soul writing his life story",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Soul Cairn",
+    "doing": "wanders near where he's placed and won't fight"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Impatience of a Saint",
+    "how": "gives it: find the pages of his Opus scattered through the Soul Cairn and bring them back"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He has no placed cell in the extracts; the Soul Cairn comes from his quest alias, so I can't name the spot."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dawnguard.esm:0093A1",
+   "DLC1SoulPackageIgnoreCombat",
+   "DLC1VQSaint alias DLC1VQSaintJiubAlias, cell Dawnguard.esm:002C96 (Soul Cairn)",
+   "Dawnguard.esm:01400D alias DLC1VQSaintJiubPostAlias",
+   "essential=true",
+   "class Skyrim.esm:01317D",
+   "outfit Skyrim.esm:0A1984"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:04D6E7",
+  "name": "Hevnoraak",
+  "race": "dragon priest",
+  "sex": "male",
+  "firstMeet": "Valthume, a Nordic ruin (by the records, in the Reach near Rorikstead), lying dormant at its heart",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Valthume",
+    "doing": "dormant until woken, then fights near where he lay"
+   }
+  ],
+  "changes": [
+   "In Evil in Waiting the blood from the three vessels wakes and weakens him."
+  ],
+  "role": "dragon priest; a boss",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Evil in Waiting",
+    "how": "its target (\"Defeat Hevnoraak\")"
+   },
+   {
+    "quest": "Destroy the Dragon Cult",
+    "how": "its target (\"Defeat Hevnoraak\")"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:04D6E7",
+   "placed in Valthume (Skyrim.esm:033D68)",
+   "ambushSleepPackage",
+   "AmbushPatrolLinkCustom01",
+   "AmbushSandboxEditorLocation512",
+   "dunValthumeQST alias dunValthumeGorvaalBoss",
+   "DCQuest (Defeat the Dragon Cult.esp)",
+   "places Skyrim.esm:033DA0 hold The Reach, nearest Rorikstead",
+   "class Skyrim.esm:01CE1C",
+   "outfit Skyrim.esm:0D787D"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0248E9",
+  "name": "Ahzidal",
+  "race": "dragon priest",
+  "sex": "male",
+  "firstMeet": "deep in Kolbjorn Barrow on Solstheim, released by Ralis's ritual at the end of Unearthed",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Kolbjorn Barrow",
+    "doing": "dormant until woken, then fights"
+   }
+  ],
+  "changes": [
+   "Unearthed: Ralis's ritual releases him."
+  ],
+  "role": "dragon priest; a boss",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Unearthed",
+    "how": "its target (\"Defeat Ahzidal\")"
+   },
+   {
+    "quest": "Destroy the Acolyte Priests",
+    "how": "its target (\"Destroy Ahzidal\")"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:0248E9",
+   "placed in Dragonborn.esm:0142EE (Kolbjorn Barrow)",
+   "ambushSleepPackage",
+   "AmbushPatrolLinkCustom01",
+   "AmbushSandboxEditorLocation512",
+   "DLC2dunKolbjornQST stages 449, 475",
+   "EnoAcolyteQuest (Destroy the Acolyte Priests.esp)",
+   "class Skyrim.esm:01CE1C",
+   "outfit Dragonborn.esm:0248E3"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0179C7",
+  "name": "Ralis Sedarys",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "outside Kolbjorn Barrow on Solstheim, near Raven Rock, by the ash-buried dig",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "outside Kolbjorn Barrow",
+    "doing": "at his dig (until the excavation is under way)"
+   }
+  ],
+  "changes": [
+   "Once Unearthed reaches its later stages, his routine moves to the Retching Netch in Raven Rock: sleeps there midnight to 8 am, spends the rest of the day there.",
+   "In Unearthed you find him performing the ritual that frees Ahzidal; you can kill him or let him go in peace."
+  ],
+  "role": "quest giver; can be a follower",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Unearthed",
+    "how": "gives it: fund his excavation (1,000, 2,000, 3,000, then 5,000 gold); at the end he's the one you confront, kill or spare"
+   }
+  ],
+  "canDie": "essential in his record, but Unearthed lets you kill him",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He's in the potential-follower faction, but the dialogue or condition that recruits him isn't in these records."
+   },
+   {
+    "field": "sells",
+    "why": "His only vendor data is the follower one with no stock container, so he isn't a real shop."
+   },
+   {
+    "field": "changes",
+    "why": "His barrow package holds while Unearthed is below stage 99; the records don't say what stage 99 is, and quest packages during the dig may override this."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:0179C7",
+   "DLC2dunKolbjornRalis_SandboxAtKolbjornInitial (DLC2dunKolbjornQST < 99, target Dragonborn.esm:0338FF)",
+   "DLC2dunKolbjornRalis_SleepRetchingNetch24x8",
+   "DLC2dunKolbjornRalis_SandboxRetchingNetch",
+   "Dragonborn.esm:017EC0 (The Retching Netch)",
+   "DLC2dunKolbjornQST stages 40, 480-490",
+   "PotentialFollowerFaction",
+   "vendor 48cb0600 no VENC",
+   "essential=true",
+   "class Dragonborn.esm:0179C6",
+   "outfit Follower_Fashions.esp:000963"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0285C3",
+  "name": "Ebony Warrior",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "he walks up to you in a city and challenges you; after that, at his camp at the Last Vigil",
+  "day": [],
+  "changes": [
+   "Defeat him at the Last Vigil and he dies; tell him to get lost and he leaves dejected."
+  ],
+  "role": "quest giver; a duel",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Ebony Warrior",
+    "how": "gives it and is its target: he challenges you to fight him at his Last Vigil"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Which city depends on a quest alias the records don't fill; his camp is the place the records call the Ebony Warrior's Camp, which isn't in the places list."
+   },
+   {
+    "field": "firstMeet",
+    "why": "What triggers his approach (a level or anything else) isn't in these records."
+   },
+   {
+    "field": "day",
+    "why": "He has no packages."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:0285C3",
+   "no packages",
+   "DLC2EbonyWarriorQuest alias EbonyWarrior, location Ebony Warrior's Camp, cell Skyrim.esm:000D74",
+   "stages 10, 100, 200, 250",
+   "class Dragonborn.esm:0285C2",
+   "outfit Ryn's Snazzy Last Vigil - Ebony Warrior Overhaul.esp:00080B"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A51C",
+  "name": "Halbarn Iron-Fur",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "with the exiled Nords of Thirsk at their camp at Bujold's Retreat on Solstheim (near Skaal Village); after Thirsk is retaken, at his forge at Thirsk Mead Hall",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "his forge, Thirsk Mead Hall",
+    "doing": "working the forge"
+   },
+   {
+    "from": "11 am",
+    "for": "2 hours",
+    "where": "his forge, Thirsk Mead Hall",
+    "doing": "eating"
+   },
+   {
+    "from": "1 pm",
+    "for": "6 hours",
+    "where": "his forge, Thirsk Mead Hall",
+    "doing": "working the forge"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   },
+   {
+    "from": "10 pm",
+    "for": "7 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "sleeping"
+   },
+   {
+    "from": "5 am",
+    "for": "3 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   }
+  ],
+  "changes": [
+   "While the Nords are exiled he lives at the camp at Bujold's Retreat: eats there 11 am to 1 pm, sleeps there 10 pm to 5 am, spends the rest of the day around the camp; no forge work.",
+   "Retaking Thirsk moves him back into Thirsk Mead Hall (the day above).",
+   "If you side with the rieklings in The Chief of Thirsk Hall, you're sent to kill the Nords, him among them."
+  ],
+  "role": "blacksmith; merchant; can marry",
+  "sells": "he's the blacksmith's shop, open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "yes; he's a marriage candidate (what he needs first isn't in these records)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Retaking Thirsk",
+    "how": "a step in it: one of the Nords who retake the hall"
+   },
+   {
+    "quest": "The Chief of Thirsk Hall",
+    "how": "its target if you side with the rieklings (\"Kill the Nords\")"
+   },
+   {
+    "quest": "Halbarn Favor Quest",
+    "how": "gives it: bring him 10 stalhrim and 15 ebony ingots"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The camp/hall switch is a game setting whose name isn't in the extracts; the package names say camp when it's 1 and hall when it's 0, and Retaking Thirsk's journal says the Nords start out camped."
+   },
+   {
+    "field": "day",
+    "why": "His sleep also needs a second setting at 0 whose name isn't in the extracts."
+   },
+   {
+    "field": "firstMeet",
+    "why": "His placed reference is in Thirsk Mead Hall itself, though his packages keep him at the camp while the Nords are exiled."
+   },
+   {
+    "field": "sells",
+    "why": "His shop's stock is in a vendor container not resolved in the extracts; only the blacksmith job faction says what kind."
+   },
+   {
+    "field": "marries",
+    "why": "Only the marriage faction is in the records, not its conditions."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01A51C",
+   "placed in Dragonborn.esm:016FEB (Thirsk Mead Hall)",
+   "DLC2HalbarnEatAtForge11x2",
+   "DLC2HalbarnEatAtCamp11x2",
+   "DLC2HalbarnWorkForge8x11",
+   "DLC2HalbarnSleepInHall22x7",
+   "DLC2HalbarnSleepAtCamp22x7",
+   "DLC2ThirskNordsSandboxInHall",
+   "DLC2ThirskNordsSandboxAtCamp",
+   "globals Dragonborn.esm:01A51E, Dragonborn.esm:03BDA4",
+   "Dragonborn.esm:02411F forge marker",
+   "Dragonborn.esm:01A51F (Bujold's Retreat)",
+   "vendor 8-20 VENC 09710202",
+   "JobBlacksmithFaction, JobMerchantFaction, PotentialMarriageFaction, DLC2ServicesThirskHalbarn",
+   "DLC2MH01",
+   "DLC2MH02 alias Nord4",
+   "DLC2ThirskFFHalbarn; globals dlc2thirskhalbarnstalhrimcount 10, dlc2thirskhalbarnebonycount 15",
+   "protected=true",
+   "class Fozars_Dragonborn_-_Requiem_Patch.esp:0CB046",
+   "outfit Skyrim.esm:028B44"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A518",
+  "name": "Kuvar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "with the exiled Nords of Thirsk at their camp at Bujold's Retreat on Solstheim (near Skaal Village); after Thirsk is retaken, in Thirsk Mead Hall",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "breakfast"
+   },
+   {
+    "from": "12 pm",
+    "for": "6 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   }
+  ],
+  "changes": [
+   "While the Nords are exiled he keeps the same hours at the camp at Bujold's Retreat.",
+   "Retaking Thirsk moves him back into Thirsk Mead Hall (the day above).",
+   "If you side with the rieklings in The Chief of Thirsk Hall, you're sent to kill the Nords, him among them."
+  ],
+  "role": "trainer",
+  "sells": "",
+  "trains": "Heavy Armor",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Retaking Thirsk",
+    "how": "a step in it: one of the Nords who retake the hall"
+   },
+   {
+    "quest": "The Chief of Thirsk Hall",
+    "how": "its target if you side with the rieklings (\"Kill the Nords\")"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "trains",
+    "why": "He's in the Heavy Armor trainer faction, but his record carries no trainer level, so I can't say up to what level."
+   },
+   {
+    "field": "changes",
+    "why": "The camp/hall switch is a game setting whose name isn't in the extracts; read from the package names and Retaking Thirsk's journal."
+   },
+   {
+    "field": "day",
+    "why": "His sleep also needs a second setting at 0 whose name isn't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in several unnamed quests (likely Thirsk's small jobs); they have no names or journals in the records."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01A518",
+   "placed in Morrowind world cell Dragonborn.esm:00EE04",
+   "DLC2KuvarEatDinnerInHall18x2",
+   "DLC2KuvarEatDinnerAtCamp18x2",
+   "DLC2KuvarEatBreakfastInHall10x2",
+   "DLC2KuvarEatBreakfastAtCamp10x2",
+   "DLC2KuvarSleepInHall0x8",
+   "DLC2KuvarSleepAtCamp0x8",
+   "DLC2ThirskNordsSandboxInHall",
+   "DLC2ThirskNordsSandboxAtCamp",
+   "globals Dragonborn.esm:01A51E, Dragonborn.esm:03BDA4",
+   "JobTrainerHeavyArmorFaction",
+   "DLC2MH01",
+   "DLC2MH02 alias Nord2",
+   "protected=true",
+   "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE757",
+   "outfit Skyrim.esm:037C4F"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A51A",
+  "name": "Elmus",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "with the exiled Nords of Thirsk at their camp at Bujold's Retreat on Solstheim (near Skaal Village); after Thirsk is retaken, in Thirsk Mead Hall",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "9 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "at his spot in the hall, open for trade"
+   },
+   {
+    "from": "5 pm",
+    "for": "3 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   },
+   {
+    "from": "10 pm",
+    "for": "9 hours",
+    "where": "Thirsk Mead Hall",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Thirsk Mead Hall",
+    "doing": "spending time in the hall"
+   }
+  ],
+  "changes": [
+   "While the Nords are exiled he lives at the camp at Bujold's Retreat: breakfast 8 to 11 am, dinner 5 to 8 pm, sleeps 10 pm to 7 am, the rest of the day around the camp.",
+   "Retaking Thirsk moves him back into Thirsk Mead Hall (the day above).",
+   "If you side with the rieklings in The Chief of Thirsk Hall, you're sent to kill the Nords, him among them."
+  ],
+  "role": "merchant",
+  "sells": "he keeps a shop, open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Elmus Favor Quest",
+    "how": "gives it: bring him Ashfire Mead from Thirsk Mead Hall"
+   },
+   {
+    "quest": "Elmus Favor Quest",
+    "how": "gives it (the second one): bring him Juniper Berries"
+   },
+   {
+    "quest": "Retaking Thirsk",
+    "how": "a step in it: one of the Nords who retake the hall"
+   },
+   {
+    "quest": "The Chief of Thirsk Hall",
+    "how": "its target if you side with the rieklings (\"Kill the Nords\")"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His stock is in a vendor container not resolved in the extracts; his job faction is the general 'misc' one, so I can't say what kind of goods."
+   },
+   {
+    "field": "changes",
+    "why": "The camp/hall switch is a game setting whose name isn't in the extracts; read from the package names and Retaking Thirsk's journal."
+   },
+   {
+    "field": "day",
+    "why": "His camp breakfast package has no camp condition, so in the hall it may still pull him to the camp 8 to 11 am; it sits below his 8 am hall package, which should win."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01A51A",
+   "placed in Morrowind world cell Dragonborn.esm:00EE04",
+   "DLC2ElmusEatDinnerInHall17x3",
+   "DLC2ElmusOfferServicesPackage (target Dragonborn.esm:035731)",
+   "DLC2ElmusEatDinnerAtCamp17x3",
+   "DLC2ElmusEatBreakfastAtCamp8x3",
+   "DLC2ElmusSleepInHall22x9",
+   "DLC2ElmusSleepAtCamp22x9",
+   "DLC2ThirskNordsSandboxInHall",
+   "DLC2ThirskNordsSandboxAtCamp",
+   "vendor 8-20 VENC 30570302",
+   "JobMerchantFaction, JobMiscFaction, DLC2ServicesThirskElmus",
+   "DLC2ThirskFFElmus",
+   "DLC2ThirskFFElmusBack",
+   "DLC2MH01",
+   "DLC2MH02 alias Nord3",
+   "protected=true",
+   "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE754",
+   "outfit Skyrim.esm:01B3A8"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01A508",
+  "name": "Riekling",
+  "race": "riekling",
+  "sex": "male",
+  "firstMeet": "Thirsk Mead Hall on Solstheim, as the chief of the rieklings who took over the hall",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Thirsk Mead Hall",
+    "doing": "stays where he's placed"
+   }
+  ],
+  "changes": [
+   "In The Chief of Thirsk Hall he attacks you after your favors; once you defeat him the tribe makes you their chief."
+  ],
+  "role": "quest giver; the riekling chief of Thirsk",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Chief of Thirsk Hall",
+    "how": "gives it (\"Talk to the Chief\", \"Bring 10 Scathecraw to the Chief\") and is its final target (\"Defeat the Chief\")"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "name",
+    "why": "The record's name is just \"Riekling\"; the quest calls him the Chief."
+   },
+   {
+    "field": "race",
+    "why": "The race isn't filled in the extracts; 'riekling' is from his name."
+   },
+   {
+    "field": "changes",
+    "why": "Whether he's among the rieklings you kill in Retaking Thirsk isn't shown: he isn't in that quest's riekling aliases."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01A508",
+   "placed in Dragonborn.esm:016FEB (Thirsk Mead Hall)",
+   "no packages",
+   "DLC2MH02 alias Chief",
+   "DLC2ThirskRieklingFaction",
+   "protected=true",
+   "class Dragonborn.esm:03BD08",
+   "outfit None"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01773A",
+  "name": "Neloth",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Tel Mithryn, his tower on Solstheim",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Tel Mithryn",
+    "doing": "wandering his tower and grounds, now and then casting a spell"
+   }
+  ],
+  "changes": [
+   "In The Path of Knowledge he travels with you to Nchardak."
+  ],
+  "role": "Telvanni wizard; quest giver; merchant",
+  "sells": "he's a merchant, open at all hours",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Path of Knowledge",
+    "how": "a step in it: Storn sends you to him and he takes you to Nchardak"
+   },
+   {
+    "quest": "The Gardener of Men",
+    "how": "a step in it: he helps you open the Black Book in Nchardak"
+   },
+   {
+    "quest": "Reluctant Steward",
+    "how": "gives it: find his steward, Varona Nelas, then a new one"
+   },
+   {
+    "quest": "Old Friends",
+    "how": "gives it: find who is attacking him"
+   },
+   {
+    "quest": "Lost Knowledge",
+    "how": "gives it: bring him a Black Book"
+   },
+   {
+    "quest": "Heart Stones",
+    "how": "gives it"
+   },
+   {
+    "quest": "Telvanni Research",
+    "how": "gives it: bring him ash from an ash spawn"
+   },
+   {
+    "quest": "Wind and Sand",
+    "how": "gives it"
+   },
+   {
+    "quest": "Experimental Subject",
+    "how": "gives it: lets him cast an experimental spell on you"
+   },
+   {
+    "quest": "Briarheart Necropsy",
+    "how": "gives it: examine a Briarheart warrior"
+   },
+   {
+    "quest": "Azra's Staffs",
+    "how": "gives it: get one of Azra Nightwielder's staffs"
+   },
+   {
+    "quest": "From the Ashes",
+    "how": "a step in it (Talvas gives it)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His stock is in a vendor container not resolved in the extracts; he's also in a staff-maker faction, which I can't read further."
+   },
+   {
+    "field": "day",
+    "why": "He has no sleep package; his wander covers a wide area around where he's placed."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in Dragonborn (the opening quest) but its records don't say how."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01773A",
+   "placed in Dragonborn.esm:017787 (Tel Mithryn)",
+   "DLC2NelothCastCandlelight",
+   "DLC2NelothCastHeal",
+   "DLC2NelothCastCalm",
+   "DLC2NelothSandbox (radius 3000)",
+   "vendor 0-24h VENC c3770102",
+   "JobMerchantFaction, DLC2ServicesTelMithrynNeloth, DLC2StaffMakerFaction",
+   "DLC2MQ04",
+   "DLC2MQ05",
+   "DLC2TT1",
+   "DLC2TT2",
+   "DLC2TTR1",
+   "DLC2TTR2",
+   "DLC2TTR3a",
+   "DLC2TTR3b",
+   "DLC2TTR4a",
+   "DLC2TTR5",
+   "DLC2TTR7",
+   "DLC2TTF1",
+   "DLC2MQ01 alias WizardAlias",
+   "essential=true",
+   "class Dragonborn.esm:017774",
+   "outfit RMB SPID - Armors of the Velothi.esp:00081D"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017934",
+  "name": "Frea",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "the Temple of Miraak on Solstheim, searching it for answers, in The Temple of Miraak; afterwards in Skaal Village",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Skaal Village, around the Shaman's Hut",
+    "doing": "spending time around the village"
+   },
+   {
+    "from": "10 am",
+    "for": "3 hours",
+    "where": "Skaal Village",
+    "doing": "sitting outside with Storn"
+   },
+   {
+    "from": "1 pm",
+    "for": "9 hours",
+    "where": "Skaal Village, around the Shaman's Hut",
+    "doing": "spending time around the village"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Shaman's Hut, Skaal Village",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "In The Temple of Miraak she's at the temple; in The Fate of the Skaal she goes with you back to Skaal Village."
+  ],
+  "role": "Skaal warrior; follower",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Temple of Miraak",
+    "how": "a step in it (\"Find Frea\", \"Talk to Frea\"): she searches the temple with you"
+   },
+   {
+    "quest": "The Fate of the Skaal",
+    "how": "a step in it (\"Accompany Frea to Skaal Village\")"
+   },
+   {
+    "quest": "The Path of Knowledge",
+    "how": "named in its aliases"
+   },
+   {
+    "quest": "The Gardener of Men",
+    "how": "named in its aliases"
+   },
+   {
+    "quest": "At the Summit of Apocrypha",
+    "how": "named in its aliases"
+   },
+   {
+    "quest": "Destroy the Acolyte Priests",
+    "how": "named in its aliases"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "She's in the potential-follower faction, but the dialogue or condition that recruits her isn't in these records."
+   },
+   {
+    "field": "sells",
+    "why": "Her only vendor data is the follower one with no stock container, so she isn't a real shop."
+   },
+   {
+    "field": "quests",
+    "why": "For The Path of Knowledge, The Gardener of Men, At the Summit of Apocrypha and Destroy the Acolyte Priests the records only show her in an alias; their journals don't say what she does."
+   },
+   {
+    "field": "day",
+    "why": "Her sit-outside spot is set by the package, not resolved; it's the same one Storn uses."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:017934",
+   "placed in Dragonborn.esm:017A00 (Shaman's Hut, Skaal Village)",
+   "DLC2SVStornSitOutside10x3",
+   "DefaultSleepEditorLoc22x10",
+   "DefaultSandboxEditorLocation1024",
+   "PotentialFollowerFaction",
+   "vendor 48cb0600 no VENC",
+   "DLC2MQ02 stages 5, 30",
+   "DLC2MQ03",
+   "DLC2MQ04",
+   "DLC2MQ05",
+   "DLC2MQ06",
+   "EnoAcolyteQuest",
+   "essential=true",
+   "class Dragonborn.esm:030CCA",
+   "outfit Dragonborn.esm:01FFF4"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017935",
+  "name": "Storn Crag-Strider",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "Skaal Village on Solstheim, holding a barrier over the village",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Skaal Village, around the Shaman's Hut",
+    "doing": "spending time around the village"
+   },
+   {
+    "from": "10 am",
+    "for": "3 hours",
+    "where": "Skaal Village",
+    "doing": "sitting outside"
+   },
+   {
+    "from": "1 pm",
+    "for": "9 hours",
+    "where": "Skaal Village, around the Shaman's Hut",
+    "doing": "spending time around the village"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Shaman's Hut, Skaal Village",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until The Fate of the Skaal reaches the point where his people are freed, he does nothing but hold the barrier.",
+   "In The Gardener of Men he reads the Black Book for Hermaeus Mora, and At the Summit of Apocrypha's journal records that this killed him."
+  ],
+  "role": "Skaal shaman; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Fate of the Skaal",
+    "how": "a step in it (\"Talk to Storn Crag-Strider\")"
+   },
+   {
+    "quest": "Cleansing the Stones",
+    "how": "gives it: free the remaining Stones with Bend Will"
+   },
+   {
+    "quest": "The Path of Knowledge",
+    "how": "sends you to Neloth"
+   },
+   {
+    "quest": "The Gardener of Men",
+    "how": "a step in it (\"Wait for Storn to read the book\"); it kills him"
+   },
+   {
+    "quest": "The Temple of Miraak",
+    "how": "sends you to find Frea"
+   },
+   {
+    "quest": "Destroy the Acolyte Priests",
+    "how": "gives it: destroy Miraak's three Acolyte Priests"
+   }
+  ],
+  "canDie": "essential in his record, but he dies in The Gardener of Men",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "Destroy the Acolyte Priests has a second alias for him while alive; who gives it if he's dead isn't shown."
+   },
+   {
+    "field": "race",
+    "why": "The record's race is 'Elder'."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:017935",
+   "placed in Dragonborn.esm:017A00 (Shaman's Hut, Skaal Village)",
+   "DLC2StornMaintainBarrier (DLC2MQ03 stage < 70)",
+   "DLC2SVStornSitOutside10x3",
+   "DefaultSleepEditorLoc22x10",
+   "DefaultSandboxEditorLocation1024",
+   "DLC2MQ02 stage 5",
+   "DLC2MQ03 stage 70",
+   "DLC2MQ03B stage 5",
+   "DLC2MQ04 stage 10",
+   "DLC2MQ05 objective 40",
+   "DLC2MQ06 stage 10",
+   "EnoAcolyteQuest stage 10, aliases Storn, StornAlive",
+   "essential=true",
+   "class Skyrim.esm:043BCC",
+   "outfit Dragonborn.esm:0398CD"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:01FB98",
+  "name": "Miraak",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "his temple in Apocrypha, at the end of At the Summit of Apocrypha",
+  "day": [],
+  "changes": [
+   "At the Summit of Apocrypha ends with you killing him."
+  ],
+  "role": "the final enemy of Dragonborn",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "At the Summit of Apocrypha",
+    "how": "its target (\"Defeat Miraak\")"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "This record is the Miraak of the final fight only; his earlier appearances use other records. He has no packages and no placed cell in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01FB98",
+   "no packages",
+   "DLC2MQ06 alias Miraak, location Dragonborn.esm:01C263 (Apocrypha)",
+   "DLC2MQ06 stage 550",
+   "class Skyrim.esm:017008",
+   "outfit Dragonborn.esm:03C40B"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:0182AC",
+  "name": "Captain Veleth",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Raven Rock on Solstheim; March of the Dead begins when you find him fighting ash spawn at the Attius Farm outside town",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "The Bulwark barracks, Raven Rock",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "2 hours",
+    "where": "Raven Rock",
+    "doing": "on patrol"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "at the tavern"
+   },
+   {
+    "from": "10 am",
+    "for": "4 hours",
+    "where": "the market, Raven Rock",
+    "doing": "standing in the market"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "Raven Rock",
+    "doing": "on patrol"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "at the tavern"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Raven Rock",
+    "doing": "on patrol"
+   }
+  ],
+  "changes": [],
+  "role": "captain of the Raven Rock guard; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "March of the Dead",
+    "how": "gives it: help him against the ash spawn, then kill General Falx Carius"
+   },
+   {
+    "quest": "Served Cold",
+    "how": "a step in it: he tells you Adril Arano wants to see you"
+   },
+   {
+    "quest": "Recipe for Distraction",
+    "how": "a step in it: you report the hidden Emberbrand Wine to him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His patrol route uses markers not resolved in the extracts; that it's in Raven Rock is from the 'market' marker being in Raven Rock and his guard factions."
+   },
+   {
+    "field": "day",
+    "why": "The 10 am spot is a marker near Raven Rock that the package names as the market."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only the class's record id is in the extracts (see evidence); its name, skill weights and the outfit's contents aren't, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:0182AC",
+   "DLC2RRModynNetchEveningPackage18x2",
+   "DLC2RRModynMarketPackage10x4 (target Dragonborn.esm:024FFB)",
+   "DLC2RRModynNetchMorningPackage8x2",
+   "DLC2RRModynSleepPackage0x6 (Dragonborn.esm:0184B1, The Bulwark)",
+   "DLC2RRModynPatrolPackage0x0",
+   "DLC2RR01 stages 30, 40",
+   "DLC2RR02 stage 10",
+   "DLC2RRFavor01",
+   "IsGuardFaction, DLC2RavenRockGuardFaction",
+   "essential=true",
+   "class Fozars_Dragonborn_-_Requiem_Patch.esp:0CB046",
+   "outfit RMB SPID - Armors of the Velothi.esp:00081B"
+  ]
+ }
+]
