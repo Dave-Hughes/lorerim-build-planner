@@ -1,0 +1,2513 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:01B07F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw places her in Snow Veil Sanctum; places_raw puts it 0.7 km from Windhelm; Speaking With Silence objectives 35/50 are Find/Speak to Karliah there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "her only package (Nightingale Hall sandbox) needs stage 110 of an unnamed quest, so before that she has no routine of her own"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "the Nightingale Hall sandbox (radius 1024, no hours) gated on GetStageDone 0B31E6 110; places_raw: the cave next to Riften"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "ThievesGuildFaction plus her place in all six Thieves Guild/Nightingale quests"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor block"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no follower faction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Blindsighted: Trinity Restored ends on \"Speak to Brynjolf\" (objective 70), not Karliah, and Blindsighted's own objectives only have you speak to her inside Irkngthand (20) and after the escape (60); nothing shows she gives it. The other six match the objectives and logs"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01A2CF",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Twilight Sepulcher Inner Sanctum; Darkness Returns objective 50 \"Listen to Nocturnal\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package, NocturnalDefaultStart, with no place, hours or conditions; nothing gives a routine"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages, no factions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only the Darkness Returns alias; no job factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class 013176 and outfit 052B5F don't resolve in the extracts; the reader left it blank without saying why, so it goes to unsure"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "TG09 aliases NocturnalAlias; objectives 40/50 and stage 200 log match"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01BB5D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Twilight Sepulcher; Darkness Returns objective 20 and stage 30 log (the spirit of Gallus)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "packages list is empty"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages or quest-gated factions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only FavorExcludedFaction; quest aliases in TG09 and an unnamed follow-up"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "TG09 GallusAlias, objective 20 and stage 30 log match; TG09PostGallusAlias quest 0E1782 has no record in quests_raw"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01CD91",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: The Ragged Flagon - Cistern; every located package is in Thieves Guild Headquarters"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "in order: archery 2 pm x4 h (near self), eat 10 am x2 h, his own sleep 6 am x4 h, then the Cistern sandbox (radius 300) for the rest; the reader's rows match"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "Reparations (TGBan) only names him as an alias (TGBanNiruin) and its log says you are banned until you pay Vex; nothing in the records says he turns on you or shuns you"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobTrainerFaction + JobTrainerMarksmanFaction, ThievesGuildFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "fix",
+     "note": "trainer block {Marksman, Master, levelCap null}: right skill and tier, but \"Marksman\" is the record's internal skill name; the player's word is Archery"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "TG07NiruinAlias, TGLeadershipNiruin, TGBanNiruin in named quests; the rest (03DAxx, 0EA2D5, Extended Encounters) have no quest record"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013395",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Endon's House, Markarth; Silver Lining giver entry places him there"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "the sleep package (DefaultSleepEditorLoc24x8) runs midnight to 8 am, not to 6 am; breakfast at 6 sits above it, but when the market package fails (stage 500 of 0AF75F not done, or rain) the 7 to 8 am hour falls back to sleep, not home"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "inn and market packages both need GetStageDone 0AF75F 500 (quest not in quests_raw); market also fn62 == 0, read as not raining; Silver Lining stage 200 log: \"count on him as an influential ally in Markarth\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, vendor block, Silver Lining giver entry"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8 to 20 with a buy list no one else uses; jeweller and fence factions at rank 255; stock not resolvable here"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: Silver Lining giver (dialogue below stage 11); stage 20 log: mold taken to Pinewatch"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0799E4",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Pinewatch; places_raw: shack 0.3 km from Falkreath, \"next to it\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "shared Default eat 6 pm/12 pm/7 am x1, sleep midnight x7, sandbox near where he's placed; rows match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no factions at all; Silver Lining stage 20 names bandits led by Rigel Strong-Arm at Pinewatch, which doesn't settle whether he is one; unsure is right"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Silver Lining alias TGTQ01RhorlakAlias; quest_givers lists him with dialogue below stage 31 (before \"Return to Endon\")"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0132A3",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: cell Red Wave, Solitude; her 8 am package is in the Red Wave cell"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Red Wave sandbox 8 am x12 h in the ship's cell, then the any-time sleep near where she's placed"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the top package (GetQuestRunning The Dainty Sload) does override her routine, but its spot only resolves to \"nearest named: Solitude Estuary Fortress, 0.1 km\"; \"by the water\" isn't in the record"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "ShipsRedWaveFaction, alias in The Dainty Sload"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: dialogue below stage 25, between \"Acquire\" (20) and \"Plant the Balmora Blue\" (30); the quest also has an alias for her chest"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:10F897",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest_givers: his ref sits in the Skyrim worldspace, not the walled Whiterun one, so outside the walls; no named spot"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package: The Roadhouse sleep, 6 pm for 11 h; nothing else, so he stands at his placed spot from 5 am"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, WEServicesHunterFaction, Ode To The Tundrastriders giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0 to 24; buy list d4d91000 shared with Anoriath and others, chest 23e00005 shared with Greorg, Woan and the other hunters"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: Ode To The Tundrastriders giver (dialogue below stage 11); objectives 14 to 17 (his note, 300 gold for a cow, blue dye, the poem) match"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:02952F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Witch's Wisdoms, Whiterun"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "eat 6 am, shop 7 am x5 h, outside near Dragonsreach 12 x5 h if fn62 == 0 (else the rain twin in the shop), shop 5 pm x7 h, sleep midnight x7; rows match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only rain (fn62) switches a package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobApothecaryFaction, JobSpellFaction, JobMerchantFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 7 to 19, buy list and chest used by no one else; stock not resolvable here"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: one of the \"others\" for Ode To The Tundrastriders, dialogue below stage 11 (the \"ask around town\" step)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:0BE23B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "her work package (8 am x10 h) is near Jorrvaskr; Running Wild stage 30: \"Joslin in the small stables behind the Bannered Mare\""
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "eat 7 am; work 8 am x10 h (two rain twins); water 6 am x2.5 h, no place, not in rain, cut to 6 to 7 by breakfast; bard 8 pm x2; sleep 10 pm x7; the gaps the reader notes are real"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only rain (fn62) switches packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Running Wild giver; PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction; no conditions in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: Running Wild giver (below stage 31); stages 30/40/41: keep the horse, she makes you a saddle"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:086319",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest_givers puts his ref in the Whiterun worldspace with no named spot; Running Wild stage 30 says outside Dragonsreach"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "two packages: 7 pm x1.5 h near where he's placed, sleep 9 pm x9 h in the Storehouse (Warehouse); no daytime package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "WhiterunDragonsreachServants; Running Wild calls him the Jarl's stablemaster"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false despite the companion-like editor name"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Running Wild: dialogue below stage 31; stages 30 and 45: paid in gold, horse goes to the Jarl"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:0295A7",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Igna's House; her 9 am x11 h work package is 0.1 km from Dragonsreach"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "eat 7 am, Witch's Wisdoms 8 am x1, outside near Dragonsreach 9 am x11 h, Drunken Huntsman 8 pm x2 h (the name says 20x3, the hours say 2), bard 10 pm x2, sleep midnight x7"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "A Rat Problem stage 300 says only \"Igna doesn't want anything more to do with me\"; the records don't say that's the quest failing or what leads there"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "A Rat Problem giver; PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, no conditions in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: A Rat Problem giver (below stage 20); objective 10 \"Deal with whatever is down Igna's basement\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:3436A2",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Whiterun Messenger Tower; Skirmish at Whitewatch giver entry places her there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "top package sends her to the tower whenever she's not in it (GetInCell == 0); then sleep midnight x7 and sandbox where she is"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no other conditions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Skirmish at Whitewatch giver; stage 15: a note by a messenger"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: giver, dialogue below stage 11; stage 15 log: \"a note by a messenger from Whiterun\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:0BE279",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: Hearth-Healer's Hall; her lunch and dinner packages are in Dragonsreach"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "in order: eat 7 am, train 9 am x3 h (near self) above lunch 11 am x1.5 h, so lunch is only 12 to 12:30; train 2 pm x2, dinner 4 pm x2, grave 6 pm x3, sleep 10 pm x6; gaps as stated"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "0WRThaneFaction, Whiterun guard factions; Skirmish at Whitewatch alias"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null; her \"training\" packages are her own practice"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "objectives 20, 35, 50: speak to Hroa at Whitewatch, and after each wave"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:02E6A0",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: House Steel-Arm; lunch and dinner packages in Dragonsreach"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "watch sparring 9 am and 3 pm x2 near Dragonsreach (not rain), lunch 12 x1, dinner 5 pm x2, else the homeowner sandbox at House Steel-Arm; no sleep package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only rain (fn62) on the sparring packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "0WRSurNobleFaction, Whiterun guard faction; Skirmish at Whitewatch alias ThaneValdemaar"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: dialogue below stage 29; objective 27 \"(Optional) Make some small-talk with the other Thanes\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "SurWR.esp:0337AD",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw: House Steel-Arm, shared with Valdemaar"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "sparring 9 am and 3 pm x2 near self (GetVMQuestVariable 0BC0BD == 0), 11 am x2 near Dragonsreach, bard audience 7 pm x4.5 h near Jorrvaskr, homeowner sandbox otherwise"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "the sparring condition is a script variable on quest 0BC0BD, which has no record in quests_raw"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "0WRSurNobleFaction; same house and surname as Thane Valdemaar, editor name marks him the son"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: dialogue below stage 31 in Skirmish at Whitewatch; alias Vilde"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected both false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133BB",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Investigate the Hall of the Dead starts on a change-location event, so his Understone Keep wait package likely holds when a player arrives; by day his sit package is in the keep anyway"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "in order: sleep midnight x8 (above the 7 am keep sit), visits 10 am and 4 pm x1, sit 7 am x10 h, eat 6 pm, Treasury House sandbox otherwise; rows match; fn606 undecoded"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the two visit packages carry GetDead == 0 with no target named in the extract, so it may test Thongvor himself; \"his visits stop if the person he visits is dead\" isn't shown. The other two changes match the CW and DA11Intro packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "GovSons, JobJarlFaction at rank 255 (not active), MarkarthSonsJarl alias in an unnamed quest; unsure kept"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: A Bitter Aftertaste lists him with Igmund as \"others\", dialogue below stage 31, at objective 20 \"Speak to the Jarl of Markarth\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:014134",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "his two packages: around Windhelm 8 am x10 h, Candlehearth Hall otherwise; placed in the Palace of the Kings but nothing sends him there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Windhelm wander 8 am x10 h (fn149 and fn612 conditions undecoded), Candlehearth Hall sandbox otherwise"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Windhelm By The Sea stage 10: \"might have adopted a child after his trip to the orphanage in Riften\"; steward line from WindhelmSteward, GovImperial and the StewardBackup alias"
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "he doesn't give Windhelm By The Sea: its stage 0 log says Niklas the Trader asked you to speak to him (objective 0 \"Speak to Captain Lonely-Gale\"); so \"part of a quest\", not \"quest giver\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Windhelm By The Sea stage 0: \"Niklas the Trader has asked me to speak to Captain Lonely-Gale\"; he is the person you're sent to, a step in it, not its giver"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "TheGiftofSaturalia.esp:00097C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw and Windhelm By The Sea alias: Honorhall Orphanage, Riften"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "below the stay-put intro package (undecodable OR conditions, so unsure is right): yard 10 am x1 near Mistveil Keep, meal 3 pm, sleep 10 pm x8, orphanage sandbox otherwise; all but the yard hour are in the orphanage either way"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "ConstanceDeadFleePackage: Constance Michel dead and Innocence Lost below stage 200; WindhelmCandlehearthPatrons faction; Windhelm By The Sea stage 10"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "HonorhallKids faction, Windhelm By The Sea alias"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class and outfit ids only; neither resolves to skills or a weapon in the extracts, so blank with the reader's reason is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: dialogue below stage 11 in Windhelm By The Sea"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "TheGiftofSaturalia.esp:00083C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "quest_givers: placed ref in the Skyrim worldspace, no cell; Niklas himself has no placed cell in the extracts either"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "packages list is empty"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Lending a Paw stage 10: Olava \"seemed happy to have a bit of company\"; no package moves him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Lending a Paw stage 0: \"Santus, his dog\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class 106AED doesn't resolve and he has no outfit; blank needs a reason, so it goes to unsure"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Lending a Paw objective 0 \"Bring Santus to Olava the Feeble\"; The Gift of Saturalia stage 5 \"five tasks\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:01B07F",
+   "name": "Karliah",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "Inside Snow Veil Sanctum, the Nordic ruin a short walk from Windhelm, during Speaking With Silence (\"Find Karliah\").",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "wherever the Thieves Guild quests put her (Snow Veil Sanctum, the Ragged Flagon, the standing stone outside Riften, Irkngthand, the Twilight Sepulcher)",
+     "doing": "her quest steps; her own records give her no daily routine before the questline is done"
+    }
+   ],
+   "changes": [
+    "Once the Nightingale questline is behind you (a later quest stage the extracts don't name), she lives in Nightingale Hall, the cave next to Riften, at any hour."
+   ],
+   "role": "quest giver; Thieves Guild and Nightingale",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Speaking With Silence",
+     "how": "its target, then a step in it: you hunt her in Snow Veil Sanctum and end up in her care"
+    },
+    {
+     "quest": "Hard Answers",
+     "how": "a step in it: she sends you to decipher Gallus' journal and you report back to her"
+    },
+    {
+     "quest": "The Pursuit",
+     "how": "gives it: meet her at the Ragged Flagon and follow her"
+    },
+    {
+     "quest": "Trinity Restored",
+     "how": "a step in it: listen to her, meet her at the standing stone outside Riften's Southwest Gate, take the Nightingale oath"
+    },
+    {
+     "quest": "Blindsighted",
+     "how": "a step in it: she and Brynjolf wait for you inside Irkngthand, go after Mercer Frey with you, and you speak to her once you've escaped"
+    },
+    {
+     "quest": "Darkness Returns",
+     "how": "gives it: you take the Skeleton Key back to the Twilight Sepulcher, then speak to her to choose your Nightingale role"
+    },
+    {
+     "quest": "Under New Management",
+     "how": "a step in it: she's at your installation ceremony in the Cistern"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The Nightingale Hall package is gated on a stage of a quest the extracts don't name; its name says it's for after the questline."
+    },
+    {
+     "field": "day",
+     "why": "During the questline her whereabouts come from quest alias packages that aren't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in four more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01B07F",
+    "placed in Snow Veil Sanctum (people_raw)",
+    "ThievesGuildKarliahAfterQuestlineSandboxPackage Skyrim.esm:0E364D (GetStageDone Skyrim.esm:0B31E6 stage 110; Nightingale Hall)",
+    "TG05 Skyrim.esm:021551",
+    "TG06 Skyrim.esm:021552",
+    "TG07 Skyrim.esm:021553",
+    "TG08A Skyrim.esm:057F99",
+    "TG08B Skyrim.esm:021554",
+    "TG09 Skyrim.esm:021555",
+    "TGLeadership Skyrim.esm:0D7D69",
+    "ThievesGuildFaction",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01A2CF",
+   "name": "Nocturnal",
+   "race": "Redguard",
+   "sex": "female",
+   "firstMeet": "In the Twilight Sepulcher's Inner Sanctum (the Sepulcher is a short walk from Falkreath), at the end of Darkness Returns.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Inner Sanctum of the Twilight Sepulcher, near Falkreath",
+     "doing": "appears for the end of Darkness Returns; she has no daily routine"
+    }
+   ],
+   "changes": [],
+   "role": "the Daedric Prince of the Nightingales; part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Darkness Returns",
+     "how": "a step in it: return the Skeleton Key to the Ebonmere and listen to her; she makes you a Nightingale Agent"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Her only package is a quest start package with no place; whether she's present outside the quest isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01A2CF",
+    "placed in Twilight Sepulcher Inner Sanctum (people_raw)",
+    "NocturnalDefaultStart Skyrim.esm:1018B4",
+    "TG09 Skyrim.esm:021555 NocturnalAlias",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01BB5D",
+   "name": "Nightingale Sentinel",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "Inside the Twilight Sepulcher, a short walk from Falkreath, during Darkness Returns: the spirit of Gallus.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Twilight Sepulcher, near Falkreath",
+     "doing": "stands guard; he has no packages of his own"
+    }
+   ],
+   "changes": [],
+   "role": "part of a quest (the spirit of Gallus)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Darkness Returns",
+     "how": "a step in it: \"Speak to the Nightingale Sentinel\"; he warns you the other guardian spirits have turned hostile"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "He also fills an alias in a later quest that has no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01BB5D",
+    "placed in Twilight Sepulcher (people_raw)",
+    "no packages",
+    "TG09 Skyrim.esm:021555 GallusAlias, stage 30 log",
+    "Skyrim.esm:0E1782 TG09PostGallusAlias (unnamed)",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01CD91",
+   "name": "Niruin",
+   "race": "Bosmer",
+   "sex": "male",
+   "firstMeet": "In the Cistern, the Thieves Guild's headquarters under Riften, reached through the Ragged Flagon.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "4 hours",
+     "where": "his bed in the Cistern, under Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "10 am",
+     "for": "2 hours",
+     "where": "the Cistern",
+     "doing": "eating"
+    },
+    {
+     "from": "12 pm",
+     "for": "2 hours",
+     "where": "the Cistern",
+     "doing": "going about the guild's headquarters"
+    },
+    {
+     "from": "2 pm",
+     "for": "4 hours",
+     "where": "where he is, in the Thieves Guild headquarters",
+     "doing": "archery practice"
+    },
+    {
+     "from": "6 pm",
+     "for": "12 hours",
+     "where": "the Cistern",
+     "doing": "going about the guild's headquarters"
+    }
+   ],
+   "changes": [
+    "If you're banned from the Thieves Guild (Reparations), he's one of the members the ban covers until you pay Vex what she asks."
+   ],
+   "role": "trainer; Thieves Guild member",
+   "sells": "",
+   "trains": "Archery, as a master trainer (the records give no top level)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Pursuit",
+     "how": "a step in it: he's among the guild members present"
+    },
+    {
+     "quest": "Under New Management",
+     "how": "a step in it: he's at your installation ceremony as Guild Master"
+    },
+    {
+     "quest": "Reparations",
+     "how": "changed by it: he's one of the guild members the ban covers until you pay Vex"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His archery package uses 'near himself' as its place, so it's wherever he is at 2 pm; the training-room wording comes only from the package's editor name. His fallback sandbox carries conditions the extract doesn't decode."
+    },
+    {
+     "field": "trains",
+     "why": "The trainer record gives the tier (Master) with no level cap, so the exact top level isn't stated."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in eight more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01CD91",
+    "placed in The Ragged Flagon - Cistern (people_raw)",
+    "ThievesGuildTrainingArcheryTrRoom14x4 Skyrim.esm:10384C (near self)",
+    "ThievesGuildEatPackage10x2 Skyrim.esm:103289",
+    "ThievesGuildNiruinSleep6x4 Skyrim.esm:1032B4",
+    "ThievesGuildSandboxMultiPackage0x0 Skyrim.esm:0B780F",
+    "JobTrainerMarksmanFaction; trainer {Marksman, Master}",
+    "TG07 Skyrim.esm:021553",
+    "TGLeadership Skyrim.esm:0D7D69",
+    "TGBan Skyrim.esm:0B03A2",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013395",
+   "name": "Endon",
+   "race": "Redguard",
+   "sex": "male",
+   "firstMeet": "At his house in Markarth (Endon's House), or in the Markarth market by day once the market package applies.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Endon's House, Markarth",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Endon's House, Markarth",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "12 hours",
+     "where": "the market, Markarth",
+     "doing": "at the market (not in rain, and only after a quest stage; otherwise back in bed until 8 am, then at home)"
+    },
+    {
+     "from": "7 pm",
+     "for": "1 hour",
+     "where": "Endon's House, Markarth",
+     "doing": "at home"
+    },
+    {
+     "from": "8 pm",
+     "for": "3 hours",
+     "where": "the Silver-Blood Inn, Markarth",
+     "doing": "eating (only after the same quest stage; otherwise at home)"
+    },
+    {
+     "from": "11 pm",
+     "for": "1 hour",
+     "where": "Endon's House, Markarth",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "His market and inn outings only run once a stage of a quest the extracts don't name is done; before that he stays home. Rain keeps him home from the market.",
+    "After Silver Lining the Thieves Guild counts him as an ally in Markarth."
+   ],
+   "role": "merchant (silversmith); quest giver",
+   "sells": "his own stock (a merchant with a jeweller's job, no shared buy list); trades 8 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Silver Lining",
+     "how": "gives it: recover his silver mold, stolen and taken to Pinewatch"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The market and inn packages need stage 500 of a quest the extracts don't name."
+    },
+    {
+     "field": "sells",
+     "why": "He's in the jeweller and fence factions at an inactive rank; whether he fences stolen goods (and when) isn't settled by the records."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in nine more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013395",
+    "placed in Endon's House (people_raw)",
+    "MarkarthEndonEatSilverFishInn20x3 Skyrim.esm:04D7F3 (GetStageDone Skyrim.esm:0AF75F 500)",
+    "MarkarthEndonEatMorning6x1Package Skyrim.esm:04D7EC",
+    "MarkarthEndonSandboxMarketPackage7x12 Skyrim.esm:047011 (stage 500, not raining)",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxHomeowner Skyrim.esm:031730",
+    "vendor 8-20, buy list unique to him",
+    "JobMerchantFaction, JobJewelerFaction 255, JobFenceFaction 255",
+    "TGTQ01 Skyrim.esm:0799DF",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0799E4",
+   "name": "Rhorlak",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At Pinewatch, the shack next to Falkreath.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "Pinewatch, near Falkreath",
+     "doing": "sleeping"
+    },
+    {
+     "from": "7 am",
+     "for": "1 hour",
+     "where": "Pinewatch",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "4 hours",
+     "where": "Pinewatch",
+     "doing": "going about the place"
+    },
+    {
+     "from": "12 pm",
+     "for": "1 hour",
+     "where": "Pinewatch",
+     "doing": "lunch"
+    },
+    {
+     "from": "1 pm",
+     "for": "5 hours",
+     "where": "Pinewatch",
+     "doing": "going about the place"
+    },
+    {
+     "from": "6 pm",
+     "for": "1 hour",
+     "where": "Pinewatch",
+     "doing": "supper"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "Pinewatch",
+     "doing": "going about the place"
+    }
+   ],
+   "changes": [],
+   "role": "part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Silver Lining",
+     "how": "a step in it: he's at Pinewatch, where Endon's mold was taken; you can speak to him before you recover it"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "role",
+     "why": "He has no factions in the records, so whether he's one of the bandits at Pinewatch isn't settled."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0799E4",
+    "placed in Pinewatch (people_raw)",
+    "DefaultEatEditorLoc18x1 / 12x1 / 7x1",
+    "DefaultSleepEditorLoc0x7 Skyrim.esm:01CB1A",
+    "DefaultSandboxEditorLocation1024 Skyrim.esm:0317C8",
+    "TGTQ01 Skyrim.esm:0799DF TGTQ01RhorlakAlias; dialogue below stage 31"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0132A3",
+   "name": "Sabine Nytte",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Aboard the Red Wave, the ship at the Solitude docks below the city.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "aboard the Red Wave, Solitude docks",
+     "doing": "going about the ship"
+    },
+    {
+     "from": "8 pm",
+     "for": "12 hours",
+     "where": "aboard the Red Wave",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "While The Dainty Sload is running she stays around a spot near Solitude Estuary Fortress, at any hour, instead of her usual routine."
+   ],
+   "role": "part of a quest; crew of the Red Wave",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Dainty Sload",
+     "how": "a step in it: you can speak to her before the Balmora Blue is planted"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The quest package's spot resolves only to the nearest named place (Solitude Estuary Fortress, 0.1 km); what is there isn't named."
+    },
+    {
+     "field": "day",
+     "why": "Her sleep package has no hours; it sits below the 8 am to 8 pm package, so she sleeps outside those hours, near where she's placed on the Red Wave."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0132A3",
+    "placed in Red Wave, Solitude (people_raw)",
+    "TGTQ02SabineSandbox0x24 Skyrim.esm:0A3905 (GetQuestRunning TGTQ02)",
+    "SabineRedWaveSandbox8x12 Skyrim.esm:09424B",
+    "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+    "ShipsRedWaveFaction",
+    "TGTQ02 Skyrim.esm:0799E0",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "SurWR.esp:10F897",
+   "name": "Urik",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Out in the open around Whiterun (outside the walls); the extracts don't name the spot.",
+   "day": [
+    {
+     "from": "5 am",
+     "for": "13 hours",
+     "where": "his spot in the Whiterun area",
+     "doing": "trading; he has no daytime package, so he stays where he's placed"
+    },
+    {
+     "from": "6 pm",
+     "for": "11 hours",
+     "where": "The Roadhouse, Whiterun",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "merchant (hunter's goods); quest giver",
+   "sells": "hunter's goods (same buy list as Anoriath and the travelling hunters, same merchant chest as the hunters); trades at any hour. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Ode To The Tundrastriders",
+     "how": "gives it (the peaceful way): he knows how to deal with the giants, buys you the cow for 300 gold and wants blue dye and the poem"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His placed reference is in the open world with no cell or nearby place in the extracts; the quest text says there are people 'both inside and outside wall'."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:10F897",
+    "0WRRoadhouseSleep1830 SurWR.esp:160D2D (The Roadhouse, 18:00 for 11 h)",
+    "vendor 0-24, buy list shared with Anoriath, chest shared with Hunter/Greorg/Woan",
+    "WEServicesHunterFaction, WEServiceMiscMerchant, JobMerchantFaction",
+    "0WRGiantQuest SurWR.esp:2ECDA4 giver (ref SurWR.esp:123CB3 in Skyrim worldspace)",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "SurWR.esp:02952F",
+   "name": "Jaeshe",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In her shop, Witch's Wisdoms, in Whiterun.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Witch's Wisdoms, Whiterun",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Witch's Wisdoms",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "5 hours",
+     "where": "Witch's Wisdoms",
+     "doing": "minding the shop"
+    },
+    {
+     "from": "12 pm",
+     "for": "5 hours",
+     "where": "outside, right by Dragonsreach (in her shop if it's raining)",
+     "doing": "going about"
+    },
+    {
+     "from": "5 pm",
+     "for": "7 hours",
+     "where": "Witch's Wisdoms",
+     "doing": "minding the shop"
+    }
+   ],
+   "changes": [
+    "Rain keeps her in her shop in the afternoon."
+   ],
+   "role": "merchant (apothecary and spells)",
+   "sells": "apothecary goods and spells (she's in both the apothecary and spell-seller jobs, with her own buy list); trades 7 am to 7 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Ode To The Tundrastriders",
+     "how": "a step in it: one of the townsfolk you can ask about dealing with the giant"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Whether her spell stock includes spell tomes, and which, isn't resolved."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:02952F",
+    "placed in Witch's Wisdoms (people_raw)",
+    "DefaultEatEditorLoc6x1",
+    "0WRWitchShopServices SurWR.esp:04D68F",
+    "0WRWitchOutsideSandbox SurWR.esp:04D6A6 (not raining)",
+    "0WRWitchOutsideRainSandbox SurWR.esp:193AFE (raining)",
+    "0WRWitchShopServicesEvening SurWR.esp:1A2FA1",
+    "DefaultSleepEditorLoc0x7",
+    "vendor 7-19",
+    "JobApothecaryFaction, JobSpellFaction",
+    "0WRGiantQuest SurWR.esp:2ECDA4 (dialogue below stage 11)",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "SurWR.esp:0BE23B",
+   "name": "Joslin",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "At her small stables behind the Bannered Mare in Whiterun, by day; she lives in Joslin's House.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "around Whiterun",
+     "doing": "fetching water (not in rain)"
+    },
+    {
+     "from": "7 am",
+     "for": "1 hour",
+     "where": "Joslin's House, Whiterun",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "10 hours",
+     "where": "her stables behind the Bannered Mare, next to Jorrvaskr (a sheltered spot nearby in rain)",
+     "doing": "working with the horses"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "wherever she is",
+     "doing": "no package covers these hours"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "outside, by Jorrvaskr",
+     "doing": "listening to the bard"
+    },
+    {
+     "from": "10 pm",
+     "for": "7 hours",
+     "where": "Joslin's House",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Rain moves her work spot and skips her morning water run."
+   ],
+   "role": "quest giver; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes, she's a marriage candidate; what she needs first isn't in the extracts",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Running Wild",
+     "how": "gives it: bring the white horse to her (you keep it and she makes you a saddle) or to the stablemaster"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her water-fetching package has no place, and nothing covers 6 pm to 8 pm or 5 am to 6 am."
+    },
+    {
+     "field": "marries",
+     "why": "The marriage conditions aren't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:0BE23B",
+    "placed in Joslin's House (people_raw)",
+    "DefaultEatEditorLoc7x1",
+    "0WRHorseWork SurWR.esp:0CD996",
+    "0WRHorseWorkItsRaining SurWR.esp:0CD998",
+    "0WRHorseGetWater SurWR.esp:0CDA5B",
+    "0WRBardOutsideAudienceJoslin SurWR.esp:18E950",
+    "DefaultSleepEditorLoc22x7",
+    "PotentialMarriageFaction",
+    "0WRHorseQ SurWR.esp:0D2AD7 giver"
+   ]
+  },
+  {
+   "id": "SurWR.esp:086319",
+   "name": "Erland the Stablemaster",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Outside Dragonsreach in Whiterun, as the Jarl's stablemaster (Running Wild's words).",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "13 hours",
+     "where": "his spot, outside Dragonsreach",
+     "doing": "no daytime package; he stays where he's placed"
+    },
+    {
+     "from": "7 pm",
+     "for": "1.5 hours",
+     "where": "near his spot",
+     "doing": "going about"
+    },
+    {
+     "from": "9 pm",
+     "for": "9 hours",
+     "where": "the storehouse (Warehouse), Whiterun",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "part of a quest; the Jarl's stablemaster",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Running Wild",
+     "how": "a step in it: bring him the horse and you're paid in gold, but the horse goes to the Jarl"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His placed reference isn't in the extracts; outside Dragonsreach comes from the quest's text."
+    },
+    {
+     "field": "day",
+     "why": "Nothing covers 8:30 pm to 9 pm or the daytime, so he stands where he's placed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:086319",
+    "0WRErlandMara SurWR.esp:1752EA",
+    "0WRErlandSleepPack SurWR.esp:1752E4 (Storehouse, Warehouse)",
+    "WhiterunDragonsreachServants",
+    "0WRHorseQ SurWR.esp:0D2AD7 (dialogue below stage 31; objective 30)",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "SurWR.esp:0295A7",
+   "name": "Igna",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At her house in Whiterun (Igna's House), or by day just outside Dragonsreach.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "Igna's House, Whiterun",
+     "doing": "sleeping"
+    },
+    {
+     "from": "7 am",
+     "for": "1 hour",
+     "where": "Igna's House",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "1 hour",
+     "where": "Witch's Wisdoms, Whiterun",
+     "doing": "visiting"
+    },
+    {
+     "from": "9 am",
+     "for": "11 hours",
+     "where": "outside, near Dragonsreach",
+     "doing": "working"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "The Drunken Huntsman, Whiterun",
+     "doing": "spending the evening"
+    },
+    {
+     "from": "10 pm",
+     "for": "2 hours",
+     "where": "outside, by Jorrvaskr",
+     "doing": "listening to the bard"
+    }
+   ],
+   "changes": [
+    "At one ending of A Rat Problem she wants nothing more to do with you; what leads there isn't in the records."
+   ],
+   "role": "quest giver; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes, she's a marriage candidate; what she needs first isn't in the extracts",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Rat Problem",
+     "how": "gives it: deal with whatever is in her basement"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "marries",
+     "why": "The marriage conditions aren't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:0295A7",
+    "placed in Igna's House (people_raw)",
+    "DefaultEatMorning7x1",
+    "0WRIgnaMara SurWR.esp:1752EB (Witch's Wisdoms)",
+    "0WRIgnaWorkOutsidePack SurWR.esp:039086",
+    "0WRIgnaDrunkenHuntsman20x3 SurWR.esp:09F87B",
+    "0WRBardOutsideAudienceIgna SurWR.esp:193AC2",
+    "DefaultSleepEditorLoc0x7",
+    "PotentialMarriageFaction",
+    "0WRRatQuest SurWR.esp:31ABC1 giver, stage 300"
+   ]
+  },
+  {
+   "id": "SurWR.esp:3436A2",
+   "name": "Courier",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In the Whiterun Messenger Tower, a guard tower in Whiterun.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Whiterun Messenger Tower",
+     "doing": "going about the tower; sleeps there midnight to 7 am. Whenever she's elsewhere she heads back"
+    }
+   ],
+   "changes": [],
+   "role": "messenger; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Skirmish at Whitewatch",
+     "how": "gives it: brings you the note calling you to Whitewatch Tower"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "How she reaches you with the note is quest scripting not in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:3436A2",
+    "placed in Whiterun Messenger Tower (people_raw)",
+    "WRCourierBasicRunHome SurWR.esp:37B3A6 (GetInCell == 0)",
+    "DefaultSleepEditorLoc0x7",
+    "DefaultSandboxCurrentLocation1024",
+    "0WRThaneQ01 SurWR.esp:3436A3 giver",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "SurWR.esp:0BE279",
+   "name": "Thane Hroa Hearth-Healer",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At her home, Hearth-Healer's Hall in Whiterun, or in Dragonsreach at mealtimes.",
+   "day": [
+    {
+     "from": "4 am",
+     "for": "3 hours",
+     "where": "wherever she is",
+     "doing": "no package covers these hours"
+    },
+    {
+     "from": "7 am",
+     "for": "1 hour",
+     "where": "Hearth-Healer's Hall, Whiterun",
+     "doing": "breakfast"
+    },
+    {
+     "from": "9 am",
+     "for": "3 hours",
+     "where": "wherever she is",
+     "doing": "training"
+    },
+    {
+     "from": "12 pm",
+     "for": "30 minutes",
+     "where": "Dragonsreach",
+     "doing": "lunch"
+    },
+    {
+     "from": "2 pm",
+     "for": "2 hours",
+     "where": "wherever she is",
+     "doing": "training"
+    },
+    {
+     "from": "4 pm",
+     "for": "2 hours",
+     "where": "Dragonsreach",
+     "doing": "dinner"
+    },
+    {
+     "from": "6 pm",
+     "for": "3 hours",
+     "where": "a grave just outside Whiterun",
+     "doing": "visiting a grave"
+    },
+    {
+     "from": "10 pm",
+     "for": "6 hours",
+     "where": "Hearth-Healer's Hall",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "thane of Whiterun; part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Skirmish at Whitewatch",
+     "how": "a step in it: speak to her at Whitewatch Tower; she leads the defence and you report to her after each wave"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her training packages use 'near herself' as their place, so where she trains isn't fixed; 8 to 9 am, 12:30 to 2 pm and 9 to 10 pm have no package. The grave's spot resolves only to 'Whiterun, 0.1 km'."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:0BE279",
+    "placed in Hearth-Healer's Hall (people_raw)",
+    "DefaultEatEditorLoc7x1",
+    "0WRThaneTrainMorning SurWR.esp:0CD972",
+    "WhiterunDragonsReachLunch12x1Thane SurWR.esp:0D2B7D",
+    "0WRThaneTrainEvening SurWR.esp:0D2B7F",
+    "WhiterunDragonsReachDinner17x2Thane SurWR.esp:0D2B7E",
+    "0WRThaneVisitGrave SurWR.esp:0C8662",
+    "DefaultSleepEditorLoc22x6",
+    "0WRThaneFaction, GuardFactionWhiterun",
+    "0WRThaneQ01 SurWR.esp:3436A3"
+   ]
+  },
+  {
+   "id": "SurWR.esp:02E6A0",
+   "name": "Thane Valdemaar Steel-Arm",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "At his home, House Steel-Arm in Whiterun, or in Dragonsreach at mealtimes.",
+   "day": [
+    {
+     "from": "9 am",
+     "for": "2 hours",
+     "where": "just outside Dragonsreach",
+     "doing": "watching the sparring (not in rain)"
+    },
+    {
+     "from": "11 am",
+     "for": "1 hour",
+     "where": "House Steel-Arm, Whiterun",
+     "doing": "at home"
+    },
+    {
+     "from": "12 pm",
+     "for": "1 hour",
+     "where": "Dragonsreach",
+     "doing": "lunch"
+    },
+    {
+     "from": "1 pm",
+     "for": "2 hours",
+     "where": "House Steel-Arm",
+     "doing": "at home"
+    },
+    {
+     "from": "3 pm",
+     "for": "2 hours",
+     "where": "just outside Dragonsreach",
+     "doing": "watching the sparring (not in rain)"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Dragonsreach",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "14 hours",
+     "where": "House Steel-Arm",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "Rain keeps him home instead of watching the sparring."
+   ],
+   "role": "thane of Whiterun; part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Skirmish at Whitewatch",
+     "how": "a step in it: one of the thanes defending Whitewatch Tower; you can make small-talk with him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "He has no sleep package; his home package has no hours, so when he sleeps isn't stated."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:02E6A0",
+    "placed in House Steel-Arm (people_raw)",
+    "0WRNobleWatchSpar9x2 SurWR.esp:0527FD (not raining)",
+    "WhiterunDragonsReachLunch12x1 Skyrim.esm:0D0FED",
+    "0WRNobleWatchSpar15x2 SurWR.esp:0527FE",
+    "WhiterunDragonsReachDinner17x2 Skyrim.esm:0D0FEF",
+    "DefaultSandboxHomeowner Skyrim.esm:031730",
+    "0WRSurNobleFaction",
+    "0WRThaneQ01 SurWR.esp:3436A3 (dialogue below stage 29)"
+   ]
+  },
+  {
+   "id": "SurWR.esp:0337AD",
+   "name": "Vilde Steel-Arm",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At House Steel-Arm in Whiterun, his father's home.",
+   "day": [
+    {
+     "from": "9 am",
+     "for": "2 hours",
+     "where": "wherever he is",
+     "doing": "sparring"
+    },
+    {
+     "from": "11 am",
+     "for": "2 hours",
+     "where": "just outside Dragonsreach",
+     "doing": "going about"
+    },
+    {
+     "from": "1 pm",
+     "for": "2 hours",
+     "where": "House Steel-Arm, Whiterun",
+     "doing": "at home"
+    },
+    {
+     "from": "3 pm",
+     "for": "2 hours",
+     "where": "wherever he is",
+     "doing": "sparring"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "House Steel-Arm",
+     "doing": "at home"
+    },
+    {
+     "from": "7 pm",
+     "for": "4.5 hours",
+     "where": "outside, by Jorrvaskr",
+     "doing": "listening to the bard"
+    },
+    {
+     "from": "11:30 pm",
+     "for": "9.5 hours",
+     "where": "House Steel-Arm",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "His sparring only runs while a quest's script value is unset (the extracts don't name it)."
+   ],
+   "role": "son of Thane Valdemaar; part of a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Skirmish at Whitewatch",
+     "how": "a step in it: he's among the defenders at Whitewatch Tower; you can talk to him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His sparring packages use 'near himself' as their place; his father watches the sparring just outside Dragonsreach, which suggests that's where, but it isn't stated. He has no sleep package."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "SurWR.esp:0337AD",
+    "placed in House Steel-Arm (people_raw)",
+    "0WRSparringPartSon9x2 SurWR.esp:04D702 (GetVMQuestVariable Skyrim.esm:0BC0BD == 0)",
+    "0WRSonWashFeet SurWR.esp:0F1225",
+    "0WRSparringPartSon15x2 SurWR.esp:04D703",
+    "0WRBardOutsideAudience SurWR.esp:18E94F",
+    "DefaultSandboxHomeowner",
+    "0WRThaneQ01 SurWR.esp:3436A3 (dialogue below stage 31)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0133BB",
+   "name": "Thongvor Silver-Blood",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Understone Keep, Markarth, by day; he lives in the Treasury House.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Treasury House, Markarth",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "2 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "seated in the keep"
+    },
+    {
+     "from": "10 am",
+     "for": "1 hour",
+     "where": "Understone Keep",
+     "doing": "visiting someone in the keep"
+    },
+    {
+     "from": "11 am",
+     "for": "5 hours",
+     "where": "Understone Keep",
+     "doing": "seated in the keep"
+    },
+    {
+     "from": "4 pm",
+     "for": "1 hour",
+     "where": "Understone Keep",
+     "doing": "visiting someone in the keep"
+    },
+    {
+     "from": "5 pm",
+     "for": "1 hour",
+     "where": "the Treasury House",
+     "doing": "at home"
+    },
+    {
+     "from": "6 pm",
+     "for": "1 hour",
+     "where": "the Treasury House",
+     "doing": "supper"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "the Treasury House",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "Once Investigate the Hall of the Dead has begun, he waits at a spot in Understone Keep at all hours until a related quest's scene is done.",
+    "If he's put in the civil war's exiled faction he lives in the Palace of the Kings in Windhelm instead (and hides upstairs there during the battle for Windhelm)."
+   ],
+   "role": "Silver-Blood noble; the Stormcloaks' Jarl of Markarth if they take the Reach",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Bitter Aftertaste",
+     "how": "a step in it: he can speak as the Jarl of Markarth, before the cannibals are dealt with"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "role",
+     "why": "The Stormcloak jarl role comes from an alias in an unnamed quest and his jarl faction rank; which civil-war outcome makes him jarl isn't named in the extracts."
+    },
+    {
+     "field": "changes",
+     "why": "The Understone Keep wait depends on an unnamed quest's stages; the exiled faction and the Windhelm quest aren't named in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "His home and visit packages carry a condition the extract doesn't decode (function 606), so they may not always apply."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in nine more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "His two visit packages carry a \"not dead\" check with no target in the extract; it may be on him or on the person he visits."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0133BB",
+    "placed in The Treasury House (people_raw)",
+    "CWFinaleHidePackageWindhelmActorBasePackage Skyrim.esm:10FE78",
+    "CWExiledSonsSandboxPalace Skyrim.esm:0A9272 (GetInFaction Skyrim.esm:036629)",
+    "DA11IntroSceneThongvorPackage Skyrim.esm:0AEC25 (DA11Intro Skyrim.esm:07D949 stage >= 5)",
+    "MarkarthThongvorTreasurySleep22x8Package Skyrim.esm:052201",
+    "MarkarthThongvorTreasuryEat18x1Package Skyrim.esm:0521FE",
+    "MarkarthThongvorVisitGhorz16x1Package Skyrim.esm:052200",
+    "MarkarthThongvorVisitGhorz10x1Package Skyrim.esm:0521FF",
+    "MarkarthThongvorSitKeepPackage Skyrim.esm:0D6736",
+    "MarkarthThongvorTreasurySandboxPackage Skyrim.esm:036F0F",
+    "GovSons, JobJarlFaction 255, MarriageExcludedFaction",
+    "Skyrim.esm:0A7B33 MarkarthSonsJarl alias",
+    "madNamiraAddonQuest TasteOfDeath_Addon_Dialogue.esp:000050",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:014134",
+   "name": "Captain Lonely-Gale",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Out in Windhelm by day; in Candlehearth Hall the rest of the time.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "10 hours",
+     "where": "around Windhelm",
+     "doing": "going about the city"
+    },
+    {
+     "from": "6 pm",
+     "for": "14 hours",
+     "where": "Candlehearth Hall, Windhelm",
+     "doing": "spending the night"
+    }
+   ],
+   "changes": [
+    "After Windhelm By The Sea he may adopt a child from Honorhall Orphanage in Riften.",
+    "He's in the Imperial court's steward line for Windhelm, so a civil-war outcome may give him a post in the Palace of the Kings."
+   ],
+   "role": "part of a quest; in line to be Windhelm's steward on the Imperial side",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Windhelm By The Sea",
+     "how": "a step in it: Niklas the Trader sends you to talk to him, and he thinks about adopting from the Riften orphanage"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His daytime package carries a condition the extract doesn't decode (function 149), so on some days he may stay in Candlehearth Hall."
+    },
+    {
+     "field": "changes",
+     "why": "His steward role comes from his steward faction and a 'steward backup' alias in an unnamed quest; the outcome that triggers it isn't named."
+    },
+    {
+     "field": "firstMeet",
+     "why": "The records place him in the Palace of the Kings, but neither of his packages sends him there."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in 15 more quests that have no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:014134",
+    "placed in Palace of the Kings (people_raw)",
+    "AIOWHLonelyGaleRandom8x10 AI Overhaul.esp:0029C6",
+    "WindhelmLonelyGaleCandlehearth Skyrim.esm:0235A5",
+    "GovImperial, GovRuling 255, WindhelmSteward, WindhelmMarketBrowsers",
+    "Skyrim.esm:03502E StewardBackup alias",
+    "Sat_Adoption TheGiftofSaturalia.esp:000963 giver",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "TheGiftofSaturalia.esp:00097C",
+   "name": "Lucas",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "At Honorhall Orphanage in Riften.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "4 hours",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "going about the orphanage"
+    },
+    {
+     "from": "10 am",
+     "for": "1 hour",
+     "where": "the orphanage yard, by Mistveil Keep",
+     "doing": "playing in the yard"
+    },
+    {
+     "from": "11 am",
+     "for": "4 hours",
+     "where": "Honorhall Orphanage",
+     "doing": "going about the orphanage"
+    },
+    {
+     "from": "3 pm",
+     "for": "1 hour",
+     "where": "Honorhall Orphanage",
+     "doing": "a meal"
+    },
+    {
+     "from": "4 pm",
+     "for": "6 hours",
+     "where": "Honorhall Orphanage",
+     "doing": "going about the orphanage"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "Honorhall Orphanage",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "If Constance Michel is killed before Innocence Lost is done, he flees.",
+    "After Windhelm By The Sea, Captain Lonely-Gale may adopt him; his records already carry Windhelm's Candlehearth Hall faction."
+   ],
+   "role": "part of a quest; orphan",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Windhelm By The Sea",
+     "how": "a step in it: the child Captain Lonely-Gale may adopt; you can speak to him while it runs"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "An introduction package above his routine holds him in place while its conditions pass (a quest value and a condition the extract doesn't decode); when it lets go isn't clear."
+    },
+    {
+     "field": "changes",
+     "why": "Where he lives after an adoption isn't set by any package in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "TheGiftofSaturalia.esp:00097C",
+    "placed in Honorhall Orphanage (people_raw)",
+    "ConstanceDeadFleePackage Skyrim.esm:0CB26B (GetDeadCount Skyrim.esm:013350 Constance Michel; DB01 stage < 200)",
+    "Sat_LucasIntro TheGiftofSaturalia.esp:000988",
+    "RiftenHonorhallKidsYardPackage Skyrim.esm:026679",
+    "RiftenHonorhallMealPackage Skyrim.esm:02661F",
+    "Sat_LucasSleep TheGiftofSaturalia.esp:000987",
+    "HonorhallKidSandboxLocation512 Skyrim.esm:016CE8",
+    "WindhelmCandlehearthPatrons faction",
+    "Sat_Adoption TheGiftofSaturalia.esp:000963 (Lucas, below stage 11)",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "TheGiftofSaturalia.esp:00083C",
+   "name": "Santus",
+   "race": "",
+   "sex": "male",
+   "firstMeet": "Niklas the Trader's dog, out in the open world; the extracts don't name where.",
+   "day": [],
+   "changes": [
+    "After Lending a Paw he's with Olava the Feeble in Whiterun, who's glad of the company."
+   ],
+   "role": "part of a quest (Niklas the Trader's dog)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Lending a Paw",
+     "how": "its target: bring him to Olava the Feeble in Whiterun"
+    },
+    {
+     "quest": "The Gift of Saturalia",
+     "how": "a step in it: one of Niklas's five tasks"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "race",
+     "why": "His record has no race in the extracts; the quest calls him Niklas's dog."
+    },
+    {
+     "field": "firstMeet",
+     "why": "His placed reference is in the open world with no cell or nearby place in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "He has no packages."
+    },
+    {
+     "field": "changes",
+     "why": "That he stays with Olava comes from the quest's closing text; no package moves him."
+    },
+    {
+     "field": "fightsWith",
+     "why": "His class record id doesn't resolve in the extracts and he has no outfit."
+    }
+   ],
+   "evidence": [
+    "TheGiftofSaturalia.esp:00083C",
+    "placed ref TheGiftofSaturalia.esp:00083D in Skyrim worldspace",
+    "no packages",
+    "Sat_Dog TheGiftofSaturalia.esp:0009A4",
+    "Sat_TheGiftofSaturalia TheGiftofSaturalia.esp:000D61",
+    "essential flag"
+   ]
+  }
+ ]
+}
