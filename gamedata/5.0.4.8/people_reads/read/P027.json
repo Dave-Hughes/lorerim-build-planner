@@ -1,0 +1,1244 @@
+[
+ {
+  "id": "Skyrim.esm:013BAE",
+  "name": "Olava the Feeble",
+  "race": "Elder",
+  "sex": "female",
+  "firstMeet": "Whiterun: at her house, or at the Bannered Mare in the early morning",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "her house, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "3 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "spending the morning at the inn"
+   },
+   {
+    "from": "9 am",
+    "for": "10 hours",
+    "where": "around her house, Whiterun",
+    "doing": "going about her day near home"
+   },
+   {
+    "from": "3 pm",
+    "for": "4 hours",
+    "where": "near Jorrvaskr, Whiterun",
+    "doing": "on two days of the week, when its conditions hold, she goes up near Jorrvaskr instead"
+   }
+  ],
+  "changes": [
+   "From 8 am to 8 pm a weather package can keep her near home instead; its conditions aren't decoded in the extracts."
+  ],
+  "role": "townsperson; part of the Saturalia quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Lending a Paw",
+    "how": "a step in it: you bring Santus, Niklas the Trader's dog, to her"
+   },
+   {
+    "quest": "The Gift of Saturalia",
+    "how": "one of the people Niklas's tasks help (through Lending a Paw)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Nothing in her packages covers 7 pm to midnight, so where she spends the evening isn't known from the records."
+   },
+   {
+    "field": "day",
+    "why": "The near-Jorrvaskr afternoon is a shared package with a day-of-week code read as two weekdays and conditions (a quest stage and an undecoded check) that may keep it off."
+   },
+   {
+    "field": "changes",
+    "why": "The 8 am to 8 pm weather package's conditions are undecoded functions."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BAE",
+   "WhiterunOlavaBanneredMarePackage",
+   "AIOWeatherEditLoc8x12",
+   "WhiterunYsoldaHeimskrAudience",
+   "WhiterunOlavaHomePackage",
+   "DefaultSleepEditorLoc24x8",
+   "TheGiftofSaturalia.esp:000D61 alias Olava",
+   "TheGiftofSaturalia.esp:0009A4 (Lending a Paw) log",
+   "moretosaywhiterun.esp:000860 alias OlavaAlias (dialogue quest, unnamed)",
+   "WhiterunOlavaTheFeeblesHouseFaction",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:00083A",
+  "name": "Diane",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "the streets of Solitude, as a blind beggar (A Song in the Dark: \"Speak to Diane the Blind in Solitude\")",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "7 hours",
+    "where": "her spot in Solitude",
+    "doing": "begging"
+   },
+   {
+    "from": "3 pm",
+    "for": "3 hours",
+    "where": "a spot in Solitude, near the middle of town",
+    "doing": "begging"
+   },
+   {
+    "from": "6 pm",
+    "for": "3 hours",
+    "where": "near the Blue Palace, Solitude",
+    "doing": "begging"
+   },
+   {
+    "from": "9 pm",
+    "for": "11 hours",
+    "where": "her spot in Solitude",
+    "doing": "staying put overnight"
+   }
+  ],
+  "changes": [
+   "During A Song in the Dark you convince her to apply to the Bards College; she buys new clothes and from then the Diane you lead to Viarmo is her new self, who stays at the Bards College."
+  ],
+  "role": "quest character (Saturalia)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Song in the Dark",
+    "how": "a step in it: Niklas the Trader sends you to find her and convince her to apply to the Bards College"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Her placed spot is an outdoor cell in Solitude with no street name in the extracts; the quest's own words are only \"in Solitude\"."
+   },
+   {
+    "field": "day",
+    "why": "Her 8 am and 9 pm packages have no place of their own, so she stays wherever she is; the record names them for begging."
+   },
+   {
+    "field": "firstMeet",
+    "why": "Whether she is in Solitude before Niklas gives you the quest isn't shown in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "TheGiftofSaturalia.esp:00083A",
+   "Sat_DianeBegging_8",
+   "Sat_DianeBegging_15",
+   "Sat_DianeBegging_18",
+   "Sat_DianeBegging_21",
+   "TheGiftofSaturalia.esp:0009D2 alias Diane, placed ref TheGiftofSaturalia.esp:0009CB in Skyrim.esm:037EE6",
+   "class Skyrim.esm:013256"
+  ]
+ },
+ {
+  "id": "TheGiftofSaturalia.esp:0009D3",
+  "name": "Diane",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "Solitude, after she has bought new clothes during A Song in the Dark; you lead her to Viarmo",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "the Bards College, Solitude",
+    "doing": "staying near Viarmo"
+   }
+  ],
+  "changes": [
+   "Before she is accepted (the quest's later stages) she has no package that holds her; once Viarmo accepts her she stays at the Bards College."
+  ],
+  "role": "quest character (Saturalia); later a student at the Bards College",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Song in the Dark",
+    "how": "a step in it: you take her to Viarmo for her audition, then say goodbye; you can visit her afterwards"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her only package (stay at the Bards College) holds once the quest is past the point she's accepted; before that the records give her no schedule."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "TheGiftofSaturalia.esp:0009D3",
+   "Sat_Diane_StayNearViarmo (GetStage TheGiftofSaturalia.esp:0009D2 > 24)",
+   "TheGiftofSaturalia.esp:0009D2 alias DianePart2, placed ref TheGiftofSaturalia.esp:0009D9",
+   "class Skyrim.esm:013256"
+  ]
+ },
+ {
+  "id": "Tools of Kagrenac.esp:00AA08",
+  "name": "Vonos Dreloth",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "the College of Winterhold: the Hall of Attainment, or the Arcanaeum in the afternoon",
+  "day": [
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "Hall of Attainment, College of Winterhold",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Hall of Attainment, College of Winterhold",
+    "doing": "about his quarters"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "Hall of Attainment, College of Winterhold",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "3 hours",
+    "where": "Hall of the Elements on weekends; Hall of Attainment on weekdays",
+    "doing": "about the College"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "the Arcanaeum, College of Winterhold",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "the Arcanaeum, College of Winterhold",
+    "doing": "reading and studying"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Hall of Attainment, College of Winterhold",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "Hall of Attainment, College of Winterhold",
+    "doing": "about his quarters"
+   }
+  ],
+  "changes": [],
+  "role": "College of Winterhold mage; offers services; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Lost Heritage",
+    "how": "gives it: find his missing ring"
+   },
+   {
+    "quest": "Kagrenac's Tools",
+    "how": "a step in it: you get the cursed key to Sunder's hiding place from him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "He has a vendor record (open all day) and his own services faction, but the extracts don't resolve its stock."
+   },
+   {
+    "field": "day",
+    "why": "Weekend/weekday split read from the packages' day-of-week codes (8 and 7)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Tools of Kagrenac.esp:00AA08",
+   "TOK_PACK_VonosLunchGreatHall_12x1",
+   "TOK_PACK_VonosLunchArcanaeum_12x1",
+   "TOK_PACK_VonosSandboxGreatHall_9x3",
+   "TOK_PACK_VonosDinner_18x1",
+   "TOK_PACK_VonosSandboxArcanaeum_13x5",
+   "TOK_PACK_VonosBreakfast_8x1",
+   "TOK_PACK_VonosSleep_23x8",
+   "DefaultSandboxEditorLocation512",
+   "DefaultServicesEditorLoc24x7",
+   "TOK_FACT_VonosServices",
+   "CollegeofWinterholdFaction rank 4",
+   "vendor VENC Tools of Kagrenac.esp:21F224",
+   "Tools of Kagrenac.esp:21F221",
+   "Tools of Kagrenac.esp:21F230",
+   "class Skyrim.esm:01CE14"
+  ]
+ },
+ {
+  "id": "Tools of Kagrenac.esp:00AA09",
+  "name": "Yassour Tansumiran",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "the Retching Netch, Raven Rock (Solstheim)",
+  "day": [
+   {
+    "from": "1 am",
+    "for": "7 hours",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "3 hours",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "idling about"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "idling about"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "6 hours",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "idling about"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Kagrenac's Tools",
+    "how": "a step in it: you convince him to tell you where Wraithguard went (stolen by a thief, taken to Nchardak)"
+   },
+   {
+    "quest": "My Precious",
+    "how": "gives it: (optional) retrieve Wraithguard for him"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Only shared default packages: they say he stays around where he's placed, the Retching Netch."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Tools of Kagrenac.esp:00AA09",
+   "DefaultEatEditorLoc8x1",
+   "DefaultEatEditorLoc12x1",
+   "DefaultEatEditorLoc18x1",
+   "DefaultSleepEditorLoc1x8",
+   "DefaultSandboxHomeowner",
+   "Tools of Kagrenac.esp:21F221 alias Yassour_Tansumiran",
+   "Tools of Kagrenac.esp:21F231",
+   "DLC2CrimeRavenRockFaction",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Tools of Kagrenac.esp:00AA07",
+  "name": "Mathis Valen",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "the Silver-Blood Inn, Markarth (an anonymous note brought by a courier asks you to meet him there)",
+  "day": [
+   {
+    "from": "1 am",
+    "for": "7 hours",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "3 hours",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "idling about"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "idling about"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "6 hours",
+    "where": "the Silver-Blood Inn, Markarth",
+    "doing": "idling about"
+   }
+  ],
+  "changes": [
+   "Later in Kagrenac's Tools he asks you to meet him in Blackreach and is not at the inn; inside the ruins he is revealed as the leader of the Sixth House and you must defeat him and his two bodyguards."
+  ],
+  "role": "quest giver; later an enemy",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Kagrenac's Tools",
+    "how": "gives it; later its target (\"Defeat Mathis Valen and both his bodyguards\")"
+   }
+  ],
+  "canDie": "essential in his record, but the quest ends with you defeating him",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "His record is flagged essential while the quest has you defeat him; how the quest lifts that isn't in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "Only shared default packages: they say he stays around where he's placed, the Silver-Blood Inn."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Tools of Kagrenac.esp:00AA07",
+   "DefaultEatEditorLoc8x1",
+   "DefaultEatEditorLoc12x1",
+   "DefaultEatEditorLoc18x1",
+   "DefaultSleepEditorLoc1x8",
+   "DefaultSandboxHomeowner",
+   "Tools of Kagrenac.esp:21F221 alias Mathis_Valen",
+   "TOK_FACT_SixthHouseFaction",
+   "class Skyrim.esm:013177"
+  ]
+ },
+ {
+  "id": "Undeath.esp:18DF35",
+  "name": "Antioch",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "deep in Scourg Barrow, in the Dragontail Mountains (the Orders say: southwest of Markarth, across the mountain spine)",
+  "day": [],
+  "changes": [
+   "The necromancer questline (In their Footsteps and after) sends you after his followers first; their notes lead you to him."
+  ],
+  "role": "enemy; the necromancers' leader",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "necromancy (a member of the necromancers)",
+  "quests": [
+   {
+    "quest": "Scourg Barrow",
+    "how": "its target: \"Defeat Antioch\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no packages; he's where he's placed in Scourg Barrow, its boss."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class name and gear aren't in the extracts; \"necromancy\" comes from his faction."
+   }
+  ],
+  "evidence": [
+   "Undeath.esp:18DF35",
+   "NecromancerFaction",
+   "Undeath.esp:2BDBBF alias Antioch",
+   "place Undeath.esp:125096 (boss Antioch, level 80)",
+   "BOOK Undeath.esp:2BDBC0 Orders",
+   "class Skyrim.esm:01CE14"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:000D62",
+  "name": "Altano",
+  "race": "Bosmer",
+  "sex": "male",
+  "firstMeet": "Vigilant of Stendarr: he asks you to join the Vigilants and guides you to the Temple of Stendarr, where he is based",
+  "day": [],
+  "changes": [
+   "Each Vigilant quest sets where you meet him: the Bannered Mare (Whiterun), Candlehearth Hall (Windhelm), Whiterun's Hall of the Dead, Stendarr's Beacon, the Bee and Barb (Riften), the Ragged Flagon.",
+   "In No Mercy you can negotiate with him or fight him (\"(Optional) Defeat Altano\"); in The Endless Fall you chase him."
+  ],
+  "role": "Vigilant of Stendarr; gives most of the Vigilant quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Vigilant of Stendarr",
+    "how": "gives it"
+   },
+   {
+    "quest": "Bloodsucker",
+    "how": "gives it"
+   },
+   {
+    "quest": "He Who Cannot Be Touched",
+    "how": "gives it"
+   },
+   {
+    "quest": "Lazy Afternoon",
+    "how": "gives it"
+   },
+   {
+    "quest": "The Eye of Madness",
+    "how": "gives it"
+   },
+   {
+    "quest": "Dine and Dash",
+    "how": "gives it"
+   },
+   {
+    "quest": "Thus Spoke Khajiit",
+    "how": "gives it"
+   },
+   {
+    "quest": "The Endless Fall",
+    "how": "gives it; later you chase him"
+   },
+   {
+    "quest": "Old Regrets",
+    "how": "a step in it: talk to him and give him the Mace of Molag Bal"
+   },
+   {
+    "quest": "The Landing",
+    "how": "a step in it: it opens with talking to him"
+   },
+   {
+    "quest": "No Mercy",
+    "how": "changed by it: you may negotiate with him or defeat him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The opening quest uses Dawnstar and starts on a change of location (a delayed-start version exists); where he first stands isn't spelled out."
+   },
+   {
+    "field": "day",
+    "why": "He has no packages; quests place him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:000D62",
+   "zzzAoMFactionVigilantOfStendarr",
+   "Vigilant.esm:005CE2",
+   "Vigilant.esm:005CE3",
+   "Vigilant.esm:006271",
+   "Vigilant.esm:00627F",
+   "Vigilant.esm:0082EA",
+   "Vigilant.esm:0098C9",
+   "Vigilant.esm:009E68",
+   "Vigilant.esm:00A3FE",
+   "Vigilant.esm:00EA8A",
+   "Vigilant.esm:00EFF7",
+   "Vigilant.esm:011B75",
+   "placed in Temple of Stendarr Vigilant.esm:025091 (Stuhn Ravine)",
+   "class Skyrim.esm:10BFEF"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:02748B",
+  "name": "Thorondir",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "the Temple of Stendarr, when Altano brings you there in Vigilant of Stendarr",
+  "day": [],
+  "changes": [],
+  "role": "keeper of the Temple of Stendarr",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Vigilant of Stendarr",
+    "how": "a step in it: \"Talk to Thorondir\""
+   },
+   {
+    "quest": "Art of Mercy",
+    "how": "a step in it: \"Report to Thorondir\""
+   },
+   {
+    "quest": "The Endless Fall",
+    "how": "named in it; his part isn't in its objectives"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no packages; he stays where he's placed in the temple."
+   },
+   {
+    "field": "changes",
+    "why": "Gwyneth's Successor has you \"Investigate the Keeper's whereabouts\"; whether that is him leaving the temple isn't clear from the records."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:02748B",
+   "zzzAoMFactionVigilantOfStendarr",
+   "Vigilant.esm:005CE2 alias Keeper",
+   "Vigilant.esm:4D0376 alias Keeper",
+   "Vigilant.esm:00EFF7 alias Keeper",
+   "Vigilant.esm:4E00FF alias Keeper (unnamed)",
+   "class Skyrim.esm:10BFEF"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012D7",
+  "name": "Lusine",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "during Bloodsucker, around Whiterun (Altano meets you in Whiterun's Hall of the Dead before you hunt her)",
+  "day": [],
+  "changes": [],
+  "role": "enemy: the vampire in Bloodsucker",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Bloodsucker",
+    "how": "its target: \"Find the vampire\", \"Defeat the vampire\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "She is placed in a holding room the player can't reach; the quests move her into the world, and the extracts don't say exactly where."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:0012D7",
+   "Vigilant.esm:005CE3 alias Vampire",
+   "placed in Actor Room Vigilant.esm:001845",
+   "class Skyrim.esm:0A1993"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:00183B",
+  "name": "Vernaccus",
+  "race": "Dremora",
+  "sex": "male",
+  "firstMeet": "during He Who Cannot Be Touched, a quest set around Windhelm",
+  "day": [],
+  "changes": [],
+  "role": "enemy: the Daedra in He Who Cannot Be Touched",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "He Who Cannot Be Touched",
+    "how": "its target: \"Defeat the Daedra\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He is placed in a holding room the player can't reach; the quests move him into the world, and the extracts don't say exactly where."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:00183B",
+   "Vigilant.esm:006271 alias Daedra (and alias WindHelm)",
+   "placed in Actor Room Vigilant.esm:001845",
+   "class Skyrim.esm:01317C"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012D5",
+  "name": "Balor",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "during The Eye of Madness, after you investigate the rumours about the Eye (the quest involves Riften and Kynesgrove)",
+  "day": [],
+  "changes": [],
+  "role": "enemy: the one you hunt in The Eye of Madness",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Eye of Madness",
+    "how": "its target: \"Kill Balor\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He is placed in a holding room the player can't reach; the quests move him into the world, and the extracts don't say exactly where."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:0012D5",
+   "Vigilant.esm:0082EA alias Balor",
+   "placed in Actor Room Vigilant.esm:001845",
+   "class Skyrim.esm:01317D"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:4CA976",
+  "name": "Anton the Brilliant",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "the cultist of Meridia you can ask for help in The Eye of Madness and Thus Spoke Khajiit",
+  "day": [],
+  "changes": [],
+  "role": "cultist of Meridia; optional helper",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Eye of Madness",
+    "how": "a step in it: \"(Optional) Ask the cultist of Meridia for help\""
+   },
+   {
+    "quest": "Thus Spoke Khajiit",
+    "how": "a step in it: \"(Optional) Ask the cultist of Meridia for help\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He is placed in a holding room the player can't reach; the quests move him into the world, and the extracts don't say exactly where."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills an alias in an unnamed Vigilant quest."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:4CA976",
+   "Vigilant.esm:0082EA alias Cultist",
+   "Vigilant.esm:009E68 alias Cultist",
+   "Vigilant.esm:4CDF8D alias Cultist (unnamed)",
+   "placed in Actor Room Vigilant.esm:001845",
+   "class Skyrim.esm:017008"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:000D66",
+  "name": "Jacob",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "Dine and Dash ends with \"Report to Jacob\"; Old Regrets opens with \"Talk to Jacob\"",
+  "day": [],
+  "changes": [
+   "In The Endless Fall a ghost of him appears below Stendarr's Beacon, which suggests he dies before then."
+  ],
+  "role": "Vigilant of Stendarr elder; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dine and Dash",
+    "how": "a step in it: \"Report to Jacob\""
+   },
+   {
+    "quest": "Old Regrets",
+    "how": "gives it; you watch over him"
+   },
+   {
+    "quest": "Thus Spoke Khajiit",
+    "how": "named in it; his part isn't in its objectives"
+   },
+   {
+    "quest": "No Mercy",
+    "how": "named in it; his part isn't in its objectives"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He is placed in a holding room the player can't reach; the quests move him into the world, and the extracts don't say exactly where."
+   },
+   {
+    "field": "changes",
+    "why": "The ghost is a separate record in The Endless Fall; what happens to him isn't in any quest log."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:000D66",
+   "zzzAoMFactionVigilantOfStendarr",
+   "Vigilant.esm:0098C9",
+   "Vigilant.esm:00A3FE (namedGiver Jacob)",
+   "Vigilant.esm:009E68",
+   "Vigilant.esm:00EA8A",
+   "Vigilant.esm:00EFF7 alias gJacob = Vigilant.esm:170A35",
+   "placed in Actor Room Vigilant.esm:001845",
+   "class Skyrim.esm:10BFEF"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:001841",
+  "name": "Jo'vanni",
+  "race": "Khajiit",
+  "sex": "male",
+  "firstMeet": "during Thus Spoke Khajiit (\"Find Jo'vanni\"), a quest that runs through Ivarstead and Jo'vanni's Dream Theater",
+  "day": [],
+  "changes": [
+   "In The Endless Fall a ghost of him appears below Stendarr's Beacon."
+  ],
+  "role": "quest character",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Thus Spoke Khajiit",
+    "how": "a step in it: you find him and bring him Campaner'Ra's pelt from Mar'so"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "He is placed in a holding room the player can't reach; the quests move him into the world, and the extracts don't say exactly where."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:001841",
+   "Vigilant.esm:009E68 alias Jovanni",
+   "Vigilant.esm:00EFF7 alias gJovanni",
+   "placed in Actor Room Vigilant.esm:001845",
+   "class Skyrim.esm:01327B"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:001844",
+  "name": "Campaner'Ra",
+  "race": "Khajiit",
+  "sex": "female",
+  "firstMeet": "inside Jo'vanni's Dream Theater during Thus Spoke Khajiit",
+  "day": [],
+  "changes": [],
+  "role": "quest character: Jo'vanni's wife",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Thus Spoke Khajiit",
+    "how": "a step in it: Jo'vanni wishes to see her again; you take her pelt from Mar'so"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Jo'vanni's Dream Theater is only reached through the quest; the extracts don't say how."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:001844",
+   "Vigilant.esm:009E68 alias Wife",
+   "placed in Jo'vanni's Dream Theater Vigilant.esm:00185C",
+   "class Skyrim.esm:01326B"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012CD",
+  "name": "Taranis",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Pond House, Witch's Pond",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "around Pond House, Witch's Pond",
+    "doing": "at home"
+   }
+  ],
+  "changes": [],
+  "role": "quest character in the Vigilant quests",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Old Regrets",
+    "how": "a step in it; dialogue with him can start it"
+   },
+   {
+    "quest": "Dine and Dash",
+    "how": "named in it; his part isn't in its objectives"
+   },
+   {
+    "quest": "Thus Spoke Khajiit",
+    "how": "named in it; his part isn't in its objectives"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Witch's Pond isn't in the places extract, so its hold and nearest town aren't known (No Mercy, set there, names Ivarstead)."
+   },
+   {
+    "field": "quests",
+    "why": "He is also a victim in an unnamed Vigilant quest."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:0012CD",
+   "zzzAoMTaranisSnadobxAtHome",
+   "zzzAoMFactionTaranisFamily",
+   "Vigilant.esm:00A3FE (giver Taranis, stage below 10)",
+   "Vigilant.esm:0098C9 alias Umbra",
+   "Vigilant.esm:009E68 alias Umbra",
+   "Vigilant.esm:17576E alias Victim01 (unnamed)",
+   "class Skyrim.esm:01CE15"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:0012D0",
+  "name": "Carene",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "Pond House, Witch's Pond",
+  "day": [
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Pond House, Witch's Pond",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "around Pond House, Witch's Pond",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "No Mercy has you hunt down the witches; Art of Mercy has you stop her, with an optional \"Kill Carene\"."
+  ],
+  "role": "quest giver; a witch the Vigilants hunt",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Art of Mercy",
+    "how": "gives it; its target (\"Stop Carene\", optional \"Kill Carene\")"
+   },
+   {
+    "quest": "No Mercy",
+    "how": "its target: one of the witches you hunt"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Witch's Pond isn't in the places extract, so its hold and nearest town aren't known (No Mercy names Ivarstead)."
+   },
+   {
+    "field": "quests",
+    "why": "She is also a victim in an unnamed Vigilant quest."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:0012D0",
+   "DefaultSleepEditorLoc22x10",
+   "DefaultSandboxEditorLocation1024",
+   "zzzAoMFactionTaranisFamily",
+   "Vigilant.esm:4D0376 alias Mother",
+   "Vigilant.esm:00EA8A alias Mom",
+   "Vigilant.esm:17576E alias Victim03 (unnamed)",
+   "class Skyrim.esm:013179"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:02749A",
+  "name": "Gwyneth",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "the Temple of Stendarr",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "12 hours",
+    "where": "Temple of Stendarr",
+    "doing": "at her post"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Temple of Stendarr",
+    "doing": "about the temple"
+   }
+  ],
+  "changes": [
+   "In The Endless Fall she is one of the survivors you look for."
+  ],
+  "role": "Vigilant librarian; trader; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Child of Oblivion",
+    "how": "gives it"
+   },
+   {
+    "quest": "Successor",
+    "how": "gives it"
+   },
+   {
+    "quest": "The Landing",
+    "how": "a step in it: you return to the temple to her"
+   },
+   {
+    "quest": "Empty Cells",
+    "how": "a step in it: the Windhelm Report is in the Temple of Stendarr"
+   },
+   {
+    "quest": "The Endless Fall",
+    "how": "a step in it: one of the survivors"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "She is in the merchant faction with a vendor record, but the extracts don't resolve her stock."
+   },
+   {
+    "field": "day",
+    "why": "Nothing covers 6 pm to midnight, and her 6 am package has an undecoded condition; she likely stays in the temple."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:02749A",
+   "zzzAoMlibrarianWorking",
+   "zzzAoMLibrarianSandbox",
+   "JobMerchantFaction",
+   "zzzAoMLibrarianTraderFaction",
+   "vendor VENC Vigilant.esm:0A6BF0",
+   "Vigilant.esm:065932",
+   "Vigilant.esm:324E7E",
+   "Vigilant.esm:011B75",
+   "Vigilant.esm:038524",
+   "Vigilant.esm:00EFF7",
+   "Vigilant.esm:4D952B, Vigilant.esm:4E00FF (unnamed)",
+   "class Skyrim.esm:10BFEF"
+  ]
+ },
+ {
+  "id": "Vigilant.esm:4D3A1A",
+  "name": "Pale Feet",
+  "race": "Elder",
+  "sex": "male",
+  "firstMeet": "the Anatomancer's Room, found during Sacred Anatomancer (\"Find the Anatomancer\"; the quest is tied to Riften)",
+  "day": [],
+  "changes": [
+   "Sacred Anatomancer splits: help him (evil) or kill him (good)."
+  ],
+  "role": "quest giver (the Anatomancer)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sacred Anatomancer",
+    "how": "gives it; on the good path its target (\"Kill the Anatomancer\")"
+   }
+  ],
+  "canDie": "protected (only you can kill him)",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Where the Anatomancer's Room sits isn't in the places extract; the quest has a map marker and a Riften alias."
+   },
+   {
+    "field": "day",
+    "why": "He has no packages."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The extracts give only a class record id, not its name or skill weights, and no equipped weapon."
+   }
+  ],
+  "evidence": [
+   "Vigilant.esm:4D3A1A",
+   "Vigilant.esm:4D4C3D alias Anatomancer",
+   "placed in Anatomancer's Room Vigilant.esm:4D3987",
+   "class Skyrim.esm:017008"
+  ]
+ }
+]
