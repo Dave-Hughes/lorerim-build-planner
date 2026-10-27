@@ -2,6 +2,7 @@
 WO-158: the generated console bat files, checked for shape, not run (the game isn't part of this test suite).
   python3 -m unittest discover -s scripts/gamedata -p 'test_*.py'
 """
+import math
 import os
 import sys
 import unittest
@@ -107,28 +108,40 @@ class ShapeTest(unittest.TestCase):
         for slug, lines in all_place_lines():
             self.assertTrue(any(l.startswith("fw ") for l in lines), slug)
 
-    def test_yaw_to_faces_toward_the_target_on_this_install(self):
-        # Found live, 27 Oct (Part 1i): with the position confirmed correct (Dave standing right in front of
-        # Broken Oar Grotto), he was still facing away -- so `setangle z` set to a plain compass bearing
-        # (0 north) faces away from the target on this install, not toward it. yaw_to adds 180 to correct for
-        # that; these values are what `setangle z` actually needs to produce each facing, not the plain bearing.
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, 10)), 180.0)   # target due north -> needs 180
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (10, 0)), 270.0)   # target due east -> needs 270
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, -10)), 0.0)    # target due south -> needs 0
-        self.assertAlmostEqual(wo.yaw_to((0, 0), (-10, 0)), 90.0)   # target due west -> needs 90
+    def test_yaw_to_is_the_plain_bearing_in_the_minus_180_to_180_range(self):
+        # Found live, 27 Oct (Part 1j), from a screenshot's own compass: the plain bearing is the right
+        # direction (Part 1i's +180 faced Dave out to sea, NNE, with the grotto behind him to the SSW), and a
+        # value above 180 (217.5) was never applied at all -- the console takes -180..180. So: plain bearing,
+        # never above 180, never below -180.
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, 10)), 0.0)     # due north
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (10, 0)), 90.0)    # due east
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (0, -10)), 180.0)  # due south
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (-10, 0)), -90.0)  # due west: -90, never 270
+        self.assertAlmostEqual(wo.yaw_to((0, 0), (-10, -10)), -135.0)  # south-west: -135, never 225
+        for a in range(0, 360, 15):
+            r = math.radians(a)
+            v = wo.yaw_to((0, 0), (math.sin(r), math.cos(r)))
+            self.assertTrue(-180 <= v <= 180, (a, v))
 
     def test_entrance_camera_sits_back_from_the_entrance_on_the_markers_own_side(self):
-        # Found live, 27 Oct (Part 1h, then 1i): the marker is due south of the entrance (a player walks north
+        # Found live, 27 Oct (Part 1h, then 1j): the marker is due south of the entrance (a player walks north
         # to reach it); the camera must land on that same southern, approach side -- at or past the marker,
-        # never past the entrance itself -- raised, and set to whatever `yaw_to` says actually faces the
-        # entrance on this install (confirmed live to be 180 for a target due north, not the plain bearing 0).
+        # never past the entrance itself -- raised, facing north (plain bearing 0) back at the entrance.
         marker = (0.0, 0.0, 0.0)
         entrance = (0.0, 100.0, 0.0)
         cx, cy, cz, yaw = wo.entrance_camera(marker, entrance)
         self.assertAlmostEqual(cx, 0.0, places=3)
         self.assertLess(cy, 100.0)  # south of the entrance, i.e. on the approach side, not past it
         self.assertAlmostEqual(cz, wo.HEIGHT, places=3)
-        self.assertAlmostEqual(yaw, 180.0)  # what setangle z needs to actually face the entrance, confirmed live
+        self.assertAlmostEqual(yaw, 0.0)  # facing north, at the entrance
+
+    def test_broken_oar_grotto_faces_south_west_as_the_screenshots_own_compass_showed(self):
+        # The one shot checked live against a real compass (Part 1j): the camera stands NE of the entrance;
+        # facing it is SSW, a plain bearing of 217.5, which the console must be handed as -142.5.
+        name, slug, target, note, marker, entrance = next(p for p in wo.PLACES if p[1] == "broken-oar-grotto")
+        cx, cy, cz, yaw = wo.entrance_camera(marker, entrance)
+        self.assertAlmostEqual(yaw, -142.5, places=1)
+        self.assertNotAlmostEqual(yaw, 37.5, places=1)  # Part 1i's value: the sea, not the grotto
 
     def test_entrance_camera_never_divides_by_zero_when_marker_and_entrance_coincide(self):
         p = (10.0, 20.0, 30.0)

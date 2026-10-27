@@ -6,4 +6,4 @@ player.setpos x -112376.2
 player.setpos y 114139.6
 player.setpos z -5038.6
 player.setangle x 35.0
-player.setangle z 123.7
+player.setangle z -56.3

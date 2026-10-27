@@ -48,10 +48,11 @@ Falls Barrow: four; Fort Hraggstad: three), the one nearest the map marker is ta
 to; the others are side or interior exits, not where "a player first sees them." Riverwood has no single entrance
 door at all -- a village, framed from above its middle instead, per the order's own words.
 
-**The bearing.** Confirmed live, 27 Oct (Part 1i), after it wasn't: `setangle z` set to a plain compass bearing
-(`atan2(dx, dy)`, 0 degrees north) faced *away* from the target on this install, with the camera's own position
-already confirmed correct by then. `yaw_to` adds 180 degrees to the plain bearing for exactly this reason -- see
-its own docstring for what's confirmed and what's still a guess about why.
+**The bearing.** The plain compass bearing (`atan2(dx, dy)`, 0 degrees north, 90 east) *is* the right
+direction -- confirmed live, 27 Oct (Part 1j), by a screenshot's own compass needle. What went wrong twice
+before it: Part 1i added 180 on a misreading (that faced Dave out to sea), and before that a value above 180
+(217.5) seems never to have been applied at all. `yaw_to` now gives the plain bearing in the -180..180 range the
+console takes; see its own docstring for what's confirmed and what's still this reader's best explanation.
 
 **Height, distance and field of view: the three numbers Bob asked for, here at the top, tune after Dave's first
 look at Broken Oar Grotto.** `HEIGHT`/`DISTANCE`/`TILT_DOWN` for the five places; `PEOPLE_DISTANCE`/`PEOPLE_HEIGHT`
@@ -143,17 +144,21 @@ PHOTO_ROOM = "QASmoke"  # Skyrim.esm's own empty testing cell: flat, evenly lit,
 
 
 def yaw_to(from_xy, to_xy):
-    """The `player.setangle z` value that faces the player from one point toward another.
+    """The `player.setangle z` value that faces the player from one point toward another: the plain compass
+    bearing (0 north/+Y, 90 east/+X), written in the -180..180 range, never 0..360.
 
-    Found live, 27 Oct (Part 1i): with Part 1h's own position fix confirmed landing Dave in the right spot,
-    he was still facing away -- so the bearing itself, not the position, is what's backward. A plain compass
-    bearing (`atan2(dx, dy)`, 0 degrees north) is mathematically the direction *to* the target; empirically,
-    on this install, `setangle z` set to that value faces *away* from it. Rather than guess why (this reader's
-    own best guess: `setangle z`'s "0" may be the engine's south, not a compass's north, or the axis mapping
-    may run the other way -- neither independently confirmed), this adds 180 degrees to the plain bearing and
-    says so plainly, so if it's ever wrong the other way, removing the `+ 180` is the one-line undo."""
+    Found live, 27 Oct (Part 1j), from a screenshot's own compass: with `setangle z 37.5` (Part 1i's +180),
+    Dave faced NNE, out to sea -- the compass needle sat just left of centre, and Broken Oar Grotto's entrance
+    is south-west of the camera. So 37.5 *was* being applied, and it's the wrong way; the plain bearing,
+    217.5 (SSW), was the right direction all along. Why the earlier test with 217.5 looked the same: this
+    reader's own best explanation, consistent with every observation, is that the console takes `setangle z`
+    in the -180..180 range and quietly drops 217.5, leaving the facing wherever `player.moveto` had just put it
+    -- the marker's own rotation, 40 degrees for this grotto, also NNE, also the sea. Two different causes,
+    one identical view, which is what made it look like "no change". Part 1i's +180 is undone here; the
+    bearing is normalised to -180..180 instead (217.5 becomes -142.5)."""
     dx, dy = to_xy[0] - from_xy[0], to_xy[1] - from_xy[1]
-    return (math.degrees(math.atan2(dx, dy)) + 180) % 360
+    yaw = math.degrees(math.atan2(dx, dy)) % 360
+    return yaw - 360 if yaw > 180 else yaw
 
 
 def entrance_camera(marker, entrance):

@@ -5057,7 +5057,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 Parts 1 to 5 are built and pass their own e2e (`e2e/wo159.spec.ts`, 13 tests); the full suite is running now, then the boxes and screenshots.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1i fixed the bearing itself, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1j: the plain bearing in -180..180, read off a real compass this time, needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5149,6 +5149,14 @@ Dave confirmed, asked directly: "standing right in front of it. Almost too close
 - [x] **`door_camera()` gets the fix for free** -- it reads the same `yaw_to`, not a copy of the formula, so the Winking Skeever's own still-unconfirmed shot is covered by the same correction without a separate change.
 - **Checks.** `test_yaw_to_matches_skyrims_own_compass` renamed and rewritten to the confirmed values (target due north now needs `setangle z 180`, not `0`); the entrance-camera worked example's own expected yaw updated to match. 370 gamedata tests pass. `DISTANCE` (700) read as "almost too close" live -- not changed yet, since Dave said it's fine for this test; worth a small bump before the real run at scale.
 
+### Part 1j. The eighth live test, read off a compass this time: Part 1i was wrong, and so was the test before it (Dave, 27 Oct)
+Dave: "No change" -- still facing exactly away, the grotto behind him when he turned round. Two values 180 degrees apart (217.5, then 37.5) giving the same view made no sense if both were being applied. His screenshot settled it: the compass needle sat just left of centre -- facing NNE, out to the Sea of Ghosts, icebergs and ships -- and Broken Oar Grotto's entrance is south-west of the camera. So `37.5` **was** applied, and it faces the sea; the plain bearing, `217.5` (SSW), was the right direction all along, and Part 1i's +180 was a misreading of the test before it.
+- [x] **Part 1i undone.** `yaw_to` is the plain compass bearing again.
+- [x] **Why the `217.5` test had looked the same: it was never applied.** This reader's own best explanation, consistent with every observation and not independently confirmed: the console takes `setangle z` in the -180..180 range and quietly drops a value above it, leaving the facing wherever `player.moveto` had just put it -- the marker's own rotation, 40 degrees for this grotto, which is also NNE, also the sea. Two different causes, one identical view. `yaw_to` now writes the bearing in -180..180 (`217.5` becomes `-142.5`); every other place's value already fell inside that range, which is why only this one ever showed it.
+- [x] **Screenshots land in `C:\LoreRim\Stock Game\`** (Dave, from the run) -- the game's own root, where vanilla Print Screen writes with `bAllowScreenshot=1`, not ReShade's `overwrite\Root\screenshots\` (those were older, from a profile where ReShade was on). Step 6 below corrected.
+- **Checks.** `yaw_to`'s test rewritten to the plain bearing with a sweep asserting every output stays within -180..180; a new test pins Broken Oar Grotto's own value to `-142.5` and away from `37.5`, the one number checked against a real compass. 377 gamedata tests pass.
+- **For the people shots, before Dave gets there:** the character in his screenshots is level 29 with a full build -- that looks like a real save, not the throwaway the order's own "Before the run" item 1 asks for. The place shots only move the player; the people shots `disable` four named NPCs and `moveto` a fifth into a test cell, and `tai` freezes every actor in the loaded area. On a real save, saved afterwards, that could leave Lucan, Jaree-Ra, Mjoll, Aldis or Delphine missing from their own quests. Flagged here and in chat; not this reader's call to make.
+
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
@@ -5156,7 +5164,7 @@ Dave confirmed, asked directly: "standing right in front of it. Almost too close
 3. For each of the five places: `bat wo158-place-<slug>` (the five slugs: `broken-oar-grotto`, `bleak-falls-barrow`, `fort-hraggstad`, `riverwood`, `winking-skeever-outside`), then `bat wo158-toggle-hud` (HUD and console both hide now), the screenshot key, then `bat wo158-toggle-hud` again (console back, so the next command can be typed and checked). For the Winking Skeever's inside comparison shot, walk through the door by hand afterwards and shoot again, same settings otherwise.
 4. Run `bat wo158-photoroom-setup` once, then for each of the five people: `bat wo158-person-<slug>` (`lucan-valerius`, `jaree-ra`, `mjoll-the-lioness`, `captain-aldis`, `delphine`), then the same `wo158-toggle-hud` / screenshot / `wo158-toggle-hud` pair as step 3.
 5. Run `bat wo158-end` once, when all ten are taken.
-6. Pictures land wherever LoreRim's own screenshot key saves them (ReShade's own `overwrite\Root\screenshots\` on this install as of 15 Oct, unconfirmed since the profile switch to Extreme DLSS5 -- see "The program, built"); move or rename the ten into `C:\LoreRim\_fieldguide\screens\wo158\` as the order's own naming asks (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`, …).
+6. Pictures land in `C:\LoreRim\Stock Game\` (confirmed live, Part 1j -- the game's own root, the same folder the bat files sit in); move or rename the ten into `C:\LoreRim\_fieldguide\screens\wo158\` as the order's own naming asks (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`, …).
 
 ### Report for Dave and Bob
 - [ ] The 10 pictures, staged for Bob to send to Dave.
