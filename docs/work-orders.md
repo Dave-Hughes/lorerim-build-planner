@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-160  One page per quest line (Mac, 27 Oct 2026)
-Status: queued (Mac; after WO-159)
+Status: building (Mac)
 
 **Why.** The big quest lines each have two pages built by two different orders and never merged: a line page (`/quests/main-quest`, `/quests/dawnguard`, `/quests/companions`, `/quests/dragonborn`, from WO-100) and a story page with chapters (`/quests/s/become-the-dragonborn`, `/quests/s/join-the-dawnguard`, `/quests/s/join-the-companions`, from WO-104/106). They look nothing alike, and the Main stories category lists both kinds side by side. Dave, 27 Oct: "Why are there multiple layouts?" There should be one. Boards: canvas row 36, `MainStoriesPage` and `LinePage`, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1.
 
