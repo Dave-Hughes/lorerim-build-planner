@@ -139,7 +139,7 @@ test("the header's Builds and Guide links and the footer's Guide link are on eve
   for (const url of ["/", "/guide", "/guide/magic", `/b/${IRIEL_BUILD_ID}`]) {
     await page.goto(url);
     const nav = page.getByRole("navigation", { name: "Site" });
-    await expect(nav.getByRole("link", { name: "Builds" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "Characters" })).toBeVisible();
     await expect(nav.getByRole("link", { name: "Guide" })).toBeVisible();
     await expect(page.getByRole("contentinfo").getByRole("link", { name: "Guide" })).toBeVisible();
   }

@@ -6,7 +6,6 @@ import { useId, useRef, useState } from "react";
 import { useDismiss } from "@/lib/use-dismiss";
 import { startTour } from "@/lib/tour";
 import { Avatar } from "@/components/ui/avatar";
-import { useFeatures } from "./features";
 import styles from "./site-header.module.css";
 
 /**
@@ -21,11 +20,9 @@ export function AccountMenu({ name, image, handle, review = null, signOut }: { n
   const wrap = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
   const items = useRef<(HTMLElement | null)[]>([]);
-  // One list of characters while playthroughs are on (WO-114).
-  const { playthroughs } = useFeatures();
   const links = [
     ...(handle ? [{ href: `/u/${handle}`, label: "My page" }] : []),
-    { href: "/me", label: playthroughs ? "My characters" : "My builds" },
+    { href: "/me", label: "My characters" },
     ...(review !== null ? [{ href: "/admin/review", label: review ? `Review (${review})` : "Review" }] : []),
   ];
   // The links, Show me around (WO-61), then Sign out.

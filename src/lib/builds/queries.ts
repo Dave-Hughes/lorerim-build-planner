@@ -206,6 +206,8 @@ export interface BrowseQuery {
   gameVersion?: string;
   sort?: "newest" | "liked";
   limit?: number;
+  /** Only builds with a listed playthrough: a character with a run (WO-154 Part 5). */
+  withRun?: boolean;
 }
 
 /** Listed builds for Browse builds, filtered and sorted; `more` when there are more than `limit`. */
@@ -222,6 +224,7 @@ export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSumma
   const where = [eq(schema.builds.visibility, "public")];
   if (f.gameVersion) where.push(eq(schema.builds.gameVersion, f.gameVersion));
   if (f.race) where.push(sql`${schema.builds.plan}->>'race' = ${f.race}`);
+  if (f.withRun) where.push(sql`exists(select 1 from ${schema.playthroughs} pt where pt.build_id = ${schema.builds.id} and pt.visibility = 'public')`);
   const q = f.q?.trim();
   if (q) {
     // Every word must appear somewhere: "nord shield" finds a Nord with a shield.

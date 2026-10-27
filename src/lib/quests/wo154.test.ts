@@ -52,7 +52,9 @@ describe("a quest with a read", () => {
     const q = quest({ read, source: "reads", start: { checked: "files", ways: [{ how: "Talk to Mercer Frey by the door", who: "Mercer Frey", where: "the Flagon", checked: "players", source: "Dave, watched in game, 23 Oct 2026" }] } });
     const got = pageOf(q);
     expect(got.starts).toEqual([{ how: "Talk to Mercer Frey by the door", who: "Mercer Frey", where: "the Flagon", reportedBy: { source: "Dave, watched in game, 23 Oct 2026" } }]);
-    expect(got.sure).toMatch(/^Checked in game by a player(\.|$)/);
+    // WO-157: the confidence line says what the page is read from, and a player's input is only a count.
+    expect(got.sure).toMatch(/^Read from the game files and checked by a second reader/);
+    expect(got.reports).toBe(1);
     expect(got.sure).not.toMatch(/Dave/);
   });
 });

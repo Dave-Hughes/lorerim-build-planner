@@ -27,7 +27,7 @@ test.describe("level notes are never lost", () => {
     await signIn(context);
     await page.goto(`/b/${SCRATCH_BUILD_ID}/edit?level=5`);
     await typeNote(page, 5, "Typed, then off to another page.");
-    await page.goto("/");
+    await page.goto("/characters");
     // The note left with the page (a keepalive request): it may still be on its way.
     await expect(async () => {
       await page.goto(`/b/${SCRATCH_BUILD_ID}?level=5`);

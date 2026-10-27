@@ -21,7 +21,7 @@ async function closesOutsideAndOnEsc(page: Page, button: Locator, panel: Locator
 
 test("the account menu, the Tags filter and Other trees close outside and on Esc", async ({ page, context }) => {
   await signIn(context);
-  await page.goto("/");
+  await page.goto("/characters");
   await closesOutsideAndOnEsc(page, page.getByRole("button", { name: /account menu/ }), page.getByRole("menu", { name: "Account" }));
   await closesOutsideAndOnEsc(page, page.getByRole("button", { name: /^Tags/ }), page.getByRole("group", { name: "Tags" }));
 

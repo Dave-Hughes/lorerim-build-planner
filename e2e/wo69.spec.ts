@@ -109,6 +109,6 @@ test("a build that writes every level looks as it does today", async ({ page, co
   await expect(page.locator('[data-stop*=" to "]')).toHaveCount(0);
   // No levels line in the byline: the hero says "Planned to level N" as before.
   await expect(page.locator("[class*=byline]")).not.toContainText(/Levels \d/);
-  await page.goto("/?version=all");
+  await page.goto("/characters?version=all");
   await expect(page.getByRole("article").filter({ hasText: "Test Shield-Wall" })).not.toContainText(/Levels \d/);
 });

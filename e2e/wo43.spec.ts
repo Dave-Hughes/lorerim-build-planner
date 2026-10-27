@@ -17,7 +17,7 @@ test("switching deity at level 3 shows in the top bar, the level and search", as
   await expect(page.getByRole("tooltip").filter({ hasText: "Changes to The Magna-Ge at level 3." })).toBeVisible();
   await expect(page.getByRole("region", { name: "Level 3", exact: true })).toContainText("The Magna-Ge");
 
-  await page.goto("/?q=Magna-Ge");
+  await page.goto("/characters?q=Magna-Ge");
   await expect(page.getByRole("article").filter({ hasText: "Test Shield-Wall" })).toBeVisible();
 
   // Put the build back as seeded.

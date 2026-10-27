@@ -4,12 +4,14 @@ import { LINK_ONLY_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("the header's nav is Builds, Quests, People, Places, Playthroughs, Gear and Guide (WO-66, WO-92, WO-100, WO-111, WO-154); New character is a button (WO-114); the avatar menu works by keyboard", async ({ page, context }) => {
+test("the header's nav is Characters, World (Quests, People, Places, Gear) and Guide (WO-157); New character is a button (WO-114); the avatar menu works by keyboard", async ({ page, context }) => {
   await signIn(context);
   await page.goto("/me");
   const header = page.getByRole("banner");
-  await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Builds", "Quests", "People", "Places", "Playthroughs", "Gear", "Guide"]);
-  await expect(header.getByRole("link", { name: "Browse builds" })).toHaveCount(0);
+  await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Characters", "Guide"]);
+  await header.getByRole("button", { name: "World" }).click();
+  await expect(header.getByRole("link", { name: /^Quests/ })).toBeVisible();
+  for (const w of ["People", "Places", "Gear"]) await expect(header.getByRole("link", { name: new RegExp(`^${w}`) })).toBeVisible();
   await expect(header.getByRole("link", { name: "New character" })).toHaveClass(/btn-primary/);
 
   const account = header.getByRole("button", { name: /account menu/ });
@@ -45,7 +47,7 @@ test("the header's nav is Builds, Quests, People, Places, Playthroughs, Gear and
 });
 
 test("signed out, the header offers Sign in and New character", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/characters");
   const header = page.getByRole("banner");
   await expect(header.getByRole("button", { name: /Sign in/ })).toBeVisible();
   await expect(header.getByRole("link", { name: "New character" })).toBeVisible();

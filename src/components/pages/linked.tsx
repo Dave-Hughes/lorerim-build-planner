@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PreviewLink } from "./preview-link";
 import { linkNames, type NameLink } from "@/lib/pages/link-names";
 
 /** Text with the people and places it names as links to their pages (WO-154). */
@@ -11,9 +11,9 @@ export function Linked({ text, names }: { text: string; names: NameLink[] }) {
             {p.text} <span aria-hidden="true">↗</span>
           </a>
         ) : p.href ? (
-          <Link key={i} href={p.href}>
+          <PreviewLink key={i} href={p.href}>
             {p.text}
-          </Link>
+          </PreviewLink>
         ) : (
           <span key={i}>{p.text}</span>
         ),

@@ -579,13 +579,16 @@ a.mod:hover {
   font-size: 18px;
   color: var(--soft);
 }
+/* A section (WO-157): space and a thin rule under its heading, no box. */
 .panel {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 24px 26px;
-  border: 1px solid var(--rule);
-  background: #121922;
+}
+.panel > .h2:first-child,
+.panel > .sideTitle:first-child {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-strong);
 }
 .who {
   display: grid;

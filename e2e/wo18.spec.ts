@@ -27,11 +27,11 @@ test.describe("tags", () => {
     const line = page.getByRole("list", { name: "Tags" });
     await expect(line.getByRole("link")).toHaveText(["Heavy Armor", "Necromancy"]);
 
-    await page.goto("/?tags=necromancy,heavy-armor");
+    await page.goto("/characters?tags=necromancy,heavy-armor");
     await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();
-    await page.goto("/?tags=necromancy,marksman");
+    await page.goto("/characters?tags=necromancy,marksman");
     await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toHaveCount(0);
-    await expect(page.getByText("No builds match.")).toBeVisible();
+    await expect(page.getByText("No characters match.")).toBeVisible();
     await page.getByRole("button", { name: "Clear filters" }).click();
     await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();
 
@@ -46,7 +46,7 @@ test.describe("tags", () => {
 
 // The Long build is listed by the tags test above (this file runs in order).
 test("search finds a build by part of its description, and the address keeps it", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/characters");
   await page.getByRole("main").getByLabel("Search").fill("twenty lev");
   await expect(page).toHaveURL(/q=twenty\+lev|q=twenty%20lev/);
   await expect(page.getByRole("heading", { name: "Long Shield-Wall" })).toBeVisible();

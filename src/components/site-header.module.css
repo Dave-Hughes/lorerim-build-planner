@@ -163,17 +163,177 @@
 .nav a[aria-current="page"] {
   color: var(--ember-text);
 }
-@media (max-width: 520px) {
-  .left {
-    gap: 14px;
-  }
+
+/* World: the button, and the panel with an icon on each page (WO-157). */
+.nav .worldButton,
+.nav a {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.worldWrap {
+  position: relative;
+}
+.worldButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.worldButton:hover,
+.worldButton[aria-expanded="true"] {
+  color: var(--text);
+}
+.worldButton[aria-current="page"] {
+  color: var(--ember-text);
+}
+.worldButton:focus-visible,
+.menuButton:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 4px;
+}
+.navCaret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+}
+.worldPanel,
+.menuPanel {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.worldPanel {
+  position: absolute;
+  z-index: 70;
+  top: calc(100% + 18px);
+  left: -18px;
+  width: 340px;
+  padding: 6px 0;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+}
+.worldList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.worldItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.nav .worldItem {
+  color: var(--text);
+}
+.worldItem:hover,
+.worldItem:focus-visible {
+  background: rgba(240, 145, 63, 0.1);
+  outline: none;
+}
+.nav .worldItem[aria-current="page"],
+.worldItem[aria-current="page"] {
+  color: var(--ember-text);
+}
+.worldIcon {
+  image-rendering: pixelated;
+  flex: none;
+}
+.worldText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-family: var(--font-body);
+}
+.worldText b {
+  font-size: 17px;
+  font-weight: 600;
+}
+.worldText small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* The phone's menu button and its list. */
+.menuBox {
+  display: none;
+  position: relative;
+}
+.menuButton {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.menuPanel {
+  position: fixed;
+  z-index: 70;
+  top: 69px;
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - 69px);
+  overflow-y: auto;
+  padding: 8px 0 16px;
+  background: var(--panel-raised);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.menuLink {
+  display: block;
+  padding: 14px 20px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+}
+.menuLink[aria-current="page"] {
+  color: var(--ember-text);
+}
+.menuHead {
+  display: block;
+  padding: 14px 20px 4px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.menuPanel .worldItem {
+  padding-left: 20px;
+}
+@media (max-width: 699px) {
   .nav {
-    gap: 10px;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    /* Builds, Quests, People, Places and Playthroughs (WO-154) don't all fit a phone: the menu scrolls rather than push the page wide. */
-    min-width: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
+    display: none;
+  }
+  .menuBox {
+    display: block;
+  }
+  .left {
+    gap: 12px;
+    flex-direction: row-reverse;
   }
 }

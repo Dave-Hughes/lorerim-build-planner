@@ -56,19 +56,17 @@
   color: var(--muted);
 }
 
-/* The title box. */
+/* The title (WO-157): large and plain, its tags under it, no frame. */
 .titleBox {
-  border: 1px solid var(--rule);
-  background: #121922;
+  padding: 20px 0 8px;
 }
 .titleIn {
-  padding: 40px 32px 28px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 .h1 {
-  font-size: calc(56px * var(--title-scale));
+  font-size: calc(clamp(44px, 6vw, 80px) * var(--title-scale));
   font-weight: 700;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -130,18 +128,13 @@ a.tag:hover {
 .side {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 44px;
 }
 .foot {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 24px;
-  align-items: start;
-  padding-top: 12px;
-  border-top: 1px solid var(--rule);
+  display: block;
 }
 .foot.alone {
-  grid-template-columns: minmax(0, 1fr);
+  display: block;
 }
 
 /* A section: its icon, its heading, a rule under it. */
@@ -183,18 +176,27 @@ a.tag:hover {
   text-transform: uppercase;
   color: var(--soft);
 }
+/* A side or bottom section (WO-157): space and a thin rule under its heading, no box. */
 .panel {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 24px 26px;
-  border: 1px solid var(--rule);
-  background: #121922;
 }
 .panelHead {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+/* Information Confidence: one of the few boxes, alone and full width at the foot of the page. */
+.confidence {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 26px;
+  border: 1px solid var(--rule);
+  background: #121922;
 }
 
 /* The gold box. */
@@ -923,11 +925,8 @@ a.tag:hover {
   }
 }
 @media (max-width: 600px) {
-  .titleIn {
-    padding: 28px 18px 22px;
-  }
   .h1 {
-    font-size: 38px;
+    font-size: 44px;
   }
   .more {
     margin-left: 38px;
@@ -1012,22 +1011,22 @@ a.tag:hover {
 .groupGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 18px;
+  gap: 40px 36px;
   align-items: start;
 }
+/* A group on a landing page (WO-157): its heading with a rule under it, no box. */
 .group {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 18px 20px;
-  border: 1px solid var(--rule);
-  background: #121922;
 }
 .groupHead {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-strong);
 }
 .groupHead h2,
 .groupHead h3 {
@@ -1056,4 +1055,9 @@ a.tag:hover {
 }
 .all {
   font-size: 14px;
+}
+
+.rewards .panelHead {
+  border-bottom: 0;
+  padding-bottom: 0;
 }

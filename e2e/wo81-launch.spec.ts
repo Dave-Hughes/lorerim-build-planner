@@ -34,8 +34,8 @@ test("point 3: site guide off: every /guide route is not found, and nav and foot
     const res = await page.goto(path);
     expect(res?.status(), path).toBe(404);
   }
-  await page.goto("/");
-  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Builds" })).toBeVisible();
+  await page.goto("/characters");
+  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Characters" })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Guide" })).toHaveCount(0);
   await expect(page.getByRole("contentinfo").getByRole("link", { name: "Guide", exact: true })).toHaveCount(0);
 });

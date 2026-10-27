@@ -52,7 +52,7 @@ test.describe("LoreRim versions", () => {
   });
 
   test("Browse shows the current version by default, and every version on request", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/characters");
     await expect(page.getByLabel("LoreRim version")).toHaveValue("5.0.4.8");
     await expect(page.getByRole("heading", { name: "Old Version Shield-Wall" })).toHaveCount(0);
     await page.getByLabel("LoreRim version").selectOption("all");

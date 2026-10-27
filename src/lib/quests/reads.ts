@@ -51,8 +51,10 @@ export interface QuestPage {
   changedBy: { name: string; modid?: string }[];
   /** The people the read names (role in the quest), in its order. */
   people: { name: string; role?: string }[];
-  /** Section 10: one line. */
+  /** Information Confidence's first line (WO-157): what the page is read from; nothing about what a player reported. */
   sure: string;
+  /** How many player reports an admin approved for this quest (WO-157): a count, never the words. */
+  reports: number;
   /** What the reader couldn't settle, field by field, with why: under the line, folded. */
   unsure: { field: string; why?: string }[];
 }
@@ -163,6 +165,10 @@ const blank = (t: string | undefined) => !t?.trim() || /^(not\b[^.]*\b(records|f
 /** The read's field names as a player says them. */
 const FIELD_WORDS: Record<string, string> = { canDo: "can I do it", needs: "what you need", starts: "how to start", firstStep: "first step", takesYou: "where it takes you", choices: "choices", rewards: "what you get", opens: "what it opens", closes: "what it closes", steps: "steps", people: "people", where: "where", who: "who", hold: "hold" };
 
+/** "1 report approved", "2 reports approved": the only way a page or the door says a player's input counted. */
+export const playersWords = (n: number) => `${n} ${n === 1 ? "report" : "reports"} approved`;
+const reportCount = (ways: { also?: string[] }[]) => ways.reduce((n, w) => n + 1 + (w.also?.length ?? 0), 0);
+
 function viaReads(q: Quest, r: QuestRead): QuestPage {
   const players = playerWays(q);
   // A player's way replaces the read's start for the same person, or for no one in particular when it names no one.
@@ -173,9 +179,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
   ].filter((s) => s.how || s.who);
   const unsure = (r.unsure ?? []).filter((u) => u.field).map((u) => ({ ...u, field: FIELD_WORDS[u.field] ?? u.field }));
   const fields = [...new Set(unsure.map((u) => u.field))].join(", ");
-  const sure = players.length
-    ? `Checked in game by ${players[0].also?.length ? `${players[0].also.length + 1} players` : "a player"}${unsure.length ? `. Unsure: ${fields}` : ""}`
-    : `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${fields}` : ""}`;
+  const sure = `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${fields}` : ""}`;
   return {
     source: "reads",
     canDo: r.canDo ? { label: CAN_DO[r.canDo], ...(r.canDo !== "talk" && r.canDoWhy ? { why: r.canDoWhy } : {}) } : null,
@@ -199,6 +203,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
     changedBy: q.changedBy ?? [],
     people: (r.people ?? []).filter((p) => !blank(p.name)),
     sure,
+    reports: reportCount(players),
     unsure,
   };
 }
@@ -233,6 +238,7 @@ function viaRules(q: Quest): QuestPage {
     changedBy: q.changedBy ?? [],
     people: (q.people ?? []).map((name) => ({ name })),
     sure: `Not read yet: this page is from the planner's older rules, and ${st && st.checked !== "not yet" ? `its start is checked (${checkedLabel(st.checked, st.source)})` : "its start isn't checked yet"}`,
+    reports: reportCount(playerWays(q)),
     unsure: [],
   };
 }
@@ -273,6 +279,7 @@ export function doorPage(q: Quest) {
     ...(p.ways ? { ways: p.ways.ways.map((w) => ({ way: w.title, ...(w.ends ? { ends: w.ends } : {}), steps: w.steps })), ...(p.ways.shape === "endings" ? { stepsEveryWayTakes: p.ways.shared } : {}) } : {}),
     ...(p.changedBy.length ? { changedBy: p.changedBy.map((m) => m.name) } : {}),
     howSure: p.sure,
+    ...(p.reports ? { playerReports: playersWords(p.reports) } : {}),
     ...(p.unsure.length ? { unsure: p.unsure } : {}),
   };
 }

@@ -64,7 +64,7 @@ export function StorySoFar({ story }: Props) {
 /** Opens other stories: each opened line and what it needs, as facts. */
 export function StoryOpens({ story }: Props) {
   return (
-    <section className={`frame ${styles.panel} ${styles.sidePanel}`} aria-labelledby="opens-title">
+    <section className={`${styles.panel} ${styles.sidePanel}`} aria-labelledby="opens-title">
       <h2 id="opens-title" className={styles.sideTitle}>
         Opens other stories
       </h2>

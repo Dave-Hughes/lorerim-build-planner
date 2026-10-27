@@ -150,3 +150,37 @@
   font-size: 13px;
   color: var(--muted);
 }
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 6px;
+  border: 1px solid var(--line-bright);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--soft);
+}
+@media (max-width: 899px) {
+  .kbd {
+    display: none;
+  }
+}
+/* A phone: the search fills the screen. */
+@media (max-width: 699px) {
+  .palette {
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    border: 0;
+    overflow: auto;
+  }
+  .palette .list {
+    max-height: none;
+  }
+}

@@ -7,7 +7,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { SignInButton } from "@/components/site-header";
 import { Linked } from "@/components/pages/linked";
-import { HowSure } from "@/components/pages/page-kit";
+import { InformationConfidence, TitleBox } from "@/components/pages/page-kit";
 import { placeNames } from "@/lib/pages/names";
 import k from "@/components/pages/page-kit.module.css";
 import { QuestReport } from "@/components/quests/quest-report";
@@ -116,35 +116,29 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
           Read it as a story ›
         </Link>
       )}
-      <div className={`frame ${styles.cover}`}>
-        <img src={`/quests/${slug}.png`} alt="" className={styles.coverArt} />
-        <span className={styles.coverFade} aria-hidden="true" />
-        <div className={styles.coverWords}>
-          <span className={styles.coverName}>
-            <img className={styles.px} src={`/icons/quest-${home ? home.slug : categorySlug(shelves[line.category]?.name ?? "jobs-and-errands")}.svg`} alt="" width={48} height={48} />
-            <h1 className={`title ${styles.coverTitle}`}>{line.name}</h1>
-          </span>
-          <span className={styles.coverMeta}>
-            {line.prince && <span>{line.prince}</span>}
-            {line.where && <span>{line.where}</span>}
+      <TitleBox
+        title={line.name}
+        tags={
+          <>
+            {line.prince && <span className={k.tag}>{line.prince}</span>}
+            {line.where && <span className={k.tag}>{line.where}</span>}
             {line.sources.map((s) =>
               s.modid ? (
-                <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={`${styles.tag} ${styles.mod}`}>
+                <a key={s.name} href={`https://www.nexusmods.com/skyrimspecialedition/mods/${s.modid}`} target="_blank" rel="noreferrer" className={k.tag}>
                   {s.name} <span aria-hidden="true">↗</span>
                 </a>
               ) : (
-                <span key={s.name} className={styles.tag}>
+                <span key={s.name} className={k.tag}>
                   {s.name}
                 </span>
               ),
             )}
-            <span className="muted">
+            <span className={k.tagText}>
               {line.quests.length} quest{line.quests.length === 1 ? "" : "s"}
             </span>
-          </span>
-        </div>
-      </div>
-
+          </>
+        }
+      />
 
       <div className={styles.lineGrid}>
         <div className={styles.lineMain}>
@@ -154,7 +148,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
             line.begins && (line.beginsFrom === "opening" ? <p className={styles.quote}>“{line.begins}”</p> : <p className={styles.plainBig}>{line.begins}</p>)
           )}
 
-          <section className={`frame ${styles.panel}`} aria-labelledby="start-title">
+          <section className={`${styles.panel}`} aria-labelledby="start-title">
             <h2 id="start-title" className={styles.h2}>
               {shelf ? "How to start them" : "How to start it"}
             </h2>
@@ -455,29 +449,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
               </div>
             )}
           </section>
-          {lr ? (
-            <HowSure
-              id="sure-line"
-              line={`Read from the game files and checked by a second reader${read === line.quests.length ? "" : `; ${line.quests.length - read} of its ${line.quests.length} quests are from the planner's older rules`}`}
-              sources={[
-                { mark: "yes", name: "LoreRim's game files", note: "The line and its quests, read, then checked by a second reader" },
-                { mark: "no", name: "UESP", note: "Not compared yet" },
-                { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
-              ]}
-              unsure={(lr.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
-              actions={
-                <QuestReport
-                  lineId={line.id}
-                  quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))}
-                  signedIn={signedIn}
-                  open={reporting}
-                  label="Report a mistake"
-                  buttonClass="btn"
-                  signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
-                />
-              }
-            />
-          ) : (
+          {!lr && (
           <p className={styles.sure}>
             {read === line.quests.length ? "Read from the game files and checked by a second reader" : `${read} of ${line.quests.length} quests are read from the game files and checked by a second reader; the rest are from the planner's older rules`}
           </p>
@@ -500,6 +472,30 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
           )}
         </aside>
       </div>
+
+      {lr && (
+            <InformationConfidence
+              id="sure-line"
+              line={`Read from the game files and checked by a second reader${read === line.quests.length ? "" : `; ${line.quests.length - read} of its ${line.quests.length} quests are from the planner's older rules`}`}
+              sources={[
+                { mark: "yes", name: "LoreRim's game files", note: "The line and its quests, read, then checked by a second reader" },
+                { mark: "no", name: "UESP", note: "Not compared yet" },
+                { mark: "no", name: "Players", note: "No one has confirmed this page yet." },
+              ]}
+              unsure={(lr.unsure ?? []).map((u) => ({ ...u, field: LINE_FIELD_WORDS[u.field] ?? u.field }))}
+              actions={
+                <QuestReport
+                  lineId={line.id}
+                  quests={line.quests.map((q) => ({ edid: q.edid, name: q.name }))}
+                  signedIn={signedIn}
+                  open={reporting}
+                  label="Report a mistake"
+                  buttonClass="btn"
+                  signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1`} className="btn btn-sm btn-primary" label="Sign in with Discord" />}
+                />
+              }
+            />
+      )}
     </main>
   );
 }

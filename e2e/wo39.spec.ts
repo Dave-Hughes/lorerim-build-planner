@@ -38,7 +38,7 @@ test("a video guide: the hero button opens the Guide tab with the player, and no
   await expect(player).toHaveAttribute("src", /youtube-nocookie\.com\/embed\/jNQXAC9IVRw\?autoplay=1/);
 
   // Browse's card carries the Video badge.
-  await page.goto("/");
+  await page.goto("/characters");
   await expect(page.getByRole("article").filter({ hasText: "Iriel" }).getByText("Video", { exact: true })).toBeVisible();
 
   await setVideo(page, "");
@@ -64,7 +64,7 @@ test("an admin features Iriel: first on Browse and two columns wide; others don'
   }).toPass();
   await page.keyboard.press("Escape");
 
-  await page.goto("/");
+  await page.goto("/characters");
   const cards = page.getByRole("article");
   await expect(cards.first()).toHaveAttribute("aria-label", /^Featured: Iriel/);
   await expect(cards.first().getByText("Featured", { exact: true })).toBeVisible();
@@ -73,7 +73,7 @@ test("an admin features Iriel: first on Browse and two columns wide; others don'
   expect(big.width).toBeGreaterThan(small.width * 1.9);
 
   // With a search it's an ordinary card.
-  await page.goto("/?q=iriel");
+  await page.goto("/characters?q=iriel");
   await expect(page.getByRole("article").first()).not.toHaveAttribute("aria-label", /Featured/);
 
   await page.goto(`/b/${IRIEL_BUILD_ID}`);
@@ -83,6 +83,6 @@ test("an admin features Iriel: first on Browse and two columns wide; others don'
     await more.click();
     await expect(page.getByRole("menuitem", { name: /Feature this build/ })).toBeVisible({ timeout: 1000 });
   }).toPass();
-  await page.goto("/");
+  await page.goto("/characters");
   await expect(page.getByRole("article").first()).not.toHaveAttribute("aria-label", /Featured/);
 });

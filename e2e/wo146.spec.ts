@@ -89,7 +89,7 @@ test("an admin has the agent propose, approves it, and the page shows a player's
   const opened = page.getByRole("region", { name: "How to start it" });
   await expect(opened.getByText(`${NOTE}, on the board by Joslin's house`)).toBeVisible();
   // No player's name on the page (WO-154 Part 4).
-  await expect(opened.getByText("A player's report")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("1 report approved");
   await expect(opened).not.toContainText("e2e-reporter-1");
   await expect(opened.getByText("(Whiterun, the board right outside Joslin's house)")).toBeVisible();
   await page.screenshot({ path: "test-results/wo146-quest-page-1440.png" });
@@ -145,7 +145,7 @@ test("a second player agreeing is closed as no change, and the page then has two
   const ask = async () => (await call(baseURL!, from, token, "get_quest", { name: "Running Wild", level: 5 })).json();
   await expect.poll(async () => (await ask()).quest.starts[0].checked, { timeout: 25_000, intervals: [1000] }).toBe("players' reports, not the game files (2)");
   await page.goto("/quests/q/running-wild");
-  await expect(page.getByRole("region", { name: "How to start it" }).getByText("Players' reports (2)")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("2 reports approved");
   await page.screenshot({ path: "test-results/wo146-quest-two-sources-1440.png" });
   // The way itself is as it was: still one way.
   expect((await ask()).quest.starts).toHaveLength(1);

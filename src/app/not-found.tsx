@@ -15,7 +15,7 @@ export default function NotFound() {
         </h1>
         <p className="muted">That build doesn&apos;t exist, or its author keeps it private.</p>
         <p>
-          <Link href="/">Browse builds</Link>
+          <Link href="/characters">Browse characters</Link>
         </p>
       </main>
     </>

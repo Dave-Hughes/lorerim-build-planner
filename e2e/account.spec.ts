@@ -29,7 +29,7 @@ test.describe("an author's builds", () => {
     await savedInBand(page);
     await page.goto(`/b/${TEST_BUILD_ID}`);
     await expect(page.getByText("Now with a new description.")).toBeVisible();
-    await page.goto("/");
+    await page.goto("/characters");
     await expect(page.getByRole("heading", { name: "Test Shield-Wall" })).toBeVisible();
   });
 });

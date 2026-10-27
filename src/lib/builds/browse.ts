@@ -6,9 +6,11 @@ export interface BrowseState {
   /** A version id, or "all". */
   version: string;
   sort: "newest" | "liked";
+  /** Only characters with a listed playthrough (WO-154 Part 5). */
+  run?: boolean;
 }
 
-/** The Browse builds address for a state: only what differs from the defaults, so links stay short. */
+/** The Characters address for a state: only what differs from the defaults, so links stay short. */
 export function browseHref(s: BrowseState, defaultVersion: string, n?: number): string {
   const p = new URLSearchParams();
   if (s.q.trim()) p.set("q", s.q.trim());
@@ -16,7 +18,8 @@ export function browseHref(s: BrowseState, defaultVersion: string, n?: number): 
   if (s.race) p.set("race", s.race);
   if (s.sort !== "newest") p.set("sort", s.sort);
   if (s.version !== defaultVersion) p.set("version", s.version);
+  if (s.run) p.set("run", "1");
   if (n) p.set("n", String(n));
   const qs = p.toString();
-  return qs ? `/?${qs}` : "/";
+  return qs ? `/characters?${qs}` : "/characters";
 }

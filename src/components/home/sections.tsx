@@ -1,0 +1,98 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import type { BuildSummary } from "@/lib/builds/types";
+import type { Change } from "@/lib/changes";
+import { formatDayMonth } from "@/lib/format/date";
+import styles from "./home.module.css";
+
+/** Recent characters: the latest listed, their cover edge to edge with the name over a fade, no boxes. */
+export function RecentCharacters({ builds }: { builds: BuildSummary[] }) {
+  if (!builds.length) return null;
+  return (
+    <section className={styles.sec} aria-labelledby="recent">
+      <span className={styles.head}>
+        <h2 id="recent" className={styles.h2}>
+          Recent characters
+        </h2>
+        <Link href="/characters">All characters ›</Link>
+      </span>
+      <div className={styles.strip}>
+        {builds.map((b) => (
+          <Link key={b.id} href={`/b/${b.id}`} className={styles.pc}>
+            {b.coverImageUrl && !b.coverHeld ? <span className={styles.pcImage} style={{ backgroundImage: `url("${b.coverImageUrl}")` }} /> : null}
+            <span className={styles.pcText}>
+              <b>{b.name}</b>
+              <small>
+                {b.race ? `${b.race} | ` : ""}by {b.author.name}
+              </small>
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** New in the world: real changes only, from the data builds and the approved reports (src/lib/changes.ts). */
+export function NewInTheWorld({ changes }: { changes: Change[] }) {
+  if (!changes.length) return null;
+  const half = Math.ceil(changes.length / 2);
+  const column = (rows: Change[]) => (
+    <div>
+      {rows.map((c) => (
+        <div key={`${c.kind}-${c.href}`} className={styles.u}>
+          <img className={styles.px} src={`/icons/${c.icon}.svg`} alt="" width={32} height={32} />
+          <span>
+            <Link href={c.href}>{c.name}</Link>
+            <span className={styles.what}>{c.what}</span>
+          </span>
+          <time dateTime={c.date}>{formatDayMonth(`${c.date}T12:00:00Z`)}</time>
+        </div>
+      ))}
+    </div>
+  );
+  return (
+    <section className={styles.sec} aria-labelledby="new">
+      <span className={styles.head}>
+        <h2 id="new" className={styles.h2}>
+          New in the world
+        </h2>
+        <Link href="/changes">Everything that changed ›</Link>
+      </span>
+      <div className={styles.upd}>
+        {column(changes.slice(0, half))}
+        {column(changes.slice(half))}
+      </div>
+    </section>
+  );
+}
+
+/** Three ways to use it, last. */
+export function ThreeWays({ playthroughs }: { playthroughs: boolean }) {
+  return (
+    <section className={`${styles.sec} ${styles.rule}`} aria-labelledby="ways">
+      <h2 id="ways" className={styles.h2}>
+        Three ways to use it
+      </h2>
+      <div className={styles.ways}>
+        <div className={styles.w}>
+          <span className={styles.n}>1</span>
+          <h3>Build a character</h3>
+          <p>Race, birthsign, god and traits, then perks and skills level by level, inside LoreRim&apos;s rules.</p>
+          <Link href="/new">Make a character ›</Link>
+        </div>
+        <div className={styles.w}>
+          <span className={styles.n}>2</span>
+          <h3>Plan the life</h3>
+          <p>Acts with a goal and a place, and the quests and jobs in each. Your save says where you stand.</p>
+          {playthroughs ? <Link href="/characters?run=1">See a playthrough ›</Link> : null}
+        </div>
+        <div className={styles.w}>
+          <span className={styles.n}>3</span>
+          <h3>Ask your Claude</h3>
+          <p>Your own Claude can draft a character here, and read your save to it.</p>
+        </div>
+      </div>
+    </section>
+  );
+}

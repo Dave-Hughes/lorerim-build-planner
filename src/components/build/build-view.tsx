@@ -1673,7 +1673,7 @@ function Cover({
             <ul className={`${styles.tagLine} ${styles.heroIn} ${styles.heroIn3}`} aria-label="Tags">
               {build.tags.map((t) => (
                 <li key={t}>
-                  <Link href={`/?tags=${t}`} className={styles.tagLink}>
+                  <Link href={`/characters?tags=${t}`} className={styles.tagLink}>
                     <IconLabel icon={<TagIcon tag={t} />}>{TAG_BY_SLUG.get(t)?.name ?? t}</IconLabel>
                   </Link>
                 </li>

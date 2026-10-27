@@ -160,6 +160,11 @@ export interface RunSummary {
   day: number | null;
   done: number;
   total: number;
+  /** The first objectives still to do in the current act, for the home page (WO-157). */
+  next: string[];
+  /** Where the standing came from: "Save 7", or "entered by hand"; and when. */
+  from: string | null;
+  at: Date | string | null;
 }
 
 async function runOf(id: string): Promise<RunSummary> {
@@ -168,12 +173,24 @@ async function runOf(id: string): Promise<RunSummary> {
     db().select().from(schema.playthroughSnapshots).where(eq(schema.playthroughSnapshots.playthroughId, id)).limit(1),
   ]);
   const snap = (snapshots[0] as SnapshotRow | undefined) ?? null;
-  const none = { id, act: 0, actName: null, place: null, level: snap?.level ?? null, day: snap?.day ?? null, done: 0, total: 0 };
+  const none = {
+    id,
+    act: 0,
+    actName: null,
+    place: null,
+    level: snap?.level ?? null,
+    day: snap?.day ?? null,
+    done: 0,
+    total: 0,
+    next: [] as string[],
+    from: snap ? (snap.source === "save" ? snap.label : "entered by hand") : null,
+    at: snap?.at ?? null,
+  };
   if (!acts.length) return none;
   const objectives = await db().select().from(schema.playthroughObjectives).where(inArray(schema.playthroughObjectives.actId, acts.map((a) => a.id)));
   const v = assemble({ acts, objectives, chapters: [], snapshot: snap, link: () => null });
   const cur = v.current;
-  return { ...none, act: cur ? v.acts.indexOf(cur) + 1 : 0, actName: cur?.name ?? null, place: snap?.place || cur?.place || null, done: v.done, total: v.total };
+  return { ...none, act: cur ? v.acts.indexOf(cur) + 1 : 0, actName: cur?.name ?? null, place: snap?.place || cur?.place || null, done: v.done, total: v.total, next: (cur?.objectives ?? []).filter((o) => o.status === "todo" || o.status === "doing").slice(0, 3).map((o) => o.text) };
 }
 
 /** Each of the player's builds with a run (WO-114): the build's id to its latest run's summary. */
@@ -184,6 +201,19 @@ export async function runsByBuild(userId: string): Promise<Map<string, RunSummar
     .where(and(eq(schema.playthroughs.ownerId, userId), isNotNull(schema.playthroughs.buildId)))
     .orderBy(desc(schema.playthroughs.updatedAt));
   const out = new Map<string, RunSummary & { name: string }>();
+  for (const r of rows) if (r.buildId && !out.has(r.buildId)) out.set(r.buildId, { ...(await runOf(r.id)), name: r.name });
+  return out;
+}
+
+/** Of these builds, those with a Listed run (WO-154 Part 5): the build's id to its latest listed run's summary, for the public Characters page. */
+export async function listedRunsByBuild(buildIds: string[]): Promise<Map<string, RunSummary & { name: string }>> {
+  const out = new Map<string, RunSummary & { name: string }>();
+  if (!buildIds.length) return out;
+  const rows = await db()
+    .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
+    .from(schema.playthroughs)
+    .where(and(inArray(schema.playthroughs.buildId, buildIds), eq(schema.playthroughs.visibility, "public")))
+    .orderBy(desc(schema.playthroughs.updatedAt));
   for (const r of rows) if (r.buildId && !out.has(r.buildId)) out.set(r.buildId, { ...(await runOf(r.id)), name: r.name });
   return out;
 }

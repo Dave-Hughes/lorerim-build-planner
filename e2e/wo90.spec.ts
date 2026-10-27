@@ -69,7 +69,7 @@ test("the sample build shows Example with its tooltip on its page and its card; 
   await page.goto(`/b/${AZREM_BUILD_ID}`);
   await expect(page.getByRole("region", { name: "Build" }).getByText("Example", { exact: true })).toHaveCount(0);
 
-  await page.goto("/");
+  await page.goto("/characters");
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: /^Iriel/ }) });
   await expect(card.getByText("Example", { exact: true })).toBeVisible();
   await card.getByRole("button", { name: "About the Example tag" }).hover();

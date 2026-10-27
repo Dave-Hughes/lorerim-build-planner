@@ -7,8 +7,9 @@ import { expect, test } from "@playwright/test";
 test.use({ viewport: { width: 1440, height: 900 } });
 
 test("the home shows the categories and everything else by place, with no player context (WO-115)", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Quests" }).click();
+  await page.goto("/characters");
+  await page.getByRole("banner").getByRole("button", { name: "World" }).click();
+  await page.getByRole("banner").getByRole("link", { name: /^Quests/ }).click();
   await expect(page).toHaveURL(/\/quests$/);
   await expect(page.getByRole("heading", { level: 1, name: "Quests" })).toBeVisible();
   const cats = page.locator('a[href^="/quests/c/"]');

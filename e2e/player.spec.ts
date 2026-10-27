@@ -36,7 +36,7 @@ test.describe("a player's page", () => {
   });
 
   test("author names lead to the author's page, from a card and from a build", async ({ page }) => {
-    await page.goto("/?version=all");
+    await page.goto("/characters?version=all");
     await page.getByRole("article").filter({ hasText: "Test Shield-Wall" }).getByRole("link", { name: TEST_USER_NAME }).click();
     await expect(page).toHaveURL(new RegExp(`/u/${TEST_USER_HANDLE}$`));
     await page.goto(`/b/${TEST_BUILD_ID}`);

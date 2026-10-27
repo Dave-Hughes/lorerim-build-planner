@@ -6,6 +6,11 @@ import styles from "./page-kit.module.css";
 
 /** The pieces the quest, line, person and place pages share (WO-154 Part 2): the boards' frame, section head, gold box and "How sure we are". */
 
+/** A fact that isn't known: one muted line where the fact would go (WO-157). Where nothing in a section is known, the page leaves the section out instead. */
+export function NotKnown({ children = "Not known yet" }: { children?: ReactNode }) {
+  return <span className={styles.muted}>{children}</span>;
+}
+
 export function Icon({ name, size = 32 }: { name: string; size?: number }) {
   return <img className={styles.px} src={`/icons/${name}.svg`} alt="" width={size} height={size} />;
 }
@@ -22,10 +27,10 @@ export function PageTop({ back }: { back: { href: string; label: string } }) {
   );
 }
 
-/** The title in its frame, its tags beneath, and what the page says it is. */
+/** The title, large and plain, its tags beneath, and what the page says it is. */
 export function TitleBox({ title, tags, children }: { title: string; tags?: ReactNode; children?: ReactNode }) {
   return (
-    <div className={`frame ${styles.titleBox}`}>
+    <div className={styles.titleBox}>
       <div className={styles.titleIn}>
         <h1 className={`title ${styles.h1}`}>{title}</h1>
         {tags ? <span className={styles.tags}>{tags}</span> : null}
@@ -50,10 +55,10 @@ export function Section({ id, icon, title, count, children }: { id: string; icon
   );
 }
 
-/** A panel with its small heading, for the side column and the foot. */
-export function Panel({ id, icon, title, framed, children }: { id: string; icon?: string; title: string; framed?: boolean; children: ReactNode }) {
+/** A section with its small heading and a rule under it, for the side column and the foot (WO-157: no box). */
+export function Panel({ id, icon, title, children }: { id: string; icon?: string; title: string; children: ReactNode }) {
   return (
-    <section className={`${framed ? "frame " : ""}${styles.panel}`} aria-labelledby={id}>
+    <section className={styles.panel} aria-labelledby={id}>
       <span className={styles.panelHead}>
         {icon ? <Icon name={icon} /> : null}
         <h2 id={id} className={`${styles.h2} ${styles.h2s}`}>
@@ -90,15 +95,21 @@ export interface SureSource {
 }
 
 /**
- * How sure we are: the plain-word line, a tick per source (game files, UESP, players), what isn't sure yet in a player's words, and the two
+ * Information Confidence (WO-157): always alone and full width at the foot of a page, in a box with the brass corner marks. The plain-word line, a tick per source (game files, UESP, players), what isn't sure yet in a player's words, and the two
  * buttons. The reader's reasons for a doubt are folded under the list, not in it.
  */
-export function HowSure({ id, line, sources, unsure, actions }: { id: string; line: string; sources: SureSource[]; unsure: { field: string; why?: string }[]; actions: ReactNode }) {
+export function InformationConfidence({ id, line, sources, unsure, actions }: { id: string; line: string; sources: SureSource[]; unsure: { field: string; why?: string }[]; actions: ReactNode }) {
   const mark = { yes: styles.markYes, part: styles.markPart, no: styles.markNo };
   const fields = [...new Set(unsure.map((u) => u.field))];
   const reasons = unsure.filter((u) => u.why);
   return (
-    <Panel id={id} icon="quest-sure" title="How sure we are" framed>
+    <section className={`frame ${styles.confidence}`} aria-labelledby={id}>
+      <span className={styles.panelHead}>
+        <Icon name="quest-sure" />
+        <h2 id={id} className={`${styles.h2} ${styles.h2s}`}>
+          Information Confidence
+        </h2>
+      </span>
       <span className={styles.sure}>{line}</span>
       <div className={styles.sureGrid}>
         <div className={styles.sureCol}>
@@ -145,6 +156,6 @@ export function HowSure({ id, line, sources, unsure, actions }: { id: string; li
         </div>
       </div>
       <span className={styles.buttons}>{actions}</span>
-    </Panel>
+    </section>
   );
 }

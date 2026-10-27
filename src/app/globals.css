@@ -351,6 +351,13 @@ textarea:focus-visible {
   padding: var(--btn-pad-y) 14px;
   font-size: 14px;
 }
+/* The home page's hero buttons. */
+.btn-lg {
+  --btn-pad-y: 14px;
+  min-height: 52px;
+  padding: var(--btn-pad-y) 24px;
+  font-size: 17px;
+}
 /* Icon buttons (the level steppers) keep their square shape. */
 .btn-icon {
   --btn-cut: 0px;

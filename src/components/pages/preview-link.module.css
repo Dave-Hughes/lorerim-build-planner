@@ -1,0 +1,45 @@
+.wrap {
+  position: relative;
+}
+.card {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  top: calc(100% + 4px);
+  display: flex;
+  gap: 12px;
+  width: 340px;
+  max-width: min(340px, calc(100vw - 32px));
+  padding: 14px 16px;
+  box-sizing: border-box;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  font-weight: 400;
+  text-align: left;
+  white-space: normal;
+  cursor: default;
+}
+.icon {
+  image-rendering: pixelated;
+  flex: none;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.text b {
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+}
+.text small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.text em {
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--soft);
+}

@@ -513,6 +513,14 @@ def main():
         print(f"{tied} quests with their ways, {read_lines} lines with a read" + (f"; {len(no_line)} line reads match no line: {', '.join(no_line[:8])}" if no_line else ""))
         if unmapped:
             print(f"note: {len(unmapped)} plugins that change quests aren't in plugins_raw.json; named from their file, unlinked (for the PC): {', '.join(sorted(unmapped)[:12])}{' ...' if len(unmapped) > 12 else ''}")
+        # WO-157: what changed in the world, for the home page, dated by when each read was committed.
+        from changes import build_changes
+
+        changes = build_changes(pages, os.path.join(RAW), ROOT)
+        with open(os.path.join(OUT, "changes.json"), "w", encoding="utf-8") as f:
+            json.dump({"changes": changes}, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(changes)} changes, newest {changes[0]['date'] if changes else 'none'} -> changes.json")
         cur = load("questlines.json")
         with open(os.path.join(RAW, "questlines_report.md"), "w", encoding="utf-8") as f:
             f.write(questlines_report(lines, cur, cur.get("notInRecords", []), start_disagreements(pages)))

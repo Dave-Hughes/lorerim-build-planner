@@ -46,7 +46,7 @@ test("game modes in the about bar and Set up; tags in Set up, Browse and the bui
   await page.goto(`/b/${AZREM_BUILD_ID}`);
   await iconWithName(page.getByRole("region", { name: "Character", exact: true }), "mode-konahrik", "Konahrik");
 
-  await page.goto("/");
+  await page.goto("/characters");
   await page.getByRole("button", { name: /^Tags/ }).click();
   const tags = page.getByRole("group", { name: "Tags" });
   await iconWithName(tags, "tag-shield", "Shield");

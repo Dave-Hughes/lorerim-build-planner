@@ -5,7 +5,8 @@ import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
 import { confirmationsOf } from "@/lib/quests/confirmations";
-import { HowSure, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
+import { PreviewLink } from "@/components/pages/preview-link";
+import { InformationConfidence, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
 import { personBySlug, roleWords } from "@/lib/people/data";
 import { questsOf } from "@/lib/people/quests";
 import { siteMetadata } from "@/lib/og/metadata";
@@ -69,32 +70,11 @@ export default async function PersonPage({ params }: { params: Params }) {
 
       <div className={styles.cols}>
         <div className={styles.body}>
-          <Section id="where" icon="quest-travel" title={person.sex === "female" ? "Where to find her" : person.sex === "male" ? "Where to find him" : "Where to find them"}>
-            <div className={styles.day} role="img" aria-label="The day, midnight to midnight: where they are isn't known yet">
-              <span className={styles.seg} style={{ gridColumn: "span 24" }}>
-                Not known yet
-              </span>
-            </div>
-            <div className={styles.ticks}>
-              <span>Midnight</span>
-              <span>6 am</span>
-              <span>Noon</span>
-              <span>6 pm</span>
-              <span>Midnight</span>
-            </div>
-            <div style={{ paddingTop: 10 }}>
-              <div className={styles.slot}>
-                <span className={styles.muted}>Not known yet</span>
-                <small>Where they go through the day and night</small>
-              </div>
-            </div>
-          </Section>
-
           {quests.length > 0 && (
             <Section id="quests" icon="tab-play" title={person.sex === "female" ? "Her quests" : person.sex === "male" ? "His quests" : "Their quests"}>
               {quests.map((q) => (
                 <div key={q.href} className={styles.qrow}>
-                  <Link href={q.href}>{q.name}</Link>
+                  <PreviewLink href={q.href}>{q.name}</PreviewLink>
                   <span>{q.gives ? "Gives it" : (q.role ?? "Has a part in it")}</span>
                 </div>
               ))}
@@ -162,14 +142,14 @@ export default async function PersonPage({ params }: { params: Params }) {
         )}
       </div>
 
-      <HowSure
+      <InformationConfidence
         id="sure"
         line="Read from the game files. Not read by a reader yet."
         sources={[
           { mark: "yes", name: "LoreRim's game files", note: "Their race, where they are placed and their quests, from the records" },
           { mark: "no", name: "Second reader", note: "Not yet" },
           confirmed.names.length
-            ? { mark: "yes", name: "Players", note: `${confirmed.names.length} confirmed this page`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
+            ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
             : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
         unsure={[{ field: "where they are through the day and night" }, { field: "what changes where they are" }, ...(person.follower || person.marriage ? [{ field: "how to recruit or marry them" }] : [])]}

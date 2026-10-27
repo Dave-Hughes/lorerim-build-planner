@@ -8,10 +8,11 @@ test.use({ viewport: { width: 1440, height: 900 } });
 const firstName = (page: import("@playwright/test").Page) => page.locator("table tbody tr").first().getByRole("link").first();
 
 test("Body, Light and Armor rating list Daedric Mail Cuirass first; the URL holds them and Back restores them", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Gear" }).click();
+  await page.goto("/characters");
+  await page.getByRole("banner").getByRole("button", { name: "World" }).click();
+  await page.getByRole("banner").getByRole("link", { name: /^Gear/ }).click();
   await expect(page).toHaveURL(/\/gear$/);
-  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Gear" })).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("banner").getByRole("button", { name: "World" })).toHaveAttribute("aria-current", "page");
 
   await page.getByRole("group", { name: "Type" }).getByRole("button", { name: /^Body/ }).click();
   await expect(page).toHaveURL(/type=Body/);

@@ -5,7 +5,8 @@ import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { SignInButton } from "@/components/site-header";
 import { confirmationsOf } from "@/lib/quests/confirmations";
-import { Gold, HowSure, Icon, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
+import { PreviewLink } from "@/components/pages/preview-link";
+import { Gold, InformationConfidence, Icon, PageTop, Panel, Section, TitleBox } from "@/components/pages/page-kit";
 import { personHref } from "@/lib/people/data";
 import { questsData } from "@/lib/quests/data";
 import { hasLevels, placeBySlug, placeHref, placeType, rangeOf } from "@/lib/places/data";
@@ -124,7 +125,7 @@ export default async function PlacePage({ params }: { params: Params }) {
                   {boss && (
                     <div className={`${styles.foe} ${styles.foeBoss}`}>
                       <b>
-                        The boss: {personHref(boss.name) ? <Link href={personHref(boss.name)!}>{boss.name}</Link> : boss.name}
+                        The boss: {personHref(boss.name) ? <PreviewLink href={personHref(boss.name)!}>{boss.name}</PreviewLink> : boss.name}
                       </b>
                       {boss.words ? <span className={styles.lv}>Level {boss.words}</span> : null}
                     </div>
@@ -175,7 +176,7 @@ export default async function PlacePage({ params }: { params: Params }) {
             <Section id="quests" icon="tab-play" title="Quests that bring you here">
               {quests.map((q) => (
                 <div key={q.href} className={styles.qrow} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
-                  <Link href={q.href}>{q.name}</Link>
+                  <PreviewLink href={q.href}>{q.name}</PreviewLink>
                   {q.says ? <span>{q.says.charAt(0).toUpperCase() + q.says.slice(1)}{q.says.endsWith(".") ? "" : "."}</span> : null}
                 </div>
               ))}
@@ -239,13 +240,13 @@ export default async function PlacePage({ params }: { params: Params }) {
         </aside>
       </div>
 
-      <HowSure
+      <InformationConfidence
         id="sure"
-        line="Counted from the game files. No player has confirmed it yet."
+        line="Counted from the game files."
         sources={[
           { mark: "yes", name: "LoreRim's game files", note: "Who lives here, the boss, books, crafting and XP, read from the records" },
           confirmed.names.length
-            ? { mark: "yes", name: "Players", note: `${confirmed.names.length} confirmed this page`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
+            ? { mark: "yes", name: "Players", note: `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`, names: confirmed.names.map((n) => <span key={n}>{n}</span>) }
             : { mark: "no", name: "Players", note: "No reports. No one has confirmed this page yet." },
         ]}
         unsure={worth?.bossChest ? [{ field: "what's in the boss chest" }] : []}

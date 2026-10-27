@@ -12,7 +12,7 @@ for (const width of [1440, 390]) {
     await page.goto("/quests/q/lights-out");
     await expect(page.getByRole("heading", { level: 1, name: "Lights Out!" })).toBeVisible();
     const order = await page.locator("main h2").allInnerTexts();
-    const wanted = ["How to start it", "5 ways to finish it", "Where it takes you", "Rewards", "People", "What it closes", "How sure we are"];
+    const wanted = ["How to start it", "5 ways to finish it", "Where it takes you", "Rewards", "People", "What it closes", "Information Confidence"];
     expect(order.map((t) => t.toLowerCase())).toEqual(expect.arrayContaining(wanted.map((t) => t.toLowerCase())));
     expect(wanted.map((t) => order.findIndex((o) => o.toLowerCase() === t.toLowerCase()))).toEqual([...wanted.map((t) => order.findIndex((o) => o.toLowerCase() === t.toLowerCase()))].sort((a, b) => a - b));
     await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Talk to Jaree-Ra in Solitude, by the Winking Skeever");
@@ -77,8 +77,10 @@ test("a person's page: race, town, the cell they are placed in, their quests, an
   await expect(page.locator("main")).toContainText("A Nord in Riften. She gives two quests.");
   await expect(page.locator("main")).not.toContainText("placed in");
   for (const chip of ["Follower", "Can marry", "Gives quests", "Can't be killed"]) await expect(page.locator("main").getByText(chip, { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("Not known yet").first()).toBeVisible();
-  await expect(page.getByRole("region", { name: "How sure we are" })).toContainText("Not read by a reader yet");
+  // Nothing about the hours is known, so there is no section for them (WO-157); Information Confidence says what isn't sure.
+  await expect(page.getByRole("heading", { name: /Where to find/ })).toHaveCount(0);
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Where they are through the day and night");
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Not read by a reader yet");
   expect((await page.goto("/people/not-a-person"))?.status()).toBe(404);
 });
 
@@ -98,7 +100,7 @@ test("a line with a read: its own words for what it is, how to get in, the quest
   await expect(page.getByRole("region", { name: "How to start it" })).toContainText("Helgen");
   await expect(page.getByRole("link", { name: "Bleak Falls Barrow" }).first()).toHaveAttribute("href", "/quests/q/bleak-falls-barrow");
   await expect(page.getByRole("region", { name: "What the whole line gives" })).toContainText("Thane of Whiterun");
-  await expect(page.getByRole("region", { name: "How sure we are" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toBeVisible();
 });
 
 test("search forgives a misspelling and finds a quest, a person and a place; the menu has People and Places", async ({ page }) => {
@@ -108,7 +110,9 @@ test("search forgives a misspelling and finds a quest, a person and a place; the
   await expect(page.getByRole("region", { name: "People" }).getByRole("link", { name: "Brynjolf" }).first()).toHaveAttribute("href", /\/people\/brynjolf/);
   await page.goto("/search?q=Broken Oar");
   await expect(page.getByRole("region", { name: "Places" }).getByRole("link", { name: "Broken Oar Grotto" }).first()).toHaveAttribute("href", "/places/broken-oar-grotto");
-  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link")).toContainText(["Builds", "Quests", "People", "Places"]);
+  await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link")).toContainText(["Characters", "Guide"]);
+  await page.getByRole("banner").getByRole("button", { name: "World" }).click();
+  await expect(page.getByRole("banner").getByRole("link", { name: /^People/ })).toBeVisible();
 });
 
 test("the Quests page: the big lines first, then everything else by place", async ({ page }) => {
@@ -131,11 +135,11 @@ test("confirm it's accurate: signed out it asks to sign in; signed in it records
     await expect(dialog).toContainText("Your name is now on");
     await dialog.getByRole("button", { name: "Close" }).click();
     await page.reload();
-    await expect(page.getByRole("region", { name: "How sure we are" })).toContainText("1 confirmed this page");
+    await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Confirmed by 1 player");
     await page.getByRole("button", { name: "Undo my confirmation" }).click();
     await expect(page.getByRole("button", { name: "Confirm it's accurate" })).toBeVisible();
     await page.reload();
-    await expect(page.getByRole("region", { name: "How sure we are" })).not.toContainText("1 confirmed this page");
+    await expect(page.getByRole("region", { name: "Information Confidence" })).not.toContainText("Confirmed by 1 player");
   }
 });
 

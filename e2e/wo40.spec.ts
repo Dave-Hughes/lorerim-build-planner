@@ -32,7 +32,7 @@ test("three players report a build: its cover hides; an admin keeps it and the c
   expect((await page.goto("/admin/review"))?.status()).toBe(404);
 
   await signInAs(context, "e2e-session-token-0001");
-  await page.goto("/");
+  await page.goto("/characters");
   await expect(page.getByRole("button", { name: /account menu/ }).getByLabel(/to review/)).toBeVisible();
   await page.goto("/admin/review");
   const item = page.getByRole("listitem", { name: /^Reports on Iriel/ });

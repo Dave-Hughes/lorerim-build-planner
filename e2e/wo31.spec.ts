@@ -23,7 +23,7 @@ test("a dividing line in the guide is a line, and the next paragraph sits right 
 });
 
 test("searching Jephre on Browse builds finds Iriel", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/characters");
   await page.getByRole("searchbox").fill("Jephre");
   await expect(page.getByRole("article").filter({ hasText: "Iriel Thornwhisper" })).toBeVisible();
   await expect(page.getByRole("article")).toHaveCount(1);

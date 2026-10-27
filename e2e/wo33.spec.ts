@@ -21,7 +21,7 @@ test("Iriel's page points og:image at her card, a 1200x630 PNG", async ({ page, 
 });
 
 test("the home page's og:image is the site card; a private build shows nothing of itself", async ({ page, request }) => {
-  await page.goto("/");
+  await page.goto("/characters");
   const image = await page.locator('meta[property="og:image"]').getAttribute("content");
   expect(new URL(image!).pathname).toBe("/og/site.png");
   const res = await request.get("/og/site.png");

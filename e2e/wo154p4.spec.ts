@@ -21,7 +21,9 @@ test("no player's name on a page, ever", async ({ page }) => {
     expect(text, url).not.toMatch(/\bDave\b|\bKyria\b/);
   }
   await page.goto("/quests/q/lights-out");
-  await expect(page.getByRole("region", { name: "How to start it" })).toContainText("A player's report");
+  // A player's input is a count in Information Confidence, never a sentence about what they reported (WO-157).
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("1 report approved");
+  await expect(page.getByRole("region", { name: "How to start it" })).not.toContainText("A player's report");
 });
 
 test("The Book of Love: its steps once, then its choices, not a second list that looks unfinished", async ({ page }) => {
@@ -39,7 +41,7 @@ test("The Book of Love: its steps once, then its choices, not a second list that
 
 test("how sure: UESP explained; where it takes you: a Danger label, or one line when none is known; the report is a modal", async ({ page }) => {
   await page.goto("/quests/q/lights-out");
-  await expect(page.getByRole("region", { name: "How sure we are" })).toContainText("UESP (the Elder Scrolls wiki)");
+  await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("UESP (the Elder Scrolls wiki)");
   await expect(page.getByRole("region", { name: "Where it takes you" }).getByText("Danger", { exact: true }).first()).toBeVisible();
   await page.goto("/quests/q/the-book-of-love");
   await expect(page.getByRole("region", { name: "Where it takes you" })).toContainText("How dangerous these places are isn't known yet.");

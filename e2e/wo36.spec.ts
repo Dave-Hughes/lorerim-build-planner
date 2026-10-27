@@ -26,7 +26,7 @@ test("hovering a chosen tag in Set up keeps its name readable", async ({ page, c
 });
 
 test("Roleplay is under Way of play on Browse", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/characters");
   await page.getByRole("button", { name: /^Tags/ }).click();
   const tags = page.getByRole("group", { name: "Tags" });
   await expect(tags.locator('img[src="/icons/tag-roleplay.svg"]').locator("xpath=..")).toContainText("Roleplay");

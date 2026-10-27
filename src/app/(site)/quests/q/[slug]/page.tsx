@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { ConfirmButton } from "@/components/pages/confirm-button";
 import { Linked } from "@/components/pages/linked";
+import { PreviewLink } from "@/components/pages/preview-link";
 import { confirmationsOf } from "@/lib/quests/confirmations";
 import {
   Gold,
-  HowSure,
+  InformationConfidence,
+  NotKnown,
   PageTop,
   Panel,
   Section,
@@ -22,8 +24,7 @@ import { modNames, personNames, placeNames } from "@/lib/pages/names";
 import { placeOnly, vaguePlace } from "@/lib/pages/where";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { loadPlayerFacts } from "@/lib/quests/player-facts";
-import { pageSources } from "@/lib/quests/player-source";
-import { dangerParts, pageOf, placeNamed } from "@/lib/quests/reads";
+import { dangerParts, pageOf, placeNamed, playersWords } from "@/lib/quests/reads";
 import { questBySlug, questHref } from "@/lib/quests/slugs";
 import { placeHref } from "@/lib/places/data";
 import { siteMetadata } from "@/lib/og/metadata";
@@ -116,7 +117,7 @@ export default async function QuestPage({
   // How sure we are: a tick per source.
   const reported = (start?.ways ?? []).filter((w) => w.checked === "players");
   // No player's name on a page (WO-154 Part 4): a report is "a player's report"; only a confirmation shows the Discord name its player chose.
-  const reporters = reported.length;
+  const reporters = page.reports;
   const confirmed = await confirmationsOf("quest", quest.edid, userId);
   const sources: SureSource[] = [
     reads
@@ -148,11 +149,9 @@ export default async function QuestPage({
           mark: "yes",
           name: "Players",
           note: [
-            reported.length
-              ? `${pageSources(reported[0].source ?? "", reported[0].also)}`
-              : "",
+            reporters ? playersWords(reporters) : "",
             confirmed.names.length
-              ? `${confirmed.names.length} confirmed this page`
+              ? `Confirmed by ${confirmed.names.length} ${confirmed.names.length === 1 ? "player" : "players"}`
               : "",
           ]
             .filter(Boolean)
@@ -236,7 +235,7 @@ export default async function QuestPage({
                   {page.needs.map((n, i) => (
                     <li key={i}>
                       {n.href ? (
-                        <Link href={n.href}>{n.text}</Link>
+                        <PreviewLink href={n.href}>{n.text}</PreviewLink>
                       ) : (
                         <Linked names={names} text={n.text} />
                       )}
@@ -274,7 +273,7 @@ export default async function QuestPage({
                       </span>
                     ) : null}
                     {unknown ? (
-                      <span className={styles.muted}>Where: not known yet</span>
+                      <NotKnown>Where: not known yet</NotKnown>
                     ) : null}
                     <p>
                       <Linked names={names} text={w.how} />
@@ -285,11 +284,6 @@ export default async function QuestPage({
                         <span className="muted"> ({w.unplaced})</span>
                       ) : null}
                     </p>
-                    {w.reportedBy ? (
-                      <span className={styles.src}>
-                        {pageSources(w.reportedBy.source, w.reportedBy.also)}
-                      </span>
-                    ) : null}
                   </div>
                 );
               })
@@ -461,11 +455,9 @@ export default async function QuestPage({
                         <div className={styles.placeMain}>
                           <span className={styles.nm}>
                             {unknown ? (
-                              <span className={styles.muted}>
-                                Where: not known yet
-                              </span>
+                              <NotKnown>Where: not known yet</NotKnown>
                             ) : href ? (
-                              <Link href={href}>{t.place}</Link>
+                              <PreviewLink href={href}>{t.place}</PreviewLink>
                             ) : (
                               t.place
                             )}
@@ -498,13 +490,11 @@ export default async function QuestPage({
                             <span className={styles.dcol}>
                               <span className={styles.dlabel}>Danger</span>
                               {danger === null ? (
-                                <span className={styles.muted}>
-                                  Not known yet
-                                </span>
+                                <NotKnown />
                               ) : danger === "none" ? (
                                 <span>None</span>
                               ) : (
-                                <span>
+                                <span className={styles.dcol}>
                                   <span>
                                     {danger.foes}
                                     {danger.traps ? ", and traps" : ""}
@@ -590,7 +580,7 @@ export default async function QuestPage({
                     return (
                       <span key={p.name}>
                         {href ? (
-                          <Link href={href}>{p.name}</Link>
+                          <PreviewLink href={href}>{p.name}</PreviewLink>
                         ) : (
                           <b>{p.name}</b>
                         )}
@@ -633,7 +623,7 @@ export default async function QuestPage({
                     <li key={i}>
                       {o.href ? (
                         <>
-                          <Link href={o.href}>{o.name ?? o.text}</Link>
+                          <PreviewLink href={o.href}>{o.name ?? o.text}</PreviewLink>
                           {o.name ? o.text.slice(o.name.length) : ""}
                           {o.mod?.modid ? (
                             <span className="muted">
@@ -659,7 +649,9 @@ export default async function QuestPage({
             )}
           </Panel>
         )}
-        <HowSure
+      </div>
+
+      <InformationConfidence
           id="sure"
           line={sureLine}
           sources={sources}
@@ -693,7 +685,6 @@ export default async function QuestPage({
             </>
           }
         />
-      </div>
     </main>
   );
 }
