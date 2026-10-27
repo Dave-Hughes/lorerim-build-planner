@@ -3,11 +3,13 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { HomeHero } from "@/components/home/hero";
 import { YourCharacters } from "@/components/home/you";
-import { RecentCharacters, NewInTheWorld, ThreeWays } from "@/components/home/sections";
+import { RecentCharacters } from "@/components/home/recent-characters";
+import { NewInTheWorld, ThreeWays } from "@/components/home/sections";
 import { TourOffer } from "@/components/tour/tour";
 import { tourSampleId } from "@/lib/builds/sample-config";
 import { searchBuilds } from "@/lib/builds/queries";
 import { recentChanges } from "@/lib/changes";
+import { listedRunsByBuild } from "@/lib/playthroughs/queries";
 import { playthroughsOn, questsOn } from "@/lib/features";
 import { currentVersion } from "@/lib/rules/server";
 import styles from "@/components/home/home.module.css";
@@ -35,6 +37,8 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     searchBuilds({ gameVersion: currentVersion().id, sort: "newest", limit: 5 }).then((r) => r.builds),
     questsOn() ? recentChanges(6) : Promise.resolve([]),
   ]);
+  // A listed run adds its act to the card.
+  const runs = playthroughsOn() ? await listedRunsByBuild(recent.map((b) => b.id)) : null;
   return (
     <>
       {/* A first visit: Tapps offers the sample build (WO-80). */}
@@ -52,7 +56,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
         )}
       </HomeHero>
       <main className={styles.main}>
-        <RecentCharacters builds={recent} />
+        <RecentCharacters builds={recent} runs={runs} />
         <NewInTheWorld changes={changes} />
         {userId ? <YourCharacters userId={userId} /> : <ThreeWays playthroughs={playthroughsOn()} />}
       </main>

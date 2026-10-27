@@ -61,6 +61,10 @@ export interface BuildSummary {
   coverHeld?: boolean;
   /** Its video guide's YouTube id, when it has one (WO-39): cards show a Video badge. */
   videoId?: string | null;
+  /** What stays in view of the cover, as the owner set it (WO-157 Part 10): percents across and down; none, the middle. */
+  coverFocus?: { x: number; y: number } | null;
+  /** It is the featured build (WO-39). */
+  featured?: boolean;
   /** It has a Story (WO-79): cards show a small Story tag. */
   hasStory?: boolean;
   isSample?: boolean;

@@ -1,37 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import type { BuildSummary } from "@/lib/builds/types";
 import type { Change } from "@/lib/changes";
 import { formatDayMonth } from "@/lib/format/date";
 import styles from "./home.module.css";
-
-/** Recent characters: the latest listed, their cover edge to edge with the name over a fade, no boxes. */
-export function RecentCharacters({ builds }: { builds: BuildSummary[] }) {
-  if (!builds.length) return null;
-  return (
-    <section className={styles.sec} aria-labelledby="recent">
-      <span className={styles.head}>
-        <h2 id="recent" className={styles.h2}>
-          Recent characters
-        </h2>
-        <Link href="/characters">All characters ›</Link>
-      </span>
-      <div className={styles.strip}>
-        {builds.map((b) => (
-          <Link key={b.id} href={`/b/${b.id}`} className={styles.pc}>
-            {b.coverImageUrl && !b.coverHeld ? <span className={styles.pcImage} style={{ backgroundImage: `url("${b.coverImageUrl}")` }} /> : null}
-            <span className={styles.pcText}>
-              <b>{b.name}</b>
-              <small>
-                {b.race ? `${b.race} | ` : ""}by {b.author.name}
-              </small>
-            </span>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /** New in the world: real changes only, from the data builds and the approved reports (src/lib/changes.ts). */
 export function NewInTheWorld({ changes }: { changes: Change[] }) {

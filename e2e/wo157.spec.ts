@@ -105,6 +105,47 @@ test.describe("at 1440", () => {
     await expect(page.getByRole("menuitem", { name: "My characters" })).toBeVisible();
   });
 
+  test("Part 10: a recent character card carries its race, name, tagline, maker, likes and level, and lifts under the pointer", async ({ page }) => {
+    await page.goto("/");
+    const strip = page.locator("[data-rise]");
+    const card = strip.getByRole("link").first();
+    await expect(card).toBeVisible();
+    await expect(card.locator("img[src^='/icons/race-']")).toBeVisible();
+    await expect(card.locator("b")).not.toBeEmpty();
+    await expect(card).toContainText("LV");
+    await expect(card.getByLabel(/likes?$/)).toBeVisible();
+    await expect(card.getByLabel(/^Planned to level \d+$/)).toBeVisible();
+    // The cover drifts at rest.
+    const cover = strip.locator("span[style*='background-image']").first();
+    if (await cover.count()) expect(await cover.evaluate((el) => getComputedStyle(el).animationName)).toContain("drift");
+    // The strip waits below the hero; once scrolled to it the cards rise, and the pointer then lifts one.
+    await strip.scrollIntoViewIfNeeded();
+    await page.mouse.wheel(0, 200);
+    await expect.poll(() => card.evaluate((el) => Math.abs(new DOMMatrix(getComputedStyle(el).transform).m42)), { timeout: 4000 }).toBeLessThan(0.5);
+    await card.hover();
+    await expect.poll(() => card.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m42), { timeout: 3000 }).toBeLessThan(-6);
+    await page.screenshot({ path: "test-results/wo157-recent-hover-1440.png", clip: { x: 0, y: (await strip.boundingBox())!.y - 80, width: 1440, height: 560 } }).catch(() => {});
+    // Keyboard focus lifts it too, and the corners show.
+    await page.mouse.move(5, 5);
+    await expect.poll(() => card.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m42), { timeout: 3000 }).toBeGreaterThan(-1);
+    // Keyboard focus lifts it too.
+    await page.locator("body").press("Tab");
+    for (let i = 0; i < 60 && !(await card.evaluate((el) => el === document.activeElement)); i++) await page.keyboard.press("Tab");
+    await expect.poll(() => card.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m42), { timeout: 3000 }).toBeLessThan(-6);
+  });
+
+  test("Part 10: with reduced motion the covers don't drift and the cards don't rise, but the card still lifts", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    const card = page.locator("[data-rise]").getByRole("link").first();
+    await expect(card).toBeVisible();
+    expect(await card.evaluate((el) => getComputedStyle(el).opacity)).toBe("1");
+    const cover = card.locator("span[style*='background-image']").first();
+    if (await cover.count()) expect(await cover.evaluate((el) => getComputedStyle(el).animationName)).toBe("none");
+    await card.hover();
+    await expect.poll(() => card.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m42), { timeout: 3000 }).toBeLessThan(-6);
+  });
+
   test("Part 8: the place page's grammar, one Level, the respawn words, quotes without boxes, no broken characters", async ({ page }) => {
     await page.goto("/places/bleak-falls-barrow");
     const main = page.locator("main");
@@ -170,6 +211,17 @@ test.describe("at 390", () => {
     expect(box!.width).toBe(390);
     expect(box!.height).toBeGreaterThan(800);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+  });
+
+  test("Part 10: at 390 the recent characters scroll sideways in cards about 272 px wide", async ({ page }) => {
+    await page.goto("/");
+    const card = page.locator("[data-rise]").getByRole("link").first();
+    await expect(card).toBeVisible();
+    expect((await card.boundingBox())!.width).toBeGreaterThan(260);
+    expect((await card.boundingBox())!.width).toBeLessThan(285);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+    await page.locator("[data-rise]").scrollIntoViewIfNeeded();
+    await page.screenshot({ path: "test-results/wo157-recent-390.png" });
   });
 
   test("home signed in at 390: Your characters is a row that scrolls sideways, and the page doesn't", async ({ page, context }) => {

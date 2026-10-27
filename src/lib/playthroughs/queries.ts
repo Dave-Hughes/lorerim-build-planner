@@ -155,16 +155,13 @@ export interface RunSummary {
   /** The act the player is in, 1 for Act I; 0 with no acts. */
   act: number;
   actName: string | null;
+  /** How many acts the run has. */
+  acts: number;
   place: string | null;
   level: number | null;
   day: number | null;
   done: number;
   total: number;
-  /** The first objectives still to do in the current act, for the home page (WO-157). */
-  next: string[];
-  /** Where the standing came from: "Save 7", or "entered by hand"; and when. */
-  from: string | null;
-  at: Date | string | null;
 }
 
 async function runOf(id: string): Promise<RunSummary> {
@@ -182,15 +179,13 @@ async function runOf(id: string): Promise<RunSummary> {
     day: snap?.day ?? null,
     done: 0,
     total: 0,
-    next: [] as string[],
-    from: snap ? (snap.source === "save" ? snap.label : "entered by hand") : null,
-    at: snap?.at ?? null,
+    acts: 0,
   };
   if (!acts.length) return none;
   const objectives = await db().select().from(schema.playthroughObjectives).where(inArray(schema.playthroughObjectives.actId, acts.map((a) => a.id)));
   const v = assemble({ acts, objectives, chapters: [], snapshot: snap, link: () => null });
   const cur = v.current;
-  return { ...none, act: cur ? v.acts.indexOf(cur) + 1 : 0, actName: cur?.name ?? null, place: snap?.place || cur?.place || null, done: v.done, total: v.total, next: (cur?.objectives ?? []).filter((o) => o.status === "todo" || o.status === "doing").slice(0, 3).map((o) => o.text) };
+  return { ...none, act: cur ? v.acts.indexOf(cur) + 1 : 0, actName: cur?.name ?? null, place: snap?.place || cur?.place || null, done: v.done, total: v.total, acts: v.acts.length };
 }
 
 /** Each of the player's builds with a run (WO-114): the build's id to its latest run's summary. */

@@ -27,6 +27,9 @@ const summaryFields = {
   // Skip ahead (WO-69): the levels written, for a build that skips; null for one that writes every level.
   writtenLevels: sql<number[] | null>`(case when exists(select 1 from jsonb_array_elements(${schema.builds.plan}->'levels') x where x->>'skipped' = 'true') then (select jsonb_agg(t.i order by t.i) from jsonb_array_elements(${schema.builds.plan}->'levels') with ordinality t(x, i) where coalesce(t.x->>'skipped', '') <> 'true') else null end)`,
   videoId: sql<string | null>`${schema.builds.plan}->>'videoId'`,
+  // What stays in view of the cover, as the owner set it (percents across and down), and whether it is the featured build.
+  coverFocus: sql<{ x: number; y: number } | null>`${schema.builds.plan}->'coverFocus'`,
+  featured: sql<boolean>`${schema.builds.featuredAt} is not null`,
   // A Story (WO-79): a title and some text.
   hasStory: sql<boolean>`(exists(select 1 from ${schema.buildGuides} g where g.build_id = ${schema.builds.id} and g.key = 'story:title' and g.text_length > 0) and exists(select 1 from ${schema.buildGuides} g where g.build_id = ${schema.builds.id} and g.key = 'story' and (g.text_length > 0 or g.doc::text like '%"type":"image"%')))`,
   // Held back (WO-40): an admin hid it, or the build has enough open reports.
@@ -63,6 +66,8 @@ function toSummary(r: SummaryRow): BuildSummary {
     author: { name: r.authorName ?? "Unknown", image: r.authorImage ?? null, handle: r.authorHandle ?? null },
     likeCount: Number(r.likeCount ?? 0),
     videoId: r.videoId ?? null,
+    coverFocus: r.coverFocus ?? null,
+    featured: !!r.featured,
     // Held back for launch (WO-81): no Story tag while the Story is off.
     hasStory: storyOn() && !!r.hasStory,
     example: r.id === tourSampleId(),

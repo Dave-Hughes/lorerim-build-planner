@@ -5090,7 +5090,7 @@ Your note says the camera can only be framed by hand. Try setting it through the
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
-Status: building (Mac; Part 10, 27 Oct 13:41)
+Status: for Bob (Parts 8, 9 and 10 built; the full e2e passes, 419 of 419)
 
 **Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
 
@@ -5174,12 +5174,21 @@ Dave: being signed in doesn't mean he doesn't want Recent characters and New in 
 
 ### Part 10. Recent characters, dressed up (Dave, 27 Oct, 13:39: "this looks great")
 Board: `HomeCharacters` (canvas row 34, right of `HomeYou`), https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1. Same compact strip of five, portrait covers; Dave wants these to be the eye candy of the home page.
-- [ ] **On each card:** the cover edge to edge (each card keeps the cover's own position the owner set); top left, the race's pixel icon in a small dark square; top right, Featured, Video and Playthrough when the character has them (at most two); over the fade, the name (two lines at most), the tagline in the flavour face (two lines at most), and the race with its traits; under a thin rule, the maker's avatar and name, the likes, and the planned level as "LV 50" in the pixel face, right-aligned. A character with a listed run also gets "Act 2 of 4" with its act's name and a bar of the acts, from the run itself; leave it off when there's no run.
-- [ ] **Motion at rest:** each cover drifts slowly (a slow zoom and pan, about 16 s, each card out of step with the next); the cards rise in one after another the first time the strip comes into view.
-- [ ] **Under the pointer (and on keyboard focus):** the card lifts about 8 px with a deep shadow; the cover zooms a little and warms; four brass corner marks slide in; firelight rises from the bottom edge; pixel embers drift up. All of it as the board's CSS shows; no images needed beyond the cover.
-- [ ] **Phone and reduced motion:** no hover effects on touch; the strip scrolls sideways with cards about 272 px wide. With reduced motion on, no drift, rise or embers; the hover still lifts and shows the corners.
-- [ ] Design rules: the pixel face on the home page now covers the hero, the Three ways numbers and the level on these cards; write it.
-- [ ] Screenshots at 1440 (one card hovered) and 390, then `for Bob`.
+- [x] **On each card:** the cover edge to edge (each card keeps the cover's own position the owner set); top left, the race's pixel icon in a small dark square; top right, Featured, Video and Playthrough when the character has them (at most two); over the fade, the name (two lines at most), the tagline in the flavour face (two lines at most), and the race with its traits; under a thin rule, the maker's avatar and name, the likes, and the planned level as "LV 50" in the pixel face, right-aligned. A character with a listed run also gets "Act 2 of 4" with its act's name and a bar of the acts, from the run itself; leave it off when there's no run.
+- [x] **Motion at rest:** each cover drifts slowly (a slow zoom and pan, about 16 s, each card out of step with the next); the cards rise in one after another the first time the strip comes into view.
+- [x] **Under the pointer (and on keyboard focus):** the card lifts about 8 px with a deep shadow; the cover zooms a little and warms; four brass corner marks slide in; firelight rises from the bottom edge; pixel embers drift up. All of it as the board's CSS shows; no images needed beyond the cover.
+- [x] **Phone and reduced motion:** no hover effects on touch; the strip scrolls sideways with cards about 272 px wide. With reduced motion on, no drift, rise or embers; the hover still lifts and shows the corners.
+- [x] Design rules: the pixel face on the home page now covers the hero, the Three ways numbers and the level on these cards; write it.
+- [x] Screenshots at 1440 (one card hovered) and 390, then `for Bob`.
+
+### Jeff's notes on Part 10 (Mac, 27 Oct)
+- **The card** (`src/components/home/recent-characters.tsx`, `recent.module.css`, from the board's CSS): the cover edge to edge at the position its owner set (`plan.coverFocus`, now in the build summary), a plain dark panel when there is none; the race's pixel icon top left; top right Featured, Video and Playthrough (in that order, two at most; Featured comes from the build's `featuredAt`, Playthrough from a listed run); the name and the tagline (the build's description) over the fade, each two lines at most; the race and traits; under a thin rule the maker's avatar and name, the likes, and the planned level as `LV 50` in the pixel face. A listed run adds "Act 2 of 4: <act name>" and a bar of the acts (the run's own act count, added to its summary); nothing without a run. I removed the objective list, place and save fields I had put on the run summary for the old signed-in home.
+- **Motion.** Each cover drifts (a 16 s zoom and pan, each card out of step); the cards rise one after another the first time the strip is in view (the strip waits only when it's below the fold and the page has loaded; without JavaScript they're simply there). The rise is `backwards`, not `both`: with `both` the finished animation kept `transform: none` and the hover lift never showed, which my first test passed by accident (it caught the card mid-rise).
+- **Under the pointer or on keyboard focus:** lift 8 px with the deep shadow, the cover zooms and warms, four brass corners slide in, firelight comes up, embers drift up. All inside `@media (hover: hover)`, so a touch screen gets none. Reduced motion: no drift, rise or embers; the lift and the corners stay.
+- **Phone:** the strip scrolls sideways, each card 272 px, nothing on the page scrolls with it.
+- **Design rules:** the pixel face's places now include the level on these cards, and the one place the "no shadows or glows" rule gives way is written down (this card's hover).
+- **Not seen with real data:** the seeded database has two listed characters, neither Featured, with a video or with a run, so those three marks and the act bar are in the code but not in my screenshots. They want a look on the preview with Iriel (Video) and a listed run.
+- **Checks.** Typecheck, lint, 704 unit tests, 362 gamedata, the build, and the full e2e 419 of 419 (`wo157` is now 15 tests). Screenshots: `/tmp/s157/p10/wo157-recent-hover-1440.png` (one card hovered) and `wo157-recent-390.png`.
 
 ## WO-156  Dump every person's daily schedule and roles, raw: no reading (PC, 23 Oct 2026; before anything else on the PC)
 Status: done
