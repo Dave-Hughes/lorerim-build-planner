@@ -5063,7 +5063,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: queued (Mac; Part 1c first, then Parts 2 and 3. Dave approved the boards, 26 Oct, 20:25)
+Status: building (Mac; Part 1c first, then Parts 2 and 3. Dave approved the boards, 26 Oct, 20:25)
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
