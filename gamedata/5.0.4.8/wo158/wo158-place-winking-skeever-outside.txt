@@ -1,4 +1,4 @@
-; The Winking Skeever (outside) (Inn: 2500 back, 390 up) -- no outdoor map marker (an interior inn); the door's own rotation stands in for a marker-to-door vector (travel)
+; The Winking Skeever (outside) (Inn: 800 back, 250 up) -- no outdoor map marker (an interior inn); the door's own rotation stands in for a marker-to-door vector (travel)
 fw SClearSkySN
 set gamehour to 12
 player.moveto SolitudeWinkingSkeeverDoorRef

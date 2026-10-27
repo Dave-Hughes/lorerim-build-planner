@@ -1,6 +1,6 @@
-; The Winking Skeever (outside) (Inn: 2500 back, 390 up) -- no outdoor map marker (an interior inn); the door's own rotation stands in for a marker-to-door vector (frame)
-player.setpos x -66340.1
-player.setpos y 103819.1
-player.setpos z -7865.4
-player.setangle x 8.9
+; The Winking Skeever (outside) (Inn: 800 back, 250 up) -- no outdoor map marker (an interior inn); the door's own rotation stands in for a marker-to-door vector (frame)
+player.setpos x -65138.0
+player.setpos y 105021.2
+player.setpos z -8005.4
+player.setangle x 17.4
 player.setangle z 45.0

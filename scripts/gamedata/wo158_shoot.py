@@ -117,7 +117,12 @@ TIME_FROZEN = "0.0001"  # never "0" -- a true zero can hang a heavily scripted i
 # degree off the computed bearing. The first guess (300 up, 700 back) had put the camera inside the cave mouth.
 HEIGHT = 390.0       # units above the higher of the marker's and the door's own ground (a cave's; see FRAMING)
 DISTANCE = 2500.0    # units back from the entrance door, along the line from the map marker through the door (a cave's)
-VILLAGE_HEIGHT = 1500.0  # a village (Riverwood) is shot from above its own centre: this far up, 60 degrees down. Not yet seen live.
+# A village (Riverwood) has no door to aim at: the camera sits TOWN_BACK south of its own centre marker and TOWN_UP above
+# it, looking north and down at the marker (pitch derived, ~41 degrees). Part 1p: 1,500 straight up, 60 degrees down, put
+# the camera inside Riverwood's own tree canopy (seen live, 27 Oct: a screen of leaves). 3,500 up clears any tree in the
+# game; coming at it from the south keeps the river on the far side. Still a guess until Dave reads his own framing.
+TOWN_BACK = 4000.0
+TOWN_UP = 3500.0
 FOV = 70.0           # degrees, `fov <n>`
 
 # Part 1n (Dave, 27 Oct: "some locations are huge ... Bleak Falls Barrow is massive and the same camera angle
@@ -130,8 +135,12 @@ FRAMING = {
     "Cave":       {"distance": DISTANCE, "height": HEIGHT},   # measured, Part 1l
     "NordicRuin": {"distance": 6000.0, "height": 1500.0},    # guess: Bleak Falls Barrow
     "Fort":       {"distance": 4500.0, "height": 1200.0},    # guess: Fort Hraggstad
-    "Inn":        {"distance": 2500.0, "height": 390.0},     # guess: a building from the street, the cave's numbers
+    "Inn":        {"distance": 800.0, "height": 250.0},      # Part 1p: a building from its own street -- a street's length, not a cave's
 }
+# Seen live, 27 Oct: the cave's 2,500 put the Skeever's camera outside Solitude's walls, facing the main gate -- inside a
+# walled city there is no 2,500 units of open ground in any direction. 800 back and 250 up is a street's worth. Which
+# SIDE of the door the street is on (the door's rotation, or its opposite) is still unconfirmed: one reading from Dave
+# standing in the street facing the inn settles the sign and the distance together.
 
 
 def framing_for(kind):
@@ -282,11 +291,17 @@ def frame_lines(marker=None, entrance=None, kind="Cave"):
         f = framing_for(kind)
         return camera_setpos_lines(*entrance_camera(marker, entrance, f["distance"], f["height"]))
     if marker:
-        # Riverwood: no single entrance to aim at -- VILLAGE_HEIGHT above its own centre marker, 60 degrees down.
-        # The player is already standing on the marker after the travel step, so only z and the tilt change.
-        # `setpos` takes an absolute coordinate, so the marker's own z plus the offset is computed here.
-        return [f"player.setpos z {marker[2] + VILLAGE_HEIGHT:.1f}", "player.setangle x 60"]
+        return camera_setpos_lines(*town_camera(marker))
     return []
+
+
+def town_camera(marker, back=None, up=None):
+    """Camera (x, y, z, yaw, pitch) for a village: TOWN_BACK south of its centre marker, TOWN_UP above it, looking
+    north and down at the marker. Above the canopy (Part 1p), not in it."""
+    back = TOWN_BACK if back is None else back
+    up = TOWN_UP if up is None else up
+    cx, cy, cz = marker[0], marker[1] - back, marker[2] + up
+    return cx, cy, cz, yaw_to((cx, cy), (marker[0], marker[1])), pitch_to((cx, cy, cz), marker)
 
 
 def person_mark_lines():
@@ -327,7 +342,8 @@ def build(base):
     write(os.path.join(base, "wo158-toggle-hud.txt"), hud_toggle_lines())
     for name, slug, target, note, marker, entrance, kind in PLACES:
         f = framing_for(kind)
-        head = f"; {name} ({kind}: {f['distance']:.0f} back, {f['height']:.0f} up)" + (f" -- {note}" if note else "")
+        numbers = f"{TOWN_BACK:.0f} south, {TOWN_UP:.0f} up" if kind == "Town" else f"{f['distance']:.0f} back, {f['height']:.0f} up"
+        head = f"; {name} ({kind}: {numbers})" + (f" -- {note}" if note else "")
         write(os.path.join(base, f"wo158-place-{slug}.txt"), [head + " (travel; then wait for the load)"] + travel_lines(target))
         write(os.path.join(base, f"wo158-frame-{slug}.txt"), [head + " (frame; run after the place has loaded)"] + frame_lines(marker, entrance, kind))
     ws, f = WINKING_SKEEVER_DOOR, framing_for("Inn")

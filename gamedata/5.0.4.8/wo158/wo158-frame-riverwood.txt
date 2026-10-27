@@ -1,3 +1,6 @@
-; Riverwood (Town: 2500 back, 390 up) -- a village, not a single entrance -- framed from above its own centre marker instead (frame; run after the place has loaded)
-player.setpos z 1364.5
-player.setangle x 60
+; Riverwood (Town: 4000 south, 3500 up) -- a village, not a single entrance -- framed from above its own centre marker instead (frame; run after the place has loaded)
+player.setpos x 22242.7
+player.setpos y -48616.1
+player.setpos z 3364.5
+player.setangle x 41.2
+player.setangle z 0.0

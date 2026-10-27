@@ -201,6 +201,22 @@ class ShapeTest(unittest.TestCase):
         self.assertAlmostEqual(d_bfb, wo.framing_for("NordicRuin")["distance"], places=1)
         self.assertGreater(d_bfb, d_bog)  # the barrow is shot from further back than the grotto
 
+    def test_a_village_is_shot_from_above_its_trees_and_an_inn_from_its_street(self):
+        # Part 1p (seen live, 27 Oct): 1,500 up put Riverwood's camera inside the canopy; 2,500 back put the
+        # Skeever's outside Solitude's walls facing the main gate. A village: well above any tree, south of its
+        # centre, looking north and down at it. An inn: a street's length back, not a cave's.
+        marker = (22242.7, -44616.1, -135.5)
+        cx, cy, cz, yaw, pitch = wo.town_camera(marker)
+        self.assertGreater(cz - marker[2], 2500.0)        # above the tallest tree in the game
+        self.assertLess(cy, marker[1])                     # south of the centre
+        self.assertAlmostEqual(cx, marker[0], places=1)
+        self.assertAlmostEqual(yaw, 0.0, places=1)         # looking north, at the centre
+        self.assertTrue(30.0 < pitch < 60.0, pitch)        # down at it, not straight down and not level
+        riverwood = next(p for p in wo.PLACES if p[1] == "riverwood")
+        self.assertEqual(wo.frame_lines(riverwood[4], riverwood[5], riverwood[6]), wo.camera_setpos_lines(*wo.town_camera(marker)))
+        self.assertLess(wo.framing_for("Inn")["distance"], 1000.0)
+        self.assertLess(wo.framing_for("Inn")["distance"], wo.framing_for("Cave")["distance"])
+
     def test_entrance_camera_never_divides_by_zero_when_marker_and_entrance_coincide(self):
         p = (10.0, 20.0, 30.0)
         cx, cy, cz, yaw, pitch = wo.entrance_camera(p, p)

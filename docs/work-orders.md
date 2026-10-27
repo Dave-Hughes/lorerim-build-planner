@@ -5146,7 +5146,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 - **Screenshots** (in `test-results/`): `wo159-home-1440.png`, `wo159-home-390.png`, `wo159-palette-searching-1440.png`, `wo159-back-1440.png`, `wo159-playthrough-empty-1440.png`, `wo159-lydia-1440.png`, `wo159-lydia-390.png`, `wo159-jaree-ra-1440.png`, `wo159-lucan-1440.png`.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1o: travel and frame both land now, `tcl` pinned to the player; framing is per kind of place (Cave measured, the rest first guesses); needs Dave's look at Broken Oar Grotto, then one hand-framed reading per kind for the other four -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1p: 3 of 5 places shot and good on their kind's numbers (cave, ruin, fort); Riverwood was in the trees and the Skeever faced the city gate -- both reframed, needs Dave's retake of those two, then the five people -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5278,6 +5278,19 @@ Travel and frame both landed (the first time a frame step has run at all) -- and
 - [x] The console's own echo is the check, written into the run steps: after `bat wo158-start` it must say `Collision -> Off` and `AI -> Off`; if either says `On` (start run twice in one session), one `tcl`/`tai` by hand. Start must be run again after every restart of the game.
 - **Checks.** 381 gamedata tests pass (per-kind framing, `prid 14` first, the Broken Oar Grotto pin to Dave's own spot).
 
+### Part 1p. The five places, shot (Dave, 27 Oct, 17:39-17:42)
+Dave ran all five in three minutes: "3 are fine, the other 2 are ass." The three are the three kinds with a door to aim at, each on its first-guess numbers:
+- **Broken Oar Grotto** (Cave, measured): the mouth dead centre, boats and the camp in the foreground, the sea behind. Good.
+- **Bleak Falls Barrow** (NordicRuin, 6,000 back / 1,500 up): the whole arch-and-pillars front from above, the door in the middle. Good -- Dave's "the same camera angle won't work" (Part 1n) answered by its own kind's numbers.
+- **Fort Hraggstad** (Fort, 4,500 / 1,200): the gate, the walls and the keep tower in one frame. Good.
+The two misses are both the camera hitting something that stood in the way:
+- **Riverwood** (Town, 1,500 straight up): a screen of leaves -- the camera was inside the village's own tree canopy. Dave: "doesn't work, it's in trees."
+- **The Winking Skeever** (Inn, the cave's 2,500 back): outside Solitude's walls, facing the main gate. Dave: "isn't even aiming at the inn." Inside a walled city there's no 2,500 units of open ground in any direction.
+- [x] Town: `town_camera` -- 4,000 south of the centre marker, 3,500 up (above any tree in the game), looking north and down at it, pitch derived (41 degrees). Inn: 800 back, 250 up -- a street's length. Both are the next guess, not measured; which side of the Skeever's door the street is on is still open (the door's rotation or its opposite). One reading from Dave standing in the street facing the inn settles it.
+- [x] The five shots filed in `C:\LoreRim\_fieldguide\screens\wo158\` under the order's names (the two misses with `-MISS` in the name so they aren't mistaken for the real thing).
+- **Checks.** 382 gamedata tests pass.
+- **What the test showed, for the full run:** per-kind numbers work first time for the kinds with a door and open ground (caves, ruins, forts -- the great majority of the 566). Towns and buildings inside walled cities are a different problem: something is always in the way, and the right answer is likely a short, low shot from the street rather than a far, high one. That's the fraction that needs its own treatment, not hand retakes one by one.
+
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
 1. Load (or make) the throwaway save -- never Kyria's, Azrem's or any save he plays ("Before the run" item 1, still his own to do).
@@ -5293,8 +5306,8 @@ Travel and frame both landed (the first time a frame step has run at all) -- and
 6. Pictures land as `ScreenshotNNN.png` in the game root while the game runs and are moved to `C:\LoreRim\overwrite\Root\` when it closes (Part 1m; the `CS_*.png` in `overwrite\Root\screenshots\` are Community Shaders' copies of the same shots). Move or rename the ten into `C:\LoreRim\_fieldguide\screens\wo158\` as the order's own naming asks (`place-broken-oar-grotto.png`, `person-mjoll-the-lioness.png`, …).
 
 ### Report for Dave and Bob
-- [ ] The 10 pictures, staged for Bob to send to Dave.
-- [ ] How long each took (travel, load, shot), what failed (a person who wouldn't come, a place that loaded dark, an NPC walking into frame, the HUD showing), and what the program needed by hand from Dave.
+- [ ] The 10 pictures, staged for Bob to send to Dave. **So far: 3 of the 5 places** (`C:\LoreRim\_fieldguide\screens\wo158\place-broken-oar-grotto.png`, `place-bleak-falls-barrow.png`, `place-fort-hraggstad.png`); Riverwood and the Winking Skeever retake on Part 1p's numbers; the five people not yet run.
+- [ ] How long each took (travel, load, shot), what failed (a person who wouldn't come, a place that loaded dark, an NPC walking into frame, the HUD showing), and what the program needed by hand from Dave. **So far:** the five places took Dave three minutes in all (about 35 seconds a place, by hand: two bat files, two console closes, two HUD toggles, Print Screen). Nothing loaded dark; the weather and noon held; NPCs in frame at the grotto (bandits at the camp) and the fort (a guard on the wall), both fine for a place picture. What failed: the two framings above (Part 1p). By hand from Dave: first-person view, the throwaway save, and every keypress -- the driver (Before the run, item 2) takes the keypresses.
 - [ ] An estimate for the full run (566 places, about 1,000 people) from the test's times.
   - **Dave, 27 Oct, mid-test: "It would take me 100s of hours to do this for every location and every character."** Right, by hand -- and by hand was never the plan past this test. What the test has been doing is calibrating one place so every other place frames itself from its own records (marker, door, ground); nothing is typed per place. The manual steps left (two `bat` files, close the console, Print Screen) exist only because a bat file can't wait for a load or press a key. That's the helper "Before the run" item 2 already names (AutoHotkey or Python on the PC): it types each command into the console, waits for the load, presses Print Screen, moves on. At 10 to 15 seconds a place, 566 places is two to three hours of the PC running by itself; the people about the same. What it can't do is fix a place whose automatic framing is bad (a door inside a hill, as this grotto's is; a village with no door): this test's job is to find out what fraction that is, and those get a hand retake. First estimate, to be replaced by the test's own timings: a few hours unattended, plus hand retakes for the fraction the five-place test shows. The driver itself is this reader's next build once the five places are confirmed.
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
