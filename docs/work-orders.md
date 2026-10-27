@@ -5094,7 +5094,7 @@ Status: building (Mac)
 - [ ] Typecheck, lint, tests, build, e2e; screenshots at 1440 and 390 of Main stories, the main quest, Dragonborn and Dawnguard.
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
-Status: for Bob (all six parts built; typecheck, lint, 706 unit tests, 375 gamedata tests, the build and the full e2e pass)
+Status: done (Bob, 27 Oct 17:55: home, back buttons and the people reads checked on the preview (Lydia joins as housecarl when made Thane; Jaree-Ra by the Winking Skeever); the Playthrough tab is signed-in only, for Dave to see)
 
 **Why.** Dave tested staging on 27 Oct and sent a list. The quest line pages need a design first (a separate order, after Dave sees the boards); everything here is settled and can be built now.
 
@@ -5290,7 +5290,7 @@ Travel and frame both landed (the first time a frame step has run at all) -- and
 - [ ] A note of the credit line the pages would carry ("Pictures from LoreRim 5.0.4.8"), for Dave to confirm with the LoreRim team's wording.
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
-Status: for Bob (Parts 8, 9 and 10 built; the full e2e passes, 419 of 419)
+Status: done (Bob, 27 Oct 17:55: Parts 8 and 10 checked on the preview; Part 9 is signed-in only, for Dave to see)
 
 **Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
 
