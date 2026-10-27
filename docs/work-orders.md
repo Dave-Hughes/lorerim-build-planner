@@ -5064,7 +5064,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: for Bob
+Status: queued (Mac; Part 5: one Characters page, Dave 27 Oct. Parts 1c to 4 are built and await Dave's review)
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
@@ -5170,6 +5170,12 @@ People and Places landing pages (today a long list):
 - **"This was wrong"** is a modal now (the page's "Report a mistake" button opens it; the link at the foot of an older line page opens it too). Coming back from signing in opens it.
 - **People and Places landing pages.** People: groups from the records (Followers 103, Spouses 80, Merchants 501, Trainers 74, Innkeepers, Quest givers), each a few names and "All N", a town filter, search at the top. Places: each hold as a compact card with four notable places (those quests go to, then the biggest to clear) and "All N"; chips for every location type the records have ("Inn 27", "Cave 105"...), and "All inns" is its own view. Dave to judge the people grouping from the screenshots.
 - **E2E assertions changed:** `wo121a` and `wo146` (the report is a modal; no names), `wo154` (search goes to /search; the person page), `wo18` (its Search field is looked for in the page's main, since the header has a Search button too), `wo96-soon` (the header's name). The whole suite: 402 tests; two failed once for those last two reasons and pass now.
+
+### Part 5. One Characters page in place of Builds and Playthroughs (Dave, 27 Oct)
+A character is a build and, if it has one, a run (WO-114). Your own are already one list on `/me`; the public side is still two menu items (Builds, the home page's browse; Playthroughs, a bare list), so a player looks in two places for one person's character.
+- [ ] One menu item, **Characters**, in place of Builds and Playthroughs. One page of public characters: each card is the build's card and, if the character has a listed run, its acts on the card the way My characters shows them. Keep Browse's search and filters (tags, race, version) and add a filter for "has a playthrough".
+- [ ] `/playthroughs` redirects to the Characters page with that filter on; build and run pages (`/b/…`, `/p/…`) stay where they are.
+- [ ] Screenshots at 1440 and 390.
 
 **Jeff's notes, Part 2 and 3 (Mac, 26 Oct).** Built on a shared kit (`src/components/pages/`: title box, section head, gold rewards, "How sure we are", the 1440/390 layout from the boards). Screenshots: `npx playwright test e2e/wo154.spec.ts` writes `test-results/wo154-<page>-1440.png` and `-390.png` for Lights Out!, The Golden Claw, the Thieves Guild line, the main quest's line, Mjoll the Lioness and Broken Oar Grotto, with the older ones. Typecheck, lint (the one warning, `wo129.test.ts`, was there before), unit tests, 348 gamedata tests, the build and the whole e2e suite pass; one new table, `page_confirmation` (`drizzle/0029_*.sql`, additive only), applied to the dev database.
 - **Data (Python, `scripts/gamedata/quest_reads.py`, wired in `build.py`):** each read quest carries its ways (`read.ways`, 228 quests; the game's `<Alias>` and `<Global>` tags filled the way objectives are), each of the 50 read lines its line read (`line.read`), each quest the mods that changed it (`changedBy`). `get_quest` returns `ways` (and `stepsEveryWayTakes` for an "endings" quest) and `changedBy`; nothing generated was renamed. The main quest's line is "The main quest" (in `questlines.json`, not in the generated file).
