@@ -1,6 +1,7 @@
 ; Fort Hraggstad -- of three gates, the one nearest the marker
 fw SClearSkySN
 set gamehour to 12
+player.moveto FortHraggstadMapMarker
 player.setpos x -113540.6
 player.setpos y 114917.0
 player.setpos z -5038.6

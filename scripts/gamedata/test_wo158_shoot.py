@@ -16,7 +16,7 @@ def all_place_lines():
     for name, slug, target, note, marker, entrance in wo.PLACES:
         yield slug, wo.place_lines(target, marker, entrance)
     ws = wo.WINKING_SKEEVER_DOOR
-    yield "winking-skeever-outside", [f"fw {wo.CLEAR_WEATHER}", "set gamehour to 12"] + wo.camera_setpos_lines(
+    yield "winking-skeever-outside", [f"fw {wo.CLEAR_WEATHER}", "set gamehour to 12", f"player.moveto {ws['target']}"] + wo.camera_setpos_lines(
         *wo.door_camera(ws["pos"], ws["door_yaw"]))
 
 
@@ -84,6 +84,18 @@ class ShapeTest(unittest.TestCase):
         # mark (not left at the previous shot's camera spot) before any prid/enable/moveto runs.
         lines = wo.person_lines(wo.PEOPLE[0][2], [t for _, _, t in wo.PEOPLE[1:]])
         self.assertEqual(lines[:3], wo.person_mark_lines())
+
+    def test_every_place_moves_to_its_marker_before_any_fine_setpos(self):
+        # Found live, 27 Oct (Part 1g): player.setpos only moves the player within whatever cell/worldspace
+        # they're already in -- it never loads a new one. Running a place's file without a moveto first just
+        # nudged Dave around inside wherever his character happened to start. player.moveto has to come before
+        # any setpos/setangle line, every time, since it's the one command that's worldspace-aware.
+        for slug, lines in all_place_lines():
+            moveto_at = next((i for i, l in enumerate(lines) if l.startswith("player.moveto")), None)
+            setpos_at = next((i for i, l in enumerate(lines) if l.startswith("player.setpos") or l.startswith("player.setangle")), None)
+            self.assertIsNotNone(moveto_at, (slug, lines))
+            if setpos_at is not None:
+                self.assertLess(moveto_at, setpos_at, (slug, lines))
 
     def test_every_target_is_unique(self):
         place_targets = [t for _, _, t, _, _, _ in wo.PLACES] + [wo.WINKING_SKEEVER_DOOR["target"]]

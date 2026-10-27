@@ -1,9 +1,18 @@
 """
-WO-158 Part 1f: `tfc` dropped entirely, after Parts 1c to 1e each fixed a real bug around it and the same
-symptom still came back a fourth time. Writes `bat <file>` scripts to gamedata/5.0.4.8/wo158/ (committed, so
-Bob/Dave can read exactly what each shot does) and, when `C:\\LoreRim` exists, also to
-`C:\\LoreRim\\_fieldguide\\tools\\wo158\\` and directly into `C:\\LoreRim\\Stock Game\\` (Part 1e):
+WO-158 Part 1g: `player.moveto` restored before the fine `setpos` offset, after Part 1f's own fix finally ran
+clean (no freeze, no hidden console) and still landed Dave indoors, nowhere near the entrance. Writes `bat
+<file>` scripts to gamedata/5.0.4.8/wo158/ (committed, so Bob/Dave can read exactly what each shot does) and,
+when `C:\\LoreRim` exists, also to `C:\\LoreRim\\_fieldguide\\tools\\wo158\\` and directly into
+`C:\\LoreRim\\Stock Game\\` (Part 1e):
   python3 scripts/gamedata/wo158_shoot.py
+
+**Why Dave ended up indoors.** `player.setpos` only moves the player within whatever cell or worldspace
+they're already loaded into -- it never loads a new one. The entrance-camera branch of `place_lines()` went
+straight to `camera_setpos_lines()` (three `setpos`, two `setangle`) with no `player.moveto` first, so it just
+nudged Dave's character around inside the interior his throwaway character happened to start in, using Tamriel
+exterior coordinates that meant nothing there. `player.moveto <marker>` (the same command that already worked,
+repeatedly, for bringing people into the photo room) has to run first -- it's worldspace-aware -- landing
+exactly on the marker, before the `setpos` lines do their fine offset from a now-correct starting point.
 
 **Why `tfc` is gone.** Four live tests in a row, including after the `tm` fix, the per-shot retoggle fix and
 the `sgtm` fix, Dave kept landing on the same thing: a menu he could hear open but not see, nothing responding.
@@ -186,7 +195,12 @@ def camera_setpos_lines(cx, cy, cz, yaw):
 def place_lines(target, marker=None, entrance=None):
     lines = [f"fw {CLEAR_WEATHER}", "set gamehour to 12"]
     if marker and entrance:
-        lines += camera_setpos_lines(*entrance_camera(marker, entrance))
+        # `player.setpos` only moves the player within whatever cell/worldspace they're already in -- it does
+        # not load a new one. `player.moveto` does (it's how `prid`+`moveto player` already worked for people),
+        # so it has to run first, landing exactly on the marker in the right worldspace; the setpos lines after
+        # it then do the fine offset from there. Found live, 27 Oct (Part 1g): without this, running a place's
+        # file just nudged Dave around inside whatever interior his character already stood in.
+        lines += [f"player.moveto {target}"] + camera_setpos_lines(*entrance_camera(marker, entrance))
     elif marker:
         # Riverwood: no single entrance to aim at -- straight to the marker, well above it, tilted further down.
         # `setpos` takes an absolute coordinate, not a relative one, so the marker's own z plus the offset is
@@ -237,7 +251,7 @@ def build(base):
     ws = WINKING_SKEEVER_DOOR
     ws_lines = [f"; The Winking Skeever (outside) -- no outdoor map marker (an interior inn); the door's own "
                 f"rotation stands in for a marker-to-door vector", f"fw {CLEAR_WEATHER}", "set gamehour to 12"]
-    ws_lines += camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"]))
+    ws_lines += [f"player.moveto {ws['target']}"] + camera_setpos_lines(*door_camera(ws["pos"], ws["door_yaw"]))
     write(os.path.join(base, "wo158-place-winking-skeever-outside.txt"), ws_lines)
     write(os.path.join(base, "wo158-photoroom-setup.txt"), [f"; {PHOTO_ROOM}, the photo room; run once"] + photoroom_lines())
     all_targets = [t for _, _, t in PEOPLE]

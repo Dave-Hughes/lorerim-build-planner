@@ -1,6 +1,7 @@
 ; The Winking Skeever (outside) -- no outdoor map marker (an interior inn); the door's own rotation stands in for a marker-to-door vector
 fw SClearSkySN
 set gamehour to 12
+player.moveto SolitudeWinkingSkeeverDoorRef
 player.setpos x -65067.3
 player.setpos y 105091.9
 player.setpos z -7955.4

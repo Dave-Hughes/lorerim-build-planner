@@ -5054,7 +5054,7 @@ Dave: "For followers, we have no information on how any of them join you." The r
 - [ ] Typecheck, lint, tests, build and e2e; screenshots at 1440 and 390 of the home, the palette loading, a back button, the empty Playthrough tab, and Lydia's page.
 
 ## WO-158  Pictures from the game: a test of 5 places and 5 people (PC, 27 Oct 2026)
-Status: blocked (PC; Part 1f dropped tfc entirely, needs Dave's run again -- see "How Dave runs it" below)
+Status: blocked (PC; Part 1g added the missing player.moveto, needs Dave's run again -- see "How Dave runs it" below)
 
 **Why.** Quest, person and place pages have a plain title because there's no picture of most places and people. Dave wants a systematic way to get in-game pictures of every location and person (backlog, "Pictures of every place and person"). This order is only a test: 10 pictures, to judge whether it works and how they look, before anything runs at scale or reaches the site.
 
@@ -5128,6 +5128,11 @@ Dave's fourth test, genuinely running the corrected Part 1e copy this time ("ESC
 - [x] **`tfc` dropped entirely, not patched a fifth time.** It was never load-bearing: `player.setpos`/`player.setangle` already move and aim the player directly (confirmed live, more than once), and Skyrim's own first-person view shows exactly what the player's eyes are pointed at, with no character model in the way -- the same framing a detached free camera would have given, from the same numbers, without a free camera at all. `tcl` (no collision) stays, since a player placed in open air above an entrance needs it to not just fall; `tfc` does not.
 - [x] **One manual step this adds, since nothing else can do it:** before `wo158-start`, switch to first-person view by hand and stay there for the session -- third person would show the player's own body hanging in the air at every place shot. Written into "How Dave runs it" below.
 - **Checks.** `test_wo158_shoot.py`'s retoggle test replaced with one asserting `tfc` never appears anywhere at all, in any file. 369 gamedata tests pass.
+
+### Part 1g. The fifth live test: Part 1f ran clean, and still landed Dave indoors (Dave, 27 Oct)
+No freeze this time, console worked throughout, `wo158-toggle-hud` confirmed in the log (`Menus -> Off` / `Menus -> On`) -- Part 1f's own fix held. But the screenshot after `bat wo158-place-broken-oar-grotto` showed an interior room, nowhere near a cave entrance. The `setpos`/`setangle` commands had all run (visible in the console log Dave shared), so the mechanism wasn't broken -- the destination was wrong.
+- [x] **`player.setpos` doesn't load a new cell or worldspace -- it only moves the player within the one they're already in.** `place_lines()`'s own entrance-camera branch went straight from `fw`/`set gamehour` to `camera_setpos_lines()` with no `player.moveto` first, so every `setpos` call just repositioned Dave's character within whatever interior his throwaway save started him in, using Tamriel's own exterior coordinates, which meant nothing there. `player.moveto <marker>` -- the same command already proven working for bringing people into the photo room -- is worldspace-aware; it has to run first, landing exactly on the marker, before the fine `setpos` offset from a now-correct starting point. Added to the main entrance-camera branch and to the Winking Skeever's own build block, the two places that were missing it (Riverwood's branch already had its own `player.moveto` and was never affected).
+- **Checks.** `test_wo158_shoot.py`'s own helper for the Winking Skeever rewritten to match the generator exactly (it had been hand-assembling lines without the `moveto` too, so it couldn't have caught this). New test: every place's own lines carry a `player.moveto` before any `setpos`/`setangle` line, not only somewhere in the file. 370 gamedata tests pass.
 
 ### How Dave runs it
 0. **Switch to first-person view** (Part 1f) and stay there until the shoot is done -- there's no console command to force it, so this one's by hand.
