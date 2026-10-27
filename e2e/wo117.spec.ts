@@ -25,7 +25,7 @@ test("Edit opens Set up at Details, for a character and a build alone", async ({
   }
 });
 
-test("five tabs on a character, three on a build alone, and the band's Done is the one ember button", async ({ page, context }) => {
+test("five tabs on a character, and the same five on a build with no run yet, and the band's Done is the one ember button", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
   // WO-124: named for what's in them.
@@ -33,7 +33,8 @@ test("five tabs on a character, three on a build alone, and the band's Done is t
   await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingKyria Severa");
   await expect(page.getByRole("link", { name: "Change the cover" })).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/setup?step=name#cover`);
   await page.goto(`/b/${FRESH_BUILD_ID}/edit`);
-  await expect(tabNames(page)).toHaveText(["Character", "Build", "Guide", "Story"]);
+  // A character with no run yet still shows Playthrough to its owner (WO-159), which opens the page that plans one.
+  await expect(tabNames(page)).toHaveText(["Character", "Build", "Guide", "Story", "Playthrough"]);
   // Below the site header (its New character is the site's), Done is the one ember button.
   await expect(page.locator(".btn-primary:visible:not(header .btn-primary)")).toHaveCount(1);
   await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Done" })).toHaveClass(/btn-primary/);

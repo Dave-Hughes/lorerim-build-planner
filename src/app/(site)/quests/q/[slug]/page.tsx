@@ -174,6 +174,11 @@ export default async function QuestPage({
         title={name}
         tags={
           <>
+            {line.quests.length > 1 && (
+              <Link href={`/quests/${line.id}`} className={styles.tag}>
+                {line.name}
+              </Link>
+            )}
             {town && <span className={styles.tag}>{town}</span>}
             {mod?.base ? (
               <span className={styles.tag}>Vanilla</span>

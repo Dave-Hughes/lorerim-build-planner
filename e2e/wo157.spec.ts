@@ -173,7 +173,7 @@ test.describe("at 1440", () => {
     await expect(page.getByRole("region", { name: /What he offers/ })).toHaveCount(0);
     await page.goto("/people/lucan-valerius");
     await expect(page.getByRole("region", { name: "What he offers" })).not.toContainText("Quests");
-    await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("From the game files. A second reader hasn't checked this page yet.");
+    await expect(page.getByRole("region", { name: "Information Confidence" })).toContainText("Read from the game files and checked by a second reader.");
   });
 
   test("Part 8: the home buttons sit clear of the fire scene", async ({ page }) => {
