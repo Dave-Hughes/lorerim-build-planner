@@ -1,0 +1,2932 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:01337C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Haelga's Bunkhouse (people_raw cell) and every package points there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "packages in order: dinner 17x1, lunch 13x1, breakfast 6x1, sleep 0x6, back 18:00 for 7 h, front always; the back package runs to 1 am but sleep sits above it, so midnight-6 is sleep; the reader's hours match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a condition; nothing in her records moves her"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no job faction; gives Caught Red Handed (giver dialogue, stage < 11) and A Strong Nord Woman"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on her record; PotentialFollowerFaction absent"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on her record; PotentialFollowerFaction absent"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on her record; PotentialFollowerFaction absent"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013256 and outfit Skyrim.esm:0958AA aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Caught Red Handed objective 50 'Speak to Svana'; A Strong Nord Woman objective 50 'Talk to Svana'; Taking Care of Business has a SvanaAlias but no objective names her, which the reader says"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01337D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Haelga's Bunkhouse; first daytime packages are the wood chopping/carrying in Riften, which the reader gives"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "package order: bunkhouse 18x6, market 15x3, carry 13x2, chop 11x2, carry 9x2, chop 7x2, breakfast 6x1, sleep 0x6 at Haelga's; hours match, and the reader flags the chop packages' 'player within 512' distance check"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "market 15x3 needs A Chance Arrangement stage != 10 and != 20 (steal and plant Madesi's ring) and fn62 (IsRaining) == 0; carry/chop need the same no-rain check, the 7 am chop a weather check instead"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "factions: RiftenFisheryFaction, RiftenHaelgasBunkhouseFaction; no job faction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on his record"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on his record"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data on his record"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit RMB SPID - Armors of the Velothi II.esp:00082C aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A Strong Nord Woman alias Tythis11b; objectives 20/30/40 'Talk to Tythis', 'Win the brawl against Tythis', 'Threaten Tythis'; his other aliases are in unnamed quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013BBD",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dragonsreach (people_raw); the main-quest texts send you to the jarl there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "his only package is CWExiledImperialSandboxBluePalace, gated on GovExiled; otherwise no package, so he stays where placed in Dragonsreach"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "exile package targets the Blue Palace (Haafingar) when he's in GovExiled; Season Unending stage 10 'The Jarl of Whiterun won't help me capture a dragon as long as the civil war is raging' and his BalgruufAlive alias in it"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobJarlFaction, WhiterunJarlOwnershipFaction; gives The Whispering Door (others list, stage < 10) and The Wintersand Deception (giver, stage < 6)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "MarriageExcludedFaction; marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 and outfit Skyrim.esm:0FBFF8 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "each checked: Before the Storm O30 'Talk to the Jarl of Whiterun'; Bleak Falls Barrow S10; Dragon Rising O5/O40; Message to Whiterun O10/O11; Season Unending S10; Whispering Door S10 'He's asked me to help the boy'; Wintersand Deception O5/O20"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013BB5",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Jorrvaskr; his all-day package WhiterunVignarJorrvaskrPackage is there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: exile, mourn (Loredas 7 pm), random 15x4, Drunken Huntsman 19x6, DefaultSleepEditorLoc 0x8, Jorrvaskr always; the Huntsman (7 pm-1 am) sits above sleep, so sleep is 1-8 am as the reader has it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "AIOWRGrayFamilyMourn: dow 6 (Loredas), 19:00 for 150 min, OR'd GetDeadCount on Thorald, Eorlund, Avulstein, Fralia, Olfina (and Vignar himself); exile package to Viola Giordano's House on GovExiled; WhiterunSonsJarl alias for the jarlship"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CompanionsFaction, GovSons, JobJarlFaction; alias WhiterunSonsJarl / JarlBackup"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 and outfit Companion_Fashions.esp:000916 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Brotherhood: he only fills an alias; its one objective is 'Follow <Questgiver>' and no text says it's your induction or names him, so 'named among the Companions at your induction' overstates it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true, protected true"
+    }
+   }
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:0008F6",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Riften Fishery; her first daytime package is the fishery docks 6x12 until End of the Line is done"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: docks 6x12 (End of the Line not completed), sleep 0x6 at Haelga's, bunkhouse 18x6, crab stall always (End of the Line completed); hours match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "crab stall package gated on GetQuestCompleted End of the Line == 1, docks package on == 0; End of the Line S20/S55 put the stall in the Grand Plaza"
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "besides her own quests she hands out further fishing bounties: Miscellaneous Quests Handler objective 2000 'Ask Viriya about additional fishing bounties around Skyrim'; the reader left that out"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction but vendor null; End of the Line's ending says she sells mudcrab meat, but no stock list; left blank with unsure"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no trainer data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower true and PotentialFollowerFaction; nothing in the extracts says what unlocks it, which the reader marks unsure"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit ccBGSSSE001-Fish.esm:000A5E aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "In A Pinch S200 'she gave me a key to the Riften Fishery'; Crustacean Extermination S5 note, S200 Alik'ri fishing rod; Angler Acquaintances O10; End of the Line S20/S40"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:0008F8",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Riften Fishery; his first daytime package is the fishery work 5x15"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: work 5x15 (no location, named 'Inside'), sleep 0x5 at Haelga's, bunkhouse 20x4; hours match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "RiftenFisheryFaction, PotentialMarriageFaction; named giver of the five fishing challenges"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction rank 0; the condition isn't in the extracts, which the reader marks unsure"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit ccBGSSSE001-Fish.esm:000A5F aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Catch of the Day S200 gold and Fishery key; Caught in the Rain S200 Argonian fishing rod; Frozen Fish S4 letter, O6 speak; Darkest Depths; Fishing Legend S200 Fang of Haynekhtnamet; Angler Acquaintances O20"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01338E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Understone Keep"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: eat 20x2, eat 6x2, castle wizard vendor package (no hours = always), sandbox; so outside the two meals the vendor package holds him at his post, night included; no sleep package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobCourtWizardFaction, JobMerchantFaction, ServicesMarkarthCastleWizard; gives Nimhe and The Lost Expedition"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24, buy list 0937A1 shared with Tolfdir, Faralda, Colette and other spell sellers; container unresolved, so no item names"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01CE14 and outfit Court_Fashions.esp:000808 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Beneath Bronze Waters S0 'Calcelmo has heard fishermen's tales of a strange apparatus outside of Bronze Water Cave' and he's its named giver, so he starts it as well as building the rod (O18-O25)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:03A19A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Grave Concoctions; first daytime package is selling there 8x12"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: exile (GovExiled only), sell 8x12, DefaultSleepEditorLoc 0x8, AIOFalkRandom always (fn62 IsRaining == 0 plus fn612 checks); hours match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "none that apply: she carries a shared exile package to Candlehearth Hall gated on GovExiled, a faction she isn't in and no record puts her in"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, ServicesFalkreathGraveConcoctions; gives Clear-Headed and Ingredient Collection"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20; buy list 09379F is shared with Arcadia, Angeline Morrard, Frida and other apothecaries; container unresolved"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 and outfit Merchant_Fashions.esp:00098B aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Clear-Headed S0 glassfish, S30 skooma plan; Ingredient Collection O10 'Bring 5 sabre cat eyes'; A Dying Wish alias 44 Zaria with O90 'Ask an alchemist about the Ironwood Fruit'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01B1DB",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "unsure",
+     "note": "no packages, no placed cell (people_raw cell null); quest givers place him at a ref in the open world (Skyrim.esm:074340 in 000D74), and the caravan quest Skyrim.esm:03ACDB has no text; 'camped outside a city' isn't in any record, so trimmed to what the records show"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages on his record; left empty with unsure"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages or quest fragments to read"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CaravanALeader, CaravanMerchant_Faction, JobMerchantFaction; Spirits Away S0 'Ri'saad, the Khajiit caravan merchant'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24, lists unresolved"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01325B and outfit KhajiitHazWears.esp:000805 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Spirits Away S0 bounty, O10 fish up the flin, S200 reward ring; Thieves Guild Caravan Fence Quest O10 'Deliver Moon Sugar to Ri'saad' for Tonilia"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013282",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Erikur's House; her day is spent around Solitude as the reader gives it"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: Winking Skeever 16:00 for 450 min (weather 0C8220 excluded), Radiant Raiment 11x2, 'Empire' 13x3, 'Aromatics' 9x2 (both unresolved targets), eat 8x1, sleep 0x8, sandbox; 11:30 pm-midnight falls to the sandbox at home; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobStewardFaction but no duty shown (reader marks unsure); named giver of The Ultimate Feast"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013181 and outfit Skyrim.esm:0E40DD aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Ultimate Feast S0 'Gisli's bounty letter', O50 'Set a table for Gisli at the Winking Skeever'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013BAD",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Carlotta Valentia's House; dry-weather daytime packages put her in the market, playing, the Bannered Mare"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: market 11x2, play 13x6, Bannered Mare 19x3 (all fn62 IsRaining == 0), sleep 23:00 for 720 min at the house, home always; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "in rain the three outings fail and the home package covers 11 am-11 pm"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no job faction; named giver of Heart of Gold and Two of a Kind"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013279 and outfit PrinceandPauper.esp:000D63 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Heart of Gold S0 goldfish; Two of a Kind S5 letter, S200 key to her treasure box behind Dragonsreach; Mirrors of Youth O15 'Ask Mila Valentia about Braith'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133B3",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Treasury House; first daytime package is the upper dry-side sandbox 8x12"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: finale hide (GovExiled + quest), exile Palace of the Kings (GovExiled), dry side 8x12, sleep 0x8 at the Treasury House (fn606 check), DefaultSandboxHomeowner; matches"
+    },
+    "changes": {
+     "verdict": "unsure",
+     "note": "the exile packages are right, but he's also in MS02VictimsFaction, a faction named for No One Escapes Cidhna Mine's victims; nothing in the extracts says what that does to him (he is essential)"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobStewardFaction, GovSons, MarkarthTreasuryHouseFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Skyrim.esm:09D5E0 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Bothela's Discreet Delivery O10 'Deliver the <Potion> to <Steward>' with giver dialogue on him; Hendraheim giver Reburrus or Raerek (stage < 81), S90 'bought the home from the steward of Markarth'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133B2",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Understone Keep"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only the exile package (GovExiled) and DefaultSandboxEditorLocation512, so near where placed all day"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "CWExiledImperialSandboxBluePalace on GovExiled"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobStewardFaction, GovImperial, GovRuling"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Court_Fashions.esp:00080D aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Hendraheim other giver Raerek (stage < 81); Compelling Tribute fills StewardSons with Raerek and its evidence reward is 'Raerek's Inscribed Amulet of Talos'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013BBA",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Dragonsreach"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only the exile package; otherwise no package, so where placed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "CWExiledImperialSandboxBluePalace on GovExiled"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobStewardFaction; Steward alias in Skyrim.esm:0270A4"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Court_Fashions.esp:00080C aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Unquiet Dead giver dialogue on him (stage < 211), O210 'Speak to the Steward of Whiterun', O220 buy Goldenhills; the other three are aliases only, which the reader marks unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01A6A2",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Jorrvaskr"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: exile, drunk sandbox 17x5 Jorrvaskr, drunk sandbox 10x7 Jorrvaskr, Bannered Mare 22x4, DefaultSleepEditorLoc 0x8; the inn (to 2 am) beats sleep, 8-10 am has no package; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "CWExiledSonsSandboxViolaGiordanosHouse on GovExiled"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "VignarBrillFaction, JobStewardFaction, StewardBackup alias beside Vignar's JarlBackup in Skyrim.esm:0270A4; reader marks the reading unsure"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Companion_Fashions.esp:000917 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Belethor's Sister.esp:0008E6 is named 'Delivery for <alias=npc>' in the record, the recipient's name, not 'Delivery for Lelaegh' (Lelaegh gives it); and Brotherhood's only objective is 'Follow <Questgiver>', nothing about an induction"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C19D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Hall of Attainment"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: alchemy lab 23x2, visit Phinis 20x3, sleep 4x8, dinner 17x2, room sandbox always; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Arniel's Endeavor (part 4) S200 'He has vanished, leaving behind the dagger Keening'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CollegeofWinterholdFaction rank 3; gives Arniel's Endeavor and Rapture of the Deep"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "no vendor, trainer or follower data"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Unofficial Skyrim Special Edition Patch.esp:006CAA and outfit College_Fashions.esp:00094A aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Containment, The Staff of Magnus and The Eye of Magnus listed as 'named in it' is a quest with no role; the givers records show he has lines in each while it runs (Containment stage < 31, Staff < 51, Eye < 40), and Containment has a gate marker for him"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C19E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "MG01TolfdirHoldAtTeachMarker holds him at the Hall of the Elements while First Lessons is below stage 200 (GetStage >= 0 also passes before it starts), above his sleep and sandbox"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "after First Lessons: sleep 1x5 Hall of Attainment, classroom sandbox (near where placed) the rest; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "MG04 stage == 10 hold in Hall of the Elements; MG02 start (< 20), Saarthal interior (>= 20), stage 40 mark; MG01 hold until stage 200"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobTrainerAlterationFaction, JobSpellFaction, vendor 0-24"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24 radius 512, spell-seller buy list 0937A1; container unresolved"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Alteration tier Master, levelCap null (every Master trainer in the extract has no cap; Journeyman 75, Expert 100)"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A69 and outfit College_Fashions.esp:000902 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "the quest record's name is 'None Escape The Light', not 'Escape The Light'; Containment's objectives never name him (he only has lines, stage < 30); Myrwatch starts from a note at Myrwatch (S5), he sells it rather than gives it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C19A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Hall of Countenance"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: four 13x2 practice packages split by GetRandomPercent (together always one), Arcanaeum 7:00 for 240 min, dinner 17x2, sleep 20:00 for 600 min, room sandbox; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobTrainerRestorationFaction, JobSpellFaction, vendor 0-24"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24 radius 500, spell-seller buy list 0937A1"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Restoration tier Expert, levelCap 100 (all 31 Expert trainers in the extract carry 100)"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A74 and outfit College_Fashions.esp:00091F aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quest name in the record is 'None Escape The Light'; the two With Love, Eilonwy quests only hold a Colette alias with no step or text, a quest with no role, so they move to unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C197",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "First Lessons S24 puts her 'at the entrance to the College', but her stand-outside package runs only 9 am-3 pm (AIOWinterholdFaraldaStandOutside9x6); outside those hours she's in the Hall of Countenance, where she's placed"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: weekends 17:00 for 180 min at the Frozen Hearth (dow 8), stand outside 9x6, dinner 17x2, sleep 22x7, room sandbox; matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "weekend package dow 8; With Love, Eilonwy, Part 2 S120 'I let Faralda's brother take her back to Alinor'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobTrainerDestructionFaction, JobSpellFaction, vendor 0-24; gives First Lessons"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24, spell-seller buy list 0937A1"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Destruction tier Master, no cap"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false; With Love, Eilonwy objectives 'Continue traveling with Faralda', marked unsure by the reader"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A73 and outfit College_Fashions.esp:000943 aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "First Lessons offers five tests (O20-O24: Magelight, Flame Atronach, Firebolt, Fear, Healing Hands on her), not only Healing Hands; Hitting the Books, Good Intentions, Containment, The Staff of Magnus, The Eye of Magnus as 'named in it' have no role: she only has lines while they run (givers records) and no objective names her"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C193",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Arcanaeum; WCollegeUragHoldatArcanaeumMarker always"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: Elder Knowledge hold, sleep 0x6 Hall of Countenance, Arcanaeum always; matches"
+    },
+    "changes": {
+     "verdict": "unsure",
+     "note": "MQ205UragHoldinGreatHall needs Elder Knowledge stage == 50 AND GetInFaction CollegeofWinterholdFaction == -2; GetInFaction only returns 0 or 1, so as extracted it can never pass; whether he ever moves isn't settled"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, ServicesWinterholdCollegeUrag; gives Fetch me that Book!, Shalidor's Insights, Reading Comprehension 101"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24 radius 500 with its own lists (10C42E/10C431), unresolved; Scroll Scouting O20 'Buy back the Elder Scroll (Dragon) from Urag gro-Shub'"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "not a follower"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013179 and outfit College_Fashions.esp:00093D aren't resolved in any extract (no class names, skill weights or outfit contents), so no fighting style can be read; left blank, as the reader did"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "The Throat of the World only has a 'Lorekeeper' alias, no step or text, so it has no role and moves to unsure; Prophet does say what he's for: O25 '(Optional) Visit the College of Winterhold to ask about the Moth Priest', with giver dialogue on him (stage < 60)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:01337C",
+   "name": "Svana Far-Shield",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Haelga's Bunkhouse, Riften",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "6 hours",
+     "where": "the front room of Haelga's Bunkhouse, Riften",
+     "doing": "passing the time"
+    },
+    {
+     "from": "1 pm",
+     "for": "1 hour",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "lunch"
+    },
+    {
+     "from": "2 pm",
+     "for": "3 hours",
+     "where": "the front room of Haelga's Bunkhouse, Riften",
+     "doing": "passing the time"
+    },
+    {
+     "from": "5 pm",
+     "for": "1 hour",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "dinner"
+    },
+    {
+     "from": "6 pm",
+     "for": "6 hours",
+     "where": "the back of Haelga's Bunkhouse, Riften",
+     "doing": "passing the time"
+    }
+   ],
+   "changes": [],
+   "role": "Riften resident living at Haelga's Bunkhouse; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Caught Red Handed",
+     "how": "gives it; you come back to her at the end (\"Speak to Svana\")"
+    },
+    {
+     "quest": "A Strong Nord Woman",
+     "how": "gives it; you report back to her after dealing with Tythis"
+    },
+    {
+     "quest": "Taking Care of Business",
+     "how": "named in it, at Haelga's Bunkhouse where you collect Haelga's debt; her exact part isn't spelled out"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "'front' and 'back' come from the package names; the markers themselves aren't resolved beyond Haelga's Bunkhouse."
+    },
+    {
+     "field": "quests",
+     "why": "Seven more quests name her in an alias but have no name or text in the extracts (likely scenes and handlers); left out."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01337C",
+    "RiftenSvanaSleep0x6",
+    "RiftenSvanaEatBreakfast6x1",
+    "RiftenSvanaEatLunch13x1",
+    "RiftenSvanaEatDinner17x1",
+    "RiftenSvanaBunkhouseBack18x7",
+    "RiftenSvanaBunkhouseFront0x0",
+    "Skyrim.esm:041F91 FreeformRiften11 (giver dialogue Caught Red Handed - Quest Expansion.esp:000800)",
+    "Caught Red Handed - Quest Expansion.esp:000802 FreeformRiften11b",
+    "Skyrim.esm:01F326 TG01 alias SvanaAlias",
+    "essential false, protected false"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01337D",
+   "name": "Tythis Ulen",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Riften: chopping and carrying wood by day, at the market in the late afternoon, at Haelga's Bunkhouse in the evening",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "2 hours",
+     "where": "Riften, at a woodcutting spot",
+     "doing": "chopping wood"
+    },
+    {
+     "from": "9 am",
+     "for": "2 hours",
+     "where": "Riften",
+     "doing": "carrying wood"
+    },
+    {
+     "from": "11 am",
+     "for": "2 hours",
+     "where": "Riften, at a woodcutting spot",
+     "doing": "chopping wood"
+    },
+    {
+     "from": "1 pm",
+     "for": "2 hours",
+     "where": "Riften",
+     "doing": "carrying wood"
+    },
+    {
+     "from": "3 pm",
+     "for": "3 hours",
+     "where": "the market, Riften",
+     "doing": "browsing"
+    },
+    {
+     "from": "6 pm",
+     "for": "6 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "passing the evening"
+    }
+   ],
+   "changes": [
+    "Only in dry weather does he work the wood and visit the market; in rain those hours have no package of their own.",
+    "He stays away from the market while A Chance Arrangement is at its middle steps."
+   ],
+   "role": "Riften labourer living at Haelga's Bunkhouse (on the fishery's roll)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Strong Nord Woman",
+     "how": "its target: you talk to him, beat him in a brawl, or threaten him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "The woodcutting and market spots aren't resolved to a named place; 'market' and 'wood' come from the package names. The wood-chopping packages also carry a player-distance check and an unnamed condition, so he may not chop whenever the hour is right."
+    },
+    {
+     "field": "changes",
+     "why": "'when it isn't raining' reads the AI Overhaul condition (condition function 62, IsRaining = 0); the extract leaves it as a bare function number. The 7 am chop also skips one weather type (function 149) instead."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01337D",
+    "RiftenTythisSleep0x6",
+    "RiftenTythisEatBreakfast6x1",
+    "RiftenTythisWorksChopWood7x2",
+    "RiftenTythisWorksCarryWood9x2",
+    "RiftenTythisWorksChopWood11x2",
+    "RiftenTythisWorksCarryWood13x2",
+    "RiftenTythisMarket15x3 (A Chance Arrangement Skyrim.esm:021556 stage != 10, != 20)",
+    "RiftenTythisBunkhouse18x6",
+    "RiftenFisheryFaction",
+    "Caught Red Handed - Quest Expansion.esp:000802 alias Tythis11b"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013BBD",
+   "name": "Balgruuf the Greater",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Dragonsreach, Whiterun",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "at court, where he's placed"
+    }
+   ],
+   "changes": [
+    "If he loses Whiterun in the civil war and is exiled, he moves to the Blue Palace in Solitude.",
+    "Season Unending: he won't help capture a dragon while the war goes on, which sends you to arrange the peace council; he sits on the council."
+   ],
+   "role": "Jarl of Whiterun; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no (excluded from marriage)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Before the Storm",
+     "how": "a step in it: you bring him news of the dragon attack on Helgen"
+    },
+    {
+     "quest": "Bleak Falls Barrow",
+     "how": "a step in it: he sends you to help Farengar"
+    },
+    {
+     "quest": "Dragon Rising",
+     "how": "a step in it: he sends you to the watchtower and rewards you after"
+    },
+    {
+     "quest": "Message to Whiterun",
+     "how": "a step in it: you deliver the message (and the axe) to him"
+    },
+    {
+     "quest": "Season Unending",
+     "how": "a step in it: his refusal starts the peace council, and he sits on it"
+    },
+    {
+     "quest": "The Whispering Door",
+     "how": "gives it: he asks you to help his troubled son"
+    },
+    {
+     "quest": "The Wintersand Deception",
+     "how": "a step in it: you bring the Thalmor dossier to him and return with proof"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "His only AI package is the exile one; with no schedule of his own he stays where he's placed in Dragonsreach. Any throne-room routine may come from quest aliases the extracts don't show."
+    },
+    {
+     "field": "changes",
+     "why": "Who takes over Whiterun if he falls isn't on his own records (Vignar Gray-Mane's records name him as the Stormcloak jarl)."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013BBD",
+    "CWExiledImperialSandboxBluePalace (GetInFaction GovExiled Skyrim.esm:036629)",
+    "JobJarlFaction",
+    "MarriageExcludedFaction",
+    "MQ302CouncilFaction",
+    "Skyrim.esm:04E50D",
+    "Skyrim.esm:0D0800",
+    "Skyrim.esm:02610C",
+    "Skyrim.esm:0D661C alias Balgruuf",
+    "Skyrim.esm:045923 alias BalgruufAlive",
+    "Skyrim.esm:04A37B",
+    "CC Tundra Homestead - Tweaks and Enhancements.esp:00000A",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013BB5",
+   "name": "Vignar Gray-Mane",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "Jorrvaskr, Whiterun",
+   "day": [
+    {
+     "from": "1 am",
+     "for": "7 hours",
+     "where": "Jorrvaskr, Whiterun",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "7 hours",
+     "where": "Jorrvaskr, Whiterun",
+     "doing": "passing the time"
+    },
+    {
+     "from": "3 pm",
+     "for": "4 hours",
+     "where": "around Whiterun",
+     "doing": "wandering (dry weather only)"
+    },
+    {
+     "from": "7 pm",
+     "for": "6 hours",
+     "where": "the Drunken Huntsman, Whiterun",
+     "doing": "drinking"
+    }
+   ],
+   "changes": [
+    "If a Gray-Mane has died (Thorald, Eorlund, Avulstein, Fralia or Olfina), on Loredas evenings 7 to 9:30 pm he mourns at the Hall of the Dead.",
+    "If the Stormcloaks take Whiterun, he becomes its jarl.",
+    "If he is later exiled, he moves to Viola Giordano's House in Windhelm."
+   ],
+   "role": "Companions elder; Stormcloak-side jarl of Whiterun if the city falls",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no (excluded from marriage)",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Brotherhood",
+     "how": "one of the Companions present; the records give him no step of his own"
+    },
+    {
+     "quest": "Season Unending",
+     "how": "sits on the peace council when he's jarl of Whiterun"
+    },
+    {
+     "quest": "The Wintersand Deception",
+     "how": "a step in it when he's jarl: you bring the evidence to him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "The 3 pm wander spot isn't resolved; it carries a list of unnamed AI Overhaul checks besides 'when it isn't raining' reads the AI Overhaul condition (condition function 62, IsRaining = 0); the extract leaves it as a bare function number. The Drunken Huntsman visit is skipped under one weather type (function 149)."
+    },
+    {
+     "field": "changes",
+     "why": "Where he spends his days as jarl isn't in his packages; they don't change with the jarlship."
+    },
+    {
+     "field": "changes",
+     "why": "The mourning package's day is day-of-week 6, read as Loredas (Sundas = 0); the package name doesn't confirm the day."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013BB5",
+    "DefaultSleepEditorLoc24x8",
+    "WhiterunVignarJorrvaskrPackage",
+    "AIOWRVignarRandom15x4",
+    "WhiterunVignarDrunkenHuntsman19x6",
+    "AIOWRGrayFamilyMourn (dow 6, GetDeadCount on Gray-Manes)",
+    "CWExiledSonsSandboxViolaGiordanosHouse",
+    "alias WhiterunSonsJarl in Skyrim.esm:0A7B33",
+    "Skyrim.esm:06E804",
+    "Skyrim.esm:045923",
+    "CC Tundra Homestead - Tweaks and Enhancements.esp:00000A alias JarlVignar",
+    "essential true, protected true"
+   ]
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:0008F6",
+   "name": "Viriya",
+   "race": "Redguard",
+   "sex": "female",
+   "firstMeet": "the Riften Fishery docks, by day",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "12 hours",
+     "where": "the Riften Fishery docks",
+     "doing": "working"
+    },
+    {
+     "from": "6 pm",
+     "for": "6 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "passing the evening"
+    }
+   ],
+   "changes": [
+    "After End of the Line she leaves the fishery: her working hours (6 am to 6 pm) are spent at her new mudcrab stall in the Grand Plaza, Riften; evenings and nights stay at Haelga's Bunkhouse."
+   ],
+   "role": "Riften Fishery worker, later a mudcrab-meat stallholder; quest giver who also hands out fishing bounties around Skyrim; follower",
+   "sells": "",
+   "trains": "",
+   "joins": "can become a follower",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Angler Acquaintances",
+     "how": "a step in it: talk to her"
+    },
+    {
+     "quest": "In A Pinch",
+     "how": "gives it: bring her a juvenile mudcrab; she gives you a Riften Fishery key"
+    },
+    {
+     "quest": "Crustacean Extermination",
+     "how": "gives it by letter; you return to her for an Alik'ri fishing rod"
+    },
+    {
+     "quest": "End of the Line",
+     "how": "gives it by letter: bring her building supplies for her market stall; changes where she works"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "joins",
+     "why": "She's flagged as a potential follower, but what unlocks it (a quest, gold) isn't in the records I can read."
+    },
+    {
+     "field": "sells",
+     "why": "She's in the merchant faction but has no vendor record, so no stock or hours to report."
+    },
+    {
+     "field": "day",
+     "why": "The stall package has no location of its own in the extract; 'Grand Plaza' comes from End of the Line's text."
+    }
+   ],
+   "evidence": [
+    "ccBGSSSE001-Fish.esm:0008F6",
+    "ccBGSSSE001_RiftenViriyaWorkFisheryDocks6x12 (GetQuestCompleted ccBGSSSE001-Fish.esm:0009D6 == 0)",
+    "ccBGSSSE001_RiftenViriyaSleep0x6",
+    "ccBGSSSE001_RiftenViriyaBunkhouse18x6",
+    "ccBGSSSE001_ViriyaCrabStallPkg (GetQuestCompleted 0009D6 == 1)",
+    "PotentialFollowerFaction",
+    "JobMerchantFaction",
+    "ccBGSSSE001-Fish.esm:0009D4",
+    "ccBGSSSE001-Fish.esm:0009DA",
+    "ccBGSSSE001-Fish.esm:0009DB",
+    "ccBGSSSE001-Fish.esm:0009D6",
+    "essential true",
+    "ccBGSSSE001-Fish.esm:0009E6 objective 2000"
+   ]
+  },
+  {
+   "id": "ccBGSSSE001-Fish.esm:0008F8",
+   "name": "Swims-In-Deep-Water",
+   "race": "Argonian",
+   "sex": "male",
+   "firstMeet": "inside the Riften Fishery, by day",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "5 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "5 am",
+     "for": "15 hours",
+     "where": "inside the Riften Fishery",
+     "doing": "working"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "passing the evening"
+    }
+   ],
+   "changes": [],
+   "role": "Riften Fishery fisherman; gives the fishing challenges; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Angler Acquaintances",
+     "how": "a step in it: talk to him"
+    },
+    {
+     "quest": "Catch of the Day",
+     "how": "gives it; reward includes a Riften Fishery key"
+    },
+    {
+     "quest": "Caught in the Rain",
+     "how": "gives it; reward an Argonian fishing rod"
+    },
+    {
+     "quest": "Frozen Fish",
+     "how": "gives it (by letter, then in person)"
+    },
+    {
+     "quest": "Darkest Depths",
+     "how": "gives it"
+    },
+    {
+     "quest": "Fishing Legend",
+     "how": "gives it; reward the Fang of Haynekhtnamet"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "marries",
+     "why": "He's in the marriage faction; what he needs before he'll marry isn't in the records I can read."
+    },
+    {
+     "field": "day",
+     "why": "The fishery work package has no resolved location; 'inside the fishery' comes from its name."
+    }
+   ],
+   "evidence": [
+    "ccBGSSSE001-Fish.esm:0008F8",
+    "ccBGSSSE001_RiftenSwimsInDeepWatersSleep0x5",
+    "ccBGSSSE001_RiftenSwimsInDeepWatersWorkFisheryInside5x15",
+    "ccBGSSSE001_RiftenSwimsInDeepWatersBunkhouse20x4",
+    "PotentialMarriageFaction",
+    "ccBGSSSE001-Fish.esm:0009DB",
+    "0009DE",
+    "0009EB",
+    "0009E8",
+    "0009DD",
+    "0009DC",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01338E",
+   "name": "Calcelmo",
+   "race": "Altmer",
+   "sex": "male",
+   "firstMeet": "Understone Keep, Markarth",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "eating with Faleen"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "his post in Understone Keep, Markarth",
+     "doing": "working; open for trade"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "eating with Faleen"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "his post in Understone Keep, Markarth",
+     "doing": "working; open for trade"
+    }
+   ],
+   "changes": [],
+   "role": "court wizard of Markarth; merchant; quest giver",
+   "sells": "a court wizard's goods, any hour; same buy list as the College's spell sellers",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Nimhe, the Poisoned One",
+     "how": "gives it: kill Nimhe in Nchuand-Zel and tell him"
+    },
+    {
+     "quest": "The Lost Expedition",
+     "how": "you tell him about the expedition's journal at the end, for gold"
+    },
+    {
+     "quest": "Hard Answers",
+     "how": "a step and a target: he refuses you, so you steal from his museum and copy his stone"
+    },
+    {
+     "quest": "Beneath Bronze Waters",
+     "how": "gives it: he's heard of a Dwemer apparatus at Bronze Water Cave; later he builds the Dwarven fishing rod from the schematic you bring (wait a day)"
+    },
+    {
+     "quest": "Buy Dwarven artifact",
+     "how": "you bring him a Dwarven item"
+    },
+    {
+     "quest": "Delivery to Calcelmo",
+     "how": "its target: you deliver a ring to him"
+    },
+    {
+     "quest": "The Book of Love",
+     "how": "a step in it: talk to him"
+    },
+    {
+     "quest": "The Dwemer Specialist",
+     "how": "a step in it: ask him about the spider in the excavation"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "sells",
+     "why": "His vendor container and buy list aren't resolved to items, so no tome or item names; he has no spell-seller faction."
+    },
+    {
+     "field": "day",
+     "why": "No sleep package; outside meals the always-on vendor package keeps him at his post, night included."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01338E",
+    "MarkarthCalcelmoEatWithFaleen6x2Package",
+    "MarkarthCalcelmoEatWithFaleen20x2Package",
+    "MarkarthCastleWizardVendor0x24Package",
+    "vendor VEND 0937A1 / VENC 09438C, 0-24",
+    "JobCourtWizardFaction",
+    "ServicesMarkarthCastleWizard",
+    "Skyrim.esm:053804",
+    "Skyrim.esm:0C3709",
+    "Skyrim.esm:021552",
+    "ccBGSSSE001-Fish.esm:000AD6",
+    "Skyrim.esm:0A0F43",
+    "Skyrim.esm:075399",
+    "Skyrim.esm:0211D5",
+    "HLIORemi.esp:0E4852",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:03A19A",
+   "name": "Zaria",
+   "race": "Redguard",
+   "sex": "female",
+   "firstMeet": "Grave Concoctions, Falkreath",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Grave Concoctions, Falkreath",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "behind the counter at Grave Concoctions, Falkreath",
+     "doing": "selling"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "around Falkreath",
+     "doing": "wandering (dry weather only)"
+    }
+   ],
+   "changes": [],
+   "role": "apothecary, owner of Grave Concoctions; quest giver",
+   "sells": "apothecary goods, 8 am to 8 pm",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Clear-Headed",
+     "how": "gives it: bring her a glassfish, then help with the guard's skooma"
+    },
+    {
+     "quest": "Ingredient Collection",
+     "how": "gives it: bring her 5 sabre cat eyes"
+    },
+    {
+     "quest": "A Dying Wish",
+     "how": "one of the alchemists you can ask about the Ironwood Fruit"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "sells",
+     "why": "The vendor container and buy list aren't resolved to items; 'apothecary' comes from her shop's name and her work package."
+    },
+    {
+     "field": "day",
+     "why": "The 8 pm wander has unnamed AI Overhaul checks besides 'when it isn't raining' reads the AI Overhaul condition (condition function 62, IsRaining = 0); the extract leaves it as a bare function number. She sleeps 'near where she's placed', which is Grave Concoctions."
+    },
+    {
+     "field": "quests",
+     "why": "Her part in A Dying Wish is read from its alias list and its 'Ask an alchemist' step."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:03A19A",
+    "FalkreathZariaSellApothecary8x12",
+    "DefaultSleepEditorLoc24x8",
+    "AIOFalkRandom",
+    "vendor 8-20 VEND 09379F VENC 06A878",
+    "ServicesFalkreathGraveConcoctions",
+    "ccBGSSSE001-Fish.esm:0009EC",
+    "moretodo.esp:000927",
+    "cckrtsse001_altar.esl:000D63 alias Zaria",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01B1DB",
+   "name": "Ri'saad",
+   "race": "Khajiit",
+   "sex": "male",
+   "firstMeet": "with the Khajiit caravan he leads; which camp isn't in the records",
+   "day": [],
+   "changes": [],
+   "role": "Khajiit caravan leader and merchant; quest giver; Thieves Guild fence contact",
+   "sells": "caravan goods, any hour",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Spirits Away",
+     "how": "gives it: fish up his lost bottles of aged flin"
+    },
+    {
+     "quest": "Thieves Guild Caravan Fence Quest",
+     "how": "its target: you deliver Moon Sugar to him for Tonilia"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "firstMeet",
+     "why": "He has no AI packages and no placed cell in the extracts; his placement is in the open world and his movements come from the caravan quest, which has no text here. Which city's camp isn't settled."
+    },
+    {
+     "field": "day",
+     "why": "No schedule in his records."
+    },
+    {
+     "field": "sells",
+     "why": "Vendor container and buy list aren't resolved to items."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01B1DB",
+    "no packages",
+    "vendor 0-24 VEND 0AAD382F VENC 07434C",
+    "CaravanALeader",
+    "CaravanMerchant_Faction",
+    "Skyrim.esm:03ACDB alias LeaderA",
+    "placed ref Skyrim.esm:074340 in Skyrim.esm:000D74",
+    "ccBGSSSE001-Fish.esm:0009E2",
+    "Skyrim.esm:0D8E40",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013282",
+   "name": "Gisli",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Solitude: at Erikur's House early and late, out shopping by day, the Winking Skeever in the evening",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Erikur's House, Solitude",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "1 hour",
+     "where": "Erikur's House, Solitude",
+     "doing": "breakfast"
+    },
+    {
+     "from": "9 am",
+     "for": "2 hours",
+     "where": "Angeline's Aromatics, Solitude",
+     "doing": "shopping"
+    },
+    {
+     "from": "11 am",
+     "for": "2 hours",
+     "where": "Radiant Raiment, Solitude",
+     "doing": "shopping"
+    },
+    {
+     "from": "1 pm",
+     "for": "3 hours",
+     "where": "a shop in Solitude",
+     "doing": "shopping"
+    },
+    {
+     "from": "4 pm",
+     "for": "7.5 hours",
+     "where": "the Winking Skeever, Solitude",
+     "doing": "eating and drinking"
+    },
+    {
+     "from": "11:30 pm",
+     "for": "half an hour",
+     "where": "Erikur's House, Solitude",
+     "doing": "at home"
+    }
+   ],
+   "changes": [],
+   "role": "Solitude resident, lives at Erikur's House; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Ultimate Feast",
+     "how": "gives it by bounty letter: set her a seafood table at the Winking Skeever"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "The 9 am and 1 pm shops aren't resolved; 'Aromatics' and 'Empire' come from the package names (Angeline's Aromatics is my reading of the first; the second is left as 'a shop'). The Winking Skeever visit is skipped under one weather type (function 149)."
+    },
+    {
+     "field": "role",
+     "why": "She's in the steward faction, but no record shows a stewardship duty."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013282",
+    "DefaultSleepEditorLoc24x8",
+    "DefaultEatEditorLoc8x1",
+    "SolitudeAromaticsShopping9x2",
+    "SolitudeRaimentsShopping11x2",
+    "SolitudeEmpireShopping13x3",
+    "SolitudeGisliInnEat16x8",
+    "DefaultSandboxEditorLocation512",
+    "JobStewardFaction",
+    "ccBGSSSE001-Fish.esm:0009E3",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013BAD",
+   "name": "Mila Valentia",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "Whiterun: the market late morning, playing in the afternoon, the Bannered Mare in the evening",
+   "day": [
+    {
+     "from": "11 pm",
+     "for": "12 hours",
+     "where": "Carlotta Valentia's House, Whiterun",
+     "doing": "sleeping"
+    },
+    {
+     "from": "11 am",
+     "for": "2 hours",
+     "where": "the market, Whiterun",
+     "doing": "browsing (dry weather)"
+    },
+    {
+     "from": "1 pm",
+     "for": "6 hours",
+     "where": "Whiterun",
+     "doing": "playing (dry weather)"
+    },
+    {
+     "from": "7 pm",
+     "for": "3 hours",
+     "where": "the Bannered Mare, Whiterun",
+     "doing": "at the inn (dry weather)"
+    },
+    {
+     "from": "10 pm",
+     "for": "1 hour",
+     "where": "Carlotta Valentia's House, Whiterun",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "In rain she stays at home in Carlotta Valentia's House from 11 am to 11 pm."
+   ],
+   "role": "child of Whiterun; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Heart of Gold",
+     "how": "gives it: bring her a goldfish"
+    },
+    {
+     "quest": "Two of a Kind",
+     "how": "gives it by letter: a second goldfish; she gives you the key to her treasure behind Dragonsreach"
+    },
+    {
+     "quest": "Mirrors of Youth",
+     "how": "a step in it: ask her about Braith"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "The play package has no location; Two of a Kind's text says she likes to play behind Dragonsreach. 'when it isn't raining' reads the AI Overhaul condition (condition function 62, IsRaining = 0); the extract leaves it as a bare function number."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013BAD",
+    "WhiterunMilaMarketplacePackage",
+    "WhiterunMilaPlayPackage",
+    "WhiterunMilaBanneredMarePackage",
+    "WhiterunMilaSleepPackage21x12 (23:00 for 12 h)",
+    "WhiterunMilaHomePackage",
+    "ccBGSSSE001-Fish.esm:000E5D",
+    "ccBGSSSE001-Fish.esm:0009D7",
+    "SeranaDialogueExpansion - Romance.esp:000197",
+    "essential false"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0133B3",
+   "name": "Reburrus Quintilius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "Markarth: out in the upper part of the city by day, the Treasury House at night",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Treasury House, Markarth",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "the upper dry side of Markarth",
+     "doing": "passing the time"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "the Treasury House, Markarth",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "If he's exiled in the civil war he goes to the Palace of the Kings in Windhelm (upstairs during the war's finale)."
+   ],
+   "role": "steward (Stormcloak side); lives at the Treasury House",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Bothela's Discreet Delivery",
+     "how": "its target: you deliver Bothela's potion to him"
+    },
+    {
+     "quest": "Hendraheim",
+     "how": "one of the two stewards you can buy Hendraheim from"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "The daytime spot isn't resolved; 'upper dry side' comes from the package name. His sleep package has an unnamed check (function 606)."
+    },
+    {
+     "field": "quests",
+     "why": "Whether he or Raerek sells Hendraheim likely depends on who holds Markarth; the quest has deeds for both sides but the records here don't say which steward pairs with which."
+    },
+    {
+     "field": "changes",
+     "why": "He's not in the exiled faction now; the exile packages only apply if the war puts him there."
+    },
+    {
+     "field": "role",
+     "why": "The side comes from his civil-war faction (Stormcloak for Reburrus, Imperial for Raerek), not from any text saying whose steward he is."
+    },
+    {
+     "field": "changes",
+     "why": "He's in a faction tied to No One Escapes Cidhna Mine's victims; what happens to him if Madanach's Forsworn escape isn't in these records."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0133B3",
+    "MarkarthThongvorTreasurySleep22x8Package",
+    "MarkarthDrySideUpperSandboxMultiPackage8x12",
+    "DefaultSandboxHomeowner",
+    "CWExiledSonsSandboxPalace",
+    "CWFinaleHidePackageWindhelmActorBasePackage",
+    "JobStewardFaction",
+    "GovSons",
+    "Skyrim.esm:0790E1 (giver dialogue USSEP 0528F7, stage < 11)",
+    "cceejsse004-hall.esl:000C4F alias Reburrus",
+    "essential true",
+    "MS02VictimsFaction"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0133B2",
+   "name": "Raerek",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "Understone Keep, Markarth",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "passing the time near where he's placed"
+    }
+   ],
+   "changes": [
+    "If he's exiled in the civil war he moves to the Blue Palace in Solitude."
+   ],
+   "role": "steward of Markarth (Imperial side)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Hendraheim",
+     "how": "one of the two stewards you can buy Hendraheim from"
+    },
+    {
+     "quest": "Compelling Tribute",
+     "how": "can be the steward you blackmail"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "Only a shared 'near where placed' package; no sleep or meal times."
+    },
+    {
+     "field": "quests",
+     "why": "Which side's steward he plays in Hendraheim and Compelling Tribute isn't settled by these records."
+    },
+    {
+     "field": "role",
+     "why": "The side comes from his civil-war faction (Stormcloak for Reburrus, Imperial for Raerek), not from any text saying whose steward he is."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0133B2",
+    "DefaultSandboxEditorLocation512",
+    "CWExiledImperialSandboxBluePalace",
+    "JobStewardFaction",
+    "GovImperial",
+    "cceejsse004-hall.esl:000C4F alias Raerek",
+    "Skyrim.esm:0504F0 alias StewardSons",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013BBA",
+   "name": "Proventus Avenicci",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "Dragonsreach, Whiterun",
+   "day": [
+    {
+     "from": "all day",
+     "for": "24 hours",
+     "where": "Dragonsreach, Whiterun",
+     "doing": "where he's placed"
+    }
+   ],
+   "changes": [
+    "If he's exiled in the civil war he moves to the Blue Palace in Solitude."
+   ],
+   "role": "steward of Whiterun",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Unquiet Dead",
+     "how": "you report to him at the end; Goldenhills Plantation is bought from him"
+    },
+    {
+     "quest": "Before the Storm",
+     "how": "present in Dragonsreach when you bring the news"
+    },
+    {
+     "quest": "Dragon Rising",
+     "how": "present in Dragonsreach"
+    },
+    {
+     "quest": "Message to Whiterun",
+     "how": "present when you deliver the message"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "His only AI package is the exile one; with no schedule of his own he stays where he's placed."
+    },
+    {
+     "field": "quests",
+     "why": "His exact lines in Before the Storm, Dragon Rising and Message to Whiterun aren't in the extracts; only that he fills an alias."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013BBA",
+    "CWExiledImperialSandboxBluePalace",
+    "JobStewardFaction",
+    "ccvsvsse004-beafarmer.esl:000D28 (giver dialogue CC Farming - Tweaks and Enhancements.esp:000A11)",
+    "Skyrim.esm:04E50D",
+    "Skyrim.esm:02610C",
+    "Skyrim.esm:0D661C",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01A6A2",
+   "name": "Brill",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Jorrvaskr, Whiterun",
+   "day": [
+    {
+     "from": "2 am",
+     "for": "6 hours",
+     "where": "Jorrvaskr, Whiterun",
+     "doing": "sleeping"
+    },
+    {
+     "from": "10 am",
+     "for": "12 hours",
+     "where": "Jorrvaskr, Whiterun",
+     "doing": "drinking"
+    },
+    {
+     "from": "10 pm",
+     "for": "4 hours",
+     "where": "the Bannered Mare, Whiterun",
+     "doing": "drinking"
+    }
+   ],
+   "changes": [
+    "If he's exiled in the civil war he moves to Viola Giordano's House in Windhelm."
+   ],
+   "role": "Vignar Gray-Mane's man; steward of Whiterun when Vignar is jarl",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Unquiet Dead",
+     "how": "you report to him at the end when he's Whiterun's steward"
+    },
+    {
+     "quest": "Brotherhood",
+     "how": "one of the Companions present; the records give him no step of his own"
+    },
+    {
+     "quest": "Delivery for <recipient> (Lelaegh's delivery errands)",
+     "how": "has his own part in it, separate from the recipient; the records don't say what"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "Nothing covers 8 am to 10 am; he likely stays where he slept, in Jorrvaskr."
+    },
+    {
+     "field": "quests",
+     "why": "The delivery quest names him in its own alias, separate from the recipient; his part isn't spelled out."
+    },
+    {
+     "field": "role",
+     "why": "'Steward when Vignar is jarl' reads his steward faction and his backup-steward alias alongside Vignar."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01A6A2",
+    "DefaultSleepEditorLoc24x8",
+    "WhiterunBrillDrunkSandbox1",
+    "WhiterunBrillDrunkSandbox2",
+    "WhiterunBrillBanneredMarePackage",
+    "CWExiledSonsSandboxViolaGiordanosHouse",
+    "JobStewardFaction",
+    "VignarBrillFaction",
+    "Skyrim.esm:0270A4 alias StewardBackup",
+    "ccvsvsse004-beafarmer.esl:000D28 other giver stage < 211",
+    "Skyrim.esm:06E804",
+    "Belethor's Sister.esp:0008E6",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C19D",
+   "name": "Arniel Gane",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "Hall of Attainment, College of Winterhold",
+   "day": [
+    {
+     "from": "1 am",
+     "for": "3 hours",
+     "where": "his room, Hall of Attainment, College of Winterhold",
+     "doing": "passing the time"
+    },
+    {
+     "from": "4 am",
+     "for": "8 hours",
+     "where": "Hall of Attainment, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "noon",
+     "for": "5 hours",
+     "where": "his room, Hall of Attainment",
+     "doing": "passing the time"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Hall of Attainment",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "1 hour",
+     "where": "his room, Hall of Attainment",
+     "doing": "passing the time"
+    },
+    {
+     "from": "8 pm",
+     "for": "3 hours",
+     "where": "Hall of Countenance",
+     "doing": "visiting Phinis"
+    },
+    {
+     "from": "11 pm",
+     "for": "2 hours",
+     "where": "the alchemy lab, Hall of Countenance",
+     "doing": "working"
+    }
+   ],
+   "changes": [
+    "At the end of the last Arniel's Endeavor he vanishes, leaving Keening behind."
+   ],
+   "role": "College of Winterhold scholar; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Arniel's Endeavor",
+     "how": "gives all four parts (cogs, soul gem, Enthir's trade, the courier); changed by it: he vanishes at the end"
+    },
+    {
+     "quest": "Under Saarthal",
+     "how": "a step in it: find him at the excavation and help him"
+    },
+    {
+     "quest": "Rapture of the Deep",
+     "how": "a step in it: he tests your Waterbreathing at sunken ruins"
+    },
+    {
+     "quest": "Containment",
+     "how": "has lines while it runs; no objective names him"
+    },
+    {
+     "quest": "The Staff of Magnus",
+     "how": "has lines while it runs; no objective names him"
+    },
+    {
+     "quest": "The Eye of Magnus",
+     "how": "has lines while it runs; no objective names him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "quests",
+     "why": "His parts in Containment, The Staff of Magnus and The Eye of Magnus show only as aliases and dialogue, with no text naming him."
+    },
+    {
+     "field": "day",
+     "why": "Containment has a gate marker for him, so he may stand at the College gate during it; the package isn't in his records."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C19D",
+    "AIOWinterholdArnielAlchemyLab23x2",
+    "WCollegeArnielVisitPhinis20x3",
+    "WCollegeArnielSleep4x8",
+    "AIOWinterholdNiryaEat",
+    "WCollegeArnielSandboxRoom",
+    "Skyrim.esm:06A086",
+    "Skyrim.esm:06A08D",
+    "Skyrim.esm:06A097",
+    "Skyrim.esm:06A119",
+    "Skyrim.esm:01F252",
+    "College Of Winterhold - Quest Expansion.esp:000801",
+    "Skyrim.esm:01F255",
+    "Skyrim.esm:01F257",
+    "Skyrim.esm:01F258",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C19E",
+   "name": "Tolfdir",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "the Hall of the Elements, College of Winterhold (he stands there teaching until First Lessons is done)",
+   "day": [
+    {
+     "from": "1 am",
+     "for": "5 hours",
+     "where": "Hall of Attainment, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "19 hours",
+     "where": "the College of Winterhold, near where he's placed (Hall of Attainment)",
+     "doing": "teaching and passing the time"
+    }
+   ],
+   "changes": [
+    "Until First Lessons is finished he stays at his teaching spot in the Hall of the Elements, day and night.",
+    "During Under Saarthal he goes to Saarthal: first outside, then into the excavation.",
+    "At the start of Good Intentions he waits in the Hall of the Elements."
+   ],
+   "role": "College of Winterhold master; trainer (Alteration); spell merchant; quest giver",
+   "sells": "spells (spell seller), any hour",
+   "trains": "Alteration, master level",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "First Lessons",
+     "how": "a step in it: listen to his lesson"
+    },
+    {
+     "quest": "Under Saarthal",
+     "how": "gives it; you meet him at Saarthal and follow him in"
+    },
+    {
+     "quest": "Hitting the Books",
+     "how": "named in it (he's away at Saarthal)"
+    },
+    {
+     "quest": "Good Intentions",
+     "how": "gives it; you speak to him about the Night of Tears"
+    },
+    {
+     "quest": "Containment",
+     "how": "has lines while it runs; no objective names him"
+    },
+    {
+     "quest": "The Staff of Magnus",
+     "how": "gives it; you return to him"
+    },
+    {
+     "quest": "The Eye of Magnus",
+     "how": "gives it; you talk to him after Ancano"
+    },
+    {
+     "quest": "Tolfdir the Absent-Minded",
+     "how": "gives it: find his missing alembic"
+    },
+    {
+     "quest": "Aftershock",
+     "how": "gives it: look into a magical anomaly"
+    },
+    {
+     "quest": "Alteration Ritual Spell",
+     "how": "gives it: collect dragon heartscales"
+    },
+    {
+     "quest": "Rejoining the College",
+     "how": "gives it: pay him to lift your suspension"
+    },
+    {
+     "quest": "Rogue Wizard",
+     "how": "a step in it: return to him"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "gives it: his Waterbreathing lesson"
+    },
+    {
+     "quest": "Rapture of the Deep",
+     "how": "a step in it: show him the crystal"
+    },
+    {
+     "quest": "None Escape The Light",
+     "how": "a step in it: talk to him, then deal with the draugr in the Midden"
+    },
+    {
+     "quest": "buying Myrwatch",
+     "how": "you buy Myrwatch from him once he deems you worthy; it starts from a note found at Myrwatch"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "trains",
+     "why": "The trainer record gives tier 'Master' with no level cap."
+    },
+    {
+     "field": "sells",
+     "why": "Vendor container and buy list aren't resolved to items; 'spells' comes from his spell-seller faction."
+    },
+    {
+     "field": "day",
+     "why": "His all-day package is named for the classroom but points to 'near where he's placed', which the placement puts in the Hall of Attainment. The Saarthal starting spot isn't resolved; 'outside' comes from the objective 'Meet Tolfdir outside Saarthal'."
+    },
+    {
+     "field": "quests",
+     "why": "The Myrwatch quest has no player-facing name in the records."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C19E",
+    "MG01TolfdirHoldAtTeachMarker (First Lessons Skyrim.esm:01F251 stage 0 to <200)",
+    "MG02TolfdirStartPackage",
+    "MG02TolfdirTraveltoSaarthalInteriorPackage",
+    "MG02TolfdirTraveltoStage40MarkPackage",
+    "MG04TolfdirStage10HoldAtClassMarker",
+    "WCollegeTolfdirSleep1x5",
+    "WCollegeTolfdirSandboxClassroom",
+    "trainer Alteration Master",
+    "vendor 0-24 VEND 0937A1 VENC 098BAC",
+    "JobSpellFaction",
+    "Skyrim.esm:0266F1",
+    "Skyrim.esm:0C1E72",
+    "Skyrim.esm:0D0755",
+    "Skyrim.esm:0C9A0E",
+    "Skyrim.esm:05A609",
+    "Skyrim.esm:01F251-01F258",
+    "College Of Winterhold - Quest Expansion.esp:00081D, 000801, 00086E",
+    "Myrwatch - Tweaks and Enhancements.esp:0008E3",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C19A",
+   "name": "Colette Marence",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Hall of Countenance, College of Winterhold",
+   "day": [
+    {
+     "from": "8 pm",
+     "for": "10 hours",
+     "where": "Hall of Countenance, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    },
+    {
+     "from": "7 am",
+     "for": "4 hours",
+     "where": "the Arcanaeum, College of Winterhold",
+     "doing": "reading"
+    },
+    {
+     "from": "11 am",
+     "for": "2 hours",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    },
+    {
+     "from": "1 pm",
+     "for": "2 hours",
+     "where": "her room, Hall of Countenance",
+     "doing": "practising Restoration spells"
+    },
+    {
+     "from": "3 pm",
+     "for": "2 hours",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Hall of Countenance",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "1 hour",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    }
+   ],
+   "changes": [],
+   "role": "College of Winterhold Restoration teacher; trainer (Restoration); spell merchant; quest giver",
+   "sells": "spells (spell seller), any hour",
+   "trains": "Restoration, expert level, up to 100",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Restoration Ritual Spell",
+     "how": "gives it: she points you to the Augur in the Midden"
+    },
+    {
+     "quest": "None Escape The Light",
+     "how": "gives it: her lesson on Restoration against undead, then help Tolfdir in the Midden"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "a step in it: one of the scholars with a lesson"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "trains",
+     "why": "The trainer record gives tier 'Expert' with a cap of 100, which is unusual for an expert; reported as the record has it."
+    },
+    {
+     "field": "sells",
+     "why": "Vendor container and buy list aren't resolved to items; 'spells' comes from her spell-seller faction."
+    },
+    {
+     "field": "quests",
+     "why": "Her part in the two With Love, Eilonwy quests is only an alias; no text names her."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C19A",
+    "WCollegeColettePracticeBuff13x2",
+    "WCollegeColettePracticeHeal13x2",
+    "WCollegeColettePracticeDetect13x2",
+    "WCollegeColettePracticeCircle13x2",
+    "WCollegeColetteSandboxArcanaeum7x5",
+    "AIOWinterholdCollegeDinner17x2",
+    "WCollegeColetteSleep20x10",
+    "WCollegeColetteSandboxRoom",
+    "trainer Restoration Expert cap 100",
+    "vendor 0-24 VEND 0937A1 VENC 098BA5",
+    "JobSpellFaction",
+    "Skyrim.esm:0CD987",
+    "College Of Winterhold - Quest Expansion.esp:00086E",
+    "College Of Winterhold - Quest Expansion.esp:00081D",
+    "FDE Faralda.esp:00096A",
+    "FDE Faralda.esp:000A40",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C197",
+   "name": "Faralda",
+   "race": "Altmer",
+   "sex": "female",
+   "firstMeet": "the entrance to the College of Winterhold from 9 am to 3 pm, where she tests you to join; otherwise the Hall of Countenance",
+   "day": [
+    {
+     "from": "10 pm",
+     "for": "7 hours",
+     "where": "Hall of Countenance, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "5 am",
+     "for": "4 hours",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    },
+    {
+     "from": "9 am",
+     "for": "6 hours",
+     "where": "outside, at the College",
+     "doing": "standing watch"
+    },
+    {
+     "from": "3 pm",
+     "for": "2 hours",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    },
+    {
+     "from": "5 pm",
+     "for": "2 hours",
+     "where": "Hall of Countenance",
+     "doing": "dinner (weekdays)"
+    },
+    {
+     "from": "7 pm",
+     "for": "3 hours",
+     "where": "her room, Hall of Countenance",
+     "doing": "passing the time"
+    }
+   ],
+   "changes": [
+    "On weekends she spends 5 pm to 8 pm at the Frozen Hearth in Winterhold instead of dinner at the College.",
+    "In With Love, Eilonwy, Part 2 you can let her brother take her back to Alinor."
+   ],
+   "role": "College of Winterhold Destruction teacher and gatekeeper; trainer (Destruction); spell merchant; quest giver",
+   "sells": "spells (spell seller), any hour",
+   "trains": "Destruction, master level",
+   "joins": "travels with you during With Love, Eilonwy",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "First Lessons",
+     "how": "gives it: at the College entrance she asks for a show of magic: cast Magelight, summon a Flame Atronach, cast Firebolt, cast Fear, or cast Healing Hands on her"
+    },
+    {
+     "quest": "Destruction Ritual Spell",
+     "how": "gives it: she hands you Power of the Elements"
+    },
+    {
+     "quest": "A Test of Ice and Fire",
+     "how": "gives it: her Firebolt lesson and test"
+    },
+    {
+     "quest": "With Love, Eilonwy, Part 1",
+     "how": "gives it: take her letter to Vekel the Man"
+    },
+    {
+     "quest": "With Love, Eilonwy, Part 2",
+     "how": "gives it; changed by it: she can be taken to Alinor"
+    },
+    {
+     "quest": "Research Thief",
+     "how": "its target: Nirya's plot is against her; you can tell her"
+    },
+    {
+     "quest": "Enchanted To Meet You",
+     "how": "a step in it: she won't let Adara join until she sees her magic"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "a step in it: one of the scholars with a lesson"
+    },
+    {
+     "quest": "Hitting the Books",
+     "how": "has lines while it runs; no objective names her"
+    },
+    {
+     "quest": "Good Intentions",
+     "how": "has lines while it runs; no objective names her"
+    },
+    {
+     "quest": "Containment",
+     "how": "has lines while it runs; no objective names her"
+    },
+    {
+     "quest": "The Staff of Magnus",
+     "how": "has lines while it runs; no objective names her"
+    },
+    {
+     "quest": "The Eye of Magnus",
+     "how": "has lines while it runs; no objective names her"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "day",
+     "why": "The 9 am 'stand outside' spot isn't resolved; First Lessons says she's at the entrance to the College, which fits but isn't proven by the package."
+    },
+    {
+     "field": "joins",
+     "why": "She isn't flagged as a follower; the 'Continue traveling with Faralda' objectives show she travels with you during those quests, but how she joins isn't in the records I can read."
+    },
+    {
+     "field": "trains",
+     "why": "The trainer record gives tier 'Master' with no level cap."
+    },
+    {
+     "field": "sells",
+     "why": "Vendor container and buy list aren't resolved to items; 'spells' comes from her spell-seller faction."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C197",
+    "AIOWinterholdFaraldaWeekends (dow 8)",
+    "AIOWinterholdFaraldaStandOutside9x6",
+    "AIOWinterholdCollegeDinner17x2",
+    "WCollegeFaraldaSleep22x7",
+    "WCollegeFaraldaSandboxRoom",
+    "trainer Destruction Master",
+    "vendor 0-24 VEND 0937A1 VENC 098BA6",
+    "JobSpellFaction",
+    "Skyrim.esm:01F251",
+    "Skyrim.esm:0A4E82",
+    "College Of Winterhold - Quest Expansion.esp:000873",
+    "FDE Faralda.esp:00096A",
+    "FDE Faralda.esp:000A40",
+    "Skyrim.esm:05D2E9",
+    "College Of Winterhold - Quest Expansion.esp:000871",
+    "essential true"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C193",
+   "name": "Urag gro-Shub",
+   "race": "Orsimer",
+   "sex": "male",
+   "firstMeet": "the Arcanaeum, College of Winterhold",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Hall of Countenance, College of Winterhold",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "18 hours",
+     "where": "the Arcanaeum, College of Winterhold",
+     "doing": "keeping the library; open for trade"
+    }
+   ],
+   "changes": [
+    "During Elder Knowledge a package would hold him in the Hall of the Elements, but its College check looks like it can never pass; expect him in the Arcanaeum."
+   ],
+   "role": "College librarian; merchant; quest giver",
+   "sells": "books and rare writings: A Welkynar Legend has you buy a book from him, Scroll Scouting an Elder Scroll",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Fetch me that Book!",
+     "how": "gives it: return his book"
+    },
+    {
+     "quest": "Shalidor's Insights",
+     "how": "gives it: find Shalidor's writings"
+    },
+    {
+     "quest": "Hitting the Books",
+     "how": "a step in it: he sends you after Orthorn's stolen books"
+    },
+    {
+     "quest": "Good Intentions",
+     "how": "a step in it: he asks you to mention Night of Tears to Tolfdir"
+    },
+    {
+     "quest": "Discerning the Transmundane",
+     "how": "a step in it: ask him about the insane book"
+    },
+    {
+     "quest": "Elder Knowledge",
+     "how": "a step in it"
+    },
+    {
+     "quest": "Seeking A Cure",
+     "how": "a step in it: speak to him about Falion's note"
+    },
+    {
+     "quest": "Prophet",
+     "how": "a step in it (optional): ask him at the College about the Moth Priest"
+    },
+    {
+     "quest": "Seeking Disclosure",
+     "how": "a step in it"
+    },
+    {
+     "quest": "Scroll Scouting",
+     "how": "a step in it: buy back the Elder Scroll (Dragon) from him"
+    },
+    {
+     "quest": "Forgotten Vale Books Quest",
+     "how": "its target: bring him the Ancient Falmer Tome"
+    },
+    {
+     "quest": "Reading Comprehension 101",
+     "how": "gives it: his reading test"
+    },
+    {
+     "quest": "College Curriculum",
+     "how": "a step in it: one of the scholars with a lesson"
+    },
+    {
+     "quest": "From Arena to Oblivion",
+     "how": "a step in it: ask him for books"
+    },
+    {
+     "quest": "A Welkynar Legend",
+     "how": "a step in it: buy the book about Siralys Featherwing from him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record isn't resolved to a name or skill weights in the extracts, and the outfit isn't resolved to gear; nothing to read a fighting style from."
+    },
+    {
+     "field": "sells",
+     "why": "His vendor container and buy list aren't resolved to items; what's known comes from quest text only."
+    },
+    {
+     "field": "changes",
+     "why": "The Elder Knowledge package checks stage 50 and an odd College-rank test; its exact window isn't clear."
+    },
+    {
+     "field": "quests",
+     "why": "His parts in Elder Knowledge, both Prophet quests and Seeking Disclosure show only as aliases and dialogue."
+    },
+    {
+     "field": "quests",
+     "why": "The Throat of the World has a part for him with no step or text; left out."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C193",
+    "MQ205UragHoldinGreatHall (Elder Knowledge Skyrim.esm:02D516 stage 50)",
+    "WCollegeUragSleep0x6",
+    "WCollegeUragHoldatArcanaeumMarker",
+    "vendor 0-24 VEND 10C42E VENC 10C431",
+    "JobMerchantFaction",
+    "JobMiscFaction",
+    "Skyrim.esm:028A24",
+    "Skyrim.esm:0BC096",
+    "Skyrim.esm:0E0E04",
+    "Skyrim.esm:01F253",
+    "Skyrim.esm:01F254",
+    "Skyrim.esm:02D512",
+    "Skyrim.esm:02D516",
+    "Skyrim.esm:02D515",
+    "Skyrim.esm:05C625",
+    "Dawnguard.esm:004C3D",
+    "Dawnguard.esm:0098CB",
+    "Dawnguard.esm:005DA9",
+    "Dawnguard.esm:0181BF",
+    "Dawnguard.esm:01A3E4",
+    "College Of Winterhold - Quest Expansion.esp:000870",
+    "SeranaDialogueExpansion.esp:0000C8",
+    "ksws04_quest.esp:000B6C",
+    "essential true"
+   ]
+  }
+ ]
+}
