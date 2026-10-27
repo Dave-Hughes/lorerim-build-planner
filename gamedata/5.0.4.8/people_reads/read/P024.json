@@ -1,0 +1,1416 @@
+[
+ {
+  "id": "Skyrim.esm:013264",
+  "name": "Bolgeir Bearclaw",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In the Blue Palace, Solitude, at Jarl Elisif's side.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "16 hours",
+    "where": "the Blue Palace, Solitude",
+    "doing": "guarding Jarl Elisif (he breaks to eat from 6 pm to 7 pm, near the same spot)"
+   },
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "the Blue Palace, Solitude",
+    "doing": "no package covers these hours; he stays where he's placed in the palace"
+   },
+   {
+    "from": "2 am",
+    "for": "4 hours",
+    "where": "the Blue Palace, Solitude",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "Jarl Elisif's housecarl in the Blue Palace",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Boethiah's Calling",
+    "how": "named in it with the Blue Palace guards, for the step where Boethiah asks you to slay the Jarl of Solitude"
+   },
+   {
+    "quest": "The Man Who Cried Wolf",
+    "how": "named in it as one of the Solitude court; the extracts show no step of his own"
+   },
+   {
+    "quest": "Tending the Flames",
+    "how": "named in it as one of the Solitude court at the Blue Palace, where Viarmo performs King Olaf's Verse"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in four more quests that have no name in the extracts (two of them as the Haafingar housecarl)."
+   },
+   {
+    "field": "role",
+    "why": "'Housecarl' is from his alias names in those unnamed quests; he isn't in the housecarl job faction."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013264",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "USKPBolgeirBearclawSleep2x4 Unofficial Skyrim Special Edition Patch.esp:029B0C",
+   "DefendElisifPackage6x16 Skyrim.esm:034BF0",
+   "SolitudeBluePalaceFaction",
+   "DA02 Skyrim.esm:04D8D6 alias BolgeirBearclaw",
+   "MS06Start Skyrim.esm:093807 alias MS06BolgeirBearclaw",
+   "MS05 Skyrim.esm:053511 alias MS05Bolgeir",
+   "aliases HouseCarlHaafingar (Skyrim.esm:0954E1), Housecarl (Skyrim.esm:0268E9, Extended Encounters.esp:0004AD), Bolgeir (Skyrim.esm:0A958E, Skyrim.esm:0A9575)",
+   "placed ref Skyrim.esm:0198C3 in Blue Palace"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328D",
+  "name": "Jaree-Ra",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "On the Solitude docks, by the East Empire Company Warehouse, or aboard the Red Wave moored there (his placed spot). Until the opening event in Solitude (the execution at the city gate when you first arrive) is over, he stays in the Winking Skeever instead.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "the Solitude docks, around the East Empire Company Warehouse",
+    "doing": "going about the docks"
+   },
+   {
+    "from": "10 am",
+    "for": "8 hours",
+    "where": "the East Empire Company Warehouse on the Solitude docks",
+    "doing": "working at the warehouse"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the Red Wave, Solitude docks",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "the Solitude docks, around the East Empire Company Warehouse",
+    "doing": "going about the docks"
+   },
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "the Red Wave, Solitude docks",
+    "doing": "going about where he's placed"
+   },
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "the Red Wave, Solitude docks",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Before the opening event in Solitude (the execution at the gate) has finished, he stays in the Winking Skeever all day; this comes from the Save the Icerunner changes.",
+   "Lights Out! decides his fate: he can be arrested if you report him, killed on the docks, persuaded to give up, or followed to Broken Oar Grotto with the stolen loot and killed there; he can also become your partner in looting the Icerunner."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Lights Out!",
+    "how": "gives it (\"Accept Jaree-Ra's offer in Solitude\"), and is its target in most endings: report him to the guard captain, confront him, or defeat him on the docks or at Broken Oar Grotto"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "That the Red Wave is a ship is read from the cell's name; the extracts give the cell only as 'Red Wave' in Solitude."
+   },
+   {
+    "field": "changes",
+    "why": "The quest that keeps him in the Winking Skeever has no name in the extracts; that it's the execution at Solitude's gate is read from the other packages tied to it (the prisoner's 'pre-execution' wait)."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in six more quests that have no name in the extracts, one of them from Save the Icerunner."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01328D",
+   "STIJareeRaStayPutForSolitudeOpening SaveTheIcerunner.esp:00080B (GetQuestCompleted Skyrim.esm:0B2FD9 == 0, cell Winking Skeever Skyrim.esm:016A0E)",
+   "DefaultEatEditorLoc18x1 Skyrim.esm:01E61A",
+   "SolitudeWarehouseWork10x8 Skyrim.esm:034C01",
+   "SolitudeDocksSandbox8x14 Skyrim.esm:034C00",
+   "DefaultSleepEditorLoc2x8 Skyrim.esm:034BDB",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "MS07 Skyrim.esm:023A64 alias MS07JareeRa",
+   "SolitudeRedWaveFaction, MS07BanditSiblings",
+   "placed ref Skyrim.esm:0198B9 in Red Wave Skyrim.esm:0A1793",
+   "unnamed quests Skyrim.esm:0AA9A9, 0367D5, 0367D3, 0367D1, Unofficial Skyrim Special Edition Patch.esp:0893CA, SaveTheIcerunner.esp:000836"
+  ]
+ },
+ {
+  "id": "Andrealphus Jobs Overhaul - MASTER.esp:000B74",
+  "name": "Captain Istar Cairn-Breaker",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In Solitude's streets as the Stormcloak guard captain; going by his Stormcloak record, only once Solitude is in Stormcloak hands.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "his post in Solitude",
+    "doing": "standing his post as a field commander; the package is shared by dozens of Stormcloak and Legion commanders and keeps him near the spot linked to him"
+   }
+  ],
+  "changes": [
+   "Going by his record, he's the Stormcloak captain for Haafingar, so he should only be there after the Stormcloaks take Solitude."
+  ],
+  "role": "Stormcloak guard captain in Solitude",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Lights Out!",
+    "how": "the guard captain you report Jaree-Ra to when Captain Aldis isn't there"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The extracts place him in Solitude but don't show what enables him; tying him to a Stormcloak Solitude is read from his Stormcloak factions and his record's name, not from a condition."
+   },
+   {
+    "field": "quests",
+    "why": "He fills the quest's backup guard-captain slot; that he takes Captain Aldis's place is read from the slot's name."
+   }
+  ],
+  "evidence": [
+   "Andrealphus Jobs Overhaul - MASTER.esp:000B74 (GuardCaptain_SonsHaafingar)",
+   "CWFieldCOMasterPackage Skyrim.esm:0C4A97",
+   "CWSonsFaction, CWFieldCOFaction, IsGuardFaction",
+   "MS07 Skyrim.esm:023A64 alias MS07GuardBackup",
+   "placed ref Skyrim.esm:077DE3 in Solitude cell Skyrim.esm:037EE6"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013268",
+  "name": "Deeja",
+  "race": "Argonian",
+  "sex": "female",
+  "firstMeet": "On the Solitude docks, by the East Empire Company Warehouse, or aboard the Red Wave moored there (her placed spot).",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "the Solitude docks, around the East Empire Company Warehouse",
+    "doing": "going about the docks"
+   },
+   {
+    "from": "10 am",
+    "for": "8 hours",
+    "where": "the East Empire Company Warehouse on the Solitude docks",
+    "doing": "working at the warehouse"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "the Solitude docks, around the East Empire Company Warehouse",
+    "doing": "going about the docks"
+   },
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "the Red Wave, Solitude docks",
+    "doing": "going about where she's placed"
+   },
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "the Red Wave, Solitude docks",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "In Lights Out! she waits at the Wreck of the Icerunner up Solitude's eastern shoreline, and she turns on you there; she can be killed in the quest."
+  ],
+  "role": "Jaree-Ra's sister; part of Lights Out!",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Lights Out!",
+    "how": "a step and a target: you meet her at the Wreck of the Icerunner, where she turns on you (\"Defeat Deeja\")"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "That the Red Wave is a ship is read from the cell's name; the extracts give the cell only as 'Red Wave' in Solitude."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in three more quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013268",
+   "SolitudeWarehouseWork10x8 Skyrim.esm:034C01",
+   "SolitudeDocksSandbox14x14 Skyrim.esm:034C02 (hour 8, 14 hours)",
+   "DefaultSleepEditorLoc2x8 Skyrim.esm:034BDB",
+   "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+   "MS07 Skyrim.esm:023A64 alias MS07Deeja",
+   "MS07BanditSiblings, dunIcerunnerBanditFaction, SolitudeRedWaveFaction",
+   "placed ref Skyrim.esm:0198B8 in Red Wave Skyrim.esm:0A1793",
+   "unnamed quests Skyrim.esm:0367D5, 0367D3, 0367D1"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:055FB2",
+  "name": "Alik'r Warrior",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "In Whiterun, inside the city (placed outdoors in the Whiterun city space), asking after a Redguard woman.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Whiterun, where he's placed",
+    "doing": "he has no packages of his own, so he stays where he's placed"
+   }
+  ],
+  "changes": [
+   "In My Time Of Need: if you kill Kematu, the Alik'r leader, Iman says the rest will scatter."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "In My Time Of Need",
+    "how": "gives it: the Alik'r are looking for a Redguard woman in Whiterun"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The extracts give only an outdoor cell of the Whiterun city space, not a named spot (gate, market or square)."
+   },
+   {
+    "field": "changes",
+    "why": "What happens to this warrior himself after the quest isn't in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:055FB2",
+   "no packages",
+   "MS08 Skyrim.esm:01CF25 (giver dialogue Skyrim.esm:0215BD)",
+   "MS08AlikrFaction",
+   "placed ref Skyrim.esm:0215CF in cell Skyrim.esm:01A270 (Whiterun)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:108CF5",
+  "name": "Alik'r Warrior",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "In Whiterun, inside the city (placed outdoors in the Whiterun city space), asking after a Redguard woman.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Whiterun, where he's placed",
+    "doing": "he has no packages of his own, so he stays where he's placed"
+   }
+  ],
+  "changes": [
+   "In My Time Of Need: if you kill Kematu, the Alik'r leader, Iman says the rest will scatter."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "In My Time Of Need",
+    "how": "gives it: the Alik'r are looking for a Redguard woman in Whiterun"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The extracts give only an outdoor cell of the Whiterun city space, not a named spot (gate, market or square)."
+   },
+   {
+    "field": "changes",
+    "why": "What happens to this warrior himself after the quest isn't in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:108CF5",
+   "no packages",
+   "MS08 Skyrim.esm:01CF25 (giver dialogue Skyrim.esm:0215BD)",
+   "MS08AlikrFaction",
+   "placed ref Skyrim.esm:055FB3 in cell Skyrim.esm:01A270 (Whiterun)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0215D5",
+  "name": "Whiterun Guard",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "In Whiterun, where In My Time Of Need begins.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Whiterun",
+    "doing": "he has no packages of his own"
+   }
+  ],
+  "changes": [],
+  "role": "a guard who can start a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "In My Time Of Need",
+    "how": "can start it in conversation, along with the Alik'r warriors"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The extracts give no placed spot for him, only that he's in Whiterun."
+   },
+   {
+    "field": "role",
+    "why": "He's named a Whiterun guard but his only faction is the Alik'r's, and he has no guard faction or outfit; the extracts don't explain it."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0215D5",
+   "no packages",
+   "MS08 Skyrim.esm:01CF25 giver others (stage below 1)",
+   "MS08AlikrFaction"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9A",
+  "name": "Avulstein Gray-Mane",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At House Gray-Mane in Whiterun.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "House Gray-Mane, Whiterun",
+    "doing": "he has no daily schedule in the records; he stays around his family's house"
+   },
+   {
+    "from": "7 pm",
+    "for": "2.5 hours",
+    "where": "the Hall of the Dead, Whiterun",
+    "doing": "on Saturdays, mourning, but only if someone in his family has died"
+   }
+  ],
+  "changes": [
+   "If he's exiled from Whiterun (in the civil war), he lives at Viola Giordano's House in Windhelm instead.",
+   "In Missing In Action, once you bring him proof, he can go to Northwatch Keep to storm it and rescue his brother Thorald."
+  ],
+  "role": "quest giver (Missing In Action)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Missing In Action",
+    "how": "a step in it: you bring him proof that Thorald is alive, and he can meet you at Northwatch Keep for the assault; he can also start it in conversation"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "His one home package (5 pm to 7 pm, before Missing In Action) has conditions that contradict each other, so it looks like it never runs; I've left it out."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in eleven more quests with no name in the extracts (from Olfina, Stormcloak and encounter dialogue add-ons)."
+   },
+   {
+    "field": "role",
+    "why": "He carries the housecarl job faction at rank -1, which doesn't make him a housecarl; the extracts don't say why."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013B9A",
+   "CWExiledSonsSandboxViolaGiordanosHouse Skyrim.esm:0A9275 (GetInFaction GovExiled)",
+   "AIOWRGrayFamilyMourn AI Overhaul.esp:2305AE (Saturday, GetDeadCount family)",
+   "WhiterunAvulsteinHomeHangPackage Skyrim.esm:02BE37",
+   "MS09 Skyrim.esm:01CF26 alias MS09AvulsteinAlias; giver others stage below 10",
+   "WhiterunHouseGrayManeFaction, JobHousecarlFaction rank 255",
+   "placed ref Skyrim.esm:01A686 in House Gray-Mane"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BB4",
+  "name": "Olfrid Battle-Born",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the House of Clan Battle-Born in Whiterun, or out around Jorrvaskr and the Wind District by day.",
+  "day": [
+   {
+    "from": "10 am",
+    "for": "9 hours",
+    "where": "around Jorrvaskr, Whiterun",
+    "doing": "out and about, when it isn't raining and other checks the extracts don't decode pass; otherwise at home"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "evening at the inn, except in one kind of weather the extracts don't name"
+   },
+   {
+    "from": "11 pm",
+    "for": "11 hours",
+    "where": "House of Clan Battle-Born, Whiterun",
+    "doing": "at home, sleeping"
+   }
+  ],
+  "changes": [
+   "Mondays, Wednesdays and Fridays, 6 pm to 8 pm, he spends time with his family at a spot in Whiterun, when it isn't raining.",
+   "Sundays, 6 pm to 8:30 pm, he mourns at the Hall of the Dead if one of the Battle-Borns has died."
+  ],
+  "role": "quest giver (Thieves Guild)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Imitation Amnesty",
+    "how": "gives it: he wants a friend freed from Whiterun's jail"
+   },
+   {
+    "quest": "Missing In Action",
+    "how": "has lines in it while you look for proof of Thorald's fate, which the Gray-Manes say the Battle-Borns hold"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in four more quests with no name in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "His daytime outing near Jorrvaskr carries many conditions the extracts don't decode."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BB4",
+   "AIOWRBattlebornFamilyMourn AI Overhaul.esp:2305AD",
+   "AIOWRBattlebornFamilyTime AI Overhaul.esp:2449C0",
+   "AIOWROlfirdRandom10x9 AI Overhaul.esp:00194D",
+   "WhiterunOlfridBanneredMarePackage19x4 Skyrim.esm:02C397",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "TGTQ03 Skyrim.esm:0799E1 alias TGTQ03OlfridAlias",
+   "MS09 Skyrim.esm:01CF26 giver others stage below 20",
+   "placed ref Skyrim.esm:01A687 in House of Clan Battle-Born"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BB2",
+  "name": "Idolaf Battle-Born",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the Bannered Mare in Whiterun in the mornings, or at the House of Clan Battle-Born.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "House of Clan Battle-Born, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "at the inn"
+   },
+   {
+    "from": "noon",
+    "for": "4 hours",
+    "where": "House of Clan Battle-Born, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "4 pm",
+    "for": "7 hours",
+    "where": "the streets of Whiterun",
+    "doing": "walking the city when it isn't raining; otherwise at home"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "House of Clan Battle-Born, Whiterun",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "Mondays, Wednesdays and Fridays, 6 pm to 8 pm, he spends time with his family at a spot in Whiterun, when it isn't raining.",
+   "Sundays, 6 pm to 8:30 pm, he mourns at the Hall of the Dead if one of the Battle-Borns has died.",
+   "A package above all the others sends him to a spot in Whiterun for a set-piece scene while a quest flag is unset."
+  ],
+  "role": "part of Missing In Action",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Missing In Action",
+    "how": "has lines in it while you look for proof of Thorald's fate, which the Gray-Manes say the Battle-Borns hold"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "The scene package at the top depends on a variable of a quest with no name in the extracts, so I can't say when it runs or where exactly he goes."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in three more quests with no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BB2",
+   "WhiterunIdolafEstablishingScene Skyrim.esm:0CC852 (GetVMQuestVariable Skyrim.esm:0270A4)",
+   "AIOWRBattlebornFamilyMourn AI Overhaul.esp:2305AD",
+   "AIOWRBattlebornFamilyTime AI Overhaul.esp:2449C0",
+   "WhiterunIdolafBanneredMarePackage Skyrim.esm:02C39C",
+   "DefaultSleepEditorLoc12x4 Skyrim.esm:034BE9",
+   "WhiterunIdolafPatrolCity Skyrim.esm:0946FA",
+   "WhiterunIdolafHomePackage Skyrim.esm:02C39E",
+   "MS09 Skyrim.esm:01CF26 alias MS09IdolafAlias",
+   "placed ref Skyrim.esm:01A689 in House of Clan Battle-Born"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01413B",
+  "name": "Orthus Endario",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In the East Empire Company office in Windhelm. Its door is locked (Adept); he and Adelaisa Vendicci carry the East Empire Office Key.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "10 hours",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "working in the office"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "working in the office"
+   },
+   {
+    "from": "8 pm",
+    "for": "8 hours",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "sleeping"
+   },
+   {
+    "from": "4 am",
+    "for": "3 hours",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "working in the office"
+   }
+  ],
+  "changes": [
+   "Once Rise in the East is done, he works on the Windhelm docks from 1 pm to 6 pm.",
+   "Saturdays and Sundays, noon to 6 pm, he's out in Windhelm, except in one kind of weather and when other undecoded checks fail (the docks package wins after Rise in the East).",
+   "He's one of the guests at the Thalmor Embassy party in Diplomatic Immunity."
+  ],
+  "role": "quest giver (East Empire Company, Windhelm)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rise in the East",
+    "how": "gives it: help the East Empire Company deal with the pirates so the Windhelm office can re-open; you report back to him"
+   },
+   {
+    "quest": "Diplomatic Immunity",
+    "how": "a guest at the Thalmor Embassy party"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills aliases in two quests with no name in the extracts; his part in Diplomatic Immunity is read from his party-guest factions."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01413B",
+   "OrthusWorkAtDocks13x5 Skyrim.esm:035E7B (GetQuestCompleted Skyrim.esm:01DBFC == 1)",
+   "OrthusEatDinnerInOffice18x1 Skyrim.esm:035E7D",
+   "OrthusEatBreakfastInOffice7x1 Skyrim.esm:035E7A",
+   "AIOWHOrthusWeekends AI Overhaul.esp:0029C4",
+   "DefaultSleepEditorLoc20x8 Skyrim.esm:0484FF",
+   "OrthusWorkInOffice Skyrim.esm:035E7C",
+   "MS10 Skyrim.esm:01DBFC alias Orthus",
+   "TG04EECHandler Skyrim.esm:1007FC alias TG04EECOrthas",
+   "MQ201PartyGuestFaction, MQ201PartyGuestHappy",
+   "office door Skyrim.esm:0168EC locked level 50, key Skyrim.esm:056AF7",
+   "placed ref Skyrim.esm:01B13D in East Empire Company Skyrim.esm:016777"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01DC00",
+  "name": "Stig Salt-Plank",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the Windpeak Inn in Dawnstar.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "the Windpeak Inn, Dawnstar",
+    "doing": "he has no packages, so he stays where he's placed"
+   }
+  ],
+  "changes": [],
+  "role": "part of Rise in the East",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rise in the East",
+    "how": "a step in it: \"Talk to Stig Salt-Plank in Dawnstar\""
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "He's in the Blood Horker pirates' faction, but what happens to him in or after Rise in the East isn't in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01DC00",
+   "no packages",
+   "MS10 Skyrim.esm:01DBFC alias Stig",
+   "MS10BloodHorkerFaction",
+   "placed ref Skyrim.esm:01DC01 in Windpeak Inn Skyrim.esm:013A7F"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01411D",
+  "name": "Adelaisa Vendicci",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "In the East Empire Company office in Windhelm by day, or at Candlehearth Hall in the evening.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "around the Palace of the Kings, Windhelm",
+    "doing": "walking the city, except in one kind of weather"
+   },
+   {
+    "from": "8 am",
+    "for": "1 hour",
+    "where": "wherever she is",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "10 hours",
+    "where": "the East Empire Company office, Windhelm",
+    "doing": "working in the office"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Candlehearth Hall, Windhelm",
+    "doing": "drinking, every day of the week"
+   }
+  ],
+  "changes": [],
+  "role": "follower; part of Rise in the East",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rise in the East",
+    "how": "a step in it: find her on the Windhelm docks to sail to Japhet's Folly, report back to her there, and she takes you back to Windhelm"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "joins",
+    "why": "She's set up as a potential follower, but the dialogue that recruits her (and any condition on it, such as finishing Rise in the East) isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "She has a vendor entry open all hours with a buy list shared by over 200 people, but no merchant chest and no merchant faction, so it's likely only follower trading; not confirmed."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01411D",
+   "AdelaisaDrinkAtCandlehearthSS7x5 Skyrim.esm:035E2F",
+   "AdelaisaDrinkAtCandlehearthTR7x5 Skyrim.esm:035E2E",
+   "AdelaisaDrinkAtCornerclubMWF7x5 Skyrim.esm:035E2D (location Candlehearth Hall)",
+   "AdelaisaEatBreakfast8x1 Skyrim.esm:035E2C",
+   "AdelaisaWorkInOffice9x10 Skyrim.esm:035E2B",
+   "DefaultSleepEditorLoc0x7 Skyrim.esm:01CB1A",
+   "WindhelmWanderMarker1024 Skyrim.esm:01BC38",
+   "PotentialFollowerFaction; CurrentFollowerFaction rank 255",
+   "vendor list 0x06CB48 (vendRaw 48cb0600), no chest, hours 0-24",
+   "MS10 Skyrim.esm:01DBFC alias Adelaisa",
+   "placed ref Skyrim.esm:01B13E in East Empire Company Skyrim.esm:016777"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:056AFD",
+  "name": "East Empire Mercenary",
+  "race": "",
+  "sex": "male",
+  "firstMeet": "",
+  "day": [],
+  "changes": [],
+  "role": "part of Rise in the East",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rise in the East",
+    "how": "named in it; the extracts don't say what part he plays"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "firstMeet",
+    "why": "He's a levelled stand-in with no race of his own in the extracts, and his placed reference sits in the general wilderness cell, so I can't say where he stands."
+   },
+   {
+    "field": "race",
+    "why": "Levelled record; race comes from the template, which isn't in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "No packages in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:056AFD (LvlEastEmpireMercenary)",
+   "MS10 Skyrim.esm:01DBFC alias TransitMerc",
+   "placed ref Skyrim.esm:052280 in cell Skyrim.esm:000D74"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014124",
+  "name": "Helgird",
+  "race": "Elder",
+  "sex": "female",
+  "firstMeet": "At the graves in Windhelm by day, or in Windhelm's Hall of the Dead in the afternoon and evening.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "8 hours",
+    "where": "the graves in Windhelm",
+    "doing": "praying at the graves"
+   },
+   {
+    "from": "3 pm",
+    "for": "6 hours",
+    "where": "the Hall of the Dead, Windhelm",
+    "doing": "tending the hall"
+   },
+   {
+    "from": "9 pm",
+    "for": "5 hours",
+    "where": "the Hall of the Dead, Windhelm",
+    "doing": "no package covers these hours; she stays where she's placed"
+   },
+   {
+    "from": "2 am",
+    "for": "5 hours",
+    "where": "the Hall of the Dead, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "keeper of Windhelm's Hall of the Dead; witness in Blood on the Ice",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Blood on the Ice",
+    "how": "a step in it: one of the witnesses you question (\"Talk to Helgird\"); she can also start it in conversation"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "day",
+    "why": "The graves are named only by the package; the extracts place the spot as 'in Windhelm'."
+   },
+   {
+    "field": "quests",
+    "why": "She fills an alias in one more quest with no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014124",
+   "WindhelmHelgirdPrayAtGraves7x8 Skyrim.esm:0D6C29",
+   "HelgirdStayInTemple15x6 Skyrim.esm:035E52",
+   "DefaultSleepEditorLoc2x8 Skyrim.esm:034BDB",
+   "WindhelmHallOfTheDeadFaction",
+   "MS11 Skyrim.esm:01F7A3 aliases Helgird, Witness1; giver others stage below 11",
+   "placed ref Skyrim.esm:01B11E in Hall of the Dead Skyrim.esm:016786"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414A",
+  "name": "Calixto Corrium",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "At Calixto's House of Curiosities in Windhelm, 10 am to 5 pm.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "1 hour",
+    "where": "wherever he is",
+    "doing": "breakfast"
+   },
+   {
+    "from": "10 am",
+    "for": "7 hours",
+    "where": "Calixto's House of Curiosities, Windhelm",
+    "doing": "running his museum"
+   },
+   {
+    "from": "5 pm",
+    "for": "2 hours",
+    "where": "Candlehearth Hall, Windhelm",
+    "doing": "dinner"
+   },
+   {
+    "from": "7 pm",
+    "for": "7 hours",
+    "where": "Calixto's House of Curiosities, Windhelm",
+    "doing": "at home, sleeping"
+   },
+   {
+    "from": "2 am",
+    "for": "3 hours",
+    "where": "the streets around the Palace of the Kings, Windhelm",
+    "doing": "stalking the streets at night"
+   },
+   {
+    "from": "5 am",
+    "for": "4 hours",
+    "where": "Calixto's House of Curiosities, Windhelm",
+    "doing": "at home, sleeping"
+   }
+  ],
+  "changes": [
+   "Blood on the Ice can end with him unmasked as the Butcher of Windhelm and brought to justice."
+  ],
+  "role": "runs the House of Curiosities; part of Blood on the Ice",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Blood on the Ice",
+    "how": "a witness you question, and in one ending its target: \"I discovered that Calixto Corrium was the Butcher of Windhelm\"; he can also start it in conversation"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in seven more quests with no name in the extracts, four of them from Windhelm dialogue additions."
+   },
+   {
+    "field": "day",
+    "why": "His night walk ends at about 5:04 am by the records; rounded here."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01414A",
+   "CalixtoEatsBreakfast9x1 Skyrim.esm:035EA9",
+   "CalixtoRunsHisShop10x7 Skyrim.esm:035EA8",
+   "CalixtoEatsHisDinner17x2 Skyrim.esm:035EAA",
+   "CalixtoStalksTheStreets2x3 Skyrim.esm:035EAB (184 minutes)",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "MS11 Skyrim.esm:01F7A3 aliases Calixto, Witness2; stage 250",
+   "placed ref Skyrim.esm:01B11D in Calixto's House of Curiosities Skyrim.esm:016787"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014125",
+  "name": "Tova Shatter-Shield",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At the House of Clan Shatter-Shield in Windhelm, or out in the city late morning to evening.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "3 hours",
+    "where": "wherever she is",
+    "doing": "breakfast"
+   },
+   {
+    "from": "11 am",
+    "for": "8 hours",
+    "where": "around Windhelm",
+    "doing": "out in the city, except in one kind of weather and when other undecoded checks fail; otherwise at home"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "House of Clan Shatter-Shield, Windhelm",
+    "doing": "dinner"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "House of Clan Shatter-Shield, Windhelm",
+    "doing": "at home, sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "part of Blood on the Ice",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Blood on the Ice",
+    "how": "has lines in it; she carries the Key to Hjerim, which you need to get into Hjerim"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "changes",
+    "why": "The records hold a second, dead copy of her, so something in the game can replace her with it; the extracts don't say what or when."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in three more quests with no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014125",
+   "TovaEatBreakfast8x3 Skyrim.esm:035E50",
+   "AIOWHTovaRandom11x8 AI Overhaul.esp:0029C9",
+   "TovaEatDinner19x3 Skyrim.esm:035E51",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "MS11 Skyrim.esm:01F7A3 giver others stage below 55",
+   "Hjerim door Skyrim.esm:016970 key Skyrim.esm:021679 carried by her",
+   "TovaDead Skyrim.esm:0D2B16",
+   "placed in House of Clan Shatter-Shield"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014148",
+  "name": "Nurelion",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "In his shop, the White Phial, in Windhelm.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "2 hours",
+    "where": "the White Phial, Windhelm",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "the White Phial, Windhelm",
+    "doing": "minding the shop (open for trade 8 am to 8 pm)"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "the White Phial, Windhelm",
+    "doing": "dinner"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "the White Phial, Windhelm",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "apothecary merchant; quest giver",
+  "sells": "apothecary goods, 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The White Phial",
+    "how": "gives it: find the legendary White Phial; when you bring it back, his assistant Quintus pays you"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "sells",
+    "why": "His buy list and merchant chest are ids the extracts don't resolve to items; 'apothecary' is from his job faction and the list he shares with other apothecaries."
+   },
+   {
+    "field": "changes",
+    "why": "The White Phial's ending has Quintus pay you instead of him; whether anything happens to him isn't in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in four more quests with no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014148",
+   "WindhelmNurelionBreakfast6x2 Skyrim.esm:035EB9",
+   "WindhelmNurelionMerchantHours8x12 Skyrim.esm:03EE6B",
+   "WindhelmNurelionDinner20x2 Skyrim.esm:03EE6F",
+   "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+   "JobApothecaryFaction, JobMerchantFaction, ServicesWindhelmWhitePhial",
+   "vendor list 0x09379F, chest 0x0AF633, hours 8-20",
+   "MS12 Skyrim.esm:02C258 alias Nurelion",
+   "placed ref Skyrim.esm:01B115 in The White Phial Skyrim.esm:01678C"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347C",
+  "name": "Gerdur",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At the lumber mill in Riverwood by day (7 am to 7 pm), or at home in Hod and Gerdur's House.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "the lumber mill, Riverwood",
+    "doing": "working; she pops home for half an hour at 9, 10 and 11 am and at 3 and 4 pm, and eats lunch at home from noon to 1 pm"
+   },
+   {
+    "from": "7 pm",
+    "for": "1 hour",
+    "where": "Hod and Gerdur's House, Riverwood",
+    "doing": "dinner"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "Hod and Gerdur's House, Riverwood",
+    "doing": "no package covers these hours; she stays where she is"
+   },
+   {
+    "from": "10 pm",
+    "for": "9 hours",
+    "where": "Hod and Gerdur's House, Riverwood",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Saturdays and Sundays, 7 pm to 9 pm, she goes to the Sleeping Giant Inn, except in one kind of weather.",
+   "Partway through Before the Storm she adds a short 2 pm visit to a spot in Riverwood (Alvor's, going by the package).",
+   "If Hod dies, she mourns him at a spot in Riverwood from 3 pm to 5 pm."
+  ],
+  "role": "quest giver; runs the Riverwood lumber mill",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Before the Storm",
+    "how": "a step in it if you escaped Helgen with Ralof: his sister Gerdur asks you to take word to the Jarl of Whiterun"
+   },
+   {
+    "quest": "The Golden Claw",
+    "how": "can start it in conversation"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "role",
+    "why": "That the mill is hers is from Before the Storm's journal and her lumberjack faction; the work spot is given only as a point in Riverwood."
+   },
+   {
+    "field": "quests",
+    "why": "She fills aliases in three more quests with no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01347C",
+   "AIORWMournHod AI Overhaul.esp:0F1260",
+   "AIOGerdurInn19x2 AI Overhaul.esp:0173B7",
+   "GerdurReturnHome16xHalf Skyrim.esm:08AFC1",
+   "GerdurReturnHome15xHalf Skyrim.esm:08AFC0",
+   "GerdurVisitAlvor14xHalf Skyrim.esm:08AFBF (GetStage Skyrim.esm:04E50D >= 50)",
+   "GerdurEatHome12x1 Skyrim.esm:08AFBE",
+   "GerdurReturnHome11xHalf Skyrim.esm:08AFBD",
+   "GerdurReturnHome10xHalf Skyrim.esm:08AFBC",
+   "GerdurReturnHome9xHalf Skyrim.esm:08AFBB",
+   "GerdurWorkPackage7x12 Skyrim.esm:06D1C9",
+   "GerdurEatHome19x1 Skyrim.esm:036C17",
+   "GerdurSleepHome22x9 Skyrim.esm:036C18",
+   "MQ102 Skyrim.esm:04E50D stage 30 log",
+   "MS13 Skyrim.esm:039645 giver Gerdur (info Skyrim.esm:039642)",
+   "JobLumberjackFaction, CWSonsAlly",
+   "placed ref Skyrim.esm:013489 in Hod and Gerdur's House"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01347A",
+  "name": "Lucan Valerius",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "Behind the counter of the Riverwood Trader in Riverwood (the records also call it Lucan's Dry Goods).",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "the Riverwood Trader, Riverwood",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the Riverwood Trader, Riverwood",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "13 hours",
+    "where": "the Riverwood Trader, Riverwood",
+    "doing": "behind the counter (open for trade 7 am to 8 pm)"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "the Sleeping Giant Inn, Riverwood",
+    "doing": "eating and drinking at the inn"
+   }
+  ],
+  "changes": [
+   "On weekdays from 10 am to noon a package that gives no place takes over from the counter.",
+   "The Golden Claw journal notes he and Camilla can both die, ending any reward."
+  ],
+  "role": "general goods merchant; quest giver",
+  "sells": "general goods, 7 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Golden Claw",
+    "how": "gives it: retrieve his antique Golden Claw, stolen by bandits in Bleak Falls Barrow"
+   },
+   {
+    "quest": "Embershard Bandits",
+    "how": "gives it: kill the bandit leader at Embershard, then tell him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+   },
+   {
+    "field": "sells",
+    "why": "His buy list and chest are ids the extracts don't resolve to items; 'general goods' is from his job faction. He shares the list only with Camilla Valerius."
+   },
+   {
+    "field": "changes",
+    "why": "Where he goes in the weekday 10 am to noon slot isn't in the records."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in six more quests with no name in the extracts, one from a mod that lets you buy the Golden Claw."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01347A",
+   "AIOLucanSearch10x2 AI Overhaul.esp:01C4C4 (weekdays, no location)",
+   "LucanRiverwoodEatInn20x4 Skyrim.esm:036C11",
+   "LucanBreakfast6x1 Skyrim.esm:036C14",
+   "LucanValeriusTraderServices7x13 Skyrim.esm:01CB0B",
+   "LucanSleep0x6 Skyrim.esm:036C13",
+   "DefaultSandboxHomeowner Skyrim.esm:031730",
+   "JobMerchantFaction, JobMiscFaction, ServicesRiverwoodRiverwoodTrader",
+   "vendor list 0x0B9C1F, chest 0x078C0B, hours 7-20",
+   "MS13 Skyrim.esm:039645 alias Lucan",
+   "ACFRiverwoodEmbershardBandits moretodo.esp:000EEA alias LucanAlias",
+   "placed ref Skyrim.esm:013487 in Riverwood Trader Skyrim.esm:0133C9"
+  ]
+ }
+]
