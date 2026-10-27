@@ -1,0 +1,2384 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:0A733B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref sits in the Silver-Blood Inn; quest givers name him giver of The House of Horrors there, and Fear and Loathing's stage 0 says a Vigilant hired you"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "packages list is empty, so placed spot only; kept as unsure since the quest's alias packages aren't in the extracts"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "House of Horrors stage 210 (completes): 'I helped Tyranus destroy Molag Bal's altar. The house is now safe' is a second ending the reader left out; stage 500 is the one where he dies"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "VigilantOfStendarrFaction; giver of The House of Horrors"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no potential-follower faction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "House of Horrors: added the help-Tyranus ending (stage 210, objectives 11-14 follow him and hit the altar); Fear and Loathing stage 0 log agrees"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; stage 500 log 'Tyranus is dead' shows the quest can end with him dead"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:089986",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in an open-world cell; places_raw puts the Shrine of Peryite next to Karthwasten, and his own line points to Bthardamz from there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages at all"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no packages and no quest stage that moves or kills him"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "giver of The Only Cure (quest givers, stage 10 log 'A Khajiit named Kesh')"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Only Cure giver below stage 15; The Taskmaster alias Kesh, objective 'Talk to the Priest of Peryite'. Quest givers also list him as a speaker in The House of Horrors below stage 211; added to unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01990F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "placed ref in the Hall of the Dead and alias in Investigate the Hall of the Dead, agreed; but nothing in the records says Verulus closed the hall, so that clause is dropped"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "bottom package is DefaultSandboxEditorLocation512 with no hours; the two above it are quest-gated"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DA11FINEolaForcegreetPackage (Taste of Death stage 100 done, follow-up stage 10 not done) then DA11FINEolaEatPackage at Reachcliff Cave while the follow-up runs; stage 250 'I killed Eola'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, follower true; named giver of The Taste of Death"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor list 48cb0600 with no chest or merchant faction, the same one followers carry"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "follower flag set but no recruiting dialogue in the extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Taste of Death giver below stage 11 (stage 10, 30, 250 logs); Glooredhel alias in Investigate the Hall of the Dead; Eola alias in A Bitter Aftertaste whose objectives confront others, not her; five unnamed quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01338C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "DA11IntroSceneVerulusPackage (second in his list, above all his daily packages) holds him in Understone Keep while Investigate the Hall of the Dead is at stage 5 and the scene quest he shares with Thongvor Silver-Blood hasn't reached 15; the quote 'by order of the jarl' isn't in any record"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "eat 6/12/18 for 1h and sleep 0x8 are above MarkarthVerulusSandboxHallofDeadPackage; editor location is the Hall of the Dead"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the two faction checks on the Understone Keep package resolve: GovExiled and GovRuling, neither of which he's in, so they don't stop it; it holds until the scene quest reaches stage 15 or 100. Taste of Death and Reachcliff forcegreet (GetInCell Reachcliff, Taste of Death stage 250 done) read right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "MarkarthHallofDeadFaction; giver of Investigate the Hall of the Dead and A Bitter Aftertaste"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "DA11Intro giver below 6; DA11 objectives 30-60 make him the target; A Bitter Aftertaste giver below 6 and stage 30 'I informed Verulus'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; Taste of Death stage 60 'Brother Verulus is dead'"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133B7",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Temple of Dibella; both packages keep her in it"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "XJKToDSennaSleep raw hour 0a minute 0f (10:15) for 480 min in the Inner Sanctum, then MarkarthSennaSandboxTemplePackage; the daytime sleep stays flagged"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "MarkarthTempleofDibellaFaction, PotentialMarriageFaction; A Night To Remember giver below stage 6"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true; conditions not in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A Night To Remember stage 10 'a priestess has told me I trashed the Temple'; Heart of Dibella stage 56 'After speaking to a priestess named Senna'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01BB9C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Bee and Barb; the drinking-contest quest's InnLocation/EventLocation aliases may move him, so unsure kept"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package is DefaultSandboxCurrentLocation256, wherever he currently is"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "A Night To Remember stage 135 'look for Sam in Morvunskar', stage 200 'Sam turned out to be... Sanguine'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA14Start objective 'Participate in a drinking contest with Sam Guevenne', which leads to A Night To Remember; named giver of it"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "aliases DA14StartSamwell and DA14Samwell; drinking contest leads to A Night To Remember"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133B0",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Temple of Dibella"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "XJKToDOrlaSleep hour 9 for 480 min in the Inner Sanctum, then MarkarthTempleofDibellaSandboxPackage; the daytime sleep stays flagged"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "MarkarthTempleofDibellaFaction, PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true; conditions not in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "speaker in A Night To Remember below stage 30 (the cleanup and apology steps); alias Orla in The Heart of Dibella with no log naming her"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01E765",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "placed ref in the Temple of Dibella and stage 56 calls her Mother Hamal, the high priestess, agreed; 'men aren't allowed into the Inner Sanctum' isn't in any record, dropped"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "XJKToDHamalSleep hour 11 for 420 min in the Inner Sanctum, then the temple sandbox; daytime sleep stays flagged"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "The Heart of Dibella has a HamalEssential alias; no flags of her own"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobTrainerEnchantingFaction; stage 56 'Mother Hamal, the high priestess'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Enchanting, tier Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Heart of Dibella speaker below 57, stage 60 'I have agreed to find the young girl'; A Night To Remember speaker below 40, stage 40 'told me to ask about Sam in Rorikstead'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013386",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Temple of Dibella"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "XJKToDAnwenSleep hour 10 for 480 min in the Inner Sanctum, then the temple sandbox; daytime sleep stays flagged"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "MarkarthTempleofDibellaFaction, PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true; conditions not in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A Night To Remember speaker below stage 40; alias Anwen in The Heart of Dibella"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01327C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Temple of the Divines, Solitude (this load order moves him there)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only package is DefaultStayAtEditorLocation radius 5"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FavorJobsBeggarsFaction; Mind of Madness giver below stage 1"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Mind of Madness stage 10 'Dervenin wants me to talk to his master about returning from vacation... Pelagius Wing'; one unnamed quest"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013274",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Blue Palace; steward sandbox 6 am x16h at the court"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order checked: court 6x16, Bryling's House 2x2 sits above the 0x6 sleep so it wins 2-4 am, default sandbox fills 10 pm-midnight"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "SolitudePalaceCourtStewardSandbox; giver of The Wolf Queen Awakened and named giver of The Man Who Cried Wolf"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "listed quests check out (MS06Start stage 50, MS06 stages 50/250, Delivery's filled objective 'to Falk Firebeard', from Sorex Vinius); but he fills eleven unnamed quests, not ten (0D789A, five 0A9xxx, three 0367xx, 0268E9 and one from a mod)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0132AC",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Blue Palace; SolitudeBluePalaceServants"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order checked: opening stay (top), avenues 11x2 (dry, Tending the Flames done), wells 18x3 (dry), servants working 11x9, sleep 0x8, sandbox"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "SolitudeOpeningStayLocation512 until the execution quest (Roggvir's) completes; avenues package needs Tending the Flames completed"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "SolitudeBluePalaceServants"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Mind of Madness speaker below 11; aliases MS06Una in both Wolf quests and MS05Una; three unnamed quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013271",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Blue Palace"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order checked: Winking Skeever eat 20x4 (dry) is above the opening stay; AIOSoRandomNoShop 16x4 has undecoded fn612 conditions; working 11x9; sleep 0x8; sandbox"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "opening stay sits under the evening inn package, so she still goes to the Winking Skeever before the execution is over"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "SolitudeBluePalaceServants"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Mind of Madness speaker below 11; MS06Erdi in The Man Who Cried Wolf; MS05Erdi in Tending the Flames; three unnamed quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:02427D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in Windpeak Inn; Waking Nightmare stage 20 'relying on a priest of Mara named Erandur'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "before the quest is done, DawnstarErandurSandboxWindpeakInn (and the stage 20-24 research package) keep him around the inn with no hours"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DA16ErandurPostSandbox at Nightcaller Temple once Waking Nightmare is completed; places put the temple next to Dawnstar; objective 170 'Murder Erandur'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, follower true; Waking Nightmare giver below 20"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor list 48cb0600 with no chest or merchant faction, the follower one"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "stage 200 log 'Erandur has offered his services as a companion'"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Waking Nightmare stages 25-200; four unnamed quests besides companion banter quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; stage 200 second text 'Erandur has died by my hands'"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:02427C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Nightcaller Temple, which places put next to Dawnstar; DA16PriestFaction"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Waking Nightmare objective 150 'Defeat Veren and Thorek'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA16PriestFaction; target of objective 150"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Waking Nightmare aliases VerenAlias/ThorekAlias and their ambush aliases; objective 150 names him with Thorek"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:024278",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Nightcaller Temple, which places put next to Dawnstar; DA16PriestFaction"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "no packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Waking Nightmare objective 150 'Defeat Veren and Thorek'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DA16PriestFaction; target of objective 150"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Waking Nightmare aliases VerenAlias/ThorekAlias and their ambush aliases; objective 150 names him with Veren"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01CB78",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Ragged Flagon; every package targets it"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "sandboxes at 20/16/12/8/4 for 2h, sleep 22x4 above the 2x2 sandbox, StayAtFlagon fallback; all in the Ragged Flagon"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned packages"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "ThievesGuildFaction, JobTrainerSneakFaction; named giver of The Litany of Larceny and the sanctuary refit"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor null, yet The Silence Has Been Broken stage 30 calls him a fence"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Sneak, tier Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "listed ones check out (Larceny stages 20-80, refit stage 10, DB04a stages 30/40, job objectives 'Return to Delvin'); missed: he's a speaker in Loud and Clear (below stage 60) and Promises to Keep (below 200); and he fills thirteen unnamed quests, not twelve"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01403E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Goldenrock Mine; Extracting an Argonian stage 10 says he went missing toward the waterfalls and stage 200 says you rescued him from the Falmer of Darkwater Pass; unsure kept"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "sleep 0x8 and eat 8x2 near the Darkwater Crossing marker, mine 10x9 in Goldenrock Mine, village sandbox otherwise; no conditions"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "stage 200 'he's returned to his home in Darkwater Crossing'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, PotentialMarriageFaction, TownDarkwaterCrossingFaction; mine package"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "vendor list 48cb0600, the follower one"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "follower true but no recruiting dialogue in the extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true; conditions not in the extracts"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Extracting an Argonian giver (alias Derkeethus), objectives 'Find Derkeethus', 'Get Derkeethus out of the cave'"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:014132",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in the Aretino Residence; Innocence Lost stage 5 'attempting to contact the Dark Brotherhood'"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "AventusAretinoResidenceSandbox (no hours) is top while Innocence Lost is at or below stage 198"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "past stage 198 (200 you killed her; 199/201 she died in jail) the residence package drops and the Honorhall yard 10x1, meal 15x1 and Honorhall sandbox take over"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Innocence Lost giver below stage 20"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "stage 20 also says 'I could kill her or talk to the guards in Riften to try and have her arrested', and objective 27 lures her to the docks; the reader gave only the killing"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01335E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref in Honorhall Orphanage; RiftenHonorhallOrphanageFaction"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "GrelodHonorhallScenePackage sits second with no hours and holds her at one spot while a script variable on the orphanage scene quest is 0; which variable and when it changes aren't in the extracts, so the timed day below it may not run. The timed packages themselves read right (sleep 1x4, yard 10x1, room 12x1, meal 15x1)"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "ConstanceDeadFleePackage at the top (Constance dead, Innocence Lost below 200); DB01_Opt objectives 10-40 arrest or poison wine"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "RiftenHonorhallOrphanageFaction; target alias in Innocence Lost"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare ids in the extracts; nothing resolves them to skills or a weapon"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Innocence Lost objectives 20, 27, 28; Three Wise Men stage 12 'Grelod... has refused my donation'; three unnamed quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:0A733B",
+   "name": "Vigilant Tyranus",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "At the Silver-Blood Inn in Markarth, where he hires you to look into an abandoned house.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Silver-Blood Inn, Markarth",
+     "doing": "the records give him no daily packages, so he stays where he's placed"
+    }
+   ],
+   "changes": [
+    "The House of Horrors takes him to the abandoned house in Markarth and you follow him in. It can end with you helping him destroy Molag Bal's altar ('The house is now safe'), or with him dead ('Tyranus is dead')."
+   ],
+   "role": "quest giver; a Vigilant of Stendarr",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The House of Horrors",
+     "how": "gives it: he's investigating an abandoned house in Markarth he thinks was used for daedric worship; you follow him in, and it can end with you helping him destroy Molag Bal's altar, or with him dead"
+    },
+    {
+     "quest": "Fear and Loathing",
+     "how": "a step in it: the Vigilant who hires you and Gore to look into the house (with the Gore companion)"
+    }
+   ],
+   "canDie": "essential (but The House of Horrors has a stage where he's dead)",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "He has no AI packages in the extracts at all, so where he goes while the quest runs is set by the quest, which isn't shown."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in three more quests with no name in the extracts, one from a mod that delays the start of The House of Horrors."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0A733B",
+    "placed ref Skyrim.esm:0A733C in Silver-Blood Inn (Skyrim.esm:016DFE)",
+    "DA10 Skyrim.esm:022F08 (giver, alias Tyranus; stages 10, 210, 500)",
+    "HD1GoreFearAndLoathing GORE.esp:AFF592",
+    "House of Horrors - Delayed Start.esp:000802",
+    "Skyrim.esm:0DC53C",
+    "Skyrim.esm:02BB38",
+    "VigilantOfStendarrFaction",
+    "no packages"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:089986",
+   "name": "Kesh the Clean",
+   "race": "Khajiit (Suthay-Raht)",
+   "sex": "male",
+   "firstMeet": "At the Shrine of Peryite in the wilds right by Karthwasten in the Reach; he is its priest.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Shrine of Peryite, by Karthwasten",
+     "doing": "the records give him no daily packages, so he stays where he's placed"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver; priest of Peryite",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Only Cure",
+     "how": "gives it: he'll help you commune with Peryite once you bring a deathbell flower, a flawless ruby, a silver ingot and some vampire dust"
+    },
+    {
+     "quest": "The Taskmaster",
+     "how": "a step in it: the priest you're sent to talk to at the shrine (an Alternate Perspective start)"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His placed spot is out in the open world and isn't tied to a named place in the extracts; the shrine comes from The Taskmaster's journal ('the shrine to Peryite... speak to the priest there') and a book that names him its priest, northwest of Karthwasten."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in two more quests with no name in the extracts, and has a line in The House of Horrors whose part isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:089986",
+    "placed ref Skyrim.esm:08998C (world cell Skyrim.esm:000D74)",
+    "DA13 Skyrim.esm:08998D (giver, stage 10)",
+    "AFLOLALPeryiteQuest Alternate Perspective -- New Beginnings.esp:00083E",
+    "Extended Encounters.esp:0001B6",
+    "Extended Encounters.esp:0001B8",
+    "no packages"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01990F",
+   "name": "Eola",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "Inside the Hall of the Dead in Markarth; you find her there while looking into the hall for Brother Verulus (Investigate the Hall of the Dead).",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Hall of the Dead, Markarth",
+     "doing": "going about near where she's placed; the records give her no hours or bedtime"
+    }
+   ],
+   "changes": [
+    "During The Taste of Death she meets you at Reachcliff Cave, near Markarth.",
+    "Once you've finished The Taste of Death she comes to find you and speaks to you.",
+    "While the follow-up to The Taste of Death runs she keeps to Reachcliff Cave.",
+    "You can kill her instead in The Taste of Death."
+   ],
+   "role": "quest giver; follower",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Taste of Death",
+     "how": "gives it: she wants you to join her in worshipping Namira, lure Brother Verulus to the Shrine of Namira and feast on him; she can be killed in it"
+    },
+    {
+     "quest": "Investigate the Hall of the Dead",
+     "how": "a step in it: the woman you find inside the Hall of the Dead"
+    },
+    {
+     "quest": "A Bitter Aftertaste",
+     "how": "named in it, the follow-up where Namira's cannibals in Markarth are brought to justice; her exact part isn't in the records"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "She is set up as a follower, and after The Taste of Death is done she seeks you out, but the dialogue that recruits her isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "Has a vendor entry (open all hours, no merchant chest, no merchant faction) like other followers; it looks like follower trading, not a shop. Not confirmed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in five more quests with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01990F",
+    "placed ref Skyrim.esm:01BB8E in Hall of the Dead (Skyrim.esm:023FD4)",
+    "DA11FINEolaForcegreetPackage Skyrim.esm:0A0D49 (DA11 stage 100 done, Skyrim.esm:04D217 stage 10 not done)",
+    "DA11FINEolaEatPackage Skyrim.esm:089434 (Reachcliff Cave, while Skyrim.esm:04D217 runs)",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "DA11 Skyrim.esm:02C358 (giver; stages 10, 30, 250)",
+    "DA11Intro Skyrim.esm:07D949",
+    "madNamiraAddonQuest TasteOfDeath_Addon_Dialogue.esp:000050",
+    "PotentialFollowerFaction",
+    "vendor buy list 48cb0600"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01338C",
+   "name": "Brother Verulus",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "In Markarth. When Investigate the Hall of the Dead first starts he's in Understone Keep for a scene with Thongvor Silver-Blood; after that he keeps to the Hall of the Dead, where he asks you to find out what's happening inside.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Hall of the Dead, Markarth",
+     "doing": "sleeping (up for a meal 6 to 7 am)"
+    },
+    {
+     "from": "8 am",
+     "for": "16 hours",
+     "where": "the Hall of the Dead, Markarth",
+     "doing": "tending the Hall; meals at noon and 6 pm"
+    }
+   ],
+   "changes": [
+    "When Investigate the Hall of the Dead has just begun (you're told to speak to him) he's in Understone Keep for a scene with Thongvor Silver-Blood, until that scene has played out.",
+    "In The Taste of Death you can lure him to the Shrine of Namira, where he's killed.",
+    "If you killed Eola instead, he comes to you in Reachcliff Cave."
+   ],
+   "role": "quest giver; priest of Arkay at the Hall of the Dead",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Investigate the Hall of the Dead",
+     "how": "gives it"
+    },
+    {
+     "quest": "The Taste of Death",
+     "how": "its target: Eola wants you to lead him to the Shrine of Namira and kill him"
+    },
+    {
+     "quest": "A Bitter Aftertaste",
+     "how": "gives it: you can tell him about the cult of Namira and get the Jarl's leave to deal with them"
+    }
+   ],
+   "canDie": "essential (but The Taste of Death has him killed)",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His meals and sleep are shared packages that only say 'near where he's placed'; where his bed is isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in two more quests with no name in the extracts (the Understone Keep scene and the follow-up to The Taste of Death)."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01338C",
+    "placed ref Skyrim.esm:01BB8F in Hall of the Dead",
+    "DA11FINVerulusForcegreetPackage Skyrim.esm:087B63",
+    "DA11IntroSceneVerulusPackage Skyrim.esm:0AEC26 (Understone Keep; DA11Intro stage 5; Skyrim.esm:0AEC22)",
+    "DefaultEatEditorLoc18x1/12x1/6x1",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "MarkarthVerulusSandboxHallofDeadPackage Skyrim.esm:036F1F",
+    "DA11Intro Skyrim.esm:07D949",
+    "DA11 Skyrim.esm:02C358 stages 30, 60, 500",
+    "madNamiraAddonQuest TasteOfDeath_Addon_Dialogue.esp:000050",
+    "DA11IntroSceneVerulusPackage faction checks: GovExiled Skyrim.esm:036629, GovRuling Skyrim.esm:03662A (not his); scene quest Skyrim.esm:0AEC22 stage 15/100"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0133B7",
+   "name": "Senna",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "At the Temple of Dibella in Markarth.",
+   "day": [
+    {
+     "from": "10:15 am",
+     "for": "8 hours",
+     "where": "the Inner Sanctum, Temple of Dibella, Markarth",
+     "doing": "sleeping, as the records have it"
+    },
+    {
+     "from": "6:15 pm",
+     "for": "16 hours",
+     "where": "the Temple of Dibella, Markarth",
+     "doing": "going about the temple"
+    }
+   ],
+   "changes": [],
+   "role": "priestess of Dibella; can marry; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes; the conditions aren't in the records",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Night To Remember",
+     "how": "gives it: the priestess who tells you you trashed the temple when you wake there"
+    },
+    {
+     "quest": "The Heart of Dibella",
+     "how": "a step in it: the priestess who tells you to wait for Mother Hamal"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her sleep package starts at hour 10 (10:15) for 8 hours, which puts her in bed by day; it may be meant as night, but the record says 10. Either way she stays inside the Temple of Dibella."
+    },
+    {
+     "field": "marries",
+     "why": "She is in the marriage faction, but what the game asks first isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "She fills an alias in one more quest with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0133B7",
+    "placed ref Skyrim.esm:0263CD in Temple of Dibella (Skyrim.esm:016DF3)",
+    "XJKToDSennaSleep JK's Temple of Dibella.esp:000AF8",
+    "MarkarthSennaSandboxTemplePackage Skyrim.esm:06618D",
+    "PotentialMarriageFaction",
+    "DA14 Skyrim.esm:01BB9B",
+    "T01 Skyrim.esm:023B6C stage 56",
+    "Unofficial Skyrim Special Edition Patch.esp:0339CE"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01BB9C",
+   "name": "Sam Guevenne",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "In a tavern: he's placed at the Bee and Barb in Riften, where he challenges you to a drinking contest.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "wherever he is (the Bee and Barb, Riften, where he's placed)",
+     "doing": "going about the place he's in; no hours or bedtime"
+    }
+   ],
+   "changes": [
+    "A Night To Remember: 'Sam' turns out to be Sanguine; at its end you find him in Morvunskar."
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Participate in a drinking contest with Sam Guevenne",
+     "how": "gives it: he challenges you to a drinking contest"
+    },
+    {
+     "quest": "A Night To Remember",
+     "how": "gives it: the night of drinking that follows; you go looking for him and the staff he promised"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The drinking-contest quest has its own inn and event spots and a marker for his package, so it may move him to another town's inn; which one isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01BB9C",
+    "placed ref Skyrim.esm:0A96A0 in The Bee and Barb (Skyrim.esm:016BDF)",
+    "DefaultSandboxCurrentLocation256 Skyrim.esm:0956B8",
+    "DA14Start Skyrim.esm:03FA17 (aliases InnLocation, EventLocation, DA14StartSamwellPackageMarker)",
+    "DA14 Skyrim.esm:01BB9B stages 135, 200"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0133B0",
+   "name": "Orla",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At the Temple of Dibella in Markarth.",
+   "day": [
+    {
+     "from": "9:45 am",
+     "for": "8 hours",
+     "where": "the Inner Sanctum, Temple of Dibella, Markarth",
+     "doing": "sleeping, as the records have it"
+    },
+    {
+     "from": "5:45 pm",
+     "for": "16 hours",
+     "where": "the Temple of Dibella, Markarth",
+     "doing": "going about the temple"
+    }
+   ],
+   "changes": [],
+   "role": "priestess of Dibella; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes; the conditions aren't in the records",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Night To Remember",
+     "how": "a step in it: one of the priestesses you deal with while cleaning up the temple"
+    },
+    {
+     "quest": "The Heart of Dibella",
+     "how": "named in it, one of the temple's priestesses; her exact part isn't in the records"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her sleep package starts at hour 9 (9:45) for 8 hours, which puts her in bed by day; the record says 9. Either way she stays inside the Temple of Dibella."
+    },
+    {
+     "field": "marries",
+     "why": "She is in the marriage faction, but what the game asks first isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0133B0",
+    "placed ref Skyrim.esm:019901 in Temple of Dibella",
+    "XJKToDOrlaSleep JK's Temple of Dibella.esp:000AF9",
+    "MarkarthTempleofDibellaSandboxPackage Skyrim.esm:0354FA",
+    "PotentialMarriageFaction",
+    "DA14 Skyrim.esm:01BB9B (speaks before stage 30)",
+    "T01 Skyrim.esm:023B6C"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01E765",
+   "name": "Hamal",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At the Temple of Dibella in Markarth; she's its high priestess (Mother Hamal).",
+   "day": [
+    {
+     "from": "11 am",
+     "for": "7 hours",
+     "where": "the Inner Sanctum, Temple of Dibella, Markarth",
+     "doing": "sleeping, as the records have it"
+    },
+    {
+     "from": "6 pm",
+     "for": "17 hours",
+     "where": "the Temple of Dibella, Markarth",
+     "doing": "going about the temple"
+    }
+   ],
+   "changes": [
+    "The Heart of Dibella makes her essential while it runs."
+   ],
+   "role": "high priestess of Dibella; trainer; quest giver",
+   "sells": "",
+   "trains": "Enchanting (master trainer)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Heart of Dibella",
+     "how": "gives it: she asks you to find the next Sybil, a girl prophesied to live in Karthwasten"
+    },
+    {
+     "quest": "A Night To Remember",
+     "how": "a step in it: one of the priestesses who tell you to ask about Sam in Rorikstead"
+    }
+   ],
+   "canDie": "can die (no essential or protected flag; The Heart of Dibella protects her while it runs)",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her sleep package starts at 11 for 7 hours, which puts her in bed by day; the record says 11. Either way she stays inside the Temple of Dibella."
+    },
+    {
+     "field": "trains",
+     "why": "The trainer record gives Enchanting at the Master tier but no level cap; the exact level isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01E765",
+    "placed ref Skyrim.esm:01E766 in Temple of Dibella",
+    "XJKToDHamalSleep JK's Temple of Dibella.esp:000B37",
+    "MarkarthTempleofDibellaSandboxPackage Skyrim.esm:0354FA",
+    "JobTrainerEnchantingFaction",
+    "MarkarthDibellaInnerSanctumFaction",
+    "T01 Skyrim.esm:023B6C stages 57, 60 (alias HamalEssential)",
+    "DA14 Skyrim.esm:01BB9B (speaks before stage 40)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013386",
+   "name": "Anwen",
+   "race": "Redguard",
+   "sex": "female",
+   "firstMeet": "At the Temple of Dibella in Markarth.",
+   "day": [
+    {
+     "from": "10 am",
+     "for": "8 hours",
+     "where": "the Inner Sanctum, Temple of Dibella, Markarth",
+     "doing": "sleeping, as the records have it"
+    },
+    {
+     "from": "6 pm",
+     "for": "16 hours",
+     "where": "the Temple of Dibella, Markarth",
+     "doing": "going about the temple"
+    }
+   ],
+   "changes": [],
+   "role": "priestess of Dibella; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes; the conditions aren't in the records",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A Night To Remember",
+     "how": "a step in it: one of the priestesses who tell you to ask about Sam in Rorikstead"
+    },
+    {
+     "quest": "The Heart of Dibella",
+     "how": "named in it, one of the temple's priestesses; her exact part isn't in the records"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her sleep package starts at hour 10 for 8 hours, which puts her in bed by day; the record says 10. Either way she stays inside the Temple of Dibella."
+    },
+    {
+     "field": "marries",
+     "why": "She is in the marriage faction, but what the game asks first isn't in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013386",
+    "placed ref Skyrim.esm:019902 in Temple of Dibella",
+    "XJKToDAnwenSleep JK's Temple of Dibella.esp:000AF7",
+    "MarkarthTempleofDibellaSandboxPackage Skyrim.esm:0354FA",
+    "PotentialMarriageFaction",
+    "DA14 Skyrim.esm:01BB9B (speaks before stage 40)",
+    "T01 Skyrim.esm:023B6C"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01327C",
+   "name": "Dervenin",
+   "race": "Bosmer",
+   "sex": "male",
+   "firstMeet": "At the Temple of the Divines in Solitude.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Temple of the Divines, Solitude",
+     "doing": "standing where he's placed, begging"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver; beggar",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Mind of Madness",
+     "how": "gives it: he wants you to talk his master into coming back from vacation, in the Pelagius Wing of the Blue Palace"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills an alias in one more quest with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01327C",
+    "placed ref Skyrim.esm:0198DC in Temple of the Divines (Skyrim.esm:016A02)",
+    "DefaultStayAtEditorLocation Skyrim.esm:025BFC",
+    "FavorJobsBeggarsFaction",
+    "DA15 Skyrim.esm:02AC68",
+    "Skyrim.esm:0D7897"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013274",
+   "name": "Falk Firebeard",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In the Blue Palace in Solitude, at court.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "16 hours",
+     "where": "the court in the Blue Palace, Solitude",
+     "doing": "at work as the court's steward"
+    },
+    {
+     "from": "10 pm",
+     "for": "2 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "going about the palace"
+    },
+    {
+     "from": "midnight",
+     "for": "2 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "sleeping"
+    },
+    {
+     "from": "2 am",
+     "for": "2 hours",
+     "where": "Bryling's House, Solitude",
+     "doing": "a secret meeting"
+    },
+    {
+     "from": "4 am",
+     "for": "2 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "steward of the Blue Palace court; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Man Who Cried Wolf",
+     "how": "gives it: ask him about Wolfskull Cave; he asks you to clear it"
+    },
+    {
+     "quest": "The Wolf Queen Awakened",
+     "how": "gives it: he sends you to Styrr for the key to Potema's Catacombs and rewards you"
+    },
+    {
+     "quest": "Delivery",
+     "how": "its target: you deliver an item to him for Sorex Vinius of the Winking Skeever"
+    },
+    {
+     "quest": "The Mind of Madness",
+     "how": "a step in it: one of the palace people with lines while you look for a way into the Pelagius Wing"
+    },
+    {
+     "quest": "Tending the Flames",
+     "how": "named in it, at the court where Viarmo performs King Olaf's Verse; his exact part isn't in the records"
+    },
+    {
+     "quest": "Relics of the Crusader",
+     "how": "named in it; his part isn't in the records"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in eleven more quests with no name in the extracts, one where he is the 'Steward'."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013274",
+    "placed ref Skyrim.esm:0198C2 in Blue Palace (Skyrim.esm:016A04)",
+    "SolitudePalaceCourtStewardSandbox6x16 Skyrim.esm:0ABE16",
+    "FalkBrylingSecretMeeting2x2 Skyrim.esm:034BEE (Bryling's House)",
+    "USKPFalkFirebeardSleep24x6 Unofficial Skyrim Special Edition Patch.esp:029B0B",
+    "MS06Start Skyrim.esm:093807",
+    "MS06 Skyrim.esm:026C4D",
+    "SolitudeFreeform04 Skyrim.esm:0D055D",
+    "DA15 Skyrim.esm:02AC68",
+    "MS05 Skyrim.esm:053511",
+    "ccMTYSSE001_DES_RelicsoftheCrusader ccmtysse001-knightsofthenine.esl:00083C",
+    "Skyrim.esm:0268E9 alias Steward"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0132AC",
+   "name": "Una",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In the Blue Palace in Solitude, where she's a servant.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "3 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "going about the palace"
+    },
+    {
+     "from": "11 am",
+     "for": "7 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "working as a servant; once Tending the Flames is done, she spends 11 am to 1 pm out in the streets near the Blue Palace when it isn't raining"
+    },
+    {
+     "from": "6 pm",
+     "for": "3 hours",
+     "where": "by the wells in Solitude",
+     "doing": "out in town when it isn't raining; if it is, working in the palace until 8 pm"
+    },
+    {
+     "from": "9 pm",
+     "for": "3 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "going about the palace"
+    }
+   ],
+   "changes": [
+    "Until the execution scene that plays when you first reach Solitude is over, she stays near where she's placed in the Blue Palace all day.",
+    "Her late-morning walk outside only starts once Tending the Flames is done."
+   ],
+   "role": "servant in the Blue Palace",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Mind of Madness",
+     "how": "a step in it: one of the palace staff with lines while you look for a way into the Pelagius Wing"
+    },
+    {
+     "quest": "The Man Who Cried Wolf",
+     "how": "named in it, part of the court; her exact part isn't in the records"
+    },
+    {
+     "quest": "The Wolf Queen Awakened",
+     "how": "named in it; her exact part isn't in the records"
+    },
+    {
+     "quest": "Tending the Flames",
+     "how": "named in it, at the court; her exact part isn't in the records"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The two outdoor spots are markers the extracts don't name; 'the streets near the Blue Palace' and 'by the wells' come from where those markers sit."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in three more quests with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0132AC",
+    "SolitudeOpeningStayLocation512 Skyrim.esm:0B3B1B (until Skyrim.esm:0B2FD9 completes; that quest holds the execution packages)",
+    "SolitudeAvenuesMarker1Sandbox11x2 Skyrim.esm:08547B (not raining; MS05 completed; marker Skyrim.esm:085474, 0.1 km from Blue Palace)",
+    "SolitudeWellsMarker1Sandbox18x3 Skyrim.esm:085440 (not raining; marker Skyrim.esm:08543B)",
+    "SolitudeBluepalaceServantsWorking Skyrim.esm:0A390D",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "condition fn62 read as 'is raining' (AIOStayPutRaining8x12 uses it == 1)",
+    "SolitudeBluePalaceServants",
+    "DA15 Skyrim.esm:02AC68",
+    "MS06Start Skyrim.esm:093807",
+    "MS06 Skyrim.esm:026C4D",
+    "MS05 Skyrim.esm:053511"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013271",
+   "name": "Erdi",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "In the Blue Palace in Solitude, where she's a servant.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "3 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "going about the palace"
+    },
+    {
+     "from": "11 am",
+     "for": "9 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "working as a servant (from 4 pm she may instead wander near the palace)"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "the Winking Skeever, Solitude",
+     "doing": "eating, when it isn't raining; otherwise back in the palace"
+    }
+   ],
+   "changes": [
+    "Until the execution scene that plays when you first reach Solitude is over, she stays near where she's placed in the Blue Palace, except for her evening at the Winking Skeever."
+   ],
+   "role": "servant in the Blue Palace",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Mind of Madness",
+     "how": "a step in it: one of the palace staff with lines while you look for a way into the Pelagius Wing"
+    },
+    {
+     "quest": "The Man Who Cried Wolf",
+     "how": "named in it, part of the court; her exact part isn't in the records"
+    },
+    {
+     "quest": "Tending the Flames",
+     "how": "named in it, at the court; her exact part isn't in the records"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her 4 pm to 8 pm wander has conditions the extracts don't decode, so when it replaces work isn't clear."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in three more quests with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013271",
+    "SolitudeEatInnShared20x4 Skyrim.esm:0B243E (The Winking Skeever; not raining)",
+    "SolitudeOpeningStayLocation512 Skyrim.esm:0B3B1B (until Skyrim.esm:0B2FD9 completes)",
+    "AIOSoRandomNoShop16x4 AI Overhaul.esp:006AE1 (fn612 conditions)",
+    "SolitudeBluepalaceServantsWorking Skyrim.esm:0A390D",
+    "DefaultSleepEditorLocNoLock24x8 Skyrim.esm:0F9955",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "SolitudeBluePalaceServants",
+    "DA15 Skyrim.esm:02AC68",
+    "MS06Start Skyrim.esm:093807",
+    "MS05 Skyrim.esm:053511"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:02427D",
+   "name": "Erandur",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "At the Windpeak Inn in Dawnstar, a priest of Mara helping the townsfolk with their nightmares.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Windpeak Inn, Dawnstar",
+     "doing": "going about the inn; the records give him no hours or bedtime"
+    }
+   ],
+   "changes": [
+    "Waking Nightmare: he takes you to Nightcaller Temple, just outside Dawnstar.",
+    "Once Waking Nightmare is done he stays at Nightcaller Temple ('If you wish to find me again, I'll be in Nightcaller Temple').",
+    "At the end of Waking Nightmare you can kill him instead of letting him finish the ritual."
+   ],
+   "role": "quest giver; priest of Mara; follower",
+   "sells": "",
+   "trains": "",
+   "joins": "after Waking Nightmare, if you let him finish the ritual: he offers his services as a companion",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Waking Nightmare",
+     "how": "gives it: he leads you through Nightcaller Temple to destroy the Skull of Corruption; you can kill him at its end"
+    }
+   ],
+   "canDie": "essential (but Waking Nightmare lets you kill him)",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Has a vendor entry (open all hours, no merchant chest, no merchant faction) like other followers; it looks like follower trading, not a shop. Not confirmed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in four more quests with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02427D",
+    "placed ref Skyrim.esm:024280 in Windpeak Inn (Skyrim.esm:013A7F)",
+    "DA16ErandurPostSandbox Skyrim.esm:10E3C0 (Nightcaller Temple; DA16 completed)",
+    "DA16ErandurResearchWindspeakInn Skyrim.esm:099D9F (DA16 stages 20-24)",
+    "DawnstarErandurSandboxWindpeakInn Skyrim.esm:058C53 (DA16 not completed)",
+    "DA16 Skyrim.esm:0242AF stages 20, 25, 197, 200; objective 170",
+    "PotentialFollowerFaction",
+    "vendor buy list 48cb0600"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:02427C",
+   "name": "Veren Duleri",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Deep in Nightcaller Temple, by Dawnstar, during Waking Nightmare: one of the priests of Vaermina.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Nightcaller Temple, by Dawnstar",
+     "doing": "the records give him no packages; he stays where he's placed"
+    }
+   ],
+   "changes": [
+    "Killed in Waking Nightmare ('Defeat Veren and Thorek')."
+   ],
+   "role": "enemy in a quest; priest of Vaermina",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Waking Nightmare",
+     "how": "its target: you defeat him and Thorek at the Skull of Corruption"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02427C",
+    "placed in Nightcaller Temple",
+    "DA16 Skyrim.esm:0242AF objective 150 (alias VerenAlias)",
+    "DA16PriestFaction",
+    "no packages"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:024278",
+   "name": "Thorek",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Deep in Nightcaller Temple, by Dawnstar, during Waking Nightmare: one of the priests of Vaermina.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Nightcaller Temple, by Dawnstar",
+     "doing": "the records give him no packages; he stays where he's placed"
+    }
+   ],
+   "changes": [
+    "Killed in Waking Nightmare ('Defeat Veren and Thorek')."
+   ],
+   "role": "enemy in a quest; priest of Vaermina",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Waking Nightmare",
+     "how": "its target: you defeat him and Veren at the Skull of Corruption"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:024278",
+    "placed in Nightcaller Temple",
+    "DA16 Skyrim.esm:0242AF objective 150 (alias ThorekAlias)",
+    "DA16PriestFaction",
+    "no packages"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01CB78",
+   "name": "Delvin Mallory",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "In the Ragged Flagon, the Thieves Guild's tavern in the Ratway under Riften.",
+   "day": [
+    {
+     "from": "2 am",
+     "for": "20 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "sitting in and around the tavern"
+    },
+    {
+     "from": "10 pm",
+     "for": "4 hours",
+     "where": "the Ragged Flagon, Riften",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "Thieves Guild member; trainer; quest giver",
+   "sells": "",
+   "trains": "Sneak (master trainer)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Litany of Larceny",
+     "how": "gives it: bring him the special treasures you find on Guild jobs"
+    },
+    {
+     "quest": "Where You Hang Your Enemy's Head...",
+     "how": "gives it: you pay him to refit the Dawnstar Sanctuary"
+    },
+    {
+     "quest": "The Silence Has Been Broken",
+     "how": "a step in it: you show him Amaund Motierre's amulet"
+    },
+    {
+     "quest": "Meet the Family",
+     "how": "a step in it: learn about the Guild from him"
+    },
+    {
+     "quest": "The Bedlam Job",
+     "how": "a step in it: you report back to him"
+    },
+    {
+     "quest": "The Numbers Job",
+     "how": "a step in it: you report back to him"
+    },
+    {
+     "quest": "The Fishing Job",
+     "how": "a step in it: you bring him what you took"
+    },
+    {
+     "quest": "The Pursuit",
+     "how": "a step in it: he's at the Ragged Flagon when Karliah arrives"
+    },
+    {
+     "quest": "Reparations",
+     "how": "named in it, one of the Guild; his exact part isn't in the records"
+    },
+    {
+     "quest": "Under New Management",
+     "how": "a step in it: one of the Guild there when you become Guild Master"
+    },
+    {
+     "quest": "Loud and Clear",
+     "how": "has lines in it before you're sent to Goldenglow; his exact part isn't in the records"
+    },
+    {
+     "quest": "Promises to Keep",
+     "how": "has lines in it; his exact part isn't in the records"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "trains",
+     "why": "The trainer record gives Sneak at the Master tier but no level cap; the exact level isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "The Silence Has Been Broken calls him a fence who buys the amulet, but he has no vendor entry in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in thirteen more quests with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01CB78",
+    "placed ref Skyrim.esm:01DA41 in The Ragged Flagon (Skyrim.esm:016BCF)",
+    "ThievesGuildDelvinSandbox20x2/16x2/12x2/8x2/4x2/0x2 Skyrim.esm:10F120-10F125",
+    "USKPThievesGuildDelvinSleep Unofficial Skyrim Special Edition Patch.esp:041300",
+    "ThievesGuildDelvinStayAtFlagon0x0 Skyrim.esm:049530",
+    "JobTrainerSneakFaction",
+    "TGLarceny Skyrim.esm:04C6C2",
+    "DarkBrotherhoodSanctuaryRepair Skyrim.esm:087BA2",
+    "DB04a Skyrim.esm:02AD16 stages 30, 40",
+    "TG02B Skyrim.esm:084ABD",
+    "TGRNT Skyrim.esm:060990",
+    "TGRFO Skyrim.esm:06098E",
+    "TGRGF Skyrim.esm:028922",
+    "TG07 Skyrim.esm:021553",
+    "TGBan Skyrim.esm:0B03A2",
+    "TGLeadership Skyrim.esm:0D7D69",
+    "TG02 Skyrim.esm:02154E (speaker below 60)",
+    "MS03 Skyrim.esm:01DA3C (speaker below 200)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01403E",
+   "name": "Derkeethus",
+   "race": "Argonian",
+   "sex": "male",
+   "firstMeet": "Lost in Darkwater Pass, held by the Falmer, during Extracting an Argonian; once rescued he's home at Darkwater Crossing in Eastmarch.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Darkwater Crossing",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "2 hours",
+     "where": "Darkwater Crossing",
+     "doing": "eating"
+    },
+    {
+     "from": "10 am",
+     "for": "9 hours",
+     "where": "Goldenrock Mine, Darkwater Crossing",
+     "doing": "working in the mine"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "Darkwater Crossing",
+     "doing": "going about the village"
+    }
+   ],
+   "changes": [
+    "Before you rescue him in Extracting an Argonian he's missing in Darkwater Pass; afterwards he returns home to Darkwater Crossing."
+   ],
+   "role": "miner at Darkwater Crossing; quest giver; follower; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes; the conditions aren't in the records",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Extracting an Argonian",
+     "how": "gives it: he's the missing fisherman you find and lead out of Darkwater Pass"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "He's placed in Goldenrock Mine, and his packages have no quest conditions; Darkwater Pass comes from the quest's journal. Whether he's there from the start isn't in the extracts."
+    },
+    {
+     "field": "joins",
+     "why": "He is set up as a follower, but the dialogue that recruits him isn't in the extracts."
+    },
+    {
+     "field": "marries",
+     "why": "He is in the marriage faction, but what the game asks first isn't in the extracts."
+    },
+    {
+     "field": "sells",
+     "why": "Has a vendor entry (open all hours, no merchant chest, no merchant faction) like other followers; it looks like follower trading, not a shop. Not confirmed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01403E",
+    "placed ref Skyrim.esm:01B08D in Goldenrock Mine (Skyrim.esm:013A8A)",
+    "DarkwaterCrossingDerkeethusSleep24x8 Skyrim.esm:0E7532",
+    "DarkwaterCrossingDerkeethusEat8x2 Skyrim.esm:0E7543",
+    "DarkwaterCrossingDerkeethusMine10x9 Skyrim.esm:076B49",
+    "DarkwaterCrossingSandboxPackage Skyrim.esm:0E7542",
+    "DarkwaterCrossingDerkeethusRescueQuest Skyrim.esm:076B4A stages 10, 200",
+    "PotentialFollowerFaction",
+    "PotentialMarriageFaction",
+    "vendor buy list 48cb0600"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:014132",
+   "name": "Aventus Aretino",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At the Aretino Residence in Windhelm, where he's trying to contact the Dark Brotherhood.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the Aretino Residence, Windhelm",
+     "doing": "in his house; no hours or bedtime"
+    }
+   ],
+   "changes": [
+    "Once Grelod the Kind is dead (Innocence Lost), he goes back to Honorhall Orphanage in Riften: 10 to 11 am in the yard outside, 3 to 4 pm at a meal, otherwise around the orphanage."
+   ],
+   "role": "quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Innocence Lost",
+     "how": "gives it: he wants Grelod the Kind, headmistress of Honorhall Orphanage, dead; you can kill her (or lure her to the Riften docks first), or talk to the guards in Riften to have her arrested"
+    }
+   ],
+   "canDie": "can die (no essential or protected flag)",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in two more quests with no name in the extracts, one from the home-building add-on."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:014132",
+    "placed ref Skyrim.esm:01B121 in Aretino Residence (Skyrim.esm:016784)",
+    "AventusAretinoResidenceSandbox Skyrim.esm:050DB0 (DB01 stage <= 198)",
+    "RiftenHonorhallKidsYardPackage Skyrim.esm:026679",
+    "RiftenHonorhallMealPackage Skyrim.esm:02661F",
+    "AventusAretinoHonorhallSandbox Skyrim.esm:050DAF",
+    "DB01 Skyrim.esm:01EA50 stages 5, 20, 200",
+    "Skyrim.esm:01EA5C",
+    "HearthFires.esm:004286"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01335E",
+   "name": "Grelod the Kind",
+   "race": "Elder",
+   "sex": "female",
+   "firstMeet": "At Honorhall Orphanage in Riften, which she runs.",
+   "day": [
+    {
+     "from": "1 am",
+     "for": "4 hours",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "5 am",
+     "for": "5 hours",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "going about the orphanage"
+    },
+    {
+     "from": "10 am",
+     "for": "1 hour",
+     "where": "the orphanage yard, Riften",
+     "doing": "out in the yard"
+    },
+    {
+     "from": "11 am",
+     "for": "1 hour",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "going about the orphanage"
+    },
+    {
+     "from": "noon",
+     "for": "1 hour",
+     "where": "her room, Honorhall Orphanage",
+     "doing": "in her room"
+    },
+    {
+     "from": "1 pm",
+     "for": "2 hours",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "going about the orphanage"
+    },
+    {
+     "from": "3 pm",
+     "for": "1 hour",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "eating"
+    },
+    {
+     "from": "4 pm",
+     "for": "9 hours",
+     "where": "Honorhall Orphanage, Riften",
+     "doing": "going about the orphanage"
+    }
+   ],
+   "changes": [
+    "A scene at the orphanage can hold her at one spot inside while it's set.",
+    "If Constance Michel is dead before Innocence Lost is over, she flees.",
+    "Innocence Lost: killed, or (with its added options) arrested by a guard or poisoned with her wine."
+   ],
+   "role": "headmistress of Honorhall Orphanage; target in a quest",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Innocence Lost",
+     "how": "its target: Aventus Aretino wants her dead; you can kill her, lure her to the docks, or have her arrested or poison her wine"
+    },
+    {
+     "quest": "Three Wise Men",
+     "how": "a step in it: she refuses your Saturalia donation for the children"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The scene package at the top of her list holds while a value on the orphanage scene quest is 0; when that changes isn't in the extracts. It also keeps her inside the orphanage."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in three more quests with no name in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01335E",
+    "ConstanceDeadFleePackage Skyrim.esm:0CB26B (Constance Michel Skyrim.esm:013350 dead; DB01 stage < 200)",
+    "GrelodHonorhallScenePackage Skyrim.esm:08BAE0 (GetVMQuestVariable Skyrim.esm:0368D8 == 0)",
+    "GrelodYardPackage Skyrim.esm:026660",
+    "RiftenHonorhallMealPackage Skyrim.esm:02661F",
+    "GrelodRoomPackage Skyrim.esm:02661B",
+    "GrelodSleepPackage Skyrim.esm:016CA9",
+    "GrelodHonorhallSandboxPackage Skyrim.esm:02661D",
+    "DB01 Skyrim.esm:01EA50 stages 20, 21, 198, 200",
+    "DB01_OptionalObjectives Innocence Lost - Quest Expansion.esp:000836",
+    "Sat_Orphanage TheGiftofSaturalia.esp:0008AA stage 12"
+   ]
+  }
+ ]
+}
