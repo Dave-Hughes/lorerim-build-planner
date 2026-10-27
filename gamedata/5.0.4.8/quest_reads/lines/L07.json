@@ -1,0 +1,336 @@
+{
+ "lines": [
+  {
+   "id": "unearthed",
+   "name": "Unearthed",
+   "about": "Ralis Sedarys asks you to pay for the dig at Kolbjorn Barrow on Solstheim, and you come back after each payment to clear draugr and go deeper until you face the dragon priest Ahzidal. No level gate is set; the barrow's enemies are listed at levels 30 to 55, and it is one quest in four paid phases costing 11,000 gold in all.",
+   "getIn": {
+    "quest": "Unearthed",
+    "who": "Ralis Sedarys",
+    "where": "outside Kolbjorn Barrow on Solstheim; Raven Rock is the nearest town",
+    "how": "Go to Kolbjorn Barrow and talk to Ralis, who offers to make you a partner in the dig if you pay for it. Geldis Sadri at the Retching Netch in Raven Rock passes on the rumor that Ralis wants gold.",
+    "needs": [
+     "1,000 gold for the first phase"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Kolbjorn Barrow Misc Objectives",
+     "what": "A journal pointer tells you to speak to Ralis Sedarys at Kolbjorn Barrow, then to investigate the barrow.",
+     "where": "Kolbjorn Barrow, Solstheim",
+     "needs": ""
+    },
+    {
+     "quest": "Unearthed",
+     "what": "You fund four phases of the dig (1,000, 2,000, 3,000 and 5,000 gold), clear draugr after each, search for the missing miners, and in the last phase find Ralis freeing Ahzidal and defeat him.",
+     "where": "Kolbjorn Barrow, Solstheim",
+     "needs": "11,000 gold over the whole quest."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Unearthed",
+     "options": [
+      "Kill Ralis: you decide he sacrificed the miners on purpose and kill him.",
+      "Let Ralis go: you accept that Ahzidal controlled him, and he leaves for Raven Rock."
+     ]
+    }
+   ],
+   "gives": [
+    "The Relics of Ahzidal: Ahzidal's Armor, Ahzidal's Boots, Ahzidal's Gauntlets, Ahzidal's Helmet, Ahzidal's Ring of Arcana and Ahzidal's Ring of Necromancy, sealed in Kolbjorn Barrow",
+    "Ralis Sedarys as a follower, at the Retching Netch in Raven Rock, if you let him go"
+   ],
+   "closes": [
+    "Ralis Sedarys dies if you choose to kill him, and he can't become your follower",
+    "The miners Bradyn and Mireli are found dead",
+    "Ahzidal is destroyed; Destroy the Acolyte Priests also asks you to destroy him"
+   ],
+   "unsure": [
+    {
+     "field": "gives",
+     "why": "The records hold the Relics of Ahzidal, but don't say where each piece lies in the barrow, and the dialogue that recruits Ralis isn't shown."
+    },
+    {
+     "field": "closes",
+     "why": "Destroy the Acolyte Priests has its own objective to destroy Ahzidal; whether killing him here ticks it off isn't shown."
+    },
+    {
+     "field": "order",
+     "why": "What adds Kolbjorn Barrow Misc Objectives to your journal isn't in the records; it is probably Geldis Sadri's rumor, but that isn't shown."
+    },
+    {
+     "field": "about",
+     "why": "No level gate for the line is in the records; the level range is the listed enemies of Kolbjorn Barrow, not a requirement."
+    }
+   ],
+   "evidence": [
+    "quests.json line unearthed: DLC2dunKolbjornQST, DLC2dunKolbjornMiscQST",
+    "checked/045.json DLC2dunKolbjornQST (Dragonborn.esm:01810B): starts, needs, steps, choices, rewards, closes, enemy levels 30-55",
+    "checked/045.json DLC2dunKolbjornMiscQST (Dragonborn.esm:02667E): objectives, opens Unearthed, Geldis Sadri rumor INFO 02BBB9",
+    "people_schedules_raw 0179C7 Ralis follower, SleepRetchingNetch24x8 (via checked read)",
+    "EnoAcolyteQuest (Destroy the Acolyte Priests.esp:000800) objective 'Destroy Ahzidal' (via checked read)",
+    "quest_starts_raw line unearthed: startGame false, no dialogue or event conditions"
+   ]
+  },
+  {
+   "id": "forsworn-conspiracy",
+   "name": "The Forsworn Conspiracy",
+   "about": "A murder in Markarth's marketplace leads you into a conspiracy among the city's powerful families, and ends with you framed and thrown into Cidhna Mine, where you must deal with Madanach. It is two story quests and a small job inside the mine; the records set no level gate.",
+   "getIn": {
+    "quest": "The Forsworn Conspiracy",
+    "who": "Eltrys",
+    "where": "Markarth's marketplace, right after the attack",
+    "how": "Walk into Markarth and see a man attack a woman (Margret) in the marketplace; afterwards Eltrys comes to you and you have his note asking you to meet him at the Shrine of Talos at midnight.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The Forsworn Conspiracy",
+     "what": "Eltrys asks you to look into the attack, and you gather evidence about Margret, Weylin, Nepos the Nose and Thonar Silver-Blood before returning to him.",
+     "where": "Markarth: the Shrine of Talos, Silver-Blood Inn, the Warrens, Nepos' House and the Treasury House",
+     "needs": ""
+    },
+    {
+     "quest": "No One Escapes Cidhna Mine",
+     "what": "Framed for Eltrys' murder, you are imprisoned in Cidhna Mine, get past Borkul the Beast, and do Madanach's bidding until you choose to escape with him or kill him.",
+     "where": "Cidhna Mine, Markarth",
+     "needs": "Finish The Forsworn Conspiracy."
+    },
+    {
+     "quest": "Shiv",
+     "what": "A job inside the mine: Grisvar the Unlucky gets you a shiv if you bring him a bottle of Skooma.",
+     "where": "Cidhna Mine, Markarth",
+     "needs": "Be in Cidhna Mine."
+    }
+   ],
+   "branches": [
+    {
+     "at": "No One Escapes Cidhna Mine",
+     "options": [
+      "Help Madanach escape: follow him out, and he and his Forsworn take credit for your past crimes, clearing your name in the Reach.",
+      "Kill Madanach: search his body, read his note and escape the mine yourself; Thonar Silver-Blood pardons you, clearing your name in the Reach."
+     ]
+    }
+   ],
+   "gives": [
+    "Your bounty in the Reach is cleared at the end, either way",
+    "Shiv (dagger)",
+    "Silver-Blood Family Ring",
+    "A medium leveled quest reward and gold from The Forsworn Conspiracy"
+   ],
+   "closes": [
+    "Eltrys is killed and you are framed for his murder",
+    "Grisvar the Unlucky dies if you do Madanach's bidding",
+    "Madanach dies if you kill him",
+    "If you escape with Madanach, he and the Forsworn prisoners leave Cidhna Mine"
+   ],
+   "unsure": [
+    {
+     "field": "getIn",
+     "why": "LoreRim's delayed-start add-on holds back the marketplace attack until one of its switches is on; what turns it on isn't in the records."
+    },
+    {
+     "field": "gives",
+     "why": "The Shiv and the Silver-Blood Family Ring are both in the script of No One Escapes Cidhna Mine, but the records don't say which route gives which. The Forsworn Conspiracy's leveled reward and gold aren't tied to a step."
+    },
+    {
+     "field": "closes",
+     "why": "The escaping Forsworn have packages running to Druadach Redoubt; what that changes in Markarth or later quests isn't in the records."
+    },
+    {
+     "field": "order",
+     "why": "The start conditions of Shiv aren't in the records; it starts when you arrive in Cidhna Mine, probably during No One Escapes Cidhna Mine."
+    }
+   ],
+   "evidence": [
+    "quests.json line forsworn-conspiracy: MS01, MS02, FreeformCidhnaMineA",
+    "checked/046.json MS01 (Skyrim.esm:018B4B): starts, steps, rewards, closes, delayed-start packages",
+    "checked/046.json MS02 (Skyrim.esm:040A5E): needs, choices, steps, rewards Shiv 0426C8 and SilverFishRing 024CFF, closes",
+    "checked/046.json FreeformCidhnaMineA (Skyrim.esm:0DB851): objectives, Shiv reward",
+    "quest_starts_raw line forsworn-conspiracy: startGame true"
+   ]
+  },
+  {
+   "id": "the-wolf-queen-awakened",
+   "name": "The Wolf Queen Awakened",
+   "about": "Falk Firebeard of the Blue Palace in Solitude sends you to stop necromancers raising Potema, the Wolf Queen, first in Wolfskull Cave near Dragon Bridge and then in her catacombs, entered from Solitude. It is two quests; the records set no level gate, but the catacombs' boss is listed at levels 100 to 125.",
+   "getIn": {
+    "quest": "The Man Who Cried Wolf",
+    "who": "Falk Firebeard",
+    "where": "the Blue Palace, Solitude",
+    "how": "Enter the Blue Palace while the court hears Varnius Junius of Dragon Bridge ask for help with Wolfskull Cave, then ask Falk Firebeard about it.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The Man Who Cried Wolf",
+     "what": "Falk asks you to clear out Wolfskull Cave, where necromancers are holding a ritual to summon Potema, and to report back.",
+     "where": "Wolfskull Cave near Dragon Bridge, then the Blue Palace",
+     "needs": ""
+    },
+    {
+     "quest": "The Wolf Queen Awakened",
+     "what": "Falk sends you to Styrr for the key to Potema's Catacombs; you defeat Potema, bring her remains out, report to Falk and give the remains to Styrr.",
+     "where": "the Hall of the Dead and Potema's Catacombs, Solitude",
+     "needs": "Finish The Man Who Cried Wolf."
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "A random reward item from the top tier of the game's quest-reward lists, from Falk Firebeard",
+    "A medium leveled quest reward for clearing Wolfskull Cave"
+   ],
+   "closes": [
+    "Potema is defeated"
+   ],
+   "unsure": [
+    {
+     "field": "getIn",
+     "why": "The court scene is set off by a trigger in the Blue Palace; whether it plays at any time or only in court hours isn't in the records."
+    },
+    {
+     "field": "order",
+     "why": "The Unofficial Patch starts The Wolf Queen Awakened on a location change, with a letter from Falk; how long after The Man Who Cried Wolf that happens isn't in the records."
+    },
+    {
+     "field": "about",
+     "why": "No level gate is in the records; the level range is the catacombs' listed boss, not a requirement."
+    },
+    {
+     "field": "order",
+     "why": "LoreRim locks one door into Solitude's Hall of the Dead at Apprentice level, so you may need a lockpick on the way back from the catacombs; the records don't name the room it leads from."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-wolf-queen-awakened: MS06Start, MS06",
+    "checked/046.json MS06Start (Skyrim.esm:093807): starts, steps, medium leveled reward, opens MS06",
+    "checked/047.json MS06 (Skyrim.esm:026C4D): needs, steps, reward LvlQuestReward04Wow, Potema's Catacombs boss 100-125, Requiem.esp lock 25 on door 0DD429",
+    "quest_starts_raw line the-wolf-queen-awakened: startGame true"
+   ]
+  },
+  {
+   "id": "blood-on-the-ice",
+   "name": "Blood on the Ice",
+   "about": "A killer called the Butcher is murdering women in Windhelm, and you investigate for the city's steward until you find the culprit. It is one investigation with a second part if you accuse the wrong man; the records set no level gate.",
+   "getIn": {
+    "quest": "Blood on the Ice",
+    "who": "a guard and the witnesses Silda the Unseen, Helgird and Calixto Corrium",
+    "where": "a murder scene in Windhelm's streets, over the body of Susanna from Candlehearth Hall",
+    "how": "Speak to the people at the scene and you're asked to help investigate; the quest can also begin by getting help from Windhelm's steward in the Palace of the Kings.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Blood on the Ice",
+     "what": "You question the witnesses, examine the body and the scene, search the empty house Hjerim with Viola Giordano, and report to the steward, then either accuse Wuunferth the Unliving or patrol the Stone Quarter at night to catch the murderer.",
+     "where": "Windhelm: the Hall of the Dead, the Palace of the Kings, House of Clan Shatter-Shield, Hjerim and the Stone Quarter",
+     "needs": ""
+    },
+    {
+     "quest": "Blood on the Ice",
+     "what": "The Butcher strikes again after Wuunferth is jailed; you speak to Wuunferth, patrol the Stone Quarter at night, catch the murderer and speak to the steward for a reward.",
+     "where": "Windhelm",
+     "needs": "End the first part by naming Wuunferth the Unliving as the Butcher."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Blood on the Ice",
+     "options": [
+      "Accuse Wuunferth the Unliving: he is jailed, and the killer strikes again in the second part.",
+      "Patrol the Stone Quarter at night: you catch the real killer."
+     ]
+    }
+   ],
+   "gives": [
+    "Necromancer's Amulet",
+    "A reward from Windhelm's steward at the end of the second part"
+   ],
+   "closes": [
+    "Wuunferth the Unliving is jailed if you accuse him, until the second part clears him",
+    "The killer is brought to justice"
+   ],
+   "unsure": [
+    {
+     "field": "gives",
+     "why": "The Necromancer's Amulet is in the quest's script, but when it is handed over isn't in the records; the steward's reward in the second part isn't listed."
+    },
+    {
+     "field": "closes",
+     "why": "The quest names Arivanya at Windhelm Stables as a second victim and holds spots for more; whether and when they die isn't in the records."
+    },
+    {
+     "field": "getIn",
+     "why": "No start event is in the records; where the body lies in Windhelm and at what time aren't stated. What sets off the second way in, through the steward, isn't in the records either."
+    },
+    {
+     "field": "getIn",
+     "why": "Which person is the steward comes from an alias, so the records don't name them."
+    }
+   ],
+   "evidence": [
+    "quests.json line blood-on-the-ice: MS11, MS11b",
+    "checked/047.json MS11 (Skyrim.esm:01F7A3): starts, steps, choices, rewards InnocuousAmulet 0D2328 and NecromancersAmulet 0C891D, closes, victim aliases",
+    "checked/047.json MS11b (Skyrim.esm:020556): needs, steps, reward from steward, closes",
+    "quest_starts_raw line blood-on-the-ice: startGame false"
+   ]
+  },
+  {
+   "id": "the-white-phial",
+   "name": "The White Phial",
+   "about": "Nurelion, the alchemist who keeps The White Phial shop in Windhelm, wants the legendary White Phial found, and later his assistant Quintus Navale tries to repair it. It is two quests that send you to Forsaken Cave, the Throat of the World and Red Eagle Redoubt; the records set no level gate, and the bosses on the way are listed around level 50.",
+   "getIn": {
+    "quest": "The White Phial",
+    "who": "Nurelion",
+    "where": "The White Phial, the alchemy shop in Windhelm; he keeps shop from 8 am for 12 hours",
+    "how": "Talk to Nurelion in his shop and he asks you to find the White Phial for him.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The White Phial",
+     "what": "You retrieve the White Phial from the crypt inside Forsaken Cave, bring it to Nurelion and speak to Quintus.",
+     "where": "Forsaken Cave, the Pale, then The White Phial in Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "Repairing the Phial",
+     "what": "A letter from Quintus brings you back; you gather the Unmelting Snow, some Mammoth Tusk Powder and a Forsworn Heart, and return to him.",
+     "where": "the Throat of the World, Red Eagle Redoubt in the Reach, then The White Phial in Windhelm",
+     "needs": "Finish The White Phial."
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Gold from Quintus Navale at the end of The White Phial"
+   ],
+   "closes": [
+    "Nurelion dies at the end of Repairing the Phial, after seeing the repaired Phial"
+   ],
+   "unsure": [
+    {
+     "field": "gives",
+     "why": "The gold amount isn't in the records, and no reward is listed for Repairing the Phial."
+    },
+    {
+     "field": "getIn",
+     "why": "The Choice Is Yours and NGCDT - Nurelion Edits change the opening dialogue's conditions and block one of Nurelion's lines; the records don't show which, so it isn't certain he still offers the quest."
+    },
+    {
+     "field": "order",
+     "why": "Where to get the Mammoth Tusk Powder isn't in the records, and how Quintus's letter reaches you isn't shown."
+    },
+    {
+     "field": "about",
+     "why": "No level gate is in the records; Forsaken Cave's boss Curalmil is listed at level 50 and Red Eagle Redoubt's boss at 48 to 50."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-white-phial: MS12, MS12b",
+    "checked/047.json MS12 (Skyrim.esm:02C258): starts, steps, gold reward, Forsaken Crypt cell 02FD85, Curalmil level 50",
+    "checked/047.json MS12b (Skyrim.esm:02499C): needs, letter start, steps, Red Eagle Redoubt boss, closes",
+    "quest_starts_raw line the-white-phial: startGame true"
+   ]
+  }
+ ]
+}

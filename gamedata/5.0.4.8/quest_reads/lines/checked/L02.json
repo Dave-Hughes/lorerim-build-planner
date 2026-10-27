@@ -1,0 +1,1539 @@
+{
+ "checks": [
+  {
+   "id": "thieves-guild",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id thieves-guild; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'The Thieves Guild'; matches."
+    },
+    "about": {
+     "verdict": "fix",
+     "note": "Main-story count checked against quests.json order: TG00, TG01-TG07, TG08A, TG08B, TG09 are eleven quests, A Chance Arrangement to Darkness Returns; matches. 'Ragged Flagon and the Cistern under Riften' matches TG02/TG04 takesYou. Fixed 'repeatable work': TGRBE/TGRDU/TGRFO/TGRGF/TGRHC/TGRNT/TGRSL are canDo 'radiant' and quests_raw TGRBE has only alias slots filled at start, no repeat flag (no 'repeat' anywhere in quests_raw for these), so per Bob's 23 Oct ruling 'repeatable' comes out. Level still unsettled (unsure kept)."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "TG00 starts: Brynjolf, 'outdoors in Riften', talks you into a scheme and says meet him during the day; needs []. quest_givers_raw TG00 giver Brynjolf placed in a Riften exterior cell; quest_starts_raw thieves-guild has no dialogue/event conditions (startGame true), only the SpeechHard 75 global, which is a check not a gate. Matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "Row order and names compared one by one with quests.json thieves-guild (30 quests, same order, names match the checked reads). Story rows checked against TG00-TG09 firstStep/takesYou (Madesi's ring; Keerava, Bersi, Haelga debts; Goldenglow hives and safe; Maven and Honningbrew; Gulum-Ei at the Winking Skeever; Snow Veil Sanctum; Enthir and Calcelmo; Riftweald Manor; Nightingale Hall; Irkngthand; Twilight Sepulcher) and all agree. Fixes: Taking Care of Business needs 'Finish A Chance Arrangement' is just the row before it (the brief keeps only new needs; every other story row is empty), so emptied. The seven TGR job rows said 'repeatable' twice each; their checked reads only support radiant jobs whose town and target are filled when they start, so reworded to 'radiant' and 'picked when the job starts'. Who gives each job matches the reads (Vex: Burglary, Shill, Sweep, Heist; Delvin: Numbers, Fishing, Bedlam)."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Darkness Returns: TG09 choices give one of Nightingale Strife, Nightingale Subterfuge or Shadowcloak of Nocturnal; Scoundrel's Folly: TG04 choices, Gulum-Ei talks or the journal sends you to another source. Both match; TG01-TG03 choices are methods, not branches, rightly left out."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Each entry traced: membership (TG02 rewards), Thieves Guild Cuirass/Gloves/Boots/Hood from Tonilia (TG02B rewards), enchanted one-handed weapon (TG03 rewards), Nightingale set and rank (TG08A rewards), Nightingale Agent, power and Nightingale Shadow Perk (TG09 rewards), Guild Master title, armor, Amulet of Articulation and Tribute Chest key (TGLeadership rewards), Prowler's Profit (TGCrown rewards), allies in four cities (TGTQ01-04 rewards). All match; the unsure notes on versions and effects match the reads."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Sabjorn jailed/Honningbrew to Mallus (TG03 closes), Mercer dies (TG08B closes), Skeleton Key leaves you (TG09 closes), Linwe and the Summerset Shadows gone (TGTQ04 closes), ban until Reparations (TGBan needs/canDoWhy). Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Each note traced to a checked read's unsure: Brynjolf's spot (TG00), Under New Management's conditions (TGLeadership needs), city-job giver (TGTQ01-04 starts), job offering time and the Meet the Family pointer (TGRHC/TGRNT/TGRSL needs, TG02B opens), Meet the Family start (TG02B starts), Paid in Full filing (DLC2TGQuest needs), Nightingale power/armor/amulet versions (TG09, TG08A, TGLeadership), the pickpocket boost (TG00 rewards; quest_givers_raw TG00 lists 'TG00 Pickpocket Boost' perk). No player text carries ids."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "Checked files compared with where each edid sits: TG00-TG07 in 013, TG08A-TGRGF in 014, TGRHC-TGFenceCaravan in 015, TGLarceny and DLC2TGQuest in 016. Matches."
+    }
+   }
+  },
+  {
+   "id": "dark-brotherhood",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id dark-brotherhood; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'The Dark Brotherhood'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "Sanctuary 'in the pine forest near Falkreath' matches DB02 takesYou and DB05 starts; thirteen main quests counted from quests.json order (DB01, DB02, DB02a, DB03, DB04, DB04a, DB05-DB11), Innocence Lost to Hail Sithis!; 'one great contract' matches DB04a/DB09/DB11 (Motierre's contract on the Emperor). No level given (unsure kept)."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DB01 starts: Aventus Aretino in the Aretino Residence, Windhelm, door left unlocked, asks you to kill Grelod the Kind of Honorhall Orphanage; quest_givers_raw DB01 giver Aventus Aretino in Aretino Residence, Windhelm; quest_starts_raw dark-brotherhood has no dialogue/event conditions. Matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "46 rows compared with quests.json order and names; all match. Story rows checked against DB01-DB11, DBDestroy, DBEviction firstStep/takesYou and agree, with two place fixes: Bound Until Death's reception is 'outside the Temple of the Divines' (DB05 takesYou), and Hail Sithis! also sends you to the Bannered Mare in Whiterun to meet Motierre (DB11 takesYou). Side contracts checked against DBSideContract01-12 and the nine ExtraContracts reads (targets, places, Nazir as payer, random reward item); agree. The five LTN rows and The Dark Brotherhood Forever said 'repeatable': LTNQuest* and DBrecurring are canDo 'radiant' with no repeat flag in the records, but the LTN journals tell you to return to the Night Mother for more, so reworded to radiant plus that journal line. Added 'Be the Listener' as the first LTN row's need, from LTNQuestMarkarth needs (the Night Mother names you Listener in Whispers in the Dark, DB04 rewards); kept as inferred in unsure."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Innocence Lost: kill in the orphanage, lure to the docks (DB01 choices), arrest or poison wine (DB01_OptionalObjectives choices). With Friends Like These...: kill a captive or kill Astrid (DB02 choices). The Cure for Madness: kill Cicero or leave him (DB07 choices). Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Shrouded set (DB02a rewards), Listener (DB04 rewards), Shadowmere (DB07 rewards), Blade of Woe optional from Astrid (DB10 rewards), Motierre's payment and leadership (DB11 rewards), Dawnstar Sanctuary refit (DarkBrotherhoodSanctuaryRepair rewards), gold and leveled item from Maro (DBDestroy rewards, script properties per its unsure). Matches."
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "Entries traced to DB02, DBDestroy, DB01, DB05, DB10, DB11, DB07, the contract reads and DBEviction closes; all match (A Healing Wedding: DB05 closes, with its note that no explicit lock is recorded). Missing: DB10 closes 'Astrid dies: she is the one who betrayed you'; a named death on the main path, so added 'Astrid dies (Death Incarnate)' without the betrayal."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Existing notes traced: level (none in reads), arrest route lead-in (DB01/DB02 opens unsure), Nazir's two batches (DBSideContract02 needs), extra contract offering (ExtraContracts starts), Delayed Burial ending (DB01Misc choices unsure), essential targets (Extra contract reads), Family deaths (DB10 unsure), payments (DB03, DB05, DB06 unsure), Nazir's place after the burning (DB11, DBEviction unsure). Added one for the Listener need on the Night Mother contracts (LTNQuestMarkarth unsure: inferred)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "Files compared with where each edid sits: DB01-DB04a in 016, DB05-DBSideContract01 in 017, DBSideContract02-11 in 018, DBSideContract12 to the Taarie and Endarie contract in 019, Thonar contract, LTN quests and DBrecurring in 020. Matches."
+    }
+   }
+  },
+  {
+   "id": "civil-war",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id civil-war; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'The Civil War'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "Castle Dour base (CW00A takesYou, CW01A starts) and Palace of the Kings base (CW00B, CW01B takesYou); the run of steps follows CW01A/CW01B, CW02A/CW02B, CW03, CWCampaignObj, CWMission03/07 and the siege objective quests. Matches. Level unsure kept and given the one level fact the reads hold (King Borgas, level 80, CW02A/CW02B people)."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "CW01A starts: Legate Rikke inside Castle Dour from 6 in the morning, walking the city about 7 to 11 at night; quest_starts_raw opening is CW01A with no dialogue/event conditions; quest_givers_raw CW01A namedGiver Legate Rikke in Castle Dour. The Stormcloak path matches CW01B starts (Galmar, Palace of the Kings). needs [] is right: CW01A's need is only talking to Rikke/Tullius (Imperial Introductions)."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "16 rows compared with quests.json order; one name differed. quests_raw names CWCampaignObj 'Campaign for <Alias=CampaignHold>' and its checked read writes it 'Campaign for [the hold]'; the line had 'Campaign for the campaign hold', so set to the checked read's name. Other rows checked against their reads: Beirand's gear (CW01AOutfitImperial), the Solitude guard (DialogueSolitudeGuardIntro), Fort Hraggstad and Serpentstone Isle tests (CW01A/CW01B takesYou), Korvanjund for each side (CW02A/CW02B), message vs axe to Dragonsreach (CW03 starts), courier and forged orders (CWMission03), steward blackmail and caravan (CWMission07), siege orders (CWSiegeAttackObj/DefendObj takesYou), champion armor officers (CWCRQuest choices), repairs and Solitude temple donations (CWRepairs). All agree."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Joining the Legion vs Joining the Stormcloaks: CW01A/CW01B starts and tests; Compelling Tribute: CWMission07 choices name Anuriel in Riften (Legion) and Raerek in Markarth (Stormcloaks). Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Membership (CW01A/CW01B rewards), Imperial gear from Beirand (CW01AOutfitImperial rewards), champion armor (CWCRQuest rewards). Matches; CW02A/CW02B and CW03 script items are rightly left out per their unsure notes."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Every civil-war checked read has closes []; the failure endings of CW01A/CW01B are unsure in those reads and kept in unsure here. Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Notes traced: failure endings (CW01A/CW01B closes unsure), siege quest after Message to Whiterun (CW03 opens unsure), hold pairings (CWMission03/07 needs unsure), start of CWCRQuest and Get Outfitted (their starts unsure), Recruitment Drive gold (DialogueSolitudeGuardIntro rewards unsure), dragon-threat step (CW03 steps unsure). Added the King Borgas level to the about note."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "CW00A/CW00B in 020, CW01AOutfitImperial to CWMission07 in 021, the siege objectives, CWCRQuest and CWRepairs in 022. Matches."
+    }
+   }
+  },
+  {
+   "id": "bards-college",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id bards-college; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'The Bards College'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "Bards College in Solitude, King Olaf's Verse, Viarmo, the Burning of King Olaf and Elisif's ban all match MS05 canDoWhy/starts/takesYou; the other six quests are errands from Giraud, Pantea, Inge and the bards at Dead Men's Respite (BardsCollege* and DMRClearQ starts). Level unsure kept, with the level 85 boss from DMRClearQ unsure."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "MS05 starts: Viarmo at the Bards College, lunch at the Winking Skeever around late morning, asks for King Olaf's Verse; quest_givers_raw MS05 giver Viarmo in the Bards College, Solitude; quest_starts_raw bards-college opening MS05, startGame true, only Speech globals 25/50. Matches; the wedding hold-back is a need of the festival, rightly kept on the order row."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "8 rows compared with quests.json order and names; same. Rows checked: Karita, Sven, Sorex (MS05Start starts), Dead Men's Respite, Blue Palace, Castle Dour (MS05 takesYou) and Jorn's wedding line (MS05 needs), Giraud and the Edda (BardsCollegePoeticEdda), Halldir's Cairn (BardsCollegeDrum), Hob's Fall Cave (BardsCollegeFlute), Stony Creek Cave (BardsCollegeLute), Bard's Leap Summit fragment to Giraud (dunBardsLeapSummitQST), Rothen and Birinna with the level 6 to 85 tomb (DMRClearQ). All agree."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "No checked read in the line has a choice (MS05 choices [] and its Speech-check note is unsure); empty matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Membership, The Gift of Gab and a leveled reward item (MS05 rewards; quest_givers_raw MS05 lists the Gift of Gab spell and LvlQuestReward lists), reward item from Giraud (dunBardsLeapSummitQST rewards). Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "All eight reads have closes []; matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Notes traced: level (DMRClearQ unsure), membership before errands (BardsCollegeDrum/Flute/Lute/PoeticEdda needs unsure), no rewards recorded (those reads' rewards unsure), Dead Men's Respite overlap (DMRClearQ needs unsure), Tending the Flames runs from the start (MS05Start canDo unsure; quest_starts_raw startGame true). Matches."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "MS05Start to BardsCollegeLute in 022, dunBardsLeapSummitQST and DMRClearQ in 023. Matches."
+    }
+   }
+  },
+  {
+   "id": "vigilants",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id vigilants; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'Vigilant'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "Temple of Stendarr in Stuhn Ravine (zzzAoMMq10, zzzCOMq01 takesYou; quest_givers_raw zzzAoMMq00 giver Altano in Temple of Stendarr, location Stuhn Ravine), Altano as partner (zzzAoMMq01-09), Coldharbour chapter (zzzCHMemoryGuide, zzzCHSubQuest13). First act counted from quests.json order: zzzAoMMq00 to zzzAoMMq10, eleven quests, Vigilant of Stendarr to The Landing. Vampires under Windhelm (zzzBMMq01-03). Matches; level unsure kept."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "zzzAoMMq00 starts: starts itself on a change of location, Altano invites you and offers to guide you to the Temple of Stendarr; quest_givers_raw zzzAoMMq00 starts node VigilantDelayedStart, event 'change location'; quest_starts_raw vigilants shows Vigilant - Delayed Start.esp turning the start-game flag off and no dialogue/event conditions. where left empty with the reason in unsure; matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "47 rows compared with quests.json order and names; same. First-act rows checked against zzzAoMMq00-10 and zzzAoMMqGoodEnd firstStep/takesYou (Lusine in Whiterun's Hall of the Dead, Vernaccus from the Bannered Mare, Candlehearth Hall, Kynesgrove, Jacob and Keerava's 1000 gold, Jo'vanni and the Ragged Flagon, Bal at Stendarr's Beacon, the Pond House, Molag Bal, the mace, Carene). Later rows checked against zzzAoMSubQ02/03, zzzBMGuide, zzzBMMq01-03, zzzCHMemoryGuide, zzzCHMemoryQuest01-09 (riddles quoted match their firstStep), zzzCHqSAExile, zzzCHrqSoulShriven, zzzCHSubQuest13, zzzCOGuide, zzzCOMq01, zzzCOSubQ01. All agree. Fix: the eight Bounty rows and five Radiance rows said 'repeatable'; their reads are canDo 'radiant' with targets filled at start and nothing in the records showing repeats (zzzCHrqSoulShriven unsure says so outright), so reworded to 'radiant'."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "No Mercy: three endings (zzzAoMMq08 choices); Sacred Anatomancer: help or kill (zzzAoMSubQ02 choices); Child of Oblivion: martyr or accept corruption (zzzCOMq01 choices). Matches. The Blood Matron's two unnamed endings (zzzBMMq03 choices) aren't a choice a player can read, so noted in unsure rather than added."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Amulet of Stendarr, Old Histus Flask, Blessing of Stendarr (zzzAoMMq00 rewards; quest_givers_raw same three), Staff of Moderate Light (zzzAoMMq06), Curse of Stendarr, Conjure Molag Bal tome, Mace (zzzAoMMq09), Mark of Molag Bal (zzzAoMMq10), Rusty Armor recipes (zzzAoMMq10 and zzzAoMMqGoodEnd), Anatomancer's Pipe (zzzAoMSubQ02), Broken Horns recipes (zzzCHSubQuest13), Conjure Child of Oblivion tome (zzzCOMq01), Vigilant robes set (zzzCOSubQ01). Matches; the script-property caveat is in unsure."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Lusine (zzzAoMMq01), Balor (zzzAoMMq04), Bal (zzzAoMMq07), Carene and Lilian (zzzAoMMq08, zzzAoMMqGoodEnd), the four Remnants vampires (zzzBMMq02), Pale Feet (zzzAoMSubQ02) all match their reads' closes."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Notes traced: level (Coldharbour boss levels from zzzCHMemoryQuest02/04 reads), start place (zzzAoMMq00 starts unsure), first-act links (zzzAoMMq01-09 needs unsure), bounty/Radiance givers (their starts unsure), later starts (zzzBMMq01, CH, CO reads), Landing vs Art of Mercy (zzzAoMMq10 closes unsure), script rewards (zzzAoMMq01/02/04, zzzBMMq03), Lamae and Thingol (zzzBMMq02/03 closes unsure). Added The Blood Matron's two endings from zzzBMMq03 choices/unsure."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "Bounties in 023; zzzAoMMq00-09 in 024; zzzAoMMq10 to zzzBMGuide in 025; zzzBMMq01 to zzzCHMemoryQuest06 in 026; zzzCHMemoryQuest07 to zzzCOSubQ01 in 027. Matches."
+    }
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "thieves-guild",
+   "name": "The Thieves Guild",
+   "about": "The Thieves Guild is a guild of thieves based in the Ragged Flagon and the Cistern under Riften, and its story has you rise through the guild while it searches for a hidden enemy. The main story runs eleven quests, from A Chance Arrangement to Darkness Returns, with city jobs, collection quests and radiant jobs for Vex and Delvin Mallory around it.",
+   "getIn": {
+    "quest": "A Chance Arrangement",
+    "who": "Brynjolf",
+    "where": "outdoors in Riften",
+    "how": "Talk to Brynjolf in Riften; he talks you into one of his schemes and tells you to meet him during the day.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "A Chance Arrangement",
+     "what": "You steal Madesi's Silver Ring and plant it for Brynjolf.",
+     "where": "Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Taking Care of Business",
+     "what": "You find Brynjolf in the Ragged Flagon and collect three debts for the guild from Keerava, Bersi and Haelga.",
+     "where": "the Ragged Flagon and Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Loud and Clear",
+     "what": "You meet Mercer Frey, the Guild Master, and are sent to burn three bee hives and empty Aringoth's safe at Goldenglow Estate.",
+     "where": "the Cistern under Riften and Goldenglow Estate, just outside Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Dampened Spirits",
+     "what": "Maven Black-Briar sends you to ruin Honningbrew Meadery near Whiterun.",
+     "where": "Black-Briar Manor in Riften and Honningbrew Meadery near Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Scoundrel's Folly",
+     "what": "Mercer sends you to Solitude to make Gulum-Ei tell you who is working against the guild.",
+     "where": "the Winking Skeever in Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Speaking With Silence",
+     "what": "You meet Mercer outside Snow Veil Sanctum to hunt down Karliah.",
+     "where": "Snow Veil Sanctum, Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Hard Answers",
+     "what": "Karliah needs Gallus' journal read, which sends you to Enthir at the College of Winterhold and then to Markarth.",
+     "where": "the College of Winterhold and Understone Keep in Markarth",
+     "needs": ""
+    },
+    {
+     "quest": "The Pursuit",
+     "what": "You meet Karliah at the Ragged Flagon, convince the guild, and break into Riftweald Manor for Mercer's plans.",
+     "where": "the Ragged Flagon and Riftweald Manor in Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Trinity Restored",
+     "what": "Karliah takes you and Brynjolf to Nightingale Hall, where you take the Oath and become a Nightingale.",
+     "where": "Nightingale Hall, The Rift",
+     "needs": ""
+    },
+    {
+     "quest": "Blindsighted",
+     "what": "You go after Mercer Frey in Irkngthand.",
+     "where": "Irkngthand, The Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Darkness Returns",
+     "what": "You take the Skeleton Key back to the Twilight Sepulcher alone and choose your Nightingale role.",
+     "where": "the Twilight Sepulcher, Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "Reparations",
+     "what": "Only if you break one of the guild's rules and are banned: you pay Vex to be let back in.",
+     "where": "the Ragged Flagon",
+     "needs": "Be banned for breaking a guild rule"
+    },
+    {
+     "quest": "No Stone Unturned",
+     "what": "Picking up an Unusual Gem starts it; you bring the Stones of Barenziah to Vex to rebuild a crown.",
+     "where": "the Ragged Flagon, and wherever the stones lie across Skyrim",
+     "needs": "An Unusual Gem, and full guild membership before Vex will look at it"
+    },
+    {
+     "quest": "Under New Management",
+     "what": "Brynjolf offers you the post of Guild Master and holds the ceremony in the Cistern.",
+     "where": "the Cistern under Riften",
+     "needs": ""
+    },
+    {
+     "quest": "The Burglary Job",
+     "what": "A radiant guild job from Vex: steal a named item from a wealthy home. The town and target are picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": "Guild membership"
+    },
+    {
+     "quest": "The Shill Job",
+     "what": "A radiant guild job from Vex: plant evidence in a wealthy home. The town and target are picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "The Numbers Job",
+     "what": "A radiant guild job from Delvin Mallory: forge the ledger at a business. The town and business are picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "The Fishing Job",
+     "what": "A radiant guild job from Delvin Mallory: pickpocket a named item from a mark. The mark is picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "The Sweep Job",
+     "what": "A radiant guild job from Vex: clear a house of three valuables. The house and city are picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "The Bedlam Job",
+     "what": "A radiant guild job from Delvin Mallory: steal 500 gold worth of goods in a city without being seen. The city is picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "The Heist Job",
+     "what": "A radiant guild job from Vex: steal a named item from a business. The item, business and city are picked when the job starts.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Silver Lining",
+     "what": "Endon the silversmith in Markarth has asked the guild to get his stolen silver mold back.",
+     "where": "Markarth and Pinewatch, Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "The Dainty Sload",
+     "what": "Erikur in Solitude has asked the guild to frame the captain of the Dainty Sload.",
+     "where": "Solitude and the Dainty Sload",
+     "needs": ""
+    },
+    {
+     "quest": "Imitation Amnesty",
+     "what": "Olfrid Battle-Born in Whiterun has asked the guild to free his friend Arn from jail.",
+     "where": "the House of Clan Battle-Born and Dragonsreach in Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Summerset Shadows",
+     "what": "Torsten Cruel-Sea in Windhelm has asked the guild to recover his dead daughter's locket from a rival guild.",
+     "where": "Windhelm and Uttering Hills Cave, Eastmarch",
+     "needs": ""
+    },
+    {
+     "quest": "TG00 Maul Handler",
+     "what": "A journal pointer telling you to talk to Brynjolf in Riften about joining the guild.",
+     "where": "Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Meet the Family",
+     "what": "You learn about the guild from Vex and Delvin Mallory and collect your Thieves Guild armor from Tonilia.",
+     "where": "the Ragged Flagon",
+     "needs": ""
+    },
+    {
+     "quest": "Thieves Guild Caravan Fence Quest",
+     "what": "Tonilia sends you to deliver Moon Sugar to Ri'saad of the Khajiit caravans.",
+     "where": "Ri'saad's caravan",
+     "needs": ""
+    },
+    {
+     "quest": "The Litany of Larceny",
+     "what": "Finding one of the listed treasures, such as the queen bee statue in Goldenglow Estate, adds it to your journal; you hand each one to Delvin Mallory.",
+     "where": "the Ragged Flagon",
+     "needs": ""
+    },
+    {
+     "quest": "Paid in Full",
+     "what": "Glover Mallory in Raven Rock asks you to recover the Bonemold Formula.",
+     "where": "Raven Rock and Castle Karstaag Caverns, Solstheim",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Darkness Returns",
+     "options": [
+      "Nightingale Strife",
+      "Nightingale Subterfuge",
+      "Shadowcloak of Nocturnal"
+     ]
+    },
+    {
+     "at": "Scoundrel's Folly",
+     "options": [
+      "Gulum-Ei talks once you have leverage on him",
+      "Gulum-Ei can't be made to talk, and the journal sends you to another source"
+     ]
+    }
+   ],
+   "gives": [
+    "Membership in the Thieves Guild (Loud and Clear)",
+    "Thieves Guild Cuirass, Gloves, Boots and Hood from Tonilia (Meet the Family)",
+    "An enchanted one-handed weapon (Dampened Spirits)",
+    "Nightingale Hood, Nightingale Armor, Nightingale Gloves and Nightingale Boots, and the rank of Nightingale (Trinity Restored)",
+    "Nightingale Agent, one Nightingale power of your choice and the Nightingale Shadow Perk (Darkness Returns)",
+    "The title of Guild Master, the Guild Master Hood, Cuirass, Gloves and Boots, the Amulet of Articulation and the key to the Guild Master's Tribute Chest (Under New Management)",
+    "Prowler's Profit (No Stone Unturned)",
+    "Influential allies for the guild in Markarth, Solitude, Whiterun and Windhelm (the four city jobs)"
+   ],
+   "closes": [
+    "Sabjorn is jailed and Honningbrew Meadery closes; Mallus Maccius takes it over (Dampened Spirits)",
+    "Mercer Frey dies (Blindsighted)",
+    "The Skeleton Key is returned to the Ebonmere and leaves your inventory (Darkness Returns)",
+    "Linwe dies and the Summerset Shadows are gone from Skyrim (Summerset Shadows)",
+    "Breaking one of the guild's rules gets you banned until you pay in Reparations"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "no checked read gives a level the line is made for"
+    },
+    {
+     "field": "getIn.where",
+     "why": "the records place Brynjolf outdoors in Riften but not at a stall or spot, and his daily schedule isn't in the files"
+    },
+    {
+     "field": "order",
+     "why": "what makes Brynjolf offer Under New Management isn't shown; it is likely tied to the main story and the city jobs, but the conditions aren't in the files"
+    },
+    {
+     "field": "order",
+     "why": "who hands out the four city jobs (Silver Lining, The Dainty Sload, Imitation Amnesty, Summerset Shadows) and what you must have done first isn't in the files; whether gaining those allies counts toward a later quest isn't shown"
+    },
+    {
+     "field": "order",
+     "why": "when Vex and Delvin start offering the radiant jobs isn't in the files; the Meet the Family journal points to them, which suggests they come after it"
+    },
+    {
+     "field": "order",
+     "why": "what starts Meet the Family isn't in the files; it reads like a follow-on to joining the guild"
+    },
+    {
+     "field": "order",
+     "why": "Paid in Full is filed with the miscellaneous quests; whether it needs Thieves Guild standing isn't shown"
+    },
+    {
+     "field": "gives",
+     "why": "the three Nightingale powers aren't tied to each choice directly in the files; which version of the Nightingale armor you get and which Amulet of Articulation isn't shown; what Prowler's Profit and the Nightingale Shadow Perk do in LoreRim isn't in the files"
+    },
+    {
+     "field": "gives",
+     "why": "A Chance Arrangement's script also hands out a pickpocket boost; whether it stays isn't shown"
+    }
+   ],
+   "evidence": [
+    "checked/013.json: TG00, TG01, TG02, TG03, TG04, TG05, TG06, TG07",
+    "checked/014.json: TG08A, TG08B, TG09, TGBan, TGCrown, TGLeadership, TGRBE, TGRDU, TGRFO, TGRGF",
+    "checked/015.json: TGRHC, TGRNT, TGRSL, TGTQ01, TGTQ02, TGTQ03, TGTQ04, TG00MaulHandler, TG02B, TGFenceCaravan",
+    "checked/016.json: TGLarceny, DLC2TGQuest",
+    "src/data/lorerim-5.0.4.8/quests.json: line thieves-guild (id, name, category, quest order)"
+   ]
+  },
+  {
+   "id": "dark-brotherhood",
+   "name": "The Dark Brotherhood",
+   "about": "The Dark Brotherhood is a guild of assassins based in a Sanctuary in the pine forest near Falkreath, and its story has you take contracts across Skyrim that build toward one great contract. The main story runs thirteen quests, from Innocence Lost to Hail Sithis!, with many side contracts around it.",
+   "getIn": {
+    "quest": "Innocence Lost",
+    "who": "Aventus Aretino",
+    "where": "the Aretino Residence in Windhelm",
+    "how": "Go to his house (LoreRim leaves the door unlocked) and talk to him; he asks you to kill Grelod the Kind, the headmistress of Honorhall Orphanage in Riften.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Innocence Lost",
+     "what": "Aventus Aretino asks you to kill Grelod the Kind, the headmistress of Honorhall Orphanage.",
+     "where": "Windhelm and Honorhall Orphanage in Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Where You Hang Your Enemy's Head...",
+     "what": "Once the Brotherhood uses the Dawnstar Sanctuary, you pay Delvin Mallory in the Ragged Flagon to refit it.",
+     "where": "the Ragged Flagon in Riften and the Dawnstar Sanctuary",
+     "needs": "The Brotherhood has moved into the Dawnstar Sanctuary"
+    },
+    {
+     "quest": "Delayed Burial",
+     "what": "You settle a dispute between the jester Cicero, stuck with a broken cart, and the farmer Vantus Loreius.",
+     "where": "Loreius Farm, north of Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "With Friends Like These...",
+     "what": "Astrid holds you captive in an abandoned shack and tells you to kill one of her three captives.",
+     "where": "the Abandoned Shack",
+     "needs": "Kill Grelod the Kind in Innocence Lost"
+    },
+    {
+     "quest": "Sanctuary",
+     "what": "Astrid welcomes you, and Nazir gives you your first contracts.",
+     "where": "the Dark Brotherhood Sanctuary near Falkreath",
+     "needs": "Join the Brotherhood in With Friends Like These..."
+    },
+    {
+     "quest": "Mourning Never Comes",
+     "what": "Astrid sends you to Muiri in Markarth, who wants the bandit Alain Dufont dead.",
+     "where": "The Hag's Cure in Markarth and Raldbthar, The Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Whispers in the Dark",
+     "what": "Astrid asks you to hide in the Night Mother's coffin and listen in on Cicero.",
+     "where": "the Night Mother's chamber in the Sanctuary",
+     "needs": ""
+    },
+    {
+     "quest": "The Silence Has Been Broken",
+     "what": "Astrid lets you meet the client, Amaund Motierre, in Volunruud.",
+     "where": "Volunruud, The Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Bound Until Death",
+     "what": "You kill Vittoria Vici at her wedding reception in Solitude.",
+     "where": "outside the Temple of the Divines in Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Breaching Security",
+     "what": "Gabriella gives you the contract on Gaius Maro of the Penitus Oculatus, who is touring the cities of Skyrim.",
+     "where": "the Penitus Oculatus Outpost at Dragon Bridge and the cities on his route",
+     "needs": ""
+    },
+    {
+     "quest": "The Cure for Madness",
+     "what": "Cicero has turned on the Family, and Astrid sends you after him.",
+     "where": "the Dawnstar Sanctuary",
+     "needs": ""
+    },
+    {
+     "quest": "Recipe for Disaster",
+     "what": "Festus Krex sends you to find and kill the chef known as the Gourmet.",
+     "where": "Understone Keep in Markarth and Nightgate Inn",
+     "needs": ""
+    },
+    {
+     "quest": "To Kill an Empire",
+     "what": "Posing as the Gourmet, you go to Castle Dour for the great contract.",
+     "where": "Castle Dour in Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Death Incarnate",
+     "what": "You return to find the Sanctuary under attack by the Penitus Oculatus.",
+     "where": "the Dark Brotherhood Sanctuary near Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "Hail Sithis!",
+     "what": "The Night Mother tells you the contract with Amaund Motierre must still be completed.",
+     "where": "the Bannered Mare in Whiterun, the Katariah at Solitude, and Volunruud",
+     "needs": ""
+    },
+    {
+     "quest": "Destroy the Dark Brotherhood!",
+     "what": "Only if you kill Astrid in the shack: you report it, and Commander Maro asks you to wipe out the Sanctuary.",
+     "where": "the Penitus Oculatus Outpost at Dragon Bridge and the Sanctuary",
+     "needs": "Kill Astrid in With Friends Like These..."
+    },
+    {
+     "quest": "Honor Thy Family",
+     "what": "Only if you break the Sanctuary's rules: you must pay Nazir a fine before any more Brotherhood business.",
+     "where": "the Sanctuary",
+     "needs": "Break the Sanctuary's rules"
+    },
+    {
+     "quest": "Contract: Kill Narfi",
+     "what": "A side contract from Nazir: kill the beggar Narfi in the ruins just outside Ivarstead, then report back to him for payment.",
+     "where": "near Ivarstead, The Rift",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Ennodius Papius",
+     "what": "A side contract from Nazir: kill the ex-miller Ennodius Papius, then report back to him for payment.",
+     "where": "Anga's Mill, The Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Beitild",
+     "what": "A side contract from Nazir: kill the mine boss Beitild, then report back to him for payment.",
+     "where": "Dawnstar",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Hern",
+     "what": "A side contract from Nazir: kill the vampire Hern, then report back to him for payment.",
+     "where": "Half-Moon Mill, Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Lurbuk",
+     "what": "A side contract from Nazir: kill the bard Lurbuk, then report back to him for payment.",
+     "where": "the Moorside Inn in Morthal",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Deekus",
+     "what": "A side contract from Nazir: kill Deekus at the shipwreck on the northern coast, then report back to him for payment.",
+     "where": "Hela's Folly, near Dawnstar",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Ma'randru-jo",
+     "what": "A side contract from Nazir: kill the Khajiit merchant Ma'randru-jo, who travels with Ri'saad's caravan, then report back to him for payment.",
+     "where": "Ri'saad's caravan",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Anoriath",
+     "what": "A side contract from Nazir: kill the archer Anoriath, then report back to him for payment.",
+     "where": "Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Agnis",
+     "what": "A side contract from Nazir: kill the old servant Agnis; Nazir warns your side in the civil war may affect whether you can get in, then report back to him for payment.",
+     "where": "Fort Greymoor, near Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Maluril",
+     "what": "A side contract from Nazir: kill the wizard Maluril, then report back to him for payment.",
+     "where": "Mzinchaleft, The Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Helvard",
+     "what": "A side contract from Nazir: kill Helvard, the Housecarl of Falkreath, then report back to him for payment.",
+     "where": "Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Safia",
+     "what": "A side contract from Nazir: kill the pirate captain Safia, then report back to him for payment.",
+     "where": "the Red Wave at the Solitude docks",
+     "needs": ""
+    },
+    {
+     "quest": "DB01_Opt",
+     "what": "A helper for Innocence Lost that adds optional ways to deal with Grelod: have a guard arrest her or poison her wine. You don't start it yourself.",
+     "where": "Honorhall Orphanage in Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Braith",
+     "what": "An extra contract paid out by Nazir: kill Braith, then go back to him for a random reward item.",
+     "where": "Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Elenwen",
+     "what": "An extra contract paid out by Nazir: kill Elenwen, then go back to him for a random reward item.",
+     "where": "the Thalmor Embassy, Haafingar",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Erikur",
+     "what": "An extra contract paid out by Nazir: kill Erikur, then go back to him for a random reward item.",
+     "where": "Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Lemkil",
+     "what": "An extra contract paid out by Nazir: kill the farmer Lemkil, then go back to him for a random reward item.",
+     "where": "Rorikstead",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Nazeem",
+     "what": "An extra contract paid out by Nazir: kill Nazeem, then go back to him for a random reward item.",
+     "where": "Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Rolff Stone-Fist",
+     "what": "An extra contract paid out by Nazir: kill Rolff Stone-Fist, then go back to him for a random reward item.",
+     "where": "Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Serana",
+     "what": "An extra contract paid out by Nazir: kill Serana, then go back to him for a random reward item.",
+     "where": "wherever she is in the Dawnguard story",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Taarie and Endarie",
+     "what": "An extra contract paid out by Nazir: kill Taarie and Endarie, then go back to him for a random reward item.",
+     "where": "Radiant Raiment in Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill Thonar Silver-Blood",
+     "what": "An extra contract paid out by Nazir: kill Thonar Silver-Blood, then go back to him for a random reward item.",
+     "where": "the Treasury House in Markarth",
+     "needs": ""
+    },
+    {
+     "quest": "LTN Quest Handler",
+     "what": "A behind-the-scenes quest that hands out the Night Mother's contracts; it never shows in the journal.",
+     "where": "",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill the target",
+     "what": "A radiant Night Mother contract: the game picks the target, and the payment waits at the Markarth dead drop; the journal tells you to return to her for more.",
+     "where": "picked when the contract starts",
+     "needs": "Be the Listener (Whispers in the Dark)"
+    },
+    {
+     "quest": "Contract: Kill the target",
+     "what": "A radiant Night Mother contract: the game picks the target, and the payment waits at the Riften dead drop; the journal tells you to return to her for more.",
+     "where": "picked when the contract starts",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill the target",
+     "what": "A radiant Night Mother contract: the game picks the target, and the payment waits at the Solitude dead drop; the journal tells you to return to her for more.",
+     "where": "picked when the contract starts",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill the target",
+     "what": "A radiant Night Mother contract: the game picks the target, and the payment waits at the Whiterun dead drop; the journal tells you to return to her for more.",
+     "where": "picked when the contract starts",
+     "needs": ""
+    },
+    {
+     "quest": "Contract: Kill the target",
+     "what": "A radiant Night Mother contract: the game picks the target, and the payment waits at the Eastmarch dead drop; the journal tells you to return to her for more.",
+     "where": "picked when the contract starts",
+     "needs": ""
+    },
+    {
+     "quest": "The Dark Brotherhood Forever",
+     "what": "A radiant job once you lead the Brotherhood: the Night Mother names a contact somewhere in Skyrim who gives you a target.",
+     "where": "the Night Mother's coffin, then the contact's town",
+     "needs": "Become the Listener and leader of the Dark Brotherhood"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Innocence Lost",
+     "options": [
+      "Kill Grelod in the orphanage",
+      "Lure Grelod to the Riften docks and kill her there",
+      "Have the Riften guards arrest her",
+      "Poison her wine"
+     ]
+    },
+    {
+     "at": "With Friends Like These...",
+     "options": [
+      "Kill one of the captives and join the Brotherhood",
+      "Kill Astrid; you can never join, and Destroy the Dark Brotherhood! opens"
+     ]
+    },
+    {
+     "at": "The Cure for Madness",
+     "options": [
+      "Kill Cicero",
+      "Leave the Dawnstar Sanctuary without killing him; Cicero lives"
+     ]
+    }
+   ],
+   "gives": [
+    "Shrouded Cowl, Shrouded Cuirass, Shrouded Gloves and Shrouded Boots (Sanctuary)",
+    "The Night Mother names you Listener (Whispers in the Dark)",
+    "Shadowmere, a horse (The Cure for Madness)",
+    "Blade of Woe, a dagger, taken from Astrid (Death Incarnate, optional)",
+    "Amaund Motierre's payment and leadership of the Dark Brotherhood in Skyrim as Listener (Hail Sithis!)",
+    "The Dawnstar Sanctuary refitted and repaired (Where You Hang Your Enemy's Head...)",
+    "On the other path: gold and a reward item from Commander Maro (Destroy the Dark Brotherhood!)"
+   ],
+   "closes": [
+    "Killing Astrid in the shack closes the whole Dark Brotherhood line; you can never join",
+    "Destroy the Dark Brotherhood! makes Nazir, Babette, Festus Krex, Arnbjorn, Gabriella and Veezara your targets",
+    "Grelod the Kind dies (Innocence Lost)",
+    "Vittoria Vici dies, so A Healing Wedding can't be done (Bound Until Death)",
+    "The Falkreath Sanctuary is burned and most of the Family is killed (Death Incarnate)",
+    "Astrid dies (Death Incarnate)",
+    "Emperor Titus Mede II dies (Hail Sithis!)",
+    "Cicero dies if you choose to kill him (The Cure for Madness)",
+    "Every contract's target dies, including Elenwen, Erikur, Serana and Thonar Silver-Blood if you take those extra contracts",
+    "Breaking the Sanctuary's rules blocks Brotherhood business until you pay the fine (Honor Thy Family)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "no checked read gives a level the line is made for"
+    },
+    {
+     "field": "branches",
+     "why": "whether the arrest and poison routes in Innocence Lost still lead to With Friends Like These... isn't shown; that quest says you were taken because you killed Grelod"
+    },
+    {
+     "field": "order",
+     "why": "which of Nazir's two batches each side contract belongs to (after Sanctuary or after Whispers in the Dark) isn't in the files"
+    },
+    {
+     "field": "order",
+     "why": "the conditions for being offered the extra contracts aren't in the files; Nazir pays them out, but what starts each one isn't shown"
+    },
+    {
+     "field": "order",
+     "why": "how Delayed Burial ties into the main story isn't shown; one of its endings is closed by another Brotherhood quest"
+    },
+    {
+     "field": "closes",
+     "why": "Elenwen, Erikur, Rolff Stone-Fist and Thonar Silver-Blood are marked essential in their records, and Serana is central to the Dawnguard story; whether the contracts let you kill them, and what that breaks elsewhere, isn't in the files"
+    },
+    {
+     "field": "closes",
+     "why": "the journal says most of the Family dies in Death Incarnate; the records don't name which members besides Astrid"
+    },
+    {
+     "field": "gives",
+     "why": "payment amounts and bonuses for the main contracts aren't in the files"
+    },
+    {
+     "field": "order",
+     "why": "where Nazir and the Night Mother's coffin are after the Falkreath Sanctuary burns isn't in the files, so where you pick up later contracts isn't shown"
+    },
+    {
+     "field": "order",
+     "why": "that the Night Mother's contracts need you to be the Listener is inferred from her giving them; no start condition for them is in the files"
+    }
+   ],
+   "evidence": [
+    "checked/016.json: DB01, DarkBrotherhoodSanctuaryRepair, DB01Misc, DB02, DB02a, DB03, DB04, DB04a",
+    "checked/017.json: DB05, DB06, DB07, DB08, DB09, DB10, DB11, DBDestroy, DBEviction, DBSideContract01",
+    "checked/018.json: DBSideContract02 to DBSideContract11",
+    "checked/019.json: DBSideContract12, DB01_OptionalObjectives, ExtraContracts_KillBraith_Quest, ExtraContracts_KillElenwen_Quest, ExtraContracts_KillErikur_Quest, ExtraContracts_KillLemkil_Quest, ExtraContracts_KillNazeem_Quest, ExtraContracts_KillRolff_Quest, ExtraContracts_KillSerana_Quest, ExtraContracts_KillTaarieEndarie_Quest",
+    "checked/020.json: ExtraContracts_KillThonarSilverblood_Quest, LTNQuestHandler, LTNQuestMarkarth, LTNQuestRiften, LTNQuestSolitude, LTNQuestWhiterun, LTNQuestWindhelm, DBrecurring",
+    "src/data/lorerim-5.0.4.8/quests.json: line dark-brotherhood (id, name, category, quest order)"
+   ]
+  },
+  {
+   "id": "civil-war",
+   "name": "The Civil War",
+   "about": "The Civil War is the fight for Skyrim between the Imperial Legion, based in Castle Dour in Solitude, and the Stormcloaks, based in the Palace of the Kings in Windhelm. You join one side, pass its test, recover the Jagged Crown and carry a message to Whiterun, then fight hold campaigns, war missions and city battles.",
+   "getIn": {
+    "quest": "Joining the Legion",
+    "who": "Legate Rikke",
+    "where": "inside Castle Dour in Solitude from 6 in the morning; from about 7 to 11 at night she walks the city",
+    "how": "Talk to Rikke about joining the Legion; to join the Stormcloaks instead, talk to Galmar Stone-Fist in the Palace of the Kings in Windhelm (Joining the Stormcloaks).",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Imperial Introductions",
+     "what": "A journal note pointing you to join the Imperial Legion; you settle it by talking to Legate Rikke.",
+     "where": "Castle Dour in Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Stormcloak Introductions",
+     "what": "A journal note pointing you to join the Stormcloaks; you settle it by talking to Galmar Stone-Fist.",
+     "where": "the Palace of the Kings in Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "Get Outfitted",
+     "what": "Legion side: you collect your Imperial gear from Beirand, Solitude's blacksmith.",
+     "where": "Solitude",
+     "needs": "Joining the Legion"
+    },
+    {
+     "quest": "Recruitment Drive",
+     "what": "A Solitude guard points you to Legate Rikke if you want to enlist.",
+     "where": "the streets of Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Joining the Legion",
+     "what": "Legate Rikke tests you by sending you to clear the bandits out of Fort Hraggstad, then you take the oath.",
+     "where": "Fort Hraggstad, Haafingar",
+     "needs": ""
+    },
+    {
+     "quest": "Joining the Stormcloaks",
+     "what": "Galmar tests you by sending you to kill an ice wraith on Serpentstone Isle, then you take the oath.",
+     "where": "Serpentstone Isle, Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "The Jagged Crown",
+     "what": "Legion side: Legate Rikke takes you to Korvanjund to beat the Stormcloaks to the Jagged Crown.",
+     "where": "Korvanjund, The Pale",
+     "needs": "Finish Joining the Legion"
+    },
+    {
+     "quest": "The Jagged Crown",
+     "what": "Stormcloak side: Galmar takes you to Korvanjund to claim the Jagged Crown before the Legion does.",
+     "where": "Korvanjund, The Pale",
+     "needs": "Finish Joining the Stormcloaks"
+    },
+    {
+     "quest": "Message to Whiterun",
+     "what": "Your side's leader sends you to Dragonsreach to make Jarl Balgruuf pick a side: Tullius sends a message, Ulfric sends an axe.",
+     "where": "Dragonsreach in Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Campaign for [the hold]",
+     "what": "The war's running journal entry for each hold your side fights over; it opens as the war moves to a new hold.",
+     "where": "your side's camp in the hold being fought over",
+     "needs": ""
+    },
+    {
+     "quest": "A False Front",
+     "what": "A war mission from your field commander: rob an enemy courier, then deliver forged orders to the enemy.",
+     "where": "inns on the courier's route and the enemy-held capital",
+     "needs": "A hold campaign under way"
+    },
+    {
+     "quest": "Compelling Tribute",
+     "what": "A war mission from your field commander: blackmail the Jarl's steward, then raid the enemy supply caravan he tells you about.",
+     "where": "Mistveil Keep in Riften or Understone Keep in Markarth",
+     "needs": ""
+    },
+    {
+     "quest": "Battle of the city",
+     "what": "The battle orders that appear when your side storms a city.",
+     "where": "Whiterun, Solitude or Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "Defense of the city",
+     "what": "The battle orders that appear when your side has to hold a city against an attack.",
+     "where": "Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Civil War Champion Armor",
+     "what": "Your commanding officer has a set of champion armor for you to collect: Legate Adventus Caesennius for the Legion, Captain Yrsarald Thrice-Pierced for the Stormcloaks.",
+     "where": "Solitude or Windhelm",
+     "needs": "Membership in the Legion or the Stormcloaks"
+    },
+    {
+     "quest": "Repairing the Cities",
+     "what": "After a siege, work crews rebuild the damaged cities over many days, and the Temple of the Divines in Solitude collects donations.",
+     "where": "the Temple of the Divines in Solitude",
+     "needs": "A city damaged by a siege"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Joining the Legion",
+     "options": [
+      "Join the Imperial Legion: Legate Rikke tests you at Fort Hraggstad",
+      "Join the Stormcloaks instead (Joining the Stormcloaks): Galmar Stone-Fist tests you on Serpentstone Isle"
+     ]
+    },
+    {
+     "at": "Compelling Tribute",
+     "options": [
+      "Legion: blackmail Anuriel in Riften",
+      "Stormcloaks: blackmail Raerek in Markarth"
+     ]
+    }
+   ],
+   "gives": [
+    "Membership in the Imperial Legion or the Stormcloaks",
+    "Imperial Legion gear from Beirand (Get Outfitted)",
+    "A set of champion armor for your side (Civil War Champion Armor)"
+   ],
+   "closes": [],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "no checked read gives a level the line is made for or how many campaigns the war runs; the one level in the reads is King Borgas, the draugr boss in Korvanjund for The Jagged Crown, at level 80 in LoreRim"
+    },
+    {
+     "field": "closes",
+     "why": "Joining the Legion and Joining the Stormcloaks each have a failure ending, most likely from joining the other side, but the files don't show what triggers it"
+    },
+    {
+     "field": "order",
+     "why": "which siege quest follows Message to Whiterun on each side isn't settled; the records hold three siege quests that fill in the city by script, and which of them the journal shows isn't clear"
+    },
+    {
+     "field": "order",
+     "why": "the hold pairings for A False Front (Legion in the Pale, Stormcloaks in Hjaalmarch) and Compelling Tribute (Legion in the Rift, Stormcloaks in the Reach) are read from the war's mission slot names, not stated outright"
+    },
+    {
+     "field": "order",
+     "why": "what starts Civil War Champion Armor and Get Outfitted isn't in the files"
+    },
+    {
+     "field": "gives",
+     "why": "Recruitment Drive's script holds some gold, but the amount and whether it is handed over aren't shown; the champion armor and Imperial gear pieces aren't named in the files"
+    },
+    {
+     "field": "branches",
+     "why": "Message to Whiterun has a step to help Jarl Balgruuf with the dragon threat that likely depends on how far you are in the main quest; the condition isn't in the files"
+    }
+   ],
+   "evidence": [
+    "checked/020.json: CW00A, CW00B",
+    "checked/021.json: CW01AOutfitImperial, DialogueSolitudeGuardIntro, CW01A, CW01B, CW02A, CW02B, CW03, CWCampaignObj, CWMission03, CWMission07",
+    "checked/022.json: CWSiegeAttackObj, CWSiegeDefendObj, CWCRQuest, CWRepairs",
+    "src/data/lorerim-5.0.4.8/quests.json: line civil-war (id, name, category, quest order)"
+   ]
+  },
+  {
+   "id": "bards-college",
+   "name": "The Bards College",
+   "about": "The Bards College line is set at the Bards College in Solitude, where you win a place by recovering King Olaf's Verse so the headmaster Viarmo can bring back the Burning of King Olaf festival. Tending the Flames is the one story quest; the rest are short errands for the College's teachers and bards.",
+   "getIn": {
+    "quest": "Tending the Flames",
+    "who": "Viarmo",
+    "where": "the Bards College in Solitude; around late morning he takes lunch at the Winking Skeever",
+    "how": "Ask Viarmo about joining the College; he asks you to bring him King Olaf's Verse as part of your application.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Investigate the Bards College",
+     "what": "Karita in Dawnstar, Sven in Riverwood or Sorex Vinius in Solitude point you to the Bards College.",
+     "where": "the Bards College in Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Tending the Flames",
+     "what": "Viarmo sends you to find King Olaf's Verse so Elisif will allow the Burning of King Olaf festival.",
+     "where": "Dead Men's Respite, Hjaalmarch, and the Blue Palace and Castle Dour in Solitude",
+     "needs": "If a wedding is under way in Solitude, Jorn may put the festival off until after it"
+    },
+    {
+     "quest": "Collecting the Edda",
+     "what": "Giraud Gemane asks you to gather fragments of the Poetic Edda from the bards you meet.",
+     "where": "bards across Skyrim",
+     "needs": ""
+    },
+    {
+     "quest": "Rjorn's Drum",
+     "what": "Giraud Gemane sends you to find Rjorn's Drum.",
+     "where": "Halldir's Cairn, Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "Pantea's Flute",
+     "what": "Pantea Ateia asks you to recover her lost flute.",
+     "where": "Hob's Fall Cave, Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Finn's Lute",
+     "what": "Inge Six Fingers asks you to recover Finn's Lute from the thieves who stole it.",
+     "where": "Stony Creek Cave, Eastmarch",
+     "needs": ""
+    },
+    {
+     "quest": "The Lost Verse",
+     "what": "Once you hold the ancient Edda fragment from Bard's Leap Summit, you hand it to Giraud Gemane.",
+     "where": "Bard's Leap Summit, The Reach",
+     "needs": ""
+    },
+    {
+     "quest": "Clear Dead Men's Respite",
+     "what": "Two bards camped at the tomb's door, Rothen Adlvel and Birinna, ask you to clear it; the tomb holds creatures from level 6 up to a level 85 boss, King Olaf One-Eye.",
+     "where": "Dead Men's Respite, near Morthal",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Membership in the Bards College (Tending the Flames)",
+    "The Gift of Gab spell and a reward item (Tending the Flames)",
+    "A reward item from Giraud Gemane (The Lost Verse)"
+   ],
+   "closes": [],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "no checked read gives a level the line is made for; Dead Men's Respite, where Tending the Flames sends you, holds creatures up to level 85"
+    },
+    {
+     "field": "order",
+     "why": "whether you must be a College member before Giraud, Pantea and Inge give their errands isn't in the files"
+    },
+    {
+     "field": "gives",
+     "why": "Collecting the Edda, Rjorn's Drum, Pantea's Flute, Finn's Lute and Clear Dead Men's Respite have no reward recorded; which leveled list Tending the Flames gives from isn't shown"
+    },
+    {
+     "field": "order",
+     "why": "whether clearing Dead Men's Respite for the bards affects Tending the Flames, which sends you to the same tomb, isn't shown"
+    },
+    {
+     "field": "getIn",
+     "why": "Tending the Flames runs from the start of the game, so you can probably walk in and talk to Viarmo without Investigate the Bards College"
+    }
+   ],
+   "evidence": [
+    "checked/022.json: MS05Start, MS05, BardsCollegePoeticEdda, BardsCollegeDrum, BardsCollegeFlute, BardsCollegeLute",
+    "checked/023.json: dunBardsLeapSummitQST, DMRClearQ",
+    "src/data/lorerim-5.0.4.8/quests.json: line bards-college (id, name, category, quest order)"
+   ]
+  },
+  {
+   "id": "vigilants",
+   "name": "Vigilant",
+   "about": "The Vigilant line follows the Vigilants of Stendarr, an order based at the Temple of Stendarr in their own land of Stuhn Ravine, as you hunt vampires, Daedra and witches across Skyrim with Altano and later go into Coldharbour. Its first act runs eleven quests, from Vigilant of Stendarr to The Landing, followed by a vampire hunt under Windhelm, the Coldharbour memories, and bounties and radiant hunts on the side.",
+   "getIn": {
+    "quest": "Vigilant of Stendarr",
+    "who": "Altano",
+    "where": "",
+    "how": "The quest starts on its own the next time you enter or leave a place; Altano invites you to join the Vigilants of Stendarr and offers to guide you to the Temple of Stendarr.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Bounty: Book",
+     "what": "A radiant Vigilant bounty: take an erotic book from a named person and put it in the Collection Chest. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Chick Trader",
+     "what": "A radiant Vigilant bounty: kill the Chick Trader, or buy an orphan from him and take the child to the Temple of Stendarr. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Piper",
+     "what": "A radiant Vigilant bounty: defeat the Piper. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Daedric Relic",
+     "what": "A radiant Vigilant bounty: find a relic of Meridia and put it in the Collection Chest. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Horn",
+     "what": "A radiant Vigilant bounty: find the lost Horn of Stendarr and put it in the Collection Chest. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Summoner",
+     "what": "A radiant Vigilant bounty: defeat a summoner. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Vampire",
+     "what": "A radiant Vigilant bounty: find and eliminate a vampire in a town. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Bounty: Witch",
+     "what": "A radiant Vigilant bounty: kill a witch. The target and place are picked when it starts.",
+     "where": "picked when the bounty starts",
+     "needs": ""
+    },
+    {
+     "quest": "Vigilant of Stendarr",
+     "what": "Altano invites you to join the Vigilants and meets you in the Temple of Stendarr.",
+     "where": "the Temple of Stendarr in Stuhn Ravine",
+     "needs": ""
+    },
+    {
+     "quest": "Bloodsucker",
+     "what": "Altano takes you to Whiterun to hunt the vampire Lusine.",
+     "where": "the Hall of the Dead in Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "He Who Cannot Be Touched",
+     "what": "You meet Altano in the Bannered Mare to take on the Daedra Vernaccus.",
+     "where": "the Bannered Mare in Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Lazy Afternoon",
+     "what": "You follow Altano to Candlehearth Hall in Windhelm and defeat a Daedra.",
+     "where": "Candlehearth Hall in Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "The Eye of Madness",
+     "what": "Altano has heard of a man in Kynesgrove who drives anyone who meets his eye insane.",
+     "where": "Kynesgrove, Eastmarch",
+     "needs": ""
+    },
+    {
+     "quest": "Dine and Dash",
+     "what": "Altano's old mentor, Jacob, calls you both to Stendarr's Beacon, and you pay Keerava 1000 gold in Riften, or borrow it from Altano.",
+     "where": "Stendarr's Beacon and the Bee and Barb in Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Thus Spoke Khajiit",
+     "what": "You meet Altano in the Ragged Flagon to find a Khajiit named Jo'vanni.",
+     "where": "the Ragged Flagon in Riften and Jo'vanni's Dream Theater",
+     "needs": ""
+    },
+    {
+     "quest": "Old Regrets",
+     "what": "You talk to Jacob at Stendarr's Beacon, a summoner's mercenary attacks, and you face Bal.",
+     "where": "Stendarr's Beacon, The Rift",
+     "needs": ""
+    },
+    {
+     "quest": "No Mercy",
+     "what": "You are sent to hunt a witch and her daughter living in a shack south of Ivarstead.",
+     "where": "the Pond House at Witch's Pond, south of Ivarstead",
+     "needs": ""
+    },
+    {
+     "quest": "The Endless Fall",
+     "what": "You fight through Daedra and chase Altano down to face Molag Bal.",
+     "where": "Stendarr's Beacon Underground and the Altar of Molag Bal",
+     "needs": ""
+    },
+    {
+     "quest": "The Landing",
+     "what": "You talk to Altano and destroy the Mace of Molag Bal.",
+     "where": "the Temple of Stendarr in Stuhn Ravine",
+     "needs": ""
+    },
+    {
+     "quest": "Art of Mercy",
+     "what": "You talk to Carene, the witch of Witch's Pond; this looks like the merciful ending of the first act.",
+     "where": "the Pond House at Witch's Pond",
+     "needs": ""
+    },
+    {
+     "quest": "Radiance in the Dead",
+     "what": "A radiant Vigilant job: slay an undead boss in a place the game picks.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Radiance in the Duplicate",
+     "what": "A radiant Vigilant job: slay a Duplicate in a place the game picks.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Radiance in the Spawn",
+     "what": "A radiant Vigilant job: slay a Spawn of Molag Bal in a place the game picks.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Radiance in the Vampire",
+     "what": "A radiant Vigilant job: slay a vampire boss in a place the game picks.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Radiance in the Witch Hunter",
+     "what": "A radiant Vigilant job: slay a witch hunter in a place the game picks.",
+     "where": "picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Sacred Anatomancer",
+     "what": "You find the Anatomancer, Pale Feet, and either help him with his grisly work or kill him.",
+     "where": "the Anatomancer's Room, off the Ratway under Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Legacy of Belharza",
+     "what": "You talk to Mordog the Man-Bull and meet the chief of the Hidden Minotaur Village.",
+     "where": "the Hidden Minotaur Village in Stuhn Ravine",
+     "needs": ""
+    },
+    {
+     "quest": "Stendarr Guide",
+     "what": "A helper journal entry that points you along a trail of blood during the Blood Matron story.",
+     "where": "",
+     "needs": ""
+    },
+    {
+     "quest": "Empty Cells",
+     "what": "A Windhelm guard brings you a message, and the Steward of Windhelm asks you to look into vampires under the city.",
+     "where": "Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "Remnants",
+     "what": "You hunt down the corrupt Vigilants turned vampire in the lairs under Windhelm.",
+     "where": "the Old Sewers, Bloody Well, Asylum and Enchantress' Palace under Windhelm",
+     "needs": ""
+    },
+    {
+     "quest": "The Blood Matron",
+     "what": "You find Lamae Beolfag and face Lamae Bal, the Blood Matron cursed by Molag Bal.",
+     "where": "Matron's Chamber",
+     "needs": ""
+    },
+    {
+     "quest": "Memory Guide",
+     "what": "A hint tracker whose journal lines are riddles pointing you at certain dream memories.",
+     "where": "",
+     "needs": ""
+    },
+    {
+     "quest": "The Grand Inquisitor",
+     "what": "One of the Coldharbour memories: a riddle in your journal (\"Unfulfilled dreams drown in silence\") points you to it, and you play the memory out.",
+     "where": "the Bed of Corruption",
+     "needs": ""
+    },
+    {
+     "quest": "The Mad King",
+     "what": "One of the Coldharbour memories: a riddle in your journal (\"Madness sets with the moons\") points you to it, and you play the memory out.",
+     "where": "Malatar Mansion",
+     "needs": ""
+    },
+    {
+     "quest": "Knight of Hounds",
+     "what": "One of the Coldharbour memories: a riddle in your journal (\"Blood is thicker than water\") points you to it, and you play the memory out.",
+     "where": "Varla's Hall",
+     "needs": ""
+    },
+    {
+     "quest": "Johan the Fool",
+     "what": "One of the Coldharbour memories: a riddle in your journal (\"The dead dream beneath the soil\") points you to it, and you play the memory out.",
+     "where": "the Chapel of Arkay Cemetery",
+     "needs": ""
+    },
+    {
+     "quest": "Adabal",
+     "what": "One of the Coldharbour memories: a riddle in your journal (\"Dance on the dead under the moons\") points you to it, and you play the memory out.",
+     "where": "the Cliffs of Colovia, inside the memory",
+     "needs": ""
+    },
+    {
+     "quest": "Remains of the Miracle",
+     "what": "One of the Coldharbour memories: a riddle in your journal (\"A priest laughs in the broken Tower\") points you to it, and you play the memory out.",
+     "where": "Fort Cedrian, inside the memory",
+     "needs": ""
+    },
+    {
+     "quest": "Temptation of Marukh",
+     "what": "One of the memories, played out in the White Wasteland.",
+     "where": "the White Wasteland",
+     "needs": ""
+    },
+    {
+     "quest": "The Nameless Bard",
+     "what": "One of the memories, starting in Elder Field.",
+     "where": "Elder Field, Stuhn Ravine and Sancremor Angasel, as memories",
+     "needs": ""
+    },
+    {
+     "quest": "Beyond the Shores of Madness",
+     "what": "One of the memories, set in the Old Forest and the Whale Graveyard.",
+     "where": "the Old Forest and the Whale Graveyard",
+     "needs": ""
+    },
+    {
+     "quest": "Maggot",
+     "what": "Someone has your name and you must take it back; who and where are picked when it starts.",
+     "where": "picked when it starts",
+     "needs": ""
+    },
+    {
+     "quest": "Feral Soul-Shriven",
+     "what": "A short task the game fills in itself: defeat a feral Soul-Shriven.",
+     "where": "picked when it starts",
+     "needs": ""
+    },
+    {
+     "quest": "Broken Horns",
+     "what": "A side story in Coldharbour about Belharza.",
+     "where": "the Barrier Tower of Bala, Fort Welkynd and the Concealed Charnel of Belharza",
+     "needs": ""
+    },
+    {
+     "quest": "Stendarr Guide",
+     "what": "A guide that runs alongside Child of Oblivion and points you through the Blood Curses in the Bruiant Mansion.",
+     "where": "the Bruiant Mansion",
+     "needs": "Child of Oblivion under way"
+    },
+    {
+     "quest": "Child of Oblivion",
+     "what": "Gwyneth, the librarian at the Temple of Stendarr, sends you to investigate the Bruiant Mansion.",
+     "where": "the Bruiant Mansion on the Bruiant Estate",
+     "needs": ""
+    },
+    {
+     "quest": "Successor",
+     "what": "Gwyneth asks you to find out where the Keeper has gone.",
+     "where": "the Temple of Stendarr and the Bruiant Estate",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "No Mercy",
+     "options": [
+      "Hunt down the witches",
+      "Stand against Altano: negotiate with him, or fight and defeat him",
+      "Defeat the Ugly One at the Altar of Molag Bal"
+     ]
+    },
+    {
+     "at": "Sacred Anatomancer",
+     "options": [
+      "Help the Anatomancer",
+      "Kill the Anatomancer"
+     ]
+    },
+    {
+     "at": "Child of Oblivion",
+     "options": [
+      "Die in flames as a martyr",
+      "Accept Molag Bal's corruption in exchange for his help"
+     ]
+    }
+   ],
+   "gives": [
+    "Amulet of Stendarr, Old Histus Flask and the Blessing of Stendarr spell (Vigilant of Stendarr)",
+    "Staff of Moderate Light (Thus Spoke Khajiit)",
+    "Curse of Stendarr, Spell Tome (Master): Conjure Molag Bal and the Mace of Molag Bal, which you destroy in The Landing (The Endless Fall)",
+    "Mark of Molag Bal, a curse Molag Bal leaves on you (The Landing)",
+    "Recipes for the Rusty Armor set at the Anvil of Zenithar, with Ebony Smithing (The Landing or Art of Mercy)",
+    "Anatomancer's Pipe, a staff (Sacred Anatomancer)",
+    "Recipes for the Man-Bull Emperor, Minotaur, Ami-El's Royal Guard and Alessian Order gear at the Anvil of Zenithar (Broken Horns)",
+    "Spell Tome (Expert): Conjure Child of Oblivion (Child of Oblivion)",
+    "Vigilant Robes, Vigilant Hood, Vigilant Boots and Vigilant Gloves (Successor)"
+   ],
+   "closes": [
+    "Lusine the vampire is defeated (Bloodsucker)",
+    "Balor is killed (The Eye of Madness)",
+    "Bal is defeated (Old Regrets)",
+    "Carene and her daughter Lilian die if you hunt them down (No Mercy); Carene dies if you take the optional kill in Art of Mercy",
+    "Gwaji gro-Agnam, Paulo, Jericho and Aredhel die (Remnants)",
+    "Pale Feet dies if you kill him (Sacred Anatomancer)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "no checked read gives a level the line is made for; Coldharbour places in the records hold bosses at level 60 (Malatar Mansion) and 120 (Chapel of Arkay Cemetery)"
+    },
+    {
+     "field": "getIn.where",
+     "why": "the start is a story event when you change location, whose conditions aren't in the files; the quest names Dawnstar as its town and Altano's own spot is the Temple of Stendarr. How you reach Stuhn Ravine isn't in the files either"
+    },
+    {
+     "field": "order",
+     "why": "the first act's order comes from the series numbering and each first objective sending you to where the last quest ended; no condition in the files ties one quest to the next"
+    },
+    {
+     "field": "order",
+     "why": "who hands out the bounties and the Radiance jobs, and whether you must have joined first, isn't in the files"
+    },
+    {
+     "field": "order",
+     "why": "what starts Empty Cells, the Coldharbour memories, Broken Horns, Maggot, Child of Oblivion and Successor isn't in the files; Empty Cells probably follows the first act"
+    },
+    {
+     "field": "branches",
+     "why": "The Landing and Art of Mercy both unlock the Rusty Armor recipes, which suggests they are alternate endings of the first act after No Mercy, but nothing in the files says one locks out the other or which No Mercy choice leads where"
+    },
+    {
+     "field": "gives",
+     "why": "most rewards are properties on quest scripts, not confirmed hand-overs; Lamae's Kin and Mark of Molag Bal may be given or lifted by several quests, and spells like Force, Eye of Madness and Vampire Form may be effects used in a scene rather than rewards"
+    },
+    {
+     "field": "closes",
+     "why": "whether Lamae Bal dies in The Blood Matron, and what happens to Thingol in Remnants, isn't in the files"
+    },
+    {
+     "field": "branches",
+     "why": "The Blood Matron can complete at two different points, which suggests two endings (defeat Lamae Bal or free her from the curse), but the records have no text saying what they are"
+    }
+   ],
+   "evidence": [
+    "checked/023.json: zzzAomBountyBook, zzzAomBountyChickTrader, zzzAoMBountyPiper, zzzAomBountyRelic, zzzAoMBountyRelicHorn, zzzAomBountySummoner, zzzAomBountyVampire, zzzAomBountyWitch",
+    "checked/024.json: zzzAoMMq00 to zzzAoMMq09",
+    "checked/025.json: zzzAoMMq10, zzzAoMMqGoodEnd, zzzAoMRadDead, zzzAoMRadDoppler, zzzAoMRadMolag, zzzAoMRadVampire, zzzAoMRadWitchHunter, zzzAoMSubQ02, zzzAoMSubQ03, zzzBMGuide",
+    "checked/026.json: zzzBMMq01, zzzBMMq02, zzzBMMq03, zzzCHMemoryGuide, zzzCHMemoryQuest01 to zzzCHMemoryQuest06",
+    "checked/027.json: zzzCHMemoryQuest07, zzzCHMemoryQuest08, zzzCHMemoryQuest09, zzzCHqSAExile, zzzCHrqSoulShriven, zzzCHSubQuest13, zzzCOGuide, zzzCOMq01, zzzCOSubQ01",
+    "src/data/lorerim-5.0.4.8/quests.json: line vigilants (id, name, category, quest order)"
+   ]
+  }
+ ]
+}

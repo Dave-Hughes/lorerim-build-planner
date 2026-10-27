@@ -1,0 +1,639 @@
+{
+ "lines": [
+  {
+   "id": "baan-malur",
+   "name": "Journey to Baan Malur",
+   "about": "Separate side quests set in the city of Baan Malur and on the Morrowind mainland around it, at Fort Tulis, Cormaris and the craglands to the south. There are six quests to play, plus a ferry service between Morrowind's ports and Raven Rock on Solstheim and one empty placeholder; the records set no level for any of them.",
+   "getIn": {
+    "quest": "The Amulet of Old",
+    "who": "Adimmisaru",
+    "where": "his drinks stall in the Arena Market in Baan Malur, from 8 am for about 12 hours",
+    "how": "Get to Baan Malur and talk to Adimmisaru of the Ahemmusa tribe in the Arena Market; he has lost his family amulet and thinks the jeweller Varanie took it.",
+    "needs": [
+     "Reach Baan Malur; the records show a ferry between Raven Rock on Solstheim and Baan Malur"
+    ]
+   },
+   "order": [
+    {
+     "quest": "A Grand Venture",
+     "what": "A placeholder with no objectives and no people; its only text is 'finished quest' and nothing in the records starts it.",
+     "where": "",
+     "needs": ""
+    },
+    {
+     "quest": "The Amulet of Old",
+     "what": "You settle the quarrel between Adimmisaru and the jeweller Varanie over his lost amulet, either with Varanie's fake or with the real one from the goblins of Bulwark Krettin.",
+     "where": "Arena Market, Baan Malur, and Bulwark Krettin",
+     "needs": "Reach Baan Malur."
+    },
+    {
+     "quest": "The Bruska Pogrom",
+     "what": "A guard at Fort Tulis sends you into the depths of the fort to deal with the Bruska goblins, then after the clan's Shaman in Bruska Cave.",
+     "where": "Fort Tulis and Bruska Cave, Morrowind",
+     "needs": "Reach Fort Tulis on the Morrowind mainland."
+    },
+    {
+     "quest": "The New Temple",
+     "what": "Sadren Solis needs wood to build a temple in Cormaris; you get the lumberjack Feldrin's axe back from Llerush Kwama Mine and then look for the ship captain Helvf Blackthorn.",
+     "where": "Cormaris, Cormar Crossing and Llerush Kwama Mine, Morrowind",
+     "needs": "Reach Cormaris."
+    },
+    {
+     "quest": "Morrowind Boat Travel System",
+     "what": "The ferry service between Baan Malur, Raven Rock, Cormaris, Llethrin Fel and Pryai; you take a seat on the ferry bench and pick a port. It is a service you can use at any time, not a step in a story.",
+     "where": "the ferry benches at each port",
+     "needs": ""
+    },
+    {
+     "quest": "Hlervan's Ashes",
+     "what": "You take Hlervan's ashes to an elder at the Temple of Reclamations in Baan Malur.",
+     "where": "Temple of Reclamations, Baan Malur",
+     "needs": "Find Hlervan's ashes."
+    },
+    {
+     "quest": "Daedra and Deceit",
+     "what": "After you clear Daedra from her basement, the scholar Llynelis sends you after three Daedric keys, then into the Daedric Ruin under Baan Malur, and you confront her at the end.",
+     "where": "Llynelis Manor, Baan Malur; Ashimmidarum; Dunnashammipuri; near Cormaris",
+     "needs": "Reach Baan Malur."
+    },
+    {
+     "quest": "The Struggle for Justice",
+     "what": "Kar-Jei, leader of an Argonian camp, asks you to free his people from Dres slavers and to steal military documents from Fort Blacklight without being seen.",
+     "where": "Saxhleel Camp, in the craglands south of Baan Malur; the Dres Slaver's Camp; Fort Blacklight, Baan Malur",
+     "needs": "Find the Saxhleel Camp south of Baan Malur."
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Amulet of Old",
+     "options": [
+      "Give Adimmisaru Varanie's fake amulet: if he believes you the quest is done and Varanie pays you a bonus; if he doesn't, the quest fails",
+      "Bring back the real amulet from Bulwark Krettin: Adimmisaru pays you",
+      "Sell the real amulet to Varanie: the quest fails",
+      "Kill Adimmisaru or Varanie: the quarrel ends and the quest completes"
+     ]
+    },
+    {
+     "at": "Daedra and Deceit",
+     "options": [
+      "Kill Llynelis when you confront her",
+      "Spare Llynelis"
+     ]
+    },
+    {
+     "at": "The Struggle for Justice",
+     "options": [
+      "Stay loyal and bring the documents to Kar-Jei: Redoran soldiers raid the camp, and if Kar-Jei lives he gives you his Naming-Knife",
+      "Sell the Saxhleel out to the Redoran captain at Fort Blacklight: Redoran soldiers raid the camp",
+      "Sell the Saxhleel out to the Dres Captain at the slaver camp: Dres slavers raid the camp"
+     ]
+    }
+   ],
+   "gives": [
+    "Kar-Jei's Naming Knife (dagger), if you stay loyal in The Struggle for Justice",
+    "Ferry travel between Baan Malur, Raven Rock, Cormaris, Llethrin Fel and Pryai"
+   ],
+   "closes": [
+    "Adimmisaru or Varanie dies if you choose to kill one of them in The Amulet of Old",
+    "Llynelis dies if you choose to kill her in Daedra and Deceit",
+    "The Bruska Pogrom fails if the guard at Fort Tulis dies",
+    "The Struggle for Justice fails if Kar-Jei is killed in the raid on the Saxhleel Camp"
+   ],
+   "unsure": [
+    {"field": "about", "why": "No quest in this line carries a level gate, and no dungeon's level range is in the checked reads, so the level it is made for isn't known."},
+    {"field": "getIn", "why": "The quests have no shared start; The Amulet of Old is the line's opening in the start records, but any of the others can be found first. Which route a new player should take to Baan Malur (the Raven Rock ferry or the Dwemer ruin Kalbthurz a book names as a way through) isn't set out in the records."},
+    {"field": "order", "why": "A Grand Venture is a bare placeholder; whether a script ever runs it isn't shown."},
+    {"field": "order", "why": "The New Temple's journal after you find Helvf Blackthorn is the author's placeholder notes with no objectives, so the later part may be unfinished."},
+    {"field": "order", "why": "The ferry checks something before offering Llethrin Fel, Pryai and Vivec, so those routes may need unlocking; how you book a crossing isn't in the records."},
+    {"field": "gives", "why": "Bruska Shaman's Staff (a lightning staff) is linked to the Bruska Shaman only by its name; the other rewards are leveled lists or gold whose contents aren't in the records."},
+    {"field": "branches", "why": "The sell-out endings of The Struggle for Justice have no ending marked in the journal; what happens to Kar-Jei and whether you are paid isn't in the records."}
+   ],
+   "evidence": [
+    "quests.json line baan-malur: id, name, category, quest order",
+    "checked/035.json: DefunctQuest01 (QUST Journey to Baan Malur.esp:2B52A7), DefunctQuest02 (QUST 03DD9D)",
+    "checked/036.json: DefunctQuest04 (QUST 1A7730), DefunctQuest07 (QUST 28C8ED), DefunctQuest09 (QUST 1240DA), SOMRHlervansAshesQuest (QUST 136F43), SOMRLlynelisDaedricQuest (QUST 0BA420), SOMRSaxhleelQuestMain (QUST 3179BE)",
+    "quest_starts_raw baan-malur: opening DefunctQuest02; doors Journey to Baan Malur.esp:3D591A/3D591B from Dragonborn.esm:00F4EC into Arena Market",
+    "questlines_raw 'Journey to Baan Malur and Morrowind': Journey to Baan Malur.esp, 10 quests",
+    "giver INFO Journey to Baan Malur.esp:03DDA5 Adimmisaru; package BaanWDDrinksPKG (Arena Market, 08h, 720 min)",
+    "WEAP 463D03 Kar-Jei's Naming Knife (alias KarJeiKnife); WEAP 070FBB Bruska Shaman's Staff"
+   ]
+  },
+  {
+   "id": "siege-at-icemoth",
+   "name": "Siege at Icemoth",
+   "about": "A short dungeon story on the Hjorkvild Isles, frozen islands north of Jehanna, where a necromancer holds the old Imperial fort Fort Icemoth with an army of undead, and a Nord barrow on the main island lies beyond it. Fort Icemoth is a level 24 to 50 dungeon and Winter Shroud Sanctum level 30 to 55; the line has two dungeon quests and two book quests.",
+   "getIn": {
+    "quest": "Siege at Icemoth",
+    "who": "a dead mercenary",
+    "where": "by a beached sailboat on the coast",
+    "how": "Read the Waterlogged Journal the dead mercenary carries; it tells of Fort Icemoth, an old Imperial fort on frozen islands north of Jehanna full of undead, and the quest sends you there.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Black Book: The Font of Memory",
+     "what": "Reading the Black Book 'The Font of Memory' pulls you into Apocrypha to learn the knowledge hidden in it.",
+     "where": "Apocrypha",
+     "needs": "Find the Black Book 'The Font of Memory'."
+    },
+    {
+     "quest": "Caches of Skorjan Iron-Beard",
+     "what": "The book 'The Caches of Skorjan Iron-Beard' sends you to the Old Wooden Jetty to find a hidden cache, with a dead mercenary nearby.",
+     "where": "the Old Wooden Jetty",
+     "needs": "Find and read 'The Caches of Skorjan Iron-Beard'."
+    },
+    {
+     "quest": "Siege at Icemoth",
+     "what": "You travel to Fort Icemoth and deal with the source of the undead, the Breton necromancer Silas Marceau.",
+     "where": "Fort Icemoth, Hjorkvild Isles",
+     "needs": "Read the Waterlogged Journal."
+    },
+    {
+     "quest": "The Topaz Claw",
+     "what": "Silas Marceau's journal mentions a topaz dragon claw; you find it among his things and use it to open the portcullis in Winter Shroud Sanctum, a Nord barrow on the main island.",
+     "where": "Fort Icemoth and Winter Shroud Sanctum, Hjorkvild Isles",
+     "needs": "Reach Silas Marceau's belongings at Fort Icemoth."
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "The boss chests of Fort Icemoth and Winter Shroud Sanctum"
+   ],
+   "closes": [
+    "Silas Marceau is killed at Fort Icemoth",
+    "The dragon priest Tovinaan is fought at the end of Winter Shroud Sanctum"
+   ],
+   "unsure": [
+    {"field": "getIn", "why": "The beach with the sailboat is in a coastal cell the records don't name. The dead mercenary near the Old Wooden Jetty in Caches of Skorjan Iron-Beard may be the same body, but no record ties them."},
+    {"field": "order", "why": "How you cross to the Hjorkvild Isles isn't spelled out; the sailboat is part of the quest but the records don't show it carrying you."},
+    {"field": "order", "why": "Where the Black Book lies isn't in the records; the mod's Black Book setup quest is tied to Winter Shroud Sanctum, so it is probably there. Whether Apocrypha needs Dragonborn progress first isn't shown."},
+    {"field": "order", "why": "Where copies of 'The Caches of Skorjan Iron-Beard' are found, the Old Wooden Jetty's hold, and what is in the cache aren't in the records."},
+    {"field": "gives", "why": "The dragon priest mask Tovinaan is in the mod, but the records don't put it on the dragon priest or tie it to The Topaz Claw."},
+    {"field": "gives", "why": "The Omen of Gluttony, Omen of Immobility and Omen of Warding powers carry this mod's Black Book names, but the records don't tie them to the Black Book quest's ending or say whether you get all three or pick one."}
+   ],
+   "evidence": [
+    "quests.json line siege-at-icemoth: id, name, category, quest order",
+    "checked/036.json: HYORBlackBook08Quest (QUST Siege at Icemoth.esp:59F97E), HYORBookPointerMiscQST (QUST 936795), HYORdunIcemothQST (QUST 5A079F), HYORdunWintershroudSanctumQST (QUST 097057)",
+    "quest_starts_raw siege-at-icemoth: opening HYORdunIcemothQST, startGame true",
+    "questlines_raw 'Siege at Icemoth': begins text (dead mercenary, beached sailboat, Fort Icemoth north of Jehanna)",
+    "LCTN 0FA292 Fort Icemoth boss level 50, zone 24-50; LCTN 4CD0C4 Winter Shroud Sanctum boss level 55, zone 30-55",
+    "NPC 2F7886 Silas Marceau; NPC 6FBD9A Tovinaan; ARMO 6F5DC4 Tovinaan mask; BOOK 3A680A Waterlogged Journal"
+   ]
+  },
+  {
+   "id": "gray-cowl",
+   "name": "The Gray Cowl of Nocturnal",
+   "about": "A vision sends you to the Hall of the Initiation in Skyrim, and the Gray Cowl story then takes you through the Imperial City Prison, Sancre Tor and Coldharbour to the Alik'r Desert in Hammerfell, where you claim the Gray Cowl from a mausoleum. Reaching the desert also opens Betalille's Hammerfell quests in Ben Erai, Salas Kazas and the Wind Scour Temple; there are 40 quests in all, no level gate is set, and the desert's dungeons hold enemies from level 10 to 80.",
+   "getIn": {
+    "quest": "The Call of Gray Cowl of Nocturnal",
+    "who": "",
+    "where": "wherever you are; the vision points you to the Hall of the Initiation in Skyrim",
+    "how": "The quest runs from the start of the game: you have a strange vision, and the quest marker shows you the way to the Hall of the Initiation, whose door needs the Key to Hall of the Initiation.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Memories of the Umbranox",
+     "what": "You collect Caio Umbranox's journals in the places the Gray Cowl story takes you and hand them to Seviana Umbranox.",
+     "where": "Old Way of the Thief, Sancre Tor, Coldharbour and the Halls of the West; Seviana's House",
+     "needs": "Be partway through The Call of Gray Cowl of Nocturnal."
+    },
+    {
+     "quest": "Bury Valen Dreth",
+     "what": "You take Valen Dreth's remains from the Imperial City Prison and bury them at Falkreath.",
+     "where": "Imperial City Prison; Falkreath",
+     "needs": "Reach the Imperial City Prison in The Call of Gray Cowl of Nocturnal."
+    },
+    {
+     "quest": "Reward of Coldharbour",
+     "what": "You escape from Coldharbour, with an optional goal of not killing the Guardians of Coldharbour.",
+     "where": "Coldharbour",
+     "needs": "Reach Coldharbour in The Call of Gray Cowl of Nocturnal."
+    },
+    {
+     "quest": "Time for the Farewells",
+     "what": "You escort Seviana and Luvien from Seviana's House to the docks of Solitude.",
+     "where": "Seviana's House; the docks of Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "The Experiment",
+     "what": "Ilrav Baenius gives you artifacts to place near Markarth, Falkreath, Windhelm and Dawnstar, and you report the results of his experiment to him.",
+     "where": "Three Peaks Staff and Magic in the Alik'r Desert; near Markarth, Falkreath, Windhelm and Dawnstar",
+     "needs": "Reach the Alik'r Desert through The Call of Gray Cowl of Nocturnal."
+    },
+    {
+     "quest": "Claim Shanta Filibb",
+     "what": "Bandits ambush you in the desert; you clear the rest of the gang out of Shanta Filibb, and Crassius in Ben Erai gives you the place as your house.",
+     "where": "Shanta Filibb and Ben Erai, Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "The Call of Gray Cowl of Nocturnal",
+     "what": "You follow the vision to the Hall of the Initiation, get four keys from the places it opens, escape Coldharbour, and in the Alik'r Desert find a way into the Mausoleum in the Oasis of Mora Sul to take the Gray Cowl back to Seviana.",
+     "where": "Hall of the Initiation in Skyrim; the Alik'r Desert in Hammerfell; Seviana's House",
+     "needs": ""
+    },
+    {
+     "quest": "The Curse of Sadraaka",
+     "what": "A city in the desert is full of the ghosts of Alik'r warriors; you find out about its curse and kill the draugr Sadraaka to lift it.",
+     "where": "the Forgotten City and the Tomb of the Forgotten Draugr, Alik'r Desert",
+     "needs": "Reach the Alik'r Desert."
+    },
+    {
+     "quest": "Helping the Enemy",
+     "what": "Honai of the Ash'abah warns you about the necromancer Andyn Pamarc; you go with him and Nimshat to fight Andyn, then check on the wizard Dorian Masterhart.",
+     "where": "Ash'abah Hideout and the open Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "The Ash'abah",
+     "what": "Honai asks you to help the Ash'abah clear the undead, among them The Silent Sword, out of the Ancient Ruins.",
+     "where": "Ash'abah Hideout; Ancient Ruins, Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "The Library Lost to the Ages",
+     "what": "Dorian Masterhart of Ben Erai asks you to find an ancient library in the desert, and you show him the way in.",
+     "where": "Dorian's House, Ben Erai; a library in the Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "Is There a Necromancer in Town?",
+     "what": "Thaik of Salas Kazas asks you to kill a band of necromancers camped in the desert.",
+     "where": "Thaik's House, Salas Kazas; a necromancer camp in the Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "Weltan the Poet",
+     "what": "Sharza of Salas Kazas wants two books of Weltan's poems, one from a library and one from the Mausoleum.",
+     "where": "Sharza's House, Salas Kazas; a library and the Mausoleum, Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "From Solstheim to Hammerfell",
+     "what": "The Dunmer merchant Lloros Reynel wants to open a shop for Dunmer goods in Hammerfell, and you take him there.",
+     "where": "The Retching Netch, Raven Rock; Reynel's House, Ben Erai",
+     "needs": "Reach Solstheim."
+    },
+    {
+     "quest": "Black Marsh Maps",
+     "what": "Jukka of the new Cyrodilic Collections museum asks you to collect two lost maps of Black Marsh, one of them in the Dwemer ruin Khenzedum.",
+     "where": "Cyrodilic Collections; Khenzedum, Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "Cyrodilic Collections are Recruiting",
+     "what": "Jukka gives you three signs to post in Ben Erai because the museum needs guards.",
+     "where": "Ben Erai; Cyrodilic Collections",
+     "needs": "Probably Black Marsh Maps."
+    },
+    {
+     "quest": "Ancient Pottery",
+     "what": "Jukka sends you to Sadraaka to recover an ancient Argonian pottery.",
+     "where": "Sadraaka; Cyrodilic Collections",
+     "needs": "Probably Cyrodilic Collections are Recruiting."
+    },
+    {
+     "quest": "A Special Smell",
+     "what": "Jukka's last job: you find a censer in Al Shedim and bring it to her.",
+     "where": "Al Shedim, north of Ben Erai",
+     "needs": "Finish Ancient Pottery."
+    },
+    {
+     "quest": "The Dark Brotherhood in Hammerfell",
+     "what": "The Unknown Initiate at the Dawnstar Sanctuary asks you to find the Dark Brotherhood's Sanctuary in the Alik'r Desert, where Tenerio waits alone.",
+     "where": "Dawnstar Sanctuary, the Pale; Alik'r Desert Sanctuary",
+     "needs": ""
+    },
+    {
+     "quest": "Ending the Dark Brotherhood in Hammerfell again",
+     "what": "Leollus of the Penitus Oculatus in Ben Erai has found the Dark Brotherhood's Sanctuary and asks you to kill Tenerio and his initiates.",
+     "where": "Penitus Oculatus Outpost, Ben Erai; Alik'r Desert Sanctuary",
+     "needs": ""
+    },
+    {
+     "quest": "Merchant Problem",
+     "what": "Tenerio's first contract: kill a merchant at the Ben Erai Outpost.",
+     "where": "Ben Erai Outpost; Alik'r Desert Sanctuary",
+     "needs": "Finish The Dark Brotherhood in Hammerfell."
+    },
+    {
+     "quest": "Argonian Hero",
+     "what": "Tenerio's second contract: kill an Argonian at the Lantern of the North.",
+     "where": "the Lantern of the North, Alik'r Desert",
+     "needs": "Finish Merchant Problem."
+    },
+    {
+     "quest": "Wandering Monk",
+     "what": "Tenerio's third contract: kill a monk at the Lucky Lantern.",
+     "where": "the Lucky Lantern, Alik'r Desert",
+     "needs": "Finish Argonian Hero."
+    },
+    {
+     "quest": "Alik'r No More",
+     "what": "Tenerio's fourth contract: defeat an Alik'r warrior in Ben Erai.",
+     "where": "Ben Erai",
+     "needs": "Finish Wandering Monk."
+    },
+    {
+     "quest": "No Guard Is Safe",
+     "what": "Tenerio's fifth and last contract: kill Laurentina, a guard in the Fortress of Ben Erai.",
+     "where": "Fortress of Ben Erai",
+     "needs": "Finish Alik'r No More."
+    },
+    {
+     "quest": "Disappearing in the Dark",
+     "what": "A letter saying 'Hammerfell needs you' calls you back to Tenerio, who sends you to look for the missing initiate Lucya.",
+     "where": "Alik'r Desert Sanctuary; a village and an abandoned warehouse in the Alik'r Desert",
+     "needs": "Finish No Guard Is Safe and the Dawnguard quest Kindred Judgment."
+    },
+    {
+     "quest": "The Crimson Eviscerator",
+     "what": "You look for Lucya's soul in the Soul Cairn, then go to the Soul Cavern in the desert for the Crimson Scar weapon she tells you about.",
+     "where": "Soul Cairn Tower in the Soul Cairn; the Soul Cavern, Alik'r Desert",
+     "needs": "Finish Disappearing in the Dark, and a way into the Soul Cairn."
+    },
+    {
+     "quest": "Crimson Scar Believers",
+     "what": "Tenerio sends you to kill four vampires hiding in a cave who are trying to rebuild the Crimson Scar.",
+     "where": "Vampire Hideout, Alik'r Desert",
+     "needs": "Finish The Crimson Eviscerator."
+    },
+    {
+     "quest": "Protecting What Was Lost",
+     "what": "Azita dares you to break the seal on her grandfather Azzin's sword by killing the Fire, Frost and Shock Dragons and setting their stones on the pillars.",
+     "where": "Azzin's Hideout and the open Alik'r Desert",
+     "needs": ""
+    },
+    {
+     "quest": "In need of Scouts",
+     "what": "Loremaster Za'kir asks you to recruit two of your followers to the Blades at the Wind Scour Temple.",
+     "where": "Wind Scour Temple, Alik'r Desert",
+     "needs": "Finish A Lost Temple in Hammerfell."
+    },
+    {
+     "quest": "Sands of the Past",
+     "what": "Za'kir sends you to two Akaviri Ruins caves haunted by Blade ghosts, and then to the larger cave he has found, Azzin's Lair.",
+     "where": "Akaviri Ruins and Azzin's Lair, Alik'r Desert; Wind Scour Temple",
+     "needs": "Finish A Lost Temple in Hammerfell."
+    },
+    {
+     "quest": "A Lost Temple in Hammerfell",
+     "what": "The old Redguard Duraelm asks you to search the desert for the secret entrance to the Wind Scour Temple, and you go in with him.",
+     "where": "three spots in the Alik'r Desert; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonguard Archives",
+     "what": "Duraelm asks you to bring back a Dragonguard book from a place he names.",
+     "where": "a place picked when the quest starts; Wind Scour Temple",
+     "needs": "Finish A Lost Temple in Hammerfell."
+    },
+    {
+     "quest": "Dragonguard Archives: Book 1",
+     "what": "You take a Dragonguard book from Vulstad and put it in the archive chest in the Wind Scour Temple.",
+     "where": "Vulstad; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonguard Archives: Book 2",
+     "what": "You take a Dragonguard book from the Guard Barracks in Ben Erai and put it in the archive chest in the Wind Scour Temple.",
+     "where": "Guard Barracks, Ben Erai; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonguard Archives: Book 3",
+     "what": "You take a Dragonguard book from Ben Erai and put it in the archive chest in the Wind Scour Temple.",
+     "where": "Ben Erai; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonguard Archives: Book 4",
+     "what": "You take a Dragonguard book from the Fortress of Ben Erai and put it in the archive chest in the Wind Scour Temple.",
+     "where": "Fortress of Ben Erai; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonguard Archives: Book 5",
+     "what": "You take a Dragonguard book from Arenar's Camp and put it in the archive chest in the Wind Scour Temple.",
+     "where": "Arenar's Camp; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonguard Archives: Book 6",
+     "what": "You take a Dragonguard book from the Dwemer ruin Khenzedum and put it in the archive chest in the Wind Scour Temple.",
+     "where": "Khenzedum; Wind Scour Temple",
+     "needs": ""
+    },
+    {
+     "quest": "Spectral Lamias in the Desert",
+     "what": "The Lamia Oziriana asks you to help her defeat her sister, Feiria the Matriarch, and put out the spectral fire her sister started.",
+     "where": "the Alik'r Desert",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Memories of the Umbranox",
+     "options": [
+      "Give Seviana the journals for 1000 gold",
+      "Give Seviana the journals for a spell tome, Unlock Container",
+      "Keep the journals and get nothing from Seviana"
+     ]
+    },
+    {
+     "at": "The Dark Brotherhood in Hammerfell / Ending the Dark Brotherhood in Hammerfell again",
+     "options": [
+      "Work for Tenerio and take the Dark Brotherhood's Hammerfell contracts",
+      "Take Leollus's job for the Penitus Oculatus and kill Tenerio and his initiates"
+     ]
+    },
+    {
+     "at": "In need of Scouts",
+     "options": [
+      "Choose which two of your followers join the Blades at the Wind Scour Temple"
+     ]
+    }
+   ],
+   "gives": [
+    "The Gray Cowl of Nocturnal (light armor, head)",
+    "Shanta Filibb, a house in the Alik'r Desert, from Claim Shanta Filibb",
+    "The Crimson Eviscerator (dagger)",
+    "Boneshaver Replica (sword), from Protecting What Was Lost",
+    "Left Eye of Coldharbour (ring), from Bury Valen Dreth",
+    "Irlav's Penitence, from The Experiment",
+    "Respected by the Ash'abah (perk), from Helping the Enemy",
+    "Crafting Motif 76: Dragonguard Style, from Dragonguard Archives: Book 1",
+    "Reynel's House in Ben Erai, where the Reynels sell Dunmer goods, after From Solstheim to Hammerfell"
+   ],
+   "closes": [
+    "Memories of the Umbranox fails if you miss some of Caio's journals",
+    "Ending the Dark Brotherhood in Hammerfell again kills Tenerio, who gives the Hammerfell contracts, and two initiates",
+    "The two followers you recruit in In need of Scouts join the Blades at the Wind Scour Temple",
+    "Sadraaka, Andyn Pamarc and Feiria the Matriarch are killed in their quests"
+   ],
+   "unsure": [
+    {"field": "about", "why": "No quest in the line carries a level gate; the level range is taken from the desert dungeons in the checked reads (Al Shedim 10 to 80, Khenzedum 15 to 60, Sadraaka level 40)."},
+    {"field": "getIn", "why": "The quest is set to run from game start with no conditions; what moves it to the vision (a level, a time, a script) isn't in the records. Where the Key to Hall of the Initiation comes from, and which hold the Hall of the Initiation and Seviana's House stand in, aren't shown."},
+    {"field": "getIn", "why": "The Betalille quests are all in the Alik'r Desert, which The Call of Gray Cowl of Nocturnal takes you to; whether From Solstheim to Hammerfell is another way in isn't in the records."},
+    {"field": "order", "why": "The Call of Gray Cowl of Nocturnal probably takes you to Akavir near the end (a portal alias and Seviana's line about Hammerfell and Akavir); those stages have no text."},
+    {"field": "order", "why": "Time for the Farewells has no giver or start event in the records; it most likely follows the end of The Call of Gray Cowl of Nocturnal, and that Seviana and Luvien leave Skyrim for good is read from its title."},
+    {"field": "order", "why": "Helping the Enemy most likely comes after The Ash'abah (Honai's later packages assume it is done), but no condition says so."},
+    {"field": "order", "why": "The Dark Brotherhood in Hammerfell may need you to be in the Dark Brotherhood with the Dawnstar Sanctuary open; the conditions on the Unknown Initiate's line aren't in the records."},
+    {"field": "order", "why": "The order of Jukka's four museum quests and Tenerio's contracts is read from their journals; the conditions that unlock each one aren't in the records."},
+    {"field": "order", "why": "The six Dragonguard Archives books have no giver or start event; they probably start from a notice or note and probably come after A Lost Temple in Hammerfell, since the archive chest is in the Wind Scour Temple."},
+    {"field": "order", "why": "Where the Alik'r Desert Sanctuary, the Ash'abah Hideout, Vulstad, Arenar's Camp and most other desert places lie isn't in the places records."},
+    {"field": "branches", "why": "Whether Ending the Dark Brotherhood in Hammerfell again ends Tenerio's contracts is read from its aliases; it swaps in a separate hostile Tenerio, and the script isn't read."},
+    {"field": "gives", "why": "Many rewards are quest script properties not confirmed by a log line: the Left Eye of Coldharbour, the Unlock Container tome, Irlav's Penitence (what it does isn't in the item records), Respected by the Ash'abah (its effect isn't given), the Crimson Eviscerator from Leollus, and the gold amounts."},
+    {"field": "closes", "why": "What triggers the failure of Memories of the Umbranox isn't in the records; that a missed journal is gone for good is a guess from the failure line."}
+   ],
+   "evidence": [
+    "quests.json line gray-cowl: id, name, category, quest order",
+    "checked/037.json: manny_GF_Books (QUST Gray Fox Cowl.esm:0026F4), manny_GF_BuryValenDreth (01E072), manny_GF_ColdharbourQuest (01F56B), manny_GF_Farewell (01CFA7), manny_GF_IrlavExperiment (03039F), manny_GF_MiscQuestShantaFilibb (050159), manny_GF_MQ (001E61), manny_GF_Sadraaka (026AE8), ASHGAndynQuest, ASHGAshabahQuest",
+    "checked/038.json: ASHGMageQuest, ASHGNecroQuest, ASHGPoetryQuest, ASHGSolstheimQuest, CYCOHQuest01-04, DDBIntroQuest, DDBPenitusOculatusQuest",
+    "checked/039.json: DDBQuest01-08, HABLBladesQuest01-02",
+    "checked/040.json: HABLBladesQuest03, HABLQuest01-02, HABLRaQuest01-06, LAMIDesertLamiaQuest",
+    "quest_starts_raw gray-cowl: opening manny_GF_MQ, startGame true, no dialogue or event conditions",
+    "questlines_raw 'The Gray Cowl of Nocturnal - 10th anniversary' (Gray Fox Cowl.esm, 8 quests) and 'Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal' (BetalillesHammerfellQuestBundle.esp, 32 quests)",
+    "ARMO Gray Fox Cowl.esm:017AE5 Gray Cowl of Nocturnal; ARMO 019BB2 Left Eye of Coldharbour; ARMO 0303BA Irlav's Penitence; BOOK 022E9C Unlock Container tome",
+    "door Gray Fox Cowl.esm:001A4D into Hall of the Initiation from Skyrim.esm:009D61, needs KEYM 003293"
+   ]
+  },
+  {
+   "id": "forgotten-city",
+   "name": "The Forgotten City",
+   "about": "A mystery in a hidden Dwarven city beneath ruins in the Reach, which you enter to look for Cassia's younger brother Altrius. It has two quests, the second played out inside the first, and the records set no level for it.",
+   "getIn": {
+    "quest": "The Forgotten City",
+    "who": "Cassia",
+    "where": "inside the Forgotten Ruins, hidden Dwarven ruins in the Reach",
+    "how": "A courier hands you a letter, Cassia's Plea; read it and travel to the ruins in the Reach, where Cassia waits near the entrance. If you find the ruins on your own first, the quest starts there.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The Forgotten City",
+     "what": "Cassia asks you to find her brother Altrius; you take a leap of faith into the Forgotten City, look for a way out, and finish by bringing Altrius back to her.",
+     "where": "Forgotten Ruins and The Forgotten City, the Reach",
+     "needs": ""
+    },
+    {
+     "quest": "Forget-me-not",
+     "what": "Metellus's portal at the Lakehouse throws you 20 years into the past, and Jarl Metellus asks you to find out which resident will destroy the city.",
+     "where": "the Citadel, the residents' homes and the Underground Tunnels, the Forgotten City",
+     "needs": "Go through the Lakehouse during The Forgotten City."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Forget-me-not",
+     "options": [
+      "Name a suspect to Jarl Metellus (Domitus, Gulvar, Vernon, Ulrin, Marius, Rykas or Deglund), and he asks you to lure them into the Underground Tunnels and kill them",
+      "Accuse Metellus himself, or admit that you are the threat",
+      "Refuse to kill your suspect and find your own way back to your time",
+      "Win the Arbiter over, who returns you to your own time; this is the ending that completes The Forgotten City"
+     ]
+    },
+    {
+     "at": "The Forgotten City",
+     "options": [
+      "Back in the present with Altrius alive, smash the cracked wall in the Citadel bathroom and escort him out of the city",
+      "Convince the Arbiter to wind back the Dwarves' Law, bring Altrius to Cassia, and she rewards you and enters the city"
+     ]
+    }
+   ],
+   "gives": [
+    "The Immaculate Dwarven Armor set (Armor, Helmet, Boots and Gauntlets), heavy armor that makes you immune to radiation when all four are worn"
+   ],
+   "closes": [
+    "The suspect you name to Metellus can be killed in the Underground Tunnels",
+    "Forget-me-not fails if Metellus kills himself to make his portal and you are left with no way back except through it"
+   ],
+   "unsure": [
+    {"field": "about", "why": "No level gate is in the records; the line carries an average Speech check, but which conversation uses it isn't shown."},
+    {"field": "getIn", "why": "What makes the courier arrive (a level, a place, a time) isn't in the records, and the ruins' entrance stands in an exterior cell the places records don't name; 'the Reach' is the journal's wording."},
+    {"field": "branches", "why": "The escort-Altrius-out ending finishes Cassia's business in the journal but isn't flagged as completing The Forgotten City; only the Arbiter ending is. No stage of Forget-me-not is marked as completing it."},
+    {"field": "gives", "why": "Cassia's reward is probably the Treasure Hunter's Talisman (an amulet, 50% greater chance of finding special treasure), whose record marks it as hers, but nothing hands it over in the records."},
+    {"field": "gives", "why": "The armor is named from Rykas and the helmet from the Underground Tunnels; where the Boots and Gauntlets are found, and how each piece is handed over, isn't decoded. The Arbiter's Helmet is in the records, but where you get it isn't shown."}
+   ],
+   "evidence": [
+    "quests.json line forgotten-city: id, name, category, quest order",
+    "checked/041.json: 000FCQuest01 (QUST ForgottenCity.esp:012BB9), 000FCQuest02 (QUST ForgottenCity.esp:05965B)",
+    "quest_starts_raw forgotten-city: opening 000FCQuest01, startGame false",
+    "questlines_raw 'The Forgotten City': ForgottenCity.esp, 2 quests, begins 'A courier tracked me down and gave me a letter'",
+    "giver INFO ForgottenCity.esp:0388AE Cassia; BOOK 036D8C Cassia's Plea",
+    "items ForgottenCity.esp:069003-069006 Immaculate Dwarven set; 0A0DCE Treasure Hunter's Talisman; 0A23DE The Arbiter's Helmet",
+    "global SpeechAverage 50 on line forgotten-city"
+   ]
+  },
+  {
+   "id": "gravewind",
+   "name": "Gravewind",
+   "about": "A story that starts at an abandoned homestead among graves and strange flowers in the Falkreath woods and leads into Gravewind, another realm reached through the house. It has three quests; the vampire lair that holds the key to the homestead has a boss leveled 55 to 125, and no other level gate is set.",
+   "getIn": {
+    "quest": "In the Pines",
+    "who": "Vighar, the vampire who carries the key",
+    "where": "Bloodlet Throne in Falkreath for the key; the homestead is in the woods of Falkreath",
+    "how": "Kill the vampire Vighar in Bloodlet Throne for the Cemetery Homestead Key, then unlock the abandoned homestead in the Falkreath woods and explore it.",
+    "needs": [
+     "Cemetery Homestead Key, carried by Vighar in Bloodlet Throne (LoreRim puts this lock on the homestead's door)"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Lost to Oblivion",
+     "what": "Touching the light Richter left in Gravewind brings the realm down, and you have to escape before it falls.",
+     "where": "Gravewind",
+     "needs": "Reach Richter's light in Gravewind, through In the Pines and Lost in the Woods."
+    },
+    {
+     "quest": "In the Pines",
+     "what": "You unlock the abandoned homestead in the Falkreath woods and explore it; the door locks behind you and you have to find a way out.",
+     "where": "Bloodlet Throne for the key; Cemetery Homestead, Falkreath",
+     "needs": "The Cemetery Homestead Key from Vighar."
+    },
+    {
+     "quest": "Lost in the Woods",
+     "what": "You step out of the homestead into a land that isn't Falkreath, follow the notes of a man named Richter through Gravewind's underground city, and find your way home.",
+     "where": "Gravewind and Gravewind Depths",
+     "needs": "Finish In the Pines."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Lost to Oblivion",
+     "options": [
+      "Touch Richter's light: Gravewind falls, the souls enthralled there are freed, and the house in the Falkreath woods is gone for good",
+      "Leave the light alone: Lost to Oblivion doesn't start and Gravewind stays as Lost in the Woods leaves it"
+     ]
+    }
+   ],
+   "gives": [
+    "Lifesurge, a power: once a day, scarlet lightning completely restores your health",
+    "Herrah's Axe and her life-stealing Scarlet Cloak, named in the journal at the end of Lost in the Woods",
+    "Gravewind itself, left to you at the end of Lost in the Woods",
+    "Death Strider, at the end of Lost to Oblivion"
+   ],
+   "closes": [
+    "Herrah, the Wraithmother of Gravewind, is consumed by the void at the end of Lost in the Woods",
+    "Lost to Oblivion destroys Gravewind and the house in the Falkreath woods for good"
+   ],
+   "unsure": [
+    {"field": "getIn", "why": "The homestead's door stays hidden until another object is enabled, and what enables it isn't in the records. LoreRim's lock also edits Dark Ancestor, the quest whose alias holds Vighar; whether Vighar is in Bloodlet Throne without Dark Ancestor running isn't shown. Dengeir of Stuhn in Falkreath gives Dark Ancestor."},
+    {"field": "order", "why": "Richter's light is probably Richter's Flame in The Way Home, the last stretch of Lost in the Woods; whether Lost in the Woods must be finished before Lost to Oblivion isn't shown."},
+    {"field": "gives", "why": "Herrah's Axe and the Scarlet Cloak are named only in the journal's last entry and nothing hands them over; the Infused Battleaxe is the mod's only battleaxe and may be her Axe, and no cloak from the mod is in the item records."},
+    {"field": "gives", "why": "Death Strider is given through a script property named for a perk; its effect isn't in the spell or power records."},
+    {"field": "gives", "why": "The power Expel Greater Spirit lets you expel the soul once trapped in the Gravewind Sentinel, but nothing ties it to Lost in the Woods."}
+   ],
+   "evidence": [
+    "quests.json line gravewind: id, name, category, quest order",
+    "checked/041.json: GRVEDestroyRealm01 (QUST FalkreathShades.esp:4DCCF9), GRVEMainQuest01 (QUST 4CD9DA), GRVEMainQuest02 (QUST 4D2AF7)",
+    "quest_starts_raw gravewind: opening GRVEMainQuest01; door FalkreathShades.esp:024020 into Cemetery Homestead, key LoreRim Gravewind Start Tweak.esp:000001 carried by Vighar (Dark Ancestor alias) in Bloodlet Throne; enable parent FalkreathShades.esp:4DCD13",
+    "questlines_raw 'Gravewind - ESMIFIED': FalkreathShades.esp, 3 quests",
+    "place Skyrim.esm:016F85 Bloodlet Throne, boss leveled 55 to 125",
+    "power FalkreathShades.esp:3C0A9A Lifesurge; reward FalkreathShades.esp:6EC138 via QF_GRVEDestroyRealm01_054DCCF9.RewardPerk; weapon GRVEScarletBattleaxe"
+   ]
+  }
+ ]
+}

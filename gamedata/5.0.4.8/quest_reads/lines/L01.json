@@ -1,0 +1,1343 @@
+{
+ "lines": [
+  {
+   "id": "main-quest",
+   "name": "The Dragonborn",
+   "about": "Dragons have come back to Skyrim, and this is the story of the Dragonborn sent to stop Alduin, starting with a dragon attack on Helgen and running through Whiterun, High Hrothgar, the Blades and beyond. It has 19 story quests plus four side jobs for the Greybeards and the Blades; the records set no level for it.",
+   "getIn": {
+    "quest": "Unbound",
+    "who": "the character start choice",
+    "where": "Helgen, in Falkreath hold",
+    "how": "Pick the Dragonborn start (\"You are the Dragonborn of legend, saving the world from Alduin.\") at Helgen Keep, either at its start or its end, and escape the dragon attack.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Unbound",
+     "what": "Escape Helgen through the keep during a dragon attack, with Hadvar or Ralof.",
+     "where": "Helgen and Helgen Keep",
+     "needs": ""
+    },
+    {
+     "quest": "Before the Storm",
+     "what": "Go to Riverwood, then tell Jarl Balgruuf in Dragonsreach about the dragon.",
+     "where": "Riverwood and Dragonsreach, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Bleak Falls Barrow",
+     "what": "Fetch the Dragonstone from Bleak Falls Barrow for Farengar, the Jarl's court wizard.",
+     "where": "Bleak Falls Barrow, by Riverwood",
+     "needs": ""
+    },
+    {
+     "quest": "Dragon Rising",
+     "what": "Go with Irileth to the Western Watchtower, where a dragon is attacking, then report back to the Jarl.",
+     "where": "Western Watchtower, by Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "The Way of the Voice",
+     "what": "Climb from Ivarstead to High Hrothgar and train with the Greybeards.",
+     "where": "High Hrothgar",
+     "needs": ""
+    },
+    {
+     "quest": "The Horn of Jurgen Windcaller",
+     "what": "Retrieve the Horn of Jurgen Windcaller from Ustengrav for Arngeir.",
+     "where": "Ustengrav, by Morthal",
+     "needs": ""
+    },
+    {
+     "quest": "A Blade in the Dark",
+     "what": "Meet Delphine in the attic room of the Sleeping Giant Inn, then go to Kynesgrove and kill the dragon Sahloknir.",
+     "where": "Sleeping Giant Inn, Riverwood, and Kynesgrove",
+     "needs": ""
+    },
+    {
+     "quest": "Diplomatic Immunity",
+     "what": "Get into the Thalmor Embassy, either at the ambassador's party with Delphine's help or by storming it, and search it.",
+     "where": "Thalmor Embassy, Haafingar",
+     "needs": ""
+    },
+    {
+     "quest": "A Cornered Rat",
+     "what": "Find Esbern, a Blade hiding in the Ratway under Riften.",
+     "where": "The Ratway, Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Alduin's Wall",
+     "what": "Take Esbern to Delphine in Riverwood, then find Sky Haven Temple past the Forsworn camp at Karthspire.",
+     "where": "Sky Haven Temple, the Reach",
+     "needs": ""
+    },
+    {
+     "quest": "The Throat of the World",
+     "what": "Learn Clear Skies from the Greybeards and climb to Paarthurnax at the summit.",
+     "where": "Throat of the World",
+     "needs": ""
+    },
+    {
+     "quest": "Elder Knowledge",
+     "what": "Find the Elder Scroll, by way of the College of Winterhold, Septimus Signus, Alftand and Blackreach, at the Tower of Mzark.",
+     "where": "Tower of Mzark, Winterhold hold",
+     "needs": ""
+    },
+    {
+     "quest": "Alduin's Bane",
+     "what": "Read the Elder Scroll at the Time-Wound on the summit.",
+     "where": "Throat of the World",
+     "needs": ""
+    },
+    {
+     "quest": "The Fallen",
+     "what": "Find a way to trap a dragon in Dragonsreach and question it.",
+     "where": "Dragonsreach, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Season Unending",
+     "what": "Arrange a truce in the civil war at a council at High Hrothgar, so the Jarl of Whiterun will help.",
+     "where": "High Hrothgar",
+     "needs": "Only while the civil war is still being fought"
+    },
+    {
+     "quest": "The World-Eater's Eyrie",
+     "what": "Free Odahviing and let him fly you to Skuldafn.",
+     "where": "Skuldafn",
+     "needs": ""
+    },
+    {
+     "quest": "Sovngarde",
+     "what": "Cross the mist of Sovngarde to the Hall of Valor.",
+     "where": "Sovngarde",
+     "needs": ""
+    },
+    {
+     "quest": "Dragonslayer",
+     "what": "Help the heroes in the Hall of Valor drive off the mist and face Alduin.",
+     "where": "Sovngarde",
+     "needs": ""
+    },
+    {
+     "quest": "Paarthurnax",
+     "what": "Decide Paarthurnax's fate after Delphine and Esbern demand his death.",
+     "where": "Throat of the World",
+     "needs": ""
+    },
+    {
+     "quest": "The Words of Power",
+     "what": "A radiant job that can come up when you enter High Hrothgar: find a Word of Power in a dungeon the game picks. It isn't a step in the story.",
+     "where": "a dungeon with a word wall, chosen by the game",
+     "needs": ""
+    },
+    {
+     "quest": "Rebuilding the Blades",
+     "what": "Bring followers to Delphine to join the Blades.",
+     "where": "Sky Haven Temple, the Reach",
+     "needs": ""
+    },
+    {
+     "quest": "Dragon Hunting",
+     "what": "A radiant job from Esbern: kill the dragon in a lair the game picks and report back. It isn't a step in the story.",
+     "where": "a dragon lair chosen by the game",
+     "needs": "Ask Esbern about dragon lairs at the end of Rebuilding the Blades"
+    },
+    {
+     "quest": "Dragon Research",
+     "what": "Bring Esbern 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum.",
+     "where": "Sky Haven Temple, the Reach",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Unbound",
+     "options": [
+      "Enter the keep with Hadvar (Imperial); he sends you to his uncle Alvor in Riverwood",
+      "Enter the keep with Ralof (Stormcloak); he sends you to his sister Gerdur in Riverwood"
+     ]
+    },
+    {
+     "at": "Diplomatic Immunity",
+     "options": [
+      "Go to the ambassador's party as a guest, with Delphine and Malborn's help",
+      "Storm the Thalmor Embassy"
+     ]
+    },
+    {
+     "at": "Season Unending",
+     "options": [
+      "What you agree to at the peace council; the records name holds and two towns (Karthwasten and Darkwater Crossing) that can be traded, but not the terms"
+     ]
+    },
+    {
+     "at": "Paarthurnax",
+     "options": [
+      "Kill Paarthurnax, as the Blades ask",
+      "Spare him and talk Delphine and Esbern round"
+     ]
+    }
+   ],
+   "gives": [
+    "Thane of Whiterun, with Lydia as your housecarl (Dragon Rising)",
+    "Blade of Whiterun, a greatsword, and enchanted armour from Requiem's reward list (Dragon Rising)",
+    "Shouts: words of Unrelenting Force and Whirlwind Sprint (The Way of the Voice), a word from Wulfgar (The Horn of Jurgen Windcaller), Clear Skies and a word of Fire Breath (The Throat of the World), Dragonrend (Alduin's Bane) and Call Dragon (The Fallen)",
+    "The power of the dragons you kill at the Western Watchtower and at Kynesgrove (Dragon Rising, A Blade in the Dark)",
+    "Elder Scroll (Dragon) (Elder Knowledge)"
+   ],
+   "closes": [
+    "Paarthurnax dies if you kill him (Paarthurnax)",
+    "Alduin is destroyed and the main story ends (Dragonslayer)",
+    "Helgen as a living town: its inn, houses and shops can be shut away; the records don't show when (Unbound)",
+    "Season Unending is held between the civil war's two sides, so it overlaps the civil war line; what the truce changes isn't in the records"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No minimum level or level gate for this line is in the records (no GetLevel condition on its opening), so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn",
+     "why": "A note in the Resting Pilgrim in Helgen says talking to Matlara about staying longer may start something; whether that is a way in from other starts or part of the Dragonborn start isn't in the records. How the line begins after other character starts isn't shown either."
+    },
+    {
+     "field": "order",
+     "why": "Paarthurnax: no record shows which earlier quest must be done before Delphine and Esbern turn on him."
+    },
+    {
+     "field": "order",
+     "why": "Rebuilding the Blades and Dragon Research: nothing in the records shows what starts them; they likely follow Alduin's Wall, when Delphine and Esbern move into Sky Haven Temple. Paarthurnax Quest Expansion edits them, so the Paarthurnax choice may lock or delay them."
+    },
+    {
+     "field": "order",
+     "why": "Season Unending: if the civil war is already over, the truce step may be skipped; the script that decides this isn't in the records."
+    },
+    {
+     "field": "gives",
+     "why": "The Jarl's armour rewards in Before the Storm and Dragon Rising are Requiem leveled lists; which piece you get isn't shown."
+    },
+    {
+     "field": "closes",
+     "why": "If you spare Paarthurnax, whether the Blades refuse to help you for good or only until you talk them round isn't in the records."
+    }
+   ],
+   "evidence": [
+    "quests.json line main-quest: name The Dragonborn, category main, 23 quests in this order: MQ101, MQ102, MQ103, MQ104, MQ105, MQ105Ustengrav, MQ106, MQ201, MQ202, MQ203, MQ204, MQ205, MQ206, MQ301, MQ302, MQ303, MQ304, MQ305, MQPaarthurnax, FreeformHighHrothgarA, FreeformSkyhavenTempleA, FreeformSkyHavenTempleB, FreeformSkyHavenTempleD",
+    "Unbound (MQ101): checked/000.json",
+    "Before the Storm (MQ102): checked/000.json",
+    "Bleak Falls Barrow (MQ103): checked/000.json",
+    "Dragon Rising (MQ104): checked/000.json",
+    "The Way of the Voice (MQ105): checked/000.json",
+    "The Horn of Jurgen Windcaller (MQ105Ustengrav): checked/000.json",
+    "A Blade in the Dark (MQ106): checked/000.json",
+    "Diplomatic Immunity (MQ201): checked/000.json",
+    "A Cornered Rat (MQ202): checked/000.json",
+    "Alduin's Wall (MQ203): checked/000.json",
+    "The Throat of the World (MQ204): checked/001.json",
+    "Elder Knowledge (MQ205): checked/001.json",
+    "Alduin's Bane (MQ206): checked/001.json",
+    "The Fallen (MQ301): checked/001.json",
+    "Season Unending (MQ302): checked/001.json",
+    "The World-Eater's Eyrie (MQ303): checked/001.json",
+    "Sovngarde (MQ304): checked/001.json",
+    "Dragonslayer (MQ305): checked/001.json",
+    "Paarthurnax (MQPaarthurnax): checked/001.json",
+    "The Words of Power (FreeformHighHrothgarA): checked/001.json",
+    "Rebuilding the Blades (FreeformSkyhavenTempleA): checked/002.json",
+    "Dragon Hunting (FreeformSkyHavenTempleB): checked/002.json",
+    "Dragon Research (FreeformSkyHavenTempleD): checked/002.json",
+    "quest_starts_raw line main-quest: no GetLevel or minimum-level condition on its opening",
+    "Unbound rewards/choices/closes and Dragonborn start text: checked/000.json MQ101 (starts_raw Dragonborn start)",
+    "Thane, Lydia, Blade of Whiterun: checked/000.json MQ104 rewards",
+    "Shouts: checked/000.json MQ105, MQ105Ustengrav; checked/001.json MQ204, MQ206, MQ301 rewards",
+    "Elder Scroll (Dragon): checked/001.json MQ205 rewards",
+    "Paarthurnax choices and closes: checked/001.json MQPaarthurnax",
+    "Season Unending truce terms and towns: checked/001.json MQ302 choices/unsure",
+    "Diplomatic Immunity storming option: checked/000.json MQ201 choices",
+    "Alduin destroyed: checked/001.json MQ305 closes"
+   ]
+  },
+  {
+   "id": "dawnguard",
+   "name": "Dawnguard",
+   "about": "Vampires are stirring in Skyrim, and this story has you choose between the Dawnguard vampire hunters at Fort Dawnguard, southeast of Riften, and the vampire court of Lord Harkon at Castle Volkihar. Each side has about a dozen story quests, with radiant jobs for the side you choose; the records set no level for it.",
+   "getIn": {
+    "quest": "Dawnguard",
+    "who": "not named in the records",
+    "where": "Fort Dawnguard, inside Dayspring Canyon southeast of Riften",
+    "how": "Once you hear that the Dawnguard vampire hunters are looking for recruits, the journal sends you to speak with their leader at Fort Dawnguard.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Dawnguard",
+     "what": "Hear that the Dawnguard are recruiting and go to Fort Dawnguard to speak with their leader.",
+     "where": "Fort Dawnguard, Dayspring Canyon",
+     "needs": ""
+    },
+    {
+     "quest": "A New Order",
+     "what": "Report to Isran after refusing Harkon, then recruit Sorine Jurard, Gunmar and Florentius Baenius.",
+     "where": "Fort Dawnguard, a Dwemer ruin in the Reach and Ruunvald Excavation",
+     "needs": "Refuse Harkon's gift in Bloodline"
+    },
+    {
+     "quest": "Bolstering the Ranks",
+     "what": "Rescue Florentius Baenius, a former priest of Arkay, from Ruunvald Excavation so he joins the Dawnguard.",
+     "where": "Ruunvald Excavation, the Rift",
+     "needs": ""
+    },
+    {
+     "quest": "Hide and Seek",
+     "what": "A radiant Dawnguard job: quietly kill a vampire posing as a local in a town the game picks.",
+     "where": "a town the game picks",
+     "needs": "On the Dawnguard side (you refused Harkon in Bloodline)"
+    },
+    {
+     "quest": "Cleansing Light",
+     "what": "A radiant Dawnguard job: kill the boss of a dungeon the game picks.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Preemptive Strike",
+     "what": "A radiant Dawnguard job: kill a vampire in a dungeon before it turns its allies into vampires.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Hunting the Monster",
+     "what": "A radiant Dawnguard job: track a vampire through its contact in a town, then kill it in its lair.",
+     "where": "a town and a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Ancient Technology",
+     "what": "A radiant Dawnguard job for Sorine Jurard: fetch a piece of old technology from a dungeon for her crossbow work.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Rescue",
+     "what": "A radiant Dawnguard job: free someone a vampire has kidnapped.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "A Jarl's Justice",
+     "what": "A radiant Dawnguard job: warn a Jarl about a vampire posing as a visiting advisor and destroy it.",
+     "where": "a hold capital the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Lost Relic",
+     "what": "A radiant Dawnguard job: recover an old Dawnguard relic from a dungeon.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "The Hunt",
+     "what": "A radiant job for Harkon's court from Fura Bloodmouth or Garan Marethi: kill a Dawnguard member hiding in a town.",
+     "where": "a town the game picks",
+     "needs": "In Harkon's court (you accepted his gift in Bloodline)"
+    },
+    {
+     "quest": "Culling the Beast",
+     "what": "A radiant job for Harkon's court: kill the creature in a dungeon the game picks.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Deceiving the Herd",
+     "what": "A radiant job for Harkon's court: kill someone in a city's streets and plant a letter blaming the Dawnguard.",
+     "where": "a city the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Protecting the Bloodline",
+     "what": "A radiant job for Harkon's court: kill a rogue vampire before it turns its allies.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Ancient Power",
+     "what": "A radiant job for Harkon's court: fetch old remains from a dungeon to strengthen the Bloodstone Chalice.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "The Gift",
+     "what": "A radiant job for Harkon's court: turn your spouse into a vampire.",
+     "where": "wherever your spouse lives",
+     "needs": "Being married"
+    },
+    {
+     "quest": "New Allegiances",
+     "what": "A radiant job for Harkon's court: turn a chosen person into a vampire.",
+     "where": "a town the game picks",
+     "needs": "The Vampire's Seduction power"
+    },
+    {
+     "quest": "Rings of Blood Magic",
+     "what": "A radiant job for Harkon's court: fetch the Ring of the Beast and the Ring of the Erudite from two dungeons.",
+     "where": "two dungeons the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Amulets of Night Power",
+     "what": "A radiant job for Harkon's court: fetch the Amulet of Bats and the Amulet of the Gargoyle.",
+     "where": "places the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Destroying the Dawnguard",
+     "what": "A job from Garan Marethi: attack Fort Dawnguard and kill its leaders.",
+     "where": "Fort Dawnguard, Dayspring Canyon",
+     "needs": ""
+    },
+    {
+     "quest": "The Bloodstone Chalice",
+     "what": "Fill the Bloodstone Chalice at the bloodspring in Redwater Den and bring it back to Garan Marethi.",
+     "where": "Redwater Den, the Rift",
+     "needs": "Accept Harkon's gift in Bloodline"
+    },
+    {
+     "quest": "Awakening",
+     "what": "Isran sends you to Dimhollow Crypt to find out what the vampires are looking for.",
+     "where": "Dimhollow Crypt, the Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Bloodline",
+     "what": "Take Serana home to Castle Volkihar and answer her father Lord Harkon's offer.",
+     "where": "Castle Volkihar",
+     "needs": ""
+    },
+    {
+     "quest": "Prophet",
+     "what": "The Dawnguard version: follow the moth priest's trail from the Winking Skeever and Dragon Bridge and rescue him from Forebears' Holdout.",
+     "where": "Dragon Bridge and Forebears' Holdout",
+     "needs": "Refuse Harkon's gift in Bloodline"
+    },
+    {
+     "quest": "Prophet",
+     "what": "Harkon's court version: follow the moth priest's trail from the Winking Skeever and Dragon Bridge and capture him at Forebears' Holdout.",
+     "where": "Dragon Bridge and Forebears' Holdout",
+     "needs": "Accept Harkon's gift in Bloodline; the Vampire's Seduction power for the moth priest"
+    },
+    {
+     "quest": "Chasing Echoes",
+     "what": "Search Castle Volkihar with Serana for the trail of her mother Valerica.",
+     "where": "Castle Volkihar",
+     "needs": ""
+    },
+    {
+     "quest": "Beyond Death",
+     "what": "Find Valerica in the Soul Cairn and recover the Elder Scroll (Blood).",
+     "where": "Soul Cairn",
+     "needs": "To pass the portal, become a vampire or let Serana partly soul trap you"
+    },
+    {
+     "quest": "Unseen Visions",
+     "what": "Do the moth priests' ritual in the Ancestor Glade so you can read the Elder Scrolls yourself.",
+     "where": "Ancestor Glade, by Falkreath",
+     "needs": "All three Elder Scrolls: Sun, Dragon and Blood"
+    },
+    {
+     "quest": "Touching the Sky",
+     "what": "Go through Darkfall Cave into the Forgotten Vale for Auriel's Bow.",
+     "where": "Darkfall Cave and the Forgotten Vale",
+     "needs": ""
+    },
+    {
+     "quest": "Kindred Judgment",
+     "what": "Confront Lord Harkon at Castle Volkihar with Auriel's Bow.",
+     "where": "Castle Volkihar",
+     "needs": ""
+    },
+    {
+     "quest": "Seeking Disclosure",
+     "what": "Find the Elder Scroll (Dragon) and the Elder Scroll (Blood) and bring them to Dexion Evicus.",
+     "where": "Fort Dawnguard or Castle Volkihar",
+     "needs": ""
+    },
+    {
+     "quest": "Scroll Scouting",
+     "what": "Ask Urag gro-Shub in the Arcanaeum about the Elder Scroll (Dragon), or buy it back from him if you sold it.",
+     "where": "The Arcanaeum, College of Winterhold",
+     "needs": "No Elder Scroll (Dragon) in hand"
+    },
+    {
+     "quest": "Impatience of a Saint",
+     "what": "Find the ten pages of Saint Jiub's Opus for Jiub in the Soul Cairn.",
+     "where": "Soul Cairn",
+     "needs": ""
+    },
+    {
+     "quest": "Soul Cairn Horse Quest",
+     "what": "Find Arvak's skull in the Soul Cairn for a rider's soul there.",
+     "where": "Soul Cairn",
+     "needs": ""
+    },
+    {
+     "quest": "Durnehviir",
+     "what": "Make a pact with the dragon Durnehviir in the Soul Cairn and summon him in Skyrim.",
+     "where": "Durnehviir's lair in the Soul Cairn",
+     "needs": ""
+    },
+    {
+     "quest": "Durnehviir Misc Objective Handler",
+     "what": "A journal objective pointing you to Durnehviir's lair in the Soul Cairn.",
+     "where": "Soul Cairn",
+     "needs": ""
+    },
+    {
+     "quest": "Forgotten Vale Books Quest",
+     "what": "Bring the Ancient Falmer Tomes from the Forgotten Vale to Urag gro-Shub.",
+     "where": "the Forgotten Vale and the Arcanaeum",
+     "needs": ""
+    },
+    {
+     "quest": "Power of the Blood",
+     "what": "A tutorial for your first Vampire Lord transformation; LoreRim likely skips it.",
+     "where": "",
+     "needs": "Becoming a Vampire Lord"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Bloodline",
+     "options": [
+      "Accept Lord Harkon's gift of his blood: you become a vampire and join his court",
+      "Refuse it: you are sent away and return to the Dawnguard"
+     ]
+    },
+    {
+     "at": "Chasing Echoes",
+     "options": [
+      "Let Serana turn you into a vampire to pass the portal",
+      "Let Serana partly soul trap you and pass it still mortal"
+     ]
+    },
+    {
+     "at": "Kindred Judgment",
+     "options": [
+      "Dawnguard side: rally the Dawnguard with Isran and attack Castle Volkihar",
+      "Harkon's court side: confront Harkon yourself"
+     ]
+    }
+   ],
+   "gives": [
+    "Harkon's gift: you become a vampire and join his court, if you accept (Bloodline)",
+    "Auriel's Bow (Touching the Sky)",
+    "Elder Scroll (Blood) (Beyond Death)",
+    "Summon Durnehviir and all three words of Soul Tear, and Durnehviir fights at your side when summoned (Durnehviir)",
+    "Summon Arvak (Soul Cairn Horse Quest)",
+    "Locket of Saint Jiub: \"Saint Jiub's grace invigorates your muscles, increasing your Stamina and Carry Weight capacity by 50 points.\" (Impatience of a Saint)",
+    "Sorine Jurard, Gunmar and Florentius Baenius join the Dawnguard at Fort Dawnguard (A New Order, Bolstering the Ranks)"
+   ],
+   "closes": [
+    "Bloodline sets which side you play for the rest of the line: Harkon's court or the Dawnguard",
+    "Lord Harkon dies (Kindred Judgment)",
+    "Arch-Curate Vyrthur dies (Touching the Sky)",
+    "Stalf and Salonia Caelia die (The Bloodstone Chalice)",
+    "The three Boneyard Keepers die (Beyond Death)",
+    "Dexion Evicus is left blind and can't read the scrolls any more (Seeking Disclosure)",
+    "On Harkon's side: the Dawnguard leaders are targets in Destroying the Dawnguard (Isran, Sorine Jurard, Gunmar, Florentius Baenius, Agmaer, Durak, Celann and Beleval)",
+    "Your spouse becomes a vampire (The Gift); the person you bite becomes a vampire (New Allegiances)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No minimum level or level gate for this line is in the records (the opening has no dialogue or event conditions), so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn",
+     "why": "Who first tells you the Dawnguard are recruiting isn't in the records; the opening quest has no start line, event or script in these files."
+    },
+    {
+     "field": "order",
+     "why": "The radiant jobs' offer conditions aren't in the records; which side each belongs to comes from the job system that starts it. For New Allegiances, Rings of Blood Magic, Amulets of Night Power and Destroying the Dawnguard, nothing limits them to Harkon's court, though they are handed out at Castle Volkihar."
+    },
+    {
+     "field": "order",
+     "why": "Whether the radiant jobs repeat isn't shown; the quest records carry no repeat flag. Their payment is likely gold and a leveled list held by the job system, but which job pays what isn't recorded."
+    },
+    {
+     "field": "order",
+     "why": "Both Prophet versions likely follow A New Order or The Bloodstone Chalice; their journals only say \"when I returned\", and the records don't show the link. Bolstering the Ranks overlaps A New Order's own Florentius step in a way the records don't show."
+    },
+    {
+     "field": "order",
+     "why": "Power of the Blood: Skip Vampire Lord Tutorial edits it last, but the change isn't shown, so that it's skipped comes from that plugin's name."
+    },
+    {
+     "field": "branches",
+     "why": "Whether you can change sides after Bloodline isn't in the records. Whether a player who is already a vampire gets the Chasing Echoes choice isn't shown."
+    },
+    {
+     "field": "gives",
+     "why": "A Vampire Lord Ornament is held by Kindred Judgment's script, and the Dawnguard War Axe by Bloodline's; whether either is given to you, and on which side, isn't shown. Whether you keep the rings and amulets from the court's jobs isn't shown either."
+    },
+    {
+     "field": "closes",
+     "why": "In Destroying the Dawnguard, whether every one of the eight must die, or whether any are protected, isn't in the records."
+    }
+   ],
+   "evidence": [
+    "quests.json line dawnguard: name Dawnguard, category main, 39 quests in this order: DLC1VQ01MiscObjective, DLC1HunterBaseIntro, DLC1HunterBaseStage2, DLC1RH01, DLC1RH02, DLC1RH03, DLC1RH04, DLC1RH05, DLC1RH06, DLC1RH07, DLC1RH08, DLC1RV01, DLC1RV02, DLC1RV03, DLC1RV04, DLC1RV05, DLC1RV06, DLC1RV07, DLC1RV08, DLC1RV09, DLC1RV10, DLC1VampireBaseIntro, DLC1VQ01, DLC1VQ02, DLC1VQ03Hunter, DLC1VQ03Vampire, DLC1VQ04, DLC1VQ05, DLC1VQ06, DLC1VQ07, DLC1VQ08, DLC1VQElder, DLC1VQElderHandler, DLC1VQSaint, DLC01SoulCairnHorseQuest2, DLC1VQDragon, DLC1VQDragonMisc, DLC1VQFVBooks, DLC1VampireTutorial",
+    "Dawnguard (DLC1VQ01MiscObjective): checked/002.json",
+    "A New Order (DLC1HunterBaseIntro): checked/002.json",
+    "Bolstering the Ranks (DLC1HunterBaseStage2): checked/002.json",
+    "Hide and Seek (DLC1RH01): checked/002.json",
+    "Cleansing Light (DLC1RH02): checked/002.json",
+    "Preemptive Strike (DLC1RH03): checked/002.json",
+    "Hunting the Monster (DLC1RH04): checked/002.json",
+    "Ancient Technology (DLC1RH05): checked/003.json",
+    "Rescue (DLC1RH06): checked/003.json",
+    "A Jarl's Justice (DLC1RH07): checked/003.json",
+    "Lost Relic (DLC1RH08): checked/003.json",
+    "The Hunt (DLC1RV01): checked/003.json",
+    "Culling the Beast (DLC1RV02): checked/003.json",
+    "Deceiving the Herd (DLC1RV03): checked/003.json",
+    "Protecting the Bloodline (DLC1RV04): checked/003.json",
+    "Ancient Power (DLC1RV05): checked/003.json",
+    "The Gift (DLC1RV06): checked/003.json",
+    "New Allegiances (DLC1RV07): checked/004.json",
+    "Rings of Blood Magic (DLC1RV08): checked/004.json",
+    "Amulets of Night Power (DLC1RV09): checked/004.json",
+    "Destroying the Dawnguard (DLC1RV10): checked/004.json",
+    "The Bloodstone Chalice (DLC1VampireBaseIntro): checked/004.json",
+    "Awakening (DLC1VQ01): checked/004.json",
+    "Bloodline (DLC1VQ02): checked/004.json",
+    "Prophet (DLC1VQ03Hunter): checked/004.json",
+    "Prophet (DLC1VQ03Vampire): checked/004.json",
+    "Chasing Echoes (DLC1VQ04): checked/004.json",
+    "Beyond Death (DLC1VQ05): checked/005.json",
+    "Unseen Visions (DLC1VQ06): checked/005.json",
+    "Touching the Sky (DLC1VQ07): checked/005.json",
+    "Kindred Judgment (DLC1VQ08): checked/005.json",
+    "Seeking Disclosure (DLC1VQElder): checked/005.json",
+    "Scroll Scouting (DLC1VQElderHandler): checked/005.json",
+    "Impatience of a Saint (DLC1VQSaint): checked/005.json",
+    "Soul Cairn Horse Quest (DLC01SoulCairnHorseQuest2): checked/005.json",
+    "Durnehviir (DLC1VQDragon): checked/005.json",
+    "Durnehviir Misc Objective Handler (DLC1VQDragonMisc): checked/005.json",
+    "Forgotten Vale Books Quest (DLC1VQFVBooks): checked/006.json",
+    "Power of the Blood (DLC1VampireTutorial): checked/006.json",
+    "quest_starts_raw line dawnguard: no GetLevel or minimum-level condition on its opening",
+    "Bloodline branch and closes: checked/004.json DLC1VQ02 choices/closes",
+    "Chasing Echoes choice: checked/004.json DLC1VQ04 choices",
+    "Kindred Judgment sides, Harkon dies: checked/005.json DLC1VQ08",
+    "Auriel's Bow, Vyrthur dies: checked/005.json DLC1VQ07",
+    "Elder Scroll (Blood), Keepers die: checked/005.json DLC1VQ05",
+    "Durnehviir shouts: checked/005.json DLC1VQDragon; Summon Arvak: DLC01SoulCairnHorseQuest2; Locket of Saint Jiub: DLC1VQSaint",
+    "Stalf and Salonia Caelia: checked/004.json DLC1VampireBaseIntro closes",
+    "Dawnguard leaders targets: checked/004.json DLC1RV10 closes",
+    "Dexion blind: checked/005.json DLC1VQElder closes",
+    "Florentius joins: checked/002.json DLC1HunterBaseStage2 rewards; Sorine and Gunmar recruited: DLC1HunterBaseIntro",
+    "Radiant job sides: checked/002.json DLC1RH01-04, checked/003.json DLC1RH05-08, DLC1RV01-06, checked/004.json DLC1RV07-10"
+   ]
+  },
+  {
+   "id": "dragonborn",
+   "name": "Dragonborn",
+   "about": "A story on the island of Solstheim, reached by boat from Windhelm, about another Dragonborn named Miraak and the Black Books that lead into Apocrypha. It has seven story quests and starts when Miraak's cultists attack you in Skyrim; the records set no level for it.",
+   "getIn": {
+    "quest": "Dragonborn",
+    "who": "Miraak's cultists",
+    "where": "out in Skyrim, wherever they ambush you",
+    "how": "When cultists attack you, search their bodies and read the Cultists' Orders; they send you to the boat at Windhelm that goes to Solstheim.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Dragonborn",
+     "what": "Take the boat from Windhelm to Raven Rock, ask the townsfolk about Miraak and find his temple.",
+     "where": "Raven Rock and the Temple of Miraak, Solstheim",
+     "needs": ""
+    },
+    {
+     "quest": "The Temple of Miraak",
+     "what": "Meet Frea at the Temple of Miraak and search it for the source of Miraak's power.",
+     "where": "Temple of Miraak, Solstheim",
+     "needs": ""
+    },
+    {
+     "quest": "The Fate of the Skaal",
+     "what": "Go with Frea to Skaal Village, learn the word at Saering's Watch and free the Wind Stone with Bend Will.",
+     "where": "Skaal Village, Saering's Watch and the Wind Stone",
+     "needs": ""
+    },
+    {
+     "quest": "Cleansing the Stones",
+     "what": "Free the Water, Earth, Beast and Sun Stones with Bend Will for Storn Crag-Strider.",
+     "where": "the stones around Raven Rock and Skaal Village",
+     "needs": ""
+    },
+    {
+     "quest": "The Path of Knowledge",
+     "what": "Ask Neloth at Tel Mithryn about the Black Books, then recover one from the Dwemer city of Nchardak.",
+     "where": "Tel Mithryn and Nchardak, Solstheim",
+     "needs": ""
+    },
+    {
+     "quest": "The Gardener of Men",
+     "what": "Read the Black Book in Nchardak, meet Hermaeus Mora in Apocrypha and bring Storn what he asks.",
+     "where": "Nchardak, Apocrypha and Skaal Village",
+     "needs": ""
+    },
+    {
+     "quest": "At the Summit of Apocrypha",
+     "what": "Go to Apocrypha and make for Miraak's temple to face him.",
+     "where": "Apocrypha",
+     "needs": ""
+    },
+    {
+     "quest": "Cultists vs Player",
+     "what": "The cultist ambush out in Skyrim that likely sets off Dragonborn: search the cultists' bodies. It isn't a step of its own.",
+     "where": "the roads of Skyrim",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Bend Will (Shout), all three words: one from Saering's Watch (The Fate of the Skaal), one from Hermaeus Mora and one when Storn reads the book (The Gardener of Men)",
+    "Forging Solstheim and Dunmer armour (Bonemold, Chitin, Netch Leather, Ashlander, Redoran, Indoril and more) once you have the Craftsmanship perk (Dragonborn)"
+   ],
+   "closes": [
+    "Storn Crag-Strider dies (The Gardener of Men)",
+    "Miraak dies (At the Summit of Apocrypha)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No minimum level or level gate for this line is in the records; the level or timing at which the cultist ambush fires isn't recorded (Requiem and LoreRim's own plugins edit the encounter, but the changes aren't shown)."
+    },
+    {
+     "field": "getIn",
+     "why": "Dragonborn has a second journal line for arriving on Solstheim, so you may be able to pick the line up by sailing there without the note; the trigger isn't in the records. No record links the ambush encounter to the quest directly."
+    },
+    {
+     "field": "order",
+     "why": "The Temple of Miraak has two openings (reaching the temple, or Storn sending you after the Skaal are freed); what triggers each isn't shown."
+    },
+    {
+     "field": "gives",
+     "why": "Which point in Dragonborn opens the Solstheim and Dunmer armour recipes isn't recorded. Whether Waking Dreams or Miraak's mask are given to you isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line dragonborn: name Dragonborn, category main, 8 quests in this order: DLC2MQ01, DLC2MQ02, DLC2MQ03, DLC2MQ03B, DLC2MQ04, DLC2MQ05, DLC2MQ06, DLC2WE09",
+    "Dragonborn (DLC2MQ01): checked/006.json",
+    "The Temple of Miraak (DLC2MQ02): checked/006.json",
+    "The Fate of the Skaal (DLC2MQ03): checked/006.json",
+    "Cleansing the Stones (DLC2MQ03B): checked/006.json",
+    "The Path of Knowledge (DLC2MQ04): checked/006.json",
+    "The Gardener of Men (DLC2MQ05): checked/006.json",
+    "At the Summit of Apocrypha (DLC2MQ06): checked/006.json",
+    "Cultists vs Player (DLC2WE09): checked/006.json",
+    "quest_starts_raw line dragonborn: no GetLevel or minimum-level condition on its opening",
+    "Bend Will words: checked/006.json DLC2MQ03, DLC2MQ05 rewards",
+    "Armour recipes: checked/006.json DLC2MQ01 opens (recipes_raw GetStageDone Dragonborn.esm:017F8E + Craftsmanship)",
+    "Storn dies: checked/006.json DLC2MQ05 closes; Miraak dies: DLC2MQ06 closes",
+    "Cultist ambush link unsure: checked/006.json DLC2WE09, DLC2MQ01 unsure"
+   ]
+  },
+  {
+   "id": "companions",
+   "name": "The Companions",
+   "about": "The Companions are a guild of warriors based at Jorrvaskr in Whiterun; you join them, take jobs from their members and rise through their ranks. The story has seven quests, with radiant jobs from Aela, Farkas, Skjor and Vilkas alongside; the records set no level for it.",
+   "getIn": {
+    "quest": "Take Up Arms",
+    "who": "Aela the Huntress, Farkas, Skjor or Vilkas, then Kodlak Whitemane",
+    "where": "Jorrvaskr, Whiterun; Kodlak is in his quarters downstairs at the end of the hall",
+    "how": "Ask one of the Companions about joining; they send you to Kodlak, who lets you join if you handle some first tasks.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Take Up Arms",
+     "what": "Ask to join, spar with Vilkas in the yard and take his sword to Eorlund Gray-Mane at the Skyforge.",
+     "where": "Jorrvaskr and the Skyforge, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Proving Honor",
+     "what": "Fetch a fragment of Wuuthrad from Dustman's Cairn while a Companion watches you.",
+     "where": "Dustman's Cairn, Whiterun hold",
+     "needs": ""
+    },
+    {
+     "quest": "Brotherhood",
+     "what": "Follow the Companion who greets you on your return to your induction.",
+     "where": "Jorrvaskr, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "The Silver Hand",
+     "what": "Meet Skjor beneath the Skyforge at night, then attack the Silver Hand at Gallows Rock with Aela and Skjor.",
+     "where": "the Underforge and Gallows Rock, Eastmarch",
+     "needs": ""
+    },
+    {
+     "quest": "Blood's Honor",
+     "what": "Bring Kodlak Whitemane the head of a Glenmoril Witch from Glenmoril Coven.",
+     "where": "Glenmoril Coven, Falkreath hold",
+     "needs": ""
+    },
+    {
+     "quest": "Purity of Revenge",
+     "what": "Go with Vilkas to Driftshade Sanctuary, the Silver Hand stronghold, for the fragments of Wuuthrad.",
+     "where": "Driftshade Sanctuary, Winterhold hold",
+     "needs": ""
+    },
+    {
+     "quest": "Glory of the Dead",
+     "what": "Have Eorlund mend Wuuthrad at the Skyforge and take it to Ysgramor's Tomb.",
+     "where": "Whiterun and Ysgramor's Tomb, Winterhold hold",
+     "needs": "A Glenmoril Witch's head from Blood's Honor"
+    },
+    {
+     "quest": "Animal Extermination",
+     "what": "A radiant job from Aela: kill an animal that got into a home in a town she picks.",
+     "where": "a town Aela picks",
+     "needs": "Membership of the Companions"
+    },
+    {
+     "quest": "Animal Extermination",
+     "what": "A radiant job from Aela: clear out an animal den she picks.",
+     "where": "an animal den Aela picks",
+     "needs": ""
+    },
+    {
+     "quest": "Animal Pelt Collection",
+     "what": "A radiant job from Aela: bring back the pelts she asks for.",
+     "where": "",
+     "needs": ""
+    },
+    {
+     "quest": "Hired Muscle",
+     "what": "A radiant job from Farkas: rough up a troublemaker in the town he names, without killing them.",
+     "where": "a town Farkas picks",
+     "needs": ""
+    },
+    {
+     "quest": "Trouble in Skyrim",
+     "what": "A radiant job from Farkas: kill the leader of a hideout causing trouble in one of the holds.",
+     "where": "a hideout Farkas picks",
+     "needs": ""
+    },
+    {
+     "quest": "Family Heirloom",
+     "what": "A radiant job from Skjor, or from Vilkas once Skjor is dead: take back a family's stolen valuable from a hideout.",
+     "where": "a hideout the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Escaped Criminal",
+     "what": "A radiant job from Skjor, or from Vilkas once Skjor is dead: track down and kill an escaped criminal on the roads of a hold.",
+     "where": "a hold the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Rescue Mission",
+     "what": "A radiant job from Vilkas: rescue a captive from a lair and see them home alive.",
+     "where": "a lair the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Striking the Heart",
+     "what": "A radiant job from Aela against the Silver Hand: kill a lieutenant at a camp she names.",
+     "where": "a Silver Hand camp Aela picks",
+     "needs": "Finish The Silver Hand"
+    },
+    {
+     "quest": "Stealing Plans",
+     "what": "A radiant job from Aela against the Silver Hand: steal their plans from a lieutenant's camp.",
+     "where": "a Silver Hand camp Aela picks",
+     "needs": ""
+    },
+    {
+     "quest": "Retrieval",
+     "what": "A radiant job from Aela against the Silver Hand: take back a fragment of Wuuthrad from one of their camps.",
+     "where": "a Silver Hand camp Aela picks",
+     "needs": ""
+    },
+    {
+     "quest": "Totems of Hircine",
+     "what": "A radiant job from Aela: fetch a Totem of Hircine from a dungeon with her and set it in the Underforge.",
+     "where": "a dungeon Aela picks, and the Underforge",
+     "needs": ""
+    },
+    {
+     "quest": "Purity",
+     "what": "Help Farkas or Vilkas be cured the way Kodlak was, with a Glenmoril Witch's head at Ysgramor's Tomb.",
+     "where": "Glenmoril Coven and Ysgramor's Tomb",
+     "needs": "Finish Glory of the Dead"
+    },
+    {
+     "quest": "Dragon Seekers",
+     "what": "A radiant job from Vilkas or Farkas: kill a dragon with him at a lair the game picks.",
+     "where": "a dragon lair the game picks",
+     "needs": "From Vilkas only once Skjor is dead"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Purity",
+     "options": [
+      "Cure Vilkas",
+      "Cure Farkas"
+     ]
+    }
+   ],
+   "gives": [
+    "Membership of the Companions, with a bed in Jorrvaskr (Take Up Arms)",
+    "Beast Form, at the blood ritual where you join the Circle and become a werewolf (The Silver Hand)",
+    "Wuuthrad, a battleaxe (Glory of the Dead)",
+    "Shield of Ysgramor (Glory of the Dead)",
+    "Harbinger of the Companions (Glory of the Dead)"
+   ],
+   "closes": [
+    "Skjor dies at the Silver Hand stronghold (The Silver Hand)",
+    "Kodlak Whitemane is killed by the Silver Hand (Blood's Honor)",
+    "The brother you cure is no longer a werewolf (Purity)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No minimum level for this line is in the records, so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn",
+     "why": "A dialogue mod puts a check on some opening lines: one of One-Handed, Two-Handed, Archery or Block at 30 or more, or Health or Stamina at 150 or more, with LoreRim's dialogue patch keeping it. The line text isn't in the records, so whether this stops you joining is unsettled; Farkas, Skjor and Vilkas also have lines that send you to Kodlak."
+    },
+    {
+     "field": "order",
+     "why": "How many jobs you must do before Proving Honor, and how many of Aela's Silver Hand jobs before Blood's Honor, isn't in the records. The radiant jobs' offer conditions aren't recorded, and whether they repeat isn't shown."
+    },
+    {
+     "field": "order",
+     "why": "Totems of Hircine lists no requirement; the totem goes to the Underforge, which you first enter in The Silver Hand."
+    },
+    {
+     "field": "branches",
+     "why": "Whether you can turn down the blood ritual in The Silver Hand isn't shown. Whether both brothers can be cured in turn in Purity isn't shown."
+    },
+    {
+     "field": "gives",
+     "why": "The Silver Hand's script holds one Skyforge Steel weapon per weapon type; how one is picked or when it's given isn't shown. The Companions' payment for jobs isn't recorded."
+    }
+   ],
+   "evidence": [
+    "quests.json line companions: name The Companions, category guilds, 21 quests in this order: C00, C01, C02, C03, C04, C05, C06, CR01, CR02, CR03, CR04, CR05, CR06, CR07, CR08, CR09, CR10, CR11, CR12, CR13, CR14",
+    "Take Up Arms (C00): checked/007.json",
+    "Proving Honor (C01): checked/007.json",
+    "Brotherhood (C02): checked/007.json",
+    "The Silver Hand (C03): checked/007.json",
+    "Blood's Honor (C04): checked/007.json",
+    "Purity of Revenge (C05): checked/007.json",
+    "Glory of the Dead (C06): checked/007.json",
+    "Animal Extermination (CR01): checked/007.json",
+    "Animal Extermination (CR02): checked/007.json",
+    "Animal Pelt Collection (CR03): checked/007.json",
+    "Hired Muscle (CR04): checked/008.json",
+    "Trouble in Skyrim (CR05): checked/008.json",
+    "Family Heirloom (CR06): checked/008.json",
+    "Escaped Criminal (CR07): checked/008.json",
+    "Rescue Mission (CR08): checked/008.json",
+    "Striking the Heart (CR09): checked/008.json",
+    "Stealing Plans (CR10): checked/008.json",
+    "Retrieval (CR11): checked/008.json",
+    "Totems of Hircine (CR12): checked/008.json",
+    "Purity (CR13): checked/008.json",
+    "Dragon Seekers (CR14): checked/009.json",
+    "quest_starts_raw line companions: no GetLevel or minimum-level condition on its opening",
+    "Joining and bed: checked/007.json C00 rewards; Aela opening-line skill check: C00 unsure (NGCDT conditions)",
+    "Beast Form, Skjor dies: checked/007.json C03 rewards/closes",
+    "Kodlak killed: checked/007.json C04 closes",
+    "Wuuthrad, Shield of Ysgramor, Harbinger: checked/007.json C06 rewards",
+    "Purity branch and closes: checked/008.json CR13",
+    "Job givers: checked/007.json CR01-CR03, checked/008.json CR04-CR13, checked/009.json CR14"
+   ]
+  },
+  {
+   "id": "college",
+   "name": "The College of Winterhold",
+   "about": "The College of Winterhold is the mages' school in Winterhold; you join by casting a spell for Faralda at its entrance, and its story starts with an expedition to the ruins of Saarthal. The story has eight quests, with lessons, ritual spells and radiant jobs from the College's scholars alongside; the records set no level for it.",
+   "getIn": {
+    "quest": "First Lessons",
+    "who": "Faralda",
+    "where": "at the entrance to the College of Winterhold, in Winterhold",
+    "how": "Talk to Faralda and cast the one spell she asks for: Magelight, a Flame Atronach, Firebolt, Fear, or Healing Hands on her.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "First Lessons",
+     "what": "Pass Faralda's spell test, tour the College with Mirabelle Ervine and attend Tolfdir's first lesson.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Under Saarthal",
+     "what": "Join Tolfdir's expedition to the dig at Saarthal and tell Savos Aren what you find.",
+     "where": "Saarthal, Winterhold hold",
+     "needs": ""
+    },
+    {
+     "quest": "Hitting the Books",
+     "what": "Recover the books Orthorn stole for Urag gro-Shub from Fellglow Keep.",
+     "where": "Fellglow Keep, Whiterun hold",
+     "needs": ""
+    },
+    {
+     "quest": "Good Intentions",
+     "what": "Tell Tolfdir about the Night of Tears book, meet Quaranir of the Psijic Order and find the Augur of Dunlain in the Midden.",
+     "where": "College of Winterhold and the Midden",
+     "needs": ""
+    },
+    {
+     "quest": "Containment",
+     "what": "Find the Arch-Mage in the Hall of the Elements and fight off the Magic Anomalies in Winterhold.",
+     "where": "College of Winterhold and Winterhold",
+     "needs": "Finish Revealing the Unseen (listed after it)"
+    },
+    {
+     "quest": "Revealing the Unseen",
+     "what": "Find the Synod researchers at Mzulft, get the focusing crystal back from the Falmer and work the Oculory.",
+     "where": "Mzulft, Eastmarch",
+     "needs": "Finish Good Intentions"
+    },
+    {
+     "quest": "The Staff of Magnus",
+     "what": "Find the Staff of Magnus in Labyrinthian.",
+     "where": "Labyrinthian, Hjaalmarch",
+     "needs": ""
+    },
+    {
+     "quest": "The Eye of Magnus",
+     "what": "Use the Staff of Magnus to get back into the College and face Ancano.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Shalidor's Insights",
+     "what": "A radiant job from Urag gro-Shub: find a copy of Shalidor's writings at a place the game picks.",
+     "where": "a place the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Aftershock",
+     "what": "Close a Rupture in one of Skyrim's holds for Tolfdir.",
+     "where": "a hold the game picks",
+     "needs": "Finish The Eye of Magnus"
+    },
+    {
+     "quest": "Brelyna's Practice",
+     "what": "Be the test subject for Brelyna Maryon's new spells.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "J'zargo's Experiment",
+     "what": "Test J'zargo's Flame Cloak scrolls three times against the undead.",
+     "where": "anywhere with undead",
+     "needs": ""
+    },
+    {
+     "quest": "Onmund's Request",
+     "what": "Get Onmund's family amulet back from Enthir, who wants a staff from a dungeon first.",
+     "where": "College of Winterhold and a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Arniel's Endeavor",
+     "what": "Bring Arniel Gane ten Dwarven cogs (part one of four).",
+     "where": "Dwarven ruins",
+     "needs": ""
+    },
+    {
+     "quest": "Arniel's Endeavor",
+     "what": "Get Enthir to finish a trade with Arniel by fetching the staff he wants from a dungeon (part two).",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Arniel's Endeavor",
+     "what": "Charge Arniel's warped soul gem in Dwarven convectors, Mzulft among them (part three).",
+     "where": "Mzulft and other Dwarven ruins",
+     "needs": ""
+    },
+    {
+     "quest": "Arniel's Endeavor",
+     "what": "Find Arniel's missing courier, bring back the package and watch his experiment (part four).",
+     "where": "a dungeon the game picks and the College",
+     "needs": ""
+    },
+    {
+     "quest": "Rejoining the College",
+     "what": "Pay Tolfdir to lift a suspension from the College.",
+     "where": "College of Winterhold",
+     "needs": "Being suspended from the College"
+    },
+    {
+     "quest": "Destruction Ritual Spell",
+     "what": "Ask Faralda for more Destruction training and follow the book Power of the Elements to Master Destruction spells.",
+     "where": "Hall of the Elements, College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Illusion Ritual Spell",
+     "what": "Cast Drevis Neloren's Vision of the Tenth Eye and find the four Master Illusion texts hidden around the College.",
+     "where": "the College's halls, the Arcanaeum and the Midden",
+     "needs": ""
+    },
+    {
+     "quest": "Conjuration Ritual Spell",
+     "what": "Summon and subdue an Unbound Dremora so it fetches Phinis Gestor a sigil stone.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Restoration Ritual Spell",
+     "what": "Go down to the Midden and pass the Augur's test for Colette Marence.",
+     "where": "The Midden",
+     "needs": ""
+    },
+    {
+     "quest": "Alteration Ritual Spell",
+     "what": "Find the dagger Kahvozein's Fang and use it to take dragon heartscales for Tolfdir.",
+     "where": "a dungeon the game picks, and wherever you kill dragons",
+     "needs": "Killing dragons"
+    },
+    {
+     "quest": "Rogue Wizard",
+     "what": "A Tolfdir job against a rogue wizard in a dungeon the game picks; nothing in the records starts it, so it may never be offered.",
+     "where": "a dungeon the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Rapture of the Deep",
+     "what": "Learn Waterbreathing from Tolfdir's tome and test it with Arniel Gane in sunken ruins north of the College.",
+     "where": "sunken ruins north of the College",
+     "needs": ""
+    },
+    {
+     "quest": "College Curriculum",
+     "what": "Take a lesson from Tolfdir and then from each of the other scholars in their school of magic.",
+     "where": "College of Winterhold",
+     "needs": "Membership of the College"
+    },
+    {
+     "quest": "I Choose You, Familiar",
+     "what": "Learn Conjure Familiar for Phinis Gestor and test it against his atronach.",
+     "where": "College of Winterhold",
+     "needs": "Finish Tolfdir's lesson (Rapture of the Deep)"
+    },
+    {
+     "quest": "A Test of Ice and Fire",
+     "what": "Learn Firebolt from Faralda's tome and use it on her Ice Wraith.",
+     "where": "outdoors, where the Ice Wraith waits",
+     "needs": ""
+    },
+    {
+     "quest": "Enchanted To Meet You",
+     "what": "Learn an enchantment for Sergius Turrianus, enchant a client's sword and deliver it to Stonehills.",
+     "where": "an Arcane Enchanter and Stonehills, Hjaalmarch",
+     "needs": "A filled soul gem"
+    },
+    {
+     "quest": "Back-Stabbing Rodents",
+     "what": "Learn Drevis Neloren's Illusion spell and turn the skeevers in a nearby den on each other.",
+     "where": "a skeever den near the College",
+     "needs": ""
+    },
+    {
+     "quest": "Reading Comprehension 101",
+     "what": "Read Olaf and the Dragon for Urag gro-Shub and pass his test on it.",
+     "where": "The Arcanaeum",
+     "needs": ""
+    },
+    {
+     "quest": "None Escape The Light",
+     "what": "Learn Colette Marence's Restoration spell and use Turn Lesser Undead on the draugr in the Midden.",
+     "where": "The Midden",
+     "needs": ""
+    },
+    {
+     "quest": "College Objective Quest",
+     "what": "A journal pointer: visit the College of Winterhold.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Tolfdir the Absent-Minded",
+     "what": "Find Tolfdir's missing alembic.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Out of Balance",
+     "what": "Wear Drevis Neloren's tuning gloves and cleanse the focal points in the College's halls.",
+     "where": "Hall of Countenance and Hall of Attainment",
+     "needs": ""
+    },
+    {
+     "quest": "Enchanting Pick-Up",
+     "what": "A radiant job from Sergius Turrianus: collect an item from a client for him to enchant.",
+     "where": "the client's town, chosen by the game",
+     "needs": ""
+    },
+    {
+     "quest": "Restocking Soul Gems",
+     "what": "A radiant job from Sergius Turrianus: bring him the soul gems he asks for.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Filling Soul Gems",
+     "what": "Bring Sergius Turrianus a filled Grand Soul Gem.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "Fetch me that Book!",
+     "what": "A radiant job from Urag gro-Shub: bring back a copy of a book from a place the game picks.",
+     "where": "a place the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Fetch me that Book!",
+     "what": "A second radiant book job from Urag gro-Shub.",
+     "where": "a place the game picks",
+     "needs": ""
+    },
+    {
+     "quest": "Research Thief",
+     "what": "Talk to Nirya about her plot against Faralda and pick a side.",
+     "where": "College of Winterhold",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Hitting the Books",
+     "options": [
+      "Free Orthorn in Fellglow Keep; he offers to help you find the books",
+      "Leave him"
+     ]
+    },
+    {
+     "at": "Research Thief",
+     "options": [
+      "Help Nirya steal Faralda's notes",
+      "Tell Faralda about the plot"
+     ]
+    }
+   ],
+   "gives": [
+    "Membership of the College of Winterhold (First Lessons)",
+    "Arch-Mage of the College of Winterhold (The Eye of Magnus)",
+    "Staff of Magnus (The Staff of Magnus)",
+    "Savos Aren's Amulet (Containment)",
+    "Keening, a dagger, and Summon Arniel's Shade (Arniel's Endeavor, part four)",
+    "Master spell tomes: Blizzard and Lightning Vortex (Destruction Ritual Spell); one of Call to Arms, Mayhem, Hysteria or Harmony (Illusion Ritual Spell); one of Reanimate Dead Thrall, Conjure Flame Thrall, Conjure Frost Thrall or Conjure Storm Thrall (Conjuration Ritual Spell); Dragonhide on Self (Alteration Ritual Spell)",
+    "Bane of the Undead (Restoration Ritual Spell)",
+    "Kahvozein's Fang, a dagger (Alteration Ritual Spell)"
+   ],
+   "closes": [
+    "Savos Aren dies (Containment)",
+    "Ancano is defeated and the Psijic Order takes the Eye of Magnus away (The Eye of Magnus)",
+    "Arniel Gane vanishes during his experiment (Arniel's Endeavor, part four)",
+    "Turning down a scholar's lesson fails that lesson (I Choose You, Familiar; A Test of Ice and Fire; Enchanted To Meet You; Back-Stabbing Rodents; Reading Comprehension 101; None Escape The Light)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No minimum level for this line is in the records, so the level it is made for isn't given. Labyrinthian's enemies start at level 24 in LoreRim, which is the only level figure tied to the story."
+    },
+    {
+     "field": "getIn",
+     "why": "The script that picks Faralda's test spell isn't in the records. A College entry mod and Requiem change the conditions on her entry lines (item checks, a 'Faralda sells spells' setting that is off, and The Way of the Voice for one line); the line text isn't recorded, so other ways in can't be confirmed."
+    },
+    {
+     "field": "order",
+     "why": "For the scholars' side quests and ritual spells, the conditions on the opening lines aren't in the records, so College membership or a skill level isn't confirmed; the ritual spells' rewards are Master spells listed at skill 100."
+    },
+    {
+     "field": "order",
+     "why": "College Curriculum's own start isn't in the records; its first lesson (Rapture of the Deep) comes before the other scholars' lessons according to its journal."
+    },
+    {
+     "field": "order",
+     "why": "Rogue Wizard has no start line, event or journal text in the records."
+    },
+    {
+     "field": "gives",
+     "why": "Whether you keep Kahvozein's Fang after the Alteration ritual isn't shown. Which of the Illusion and Conjuration tomes you get isn't shown. Good Intentions holds a Mage's Circlet leveled list whose contents aren't recorded."
+    },
+    {
+     "field": "branches",
+     "why": "Which Research Thief ending goes with which choice isn't in the records."
+    }
+   ],
+   "evidence": [
+    "quests.json line college: name The College of Winterhold, category guilds, 41 quests in this order: MG01, MG02, MG03, MG04, MG05, mg06, MG07, MG08, MGR21, MGR30, MGRAppBrelyna01, MGRAppJzargo01, MGRAppOnmund01, MGRArniel01, MGRArniel02, MGRArniel03, MGRArniel04, MGRejoinQuest, MGRitual01, MGRitual02, MGRitual03, MGRitual04, MGRitual05, MGRRogue, Cow_Breathing, COW_CentralQuest, Cow_Conjuration, Cow_Destruction, Cow_enchantment, Cow_illusion, Cow_Reading, Cow_restoration, MG01Pointer, MGR01, MGR02, MGR10, MGR11, MGR12, MGR20, MGR20B, FreeformWinterholdCollegeA",
+    "First Lessons (MG01): checked/009.json",
+    "Under Saarthal (MG02): checked/009.json",
+    "Hitting the Books (MG03): checked/009.json",
+    "Good Intentions (MG04): checked/009.json",
+    "Containment (MG05): checked/009.json",
+    "Revealing the Unseen (mg06): checked/009.json",
+    "The Staff of Magnus (MG07): checked/009.json",
+    "The Eye of Magnus (MG08): checked/009.json",
+    "Shalidor's Insights (MGR21): checked/009.json",
+    "Aftershock (MGR30): checked/010.json",
+    "Brelyna's Practice (MGRAppBrelyna01): checked/010.json",
+    "J'zargo's Experiment (MGRAppJzargo01): checked/010.json",
+    "Onmund's Request (MGRAppOnmund01): checked/010.json",
+    "Arniel's Endeavor (MGRArniel01): checked/010.json",
+    "Arniel's Endeavor (MGRArniel02): checked/010.json",
+    "Arniel's Endeavor (MGRArniel03): checked/010.json",
+    "Arniel's Endeavor (MGRArniel04): checked/010.json",
+    "Rejoining the College (MGRejoinQuest): checked/010.json",
+    "Destruction Ritual Spell (MGRitual01): checked/010.json",
+    "Illusion Ritual Spell (MGRitual02): checked/011.json",
+    "Conjuration Ritual Spell (MGRitual03): checked/011.json",
+    "Restoration Ritual Spell (MGRitual04): checked/011.json",
+    "Alteration Ritual Spell (MGRitual05): checked/011.json",
+    "Rogue Wizard (MGRRogue): checked/011.json",
+    "Rapture of the Deep (Cow_Breathing): checked/011.json",
+    "College Curriculum (COW_CentralQuest): checked/011.json",
+    "I Choose You, Familiar (Cow_Conjuration): checked/011.json",
+    "A Test of Ice and Fire (Cow_Destruction): checked/011.json",
+    "Enchanted To Meet You (Cow_enchantment): checked/011.json",
+    "Back-Stabbing Rodents (Cow_illusion): checked/012.json",
+    "Reading Comprehension 101 (Cow_Reading): checked/012.json",
+    "None Escape The Light (Cow_restoration): checked/012.json",
+    "College Objective Quest (MG01Pointer): checked/012.json",
+    "Tolfdir the Absent-Minded (MGR01): checked/012.json",
+    "Out of Balance (MGR02): checked/012.json",
+    "Enchanting Pick-Up (MGR10): checked/012.json",
+    "Restocking Soul Gems (MGR11): checked/012.json",
+    "Filling Soul Gems (MGR12): checked/012.json",
+    "Fetch me that Book! (MGR20): checked/012.json",
+    "Fetch me that Book! (MGR20B): checked/013.json",
+    "Research Thief (FreeformWinterholdCollegeA): checked/013.json",
+    "quest_starts_raw line college: no GetLevel or minimum-level condition on its opening",
+    "Faralda's five tests: checked/009.json MG01 choices",
+    "Arch-Mage title, Ancano, Psijics: checked/009.json MG08 rewards/closes",
+    "Staff of Magnus: checked/009.json MG07; Savos Aren's Amulet and death: MG05",
+    "Keening, Summon Arniel's Shade, Arniel vanishes: checked/010.json MGRArniel04",
+    "Ritual tomes: checked/010.json MGRitual01, checked/011.json MGRitual02-05",
+    "Lesson refusals fail: checked/011.json Cow_Conjuration, Cow_Destruction, Cow_enchantment; checked/012.json Cow_illusion, Cow_Reading, Cow_restoration",
+    "Orthorn choice: checked/009.json MG03; Research Thief: checked/013.json FreeformWinterholdCollegeA",
+    "Labyrinthian zone level 24: checked/009.json MG07 unsure (places_raw zoneMin 24)"
+   ]
+  }
+ ]
+}

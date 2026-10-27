@@ -1,0 +1,577 @@
+{
+ "lines": [
+  {
+   "id": "pieces-of-the-past",
+   "name": "Pieces of the Past",
+   "about": "A Daedric quest for Mehrunes Dagon: Silus Vesuius of Dawnstar pays you to gather the three pieces of Mehrunes' Razor from Dead Crone Rock in the Reach, Cracked Tusk Keep in Falkreath and a house in Morthal, then meet him at the Shrine of Mehrunes Dagon. It is one quest with a second, optional quest that lets you reforge the Razor yourself at a forge.",
+   "getIn": {
+    "quest": "Pieces of the Past",
+    "who": "Silus Vesuius",
+    "where": "Silus Vesuius' House in Dawnstar",
+    "how": "Talk to Silus in Dawnstar; he hires you to bring him the three pieces of Mehrunes' Razor for gold and gives you the details inside his house.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Pieces of the Past",
+     "what": "You recover the pommel from Drascua at Dead Crone Rock, the blade shards from Ghunzul at Cracked Tusk Keep and the hilt from Jorgen in Morthal, hand each to Silus, then meet him at the Shrine of Mehrunes Dagon and speak to Mehrunes Dagon.",
+     "where": "Dawnstar and the Shrine of Mehrunes Dagon, the Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Reforging the Past",
+     "what": "Silus agrees to let you reforge the Razor yourself at any forge, after which you can keep it or give it to him for a reward.",
+     "where": "any forge (the records mark the Dawnstar forge)",
+     "needs": "Ask Silus while you are still gathering the pieces, before he has all three; the log asks for skill in working with both enchanted and Daedric materials."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Pieces of the Past",
+     "options": [
+      "Kill Silus for Mehrunes Dagon: Dagon reforges the Razor and it is yours.",
+      "Refuse to kill Silus: the Razor is out of your grasp for good.",
+      "Reforge the Razor yourself with Silus's leave, which starts Reforging the Past."
+     ]
+    },
+    {
+     "at": "Reforging the Past",
+     "options": [
+      "Give the reforged Razor to Silus for a reward.",
+      "Keep the Razor."
+     ]
+    }
+   ],
+   "gives": [
+    "Mehrunes' Razor",
+    "Gold from Silus for the pieces"
+   ],
+   "closes": [
+    "Silus Vesuius dies if you side with Mehrunes Dagon",
+    "Refusing Dagon at the shrine leaves the Razor out of your reach",
+    "Pieces of the Past fails if Silus dies before the end"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows on Pieces of the Past in the records (no start conditions, starts with the game), so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn.where",
+     "why": "The opening log suggests you first meet Silus outside his house, but his packages only place him inside it and around his home."
+    },
+    {
+     "field": "order",
+     "why": "Reforging the Past's skill need isn't tied to named perks or a skill level in the records, and its opening line's words aren't in the files."
+    },
+    {
+     "field": "gives",
+     "why": "How much gold Silus pays for the pieces, and what his 'substantial reward' for the reforged Razor is, aren't in the records."
+    },
+    {
+     "field": "closes",
+     "why": "Whether taking the Reforging the Past route ends the Shrine of Mehrunes Dagon part of Pieces of the Past isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line pieces-of-the-past: DA07, DA07PlayerHasReforged",
+    "checked/031.json DA07 (starts, takesYou, choices, rewards, closes, people)",
+    "checked/031.json DA07PlayerHasReforged (needs, starts, choices, rewards, unsure)",
+    "quest_starts_raw pieces-of-the-past: no dialogue or event conditions, startGame true",
+    "quests_raw DA07 Skyrim.esm:0240B8 stages 100/150 complete, 200 fails"
+   ]
+  },
+  {
+   "id": "saints-and-seducers",
+   "name": "Saints and Seducers",
+   "about": "A Shivering Isles story: a quake leads you to Staada, a Golden Saint in the Solitude Wasteworks, who takes you to the Isles to put down a prisoners' riot at the Asylum and hunt their leader Thoron. The line holds three story quests and four side jobs in the Isles, two of which teach you to smith madness ore and amber and two of which give you an Elytra pet.",
+   "getIn": {
+    "quest": "The Route of Madness",
+    "who": "Staada",
+    "where": "the Solitude Wasteworks, through a strange tunnel reached from the Solitude Sewers",
+    "how": "The quest starts on its own when you feel a quake; investigate it and the strange tunnel to meet Staada, who then asks you to come with her to the Asylum in The Isle of Madness.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The Lunatic's Treasure",
+     "what": "Sees-the-Moon, an Argonian in the marsh, sends you to the Drowned Ruin for his treasure and gives you his journal, which teaches you to work madness ore.",
+     "where": "Sees-the-Moon's Shack, Shivering Isles",
+     "needs": "Be in the Shivering Isles, which The Isle of Madness takes you to."
+    },
+    {
+     "quest": "The Route of Madness",
+     "what": "You follow a quake down a strange tunnel and meet Staada.",
+     "where": "Solitude Wasteworks",
+     "needs": ""
+    },
+    {
+     "quest": "The Isle of Madness",
+     "what": "You help Staada fight off the rioting prisoners at the Asylum, rescue Dylora and defeat Thoron, who escapes.",
+     "where": "the Asylum and Stopgap, Shivering Isles",
+     "needs": "Meet Staada in The Route of Madness."
+    },
+    {
+     "quest": "The Roots of Madness",
+     "what": "Staada sends you for an artifact from the Shivering Isles to break Thoron's amber barrier, and you defeat him in the Root Nexus.",
+     "where": "Borogove and the Root Nexus, Shivering Isles",
+     "needs": "Finish The Isle of Madness."
+    },
+    {
+     "quest": "The Merchant's Masterpiece",
+     "what": "Theodor Gorlash teaches you to smith amber in return for the Sheogorath-Shaped Amber from the Root Canal.",
+     "where": "The Near Corgi Shop and the Root Canal, Shivering Isles",
+     "needs": "Be in the Shivering Isles."
+    },
+    {
+     "quest": "My Pet Elytra (Dementia)",
+     "what": "You free a caged Elytra nymph named Potema, who becomes your pet.",
+     "where": "Shivering Isles",
+     "needs": ""
+    },
+    {
+     "quest": "My Pet Elytra (Mania)",
+     "what": "You free a caged Elytra nymph named Pelagius, who becomes your pet.",
+     "where": "Shivering Isles",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Roots of Madness",
+     "options": [
+      "Bring Nerveshatter from the ruins of Borogove.",
+      "Bring another artifact from the Shivering Isles; Dylora can point you to others.",
+      "Optional tasks: burn the Grove of Insanity or the laboratory, steal a Soul Tomato or a Void Essence, and frame the Priests or the Apostles."
+     ]
+    }
+   ],
+   "gives": [
+    "Spell Tome: Conjure Staada, a Master-level Conjuration spell",
+    "The knowledge to smith madness ore (Sees-the-Moon's Journal)",
+    "The knowledge to smith amber (Amber Smithing Manual)",
+    "Potema and Pelagius, Elytra nymph pets"
+   ],
+   "closes": [
+    "The Lunatic's Treasure fails if Sees-the-Moon is killed"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate or start condition for The Route of Madness is decoded in the records (it starts on a change-of-location event), so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn.needs",
+     "why": "Which place fires The Route of Madness and whether it checks level or anything else isn't in the files."
+    },
+    {
+     "field": "order",
+     "why": "The line's record order puts The Lunatic's Treasure first, but it needs you in the Shivering Isles, which The Isle of Madness takes you to; the story starts with The Route of Madness."
+    },
+    {
+     "field": "order",
+     "why": "How the two Elytra pet quests start (finding the cage, taking the key or seeing the nymph) isn't in the records, nor the exact spots of the cages."
+    },
+    {
+     "field": "gives",
+     "why": "Conjure Staada and Staada's Helmet are properties of The Roots of Madness's script; the closing log names neither, so who receives them isn't confirmed. The helmet is left out for that reason."
+    },
+    {
+     "field": "gives",
+     "why": "The Merchant's Masterpiece's script also holds a Ring of Disrobing; nothing confirms you are given it."
+    },
+    {
+     "field": "branches",
+     "why": "What the optional burning, stealing and framing tasks change, and who gives them, isn't in the records."
+    }
+   ],
+   "evidence": [
+    "quests.json line saints-and-seducers: EC_SS_LizardQuest, EC_SS_MQ100Int, EC_SS_MQ101, EC_SS_MQ102, EC_SS_TheodorQuest, EC_SS_ElytraPetAcquisition_Dementia, EC_SS_ElytraPetAcquisition_Mania",
+    "checked/032.json EC_SS_LizardQuest, EC_SS_MQ100Int, EC_SS_MQ101, EC_SS_MQ102, EC_SS_TheodorQuest, EC_SS_ElytraPetAcquisition_Dementia",
+    "checked/033.json EC_SS_ElytraPetAcquisition_Mania",
+    "quest_starts_raw saints-and-seducers: opening EC_SS_MQ101, no dialogue or event conditions; Solitude Wasteworks doors with enable parent Skyrim Extended Cut - Saints and Seducers.esp:0EC9E0",
+    "EC_SS_MQ102 rewards: ccBGSSSE025_SpellTomeConjureStaada 19D3F9; SPEL ccbgssse025-advdsgs.esm:19D3FA Conjuration, Master"
+   ]
+  },
+  {
+   "id": "the-taste-of-death",
+   "name": "The Taste of Death",
+   "about": "A Daedric quest for Namira set in Markarth and Reachcliff Cave in the Reach: you look into the closed Hall of the Dead and meet Eola, who invites you into her coven of cannibals. Markarth's talk about the Hall waits until level 20, and the line has three quests, the last of which turns against the coven instead.",
+   "getIn": {
+    "quest": "Investigate the Hall of the Dead",
+    "who": "Brother Verulus",
+    "where": "Understone Keep, Markarth (otherwise he keeps the Hall of the Dead)",
+    "how": "The quest begins on its own in Markarth; speak to Brother Verulus about the Hall of the Dead, which Kleppr and Frabbi at the Silver-Blood Inn also mention as a rumour.",
+    "needs": [
+     "Character level 20 for the Markarth rumours that point you to the Hall of the Dead"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Investigate the Hall of the Dead",
+     "what": "You speak to Brother Verulus, investigate the Hall of the Dead and tell him it is safe.",
+     "where": "Understone Keep and the Hall of the Dead, Markarth",
+     "needs": ""
+    },
+    {
+     "quest": "The Taste of Death",
+     "what": "Eola, whom you meet in the Hall of the Dead, asks you to clear Reachcliff Cave of draugr, then lure Brother Verulus to the Shrine of Namira, kill him and feast.",
+     "where": "Reachcliff Cave, the Reach",
+     "needs": ""
+    },
+    {
+     "quest": "A Bitter Aftertaste",
+     "what": "Reading Eola's Journal sends you to Reachcliff Cave for evidence and to the Jarl of Markarth, and you confront the cannibals Hogni Red-Arm, Lisbet and Banning.",
+     "where": "Reachcliff Cave and Markarth",
+     "needs": "Eola's Journal, taken from Eola after she attacks you."
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Taste of Death",
+     "options": [
+      "Turn Eola down; she waits outside Reachcliff Cave if you change your mind.",
+      "Kill Eola; the quest fails and her journal can start A Bitter Aftertaste.",
+      "Lead Verulus to the shrine, kill him and feast to join the coven."
+     ]
+    },
+    {
+     "at": "A Bitter Aftertaste",
+     "options": [
+      "Confront the cannibals without the Jarl's leave; the log warns this may be unlawful.",
+      "Get the Jarl of Markarth's permission first, then deal with them as you see fit or have them arrested."
+     ]
+    }
+   ],
+   "gives": [
+    "Ring of Namira",
+    "Amulet of Arkay",
+    "A reward from the Jarl of Markarth at the end of A Bitter Aftertaste"
+   ],
+   "closes": [
+    "Brother Verulus dies if you join the coven",
+    "Killing Verulus anywhere but the Shrine of Namira fails The Taste of Death",
+    "Eola, if you kill her",
+    "Hogni Red-Arm, Lisbet and Banning are killed or, for Hogni and Lisbet, jailed in Cidhna Mine on the A Bitter Aftertaste path"
+   ],
+   "unsure": [
+    {
+     "field": "getIn.needs",
+     "why": "The level 20 check sits on Kleppr's and Frabbi's rumour lines; whether Investigate the Hall of the Dead itself, or Eola's opening line, waits for that level isn't shown."
+    },
+    {
+     "field": "getIn.how",
+     "why": "The quest starts on a change-location event; which location fires it isn't in the files. The Hall of the Dead door is Adept-locked and Verulus carries the key; whether he hands it over isn't shown."
+    },
+    {
+     "field": "order",
+     "why": "What makes Eola attack you, which leads to A Bitter Aftertaste, isn't in the records; the log only speaks of 'the cannibal who assaulted me'."
+    },
+    {
+     "field": "gives",
+     "why": "The Taste of Death's script also holds gold and Invisibility; the records don't confirm either is given to you. What the Jarl gives at the end of A Bitter Aftertaste isn't named."
+    },
+    {
+     "field": "gives",
+     "why": "The Amulet of Arkay is held by Investigate the Hall of the Dead's script; that it comes when you tell Verulus the Hall is safe is read from the objective order."
+    },
+    {
+     "field": "closes",
+     "why": "What happens to Banning if he is arrested isn't shown; only Hogni Red-Arm and Lisbet have jailed copies in Cidhna Mine."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-taste-of-death: DA11Intro, DA11, madNamiraAddonQuest",
+    "checked/033.json DA11Intro (needs level 20 via LoreRim - Global Modifiers.esp on the Delayed Start rumour lines, starts, rewards)",
+    "checked/033.json DA11 (choices, rewards, closes, fail stages 250/500)",
+    "checked/033.json madNamiraAddonQuest (needs Eola's Journal, choices, rewards, closes)",
+    "quest_starts_raw the-taste-of-death: Hall of the Dead door Adept, key carried by Brother Verulus"
+   ]
+  },
+  {
+   "id": "the-whispering-door",
+   "name": "The Whispering Door",
+   "about": "A Daedric quest for Mephala in Dragonsreach, Whiterun: Jarl Balgruuf asks you to find out what is wrong with his son Nelkir, which leads to a whispering door and the Ebony Blade. The line has two quests, the second of which asks whether you keep the Blade or destroy it.",
+   "getIn": {
+    "quest": "The Whispering Door",
+    "who": "Balgruuf the Greater",
+    "where": "Dragonsreach, Whiterun",
+    "how": "Talk to Jarl Balgruuf and he asks you to find out what is wrong with Nelkir; Nelkir, Frothar and Dagny also have lines that lead into it.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The Whispering Door",
+     "what": "You listen to the Whispering Door, get its key, open it and take the Ebony Blade, either by following Mephala through Nelkir or by warning the Jarl.",
+     "where": "Dragonsreach, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "The Fate of the Ebony Blade",
+     "what": "Once you hold the Ebony Blade you decide whether to keep it or cast it into the fires of the Aetherium Forge.",
+     "where": "The Aetherium Forge, the Rift",
+     "needs": "Hold the Ebony Blade."
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Whispering Door",
+     "options": [
+      "Follow Mephala: talk to Nelkir and open the door, and take the Ebony Blade.",
+      "Warn the Jarl, then report to Balgruuf and hand the Blade to a Vigilant of Stendarr to be rid of it.",
+      "Keep the Blade and kill allies with it to restore it to its full potential."
+     ]
+    },
+    {
+     "at": "The Fate of the Ebony Blade",
+     "options": [
+      "Keep the Blade and set out to restore it.",
+      "Destroy it in the Aetherium Forge and be freed of its dark magic."
+     ]
+    }
+   ],
+   "gives": [
+    "Ebony Blade (greatsword), restored to full power after you kill allies with it"
+   ],
+   "closes": [
+    "The Ebony Blade, if you give it to a Vigilant of Stendarr or destroy it in the Aetherium Forge",
+    "The allies you kill to restore the Blade"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows on the Jarl's or Nelkir's opening lines in the records, so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn.needs",
+     "why": "The Whispering Door - Quest Expansion changes the opening dialogue's conditions, including a check tied to the Imperial side of the civil war; what that check does for a player isn't decoded."
+    },
+    {
+     "field": "getIn.where",
+     "why": "Nelkir's family has a Blue Palace package for when the Jarl is exiled in the civil war; in that case they would be in Solitude."
+    },
+    {
+     "field": "order",
+     "why": "Who holds the Whispering Door key isn't shown."
+    },
+    {
+     "field": "order",
+     "why": "The Aetherium Forge door stays hidden until a Dawnguard enable parent is switched on, and the Forge belongs to Lost to the Ages; you probably need that quest's progress to get in, but the records don't say outright."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-whispering-door: DA08, DA08MephalaHunt",
+    "checked/033.json DA08 (starts, choices, steps, rewards, closes, unsure on Blue Palace package)",
+    "checked/033.json DA08MephalaHunt (needs, choices, closes, Aetherium Forge door Dawnguard.esm:0057ED)",
+    "quest_starts_raw the-whispering-door: no dialogue or event conditions, startGame true; The Whispering Door - Quest Expansion.esp opening dialogue conditions (DA08_HelpingJarl, CWImperial)"
+   ]
+  },
+  {
+   "id": "wyrmstooth",
+   "name": "Wyrmstooth",
+   "about": "A dragon hunt for the East Empire Company's Lurius Liore that starts in Whiterun and Falkreath and moves to the island of Wyrmstooth, reached by ship from Solitude. It opens at level 20, has two story quests, and the island holds a fort you can buy plus many side jobs and bounties.",
+   "getIn": {
+    "quest": "Wyrmstooth",
+    "who": "Theodyn Bienne",
+    "where": "he walks up to you wherever you are; otherwise he waits in the Bannered Mare in Whiterun",
+    "how": "Once you reach level 20 the Imperial courier Theodyn Bienne finds you and tells you to speak to Lurius Liore at the Bannered Mare about trouble with a dragon.",
+    "needs": [
+     "Level 20"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Retrieving Embersunder",
+     "what": "Athir asks you to get his sword Embersunder back from the Forsworn at Hag's End.",
+     "where": "Hag's End, the Reach",
+     "needs": "Meet Athir in Wyrmstooth."
+    },
+    {
+     "quest": "Barrow of the Wyrm",
+     "what": "Lurius sails you and the mercenaries to Wyrmstooth, where you go through Wyrmstooth Barrow into Dimfrost, the dragon's den, and defend Stonehollow from Vulthurkrah.",
+     "where": "Solitude docks, then Stonehollow, Wyrmstooth Barrow and Dimfrost on Wyrmstooth",
+     "needs": "Finish Wyrmstooth."
+    },
+    {
+     "quest": "Blind Robber's Cache",
+     "what": "Fjeimir's letter sends you to take the cache key from Rolgar's body in Dimfrost and open Blind Robber's Cache.",
+     "where": "Dimfrost and Blind Robber's Bluff, Wyrmstooth",
+     "needs": "Reach Dimfrost, which Barrow of the Wyrm takes you into."
+    },
+    {
+     "quest": "Animal Bounty",
+     "what": "A bounty job: kill the bear south of Fort Valus.",
+     "where": "south of Fort Valus, Wyrmstooth",
+     "needs": "Be on Wyrmstooth."
+    },
+    {
+     "quest": "Bandit Bounty",
+     "what": "A bounty job: kill the Marauder Clanlord at Cragwater Cavern.",
+     "where": "Cragwater Cavern, Wyrmstooth",
+     "needs": ""
+    },
+    {
+     "quest": "Vampire Bounty",
+     "what": "A bounty job: kill the Master Vampire at Bloodfrost Burrow.",
+     "where": "Bloodfrost Burrow, Wyrmstooth",
+     "needs": ""
+    },
+    {
+     "quest": "Warlock Bounty",
+     "what": "A bounty job: kill the troublesome warlock at Krakevisa, north of Stonehollow.",
+     "where": "Krakevisa, Wyrmstooth",
+     "needs": ""
+    },
+    {
+     "quest": "Robbed Blind",
+     "what": "Daenlit asks you to steal an enchanted necklace that Erikur keeps in Solitude.",
+     "where": "Erikur's House, Solitude",
+     "needs": "Meet Daenlit among Lurius's mercenaries."
+    },
+    {
+     "quest": "Wyrmstooth",
+     "what": "Lurius Liore hires you to hunt the dragon Vulthurkrah with his mercenaries; you fight it at Ancient's Ascent and tell Lurius it fled to Wyrmstooth.",
+     "where": "The Bannered Mare, Whiterun, and Ancient's Ascent, Falkreath",
+     "needs": "Level 20."
+    },
+    {
+     "quest": "Stickler in the Mud",
+     "what": "Elmera asks you for 30 spiddal sticks from the Deadlands.",
+     "where": "the Deadlands",
+     "needs": "Meet Elmera among Lurius's mercenaries, and a way into the Deadlands."
+    },
+    {
+     "quest": "Unwanted Guests",
+     "what": "Alberthor asks you to kill the Thalmor spies in Haetar's Cave.",
+     "where": "Haetar's Cave, Wyrmstooth",
+     "needs": "Reach Alberthor in Wyrmstooth Barrow, which Barrow of the Wyrm opens."
+    },
+    {
+     "quest": "Reclaiming the Past",
+     "what": "You find the abandoned Fort Valus, buy its deed from Lurius Liore and pay him for upgrades and a crew.",
+     "where": "Fort Valus and the East Empire Company Tradehouse, Wyrmstooth",
+     "needs": "Be on Wyrmstooth with Lurius there."
+    },
+    {
+     "quest": "A Priceless Commodity",
+     "what": "Bolmar asks you to deal with the spriggans in Gronndal Grove, where the miners have dug into a spriggan sanctuary.",
+     "where": "Gronndal Grove, Wyrmstooth",
+     "needs": ""
+    },
+    {
+     "quest": "Repaying a Debt",
+     "what": "Shargam asks you to sail back to Skyrim and kill Ulfgar at the Silver-Blood Inn in Markarth.",
+     "where": "Silver-Blood Inn, Markarth",
+     "needs": "Meet Shargam among Lurius's mercenaries."
+    },
+    {
+     "quest": "A Debt Unpaid",
+     "what": "Signy asks you to steal the ledger in which Erikur of Solitude keeps her father's debt.",
+     "where": "Solitude",
+     "needs": "Reach Stonehollow."
+    },
+    {
+     "quest": "The Naked Nord",
+     "what": "Gjalrunn, paralysed and robbed in the wilds, asks you to get back the golden pants a witch stole; you chase them to Krakevisa.",
+     "where": "Krakevisa, Wyrmstooth",
+     "needs": "A daedra heart if you want Glendora's antidote for him."
+    },
+    {
+     "quest": "Someone with Backbone",
+     "what": "A voice in the Tomb of Vulom asks you to bring back his bones, and once you do he rises as a lich you must destroy.",
+     "where": "Tomb of Vulom, Wyrmstooth",
+     "needs": ""
+    },
+    {
+     "quest": "A Howl Load of Trouble",
+     "what": "The wounded tracker Dunyick asks you to find his wolf Faelor and kill the marauders who attacked him.",
+     "where": "the wilds near Stonehollow, Wyrmstooth",
+     "needs": ""
+    },
+    {
+     "quest": "Wrap Me Up",
+     "what": "Alberthor asks you for 8 wisp wrappings.",
+     "where": "Wyrmstooth Barrow",
+     "needs": "8 wisp wrappings."
+    }
+   ],
+   "branches": [
+    {
+     "at": "A Priceless Commodity",
+     "options": [
+      "Kill the Spriggan Matriarch and clear the grove for the miners.",
+      "Side with the Matriarch and kill the miners who got away.",
+      "Agree to help the Matriarch, then betray her and clear the grove."
+     ]
+    },
+    {
+     "at": "The Naked Nord",
+     "options": [
+      "Give the golden pants to Glendora the witch for a reward.",
+      "Give the pants back to Gjalrunn.",
+      "Keep the pants and lie to him.",
+      "Trade Glendora a daedra heart for the paralysis antidote and free him.",
+      "Tell him there is no cure; he asks you to end his misery."
+     ]
+    },
+    {
+     "at": "A Howl Load of Trouble",
+     "options": [
+      "Send Faelor home to Dunyick's camp.",
+      "Take Faelor along as a companion."
+     ]
+    }
+   ],
+   "gives": [
+    "Fort Valus, bought from Lurius Liore, with upgrades and a hired crew",
+    "Faelor the wolf as a companion",
+    "Athir, Daenlit, Elmera and Shargam can follow you",
+    "A reward from Lurius Liore at the end of Barrow of the Wyrm"
+   ],
+   "closes": [
+    "Siding with the miners in A Priceless Commodity means killing the Spriggan Matriarch; siding with the spriggans means killing the Gronndal miners",
+    "Ulfgar dies in Repaying a Debt",
+    "Dunyick dies of his wounds in A Howl Load of Trouble",
+    "Gjalrunn dies if you put him out of his misery in The Naked Nord"
+   ],
+   "unsure": [
+    {
+     "field": "order",
+     "why": "The line's record order is not story order. The story runs Wyrmstooth, then Barrow of the Wyrm; most of the other quests need you on the island, which the records only show you reaching on the Red Wave during Barrow of the Wyrm."
+    },
+    {
+     "field": "order",
+     "why": "How the four bounty jobs are handed out isn't in the records; the island has a 'Check the notice board for work' pointer, so they are probably taken from a notice board."
+    },
+    {
+     "field": "order",
+     "why": "Whether the mercenaries' and Alberthor's favours are offered during the story or only after Barrow of the Wyrm isn't shown; their opening lines only check that the quest hasn't begun."
+    },
+    {
+     "field": "order",
+     "why": "Stickler in the Mud only names the Deadlands; The Cause is the only quest in the files that takes you there, and whether you must finish it or only reach its Oblivion Gate isn't shown."
+    },
+    {
+     "field": "about",
+     "why": "The records give enemy levels but not a level the island is made for: Wyrmstooth Barrow 24-60, Dimfrost 24-79, Bloodfrost Burrow's boss 55-125, Vulom level 51."
+    },
+    {
+     "field": "gives",
+     "why": "Lurius's reward for Barrow of the Wyrm, the price of Fort Valus and its upgrades, and most side-job rewards aren't named in the records."
+    },
+    {
+     "field": "getIn.how",
+     "why": "No dialogue or event in the files starts Wyrmstooth; the courier's walk-to-you package needs the quest already running and your level at or above 20 (raised from 10 by a Requiem patch). Whether Theodyn gives the message below level 20 if you find him yourself isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line wyrmstooth: WTAthirFavor, WTBarrowOfTheWyrm, WTBlindRobbersCache, WTBountyAnimal, WTBountyBandit, WTBountyVampire, WTBountyWarlock, WTDaenlitFavor, WTDragonHunt, WTElmeraFavor, WTKillThalmor, WTPlayerHome, WTPricelessCommodity, WTShargamFavor, WTSignyFavor, WTTheNakedNord, WTUberEncounter, WTWolfFollower, WTWrapMeUp",
+    "checked/033.json WTAthirFavor",
+    "checked/034.json WTBarrowOfTheWyrm, WTBlindRobbersCache, WTBountyAnimal, WTBountyBandit, WTBountyVampire, WTBountyWarlock, WTDaenlitFavor, WTDragonHunt, WTElmeraFavor, WTKillThalmor",
+    "checked/035.json WTPlayerHome, WTPricelessCommodity, WTShargamFavor, WTSignyFavor, WTTheNakedNord, WTUberEncounter, WTWolfFollower, WTWrapMeUp",
+    "quest_starts_raw wyrmstooth: opening WTDragonHunt, global WTStartLevel Wyrmstooth.esp:AC356A = 20 (Requiem - Wyrmstooth.esp, was 10)",
+    "Followers: WTAthirFavor people (can follow you), WTDaenlitFavor/WTElmeraFavor people_schedules PotentialFollowerFaction, WTShargamFavor people (can follow you)"
+   ]
+  }
+ ]
+}

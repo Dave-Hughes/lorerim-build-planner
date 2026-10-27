@@ -1,0 +1,602 @@
+{
+ "checks": [
+  {
+   "id": "the-book-of-love",
+   "verdicts": {
+    "about": {
+     "verdict": "agree",
+     "note": "Compared with checked/048.json t02 canDoWhy and steps (Fastred in Ivarstead, Calcelmo in Markarth, the long-dead lovers) and TTFA_JourneyQuest canDoWhy (third way: travel with Fastred). quest_starts_raw the-book-of-love has no dialogue/event conditions and no GetLevel, so no level is given; unsure covers it."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "t02 starts: Dinya Balu, Temple of Mara, agree to help, sent to Fastred; her noon-to-3 market time is t02 people (RiftenDinyaMarket12x3). needs [] matches t02 needs []."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "Two rows in quests.json order t02, TTFA_JourneyQuest. Row 1 said Calcelmo 'win[s] Faleen' and called Fenrig 'the ghost': t02 steps are only 'Get advice from Yngvar', 'Deliver poem', 'Deliver Faleen's letter' and 'Put on the Amulet of Mara', 'Talk to the long-dead lover', 'Find Fenrig', 'Bring Fenrig to Ruki'; nothing says Calcelmo wins her or which lover is the ghost. Reworded to the steps. Row 2 matches TTFA_JourneyQuest starts, takesYou and needs."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "t02 choices (Bassianus or Klimmek) plus TTFA_JourneyQuest starts (suggest an alternative) for the first; TTFA_JourneyQuest choices (return feelings or not; she leaves with blessing if together; she stays and you speak to one suitor) for the second. Yngvar's poem is a step, not a branch."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "t02 rewards: Agent of Mara (perk) at the end from Dinya Balu, with its script-only unsure carried; TTFA_JourneyQuest rewards: Fastred travels with you, Mara's blessing only as a couple. Amulet of Mara left out per t02 rewards ('records don't say if you keep it'), noted in unsure."
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "Removed 'Whichever suitor Fastred doesn't pick': t02 closes [] and no read records any effect on the other suitor (the line's own unsure said so), so nothing supports it; kept as an unsure note. The other two entries match TTFA_JourneyQuest closes (Bassianus to Riften, Klimmek stays; one t02 line switched off while it runs, from TT_FastredsAwakening's GetQuestRunning on INFO 03510E)."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Entries match t02 unsure (ghosts' place, Agent of Mara from script) and TTFA_JourneyQuest unsure (Fastred's line has no condition, blessing contents, permanent follower). Reworded the closes note to say the unpicked suitor is left out rather than inferred."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json line the-book-of-love lists t02, TTFA_JourneyQuest; both reads are in checked/048.json; quest_starts_raw the-book-of-love: conditions dialogue [] event [], startGame true."
+    }
+   }
+  },
+  {
+   "id": "seeking-a-cure",
+   "verdicts": {
+    "about": {
+     "verdict": "fix",
+     "note": "Facts match checked/048.json VC01 (Urag, Falion in Morthal, be a vampire) and OK_FH_Quest (letter from Falion, Phinis Gestor, potion); quest_starts_raw seeking-a-cure has no GetLevel. Removed 'whose ritual fails' from about: it is the outcome of Seeking A Cure (VC01 stages 200/201) and the brief says about spoils nothing past what a player needs to choose whether to start. The order row still says it."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "VC01 starts (Urag in the Arcanaeum; reading 'Undeath Undone' drops a note from Falion; Urag points you to Falion) and VC01 needs 'Be a vampire'. Falion's House in Morthal matches VC01 takesYou. The second start (going straight to Falion) and the hidden RADQO stage are in unsure."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Two rows in quests.json order VC01, OK_FH_Quest. Row 1 matches VC01 steps (wait three days, bring a filled Black Soul Gem, meet at dawn, stand in the circle, enact the ritual) and the failed-ritual endings. Row 2 matches OK_FH_Quest steps and takesYou (Arcanaeum or Bards College, Aetherium Forge, Phinis at the College) and its need on the failed ritual; vampirism already needed by row 1."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "VC01 choices (own black soul gem or ask about Falion's; kill Falion after) and OK_FH_Quest choices ('Should I drink it?')."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "VC01 rewards [] (Vampire Lord Form is not a reward per its unsure); OK_FH_Quest rewards: a potion to remove vampirism you make at the end."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "VC01 closes: Falion dies if you kill him. The 'ritual fails' entry in VC01 closes is an outcome, not something closed, and is rightly left out."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Entries match VC01 unsure (RADQO opening stage, ritual site, cure potion, vampirism check) and OK_FH_Quest unsure (what sends the letter, Aetherium Forge needing Lost to the Ages, whether killing Falion blocks it)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json line seeking-a-cure lists VC01, OK_FH_Quest; both reads in checked/048.json; quest_starts_raw seeking-a-cure: no conditions, startGame true, Falion's House door lock level 50 'Adept'."
+    }
+   }
+  },
+  {
+   "id": "dark-ancestor",
+   "verdicts": {
+    "about": {
+     "verdict": "agree",
+     "note": "checked/050.json FreeformFalkreathQuest03 (Dengeir of Stuhn, Vighar, tell him he's dead) and FreeformFalkreathQuest03B (destroy Vighar at Bloodlet Throne, Falkreath; boss leveled 55-125 from LCTN 016F85). Level 10 matches quest_starts_raw dark-ancestor: USSEP adds GetLevel >= 10 on INFO 0B83BF only."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "FreeformFalkreathQuest03 starts: Dengeir's House, Dead Man's Drink from noon for about four hours (FalkreathDeadMansDrinkSandbox12x4); needs level 10 on one opening line, with its unsure carried."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Two rows in quests.json order FreeformFalkreathQuest03 then 03B, each matching its only objective ('Tell Dengeir that Vighar is dead', 'Destroy the vampire Vighar') and takesYou. The report-before-kill order is the line's order and is flagged in unsure, as the brief asks."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Both reads have choices []."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "FreeformFalkreathQuest03 rewards Gold (script property Gold001, amount unknown), 03B shares the same property; one payment, amount in unsure."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "FreeformFalkreathQuest03B closes 'Vighar' (the boss you destroy); 03 closes []."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Matches 03 unsure (which opening line starts it, how the two hand over, gold amount) and 03B unsure (no start recorded)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json line dark-ancestor lists FreeformFalkreathQuest03, FreeformFalkreathQuest03B; both in checked/050.json; quest_starts_raw shows USSEP's GetLevel >= 10 on 0B83BF."
+    }
+   }
+  },
+  {
+   "id": "undeath",
+   "verdicts": {
+    "about": {
+     "verdict": "agree",
+     "note": "checked/051.json NecroQuest01 (Vigil of Stendarr caravan in the Reach, Ravenscorn Spire), NecroQuest05 (Dragontail Mountains, Scourg Barrow, Antioch level 80, enemies 30-80 from the places index), NecroBlackBookQuest01/NecroLichRitualQuest (Apocrypha ritual, Lich)."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "NecroQuest01 starts: no giver, change-location event, journal rumor of the attacked caravan; needs []. quest_starts_raw undeath: startGame turned off by UndeathFixes.esp, no conditions."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "Seven rows in quests.json order NecroBlackBookQuest01, NecroLichRitualQuest, NecroQuest01-05; the order issue is flagged in unsure. Rows match each read's steps/takesYou except Scourg Barrow, which said 'search ... bodies for Antioch's Orders': NecroQuest05 steps are 'Search the Necromancer's body', 'Read the Orders' (BOOK 'Orders'), and its people say each follower carries a letter; nothing names them Antioch's Orders. Reworded to the steps."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "NecroQuest02 choices (re-cover or take the Shroud), NecroQuest03 (free or slaughter the priest), NecroQuest04 (destroy or brew; failure spoils it), NecroLichRitualQuest (site and whether to perform). The Black Book's read-again-to-escape choice changes nothing later and is fairly left out."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "NecroLichRitualQuest rewards (Lich, Undeath, Dark Resurgence, Unbind Soul, Light Steps) and choices (site becomes your ritual chamber); NecroQuest02 Shroud, NecroQuest03 Heart, NecroQuest04 elixir, NecroQuest05 Antioch's artifacts and knowledge. Script-only and unknown-stat notes are in unsure."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "NecroLichRitualQuest closes (mortal life, failed ritual kills you), NecroQuest05 closes (Antioch dies) and needs (Wynestra, Gundar, Selonius dead), NecroQuest03 closes (priest), NecroQuest04 closes (spoiled cauldron)."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Matches NecroQuest01 unsure (change-location start, Silver-Blood Inn, Spire key holder), NecroQuest05 unsure (no hold for Scourg Barrow), NecroLichRitualQuest unsure (rewards from script, recipes), NecroQuest04 unsure (which elixir)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json line undeath lists the seven quests in that order; all reads in checked/051.json; quest_starts_raw undeath: UndeathFixes.esp start game off, Ravenscorn Spire door key Undeath.esp:267210 'Ravernscorn Spire Key'."
+    }
+   }
+  },
+  {
+   "id": "the-tools-of-kagrenac",
+   "verdicts": {
+    "about": {
+     "verdict": "agree",
+     "note": "checked/052.json TOK_QUST_KagrenacTools takesYou (Silver-Blood Inn Markarth, College of Winterhold, Raven Rock, Ayleid ruins near the Cyrodiil border, Blackreach); quest_starts_raw the-tools-of-kagrenac has no conditions and startGame false, so no level gate."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "TOK_QUST_KagrenacTools starts: courier's anonymous note, Mathis Valen at the Silver-Blood Inn, he tells you where the tools are; needs []. The item-entering-inventory start and Keening are in unsure."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "Five rows in quests.json order Vonos, Yassour, KagrenacTools, LabyrinthPuzzle, SunderVault. Two fixes. My Precious 'where' gave only The Retching Netch, but TOK_QUST_DialogueYassour takesYou sends you to Nchardak (Solstheim) to retrieve Wraithguard; added. Kagrenac's Tools said you 'follow Mathis through a portal in Blackreach': its steps are 'Travel to Blackreach and find the entrance', 'Enter the mysterious portal', 'Find and enter the Dwarven ruins', 'Meet Mathis Valen within the ruins', so he is met past the portal, not followed; reworded. Other rows match Vonos steps, LabyrinthPuzzle steps and needs, SunderVault steps and needs."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "All five reads have choices []; My Precious's optional steps are noted in unsure, not as a branch."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "TOK_QUST_KagrenacTools rewards: Sunder (mace), Wraithguard (gauntlets), tools restored at the pedestal; the other four record no reward (their rewards [] and unsure)."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "TOK_QUST_KagrenacTools closes: Mathis Valen and two Sixth House bodyguards die (TOK_GLOB_DeadTotal 3); essential flag noted in unsure."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Matches TOK_QUST_KagrenacTools unsure (item start, Keening, weakened/full items, stone ruins, essential Mathis), Vonos unsure (cursed key as reward), Yassour unsure (handing back Wraithguard)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json line the-tools-of-kagrenac lists the five quests in that order; reads in checked/052.json; quest_starts_raw opening TOK_QUST_KagrenacTools, conditions empty, startGame false."
+    }
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "the-book-of-love",
+   "name": "The Book of Love",
+   "about": "A side quest for the Temple of Mara in Riften: Dinya Balu sends you to help people in love, first Fastred in Ivarstead, then Calcelmo in Markarth, then a pair of long-dead lovers. A mod adds a second quest, The Book of Love - Fastred's Choice, that lets Fastred leave her suitors and travel Skyrim with you.",
+   "getIn": {
+    "quest": "The Book of Love",
+    "who": "Dinya Balu",
+    "where": "the Temple of Mara in Riften; around noon to 3 pm she may be at the Riften market",
+    "how": "Talk to Dinya Balu and agree to help the temple; she sends you first to Fastred in Ivarstead.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "The Book of Love",
+     "what": "You match Fastred of Fellstar Farm with Bassianus or Klimmek, carry a poem bought from Yngvar the Singer from Calcelmo to Faleen and bring her letter back, then put on the Amulet of Mara and bring Fenrig to Ruki, returning to Dinya Balu after each.",
+     "where": "Ivarstead, Markarth and the Temple of Mara in Riften",
+     "needs": ""
+    },
+    {
+     "quest": "The Book of Love - Fastred's Choice",
+     "what": "Instead of choosing a suitor, Fastred comes travelling with you once her parents agree, and on returning to Ivarstead she decides whether to leave home for good or stay.",
+     "where": "Fellstar Farm and Klimmek's House in Ivarstead, the road across Skyrim, and the Temple of Mara in Riften",
+     "needs": "Offered by Fastred during her part of The Book of Love."
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Book of Love",
+     "options": [
+      "Match Fastred with Bassianus.",
+      "Match Fastred with Klimmek.",
+      "Suggest Fastred travel with you instead, which starts The Book of Love - Fastred's Choice."
+     ]
+    },
+    {
+     "at": "The Book of Love - Fastred's Choice",
+     "options": [
+      "Return Fastred's feelings, or turn her down; either way you head back to Ivarstead.",
+      "Fastred leaves Ivarstead: she tells her parents and both suitors, and Dinya Balu gives you both Mara's blessing if you are together.",
+      "Fastred stays in Ivarstead: you help her settle things by speaking to one of her suitors."
+     ]
+    }
+   ],
+   "gives": [
+    "Agent of Mara (perk), from Dinya Balu at the end of The Book of Love",
+    "Fastred as a travelling companion, in Fastred's Choice",
+    "Mara's blessing from Dinya Balu, if Fastred leaves Ivarstead with you as a couple"
+   ],
+   "closes": [
+    "If Fastred leaves Ivarstead for good, Bassianus goes to Riften alone and Klimmek stays in Ivarstead",
+    "While Fastred's Choice runs, one line of The Book of Love's dialogue is switched off"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records (no start conditions, starts with the game), so the level the line is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "Fastred's opening line for Fastred's Choice has no condition text in the extracts, so the exact point in The Book of Love when she offers it isn't confirmed. Where the ghosts Fenrig and Ruki are isn't in the files."
+    },
+    {
+     "field": "gives",
+     "why": "Agent of Mara comes from the quest script, not a confirmed hand-over. What Mara's blessing gives, whether Fastred stays as a permanent follower, and whether you keep the Amulet of Mara aren't stated."
+    },
+    {
+     "field": "closes",
+     "why": "Whether the suitor Fastred doesn't pick in The Book of Love is closed off isn't recorded; neither read lists an effect on him, so it is left out of closes."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-book-of-love: t02, TTFA_JourneyQuest",
+    "checked/048.json t02 (starts, takesYou, choices, steps, rewards, opens, people, unsure)",
+    "checked/048.json TTFA_JourneyQuest (needs, starts, choices, steps, rewards, closes, unsure)",
+    "quest_starts_raw the-book-of-love: no dialogue or event conditions, startGame true"
+   ]
+  },
+  {
+   "id": "seeking-a-cure",
+   "name": "Seeking A Cure",
+   "about": "Two quests for a vampire looking for a cure: Urag gro-Shub at the College of Winterhold points you to Falion in Morthal, and a mod's follow-up letter from Falion sets you making a potion with Phinis Gestor at the College. It needs you to be a vampire; the records give no level gate.",
+   "getIn": {
+    "quest": "Seeking A Cure",
+    "who": "Urag gro-Shub",
+    "where": "the Arcanaeum, College of Winterhold",
+    "how": "As a vampire, ask Urag about a cure and read 'Undeath Undone'; a note from Falion falls out and Urag sends you to Falion at Falion's House in Morthal.",
+    "needs": [
+     "Be a vampire"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Seeking A Cure",
+     "what": "Falion prepares for three days, you bring him a filled Black Soul Gem, and you stand in his circle at dawn while he performs a ritual that fails.",
+     "where": "the Arcanaeum, Falion's House in Morthal and the ritual site",
+     "needs": ""
+    },
+    {
+     "quest": "A Forlorn Hope",
+     "what": "A letter from Falion tells you how to make daedric essence; you make it, bring it to Phinis Gestor, wait for him to contact you and create a potion to remove vampirism.",
+     "where": "the Arcanaeum or the Bards College, the Aetherium Forge and the College of Winterhold",
+     "needs": "Seeking A Cure ended with the failed ritual."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Seeking A Cure",
+     "options": [
+      "Bring your own filled Black Soul Gem, or ask about the one Falion keeps.",
+      "Kill Falion after the ritual."
+     ]
+    },
+    {
+     "at": "A Forlorn Hope",
+     "options": [
+      "Drink the potion you made, or not; the quest ends asking 'Should I drink it?'"
+     ]
+    }
+   ],
+   "gives": [
+    "A potion to remove vampirism, which you make at the end of A Forlorn Hope"
+   ],
+   "closes": [
+    "Falion dies if you choose to kill him after the ritual"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records; the vampirism check itself isn't readable in the extracts."
+    },
+    {
+     "field": "getIn",
+     "why": "Rising at Dawn rewrites the opening and several of Falion's lines wait for an early hidden stage; what sets that stage, and where 'Undeath Undone' sits, aren't shown. You may also be able to go straight to Falion, who is rumoured to have studied vampires."
+    },
+    {
+     "field": "order",
+     "why": "Where the dawn ritual takes place isn't in the extracts. What sends Falion's letter for A Forlorn Hope, and how it arrives, aren't shown. Using the Aetherium Forge may need the quest that opens it, but that isn't in these records."
+    },
+    {
+     "field": "gives",
+     "why": "Rising at Dawn adds a cure potion to Seeking A Cure, but the extracts don't show whether you can end up cured there."
+    },
+    {
+     "field": "closes",
+     "why": "Whether killing Falion blocks his letter and so A Forlorn Hope isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line seeking-a-cure: VC01, OK_FH_Quest",
+    "checked/048.json VC01 (needs, starts, takesYou, choices, steps, closes, unsure)",
+    "checked/048.json OK_FH_Quest (needs, starts, takesYou, choices, steps, rewards, unsure)",
+    "quest_starts_raw seeking-a-cure: no dialogue or event conditions, startGame true; Falion's House door locked (Adept)"
+   ]
+  },
+  {
+   "id": "dark-ancestor",
+   "name": "Dark Ancestor",
+   "about": "A short job in Falkreath: Dengeir of Stuhn tells you about his ancestor Vighar, a vampire, and you destroy Vighar at Bloodlet Throne and tell Dengeir he is dead. One of Dengeir's opening lines needs level 10, and Bloodlet Throne's boss is leveled 55 to 125.",
+   "getIn": {
+    "quest": "Dark Ancestor",
+    "who": "Dengeir of Stuhn",
+    "where": "Dengeir's House in Falkreath; from noon for about four hours he is at Dead Man's Drink, otherwise at home or around town",
+    "how": "Talk to Dengeir about his ancestor Vighar.",
+    "needs": [
+     "Level 10 or higher (on one of Dengeir's opening lines)"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Dark Ancestor",
+     "what": "You tell Dengeir that Vighar is dead and he pays you.",
+     "where": "Dengeir's House, Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "Dark Ancestor",
+     "what": "You destroy the vampire Vighar, the boss of Bloodlet Throne.",
+     "where": "Bloodlet Throne, Falkreath",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Gold from Dengeir"
+   ],
+   "closes": [
+    "Vighar"
+   ],
+   "unsure": [
+    {
+     "field": "getIn.needs",
+     "why": "The unofficial patch sets a level 10 check on one of Dengeir's three opening lines and changes another condition the extract can't name on all three; which line actually starts the quest isn't certain."
+    },
+    {
+     "field": "order",
+     "why": "The line lists the report to Dengeir first, but you must destroy Vighar before you can tell Dengeir he is dead. How the two Dark Ancestor quests hand over isn't shown, and neither has journal text."
+    },
+    {
+     "field": "gives",
+     "why": "The gold comes from a script property shared by both quests; the amount isn't in the files."
+    }
+   ],
+   "evidence": [
+    "quests.json line dark-ancestor: FreeformFalkreathQuest03, FreeformFalkreathQuest03B",
+    "checked/050.json FreeformFalkreathQuest03 (needs, starts, rewards, opens, unsure)",
+    "checked/050.json FreeformFalkreathQuest03B (takesYou, closes, people, unsure)",
+    "quest_starts_raw dark-ancestor: USSEP GetLevel >= 10 on INFO Skyrim.esm:0B83BF",
+    "LCTN Skyrim.esm:016F85 Bloodlet Throne boss leveled 55-125 (via checked/050.json)"
+   ]
+  },
+  {
+   "id": "undeath",
+   "name": "Undeath",
+   "about": "A Necromancer story from a mod: you track the Necromancer Antioch and his three followers from an ambushed Vigil of Stendarr caravan in the Reach to Scourg Barrow in the Dragontail Mountains, then can learn a ritual in Apocrypha that turns you into a Lich. Scourg Barrow's enemies run from level 30 to 80, and Antioch is level 80 in the records.",
+   "getIn": {
+    "quest": "In their Footsteps",
+    "who": "",
+    "where": "on your travels; it starts when you enter a new area",
+    "how": "Your journal notes a rumor that a Vigil of Stendarr caravan was attacked on a road in the Reach; go looking for it.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Black Book: Whispers of the Veil",
+     "what": "You read the Black Book 'Whispers of the Veil' from deep in Scourg Barrow, which takes you to Apocrypha to learn the lost ritual to become a Lich.",
+     "where": "Apocrypha",
+     "needs": "Find the Black Book in Scourg Barrow."
+    },
+    {
+     "quest": "The Path of Transcendence",
+     "what": "You construct the Phylactery, create the Elixir of Defilation, set up a Ritual Site and complete the Ritual of Transcendence.",
+     "where": "Ravenscorn Spire or the Solitude Sewers",
+     "needs": "Finish Black Book: Whispers of the Veil."
+    },
+    {
+     "quest": "In their Footsteps",
+     "what": "You find the ambushed caravan, read the Ambush Orders on a dead Necromancer and search Ravenscorn Spire for Antioch's journal.",
+     "where": "a road in the Reach and Ravenscorn Spire",
+     "needs": ""
+    },
+    {
+     "quest": "Exhuming Power",
+     "what": "You stop Wynestra and her Necromancers digging up the grave of former Archmage Vyngald.",
+     "where": "Archmage Vyngald's grave, Winterhold",
+     "needs": "Finish In their Footsteps."
+    },
+    {
+     "quest": "Arkay the Enemy",
+     "what": "You clear Gundar and his Necromancers out of a Temple of Arkay and decide the fate of the captive priest.",
+     "where": "Temple of Arkay, Falkreath hold",
+     "needs": "Finish In their Footsteps."
+    },
+    {
+     "quest": "Infernal Alchemy",
+     "what": "You kill Selonius the Mad and his Necromancers at their cauldron and decide what to do with it.",
+     "where": "the Ritual Site, a plateau overlooking the Reach",
+     "needs": "Finish In their Footsteps."
+    },
+    {
+     "quest": "Scourg Barrow",
+     "what": "You search the bodies of Antioch's three followers, read the Orders, travel to the Dragontail Mountains and defeat Antioch in Scourg Barrow.",
+     "where": "Scourg Barrow, Dragontail Mountains",
+     "needs": "Wynestra, Gundar and Selonius the Mad are all dead."
+    }
+   ],
+   "branches": [
+    {
+     "at": "Exhuming Power",
+     "options": [
+      "Re-cover Vyngald's grave and let him rest.",
+      "Take the Shroud of Vyngald from the coffin and defeat his apparition."
+     ]
+    },
+    {
+     "at": "Arkay the Enemy",
+     "options": [
+      "Free the captive Priest of Arkay.",
+      "Slaughter the priest and take the Priest of Arkay's Heart."
+     ]
+    },
+    {
+     "at": "Infernal Alchemy",
+     "options": [
+      "Destroy the cauldron.",
+      "Try to complete the concoction for Namira's Corrosion or Embalming Essence; if it fails, the cauldron is spoiled."
+     ]
+    },
+    {
+     "at": "The Path of Transcendence",
+     "options": [
+      "Set up the Ritual Site at Ravenscorn Spire or in the Solitude Sewers.",
+      "Perform the ritual and become a Lich for good, or don't."
+     ]
+    }
+   ],
+   "gives": [
+    "Becoming a Lich, with Undeath (ability), Dark Resurgence (ability), Unbind Soul (spell) and Light Steps (perk)",
+    "A ritual chamber at Ravenscorn Spire or in the Solitude Sewers",
+    "Shroud of Vyngald",
+    "Priest of Arkay's Heart",
+    "Namira's Corrosion or Embalming Essence",
+    "Antioch's artifacts and knowledge"
+   ],
+   "closes": [
+    "Your mortal life: becoming a Lich can't be undone, and in your true form people of Skyrim fear and hate you (Illusion magic lets you look mortal again)",
+    "If any part of the Lich ritual is missing or wrong, it fails and you are killed",
+    "Antioch, Wynestra, Gundar and Selonius the Mad die",
+    "The captive Priest of Arkay dies if you take his heart",
+    "A failed brew in Infernal Alchemy spoils the cauldron for good"
+   ],
+   "unsure": [
+    {
+     "field": "getIn",
+     "why": "The start is a change-location event whose conditions aren't decoded, so which place or level sets it off isn't known. The quest also uses the Silver-Blood Inn in Markarth for something the records don't explain."
+    },
+    {
+     "field": "order",
+     "why": "The line lists the two Lich quests first, but by their reads they come after Scourg Barrow. Ravenscorn Spire and Scourg Barrow have no hold in the places index; the Spire's door needs the 'Ravernscorn Spire Key' and who carries it isn't shown. The scripts that start the follow-up quests aren't in the files."
+    },
+    {
+     "field": "gives",
+     "why": "The Lich rewards are named from script properties, without effect text. The Phylactery and Elixir recipes aren't in the files; the earlier journals hint that the Heart, the elixirs and the Shroud matter for them. Which of the two elixirs Infernal Alchemy gives isn't shown. The Shroud's stats aren't known."
+    }
+   ],
+   "evidence": [
+    "quests.json line undeath: NecroBlackBookQuest01, NecroLichRitualQuest, NecroQuest01-05",
+    "checked/051.json NecroQuest01 (starts, takesYou, opens, unsure)",
+    "checked/051.json NecroQuest02, NecroQuest03, NecroQuest04 (needs, takesYou, choices, rewards, closes, people)",
+    "checked/051.json NecroQuest05 (needs, takesYou, people: Antioch level 80; places: enemies 30-80)",
+    "checked/051.json NecroBlackBookQuest01, NecroLichRitualQuest (needs, choices, rewards, closes, unsure)",
+    "quest_starts_raw undeath: startGame turned off by UndeathFixes.esp; Ravenscorn Spire door key Undeath.esp:267210"
+   ]
+  },
+  {
+   "id": "the-tools-of-kagrenac",
+   "name": "The Tools of Kagrenac",
+   "about": "A mod quest line in which Mathis Valen sends you after the lost Tools of Kagrenac, taking you from Markarth to the College of Winterhold, Raven Rock on Solstheim, Ayleid ruins near the Cyrodiil border and Blackreach. The records give no level gate.",
+   "getIn": {
+    "quest": "Kagrenac's Tools",
+    "who": "a courier, then Mathis Valen",
+    "where": "the note finds you; Mathis waits in the Silver-Blood Inn in Markarth",
+    "how": "A courier hands you an anonymous note; read it and meet Mathis Valen at the Silver-Blood Inn, who tells you where the lost Tools of Kagrenac are.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Lost Heritage",
+     "what": "You find Vonos Dreloth's missing ring and return it to him.",
+     "where": "College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "My Precious",
+     "what": "You can bring Wraithguard back to Yassour Tansumiran; both steps are optional.",
+     "where": "The Retching Netch in Raven Rock, and Nchardak",
+     "needs": ""
+    },
+    {
+     "quest": "Kagrenac's Tools",
+     "what": "You get Sunder and Wraithguard, find three Bal am as Aedra stones, go through a portal in Blackreach to Dwarven ruins, meet Mathis there, defeat him and his two bodyguards and restore the tools at an ancient pedestal.",
+     "where": "Silver-Blood Inn in Markarth, College of Winterhold, Raven Rock, Nchardak, Ayleid ruins, Blackreach and the Silent Ruins",
+     "needs": ""
+    },
+    {
+     "quest": "Darkest Depths",
+     "what": "You lower two portcullises, find the key to the Main Chamber and defeat the Ayleid Lich.",
+     "where": "Oio-Lalor, Falkreath",
+     "needs": "Searching Oio-Lalor during Kagrenac's Tools."
+    },
+    {
+     "quest": "Vivec's Trial of Wisdom",
+     "what": "You find the three Stanzas of Kagrenac, place them on the receptacles and disable the magical barrier.",
+     "where": "Rkulftzul, Sealed Vault, near Winterhold",
+     "needs": "The cursed key from Vonos Dreloth."
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Sunder (mace)",
+    "Wraithguard (gauntlets)",
+    "The Tools of Kagrenac restored to full power"
+   ],
+   "closes": [
+    "Mathis Valen and his two Sixth House bodyguards die in the final fight"
+   ],
+   "unsure": [
+    {
+     "field": "getIn",
+     "why": "Kagrenac's Tools starts when an item enters your inventory, and it holds the Keening dagger as a script property, so picking up Keening may be the trigger; the conditions aren't in the files."
+    },
+    {
+     "field": "order",
+     "why": "The line lists Lost Heritage and My Precious first, but Kagrenac's Tools is the opening quest that sends you to Vonos and Yassour; their dialogue likely only opens then, but the line conditions aren't shown. Whether Lost Heritage's ring is what earns the cursed key isn't stated. Which ruin holds each Bal am as Aedra stone isn't certain."
+    },
+    {
+     "field": "gives",
+     "why": "The plugin has weakened and full-power Sunder, Wraithguard and Keening; exactly which items you end up holding isn't spelled out. Lost Heritage, My Precious, Darkest Depths and Vivec's Trial of Wisdom record no reward."
+    },
+    {
+     "field": "closes",
+     "why": "Mathis Valen is flagged essential in the records though the quest has you defeat him. Whether handing Wraithguard to Yassour costs you the gauntlet isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-tools-of-kagrenac: TOK_QUST_DialogueVonos, TOK_QUST_DialogueYassour, TOK_QUST_KagrenacTools, TOK_QUST_LabyrinthPuzzle, TOK_QUST_SunderVault",
+    "checked/052.json TOK_QUST_KagrenacTools (starts, takesYou, steps, rewards, opens, closes, unsure)",
+    "checked/052.json TOK_QUST_DialogueVonos, TOK_QUST_DialogueYassour (starts, steps, unsure)",
+    "checked/052.json TOK_QUST_LabyrinthPuzzle, TOK_QUST_SunderVault (needs, takesYou, steps)",
+    "quest_starts_raw the-tools-of-kagrenac: opening TOK_QUST_KagrenacTools, no dialogue or event conditions, startGame false"
+   ]
+  }
+ ]
+}

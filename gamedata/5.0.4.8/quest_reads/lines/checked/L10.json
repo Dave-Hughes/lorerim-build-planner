@@ -1,0 +1,649 @@
+{
+ "checks": [
+  {
+   "id": "lucien",
+   "verdicts": {
+    "about": {
+     "verdict": "fix",
+     "note": "people_raw Lucien.esp:005900 gives race Imperial, cell Dead Man's Drink, Falkreath; nothing in his record, the two checked reads (062 JRLucienPersonal1, JRLucienGetHorseQuest) or questlines_raw calls him a scholar (grep of the raw files for 'scholar' finds nothing tied to Lucien), so 'scholar' is dropped. Dumzbthar on Solstheim and the two trips match takesYou of both reads. No GetLevel in quest_starts_raw 'lucien'; unsure covers the level."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "062 JRLucienPersonal1 starts: Lucien Flavius, wherever he travels with you, first in Dead Man's Drink; canDoWhy: letter and key from his father after he has told you about Dumzbthar; needs: follower having talked about Dumzbthar plus days passing (quest_starts_raw 'lucien': GetStageDone 00591E stage 15, JRLucienDumzbtharReadyTime vs GameDaysPassed). Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "quests.json line 'lucien' order is JRLucienGetHorseQuest (Intruders), JRLucienPersonal1 (The Oblivion Engine); rows follow it as the brief requires, with the story order flagged in unsure. Intruders row matches its read (resonant sphere, Daedra through the Oblivion Gate, Dumzbthar Core; needs The Oblivion Engine and Lucien with you). Oblivion Engine row matches its objectives (switches, valves, 'Destroy Dumzbthar') and takesYou (Raven Rock 0.5 km)."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Both reads have choices []; no branch."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "JRLucienPersonal1 rewards: lab in Dumzbthar, returns there when dismissed, rejoins on request; JRLucienGetHorseQuest rewards: Clive travels with Lucien and appears when needed. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Both reads have closes []."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Entries match the reads' unsure: Intruders needs read from journal not a condition (GetHorseQuest), undecoded fn426/fn359 and the days-passed wait (Personal1), the sphere trigger not in the files (GetHorseQuest canDo), and no GetLevel in quest_starts_raw."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json line ids match; both reads are in checked/062.json; quest_starts_raw 'lucien' opening JRLucienPersonal1 with GetStageDone 00591E stage 15 and the ReadyTime global; people_raw places Lucien in Dead Man's Drink; questlines_raw 'Lucien - Immersive Fully Voiced Male Follower' exists."
+    }
+   }
+  },
+  {
+   "id": "serana",
+   "verdicts": {
+    "about": {
+     "verdict": "fix",
+     "note": "'all ... taken with Serana travelling with you' overreaches: the six romance and cure reads in checked/062 each need 'Serana travelling with you', but SDE_TheElderScrolls needs only Awakening and its unsure says whether she must be following isn't shown. 'Short errands' also isn't in the reads (From Arena to Oblivion is a four-book search). Reworded to say the last six need her with you. Places match the reads' takesYou (Arcanaeum; Solitude, Whiterun, Castle Volkihar Courtyard; Falion's House, Morthal)."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "SDE_TheElderScrolls starts: Serana, with you or Fort Dawnguard / Volkihar Keep (packages DLC1SeranaSandboxInHQ / InCastle); how: four books, lessons, College of Winterhold, first step Urag; needs: freed in Awakening. quest_starts_raw 'serana' has no conditions. Matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "Row order matches quests.json line 'serana' (SDE_TheElderScrolls, R001, R002, R004, R005, RMQ201, DLC1SeranaCureSelfQuest). Mirrors of Youth row said Braith 'has taken' the potion, which reads as drinking it; SDE_R004 people says she plans to use it on Lars and the objective is 'Return the potion to Arcadia'. Reworded to the objectives. Other rows match their reads' steps, takesYou and needs (R001 safe bed/inn; R002 Elisif job, Torygg's scroll, Kilkreath; R005 Fralia ring, courtyard; RMQ201 dance, apologise, courtyard; cure at Falion's and the swamp circle)."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "All seven reads have choices []; R002's unsure finds no second way through at Kilkreath."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "SDE_TheElderScrolls rewards: Serana's Ring (poison and disease) and lessons; R002: 500 septims from Elisif; R005: Loved (script, unsure kept); cure: Gold Ruby Necklace, Health regenerates 50% faster (unsure kept). R004's half-price potions and R001's Anemia/Blood Feeding left out, the latter noted in unsure. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DLC1SeranaCureSelfQuest closes: 'Serana is no longer a vampire'; other reads closes []. R001's fail branch is kept in unsure. Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Entries trace to the reads' unsure: no conditions on romance lines (R001-R005, RMQ201), RMQ201 as the romance add-on's opening (questlines_raw 'Serana Dialogue Expansion - Romance ESL' opening 000179) and Ambivalence's courtyard look-back, script name hint (TheElderScrolls), cure start not shown, script-only Loved and necklace. Added one note for the Braith wording fix."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json ids match; all seven reads in checked/062.json; quest_starts_raw 'serana' opening SeranaDialogueExpansion.esp:0000C8 with dialogue [] event []; questlines_raw romance opening 000179; people_raw Serana Dawnguard.esm:002B6C in Dimhollow Cavern."
+    }
+   }
+  },
+  {
+   "id": "katana",
+   "verdicts": {
+    "about": {
+     "verdict": "fix",
+     "note": "'repeatable' has no record: AK69MegaraBanditQuest (checked/063) is canDo 'radiant' with no repeat shown, and Bob's 23 Oct ruling drops 'repeatable' without one. Changed to 'radiant'. The rest matches: people_raw Katana in The Winking Skeever, Solitude; River the thief and Megara the informant from AK69KatanaPersonalQuest people; inns and hideouts from its takesYou."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "AK69KatanaPersonalQuest starts: Katana, travelling with you, first in the Winking Skeever; how: talk when you have a moment, then the Drunken Huntsman; needs: Meeting Katana (quests_raw 617D75 stage 15 'Katana recruited.') and the ReadyTime wait (quest_starts_raw 'katana'). Matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "Row order matches quests.json line 'katana' (Carrot, EasterEggs, KatanaPersonal, MegaraBandit, Serenata, SugarandSpice, TheKhatsEye, TheRavensLament). Megara's row said 'A repeatable job'; the read has canDo radiant and no repeat record, so it now says 'A radiant job'. Other rows match their reads: Carrot (Chillfurrow, Bannered Mare, Cappy), EasterEggs (Solitude, Honningbrew, Riften, Riverwood; needs Serenata, journal-based), KatanaPersonal (four inns, three bandits, River near Fort Fellhammer), Serenata (Shale, scroll, needs Ravens' Lament), Sugar and Spice (Kilerth's Rest, Katla's Farm), Khat's Eye (Moorside, Movarth's Lair, Thalmor spies), Ravens' Lament (Bee and Barb, Vilemyr, Fallowstone, Shale)."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "KatanaPersonalQuest choices: Elli warns you off with coins, enemies if you go anyway; Carrot choices: help or refuse (fails, stage 69); Ravens' Lament stage 100 log: Katana says Vilemyr Inn, Megara Fallowstone Cave; Sugar and Spice choices: two endings ('Well played, Katana'). Matches, with what decides each kept in unsure."
+    },
+    "gives": {
+     "verdict": "fix",
+     "note": "Entries match the reads (KatanaPersonal opens 'Megara joining you' and bounty reward; Ravens' Lament opens 'Shale joining you', reward Tsukikage CE3174 script-only; MegaraBandit gold via Gold001). 'gold for each of her bandit jobs' implied repeats with no record; now 'gold for her bandit jobs'. The gives unsure now quotes the KatanaPersonalQuest stage 270 log ('Maybe she'd even like to join us'), which only hopes Megara joins."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "AK69TheRavensLamentQuest closes ['River'], stage 310 log 'River's gone'; whether she dies is in unsure. Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Entries trace to the reads' unsure (journal-only order links, undecoded GetStage 7D55E1 and days wait, Elli lock-out switch AK69PQLockedOut, Tsukikage crate, 'River's gone'). The gives note was updated to say the joining is a hope in the stage 270 journal."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json ids match; all eight reads in checked/063.json; quest_starts_raw 'katana' opening 8E1B19 with GetGlobalValue 617D76==1, GetStage 617D75>=15, GetStage 7D55E1>=5; people_raw Katana in the Winking Skeever and Megara 8E6C1E in the Drunken Huntsman; Tsukikage CE3174. Added the stage 270 journal line behind the gives fix."
+    }
+   }
+  },
+  {
+   "id": "fura",
+   "verdicts": {
+    "about": {
+     "verdict": "agree",
+     "note": "aaFuraQ1 (checked/063): Fura a Volkihar vampire (DLC1VampireFaction), placed in Volkihar Keep; meets her mother in Solitude. aaFuraQ2 (checked/064): legate Cipius, needs Vampire's Seduction. Two short quests: 3 and 4 objectives. No GetLevel; quest_starts_raw 'fura' conditions empty; unsure covers the level."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "aaFuraQ1 starts: Fura Bloodmouth, Volkihar Keep inside Castle Volkihar, agree to go to Solitude; takesYou Angeline's Aromatics; needs []; questlines_raw opening 'I will accompany Fura Bloodmouth to Solitude and meet her mother.' Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "quests.json order aaFuraQ1, aaFuraQ2. Blood Ties row matches its objectives and the Volkihar branch; Bloodmouth row matches its first step (Vampire's Seduction on Cipius in Whiterun, Cold Rock Pass, Hjaalmarch) and needs."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "aaFuraQ1 choices: reunite / 'Kill Angeline, as a true Volkihar'; aaFuraQ2 choices: Death Hounds kill Cipius / persuade Fura to let him go. Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Both reads have rewards []; the Reanimate Corpse script property (DeadThrall) is left out per aaFuraQ2 unsure."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "aaFuraQ1 closes: Angeline Morrard if you kill her; aaFuraQ2 closes: Cipius dies if the Death Hounds kill him. Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Entries match the reads' unsure: no condition on Fura's line and recruitment not shown (Q1, Q2), the 'finish what must be done' link (Q2 needs), Reanimate Corpse (Q2 rewards), Cipius essential vs journal and Q1's failing end (Q1 choices, Q2 closes)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json ids aaFuraQ1, aaFuraQ2; reads in checked/063 and 064; quest_starts_raw 'fura' opening FDE Fura.esp:000933, dialogue [] event []; people_raw Fura Dawnguard.esm:003363 in Volkihar Keep; Cipius 0844D1 essential and Cold Rock Pass 0BC0A3 Hjaalmarch per aaFuraQ2 evidence."
+    }
+   }
+  },
+  {
+   "id": "faralda",
+   "verdicts": {
+    "about": {
+     "verdict": "fix",
+     "note": "Facts match aaFaraldaQ1/Q2 (checked/064): letter for aunt Eilonwy, Merandil a Thalmor Commander, Lost Prospect Mine next to Riften, both with Faralda as companion. 'Destruction teacher' is a paraphrase; the questlines_raw 'Follower Dialogue Expansion - Faralda' begins line calls her 'the Professor of Destruction School in the College of Winterhold', so the game's word 'Professor of Destruction' is used. No GetLevel; quest_starts_raw 'faralda' conditions empty; unsure covers the level."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "aaFaraldaQ1 starts: Faralda in the Hall of Countenance or outside from 9 am to 3 pm (StandOutside9x6), or with you; how: letter for Eilonwy to Vekel the Man in the Ragged Flagon; needs: Faralda travelling with you. Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "quests.json order aaFaraldaQ1, aaFaraldaQ2. Part 1 row matches its objectives (letter to Vekel, keep travelling, return to the College); Part 2 row matches Q2 takesYou (Lost Prospect Mine, The Rift; back to the College) and needs Part 1."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "aaFaraldaQ2 choices: attack Merandil now (optional) or wait and kill him when he tries to force her to Alinor, or let him take her (branch 'let him take her'). The row merges the two fight options. Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "aaFaraldaQ2 opens: Eilonwy, Expert Alchemy trainer, in the Hall of Countenance on either ending (package aaFaraldaEilonwySandbox GetStage 000A40 >= 100); rewards: Gold from Gold001, script-only, unsure kept. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "aaFaraldaQ2 closes: Merandil dies if you fight him; Faralda leaves for Alinor if you let him. Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Entries match the reads' unsure: recruitment and fail cause not shown (Q1), Part 2 start in the change-location helper and no tie condition (Q2 starts, needs), gold script-only, Merandil essential vs journal, Faralda's fate after Alinor."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quests.json ids aaFaraldaQ1, aaFaraldaQ2; both reads in checked/064; quest_starts_raw 'faralda' opening FDE Faralda.esp:00096A, dialogue [] event []; people_raw Faralda 01C197 in Hall of Countenance, Eilonwy 000A5B; Merandil 00096B essential per Q2 evidence. Added the questlines_raw begins line behind the about fix."
+    }
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "lucien",
+   "name": "Lucien",
+   "about": "Lucien Flavius is an Imperial follower, first found in Dead Man's Drink in Falkreath, whose two quests take you to the Dwemer ruin of Dumzbthar on Solstheim. The line has two quests, each a single trip into the ruin.",
+   "getIn": {
+    "quest": "The Oblivion Engine",
+    "who": "Lucien Flavius",
+    "where": "Dead Man's Drink in Falkreath, or wherever he is travelling with you",
+    "how": "Take Lucien on as your follower and talk with him about a Dwemer ruin called Dumzbthar; some days later he gets a letter and key from his father and asks you to take him to the ruin on Solstheim.",
+    "needs": [
+     "Lucien Flavius travelling with you, having talked with him about Dumzbthar",
+     "Some days passing after that talk"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Intruders",
+     "what": "Lucien's resonant sphere warns that Dumzbthar is under attack; go back and fight the Daedra that came through its Oblivion Gate.",
+     "where": "Dumzbthar and Dumzbthar Core, Solstheim",
+     "needs": "The Oblivion Engine finished, and Lucien travelling with you"
+    },
+    {
+     "quest": "The Oblivion Engine",
+     "what": "Take Lucien to Dumzbthar, work the switches and valves, and shut down the Daedric intelligence that runs the ruin.",
+     "where": "Dumzbthar, a short walk from Raven Rock on Solstheim",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Lucien sets up his laboratory in Dumzbthar, goes back there when dismissed and rejoins you when asked (The Oblivion Engine)",
+    "Clive, a horse that travels with Lucien and appears when he needs it (Intruders)"
+   ],
+   "closes": [],
+   "unsure": [
+    {
+     "field": "order",
+     "why": "The line's record order puts Intruders first, but Intruders needs The Oblivion Engine done (Lucien has to have brought Dumzbthar back); the story starts with The Oblivion Engine."
+    },
+    {
+     "field": "getIn",
+     "why": "The opening line needs a stage of Lucien's follower quest plus two checks the files can't decode, and the wait is kept against days passed; how many days isn't readable."
+    },
+    {
+     "field": "about",
+     "why": "No level gate is in the records for any quest in this line, so the level it is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "What sets off the resonant sphere for Intruders (time passing, where you are) isn't in the files."
+    }
+   ],
+   "evidence": [
+    "quests.json line 'lucien': JRLucienGetHorseQuest, JRLucienPersonal1",
+    "checked/062.json JRLucienPersonal1 (The Oblivion Engine): starts, needs, rewards, Dumzbthar Lucien.esp:2B1404 Raven Rock 0.5 km",
+    "checked/062.json JRLucienGetHorseQuest (Intruders): needs The Oblivion Engine, reward Clive",
+    "quest_starts_raw line 'lucien': opening JRLucienPersonal1, GetStageDone Lucien.esp:00591E stage 15, globals JRLucienDumzbtharReadyTime, GameDaysPassed",
+    "people_raw Lucien Flavius Lucien.esp:005900 in Dead Man's Drink, Falkreath",
+    "questlines_raw 'Lucien - Immersive Fully Voiced Male Follower'"
+   ]
+  },
+  {
+   "id": "serana",
+   "name": "Serana",
+   "about": "These are extra quests for Serana from the Dawnguard story: a search for history books, a romance path with trips to Solitude, Whiterun and Castle Volkihar, and her cure at Falion's in Morthal. The line has seven quests; the last six are taken with Serana travelling with you.",
+   "getIn": {
+    "quest": "From Arena to Oblivion",
+    "who": "Serana",
+    "where": "with you if she's following, otherwise Fort Dawnguard or Volkihar Keep",
+    "how": "Once you have freed her, Serana asks you to find four books about the events behind the Dragonborn Prophecy and offers you lessons in return; start by asking Urag gro-Shub in the Arcanaeum at the College of Winterhold.",
+    "needs": [
+     "Awakening: free Serana in Dimhollow Crypt"
+    ]
+   },
+   "order": [
+    {
+     "quest": "From Arena to Oblivion",
+     "what": "Find four history books for Serana, starting with Urag gro-Shub in the Arcanaeum, and give them to her.",
+     "where": "The Arcanaeum, College of Winterhold",
+     "needs": "Serana freed in Awakening"
+    },
+    {
+     "quest": "The Bleeding Flower",
+     "what": "Serana asks to feed on your blood while you sleep; find a safe bed, an inn if you can, and rest.",
+     "where": "any inn or safe bed",
+     "needs": "Serana travelling with you"
+    },
+    {
+     "quest": "Solitude in Company",
+     "what": "Show Serana around Solitude, then take a job from Jarl Elisif to get Torygg's scroll back from a thief at Kilkreath.",
+     "where": "Solitude and Kilkreath Ruins, Haafingar",
+     "needs": ""
+    },
+    {
+     "quest": "Mirrors of Youth",
+     "what": "Buy potions at Arcadia's Cauldron, find Braith, who has Arcadia's experimental potion, and return the potion to Arcadia.",
+     "where": "Arcadia's Cauldron and the Cloud District, Whiterun",
+     "needs": "Be on Unseen Visions, before reaching the Ancestor Glade"
+    },
+    {
+     "quest": "Ambivalence",
+     "what": "Tell Serana how you feel, have Fralia Gray-Mane make her a ring, and give it to her in the Castle Volkihar courtyard.",
+     "where": "Fralia Gray-Mane's stall in Whiterun and the Castle Volkihar Courtyard",
+     "needs": ""
+    },
+    {
+     "quest": "At the Tempo of our Heartbeats",
+     "what": "Ask Serana to dance, apologise the next day, and finish the talk with her in the Castle Volkihar courtyard.",
+     "where": "Castle Volkihar Courtyard",
+     "needs": ""
+    },
+    {
+     "quest": "Serana's cure vampirism",
+     "what": "Follow Serana to Falion in Morthal and watch the ritual that cures her at the summoning circle in the swamp.",
+     "where": "Falion's House and the swamp near Morthal, Hjaalmarch",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Serana's Ring, which shields its bearer from poison and disease (From Arena to Oblivion)",
+    "Lessons from Serana in skills she's good at (From Arena to Oblivion)",
+    "500 septims from Jarl Elisif (Solitude in Company)",
+    "Loved, the rested bonus a spouse normally gives (Ambivalence)",
+    "Serana's Gold Ruby Necklace: Health regenerates 50% faster (Serana's cure vampirism)"
+   ],
+   "closes": [
+    "Serana is no longer a vampire once cured (Serana's cure vampirism)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate is in the records for any quest in this line, so the level it is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "The line's record order isn't story order for the romance quests: the romance add-on opens with At the Tempo of our Heartbeats, and Ambivalence's journal looks back to the courtyard talk, so At the Tempo of our Heartbeats likely comes before Ambivalence. The conditions on Serana's romance lines aren't in the files, so how far the romance must have gone for each isn't known."
+    },
+    {
+     "field": "getIn",
+     "why": "Whether Serana must be following you for From Arena to Oblivion isn't shown; its script is named after the main quest The Throat of the World, which hints at when it is offered, but no condition says so."
+    },
+    {
+     "field": "order",
+     "why": "What starts Serana's cure vampirism (what you say to her, or which Dawnguard quest must be done first) isn't in the files."
+    },
+    {
+     "field": "gives",
+     "why": "Which skills Serana's lessons cover isn't readable. Loved comes from the Ambivalence script, not confirmed in play. The necklace comes from Serana Dialogue Expansion and its text ties it to the cure, but the hand-over isn't traced. The Bleeding Flower's two effects, Anemia and Blood Feeding, aren't explained in the files, so they're left out."
+    },
+    {
+     "field": "closes",
+     "why": "The Bleeding Flower fails if you reach Serana's home before sleeping; which place counts as her home isn't stated."
+    },
+    {
+     "field": "order",
+     "why": "Mirrors of Youth's journal says Braith plans to use the potion on Lars Battle-Born; whether she has drunk any of it isn't stated."
+    }
+   ],
+   "evidence": [
+    "quests.json line 'serana': SDE_TheElderScrolls, SDE_R001, SDE_R002, SDE_R004, SDE_R005, SDE_RMQ201, DLC1SeranaCureSelfQuest",
+    "checked/062.json all seven quests",
+    "quest_starts_raw line 'serana': opening SDE_TheElderScrolls (SeranaDialogueExpansion.esp:0000C8), no conditions",
+    "questlines_raw 'Serana Dialogue Expansion - Romance ESL': opening SeranaDialogueExpansion - Romance.esp:000179 (At the Tempo of our Heartbeats)",
+    "people_raw Serana Dawnguard.esm:002B6C placed in Dimhollow Cavern",
+    "Serana's Ring SeranaDialogueExpansion.esp:000138; necklace SeranaDialogueExpansion.esp:0002E6; Loved Skyrim.esm:10D96A"
+   ]
+  },
+  {
+   "id": "katana",
+   "name": "Katana and Megara",
+   "about": "Katana, a follower first met in the Winking Skeever in Solitude, hunts a thief named River with her informant Megara, and their story goes on through inns, bandit hideouts and lighter trips across Skyrim. The line has seven story quests plus Megara's radiant bandit jobs.",
+   "getIn": {
+    "quest": "Chasing the Current",
+    "who": "Katana",
+    "where": "The Winking Skeever in Solitude, then wherever she is travelling with you",
+    "how": "Recruit Katana; after some time talk to her when you have a moment, and she sends you to wait at a table in the Drunken Huntsman in Whiterun.",
+    "needs": [
+     "Meeting Katana: recruit Katana",
+     "Some days passing after recruiting her"
+    ]
+   },
+   "order": [
+    {
+     "quest": "The Sweetest Carrot",
+     "what": "Help Megara steal a carrot from Chillfurrow Farm for her horse, Cappy, then talk it over at the Bannered Mare.",
+     "where": "Chillfurrow Farm and the Bannered Mare, Whiterun",
+     "needs": "Megara travelling with you"
+    },
+    {
+     "quest": "Honey Nuts and the Chin of Fate",
+     "what": "Take Katana and Megara on a trip to Solitude, Honningbrew Meadery, Riften and Riverwood.",
+     "where": "Solitude, Honningbrew Meadery, Riften and Riverwood",
+     "needs": "Serenata finished; Katana and Megara with you"
+    },
+    {
+     "quest": "Chasing the Current",
+     "what": "Follow Megara's leads from inn to inn, defeat three bandits for their bounties, and confront the thief River near Fort Fellhammer.",
+     "where": "Inns in Whiterun, Markarth, Riften and Winterhold; Silent Moons Camp, Kolskeggr Mine, Broken Helm Hollow and Kilerth's Rest",
+     "needs": "Katana recruited, and some days passed"
+    },
+    {
+     "quest": "Megara's Radiant Quests",
+     "what": "A radiant job: Megara sends you to kill a bandit leader at a hideout she picks, then pays you.",
+     "where": "a bandit hideout Megara picks",
+     "needs": ""
+    },
+    {
+     "quest": "Serenata",
+     "what": "Look after Shale while Katana and Megara plan their wedding, then use their scroll to reach the ceremony.",
+     "where": "a city by day, then the wedding the scroll takes you to",
+     "needs": "The Ravens' Lament finished; Katana and Shale with you"
+    },
+    {
+     "quest": "Sugar and Spice",
+     "what": "Go back to Kilerth's Rest with Katana, then spend time with her on the coast by Katla's Farm.",
+     "where": "Kilerth's Rest, Winterhold, and the coast by Katla's Farm, Haafingar",
+     "needs": "Chasing the Current finished; Katana with you"
+    },
+    {
+     "quest": "The Khat's Eye",
+     "what": "Take Katana and Megara to the Moorside Inn, then get Al'Tharo's spectacles back from Thalmor spies by Movarth's Lair.",
+     "where": "Moorside Inn and Movarth's Lair, Hjaalmarch",
+     "needs": "Katana and Megara with you"
+    },
+    {
+     "quest": "The Ravens' Lament",
+     "what": "Go after River with Katana and Megara, starting at the Bee and Barb, and rescue Shale from her.",
+     "where": "The Bee and Barb, Vilemyr Inn and Fallowstone Cave, the Rift",
+     "needs": "Chasing the Current finished; Katana and Megara with you"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Chasing the Current",
+     "options": [
+      "Heed Elli at the Frozen Hearth, who warns you off Fort Fellhammer and offers coins",
+      "Go to Fort Fellhammer anyway, and she says you'll be enemies"
+     ]
+    },
+    {
+     "at": "The Sweetest Carrot",
+     "options": [
+      "Help Megara steal the carrot",
+      "Refuse, and the quest fails"
+     ]
+    },
+    {
+     "at": "The Ravens' Lament",
+     "options": [
+      "Follow Katana's guess to Vilemyr Inn",
+      "Follow Megara's guess to Fallowstone Cave"
+     ]
+    },
+    {
+     "at": "Sugar and Spice",
+     "options": [
+      "A quiet time together by Katla's Farm",
+      "Katana getting the better of you"
+     ]
+    }
+   ],
+   "gives": [
+    "Megara joins you (Chasing the Current)",
+    "Shale joins you (The Ravens' Lament)",
+    "Tsukikage, Shale's sword (The Ravens' Lament)",
+    "A bounty reward from Megara (Chasing the Current) and gold for her bandit jobs (Megara's Radiant Quests)"
+   ],
+   "closes": [
+    "River is gone by the end of The Ravens' Lament"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate is in the records for any quest in this line, so the level it is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "The line's record order isn't story order. Chasing the Current opens the line; Sugar and Spice and The Ravens' Lament follow it, Serenata follows The Ravens' Lament (where Shale joins), and Honey Nuts and the Chin of Fate follows Serenata ('after dealing with Chadryn'). These links come from journals; no condition in the files ties them. What must happen before Megara offers The Sweetest Carrot, The Khat's Eye or her bandit jobs isn't shown."
+    },
+    {
+     "field": "getIn",
+     "why": "Chasing the Current also needs a step of another quest that isn't in the files, and the wait after recruiting Katana is kept against days passed; how many days isn't decoded. Meeting Katana itself has no journal beyond 'Katana recruited.'"
+    },
+    {
+     "field": "branches",
+     "why": "Which answer to Elli locks you out, which of the two guesses in The Ravens' Lament is right, and what picks the ending of Sugar and Spice aren't shown."
+    },
+    {
+     "field": "gives",
+     "why": "Tsukikage is named by The Ravens' Lament's script beside a crate set aside for a sword; whether it's handed to you isn't confirmed. The sizes of Megara's bounty reward and job pay aren't in the records. Chasing the Current's last journal only hopes Megara will join you ('Maybe she'd even like to join us'), and The Ravens' Lament says Shale may; later quests need both with you, which is how the joining is read."
+    },
+    {
+     "field": "closes",
+     "why": "The journal says 'River's gone'; whether she dies isn't stated."
+    }
+   ],
+   "evidence": [
+    "quests.json line 'katana': AK69CarrotQuest, AK69EasterEggsQuest, AK69KatanaPersonalQuest, AK69MegaraBanditQuest, AK69SerenataQuest, AK69SugarandSpiceQuest, AK69TheKhatsEyeQuest, AK69TheRavensLamentQuest",
+    "checked/063.json all eight quests",
+    "quest_starts_raw line 'katana': opening AK69KatanaPersonalQuest (Katana.esp:8E1B19); global Katana.esp:617D76 == 1, GetStage Katana.esp:617D75 >= 15, GetStage Katana.esp:7D55E1 >= 5",
+    "quests_raw Katana.esp:617D75 AK69KatanaIntro 'Meeting Katana', stage 15 'Katana recruited.'",
+    "people_raw Katana Katana.esp:005900 in The Winking Skeever, Solitude; Megara Katana.esp:8E6C1E in The Drunken Huntsman, Whiterun",
+    "Tsukikage Katana.esp:CE3174",
+    "quests_raw Katana.esp:8E1B19 stage 270 'Maybe she'd even like to join us'"
+   ]
+  },
+  {
+   "id": "fura",
+   "name": "Fura Bloodmouth",
+   "about": "Fura Bloodmouth, a vampire of the Volkihar court in Castle Volkihar, has two quests about her past: a visit to her mother in Solitude and a score to settle with an Imperial legate. Both are short, and the second needs you to be a vampire.",
+   "getIn": {
+    "quest": "Blood Ties",
+    "who": "Fura Bloodmouth",
+    "where": "Volkihar Keep, inside Castle Volkihar",
+    "how": "Talk to Fura and agree to go with her to Angeline's Aromatics in Solitude to meet her mother.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Blood Ties",
+     "what": "Bring Fura to her mother, Angeline Morrard, at Angeline's Aromatics, and decide whether Angeline lives.",
+     "where": "Angeline's Aromatics, Solitude",
+     "needs": ""
+    },
+    {
+     "quest": "Bloodmouth",
+     "what": "Use Vampire's Seduction to send Legate Quentin Cipius from Whiterun to Cold Rock Pass, and witness Fura confront him.",
+     "where": "Whiterun and Cold Rock Pass, Hjaalmarch",
+     "needs": "Be a vampire with the Vampire's Seduction power"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Blood Ties",
+     "options": [
+      "Let Fura and her mother reunite",
+      "Kill Angeline, as a true Volkihar"
+     ]
+    },
+    {
+     "at": "Bloodmouth",
+     "options": [
+      "Let Fura's Death Hounds kill Cipius",
+      "Persuade Fura to let Cipius go"
+     ]
+    }
+   ],
+   "gives": [],
+   "closes": [
+    "Angeline Morrard, who runs Angeline's Aromatics in Solitude, dies if you kill her (Blood Ties)",
+    "Legate Quentin Cipius dies if you let the Death Hounds kill him (Bloodmouth)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate is in the records for any quest in this line, so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn",
+     "why": "No condition is on Fura's opening line. She lives in Castle Volkihar among the vampire court, so you likely need to be welcome there and have her following you, but that isn't shown; the files don't show how she is recruited."
+    },
+    {
+     "field": "order",
+     "why": "Blood Ties ends with 'now we will go finish what must be done', which points to Bloodmouth coming next, but no condition ties the two."
+    },
+    {
+     "field": "gives",
+     "why": "Neither quest lists a reward in the records. Bloodmouth's script holds a 'Reanimate Corpse' spell, but by its name it is likely used on Cipius's body rather than given to you."
+    },
+    {
+     "field": "closes",
+     "why": "Cipius's record marks him as someone who can't be killed, while the journal says the Death Hounds kill him; the files don't show how the quest gets round that. Blood Ties also has a failing end and a 'Fura's mother is dead' entry whose trigger isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line 'fura': aaFuraQ1, aaFuraQ2",
+    "checked/063.json aaFuraQ1 (Blood Ties); checked/064.json aaFuraQ2 (Bloodmouth)",
+    "quest_starts_raw line 'fura': opening aaFuraQ1 (FDE Fura.esp:000933), no conditions",
+    "people_raw Fura Bloodmouth Dawnguard.esm:003363 in Volkihar Keep",
+    "Vampire's Seduction Skyrim.esm:0C4DE2; Cipius Skyrim.esm:0844D1 essential; Cold Rock Pass Skyrim.esm:0BC0A3 Hjaalmarch"
+   ]
+  },
+  {
+   "id": "faralda",
+   "name": "Faralda",
+   "about": "Faralda, the Professor of Destruction at the College of Winterhold, has two quests about her family: a letter to her aunt Eilonwy and a meeting with her aunt and her Thalmor brother near Riften. Both are taken with Faralda travelling with you.",
+   "getIn": {
+    "quest": "With Love, Eilonwy, Part 1",
+    "who": "Faralda",
+    "where": "the College of Winterhold: the Hall of Countenance, or outside in Winterhold from 9 am to 3 pm; or with you if she is travelling with you",
+    "how": "With Faralda travelling with you, she gives you a letter for her aunt Eilonwy and asks you to take it to Vekel the Man in the Ragged Flagon in Riften.",
+    "needs": [
+     "Faralda travelling with you"
+    ]
+   },
+   "order": [
+    {
+     "quest": "With Love, Eilonwy, Part 1",
+     "what": "Take Faralda's family letter to Vekel the Man, keep travelling with Faralda, and go back to the College with her when her aunt's reply comes.",
+     "where": "The Ragged Flagon, Riften, and the College of Winterhold",
+     "needs": ""
+    },
+    {
+     "quest": "With Love, Eilonwy, Part 2",
+     "what": "Meet Faralda's aunt Eilonwy and her brother Merandil in Lost Prospect Mine, then meet Faralda back at the College.",
+     "where": "Lost Prospect Mine, the Rift, and the College of Winterhold",
+     "needs": "With Love, Eilonwy, Part 1 finished"
+    }
+   ],
+   "branches": [
+    {
+     "at": "With Love, Eilonwy, Part 2",
+     "options": [
+      "Fight and kill Merandil, either straight away or once he tries to force Faralda back to Alinor",
+      "Let Merandil take Faralda back to Alinor"
+     ]
+    }
+   ],
+   "gives": [
+    "Eilonwy, an Expert Alchemy trainer, settles in the Hall of Countenance at the College of Winterhold on either ending (With Love, Eilonwy, Part 2)",
+    "Gold (With Love, Eilonwy, Part 2)"
+   ],
+   "closes": [
+    "Merandil dies if you fight him (With Love, Eilonwy, Part 2)",
+    "Faralda leaves for Alinor if you let her brother take her (With Love, Eilonwy, Part 2)"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate is in the records for any quest in this line, so the level it is made for isn't given."
+    },
+    {
+     "field": "getIn",
+     "why": "The steps assume Faralda is your companion, but the files don't show how she is recruited or any condition on her opening line. Part 1 can fail; what fails it isn't shown."
+    },
+    {
+     "field": "order",
+     "why": "What starts Part 2 isn't shown; its opening line sits in a helper that runs when you change location, so it probably begins as you travel with Faralda after Part 1, but no condition ties the two."
+    },
+    {
+     "field": "gives",
+     "why": "The gold comes from the Part 2 script, not confirmed; the amount and which ending pays it aren't in the files."
+    },
+    {
+     "field": "closes",
+     "why": "Merandil's record marks him as someone who can't be killed, while the journal says you kill him. What happens to Faralda after she leaves for Alinor isn't in the files."
+    }
+   ],
+   "evidence": [
+    "quests.json line 'faralda': aaFaraldaQ1, aaFaraldaQ2",
+    "checked/064.json aaFaraldaQ1 and aaFaraldaQ2",
+    "quest_starts_raw line 'faralda': opening aaFaraldaQ1 (FDE Faralda.esp:00096A), no conditions",
+    "people_raw Faralda Skyrim.esm:01C197 in Hall of Countenance, Winterhold; packages StandOutside9x6, WCollegeFaraldaSleep22x7",
+    "Eilonwy FDE Faralda.esp:000A5B, Alchemy Expert trainer, package needs FDE Faralda.esp:000A40 >= 100; Merandil FDE Faralda.esp:00096B essential",
+    "questlines_raw 'Follower Dialogue Expansion - Faralda' begins: 'the Professor of Destruction School in the College of Winterhold'"
+   ]
+  }
+ ]
+}

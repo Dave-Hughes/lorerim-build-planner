@@ -1,0 +1,828 @@
+{
+ "checks": [
+  {
+   "id": "meridias-order",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id meridias-order; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name \"Meridia's Order\"; matches."
+    },
+    "about": {
+     "verdict": "fix",
+     "note": "Counted the 17 quests in quests.json's order against the checked reads: NMeridia01-09 are nine story quests, The Dark Dawn, A Fate Worse Than Death and The Jester's quest are three side quests (028.json), plus five members' quests. The read said twelve story and two side quests, which adds to 19. Also noted the story moves from the Sanctum to Fort Justice (NMeridia05/06 reads). Level and length left in unsure as before."
+    },
+    "getIn": {
+     "verdict": "fix",
+     "note": "who/where/how match NMeridia01's starts (Marith, away from the Sanctum, journal begins 'I have been approached by Paladin Marith' in questlines_raw). needs: DA09's checked read (032.json) says it starts after a level-up OR when you pick up the beacon first; added the second way."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "17 rows in quests.json order NMeridia01 through NMeridiaValrar01; each what/where checked against the quest's takesYou and steps in 027/028/029.json (e.g. Infiltration: Laracin, Deep Moon Lookout, Dark Dawn Sanctuary next to Rannveig's Fast; The Ritual: Hob's Fall Cave, Fort Justice). The members' rows put the giver in needs where their reads have needs [] with an unsure; harmless, and the unsure row covers it."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Each branch matches the quest's choices: Prisoner (Findar escapes/dies), Infiltration (kill Adelaide/kill necromancers/inside the Sanctuary), The Dark Dawn (kill/warn Idina, Windpeak Inn package), The Pocket Realm (three ways), Champion's Choice, Stendarr's Mercy (kill/truce/refuse), A Parting Gift (three endings)."
+    },
+    "gives": {
+     "verdict": "fix",
+     "note": "Asger's read (029.json NMeridiaAsger01) gives his services only 'at the good ending'; Laracin's (NMeridiaLaracin01) only 'if you kill the Vigilant leader'. The read listed both unconditionally with Garin; split them out with their conditions. Summoner's Demise (QF_NMeridia03), Lesser Ring of Khajiiti (QF_NMeridia09), Marith, Una and Valrar match their reads."
+    },
+    "closes": {
+     "verdict": "fix",
+     "note": "Added the Vigilant leader's death on Stendarr's Mercy's killing path (NMeridiaLaracin01 closes: 'Killing path: the Vigilant leader dies'). Others match their reads: Findar, Adelaide, Kariss (NMeridia04), Idina and the Dark Dawn failure (NMeridia04ReeshiMisc), Velteth (NMeridia06), Cleans-Many-Boots, Kelrog, Lamae Bal, Arandar/Orfoljt, Rosette, Valrar."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Each row carries an unsure from the matching read: Marith's keyword-only approach (NMeridia01), Our Lady/Fort Justice/The Ritual opening on their own (NMeridia02/05/09), members' offer conditions (029.json), The Way In return, Findar, Adelaide essential, Asger endings, potential-follower and script-held clothing."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw meridias-order: opening NMeridia01 Meridia.esp:00154A, dialogue and event conditions empty, Sanctum door 001532 from 006E8B; questlines_raw Meridia's Order ESMIFIED count 17, begins with Marith line; reward ids match 028/029.json. Added the DA09 read."
+    }
+   }
+  },
+  {
+   "id": "penitus-oculatus",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id penitus-oculatus; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'Penitus Oculatus'; matches."
+    },
+    "about": {
+     "verdict": "fix",
+     "note": "Bob's 23 Oct ruling: 'repeatable' needs a record. zzzPORadiant01-05 (030.json) all read canDo 'radiant' with nothing showing they repeat; changed to radiant. 'Commander Maro gives every mission' is not what the reads show: Bad Blood, Fool's Errand (029.json) start by themselves with no giver and A Nest of Vipers/Loose Ends have no start record; reworded to Maro taking you in, giving assignments and taking reports. 'then' dropped since the reads don't say the assignments wait for the story (unsure row kept)."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "zzzPO00 (029.json): Commander Maro at the Penitus Oculatus Outpost in Dragon Bridge, join then ask for assignments; needs [] with the Legion-requirement unsure (quest_starts_raw global zzzPOLegionRequirementMet = 0). Matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "11 rows follow quests.json order zzzPO00 to zzzPORadiant05. Story rows match their reads (Moorside Inn, Morthal; Volunruud; Dawnstar Sanctuary passphrase from Cicero's journal). The five radiant rows said 'repeatable'; the reads say canDo 'radiant' and nothing shows repetition, so changed to 'radiant' per Bob's ruling. Troubleshoot's read also has the 'keep clear of the hold's authorities' instruction; added it."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "zzzPO01Informant choices: kill her and search the body, or let her defect and escort her to the outpost for the Listener's Orders; zzzPO04Sanctuary closes says she joins the agents in the Dawnstar Sanctuary only if spared. Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "Armour from zzzPO00script.ArmorPenitus* (on joining, unsure kept); Gold001 on each mission and assignment script; Dawnstar Sanctuary items from zzzPO04Sanctuary aliases Item1, Item3-11 (Windshear, Nightweaver's Band, Firiniel's End, Muiri's Ring among them). Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "Defector (zzzPO01Informant), Babette (zzzPO02Babette), Cicero (zzzPO03Cicero), Listener and five assassins plus agents moving in (zzzPO04Sanctuary), Amaund Motierre (zzzPO05AmaundMotierre). Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Rows match the reads (Legion requirement, Maro as Dark Brotherhood target, no start records for missions 2-5, armour/gold/items). Renamed 'order.repeatable assignments' to 'order.radiant assignments' to follow the order fix."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw penitus-oculatus: opening zzzPO00 Penitus_Oculatus.esp:0012D1, empty dialogue/event conditions, global zzzPOLegionRequirementMet 0.0; questlines_raw Penitus Oculatus count 11 with the quoted 'begins' line. Matches."
+    }
+   }
+  },
+  {
+   "id": "a-daedras-best-friend",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id a-daedras-best-friend; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name \"A Daedra's Best Friend\"; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "DA03Start (030.json): Lod in Falkreath offering a reward for a lost dog; DA03 takesYou Haemar's Shame and Rimerock Burrow, Clavicus Vile's shrine. Two quests in quests.json. Matches; level/length in unsure."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DA03Start starts: a Falkreath gate guard (Imperial or Stormcloak), at the gate, mentions Lod; objectives talk to Lod, look on the road. Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Two rows in quests.json order DA03Start, DA03; DA03 takesYou Haemar's Shame (Falkreath) and Rimerock Burrow (Haafingar), Barbas wants to get back to Clavicus Vile and the Rueful Axe. quests_raw DA03Start leadsTo 01BFC4 (DA03). Matches."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "DA03 choices: give the Rueful Axe for the Masque, or kill Barbas and keep the axe. Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DA03 rewards QF_DA03.Masque and .RuefulAxe, one or the other. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DA03 closes: Barbas dies if killed; can't get both items. Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Guard-line conditions (DA03Start unsure, edits by Requiem and Wintersun) and Barbas's unconditioned offer line (DA03 unsure) carried over. Matches."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw a-daedras-best-friend: opening DA03 Skyrim.esm:01BFC4, startGame false, empty conditions; quests_raw DA03Start 0D7939 leadsTo 01BFC4. Matches."
+    }
+   }
+  },
+  {
+   "id": "a-night-to-remember",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id a-night-to-remember; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name 'A Night To Remember'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "DA14Start/DA14 reads (030/031.json): Sam Guevenne's drinking contest in an inn; DA14 takesYou Temple of Dibella (The Reach), Rorikstead and Whiterun (Whiterun), Witchmist Grove and Morvunskar (Eastmarch). Two quests. Matches; level/length in unsure."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DA14Start starts: Sam Guevenne, 'an inn; the records place him in The Bee and Barb in Riften', take his contest; needs []. Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Rows in quests.json order DA14Start, DA14; DA14's what/where follow its takesYou (Temple of Dibella, Rorikstead, Whiterun, Witchmist Grove, Morvunskar). quests_raw DA14Start 03FA17 leadsTo 01BB9B. Matches."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "DA14 choices are empty; the persuasion note is carried into unsure from DA14's unsure (SpeechAverage, SpeechHard globals in quest_starts_raw). Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DA14 rewards: Sanguine Rose via QF_DA14 at the end. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DA14Start and DA14 closes are both empty. Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Inn choice and trigger from DA14Start unsure; persuasion from DA14 unsure. Matches."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw a-night-to-remember: opening DA14 Skyrim.esm:01BB9B, startGame false, empty conditions; Sanguine Rose 01CB36 per DA14 evidence. Matches."
+    }
+   }
+  },
+  {
+   "id": "boethiahs-calling",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line id boethiahs-calling; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json line name \"Boethiah's Calling\"; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "DA02 (031.json): starts by itself on a level-up (quest_givers start node DA02IncreaseLevelNodeSHARES, LEVL), sends you to the Sacellum / Shrine of Boethiah in Eastmarch; WEDA02 is the road encounter, DA02KillObj the follow-up order, DA02AltQuest from a separate mod. Matches."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DA02 starts: who empty, 'anywhere, when you level up', cultist encounter can also point you; needs a level the records don't give. Matches."
+    },
+    "order": {
+     "verdict": "unsure",
+     "note": "Rows follow quests.json order DA02, DA02AltQuest, WEDA02, DA02KillObj and match their reads (WEDA02 canDo radiant, one row saying it isn't a story step; DA02KillObj needs champion). The quest name 'DA02 Hook' is the record's own name but reads like an editor label in player text; kept, and flagged in unsure."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "DA02 choices: sacrifice, cultists, Knifepoint Ridge champion, Ebony Mail; or refuse, curse, Shrine of Stendarr for Gauntlets of the Crusader / Molag Bal's altar in Markarth for Hands of Coldharbour. Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DA02 rewards Ebony Mail (052794), Gauntlets of the Crusader / Hands of Coldharbour (TheChoiceIsYours). Blade of Sacrifice left to unsure, as DA02's read marks it unconfirmed; a minor item for a line page. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DA02 closes (sacrifice, Jarl of Solitude), DA02KillObj (Elisif dies), DA02 refuse path curse, DA02AltQuest closes (Rudin, old champion found dead). Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Rows match DA02, DA02AltQuest and DA02KillObj unsure notes. Added a row for the 'DA02 Hook' name, which reads like an editor label."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw boethiahs-calling: opening DA02 Skyrim.esm:04D8D6, startGame false; DA02AltQuest BoethiahCalling_AlternativeQuest.esp:000800 and Rudin 00081B at Braidwood Inn per 031.json. Matches."
+    }
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "meridias-order",
+   "name": "Meridia's Order",
+   "about": "A mod-added story line in which you join Meridia's Order, a band of Meridia's followers led by High Priestess Alara, and work against a group of necromancers across Skyrim. It has nine story quests that begin at Meridia's Sanctum and later move to Fort Justice in the Rift, three side quests along the way, and five quests for members of the Order once the story is done.",
+   "getIn": {
+    "quest": "Meridia's Order",
+    "who": "Paladin Marith",
+    "where": "she comes up to you on her own once you're away from Meridia's Sanctum",
+    "how": "Finish The Break of Dawn; Paladin Marith then approaches you and says High Priestess Alara wants to see you at Meridia's Sanctum.",
+    "needs": [
+     "Finish The Break of Dawn (Meridia's quest for Dawnbreaker), which the game starts after a level-up or when you find Meridia's beacon"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Meridia's Order",
+     "what": "Meet High Priestess Alara at Meridia's Sanctum and kill the necromancer Malfyur the Unliving in Solitude.",
+     "where": "Meridia's Sanctum; Solitude",
+     "needs": "Finish The Break of Dawn"
+    },
+    {
+     "quest": "Our Lady",
+     "what": "Follow Alara to Meridia's Shrine and fight off the attackers there.",
+     "where": "Meridia's Shrine",
+     "needs": ""
+    },
+    {
+     "quest": "Prisoner",
+     "what": "Find the Wood Elf Findar, held in the Dragonsreach Dungeon, and recover the staff Summoner's Demise from Golvunter.",
+     "where": "Dragonsreach Dungeon, Whiterun; Golvunter, outside Riften",
+     "needs": ""
+    },
+    {
+     "quest": "Infiltration",
+     "what": "Arch-Paladin Laracin sends you undercover to a necromancer recruiter at Deep Moon Lookout and then into the Dark Dawn Sanctuary to learn their plans.",
+     "where": "Deep Moon Lookout; Dark Dawn Sanctuary, next to Rannveig's Fast",
+     "needs": ""
+    },
+    {
+     "quest": "The Dark Dawn",
+     "what": "A side quest inside Infiltration: do tasks for Reeshi, the Sanctuary Master, to win his favor.",
+     "where": "Dark Dawn Sanctuary; Understone Keep, Markarth",
+     "needs": "Get inside the Dark Dawn Sanctuary during Infiltration"
+    },
+    {
+     "quest": "Fort Justice",
+     "what": "Clear the Malevolent out of Fort Justice, an abandoned outpost in the Rift, and attend Acolyte Kariss' funeral.",
+     "where": "Fort Justice, near Riften; Meridia's Sanctum",
+     "needs": ""
+    },
+    {
+     "quest": "A New Day",
+     "what": "Find who wrote a letter to the Champion at the Old Hroldan Inn and hear what she knows.",
+     "where": "Old Hroldan Inn; Fort Justice",
+     "needs": ""
+    },
+    {
+     "quest": "The Way In",
+     "what": "Search for the Wood Elf Orthelos from the College of Winterhold to the road near Dawnstar and bring him to Initiate Garin.",
+     "where": "College of Winterhold; the road near Dawnstar; Fort Justice",
+     "needs": ""
+    },
+    {
+     "quest": "The Pocket Realm",
+     "what": "Find a way to destroy Fiya's pocket realm of Coldharbour, escape it and report to Alara.",
+     "where": "the Malevolent Realm (Coldharbour)",
+     "needs": ""
+    },
+    {
+     "quest": "A Fate Worse Than Death",
+     "what": "A side quest inside the pocket realm: the Dremora Alzacar sends you to play Fiya's games.",
+     "where": "the Malevolent Palace and Dungeon",
+     "needs": "Enter the pocket realm in The Pocket Realm"
+    },
+    {
+     "quest": "The Jester, In The Bedroom, With The Knife",
+     "what": "A side quest inside the pocket realm: help The Jester turn Alzacar against Fiya.",
+     "where": "the Malevolent Palace and Barracks",
+     "needs": "Enter the pocket realm in The Pocket Realm"
+    },
+    {
+     "quest": "The Ritual",
+     "what": "Go with Alara to Hob's Fall Cave to stop Fiya's ritual, then return to Fort Justice.",
+     "where": "Hob's Fall Cave, Winterhold; Fort Justice",
+     "needs": ""
+    },
+    {
+     "quest": "Champion's Choice",
+     "what": "Lead a mission to Riften with Paladin Asger to hear a noble who says he saw a warlock.",
+     "where": "Mistveil Keep and the Ratway Warrens, Riften",
+     "needs": "Offered by Paladin Asger at Fort Justice"
+    },
+    {
+     "quest": "Repentance Upheld",
+     "what": "Go with Initiate Garin to confront the leader of his old cult in Windhelm.",
+     "where": "Hall of the Dead, Windhelm",
+     "needs": "Offered by Initiate Garin at Fort Justice"
+    },
+    {
+     "quest": "Stendarr's Mercy",
+     "what": "Help Arch-Paladin Laracin deal with the Vigilants of Stendarr at Stendarr's Beacon.",
+     "where": "Stendarr's Beacon, the Rift",
+     "needs": "Offered by Arch-Paladin Laracin at Fort Justice after a run-in with the Vigilants"
+    },
+    {
+     "quest": "Finding Yourself",
+     "what": "Go with Acolyte Una on a journey of self-discovery to Meridia's Shrine and the Order's old Sanctum.",
+     "where": "Meridia's Shrine; Meridia's Sanctum",
+     "needs": "Offered by Acolyte Una at Fort Justice"
+    },
+    {
+     "quest": "A Parting Gift",
+     "what": "Get Initiate Valrar's family ring back from Dario in Riverwood without harming him.",
+     "where": "Sleeping Giant Inn, Riverwood",
+     "needs": "Offered by Initiate Valrar at Fort Justice"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Prisoner",
+     "options": [
+      "Findar escapes the Dragonsreach Dungeon and points you to Golvunter",
+      "Findar dies in the dungeon and his mother points you to Golvunter"
+     ]
+    },
+    {
+     "at": "Infiltration",
+     "options": [
+      "Kill Adelaide as Dralos orders and he gives you the Sanctuary's location",
+      "Kill the necromancers instead and Adelaide tells you where their hideout is",
+      "Inside the Sanctuary: search secret documents, win the members' favor (The Dark Dawn), or fight through"
+     ]
+    },
+    {
+     "at": "The Dark Dawn",
+     "options": [
+      "Kill the Markarth court member Idina",
+      "Warn Idina instead; she leaves Markarth for the Windpeak Inn in Dawnstar"
+     ]
+    },
+    {
+     "at": "The Pocket Realm",
+     "options": [
+      "Play Fiya's games (A Fate Worse Than Death)",
+      "Help The Jester and Alzacar (The Jester, In The Bedroom, With The Knife)",
+      "Attack everything in sight"
+     ]
+    },
+    {
+     "at": "Champion's Choice",
+     "options": [
+      "Believe Arandar and kill Orfoljt",
+      "Believe Orfoljt and kill Arandar"
+     ]
+    },
+    {
+     "at": "Stendarr's Mercy",
+     "options": [
+      "Help Laracin kill the Vigilant leader; Laracin offers his services",
+      "Talk Laracin into letting you try a truce and make peace with the Vigilants",
+      "Refuse; the quest fails and Laracin deals with it himself"
+     ]
+    },
+    {
+     "at": "A Parting Gift",
+     "options": [
+      "Return the ring and Valrar stays in the Order as a trader and healer",
+      "Return the ring and talk him into leaving the Order for Dario",
+      "Kill Dario; Valrar asks you to keep away from him"
+     ]
+    }
+   ],
+   "gives": [
+    "Summoner's Demise (staff), from Prisoner",
+    "Lesser Ring of Khajiiti, from Meridia at the end of The Ritual",
+    "Paladin Marith offers to fight at your side after The Ritual",
+    "Paladin Asger offers his services at the good ending of Champion's Choice",
+    "Initiate Garin offers his services after Repentance Upheld",
+    "Arch-Paladin Laracin offers his services if you kill the Vigilant leader in Stendarr's Mercy",
+    "Acolyte Una becomes a trader after Finding Yourself",
+    "Initiate Valrar becomes a trader, cures your diseases and gives you a free potion each day, if he stays in the Order after A Parting Gift"
+   ],
+   "closes": [
+    "Findar, if he dies in the Dragonsreach Dungeon",
+    "Adelaide, if you kill her in Infiltration",
+    "Acolyte Kariss is killed in the attack on the Sanctum",
+    "Idina, if you kill her in The Dark Dawn",
+    "The Dark Dawn fails if you turn on the Dark Dawn",
+    "Initiate Velteth is executed in A New Day",
+    "Cleans-Many-Boots, if you kill him for Fiya",
+    "Kelrog Mashul is killed in The Jester, In The Bedroom, With The Knife",
+    "A Fate Worse Than Death fails if you wreck the realm; The Jester's quest fails if you turn on The Jester and Alzacar",
+    "Lamae Bal is destroyed in The Ritual",
+    "Arandar or Orfoljt dies in Champion's Choice; at the bad ending Asger asks you to keep your distance",
+    "Rosette dies in Repentance Upheld",
+    "The Vigilant leader dies if you help Laracin in Stendarr's Mercy",
+    "Stendarr's Mercy fails if you refuse Laracin",
+    "In A Parting Gift, killing Dario turns Valrar away; talking him into leaving takes him out of the Order to Riverwood"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level is given for any quest in the line; the opening needs The Break of Dawn, which the game starts on a level-up whose level isn't in these files. How long the line takes isn't in the records."
+    },
+    {
+     "field": "getIn.where",
+     "why": "Marith's approach fires away from Meridia's Sanctum in a kind of place named only by a keyword these files don't spell out, and the Sanctum's door opens from an outdoor spot not tied to a hold or landmark."
+    },
+    {
+     "field": "order.Our Lady / Fort Justice / The Ritual",
+     "why": "The journals read as if these open by themselves when the quest before ends; the scripts aren't in these files, so whether you must talk to Alara first isn't certain."
+    },
+    {
+     "field": "order.Champion's Choice / Repentance Upheld / Stendarr's Mercy / Finding Yourself / A Parting Gift",
+     "why": "The conditions on the members' offers aren't in these files. The Ritual's closing journal entry points you to the Order's members, so they likely open after it, but this isn't confirmed."
+    },
+    {
+     "field": "order.The Way In",
+     "why": "Telling Garin you're ready sends you into Coldharbour; whether you can come back before finishing The Pocket Realm isn't in these files."
+    },
+    {
+     "field": "branches.Prisoner",
+     "why": "What decides whether Findar escapes or dies isn't in these files."
+    },
+    {
+     "field": "branches.Infiltration",
+     "why": "Adelaide is flagged essential though the quest asks you to kill her, and a 'reason with them' option is offered by the journal without showing where it leads."
+    },
+    {
+     "field": "branches.Champion's Choice",
+     "why": "The records have a good and a bad ending with Asger but don't say which choice leads to which."
+    },
+    {
+     "field": "gives",
+     "why": "Marith, Asger, Garin and Laracin are already listed as potential followers in their own records, so whether these quests are what let them follow you isn't shown. Several quest scripts hold armour and robes (Blessed Hood, Blessed Robes, Steel Plate Cuirass, Fine Quilted Clothes) that aren't shown going to you."
+    }
+   ],
+   "evidence": [
+    "quests.json line meridias-order: id, name, category guilds, quest order NMeridia01 through NMeridiaValrar01",
+    "checked/027.json NMeridia01; checked/028.json NMeridia02, NMeridia03, NMeridia04, NMeridia04ReeshiMisc, NMeridia05, NMeridia06, NMeridia07, NMeridia08, NMeridia08MiscFiya, NMeridia08MiscJester; checked/029.json NMeridia09, NMeridiaAsger01, NMeridiaGarin01, NMeridiaLaracin01, NMeridiaUna01, NMeridiaValrar01",
+    "checked DA09 (The Break of Dawn): started by the level-up event, level not decoded",
+    "quest_starts_raw meridias-order: opening NMeridia01 Meridia.esp:00154A, no dialogue or event conditions; Sanctum door Meridia.esp:001532 from Skyrim.esm:006E8B",
+    "questlines_raw Meridia's Order ESMIFIED: 17 quests, begins 'I have been approached by Paladin Marith of Meridia's Order'",
+    "Rewards: Summoner's Demise Meridia.esp:0046DD (QF_NMeridia03); Lesser Ring of Khajiiti Meridia.esp:026B06 (QF_NMeridia09); members' services from the NMeridiaAsger01/Garin01/Laracin01/Una01/Valrar01 journals",
+    "checked/032.json DA09 (The Break of Dawn): starts after a level-up, or when you find the beacon first"
+   ]
+  },
+  {
+   "id": "penitus-oculatus",
+   "name": "Penitus Oculatus",
+   "about": "A mod-added line in which you join the Penitus Oculatus, the Empire's security force and the Emperor's bodyguards, and hunt down Dark Brotherhood members who are still at large. Commander Maro at the Penitus Oculatus Outpost in Dragon Bridge takes you in, hands out the assignments and takes your reports: five story missions after joining, and five radiant assignments.",
+   "getIn": {
+    "quest": "Penitus Oculatus",
+    "who": "Commander Maro",
+    "where": "the Penitus Oculatus Outpost in Dragon Bridge",
+    "how": "Talk to Commander Maro and join the Penitus Oculatus; from then on you ask him for assignments.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Penitus Oculatus",
+     "what": "Join the Penitus Oculatus through Commander Maro.",
+     "where": "Penitus Oculatus Outpost, Dragon Bridge",
+     "needs": ""
+    },
+    {
+     "quest": "Unfinished Business",
+     "what": "Maro's first assignment: deal with an escaped Dark Brotherhood assassin hiding at the Moorside Inn and learn where Cicero and Babette are.",
+     "where": "Moorside Inn, Morthal",
+     "needs": ""
+    },
+    {
+     "quest": "Bad Blood",
+     "what": "Track down and kill Babette, then report to Maro.",
+     "where": "where the intel from Unfinished Business points; Penitus Oculatus Outpost",
+     "needs": "Learn where Babette is in Unfinished Business"
+    },
+    {
+     "quest": "Fool's Errand",
+     "what": "Track down and kill Cicero, read his journal, then report to Maro.",
+     "where": "where the intel from Unfinished Business points; Penitus Oculatus Outpost",
+     "needs": "Learn where Cicero is in Unfinished Business"
+    },
+    {
+     "quest": "A Nest of Vipers",
+     "what": "Use the passphrase from Cicero's journal to get into the Dawnstar Sanctuary, clear it out and read the Listener's Journal.",
+     "where": "Dawnstar Sanctuary, the Pale",
+     "needs": "Finish Fool's Errand"
+    },
+    {
+     "quest": "Loose Ends",
+     "what": "Kill Amaund Motierre at Volunruud and report to Maro.",
+     "where": "Volunruud, the Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Unfinished Business",
+     "what": "A radiant assignment from Maro: kill an escaped Dark Brotherhood assassin at a place named in your journal.",
+     "where": "varies",
+     "needs": ""
+    },
+    {
+     "quest": "House Cleaning",
+     "what": "A radiant assignment from Maro: kill three rogue Penitus Oculatus agents at a place named in your journal.",
+     "where": "varies",
+     "needs": ""
+    },
+    {
+     "quest": "Paperwork",
+     "what": "A radiant assignment from Maro: take documents from a Thalmor agent without getting tangled up with the hold's authorities.",
+     "where": "varies",
+     "needs": ""
+    },
+    {
+     "quest": "Inquisition",
+     "what": "A radiant assignment from Maro: kill a noble who is secretly working for the Aldmeri Dominion without getting tangled up with the hold's authorities.",
+     "where": "varies",
+     "needs": ""
+    },
+    {
+     "quest": "Troubleshoot",
+     "what": "A radiant assignment from Maro: kill a Thalmor agent who is interfering with Penitus Oculatus operations, without getting tangled up with the hold's authorities.",
+     "where": "varies",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Unfinished Business",
+     "options": [
+      "Kill the assassin and search her body for intel",
+      "Let her defect, escort her to the outpost in Dragon Bridge and read the Listener's Orders she gives you; she later joins the agents in the Dawnstar Sanctuary"
+     ]
+    }
+   ],
+   "gives": [
+    "Penitus Oculatus Cuirass, Bracers, Helmet and Boots, on joining",
+    "Gold from Commander Maro for each mission and assignment",
+    "Items the quest sets in the Dawnstar Sanctuary in A Nest of Vipers, among them Windshear, Nightweaver's Band, Firiniel's End and Muiri's Ring"
+   ],
+   "closes": [
+    "The Dark Brotherhood Defector, if you kill her in Unfinished Business",
+    "Babette dies in Bad Blood",
+    "Cicero dies in Fool's Errand",
+    "The Dark Brotherhood's Listener and five assassins in the Dawnstar Sanctuary are killed; Penitus Oculatus agents move in afterwards",
+    "Amaund Motierre dies in Loose Ends"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level is given for any quest in the line, and how long it takes isn't in the records."
+    },
+    {
+     "field": "getIn.needs",
+     "why": "The conditions on Maro's joining line aren't in these files. The mod has a 'Legion requirement met' setting that starts off, so joining may need something to do with the Imperial Legion; its jobs hunt 'escaped' Dark Brotherhood members, which suggests it expects the Brotherhood to have been destroyed. Neither is confirmed."
+    },
+    {
+     "field": "closes",
+     "why": "Commander Maro is a target in the Dark Brotherhood's own quests (To Kill an Empire, Hail Sithis!); how this line clashes with the Dark Brotherhood line isn't in the records."
+    },
+    {
+     "field": "order.Bad Blood / Fool's Errand / A Nest of Vipers / Loose Ends",
+     "why": "No giver line or script that starts these is in these files; each is tied to the one before by its journal text. Whether A Nest of Vipers also needs Bad Blood done isn't shown, and where Babette and Cicero hide is filled in at run time."
+    },
+    {
+     "field": "order.radiant assignments",
+     "why": "Maro's offer lines for the five assignments are in the records but their conditions aren't, so it's not known whether they wait for the story missions. One of them shares the name Unfinished Business with the Moorside Inn mission."
+    },
+    {
+     "field": "gives",
+     "why": "The armour is held by the joining quest's script and is likely handed over on joining, not confirmed. Gold amounts aren't in these files. The Dawnstar Sanctuary items come from the quest's item slots; whether they're loot, on display or on a mannequin isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line penitus-oculatus: id, name, category guilds, quest order zzzPO00 through zzzPORadiant05",
+    "checked/029.json zzzPO00, zzzPO01Informant, zzzPO02Babette, zzzPO03Cicero; checked/030.json zzzPO04Sanctuary, zzzPO05AmaundMotierre, zzzPORadiant01-05",
+    "quest_starts_raw penitus-oculatus: opening zzzPO00 Penitus_Oculatus.esp:0012D1, no dialogue or event conditions; global zzzPOLegionRequirementMet = 0",
+    "questlines_raw Penitus Oculatus: 11 quests, begins 'I've joined the Penitus Oculatus, The Empire's security and law enforcers, as well the Emperor's bodyguards'",
+    "Dawnstar Sanctuary items: zzzPO04Sanctuary aliases Item1, Item3-Item11; PO agents' zzzPODawnstar packages conditioned on zzzPO04Sanctuary stage 5"
+   ]
+  },
+  {
+   "id": "a-daedras-best-friend",
+   "name": "A Daedra's Best Friend",
+   "about": "A Daedric quest that starts in Falkreath, where the blacksmith Lod is offering a reward for a lost dog, and leads to the Daedric Prince Clavicus Vile's shrine. It is two quests long: a short lead-in in Falkreath, then the main quest at Haemar's Shame and Rimerock Burrow.",
+   "getIn": {
+    "quest": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "who": "a Falkreath gate guard (Imperial or Stormcloak, whoever holds Falkreath)",
+    "where": "at the gate outside Falkreath",
+    "how": "A guard outside Falkreath mentions that Lod the blacksmith is looking for a dog; talk to Lod, then look on the road outside town.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+     "what": "Talk to Lod about his lost dog and look for it on the road outside Falkreath.",
+     "where": "Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "A Daedra's Best Friend",
+     "what": "Help the talking dog Barbas get back to Clavicus Vile, which means fetching the Rueful Axe from Rimerock Burrow.",
+     "where": "Haemar's Shame, Falkreath; Rimerock Burrow, Haafingar",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "A Daedra's Best Friend",
+     "options": [
+      "Give the Rueful Axe to Clavicus Vile and receive the Masque of Clavicus Vile",
+      "Kill Barbas with the Rueful Axe and keep the axe"
+     ]
+    }
+   ],
+   "gives": [
+    "Masque of Clavicus Vile, or the Rueful Axe: one or the other"
+   ],
+   "closes": [
+    "Barbas dies if you kill him with the Rueful Axe",
+    "You can't get both the Rueful Axe and the Masque of Clavicus Vile"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level is given for either quest, and how long the line takes isn't in the records."
+    },
+    {
+     "field": "getIn.needs",
+     "why": "The conditions on the guard's line (a level or anything else) aren't in these files; Requiem and Wintersun both edit the lead-in and what they changed isn't shown."
+    },
+    {
+     "field": "order.A Daedra's Best Friend",
+     "why": "Barbas's offer line has no conditions in these files, so whether you can meet him without first hearing about Lod's dog isn't shown. Wintersun - Faiths of Skyrim edits the quest last and what it changed isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line a-daedras-best-friend: id, name, category daedric, quest order DA03Start, DA03",
+    "checked/030.json DA03Start, DA03",
+    "quests_raw DA03Start Skyrim.esm:0D7939 leadsTo Skyrim.esm:01BFC4 (DA03)",
+    "quest_starts_raw a-daedras-best-friend: opening DA03, startGame false, no dialogue or event conditions",
+    "rewards via QF_DA03_0001BFC4.Masque (Skyrim.esm:0D2846), .RuefulAxe (Skyrim.esm:01C4E6)"
+   ]
+  },
+  {
+   "id": "a-night-to-remember",
+   "name": "A Night To Remember",
+   "about": "A Daedric quest that starts when a stranger named Sam Guevenne challenges you to a drinking contest in an inn. After the contest you retrace the night across the Reach, Whiterun hold and Eastmarch; the line is two quests long, a short lead-in and the main quest.",
+   "getIn": {
+    "quest": "Participate in a drinking contest with Sam Guevenne",
+    "who": "Sam Guevenne",
+    "where": "an inn; the records place him in The Bee and Barb in Riften",
+    "how": "Talk to Sam Guevenne and take him up on his drinking contest.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Participate in a drinking contest with Sam Guevenne",
+     "what": "Take Sam Guevenne's drinking contest.",
+     "where": "an inn",
+     "needs": ""
+    },
+    {
+     "quest": "A Night To Remember",
+     "what": "Wake in the Temple of Dibella in Markarth and follow what happened that night through Rorikstead, Whiterun and Witchmist Grove to Morvunskar.",
+     "where": "Temple of Dibella, Markarth; Rorikstead; Whiterun; Witchmist Grove; Morvunskar",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Sanguine Rose (staff), at the end"
+   ],
+   "closes": [],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level is given for either quest, and how long the line takes isn't in the records."
+    },
+    {
+     "field": "getIn.where",
+     "why": "The lead-in can move Sam to an inn it picks; which inn, and what triggers it (for example a level), isn't in these files. The Bee and Barb is where he is placed before it fires."
+    },
+    {
+     "field": "branches",
+     "why": "Persuasion checks are tied to the quest's dialogue, so some steps may have a talk-your-way-out option; the records don't show which."
+    },
+    {
+     "field": "closes",
+     "why": "Nothing in the records shows anyone dying or anything being shut off by this line."
+    }
+   ],
+   "evidence": [
+    "quests.json line a-night-to-remember: id, name, category daedric, quest order DA14Start, DA14",
+    "checked/030.json DA14Start; checked/031.json DA14",
+    "quests_raw DA14Start Skyrim.esm:03FA17 leadsTo Skyrim.esm:01BB9B (DA14)",
+    "quest_starts_raw a-night-to-remember: opening DA14, startGame false, no dialogue or event conditions; globals SpeechAverage, SpeechHard",
+    "reward Sanguine Rose Skyrim.esm:01CB36 via QF_DA14_0001BB9B"
+   ]
+  },
+  {
+   "id": "boethiahs-calling",
+   "name": "Boethiah's Calling",
+   "about": "A Daedric quest for Boethiah that the game starts on a level-up, sending you to her shrine, the Sacellum of Boethiah in Eastmarch. The line holds the main quest, a road encounter that points to it, a follow-up order from Boethiah, and The Man in Black, a separate mod quest set around the same shrine.",
+   "getIn": {
+    "quest": "Boethiah's Calling",
+    "who": "no one: the game starts it on a level-up (a Boethiah cultist met on the road can also point you there)",
+    "where": "anywhere, when you level up",
+    "how": "Once the quest starts, travel to the Sacellum of Boethiah in Eastmarch and find the cult there.",
+    "needs": [
+     "A level-up past a level the records don't give"
+    ]
+   },
+   "order": [
+    {
+     "quest": "Boethiah's Calling",
+     "what": "Find the cult of Boethiah at the Sacellum of Boethiah and decide whether to make the sacrifice she asks for.",
+     "where": "Shrine of Boethiah, Eastmarch; Knifepoint Ridge, Falkreath",
+     "needs": "A level-up"
+    },
+    {
+     "quest": "The Man in Black",
+     "what": "Agree to escort the Dark Elf Rudin Filaro from the Braidwood Inn in Kynesgrove to a shrine in the mountains northeast of the village.",
+     "where": "Braidwood Inn, Kynesgrove; Shrine of Boethiah; Knifepoint Ridge",
+     "needs": ""
+    },
+    {
+     "quest": "DA02 Hook",
+     "what": "A random road encounter with a Boethiah cultist that points you to Boethiah's Calling; it isn't a step in the story.",
+     "where": "out in the wild",
+     "needs": ""
+    },
+    {
+     "quest": "Boethiah's Bidding",
+     "what": "As Boethiah's champion, assassinate the Jarl of Solitude.",
+     "where": "Blue Palace, Solitude",
+     "needs": "Become Boethiah's champion in Boethiah's Calling"
+    }
+   ],
+   "branches": [
+    {
+     "at": "Boethiah's Calling",
+     "options": [
+      "Lead someone onto the Pillar of Sacrifice and kill them, fight the cultists, then kill her old champion at Knifepoint Ridge and wear the Ebony Mail to become her champion",
+      "Refuse to sacrifice a follower; Boethiah curses you, and you can pray at a Shrine of Stendarr for the Gauntlets of the Crusader or visit Molag Bal's altar in Markarth for the Hands of Coldharbour"
+     ]
+    }
+   ],
+   "gives": [
+    "Ebony Mail, as Boethiah's champion",
+    "Gauntlets of the Crusader (from Stendarr) or Hands of Coldharbour (from Molag Bal), if you refuse Boethiah"
+   ],
+   "closes": [
+    "The person you sacrifice dies",
+    "Elisif the Fair, Jarl of Solitude, if you carry out Boethiah's order",
+    "Refusing Boethiah lays Boethiah's Curse on you until a god lifts it",
+    "Rudin Filaro dies in The Man in Black, and Boethiah's old champion at Knifepoint Ridge is found dead there"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "The level that starts the quest isn't in these files, and how long the line takes isn't in the records."
+    },
+    {
+     "field": "closes",
+     "why": "Boethiah's Calling and The Man in Black both use Knifepoint Ridge and a Champion of Boethiah; the records don't show whether doing one blocks the other."
+    },
+    {
+     "field": "order.Boethiah's Bidding",
+     "why": "It has no start record and is tied to Boethiah's Calling only by its journal text. Boethiah's Calling holds an 'Elisif is essential' setting, so whether and when Elisif can die isn't clear. The records file this quest under Companions, which looks like a leftover label."
+    },
+    {
+     "field": "branches",
+     "why": "The refuse branch is added by The Choice Is Yours; the records show what it leads to but not the exact moment you refuse."
+    },
+    {
+     "field": "gives",
+     "why": "The Blade of Sacrifice is named by the quest script, but whether you keep it isn't confirmed."
+    },
+    {
+     "field": "order.The Man in Black",
+     "why": "Rudin Filaro's record is marked essential though the last objective is to kill him; the quest probably lifts that, but these files don't show it."
+    },
+    {
+     "field": "order.DA02 Hook",
+     "why": "The game's own name for this road encounter reads like a leftover label; the page may want to show it by its objective, 'Investigate the Boethiah cultist'."
+    }
+   ],
+   "evidence": [
+    "quests.json line boethiahs-calling: id, name, category daedric, quest order DA02, DA02AltQuest, WEDA02, DA02KillObj",
+    "checked/031.json DA02, DA02AltQuest, WEDA02, DA02KillObj",
+    "quest_givers DA02 starts node DA02IncreaseLevelNodeSHARES event LEVL",
+    "quest_starts_raw boethiahs-calling: opening DA02 Skyrim.esm:04D8D6, startGame false",
+    "rewards: Ebony Mail Skyrim.esm:052794; Gauntlets of the Crusader TheChoiceIsYours.esp:008402; Hands of Coldharbour TheChoiceIsYours.esp:008400; Boethiah's Curse TheChoiceIsYours.esp:0083F5",
+    "DA02AltQuest from BoethiahCalling_AlternativeQuest.esp:000800; giver Rudin Filaro 00081B at the Braidwood Inn"
+   ]
+  }
+ ]
+}

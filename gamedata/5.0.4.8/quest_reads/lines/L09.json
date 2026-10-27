@@ -1,0 +1,554 @@
+{
+ "lines": [
+  {
+   "id": "the-welkynar-knight",
+   "name": "The Welkynar Knight",
+   "about": "A side story about Nirenoore, a Welkynar knight hiding from the Thalmor, who asks for your help after a note calls you to the Bannered Mare in Whiterun; it takes you to Thalmor Headquarters in Solitude, a Thalmor prison and Embershard Mine. It is one main quest plus three smaller ones Nirenoore offers once she waits at the Bannered Mare.",
+   "getIn": {
+    "quest": "The Welkynar Knight",
+    "who": "Nirenoore (the stranger who sent the note)",
+    "where": "the Bannered Mare in Whiterun",
+    "how": "The quest starts by itself as you travel: a note asks you to a secret meeting at the Bannered Mare, where you talk to Nirenoore.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "(named after the artifact)",
+     "what": "A radiant job from Nirenoore, not a story step: she names an artifact and the dungeon it lies in, and you retrieve it.",
+     "where": "a dungeon Nirenoore names",
+     "needs": "Have met Nirenoore in The Welkynar Knight."
+    },
+    {
+     "quest": "Drinking with Nirenoore",
+     "what": "You buy wine from the innkeeper and drink it with Nirenoore.",
+     "where": "The Bannered Mare, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "A Welkynar Legend",
+     "what": "Nirenoore tells you of Siralys Featherwing, a Welkynar Knight who explored Skyrim in the Second Era; you buy \"Skies of the North\" from Urag gro-Shub, read it and show it to her.",
+     "where": "The Arcanaeum at the College of Winterhold, then back to Nirenoore",
+     "needs": "Gold to buy the book from Urag gro-Shub."
+    },
+    {
+     "quest": "The Welkynar Knight",
+     "what": "You steal the painting of Nirenoore from Thalmor Headquarters, escape a Thalmor prison after a drugged mead, rescue her before she is taken over the border, and recover her stolen belongings from the bandits in Embershard Mine.",
+     "where": "The Bannered Mare in Whiterun, Thalmor Headquarters in Solitude, a Thalmor prison, and Embershard Mine in Falkreath hold",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Welkynar Knight",
+     "options": [
+      "Report Nirenoore to the Thalmor: you get some gold and the quest fails.",
+      "Agree to help her: the theft at Thalmor Headquarters and the rest of the quest.",
+      "Get her belongings back and accept her reward, or turn the reward down and end with nothing.",
+      "End it with her belongings still lost: she gives you her hammer and circlet, or has nothing to give."
+     ]
+    },
+    {
+     "at": "A Welkynar Legend",
+     "options": [
+      "Tell Nirenoore you're not interested: the quest fails.",
+      "Agree to look into it: buy the book from Urag, read it and show it to her."
+     ]
+    }
+   ],
+   "gives": [
+    "Nirenoore's recovered belongings (the quest holds a sword, shield, wings, pauldrons, helmet, bracers, boots, cape, body armor and a book), if you accept her reward in The Welkynar Knight",
+    "Welkynar Hussar Hammer and Welkynar Hussar Circlet, on one of the endings where her belongings stay lost",
+    "The artifacts Nirenoore sends you after in her radiant job"
+   ],
+   "closes": [
+    "Reporting Nirenoore to the Thalmor ends The Welkynar Knight",
+    "Failing to rescue Nirenoore before the Thalmor take her across the border ends The Welkynar Knight"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records (no start conditions), so the level the line is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "The three smaller quests start on a location-change event plus Nirenoore's line; whether The Welkynar Knight must be finished first isn't in the files. Nirenoore stays at the Bannered Mare once the main quest is past its note, but a mod setting can send her to a home the files don't name. The artifact job's name is filled in with the artifact's name when it starts, and which artifacts and dungeons it picks isn't recorded."
+    },
+    {
+     "field": "gives",
+     "why": "The belongings aliases are filled from objects the extract doesn't resolve, so the exact pieces aren't known. Which ending gives the hammer and circlet is read from the log text only."
+    },
+    {
+     "field": "getIn",
+     "why": "How the note is delivered (courier or straight into your pack) isn't in the files."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-welkynar-knight: ksws04ArtifactQuest, ksws04DrinkQuest, ksws04LibraryQuest, ksws04MainQuest",
+    "checked/052.json ksws04ArtifactQuest (canDo radiant, needs, starts, rewards, unsure name/where)",
+    "checked/053.json ksws04DrinkQuest (starts, steps, rewards none, unsure needs/where)",
+    "checked/053.json ksws04LibraryQuest (starts, takesYou, choices, needs gold, unsure needs/opens)",
+    "checked/053.json ksws04MainQuest (starts, takesYou, choices, rewards, closes, unsure starts/rewards)",
+    "quest_starts_raw the-welkynar-knight: opening ksws04MainQuest, no dialogue or event conditions, startGame false"
+   ]
+  },
+  {
+   "id": "belethors-sister",
+   "name": "Belethor's Sister",
+   "about": "A side story that starts in Belethor's General Goods in Whiterun: Belethor admits he sold his sister Lelaegh and asks you to get her back, a trail that runs through several buyers and reaches the Soul Cairn. Once she is home, Lelaegh plans a takeover of the shop and offers small jobs.",
+   "getIn": {
+    "quest": "Belethor's Sister",
+    "who": "Belethor",
+    "where": "Belethor's General Goods, Whiterun",
+    "how": "Talk to Belethor in his shop; he tells you he sold his sister Lelaegh to Ysolda and asks you to get her back.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Belethor's Sister",
+     "what": "You follow Lelaegh from Ysolda to Ma'dran's caravan, a bandit hideout and a necromancer lair, then buy her freedom from Morven Stroud in the Soul Cairn with 30 Soul Husks and bring her home.",
+     "where": "Whiterun, Ma'dran's Khajiit caravan, a bandit hideout, a necromancer lair and the Soul Cairn",
+     "needs": ""
+    },
+    {
+     "quest": "Hostile Takeover",
+     "what": "Lelaegh sends you a note; you buy Ysolda's, Nazeem's and Hulda's shares of the shop and go with her to the shareholders' meeting.",
+     "where": "The Bannered Mare and around Whiterun",
+     "needs": "Finish Belethor's Sister."
+    },
+    {
+     "quest": "The item",
+     "what": "A radiant job from Lelaegh, not a story step: get a shipment back from bandits.",
+     "where": "a bandit hideout, then Belethor's General Goods",
+     "needs": ""
+    },
+    {
+     "quest": "Delivery for the npc",
+     "what": "A radiant job from Lelaegh, not a story step: deliver up to three items to a customer.",
+     "where": "the customer, then Belethor's General Goods",
+     "needs": ""
+    },
+    {
+     "quest": "The item",
+     "what": "A radiant job from Lelaegh, not a story step: collect a shipment from a supplier.",
+     "where": "the supplier, then Belethor's General Goods",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Hostile Takeover",
+     "options": [
+      "Back Lelaegh at the shareholders' meeting: she becomes the new store manager.",
+      "Back Belethor: he stays store manager."
+     ]
+    }
+   ],
+   "gives": [
+    "Lelaegh moves into Belethor's General Goods and works there, after Belethor's Sister",
+    "Gold from Belethor's Sister and Hostile Takeover",
+    "Lelaegh as store manager, if you back her in Hostile Takeover",
+    "Items from the mod's reward lists for Lelaegh's jobs"
+   ],
+   "closes": [
+    "Belethor stops being store manager if you elect Lelaegh in Hostile Takeover"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records (the start event only checks the quest isn't done yet), so the level the line is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "The files don't show how Belethor's Sister gets you into the Soul Cairn or whether it needs Dawnguard progress. The bandit hideout, necromancer lair, customer and supplier are picked when each quest runs. The jobs' names are filled in when they run ('The item', 'Delivery for' a customer)."
+    },
+    {
+     "field": "gives",
+     "why": "The gold amounts and the moment they're paid aren't recorded, the cost of the shares isn't in the files, and the jobs' reward lists aren't decoded."
+    },
+    {
+     "field": "branches",
+     "why": "Hostile Takeover has a failed ending with no log text; what causes it isn't shown. Belethor's Sister uses Speech 50 and 75 checks, so a persuade option may skip Ma'dran's contract; the records don't show which line does what."
+    }
+   ],
+   "evidence": [
+    "quests.json line belethors-sister: belethorSisterQuest01, belethorSisterQuest02, belethorSisterQuestBandit, belethorSisterQuestDelivery, belethorSisterQuestFetch",
+    "checked/053.json belethorSisterQuest01 (starts, takesYou, steps, rewards, opens, unsure needs/takesYou)",
+    "checked/053.json belethorSisterQuest02 (needs, starts, takesYou, choices, rewards, closes, unsure)",
+    "checked/053.json belethorSisterQuestBandit, belethorSisterQuestDelivery, belethorSisterQuestFetch (canDo radiant, starts, rewards leveled lists)",
+    "quest_starts_raw belethors-sister: event condition GetQuestCompleted(000804) == 0 only; globals SpeechAverage 50, SpeechHard 75"
+   ]
+  },
+  {
+   "id": "the-frozen-heart",
+   "name": "The Frozen Heart",
+   "about": "A side story that starts with a strange Snow Elf mirror bought at Belethor's General Goods in Whiterun; it is a portal to a realm where Othriel, a cursed Snow Elf, lives in the Crag Spire Wastes. One main quest, two book errands for Othriel and a hunt for the shards of another mirror.",
+   "getIn": {
+    "quest": "The Frozen Heart",
+    "who": "Belethor (his shop)",
+    "where": "Belethor's General Goods, Whiterun",
+    "how": "Buy the strange Snow Elf mirror at Belethor's General Goods and investigate it; it carries you into the Labyrinthine Passages.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Another Book for Othriel",
+     "what": "You bring Othriel a copy of \"The Armorer's Challenge\" and then 5 Stalhrim, and a day later she has crafted you a set of Rimeweld Armor.",
+     "where": "Othriel's Cabin in the Crag Spire Wastes",
+     "needs": "Have met Othriel in the Crag Spire Wastes (The Frozen Heart); a copy of The Armorer's Challenge; 5 Stalhrim."
+    },
+    {
+     "quest": "A Book for Othriel",
+     "what": "You bring Othriel a copy of \"Feyfolken III\".",
+     "where": "Othriel's Cabin in the Crag Spire Wastes",
+     "needs": "A copy of Feyfolken, Vol. 3."
+    },
+    {
+     "quest": "The Frozen Heart",
+     "what": "Through the mirror you find a way past the Labyrinthine Passages, meet Othriel, fetch arms and armor from Frostskarn Vault and face the Cursed Shadow in the Whispering Walls Catacombs to lift her curse.",
+     "where": "Belethor's General Goods in Whiterun, then the Labyrinthine Passages, the Crag Spire Wastes, Frostskarn Vault and the Whispering Walls Catacombs inside the mirror realm",
+     "needs": ""
+    },
+    {
+     "quest": "Seeking Out Shards",
+     "what": "Picking up a piece of a broken Snow Elf mirror starts a hunt for all eight shards and a frame; you reforge the mirror at a forge and it leads to the Gallery of Mirrors.",
+     "where": "wherever the shards lie, then any forge or anvil",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "The Frozen Heart",
+     "options": [
+      "Agree to help Othriel end her curse: the full quest.",
+      "Refuse to help her: the quest ends there.",
+      "Decide to kill her: the quest ends when she is dead."
+     ]
+    },
+    {
+     "at": "Another Book for Othriel",
+     "options": [
+      "Give her the book and the Stalhrim: she crafts the armor.",
+      "Keep the book, or refuse or never hand over the Stalhrim: the quest fails with no armor."
+     ]
+    }
+   ],
+   "gives": [
+    "Gain Heart (spell) and the Rimeweld Sword, named in The Frozen Heart's script",
+    "A set of Rimeweld Armor crafted by Othriel, in Another Book for Othriel",
+    "A reforged Snow Elf mirror that leads to the Gallery of Mirrors, in Seeking Out Shards",
+    "Othriel can become a follower"
+   ],
+   "closes": [
+    "Othriel, if you choose to kill her in The Frozen Heart",
+    "Refusing to help Othriel ends The Frozen Heart"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records (the start event only checks the quest's own stage), so the level the line is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "The records don't show the point in The Frozen Heart that unlocks each of Othriel's errands, or whether Another Book for Othriel comes after A Book for Othriel. Where the eight shards and the frame lie, and whether The Frozen Heart must be done first, isn't in the files."
+    },
+    {
+     "field": "gives",
+     "why": "The files don't say what Gain Heart does or when it and the Rimeweld Sword are handed over, nor which Rimeweld pieces Othriel hands over. Othriel is in the potential-follower faction and the quest tracks a relationship score with her; how that score changes isn't shown."
+    },
+    {
+     "field": "getIn",
+     "why": "Whether the mirror is a shop item you buy from Belethor or an object for sale in the shop isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line the-frozen-heart: ksws07ArmorQuest, ksws07BookQuest, ksws07MainQuest, ksws07ShardsQuest",
+    "checked/055.json ksws07ArmorQuest (needs, steps, choices, rewards, unsure)",
+    "checked/055.json ksws07BookQuest (needs, choices, rewards none)",
+    "checked/055.json ksws07MainQuest (starts, takesYou, choices, rewards, opens, closes, people follower faction, unsure)",
+    "checked/055.json ksws07ShardsQuest (starts, steps, rewards, unsure starts)",
+    "quest_starts_raw the-frozen-heart: event condition GetStage(002086) == 0 only, startGame false"
+   ]
+  },
+  {
+   "id": "gore",
+   "name": "Gore",
+   "about": "A companion story about Gore, a Nord hunted by the Thalmor whom you find caught in a trap outside Peak's Shade Tower near Falkreath. Once he travels with you, his own quests take you to Dawnstar, Whiterun, Markarth, Solitude and spots near Ivarstead.",
+   "getIn": {
+    "quest": "Raven's Flight",
+    "who": "Gore",
+    "where": "outside Peak's Shade Tower, a short walk from Falkreath",
+    "how": "Head to Peak's Shade Tower, where a Nord has his leg caught in a trap; talk to him and help him free it.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "A New Coat",
+     "what": "Gore sends you to Taarie at Radiant Raiment, who makes him a new suit of armor in a day; you give it to him.",
+     "where": "Radiant Raiment, Solitude",
+     "needs": "Gore travelling with you as your follower."
+    },
+    {
+     "quest": "Come, the Crows",
+     "what": "You speak to Gore, then head with him to an inn well away from Dawnstar.",
+     "where": "an inn away from Dawnstar",
+     "needs": ""
+    },
+    {
+     "quest": "The Drunken Hunted",
+     "what": "You take Gore to the Drunken Huntsman and let him know he can relax.",
+     "where": "The Drunken Huntsman, Whiterun",
+     "needs": ""
+    },
+    {
+     "quest": "Wanted",
+     "what": "The Thalmor hunting Gore catch up; you talk them down or defeat the Thalmor Envoy, Gore joins you, and you take him to an inn.",
+     "where": "the wilds soon after you free Gore, then an inn",
+     "needs": "Free Gore in Raven's Flight."
+    },
+    {
+     "quest": "Fear and Loathing",
+     "what": "Vigilant Tyranus hires you and Gore to investigate a suspicious house in Markarth.",
+     "where": "the Silver-Blood Inn and a house in Markarth",
+     "needs": "Gore travelling with you as your follower."
+    },
+    {
+     "quest": "Count Fleet",
+     "what": "You get Gore his own horse, Count Fleet, at the Whiterun Stables.",
+     "where": "Whiterun Stables",
+     "needs": ""
+    },
+    {
+     "quest": "Where We Stand",
+     "what": "Gore has something on his mind and takes you to a spot just outside Ivarstead.",
+     "where": "a spot near Ivarstead, The Rift",
+     "needs": ""
+    },
+    {
+     "quest": "To Free a Raven",
+     "what": "Gore turns himself in to the jail in Dawnstar; you wait, speak to the guard about his release and take him to the Windpeak Inn.",
+     "where": "Dawnstar Jail and the Windpeak Inn, Dawnstar",
+     "needs": ""
+    },
+    {
+     "quest": "Raven's Flight",
+     "what": "You find Gore caught in a trap at Peak's Shade Tower, free his leg and get him to Falkreath.",
+     "where": "Peak's Shade Tower and Falkreath",
+     "needs": ""
+    },
+    {
+     "quest": "The Apple from the Tree",
+     "what": "Gore needs to talk about everything that has happened, and may walk away.",
+     "where": "wherever Gore is travelling with you",
+     "needs": "Gore travelling with you as your follower."
+    },
+    {
+     "quest": "Blood Ties",
+     "what": "You get to know Gore better and head to Dawnstar with him, where he goes after a man named Pate and his family.",
+     "where": "Dawnstar, The Pale",
+     "needs": ""
+    },
+    {
+     "quest": "Nest Left Empty",
+     "what": "Gore takes you to a waterfall near Ivarstead he marked on your map, and you survive an ambush there.",
+     "where": "a waterfall near Ivarstead, The Rift",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Raven's Flight",
+     "options": [
+      "Help the trapped Nord: free him and take him to Falkreath; his story goes on.",
+      "Kill the Nord in the trap: Gore dies and the quest fails."
+     ]
+    },
+    {
+     "at": "Wanted",
+     "options": [
+      "Talk to the Thalmor.",
+      "Fight the Thalmor and defeat the Thalmor Envoy."
+     ]
+    },
+    {
+     "at": "The Apple from the Tree",
+     "options": [
+      "Let Gore go: he leaves your party.",
+      "Refuse to let him leave: you have to kill him."
+     ]
+    }
+   ],
+   "gives": [
+    "Gore as a follower, in Wanted",
+    "Gore's Greatsword, named in Raven's Flight's script",
+    "Count Fleet, a horse for Gore so he rides with you",
+    "Gore's Upgraded Armor, Gore's Upgraded Boots and Gore's Upgraded Gauntlets, heavy armor for Gore to wear, from A New Coat"
+   ],
+   "closes": [
+    "Kill the trapped Nord in Raven's Flight and Gore is dead: his companion story is lost",
+    "In The Apple from the Tree, Gore dies if you won't let him leave, or leaves your party if you let him go"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records (the opening line only checks Gore hasn't been dismissed for good), so the level the line is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "Most of Gore's quests have no start event or giver condition in the files; the story links (Raven's Flight to Wanted to Blood Ties, Dawnstar to To Free a Raven and Come, the Crows) are read from journal text, not records. The inns, the spots near Ivarstead and the Markarth house aren't named; Fear and Loathing's house is probably the one from The House of Horrors, but no record says so."
+    },
+    {
+     "field": "gives",
+     "why": "The greatsword and armor are named by the quests' scripts, not confirmed in play; whether the greatsword goes to you or to Gore isn't readable. The mod has a Summon Count Fleet lesser power, but no record ties it to Count Fleet the quest."
+    },
+    {
+     "field": "branches",
+     "why": "Wanted's talking outcome has no objective of its own, and The Apple from the Tree has a second ending with no journal text."
+    },
+    {
+     "field": "closes",
+     "why": "Whether Gore leaves for good in The Apple from the Tree isn't shown. Gore's line in Blood Ties says he killed Pate and the mother is next, but no stage or log confirms who dies."
+    }
+   ],
+   "evidence": [
+    "quests.json line gore: HD1ArmorUpgrades, HD1GoreComeTheCrows, HD1GoreDH, HD1GoreEscort, HD1GoreFearAndLoathing, HD1GoreHorse1, HD1GoreInterlude, HD1GoreJailtime, HD1GoreMeet, HD1GoreMurderer, HD1GoreQuest2, HD1Interlude2",
+    "checked/060.json HD1ArmorUpgrades, HD1GoreComeTheCrows, HD1GoreDH, HD1GoreEscort, HD1GoreFearAndLoathing, HD1GoreHorse1, HD1GoreInterlude, HD1GoreJailtime, HD1GoreMeet, HD1GoreMurderer",
+    "checked/061.json HD1GoreQuest2, HD1Interlude2",
+    "quest_starts_raw gore: opening HD1GoreMeet, dialogue condition GetGlobalValue HD1PermanentDismiss != 1, startGame false"
+   ]
+  },
+  {
+   "id": "remiel",
+   "name": "Remiel",
+   "about": "A companion story about Remiel (Remi), a Breton scholar of the Dwemer you meet at the Silver-Blood Inn in Markarth and take into Nchuand-Zel. Once she travels with you, her quests are crafting projects and a hunt for whoever sent an assassin after her, which leads through Solitude, Riften and Markarth to the Dwemer ruin Arkngchal.",
+   "getIn": {
+    "quest": "The Dwemer Specialist",
+    "who": "Remiel (Remi)",
+    "where": "the Silver-Blood Inn in Markarth",
+    "how": "Talk to her and agree to take her to see Nchuand-Zel; she sends you to Calcelmo about the giant spider in the excavation site.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Attuned Assassination",
+     "what": "Remi wants a book on Tonal Magic; you find it at the Bards College or the College of Winterhold and she builds a tuning fork.",
+     "where": "the Bards College in Solitude or the Arcanaeum at the College of Winterhold",
+     "needs": "Remi travelling with you as your follower."
+    },
+    {
+     "quest": "Exploring Arkngchal",
+     "what": "You work through Arkngchal's puzzles with Remi: the levers, a heat source, her metal lubricant for a stuck door, and the chests by the automaton statues.",
+     "where": "Arkngchal",
+     "needs": "Reach Arkngchal with Remi in Reunion of the Fallen."
+    },
+    {
+     "quest": "Real Nord Food",
+     "what": "After reading a book about Chaurus Pie, Remi wants to make one; you gather the ingredients and take her to Candlehearth Hall to bake it.",
+     "where": "the kitchen of Candlehearth Hall, Windhelm",
+     "needs": "A book about Chaurus Pie to give her."
+    },
+    {
+     "quest": "Reunion of the Fallen",
+     "what": "An assassin attacks you with a contract on Remi; you trace who hired him through Solitude and a smuggler in Riften, and may follow the trail on to Markarth and Arkngchal.",
+     "where": "the Winking Skeever and a ship in the harbour in Solitude, Riften, Markarth and Arkngchal",
+     "needs": ""
+    },
+    {
+     "quest": "Remi's Crossbow Crucible",
+     "what": "You gather Dwemer cogs, gears, a lever, wood and dwarven metal ingots so Remi can build a crossbow.",
+     "where": "wherever you find the parts",
+     "needs": ""
+    },
+    {
+     "quest": "We Who Challenge the Sun",
+     "what": "You find Aetherium in Arkngchal so Remi can build a lantern.",
+     "where": "Arkngchal",
+     "needs": "Arkngchal is Remi's workshop (end of Reunion of the Fallen)."
+    },
+    {
+     "quest": "Picking Remi's Brain",
+     "what": "You give Remi an iron ingot at the Markarth forge so she can make a tension wrench, then pick five locks with it and report back.",
+     "where": "the forge in Markarth",
+     "needs": "An iron ingot."
+    },
+    {
+     "quest": "Upgrades",
+     "what": "You take Remi to four Dwemer ruins, each making her spider Scrap stronger, then talk with her about your adventures.",
+     "where": "any four Dwemer ruins",
+     "needs": "Finish The Dwemer Specialist."
+    },
+    {
+     "quest": "The Dwemer Specialist",
+     "what": "You kill Nimhe, the giant spider, for Calcelmo, follow a lost expedition through Nchuand-Zel collecting artifacts for Remi, and turn the ruin's defenses back on.",
+     "where": "Understone Keep, the Nchuand-Zel Excavation Site, Nchuand-Zel and Nchuand-Zel Control in Markarth",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Attuned Assassination",
+     "options": [
+      "Search the Bards College or the College of Winterhold; either has the book and the rest is the same."
+     ]
+    },
+    {
+     "at": "Reunion of the Fallen",
+     "options": [
+      "Go along with Remi and hunt Morvic down: you track him to Arkngchal and kill him, and Remi turns the ruin into her workshop.",
+      "Tell Remi she's taking her revenge too far: the quest ends there, without the Arkngchal workshop."
+     ]
+    },
+    {
+     "at": "Upgrades",
+     "options": [
+      "Stay good friends.",
+      "A romance with Remi becomes possible.",
+      "Tell her you don't want her around: your adventures together end."
+     ]
+    }
+   ],
+   "gives": [
+    "Remiel as a follower, from The Dwemer Specialist",
+    "Scrap, a Dwemer spider Remi repairs and keeps, and the Conjure Scrap spell, which grows stronger in Upgrades",
+    "Arkngchal as Remi's workshop, if Morvic is killed in Reunion of the Fallen",
+    "A romance with Remi, on one ending of Upgrades",
+    "Remi's Tuning Fork and the Disable Automaton spell, from Attuned Assassination",
+    "Remi's improved tension wrench, from Picking Remi's Brain",
+    "Remi's lantern, from We Who Challenge the Sun",
+    "Remi's Backpack, from Reunion of the Fallen"
+   ],
+   "closes": [
+    "Morvic dies if you hunt him down in Reunion of the Fallen",
+    "Talking Remi out of her revenge ends Reunion of the Fallen without the Arkngchal workshop",
+    "Remi leaves you if you tell her you don't want her around in Upgrades"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate shows in the records (startGame true, no dialogue or event conditions), so the level the line is made for isn't given."
+    },
+    {
+     "field": "order",
+     "why": "Several of Remi's quests have no dialogue line or event in the files that starts them. What sets the assassin loose in Reunion of the Fallen isn't shown. Arkngchal isn't in the places index, so its hold is unknown; Remi says it is near the Hammerfell border. We Who Challenge the Sun's need for the workshop ending is read from its journal, not a condition."
+    },
+    {
+     "field": "gives",
+     "why": "The tuning fork, Disable Automaton, Conjure Scrap and the backpack come from quest scripts; the fork's text and journal suggest the fork and spell are Remi's, and who receives the Conjure Scrap upgrades isn't shown. The crossbow quest's reward isn't tied to any item in the records. What the tension wrench does isn't in the item index."
+    },
+    {
+     "field": "closes",
+     "why": "What becomes of Morvic if you talk Remi down isn't stated, and whether Remi leaves for good after the 'don't want her around' ending isn't shown."
+    },
+    {
+     "field": "branches",
+     "why": "Upgrades' romance ending is marked 'spoken to Remi again', so it may need a second talk rather than one answer."
+    }
+   ],
+   "evidence": [
+    "quests.json line remiel: HLIOADQuest, HLIOArkngchalManager, HLIOChaurusPieQuest, HLIOMQ1, HLIORPCrossbow, HLIORPLantern, HLIORPLock, HLIOScrapUpgrades, HLIOStartingQuest",
+    "checked/061.json HLIOADQuest, HLIOArkngchalManager, HLIOChaurusPieQuest, HLIOMQ1, HLIORPCrossbow, HLIORPLantern, HLIORPLock, HLIOScrapUpgrades",
+    "checked/062.json HLIOStartingQuest (starts, takesYou, rewards follower, Scrap, Conjure Scrap)",
+    "quest_starts_raw remiel: opening HLIOStartingQuest, startGame true, no dialogue or event conditions"
+   ]
+  }
+ ]
+}

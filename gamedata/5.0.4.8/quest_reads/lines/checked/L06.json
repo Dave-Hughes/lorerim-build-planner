@@ -1,0 +1,803 @@
+{
+ "checks": [
+  {
+   "id": "raven-rock",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line raven-rock, 12 quests DLC2RR01 to DLC2RRFavor07; id matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json name 'Raven Rock'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "Council and guard stories are DLC2RR01 (Captain Veleth) and DLC2RR02 (Adril Arano, Councilor Morvayn); mine trip is DLC2RR03 takesYou; Carius level 43 from DLC2RR01 takesYou (place 014293 boss), Zahkriisos level 120 from DLC2RR03 people (place 01429A boss). quest_starts_raw raven-rock has empty dialogue/event conditions, so no level gate; matches."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DLC2RR01 checked starts: Captain Veleth at the Attius Farm, kill the ash spawn then speak to him, search the farm; needs 'Get to Solstheim (Raven Rock)'. quest_starts_raw opening DLC2RR01 018B13. Matches."
+    },
+    "order": {
+     "verdict": "fix",
+     "note": "12 rows follow quests.json order and names. Rows checked against firstStep/takesYou of each read: Carius at Fort Frostmoth (DLC2RR01), Pickaxe (DLC2RR03Intro), Gratian's journal and Bloodskal Barrow escape (DLC2RR03), Seeker (DLC2RR03Priest), Emberbrand Wine, 5 netch jelly (GLOB DLC2RRF02JellyTotal), Temple tomb, 10 sujamma (GLOB DLC2RRF04DrinkTotal), pendants, Bralsa, Strident Squall folio (042.json). Fixed Served Cold: the row said the search 'ends at Ashfallow Citadel', but DLC2RR02 steps and quests_raw stages 90/200 have you return to Adril, follow him and speak to Councilor Morvayn in Morvayn Manor; changed to 'leads to Ashfallow Citadel, and ends back in Raven Rock with Councilor Morvayn'."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "DLC2RR01 choices (straight back for bounty / Carius's letter to a guard then Veleth, same ending) and DLC2RR03Intro choices (return pickaxe, Glover pays / lie, effect not in records); matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DLC2RR01 rewards bounty gold; DLC2RR03 rewards Bloodskal Blade (energy blast on power attacks) and opens Bloodskal Blade Replica recipe needing Ebony Smithing; gold from DLC2RR03Intro and DLC2RR03 (pFavorRewardGoldSmall) and DLC2RRFavor05 (pGold001 script). Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DLC2RR01 closes 'General Falx Carius dies'; DLC2RR02 closes 'Vendil Severin (Vendil Ulen) dies', quests_raw stage 90 'I've killed Vendil Ulen'. Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Notes trace to DLC2RR02 rewards unsure, DLC2RR03Intro opens unsure, DLC2RR03Priest needs/people unsure, favor needs unsure, DLC2RR03 rewards unsure and DLC2RR02 closes unsure. The Served Cold reward note named the plugin file 'Severin Manor Has A Price.esp' in player-readable text, which LINES.md forbids; reworded to 'a LoreRim patch named for Severin Manor having a price'. Added the DLC2RR02 needs unsure (March of the Dead first is read from Adril's line; Veleth's opening condition not shown), since the order row states it as a need."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw raven-rock: opening DLC2RR01 Dragonborn.esm:018B13, conditions dialogue [] event []; checked/041.json holds DLC2RR01-03Priest, 042.json holds DLC2RRFavor01-07. Confirmed."
+    }
+   }
+  },
+  {
+   "id": "thirsk",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line thirsk, quests DLC2MH01, DLC2MH02, DLC2ThirskFFElmus, ElmusBack, Halbarn, Hilund; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json name 'Thirsk Mead Hall'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "quests_raw DLC2MH01 stage 10 (hall overrun by rieklings, Nords camped on the eastern shore) and stage 210 fail (helped the rieklings keep them evicted); DLC2MH02 is the riekling side. No conditions in quest_starts_raw thirsk beyond the USSEP GetLevel == -1 line; no level gate stated. Matches."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DLC2MH01 checked starts: Bujold the Intrepid at Bujold's Retreat, rieklings took the hall, join the assault; needs [] with the USSEP impossible-level note carried to unsure. Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Six rows follow quests.json order and names. Checked against DLC2MH01 takesYou (hall, Hrothmund's Barrow), DLC2MH02 firstStep Bilgemuck meat and closes (fails Retaking Thirsk), Elmus Ashfire Mead (042.json), ElmusBack Juniper Berries with needs hall retaken, Halbarn 10 Stalhrim/15 Ebony Ingots (globals), Hilund 50 Riekling Spears (global), and their camp-before-retaking 'where' notes (043.json). Matches."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "DLC2MH01 choices at the barrow (back Bujold, new tradition / call her a fraud, she attacks; quests_raw stages 40 and 200) and DLC2MH02 closes (Nords killed, Retaking Thirsk fails, stage 210). Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DLC2MH02 rewards chief of the Thirsk rieklings; favors' rewards LvlQuestReward02Medium (Elmus, Halbarn, Hilund) and LvlQuestReward01Small (ElmusBack). Retaking Thirsk lists none, in unsure. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DLC2MH01 closes (fails The Chief of Thirsk Hall; Bujold dies if opposed) and DLC2MH02 closes (seven named Nords killed with services, favors and marriage partners lost; old chief attacks you). Matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Notes trace to quest_starts_raw thirsk USSEP GetLevel == -1 on INFO 027DE7, DLC2MH02 starts/takesYou unsure (chief talk, Bilgemuck), Elmus/ElmusBack/Halbarn/Hilund needs unsure, DLC2MH01 rewards unsure. No ids or file names in text."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw thirsk: opening DLC2MH01 Dragonborn.esm:01A50B, changes USSEP INFO 027DE7 GetLevel == -1; checked/042.json holds DLC2MH01, DLC2MH02, DLC2ThirskFFElmus; 043.json holds ElmusBack, Halbarn, Hilund. Confirmed."
+    }
+   }
+  },
+  {
+   "id": "tel-mithryn",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line tel-mithryn, 14 quests DLC2TT1 to DLC2TTR8; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json name 'Neloth of Tel Mithryn'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "Varona (DLC2TT1), Drovas's debt (DLC2TT1b), attacks on Neloth (DLC2TT2), research jobs (DLC2TTR*, story node DLC2NelothQuestNode); Highpoint Tower 20 to 60 from DLC2TT2 takesYou unsure. quest_starts_raw tel-mithryn has no dialogue/event conditions. Matches."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DLC2TT1 checked starts: Neloth inside his tower at Tel Mithryn, find steward Varona Nelas; needs []. quest_starts_raw opening DLC2TT1 017E8D. Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "14 rows follow quests.json order and names (two Experimental Subject rows for TTR4a and TTR4b). Checked against reads: Varona, Raven Rock road, Drovas at The Retching Netch (TT1); Slitter, Mogrul, 1000 septims and needs hire Drovas (TT1b); ring, grounds, Highpoint Tower (TT2); Talvas and the Ash Guardian with the DLC2MQ01 gate (TTF1); three taproots, Headwaters of Harstrad (TTF2); TTR1/TTR2 canDo radiant, rows say so; ash sample, Wind and Sand, spell side effects in rain or swimming, misc help, Briarheart in the Reach, Azra's staff, six ingredients (044.json). Matches."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "DLC2TT1b choices pay 1000 / persuade 500 / kill with thugs until settled; DLC2TTR4a choices let him cast / refuse fails (stage 400). Matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DLC2TTF1 rewards Spell Tome (Expert): Conjure Ash Guardian; DLC2TTR3b reward Talvas sells the spell (stage 300 log); gold on TT1, TTR1-5, TTR8 script properties. Matches; tome-vs-spell doubt added to unsure."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "DLC2TT1 closes Varona Nelas is dead; DLC2TT2 closes Ildari Sarothril dies; DLC2TT1b closes Mogrul dies if killed. Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Notes trace to TT1/TT2 needs unsure, quest_starts_raw USSEP move on INFO 0200B6 (Old Friends stage 170 to Reluctant Steward stage 170), TTR3a-TTR8 needs unsure and TTR5 starts unsure, and the rewards notes. The essential-actor note was filed under 'branches', but Ildari is in closes, not branches; moved it to 'closes' and named both quests. Added the DLC2TTF1 needs unsure (silent early step gated on DLC2MQ01 stage 30 or not running; how it gates Talvas not fully shown) and its rewards unsure (script holds both the tome and the spell)."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw tel-mithryn: opening DLC2TT1 Dragonborn.esm:017E8D, USSEP INFO 0200B6 GetStage swap 0195A1 -> 017E8D; checked/043.json holds TT1, TT1b, TT2, TTF1, TTF2, TTR1, TTR2; 044.json holds TTR3a-TTR8. Confirmed."
+    }
+   }
+  },
+  {
+   "id": "skaal-village",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line skaal-village, quests DLC2SV01, DLC2SV02, DLC2SkaalVillageFreeform1; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json name 'Skaal Village'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "DLC2SV01 Tharstan and Vahlok's Tomb (places_raw level 30-120), DLC2SV02 Baldor Iron-Shaper, DLC2SkaalVillageFreeform1 Bera's Necklace to Falkreath for Morwen; quest_starts_raw skaal-village no conditions. Matches."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "DLC2SV01 checked starts: Tharstan in Skaal Village, sleeps in the Greathall, found a crypt, hires you as protection; needs []. Matches; the pillar-builder package note added to unsure."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Three rows in quests.json order. Lost Legacy: Vahlok the Jailor level 120, traps (DLC2SV01 takesYou); A New Source of Stalhrim: Deor, southwest, Abandoned Lodge next to Raven Rock, Northshore Landing (DLC2SV02); Skaal Village Dialogue: Runil at the Hall of the Dead in Falkreath, back to Morwen (Freeform1). Matches."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "No read has choices (DLC2SV01, DLC2SV02, Freeform1 choices []); empty matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "DLC2SV01 gold from Tharstan; DLC2SV02 108 recipes (107 with Ebony Smithing) and Baldor's forge; Freeform1 Nordic Helmet (heavy) on the script. Matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "All three reads have closes []; Freeform1 fail stage 350 is noted in unsure. Matches."
+    },
+    "unsure": {
+     "verdict": "fix",
+     "note": "Notes trace to DLC2SV01 starts/where/rewards unsure, DLC2SV02 and Freeform1 starts unsure, Freeform1 closes unsure. Added to the getIn note DLC2SV01's where unsure: Tharstan's shared pillar-builder work package (DLC2MQ06 stage < 550) comes first in his schedule until a point in At the Summit of Apocrypha."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw skaal-village: opening DLC2SV01 Dragonborn.esm:019B4A, conditions dialogue [] event []; checked/044.json holds all three. Confirmed."
+    }
+   }
+  },
+  {
+   "id": "black-books",
+   "verdicts": {
+    "id": {
+     "verdict": "agree",
+     "note": "quests.json line black-books, quests DLC2WE06 then DLC2BlackBook03Quest-07Quest; matches."
+    },
+    "name": {
+     "verdict": "agree",
+     "note": "quests.json name 'The Black Books'; matches."
+    },
+    "about": {
+     "verdict": "agree",
+     "note": "BlackBook03-07 opening logs (read pulls you into Apocrypha, read again to escape) and DLC2WE06 starts (encounter in Solstheim's north, glacier or ash regions names a dungeon). quest_starts_raw black-books no conditions. Matches."
+    },
+    "getIn": {
+     "verdict": "agree",
+     "note": "quest_starts_raw opening DLC2BlackBook03Quest 03216C; checked starts: the book itself, read it, pulled into Apocrypha; where '' with unsure; needs []. Matches."
+    },
+    "order": {
+     "verdict": "agree",
+     "note": "Six rows follow quests.json order and names. DLC2WE06 row matches its starts/takesYou (region nodes North, Glacier, Ashland; dungeon picked); five book rows match each read's starts and firstStep. Matches."
+    },
+    "branches": {
+     "verdict": "agree",
+     "note": "Book reads' only choice is reading again to escape, kept as a doubt in unsure; no read gives a branch. Empty matches."
+    },
+    "gives": {
+     "verdict": "agree",
+     "note": "All five book reads have rewards [] and the powers not tied to a book (powers_raw); DLC2WE06's reward is the book you are sent to find. Empty, with the note in unsure; matches."
+    },
+    "closes": {
+     "verdict": "agree",
+     "note": "All six reads have closes []; matches."
+    },
+    "unsure": {
+     "verdict": "agree",
+     "note": "Notes trace to the book reads' where/needs/rewards/choices unsure and DLC2WE06 takesYou unsure. No ids in text."
+    },
+    "evidence": {
+     "verdict": "agree",
+     "note": "quest_starts_raw black-books: opening DLC2BlackBook03Quest Dragonborn.esm:03216C, no conditions, no doors; checked/045.json holds DLC2WE06 and DLC2BlackBook03-07Quest. Confirmed."
+    }
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "raven-rock",
+   "name": "Raven Rock",
+   "about": "Jobs for the people of Raven Rock, the town on Solstheim: two stories for the town's council and guard, a trip to the bottom of Raven Rock Mine for Crescius Caerellius, and small favors for townsfolk. The records give no level gate for the line; the toughest named foes are General Falx Carius at level 43 and the level 120 boss of Raven Rock Mine.",
+   "getIn": {
+    "quest": "March of the Dead",
+    "who": "Captain Veleth",
+    "where": "the Attius Farm, outside Raven Rock on Solstheim",
+    "how": "Come upon Captain Veleth fighting ash spawn at the Attius Farm, kill them, then speak to him; he asks you to search the farm for clues.",
+    "needs": [
+     "Get to Solstheim (Raven Rock)"
+    ]
+   },
+   "order": [
+    {
+     "quest": "March of the Dead",
+     "what": "You help Captain Veleth against the ash spawn, search the Attius Farm, kill General Falx Carius (level 43) at Fort Frostmoth, and report back to Veleth for a bounty.",
+     "where": "the Attius Farm and Fort Frostmoth, Solstheim",
+     "needs": ""
+    },
+    {
+     "quest": "Served Cold",
+     "what": "Adril Arano, Second Councilor, asks you to find the Ulen assassins threatening Councilor Morvayn; the search starts with Geldis Sadri at The Retching Netch, leads to Ashfallow Citadel, and ends back in Raven Rock with Councilor Morvayn.",
+     "where": "Raven Rock and Ashfallow Citadel, Solstheim",
+     "needs": "Finish March of the Dead; Captain Veleth tells you Adril wants to see you."
+    },
+    {
+     "quest": "An Axe to Find",
+     "what": "Glover Mallory, Raven Rock's smith, asks you to get his Ancient Nordic Pickaxe back from Crescius Caerellius.",
+     "where": "Raven Rock",
+     "needs": ""
+    },
+    {
+     "quest": "The Final Descent",
+     "what": "Crescius Caerellius asks you to find his great-grandfather Gratian's remains and journal at the bottom of Raven Rock Mine; the way out runs through Bloodskal Barrow. The mine's records list the dragon priest Zahkriisos, level 120, as its boss.",
+     "where": "Raven Rock Mine and Bloodskal Barrow",
+     "needs": ""
+    },
+    {
+     "quest": "The Final Descent Priest",
+     "what": "A side objective that appears during The Final Descent: slay the Seeker in Bloodskal Barrow.",
+     "where": "Bloodskal Barrow",
+     "needs": "Be on The Final Descent."
+    },
+    {
+     "quest": "Recipe for Distraction",
+     "what": "Captain Veleth asks you to find a hidden stash of Emberbrand Wine in Raven Rock.",
+     "where": "Raven Rock",
+     "needs": ""
+    },
+    {
+     "quest": "Fetch the Netch",
+     "what": "Milore Ienth, the alchemist, asks you to collect 5 netch jelly for her.",
+     "where": "Ienth Farm, Raven Rock, and wherever netch are found",
+     "needs": ""
+    },
+    {
+     "quest": "Clean Sweep",
+     "what": "Elder Othreloth asks you to clear the ash spawn out of the Temple's tomb.",
+     "where": "the Temple, Raven Rock",
+     "needs": ""
+    },
+    {
+     "quest": "It's All In The Taste",
+     "what": "Geldis Sadri asks you to hand out 10 free samples of Sadri's Sujamma around Raven Rock.",
+     "where": "Raven Rock and The Retching Netch",
+     "needs": ""
+    },
+    {
+     "quest": "Pain in the Necklace",
+     "what": "Fethis Alor asks you to find the East Empire Pendants he has lost around Raven Rock.",
+     "where": "Raven Rock",
+     "needs": ""
+    },
+    {
+     "quest": "Feeding the Addiction",
+     "what": "Bralsa Drel, a beggar barred from The Retching Netch, asks you to convince Geldis Sadri to let her back in.",
+     "where": "The Retching Netch, Raven Rock",
+     "needs": ""
+    },
+    {
+     "quest": "First Edition",
+     "what": "Cindiri Arano asks you to bring back her folio from the wreck of the Strident Squall.",
+     "where": "the Strident Squall, Solstheim",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "March of the Dead",
+     "options": [
+      "Go straight back to Captain Veleth after killing Carius for the bounty.",
+      "Read Carius's letter first and take it to a guard, then to Veleth; the ending is the same."
+     ]
+    },
+    {
+     "at": "An Axe to Find",
+     "options": [
+      "Return the Ancient Nordic Pickaxe to Glover, who pays you.",
+      "Tell Glover a lie about the pickaxe; what that changes isn't in the records."
+     ]
+    }
+   ],
+   "gives": [
+    "A gold bounty from Captain Veleth (March of the Dead)",
+    "Bloodskal Blade, a greatsword that releases an energy blast on power attacks (The Final Descent)",
+    "Forge recipe: Bloodskal Blade Replica, needing Ebony Smithing (after The Final Descent)",
+    "Gold from some of the favors (An Axe to Find, The Final Descent, Pain in the Necklace)"
+   ],
+   "closes": [
+    "General Falx Carius dies in March of the Dead",
+    "Vendil Severin dies in Served Cold"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate or time to finish is in the records; the levels given are those of single foes and places."
+    },
+    {
+     "field": "gives",
+     "why": "Served Cold's reward isn't decoded. A LoreRim patch named for Severin Manor having a price edits the quest and Councilor Morvayn's thank-you line; that points to Severin Manor being sold rather than given, but the records here don't show the price or the hand-over."
+    },
+    {
+     "field": "order",
+     "why": "An Axe to Find is named as the lead-in to The Final Descent and Crescius is in both, but the records don't show it starting The Final Descent. What starts The Final Descent Priest isn't shown either, and whether the Seeker is Zahkriisos isn't settled."
+    },
+    {
+     "field": "order",
+     "why": "Served Cold's need for March of the Dead is read from Adril Arano's line about everything you've already done for Raven Rock; the condition on Captain Veleth's opening line isn't in the files."
+    },
+    {
+     "field": "order",
+     "why": "The conditions on the favor givers' opening lines aren't in the files, so whether March of the Dead or anything else must come first for the favors isn't known."
+    },
+    {
+     "field": "gives",
+     "why": "Gold amounts aren't in the records. Most favors list no reward at all; whether you pick up the Bloodskal Blade or are handed it isn't shown."
+    },
+    {
+     "field": "closes",
+     "why": "What happens to Tilisu and Mirri Severin in Served Cold isn't in the records."
+    }
+   ],
+   "evidence": [
+    "quests.json line raven-rock: DLC2RR01, DLC2RR02, DLC2RR03Intro, DLC2RR03, DLC2RR03Priest, DLC2RRFavor01-07",
+    "quest_starts_raw raven-rock: opening DLC2RR01 Dragonborn.esm:018B13, no dialogue or event conditions",
+    "checked/041.json DLC2RR01 (needs, starts, takesYou incl. Carius level 43, choices, rewards, opens Served Cold, closes)",
+    "checked/041.json DLC2RR02 (needs, starts, takesYou, closes, unsure on Severin Manor Has A Price.esp reward)",
+    "checked/041.json DLC2RR03Intro (starts, choices, rewards, opens The Final Descent unsure)",
+    "checked/041.json DLC2RR03 (starts, takesYou, rewards Bloodskal Blade, opens Bloodskal Blade Replica recipe, Zahkriisos level 120)",
+    "checked/041.json DLC2RR03Priest (firstStep, needs, unsure)",
+    "checked/042.json DLC2RRFavor01-07 (givers, firstSteps, counts 5 jelly and 10 sujamma, Pain in the Necklace gold, rewards unlisted)"
+   ]
+  },
+  {
+   "id": "thirsk",
+   "name": "Thirsk Mead Hall",
+   "about": "The story of Thirsk Mead Hall on Solstheim's eastern shore, which rieklings have taken from the Nords who lived there. You help either the Nords take it back or the rieklings drive the Nords off, and the Nords have favors of their own; the records give no level gate.",
+   "getIn": {
+    "quest": "Retaking Thirsk",
+    "who": "Bujold the Intrepid",
+    "where": "Bujold's Retreat, the Nords' camp on Solstheim's eastern shore",
+    "how": "Talk to Bujold; she tells you rieklings took Thirsk Mead Hall and asks you to join the assault.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Retaking Thirsk",
+     "what": "You join the Nords' assault to take Thirsk Mead Hall back from the rieklings, then go with Bujold to Hrothmund's Barrow to seek the blessing of Thirsk's founder.",
+     "where": "Thirsk Mead Hall and Hrothmund's Barrow, Solstheim",
+     "needs": ""
+    },
+    {
+     "quest": "The Chief of Thirsk Hall",
+     "what": "The riekling chief inside Thirsk Mead Hall asks you to help his tribe with favors, starting with giving Bilgemuck some meat.",
+     "where": "Thirsk Mead Hall",
+     "needs": "This is the riekling side; helping the rieklings fails Retaking Thirsk."
+    },
+    {
+     "quest": "Elmus Favor Quest",
+     "what": "Elmus, camped with the Nords, asks you to fetch Ashfire Mead from Thirsk Mead Hall.",
+     "where": "Bujold's Retreat and Thirsk Mead Hall",
+     "needs": ""
+    },
+    {
+     "quest": "Elmus Favor Quest",
+     "what": "Elmus, back in the hall, asks you to bring him some Juniper Berries.",
+     "where": "Thirsk Mead Hall",
+     "needs": "The Nords back in Thirsk Mead Hall after Retaking Thirsk."
+    },
+    {
+     "quest": "Halbarn Favor Quest",
+     "what": "Halbarn Iron-Fur, the Nords' smith, asks you to bring him 10 Stalhrim and 15 Ebony Ingots.",
+     "where": "Thirsk Mead Hall, or Bujold's Retreat before the hall is retaken",
+     "needs": ""
+    },
+    {
+     "quest": "Hilund Favor Quest",
+     "what": "Hilund asks you to bring her 50 Riekling Spears.",
+     "where": "Thirsk Mead Hall, or Bujold's Retreat before the hall is retaken",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "Retaking Thirsk",
+     "options": [
+      "Help the Nords retake the hall.",
+      "Help the rieklings in The Chief of Thirsk Hall, which fails the Nords' quest and ends with the Nords killed."
+     ]
+    },
+    {
+     "at": "Retaking Thirsk (Hrothmund's Barrow)",
+     "options": [
+      "Back Bujold when she says she will lead anyway: she lives and starts a new tradition at Thirsk.",
+      "Call her leadership a fraud: she attacks you and you have to kill her."
+     ]
+    }
+   ],
+   "gives": [
+    "Chief of the Thirsk rieklings, if you take the riekling side",
+    "Leveled quest rewards from the Nords' favors (Elmus, Halbarn, Hilund)"
+   ],
+   "closes": [
+    "Siding with the Nords fails The Chief of Thirsk Hall; siding with the rieklings fails Retaking Thirsk",
+    "On the riekling side Bujold, Kuvar, Elmus, Halbarn Iron-Fur, Hilund, Sirkjorg and Herkja are killed, and with them Halbarn's smithing, Kuvar's Heavy Armor training, Elmus's shop, the Nords' favors, and Halbarn and Hilund as marriage partners",
+    "Bujold dies if you call her a fraud at Hrothmund's Barrow",
+    "The old riekling chief dies on the riekling side"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate or time to finish is in the records."
+    },
+    {
+     "field": "getIn.needs",
+     "why": "The Unofficial Patch adds an impossible level condition to one of the opening lines, which switches it off; which line and whether it matters isn't in the files."
+    },
+    {
+     "field": "order",
+     "why": "How you get to talk to the riekling chief without a fight isn't in the files, nor where Bilgemuck is found."
+    },
+    {
+     "field": "order",
+     "why": "The conditions on the favor offers aren't in the files. The Ashfire Mead favor fits while the Nords are camped and the Juniper Berries one once they are back in the hall, but neither gate is shown, nor the exact condition that blocks the favors on the riekling side."
+    },
+    {
+     "field": "gives",
+     "why": "Retaking Thirsk lists no reward. What the favors' leveled reward lists roll isn't decoded."
+    }
+   ],
+   "evidence": [
+    "quests.json line thirsk: DLC2MH01, DLC2MH02, DLC2ThirskFFElmus, DLC2ThirskFFElmusBack, DLC2ThirskFFHalbarn, DLC2ThirskFFHilund",
+    "quest_starts_raw thirsk: opening DLC2MH01 Dragonborn.esm:01A50B; USSEP adds GetLevel == -1 to INFO Dragonborn.esm:027DE7",
+    "checked/042.json DLC2MH01 (starts, takesYou, choices at the barrow, closes)",
+    "checked/042.json DLC2MH02 (starts, firstStep Bilgemuck, rewards chief title, closes Nords killed and services lost)",
+    "checked/042.json DLC2ThirskFFElmus (Ashfire Mead, LvlQuestReward02Medium)",
+    "checked/043.json DLC2ThirskFFElmusBack (needs hall retaken, Juniper Berries, LvlQuestReward01Small)",
+    "checked/043.json DLC2ThirskFFHalbarn (10 Stalhrim, 15 Ebony Ingots), DLC2ThirskFFHilund (50 Riekling Spears)"
+   ]
+  },
+  {
+   "id": "tel-mithryn",
+   "name": "Neloth of Tel Mithryn",
+   "about": "Jobs for Neloth, the Telvanni wizard of Tel Mithryn on Solstheim, and the people of his tower: finding his missing steward, settling the new steward's debt, tracking whoever is attacking Neloth, and a set of research errands he offers one at a time. The records give no level gate; Highpoint Tower, where Old Friends leads, is rated for enemies of level 20 to 60.",
+   "getIn": {
+    "quest": "Reluctant Steward",
+    "who": "Neloth",
+    "where": "inside his tower at Tel Mithryn, Solstheim",
+    "how": "Talk to Neloth; he asks you to find his steward, Varona Nelas.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Reluctant Steward",
+     "what": "You look for Varona Nelas around Tel Mithryn and along the road to Raven Rock, then recruit Drovas Relvi at The Retching Netch as Neloth's new steward.",
+     "where": "Tel Mithryn and Raven Rock",
+     "needs": ""
+    },
+    {
+     "quest": "A New Debt",
+     "what": "Mogrul, a moneylender at The Retching Netch, wants the 1000 septims Drovas owes him, and his man Slitter tells you Mogrul wants a word.",
+     "where": "The Retching Netch, Raven Rock",
+     "needs": "Hire Drovas Relvi as the new steward in Reluctant Steward."
+    },
+    {
+     "quest": "Old Friends",
+     "what": "Neloth gives you Neloth's Ring of Tracking to find the source of attacks on him; the trail leads from the Tel Mithryn grounds to Highpoint Tower.",
+     "where": "Tel Mithryn and Highpoint Tower",
+     "needs": ""
+    },
+    {
+     "quest": "From the Ashes",
+     "what": "Talvas Fathryon, Neloth's apprentice, asks you to destroy an Ash Guardian he summoned by accident; you can also just come across it on the grounds.",
+     "where": "Tel Mithryn",
+     "needs": "If the Dragonborn story is under way, it must have reached Raven Rock telling you of Miraak's temple."
+    },
+    {
+     "quest": "Healing a House",
+     "what": "Elynea Mothren needs three taproots soaked in the Headwaters of Harstrad to heal a withered part of Neloth's tower.",
+     "where": "Tel Mithryn and the Headwaters of Harstrad",
+     "needs": ""
+    },
+    {
+     "quest": "Lost Knowledge",
+     "what": "A radiant job: Neloth has found another Black Book in a dungeon the game picks and wants it brought to him.",
+     "where": "a dungeon picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Heart Stones",
+     "what": "A radiant job: Neloth wants a heart stone from a mine the game picks.",
+     "where": "a mine picked when the job starts",
+     "needs": ""
+    },
+    {
+     "quest": "Telvanni Research",
+     "what": "Neloth wants a sample of ash from an ash spawn, taken with a special extraction tool.",
+     "where": "wherever you find an ash spawn",
+     "needs": ""
+    },
+    {
+     "quest": "Wind and Sand",
+     "what": "Neloth needs a copy of the book Wind and Sand from a dungeon he names.",
+     "where": "the dungeon Neloth names",
+     "needs": ""
+    },
+    {
+     "quest": "Experimental Subject",
+     "what": "Neloth casts an experimental spell on you and wants to hear about its side effects in rain or while swimming.",
+     "where": "Tel Mithryn",
+     "needs": ""
+    },
+    {
+     "quest": "Experimental Subject",
+     "what": "A second, smaller experiment that shows only as a miscellaneous task: help Neloth with his research.",
+     "where": "Tel Mithryn",
+     "needs": ""
+    },
+    {
+     "quest": "Briarheart Necropsy",
+     "what": "Neloth asks you to examine a Forsworn Briarheart warrior from the hills on the western edge of Skyrim.",
+     "where": "Forsworn country in the Reach",
+     "needs": ""
+    },
+    {
+     "quest": "Azra's Staffs",
+     "what": "Neloth wants one of Azra Nightwielder's staffs from a dungeon he names.",
+     "where": "the dungeon Neloth names",
+     "needs": ""
+    },
+    {
+     "quest": "Hunting and Gathering",
+     "what": "Elynea Mothren asks you to bring her one of six rare ingredients.",
+     "where": "Tel Mithryn Apothecary",
+     "needs": ""
+    }
+   ],
+   "branches": [
+    {
+     "at": "A New Debt",
+     "options": [
+      "Pay Mogrul the 1000 septims.",
+      "Persuade Mogrul to take half, 500 septims.",
+      "Refuse and kill Mogrul; until it's settled he keeps sending thugs after you."
+     ]
+    },
+    {
+     "at": "Experimental Subject",
+     "options": [
+      "Let Neloth cast the spell and report the side effects.",
+      "Refuse, and the quest fails."
+     ]
+    }
+   ],
+   "gives": [
+    "Spell Tome (Expert): Conjure Ash Guardian (From the Ashes)",
+    "Talvas Fathryon sells you the spell Neloth was researching (Wind and Sand)",
+    "Gold from Neloth's jobs and Elynea's errand"
+   ],
+   "closes": [
+    "Varona Nelas is dead (Reluctant Steward)",
+    "Ildari Sarothril dies in Old Friends",
+    "Mogrul dies if you choose to kill him in A New Debt"
+   ],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate or time to finish is in the records."
+    },
+    {
+     "field": "order",
+     "why": "The conditions on Neloth's opening lines aren't in the files, so whether Reluctant Steward must come before Old Friends isn't shown. The Unofficial Patch moves one of Neloth's line conditions from Old Friends to Reluctant Steward."
+    },
+    {
+     "field": "order",
+     "why": "Neloth's research jobs and Elynea's errand are offered through a trigger that fires when you change location; its conditions, and the order the jobs come in, aren't in the files. Briarheart Necropsy isn't tied to that trigger, so how it is offered isn't clear."
+    },
+    {
+     "field": "order",
+     "why": "From the Ashes has a silent early step that waits until the Dragonborn story has reached Raven Rock pointing you to Miraak's temple, or until that story isn't running at all; how that gates Talvas's offer isn't fully shown."
+    },
+    {
+     "field": "closes",
+     "why": "Mogrul's and Ildari Sarothril's last actor records mark them essential, though A New Debt has a 'killed him' ending and Old Friends says to kill Ildari; the files don't show the quests lifting that."
+    },
+    {
+     "field": "gives",
+     "why": "Gold amounts aren't in the records. Whether you keep Neloth's Ring of Tracking isn't shown. The spells and perks on the research jobs' scripts look like parts of the jobs rather than lasting rewards. Azra's Staffs lists no reward. The spell Talvas sells after Wind and Sand isn't named. From the Ashes holds both the Conjure Ash Guardian tome and the spell itself; which you are handed isn't shown."
+    }
+   ],
+   "evidence": [
+    "quests.json line tel-mithryn: DLC2TT1, DLC2TT1b, DLC2TT2, DLC2TTF1, DLC2TTF2, DLC2TTR1, DLC2TTR2, DLC2TTR3a, DLC2TTR3b, DLC2TTR4a, DLC2TTR4b, DLC2TTR5, DLC2TTR7, DLC2TTR8",
+    "quest_starts_raw tel-mithryn: opening DLC2TT1 Dragonborn.esm:017E8D; USSEP INFO Dragonborn.esm:0200B6 condition moved from 0195A1 to 017E8D",
+    "checked/043.json DLC2TT1 (starts, takesYou, opens A New Debt, closes Varona)",
+    "checked/043.json DLC2TT1b (needs, starts, choices 1000/500/kill, Mogrul essential)",
+    "checked/043.json DLC2TT2 (ring, Highpoint Tower 20-60, Ildari level 43, closes)",
+    "checked/043.json DLC2TTF1 (needs DLC2MQ01 gate, Conjure Ash Guardian tome), DLC2TTF2 (taproots, Headwaters of Harstrad)",
+    "checked/043.json DLC2TTR1, DLC2TTR2 (canDo radiant, picked dungeon or mine)",
+    "checked/044.json DLC2TTR3a, DLC2TTR3b, DLC2TTR4a, DLC2TTR4b, DLC2TTR5, DLC2TTR7, DLC2TTR8 (givers, story node DLC2NelothQuestNode / DLC2ElyneaQuestNode, rewards)"
+   ]
+  },
+  {
+   "id": "skaal-village",
+   "name": "Skaal Village",
+   "about": "Three jobs for the Skaal of Skaal Village on Solstheim: guarding the historian Tharstan in Vahlok's Tomb, finding the village smith Baldor Iron-Shaper, and carrying a necklace to Falkreath for Morwen. The records give no level gate, but Vahlok's Tomb holds enemies of level 30 to 120.",
+   "getIn": {
+    "quest": "Lost Legacy",
+    "who": "Tharstan",
+    "where": "Skaal Village on Solstheim; he sleeps in the Greathall",
+    "how": "Talk to Tharstan; he has found the entrance to an old crypt, offers to hire you as protection and asks you to meet him there.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Lost Legacy",
+     "what": "You guard Tharstan through Vahlok's Tomb, which has traps and ends with the dragon priest Vahlok the Jailor at level 120.",
+     "where": "Vahlok's Tomb, by Skaal Village",
+     "needs": ""
+    },
+    {
+     "quest": "A New Source of Stalhrim",
+     "what": "Deor Woodcutter tells you Baldor Iron-Shaper, the village smith, has gone missing, and you search for him southwest of the village.",
+     "where": "the Abandoned Lodge next to Raven Rock, and Northshore Landing",
+     "needs": ""
+    },
+    {
+     "quest": "Skaal Village Dialogue",
+     "what": "Morwen asks you to take Bera's Necklace to Runil in Falkreath, then come back to her.",
+     "where": "the Hall of the Dead in Falkreath, and Skaal Village",
+     "needs": ""
+    }
+   ],
+   "branches": [],
+   "gives": [
+    "Gold from Tharstan (Lost Legacy)",
+    "Stalhrim crafting: 108 make and improve recipes, nearly all also needing Ebony Smithing (A New Source of Stalhrim)",
+    "Use of Baldor's forge (A New Source of Stalhrim)",
+    "Nordic Helmet, heavy armor (Skaal Village Dialogue)"
+   ],
+   "closes": [],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate or time to finish is in the records; the levels are those of Vahlok's Tomb."
+    },
+    {
+     "field": "getIn",
+     "why": "No start line or trigger for Lost Legacy is in the files; the journal says you met Tharstan in Skaal Village. Where he walks by day isn't known, and until a point in At the Summit of Apocrypha a shared work package for the pillar builders comes first in his schedule. The three quests don't need each other in the records, so any of them can come first."
+    },
+    {
+     "field": "order",
+     "why": "Deor and Morwen as the givers of their quests are read from the journals and the quests' first slots, not from dialogue records."
+    },
+    {
+     "field": "gives",
+     "why": "The stage that pays Tharstan's gold and the gold amount aren't shown. The Nordic Helmet is on the quest script; the stage that hands it over isn't in the files."
+    },
+    {
+     "field": "closes",
+     "why": "Skaal Village Dialogue can fail, but the records don't say what fails it."
+    }
+   ],
+   "evidence": [
+    "quests.json line skaal-village: DLC2SV01, DLC2SV02, DLC2SkaalVillageFreeform1",
+    "quest_starts_raw skaal-village: opening DLC2SV01 Dragonborn.esm:019B4A, no dialogue or event conditions",
+    "checked/044.json DLC2SV01 (Tharstan, Vahlok's Tomb levels 30-120, boss level 120, gold)",
+    "checked/044.json DLC2SV02 (Deor, Abandoned Lodge, Northshore Landing, 108 recipes, Baldor's forge)",
+    "checked/044.json DLC2SkaalVillageFreeform1 (Morwen, Bera's Necklace, Runil, Nordic Helmet, fail stage 350)"
+   ]
+  },
+  {
+   "id": "black-books",
+   "name": "The Black Books",
+   "about": "Hermaeus Mora's Black Books: reading one pulls you into his realm of Apocrypha, where you look for the book's hidden knowledge, and reading it again lets you escape. A chance encounter in the wilds of Solstheim can point you to a dungeon that holds one; the records give no level gate.",
+   "getIn": {
+    "quest": "Black Book: Untold Legends",
+    "who": "the Black Book \"Untold Legends\"",
+    "where": "",
+    "how": "Read \"Untold Legends\"; it pulls you into Apocrypha and the quest begins.",
+    "needs": []
+   },
+   "order": [
+    {
+     "quest": "Black Book",
+     "what": "A chance encounter while you travel the north, the glaciers or the ashlands of Solstheim tells you which dungeon holds a Black Book.",
+     "where": "a dungeon picked when the encounter fires",
+     "needs": ""
+    },
+    {
+     "quest": "Black Book: Untold Legends",
+     "what": "Reading \"Untold Legends\" pulls you into Apocrypha to learn the book's hidden knowledge.",
+     "where": "Apocrypha",
+     "needs": "Find and read the book."
+    },
+    {
+     "quest": "Black Book: The Winds of Change",
+     "what": "Reading \"The Winds of Change\" pulls you into Apocrypha to learn the book's hidden knowledge.",
+     "where": "Apocrypha",
+     "needs": "Find and read the book."
+    },
+    {
+     "quest": "Black Book: The Sallow Regent",
+     "what": "Reading \"The Sallow Regent\" pulls you into Apocrypha to learn the book's hidden knowledge.",
+     "where": "Apocrypha",
+     "needs": "Find and read the book."
+    },
+    {
+     "quest": "Black Book: Filament and Filigree",
+     "what": "Reading \"Filament and Filigree\" pulls you into Apocrypha to learn the book's hidden knowledge.",
+     "where": "Apocrypha",
+     "needs": "Find and read the book."
+    },
+    {
+     "quest": "Black Book: The Hidden Twilight",
+     "what": "Reading \"The Hidden Twilight\" pulls you into Apocrypha to learn the book's hidden knowledge.",
+     "where": "Apocrypha",
+     "needs": "Find and read the book."
+    }
+   ],
+   "branches": [],
+   "gives": [],
+   "closes": [],
+   "unsure": [
+    {
+     "field": "about",
+     "why": "No level gate or time to finish is in the records."
+    },
+    {
+     "field": "getIn.where",
+     "why": "The files don't say where any of the Black Books lies in the world. The chance encounter's dungeon and book are picked when it fires, and the choices aren't listed."
+    },
+    {
+     "field": "getIn.needs",
+     "why": "No conditions on the books or their quests show up, so any gating by the Dragonborn story can't be checked."
+    },
+    {
+     "field": "gives",
+     "why": "The records hold the Black Book powers (Mora's Boon, Omen of Warding, Secret of Arcana, Secret of Protection, Secret of Strength), but nothing in the files ties any of them, or any other reward, to a given book."
+    },
+    {
+     "field": "order",
+     "why": "Whether a book's quest stays open after you escape by reading it again isn't shown; only the opening and closing log entries exist."
+    }
+   ],
+   "evidence": [
+    "quests.json line black-books: DLC2WE06, DLC2BlackBook03Quest, DLC2BlackBook04Quest, DLC2BlackBook05Quest, DLC2BlackBook06Quest, DLC2BlackBook07Quest",
+    "quest_starts_raw black-books: opening DLC2BlackBook03Quest Dragonborn.esm:03216C, no conditions, no doors",
+    "checked/045.json DLC2WE06 (region nodes North, Glacier, Ashland; Dungeon and BlackBook aliases)",
+    "checked/045.json DLC2BlackBook03Quest-07Quest (opening logs, read again to escape, objective 10, powers not tied to a book)"
+   ]
+  }
+ ]
+}
