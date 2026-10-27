@@ -1,0 +1,1588 @@
+[
+ {
+  "id": "Skyrim.esm:013BA4",
+  "name": "Arcadia",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Behind the counter of her shop, Arcadia's Cauldron, in Whiterun.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Arcadia's Cauldron, Whiterun",
+    "doing": "minding her shop"
+   },
+   {
+    "from": "8 pm",
+    "for": "3 hours",
+    "where": "around Arcadia's Cauldron",
+    "doing": "spending the evening near home (on most nights; the package has conditions the extract can't read)"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "Arcadia's Cauldron",
+    "doing": "at home"
+   },
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Arcadia's Cauldron",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "merchant (apothecary) and Alchemy trainer",
+  "sells": "an apothecary's stock; the shop is open 7 am to 9 pm",
+  "trains": "Alchemy, expert trainer, up to level 100",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Mirrors of Youth",
+    "how": "a step in it: she offers Serana and you cheaper potions if you find Braith and bring back her experimental potion"
+   },
+   {
+    "quest": "Ode To The Tundrastriders",
+    "how": "can start it in conversation (one of several people the records list for it)"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her vendor faction's item lists aren't resolved in the extracts; only that she's an apothecary and merchant."
+   },
+   {
+    "field": "trains",
+    "why": "The record gives tier Expert and a cap of 100; the cap is reported as given."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Her class isn't named in the extracts and her gear isn't listed."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills a role in A Dying Wish, but its journal never names her, so her part in it is unknown."
+   },
+   {
+    "field": "day",
+    "why": "Some of her packages carry conditions the extract can't decode, so whether they fire on a given day isn't certain."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BA4",
+   "WhiterunArcadiaStorePackage Skyrim.esm:02BE14",
+   "AIOWRArcadiaNight20x3 AI Overhaul.esp:0591D5",
+   "DefaultSleepEditorLoc24x8",
+   "DefaultSandboxHomeowner",
+   "JobApothecaryFaction",
+   "JobMerchantFaction",
+   "JobTrainerAlchemyFaction",
+   "trainer Alchemy Expert levelCap 100",
+   "vendor 7-21",
+   "SeranaDialogueExpansion - Romance.esp:000197",
+   "SurWR.esp:2ECDA4 (otherGiver)",
+   "cckrtsse001_altar.esl:000D63 alias Arcadia"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9C",
+  "name": "Fralia Gray-Mane",
+  "race": "Nord (elder)",
+  "sex": "female",
+  "firstMeet": "At her market stall in Whiterun during the day; at House Gray-Mane in the evening.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "2 hours",
+    "where": "the Temple of Kynareth, Whiterun",
+    "doing": "at the temple"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "House Gray-Mane, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "8 am",
+    "for": "about 11 hours (to about 7 pm)",
+    "where": "her stall in Whiterun",
+    "doing": "selling"
+   },
+   {
+    "from": "about 7 pm",
+    "for": "until 9 pm",
+    "where": "House Gray-Mane",
+    "doing": "cooking"
+   },
+   {
+    "from": "9 pm",
+    "for": "1 hour",
+    "where": "House Gray-Mane",
+    "doing": "at home"
+   },
+   {
+    "from": "10 pm",
+    "for": "7 hours",
+    "where": "House Gray-Mane",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Once a week (Loredas), 7 pm to 9:30 pm, she mourns at the Hall of the Dead in Whiterun, if any of Thorald, Eorlund, Avulstein, Olfina or Vignar Gray-Mane is dead.",
+   "In Missing In Action she asks you to visit her at home in the evening to talk about her son Thorald."
+  ],
+  "role": "merchant; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Missing In Action",
+    "how": "gives it: she believes her son Thorald is alive; you return to her at the end"
+   },
+   {
+    "quest": "Ambivalence",
+    "how": "a step in it: she crafts the ring you give Serana"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "She's a merchant (vendor hours 8 am to 8 pm) but her item lists aren't resolved in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "The stall package's only position clue is 'nearest named place: Jorrvaskr', so the stall's exact spot isn't stated. Its two conditions can't be decoded and look contradictory (the same check must be both false and true); if the stall package never fires she'd spend 8 am to 6 pm at home instead."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills a role in Mirrors of Youth, but its journal doesn't say what."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013B9C",
+   "AIOWRGrayFamilyMourn AI Overhaul.esp:2305AE (dayOfWeek 6)",
+   "WhiterunFraliaStallPackage8x11 Skyrim.esm:02BE2B",
+   "WhiterunFraliaCookPackage Skyrim.esm:02BE2D",
+   "WhiterunFraliaTemplePackage Skyrim.esm:02BE2E",
+   "DefaultSleepEditorLoc22x7",
+   "WhiterunFraliaHomePackage Skyrim.esm:091501",
+   "JobMerchantFaction",
+   "ServicesWhiterunFralia",
+   "Skyrim.esm:01CF26",
+   "SeranaDialogueExpansion - Romance.esp:000198"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D95E9",
+  "name": "Meeko",
+  "race": "dog",
+  "sex": "male",
+  "firstMeet": "At Meeko's Shack in Hjaalmarch, a short walk from Dragon Bridge and Solitude.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "Meeko's Shack, Hjaalmarch",
+    "doing": "barking by the shack at first; later he stays at the shack"
+   }
+  ],
+  "changes": [
+   "Once his quest moves on he travels to a spot by the shack, and afterwards goes back to the shack and stays.",
+   "All his packages switch off if a setting from another mod (taking Meeko to Lod) is turned on."
+  ],
+  "role": "a dog you can find at Meeko's Shack",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "Not flagged as a follower in the extract, and the quest that drives his packages isn't in the quest extracts, so how he joins can't be read."
+   },
+   {
+    "field": "race",
+    "why": "His race isn't in the extract; 'dog' comes from his faction."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The places extract gives Meeko's Shack as 0.4 km from Dragon Bridge and 0.5 km from Solitude; taken as given."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0D95E9",
+   "DogFaction",
+   "dunPOITundraMarshDogBark Skyrim.esm:0DA1DC",
+   "dunPOITundraMarshDogTravel Skyrim.esm:0D980A",
+   "dunPOITundraMarshDogGoBackToShack Skyrim.esm:108CD3",
+   "quest Skyrim.esm:0D980B (not in quests_raw)",
+   "global Bring Meeko to Lod.esp:000801",
+   "place Skyrim.esm:0F6F13"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0136BA",
+  "name": "Sissel",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Running about Rorikstead during the day; at Lemkil's Farmhouse in Rorikstead at night.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "12 hours",
+    "where": "Rorikstead",
+    "doing": "running around"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "Rorik's Manor, Rorikstead",
+    "doing": "training"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Lemkil's Farmhouse, Rorikstead",
+    "doing": "at home"
+   },
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Lemkil's Farmhouse",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "a child in Rorikstead; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sissel's Book",
+    "how": "gives it: bring her a book"
+   }
+  ],
+  "canDie": "not essential or protected in the records",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The running package has no fixed place, so 'Rorikstead' is where she's placed, not a named spot."
+   },
+   {
+    "field": "quests",
+    "why": "The book she wants is a quest alias the extract doesn't name."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0136BA",
+   "RoriksteadSisselTraining Skyrim.esm:09B046",
+   "RoriksteadSisselRun Skyrim.esm:039E72",
+   "DefaultSleepEditorLoc24x8",
+   "sisselbookquest.esp:000889"
+  ]
+ },
+ {
+  "id": "Skyrim Extended Cut - Saints and Seducers.esp:033AF4",
+  "name": "Sees-the-Moon",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "In the marsh of the Shivering Isles; the journal calls him 'a strange Argonian in the marsh' near the Drowned Ruin.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "the marsh in the Shivering Isles, near the Drowned Ruin",
+    "doing": "staying where he's placed; trades at any hour"
+   }
+  ],
+  "changes": [
+   "Can be killed during The Lunatic's Treasure, which then ends without the madness ore lessons."
+  ],
+  "role": "merchant; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Lunatic's Treasure",
+    "how": "gives it: fetch his 'treasure' from the Drowned Ruin; he rewards you with his journal on smithing madness ore"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "He has a merchant faction and vendor chest, but the item lists aren't resolved in the extracts."
+   },
+   {
+    "field": "firstMeet",
+    "why": "His placed cell in the Shivering Isles has no name in the extracts; 'the marsh' and 'Drowned Ruin' come from the quest text."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim Extended Cut - Saints and Seducers.esp:033AF4",
+   "EC_SS_LizardManMerchantFaction",
+   "vendor 0-24",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D1B",
+   "ref Skyrim Extended Cut - Saints and Seducers.esp:033AF5 cell Skyrim Extended Cut - Saints and Seducers.esp:01F4BF"
+  ]
+ },
+ {
+  "id": "ccbgssse025-advdsgs.esm:198273",
+  "name": "Staada",
+  "race": "Golden Saint",
+  "sex": "female",
+  "firstMeet": "In the Solitude Wasteworks, where she starts The Isle of Madness.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "the Solitude Wasteworks",
+    "doing": "waiting where she's placed, until The Isle of Madness is under way"
+   }
+  ],
+  "changes": [
+   "Once The Isle of Madness passes its early stage (after Dylora is found to be captured) she spends her time around the Doors of Denial, unless another of the mod's quests is running."
+  ],
+  "role": "quest giver (Saints and Seducers)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Isle of Madness",
+    "how": "gives it: help her put down a riot in the Asylum"
+   },
+   {
+    "quest": "The Roots of Madness",
+    "how": "gives it: sends you for a weapon to break Thoron's amber barrier; you report back to her at the end"
+   },
+   {
+    "quest": "The Route of Madness",
+    "how": "a step in it: her dialogue moves it on"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The Wasteworks' outside door is in a cell the extracts don't name, and it's hidden until an enable parent changes, so where its entrance is and when it opens isn't stated."
+   },
+   {
+    "field": "changes",
+    "why": "Where the Doors of Denial are isn't given in the extracts."
+   },
+   {
+    "field": "id",
+    "why": "This person appears twice in the batch under differently cased ids; this entry is the one placed in the Solitude Wasteworks."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "ccbgssse025-advdsgs.esm:198273",
+   "EC_SS_SandboxAroundDoors2048 (Isle of Madness stage >= 15, quest Skyrim Extended Cut - Saints and Seducers.esp:5BDB5C not running)",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+   "Skyrim Extended Cut - Saints and Seducers.esp:09EF5F",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D18",
+   "cell Skyrim Extended Cut - Saints and Seducers.esp:0EC526 Solitude Wasteworks"
+  ]
+ },
+ {
+  "id": "ccbgssse025-advdsgs.esm:000A84",
+  "name": "Thoron",
+  "race": "Thoron",
+  "sex": "male",
+  "firstMeet": "In the Decrepit House in Glimmering Hollow, during The Isle of Madness.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "the Decrepit House, Glimmering Hollow",
+    "doing": "there until The Isle of Madness passes the point where you confront him"
+   }
+  ],
+  "changes": [
+   "Escapes after you rescue Dylora in The Isle of Madness.",
+   "In The Roots of Madness he hides in the Root Nexus behind an amber barrier; you defeat him twice and he is turned into a crystal."
+  ],
+  "role": "enemy; the villain of Saints and Seducers",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Isle of Madness",
+    "how": "its target: defeat him"
+   },
+   {
+    "quest": "The Roots of Madness",
+    "how": "its target: defeat him in the Root Nexus"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts; he's in the warlock faction."
+   },
+   {
+    "field": "canDie",
+    "why": "Not essential or protected in the records, but the quest ends with him turned into a crystal rather than killed."
+   }
+  ],
+  "evidence": [
+   "ccbgssse025-advdsgs.esm:000A84",
+   "EC_SS_ThoronInitPackage (Isle of Madness stage <= 30)",
+   "WarlockFaction",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+   "Skyrim Extended Cut - Saints and Seducers.esp:09EF5F"
+  ]
+ },
+ {
+  "id": "Skyrim Extended Cut - Saints and Seducers.esp:099D1D",
+  "name": "Dylora",
+  "race": "Dark Seducer",
+  "sex": "female",
+  "firstMeet": "In Glimmering Hollow, held captive by Thoron, during The Isle of Madness.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "Glimmering Hollow",
+    "doing": "held prisoner until you rescue her"
+   }
+  ],
+  "changes": [
+   "After The Isle of Madness passes its early stage she spends her time around the Doors of Denial, unless another of the mod's quests is running."
+  ],
+  "role": "a person you rescue in Saints and Seducers",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Isle of Madness",
+    "how": "its target: rescue her from Thoron"
+   },
+   {
+    "quest": "The Roots of Madness",
+    "how": "a step in it: she reveals where Thoron is hiding; talking to her is optional"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "She's placed in Glimmering Hollow; the journal also sends you to investigate Stopgap for signs of her, so the exact spot isn't certain. Glimmering Hollow has no hold in the extracts."
+   },
+   {
+    "field": "changes",
+    "why": "Where the Doors of Denial are isn't given in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D1D",
+   "EC_SS_SandboxAroundDoors2048",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+   "Skyrim Extended Cut - Saints and Seducers.esp:09EF5F",
+   "EC_SS_SeducerFaction"
+  ]
+ },
+ {
+  "id": "ccBGSSSE025-AdvDSGS.esm:198273",
+  "name": "Staada",
+  "race": "Golden Saint",
+  "sex": "female",
+  "firstMeet": "In the Solitude Wasteworks, where she starts The Isle of Madness.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "the Solitude Wasteworks",
+    "doing": "waiting where she's placed, until The Isle of Madness is under way"
+   }
+  ],
+  "changes": [
+   "Once The Isle of Madness passes its early stage (after Dylora is found to be captured) she spends her time around the Doors of Denial, unless another of the mod's quests is running."
+  ],
+  "role": "quest giver (Saints and Seducers)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Isle of Madness",
+    "how": "gives it: help her put down a riot in the Asylum"
+   },
+   {
+    "quest": "The Roots of Madness",
+    "how": "gives it: sends you for a weapon to break Thoron's amber barrier; you report back to her at the end"
+   },
+   {
+    "quest": "The Route of Madness",
+    "how": "a step in it: her dialogue moves it on"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "id",
+    "why": "Same person as the other Staada entry, under a differently cased id (a later plugin's version, with no placed cell of its own). Read the same way."
+   },
+   {
+    "field": "firstMeet",
+    "why": "The Wasteworks' outside door is in a cell the extracts don't name, and it's hidden until an enable parent changes."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "ccBGSSSE025-AdvDSGS.esm:198273",
+   "EC_SS_SandboxAroundDoors2048",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+   "Skyrim Extended Cut - Saints and Seducers.esp:09EF5F",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D18"
+  ]
+ },
+ {
+  "id": "Skyrim Extended Cut - Saints and Seducers.esp:02E879",
+  "name": "Theodor Gorlash",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "In his shop, the Near Corgi Shop, in the Shivering Isles.",
+  "day": [
+   {
+    "from": "all day",
+    "for": "24 hours",
+    "where": "the Near Corgi Shop, Shivering Isles",
+    "doing": "minding his shop; trades at any hour"
+   }
+  ],
+  "changes": [],
+  "role": "merchant; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Merchant's Masterpiece",
+    "how": "gives it: find the Sheogorath-shaped amber in Root Canal; he rewards you with an amber smithing manual"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "He has a merchant faction and vendor chest, but the item lists aren't resolved in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim Extended Cut - Saints and Seducers.esp:02E879",
+   "EC_SS_TheodorMerchantFaction",
+   "vendor 0-24",
+   "Skyrim Extended Cut - Saints and Seducers.esp:099D1A",
+   "cell Skyrim Extended Cut - Saints and Seducers.esp:033A3C"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329F",
+  "name": "Pantea Ateia",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "At the Bards College in Solitude.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "the dining hall, Bards College, Solitude",
+    "doing": "eating"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "Bards College",
+    "doing": "teaching her class"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "The Winking Skeever, Solitude",
+    "doing": "having lunch (on most days)"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "near the Blue Palace, Solitude",
+    "doing": "playing the flute (on most days)"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the dining hall, Bards College",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "Bards College",
+    "doing": "about the College"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Bards College",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until Solitude's public execution of Roggvir has played out, she stays where she stands at the Bards College."
+  ],
+  "role": "Bards College teacher; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Pantea's Flute",
+    "how": "gives it: find and return her flute"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Lunch and flute packages carry a condition the extract can't decode, so on some days she may stay at the College instead."
+   },
+   {
+    "field": "quests",
+    "why": "She fills roles in Bound Until Death and A Healing Wedding (both at Vittoria Vici's wedding), but neither journal says what she does there."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01329F",
+   "SolitudeOpeningStayLocation512 (quest Skyrim.esm:0B2FD9 not completed)",
+   "SolitudeBardsCollegeDiningHallEat7x1",
+   "SolitudeBardsCollegeClassPanteaTeach8x4",
+   "SolitudePanteaEatLunch10x3",
+   "SolitudeBardPlaysFlutePackage14x3",
+   "SolitudeBardsCollegeDiningHallEat18x1",
+   "BardsCollegeSleepEditorLoc22x8",
+   "SolitudeBardsCollegeSandbox",
+   "Skyrim.esm:0D9431",
+   "Skyrim.esm:01EA54",
+   "Vittorias Alternate Wedding.esp:000800"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328A",
+  "name": "Inge Six Fingers",
+  "race": "Nord (elder)",
+  "sex": "female",
+  "firstMeet": "At the Bards College in Solitude.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "2 hours",
+    "where": "Bards College, Solitude",
+    "doing": "about the College"
+   },
+   {
+    "from": "4 am",
+    "for": "4 hours",
+    "where": "Bards College",
+    "doing": "teaching her class"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "Bards College",
+    "doing": "attending Pantea's class"
+   },
+   {
+    "from": "noon",
+    "for": "2 hours",
+    "where": "Bards College",
+    "doing": "about the College"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "Bards College",
+    "doing": "attending another teacher's class"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "the dining hall, Bards College",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "7 hours",
+    "where": "Bards College",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "Bards College teacher; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Finn's Lute",
+    "how": "gives it: recover Finn's Lute from the thieves' stronghold"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her teaching package starts at 4 am in this load order, as recorded; the hours are reported as the records give them."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01328A",
+   "SolitudeBardsCollegeClassIngeTeach4x4 AI Overhaul.esp",
+   "SolitudeBardsCollegeClassPanteaIngeAttend8x4",
+   "SolitudeBardsCollegeClassGiraudIngeAttend14x4",
+   "SolitudeBardsCollegeDiningHallEat18x1",
+   "BardsCollegeSleepEditorLoc18x8",
+   "DefaultSandboxEditorLocation512",
+   "Skyrim.esm:0D93FA"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A68E",
+  "name": "Kodlak Whitemane",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In Jorrvaskr, Whiterun, in his quarters in the living quarters below.",
+  "day": [
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "Jorrvaskr, Whiterun",
+    "doing": "dinner with the Companions"
+   },
+   {
+    "from": "8 pm",
+    "for": "22 hours",
+    "where": "his quarters, Jorrvaskr living quarters",
+    "doing": "pottering about"
+   }
+  ],
+  "changes": [
+   "Killed by the Silver Hand during Blood's Honor; his funeral is the start of Glory of the Dead, and you meet his spirit at Ysgramor's Tomb."
+  ],
+  "role": "Harbinger of the Companions; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Take Up Arms",
+    "how": "a step in it: you ask him to join the Companions"
+   },
+   {
+    "quest": "Brotherhood",
+    "how": "gives it"
+   },
+   {
+    "quest": "Blood's Honor",
+    "how": "gives it: sends you to kill the Glenmoril Witches; changed by it (he is killed)"
+   },
+   {
+    "quest": "Glory of the Dead",
+    "how": "a step in it: his funeral, then you speak to his spirit at Ysgramor's Tomb"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "Not essential or protected on his record; Take Up Arms has an alias meant to keep him essential while it runs, but the extract doesn't show its flags."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills a role in The Silver Hand; its journal doesn't say what."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A68E",
+   "AIOWRCompanionsDinner AI Overhaul.esp:193566 target",
+   "KodlakPutterAroundInQuarters Skyrim.esm:05BDAC target",
+   "CompanionsHarbingerFaction",
+   "Skyrim.esm:04B2D9",
+   "Skyrim.esm:06E804",
+   "Skyrim.esm:01CEF5",
+   "Skyrim.esm:01CEF6"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A692",
+  "name": "Farkas",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At Jorrvaskr in Whiterun: training outside in the morning, inside at meal times.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "5 hours",
+    "where": "outside Jorrvaskr, Whiterun",
+    "doing": "training"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "1 pm",
+    "for": "3 hours",
+    "where": "Jorrvaskr",
+    "doing": "eating"
+   },
+   {
+    "from": "4 pm",
+    "for": "2 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "6 pm",
+    "for": "2 hours",
+    "where": "Jorrvaskr",
+    "doing": "dinner with the Companions"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Jorrvaskr living quarters",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Goes with you and the Circle to Ysgramor's Tomb in Glory of the Dead."
+  ],
+  "role": "member of the Companions' Circle; quest giver; follower; can marry",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Take Up Arms",
+    "how": "a step in it: follow him to your quarters"
+   },
+   {
+    "quest": "Hired Muscle",
+    "how": "gives it"
+   },
+   {
+    "quest": "Trouble in Skyrim",
+    "how": "gives it"
+   },
+   {
+    "quest": "Purity",
+    "how": "can give it: cure him of lycanthropy"
+   },
+   {
+    "quest": "Dragon Seekers",
+    "how": "can give it: go with him to kill a dragon"
+   },
+   {
+    "quest": "Proving Honor",
+    "how": "can start it in conversation"
+   },
+   {
+    "quest": "Blood's Honor",
+    "how": "can start it in conversation"
+   },
+   {
+    "quest": "Glory of the Dead",
+    "how": "a step in it: he goes with the Circle to Ysgramor's Tomb"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He's a potential follower, but the dialogue or quest that recruits him isn't in the extracts."
+   },
+   {
+    "field": "marries",
+    "why": "He's in the potential-marriage faction; any further condition isn't in the extracts."
+   },
+   {
+    "field": "trains",
+    "why": "He's in the Heavy Armor trainer faction, but the extract has no training data for him, so he may not train."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor entry has no merchant chest; it isn't a shop."
+   },
+   {
+    "field": "quests",
+    "why": "Purity and Dragon Seekers: the records list him among those who can give them; which Companion offers each time varies."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts and gear isn't listed."
+   },
+   {
+    "field": "day",
+    "why": "Some of his packages carry conditions the extract can't decode, so whether they fire on a given day isn't certain."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A692",
+   "AIOWRCompanionFarkasTrain",
+   "CompanionsShift2Eat13x3",
+   "CompanionsShift2Train7x5 target Skyrim.esm:023E55",
+   "CompanionsShift2Sleep22x8",
+   "AIOWRCompanionsDinner",
+   "AIOWRCompainonLeadersRandom (The Silver Hand not running)",
+   "PotentialFollowerFaction",
+   "PotentialMarriageFaction",
+   "JobTrainerHeavyArmorFaction",
+   "Skyrim.esm:04B2D9",
+   "Skyrim.esm:025231",
+   "Skyrim.esm:02522F",
+   "Skyrim.esm:0E3163",
+   "Skyrim.esm:0E3156",
+   "Skyrim.esm:06E803",
+   "Skyrim.esm:01CEF5",
+   "Skyrim.esm:01CEF6"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A690",
+  "name": "Skjor",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At Jorrvaskr in Whiterun.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Jorrvaskr living quarters, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "10 am",
+    "for": "3 hours",
+    "where": "Jorrvaskr",
+    "doing": "eating"
+   },
+   {
+    "from": "1 pm",
+    "for": "2 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "3 pm",
+    "for": "5 hours",
+    "where": "outside Jorrvaskr",
+    "doing": "training"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   }
+  ],
+  "changes": [
+   "Dies at the Silver Hand stronghold during The Silver Hand."
+  ],
+  "role": "member of the Companions' Circle; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Proving Honor",
+    "how": "gives it: retrieve a fragment of Wuuthrad"
+   },
+   {
+    "quest": "The Silver Hand",
+    "how": "gives it with Aela: meet him under the Skyforge at night; changed by it (he dies)"
+   },
+   {
+    "quest": "Take Up Arms",
+    "how": "can start it in conversation"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "He also fills roles in Brotherhood and Glory of the Dead; their journals don't say what."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts and gear isn't listed."
+   },
+   {
+    "field": "day",
+    "why": "Some of his packages carry conditions the extract can't decode, so whether they fire on a given day isn't certain."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A690",
+   "AIOWRCompanionSkjorTrain",
+   "CompanionsShift1Train15x5",
+   "CompanionsShift1Eat10x3",
+   "CompanionsShift1Sleep0x8",
+   "AIOWRCompanionsDinner",
+   "AIOWRCompainonLeadersRandom",
+   "Skyrim.esm:06E803",
+   "Skyrim.esm:01CEF4",
+   "Skyrim.esm:04B2D9"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01A694",
+  "name": "Vilkas",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At Jorrvaskr in Whiterun; Take Up Arms has you spar with him in the training yard behind Jorrvaskr.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "8 hours",
+    "where": "Jorrvaskr living quarters, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "3 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "1 pm",
+    "for": "5 hours",
+    "where": "the training yard behind Jorrvaskr",
+    "doing": "training"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "Jorrvaskr",
+    "doing": "eating"
+   },
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "Jorrvaskr",
+    "doing": "about the hall"
+   }
+  ],
+  "changes": [
+   "Goes with you to wipe out the Silver Hand in Purity of Revenge, and with the Circle to Ysgramor's Tomb in Glory of the Dead."
+  ],
+  "role": "member of the Companions' Circle; quest giver; follower; can marry",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Take Up Arms",
+    "how": "a step in it: spar with him in the training yard"
+   },
+   {
+    "quest": "Purity of Revenge",
+    "how": "gives it and comes with you"
+   },
+   {
+    "quest": "Blood's Honor",
+    "how": "can start it in conversation"
+   },
+   {
+    "quest": "Purity",
+    "how": "can give it: cure him of lycanthropy"
+   },
+   {
+    "quest": "Dragon Seekers",
+    "how": "can give it: go with him to kill a dragon"
+   },
+   {
+    "quest": "Proving Honor",
+    "how": "a step in it: follow him at the end"
+   },
+   {
+    "quest": "Glory of the Dead",
+    "how": "a step in it: he goes with the Circle to Ysgramor's Tomb"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He's a potential follower, but the dialogue or quest that recruits him isn't in the extracts."
+   },
+   {
+    "field": "marries",
+    "why": "He's in the potential-marriage faction; any further condition isn't in the extracts."
+   },
+   {
+    "field": "trains",
+    "why": "He's in the Two-handed trainer faction, but the extract has no training data for him, so he may not train."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor entry has no merchant chest; it isn't a shop."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts and gear isn't listed."
+   },
+   {
+    "field": "day",
+    "why": "Some of his packages carry conditions the extract can't decode, so whether they fire on a given day isn't certain."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01A694",
+   "AIOWRCompanionVilkasTrain (Proving Honor not running)",
+   "CompanionsShift3Eat19x3",
+   "CompanionsShift3Train13x5",
+   "CompanionsShift3Sleep2x8",
+   "AIOWRCompainonLeadersRandom",
+   "PotentialFollowerFaction",
+   "PotentialMarriageFaction",
+   "JobTrainerTwoHandedFaction",
+   "Skyrim.esm:04B2D9",
+   "Skyrim.esm:06E805",
+   "Skyrim.esm:01CEF5",
+   "Skyrim.esm:0E3163",
+   "Skyrim.esm:0E3156",
+   "Skyrim.esm:06E803",
+   "Skyrim.esm:01CEF6"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B9D",
+  "name": "Eorlund Gray-Mane",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the Skyforge, by Jorrvaskr in Whiterun, during the day.",
+  "day": [
+   {
+    "from": "5 am",
+    "for": "3 hours",
+    "where": "House Gray-Mane, Whiterun",
+    "doing": "at home"
+   },
+   {
+    "from": "8 am",
+    "for": "13 hours",
+    "where": "the Skyforge, Whiterun",
+    "doing": "working the forge"
+   },
+   {
+    "from": "9 pm",
+    "for": "1 hour",
+    "where": "House Gray-Mane",
+    "doing": "at home"
+   },
+   {
+    "from": "10 pm",
+    "for": "7 hours",
+    "where": "House Gray-Mane",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Once a week (Loredas), 7 pm to 9:30 pm, he mourns at the Hall of the Dead if any of Thorald, Avulstein, Fralia, Olfina or Vignar Gray-Mane is dead."
+  ],
+  "role": "blacksmith (merchant) and Smithing trainer; Companions",
+  "sells": "a blacksmith's stock",
+  "trains": "Smithing, master trainer",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Take Up Arms",
+    "how": "a step in it: give him Vilkas' sword at the Skyforge"
+   },
+   {
+    "quest": "Glory of the Dead",
+    "how": "a step in it: give him the fragments of Wuuthrad"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His item lists aren't resolved in the extracts; 'blacksmith' comes from his faction."
+   },
+   {
+    "field": "trains",
+    "why": "The extract gives tier Master but no level cap."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills a role in The Silver Hand; its journal doesn't say what."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts and gear isn't listed."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013B9D",
+   "AIOWRGrayFamilyMourn (dayOfWeek 6)",
+   "WhiterunEorlundSkyforgePackage target Skyrim.esm:02BE28",
+   "DefaultSleepEditorLoc22x7",
+   "WhiterunEorlundHomePackage",
+   "JobBlacksmithFaction",
+   "JobTrainerSmithingFaction",
+   "trainer Smithing Master",
+   "vendor 0-23",
+   "Skyrim.esm:04B2D9",
+   "Skyrim.esm:01CEF6"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0132A1",
+  "name": "Legate Rikke",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In Castle Dour, Solitude, during the day.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Castle Dour, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Castle Dour",
+    "doing": "eating"
+   },
+   {
+    "from": "7 am",
+    "for": "11 hours",
+    "where": "Castle Dour",
+    "doing": "in command"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Castle Dour",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "the streets near the Blue Palace, Solitude",
+    "doing": "walking the city"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "Castle Dour",
+    "doing": "about"
+   }
+  ],
+  "changes": [
+   "In The Jagged Crown (Imperial side) she leads the attack: meet her outside Korvanjund."
+  ],
+  "role": "Imperial Legion commander; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Imperial Introductions",
+    "how": "gives it: join the Imperial Legion"
+   },
+   {
+    "quest": "Joining the Legion",
+    "how": "gives it: clear Fort Hraggstad, then report to her and take the oath"
+   },
+   {
+    "quest": "The Jagged Crown",
+    "how": "gives it (Imperial side) and leads you at Korvanjund"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "She's a field commander in the civil war, but the extract doesn't show where the war quests move her."
+   },
+   {
+    "field": "quests",
+    "why": "She also fills roles in Season Unending and the civil war campaign; their journals don't name her part."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0132A1",
+   "SolitudeCityWalk19x4",
+   "DefaultEatEditorLoc18x1",
+   "DefaultEatEditorLoc6x1",
+   "SolitudeCastleCommand6x16",
+   "DefaultSleepEditorLoc24x8",
+   "DefaultSandboxEditorLocation512",
+   "CWFieldCOFaction",
+   "Skyrim.esm:0D3C5F",
+   "Skyrim.esm:0D517A",
+   "Skyrim.esm:02D75C",
+   "Skyrim.esm:045923",
+   "Skyrim.esm:029940"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013261",
+  "name": "Beirand",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At the smithy in Solitude during the day.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "near where he's placed, Bits and Pieces, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "the blacksmith's forge, Solitude",
+    "doing": "working the forge"
+   },
+   {
+    "from": "10 pm",
+    "for": "2 hours",
+    "where": "near Bits and Pieces",
+    "doing": "about"
+   }
+  ],
+  "changes": [
+   "Until Solitude's public execution of Roggvir has played out, he stands by to watch it instead of working."
+  ],
+  "role": "blacksmith (merchant); quest giver",
+  "sells": "a blacksmith's stock; open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Get Outfitted",
+    "how": "gives it: collect your Imperial gear from him"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His item lists aren't resolved in the extracts; 'blacksmith' comes from his faction."
+   },
+   {
+    "field": "day",
+    "why": "The forge package's place is only 'nearest named: Solitude'; his placed cell is Bits and Pieces, so where he sleeps is read from that."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013261",
+   "SolitudeOpeningBeirandWalk",
+   "SolitudeOpeningBeirandWait (quest Skyrim.esm:0B2FD9 stage < 35)",
+   "SolitudeBlacksmithWorkDay8x14 target Skyrim.esm:069675",
+   "DefaultSleepEditorLoc24x8",
+   "DefaultSandboxEditorLocation512",
+   "JobBlacksmithFaction",
+   "ServicesSolitudeBlacksmith",
+   "vendor 8-20",
+   "Skyrim.esm:0C349B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:014128",
+  "name": "Galmar Stone-Fist",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In the Palace of the Kings, Windhelm.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "8 hours",
+    "where": "Palace of the Kings, upstairs, Windhelm",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "6 hours",
+    "where": "Palace of the Kings",
+    "doing": "consulting"
+   },
+   {
+    "from": "2 pm",
+    "for": "3 hours",
+    "where": "Palace of the Kings",
+    "doing": "eating a big meal"
+   },
+   {
+    "from": "5 pm",
+    "for": "7 hours",
+    "where": "Palace of the Kings",
+    "doing": "consulting"
+   }
+  ],
+  "changes": [
+   "In The Jagged Crown (Stormcloak side) he leads the attack: meet him outside Korvanjund."
+  ],
+  "role": "Stormcloak commander; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Joining the Stormcloaks",
+    "how": "gives it: kill an Ice Wraith on Serpentstone Isle, then return and take the oath"
+   },
+   {
+    "quest": "The Jagged Crown",
+    "how": "gives it (Stormcloak side) and leads you at Korvanjund"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "He's a field commander in the civil war, but the extract doesn't show where the war quests move him."
+   },
+   {
+    "field": "quests",
+    "why": "He also fills roles in Stormcloak Introductions, Imperial Introductions, Message to Whiterun, Season Unending and the civil war campaign; their journals don't name his part."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Class isn't named in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:014128",
+   "GalmarEatBigMealInMidday14x3",
+   "GalmarSleep0x8",
+   "GalmarConsultInPalace",
+   "CWFieldCOFaction",
+   "Skyrim.esm:0E2D29",
+   "Skyrim.esm:02610B",
+   "Skyrim.esm:0E1B5A",
+   "Skyrim.esm:0D3C5F",
+   "Skyrim.esm:0D661C",
+   "Skyrim.esm:045923",
+   "Skyrim.esm:029940"
+  ]
+ }
+]
