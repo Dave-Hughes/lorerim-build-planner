@@ -42,13 +42,15 @@ test("a slug that names no quest is not found", async ({ page }) => {
   expect((await page.goto("/quests/q/no-such-quest"))?.status()).toBe(404);
 });
 
-test("the report forms on a quest's page are for that quest, and asking for a quest's page signed in says whether it is open", async ({ page, context }) => {
+test("the report forms on a quest's page are for that quest, and a quest's page never speaks of the signed-in player's character", async ({ page, context }) => {
   await signIn(context);
   await page.goto("/quests/q/running-wild?report=1#report");
   await page.getByLabel("I know where this is").check();
   // One quest on the page: no Which quest?
   await expect(page.getByLabel("Which quest?")).toHaveCount(0);
-  await expect(page.getByRole("region", { name: "How to start it" })).toContainText(/For [^:]+: (open for you|locked|unknown)/);
+  // Dave, 27 Oct: a quest's page has no context of a character or a playthrough, signed in or not.
+  await page.goto("/quests/q/running-wild");
+  await expect(page.locator("main")).not.toContainText(/\bFor [A-Z][^:\n]+:|open for you|Kyria/);
 });
 
 test("a shelf opens on no quest's opening, its rows link to the quests and say how each starts", async ({ page }) => {
