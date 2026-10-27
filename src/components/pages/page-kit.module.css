@@ -454,6 +454,9 @@ a.tag:hover {
   font-size: 16px;
   color: var(--soft);
 }
+.placeAlone {
+  grid-template-columns: minmax(0, 1fr);
+}
 .danger {
   display: flex;
   gap: 10px;
@@ -470,6 +473,19 @@ a.tag:hover {
 }
 .boss {
   color: #e3a093;
+}
+.dcol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dlabel {
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 /* The people on a quest. */

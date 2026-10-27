@@ -209,7 +209,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                       {waysIn.map((w, i) => (
                         <li key={i}>
                           {w.how}
-                          {w.checked === "players" ? <span className={styles.src}>{w.also?.length ? pageSources(w.source ?? "", w.also) : `player report${w.source ? `, ${w.source}` : ""}`}</span> : null}
+                          {w.checked === "players" ? <span className={styles.src}>{pageSources(w.source ?? "", w.also)}</span> : null}
                           {"whereIs" in w && w.whereIs?.length ? <span className="muted"> ({w.whereIs.join("; ")})</span> : null}
                           {"unplaced" in w && w.unplaced ? <span className="muted"> ({w.unplaced})</span> : null}
                         </li>

@@ -13,7 +13,8 @@ describe("Running Wild's note (WO-131 Part 0)", () => {
     expect(start.ways).toEqual([
       {
         way: "Read the note pinned to the board outside Joslin's house, behind the Bannered Mare in Whiterun",
-        checked: "a player's report, not the game files (Dave, found in game, 22 Oct 2026)",
+        // No player's name on the door (WO-154 Part 4): the names stay in the data.
+        checked: "a player's report, not the game files",
         whereIs: ["Whiterun, near Hearth-Healer's Hall and Joslin's House"],
       },
     ]);

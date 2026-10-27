@@ -12,7 +12,7 @@ describe("Lights Out! says where Jaree-Ra stands", () => {
 
   it("by the Winking Skeever, from a player who watched, who and where first, and the read's other facts around it", () => {
     expect(a.quest.starts).toEqual([
-      { who: "Jaree-Ra", where: "Solitude, by the Winking Skeever", how: "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)", checked: "a player's report, not the game files (Dave, watched in game for a day, 23 Oct 2026)" },
+      { who: "Jaree-Ra", where: "Solitude, by the Winking Skeever", how: "Talk to Jaree-Ra in Solitude, by the Winking Skeever (he stays there day and night)", checked: "a player's report, not the game files" },
     ]);
     expect(a.quest.firstStep).toBe("Accept Jaree-Ra's offer in Solitude");
   });

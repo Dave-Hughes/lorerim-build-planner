@@ -19,16 +19,19 @@ export const whoOf = (source: string) => source.split(",")[0].replace(/^@/, "").
 /** Whether a new source is someone already among these: a player can't confirm their own report. */
 export const alreadyAmong = (sources: readonly string[], source: string) => sources.some((s) => whoOf(s) === whoOf(source));
 
-/** The sources as the page says them: one as it is, several as "players' reports (2): Dave, 22 Oct; Tapps, 23 Oct". */
+/**
+ * The sources as a page says them (WO-154 Part 4: no player's name on a page, ever): "A player's report", or "Players' reports (2)". The
+ * names stay in the data for the record and for /admin, which uses shortSource.
+ */
 export function pageSources(first: string, also: readonly string[] | undefined): string {
-  if (!also?.length) return first;
-  return `players' reports (${also.length + 1}): ${[first, ...also].map(shortSource).join("; ")}`;
+  void first;
+  return also?.length ? `Players' reports (${also.length + 1})` : "A player's report";
 }
 
-/** What get_quest says a player's way is: "a player's report, not the game files (...)", or the several. */
+/** What get_quest says a player's way is: "a player's report, not the game files", or the several. */
 export function doorSources(first: string, also: readonly string[] | undefined): string {
-  if (!also?.length) return `a player's report, not the game files (${first})`;
-  return `players' reports, not the game files (${also.length + 1}): ${[first, ...also].map(shortSource).join("; ")}`;
+  void first;
+  return also?.length ? `players' reports, not the game files (${also.length + 1})` : "a player's report, not the game files";
 }
 
 interface PageWay {

@@ -77,7 +77,7 @@ describe("an approved fact laid over a quest", () => {
   it("replaces the unplaced way: the place and the source show, as a player's report", () => {
     setPlayerFacts([RUNNING_WILD]);
     const q = rules("Running Wild").quest.start.ways?.[0] as { way: string; checked?: string; whereIs?: string[] };
-    expect(q.checked).toBe("a player's report, not the game files (@testplayer, 23 Oct 2026)");
+    expect(q.checked).toBe("a player's report, not the game files");
     expect(q.whereIs).toEqual(["Whiterun, near Hearth-Healer's Hall and Joslin's House"]);
   });
 
@@ -108,7 +108,7 @@ describe("an approved fact laid over a quest", () => {
     const a = rules("aaFaraldaQ2") as unknown as { checked: string; note: string; quest: { start: { ways: unknown[] } } };
     expect(a.checked).toBe("not yet");
     expect(a.note).toMatch(/A player's report is below: say it is that, not the game files/);
-    expect(a.quest.start.ways).toEqual([{ way: "Ask Faralda in the Arcanaeum", who: "Faralda", where: "The Arcanaeum", checked: "a player's report, not the game files (@testplayer, 23 Oct 2026)" }]);
+    expect(a.quest.start.ways).toEqual([{ way: "Ask Faralda in the Arcanaeum", who: "Faralda", where: "The Arcanaeum", checked: "a player's report, not the game files" }]);
   });
 });
 
@@ -149,14 +149,14 @@ describe("a second player agreeing (Part 1b)", () => {
     setPlayerFacts([confirm(5, "@tapps, 23 Oct 2026")]);
     const way = questsData().byId.get("capital-whiterun")!.quests.find((q) => q.edid === "0WRHorseQ")!.start!.ways![0];
     expect(way.also).toEqual(["@tapps, 23 Oct 2026"]);
-    expect(pageSources(way.source!, way.also)).toBe("players' reports (2): Dave, 22 Oct; @tapps, 23 Oct");
+    expect(pageSources(way.source!, way.also)).toBe("Players' reports (2)");
     const asked = rules("Running Wild").quest.start.ways?.[0] as { checked: string };
-    expect(asked.checked).toBe("players' reports, not the game files (2): Dave, 22 Oct; @tapps, 23 Oct");
+    expect(asked.checked).toBe("players' reports, not the game files (2)");
   });
   it("three players are (3), and the same player twice counts once", () => {
     setPlayerFacts([confirm(5, "@tapps, 23 Oct 2026"), confirm(6, "@tapps, 24 Oct 2026"), confirm(7, "@other, 24 Oct 2026")]);
     const way = questsData().byId.get("capital-whiterun")!.quests.find((q) => q.edid === "0WRHorseQ")!.start!.ways![0];
-    expect(pageSources(way.source!, way.also)).toBe("players' reports (3): Dave, 22 Oct; @tapps, 23 Oct; @other, 24 Oct");
+    expect(pageSources(way.source!, way.also)).toBe("Players' reports (3)");
     expect(alreadyAmong(["Dave, found in game, 22 Oct 2026"], "dave, 23 Oct 2026")).toBe(true);
   });
   it("a confirmation of a way the files hold, or of none, changes nothing", () => {

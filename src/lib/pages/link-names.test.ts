@@ -25,6 +25,11 @@ describe("linkNames", () => {
   it("says a name with a regular-expression character as plain text", () => {
     expect(linkNames("Ask Mr. (Dave) now", [{ text: "Mr. (Dave)", href: "/people/dave" }])[1]).toEqual({ text: "Mr. (Dave)", href: "/people/dave" });
   });
+  it("doesn't link the start of a longer name it doesn't know", () => {
+    const riverwood = [{ text: "Riverwood", href: "/places/riverwood" }];
+    expect(linkNames("in the Riverwood Trader, Riverwood", riverwood)).toEqual([{ text: "in the Riverwood Trader, " }, { text: "Riverwood", href: "/places/riverwood" }]);
+    expect(linkNames("Meet Deeja then go", names)[1]).toEqual({ text: "Deeja", href: "/people/deeja" });
+  });
   it("is the text whole when there is nothing to link", () => {
     expect(linkNames("Nothing here", [])).toEqual([{ text: "Nothing here" }]);
     expect(linkNames("", names)).toEqual([{ text: "" }]);

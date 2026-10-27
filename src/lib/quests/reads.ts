@@ -19,6 +19,10 @@ export interface PageLink {
   text: string;
   /** The quest's own page, when the text is a quest the planner has. */
   href?: string;
+  /** The part of `text` that is the quest's name, when the text goes on after it ("Name (a third way, added by a mod)"). */
+  name?: string;
+  /** The mod the quest comes from, when it isn't the base game: named once with its Nexus page (WO-154 Part 4). */
+  mod?: { name: string; modid?: string };
 }
 
 export interface QuestPage {
@@ -62,7 +66,11 @@ const CAN_DO: Record<NonNullable<QuestRead["canDo"]>, string> = {
 };
 
 let byName: Map<string, string | null> | null = null;
-/** A quest the planner has by its name, as a link; nothing when two share the name or none has it. */
+let modOf: Map<string, { name: string; modid?: string }> | null = null;
+/**
+ * A quest the planner has by its name, as a link; nothing when two share the name or none has it. A name followed by a note in brackets
+ * ("The Book of Love - Fastred's Choice (a third way for Fastred, added by a mod)") links the name, and says its mod with the Nexus page.
+ */
 function linkFor(text: string): PageLink {
   byName ??= (() => {
     const m = new Map<string, string | null>();
@@ -73,9 +81,13 @@ function linkFor(text: string): PageLink {
       }
     return m;
   })();
-  const edid = byName.get(text.trim().toLowerCase());
+  modOf ??= new Map(questsData().lines.flatMap((l) => l.quests.filter((q) => q.mod && !q.mod.base).map((q) => [q.edid, q.mod!] as const)));
+  const name = text.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  const edid = byName.get(name.toLowerCase());
   const href = edid ? questHref(edid) : null;
-  return href ? { text, href } : { text };
+  if (!href) return { text };
+  const mod = modOf.get(edid!);
+  return { text, href, ...(name !== text ? { name } : {}), ...(mod && mod.name.toLowerCase() !== name.toLowerCase() ? { mod } : {}) };
 }
 
 const PLURAL: Record<string, string> = {
@@ -162,7 +174,7 @@ function viaReads(q: Quest, r: QuestRead): QuestPage {
   const unsure = (r.unsure ?? []).filter((u) => u.field).map((u) => ({ ...u, field: FIELD_WORDS[u.field] ?? u.field }));
   const fields = [...new Set(unsure.map((u) => u.field))].join(", ");
   const sure = players.length
-    ? `Checked in game by a player: ${pageSources(players[0].source ?? "", players[0].also)}${unsure.length ? `. Unsure: ${fields}` : ""}`
+    ? `Checked in game by ${players[0].also?.length ? `${players[0].also.length + 1} players` : "a player"}${unsure.length ? `. Unsure: ${fields}` : ""}`
     : `Read from the game files and checked by a second reader${unsure.length ? `. Unsure: ${fields}` : ""}`;
   return {
     source: "reads",

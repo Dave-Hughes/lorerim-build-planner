@@ -52,7 +52,8 @@ describe("a quest with a read", () => {
     const q = quest({ read, source: "reads", start: { checked: "files", ways: [{ how: "Talk to Mercer Frey by the door", who: "Mercer Frey", where: "the Flagon", checked: "players", source: "Dave, watched in game, 23 Oct 2026" }] } });
     const got = pageOf(q);
     expect(got.starts).toEqual([{ how: "Talk to Mercer Frey by the door", who: "Mercer Frey", where: "the Flagon", reportedBy: { source: "Dave, watched in game, 23 Oct 2026" } }]);
-    expect(got.sure).toMatch(/^Checked in game by a player: Dave, watched in game, 23 Oct 2026/);
+    expect(got.sure).toMatch(/^Checked in game by a player(\.|$)/);
+    expect(got.sure).not.toMatch(/Dave/);
   });
 });
 

@@ -83,6 +83,8 @@ export function Gold({ id, title = "Rewards", children }: { id: string; title?: 
 export interface SureSource {
   mark: "yes" | "part" | "no";
   name: string;
+  /** The source's own page, in a new tab. */
+  href?: string;
   note: string;
   names?: ReactNode[];
 }
@@ -103,7 +105,15 @@ export function HowSure({ id, line, sources, unsure, actions }: { id: string; li
           {sources.map((s) => (
             <span key={s.name} className={styles.source}>
               <span className={`${styles.mark} ${mark[s.mark]}`}>{s.mark === "no" ? "–" : "✓"}</span>
-              <b>{s.name}</b>
+              <b>
+                {s.href ? (
+                  <a href={s.href} target="_blank" rel="noreferrer">
+                    {s.name} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  s.name
+                )}
+              </b>
               <small>{s.note}</small>
               {s.names?.length ? <span className={styles.names}>{s.names}</span> : null}
             </span>
