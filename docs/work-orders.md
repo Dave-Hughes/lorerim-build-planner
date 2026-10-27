@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-157  The site's structure and its global patterns (Mac, 27 Oct 2026)
-Status: queued (Mac; Dave approved the boards, 27 Oct, 12:04)
+Status: building (Mac; Dave approved the boards, 27 Oct, 12:04)
 
 **Why.** The planner grew from a build planner into characters plus a world of game data (quests, people, places), and the menu and pages show it: Builds, Quests, People, Places and Playthroughs side by side, two public lists for one character, and a framed box around every section. Dave (27 Oct): everything should revolve around characters, the world data feeds them, and the app has too many boxes. Boards: canvas rows 34 and 35, https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1 (`IASiteMap`, `IAMenus` option A, `HomeVisitor`, `HomeYou`, `QuestPageOpen`). This order takes over WO-154 Part 5.
 
