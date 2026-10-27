@@ -32,7 +32,7 @@ import struct
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from esp import header, iter_group, rec_data, resolve, subrecs  # noqa: E402
+from esp import active_profile, header, iter_group, rec_data, resolve, subrecs  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -239,7 +239,7 @@ def meta_modid(folder):
 
 def plugin_folders(root):
     """Every enabled MO2 mod folder holding each plugin, highest priority (the one loaded) first."""
-    mods = [l.strip()[1:] for l in open(os.path.join(root, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
+    mods = [l.strip()[1:] for l in open(os.path.join(root, "profiles", active_profile(), "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
     out = {}
     for d in mods:  # modlist.txt lists the highest priority first
         try:

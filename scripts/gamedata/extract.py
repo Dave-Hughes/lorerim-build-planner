@@ -9,7 +9,7 @@ Reads only. Writes planner_data.json next to this script.
 """
 import os, sys, struct, json, re
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from esp import ROOT, plugin_paths, load_order, rec_data, subrecs, header, iter_group, resolve, localized_strings
+from esp import ROOT, active_profile, plugin_paths, load_order, rec_data, subrecs, header, iter_group, resolve, localized_strings
 
 SKILL_AVIF = {
     'AVOneHanded': 'One-Handed', 'AVTwoHanded': 'Two-Handed', 'AVMarksman': 'Marksman', 'AVBlock': 'Block',
@@ -208,7 +208,7 @@ def main():
                 signs.setdefault(sign, []).append(spell_out(k, s))
 
     enabled = {}
-    for l in open(ROOT + '/profiles/Ultra/modlist.txt', encoding='utf-8', errors='ignore'):
+    for l in open(ROOT + '/profiles/' + active_profile() + '/modlist.txt', encoding='utf-8', errors='ignore'):
         if l.startswith('+'): enabled[l.strip()[1:]] = True
     out = {'trees': trees, 'perks': skill_perks, 'destiny': destiny, 'traits': traits, 'signs': signs,
            'avifNames': {SKILL_AVIF[a['edid']]: a['full'] for a in avifs.values() if a['edid'] in SKILL_AVIF}}

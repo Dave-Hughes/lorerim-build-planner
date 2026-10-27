@@ -199,12 +199,16 @@ class Archive:
         return zlib.decompress(data)
 
 
-def archive_order(root, load_order, loose_dirs, profile="Ultra"):
+def archive_order(root, load_order, loose_dirs, profile=None):
     """
     The archives the game loads, first to last: those skyrim.ini names, then each plugin's own (<plugin>.bsa and
     <plugin> - Textures.bsa) in load order, where the highest-priority mod's copy of a file wins. A Creation Club
     plugin's archive comes with it when the load order has it (esp.load_order(cc=True), WO-121b).
+    `profile` defaults to MO2's own selected profile (`esp.active_profile()`), not a hardcoded one.
     """
+    if profile is None:
+        import esp
+        profile = esp.active_profile()
     found = {}
     for d in reversed(loose_dirs):
         try:
@@ -230,9 +234,12 @@ class Scripts:
     BSA loaded last that has it. `where(name)` says which; `get(name)` returns the parsed script or None.
     """
 
-    def __init__(self, root, load_order, profile="Ultra", archives=None, loose_dirs=None):
+    def __init__(self, root, load_order, profile=None, archives=None, loose_dirs=None):
         self.root = root
         if loose_dirs is None:
+            if profile is None:
+                import esp
+                profile = esp.active_profile()
             mods = [l.strip()[1:] for l in open(os.path.join(root, "profiles", profile, "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
             loose_dirs = [os.path.join(root, "mods", d) for d in mods] + [os.path.join(root, "Stock Game", "Data")]
         self.loose = {}

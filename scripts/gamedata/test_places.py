@@ -94,6 +94,12 @@ class BuiltIndex(unittest.TestCase):
         self.assertLessEqual(cities, pl.CAPITALS)
         self.assertFalse(towns & {"Wintersand Manor", "Flight Platform", "Dunpar Wall Ruins", "Unknown Gate"})
 
+    def test_a_shower_room_is_never_an_inn(self):
+        # 27 Oct: found only after esp.py started reading MO2's own selected profile instead of a fixed "Ultra" --
+        # that profile has Keep It Clean.esp enabled, whose "Shower Room" (LocTypeInn, LocTypeShowersInInns) would
+        # otherwise read as a real inn. A room in an inn, not the inn.
+        self.assertNotIn("Shower Room", self.by)
+
     def test_each_of_the_nine_capitals_has_places_nearby(self):
         # WO-144 Part 1's own test, tightened by Bob 23 Oct 15:20: "ten places within a short walk to half a day",
         # not a flat 5 km (which covers most of a hold on this small map and proved too little).

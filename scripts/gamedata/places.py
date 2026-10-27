@@ -37,7 +37,7 @@ import struct
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from esp import ROOT, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
+from esp import ROOT, active_profile, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
 import quest_scripts as qsc  # noqa: E402
 from story_check import all_strings, name_strings  # noqa: E402
 
@@ -97,7 +97,8 @@ KEEP_KW = "CWCapitalHQ"
 # identical shape to a real inn, in the Dormitory's case) and are named by hand instead, logged rather than guessed
 # at by a general rule that could just as easily drop a real one.
 NOT_BUILDING_KW = {"LocTypeCity", "CWCapital", "LocTypeHoldCapital", "LocTypeHold", "LocTypeMilitaryFort",
-                    "LocTypeHouse", "LocTypePlayerHouse", "LocTypeBanditCamp"}
+                    "LocTypeHouse", "LocTypePlayerHouse", "LocTypeBanditCamp",
+                    "LocTypeShowersInInns"}  # Keep It Clean's own shower room, tagged LocTypeInn too; a room in an inn, not the inn
 NOT_BUILDINGS = {"Temple Location", "Snow-Shod Farm Cellar", "Mausoleum", "Mustering Hall", "The Hermit",
                   "The Hermit Cellar", "Markarth East Empire Dormitory",
                   "Solitude"}  # The Great City of Solitude.esp:01F045: LocTypeInn, no cell at all, never placed
@@ -168,9 +169,9 @@ def txt(v, loc, table):
 
 
 def clear_xp():
-    """The [Clearing] and [Exploring] (discovery) XP for each kind of place, from the Experience.ini the Ultra
+    """The [Clearing] and [Exploring] (discovery) XP for each kind of place, from the Experience.ini the active
     profile's highest mod gives (MO2 order)."""
-    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
+    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", active_profile(), "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
     for m in mods:  # modlist.txt lists the highest priority first
         p = os.path.join(ROOT, "mods", m, "SKSE", "Plugins", "Experience.ini")
         if os.path.exists(p):
@@ -187,7 +188,7 @@ def respawn_days():
     Requiem.ini" is a shipped preset SkyUI's MCM loads as the active value when present; "MCM/Config/Requiem/
     settings.ini" is the mod's own declared default, read only for a key the preset doesn't set -- LoreRim's preset
     sets the ordinary days but not the cleared ones, so the cleared figure is the mod's own default, not a guess."""
-    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
+    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", active_profile(), "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
 
     def find(rel, key):
         for m in mods:

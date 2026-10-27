@@ -47,7 +47,7 @@ import struct
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from esp import ROOT, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
+from esp import ROOT, active_profile, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
 import places as pl  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -64,7 +64,7 @@ CURVE_EVIDENCE = [
 
 
 def mods_highest_first():
-    return [line.strip()[1:] for line in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore")
+    return [line.strip()[1:] for line in open(os.path.join(ROOT, "profiles", active_profile(), "modlist.txt"), encoding="utf-8", errors="ignore")
             if line.startswith("+")]
 
 

@@ -1,7 +1,26 @@
 import os,struct,zlib,sys
 ROOT=os.environ.get('LORERIM_ROOT') or os.path.expanduser('~/mnt/LoreRim')
+def active_profile():
+    """MO2's own selected profile (`ModOrganizer.ini`'s `[General] selected_profile`), not a hardcoded one -- every
+    script read a fixed 'Ultra' until 27 Oct, when Dave's own install was found pointed at a different profile
+    ('Extreme DLSS5', real plugin differences, not only shaders) and every script was reading the stale one. Falls
+    back to 'Ultra' (and says so) only if `ModOrganizer.ini` itself, or the profile it names, can't be read."""
+    try:
+        for line in open(ROOT+'/ModOrganizer.ini',encoding='utf-8',errors='ignore'):
+            line=line.strip()
+            if line.startswith('selected_profile='):
+                name=line[len('selected_profile='):]
+                if name.startswith('@ByteArray(') and name.endswith(')'):
+                    name=name[len('@ByteArray('):-1]
+                if os.path.isdir(ROOT+'/profiles/'+name):
+                    return name
+                break
+    except OSError:
+        pass
+    print("active_profile: couldn't read ModOrganizer.ini's selected_profile, falling back to 'Ultra'", file=sys.stderr)
+    return 'Ultra'
 def plugin_paths():
-    mods=[l.strip()[1:] for l in open(ROOT+'/profiles/Ultra/modlist.txt',encoding='utf-8',errors='ignore') if l.startswith('+')]
+    mods=[l.strip()[1:] for l in open(ROOT+'/profiles/'+active_profile()+'/modlist.txt',encoding='utf-8',errors='ignore') if l.startswith('+')]
     m={}
     for d in reversed(mods): # lowest priority first, overwritten by higher
         p=ROOT+'/mods/'+d
@@ -25,7 +44,7 @@ def load_order(cc=False):
     reads their records and their archives' scripts; the data builds don't take them yet)."""
     lo=['Skyrim.esm','Update.esm','Dawnguard.esm','HearthFires.esm','Dragonborn.esm']
     if cc: lo+=[p for p in creation_club() if p.lower() not in {x.lower() for x in lo}]
-    for l in open(ROOT+'/profiles/Ultra/plugins.txt',encoding='utf-8',errors='ignore'):
+    for l in open(ROOT+'/profiles/'+active_profile()+'/plugins.txt',encoding='utf-8',errors='ignore'):
         if l.startswith('*') and l.strip()[1:].lower() not in {x.lower() for x in lo}: lo.append(l.strip()[1:])
     return lo
 def subrecs(data):

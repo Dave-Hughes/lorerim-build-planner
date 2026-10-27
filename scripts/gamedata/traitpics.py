@@ -6,13 +6,16 @@ Only writes under _fieldguide.
 import os, json, re, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from esp import active_profile  # noqa: E402
+
 ROOT = os.path.expanduser('~/mnt/LoreRim')
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'traitpics')
 SIZE = (640, 440)
 
 def enabled_mods():
-    mods = [l.strip()[1:] for l in open(ROOT + '/profiles/Ultra/modlist.txt', encoding='utf-8', errors='ignore') if l.startswith('+')]
+    mods = [l.strip()[1:] for l in open(ROOT + '/profiles/' + active_profile() + '/modlist.txt', encoding='utf-8', errors='ignore') if l.startswith('+')]
     return mods  # first = highest priority
 
 def pics():

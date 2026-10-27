@@ -945,7 +945,7 @@ def read_events(quests, infos, names, scripts, books=None):
 # ---- the check -----------------------------------------------------------------------------------
 
 def main():
-    from esp import ROOT, load_order, plugin_paths
+    from esp import ROOT, active_profile, load_order, plugin_paths
     from pex import Scripts, read_pex
     from quest_givers import place, where_text
 
@@ -1049,7 +1049,7 @@ def main():
     print(f"{len(events)} script calls read", flush=True)
 
     # Settings loaders: MCM Helper mods, and which global each setting lands in.
-    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", "Ultra", "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
+    mods = [l.strip()[1:] for l in open(os.path.join(ROOT, "profiles", active_profile(), "modlist.txt"), encoding="utf-8", errors="ignore") if l.startswith("+")]
     dirs = [os.path.join(ROOT, "mods", d) for d in mods]
     mcm = mcm_settings(dirs, os.path.join(ROOT, "overwrite"))
     loader_scripts = {}
