@@ -1,0 +1,2458 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:02C18D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 08CE78 in Valthume Vestibule; places_raw puts Valthume in the Reach 0.7 km from Rorikstead"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "packages list is empty; only the placed cell says where he is"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Evil in Waiting stage 60 (completes): \"Valdar told me to take his iron mask and faded away\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DunPlayerAllyFaction; quest_givers names him giver of Evil in Waiting (info 05DD97, stage below 1)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:017008 and outfit Skyrim.esm:1019CE don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Evil in Waiting giver; objectives collect the vessels, perform the ritual with Valdar, defeat Hevnoraak"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01413A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "RevynSadriWorkInShop8x12: Sadri's Used Wares 8 am for 720 min, no conditions"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "shop 8-20, RevynSadriEatAtCornerclub20x4 New Gnisis Cornerclub 20:00 for 243 min, then DefaultSleepPackageAnyTime near his placed cell (the shop)"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, WindhelmPawnshopOwnerFaction, JobTrainerSpeechcraftFaction, PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20, list 48cb0600 unresolvable; \"used wares\" rests on WindhelmPawnshopOwnerFaction and is flagged unsure"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Speechcraft Journeyman cap 75, JobTrainerSpeechcraftFaction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction rank 0; proposal terms aren't in the extracts and the reader says so"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A6F and outfit Merchant_Fashions.esp:00097F don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "his two aliases (03A9D4 Revyn, USSEP 012C3A RevynSadri) are on quests not in quests_raw; Favor019 quest unnamed"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0132AA",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "SolitudePalaceSybilleCourtSandbox16x8 in the Blue Palace 16:00 for 480 min; sleep package 8x8 there"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order is AIOSoSybilleShopSat16x2 (Loredas=day 6, three OR conditions fn149 x2 / fn62), Sleep 8x8, Court 16x8, Lab 0x8 with fn612 list; reader reads it in order and flags the undecoded checks"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the HasKeyword 0A82BB condition on her three palace packages is not a change that moves her, and nothing in the extracts shows she carries that keyword; moved to unsure"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobCourtWizardFaction, JobSpellFaction, JobMerchantFaction, JobTrainerDestructionFaction"
+    },
+    "sells": {
+     "verdict": "fix",
+     "note": "vendor block runs 0 to 23, not \"any hour\"; list a1370900 unresolvable"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Destruction Expert cap 100, JobTrainerDestructionFaction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A5C and outfit Court_Fashions.esp:00080F don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "quest_givers lists her among the \"others\" who give The Man Who Cried Wolf (stage below 6, with Elisif, Falk, Bolgeir), so she can start it; in The Wolf Queen Awakened she only fills alias MS06SybelleStentor and no stage text names her, so \"named in it\" overstates it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01339F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Understone Keep; JobJarlFaction"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "only DefaultSandboxEditorLocation512 runs (no hours) near his placed cell, Understone Keep"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "top package CWExiledImperialSandboxBluePalace needs GetInFaction GovExiled; he is GovImperial, so exile follows his side losing the Reach"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobJarlFaction, GovRuling"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: JobJarlFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01CE16 and outfit Skyrim.esm:0FBFFB don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "in Compelling Tribute he fills alias JarlSons, not Jarl, and no stage text names him; the Raerek link comes only from the CWMission07EvidenceMarkarth reward. \"Named in it\" overstates it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01C188",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Stonecold Fortress, Winterhold; JobJarlFaction"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: CWExiledSonsSandboxBrunwulfsHouse (GovExiled), WanderInn18x2 The Frozen Hearth, Lunch12x1 Stonecold Fortress, WanderHome (no hours, near editor location); no sleep package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "CWExiledSonsSandboxBrunwulfsHouse needs GovExiled; he is GovSons"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobJarlFaction, GovRuling"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: JobJarlFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Skyrim.esm:0FBFFD don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Containment: he fills MG05KorirAlias but no stage text names him, so \"named in it\" overstates it; More to Say Winterhold Dialogue objective 25 \"Talk to Jarl Korir\" holds"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013606",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Sorli's House, Stonehills; home packages need fn79 on 019E53 != 2"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: AIOSHSorliBluePalace (Loredas 9 for 360 min, fn62==0, fn612 x2) resolves to the Blue Palace; StonehillsSorliSleepHome23x8 and SandboxHome near her placed house; reader flags the odd Solitude spot"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the fn79 condition on 019E53 ends her Stonehills packages, but no package names Highmoon Hall or anywhere else; \"would put her in Highmoon Hall\" isn't in the records"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobJarlFaction, MorthalJarlFaction, GovSons; alias JarlRebel in Laid to Rest"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: JobJarlFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, MarriageExcludedFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Skyrim.esm:01DC10 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "quest_givers: Laid to Rest giver via alias JarlRebel, stage below 11 (with Idgrod)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013B6E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "KarthwastenIntroLashPackage holds her at a Karthwasten spot until Sanuarach Mine stage 5 is done"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "TS_LashxRagnar18x2 (Tirdas 18:00 for 120 min) sits below KarthwastenSandboxFennGulchMine8x12, which has no conditions and runs 8 am to 8 pm, so the Fenn's Gulch package wins 6 to 8 pm every day; the Tirdas visit never runs"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "IntroLash: GetStageDone 0622E8 stage 5 == 0; OutsideSauranachMine8x12: GetStage 0622E8 >= 100"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMinerFaction; quest_givers: Sanuarach Mine giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: JobMinerFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326D and outfit Skyrim.esm:09CCA1 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Sanuarach Mine giver (stage below 100, others Ragnar); Gharol's Message objective \"Deliver Gharol's sword to Lash\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013B7C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DushnikYalGharolBlacksmithPackage8x12 at a Dushnikh Yal spot 8 am for 720 min"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: LonghouseEat20x4 Burguk's Longhouse, Blacksmith8x12, DefaultSleepEditorLoc24x8 near placed cell (Burguk's Longhouse), sandbox"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobBlacksmithFaction, JobMerchantFaction, JobTrainerHeavyArmorFaction; QuestGiver alias in Gharol's Message"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20, list 33630600 (same as Lod's), ServicesDushnikhYalBlacksmith"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer HeavyArmor Expert cap 100, JobTrainerHeavyArmorFaction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A60 and outfit NordWarUA's Race Armor Expansion.esp:000876 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Gharol's Message alias QuestGiver; objective \"Deliver Gharol's sword to Lash\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013650",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "FalkreathLodSandbox8x12 at Falkreath spot 0CDEBB, 8 am for 720 min"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "AIOFalkLodDayOff (Sundas 8 for 720 min, fn62==0, fn612 list) targets the same spot 0CDEBB as his work package, so on a dry Sundas he is still at the forge spot, not somewhere else in Falkreath; rest of the order (Evenings 20x3 near home, sleep 0x8, sandbox) is right"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only the AI Overhaul packages carry conditions (weather, undecoded)"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobBlacksmithFaction, JobMerchantFaction; Lod's Lot giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20, list 33630600 unresolvable, ServicesFalkreathBlacksmith"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013257 and outfit Blacksmith_Fashions.esp:000948 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Lod's Lot giver (objectives buy the book off Lod / turn Lod in to Kust); DA03Start stage 5 \"A guard outside Falkreath mentioned the Blacksmith Lod is looking for a Dog\"; DA03 has a Lod alias"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01364C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "FalkreathCemetarySandbox9x10 (near placed cell) and FalkreathDeadMansDrinkSandbox19x6 at Dead Man's Drink"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: AIOFalkKustDayOff Loredas 9 for 600 min at Gray Pine Goods; Cemetery 9x10 (fn149 0C8220 == 0 plus fn612 list); Dead Man's Drink 19 for 360 min; DefaultSleepPackageAnyTime fills 1 am to 9 am"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "only FalkreathHouseofArkayFaction, no Job faction; reader flags it"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013182 and outfit Skyrim.esm:017F21 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Lod's Lot quest_givers \"others\" Kust stage below 11; objective \"Turn Lod in to Kust\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:019C00",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "HeartwoodMillGrostaSawmill packages (no hours) run whenever the meal/sleep packages don't, at Heartwood Mill"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: RelaxIndoors20x4, EatDinner 19x1, EatLunch 13x1, EatBreakfast 6x1, Sleeps 0x6 (all in cell 0161FE Heartwood Mill), then SawLog/LoadLog/Sandbox at the mill"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only the saw packages carry a fn630 furniture check"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobLumberjackFaction; Flight or Fight giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: JobLumberjackFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326E and outfit Skyrim.esm:0330B9 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Flight or Fight objectives are \"Find Leifnarr\", \"Return to Grosta\", \"Report Leifnarr's death to his family\"; nothing in the records says Leifnarr is her husband"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0E3EAD",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0C2871 in Broken Helm Hollow, 0.4 km from Riften; editor id FFHM01LeifnarrTreasCorpse"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "single shared DefaultPatrolLinkedRefNoConvo with fn362; the record is a corpse"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no factions, no quest-gated packages"
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "\"husband\" isn't in the records; Flight or Fight only says \"Report Leifnarr's death to his family\""
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326C and outfit Skyrim.esm:09D4B5 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "same: drop \"husband\"; objectives Find Leifnarr / Report Leifnarr's death to his family"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential and protected false; dead state rests on the TreasCorpse editor id and the reader flags it"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0136BB",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "IvarsteadWilhelmBarkeeperPackage0x0, no hours or conditions; placed in Vilemyr Inn"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "one package, any hour, behind the Vilemyr Inn bar"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobInnkeeperFaction, JobRentRoomFaction, PotentialMarriageFaction; Lifting the Shroud giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 0-24, list f0140900 unresolvable, ServicesIvarsteadVilemyrInn"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction rank 0; proposal terms aren't in the extracts and the reader says so"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013256 and outfit Skyrim.esm:05FB81 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Lifting the Shroud giver (Bring Wyndelius' Journal to Wilhelm); The Straw that Broke \"Ask Wilhelm about Reyda\"; Under the Table \"Deliver Mead to Wilhelm\" for Romlyn Dreth"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0136C0",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 019E24 exterior Ivarstead; AIOIsRandomPackage toward Pinepeak Cavern"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: EatPM 20x1 and EatAM 10x1 at 107B9C in Ivarstead, Sleep 4 for 300 min at 0658D5 0.1 km out, AIOIsRandomPackage (fn612, fn62==0) near Pinepeak Cavern"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Contract: Kill Narfi stage 10 \"kill the beggar Narfi\""
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FavorJobsBeggarsFaction; DB stage text \"the beggar Narfi\"; The Straw that Broke giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01327B and outfit Beggar_Fashions.esp:00090A don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "The Straw that Broke objectives are Ask Wilhelm about Reyda / Locate Reyda's remains / Bring Reyda's Necklace to Narfi; nothing says Reyda is his sister"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0658D2",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "IvarsteadTembaMillSandbox0x0 (no hours, no conditions) is third in her list and sits above all her timed packages"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "mill SawLog/LoadLog/Sandbox at the top with no hours win at every hour; reader lists the shadowed inn/Pinepeak packages under unsure"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialMarriageFaction, FavorJobsChopWoodFaction; Grin and Bear It giver; \"mill owner\" is soft but the mill packages are hers"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: PotentialMarriageFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction rank 0; proposal terms aren't in the extracts and the reader says so"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit Skyrim.esm:07144A don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Grin and Bear It: \"Gather 10 bear pelts for Temba Wide-Arm\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0136C2",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Sleep 0x4 and Breakfast 4x1 in Klimmek's House, Lunch/Dinner at Vilemyr Inn, WanderWithFastred 19x5"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "AIOIsKlimmekRelaxTT (Tirdas/Turdas 9 for 600 min) sits above Dinner 18x1 as well as Lunch, so on those days it also replaces dinner; AIOIsKlimmekBringSuppliesToHH targets a spot 0.0 km from High Hrothgar itself, not \"the road up\""
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "BringSuppliesToHH needs GetQuestCompleted 0D9B66 (Climb the Steps), Fredas, fn149 0C8220 == 0"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no Job faction; Climb the Steps giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326B and outfit QND SPID GS Nord Raven.esp:000800 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Climb the Steps giver; The Book of Love objective \"Talk to Bassianus or Klimmek\"; Fastred's Choice stage 85 \"Fastred broke the news to both men\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0622E5",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed ref 0622E7 in Sanuarach Mine; intro package (location type 6, unresolved) until stage 5, flagged unsure"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "KarthwastenAtarSitMinePackage (no hours) after the two gated packages"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "FreeformKarthwastenAGuardsLeaveMinePackage to Silver-Blood Inn on GetStage 0622E8 >= 100; shared by 2"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "KarthwastenSilverFishGuards only"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:013176 and outfit Skyrim.esm:03DED3 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Sanuarach Mine objectives 10 \"Convince Atar to leave\" and 40 \"Tell Atar that Ainethach has been dealt with\""
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:013B6A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "KarthwastenIntroRagnarPackage until Sanuarach Mine stage 5 is done; placed in Miner's Barracks"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "TS_RagnarxLash18x2 (Tirdas 18:00 for 120 min) is below KarthwastenSandboxFennGulchMine8x12, unconditional 8 am to 8 pm, so it never wins"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "IntroRagnar GetStageDone 5 == 0; OutsideSauranachMine8x12 GetStage >= 100"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMinerFaction; quest_givers \"others\" Ragnar on Sanuarach Mine"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: JobMinerFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326D and outfit Skyrim.esm:0F8719 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Sanuarach Mine giver others: Ragnar, stage below 100"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:0133B1",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "LeftHandMineIntroPavoScenePackage at a spot 0.0 km from Left Hand Mine until 0987A4 stage 100; then LefthandMineRestInBarracksPackage"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "before Kolskeggr Mine reaches stage 100 only the barracks package (no hours) runs"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Kolskeggr work 8x12, sleep 0x8 and house sandbox all need GetStage 01FD72 == 100, the quest's last stage"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMinerFaction, PotentialMarriageFaction; Kolskeggr Mine giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null and no merchant/services faction (factions: PotentialMarriageFaction, JobMinerFaction)"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null, no JobTrainer faction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction rank 0; proposal terms aren't in the extracts and the reader says so"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:01326D and outfit Skyrim.esm:09595B don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Kolskeggr Mine giver (stage below 21); objectives clear the Forsworn / tell Pavo"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01365F",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Eat 6x1 and 17x1 Braidwood Inn, Study10x5 Steamscorch Mine, campfire sandbox otherwise"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: Eat6x1, Eat17x1, WorkInMine20x3, Sleep2x4 (near placed cell Braidwood Inn), Study10x5, KynesgroveHangAroundCampfireAndInn"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditioned package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobCourtWizardFaction, JobMerchantFaction, JobTrainerAlterationFaction, PotentialMarriageFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20, list a1370900 same as Sybille Stentor's; reader flags it"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer Alteration Expert cap 100, JobTrainerAlterationFaction"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true, PotentialMarriageFaction rank 0; proposal terms aren't in the extracts and the reader says so"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class Skyrim.esm:0E3A71 and outfit RMB SPID - Armors of the Velothi.esp:000818 don't resolve in the extracts; a resolved class record (skill weights) or equipped weapon would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Dravynea's Frost Salts giver holds; A Blade in the Dark: she fills alias Dravynea but no stage text names her, so \"named in it\" overstates it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true (and protected)"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:02C18D",
+   "name": "Valdar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "A ghost in Valthume Vestibule, the entrance hall of Valthume, the Nordic ruin in the Reach near Rorikstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Valthume Vestibule, Valthume",
+     "doing": "waiting where he's placed; he has no AI packages"
+    }
+   ],
+   "changes": [
+    "Once you've defeated Hevnoraak, he tells you to take his iron mask and fades away (Evil in Waiting)."
+   ],
+   "role": "quest giver (a friendly ghost)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Evil in Waiting",
+     "how": "gives it: he asks you to collect the three vessels in Valthume, perform the ritual with him and defeat the dragon priest Hevnoraak"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:02C18D",
+    "no packages",
+    "DunPlayerAllyFaction",
+    "dunValthumeBossFaction",
+    "essential flag",
+    "dunValthumeQST Skyrim.esm:03ED82 alias DunValthumeGhostValdar (giver, stage 60 log)",
+    "placed ref Skyrim.esm:08CE78 in Valthume Vestibule"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01413A",
+   "name": "Revyn Sadri",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "In his shop, Sadri's Used Wares, Windhelm, 8 am to 8 pm.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Sadri's Used Wares, Windhelm",
+     "doing": "running his shop"
+    },
+    {
+     "from": "8 pm",
+     "for": "about 4 hours",
+     "where": "New Gnisis Cornerclub, Windhelm",
+     "doing": "eating and drinking"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Sadri's Used Wares, Windhelm",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "merchant (pawnbroker, Sadri's Used Wares); trainer; can marry",
+   "sells": "used wares at Sadri's Used Wares; trades 8 am to 8 pm",
+   "trains": "Speechcraft to 75 (journeyman)",
+   "joins": "",
+   "marries": "yes",
+   "fightsWith": "",
+   "quests": [],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "His buy/sell list and chest are ids I can't resolve; 'used wares' comes from his shop's name and his pawnshop-owner faction."
+    },
+    {
+     "field": "marries",
+     "why": "He is a marriage candidate; what the proposal needs isn't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in two quests with no name in the extracts, and carries a favour-giver faction whose quest isn't named either."
+    },
+    {
+     "field": "day",
+     "why": "His sleep package has no hours or place of its own: it runs whenever nothing else does, near where he's placed (his shop)."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01413A",
+    "RevynSadriWorkInShop8x12 Skyrim.esm:035E76",
+    "RevynSadriEatAtCornerclub20x4 Skyrim.esm:035E77",
+    "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+    "WindhelmPawnshopOwnerFaction",
+    "JobMerchantFaction",
+    "ServicesWindhelmRevynSadri",
+    "vendor 8-20",
+    "JobTrainerSpeechcraftFaction; trainer Speechcraft Journeyman cap 75",
+    "PotentialMarriageFaction",
+    "Favor019QuestGiverFaction",
+    "quests Skyrim.esm:03A9D4, USSEP:012C3A (unnamed)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0132AA",
+   "name": "Sybille Stentor",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "At court in the Blue Palace, Solitude, from 4 pm to midnight; she sleeps there through the day.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "her laboratory in the Blue Palace, Solitude",
+     "doing": "working in her lab (subject to checks the extracts don't decode)"
+    },
+    {
+     "from": "8 am",
+     "for": "8 hours",
+     "where": "the Blue Palace, Solitude",
+     "doing": "sleeping"
+    },
+    {
+     "from": "4 pm",
+     "for": "8 hours",
+     "where": "the court, Blue Palace, Solitude",
+     "doing": "at court"
+    },
+    {
+     "from": "Loredas 4 pm",
+     "for": "2 hours",
+     "where": "Angeline's Aromatics, Solitude",
+     "doing": "visiting the shop, only in rain or one of two other weathers"
+    }
+   ],
+   "changes": [],
+   "role": "court wizard of Solitude; sells magic goods; trainer",
+   "sells": "spells and magic goods; trades from midnight to 11 pm",
+   "trains": "Destruction to 100 (expert)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Man Who Cried Wolf",
+     "how": "can give it: one of the Solitude court (with Elisif, Falk Firebeard and Bolgeir Bearclaw) who can start it, before you go to Falk about Wolfskull Cave"
+    },
+    {
+     "quest": "The Wolf Queen Awakened",
+     "how": "in its cast as part of the Solitude court; the records don't say what she does in it"
+    },
+    {
+     "quest": "Tending the Flames",
+     "how": "in its cast: she's at court when Viarmo presents King Olaf's Verse"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Her buy/sell list and chest are ids I can't resolve; 'spells' comes from her spell-vendor and court-wizard factions. Her vendor hours run midnight to 11 pm."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in three quests with no name in the extracts (one from a mod about her), and carries a favour-giver faction whose quest isn't named."
+    },
+    {
+     "field": "day",
+     "why": "The midnight lab package carries a long list of undecoded AI Overhaul checks; if they fail, no other package covers midnight to 8 am. The Loredas shop visit is gated on two weathers named only by id or rain."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "Her sleep, court and lab packages all need a keyword given only as an id; the extracts don't show whether she has it. If she doesn't, none of them runs."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0132AA",
+    "AIOSoSybilleShopSat16x2 AI Overhaul.esp:006AB5 (fn149 x2, fn62, OR)",
+    "SolitudePalaceSybilleSleep8x8 Skyrim.esm:0AF513 (HasKeyword Skyrim.esm:0A82BB)",
+    "SolitudePalaceSybilleCourtSandbox16x8 Skyrim.esm:0AF4EA",
+    "SolitudePalaceSybilleLabSandbox0x8 Skyrim.esm:0AF4F7 (fn612 list)",
+    "JobCourtWizardFaction",
+    "JobSpellFaction",
+    "JobMerchantFaction",
+    "ServicesSolitudeSybilleStentor",
+    "vendor 0-23",
+    "JobTrainerDestructionFaction; trainer Destruction Expert cap 100",
+    "MS06Start Skyrim.esm:093807 (giver others)",
+    "MS06 Skyrim.esm:026C4D",
+    "MS05 Skyrim.esm:053511 alias MS05Sybelle",
+    "Unmasking Sybille.esp:000D6A, Skyrim.esm:0A940A, Skyrim.esm:0367FA, USSEP:03F6A2 (unnamed)",
+    "Favor109QuestGiverFaction"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01339F",
+   "name": "Igmund",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Understone Keep, Markarth, where he is Jarl.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "going about the keep; the records give him no separate hours"
+    }
+   ],
+   "changes": [
+    "If he's exiled (the Stormcloaks take the Reach in the civil war), he goes to the Blue Palace in Solitude and stays there."
+   ],
+   "role": "Jarl of Markarth",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Compelling Tribute",
+     "how": "in its cast on the Markarth side (where you blackmail his steward Raerek, with the Stormcloaks); the records don't say what he does in it"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "He fills aliases in seven more quests that have no name in the extracts, and carries three favour-giver factions and a Thalmor Embassy party-guest faction whose quests aren't named here."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01339F",
+    "CWExiledImperialSandboxBluePalace Skyrim.esm:0A926E (GetInFaction GovExiled)",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "JobJarlFaction",
+    "GovImperial",
+    "GovRuling",
+    "MarriageExcludedFaction",
+    "CWMission07 Skyrim.esm:0504F0 alias JarlSons",
+    "MQ201PartyGuestFaction",
+    "Favor151/157/250QuestGiverFaction",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01C188",
+   "name": "Korir",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Stonecold Fortress, Winterhold, where he is Jarl.",
+   "day": [
+    {
+     "from": "noon",
+     "for": "1 hour",
+     "where": "Stonecold Fortress, Winterhold",
+     "doing": "eating lunch"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "The Frozen Hearth, Winterhold",
+     "doing": "visiting the inn"
+    },
+    {
+     "from": "other hours",
+     "for": "",
+     "where": "Stonecold Fortress, Winterhold",
+     "doing": "around his hall; the records give him no sleep package"
+    }
+   ],
+   "changes": [
+    "If he's exiled (the Imperials take Winterhold in the civil war), he goes to Brunwulf Free-Winter's House in Windhelm and stays there."
+   ],
+   "role": "Jarl of Winterhold",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Containment",
+     "how": "in its cast while you defend Winterhold; the records don't say what he does in it"
+    },
+    {
+     "quest": "More to Say Winterhold Dialogue",
+     "how": "a step in it: 'Talk to Jarl Korir'"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "He fills aliases in five more quests with no name in the extracts, and carries two favour-giver factions whose quests aren't named."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C188",
+    "CWExiledSonsSandboxBrunwulfsHouse Skyrim.esm:0A9274 (GetInFaction GovExiled)",
+    "WinterholdKorirWanderInn18x2 Skyrim.esm:02A392",
+    "WinterholdKorirLunch12x1 Skyrim.esm:050311",
+    "WinterholdKorirWanderHome Skyrim.esm:02A391",
+    "JobJarlFaction",
+    "GovSons",
+    "GovRuling",
+    "MG05 Skyrim.esm:01F255 alias MG05KorirAlias",
+    "ACFMTSWinterholdDialogue moretosaywinterhold.esp:000800 objective 25",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013606",
+   "name": "Sorli the Builder",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At her house in Stonehills, the mining settlement near Morthal (Sorli's House).",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "in and around Sorli's House, Stonehills",
+     "doing": "going about her home; sleeps there 11 pm to 7 am"
+    },
+    {
+     "from": "Loredas 9 am",
+     "for": "6 hours",
+     "where": "the Blue Palace, Solitude (as the records resolve it)",
+     "doing": "visiting, in dry weather and when other undecoded checks pass"
+    }
+   ],
+   "changes": [
+    "Her Stonehills packages stop once a quest value changes; the quest isn't named in the extracts. Her Morthal jarl factions suggest it's when she becomes Jarl of Morthal, but no package says where she goes then."
+   ],
+   "role": "mine owner in Stonehills; Jarl of Morthal if the Stormcloaks take Hjaalmarch",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Laid to Rest",
+     "how": "gives it when she's Jarl of Morthal (the Stormcloak-side jarl)"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The quest value that ends her Stonehills packages is on a quest with no name in the extracts, and no Morthal package is listed for her; 'Jarl of Morthal' comes from her factions and her alias in Laid to Rest."
+    },
+    {
+     "field": "day",
+     "why": "The Loredas package's spot resolves to the Blue Palace in Solitude, a long way from Stonehills; it also carries undecoded AI Overhaul checks, so I can't confirm she makes the trip."
+    },
+    {
+     "field": "quests",
+     "why": "She also fills a Jarl alias in a mod quest with no name in the extracts, and carries a favour-giver faction whose quest isn't named."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013606",
+    "AIOSHSorliBluePalace AI Overhaul.esp:15171E (dayOfWeek 6, fn62==0, fn612)",
+    "StonehillsSorliSleepHome23x8 Skyrim.esm:02EA49 (fn79 Skyrim.esm:019E53 != 2)",
+    "StonehillsSorliSandboxHome Skyrim.esm:02EA48 (same)",
+    "JobJarlFaction",
+    "MorthalJarlFaction",
+    "MorthalLonghouseFaction",
+    "GovSons",
+    "MS14 Skyrim.esm:025F3E alias JarlRebel",
+    "Extended Encounters.esp:0004A4 (unnamed)",
+    "Favor255QuestGiverFaction",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013B6E",
+   "name": "Lash gra-Dushnikh",
+   "race": "Orsimer",
+   "sex": "female",
+   "firstMeet": "In Karthwasten, at the standoff over Sanuarach Mine, when you first arrive; later in the Miner's Barracks there.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Fenn's Gulch Mine, Karthwasten",
+     "doing": "mining (outside Sanuarach Mine instead, once that quest is settled)"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Miner's Barracks, Karthwasten",
+     "doing": "around home"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Miner's Barracks, Karthwasten",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Until the opening of Sanuarach Mine plays out, she stands at a spot in Karthwasten for the scene.",
+    "Once Sanuarach Mine reaches its later stages, she works outside Sanuarach Mine instead of Fenn's Gulch Mine."
+   ],
+   "role": "miner; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Sanuarach Mine",
+     "how": "gives it (with Ragnar): get Atar and his men out of Sanuarach Mine"
+    },
+    {
+     "quest": "Gharol's Message",
+     "how": "a step in it: Gharol sends you to deliver her sword to Lash"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "She fills aliases in seven more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013B6E",
+    "KarthwastenIntroLashPackage Skyrim.esm:0830A8 (GetStageDone Skyrim.esm:0622E8 5 == 0)",
+    "KarthwastenSandboxOutsideSauranachMine8x12Package Skyrim.esm:0830B2 (GetStage Skyrim.esm:0622E8 >= 100)",
+    "KarthwastenSandboxFennGulchMine8x12Package Skyrim.esm:0830A9",
+    "TS_LashxRagnar18x2 AI Overhaul.esp:0215CE",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxHomeowner Skyrim.esm:031730",
+    "JobMinerFaction",
+    "FreeformKarthwastenA Skyrim.esm:0622E8 (giver)",
+    "FreeformDushnikhYalA Skyrim.esm:09976E alias Lash"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013B7C",
+   "name": "Gharol",
+   "race": "Orsimer",
+   "sex": "female",
+   "firstMeet": "At the forge in Dushnikh Yal, the Orc stronghold in the Reach, 8 am to 8 pm.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "the forge, Dushnikh Yal",
+     "doing": "working as blacksmith"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Burguk's Longhouse, Dushnikh Yal",
+     "doing": "eating"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Burguk's Longhouse, Dushnikh Yal",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "blacksmith; trainer; quest giver",
+   "sells": "blacksmith's goods; trades 8 am to 8 pm",
+   "trains": "Heavy Armor to 100 (expert)",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Gharol's Message",
+     "how": "gives it: deliver her sword to Lash in Karthwasten"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Her buy/sell list and chest are ids I can't resolve; 'blacksmith' comes from her blacksmith and services factions (her list is the same one Lod uses)."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in four more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013B7C",
+    "DushnikhYalGharolLonghouseEatPackage20x4 Skyrim.esm:0C510E",
+    "DushnikYalGharolBlacksmithPackage8x12 Skyrim.esm:0606F6",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "JobBlacksmithFaction",
+    "ServicesDushnikhYalBlacksmith",
+    "vendor 8-20",
+    "JobTrainerHeavyArmorFaction; trainer HeavyArmor Expert cap 100",
+    "FreeformDushnikhYalA Skyrim.esm:09976E alias QuestGiver"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013650",
+   "name": "Lod",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "At his forge in Falkreath, 8 am to 8 pm.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "the forge, Falkreath",
+     "doing": "working as blacksmith"
+    },
+    {
+     "from": "8 pm",
+     "for": "3 hours",
+     "where": "near his house, Falkreath",
+     "doing": "out for the evening, in dry weather (and when other undecoded checks pass)"
+    },
+    {
+     "from": "11 pm",
+     "for": "1 hour",
+     "where": "around Lod's House, Falkreath",
+     "doing": "at home"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Lod's House, Falkreath",
+     "doing": "sleeping"
+    },
+    {
+     "from": "Sundas 8 am",
+     "for": "12 hours",
+     "where": "the forge, Falkreath (the same spot as his workdays)",
+     "doing": "day off, in dry weather (and when other undecoded checks pass)"
+    }
+   ],
+   "changes": [],
+   "role": "blacksmith; quest giver",
+   "sells": "blacksmith's goods; trades 8 am to 8 pm",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Lod's Lot",
+     "how": "gives it: buy the book off Lod; you can then turn him in to Kust"
+    },
+    {
+     "quest": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+     "how": "a step in it: a guard says he's offering a reward for a dog; it leads to A Daedra's Best Friend"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "His buy/sell list and chest are ids I can't resolve; 'blacksmith' comes from his blacksmith and services factions."
+    },
+    {
+     "field": "day",
+     "why": "'The forge' is my reading of his work package's spot, which the extracts give only as a point in Falkreath; the Sundas day-off spot is close by but also unnamed. If the evening package's checks fail he stays around home."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in four more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013650",
+    "AIOFalkLodDayOff AI Overhaul.esp:07277C (dayOfWeek 0, fn62==0, fn612)",
+    "FalkreathLodSandbox8x12 Skyrim.esm:0936C7 (target Skyrim.esm:0CDEBB)",
+    "AIOFalkLodEvenings AI Overhaul.esp:16ACE1",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "FalkreathSandboxEditorLocation512 Skyrim.esm:0CF016",
+    "JobBlacksmithFaction",
+    "ServicesFalkreathBlacksmith",
+    "vendor 8-20",
+    "FreeformFalkreathQuest01 Skyrim.esm:093753 (giver)",
+    "DA03Start Skyrim.esm:0D7939 alias Lod, leadsTo DA03 Skyrim.esm:01BFC4",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01364C",
+   "name": "Kust",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Falkreath's cemetery by day (9 am to 7 pm), or at Dead Man's Drink in the evening.",
+   "day": [
+    {
+     "from": "9 am",
+     "for": "10 hours",
+     "where": "the cemetery, Falkreath",
+     "doing": "around the graves, except in one kind of weather"
+    },
+    {
+     "from": "7 pm",
+     "for": "6 hours",
+     "where": "Dead Man's Drink, Falkreath",
+     "doing": "drinking"
+    },
+    {
+     "from": "1 am",
+     "for": "8 hours",
+     "where": "Kust's House, Falkreath",
+     "doing": "sleeping"
+    },
+    {
+     "from": "Loredas 9 am",
+     "for": "10 hours",
+     "where": "Gray Pine Goods, Falkreath",
+     "doing": "visiting the shop, in dry weather (and when other undecoded checks pass)"
+    }
+   ],
+   "changes": [],
+   "role": "townsman of Falkreath (tied to the Hall of the Dead)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Lod's Lot",
+     "how": "a step in it: you can turn Lod in to him"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "'The cemetery' comes from the package's name; its spot is 'near where he's placed'. When it and the Loredas package are skipped (weather, undecoded checks) he falls back to his any-time sleep package, near home."
+    },
+    {
+     "field": "role",
+     "why": "He's in the Falkreath Hall of the Dead faction but has no job faction, so I can't say more."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in three quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01364C",
+    "AIOFalkKustDayOff AI Overhaul.esp:072794 (dayOfWeek 6, fn62==0, fn612)",
+    "FalkreathCemetarySandbox9x10 Skyrim.esm:0862DD (fn149 Skyrim.esm:0C8220 == 0)",
+    "FalkreathDeadMansDrinkSandbox19x6 Skyrim.esm:0862E2",
+    "DefaultSleepPackageAnyTime Skyrim.esm:0E73CA",
+    "FalkreathHouseofArkayFaction",
+    "FreeformFalkreathQuest01 Skyrim.esm:093753 (giver others: Kust)",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:019C00",
+   "name": "Grosta",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At Heartwood Mill, the lumber mill in the Rift, working the sawmill by day.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "the house, Heartwood Mill",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "6 hours",
+     "where": "the sawmill, Heartwood Mill",
+     "doing": "working the saw"
+    },
+    {
+     "from": "1 pm",
+     "for": "1 hour",
+     "where": "the house, Heartwood Mill",
+     "doing": "lunch"
+    },
+    {
+     "from": "2 pm",
+     "for": "5 hours",
+     "where": "the sawmill, Heartwood Mill",
+     "doing": "working the saw"
+    },
+    {
+     "from": "7 pm",
+     "for": "1 hour",
+     "where": "the house, Heartwood Mill",
+     "doing": "dinner"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "the house, Heartwood Mill",
+     "doing": "relaxing indoors"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "the house, Heartwood Mill",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "mill worker; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Flight or Fight",
+     "how": "gives it: Leifnarr is missing; find him and return to her (if you find his body first, you report his death to his family)"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "She fills aliases in two more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:019C00",
+    "HeartwoodMillGrostaRelaxIndoors20x4 Skyrim.esm:0746A4",
+    "HeartwoodMillGrostaEatDinner Skyrim.esm:06BBAE",
+    "HeartwoodMillGrostaEatLunch Skyrim.esm:06BBAF",
+    "HeartwoodMillGrostaEatBreakfast Skyrim.esm:06BBAD",
+    "HeartwoodMillGrostaSleeps Skyrim.esm:06BBB0",
+    "HeartwoodMillGrostaSawmillSawLog0x0 Skyrim.esm:074691",
+    "HeartwoodMillGrostaSawmillLoadLog0x0 Skyrim.esm:07468C",
+    "HeartwoodMillGrostaSawmillSandbox0x0 Skyrim.esm:074690",
+    "JobLumberjackFaction",
+    "CrimeFactionRift",
+    "FreeformHeartwoodMill Skyrim.esm:0E3EA5 (giver)",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0E3EAD",
+   "name": "Leifnarr",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Dead, in Broken Helm Hollow, the bandit cave near Riften.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Broken Helm Hollow, the Rift",
+     "doing": "lying dead"
+    }
+   ],
+   "changes": [],
+   "role": "the missing man in Flight or Fight (found dead)",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Flight or Fight",
+     "how": "its target: Grosta asks you to find him; finding his body leads to reporting his death to his family"
+    }
+   ],
+   "canDie": "already dead when found",
+   "unsure": [
+    {
+     "field": "canDie",
+     "why": "'Dead' comes from his record's editor id (a treasure corpse) and the quest objective 'Report Leifnarr's death to his family'; the extracts don't carry a dead flag."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0E3EAD",
+    "FFHM01LeifnarrTreasCorpse",
+    "DefaultPatrolLinkedRefNoConvo Skyrim.esm:01A733 (fn362)",
+    "FreeformHeartwoodMill Skyrim.esm:0E3EA5 alias FFHM01LeifnarrAlias, objectives 5, 10",
+    "placed ref Skyrim.esm:0C2871 in Broken Helm Hollow"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0136BB",
+   "name": "Wilhelm",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Behind the bar of the Vilemyr Inn, Ivarstead, at any hour.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Vilemyr Inn, Ivarstead",
+     "doing": "tending the bar"
+    }
+   ],
+   "changes": [],
+   "role": "innkeeper (Vilemyr Inn); rents a room; quest giver; can marry",
+   "sells": "innkeeper's goods; trades at any hour; rents a room",
+   "trains": "",
+   "joins": "",
+   "marries": "yes",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Lifting the Shroud",
+     "how": "gives it: investigate Shroud Hearth Barrow and bring Wyndelius' Journal back to him"
+    },
+    {
+     "quest": "The Straw that Broke",
+     "how": "a step in it: you ask him about Reyda for Narfi"
+    },
+    {
+     "quest": "Under the Table",
+     "how": "a step in it: you deliver mead to him for Romlyn Dreth"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "His buy/sell list and chest are ids I can't resolve; 'innkeeper' comes from his innkeeper and rent-room factions."
+    },
+    {
+     "field": "marries",
+     "why": "He is a marriage candidate; what the proposal needs isn't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in five more quests with no name in the extracts, and is a named victim in a mod quest that has no name here."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0136BB",
+    "IvarsteadWilhelmBarkeeperPackage0x0 Skyrim.esm:06461C",
+    "JobInnkeeperFaction",
+    "JobRentRoomFaction",
+    "ServicesIvarsteadVilemyrInn",
+    "vendor 0-24",
+    "PotentialMarriageFaction",
+    "FreeformIvarstead01 Skyrim.esm:0D9B63",
+    "FreeformIvarstead02 Skyrim.esm:0D9B64",
+    "FreeformRiften03 Skyrim.esm:053307",
+    "Vigilant.esm:17576E alias IvarsteadVictim04",
+    "essential flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0136C0",
+   "name": "Narfi",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Outdoors around Ivarstead, toward Pinepeak Cavern; he has no house in the records.",
+   "day": [
+    {
+     "from": "4 am",
+     "for": "5 hours",
+     "where": "a spot just outside Ivarstead",
+     "doing": "sleeping"
+    },
+    {
+     "from": "10 am",
+     "for": "1 hour",
+     "where": "a spot in Ivarstead",
+     "doing": "eating"
+    },
+    {
+     "from": "8 pm",
+     "for": "1 hour",
+     "where": "a spot in Ivarstead",
+     "doing": "eating"
+    },
+    {
+     "from": "other hours",
+     "for": "",
+     "where": "around Ivarstead, toward Pinepeak Cavern",
+     "doing": "wandering, in dry weather and when other undecoded checks pass"
+    }
+   ],
+   "changes": [
+    "The Dark Brotherhood can send you to kill him (Contract: Kill Narfi)."
+   ],
+   "role": "beggar; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Straw that Broke",
+     "how": "gives it: find out what happened to Reyda and bring him her necklace"
+    },
+    {
+     "quest": "Contract: Kill Narfi",
+     "how": "its target: Nazir sends you to Ivarstead to kill him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His wandering package carries undecoded AI Overhaul checks; when they or the rain check fail, no package covers those hours, so I can't say where he'd be."
+    },
+    {
+     "field": "quests",
+     "why": "He also fills an alias in a Dark Brotherhood mod quest with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0136C0",
+    "IvarsteadNarfiEatPMPackage Skyrim.esm:0658DF",
+    "IvarsteadNarfiEatAMPackage Skyrim.esm:0658DE",
+    "IvarsteadNarfiSleepPackage Skyrim.esm:0658DD",
+    "AIOIsRandomPackage AI Overhaul.esp:00245A (fn612, fn62==0)",
+    "FavorJobsBeggarsFaction",
+    "FreeformIvarstead02 Skyrim.esm:0D9B64 (giver)",
+    "DBSideContract01 Skyrim.esm:01EA5B",
+    "Destroy the Dark Brotherhood - Quest Expansion.esp:00089E (unnamed)",
+    "placed ref Skyrim.esm:019E24 (exterior, Ivarstead)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0658D2",
+   "name": "Temba Wide-Arm",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "At the sawmill in Ivarstead.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "the sawmill, Ivarstead",
+     "doing": "working the saw or around the mill"
+    }
+   ],
+   "changes": [],
+   "role": "mill owner; quest giver; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Grin and Bear It",
+     "how": "gives it: bring her 10 bear pelts"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Her three sawmill packages sit at the top of her list with no hours, so by the records she is always at the mill. Below them are a fuller day that would only run if the mill packages fail: breakfast at the Vilemyr Inn 5 to 6 am, dinner there 4 to 5 pm, the inn 8 pm to midnight, sleep at the inn midnight to 5 am, and on Tirdas and Turdas 8 am to 10 pm around Pinepeak Cavern (with undecoded checks)."
+    },
+    {
+     "field": "marries",
+     "why": "She is a marriage candidate; what the proposal needs isn't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in two more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0658D2",
+    "IvarsteadTembaMillSawLog0x0 Skyrim.esm:083DAC",
+    "IvarsteadTembaMillLoadLog0x0 Skyrim.esm:083DAA",
+    "IvarsteadTembaMillSandbox0x0 Skyrim.esm:083DAB",
+    "AIOIsTembaBreakDays AI Overhaul.esp:00245C",
+    "IvarsteadTembaVisitInnPackage Skyrim.esm:083DAE",
+    "IvarsteadTembaEatDinnerPackage Skyrim.esm:065AA4",
+    "IvarsteadTembaEatBreakfastPackage Skyrim.esm:065AA3",
+    "IvarsteadTembaSleepPackage Skyrim.esm:065AA6",
+    "PotentialMarriageFaction",
+    "FreeformIvarstead03 Skyrim.esm:0D9B65 (giver)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0136C2",
+   "name": "Klimmek",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Ivarstead: at his house early morning, the Vilemyr Inn at meals, out around the village with Fastred in the evening.",
+   "day": [
+    {
+     "from": "midnight",
+     "for": "4 hours",
+     "where": "Klimmek's House, Ivarstead",
+     "doing": "sleeping"
+    },
+    {
+     "from": "4 am",
+     "for": "1 hour",
+     "where": "Klimmek's House, Ivarstead",
+     "doing": "breakfast"
+    },
+    {
+     "from": "5 am",
+     "for": "8 hours",
+     "where": "Ivarstead",
+     "doing": "fishing (Morndas to Fredas)"
+    },
+    {
+     "from": "1 pm",
+     "for": "1 hour",
+     "where": "Vilemyr Inn, Ivarstead",
+     "doing": "lunch"
+    },
+    {
+     "from": "2 pm",
+     "for": "4 hours",
+     "where": "Ivarstead",
+     "doing": "fishing (Morndas to Fredas)"
+    },
+    {
+     "from": "6 pm",
+     "for": "1 hour",
+     "where": "Vilemyr Inn, Ivarstead",
+     "doing": "dinner"
+    },
+    {
+     "from": "7 pm",
+     "for": "5 hours",
+     "where": "around Ivarstead",
+     "doing": "walking with Fastred"
+    },
+    {
+     "from": "Tirdas and Turdas 9 am",
+     "for": "10 hours",
+     "where": "near Pinepeak Cavern, Ivarstead",
+     "doing": "relaxing, in dry weather (and when other undecoded checks pass); this replaces fishing, lunch and dinner"
+    },
+    {
+     "from": "Fredas 9 am",
+     "for": "9 hours",
+     "where": "High Hrothgar",
+     "doing": "taking supplies up himself, once you've finished Climb the Steps (skipped in one kind of weather)"
+    }
+   ],
+   "changes": [
+    "After Climb the Steps is done, he makes the supply run to High Hrothgar himself on Fredas."
+   ],
+   "role": "townsman of Ivarstead; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Climb the Steps",
+     "how": "gives it: take his supplies to High Hrothgar and return to him"
+    },
+    {
+     "quest": "The Book of Love",
+     "how": "a step in it: one of Fastred's two suitors you talk to"
+    },
+    {
+     "quest": "The Book of Love - Fastred's Choice",
+     "how": "a step in it: Fastred tells him her decision"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His fishing package runs on weekdays only and has no place; on Loredas and Sundas nothing covers 5 am to 1 pm and 2 to 6 pm, so I can't say where he is then. The fishing spot is my reading of the package's name."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in five more quests with no name in the extracts, and is a named victim in a mod quest that has no name here."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0136C2",
+    "AIOIsKlimmekBringSuppliesToHH AI Overhaul.esp:002431 (dayOfWeek 5, GetQuestCompleted Skyrim.esm:0D9B66, fn149 Skyrim.esm:0C8220 == 0)",
+    "AIOIsKlimmekRelaxTT AI Overhaul.esp:00245D (dayOfWeek 10)",
+    "IvarsteadKlimmekWanderWithFastredPackage Skyrim.esm:0658C9",
+    "IvarsteadKlimmekEatDinnerPackage Skyrim.esm:0658C3",
+    "IvarsteadKlimmekEatLunchPackage Skyrim.esm:0658C4",
+    "IvarsteadKlimmekEatBreakfastPackage Skyrim.esm:0658C2",
+    "IvarsteadKlimmekSleepPackage Skyrim.esm:0658C5",
+    "IvarsteadKlimmekFishingPackage Skyrim.esm:021249 (dayOfWeek 7)",
+    "FreeformIvarstead04 Skyrim.esm:0D9B66 (giver)",
+    "t02 Skyrim.esm:0211D5",
+    "TTFA_JourneyQuest TT_FastredsAwakening.esp:000009",
+    "Vigilant.esm:17576E alias IvarsteadVictim03",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0622E5",
+   "name": "Atar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Sanuarach Mine, Karthwasten, leading the mercenaries holding the mine.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Sanuarach Mine, Karthwasten",
+     "doing": "sitting in the mine"
+    }
+   ],
+   "changes": [
+    "Once Sanuarach Mine is settled in the miners' favour, he and his men leave for the Silver-Blood Inn in Markarth and stay there."
+   ],
+   "role": "mercenary holding Sanuarach Mine",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Sanuarach Mine",
+     "how": "its target: Lash and Ragnar want him out, and you can convince him to leave; he can also have you deal with Ainethach instead"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Until an early stage of Sanuarach Mine is done, a package with a place type the extracts don't resolve holds him; he may first be met outside with the other mercenaries in the opening scene."
+    },
+    {
+     "field": "changes",
+     "why": "The move to the Silver-Blood Inn is gated on the quest's stage 100, which has no log text; 'in the miners' favour' is my reading of the objectives."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0622E5",
+    "KarthwastenIntroMercenaryPackage Skyrim.esm:08309B (GetStageDone Skyrim.esm:0622E8 5 == 0)",
+    "FreeformKarthwastenAGuardsLeaveMinePackage Skyrim.esm:063855 (GetStage >= 100)",
+    "KarthwastenAtarSitMinePackage Skyrim.esm:0830BA",
+    "DefaultSandboxEditorLocation512 Skyrim.esm:01B217",
+    "KarthwastenSilverFishGuards",
+    "FreeformKarthwastenA Skyrim.esm:0622E8 alias Atar, objectives 10-40"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:013B6A",
+   "name": "Ragnar",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "In Karthwasten, at the standoff over Sanuarach Mine, when you first arrive; later in the Miner's Barracks there.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Fenn's Gulch Mine, Karthwasten",
+     "doing": "mining (outside Sanuarach Mine instead, once that quest is settled)"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Miner's Barracks, Karthwasten",
+     "doing": "around home"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Miner's Barracks, Karthwasten",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Until the opening of Sanuarach Mine plays out, he stands at a spot in Karthwasten for the scene.",
+    "Once Sanuarach Mine reaches its later stages, he works outside Sanuarach Mine instead of Fenn's Gulch Mine."
+   ],
+   "role": "miner; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Sanuarach Mine",
+     "how": "gives it (with Lash gra-Dushnikh): get Atar and his men out of Sanuarach Mine"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "He fills aliases in seven more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:013B6A",
+    "KarthwastenIntroRagnarPackage Skyrim.esm:0830AA (GetStageDone Skyrim.esm:0622E8 5 == 0)",
+    "KarthwastenSandboxOutsideSauranachMine8x12Package Skyrim.esm:0830B2",
+    "KarthwastenSandboxFennGulchMine8x12Package Skyrim.esm:0830A9",
+    "TS_RagnarxLash18x2 AI Overhaul.esp:0215CD",
+    "DefaultSleepEditorLoc24x8 Skyrim.esm:01B210",
+    "DefaultSandboxHomeowner Skyrim.esm:031730",
+    "JobMinerFaction",
+    "FreeformKarthwastenA Skyrim.esm:0622E8 (giver others: Ragnar)",
+    "protected flag"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0133B1",
+   "name": "Pavo Attius",
+   "race": "Imperial",
+   "sex": "male",
+   "firstMeet": "At Left Hand Mine in the Reach: outside for an opening scene, then in the Left Hand Miner's Barracks.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "24 hours",
+     "where": "Miner's Barracks, Left Hand Mine",
+     "doing": "resting, until Kolskeggr Mine is cleared"
+    }
+   ],
+   "changes": [
+    "Once Kolskeggr Mine is finished, he moves to Kolskeggr Mine: works the mine 8 am to 8 pm, sleeps at Pavo's House midnight to 8 am, and is around Pavo's House otherwise.",
+    "Until an opening scene at Left Hand Mine is done, he stands at a spot outside the mine."
+   ],
+   "role": "miner; quest giver; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Kolskeggr Mine",
+     "how": "gives it: clear the Forsworn from Kolskeggr Mine and tell him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "He's placed in Pavo's House, but his top package (until a stage of an unnamed scene quest) sends him to a spot at Left Hand Mine, and his fallback is the Left Hand barracks."
+    },
+    {
+     "field": "marries",
+     "why": "He is a marriage candidate; what the proposal needs isn't in the extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He fills aliases in seven more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:0133B1",
+    "LeftHandMineIntroPavoScenePackage Skyrim.esm:0987A3 (GetStageDone Skyrim.esm:0987A4 100 == 0)",
+    "KolskeggrWorkMinePackage8x12 Skyrim.esm:01FD79 (GetStage Skyrim.esm:01FD72 == 100)",
+    "KolskeggrSleepPackage24x8 Skyrim.esm:0F9ADE",
+    "KolskeggrDefaultSandboxMinerHousePackage Skyrim.esm:01FD78",
+    "LefthandMineRestInBarracksPackage Skyrim.esm:0661AB",
+    "PotentialMarriageFaction",
+    "JobMinerFaction",
+    "FreeformKolskeggrA Skyrim.esm:01FD72 (giver)",
+    "placed ref Skyrim.esm:0199B6 in Pavo's House"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01365F",
+   "name": "Dravynea the Stoneweaver",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "In Kynesgrove: at the Braidwood Inn at breakfast and dinner, in Steamscorch Mine 10 am to 3 pm, around the village otherwise.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Braidwood Inn, Kynesgrove",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "3 hours",
+     "where": "around the campfire and inn, Kynesgrove",
+     "doing": "out in the village"
+    },
+    {
+     "from": "10 am",
+     "for": "5 hours",
+     "where": "Steamscorch Mine, Kynesgrove",
+     "doing": "studying"
+    },
+    {
+     "from": "3 pm",
+     "for": "2 hours",
+     "where": "around the campfire and inn, Kynesgrove",
+     "doing": "out in the village"
+    },
+    {
+     "from": "5 pm",
+     "for": "1 hour",
+     "where": "Braidwood Inn, Kynesgrove",
+     "doing": "dinner"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "around the campfire and inn, Kynesgrove",
+     "doing": "out in the village"
+    },
+    {
+     "from": "8 pm",
+     "for": "3 hours",
+     "where": "Steamscorch Mine, Kynesgrove",
+     "doing": "working"
+    },
+    {
+     "from": "11 pm",
+     "for": "3 hours",
+     "where": "around the campfire and inn, Kynesgrove",
+     "doing": "out in the village"
+    },
+    {
+     "from": "2 am",
+     "for": "4 hours",
+     "where": "Braidwood Inn, Kynesgrove",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "mage; sells magic goods; trainer; quest giver; can marry",
+   "sells": "spells and magic goods from the court wizard's list; trades 8 am to 8 pm",
+   "trains": "Alteration to 100 (expert)",
+   "joins": "",
+   "marries": "yes",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Dravynea's Frost Salts",
+     "how": "gives it: bring her some Frost Salts"
+    },
+    {
+     "quest": "A Blade in the Dark",
+     "how": "in its cast in Kynesgrove; her part isn't in the extracts"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Her buy/sell list and chest are ids I can't resolve; it's the same list Sybille Stentor uses, and she's in the court-wizard faction, but she has no spell-vendor faction."
+    },
+    {
+     "field": "marries",
+     "why": "She is a marriage candidate; what the proposal needs isn't in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "Her sleep package's spot is 'near where she's placed' (the Braidwood Inn)."
+    },
+    {
+     "field": "quests",
+     "why": "She fills aliases in five more quests with no name in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Only a class record id and an outfit id are in the extracts; neither resolves to a name, skills or a weapon here, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01365F",
+    "KynesgroveDravyneaEat6x1 Skyrim.esm:0E7732",
+    "KynesgroveDravyneaEat17x1 Skyrim.esm:0E7733",
+    "KynesgroveDravyneaWorkInMine20x3 Skyrim.esm:02E753",
+    "KynesgroveDravyneaSleep2x4 Skyrim.esm:0E7734",
+    "KynesgroveDravyneaStudy10x5 Skyrim.esm:02E752",
+    "KynesgroveHangAroundCampfireAndInn Skyrim.esm:01BCB4",
+    "JobCourtWizardFaction",
+    "JobMerchantFaction",
+    "ServicesKynesgroveDravynea",
+    "vendor 8-20",
+    "JobTrainerAlterationFaction; trainer Alteration Expert cap 100",
+    "PotentialMarriageFaction",
+    "FreeformKynesgroveA Skyrim.esm:069043 (giver)",
+    "MQ106 Skyrim.esm:032926 alias Dravynea",
+    "essential flag",
+    "protected flag"
+   ]
+  }
+ ]
+}
