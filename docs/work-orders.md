@@ -5063,7 +5063,7 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 - [ ] Mac wires them in as WO-154 does for quests (a Part on this order, when the reads land).
 
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
-Status: for Jeff on Mac: Part 1c first (Dave, 26 Oct, 20:21: back to the Mac)
+Status: queued (Mac; Part 1c first, then Parts 2 and 3. Dave approved the boards, 26 Oct, 20:25)
 
 ### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
 All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
@@ -5076,6 +5076,37 @@ All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session
 - [ ] Rebuild, all tests pass, commit `quests.json` with the code, push staging.
 
 New data the pages don't use yet (Part 2, after 1c): `quest_reads/ways/G*.json` (WAYS.md: each choice tied to its journal steps, for "N ways to finish it"; 228 quests, steps copied verbatim, 137 with an unsure; objective text keeps the game's `<Alias=…>` placeholders, which the page must fill or drop) and `quest_reads/lines/checked/L*.json` (LINES.md: 50 line reads, checked, 59 fixes; every line has an unsure, mostly level gates the records don't hold).
+
+### Part 2. The redesigned pages (Dave approved the boards, 26 Oct)
+Source of truth: the design canvas https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1, bottom rows: **Quest page: Lights Out!, second pass** (`QuestPageLightsOut`), **Person page: Mjoll the Lioness** (`PersonPage`), **Place page: Broken Oar Grotto** (`PlacePage`). Dave's decisions behind them are in `docs/data/quest-pages.md` ("Dave's answers") and below. Build from the data, never from the boards' sample text; a field with no data is left out or says "Not known yet", as the boards show.
+
+Quest page:
+- [ ] Title box with the frame and **no artwork**. Tags: the town or place the quest is grouped under, "Vanilla" for a base-game quest (not "Base game"), and "Changed by [mod]" linking to that mod's Nexus page in a new tab (name only, no description of the change). A mod with no Nexus id in `plugins_raw.json` shows its name unlinked; list them in the log for the PC.
+- [ ] A one- or two-line description under the title when the quest has one (`about`; none exist yet, so the slot is empty until Bob's pass fills them). Plain sentences per design rule 17.
+- [ ] No top bar. "Can I do it?" shows only when it's not a normal talk-to-start quest (radiant, starts by itself, cut, background). "What you need first" shows inside How to start, only when there is something.
+- [ ] Order: How to start, **N ways to finish it**, Where it takes you; then at the bottom, full width, What it closes and How sure we are. Right column: **Rewards** (the gold box, XP first with its "i") and People.
+- [ ] **N ways to finish it** from `quest_reads/ways/G*.json`: each way a row with its numbered orange box, title on the left, the `ends` line and its steps (numbered, grey) on the right, a gold "or" between ways. `shape: "endings"`: the shared steps once, then the endings. More than 8 steps on a way: show 6 and "Show all N steps". Fill or drop the game's `<Alias=…>` and `<Global=…>` placeholders in step text; never show them raw. A quest with no ways file shows its steps as before.
+- [ ] Every person named anywhere on the page links to their person page; every place links to its place page.
+- [ ] Icons from the set (Speech, the journal scroll, travel, the coin pouch, the skull, the sword by each danger line). Draw the new ones in `scripts/icons/` by the pixel rules: a signpost (ways), a bust (people), a wax seal (how sure), a clock (what changes it), a chest (boss chest).
+- [ ] How sure we are: the plain-word line, a tick per source (game files read and checked; UESP; players), the "Not sure yet" list in player words, Confirm it's accurate and Report a mistake.
+
+Line page:
+- [ ] From `quest_reads/lines/checked/L*.json`: what it is, how to get in, the quests in order (one line each, branches shown), what the whole line gives, what it closes, how sure. The main quest's line is named "The main quest".
+
+Person page (new, `/people/[id]`):
+- [ ] The same frame and title box: race and town tags, orange chips for what they are to you (Follower, Can marry, Gives quests, sells, trains), "Can't be killed" for essential.
+- [ ] Where to find them: the day strip (midnight to midnight, coloured by place, "Not known yet" hatched) and the list of times, places and what they're doing; What changes it; their quests with their part in each; What they offer; How sure. Until WO-155's people reads land, use only what `people.json` holds and show the rest as not known yet. Don't read AI packages by rule to fill it.
+
+Place page (new, `/places/[id]`):
+- [ ] From `places.json`: title box (type, hold, Vanilla, "a short walk from [town]"), Danger (a level bar 1 to 50 with who lives there and the boss on its own row, then each foe's levels and traps), Worth going for, Quests that bring you here, What points here (the book's own words), Rewards (XP for finding and clearing), Good to know, How sure. Places not in the index (town interiors) render no link yet.
+
+Nav and search:
+- [ ] Top menu: Builds, Quests, People, Places, Playthroughs.
+- [ ] The Quests page: the big lines first (main stories, guilds and factions, Daedric Princes, new lands, followers), then everything else grouped by town or place. Search by quest name, person or place, tolerant of misspellings ("Palonimo").
+- [ ] Screenshots at 1440 and 390 of Lights Out!, The Golden Claw, the Thieves Guild line, Mjoll the Lioness and Broken Oar Grotto, compared with the boards.
+
+### Part 3. "I can confirm this is accurate" (after Part 2)
+- [ ] Signed-in (Discord) players can confirm a quest, person or place page. A modal says it's recorded, with Close and Undo (board `QuestConfirm`). The page shows how many confirmed and their names. Signed out, the button reads "Sign in to confirm". New table through `npm run db:generate` and committed SQL; nothing destructive.
 
 **Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
 
