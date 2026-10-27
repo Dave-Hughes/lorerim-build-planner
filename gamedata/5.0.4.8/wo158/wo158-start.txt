@@ -1,6 +1,8 @@
 tm
 tfc 1
+tcl
 tai
 fw SClearSkySN
 set gamehour to 12
-sgtm 1
+sgtm 0
+fov 70.0

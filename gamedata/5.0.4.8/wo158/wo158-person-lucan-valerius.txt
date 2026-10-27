@@ -1,4 +1,7 @@
 ; Lucan Valerius
+player.setpos x 0
+player.setpos y 0
+player.setpos z 0
 prid JareeRaREF
 disable
 prid MjollRef
@@ -10,3 +13,7 @@ disable
 prid LucanValeriusREF
 enable
 moveto player
+player.setpos x 0
+player.setpos y -150.0
+player.setpos z 65.0
+player.setangle z 0
