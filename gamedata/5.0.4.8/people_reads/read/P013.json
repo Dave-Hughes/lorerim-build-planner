@@ -1,0 +1,1366 @@
+[
+ {
+  "id": "Meridia.esp:000D69",
+  "name": "Acolyte Una",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "In Meridia's Sanctum, the home of Meridia's Order.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "going about the sanctum"
+   },
+   {
+    "from": "8 pm",
+    "for": "2 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "sweeping"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "her bed in Meridia's Sanctum",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "While Finding Yourself is under way (from the step where you travel with her to Meridia's Shrine until it ends) she follows you.",
+   "At points in Infiltration, Fort Justice and A New Day she sits in place for the scene instead of keeping her day.",
+   "Once A New Day is finished she lives at Fort Justice, about the fort all day, until The Pocket Realm starts.",
+   "From The Pocket Realm until early in The Ritual she stands at a set spot in Fort Justice all day.",
+   "Once The Ritual reaches the step to speak with Fiya, she stays at Fort Justice for good: 8 am to 8 pm about the fort, 8 pm to midnight wherever she is, midnight to 8 am at a set spot in the fort."
+  ],
+  "role": "member of Meridia's Order; quest giver; trader after her quest",
+  "sells": "she trades with you once Finding Yourself is done; her stock isn't readable here",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Finding Yourself",
+    "how": "gives it: she doubts her place in the Order and asks you to come with her to Meridia's Shrine; at the end she offers her services as a trader"
+   },
+   {
+    "quest": "Infiltration",
+    "how": "a step in it (one of the Order at the sanctum)"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "a step in it (one of the Order who goes on to Fort Justice)"
+   },
+   {
+    "quest": "The Ritual",
+    "how": "a step in it (one of the Order at Fort Justice)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her buy list is the common one most followers and general traders share, and her chest isn't resolved to items; the quest's ending says she becomes a trader, but nothing in her vendor record gates it on the quest."
+   },
+   {
+    "field": "firstMeet",
+    "why": "Where Meridia's Sanctum's door is in the world isn't in the extracts; its door leads in from an exterior cell I can't name."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Meridia.esp:000D69",
+   "NMeridiaUnaSandbox01 Meridia.esp:0014F0",
+   "NMeridiaUnaSweep01 Meridia.esp:001536",
+   "NMeridiaUnaSleep01 Meridia.esp:001537",
+   "NMeridiaUna01FollowPlayer01 Meridia.esp:02CD6A",
+   "NMeridiaFortJusticeUna01/02/03 Meridia.esp:02861A/028B7D/028B7E",
+   "NMeridia08UnaStand01 Meridia.esp:01DE63",
+   "NMeridiaFortJusticeSandbox Meridia.esp:00CD42",
+   "NMeridiaUna01 Meridia.esp:02C7C9 (stage 60 log)",
+   "NMeridiaMerchantUnaFaction",
+   "vendor list 0006CB48 shared by 215 NPCs"
+  ]
+ },
+ {
+  "id": "Meridia.esp:000D6A",
+  "name": "Initiate Valrar",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "In Meridia's Sanctum, the home of Meridia's Order.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Meridia's Sanctum",
+    "doing": "going about the sanctum; no separate sleep package"
+   }
+  ],
+  "changes": [
+   "At points in Infiltration and Fort Justice he heals, works at the alchemy station or sits in place for the scene.",
+   "During A New Day he stands guard all day.",
+   "Once A New Day is finished he lives at Fort Justice, about the fort all day, until The Pocket Realm starts; from then until early in The Ritual he stands at a set spot in the fort.",
+   "Once The Ritual reaches the step to speak with Fiya: 6 am to 8 pm about Fort Justice, 8 pm to 10 pm near another spot in the fort, 10 pm to 6 am at a set spot in the fort.",
+   "If A Parting Gift ends with you talking him into leaving the Order for the one he loves, he moves to the Sleeping Giant Inn in Riverwood and stays there all day; this beats everything else.",
+   "If you tell him you killed his ex-partner, he asks you to keep away from him."
+  ],
+  "role": "member of Meridia's Order; quest giver; trader and healer after his quest",
+  "sells": "he trades with you after A Parting Gift ends well (his buy list is the one apothecaries use, so likely potions and ingredients); he also cures your diseases and gives you a free potion each day",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Parting Gift",
+    "how": "gives it: get his family ring back from his ex-partner Dario without harming him; three endings (he trades and heals, he shuns you, or he leaves the Order for Riverwood)"
+   },
+   {
+    "quest": "Fort Justice",
+    "how": "a step in it (one of the Order)"
+   },
+   {
+    "quest": "The Ritual",
+    "how": "a step in it (one of the Order at Fort Justice)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His chest isn't resolved to items; 'potions and ingredients' comes only from his buy list being the apothecaries' one. The quest says he trades after the good ending, but his vendor record isn't gated on it."
+   },
+   {
+    "field": "firstMeet",
+    "why": "Where Meridia's Sanctum's door is in the world isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Meridia.esp:000D6A",
+   "NMeridiaValrarSandbox01 Meridia.esp:0014F1",
+   "NMeridiaValrar01Sandbox Meridia.esp:08ECD8 (A Parting Gift stage 50)",
+   "NMeridiaFortJusticeValrar01/02/03 Meridia.esp:028B7F/028B80/028B81",
+   "NMeridia06ValrarGuard01 Meridia.esp:008F5E",
+   "NMeridiaValrar01 Meridia.esp:030946 stages 30/40/50",
+   "NMeridiaMerchantValrarFaction",
+   "vendor list 0009379F shared with apothecaries"
+  ]
+ },
+ {
+  "id": "Meridia.esp:030947",
+  "name": "Dario",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In Riverwood by day; at the Sleeping Giant Inn at night.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "around Riverwood",
+    "doing": "going about the village"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Sleeping Giant Inn, Riverwood",
+    "doing": "at the inn overnight"
+   }
+  ],
+  "changes": [
+   "If you kill him in A Parting Gift, Valrar turns you away."
+  ],
+  "role": "Valrar's ex-partner, who holds his family ring",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Parting Gift",
+    "how": "its target: he has Valrar's family ring, and Valrar asks that he not be harmed"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Meridia.esp:030947",
+   "NMeridiaValrar01DarioSandbox02 Meridia.esp:03198E",
+   "NMeridiaValrar01DarioSandbox01 Meridia.esp:03198D",
+   "NMeridiaValrar01 Meridia.esp:030946 alias Dario"
+  ]
+ },
+ {
+  "id": "Miasma.esp:000D96",
+  "name": "Haj-Xul",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "At The Retching Netch in Raven Rock, on Solstheim.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "staying near his spot in the tavern"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Miasma",
+    "how": "gives it: an An-Xileel Argonian hunting a House Telvanni criminal on Solstheim; he gives you his own bow at the end"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Miasma.esp:000D96",
+   "RE01HajSandboxPackage Miasma.esp:1C4BF8",
+   "RE01MiasmaQst Miasma.esp:001E23 (giver, stage 10 and 150 logs, reward Haj-Xul's Bow)"
+  ]
+ },
+ {
+  "id": "Miasma.esp:001E54",
+  "name": "Catches-Many-Fish",
+  "race": "Argonian",
+  "sex": "male",
+  "firstMeet": "Held prisoner in the Abandoned Mine near Raven Rock, during Miasma.",
+  "day": [],
+  "changes": [],
+  "role": "prisoner in a quest",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Miasma",
+    "how": "a step in it: the prisoner you check on and talk to in the reavers' mine"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no AI packages of his own; he stays where the quest places him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Miasma.esp:001E54",
+   "placed in Abandoned Mine (Miasma.esp:001CB7)",
+   "RE01MiasmaQst alias Slave, objective 50 'Check on the Prisoner'"
+  ]
+ },
+ {
+  "id": "Miasma.esp:001E20",
+  "name": "Zirath Ryon",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "Deep in the Ashbound Prison, beside Raven Rock, during Miasma.",
+  "day": [],
+  "changes": [
+   "Defeated in Miasma."
+  ],
+  "role": "quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Miasma",
+    "how": "its target: the House Telvanni criminal you find and defeat in the Ashbound Prison"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no AI packages of his own."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Miasma.esp:001E20",
+   "placed in Ashbound Depths cell (Ashbound Prison Miasma.esp:000EAD)",
+   "RE01MiasmaQst objectives 60-65, stage 70 log"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019FE8",
+  "name": "Golldir",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Outside Hillgrund's Tomb, in Eastmarch near Darkwater Crossing.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "near where he stands outside Hillgrund's Tomb",
+    "doing": "going about the spot"
+   }
+  ],
+  "changes": [
+   "While Ancestral Worship is under way his own package doesn't run; he goes with the quest.",
+   "In More to Say Find Golldir, Lynly Star-Sung in Ivarstead asks you to find him; the quest has an ending for his death."
+  ],
+  "role": "quest giver; potential follower",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Ancestral Worship",
+    "how": "gives it: help him protect his family tomb from the warlock Vals Veran"
+   },
+   {
+    "quest": "More to Say Find Golldir",
+    "how": "its target: the man Lynly asks you to find"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He is in the potential-follower faction, but the dialogue that recruits him and its condition aren't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor entry is the common follower trade list with no chest, so likely follower trading, not a shop."
+   },
+   {
+    "field": "firstMeet",
+    "why": "His placed reference is in an exterior cell named only by the quest's location, Hillgrund's Tomb."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:019FE8",
+   "dunHillgrundsTombSandboxEditorLocation512 Skyrim.esm:0A9595",
+   "dunHillgrundsTombQST Skyrim.esm:03E897",
+   "ACFFindGolldirQuest moretodo.esp:000815",
+   "PotentialFollowerFaction",
+   "placed ref Skyrim.esm:0A7360"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013480",
+  "name": "Faendal",
+  "race": "Bosmer",
+  "sex": "male",
+  "firstMeet": "At the lumber mill in Riverwood by day; at Faendal's House, Riverwood, at night.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "3 hours",
+    "where": "the woods near Riverwood",
+    "doing": "hunting (weather permitting)"
+   },
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "the lumber mill, Riverwood",
+    "doing": "working; on dry days he carries firewood 7-9 am, 11 am-noon and 3-5 pm, and eats at a stump noon to 1 pm"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "Riverwood",
+    "doing": "no package covers these hours"
+   },
+   {
+    "from": "10 pm",
+    "for": "1 hour",
+    "where": "Faendal's House, Riverwood",
+    "doing": "eating"
+   },
+   {
+    "from": "11 pm",
+    "for": "5 hours",
+    "where": "Faendal's House, Riverwood",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "After The Golden Claw, from 7 to 9 am he visits the Riverwood Trader when Camilla is there.",
+   "Loredas: 8 am to 8 pm at the Drunken Huntsman in Whiterun (unless the weather holds him).",
+   "Fredas: 7 am to 7 pm hunting near Riverwood.",
+   "His noon meal at the stump starts only once Before the Storm is well along."
+  ],
+  "role": "lumberjack; archery trainer; potential follower; quest giver",
+  "sells": "",
+  "trains": "Marksman (archery) to 75",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Lovely Letter",
+    "how": "gives it: carry his letter to Camilla (or play him and Sven against each other)"
+   },
+   {
+    "quest": "The Heart Will Go On",
+    "how": "gives it: another round of letters between him, Sven and Camilla"
+   },
+   {
+    "quest": "More to Say Find Angi",
+    "how": "gives it: tells you of a skilled but dangerous hunter who might train you in archery"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He is in the potential-follower faction, but the dialogue that recruits him and its condition aren't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "His vendor entry is the common follower trade list with no chest, so likely follower trading, not a shop."
+   },
+   {
+    "field": "day",
+    "why": "His hunting and tavern packages carry a weather condition (and the Fredas one two more conditions) I can't decode; the Camilla visit's 'Camilla is in the Riverwood Trader' reading is from an undecoded cell condition."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013480",
+   "FaendalWork7x12 Skyrim.esm:01E627",
+   "FaendalCarryFirewood7x2/11x2/15x2",
+   "FaendalEatStump12x1 Skyrim.esm:08D2B5",
+   "FaendalEatHome22x1 Skyrim.esm:036C1D",
+   "FaendalSleepHome23x5 Skyrim.esm:036C1E",
+   "FaendalHunt Skyrim.esm:01CB11",
+   "FaendalMS13VisitCamilla7x2 Skyrim.esm:01E600",
+   "AIOFaendalVisitDrunkenHuntsman8x12 AI Overhaul.esp:01C4BF",
+   "AIORWFaendalHuntingDay7x12 AI Overhaul.esp:001EBF",
+   "trainer Marksman Journeyman cap 75",
+   "FreeformRiverwood01 Skyrim.esm:074A83",
+   "ACFRiverwoodTheHeartWillGoOn",
+   "ACFMTSAngisCampDialogue moretodo.esp:00091B"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0411BA",
+  "name": "Valdr",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Wounded, at Moss Mother Cavern near Falkreath.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "Dead Man's Drink, Falkreath",
+    "doing": "at the inn"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Valdr's House, Falkreath",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Until his Moss Mother Cavern quest moves on he lies wounded where he is; through it he waits for you, follows you inside the cavern, and afterwards buries the bodies.",
+   "His Falkreath day (the inn and his house) only shows once that quest no longer holds him."
+  ],
+  "role": "hunter in a Moss Mother Cavern encounter; lives in Falkreath",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "More to Say Find Angi",
+    "how": "a step in it: he can tell you about the hunter Angi"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "The Moss Mother Cavern quest that drives most of his packages has no name in the extracts, and two more of his quests are unnamed."
+   },
+   {
+    "field": "firstMeet",
+    "why": "He has no placed cell in the extracts; Moss Mother Cavern comes from his packages naming that location."
+   },
+   {
+    "field": "day",
+    "why": "Whether the cavern quest ends on a stage that lets the Falkreath packages run isn't readable here."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0411BA",
+   "dunMossMotherValdrWounded Skyrim.esm:0B3207",
+   "dunMossMotherValdrFollowsPlayer Skyrim.esm:0B8CB6",
+   "dunMossMotherValdrBuriesBodies Skyrim.esm:0B994D",
+   "quest Skyrim.esm:0376EE (unnamed)",
+   "COTN_FalkreathValdrSandboxPackage COTN - Falkreath.esp:1BE75D",
+   "COTN_FalkreathValdrSleepPackage COTN - Falkreath.esp:1BE75C",
+   "Moss Mother Cavern Skyrim.esm:01927E"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01C187",
+  "name": "Birna",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At her shop, Birna's Oddments, in Winterhold.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "6 hours",
+    "where": "Birna's Oddments, Winterhold",
+    "doing": "minding the shop"
+   },
+   {
+    "from": "1 pm",
+    "for": "1 hour",
+    "where": "Birna's Oddments, Winterhold",
+    "doing": "lunch"
+   },
+   {
+    "from": "2 pm",
+    "for": "6 hours",
+    "where": "Birna's Oddments, Winterhold",
+    "doing": "minding the shop"
+   },
+   {
+    "from": "8 pm",
+    "for": "3 hours",
+    "where": "The Frozen Hearth, Winterhold",
+    "doing": "at the inn"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "Birna's Oddments, Winterhold",
+    "doing": "at home"
+   },
+   {
+    "from": "midnight",
+    "for": "7 hours",
+    "where": "Birna's Oddments, Winterhold",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "merchant; quest giver",
+  "sells": "a general trader's goods from her shop; open 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Bad Trade",
+    "how": "gives it: place a burial urn in Yngol Barrow"
+   },
+   {
+    "quest": "Birna's Shipment",
+    "how": "gives it: get back her shipment, stolen on the roads near Winterhold"
+   },
+   {
+    "quest": "Drowned Sorrows",
+    "how": "named in it, one of the Winterhold folk"
+   },
+   {
+    "quest": "Containment",
+    "how": "named in it, one of the Winterhold folk during the attack on the town"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her chest isn't resolved to items; her buy list is the one general traders share."
+   },
+   {
+    "field": "quests",
+    "why": "Her part in Drowned Sorrows and Containment isn't spelled out in the records; she fills six more unnamed quests."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01C187",
+   "WinterholdBirnaWanderHome Skyrim.esm:02A323",
+   "WinterholdBirnaLunch13x1 Skyrim.esm:05031E",
+   "WinterholdBirnaVisitInn20x3 Skyrim.esm:02A390",
+   "WinterholdBirnaSleep0x7 Skyrim.esm:02A322",
+   "vendor 8-20, list 0006CB48, chest 0009DA64",
+   "JobMerchantFaction",
+   "FreeformWinterholdA Skyrim.esm:062F54",
+   "ACFMTSFreeformWinterhold01 moretodo.esp:0008E1"
+  ]
+ },
+ {
+  "id": "MoreToDoSoulCairn.esp:000801",
+  "name": "Angarion the Bold",
+  "race": "Altmer",
+  "sex": "male",
+  "firstMeet": "Wandering in the Soul Cairn.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "his spot in the Soul Cairn",
+    "doing": "waiting"
+   }
+  ],
+  "changes": [
+   "Through Grief he moves to each of his memories in turn (Denial, Anger, Bargaining, Depression) as you go into each Memory Shard.",
+   "From the last step of Grief he goes to another set spot in the Soul Cairn."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Grief",
+    "how": "gives it: follow him through four memories of how he died; he gives you Angarion's Mace"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed spot is in the Soul Cairn's open world with no named place."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "MoreToDoSoulCairn.esp:000801",
+   "MDSCAngarionBeforeQuestPackage MoreToDoSoulCairn.esp:00092B",
+   "MDSCAngarionQuest01-05Package MoreToDoSoulCairn.esp:00092C-000930",
+   "MDSCAngarionQuest MoreToDoSoulCairn.esp:0008F7"
+  ]
+ },
+ {
+  "id": "MoreToDoSoulCairn.esp:00093B",
+  "name": "Glendora Messenia",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "In the Soul Cairn; her placed spot is at the Chapel of Love.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "where she is placed in the Soul Cairn",
+    "doing": "going about the spot"
+   }
+  ],
+  "changes": [
+   "Gone after Chapel of Love: she tries to escape through the chapel's portal and an Ideal Master takes her."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Chapel of Love",
+    "how": "gives it: a lost soul who asks you to find the Chapel of Love in the Soul Cairn"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The records place her at the Chapel of Love, yet the quest has her ask you to find it and then be 'already here'; where you first meet her is unclear."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "MoreToDoSoulCairn.esp:00093B",
+   "MDSCGlendoraSandboxPackage01/02 MoreToDoSoulCairn.esp:0009E8/0009E9",
+   "MDSCChapelofLoveQuest MoreToDoSoulCairn.esp:0009E7 stages 10, 20, 200"
+  ]
+ },
+ {
+  "id": "MoreToDoSoulCairn.esp:00093A",
+  "name": "Gavo Antonius",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In the Soul Cairn.",
+  "day": [],
+  "changes": [
+   "Turns on you in Black Soul Cairn Gem once you give him back his soul gem; after you defeat him an Ideal Master takes him."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Black Soul Cairn Gem",
+    "how": "gives it, then becomes its target: find his black soul gem, then fight him when he tries to take your body"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no AI packages of his own."
+   },
+   {
+    "field": "firstMeet",
+    "why": "His placed spot is in the Soul Cairn's open world with no named place."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "MoreToDoSoulCairn.esp:00093A",
+   "MDSCSoulGemQuest MoreToDoSoulCairn.esp:000A00 stages 10-200"
+  ]
+ },
+ {
+  "id": "NightmarePlane.esp:0348E1",
+  "name": "Ralforn",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At Green-Tip Cabin.",
+  "day": [],
+  "changes": [],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Sleepwalking Into A Nightmare",
+    "how": "gives it: his wife Gretska has vanished overnight and he tells you her usual spots"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no AI packages of his own."
+   },
+   {
+    "field": "firstMeet",
+    "why": "Where Green-Tip Cabin is in Skyrim isn't in the extracts; its door opens from an exterior cell I can't name."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "NightmarePlane.esp:0348E1",
+   "placed in Green-Tip Cabin NightmarePlane.esp:03484F",
+   "aaaMBQuest NightmarePlane.esp:0348DA stage 10, 30, 330"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01D4B5",
+  "name": "Commander Maro",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "At the Penitus Oculatus Outpost in Dragon Bridge.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Penitus Oculatus Outpost, Dragon Bridge",
+    "doing": "staying at his post"
+   }
+  ],
+  "changes": [
+   "In Hail Sithis! you have the option to kill him.",
+   "If you kill Astrid instead of joining the Dark Brotherhood, he asks you to wipe out the Sanctuary (Destroy the Dark Brotherhood!)."
+  ],
+  "role": "commander of the Penitus Oculatus; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Destroy the Dark Brotherhood!",
+    "how": "gives it: kill every assassin in the Sanctuary"
+   },
+   {
+    "quest": "To Kill an Empire",
+    "how": "a step in it: you report to him"
+   },
+   {
+    "quest": "Hail Sithis!",
+    "how": "a step in it: optional kill"
+   },
+   {
+    "quest": "Breaching Security",
+    "how": "named in it"
+   },
+   {
+    "quest": "Penitus Oculatus",
+    "how": "gives assignments once you've joined"
+   },
+   {
+    "quest": "Unfinished Business",
+    "how": "gives it: track down an escaped Dark Brotherhood assassin at Moorside Inn"
+   },
+   {
+    "quest": "Bad Blood",
+    "how": "gives it: eliminate Babette"
+   },
+   {
+    "quest": "Fool's Errand",
+    "how": "gives it: eliminate Cicero"
+   },
+   {
+    "quest": "A Nest of Vipers",
+    "how": "gives it: clear out the Dawnstar Sanctuary"
+   },
+   {
+    "quest": "Loose Ends",
+    "how": "gives it: eliminate Amaund Motierre at Volunruud"
+   },
+   {
+    "quest": "House Cleaning",
+    "how": "gives it: eliminate rogue Penitus Oculatus agents"
+   },
+   {
+    "quest": "Paperwork",
+    "how": "gives it: obtain Thalmor documents"
+   },
+   {
+    "quest": "Inquisition",
+    "how": "gives it: eliminate a traitorous noble"
+   },
+   {
+    "quest": "Troubleshoot",
+    "how": "gives it: eliminate a Thalmor agent"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "quests",
+    "why": "How you join the Penitus Oculatus isn't in the records I can read; a 'Legion requirement' setting suggests it needs something from the Legion."
+   },
+   {
+    "field": "canDie",
+    "why": "He is flagged essential, yet Hail Sithis! offers to kill him; the quest presumably lifts the flag."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01D4B5",
+   "DefaultStayAtEditorLocation Skyrim.esm:025BFC",
+   "DBDestroy Skyrim.esm:0934FB",
+   "DB09 Skyrim.esm:01EA58",
+   "DB11 Skyrim.esm:01EA59 objective 40",
+   "zzzPO00 Penitus_Oculatus.esp:0012D1",
+   "zzzPOLegionRequirementMet Penitus_Oculatus.esp:117F95",
+   "zzzPO01-05, zzzPORadiant01-05"
+  ]
+ },
+ {
+  "id": "Penitus_Oculatus.esp:00A9C2",
+  "name": "Dark Brotherhood Defector",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "At Moorside Inn in Morthal, during Unfinished Business.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "16 hours",
+    "where": "Penitus Oculatus Outpost, Dragon Bridge",
+    "doing": "going about the outpost"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "Penitus Oculatus Outpost, Dragon Bridge",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "You either kill her at Moorside Inn or escort her to the Penitus Oculatus Outpost, where she gives you the whereabouts of Cicero and Babette.",
+   "Once A Nest of Vipers starts she lives in the Dawnstar Sanctuary: 6 am to 10 pm about it, sleeps there 10 pm to 6 am."
+  ],
+  "role": "quest target; may follow you",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Unfinished Business",
+    "how": "its target: kill her, or escort her to the outpost in exchange for intel"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her own outpost packages have no conditions; what holds her at Moorside Inn before the escort (likely the quest itself) isn't in the extracts."
+   },
+   {
+    "field": "joins",
+    "why": "She is flagged as a follower but isn't in the potential-follower faction; how she joins, if she does, isn't in the records."
+   },
+   {
+    "field": "sells",
+    "why": "Her vendor entry is the common follower trade list with no chest, so likely follower trading."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Penitus_Oculatus.esp:00A9C2",
+   "placed in Moorside Inn",
+   "DBPenitusOutpostAgentSandbox Skyrim.esm:0D13E4",
+   "DBPenitusOutpostAgentSleep Skyrim.esm:0D13E5",
+   "zzzPOInformantDawnstarSandbox/Sleep Penitus_Oculatus.esp:015C41/015C42",
+   "zzzPO01Informant Penitus_Oculatus.esp:00A9C4"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013478",
+  "name": "Delphine",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "At the Sleeping Giant Inn in Riverwood, where she is the innkeeper.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "Sleeping Giant Inn, Riverwood",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Sleeping Giant Inn, Riverwood",
+    "doing": "eating"
+   },
+   {
+    "from": "7 am",
+    "for": "11 hours",
+    "where": "Sleeping Giant Inn, Riverwood",
+    "doing": "running the inn"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Sleeping Giant Inn, Riverwood",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Sleeping Giant Inn, Riverwood",
+    "doing": "running the inn"
+   }
+  ],
+  "changes": [
+   "Early on she keeps to her room at the inn until one of her (unnamed) setup quests moves on.",
+   "Once A Blade in the Dark starts she stays about the inn all day; if she is away from Riverwood she heads back.",
+   "Once The Throat of the World starts she lives in Sky Haven Temple in the Reach; from its second step she sleeps there midnight to 6 am.",
+   "At Sky Haven Temple, when it isn't raining or snowing, she practises outside by Karthspire: archery 8-10 am and 4-6 pm, swordplay 10 am-noon and 2-4 pm.",
+   "During Paarthurnax she and Esbern refuse to help further until you kill Paarthurnax."
+  ],
+  "role": "innkeeper of the Sleeping Giant Inn (rents rooms); one of the last Blades; main quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Blade in the Dark",
+    "how": "gives it"
+   },
+   {
+    "quest": "Diplomatic Immunity",
+    "how": "gives it"
+   },
+   {
+    "quest": "A Cornered Rat",
+    "how": "a step in it"
+   },
+   {
+    "quest": "Alduin's Wall",
+    "how": "gives it"
+   },
+   {
+    "quest": "Elder Knowledge",
+    "how": "a step in it: one of those who can send you after the Elder Scroll"
+   },
+   {
+    "quest": "Paarthurnax",
+    "how": "a step in it: she demands Paarthurnax's death"
+   },
+   {
+    "quest": "Rebuilding the Blades",
+    "how": "gives it: bring followers to her to become Blades"
+   },
+   {
+    "quest": "A Forgotten Blade",
+    "how": "a step in it: ask her about Fultheim"
+   },
+   {
+    "quest": "Season Unending",
+    "how": "named in it, at the peace council"
+   },
+   {
+    "quest": "Bleak Falls Barrow",
+    "how": "named in it"
+   },
+   {
+    "quest": "The Way of the Voice",
+    "how": "named in it"
+   },
+   {
+    "quest": "Dragon Rising",
+    "how": "named in it"
+   },
+   {
+    "quest": "The Golden Claw",
+    "how": "has a line early in it"
+   },
+   {
+    "quest": "Lucien Main Quest",
+    "how": "named in it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "Her Karthspire practice packages are gated only on a reference being enabled and the weather, not on a quest; that they start with Sky Haven Temple is my reading."
+   },
+   {
+    "field": "quests",
+    "why": "She fills a dozen more unnamed quests."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013478",
+   "DelphineInnServices6x18 Skyrim.esm:02C746",
+   "DelphineSleep0x6 Skyrim.esm:02C812",
+   "DefaultEatEditorLoc6x1/18x1NoWeapons",
+   "DelphineStartInRoom Skyrim.esm:0BD79D (quest Skyrim.esm:045486 stage 0)",
+   "MQDelphineSandboxInn Skyrim.esm:03D143",
+   "MQDelphineReturnToRiverwood Skyrim.esm:0996E0",
+   "MQDelphineSandboxSkyHavenTemple Skyrim.esm:0428DD",
+   "MQSkyHavenDelphineSleep0x6 Skyrim.esm:108DA4",
+   "MQSkyHavenTemple Archery/Melee practice Skyrim.esm:108DA2/108DA3/108DBB/108DBF",
+   "JobRentRoomFaction",
+   "MQ106 stage 30 log 'the innkeeper in Riverwood'"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0D4FDE",
+  "name": "Rune",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In the Cistern, the Thieves Guild's headquarters under the Ragged Flagon in Riften.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "the Cistern, Riften",
+    "doing": "going about the guild's headquarters"
+   },
+   {
+    "from": "10 pm",
+    "for": "4 hours",
+    "where": "the Cistern, Riften",
+    "doing": "training where he stands"
+   },
+   {
+    "from": "2 am",
+    "for": "6 hours",
+    "where": "his bed in the Cistern",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "Thieves Guild member; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rune's Scope",
+    "how": "gives it: search the coast near Solitude for a clue to his past"
+   },
+   {
+    "quest": "The Pursuit",
+    "how": "named in it, one of the guild"
+   },
+   {
+    "quest": "Reparations",
+    "how": "named in it, one of the guild"
+   },
+   {
+    "quest": "Under New Management",
+    "how": "named in it, at your installation as Guild Master"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "His daytime package is the guild's shared one, with many conditions I can't decode (some tied to A Cornered Rat or Taking Care of Business being done)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0D4FDE",
+   "ThievesGuildSandboxMultiPackage0x0 Skyrim.esm:0B780F",
+   "ThievesGuildTrainingMeleeRoom22x4 Skyrim.esm:103582",
+   "ThievesGuildRuneSleep2x6 Skyrim.esm:1032B2",
+   "Rune01 Revealing Rune.esp:000D62"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01326A",
+  "name": "Elisif the Fair",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "In the Blue Palace, Solitude.",
+  "day": [
+   {
+    "from": "midnight",
+    "for": "6 hours",
+    "where": "her bed in the Blue Palace",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "the court, Blue Palace",
+    "doing": "holding court"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Blue Palace",
+    "doing": "breakfast"
+   },
+   {
+    "from": "8 am",
+    "for": "4 hours",
+    "where": "the court, Blue Palace",
+    "doing": "holding court"
+   },
+   {
+    "from": "noon",
+    "for": "1 hour",
+    "where": "Blue Palace",
+    "doing": "lunch"
+   },
+   {
+    "from": "1 pm",
+    "for": "9 hours",
+    "where": "the court, Blue Palace",
+    "doing": "holding court"
+   },
+   {
+    "from": "10 pm",
+    "for": "2 hours",
+    "where": "Blue Palace",
+    "doing": "going about the palace"
+   }
+  ],
+  "changes": [
+   "Boethiah's Calling and Boethiah's Bidding send you to assassinate the Jarl of Solitude."
+  ],
+  "role": "Jarl of Solitude; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Elisif's Tribute",
+    "how": "gives it: take Torygg's War Horn to the Shrine of Talos"
+   },
+   {
+    "quest": "Solitude in Company",
+    "how": "a step in it: gives you and Serana a job retrieving Torygg's stolen scroll, and pays 500 septims each"
+   },
+   {
+    "quest": "Fit for a Jarl",
+    "how": "its target: speak to her wearing Taarie's outfit"
+   },
+   {
+    "quest": "Boethiah's Bidding",
+    "how": "its target: assassinate the Jarl of Solitude"
+   },
+   {
+    "quest": "Boethiah's Calling",
+    "how": "its target (slay the Jarl of Solitude)"
+   },
+   {
+    "quest": "Tending the Flames",
+    "how": "a step in it: the court hears Olaf's Verse"
+   },
+   {
+    "quest": "The Man Who Cried Wolf",
+    "how": "a step in it: at court when Dragon Bridge appeals for help"
+   },
+   {
+    "quest": "Bound Until Death",
+    "how": "named in it, at the wedding"
+   },
+   {
+    "quest": "A Healing Wedding",
+    "how": "named in it, at the wedding"
+   },
+   {
+    "quest": "Season Unending",
+    "how": "named in it, at the peace council"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "Whether the Civil War changes who rules Solitude isn't in her records."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01326A",
+   "SolitudePalaceCourt6x16 Skyrim.esm:034BED",
+   "DefaultEatEditorLoc7x1/12x1",
+   "ElisifSleep24x8 Skyrim.esm:10C1CD",
+   "DefaultSandboxEditorLocation512",
+   "JobJarlFaction",
+   "MarriageExcludedFaction",
+   "SolitudeFreeform07 Skyrim.esm:0E77BA",
+   "SDE_R002 SeranaDialogueExpansion - Romance.esp:00000D"
+  ]
+ },
+ {
+  "id": "SeranaDialogueExpansion - Romance.esp:0000A2",
+  "name": "Solitude Guard",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "At Kilkreath Ruins near Solitude, with two bandits, during Solitude in Company.",
+  "day": [],
+  "changes": [
+   "You fight him and the bandits in Solitude in Company."
+  ],
+  "role": "corrupt guard; quest target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Solitude in Company",
+    "how": "its target: the guard who stole Torygg's scroll"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "He has no AI packages and no placed cell in the extracts; Kilkreath comes from the quest's log."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon, so I can't say how they fight."
+   }
+  ],
+  "evidence": [
+   "SeranaDialogueExpansion - Romance.esp:0000A2",
+   "SDE_BanditFaction",
+   "SDE_R002 stages 41, 50"
+  ]
+ }
+]
