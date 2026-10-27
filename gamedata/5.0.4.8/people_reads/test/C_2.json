@@ -1,0 +1,674 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:0133AC",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw places him in Cidhna Mine (Markarth); the giver extract puts his No One Escapes Cidhna Mine alias in the Cidhna Mine cell; his three top packages need MS02 stage 100 done, so before the escape nothing moves him"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "below the three escape-gated packages: CidhnaMineSleepPackage 22:00 for 360 min near his linked ref, then CidhnaMineSandboxPackage (no hours) near his editor spot; so 10 pm to 4 am asleep, 4 am to 10 pm about the mine"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "package order is right (Druadach cave package needs stage 100 and being in the Druadach Redoubt location; the run-outside one needs stage 100, not in that location and not in worldspace 93553; the run-to-stables one needs stage 100 and that worldspace). But the third line names the add-on by its mod name in player text, and 'Imperial Reach / Stormcloak Reach' is read from two quest titles on the Druadach Redoubt place record only, which say nothing about who holds the Reach; reworded"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "factions TownCidhnaMinePrisonerFaction and DruadachRedoubtFaction; no job, vendor or trainer data"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no follower factions"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, not in PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare record ids in the schedules extract (class Skyrim.esm:043BCD, outfit Skyrim.esm:0A1982); nothing decodes them. The class's skill weights or the outfit's items would settle it"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "No One Escapes Cidhna Mine: alias 'Odvan', but no objective or stage names him (the giver is Uraccen, then Borkul); what the records show is his packages moving him after stage 100 ('I have helped Madanach escape'), so 'changed by it', not 'a step in it'. The two 'Madanach and friends fighting Markarth guards' quests aren't in the quest records at all (no journal text); they're named only on the Druadach Redoubt place record, so they're encounters, not quests a player follows; moved to changes"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01337E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw cell Haelga's Bunkhouse, Riften; by day his only package is the all-day RiftenUngrienWorkMeadery (no location) with the meadery lunch package, so the meadery by day, the bunkhouse at night"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: Sleep1x6 in Haelga's Bunkhouse (1 to 7 am), Bunkhouse22x3 (10 pm to 1 am), meadery Lunch12x1, Breakfast6x1 (shadowed by the sleep package until 7), then the all-day work package; matches the reader"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "none of his five packages carries a condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction rank 0 and ServicesRiftenBlackBriarMeadery rank 0, vendor hours 0 to 24"
+    },
+    "sells": {
+     "verdict": "unsure",
+     "note": "he is a real vendor (merchant faction, vendor list and chest set), but the buy/sell list and vendor chest ids aren't resolved to items in any extract; items_raw has no vendor link"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare record ids in the schedules extract (class Skyrim.esm:013256, outfit Skyrim.esm:0958AA); nothing decodes them. The class's skill weights or the outfit's items would settle it"
+    },
+    "quests": {
+     "verdict": "unsure",
+     "note": "his three aliases (UngrienAlias in Skyrim.esm:0649A2, 046B33, 046B2F) match no quest in quests_raw or quest_givers_raw; their names and journal text would settle it"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01402E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw cell Calcelmo's Laboratory, but every package with a place points into the Understone Keep cell (eat packages, assistant package, sandbox) and none is gated, so the keep is where he's found"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: AIOMaAicantarShopThurs13x3 (day-of-week 10 = Tuesday and Thursday, 1 pm for 180 min, the Hag's Cure, only while Hard Answers isn't running), Eat20x2, Eat6x2, then the all-day assistant package (only while not in JobCourtWizardFaction, which he isn't: rank -1); no sleep package"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "the Hag's Cure trip carries GetQuestRunning Hard Answers == 0; the assistant package needs him out of JobCourtWizardFaction, below it AicantarDefaultSandboxPackage in Understone Keep takes over"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "assistant package name and MarkarthWizardFaction; JobCourtWizardFaction and JobMerchantFaction both at rank -1"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction rank -1, so he doesn't trade now despite carrying the castle wizard's vendor data; left blank with the reason in unsure"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare record ids in the schedules extract (class Skyrim.esm:01CE14); nothing decodes them. The class's skill weights or the outfit's items would settle it"
+    },
+    "quests": {
+     "verdict": "unsure",
+     "note": "aliases in Skyrim.esm:026047 and 026043 match no quest in quests_raw or quest_givers_raw; the only other named record is a Calcelmo and Aicantar dialogue scene, a helper"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01336B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "people_raw cell Aerin's House, Riften; no quest-gated package at the top; her daytime packages are the market (9 am), Bee and Barb (noon) and the patrol (6 pm)"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order: NightimePatrol18x6 (IsRaining == 0, within 2048 of the market spot), BeeandBarb12x6, Market9x3 (A Chance Arrangement not at stage 10 or 20, IsRaining == 0), EatBreakfast8x1 in Aerin's House, Sleep2x6 near her editor spot; midnight to 2 am and rainy hours have no package, as the reader flagged"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "rain conditions on the market and patrol packages; A Chance Arrangement stages 10 ('Steal Madesi's Ring') and 20 ('Plant Madesi's Ring') block the market package; Aerin the Man stage 60 'Aerin has won Mjoll's love', stages 75/80 cover her or Aerin dying"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction, PotentialMarriageFaction, follower and marriageable true; giver of Grimsever's Return and Aerin the Man"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor data present but no merchant or services faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "unsure",
+     "note": "PotentialFollowerFaction and follower true, but no extract carries the conditions on her follower dialogue; those dialogue conditions would settle it"
+    },
+    "marries": {
+     "verdict": "unsure",
+     "note": "PotentialMarriageFaction and marriageable true, but the marriage dialogue's conditions aren't extracted"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare record ids in the schedules extract (class Skyrim.esm:01CE15, outfit Skyrim.esm:0FDEAC); nothing decodes them. The class's skill weights or the outfit's items would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Grimsever's Return: giver Mjoll by GetIsID dialogue, first objective 'Locate Grimsever'; Aerin the Man: giver alias Mjoll below stage 61 (Aerin after); the other base aliases match no named quest, the Inigo and Serana entries are scene trackers"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true on her record; noted in unsure that Aerin the Man has a 'Mjoll is dead' stage, so that add-on may lift it"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018FC5",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "top package DLC2SkaalPillarBuildPKG (near linked ref, 1500, GetDisabled == 0) shared by 8 pillar builders; the Wind Stone place record carries 'every moment is spent building some strange shrine around the Wind Stone' and 'where my people work against their will'; placed in the Greathall; the reader's unsure on the condition holds"
+    },
+    "day": {
+     "verdict": "unsure",
+     "note": "DefaultSandboxEditorLocation20x4 (8 pm to midnight, near her Greathall spot) then DLC2SVFanariSleepGreathall with hour any and duration 0; read literally she's in bed whenever the sandbox doesn't run, which the reader flagged; how the engine treats a sleep package with no hours would settle it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "The Fate of the Skaal stage 50 'disrupt the activity at the Wind Stone, where the Skaal are working against their will', stage 60 'The people of the Skaal have been freed'"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC2SkaalVillageCitizenFaction, Favor104QuestGiverFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class and outfit are bare record ids in the schedules extract (class Skyrim.esm:017008, outfit from a Skaal coat add-on); nothing decodes them. The class's skill weights or the outfit's items would settle it"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Kill the Bandit Leader (Skaal Village version): giver Fanari by GetIsID dialogue, starts on a change-location event; the base version lists her among its other givers; The Fate of the Skaal alias Fanari. The Gardener of Men also has an alias 'SkaalCitizenFanari', but it isn't in her alias list and no stage says what happens to her; added to unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:0133AC",
+   "name": "Odvan",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "Cidhna Mine, the prison under Markarth, among the Forsworn prisoners",
+   "day": [
+    {
+     "from": "4 am",
+     "for": "18 hours",
+     "where": "Cidhna Mine, Markarth",
+     "doing": "wandering the mine near his usual spot"
+    },
+    {
+     "from": "10 pm",
+     "for": "6 hours",
+     "where": "Cidhna Mine, Markarth",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Once Madanach's escape is done (No One Escapes Cidhna Mine, the ending where you help Madanach out), he leaves the mine. In Druadach Redoubt he stays inside the cave. In Markarth he runs for the city entrance by the Markarth Stables. Anywhere else he runs for the outside of Druadach Redoubt (a short walk from Karthwasten, in the Reach)",
+    "If you kill Madanach instead, the escape never happens, and nothing in his schedule moves him out of Cidhna Mine",
+    "After the escape he can turn up among Madanach's band fighting Markarth guards in a roadside encounter (an Imperial and a Stormcloak version exist); what starts it isn't in the records"
+   ],
+   "role": "Forsworn prisoner in Cidhna Mine; part of Madanach's band",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "No One Escapes Cidhna Mine",
+     "how": "changed by it: one of the prisoners in the mine; he leaves with Madanach's Forsworn if you help Madanach escape"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The fighting style comes from the class and gear records, and those aren't decoded in the extracts; only a record id is listed"
+    },
+    {
+     "field": "quests",
+     "why": "Two more quests list him by alias, but the extracts give neither their names nor what they do, so they are left out"
+    },
+    {
+     "field": "changes",
+     "why": "Whether he turns hostile or is killed on the Kill Madanach ending would be in quest fragments, and those aren't in the extracts. Only his packages were read"
+    },
+    {
+     "field": "changes",
+     "why": "The two encounters with Madanach's band are named only on the Druadach Redoubt place record; which version runs and what starts them isn't in the records"
+    }
+   ],
+   "evidence": [
+    "MS02ForswornDruadachRedoubtPackage Skyrim.esm:0E2511 (GetStageDone MS02 Skyrim.esm:040A5E 100, GetInCurrentLoc Skyrim.esm:01916F)",
+    "MS02ForswornRunDruadachExterior Skyrim.esm:10F79C (fn310 GetInWorldspace 93553 == 0)",
+    "MS02ForswornRuntoMarkarthEntrance Skyrim.esm:10F79D (fn310 GetInWorldspace 93553 == 1)",
+    "CidhnaMineSleepPackage Skyrim.esm:0D9230 (22:00 x 360 min, near linked ref)",
+    "CidhnaMineSandboxPackage Skyrim.esm:0DC53A (near editor location, 512)",
+    "people_raw cell Cidhna Mine, inTown Markarth",
+    "factions TownCidhnaMinePrisonerFaction, DruadachRedoubtFaction",
+    "MS02 stage 100 log (helped Madanach escape), stage 250 (pardon for killing Madanach)",
+    "quest aliases: Skyrim.esm:054880, Skyrim.esm:043A12 (unnamed); Extended Encounters.esp:0000B6, :0000B8; DialogueCidhnaMine Skyrim.esm:0362AC (dialogue helper, not listed)",
+    "class Skyrim.esm:043BCD (undecoded)",
+    "Extended Encounters.esp:0000B6, :0000B8 named only in places_raw Druadach Redoubt quests; absent from quests_raw"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01337E",
+   "name": "Ungrien",
+   "race": "Bosmer",
+   "sex": "male",
+   "firstMeet": "the Black-Briar Meadery in Riften, by day; he lives in Haelga's Bunkhouse",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "5 hours",
+     "where": "the Black-Briar Meadery, Riften",
+     "doing": "working"
+    },
+    {
+     "from": "12 pm",
+     "for": "1 hour",
+     "where": "the Black-Briar Meadery, Riften",
+     "doing": "eating lunch"
+    },
+    {
+     "from": "1 pm",
+     "for": "9 hours",
+     "where": "the Black-Briar Meadery, Riften",
+     "doing": "working"
+    },
+    {
+     "from": "10 pm",
+     "for": "3 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "relaxing"
+    },
+    {
+     "from": "1 am",
+     "for": "6 hours",
+     "where": "Haelga's Bunkhouse, Riften",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Nothing in his schedule changes for a quest or a war outcome"
+   ],
+   "role": "merchant for the Black-Briar Meadery; works at the meadery",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "He is a merchant, and the meadery's services faction holds the vendor data (open all day). But his buy/sell list and his vendor chest aren't resolved to items in the extracts"
+    },
+    {
+     "field": "day",
+     "why": "His work package names no place. 'At the meadery' comes from the package's name, his Black-Briar Meadery factions and his lunch package, which is at the meadery"
+    },
+    {
+     "field": "day",
+     "why": "He also has a 6 am breakfast package in the bunkhouse. His sleep package sits above it and runs until 7 am, so the breakfast should never come up"
+    },
+    {
+     "field": "quests",
+     "why": "Three quests list him by alias, but the extracts give neither their names nor what they do"
+    },
+    {
+     "field": "fightsWith",
+     "why": "The fighting style comes from the class and gear records, and those aren't decoded in the extracts; only a record id is listed"
+    }
+   ],
+   "evidence": [
+    "RiftenUngrienSleep1x6 Skyrim.esm:0445C8 (in cell Haelga's Bunkhouse)",
+    "RiftenUngrienBunkhouse22x3 Skyrim.esm:04464F",
+    "RiftenBBMeaderyWorkerLunch12x1 Skyrim.esm:0445C3 (Black-Briar Meadery)",
+    "RiftenUngrienEatBreakfast6x1 Skyrim.esm:04464D",
+    "RiftenUngrienWorkMeadery0x0 Skyrim.esm:04464E (location null)",
+    "factions JobMerchantFaction, ServicesRiftenBlackBriarMeadery, RiftenBlackBriarMeaderyFaction, RiftenHaelgasBunkhouseFaction",
+    "vendor vendRaw f0140900, vencRaw bc310a00, hours 0-24",
+    "people_raw cell Haelga's Bunkhouse (JK's Haelga's Bunkhouse.esp)",
+    "quest aliases: Skyrim.esm:0649A2, :046B33, :046B2F (unnamed)",
+    "class Skyrim.esm:013256 (undecoded)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01402E",
+   "name": "Aicantar",
+   "race": "Altmer",
+   "sex": "male",
+   "firstMeet": "Understone Keep, Markarth, where he assists the court wizard (he's placed in Calcelmo's Laboratory)",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "eating"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "assisting the court wizard"
+    },
+    {
+     "from": "1 pm",
+     "for": "3 hours",
+     "where": "the Hag's Cure, Markarth",
+     "doing": "shopping, Tirdas and Turdas (Tuesday and Thursday) only; this takes over from his keep routine for those hours"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "eating"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "Understone Keep, Markarth",
+     "doing": "assisting the court wizard (he has no sleep package)"
+    }
+   ],
+   "changes": [
+    "While Hard Answers is running, he skips the Tirdas and Turdas trip to the Hag's Cure",
+    "If he ever becomes the court wizard himself, he stops his assistant routine and wanders a spot in Understone Keep instead. His records hold him ready to take the post, but not what gives it to him"
+   ],
+   "role": "the court wizard's assistant in Understone Keep",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "He carries the castle wizard's vendor data, but he is held out of the merchant and court wizard factions (rank -1). So he doesn't trade unless something puts him in them, and the extracts don't say what does. The vendor list isn't resolved to items either"
+    },
+    {
+     "field": "changes",
+     "why": "The court wizard takeover is read from his faction ranks and his package conditions. What triggers it isn't in the extracts"
+    },
+    {
+     "field": "day",
+     "why": "No sleep package: from 10 pm to 6 am his all-day assistant package still applies, so he should stay up in the keep"
+    },
+    {
+     "field": "quests",
+     "why": "Two quests list him by alias, but the extracts give neither their names nor what they do"
+    },
+    {
+     "field": "fightsWith",
+     "why": "The fighting style comes from the class and gear records, and those aren't decoded in the extracts; only a record id is listed"
+    }
+   ],
+   "evidence": [
+    "AIOMaAicantarShopThurs13x3 AI Overhaul.esp:00705B (dayOfWeek 10 = Tue/Thu, 13:00 x 180, GetQuestRunning TG06 Skyrim.esm:021552 == 0, The Hag's Cure)",
+    "MarkarthAicantarEat20x2Package Skyrim.esm:060AB6",
+    "MarkarthAicantarEat6x2Package Skyrim.esm:060AB5",
+    "MarkarthCastleWizardAssistant0x24Package Skyrim.esm:036F27 (GetInFaction JobCourtWizardFaction == 0)",
+    "AicantarDefaultSandboxPackage Skyrim.esm:060AB7",
+    "factions JobCourtWizardFaction rank 255 (-1), JobMerchantFaction rank 255 (-1), ServicesMarkarthCastleWizard rank 0, MarkarthWizardFaction",
+    "vendor vendRaw a1370900, vencRaw 8c430900",
+    "people_raw cell Calcelmo's Laboratory, inTown Markarth",
+    "quest aliases: Skyrim.esm:026047, :026043 (unnamed)",
+    "class Skyrim.esm:01CE14 (undecoded)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01336B",
+   "name": "Mjoll the Lioness",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Riften: in the market in the morning, the Bee and Barb in the afternoon, the streets in the evening; she lives in Aerin's House",
+   "day": [
+    {
+     "from": "2 am",
+     "for": "6 hours",
+     "where": "Aerin's House, Riften",
+     "doing": "sleeping"
+    },
+    {
+     "from": "8 am",
+     "for": "1 hour",
+     "where": "Aerin's House, Riften",
+     "doing": "eating breakfast"
+    },
+    {
+     "from": "9 am",
+     "for": "3 hours",
+     "where": "the market, Riften",
+     "doing": "browsing, when it isn't raining"
+    },
+    {
+     "from": "12 pm",
+     "for": "6 hours",
+     "where": "the Bee and Barb, Riften",
+     "doing": "spending time at the inn"
+    },
+    {
+     "from": "6 pm",
+     "for": "6 hours",
+     "where": "the streets of Riften, around the market",
+     "doing": "patrolling, when it isn't raining"
+    }
+   ],
+   "changes": [
+    "Rain keeps her out of the market in the morning and off her evening patrol",
+    "During A Chance Arrangement, while you're stealing or planting Madesi's ring, she stays out of the market",
+    "Aerin the Man (from LoreRim's follower dialogue add-on for her) can end with Aerin winning her love; its journal also covers her or Aerin dying"
+   ],
+   "role": "quest giver; follower; can marry",
+   "sells": "",
+   "trains": "",
+   "joins": "she's a potential follower; what unlocks her follow dialogue isn't in the extracts",
+   "marries": "yes, she's a potential spouse; what she needs first isn't in the extracts",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Grimsever's Return",
+     "how": "gives it"
+    },
+    {
+     "quest": "Aerin the Man",
+     "how": "gives it"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "The dialogue that recruits her isn't in the extracts"
+    },
+    {
+     "field": "marries",
+     "why": "She's in the potential-spouse faction, but the conditions on her marriage dialogue aren't in the extracts"
+    },
+    {
+     "field": "day",
+     "why": "Midnight to 2 am has no package. Neither do rainy mornings and evenings. Where she spends those hours isn't settled by the records"
+    },
+    {
+     "field": "sells",
+     "why": "She has vendor data (from a faction), but she isn't in any merchant or services faction, so she isn't a shopkeeper"
+    },
+    {
+     "field": "quests",
+     "why": "Two Extended Encounters quests and a dozen base-game quests list her by alias, but the extracts give neither their names nor what they do"
+    },
+    {
+     "field": "fightsWith",
+     "why": "The fighting style comes from the class and gear records, and those aren't decoded in the extracts; only a record id is listed"
+    },
+    {
+     "field": "canDie",
+     "why": "Her record is essential, but Aerin the Man has a stage whose journal says 'Mjoll is dead'; whether that quest lets her die is in its scripts, which aren't extracted"
+    }
+   ],
+   "evidence": [
+    "RiftenMjollNightimePatrol18x6 Skyrim.esm:046BAA (AI Overhaul.esp; fn62 IsRaining == 0; near Skyrim.esm:044346 radius 2048)",
+    "RiftenMjollBeeandBarb12x6 Skyrim.esm:044A56",
+    "RiftenMjollMarket9x3 Skyrim.esm:05EF31 (GetStage TG00 Skyrim.esm:021556 != 10, != 20; IsRaining == 0)",
+    "RiftenMjollEatBreakfast8x1 Skyrim.esm:044A53",
+    "RiftenMjollSleep2x6 Skyrim.esm:044A52 (near editor location)",
+    "factions PotentialFollowerFaction, PotentialMarriageFaction, CurrentFollowerFaction rank 255 (-1), RiftenMjollHouseFaction",
+    "essential true; vendor vendRaw 48cb0600 with no merchant or services faction",
+    "people_raw cell Aerin's House, inTown Riften",
+    "Grimsever's Return FreeformRiften09 Skyrim.esm:05331C giver Mjoll",
+    "Aerin the Man aaMjollAerinQ FDE Mjoll.esp:0008E0 giver Mjoll; stages 60, 75, 80",
+    "quest aliases unnamed: Skyrim.esm:063F05, 063F02, 05FD0D, 05FB2A, 05FB20, 05EE62, 0AA0B3, 046D98, 046D96, 046B67, 046B59, 046B51; FDE Mjoll.esp:000952, 0008E1; Extended Encounters.esp:00002B, 000106",
+    "dialogue helpers not listed: Inigo.esp:095D76, SeranaDialogueExpansion.esp:000112",
+    "quest_starts: she carries Aerin's House Key",
+    "class Skyrim.esm:01CE15 (undecoded)"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018FC5",
+   "name": "Fanari Strong-Voice",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "Skaal Village on Solstheim. Before the Skaal are freed, she's at the Wind Stone beside the village, working under Miraak's control. After that she's in the Greathall",
+   "day": [
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "the Greathall, Skaal Village",
+     "doing": "relaxing"
+    },
+    {
+     "from": "12 am",
+     "for": "20 hours",
+     "where": "the Greathall, Skaal Village",
+     "doing": "sleeping (her sleep package sets no hours)"
+    }
+   ],
+   "changes": [
+    "Her top package has her building at the stone, ahead of everything else, while it holds. That fits the Skaal working at the Wind Stone against their will until you use Bend Will on it in The Fate of the Skaal"
+   ],
+   "role": "Skaal villager; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Kill the Bandit Leader",
+     "how": "gives it (a favour, offered when you arrive in Skaal Village)"
+    },
+    {
+     "quest": "The Fate of the Skaal",
+     "how": "changed by it: one of the Skaal under Miraak's control, freed at the Wind Stone"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The pillar-building package's one condition is 'not disabled', and the extract doesn't say what it's checked on. It points at a linked spot within a long radius that the extract doesn't resolve. That this is the Wind Stone, and that freeing the Skaal ends it, is read from the quest's journal, not shown by the package"
+    },
+    {
+     "field": "day",
+     "why": "Outside 8 pm to midnight, her only package is a sleep in the Greathall with no hours set. So she may be in bed at any time of day, or the game may handle it differently"
+    },
+    {
+     "field": "quests",
+     "why": "Five more quests list her by alias, but the extracts give neither their names nor what they do"
+    },
+    {
+     "field": "fightsWith",
+     "why": "The fighting style comes from the class and gear records, and those aren't decoded in the extracts; only a record id is listed"
+    },
+    {
+     "field": "quests",
+     "why": "The Gardener of Men has an alias named for her among the Skaal citizens, but its stages don't say what she does there, so it isn't listed"
+    }
+   ],
+   "evidence": [
+    "DLC2SkaalPillarBuildPKG Dragonborn.esm:01EECA (near linked ref radius 1500, GetDisabled == 0, shared by 8)",
+    "DefaultSandboxEditorLocation20x4 Dragonborn.esm:018FA2",
+    "DLC2SVFanariSleepGreathall Dragonborn.esm:01F32D (no hours)",
+    "factions Favor104QuestGiverFaction, DLC2PillarBuilderFaction, DLC2SVGreathallFaction",
+    "protected true",
+    "people_raw cell Greathall, inTown Skaal Village",
+    "The Fate of the Skaal DLC2MQ03 Dragonborn.esm:017F90 alias Fanari; stages 50, 60",
+    "Kill the Bandit Leader Favor104SkaalVillage Favor Quests Seperated.esp:000B50 giver Fanari (starts on change location); Skyrim.esm:06FD35 lists her as another giver",
+    "places_raw Wind Stone: next to Skaal Village",
+    "quest aliases unnamed: Dragonborn.esm:01BBF1, 01BBF3, 01E169, 02871F; Unofficial Skyrim Special Edition Patch.esp:00A31F",
+    "class Skyrim.esm:017008 (undecoded)",
+    "The Gardener of Men DLC2MQ05 Dragonborn.esm:0179DE alias SkaalCitizenFanari (not in her quest list)"
+   ]
+  }
+ ]
+}

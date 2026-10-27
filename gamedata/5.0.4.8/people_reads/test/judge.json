@@ -1,0 +1,7 @@
+{
+  "status": "not run",
+  "why": "The UESP key could not be built: en.uesp.net is blocked by this cloud session's network policy (the proxy refuses it with 403), so there is nothing to score the reads and the placements against. No key was written from memory.",
+  "toRun": "Allow en.uesp.net in the environment's network access, build uesp_key.json, then run the blind judge on the checked reads (C_0 to C_3) against the editor placements in people_raw.json.",
+  "summary": null,
+  "totals": null
+}

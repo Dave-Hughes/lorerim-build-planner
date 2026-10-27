@@ -1,0 +1,727 @@
+{
+ "checks": [
+  {
+   "id": "Skyrim.esm:01C18A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Stonecold Fortress; mornings are the home sandbox and breakfast there, afternoons the play/warm-up packages in town and at the Frozen Hearth."
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "the Found-Eirid package (game hour >11 and <18, within 300 of Eirid) sits between the 3 pm warm-up and the noon-to-6 play package, so when the noon play-outside check fails he is with Eirid if she is near before he is at home; the reader's fallbacks said only 'at home'. Also 10 am to noon is the home sandbox unless Eirid is near after 11."
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "Found-Eirid's hour conditions are GameHour > 11 and < 18, so it can apply from 11 am, not noon, and only while he isn't in a Hearthfire faction (unnamed in the extracts); exile line (GetInFaction GovExiled at the top, Brunwulf Free-Winter's House) checks out."
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "factions GovRuling and GovSons with TownWinterholdFaction and the Winterhold longhouse faction; no vendor, trainer, follower or marriage data."
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction."
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null."
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false; no follower faction."
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false."
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class 013279 is shared with the town children listed (Joric, Samuel, Sofie, Blaise...) and he is in GovSons; no weapons resolved."
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Containment's alias list holds MG05AssurAlias among the Winterhold townsfolk aliases, next to the objective to protect the town; the other alias quest (with Korir) is unnamed."
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false in the schedule record; reader rightly leaves the child question unsure."
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01327A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "top package SolitudeWarehouseWork8x12 has dayOfWeek 7 (weekdays), 8 am for 720 min, near a marker 0 km from the East Empire Company Warehouse, exterior (no cell); otherwise the Solitude sandbox at her placed house."
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "order is work 8x12 weekdays, then sleep 0:00 for 480 min at editor location, then Solitude sandbox 512 with no schedule: weekends 8 am to midnight and weekdays 8 pm to midnight around the house; matches."
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the Destroy the Dark Brotherhood line names a mod and isn't a change (the alias quest is unnamed in the extracts); Bound Until Death's stage 10 log puts the reception at the Temple of the Divines, which is where she is during it; whether A Healing Wedding replaces that quest isn't in its records."
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "ServicesSolitudeEastEmpireCompany faction and the warehouse work package; 'the Emperor's cousin' is in Bound Until Death's stage 200 log; MQ201PartyGuestFaction for the embassy party."
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "she has vendor hours 8 to 20 and lists, but no JobMerchantFaction; lists unresolved, so blank with the reader's unsure is right."
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null."
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false."
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false."
+    },
+    "fightsWith": {
+     "verdict": "unsure",
+     "note": "class 01326B is shared by 313 records including Stormcloak Soldier and Imperial Archer, so it isn't a citizen-only class; her outfit 09D5E0 isn't resolved. Her gear or the class's skill weights would settle it."
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Spiced Wine fills Target with Vittoria Vici (giver Evette San); Bound Until Death alias VittoriaViciAlias, objective 'Kill Vittoria Vici'; A Healing Wedding alias VittoriaViciAlias, objective 'Listen To Vittoria's speech'; Diplomatic Immunity only from MQ201PartyGuestFaction, as the reader flags."
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true; Bound Until Death's objective is to kill her, so the quest must lift it; reader keeps that unsure."
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:014136",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "breakfast package 7 am at Candlehearth Hall, farm 9 am near Hollyfrost Farm, market 2 pm, Candlehearth again in the evening."
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "TorstenEatAtCandlehearth19x3 raw schedule has minute 0x14, so it starts 7:20 pm and runs to 10:20 pm, ahead of the palace packages; the palace sandbox (dayOfWeek 9: Morndas, Middas, Fredas) comes before 'bother Galmar', so those nights he just goes about the palace; the bottom package is DefaultSleepPackageAnyTime, so any gap (7 to 7:20 pm, or the afternoon when the market check fails) is spent asleep at home, not at Candlehearth."
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "GetInFaction Skyrim.esm:0BFC5C == 0 gates both palace packages, but nothing in the extracts ties that faction to the civil war; 'likely civil war' is a guess. When it holds he stays at Candlehearth until 10:20 pm and then sleeps at home."
+    },
+    "role": {
+     "verdict": "fix",
+     "note": "Summerset Shadows' stage 10 log calls him 'a wealthy merchant residing in Windhelm'; HollyFrostFarmFaction and the farm-work package show he works Hollyfrost Farm, but nothing says he owns it."
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction despite the quest text calling him a merchant."
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null."
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false."
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false."
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class 01326C is shared by about 100 townsfolk, farmers, refugees and prisoners; gear unresolved and flagged."
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Summerset Shadows: giver GetIsID Torsten below stage 11, objectives 'Speak to Torsten Cruel-Sea' and 'Return to Torsten Cruel-Sea', Fjotli's Silver Locket; The Jagged Crown alias Torsten with no stage text, left to unsure."
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true."
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01338B",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Hag's Cure; DefaultSandboxHomeowner there by day; vendor hours 8 to 20."
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "MarkarthBothelaSleepPackage (10 pm for 600 min, The Hag's Cure) is above the evening package (8 pm for 150 min), so the outing ends at 10 pm when the sleep package takes over: 2 hours, not 2 hours 30 minutes. Daytime is the shared homeowner sandbox at her placed shop."
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest- or faction-gated packages; nothing in her records moves her."
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobApothecaryFaction and JobMerchantFaction (rank 255), vendor data, QuestGiver alias in Bothela's Discreet Delivery."
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "apothecary and merchant factions; buy/sell list and chest ids unresolved, so the general wording with the reader's unsure stands."
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null."
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false."
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false."
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class 013258 is shared with the other apothecaries (Angeline Morrard, Avrusa Sarethi, Elgrim, Frida)."
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Bothela's Discreet Delivery: alias QuestGiver is Bothela, potion fills as Stallion's Potion, the stage-10 delivery dialogue is GetIsID Reburrus Quintilius (JobStewardFaction, placed in The Treasury House). Raerek also holds the steward faction but no dialogue for this quest names him."
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false."
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:041FB8",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "his top package, SolitudeOpeningCaptainAldisWait (no hours, GetStage of the Solitude opening quest < 45), holds him at one spot outdoors in Solitude around the clock; that quest's aliases are the Solitude crowd with Roggvir as 'Prisoner' and Ahtar, and some 30 townsfolk have matching 'SolitudeOpening...Wait' packages, so a player arriving first finds him at Roggvir's execution, not at the training spot or Castle Dour."
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "SolitudeValdTrainingPackage targets a marker 0.1 km from 'Solitude' with no cell; nothing places it near Castle Dour. Hours otherwise right: Castle Dour package 8 pm for 720 min, training package unscheduled so it fills 8 am to 8 pm."
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "the scene is the Solitude opening quest whose prisoner alias is Roggvir and whose other aliases are Ahtar and the townsfolk, i.e. Roggvir's execution; he waits until it reaches stage 45."
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "CWImperialFaction/CWImperialFactionNPC, Lights Out! stage 15 log 'reported him to Captain Aldis' as the guard captain, Favor110QuestGiverFaction."
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null."
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null."
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false."
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false."
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class 01327F is shared with Legate Rikke, Hadvar, General Tullius and other Legion officers; gear unresolved."
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "all four check out (Rare Gifts: Questgiver fills 'Aldis', gold reward; No News is Good News: Target 'Aldis'; For the Good of Morthal: 'Deliver Gorm's letter to Captain Aldis'), but Lights Out!'s report dialogue is also said by Captain Istar Cairn-Breaker (added by a jobs mod), so the guard captain you report to may be either."
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false."
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Skyrim.esm:01C18A",
+   "name": "Assur",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Winterhold: around Stonecold Fortress (the Jarl's longhouse) in the morning, out playing in the town or warming up at the Frozen Hearth in the afternoon",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "2 hours",
+     "where": "Stonecold Fortress, Winterhold",
+     "doing": "about the house"
+    },
+    {
+     "from": "9 am",
+     "for": "1 hour",
+     "where": "Stonecold Fortress, Winterhold",
+     "doing": "breakfast"
+    },
+    {
+     "from": "10 am",
+     "for": "2 hours",
+     "where": "Stonecold Fortress, Winterhold",
+     "doing": "about the house (from 11 am, with Eirid instead if she is close by)"
+    },
+    {
+     "from": "12 pm",
+     "for": "3 hours",
+     "where": "outdoors in Winterhold",
+     "doing": "playing outside (only on some days; otherwise with Eirid if she is close by, else playing in town when its conditions allow, else at home)"
+    },
+    {
+     "from": "3 pm",
+     "for": "1 hour",
+     "where": "the Frozen Hearth, Winterhold",
+     "doing": "warming up by the fire"
+    },
+    {
+     "from": "4 pm",
+     "for": "2 hours",
+     "where": "outdoors in Winterhold",
+     "doing": "with Eirid if she is close by; otherwise playing in town when conditions allow, else at home"
+    },
+    {
+     "from": "6 pm",
+     "for": "2 hours",
+     "where": "the Frozen Hearth, Winterhold",
+     "doing": "dinner"
+    },
+    {
+     "from": "8 pm",
+     "for": "1 hour",
+     "where": "Stonecold Fortress, Winterhold",
+     "doing": "about the house"
+    },
+    {
+     "from": "9 pm",
+     "for": "10 hours",
+     "where": "upstairs in Stonecold Fortress, Winterhold",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "If his family is exiled (Winterhold changes hands in the civil war), he stays at Brunwulf Free-Winter's House in Windhelm instead of all of the above.",
+    "Between 11 am and 6 pm, whenever he isn't out playing or warming up at the Frozen Hearth and Eirid is close by, he stays with her (normally at the Frozen Hearth)."
+   ],
+   "role": "a child of the ruling family of Winterhold; lives in Stonecold Fortress",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "doesn't fight (a child)",
+   "quests": [
+    {
+     "quest": "Containment",
+     "how": "one of the Winterhold townsfolk in it while you protect the town from the magic anomalies"
+    }
+   ],
+   "canDie": "not flagged essential or protected",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "Both afternoon play packages carry conditions the extract leaves undecoded (one checks a quest variable, the other a long list of checks that look like weather); when they fail he falls back to being at home in Stonecold Fortress."
+    },
+    {
+     "field": "role",
+     "why": "'Child of the ruling family' is read from his class (shared with Winterhold's and other towns' children) and his ruling-family factions; the records don't say whose son he is."
+    },
+    {
+     "field": "canDie",
+     "why": "Neither essential nor protected in the records, but he has a child's class; whether he can actually be killed depends on engine and mod rules not in these extracts."
+    },
+    {
+     "field": "changes",
+     "why": "The exile package needs his family to be put in the exiled faction; which civil-war outcome does that isn't in these extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He is also named by one unnamed helper quest (with Korir), left out."
+    },
+    {
+     "field": "changes",
+     "why": "The Eirid package also needs him to be outside a faction the extracts don't name; what puts him in it isn't shown."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01C18A",
+    "CWExiledSonsSandboxBrunwulfsHouse Skyrim.esm:0A9274 (GetInFaction GovExiled Skyrim.esm:036629)",
+    "WinterholdAssurSleep21x10 Skyrim.esm:050317",
+    "WinterholdAssurDinner18x2 Skyrim.esm:05031A",
+    "WinterholdAssurPlayOutside12x6 Skyrim.esm:02A393 (fn79 on Skyrim.esm:02430E)",
+    "AIOWinterholdAssurWarmup15x1 AI Overhaul.esp:355FE0",
+    "AIOWinterholdAssurFoundEirid AI Overhaul.esp:355FDF",
+    "AIOWinterholdAssurPlay12x6 AI Overhaul.esp:355FDE (fn612 conditions)",
+    "WinterholdAssurBreakfast9x1 Skyrim.esm:050319",
+    "WinterholdAssurSandboxHome Skyrim.esm:050318 (editor location)",
+    "class Skyrim.esm:013279",
+    "factions GovRuling, GovSons, TownWinterholdFaction",
+    "MG05 Skyrim.esm:01F255 alias MG05AssurAlias",
+    "people_raw cell Stonecold Fortress, Winterhold",
+    "AIOWinterholdAssurFoundEirid conditions: GameHour (Skyrim.esm:000038) > 11 and < 18; GetDistance Skyrim.esm:01C18F < 300; GetInFaction HearthFires.esm:0042B0 == 0"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01327A",
+   "name": "Vittoria Vici",
+   "race": "Imperial",
+   "sex": "female",
+   "firstMeet": "on weekdays, the Solitude docks below the city by the East Empire Company Warehouse, 8 am to 8 pm; otherwise at or near her house in Solitude",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "the Solitude docks, by the East Empire Company Warehouse",
+     "doing": "working (weekdays only, Morndas to Fredas)"
+    },
+    {
+     "from": "8 am",
+     "for": "16 hours",
+     "where": "around her house in Solitude",
+     "doing": "going about her day (weekends; on weekdays from 8 pm)"
+    },
+    {
+     "from": "12 am",
+     "for": "8 hours",
+     "where": "Vittoria Vici's House, Solitude",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "During Bound Until Death she is at the reception for her wedding to Asgeir Snow-Shod at the Temple of the Divines in Solitude, where the quest has you kill her.",
+    "In A Healing Wedding you attend the same reception at the Temple of the Divines and listen to her speech."
+   ],
+   "role": "East Empire Company official at the Solitude docks; the Emperor's cousin; a guest at the Thalmor Embassy party",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Spiced Wine",
+     "how": "its target: convince her to release the Spiced Wine shipment"
+    },
+    {
+     "quest": "Bound Until Death",
+     "how": "its target: kill her at her wedding reception"
+    },
+    {
+     "quest": "A Healing Wedding",
+     "how": "the bride; you attend her wedding and listen to her speech"
+    },
+    {
+     "quest": "Diplomatic Immunity",
+     "how": "a guest at the Thalmor Embassy party"
+    }
+   ],
+   "canDie": "essential (until Bound Until Death, whose objective is to kill her)",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "She has vendor data (trading 8 am to 8 pm) and an East Empire Company services faction, but no merchant job faction, and her buy/sell list can't be resolved from these extracts; left blank rather than guessed."
+    },
+    {
+     "field": "day",
+     "why": "Her work package's day code is read as weekdays (Morndas to Fredas)."
+    },
+    {
+     "field": "quests",
+     "why": "Diplomatic Immunity is from her party-guest factions, not a quest alias. A Destroy the Dark Brotherhood quest and several unnamed helper quests also name her; not listed."
+    },
+    {
+     "field": "canDie",
+     "why": "Flagged essential in the records; the extracts don't show the wedding quest lifting it, only that it asks you to kill her."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Her class is shared by hundreds of records, soldiers and archers among them, so it doesn't say she's a non-fighter; her outfit isn't resolved."
+    },
+    {
+     "field": "changes",
+     "why": "Whether A Healing Wedding replaces Bound Until Death or runs beside it isn't in its records. Another Dark Brotherhood quest added by a mod names her too; its name and her part in it aren't in these extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01327A",
+    "SolitudeWarehouseWork8x12 (USSEP) dayOfWeek 7, near East Empire Company Warehouse, target Skyrim.esm:0D6A88",
+    "DefaultSleepEditorLoc24x8 (shared)",
+    "SolitudeSandboxEditorLocation512 (shared)",
+    "vendor startHour 8 endHour 20 vendRaw 48cb0600 vencRaw d66a0d00",
+    "faction ServicesSolitudeEastEmpireCompany Skyrim.esm:0D6AC5",
+    "MQ201PartyGuestFaction Skyrim.esm:0665E6",
+    "SolitudeFreeform06 Skyrim.esm:0D69FB alias Target",
+    "DB05 Skyrim.esm:01EA54",
+    "DB05Alt Vittorias Alternate Wedding.esp:000800",
+    "Destroy the Dark Brotherhood - Quest Expansion.esp:00089E alias Vittoria",
+    "class Skyrim.esm:01326B",
+    "people_raw cell Vittoria Vici's House, Solitude"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:014136",
+   "name": "Torsten Cruel-Sea",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Windhelm: Candlehearth Hall at breakfast and in the evening, Hollyfrost Farm in the morning, the Windhelm market in the afternoon",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "2 hours",
+     "where": "Candlehearth Hall, Windhelm",
+     "doing": "a big breakfast"
+    },
+    {
+     "from": "9 am",
+     "for": "5 hours",
+     "where": "Hollyfrost Farm",
+     "doing": "working the farm"
+    },
+    {
+     "from": "2 pm",
+     "for": "5 hours",
+     "where": "the market, Windhelm",
+     "doing": "browsing the stalls (only when a condition the records don't decode holds; otherwise asleep at home)"
+    },
+    {
+     "from": "7 pm",
+     "for": "20 minutes",
+     "where": "House of Clan Cruel-Sea, Windhelm",
+     "doing": "at home, asleep"
+    },
+    {
+     "from": "7:20 pm",
+     "for": "3 hours",
+     "where": "Candlehearth Hall, Windhelm",
+     "doing": "eating and drinking"
+    },
+    {
+     "from": "10:20 pm",
+     "for": "1 hour 40 minutes",
+     "where": "the Palace of the Kings, Windhelm",
+     "doing": "bothering Galmar about the navy (on Morndas, Middas and Fredas just going about the palace)"
+    },
+    {
+     "from": "12 am",
+     "for": "7 hours",
+     "where": "House of Clan Cruel-Sea, Windhelm",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "His late-night palace visits stop if he joins a faction the records don't name; then he stays at Candlehearth Hall until 10:20 pm and goes home to sleep.",
+    "His market browsing depends on a condition not decoded here; when it fails he is at home asleep in the afternoon."
+   ],
+   "role": "a wealthy merchant of Windhelm who works Hollyfrost Farm; Thieves Guild job giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "not a fighter (a townsman's class)",
+   "quests": [
+    {
+     "quest": "Summerset Shadows",
+     "how": "gives it (wants his daughter Fjotli's silver locket back); you return to him at the end"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "The faction that stops his palace visits isn't named in these extracts."
+    },
+    {
+     "field": "quests",
+     "why": "He is also named by The Jagged Crown (civil war) but the records don't show his part; and by several unnamed helper quests. Not listed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Read from his class, shared with farmers and townsfolk; gear not resolved."
+    },
+    {
+     "field": "day",
+     "why": "The market package's condition isn't decoded (it may be weather); his only fallback for those hours is the any-time sleep package at home, which is what the records give, odd as it is by day."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:014136",
+    "TorstenEatsABigBreakfast7x2 Skyrim.esm",
+    "TorstenWorkTheFarm9x5 Skyrim.esm (near Hollyfrost Farm)",
+    "WindhelmTorstenMakretBrowse14x5 AI Overhaul.esp (fn149 param 819745)",
+    "TorstenEatAtCandlehearth19x3",
+    "TorstenSandboxInPalace22x2 (dayOfWeek 9; GetInFaction Skyrim.esm:0BFC5C == 0)",
+    "TorstenBotherGalmarAboutNavy22x2 (GetInFaction Skyrim.esm:0BFC5C == 0)",
+    "DefaultSleepPackageAnyTime (shared)",
+    "factions WindhelmCruelSeaFaction, HollyFrostFarmFaction, WindhelmMarketBrowsers, WindhelmCandlehearthPatrons",
+    "TGTQ04 Skyrim.esm:0799E2",
+    "CW02B Skyrim.esm:02610B alias Torsten",
+    "class Skyrim.esm:01326C",
+    "people_raw cell House of Clan Cruel-Sea, Windhelm",
+    "TorstenEatAtCandlehearth19x3 raw ffff001314000000b4000000 (19:20, 180 min)",
+    "TorstenSandboxInPalace22x2 raw ff09001600 (dayOfWeek 9)"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01338B",
+   "name": "Bothela",
+   "race": "Breton",
+   "sex": "female",
+   "firstMeet": "The Hag's Cure, Markarth (her shop; she trades 8 am to 8 pm)",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "The Hag's Cure, Markarth",
+     "doing": "minding her shop"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "near Understone Keep, Markarth",
+     "doing": "an evening out (some evenings only; otherwise at the shop)"
+    },
+    {
+     "from": "10 pm",
+     "for": "10 hours",
+     "where": "The Hag's Cure, Markarth",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "apothecary; merchant; quest giver",
+   "sells": "apothecary's goods (potions and ingredients)",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "not a fighter (an apothecary)",
+   "quests": [
+    {
+     "quest": "Bothela's Discreet Delivery",
+     "how": "gives it: deliver a Stallion's Potion to the steward of Markarth (Reburrus Quintilius in the Treasury House)"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "From her apothecary and merchant factions; her buy/sell list and vendor chest can't be resolved from these extracts, so no item list."
+    },
+    {
+     "field": "day",
+     "why": "Her evening outing has undecoded conditions (look like weather checks); when they fail she stays at The Hag's Cure."
+    },
+    {
+     "field": "quests",
+     "why": "Several unnamed helper quests also name her; not listed. The steward is read from the quest's dialogue being Reburrus's and his steward faction."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01338B",
+    "MarkarthBothelaSleepPackage AI Overhaul.esp",
+    "AIOMaBothelaRandomEvenings AI Overhaul.esp:165B94 (fn62, fn612)",
+    "DefaultSandboxHomeowner (shared)",
+    "vendor startHour 8 endHour 20 vendRaw 4c244405 vencRaw 81430900",
+    "JobApothecaryFaction Skyrim.esm:05091C",
+    "JobMerchantFaction Skyrim.esm:051596",
+    "ServicesMarkarthHagsCure Skyrim.esm:094382",
+    "FreeformMarkarthJ Skyrim.esm:0790E1 alias QuestGiver",
+    "Reburrus Quintilius Skyrim.esm:0133B3 JobStewardFaction",
+    "class Skyrim.esm:013258",
+    "people_raw cell The Hag's Cure, Markarth",
+    "MarkarthBothelaSleepPackage hour 22, 600 min, listed above AIOMaBothelaRandomEvenings"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:041FB8",
+   "name": "Captain Aldis",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Solitude: when you first arrive, outdoors with the crowd at Roggvir's execution; after that, by day at a training spot outdoors in Solitude, at night in Castle Dour",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "outdoors in Solitude",
+     "doing": "training soldiers"
+    },
+    {
+     "from": "8 pm",
+     "for": "12 hours",
+     "where": "Castle Dour, Solitude",
+     "doing": "sleeping and off duty"
+    }
+   ],
+   "changes": [
+    "Until Roggvir's execution in Solitude plays out, he waits at one spot outdoors with the crowd watching it, day and night, instead of his routine."
+   ],
+   "role": "Imperial guard captain of Solitude; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "a Legion soldier's class (shared with Legate Rikke and Hadvar)",
+   "quests": [
+    {
+     "quest": "Rare Gifts",
+     "how": "gives it: bring him one requested item for gold"
+    },
+    {
+     "quest": "Lights Out!",
+     "how": "a step in it: one of the guard captains you can report Jaree-Ra to (Captain Istar Cairn-Breaker is the other)"
+    },
+    {
+     "quest": "No News is Good News",
+     "how": "a step in it: ask him about Angeline Morrard's daughter"
+    },
+    {
+     "quest": "For the Good of Morthal",
+     "how": "a step in it: you deliver Gorm's letter to him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "quests",
+     "why": "Rare Gifts' item isn't resolved in the extracts. He is also named in one unnamed helper quest; not listed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "Class only; his gear isn't resolved."
+    },
+    {
+     "field": "changes",
+     "why": "He waits while the execution quest is below stage 45, which also holds if it never starts; what starts it and where exactly the spot is aren't in the extracts."
+    },
+    {
+     "field": "day",
+     "why": "The training spot is an outdoor marker placed only as 'Solitude'; which part of the city isn't in the extracts."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:041FB8",
+    "SolitudeOpeningCaptainAldisWait (GetStage Skyrim.esm:0B2FD9 < 45, target Skyrim.esm:109CD7)",
+    "GuardSolitudeImperialDaySleep (Castle Dour, 20 for 720 min)",
+    "SolitudeValdTrainingPackage (target Skyrim.esm:0B4C53)",
+    "DefaultSandboxEditorLocation512 (shared)",
+    "factions CWImperialFaction, Favor110QuestGiverFaction",
+    "Favor110Solitude Favor Quests Seperated.esp:000D6E",
+    "MS07 Skyrim.esm:023A64 alias MS07Guard",
+    "SolitudeFreeform01 Skyrim.esm:0E8BD7 alias Target",
+    "FreeformMorthalB Skyrim.esm:021896 alias Aldis",
+    "class Skyrim.esm:01327F",
+    "people_raw cell Castle Dour, Solitude",
+    "Skyrim.esm:0B2FD9 aliases Prisoner=Roggvir, Ahtar, CaptainAldis and Solitude townsfolk; SolitudeOpening*Wait packages on ~30 Solitude people",
+    "MS07 giver others: Andrealphus Jobs Overhaul - MASTER.esp:000B74 (Captain Istar Cairn-Breaker) stageBelow 55"
+   ]
+  }
+ ]
+}
