@@ -5023,7 +5023,7 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 ---
 
 ## WO-159  Dave's testing, 27 Oct afternoon: home, search, back links, a playthrough from the start, and the people reads on person pages (Mac, 27 Oct 2026)
-Status: queued (Mac; after WO-157 Part 10)
+Status: building (Mac)
 
 **Why.** Dave tested staging on 27 Oct and sent a list. The quest line pages need a design first (a separate order, after Dave sees the boards); everything here is settled and can be built now.
 
