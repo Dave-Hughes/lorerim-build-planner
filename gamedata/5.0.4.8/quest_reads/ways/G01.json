@@ -1,0 +1,853 @@
+{
+ "quests": [
+  {
+   "edid": "MQ101",
+   "shape": "endings",
+   "shared": [
+    "Make your way to the Keep",
+    "Enter the Keep with Hadvar or Ralof",
+    "Find some equipment",
+    "Loot Gunjar's body",
+    "(Optional) Search the barrel for potions",
+    "(Optional) Attempt to pick the lock to the cage",
+    "(Optional) Recover your gear",
+    "Escape Helgen"
+   ],
+   "ways": [
+    {
+     "title": "Enter the keep with Hadvar",
+     "ends": "Hadvar sends you to his uncle Alvor, the blacksmith in Riverwood, in Before the Storm",
+     "steps": []
+    },
+    {
+     "title": "Enter the keep with Ralof",
+     "ends": "Ralof sends you to his sister Gerdur, who runs the lumber mill in Riverwood, in Before the Storm",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The objectives don't split by companion: objective 50 names Hadvar or Ralof together, and no objective belongs to one side only."
+    }
+   ],
+   "evidence": [
+    "objectives 30-100 are one list with no side-specific entry",
+    "objective 50 'Enter the Keep with Hadvar or Ralof' covers both choices",
+    "stage 900 completes either way"
+   ]
+  },
+  {
+   "edid": "MQ102",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Go to Riverwood first",
+     "ends": "they ask you to take word to the Jarl and ask for soldiers for Riverwood",
+     "steps": [
+      "Talk to <Alias=RiverwoodFriend> in Riverwood",
+      "Talk to the Jarl of Whiterun"
+     ]
+    },
+    {
+     "title": "Skip Riverwood and go straight to Whiterun",
+     "ends": "you simply tell the Jarl about the dragon; the quest still ends with his reward",
+     "steps": [
+      "Talk to the Jarl of Whiterun"
+     ]
+    },
+    {
+     "title": "Travel to Riverwood with Hadvar or Ralof",
+     "ends": "you walk there together",
+     "steps": [
+      "(Optional) Travel to Riverwood with <Alias=FactionFriend>",
+      "Talk to <Alias=RiverwoodFriend> in Riverwood",
+      "Talk to the Jarl of Whiterun"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether the Riverwood objective is shown and then dropped when you skip Riverwood isn't in the records; that way lists only the Jarl objective."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (head to Riverwood alone) precedes objective 10; stage 20 log ('we head to Riverwood') goes with objective 20",
+    "stage 30 log (Alvor or Gerdur asks you to take word to the Jarl) leads to objective 30",
+    "stage 100/110 logs ('I've arrived in Whiterun') and the third stage 160 entry, conditioned on the Riverwood talk not being done (GetStageDone ...:50 == 0), are the skip-Riverwood finish",
+    "stage 160 completes on all three entries"
+   ]
+  },
+  {
+   "edid": "MQ103",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Already carry the Dragonstone when you speak to Farengar",
+     "ends": "Farengar takes it on the spot and you skip the trip",
+     "steps": [
+      "Talk to Farengar",
+      "Deliver the Dragonstone to Farengar"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't show whether the delivery objective appears at all when Farengar takes the stone on the spot; stage 50 has an entry conditioned on carrying the Dragonstone (GetItemCount 0DF202 > 0) but it has no text."
+    }
+   ],
+   "evidence": [
+    "objective 15 'Talk to Farengar' precedes stage 50",
+    "stage 50 second entry conditioned on GetItemCount Skyrim.esm:0DF202 > 0",
+    "objective 50 'Retrieve the Dragonstone' left out of this way",
+    "stage 190 completes"
+   ]
+  },
+  {
+   "edid": "MQ105",
+   "shape": "endings",
+   "shared": [
+    "Speak to the Greybeards",
+    "Demonstrate your \"Unrelenting Force\" Shout",
+    "Speak to Arngeir",
+    "Learn the Word of Power from Einarth",
+    "Demonstrate your \"Unrelenting Force\" Shout (<Global=MQ105TargetsHit>/<Global=MQ105TargetsTotal>)",
+    "Learn the Word of Power from Borri",
+    "Demonstrate your \"Whirlwind Sprint\" Shout",
+    "Speak to Arngeir for further training"
+   ],
+   "ways": [
+    {
+     "title": "Go to High Hrothgar before reporting back to Jarl Balgruuf",
+     "ends": "allowed; the journal just notes the Jarl hasn't heard yet",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "the stage logs (10, 30, 160) carry no side line for this choice in quests_raw; one objective list for everyone",
+    "stage 160 completes"
+   ]
+  },
+  {
+   "edid": "MQ106",
+   "shape": "endings",
+   "shared": [
+    "Talk to Delphine",
+    "Locate the dragon burial site",
+    "Kill the dragon Sahloknir",
+    "Talk to Delphine"
+   ],
+   "ways": [
+    {
+     "title": "Travel to Kynesgrove with Delphine",
+     "ends": "she walks with you",
+     "steps": []
+    },
+    {
+     "title": "Split up and meet her there",
+     "ends": "she goes ahead and meets you at Kynesgrove",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records hold one objective list; nothing ties a step to travelling together or apart."
+    }
+   ],
+   "evidence": [
+    "objectives 10-40 are one list",
+    "stage 150 log 'we saw a dragon' holds for both",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "MQ201",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Go to the party as a guest",
+     "ends": "Malborn smuggles your gear in; you slip away from the party to search",
+     "steps": [
+      "Meet Delphine in Riverwood or storm the Thalmor Embassy",
+      "Meet Malborn in Solitude",
+      "Give Malborn the equipment",
+      "Meet Delphine at the Solitude stables",
+      "Talk to Malborn",
+      "Create a distraction and get away from the party",
+      "(Optional) Retrieve your gear",
+      "Search for information about the dragons returning",
+      "Search the torture chamber",
+      "Escape the Thalmor Embassy",
+      "Talk to Delphine or search for Esbern"
+     ]
+    },
+    {
+     "title": "Storm the Thalmor Embassy",
+     "ends": "skips the party plan (added by Storm the Thalmor Embassy)",
+     "steps": [
+      "Meet Delphine in Riverwood or storm the Thalmor Embassy",
+      "Search for information about the dragons returning",
+      "Search the torture chamber",
+      "Escape the Thalmor Embassy",
+      "Talk to Delphine or search for Esbern"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Storm the Thalmor Embassy.esp adds the storming way; which party objectives it skips isn't in the records. The storm way keeps only the objectives inside the embassy (search, torture chamber, escape) and the last one."
+    }
+   ],
+   "evidence": [
+    "objective 5 'Meet Delphine in Riverwood or storm the Thalmor Embassy' names both ways",
+    "stage 40 log sends you to Malborn (objective 10); stage 100 log covers smuggling the gear and slipping away (objectives 20-55)",
+    "stage 140 log: search the ambassador's office (objective 60)",
+    "stage 250 completes with the party log; stage 255 completes with no text, likely the storm finish"
+   ]
+  },
+  {
+   "edid": "MQ203",
+   "shape": "endings",
+   "shared": [
+    "Escort Esbern to Riverwood",
+    "Talk to Esbern",
+    "Gain entrance to Sky Haven Temple",
+    "Learn the secret of Alduin's Wall"
+   ],
+   "ways": [
+    {
+     "title": "Travel with Delphine and Esbern",
+     "ends": "they come with you to Karthspire",
+     "steps": []
+    },
+    {
+     "title": "Go on your own",
+     "ends": "Delphine takes Esbern and they wait for you near Karthspire",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records hold one objective list; nothing ties a step to travelling together or alone."
+    }
+   ],
+   "evidence": [
+    "objectives 10-40 are one list",
+    "stage 60 log 'We need to go to Sky Haven Temple'",
+    "stage 280 completes"
+   ]
+  },
+  {
+   "edid": "MQ205",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Ask Esbern or Arngeir where to look",
+     "ends": "either one sends you to the College of Winterhold; both are optional",
+     "steps": [
+      "Learn the location of the Elder Scroll",
+      "(Optional) Talk to Esbern",
+      "(Optional) Talk to Arngeir",
+      "Recover the Elder Scroll"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 20 and 30 are both '(Optional)' and sit between 10 and 50",
+    "stage 50 has two entries conditioned on GetStageDone Skyrim.esm:02D516 stage 40 or 45 (the two talks)",
+    "stage 100 completes"
+   ]
+  },
+  {
+   "edid": "MQ301",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Ask Paarthurnax, Arngeir or Esbern for help",
+     "ends": "the journal offers talking to each; Esbern or Paarthurnax can tell you how to lure a dragon",
+     "steps": [
+      "Talk to Paarthurnax",
+      "Talk to Arngeir",
+      "Talk to Esbern",
+      "Talk to the Jarl of Whiterun",
+      "Learn Shout to call Odahviing",
+      "Prepare trap for Odahviing",
+      "Call Odahviing to Dragonsreach",
+      "Defeat and trap Odahviing",
+      "Interrogate Odahviing"
+     ]
+    },
+    {
+     "title": "The civil war is still being fought",
+     "ends": "while it rages, the Jarl of Whiterun won't help until a truce is arranged (Season Unending)",
+     "steps": [
+      "Talk to Paarthurnax",
+      "Talk to Arngeir",
+      "Talk to Esbern",
+      "Talk to the Jarl of Whiterun",
+      "Get Greybeards' help in negotiating a truce",
+      "Learn Shout to call Odahviing",
+      "Prepare trap for Odahviing",
+      "Call Odahviing to Dragonsreach",
+      "Defeat and trap Odahviing",
+      "Interrogate Odahviing"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The first choice isn't a branch on its own; its way is the run without the truce step. Whether the truce step is skipped when the civil war is over is set by script not in these files."
+    }
+   ],
+   "evidence": [
+    "objectives 10, 11, 12 are the three talks offered by the stage 10 log",
+    "stage 25 log asks you to persuade the Jarl (objective 20); stage 30 log 'If I can arrange a truce' goes with objective 25",
+    "stage 50 has two entries split on GetStageDone Skyrim.esm:044C56 stage 40, one saying 'Esbern or Paarthurnax might be able to help'",
+    "stage 70 log (learned the Shout) then stage 200 (Odahviing trapped) and stage 220 completes"
+   ]
+  },
+  {
+   "edid": "MQ302",
+   "shape": "endings",
+   "shared": [
+    "Talk to Arngeir",
+    "Talk to General Tullius",
+    "Talk to Ulfric Stormcloak",
+    "Talk to Arngeir",
+    "Take your seat",
+    "Negotiate a truce"
+   ],
+   "ways": [
+    {
+     "title": "Agree the truce terms at the council",
+     "ends": "the quest tracks holds on each side and two towns (Karthwasten in the Reach, Darkwater Crossing in Eastmarch) that can be traded; the exact terms aren't in these files",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stages 310 and 350 also complete the quest with no journal text; which finish follows which terms isn't in these files."
+    }
+   ],
+   "evidence": [
+    "objectives 10-60 are one list",
+    "stage 15 log: Arngeir agreed to host the council",
+    "stage 300 completes with the truce log; stages 310 and 350 complete with no text"
+   ]
+  },
+  {
+   "edid": "MQPaarthurnax",
+   "shape": "endings",
+   "shared": [
+    "Decide Paarthurnax's Fate"
+   ],
+   "ways": [
+    {
+     "title": "Kill Paarthurnax",
+     "ends": "you do what the Blades asked; Paarthurnax dies",
+     "steps": []
+    },
+    {
+     "title": "Spare Paarthurnax",
+     "ends": "you decide he doesn't deserve to die and must talk the Blades round (talk to Delphine and Esbern)",
+     "steps": [
+      "Talk to Delphine",
+      "Talk to Esbern"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log: talk to Paarthurnax before deciding (objective 10)",
+    "stage 50 log 'I killed him'",
+    "stage 75 log 'I will talk some sense into the Blades' goes with objectives 20 and 21",
+    "stages 99 and 100 complete"
+   ]
+  },
+  {
+   "edid": "DLC1RH04",
+   "shape": "endings",
+   "shared": [
+    "Find evidence of the vampire's whereabouts",
+    "Kill the <Alias=Vampire> at <Alias=Dungeon>",
+    "Return to <Alias=QuestGiver>"
+   ],
+   "ways": [
+    {
+     "title": "Question the vampire's last known contact",
+     "ends": "they tell you where the vampire's lair is",
+     "steps": []
+    },
+    {
+     "title": "Search for evidence instead",
+     "ends": "a letter the quest places in a house in the town points you to the lair",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records hold one objective list; the evidence search has no objective of its own."
+    }
+   ],
+   "evidence": [
+    "stage 10 log names interrogating the contact",
+    "stage 50 log goes with objective 50",
+    "stage 255 completes"
+   ]
+  },
+  {
+   "edid": "DLC1RH07",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Get the Jarl's permission first",
+     "ends": "you can kill the Visiting Advisor openly",
+     "steps": [
+      "Warn <Alias=Jarl> about the vampire threat",
+      "Find evidence linked to the vampire",
+      "Bring evidence to <Alias=Jarl>",
+      "Destroy the vampire masquerading as a <Alias=Vampire>",
+      "Return to <Alias=QuestGiver>"
+     ]
+    },
+    {
+     "title": "Kill the Visiting Advisor without the Jarl's permission",
+     "ends": "the guards treat it as murder",
+     "steps": [
+      "Warn <Alias=Jarl> about the vampire threat",
+      "Destroy the vampire masquerading as a <Alias=Vampire>",
+      "Return to <Alias=QuestGiver>"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether the evidence objectives stay open when you skip the Jarl isn't in the records; that way lists only the kill and the return."
+    }
+   ],
+   "evidence": [
+    "stage 10 log: 'If I fail to secure <Jarl>'s permission first, the guards will consider it a murder'",
+    "objectives 20 and 30 (find and bring evidence) are the permission steps",
+    "stage 255 completes on the kill; stage 300 completes when the Jarl is replaced"
+   ]
+  },
+  {
+   "edid": "DLC1RV01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Make it a discreet kill",
+     "ends": "completes the optional objective",
+     "steps": [
+      "Kill <Alias=Target>",
+      "(Optional) Make it a discreet kill",
+      "Return to <Alias=QuestGiver>"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log: 'I am to do so discreetly'",
+    "objective 11 is '(Optional)'",
+    "stage 255 completes"
+   ]
+  },
+  {
+   "edid": "DLC1RV03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill in public while wearing Dawnguard armor",
+     "ends": "completes an optional objective",
+     "steps": [
+      "Kill someone out in the streets of <Alias=City>",
+      "(Optional) Make it a public kill while wearing Dawnguard armor",
+      "Plant letter on <Alias=Victim>'s corpse",
+      "Return to <Alias=QuestGiver>"
+     ]
+    },
+    {
+     "title": "Choose a high-profile victim",
+     "ends": "completes an optional objective; the log says the higher the profile the better",
+     "steps": [
+      "Kill someone out in the streets of <Alias=City>",
+      "(Optional) Choose a high profile victim",
+      "Plant letter on <Alias=Victim>'s corpse",
+      "Return to <Alias=QuestGiver>"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log: kill while impersonating the Dawnguard, place the letter, 'The higher the profile of my victim the better'",
+    "objectives 110 and 111 are both '(Optional)'",
+    "stage 255 completes; stage 300 fails"
+   ]
+  },
+  {
+   "edid": "DLC1VQ02",
+   "shape": "endings",
+   "shared": [
+    "Lead Serana to her home",
+    "Speak to Harkon"
+   ],
+   "ways": [
+    {
+     "title": "Accept Lord Harkon's gift",
+     "ends": "You become a vampire and join his court; the story goes on with Harkon (The Bloodstone Chalice, then Prophet)",
+     "steps": []
+    },
+    {
+     "title": "Refuse the gift",
+     "ends": "You are banished from the castle and return to the Dawnguard to tell Vigilant Tolan and Isran (A New Order, then Prophet)",
+     "steps": [
+      "Return to Isran"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log: choose whether to accept the gift",
+    "stage 40 and 180 logs: accepted and joined his court; stage 180 completes",
+    "stages 25 and 30 logs: refused, return to Vigilant Tolan then Isran (objective 30); stage 190 completes"
+   ]
+  },
+  {
+   "edid": "DLC1VQ04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Let Serana turn you into a vampire",
+     "ends": "You can pass the portal into the Soul Cairn as a vampire",
+     "steps": [
+      "Speak to Serana",
+      "Explore Castle Volkihar's Courtyard",
+      "Investigate the moondial",
+      "Explore Castle Volkihar's Ruined Tower",
+      "Locate Valerica's Journal",
+      "Speak to Serana",
+      "Gather Soul Gem Shards",
+      "Gather Finely Ground Bone Meal",
+      "Gather Purified Void Salts",
+      "Place the ingredients in the vessel",
+      "Speak to Serana",
+      "Enter the Soul Cairn",
+      "Speak to Serana",
+      "Become a vampire",
+      "Enter the Soul Cairn"
+     ]
+    },
+    {
+     "title": "Let Serana partially soul trap you",
+     "ends": "You pass the portal still mortal; the journal warns it \"could potentially weaken me while I roam the Soul Cairn\" (the quest script holds a Weakened Soul spell for this)",
+     "steps": [
+      "Speak to Serana",
+      "Explore Castle Volkihar's Courtyard",
+      "Investigate the moondial",
+      "Explore Castle Volkihar's Ruined Tower",
+      "Locate Valerica's Journal",
+      "Speak to Serana",
+      "Gather Soul Gem Shards",
+      "Gather Finely Ground Bone Meal",
+      "Gather Purified Void Salts",
+      "Place the ingredients in the vessel",
+      "Speak to Serana",
+      "Enter the Soul Cairn",
+      "Speak to Serana",
+      "Become partially soul trapped",
+      "Enter the Soul Cairn"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 90 log: portal opened, step through (objective 80)",
+    "stage 100 log: a force blocks you; Serana can make you a vampire or partially soul trap you (objectives 100 and 110)",
+    "objective 120 'Enter the Soul Cairn' follows either",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DLC1VQ05",
+   "shape": "endings",
+   "shared": [
+    "Locate Valerica",
+    "Speak to Valerica",
+    "Kill the Boneyard Keepers (<Global=DLC1VQ05KeepersKilled>/<Global=DLC1VQ05KeepersTotal>)",
+    "Speak to Valerica",
+    "Follow Valerica",
+    "Retrieve the Elder Scroll",
+    "Slay Durnehviir",
+    "Speak to Valerica",
+    "Follow Valerica",
+    "Retrieve the Elder Scroll",
+    "Speak to Valerica",
+    "Return to Tamriel"
+   ],
+   "ways": [
+    {
+     "title": "Which side you joined",
+     "ends": "Only changes the wording of the final log entry: stop Harkon, or finish the Tyranny of the Sun your own way. Either way Valerica won't leave the Soul Cairn yet; she says she'll come back once Harkon is dealt with.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records hold a second 'Speak to Valerica / Follow Valerica / Retrieve the Elder Scroll' run (objectives 90-100) after Durnehviir; stage 80 says the dragon attacked while Valerica was leading you, so the first 'Retrieve the Elder Scroll' may be cut short. Both runs are kept in index order."
+    }
+   ],
+   "evidence": [
+    "stage 30 log: slay the Keepers (objective 30)",
+    "stage 50 log: Valerica will take you to the scroll (objectives 40-60)",
+    "stage 80 log: Durnehviir attacked while Valerica was leading you",
+    "stage 200 completes with two entries split on GetGlobalValue Dawnguard.esm:00587A (side)"
+   ]
+  },
+  {
+   "edid": "DLC1VQ06",
+   "shape": "endings",
+   "shared": [
+    "Find a Moth Priest's knife",
+    "Gather bark from a Canticle Tree",
+    "Attract Ancestor Moth Swarms  (<Global=DLC1VQ06MothsFound>/<Global=DLC1VQ06MothsTotal>)",
+    "Enter the column of light and read the Elder Scroll (Blood)",
+    "Read the Elder Scroll (Blood)",
+    "Speak to Serana"
+   ],
+   "ways": [
+    {
+     "title": "Which side you joined",
+     "ends": "Only changes the wording of the final log entry (stop Harkon, or finish the Tyranny of the Sun before him)",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10-60 are one list",
+    "stage 200 completes with two entries split on GetGlobalValue Dawnguard.esm:00587A (side)"
+   ]
+  },
+  {
+   "edid": "DLC1VQ08",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Dawnguard side",
+     "ends": "Rally the Dawnguard with Isran, then go to Castle Volkihar to stop Harkon and the prophecy",
+     "steps": [
+      "Speak to Serana",
+      "Speak to Isran",
+      "Confront Harkon with Auriel's Bow",
+      "Slay Harkon"
+     ]
+    },
+    {
+     "title": "Volkihar vampire side",
+     "ends": "Confront Harkon yourself and 'reshape the prophecy as I see fit'; Harkon still has to die",
+     "steps": [
+      "Speak to Serana",
+      "Confront Harkon with Auriel's Bow",
+      "Slay Harkon"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records have one objective list; 'Speak to Isran' is left out of the vampire way because only the Dawnguard stage 20 log mentions rallying the Dawnguard."
+    }
+   ],
+   "evidence": [
+    "stage 20 has two entries split on GetGlobalValue Dawnguard.esm:00587A: ==0 rally the Dawnguard, ==1 confront Harkon",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DLC1VQElder",
+   "shape": "endings",
+   "shared": [
+    "Find The Elder Scroll (Dragon)",
+    "Find The Elder Scroll (Blood)",
+    "Bring both Elder Scrolls to Dexion"
+   ],
+   "ways": [
+    {
+     "title": "Which side you joined",
+     "ends": "Decides where Dexion waits: Fort Dawnguard, or a prisoner at Castle Volkihar",
+     "steps": []
+    },
+    {
+     "title": "How you get the Elder Scroll (Dragon)",
+     "ends": "If you sold it to Urag gro-Shub you buy it back; otherwise Urag or Septimus Signus points you onward (see Scroll Scouting)",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 40 has two entries split on GetGlobalValue Dawnguard.esm:00587A: Fort Dawnguard or Castle Volkihar",
+    "stage 200 completes with the same split",
+    "the Dragon scroll's route sits in Scroll Scouting (DLC1VQElderHandler)"
+   ]
+  },
+  {
+   "edid": "DLC1VQElderHandler",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "You sold the Elder Scroll (Dragon) to Urag gro-Shub",
+     "ends": "Buy it back from him",
+     "steps": [
+      "Buy back the Elder Scroll (Dragon) from Urag gro-Shub"
+     ]
+    },
+    {
+     "title": "You never had the scroll",
+     "ends": "Ends once you've talked with Urag, or once you meet Septimus Signus; then you go after the scroll in Seeking Disclosure",
+     "steps": [
+      "Discover the location of the Elder Scroll (Dragon)"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "What sets the global that picks the finish isn't in these files."
+    }
+   ],
+   "evidence": [
+    "stage 30 log: sold the scroll to Urag, return to see if he'll sell it back (objective 20)",
+    "stage 20 log: ask at the College of Winterhold (objective 10)",
+    "stage 200 completes with three entries on GetGlobalValue Dawnguard.esm:014558: 1 talked with Urag, 2 bought from Urag, 3 met Septimus Signus"
+   ]
+  },
+  {
+   "edid": "C04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill every Glenmoril Witch",
+     "ends": "an optional objective; one head is all the quest needs",
+     "steps": [
+      "Speak to Kodlak Whitemane",
+      "Collect a Glenmoril Witch's head",
+      "(Optional) Wipe out the Glenmoril Witches",
+      "Return to Kodlak"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log: kill the Glenmoril Witches and bring back their heads",
+    "objective 25 is '(Optional)'",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "C05",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill every Silver Hand in the stronghold",
+     "ends": "an optional objective; the fragments are what the quest needs",
+     "steps": [
+      "Retrieve the fragments of Wuuthrad",
+      "(Optional) Wipe out the Silver Hand",
+      "Return to Jorrvaskr"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log: wiping out the Silver Hand",
+    "objective 11 is '(Optional)'",
+    "stage 20 log, stage 200 completes"
+   ]
+  },
+  {
+   "edid": "CR04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Rough the troublemaker up without killing them",
+     "ends": "They won't cause trouble any more; go back to Farkas",
+     "steps": [
+      "Intimidate <Alias=Brute> in <Alias=BruteTown>",
+      "Return to <Alias.ShortName=Questgiver>"
+     ]
+    },
+    {
+     "title": "Kill the troublemaker yourself",
+     "ends": "The journal says you got carried away; the job looks to fail",
+     "steps": [
+      "Intimidate <Alias=Brute> in <Alias=BruteTown>"
+     ]
+    },
+    {
+     "title": "Someone else kills the troublemaker",
+     "ends": "The journal says they died through no fault of your own",
+     "steps": [
+      "Intimidate <Alias=Brute> in <Alias=BruteTown>"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether 'Return to <Alias.ShortName=Questgiver>' still shows after a death isn't in the records; stage 105 and 250 fail the quest and nothing ties them to a stage 30 or 40 log."
+    },
+    {
+     "why": "Whether the troublemaker dying through no fault of yours fails the job or lets you report back isn't settled by the records."
+    }
+   ],
+   "evidence": [
+    "stage 20 log 'won't be causing as much trouble' goes with objective 20",
+    "stage 30 log 'I got carried away and killed'",
+    "stage 40 log 'was killed, through no fault of my own'",
+    "stage 100 completes; stages 105 and 250 fail"
+   ]
+  },
+  {
+   "edid": "CR08",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Keep the captive alive on the way home",
+     "ends": "Escort them home, take your leave, then report back",
+     "steps": [
+      "Rescue <Alias=Victim> from <Alias=Lair>",
+      "Talk to <Alias=Victim>",
+      "Escort <Alias=Victim> back to <Alias=VictimHome>",
+      "Take your leave of <Alias=Victim>",
+      "Return to <Alias.ShortName=Questgiver>"
+     ]
+    },
+    {
+     "title": "The captive dies",
+     "ends": "The journal records their death and the job fails",
+     "steps": [
+      "Rescue <Alias=Victim> from <Alias=Lair>"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 25 log: rescued and escorted home (objectives 20-25)",
+    "stage 50 log: found the captive but they died",
+    "stage 100 completes; stages 150 and 250 fail"
+   ]
+  }
+ ]
+}

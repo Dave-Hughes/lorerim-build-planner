@@ -1,0 +1,1042 @@
+{
+ "quests": [
+  {
+   "edid": "DB01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill Grelod in the orphanage",
+     "ends": "Tell Aventus she is dead; he gives you a family heirloom. The Dark Brotherhood then comes for you (With Friends Like These).",
+     "steps": [
+      "Talk to Aventus Aretino",
+      "Kill Grelod the Kind or find an alternative way to deal with her",
+      "Tell Aventus Aretino that Grelod is dead"
+     ]
+    },
+    {
+     "title": "Lure Grelod to the Riften docks",
+     "ends": "She follows you to the docks where no one can see, and you kill her there; then tell Aventus.",
+     "steps": [
+      "Talk to Aventus Aretino",
+      "Kill Grelod the Kind or find an alternative way to deal with her",
+      "Lure Grelod to the Riften Docks",
+      "Kill Grelod the Kind",
+      "Tell Aventus Aretino that Grelod has been dealt with"
+     ]
+    },
+    {
+     "title": "Talk to the Riften guards to have her arrested",
+     "ends": "Grelod goes to Riften's jail; check on the children with Constance Michel at the orphanage. Later Grelod is killed in her cell, apparently by the Brotherhood.",
+     "steps": [
+      "Talk to Aventus Aretino",
+      "Kill Grelod the Kind or find an alternative way to deal with her",
+      "Check with Constance at Honorhall Orphanage"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The two 'Tell Aventus' objectives (25 'has been dealt with', 30 'is dead') aren't tied to a way by the records; stage 30's log says 'has been dealt with' while objective 30 says 'is dead'. They follow the checked read: 'is dead' for the orphanage kill, 'has been dealt with' for the docks."
+    }
+   ],
+   "evidence": [
+    "batch 016",
+    "stage 20's log offers killing her or going to the guards; objective 20",
+    "stage 21's log: Grelod agrees to follow you to the docks -> objective 27",
+    "stage 22's log: Grelod at the docks -> objective 28",
+    "stage 30's log: Grelod dealt with, inform Aventus",
+    "stage 198's log: check on the children now Grelod is in jail -> objective 26",
+    "stage 199 completes: Grelod killed while imprisoned (arrest way)",
+    "stage 200 completes: killed Grelod, Aventus gives the heirloom"
+   ]
+  },
+  {
+   "edid": "DB01Misc",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Convince Loreius to fix the wheel",
+     "ends": "Tell Cicero help is on the way.",
+     "steps": [
+      "Talk to the strange jester",
+      "Convince Loreius to fix the wheel",
+      "Convince Loreius OR report Cicero",
+      "Talk to Cicero"
+     ]
+    },
+    {
+     "title": "Side with Loreius and report Cicero to the guard",
+     "ends": "Tell Loreius you've helped him.",
+     "steps": [
+      "Talk to the strange jester",
+      "Convince Loreius to fix the wheel",
+      "Convince Loreius OR report Cicero",
+      "Report Cicero to the guard",
+      "Talk to Loreius"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 30 ('Convince Loreius OR report Cicero') isn't in the checked read's steps; stage 30's log offers both options, so it is put in both ways before they split."
+    },
+    {
+     "why": "Objective 10 is set by stage 10 (meeting Cicero), before the choice, so it sits on the Loreius way too, though that way never convinces him."
+    },
+    {
+     "why": "Stage 200 completes and stage 210 fails with the same journal line; the records don't say which way gets which."
+    }
+   ],
+   "evidence": [
+    "batch 016",
+    "stage 5's log: the jester on the road north of Whiterun -> objective 5",
+    "stage 10's log: Cicero wants you to ask Loreius -> objective 10",
+    "stage 30's log: convince Loreius or report Cicero -> objective 30",
+    "stage 20's log: agreed to help Loreius, report Cicero -> objective 20",
+    "stage 40's log: reported Cicero, speak to Loreius -> objective 40",
+    "stage 50's log: convinced Loreius, report back to Cicero -> objective 50",
+    "stage 200 completes, 210 fails, 215 either by a condition"
+   ]
+  },
+  {
+   "edid": "DB02",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill one of the captives",
+     "ends": "Astrid gives you the passphrase; go to the Sanctuary and join the Brotherhood.",
+     "steps": [
+      "Kill one of the captives",
+      "Speak with Astrid",
+      "Enter the Dark Brotherhood Sanctuary",
+      "Speak with Astrid"
+     ]
+    },
+    {
+     "title": "Kill Astrid",
+     "ends": "You can never join the Dark Brotherhood; Destroy the Dark Brotherhood! opens instead.",
+     "steps": [
+      "Kill one of the captives"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't show at which point Astrid can be killed; stage 220's log says she had invited you in, so she is put after the shack's first objective."
+    }
+   ],
+   "evidence": [
+    "batch 016",
+    "stage 10's log: kill a captive for the key -> objective 10",
+    "stage 40's log: captive killed, passphrase given -> objective 40",
+    "stage 200 completes: welcomed into the Brotherhood",
+    "stage 220 fails: killed Astrid instead"
+   ]
+  },
+  {
+   "edid": "DB03",
+   "shape": "endings",
+   "shared": [
+    "Speak with Astrid",
+    "Talk to Muiri",
+    "Kill Alain Dufont",
+    "Talk to Muiri",
+    "Report back to Astrid"
+   ],
+   "ways": [
+    {
+     "title": "Also kill Nilsine Shatter-Shield",
+     "ends": "Muiri pays you a bonus on top.",
+     "steps": [
+      "(Optional) Kill Nilsine Shatter-Shield"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 016",
+    "stage 20's log: kill Alain Dufont, bonus for also killing Nilsine -> objectives 20 and 30",
+    "stage 40's log: Dufont dead, return to Muiri -> objective 40",
+    "stage 50's log: paid, report to Astrid -> objective 50",
+    "stage 200 completes either way"
+   ]
+  },
+  {
+   "edid": "DB05",
+   "shape": "endings",
+   "shared": [
+    "Kill Vittoria Vici",
+    "Report back to Astrid"
+   ],
+   "ways": [
+    {
+     "title": "Kill Vittoria while she is addressing the crowd",
+     "ends": "a bonus on top of the contract",
+     "steps": []
+    },
+    {
+     "title": "Kill her any other way",
+     "ends": "the contract still counts, without the bonus",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 017",
+    "stage 10's log: kill the bride, bonus if she is addressing the crowd -> objective 10",
+    "stage 200 completes; no separate stage for the bonus"
+   ]
+  },
+  {
+   "edid": "DB06",
+   "shape": "endings",
+   "shared": [
+    "Speak with Gabriella",
+    "Kill Gaius Maro",
+    "Plant the Incriminating Letter on Gaius Maro's body",
+    "Report back to Gabriella"
+   ],
+   "ways": [
+    {
+     "title": "Steal Gaius Maro's travel schedule",
+     "ends": "you know where he'll be on each day (optional)",
+     "steps": [
+      "(Optional) Steal Gaius Maro's travel schedule"
+     ]
+    },
+    {
+     "title": "Kill him in one of the cities he visits",
+     "ends": "the bonus",
+     "steps": []
+    },
+    {
+     "title": "Kill him in Dragon Bridge or on the road",
+     "ends": "the contract still counts, but no bonus",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stealing the schedule is optional and can go with either kill; it comes before 'Kill Gaius Maro' by objective order."
+    }
+   ],
+   "evidence": [
+    "batch 017",
+    "stage 5's log: speak to Gabriella -> objective 5",
+    "objective 8 is the optional schedule, between 5 and 10",
+    "stage 10's log: kill Maro, plant the letter, bonus only in a city -> objectives 10 and 20",
+    "stage 200 completes for every kill"
+   ]
+  },
+  {
+   "edid": "DB07",
+   "shape": "endings",
+   "shared": [
+    "Talk to Astrid",
+    "Search Cicero's room",
+    "Read Cicero's diary",
+    "Talk to Astrid",
+    "Locate Arnbjorn",
+    "Talk to Arnbjorn",
+    "Enter the Dawnstar Sanctuary",
+    "Kill Cicero",
+    "Kill Cicero, or leave the Sanctuary",
+    "Report back to Astrid",
+    "Behold Shadowmere"
+   ],
+   "ways": [
+    {
+     "title": "Kill Cicero",
+     "ends": "the matter is closed and Cicero is dead",
+     "steps": []
+    },
+    {
+     "title": "Leave the Dawnstar Sanctuary without killing him",
+     "ends": "the quest still finishes; Cicero lives",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 40 ('Kill Cicero') isn't in the checked read's steps; it sits before 'Kill Cicero, or leave the Sanctuary' by objective order, and the records don't show whether everyone sees it."
+    }
+   ],
+   "evidence": [
+    "batch 017",
+    "stage 10's log: speak to Astrid -> objective 10",
+    "stage 15's log: locate Cicero and Arnbjorn, then kill Cicero",
+    "stages 17-60 have no journal text; objectives follow their index",
+    "stage 200 completes on both ways"
+   ]
+  },
+  {
+   "edid": "DB08",
+   "shape": "endings",
+   "shared": [
+    "Report to Festus Krex",
+    "Question Anton Virane",
+    "Kill Anton Virane",
+    "Kill Balagog gro-Nolob",
+    "Take the Writ of Passage",
+    "Report back to Festus Krex"
+   ],
+   "ways": [
+    {
+     "title": "Drag Balagog's body to a hiding place",
+     "ends": "a bonus (optional)",
+     "steps": [
+      "(Optional) Drag Balagog's body to a hiding place"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 017",
+    "stage 4's log: question then kill Anton Virane -> objectives 4 and 6",
+    "stage 10's log: kill Balagog, take the Writ, bonus for hiding the body -> objectives 10, 15, 20",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DB10",
+   "shape": "endings",
+   "shared": [
+    "Enter the Sanctuary",
+    "Search for survivors",
+    "Kill the Legion soldiers inside the Sanctuary (<Global=DB10LegionAttackerDeadCount>/5)",
+    "Kill Nazir's attacker!",
+    "Speak with Nazir",
+    "Escape the Sanctuary",
+    "Embrace the Night Mother",
+    "Talk to Astrid",
+    "Kill Astrid",
+    "Return to the Night Mother"
+   ],
+   "ways": [
+    {
+     "title": "Retrieve the Blade of Woe",
+     "ends": "you keep the Blade of Woe (optional)",
+     "steps": [
+      "(Optional) Retrieve the Blade of Woe"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 20 is copied as the records hold it, with the game's kill-count placeholder."
+    }
+   ],
+   "evidence": [
+    "batch 017",
+    "stage 10's log: back at the Sanctuary during the assault -> objective 10",
+    "objective 81 is optional and follows 'Return to the Night Mother'",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DB11",
+   "shape": "endings",
+   "shared": [
+    "Talk to Nazir",
+    "Talk to Amaund Motierre",
+    "Board the Katariah",
+    "Kill the Emperor!",
+    "Report to Amaund Motierre",
+    "Retrieve the payment",
+    "Report to Nazir"
+   ],
+   "ways": [
+    {
+     "title": "Kill Commander Maro",
+     "ends": "Maro dies (optional)",
+     "steps": [
+      "(Optional) Kill Commander Maro"
+     ]
+    },
+    {
+     "title": "Kill Amaund Motierre after he pays you",
+     "ends": "Motierre dies (optional)",
+     "steps": [
+      "(Optional) Kill Amaund Motierre"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Both are optional extras, not exclusive endings; a player can do both, neither or one."
+    }
+   ],
+   "evidence": [
+    "batch 017",
+    "stage 5's log: the Emperor must be killed -> objective 5",
+    "objectives 40 and 70 are optional; stages 40 and 70 have no journal text",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DBDestroy",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Accept Commander Maro's task",
+     "ends": "you clear out the Sanctuary and are rewarded",
+     "steps": [
+      "Report Astrid's death to a guard",
+      "Speak with Commander Maro",
+      "Learn the passphrase to enter the Dark Brotherhood Sanctuary",
+      "Kill the Dark Brotherhood assassins!",
+      "Track down and kill Gabriella",
+      "Track down and kill Veezara",
+      "Report back to Commander Maro"
+     ]
+    },
+    {
+     "title": "Refuse Commander Maro",
+     "ends": "the quest ends there",
+     "steps": [
+      "Report Astrid's death to a guard",
+      "Speak with Commander Maro"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Track down and kill Gabriella' and 'Track down and kill Veezara' (objectives 31, 32) have no journal stage of their own; they are put after 'Kill the Dark Brotherhood assassins!' by objective order."
+    }
+   ],
+   "evidence": [
+    "batch 017",
+    "stage 10's log: report her death to a guard -> objective 10",
+    "stage 20's log: share it with Commander Maro -> objective 20",
+    "stage 25's log: find a way inside -> objective 25",
+    "stage 30's log: found a way in, kill the assassins -> objective 30",
+    "stage 40's log: all killed, report to Maro -> objective 40",
+    "stage 199 fails: refused Maro",
+    "stage 200 completes: wiped out the assassins"
+   ]
+  },
+  {
+   "edid": "DB01_OptionalObjectives",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Ask a guard to arrest Grelod",
+     "ends": "You watch Grelod's arrest; in Innocence Lost she is then held in Riften's jail, you check on the children with Constance, and later learn Grelod was killed while imprisoned.",
+     "steps": [
+      "Ask a guard to arrest Grelod (Optional)",
+      "Witness Grelod's arrest"
+     ]
+    },
+    {
+     "title": "Poison Grelod's wine",
+     "ends": "You wait for Grelod to drink the poisoned wine, dealing with her without a blade.",
+     "steps": [
+      "Poison Grelod's Wine (Optional)",
+      "Wait for Grelod to drink the poisoned wine"
+     ]
+    },
+    {
+     "title": "Ignore both",
+     "ends": "Kill Grelod the usual way, or lure her to the Riften docks, as Innocence Lost itself offers.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The quest has only stage 0 and no journal text, so the steps are tied to ways by their wording and index pairs alone (10-20, 30-40)."
+    }
+   ],
+   "evidence": [
+    "batch 019",
+    "objectives 10 and 20 name the arrest",
+    "objectives 30 and 40 name the poisoned wine",
+    "no stage carries a complete or fail flag"
+   ]
+  },
+  {
+   "edid": "LTNQuestMarkarth",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Do the killing yourself",
+     "ends": "Kill the target and take the payment from the dead drop (either order); the contract completes.",
+     "steps": [
+      "Kill <Alias=Target>.",
+      "Retrieve payment from the Markarth Dead Drop."
+     ]
+    },
+    {
+     "title": "Hand the contract to another Dark Brotherhood member",
+     "ends": "They do the job and take the payment themselves; you get nothing from the dead drop.",
+     "steps": [
+      "Kill <Alias=Target>."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 30 lets you pick up the payment before the kill, so the two steps can come in either order; they are listed in objective order."
+    },
+    {
+     "why": "Handing the job off (stage 40) carries no complete or fail flag, so how the quest closes on that way isn't shown; it is given only the kill objective you are shown first."
+    },
+    {
+     "why": "The objective text keeps the game's target placeholder, which is filled in when the contract starts."
+    }
+   ],
+   "evidence": [
+    "batch 020",
+    "LTNQuestMarkarth: stage 10's log sets the kill (objective 10) and names the dead drop",
+    "stage 20's log follows the kill and points to the dead drop (objective 20)",
+    "stage 30's log: payment picked up first, then the kill",
+    "stage 40's log: another member took the job and the payment; no completes flag",
+    "stage 200 completes after the kill and the payment"
+   ]
+  },
+  {
+   "edid": "LTNQuestRiften",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Do the killing yourself",
+     "ends": "Kill the target and take the payment from the dead drop (either order); the contract completes.",
+     "steps": [
+      "Kill <Alias=Target>.",
+      "Retrieve payment from the Dead Drop outside of Riften."
+     ]
+    },
+    {
+     "title": "Hand the contract to another Dark Brotherhood member",
+     "ends": "They do the job and take the payment themselves; you get nothing from the dead drop.",
+     "steps": [
+      "Kill <Alias=Target>."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 30 lets you pick up the payment before the kill, so the two steps can come in either order; they are listed in objective order."
+    },
+    {
+     "why": "Handing the job off (stage 40) carries no complete or fail flag, so how the quest closes on that way isn't shown; it is given only the kill objective you are shown first."
+    },
+    {
+     "why": "The objective text keeps the game's target placeholder, which is filled in when the contract starts."
+    }
+   ],
+   "evidence": [
+    "batch 020",
+    "LTNQuestRiften: stage 10's log sets the kill (objective 10) and names the dead drop",
+    "stage 20's log follows the kill and points to the dead drop (objective 20)",
+    "stage 30's log: payment picked up first, then the kill",
+    "stage 40's log: another member took the job and the payment; no completes flag",
+    "stage 200 completes after the kill and the payment"
+   ]
+  },
+  {
+   "edid": "LTNQuestSolitude",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Do the killing yourself",
+     "ends": "Kill the target and take the payment from the dead drop (either order); the contract completes.",
+     "steps": [
+      "Kill <Alias=Target>.",
+      "Retrieve payment from the Solitude Dead Drop."
+     ]
+    },
+    {
+     "title": "Hand the contract to another Dark Brotherhood member",
+     "ends": "They do the job and take the payment themselves; you get nothing from the dead drop.",
+     "steps": [
+      "Kill <Alias=Target>."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 30 lets you pick up the payment before the kill, so the two steps can come in either order; they are listed in objective order."
+    },
+    {
+     "why": "Handing the job off (stage 40) carries no complete or fail flag, so how the quest closes on that way isn't shown; it is given only the kill objective you are shown first."
+    },
+    {
+     "why": "The objective text keeps the game's target placeholder, which is filled in when the contract starts."
+    }
+   ],
+   "evidence": [
+    "batch 020",
+    "LTNQuestSolitude: stage 10's log sets the kill (objective 10) and names the dead drop",
+    "stage 20's log follows the kill and points to the dead drop (objective 20)",
+    "stage 30's log: payment picked up first, then the kill",
+    "stage 40's log: another member took the job and the payment; no completes flag",
+    "stage 200 completes after the kill and the payment"
+   ]
+  },
+  {
+   "edid": "LTNQuestWhiterun",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Do the killing yourself",
+     "ends": "Kill the target and take the payment from the dead drop (either order); the contract completes.",
+     "steps": [
+      "Kill <Alias=Target>.",
+      "Retrieve payment from the Whiterun Hold Dead Drop."
+     ]
+    },
+    {
+     "title": "Hand the contract to another Dark Brotherhood member",
+     "ends": "They do the job and take the payment themselves; you get nothing from the dead drop.",
+     "steps": [
+      "Kill <Alias=Target>."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 30 lets you pick up the payment before the kill, so the two steps can come in either order; they are listed in objective order."
+    },
+    {
+     "why": "Handing the job off (stage 40) carries no complete or fail flag, so how the quest closes on that way isn't shown; it is given only the kill objective you are shown first."
+    },
+    {
+     "why": "The objective text keeps the game's target placeholder, which is filled in when the contract starts."
+    }
+   ],
+   "evidence": [
+    "batch 020",
+    "LTNQuestWhiterun: stage 10's log sets the kill (objective 10) and names the dead drop",
+    "stage 20's log follows the kill and points to the dead drop (objective 20)",
+    "stage 30's log: payment picked up first, then the kill",
+    "stage 40's log: another member took the job and the payment; no completes flag",
+    "stage 200 completes after the kill and the payment"
+   ]
+  },
+  {
+   "edid": "LTNQuestWindhelm",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Do the killing yourself",
+     "ends": "Kill the target and take the payment from the dead drop (either order); the contract completes.",
+     "steps": [
+      "Kill <Alias=Target>.",
+      "Retrieve payment from the Dead Drop in Eastmarch."
+     ]
+    },
+    {
+     "title": "Hand the contract to another Dark Brotherhood member",
+     "ends": "They do the job and take the payment themselves; you get nothing from the dead drop.",
+     "steps": [
+      "Kill <Alias=Target>."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 30 lets you pick up the payment before the kill, so the two steps can come in either order; they are listed in objective order."
+    },
+    {
+     "why": "Handing the job off (stage 40) carries no complete or fail flag, so how the quest closes on that way isn't shown; it is given only the kill objective you are shown first."
+    },
+    {
+     "why": "The objective text keeps the game's target placeholder, which is filled in when the contract starts."
+    }
+   ],
+   "evidence": [
+    "batch 020",
+    "LTNQuestWindhelm: stage 10's log sets the kill (objective 10) and names the dead drop",
+    "stage 20's log follows the kill and points to the dead drop (objective 20)",
+    "stage 30's log: payment picked up first, then the kill",
+    "stage 40's log: another member took the job and the payment; no completes flag",
+    "stage 200 completes after the kill and the payment"
+   ]
+  },
+  {
+   "edid": "CW03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "You serve the Legion",
+     "ends": "You carry Tullius's message, then warn the Jarl that Ulfric is coming and report to Legate Quentin Cipius.",
+     "steps": [
+      "Deliver message to the Jarl of Whiterun",
+      "Assist Jarl Balgruuf with the dragon threat",
+      "Wait for the Jarl's response",
+      "Return to Whiterun and warn the Jarl",
+      "Report to <Alias=ImperialFieldCO>"
+     ]
+    },
+    {
+     "title": "You serve the Stormcloaks",
+     "ends": "You carry Ulfric's axe, bring the Jarl's answer back to Ulfric, and wait for his orders.",
+     "steps": [
+      "Deliver axe to the Jarl of Whiterun",
+      "Assist Jarl Balgruuf with the dragon threat",
+      "Wait for the Jarl's response",
+      "Deliver axe to Jarl Ulfric",
+      "Wait for orders from Jarl Ulfric"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Assist Jarl Balgruuf with the dragon threat' (objective 16) has no journal text tying it to a side; it is put on both ways."
+    },
+    {
+     "why": "'Report to' (objective 150) is copied as the records hold it, with the game's placeholder for the Legion field commander."
+    }
+   ],
+   "evidence": [
+    "batch 021",
+    "stage 10's log: deliver a message to the Jarl -> objective 10 (Legion); objective 11 is the axe (Stormcloak)",
+    "stage 50's log: inform Jarl Ulfric of the Jarl's choice -> objective 50",
+    "stage 100's log: Ulfric plans war, return and warn the Jarl -> objective 100",
+    "objective 150's placeholder names the Imperial field commander",
+    "objective 225 'Wait for orders from Jarl Ulfric'",
+    "stages 210, 240 and 255 complete"
+   ]
+  },
+  {
+   "edid": "CWMission03",
+   "shape": "endings",
+   "shared": [
+    "Find the <Alias=Courier>",
+    "Retrieve the <Alias=Courier>'s package",
+    "Bring the documents to <Alias=FieldCO>",
+    "Bring the forged documents to <Alias=EnemyFieldCO>"
+   ],
+   "ways": [
+    {
+     "title": "Which side you fight for",
+     "ends": "Decides which inns the courier stops at and which enemy commander you fool.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The objectives keep the game's placeholders for the courier and commanders, filled in by side."
+    }
+   ],
+   "evidence": [
+    "batch 021",
+    "stage 10's log: intercept the courier, then deliver forged documents",
+    "stage 200 completes; stage 205 fails with no journal text"
+   ]
+  },
+  {
+   "edid": "CWMission07",
+   "shape": "endings",
+   "shared": [
+    "Find evidence",
+    "Blackmail <Alias=Steward>",
+    "Report to <Alias=FieldCO>",
+    "Meet the men",
+    "Follow <Alias=Friend> and ambush enemy scout",
+    "Take over the caravan",
+    "Report to <Alias=Friend>",
+    "Report success to <Alias=FieldCO>"
+   ],
+   "ways": [
+    {
+     "title": "Which side you fight for",
+     "ends": "Decides whose steward you blackmail (Anuriel in Riften or Raerek in Markarth) and whether Hadvar or Ralof leads the ambush.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The objectives keep the game's placeholders for the steward, commander and friend, filled in by side."
+    }
+   ],
+   "evidence": [
+    "batch 021",
+    "stage 10's log -> objective 10",
+    "stage 30's log -> objective 30",
+    "stage 40's log -> objective 40",
+    "stage 200 completes; stage 205 fails with no journal text"
+   ]
+  },
+  {
+   "edid": "CWCRQuest",
+   "shape": "endings",
+   "shared": [
+    "Pick up champion armor from your commanding officer"
+   ],
+   "ways": [
+    {
+     "title": "You serve the Imperial Legion",
+     "ends": "collect the armor from Legate Adventus Caesennius",
+     "steps": []
+    },
+    {
+     "title": "You serve the Stormcloaks",
+     "ends": "collect the armor from Captain Yrsarald Thrice-Pierced",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 022",
+    "stage 100 completes under two conditions: player in Imperial Legion faction or in Sons of Skyrim faction"
+   ]
+  },
+  {
+   "edid": "zzzAomBountyChickTrader",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill the Chick Trader",
+     "ends": "stop the trade by force",
+     "steps": [
+      "Kill the Chick Trader or buy an orphan in <Alias=TownLocation>"
+     ]
+    },
+    {
+     "title": "Buy an orphan",
+     "ends": "take the child to the Temple of Stendarr",
+     "steps": [
+      "Kill the Chick Trader or buy an orphan in <Alias=TownLocation>",
+      "Take the orphan to the Temple of Stendarr"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage has journal text; whether killing the trader still needs the orphan taken to the temple isn't shown (stages 20 and 999 both complete)."
+    },
+    {
+     "why": "Objective 0 is copied as the records hold it, with the game's placeholder for the town."
+    }
+   ],
+   "evidence": [
+    "batch 023",
+    "objective 0: kill or buy",
+    "objective 10: take the orphan to the temple",
+    "stages 20 and 999 complete"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq00",
+   "shape": "endings",
+   "shared": [
+    "Join the Vigilants of Stendarr",
+    "Follow Altano or meet him in the Temple of Stendarr",
+    "Talk to Altano",
+    "Talk to Thorondir",
+    "Talk to Altano"
+   ],
+   "ways": [
+    {
+     "title": "Follow Altano, or go to the Temple of Stendarr on your own",
+     "ends": "Either way you meet him in the temple",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 024",
+    "objective 10 holds both options in one step",
+    "stages 40, 999, 9999 complete; no stage has journal text"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq01",
+   "shape": "endings",
+   "shared": [
+    "Talk to Altano",
+    "Follow Altano or meet him in Whiterun's Hall of the Dead",
+    "Talk to Altano",
+    "Find the vampire",
+    "Defeat the vampire",
+    "Report to Altano"
+   ],
+   "ways": [
+    {
+     "title": "Follow Altano, or go to Whiterun's Hall of the Dead on your own",
+     "ends": "Either way you meet him there",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 024",
+    "objective 10 holds both options in one step",
+    "stages 50 and 9999 complete"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq03",
+   "shape": "endings",
+   "shared": [
+    "Talk to Altano in the Bannered Mare",
+    "Follow Altano or meet him in Candlehearth Hall",
+    "Follow Altano",
+    "Defeat the Daedra",
+    "Report to Altano"
+   ],
+   "ways": [
+    {
+     "title": "Follow Altano, or go to Candlehearth Hall on your own",
+     "ends": "Either way you meet him there",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 024",
+    "objective 10 holds both options in one step",
+    "stages 40 and 9999 complete"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq04",
+   "shape": "endings",
+   "shared": [
+    "Talk to Altano in Candlehearth Hall",
+    "Investigate the rumors about the Eye of Madness",
+    "Report to Altano",
+    "Kill Balor",
+    "Report to Altano"
+   ],
+   "ways": [
+    {
+     "title": "Ask the cultist of Meridia for help",
+     "ends": "Anton the Brilliant, the cultist, is in the quest; the records don't say what his help does",
+     "steps": [
+      "(Optional) Ask the cultist of Meridia for help"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 024",
+    "objective 21 is optional, between 20 and 30",
+    "stages 50 and 9999 complete"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq05",
+   "shape": "endings",
+   "shared": [
+    "Talk to Altano in Candlehearth Hall",
+    "Follow Altano or meet him at Stendarr's Beacon",
+    "Follow Altano or meet him in the Bee and Barb",
+    "Defeat the Daedra",
+    "Talk to Keerava",
+    "Pay 1000 gold to Keerava",
+    "Report to Jacob"
+   ],
+   "ways": [
+    {
+     "title": "Pay Keerava 1000 gold yourself",
+     "ends": "Clears the 'Pay 1000 gold to Keerava' step; the records don't say what the money is for",
+     "steps": []
+    },
+    {
+     "title": "Borrow the gold from Altano",
+     "ends": "Altano lends you the gold to pay Keerava",
+     "steps": [
+      "(Optional) Borrow gold from Altano"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "batch 024",
+    "objective 40 'Pay 1000 gold to Keerava' sits on both ways; objective 41 is the optional loan",
+    "stages 60 and 9999 complete"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq06",
+   "shape": "endings",
+   "shared": [
+    "Talk to Altano",
+    "Meet Altano in the Ragged Flagon",
+    "Find Jo'vanni",
+    "Why did you kill Jo'vanni? Why? Jo'vanni simply wished to see Campaner'Ra!",
+    "That one! It is inside Jo'vanni! Make it leave, please!",
+    "Take Campaner'Ra's pelt from Mar'so and bring it back to Jo'vanni! Please, grant this one's last request!",
+    "Jo'vanni cannot wait! Hurry! Khajiit wishes to see Campaner'Ra again!",
+    "Report to Altano"
+   ],
+   "ways": [
+    {
+     "title": "Ask the cultist of Meridia for help",
+     "ends": "Anton the Brilliant, the cultist, is in the quest; the records don't say what his help does",
+     "steps": [
+      "(Optional) Ask the cultist of Meridia for help"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Why did you kill Jo'vanni?...' (objective 25) has no stage text tying it to the main run or a side branch; it stays in the shared steps by objective order, as the checked read has it."
+    }
+   ],
+   "evidence": [
+    "batch 024",
+    "objective 21 is optional, between 20 and 25",
+    "stage 90 completes, with Jo'vanni's thanks only when stage 79 isn't done",
+    "stage 999 fails; nothing shows what sets it"
+   ]
+  },
+  {
+   "edid": "zzzAoMMq08",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Hunt down the witches",
+     "ends": "One ending",
+     "steps": [
+      "Hunt down the witches"
+     ]
+    },
+    {
+     "title": "Stand against Altano",
+     "ends": "A second ending",
+     "steps": [
+      "(Optional) Negotiate with Altano",
+      "(Optional) Defeat Altano"
+     ]
+    },
+    {
+     "title": "Defeat the Ugly One at the Altar of Molag Bal",
+     "ends": "A third ending",
+     "steps": [
+      "Defeat the Ugly One"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 0 ('Hunt down the witches') has index 0 and may show to every player at the start; it is kept on the witches' way, as the checked read has it."
+    },
+    {
+     "why": "Whether the Ugly One fight follows the Altano steps isn't shown; it is its own way, closed by its own stage."
+    }
+   ],
+   "evidence": [
+    "batch 024",
+    "stage 30 completes after the stages 0-20 run (witches)",
+    "stages 200-230 match objectives 200 and 210; stage 230 completes",
+    "stage 300 matches objective 300; stage 310 completes"
+   ]
+  }
+ ]
+}

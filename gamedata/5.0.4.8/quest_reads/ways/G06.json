@@ -1,0 +1,1004 @@
+{
+ "quests": [
+  {
+   "edid": "DLC2MH01",
+   "shape": "endings",
+   "shared": [
+    "Join the assault on Thirsk Mead Hall",
+    "Approach Thirsk Mead Hall",
+    "Kill the Rieklings (<Global=DLC2MH01RieklingsKilled>/<Global=DLC2MH01RieklingsTotal>)",
+    "Speak to Bujold",
+    "Meet Bujold at Hrothmund's Barrow",
+    "Commune with Hrothmund's Spirit"
+   ],
+   "ways": [
+    {
+     "title": "Back Bujold when she says she will lead anyway",
+     "ends": "Bujold lives and starts a new tradition at Thirsk, focused on the present",
+     "steps": []
+    },
+    {
+     "title": "Call her leadership a fraud",
+     "ends": "Bujold attacks you and you have to kill her",
+     "steps": [
+      "Defeat Bujold"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10-30 run in stage order 10, 20, 25, 27, 30 for everyone",
+    "stage 40 log ('when I opposed her fraud, she attacked me') goes with objective 40",
+    "stage 200 completes on two entries: Bujold alive (GetDead == 0) or Bujold dead (GetDead == 1)",
+    "stage 210 fails (siding with the rieklings), which is not one of the read's choices"
+   ]
+  },
+  {
+   "edid": "DLC2TT1b",
+   "shape": "endings",
+   "shared": [
+    "Talk to Mogrul"
+   ],
+   "ways": [
+    {
+     "title": "Pay Mogrul the 1000 septims",
+     "ends": "The debt is settled",
+     "steps": [
+      "Pay Mogrul"
+     ]
+    },
+    {
+     "title": "Persuade Mogrul",
+     "ends": "He takes half, 500 septims",
+     "steps": [
+      "Pay Mogrul"
+     ]
+    },
+    {
+     "title": "Refuse and kill Mogrul",
+     "ends": "The quest ends with Mogrul dead; until it's settled he keeps sending thugs after you",
+     "steps": [
+      "Pay or kill Mogrul"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage says which of objectives 200 'Pay Mogrul' and 210 'Pay or kill Mogrul' is shown when; 210 is put on the kill way because it is the only one that names killing, and 200 on the pay and persuade ways."
+    }
+   ],
+   "evidence": [
+    "stage 100 log (Mogrul wants to talk) goes with objective 100",
+    "stage 200 log (Mogrul expects me to pay, or he sends thugs) precedes objectives 200/210",
+    "stage 300 completes (paid), 310 completes (killed him), 320 completes (persuaded him to take half)"
+   ]
+  },
+  {
+   "edid": "DLC2TTR4a",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Let Neloth cast the spell",
+     "ends": "You carry the spell; normally it boosts your health, but in rain or while swimming it lowers it. Tell Neloth to finish.",
+     "steps": [
+      "Watch for side effects",
+      "Talk to Neloth"
+     ]
+    },
+    {
+     "title": "Refuse",
+     "ends": "The quest fails.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 100 log (I let Neloth cast the spell, watch for side effects) goes with objective 100",
+    "stage 200 log (found the rain/swimming side effect) goes with objective 200",
+    "stage 300 completes; stage 400 fails ('I refused')"
+   ]
+  },
+  {
+   "edid": "DLC2BlackBook03Quest",
+   "shape": "endings",
+   "shared": [
+    "Learn the Black Book's hidden knowledge"
+   ],
+   "ways": [
+    {
+     "title": "Read the book again to escape",
+     "ends": "You escape Apocrypha; the quest stays open for another try",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Reading the book again doesn't finish the quest: no stage completes or fails for it, and the only finishing stage, 20, is learning the hidden knowledge."
+    }
+   ],
+   "evidence": [
+    "stage 10 log ('uncover the knowledge hidden here, or read the book again to escape') goes with objective 10",
+    "stage 20 completes on uncovering the knowledge; no stage records escaping"
+   ]
+  },
+  {
+   "edid": "DLC2BlackBook04Quest",
+   "shape": "endings",
+   "shared": [
+    "Learn the Black Book's hidden knowledge"
+   ],
+   "ways": [
+    {
+     "title": "Read the book again to escape",
+     "ends": "You escape Apocrypha; the quest stays open for another try",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Reading the book again doesn't finish the quest: no stage completes or fails for it, and the only finishing stage, 20, is learning the hidden knowledge."
+    }
+   ],
+   "evidence": [
+    "stage 10 log ('uncover the knowledge hidden here, or read the book again to escape') goes with objective 10",
+    "stage 20 completes on uncovering the knowledge; no stage records escaping"
+   ]
+  },
+  {
+   "edid": "DLC2BlackBook05Quest",
+   "shape": "endings",
+   "shared": [
+    "Learn the Black Book's hidden knowledge"
+   ],
+   "ways": [
+    {
+     "title": "Read the book again to escape",
+     "ends": "You escape Apocrypha; the quest stays open for another try",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Reading the book again doesn't finish the quest: no stage completes or fails for it, and the only finishing stage, 20, is learning the hidden knowledge."
+    }
+   ],
+   "evidence": [
+    "stage 10 log ('uncover the knowledge hidden here, or read the book again to escape') goes with objective 10",
+    "stage 20 completes on uncovering the knowledge; no stage records escaping"
+   ]
+  },
+  {
+   "edid": "DLC2BlackBook06Quest",
+   "shape": "endings",
+   "shared": [
+    "Learn the Black Book's hidden knowledge"
+   ],
+   "ways": [
+    {
+     "title": "Read the book again to escape",
+     "ends": "You escape Apocrypha; the quest stays open for another try",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Reading the book again doesn't finish the quest: no stage completes or fails for it, and the only finishing stage, 20, is learning the hidden knowledge."
+    }
+   ],
+   "evidence": [
+    "stage 10 log ('uncover the knowledge hidden here, or read the book again to escape') goes with objective 10",
+    "stage 20 completes on uncovering the knowledge; no stage records escaping"
+   ]
+  },
+  {
+   "edid": "DLC2BlackBook07Quest",
+   "shape": "endings",
+   "shared": [
+    "Learn the Black Book's hidden knowledge"
+   ],
+   "ways": [
+    {
+     "title": "Read the book again to escape",
+     "ends": "You escape Apocrypha; the quest stays open for another try",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Reading the book again doesn't finish the quest: no stage completes or fails for it, and the only finishing stage, 20, is learning the hidden knowledge."
+    }
+   ],
+   "evidence": [
+    "stage 10 log ('uncover the knowledge hidden here, or read the book again to escape') goes with objective 10",
+    "stage 20 completes on uncovering the knowledge; no stage records escaping"
+   ]
+  },
+  {
+   "edid": "DLC2EbonyWarriorQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Meet him at the Last Vigil and fight",
+     "ends": "You defeat the Ebony Warrior and the quest completes: 'May his soul find rest in Sovngarde.'",
+     "steps": [
+      "Talk to the Ebony Warrior",
+      "Meet the Ebony Warrior at the Last Vigil"
+     ]
+    },
+    {
+     "title": "Tell him to get lost",
+     "ends": "You dismiss his challenge; he looks dejected and the quest completes with no fight",
+     "steps": [
+      "Talk to the Ebony Warrior",
+      "Tell him to get lost"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log (a warrior tried to talk to me) goes with objective 10",
+    "stage 100 log (challenged me to fight at his last vigil) goes with objective 100",
+    "stage 200 completes (defeated him); stage 250 completes (dismissed his challenge), matching objective 150"
+   ]
+  },
+  {
+   "edid": "DLC2dunKolbjornQST",
+   "shape": "endings",
+   "shared": [
+    "Fund the excavation of Kolbjorn Barrow (1000 gold)",
+    "Wait for a message from Ralis",
+    "Visit the Kolbjorn Barrow Excavation",
+    "Clear the Draugr from Kolbjorn Barrow",
+    "Find a way deeper into the Barrow",
+    "Speak to Ralis",
+    "Fund the next phase of the excavation (2000 gold)",
+    "Wait for a message from Ralis",
+    "Return to Kolbjorn Barrow",
+    "Clear the Draugr from Kolbjorn Barrow",
+    "Search for the missing miners",
+    "Speak to Ralis",
+    "Fund the next phase of the excavation (3000 gold)",
+    "Wait for a message from Ralis",
+    "Return to Kolbjorn Barrow",
+    "Clear the Draugr from Kolbjorn Barrow",
+    "Speak to Ralis",
+    "Fund the next phase of the excavation (5000 gold)",
+    "Wait for a message from Ralis",
+    "Return to Kolbjorn Barrow",
+    "Locate Ralis",
+    "Defeat Ahzidal",
+    "Confront Ralis"
+   ],
+   "ways": [
+    {
+     "title": "Kill Ralis",
+     "ends": "You decide he sacrificed the miners on purpose and kill him for his crimes",
+     "steps": [
+      "Kill Ralis"
+     ]
+    },
+    {
+     "title": "Let Ralis go",
+     "ends": "You accept that Ahzidal controlled him and let him leave in peace. He says he'll go to Raven Rock and lend you a hand if you need it",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage here has a completes flag, so the records don't show which stage ends either way; the endings come from the stage 480/485 (kill) and 490 (let him go) logs."
+    }
+   ],
+   "evidence": [
+    "objectives 40-475 each follow the stage of the same index in order (40, 75, 100 ... 475)",
+    "stage 475 log (defeated Ahzidal) precedes the confrontation, objective 475",
+    "stage 480 log ('decided to kill him for his crimes') goes with objective 480; stage 485 log ('killed him')",
+    "stage 490 log ('allowed him to live and depart the barrow in peace') has no objective"
+   ]
+  },
+  {
+   "edid": "MS01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Get the room keys or talk to Margret",
+     "ends": "all optional; either way you still read Margret's Journal and Weylin's Note",
+     "steps": [
+      "Go to the Shrine of Talos",
+      "Find evidence about Margret",
+      "(Optional) Obtain the key to Margret's room",
+      "(Optional) Talk to Margret",
+      "Read Margret's Journal",
+      "Find evidence about Weylin",
+      "(Optional) Obtain the key to Weylin's room",
+      "Read Weylin's Note",
+      "Find out who \"N\" is",
+      "Find evidence about Nepos",
+      "Read Nepos' Journal",
+      "Find evidence about Thonar",
+      "Read Thonar's Journal",
+      "Return to Eltrys"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The three optional objectives (30, 35, 40) are placed beside the evidence they help with, following the checked read's order; no stage log ties them."
+    }
+   ],
+   "evidence": [
+    "stage 15 log (meet Eltrys at the Shrine of Talos) goes with objective 10",
+    "stage 20 log (uncover evidence about the woman in the marketplace) goes with objective 20",
+    "stages 95 and 100 complete (framed for Eltrys' murder) whichever optional steps you take"
+   ]
+  },
+  {
+   "edid": "MS02",
+   "shape": "endings",
+   "shared": [
+    "Ask a prisoner about Madanach",
+    "Get past Borkul the Beast",
+    "Talk to Madanach",
+    "Hear Braig's story",
+    "Return to Madanach",
+    "Kill Grisvar the Unlucky",
+    "Return to Madanach"
+   ],
+   "ways": [
+    {
+     "title": "Help Madanach escape",
+     "ends": "Follow Madanach out. He and his Forsworn take credit for all your past crimes, clearing your name in the Reach.",
+     "steps": [
+      "Follow Madanach"
+     ]
+    },
+    {
+     "title": "Kill Madanach",
+     "ends": "Search his body, read his note and escape the mine yourself. Thonar Silver-Blood pardons you, clearing your name in the Reach.",
+     "steps": [
+      "Kill Madanach",
+      "Search Madanach's body",
+      "Read Madanach's note",
+      "Escape Cidhna Mine"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10-60 follow stages 10-60 for everyone",
+    "objective 70 follows stage 70 and leads to stage 100, which completes (helped Madanach escape)",
+    "objectives 150-220 sit with stages 200-230, leading to stage 250, which completes (Thonar's pardon for killing Madanach)"
+   ]
+  },
+  {
+   "edid": "MS03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Steal the lodge stash too",
+     "ends": "optional extra loot at Black-Briar Lodge (a stash key is part of the quest)",
+     "steps": [
+      "Listen to Louis Letrush's offer",
+      "Speak to Sibbi Black-Briar",
+      "(Optional) Steal the Lodge Stash",
+      "Steal Frost's Lineage Papers",
+      "Steal Frost",
+      "Return to Louis Letrush"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The optional stash objective (20) is placed in index order between speaking to Sibbi and stealing the papers; no stage log ties it."
+    }
+   ],
+   "evidence": [
+    "stage 5 log goes with objective 5; stage 10 log with objective 10; stage 25 log (Sibbi asks me to steal Frost) with objectives 25 and 30",
+    "stages 200/225 log the reward; stage 275 completes, stage 300 fails"
+   ]
+  },
+  {
+   "edid": "MS07",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take the deal and put out the fire",
+     "ends": "The Icerunner runs aground. At the wreck Deeja turns on you; after you defeat her, a note from Jaree-Ra to his sister says the loot is going to Broken Oar Grotto, and you must defeat him there.",
+     "steps": [
+      "Accept Jaree-Ra's offer in Solitude",
+      "Put out the fire in the Solitude Lighthouse",
+      "Return to Jaree-Ra",
+      "Find Deeja at the Wreck of the Icerunner",
+      "Defeat Deeja",
+      "Find out where Jaree-Ra's bandits took the loot",
+      "Travel to Broken Oar Grotto",
+      "Defeat Jaree-Ra"
+     ]
+    },
+    {
+     "title": "Report him to the guard captain",
+     "ends": "Captain Aldis won't act without evidence. Once you find it you learn he's working with the Blackblood Marauders, and you can confront him or turn him in to the guards, who arrest him.",
+     "steps": [
+      "Report Jaree-Ra to the guard captain",
+      "Find evidence of Jaree-Ra's criminal activity",
+      "Confront Jaree-Ra",
+      "Report Jaree-Ra to the guard captain"
+     ]
+    },
+    {
+     "title": "Find out about the Marauders, then confront him",
+     "ends": "Talk him into giving up, or into making you his partner. As partners you put out the fire and take the loot with him, or betray him and the Marauders and keep it yourself.",
+     "steps": [
+      "Confront Jaree-Ra",
+      "Put out the fire in the Solitude Lighthouse"
+     ]
+    },
+    {
+     "title": "Find out about the Marauders, then tell the guards",
+     "ends": "He is arrested.",
+     "steps": [
+      "Report Jaree-Ra to the guard captain"
+     ]
+    },
+    {
+     "title": "Kill Jaree-Ra",
+     "ends": "If he dies before the ship wrecks, the quest fails and the Icerunner docks safely. If you kill him at the docks later, you go on to the wreck. If he learns you killed his sister Deeja, he turns on you.",
+     "steps": [
+      "Accept Jaree-Ra's offer in Solitude",
+      "Put out the fire in the Solitude Lighthouse",
+      "Return to Jaree-Ra",
+      "Defeat Jaree-Ra",
+      "Travel to the Wreck of the Icerunner"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 55's log says 'confront him or report this to the guards', so objectives 55 and 60 are both shown then; the report way lists both, the confront and tell-the-guards ways one each."
+    },
+    {
+     "why": "The records don't say how you find out about the Marauders without reporting him first, or which steps follow the partnership after the fire; the confront way stops at putting out the fire."
+    },
+    {
+     "why": "Objective 225 'Defeat Jaree-Ra' is put on the kill way because stages 110 and 120 both say 'I must defeat Jaree-Ra' before stage 130 ('I killed Jaree-Ra at the Solitude docks'); that is the nearest objective, not a stated tie."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (offer) -> objective 10; stage 15 log (reported him to Captain Aldis, need evidence) -> objectives 12, 15",
+    "stage 50 log (put out the lighthouse fire) -> objective 50; stage 100 log (return to Jaree-Ra) -> objective 100",
+    "stage 125 log (meet Deeja at the wreck) -> objective 125; stage 150 -> 150; stage 175 -> 175; stage 225 log (Camp Broken Oar) -> objective 225; stage 250 completes",
+    "stage 55 log (confront him or report to the guards) -> objectives 55, 60; stage 65 log (persuaded him to become partners, put out the fire) -> objective 50",
+    "stage 90 log and stage 350 completion: he is arrested; stage 310 completes (persuaded him to give up); 320 (worked with him) and 330 (betrayed him) complete",
+    "stage 130 log (killed him at the docks, find the wreck) -> objective 130; stage 300 fails (Jaree-Ra dead, Icerunner docks safely)"
+   ]
+  },
+  {
+   "edid": "MS08",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Side with Iman",
+     "ends": "Get into the Alik'r hideout (the Alik'r Prisoner in Dragonsreach Dungeon knows the way), kill Kematu, and go back to Iman.",
+     "steps": [
+      "Find the Redguard woman",
+      "Speak with Saadia",
+      "Talk to the Alik'r Prisoner",
+      "Find a way to enter the Alik'r hideout",
+      "Enter the Alik'r hideout",
+      "Kill Kematu or talk to him",
+      "Kill Kematu",
+      "Return to Iman",
+      "Speak with Iman"
+     ]
+    },
+    {
+     "title": "Listen to Kematu",
+     "ends": "He says Iman betrayed her people to the Dominion. You can still kill him, or lead Iman to an ambush at the Whiterun stables and hand her over.",
+     "steps": [
+      "Find the Redguard woman",
+      "Speak with Saadia",
+      "Talk to the Alik'r Prisoner",
+      "Find a way to enter the Alik'r hideout",
+      "Enter the Alik'r hideout",
+      "Kill Kematu or talk to him",
+      "Kill Kematu OR Convince Iman to meet Kematu",
+      "Lead Iman to the Whiterun Stables"
+     ]
+    },
+    {
+     "title": "Tell the Alik'r where she is",
+     "ends": "The quest gives you the objective to inform the Alik'r of her location.",
+     "steps": [
+      "Find the Redguard woman",
+      "Speak with Saadia",
+      "Inform the Alik'r of Saadia's location",
+      "Inform the Alik'r of Iman's location"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objectives 21 and 26 (inform the Alik'r of Saadia's / Iman's location) have no stage log of their own; they are placed after 20 and 25 by index, as alternatives offered at those points."
+    },
+    {
+     "why": "No stage completes for the tell-the-Alik'r way; how it ends past the objective isn't in the records."
+    },
+    {
+     "why": "Two objectives read 'Kill Kematu' (100 and 130); which one the side-with-Iman way shows isn't stated."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (Alik'r looking for a Redguard woman) -> objective 10",
+    "stage 25 log (barmaid is a fugitive noble, stop the assassins) -> objective 25 onward",
+    "stage 175 log (agreed to lead her into an ambush at the stables) -> objective 175; stage 201 completes (delivered Iman to Kematu)",
+    "stage 200 completes (helped Iman escape, leader defeated) after objectives 160/199",
+    "stage 300 fails"
+   ]
+  },
+  {
+   "edid": "MS09",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Find the proof",
+     "ends": "Search the Battle-Borns for evidence, get Idolaf Battle-Born to talk, or meet Jon Battle-Born at Talos' statue.",
+     "steps": [
+      "Meet Fralia at her home in the evening.",
+      "Find evidence of Thorald's fate",
+      "Meet Jon Battle-Born at Talos' statue",
+      "Deliver proof to Avulstein"
+     ]
+    },
+    {
+     "title": "Free Thorald quietly",
+     "ends": "Find a way to get him released from Thalmor custody. The quest uses a prisoner release order, and has you follow a Thalmor guard.",
+     "steps": [
+      "Meet Fralia at her home in the evening.",
+      "Find evidence of Thorald's fate",
+      "Deliver proof to Avulstein",
+      "Find a way to release Thorald from Thalmor custody",
+      "Follow the Thalmor guard",
+      "Lead Thorald to safety",
+      "Speak to Thorald Gray-Mane",
+      "Return to Fralia Gray-Mane"
+     ]
+    },
+    {
+     "title": "Storm Northwatch Keep with Avulstein",
+     "ends": "Meet Avulstein outside the keep and fight your way in.",
+     "steps": [
+      "Meet Fralia at her home in the evening.",
+      "Find evidence of Thorald's fate",
+      "Deliver proof to Avulstein",
+      "Meet Avulstein at Northwatch Keep",
+      "Rescue Thorald from Northwatch Keep",
+      "Lead Thorald to safety",
+      "Speak to Thorald Gray-Mane",
+      "Return to Fralia Gray-Mane"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The first choice is how you find the proof, not a way to finish; it lists the steps up to delivering the proof, and only the Jon Battle-Born route has its own objective (25)."
+    },
+    {
+     "why": "Objective 60 'Lead Thorald to safety' follows stage 60, which isn't tied to either rescue; it is put on both."
+    }
+   ],
+   "evidence": [
+    "stage 10 log -> objective 10; stage 20 log (Battle-Borns have proof) -> objective 20; stage 30 log (evidence, Avulstein) -> objective 30",
+    "stage 40 log (offered to free Thorald to prevent bloodshed) -> objectives 40, 45",
+    "stage 50 log (meet Avulstein outside the Keep) -> objectives 50, 55",
+    "stage 60 log (get him away from Northwatch) -> objective 60; stage 110 log (message to his mother) -> objective 110",
+    "stages 200 and 201 complete; 202 and 255 fail"
+   ]
+  },
+  {
+   "edid": "MS11",
+   "shape": "endings",
+   "shared": [
+    "Question the witnesses",
+    "Report to the guard",
+    "Talk to <Alias=AuthorityFigure>",
+    "Examine the crime scene",
+    "Talk to Helgird",
+    "Get access to Hjerim",
+    "Look for clues",
+    "Follow up on the clues from Hjerim",
+    "Meet Viola outside of Hjerim",
+    "Investigate Hjerim with Viola",
+    "Talk to <Alias=AuthorityFigure>"
+   ],
+   "ways": [
+    {
+     "title": "Accuse Wuunferth the Unliving",
+     "ends": "The quest ends with Wuunferth named as the Butcher and jailed. Then the killer strikes again (the second Blood on the Ice).",
+     "steps": []
+    },
+    {
+     "title": "Patrol the Stone Quarter at night",
+     "ends": "You catch the real killer, Calixto Corrium.",
+     "steps": [
+      "Patrol the streets of the Stone Quarter at night",
+      "Catch the murderer",
+      "Talk to <Alias=AuthorityFigure>"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 1 'Get assistance from <Alias=AuthorityFigure>' is left out: the stage 60/70 logs conditioned on stage 1 point to it belonging to the start where you break into Hjerim first, not to either choice."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (asked to help investigate) -> objective 10; stage 40 log (the steward may have advice) -> objectives 30-40",
+    "stage 60 and 70 logs (entered Hjerim, follow up on clues) -> objectives 60, 70",
+    "stage 100 completes (Wuunferth was the Butcher)",
+    "stage 250 completes (Calixto was the Butcher) only when stage 100 is not done; objectives 120-150 sit with stages 120-150"
+   ]
+  },
+  {
+   "edid": "MS13",
+   "shape": "endings",
+   "shared": [
+    "Retrieve the Golden Claw",
+    "Cut Arvel down",
+    "Find the secret of Bleak Falls Barrow",
+    "Find the owner of the Golden Claw"
+   ],
+   "ways": [
+    {
+     "title": "Give the claw back",
+     "ends": "Lucan, or Camilla if Lucan is dead, rewards you.",
+     "steps": [
+      "Bring the claw to Lucan",
+      "Bring the claw to Camilla"
+     ]
+    },
+    {
+     "title": "Keep the claw",
+     "ends": "You convince Lucan (or Camilla) it was lost and keep it.",
+     "steps": []
+    },
+    {
+     "title": "Both Lucan and Camilla die",
+     "ends": "The quest fails: no one is left to pay you.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log has two entries: Lucan alive or Lucan dead (Camilla offers instead)",
+    "stage 100 completes (returned to Lucan), stage 110 completes (returned to Camilla): objectives 40 and 45",
+    "stage 120 completes (kept it, convinced Lucan it was lost); stage 130 logs the same for Camilla",
+    "stage 200 fails (Camilla and Lucan dead)"
+   ]
+  },
+  {
+   "edid": "MS14",
+   "shape": "endings",
+   "shared": [
+    "Talk to the Jarl of Morthal",
+    "Investigate the burned house",
+    "Find Helgi after dark",
+    "Ask around about Laelette",
+    "Ask Thonnir about Laelette",
+    "Investigate Alva's house",
+    "Show Alva's Journal to the Jarl",
+    "Kill the master vampire",
+    "Return to Morthal's Jarl"
+   ],
+   "ways": [
+    {
+     "title": "Tell the Jarl about Helgi's ghost",
+     "ends": "An optional report to the Jarl partway through; the main trail goes on either way",
+     "steps": [
+      "(Optional) Tell the Jarl about Helgi"
+     ]
+    },
+    {
+     "title": "Go to Movarth's Lair alone or with the townsfolk",
+     "ends": "The Jarl gathers fighters who wait outside Movarth's Lair for you to lead them in; some say they will march whether you come or not",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Neither choice changes how the quest ends; stage 200 is the only completion. The optional report sits between investigating the burned house and finding Helgi."
+    }
+   ],
+   "evidence": [
+    "stage 20 log (the Jarl might pay me) -> objective 20; stage 30 log (Jarl asked me to investigate) -> objective 30",
+    "stage 70 log (suspect Alva is a vampire, need proof) -> objective 70; stage 95 log -> objective 95",
+    "stage 100 log (destroy Movarth) -> objective 100; stage 200 completes"
+   ]
+  },
+  {
+   "edid": "T01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help the priestesses find the next Sybil",
+     "ends": "Rescue Fjotra, bring her to the temple, pray at the altar and get Dibella's blessing",
+     "steps": [
+      "Visit the Temple of Dibella",
+      "Wait for Mother Hamal",
+      "Talk to Mother Hamal",
+      "Find the future Sybil of Dibella",
+      "Rescue Fjotra from the Forsworn",
+      "Bring Fjotra to the Temple",
+      "Pray at Dibella's Altar"
+     ]
+    },
+    {
+     "title": "Refuse to help the priestesses",
+     "ends": "The quest fails: 'I want no part of it.'",
+     "steps": [
+      "Visit the Temple of Dibella",
+      "Wait for Mother Hamal",
+      "Talk to Mother Hamal"
+     ]
+    },
+    {
+     "title": "Steal a statue of Dibella for Degaine",
+     "ends": "A separate ending: you sell the statue to the beggar Degaine",
+     "steps": [
+      "Enter the Temple of Dibella",
+      "Steal statue of Dibella",
+      "Give the statue to Degaine"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Where you refuse isn't in the records; the refuse way stops at talking to Mother Hamal, the last step before you agree."
+    }
+   ],
+   "evidence": [
+    "stage 55 log (letter inviting me to the temple) -> objective 55; 56 -> 56; 57 -> 57",
+    "stage 60 log (agreed to find the Sybil) -> 60; 70 -> 70; 80 -> 80; 100 -> 100; stage 200 completes",
+    "stage 210 fails ('I refused to help')",
+    "objectives 10-30 have no stage logs; stage 205 completes (stole a statue and sold it to Degaine)"
+   ]
+  },
+  {
+   "edid": "T03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Cut sap from the Eldergleam with Nettlebane",
+     "ends": "'I helped Danica Pure-Spring repair the Gildergreen.'",
+     "steps": [
+      "Inspect the Temple of Kynareth",
+      "Retrieve Nettlebane",
+      "Bring Nettlebane to Danica",
+      "Retrieve Eldergleam sap",
+      "Return to Danica"
+     ]
+    },
+    {
+     "title": "Follow Maurice and take a sapling instead",
+     "ends": "'I brought a sapling to Whiterun that will one day be the new Gildergreen.'",
+     "steps": [
+      "Inspect the Temple of Kynareth",
+      "Retrieve Nettlebane",
+      "Bring Nettlebane to Danica",
+      "Follow Maurice",
+      "Take sapling",
+      "Return to Danica"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether the sapling way has you fetch Nettlebane first isn't in the records (stages 30-75 have no logs); it is put there because the read lists the sapling steps after the main line."
+    },
+    {
+     "why": "There are two 'Return to Danica' objectives (70 and 75); 70 is put on the sap way and 75 on the sapling way by index."
+    }
+   ],
+   "evidence": [
+    "stage 20 log (agreed to help Danica) -> objective 20",
+    "stage 100 completes (repaired the Gildergreen); stage 105 completes (brought a sapling)"
+   ]
+  },
+  {
+   "edid": "t02",
+   "shape": "endings",
+   "shared": [
+    "Talk to Fastred",
+    "Talk to Fastred's parents",
+    "Talk to Bassianus or Klimmek",
+    "Return to Dinya Balu",
+    "Talk to Calcelmo",
+    "Get advice from Yngvar",
+    "Deliver poem",
+    "Deliver Faleen's letter",
+    "Return to Dinya Balu",
+    "Put on the Amulet of Mara",
+    "Talk to the long-dead lover",
+    "Find Fenrig",
+    "Bring Fenrig to Ruki",
+    "Return to Dinya Balu"
+   ],
+   "ways": [
+    {
+     "title": "Match Fastred with Bassianus or with Klimmek",
+     "ends": "Who Fastred ends up with",
+     "steps": []
+    },
+    {
+     "title": "Pay Yngvar for a poem",
+     "ends": "Deliver the poem, then carry Faleen's letter back",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Both choices sit inside the one line of steps: the match is objective 25 'Talk to Bassianus or Klimmek' and the poem is objectives 45-55. Neither changes the ending; stage 200 is the only completion."
+    }
+   ],
+   "evidence": [
+    "only stage 10 has a log; objectives follow stage indices 10-100 one to one",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "TTFA_JourneyQuest",
+   "shape": "endings",
+   "shared": [
+    "Suggest an alternative to Fastred",
+    "Convince Fastred's parents",
+    "Travel with Fastred",
+    "Talk to Fastred",
+    "Return to Ivarstead",
+    "Speak with Fastred about her future"
+   ],
+   "ways": [
+    {
+     "title": "Return Fastred's feelings, or turn her down",
+     "ends": "Either way you head back to Ivarstead. If you turn her down, things are strained between you.",
+     "steps": []
+    },
+    {
+     "title": "Fastred leaves Ivarstead for good",
+     "ends": "She tells her parents and both suitors. Bassianus leaves for Riften alone and Klimmek stays. Back at the Temple of Mara, Dinya Balu gives you both Mara's blessing if you and Fastred are together; if not, she accepts that Fastred found her own path.",
+     "steps": [
+      "Accompany Fastred while she tells her parents",
+      "Accompany Fastred while she tells Bassianus and Klimmek",
+      "Return to Dinya Balu"
+     ]
+    },
+    {
+     "title": "Fastred stays in Ivarstead",
+     "ends": "The journey ends. You then help her settle things with Bassianus and Klimmek by speaking to one of them.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The read's step 'Talk to one of Fastred's suitors' for the stay way is not among the quest's objectives, so that way lists no steps."
+    },
+    {
+     "why": "Returning or refusing her feelings doesn't end the quest; it only changes the stage 50 and 90 log entries."
+    }
+   ],
+   "evidence": [
+    "stage 0 log -> objective 0; stage 10 -> 10; stage 15/20 -> 15, 20",
+    "stage 50 log has two entries on global TTFA_FastredRomance 1 or 0 (feelings returned / turned down) -> objective 50; stage 55 -> 55",
+    "stage 75 log (chosen to leave permanently) -> 75; 80 -> 80; 85 log (return to Dinya Balu) -> 85; stage 90 completes, two entries on the same global",
+    "stage 200 completes (decided to stay); stage 300 completes (spoke with one of the suitors)"
+   ]
+  },
+  {
+   "edid": "VC01",
+   "shape": "endings",
+   "shared": [
+    "Speak to Urag",
+    "Speak to Falion",
+    "Wait three days while Falion gets ready",
+    "Speak to Falion",
+    "Bring a filled Black Soul Gem to Falion",
+    "Meet Falion at dawn",
+    "Speak to Falion",
+    "Stand in the center of the circle",
+    "Enact the ritual with Falion",
+    "Speak to Falion"
+   ],
+   "ways": [
+    {
+     "title": "Bring your own filled black soul gem, or ask about Falion's",
+     "ends": "Falion says he has one from his research of the Oblivion realms but it is precious",
+     "steps": []
+    },
+    {
+     "title": "Kill Falion after the ritual",
+     "ends": "'As a precaution, I had to kill Falion - he knew too much.'",
+     "steps": [
+      "Kill Falion"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The soul gem choice is objective 100 'Bring a filled Black Soul Gem to Falion' in the shared steps, not an ending; it ends the same way as not killing Falion (stage 200)."
+    }
+   ],
+   "evidence": [
+    "stage 7 log -> objective 7; stage 50 -> 50; stage 65 -> 65; stage 100 log (requires a filled black soul gem) -> 100; stage 150 (meet at dawn) -> 150",
+    "stage 200 completes (ritual failed); stage 201 completes ('I had to kill Falion') -> objective 197"
+   ]
+  },
+  {
+   "edid": "OK_FH_Quest",
+   "shape": "endings",
+   "shared": [
+    "Find a way to create daedric essence.",
+    "Bring the essence to Phinis Gestor",
+    "Wait till Phinis contacts me",
+    "Create a potion to remove vampirism"
+   ],
+   "ways": [
+    {
+     "title": "Drink the potion you made",
+     "ends": "The quest ends asking 'Should I drink it?'",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't show a step or stage for drinking it; stage 70 completes on making the potion and asks 'Should I drink it?'."
+    }
+   ],
+   "evidence": [
+    "stage 20 log -> objective 20; 30 -> 30; 40 -> 40; 60 log (received Phinis' results) -> objective 60",
+    "stage 70 completes"
+   ]
+  },
+  {
+   "edid": "FreeformMorthalA",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Leave Falion to his work",
+     "ends": "The quest ends there.",
+     "steps": []
+    },
+    {
+     "title": "Blackmail Falion, then keep quiet",
+     "ends": "You can still go to the Jarl later.",
+     "steps": [
+      "Inform the Jarl of Morthal about Falion's activities"
+     ]
+    },
+    {
+     "title": "Tell the Jarl",
+     "ends": "The Jarl orders Falion to stop, and he reluctantly agrees.",
+     "steps": [
+      "Inform the Jarl of Morthal about Falion's activities"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 5 is shown at stage 5 (the blackmail log: 'I can still tell the jarl'); the keep-quiet way meets it but needn't do it, and how that way finishes isn't in the records."
+    }
+   ],
+   "evidence": [
+    "stage 5 log (blackmailed him, can still tell the jarl) -> objective 5",
+    "stage 10 completes (agreed to leave Falion)",
+    "stage 20 log (informed the jarl) and 30 (the Jarl told Falion to stop); stage 200 completes"
+   ]
+  }
+ ]
+}

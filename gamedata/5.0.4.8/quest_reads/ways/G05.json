@@ -1,0 +1,1272 @@
+{
+ "quests": [
+  {
+   "edid": "DA13",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Refuse to help Peryite",
+     "ends": "The quest fails.",
+     "steps": [
+      "Obtain some Vampire Dust",
+      "Obtain a Deathbell Flower",
+      "Obtain a Silver Ingot",
+      "Obtain a Flawless Ruby",
+      "Deliver the Ingredients",
+      "Inhale the Fumes"
+     ]
+    },
+    {
+     "title": "Deal with Orchendor, then speak with Peryite",
+     "ends": "The usual ending, rewarded with Spellbreaker.",
+     "steps": [
+      "Obtain some Vampire Dust",
+      "Obtain a Deathbell Flower",
+      "Obtain a Silver Ingot",
+      "Obtain a Flawless Ruby",
+      "Deliver the Ingredients",
+      "Inhale the Fumes",
+      "Kill or Talk to Orchendor",
+      "Speak with Peryite or Destroy his Altar"
+     ]
+    },
+    {
+     "title": "Kill Orchendor and destroy Peryite's altar",
+     "ends": "The plague is stopped and the altar destroyed; the quest still completes.",
+     "steps": [
+      "Obtain some Vampire Dust",
+      "Obtain a Deathbell Flower",
+      "Obtain a Silver Ingot",
+      "Obtain a Flawless Ruby",
+      "Deliver the Ingredients",
+      "Inhale the Fumes",
+      "Kill or Talk to Orchendor",
+      "Speak with Peryite or Destroy his Altar",
+      "Destroy Peryite's Altar"
+     ]
+    },
+    {
+     "title": "Learn of Orchendor's plague from Kesh's Journal",
+     "ends": "You can deal with Orchendor without the ritual.",
+     "steps": [
+      "Kill or Talk to Orchendor",
+      "Speak with Peryite or Destroy his Altar"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Which objective appears when you learn of Orchendor from Kesh's Journal isn't recorded; stage 14's log only says to visit Bthardamz, so that way is given the Orchendor and Peryite-or-altar objectives."
+    },
+    {
+     "why": "On the altar way, whether 'Destroy Peryite's Altar' follows the Peryite-or-altar objective or replaces it isn't settled by the records."
+    }
+   ],
+   "evidence": [
+    "stage 101 fails (refused Peryite) after meeting him, which follows objective 20 (Inhale the Fumes)",
+    "stage 40 log (Peryite asks you to kill Orchendor) goes with objective 40; stage 75 log (killed Orchendor) goes with objective 75",
+    "stage 102 completes (killed Orchendor, destroyed the altar) ties to objective 76",
+    "stage 14 log (found out about Orchendor, visit Bthardamz) has no objective of its own; stage 100 completes"
+   ]
+  },
+  {
+   "edid": "DA11",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Turn Eola down",
+     "ends": "She says she'll be waiting outside Reachcliff Cave if the hunger calls you.",
+     "steps": [
+      "Clear the Draugr from Reachcliff Cave",
+      "Speak to Eola"
+     ]
+    },
+    {
+     "title": "Kill Eola",
+     "ends": "The quest fails; her journal can start A Bitter Aftertaste.",
+     "steps": [
+      "Clear the Draugr from Reachcliff Cave",
+      "Speak to Eola"
+     ]
+    },
+    {
+     "title": "Kill Verulus away from the shrine",
+     "ends": "The quest fails.",
+     "steps": [
+      "Clear the Draugr from Reachcliff Cave",
+      "Speak to Eola",
+      "Convince Verulus to follow you",
+      "Lead Verulus to the Shrine of Namira"
+     ]
+    },
+    {
+     "title": "Lead Verulus to the shrine and feast",
+     "ends": "Initiation into the coven and the Ring of Namira.",
+     "steps": [
+      "Clear the Draugr from Reachcliff Cave",
+      "Speak to Eola",
+      "Convince Verulus to follow you",
+      "Lead Verulus to the Shrine of Namira",
+      "Kill Verulus",
+      "Feast on Verulus"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Eola can be killed at any point; the records only say stage 250 fails, so that way is cut at speaking to her."
+    },
+    {
+     "why": "Turning Eola down has no stage of its own in the records; it is placed at 'Speak to Eola'."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (Eola, Reachcliff Cave) goes with objectives 10-20",
+    "stage 30 log (lure Verulus) goes with objectives 30-40",
+    "stage 60 log (Verulus dead, feast) goes with objective 60",
+    "stage 100 completes; stage 250 fails (killed Eola); stage 500 fails (killed Verulus outside the shrine)"
+   ]
+  },
+  {
+   "edid": "madNamiraAddonQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Confront the cannibals without the Jarl's leave",
+     "ends": "The log warns this may be unlawful.",
+     "steps": [
+      "(Optional) Speak to Brother Verulus",
+      "Search for evidence in Reachcliff Cave",
+      "(Optional) Speak to Verulus for the Jarl's permission to confront the cannibals",
+      "Speak to the Jarl of Markarth for a reward"
+     ]
+    },
+    {
+     "title": "Get the Jarl of Markarth's permission first",
+     "ends": "You may deal with them as you see fit and can arrest them; Hogni Red-Arm and Lisbet can end up in Cidhna Mine.",
+     "steps": [
+      "(Optional) Speak to Brother Verulus",
+      "Search for evidence in Reachcliff Cave",
+      "(Optional) Speak to Verulus for the Jarl's permission to confront the cannibals",
+      "Speak to the Jarl of Markarth",
+      "Confront Hogni Red-Arm",
+      "Confront Lisbet",
+      "Confront Banning",
+      "Speak to the Jarl of Markarth for a reward"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage records confronting the cannibals without leave; the confront objectives are placed after the Jarl's stage 40, so the unlawful way lists only the shared objectives and the reward objective."
+    },
+    {
+     "why": "Whether the reward objective is given if you confront them without leave isn't settled; stage 45 (brought to justice) does not say how."
+    }
+   ],
+   "evidence": [
+    "stage 20 log warns confronting them directly may be unlawful and points to Verulus (objective 15)",
+    "stage 30 log (Verulus advises speaking to the Jarl) goes with objective 20",
+    "stage 40 log (Jarl gives jurisdiction) precedes objectives 21-23",
+    "stage 45 log (see the Jarl for a reward) goes with objective 30; stage 100 completes"
+   ]
+  },
+  {
+   "edid": "DA08",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Talk to Nelkir and open the door",
+     "ends": "You take the Ebony Blade.",
+     "steps": [
+      "Find out what's wrong with Nelkir",
+      "Listen to the Whispering Door",
+      "Speak to Nelkir OR warn the Jarl",
+      "Obtain the key to the Whispering Door",
+      "Open the Whispering Door",
+      "Investigate the room",
+      "Retrieve the Ebony Blade"
+     ]
+    },
+    {
+     "title": "Warn the Jarl instead",
+     "ends": "You help Balgruuf with his son, then decide what to do with the Blade.",
+     "steps": [
+      "Find out what's wrong with Nelkir",
+      "Listen to the Whispering Door",
+      "Speak to Nelkir OR warn the Jarl",
+      "Obtain the key to the Whispering Door",
+      "Open the Whispering Door",
+      "Investigate the room",
+      "Retrieve the Ebony Blade. Optional: Inform the Jarl",
+      "Report to Jarl Balgruuf OR kill allies with the Ebony Blade"
+     ]
+    },
+    {
+     "title": "Report to Balgruuf and give the Blade to the Vigilants",
+     "ends": "The Ebony Blade is got rid of; the quest ends.",
+     "steps": [
+      "Find out what's wrong with Nelkir",
+      "Listen to the Whispering Door",
+      "Speak to Nelkir OR warn the Jarl",
+      "Obtain the key to the Whispering Door",
+      "Open the Whispering Door",
+      "Investigate the room",
+      "Retrieve the Ebony Blade. Optional: Inform the Jarl",
+      "Report to Jarl Balgruuf OR kill allies with the Ebony Blade",
+      "Speak to a Vigilant of Stendarr OR kill allies with the Ebony Blade"
+     ]
+    },
+    {
+     "title": "Keep the Blade and kill allies with it",
+     "ends": "The Blade is restored to its full potential.",
+     "steps": [
+      "Find out what's wrong with Nelkir",
+      "Listen to the Whispering Door",
+      "Speak to Nelkir OR warn the Jarl",
+      "Obtain the key to the Whispering Door",
+      "Open the Whispering Door",
+      "Investigate the room",
+      "Retrieve the Ebony Blade. Optional: Inform the Jarl",
+      "Report to Jarl Balgruuf OR kill allies with the Ebony Blade",
+      "Speak to a Vigilant of Stendarr OR kill allies with the Ebony Blade"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't tie objectives 30-41 to one side; they are given to every way. Whether the warn-the-Jarl side still uses the key and the door isn't settled."
+    },
+    {
+     "why": "Objective 42 ('Retrieve the Ebony Blade. Optional: Inform the Jarl') is placed on the Jarl ways because stage 42's log is about informing the Jarl; objective 50 is placed on Mephala's way."
+    },
+    {
+     "why": "Killing allies can also follow Mephala's way (stage 60's log says to slay those close to you); the way is placed on the Jarl branch because objectives 43 and 44 name it."
+    }
+   ],
+   "evidence": [
+    "stage 25 log offers both: talk to the child or warn Jarl Balgruuf (objective 25)",
+    "stage 42 log (inform the Jarl, tell him where Nelkir is) goes with objective 42",
+    "stage 44 log (decide what to do with the Blade) goes with objectives 43-44",
+    "stage 45 completes (got rid of the Blade); stage 60 completes (received the Blade); stage 80 log (Blade restored)"
+   ]
+  },
+  {
+   "edid": "DA08MephalaHunt",
+   "shape": "endings",
+   "shared": [
+    "Decide the fate of the Ebony Blade."
+   ],
+   "ways": [
+    {
+     "title": "Keep the Blade",
+     "ends": "You set out to restore it to full power; the quest completes.",
+     "steps": []
+    },
+    {
+     "title": "Destroy it",
+     "ends": "Find the Aetherium Forge and cast the Blade into its fires; you're freed of its dark magic.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log offers keep or destroy (objective 10)",
+    "stage 20 completes (keep); stages 25 and 30 complete (Aetherium Forge, Blade destroyed)"
+   ]
+  },
+  {
+   "edid": "DA16",
+   "shape": "endings",
+   "shared": [
+    "Speak to Erandur",
+    "Follow Erandur to Nightcaller Temple",
+    "Speak to Erandur",
+    "Follow Erandur",
+    "Follow Erandur to the Library",
+    "Speak to Erandur",
+    "Locate \"The Dreamstride\"",
+    "Speak to Erandur",
+    "Follow Erandur to the Laboratory",
+    "Speak to Erandur",
+    "Locate Vaermina's Torpor",
+    "Speak to Erandur",
+    "Drink Vaermina's Torpor",
+    "Release the Miasma",
+    "Disable the Magical Barrier",
+    "Speak to Erandur",
+    "Follow Erandur to the Skull of Corruption",
+    "Defeat Veren and Thorek",
+    "Speak to Erandur",
+    "Wait for Erandur to dispel the barrier"
+   ],
+   "ways": [
+    {
+     "title": "Let Erandur finish his ritual",
+     "ends": "The Skull of Corruption is destroyed and Erandur offers to be your companion.",
+     "steps": [
+      "Allow Erandur to complete his ritual",
+      "Speak to Erandur"
+     ]
+    },
+    {
+     "title": "Kill Erandur before the Skull is destroyed",
+     "ends": "You take the Skull of Corruption.",
+     "steps": [
+      "Murder Erandur",
+      "Take the Skull of Corruption"
+     ]
+    },
+    {
+     "title": "Kill Erandur too late",
+     "ends": "Erandur is dead and the Skull is destroyed anyway.",
+     "steps": [
+      "Allow Erandur to complete his ritual",
+      "Murder Erandur"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The 'too late' way has no objective of its own; it is given the ritual objective then the murder objective because stage 200's entry needs both Erandur dead and the Skull destroyed."
+    }
+   ],
+   "evidence": [
+    "stage 197 log (Vaermina's offer: let him finish or kill him) follows objective 165",
+    "stage 200 completes with three entries keyed on DA16ErandurDead and DA16SkullDestroyed",
+    "objectives 170 (Murder) and 190 (Take the Skull) for Vaermina; 180 (Allow ritual) and 200 (Speak to Erandur) for sparing him"
+   ]
+  },
+  {
+   "edid": "aaaMBQuest",
+   "shape": "endings",
+   "shared": [
+    "Find Gretska",
+    "Look for clues at Gretska's fishing spot",
+    "Look for clues at Gretska's archery target",
+    "Look for clues along the path",
+    "Search the knapsack for clues",
+    "Read Gretsa's Journal",
+    "Tell Ralforn you found the journal",
+    "Find the location from Gretska's nightmare",
+    "Try to wake up Gretska",
+    "Find a way to wake up Gretska from the nightmare",
+    "Investigate the cave",
+    "Find a way to sleep in the Awakening Chambers",
+    "Loot the Omen Of Anguish",
+    "Loot the Omen Of Self Doubt",
+    "Loot the Omen Of Bereavement",
+    "Overcome the Nightmare Of Bereavement",
+    "Kill the Werewolf",
+    "Overcome the Nightmare Of Anguish",
+    "Tell Gretska's Mother you've fixed the Vase",
+    "Leave the nightmare",
+    "Overcome the Nightmare Of Self Doubt",
+    "Sleep On The Stone Bed",
+    "Defeat the Lotus",
+    "Speak with the statue",
+    "Accept or refuse Vaermina's offer"
+   ],
+   "ways": [
+    {
+     "title": "Accept Vaermina's offer",
+     "ends": "Kill Gretska and become Vaermina's champion.",
+     "steps": [
+      "Kill Gretska"
+     ]
+    },
+    {
+     "title": "Refuse Vaermina's offer",
+     "ends": "Wake Gretska; she meets you back at the cabin with Ralforn.",
+     "steps": [
+      "Speak with Gretska",
+      "Speak with Ralforn",
+      "Speak with Gretska"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 1 ('Find a way to escape The Nightmare.') isn't tied to any stage with a log and is left out."
+    }
+   ],
+   "evidence": [
+    "stage 120 log (Vaermina's offer) goes with objective 120",
+    "stages 200/210 log (accepted, kill Gretska) go with objective 210; stage 250 completes",
+    "stages 300-330 logs (rejected, wake Gretska, Ralforn) go with objectives 310-330; stage 350 completes"
+   ]
+  },
+  {
+   "edid": "WTPlayerHome",
+   "shape": "endings",
+   "shared": [
+    "Ask Lurius Liore about Fort Valus.",
+    "Speak to Lurius Liore about upgrading Fort Valus."
+   ],
+   "ways": [
+    {
+     "title": "Choose which upgrades to pay for",
+     "ends": "The quest lists clean-up, a mess hall, armory, kitchen, bedroom, barracks, prison, garden and common house, plus hiring a crew; you go back to Lurius for each",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log (bought the deed; speak to him again to upgrade or hire a crew) goes with objective 20; stage 40 completes"
+   ]
+  },
+  {
+   "edid": "WTPricelessCommodity",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill the Spriggan Matriarch",
+     "ends": "Clear the grove of spriggans and report back to Bolmar; the miners then move in to work the grove",
+     "steps": [
+      "Speak to Bolmar at Gronndal Grove.",
+      "Investigate the spriggans at Gronndal Grove.",
+      "Clear the spriggans from Gronndal Grove.",
+      "Return to Bolmar."
+     ]
+    },
+    {
+     "title": "Side with the Spriggan Matriarch",
+     "ends": "She asks you to kill the miners who got away; do it and return to her to restore the sanctity of Kyne",
+     "steps": [
+      "Speak to Bolmar at Gronndal Grove.",
+      "Investigate the spriggans at Gronndal Grove.",
+      "Kill the miners.",
+      "Return to the Spriggan Matriarch."
+     ]
+    },
+    {
+     "title": "Agree to help the Matriarch, then betray her",
+     "ends": "Finish clearing the grove and return to Bolmar",
+     "steps": [
+      "Speak to Bolmar at Gronndal Grove.",
+      "Investigate the spriggans at Gronndal Grove.",
+      "Kill the miners.",
+      "Clear the spriggans from Gronndal Grove.",
+      "Return to Bolmar."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "On the betrayal way, whether 'Kill the miners.' is shown before you turn on her isn't settled; it is placed there because stage 45 follows agreeing at stage 40."
+    }
+   ],
+   "evidence": [
+    "stage 15 log (decided to kill the Matriarch) goes with objective 15; stage 20 with objective 20; stage 30 completes",
+    "stage 40 log (Matriarch asks you to kill the miners) goes with objective 40; stage 50 with objective 50; stage 60 completes",
+    "stage 45 log (betrayed the Matriarch, finish clearing the grove) then stage 46, stage 47 completes"
+   ]
+  },
+  {
+   "edid": "WTTheNakedNord",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Reach Krakevisa before the ritual ends",
+     "ends": "You recover the golden pants; if you are too late they burn to ash",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora."
+     ]
+    },
+    {
+     "title": "Give the pants to Glendora",
+     "ends": "She rewards you; Gjalrunn is upset if you tell him",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora.",
+      "Obtain the paralysis antidote for Gjalrunn."
+     ]
+    },
+    {
+     "title": "Give the pants back to Gjalrunn",
+     "ends": "He is grateful",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora.",
+      "Obtain the paralysis antidote for Gjalrunn."
+     ]
+    },
+    {
+     "title": "Keep the pants and lie to him",
+     "ends": "The pants are yours to sell",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora.",
+      "Obtain the paralysis antidote for Gjalrunn."
+     ]
+    },
+    {
+     "title": "Trade Glendora a daedra heart for the antidote",
+     "ends": "He is freed and you may meet him on the road later",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora.",
+      "Obtain the paralysis antidote for Gjalrunn.",
+      "Exchange a daedra heart for the paralysis antidote.",
+      "Deliver the paralysis antidote to Gjalrunn."
+     ]
+    },
+    {
+     "title": "Tell him you gave the pants to Glendora",
+     "ends": "He may refuse the antidote and stay paralysed, or take it and swear revenge on the witches; either way the quest ends",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora.",
+      "Obtain the paralysis antidote for Gjalrunn.",
+      "Exchange a daedra heart for the paralysis antidote.",
+      "Deliver the paralysis antidote to Gjalrunn."
+     ]
+    },
+    {
+     "title": "Tell him there's no cure",
+     "ends": "He asks you to end his misery; killing him (or him dying) fails the quest",
+     "steps": [
+      "Find the naked nord.",
+      "Speak to the naked nord about his predicament.",
+      "Find the witch that paralyzed the nord and stole his pants.",
+      "Find out why the witch stole the pants.",
+      "Retrieve the golden pants from Krakevisa.",
+      "Return the pants to Gjalrunn or Glendora.",
+      "Obtain the paralysis antidote for Gjalrunn.",
+      "Kill Gjalrunn to end his misery."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Deliver the bad news to Gjalrunn or Glendora.' (too late at Krakevisa, stage 35) isn't a choice in the checked read and sits on no way; the antidote can also follow that."
+    },
+    {
+     "why": "The antidote and no-cure ways can start after any pants outcome; they are shown after the pants were recovered."
+    },
+    {
+     "why": "On the no-cure way, whether 'Obtain the paralysis antidote for Gjalrunn.' is shown before you lie isn't settled."
+    }
+   ],
+   "evidence": [
+    "stage 30 log (warlocks took the pants to Krakevisa) goes with objective 30; stage 40 log (decide Glendora or Gjalrunn) with objective 40",
+    "stages 50/55/56 logs (gave to Glendora / gave back / lied) all say to seek a cure (objective 55)",
+    "stages 75-79 complete (antidote given); stage 70 completes (refused the antidote); stage 65 log (told him the pants went to Glendora)",
+    "stage 254 log (lied about a cure) goes with objective 254; stage 255 fails"
+   ]
+  },
+  {
+   "edid": "WTUberEncounter",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Turn Vulom down",
+     "ends": "Nothing happens; you can come back and speak to his skull in the tomb later",
+     "steps": [
+      "Investigate Vulom's tomb.",
+      "Follow the disembodied voice."
+     ]
+    },
+    {
+     "title": "Find his bones and bring them back",
+     "ends": "He rises as a lich and you have to destroy him",
+     "steps": [
+      "Investigate Vulom's tomb.",
+      "Follow the disembodied voice.",
+      "Find Vulom's bones.",
+      "Return the bones to Vulom.",
+      "Destroy the lich Vulom."
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 15 log (told Vulom you aren't interested) follows stage 10",
+    "stages 20-40 logs go with objectives 20-40; stage 50 completes"
+   ]
+  },
+  {
+   "edid": "WTWolfFollower",
+   "shape": "endings",
+   "shared": [
+    "Speak to Dunyick about the marauders.",
+    "Find Dunyick's wolf Faelor.",
+    "Return Faelor to Dunyick.",
+    "Eliminate the bandits that killed Dunyick."
+   ],
+   "ways": [
+    {
+     "title": "Send Faelor home or take her along",
+     "ends": "She goes back to Dunyick's camp, or travels with you as a companion",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 40 completes and offers sending Faelor back to camp or taking her along"
+   ]
+  },
+  {
+   "edid": "DefunctQuest02",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take Varanie's fake amulet to Adimmisaru",
+     "ends": "If he believes you, the quest is done and Varanie pays a bonus when you go back; if he doesn't, the quest fails",
+     "steps": [
+      "Solve the dispute."
+     ]
+    },
+    {
+     "title": "Get the real amulet from the Krettin and give it back",
+     "ends": "Adimmisaru pays you",
+     "steps": [
+      "Solve the dispute.",
+      "Search the Krettin."
+     ]
+    },
+    {
+     "title": "Sell the real amulet to Varanie",
+     "ends": "She plans to blackmail him; the quest fails",
+     "steps": [
+      "Solve the dispute.",
+      "Search the Krettin."
+     ]
+    },
+    {
+     "title": "Keep the real amulet and refuse them both",
+     "ends": "No ending is written for this; the quest is left open",
+     "steps": [
+      "Solve the dispute.",
+      "Search the Krettin."
+     ]
+    },
+    {
+     "title": "Kill Adimmisaru or Varanie",
+     "ends": "The quarrel is settled and the quest completes",
+     "steps": [
+      "Solve the dispute."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Killing Adimmisaru or Varanie can happen at any point; the way lists only the first objective."
+    }
+   ],
+   "evidence": [
+    "stages 30 (complete), 31 (fail), 32 (complete), 33 cover the fake amulet",
+    "stage 40 log (Varanie says the amulet is in the Krettin) goes with objective 40",
+    "stage 51 completes (gave it back); stage 53 fails (sold it); stages 52/54 (refused) neither complete nor fail",
+    "stages 100 and 200 complete (killed Adimmisaru / Varanie)"
+   ]
+  },
+  {
+   "edid": "DefunctQuest04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Tell the guard how the goblin hunt went",
+     "ends": "Only his reply changes; either way he sends you after the clan's Shaman",
+     "steps": [
+      "Investigate the depths of Fort Tulis.",
+      "Find and kill the Bruska Shaman."
+     ]
+    },
+    {
+     "title": "Let the guard die",
+     "ends": "The quest fails and no one pays you for the Shaman",
+     "steps": [
+      "Investigate the depths of Fort Tulis."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The guard can die at any point; that way is cut after the first objective."
+    }
+   ],
+   "evidence": [
+    "stages 20, 21, 23 logs (killed all / not all / unsure) all lead to the Shaman (objective 20)",
+    "stage 30 completes; stage 31 fails (guard dead)"
+   ]
+  },
+  {
+   "edid": "DefunctQuest07",
+   "shape": "endings",
+   "shared": [
+    "Find Feldrin.",
+    "Return Feldrin's axe to him.",
+    "Return to Sadren.",
+    "Find Helvf Blackthorn in Baan Malur."
+   ],
+   "ways": [
+    {
+     "title": "Take Sadren's gold now or later",
+     "ends": "You get his gold now or he promises it later; the quest carries on either way",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The gold choice comes between returning to Sadren and the stone errand, not at the end; the quest carries on the same either way."
+    }
+   ],
+   "evidence": [
+    "stages 21 and 22 logs (took the gold / Sadren couldn't pay) both lead to stage 23 and objective 23"
+   ]
+  },
+  {
+   "edid": "DefunctQuest09",
+   "shape": "endings",
+   "shared": [
+    "Take a seat on the ferry bench."
+   ],
+   "ways": [
+    {
+     "title": "Pick a destination port",
+     "ends": "The ferry carries you there",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objective 10 is the only objective; no stage has a log"
+   ]
+  },
+  {
+   "edid": "SOMRLlynelisDaedricQuest",
+   "shape": "endings",
+   "shared": [
+    "Bring Llynelis the first key from the list.",
+    "Bring Llynelis a second key from the list.",
+    "Bring Llynelis the final key from the list.",
+    "Explore the Daedric Ruin under Baan Malur.",
+    "Confront Llynelis."
+   ],
+   "ways": [
+    {
+     "title": "Kill Llynelis",
+     "ends": "The quest ends with her dead",
+     "steps": []
+    },
+    {
+     "title": "Spare Llynelis",
+     "ends": "The quest ends with her alive",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't say which of stage 61 or stage 70 (both complete) is killing her and which is sparing her."
+    }
+   ],
+   "evidence": [
+    "stage 50 log (her secret uncovered) goes with objective 50",
+    "stages 61 and 70 complete; stage 62 does neither"
+   ]
+  },
+  {
+   "edid": "SOMRSaxhleelQuestMain",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Free the caged slaves, or leave them",
+     "ends": "Noted in the journal; Kar-Jei still sends you on",
+     "steps": [
+      "Investigate the Dres Slaver's Camp.",
+      "Return to Kar-Jei."
+     ]
+    },
+    {
+     "title": "Bring the stolen documents back to Kar-Jei",
+     "ends": "You come back to find Redoran soldiers raiding the camp; if Kar-Jei lives through it he gives you his Naming-Knife and the quest is done. If he is killed, the quest fails.",
+     "steps": [
+      "Investigate the Dres Slaver's Camp.",
+      "Return to Kar-Jei.",
+      "Steal military documents from Fort Blacklight. Take care not to be spotted.",
+      "Return to Kar-Jei."
+     ]
+    },
+    {
+     "title": "Sell out the Saxhleel to the Redoran captain",
+     "ends": "Redoran soldiers raid the camp",
+     "steps": [
+      "Investigate the Dres Slaver's Camp.",
+      "Return to Kar-Jei.",
+      "Steal military documents from Fort Blacklight. Take care not to be spotted.",
+      "Go to the Saxhleel Camp."
+     ]
+    },
+    {
+     "title": "Sell out the Saxhleel to the Dres Captain",
+     "ends": "Dres slavers raid the camp",
+     "steps": [
+      "Investigate the Dres Slaver's Camp.",
+      "Go to the Saxhleel Camp."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The slaves choice isn't an ending; that way rejoins the documents errand after 'Return to Kar-Jei.'"
+    },
+    {
+     "why": "Objectives 110 and 120 have the same text; the Redoran sell-out is given 110 and the Dres sell-out 120 by their matching stage logs."
+    }
+   ],
+   "evidence": [
+    "stages 70/80 logs (didn't free / freed the slaves) lead to objective 60",
+    "stage 90 log (steal documents) goes with objective 90; stage 100 with objective 100",
+    "stage 110 log (sold out to the Redoran Captain at Fort Blacklight); stage 120 log (sold out to the Dres Captain at the camp)",
+    "stage 130 completes; stage 140 fails (Kar-Jei killed in a raid)"
+   ]
+  },
+  {
+   "edid": "HYORBlackBook08Quest",
+   "shape": "endings",
+   "shared": [
+    "Learn the Black Book's hidden knowledge"
+   ],
+   "ways": [
+    {
+     "title": "Read the book again to leave Apocrypha",
+     "ends": "You leave Apocrypha; the quest stays open until you uncover the hidden knowledge",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log offers uncovering the knowledge or reading the book again to escape; stage 20 completes"
+   ]
+  },
+  {
+   "edid": "manny_GF_Books",
+   "shape": "endings",
+   "shared": [
+    "Find all the journals (<Global=manny_GF_Global_BooksCount>/<Global=manny_GF_Global_BooksTotal>)",
+    "Deliver the journals to Seviana"
+   ],
+   "ways": [
+    {
+     "title": "Take the gold",
+     "ends": "1000 gold",
+     "steps": []
+    },
+    {
+     "title": "Take the spell tome",
+     "ends": "Spell Tome (Apprentice): Unlock Container",
+     "steps": []
+    },
+    {
+     "title": "Keep the journals",
+     "ends": "No reward from Seviana; you keep the books",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether 'Deliver the journals to Seviana' shows when you keep the journals isn't settled; it is put in the shared steps."
+    }
+   ],
+   "evidence": [
+    "stages 30 (gold), 40 (spell tome), 50 (kept them) logs",
+    "stage 100 completes; stage 200 fails (missed journals)"
+   ]
+  },
+  {
+   "edid": "manny_GF_ColdharbourQuest",
+   "shape": "endings",
+   "shared": [
+    "Escape from Coldharbour",
+    "(Optional) Do not kill the Guardians of Coldharbour"
+   ],
+   "ways": [
+    {
+     "title": "Escape without killing the Guardians",
+     "ends": "the optional objective is met; any extra payoff isn't shown in these files",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log ('maybe I'll do it silently') goes with optional objective 10; stage 255 completes"
+   ]
+  },
+  {
+   "edid": "HABLBladesQuest02",
+   "shape": "endings",
+   "shared": [
+    "Find a follower and ask them to join the Blades in Hammerfell",
+    "Find a second follower to ask them to join the Blades in Hammerfell",
+    "Head to the Wind Scour Temple and talk to Za'kir"
+   ],
+   "ways": [
+    {
+     "title": "Pick which two followers to ask",
+     "ends": "those two join the Blades at the Wind Scour Temple",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stages 10-30 logs go with objectives 10-30; stage 200 completes"
+   ]
+  },
+  {
+   "edid": "GRVEDestroyRealm01",
+   "shape": "endings",
+   "shared": [
+    "Escape before it's too late."
+   ],
+   "ways": [
+    {
+     "title": "Touch Richter's light",
+     "ends": "Gravewind falls and the souls enthralled there are freed; the Falkreath house vanishes for good",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log (touched Richter's light) goes with objective 10; stage 40 completes"
+   ]
+  },
+  {
+   "edid": "000FCQuest01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Read the old man's suicide note",
+     "ends": "optional clue; the journal notes he is too old to be Cassia's brother",
+     "steps": [
+      "Read Cassia's Plea.",
+      "Meet Cassia in the forgotten ruins.",
+      "Listen to Cassia's request.",
+      "Enter the Forgotten City.",
+      "Explore the Forgotten City for a way out.",
+      "(Optional) Read the old man's suicide note."
+     ]
+    },
+    {
+     "title": "Drink the Elixir of Acrobatics",
+     "ends": "optional; you can then confront Deglund about the elixir not working",
+     "steps": [
+      "Read Cassia's Plea.",
+      "Meet Cassia in the forgotten ruins.",
+      "Listen to Cassia's request.",
+      "Enter the Forgotten City.",
+      "Explore the Forgotten City for a way out.",
+      "(Optional) Drink the Elixir of Acrobatics.",
+      "(Optional) Confront Deglund about the ineffective Elixir."
+     ]
+    },
+    {
+     "title": "Find Altrius alive in the present",
+     "ends": "Altrius suggests smashing the cracked wall in the Citadel bathroom; you escort him out of the city and finish your business with Cassia",
+     "steps": [
+      "Read Cassia's Plea.",
+      "Meet Cassia in the forgotten ruins.",
+      "Listen to Cassia's request.",
+      "Enter the Forgotten City.",
+      "Explore the Forgotten City for a way out.",
+      "Talk to Altrius.",
+      "Smash the cracked wall in the bathroom.",
+      "Escape the city through the bathroom."
+     ]
+    },
+    {
+     "title": "Convince the Arbiter to wind back the Dwarves' Law",
+     "ends": "you return to your own time having stopped the events that sent you back; you bring Altrius to Cassia, she rewards you and enters the city. This is the ending that marks the quest complete in the records",
+     "steps": [
+      "Read Cassia's Plea.",
+      "Meet Cassia in the forgotten ruins.",
+      "Listen to Cassia's request.",
+      "Enter the Forgotten City.",
+      "Explore the Forgotten City for a way out.",
+      "(Optional) Travel back in time and show the Arbiter's helmet to him as proof of your deeds."
+     ]
+    },
+    {
+     "title": "Show the Arbiter his own helmet",
+     "ends": "optional objective: travel back in time and show the Arbiter's helmet to him",
+     "steps": [
+      "Read Cassia's Plea.",
+      "Meet Cassia in the forgotten ruins.",
+      "Listen to Cassia's request.",
+      "Enter the Forgotten City.",
+      "Explore the Forgotten City for a way out.",
+      "(Optional) Travel back in time and show the Arbiter's helmet to him as proof of your deeds."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The Arbiter ending (stages 4000-4050) has no objective of its own; it is given the optional helmet objective, which the checked read puts on that branch."
+    },
+    {
+     "why": "The Lakehouse key and Lakehouse objectives (300, 350) aren't tied to any choice and sit on no way."
+    }
+   ],
+   "evidence": [
+    "stage 250 log (old man too old to be Cassia's brother) goes with objective 250",
+    "stages 2000-2020 logs (Altrius alive, cracked wall, Citadel bathroom) go with objectives 2000-2020",
+    "stages 3000/3100 (escorted Altrius, business with Cassia); stages 4000-4050 (Arbiter, Altrius to Cassia), stage 4050 completes"
+   ]
+  },
+  {
+   "edid": "000FCQuest02",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Refuse the Jarl's request",
+     "ends": "you can talk to him again later if you change your mind",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel."
+     ]
+    },
+    {
+     "title": "Accept and name a suspect",
+     "ends": "Metellus asks you to lure your suspect to the underground tunnels and kill them",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel.",
+      "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+      "(Optional) Inform Metellus that Domitus is the threat.",
+      "(Optional) Inform Metellus that Gulvar is the threat.",
+      "(Optional) Inform Metellus that Vernon is the threat.",
+      "(Optional) Inform Metellus that Ulrin is the threat.",
+      "(Optional) Inform Metellus that Marius is the threat.",
+      "(Optional) Inform Metellus that Rykas is the threat.",
+      "(Optional) Inform Metellus that Deglund is the threat.",
+      "(Optional) Lure your suspect to the underground tunnels and kill them."
+     ]
+    },
+    {
+     "title": "Accuse Metellus, or admit you are the threat",
+     "ends": "separate optional objectives for each",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel.",
+      "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+      "(Optional) Accuse Metellus of being the threat.",
+      "(Optional) Admit Metellus that you are the threat."
+     ]
+    },
+    {
+     "title": "Refuse to kill your suspect",
+     "ends": "you must get back to your own time without his help",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel.",
+      "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+      "(Optional) Lure your suspect to the underground tunnels and kill them."
+     ]
+    },
+    {
+     "title": "Follow Metellus to the Lakehouse",
+     "ends": "he sacrifices himself to open a portal back in time; going through it starts the loop again",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel.",
+      "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+      "Go through the city entrance gate to stop the looters coming down the shaft.",
+      "Follow Metellus to the Lakehouse to use his portal again."
+     ]
+    },
+    {
+     "title": "Metellus dies before he can make his portal",
+     "ends": "the paradox returns you to your original timeline",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel.",
+      "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+      "Go through the city entrance gate to stop the looters coming down the shaft.",
+      "Follow Metellus to the Lakehouse to use his portal again."
+     ]
+    },
+    {
+     "title": "Win the Arbiter over",
+     "ends": "the Arbiter returns you to your own time; this is the ending that completes The Forgotten City",
+     "steps": [
+      "Find a way back to your original timeline.",
+      "Follow your guide to Jarl Metellus.",
+      "Talk to Jarl Metellus on the top floor of the Citadel.",
+      "Identify the person most likely to destroy the city and inform Jarl Metellus.",
+      "(Optional) Find \"Quintus\" and investigate whether he is a threat.",
+      "(Optional) Talk to Brol the Scholar to find out more about the city.",
+      "(Optional) Find a way into the abandoned Palace.",
+      "(Optional) Show the book to Brol as proof that the Dwarves' Law is real."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Go through the city entrance gate to stop the looters coming down the shaft.' has no stage log; it is placed before the Lakehouse objective on the two Metellus ways."
+    },
+    {
+     "why": "The Arbiter way (stage 6000) has no objective of its own; it is given the Quintus, Brol and Dwarves' Law objectives the checked read groups together."
+    },
+    {
+     "why": "The other optional errands (Ulrin and Maisi, the armor, Vernon, Habiq, Dooley, Dwemora) aren't tied to any choice and sit on no way."
+    }
+   ],
+   "evidence": [
+    "stage 595 log (refused the Jarl's request) follows objective 575",
+    "stage 600 log (find who will destroy the city) goes with objective 600; objectives 1004-1025 name each suspect",
+    "stage 1500 log (refused to kill your suspect) follows objective 1100",
+    "stage 5000 log (Metellus goes to the Lakehouse) goes with objective 5000; stage 5200 fails; stage 5500 (paradox)",
+    "stage 6000 log (the Arbiter returned you)"
+   ]
+  },
+  {
+   "edid": "DLC2RR01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Go straight back to Captain Veleth",
+     "ends": "he pays you a bounty in gold",
+     "steps": [
+      "Kill the ash spawn attacking Captain Veleth",
+      "Speak to Captain Veleth",
+      "Search the Attius Farm for clues",
+      "Give the note to Captain Veleth",
+      "Kill General Falx Carius",
+      "Return to Captain Veleth"
+     ]
+    },
+    {
+     "title": "Search Carius's remains and read his letter first",
+     "ends": "you take the letter to a guard in Raven Rock, then give it to Captain Veleth; same ending",
+     "steps": [
+      "Kill the ash spawn attacking Captain Veleth",
+      "Speak to Captain Veleth",
+      "Search the Attius Farm for clues",
+      "Give the note to Captain Veleth",
+      "Kill General Falx Carius",
+      "Search General Carius' remains",
+      "Read the note",
+      "Bring the note to a guard in Raven Rock",
+      "Give the note to Captain Veleth"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 90 log (return to Veleth) goes with objective 70",
+    "stage 100 log (examine his remains) goes with objective 80; stage 120 log (bring it to the guards) with objective 100",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DLC2RR02",
+   "shape": "endings",
+   "shared": [
+    "Speak to Adril Arano",
+    "Speak to Geldis Sadri",
+    "Wait inside Ulen Ancestral Tomb",
+    "Discover the identity of the tomb's visitor",
+    "Report back to Adril Arano",
+    "Recover evidence from Severin Manor",
+    "Bring the evidence to Adril Arano",
+    "Meet up with the Redoran Guard",
+    "End the threat to Councilor Morvayn",
+    "Return to Adril Arano",
+    "Follow Adril Arano",
+    "Speak to Councilor Morvayn"
+   ],
+   "ways": [
+    {
+     "title": "Refuse Adril's request at first",
+     "ends": "nothing lost; return to Adril when you are ready",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage records the refusal; it changes no step."
+    }
+   ],
+   "evidence": [
+    "stages 15 and 20 logs repeat Adril's request",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DLC2RR03Intro",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Return the pickaxe to Glover",
+     "ends": "Glover pays you",
+     "steps": [
+      "Retrieve the Ancient Nordic Pickaxe",
+      "Return the Ancient Nordic Pickaxe to Glover Mallory"
+     ]
+    },
+    {
+     "title": "Tell Glover a lie about the pickaxe",
+     "ends": "an alternative to handing it back; what it changes isn't in the records",
+     "steps": [
+      "Retrieve the Ancient Nordic Pickaxe",
+      "Tell Glover Mallory a lie about the Ancient Nordic Pickaxe"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage carries a log, so whether the return objective is also shown on the lie way isn't settled."
+    }
+   ],
+   "evidence": [
+    "objective 20 (return) and objective 30 (lie) both follow objective 10",
+    "stage 200 completes"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1041 @@
+{
+ "quests": [
+  {
+   "edid": "zzzAoMMqGoodEnd",
+   "shape": "endings",
+   "shared": [
+    "Talk to Carene",
+    "Stop Carene",
+    "Talk to Carene",
+    "Leave this place",
+    "Report to Thorondir"
+   ],
+   "ways": [
+    {
+     "title": "Kill Carene",
+     "ends": "the records list it as an optional objective; what changes afterwards isn't shown",
+     "steps": [
+      "(Optional) Kill Carene"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The kill is an optional objective (29) set between talking to Carene (20) and leaving (30); the records don't show what killing her changes, or which of the two finishing stages (50 or 120) each player reaches."
+    }
+   ],
+   "evidence": [
+    "objectives 0, 10, 20, 29, 30, 110; stages carry no journal text",
+    "objective 29 '(Optional) Kill Carene' sits between objectives 20 and 30",
+    "stages 50, 120, 9999 complete"
+   ]
+  },
+  {
+   "edid": "zzzAoMSubQ02",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help the Anatomancer",
+     "ends": "snatch a child, bring the sack back, feed it to the grinder and listen to the Song of Life",
+     "steps": [
+      "Find the Anatomancer",
+      "Prove yourself to the Anatomancer",
+      "Talk to the Anatomancer",
+      "Help the Anatomancer (Evil)",
+      "Snatch a two-legged sheep",
+      "Return to the Anatomancer",
+      "Put the sack into the grinder",
+      "Activate the grinder",
+      "Talk to the Anatomancer",
+      "Listen to the Song of Life",
+      "Divine the future from the guts"
+     ]
+    },
+    {
+     "title": "Kill the Anatomancer",
+     "ends": "examine his corpse",
+     "steps": [
+      "Find the Anatomancer",
+      "Prove yourself to the Anatomancer",
+      "Talk to the Anatomancer",
+      "Kill the Anatomancer (Good)",
+      "Examine the Anatomancer's corpse"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Divine the future from the guts' (objective 300) is placed on the evil way: the good run 200-210 has its own finishing stage (220), while the evil run 20-130 has none, so the 300-310 ending most likely follows it. No stage text confirms this."
+    }
+   ],
+   "evidence": [
+    "objectives 0/1/10 come before the split",
+    "objectives 20-70 match stages 20-70 (evil); stages 80-130 follow with no completion",
+    "objectives 200/210 match stages 200/210; stage 220 completes (good)",
+    "objective 300 matches stage 300; stage 310 completes"
+   ]
+  },
+  {
+   "edid": "zzzBMMq03",
+   "shape": "endings",
+   "shared": [
+    "Defeat <Alias=LamaeBal>",
+    "Free <Alias=LamaeBal> from the curse of Molag Bal"
+   ],
+   "ways": [
+    {
+     "title": "How the curse ends",
+     "ends": "unclear from these files; see unsure",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records show two finishing stages (100 after objectives 60/90, and 220 after a separate run 200-210) but no journal text, so the two endings can't be told apart or tied to a step."
+    }
+   ],
+   "evidence": [
+    "objectives 60, 90 set at stages 60, 90; stage 100 completes",
+    "stages 200, 210 have no objectives; stage 220 completes"
+   ]
+  },
+  {
+   "edid": "zzzCHMemoryQuest04",
+   "shape": "endings",
+   "shared": [
+    "The dead dream beneath the soil"
+   ],
+   "ways": [
+    {
+     "title": "Whether to leave blind Martha alone",
+     "ends": "a good or a bad ending to the memory (one line scolds you for leaving her; details not in these files)",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Only one objective exists; the two finishing stages (60, 100) have no journal text, so which one is the bad ending isn't shown."
+    }
+   ],
+   "evidence": [
+    "single objective 0",
+    "stages 60 and 100 complete; alias BadEndMarker"
+   ]
+  },
+  {
+   "edid": "zzzCOMq01",
+   "shape": "endings",
+   "shared": [
+    "Talk to Gwyneth",
+    "Travel to the Bruiant Mansion",
+    "Investigate and solve the incident of the Bruiant Mansion",
+    "Defeat Julius",
+    "Escape from the mansion",
+    "Die in flames as a martyr or accept Molag Bal's corruption in exchange for help"
+   ],
+   "ways": [
+    {
+     "title": "Die in flames as a martyr",
+     "ends": "one of the quest's endings",
+     "steps": []
+    },
+    {
+     "title": "Accept Molag Bal's corruption",
+     "ends": "a different ending",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stages 100 and 200 both complete after objective 80, but neither has journal text, so which stage is martyrdom and which is corruption isn't shown."
+    }
+   ],
+   "evidence": [
+    "objective 80 names both choices",
+    "stages 100, 200 complete; aliases MartydomMarker, CorruptMarker"
+   ]
+  },
+  {
+   "edid": "NMeridia03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help Findar escape",
+     "ends": "Talk to him at his mother's home outside Solitude; he points you to Golvunter.",
+     "steps": [
+      "Speak with Alara in Meridia's Sanctum",
+      "Ask members of Meridia's Order about Findar",
+      "Speak to Findar's mother",
+      "Find Findar in the Dragonsreach Dungeon",
+      "Help Findar escape and talk to him at his Mother's home",
+      "Speak to Findar at his Mother's home",
+      "Retrieve the Staff from Golvunter",
+      "Return to Alara"
+     ]
+    },
+    {
+     "title": "Findar dies in the dungeon",
+     "ends": "Talk to Marith, then to Findar's mother, who points you to Golvunter.",
+     "steps": [
+      "Speak with Alara in Meridia's Sanctum",
+      "Ask members of Meridia's Order about Findar",
+      "Speak to Findar's mother",
+      "Find Findar in the Dragonsreach Dungeon",
+      "Speak to Marith",
+      "Speak to Findar's mother",
+      "Retrieve the Staff from Golvunter",
+      "Return to Alara"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 35 log: helping him escape (objective 35); stage 40 log: bailed out, speak to him at his mother's (objective 40)",
+    "stage 50 log: Findar died, speak with Marith (objective 50); stage 55 log: speak with his mother (objective 55)",
+    "stage 80 log: staff in Golvunter (objective 80); objective 90 before completing stage 100"
+   ]
+  },
+  {
+   "edid": "NMeridia04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill Adelaide as Dralos orders",
+     "ends": "Speak to Dralos; he gives you the Sanctuary's location.",
+     "steps": [
+      "Speak with Laracin",
+      "Meet with the Necromancers",
+      "Kill Adelaide",
+      "Speak to Dralos",
+      "Gain access to the Dark Dawn Sanctuary",
+      "Gain information about the Necromancer's plans",
+      "Return to Alara"
+     ]
+    },
+    {
+     "title": "Kill the Necromancers instead",
+     "ends": "Speak to Adelaide; she tells you their hideout is next to Rannveig's Fast and to find her in Riverwood later.",
+     "steps": [
+      "Speak with Laracin",
+      "Meet with the Necromancers",
+      "Kill Adelaide",
+      "Speak to Adelaide",
+      "Gain access to the Dark Dawn Sanctuary",
+      "Gain information about the Necromancer's plans",
+      "Return to Alara"
+     ]
+    },
+    {
+     "title": "Try to reason with them",
+     "ends": "The journal offers it; where it leads isn't shown in these files.",
+     "steps": [
+      "Speak with Laracin",
+      "Meet with the Necromancers",
+      "Kill Adelaide",
+      "Gain access to the Dark Dawn Sanctuary",
+      "Gain information about the Necromancer's plans",
+      "Return to Alara"
+     ]
+    },
+    {
+     "title": "Search, win favour or fight through the Sanctuary",
+     "ends": "Each way finds the plan. Winning favor is the side quest The Dark Dawn (Reeshi).",
+     "steps": [
+      "Gain access to the Dark Dawn Sanctuary",
+      "Gain information about the Necromancer's plans",
+      "Return to Alara"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Kill Adelaide' (objective 25) is shown at stage 25, before you choose, so it is listed on every way."
+    },
+    {
+     "why": "Reasoning with them has no stage or objective of its own; it is given the shared run to the Sanctuary because stage 70 after objective 60 is the quest's only ending."
+    },
+    {
+     "why": "The Sanctuary choice comes after the Adelaide choice and goes with any of the first three; its way lists only the Sanctuary steps."
+    }
+   ],
+   "evidence": [
+    "stage 25 log offers kill / reason / kill the Necromancers",
+    "stage 26 log: killed the Necromancers, speak with Adelaide (objective 26)",
+    "stage 27 log: killed her, speak with Dralos (objective 27)",
+    "stage 40 log: secret documents, favour of members, or fighting through (objective 40)",
+    "stage 70 completes; no fail stage"
+   ]
+  },
+  {
+   "edid": "NMeridia04ReeshiMisc",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill the Markarth Court Member",
+     "ends": "Return to Reeshi for your reward and next task.",
+     "steps": [
+      "Speak to Reeshi",
+      "Kill or warn the Markarth Court Member",
+      "Return to Reeshi",
+      "Recieve your next task from Reeshi",
+      "Deliver the letter to the Necromancer",
+      "Return to Reeshi"
+     ]
+    },
+    {
+     "title": "Warn her instead",
+     "ends": "Return to Reeshi the same way; she leaves Markarth and later stays at the Windpeak Inn in Dawnstar.",
+     "steps": [
+      "Speak to Reeshi",
+      "Kill or warn the Markarth Court Member",
+      "Return to Reeshi",
+      "Recieve your next task from Reeshi",
+      "Deliver the letter to the Necromancer",
+      "Return to Reeshi"
+     ]
+    },
+    {
+     "title": "Open Reeshi's letter or deliver it sealed",
+     "ends": "Opening it may tell you about the Necromancers' plans.",
+     "steps": [
+      "Speak to Reeshi",
+      "Kill or warn the Markarth Court Member",
+      "Return to Reeshi",
+      "Recieve your next task from Reeshi",
+      "Deliver the letter to the Necromancer",
+      "Return to Reeshi"
+     ]
+    },
+    {
+     "title": "Turn on the Dark Dawn",
+     "ends": "The quest fails and you may have to fight your way through the Sanctuary for the evidence.",
+     "steps": [
+      "Speak to Reeshi"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Killing or warning the Court Member share one objective, and opening the letter or not shares the delivery objective, so these ways take the same steps."
+    },
+    {
+     "why": "Turning on the Dark Dawn fails the quest at stage 70, which can come at any point; only the first step is listed."
+    }
+   ],
+   "evidence": [
+    "stage 20 log: kill or warn (objective 20)",
+    "stage 40 log: open the letter or not (objective 40)",
+    "stage 60 completes; stage 70 fails ('burnt my bridges')"
+   ]
+  },
+  {
+   "edid": "NMeridia08",
+   "shape": "endings",
+   "shared": [
+    "Find a way to destroy the pocket realm",
+    "Escape the pocket realm",
+    "Report back to Alara"
+   ],
+   "ways": [
+    {
+     "title": "Play Fiya's games",
+     "ends": "The side quest A Fate Worse Than Death.",
+     "steps": []
+    },
+    {
+     "title": "Help The Jester and Alzacar",
+     "ends": "The side quest The Jester, In The Bedroom, With The Knife; Alzacar tells you to kill the conjured dog Molag in the Master Bedroom.",
+     "steps": []
+    },
+    {
+     "title": "Attack everything in sight",
+     "ends": "The journal offers it as a way through.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The three choices differ only in side quests; this quest's own journal steps are the same for all of them."
+    }
+   ],
+   "evidence": [
+    "stage 10 log: engage with Fiya, speak to her servants, or attack everything in sight",
+    "stage 20 log: realm destroyed, speak with Garin (objective 20)",
+    "stage 40 completes"
+   ]
+  },
+  {
+   "edid": "NMeridia08MiscFiya",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill Marith or Alara for Fiya",
+     "ends": "Confront Fiya again and carry on with her games.",
+     "steps": [
+      "Confront Fiya",
+      "Kill Marith or Alara",
+      "Confront Fiya"
+     ]
+    },
+    {
+     "title": "Kill Cleans-Many-Boots for Fiya",
+     "ends": "Return to Fiya.",
+     "steps": [
+      "Return to Fiya",
+      "Kill Cleans-Many-Boots",
+      "Return to Fiya"
+     ]
+    },
+    {
+     "title": "Wreck the realm instead",
+     "ends": "Fiya flees and this quest fails; you still need to destroy the realm.",
+     "steps": [
+      "Confront Fiya"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Fiya's games run as one numbered sequence (30-80), so killing Cleans-Many-Boots most likely follows the Marith-or-Alara game rather than replacing it; each way lists only its own game."
+    },
+    {
+     "why": "Wrecking the realm fails the quest at stage 100, which can come at any point; only the first step is listed."
+    }
+   ],
+   "evidence": [
+    "objectives 10/30/40/60/70/80 in one run; journal text never changes until 100",
+    "stage 90 completes; stage 100 fails (Fiya has fled)"
+   ]
+  },
+  {
+   "edid": "NMeridia08MiscJester",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Turn on The Jester and Alzacar",
+     "ends": "This quest fails; you need another way to learn how to destroy the realm.",
+     "steps": [
+      "Find a way to turn Alzacar against Fiya"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The quest fails at stage 60 whenever you turn on them; the point isn't shown, so only the first step is listed."
+    }
+   ],
+   "evidence": [
+    "stage 50 completes; stage 60 fails ('burned my bridges')"
+   ]
+  },
+  {
+   "edid": "NMeridiaAsger01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Believe Arandar and kill Orfoljt",
+     "ends": "One of two endings with Asger",
+     "steps": [
+      "Speak to Arandar",
+      "Find Orfoljt",
+      "Kill Orfoljt or Arandar",
+      "Speak to Asger"
+     ]
+    },
+    {
+     "title": "Believe Orfoljt and kill Arandar",
+     "ends": "The other ending with Asger",
+     "steps": [
+      "Speak to Arandar",
+      "Find Orfoljt",
+      "Kill Orfoljt or Arandar",
+      "Kill Arandar",
+      "Speak to Asger"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stages 40 and 43 have the same journal text ('made my decision'); objective 40 (Speak to Asger) is read as the Orfoljt-dies way and 43 (Kill Arandar) then 45 (Speak to Asger) as the Arandar-dies way."
+    },
+    {
+     "why": "A third 'Speak to Asger' (objective 47) isn't placed on either way; nor is it shown which way ends at 50 (Asger offers his services) or 51 (Asger is upset)."
+    }
+   ],
+   "evidence": [
+    "stage 35 log: decide who to believe (objective 35)",
+    "objective 43 'Kill Arandar' with stage 43",
+    "stages 50, 51 complete"
+   ]
+  },
+  {
+   "edid": "NMeridiaLaracin01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help Laracin kill the Vigilant leader",
+     "ends": "Laracin offers you his services",
+     "steps": [
+      "Kill the Vigilant Leader",
+      "Speak to Laracin"
+     ]
+    },
+    {
+     "title": "Talk Laracin into a truce",
+     "ends": "Peace with the Vigilants; the quest ends there",
+     "steps": [
+      "Kill the Vigilant Leader or make a truce",
+      "Speak to Laracin"
+     ]
+    },
+    {
+     "title": "Refuse to help",
+     "ends": "The quest fails; Laracin deals with it himself",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Refusing ends the quest at stage 40 with no objective shown, so that way has no steps."
+    },
+    {
+     "why": "Whether 'Kill the Vigilant Leader' (objective 10) shows before you talk Laracin into the truce isn't clear; it is left off the truce way."
+    }
+   ],
+   "evidence": [
+    "stage 10/20 logs: assassination, no truce; stage 30 completes ('did so successfully')",
+    "stage 15/25 logs: 'convinced him to let me attempt a truce'; stage 27 completes ('which was successful')",
+    "stage 40 fails ('I did not agree to help him')"
+   ]
+  },
+  {
+   "edid": "NMeridiaValrar01",
+   "shape": "endings",
+   "shared": [
+    "Obtain Valrar's Family Ring",
+    "Return to Valrar"
+   ],
+   "ways": [
+    {
+     "title": "Get the ring peacefully and give it to Valrar",
+     "ends": "Valrar becomes a trader, cures your diseases and gives you a free potion every day",
+     "steps": []
+    },
+    {
+     "title": "Talk Valrar into leaving the Order for Dario",
+     "ends": "Valrar leaves the Order and moves to Riverwood",
+     "steps": []
+    },
+    {
+     "title": "Kill Dario and tell Valrar",
+     "ends": "Valrar is upset and asks you to keep away from him",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 30 completes: trader, healer, free potion",
+    "stage 50 completes: leaves the Order",
+    "stage 40 completes: killed his ex-partner, keep away"
+   ]
+  },
+  {
+   "edid": "zzzPO01Informant",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill her",
+     "ends": "Search her body for intel; you learn where Cicero and Babette are",
+     "steps": [
+      "Eliminate the Dark Brotherhood remnant",
+      "Report to <Alias=Questgiver>"
+     ]
+    },
+    {
+     "title": "Let her defect",
+     "ends": "Escort her to the outpost in Dragon Bridge and talk to her there; she gives you the Listener's Orders with Cicero's and Babette's whereabouts",
+     "steps": [
+      "Eliminate the Dark Brotherhood remnant",
+      "Talk to the Dark Brotherhood informer at the Penitus Oculatus outpost",
+      "Read <Alias=Note>",
+      "Report to <Alias=Questgiver>"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Eliminate the Dark Brotherhood remnant' (objective 1) is the mission you are given at stage 1, so it is listed on the defect way too."
+    }
+   ],
+   "evidence": [
+    "stage 1 log: track down and eliminate (objective 1)",
+    "stage 2 log: defected, escort to the outpost (objective 2); stage 4 log: note given (objective 3); stage 5 log: locations given",
+    "stages 12/13 logs: eliminated, search the body",
+    "objective 4 'Report to' before completing stage 20"
+   ]
+  },
+  {
+   "edid": "DA03",
+   "shape": "endings",
+   "shared": [
+    "Talk with Barbas",
+    "Join Barbas outside Haemar's Shame",
+    "Travel with Barbas to the shrine of Clavicus Vile",
+    "Join Barbas outside Rimerock Burrow",
+    "Retrieve the Rueful Axe with Barbas",
+    "Join Barbas outside Haemar's Shame",
+    "Return to the shrine of Clavicus Vile with Barbas and the Rueful Axe",
+    "Give the Rueful Axe to Clavicus Vile OR kill Barbas with the Rueful Axe"
+   ],
+   "ways": [
+    {
+     "title": "Give the Rueful Axe to Clavicus Vile",
+     "ends": "Barbas and Clavicus Vile are reunited and you receive the Masque of Clavicus Vile",
+     "steps": []
+    },
+    {
+     "title": "Kill Barbas with the Rueful Axe",
+     "ends": "Barbas dies and you keep the Rueful Axe",
+     "steps": [
+      "Speak to Clavicus Vile"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 150 log: keep the axe by killing Barbas or return it (objective 150)",
+    "stage 155 log: decided to kill Barbas (objective 155)",
+    "stage 200 completes: reunited, Masque received"
+   ]
+  },
+  {
+   "edid": "DA02",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Sacrifice someone on the Pillar",
+     "ends": "Boethiah appears in their corpse; fight the other cultists to the death, then she sends you after her old champion at Knifepoint Ridge. Kill him, put on the Ebony Mail, and you become her champion.",
+     "steps": [
+      "Find the Sacellum of Boethiah",
+      "Find the cult of Boethiah",
+      "Lead someone to become trapped by the shrine and slay them",
+      "Slay the other cultists",
+      "Slay everyone at <Alias=Dungeon> stealthily",
+      "Retrieve and equip the Ebony Mail",
+      "Slay the Jarl of Solitude",
+      "Speak to Boethiah's Conduit"
+     ]
+    },
+    {
+     "title": "Refuse to sacrifice a follower",
+     "ends": "After you slay her cultists Boethiah curses you. Pray at a Shrine of Stendarr for the Gauntlets of the Crusader, or visit Molag Bal's altar in Markarth for the Hands of Coldharbour.",
+     "steps": [
+      "Find the Sacellum of Boethiah",
+      "Find the cult of Boethiah",
+      "Lead someone to become trapped by the shrine and slay them",
+      "Visit a Shrine of Stendarr",
+      "Visit the Altar of Molag Bal"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Speak to Boethiah's Conduit' appears twice in the records (objectives 100 and 101); it is listed once."
+    },
+    {
+     "why": "On the refuse way, whether you see 'Lead someone to become trapped by the shrine and slay them' (10) before refusing isn't shown; it is kept because stage 300's log says Boethiah asked you for a sacrifice."
+    },
+    {
+     "why": "Visiting a Shrine of Stendarr and the Altar of Molag Bal are alternatives (stages 305 and 315 each complete), not two steps you take one after the other."
+    }
+   ],
+   "evidence": [
+    "stage 10 log: lead someone to the Pillar (objective 10)",
+    "stage 15 log: fight the cultists (objective 15); stage 20 log: slay the old champion, don the Ebony Mail (objectives 20, 30)",
+    "stages 50 and 100 complete",
+    "stage 300 log: refused, cursed, pray to the Divines (objective 300); stage 305 completes (Gauntlets of the Crusader)",
+    "stage 310 log: visit his altar in Markarth (objective 310); stage 315 completes (Hands of Coldharbour)"
+   ]
+  },
+  {
+   "edid": "DA04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill Septimus",
+     "ends": "The quest fails.",
+     "steps": [
+      "Ask Urag about the insane book",
+      "Find Septimus Signus"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Killing Septimus fails the quest at stage 105 whenever it happens; the steps up to meeting him are listed."
+    }
+   ],
+   "evidence": [
+    "stage 105 fails ('met and killed')",
+    "stage 10 log: Septimus found (objective 10)"
+   ]
+  },
+  {
+   "edid": "DA05",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Hunt Sinding for Hircine",
+     "ends": "Join the hunters in Bloated Man's Grotto, kill and skin Sinding, then speak with Hircine for the Savior's Hide.",
+     "steps": [
+      "Speak to Sinding",
+      "Kill the great beast",
+      "Begin the hunt",
+      "Join the hunt",
+      "Kill Sinding",
+      "Skin Sinding",
+      "Speak with Hircine"
+     ]
+    },
+    {
+     "title": "Defend Sinding",
+     "ends": "Kill the hunters Hircine sent and earn Sinding's friendship.",
+     "steps": [
+      "Speak to Sinding",
+      "Kill the great beast",
+      "Begin the hunt",
+      "Kill the Hunters",
+      "Talk to Sinding"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Begin the hunt' (objective 50) is set at stage 50, when Hircine asks you to kill Sinding, which is before you choose; it is listed on both ways."
+    }
+   ],
+   "evidence": [
+    "stage 50 log: Hircine asks you to kill Sinding",
+    "stage 70 log: defend him against the hunters (objective 70)",
+    "stage 100 completes (Savior's Hide); stage 105 completes (his friendship)"
+   ]
+  },
+  {
+   "edid": "DA07",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill Silus for Mehrunes Dagon",
+     "ends": "Dagon reforges the Razor when you place your hands on his altar, and it's yours.",
+     "steps": [
+      "Speak to Silus inside his house",
+      "Retrieve the pommel of Mehrunes' Razor",
+      "Retrieve the blade shards of Mehrunes' Razor",
+      "Retrieve the hilt of Mehrunes' Razor",
+      "Bring the pommel stone to Silus",
+      "Bring the blade shards to Silus",
+      "Bring the hilt to Silus",
+      "Meet Silus at the Shrine of Mehrunes Dagon",
+      "Speak to Mehrunes Dagon",
+      "Kill Silus",
+      "Speak to Mehrunes Dagon",
+      "Reforge Mehrunes' Razor",
+      "Claim Mehrunes' Razor"
+     ]
+    },
+    {
+     "title": "Refuse to kill Silus",
+     "ends": "The Razor is forever out of your grasp.",
+     "steps": [
+      "Speak to Silus inside his house",
+      "Retrieve the pommel of Mehrunes' Razor",
+      "Retrieve the blade shards of Mehrunes' Razor",
+      "Retrieve the hilt of Mehrunes' Razor",
+      "Bring the pommel stone to Silus",
+      "Bring the blade shards to Silus",
+      "Bring the hilt to Silus",
+      "Meet Silus at the Shrine of Mehrunes Dagon",
+      "Speak to Mehrunes Dagon"
+     ]
+    },
+    {
+     "title": "Reforge the Razor yourself",
+     "ends": "See Reforging the Past.",
+     "steps": [
+      "Speak to Silus inside his house",
+      "Retrieve the pommel of Mehrunes' Razor",
+      "Retrieve the blade shards of Mehrunes' Razor",
+      "Retrieve the hilt of Mehrunes' Razor"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Reforging it yourself is a separate quest (Reforging the Past), offered by Silus only before he has all three pieces; the steps here stop at gathering the pieces, and whether you still bring them to him isn't shown."
+    }
+   ],
+   "evidence": [
+    "stage 70 log: Dagon asks you to kill Silus (objective 50); stage 80 log: speak to him through his altar (objective 60); stage 90 log: hands on his altar (objective 70)",
+    "stage 100 completes ('Razor is mine'); stage 150 completes ('refused to kill Silus')",
+    "DA07PlayerHasReforged giver line on Silus open while DA07 stage < 50"
+   ]
+  },
+  {
+   "edid": "DA07PlayerHasReforged",
+   "shape": "endings",
+   "shared": [
+    "Reforge the Razor at any forge."
+   ],
+   "ways": [
+    {
+     "title": "Give the reforged Razor to Silus",
+     "ends": "You get a substantial reward.",
+     "steps": [
+      "(Optional) Return the Razor to Silus."
+     ]
+    },
+    {
+     "title": "Keep the Razor",
+     "ends": "It's yours.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log: reforged, can return it (objective 20)",
+    "stage 25 completes: given to Silus, reward",
+    "stage 30 completes: kept it"
+   ]
+  },
+  {
+   "edid": "DA01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take the Star to Aranea",
+     "ends": "Azura purifies it after you destroy Malyn's soul: you keep Azura's Star.",
+     "steps": [
+      "Find the elven mage from Aranea's vision",
+      "Speak to Nelacar",
+      "Find Azura's Star",
+      "Bring the Star to Aranea",
+      "Speak to Azura",
+      "Tell Azura you're ready to enter the Star",
+      "Destroy Malyn Varen's soul"
+     ]
+    },
+    {
+     "title": "Take the Star to Nelacar",
+     "ends": "Nelacar completes it after you destroy Malyn's soul: you keep the Black Star.",
+     "steps": [
+      "Find the elven mage from Aranea's vision",
+      "Speak to Nelacar",
+      "Find Azura's Star",
+      "Bring the Star to Nelacar",
+      "Tell Nelacar you're ready to enter the Star",
+      "Destroy Malyn Varen's soul"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 50 log: take the Star to Aranea or Nelacar",
+    "stage 70 log: Azura purifies (Aranea); stage 75 log: Nelacar brings you out",
+    "stage 100 completes (Azura's Star); stage 110 completes (Black Star)"
+   ]
+  },
+  {
+   "edid": "DA06",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Petition Malacath for Yamarz",
+     "ends": "Malacath orders Yamarz to retake the shrine in Fallowstone Cave; you escort him and kill the giant. Malacath names Gularzob the new chief and you his champion.",
+     "steps": [
+      "Read the letter from Largashbur",
+      "Find out what's happening in Largashbur",
+      "Speak with Yamarz",
+      "Return to Atub",
+      "Find the Shrine of Malacath",
+      "Inspect the Skeleton",
+      "Return to Atub",
+      "Bring Troll Fat and a Daedra Heart to Atub",
+      "Observe Atub's ritual",
+      "Speak with Yamarz",
+      "Meet Yamarz at Fallowstone Cave",
+      "Protect Yamarz",
+      "Defeat Garok Longstride",
+      "Take Shagrol's Hammer back to Largashbur",
+      "Place Shagrol's Hammer on the shrine in Largashbur",
+      "Return to Atub"
+     ]
+    },
+    {
+     "title": "Take or turn down Yamarz's extra pay",
+     "ends": "Either way you end up fighting the giant; if you turn him down, Yamarz dies trying.",
+     "steps": [
+      "Meet Yamarz at Fallowstone Cave",
+      "Protect Yamarz",
+      "Defeat Garok Longstride"
+     ]
+    },
+    {
+     "title": "Cast Bane of the Undead in Largashbur",
+     "ends": "The haunting ghosts appear and attack the stronghold; defeat them and the quest ends with the ghosts gone, without the Fallowstone Cave trip.",
+     "steps": [
+      "Read the letter from Largashbur",
+      "Find out what's happening in Largashbur",
+      "Speak with Yamarz",
+      "Cast Bane of the Undead in Largashbur",
+      "Defeat the ghosts (<Global=TCTRC_GLOB_GhostDeadCount>/<Global=TCTRC_GLOB_GhostDeadTotal>)",
+      "Speak with Yamarz",
+      "Speak with Atub"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The extra-pay choice comes inside the Malacath way at Fallowstone Cave; both answers lead to the same objectives (stage 100 has a log for each), so that way lists only the cave steps."
+    }
+   ],
+   "evidence": [
+    "stage 30 log: petition Malacath (objective 30); stage 35 log: 'I know a spell' (objective 35)",
+    "stages 40/45 logs: shrine and skeleton (objectives 40, 42, 45); stage 50 log: troll fat and Daedra heart (objective 50)",
+    "stage 70 log: Malacath commands Yamarz (objective 70); stage 80 log: escort to Fallowstone Cave (objective 80)",
+    "stage 100 has two logs: agreed to kill the giant / declined and Yamarz died",
+    "stages 65-67 logs: ghosts appear and are defeated (objectives 65-67); stage 210 completes (magic)",
+    "stage 200 completes (Gularzob chief, you champion)"
+   ]
+  },
+  {
+   "edid": "DA10",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Serve Molag Bal",
+     "ends": "Beat Logrolf into submission at the altar, kill him and speak to Molag Bal; you get the Mace of Molag Bal.",
+     "steps": [
+      "Search the abandoned house",
+      "Follow Tyranus",
+      "Find the priest of Boethiah",
+      "Free Logrolf",
+      "Go to the abandoned house",
+      "Beat Logrolf into submission",
+      "Kill Logrolf",
+      "Speak to Molag Bal"
+     ]
+    },
+    {
+     "title": "Side with Tyranus and destroy the altar",
+     "ends": "Escape the basement, talk to Tyranus and find your reward; the house is made safe and you don't get the Mace.",
+     "steps": [
+      "Search the abandoned house",
+      "Follow Tyranus",
+      "Hit the altar to destroy it",
+      "Escape the basement",
+      "Talk to Tyranus",
+      "Find your reward"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Follow Tyranus' (objective 11) is listed on both ways; the records don't show at which point the Molag Bal way leaves Tyranus behind."
+    }
+   ],
+   "evidence": [
+    "objectives 12-20 run as one block ending at stage 210 ('helped Tyranus destroy Molag Bal's altar')",
+    "stage 80 log: Molag Bal asks you to lure a priest of Boethiah (objectives 30-70)",
+    "stage 200 completes ('Logrolf is dead, and the Mace of Molag Bal is mine')"
+   ]
+  },
+  {
+   "edid": "DA15",
+   "shape": "endings",
+   "shared": [
+    "Gain access to the Pelagius Wing of the Blue Palace",
+    "Use the key to gain access to the Pelagius Wing",
+    "Search for Dervenin's master in the Pelagius Wing",
+    "Use the Wabbajack to escape from Pelagius' Mind",
+    "Escape from the Blue Palace"
+   ],
+   "ways": [
+    {
+     "title": "Get the key from Falk Firebeard, Una or Erdi",
+     "ends": "You get the key to the Pelagius Wing either way.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objective 10 'Gain access'; objective 45 'Use the key' follows whichever giver",
+    "stage 200 is the only completing stage"
+   ]
+  },
+  {
+   "edid": "EC_SS_MQ102",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Bring Nerveshatter or another Shivering Isles artifact",
+     "ends": "Any fitting artifact lets you break the barrier.",
+     "steps": [
+      "Find an artifact originating from the Shivering Isles",
+      "(Optional) Retrieve Nerveshatter",
+      "(Optional) Talk to Dylora",
+      "Return to Staada",
+      "Destroy the barrier",
+      "Enter the Nexus",
+      "Defeat Thoron",
+      "Talk to Staada"
+     ]
+    },
+    {
+     "title": "Burn, steal and frame (optional)",
+     "ends": "Side tasks within this quest; what each one changes isn't shown in these records.",
+     "steps": [
+      "Find an artifact originating from the Shivering Isles",
+      "(Optional) Burn the Grove of Insanity.",
+      "(Optional) Burn the laboratory",
+      "(Optional) Steal a Soul Tomato from the Grove of Insanity",
+      "(Optional) Steal a Void Essence from the laboratory",
+      "(Optional) Frame the Priests for burning the Grove of Insanity",
+      "(Optional) Frame the Apostles for burning the laboratory",
+      "Return to Staada",
+      "Destroy the barrier",
+      "Enter the Nexus",
+      "Defeat Thoron",
+      "Talk to Staada"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The optional burning, stealing and framing tasks (objectives 54-59) sit inside the artifact search (stages 52-59 share one log), so they are listed on a way of their own; they can be done alongside the first way."
+    }
+   ],
+   "evidence": [
+    "objectives 49-59 share the stage 52-59 log ('sent me to retrieve a weapon')",
+    "stage 64 log: weapon retrieved; objectives 65-90 follow",
+    "stage 100 is the only completing stage"
+   ]
+  }
+ ]
+}

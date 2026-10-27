@@ -1,0 +1,1109 @@
+{
+ "quests": [
+  {
+   "edid": "0WHQuestDeliveryToBro",
+   "shape": "endings",
+   "shared": [
+    "Deliver the purchase agreement to Higil's home.",
+    "I should tell Wilhelm I've finished the delivery."
+   ],
+   "ways": [
+    {
+     "title": "Hand Higil the agreement or leave it on his desk",
+     "ends": "either way the delivery counts; then go back to Wilhelm",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10 and 15 are the only two; stage 10 log allows leaving the document on the desk",
+    "stage 30 completes either way"
+   ]
+  },
+  {
+   "edid": "0WHQuestFursRepeating",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take whichever order Frida gives",
+     "ends": "one of: six Wolf, three Sabre Cat, three Bear, four Ice Wolf, two Snow Sabre Cat, two Snow Bear or three Cave Bear pelts",
+     "steps": [
+      "Bring six Wolf pelts to Frida in Windhelm",
+      "Bring three Sabre Cat Pelts to Frida in Windhelm",
+      "Bring three Bear Pelts to Frida in Windhelm",
+      "Bring four Ice Wolf pelts to Frida in Windhelm",
+      "Bring two Snow Sabre Cat pelts to Frida in Windhelm",
+      "Bring two Snow Bear Pelts to Frida in Windhelm",
+      "Bring three Cave Bear Pelts to Frida in Windhelm"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Each run gives only one of these seven pelt orders (stages 31-53 and 110 each log one order); the records don't say how the order is picked, so the one way lists all seven."
+    }
+   ],
+   "evidence": [
+    "objectives 31/32/33/51/52/53/110 each match a stage log naming one pelt order",
+    "delivery stages 91-111 pair with them; stage 200 'Mission complete' has no completes flag"
+   ]
+  },
+  {
+   "edid": "0WHQuestMeadRepeating",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take whichever inn Manheim names",
+     "ends": "the Bannered Mare, the Frozen Hearth or Candlehearth Hall",
+     "steps": [
+      "Deliver some Battle-Brew reserve to the Bannered Mare in Whiterun",
+      "Deliver some Battle-Brew reserve to the Frozen Hearth in Winterhold",
+      "Deliver some Battle-Brew reserve to Candlehearth Hall in Windhelm"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Each run sends you to one inn only (stages 10, 20, 30 each log one delivery); the one way lists all three."
+    }
+   ],
+   "evidence": [
+    "objectives 10/20/30 match stage logs 10/20/30",
+    "stage 200 logs the finished delivery"
+   ]
+  },
+  {
+   "edid": "0WHQuestRieklings",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill every riekling, then talk to Signy",
+     "ends": "she pays you",
+     "steps": [
+      "Enter the warehouse - Kill the stowaways",
+      "Search the warehouse for rieklings then speak to Signy - after you feel that your work is done.",
+      "Talk to Signy about your reward"
+     ]
+    },
+    {
+     "title": "Tell Signy the job is done without finishing it",
+     "ends": "the journal hints this is possible; outcome not shown",
+     "steps": [
+      "Enter the warehouse - Kill the stowaways",
+      "Search the warehouse for rieklings then speak to Signy - after you feel that your work is done."
+     ]
+    },
+    {
+     "title": "Decline to help",
+     "ends": "the quest is set aside",
+     "steps": []
+    },
+    {
+     "title": "Signy dies",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether the lying route still reaches the completing stage isn't in the records; it lists only the steps before the lie."
+    },
+    {
+     "why": "Signy can die at any point, so the failure way lists no steps."
+    }
+   ],
+   "evidence": [
+    "stage 25 log: 'Or perhaps I could just tell Signy that the job is done...' goes with objective 25",
+    "stage 30 log (all rieklings killed) goes with objective 30; stage 40 completes",
+    "stage 50 logs the refusal and sets no objective",
+    "stage 60 fails on Signy's death"
+   ]
+  },
+  {
+   "edid": "0WHQuestTalosIntro",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill the Thalmor agent for Hverung",
+     "ends": "Hverung trusts you and you can use his headquarters; he may have more work later",
+     "steps": [
+      "Speak to the man called Hverung",
+      "Kill the Thalmor agent hiding in the Gray Quarter",
+      "Return to Hverung with the Ears and the Thalmor Dossier"
+     ]
+    },
+    {
+     "title": "Warn the Thalmor agent instead",
+     "ends": "you're told to kill Hverung; the plans of this enemy of the Thalmor die with him",
+     "steps": [
+      "Speak to the man called Hverung",
+      "Kill the Thalmor agent hiding in the Gray Quarter",
+      "OR Warn the Thalmor agent hiding in the Gray Quarter",
+      "Kill Hverung"
+     ]
+    },
+    {
+     "title": "Kill Hverung outright",
+     "ends": "the quest ends with Hverung dead",
+     "steps": [
+      "Speak to the man called Hverung"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 41 starts with 'OR', so it likely shows beside objective 40 when you're sent after the agent; the warn way keeps both."
+    },
+    {
+     "why": "Where killing Hverung outright can happen isn't in the records; that way lists only meeting him."
+    }
+   ],
+   "evidence": [
+    "stage 40 log (sent to kill the agent) goes with objectives 40/41; stage 50 log (return with ears and notes) with objective 50",
+    "stage 70 completes after the ears are delivered",
+    "objective 51 'Kill Hverung' leads to stage 300 (completes: 'An enemy of the Thalmor Dominion')",
+    "stage 80 'Killed Hverung' completes with no objective of its own"
+   ]
+  },
+  {
+   "edid": "0WHQuestVampires",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Fight the Volkihar Brute",
+     "ends": "talk to the guardsman, then report to Wuunferth; the nest is purged",
+     "steps": [
+      "Explore the frozen caverns",
+      "(optional) Slay the Volkhair Brute",
+      "Speak to the Guardsman",
+      "Report to Wuunferth, the court mage in the Palace of the Kings"
+     ]
+    },
+    {
+     "title": "Run away",
+     "ends": "tell Wuunferth; he deals with the nest, but the guards who went in are lost; it can end in failure",
+     "steps": [
+      "Explore the frozen caverns",
+      "(optional) Run away",
+      "Speak to Wuunferth again"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objectives 110 and 111 are both optional and sit side by side, so the brute objective likely shows on the run-away way too before you flee."
+    },
+    {
+     "why": "The run-away way ends either at stage 220 (fails) or stage 320 (completes); the records don't say which ending follows which."
+    }
+   ],
+   "evidence": [
+    "stage 120 log (dealt with the Vampire Lord) goes with objective 120; stage 130 log (talk to Wuunferth) with objective 130; stage 140 completes",
+    "stages 200-310 log running away; objective 310 matches stage 310",
+    "stage 220 fails, stage 320 completes"
+   ]
+  },
+  {
+   "edid": "0WRGiantQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Fight the giant",
+     "ends": "Kill the Giant Chieftain, then the Jarl's steward pays you in gold",
+     "steps": [
+      "Deal with the Giant outside Whiterun",
+      "Speak to the Jarl's Steward inside Dragonsreach for your reward"
+     ]
+    },
+    {
+     "title": "Poison the giants' food",
+     "ends": "Get a strong poison and put it in their food; once the giant is dead, the steward pays you",
+     "steps": [
+      "Deal with the Giant outside Whiterun",
+      "(Optional) Ask around town for alternative ways to deal with the Giant",
+      "Speak to the Jarl's Steward inside Dragonsreach for your reward"
+     ]
+    },
+    {
+     "title": "Try diplomacy through Urik",
+     "ends": "Bring a painted cow and the poem to the chieftain. If the truce works, the giants stop bothering travellers who keep away from their camp, and the chieftain will trade with you. The steward either pays some gold anyway or pays nothing, because the Jarl wanted the giant dead",
+     "steps": [
+      "Deal with the Giant outside Whiterun",
+      "(Optional) Ask around town for alternative ways to deal with the Giant",
+      "Read Urik's note",
+      "Give Urik 300 gold for a cow",
+      "Acquire some blue Dye - some shop in Whiterun should be able to provide it.",
+      "Bring a copy of the poem \"Ode to the Tundrastriders\" to Urik.",
+      "Get some Paint from the Bucket",
+      "Paint the Gertie the Cow",
+      "Get Gertie the Painted Cow to Follow you",
+      "Go speak to the Giant Chieftain",
+      "Speak to the Jarl's Steward inside Dragonsreach for your reward"
+     ]
+    },
+    {
+     "title": "Talks with the chieftain fail",
+     "ends": "You have to kill the giant after all",
+     "steps": [
+      "Deal with the Giant outside Whiterun",
+      "(Optional) Ask around town for alternative ways to deal with the Giant",
+      "Read Urik's note",
+      "Give Urik 300 gold for a cow",
+      "Acquire some blue Dye - some shop in Whiterun should be able to provide it.",
+      "Bring a copy of the poem \"Ode to the Tundrastriders\" to Urik.",
+      "Get some Paint from the Bucket",
+      "Paint the Gertie the Cow",
+      "Get Gertie the Painted Cow to Follow you",
+      "Go speak to the Giant Chieftain",
+      "(Optional) Tell Urik how it went",
+      "Speak to the Jarl's Steward inside Dragonsreach for your reward"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't say where the poison comes from; the poison way keeps the optional ask-around objective because stage 10 ties asking around to the other ways."
+    },
+    {
+     "why": "Objective 90 '(Optional) Tell Urik how it went' shares its index with stage 90 (negotiations failed), so it sits on the failed-talks way; it may show after a truce too."
+    },
+    {
+     "why": "Objective 100 is set when the giant is dead (stage 100); on the truce way stage 150 also sends you to the steward, so it is kept there."
+    }
+   ],
+   "evidence": [
+    "stage 10 log names battle, poison and diplomacy and asking around town",
+    "stages 12-19 logs go with objectives 14-20; objective 30 meets the chieftain",
+    "stage 20/30 logs (poison acquired, food poisoned) set no objective",
+    "stage 90 log: 'negotiations have failed... kill the giant now'",
+    "stage 100 'giant is dead... speak to the Jarl's steward'; stage 250 completes (gold)",
+    "stage 150 truce, then stage 200 or 300 completes"
+   ]
+  },
+  {
+   "edid": "0WRHorseQ",
+   "shape": "endings",
+   "shared": [
+    "Catch the white, or palonimo, horse roaming the fields of Whiterun",
+    "Bring the Horse back to the main gate of Whiterun",
+    "Talk to the Stablemaster outside Dragonsreach OR to Joslin in the small stables behind the Bannered Mare."
+   ],
+   "ways": [
+    {
+     "title": "Take the horse to Joslin",
+     "ends": "No gold, but you keep the horse; she makes you a saddle for it (Imperial or Nord)",
+     "steps": []
+    },
+    {
+     "title": "Take the horse to the stablemaster",
+     "ends": "You're paid in gold and the horse goes to the Jarl",
+     "steps": []
+    },
+    {
+     "title": "The horse dies",
+     "ends": "The quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The horse can die at any point, so that way may end before all the shared steps."
+    }
+   ],
+   "evidence": [
+    "objective 30 names both the Stablemaster and Joslin",
+    "stages 40/41 (Joslin, Imperial or Nord saddle) and 45 (Dragonsreach gold) complete",
+    "stage 50 fails when the horse dies"
+   ]
+  },
+  {
+   "edid": "0WRRatQuest",
+   "shape": "endings",
+   "shared": [
+    "Deal with whatever is down Igna's basement",
+    "Report back to Igna"
+   ],
+   "ways": [
+    {
+     "title": "Report back and get paid",
+     "ends": "Igna pays you",
+     "steps": []
+    },
+    {
+     "title": "Report back without being paid",
+     "ends": "The quest still completes",
+     "steps": []
+    },
+    {
+     "title": "Fall out with Igna",
+     "ends": "Igna wants nothing more to do with you and the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10 and 20 are the whole list",
+    "stage 200 (paid) and stage 100 (helped) complete; stage 300 fails"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE067_Quest",
+   "shape": "endings",
+   "shared": [
+    "Watch for any news",
+    "Read the Stranger's Plea",
+    "Meet Skorvild at the Shrine to Stendarr",
+    "Defeat the Mythic Dawn Assassins",
+    "Search the bodies for information",
+    "Read Skorvild's Journal",
+    "Read the Mythic Dawn Orders",
+    "Search for clues in the Mythic Dawn camp",
+    "Search Rielle for clues about the secret chamber",
+    "Read Janus' Journal",
+    "Retrieve the Ayleid Elemental Shards (<Global=ccBGSSSE067_QuestShardCounter>/4)",
+    "Locate the Ayleid Elemental Shard Holders",
+    "Place the Ayleid Elemental Shards",
+    "Enter the secret chamber",
+    "Take the Great Welkynd Stone",
+    "Defeat Norion the Undying",
+    "Search Norion's remains",
+    "Find clues to the Oblivion Gate's location",
+    "Read the Vigil Enforcer's Journal",
+    "Locate the Oblivion Gate",
+    "(Optional) Wear a set of Mythic Dawn robes",
+    "Defeat Vonos",
+    "Retrieve Vonos' Journal",
+    "Read Vonos' Journal",
+    "Use the Scroll of Liminal Breach",
+    "(Optional) Find the missing Vigilants (<Global=ccBGSSSE067_QuestVigilantRescueCounter>/3)",
+    "Locate the Sigil Stone in the Deadlands"
+   ],
+   "ways": [
+    {
+     "title": "Take the Sigil Stone",
+     "ends": "The gate closes and is destroyed; the Mythic Dawn are defeated.",
+     "steps": [
+      "Defeat the Dremora Valkynaz",
+      "Retrieve Scourge",
+      "Defeat Valkyn Skoria",
+      "Retrieve Torment",
+      "Take the Sigil Stone",
+      "Escape the Deadlands"
+     ]
+    },
+    {
+     "title": "Place the Great Welkynd Stone on the altar",
+     "ends": "The gate is recharged and sealed open, following Mehrunes Dagon's will.",
+     "steps": [
+      "Place the Great Welkynd Stone",
+      "Escape the Deadlands"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 220 log sets the choice: take the Sigil Stone or place the Great Welkynd Stone",
+    "stage 250 has two entries: one when stage 230 (Gate Closed) is done, one when stage 240 (Gate Open) is done",
+    "objectives 250-290 are the champions and the Sigil Stone; objective 300 places the Welkynd Stone; objective 305 escapes on both"
+   ]
+  },
+  {
+   "edid": "ccEEJSSE005_Quest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Arrive as a vampire",
+     "ends": "The journal says that as a vampire you're allowed to join the meal: you feed on the noble guests, fight off a surprise group of Dawnguard, then speak to the waiter.",
+     "steps": [
+      "Await news from a courier",
+      "Read the Dinner Invitation",
+      "Attend the banquet feast",
+      "Speak to the Waiter",
+      "Travel to the banquet table",
+      "Begin the feast",
+      "Take a seat at the feast table",
+      "Join the feast",
+      "Finish the feast",
+      "Speak to the Waiter"
+     ]
+    },
+    {
+     "title": "Arrive as anyone else",
+     "ends": "A note at the table warns you the feast isn't what it seems; you fight off the vampires and speak to the survivor, a Dawnguard member who had slipped into the party.",
+     "steps": [
+      "Await news from a courier",
+      "Read the Dinner Invitation",
+      "Attend the banquet feast",
+      "Speak to the Waiter",
+      "Travel to the banquet table",
+      "Begin the feast",
+      "Take a seat at the feast table",
+      "Read the feast note",
+      "Defend against the vampire attack",
+      "Speak to the survivor"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The read lists 'Read the feast note' as a shared step, but stage 60's non-vampire entry is the one that reads the note, so it sits on that way only."
+    },
+    {
+     "why": "Both completing stages (200, 300) log the Dawnguard survivor's thanks; the vampire finish is logged at stages 1, 90 and 100 instead, so which completing stage ends the vampire way isn't clear."
+    }
+   ],
+   "evidence": [
+    "stages 45-49 and 60/80/100 carry race-or-vampire-faction conditions splitting the two ways",
+    "stage 60 vampire entry 'found one of many meals to feed on' goes with objective 60; stage 80 vampire entry 'allowed to partake' with objective 80; stage 90 'speak to the waiter' with objective 90",
+    "stage 60 non-vampire entry 'read a note' goes with objective 55; stage 70 (trap) with objective 70; stage 100 non-vampire 'speak to any survivors' with objective 100"
+   ]
+  },
+  {
+   "edid": "ccKRTSSE001_zQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Fill the bowl that promises power",
+     "ends": "Sleep one night; you wake in a dungeon, and the quest ends.",
+     "steps": [
+      "Find information at Dead Man's Drink",
+      "Travel to the Roadside Ruins",
+      "Choose a bowl at the altar",
+      "Wait for your wish to be granted"
+     ]
+    },
+    {
+     "title": "Fill the bowl that promises fortune",
+     "ends": "Sleep one night; your wish comes as a job, and the quest ends.",
+     "steps": [
+      "Find information at Dead Man's Drink",
+      "Travel to the Roadside Ruins",
+      "Choose a bowl at the altar",
+      "Wait for your wish to be granted"
+     ]
+    },
+    {
+     "title": "Fill the bowl that promises nothing",
+     "ends": "A courier later brings a note from the Temple of Kynareth, sending you to Giant's Tooth for a rare fruit to save a sick man.",
+     "steps": [
+      "Find information at Dead Man's Drink",
+      "Travel to the Roadside Ruins",
+      "Choose a bowl at the altar",
+      "Return to town",
+      "Read the Note from the Temple of Kynareth",
+      "Read the Fisherman's Journal",
+      "Find a ferryman who will take you to Giant's Tooth",
+      "Board the ferryman's boat",
+      "Investigate the area around Giant's Tooth",
+      "Investigate the camp",
+      "Investigate the cave",
+      "Return to the mainland with the ingredient",
+      "Ask an alchemist about the Ironwood Fruit",
+      "Read the Note from the Temple of Kynareth",
+      "Craft the Ironwood Soup at a cooking station",
+      "Give the Ironwood Soup to the temple priestess",
+      "Wait an entire day for Rulnik to heal",
+      "Check on Rulnik"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 10 shares its index with the power stage; the fortune stage (20) has no objective of its own, so the fortune way is given the same wait objective."
+    },
+    {
+     "why": "Objectives 70, 71 and 75 (cave, camp, area around Giant's Tooth) run in the read's order, not their index order."
+    }
+   ],
+   "evidence": [
+    "stage 10 (power) and 20 (fortune) logs: sleep one night; stages 40/50 complete them",
+    "stage 30 log (bowl of nothing, wait for the boon) goes with objective 30; stage 8 courier letter with objective 8",
+    "stage 60 log (ask a ferryman) with objectives 60/61; stage 70 island with 70-75; stage 200 completes"
+   ]
+  },
+  {
+   "edid": "ccFFBSSE001_Quest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Fight for the Stormcloaks",
+     "ends": "Yrsarald gives you a key to a chest with the Storm-Bear Armor and the battle map; you fight the Imperial champion",
+     "steps": [
+      "Head to a major hold and await news from a courier",
+      "Investigate the Drunken Huntsman for information",
+      "Read the letter",
+      "Deliver five snow bear pelts to Yrsarald in Windhelm",
+      "(Optional) Steal the snow bear pelts from Klija in Kynesgrove",
+      "Meet with your commanding officer",
+      "Retrieve the Storm-Bear Armor and map",
+      "Join the Stormcloak garrison at the battle site",
+      "Speak with the Imperial Champion",
+      "Defeat the Imperial soldiers"
+     ]
+    },
+    {
+     "title": "Fight for the Imperials",
+     "ends": "the Legate gives you a key to a chest in Castle Dour with the Imperial Dragon Armor and the map; you fight the Stormcloak champion",
+     "steps": [
+      "Head to a major hold and await news from a courier",
+      "Investigate the Drunken Huntsman for information",
+      "Read the letter",
+      "Pose as an Imperial soldier and speak to the Legate",
+      "(Optional) Persuade the Legate to make you his champion",
+      "Meet with your commanding officer",
+      "Retrieve the Imperial Dragon Armor and map",
+      "Join the Imperial garrison at the battle site",
+      "Speak with the Stormcloak Champion",
+      "Defeat the Stormcloak soldiers"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Each way mixes two routes: a Stormcloak or Imperial soldier gets 'Head to a major hold and await news from a courier', anyone else gets 'Investigate the Drunken Huntsman for information'; only one shows."
+    },
+    {
+     "why": "Whether an outsider who earns the post with pelts or persuasion also gets 'Meet with your commanding officer' isn't in the records."
+    }
+   ],
+   "evidence": [
+    "stage 9/10 entries split on Sons of Skyrim, Imperial Legion or neither faction",
+    "stage 20 outsider entry (Yrsarald wants five snow bear pelts) goes with objectives 30/40; stage 50 (key from the Legate) with objectives 20/50",
+    "stages 110-170 are the Stormcloak line (objectives 120-160, stage 170 completes); stages 210-270 the Imperial line (objectives 220-260, stage 270 completes)",
+    "objective 1120 'Meet with your commanding officer' is set by no stage seen here"
+   ]
+  },
+  {
+   "edid": "THTE_Quest_WintersandDeception",
+   "shape": "endings",
+   "shared": [
+    "Talk to the Jarl of Whiterun",
+    "Obtain additional evidence",
+    "Return to the Jarl of Whiterun"
+   ],
+   "ways": [
+    {
+     "title": "Bring the letter back to the Jarl",
+     "ends": "you're rewarded for exposing them",
+     "steps": []
+    },
+    {
+     "title": "Nazeem and Ahlam both die first",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The couple can die at any point, so the failing way may end before all the shared steps."
+    }
+   ],
+   "evidence": [
+    "objectives 5/10/20 match stage logs 5/10/20",
+    "stage 30 completes after the letter is shown; stage 25 fails when both are dead"
+   ]
+  },
+  {
+   "edid": "MyrwatchTNE_Quest",
+   "shape": "endings",
+   "shared": [
+    "Speak to Tolfdir",
+    "Purchase Myrwatch"
+   ],
+   "ways": [
+    {
+     "title": "Show Tolfdir you finished Shalidor's Maze",
+     "ends": "he agrees to sell",
+     "steps": []
+    },
+    {
+     "title": "Find some other way to convince him",
+     "ends": "he agrees to sell",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 5 log gives the two ways to convince Tolfdir; both lead to stage 10 (convinced) and objective 10",
+    "stage 100 completes on the purchase"
+   ]
+  },
+  {
+   "edid": "ReturnAegisbaneQuest",
+   "shape": "endings",
+   "shared": [
+    "Retrieve the Shatter-Shield family warhammer",
+    "Speak to Torbjorn Shatter-Shield about Aegisbane"
+   ],
+   "ways": [
+    {
+     "title": "Give Aegisbane back to Torbjorn",
+     "ends": "the quest ends",
+     "steps": []
+    },
+    {
+     "title": "Keep it",
+     "ends": "the quest ends and you keep the warhammer",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log 'Return Aegisbane or keep it' goes with objective 20",
+    "stage 30 completes either way"
+   ]
+  },
+  {
+   "edid": "HD1GoreEscort",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Talk to the Thalmor",
+     "ends": "the journal offers talking as the other way past them; what follows isn't spelled out in the records",
+     "steps": [
+      "Defeat the Thalmor Envoy.",
+      "Speak with Gore.",
+      "Take Gore to an inn after losing the pursuers."
+     ]
+    },
+    {
+     "title": "Fight the Thalmor",
+     "ends": "defeat the Thalmor Envoy, then speak with Gore",
+     "steps": [
+      "Defeat the Thalmor Envoy.",
+      "Speak with Gore.",
+      "Take Gore to an inn after losing the pursuers."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 10 'Defeat the Thalmor Envoy.' is set at stage 10, whose log offers talking or fighting, so it shows on both ways; the records have no objective of the talking route's own."
+    }
+   ],
+   "evidence": [
+    "stage 10 log: 'I need to either talk to them, or defeat them'",
+    "stages 20/21 logs go with objectives 20/21",
+    "stage 30 completes"
+   ]
+  },
+  {
+   "edid": "HD1GoreMeet",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help the trapped Nord",
+     "ends": "you free his leg, help him back on his feet and take him to Falkreath; his story goes on",
+     "steps": [
+      "Head to Peak's Shade Tower outside of Falkreath.",
+      "Speak with the Nord.",
+      "Help the stranger free his leg.",
+      "See what help the stranger needs."
+     ]
+    },
+    {
+     "title": "Kill the Nord in the trap",
+     "ends": "Gore dies and the quest fails (the journal reads \"Glory to the Aldmeri Dominion\"); his story ends there",
+     "steps": [
+      "Head to Peak's Shade Tower outside of Falkreath.",
+      "Speak with the Nord.",
+      "Gore is dead!"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 15 log 'I have killed the Nord in the trap' fails and goes with objective 15",
+    "stages 20/30/40 logs (free him, help him, back on his feet) go with objectives 20/30",
+    "stage 50 completes"
+   ]
+  },
+  {
+   "edid": "HD1GoreMurderer",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Let Gore go",
+     "ends": "Gore leaves your party",
+     "steps": [
+      "Speak to Gore"
+     ]
+    },
+    {
+     "title": "Refuse to let him leave",
+     "ends": "you have to kill Gore; the journal calls it killing him for trying to betray you",
+     "steps": [
+      "Speak to Gore",
+      "Kill Gore"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 0 log goes with objective 0",
+    "stage 10 'Gore has left my party'; stage 40 completes with no log",
+    "stage 20 log (won't let him leave) goes with objective 20; stage 30 completes ('killed Gore for trying to betray me')"
+   ]
+  },
+  {
+   "edid": "HLIOADQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Search the Bards College or the College of Winterhold",
+     "ends": "Either one has the book; the rest of the quest is the same",
+     "steps": [
+      "Take Remi to the Bard's College.",
+      "Take Remi to the College of Winterhold.",
+      "Give the book to Remi.",
+      "Wait for Remi to read the book.",
+      "Check in with Remi."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Only one of the two college objectives shows, depending on where you head; the one way lists both."
+    }
+   ],
+   "evidence": [
+    "stage 20 log (heading to the Bard's College) and stage 30 log (heading to the College of Winterhold) go with objectives 20 and 30",
+    "stages 40-60 go with objectives 40-60; stage 70 completes"
+   ]
+  },
+  {
+   "edid": "HLIOChaurusPieQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Tell Remi you don't have time for it",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The read's only choice is the refusal, which fails the quest at stage 90 before any objective; the steps of making the pie (objectives 30-70) belong to no listed choice."
+    }
+   ],
+   "evidence": [
+    "stage 90 fails: 'we don't have time for that'",
+    "objectives 30/40/60/70 follow stages 30-70; stage 80 completes"
+   ]
+  },
+  {
+   "edid": "HLIOMQ1",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Tell Remi you don't have time yet",
+     "ends": "the quest waits until you ask her to start investigating",
+     "steps": [
+      "Investigate the assassin's corpse.",
+      "Read the note found on the assassin's corpse.",
+      "Ask Remi about the assassin."
+     ]
+    },
+    {
+     "title": "Go along with Remi and hunt Morvic down",
+     "ends": "you track him through Markarth to Arkngchal and kill him; Remi stays and turns the ruin into her workshop",
+     "steps": [
+      "Investigate the assassin's corpse.",
+      "Read the note found on the assassin's corpse.",
+      "Ask Remi about the assassin.",
+      "Investigate Solitude.",
+      "Board the Ship in the Harbour.",
+      "Discover who sent the assassin.",
+      "Show the note to Remi.",
+      "Search Riften for someone who has information about Remi's family.",
+      "Get information from the smuggler.",
+      "Find the confiscated Skooma.",
+      "Bring the Shipment back to the Smuggler.",
+      "Read the note.",
+      "Talk to Remi about the note.",
+      "Wait for the results of Remi's tip-off.",
+      "Check with the smuggler in Riften for any news about Remi's note.",
+      "Talk to Remi.",
+      "Search Markarth for Morvic.",
+      "Head to Arkngchal.",
+      "Search Arkngchal for Morvic.",
+      "Kill Morvic.",
+      "Talk to Remi.",
+      "Leave Remi in Arkngchal.",
+      "Return to Remi."
+     ]
+    },
+    {
+     "title": "Tell Remi she's taking her revenge too far",
+     "ends": "she stops her plotting and the quest ends there, without the Arkngchal workshop; the records don't say what becomes of Morvic",
+     "steps": [
+      "Investigate the assassin's corpse.",
+      "Read the note found on the assassin's corpse.",
+      "Ask Remi about the assassin.",
+      "Investigate Solitude.",
+      "Board the Ship in the Harbour.",
+      "Discover who sent the assassin.",
+      "Show the note to Remi.",
+      "Search Riften for someone who has information about Remi's family.",
+      "Get information from the smuggler.",
+      "Find the confiscated Skooma.",
+      "Bring the Shipment back to the Smuggler.",
+      "Read the note.",
+      "Talk to Remi about the note.",
+      "Wait for the results of Remi's tip-off.",
+      "Check with the smuggler in Riften for any news about Remi's note.",
+      "Talk to Remi."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The not-now way pauses the quest; once you ask Remi to investigate, it carries on with the same steps as the others."
+    },
+    {
+     "why": "The talk-her-down choice comes after word that Morvic is in Skyrim (stage 140's news is in stage 230's log); whether 'Search Markarth for Morvic.' shows first isn't in the records."
+    }
+   ],
+   "evidence": [
+    "stage 35 log: no time to look into it, ask her later",
+    "stages 40-135 logs go with objectives 40-135",
+    "stage 140 log (Remiel wants to hunt him down, head to Markarth) goes with objective 140; stages 150-210 with objectives 150-210; stage 220 completes with the Arkngchal workshop",
+    "stage 230 completes: 'told her that she was taking it too far'"
+   ]
+  },
+  {
+   "edid": "HLIORPLock",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Refuse to help Remi",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The read's only choice is the refusal, which fails the quest at stage 80; the tension wrench steps (objectives 20-60) belong to no listed choice."
+    }
+   ],
+   "evidence": [
+    "stage 80 fails: 'I refused to help Remi'",
+    "objectives 20-60 follow stages 20-60; stage 70 completes"
+   ]
+  },
+  {
+   "edid": "HLIOScrapUpgrades",
+   "shape": "endings",
+   "shared": [
+    "Take Remi to see a dwemer ruin.",
+    "Take Remi to see another dwemer ruin.",
+    "Take Remi to see yet another dwemer ruin.",
+    "Take Remi to see one more dwemer ruin.",
+    "Talk to Remi about your adventures."
+   ],
+   "ways": [
+    {
+     "title": "How you answer Remi about your adventures",
+     "ends": "you stay good friends; or a romance with her becomes possible; or you tell her you don't want her around and your adventures together end. The records don't show whether the romance comes from your answer alone.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10-50 follow stages 10-50",
+    "stages 60 (good friends), 70 (closer) and 80 (adventures at an end) all complete"
+   ]
+  },
+  {
+   "edid": "AK69CarrotQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help Megara steal the carrot",
+     "ends": "the theft at Chillfurrow Farm; later Megara gives the carrot to Cappy",
+     "steps": [
+      "Head to the Chillfurrow Farm area and then talk to Megara",
+      "With Megara, steal the carrot",
+      "Head to the Bannered Mare",
+      "Talk to Megara",
+      "Give Megara some time",
+      "Check in with Megara"
+     ]
+    },
+    {
+     "title": "Refuse to help with the carrot",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Where the refusal can happen isn't in the records; that way lists no steps."
+    }
+   ],
+   "evidence": [
+    "stages 10-50 logs go with objectives 10-51; stage 60 completes",
+    "stage 69 fails: 'I refused to help Megara'"
+   ]
+  },
+  {
+   "edid": "AK69KatanaPersonalQuest",
+   "shape": "endings",
+   "shared": [
+    "Talk to Katana when you have a moment",
+    "Check in with Katana",
+    "Wait to hear about Katana's plan",
+    "Talk to Katana",
+    "Head to the Drunken Huntsman",
+    "Wait to be approached",
+    "(Optional) Talk to Katana",
+    "Defeat Lucky Irnsvar",
+    "Head to Silver-Blood Inn",
+    "Wait for Megara",
+    "Read Lucky Irnsvar's letter",
+    "(Optional) Talk to Katana",
+    "Defeat Galtun Bold-Thief",
+    "Head to the Bee and Barb",
+    "Wait for Megara",
+    "Read Galtun Bold-Thief's Note",
+    "(Optional) Talk to Katana",
+    "Defeat Runir Wulfhart",
+    "Head to the Frozen Hearth",
+    "Talk to Katana",
+    "Head to the location",
+    "Confront River",
+    "Talk to Katana"
+   ],
+   "ways": [
+    {
+     "title": "What you say to Elli",
+     "ends": "if you still go to Fort Fellhammer she says you'll be enemies",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "No stage or objective records the talk with Elli, so where it falls among the steps isn't known."
+    }
+   ],
+   "evidence": [
+    "objectives run in stage order from 1 to 250",
+    "stage 270 completes; no stage logs Elli"
+   ]
+  },
+  {
+   "edid": "AK69SugarandSpiceQuest",
+   "shape": "endings",
+   "shared": [
+    "Head to Kilerth's Rest with Katana",
+    "Get comfortable and close your eyes",
+    "Head to the coast by Katla's Farm with Katana"
+   ],
+   "ways": [
+    {
+     "title": "How the time at Katla's Farm plays out",
+     "ends": "one of two endings: a quiet, interesting time together, or Katana getting the better of you ('Well played, Katana')",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 30/40/50 follow stages 30/40/50",
+    "stages 60 and 70 each complete with one ending; stage 69 completes with no log"
+   ]
+  },
+  {
+   "edid": "AK69TheRavensLamentQuest",
+   "shape": "endings",
+   "shared": [
+    "Talk to Katana",
+    "Head to the Bee and Barb with Katana and Megara",
+    "Search for traces of River",
+    "(Optional) Talk to Megara",
+    "(Optional) Talk to Katana",
+    "Take River's note",
+    "Go to Vilemyr Inn",
+    "Go to Fallowstone Cave",
+    "Search for signs of River",
+    "Talk to Megara",
+    "Find River and Shale",
+    "Defeat River's summons",
+    "Follow Megara on foot",
+    "Follow Shale on foot",
+    "Defeat River and her friends",
+    "Head to the Bee and Barb",
+    "Let Katana know when you're ready to leave the Bee and Barb",
+    "(Optional) Talk to Megara",
+    "(Optional) Talk to Shale"
+   ],
+   "ways": [
+    {
+     "title": "Follow Katana's guess or Megara's",
+     "ends": "both are offered as objectives; the story goes on to an ambush and Megara's lead to Shale, but the records don't show which guess is right",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objectives 100 (Vilemyr Inn) and 101 (Fallowstone Cave) are both offered; the records don't show which guess is right, so both stay in the shared steps."
+    }
+   ],
+   "evidence": [
+    "stage 100 log: Katana thinks Vilemyr Inn, Megara suggests Fallowstone Cave",
+    "stage 310 completes"
+   ]
+  },
+  {
+   "edid": "aaFuraQ1",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Let Fura and her mother reunite",
+     "ends": "the quest completes; Fura says you'll go finish what must be done",
+     "steps": [
+      "Bring Fura to her mother",
+      "Talk to Fura",
+      "Stay with Fura"
+     ]
+    },
+    {
+     "title": "Kill Angeline, as a true Volkihar",
+     "ends": "the quest completes with Angeline dead",
+     "steps": [
+      "Bring Fura to her mother",
+      "Kill Angeline, as a true Volkihar"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether the kill option comes before or after talking to Fura isn't in the records; that way lists only bringing Fura and the kill."
+    }
+   ],
+   "evidence": [
+    "stage 1 log goes with objective 1",
+    "stage 100 completes ('reunited Fura and her mother')",
+    "stage 120 'Fura's mother is dead'; stage 170 completes ('killed Fura's mother as a true Volkihar')",
+    "stage 160 fails with no log"
+   ]
+  }
+ ]
+}

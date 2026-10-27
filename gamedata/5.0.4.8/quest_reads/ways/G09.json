@@ -1,0 +1,388 @@
+{
+ "quests": [
+  {
+   "edid": "aaFuraQ2",
+   "shape": "endings",
+   "shared": [
+    "Use Vampire's Seduction to tell Legate Cipius to go to Cold Rock Pass",
+    "Meet Fura at Cold Rock Pass",
+    "Witness the confrontation",
+    "Let the Death Hounds kill Cipius or try to save Cipius"
+   ],
+   "ways": [
+    {
+     "title": "Let Fura's Death Hounds kill Cipius",
+     "ends": "Cipius dies and Fura finally has her revenge",
+     "steps": []
+    },
+    {
+     "title": "Persuade Fura to let Cipius go",
+     "ends": "Cipius lives; Fura is upset to be denied revenge but accepts your decision",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10/13/20/30 match stages 10/13/20/30; stage 30 log 'Fura wants to use some Death Hounds' precedes the split",
+    "stage 49 (Death Hounds kill Cipius) completes; stage 50 (persuaded Fura) completes; no objective after 30 on either ending",
+    "stage 80 fails, tied to neither choice"
+   ]
+  },
+  {
+   "edid": "aaFaraldaQ2",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Attack Merandil straight away",
+     "ends": "the fight starts early; you kill Merandil",
+     "steps": [
+      "Talk to Faralda",
+      "Meet Faralda's aunt at Lost Prospect Mine",
+      "(Optional) Attack Merandil now",
+      "Kill Merandil",
+      "Talk to Faralda",
+      "Meet Faralda back at the College of Winterhold"
+     ]
+    },
+    {
+     "title": "Wait",
+     "ends": "Merandil, a Thalmor, tries to force Faralda back to Alinor and attacks you; you kill him",
+     "steps": [
+      "Talk to Faralda",
+      "Meet Faralda's aunt at Lost Prospect Mine",
+      "Kill Merandil",
+      "Talk to Faralda",
+      "Meet Faralda back at the College of Winterhold"
+     ]
+    },
+    {
+     "title": "Let Merandil take Faralda back to Alinor",
+     "ends": "the quest ends with Faralda gone to Alinor with her brother",
+     "steps": [
+      "Talk to Faralda",
+      "Meet Faralda's aunt at Lost Prospect Mine"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The optional attack step is set at stage 20, right after stage 18 reveals Merandil; it is probably shown on every way until the fight or the choice, but it is only taken on the first way, so it sits there."
+    },
+    {
+     "why": "The checked read lists 'Let Faralda's brother take her back to Alinor' as a step, but no journal objective has that text (only stage 120's log), so the third way ends after the meeting at the mine with no further step."
+    },
+    {
+     "why": "Whether the third way is offered before or after the fight objective appears isn't shown; stage 120 completes on its own, with no objective after the mine."
+    }
+   ],
+   "evidence": [
+    "objectives 1/10/20/30/40/50 match stages 1/10/20/30/40/50",
+    "stage 13 log 'brought Faralda to Lost Prospect Mine', stage 18 log reveals Merandil, stage 30 log 'attacks us', stage 40 log 'I killed him'",
+    "stage 100 completes (fight ways); stage 120 log 'I let Faralda's brother take her back to Alinor' completes"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Fish_MQ2",
+   "shape": "endings",
+   "shared": [
+    "Read the list of rainy weather fish",
+    "(Optional) Read Fishing Mastery, v2",
+    "Obtain a catfish",
+    "Obtain a pearlfish",
+    "Obtain a pygmy sunfish",
+    "Obtain a spadefish",
+    "Fish up Swims-In-Deep-Water's lucky fishing hat",
+    "Return to Swims-In-Deep-Water"
+   ],
+   "ways": [
+    {
+     "title": "Give him back his lucky fishing hat",
+     "ends": "You get the Argonian Fishing Rod and gold.",
+     "steps": []
+    },
+    {
+     "title": "Keep the hat and tell him you couldn't find it",
+     "ends": "You keep the hat and still get the Argonian Fishing Rod, but no gold.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log 'read the list' -> objective 100; stage 20 log 'refer to the second volume of Fishing Mastery' -> objective 75; stage 21 log names the four fish and the hat -> objectives 0-3, 10; objective 50 return",
+    "stage 200 (gave hat, gold) completes; stage 210 (kept hat) completes; both logs say all the fish were handed over"
+   ]
+  },
+  {
+   "edid": "ccBGSSSE001_Misc_Falkreath",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Give the guard the disguised potion and watch him drink it",
+     "ends": "He turns invisible and is scared off skooma; Zaria is pleased and gives you the Jarl's ring.",
+     "steps": [
+      "Obtain a glassfish for Zaria in Falkreath",
+      "Speak to Zaria",
+      "Read Zaria's note from Jarl <Alias=Jarl>",
+      "Obtain the disguised invisibility potion from Zaria",
+      "Give the disguised invisibility potion to the guard in the Falkreath Barracks",
+      "Follow the guard into the Falkreath Barracks Jail",
+      "Return to Zaria"
+     ]
+    },
+    {
+     "title": "Kill the guard",
+     "ends": "Zaria disapproves but still gives you the Jarl's ring; the guard is dead.",
+     "steps": [
+      "Obtain a glassfish for Zaria in Falkreath",
+      "Speak to Zaria",
+      "Read Zaria's note from Jarl <Alias=Jarl>",
+      "Obtain the disguised invisibility potion from Zaria",
+      "Give the disguised invisibility potion to the guard in the Falkreath Barracks",
+      "Tell Zaria that the guard is dead"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The note step's journal text carries the game's name tag for the Jarl ('<Alias=Jarl>'), copied as it stands; the game fills in the Jarl's name."
+    },
+    {
+     "why": "On the kill way, the hand-over step is placed before the kill because stage 45 (guard killed) sits between stage 40 (potion in hand, go to the barracks) and stage 50 (potion handed over); the records don't stop you killing him earlier."
+    }
+   ],
+   "evidence": [
+    "objective 0 follows stage 0 log; stage 20 log 'read what the note has to say' -> objective 20; stage 30 log 'obtain the disguised potion' -> objective 30; stage 40 log 'hand it over to the guard' -> objective 40",
+    "stage 50 log 'follow him' -> objective 50; stage 70 log 'let Zaria know that the plan worked' -> objective 60",
+    "stage 45 log 'I killed the guard... I should let Zaria know' -> objective 61",
+    "stage 200 completes with two entries: plan worked, or guard killed (conditioned on GetDead per the checked read)"
+   ]
+  },
+  {
+   "edid": "ACFMTSAngisCampDialogue",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Go to her to train",
+     "ends": "Angi trains you in Archery.",
+     "steps": [
+      "Train with the seasoned hunter"
+     ]
+    },
+    {
+     "title": "Take Legate Skulnar's job and kill her",
+     "ends": "Angi dies; report back to Legate Skulnar.",
+     "steps": [
+      "Kill the seasoned hunter",
+      "Kill Angi or tell her you will spare her",
+      "Report back to Legate Skulnar"
+     ]
+    },
+    {
+     "title": "Take Legate Skulnar's job but spare her",
+     "ends": "You still have to decide what to tell the Legate.",
+     "steps": [
+      "Kill the seasoned hunter",
+      "Kill Angi or tell her you will spare her",
+      "Report back to Legate Skulnar"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "On the spare way, 'Report back to Legate Skulnar' is placed because stage 55's log says you must decide what to tell the Legate; the records don't show that this objective is set after sparing her, and this way may instead end in the quest's fail stage."
+    }
+   ],
+   "evidence": [
+    "stage 20 log 'tale of a skilled, but dangerous, hunter' -> objective 20; stage 30 log 'Angi has trained me' ",
+    "stage 40 log 'Legate Skulnar has asked me to find and kill' -> objective 22; objective 25 'Kill Angi or tell her you will spare her'",
+    "stage 55 log 'decided to spare her... what to tell the Falkreath Legate'; stage 60 log 'Angi is dead'; objective 100 report back",
+    "stages 200 and 220 complete, 300 fails"
+   ]
+  },
+  {
+   "edid": "FreeformRiften02",
+   "shape": "endings",
+   "shared": [
+    "Discover Svidi's whereabouts"
+   ],
+   "ways": [
+    {
+     "title": "Tell Sibbi the truth about Lynly",
+     "ends": "Sibbi learns she is in Ivarstead",
+     "steps": [
+      "Tell Sibbi about Lynly"
+     ]
+    },
+    {
+     "title": "Lie to Sibbi about Lynly",
+     "ends": "Lynly stays hidden from him",
+     "steps": [
+      "Lie to Sibbi about Lynly"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10/20/30 match stages 10/20/30; no journal logs; stage 200 completes"
+   ]
+  },
+  {
+   "edid": "FreeformRiften03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Deliver the keg to Wilhelm",
+     "ends": "the deal goes through as Romlyn asked",
+     "steps": [
+      "Deliver Mead to Wilhelm"
+     ]
+    },
+    {
+     "title": "Show the keg to Indaryn, who runs the meadery",
+     "ends": "Romlyn's side deal is exposed",
+     "steps": [
+      "Show Mead to Indaryn"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10/20 match stages 10/20; no journal logs; stage 200 completes"
+   ]
+  },
+  {
+   "edid": "FreeformRiften11",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Speak to Haelga and get a Mark of Dibella of your own",
+     "ends": "an extra pair of steps; the records don't say whether it stands in for one of the three marks",
+     "steps": [
+      "Obtain a Mark of Dibella from Bolli, a Riften fisherman",
+      "Speak to Haelga",
+      "Get your Mark of Dibella",
+      "Obtain a Mark of Dibella from Hofgrir, owner of the Riften Stables",
+      "Obtain a Mark of Dibella from Indaryn, who runs the operations of Black-Briar Meadery",
+      "Confront Haelga with the Marks of Dibella you've collected around Riften",
+      "Speak to Svana"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The checked read gives only one choice, so there is one way; the plain route without Haelga's mark is not a way of its own here."
+    },
+    {
+     "why": "The two Haelga steps are placed after Bolli's mark only because their objective numbers (11, 13) fall between Bolli's (10) and Hofgrir's (20); the quest has no journal logs, so the real order isn't shown."
+    }
+   ],
+   "evidence": [
+    "objectives 10/11/13/20/30/40/50 match stages 10/11/13/20/30/40/50; stage 12 has no objective",
+    "no stage logs and no completes/fails flags in the records"
+   ]
+  },
+  {
+   "edid": "FreeformRiften11b",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Fight Tythis in a brawl",
+     "ends": "win the brawl against Tythis",
+     "steps": [
+      "Talk to Tythis",
+      "Win the brawl against Tythis",
+      "Talk to Svana"
+     ]
+    },
+    {
+     "title": "Threaten Tythis",
+     "ends": "threaten Tythis",
+     "steps": [
+      "Talk to Tythis",
+      "Threaten Tythis",
+      "Talk to Svana"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objectives 30 (brawl) and 40 (threaten) might be two steps in a row rather than two ways; they are split here as the checked read's choices say."
+    },
+    {
+     "why": "'Talk to Svana' is put at the end of both ways; nothing in the records ties it to one."
+    }
+   ],
+   "evidence": [
+    "objectives 20/30/40/50 match stages 20/30/40/50; no journal logs; stage 100 completes, stage 150 fails"
+   ]
+  },
+  {
+   "edid": "FreeformKarthwastenA",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Side with the miners: get Atar and his mercenaries out of the mine",
+     "ends": "tell Ainethach that Atar has been dealt with; the mercenaries leave for the Silver-Blood Inn in Markarth and the miners go back to Sanuarach Mine",
+     "steps": [
+      "Convince Atar to leave Sanuarach Mine",
+      "Tell Ainethach that Atar has been dealt with"
+     ]
+    },
+    {
+     "title": "Side with the Silver-Bloods: get Ainethach to sell the mine",
+     "ends": "tell Atar that Ainethach has been dealt with",
+     "steps": [
+      "Convince Ainethach to sell Sanuarach Mine",
+      "Tell Atar that Ainethach has been dealt with"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10/20/30/40 match stages 10/20/30/40; objective 30 names Ainethach after Atar is dealt with (objective 10), objective 40 names Atar after Ainethach (objective 20)",
+    "stages 100/200/300 have no completes flag in the records"
+   ]
+  },
+  {
+   "edid": "FreeformRiverwood01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take Faendal's letter to Camilla",
+     "ends": "Optionally, tell Sven about Faendal's letter instead",
+     "steps": [
+      "Deliver Faendal's letter to Camilla in Riverwood",
+      "(Optional) Tell Sven about Faendal's letter",
+      "Talk to Faendal"
+     ]
+    },
+    {
+     "title": "Take Sven's letter to Camilla",
+     "ends": "Optionally, tell Faendal about Sven's letter instead",
+     "steps": [
+      "Deliver Sven's letter to Camilla in Riverwood",
+      "(Optional) Tell Faendal about Sven's letter",
+      "Talk to Sven"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Talk to Faendal' and 'Talk to Sven' (objectives 210, 220) are paired with the Faendal and Sven ways only by the numbering, which runs Faendal first as with objectives 10 and 110; the quest has no journal logs, and taking the optional step may lead to talking to the other man instead."
+    }
+   ],
+   "evidence": [
+    "objectives 10/20 (Faendal's letter), 110/120 (Sven's letter), 210/220 (talk) match stages 10/20/110/120/210/220",
+    "no stage logs and no completes/fails flags in the records"
+   ]
+  }
+ ]
+}

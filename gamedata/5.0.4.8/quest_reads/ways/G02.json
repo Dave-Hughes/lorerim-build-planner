@@ -1,0 +1,859 @@
+{
+ "quests": [
+  {
+   "edid": "MG01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Cast the spell Faralda asks for",
+     "ends": "One of five tests: cast Magelight, summon a Flame Atronach, cast Firebolt, cast Fear, or cast Healing Hands on Faralda herself. You need that one spell to pass.",
+     "steps": [
+      "Join the College of Winterhold",
+      "Cast a Magelight spell",
+      "Summon a Flame Atronach",
+      "Cast a Firebolt spell",
+      "Cast a Fear spell",
+      "Cast a Healing Hands spell",
+      "Report to Mirabelle Ervine",
+      "Tour the College of Winterhold",
+      "Listen to Tolfdir"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Faralda asks for only one of the five spells (Magelight, Flame Atronach, Firebolt, Fear, Healing Hands); the records list all five tests but not what picks one, so all five sit in this way and a player meets only one of them."
+    }
+   ],
+   "evidence": [
+    "objectives 20-24 each match a stage 20-24 log 'In order to join the College of Winterhold, I need to show...', one per spell",
+    "objective 30 follows stage 30's log (find Mirabelle Ervine), 40 follows stage 40 (tour), 50 follows stage 50 (find Tolfdir)",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "MG03",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Free Orthorn in Fellglow Keep, or leave him",
+     "ends": "Freeing him is optional; if freed he offers to help you find the books.",
+     "steps": [
+      "Speak with Mirabelle Ervine",
+      "Speak with Urag gro-Shub",
+      "Find the stolen books (<Global=MG03BooksFound>/<Global=MG03BooksTotal>)",
+      "(Optional) Free Orthorn",
+      "Return the books"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Freeing Orthorn is marked optional, so a player who leaves him meets the same steps minus that one; the records don't show a separate set of steps for leaving him."
+    }
+   ],
+   "evidence": [
+    "objective 30 follows stage 30's log (Urag: books stolen by Orthorn)",
+    "objective 50 follows stage 50's log (located Orthorn as a prisoner); stage 55 logs freeing him",
+    "objective 60 follows stage 60's log (found the books)",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "MGRAppBrelyna01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Let her try a second time",
+     "ends": "a second spell; when it wears off, speak to her and she agrees to practise more first, which finishes the quest",
+     "steps": [
+      "Wait for Brelyna's spell to wear off",
+      "Speak to Brelyna"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objective 20 follows stage 20's log (let her try one more time)",
+    "objective 30 matches stage 30 (no log)",
+    "stage 200 completes: she agrees to practise more"
+   ]
+  },
+  {
+   "edid": "MGRAppJzargo01",
+   "shape": "endings",
+   "shared": [
+    "Test J'zargo's Flame Cloak spell on the undead (<Global=MGRJ1Test>/<Global=MGRJ1Total>)"
+   ],
+   "ways": [
+    {
+     "title": "Test the scrolls on the undead and report back",
+     "ends": "you tell him the scrolls don't work as intended, and the quest is done",
+     "steps": [
+      "Speak to J'zargo"
+     ]
+    },
+    {
+     "title": "Tell J'zargo you ran out of scrolls",
+     "ends": "he no longer wants your help, and the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Telling J'zargo you ran out of scrolls fails the quest at stage 255; the records don't show whether that talk happens under the 'Speak to J'zargo' objective or before it is set, so it adds no step here."
+    }
+   ],
+   "evidence": [
+    "objective 20 follows stage 20's log (test the Flame Cloak scrolls)",
+    "objective 30 matches stage 30 (no log)",
+    "stage 200 completes (scrolls don't work as intended)",
+    "stage 255 fails (ran out of the scrolls)"
+   ]
+  },
+  {
+   "edid": "Cow_Conjuration",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take Phinis's lesson",
+     "ends": "you follow him, summon a familiar, watch his atronach destroy it, and he explains what familiars are good for",
+     "steps": [
+      "Learn Conjure Familiar and Talk to Phinis",
+      "Follow Phinis",
+      "Summon a Familiar",
+      "Talk to Phinis"
+     ]
+    },
+    {
+     "title": "Turn down the lesson",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't show at which point you can turn the lesson down; stage 30's log ('declined to participate') reads as before the first objective."
+    }
+   ],
+   "evidence": [
+    "objectives 5/10/15/20 follow stage 5/10/15/20 logs",
+    "stage 25 completes",
+    "stage 30 fails (declined Phinis' lesson)"
+   ]
+  },
+  {
+   "edid": "Cow_Destruction",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take Faralda's lesson",
+     "ends": "you kill the Ice Wraith with Firebolt and she explains picking the right element",
+     "steps": [
+      "Learn the spell and talk to Faralda",
+      "Pass Faralda's test using Firebolt",
+      "Return to Faralda"
+     ]
+    },
+    {
+     "title": "Turn down the lesson",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't show at which point you can turn the lesson down; stage 30's log ('I won't be taking your class') reads as before the first objective."
+    }
+   ],
+   "evidence": [
+    "objectives 5/10/15 follow stage 5/10/15 logs (tome of Firebolt, test, Ice Wraith dealt with)",
+    "stage 20 completes",
+    "stage 30 fails"
+   ]
+  },
+  {
+   "edid": "Cow_enchantment",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Help Sergius",
+     "ends": "enchant and deliver the sword, then escort Adara to the College to see Faralda",
+     "steps": [
+      "Find an Arcane Enchanter",
+      "Disenchant the old dagger",
+      "Find a filled soul gem",
+      "Enchant the client's sword",
+      "Talk to Sergius",
+      "Read the note",
+      "Deliver the enchanted sword",
+      "Find the actual client",
+      "Talk to Adara",
+      "Talk to Adara's mother",
+      "Escort Adara to the College",
+      "Talk to Adara",
+      "Return to Sergius"
+     ]
+    },
+    {
+     "title": "Refuse Sergius",
+     "ends": "the quest fails",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Stage 20's log (need a filled gem) and stage 25's (already have one) suggest 'Find a filled soul gem' may be skipped if you carry one; it stays in the way."
+    }
+   ],
+   "evidence": [
+    "objectives 10-60 each follow the stage of the same number (enchanter, disenchant, gem, enchant, Sergius, note, deliver, client, Adara, mother, escort, Adara, Sergius)",
+    "stage 70 completes",
+    "stage 80 fails (refused to help Sergius)"
+   ]
+  },
+  {
+   "edid": "Cow_illusion",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Turn down Drevis's class",
+     "ends": "The quest fails and the lesson is skipped.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 30 fails (refused Drevis' class); no objective comes before the refusal in its log"
+   ]
+  },
+  {
+   "edid": "Cow_Reading",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Answer Urag's test correctly",
+     "ends": "You pass and the lesson is done.",
+     "steps": [
+      "Read Olaf and the Dragon and talk to Urag gro-Shub"
+     ]
+    },
+    {
+     "title": "Fail Urag's test",
+     "ends": "You have to read the book properly and talk him into another try; passing then finishes the lesson.",
+     "steps": [
+      "Read Olaf and the Dragon and talk to Urag gro-Shub",
+      "Actually read the book and try again"
+     ]
+    },
+    {
+     "title": "Refuse Urag's test",
+     "ends": "The quest fails.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Refusing may come before or after Urag hands you the book (stage 10); stage 30's log doesn't say, so that way carries no step."
+    },
+    {
+     "why": "Stages 20 and 25 both complete with the same log; which one follows the retry isn't shown."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log (Urag gave me a book)",
+    "objective 15 follows stage 15's log (failed the test, talk him into another try)",
+    "stages 20 and 25 complete",
+    "stage 30 fails (refused the test)"
+   ]
+  },
+  {
+   "edid": "Cow_restoration",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Turn down Colette's lesson",
+     "ends": "The quest fails.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 30 fails (refused learning from Colette); no objective comes before the refusal in its log"
+   ]
+  },
+  {
+   "edid": "FreeformWinterholdCollegeA",
+   "shape": "endings",
+   "shared": [
+    "Talk to Nirya to see what she's plotting",
+    "Help Nirya steal the notes or tell Faralda the plot",
+    "Bring the notes to Nirya or tell Faralda the plot"
+   ],
+   "ways": [
+    {
+     "title": "Help Nirya steal Faralda's notes",
+     "ends": "bring the notes to Nirya",
+     "steps": []
+    },
+    {
+     "title": "Tell Faralda about the plot",
+     "ends": "the quest ends with Faralda warned",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Both endings share the same objectives (20 and 30 name both choices); stages 200 and 255 both complete and have no log, so which ending is which isn't shown."
+    }
+   ],
+   "evidence": [
+    "objectives 10/20/30 match stages 10/20 (no logs)",
+    "objectives 20 and 30 each name both choices",
+    "stages 200 and 255 complete"
+   ]
+  },
+  {
+   "edid": "TG01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Use Talen-Jei to get to Keerava",
+     "ends": "a way to make Keerava pay",
+     "steps": [
+      "Locate Brynjolf at the Ragged Flagon",
+      "Collect Keerava's debt",
+      "(Optional) Use Talen-Jei to get to Keerava",
+      "Collect Bersi Honey-Hand's debt",
+      "Collect Haelga's debt",
+      "Return to Brynjolf"
+     ]
+    },
+    {
+     "title": "Smash Bersi's prized Dwarven Urn",
+     "ends": "a way to make Bersi pay",
+     "steps": [
+      "Locate Brynjolf at the Ragged Flagon",
+      "Collect Keerava's debt",
+      "Collect Bersi Honey-Hand's debt",
+      "(Optional) Smash Bersi's prized Dwarven Urn",
+      "Collect Haelga's debt",
+      "Return to Brynjolf"
+     ]
+    },
+    {
+     "title": "Steal Haelga's Statue of Dibella",
+     "ends": "a way to make Haelga pay",
+     "steps": [
+      "Locate Brynjolf at the Ragged Flagon",
+      "Collect Keerava's debt",
+      "Collect Bersi Honey-Hand's debt",
+      "Collect Haelga's debt",
+      "(Optional) Steal Haelga's Statue of Dibella",
+      "Return to Brynjolf"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The three choices aren't exclusive: each is an optional way to make one owner pay, and a player can take any or all of them. Each way here carries only its own optional step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log (find the Ragged Flagon)",
+    "objectives 20/30/40 follow stage 20's log (three business owners)",
+    "optional objectives 21/31/41 sit beside their owner's debt (20/30/40)",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "TG02",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Speak to Vex about Goldenglow Estate first",
+     "ends": "advice on getting in",
+     "steps": [
+      "Follow Brynjolf",
+      "Listen to Mercer Frey",
+      "Talk to Brynjolf",
+      "Burn three bee hives (<Global=TG02HiveCount>/3)",
+      "(Optional) Speak to Vex about Goldenglow Estate",
+      "Clear out Aringoth's safe",
+      "Return to Brynjolf"
+     ]
+    },
+    {
+     "title": "Enter Goldenglow through the sewer",
+     "ends": "a back way in",
+     "steps": [
+      "Follow Brynjolf",
+      "Listen to Mercer Frey",
+      "Talk to Brynjolf",
+      "Burn three bee hives (<Global=TG02HiveCount>/3)",
+      "(Optional) Enter Goldenglow using sewer",
+      "Clear out Aringoth's safe",
+      "Return to Brynjolf"
+     ]
+    },
+    {
+     "title": "Get the key to Aringoth's safe",
+     "ends": "open the safe with the key",
+     "steps": [
+      "Follow Brynjolf",
+      "Listen to Mercer Frey",
+      "Talk to Brynjolf",
+      "Burn three bee hives (<Global=TG02HiveCount>/3)",
+      "(Optional) Obtain the key to Aringoth's safe",
+      "Clear out Aringoth's safe",
+      "Return to Brynjolf"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The three choices are optional objectives a player can take any or all of; each way here carries only its own optional step."
+    }
+   ],
+   "evidence": [
+    "objectives 10/20/30 follow stage 10/20/30 logs (follow Brynjolf, Mercer, Goldenglow task)",
+    "objectives 40-50 sit between stage 30 and stage 200 (stages 35-50 have no logs)",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "TG04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Gulum-Ei talks once you have leverage on him",
+     "ends": "he names the Guild's enemy",
+     "steps": [
+      "Speak to Mercer Frey",
+      "(Optional) Speak to Brynjolf",
+      "Speak to Gulum-Ei",
+      "Steal case of Firebrand Wine",
+      "Get information from Gulum-Ei",
+      "Shadow Gulum-Ei",
+      "Confront Gulum-Ei",
+      "Return to Mercer Frey"
+     ]
+    },
+    {
+     "title": "Gulum-Ei can't be made to talk",
+     "ends": "the journal has you find another source of information instead",
+     "steps": [
+      "Speak to Mercer Frey",
+      "(Optional) Speak to Brynjolf",
+      "Speak to Gulum-Ei",
+      "Find alternative source of information",
+      "Return to Mercer Frey"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't show at what point the other-source branch (objective 55) starts; it is placed after 'Speak to Gulum-Ei'. Shadowing and confronting him (40, 50) are put on the leverage way because stage 200's log credits 'Gulum-Ei's confession'."
+    }
+   ],
+   "evidence": [
+    "objective 20 follows stage 20's log (meet Gulum-Ei in Solitude)",
+    "objective 40 follows stage 40's log (shadow him)",
+    "objective 55 'Find alternative source of information' sits between 50 and 60; stages 30-60 mostly have no logs",
+    "stage 200 completes (Gulum-Ei's confession)"
+   ]
+  },
+  {
+   "edid": "TG06",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Get the key to Calcelmo's Museum",
+     "ends": "an easier way into the museum",
+     "steps": [
+      "Speak with Enthir",
+      "Speak with Calcelmo",
+      "Gain entry to Calcelmo's Museum",
+      "(Optional) Obtain the key to Calcelmo's Museum",
+      "Obtain Calcelmo's Falmer Translating Guide",
+      "Duplicate the writing on Calcelmo's Stone",
+      "Return to Enthir",
+      "Speak to Enthir",
+      "Speak to Karliah"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The key is optional; a player who gets in without it meets the same steps minus that one."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log, 20 stage 20 (seek Calcelmo), 30 stage 30 (steal his notes), 40 stage 40 (stone slab)",
+    "objective 27 sits next to 25 (gain entry)",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "TG07",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Speak to Vex about Vald",
+     "ends": "an optional way past Vald while you break into Mercer's house",
+     "steps": [
+      "Meet Karliah at the Ragged Flagon",
+      "Follow Karliah",
+      "Speak to Brynjolf",
+      "Infiltrate Mercer's House",
+      "Shoot the mechanism to lower the ramp",
+      "(Optional) Speak to Vex about Vald",
+      "Discover evidence of Mercer's location",
+      "Speak to Brynjolf"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Speaking to Vex is optional; the records don't say where in the break-in it falls, so it keeps its objective order after the ramp."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log, 30 stage 30 (Brynjolf convinced), 40 stage 40 (Riftweald Manor), 60 stage 60 (plans found)",
+    "objective 42 matches stage 42 (no log)",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "TG09",
+   "shape": "endings",
+   "shared": [
+    "Enter the Twilight Sepulcher",
+    "Speak to the Nightingale Sentinel",
+    "(Optional) Retrieve Nystrom's Journal",
+    "Follow the Pilgrim's Path",
+    "Return the Skeleton Key to the Ebonmere",
+    "Listen to Nocturnal",
+    "Speak to Karliah",
+    "Choose Nightingale Role"
+   ],
+   "ways": [
+    {
+     "title": "Choose your Nightingale role",
+     "ends": "You get one Nightingale power: Nightingale Strife, Nightingale Subterfuge, or the shadow power (Shadowcloak of Nocturnal in LoreRim)",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objective 10 follows stage 10's log, 30 stage 30 (Gallus' spirit)",
+    "objective 70 'Choose Nightingale Role' is the last before stage 200",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "TGRBE",
+   "shape": "endings",
+   "shared": [
+    "Retrieve the <Alias=ItemToGet> from <Alias=WealthyHome> in <Alias=City>"
+   ],
+   "ways": [
+    {
+     "title": "Kill someone who lives at the job's location",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Get arrested and go to jail during the job",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Tell the job-giver you quit",
+     "ends": "The job fails and you get no pay",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log ('I've been told to...')",
+    "objective 20 (return) follows the stage 50 log",
+    "stage 200 completes",
+    "stage 250 fails: three logs gated on the kill, arrest and quit globals"
+   ]
+  },
+  {
+   "edid": "TGRDU",
+   "shape": "endings",
+   "shared": [
+    "Plant the <Alias=Evidence> in <Alias=WealthyHome> in <Alias=City>"
+   ],
+   "ways": [
+    {
+     "title": "Kill someone who lives at the job's location",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Get arrested and go to jail during the job",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Tell the job-giver you quit",
+     "ends": "The job fails and you get no pay",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log ('I've been told to...')",
+    "objective 20 (return) follows stage 20's second log ('I've planted...')",
+    "stage 200 completes",
+    "stage 250 fails: three logs gated on the kill, arrest and quit globals"
+   ]
+  },
+  {
+   "edid": "TGRFO",
+   "shape": "endings",
+   "shared": [
+    "Make changes in the ledger at <Alias=Business> in <Alias=City>"
+   ],
+   "ways": [
+    {
+     "title": "Kill someone who lives at the job's location",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Get arrested and go to jail during the job",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Tell the job-giver you quit",
+     "ends": "The job fails and you get no pay",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log ('I've been told to...')",
+    "objective 20 (return) follows the stage 50 log",
+    "stage 200 completes",
+    "stage 250 fails: three logs gated on the kill, arrest and quit globals"
+   ]
+  },
+  {
+   "edid": "TGRGF",
+   "shape": "endings",
+   "shared": [
+    "Retrieve <Alias=ItemToGet> from <Alias=Mark> in <Alias=City>"
+   ],
+   "ways": [
+    {
+     "title": "Kill the mark",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Get arrested and go to jail during the job",
+     "ends": "The job fails and you lose your share of the pay",
+     "steps": []
+    },
+    {
+     "title": "Tell the job-giver you quit",
+     "ends": "The job fails and you get no pay",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log ('I've been told to...')",
+    "objective 20 (return) follows the stage 50 log",
+    "stage 200 completes",
+    "stage 250 fails: three logs gated on the kill, arrest and quit globals"
+   ]
+  },
+  {
+   "edid": "TGRHC",
+   "shape": "endings",
+   "shared": [
+    "Clear <Alias=WealthyHome> in <Alias=City> of valuables (<Global=TGRHCValuablesStolen>/<Global=TGRHCValuablesTotal>)"
+   ],
+   "ways": [
+    {
+     "title": "Kill anyone who lives at the house",
+     "ends": "The job fails and you lose your share of the pay.",
+     "steps": []
+    },
+    {
+     "title": "Get caught and sent to jail",
+     "ends": "The job fails and you lose your share of the pay.",
+     "steps": []
+    },
+    {
+     "title": "Tell Vex you quit",
+     "ends": "The job fails and you forfeit any pay.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log ('I've been told to...')",
+    "objective 20 (return) follows the stage 50 log",
+    "stage 200 completes",
+    "stage 250 fails: three logs gated on the kill, arrest and quit globals"
+   ]
+  },
+  {
+   "edid": "TGRNT",
+   "shape": "endings",
+   "shared": [
+    "Steal <Global=TGRNGold> gold in goods from <Alias=City>"
+   ],
+   "ways": [
+    {
+     "title": "Steal while someone sees you",
+     "ends": "Those items don't count toward the 500 gold.",
+     "steps": [
+      "Return to Delvin"
+     ]
+    },
+    {
+     "title": "Get caught and sent to jail",
+     "ends": "The job fails.",
+     "steps": []
+    },
+    {
+     "title": "Tell Delvin you quit",
+     "ends": "The job fails and you forfeit any pay.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Being seen stealing isn't an ending: those items just don't count (stage 10's log), and the job can still be finished, so that way keeps the return step."
+    },
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log (items seen stolen won't count)",
+    "objective 20 follows stage 50's log",
+    "stage 200 completes",
+    "stage 250 fails: logs gated on the arrest and quit globals only"
+   ]
+  },
+  {
+   "edid": "TGRSL",
+   "shape": "endings",
+   "shared": [
+    "Retrieve the <Alias=ItemToGet> from <Alias=Business> in <Alias=City>"
+   ],
+   "ways": [
+    {
+     "title": "Kill anyone who lives at the business",
+     "ends": "The job fails and you lose your share of the pay.",
+     "steps": []
+    },
+    {
+     "title": "Get caught and sent to jail",
+     "ends": "The job fails and you lose your share of the pay.",
+     "steps": []
+    },
+    {
+     "title": "Tell Vex you quit",
+     "ends": "The job fails and you forfeit any pay.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Failing can happen at any point while the job runs (stage 250, one log per cause); the records don't show whether it comes before or after the return objective is set, so it adds no step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log ('I've been told to...')",
+    "objective 20 (return) follows the stage 50 log",
+    "stage 200 completes",
+    "stage 250 fails: three logs gated on the kill, arrest and quit globals"
+   ]
+  },
+  {
+   "edid": "TGTQ04",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Find leverage on Niranye before you press her",
+     "ends": "An optional way to sway her into talking.",
+     "steps": [
+      "Speak to Torsten Cruel-Sea",
+      "Speak to Niranye",
+      "(Optional) Discover leverage to sway Niranye",
+      "Travel to Uttering Hills Cave",
+      "Recover Fjotli's Silver Locket",
+      "Return to Torsten Cruel-Sea"
+     ]
+    },
+    {
+     "title": "Destroy the Summerset Shadows' banner in the cave",
+     "ends": "Optional; not needed to finish.",
+     "steps": [
+      "Speak to Torsten Cruel-Sea",
+      "Speak to Niranye",
+      "Travel to Uttering Hills Cave",
+      "Recover Fjotli's Silver Locket",
+      "(Optional) Destroy the Summerset Shadow's Banner",
+      "Return to Torsten Cruel-Sea"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Both choices are optional objectives a player can take either or both of; each way here carries only its own optional step."
+    }
+   ],
+   "evidence": [
+    "objective 10 follows stage 10's log, 20 stage 20 (Fjotli slain), 40 stage 40 (Uttering Hills Cave), 50/60 before stage 60's log (slain Linwe, locket obtained)",
+    "stage 200 completes (locket returned)"
+   ]
+  }
+ ]
+}

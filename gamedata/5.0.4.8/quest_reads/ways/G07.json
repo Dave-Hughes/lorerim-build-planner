@@ -1,0 +1,1143 @@
+{
+ "quests": [
+  {
+   "edid": "dunForelhostQST",
+   "shape": "endings",
+   "shared": [
+    "(Optional) Find Skorm Snow-Strider's journal",
+    "(Optional) Show Skorm Snow-Strider's journal to Valmir",
+    "(Optional) Find the key to the well in the Catacombs",
+    "Obtain Rahgot's mask",
+    "Return to Valmir"
+   ],
+   "ways": [
+    {
+     "title": "Hand Rahgot's mask over to Valmir",
+     "ends": "The quest ends with Valmir taking the mask.",
+     "steps": []
+    },
+    {
+     "title": "Tell Valmir the mask was destroyed",
+     "ends": "The quest ends with Valmir tricked and you keeping the mask.",
+     "steps": []
+    },
+    {
+     "title": "Turn on Valmir once he's shown to be an impostor",
+     "ends": "You fight Valmir, a Thalmor agent posing as a soldier; you keep the mask.",
+     "steps": [
+      "Kill the imposter Valmir"
+     ]
+    },
+    {
+     "title": "Help Valmir kill the soldiers he tricked (IDE Thalmor)",
+     "ends": "You decide whether to side with Valmir or with the soldiers.",
+     "steps": [
+      "Help Valmir or the soldiers"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records don't say whether the unmasking (objective 70/75) comes before or after you return to Valmir with the mask; both ways list it after 'Return to Valmir'."
+    }
+   ],
+   "evidence": [
+    "stages 10-60 logs follow objectives 10-60 for everyone",
+    "stage 70 has two entries: global aaThalmorValmirTruth 0 ('He must die') goes with objective 70, global 1 ('I must decide who to side with') with objective 75",
+    "stage 120 completes (gave the mask), stage 130 completes (tricked Valmir), stage 150 completes (fought Valmir)"
+   ]
+  },
+  {
+   "edid": "dunFrostmereCryptQST",
+   "shape": "endings",
+   "shared": [
+    "(Optional) Learn more about the theft in Frostmere Crypt",
+    "Follow Kyr and Ra'jirr into the tunnels",
+    "Find the stolen sword",
+    "Banish the Pale Lady"
+   ],
+   "ways": [
+    {
+     "title": "Put the sword back on the Pale Lady's altar",
+     "ends": "She is returned to her rest and the sword stays behind.",
+     "steps": []
+    },
+    {
+     "title": "Kill the Pale Lady",
+     "ends": "You keep the sword, the Pale Blade.",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 4 'Banish the Pale Lady' is one objective for both endings; the records don't show whether it is shown when you return the sword."
+    }
+   ],
+   "evidence": [
+    "objectives 1-4 are one list with no ending-specific entry",
+    "stage 90 log (returned the sword to her altar) and stage 91 log (killed her and claimed the sword) are the two endings"
+   ]
+  },
+  {
+   "edid": "dunHighGateRuinsQST",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Go after the scroll alone",
+     "ends": "Bring the scroll back to Anska for your reward.",
+     "steps": [
+      "Find And Return Anska's Scroll To Her",
+      "Return The Scroll To Anska"
+     ]
+    },
+    {
+     "title": "Let Anska come with you",
+     "ends": "She follows you through the ruin; if she dies, the quest fails.",
+     "steps": [
+      "Help Anska Retrieve Her Scroll",
+      "Return The Scroll To Anska"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 90 'Return The Scroll To Anska': stage 90's journal line appears only when stage 20 (Anska with you) is done, so the records point to it on the Anska way too; the checked read lists it under going alone. It sits in both ways."
+    }
+   ],
+   "evidence": [
+    "stage 10 log 'Find Anska's scroll and return it' goes with objective 10",
+    "stage 20 log 'Help Anska retrieve the scroll' goes with objective 20",
+    "stage 90 entry conditioned on stage 20 done: 'I have the scroll, I should return it to Anska'; the stage 20 not done entry is blank",
+    "stage 100 completes; stage 150 fails (failed to protect Anska)"
+   ]
+  },
+  {
+   "edid": "dunTrevasWatchQST",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Side with Stalleo",
+     "ends": "Open the front gate from the inside and return to Stalleo for your reward; Stalleo gets his home back.",
+     "steps": [
+      "Use the backdoor to gain access to Treva's Watch",
+      "Kill Brurid or convince him to leave",
+      "Use the lever to open the gate to Treva's Watch",
+      "Speak to Stalleo"
+     ]
+    },
+    {
+     "title": "Side with Brurid",
+     "ends": "Report to Brurid; the fort becomes his.",
+     "steps": [
+      "Join with Stalleo or deal with him",
+      "Return to Brurid"
+     ]
+    },
+    {
+     "title": "Help Brurid when Stalleo confronts him",
+     "ends": "You can side with either of them.",
+     "steps": [
+      "Use the backdoor to gain access to Treva's Watch",
+      "Kill Brurid or convince him to leave",
+      "Deal with Stalleo or deal with Brurid",
+      "Speak to Brurid"
+     ]
+    },
+    {
+     "title": "Both men end up dead",
+     "ends": "The quest fails and no one pays you.",
+     "steps": [
+      "Use the backdoor to gain access to Treva's Watch",
+      "Kill Brurid or convince him to leave",
+      "Deal with Stalleo or deal with Brurid"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objectives 17 and 18 are both 'Speak to Brurid' (stages 17 and 18 have the same journal line); the confrontation way lists it once."
+    },
+    {
+     "why": "Siding with Stalleo in the confrontation presumably goes on to the gate lever and Stalleo (objectives 20, 60); the records don't tie stage 16 to either ending."
+    },
+    {
+     "why": "Which steps lead to both men dying isn't in the records; this way follows the confrontation, where both are in the fight."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (infiltrate through the tunnel next to Stalleo's camp) leads to objective 10; stage 15 log (kill Brurid, convince him, or get his side) to objective 15",
+    "stage 20 (reach the gate lever) to objective 20; stage 60 (opened the gate, return to Stalleo) to objective 60; stage 100 completes",
+    "stage 5 (Brurid asks you to take care of Stalleo) to objective 5; stage 7 (report to Brurid) to objective 7; stage 95 completes, fort goes to Brurid",
+    "stage 16 (Stalleo confronted Brurid, side with either) to objective 16; stages 17/18 (report to Brurid) to objectives 17/18",
+    "stage 97 fails: both dead"
+   ]
+  },
+  {
+   "edid": "dunBlindCliffQST",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Kill Petra for Melka",
+     "ends": "Melka is let out, the quest completes, and she stays in the Bastion afterwards; you get her staff, the Eye of Melka",
+     "steps": [
+      "Kill the Hagraven Petra"
+     ]
+    },
+    {
+     "title": "Kill Melka",
+     "ends": "The journal records 'The Hagraven Melka is dead.'; the records don't show what else changes",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The records have no objective for killing Melka, and don't show whether 'Kill the Hagraven Petra' is still shown on that way."
+    }
+   ],
+   "evidence": [
+    "objective 15 is the only objective",
+    "stage 100 completes with no journal line",
+    "stage 200 log 'The Hagraven Melka is dead.' neither completes nor fails"
+   ]
+  },
+  {
+   "edid": "dunNilheimQST",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Escort Telrav and wait for your reward",
+     "ends": "Telrav double-crosses you and you have to kill him; the quest completes when Telrav and his men are dead",
+     "steps": [
+      "Escort Telrav to his camp.",
+      "Wait for Telrav to return with your reward",
+      "Kill Telrav"
+     ]
+    },
+    {
+     "title": "Clear the Nilheim bandits and find Telrav's Journal",
+     "ends": "you can extort Telrav, which also completes the quest",
+     "steps": [
+      "Escort Telrav to his camp."
+     ]
+    },
+    {
+     "title": "Kill Telrav outside the double-cross",
+     "ends": "the quest fails ('I have killed Telrav.')",
+     "steps": [
+      "Escort Telrav to his camp."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The extort way has no objectives of its own (stages 110, 120, 130 only write the journal); where it splits from the escort isn't in the records."
+    },
+    {
+     "why": "Killing Telrav outside the double-cross: the records don't show which objective is up when stage 150 fails the quest."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (agreed to escort) goes with objective 10; stage 20 (retrieve reward) with objective 20; stage 30 (double-crossed) with objective 30; stage 100 completes",
+    "stages 110 (killed the bandits at Nilheim), 120 (found Telrav's journal), 130 completes (extorted Telrav)",
+    "stage 150 fails: 'I have killed Telrav.'"
+   ]
+  },
+  {
+   "edid": "FreeformMarkarthM",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Find the Amulet of Talos and give it to Ondolemar",
+     "ends": "Ondolemar rewards you; quest complete",
+     "steps": [
+      "Find evidence of Ogmund's Talos worship",
+      "Bring Ogmund's Amulet of Talos to Ondolemar"
+     ]
+    },
+    {
+     "title": "Warn Ogmund that the Thalmor are on to him",
+     "ends": "Ogmund rewards you and admits outright to worshipping Talos; you can still go back to Ondolemar",
+     "steps": [
+      "Find evidence of Ogmund's Talos worship",
+      "(Optional) Warn Ogmund about Ondolemar",
+      "(Optional) Bring Ogmund's Amulet of Talos to Ondolemar"
+     ]
+    },
+    {
+     "title": "Tell Ondolemar that Ogmund admitted it",
+     "ends": "Ondolemar rewards you; quest complete",
+     "steps": [
+      "Find evidence of Ogmund's Talos worship",
+      "(Optional) Warn Ogmund about Ondolemar",
+      "Report to Ondolemar that Ogmund openly admited to Talos worship."
+     ]
+    },
+    {
+     "title": "Lie to Ondolemar about Ogmund",
+     "ends": "Ondolemar believes you and rewards you; quest complete",
+     "steps": [
+      "Find evidence of Ogmund's Talos worship",
+      "(Optional) Lie to Ondolemar about Ogmund's Talos worship"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 16 '(Optional) Bring Ogmund's Amulet of Talos to Ondolemar' is placed on the warning way, since you can still go back to Ondolemar; no stage sets it on its own."
+    },
+    {
+     "why": "Whether lying to Ondolemar needs Ogmund warned first isn't in the records; objective 13 sits between the warning (12) and the report (14)."
+    }
+   ],
+   "evidence": [
+    "stage 10 log (break into Ogmund's home) goes with objective 10; stage 15 (found the amulet) leads to objective 15; stage 20 completes (gave the amulet)",
+    "stage 12 (warned Ogmund, he admitted Talos worship) goes with objective 12; stage 19 completes (testified that he admitted it) matches objective 14",
+    "stage 21 completes (lied to Ondolemar) matches objective 13"
+   ]
+  },
+  {
+   "edid": "FreeformRiften21",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Tell the Jarl of the Pale what the journals reveal",
+     "ends": "a gold reward from the Jarl (step added by the Toying With The Dead quest expansion)",
+     "steps": [
+      "Enter Yngvild Barrow",
+      "Retrieve Arondil's Journals (<Global=FFRiften21JFound>/<Global=FFRiften21JTotal>)",
+      "(Optional) Inform Jarl of the Pale about missing people",
+      "Return to Vekel"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "objectives 10, 20, 25, 30 in order; stage 40/45 logs (journals reveal experiments on citizens of Dawnstar) come before objective 25 and objective 30",
+    "stage 200 completes"
+   ]
+  },
+  {
+   "edid": "DLC1LD",
+   "shape": "endings",
+   "shared": [
+    "Reach the summit of Arkngthamz",
+    "Solve the Tonal Lock",
+    "Claim the treasure of Arkngthamz",
+    "Speak with Katria",
+    "Search for the Aetherium Shards (<Global=DLC1LD_ShardsFound>/<Global=DLC1LD_ShardsTotal>)",
+    "(Optional) Retrieve Katria's Journal",
+    "Locate the Aetherium Forge",
+    "Speak with Katria",
+    "Place the Aetherium Shards",
+    "Retrieve the Aetherium Crest",
+    "Stand Clear",
+    "Find the Aetherium Forge",
+    "Shut off the Steam",
+    "Defeat the Guardians of the Forge",
+    "(Optional) Shut off the Steam",
+    "Speak with Katria",
+    "(Optional) Search for Crafting Materials",
+    "Use the Aetherium Forge"
+   ],
+   "ways": [
+    {
+     "title": "Accept Katria's help, or go on without her",
+     "ends": "Either way she warns you about the tonal lock and the traps, and the quest goes on the same",
+     "steps": []
+    },
+    {
+     "title": "Choose the artifact to make at the Aetherium Forge",
+     "ends": "Making one uses up the Aetherium Crest. The Forge also lists versions of all three that take 2 Aetherium Dynamo Cores instead of the Crest, so with cores you can make the others too.",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 100 (accepted her help) and stage 111/112 (she warned of the tonal lock) lead to the same objectives 110 onward",
+    "objectives 100-225 are one list with no side-specific entry; 'Use the Aetherium Forge' (225) is where the artifact is chosen; stage 225 log (forged a powerful artifact)"
+   ]
+  },
+  {
+   "edid": "madFultheimQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Bring Fultheim a Dragon Bone",
+     "ends": "He rejoins the Blades to redeem himself as a Dragonslayer",
+     "steps": [
+      "Speak to Delphine about Fultheim",
+      "(Optional) Speak to Esbern about Fultheim",
+      "Recruit Fultheim into the Blades",
+      "Bring a Dragon Bone to Fultheim"
+     ]
+    },
+    {
+     "title": "Bring Fultheim a Thalmor Justiciar's Robes",
+     "ends": "He rejoins the Blades, not for honor but for vengeance against the Thalmor",
+     "steps": [
+      "Speak to Delphine about Fultheim",
+      "(Optional) Speak to Esbern about Fultheim",
+      "Recruit Fultheim into the Blades",
+      "Bring a Thalmor Justiciar's Robes to Fultheim"
+     ]
+    },
+    {
+     "title": "Insult Fultheim",
+     "ends": "He attacks you and the quest fails; he can't be recruited",
+     "steps": [
+      "Speak to Delphine about Fultheim",
+      "(Optional) Speak to Esbern about Fultheim",
+      "Recruit Fultheim into the Blades"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 5 log (ask Delphine) goes with objective 5; stage 10 (Delphine told me, could speak to Esbern) with objectives 10 and 15",
+    "stage 15 (proof against dragons) leads to objective 11; stage 16 (proof against a Thalmor Justiciar) to objective 12",
+    "stage 20 completes (Dragonslayer); stage 30 completes (vengeance against Thalmor); stage 40 fails (insulted him)"
+   ]
+  },
+  {
+   "edid": "NecroQuest02",
+   "shape": "endings",
+   "shared": [
+    "Locate the grave of Archmage Vyngald",
+    "Defeat the Necromancers"
+   ],
+   "ways": [
+    {
+     "title": "Re-cover Vyngald's grave",
+     "ends": "He rests in peace; the quest ends",
+     "steps": [
+      "Re-cover Archmage Vyngald's grave"
+     ]
+    },
+    {
+     "title": "Take the Shroud of Vyngald",
+     "ends": "His enraged spirit attacks you; defeat it to finish and keep the Shroud",
+     "steps": [
+      "Take the Shroud of Vyngald from the grave",
+      "Defeat Archmage Vyngald's vengeful apparition"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 log goes with objective 10, stage 20 (defeated the Necromancers, re-cover or take) offers objectives 30 and 40",
+    "stage 32 completes (re-covered grave); stage 33 completes (took the Shroud, defeated his spirit), matching objective 50"
+   ]
+  },
+  {
+   "edid": "NecroQuest03",
+   "shape": "endings",
+   "shared": [
+    "Locate the Temple of Arkay",
+    "Clear out the Necromancers from the Temple of Arkay"
+   ],
+   "ways": [
+    {
+     "title": "Free the captive Priest of Arkay",
+     "ends": "He escapes and the quest ends",
+     "steps": [
+      "Free the captive Priest of Arkay"
+     ]
+    },
+    {
+     "title": "Slaughter the priest and cut out his heart",
+     "ends": "You keep the Priest of Arkay's Heart; the journal hints it will come in handy",
+     "steps": [
+      "Slaughter the captive Priest of Arkay",
+      "Take the Priest of Arkay's Heart"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log (free him, or take the heart) offers objectives 25 and 35",
+    "stage 24 (freed him) and stage 35 completes; stage 25 (slaughtered, extract the heart) leads to objective 30, stage 30 completes"
+   ]
+  },
+  {
+   "edid": "NecroQuest04",
+   "shape": "endings",
+   "shared": [
+    "Locate the Ritual Site",
+    "Defeat the Necromancers"
+   ],
+   "ways": [
+    {
+     "title": "Destroy the cauldron",
+     "ends": "The concoction can never be finished; the quest ends",
+     "steps": [
+      "Destroy the Cauldron"
+     ]
+    },
+    {
+     "title": "Try to complete the concoction yourself",
+     "ends": "If it works you get Namira's Corrosion or Embalming Essence; if it fails the cauldron is spoiled and the quest fails",
+     "steps": [
+      "Complete the Concoction"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 20 log (destroy it or finish the Elixirs) offers objectives 30 and 40",
+    "stage 35 completes (destroyed the Cauldron); stage 41 fails, stages 51 and 61 complete (the two Elixirs)"
+   ]
+  },
+  {
+   "edid": "NecroBlackBookQuest01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Read the book again to escape Apocrypha",
+     "ends": "You leave Apocrypha before you learn the ritual",
+     "steps": [
+      "Learn the Black Book's hidden knowledge"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The quest has one objective; the records don't show whether it stays open after you read the book again to escape."
+    }
+   ],
+   "evidence": [
+    "stage 10 log ('press on to uncover it, or read the book again to escape') goes with objective 10",
+    "stage 20 completes (uncovered the knowledge)"
+   ]
+  },
+  {
+   "edid": "NecroLichRitualQuest",
+   "shape": "endings",
+   "shared": [
+    "Construct the Phylactery",
+    "Create the Elixir of Defilation",
+    "Establish a Ritual Site",
+    "Go to the Ritual Site"
+   ],
+   "ways": [
+    {
+     "title": "Choose the Ritual Site: Ravenscorn Spire or the Solitude Sewers",
+     "ends": "That place becomes your ritual chamber",
+     "steps": []
+    },
+    {
+     "title": "Perform the ritual",
+     "ends": "Completing it makes you a Lich for good; it can't be undone",
+     "steps": [
+      "Complete the Ritual of Transcendence"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "The second choice is whether to perform the ritual at all; the records have no objective for not doing it, so only the performing side is written."
+    }
+   ],
+   "evidence": [
+    "stage 20 log (prepared a secure location) matches objective 12; stage 30 (Phylactery) objective 10; stage 40 (Elixir of Defilation) objective 11",
+    "stage 50 (go to the Ritual Site) leads to objective 20; stage 60 (ready to begin) to objective 30; stage 100 completes (became a Lich)"
+   ]
+  },
+  {
+   "edid": "EVGSirenrootQuest",
+   "shape": "endings",
+   "shared": [
+    "Accept the job from the Black-Briars",
+    "Find the plant in the lake",
+    "Meet with the diving team",
+    "Speak to Ingun's assistant to start the job",
+    "(Optional) Speak to all the members of the diving team (<Global=EVGSirenIntroTalk4>/4)",
+    "(Optional) Give Yineel 1 Nordic Barnacle and 1 Histcarp",
+    "Investigate the cave",
+    "Find a way out",
+    "Find the corresponding Varla Stone",
+    "(Optional) Find Cayrice's Documents",
+    "Find a way onto the bridge",
+    "Gather the team first",
+    "Accompany and loot with Peletius",
+    "Rest.",
+    "Speak to Yineel",
+    "Find Tilael",
+    "Solve the mirrored puzzle!",
+    "Wait for Tilael to solve the puzzle",
+    "(Optional) Speak to Peletius",
+    "Escape!",
+    "Return to Frissa Black-Briar"
+   ],
+   "ways": [
+    {
+     "title": "Convince Cayrice to leave the ruins",
+     "ends": "she can get out alive",
+     "steps": [
+      "(Optional) Convince Cayrice to Leave"
+     ]
+    },
+    {
+     "title": "Help Peletius leave",
+     "ends": "he can get out alive",
+     "steps": [
+      "(Optional) Help Peletius Leave"
+     ]
+    },
+    {
+     "title": "Convince Tilael to leave",
+     "ends": "she can get out alive",
+     "steps": [
+      "(Optional) Convince Tilael to Leave",
+      "Go with Tilael to her Soul Gem"
+     ]
+    },
+    {
+     "title": "Convince Yineel to leave",
+     "ends": "he can get out alive; after the quest he stays at Black-Briar Manor",
+     "steps": [
+      "(Optional) Convince Yineel to Leave"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 82 'Go with Tilael to her Soul Gem' sits between the Tilael (80) and Yineel (85) objectives; it's placed on the Tilael way by index, the records don't tie it to a stage with a journal line."
+    },
+    {
+     "why": "Objective 40 'Rest.' and stage 40's log ('I've escaped the Ayleid ruins. I should rest.') sit in the middle of the ruin objectives; kept in index order."
+    }
+   ],
+   "evidence": [
+    "stage 1 (notice, speak to Frissa) and stage 2 (singing plant) are two ways in; stage 5 leads to objective 5, stage 10 to objective 10, stage 15 to objective 15",
+    "stage 20 (cavern collapsed, find another way) to objective 20; stage 30 (Topaz Varla stone) to objective 25; stage 35 (swim up to the bridge) to objective 27",
+    "stage 130 (halls flooding, find a way out) to objective 130; stage 140 (return to Frissa) to objective 140; stage 150 completes",
+    "objectives 70, 75, 80, 85 are each optional and none has a completing or failing stage of its own"
+   ]
+  },
+  {
+   "edid": "aaaHOTRQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Make the remedy and heal the Heart",
+     "ends": "report to Gwilym; he goes back to tend the Heart and can be found there about a day later",
+     "steps": [
+      "Travel to Ever-Bog",
+      "Collect Imbued Algae (<Global=aaaHOTRAlgaeCounter>/ 1)",
+      "Collect Bog Beacon (<Global=aaaHOTRBogBeaconCounter>/ 10)",
+      "Collect Swamp Spider Eggs (<Global=aaaHOTRSpiderEggCounter>/ 5)",
+      "Collect Swamp Taproot (<Global=aaaHOTRTaprootCounter>/ 3)",
+      "Create remedy",
+      "Go to the heart",
+      "Tell the priest you've healed the heart"
+     ]
+    },
+    {
+     "title": "Confront Vinillian and kill the Heart",
+     "ends": "report to Vinillian; he pays you and sends you on your way",
+     "steps": [
+      "(Optional) Confront Vinillian",
+      "Travel to Ever-Bog",
+      "Collect Imbued Algae (<Global=aaaHOTRAlgaeCounter>/ 1)",
+      "Collect Bog Beacon (<Global=aaaHOTRBogBeaconCounter>/ 10)",
+      "Collect Swamp Spider Eggs (<Global=aaaHOTRSpiderEggCounter>/ 5)",
+      "Collect Swamp Taproot (<Global=aaaHOTRTaprootCounter>/ 3)",
+      "Create poison",
+      "Go to the heart",
+      "Tell Vinillian you've killed the heart"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 (Gwilym's task) goes with objective 10; stage 11 (Vinillian gave a poisonous root) follows objective 5",
+    "stage 30 (reached Ever-Bog, search for ingredients) leads to objectives 31-34; stage 40 (ingredients found, cooking station) to objectives 40/41; stage 50 to objective 50",
+    "stage 60 (remedy worked, speak with Gwilym) to objective 60, stage 100 completes; stage 61 (poison worked) to objective 61, stage 110 completes"
+   ]
+  },
+  {
+   "edid": "ksws04LibraryQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Tell Nirenoore you're not interested",
+     "ends": "the quest fails",
+     "steps": []
+    },
+    {
+     "title": "Agree to look into it",
+     "ends": "buy the book from Urag, read it and show it to her",
+     "steps": [
+      "Acquire a book about the Welkynar explorer.",
+      "Read \"<alias=book>\".",
+      "Show \"<alias=book>\" to Nirenoore."
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 100 log (research at the College) goes with objective 100; stage 150 (bought the book) with objective 150; stage 200 (give the book) with objective 200; stage 300 completes",
+    "stage 9000 fails (told her I am not interested); no objective comes before it"
+   ]
+  },
+  {
+   "edid": "ksws04MainQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Report Nirenoore to the Thalmor",
+     "ends": "you get some gold and the quest fails",
+     "steps": [
+      "Meet with the stranger who sent the note."
+     ]
+    },
+    {
+     "title": "Agree to help her",
+     "ends": "the theft at Thalmor Headquarters and the rest of the quest",
+     "steps": [
+      "Meet with the stranger who sent the note.",
+      "Retrieve the painting of Nirenoore.",
+      "Return to Nirenoore.",
+      "Have a drink with Nirenoore.",
+      "Escape.",
+      "Retrieve your items. (Optional)",
+      "Rescue Nirenoore.",
+      "Retrieve the painting of Nirenoore.",
+      "Speak to Nirenoore.",
+      "Follow Nirenoore."
+     ]
+    },
+    {
+     "title": "Fail to rescue Nirenoore in time",
+     "ends": "the quest fails",
+     "steps": [
+      "Meet with the stranger who sent the note.",
+      "Retrieve the painting of Nirenoore.",
+      "Return to Nirenoore.",
+      "Have a drink with Nirenoore.",
+      "Escape.",
+      "Retrieve your items. (Optional)",
+      "Rescue Nirenoore."
+     ]
+    },
+    {
+     "title": "Get her belongings back, then turn down her reward",
+     "ends": "the quest ends with no reward; the items mattered to her",
+     "steps": [
+      "Meet with the stranger who sent the note.",
+      "Retrieve the painting of Nirenoore.",
+      "Return to Nirenoore.",
+      "Have a drink with Nirenoore.",
+      "Escape.",
+      "Retrieve your items. (Optional)",
+      "Rescue Nirenoore.",
+      "Retrieve the painting of Nirenoore.",
+      "Speak to Nirenoore.",
+      "Follow Nirenoore.",
+      "Speak to Nirenoore.",
+      "Recover Nirenoore's Items.",
+      "Speak to Nirenoore."
+     ]
+    },
+    {
+     "title": "Get her belongings back and accept her reward",
+     "ends": "you take the reward",
+     "steps": [
+      "Meet with the stranger who sent the note.",
+      "Retrieve the painting of Nirenoore.",
+      "Return to Nirenoore.",
+      "Have a drink with Nirenoore.",
+      "Escape.",
+      "Retrieve your items. (Optional)",
+      "Rescue Nirenoore.",
+      "Retrieve the painting of Nirenoore.",
+      "Speak to Nirenoore.",
+      "Follow Nirenoore.",
+      "Speak to Nirenoore.",
+      "Recover Nirenoore's Items.",
+      "Speak to Nirenoore."
+     ]
+    },
+    {
+     "title": "End it with her belongings still lost",
+     "ends": "she gives you her hammer and circlet, or has nothing to give you",
+     "steps": [
+      "Meet with the stranger who sent the note.",
+      "Retrieve the painting of Nirenoore.",
+      "Return to Nirenoore.",
+      "Have a drink with Nirenoore.",
+      "Escape.",
+      "Retrieve your items. (Optional)",
+      "Rescue Nirenoore.",
+      "Retrieve the painting of Nirenoore.",
+      "Speak to Nirenoore.",
+      "Follow Nirenoore.",
+      "Speak to Nirenoore."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 610 'Retrieve the painting of Nirenoore.' (a second time) has no stage with its own journal line; it's placed after the rescue by index."
+    },
+    {
+     "why": "Whether the lost-belongings ending comes from objective 850 ('Speak to Nirenoore.') or later isn't in the records; stage 850 (her items were stolen) is the last log before stages 9200/9250."
+    },
+    {
+     "why": "The 'Agree to help her' way ends at following Nirenoore; the steps after that belong to the three endings."
+    }
+   ],
+   "evidence": [
+    "stage 100 (mysterious note) goes with objective 100; stage 150 (asked to help) then stage 9000 fails (reported her to the Thalmor)",
+    "stage 200 to objective 200; 300 to 300; 450 (celebrate) to 400; 510 (captured, escape the cell) to 500/510; 600 (rescue her before the border) to 600; stage 9100 fails (couldn't rescue her)",
+    "stage 700 (rescued her) to objective 700; 800 (follow her) to 800; 850 (items stolen) to 850; 900 (bandits) to 900; 1000 (retrieved from bandits) to 1000",
+    "stage 1100 completes (rejected the reward); stage 1150 completes (accepted it); stages 9200/9250 complete (possessions stolen: hammer and circlet, or nothing)"
+   ]
+  },
+  {
+   "edid": "ccMTYSSE001_DES_RelicsoftheCrusader",
+   "shape": "endings",
+   "shared": [
+    "Find the Mace of the Crusader",
+    "Find the Sword of the Crusader",
+    "Find the Boots of the Crusader",
+    "Find the Cuirass of the Crusader",
+    "Find the Gauntlets of the Crusader",
+    "Find the Helm of the Crusader",
+    "Find the Shield of the Crusader"
+   ],
+   "ways": [
+    {
+     "title": "Serve Arkay to earn the Sword of the Crusader",
+     "ends": "you earn the sword",
+     "steps": [
+      "Serve Arkay to earn the Sword of the Crusader",
+      "Retrieve the Sword of the Crusader"
+     ]
+    },
+    {
+     "title": "Steal the Sword of the Crusader",
+     "ends": "you take the sword without earning it",
+     "steps": [
+      "Steal the Sword of the Crusader",
+      "Retrieve the Sword of the Crusader"
+     ]
+    },
+    {
+     "title": "Serve Dibella to earn the Helm of the Crusader",
+     "ends": "you earn the helm",
+     "steps": [
+      "Serve Dibella to earn the Helm of the Crusader",
+      "Retrieve the Helm of the Crusader"
+     ]
+    },
+    {
+     "title": "Steal the Helm of the Crusader",
+     "ends": "you take the helm without earning it",
+     "steps": [
+      "Steal the Helm of the Crusader",
+      "Retrieve the Helm of the Crusader"
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "'Retrieve the Sword of the Crusader' (27) and 'Retrieve the Helm of the Crusader' (67) follow the serve/steal objectives by index; the journal is the same line at every stage, so it's not settled whether retrieving follows both serving and stealing. Placed on both."
+    }
+   ],
+   "evidence": [
+    "every stage 5-70 carries the same journal line; objectives 25/26/27 and 65/66/67 sit in stages 25-27 and 65-67",
+    "stage 75 completes (reunited the relics)"
+   ]
+  },
+  {
+   "edid": "belethorSisterQuest02",
+   "shape": "endings",
+   "shared": [
+    "Meet with <alias=waifu> at the Bannered Mare.",
+    "Acquire Ysolda's share of Belethor's General Store.",
+    "Acquire Nazeem's share of Belethor's General Store.",
+    "Acquire Hulda's share of Belethor's General Store.",
+    "Return to <alias=waifu> at the Bannered Mare.",
+    "Follow <alias=waifu>.",
+    "Speak to <alias=waifu>."
+   ],
+   "ways": [
+    {
+     "title": "Back Lelaegh at the shareholders' meeting",
+     "ends": "Lelaegh becomes the new store manager",
+     "steps": []
+    },
+    {
+     "title": "Back Belethor",
+     "ends": "Belethor stays store manager",
+     "steps": []
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 500 'Speak to <alias=waifu>.' is shared; the records don't show whether it comes before or after the vote."
+    }
+   ],
+   "evidence": [
+    "stage 100 to objective 100; stage 200 (buy shares from Ysolda, Hulda, Nazeem) to objectives 201-203; stage 300 to objective 300; stage 400 to objective 400",
+    "stage 500 log (elected her store manager) and stage 599 log (Belethor remains) are the two outcomes; stage 600 completes, stage 699 fails, both without a journal line"
+   ]
+  },
+  {
+   "edid": "Rune01",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Take the job when Rune asks",
+     "ends": "agreeing sends you to the coast; the records also have a second ending marked as a failure, with no text",
+     "steps": [
+      "Search along the coast of Solitude for a clue to Rune's past",
+      "Return to Rune"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 5 'Decision stage'; stage 10 'Find letter' to objective 10; stage 20 'Return to Rune' to objective 20",
+    "stage 30 completes ('Finish'); stage 40 also completes ('Fail')"
+   ]
+  },
+  {
+   "edid": "Sat_Orphanage",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Convince Maramal to donate, or go without his donation",
+     "ends": "the step is optional; either way you go on to deliver the toys and food",
+     "steps": [
+      "Get toys from Bersi Honey-Hand in Riften",
+      "Get food from Talen-Jei",
+      "Convince Maramal to Donate (Optional)",
+      "Visit the Orphanage",
+      "Speak to Constance",
+      "Return to Niklas"
+     ]
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stages 0, 5, 10 logs go with objectives 0, 5, 10; stage 11 (couldn't get a donation from Maramal, deliver) to objective 11",
+    "stage 12 (Grelod refused, speak to Constance) to objective 12; stage 15 to objective 15; stage 20 completes"
+   ]
+  },
+  {
+   "edid": "ksws07MainQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Agree to help Othriel end her curse",
+     "ends": "the full quest: Frostskarn Vault, the catacombs, the Cursed Shadow, and returning her heart",
+     "steps": [
+      "Investigate <alias=MirrorStart>.",
+      "Find a way through the Labyrinthine Passages.",
+      "Investigate the Crag Spire Wastes.",
+      "(Optional) Find another way through the maze or try again later.",
+      "Find a cure to <alias=waifu>'s curse.",
+      "Retrieve equipment from Frostskarn Vault.",
+      "Show the equipment to <alias=waifu>.",
+      "Defeat <alias=boss>.",
+      "Escape the Whispering Walls Catacombs.",
+      "Defeat the <alias=boss>.",
+      "Dispel the curse.",
+      "Speak to <alias=waifu>."
+     ]
+    },
+    {
+     "title": "Refuse to help her",
+     "ends": "the quest ends there",
+     "steps": [
+      "Investigate <alias=MirrorStart>.",
+      "Find a way through the Labyrinthine Passages.",
+      "Investigate the Crag Spire Wastes.",
+      "(Optional) Find another way through the maze or try again later.",
+      "Find a cure to <alias=waifu>'s curse."
+     ]
+    },
+    {
+     "title": "Kill her",
+     "ends": "kill Othriel; the quest ends when she is dead",
+     "steps": [
+      "Investigate <alias=MirrorStart>.",
+      "Find a way through the Labyrinthine Passages.",
+      "Investigate the Crag Spire Wastes.",
+      "(Optional) Find another way through the maze or try again later.",
+      "Find a cure to <alias=waifu>'s curse.",
+      "Kill <alias=waifuKill>."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Objective 301 '(Optional) Find another way through the maze or try again later.' has no stage with its own journal line; kept on every way by index, before you meet her."
+    }
+   ],
+   "evidence": [
+    "stage 100 to objective 100; 200 (Labyrinthine Passages) to 200; 300 (Crag Spire Wastes) to 300; 340 (she asked for help) to objective 340",
+    "stage 400 (agreed; Frostskarn Vault) to objective 400; 500 to 500; 600 to 600; 800 to 800; 900 (the win was an illusion) to 900; 1000 (can dispel the curse) to 1010; 1100 to 1100; stage 1300 completes",
+    "stage 10000 completes (refused to help); stage 20000 (I will kill her) to objective 20000; stage 20100 completes (killed her)"
+   ]
+  },
+  {
+   "edid": "ksws07BookQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Give her the book",
+     "ends": "the quest completes",
+     "steps": [
+      "Obtain a copy of \"Feyfolken III\".",
+      "Give \"Feyfolken III\" to Othriel."
+     ]
+    },
+    {
+     "title": "Don't give it to her",
+     "ends": "the quest fails",
+     "steps": [
+      "Obtain a copy of \"Feyfolken III\".",
+      "Give \"Feyfolken III\" to Othriel."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Whether you refuse before or after getting the book isn't in the records; stage 900 starts from her asking. Both objectives are on that way."
+    }
+   ],
+   "evidence": [
+    "stage 100 (asked for the book) goes with objectives 90 and 100",
+    "stage 200 completes (brought the book); stage 900 fails (did not give her this book)"
+   ]
+  },
+  {
+   "edid": "ksws07ArmorQuest",
+   "shape": "paths",
+   "shared": [],
+   "ways": [
+    {
+     "title": "Give her the book",
+     "ends": "she studies it, then asks for 5 Stalhrim",
+     "steps": [
+      "Obtain a copy of \"The Armorer's Challenge\".",
+      "Give \"The Armorer's Challenge\" to Othriel.",
+      "Wait for Othriel to finish reading \"The Armorer's Challenge\".",
+      "Speak to Othriel.",
+      "Obtain Stalhrim Ores (<Global=ksws07ArmorQuestOreCount>/5).",
+      "Give 5 Stalhrim Ores to Othriel.",
+      "Wait 1 day for Othriel to craft a set of Rimeweld Armor.",
+      "Speak to Othriel."
+     ]
+    },
+    {
+     "title": "Don't give her the book",
+     "ends": "the quest fails",
+     "steps": [
+      "Obtain a copy of \"The Armorer's Challenge\".",
+      "Give \"The Armorer's Challenge\" to Othriel."
+     ]
+    },
+    {
+     "title": "Refuse to fetch the Stalhrim, or never hand it over",
+     "ends": "the quest fails with no armor",
+     "steps": [
+      "Obtain a copy of \"The Armorer's Challenge\".",
+      "Give \"The Armorer's Challenge\" to Othriel.",
+      "Wait for Othriel to finish reading \"The Armorer's Challenge\".",
+      "Speak to Othriel.",
+      "Obtain Stalhrim Ores (<Global=ksws07ArmorQuestOreCount>/5).",
+      "Give 5 Stalhrim Ores to Othriel."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Refusing the Stalhrim (stage 850) may come at 'Speak to Othriel.' before objective 190 rather than after it; the records don't split refusing from never handing it over."
+    }
+   ],
+   "evidence": [
+    "stage 100 to objectives 90/100; stage 110 (studying the book) to 110; stage 200 (obtain 5 Stalhrim) to 190/200; stage 300 (crafting) to 300; stage 400 to 400; stage 500 completes",
+    "stage 900 fails (did not give her this book)",
+    "stage 850 (refused) and stage 950 fails (did not give her the Stalhrim)"
+   ]
+  },
+  {
+   "edid": "00TallyMeet",
+   "shape": "endings",
+   "shared": [
+    "Find the hidden Statue of Talos.",
+    "Talk to Taliesin."
+   ],
+   "ways": [
+    {
+     "title": "Heal Taliesin",
+     "ends": "he offers to travel with you; the quest completes",
+     "steps": [
+      "Heal Taliesin's wounds."
+     ]
+    },
+    {
+     "title": "Leave him to bleed",
+     "ends": "the journal offers this; what follows isn't in these files",
+     "steps": []
+    },
+    {
+     "title": "Turn down his offer to follow",
+     "ends": "he says you'll find him in Riverwood if you reconsider",
+     "steps": [
+      "Heal Taliesin's wounds."
+     ]
+    }
+   ],
+   "unsure": [
+    {
+     "why": "Only healing has a completing stage; leaving him to bleed has no stage or objective of its own."
+    }
+   ],
+   "evidence": [
+    "stage 0 to objective 0; stage 10 (get him talking again) to objective 10; stage 15 (heal him or leave him to bleed) to objective 15",
+    "stage 20 completes (helped him, he offered to travel with me)"
+   ]
+  },
+  {
+   "edid": "DB05Alt",
+   "shape": "endings",
+   "shared": [
+    "Attend the wedding",
+    "Talk to the guests and newly weds (<Global=VAW_GuestTalk_Count>/<Global=VAW_GuestTalk_Total>)",
+    "Listen To Vittoria's speech",
+    "Stay or leave the reception"
+   ],
+   "ways": [
+    {
+     "title": "Stay at the reception, or leave",
+     "ends": "either way the quest completes",
+     "steps": []
+    }
+   ],
+   "unsure": [],
+   "evidence": [
+    "stage 10 to objective 10; stage 20 (arrived) to objective 15; stage 200 (listened to the speech) to objective 200; stage 210 completes either way"
+   ]
+  }
+ ]
+}
