@@ -1,0 +1,1099 @@
+[
+ {
+  "id": "Skyrim.esm:01B1D1",
+  "name": "Ma'dran",
+  "race": "Khajiit, Ohmes-Raht",
+  "sex": "male",
+  "firstMeet": "With the Khajiit caravan he leads, camped out in the open; the extracts don't say which city it is camped by.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "near wherever his caravan has stopped",
+    "doing": "wandering the camp"
+   }
+  ],
+  "changes": [
+   "He travels with a Khajiit caravan, so where he stands depends on where the caravan is; the caravan's route isn't in the extracts."
+  ],
+  "role": "merchant; leader of a Khajiit caravan",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Belethor's Sister",
+    "how": "a step in it: Ysolda sold Lelaegh to him; he gives you a contract to read and tells you he sold her on to bandits"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed reference is in the open world with no named place, his only package is 'wander near where he was placed', and the caravan quest that moves him isn't among the extracted quests."
+   },
+   {
+    "field": "sells",
+    "why": "He is a caravan merchant (merchant faction, open all day), but his vendor buy/sell list isn't resolved to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   },
+   {
+    "field": "quests",
+    "why": "He is also in two quests the extracts don't name (the caravan quest and one from a currency-exchange plugin); left out."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01B1D1",
+   "package CaravanTempWanderAtEditorLoc Skyrim.esm:01C063",
+   "factions JobMerchantFaction, CaravanMerchant_Faction, CaravanBLeader, KhajiitCaravanFaction",
+   "placed ref Skyrim.esm:074345 in Skyrim.esm:000D74",
+   "quest Skyrim.esm:03ACDB alias LeaderB",
+   "quest SL99Exchanger.esp:01CC7A alias Madran",
+   "quest Belethor's Sister.esp:000804 alias madran (stage 200-300)"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA3",
+  "name": "Hulda",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Behind the counter of the Bannered Mare, Whiterun.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "19 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "running the inn"
+   },
+   {
+    "from": "2 am",
+    "for": "5 hours",
+    "where": "the Bannered Mare, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am, Morndas only",
+    "for": "2 hours",
+    "where": "the Temple of Kynareth, Whiterun",
+    "doing": "visiting the temple (the inn on other days)"
+   }
+  ],
+  "changes": [
+   "Nothing in the records moves her for good."
+  ],
+  "role": "innkeeper of the Bannered Mare; rents a room; buys firewood",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Prophet",
+    "how": "a step in it: one of the innkeepers you can ask about the Moth Priest (optional)"
+   },
+   {
+    "quest": "Vampires of Whiterun Hold",
+    "how": "you tell her the vampires have been dealt with"
+   },
+   {
+    "quest": "Hostile Takeover",
+    "how": "a step in it: you buy her share of Belethor's General Goods"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "She is in the merchant and innkeeper factions, but her vendor list isn't resolved to items in the extracts."
+   },
+   {
+    "field": "day",
+    "why": "Morndas is read from the package's day-of-week value 1 (0 being Sundas)."
+   },
+   {
+    "field": "quests",
+    "why": "Vampires of Whiterun Hold has no recorded giver; it starts on entering a location and ends with reporting to her, so she may also be the one who asks."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BA3",
+   "package AIOHuldaVisitTemple7x2 AI Overhaul.esp:0122AB",
+   "package AIOWRHuldaSleep AI Overhaul.esp:0591DA",
+   "package WhiterunInnkeeperPackage Skyrim.esm:018959",
+   "factions JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction, FavorJobsChopWoodFaction",
+   "quests Dawnguard.esm:004C3D, Dawnguard.esm:0098CB, moretodo.esp:000BEE, Belethor's Sister.esp:00085E"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:00174D",
+  "name": "Honai",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "In the Ash'abah Hideout, with the Ash'abah.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Ash'abah Hideout",
+    "doing": "with the Ash'abah (before The Ash'abah)"
+   }
+  ],
+  "changes": [
+   "During The Ash'abah, and again during Helping the Enemy (until you report back), he stays wherever he is.",
+   "After The Ash'abah is done: sleeps midnight to 8 am in the Ash'abah Hideout and spends the rest of the day there."
+  ],
+  "role": "quest giver; one of the Ash'abah",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Ash'abah",
+    "how": "gives it"
+   },
+   {
+    "quest": "Helping the Enemy",
+    "how": "gives it; you report back to him at the end"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The records don't place the Ash'abah Hideout on the map; the quest text puts the ruins he sends you to in the Alik'r Desert."
+   },
+   {
+    "field": "changes",
+    "why": "The quest-time packages are 'stay near yourself', so where he is then depends on where scripts or the quest put him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:00174D",
+   "package ASHGAshabahFinalQuestPackage01 BetalillesHammerfellQuestBundle.esp:0014C6",
+   "package ASHGAshabahSandboxPackage02 BetalillesHammerfellQuestBundle.esp:000D55",
+   "package ASHGAshabahSandboxPackage03 BetalillesHammerfellQuestBundle.esp:000D56",
+   "package ASHGAshabahMSleepPackage01 BetalillesHammerfellQuestBundle.esp:00174E",
+   "package ASHGAshabahMSandboxPackage01 BetalillesHammerfellQuestBundle.esp:001755",
+   "quests BetalillesHammerfellQuestBundle.esp:0017A0, BetalillesHammerfellQuestBundle.esp:0017A1"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:00175E",
+  "name": "Andyn Pamarc",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Out in the Alik'r Desert, where Honai sends you during Helping the Enemy.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "his spot in the Alik'r Desert",
+    "doing": "staying near where he's placed"
+   }
+  ],
+  "changes": [
+   "Turns on you during Helping the Enemy and is defeated there."
+  ],
+  "role": "enemy: a necromancer",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Helping the Enemy",
+    "how": "its target: you talk to him, then defeat him"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed spot is in an unnamed patch of the Alik'r Desert; no nearer place is recorded."
+   },
+   {
+    "field": "fightsWith",
+    "why": "He is in the necromancer faction, which suggests magic, but the class and outfit aren't decoded in the extracts."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:00175E",
+   "package ASHGAndynSandboxPackage BetalillesHammerfellQuestBundle.esp:000DAC",
+   "faction NecromancerFaction",
+   "placed ref BetalillesHammerfellQuestBundle.esp:0017CB in Gray Fox Cowl.esm:00FA57",
+   "quest BetalillesHammerfellQuestBundle.esp:0017A1 alias Andyn01"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001743",
+  "name": "Dorian Masterhart",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Around Ben Erai in the Alik'r Desert; his home is Dorian's House there.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "16 hours",
+    "where": "outdoors in Ben Erai",
+    "doing": "going about town"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "Dorian's House, Ben Erai",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "During Helping the Enemy (until Andyn Pamarc is beaten) he waits at the Desert Altar.",
+   "Once you've found the library in The Library Lost to the Ages and are taking him there, his package only keeps him near wherever he currently is.",
+   "After The Library Lost to the Ages: 8 am to 4 pm in the Archives of the Forgotten City; 4 pm to 10 pm around Ben Erai; sleeps 10 pm to 8 am in Dorian's House."
+  ],
+  "role": "quest giver; a scholar working for the College of Winterhold",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Library Lost to the Ages",
+    "how": "gives it; you lead him to the library"
+   },
+   {
+    "quest": "Helping the Enemy",
+    "how": "a step in it: you check on him after Andyn Pamarc is defeated"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001743",
+   "package ASHGWizardSandboxFinalQuestPackage BetalillesHammerfellQuestBundle.esp:0014C5",
+   "package ASHGWizardSandboxPackage02 BetalillesHammerfellQuestBundle.esp:0017AA",
+   "package ASHGWizardSandboxPackage04 BetalillesHammerfellQuestBundle.esp:0017AC",
+   "package ASHGWizardSandboxPackage03 BetalillesHammerfellQuestBundle.esp:0017AB",
+   "package ASHGWizardSleepPackage02 BetalillesHammerfellQuestBundle.esp:000D64",
+   "package ASHGWizardSleepPackage01 BetalillesHammerfellQuestBundle.esp:001744",
+   "package ASHGWizardSandboxPackage01 BetalillesHammerfellQuestBundle.esp:001745",
+   "quests BetalillesHammerfellQuestBundle.esp:00179F, BetalillesHammerfellQuestBundle.esp:0017A1"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001640",
+  "name": "Thaik",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "Around the village of Salas Kazas in the Alik'r Desert.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "14 hours",
+    "where": "around Salas Kazas",
+    "doing": "going about the village"
+   },
+   {
+    "from": "9 pm",
+    "for": "10 hours",
+    "where": "Thaik's House, Salas Kazas",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Nothing in the records moves him."
+  ],
+  "role": "quest giver; villager of Salas Kazas",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Is There a Necromancer in Town?",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001640",
+   "package ASHGThaikSleepPackage01 BetalillesHammerfellQuestBundle.esp:001641",
+   "package ASHGThaikSandboxPackage01 BetalillesHammerfellQuestBundle.esp:00164D",
+   "quest BetalillesHammerfellQuestBundle.esp:001545"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001607",
+  "name": "Sharza",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "Around the village of Salas Kazas in the Alik'r Desert.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "14 hours",
+    "where": "around Salas Kazas",
+    "doing": "going about the village"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Sharza's House, Salas Kazas",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Nothing in the records moves her."
+  ],
+  "role": "quest giver; villager of Salas Kazas",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Weltan the Poet",
+    "how": "gives it; you bring her the two books"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001607",
+   "package ASHGSharzaSleepPackage01 BetalillesHammerfellQuestBundle.esp:00160A",
+   "package ASHGSharzaSandboxPackage01 BetalillesHammerfellQuestBundle.esp:001609",
+   "quest BetalillesHammerfellQuestBundle.esp:001781 (giver by dialogue BetalillesHammerfellQuestBundle.esp:001785)"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001747",
+  "name": "Lloros Reynel",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "In the Retching Netch, Raven Rock, on Solstheim.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Retching Netch, Raven Rock",
+    "doing": "waiting to leave for Hammerfell"
+   }
+  ],
+  "changes": [
+   "When you agree to From Solstheim to Hammerfell he follows you.",
+   "After it: sleeps 11 pm to 8 am in Reynel's House, Ben Erai (Alik'r Desert), and spends 8 am to 11 pm around Ben Erai."
+  ],
+  "role": "quest giver; a Dunmer merchant setting up shop in Hammerfell",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "From Solstheim to Hammerfell",
+    "how": "gives it; you escort him to Hammerfell"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed reference is in Reynel's House, Ben Erai; the Retching Netch comes from his first package, which holds until the quest starts."
+   },
+   {
+    "field": "sells",
+    "why": "He isn't in a merchant faction; the quest's sellers in Reynel's House are Naris and Eris Reynel."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001747",
+   "package ASHGReynelSleepPackage01 BetalillesHammerfellQuestBundle.esp:001748",
+   "package ASHGReynelSandboxPackage01 BetalillesHammerfellQuestBundle.esp:0014F3",
+   "package ASHGReynelFollowPackage01 BetalillesHammerfellQuestBundle.esp:0017AF",
+   "package ASHGReynelSandboxPackage02 BetalillesHammerfellQuestBundle.esp:0017B0",
+   "quest BetalillesHammerfellQuestBundle.esp:00179E"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001167",
+  "name": "Jukka",
+  "race": "Argonian",
+  "sex": "female",
+  "firstMeet": "In the Cyrodilic Collections museum in the Alik'r Desert.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "16 hours",
+    "where": "the Cyrodilic Collections",
+    "doing": "looking after the museum"
+   },
+   {
+    "from": "11 pm",
+    "for": "8 hours",
+    "where": "the Cyrodilic Collections",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [
+   "Nothing in the records moves her."
+  ],
+  "role": "quest giver for the Cyrodilic Collections",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Black Marsh Maps",
+    "how": "gives it"
+   },
+   {
+    "quest": "Cyrodilic Collections are Recruiting",
+    "how": "gives it"
+   },
+   {
+    "quest": "Ancient Pottery",
+    "how": "gives it"
+   },
+   {
+    "quest": "A Special Smell",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001167",
+   "package CYCOJukkaSleep BetalillesHammerfellQuestBundle.esp:00116A",
+   "package CYCOJukkaSandbox BetalillesHammerfellQuestBundle.esp:001169",
+   "quests BetalillesHammerfellQuestBundle.esp:00117E, 00117F, 001180, 001181"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000EC5",
+  "name": "Unknown Initiate",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "In the Dawnstar Sanctuary, the Pale.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Dawnstar Sanctuary",
+    "doing": "staying in the Sanctuary"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver; a Dark Brotherhood initiate",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Dark Brotherhood in Hammerfell",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Her placed reference is outdoors in Skyrim with no named place; her only package keeps her near a spot inside the Dawnstar Sanctuary, so that is where she should be, but the records don't say when she appears."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:000EC5",
+   "package DDBUiSandbox BetalillesHammerfellQuestBundle.esp:000EEF (anchor Skyrim.esm:0E992F)",
+   "placed ref BetalillesHammerfellQuestBundle.esp:024FFF in Skyrim.esm:008E38",
+   "quest BetalillesHammerfellQuestBundle.esp:000ECA"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000805",
+  "name": "Tenerio",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "In the Alik'r Desert Sanctuary, the Dark Brotherhood's hideout in Hammerfell.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Alik'r Desert Sanctuary",
+    "doing": "in the Sanctuary"
+   }
+  ],
+  "changes": [
+   "If you take Leollus's side in Ending the Dark Brotherhood in Hammerfell again, you fight the Brotherhood's leader in the Sanctuary."
+  ],
+  "role": "quest giver; runs the Dark Brotherhood in Hammerfell and hands out its contracts",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Dark Brotherhood in Hammerfell",
+    "how": "a step in it: you talk to him when you find the Sanctuary"
+   },
+   {
+    "quest": "Merchant Problem",
+    "how": "gives it"
+   },
+   {
+    "quest": "Argonian Hero",
+    "how": "gives it"
+   },
+   {
+    "quest": "Wandering Monk",
+    "how": "gives it"
+   },
+   {
+    "quest": "Alik'r No More",
+    "how": "gives it"
+   },
+   {
+    "quest": "No Guard Is Safe",
+    "how": "gives it"
+   },
+   {
+    "quest": "Disappearing in the Dark",
+    "how": "gives it"
+   },
+   {
+    "quest": "The Crimson Eviscerator",
+    "how": "you report back to him at the end"
+   },
+   {
+    "quest": "Crimson Scar Believers",
+    "how": "gives it"
+   },
+   {
+    "quest": "Ending the Dark Brotherhood in Hammerfell again",
+    "how": "changed by it: the Brotherhood in Hammerfell is the target"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The quest's 'leader' is filled by a second Tenerio record placed in the same Sanctuary; whether this one is swapped out for it isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:000805",
+   "package DDBTererioSandbox BetalillesHammerfellQuestBundle.esp:000EAC",
+   "quests BetalillesHammerfellQuestBundle.esp:000ECA, 000ECD, 000ECE, 000ECF, 000ED0, 000ED1, 000FCA, 000FCE, 000FCF, 001076 (aliases Tenerio00 and Tenerio01 = BetalillesHammerfellQuestBundle.esp:001090)"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001072",
+  "name": "Leollus",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "At the Penitus Oculatus Outpost in Ben Erai, Alik'r Desert.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "14 hours",
+    "where": "the Penitus Oculatus Outpost, Ben Erai",
+    "doing": "at his post"
+   },
+   {
+    "from": "11 pm",
+    "for": "10 hours",
+    "where": "the Penitus Oculatus Outpost, Ben Erai",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver; Penitus Oculatus agent",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Ending the Dark Brotherhood in Hammerfell again",
+    "how": "gives it; you report back to him"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001072",
+   "package DDBLeollusSleep BetalillesHammerfellQuestBundle.esp:001073",
+   "package DDBLeollusSandbox BetalillesHammerfellQuestBundle.esp:001074",
+   "faction PenitusOculatusFaction",
+   "quest BetalillesHammerfellQuestBundle.esp:001076"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000EC4",
+  "name": "Laurentina",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Inside the Fortress of Ben Erai, Alik'r Desert.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Fortress of Ben Erai",
+    "doing": "standing where she's placed"
+   }
+  ],
+  "changes": [
+   "Killed in No Guard Is Safe."
+  ],
+  "role": "a guard; a Dark Brotherhood contract target",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "No Guard Is Safe",
+    "how": "its target: kill her"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "The record is flagged essential, yet the contract is to kill her; the quest presumably lifts it, but the extracts don't show that."
+   },
+   {
+    "field": "day",
+    "why": "She has no packages of her own in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:000EC4",
+   "no packages",
+   "quest BetalillesHammerfellQuestBundle.esp:000ED1 alias Target05000"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:000FD1",
+  "name": "Lucya",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Her soul, in the Soul Cairn Tower, Soul Cairn, after Disappearing in the Dark.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Soul Cairn Tower, Soul Cairn",
+    "doing": "waiting for you"
+   }
+  ],
+  "changes": [],
+  "role": "quest giver; the soul of a dead Dark Brotherhood initiate",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Crimson Eviscerator",
+    "how": "gives it: you find her soul and she tells you where the weapon is"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her only package is shared with the Unknown Initiate and points at the Dawnstar Sanctuary; she is placed in the Soul Cairn, and the quest says you find her there."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:000FD1",
+   "package DDBUiSandbox BetalillesHammerfellQuestBundle.esp:000EEF",
+   "placed ref BetalillesHammerfellQuestBundle.esp:000FDB in BetalillesHammerfellQuestBundle.esp:000F96",
+   "quest BetalillesHammerfellQuestBundle.esp:000FCE alias LucyaQ07"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001855",
+  "name": "Azita",
+  "race": "Redguard",
+  "sex": "female",
+  "firstMeet": "At Azzin's Hideout in the Alik'r Desert.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "Azzin's Hideout",
+    "doing": "waiting by the hideout (before Protecting What Was Lost)"
+   }
+  ],
+  "changes": [
+   "Once you start Protecting What Was Lost: 10 am to 4 pm around Vulstad; 4 pm to 8 pm in the Common House; sleeps 8 pm to 10 am in the Common House."
+  ],
+  "role": "quest giver; a girl, granddaughter of Azzin",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Protecting What Was Lost",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The records put the Common House in the Alik'r Desert but don't name its town; her daytime spot is in Vulstad."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001855",
+   "package HABLAzitaSleep BetalillesHammerfellQuestBundle.esp:000B69",
+   "package HABLAzitaSandbox BetalillesHammerfellQuestBundle.esp:000B68",
+   "package HABLAzitaSandbox02 BetalillesHammerfellQuestBundle.esp:000B8A",
+   "package HABLAzitaQuestStart BetalillesHammerfellQuestBundle.esp:000B8C",
+   "quest BetalillesHammerfellQuestBundle.esp:000B6B (giver by dialogue BetalillesHammerfellQuestBundle.esp:000B74)"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001856",
+  "name": "Loremaster Za'kir",
+  "race": "Khajiit",
+  "sex": "male",
+  "firstMeet": "In the Wind Scour Temple, Alik'r Desert, once the Blades have reclaimed it.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Wind Scour Temple",
+    "doing": "with the Blades (after A Lost Temple in Hammerfell)"
+   }
+  ],
+  "changes": [
+   "After Sands of the Past he moves to the Common House and stays there all day."
+  ],
+  "role": "quest giver; loremaster of the Blades in Hammerfell",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "In need of Scouts",
+    "how": "gives it"
+   },
+   {
+    "quest": "Sands of the Past",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "Before A Lost Temple in Hammerfell is done none of his packages apply; he is placed in the Common House, and whether he is there or not yet enabled isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001856",
+   "package HABLLoremasterSandbox01 BetalillesHammerfellQuestBundle.esp:000C54",
+   "package HABLLoremasterSandbox02 BetalillesHammerfellQuestBundle.esp:000C55",
+   "quests BetalillesHammerfellQuestBundle.esp:000C5C, 000C5D"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:001852",
+  "name": "Duraelm",
+  "race": "Redguard",
+  "sex": "male",
+  "firstMeet": "Out in the Alik'r Desert, an old Redguard waiting where he's placed.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "his spot in the Alik'r Desert",
+    "doing": "waiting (before you head to the temple)"
+   }
+  ],
+  "changes": [
+   "While you head into the Wind Scour Temple together (A Lost Temple in Hammerfell), his package only keeps him near wherever he currently is.",
+   "Once he decides to rebuild the Blades in the Wind Scour Temple (A Lost Temple in Hammerfell): lives in the temple, sleeping 11 pm to 7 am."
+  ],
+  "role": "quest giver; rebuilding the Blades in Hammerfell",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Lost Temple in Hammerfell",
+    "how": "gives it"
+   },
+   {
+    "quest": "Dragonguard Archives",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed spot is an unnamed patch of the Alik'r Desert (the same patch as Azita's), and none of his packages apply before stage 50."
+   },
+   {
+    "field": "name",
+    "why": "The quests' text spells him Duarelm."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:001852",
+   "package HABLDuarelmQuestPackage BetalillesHammerfellQuestBundle.esp:000A95",
+   "package HABLDuarelmSleep BetalillesHammerfellQuestBundle.esp:000A94",
+   "package HABLDuarelmSandboc BetalillesHammerfellQuestBundle.esp:000A96",
+   "placed ref BetalillesHammerfellQuestBundle.esp:000A61 in Gray Fox Cowl.esm:2001E3",
+   "quests BetalillesHammerfellQuestBundle.esp:000A8E, 000A8F"
+  ]
+ },
+ {
+  "id": "BetalillesHammerfellQuestBundle.esp:0011F5",
+  "name": "Oziriana",
+  "race": "Lamia",
+  "sex": "female",
+  "firstMeet": "By the Ancient Alik'r Temple in the Alik'r Desert.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "around the Ancient Alik'r Temple",
+    "doing": "staying near her spot"
+   }
+  ],
+  "changes": [
+   "During Spectral Lamias in the Desert she goes with you until the spectral fire is out."
+  ],
+  "role": "merchant; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Spectral Lamias in the Desert",
+    "how": "gives it"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "sex",
+    "why": "The record's flag says male; the quest text calls Oziriana 'her'."
+   },
+   {
+    "field": "joins",
+    "why": "She has follow and wait packages keyed to two of the mod's factions, but the dialogue that puts her in them isn't in the extracts, so how she joins can't be said."
+   },
+   {
+    "field": "sells",
+    "why": "She is in a merchant faction of her own, but its vendor list isn't resolved to items in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BetalillesHammerfellQuestBundle.esp:0011F5",
+   "package LAMIOzirianaWaitPackage BetalillesHammerfellQuestBundle.esp:001286",
+   "package LAMIOzirianaFollowerPackage BetalillesHammerfellQuestBundle.esp:001285",
+   "package LAMIOzirianaFollowQuestPackage BetalillesHammerfellQuestBundle.esp:001282",
+   "package LAMIOzirianaSandboxPackage BetalillesHammerfellQuestBundle.esp:001281",
+   "factions JobMerchantFaction, LAMIOzirianaMerchantFaction",
+   "condition factions BetalillesHammerfellQuestBundle.esp:001283, BetalillesHammerfellQuestBundle.esp:001284",
+   "quest BetalillesHammerfellQuestBundle.esp:001252"
+  ]
+ },
+ {
+  "id": "BoethiahCalling_AlternativeQuest.esp:00081B",
+  "name": "Rudin Filaro",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "In the Braidwood Inn, Kynesgrove, Eastmarch.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "the Braidwood Inn, Kynesgrove",
+    "doing": "standing in the inn"
+   }
+  ],
+  "changes": [
+   "When you agree to escort him in The Man in Black he follows you; he betrays you at the Shrine of Boethiah and later turns up at Knifepoint Ridge, where you kill him."
+  ],
+  "role": "quest giver; lures you to the Shrine of Boethiah",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Man in Black",
+    "how": "gives it, and is its target: you kill him at Knifepoint Ridge"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "canDie",
+    "why": "The record is flagged essential, yet the quest ends with killing him; the quest presumably lifts it, but the extracts don't show that."
+   },
+   {
+    "field": "changes",
+    "why": "No package takes him to Knifepoint Ridge; that comes from the quest text, so a script must move him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BoethiahCalling_AlternativeQuest.esp:00081B",
+   "package madManInBlackStand BoethiahCalling_AlternativeQuest.esp:000889",
+   "package madManInBlackFollowPlayer BoethiahCalling_AlternativeQuest.esp:000877",
+   "quest BoethiahCalling_AlternativeQuest.esp:000800"
+  ]
+ },
+ {
+  "id": "BoethiahCalling_AlternativeQuest.esp:000821",
+  "name": "Nort",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Near the Shrine of Boethiah, wounded, after you come round there in The Man in Black.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "all day",
+    "where": "near the Shrine of Boethiah",
+    "doing": "lying wounded (during The Man in Black)"
+   }
+  ],
+  "changes": [],
+  "role": "a wounded man you meet in The Man in Black",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Man in Black",
+    "how": "a step in it: you can talk to him while searching for clues to where Rudin went"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "His placed reference is in the open world with no named place; the quest's alias for him is named for the shrine, and his only package (wounded) runs at stage 25."
+   },
+   {
+    "field": "fightsWith",
+    "why": "The class record isn't decoded in the extracts and the outfit isn't resolved to items, so how they fight can't be read."
+   }
+  ],
+  "evidence": [
+   "BoethiahCalling_AlternativeQuest.esp:000821",
+   "package madNortWoundedPackage BoethiahCalling_AlternativeQuest.esp:000822",
+   "quest BoethiahCalling_AlternativeQuest.esp:000800 alias 'Nort Shrine' (dialogue below stage 26)"
+  ]
+ }
+]
