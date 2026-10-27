@@ -5065,6 +5065,18 @@ The same method as WO-153, for people, against `docs/data/people.md`.
 ## WO-154  Quest pages, line pages and the connector, from the quest reads (Mac, 23 Oct 2026)
 Status: held (Dave, 23 Oct, 19:35: everything paused; see docs/pause-2026-10-23.md; was: for Bob)
 
+### Part 1c. Every batch checked: the rebuild breaks six tests (Bob, 26 Oct)
+All 85 batches are checked now (see `docs/pause-2026-10-23.md`). A cloud session ran `python3 scripts/gamedata/build.py` on staging at `3ba16cd`: typecheck and lint pass, `npm test` fails 6, so the regenerated `quests.json` was **not** committed. Fix the code, not the tests, unless a test asserts something the checked reads now settle differently (say which, and why):
+- [ ] `player-questions.test.ts` question 4, Caught Red Handed: the answer now says "condition the planner can't put in words yet".
+- [ ] `player-questions.test.ts` question 16: the answer is missing `"checked":"files"`.
+- [ ] `player-questions.test.ts` question 18, Thane of Whiterun: `TypeError: Cannot read properties of undefined (reading 'ways')`.
+- [ ] `wo108.test.ts`: Caught Red Handed should have endings and now has `endings: []`.
+- [ ] `wo142.test.ts`: A Lovely Letter crashes reading `needs` on something undefined.
+- [ ] `wo146.test.ts`: a quest whose start isn't checked crashes reading `ways` on something undefined.
+- [ ] Rebuild, all tests pass, commit `quests.json` with the code, push staging.
+
+New data the pages don't use yet (Part 2, after 1c): `quest_reads/ways/G*.json` (WAYS.md: each choice tied to its journal steps, for "N ways to finish it"; 228 quests, steps copied verbatim, 137 with an unsure; objective text keeps the game's `<Alias=…>` placeholders, which the page must fill or drop) and `quest_reads/lines/checked/L*.json` (LINES.md: 50 line reads, checked, 59 fixes; every line has an unsure, mostly level gates the records don't hold).
+
 **Why.** Dave, 23 Oct: the quest pages are a shit show. Read live by Bob: Lights Out! lists every stage of every branch as one list ("Report Jaree-Ra to the guard captain" twice), its endings say "When the quest reaches stage 250", its line is "Lights Out!, 1 quest"; Speaking With Silence has no who and a first step "Meet Mercer Frey outside Snow Veil Sanctum at The Ragged Flagon - Cistern"; More to do in Whiterun shows a "The story" heading over jobs, two with no start at all. The spec of what a page shows is now `docs/data/quest-pages.md`; the facts come from `gamedata/5.0.4.8/quest_reads/checked/` (WO-153), which is landing batch by batch from tonight.
 
 - [x] `build.py` reads `quest_reads/checked/*.json` and uses each quest's read for every field it has (`canDo`, `needs`, `starts`, `firstStep`, `takesYou`, `choices`, `steps`, `rewards`, `opens`, `closes`, `people`, `unsure`). The old rule-made fields stay only as a fallback for a quest with no read yet, marked `source: "rules"` so the page and the door can say so. Nothing from a read is reworded.
