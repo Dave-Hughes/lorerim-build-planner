@@ -5022,6 +5022,16 @@ Read live after ebcd68d: Laid to Rest is open with its XP (Side Quest, 100) and 
 
 ---
 
+## WO-165  The quest and person pages get the same at-a-glance and colours (Mac, 27 Oct 2026)
+Status: queued (Mac; after WO-163)
+
+**Why.** `docs/page-templates.md` rows 14 and 16: the quest and person pages read well but are one grey. WO-160 (`LinePage`) and WO-162 (`PlaceTown`) set the pattern: an At a glance band under the title, colour that means one thing, a contents rail on long pages. Same pattern here, so every World page feels like one site.
+- [ ] **A quest**: At a glance under the title: how it starts (green: who and where), level and danger (red), where it takes you (blue), rewards and XP (gold), and the number of ways to finish it (purple). People and places in the steps as the coloured chips; XP in the pixel face. The Rewards box stays.
+- [ ] **A person**: At a glance: where to find them now (blue, from the day schedule at the current hour of day if known, else first meeting), what they are (role), sells or trains (gold, green), follows you and how (orange), quests (purple, the count). "Where to find them" as a day strip: the 24 hours as a bar coloured by place, the rows under it.
+- [ ] **Information Confidence's Not sure yet** lists only fields the checker marked unsure, each with its reason, not every field the template has (Aela's lists seven on a page checked by a second reader).
+- [ ] A contents rail on any of these pages taller than two screens.
+- [ ] Checks, screenshots of The Golden Claw, Lights Out!, Aela the Huntress and Lydia at 1440 and 390, then `for Bob`.
+
 ## WO-163  Quest categories as tables (Mac, 27 Oct 2026)
 Status: queued (Mac; after WO-162)
 

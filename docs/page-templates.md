@@ -9,7 +9,7 @@ Verdicts: **good** (polish only), **needs work** (works, but plain or inconsiste
 | 1 | Home | `/` | good | New in the world: every row has the same book icon and the same words ("The whole line, read from the game files"). Signed-in version not checked (no login here). | WO-161 |
 | 2 | Characters | `/characters` | needs work | The grid cards are the old style; the home page's new cards (race icon, badges, level, hover) should be the one card everywhere. | WO-161 |
 | 3 | A character's build | `/b/<id>` | good | The core page and it holds up. The hero picture is very dark under its fade. The tour pops up on the first visit to any build. | later |
-| 4 | A character's playthrough | `/p/<id>` | needs work | Still the old boxed title, no cover picture: it doesn't look like the same character as `/b/<id>`. Breaks the "a character has their cover full width" title rule. | WO-164 |
+| 4 | A character's playthrough | `/p/<id>` | needs work | Still the old boxed title, no cover picture: it doesn't look like the same character as `/b/<id>`. Breaks the "a character has their cover full width" title rule. | WO-164 (Bob designs it next, with the character page's hero) |
 | 5 | A player's page | `/u/<handle>` | needs work | Says "Builds by Tapps", tabs "Builds" and "Liked": the site calls them characters now. Old cards. | WO-161 |
 | 6 | My characters | `/me` | needs work | Signed out it's titled "My builds". Signed in not checked. | WO-161 |
 | 7 | New playthrough | `/playthroughs/new` | needs work | Signed out: a title and a sign-in button, nothing saying what a playthrough is. | WO-161 |
