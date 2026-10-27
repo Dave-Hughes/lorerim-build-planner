@@ -1,0 +1,2479 @@
+{
+ "checks": [
+  {
+   "id": "Dragonborn.esm:018280",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Served Cold st10: Captain Veleth tells you Adril wants you; top package DLC2RRAdrilInit holds him at a spot near Raven Rock (radius 0) while GetStageDone 02ADDA 200 == 0. That quest isn't in quests_raw; its other alias is Gjalund Salt-Sage, which fits an arrival scene, but nothing names it, so the unsure entry is right"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "read in order: Netch 20x4, WanderRavenRock 13x4 (radius 1024 round Raven Rock), Breakfast 6x2 Morvayn Manor, Sleep 0x6 Morvayn Manor Chambers (only when Served Cold isn't running), Court all day in Morvayn Manor: gives 6-8, 8-13, 13-17, 17-20, 20-24, 0-6 exactly as written"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DLC2RRAdrilSleepPackage carries GetQuestRunning Served Cold == 0, so the court package fills midnight-6 while it runs; Init gate as above"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Served Cold st10 calls him Second Councilor of Raven Rock; DLC2RRAranoSpouseFaction is shared with Cindiri Arano; no Job factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null, no merchant faction"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false, no PotentialMarriageFaction"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:013176 and outfit Skyrim.esm:0E40DD appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Served Cold: Veleth is the giver (stage < 6) and obj5 is Speak to Adril Arano, who sets the task at st15/20 and has objectives 40, 60, 80, 90 (Follow Adril Arano); It's All In The Taste lists him among speakers below stage 30 with Morvayn and Cindiri, alias-free, so 'probably a sample recipient' is correctly left unsure. His other aliases (RRAdrilAlias etc.) are unnamed helper quests"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018290",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in The Retching Netch; innkeeper package there all day"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "AIORRGeldisSleep2x5 (2-7 am, The Retching Netch) is above DLC2RRGeldisInnkeeperPackage (all day, The Retching Netch), so 7 am-2 am at the counter, 2-7 am asleep there"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest or global condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobInnkeeperFaction, JobMerchantFaction, JobRentRoomFaction; giver of It's All In The Taste"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 7-20 with a chest, but vendRaw/vencRaw are raw ids nothing resolves; giving the kind and leaving stock unsure is right"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01325B and outfit Dragonborn.esm:03CEEB appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "It's All In The Taste obj10 counts against DLC2RRF04DrinkTotal, which the globals give as 10: say 10 samples. Served Cold st20/30 and Feeding the Addiction obj10 agree"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018286",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DLC2RRTilisuMarketPackage11x5 (radius 128 round a Raven Rock marker) by day; placed in Severin Manor"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Weekends 19x3 (dayOfWeek 8 = weekends) at the Netch tops the list; Market 11x5; Sleep 0x6 Severin Manor; default near her placed spot in Severin Manor: 11-16 out, 16-24 home, 0-6 asleep, 6-11 home"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "weekend Netch package as above; Served Cold st50/70 log text for the exposure; no package or stage text says what happens to her after, so unsure is right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "no Job factions; Served Cold alias"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE758 and outfit Skyrim.esm:09D5E0 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Served Cold alias DLC2RR02TilisuAlias; st50 she's the tomb visitor, st70 the letters name her House Hlaalu"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018278",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Caerellius House; The Final Descent st15 'I've stumbled across Crescius Caerellius inside of Raven Rock Mine'; mine package needs global 018B10 == 1"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Breakfast 6x1 sits above Sleep 23x8, so sleep is 11 pm-6 am; Dinner 20x3; Mine package (global == 1) or default near his placed spot (global == 0) fills 7 am-8 pm"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DLC2RRCresciusMinePackage / DefaultPackage hang on global 018B10, which no extract names; unsure is right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "giver of The Final Descent; DLC2RRCresciusSpouseFaction shared with Aphia Velothi"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01326D and outfit ImperialFineClothes.esp:000813 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Final Descent giver (stage < 11) and objectives 5/40; An Axe to Find lists him as a speaker below stage 20 (obj20 = return the pickaxe to Glover)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01827C",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Market 10x4 and Netch 16x4 packages; placed in Caerellius House"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Dinner 20x2, Netch 16x4, Market 10x4, Breakfast 6x1, Sleep 0x6 (Caerellius House), default near placed spot: gives the eight slots as written"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest or global condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "trainer Restoration Journeyman, JobTrainerRestorationFaction; DLC2RRCresciusSpouseFaction"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer entry: Restoration, levelCap 75"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:0C2914 and outfit Dragonborn.esm:03CEEB appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "The Final Descent alias DLC2RR03AphiaAlias, speaker below stage 20 (st20 is Crescius setting the task)"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true, essential false"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01828E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DLC2RRGloverVendorPackage8x12 at a stall marker in Raven Rock"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "Netch 20x4, Vendor 8x12, Breakfast 6x2 at his house all agree; the midnight package DLC2RRGloverSleepBuildPackage0x6 points at a linked reference (type 6, radius 1500) and is named for building as well as sleeping, so 'most likely his bed at home' is a guess: say the records don't name the spot"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package carries a quest or global condition"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobBlacksmithFaction, JobMerchantFaction; giver of An Axe to Find and Paid in Full"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 7-20 with a chest, raw ids only; unsure is right"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01317E and outfit Blacksmith_Fashions.esp:00094D appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "An Axe to Find giver, objectives 10/20/30 (return or lie); Paid in Full giver, obj10 Recover the Bonemold Formula"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:0182A1",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DLC2RRMiloreVendorPackage8x12 at a stall marker; placed in Ienth Farm"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "weekend package first (conditions raw), then NighttimeAlchemy 20x4 Ienth Farm, Vendor 8x12, Breakfast 6x2 Ienth Farm, Sleep 0x6 Ienth Farm: matches"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "AIORRMiloreWeekends: dayOfWeek 8, 20x4, near her placed spot, conditions all fn612 raw numbers; unsure is right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobApothecaryFaction, JobMerchantFaction, JobTrainerAlchemyFaction; Fetch the Netch giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 7-20 with a chest, raw ids only"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer entry: Alchemy, Expert, levelCap 100"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:0E3A6E and outfit Dragonborn.esm:03CEE9 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Fetch the Netch obj10 counts against DLC2RRF02JellyTotal, which the globals give as 5: say five netch jelly"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01828A",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Temple; only packages are Sleep 0x7 in the Temple and a default near his placed spot"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Sleep 0x7 then default all day: 7 am-midnight about the Temple, midnight-7 asleep there"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no conditions on either package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC2RRTempleFaction; Clean Sweep giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01CE14 and outfit RMB SPID - Armors of the Velothi.esp:000818 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Clean Sweep giver; obj10 Clear the Temple's tomb of ash spawn"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01827E",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Morvayn Manor; his meal and sleep packages are all in Morvayn Manor"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Dinner 19x2, Breakfast 6x2, Sleep 0x6 (Morvayn Manor Chambers), Default with no location: the gaps 8-19 and 21-24 fall to a locationless default, so Morvayn Manor with the unsure note is right"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package conditions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Served Cold text calls him Councilor Morvayn; no Job factions"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:013176 and outfit Skyrim.esm:0F8716 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Served Cold alias DLC2RR02MorvaynAlias, obj100 Speak to Councilor Morvayn; It's All In The Taste speaker below stage 30, left unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018282",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Netch 20x4 and NetchLunch 14x2 at The Retching Netch; placed in Morvayn Manor"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "slots agree (Netch 20x4, Lunch 14x2, Wander 8x5 at her placed spot with radius 0, Breakfast 6x2, default near placed spot); but DLC2RRCindiriSleepBuildPackage0x6 points at a linked reference (radius 1500) and is named for building, so 'most likely her bed' is a guess: say the spot isn't named"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package conditions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "First Edition giver; DLC2RRAranoSpouseFaction shared with Adril"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01326C and outfit Skyrim.esm:09D5E0 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "First Edition giver, obj10 the folio from the wreck of the Strident Squall; It's All In The Taste speaker below stage 30, left unsure"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018292",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DLC2RRFethisVendorPackage8x12 at a stall marker in Raven Rock"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "slots agree (Netch 20x4, Vendor 8x12, Breakfast 6x2 Alor House); DLC2RRFethisSleepBuildPackage0x6 points at a linked reference (radius 1500) named for building, so 'most likely his bed at home' is a guess: say the spot isn't named"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no package conditions"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobStreetVendorFaction, JobMerchantFaction; Pain in the Necklace giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 7-20 with a chest, raw ids only"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01326C and outfit Dragonborn.esm:03CEE8 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Pain in the Necklace giver, obj10 Locate the East Empire Pendants"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018F15",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "Market 8x8 (global 018B10 == 0) at a Raven Rock marker; placed in the Abandoned Building"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "slots agree, but the default package is near her placed spot inside the Abandoned Building (her placed cell), so say in it, not near it; the midnight package is a linked reference the records don't name"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "Netch 18x4 needs Feeding the Addiction stage 200 (its completion); Work package in Raven Rock Mine needs global 018B10 == 1; DLC2RRDayBuildPackage gated on DLC2PillarBuilderFaction (she's in it at rank 0) and not disabled: all read correctly"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC2RRBeggarFaction; Feeding the Addiction giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01326D and outfit Dragonborn.esm:03CEE8 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Feeding the Addiction giver; obj10 Convince Geldis Sadri to admit Bralsa Drel to the inn"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Skyrim.esm:01364D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Falkreath's Hall of the Dead; Dead Man's Drink package 19x6"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "Drink 19x6 is above DefaultSleepEditorLoc24x8, so sleep is 1-8 am, correct; but that sleep package and AIOFalkRunilRandom are near his placed spot, which is inside the Hall of the Dead (giver ref cell Hall of the Dead), so say in it, not near it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "no quest-gated package"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "FalkreathHouseofArkayFaction, JobTrainerConjurationFaction; gives Dungeon Delving (Caves)"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer entry: Conjuration, Journeyman, levelCap 75"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:0E3A72 and outfit Priestly_Fashions.esp:000936 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Delivery: he fills the Target alias, not Questgiver (that alias is Thadgeir) and obj10 is 'Deliver ... to Runil', so he's its target, not its giver. Dungeon Delving (Caves): Questgiver alias, agree. Skaal Village Dialogue obj10 'Take Bera's Necklace to Runil in Falkreath', agree. Ill Met By Moonlight alias Funeralizer with the victim's parents, no objective, agree"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential false, protected false"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018FC8",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in the Greathall, Skaal Village; Lost Legacy st10 'a historian living in Skaal Village'"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "Patrol 8x12 (no location), DefaultSandboxEditorLocation20x4 and DLC2SVFanariSleepGreathall are near his placed spot, which is inside the Greathall, so 8 pm-midnight is in the Greathall, not near it; patrol unsure stays"
+    },
+    "changes": {
+     "verdict": "fix",
+     "note": "DLC2TempleWorkPackage: GetInFaction DLC2PillarBuilderFaction (he's in it at rank 0 from the start) and At the Summit of Apocrypha stage < 550, which is that quest's completion (Miraak killed). Say until you defeat Miraak, and that the records put him in the builders group from the start; 'the pillar-building spell' and 'late stage' aren't in the records. Lost Legacy st30 for the tomb"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "Lost Legacy named giver; st10 calls him a historian"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:017008 and outfit Breton Apparel - Imperial Renaissance.esp:000D7E appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Lost Legacy alias Tharstan; st10 he hires you, st30/40 he waits at and explores the tomb with you"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:018FB5",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DLC2SVBaldorWork8x12 at a Skaal Village marker (radius 500); placed in his house"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "Work 8x12 and sleep agree; DefaultSandboxEditorLocation20x4 and DefaultSleepPackageAnyTime are near his placed spot, inside Baldor Iron-Shaper's House, so say in it, not near it"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "A New Source of Stalhrim st10/20/200; DLC2SkaalPillarBuildPKG gated only on GetDisabled == 0, unsure is right"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobMerchantFaction, DLC2SkaalBlacksmith; st10 'the smith in Skaal Village'"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20 with a chest, raw ids only"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:017008 and outfit Dragonborn.esm:039B34 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A New Source of Stalhrim: no giver; obj10 Search for Baldor, st20 he asks for Ancarion's map, st200 forge"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "essential true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01A515",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "hall/camp packages switch on global 01A51E (unnamed, no start value); Retaking Thirsk st10 has the Nords camped on the eastern shore and The Chief of Thirsk Hall st10 has rieklings in the hall"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "Eat 13x3, Sleep 23x8 (linked reference, gated on 03BDA4 == 0), sandbox all day, each in a hall and a camp version on 01A51E: slots match"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "01A51E and 03BDA4 gates; Nord5 alias in The Chief of Thirsk Hall, obj35 Kill the Nords"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "PotentialMarriageFaction, DLC2ThirskNordFaction; Hilund Favor Quest giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false, no PotentialFollowerFaction"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable true and PotentialMarriageFaction; no conditions in the extracts, unsure is right"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE754 and outfit Skyrim.esm:057A24 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "fix",
+     "note": "Hilund Favor Quest obj10 'Bring <DLC2ThirskHilundSpearCount> Riekling Spears', and that global is 50: say 50 spears. Retaking Thirsk alias Hilund and Chief of Thirsk Hall Nord5 agree"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:017777",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "placed in Tel Mithryn; From the Ashes giver ref in Tel Mithryn"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "Sell 8x12 near his placed spot agrees; the 10 pm package is near his placed spot too, and DLC2TalvasSleep22x8 only runs when he's disabled, so he doesn't go to bed: say he stays up near where he stands, without the package name"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "DLC2TalvasStandingStone22x8: not disabled AND (From the Ashes stage < 5 OR >= 400); Candlelight package needs GetInCell Tel Mithryn and a 25% roll"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobSpellFaction, JobMerchantFaction, PotentialFollowerFaction, JobTrainerConjurationFaction; From the Ashes giver"
+    },
+    "sells": {
+     "verdict": "fix",
+     "note": "his vendor entry (list 48cb0600, no chest, 0-24, radius 0) is the same one 100 followers carry, so it's his follower trading, not his shop; 'trades at any hour' doesn't follow. JobSpellFaction and DLC2ServicesTelMithrynTalvas make him a spell seller; Wind and Sand st300 'I should be able to buy the spell from Talvas'"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer entry: Conjuration, Master, levelCap null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "PotentialFollowerFaction and follower true; no recruit dialogue in the extracts"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:0E3A6A and outfit Follower_Fashions.esp:000962 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "From the Ashes giver, reward Spell Tome (Expert): Conjure Ash Guardian; Reluctant Steward alias Talvas, speaker below 171 (st170 'Last time anyone in Tel Mithryn saw her...'); Experimental Subject alias Talvas; Wind and Sand st300"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:01777D",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "fix",
+     "note": "placed in the Tel Mithryn Kitchen cell, and his all-day package is near that spot: in the kitchen"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "DLC2UlvesStandingStoneAllDay (not disabled, near placed spot, radius 500) wins every hour; DLC2UlvesSleep22x8 needs him disabled. Placed cell is Tel Mithryn Kitchen, so in the kitchen, and he never goes to bed"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only GetDisabled gates"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC2TelMithrynFaction only"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:01326C and outfit Skyrim.esm:0DAB78 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "From the Ashes alias Ulves; Reluctant Steward speaker below stage 171"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:017778",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "DLC2ElyneaSell8x12 is in-cell Tel Mithryn Apothecary; placed there"
+    },
+    "day": {
+     "verdict": "fix",
+     "note": "Sell 8x12 agrees; the 10 pm package is near her placed spot in the Apothecary and DLC2ElyneaSleep22x8 needs her disabled, so she doesn't go to bed: say so without the package name"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "only GetDisabled gates"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "JobApothecaryFaction, JobMerchantFaction; Healing a House and Hunting and Gathering giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor 8-20 with a chest, raw ids only"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE755 and outfit RMB SPID - Armors of the Velothi.esp:000804 appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "Healing a House st100 three taproots soaked in the headwaters of the Harstrad river; Hunting and Gathering obj101-106; From the Ashes alias; Reluctant Steward speaker below 171"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  },
+  {
+   "id": "Dragonborn.esm:019596",
+   "verdicts": {
+    "firstMeet": {
+     "verdict": "agree",
+     "note": "A New Debt giver is Slitter (stage < 11), st100 'Mogrul sent a messenger', st200 'Helping Drovas has come back to bite me'; no package walks him to you, unsure is right"
+    },
+    "day": {
+     "verdict": "agree",
+     "note": "UDBPSlitterSleep 1x6 at The Retching Netch, then DLC2SlitterFollowMogrul while Mogrul's dead count is 0: 7 am-1 am with Mogrul, 1-7 am asleep at the Netch"
+    },
+    "changes": {
+     "verdict": "agree",
+     "note": "UDBPSlitterSandboxIfMorgulDies: GetDeadCount Mogrul > 0, near his placed spot in the Netch"
+    },
+    "role": {
+     "verdict": "agree",
+     "note": "DLC2MogrulFaction; A New Debt giver"
+    },
+    "sells": {
+     "verdict": "agree",
+     "note": "vendor null"
+    },
+    "trains": {
+     "verdict": "agree",
+     "note": "trainer null"
+    },
+    "joins": {
+     "verdict": "agree",
+     "note": "follower false"
+    },
+    "marries": {
+     "verdict": "agree",
+     "note": "marriageable false"
+    },
+    "fightsWith": {
+     "verdict": "agree",
+     "note": "class Skyrim.esm:017008 and outfit Dragonborn.esm:0271FD appear in no other _raw extract (no skills, no weapon), so unsure is right"
+    },
+    "quests": {
+     "verdict": "agree",
+     "note": "A New Debt: giver entry names him; obj100 Talk to Mogrul"
+    },
+    "canDie": {
+     "verdict": "agree",
+     "note": "protected true"
+    }
+   }
+  }
+ ],
+ "people": [
+  {
+   "id": "Dragonborn.esm:018280",
+   "name": "Adril Arano",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Raven Rock: Captain Veleth sends you to him at the start of Served Cold. Until an early Raven Rock quest is finished he keeps to one spot in town; after that, Morvayn Manor by day.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "5 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "at court"
+    },
+    {
+     "from": "1 pm",
+     "for": "4 hours",
+     "where": "around Raven Rock",
+     "doing": "walking about town"
+    },
+    {
+     "from": "5 pm",
+     "for": "3 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "at court"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "drinking"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Morvayn Manor Chambers, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Until a Raven Rock quest reaches its last stage, his top package keeps him at one spot in Raven Rock all day; the extracts don't name that quest or the spot.",
+    "While Served Cold is running he doesn't go to bed: he stays at court in Morvayn Manor through the night."
+   ],
+   "role": "Second Councilor of Raven Rock; quest giver. Married to Cindiri Arano.",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Served Cold",
+     "how": "gives it (Captain Veleth sends you to him); you report back and follow him to Councilor Morvayn at the end"
+    },
+    {
+     "quest": "It's All In The Taste",
+     "how": "has lines while it runs; probably one of the people you can give a sample to"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "His first package holds him at a fixed spot until stage 200 of a quest that isn't in the quest extract, so I can't say which quest or where the spot is."
+    },
+    {
+     "field": "quests",
+     "why": "It's All In The Taste: he only has dialogue conditioned on it; the sample-recipient reading isn't confirmed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018280",
+    "DLC2RRAdrilInit (Dragonborn.esm:03215D, GetStageDone Dragonborn.esm:02ADDA 200 == 0)",
+    "DLC2RRAdrilNetch20x4",
+    "DLC2RRAdrilWanderRavenRock13x4",
+    "DLC2RRAdrilEatBreakfast6x2",
+    "DLC2RRAdrilSleepPackage (GetQuestRunning DLC2RR02 == 0)",
+    "DLC2RRAdrilCourtPackage0x0",
+    "DLC2RR02 Dragonborn.esm:018B14 alias DLC2RR02AdrilAlias",
+    "DLC2RRFavor04 Dragonborn.esm:024E04 dialogue",
+    "DLC2RRAranoSpouseFaction"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018290",
+   "name": "Geldis Sadri",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Behind the counter at The Retching Netch, Raven Rock.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "19 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "running the inn"
+    },
+    {
+     "from": "2 am",
+     "for": "5 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "innkeeper of The Retching Netch; rents a room; merchant; quest giver",
+   "sells": "inn goods (he's the innkeeper and a merchant); trades 7 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "It's All In The Taste",
+     "how": "gives it: hand out 10 samples of Sadri's Sujamma, then tell him"
+    },
+    {
+     "quest": "Served Cold",
+     "how": "a step in it: Adril Arano sends you to him for gossip, and he points you to the Ulen Ancestral Tomb"
+    },
+    {
+     "quest": "Feeding the Addiction",
+     "how": "a step in it: you convince him to let Bralsa Drel into the inn"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "His vendor list and container are raw ids only; I've given the kind of trader from his factions, not the items."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018290",
+    "AIORRGeldisSleep2x5 (AI Overhaul.esp)",
+    "DLC2RRGeldisInnkeeperPackage",
+    "JobInnkeeperFaction",
+    "JobMerchantFaction",
+    "JobRentRoomFaction",
+    "vendor 7-20",
+    "DLC2RRFavor04 Dragonborn.esm:024E04",
+    "DLC2RR02 Dragonborn.esm:018B14",
+    "DLC2RRFavor06 Dragonborn.esm:024FAD"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018286",
+   "name": "Tilisu Severin",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "Around Raven Rock in the late morning and afternoon (11 am to 4 pm); otherwise at Severin Manor.",
+   "day": [
+    {
+     "from": "11 am",
+     "for": "5 hours",
+     "where": "around Raven Rock (the same spot Aphia Velothi and Bralsa Drel use; its package is named for the market)",
+     "doing": "out in town"
+    },
+    {
+     "from": "4 pm",
+     "for": "8 hours",
+     "where": "Severin Manor, Raven Rock",
+     "doing": "at home"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Severin Manor, Raven Rock",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "5 hours",
+     "where": "Severin Manor, Raven Rock",
+     "doing": "at home"
+    }
+   ],
+   "changes": [
+    "Weekends, 7 pm to 10 pm, she's at The Retching Netch instead of at home.",
+    "Served Cold exposes her: you catch her visiting the Ulen Ancestral Tomb at night, and the letters from Severin Manor show she's House Hlaalu and part of the plot against Councilor Morvayn. The extracts don't say what becomes of her afterwards."
+   ],
+   "role": "Raven Rock resident; one of the people Served Cold is about",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Served Cold",
+     "how": "its target: the tomb's night visitor, exposed as part of the plot"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "No package or quest text in the extracts says whether she stays, leaves or turns hostile after Served Cold."
+    },
+    {
+     "field": "day",
+     "why": "The weekend evening at The Retching Netch overrides her evening at home on weekends only."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018286",
+    "AIORRTilisuRetchNetchWeekends (dayOfWeek 8)",
+    "DLC2RRTilisuMarketPackage11x5 (target Dragonborn.esm:024FFB)",
+    "DLC2RRTilisuSleepPackage0x6",
+    "DLC2RRTilisuDefaultPackage0x0",
+    "DLC2RR02 Dragonborn.esm:018B14 alias DLC2RR02TilisuAlias, stages 50-70"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018278",
+   "name": "Crescius Caerellius",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "Caerellius House, Raven Rock, or down in Raven Rock Mine: The Final Descent's journal says you come across him inside the mine.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "13 hours",
+     "where": "Caerellius House, Raven Rock; in Raven Rock Mine once the mine is open",
+     "doing": "at home, or working the mine"
+    },
+    {
+     "from": "8 pm",
+     "for": "3 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "dinner"
+    },
+    {
+     "from": "11 pm",
+     "for": "7 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "A Raven Rock story flag (most likely the mine reopening) moves his daytime from his house to Raven Rock Mine."
+   ],
+   "role": "quest giver; married to Aphia Velothi",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Final Descent",
+     "how": "gives it: find his great-grandfather Gratian's remains at the bottom of the mine"
+    },
+    {
+     "quest": "An Axe to Find",
+     "how": "has lines in it before you return the pickaxe"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Whether they work in Raven Rock Mine hangs on a story flag the extracts don't name; the mine-reopening reading comes from the package names and The Final Descent, not from a quest stage that sets the flag."
+    },
+    {
+     "field": "race",
+     "why": "The record's race is Elder (the old-age race); the extracts don't give a people name for him."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018278",
+    "DLC2RRCresciusEatBreakfast6x1",
+    "DLC2RRCresciusSleepPackage23x8",
+    "DLC2RRCresciusEatDinnerPackage20x3",
+    "DLC2RRCresciusMinePackage (global Dragonborn.esm:018B10 == 1)",
+    "DLC2RRCresciusDefaultPackage (global == 0)",
+    "DLC2RR03 Dragonborn.esm:018B15",
+    "DLC2RR03Intro Dragonborn.esm:020A1C"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:01827C",
+   "name": "Aphia Velothi",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "Around Raven Rock 10 am to 2 pm; The Retching Netch 4 pm to 8 pm; otherwise at Caerellius House.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "1 hour",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "7 am",
+     "for": "3 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "at home"
+    },
+    {
+     "from": "10 am",
+     "for": "4 hours",
+     "where": "around Raven Rock (the spot its package names as the market)",
+     "doing": "out in town"
+    },
+    {
+     "from": "2 pm",
+     "for": "2 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "at home"
+    },
+    {
+     "from": "4 pm",
+     "for": "4 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "drinking"
+    },
+    {
+     "from": "8 pm",
+     "for": "2 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "dinner"
+    },
+    {
+     "from": "10 pm",
+     "for": "2 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "at home"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Caerellius House, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "Restoration trainer; married to Crescius Caerellius",
+   "sells": "",
+   "trains": "Restoration to 75",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "The Final Descent",
+     "how": "has lines about it before Crescius sends you down the mine"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:01827C",
+    "trainer Restoration Journeyman cap 75",
+    "JobTrainerRestorationFaction",
+    "DLC2RRAphiaEatDinnerPackage20x2",
+    "DLC2RRAphiaNetchPackage16x4",
+    "DLC2RRAphiaMarketPackage10x4 (target Dragonborn.esm:024FFB)",
+    "DLC2RRAphiaEatBreakfast6x1",
+    "DLC2RRAphiaSleepPackage0x6",
+    "DLC2RRAphiaDefaultPackage",
+    "DLC2RR03 Dragonborn.esm:018B15 dialogue"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:01828E",
+   "name": "Glover Mallory",
+   "race": "Breton",
+   "sex": "male",
+   "firstMeet": "At his stall in Raven Rock, 8 am to 8 pm.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Glover Mallory's House, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "his stall in Raven Rock",
+     "doing": "selling"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "drinking"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "a spot the game links to him in Raven Rock; the records don't name it",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "blacksmith; merchant; quest giver",
+   "sells": "blacksmith's goods; trades 7 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "An Axe to Find",
+     "how": "gives it: retrieve the Ancient Nordic Pickaxe, then return it or lie to him about it"
+    },
+    {
+     "quest": "Paid in Full",
+     "how": "gives it: recover the Bonemold Formula for him"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Vendor list and container are raw ids only."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His midnight-to-6 package points at a linked spot the extracts don't name, and it's named for building as well as sleeping."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:01828E",
+    "JobBlacksmithFaction",
+    "JobMerchantFaction",
+    "vendor 7-20",
+    "DLC2RRGloverNetchPackage20x4",
+    "DLC2RRGloverVendorPackage8x12 (target Dragonborn.esm:024FEA)",
+    "DLC2RRGloverEatBreakfastPackage6x2",
+    "DLC2RRGloverSleepBuildPackage0x6",
+    "DLC2RRGloverDefaultPackage0x0",
+    "DLC2RR03Intro Dragonborn.esm:020A1C",
+    "DLC2TGQuest Dragonborn.esm:02AD26"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:0182A1",
+   "name": "Milore Ienth",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "At her stall in Raven Rock, 8 am to 8 pm; Ienth Farm otherwise.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Ienth Farm, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "her stall in Raven Rock",
+     "doing": "selling"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Ienth Farm, Raven Rock",
+     "doing": "making potions"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Ienth Farm, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Some weekend evenings (8 pm to midnight) a package sends her about near where she's placed instead; its conditions aren't decoded in the extracts."
+   ],
+   "role": "apothecary; merchant; Alchemy trainer; quest giver",
+   "sells": "apothecary goods; trades 7 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "Alchemy to 100",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Fetch the Netch",
+     "how": "gives it: bring her five netch jelly"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Her weekend package's conditions use functions the extract leaves as raw numbers."
+    },
+    {
+     "field": "sells",
+     "why": "Vendor list and container are raw ids only."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:0182A1",
+    "trainer Alchemy Expert cap 100",
+    "JobApothecaryFaction",
+    "JobTrainerAlchemyFaction",
+    "vendor 7-20",
+    "AIORRMiloreWeekends (dayOfWeek 8)",
+    "DLC2RRMiloreNighttimeAlchemyPackage20x4",
+    "DLC2RRMiloreVendorPackage8x12 (target Dragonborn.esm:024FE8)",
+    "DLC2RRIenthEatBreakfastPackage6x2",
+    "DLC2RRMiloreSleepBuild0x6",
+    "DLC2RRFavor02 Dragonborn.esm:024DE7"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:01828A",
+   "name": "Elder Othreloth",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "The Temple, Raven Rock.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "17 hours",
+     "where": "the Temple, Raven Rock",
+     "doing": "about the temple"
+    },
+    {
+     "from": "midnight",
+     "for": "7 hours",
+     "where": "the Temple, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "elder of the Temple in Raven Rock; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Clean Sweep",
+     "how": "gives it: clear the Temple's tomb of ash spawn"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:01828A",
+    "DLC2RRTempleFaction",
+    "DLC2RROthrelothSleepPackage0x7",
+    "DLC2RROthrelothDefaultPackage",
+    "DLC2RRFavor03 Dragonborn.esm:024DFC"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:01827E",
+   "name": "Lleril Morvayn",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Morvayn Manor, Raven Rock.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "11 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "at the manor"
+    },
+    {
+     "from": "7 pm",
+     "for": "2 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "dinner"
+    },
+    {
+     "from": "9 pm",
+     "for": "3 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "at the manor"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "Morvayn Manor Chambers, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "Councilor of Raven Rock",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Served Cold",
+     "how": "the man the plot is against; you speak to him at the end"
+    },
+    {
+     "quest": "It's All In The Taste",
+     "how": "has lines while it runs; probably one of the people you can give a sample to"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His all-day default package has no location in the extract; he's placed in Morvayn Manor, so I've put him there."
+    },
+    {
+     "field": "quests",
+     "why": "It's All In The Taste: dialogue only; the sample-recipient reading isn't confirmed."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:01827E",
+    "DLC2RRLlerilEatDinnerPackage19x2",
+    "DLC2RRLlerilEatBreakfastPackage6x2",
+    "DLC2RRLlerilSleepPackage0x6",
+    "DLC2RRLlerilDefaultPackage0x0 (no location)",
+    "DLC2RR02 Dragonborn.esm:018B14 alias DLC2RR02MorvaynAlias, objective 100",
+    "DLC2RRFavor04 dialogue"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018282",
+   "name": "Cindiri Arano",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "Morvayn Manor in the morning, The Retching Netch at 2 pm to 4 pm and 8 pm to midnight.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "5 hours",
+     "where": "near where she's placed, Morvayn Manor (the package is named for wandering Raven Rock)",
+     "doing": "walking about"
+    },
+    {
+     "from": "1 pm",
+     "for": "1 hour",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "at home"
+    },
+    {
+     "from": "2 pm",
+     "for": "2 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "lunch"
+    },
+    {
+     "from": "4 pm",
+     "for": "4 hours",
+     "where": "Morvayn Manor, Raven Rock",
+     "doing": "at home"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "drinking"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "a spot the game links to her in Raven Rock; the records don't name it",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "quest giver; married to Adril Arano",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "First Edition",
+     "how": "gives it: find her folio in the wreck of the Strident Squall"
+    },
+    {
+     "quest": "It's All In The Taste",
+     "how": "has lines while it runs; probably one of the people you can give a sample to"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "Her morning package is named for wandering Raven Rock but points at her placed spot with no radius; her midnight package points at a linked spot the extracts don't name, and it's named for building as well as sleeping."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018282",
+    "DLC2RRCindiriNetchPackage20x4",
+    "DLC2RRCindiriNetchLunchPackage14x2",
+    "DLC2RRCindiriWanderRavenRock8x5",
+    "DLC2RRCindiriEatBreakfast6x2",
+    "DLC2RRCindiriSleepBuildPackage0x6",
+    "DLC2RRCindiriDefaultPackage",
+    "DLC2RRFavor07 Dragonborn.esm:02BAC6",
+    "DLC2RRAranoSpouseFaction"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018292",
+   "name": "Fethis Alor",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "At his stall in Raven Rock, 8 am to 8 pm.",
+   "day": [
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "Alor House, Raven Rock",
+     "doing": "breakfast"
+    },
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "his stall in Raven Rock",
+     "doing": "selling"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "drinking"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "a spot the game links to him in Raven Rock; the records don't name it",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "street vendor; merchant; quest giver",
+   "sells": "street-vendor goods; trades 7 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Pain in the Necklace",
+     "how": "gives it: find the East Empire Pendants for him"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Vendor list and container are raw ids only."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His midnight-to-6 package points at a linked spot the extracts don't name, and it's named for building as well as sleeping."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018292",
+    "JobStreetVendorFaction",
+    "JobMerchantFaction",
+    "vendor 7-20",
+    "DLC2RRFethisNetchPackage20x4",
+    "DLC2RRFethisVendorPackage8x12 (target Dragonborn.esm:024FE9)",
+    "DLC2RRFethisEatBreakfast6x2",
+    "DLC2RRFethisSleepBuildPackage0x6",
+    "DLC2RRFethisDefaultPackage",
+    "DLC2RRFavor05 Dragonborn.esm:024FA8"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018F15",
+   "name": "Bralsa Drel",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "Around Raven Rock 8 am to 4 pm (the spot its package names as the market); otherwise near the abandoned building where she's placed.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "8 hours",
+     "where": "around Raven Rock (market spot)",
+     "doing": "begging"
+    },
+    {
+     "from": "4 pm",
+     "for": "8 hours",
+     "where": "the Abandoned Building, Raven Rock",
+     "doing": "about"
+    },
+    {
+     "from": "midnight",
+     "for": "6 hours",
+     "where": "a spot the game links to her; the records don't name it",
+     "doing": "sleeping"
+    },
+    {
+     "from": "6 am",
+     "for": "2 hours",
+     "where": "the Abandoned Building, Raven Rock",
+     "doing": "about"
+    }
+   ],
+   "changes": [
+    "After Feeding the Addiction she spends 6 pm to 10 pm at The Retching Netch.",
+    "Once a Raven Rock story flag is set (most likely the mine reopening) she works in Raven Rock Mine all day instead of the market.",
+    "Her top package sends her to build at a linked spot all day while she counts as a pillar builder; the extract lists her in that group with no date, so I can't say when it applies."
+   ],
+   "role": "beggar; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Feeding the Addiction",
+     "how": "gives it: get Geldis Sadri to let her into the Retching Netch"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "changes",
+     "why": "Whether they work in Raven Rock Mine hangs on a story flag the extracts don't name; the mine-reopening reading comes from the package names and The Final Descent, not from a quest stage that sets the flag."
+    },
+    {
+     "field": "day",
+     "why": "Her top 'building' package is gated on a group she's in from the start; the game must switch it on and off by script, which the extracts don't show."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018F15",
+    "DLC2RRBeggarFaction",
+    "DLC2RRDayBuildPackage (GetInFaction DLC2PillarBuilderFaction)",
+    "DLC2RRBralsaNetchPackage18x4 (GetStageDone DLC2RRFavor06 200)",
+    "DLC2RRBralsaMarketPackage8x8 (global Dragonborn.esm:018B10 == 0)",
+    "DLC2RRBralsaSleepPackage0x6",
+    "DLC2RRBralsaWorkPackage0x0 (global == 1)",
+    "DLC2RRBralsaDefaultPackage",
+    "DLC2RRFavor06 Dragonborn.esm:024FAD"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:01364D",
+   "name": "Runil",
+   "race": "Altmer",
+   "sex": "male",
+   "firstMeet": "The Hall of the Dead in Falkreath by day; Dead Man's Drink in the evening.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "11 hours",
+     "where": "the Hall of the Dead, Falkreath",
+     "doing": "about"
+    },
+    {
+     "from": "7 pm",
+     "for": "6 hours",
+     "where": "Dead Man's Drink, Falkreath",
+     "doing": "drinking"
+    },
+    {
+     "from": "1 am",
+     "for": "7 hours",
+     "where": "the Hall of the Dead, Falkreath",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [],
+   "role": "priest at Falkreath's Hall of the Dead; Conjuration trainer; quest giver",
+   "sells": "",
+   "trains": "Conjuration to 75",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Delivery",
+     "how": "its target: Thadgeir has you deliver something to him"
+    },
+    {
+     "quest": "Dungeon Delving (Caves)",
+     "how": "gives it"
+    },
+    {
+     "quest": "Skaal Village Dialogue",
+     "how": "a step in it: Morwen in Skaal Village has you take Bera's Necklace to him"
+    },
+    {
+     "quest": "Ill Met By Moonlight",
+     "how": "appears in it at its start in Falkreath; you don't have to do anything with him"
+    }
+   ],
+   "canDie": "can die",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His daytime package carries conditions the extract leaves as raw function numbers; when they fail he has no other day package and stays near where he's placed anyway."
+    },
+    {
+     "field": "quests",
+     "why": "Ill Met By Moonlight gives him a role in its opening but no objective; what he does there isn't in the log text."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Skyrim.esm:01364D",
+    "trainer Conjuration Journeyman cap 75",
+    "JobTrainerConjurationFaction",
+    "FalkreathHouseofArkayFaction",
+    "Favor205QuestGiverFaction",
+    "FalkreathDeadMansDrinkSandbox19x6",
+    "DefaultSleepEditorLoc24x8 (shared)",
+    "AIOFalkRunilRandom",
+    "Favor001Falkreath Favor Quests Seperated.esp:000847",
+    "Favor205Falkreath Favor Quests Seperated.esp:000DF9",
+    "DLC2SkaalVillageFreeform1 Dragonborn.esm:02C8AA",
+    "DA05 Skyrim.esm:02A49A alias Funeralizer"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018FC8",
+   "name": "Tharstan",
+   "race": "Elder",
+   "sex": "male",
+   "firstMeet": "Skaal Village (he lives in the Greathall). The Lost Legacy log: 'a historian living in Skaal Village'.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Skaal Village",
+     "doing": "walking a set route"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "the Greathall, Skaal Village",
+     "doing": "about"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "the Greathall, Skaal Village",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Until you defeat Miraak at the end of At the Summit of Apocrypha, his top package can keep him working all day at a spot linked to him: it runs while he's in the group of pillar builders, and the records put him in it from the start. When the game takes him out of it isn't in the extracts.",
+    "In Lost Legacy he goes to Vahlok's Tomb and waits for you there."
+   ],
+   "role": "historian; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Lost Legacy",
+     "how": "gives it: hires you to protect him exploring Vahlok's Tomb, and goes with you"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "His 8 am to 8 pm package has no location in the extract; its name says patrol."
+    },
+    {
+     "field": "race",
+     "why": "The record's race is Elder (the old-age race); Lost Legacy's log calls him a Nord."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "changes",
+     "why": "The building package is gated on a group he's in from the start and on the main quest not being finished; the extracts don't show the script that moves him in or out of the group, so the day below may only hold after Miraak is dead."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018FC8",
+    "DLC2TempleWorkPackage (GetInFaction DLC2PillarBuilderFaction; DLC2MQ06 stage < 550)",
+    "DLC2SVTharstanPatrol8x12",
+    "DefaultSandboxEditorLocation20x4",
+    "DLC2SVFanariSleepGreathall",
+    "DLC2SV01 Dragonborn.esm:019B4A"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:018FB5",
+   "name": "Baldor Iron-Shaper",
+   "race": "Nord",
+   "sex": "male",
+   "firstMeet": "Skaal Village, at his work spot 8 am to 8 pm; his house otherwise.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Skaal Village",
+     "doing": "smithing"
+    },
+    {
+     "from": "8 pm",
+     "for": "4 hours",
+     "where": "Baldor Iron-Shaper's House, Skaal Village",
+     "doing": "about"
+    },
+    {
+     "from": "midnight",
+     "for": "8 hours",
+     "where": "Baldor Iron-Shaper's House, Skaal Village",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "In A New Source of Stalhrim he's abducted by the Thalmor and has to be found.",
+    "After A New Source of Stalhrim he lets you use his forge to craft stalhrim items.",
+    "His top package sends him to build at a linked spot; it's gated only on him being enabled, so how it interacts with the rest of his day isn't clear from the extracts."
+   ],
+   "role": "smith of Skaal Village; merchant",
+   "sells": "smith's goods; trades 8 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A New Source of Stalhrim",
+     "how": "its target: you find him held by the Thalmor; then he sends you for Ancarion's map"
+    }
+   ],
+   "canDie": "essential",
+   "unsure": [
+    {
+     "field": "day",
+     "why": "The pillar-building package sits above his work and sleep packages with no quest gate in the extract."
+    },
+    {
+     "field": "sells",
+     "why": "Vendor list and container are raw ids only."
+    },
+    {
+     "field": "quests",
+     "why": "Deor starts A New Source of Stalhrim (per the stage 10 log); Baldor is listed as its named giver but you first look for him."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:018FB5",
+    "JobMerchantFaction",
+    "DLC2SkaalBlacksmith",
+    "vendor 8-20",
+    "DLC2SkaalPillarBuildPKG (GetDisabled == 0)",
+    "DLC2SVBaldorWork8x12",
+    "DefaultSandboxEditorLocation20x4",
+    "DefaultSleepPackageAnyTime",
+    "DLC2SV02 Dragonborn.esm:01CAF1"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:01A515",
+   "name": "Hilund",
+   "race": "Nord",
+   "sex": "female",
+   "firstMeet": "With the Nords of Thirsk: at their camp near Bujold's Retreat while rieklings hold Thirsk Mead Hall, in the hall once it's theirs again.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "6 hours",
+     "where": "Thirsk Mead Hall (or the camp near Bujold's Retreat)",
+     "doing": "about"
+    },
+    {
+     "from": "1 pm",
+     "for": "3 hours",
+     "where": "Thirsk Mead Hall (or the camp near Bujold's Retreat)",
+     "doing": "eating"
+    },
+    {
+     "from": "4 pm",
+     "for": "7 hours",
+     "where": "Thirsk Mead Hall (or the camp near Bujold's Retreat)",
+     "doing": "about"
+    },
+    {
+     "from": "11 pm",
+     "for": "8 hours",
+     "where": "Thirsk Mead Hall (or the camp)",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "Where she lives flips between Thirsk Mead Hall and the camp near Bujold's Retreat on a story flag; Retaking Thirsk describes the Nords camped out until the hall is retaken.",
+    "In The Chief of Thirsk Hall, if you side with the rieklings, she's one of the Nords you're asked to kill.",
+    "A second flag can stop her sleep packages; the extracts don't name it."
+   ],
+   "role": "Nord of Thirsk; can marry; quest giver",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "yes: she's in the marriage group. What it takes beyond that isn't in these records.",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Retaking Thirsk",
+     "how": "a step in it: one of the Nords who take back the hall with you"
+    },
+    {
+     "quest": "The Chief of Thirsk Hall",
+     "how": "its target if you side with the rieklings (one of the Nords to kill)"
+    },
+    {
+     "quest": "Hilund Favor Quest",
+     "how": "gives it: bring her 50 riekling spears"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "Her home hangs on a global the extracts don't name or give a start value for; the camp-first reading comes from Retaking Thirsk's log."
+    },
+    {
+     "field": "marries",
+     "why": "Only the faction is in the records; no dialogue conditions for marriage are in the extracts."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:01A515",
+    "PotentialMarriageFaction",
+    "marriageable true",
+    "DLCHilundEatInHall13x3 / DLCHilundEatAtCamp13x3 (global Dragonborn.esm:01A51E)",
+    "DLC2HilundSleepInHall23x8 / DLC2HilundSleepAtCamp23x8 (global Dragonborn.esm:03BDA4 == 0)",
+    "DLC2ThirskNordsSandboxInHall / DLC2ThirskNordsSandboxAtCamp",
+    "DLC2MH01 Dragonborn.esm:01A50B",
+    "DLC2MH02 Dragonborn.esm:01A50C alias Nord5",
+    "DLC2ThirskFFHilund Dragonborn.esm:038FBB"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:017777",
+   "name": "Talvas Fathryon",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Tel Mithryn, Neloth's tower.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "around Tel Mithryn",
+     "doing": "selling"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "Tel Mithryn, near where he stands by day",
+     "doing": "up and about; he has no bed time while he's in the world"
+    }
+   ],
+   "changes": [
+    "During From the Ashes his night package is off.",
+    "Inside Tel Mithryn he sometimes casts Candlelight."
+   ],
+   "role": "Neloth's apprentice; sells spells; Conjuration trainer; can follow; quest giver",
+   "sells": "spells: he's one of Tel Mithryn's spell sellers. After Wind and Sand you can buy that spell from him. His shop hours and stock list aren't in the extracts.",
+   "trains": "Conjuration, master tier (the level cap isn't in the extract)",
+   "joins": "He can become a follower; how he's recruited isn't in the extracts.",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "From the Ashes",
+     "how": "gives it: destroy the Ash Guardian he summoned; rewards Spell Tome (Expert): Conjure Ash Guardian"
+    },
+    {
+     "quest": "Reluctant Steward",
+     "how": "has lines in it; people in Tel Mithryn can tell you Varona set off for Raven Rock"
+    },
+    {
+     "quest": "Experimental Subject",
+     "how": "appears in it"
+    },
+    {
+     "quest": "Wind and Sand",
+     "how": "changed by it: afterwards he sells the spell"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "joins",
+     "why": "No recruiting dialogue or quest stage is in the extracts."
+    },
+    {
+     "field": "trains",
+     "why": "Trainer tier is Master but the cap field is empty."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "sells",
+     "why": "The vendor entry the extract gives him is the one followers carry (no chest, all hours); his shop's own list and hours aren't decoded."
+    },
+    {
+     "field": "day",
+     "why": "6 to 8 am and 8 to 10 pm have no package in the extract, and the night package has no named spot; his sleep package only runs while he's disabled."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:017777",
+    "JobSpellFaction",
+    "PotentialFollowerFaction",
+    "follower true",
+    "trainer Conjuration Master cap null",
+    "vendor 0-24",
+    "DLC2TalvasStandingStone22x8 (DLC2TTF1 stage < 5 or >= 400)",
+    "DLC2TalvasSleep22x8",
+    "DLC2NelothCastCandlelight",
+    "DLC2TalvasSell8x12",
+    "DLC2TTF1 Dragonborn.esm:01AAB0",
+    "DLC2TT1 Dragonborn.esm:017E8D",
+    "DLC2TTR4b Dragonborn.esm:01CDE1",
+    "DLC2TTR3b stage 300 log"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:01777D",
+   "name": "Ulves Romoran",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "Tel Mithryn, in the kitchen.",
+   "day": [
+    {
+     "from": "any hour",
+     "for": "all day",
+     "where": "the Tel Mithryn kitchen",
+     "doing": "about; he has no bed time while he's in the world"
+    }
+   ],
+   "changes": [],
+   "role": "member of Neloth's household at Tel Mithryn",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "From the Ashes",
+     "how": "appears in it"
+    },
+    {
+     "quest": "Reluctant Steward",
+     "how": "has lines in it"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "His all-day package points at where he's placed in the kitchen with a 500-unit radius; the extracts don't name a spot within it."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:01777D",
+    "DLC2TelMithrynFaction",
+    "DLC2UlvesStandingStoneAllDay",
+    "DLC2UlvesSleep22x8 (only when disabled)",
+    "DLC2UlvesSandbox",
+    "DLC2TTF1 alias Ulves",
+    "DLC2TT1 dialogue"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:017778",
+   "name": "Elynea Mothren",
+   "race": "Dunmer",
+   "sex": "female",
+   "firstMeet": "The Tel Mithryn Apothecary, 8 am to 8 pm.",
+   "day": [
+    {
+     "from": "8 am",
+     "for": "12 hours",
+     "where": "Tel Mithryn Apothecary",
+     "doing": "selling"
+    },
+    {
+     "from": "10 pm",
+     "for": "8 hours",
+     "where": "Tel Mithryn Apothecary, near where she stands by day",
+     "doing": "up and about; she has no bed time while she's in the world"
+    }
+   ],
+   "changes": [],
+   "role": "apothecary at Tel Mithryn; merchant; quest giver",
+   "sells": "apothecary goods; trades 8 am to 8 pm. The exact stock list isn't resolved in the extracts.",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "Healing a House",
+     "how": "gives it: three taproots soaked in the headwaters of the Harstrad river"
+    },
+    {
+     "quest": "Hunting and Gathering",
+     "how": "gives it: bring her ingredients such as a daedra heart or void salts"
+    },
+    {
+     "quest": "From the Ashes",
+     "how": "appears in it"
+    },
+    {
+     "quest": "Reluctant Steward",
+     "how": "has lines in it"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "sells",
+     "why": "Vendor list and container are raw ids only."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    },
+    {
+     "field": "day",
+     "why": "8 to 10 pm and 6 to 8 am have no package; the night package has no named spot, and her sleep package only runs while she's disabled."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:017778",
+    "JobApothecaryFaction",
+    "JobMerchantFaction",
+    "vendor 8-20",
+    "DLC2ElyneaStandingStone22x8",
+    "DLC2ElyneaSleep22x8",
+    "DLC2ElyneaSell8x12 (in cell Tel Mithryn Apothecary)",
+    "DLC2TTF2 Dragonborn.esm:01AAC8",
+    "DLC2TTR8 Dragonborn.esm:01F13B",
+    "DLC2TTF1 alias Elynea"
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:019596",
+   "name": "Slitter",
+   "race": "Dunmer",
+   "sex": "male",
+   "firstMeet": "He comes with Mogrul's message after you've helped Drovas Relvi; otherwise at Mogrul's side in The Retching Netch, Raven Rock.",
+   "day": [
+    {
+     "from": "7 am",
+     "for": "18 hours",
+     "where": "wherever Mogrul is, usually The Retching Netch, Raven Rock",
+     "doing": "following Mogrul"
+    },
+    {
+     "from": "1 am",
+     "for": "6 hours",
+     "where": "The Retching Netch, Raven Rock",
+     "doing": "sleeping"
+    }
+   ],
+   "changes": [
+    "If Mogrul dies, he stops following him and stays around where he's placed in The Retching Netch."
+   ],
+   "role": "Mogrul's thug; starts A New Debt",
+   "sells": "",
+   "trains": "",
+   "joins": "",
+   "marries": "no",
+   "fightsWith": "",
+   "quests": [
+    {
+     "quest": "A New Debt",
+     "how": "gives it: Mogrul's messenger, who tells you Mogrul wants to talk"
+    }
+   ],
+   "canDie": "protected",
+   "unsure": [
+    {
+     "field": "firstMeet",
+     "why": "The quest log says Mogrul 'sent a messenger'; Slitter is the one whose dialogue starts it, but the extracts don't show him walking to you."
+    },
+    {
+     "field": "fightsWith",
+     "why": "The class record is only an id in the extracts (no name, skills or weapon), and the outfit isn't resolved to items, so I can't say how they fight."
+    }
+   ],
+   "evidence": [
+    "Dragonborn.esm:019596",
+    "DLC2MogrulFaction",
+    "UDBPSlitterSleep",
+    "DLC2SlitterFollowMogrul (Mogrul Dragonborn.esm:01959A not dead)",
+    "UDBPSlitterSandboxIfMorgulDies",
+    "DLC2TT1b Dragonborn.esm:01844E giver"
+   ]
+  }
+ ]
+}
