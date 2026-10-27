@@ -1,0 +1,1683 @@
+[
+ {
+  "id": "Dragonborn.esm:01959A",
+  "name": "Mogrul",
+  "race": "Orsimer",
+  "sex": "male",
+  "firstMeet": "The Retching Netch, Raven Rock (Solstheim). He sends a messenger for you once you've helped Drovas Relvi.",
+  "day": [
+   {
+    "from": "9 am",
+    "for": "8 hours",
+    "where": "around Raven Rock",
+    "doing": "doing business (his 'shop' rounds in town)"
+   },
+   {
+    "from": "12 pm",
+    "for": "2 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "lunch (this beats the town rounds at midday)"
+   },
+   {
+    "from": "1 am",
+    "for": "6 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "sleeping"
+   },
+   {
+    "from": "5 pm",
+    "for": "8 hours",
+    "where": "wherever he last was, usually the Retching Netch",
+    "doing": "no package covers these hours, so he stays put"
+   },
+   {
+    "from": "7 am",
+    "for": "2 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "no package covers these hours, so he stays put"
+   }
+  ],
+  "changes": [
+   "A New Debt ends with you paying his 1,000 septims, talking him down to half, or killing him."
+  ],
+  "role": "money lender; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A New Debt",
+    "how": "gives it: he wants Drovas Relvi's 1,000 septim debt from you, and keeps sending thugs until you pay, persuade him to take half, or kill him"
+   }
+  ],
+  "canDie": "essential in his record, though A New Debt has an ending where you kill him",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The 9 am town rounds carry a list of AI Overhaul checks the extract leaves undecoded; when they fail he has nothing between 7 am and noon or after 2 pm and stays where he is."
+   },
+   {
+    "field": "canDie",
+    "why": "He's flagged essential, yet A New Debt's objective is 'Pay or kill Mogrul' and one ending says you killed him; how the quest lifts the flag isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in five more quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:01959A",
+   "placed in The Retching Netch (Raven Rock)",
+   "DLC2MogrulLunch12x2 (target Dragonborn.esm:039D48)",
+   "DLC2MogrulShop9x8 (target AI Overhaul.esp:0E7012, fn612 conditions)",
+   "UDBPMorgulSleep (target Dragonborn.esm:0349A5)",
+   "DLC2TT1b Dragonborn.esm:01844E objectives 100/200/210, stages 300/310/320",
+   "factions DLC2MogrulFaction, DLC2CrimeRavenRockFaction",
+   "class Fozars_Dragonborn_-_Requiem_Patch.esp:0EE758",
+   "essential=true"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:017779",
+  "name": "Drovas Relvi",
+  "race": "Dunmer",
+  "sex": "male",
+  "firstMeet": "The Retching Netch, Raven Rock (Solstheim); Reluctant Steward sends you there to find him.",
+  "day": [
+   {
+    "from": "6 am",
+    "for": "16 hours",
+    "where": "The Retching Netch, Raven Rock",
+    "doing": "no daytime package before he becomes steward, so he stays where he's placed"
+   },
+   {
+    "from": "10 pm",
+    "for": "8 hours",
+    "where": "at a standing stone outside town",
+    "doing": "out at the stone all night (package named for a standing stone; the spot isn't named in the records)"
+   }
+  ],
+  "changes": [
+   "After you recruit him in Reluctant Steward he walks to Tel Mithryn and lives there as Neloth's steward: 8 am Elynea's apothecary, 9 am the kitchen, 10 am outside, 11 am Neloth's tower, noon home to eat, 1 pm outside, 2 pm apothecary, 3 pm kitchen, 4 pm outside, 5 pm the tower, 7 pm apothecary; the rest of the day and night in the Steward's house.",
+   "Once he's steward the nightly trips to the standing stone stop.",
+   "Helping him leads to A New Debt: his money lender Mogrul comes after you for his 1,000 septims."
+  ],
+  "role": "quest figure: the man who becomes Neloth's steward",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Reluctant Steward",
+    "how": "a step in it: the steward you recruit for Neloth"
+   },
+   {
+    "quest": "A New Debt",
+    "how": "its cause: Mogrul wants his debt from you; he has lines while it runs"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The night package only says 'near a linked spot'; that it's a standing stone comes from the package's name, and nothing in the records says whether freeing the stone ends it before he becomes steward."
+   },
+   {
+    "field": "changes",
+    "why": "His 6 pm to 7 pm hour at Tel Mithryn is covered by a package named for 6 pm but timed at noon, so he's at the Steward's house then; his Tel Mithryn sleep package only runs while he's disabled, so his night is just 'in the house'."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in From the Ashes, but the records don't show his part; and in eight more unnamed quests."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:017779",
+   "placed in The Retching Netch",
+   "DLC2DrovasGetToTelMithryn (DLC2TT1 >= 400, not in location Dragonborn.esm:0143BC)",
+   "DLC2DrovasStandingStone22x8 (DLC2TT1 < 400; linked ref)",
+   "DLC2DrovasTelMithrynSleep22x8 (GetDisabled > 0)",
+   "DLC2DrovasTelMithrynElynea8x1/14x1/19x1",
+   "DLC2DrovasTelMithrynUlves9x1/15x1",
+   "DLC2DrovasTelMithrynOutside10x1/13x1/16x1",
+   "DLC2DrovasTelMithrynNeloth11x1/17x1",
+   "DLC2DrovasTelMithrynHomeEat12x1, HomeEat18x1 (hour 12)",
+   "DLC2DrovasTelMithrynDefault",
+   "DLC2TT1 Dragonborn.esm:017E8D stages 310/400",
+   "DLC2TT1b Dragonborn.esm:01844E (talker below stage 201)",
+   "DLC2TTF1 Dragonborn.esm:01AAB0 alias Drovas",
+   "factions DLC2PillarBuilderFaction, DLC2TelMithrynFaction",
+   "essential=true"
+  ]
+ },
+ {
+  "id": "Dragonborn.esm:018FAE",
+  "name": "Wulf Wild-Blood",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Skaal Village, Solstheim (his house is there).",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "around Skaal Village",
+    "doing": "working"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "near his house, Skaal Village",
+    "doing": "going about the village"
+   },
+   {
+    "from": "12 am",
+    "for": "8 hours",
+    "where": "Wulf Wild-Blood's House, Skaal Village",
+    "doing": "sleeping (his sleep package covers any hour not taken)"
+   }
+  ],
+  "changes": [
+   "Above his day sits a pillar-building package (with the other Skaal) that sends him to a linked spot at any hour; The Fate of the Skaal says the Skaal are working against their will at the Wind Stone until you free them, so before that he's likely there, not in the village.",
+   "Filial Bonds can end with him dead ('Wulf died before I could help him')."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Filial Bonds",
+    "how": "gives it: look for his brother Torkild, who he fears became a werebear; tell him what happened and he teaches you to fight better"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The pillar-building package has no quest condition in the extract, only 'not disabled', so what ends it after the Skaal are freed isn't shown."
+   },
+   {
+    "field": "trains",
+    "why": "He's in the two-handed trainer factions but has no trainer record, so I can't say he trains anything or to what level."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five more quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Dragonborn.esm:018FAE",
+   "placed in Wulf Wild-Blood's House (Skaal Village)",
+   "DLC2SkaalPillarBuildPKG (shared by 8)",
+   "DLC2SVWulfWork8x12 (target Dragonborn.esm:020952)",
+   "DefaultSandboxEditorLocation20x4",
+   "DefaultSleepPackageAnyTime",
+   "DLC2WB01 Dragonborn.esm:0209AE stages 10/15/100/205",
+   "DLC2MQ03 stage 50",
+   "JobTrainerFaction, JobTrainerTwoHandedFaction (trainer record null)",
+   "DLC2PillarBuilderFaction",
+   "protected=true"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01334E",
+  "name": "Bolli",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Riften: at the Riften Fishery by day, the Bee and Barb in the evening; he lives in Bolli's House.",
+  "day": [
+   {
+    "from": "3 am",
+    "for": "6 hours",
+    "where": "Bolli's House, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "9 am",
+    "for": "1 hour",
+    "where": "Bolli's House, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "10 am",
+    "for": "5 hours",
+    "where": "around Riften near his home",
+    "doing": "out and about on fair days; otherwise at the fishery"
+   },
+   {
+    "from": "3 pm",
+    "for": "5 hours",
+    "where": "the fishery office, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "8 pm",
+    "for": "7 hours",
+    "where": "The Bee and Barb, Riften",
+    "doing": "drinking (skipped in one kind of weather, when he stays at the fishery)"
+   }
+  ],
+  "changes": [],
+  "role": "fisherman (runs the Riften Fishery); quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Special Delivery",
+    "how": "gives it: deliver a purchase agreement to Kleppr in Markarth"
+   },
+   {
+    "quest": "Caught Red Handed",
+    "how": "its target: Svana Far-Shield wants a Mark of Dibella taken from him"
+   },
+   {
+    "quest": "Deluge of Deceit",
+    "how": "can start it: he tells you about the Black-Briars' diving job"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The fishery office package has no place in the extract ('office' is from its name); the 10 am outing carries AI Overhaul checks besides 'not raining' that aren't decoded, and the Bee and Barb trip skips one weather type (condition function 149)."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in eleven more quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01334E",
+   "placed in Bolli's House",
+   "RiftenBolliBeeandBarb20x7 (fn149 819744 == 0)",
+   "RiftenBolliWorkFisheryOffice15x1",
+   "AIORiftBolliRandomDay10x5",
+   "RiftenBolliEatBreakfast9x1",
+   "RiftenBolliSleep3x6",
+   "RiftenBolliWorkFisheryProper0x0 (target Skyrim.esm:10CD3C)",
+   "FreeformRiften15 Skyrim.esm:0557E9",
+   "FreeformRiften11 Skyrim.esm:041F91",
+   "EVGSirenrootQuest evgSIRENROOT.esm:026BC5 giver below stage 1",
+   "RiftenFisheryFaction"
+  ]
+ },
+ {
+  "id": "evgSIRENROOT.esm:0A25D4",
+  "name": "Frissa Black-Briar",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Elgrim's Elixirs, Riften (Deluge of Deceit's notice sends you to her there).",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "Elgrim's Elixirs, Riften",
+    "doing": "stays where she stands"
+   }
+  ],
+  "changes": [
+   "Once Deluge of Deceit is finished she spends 7 pm to 3 am at Black-Briar Manor; the rest of the day she's where she was."
+  ],
+  "role": "quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Deluge of Deceit",
+    "how": "gives it: she pays for samples and artifacts from the cave under Lake Honrich; you return to her at the end and she compensates you"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The manor package is conditioned on the quest's stage being exactly its final one, so it holds only while that is the stage."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "evgSIRENROOT.esm:0A25D4",
+   "placed in Elgrim's Elixirs",
+   "EVGSirenPostQuestFrissaSandbox (EVGSirenrootQuest stage == 150; Black-Briar Manor)",
+   "EVGSirenBlackBriarSandbox (near self, r64)",
+   "EVGSirenrootQuest evgSIRENROOT.esm:026BC5 stages 1/5/140/150, objective 140",
+   "protected=true"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01336F",
+  "name": "Nivenor",
+  "race": "Bosmer",
+  "sex": "female",
+  "firstMeet": "Riften: the market late morning, the fishery in the afternoon; she lives in Bolli's House.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "6 hours",
+    "where": "Bolli's House, Riften",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Bolli's House, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "7 am",
+    "for": "4 hours",
+    "where": "Bolli's House, Riften",
+    "doing": "relaxing at home"
+   },
+   {
+    "from": "11 am",
+    "for": "4 hours",
+    "where": "the market, Riften",
+    "doing": "shopping (not in rain)"
+   },
+   {
+    "from": "3 pm",
+    "for": "4 hours",
+    "where": "the Riften Fishery",
+    "doing": "working"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "around Riften near home",
+    "doing": "out on Mondays, Wednesdays and Fridays in fair weather; other evenings at home"
+   },
+   {
+    "from": "10 pm",
+    "for": "2 hours",
+    "where": "Bolli's House, Riften",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "She skips the market while A Chance Arrangement is at its market stages."
+  ],
+  "role": "Bolli's wife; fishery worker",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Deluge of Deceit",
+    "how": "can start it: she tells you about the Black-Briars' diving job"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The fishery package has no place in the extract ('fishery' is from its name); the market spot is a point in Riften ('market' comes from the package name); the evening outing carries AI Overhaul checks the extract doesn't decode."
+   },
+   {
+    "field": "role",
+    "why": "'Bolli's wife' is read from her sharing his house and faction, not from a marriage record."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "She fills an alias in eight quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01336F",
+   "placed in Bolli's House",
+   "AIORiftNivenorMWF19x3 (day 9 = Mon/Wed/Fri)",
+   "RiftenNivenorWorkFishery15x4",
+   "RiftenNivenorMarket11x4 (TG00 != 10, != 20, not raining; target Skyrim.esm:044346)",
+   "RiftenNivenorEatBreakfast6x1",
+   "RiftenNivenorSleep0x6",
+   "RiftenNivenorRelaxAtHome0x0",
+   "RiftenBolliHouseFaction",
+   "EVGSirenrootQuest talker below stage 1"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01337F",
+  "name": "Valindor",
+  "race": "Bosmer",
+  "sex": "male",
+  "firstMeet": "The Riften Fishery and its docks by day; Haelga's Bunkhouse in the evening; he lives in Valindor's House, Riften.",
+  "day": [
+   {
+    "from": "4 am",
+    "for": "2 hours",
+    "where": "Valindor's House, Riften",
+    "doing": "breakfast"
+   },
+   {
+    "from": "6 am",
+    "for": "3 hours",
+    "where": "inside the Riften Fishery",
+    "doing": "working"
+   },
+   {
+    "from": "9 am",
+    "for": "3 hours",
+    "where": "the fishery docks, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "12 pm",
+    "for": "3 hours",
+    "where": "inside the Riften Fishery",
+    "doing": "working"
+   },
+   {
+    "from": "3 pm",
+    "for": "3 hours",
+    "where": "the fishery docks, Riften",
+    "doing": "working"
+   },
+   {
+    "from": "6 pm",
+    "for": "4 hours",
+    "where": "Haelga's Bunkhouse, Riften",
+    "doing": "evening out"
+   },
+   {
+    "from": "10 pm",
+    "for": "6 hours",
+    "where": "Valindor's House, Riften",
+    "doing": "sleeping"
+   }
+  ],
+  "changes": [],
+  "role": "fishery worker",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Deluge of Deceit",
+    "how": "can start it: he tells you about the Black-Briars' diving job"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The 'inside the fishery' packages have no place in the extract (read from their names); the docks spot is a point by the fishery, its nearest named place being the Thieves Guild's headquarters."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in three quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01337F",
+   "placed in Valindor's House",
+   "RiftenValindorSleep22x6",
+   "RiftenValindorBunkhouse18x4",
+   "RiftenValindorWorkFisheryDocks15x3 / 9x3 (target Skyrim.esm:10CD5A)",
+   "RiftenValindorWorkFisheryInside12x3 / 6x3",
+   "RiftenValindorEatBreakfast4x2",
+   "RiftenFisheryFaction, RiftenBlackBriarMeaderyFaction",
+   "EVGSirenrootQuest talker below stage 1"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:019DEF",
+  "name": "Wylandriah",
+  "race": "Bosmer",
+  "sex": "female",
+  "firstMeet": "Mistveil Keep, Riften.",
+  "day": [
+   {
+    "from": "11 am",
+    "for": "7 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "running errands around her spot in the keep"
+   },
+   {
+    "from": "6 pm",
+    "for": "17 hours",
+    "where": "Mistveil Keep, Riften",
+    "doing": "stays where she is"
+   }
+  ],
+  "changes": [],
+  "role": "court wizard of Riften; spell merchant; quest giver",
+  "sells": "spells, as the court wizard (spell-seller faction); trades 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Hunt and Gather",
+    "how": "gives it: retrieve her spoon, her ingot and her soul gem, then return to her"
+   },
+   {
+    "quest": "Deluge of Deceit",
+    "how": "has lines before you take the job (it sends you to an alchemist in the city about the singing plant)"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her buy/sell list and chest are ids the extracts don't resolve, so no tome names or levels."
+   },
+   {
+    "field": "day",
+    "why": "She has no sleep package; outside her errand hours she only keeps to where she is."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "She fills an alias in four quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:019DEF",
+   "placed in Mistveil Keep",
+   "AIORiftWylanRunErrands",
+   "DefaultSandboxCurrentLocation256",
+   "vendor 8-20, VEND a1370900, VENC c1310a00",
+   "JobCourtWizardFaction, JobSpellFaction, JobMerchantFaction, ServicesRiftenWylandriahVendor",
+   "FreeformRiften14 Skyrim.esm:043E25",
+   "EVGSirenrootQuest talker below stage 5",
+   "protected=true"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013620",
+  "name": "Skald the Elder",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Dawnstar: at first at a set spot outdoors in town until a Dawnstar introduction scene has played; then on his throne in the White Hall.",
+  "day": [
+   {
+    "from": "any hour",
+    "for": "24 hours",
+    "where": "The White Hall, Dawnstar",
+    "doing": "sitting as jarl"
+   }
+  ],
+  "changes": [
+   "If he loses Dawnstar in the civil war and is exiled, he lives in the Palace of the Kings, Windhelm.",
+   "While the Stormcloak finale in Windhelm runs (as an exile), he hides upstairs in the Palace of the Kings."
+  ],
+  "role": "Jarl of Dawnstar; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Kill the Giant (Jarl)",
+    "how": "gives it: kill the giant at a camp, then return to him"
+   },
+   {
+    "quest": "Delivery",
+    "how": "its target: Aeri of Anga's Mill has you deliver something to him"
+   },
+   {
+    "quest": "Toying With The Dead",
+    "how": "has lines in it (Vekel the Man gives it; you enter Yngvild Barrow)"
+   }
+  ],
+  "canDie": "essential",
+  "unsure": [
+   {
+    "field": "firstMeet",
+    "why": "The intro package sends him to a fixed spot near Dawnstar's centre until an unnamed quest reaches stage 100; the records don't say what scene that is."
+   },
+   {
+    "field": "day",
+    "why": "His jarl package has no place in the extract; 'on his throne in the White Hall' is from its name and where he's placed."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in seven quests that have no name in the extracts, and an Extended Encounters quest as 'Jarl'."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013620",
+   "placed in The White Hall",
+   "CWFinaleHidePackageWindhelmActorBasePackage (GovExiled, Skyrim.esm:0954E1 running, stage >= 1)",
+   "CWExiledSonsSandboxPalace (GovExiled)",
+   "DawnstarSkaldIntroPackage (Skyrim.esm:031893 stage 100 not done; target Skyrim.esm:087769)",
+   "DawnstarJarlSitPackage",
+   "DefaultSandboxEditorLocation512",
+   "JobJarlFaction, GovRuling, GovSons, GovExiled rank -1",
+   "Favor153 Skyrim.esm:090E36",
+   "Favor001AngasMill Favor Quests Seperated.esp:000835",
+   "FreeformRiften21 talker below 41",
+   "essential=true"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01414C",
+  "name": "Quintus Navale",
+  "race": "Imperial",
+  "sex": "male",
+  "firstMeet": "The White Phial, Windhelm.",
+  "day": [
+   {
+    "from": "1 pm",
+    "for": "2 hours",
+    "where": "the market, Windhelm",
+    "doing": "shopping (not when it's snowing)"
+   },
+   {
+    "from": "3 pm",
+    "for": "22 hours",
+    "where": "The White Phial, Windhelm",
+    "doing": "minding the shop"
+   }
+  ],
+  "changes": [],
+  "role": "apothecary merchant at the White Phial (Nurelion's assistant); can marry",
+  "sells": "apothecary goods at The White Phial; trades 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "yes (he's a marriage candidate; the records don't give extra conditions)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The White Phial",
+    "how": "a step in it: you speak to him, and he pays your reward when the Phial comes back damaged"
+   },
+   {
+    "quest": "Repairing the Phial",
+    "how": "gives it: he thinks he can repair the Phial and sends you for the materials"
+   },
+   {
+    "quest": "Delivery",
+    "how": "its target: Sondas Drenim of Goldenrock Mine (Darkwater Crossing) has you deliver something to him"
+   },
+   {
+    "quest": "A Dying Wish",
+    "how": "one of the alchemists you can ask about the Ironwood Fruit"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "His buy/sell list and chest are ids the extracts don't resolve; 'apothecary' is from his job faction and shop."
+   },
+   {
+    "field": "day",
+    "why": "The market spot is a point near Windhelm's centre; 'market' comes from the package's name."
+   },
+   {
+    "field": "quests",
+    "why": "'A Dying Wish' role is read from its 'Ask an alchemist about the Ironwood Fruit' step and its list of alchemist aliases. Forget-me-not mentions a \"Quintus\" to investigate, which may not be him."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01414C",
+   "placed in The White Phial",
+   "AIOWHQuintusVisitMarket (fn75 IsSnowing == 0; target Skyrim.esm:0E7BF8)",
+   "QuintusStaysInWhitePhial",
+   "vendor 8-20, VEND 9f370900, VENC 33f60a00",
+   "JobApothecaryFaction, ServicesWindhelmWhitePhial, PotentialMarriageFaction",
+   "MS12 Skyrim.esm:02C258 objective 21, stage 100",
+   "MS12b objectives 10/60, stages 10/30",
+   "Favor001DarkwaterCrossing Favor Quests Seperated.esp:000842",
+   "ccKRTSSE001_zQuest alias Quintus"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133C0",
+  "name": "Voada",
+  "race": "Breton",
+  "sex": "female",
+  "firstMeet": "Understone Keep, Markarth.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "6 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "eating"
+   },
+   {
+    "from": "7 am",
+    "for": "5 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "working as a servant"
+   },
+   {
+    "from": "12 pm",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "eating"
+   },
+   {
+    "from": "1 pm",
+    "for": "4 hours",
+    "where": "around Arnleif and Sons Trading Company, Markarth",
+    "doing": "shopping (not in rain; in rain she keeps working in the keep)"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "working"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Understone Keep, Markarth",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Understone Keep, Markarth",
+    "doing": "about the keep"
+   }
+  ],
+  "changes": [
+   "In the civil war she's among the keep staff who hide during a battle for the city."
+  ],
+  "role": "servant at Understone Keep",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Delivery",
+    "how": "its target: Banning at the Markarth Stables has you deliver something to her"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "She's in the castle-hide faction, but the hiding package isn't in her list; when and where she hides isn't in the extracts."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "She fills an alias in two quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133C0",
+   "placed in Understone Keep",
+   "AIOMaRandomDayShops13x4 (not raining; target AI Overhaul.esp:0075D2)",
+   "DefaultEatEditorLoc18x1 / 12x1 / 6x1",
+   "MarkarthKeepServantWork7x12",
+   "MarkarthKeepSleepEditorLoc24x8",
+   "DefaultSandboxEditorLocation512",
+   "MarkarthCastleServantsFaction, CWCastleHideFaction",
+   "Favor001Markarth Favor Quests Seperated.esp:000838"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013BA5",
+  "name": "Danica Pure-Spring",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "The Temple of Kynareth, Whiterun.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "8 hours",
+    "where": "Temple of Kynareth, Whiterun",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "7 hours",
+    "where": "Temple of Kynareth, Whiterun",
+    "doing": "tending the temple"
+   },
+   {
+    "from": "3 pm",
+    "for": "4 hours",
+    "where": "out in Whiterun near Jorrvaskr",
+    "doing": "out in town (skipped in one kind of weather)"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Temple of Kynareth, Whiterun",
+    "doing": "tending the temple"
+   }
+  ],
+  "changes": [
+   "After The Blessings of Nature she adds 9 to 11 am watering the Gildergreen (not in rain) and 11 am to 3 pm about the temple grounds (skipped in one kind of weather)."
+  ],
+  "role": "priestess of Kynareth; Restoration trainer; quest giver",
+  "sells": "",
+  "trains": "Restoration (master-tier trainer)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "The Blessings of Nature",
+    "how": "gives it: help her restore the Gildergreen; bring Nettlebane to her"
+   },
+   {
+    "quest": "Delivery",
+    "how": "its target: Idgrod the Younger of Morthal has you deliver something to her"
+   },
+   {
+    "quest": "A Dying Wish",
+    "how": "the temple priestess you give the Ironwood Soup to"
+   },
+   {
+    "quest": "Mirrors of Youth",
+    "how": "one of the Whiterun people you can ask about Braith"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "trains",
+    "why": "The trainer record gives Restoration at master tier but no level cap."
+   },
+   {
+    "field": "day",
+    "why": "The 3 pm package is named for the marketplace, but its spot resolves to near Jorrvaskr; the watering package has no place in the extract ('Gildergreen' from its name)."
+   },
+   {
+    "field": "quests",
+    "why": "A Dying Wish and Mirrors of Youth roles are read from their objectives and alias lists, not from a line naming her."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013BA5",
+   "placed in Temple of Kynareth",
+   "WhiterunDanicaSleep24x8",
+   "AIOWRDanicaWaterTree (T03 completed, not raining)",
+   "AIOWRDanica9x6 (T03 completed, fn149 819744 == 0)",
+   "WhiterunDanicaMarketplace15x4 (fn149; target Skyrim.esm:0847A9)",
+   "WhiterunDanicaTemplePackage",
+   "trainer Restoration Master",
+   "JobPriestFaction, JobTrainerRestorationFaction",
+   "T03 Skyrim.esm:01C48E",
+   "Favor001Morthal Favor Quests Seperated.esp:00083D",
+   "ccKRTSSE001_zQuest alias Danica, objective 110",
+   "SDE_R004 alias Danica, objective 10"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013281",
+  "name": "Giraud Gemane",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "The Bards College, Solitude.",
+  "day": [
+   {
+    "from": "2 am",
+    "for": "8 hours",
+    "where": "Bards College, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "The Winking Skeever, Solitude",
+    "doing": "lunch (not in rain; then he stays at the College)"
+   },
+   {
+    "from": "12 pm",
+    "for": "2 hours",
+    "where": "Bards College, Solitude",
+    "doing": "about the College"
+   },
+   {
+    "from": "2 pm",
+    "for": "4 hours",
+    "where": "Bards College, Solitude",
+    "doing": "teaching his class"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "Bards College dining hall, Solitude",
+    "doing": "eating"
+   },
+   {
+    "from": "7 pm",
+    "for": "7 hours",
+    "where": "Bards College, Solitude",
+    "doing": "about the College"
+   }
+  ],
+  "changes": [],
+  "role": "Bards College teacher; Speech trainer; quest giver",
+  "sells": "",
+  "trains": "Speech (master-tier trainer)",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Rjorn's Drum",
+    "how": "gives it: find Rjorn's Drum in Halldir's Cairn and give it to him"
+   },
+   {
+    "quest": "Collecting the Edda",
+    "how": "gives it: collect fragments of the Poetic Edda from bards and bring them to him"
+   },
+   {
+    "quest": "On Hogithum",
+    "how": "gives it: bring him the pieces of the lost poem; he rewards you with the collated fragments"
+   },
+   {
+    "quest": "The Lost Verse",
+    "how": "the one you show the ancient Edda fragment to"
+   },
+   {
+    "quest": "Tending the Flames",
+    "how": "has lines in it (Viarmo gives it)"
+   },
+   {
+    "quest": "Delivery",
+    "how": "its target: Adonato Leotelli of Candlehearth Hall, Windhelm, has you deliver something to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "trains",
+    "why": "The trainer record gives Speechcraft at master tier but no level cap."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills aliases in five more quests with no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013281",
+   "placed in Bards College",
+   "SolitudeGiraudEatLunch10x3 (not raining)",
+   "SolitudeBardsCollegeClassGiraudTeach14x4",
+   "SolitudeBardsCollegeDiningHallEat18x1",
+   "BardsCollegeSleepEditorLoc2x8",
+   "SolitudeBardsCollegeSandbox",
+   "trainer Speechcraft Master",
+   "BardsCollegeDrum Skyrim.esm:0D944F",
+   "BardsCollegePoeticEdda Skyrim.esm:0E7814",
+   "REQ_HOGITHUM Requiem.esp:AD383D",
+   "dunBardsLeapSummitQST Skyrim.esm:0AE014",
+   "MS05 Skyrim.esm:053511 talker below 76",
+   "Favor001Windhelm Favor Quests Seperated.esp:00082D"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013662",
+  "name": "Iddra",
+  "race": "Nord",
+  "sex": "female",
+  "firstMeet": "Braidwood Inn, Kynesgrove.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "12 hours",
+    "where": "Braidwood Inn, Kynesgrove",
+    "doing": "running the inn"
+   },
+   {
+    "from": "8 pm",
+    "for": "5 hours",
+    "where": "Braidwood Inn, Kynesgrove",
+    "doing": "about the inn"
+   },
+   {
+    "from": "1 am",
+    "for": "6 hours",
+    "where": "Braidwood Inn, Kynesgrove",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "1 hour",
+    "where": "Braidwood Inn, Kynesgrove",
+    "doing": "about the inn"
+   }
+  ],
+  "changes": [],
+  "role": "innkeeper of Braidwood Inn (rents a room); quest giver",
+  "sells": "inn goods as the innkeeper, at any hour; rents a room",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "gives it: talk to Roggi Knot-Beard about her"
+   },
+   {
+    "quest": "A Blade in the Dark",
+    "how": "has lines while it runs (the dragon rising near Kynesgrove)"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "sells",
+    "why": "Her buy/sell list and chest are ids the extracts don't resolve; it's the same buy list another innkeeper uses."
+   },
+   {
+    "field": "quests",
+    "why": "She fills an alias in The Eye of Madness, but the records don't show her part; and six unnamed quests."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013662",
+   "placed in Braidwood Inn",
+   "KynesgroveIddraWork8x12",
+   "AIOKynesIddraSleep",
+   "AIOKynesIddraSandbox",
+   "vendor 0-24, VEND f0140900, VENC 263f0a00",
+   "JobInnkeeperFaction, JobRentRoomFaction, ServicesKynesgroveBraidwoodInn",
+   "Favor013Kynesgrove Favor Quests Seperated.esp:000896",
+   "MQ106 Skyrim.esm:032926 talker below 75",
+   "zzzAoMMq04 Vigilant.esm:0082EA alias Iddra"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01403F",
+  "name": "Roggi Knot-Beard",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "Steamscorch Mine, Kynesgrove, by day; Braidwood Inn at breakfast and dinner.",
+  "day": [
+   {
+    "from": "7 am",
+    "for": "2 hours",
+    "where": "Braidwood Inn, Kynesgrove",
+    "doing": "breakfast"
+   },
+   {
+    "from": "9 am",
+    "for": "9 hours",
+    "where": "Steamscorch Mine, Kynesgrove",
+    "doing": "mining"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "around the campfire and inn, Kynesgrove",
+    "doing": "hanging about"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "Braidwood Inn, Kynesgrove",
+    "doing": "dinner"
+   },
+   {
+    "from": "10 pm",
+    "for": "1 hour",
+    "where": "around the campfire and inn, Kynesgrove",
+    "doing": "hanging about"
+   },
+   {
+    "from": "11 pm",
+    "for": "7 hours",
+    "where": "Roggi's House, Kynesgrove",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "around the campfire and inn, Kynesgrove",
+    "doing": "hanging about"
+   }
+  ],
+  "changes": [
+   "As your follower he goes where you go."
+  ],
+  "role": "miner; follower; can marry; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "he's a potential follower; how he's recruited isn't in the records I can read",
+  "marries": "yes (he's a marriage candidate; the records don't give extra conditions)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "Dungeon Delving (Caves)",
+    "how": "gives it: find an item inside a cave"
+   },
+   {
+    "quest": "A Few Words with You",
+    "how": "its target: Iddra has you talk to him about her"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "joins",
+    "why": "He's in the potential-follower faction, but the dialogue or condition that recruits him isn't in the extracts."
+   },
+   {
+    "field": "sells",
+    "why": "His only vendor data is the follower one with no merchant chest, so he isn't a shop."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in A Blade in the Dark, but the records don't show his part; and six unnamed quests."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01403F",
+   "placed in Steamscorch Mine",
+   "KynesgroveRoggeEatDinner19x3",
+   "KynesgroveRoggeEatBreakfast7x2",
+   "KynesgroveRoggiWork8x10",
+   "KynesgroveRoggeSleep23x7",
+   "KynesgroveHangAroundCampfireAndInn (target Skyrim.esm:0E7723)",
+   "vendor 48cb0600 no VENC",
+   "PotentialFollowerFaction, PotentialMarriageFaction",
+   "Favor205Kynesgrove Favor Quests Seperated.esp:000DF0",
+   "Favor013Kynesgrove target",
+   "MQ106 alias Roggi",
+   "protected=true"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133AE",
+  "name": "Omluag",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Working outside the smelter in Markarth by day; he lives in the Warrens.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "7 hours",
+    "where": "The Warrens, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "7 am",
+    "for": "12 hours",
+    "where": "outside the smelter, Markarth",
+    "doing": "working the smelter (now and then carrying a bucket instead)"
+   },
+   {
+    "from": "7 pm",
+    "for": "4 hours",
+    "where": "Silver-Blood Inn, Markarth",
+    "doing": "eating and drinking"
+   },
+   {
+    "from": "11 pm",
+    "for": "1 hour",
+    "where": "The Warrens, Markarth",
+    "doing": "at home"
+   }
+  ],
+  "changes": [
+   "Saturdays 1 pm to 6 pm he's around Arnleif and Sons Trading Company instead of at the smelter."
+  ],
+  "role": "smelter worker; can marry; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes (he's a marriage candidate; the records don't give extra conditions)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "gives it: talk to Mulush gro-Shugurz about him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "The bucket-carrying packages have no place and fire on a 10% roll plus an undecoded check."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in seven quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133AE",
+   "placed in The Warrens",
+   "MarkarthOmluagEatSilverBloodInn19x4Package",
+   "AIOMaOmluagSaturday (day 6; target AI Overhaul.esp:0075D2)",
+   "MarkarthOmluagCarryBucket15x2 / 11x2 / 7x2 (GetRandomPercent <= 10, fn555)",
+   "MarkarthMetalWorkerOutsideSmelter7x12Package (target Skyrim.esm:0354F7)",
+   "DefaultSleepEditorLoc24x8",
+   "DefaultSandboxEditorLocation512",
+   "PotentialMarriageFaction, MarkarthSmelterWorkersFaction",
+   "Favor013Markarth Favor Quests Seperated.esp:0008B3"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:0133A9",
+  "name": "Mulush gro-Shugurz",
+  "race": "Orsimer",
+  "sex": "male",
+  "firstMeet": "Overseeing the smelter in Markarth by day; he lives in the Smelter Overseer's House.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "6 hours",
+    "where": "Smelter Overseer's House, Markarth",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "1 hour",
+    "where": "Smelter Overseer's House, Markarth",
+    "doing": "eating"
+   },
+   {
+    "from": "7 am",
+    "for": "5 hours",
+    "where": "at the smelter, Markarth",
+    "doing": "overseeing the smelter"
+   },
+   {
+    "from": "12 pm",
+    "for": "1 hour",
+    "where": "Smelter Overseer's House, Markarth",
+    "doing": "eating"
+   },
+   {
+    "from": "1 pm",
+    "for": "4 hours",
+    "where": "at the smelter, Markarth",
+    "doing": "overseeing the smelter"
+   },
+   {
+    "from": "5 pm",
+    "for": "1 hour",
+    "where": "Smelter Overseer's House, Markarth",
+    "doing": "eating"
+   },
+   {
+    "from": "6 pm",
+    "for": "1 hour",
+    "where": "at the smelter, Markarth",
+    "doing": "overseeing the smelter"
+   },
+   {
+    "from": "7 pm",
+    "for": "5 hours",
+    "where": "Smelter Overseer's House, Markarth",
+    "doing": "at home"
+   }
+  ],
+  "changes": [],
+  "role": "smelter overseer",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "its target: Omluag has you talk to him"
+   }
+  ],
+  "canDie": "protected",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "He's in a faction tied to No One Escapes Cidhna Mine's victims; what happens to him there isn't in the records I read."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in four quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:0133A9",
+   "placed in Smelter Overseer's House",
+   "DefaultEatEditorLoc17x1 / 12x1 / 6x1",
+   "MarkarthMulushOverseeSmelter7x12Package (target Skyrim.esm:0354F7)",
+   "DefaultSleepEditorLoc24x8",
+   "DefaultSandboxHomeowner",
+   "MS02VictimsFaction",
+   "Favor013Markarth target",
+   "protected=true"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01329D",
+  "name": "Octieve San",
+  "race": "Breton",
+  "sex": "male",
+  "firstMeet": "Solitude: about town by day, near the Blue Palace in the evening; he lives in Evette San's House.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "6 hours",
+    "where": "Evette San's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "6 am",
+    "for": "12 hours",
+    "where": "around Solitude",
+    "doing": "out in town (skipped in one kind of weather)"
+   },
+   {
+    "from": "6 pm",
+    "for": "6 hours",
+    "where": "near the Blue Palace, Solitude",
+    "doing": "evening out (not in rain)"
+   }
+  ],
+  "changes": [
+   "Until an early Solitude event quest is finished he keeps near his house instead."
+  ],
+  "role": "can marry; quest giver",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "yes (he's a marriage candidate; the records don't give extra conditions)",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "gives it: talk to Irnskar Ironhand about him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "changes",
+    "why": "The stay-put package waits on a quest the extracts give no name, shared by 14 Solitude townsfolk."
+   },
+   {
+    "field": "day",
+    "why": "The daytime spot is a point near Solitude's centre with a wide radius; when weather or rain skips a package, he falls back to near his house."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in three quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01329D",
+   "placed in Evette San's House",
+   "SolitudeOpeningStayLocation512 (Skyrim.esm:0B2FD9 not completed)",
+   "AIOSoOctieveDay6x12 (fn149 819744 == 0; target AI Overhaul.esp:004F80)",
+   "AIOSoOctieveNight18x6 (not raining; target AI Overhaul.esp:004F93)",
+   "DefaultSleepEditorLoc0x6",
+   "SolitudeSandboxEditorLocation512",
+   "PotentialMarriageFaction",
+   "JobMerchantFaction rank -1, no vendor",
+   "Favor013Solitude Favor Quests Seperated.esp:0008A5"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:01328B",
+  "name": "Irnskar Ironhand",
+  "race": "Nord",
+  "sex": "male",
+  "firstMeet": "The Blue Palace, Solitude, by day; he lives in Bryling's House.",
+  "day": [
+   {
+    "from": "12 am",
+    "for": "8 hours",
+    "where": "Bryling's House, Solitude",
+    "doing": "sleeping"
+   },
+   {
+    "from": "8 am",
+    "for": "2 hours",
+    "where": "Blue Palace, Solitude",
+    "doing": "about the palace"
+   },
+   {
+    "from": "10 am",
+    "for": "2 hours",
+    "where": "Radiant Raiment, Solitude",
+    "doing": "shopping"
+   },
+   {
+    "from": "12 pm",
+    "for": "2 hours",
+    "where": "Blue Palace, Solitude",
+    "doing": "about the palace"
+   },
+   {
+    "from": "2 pm",
+    "for": "2 hours",
+    "where": "Castle Dour, Solitude",
+    "doing": "at the blacksmith"
+   },
+   {
+    "from": "4 pm",
+    "for": "4 hours",
+    "where": "Blue Palace, Solitude",
+    "doing": "about the palace"
+   },
+   {
+    "from": "8 pm",
+    "for": "4 hours",
+    "where": "Bryling's House, Solitude",
+    "doing": "at home"
+   }
+  ],
+  "changes": [],
+  "role": "Solitude townsperson (lives in Bryling's House)",
+  "sells": "",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "its target: Octieve San has you talk to him"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "role",
+    "why": "He's only in Bryling's house faction; the records don't say what he is to her."
+   },
+   {
+    "field": "day",
+    "why": "The palace package also needs him to be in a location the extracts don't name; if not, he stays near Bryling's House."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   },
+   {
+    "field": "quests",
+    "why": "He fills an alias in two quests that have no name in the extracts."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:01328B",
+   "placed in Bryling's House",
+   "SolitudeRaimentsShopping10x2",
+   "SolitudeBlacksmithShopping14x2 (Castle Dour)",
+   "DefaultSleepEditorLoc24x8",
+   "SolitudePalaceLobbySandbox8x12 (GetInCurrentLoc Skyrim.esm:020086)",
+   "DefaultSandboxEditorLocation512",
+   "SolitudeBrylingsHouseFaction",
+   "Favor013Solitude target"
+  ]
+ },
+ {
+  "id": "Skyrim.esm:013B99",
+  "name": "Carlotta Valentia",
+  "race": "Imperial",
+  "sex": "female",
+  "firstMeet": "Her stall in Whiterun's market by day; she lives in Carlotta Valentia's House.",
+  "day": [
+   {
+    "from": "8 am",
+    "for": "11 hours",
+    "where": "her market stall, Whiterun",
+    "doing": "selling"
+   },
+   {
+    "from": "1 pm",
+    "for": "3 hours",
+    "where": "Whiterun",
+    "doing": "sweeping (not in rain; beats the stall in these hours)"
+   },
+   {
+    "from": "7 pm",
+    "for": "3 hours",
+    "where": "The Bannered Mare, Whiterun",
+    "doing": "evening out (not in rain)"
+   },
+   {
+    "from": "10 pm",
+    "for": "10 hours",
+    "where": "Carlotta Valentia's House, Whiterun",
+    "doing": "at home"
+   }
+  ],
+  "changes": [],
+  "role": "market merchant; quest giver",
+  "sells": "goods from her market stall (general 'misc' merchant); trades 8 am to 8 pm",
+  "trains": "",
+  "joins": "",
+  "marries": "no",
+  "fightsWith": "",
+  "quests": [
+   {
+    "quest": "A Few Words with You",
+    "how": "gives it: talk to Mikael about her"
+   },
+   {
+    "quest": "Mirrors of Youth",
+    "how": "one of the Whiterun people you can ask about Braith"
+   }
+  ],
+  "canDie": "can die",
+  "unsure": [
+   {
+    "field": "day",
+    "why": "Her market package carries both 'raining' and 'not raining' checks with no 'or' in the extract, which as read can never pass; if it doesn't run she's at home from 8 am. Its spot resolves to near Jorrvaskr, not a named market. The sweeping package has no place."
+   },
+   {
+    "field": "sells",
+    "why": "Her buy/sell list and chest are ids the extracts don't resolve."
+   },
+   {
+    "field": "quests",
+    "why": "Mirrors of Youth role is read from its 'Ask around about Braith' step and alias list."
+   },
+   {
+    "field": "fightsWith",
+    "why": "Only a class record id and an outfit id are in the extracts; neither resolves to skills or a weapon."
+   }
+  ],
+  "evidence": [
+   "Skyrim.esm:013B99",
+   "placed in Carlotta Valentia's House",
+   "WhiterunCarlottaSweep13x3 (not raining)",
+   "WhiterunCarlottaMarketplace8x11 (fn612 40, fn62 == 0, fn62 == 1; target Skyrim.esm:02BE20)",
+   "WhiterunCarlottaBanneredMare19x3",
+   "WhiterunCarlottaHomePackage",
+   "vendor 8-20, VEND b9080051, VENC 41bb0a00",
+   "JobMerchantFaction, JobMiscFaction, ServicesWhiterunCarlotta",
+   "Favor013Whiterun Favor Quests Seperated.esp:000869",
+   "SDE_R004 alias Carlotta"
+  ]
+ }
+]
